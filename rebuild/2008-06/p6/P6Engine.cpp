@@ -44,6 +44,15 @@ static std::string moduleRoot()
     return std::string(path).substr(0, std::string(path).find_last_of("\\/"));
 }
 
+// Application-wide setup; the document no longer repeats it per open.
+extern "C" int P6EngineStartup(void)
+{
+    std::string content = moduleRoot() + "/Content";
+    if (!getenv("ROC_TEXTURE_STRIP")) _putenv(("ROC_TEXTURE_STRIP=" + content + "/textures/SurfacesStrip.png").c_str());
+    if (!getenv("ROC_SKY_SPHERE")) _putenv(("ROC_SKY_SPHERE=" + content + "/sky/skyspheremap.jpg").c_str());
+    return ConfigureContentRoot(content.c_str());
+}
+
 extern "C" int P6EngineReadable(const char* path)
 {
     return !readPlace(path).empty();
@@ -53,9 +62,6 @@ extern "C" int P6EngineOpen(void* window, const char* path, int width, int heigh
 {
     if (g_root) return 1;
     std::string content = moduleRoot() + "/Content";
-    if (!getenv("ROC_TEXTURE_STRIP")) _putenv(("ROC_TEXTURE_STRIP=" + content + "/textures/SurfacesStrip.png").c_str());
-    if (!getenv("ROC_SKY_SPHERE")) _putenv(("ROC_SKY_SPHERE=" + content + "/sky/skyspheremap.jpg").c_str());
-    if (ConfigureContentRoot(content.c_str())) return 2;
     std::string place = readPlace(path && *path ? path : (moduleRoot() + "/Places/default.rbxl").c_str());
     if (place.empty() || LoadPlace(place.c_str())) return 3;
     g_placeOpen = true;

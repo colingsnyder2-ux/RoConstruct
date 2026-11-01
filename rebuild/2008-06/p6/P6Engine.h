@@ -4,6 +4,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+int P6EngineStartup(void);
 int P6EngineReadable(const char* path);
 int P6EngineOpen(void* window, const char* path, int width, int height, int play);
 int P6EngineScript(const char* command);

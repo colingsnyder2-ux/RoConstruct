@@ -8,6 +8,7 @@
 #include <XTToolkitPro.h>
 #include <stdio.h>
 #include "P6Engine.h"
+#pragma comment(lib, "version.lib")
 
 static const UINT IDR_MAINFRAME_ROBLOX = 128; // RT_MENU/RT_ACCELERATOR/RT_GROUP_ICON 128
 static const UINT IDR_PLACE = 129;            // RT_MENU and doc string "Places (*.rbxl)"
@@ -284,15 +285,64 @@ BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_UPDATE_COMMAND_UI(ID_TOOLS_PLAY_SOLO, &CRobloxView::OnUpdatePlaySolo)
 END_MESSAGE_MAP()
 
+// 00449910 owns templates 129, 185, 207 and 138; only the place template exists here.
+class CIDEDocManager : public CDocManager {
+public:
+    CDocTemplate* placeTemplate;
+    CIDEDocManager() {
+        placeTemplate = new CMultiDocTemplate(IDR_PLACE, RUNTIME_CLASS(CRobloxDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CRobloxView));
+        AddDocTemplate(placeTemplate);
+    }
+};
+
 class CRobloxApp : public CWinApp {
+    CString version;
+    static void Stage(const char* original, const char* name) { printf("p6-stage: %s %s\n", original, name); }
+    void ReadVersion() {
+        char path[MAX_PATH];
+        GetModuleFileName(m_hInstance, path, MAX_PATH);
+        DWORD unused, size = GetFileVersionInfoSize(path, &unused);
+        CByteArray block;
+        block.SetSize(size);
+        VS_FIXEDFILEINFO* info = NULL;
+        UINT length = 0;
+        if (size && GetFileVersionInfo(path, 0, size, block.GetData()) && VerQueryValue(block.GetData(), "\\", (void**)&info, &length))
+            version.Format("%u.%u.%u.%u", HIWORD(info->dwFileVersionMS), LOWORD(info->dwFileVersionMS), HIWORD(info->dwFileVersionLS), LOWORD(info->dwFileVersionLS));
+    }
+    bool CrashReportEnabled() {
+        HKEY key;
+        DWORD enabled = 1, size = sizeof(enabled);
+        if (RegOpenKeyEx(HKEY_CURRENT_USER, "Software\\ROBLOX Corporation\\Roblox", 0, KEY_READ, &key) != ERROR_SUCCESS) return true;
+        RegQueryValueEx(key, "CrashReport", NULL, NULL, (BYTE*)&enabled, &size);
+        RegCloseKey(key);
+        return enabled != 0;
+    }
 public:
     virtual BOOL InitInstance() {
         setvbuf(stdout, NULL, _IONBF, 0);
+        Stage("0044d852", "ROBLOX InitInstance");
         InitCommonControls();
+        Stage("0044d8ed", "InitCommonControls");
         if (!CWinApp::InitInstance()) return FALSE;
-        if (!AfxOleInit()) return FALSE;
+        ReadVersion();
+        printf("p6-stage: 0044d951 version %s\n", (LPCSTR)version);
+        printf("p6-stage: 0044d998 CrashReport %d (reporter not started)\n", CrashReportEnabled());
+        if (!AfxOleInit()) {
+            AfxMessageBox(100);
+            return FALSE;
+        }
+        Stage("AfxOleInit", "OLE ready");
         CRobloxCommandLineInfo command;
         ParseCommandLine(command);
+        if (command.m_nShellCommand == CCommandLineInfo::AppUnregister || command.m_nShellCommand == CCommandLineInfo::AppRegister) {
+            Stage("0044da96", "COM registration requested; not implemented, exiting like original");
+            return FALSE;
+        }
+        AfxEnableControlContainer();
+        Stage("0044db44", "AfxEnableControlContainer");
+        int startup = P6EngineStartup();
+        printf("p6-stage: 0044db4e engine startup %d\n", startup);
+        if (startup) return FALSE;
         g_capture = command.capture;
         g_script = command.script;
         g_runFile = command.runFile;
@@ -300,7 +350,8 @@ public:
         g_setProperty = command.setProperty;
         g_saveAs = command.saveAs;
         g_play = command.play;
-        AddDocTemplate(new CMultiDocTemplate(IDR_PLACE, RUNTIME_CLASS(CRobloxDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CRobloxView)));
+        m_pDocManager = new CIDEDocManager;
+        Stage("00449910", "CIDEDocManager");
         CMainFrame* frame = new CMainFrame;
         if (!frame->LoadFrame(IDR_MAINFRAME_ROBLOX)) { delete frame; return FALSE; }
         m_pMainWnd = frame;
@@ -308,6 +359,7 @@ public:
         printf("p6: frame=%p menus=%d\n", frame->m_hWnd, menu ? menu->GetControlCount() : -1);
         frame->ShowWindow(command.autoClose && !command.visible ? SW_HIDE : m_nCmdShow);
         frame->UpdateWindow();
+        Stage("00449bf0", "frame ready");
         if (command.m_nShellCommand == CCommandLineInfo::FileOpen && !ProcessShellCommand(command)) return FALSE;
         if (command.autoClose) frame->SetTimer(ID_P6_AUTOCLOSE, 5000, NULL);
         g_post = (UINT)atoi(command.post);

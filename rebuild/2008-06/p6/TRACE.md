@@ -50,19 +50,18 @@ CSettingsDialog and CAboutRobloxDialog.
 
 ## Client state
 
-`build_client.py` links `out/p6/Roblox.exe`: XTP frame with all 8 menus of
-resource 128, place document from resource 129, recovered engine in an MDI
-view, Explorer docking pane. Evidence: `work/2008-06/p6-client/receipt.json`.
+`build_client.py` links `out/p6/Roblox.exe`. Evidence and known limits live in
+`work/2008-06/p6-client/receipt.json`; startup order in `startup-stages.txt`.
 
-Passing: command-line open, bad path exit 1, edit mode, save and reopen of a
-moved Part, Play Solo through WM_COMMAND, real W input, clean exit.
+Present: XTP frame, menu 128, toolbars 128/137/135, CIDEDocManager with the 129
+place template, Explorer, Properties, Run/Pause/Reset, Play Solo, File New,
+Open, Save, About, Execute Script.
 
 Open:
 
-- Save output not yet opened in the original client.
-- InitInstance skips engine setup, COM registration, crash reporter and
-  CIDEDocManager; only the 129 template exists of 129, 185, 207 and 138.
-- Most menu commands are unbound. About and Execute Script are bound but
-  untested. No Properties, Output or script editor panes. No selection tools.
-- File New has no handler.
+- Templates 185, 207 and 138; crash reporter; real COM registration.
+- Edit-mode camera, selection and drag tools.
+- Output pane, script editor, document tabs, Explorer icons, FPS readout,
+  in-game menu overlay.
+- Original-side debugger trace of startup.
 - Links libraries from the Codex build, so rebuild after engine changes.
