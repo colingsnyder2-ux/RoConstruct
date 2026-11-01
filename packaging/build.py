@@ -274,7 +274,7 @@ def verify(staged):
     help_run = subprocess.run([sys.executable, "roc.py", "integrate", "--help"],
                               cwd=staged, capture_output=True, text=True)
     if help_run.returncode or not all(action in help_run.stdout for action in
-                                      ("next", "context", "check", "submit")):
+                                      ("next", "context", "check", "submit", "header-report")):
         raise SystemExit("package lacks required native integration CLI actions")
     return run.stdout.strip()
 

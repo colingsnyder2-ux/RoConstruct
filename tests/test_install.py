@@ -1021,3 +1021,29 @@ def test_config_moves_from_root_into_local_config(tmp_path, monkeypatch):
     (tmp_path / "roconstruct-settings.json").write_text("stale copy")  # new location wins
     assert setup.config("roconstruct-settings.json").read_text() == '{"user": "me"}'
     assert setup.config("roconstruct-worker.json") == tmp_path / "local" / "config" / "roconstruct-worker.json"
+
+
+def test_worker_stages_repository_native_dependency(tmp_path, monkeypatch):
+    import pytest
+    from roc import rebuild_install
+    build = load_build()
+    monkeypatch.setattr(build, 'ROOT', tmp_path)
+    native = 'rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp'
+    files = {
+        native: '// recovered source',
+        'rebuild/2008-06/manifests/abi-evidence.json': '{}',
+        'research/native-units.json': '{}',
+        'rebuild/2008-06/patches/rbxgs-client.json': json.dumps({
+            'App/v8world/ClumpStage.cpp': [['@replace', '../../../' + native]]}),
+    }
+    for name, content in files.items():
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content)
+    (tmp_path / 'roc/web').mkdir(parents=True)
+    monkeypatch.setattr(rebuild_install, 'ensure_abi', lambda root: root / 'rebuild/2008-06/manifests/abi-evidence.json')
+    staged = build.stage('worker', {'files': list(files), 'modules': [], 'docs': {}}, tmp_path / 'stage')
+    assert (staged / native).read_text() == '// recovered source'
+    assert json.loads((staged / 'research/native-units.json').read_text()) == {'../rbxgs/Client/App': {}}
+    with pytest.raises(SystemExit, match='Missing packaged native dependency'):
+        build.stage('worker', {'files': list(files)[1:], 'modules': [], 'docs': {}}, tmp_path / 'missing')

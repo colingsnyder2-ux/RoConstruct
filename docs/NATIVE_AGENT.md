@@ -1,5 +1,67 @@
 # Native integration with an agent (Codex, Claude)
 
+## Current batch-first process
+
+Use the existing private contributor checkout. One writer and one build at a
+time per mutable checkout; never build in the server's or another person's
+output tree. Preserve local changes and pending work before updating RoConstruct
+or syncing the accepted server baseline. Check `roc rebuild --help` and the
+installed commands once; use `roc.cmd` on Windows or `./roc.sh` on Linux. This
+batch process takes precedence over later single-method examples.
+
+1. Start from actual module reports, linked objects, `swaps.json` and target
+   evidence. Prioritize one shared cause affecting many functions: native header
+   or class layout, compiler settings, shared inline/template definitions,
+   unresolved dependencies or address placement. Use authentic source and ABI
+   evidence; mined code is a byte-match reference, not proof of source identity.
+2. Group functions by that cause. Make one evidence-backed native change, then
+   compile the real units and compare target code and referenced data. Preserve
+   existing matches; split a failing batch and repair its cause. Do not invent
+   fields, padding, offset views or no-op implementations to make a link pass.
+3. Build and run the module, checking every layer's compile errors and the
+   forced-link fixture, not only the normal smoke test:
+
+   ```text
+   roc rebuild 2008-06 module MODULE
+   roc rebuild 2008-06 status
+   ```
+
+   For RbxgsApp, also run `roc rebuild 2008-06 milestones` and report each
+   milestone's result, including any unresolved renderer symbols.
+   Recorded compile errors, empty source lists and failed dependency builds
+   invalidate the report; the last successful report is saved for comparison.
+
+   `force_owned: true` selects the linked providers, forces their externally
+   defined symbols with unique object-level ownership, relinks
+   until provider selection stabilizes, and checks the link map. Its fixture must
+   include `force_verified.h` and its test include paths must include
+   `rebuild/2008-06/out/MODULE_NAME/force`. Internal functions are not all forced
+   directly. For swapped providers, also enable `force_verified` to force the
+   selected swaps. A passing fixture proves its link and exercised behavior, not
+   all runtime paths.
+   `import_support_dlls` can link an x86 vendor support DLL using its own exports;
+   dependency runtimes and import libraries propagate to the parent fixture,
+   and conflicting runtime names fail. Identify support DLL version and
+   provenance separately from original-client code.
+4. Compare addresses against the prior report and the global server baseline.
+   Check object code/data, actual linked executable bytes, source identity and
+   dependencies. Resolve shared definitions or address twins with real evidence;
+   identical tiny bodies or an unpulled object alone do not establish ownership.
+   After relevant module links finish, run `roc rebuild 2008-06 placed` once;
+   its current pass handles eligible bodies of at least 16 bytes. Status,
+   progress and placement exclude modules whose source layers or tests failed.
+5. Submit each completed passing fix or inseparable batch immediately through a
+   server-supported path. For compatible RbxgsApp source changes, use the
+   `native-try` or `native-finish` workflows below; retain job IDs and check
+   receipts. A type proposal may be quarantined for review. If a library, scoped
+   layer or required glue is unsupported by the server, save the proof and state
+   the limitation; do not claim acceptance or silently omit required source.
+6. Publish reviewable evidence and send the configured mining webhook under the
+   actual contributor when the supported progress workflow records a gain.
+   Label local owned matches as nearly integrated, not server-accepted. Report
+   local, queued, rejected and independently accepted counts separately; only
+   accepted receipts grant native credit. Keep working on the next shared cause.
+
 ## Command compatibility
 
 This guide's manual loop uses `roc native-try targets / evidence / check / submit`.
