@@ -33,7 +33,7 @@ public:
     bool play;
     bool pickTest;
     CString* expecting;
-    CString capture, script, saveAs, post, runFile, select, setProperty;
+    CString capture, script, saveAs, post, runFile, select, setProperty, editScript;
     CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), pickTest(false), expecting(NULL) {}
     virtual void ParseParam(const char* param, BOOL flag, BOOL last) {
         if (expecting) { *expecting = param; expecting = NULL; return; }
@@ -47,13 +47,14 @@ public:
         if (flag && !lstrcmpiA(param, "p6-command")) { expecting = &post; return; }
         if (flag && !lstrcmpiA(param, "p6-runfile")) { expecting = &runFile; return; }
         if (flag && !lstrcmpiA(param, "p6-select")) { expecting = &select; return; }
+        if (flag && !lstrcmpiA(param, "p6-editscript")) { expecting = &editScript; return; }
         if (flag && !lstrcmpiA(param, "p6-setprop")) { expecting = &setProperty; return; }
         CCommandLineInfo::ParseParam(param, flag, last);
     }
 };
 
 static CString g_capture, g_script, g_saveAs, g_runFile;
-static CString g_select, g_setProperty;
+static CString g_select, g_setProperty, g_editScript;
 static CDialog* g_about;
 static CString g_commands;
 struct UndoMove { void* item; float position[3]; };
@@ -170,6 +171,7 @@ public:
         CMDIChildWnd* child = MDIGetActive();
         if (!status && child && child->GetActiveDocument()) child->GetActiveDocument()->SetModifiedFlag();
     }
+    afx_msg void OnExplorerOpen(NMHDR*, LRESULT* result);
     afx_msg void OnExplorerSelect(NMHDR* header, LRESULT* result) {
         HTREEITEM item = explorer.GetSelectedItem();
         if (item) ShowProperties((void*)explorer.GetItemData(item));
@@ -192,6 +194,10 @@ public:
         HTREEITEM item = findNode(explorer.GetRootItem(), g_select);
         printf("p6: select %s %s\n", (LPCSTR)g_select, item ? "found" : "missing");
         if (item) explorer.SelectItem(item);
+        if (item && !g_editScript.IsEmpty()) {
+            LRESULT result;
+            OnExplorerOpen(NULL, &result);
+        }
         int split = g_setProperty.Find('=');
         if (item && split > 0) SetProperty(g_setProperty.Left(split), g_setProperty.Mid(split + 1));
         g_select.Empty();
@@ -287,6 +293,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CXTPMDIFrameWnd)
     ON_UPDATE_COMMAND_UI(ID_VIEW_OUTPUT, &CMainFrame::OnUpdateViewOutput)
     ON_UPDATE_COMMAND_UI(ID_VIEW_PROPERTIES, &CMainFrame::OnUpdateViewProperties)
     ON_NOTIFY(TVN_SELCHANGED, 1, &CMainFrame::OnExplorerSelect)
+    ON_NOTIFY(NM_DBLCLK, 1, &CMainFrame::OnExplorerOpen)
     ON_MESSAGE(XTPWM_PROPERTYGRID_NOTIFY, &CMainFrame::OnGridNotify)
     ON_UPDATE_COMMAND_UI(ID_VIEW_EXPLORER, &CMainFrame::OnUpdateViewExplorer)
     ON_WM_TIMER()
@@ -316,6 +323,61 @@ public:
     }
 };
 IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)
+
+static void* g_scriptItem;
+
+static void captureSource(const char*, const char* name, const char* value, int, void* context) {
+    if (!lstrcmpA(name, "Source")) *static_cast<CString*>(context) = value;
+}
+
+// Scintilla from the original's SciLexer.dll; CScriptEditor itself is not recovered.
+class CScriptView : public CView {
+    DECLARE_DYNCREATE(CScriptView)
+    enum { SCI_GETLENGTH = 2006, SCI_GETTEXT = 2182, SCI_SETTEXT = 2181 };
+    CWnd editor;
+public:
+    virtual void OnDraw(CDC*) {}
+    CString Text() {
+        int size = (int)editor.SendMessage(SCI_GETLENGTH) + 1;
+        CString text;
+        editor.SendMessage(SCI_GETTEXT, size, (LPARAM)text.GetBuffer(size));
+        text.ReleaseBuffer();
+        return text;
+    }
+    void Load(const CString& text) { editor.SendMessage(SCI_SETTEXT, 0, (LPARAM)(LPCSTR)text); }
+    afx_msg int OnCreate(LPCREATESTRUCT create) {
+        if (CView::OnCreate(create) == -1) return -1;
+        static HMODULE lexer = LoadLibrary("SciLexer.dll");
+        return lexer && editor.CreateEx(0, "Scintilla", "", WS_CHILD | WS_VISIBLE, CRect(0, 0, 0, 0), this, 1) ? 0 : -1;
+    }
+    afx_msg void OnSize(UINT type, int width, int height) {
+        CView::OnSize(type, width, height);
+        if (editor.m_hWnd) editor.MoveWindow(0, 0, width, height);
+    }
+    DECLARE_MESSAGE_MAP()
+};
+IMPLEMENT_DYNCREATE(CScriptView, CView)
+BEGIN_MESSAGE_MAP(CScriptView, CView)
+    ON_WM_CREATE()
+    ON_WM_SIZE()
+END_MESSAGE_MAP()
+
+class CScriptDoc : public CDocument {
+    DECLARE_DYNCREATE(CScriptDoc)
+public:
+    void* item;
+    CScriptView* View() {
+        POSITION position = GetFirstViewPosition();
+        return position ? static_cast<CScriptView*>(GetNextView(position)) : NULL;
+    }
+    virtual BOOL DoFileSave() {
+        int status = P6DataSetProperty(item, "Source", View()->Text());
+        printf("p6: script save %d\n", status);
+        if (!status) SetModifiedFlag(FALSE);
+        return !status;
+    }
+};
+IMPLEMENT_DYNCREATE(CScriptDoc, CDocument)
 
 class CRobloxView : public CView {
     DECLARE_DYNCREATE(CRobloxView)
@@ -429,13 +491,16 @@ BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_UPDATE_COMMAND_UI(ID_TOOLS_PLAY_SOLO, &CRobloxView::OnUpdatePlaySolo)
 END_MESSAGE_MAP()
 
-// 00449910 owns templates 129, 185, 207 and 138; only the place template exists here.
+// 00449910 owns templates 129, 185, 207 and 138; 185 and 207 are absent here.
 class CIDEDocManager : public CDocManager {
 public:
     CDocTemplate* placeTemplate;
+    CDocTemplate* scriptTemplate;
     CIDEDocManager() {
         placeTemplate = new CMultiDocTemplate(IDR_PLACE, RUNTIME_CLASS(CRobloxDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CRobloxView));
         AddDocTemplate(placeTemplate);
+        // Not added to the manager, so File New and Open stay place-only.
+        scriptTemplate = new CMultiDocTemplate(138, RUNTIME_CLASS(CScriptDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CScriptView));
     }
 };
 
@@ -492,6 +557,7 @@ public:
         g_runFile = command.runFile;
         g_select = command.select;
         g_setProperty = command.setProperty;
+        g_editScript = command.editScript;
         g_saveAs = command.saveAs;
         g_play = command.play;
         g_pickTest = command.pickTest;
@@ -526,7 +592,7 @@ public:
     }
     afx_msg void OnFileNewPlace() {
         CloseAllDocuments(FALSE); // ponytail: engine holds one DataModel; original allows several documents
-        OnFileNew();
+        static_cast<CIDEDocManager*>(m_pDocManager)->placeTemplate->OpenDocumentFile(NULL);
     }
     afx_msg void OnFileOpenPlace() {
         CString path;
@@ -548,6 +614,24 @@ public:
         if (dialog.DoModal() != IDOK) return;
         RunFile(dialog.GetPathName());
     }
+    void OpenScript(void* item, const CString& name) {
+        CString source;
+        P6DataProperties(item, captureSource, &source);
+        CScriptDoc* document = static_cast<CScriptDoc*>(static_cast<CIDEDocManager*>(m_pDocManager)->scriptTemplate->OpenDocumentFile(NULL));
+        if (!document) return;
+        document->item = item;
+        document->SetTitle(name);
+        document->View()->Load(source);
+        printf("p6: script open %s chars=%d\n", (LPCSTR)name, source.GetLength());
+        if (!g_editScript.IsEmpty()) {
+            document->View()->Load(source + "\n-- p6 edit\n");
+            document->DoFileSave();
+            CString after;
+            P6DataProperties(item, captureSource, &after);
+            printf("p6: script after chars=%d marker=%d\n", after.GetLength(), after.Find("p6 edit") >= 0);
+            g_editScript.Empty();
+        }
+    }
     virtual int ExitInstance() {
         printf("p6: ExitInstance\n");
         int code = CWinApp::ExitInstance();
@@ -566,5 +650,14 @@ END_MESSAGE_MAP()
 extern "C" { int _afxForceEXCLUDE; int _afxForceSTDAFX; }
 
 CRobloxApp theApp;
+
+void CMainFrame::OnExplorerOpen(NMHDR*, LRESULT* result) {
+    HTREEITEM item = explorer.GetSelectedItem();
+    CString source;
+    source = "\1";
+    if (item) P6DataProperties((void*)explorer.GetItemData(item), captureSource, &source);
+    if (item && source != "\1") theApp.OpenScript((void*)explorer.GetItemData(item), explorer.GetItemText(item));
+    *result = 0;
+}
 
 static void RunScriptFile(const CString& path) { CRobloxApp::RunFile(path); }

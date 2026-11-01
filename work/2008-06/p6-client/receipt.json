@@ -2,11 +2,11 @@
  "milestone": "P6",
  "status": "OPEN",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "f8bcb0e7df380fd725be3b0ae55f6acad52a422f8ba7404449a6a9d6e17576f2",
+ "exe_sha256": "7fcbb9579b1e31900e086d5e10c93af7e10387aa3208a5a45d5bd3127957d83b",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "c4dcfd9adc19d5acdafc6256b491e52c284d87284e7974c0cb1cda6628ad42f6",
+  "RobloxShell.cpp": "e3517ffbb2c87075c943417499c2c3333d12fdd7a21ce0d0288335ce5fbeeb8b",
   "P6Engine.cpp": "4c928418d62e0d149ee4a4e6d163bbe5cdabc5412ba7316de5082aaf71a63706",
   "P6Data.cpp": "1aa8388835c2c711f631d6e06673c245027ded9ad0b7cb45e68c4cc3741be65a",
   "P6Engine.h": "e392a36d8ccc93d5974ca04f17691572b77de26407d676f0faf67148ac00b402",
@@ -111,7 +111,10 @@
   "32967 Pause": "status logged",
   "32968 Reset": "reloads document, cleanup zero both opens"
  },
- "not_rerun_on_this_exe": [],
+ "not_rerun_on_this_exe": [
+  "real W input",
+  "real drag"
+ ],
  "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised",
  "property_edit": {
   "select": "Brick",
@@ -151,5 +154,7 @@
   "real_w": "z 25.5 to 18.99",
   "saved_sha256": "d8e809ea7df458db0bcfbc4cdb154003b007e9e6eac3a5a9ecf1e00abeaed49b"
  },
- "output_pane": "print marker reached the pane on hidden run"
+ "output_pane": "print marker reached the pane on hidden run",
+ "script_editor": "Scintilla from SciLexer.dll; TriggerScript opened 250 chars, edited, saved to Source 262 chars. Double-click path shares OnExplorerOpen, not driven with a real mouse.",
+ "merged_codex": "cc5796493c"
 }
