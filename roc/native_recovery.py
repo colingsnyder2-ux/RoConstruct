@@ -584,9 +584,10 @@ def run(config, control, emit):
                 task['file'] = path.relative_to(snapshot).as_posix()
                 texts[task['file']] = text
         headers = {k:v for k,v in before.items() if '/native-headers/' in k}
+        library_inputs = sorted((p.name,str(p.resolve())) for p in libs.LIBS.iterdir() if p.is_dir()) if libs.LIBS.is_dir() else []
         for task in available:
             key = integration.digest([os.path.normcase(str(native_path(root,task['file']))), task['method']])
-            signature = integration.digest([before[task['file']], headers, config['model'], config['native_agent_checks'], config['native_agent_minutes'],digest(Path(__file__).read_bytes())])
+            signature = integration.digest([before[task['file']], headers, config['model'], config['native_agent_checks'], config['native_agent_minutes'],library_inputs,digest(Path(__file__).read_bytes())])
             owner = claims.take(key, signature, dict(task=task))
             if owner:
                 tasks.append((key, owner, task))
