@@ -1,5 +1,11 @@
 # Current player checkpoint
 
+SoundService shutdown005ba970 recovered at source73bde390ae: clear stock
+channels/children, detach both sound caches, clear them, release FMOD. The
+diagnostic builds and existing tests pass; shutdown is not yet selected or
+runtime-tested. Evidence: p4-sound-close-73bde390ae/ and
+p4-sound-close-runtime-73bde390ae/. Native provider callbacks and playback open.
+
 At sourced7fe02f730, native SoundChannel releaseChannel005b97f0 and listener
 subscription005bc5b0 are recovered; provider detach shares the release body.
 Sound asset/cache/vector diagnostics pass, but the channel methods remain
