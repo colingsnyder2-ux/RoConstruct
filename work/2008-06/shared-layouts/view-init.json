@@ -1,13 +1,15 @@
 {
  "source": "rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
- "source_sha256": "70aa43244abeb4f03e054ada30321dfb31f7ff277424b3012b0945196713e2b2",
- "object_sha256": "ce0b5ffe7355f9c9c717efa863d58aa211b7b39cd9a53c80353fbf0f8eb01408",
+ "source_sha256": "d349cd57e20cbb7dcf512a0632db2f97989f66d4e378875aa8e6050cb8283c1e",
+ "object_sha256": "2fae3ff6e09fc2d2681c749172b43aad4f02adb404c8d2f4cb217062cc4dd379",
  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
  "flags": [
   "/nologo",
   "/c",
   "/O2",
   "/Ob2",
+  "/Oi",
+  "/Ot",
   "/Oy",
   "/GF",
   "/GS-",
@@ -44,7 +46,7 @@
    "address": "0045a4a0",
    "symbol": "?OnInitialUpdate@CRobloxView@@UAEXXZ",
    "target_size": 1915,
-   "compiled_size": 383,
+   "compiled_size": 2129,
    "relocation_normalized_exact": false
   }
  ]

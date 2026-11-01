@@ -10,7 +10,7 @@ source = (ROOT / sys.argv[1]).resolve()
 recipe = libs.RECIPES['rbxgs']
 out = ROOT / 'rebuild/2008-06/out/native-layouts'
 out.mkdir(parents=True, exist_ok=True)
-flags = ['/nologo', '/c', '/O2', '/Ob2', '/Oy', '/GF', '/GS-', '/EHsc', '/MD', '/D_AFXDLL', '/DNDEBUG', '/D_MBCS', '/DNOMINMAX', '/DBOOST_ALL_NO_LIB']
+flags = ['/nologo', '/c', '/O2', '/Ob2', '/Oi', '/Ot', '/Oy', '/GF', '/GS-', '/EHsc', '/MD', '/D_AFXDLL', '/DNDEBUG', '/D_MBCS', '/DNOMINMAX', '/DBOOST_ALL_NO_LIB']
 flags += ['/D' + v for v in recipe['defines'].split()]
 flags += ['/I' + str(ROOT / 'rebuild/2008-06/native-headers'), '/I' + str(ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include')]
 flags += ['/I' + str((libs.LIBS / v).resolve()) for v in recipe['include'] if v != 'WINSDK']

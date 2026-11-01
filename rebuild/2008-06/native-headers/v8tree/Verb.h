@@ -17,7 +17,7 @@ public:
     virtual ~Verb();
     virtual bool isEnabled() const;
     virtual bool isChecked() const;
-    const Name& getName() const;
+    const Name& getName() const { return name; } // inline in the original: 0045a4a0 reads [verb+4]
     virtual void doIt(IDataState*) = 0;
     VerbContainer* getContainer() const;
 };
