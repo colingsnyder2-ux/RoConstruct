@@ -73,3 +73,5 @@ Open:
 then zeroes +0x74, builds a member at +0x78 with zeroed fields at +0x84, +0x88 and
 +0x8c, and zeroes +0x90 and +0x94 (`workspace`). +0x54 to +0x70 is unread so far;
 start at 00451590. Class swaps wait for P5 and the branch merge.
+
+`CRobloxDoc` has an intermediate base (00451590, vtable 00817c24) with a member at +0x54 built by 00446110.
