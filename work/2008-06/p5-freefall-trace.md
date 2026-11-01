@@ -8,6 +8,6 @@ collision state, absent from the donor Freefall implementation. Recovered
 source is in src/2008-06/00667810.cpp and 00667930.cpp. Donor headers already
 declare event_FreeFalling, but current glue does not define it, and donor
 Freefall ctor has no fire/dtor override. Integrate both transition notifications
-and investigate actual limb ownership/collision behavior; verify entry and exit
+and identify the affected part properties and ownership; verify entry and exit
 with scripts and original-client comparisons. Do not count registration alone
 as functional signal support.
