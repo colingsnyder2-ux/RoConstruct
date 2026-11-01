@@ -1381,3 +1381,21 @@ climb, spawn and combined play pass. Original tall/standard walk and moving
 floor bounded comparisons pass at 109f9894fe. Receipts: p5-joints-109f-*.
 Initial-contact joint behavior itself has not been compared against original;
 full scheduler, joint lifecycle, humanoid parity and P5 remain open.
+
+## P5 checkpoint: original movement heading (68be7ec06b)
+
+Adapted original 00666410 running goal: nonzero walk direction sets target
+heading, shortest wrapped difference from torso heading is multiplied by 8,
+then passed to the recovered running-force path. Previously the rebuilt torso
+kept facing -Z while walking sideways. A script records the torso look vector
+as a four-stud marker; original and rebuild now match for both left and right
+walks at four observed times. Maximum marker-component difference in these
+runs was 0.0014 studs. Before adaptation the rightward rebuilt marker stayed at
+(177.25, 67.75), while original turned to roughly (181.25, 71.75) in X/Z.
+
+At 68be7ec06b, timing, joint contact, floor, force, controller, climbing,
+spawn, combined play and P0 controls pass; original tall and moving-floor
+comparisons also pass. Receipts: p5-turn-68be-*. Original sampling is wall time
+within 35 ms of fixed-step targets; joint construction differs and the original
+process required forced termination. This is a donor-ABI adaptation; reverse,
+turning-in-place, ramps, animation and full state/scheduler parity remain open.
