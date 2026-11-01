@@ -122,7 +122,7 @@ def inline_code(text):
 
 
 def _post(url, payload, retry=True):
-    payload = {"allowed_mentions": {"parse": []}, **payload}  # user text must never ping the channel
+    payload = {**payload, "allowed_mentions": {"parse": []}}  # user text must never ping the channel
     try:
         body = json.dumps(payload).encode()
         req = urllib.request.Request(url, data=body,

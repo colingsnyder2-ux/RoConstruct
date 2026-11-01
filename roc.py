@@ -2808,7 +2808,9 @@ def main(argv=None):
         (["target"], {"nargs": "?", "help": "module name for `module` (rebuild/<client>/modules/NAME.json)"}),
         (["--no-notify"], {"action": "store_true", "help": "do not send the Discord webhook"}))
     cmd("integrate", cmd_integrate, "claim native integration work, bulk submit, track verified credit",
-        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "check", "context", "metrics", "adapt", "audit", "submit", "resume", "force-queue", "fingerprint", "status", "watch", "renew", "release", "park", "unpark", "sync", "invite"]}),
+        (["action"], {"nargs": "?", "default": "next", "choices": ["next", "check", "context", "metrics", "adapt", "audit", "submit", "resume", "force-queue", "fingerprint", "status", "watch", "renew", "release", "park", "unpark", "sync", "invite", "header-report"]}),
+        (["--class-name"], {}), (["--exact"], {"type": int}),
+        (["--total"], {"type": int}), (["--note"], {}),
         (["--mode"], {"choices": ["easy", "balanced", "large"], "default": "balanced", "help": "native claim selection policy"}),
         (["--fast"], {"action": "store_true", "help": "check: compile affected native TUs without linking"}),
         (["--bytes"], {"action": "store_true", "help": "check: compare object code and referenced data (default)"}),

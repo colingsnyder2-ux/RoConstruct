@@ -1598,3 +1598,87 @@ def test_public_metrics_and_exact_unit_batch_capabilities(promotions):
         api.close()
         httpd.shutdown()
         httpd.server_close()
+
+
+@pytest.fixture(autouse=True)
+def isolated_agent_inbox(tmp_path, monkeypatch):
+    from roc import agent_inbox
+    monkeypatch.setattr(agent_inbox, 'INBOX', tmp_path / 'agent-inbox')
+
+
+def test_agent_inbox_records_source_and_swallows_oserror(tmp_path, monkeypatch, capsys):
+    from roc import agent_inbox
+    folder = tmp_path / 'inbox'
+    agent_inbox.record('submit', 'alice', 'model', 'int recovered;', inbox=folder, addr='00500000')
+    event = json.loads((folder / 'events.jsonl').read_text())
+    assert event['kind'] == 'submit' and event['addr'] == '00500000'
+    assert (folder / event['source']).read_text() == 'int recovered;'
+    assert event['source'].startswith('sources/')
+    monkeypatch.setattr(Path, 'mkdir', lambda *a, **k: (_ for _ in ()).throw(OSError('disk full')))
+    agent_inbox.record('submit', 'alice', inbox=folder)
+    assert 'disk full' in capsys.readouterr().out
+
+
+@pytest.mark.parametrize('change', [
+    {'class': '../bad'}, {'class': None}, {'model': ''}, {'model': ' '},
+    {'exact': True}, {'exact': -1}, {'exact': 50}, {'total': 0},
+    {'total': 5001}, {'total': '49'}, {'note': None}, {'note': 'x' * 1001},
+])
+def test_header_report_rejects_bad_input(monkeypatch, change):
+    monkeypatch.setattr(integration_notify, 'record', lambda *a, **k: pytest.fail('invalid report recorded'))
+    monkeypatch.setattr(integration_notify, 'server_mines_webhook', lambda: pytest.fail('invalid report posted'))
+    body = dict({'class': 'CRobloxDoc', 'model': 'gpt-6.1-sol', 'exact': 3, 'total': 49}, **change)
+    with pytest.raises(ValueError):
+        integration_notify.record_header(None, 'alice', body)
+
+
+def test_header_report_posts_once_without_credit(monkeypatch):
+    from roc import reports
+    sent, events = [], []
+    class ImmediateThread:
+        def __init__(self, target, args, daemon):
+            self.target, self.args = target, args
+        def start(self):
+            self.target(*self.args)
+    monkeypatch.setattr(threading, 'Thread', ImmediateThread)
+    monkeypatch.setattr(integration_notify, 'record', lambda *a, **k: events.append((a, k)))
+    monkeypatch.setattr(integration_notify, 'server_mines_webhook', lambda: 'https://example.invalid/hook')
+    monkeypatch.setattr(reports, '_post', lambda url, payload: sent.append(payload))
+    result = integration_notify.record_header(None, 'alice',
+        {'class': 'CRobloxDoc', 'model': 'gpt-6.1-sol', 'exact': 3, 'total': 49, 'note': 'provisional'})
+    assert result == {'recorded': True, 'exact_credits': 0}
+    assert len(sent) == len(events) == 1
+    assert '3 / 49' in sent[0]['embeds'][0]['description']
+    assert events[0][0][0] == 'header'
+
+
+@pytest.mark.parametrize('always_limited', [False, True])
+def test_webhook_post_disables_mentions_and_retries_once(monkeypatch, always_limited):
+    import io
+    import urllib.error
+    from roc import reports
+    requests, sleeps = [], []
+    class Response:
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+    def send(request, timeout):
+        requests.append(json.loads(request.data))
+        assert timeout == 10
+        if len(requests) == 1 or always_limited:
+            raise urllib.error.HTTPError(request.full_url, 429, 'limited', {'Retry-After': '2'}, io.BytesIO(b'{}'))
+        return Response()
+    monkeypatch.setattr(reports.urllib.request, 'urlopen', send)
+    monkeypatch.setattr(reports.time, 'sleep', sleeps.append)
+    reports._post('https://example.invalid/hook', {'content': '@everyone', 'allowed_mentions': {'parse': ['everyone']}})
+    assert len(requests) == 2 and sleeps == [2]
+    assert all(p['allowed_mentions'] == {'parse': []} for p in requests)
+
+
+def test_notify_records_accepted_integration_without_webhook(monkeypatch):
+    events = []
+    monkeypatch.setattr(integration_notify, 'server_mines_webhook', lambda: None)
+    monkeypatch.setattr(integration_notify, 'record', lambda *a, **k: events.append((a, k)))
+    job = {'user': 'alice', 'model': 'gpt-6.1-sol'}
+    integration_notify.notify(None, job, {'accepted': False})
+    integration_notify.notify(None, job, {'accepted': True, 'gains': ['00500000'], 'credits': 1})
+    assert events == [(('integration', 'alice', 'gpt-6.1-sol'), {'gains': ['00500000'], 'credits': 1})]

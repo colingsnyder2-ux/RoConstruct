@@ -43,7 +43,7 @@ WORKER_MODULES += ["integration_verify", "native_search", "native_transforms", "
 WORKER_MODULES += ["native_repair"]
 WORKER_MODULES += ["integration_local", "integration_context", "integration_policy", "integration_audit", "native_adapt", "native_refs"]
 WORKER_MODULES += ["rebuild_audit"]
-SERVER_MODULES += ["integration_notify", "integration_site"]
+SERVER_MODULES += ["integration_notify", "integration_site", "agent_inbox"]
 
 COMMON_FILES = ["roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",
                 "packaging/organize-local.ps1", "research/repair-patterns.json", "docs/SETUP.md", "docs/SERVER.md",
