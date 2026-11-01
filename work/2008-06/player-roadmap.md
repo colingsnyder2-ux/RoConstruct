@@ -966,3 +966,15 @@ camera, native physics/joints and scheduler parity.
 
 FreeFalling trace: descriptor initialization 007f68d0; original state entry
 00667810 fires true and exit 00667930 fires false. See p5-freefall-trace.md.
+
+## P5 checkpoint: FreeFalling transitions (9484069c6b)
+
+Registered the original bool signal and integrated Freefall entry/exit fires
+and Head/Torso friction save/restore, traced to 007f68d0, 00667810 and 00667930.
+At revision 9484069c6b, direct transition checks observe true then false,
+zero friction during freefall, and restored distinct values afterward. Spawn,
+controller, script and lifetime regressions pass; original Sound script no
+longer logs the missing FreeFalling member during 120-frame idle/input runs.
+Receipts are in p5-freefall-*-9484069c6b. This does not establish original
+physics or sound playback parity. Animate still reports an error at
+GetPlayerFromCharacter (line 113); trace the Lua call and its arguments next.
