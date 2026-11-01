@@ -2085,3 +2085,6 @@ Doc typed getDataModel candidate: original00403040 is47 bytes; straightforward s
 
 
 Doc getter00403040 now matches all47 bytes with relocations masked: explicit early return avoids ternary shared_ptr temporaries. Typed workspace call retained. Receipt shared-layouts/document-compile.json pins 1945d77c23. Inactive; runtime and gates unchanged.
+
+
+Doc DeleteContents source port at 2de64d130b now uses typed DataModel lock, owned-verb cleanup, StandardVerbs deletion, workspace cleanup/Release, current-document handling and CDocument cleanup in original order. Original workspace cleanup call is 0046b0e0. Compiler accepts shared types and existing Doc gates pass; body is459 bytes vs original449, not exact, and cleanup/current-document links remain unresolved. Candidate stays inactive; no class swap or runtime gate change claimed.

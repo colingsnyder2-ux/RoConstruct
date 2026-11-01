@@ -1,5 +1,5 @@
 {
-  "revision": "1945d77c23ab8758530fa5c4a55df9a99f90b9be",
+  "revision": "2de64d130bb59095824cfa6ad79d4e5ab4e191c8",
   "compiler_build": 21022,
   "flags": [
     "/nologo",
@@ -45,14 +45,14 @@
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "7f58c820c6867601ea38e3151fc65f8a401148786774304a91ba908c293508f7",
     "rebuild\\2008-06\\native-headers\\VerbBinder.h": "6ad1e8f77aaa0371bada575b80373f67ea4a87ca1278b310f2698116e104908a",
     "rebuild\\2008-06\\tests\\record_native_document.py": "64f059cf827743897e0b440c691c2c5ba43c9f8a365d6929107df08fcfe5dce9",
-    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "b7e152d70f3fe94127323923c46e3a0cfeee8217156e04d6ecb5add4e7a7cda9",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "f38aa7289b0740bf188bf85133af7e67330cbd0e0ca04f94c61da85565acbd90",
     "rebuild\\2008-06\\native-classes\\StandardVerbs.cpp": "497b7e172bdfcb34b4595c5c5661c159e580e2b6d5f0804bbd595fcd7a0e5710",
     "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "7a48e0178f955854b8a4c16c06476388e4ffcbc1f171a97886379fadaaa3d0cd",
     "rebuild\\2008-06\\native-headers\\v8xml\\XmlElement.h": "dd6594e4312f376e95960b5cbd27d14fb83e4c796d08ecd1ea19ea98333502c4",
     "rebuild\\2008-06\\native-headers\\RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4"
   },
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "d54b7a4eb10a3b1faca4efd91bf96c70792d15db91cec32de2dfc0e873b86cd4",
+  "object_sha256": "c59978d82bb21746d745072f4ca85be9b0027a1964c6ad0f3a65c2520c4c0253",
   "compile_log_sha256": "c4e76fdceab90fb871c4bb1f784fe8d5f7929f22b03cddc483ae05ff0a8b4819",
   "static_layout_gates": {
     "size": 152,
