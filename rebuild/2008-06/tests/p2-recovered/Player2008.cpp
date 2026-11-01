@@ -556,7 +556,7 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
 // P3 block lifetime gate. Non-box/reference silhouette remains a separate gate.
 static bool lifetimeFrame(Ogre::Root* root,Ogre::RenderWindow* win,int cycle,
     const char* stage,int expected,bool green,const void* stationaryId,
-    Ogre::SceneNode* stationaryNode,PlayerBlockMesh::Mesh* stationaryMesh,
+    Ogre::SceneNode* stationaryNode,PlayerBlockMesh::Mesh* stationaryMesh,const float* stationarySize,
     int& redBaseline,std::ofstream& records)
 {
     drawModels();
@@ -575,7 +575,7 @@ static bool lifetimeFrame(Ogre::Root* root,Ogre::RenderWindow* win,int cycle,
         stationary->second.geometry.getPointer()==stationaryMesh &&
         stationaryNode->getPosition()==Ogre::Vector3(2,0,0) &&
         stationaryNode->getOrientation()==Ogre::Quaternion::IDENTITY &&
-        stationary->second.size[0]==1 && stationary->second.size[1]==2.4f && stationary->second.size[2]==1;
+        std::memcmp(stationary->second.size,stationarySize,sizeof(stationary->second.size))==0;
     bool pass=SceneModelCount()==expected && g_drawn.size()==static_cast<unsigned>(expected) &&
         stable && red>100 && red==redBaseline && (green?greenPixels>100:greenPixels<30);
     records<<cycle<<","<<stage<<","<<SceneModelCount()<<","<<g_drawn.size()<<","<<red<<","<<greenPixels<<","<<stable<<","<<pass<<"\n";
@@ -604,8 +604,9 @@ static int runLifetimeTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::s
         DrawEntry& stationary=g_drawn.find(stationaryId)->second;
         Ogre::SceneNode* stationaryNode=stationary.node;
         PlayerBlockMesh::Mesh* stationaryMesh=stationary.geometry.getPointer();
+        float stationarySize[3];std::memcpy(stationarySize,stationary.size,sizeof(stationarySize));
         int red=-1;
-        if(!lifetimeFrame(root,win,cycle,"loaded",2,true,stationaryId,stationaryNode,stationaryMesh,red,records))return 5;
+        if(!lifetimeFrame(root,win,cycle,"loaded",2,true,stationaryId,stationaryNode,stationaryMesh,stationarySize,red,records))return 5;
         const char* commands[]={
             "game.Workspace.Brick.Size=Vector3.new(3,1.2,1); game.Workspace.Brick.CFrame=CFrame.new(-2,.5,0)*CFrame.fromEulerAnglesXYZ(0,0,.6)",
             "p3Group=Instance.new('Model');p3Group.Name='Group';p3Group.Parent=game.Workspace;p3Held=game.Workspace.Brick;p3Held.Parent=p3Group",
@@ -620,7 +621,7 @@ static int runLifetimeTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::s
         for(int step=0;step<7;++step){
             if(ExecutePlayerScript(commands[step]))return 6;
             if(!lifetimeFrame(root,win,cycle,stages[step],counts[step],step!=2 && step!=6,
-                stationaryId,stationaryNode,stationaryMesh,red,records))return 7;
+                stationaryId,stationaryNode,stationaryMesh,stationarySize,red,records))return 7;
             if(step==0){
                 bool transformed=false;
                 for(int i=0;i<SceneModelCount();++i){

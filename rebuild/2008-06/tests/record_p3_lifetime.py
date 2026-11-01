@@ -22,7 +22,7 @@ def main():
     output = root / 'work/2008-06' / sys.argv[1]
     output.mkdir(exist_ok=False)
     binary = root / 'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
-    fixture = root / 'rebuild/2008-06/tests/fixtures/lifetime-blocks.rbxl'
+    fixture = root / 'rebuild/2008-06/tests/fixtures' / (sys.argv[2] if len(sys.argv)>2 else 'lifetime-blocks.rbxl')
     env = os.environ.copy()
     for name in ('ROC_BUILD', 'ROC_TEXTURE_STRIP', 'ROC_SKY_SPHERE', 'ROC_TRACE_STAGES'):
         env.pop(name, None)
