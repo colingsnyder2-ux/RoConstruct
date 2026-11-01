@@ -1,6 +1,7 @@
 #include <afxwin.h>
 #include "v8xml/XmlElement.h"
 #include "v8tree/Verb.h"
+#include "v8datamodel/DataModel.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/CWorkspace.h"
@@ -10,6 +11,8 @@ IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)
 
 // Original 00428850 logs std::exception::what(); recovery/linking remains open.
 void reportDocumentCreateException(const std::exception&);
+extern CRobloxDoc* currentDocument;
+void setCurrentDocument(int, CRobloxDoc*);
 
 // Existing recovered 00451ac0, expressed through the shared native fields.
 CRobloxDoc::CRobloxDoc() : standardVerbs(0), workspace(0) {}
@@ -23,6 +26,25 @@ boost::shared_ptr<RBX::DataModel> CRobloxDoc::getDataModel() {
 }
 
 void CRobloxDoc::OnCloseDocument() { CDocument::OnCloseDocument(); }
+
+void CRobloxDoc::DeleteContents() {
+    {
+        RBX::DataModel::Lock lock(getDataModel());
+        for (std::vector<RBX::Verb*>::iterator it = ownedVerbs.begin(); it != ownedVerbs.end(); ++it)
+            delete *it;
+        ownedVerbs.erase(ownedVerbs.begin(), ownedVerbs.end());
+        RBX::StandardVerbs* old = standardVerbs;
+        standardVerbs = 0;
+        delete old;
+    }
+    if (workspace) {
+        workspace->cleanup();
+        static_cast<IWorkspace*>(workspace)->Release();
+        workspace = 0;
+    }
+    if (currentDocument == this) setCurrentDocument(1, this);
+    CDocument::DeleteContents();
+}
 
 BOOL CRobloxDoc::OnNewDocument() {
     if (!CDocument::OnNewDocument()) return FALSE;

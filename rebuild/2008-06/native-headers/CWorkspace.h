@@ -46,4 +46,5 @@ public:
     boost::shared_ptr<RBX::RunService> runService;
     CWorkspace();
     boost::shared_ptr<RBX::DataModel> getDataModel();
+    void cleanup();
 };
