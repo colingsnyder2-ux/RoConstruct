@@ -1813,3 +1813,29 @@ iterator, and clears assembly+0x40 through job's assembly query. Next resolve
 005e53a0's vector element/assembly contract and stage ownership before adding
 this native dependency; donor SimJobStage is not ABI-compatible. No shared ABI
 changes made. Desktop released; full P5 remains open.
+
+## P5 checkpoint: tracker collection and linked lifetime gate (fc6d0dd4ce)
+
+005e53a0 is not an assembly-vector transfer: its elements are tracker observers
+whose first field is their tracked owner. Recovered source removes each tracker
+from its old owner's vector, then appends/reassigns it to the destination (or
+clears it). Existing donor MechanismTracker::setMechanism/transferTrackers in
+Mechanism.cpp implement this contract and already serve stage removal. This
+resolves the opaque collection role in SimJob constructor 005e50f0; it does
+not establish an original C++ declaration from the analog names alone.
+
+New --p5-job-tracker-check exercises three trackers across two owners,
+transfer followed by old-owner deletion, individual detach, then transfer to
+null and last-owner deletion. It runs in the linked player and passes at
+fc6d0dd4ce; map selects transferTrackers from linked:Mechanism.obj. Local COFF
+comparison finds no byte-identical original address for that donor body, so
+no native byte credit is claimed. P3 lifetime/self/cache regressions pass.
+Receipts: p5-job-tracker-verified and p5-job-tracker-verified-p3.
+
+Native single-assembly SimJob wrapper constructor 005e51e0 extends the 36-byte
+base by one assembly pointer at +0x24; both identity slots return that pointer
+through 0074eed0. Donor Mechanism instead stores an assembly set. Next split
+base tracker/list ownership from donor mechanism grouping, preserving this
+linked lifecycle gate and verified native registration/removal contracts.
+Log shared layout changes in TANDEM before implementation. Full native job
+and no-physics state integration, and P5, remain open.
