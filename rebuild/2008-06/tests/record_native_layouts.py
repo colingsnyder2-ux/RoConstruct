@@ -82,6 +82,8 @@ for address, label, length in (
     (0x451590, 'document intermediate-base constructor', 0x70),
     (0x451ac0, 'CRobloxDoc constructor', 0x90),
     (0x446110, 'document member tree constructor (payload type unresolved)', 0xa0),
+    (0x451a60, 'document bind: append verb pointer and map command ID to verb name', 91),
+    (0x451690, 'document binder command routing', 507),
     (0x66f070, 'MovingNoPhysicsBase constructor', 0x180),
     (0x66ed50, 'MovingNoPhysicsBase release', 0x140),
 ):
@@ -89,7 +91,7 @@ for address, label, length in (
     instructions = []
     for item in md.disasm(raw, address):
         instructions.append(dict(address=hex(item.address), instruction=item.mnemonic + ' ' + item.op_str))
-        if item.mnemonic.startswith('ret'):
+        if item.mnemonic.startswith('ret') and address not in (0x451a60, 0x451690):
             break
     functions[hex(address)] = dict(role=label, window_length=length,
                                   window_sha256=hashlib.sha256(raw).hexdigest(), instructions=instructions)
