@@ -1,0 +1,20 @@
+<roblox version="4">
+<Item class="Workspace"><Properties />
+<Item class="Part" referent="RBX1"><Properties>
+<string name="Name">Brick</string>
+<bool name="Anchored">true</bool>
+<CoordinateFrame name="CFrame"><X>137.25</X><Y>20</Y><Z>71.75</Z>
+<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22>
+</CoordinateFrame>
+</Properties></Item>
+<Item class="Part" referent="RBX2"><Properties>
+<string name="Name">Floor</string>
+<bool name="Anchored">true</bool>
+<CoordinateFrame name="CFrame"><X>137.25</X><Y>-5</Y><Z>71.75</Z>
+<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22>
+</CoordinateFrame>
+</Properties></Item>
+<Item class="Script"><Properties><string name="Name">AnchorCycle</string><string name="Source">local w=game.Workspace
+wait(0.1); w.Brick.Anchored=false; w.Marker1.CFrame=CFrame.new(157.25,51,71.75)
+wait(0.15); w.Brick.Anchored=true; w.Marker2.CFrame=CFrame.new(177.25,61,71.75)
+wait(0.15); w.Brick.Anchored=false; w.Marker3.CFrame=CFrame.new(197.25,71,71.75)</string><bool name="Disabled">false</bool></Properties></Item><Item class="Part"><Properties><string name="Name">Marker1</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>157.25</X><Y>50</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item><Item class="Part"><Properties><string name="Name">Marker2</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>177.25</X><Y>60</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item><Item class="Part"><Properties><string name="Name">Marker3</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>197.25</X><Y>70</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item></Item></roblox>
