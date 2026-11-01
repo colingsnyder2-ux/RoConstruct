@@ -1363,3 +1363,21 @@ locked torso and access-violation shutdown twice (0xc0000005), after mesh
 cleanup. See p5-altitude-11f4-initial-contact/; fixture and receipt saved.
 Cause and original behavior are unverified. Keep this failure open alongside
 native scheduler, physics/state parity and later roadmap milestones.
+
+## P5 checkpoint: joint-service startup and contact teardown (109f9894fe)
+
+Original DataModel initializer 0057a9f0 creates JointsService. The rebuilt
+startup omitted it, so AutoDestroy events had no listener. Debugging the
+initial-contact failure showed a freed primitive (freed-heap fill) reached from
+EdgeList::removeEdge during JointStage teardown. Startup now attaches the
+existing JointsService and its AutoJoin/AutoDestroy listeners. The donor
+NonFactoryProduct uses a null class-name template; this non-factory service
+is parented directly and returns the null Name rather than dereferencing it.
+This adapts the original startup behavior, not the original 2008 service ABI.
+
+The previously crashing initial-contact fixture now exits cleanly twice; mesh
+cleanup and snapshots pass. P0, P4 asset cases, timing, floor, force, controller,
+climb, spawn and combined play pass. Original tall/standard walk and moving
+floor bounded comparisons pass at 109f9894fe. Receipts: p5-joints-109f-*.
+Initial-contact joint behavior itself has not been compared against original;
+full scheduler, joint lifecycle, humanoid parity and P5 remain open.
