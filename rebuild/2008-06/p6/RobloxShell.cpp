@@ -25,6 +25,10 @@ static const UINT ID_HELP_OBJECT_BROWSER = 32990;  // CRobloxApp map, handler 00
 static const UINT ID_VIEW_FULLSCREEN = 33012;      // CMainFrame map, handler 00431ce0
 static const UINT ID_INSERT_OBJECT = 32895;
 static const UINT ID_EDIT_DUPLICATE = 32773;
+static const UINT ID_FORMAT_ROTATE = 32835;
+static const UINT ID_FORMAT_TILT = 32836;
+static const UINT ID_EDIT_LOCK = 32784;
+static const UINT ID_EDIT_UNLOCK_ALL = 32785;
 static const UINT ID_VIEW_OUTPUT = 32927;          // CMainFrame map, handler 0042fbb0
 static const UINT ID_VIEW_EXPLORER = 32792;        // CMainFrame map, handler 0042e5e0
 static const UINT ID_TOOLS_EXECUTE_SCRIPT = 33009; // CRobloxApp map, handler 0044a300
@@ -628,6 +632,24 @@ public:
         script.Format("local c = game.Workspace['%s']:Clone() c.Parent = game.Workspace", (LPCSTR)static_cast<CMainFrame*>(AfxGetMainWnd())->SelectedName());
         Edit(script);
     }
+    CString copied; // ponytail: copies by name, so the source must still exist at Paste; no Cut
+    CString Target() { return static_cast<CMainFrame*>(AfxGetMainWnd())->SelectedName(); }
+    void EditTarget(LPCSTR format) {
+        CString script;
+        script.Format(format, (LPCSTR)Target());
+        Edit(script);
+    }
+    afx_msg void OnCopy() { copied = Target(); }
+    afx_msg void OnPaste() {
+        if (copied.IsEmpty()) return;
+        CString script;
+        script.Format("local c = game.Workspace['%s']:Clone() c.Parent = game.Workspace", (LPCSTR)copied);
+        Edit(script);
+    }
+    afx_msg void OnRotate() { EditTarget("local p = game.Workspace['%s'] p.CFrame = p.CFrame * CFrame.fromEulerAnglesXYZ(0, math.pi / 2, 0)"); }
+    afx_msg void OnTilt() { EditTarget("local p = game.Workspace['%s'] p.CFrame = p.CFrame * CFrame.fromEulerAnglesXYZ(math.pi / 2, 0, 0)"); }
+    afx_msg void OnLock() { EditTarget("game.Workspace['%s'].Locked = true"); }
+    afx_msg void OnUnlockAll() { Edit("for _, p in pairs(game.Workspace:GetChildren()) do if p.className == 'Part' then p.Locked = false end end"); }
     afx_msg void OnClear() { static_cast<CMainFrame*>(AfxGetMainWnd())->RemoveSelected(); GetDocument()->SetModifiedFlag(); }
     afx_msg void OnRButtonDown(UINT, CPoint point) { dragFrom = point; SetCapture(); }
     afx_msg void OnRButtonUp(UINT, CPoint) { ReleaseCapture(); }
@@ -663,6 +685,12 @@ BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_COMMAND(ID_EDIT_CLEAR, &CRobloxView::OnClear)
     ON_COMMAND(ID_INSERT_OBJECT, &CRobloxView::OnInsertPart)
     ON_COMMAND(ID_EDIT_DUPLICATE, &CRobloxView::OnDuplicate)
+    ON_COMMAND(ID_EDIT_COPY, &CRobloxView::OnCopy)
+    ON_COMMAND(ID_EDIT_PASTE, &CRobloxView::OnPaste)
+    ON_COMMAND(ID_FORMAT_ROTATE, &CRobloxView::OnRotate)
+    ON_COMMAND(ID_FORMAT_TILT, &CRobloxView::OnTilt)
+    ON_COMMAND(ID_EDIT_LOCK, &CRobloxView::OnLock)
+    ON_COMMAND(ID_EDIT_UNLOCK_ALL, &CRobloxView::OnUnlockAll)
     ON_UPDATE_COMMAND_UI(ID_EDIT_UNDO, &CRobloxView::OnUpdateUndo)
     ON_WM_RBUTTONDOWN()
     ON_WM_RBUTTONUP()
