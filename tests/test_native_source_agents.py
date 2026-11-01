@@ -211,6 +211,7 @@ def test_submission_adapter_uses_current_canonical_method_and_rechecks_before_ex
         SimpleNamespace(tree=tree,overlay=overlay),{'revision':'fresh'},tmp_path/'submission',lambda _:None)
     assert result['state']=='ready' and seen
     assert json.loads(Path(result['proposals']).read_text())[0]['base_revision']=='fresh'
+    assert json.loads(Path(result['proposals']).read_text())[0]['mode']=='native-source-recovery'
 
 
 def test_expired_merge_resumes_saved_proof_after_controller_restart(tmp_path):
@@ -337,6 +338,7 @@ def test_submission_batches_methods_in_one_canonical_file_and_one_preflight(tmp_
     result=recovery.submit_batch(records,None,{'revision':'base'},tmp_path/'batch','server','codex:gpt-6-luna',lambda _:None)
     assert result['job']=='one-job' and len(checks)==1 and len(submissions)==1
     assert len(checks[0]['edits'])==10 and len(checks[0]['witnesses'])==10
+    assert checks[0]['mode']=='native-source-recovery'
     assert submissions[0]['native_sweep']['submit'] and submissions[0]['native_sweep']['apply']
 
 

@@ -483,7 +483,7 @@ def stage_submission(record, context, base, output, log, recheck=True):
         body=candidate[span[0]:span[1]]
         if '::' not in body.split('(',1)[0]:body=method.rsplit('::',1)[0]+'::'+body
         edits = native_methods.canonical_edits(text, body, method)
-        proposal = dict(file=rel, edits=edits, witnesses=[dict(addr=record['task']['addr'])], base_revision=base['revision'])
+        proposal = dict(mode='native-source-recovery', file=rel, edits=edits, witnesses=[dict(addr=record['task']['addr'])], base_revision=base['revision'])
         if recheck:
             proposal = sweep.recheck_proposal(proposal, context, {rel:text}, output, base['revision'], log, recover=True)
         if proposal:
@@ -500,6 +500,7 @@ def submit_batch(records, context, base, output, server, model, log):
     for record in records:
         for proposal in json.loads(Path(record['submission']['proposals']).read_text()):
             row = grouped.setdefault(proposal['file'],dict(proposal,edits=[],witnesses=[]))
+            row.setdefault('mode','native-source-recovery')
             for edit in proposal['edits']:
                 if edit not in row['edits']: row['edits'].append(edit)
             for hit in proposal['witnesses']:
