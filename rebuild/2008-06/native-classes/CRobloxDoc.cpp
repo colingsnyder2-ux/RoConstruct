@@ -13,11 +13,13 @@ IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)
 void reportDocumentCreateException(const std::exception&);
 extern CRobloxDoc* currentDocument;
 void setCurrentDocument(int, CRobloxDoc*);
-// Original save predicates 00495e60 and 00495e70; semantic names/linkage pending.
-bool __cdecl documentSavePredicateA(RBX::DataModel*, bool);
-bool __cdecl documentSavePredicateB(RBX::DataModel*, bool);
+// Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
+namespace RBX { namespace Network {
+class Client { public: static bool clientIsPresent(const Instance*, bool); };
+class Server { public: static bool serverIsPresent(const Instance*, bool); };
+} }
 inline bool canSaveDocument(RBX::DataModel* model) {
-    if (documentSavePredicateA(model, true) && !documentSavePredicateB(model, true)) return false;
+    if (RBX::Network::Client::clientIsPresent(model, true) && !RBX::Network::Server::serverIsPresent(model, true)) return false;
     return true;
 }
 
