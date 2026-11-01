@@ -15,6 +15,6 @@ protected:
 
 public:
     VerbBinder() : Base() {}
-    virtual ~VerbBinder() {}
+    __forceinline virtual ~VerbBinder() {}
     virtual BOOL OnCmdMsg(UINT, int, void*, AFX_CMDHANDLERINFO*);
 };

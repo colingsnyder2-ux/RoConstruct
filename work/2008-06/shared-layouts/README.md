@@ -84,6 +84,58 @@ DWORD is the supported declaration choice; typedef spelling is not recoverable
 from bytes alone. Active client still uses the passing shell; selected-function
 count remains 2,997/14,344. No completed native class swap is claimed.
 
+## Lifecycle dependency checkpoint
+
+Shared StandardVerbs declarations now reuse the recovered native composition;
+its destructor 00450450 matches 998 bytes. Shared v8xml/XmlElement.h reuses the
+matched header unit whose value union includes double. That changes the donor
+layout to the native 40-byte, eight-byte-aligned object; destructor 00413a70
+then matches all 138 bytes. The donor destructor had the same byte length but
+different member offsets, so a size-only check would have missed the mismatch.
+
+Doc OnNewDocument 00452f60 matches 149 bytes, OnCloseDocument 0044f210 matches
+five, GetRuntimeClass 0044f200 matches six and CreateObject 00452f00 matches 89.
+Original EH metadata (FuncInfo 008d9074, handler type 008d9040) proves the new
+document handler catches std::exception by reference (adjectives 8). The new
+body preserves the original error message spelling and clears the modified
+flag only after command/workspace initialization succeeds. The logging helper
+00428850 and initialization 00451b60 remain explicit unresolved link edges.
+
+Doc destructor is still OPEN: a forced-inline shared binder destructor emits
+204 bytes versus the native 198, including an extra binder-vtable store at
+candidate offset 0x95. Default inlining emitted an out-of-line call (182 bytes).
+Ob1 and Oi/Ot profiles retain the extra store; O1 produces 131 bytes. Adding
+novtable to the shared class merely to fix this destructor would also remove
+the independently verified binder constructor's vtable write. Do not weaken
+that constructor gate. Resolve the shared class's code-generation boundary
+before swapping its lifecycle into the client.
+
+The original embedded type library is now read without COM registration:
+
+```
+python rebuild/2008-06/tests/record_native_typelib.py shared-layouts/original-typelib.json
+```
+
+The reader requests the dual vtable interfaces, preserving HRESULT/retval
+parameters that the IDispatch view transforms. It verifies IWorkspace's eight
+methods and IContent::Upload, their actual GUIDs and native x86 slot offsets.
+Host COM pointer-size normalization is explicit. RobloxLib.h provides these
+shared declarations; the pinned compiler verifies four-byte interfaces and
+16-byte VARIANT. This does not implement the COM object.
+
+Original CComObject<CWorkspace> RTTI supplies the missing object's actual base
+order: IDispatchImpl<IWorkspace>, CComObjectRootEx<CComSingleThreadModel>,
+CComCoClass, ISupportErrorInfoImpl, IObjectSafetyRobloxImpl, IObjectWithSiteImpl,
+and Selection/Workspace listeners. The construction body at 0046ab60 initializes
+the data-model shared pointer at 0x24 and another shared pointer at 0x2c.
+The second pointee and callback ownership remain to be identified before its
+shared declaration and Doc::DeleteContents can be completed.
+
+No active ABI swap occurred; runtime gates and selected-function baseline are
+unchanged. Source provenance and rejected destructor profiles are recorded in
+native-classes/source-manifest.json. A concurrent stale verifier overwrite was
+preserved locally, then the stronger size/body/dependency checks were restored.
+
 Next: recover binder command-routing definitions and document lifecycle bodies;
 derive View/Frame constructor member boundaries and complete Humanoid state
 fields. Compile size/offset probes with the pinned original compiler before

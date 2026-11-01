@@ -2,9 +2,34 @@
 #include "v8xml/XmlElement.h"
 #include "v8tree/Verb.h"
 #include "../native-headers/CRobloxDoc.h"
+#include "../native-headers/StandardVerbs.h"
+#include <exception>
+
+IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)
+
+// Original 00428850 logs std::exception::what(); recovery/linking remains open.
+void reportDocumentCreateException(const std::exception&);
 
 // Existing recovered 00451ac0, expressed through the shared native fields.
 CRobloxDoc::CRobloxDoc() : standardVerbs(0), workspace(0) {}
+
+// 00451940: DeleteContents owns the workspace/verb cleanup before destruction.
+CRobloxDoc::~CRobloxDoc() { delete standardVerbs; }
+
+void CRobloxDoc::OnCloseDocument() { CDocument::OnCloseDocument(); }
+
+BOOL CRobloxDoc::OnNewDocument() {
+    if (!CDocument::OnNewDocument()) return FALSE;
+    try {
+        initializeCommands();
+    } catch (std::exception& error) {
+        reportDocumentCreateException(error);
+        AfxMessageBox("An error occured while creating the document", MB_ICONEXCLAMATION, 0);
+        return FALSE;
+    }
+    SetModifiedFlag(FALSE);
+    return TRUE;
+}
 
 inline const RBX::Name& RBX::Verb::getName() const { return name; }
 

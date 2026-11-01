@@ -24,6 +24,7 @@ public:
     virtual ~CRobloxDoc();
     void bindExisting(UINT, RBX::Verb*);
     void bindOwned(UINT, RBX::Verb*);
+    void initializeCommands();
     virtual void SetTitle(LPCTSTR);
     virtual BOOL IsModified();
     virtual void SetModifiedFlag(BOOL = TRUE);

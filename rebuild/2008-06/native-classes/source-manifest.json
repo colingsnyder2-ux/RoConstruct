@@ -1,0 +1,62 @@
+{
+  "scope": "Inactive shared-header/class recovery; no server credit or selected-executable increase claimed.",
+  "existing_source_hashes": {
+    "tools/rbxgs/Client/App/roc_standard_verbs_native_dtor_12e1e07074f347f2.cpp": "171754c09ce81f3fb6d8127347f13dfcb1ca685e29ac4997af88f7a19b194a5c",
+    "tools/rbxgs/Client/App/roc_unit_28e31b0627a2d865.cpp": "ea37b518b70c0aa559cee3b618fb51ac9c752cf249e81d1b14d15ea7d447f729",
+    "src/2008-06/00452f60.cpp": "7598e1fb91338d06c72ee78ada4c457ac1726472a7c8982db671f45f47055233",
+    "tools/rbxgs/Client/App/roc_espeon_documentverbbindernovtable_6a3403b001989ae9.cpp": "6f79583d16063e038b52324808a5bc4f7128dccd13225f543ecd66beae66a8df"
+  },
+  "classes": {
+    "CRobloxDoc": {
+      "size": 152,
+      "exact_bodies": [
+        "00451ac0",
+        "00451a10",
+        "00451a60",
+        "00452f60",
+        "0044f210",
+        "0044f200",
+        "00452f00"
+      ],
+      "open": [
+        "00451940: 204-byte candidate vs 198-byte original, extra binder vptr write",
+        "00451690: binder command routing",
+        "004513c0: DeleteContents and COM workspace lifecycle",
+        "00451b60: command/workspace initialization and remaining virtuals"
+      ],
+      "unlinked_helper": {
+        "reportDocumentCreateException": "00428850"
+      }
+    },
+    "StandardVerbs": {
+      "size": 1796,
+      "exact_bodies": [
+        "00450450"
+      ]
+    },
+    "XmlElement": {
+      "size": 40,
+      "exact_bodies": [
+        "00413a70"
+      ],
+      "layout_change_from_donor": "double union member establishes native 8-byte value alignment"
+    }
+  },
+  "rejected_destructor_profiles": [
+    {
+      "profile": "O2 Ob1 with forced binder dtor",
+      "size": 204,
+      "exact": false
+    },
+    {
+      "profile": "O2 Oi Ot with forced binder dtor",
+      "size": 204,
+      "exact": false
+    },
+    {
+      "profile": "O1 with forced binder dtor",
+      "size": 131,
+      "exact": false
+    }
+  ]
+}

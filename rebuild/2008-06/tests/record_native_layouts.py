@@ -48,7 +48,9 @@ names = list(re.finditer(rb'\.\?AV[^\x00]{1,240}@@\x00', data))
 classes = {}
 for match in names:
     name = match.group()[:-1].decode('ascii', errors='replace')
-    if not (name in ('.?AVCRobloxDoc@@', '.?AVCRobloxView@@', '.?AVCMainFrame@@', '.?AVCRobloxApp@@')
+    if not (name in ('.?AVCRobloxDoc@@', '.?AVCRobloxView@@', '.?AVCMainFrame@@', '.?AVCRobloxApp@@',
+                     '.?AVCWorkspace@@', '.?AVCRobloxWnd@@', '.?AVCReflectorWnd@@')
+            or 'CComObject@VCWorkspace@@' in name
             or 'VerbBinder@VCRoblox' in name
             or re.fullmatch(r'\.\?AV(?:HumanoidState|MovingNoPhysicsBase|RunningNoPhysics|Freefall|Landed|Jumping)@HUMAN@RBX@@', name)):
         continue
@@ -87,6 +89,7 @@ for address, label, length in (
     (0x451940, 'document destruction: StandardVerbs, vector, owned XML, binder, CDocument', 198),
     (0x455820, 'document run: create and retain XML snapshot before running', 504),
     (0x455580, 'document stop: load retained XML then clear snapshot ownership', 669),
+    (0x452f60, 'document OnNewDocument including std::exception reference handler', 149),
     (0x66f070, 'MovingNoPhysicsBase constructor', 0x180),
     (0x66ed50, 'MovingNoPhysicsBase release', 0x140),
 ):
@@ -94,7 +97,7 @@ for address, label, length in (
     instructions = []
     for item in md.disasm(raw, address):
         instructions.append(dict(address=hex(item.address), instruction=item.mnemonic + ' ' + item.op_str))
-        if item.mnemonic.startswith('ret') and address not in (0x451a60, 0x451690, 0x455820, 0x455580):
+        if item.mnemonic.startswith('ret') and address not in (0x451a60, 0x451690, 0x455820, 0x455580, 0x452f60):
             break
     functions[hex(address)] = dict(role=label, window_length=length,
                                   window_sha256=hashlib.sha256(raw).hexdigest(), instructions=instructions)
@@ -111,12 +114,30 @@ for name in ('CRobloxDoc', 'CRobloxView', 'CMainFrame'):
     assert size == entry['size'] and factory == int(entry['create'], 16)
     assert getter == int(entry['baseGetter'], 16)
     runtime_sizes[name] = dict(entry, schema=schema, verified_against_original=True)
+
+# The registration handler installed by OnNewDocument identifies its catch type.
+handler = 0x7c1e90
+offset = handler - base
+assert data[offset] == 0xb8 and data[offset + 5] == 0xe9
+info = words(handler + 1, 1)[0]
+magic, states, unwind, count, tries = words(info, 5)
+assert magic == 0x19930522 and count == 1
+low, high, catch_high, catches, entries = words(tries, 5)
+assert catches == 1
+flags, descriptor, catch_offset, catch_body = words(entries, 4)
+assert flags == 8 and type_name(descriptor) == '.?AVexception@std@@'
+exception = dict(handler=hex(handler), function_info=hex(info), magic=hex(magic),
+                 states=states, unwind_map=hex(unwind), try_map=hex(tries),
+                 try_low=low, try_high=high, catch_high=catch_high,
+                 handler_type=hex(entries), adjectives=flags, type_descriptor=hex(descriptor),
+                 type=type_name(descriptor), catch_object_displacement=struct.unpack('<i', struct.pack('<I', catch_offset))[0],
+                 catch_body=hex(catch_body))
 receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                original_sha256=hashlib.sha256(EXE.read_bytes()).hexdigest(),
                observer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                runtime_classes_sha256=hashlib.sha256(runtime_path.read_bytes()).hexdigest(),
                runtime_sizes=runtime_sizes,
-               classes=classes, functions=functions,
+               classes=classes, functions=functions, document_new_exception=exception,
                scope='Original RTTI supplies inheritance and PMD offsets. Runtime metadata supplies complete MFC class sizes. Constructor instructions supply accessed offsets; unresolved member types remain open. Mined codegen analog declarations are not ABI proof.')
 for required in ('.?AVCRobloxDoc@@', '.?AVCRobloxView@@', '.?AVCMainFrame@@',
                  '.?AVHumanoidState@HUMAN@RBX@@', '.?AVMovingNoPhysicsBase@HUMAN@RBX@@'):
