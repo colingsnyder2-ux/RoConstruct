@@ -31,6 +31,7 @@ extern "C" void SetPartYaw(float);
 extern "C" int GetContactState(float*,float*,int*);
 extern "C" int ExecutePlayerScript(const char*);
 extern "C" int ConfigureContentRoot(const char*);
+extern "C" int CountHumanoids();
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -714,7 +715,7 @@ int main(int argc, char** argv)
     if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
     if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
-    if(loadOnly){std::fprintf(stderr,"load-only: closing\n");std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
+    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
 
     Ogre::Root* root = new Ogre::Root("", "", "player.log");
     if (!root) { std::printf("root failed\n"); ClosePlace(); return 2; }

@@ -1,6 +1,7 @@
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"
+#include "humanoid/Humanoid.h"
 #include "v8xml/SerializerV2.h"
 #include "script/ScriptContext.h"
 #include "security/SecurityContext.h"
@@ -62,6 +63,23 @@ extern "C" int LoadPlace(const char* text)
 RBX::DataModel* EngineDataModel()
 {
     return g_dataModel.get();
+}
+
+extern "C" int CountHumanoids()
+{
+    if(!g_dataModel)return 0;
+    RBX::DataModel::Lock lock(g_dataModel);
+    std::vector<RBX::Instance*> pending(1,g_dataModel->getWorkspace());
+    int count=0;
+    while(!pending.empty()){
+        RBX::Instance* item=pending.back();pending.pop_back();
+        if(dynamic_cast<RBX::Humanoid*>(item))++count;
+        if(item->getChildren()){
+            boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > > children=item->getChildren().read();
+            for(size_t i=0;i<children->size();++i)pending.push_back((*children)[i].get());
+        }
+    }
+    return count;
 }
 
 extern "C" void GetPartPosition(float* x, float* y, float* z)
