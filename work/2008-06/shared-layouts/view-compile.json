@@ -106,7 +106,34 @@
    "411b40 and 576f00 DataModel::Lock bodies",
    "\"Help\" verb and sibling constructors after 45a6b9",
    "remainder of OnInitialUpdate after 45a6b9 (not yet read)"
-  ]
+  ],
+  "size": "0x45a4a0 to 0x45ac08, 1897 bytes",
+  "verbs_created": {
+   "ToggleToolbox": "458ec0, EXACT, 0x20 bytes, stored at View+0x1e0",
+   "Help": "inline in OnInitialUpdate: Verb ctor 5833e0, then vtable 00819140 and view pointer at +0xc, 0x10 bytes",
+   "ToggleFullScreen": "inline: Verb ctor then vtable 00819114",
+   "LockPlayMode": "inline: Verb ctor then vtable 008190ec",
+   "camera and selection verbs": [
+    "CameraPanLeft",
+    "CameraPanRight",
+    "CameraTiltUp",
+    "CameraTiltDown",
+    "CameraZoomIn",
+    "CameraZoomOut",
+    "CameraCenter",
+    "CameraZoomExtents",
+    "CameraModelView",
+    "FixedCamera",
+    "AttachCamera",
+    "TrackCamera",
+    "FollowCamera",
+    "WatchCamera",
+    "SelectionRotate",
+    "SelectionTilt"
+   ],
+   "note": "Camera verbs look like donor RBX::Camera*Command types (mined unit label for 5833e0 is CameraZoomExtentsCommand). Their constructors may already exist in mined or donor code."
+  },
+  "plan": "Write OnInitialUpdate in one source against the shared headers with the Help, ToggleFullScreen and LockPlayMode verbs as inline derived classes, then match 1897 bytes. It is a single large function, not twenty separate callees."
  },
  "owned_slot_type_hint": "Verb-derived objects created in OnInitialUpdate; replace OwnedPolymorphic once their class is recovered"
 }
