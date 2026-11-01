@@ -2133,3 +2133,6 @@ Native DataModel +0x20c/+0x210 is shared_ptr<RunService>: initialization0057a9f0
 
 
 Native DataModel shared owners resolved: +0x1fc LocalBackpack and +0x214 StarterPackService. Original initialization calls getters00578930/004b3960 and stores returned shared owners; their factories invoke constructors005fceb0/005d0fc0, whose vtable RTTI identifies exact pointees. All six consecutive owner types now evidenced in datamodel-members.json at dfddcb3f5f. Remaining non-owner member types and method ABI still open; no active swap.
+
+
+Native DataModel storage candidate at 3aefaca713: full0x264 size, six key member offsets, Lock size12 and workspace accessor0x204 pass MSVC21022 probe. Fields combine original constructor/RTTI/owner evidence with existing recovered0057a1b0 declaration; virtual methods, construction, ownership and full ABI remain open. Native Verb split and ServiceClient declaration remove prior shared-header collisions; Doc probe passes nine body checks, base probe matches four RTTI offsets and VerbContainer constructor40 bytes. Doc destructor still OPEN204/198. Receipts datamodel-compile.json, datamodel-bases.json and document-compile.json pin same source revision. No active class swap; merged exe hash unchanged, P5/P6 scoped baseline PASS and selected code2997/14344 unchanged.
