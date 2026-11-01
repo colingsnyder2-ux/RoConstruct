@@ -16,7 +16,7 @@ import threading
 import time
 import uuid
 
-from roc import agent, integration, libs, match, native_sweep as sweep, providers, rebuild, worker
+from roc import agent, integration, libs, match, native_sweep as sweep, providers, rebuild, worker, native_methods
 
 ROOT = Path(__file__).resolve().parents[1]
 NATIVE = Path('rebuild/2008-06')
@@ -30,7 +30,7 @@ evidence-backed hypothesis, edit C++, then run the supplied check command. Itera
 No setup, downloads, full player rebuilds, commits, uploads, network posts or subagents. The controller
 handles submission and merge-back. Never modify files outside this private task directory.
 Missing declaration/layout? Record blocker in blocker.txt; owner recovery is required. Stop after three
-distinct losing hypotheses or the supplied check/time budget. A local match grants no server credit.
+distinct losing hypotheses or the supplied check/time budget. A local match grants no server credit. Masked relocation bytes do not prove callees: retain genuine imported/native call semantics; never replace a readonly getter with a mutator just to match instructions.
 Finish with evidence, checks and remaining blockers. The selected executable must remain unchanged.
 """
 
@@ -64,8 +64,8 @@ def copy_sources(source, destination):
 
 
 def method_change(before, after, method, allow_add=False):
-    spans = sweep.methods(after)
-    if allow_add and method not in sweep.methods(before):
+    spans = native_methods.methods(after)
+    if allow_add and method not in native_methods.methods(before):
         if not after.startswith(before):
             raise ValueError('New method must append to unchanged original source')
         added = after[len(before):]
@@ -76,8 +76,7 @@ def method_change(before, after, method, allow_add=False):
         return [['',added]]
     if method not in spans:
         raise ValueError('Assigned method missing or ambiguous')
-    start, end = spans[method]
-    edits = sweep.method_edits(before, after[start:end], method)
+    edits = native_methods.body_edits(before,after,method)
     if sweep.apply_edits(before, edits) != after:
         raise ValueError('Changes outside the assigned method body')
     if before == after:
@@ -108,7 +107,7 @@ class Claims:
         with self.connect() as db:
             db.execute('BEGIN IMMEDIATE')
             previous = db.execute('SELECT signature,expires,state,record FROM tasks WHERE key=?', (key,)).fetchone()
-            if previous and (previous[2] in ('recovered','merging','draft','submitted') or previous[1] > time.time() or previous[0] == signature and previous[2] not in ('running', 'cancelled')):
+            if previous and (previous[2] in ('recovered','merging','draft','submitted','remote-submitted') or previous[1] > time.time() or previous[0] == signature and previous[2] not in ('running', 'cancelled')):
                 return None
             if previous and previous[2] in ('running','cancelled'):
                 saved = json.loads(previous[3])
@@ -135,6 +134,10 @@ class Claims:
     def submitted(self):
         with self.connect() as db:
             return [(k,o,json.loads(r)) for k,o,r in db.execute("SELECT key,owner,record FROM tasks WHERE state='submitted'")]
+
+    def remote_submitted(self):
+        with self.connect() as db:
+            return [(k,o,json.loads(r)) for k,o,r in db.execute("SELECT key,owner,record FROM tasks WHERE state='remote-submitted'")]
 
     def pending(self, include_drafts=False, input_signature=None):
         with self.connect() as db:
@@ -185,7 +188,7 @@ def merge(root, snapshot, rel, original, candidate, method, prove, receipt, allo
         old, new = old.replace('\n', '\r\n'), new.replace('\n', '\r\n')
     adding = allow_add and not old
     already = new in text and (not old or old not in text)
-    if adding and not already and method in sweep.methods(text):
+    if adding and not already and method in native_methods.methods(text):
         raise ValueError('Conflict: another agent added the assigned method')
     if not adding and not already and text.count(old) != 1:
         raise ValueError('Conflict: another agent changed the assigned method')
@@ -249,7 +252,7 @@ def nominations(root, texts, names):
                         known.setdefault(method, set()).add(a.value)
     result = []
     for rel, text in texts.items():
-        for method, (start, end) in sweep.methods(text).items():
+        for method, (start, end) in native_methods.methods(text).items():
             addresses = set(known.get(method, ())) | set(known.get(method.split('::')[-1], ()))
             prefix = text[max(0, start-240):start]
             annotation = re.search(r'//\s*(00[4-9a-f][0-9a-f]{5})[^\n]*\n\s*$', prefix)
@@ -464,7 +467,7 @@ def stage_submission(record, context, base, output, log, recheck=True):
     """Translate an existing complete method only; canonical preflight rechecks its ABI/context."""
     candidate = Path(record['candidate']).read_text(encoding='utf-8')
     method = record['task']['method']
-    span = sweep.methods(candidate)[method]
+    span = native_methods.methods(candidate)[method]
     matches = []
     for path in context.tree.glob('App/*/*.cpp'):
         rel = path.relative_to(context.tree).as_posix()
@@ -476,7 +479,9 @@ def stage_submission(record, context, base, output, log, recheck=True):
         return dict(state='pending-mapping', reason='No unique accepted-module method; native source retained')
     rel, text = matches[0]
     try:
-        edits = sweep.method_edits(text, candidate[span[0]:span[1]], method)
+        body=candidate[span[0]:span[1]]
+        if '::' not in body.split('(',1)[0]:body=method.rsplit('::',1)[0]+'::'+body
+        edits = sweep.method_edits(text, body, method)
         proposal = dict(file=rel, edits=edits, witnesses=[dict(addr=record['task']['addr'])], base_revision=base['revision'])
         if recheck:
             proposal = sweep.recheck_proposal(proposal, context, {rel:text}, output, base['revision'], log, recover=True)
@@ -522,13 +527,55 @@ def run(config, control, emit):
     log('Native recovery proofs: '+str(output))
     api = worker.Api(config['server'], integration.native_token() or worker.load_settings().get('token'))
     base = api.call('/v1/integration/base')
+    shared_root=root
+    remote=None
+    published=None
+    if base.get('features',{}).get('native_recovery_collaboration'):
+        from roc.native_collaboration import Remote,seed_missing
+        remote=Remote(config['server'],config['user'],api.token)
+        # Server-owned inputs are private. Existing local editors' files are never refreshed wholesale.
+        published=remote.snapshot(output/'server-sources')
+        root=Path(published['workspace'])
+        seed_missing(shared_root,published['files'])
+        log('Cross-PC recovery: %d tasks across %d classes; server leases, owner-only layouts' % (len(published['tasks']),len(published['classes'])))
+        log('Published classes: '+', '.join(published['classes'][:30]))
+    else:
+        log('Server lacks cross-PC recovery leases; this pass is coordinated on this PC only')
     context = sweep.native_context({}, api)
     matcher = sweep.Matcher(set(match._functions('2008-06')))
     slots = sweep.resolve_compile_workers(config['native_compile_workers'], control.workers)
     broker = ProbeServer(slots, lambda: control.stopping)
-    totals = dict(recovered=0, merged=0, conflicts=0, submitted=0, accepted=0, pending=0, attempted=0, already_exact=0, baseline_blocked=0)
+    totals = dict(recovered=0, merged=0, conflicts=0, submitted=0, accepted=0, pending=0, attempted=0, already_exact=0, baseline_blocked=0, host_merged=0, remote_submitted=0)
     tasks = []
     try:
+        if remote:
+            canonical_ready={}
+            for key,owner,record in claims.remote_submitted():
+                state=remote.status(record['collaboration_submission']['job'])
+                record['host_receipt']=state
+                if state['state'] in ('merged','already-exact','retained'):
+                    if state['state']=='merged' and config['native_agent_submit']:
+                        try:
+                            record['submission']=stage_submission(record,context,base,output/'canonical'/owner,log,recheck=False)
+                            if record['submission']['state']=='mapped':
+                                canonical_ready.setdefault(record['model'],[]).append((key,owner,record))
+                                continue
+                        except (ValueError,OSError,worker.ApiFailure) as error:
+                            record['canonical_retry']=str(error)
+                            claims.update(key,owner,'remote-submitted',record)
+                            continue
+                    claims.update(key,owner,'host-'+state['state'],record)
+                    totals['host_merged']+=state['state']=='merged'
+                    log('Host recovery '+record['task']['method']+': '+state['state']+'; integration credits remain receipt-only')
+            for model,group in canonical_ready.items():
+                try:
+                    result=submit_batch([r for _,_,r in group],context,base,output/'batches'/uuid.uuid4().hex,config['server'],model,log)
+                    totals['submitted']+=bool(result.get('job'))
+                    for key,owner,record in group:
+                        record['submission']=result
+                        claims.update(key,owner,'submitted' if result.get('job') else 'host-merged',record)
+                except (ValueError,OSError,worker.ApiFailure) as error:
+                    log('Canonical submissions retained for next pass: '+str(error))
         server_jobs = {}
         for key, owner, record in claims.submitted():
             identifier = record['submission']['job']
@@ -548,7 +595,11 @@ def run(config, control, emit):
             maintaining_stop = threading.Event()
             def maintain():
                 while not maintaining_stop.wait(20):
-                    for key,owner,_ in rows: claims.refresh(key,owner)
+                    for key,owner,record in rows:
+                        claims.refresh(key,owner)
+                        if remote and record.get('remote_lease'):
+                            try:remote.renew(record['remote_lease'])
+                            except (worker.ApiFailure,OSError):pass
             maintaining = threading.Thread(target=maintain,daemon=True)
             maintaining.start()
             ready = {}
@@ -561,9 +612,30 @@ def run(config, control, emit):
                         task = record['task']
                         candidate = Path(record['candidate']).read_text(encoding='utf-8')
                         proof = lambda snapshot, rel: compile_probe(snapshot, rel, context, matcher, {task['addr']}, task['method'], record['baseline'], translation_unit=task.get('translation_unit'))
-                        result = merge(root, output/'merge'/uuid.uuid4().hex, task['file'], record['original'], candidate,
+                        if remote and record.get('remote_lease') and config['native_agent_submit']:
+                            try:
+                                remote.renew(record['remote_lease'])
+                            except (worker.ApiFailure,OSError,ValueError):
+                                renewed=remote.claim(task)
+                                if not renewed.get('claimed'):raise ValueError('Server method lease busy; candidate retained')
+                                record['remote_lease']=renewed
+                            try:
+                                result=merge(shared_root,output/'merge'/uuid.uuid4().hex,task['file'],record['original'],candidate,
+                                    task['method'],proof,output/'receipts'/(owner+'.json'),allow_add=task.get('add_method',False))
+                                record['merge']=result
+                                totals['merged']+=result['state']=='merged'
+                            except (ValueError,OSError) as error:
+                                record['local_merge_blocker']=str(error)
+                                log('Local edit/header conflict retained; host will recheck independent candidate: '+str(error))
+                            record['collaboration_submission']=remote.submit(record['remote_lease'],record)
+                            claims.update(key,owner,'remote-submitted',record)
+                            totals['remote_submitted']+=1
+                            continue
+                        result = merge(shared_root, output/'merge'/uuid.uuid4().hex, task['file'], record['original'], candidate,
                                        task['method'], proof, output/'receipts'/(owner+'.json'), allow_add=task.get('add_method',False))
                         record.update(merge=result)
+                        if remote and record.get('remote_lease'):
+                            remote.release(record['remote_lease'])
                         totals['merged'] += result['state'] == 'merged'
                         record['submission'] = stage_submission(record,context,base,output/'submissions'/owner,log,recheck=False) if config['native_agent_submit'] else dict(state='pending-submission',reason='Local-only recovery; draft retained')
                         if record['submission']['state'] in ('mapped','ready'):
@@ -609,7 +681,10 @@ def run(config, control, emit):
             return totals
         texts = {p.relative_to(snapshot).as_posix():p.read_text(encoding='utf-8') for scope in SCOPES
                  for p in (snapshot/NATIVE/scope).rglob('*.cpp')}
-        available = nominations(root, texts, context.names)
+        available = [t for t in published['tasks'] if t.get('available')] if published else nominations(root, texts, context.names)
+        if published:
+            for task in available:
+                if task['file'] not in texts:texts[task['file']]=native_path(snapshot,task['file']).read_text(encoding='utf-8')
         if config.get('native_agent_tasks'):
             manifest = Path(config['native_agent_tasks'])
             if not manifest.is_absolute(): manifest = root/manifest
@@ -619,17 +694,29 @@ def run(config, control, emit):
             for task in available:
                 path = native_path(snapshot, task['file'])
                 text = path.read_text(encoding='utf-8')
-                if (task.get('method') not in sweep.methods(text) and not task.get('add_method')) or not re.fullmatch('[0-9a-f]{8}', task.get('addr','')):
+                if (task.get('method') not in native_methods.methods(text) and not task.get('add_method')) or not re.fullmatch('[0-9a-f]{8}', task.get('addr','')):
                     raise ValueError('Native task needs an existing unambiguous method and original address')
                 task['file'] = path.relative_to(snapshot).as_posix()
                 texts[task['file']] = text
+                if published:
+                    hosted=next((t for t in published['tasks'] if all(t[k]==task[k] for k in ('file','method','addr'))),None)
+                    if hosted is None:raise ValueError('Explicit recovery target must be published by the host before collaborative mining')
+                    task.update(hosted)
         headers = {k:v for k,v in before.items() if '/native-headers/' in k}
         library_inputs = sorted((p.name,str(p.resolve())) for p in libs.LIBS.iterdir() if p.is_dir()) if libs.LIBS.is_dir() else []
         for task in available:
-            key = integration.digest([os.path.normcase(str(native_path(root,task['file']))), task['method']])
+            key = integration.digest([os.path.normcase(str(native_path(shared_root,task['file']))), task['method']])
             signature = integration.digest([before[task['file']], headers, config['model'], config['native_agent_checks'], config['native_agent_minutes'],library_inputs,digest(Path(__file__).read_bytes())])
             owner = claims.take(key, signature, dict(task=task))
             if owner:
+                if remote:
+                    lease=remote.claim(task)
+                    if not lease.get('claimed'):
+                        claims.update(key,owner,'cancelled',dict(task=task))
+                        continue
+                    record=claims.record(key,owner)
+                    record['remote_lease']=lease
+                    claims.update(key,owner,'running',record)
                 tasks.append((key, owner, task))
             if len(tasks) >= min(control.workers, config['native_batch_files']):
                 break
@@ -656,6 +743,19 @@ def run(config, control, emit):
             folder = output/'agents'/owner
             record['workspace'] = str(folder)
             started = time.monotonic()
+            lease_stop=threading.Event()
+            lease_lost=threading.Event()
+            def heartbeat():
+                while not lease_stop.wait(20):
+                    claims.refresh(key,owner)
+                    if remote:
+                        try:remote.renew(record['remote_lease'])
+                        except (worker.ApiFailure,OSError,ValueError) as error:
+                            record['remote_lease_error']=str(error)
+                            lease_lost.set()
+                            return
+            heart=threading.Thread(target=heartbeat,daemon=True)
+            heart.start()
             try:
                 if control.before_lease(slot) is None:
                     claims.update(key, owner, 'cancelled', record)
@@ -663,7 +763,7 @@ def run(config, control, emit):
                 copy_sources(snapshot, folder)
                 original_inputs = inventory(folder)
                 baseline = baseline_for(task)
-                if control.stopping:
+                if control.stopping or lease_lost.is_set():
                     claims.update(key,owner,'cancelled',record)
                     return
                 if not baseline['ok']:
@@ -672,7 +772,11 @@ def run(config, control, emit):
                 if baseline['target_exact']:
                     totals['already_exact'] += 1
                     emit('log',slot=slot,message=task['method']+': baseline already code/data exact locally; AI skipped')
-                    claims.update(key, owner, 'already-exact', record)
+                    if remote:
+                        record['collaboration_submission']=remote.submit(record['remote_lease'],record,check_only=True)
+                        claims.update(key,owner,'remote-submitted',record)
+                        totals['remote_submitted']+=1
+                    else:claims.update(key, owner, 'already-exact', record)
                     return
                 record['baseline'] = [h['addr'] for h in baseline['hits']]
                 saved = record.get('resume')
@@ -708,9 +812,9 @@ def run(config, control, emit):
                     evidence = dict(addr=task['addr'],target_asm=match.disasm(code,int(task['addr'],16)),
                                     size=len(code),target_relocations=relocations,mined_source_origin='unavailable; recover from original assembly and genuine declarations')
                 current_source = native_path(folder,task['file']).read_text(encoding='utf-8')
-                span = sweep.methods(current_source).get(task['method'],(len(current_source),len(current_source)))
+                span = native_methods.methods(current_source).get(task['method'],(len(current_source),len(current_source)))
                 evidence.update(task, source_excerpt=current_source[span[0]:span[1]], resumed_private_body=record.get('resumed_private_body',False), check_command='python check.py', original_source_root=str(root),
-                                genuine_include_paths=list(map(str, context.includes)), minutes=config['native_agent_minutes'], checks=config['native_agent_checks'])
+                                genuine_include_paths=list(map(str, [libs.LIBS/'mfc-9.0-rtm/atlmfc/include',libs.LIBS/'xtp-11.2.2/Source',*context.includes])), minutes=config['native_agent_minutes'], checks=config['native_agent_checks'])
                 evidence['baseline'] = {k:baseline[k] for k in ('ok','target_exact','diff','data_mismatches') if k in baseline}
                 evidence['assigned_header_files'] = [str(p.relative_to(folder)) for p in (folder/NATIVE/'native-headers').rglob(task['method'].split('::')[0]+'.h')]
                 integration.atomic_json(folder/'task.json', evidence)
@@ -722,15 +826,9 @@ def run(config, control, emit):
                     claims.update(key,owner,'cancelled',record)
                     return
                 reserved = control.budget.reserve(len(json.dumps(evidence).encode()) + (2048 if config['max_tokens']=='auto' else config['max_tokens']))
-                lease_stop = threading.Event()
-                def heartbeat():
-                    while not lease_stop.wait(20):
-                        claims.refresh(key, owner)
-                heart = threading.Thread(target=heartbeat, daemon=True)
-                heart.start()
                 usage = dict(input_tokens=0, output_tokens=0, usage_reported=False)
                 try:
-                    usage = run_codex(folder, config['model'], config['native_agent_minutes']*60, lambda: control.stopping,
+                    usage = run_codex(folder, config['model'], config['native_agent_minutes']*60, lambda: control.stopping or lease_lost.is_set(),
                                       lambda msg: emit('native_progress', slot=slot, file=task['file'], message=msg))
                 finally:
                     lease_stop.set()
@@ -766,6 +864,11 @@ def run(config, control, emit):
                 emit('native_result', slot=slot, file=task['file'], local_exact=0, seconds=round(time.monotonic()-started,1),
                      error=str(error),error_summary=diagnostic[0] if diagnostic else str(error).split('\n')[0])
             finally:
+                lease_stop.set()
+                heart.join()
+                if remote and record.get('remote_lease') and not record.get('candidate') and not record.get('collaboration_submission'):
+                    try:remote.release(record['remote_lease'])
+                    except (worker.ApiFailure,OSError,ValueError):pass
                 integration.atomic_json(ticket, record)
                 totals['attempted'] += 1
         with ThreadPoolExecutor(max_workers=providers.cloud_slots(config['model'], control.workers, config['cloud_concurrency'])) as pool:
@@ -777,4 +880,5 @@ def run(config, control, emit):
         return totals
     finally:
         broker.close()
+        if remote:remote.close()
         api.close()

@@ -1,0 +1,266 @@
+"""Host-owned recovery catalog, fenced cross-PC leases and independent native-body rechecks."""
+import json
+import re
+import threading
+import time
+import uuid
+from pathlib import Path
+
+from roc import integration, native_recovery as recovery, native_sweep as sweep, worker, native_methods
+
+TTL = 120
+SCHEMA = '''
+CREATE TABLE IF NOT EXISTS native_method_leases(
+ target TEXT PRIMARY KEY,id TEXT UNIQUE,user TEXT,worker TEXT,expires REAL,state TEXT,packet TEXT);
+CREATE TABLE IF NOT EXISTS native_recovery_uploads(
+ id TEXT PRIMARY KEY,lease TEXT UNIQUE,user TEXT,model TEXT,state TEXT,record TEXT,created REAL,receipt TEXT);
+CREATE TABLE IF NOT EXISTS native_recovery_verified(target TEXT PRIMARY KEY,signature TEXT);
+'''
+
+
+class Host:
+    def __init__(self, promotions, start=False, server=None):
+        self.server=server or worker.load_settings().get('server','http://127.0.0.1:8765')
+        self.promotions=promotions
+        self.root=promotions.root
+        self.store=promotions.store
+        self.directory=self.root/'work/native-recovery-server'
+        self.catalog_lock=threading.Lock()
+        self.cached=None
+        self.cache_key=None
+        self.wake=threading.Event()
+        self.stop=threading.Event()
+        with self.store.lock,self.store.db as db:
+            db.executescript(SCHEMA)
+            db.execute("UPDATE native_recovery_uploads SET state='queued' WHERE state='verifying'")
+        if start:
+            threading.Thread(target=self.loop,daemon=True).start()
+
+    def catalog(self):
+        with self.catalog_lock:
+            return self._catalog()
+
+    def _catalog(self):
+        manifest=self.root/'work/native-recovery/tasks.json'
+        inputs={str(p):[p.stat().st_size,p.stat().st_mtime_ns] for scope in recovery.SCOPES
+                for p in (self.root/recovery.NATIVE/scope).rglob('*') if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.inl')}
+        for p in [* (self.root/recovery.NATIVE/'tests').glob('Native*.cpp'),
+                  * (self.root/recovery.NATIVE/'tests').glob('record_native_*.py'),manifest,
+                  self.root/recovery.NATIVE/'out/native-names.json',self.root/'work/2008-06/functions.jsonl']:
+            if p.exists():inputs[str(p)]=[p.stat().st_size,p.stat().st_mtime_ns]
+        key=integration.digest(inputs)
+        if key!=self.cache_key:
+            files={Path(p).relative_to(self.root).as_posix():Path(p).read_text(encoding='utf-8-sig')
+                   for p in inputs if Path(p).suffix in ('.cpp','.h','.hpp','.inl')}
+            names_path=self.root/recovery.NATIVE/'out/native-names.json'
+            names=json.loads(names_path.read_text()) if names_path.exists() else {}
+            texts={p:t for p,t in files.items() if '/tests/' not in p}
+            tasks=recovery.nominations(self.root,texts,names)
+            if manifest.exists():
+                extra=json.loads(manifest.read_text(encoding='utf-8'))
+                if not isinstance(extra,list):raise ValueError('Host task manifest must be a list')
+                tasks+=extra
+            headers={p:recovery.digest(t.encode()) for p,t in files.items() if '/native-headers/' in p}
+            analysis=self.root/'work/2008-06/functions.jsonl'
+            if analysis.exists():
+                from roc import match
+                functions=match._functions_at(analysis,analysis.stat().st_mtime_ns,analysis.stat().st_size)
+                tasks=[t for t in tasks if t.get('addr') in functions]
+            seen=set();clean=[]
+            for task in tasks:
+                task=dict(task)
+                path=recovery.native_path(self.root,task['file'])
+                text=files.get(task['file'])
+                method=task.get('method')
+                if text is None or not re.fullmatch('[0-9a-f]{8}',task.get('addr','')):continue
+                if method not in native_methods.methods(text) and not task.get('add_method'):continue
+                if path.suffix!='.cpp' and not task.get('translation_unit'):
+                    unit=None if method not in sweep.methods(text) else next((p for p,t in files.items() if p.endswith('.cpp') and re.search(r'#include\s*[<"][^>"\n]*'+re.escape(path.name)+r'[>"]',t)),None)
+                    if not unit:
+                        symbol=names.get(task['addr'],{}).get('symbol','')
+                        parts=symbol.split('@')
+                        if len(parts)<4 or not parts[0].startswith('?') or parts[1]!=method.split('::')[0]:continue
+                        scopes=[]
+                        for name in parts[1:]:
+                            if not name:break
+                            if not re.fullmatch(r'\w+',name):break
+                            scopes.append(name)
+                        qualified='::'.join(reversed(scopes))
+                        header=Path(task['file']).relative_to(recovery.NATIVE/'native-headers').as_posix() if '/native-headers/' in task['file'] else path.name
+                        unit=(recovery.NATIVE/'tests'/('NativeRecovery'+integration.digest([task['file'],method])[:16]+'.cpp')).as_posix()
+                        files[unit]='#include "'+header+'"\n' + \
+                            'template<class T> struct NativeRecoverySink { static T value; };\n' + \
+                            'template<class T> T NativeRecoverySink<T>::value;\n' + \
+                            'template<class T> void nativeRecoveryKeep(T value){NativeRecoverySink<T>::value=value;}\n' + \
+                            'void nativeRecoveryProbe(){nativeRecoveryKeep(&'+qualified+'::'+method.split('::')[-1]+');}\n'
+                    task['translation_unit']=unit
+                if task.get('translation_unit') and task['translation_unit'] not in files:continue
+                target=integration.digest([task['file'].casefold(),method,task['addr']])
+                if target in seen:continue
+                seen.add(target)
+                task.update(target=target,signature=integration.digest([text,headers,files.get(task.get('translation_unit'))]),scope='method-body-only',class_name=method.rsplit('::',1)[0])
+                clean.append(task)
+            # Prefer bodies that can use the existing independent integration route.
+            mappings={}
+            tree=self.root/'tools/rbxgs/Client'
+            for source in tree.glob('App/*/*.cpp'):
+                for method in sweep.methods(source.read_text(errors='replace')):
+                    mappings.setdefault(method,[]).append(source.relative_to(tree).as_posix())
+            for task in clean:
+                paths=mappings.get(task['method'],[])
+                task['integration_mapping']=paths[0] if len(paths)==1 else None
+            clean.sort(key=lambda t:(not bool(t['integration_mapping']),len(files[t['file']][slice(*native_methods.methods(files[t['file']]).get(t['method'],(0,len(files[t['file']]))))]),t['file'],t['method']))
+            if any(not Path(p).exists() or [Path(p).stat().st_size,Path(p).stat().st_mtime_ns]!=stamp for p,stamp in inputs.items()):
+                raise ValueError('Native inputs changed while publishing; refresh catalog')
+            self.cached=dict(revision=integration.digest(files),files=files,tasks=clean,
+                classes=sorted({t['class_name'] for t in clean}),layout_policy='owner-only; no invented fields',lease_seconds=TTL)
+            self.cache_key=key
+        with self.store.lock:
+            busy={r[0] for r in self.store.db.execute("SELECT target FROM native_method_leases WHERE (state='claimed' AND expires>?) OR state='submitted'",(time.time(),))}
+            verified=dict(self.store.db.execute('SELECT target,signature FROM native_recovery_verified'))
+        return dict(self.cached,tasks=[dict(t,available=t['target'] not in busy and verified.get(t['target'])!=t['signature']) for t in self.cached['tasks']])
+
+    def claim(self,user,body):
+        worker_id=body.get('worker')
+        if not isinstance(worker_id,str) or not 1<=len(worker_id)<=120:raise ValueError('Worker identity required')
+        catalog=self.catalog()
+        task=next((t for t in catalog['tasks'] if t['target']==body.get('target') and t['signature']==body.get('signature')),None)
+        if task is None:raise ValueError('Unknown or changed target; refresh catalog')
+        packet=dict(task=task,original=catalog['files'][task['file']])
+        now=time.time()
+        with self.store.lock,self.store.db as db:
+            old=db.execute('SELECT expires,state FROM native_method_leases WHERE target=?',(task['target'],)).fetchone()
+            done=db.execute('SELECT signature FROM native_recovery_verified WHERE target=?',(task['target'],)).fetchone()
+            if old and (old[1]=='submitted' or old[0]>now and old[1]=='claimed') or done and done[0]==task['signature']:
+                return dict(claimed=False)
+            count=db.execute("SELECT COUNT(*) FROM native_method_leases WHERE user=? AND state='claimed' AND expires>?",(user,now)).fetchone()[0]
+            if count>=50:raise ValueError('Contributor already holds 50 active recovery methods')
+            identifier=uuid.uuid4().hex
+            db.execute('INSERT OR REPLACE INTO native_method_leases VALUES(?,?,?,?,?,?,?)',
+                (task['target'],identifier,user,worker_id,now+TTL,'claimed',json.dumps(packet)))
+        return dict(claimed=True,lease=identifier,expires=now+TTL,worker=worker_id,task=task)
+
+    def lease(self,user,body,db,live=True):
+        row=db.execute('SELECT target,id,user,worker,expires,state,packet FROM native_method_leases WHERE id=?',(body.get('lease'),)).fetchone()
+        if not row or row[2:4]!=(user,body.get('worker')) or live and (row[4]<=time.time() or row[5]!='claimed'):
+            raise ValueError('Recovery lease expired, replaced or belongs to another worker')
+        return row
+
+    def renew(self,user,body,release=False):
+        with self.store.lock,self.store.db as db:
+            row=self.lease(user,body,db)
+            db.execute('UPDATE native_method_leases SET expires=?,state=? WHERE id=?',
+                (0 if release else time.time()+TTL,'released' if release else 'claimed',row[1]))
+        return dict(released=release,renewed=not release)
+
+    def submit(self,user,body):
+        candidate=body.get('candidate');model=body.get('model');check_only=body.get('check_only',False)
+        if not isinstance(model,str) or not 1<=len(model)<=120:raise ValueError('Actual model identity required')
+        if type(check_only) is not bool or not check_only and (not isinstance(candidate,str) or len(candidate.encode())>2*1024*1024):raise ValueError('Candidate too large or invalid')
+        with self.store.lock,self.store.db as db:
+            old=db.execute('SELECT id,state,user FROM native_recovery_uploads WHERE lease=?',(body.get('lease'),)).fetchone()
+            if old:
+                row=self.lease(user,body,db,live=False)
+                return dict(job=old[0],state=old[1],exact_credits=0)
+            row=self.lease(user,body,db)
+            record=json.loads(row[6]);task=record['task']
+            if not check_only:recovery.method_change(record['original'],candidate,task['method'],task.get('add_method',False))
+            record.update(candidate_text=candidate,check_only=check_only,model=model,user=user)
+            identifier=uuid.uuid4().hex
+            db.execute('INSERT INTO native_recovery_uploads VALUES(?,?,?,?,?,?,?,NULL)',
+                (identifier,row[1],user,model,'queued',json.dumps(record),time.time()))
+            db.execute("UPDATE native_method_leases SET state='submitted',expires=0 WHERE id=?",(row[1],))
+        from roc.agent_inbox import record as inbox
+        inbox('native-recovery-upload',user,model,inbox=self.root/'work/agent-inbox',source=candidate,addr=task['addr'],verified=False,job=identifier)
+        self.wake.set()
+        return dict(job=identifier,state='queued',exact_credits=0)
+
+    def status(self,identifier):
+        if not isinstance(identifier,str) or not re.fullmatch('[0-9a-f]{32}',identifier):raise ValueError('Invalid recovery job')
+        with self.store.lock:
+            row=self.store.db.execute('SELECT state,receipt FROM native_recovery_uploads WHERE id=?',(identifier,)).fetchone()
+        if not row:raise ValueError('Unknown recovery job')
+        return dict(job=identifier,state=row[0],receipt=json.loads(row[1]) if row[1] else None,exact_credits=0)
+
+    def take(self):
+        with self.store.lock,self.store.db as db:
+            row=db.execute("SELECT id,record FROM native_recovery_uploads WHERE state='queued' ORDER BY created LIMIT 1").fetchone()
+            if row:db.execute("UPDATE native_recovery_uploads SET state='verifying' WHERE id=?",(row[0],))
+        return (row[0],json.loads(row[1])) if row else None
+
+    def verify(self,identifier,record):
+        from roc import match,native_refs
+        task=record['task'];folder=self.directory/identifier
+        path=folder/'candidate.cpp';path.parent.mkdir(parents=True,exist_ok=True)
+        if not record['check_only']:path.write_text(record['candidate_text'],encoding='utf-8')
+        api=worker.Api(self.server,integration.native_token() or worker.load_settings().get('token'))
+        try:
+            context=sweep.native_context({},api);base=self.promotions.baseline()
+            matcher=sweep.Matcher(set(match._functions('2008-06')))
+            def prove(snapshot,rel):
+                unit=task.get('translation_unit')
+                if unit and Path(unit).name.startswith('NativeRecovery'):
+                    from roc.native_collaboration import snapshot_path
+                    probe=self.catalog()['files'].get(unit)
+                    if probe is None:raise ValueError('Header consumer changed; refresh assignment')
+                    target=snapshot_path(snapshot,unit)
+                    target.parent.mkdir(parents=True,exist_ok=True)
+                    target.write_text(probe,encoding='utf-8')
+                result=recovery.compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],translation_unit=task.get('translation_unit'))
+                if result.get('target_exact'):
+                    refs=native_refs.import_checks(Path(result['object']).read_bytes(),result['symbol'],task['addr'])
+                    result['references']=refs
+                    if any(r['status']=='incorrect_symbol_reference' for r in refs):raise ValueError('Incorrect imported callee')
+                    # Ordinal-only imports cannot be established by masking operand bytes.
+                    if any(r['status']=='unresolved' and r['symbol'].startswith('__imp_') for r in refs):raise ValueError('Unresolved imported callee requires owner reference review')
+                return result
+            if record['check_only']:
+                recovery.copy_sources(self.root,folder/'baseline')
+                proof=prove(folder/'baseline',task['file'])
+                if not proof.get('ok') or not proof.get('target_exact'):raise ValueError('Host baseline is not exact')
+                receipt=dict(state='already-exact',proof=proof,exact_credits=0)
+            else:
+                merged=recovery.merge(self.root,folder/'fresh',task['file'],record['original'],record['candidate_text'],task['method'],prove,folder/'receipt.json',task.get('add_method',False))
+                staged=dict(record,candidate=str(path),baseline=[],proof=merged['proof'])
+                try:submission=recovery.stage_submission(staged,context,base,folder/'submission',print,recheck=False)
+                except Exception as error:submission=dict(state='pending-verification',reason=str(error))
+                # The contributor's private Integrator resumes canonical preflight/submission.
+                receipt=dict(state='merged',merge=merged,submission=submission,exact_credits=0)
+            current=next((t for t in self.catalog()['tasks'] if t['target']==task['target']),None)
+            if current:
+                with self.store.lock,self.store.db as db:db.execute('INSERT OR REPLACE INTO native_recovery_verified VALUES(?,?)',(task['target'],current['signature']))
+            return receipt
+        finally:api.close()
+
+    def process(self,job):
+        identifier,record=job
+        try:receipt=self.verify(identifier,record)
+        except Exception as error:receipt=dict(state='retained',reason=str(error)[:2000],exact_credits=0)
+        with self.store.lock,self.store.db as db:
+            db.execute('UPDATE native_recovery_uploads SET state=?,receipt=? WHERE id=?',(receipt['state'],json.dumps(receipt),identifier))
+            db.execute("UPDATE native_method_leases SET state='complete',expires=0 WHERE id=(SELECT lease FROM native_recovery_uploads WHERE id=?)",(identifier,))
+        return dict(job=identifier,record=record,receipt=receipt)
+
+    def notify(self,rows):
+        from roc import agent_inbox,integration_notify,reports
+        gains=[r for r in rows if r['receipt']['state']=='merged' and r['receipt']['merge']['state']=='merged']
+        if not gains:return
+        lines=[]
+        for row in gains:
+            record=row['record'];task=record['task']
+            agent_inbox.record('native-recovery',record['user'],record['model'],inbox=self.root/'work/agent-inbox',addr=task['addr'],job=row['job'],local_exact=True,exact_credits=0)
+            lines.append('`%s` | `%s` | %s | %s'%(task['addr'],task['method'],record['user'],record['model']))
+        payload=dict(embeds=[dict(title='RoConstruct Native Recovery',description=('\n'.join(lines)+'\n\nHost-rechecked native source merges. Report only; **0 integration credits**. Runtime/link gates and accepted submissions remain required.')[:4096],color=0x22C55E)])
+        url=integration_notify.server_mines_webhook()
+        if url:reports._post(url,payload)
+
+    def loop(self):
+        while not self.stop.is_set():
+            rows=[]
+            for _ in range(10):
+                job=self.take()
+                if not job:break
+                rows.append(self.process(job))
+            try:self.notify(rows)
+            except Exception as error:print('Native recovery report failed:',error)
+            if not rows:self.wake.wait(2);self.wake.clear()

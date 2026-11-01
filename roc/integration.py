@@ -325,7 +325,7 @@ class Promotions:
                 accepted.append(json.loads(row[0]))
             result = {"revision": digest([base, generator]), "overlay": base,
                       "generator": generator, "accepted": accepted,
-                      "features": {"context": 1, "metrics": 1, "native_reference_gate": 1, "exact_unit_batches": True, "selection_modes": ["easy", "balanced", "large"]},
+                      "features": {"context": 1, "metrics": 1, "native_reference_gate": 1, "native_recovery_collaboration": 1, "exact_unit_batches": True, "selection_modes": ["easy", "balanced", "large"]},
                       "limits": {"claims": MAX_CLAIMS, "targets": MAX_TARGETS,
                                  "overlay_paths": MAX_OVERLAY_PATHS, "edits_per_path": MAX_EDITS_PER_PATH,
                                  "overlay_bytes": MAX_OVERLAY_BYTES, "evidence_bytes": MAX_EVIDENCE_BYTES,
