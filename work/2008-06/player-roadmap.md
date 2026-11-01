@@ -2103,3 +2103,6 @@ Native DataModel factory0057c080 allocates0x264 bytes and calls constructor0057b
 
 
 Native DataModel constructor boundary receipt at ff46ffa855: 15 member writes and 13 calls extracted from original0057b9f0. Original constructs workspace at0x204, initializes paired owners at0x1fc/0x200,0x20c/0x210,0x214/0x218, and constructs members at0x21c/0x224; other initialized boundaries include0x22c,0x230,0x234,0x250,0x258,0x259,0x25c/0x260. Types beyond independently proven fields remain open. Receipt shared-layouts/datamodel-constructor.json; reproducible with record_datamodel_constructor.py. No active ABI change.
+
+
+Native DataModel member type evidence at aea284c006: +0x204 is shared_ptr<Workspace>; +0x21c and +0x224 are shared_ptr<GuiRoot>. Constructor calls factories00576ff0/00577090; allocated objects write original RTTI vtables00833a54/0082f9fc for Workspace/GuiRoot. The shared-pointer factory behavior and constructor arguments remain in original-binary trace; names of the two GuiRoot fields remain unproven. Reproduce record_datamodel_members.py; receipt shared-layouts/datamodel-members.json. No active ABI swap.
