@@ -1,8 +1,8 @@
 {
  "class": "CRobloxView",
- "status": "INACTIVE; layout probe PASS; constructor 00459eb0 EXACT 242 bytes (relocations masked)",
+ "status": "INACTIVE; layout probe PASS; constructor 00459eb0 and destructor 00459ba0 EXACT (relocations masked)",
  "compiler": "MSVC 21022 /O2 shared MFC",
- "header_sha256": "d09c7d5349969509d7b6a03ce3e0d01f92a6526f926b774ec87851b439c7bef1",
+ "header_sha256": "6cc32d8cfbed7647e5d86ab678f6913214bb385cacaf40cea75bdabd1c5a3719",
  "verified": [
   "CRobloxWnd 0xc0",
   "CReflectorWnd 0x58",
@@ -20,9 +20,10 @@
   "unaccessed_8c / unaccessed_bc": "No constructor write and no read in 53 mined CRobloxWnd methods; size is fixed by CRuntimeClass 0xc0.",
   "8-byte alignment": "Original leaves View+0xac unwritten and places the window at +0xb0. Alignment is the cheapest explanation, not independently proven.",
   "unwind states": "Original tracks four tail members with out-of-line destructors (final state 0x0a) and a shared-pointer-like pair at +0x170 and +0x1e8; pointee types unrecovered.",
-  "0xac": "Mined analog 00459eb0 attributes View+0xac to its command base (reserved word); 8-byte alignment of CRobloxWnd gives the same layout. Either spelling is unproven."
+  "0xac": "Mined analog 00459eb0 attributes View+0xac to its command base (reserved word); 8-byte alignment of CRobloxWnd gives the same layout. Either spelling is unproven.",
+  "tail slots": "00459ba0 deletes slots 1dc,1e0,1e4,1e8,1ec through vtable offset 4 (owning, polymorphic); 1d8 is not destroyed; +0x170/+0x174 is a boost shared_ptr pair (use/weak counts at +4/+8). Earlier shared_ptr-at-1e8 spelling matched the constructor but was wrong."
  },
- "next": "CRobloxWnd ctor 0045c730 (source missing from tree), destructor 00459ba0, binder ctor 00459890, then OnInitialUpdate 0045a4a0",
+ "next": "OnInitialUpdate 0045a4a0, then CRobloxWnd ctor/dtor from the binary",
  "constructor": {
   "address": "00459eb0",
   "symbol": "??0CRobloxView@@QAE@XZ",
@@ -33,9 +34,31 @@
  },
  "remaining_external": [
   "0045c730 CRobloxWnd ctor",
+  "0045fbe0 CRobloxWnd dtor",
   "00459890 VerbBinder ctor",
   "00583460 VerbContainer ctor",
+  "005832e0 VerbContainer dtor",
   "00432e30 CReflectorWnd ctor",
-  "OwnedSlot dtor"
+  "00432e50 CReflectorWnd dtor",
+  "00553d80 binder map dtor",
+  "OwnedPolymorphic type"
+ ],
+ "methods": [
+  {
+   "address": "00459eb0",
+   "symbol": "??0CRobloxView@@QAE@XZ",
+   "target_size": 242,
+   "compiled_size": 242,
+   "relocation_normalized_exact": true,
+   "first_difference": 3
+  },
+  {
+   "address": "00459ba0",
+   "symbol": "??1CRobloxView@@UAE@XZ",
+   "target_size": 371,
+   "compiled_size": 371,
+   "relocation_normalized_exact": true,
+   "first_difference": 3
+  }
  ]
 }

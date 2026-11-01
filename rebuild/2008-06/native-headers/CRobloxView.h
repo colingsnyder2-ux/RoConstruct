@@ -42,6 +42,7 @@ public:
     void* slots_ac_b8[4];
     unsigned unaccessed_bc;    // same evidence as unaccessed_8c
     explicit CRobloxWnd(int);
+    virtual ~CRobloxWnd(); // 0045fbe0, called out of line from 00459ba0
     // Interface overrides; bodies not recovered here. IRunView vtable 008199e8, IMetric 008199dc.
     virtual void InvalidateRunView();
     virtual void AdjustThrottle(double);
@@ -55,12 +56,16 @@ public:
     CReflectorWnd();
 };
 
-// Owned pointer whose pointee type is not yet recovered. The destructor is real in
-// the original (unwind states), the body is not. Layout: one pointer.
+// Pointee of the five owning slots. 00459ba0 deletes each through vtable slot 1
+// (offset 4), so the pointee has one virtual before its destructor. Real type unrecovered.
+struct OwnedPolymorphic {
+    virtual void unrecovered_0();
+    virtual ~OwnedPolymorphic();
+};
 struct OwnedSlot {
-    void* value;
+    OwnedPolymorphic* value;
     OwnedSlot() : value(0) {}
-    ~OwnedSlot(); // out of line in the original (unwind states); body not recovered
+    ~OwnedSlot() { delete value; }
 };
 
 class CRobloxView : public VerbBinder<CRobloxView, CView>,
@@ -74,12 +79,14 @@ public:
     boost::shared_ptr<void> owner_170;  // pointer and control block, zeroed by its constructor
     CMenu popupMenu;          // +0x178, menu resource 0x67 loaded at construction
     CReflectorWnd reflector;  // +0x180
-    OwnedSlot slot_1d8;
-    OwnedSlot slot_1dc;
+    void* slot_1d8;           // not destroyed by 00459ba0, so not owned
+    OwnedSlot slot_1dc;       // states 5-9 in 00459ba0, destroyed in reverse order
     OwnedSlot slot_1e0;
     OwnedSlot slot_1e4;
-    boost::shared_ptr<void> owner_1e8;
+    OwnedSlot slot_1e8;
+    OwnedSlot slot_1ec;
 
     CRobloxView();
+    virtual ~CRobloxView(); // 00459ba0, scalar deleting wrapper 00459fb0
     DECLARE_MESSAGE_MAP()
 };

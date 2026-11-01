@@ -12,7 +12,7 @@ if not original.exists():
 pe = pefile.PE(str(original), fast_load=True)
 obj = obj_path.read_bytes()
 rows = []
-for address, prefix in (('00459eb0', '??0CRobloxView@@'),):
+for address, prefix in (('00459eb0', '??0CRobloxView@@'), ('00459ba0', '??1CRobloxView@@')):
     target, relocations, _ = match.target('2008-06', address)
     assert target == pe.get_data(int(address, 16) - pe.OPTIONAL_HEADER.ImageBase, len(target))
     name, body, candidate_relocations = next((n, b, r) for n, b, r in match.coff_functions(obj) if n.startswith(prefix))
