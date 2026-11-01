@@ -1280,3 +1280,24 @@ and anchor comparisons, P0, spawn, scripts, lifetime, assets, values and a
 240-frame supplied-place run pass. Receipts are p5-nativeforce-*-033913505c.
 Original character/moving-floor comparison, recovered frame loop, native state
 ABI and later milestones remain open; do not claim full P5 parity.
+
+## P5 checkpoint: original humanoid comparisons (c3f6475891)
+
+A shared authored character fixture now runs in the original client and the
+rebuild. Four wall-time observations are compared with 30/60/90/120 rebuilt
+fixed frames; two moving memory copies each for torso and head agree, with the
+head staying 1.5 studs above the torso. Scripted walking passes bounded 0.8
+stud horizontal / 0.16 vertical tolerances; observed maxima are 0.533 and
+0.098 studs. Two moving-platform runs also pass those bounds: floor motion
+matches within 0.001 studs at sampled times, while rebuilt rider trails the
+floor about 0.26-0.43 studs farther than original. Receipts:
+p5-original-walk-c3f6475891 and p5-original-platform-*-c3f6475891. Earlier
+independent walk repeats are p5-humanoid-original-*-b5f903a918.
+
+Original and rebuilt joint construction differs, original samples are real-time
+rather than direct single stepping, and original process closure required
+forced termination. These tests do not establish complete humanoid, input or
+physics parity. The rider lag remains a real discrepancy. Original 00644000
+has recovered floor-sensor source with torso-bottom and corner rays; compare it
+with the current single-center donor sensor next. P5 and later milestones stay
+open.
