@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-01 02:50 UTC",
+  "updated": "2026-11-01 04:03 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.24,
+      "overall": 0.2404,
       "bars": {
         "compiled": {
           "value": 35,
@@ -17,7 +17,7 @@
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9886,
+          "value": 9902,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -188,8 +188,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 258,
-          "objectFunctions": 2925,
+          "exact": 259,
+          "objectFunctions": 2964,
           "unresolved": 0
         },
         {
@@ -236,8 +236,8 @@
           "name": "P4SoundAsset",
           "linked": true,
           "test": 0,
-          "exact": 109,
-          "objectFunctions": 1221,
+          "exact": 190,
+          "objectFunctions": 2376,
           "unresolved": 0
         },
         {
@@ -252,8 +252,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 258,
-          "objectFunctions": 2925,
+          "exact": 259,
+          "objectFunctions": 2964,
           "unresolved": 0
         },
         {
@@ -285,7 +285,7 @@
           "linked": true,
           "test": 0,
           "exact": 3318,
-          "objectFunctions": 95322,
+          "objectFunctions": 95329,
           "unresolved": 0
         },
         {
