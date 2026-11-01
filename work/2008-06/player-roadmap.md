@@ -996,3 +996,19 @@ prerequisite and P0 regressions pass; receipts are in p5-lua*-38adac8064.
 Original Animate proceeds past its former lookup error but stops on the missing
 Climbing signal. Its actual state behavior is traced in p5-climbing-trace.md;
 full animation, climbing, sound playback, native physics and P5 remain open.
+
+## P5 checkpoint: climbing detection probe (ff34299c3b)
+
+Correcting the older trace: original Climbing is state 9, not 10. The factory,
+transition and predicate jump tables show a detected-climb predicate enters
+state 9 and its inverse exits. Diagnostic candidate-box and 17-ray sweep uses
+the recovered 00644a30 / 00644c80 behavior and 006432e0 filter with the
+rebuilt contact manager. At ff34299c3b it detects a near rung and rejects
+empty, distant, tall wall, behind, character-descendant and noncollidable
+controls. Spawn, controller and lifetime regressions also pass. Receipts are
+in p5-climb-*-ff34299c3b.
+
+This is not wired into runtime humanoid states; original-client sensor parity,
+state transitions, force behavior and Climbing event remain open. The 00666410
+and 00666550 recovered sources identify desired velocity and force paths; port
+them with the state transitions, then compare movement and signal output.
