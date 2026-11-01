@@ -1141,3 +1141,19 @@ supplied place reached 30 frames and reported clean mesh cleanup at a4af240151,
 but then exited with access violation 0xc0000005; the shutdown cause remains
 unproven (p5-golf-negative-a4af240151). Neither run proves full playability or
 native parity. Trace shutdown next; P5 and later milestones remain open.
+
+## P5 checkpoint: detached-script registry (3e7fa3c6ec)
+
+The remaining supplied-place shutdown crash reached ScriptContext::closeState
+with a stale Script pointer. Temporary lifetime tracing showed a removed script
+being registered again after detachment, then destroyed before cleanup. The
+registration path now rejects scripts without a parent, complementing the
+existing start guard. This is a behavioral repair, not byte-verified parity.
+
+At 3e7fa3c6ec, the formerly crashing supplied place completed four independent
+30-frame runs with clean shutdown and no script error stacks. Two authored
+removal fixtures completed 16 runs total, including removal of a containing
+model. P0, script scheduling, value, contact, scene lifetime and P4 asset
+regressions pass. Receipts are in p5-*-3e7fa3c6ec; only hashes and aggregates
+from the supplied place are saved. Longer gameplay, other lifecycle cases,
+original-client comparison, P5 and later milestones remain unproven.
