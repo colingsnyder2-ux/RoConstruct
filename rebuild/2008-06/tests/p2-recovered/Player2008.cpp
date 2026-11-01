@@ -951,7 +951,7 @@ int main(int argc, char** argv)
         if(p5AnimateObserve){
             animateSamples.open("animate_samples.csv",std::ios::binary);animateSamples.precision(9);
             if(!animateSamples)return 7;
-            animateSamples<<"frame,right_shoulder_desired,right_shoulder_current,left_shoulder_desired,left_shoulder_current,right_hip_desired,right_hip_current,left_hip_desired,left_hip_current\n";
+            animateSamples<<"frame,right_shoulder_desired,right_shoulder_current,left_shoulder_desired,left_shoulder_current,right_hip_desired,right_hip_current,left_hip_desired,left_hip_current,right_arm_dx,right_arm_dy,right_arm_dz,left_arm_dx,left_arm_dy,left_arm_dz,right_leg_dx,right_leg_dy,right_leg_dz,left_leg_dx,left_leg_dy,left_leg_dz\n";
         }
         if(anchorTrace){
             anchorSamples.open("anchor_samples.csv",std::ios::binary);anchorSamples.precision(9);
@@ -972,8 +972,8 @@ int main(int argc, char** argv)
             if(p5CameraTurnTest && i==42)SetPlayerCameraTestKey(0);
             StepEngine(1.0f / 60.0f);
             if(p5AnimateObserve){
-                float angles[8];if(GetActorMotorAngles(angles))return 10;
-                animateSamples<<i+1;for(int a=0;a<8;++a)animateSamples<<","<<angles[a];animateSamples<<"\n";
+                float angles[20];if(GetActorMotorAngles(angles))return 10;
+                animateSamples<<i+1;for(int a=0;a<20;++a)animateSamples<<","<<angles[a];animateSamples<<"\n";
             }
             if(p5NativeCamera && !SyncPlayerCamera(cam,vp))return 1;
             drawModels();

@@ -1723,7 +1723,7 @@
   ],
   [
    "\t\t\tcurrentAngle = value;\n\t\t\tWorld* world = getWorld();\n\t\t\tif (world)\n\t\t\t\tworld->onMotorAngleChanged(this);\n\t\t\tsetJointAngle(value);",
-   "\t\t\tcurrentAngle = value;\n\t\t\tif (getWorld2008())\n\t\t\t\tlink->setJointAngle(value);"
+   "\t\t\tcurrentAngle = value;\n\t\t\tif (World* world = getWorld2008()) {\n\t\t\t\t// The donor clump graph requires this invalidation when the motor moves.\n\t\t\t\tworld->onMotorAngleChanged(this);\n\t\t\t\tlink->setJointAngle(value);\n\t\t\t}"
   ]
  ],
  "App/include/v8datamodel/SpawnLocation.h": [

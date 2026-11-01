@@ -357,6 +357,10 @@ extern "C" int GetActorMotorAngles(float* values)
         if (!motor) return 2;
         values[2*i] = motor->getDesiredAngle();
         values[2*i+1] = motor->getCurrentAngle();
+        RBX::PartInstance* limb = motor->getPart1();
+        if (!limb) return 3;
+        G3D::Vector3 offset = limb->getPrimitive()->getCoordinateFrame().translation - torso->getPrimitive()->getCoordinateFrame().translation;
+        values[8+3*i] = offset.x; values[9+3*i] = offset.y; values[10+3*i] = offset.z;
     }
     return 0;
 }

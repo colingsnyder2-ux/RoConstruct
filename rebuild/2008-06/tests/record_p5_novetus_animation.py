@@ -35,12 +35,15 @@ for name, asset_root, moving in [('idle', content, False), ('walk', content, Tru
     desired = span('right_hip_desired', 100, 210)
     current = span('right_hip_current', 100, 210)
     stopped = span('right_hip_desired', 240, 300)
+    leg = span('right_leg_dz', 150, 210)
     if name == 'walk':
         assert desired[0] < -.5 and desired[1] > .5 and current[1] - current[0] > .5, (name, desired, current)
         assert max(abs(v) for v in stopped) < .2, (name, stopped)
+        assert leg[1] - leg[0] > .3, (name, leg)
     else:
         assert max(abs(v) for v in desired + current) < .15, (name, desired, current)
-    cases[name] = {'exit': run.returncode, 'hip_desired_range': desired, 'hip_current_range': current, 'stopped_desired_range': stopped, 'samples_sha256': sha(folder / 'animate_samples.csv')}
+        assert leg[1] - leg[0] < .15, (name, leg)
+    cases[name] = {'exit': run.returncode, 'hip_desired_range': desired, 'hip_current_range': current, 'stopped_desired_range': stopped, 'right_leg_z_range': leg, 'samples_sha256': sha(folder / 'animate_samples.csv')}
     print(name, 'PASS', flush=True)
 assert asset_hashes == {name: sha(content / name) for name in assets}
 check_dir = out / 'notifier'
