@@ -1,0 +1,16 @@
+{
+  "phase": "uncommitted source-derived world pipeline port",
+  "exe_sha256": "9460374484f59a082d065ff27494189f51ea2622aff4488c09046ceca4e6c63e",
+  "map_sha256": "1cd6ff2a4010658433c9bf92f0e6d2d55336f240e2bd5bc479e14bfc88258907",
+  "observer_sha256": "63223cd2c6506cd0d2fa74e219c9ee6f0d263df90d9263bb6443394d5e1f4ba9",
+  "trace_sha256": "af9ff92d16b6d2536c5779d31a0dcb95bba96e4ce9c6f677a98635eac2870091",
+  "fault_eip": "0044f636",
+  "caller": "TreeStage::process -> cached TreeStage::cleanEdge (linked:verified_0032.obj)",
+  "hypothesis": "Cached verified providers were compiled against incompatible TreeStage/SleepStage layouts.",
+  "debugger_environment": {
+    "_NO_DEBUG_HEAP": "1",
+    "ROC_BUILD": "1"
+  },
+  "method": "Windows debug events and read-only register/stack memory; target code unmodified.",
+  "result": "failure reproduced; replacement source-provider regression pending"
+}

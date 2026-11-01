@@ -1,0 +1,69 @@
+{
+  "revision": "730f3031382ea5fe391f3fa11bc0afc2460c7833",
+  "exe_sha256": "6c961826d69371da5f63758e4902a95076b00528fe366e57d146ca6eb28146cb",
+  "fixture_sha256": "993ccc96ffed91e6149ca659b9402741a60c1da32f58e2fba54e4f3ccc8725f7",
+  "observer_sha256": "dbc3424af04bca202d1150f9174924a0e5a395fdc6222baca36fcb4b84e38a37",
+  "live_helper_sha256": "58cbb33f45b4ab54f7037e9b48b16457eed23c90289a212184a4f45019fec444",
+  "fixed": {
+    "idle": {
+      "exit": 0,
+      "transitions": [],
+      "end_y": 12.0,
+      "tail_span": 0.0,
+      "actor_z_delta": 0.0,
+      "samples_sha256": "9fc1e9176e1032e57c5b76a58e69dcf4e67d3ae202416e156e9666a449db4b11"
+    },
+    "play": {
+      "exit": 0,
+      "transitions": [
+        40,
+        48,
+        58
+      ],
+      "end_y": 0.996575296,
+      "tail_span": 0.0,
+      "actor_z_delta": -6.506815,
+      "samples_sha256": "bf5ee0dbdf87fe866c42afbb6571b980f2dfd77af4215b4823b9b4b207d72d52"
+    },
+    "reopen": {
+      "exit": 0,
+      "transitions": [
+        40,
+        48,
+        58
+      ],
+      "end_y": 0.996575296,
+      "tail_span": 0.0,
+      "actor_z_delta": -6.506815,
+      "samples_sha256": "bf5ee0dbdf87fe866c42afbb6571b980f2dfd77af4215b4823b9b4b207d72d52"
+    }
+  },
+  "live": {
+    "exit": 0,
+    "forced": false,
+    "touch_event_count": 1,
+    "observation": {
+      "actor_start_x": 0.0,
+      "actor_start_y": 18.5,
+      "actor_start_z": 25.5,
+      "actor_end_x": -1.51127537e-08,
+      "actor_end_y": 2.99911046,
+      "actor_end_z": 18.9890804,
+      "camera_start_x": 0.0,
+      "camera_start_y": 5.0,
+      "camera_start_z": 5.0,
+      "camera_end_x": 12.8825388,
+      "camera_end_y": 13.1198902,
+      "camera_end_z": 25.8736553,
+      "look_start_x": 0.0,
+      "look_start_y": -0.707106829,
+      "look_start_z": -0.707106769,
+      "look_end_x": -0.79277122,
+      "look_end_y": -0.438201815,
+      "look_end_z": -0.42366609
+    },
+    "observation_sha256": "45eae89589b3960754aedb7590207a105ee1aed19866ffa70fb9dfdd98b99e12"
+  },
+  "P5_complete": false,
+  "scope": "Combined authored collision/Lua/ground-joint fixture; frame/input remain adapted. Arrival is bounded by the held-input interval; original physics is checked separately."
+}

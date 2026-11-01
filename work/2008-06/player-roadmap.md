@@ -1928,3 +1928,48 @@ and integrate those ownership edges rather than force world->update inside a
 state constructor. Local original observation confirms the clump and root
 assembly can be the same object, unlike donor's separate Clump/Assembly types.
 RunningNoPhysics, native frame/scheduler and full P5 remain open. P6 stays Claude's.
+
+## Updated priority: P5 stop line closed; merge P6 next (730f303138)
+
+Colin replaced the full-roadmap ordering: close landing/high-fall at documented
+bounds, stop donor physics tuning, merge P5/P6, recover shared native headers,
+then swap exact sources class by class with both gates green. Real native P6
+comes before P9/P10; P7/P8 are deferred. This supersedes the earlier plan to keep
+working on RunningNoPhysics before merging.
+
+P5 passes the agreed stop line on engine revision 730f303138. High-fall maximum
+Y error is .07493234 (< .10); landing/jump maximum is .10347796 (< .12).
+Original anchor-cycle plateau differs by 0.00000004 and final contact by
+0.00008751 (< .015/.01). Combined real input, collision, one Lua trigger,
+release/reanchor/release, reopen and clean shutdown pass. P3 lifetime/self/cache,
+spawn, animation, tracker ownership and all eight ground-joint flag combinations
+pass. Builder tests: 48 passed. Evidence: work/2008-06/p5-stopline-gate/receipt.json
+and its hashed receipts. Stop physics tuning here.
+
+The recovered-source tree/assembly/sleep pipeline now uses AnchorJoint/FreeJoint;
+the old Anchor registry is outside the active build. Cached incompatible
+TreeStage/SleepStage providers were excluded in favor of source compiled against
+the active ABI. Excluded source objects are now pruned from archives. A copied
+sleep-removal stub initially erased velocity on reanchor; ordinary assembly
+removal now preserves it, matching the independent original oracle. Diagnostic
+failure hashes remain in p5-native-world-debug/failure-receipt.json.
+
+Gate clarification: collision arrival moved from frame 58 to 40 under the new
+contact path. Combined acceptance checks one trigger while W is held and the
+unchanged 8/10-frame script waits, rather than an unverified arrival timestamp.
+Anchor's first-fall check permits wake-pending; the original comparator retains
+its existing +/-3-frame/.75-stud window and stricter plateau/contact bounds.
+
+New selection-based baseline: 2,935 relocation-normalized code matches among
+13,865 known engine/player function bodies selected in the final PE. The counter
+rechecks COFF bodies against mapped PE bytes; this excludes unrelated system
+functions and does not prove data/ABI correctness, execution coverage, or raw PE
+identity. Per-module rows: p5-stopline-build/selected-functions.json. Do not use
+the mined total as integration progress.
+
+Next merge claude/p6-startup-20261101 (d40f3ecd35) into this branch, rebuild the
+combined client and run P6's scoped gates. Preserve the separate distinction:
+Claude's MFC shell has a scoped gate pass; real mined CRobloxApp/CMainFrame still
+need integration. Then establish one shared header owner at a time, beginning
+with CRobloxDoc (152 bytes), CRobloxView (496), CMainFrame (1204) and Humanoid
+states. runtime-classes.json provides size evidence, not complete field layouts.

@@ -284,3 +284,25 @@ affected by anything on the P6 branch.
 - 2026-11-01T12:57:12Z Claude: P7 cancelled by Colin; I will not start it. Staying on P6: swapping recreated client classes for mined sources.
 
 - RELEASED Codex 2026-11-01T12:57:36.1945713Z original anchor timing comparison finished.
+
+- 2026-11-01T13:01:04Z Claude: P6 work paused at 8-gate scoped pass on claude/p6-startup-20261101. Plan after your P5: merge branches, then shared real class headers, then class-by-class source swaps. Tell Colin when P5 closes.
+
+- 2026-11-01T13:03:13.0026915Z Codex: Colin updated objective: close P5 landing/high-fall at documented tolerances, stop tuning donor physics; then merge P5/P6 into one branch, recover shared CRobloxDoc/CRobloxView/CMainFrame/Humanoid-state headers from runtime-classes.json, class-by-class swaps with P5/P6 gates after each. P7/P8 deferred. Current engine pipeline final build/gates underway. User now authorizes P6 merge, superseding previous integration hold; will preserve your UI ownership and log shared-header ownership before changes.
+
+- DESKTOP LOCK Codex 2026-11-01T13:05:54.8231147Z final P5 stop-line oracle gates: anchor, high-fall, landing/jump.
+
+- RELEASED Codex 2026-11-01T13:06:22.7661955Z final P5 oracle gates finished.
+
+- DESKTOP LOCK Codex 2026-11-01T13:13:32.9731497Z P5 stop-line oracle gates after velocity-preserving detach.
+
+- RELEASED Codex 2026-11-01T13:14:56.5181792Z P5 stop-line oracle gates finished.
+
+- DESKTOP LOCK Codex 2026-11-01T13:16:32.3598917Z P5 final combined real-time input/collision/Lua/anchor smoke.
+
+- RELEASED Codex 2026-11-01T13:16:42.1106595Z combined P5 smoke finished.
+
+- DESKTOP LOCK Codex 2026-11-01T13:18:07.0745522Z P5 final combined input gate with arrival-window contract.
+
+- RELEASED Codex 2026-11-01T13:18:24.9050539Z combined P5 gate finished.
+
+- 2026-11-01T13:22:05.681919+00:00 Codex P5 STOP LINE CLOSED at 730f303138: high-fall .07493234 < .10; landing/jump .10347796 < .12; original anchor, combined real input/Lua/collision/anchor, reopen, lifetime, spawn, animation and 48 builder tests pass. Further donor physics tuning stops. Per Colin's updated objective, merging P6 into this branch next, then combined P6 gate. UI implementation ownership stays Claude; shared headers will have a single explicitly logged owner before edits. P7/P8 deferred.
