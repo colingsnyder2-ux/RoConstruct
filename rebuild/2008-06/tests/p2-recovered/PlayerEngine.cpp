@@ -24,6 +24,7 @@ static boost::shared_ptr<RBX::PartInstance> g_brickRef;
 static RBX::PartInstance* g_brick = NULL;
 static bool g_playing = false;
 static PlayerNativeInput* g_input = NULL;
+static RBX::ModelInstance* g_actor = NULL;
 
 extern "C" int ConfigureContentRoot(const char* path)
 {
@@ -138,6 +139,19 @@ extern "C" int PartAlive(void)
     return g_brick && g_brickRef && g_brick->getParent() != NULL;
 }
 
+// 0055e320: verify digest buffer, unsigned bytes and zero-padded hex.
+extern "C" int CheckNativeMD5()
+{
+    boost::scoped_ptr<RBX::MD5Hasher> empty(RBX::MD5Hasher::create());
+    if(empty->toString()!="d41d8cd98f00b204e9800998ecf8427e")return 1;
+    boost::scoped_ptr<RBX::MD5Hasher> text(RBX::MD5Hasher::create());
+    text->addData("a",1);text->addData("bc",2);
+    if(text->toString()!="900150983cd24fb0d6963f7d28e17f72" || std::strcmp(text->c_str(),"900150983cd24fb0d6963f7d28e17f72"))return 2;
+    boost::scoped_ptr<RBX::MD5Hasher> binary(RBX::MD5Hasher::create());
+    const char bytes[]={0,static_cast<char>(0xff),0x10};binary->addData(bytes,sizeof(bytes));
+    return binary->toString()=="481e4551ec039aada760901cf52b1917"?0:3;
+}
+
 // Diagnostic: use the existing Humanoid joint builder on the authored actor.
 extern "C" int BuildPlayerJoints()
 {
@@ -152,12 +166,12 @@ extern "C" int BuildPlayerJoints()
 }
 
 // Diagnostic local-player/controller attachment to the authored Actor.
-extern "C" int AttachPlayerController()
+extern "C" int AttachPlayerController(int spawn)
 {
     if (!g_dataModel) return 1;
     RBX::DataModel::Lock lock(g_dataModel);
     RBX::ModelInstance* actor=dynamic_cast<RBX::ModelInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Actor"));
-    if (!actor || !RBX::Humanoid::modelIsCharacter(actor)) return 2;
+    if (!spawn && (!actor || !RBX::Humanoid::modelIsCharacter(actor))) return 2;
     RBX::Network::Players* players=RBX::ServiceProvider::create<RBX::Network::Players>(g_dataModel.get());
     if (!players) {
         try {
@@ -170,7 +184,19 @@ extern "C" int AttachPlayerController()
     try { if (!player) player=dynamic_cast<RBX::Network::Player*>(players->createLocalPlayer(1).get()); }
     catch(const std::exception& error){std::fprintf(stderr,"controller: local player %s\n",error.what());std::fflush(stderr);return 5;}
     if (!player) return 3;
-    player->setCharacter(actor);
+    if (spawn) {
+        const char* assets[]={"fonts\\character.rbxm","fonts\\humanoidSound.rbxm","fonts\\humanoidHealth.rbxm","fonts\\humanoidAnimate.rbxm"};
+        for(int i=0;i<4;++i){
+            if(!RBX::ContentProvider::singleton().requestContentString(RBX::ContentId::fromAssets(assets[i]))){
+                std::fprintf(stderr,"character asset unavailable: %s\n",assets[i]);return 6;
+            }
+        }
+        try { player->loadCharacter(); }
+        catch(const std::exception& error){std::fprintf(stderr,"character spawn: %s\n",error.what());return 6;}
+        actor=player->getCharacter();
+    } else player->setCharacter(actor);
+    if (!actor || !RBX::Humanoid::modelIsCharacter(actor)) return 7;
+    g_actor=actor;
     static PlayerNativeInput input;g_input=&input;
     RBX::ServiceProvider::create<RBX::ControllerService>(g_dataModel.get())->setHardwareDevice(g_input);
     actor->setControllerType(RBX::Controller::PLAYER_CONTROLLER);
@@ -181,7 +207,7 @@ extern "C" int GetActorTorsoPosition(float* x,float* y,float* z)
 {
     if (!g_dataModel) return 1;
     RBX::DataModel::Lock lock(g_dataModel);
-    RBX::Instance* actor=g_dataModel->getWorkspace()->findFirstChildByName("Actor");
+    RBX::Instance* actor=g_actor?g_actor:g_dataModel->getWorkspace()->findFirstChildByName("Actor");
     RBX::Humanoid* humanoid=RBX::Humanoid::modelIsCharacter(actor);
     RBX::PartInstance* torso=humanoid?humanoid->getTorso():NULL;
     if (!torso) return 1;
@@ -360,6 +386,7 @@ extern "C" void ClosePlace()
         if (service) service->setHardwareDevice(NULL);
         g_input->setKeyState(SDLK_w,false);g_input=NULL;
     }
+    g_actor = NULL;
     g_brick = NULL;
     g_brickRef.reset();
     if (g_dataModel) { RBX::DataModel::closeDataModel(g_dataModel, true); g_dataModel.reset(); }

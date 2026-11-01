@@ -29,10 +29,11 @@ extern "C" void MovePartTo(float x, float y, float z);
 extern "C" void StepEngine(float dt);
 extern "C" void StartPlay();
 extern "C" int BuildPlayerJoints();
-extern "C" int AttachPlayerController();
+extern "C" int AttachPlayerController(int);
 extern "C" void SetPlayerTestKey(int);
 extern "C" int CheckPlayerController();
 extern "C" int CheckShortTimer();
+extern "C" int CheckNativeMD5();
 extern "C" int GetActorTorsoPosition(float*,float*,float*);
 extern "C" void ClosePlace();
 extern "C" void RemovePart(void);
@@ -45,6 +46,8 @@ extern "C" int ExecutePlayerScript(const char*);
 extern "C" int ConfigureContentRoot(const char*);
 extern "C" int CountHumanoids();
 extern "C" int CountInstancesByClass(const char*);
+
+
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -679,10 +682,12 @@ int main(int argc, char** argv)
     bool p5Play = false;
     bool p5Join = false;
     bool p5Control = false;
+    bool p5Spawn = false;
     bool p5InputTest = false;
     bool p5ControllerCheck = false;
     bool p5LiveObserve = false;
     bool p5ClockCheck = false;
+    bool p5HashCheck = false;
     bool anchorTrace = false;
     bool anchorFlagsTest = false;
     int stabilityExit = 0;
@@ -703,8 +708,10 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--p5-play") == 0) p5Play = true;
         else if (std::strcmp(argv[i], "--p5-join") == 0) p5Join = true;
         else if (std::strcmp(argv[i], "--p5-control") == 0) p5Control = true;
+        else if (std::strcmp(argv[i], "--p5-spawn") == 0) {p5Spawn=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
         else if (std::strcmp(argv[i], "--p5-clock-check") == 0) p5ClockCheck = true;
+        else if (std::strcmp(argv[i], "--p5-hash-check") == 0) p5HashCheck = true;
         else if (std::strcmp(argv[i], "--p5-controller-check") == 0) {p5Control=true;p5ControllerCheck=true;}
         else if (std::strcmp(argv[i], "--p5-input-test") == 0) {p5Control=true;p5InputTest=true;}
         else if (std::strcmp(argv[i], "--anchor-trace") == 0) anchorTrace = true;
@@ -748,15 +755,19 @@ int main(int argc, char** argv)
     if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
     if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
+    if(p5HashCheck){
+        int result=CheckNativeMD5();std::printf("MD5 vectors: %s (%d)\n",result?"FAIL":"PASS",result);
+        ClosePlace();return result;
+    }
     if(anchorFlagsTest){
         int result=CheckBrickAnchorFlags();
         std::printf("anchor flags: %s\n",result?"FAIL":"PASS");
         ClosePlace();return result;
     }
-    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
+    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);}
 
     if(p5Join && BuildPlayerJoints()){std::printf("actor joint build failed\n");ClosePlace();return 1;}
-    if(p5Control && AttachPlayerController()){std::printf("local controller attach failed\n");ClosePlace();return 1;}
+    if(p5Control && AttachPlayerController(p5Spawn?1:0)){std::printf("local controller attach failed\n");ClosePlace();return 1;}
     if(p5ControllerCheck){
         int result=CheckPlayerController();std::printf("controller checks: %s (%d)\n",result?"FAIL":"PASS",result);
         ClosePlace();return result;

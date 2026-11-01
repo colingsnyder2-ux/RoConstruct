@@ -265,6 +265,10 @@
  ],
  "App/include/lua/LuaBridge.h": [
   [
+   "const Object* object = static_cast<const Object*>(lua_touserdata(L,static_cast<int>(index)));",
+   "const T* object = static_cast<const T*>(lua_touserdata(L,static_cast<int>(index)));"
+  ],
+  [
    "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n                on_newindex(object, name, L);\n                return 0;\n",
    "                const char* name = luaL_checkstring(L, 2);\n                T& object = getObject(L, 1);\n                try\n                {\n                    on_newindex(object, name, L);\n                    return 0;\n                }\n                catch (std::exception& e)\n                {\n                    lua_pushstring(L, e.what());\n                }\n                return lua_error(L);\n"
   ],
@@ -2465,6 +2469,16 @@
   [
    "\t\tbool getCursorCenterLocked() const;",
    "\t\tbool getCursorCenterLocked() const { return cursorLocked; }"
+  ]
+ ],
+ "App/util/ContentProvider.cpp": [
+  [
+   "(BYTE*)&hashValue, &hashSize, 0)",
+   "(BYTE*)hashValue, &hashSize, 0)"
+  ],
+  [
+   "temp.Format(\"%x\", hashValue[i]);",
+   "temp.Format(\"%02x\", (unsigned char)hashValue[i]);"
   ]
  ]
 }

@@ -22,6 +22,25 @@ for name in files:
 (target / 'demo-assets.json').write_text(json.dumps({'source': str(source), 'sha256': hashes}, indent=2) + '\n')
 print('Staged original demo assets:', target)
 
+# Optional original character dependencies. They remain external inputs.
+character = ['character.rbxm', 'humanoidSound.rbxm', 'humanoidHealth.rbxm', 'humanoidAnimate.rbxm']
+if all((source / 'fonts' / name).is_file() for name in character):
+    character_hashes = {}
+    for name in character:
+        original = source / 'fonts' / name
+        destination = target / 'fonts' / name
+        destination.parent.mkdir(exist_ok=True)
+        data = original.read_bytes()
+        if destination.exists():
+            assert destination.read_bytes() == data, f'Preserve different existing asset: {destination}'
+        else:
+            shutil.copyfile(original, destination)
+        character_hashes[name] = hashlib.sha256(data).hexdigest()
+    (target / 'character-assets.json').write_text(json.dumps({'source': str(source), 'sha256': character_hashes}, indent=2) + '\n')
+    print('Staged original character dependencies')
+else:
+    print('Original character dependencies unavailable; local spawn requires all four fonts/*.rbxm files')
+
 place = root / "rebuild/2008-06/tests/fixtures/default.rbxl"
 destination = target.parent / "Places/default.rbxl"
 destination.parent.mkdir(exist_ok=True)
