@@ -4,10 +4,15 @@ P3 now passes on source0dcbf70f18: ordinary blocks and native balls, repeated
 mixed-shape lifetime controls and original-client silhouette comparison.
 See p3-acceptance-audit.md for exact receipts and remaining context/native limits.
 
-Build: `roc rebuild 2008-06 module p2-recovered-player --no-notify`.
-Stage original Content with tests/stage_demo_content.py (see SkyboxDemo.md).
-Default launch uses the red studded block and skybox. ROC_TEXTURE_STRIP remains
-an optional developer override; otherwise assets resolve beside the executable.
+Build: `roc rebuild 2008-06 player --no-notify`.
+Stage original Content with tests/stage_demo_content.py (see SkyboxDemo.md),
+including the four original character files under Content/fonts. With no
+arguments the harness opens the authored playable place, spawns the character,
+and attaches the existing character camera. `--play <place>` opens another XML
+place, including gzip-compressed `.rbxl.gz` files. `--demo` retains the red
+studded block and skybox demo. P5 and original-client parity remain incomplete.
+ROC_TEXTURE_STRIP remains an optional developer override; otherwise assets
+resolve beside the executable.
 ROC_SKY_SPHERE supplies the original sky sphere image for reflective materials;
 that branch is not exercised by this ordinary opaque-block gate.
 Run `rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe --selftest`

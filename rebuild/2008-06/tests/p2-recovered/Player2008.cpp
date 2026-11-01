@@ -9,6 +9,7 @@
 #include <map>
 #include <vector>
 #include <iterator>
+#include <limits>
 #include <cmath>
 #include <float.h>
 #include <G3D/System.h>
@@ -80,7 +81,20 @@ static std::string readPlace(const char* path)
     if (!f) return "";
     std::ostringstream ss;
     ss << f.rdbuf();
-    return ss.str();
+    std::string data=ss.str();
+    if(data.size()<2 || (unsigned char)data[0]!=0x1f || (unsigned char)data[1]!=0x8b)return data;
+    if(data.size()>static_cast<size_t>(std::numeric_limits<uInt>::max()))return "";
+    z_stream stream;std::memset(&stream,0,sizeof(stream));
+    stream.next_in=reinterpret_cast<Bytef*>(&data[0]);stream.avail_in=static_cast<uInt>(data.size());
+    if(inflateInit2(&stream,15+16)!=Z_OK)return "";
+    std::string output;char buffer[16384];int status;
+    do{
+        stream.next_out=reinterpret_cast<Bytef*>(buffer);stream.avail_out=sizeof(buffer);
+        status=inflate(&stream,Z_NO_FLUSH);
+        output.append(buffer,sizeof(buffer)-stream.avail_out);
+    }while(status==Z_OK);
+    inflateEnd(&stream);
+    return status==Z_STREAM_END?output:std::string();
 }
 
 // ---------------------------------------------------------------- PNG input
@@ -704,6 +718,7 @@ int main(int argc, char** argv)
     bool inspectPlace = false;
     bool loadOnly = false;
     bool p5Play = false;
+    bool playRequested = argc==1;
     bool p5Join = false;
     bool p5Control = false;
     bool p5NativeCamera = false;
@@ -737,6 +752,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
         else if (std::strcmp(argv[i], "--p5-play") == 0) p5Play = true;
+        else if (std::strcmp(argv[i], "--play") == 0) playRequested = true;
         else if (std::strcmp(argv[i], "--p5-join") == 0) p5Join = true;
         else if (std::strcmp(argv[i], "--p5-control") == 0) p5Control = true;
         else if (std::strcmp(argv[i], "--p5-native-camera") == 0) {p5NativeCamera=true;p5Control=true;p5Play=true;}
@@ -762,6 +778,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--frames") == 0 && i + 1 < argc) { frames = true; frameCount = std::atoi(argv[++i]); }
         else if (argv[i][0] != '-') placePath = argv[i];
     }
+    if(playRequested){p5Spawn=true;p5Control=true;p5Play=true;p5NativeCamera=true;}
     if(stability && (!frames || frameCount<240)){std::printf("stability test requires --frames 240 or more\n");return 1;}
     if(inspectPlace && !frames){std::printf("inspect-place requires --frames\n");return 1;}
     if(anchorTrace && !frames){std::printf("anchor-trace requires --frames\n");return 1;}
@@ -776,6 +793,7 @@ int main(int argc, char** argv)
     if(!std::ifstream(getenv("ROC_TEXTURE_STRIP"),std::ios::binary)){
         std::printf("missing SurfacesStrip.png; provide original Content with --content-root\n");return 1;
     }
+    if(playRequested && placePath.empty())placePath=moduleRoot+"/Places/p5-playable.rbxl";
     if(!selftest && !cachetest && !lifetest && !frames && placePath.empty())demo=true;
     if(ConfigureContentRoot(contentRoot.c_str()))return 1;
     if(demo && placePath.empty())placePath=moduleRoot+"/Places/default.rbxl";

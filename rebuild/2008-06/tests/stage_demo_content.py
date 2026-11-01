@@ -41,14 +41,15 @@ if all((source / 'fonts' / name).is_file() for name in character):
 else:
     print('Original character dependencies unavailable; local spawn requires all four fonts/*.rbxm files')
 
-place = root / "rebuild/2008-06/tests/fixtures/default.rbxl"
-destination = target.parent / "Places/default.rbxl"
-destination.parent.mkdir(exist_ok=True)
-if destination.exists():
-    assert destination.read_bytes() == place.read_bytes(), f"Preserve different default place: {destination}"
-else:
-    shutil.copyfile(place, destination)
-print("Staged authored default place:", destination)
+for name in ("default.rbxl", "p5-playable.rbxl"):
+    place = root / "rebuild/2008-06/tests/fixtures" / name
+    destination = target.parent / "Places" / name
+    destination.parent.mkdir(exist_ok=True)
+    if destination.exists():
+        assert destination.read_bytes() == place.read_bytes(), f"Preserve different staged place: {destination}"
+    else:
+        shutil.copyfile(place, destination)
+    print("Staged authored place:", destination)
 
 fixtures = root / "rebuild/2008-06/tests/fixtures"
 for asset in (fixtures / "p4-assets").iterdir():
