@@ -1,5 +1,13 @@
 # Current player checkpoint
 
+SoundService heartbeat005bc2c0 recovered at source91fa2d1c88 with real
+Workspace/Camera/PVInstance/Part types, listener sanitization, five-second cache
+collection and FMOD update. Original RTTI00947f1c identifies PVInstance; the
+five-second constant comes from008358a8. Sound diagnostics pass, but the service
+object/heartbeat remain unselected and unexecuted until provider attachment.
+Evidence: p4-sound-heartbeat-91fa2d1c88/ and
+p4-sound-heartbeat-runtime-91fa2d1c88/.
+
 Reverb005b8880 recovered at source3bc3f92f3b. All24 real SDK preset structs
 match original target bytes under x86 emulation; invalid enums/null system skip.
 Original Room and PaddedCell share one preset. Actual FMOD NOSOUND accepts the
