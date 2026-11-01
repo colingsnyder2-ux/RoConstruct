@@ -1572,3 +1572,21 @@ and the player successfully. Thirteen build-tool tests and P3 lifetime,
 selftest and cache checks passed. Receipts: p5-refresh-497e and
 p5-refresh-497e-p3. Full rebuild is slower than the prior stale-library path.
 This improves build reliability; character physics and P5 remain open.
+
+## P5 checkpoint: original Landed transition (86025f59f9)
+
+Adapted original state table: Freefall and Climbing enter Landed on floor;
+Landed returns to Freefall without floor or to Running after 0.45 seconds.
+The donor-ABI Landed uses recovered Running force/goal behavior. Its Running
+handoff carries floor and movement goals forward to avoid a donor-frame pause;
+that handoff is an adaptation, not an original ABI claim.
+
+After rebuilding the actual engine and player, the early-jump fixture now
+agrees with original within 0.243 studs across eleven samples (previous
+maximum about 5.60); the observer enforces a 0.6-stud bound. Original wall
+samples are within 35 ms of fixed-step targets; joint construction differs,
+and original termination was forced. Walking, climbing, spawn/controller,
+Novetus animation, P3 lifetime/cache, combined play, live input and reopening
+pass. Receipts: p5-landed-verified-*. Grounded jump and high fall remain
+observational: maximum differences 2.22 and 14.29 studs respectively. Do not
+remove bounce; trace original force/contact/state timing next. P5 remains open.
