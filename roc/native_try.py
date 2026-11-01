@@ -186,6 +186,8 @@ def cmd_check(ctx, args):
     header_caller(ctx, args)
     previous_proposal = next((p for p in saved() if p["file"] == args.file), {})
     ctx.related_headers = {name: list(pairs) for name, pairs in previous_proposal.get("related_headers", {}).items()}
+    if draft:
+        direct_bundle, captured = native_edit.capture(ctx, OUT, args.file, draft, previous_proposal)
     text, edits, addrs, baseline, _ = file_state(ctx, args.file)
     previous = [w for p in saved() if p["file"] == args.file for w in p["witnesses"]]
     if not args.blocks and not previous and not draft:
@@ -194,7 +196,7 @@ def cmd_check(ctx, args):
     headers = {}
     if draft or blocks.lstrip().startswith("{"):
         if draft:
-            bundle, captured = native_edit.capture(ctx, OUT, args.file, draft, previous_proposal)
+            bundle = direct_bundle
         else:
             bundle = json.loads(blocks)
         if draft and Path(args.file).suffix.lower() in ('.h', '.hpp', '.inl'):
@@ -374,11 +376,18 @@ def dispatch(args):
         if not paths:
             raise ValueError('No editable files; run roc native-try edit FILE first')
         ctx = context()
+        proven = {proposal['file'] for proposal in saved()}
         for path in paths:
             trial = copy(args)
-            trial.file = json.loads(path.read_text(encoding='utf-8'))['file']
+            state = json.loads(path.read_text(encoding='utf-8'))
+            trial.file = state['file']
             trial.all = False
             try:
+                if trial.file not in proven and state.get('files') and all(
+                        (native_edit.folder(OUT, trial.file) / native_edit.name(name)).read_text(encoding='utf-8-sig') == text
+                        for name, text in state['files'].items()):
+                    print(trial.file + ': unchanged; skipped', flush=True)
+                    continue
                 cmd_check(ctx, trial)
             except (ValueError, SystemExit) as error:
                 failures.append(trial.file)
@@ -388,6 +397,8 @@ def dispatch(args):
         return
     if args.action in ("evidence", "edit", "check") and not args.file:
         raise ValueError(args.action + " requires a source FILE")
+    if args.action == 'edit' and getattr(args, 'blocks', None):
+        raise ValueError('Use edit FILE --related HEADER ... for paired edits')
     ctx = context()
     if getattr(args, "file", None):
         registry = native_sweep.ROOT / "rebuild/2008-06/patches/rbxgs-client.json"

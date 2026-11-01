@@ -305,6 +305,12 @@ with tempfile.TemporaryDirectory() as folder:
     edits, _ = native_edit.capture(ctx, root/'out', rel, state, {})
     assert native_sweep.apply_edits(original.read_text(), edits[rel]) == draft.read_text()
     assert 'return 1' in original.read_text()
+    try:
+        native_edit.require_checked(root/'out', [{'file': rel}])
+    except ValueError as error:
+        assert 'Unverified direct edits' in str(error)
+    else:
+        raise AssertionError('Unchecked direct edits must block preflight/submit')
 print('direct edit capture passed')
 """
     run = subprocess.run([sys.executable, "-c", code], cwd=staged, capture_output=True, text=True)

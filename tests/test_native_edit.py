@@ -75,3 +75,20 @@ def test_fresh_does_not_overwrite_an_untracked_editable_file(tmp_path):
     with pytest.raises(ValueError, match='untracked editable file'):
         native_edit.prepare(ctx, tmp_path/'out', rel, [], {}, fresh=True)
     assert candidate.read_text() == 'existing work without manifest'
+
+
+def test_export_conflict_leaves_no_partial_primary_file(tmp_path):
+    rel, header = 'App/A.cpp', 'App/include/A.h'
+    ctx = SimpleNamespace(tree=tmp_path/'tree', overlay=tmp_path/'overlay', base_revision='first')
+    for path in [rel, header]:
+        original = ctx.tree / path
+        original.parent.mkdir(parents=True, exist_ok=True)
+        original.write_text('baseline')
+    directory = native_edit.folder(tmp_path/'out', rel)
+    candidate = directory / header
+    candidate.parent.mkdir(parents=True)
+    candidate.write_text('untracked header work')
+    with pytest.raises(ValueError, match='untracked editable file'):
+        native_edit.prepare(ctx, tmp_path/'out', rel, [header], {})
+    assert not (directory/rel).exists()
+    assert candidate.read_text() == 'untracked header work'

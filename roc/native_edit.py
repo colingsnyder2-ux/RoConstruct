@@ -95,10 +95,12 @@ def prepare(ctx, output, rel, related, proposal, fresh=False):
             raise ValueError('Related edits must be headers')
     # Read everything before writing anything: a bad path must not leave a partial draft.
     additions = {path: source(ctx, path, proposal) for path in paths if path not in state['files']}
-    for path, text in additions.items():
+    for path in additions:
         target = directory / path
         if target.exists() and path not in archived_paths:
             raise ValueError('Preserving untracked editable file: ' + str(target))
+    for path, text in additions.items():
+        target = directory / path
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding='utf-8')
         state['files'][path] = text
@@ -122,3 +124,12 @@ def refresh(ctx, output, rel, state, snapshots, proposal):
     for path, text in texts.items():
         (directory / path).write_text(text, encoding='utf-8')
     integration.atomic_json(directory / 'edit.json', dict(state, base_revision=ctx.base_revision, files=texts))
+
+
+def require_checked(output, proposals):
+    for proposal in proposals:
+        rel = proposal['file']
+        state = load(output, rel)
+        if state and any((folder(output, rel) / name(path)).read_text(encoding='utf-8-sig') != text
+                         for path, text in state['files'].items()):
+            raise ValueError('Unverified direct edits preserved; run roc native-try check ' + rel)

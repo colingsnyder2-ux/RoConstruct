@@ -449,3 +449,13 @@ def test_direct_submit_refuses_newer_unchecked_edits(editable_trial):
     with pytest.raises(ValueError, match='Unverified direct edits'):
         native_try.cmd_submit(SimpleNamespace(model='test'))
     assert draft.read_text() == 'unfinished change'
+
+
+def test_batch_skips_unedited_files_without_saved_proofs(editable_trial, monkeypatch):
+    ctx, _, _ = editable_trial
+    rel = 'App/B.cpp'
+    (ctx.tree / rel).write_text('void B::f() {}')
+    native_try.native_edit.prepare(ctx, native_try.OUT, rel, [], {})
+    monkeypatch.setattr(native_try, 'context', lambda: ctx)
+    monkeypatch.setattr(native_try, 'cmd_check', lambda *args: pytest.fail('Unedited file compiled'))
+    native_try.dispatch(SimpleNamespace(action='check', file=None, blocks=None, all=True))
