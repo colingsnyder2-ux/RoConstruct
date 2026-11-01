@@ -2,6 +2,7 @@
   "name": "P2RecoveredPlayer",
   "description": "Isolated recovered block producer player; preserves local player diagnostics",
   "depends": [
+    "p4-sound-asset",
     "p2-native-material",
     "p2-lighting",
     "rbxgs-app"
@@ -62,7 +63,8 @@
   ],
   "import_dlls": [
     "rgmain.dll",
-    "rgdx.dll"
+    "rgdx.dll",
+    "fmodex.dll"
   ],
   "test_defines": "WIN32 NDEBUG _RELEASE"
 }

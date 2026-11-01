@@ -104,6 +104,47 @@ void SoundService::onEvent(const RunService*,Heartbeat){
     logSoundResult(system->update());
 }
 
+// 005bd6d0 / 005bdb10: construct the original non-archivable stock sounds.
+void SoundService::loadStockSounds(SoundType type,std::string path){
+    boost::shared_ptr<StockSound> sound=Creatable<Instance>::create<StockSound>();
+    sound->setName(Reflection::EnumDesc<SoundType>::singleton().convertToString(type));
+    sound->setSoundId(SoundId(ContentId::fromAssets(path)));
+    sound->setParent(this);stockSounds[type]=sound;
+}
+void SoundService::loadStockSounds(){
+    stockSounds.clear();removeAllChildren();
+    loadStockSounds(BOING_SOUND,"Sounds\\bass.wav");
+    loadStockSounds(BOMB_SOUND,"Sounds\\collide.wav");
+    loadStockSounds(BREAK_SOUND,"Sounds\\glassbreak.wav");
+    loadStockSounds(CLICK_SOUND,"Sounds\\switch.wav");
+    loadStockSounds(CLOCK_SOUND,"Sounds\\clickfast.wav");
+    loadStockSounds(RUBBERBAND_SOUND,"Sounds\\Rubber band sling shot.wav");
+    loadStockSounds(PAGE_SOUND,"Sounds\\pageturn.wav");
+    loadStockSounds(PING_SOUND,"Sounds\\electronicpingshort.wav");
+    loadStockSounds(SNAP_SOUND,"Sounds\\snap.wav");
+    loadStockSounds(SPLAT_SOUND,"Sounds\\splat.wav");
+    loadStockSounds(STEP_SOUND,"Sounds\\SWITCH3.wav");
+    loadStockSounds(STEP_ON_SOUND,"Sounds\\flashbulb.wav");
+    loadStockSounds(SWOOSH_SOUND,"Sounds\\swoosh.wav");
+    loadStockSounds(VICTORY_SOUND,"Sounds\\victory.wav");
+}
+
+// 005bdcf0: attach heartbeat, FMOD, stock sounds and statistics to the provider.
+void SoundService::onServiceProvider(const ServiceProvider* oldProvider,const ServiceProvider* newProvider){
+    if(oldProvider)Notifier<RunService,Heartbeat>::disconnect(oldProvider->create<RunService>(),this);
+    if(statsItem){statsItem->setParent(0);statsItem.reset();}
+    if(oldProvider)closeFmod();
+    if(newProvider){
+        Notifier<RunService,Heartbeat>::connect(newProvider->create<RunService>(),this);
+        openFmod();loadStockSounds();
+        Stats::StatsService* stats=newProvider->create<Stats::StatsService>();
+        if(stats){
+            statsItem=Creatable<Instance>::create<SoundServiceStatsItem>(this);
+            statsItem->setParent(stats);
+        }
+    }
+}
+
 // 005ba970: remove stock channels, detach cached handles, then release FMOD.
 void SoundService::closeFmod(){
     stockSounds.clear();removeAllChildren();

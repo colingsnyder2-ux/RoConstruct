@@ -58,6 +58,10 @@ def main():
     assert 'P4 Sound reverb PASS 24 presets/invalid/original room/FMOD' in stdout
     assert 'P4 Sound stats PASS four children/bound counters/lifetimes' in stdout
     assert 'P4 SoundId reflection PASS text/XML roundtrip' in stdout
+    assert 'P4 Sound service PASS constructor/cache/channel state' in stdout
+    assert 'P4 Sound service PASS provider/14 stock sounds/detach' in stdout
+    assert 'P4 Sound service PASS native FMOD play/pause/stop/detach NOSOUND' in stdout
+    assert 'P4 Sound service PASS serialized SoundId/factory' in stdout
     print('P4 Sound asset prerequisite PASS; service/audible gate open')
 
 

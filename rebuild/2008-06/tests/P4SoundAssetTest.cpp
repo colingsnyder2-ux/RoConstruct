@@ -3,6 +3,9 @@
 #include "util/RunStateOwner.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Stats.h"
+#include "v8datamodel/DataModel.h"
+#include "v8datamodel/Workspace.h"
+#undef main
 // Compile the same cleanup body with public access in this isolated test;
 // MSVC encodes access in symbol names, so this cannot call the private binary.
 #define private public
@@ -16,6 +19,7 @@
 #include <cmath>
 #include <cstring>
 #include <stdexcept>
+#include <sstream>
 #include <limits>
 #include <windows.h>
 namespace RBX { namespace Soundscape {
@@ -61,6 +65,45 @@ int main(int argc,char** argv){
         verify(std::strcmp(RBX::Soundscape::sSoundChannel,"Sound")==0);
         verify(std::strcmp(RBX::Soundscape::sSoundService,"SoundService")==0);
         {
+            RBX::Soundscape::SoundService service;
+            RBX::Soundscape::SoundId id("rbxasset://tone.wav");
+            boost::shared_ptr<RBX::Soundscape::Sound> first=service.loadSound(id,false);
+            verify(first && first==service.loadSound(id,false) && first!=service.loadSound(id,true));
+            RBX::Soundscape::SoundChannel sound;
+            sound.setSoundId(id);verify(sound.getSoundId()==id && sound.getPlayCount()==-1);
+            sound.pause();verify(sound.getPlayCount()==0);sound.stop();verify(sound.getPlayCount()==-1);
+            std::printf("P4 Sound service PASS constructor/cache/channel state\n");
+        }
+        {
+            RBX::GameSettings::singleton().soundEnabled=false;
+            boost::shared_ptr<RBX::DataModel> model=RBX::DataModel::createDataModel();
+            {
+                RBX::DataModel::Lock lock(model);
+                boost::shared_ptr<RBX::Soundscape::SoundService> service=RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>();
+                service->setParent(model.get());
+                verify(service->getParent()==model.get() && service->getChildren() && service->getChildren().read()->size()==14);
+                for(size_t i=0;i<service->getChildren().read()->size();++i){
+                    RBX::Soundscape::SoundChannel* stock=dynamic_cast<RBX::Soundscape::SoundChannel*>((*service->getChildren().read())[i].get());
+                    verify(stock && stock->getSoundId().toString().find("rbxasset://Sounds\\")==0);
+                }
+                service->setParent(0);verify(!service->getParent() && (!service->getChildren() || service->getChildren().read()->empty()));
+            }
+            RBX::DataModel::closeDataModel(model,true);model.reset();
+            std::printf("P4 Sound service PASS provider/14 stock sounds/detach\n");
+        }
+        {
+            boost::shared_ptr<RBX::DataModel> model=RBX::DataModel::createDataModel();
+            {
+                RBX::DataModel::Lock lock(model);
+                std::istringstream xml("<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties><Item class=\"Sound\"><Properties><string name=\"Name\">TestSound</string><Content name=\"SoundId\"><url>rbxasset://tone.wav</url></Content></Properties></Item></Item></roblox>");
+                SerializerV2 serializer;serializer.loadXML(xml,model.get());
+                RBX::Soundscape::SoundChannel* sound=dynamic_cast<RBX::Soundscape::SoundChannel*>(model->getWorkspace()->findFirstChildByName("TestSound"));
+                verify(sound && sound->getSoundId().toString()=="rbxasset://tone.wav");
+            }
+            RBX::DataModel::closeDataModel(model,true);model.reset();
+            std::printf("P4 Sound service PASS serialized SoundId/factory\n");
+        }
+        {
             static SoundIdProbe probe;
             verify(probe.type.name.toString()=="Content" && probe.type.tag.toString()=="Content");
             verify(probe.setStringValue(0,"rbxasset://sounds/test.wav"));
@@ -102,6 +145,25 @@ int main(int argc,char** argv){
         std::printf("fmod loaded: %s\n",dllPath);
         // Isolate loader/PCM ownership. No claim of audible or service playback.
         check(system->setOutput(FMOD_OUTPUTTYPE_NOSOUND));check(system->init(100,FMOD_INIT_NORMAL,0));
+        {
+            boost::shared_ptr<RBX::DataModel> model=RBX::DataModel::createDataModel();
+            {
+                RBX::DataModel::Lock lock(model);
+                boost::shared_ptr<RBX::Soundscape::SoundService> service=RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>();
+                service->setParent(model.get());service->system=system;
+                boost::shared_ptr<RBX::Soundscape::SoundChannel> sound=RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>();
+                sound->setSoundId(RBX::Soundscape::SoundId("rbxasset://tone.wav"));
+                sound->setParent(model->getWorkspace());sound->setPlayCount(1);
+                verify(sound->fmod_channel && sound->sound && sound->sound->refCount==1);
+                bool playing=false;check(sound->fmod_channel->isPlaying(&playing));verify(playing);
+                sound->pause();bool paused=false;check(sound->fmod_channel->getPaused(&paused));verify(paused);
+                sound->stop();verify(!sound->fmod_channel && sound->getPlayCount()==-1);
+                sound->setParent(0);verify(!sound->sound);
+                service->system=0;service->setParent(0);
+            }
+            RBX::DataModel::closeDataModel(model,true);model.reset();
+            std::printf("P4 Sound service PASS native FMOD play/pause/stop/detach NOSOUND\n");
+        }
         {
             FMOD_REVERB_PROPERTIES preset;
             FILE* presets=std::fopen("reverb-presets.bin","wb");verify(presets!=0);

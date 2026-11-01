@@ -1,4 +1,4 @@
-"""Record the current Sound deserialization gap against authored fixtures."""
+"""Record Sound deserialization against authored fixtures."""
 import hashlib
 import json
 from pathlib import Path
@@ -29,9 +29,9 @@ def run(name, fixture):
 
 sound = run('sound', ROOT / 'rebuild/2008-06/tests/fixtures/sound-load.rbxl')
 control = run('humanoid', ROOT / 'rebuild/2008-06/tests/fixtures/humanoid-load.rbxl')
-assert sound['sounds'] == 0 and control['humanoids'] == 1
+assert sound['sounds'] == 1 and control['humanoids'] == 1
 receipt = {'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
            'exe_sha256': sha(EXE), 'sound_fixture': sound, 'humanoid_control': control,
-           'result': 'Sound fixture contains one Sound, but player retains zero; P4 remains open.'}
+           'result': 'Sound fixture retains its serialized Sound; full P4 audio remains open.'}
 (OUT / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(receipt['result'])

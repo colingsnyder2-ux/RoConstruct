@@ -6,6 +6,7 @@
 #include "script/ScriptContext.h"
 #include "security/SecurityContext.h"
 #include "util/ContentProvider.h"
+#include "util/Sound.h"
 #include "util/standardout.h"
 #include "util/Utilities.h"
 #include <G3D/Vector3.h>
@@ -32,6 +33,8 @@ struct Echo : RBX::Listener<RBX::StandardOut, RBX::StandardOutMessage>
 extern "C" int LoadPlace(const char* text)
 {
     RBX::StandardOut::singleton()->addListener(&g_echo);
+    boost::shared_ptr<RBX::Soundscape::SoundChannel> soundFactoryLink = RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>();
+    soundFactoryLink.reset();
     g_dataModel = RBX::DataModel::createDataModel();
     RBX::DataModel::Lock lock(g_dataModel);
     std::istringstream stream(text ? text : "");

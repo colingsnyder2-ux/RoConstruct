@@ -2438,7 +2438,7 @@
   ],
   [
     "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{",
-    "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{\n\t\t\tfriend class ::SoundServiceStatsItem;"
+    "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{\n\t\t\tfriend class ::SoundServiceStatsItem;\n\t\t\tfriend class SoundChannel;"
   ],
   [
     "\t\t\tReflection::BoundProp<float, 1> prop_dopplerscale;",
