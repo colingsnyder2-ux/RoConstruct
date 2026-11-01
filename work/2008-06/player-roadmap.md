@@ -2121,3 +2121,6 @@ Native GuidItem<Instance> shared declaration recovered from existing openrbx sou
 
 
 Native Instance hierarchy candidate at 5ac7039870 uses GuidItem primary base, original RTTI order, native event-type spellings and recovered member types. MSVC21022 confirms size0x130, association0xec and parent0x104; compiler layout evidence in shared-layouts/instance-compile.json and instance-layout.log. Full virtual signatures, ownership lifetimes and dependent classes remain open; source is inactive and donor runtime unchanged.
+
+
+Native ServiceProvider candidate at c1aedcaf36 builds on native Instance and original three-notifier RTTI. MSVC21022 confirms size0x1c8, serviceArray0x190 and serviceMap0x1a8, matching original00568bf0 member boundaries. Existing source supplies container type candidates; virtual behavior and ownership still require proof. Receipt shared-layouts/service-compile.json. Inactive; no runtime change.
