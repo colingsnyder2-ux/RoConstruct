@@ -1,38 +1,45 @@
-// from server: 66% by colin
-// roc 2007-08 00538920  unit: RBX::VScriptContext::?$FactoryProduct  size: 129 bytes
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+extern "C" void* __cdecl getUserData(void* state, int index);
+extern "C" int __cdecl getMetatable(void* state, int index);
+extern "C" void __cdecl getField(void* state, int index, const char* name);
+extern "C" int __cdecl rawEqual(void* state, int first, int second);
+extern "C" void __cdecl setTop(void* state, int index);
+extern "C" void* __cdecl getDescriptor();
 
-extern "C" int __cdecl sub_5BDA90(int, int);
-extern "C" int __cdecl sub_5BDF20(int, int);
-extern "C" int __cdecl sub_5BDE00(int, int, int);
-extern "C" int __cdecl sub_5BD850(int, int, int);
-extern "C" int __cdecl sub_5BD590(int, int);
-extern "C" int __cdecl sub_56D680();
-extern "C" void __cdecl sub_4B1260(int, int);
+extern const char* fieldName;
 
-extern int dword_8ABC2C;
-
-struct S {
-    bool f(int a, int b, int* out);
+struct Reference
+{
+    void assign(void* object);
 };
 
-bool S::f(int a, int b, int* out)
+struct Result
 {
-    int edi = sub_5BDA90(a, b);
-    if (edi == 0)
-        return false;
+    void* descriptor;
+    Reference reference;
+};
 
-    if (sub_5BDF20(a, b) == 0)
+bool __cdecl convert(void* state, int index, Result* result)
+{
+    void* object = getUserData(state, index);
+    if (object)
     {
-        sub_5BD590(a, -2);
-        return false;
+        if (getMetatable(state, index))
+        {
+            getField(state, -10000, fieldName);
+            if (rawEqual(state, -1, -2))
+            {
+                setTop(state, -3);
+                result->descriptor = getDescriptor();
+                result->reference.assign(object);
+                return true;
+            }
+        }
+        else
+        {
+            setTop(state, -2);
+        }
     }
-
-    sub_5BDE00(a, -10000, dword_8ABC2C);
-    if (sub_5BD850(a, -1, -2) == 0)
-        return false;
-
-    sub_5BD590(a, -3);
-    *out = sub_56D680();
-    sub_4B1260((int)(out + 1), edi);
-    return true;
+    return false;
 }

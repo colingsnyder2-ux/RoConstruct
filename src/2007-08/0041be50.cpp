@@ -1,13 +1,12 @@
-// from server: 42% by colin
-extern "C" int __cdecl func_0052c940(int, int);
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-int g_8bb460;
-int g_8bb45c;
+int sub_52C940(int, int);
 
-void func_0041be50()
+int func_0041be50()
 {
-    if ((g_8bb460 & 1) == 0) {
-        g_8bb460 |= 1;
-        g_8bb45c = func_0052c940(-1, 0x89fe94);
-    }
+    static int v = sub_52C940(0x89fe94, 0xffffffff);
+    return v;
 }

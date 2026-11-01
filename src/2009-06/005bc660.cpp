@@ -1,5 +1,5 @@
-// from server: 62% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+unsigned f(unsigned a, int b, unsigned c) { return c ? a % c : 0; }

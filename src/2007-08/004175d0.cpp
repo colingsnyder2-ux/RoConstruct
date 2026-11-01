@@ -1,15 +1,18 @@
-// from server: 91% by colin
-struct Marshaller {
-    int execute(int, int, int, int, int, int);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Marshaller
+{
+    int dispatch(int message, int wparam, int lparam, int* handled);
+    int execute(int window, int message, int wparam, int lparam,
+                int* result, int handled);
 };
 
-extern "C" int __stdcall sub_416FA0(int, int, int, int);
-
-int Marshaller::execute(int a, int b, int c, int d, int e, int f)
+int Marshaller::execute(int window, int message, int wparam, int lparam,
+                        int* result, int handled)
 {
-    if (f == 0 && b == 0x465) {
-        int r = sub_416FA0(0x465, d, c, (int)&f);
-        *(int*)e = r;
+    if (handled == 0 && message == 0x465)
+    {
+        *result = dispatch(0x465, wparam, lparam, &handled);
         return 1;
     }
     return 0;

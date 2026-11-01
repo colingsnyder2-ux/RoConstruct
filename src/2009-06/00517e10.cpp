@@ -1,13 +1,18 @@
-// from server: 64% by atomic.potato
-struct RBX_PartChunk_00517e10 {
-    char pad[0x8c];
-    int m_field_8c;
-    virtual void* vf_30(int, int, int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct R_00517e10 { R_00517e10(const R_00517e10&); ~R_00517e10(); int x; };
+struct C_00517e10 {
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
+    virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11();
+    virtual R_00517e10 get(int m, int z);
+    R_00517e10 f();
+    char pad[0x88];
+    int m;
 };
-
-void* __fastcall sub_00517e10(RBX_PartChunk_00517e10* self, void* unused, void* out)
+R_00517e10 C_00517e10::f()
 {
-    int zero = 0;
-    self->vf_30(self->m_field_8c, (int)out, zero);
-    return out;
+    return get(m, 0);
 }

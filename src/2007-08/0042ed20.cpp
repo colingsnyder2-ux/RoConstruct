@@ -1,17 +1,19 @@
-// from server: 90% by colin
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+typedef int (__thiscall *DispatchFn)(void *, int, int, int, int);
+
 struct CWrapperView {
-    char pad[0x58];
-    struct VTable {
-        char pad[0x14];
-        int (__stdcall *func)(int, int, int, int);
-    } *vt;
-    int method(int a, int b, int c, int d);
+    char padding[0x58];
+    struct {
+        DispatchFn *vtable;
+    } target;
+
+    int BaseDispatch(int, int, int, int);
+    int Dispatch(int, int, int, int);
 };
 
-extern "C" int __stdcall sub_63003a(int, int, int, int);
-
-int CWrapperView::method(int a, int b, int c, int d) {
-    if (sub_63003a(a, b, c, d))
+int CWrapperView::Dispatch(int a, int b, int c, int d) {
+    if (BaseDispatch(a, b, c, d))
         return 1;
-    return vt->func(a, b, c, d);
+    return target.vtable[5](&target, a, b, c, d);
 }

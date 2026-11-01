@@ -1,61 +1,26 @@
-// from server: 62% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/ScriptEvent.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "script/ScriptEvent.h"
-
-namespace RBX
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF- /GS- /EHsc /MD
+struct B_0043f280 {
+    void* f_0;
+    char pad_4[16];
+    void* f_14;
+    void* f_18;
+    char pad_1c[4];
+    void* f_20;
+    char pad_24[0x8c - 0x24];
+    B_0043f280();
+};
+struct X_0043f280 : B_0043f280 {
+    void* f_8c;
+    X_0043f280();
+};
+X_0043f280::X_0043f280()
 {
-    namespace Lua
-    {
-        YieldingThreads::YieldingThreads(ScriptContext* context)
-            : context(context)
-        {
-        }
-
-        void YieldingThreads::queueWaiter(lua_State* L)
-        {
-            queueWaiter(L, 0.0f);
-        }
-
-        void YieldingThreads::queueWaiter(lua_State* L, float delay)
-        {
-            RobloxExtraSpace::get(L)->yieldCaptured = true;
-            waitingThreads.push_back(WaitingThread(L, delay));
-        }
-
-        void YieldingThreads::resume(Heartbeat heartbeat)
-        {
-            if (waitingThreads.empty())
-                return;
-
-            std::vector<WaitingThread> copy = waitingThreads;
-            waitingThreads.erase(waitingThreads.begin(), waitingThreads.end());
-
-            std::vector<WaitingThread>::iterator it = copy.begin();
-            for (; it != copy.end(); it++)
-            {
-                if (it->thread->empty())
-                    continue;
-
-                // TODO: LHS and RHS swapped in codegen
-                it->elapsedTime += heartbeat.step;
-
-                if (it->elapsedTime < it->requestedDelay)
-                {
-                    waitingThreads.push_back(*it);
-                    continue;
-                }
-
-                lua_State* L = it->thread->thread();
-                const int oldTop = lua_gettop(L);
-                lua_pushnumber(L, it->elapsedTime);
-                context->resume(L, 1);
-                lua_settop(L, oldTop);
-            }
-        }
-    }
+    f_0 = (void*)0x8b5fa4;
+    f_14 = (void*)0x8b5f98;
+    f_18 = (void*)0x8b5f90;
+    f_20 = (void*)0x8b5f88;
+    f_8c = 0;
 }

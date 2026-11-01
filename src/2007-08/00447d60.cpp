@@ -1,32 +1,58 @@
-// from server: 91% by colin
-// roc 2007-08 00447d60  unit: seg_00440000  size: 80 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00447d60
-
-extern "C" int __cdecl sub_6303d0();
-extern "C" void __cdecl sub_6306b2(int);
-extern "C" void __cdecl sub_6306b8(int, int, int);
-extern "C" int (__stdcall *FlashWindow)(void*, int);
-
-struct CRenderSettings {
-    void method(int, int);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Window {
+    char reserved[32];
+    void* handle;
 };
 
-void CRenderSettings::method(int a, int b)
+struct Object {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual void v24();
+    virtual void v25();
+    virtual void v26();
+    virtual void v27();
+    virtual void v28();
+    virtual void v29();
+    virtual void v30();
+    virtual Window* window();
+};
+
+extern "C" Object* __stdcall getObject();
+extern "C" int (__stdcall *FlashWindow)(void*, int);
+extern "C" void __stdcall notify(unsigned int, unsigned int, int);
+extern "C" void __stdcall finish(int);
+
+void __stdcall function(int, int)
 {
-    int* p = (int*)sub_6303d0();
-    if (p) {
-        int* q = (int*)(*(int (__thiscall**)(int*))(*(int*)p + 0x7c))(p);
-        if (q) {
-            int* r = (int*)sub_6303d0();
-            int* s;
-            if (r) {
-                s = (int*)(*(int (__thiscall**)(int*))(*(int*)r + 0x7c))(r);
-            } else {
-                s = 0;
-            }
-            FlashWindow((void*)s[8], 0);
-            sub_6306b8(0xc4, 0, -1);
-        }
+    Object* p = getObject();
+    if (p && p->window()) {
+        p = getObject();
+        Window* w = p ? p->window() : 0;
+        FlashWindow(w->handle, 0);
+        notify(196, 0, -1);
     }
-    sub_6306b2(0);
+    finish(0);
 }

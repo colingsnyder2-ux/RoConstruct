@@ -1,35 +1,44 @@
-// from server: 75% by tester
-struct VCBrowserViewExternal {
-    void* vtable0;
-    void* vtable4;
-    char pad8[0x0C];
-    void* field14;
-    int field18;
-    void* ctor(char flag);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+extern int table0[];
+extern int table4[];
+extern int table8[];
+extern int table20[];
+
+struct Interface {
+    virtual void slot0() = 0;
+    virtual void slot1() = 0;
+    virtual void release() = 0;
 };
 
-extern "C" void __stdcall sub_62FC62(void* p);
-extern "C" void __stdcall sub_466B20(void* p);
+extern Interface* globalObject;
+extern "C" void __cdecl deallocate(void*);
 
-extern void* g_8BAE44;
+struct Part {
+    int* table;
+    int reserved[2];
+    void destroy();
+};
 
-void* VCBrowserViewExternal::ctor(char flag) {
-    this->vtable0 = (void*)0x785C84;
-    this->vtable4 = (void*)0x785C6C;
-    char* edi = (char*)this + 8;
-    *(void**)edi = (void*)0x785C48;
-    this->field14 = (void*)0x785C20;
-    this->field18 = (int)0xC0000001;
+struct S {
+    int* table0;
+    int* table4;
+    Part part;
+    int* table20;
+    unsigned int state;
+    S* destroy(unsigned int flags);
+};
 
-    void* ecx = g_8BAE44;
-    void** vt = *(void***)ecx;
-    void (*fn)(void*) = (void (*)(void*))vt[2];
-    fn(ecx);
-
-    sub_466B20(edi);
-
-    if (flag & 1) {
-        sub_62FC62(this);
-    }
+S* S::destroy(unsigned int flags)
+{
+    this->table0 = ::table0;
+    this->table4 = ::table4;
+    part.table = table8;
+    this->table20 = ::table20;
+    state = 0xC0000001U;
+    globalObject->release();
+    part.destroy();
+    if (flags & 1)
+        deallocate(this);
     return this;
 }

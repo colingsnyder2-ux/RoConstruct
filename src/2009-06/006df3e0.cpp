@@ -1,37 +1,25 @@
-// from server: 63% by colin
-struct Effect {
-    char pad[0x24];
-    float x;
-    float y;
-    float z;
-    Effect* __cdecl init(const float* a, const float* b, float s);
-};
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs roc_espclaude_67f6dc848e962a7c.cpp
 
-extern "C" void __stdcall sub_6df3a0(float* out, const float* a, const float* b);
-extern "C" void __fastcall sub_577bb0(const float* base, int idx, float* out);
-extern "C" float* __cdecl sub_578790();
-extern "C" void __fastcall sub_499f80(void* self, const void* src);
-
-extern float g_8cc040;
-
-Effect* Effect::init(const float* a, const float* b, float s)
+// Candidate translation unit (score above; library headers required).
+#include "G3D/CoordinateFrame.h"
+namespace RBX
 {
-    float tmp[3];
-    sub_6df3a0(tmp, a, b);
+	class ICharacterSubject
+	{
+	public:
+		static G3D::CoordinateFrame getFocusLookingAtGoal(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal);
+		static G3D::CoordinateFrame goalFromDistance(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal, const float distance);
+	};
 
-    float scale = g_8cc040;
-    float v[3];
-    sub_577bb0(tmp, 2, v);
+	G3D::CoordinateFrame ICharacterSubject::goalFromDistance(const G3D::CoordinateFrame& cameraFocus, const G3D::CoordinateFrame& cameraGoal, const float distance)
+	{
+		G3D::CoordinateFrame manLookCamera = getFocusLookingAtGoal(cameraFocus, cameraGoal);
+		G3D::Vector3 newCameraPt = manLookCamera.lookVector() * distance + manLookCamera.translation;
 
-    float rx = v[0] * scale * s + a[0];
-    float ry = v[1] * scale * s + a[1];
-    float rz = v[2] * scale * s + a[2];
-
-    float* q = sub_578790();
-    sub_499f80(this, q);
-
-    this->x = rx;
-    this->y = ry;
-    this->z = rz;
-    return this;
+		return G3D::CoordinateFrame(G3D::Matrix3::identity(), newCameraPt);
+	}
 }

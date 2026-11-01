@@ -1,44 +1,38 @@
-// from server: 69% by colin
-// roc 2007-08 004edf50  unit: HeadBuilder  size: 47 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004edf50
-//
-// 004edf50  83ec08               sub esp, 8
-// 004edf53  8b4124               mov eax, dword ptr [ecx + 0x24]
-// 004edf56  d94120               fld dword ptr [ecx + 0x20]
-// 004edf59  66890424             mov word ptr [esp], ax
-// 004edf5d  d95c2404             fstp dword ptr [esp + 4]
-// 004edf61  6689442402           mov word ptr [esp + 2], ax
-// 004edf66  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 004edf6a  8b1424               mov edx, dword ptr [esp]
-// 004edf6d  50                   push eax
-// 004edf6e  8b442408             mov eax, dword ptr [esp + 8]
-// 004edf72  52                   push edx
-// 004edf73  50                   push eax
-// 004edf74  e8e7ecffff           call 0x4ecc60
-// 004edf79  83c408               add esp, 8
-// 004edf7c  c20400               ret 4
-
-struct HeadBuilder {
-    char pad[0x20];
-    float f20;
-    unsigned short w24;
-    void sub_4edf50(int);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Pair
+{
+    short x;
+    short y;
 };
 
-void HeadBuilder::sub_4edf50(int arg)
+struct Scalar
 {
-    struct Local {
-        unsigned short a;
-        unsigned short b;
-        float c;
-    } local;
-    local.a = w24;
-    local.c = f20;
-    local.b = w24;
-    int v = arg;
-    unsigned short a = local.a;
-    unsigned short b = local.b;
-    float c = local.c;
-    extern void __stdcall func_4ecc60(unsigned short, unsigned short, float, int);
-    func_4ecc60(a, b, c, v);
+    float value;
+};
+
+struct Data
+{
+    Pair p;
+    Scalar v;
+};
+
+struct S
+{
+    char padding[32];
+    float value;
+    int count;
+
+    void helper(Scalar, Pair, int);
+    void func_00500050(int);
+};
+
+void S::func_00500050(int arg)
+{
+    Data d;
+    d.v.value = value;
+    int c = count;
+    d.p.x = (short)c;
+    d.p.y = (short)c;
+    helper(d.v, d.p, arg);
 }

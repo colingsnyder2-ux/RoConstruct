@@ -1,18 +1,8 @@
-// from server: 65% by colin
-struct InsertDecal {
-    void* vtable;
-    InsertDecal(const char* name);
-};
-
-extern "C" void __stdcall sub_55F270();
-extern "C" void* __stdcall sub_77E698();
-
-InsertDecal::InsertDecal(const char* name)
-{
-    char buf[0x1c];
-    void* p = buf;
-    (void)p;
-    sub_77E698();
-    sub_55F270();
-    vtable = (void*)0x787ae4;
-}
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string>
+struct B{virtual ~B(){}; B(std::string,int);};
+struct CutVerb:B{CutVerb(int);};
+CutVerb::CutVerb(int p):B("Insert Object",p){}

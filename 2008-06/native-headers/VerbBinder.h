@@ -11,10 +11,9 @@ namespace RBX { class Name; }
 template<class Derived, class Base>
 class VerbBinder : public Base {
 protected:
-    std::map<DWORD, const RBX::Name*> commandNames;
+    std::map<UINT, const RBX::Name*> commandNames;
 
 public:
     VerbBinder() : Base() {}
-    __forceinline virtual ~VerbBinder() {}
     virtual BOOL OnCmdMsg(UINT, int, void*, AFX_CMDHANDLERINFO*);
 };

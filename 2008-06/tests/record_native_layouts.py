@@ -49,7 +49,8 @@ classes = {}
 for match in names:
     name = match.group()[:-1].decode('ascii', errors='replace')
     if not (name in ('.?AVCRobloxDoc@@', '.?AVCRobloxView@@', '.?AVCMainFrame@@', '.?AVCRobloxApp@@',
-                     '.?AVCWorkspace@@', '.?AVCRobloxWnd@@', '.?AVCReflectorWnd@@')
+                     '.?AVCWorkspace@@', '.?AVCRobloxWnd@@', '.?AVCReflectorWnd@@', '.?AVDataModel@RBX@@',
+                     '.?AVWorkspace@RBX@@', '.?AVSelection@RBX@@')
             or 'CComObject@VCWorkspace@@' in name
             or 'VerbBinder@VCRoblox' in name
             or re.fullmatch(r'\.\?AV(?:HumanoidState|MovingNoPhysicsBase|RunningNoPhysics|Freefall|Landed|Jumping)@HUMAN@RBX@@', name)):
@@ -90,6 +91,9 @@ for address, label, length in (
     (0x455820, 'document run: create and retain XML snapshot before running', 504),
     (0x455580, 'document stop: load retained XML then clear snapshot ownership', 669),
     (0x452f60, 'document OnNewDocument including std::exception reference handler', 149),
+    (0x57c080, 'DataModel factory: allocation 0x264 and constructor 0057b9f0', 120),
+    (0x57b9f0, 'DataModel constructor: primary RTTI vtable and workspace member', 486),
+    (0x57ad70, 'DataModel destructor', 674),
     (0x66f070, 'MovingNoPhysicsBase constructor', 0x180),
     (0x66ed50, 'MovingNoPhysicsBase release', 0x140),
 ):

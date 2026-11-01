@@ -1,20 +1,12 @@
-// from server: 55% by colin
-extern "C" int __cdecl sub_00554B20();
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-int g_8bbed8;
-int g_8bbed4;
+int sub_554B20();
 
-void func_0044d0f0()
+int func_0044d0f0()
 {
-    __try
-    {
-        if ((g_8bbed8 & 1) == 0)
-        {
-            g_8bbed8 |= 1;
-            g_8bbed4 = sub_00554B20();
-        }
-    }
-    __except (1)
-    {
-    }
+    static int v = sub_554B20();
+    return v;
 }

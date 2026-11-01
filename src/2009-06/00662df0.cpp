@@ -1,26 +1,33 @@
-// from server: 62% by atomic.potato
-struct S_func_0065bc50 {
-    char pad0[308];
-    int m_x;
-    int* f();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace RBX {
+enum SurfaceType { SMOOTH = 0 };
+enum NormalId { NORM_X = 0, NORM_Y, NORM_Z, NORM_X_NEG, NORM_Y_NEG, NORM_Z_NEG };
+namespace Reflection { class DescribedBase { public: virtual ~DescribedBase(); }; }
+class Surface { int data[2]; public: SurfaceType getType() const; };
+class Surfaces {
+    Surface surfaces[6];
+public:
+    const Surface& operator[](NormalId id) const { return surfaces[id]; }
 };
-
-struct S {
-    char pad0[4];
-    void* m_fn;
-    void g(void*);
+class ExePad { public: virtual ~ExePad(); char pad[0x14]; };
+class PartInstance : public ExePad, public Reflection::DescribedBase {
+public:
+    const Surfaces& getSurfaces() const;
 };
-
-void S::g(void* p)
+template<NormalId face>
+class SurfaceGetSet {
+public:
+    virtual SurfaceType getValue(const Reflection::DescribedBase* p) const;
+    SurfaceType (Surface::*get)() const;
+};
+template<NormalId face>
+SurfaceType SurfaceGetSet<face>::getValue(const Reflection::DescribedBase* p) const
 {
-    S_func_0065bc50* o;
-    if (p) {
-        o = (S_func_0065bc50*)((char*)p - 0x18);
-    } else {
-        o = 0;
-    }
-    int* r = o->f();
-    void* q = (char*)r + 0x18;
-    void (*fn)(void*) = (void (*)(void*))m_fn;
-    fn(q);
+    const PartInstance* part = static_cast<const PartInstance*>(p);
+    return (part->getSurfaces()[face].*get)();
+}
+template class SurfaceGetSet<NORM_X_NEG>;
 }

@@ -1,21 +1,28 @@
-// from server: 24% by colin
-struct FilteredSelection {
-    char pad[0x24];
-    void* field24;
-    FilteredSelection(const FilteredSelection& other, int a, int b, int c);
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string>
+void* __cdecl lookup(void*, int);
+
+struct Base {
+    virtual void dispatch();
+    char storage[32];
+
+    Base(std::string, int);
+    ~Base();
 };
 
-extern "C" {
-    void __stdcall sub_77E69C(void*, const void*);
-    void* __stdcall sub_52C940(int, int);
-}
+struct S : Base {
+    void* selection;
 
-void __stdcall sub_55FC40();
+    virtual void dispatch();
+    S(const std::string&, int, void*);
+};
 
-FilteredSelection::FilteredSelection(const FilteredSelection& other, int a, int b, int c) {
-    char local[0x1c];
-    sub_77E69C(local, &other);
-    sub_55FC40();
-    field24 = sub_52C940(a, -1);
-    *(void**)this = (void*)0x7a94f4;
+S::S(const std::string& name, int kind, void* source)
+    : Base(name, kind)
+{
+    selection = lookup(source, -1);
 }

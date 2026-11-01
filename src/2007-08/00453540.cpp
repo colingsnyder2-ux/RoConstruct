@@ -1,16 +1,12 @@
-// from server: 37% by colin
-extern unsigned char G_flag;
-extern void* G_ptr;
-extern unsigned int G_cookie;
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-extern "C" void* __stdcall sub_0052c940(int, int);
+int sub_52C940(int, int);
 
-void* sub_00453540()
+int func_00453540()
 {
-    if ((G_flag & 1) == 0)
-    {
-        G_flag |= 1;
-        G_ptr = sub_0052c940(-1, (int)0x8a5afc);
-    }
-    return G_ptr;
+    static int v = sub_52C940(0x8a5afc, 0xffffffff);
+    return v;
 }

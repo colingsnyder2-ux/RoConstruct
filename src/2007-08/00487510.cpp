@@ -1,21 +1,12 @@
-// from server: 45% by colin
-struct GWindow {
-    static int s_initialized;
-    static int s_value;
-    static int init();
-};
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-int GWindow::s_initialized = 0;
-int GWindow::s_value = 0;
+int sub_554B20();
 
-extern "C" int __cdecl sub_554B20();
-
-int GWindow::init()
+int func_00487510()
 {
-    if (!(s_initialized & 1))
-    {
-        s_initialized |= 1;
-        s_value = sub_554B20();
-    }
-    return s_value;
+    static int v = sub_554B20();
+    return v;
 }

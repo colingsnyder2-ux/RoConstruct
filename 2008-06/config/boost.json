@@ -5,6 +5,7 @@
   {
    "name": "upstream",
    "mode": "direct",
+   "recipe": "boost-1.34.1",
    "dir": "tools/libs/boost_1_34_1",
    "files": "libs/thread/src/*.cpp libs/signals/src/*.cpp libs/filesystem/src/*.cpp libs/date_time/src/gregorian/*.cpp libs/regex/src/*.cpp libs/iostreams/src/zlib.cpp libs/iostreams/src/file_descriptor.cpp libs/iostreams/src/mapped_file.cpp",
    "exclude": [

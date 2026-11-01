@@ -1,21 +1,26 @@
-// from server: 88% by colin
-struct CRobloxDHtmlDialog {
-    char pad[0x114];
-    void* field_114;
-    char pad2[0x10];
-    void* field_128;
-    int sub_44cd50();
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct S;
+typedef const char* (__thiscall *StringAccessor)(const void*);
+extern StringAccessor stringAccessor;
+
+struct S
+{
+    char padding[0x114];
+    char text[0x14];
+    unsigned int length;
+
+    void prepare();
+    void apply(const char*, int, int, int, int, int);
+    int f();
 };
 
-extern "C" void* __stdcall sub_77e6a8(void*, int, int, int, int, int);
-extern "C" void __stdcall sub_6308da();
-extern "C" void __stdcall sub_6308d4(void*, void*);
-
-int CRobloxDHtmlDialog::sub_44cd50() {
-    sub_6308da();
-    if (field_128 != 0) {
-        void* p = sub_77e6a8(&field_114, 0, 0, 0, 0, 0);
-        sub_6308d4(this, p);
+int S::f()
+{
+    prepare();
+    if (length != 0)
+    {
+        apply(stringAccessor(text), 0, 0, 0, 0, 0);
         return 0;
     }
     return 1;

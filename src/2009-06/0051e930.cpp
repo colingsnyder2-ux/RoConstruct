@@ -1,108 +1,59 @@
-// from server: 62% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include <map>
+namespace G3D {
+class System {
+public:
+    static void* alignedMalloc(unsigned int bytes, unsigned int alignment);
+    static void memset(void* dst, unsigned char value, unsigned int numBytes);
+};
+template<class Key, class Value> class Table {
+    class Node;
+    unsigned int _size;
+    Node** bucket;
+    unsigned int numBuckets;
+public:
+    Table() {
+        numBuckets = 10;
+        _size = 0;
+        bucket = (Node**)System::alignedMalloc(sizeof(Node*) * numBuckets, 16);
+        System::memset(bucket, 0, sizeof(Node*) * numBuckets);
+    }
+    virtual ~Table();
+};
 }
-
-void initMoo()
+namespace RBX {
+template<class T> struct Less { Less() {} };
+template<class T> struct Alloc { Alloc() {} };
+template<class T> struct SharedRef { T* px; void* pn; SharedRef() : px(0), pn(0) {} ~SharedRef(); };
+template<class K, class V> class Tree {
+public:
+    Tree(const Less<K>& c, const Alloc<V>& a);
+    ~Tree();
+    char data[0x20];
+};
+template<class K, class V> class Map : public Tree<K, V> {
+public:
+    Map() : Tree<K, V>(Less<K>(), Alloc<V>()) {}
+};
+class RenderSurfaceTypes;
+struct Variations;
+struct KeyA; struct KeyB;
+class MeshCache {
+public:
+    MeshCache();
+    G3D::Table<RenderSurfaceTypes, G3D::Table<int, Variations> > table;
+    void* a;
+    void* b;
+    SharedRef<KeyA> ref;
+    std::map<KeyA*, int> mapA;
+    std::map<KeyB*, int> mapB;
+    int count;
+};
+typedef char check1[sizeof(std::map<int,int>) == 0x20 ? 1 : -1];
+MeshCache::MeshCache() : a(0), b(0), count(0)
 {
-	moo2();
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

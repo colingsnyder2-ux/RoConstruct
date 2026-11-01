@@ -1,20 +1,12 @@
-// from server: 57% by colin
-// roc 2007-08 004874a0  unit: G3D::GWindow  size: 106 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004874a0
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-extern "C" int __cdecl sub_554b20();
+int sub_554B20();
 
-int g_8bdc64;
-int g_8bdc68;
-
-int sub_4874a0()
+int func_004874a0()
 {
-    __try {
-        if (!(g_8bdc68 & 1)) {
-            g_8bdc68 |= 1;
-            g_8bdc64 = sub_554b20();
-        }
-    } __except (1) {
-    }
-    return g_8bdc64;
+    static int v = sub_554B20();
+    return v;
 }

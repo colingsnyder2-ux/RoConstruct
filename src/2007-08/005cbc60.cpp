@@ -1,37 +1,38 @@
-// from server: 76% by colin
-extern "C" {
-    int __cdecl sub_5bf650(int a, int b, int c, int d);
-    int __cdecl sub_5bf500(int a, int b, int c);
-    int __cdecl sub_5be3f0(int a, int b, int c);
-    int __cdecl sub_5bdd60(int a, int b);
-    int __cdecl sub_5bdb70(int a, double b);
-}
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+// roc-lang: c
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /MD
 
-extern int g_7ba37c[];
-extern int g_7ba398;
-extern int g_7ba3a0;
-extern double g_79d618;
+typedef struct lua_State lua_State;
 
-int __cdecl sub_5cbc60(int a)
-{
-    int v;
-    int idx;
-    int r;
+extern int _luaL_checkoption(lua_State *L, int n, const char *def,
+                             const char *const lst[]);
+extern int _luaL_optinteger(lua_State *L, int n, int d);
+extern int _lua_gc(lua_State *L, int what, int data);
+extern void _lua_pushboolean(lua_State *L, int b);
+extern void _lua_pushnumber(lua_State *L, double n);
 
-    idx = sub_5bf650(a, 1, (int)&g_7ba398, (int)&g_7ba3a0);
-    v = sub_5bf500(a, 2, 0);
-    r = sub_5be3f0(a, g_7ba37c[idx], v);
-    idx = g_7ba37c[idx];
-
-    if (idx == 3) {
-        int t = sub_5be3f0(a, 4, 0);
-        double d = (double)t * g_79d618 + (double)r;
-        sub_5bdb70(a, d);
-    } else if (idx == 5) {
-        sub_5bdd60(a, r);
-    } else {
-        double d = (double)r;
-        sub_5bdb70(a, d);
+int _luaB_collectgarbage(lua_State *L) {
+  static const char *const opts[] = {"stop", "restart", "collect",
+    "count", "step", "setpause", "setstepmul", 0};
+  static const int optsnum[] = {0, 1, 2, 3, 5, 6, 7};
+  int o = _luaL_checkoption(L, 1, "collect", opts);
+  int ex = _luaL_optinteger(L, 2, 0);
+  int res = _lua_gc(L, optsnum[o], ex);
+  switch (optsnum[o]) {
+    case 3: {
+      int b = _lua_gc(L, 4, 0);
+      _lua_pushnumber(L, res + ((double)b/1024));
+      return 1;
     }
-    return 1;
+    case 5: {
+      _lua_pushboolean(L, res);
+      return 1;
+    }
+    default: {
+      _lua_pushnumber(L, res);
+      return 1;
+    }
+  }
 }

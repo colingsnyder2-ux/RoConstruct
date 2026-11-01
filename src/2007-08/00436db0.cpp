@@ -1,18 +1,24 @@
-// from server: 90% by colin
-struct CDeclarationView {
-    char pad[0xb0];
-    int field_0xb0;
-    void method_00436790(int);
-    void method_00436db0(int, int*);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Input {
+    char padding[0x5c];
+    int value;
 };
 
-void CDeclarationView::method_00436db0(int a, int* b)
+struct Handler {
+    void handle(int value);
+};
+
+struct CDeclarationView {
+    char padding[0xb0];
+    Handler* handler;
+
+    void process(Input* input, int* result);
+};
+
+void CDeclarationView::process(Input* input, int* result)
 {
-    int v = field_0xb0;
-    if (v != 0) {
-        method_00436790(*(int*)(a + 0x5c));
-        *b = 0;
-    } else {
-        *b = 0;
-    }
+    if (handler)
+        handler->handle(input->value);
+    *result = 0;
 }

@@ -1,46 +1,44 @@
-// from server: 67% by colin
-struct VCamera {
-    bool factoryProduct(float f);
+// from server: 100% by Yeetserama
+// from server: 100% by Espeon
+// from server: 82% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+extern float g83a3e8;
+
+namespace RBX {
+struct ICameraOwner {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void f();
 };
 
-extern float g_7b160c;
-extern float g_8c4ee0;
-extern int g_8c4ee4;
-
-struct Helper {
-    void sub_5995F0(float*, float*, float*);
-    void sub_599C10(float, float, float);
-    void* sub_599480();
+struct Camera {
+    ICameraOwner* getCameraOwner();
+    void getAngles(float&, float&, float&);
+    void setAngles(float, float, float);
+    bool adjust(float);
 };
+}
 
-bool VCamera::factoryProduct(float f) {
-    if (f == 0.0f) {
+bool RBX::Camera::adjust(float delta) {
+    if (delta == 0.0f)
         return false;
-    }
-    float a, b, c;
-    ((Helper*)this)->sub_5995F0(&a, &b, &c);
-    float t;
-    if (!(g_8c4ee4 & 1)) {
-        t = g_7b160c;
-        g_8c4ee4 |= 1;
-        g_8c4ee0 = t;
-    } else {
-        t = g_8c4ee0;
-    }
-    float sum = b + t;
-    float neg = -c;
-    if (!(neg < sum)) {
-        if (!(neg == sum)) {
-            float x = a;
-            ((Helper*)this)->sub_599C10(x, sum, f);
-            void* p = ((Helper*)this)->sub_599480();
-            if (p) {
-                void** vt = *(void***)p;
-                void (*fn)(void*) = (void (*)(void*))vt[3];
-                fn(p);
-            }
-            return true;
-        }
+
+    float x, y, z;
+    getAngles(x, y, z);
+
+    static float limit = g83a3e8;
+    double value = (double)delta + y;
+    value = -(double)limit >= value ? -(double)limit :
+        (value >= (double)limit ? (double)limit : value);
+
+    if (value != y) {
+        setAngles(x, (float)value, z);
+        ICameraOwner* owner = getCameraOwner();
+        if (owner)
+            owner->f();
+        return true;
     }
     return false;
 }

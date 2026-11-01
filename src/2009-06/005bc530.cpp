@@ -1,5 +1,16 @@
-// from server: 63% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Geometry/WmlConvexClipper.cpp
+// roc-cl: 21022
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+struct It {
+    int a, b;
+    ~It();
+};
+struct C {
+    It make(int a, int b, int c) const;
+    It begin() const;
+};
+It C::begin() const
+{
+    return make(0, 0, 0);
+}

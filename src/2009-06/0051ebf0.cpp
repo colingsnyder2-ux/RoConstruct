@@ -1,108 +1,44 @@
-// from server: 62% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include <set>
+namespace G3D {
+namespace System {
+void* alignedMalloc(size_t bytes, size_t alignment);
+void memset(void* dst, unsigned char value, size_t n);
 }
-
-void initMoo()
-{
-	moo2();
+template<class Key, class Value> class Table {
+    struct Node;
+    int _size;
+    Node** bucket;
+    int numBuckets;
+public:
+    Table() {
+        numBuckets = 10;
+        _size = 0;
+        bucket = (Node**)System::alignedMalloc(sizeof(Node*) * numBuckets, 16);
+        System::memset(bucket, 0, sizeof(Node*) * numBuckets);
+    }
+    virtual ~Table();
+};
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+struct RenderSurfaceTypes;
+struct Variations;
+struct E20 { int v[5]; };
+bool operator<(const E20&, const E20&);
+struct P8 { int v[2]; };
+bool operator<(const P8&, const P8&);
+struct Pair { int c; int d; Pair() : c(0), d(0) {} ~Pair(); };
+struct Holder {
+    G3D::Table<RenderSurfaceTypes, Variations> table;
+    int a;
+    int b;
+    Pair cd;
+    std::set<E20> s1;
+    std::set<P8> s2;
+    int e;
+    Holder() : a(0), b(0), e(0) {}
+    ~Holder();
+};
+Holder* make(void* p) { return new (p) Holder(); }

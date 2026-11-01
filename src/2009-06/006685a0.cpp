@@ -1,24 +1,21 @@
-// from server: 62% by atomic.potato
-struct T4_006685a0 {
-    void* f_006666b0();
-    void* f_006679f0();
-    void f_004e7a00();
-    void f_005d1e50(void*);
-    void f_006685a0(void*);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+class Y { public: void g(); };
+class Part { public: Y* getY(); };
+class Sel { public: void add(Part* p); };
+class H {
+public:
+    Part* getHead();
+    void f(Sel* sel);
 };
-
-void* get_006666b0();
-void* get_006679f0(void*);
-void call_004e7a00(void*);
-void call_005d1e50(void*, void*);
-
-void T4_006685a0::f_006685a0(void* arg)
+void H::f(Sel* sel)
 {
-    void* p = get_006666b0();
+    Part* p = getHead();
     if (p) {
-        void* q = get_006679f0(p);
-        if (q)
-            call_004e7a00(q);
-        call_005d1e50(arg, p);
+        if (Y* y = p->getY())
+            y->g();
+        sel->add(p);
     }
 }

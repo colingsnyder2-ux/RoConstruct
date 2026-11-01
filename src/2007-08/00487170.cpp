@@ -1,20 +1,12 @@
-// from server: 52% by colin
-extern "C" int __stdcall sub_52C940(int, int);
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-int g_8bdc3c;
-int g_8bdc40;
+int sub_52C940(int, int);
 
-void sub_487170()
+int func_00487170()
 {
-    __try
-    {
-        if ((g_8bdc40 & 1) == 0)
-        {
-            g_8bdc40 |= 1;
-            g_8bdc3c = sub_52C940(-1, 0x7b4c08);
-        }
-    }
-    __except (1)
-    {
-    }
+    static int v = sub_52C940(0x7b4c08, -1);
+    return v;
 }

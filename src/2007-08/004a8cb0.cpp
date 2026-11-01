@@ -1,12 +1,22 @@
-// from server: 64% by Viper
-struct S {
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Matrix {
+    float elements[9];
+    Matrix(const Matrix&);
 };
 
-extern "C" int __cdecl sub_4a7fe0(int*);
-extern "C" int __cdecl sub_4a08e0(int, int);
+struct Transform {
+    Matrix rotation;
+    float position[3];
+};
 
-int __cdecl f(int a) {
-    int buf[12];
-    int r = sub_4a7fe0(buf);
-    return sub_4a08e0(a, r);
+struct S {
+    Transform get();
+};
+
+void __cdecl consume(void*, const Transform&);
+
+void __cdecl function(S* object, void* destination)
+{
+    consume(destination, object->get());
 }

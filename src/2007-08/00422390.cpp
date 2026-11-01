@@ -1,32 +1,32 @@
-// from server: 89% by colin
-struct CRobloxTreeCtrlNode {
-    char pad_0x00[0xbc];
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct CListCtrl {
+    char pad_0x000[0xbc];
     int field_0xbc;
-    char pad_0xc0[0x10c - 0xc0];
-    int field_0x10c;
-    int sub_422390();
-    CRobloxTreeCtrlNode* sub_630d36(int, int, int, int, int);
+    char pad_0x108[0x154 - 0x108];
+    int field_0x154;
+    int sub_41fb30();
 };
 
-int CRobloxTreeCtrlNode::sub_422390()
+extern char sourceType;
+extern char destinationType;
+extern "C" CListCtrl* __cdecl sub_6a17c6(int, int, void*, void*, int);
+
+int CListCtrl::sub_41fb30()
 {
-    if (this->field_0x10c == -1) {
-        CRobloxTreeCtrlNode* v = this->sub_630d36(this->field_0xbc, 0, 0x881f4c, 0x884e54, 0);
-        if (v != 0) {
-            CRobloxTreeCtrlNode* v2 = this->sub_630d36(this->field_0xbc, 0, 0x881f4c, 0x884e54, 0);
-            if (v2 != 0) {
-                if (v2->sub_422390() != 0) {
-                    return 1;
-                }
-            }
+    CListCtrl* p = this;
+    if (p->field_0x154 == -1) {
+        if (sub_6a17c6(p->field_0xbc, 0, &sourceType, &destinationType, 0)) {
+            p = (CListCtrl*)p->field_0xbc;
+            p = sub_6a17c6((int)p, 0, &sourceType, &destinationType, 0);
+            if (p->sub_41fb30() != 0)
+                return 1;
         }
         return 0;
-    } else {
-        int tmp = 0;
-        int *p = &this->field_0x10c;
-        if (*p < 0) {
-            p = &tmp;
-        }
-        return *p;
     }
+    int r = 0;
+    int* value = &p->field_0x154;
+    if (*value < 0)
+        value = &r;
+    return *value;
 }

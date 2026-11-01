@@ -1,99 +1,74 @@
-// from server: 28% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-dll roc_espclaude_32a2e9a5b4018be6.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "v8datamodel/DataModel.h"
+#include <boost/shared_ptr.hpp>
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
+// from server: 81% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+namespace RBX {
+struct Instance {
+    virtual ~Instance();
+    char pad[0xdc - 4];
+};
 
-namespace RBX
-{
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
-
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
+struct ServiceProvider : Instance {
+    int active;
+};
 }
+
+#pragma pointers_to_members(full_generality, multiple_inheritance)
+struct Player;
+struct Scheduler;
+
+int __cdecl eligible(Player*);
+RBX::ServiceProvider* __cdecl func_00491d50(RBX::Instance*);
+Scheduler* __cdecl getScheduler(Player*);
+bool __cdecl ready(Player*, int);
+struct Time {
+    double sec;
+    Time() : sec(0) {}
+    static Time now();
+    struct Interval { double sec; Interval() : sec(0) {} double seconds() const { return sec; } };
+};
+Time::Interval operator-(const Time& a, const Time& b);
+struct IdleSignal { void operator()(double); };
+
+extern double interval;
+extern double delayValue;
+
+
+boost::shared_ptr<Player> getHandle(Player*);
+struct Scheduler {void delay(boost::function0<void>, double);};
+
+struct Player : RBX::Instance {
+    IdleSignal idled;
+    Time timestamp;
+    void update();
+};
+
+#pragma float_control(precise, off)
+void Player::update()
+{
+    if (!eligible(this))
+        return;
+
+    if (timestamp.sec != 0.0) {
+        Time::Interval elapsed = Time::now() - timestamp;
+        if (elapsed.seconds() > interval) {
+            RBX::ServiceProvider* provider = func_00491d50(this);
+            if (provider && provider->active && ready(this, 1))
+                idled(elapsed.seconds());
+        }
+    }
+
+    Scheduler* scheduler = getScheduler(this);
+    if (scheduler)
+        scheduler->delay(boost::bind(&Player::update, getHandle(this)), delayValue);
+}
+

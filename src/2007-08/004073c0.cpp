@@ -1,16 +1,29 @@
-// from server: 81% by colin
-struct CComEnumObject {
-    void* vtable;
-    void* construct();
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct S;
+
+struct InsertResult {
+    unsigned long data[3];
 };
 
-extern "C" void __stdcall helper_4a9660(void*, void*);
+struct Registry {
+    void insert(InsertResult* result, S** value);
+};
 
-void* CComEnumObject::construct() {
-    void* local1;
-    void* local2;
-    this->vtable = (void*)0x785054;
-    local2 = this;
-    helper_4a9660(&local1, &local2);
+extern Registry registry;
+extern unsigned long table[];
+
+struct S {
+    unsigned long* tablePointer;
+    S* initialize();
+};
+
+S* S::initialize()
+{
+    InsertResult result;
+    S* value;
+    tablePointer = table;
+    value = this;
+    registry.insert(&result, &value);
     return this;
 }

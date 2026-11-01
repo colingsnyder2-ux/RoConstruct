@@ -1,0 +1,15 @@
+#include "../native-headers/v8tree/Instance.h"
+#include "../native-headers/v8xml/XmlElement.h"
+
+namespace RBX {
+// 00558110: serialize each child that returns an XML element.
+void Instance::writeChildren(XmlElement* container) {
+    if (children) {
+        const std::vector<boost::shared_ptr<Instance> >& list = *children;
+        for (std::vector<boost::shared_ptr<Instance> >::const_iterator it = list.begin(); it != list.end(); ++it) {
+            XmlElement* element = (*it)->write();
+            if (element) container->pushBackChild(element);
+        }
+    }
+}
+}

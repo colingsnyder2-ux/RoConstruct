@@ -1,167 +1,59 @@
-// from server: 63% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/util/RunStateOwner.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-
-#include "util/Timer.h"
-#include "v8datamodel/DataModel.h"
-
-#include <algorithm>
-#include <boost/thread/thread.hpp>
-#include <boost/thread/xtime.hpp>
-
-namespace RBX {
-
-const char sRunService[] = "RunService";
-
-Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "step");
-
-// FUNCTION: WEBSERVICE 0x10054320
-void RunService::endRunThread(bool join)
-{
-	stopRequested = true;
-	stateChangedCondition.notify_all();
-
-	if (join) {
-		runThread->join();
-	}
+#include <string>
+#include <typeinfo>
+#include <intrin.h>
+namespace boost {
+namespace detail {
+class sp_counted_base {
+ long use_count_,weak_count_;
+public:
+ virtual ~sp_counted_base(){}
+ virtual void dispose()=0;
+ virtual void destroy(){delete this;}
+ virtual void*get_deleter(const std::type_info&)=0;
+ void release(){if(_InterlockedDecrement(&use_count_)==0){dispose();weak_release();}}
+ void weak_release(){if(_InterlockedDecrement(&weak_count_)==0)destroy();}
+};
+class shared_count {sp_counted_base*pi_;
+public:
+ shared_count(const shared_count&r);
+ ~shared_count(){if(pi_)pi_->release();}
+};
 }
-
-// FUNCTION: WEBSERVICE 0x100543b0
-void RunService::onAncestorChanged(const AncestorChanged& event)
-{
-	if (getParent() == NULL) {
-		endRunThread(false);
-	}
+template<class T>class shared_ptr {T*px;detail::shared_count pn;
+public:
+ shared_ptr(const shared_ptr&r);
+};
+template<class T> struct type {};
+template<int I> struct arg {};
+namespace _bi {
+template<class T> struct value { T t_; };
+template<class A1,class A2> struct list2 { A1 a1_; A2 a2_; list2(A1 x, A2 y):a1_(x),a2_(y){} };
+template<class A1,class A2,class A3> struct list3 {
+ A1 a1_;
+ template<class F, class A> void operator()(type<void>, F& f, A& a, int);
+};
+template<class R, class F, class L> struct bind_t {
+ F f_; L l_;
+ template<class A1,class A2> R operator()(A1& a1, A2& a2) { list2<A1&,A2&> a(a1,a2); l_(type<R>(), f_, a, 0); }
+};
 }
-
-// FUNCTION: WEBSERVICE 0x10054cb0
-void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-{
-	double desiredTime = getRealTime();
-
-	while (true) {
-		const double timeLeft = desiredTime - getRealTime();
-
-		{
-			boost::mutex::scoped_lock lock(viewMutex);
-
-			for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-				iter->first->AdjustThrottle(timeLeft);
-			}
-		}
-
-		const double waitTime = std::max(0.0, timeLeft);
-
-		boost::xtime xt;
-
-		boost::xtime_get(&xt, boost::TIME_UTC);
-		xt.nsec += (int) (waitTime * 1000000000.0);
-
-		bool signalled;
-
-		{
-			boost::mutex::scoped_lock lock(runMutex);
-
-			signalled = stateChangedCondition.timed_wait(lock, xt);
-		}
-
-		if (!signalled) {
-			boost::xtime xt;
-
-			boost::xtime_get(&xt, boost::TIME_UTC);
-			xt.sec += 1;
-
-			boost::mutex::scoped_lock lock(runMutex);
-
-			if (invalidRunViewCount != 0) {
-				runViewsDoneCondition.timed_wait(lock, xt);
-			}
-		}
-
-		if (timeLeft <= 0.0) {
-			desiredTime = getRealTime();
-		}
-
-		{
-			DataModel::Lock lock(dataModel);
-
-			if (stopRequested) {
-				break;
-			}
-
-			dataModel->step(framePeriod);
-		}
-
-		desiredTime += framePeriod;
-	}
+namespace detail { namespace function {
+union function_buffer { void* obj_ptr; char data[16]; };
+template<typename FunctionObj, typename R, typename T0, typename T1>
+struct void_function_obj_invoker2 {
+ static void invoke(function_buffer& function_obj_ptr, T0 a0, T1 a1)
+ {
+  FunctionObj* f = reinterpret_cast<FunctionObj*>(&function_obj_ptr.data);
+  (*f)(a0, a1);
+ }
+};
+}}
 }
-
-// FUNCTION: WEBSERVICE 0x10054fd0
-void RunService::invalidateRunViews()
-{
-	boost::mutex::scoped_lock lock(viewMutex);
-
-	if (invalidRunViewCount != 0) {
-		return;
-	}
-
-	invalidRunViewCount = views.size();
-
-	if (invalidRunViewCount > 0) {
-		for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-			iter->first->InvalidateRunView();
-			iter->second = false;
-		}
-
-		runViewsDoneCondition.notify_all();
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10055380
-RunService::~RunService()
-{
-}
-
-// FUNCTION: WEBSERVICE 0x10056950
-RunService::RunService()
-	: runState(RS_NORMAL), stopRequested(false), framePeriod(1.0f / 30.0f), runThread(NULL), invalidRunViewCount(0),
-	  runDisabled(false)
-{
-	setName("Run Service");
-}
-
-// STUB: WEBSERVICE 0x100573e0
-void RunService::start()
-{
-	STUB(0x100573e0);
-}
-
-// FUNCTION: WEBSERVICE 0x100577f0
-void RunService::raiseHeartbeat(float time, float step)
-{
-	Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-	event_Heartbeat.fire(this, step);
-}
-
-// FUNCTION: WEBSERVICE 0x10057860
-void RunService::raiseStepped(float time, float step)
-{
-	Notifier<RunService, Stepped>::raise(Stepped(time, step));
-	event_Stepped.fire(this, time, step);
-}
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService>;
-template class RBX::Reflection::Described<
-	RBX::RunService,
-	RBX::sRunService,
-	RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService> >;
-template class RBX::DescribedCreatable<RBX::RunService, RBX::Instance, RBX::sRunService>;
+namespace RBX { class Instance; class RunStateOwner; }
+struct MF { void* p; int adj; };
+typedef boost::_bi::bind_t<void, MF, boost::_bi::list3<boost::_bi::value<RBX::RunStateOwner*>, boost::arg<1>, boost::arg<2> > > BindT;
+template struct boost::detail::function::void_function_obj_invoker2<BindT, void, std::string, boost::shared_ptr<RBX::Instance> >;

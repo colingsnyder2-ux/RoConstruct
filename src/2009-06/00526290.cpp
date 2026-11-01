@@ -1,102 +1,51 @@
-// from server: 62% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-view View.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "RbxView/View.h"
-#include "BrickMesh.h"
-#include "CylinderMesh.h"
-#include "SphereMesh.h"
-#include "PBBMesh.h"
-#include "Part.h"
-#include "RenderLib/AggregatingSceneManager.h"
-#include "v8datamodel/Lighting.h"
-#include "v8datamodel/DataModel.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/Decal.h"
-
-namespace RBX
-{
-	namespace View
+#include <new>
+namespace boost {
+namespace detail { namespace function {
+union function_buffer {
+	void* obj_ptr;
+	void (*func_ptr)();
+	double align_;
+	char data[16];
+};
+struct vtable_base { void (*manager)(); };
+inline bool has_empty_target(...) { return false; }
+template<class F> struct functor_manager { static void manage(); };
+template<class F> struct invoker0 { static void invoke(); };
+template<class R> struct basic_vtable0 {
+	vtable_base base;
+	void (*invoker)();
+	template<class F> bool assign_to(F f, function_buffer& functor)
 	{
-		View::View(boost::shared_ptr<DataModel> dataModel)
-			: dataModel(dataModel),
-			  renderLibScene(new Render::RenderScene),
-			  textureManager(new G3D::TextureManager),
-			  lightingValid(false)
-		{
-			sceneManager.reset(new Render::AggregatingSceneManager(renderLibScene.get()));
-			materialFactory.reset(new MaterialFactory(textureManager.get()));
-
-			renderLibScene->setThrottle(0.0f, 0.0f, false, 0.0f);
-
-			Lighting* lighting = ServiceProvider::find<Lighting>(dataModel.get());
-			lightingChangedConnection = Lighting::event_LightingChanged.connect(lighting, boost::bind(&View::invalidateLighting, this, _1));
-
-			dataModel->getWorkspace()->visitDescendents(boost::bind(&View::onWorkspaceDescendentAdded, this, _1));
-			workspaceDescendentAddedConnection = Instance::event_descendentAdded.connect(dataModel->getWorkspace(), boost::bind(&View::onWorkspaceDescendentAdded, this, _1));
+		if (!has_empty_target(&f)) {
+			new ((void*)&functor.data) F(f);
+			return true;
 		}
-
-		View::~View()
-		{
-			sceneManager->clear();
-
-			Lighting* unused = ServiceProvider::create<Lighting>(dataModel.get());
-
-			MeshFactory<CylinderAlongXMesh, 1>::flushCache();
-			MeshFactory<SphereMesh, 1>::flushCache();
-			MeshFactory<PBBMesh, 4>::flushCache();
-			BrickMesh::flushCache();
-		}
-
-		void View::suppressSkybox()
-		{
-			Lighting* lighting = ServiceProvider::create<Lighting>(dataModel.get());
-
-			renderLibScene->presetLighting(NULL, lighting->getSkyParameters(), lighting->getAmbientTop(), lighting->getAmbientBottom());
-			sky = NULL;
-			renderLibScene->colorClearValue = lighting->getClearColor();
-		}
-
-		Instance* View::getWorkspace()
-		{
-			return dataModel->getWorkspace();
-		}
-
-		float View::getMeshDetail() const
-		{
-			return renderLibScene->getMeshDetail();
-		}
-
-		float View::getShadingQuality() const
-		{
-			return renderLibScene->getShadingQuality();
-		}
-
-		RenderStats& View::getRenderStats()
-		{
-			return renderLibScene->renderStats;
-		}
-
-		void View::invalidateLighting(bool updateSkybox)
-		{
-			lightingValid = false;
-			if (updateSkybox)
-				sky = NULL;
-		}
-
-		void View::render(void* rd)
-		{
-			updateLighting();
-			sceneManager->prerender(0.1f); // intentional type mismatch! causes value of constant to be different
-			renderLibScene->render((G3D::RenderDevice*)rd, dataModel->getWorkspace()->getGCamera());
-		}
-
-		void View::updateSettings(float shadingQuality, float meshDetail, bool shadows, float cameraDistance)
-		{
-			renderLibScene->setThrottle(shadingQuality, meshDetail, shadows, cameraDistance);
-		}
+		return false;
 	}
+};
+}}
+class function_base {
+public:
+	detail::function::vtable_base* vtable;
+	mutable detail::function::function_buffer functor;
+};
+template<class R> class function0 : public function_base {
+	typedef detail::function::basic_vtable0<R> vtable_type;
+public:
+	template<class Functor> void assign_to(Functor f);
+};
+template<class R> template<class Functor> void function0<R>::assign_to(Functor f)
+{
+	static vtable_type stored_vtable = { { (void(*)())&detail::function::functor_manager<Functor>::manage }, &detail::function::invoker0<Functor>::invoke };
+	if (stored_vtable.assign_to(f, functor))
+		vtable = &stored_vtable.base;
+	else
+		vtable = 0;
 }
+}
+struct Functor { void (*f)(int); int a; };
+template void boost::function0<void>::assign_to<Functor>(Functor);

@@ -1,63 +1,29 @@
-// from server: 52% by TrollStein
-struct TimeSpan {
-    int ticks;
-};
-
-struct Time {
-    int seconds;
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct TimeValue {
+    __int64 seconds;
     int nanoseconds;
 };
 
-extern "C" void __stdcall sub_726780(int* out, int flag);
+extern int __cdecl readTime(TimeValue*, int);
 
-int __cdecl sub_7262e0(
-    int a1, int a2, int a3, int a4,
-    int a5, int a6, int a7, int a8,
-    int* result)
+void __cdecl remainingTime(TimeValue target, unsigned long* result)
 {
-    int local;
-    sub_726780(&local, 1);
+    TimeValue now;
+    readTime(&now, 1);
 
-    int v_ecx = a5;
-    int v_edi = a1;
-    int v_eax = a7;
-    int v_ebx = a3;
-    int v_esi = a6;
-    int v_edx = a2;
-
-    if (v_ecx != v_edi) {
-        if (v_esi > v_edx) goto L338;
-        if (v_esi < v_edx) goto L31d;
-        if (v_ecx <= v_edi) goto L31d;
-        goto L338;
-    }
-    if (v_esi != v_edx) {
-        if (v_esi > v_edx) goto L338;
-        if (v_esi < v_edx) goto L31d;
-        if (v_ecx <= v_edi) goto L31d;
-        goto L338;
-    }
-    {
-        int diff = v_eax - v_ebx;
-        if (diff > 0) goto L338;
+    if ((target.seconds == now.seconds
+             ? target.nanoseconds - now.nanoseconds
+             : (target.seconds > now.seconds ? 1 : -1)) <= 0) {
+        *result = 0;
+        return;
     }
 
-L31d:
-    *result = 0;
-    return 0;
+    if (now.nanoseconds > target.nanoseconds) {
+        target.nanoseconds += 1000000000;
+        --target.seconds;
+    }
 
-L338:
-    if (v_ebx > v_eax) {
-        v_eax += 1000000000;
-        v_ecx -= 1;
-        v_esi -= 1 + (v_ecx == -1 ? 1 : 0);
-    }
-    {
-        int num = v_eax - v_ebx + 500000;
-        int quotient = (int)(((long long)num * 0x431bde83) >> 0x32);
-        quotient += (unsigned)quotient >> 31;
-        int secs = v_ecx - v_edi;
-        *result = quotient + secs * 1000;
-    }
-    return 0;
+    *result = (long)(target.seconds - now.seconds) * 1000
+            + (target.nanoseconds - now.nanoseconds + 500000) / 1000000;
 }

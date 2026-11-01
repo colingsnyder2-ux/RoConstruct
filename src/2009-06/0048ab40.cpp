@@ -1,27 +1,24 @@
-// from server: 61% by atomic.potato
-struct RbxManualResourceLoaderChain {
-    void* vtable;
-    void* field4;
-    void* field8;
-    void* destroy(char flag);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace Ogre {
+class Resource;
+class __declspec(dllimport) ManualResourceLoader {
+public:
+    ManualResourceLoader() {}
+    virtual ~ManualResourceLoader() {}
+    virtual void prepareResource(Resource* r) {}
+    virtual void loadResource(Resource* r) = 0;
 };
-
-extern "C" void __cdecl sub_718a32(void* p);
-extern void* g_8a0728;
-extern void* g_8bf284;
-
-void* RbxManualResourceLoaderChain::destroy(char flag) {
-    this->vtable = &g_8bf284;
-    void* p = &this->field4;
-    if (p) {
-        this->field4 = (char*)p - 4;
-    } else {
-        this->field4 = 0;
-    }
-    this->vtable = g_8a0728;
-    if (flag & 1) {
-        sub_718a32(this);
-    }
-
-    return this;
+template<class T> struct ChainLink {
+    T* owner;
+    ~ChainLink() { owner = static_cast<T*>(this); }
+};
+class RbxManualResourceLoaderChain : public ManualResourceLoader, public ChainLink<RbxManualResourceLoaderChain> {
+public:
+    virtual ~RbxManualResourceLoaderChain() {}
+    virtual void loadResource(Resource* r);
+};
+RbxManualResourceLoaderChain* make() { return new RbxManualResourceLoaderChain; }
 }

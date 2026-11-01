@@ -1,318 +1,44 @@
-// from server: 65% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/Assembly.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8world/Assembly.h"
-#include "v8world/Primitive.h"
-#include "v8world/Clump.h"
-#include "v8world/Edge.h"
-#include "v8world/MotorJoint.h"
-#include "v8world/IMoving.h"
-
-namespace RBX
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+namespace G3D {
+class Color3 {
+public:
+    float r, g, b;
+    Color3() {}
+    Color3(float r, float g, float b) : r(r), g(g), b(b) {}
+    Color3& operator=(const Color3& o) { r = o.r; g = o.g; b = o.b; return *this; }
+};
+}
+namespace RBX {
+class Assembly {
+public:
+    static const G3D::Color3& debugColor(int i);
+};
+const G3D::Color3& Assembly::debugColor(int i)
 {
-	// TODO: check which of these are meant for the header
-
-	void Assembly::putInKernel(Kernel* _kernel)
-	{
-		IPipelined::putInKernel(_kernel);
-		rootClump->putInKernel(_kernel);
-	}
-
-	void Assembly::removeFromKernel()
-	{
-		RBXASSERT(getKernel());
-		rootClump->removeFromKernel(getKernel());
-		IPipelined::removeFromKernel();
-	}
-
-	Primitive* Assembly::getMainPrimitive() const
-	{
-		return rootClump->getRootPrimitive();
-	}
-
-	bool Assembly::getAnchored() const
-	{
-		return rootClump->getAnchored();
-	}
-
-	int Assembly::getDof() const
-	{
-		return getAnchored() ? 0 : 6;
-	}
-
-	Sim::AssemblyState Assembly::getSleepStatus()
-	{
-		return rootClump->getSleepStatus();
-	}
-
-	bool Assembly::moving()
-	{
-		return !getAnchored() && getSleepStatus() == Sim::AWAKE;
-	}
-
-	int Assembly::getSleepCount() const
-	{
-		return sleepCount;
-	}
-
-	void Assembly::setSleepCount(int count)
-	{
-		sleepCount = count;
-	}
-
-	void Assembly::incrementSleepCount()
-	{
-		++sleepCount;
-	}
-
-	Mechanism* Assembly::getMechanism()
-	{
-		return mechanism;
-	}
-
-	bool Assembly::calcShouldSleep()
-	{
-		return rootClump->calcShouldSleep();
-	}
-
-	bool Assembly::okNeighborSleep()
-	{
-		return rootClump->okNeighborSleep();
-	}
-
-	bool Assembly::forceNeighborAwake()
-	{
-		return rootClump->forceNeighborAwake();
-	}
-
-	void Assembly::setSleepStatus(Sim::AssemblyState _set)
-	{
-		rootClump->setSleepStatus(_set);
-	}
-
-	void Assembly::onPrimitiveCanSleepChanged(Primitive* p)
-	{
-		rootClump->onPrimitiveCanSleepChanged(p);
-	}
-
-	Assembly* Assembly::otherAssembly(Edge* edge) const
-	{
-		Assembly* a1 = edge->getPrimitive(0)->getAssembly();
-		Assembly* a2 = edge->getPrimitive(1)->getAssembly();
-		return a1 != this ? a1 : a2;
-	}
-
-	size_t Assembly::numMotors() const
-	{
-		return motors.size();
-	}
-
-	bool Assembly::getCanSleep()
-	{
-		return !Primitive::disableSleep && rootClump->getCanSleep() && Assembly::numMotors() == 0;
-	}
-
-	Primitive* Assembly::PrimIterator::operator*() const
-	{
-		return *primIterator;
-	}
-
-	Assembly::PrimIterator Assembly::PrimIterator::begin(const Assembly* assembly)
-	{
-		const std::set<Clump*>& clumps = assembly->getClumps();
-		std::set<Clump*>::const_iterator start = clumps.begin();
-		RBXASSERT(start != clumps.end());
-
-		return PrimIterator(assembly, start, (*start)->clumpPrimBegin());
-	}
-
-	Assembly::PrimIterator Assembly::PrimIterator::end(const Assembly* assembly)
-	{
-		const std::set<Clump*>& clumps = assembly->getClumps();
-		std::set<Clump*>::const_iterator begin = clumps.begin(); // unused, although iterator check for it was not discarded
-		std::set<Clump*>::const_iterator end = --clumps.end();
-
-		return PrimIterator(assembly, end, (*end)->clumpPrimEnd());
-	}
-
-	void Assembly::stepUi(int uiStepId)
-	{
-		typedef std::vector<MotorJoint*>::const_iterator Iterator;
-
-		for (Iterator iter = motors.begin(); iter != motors.end(); iter++)
-		{
-			(*iter)->stepUi(uiStepId);
-		}
-	}
-
-	Assembly::PrimIterator& Assembly::PrimIterator::operator++()
-	{
-		RBXASSERT(clumpIterator != assembly->getClumps().end());
-
-		Clump* clump = *clumpIterator;
-		primIterator++;
-
-		if (primIterator == clump->clumpPrimEnd())
-		{
-			clumpIterator++;
-			if (clumpIterator == assembly->getClumps().end())
-			{
-				*this = end(assembly);
-			}
-			else
-			{
-				primIterator = (*clumpIterator)->clumpPrimBegin();
-				RBXASSERT(primIterator != (*clumpIterator)->clumpPrimEnd());
-			}
-		}
-
-		return *this;
-	}
-
-	void Assembly::notifyMoved()
-	{
-		const Assembly::PrimIterator itEnd = Assembly::PrimIterator::end(this);
-		Assembly::PrimIterator it = Assembly::PrimIterator::begin(this);
-
-		// TODO: is operator!= right?
-		for (; it != itEnd; ++it)
-		{
-			(*it)->getOwner()->notifyMoved();
-		}
-	}
-
-	void Assembly::removeMotor(MotorJoint* m)
-	{
-		typedef std::vector<MotorJoint*>::iterator Iterator;
-		Iterator iter = std::find(motors.begin(), motors.end(), m);
-
-		RBXASSERT(iter != motors.end());
-		motors.erase(iter);
-	}
-
-	bool Assembly::containsExternalEdge(Edge* e)
-	{
-		return externalEdges.find(e) != externalEdges.end();
-	}
-
-	bool Assembly::containsInternalEdge(Edge* e)
-	{
-		return internalEdges.find(e) != internalEdges.end();
-	}
-
-	void Assembly::insertClump(Clump* c)
-	{
-		bool success = clumps.insert(c).second;
-		RBXASSERT(success);
-		c->setAssembly(this);
-	}
-
-	void Assembly::addExternalEdge(Edge* e)
-	{
-		bool success = externalEdges.insert(e).second;
-		RBXASSERT(success);
-	}
-
-	void Assembly::addInternalEdge(Edge* e)
-	{
-		bool success = internalEdges.insert(e).second;
-		RBXASSERT(success);
-	}
-
-	void Assembly::addInconsistentMotor(MotorJoint* m)
-	{
-		bool success = inconsistentMotors.insert(m).second;
-		RBXASSERT(success);
-	}
-
-	Assembly::~Assembly()
-	{
-		RBXASSERT(!mechanism);
-		RBXASSERT(clumps.empty());
-		RBXASSERT(motors.empty());
-		RBXASSERT(inconsistentMotors.empty());
-		RBXASSERT(externalEdges.empty());
-		RBXASSERT(internalEdges.empty());
-	}
-
-	void Assembly::removeClump(Clump* c)
-	{
-		if (c == rootClump)
-			rootClump = NULL;
-		c->setAssembly(NULL);
-		c->getRootPrimitive()->getBody()->setParent(NULL);
-
-		size_t removed = clumps.erase(c);
-		RBXASSERT(removed == 1);
-	}
-
-	void Assembly::removeExternalEdge(Edge* e)
-	{
-		size_t removed = externalEdges.erase(e);
-		RBXASSERT(removed == 1);
-	}
-
-	void Assembly::removeInternalEdge(Edge* e)
-	{
-		size_t removed = internalEdges.erase(e);
-		RBXASSERT(removed == 1);
-	}
-
-	void Assembly::removeInconsistentMotor(MotorJoint* m)
-	{
-		size_t removed = inconsistentMotors.erase(m);
-		RBXASSERT(removed == 1);
-	}
-
-	Assembly::Assembly(Clump* root)
-		: IPipelined(),
-		  rootClump(root),
-		  clumps(),
-		  internalEdges(),
-		  externalEdges(),
-		  motors(),
-		  inconsistentMotors(),
-		  mechanism(NULL),
-		  sleepCount(0)
-	{
-		insertClump(root);
-	}
-
-	// TODO: check if this matches
-	bool lessMotorHash(const MotorJoint* m0, const MotorJoint* m1)
-	{
-		return m0->hashCode() < m1->hashCode();
-	}
-
-	const MotorJoint* Assembly::getMotorConst(unsigned int motorId) const
-	{
-		if (motorId >= motors.size())
-			return NULL;
-
-		std::sort(motors.begin(), motors.end(), lessMotorHash);
-		return motors[motorId];
-	}
-
-	MotorJoint* Assembly::getMotor(unsigned int motorId)
-	{
-		return const_cast<MotorJoint*>(getMotorConst(motorId));
-	}
-
-	void Assembly::addClump(Clump* c, MotorJoint* m)
-	{
-		insertClump(c);
-
-		Primitive* p = (m->getPrimitive(0)->getClump() == c) ? m->getPrimitive(0) : m->getPrimitive(1);
-		Primitive* other = m->otherPrimitive(p);
-
-		RBXASSERT(clumps.find(other->getClump()) != clumps.end());
-
-		c->getRootPrimitive()->getBody()->setParent(other->getBody());
-		RBXASSERT(std::find(motors.begin(), motors.end(), m) == motors.end());
-		motors.push_back(m);
-	}
+    static G3D::Color3 colors[16];
+    static bool initialized = false;
+    if (!initialized) {
+        colors[0] = G3D::Color3(0.0f, 0.0f, 0.0f);
+        colors[1] = G3D::Color3(87 / 255.0f, 87 / 255.0f, 87 / 255.0f);
+        colors[2] = G3D::Color3(173 / 255.0f, 35 / 255.0f, 35 / 255.0f);
+        colors[3] = G3D::Color3(42 / 255.0f, 75 / 255.0f, 215 / 255.0f);
+        colors[4] = G3D::Color3(29 / 255.0f, 105 / 255.0f, 20 / 255.0f);
+        colors[5] = G3D::Color3(129 / 255.0f, 74 / 255.0f, 25 / 255.0f);
+        colors[6] = G3D::Color3(129 / 255.0f, 38 / 255.0f, 192 / 255.0f);
+        colors[7] = G3D::Color3(160 / 255.0f, 160 / 255.0f, 160 / 255.0f);
+        colors[8] = G3D::Color3(129 / 255.0f, 197 / 255.0f, 22 / 255.0f);
+        colors[9] = G3D::Color3(157 / 255.0f, 175 / 255.0f, 255 / 255.0f);
+        colors[10] = G3D::Color3(41 / 255.0f, 208 / 255.0f, 208 / 255.0f);
+        colors[11] = G3D::Color3(255 / 255.0f, 146 / 255.0f, 51 / 255.0f);
+        colors[12] = G3D::Color3(255 / 255.0f, 238 / 255.0f, 51 / 255.0f);
+        colors[13] = G3D::Color3(233 / 255.0f, 222 / 255.0f, 187 / 255.0f);
+        colors[14] = G3D::Color3(255 / 255.0f, 205 / 255.0f, 243 / 255.0f);
+        colors[15] = G3D::Color3(255 / 255.0f, 255 / 255.0f, 255 / 255.0f);
+        initialized = true;
+    }
+    return colors[i % 16];
+}
 }

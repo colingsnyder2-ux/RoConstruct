@@ -1,19 +1,15 @@
-// from server: 35% by TrollStein
-struct FilteredSelection {
-    void* construct(int a, int b, int c, int d, int e, int f, int g, int h);
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string>
+struct Base {
+    Base(std::string, int);
+    virtual ~Base();
 };
-
-extern "C" void __stdcall string_copy_ctor(void* dest, const void* src);
-extern "C" void __stdcall string_dtor(void* str);
-extern "C" void __fastcall sub_55fc40(void* self);
-
-void* FilteredSelection::construct(int a, int b, int c, int d, int e, int f, int g, int h)
-{
-    char local[0x1c];
-    string_copy_ctor(local, (const void*)((char*)this + 0x30));
-    sub_55fc40(this);
-    *(void**)this = (void*)0x7a94dc;
-    string_dtor(local);
-
-    return this;
-}
+struct S : Base {
+    S(std::string, int);
+    virtual ~S();
+};
+S::S(std::string text, int value) : Base(text, value) {}

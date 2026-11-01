@@ -1,52 +1,43 @@
-// from server: 79% by colin
-struct ContentId {
-    char pad[4];
-    void* ptr;
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct String;
+
+extern const char* (__thiscall *string_c_str)(const String*);
+
+struct Key {
+    char padding[4];
+    String* unused;
 };
 
-struct SoundId {
-    char pad[0xe4];
-    void* field_e4;
+struct Item {
+    void initialize();
 };
 
-struct Descriptor {
-    void* field_0;
+struct Collection {
+    Item* find(const char*);
 };
 
-struct EnumDescriptor;
-
-struct Item : Descriptor {
-    const EnumDescriptor* owner;
-    int value;
-    unsigned int index;
+struct Container {
+    char padding[0xE4];
+    Collection* collection;
+    Item* create(const char*, int);
 };
 
-struct Name {
-    void* field_0;
+struct S {
+    Container* getContainer();
+    Item* resolve(const Key*);
 };
 
-extern "C" void* __stdcall func_77e6a8(void*);
-
-void* __fastcall func_682a20(void* self, void* name);
-void* __fastcall func_699040(void* self);
-void* __fastcall func_69d6e0(void* self, int val);
-void* __fastcall func_698420(void* self);
-
-struct SoundId2 {
-    void* ctor(const Name* name);
-};
-
-void* SoundId2::ctor(const Name* name)
+Item* S::resolve(const Key* key)
 {
-    void* p = func_77e6a8((void*)((char*)name + 4));
-    void* obj = func_682a20(this, p);
-    void* r = func_699040(*(void**)((char*)obj + 0xe4));
-    if (r == 0) {
-        void* p2 = func_77e6a8((void*)((char*)name + 4));
-        void* obj2 = func_682a20(this, p2);
-        void* r2 = func_69d6e0(obj2, 0);
-        func_698420(r2);
-        return r2;
+    const String* text = reinterpret_cast<const String*>(
+        reinterpret_cast<const char*>(key) + 4);
+
+    Item* result = getContainer()->collection->find(string_c_str(text));
+    if (!result) {
+        const char* name = string_c_str(text);
+        result = getContainer()->create(name, 0);
+        result->initialize();
     }
-    return r;
+    return result;
 }

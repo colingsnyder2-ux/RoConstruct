@@ -1,40 +1,23 @@
-// from server: 79% by colin
-// roc 2007-08 00433c90  unit: CMultiPlayerPane  size: 49 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00433c90
-//
-// 00433c90  837c240401           cmp dword ptr [esp + 4], 1
-// 00433c95  56                   push esi
-// 00433c96  8bf1                 mov esi, ecx
-// 00433c98  741c                 je 0x433cb6
-// 00433c9a  8b4e54               mov ecx, dword ptr [esi + 0x54]
-// 00433c9d  85c9                 test ecx, ecx
-// 00433c9f  7415                 je 0x433cb6
-// 00433ca1  8b442410             mov eax, dword ptr [esp + 0x10]
-// 00433ca5  8b54240c             mov edx, dword ptr [esp + 0xc]
-// 00433ca9  6a01                 push 1
-// 00433cab  50                   push eax
-// 00433cac  52                   push edx
-// 00433cad  6a00                 push 0
-// 00433caf  6a00                 push 0
-// 00433cb1  e87ec31f00           call 0x630034
-// 00433cb6  8bce                 mov ecx, esi
-// 00433cb8  e881c51f00           call 0x63023e
-// 00433cbd  5e                   pop esi
-// 00433cbe  c20c00               ret 0xc
-
-struct CMultiPlayerPane {
-    char pad[0x54];
-    void* field_54;
-    void sub_00433c90(int, int, int);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct ChildWindow
+{
+    void __thiscall MoveWindow(int x, int y, int width, int height, int repaint);
 };
 
-extern "C" void __stdcall func_00630034(void*, void*, int, int, int);
-extern "C" void __stdcall func_0063023e(void*);
-
-void CMultiPlayerPane::sub_00433c90(int a1, int a2, int a3)
+struct CMultiPlayerPane
 {
-    if (a1 != 1 && field_54 != 0) {
-        func_00630034(0, 0, a2, a3, 1);
-    }
-    func_0063023e(this);
+    char reserved[0x54];
+    ChildWindow* child;
+
+    void __thiscall UpdateLayout();
+    void __thiscall OnSize(unsigned int type, int width, int height);
+};
+
+void CMultiPlayerPane::OnSize(unsigned int type, int width, int height)
+{
+    if (type != 1 && child)
+        child->MoveWindow(0, 0, width, height, 1);
+
+    UpdateLayout();
 }

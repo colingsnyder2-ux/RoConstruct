@@ -1,13 +1,16 @@
-// from server: 63% by why2
-struct S {
-    void f(void*);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace RBX {
+class KernelJoint {
+public:
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5();
+    virtual ~KernelJoint();
 };
-
-void S::f(void* p)
+void deleteKernelJoint(KernelJoint* p)
 {
-    if (p) {
-        void** vtable = *(void***)p;
-        void (__thiscall *fn)(void*, int) = (void (__thiscall *)(void*, int))vtable[6];
-        fn(p, 1);
-    }
+    delete p;
+}
 }

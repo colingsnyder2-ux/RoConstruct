@@ -1,29 +1,51 @@
-// from server: 49% by colin
-struct Inner {
-    int sub_66EA20(int);
-    void sub_670060(int, int, int);
-};
-
-struct CMainFrame {
-    void sub_42EB00(int, int, int, int, int);
-    void func();
-};
-
-void CMainFrame::func()
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Rect
 {
-    char* base = (char*)this;
-    Inner* p = (Inner*)(base + 0x120);
-    bool b = (p->sub_66EA20(0xc1) == 0);
-    sub_42EB00(0, 0, 0xfa, 0x12c, 0xc1);
-    if (b) {
-        int q = p->sub_66EA20(0xc2);
-        if (q != 0) {
-            int r = p->sub_66EA20(0xc1);
-            if (r != 0) {
-                p->sub_670060(r + 0x20, 3, q + 0x20);
-            } else {
-                p->sub_670060(0, 3, q + 0x20);
-            }
+    int left, top, right, bottom;
+    Rect(int l, int t, int r, int b)
+        : left(l), top(t), right(r), bottom(b) {}
+};
+
+struct PaneBase
+{
+    int value;
+};
+
+struct Pane
+{
+    char padding[0x20];
+    PaneBase base;
+};
+
+struct PaneManager
+{
+    Pane* FindPane(int id);
+    void DockPane(PaneBase* pane, int direction, PaneBase* relative);
+};
+
+struct CMainFrame
+{
+    char padding[0x120];
+    PaneManager manager;
+
+    Pane* FindPane(int id, Rect rect, bool show);
+    void f();
+};
+
+void CMainFrame::f()
+{
+    bool missing = manager.FindPane(0xc1) == 0;
+    FindPane(0xc1, Rect(0, 0, 250, 300), true);
+
+    if (missing)
+    {
+        Pane* relative = manager.FindPane(0xc2);
+        if (relative)
+        {
+            PaneBase* base = &relative->base;
+            Pane* pane = manager.FindPane(0xc1);
+            manager.DockPane(pane ? &pane->base : 0, 3, base);
         }
     }
 }

@@ -1,12 +1,16 @@
-// from server: 64% by tester
-struct S {
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Vector3 {
+    float x, y, z;
 };
 
-extern "C" int __cdecl sub_4A7F20(int*);
-extern "C" int __cdecl sub_4A07D0(int, int);
+struct S {
+    Vector3 get();
+};
 
-int __cdecl f(int a) {
-    int buf[3];
-    int r = sub_4A7F20(buf);
-    return sub_4A07D0(a, r);
+extern void __cdecl consume(void* destination, const Vector3& value);
+
+void __cdecl f(S* object, void* destination)
+{
+    consume(destination, object->get());
 }

@@ -1,20 +1,32 @@
-// from server: 98% by colin
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
 struct ChatEnter {
-    void construct();
+    volatile unsigned long table;
+    unsigned char padding[0x84];
+    volatile unsigned long field88;
+    volatile unsigned long field8c;
+    volatile unsigned long field90;
+    volatile unsigned long table94;
+    volatile unsigned long field98;
+    volatile unsigned long field9c;
+    volatile unsigned long fielda0;
+    volatile unsigned long fielda4;
+
+    void initializeBase();
+    ChatEnter* initialize();
 };
 
-extern "C" void __fastcall sub_0063025c(void*);
-
-void ChatEnter::construct()
+ChatEnter* ChatEnter::initialize()
 {
-    sub_0063025c(this);
-    *(int*)((char*)this + 0x88) = 0;
-    *(int*)this = 0x78661c;
-    *(int*)((char*)this + 0x8c) = 0;
-    *(int*)((char*)this + 0x90) = 0;
-    *(int*)((char*)this + 0x98) = 0;
-    *(int*)((char*)this + 0x94) = 0x7864e0;
-    *(int*)((char*)this + 0x9c) = 0;
-    *(int*)((char*)this + 0xa0) = 0;
-    *(int*)((char*)this + 0xa4) = 0;
+    initializeBase();
+    field88 = 0;
+    table = 0x80e1ac;
+    field8c = 0;
+    field90 = 0;
+    field98 = 0;
+    table94 = 0x80e068;
+    field9c = 0;
+    fielda0 = 0;
+    fielda4 = 0;
+    return this;
 }

@@ -1,5 +1,11 @@
-// from server: 63% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+struct Tag {};
+void callee(void* a, void* b, Tag t);
+void forward(void* a, void* b)
+{
+    Tag t;
+    callee(a, b, t);
+}

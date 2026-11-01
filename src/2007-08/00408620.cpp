@@ -1,5 +1,12 @@
-// from server: 54% by colin
+// from server: 100% by Yeetserama
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-8.0 atlmfc/src/mfc/dlgprntx.cpp
+// roc-flags: /O2 /GS /EHsc /MD
+
+int sub_52C940(int, int);
+
+int func_00408620()
+{
+    static int v = sub_52C940(0x7a67b8, 0xffffffff);
+    return v;
+}

@@ -1,16 +1,18 @@
-// from server: 61% by atomic.potato
-unsigned int func_006d1690();
-
-struct RotateConnector {
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+int getCount();
+class X {
+public:
     char pad[0x7c];
-    float m_field7C;
-    unsigned char m_field80;
-    void set(float value);
+    float rate;
+    bool stopped;
+    void setValue(float value);
 };
-
-void RotateConnector::set(float value) {
-    int count = (int)func_006d1690();
-    m_field7C = value / (float)count;
+void X::setValue(float value)
+{
+    rate = value / getCount();
     if (value == 0.0f)
-        m_field80 = 1;
+        stopped = true;
 }

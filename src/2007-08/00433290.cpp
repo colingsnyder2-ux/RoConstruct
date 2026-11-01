@@ -1,33 +1,30 @@
-// from server: 81% by colin
-struct CMarshalWindow {
-    int processMessage(int, int, int, int, int, int);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Task {
+    virtual void run() = 0;
+    virtual void release(int) = 0;
 };
 
-extern "C" int __cdecl sub_433160(int, int, int, int*);
+struct S {
+    long handle(unsigned int, unsigned int, Task*, int&);
+    int process(void*, unsigned int, unsigned int, Task*, long*, int);
+};
 
-int CMarshalWindow::processMessage(int a, int b, int c, int d, int e, int f)
+int S::process(void*, unsigned int message, unsigned int wParam,
+               Task* task, long* result, int map)
 {
-    if (f != 0)
-        return 0;
-
-    if (a == 2) {
-        int local = 1;
-        int r = sub_433160(2, b, c, &local);
-        *(int*)d = r;
-        if (local != 0)
+    if (map == 0) {
+        if (message == 2) {
+            map = 1;
+            *result = handle(2, wParam, task, map);
+            if (map)
+                return 1;
+        } else if (message == 0x465) {
+            task->run();
+            task->release(1);
+            *result = 0;
             return 1;
-        return 0;
+        }
     }
-
-    if (a == 0x465) {
-        int* p = (int*)b;
-        int* vtbl = (int*)*p;
-        ((void (__thiscall*)(int*))vtbl[0])(p);
-        vtbl = (int*)*p;
-        ((void (__thiscall*)(int*, int))vtbl[1])(p, 1);
-        *(int*)c = 0;
-        return 1;
-    }
-
     return 0;
 }

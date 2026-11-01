@@ -1,20 +1,21 @@
-// from server: 62% by atomic.potato
-struct T4_006685d0 {
-    void f_006685d0(int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+class Y { public: void g(); };
+class Part { public: Y* getY(); };
+class Sel { public: void add(Part* p); };
+class H {
+public:
+    Part* getHead();
+    void f(Sel* sel);
 };
-
-extern "C" void* __stdcall f_006666b0();
-extern "C" void* __stdcall f_00667a90(void*);
-extern "C" void __stdcall f_004e7a00(void*);
-extern "C" void __stdcall f_005d1e50(void*, void*);
-
-void T4_006685d0::f_006685d0(int a)
+void H::f(Sel* sel)
 {
-    void* p = f_006666b0();
+    Part* p = getHead();
     if (p) {
-        void* q = f_00667a90(p);
-        if (q)
-            f_004e7a00(q);
-        f_005d1e50(this, p);
+        if (Y* y = p->getY())
+            y->g();
+        sel->add(p);
     }
 }
