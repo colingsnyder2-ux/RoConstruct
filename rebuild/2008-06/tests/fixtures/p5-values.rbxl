@@ -1,0 +1,24 @@
+<roblox version="4"><Item class="Workspace"><Properties />
+<Item class="Part" referent="RBX1"><Properties>
+<string name="Name">Brick</string><bool name="Anchored">true</bool>
+<token name="shape">1</token>
+<Vector3 name="size"><X>4</X><Y>4</Y><Z>4</Z></Vector3>
+<Color3 name="Color"><R>0</R><G>1</G><B>0</B></Color3>
+<token name="TopSurface">0</token><token name="BottomSurface">0</token>
+<CoordinateFrame name="CFrame"><X>0</X><Y>0</Y><Z>0</Z>
+<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame>
+</Properties></Item><Item class="IntValue"><Properties><string name="Name">Count</string><int name="Value">17</int></Properties></Item>
+<Item class="StringValue"><Properties><string name="Name">Label</string><string name="Value">hello</string></Properties></Item>
+<Item class="NumberValue"><Properties><string name="Name">Amount</string><float name="Value">2.5</float></Properties></Item>
+<Item class="BoolValue"><Properties><string name="Name">Switch</string><bool name="Value">true</bool></Properties></Item>
+<Item class="ObjectValue"><Properties><string name="Name">Target</string><Ref name="Value">RBX1</Ref></Properties></Item>
+<Item class="Script"><Properties><string name="Name">ValueTest</string><string name="Source">local w=game.Workspace
+assert(w.Count.Value==17 and w.Label.Value=="hello" and w.Amount.Value==2.5 and w.Switch.Value and w.Target.Value==w.Brick)
+local changes=0
+w.Count.Changed:connect(function(v) if v==19 then changes=changes+1 end end)
+w.Target.Changed:connect(function(v) if v==nil then changes=changes+1 end end)
+w.Count.Value=19; w.Label.Value="changed"; w.Amount.Value=3.5; w.Switch.Value=false; w.Target.Value=nil
+assert(w.Count.Value==19 and w.Label.Value=="changed" and w.Amount.Value==3.5 and not w.Switch.Value and w.Target.Value==nil)
+assert(changes==2)
+w.Brick.CFrame=CFrame.new(3,4,5)
+print("VALUES_PASS")</string><bool name="Disabled">false</bool></Properties></Item></Item></roblox>

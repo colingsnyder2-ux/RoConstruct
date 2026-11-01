@@ -173,7 +173,7 @@ namespace RBX
 	const char* sBrickColorValue = "BrickColorValue";
 	const char* sCFrameValue = "CFrameValue";
 	const char* sColor3Value = "Color3Value";
-	const char* sFloatValue = "FloatValue";
+	const char* sFloatValue = "NumberValue"; // 2008 client class name
 	const char* sIntValue = "IntValue";
 	const char* sObjectValue = "ObjectValue";
 	const char* sStringValue = "StringValue";
