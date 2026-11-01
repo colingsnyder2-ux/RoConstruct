@@ -984,3 +984,15 @@ checks, alongside idle/input/script/live-input regression runs. Lua controls
 show object and method lookup succeed, but invoking the method fails with a
 function-valued error. Evidence: p5-lookup-controller-b9a76e6c2a/receipt.json
 and p5-player-lookup-trace.md. Continue tracing the Lua member-call boundary.
+
+## P5 checkpoint: Lua instance conversion (38adac8064)
+
+The recovered 0056f8c0 Object-to-Instance Value conversion is integrated into
+the rebuilt reflection ABI. Bridge userdata checks now balance the Lua stack.
+At revision 38adac8064, a direct Lua-state test proves Instance identity and
+unchanged stack depth, and an authored script confirms GetPlayerFromCharacter
+returns the local Player. Spawn, controller, script, lifetime, P4 assets, sound
+prerequisite and P0 regressions pass; receipts are in p5-lua*-38adac8064.
+Original Animate proceeds past its former lookup error but stops on the missing
+Climbing signal. Its actual state behavior is traced in p5-climbing-trace.md;
+full animation, climbing, sound playback, native physics and P5 remain open.

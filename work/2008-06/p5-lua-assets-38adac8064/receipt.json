@@ -1,0 +1,265 @@
+{
+  "revision": "38adac8064020ce79be285209b45d30276ceb231",
+  "exe_sha256": "b2493df21333e5e37b892fdd149aa448ae6f770927c9feb0d79b88a11351226a",
+  "map_sha256": "7f76b513cdabe275f726ab29389d61aa800bbcf864bc953c394642f3140b062c",
+  "observer_sha256": "8a0b96347a2c8951dc9cd52170467fad568c39b4a1d7da22205a2cb6d64e493b",
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+  },
+  "runs": {
+    "panel": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "2",
+        "--inspect-place",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\local-panel.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-lua-assets-38adac8064\\panel",
+      "exit": 0,
+      "models": [
+        {
+          "index": "0",
+          "status": "0",
+          "x": "0",
+          "y": "0",
+          "z": "0",
+          "sx": "4",
+          "sy": "4",
+          "sz": "4",
+          "kind": "0",
+          "levels": "1",
+          "source_indices": "6",
+          "backend_indices": "6"
+        }
+      ],
+      "foreground_pixels": 13225,
+      "quadrant_rgb": [
+        [
+          255,
+          84,
+          84
+        ],
+        [
+          30,
+          180,
+          30
+        ],
+        [
+          31,
+          31,
+          184
+        ],
+        [
+          173,
+          173,
+          28
+        ]
+      ],
+      "files": {
+        "last.png": "6acd3dc16966a1e3a28ae31d056e73ee3c18677bc86d3704364eb3b4dfece1d9",
+        "place_snapshot.csv": "ea567e53e57619074d8c879d4cb31cda7de4b04bd8f1ce647d833efdbc7e9f1b",
+        "player.log": "33a3ee9701de1c3b73fc04bae77175587b86cde2491b7ffdd1eb84e73bdf36bb",
+        "stdout.txt": "7be9cb514d6f13541dfcf702e471f16b6d2823e7fba852f9aff56ec689150ef3"
+      }
+    },
+    "gallery": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "2",
+        "--inspect-place",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\local-gallery.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-lua-assets-38adac8064\\gallery",
+      "exit": 0,
+      "models": [
+        {
+          "index": "0",
+          "status": "0",
+          "x": "-2",
+          "y": "0",
+          "z": "0",
+          "sx": "4",
+          "sy": "4",
+          "sz": "4",
+          "kind": "0",
+          "levels": "1",
+          "source_indices": "6",
+          "backend_indices": "6"
+        },
+        {
+          "index": "1",
+          "status": "0",
+          "x": "2",
+          "y": "0",
+          "z": "0",
+          "sx": "2",
+          "sy": "2",
+          "sz": "2",
+          "kind": "2",
+          "levels": "1",
+          "source_indices": "864",
+          "backend_indices": "1296"
+        }
+      ],
+      "foreground_pixels": 5972,
+      "quadrant_rgb": [
+        [
+          223,
+          55,
+          55
+        ],
+        [
+          56,
+          220,
+          56
+        ],
+        [
+          41,
+          41,
+          198
+        ],
+        [
+          198,
+          198,
+          42
+        ]
+      ],
+      "files": {
+        "last.png": "c99b595bfdeaa3813084bcba912bcfe1c88d2e93e8625cb9b7574f5b168cd3bd",
+        "place_snapshot.csv": "7992125578ce87b40a8e3c43864d96757e06a83c19fb058e1730613173ffa8f1",
+        "player.log": "87c79d35362a1eb33ec14be2fe8ba48fd0736beecce5c900c4461935d37a1410",
+        "stdout.txt": "2e1ae386b1b3a8b19d737ba8d52cf469ab70a44ab6e679ed4405751bf9bcb159"
+      }
+    },
+    "missing-mesh": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "2",
+        "--inspect-place",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\local-panel.rbxl",
+        "--content-root",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-lua-assets-38adac8064\\missing-mesh\\Content"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-lua-assets-38adac8064\\missing-mesh",
+      "exit": 0,
+      "models": [
+        {
+          "index": "0",
+          "status": "3",
+          "x": null,
+          "y": null,
+          "z": null,
+          "sx": null,
+          "sy": null,
+          "sz": null,
+          "kind": null,
+          "levels": null,
+          "source_indices": null,
+          "backend_indices": null
+        }
+      ],
+      "foreground_pixels": 0,
+      "files": {
+        "last.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "place_snapshot.csv": "9b779ebe41a5ab772d181e34934fe77c53a8015f62faa74389a275509cf6b81f",
+        "player.log": "e91572552185f0107c55d663143911f4db99b7cca872af3f986d83ea7e10d46d",
+        "stdout.txt": "77f34b565251ee81b6aaa669fdfa67c870bd79b26f890bba700547e188b7d70d"
+      }
+    },
+    "missing-texture": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "2",
+        "--inspect-place",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\local-panel.rbxl",
+        "--content-root",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-lua-assets-38adac8064\\missing-texture\\Content"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-lua-assets-38adac8064\\missing-texture",
+      "exit": 0,
+      "models": [
+        {
+          "index": "0",
+          "status": "0",
+          "x": "0",
+          "y": "0",
+          "z": "0",
+          "sx": "4",
+          "sy": "4",
+          "sz": "4",
+          "kind": "0",
+          "levels": "1",
+          "source_indices": "6",
+          "backend_indices": "6"
+        }
+      ],
+      "foreground_pixels": 13225,
+      "files": {
+        "last.png": "21136ab653d2e5851862f00c6aaebfe6bdaa2ce20bf6187f6d9ba74e3fd43d3f",
+        "place_snapshot.csv": "ea567e53e57619074d8c879d4cb31cda7de4b04bd8f1ce647d833efdbc7e9f1b",
+        "player.log": "40076ef0c929ca9e5851e93052dfda3fc6d29502fc837e253f1b330e3dc62649",
+        "stdout.txt": "d7f5779efecdd5119647046835af07ab1744fd2f591356579e15526616ed1d1e"
+      }
+    },
+    "bad-place": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "2",
+        "--inspect-place",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-lua-assets-38adac8064\\bad-place\\absent.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-lua-assets-38adac8064\\bad-place",
+      "exit": 1,
+      "files": {
+        "stdout.txt": "adb5cc932672fd30605a78f332b0443d518eb3c2a029ceb07275d3852e7a3d25"
+      }
+    }
+  },
+  "P4_complete": false,
+  "remaining": [
+    "original-client asset/scene comparison",
+    "native sound path"
+  ],
+  "source_sha256": {
+    "modules/player.json": "a56723c433db16898c145671620847f8a96da1e48860ca00ab428f58bc6a8f01",
+    "patches/rbxgs-client.json": "d3db7f235a08da13c2712328e7d5c8878921312278803fa1b0f176fdf4d9c8d0",
+    "tests/PlayerBlockMesh.cpp": "65475e84fa6cadf7003e76a74a3071caf98e50d40cd04afefcae450c49148e00",
+    "tests/PlayerBlockMesh.h": "52a55cf8c62595d28f73164e77c36f3f35ef189e20f669ea5a40533c42487a32",
+    "tests/p2-recovered/Player2008.cpp": "0be52380801ef86cf05beb61d440d071af0bf233347cbcc1400d0702cb464b70",
+    "tests/p2-recovered/PlayerEngine.cpp": "817fe938c2ec035d5aac0aea4c25be4a8e6357c5994c12f6078126b2cd5649f6",
+    "tests/p2-recovered/PlayerScene.cpp": "cfb698539b5b4485e2403b4546cb09b689b5c0304ee821f23b201c6e408f427b",
+    "tests/PlayerNativeTexture.cpp": "7fc02f6bc248564811f82a7cea69a5e3e8c758959b790530d414e5b2b9450b95",
+    "tests/stage_demo_content.py": "6b4b68eda8b1479b4dd3be318ff3f0ed18d7331cecdf296671bf2b58144a1848"
+  },
+  "content_sha256": {
+    "demo-assets.json": "584d0bd1eb4ad6e6448e01bea20b88c6dd7428c8baf980532704804af6e709cb",
+    "fonts\\character.rbxm": "91e5e1164863f7ae10ea9be855c38c6c58b7792141b30829464e6a1d2d19548d",
+    "fonts\\humanoidAnimate.rbxm": "bd150973c2b37828e8668bb6b8d7cddb8293b6c217b4385a40a979ec038592ff",
+    "fonts\\humanoidHealth.rbxm": "975a25df0e6e8a1884122e8ae06f7ea3b788ef8527f08aa37d2257d74de7e54b",
+    "fonts\\humanoidSound.rbxm": "eceddc097d8ca6f809443a3ea136eb2c6d9ef07af5634dbc3c51cc289bf1d0d4",
+    "p4\\fixture-assets.json": "3b01a97f9e347bc8c4c022aec8e1728d9d9bf9babd97f6336dc4b6ba7162332f",
+    "p4\\panel.mesh": "d0c4e59491f0381fde262ff37a981171d4f4bccd2fb3782df27b8ce2bcc2620e",
+    "p4\\quadrants.png": "1f52bf00c024e5fd927efacb269a0074c127068bbb4cf531491b4f0375ffa2b8",
+    "p4\\tone.wav": "b0e95cb1badb20186a79c6a191b9baa5835efa56b179e17001c785bd915c7bf3",
+    "sky\\null_plainsky512_bk.jpg": "c054a173687f7bf18cd386071ffffb4fd45a3f2af39bc201b7aa750088d96249",
+    "sky\\null_plainsky512_dn.jpg": "0cf07a5fc64c9d46b73898c3fbb2ff4aafec1fc54c796c387a449849b78530b0",
+    "sky\\null_plainsky512_ft.jpg": "34fa945c01a1cfc9a929e48675c52e0ca1f7c5ca33064d0892bdeda647c9928f",
+    "sky\\null_plainsky512_lf.jpg": "665c12f846a2dbc08a5ede320683118cd658a6ae1bb980079d3528f030e40be8",
+    "sky\\null_plainsky512_rt.jpg": "56532ecfe4367f813e061588c599b3d16d96f2b91e43b46248e82ad5e8dc56fd",
+    "sky\\null_plainsky512_up.jpg": "236c0f8e9186c68d07273ea57fb72e016d520ebebbd1a6b4db975248899d6c0f",
+    "sky\\skyspheremap.jpg": "5603c747eebd4d0a5774826b481387af63d6013eef4eac10d1a5d0cc6d51b2e9",
+    "textures\\Surfaces.png": "af0f882738addbf281dec784b9e523bc96aad4f831d4eb2317d1ab7c500e3a01",
+    "textures\\SurfacesStrip.png": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4"
+  },
+  "fixture_sha256": {
+    "local-panel.rbxl": "a0b2987ed12eadf38633336f6d4b5034d6baf4b2be88b4e5868c3111e9ab3d4c",
+    "local-gallery.rbxl": "460b144e1f96fdcd16f58c8fe70dbfb728ef753b0b662d21026350c962d0ddc4"
+  },
+  "disk_asset_checks_pass": true
+}
