@@ -28,6 +28,8 @@ extern "C" void GetPartColor(float* r, float* g, float* b);
 extern "C" int  PartAlive(void);
 extern "C" void MovePartTo(float x, float y, float z);
 extern "C" void StepEngine(float dt);
+extern "C" int GetActorMotorAngles(float* values);
+extern "C" int CheckNotifierMutation();
 extern "C" float GetSimulationTime();
 extern "C" void StartPlay();
 extern "C" int BuildPlayerJoints();
@@ -733,6 +735,9 @@ int main(int argc, char** argv)
     bool p5RunInitCheck = false;
     bool p5ClimbProbe = false;
     bool p5TimingCheck = false;
+    bool p5AnimateObserve = false;
+    bool p5NotifierCheck = false;
+    bool noShadows = false;
     bool p5ClimbObserve = false;
     bool p5LuaObjectCheck = false;
     bool p5FreefallCheck = false;
@@ -750,6 +755,7 @@ int main(int argc, char** argv)
         if (std::strcmp(argv[i], "--selftest") == 0) selftest = true;
         else if (std::strcmp(argv[i], "--p3test") == 0) lifetest = true;
         else if (std::strcmp(argv[i], "--demo") == 0) demo = true;
+        else if (std::strcmp(argv[i], "--no-shadows") == 0) noShadows = true;
         else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
         else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
@@ -760,8 +766,10 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--p5-native-camera") == 0) {p5NativeCamera=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-camera-turn-test") == 0) {p5CameraTurnTest=true;p5NativeCamera=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-spawn") == 0) {p5Spawn=true;p5Control=true;p5Play=true;}
+        else if (std::strcmp(argv[i], "--p5-animate-observe") == 0) {p5AnimateObserve=true;p5Spawn=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
         else if (std::strcmp(argv[i], "--p5-clock-check") == 0) p5ClockCheck = true;
+        else if (std::strcmp(argv[i], "--p5-notifier-check") == 0) p5NotifierCheck = true;
         else if (std::strcmp(argv[i], "--p5-timing-check") == 0) {p5TimingCheck=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-hash-check") == 0) p5HashCheck = true;
         else if (std::strcmp(argv[i], "--p5-run-init-check") == 0) p5RunInitCheck = true;
@@ -815,6 +823,7 @@ int main(int argc, char** argv)
     if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
     if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
+    if(p5NotifierCheck){int result=CheckNotifierMutation();std::printf("notifier mutation: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5RunInitCheck){int result=CheckRunServiceInitialization();std::printf("RunService initialization: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5HashCheck){
         int result=CheckNativeMD5();std::printf("MD5 vectors: %s (%d)\n",result?"FAIL":"PASS",result);
@@ -876,6 +885,13 @@ int main(int argc, char** argv)
         delete root;ClosePlace();return calls==1?0:11;
     }
     Ogre::SceneManager* sm = root->createSceneManager(Ogre::ST_GENERIC, "sm");
+    if(!noShadows){
+        sm->setShadowTechnique(Ogre::SHADOWTYPE_TEXTURE_MODULATIVE);
+        sm->setShadowTextureSize(1024);
+        sm->setShadowTextureCount(1);
+        sm->setShadowColour(Ogre::ColourValue(0.55f,0.55f,0.55f));
+        sm->setShadowFarDistance(300.0f);
+    }
     g_sceneManager = sm;
     Ogre::Camera* cam = sm->createCamera("cam");
     cam->setPosition(0, 0, 10);
@@ -940,7 +956,12 @@ int main(int argc, char** argv)
         if(p5NativeCamera && GetActorTorsoPosition(&actorStart[0],&actorStart[1],&actorStart[2]))return 1;
         float expectedY=0,initialFloorY=0,minY=1e30f,maxY=-1e30f;
         int anchored=0,tailSamples=0;bool stable=true,floorStable=true;
-        std::ofstream samples, anchorSamples;
+        std::ofstream samples, anchorSamples, animateSamples;
+        if(p5AnimateObserve){
+            animateSamples.open("animate_samples.csv",std::ios::binary);animateSamples.precision(9);
+            if(!animateSamples)return 7;
+            animateSamples<<"frame,right_shoulder_desired,right_shoulder_current,left_shoulder_desired,left_shoulder_current,right_hip_desired,right_hip_current,left_hip_desired,left_hip_current,right_arm_dx,right_arm_dy,right_arm_dz,left_arm_dx,left_arm_dy,left_arm_dz,right_leg_dx,right_leg_dy,right_leg_dz,left_leg_dx,left_leg_dy,left_leg_dz\n";
+        }
         if(anchorTrace){
             anchorSamples.open("anchor_samples.csv",std::ios::binary);anchorSamples.precision(9);
             if(!anchorSamples)return 7;
@@ -954,11 +975,15 @@ int main(int argc, char** argv)
         }
         for (int i = 0; i < frameCount; ++i)
         {
-            if(p5InputTest && i==12)SetPlayerTestKey(1);
-            if(p5InputTest && i==72)SetPlayerTestKey(0);
+            if(p5InputTest && i==(p5AnimateObserve?90:12))SetPlayerTestKey(1);
+            if(p5InputTest && i==(p5AnimateObserve?210:72))SetPlayerTestKey(0);
             if(p5CameraTurnTest && i==12)SetPlayerCameraTestKey(1);
             if(p5CameraTurnTest && i==42)SetPlayerCameraTestKey(0);
             StepEngine(1.0f / 60.0f);
+            if(p5AnimateObserve){
+                float angles[20];if(GetActorMotorAngles(angles))return 10;
+                animateSamples<<i+1;for(int a=0;a<20;++a)animateSamples<<","<<angles[a];animateSamples<<"\n";
+            }
             if(p5NativeCamera && !SyncPlayerCamera(cam,vp))return 1;
             drawModels();
             root->renderOneFrame(); win->update();

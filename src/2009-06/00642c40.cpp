@@ -1,13 +1,7 @@
-// from server: 73% by atomic.potato
-struct S
-{
-    int __cdecl f(int);
-};
-
-extern "C" int __cdecl sub_00642580(int);
-extern "C" int __cdecl sub_006400d0(int);
-
-int S::f(int value)
-{
-    return sub_006400d0(sub_00642580(value));
-}
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Thing { int f(int i); };
+Thing& getThing();
+int lookup(int i) { return getThing().f(i); }

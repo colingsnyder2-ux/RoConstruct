@@ -1,10 +1,8 @@
-// from server: 74% by EspClaude
-// from server: 100% by EspClaude
-// from server: 98% by Espeon
+// from server: 96% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espclaude_d8b4d2018e99dd75.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_1506fc53aaadd433.cpp
 
 // Candidate translation unit (score above; library headers required).
 
@@ -18,14 +16,19 @@ struct Pair {
 
 Pair __cdecl acquire(void*);
 extern char property[];
+void visitor(void*, void*);
+struct Func { void (*fn)(void*, void*); void* arg; Func(void (*f)(void*, void*), void* a) : fn(f), arg(a) {} };
 
 struct S {
-    char padding[0x3fc];
+    char padding[0x228];
     void* pointer;
     Ref reference;
     void* get() const { return pointer; }
     void notify(const char*);
+    void visit(const Func&);
     void assign(const Pair&);
+    __forceinline void setRef(void* v) { assign(acquire(v)); }
+    __forceinline void visitWith(void (*f)(void*, void*), void* a) { Func t(f, a); visit(t); }
     void set(void*);
 };
 
@@ -38,7 +41,9 @@ __forceinline void S::assign(const Pair& value)
 void S::set(void* value)
 {
     if (value != get()) {
-        assign(acquire(value));
+        setRef(value);
         notify(property);
+        if (value)
+            visitWith(&visitor, value);
     }
 }

@@ -128,7 +128,7 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00420740": {
-  "line": 126,
+  "line": 127,
   "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
  },
  "00420930": {
@@ -3068,7 +3068,7 @@
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005d05d0": {
-  "line": 129,
+  "line": 136,
   "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
  },
  "005d0910": {
@@ -3260,27 +3260,27 @@
   "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
  },
  "005d74d0": {
-  "line": 126,
+  "line": 129,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d7500": {
-  "line": 133,
+  "line": 136,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d7510": {
-  "line": 140,
+  "line": 143,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d7520": {
-  "line": 154,
+  "line": 157,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d7530": {
-  "line": 168,
+  "line": 171,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d7550": {
-  "line": 180,
+  "line": 183,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d75a0": {
@@ -3304,7 +3304,7 @@
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7980": {
-  "line": 147,
+  "line": 150,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d7990": {
@@ -3332,7 +3332,7 @@
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005d7fe0": {
-  "line": 236,
+  "line": 239,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d80c0": {
@@ -3788,7 +3788,7 @@
   "path": "2008-06/src/Client/App/v8world/MotorJoint.cpp"
  },
  "005e5d00": {
-  "line": 90,
+  "line": 93,
   "path": "2008-06/src/Client/App/v8world/MotorJoint.cpp"
  },
  "005e5e00": {
@@ -4356,7 +4356,7 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005fb900": {
-  "line": 130,
+  "line": 137,
   "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
  },
  "005fbf10": {
@@ -5256,11 +5256,11 @@
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00617a50": {
-  "line": 139,
+  "line": 146,
   "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
  },
  "00617b30": {
-  "line": 140,
+  "line": 147,
   "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
  },
  "00617c10": {

@@ -1,4 +1,24 @@
+// from server: 100% by EspClaude
 // from server: 75% by EspClaude
+// roc 2009-06 00666650  unit: RBX::KernelJoint  size: 41 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00666650
+//
+// 00666650  8b442404             mov eax, dword ptr [esp + 4]
+// 00666654  85c0                 test eax, eax
+// 00666656  741e                 je 0x666676
+// 00666658  8b4048               mov eax, dword ptr [eax + 0x48]
+// 0066665b  6a00                 push 0
+// 0066665d  6888619e00           push 0x9e6188
+// 00666662  6840be9d00           push 0x9dbe40
+// 00666667  6a00                 push 0
+// 00666669  50                   push eax
+// 0066666a  e80b360b00           call 0x719c7a
+// 0066666f  83c414               add esp, 0x14
+// 00666672  85c0                 test eax, eax
+// 00666674  7502                 jne 0x666678
+// 00666676  33c0                 xor eax, eax
+// 00666678  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 005d7670  unit: RBX::Humanoid  size: 44 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d7670
@@ -25,7 +45,7 @@ extern char modelType;
 extern "C" void* __cdecl __RTDynamicCast(void*, long, void*, void*, int);
 
 struct S {
-    char padding[0x104];
+    char padding[0x48];
     void* instance;
 };
 

@@ -1,67 +1,50 @@
-// from server: 75% by atomic.potato
-struct Clump;
-
-struct ClumpVtbl {
-    void* pad0[4];
-    int (__thiscall* fn10)(Clump*);
-    int (__thiscall* fn14)(Clump*);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace G3D {
+template<class T> class Array {
+public:
+	T* data;
+	int num;
+	int numAllocated;
+	void append(const T& v);
+	int size() const { return num; }
+	T& operator[](int n) { return data[n]; }
 };
-
-struct Clump {
-    char pad0[0xc];
-    Clump** items;
-    int count;
-    char pad14[8];
-    void* field1c;
-    void recurse(Clump* other);
+}
+class Pad20 { public: virtual void p0(); char pad[0x1c]; };
+class Base20 { public: virtual void q0(); };
+class Primitive2009 : public Pad20, public Base20 {
+public:
+	virtual void v1(); virtual void v2(); virtual void v3();
+	virtual int isAnchored();
+	virtual int getKind();
 };
-
-struct Inner {
-    char pad0[0x2c];
-    void* field2c;
+class Pad8 { public: virtual void r0(); int x; };
+class Base8 { public: virtual void s0(); };
+class Assembly2009 : public Pad8, public Base8 {
+public:
+	char pad[0x20];
+	Base20* prim;
+	Primitive2009* getPrimitive() const { return static_cast<Primitive2009*>(prim); }
 };
-
-struct Vec {
-    char pad0[4];
-    int end;
-    int cap;
-    char padc[4];
-    void push_back(Clump** p);
+class Clump2009 {
+public:
+	char pad[0xc];
+	G3D::Array<Clump2009*> children;
+	int y;
+	Base8* assembly;
+	Assembly2009* getAssembly() const { return static_cast<Assembly2009*>(assembly); }
+	void collect(G3D::Array<const Primitive2009*>& out);
 };
-
-void Clump::recurse(Clump* other) {
-    void* p = field1c;
-    Inner* inner;
-    if (p) {
-        inner = (Inner*)((char*)p - 8);
-    } else {
-        inner = 0;
-    }
-    Clump* target;
-    if (inner) {
-        void* q = inner->field2c;
-        if (q) {
-            target = (Clump*)((char*)q - 0x20);
-        } else {
-            target = 0;
-        }
-    } else {
-        target = 0;
-    }
-    ClumpVtbl* vt = *(ClumpVtbl**)target;
-    int r = vt->fn10(target);
-    if (r == 0) {
-        int r2 = vt->fn14(target);
-        if (r2 == 3) {
-            Vec* v = (Vec*)other;
-            v->push_back(&target);
-        }
-    }
-    int i = 0;
-    if (count > 0) {
-        do {
-            items[i]->recurse(other);
-            i++;
-        } while (i < count);
-    }
+void Clump2009::collect(G3D::Array<const Primitive2009*>& out)
+{
+	Primitive2009* p = getAssembly()->getPrimitive();
+	if (!p->isAnchored() && p->getKind() == 3) {
+		const Primitive2009* q = p;
+		out.append(q);
+	}
+	for (int i = 0; i < children.size(); ++i)
+		children[i]->collect(out);
 }

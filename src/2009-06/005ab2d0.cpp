@@ -1,8 +1,7 @@
-// from server: 74% by EspClaude
-// from server: 100% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 // Destructor analog for 0054aa80: members at +0x30 (ref, 00502a70), +0x24 and
 // +0xc (00643  3e0), +0x18 and the base (005516d0) are destroyed in reverse order.
 class Chunk { public: ~Chunk(); char data[0x0c]; };

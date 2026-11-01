@@ -1,24 +1,24 @@
-// from server: 74% by atomic.potato
-struct MD5HasherImpl {
-    void ReadStream(int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <istream>
+namespace RBX {
+class MD5Hasher {
+public:
+	virtual ~MD5Hasher() {}
+	virtual void addData(const char* data, int len) = 0;
+	void addData(std::istream& stream);
 };
-
-extern "C" {
-    __declspec(dllimport) void __stdcall sub_89e5cc(int, int);
-    __declspec(dllimport) void __stdcall sub_89e488(int, int);
-    __declspec(dllimport) void __stdcall sub_89e5c8(int, char*, int);
+void MD5Hasher::addData(std::istream& stream)
+{
+	char buffer[1024];
+	stream.clear();
+	stream.seekg(0, std::ios::beg);
+	do
+	{
+		stream.read(buffer, 1024);
+		addData(buffer, stream.gcount());
+	} while (stream.gcount() > 0);
 }
-
-void MD5HasherImpl::ReadStream(int a) {
-    char buf[0x400];
-    int* p = (int*)a;
-    int v = *(int*)((char*)p + 4);
-    sub_89e5cc(v + a, 0);
-    sub_89e488(a, 0);
-    while (*(int*)((char*)p + 4) > 0) {
-        sub_89e5c8(a, buf, 0x400);
-        int n = *(int*)((char*)p + 4);
-        void (__stdcall *fn)(void*, char*, int) = *(void (__stdcall**)(void*, char*, int))(*(int*)this + 4);
-        fn(this, buf, n);
-    }
 }

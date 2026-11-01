@@ -1,38 +1,21 @@
-// from server: 74% by atomic.potato
-struct Node {
-    Node* next;
-    char pad[0x2c];
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Hook { Hook* next; };
+struct Head { int key; char pad[0x2c]; };
+struct Item : Head, Hook {};
+struct Finder {
+	bool f(const int& key, Hook*& it, int);
 };
-
-struct List {
-    Node* head;
-};
-
-struct S {
-    char f(List* a, int b, int c);
-};
-
-char S::f(List* a, int b, int c) {
-    Node* first = a->head;
-    Node* cur = first->next;
-    if (cur == first) {
-        return 1;
-    }
-    while (1) {
-        Node* h = a->head;
-        Node* base;
-        if (cur != 0) {
-            base = (Node*)((char*)cur - 0x30);
-        } else {
-            base = 0;
-        }
-        if (h == base->next) {
-            a->head = cur;
-            return 0;
-        }
-        cur = cur->next;
-        if (cur == a->head) {
-            return 1;
-        }
-    }
+bool Finder::f(const int& key, Hook*& it, int)
+{
+	for (Hook* n = it->next; n != it; n = n->next) {
+		Item* o = static_cast<Item*>(n);
+		if (key == o->key) {
+			it = n;
+			return false;
+		}
+	}
+	return true;
 }

@@ -1,25 +1,35 @@
-// from server: 74% by atomic.potato
-struct VLighting {
-    char pad0[0x1dc];
-    float f1dc;
-    float f1e0;
-    float f1e4;
-    char pad1[0x234 - 0x1e8];
-    int field234;
-    void sub_67a980(float, float, float);
+// from server: 80% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+class Instance;
+class PropertyDescriptor;
+struct Color3 {
+    float r, g, b;
+    Color3& operator=(const Color3& o) { r = o.r; g = o.g; b = o.b; return *this; }
+    bool operator==(const Color3& o) const { return r == o.r && g == o.g && b == o.b; }
+    bool operator!=(const Color3& o) const { return r != o.r || g != o.g || b != o.b; }
 };
-
-extern "C" void __stdcall sub_40c2d0(const char*);
-extern "C" void __stdcall sub_40bb90(const char*, char);
-
-void VLighting::sub_67a980(float a, float b, float c) {
-    if (f1dc != a || f1e0 != b || f1e4 != c) {
-        f1dc = a;
-        f1e0 = b;
-        f1e4 = c;
-        sub_40c2d0((const char*)0xa4e284);
-        if (field234 != 0) {
-            sub_40bb90((const char*)0x5d5fe0, 0);
-        }
+void update(Instance*, bool);
+struct Visitor { void (*fn)(Instance*, bool); bool flag; };
+class World { public: void visit(Visitor v); };
+extern const PropertyDescriptor prop_color;
+class Lighting {
+public:
+    void raisePropertyChanged(const PropertyDescriptor&);
+    void setColor(Color3 value);
+    char pad0[0x1dc];
+    Color3 color;
+    char pad1[0x234 - 0x1e8];
+    World* world;
+};
+void Lighting::setColor(Color3 value)
+{
+    if (color != value) {
+        color = value;
+        raisePropertyChanged(prop_color);
+        Visitor v = { &update, false };
+        if (world)
+            world->visit(v);
     }
 }

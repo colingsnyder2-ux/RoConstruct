@@ -1,17 +1,33 @@
-// from server: 75% by atomic.potato
-struct MechToAssemblyStage {
-    char pad0[8];
-    void* field8;
-    void removeStage(void*);
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Primitive;
+struct Stage {
+    void g(Primitive* a1);
+    void h(Primitive* a1);
+};
+typedef void (Stage::*StageFn)(Primitive*);
+
+struct Functor { StageFn fn; Stage* s; Functor(StageFn f, Stage* p) { s = p; fn = f; } };
+struct Prims {
+    void visit(Functor fn);
 };
 
-extern "C" void __stdcall sub_6f6d20(void*, void*, void*);
-extern "C" void __stdcall sub_6dae00(void*, void*);
-extern "C" void __stdcall sub_6d5c50(void*, void*);
+struct Primitive {
+    char pad0[8];
+    Prims prims;
+    void detach(void* a1);
+};
 
-void MechToAssemblyStage::removeStage(void* arg) {
-    void* p = field8;
-    sub_6f6d20((char*)arg + 8, (void*)0x6dadd0, p);
-    sub_6dae00(field8, arg);
-    sub_6d5c50(arg, this);
+struct S {
+    char pad0[8];
+    Stage* m_p;
+    void f(Primitive* a1);
+};
+
+void S::f(Primitive* a1)
+{
+    a1->prims.visit(Functor(&Stage::g, m_p));
+    m_p->h(a1);
+    a1->detach(this);
 }

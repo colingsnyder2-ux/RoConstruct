@@ -1,25 +1,29 @@
-// from server: 74% by atomic.potato
-extern "C" void* __stdcall GetModuleHandleA(const char*);
-extern "C" void* __stdcall LoadLibraryA(const char*);
-
-struct CRbxChildFrame {
-    char pad0[4];
-    void* field4;
-    char field8;
-    char pad9[3];
-    char fieldC;
-    void* method();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+typedef struct HINSTANCE__* HMODULE;
+extern "C" __declspec(dllimport) HMODULE __stdcall GetModuleHandleA(const char*);
+extern "C" __declspec(dllimport) HMODULE __stdcall LoadLibraryA(const char*);
+template<class T> class ImpStr { public: __declspec(noinline) operator const T*() const { return p; } T* p; };
+extern template class __declspec(dllimport) ImpStr<char>;
+typedef ImpStr<char> CStringA;
+class ModuleLoader {
+public:
+	virtual ~ModuleLoader();
+	HMODULE get();
+	HMODULE hModule;
+	bool loaded;
+	CStringA name;
 };
-
-void* CRbxChildFrame::method() {
-    if (field4 != 0)
-        return field4;
-    void* h = GetModuleHandleA((const char*)&fieldC);
-    field4 = LoadLibraryA((const char*)h);
-    if (field4 == 0) {
-        void* h2 = GetModuleHandleA((const char*)&fieldC);
-        field4 = LoadLibraryA((const char*)h2);
-        field8 = (field4 != 0);
-    }
-    return field4;
+HMODULE ModuleLoader::get()
+{
+	if (hModule == 0) {
+		hModule = GetModuleHandleA(name);
+		if (hModule == 0) {
+			hModule = LoadLibraryA(name);
+			loaded = hModule != 0;
+		}
+	}
+	return hModule;
 }

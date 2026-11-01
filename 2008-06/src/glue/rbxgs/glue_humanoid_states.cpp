@@ -134,12 +134,21 @@ namespace RBX
 			floorVelocity = floor.linearVelocityAtPoint(floorTouchInWorld);
 			floorRotationalVelocity = floor.velocity.rotational.y;
 		}
+		float previousSpeed = desiredVelocity.magnitude();
 		G3D::Vector3 direction = humanoid->updateWalkDirection();
 		direction.y = 0;
 		desiredVelocity = direction * 16.0f;
-		desiredYRotationalVelocity = humanoid->getWalkRotationalVelocity();
-		if (direction.squaredLength() > 0.0001f)
-			intendedYRotation = atan2f(-direction.x, -direction.z);
+		// Original 00666b20 / 00643330 report material speed changes to Animate.
+		float speed = desiredVelocity.magnitude();
+		if (speed < previousSpeed * 0.5f || speed > previousSpeed * 2.0f)
+			Humanoid::event_Running.fire(humanoid, speed);
+		desiredYRotationalVelocity = 0.0f;
+		if (direction.squaredLength() > 0.0f) {
+			// Original 00666410 turns toward movement using the shortest angle.
+			intendedYRotation = Math::getHeading(direction);
+			desiredYRotationalVelocity = (float)G3D::wrap(
+				intendedYRotation - humanoid->getTorsoHeading(), -Math::pi(), Math::pi()) * 8.0f;
+		}
 		// Original 00643360: torso half-height plus left leg, or right leg if absent.
 		desiredAltitude = floorTouchInWorld.y;
 		Primitive* torso = humanoid->getTorsoPrimitive();

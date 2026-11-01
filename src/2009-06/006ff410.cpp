@@ -1,10 +1,11 @@
+// from server: 100% by EspClaude
 // from server: 75% by EspClaude
 // from server: 100% by EspClaude
 // from server: 82% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espclaude_369ebbc72e42bae0.cpp
+// roc-lib: rbxgs-dll roc_espclaude_891b13dd0e25d6f6.cpp
 
 // Candidate translation unit (score above; library headers required).
 // Native324B allocation0045b425, ctor674210, dtor673a90.
@@ -85,8 +86,8 @@ SharedPtr<RbxFont> loadRbxFont(const std::string&); //684eb0 cdecl hidden result
 namespace RBX {
 // Opaque context view: only observed SceneManager slot4 is accessed.
 class AdornContextView { public:
-    Ogre::SceneManager* sceneManager() {return *(Ogre::SceneManager**)((char*)this+4);}
-    Ogre::Camera* camera() {return *(Ogre::Camera**)((char*)this+8);}
+    Ogre::SceneManager* sceneManager() {return *(Ogre::SceneManager**)((char*)this+0x10);}
+    Ogre::Camera* camera() {return *(Ogre::Camera**)((char*)this+0x14);}
     void* renderContext() {return (char*)this+0x18;}
 };
 extern Ogre::SharedPtr<Ogre::RbxFont> nativeAdornFont; //962da8.
@@ -137,7 +138,7 @@ public:
 		virtual void sphere(const G3D::Sphere& sphere, const G3D::Color4& solidColor, const G3D::Color4& wireColor);
 		virtual void explosion(const G3D::Sphere& sph, const G3D::Color4& solidColor, const G3D::Color4& wireColor);
 		virtual void sparkle(); // Native00674790, vtable4c.
-		virtual void cylinderAlongX(float radius, float length, const G3D::Color4& solidColor, const G3D::Color4& wireColor);
+		virtual void cylinderAlongX(float radius, float length, const G3D::Color4& solidColor, const G3D::Color4& wireColor, int exeExtra);
 		virtual void ray(const G3D::Ray& ray, const G3D::Color4& color, float scale);
 		virtual void lineSegment(const G3D::LineSegment& lineSegment, const G3D::Color4& color, float scale);
 		virtual void axes(const G3D::Color4& xColor, const G3D::Color4& yColor, const G3D::Color4& zColor, float scale);
@@ -155,8 +156,9 @@ typedef char NativeEntitySize[sizeof(Ogre::RbxEntity)==0x2bc?1:-1];
 typedef char NativeSceneNodeSize[sizeof(Ogre::RbxSceneNode)==0x248?1:-1];
 static inline void setSphereParam(Ogre::Vector4& p,float r,const Ogre::Vector3& c){p.x=r;p.y=c.x;p.z=c.y;p.w=c.z;}
 extern Ogre::MeshPtr adornCylinderMesh; //0097dabc.
-extern std::string adornCylinderSuffix; //0097dad4.
-void AdornRbxGfx::cylinderAlongX(float radius,float length,const G3D::Color4& solid,const G3D::Color4&) {
+extern std::string adornCylinderName;
+void adornSetSphere(Ogre::SubMesh*,const Ogre::Vector4&);
+void AdornRbxGfx::cylinderAlongX(float radius,float length,const G3D::Color4& solid,const G3D::Color4&,int) {
     const Ogre::Vector3& position=*reinterpret_cast<const Ogre::Vector3*>(&coordinateFrame.translation);
     Ogre::Sphere bounds(Ogre::Vector3(length*0.5f+position.x,position.y,position.z),(radius>length?radius*1.4f:length*1.4f));
     if(!engine->camera()->isVisible(bounds,0)) return;
@@ -174,13 +176,13 @@ void AdornRbxGfx::cylinderAlongX(float radius,float length,const G3D::Color4& so
         object->setMaterialName(0,material->getName());
         object->setMaterialName(1,material->getName());
         object->setMaterialName(2,material->getName());
-        adornCylinderMesh=object->convertToMesh(sceneManager()->getName()+adornCylinderSuffix,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+        adornCylinderMesh=object->convertToMesh(adornCylinderName,Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
         Ogre::Mesh* mesh=adornCylinderMesh.getPointer();
         float meshRadius=adornCylinderMesh->getBoundingSphereRadius();
         Ogre::Vector4 parameter;
         setSphereParam(parameter,meshRadius,mesh->getBounds().getCenter());
         for(int i=0;i<adornCylinderMesh->getNumSubMeshes();++i) {
-            renderNode->setSphere(reinterpret_cast<unsigned long>(adornCylinderMesh->getSubMesh((unsigned short)i)),parameter);
+            adornSetSphere(adornCylinderMesh->getSubMesh((unsigned short)i),parameter);
         }
     }
     }

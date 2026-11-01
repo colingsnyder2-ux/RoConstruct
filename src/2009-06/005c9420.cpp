@@ -1,5 +1,6 @@
-// from server: 75% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/afxbaseribbonelement.cpp
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct Settings { char pad[0x150]; double value; };
+Settings& settings();
+double getValue_005c9420() { return settings().value; }

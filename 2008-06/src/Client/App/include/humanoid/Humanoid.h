@@ -45,6 +45,9 @@ namespace RBX
 			State(Humanoid* humanoid)
 				: humanoid(humanoid)
 			{
+				// Original HumanoidState constructor 00643e00 resets transient controls.
+				humanoid->setJump(false);
+				humanoid->setStrafe(false);
 			}
 		public:
 			virtual ~State()

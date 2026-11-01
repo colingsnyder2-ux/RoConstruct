@@ -1,36 +1,19 @@
-// from server: 74% by atomic.potato
-struct RBX_HeadBuilder {
-    float field0;
-    float field4;
-    char field8;
-    char field9;
-    char pad[2];
-    void func(float* a, float* b);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Vector2 { float x, y; };
+struct Rect { float x, y, z, w, h; };
+extern const float kEps;
+struct Scaler {
+    float sx, sy;
+    bool scaleX, scaleY;
+    void apply(Rect& r, const Vector2& size, int unused);
 };
-
-extern float g_8ca464;
-
-void RBX_HeadBuilder::func(float* a, float* b)
+void Scaler::apply(Rect& r, const Vector2& size, int)
 {
-    float zero = 0.0f;
-    if (zero > a[0]) {
-        a[0] = a[0] - g_8ca464;
-    } else {
-        a[0] = a[0] + g_8ca464;
-    }
-    if (zero > a[1]) {
-        a[1] = a[1] - g_8ca464;
-    } else {
-        a[1] = a[1] + g_8ca464;
-    }
-    if (field8 != 0) {
-        a[2] = (a[0] / b[0]) * field0;
-    } else {
-        a[2] = field0;
-    }
-    if (field9 != 0) {
-        a[3] = (field4 / b[1]) * a[1];
-    } else {
-        a[3] = field4;
-    }
+    if (r.x > 0.0f) r.x -= kEps; else r.x += kEps;
+    if (r.y > 0.0f) r.y -= kEps; else r.y += kEps;
+    r.w = scaleX ? (r.x / size.x) * sx : sx;
+    r.h = scaleY ? (sy / size.y) * r.y : sy;
 }

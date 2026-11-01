@@ -1,103 +1,395 @@
-// from server: 75% by EspClaude
-// from server: 100% by auto
-// roc 2008-06 0065cd90  unit: RBX::BallBallContact  size: 216 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0065cd90
-//
-// 0065cd90  8b442408             mov eax, dword ptr [esp + 8]
-// 0065cd94  8b4808               mov ecx, dword ptr [eax + 8]
-// 0065cd97  53                   push ebx
-// 0065cd98  55                   push ebp
-// 0065cd99  56                   push esi
-// 0065cd9a  57                   push edi
-// 0065cd9b  83f907               cmp ecx, 7
-// 0065cd9e  0f8790000000         ja 0x65ce34
-// 0065cda4  ff248d48ce6500       jmp dword ptr [ecx*4 + 0x65ce48]
-// 0065cdab  5f                   pop edi
-// 0065cdac  5e                   pop esi
-// 0065cdad  5d                   pop ebp
-// 0065cdae  b801000000           mov eax, 1
-// 0065cdb3  5b                   pop ebx
-// 0065cdb4  c3                   ret 
-// 0065cdb5  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
-// 0065cdb9  dd01                 fld qword ptr [ecx]
-// 0065cdbb  dc18                 fcomp qword ptr [eax]
-// 0065cdbd  dfe0                 fnstsw ax
-// 0065cdbf  f6c444               test ah, 0x44
-// 0065cdc2  7a3a                 jp 0x65cdfe
-// 0065cdc4  5f                   pop edi
-// 0065cdc5  5e                   pop esi
-// 0065cdc6  5d                   pop ebp
-// 0065cdc7  b801000000           mov eax, 1
-// 0065cdcc  5b                   pop ebx
-// 0065cdcd  c3                   ret 
-// 0065cdce  8b54241c             mov edx, dword ptr [esp + 0x1c]
-// 0065cdd2  8b0a                 mov ecx, dword ptr [edx]
-// 0065cdd4  eb06                 jmp 0x65cddc
-// 0065cdd6  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
-// 0065cdda  8b09                 mov ecx, dword ptr [ecx]
-// 0065cddc  8b00                 mov eax, dword ptr [eax]
-// 0065cdde  3bc1                 cmp eax, ecx
-// 0065cde0  74c9                 je 0x65cdab
-// 0065cde2  8b6c2414             mov ebp, dword ptr [esp + 0x14]
-// 0065cde6  8b5908               mov ebx, dword ptr [ecx + 8]
-// 0065cde9  8b7808               mov edi, dword ptr [eax + 8]
-// 0065cdec  55                   push ebp
-// 0065cded  be04000000           mov esi, 4
-// 0065cdf2  e8f9fcffff           call 0x65caf0
-// 0065cdf7  83c404               add esp, 4
-// 0065cdfa  85c0                 test eax, eax
-// 0065cdfc  7507                 jne 0x65ce05
-// 0065cdfe  5f                   pop edi
-// 0065cdff  5e                   pop esi
-// 0065ce00  5d                   pop ebp
-// 0065ce01  33c0                 xor eax, eax
-// 0065ce03  5b                   pop ebx
-// 0065ce04  c3                   ret 
-// 0065ce05  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
-// 0065ce09  8b542418             mov edx, dword ptr [esp + 0x18]
-// 0065ce0d  50                   push eax
-// 0065ce0e  8b4508               mov eax, dword ptr [ebp + 8]
-// 0065ce11  55                   push ebp
-// 0065ce12  e899f9ffff           call 0x65c7b0
-// 0065ce17  8b6d08               mov ebp, dword ptr [ebp + 8]
-// 0065ce1a  8b4508               mov eax, dword ptr [ebp + 8]
-// 0065ce1d  83c408               add esp, 8
-// 0065ce20  85c0                 test eax, eax
-// 0065ce22  74da                 je 0x65cdfe
-// 0065ce24  83f801               cmp eax, 1
-// 0065ce27  7582                 jne 0x65cdab
-// 0065ce29  837d0000             cmp dword ptr [ebp], 0
-// 0065ce2d  74cf                 je 0x65cdfe
-// 0065ce2f  5f                   pop edi
-// 0065ce30  5e                   pop esi
-// 0065ce31  5d                   pop ebp
-// 0065ce32  5b                   pop ebx
-// 0065ce33  c3                   ret 
-// 0065ce34  8b10                 mov edx, dword ptr [eax]
-// 0065ce36  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
-// 0065ce3a  5f                   pop edi
-// 0065ce3b  33c0                 xor eax, eax
-// 0065ce3d  3b11                 cmp edx, dword ptr [ecx]
-// 0065ce3f  5e                   pop esi
-// 0065ce40  5d                   pop ebp
-// 0065ce41  0f94c0               sete al
-// 0065ce44  5b                   pop ebx
-// 0065ce45  c3                   ret 
-// 0065ce46  8bff                 mov edi, edi
-// 0065ce48  ab                   stosd dword ptr es:[edi], eax
-// 0065ce49  cd65                 int 0x65
-// 0065ce4b  0034ce               add byte ptr [esi + ecx*8], dh
-// 0065ce4e  650034ce             add byte ptr gs:[esi + ecx*8], dh
-// 0065ce52  6500b5cd650034       add byte ptr gs:[ebp + 0x340065cd], dh
-// 0065ce59  ce                   into 
-// 0065ce5a  6500d6               add dh, dl
-// 0065ce5d  cd65                 int 0x65
-// 0065ce5f  0034ce               add byte ptr [esi + ecx*8], dh
-// 0065ce62  6500ce               add dh, cl
-// 0065ce65  cd65                 int 0x65
-// library lua-5.1/lvm.c (function _luaV_equalval)
-
-// roc-lang: c
+// from server: 100% by EspClaude
+// roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
-// roc-lib: lua-5.1 lvm.c
+// roc-lib: lua-5.1.4 roc_espclaude_7bdb34618ef3f16b.cpp
+
+// Candidate translation unit (score above; library headers required).
+extern "C" {
+#define lvm_c
+#define LUA_CORE
+#include "lua.h"
+/*
+** $Id: lobject.h,v 2.20.1.2 2008/08/06 13:29:48 roberto Exp $
+** Type definitions for Lua objects
+** See Copyright Notice in lua.h
+*/
+
+
+#ifndef lobject_h
+#define lobject_h
+
+
+#include <stdarg.h>
+
+
+#include "llimits.h"
+#include "lua.h"
+
+
+/* tags for values visible from Lua */
+#define LAST_TAG	LUA_TTHREAD
+
+#define NUM_TAGS	(LAST_TAG+1)
+
+
+/*
+** Extra tags for non-values
+*/
+#define LUA_TPROTO	(LAST_TAG+1)
+#define LUA_TUPVAL	(LAST_TAG+2)
+#define LUA_TDEADKEY	(LAST_TAG+3)
+
+
+/*
+** Union of all collectable objects
+*/
+typedef union GCObject GCObject;
+
+
+/*
+** Common Header for all collectable objects (in macro form, to be
+** included in other objects)
+*/
+#define CommonHeader	GCObject *next; lu_byte tt; lu_byte marked
+
+
+/*
+** Common header in struct form
+*/
+typedef struct GCheader {
+  CommonHeader;
+} GCheader;
+
+
+
+
+/*
+** Union of all Lua values
+*/
+typedef union {
+  GCObject *gc;
+  void *p;
+  lua_Number n;
+  int b;
+} Value;
+
+
+/*
+** Tagged Values
+*/
+
+#define TValuefields	Value value; int tt
+
+typedef struct lua_TValue {
+  TValuefields;
+} TValue;
+
+
+/* Macros to test type */
+#define ttisnil(o)	(ttype(o) == LUA_TNIL)
+#define ttisnumber(o)	(ttype(o) == LUA_TNUMBER)
+#define ttisstring(o)	(ttype(o) == LUA_TSTRING)
+#define ttistable(o)	(ttype(o) == LUA_TTABLE)
+#define ttisfunction(o)	(ttype(o) == LUA_TFUNCTION)
+#define ttisboolean(o)	(ttype(o) == LUA_TBOOLEAN)
+#define ttisuserdata(o)	(ttype(o) == LUA_TUSERDATA)
+#define ttisthread(o)	(ttype(o) == LUA_TTHREAD)
+#define ttislightuserdata(o)	(ttype(o) == LUA_TLIGHTUSERDATA)
+
+/* Macros to access values */
+#define ttype(o)	((o)->tt)
+#define gcvalue(o)	check_exp(iscollectable(o), (o)->value.gc)
+#define pvalue(o)	check_exp(ttislightuserdata(o), (o)->value.p)
+#define nvalue(o)	check_exp(ttisnumber(o), (o)->value.n)
+#define rawtsvalue(o)	check_exp(ttisstring(o), &(o)->value.gc->ts)
+#define tsvalue(o)	(&rawtsvalue(o)->tsv)
+#define rawuvalue(o)	check_exp(ttisuserdata(o), &(o)->value.gc->u)
+#define uvalue(o)	(&rawuvalue(o)->uv)
+#define clvalue(o)	check_exp(ttisfunction(o), &(o)->value.gc->cl)
+#define hvalue(o)	check_exp(ttistable(o), &(o)->value.gc->h)
+#define bvalue(o)	check_exp(ttisboolean(o), (o)->value.b)
+#define thvalue(o)	check_exp(ttisthread(o), &(o)->value.gc->th)
+
+#define l_isfalse(o)	(ttisnil(o) || (ttisboolean(o) && bvalue(o) == 0))
+
+/*
+** for internal debug only
+*/
+#define checkconsistency(obj) \
+  lua_assert(!iscollectable(obj) || (ttype(obj) == (obj)->value.gc->gch.tt))
+
+#define checkliveness(g,obj) \
+  lua_assert(!iscollectable(obj) || \
+  ((ttype(obj) == (obj)->value.gc->gch.tt) && !isdead(g, (obj)->value.gc)))
+
+
+/* Macros to set values */
+#define setnilvalue(obj) ((obj)->tt=LUA_TNIL)
+
+#define setnvalue(obj,x) \
+  { TValue *i_o=(obj); i_o->value.n=(x); i_o->tt=LUA_TNUMBER; }
+
+#define setpvalue(obj,x) \
+  { TValue *i_o=(obj); i_o->value.p=(x); i_o->tt=LUA_TLIGHTUSERDATA; }
+
+#define setbvalue(obj,x) \
+  { TValue *i_o=(obj); i_o->value.b=(x); i_o->tt=LUA_TBOOLEAN; }
+
+#define setsvalue(L,obj,x) \
+  { TValue *i_o=(obj); \
+    i_o->value.gc=cast(GCObject *, (x)); i_o->tt=LUA_TSTRING; \
+    checkliveness(G(L),i_o); }
+
+#define setuvalue(L,obj,x) \
+  { TValue *i_o=(obj); \
+    i_o->value.gc=cast(GCObject *, (x)); i_o->tt=LUA_TUSERDATA; \
+    checkliveness(G(L),i_o); }
+
+#define setthvalue(L,obj,x) \
+  { TValue *i_o=(obj); \
+    i_o->value.gc=cast(GCObject *, (x)); i_o->tt=LUA_TTHREAD; \
+    checkliveness(G(L),i_o); }
+
+#define setclvalue(L,obj,x) \
+  { TValue *i_o=(obj); \
+    i_o->value.gc=cast(GCObject *, (x)); i_o->tt=LUA_TFUNCTION; \
+    checkliveness(G(L),i_o); }
+
+#define sethvalue(L,obj,x) \
+  { TValue *i_o=(obj); \
+    i_o->value.gc=cast(GCObject *, (x)); i_o->tt=LUA_TTABLE; \
+    checkliveness(G(L),i_o); }
+
+#define setptvalue(L,obj,x) \
+  { TValue *i_o=(obj); \
+    i_o->value.gc=cast(GCObject *, (x)); i_o->tt=LUA_TPROTO; \
+    checkliveness(G(L),i_o); }
+
+
+
+
+#define setobj(L,obj1,obj2) \
+  { const TValue *o2=(obj2); TValue *o1=(obj1); \
+    o1->value = o2->value; o1->tt=o2->tt; \
+    checkliveness(G(L),o1); }
+
+
+/*
+** different types of sets, according to destination
+*/
+
+/* from stack to (same) stack */
+#define setobjs2s	setobj
+/* to stack (not from same stack) */
+#define setobj2s	setobj
+#define setsvalue2s	setsvalue
+#define sethvalue2s	sethvalue
+#define setptvalue2s	setptvalue
+/* from table to same table */
+#define setobjt2t	setobj
+/* to table */
+#define setobj2t	setobj
+/* to new object */
+#define setobj2n	setobj
+#define setsvalue2n	setsvalue
+
+#define setttype(obj, tt) (ttype(obj) = (tt))
+
+
+#define iscollectable(o)	(ttype(o) >= LUA_TSTRING)
+
+
+
+typedef TValue *StkId;  /* index to stack elements */
+
+
+/*
+** String headers for string table
+*/
+typedef union TString {
+  L_Umaxalign dummy;  /* ensures maximum alignment for strings */
+  struct {
+    CommonHeader;
+    lu_byte reserved;
+    unsigned int hash;
+    size_t len;
+  } tsv;
+} TString;
+
+
+#define getstr(ts)	cast(const char *, (ts) + 1)
+#define svalue(o)       getstr(rawtsvalue(o))
+
+
+
+typedef union Udata {
+  L_Umaxalign dummy;  /* ensures maximum alignment for `local' udata */
+  struct {
+    CommonHeader;
+    struct Table *metatable;
+    struct Table *env;
+    size_t len;
+  } uv;
+} Udata;
+
+
+
+
+/*
+** Function Prototypes
+*/
+typedef struct Proto {
+  CommonHeader;
+  TValue *k;  /* constants used by the function */
+  Instruction *code;
+  struct Proto **p;  /* functions defined inside the function */
+  int *lineinfo;  /* map from opcodes to source lines */
+  struct LocVar *locvars;  /* information about local variables */
+  TString **upvalues;  /* upvalue names */
+  TString  *source;
+  int sizeupvalues;
+  int sizek;  /* size of `k' */
+  int sizecode;
+  int sizelineinfo;
+  int sizep;  /* size of `p' */
+  int sizelocvars;
+  int linedefined;
+  int lastlinedefined;
+  GCObject *gclist;
+  lu_byte nups;  /* number of upvalues */
+  lu_byte numparams;
+  lu_byte is_vararg;
+  lu_byte maxstacksize;
+} Proto;
+
+
+/* masks for new-style vararg */
+#define VARARG_HASARG		1
+#define VARARG_ISVARARG		2
+#define VARARG_NEEDSARG		4
+
+
+typedef struct LocVar {
+  TString *varname;
+  int startpc;  /* first point where variable is active */
+  int endpc;    /* first point where variable is dead */
+} LocVar;
+
+
+
+/*
+** Upvalues
+*/
+
+typedef struct UpVal {
+  CommonHeader;
+  TValue *v;  /* points to stack or to its own value */
+  union {
+    TValue value;  /* the value (when closed) */
+    struct {  /* double linked list (when open) */
+      struct UpVal *prev;
+      struct UpVal *next;
+    } l;
+  } u;
+} UpVal;
+
+
+/*
+** Closures
+*/
+
+#define ClosureHeader \
+	CommonHeader; lu_byte isC; lu_byte nupvalues; GCObject *gclist; \
+	struct Table *env
+
+typedef struct CClosure {
+  ClosureHeader;
+  lua_CFunction f;
+  TValue upvalue[1];
+} CClosure;
+
+
+typedef struct LClosure {
+  ClosureHeader;
+  struct Proto *p;
+  UpVal *upvals[1];
+} LClosure;
+
+
+typedef union Closure {
+  CClosure c;
+  LClosure l;
+} Closure;
+
+
+#define iscfunction(o)	(ttype(o) == LUA_TFUNCTION && clvalue(o)->c.isC)
+#define isLfunction(o)	(ttype(o) == LUA_TFUNCTION && !clvalue(o)->c.isC)
+
+
+/*
+** Tables
+*/
+
+typedef union TKey {
+  struct {
+    TValuefields;
+    struct Node *next;  /* for chaining */
+  } nk;
+  TValue tvk;
+} TKey;
+
+
+typedef struct Node {
+  TValue i_val;
+  TKey i_key;
+} Node;
+
+
+typedef struct Table {
+  CommonHeader;
+  lu_byte flags;  /* 1<<p means tagmethod(p) is not present */ 
+  lu_byte lsizenode;
+  lu_byte rbxExtra[4];
+  struct Table *metatable;
+  TValue *array;  /* array part */
+  Node *node;
+  Node *lastfree;  /* any free position is before this position */
+  GCObject *gclist;
+  int sizearray;  /* size of `array' array */
+} Table;
+
+
+
+/*
+** `module' operation for hashing (size is always a power of 2)
+*/
+#define lmod(s,size) \
+	(check_exp((size&(size-1))==0, (cast(int, (s) & ((size)-1)))))
+
+
+#define twoto(x)	(1<<(x))
+#define sizenode(t)	(twoto((t)->lsizenode))
+
+
+#define luaO_nilobject		(&luaO_nilobject_)
+
+LUAI_DATA const TValue luaO_nilobject_;
+
+#define ceillog2(x)	(luaO_log2((x)-1) + 1)
+
+LUAI_FUNC int luaO_log2 (unsigned int x);
+LUAI_FUNC int luaO_int2fb (unsigned int x);
+LUAI_FUNC int luaO_fb2int (int x);
+LUAI_FUNC int luaO_rawequalObj (const TValue *t1, const TValue *t2);
+LUAI_FUNC int luaO_str2d (const char *s, lua_Number *result);
+LUAI_FUNC const char *luaO_pushvfstring (lua_State *L, const char *fmt,
+                                                       va_list argp);
+LUAI_FUNC const char *luaO_pushfstring (lua_State *L, const char *fmt, ...);
+LUAI_FUNC void luaO_chunkid (char *out, const char *source, size_t len);
+
+
+#endif
+
+#include "lvm.c"
+}

@@ -1,5 +1,11 @@
-// from server: 73% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+// roc-cl: 21022
+// roc-flags: /Od /GS- /EHsc /MD
+struct Base { int p; Base(); };
+struct X : Base {
+    int a, b;
+    X(void* v);
+    void assign(void* v);
+};
+X::X(void* v) { assign(v); a = 0; b = 0; }

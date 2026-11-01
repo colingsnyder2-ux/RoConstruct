@@ -1,4 +1,39 @@
+// from server: 100% by EspClaude
 // from server: 73% by EspClaude
+// roc 2009-06 006272d0  unit: RBX::Tool  size: 71 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006272d0
+//
+// 006272d0  56                   push esi
+// 006272d1  57                   push edi
+// 006272d2  8bf1                 mov esi, ecx
+// 006272d4  e887520100           call 0x63c560
+// 006272d9  85c0                 test eax, eax
+// 006272db  7504                 jne 0x6272e1
+// 006272dd  33ff                 xor edi, edi
+// 006272df  eb21                 jmp 0x627302
+// 006272e1  56                   push esi
+// 006272e2  e8996f0000           call 0x62e280
+// 006272e7  83c404               add esp, 4
+// 006272ea  84c0                 test al, al
+// 006272ec  7507                 jne 0x6272f5
+// 006272ee  bf01000000           mov edi, 1
+// 006272f3  eb0d                 jmp 0x627302
+// 006272f5  8b4648               mov eax, dword ptr [esi + 0x48]
+// 006272f8  50                   push eax
+// 006272f9  8bce                 mov ecx, esi
+// 006272fb  e8d0f9ffff           call 0x626cd0
+// 00627300  8bf8                 mov edi, eax
+// 00627302  56                   push esi
+// 00627303  e8c8c4e8ff           call 0x4b37d0
+// 00627308  83c404               add esp, 4
+// 0062730b  50                   push eax
+// 0062730c  57                   push edi
+// 0062730d  8bce                 mov ecx, esi
+// 0062730f  e8ec330000           call 0x62a700
+// 00627314  5f                   pop edi
+// 00627315  5e                   pop esi
+// 00627316  c3                   ret 
+
 // from server: 100% by tester
 // roc 2008-06 005fdb70  unit: RBX::Tool  size: 74 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005fdb70
@@ -35,7 +70,7 @@
 // 005fdbb9  c3                   ret 
 
 struct Tool {
-    char pad[0x104];
+    char pad[0x48];
     int field_bc;
     int method_5d1ae0();
     int method_5d1b60(int);

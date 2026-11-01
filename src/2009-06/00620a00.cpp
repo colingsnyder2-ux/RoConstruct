@@ -1,4 +1,4 @@
-// from server: 76% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
@@ -26,6 +26,7 @@ inline const float& maximum(const float& a, const float& b)
     return b > a ? b : a;
 }
 
+inline const float& maximum2(const float& a, const float& b) { return a < b ? b : a; }
 struct Box {
     Vector low, high;
 };
@@ -53,10 +54,9 @@ struct S {
     virtual void slot17();
     virtual void slot18();
     virtual void slot19();
-    virtual void slot20();
-    virtual Box* bounds(Box*);
+    virtual Box bounds();
 
-    char padding[0x2c4];
+    char padding[0x130];
     Vector value;
 
     Vector f();
@@ -68,11 +68,10 @@ Vector S::f()
     value.y = maximum(zero, value.y);
     float savedY = value.y;
 
-    Box storage;
-    const Box* box = bounds(&storage);
-    Vector clipped = value.clamp(box->low, box->high);
+    Box box = bounds();
+    Vector clipped = value.clamp(box.low, box.high);
     value = clipped;
-    value.y = savedY;
+    value.y = maximum2(savedY, box.low.y);
     value = combine(clipped, value);
     return value;
 }

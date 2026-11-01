@@ -1,13 +1,14 @@
+// from server: 100% by EspClaude
 // from server: 75% by EspClaude
 // from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD
-// roc-lib: g3d-6.09-dll roc_vrbxfont_constructor_server_c5079e23e94144b0.cpp
+// roc-lib: g3d-6.09-dll roc_espclaude_c4871518d8c00d36.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "../../ogre-1.4.5/ogrenew/OgreMain/include/OgreTextureManager.h"
-#include "../../ogre-1.4.5/ogrenew/OgreMain/include/OgreDataStream.h"
+#include "../../ogre-1.4.9/ogre/OgreMain/include/OgreTextureManager.h"
+#include "../../ogre-1.4.9/ogre/OgreMain/include/OgreDataStream.h"
 /**
  @file BinaryInput.h
  
@@ -443,6 +444,26 @@ public:
 #include "G3D/g3dmath.h"
 #include <stdio.h>
 
+#include <intrin.h>
+namespace RBX {
+    struct ExeSpCounted {
+        virtual ~ExeSpCounted();
+        virtual void dispose() = 0;
+        virtual void destroy() = 0;
+        long use_count_;
+        long weak_count_;
+        void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
+        void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+    };
+    template<class T> struct ExeSharedPtr {
+        T* px;
+        ExeSpCounted* pn;
+        ~ExeSharedPtr() { if (pn != 0) pn->release(); }
+        T* operator->() const { return px; }
+    };
+    struct ExeRenderSettings { int unused; int textureMode; };
+    ExeSharedPtr<ExeRenderSettings> exeRenderSettings();
+}
 namespace Ogre
 {
     extern int fontTextureCounter;
@@ -481,11 +502,13 @@ namespace Ogre
             static_cast<const G3D::uint8*>(input.getCArray()) + input.getPosition();
 
         char textureName[8];
-        _snprintf(textureName, 8, "ft%d", fontTextureCounter++);
+        _snprintf(textureName, 8, "font_%d", fontTextureCounter++);
         texture = TextureManager::getSingleton().create(textureName, "General");
 
         DataStreamPtr stream(new MemoryDataStream(
             const_cast<G3D::uint8*>(pixels), width * height, false));
+        if (RBX::exeRenderSettings()->textureMode == 1)
+            texture.getPointer()->setFormat((PixelFormat)0x1c);
         texture.getPointer()->loadRawData(stream, width, height, PF_A8);
     }
 }

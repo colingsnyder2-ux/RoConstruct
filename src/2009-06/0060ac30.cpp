@@ -1,31 +1,24 @@
-// from server: 75% by atomic.potato
-extern "C" void* __stdcall sub_89E4B4();
-
-struct Inner {
-    char pad[0x1c];
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string>
+namespace RBX {
+class VerbContainer { public: virtual ~VerbContainer(); };
+class Verb {
+public:
+    Verb(VerbContainer* container, std::string name);
+    virtual ~Verb();
+    int a, b;
 };
-
-struct Outer {
-    void* field0;
-    char pad1[0x8];
-    void* fieldC;
-    void* init(void*);
+class OwnerPad { public: virtual ~OwnerPad(); char pad[0xcc]; };
+class Workspace : public OwnerPad, public VerbContainer {};
+class ClearBackpackVerb : public Verb {
+public:
+    Workspace* workspace;
+    ClearBackpackVerb(Workspace* w);
 };
-
-extern "C" void __stdcall sub_6109C0(void*, void*);
-
-void* Outer::init(void* arg) {
-    void* ebx = arg;
-    void* edi;
-    if (ebx != 0) {
-        edi = (char*)ebx + 0xd0;
-    } else {
-        edi = 0;
-    }
-    Inner local;
-    sub_89E4B4();
-    sub_6109C0(this, edi);
-    fieldC = ebx;
-    field0 = (void*)0x8d8394;
-    return this;
+ClearBackpackVerb::ClearBackpackVerb(Workspace* w)
+    : Verb(w, "ClearBackpack"), workspace(w)
+{
+}
 }
