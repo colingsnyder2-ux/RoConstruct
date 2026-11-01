@@ -1,4 +1,4 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004898d0  unit: G3D::GWindow  size: 57 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004898d0
@@ -28,7 +28,7 @@ namespace RBX {
     class Instance {
     public:
         virtual ~Instance();
-        char padding[256];
+        char padding[0x44];
         Instance* parent;
     };
 

@@ -1,4 +1,4 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00599360  unit: RBX::VPartInstance::?$FactoryProduct  size: 121 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00599360
@@ -51,11 +51,13 @@ struct DataSource {
 extern void __cdecl combine(const void*, const void*, void*);
 
 struct S {
-    char reserved0[0x10];
-    S* source;
+    char reserved0[0x4];
     S* parent;
-    char reserved1[0x1C];
+    char reserved1[0x24];
+    S* source;
+    char reserved2[0x8];
     DataSource* dataSource;
+    char reserved3[0x4];
     char localData[0x58];
     unsigned int version;
     char result[0x30];

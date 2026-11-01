@@ -1,4 +1,4 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00574050  unit: RBX::TopMenuBar  size: 220 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00574050
@@ -116,7 +116,7 @@ struct Context {
 };
 
 struct ItemVTable {
-    char padding[96];
+    char padding[100];
     void (__thiscall *render)(Item *, Context *);
 };
 
@@ -142,15 +142,15 @@ struct Children {
 };
 
 struct SVTable {
-    char padding[84];
+    char padding[88];
     bool (__thiscall *enabled)(S *);
 };
 
 struct S {
     SVTable *vtable;
-    char padding0[260];
+    char padding0[0x48];
     Children *children;
-    char padding1[56];
+    char padding1[0x50];
     Rect rectangle;
 
     unsigned int count();

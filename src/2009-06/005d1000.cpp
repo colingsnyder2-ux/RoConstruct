@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00558c50  unit: RBX::VInstance::?$NonFactoryProduct  size: 314 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00558c50
@@ -173,9 +173,9 @@ __forceinline Node::Node()
 }
 
 struct S {
-    char prefix[16];
+    char prefix[20];
     Interface interfacePart;
-    char padding[280];
+    char padding[0x58];
     bool enabled;
 
     Node *create();

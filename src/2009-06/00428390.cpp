@@ -1,9 +1,9 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /arch:SSE2
-// roc-lib: xtp-11.2.2-lib-imports roc_claudeM_55bb15a72a4fb4db.cpp
+// roc-lib: xtp-11.2.2-lib-imports roc_espclaude_828e5e8231f0d934.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias(<atlimage.h>, <roc_espeon_nativeatlimagewidthdecl2e5804ac680a6dd9.cpp>)
@@ -140,6 +140,22 @@ void __cdecl InitializeAllIcons(CXTPImageManager* manager)
     SetIcon(manager, 0x80F3, "report", 16);
     SetIcon(manager, 0x80F3, "report", 32);
 
+    manager->RemoveIcon(0x810A);
+    SetIcon(manager, 0x810A, "jobs", 16);
+    SetIcon(manager, 0x810A, "jobs", 32);
+
+    manager->RemoveIcon(0x8018);
+    SetIcon(manager, 0x8018, "explorer", 16);
+    SetIcon(manager, 0x8018, "explorer", 32);
+
+    manager->RemoveIcon(0x809F);
+    SetIcon(manager, 0x809F, "output", 16);
+    SetIcon(manager, 0x809F, "output", 32);
+
+    manager->RemoveIcon(0x80FE);
+    SetIcon(manager, 0x80FE, "toolbox", 16);
+    SetIcon(manager, 0x80FE, "toolbox", 32);
+
     manager->RemoveIcon(0x800F);
     SetIcon(manager, 0x800F, "table", 16);
     SetIcon(manager, 0x800F, "table", 32);
@@ -156,6 +172,10 @@ void __cdecl InitializeAllIcons(CXTPImageManager* manager)
     SetIcon(manager, 0x8101, "bug_error", 16);
     SetIcon(manager, 0x8101, "bug_error", 32);
 
+    manager->RemoveIcon(0x8112);
+    SetIcon(manager, 0x8112, "bug_error", 16);
+    SetIcon(manager, 0x8112, "bug_error", 32);
+
     manager->RemoveIcon(0x8100);
     SetIcon(manager, 0x8100, "shield", 16);
     SetIcon(manager, 0x8100, "shield", 32);
@@ -167,5 +187,8 @@ void __cdecl InitializeAllIcons(CXTPImageManager* manager)
     manager->RemoveIcon(0x8039);
     SetIcon(manager, 0x8039, "group", 16);
     SetIcon(manager, 0x8039, "group", 32);
-}
 
+    manager->RemoveIcon(0x803E);
+    SetIcon(manager, 0x803E, "ungroup", 16);
+    SetIcon(manager, 0x803E, "ungroup", 32);
+}

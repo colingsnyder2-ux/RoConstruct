@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005023e0  unit: G3D::Sphere  size: 278 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005023e0
@@ -170,7 +170,7 @@ struct RenderDevice {
 extern void __cdecl drawGeometry(void*, RenderDevice*);
 
 struct Sphere {
-    char padding[0x28C];
+    char padding[0x4C];
     Entry** entries;
     int count;
 

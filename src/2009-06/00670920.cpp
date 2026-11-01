@@ -1,4 +1,4 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005e8470  unit: RBX::Primitive  size: 144 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e8470
@@ -78,13 +78,15 @@ struct Shape {
 };
 
 struct S {
-    char pad0[0x58];
+    char pad0[0xc0];
     Listener* listener;
-    char pad1[0x3c];
+    char pad1[0x18];
     int state;
     Shape* shape;
     char pad2[0x50];
     unsigned char changed;
+    char pad3[0x13];
+    unsigned char flag2;
 
     Vector prepare(const Vector&);
     void update(float);
@@ -106,6 +108,7 @@ void S::f(const Vector& input)
         if (listener)
             listener->f(this);
         changed = 1;
+        flag2 = 0;
     }
 }
 

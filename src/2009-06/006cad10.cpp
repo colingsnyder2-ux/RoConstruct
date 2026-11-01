@@ -1,9 +1,9 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_claudeS4_0414f5b2821e01fc.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_f9fc201aebbbc9b0.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -17,8 +17,8 @@ struct TransformProperty {
 };
 
 struct Object {
-    char padding[0x228];
-    TransformProperty transform;
+    char padding[0x118];
+    TransformProperty* transform;
     Shared getObject();
     void setParent(void*);
 };
@@ -56,6 +56,7 @@ struct Tool {
     virtual void slot13();
     virtual void slot14();
     virtual void slot15();
+    virtual void slot16();
     virtual Shared createObject();
     virtual Transform makeTransform(int, const G3D::CoordinateFrame&);
     virtual int getNotification();
@@ -80,7 +81,9 @@ void Tool::execute(int argument)
 
         Shared selected = convert(stored.get()->getObject());
         selected->setParent(parent);
-        selected->transform.assign(makeTransform(argument, actor->getTransform()));
+        TransformProperty* t = selected->transform;
+        t->assign(makeTransform(argument, actor->getTransform()));
         func_005807b0(parent)->notify(getNotification());
     }
 }
+

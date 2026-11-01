@@ -1,10 +1,10 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // from server: 90% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: atl-9.0-dll-rtm roc_espclaude_43b5b584c2f00b13.cpp
+// roc-lib: atl-9.0-dll-rtm roc_espclaude_3afebfc86a8894de.cpp
 
 // Candidate translation unit (score above; library headers required).
 #ifndef _CPPUNWIND
@@ -40,6 +40,7 @@ public:
 extern scoped_ptr<PendingObject> pendingObject;
 extern CDocument* activeDocument;
 void finishOpen();
+int __cdecl reportMessage(UINT id, UINT type = 0, UINT help = (UINT)-1);
 void notifyDocument(int, CDocument*);
 
 class CRobloxModule {
@@ -74,7 +75,7 @@ CDocument* CRobloxModule::getDocument()
         }
         catch (...)
         {
-            AfxMessageBox(0xf104);
+            reportMessage(0xf104);
             if (doc)
                 doc->OnCloseDocument();
             throw;
@@ -107,4 +108,5 @@ CDocument* CRobloxModule::getDocument()
         return document;
     }
 }
+
 

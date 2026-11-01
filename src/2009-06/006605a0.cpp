@@ -1,4 +1,4 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0059de20  unit: VCRenderSettings::?$EnumPropDescriptor  size: 142 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0059de20
@@ -73,7 +73,7 @@ struct Children
 
 struct Instance
 {
-    char padding[0x108];
+    char padding[0x4c];
     Children* children;
 
     unsigned int childCount();
@@ -82,7 +82,7 @@ struct Instance
 
 struct PartInstance
 {
-    char padding[0x1f0];
+    char padding[0x130];
     bool value;
 
     void raisePropertyChanged(const char& descriptor);

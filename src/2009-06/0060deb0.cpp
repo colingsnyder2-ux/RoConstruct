@@ -1,4 +1,4 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -67,17 +67,17 @@ template<class T,class U> bool operator==(const shared_ptr<T>& a,const shared_pt
 #include <algorithm>
 namespace boost {template<class T>class weak_ptr {T* px;void* count;public:shared_ptr<T> lock()const;};}
 namespace RBX {
-struct Primary {virtual ~Primary();char prefix[0xe0];};
+struct Primary {virtual ~Primary();char prefix[0x20];};
 struct SharedBase {boost::weak_ptr<Instance> weak;boost::shared_ptr<Instance> shared_from_this();};
 class Instance:public Primary,public SharedBase {};
 typedef std::vector<Instance*> RawInstances;
 typedef std::vector<boost::shared_ptr<Instance> > Instances;
 struct Selection {void setSelection(RawInstances::iterator,RawInstances::iterator);};
-struct FilteredSelection {char prefix[0x134];boost::shared_ptr<Selection> selection;RawInstances items;RawInstances::const_iterator begin()const{return items.begin();}RawInstances::const_iterator end()const{return items.end();}};
+struct FilteredSelection {char prefix[0x90];boost::shared_ptr<Selection> selection;RawInstances items;RawInstances::const_iterator begin()const{return items.begin();}RawInstances::const_iterator end()const{return items.end();}};
 struct Workspace {};
 struct History {void record(int);};
 struct Context {FilteredSelection* models();History* history();};
-struct Name {int id;std::string text;const char* c_str()const{_ReadWriteBarrier();return text.c_str();}};
+struct Name {std::string text;const char* c_str()const{_ReadWriteBarrier();return text.c_str();}};
 struct IDataState {virtual void setDirty(bool)=0;};
 void __cdecl trackVerb(const char*,Workspace*);
 struct Ungroup {RawInstances* children;bool* changed;Ungroup(RawInstances&c,bool&b):children(&c),changed(&b){}void operator()(const boost::shared_ptr<Instance>&)const;};

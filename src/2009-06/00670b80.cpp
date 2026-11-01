@@ -1,9 +1,9 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_edgeremovenativeb7da9cbb3ce5d29e.cpp
+// roc-lib: rbxgs-dll roc_espclaude_12a96ce7ccf0e48a.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <G3D/Array.h>
@@ -11,7 +11,7 @@
 #include <intrin.h>
 
 struct Edge {
-    char padding[12];
+    char padding[16];
     void* owner;
     int reserved;
     int firstIndex;

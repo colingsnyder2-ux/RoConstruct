@@ -1,9 +1,9 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_unit_77c3482b090e9b2d.cpp
+// roc-lib: rbxgs-dll roc_espclaude_bd59852a7c400bf6.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <string>
@@ -16,11 +16,11 @@ extern template struct __declspec(dllimport) ImpStr<char>;
 static inline const char* cstr(const std::string& x) { return static_cast<const ImpStr<char>&>(x).c_str(); }
 
 struct Member { int prefix; std::string name; };
-struct Item { char padding[0x130]; bool visible; bool restricted; bool special; };
+struct Item { char padding[0x8c]; bool visible; bool restricted; bool special; };
 struct Declaration;
 struct Service { Item* lookup(Declaration*); };
-struct Settings { char padding[0x130]; bool showRestricted; bool showSpecial; };
-struct Name { int prefix; std::string text; const std::string& str() const { return text; } };
+struct Settings { char padding[0x8c]; bool showRestricted; bool showSpecial; };
+struct Name { std::string text; const std::string& str() const { return text; } };
 struct Declaration {
     int prefix;
     Name* name;
@@ -71,3 +71,4 @@ void CDeclarationView::update(Declaration* declaration)
     configure(entry, 4, 0, 0, 0, 0, 0, declaration);
     associate(entry, item);
 }
+

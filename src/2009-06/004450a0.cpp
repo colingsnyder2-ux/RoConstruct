@@ -1,12 +1,13 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: mfc-9.0-shared-rtm roc_espeon_nativeplaytemplate90b9d8a6f4d63163.cpp
+// roc-lib: mfc-9.0-shared-rtm roc_espclaude_ecb251faaa92cfff.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <afxwin.h>
+int __cdecl reportMessage(UINT id, UINT type = 0, UINT help = (UINT)-1);
 class NativePlayTemplate:public CMultiDocTemplate { unsigned char observedGap[4]; CString errorText; public: CDocument* OpenDocumentFile(LPCTSTR,BOOL); };
 CDocument* NativePlayTemplate::OpenDocumentFile(LPCTSTR lpszPathName,
 	BOOL bMakeVisible)
@@ -16,7 +17,7 @@ CDocument* NativePlayTemplate::OpenDocumentFile(LPCTSTR lpszPathName,
 	if (pDocument == NULL)
 	{
 		errorText="CDocTemplate::CreateNewDocument returned NULL";
-		AfxMessageBox(AFX_IDP_FAILED_TO_CREATE_DOC);
+		reportMessage(AFX_IDP_FAILED_TO_CREATE_DOC);
 		return NULL;
 	}
 	ASSERT_VALID(pDocument);
@@ -28,7 +29,7 @@ CDocument* NativePlayTemplate::OpenDocumentFile(LPCTSTR lpszPathName,
 	if (pFrame == NULL)
 	{
         errorText="CreateNewFrame returned NULL";
-		AfxMessageBox(AFX_IDP_FAILED_TO_CREATE_DOC);
+		reportMessage(AFX_IDP_FAILED_TO_CREATE_DOC);
 		delete pDocument;       // explicit delete on error
 		return NULL;
 	}

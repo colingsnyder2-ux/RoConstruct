@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0066ffb0  unit: Ogre::VRbxFont::?$SharedPtr  size: 111 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0066ffb0
@@ -74,8 +74,17 @@ __forceinline Value::Value(int initial)
 }
 
 struct Auxiliary {
-    unsigned char data[8];
+    unsigned char data[5];
+    bool b;
+    unsigned char data2[2];
+    Auxiliary() : b(false) {}
     ~Auxiliary();
+};
+struct Pair2 {
+    void* first;
+    void* second;
+    Pair2() : first(0), second(0) {}
+    ~Pair2();
 };
 
 struct State {
@@ -97,6 +106,7 @@ struct S : Base {
     unsigned char padding[3];
     Auxiliary auxiliary;
     State state;
+    Pair2 pair2;
     Texture texture;
 
     S(const String& source);

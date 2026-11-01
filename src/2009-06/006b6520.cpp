@@ -1,4 +1,4 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0064ddf0  unit: RBX::Point  size: 233 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064ddf0
@@ -145,8 +145,9 @@ void Point::update(int value)
         if (!resolve(value, position))
         {
             Frame frame = getFrame(value);
-            const Vector3& origin = humanoid->getPart()
-                ? humanoid->getPart()->getRoot()->position
+            Part* part = humanoid->getPart();
+            const Vector3& origin = part
+                ? part->getRoot()->position
                 : frame.origin;
 
             position = origin;

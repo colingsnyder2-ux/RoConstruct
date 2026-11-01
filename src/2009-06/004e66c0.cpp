@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -49,8 +49,8 @@ class __multiple_inheritance Receiver;
 struct MemberFunction {typedef bool(Receiver::*Function)(boost::shared_ptr<Instance>);Function function;bool operator()(Receiver*,boost::shared_ptr<Instance>)const;};
 struct Placeholder {};
 struct Visitor {MemberFunction function;Receiver* owner;Placeholder placeholder;void operator()(const boost::shared_ptr<Instance>& instance)const{function(owner,instance);}};
-class Instance {char prefix[0x108];Children children;public:void visitChildren(Visitor)const;};
-void Instance::visitChildren(Visitor func)const{
+class Instance {char prefix[0x4c];Children children;public:void visitChildren(const Visitor&)const;};
+void Instance::visitChildren(const Visitor& func)const{
  if(children){
   boost::shared_ptr<const Instances> c=children.read();
   Instances::const_iterator end=c->end();

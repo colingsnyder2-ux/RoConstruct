@@ -1,4 +1,4 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc 2008-06 00676c90  unit: RBX::AdornG3D  size: 362 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00676c90
@@ -417,7 +417,7 @@ struct RendererTable {
     unsigned char padding0[56];
     void (__thiscall *setFrame)(Renderer*, const Frame&);
     unsigned char padding1[20];
-    void (__thiscall *draw)(Renderer*, float, float, const Color4&, void*);
+    void (__thiscall *draw)(Renderer*, float, float, const Color4&, void*, int);
 };
 
 struct Renderer {
@@ -432,7 +432,7 @@ extern const float baseRadius;
 extern const float selectedRadius;
 extern const float selectedScale;
 
-void __cdecl drawFace(Object* object, Renderer* renderer, volatile int faceArgument,
+void __cdecl drawFace(Object* object, Renderer* renderer, int faceArgument,
                       const Vector3& color)
 {
     int face = faceArgument;
@@ -464,8 +464,7 @@ void __cdecl drawFace(Object* object, Renderer* renderer, volatile int faceArgum
     scratch.rgba.g = initialColor.y;
     scratch.rgba.b = initialColor.z;
     scratch.rgba.a = 1.0f;
-    void* resource = drawResource();
-    table->draw(renderer, baseRadius, 1.0f, scratch.rgba, resource);
+    table->draw(renderer, baseRadius, 1.0f, scratch.rgba, drawResource(), 1);
 
     if (surface == 7 || surface == 8) {
         table = renderer->table;
@@ -473,8 +472,7 @@ void __cdecl drawFace(Object* object, Renderer* renderer, volatile int faceArgum
         scratch.rgba.g = color.y;
         scratch.rgba.b = color.z;
         scratch.rgba.a = 1.0f;
-        resource = drawResource();
         table->draw(renderer, selectedRadius, selectedScale,
-                    scratch.rgba, resource);
+                    scratch.rgba, drawResource(), 1);
     }
 }

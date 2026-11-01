@@ -1,4 +1,4 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00467880  unit: DxUserInput  size: 377 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00467880
@@ -300,7 +300,7 @@ inline Shared::~Shared()
 }
 
 Shared __cdecl getService();
-void __cdecl report(void*, int, const char*);
+struct Svc { void report(int, const String&); };
 
 struct Lock
 {
@@ -338,7 +338,7 @@ struct Device
 
 struct DxUserInput
 {
-    unsigned char prefix[0x34];
+    unsigned char prefix[0x2c];
     unsigned char section[24];
     unsigned char padding[0x130];
     Device* keyboard;
@@ -357,7 +357,7 @@ bool DxUserInput::read(void* data, unsigned long* count, Device* device)
         {
             StringName name(device == keyboard ? "Keyboard " : "Mouse ");
             String message = name + "DI_BUFFEROVERFLOW!\n";
-            report(getService().get(), 3, message.c_str());
+            static_cast<Svc*>(getService().get())->report(3, message);
         }
         break;
     default:

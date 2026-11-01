@@ -1,4 +1,4 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00650560  unit: RBX::ChatOutput  size: 246 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00650560
@@ -126,9 +126,9 @@ struct Team {
 };
 
 struct Player {
-    char padding[0x110];
+    char padding[0x54];
     String name;
-    char padding2[0x50];
+    char padding2[0x28];
     bool neutral;
 };
 

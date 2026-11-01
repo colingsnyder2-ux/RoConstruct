@@ -1,4 +1,4 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00433130  unit: VCFrameWnd::?$CXTPCommandBarsSiteBase  size: 129 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00433130
@@ -66,6 +66,9 @@ struct Window {
 };
 
 extern "C" int (__stdcall *IsMenu)(void* menu);
+extern "C" __declspec(dllimport) void* __stdcall OpenEventA(unsigned long, int, const char*);
+extern "C" __declspec(dllimport) int __stdcall SetEvent(void*);
+extern "C" __declspec(dllimport) int __stdcall CloseHandle(void*);
 extern Window* __stdcall FindWindow(void* parent, int id, int recursive);
 
 struct Frame {
@@ -123,5 +126,10 @@ int Frame::OnCreate(void* create)
     Window* window = FindWindow(handle, 0xe900, 1);
     window->ModifyStyle(0x800000, 0, 0x20);
     window->ModifyStyleEx(0x200, 0, 0x20);
+    void* event = OpenEventA(2, 0, "www.roblox.com/robloxStartedEvent");
+    if (event) {
+        SetEvent(event);
+        CloseHandle(event);
+    }
     return 0;
 }

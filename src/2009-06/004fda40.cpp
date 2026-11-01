@@ -1,11 +1,19 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-raknet DS_HuffmanEncodingTree.cpp
+// roc-lib: openrbx-raknet roc_espclaude_f8b286bfb43b297c.cpp
 
 // Candidate translation unit (score above; library headers required).
+#include <new>
+#include <malloc.h>
+#include <stdlib.h>
+#define alloca _malloca
+#define stackData stackData[0x300]; unsigned char stackDataTail
+#include "BitStream.h"
+#undef stackData
+extern void (*rakFree)(void*);
 /// \file
 ///
 /// This file is part of RakNet Copyright 2003 Kevin Jenkins.
@@ -31,16 +39,19 @@
 #pragma warning( push )
 #endif
 
+// FUNCTION: WEBSERVICE 0x10030fa0
 HuffmanEncodingTree::HuffmanEncodingTree()
 {
 	root = 0;
 }
 
+// FUNCTION: WEBSERVICE 0x101c1b90
 HuffmanEncodingTree::~HuffmanEncodingTree()
 {
 	FreeMemory();
 }
 
+// FUNCTION: WEBSERVICE 0x101c1890
 void HuffmanEncodingTree::FreeMemory( void )
 {
 	if ( root == 0 )
@@ -68,7 +79,7 @@ void HuffmanEncodingTree::FreeMemory( void )
 	
 	// Delete the encoding table
 	for ( int i = 0; i < 256; i++ )
-		delete [] encodingTable[ i ].encoding;
+		rakFree(encodingTable[ i ].encoding);
 		
 	root = 0;
 }
@@ -77,6 +88,7 @@ void HuffmanEncodingTree::FreeMemory( void )
 ////#include <stdio.h>
 
 // Given a frequency table of 256 elements, all with a frequency of 1 or more, generate the tree
+// FUNCTION: WEBSERVICE 0x101c1ba0
 void HuffmanEncodingTree::GenerateFromFrequencyTable( unsigned int frequencyTable[ 256 ] )
 {
 	int counter;
@@ -180,6 +192,7 @@ void HuffmanEncodingTree::GenerateFromFrequencyTable( unsigned int frequencyTabl
 }
 
 // Pass an array of bytes to array and a preallocated BitStream to receive the output
+// FUNCTION: WEBSERVICE 0x101c1a00
 void HuffmanEncodingTree::EncodeArray( unsigned char *input, unsigned sizeInBytes, RakNet::BitStream * output )
 {		
 	unsigned counter;
@@ -211,6 +224,7 @@ void HuffmanEncodingTree::EncodeArray( unsigned char *input, unsigned sizeInByte
 	}
 }
 
+// FUNCTION: WEBSERVICE 0x101c1580
 unsigned HuffmanEncodingTree::DecodeArray( RakNet::BitStream * input, unsigned sizeInBits, unsigned maxCharsToWrite, unsigned char *output )
 {
 	HuffmanEncodingTreeNode * currentNode;
@@ -244,6 +258,7 @@ unsigned HuffmanEncodingTree::DecodeArray( RakNet::BitStream * input, unsigned s
 }
 
 // Pass an array of encoded bytes to array and a preallocated BitStream to receive the output
+// FUNCTION: WEBSERVICE 0x101c15f0
 void HuffmanEncodingTree::DecodeArray( unsigned char *input, unsigned sizeInBits, RakNet::BitStream * output )
 {
 	HuffmanEncodingTreeNode * currentNode;
@@ -272,6 +287,7 @@ void HuffmanEncodingTree::DecodeArray( unsigned char *input, unsigned sizeInBits
 }
 
 // Insertion sort.  Slow but easy to write in this case
+// FUNCTION: WEBSERVICE 0x101c1aa0
 void HuffmanEncodingTree::InsertNodeIntoSortedList( HuffmanEncodingTreeNode * node, DataStructures::LinkedList<HuffmanEncodingTreeNode *> *huffmanEncodingTreeNodeList ) const
 {
 	if ( huffmanEncodingTreeNodeList->Size() == 0 )
@@ -312,3 +328,4 @@ void HuffmanEncodingTree::InsertNodeIntoSortedList( HuffmanEncodingTreeNode * no
 #ifdef _MSC_VER
 #pragma warning( pop )
 #endif
+

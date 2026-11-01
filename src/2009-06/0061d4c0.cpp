@@ -1,4 +1,4 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0058c5e0  unit: RBX::ChangeHistoryService  size: 50 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0058c5e0
@@ -20,7 +20,7 @@
 // 0058c611  c3                   ret 
 
 struct S {
-    char padding0[0x150];
+    char padding0[0xac];
     unsigned int count;
     char padding1[0x11];
     bool enabled;

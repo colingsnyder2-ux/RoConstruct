@@ -1,21 +1,26 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: ogre-1.4.5-dll roc_large_skybox_8f6d8e40516e2b8d.cpp
+// roc-lib: ogre-1.4.5-dll roc_espclaude_803c1e096cfe982c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef OGRE_NONCLIENT_BUILD
+#define destroyAllLights destroyAllLights(void); virtual void exeOgre16Slot0(); virtual void exeOgre16Slot1(); virtual void exeOgre16Slot2(); virtual void exeOgre16Slot3(); virtual void exeOgre16Slot4(); virtual void exeOgre16Slot5(); virtual void exeOgre16Slot6(); virtual void exeOgre16Slot7
+#define createSkyboxPlane exeSkyA(); virtual void exeSkyB(); virtual void exeSkyC(); virtual void exeSkyD(); virtual void exeSkyE(); virtual MeshPtr createSkyboxPlane
 #include <Ogre.h>
+#undef createSkyboxPlane
+#undef destroyAllLights
 #include <new>
 namespace Ogre {
 // Native constructor 0067fd60 is opaque here. Its caller allocates exactly d4;
 // class allocation preserves that observed extent without fake members.
 // This allocation declaration is a codegen analogue, not an original header.
-class RbxSky {public: static void* operator new(size_t) {return ::operator new(0xd4);} RbxSky(SceneManager*,const String&,bool);virtual ~RbxSky();};
+class RbxSky {public: static void* operator new(size_t) {return ::operator new(0xec);} RbxSky(SceneManager*,const String&,bool);virtual ~RbxSky();};
 class RecoveredSkySceneManager:public SceneManager {
  bool visibilityState,renderState;
+ int exePad2009;
  String skyPath;
  SharedPtr<RbxSky> sky;
  SceneNode* topBottomNode;
@@ -30,7 +35,7 @@ void RecoveredSkySceneManager::setSkyBox(bool enable,const String& materialName,
   }
   MaterialPtr m=MaterialManager::getSingleton().getByName(materialName);
   if(m.isNull()) {
-#line 1430 ".\\RbxSceneManager.cpp"
+#line 244 ".\\RbxSceneManager.cpp"
    OGRE_EXCEPT(Exception::ERR_INVALIDPARAMS,"Sky box material '"+materialName+"' not found.","RbxSceneManager::setSkyBox");
   }
   m->setDepthWriteEnabled(false);
@@ -60,7 +65,7 @@ void RecoveredSkySceneManager::setSkyBox(bool enable,const String& materialName,
    boxMat->setSceneBlending(SBT_MODULATE);
    boxMat->load();
    Material::TechniqueIterator ti=boxMat->getSupportedTechniqueIterator();
-   while(ti.hasMoreElements()) ti.getNext()->getPass(0)->getTextureUnitState(0)->setCurrentFrame(i);
+   while(ti.hasMoreElements()) {Technique* t=ti.getNext(); if(t->getPass(0)->getTextureUnitState(0)->getNumFrames()>i) t->getPass(0)->getTextureUnitState(0)->setCurrentFrame(i);}
    mSkyBoxEntity[i]->setMaterialName(boxMat->getName());
    if(i<4) mSkyBoxNode->attachObject(mSkyBoxEntity[i]);
    else topBottomNode->attachObject(mSkyBoxEntity[i]);
@@ -70,3 +75,4 @@ void RecoveredSkySceneManager::setSkyBox(bool enable,const String& materialName,
  mSkyBoxGenParameters.skyBoxDistance=distance;
 }
 }
+

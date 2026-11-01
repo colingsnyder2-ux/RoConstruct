@@ -1,4 +1,4 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005746e0  unit: ChatEnter  size: 114 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005746e0
@@ -64,6 +64,7 @@ struct Object {
     virtual void v13();
     virtual void v14();
     virtual void v15();
+    virtual void v16x();
     virtual void release();
 };
 
@@ -99,9 +100,10 @@ struct ChatEnter {
     virtual void v22();
     virtual void v23();
     virtual void v24();
+    virtual void v25x();
     virtual void update();
 
-    char padding[0x130];
+    char padding[0x8c];
     Holder holder;
     char padding2[8];
     int state;

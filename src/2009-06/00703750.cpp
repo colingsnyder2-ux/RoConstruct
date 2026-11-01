@@ -1,4 +1,4 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 006773f0  unit: RBX::AdornG3D  size: 164 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 006773f0
@@ -84,7 +84,7 @@ struct AdornTable {
     char reserved0[56];
     void (__thiscall *setFrame)(Adorn*, const Frame&);
     char reserved1[20];
-    void (__thiscall *draw)(Adorn*, float, float, const Color&, const Color&);
+    void (__thiscall *draw)(Adorn*, float, float, const Color&, const Color&, int);
 };
 
 struct Adorn {
@@ -96,7 +96,7 @@ extern const Color& __cdecl defaultColor();
 
 void __cdecl render(Adorn* adorn, const Frame* frame,
                     const Vector3& rotation, float first, float second,
-                    const Vector3& rgb)
+                    const Vector3& rgb, int extra)
 {
     float temporary[9];
     Frame transformed = {
@@ -108,5 +108,5 @@ void __cdecl render(Adorn* adorn, const Frame* frame,
 
     AdornTable* table = adorn->table;
     Color color = { rgb.x, rgb.y, rgb.z, 1.0f };
-    table->draw(adorn, second, first, color, defaultColor());
+    table->draw(adorn, second, first, color, defaultColor(), extra);
 }

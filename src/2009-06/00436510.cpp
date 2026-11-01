@@ -1,4 +1,4 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0043c440  unit: G3D::VVector3::?$XItem  size: 168 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0043c440
@@ -66,7 +66,6 @@ inline const char* Text::c_str() const
 }
 
 struct TextOwner {
-    int padding;
     Text text;
 };
 

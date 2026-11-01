@@ -1,4 +1,4 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -66,9 +66,9 @@ template<class T,class U> bool operator==(const shared_ptr<T>& a,const shared_pt
 
 struct StatsRoot;
 struct StatsScope {
-    StatsScope(boost::shared_ptr<StatsRoot> root);
+    StatsScope(boost::shared_ptr<StatsRoot> root, bool enabled);
     ~StatsScope();
-    char pad[0xc];
+    char pad[0x4];
 };
 
 struct ReportControl {
@@ -274,7 +274,7 @@ public:
     virtual void vv99();
     virtual void vv100();
     virtual ReportControl& GetReportCtrl();
-    char pad[0x3c0];
+    char pad[0x3b0];
     boost::shared_ptr<StatsRoot> m_stats;
     void writeBenchmark(int records, CStr extra);
     void refresh();
@@ -282,7 +282,7 @@ public:
 
 void CRobloxReportView::refresh()
 {
-    StatsScope scope(m_stats);
+    StatsScope scope(m_stats, true);
     GetReportCtrl().Populate();
     GetReportCtrl().RedrawControl();
     if (g_benchmark) {

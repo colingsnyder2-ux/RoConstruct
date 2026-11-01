@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0060a5e0  unit: RBX::MotorFeature  size: 86 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0060a5e0
@@ -10,7 +10,7 @@
 // 0060a5ea  e8e1dce6ff           call 0x4782d0
 // 0060a5ef  8d442404             lea eax, [esp + 4]
 // 0060a5f3  50                   push eax
-// 0060a5f4  8d8ed0feffff         lea ecx, [esi - 0x130]
+// 0060a5f4  8d8ed0feffff         lea ecx, [esi - 0x8c]
 // 0060a5fa  e891feffff           call 0x60a490
 // 0060a5ff  5e                   pop esi
 // 0060a600  84c0                 test al, al
@@ -53,7 +53,7 @@ struct Owner {
 extern const Vector3& getVector();
 extern float scale;
 extern void draw(void* context, const Frame* frame, int mode,
-                 float weight, float scaleValue, const Vector3& vector);
+                 float weight, float scaleValue, const Vector3& vector, int extra);
 
 struct S {
     void f(void* context);
@@ -62,6 +62,6 @@ struct S {
 void S::f(void* context)
 {
     Frame frame;
-    if (reinterpret_cast<Owner*>(reinterpret_cast<char*>(this) - 0x130)->query(frame))
-        draw(context, &frame, 2, 1.0f, scale, getVector());
+    if (reinterpret_cast<Owner*>(reinterpret_cast<char*>(this) - 0x8c)->query(frame))
+        draw(context, &frame, 2, 1.0f, scale, getVector(), 1);
 }

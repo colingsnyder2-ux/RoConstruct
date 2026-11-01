@@ -1,9 +1,9 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espclaude_80b3e5af91e8d8fc.cpp
+// roc-lib: rbxgs-dll roc_espclaude_1465e08710e061f6.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <vector>
@@ -28,7 +28,7 @@ struct ChildHolder { Instances list; };
 bool isLocked(Instance* i);
 class Workspace : public Instance {
 public:
-    char pad[0x104];
+    char pad[0x48];
     ChildHolder* children;
     unsigned int numChildren() const;
     void selectAll();
@@ -44,3 +44,4 @@ void Workspace::selectAll()
     }
 }
 }
+

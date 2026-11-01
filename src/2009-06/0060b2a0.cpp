@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by atomic.potato
 // roc 2008-06 0057dc40  unit: RBX::EngineStatsCommand  size: 29 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0057dc40
@@ -27,13 +27,13 @@ struct EngineStatsCommand
     char pad0[12];
     struct A
     {
-        char pad0[516];
+        char pad0[0x20c];
         struct B
         {
-            char pad0[740];
+            char pad0[0x150];
             struct C
             {
-                char pad0[132];
+                char pad0[0xb0];
                 S_func_0060cbf0* m_p;
             }* m_p;
         }* m_p;

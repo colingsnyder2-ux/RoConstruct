@@ -1,4 +1,4 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by user
 // roc 2008-06 005a1ce0  unit: RBX::Workspace  size: 408 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005a1ce0
@@ -423,7 +423,7 @@ struct Control {
 };
 
 struct Object {
-    char padding[0x104];
+    char padding[0x48];
     void* parent;
     int test1();
     int test2();

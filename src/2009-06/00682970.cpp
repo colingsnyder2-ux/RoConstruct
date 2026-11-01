@@ -1,4 +1,4 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 #include <string>
@@ -6,7 +6,7 @@
 namespace RBX {
 class Name {
 public:
-    static const Name& declare(const char* name, int dictionaryIndex);
+    static const Name& declare(const char* name);
     static const Name& lookup(const char* name);
 };
 extern const Name& name_name;
@@ -59,11 +59,11 @@ public:
 
 void FaceInstance::readProperties(const XmlElement* element, IReferenceBinder& binder)
 {
-    static const Name& name_Type = Name::declare("Type", -1);
-    static const Name& name_SurfaceInput = Name::declare("SurfaceInput", -1);
-    static const Name& name_ParamA = Name::declare("ParamA", -1);
-    static const Name& name_ParamB = Name::declare("ParamB", -1);
-    static const Name& name_Constraint = Name::declare("Constraint", -1);
+    static const Name& name_Type = Name::declare("Type");
+    static const Name& name_SurfaceInput = Name::declare("SurfaceInput");
+    static const Name& name_ParamA = Name::declare("ParamA");
+    static const Name& name_ParamB = Name::declare("ParamB");
+    static const Name& name_Constraint = Name::declare("Constraint");
 
     for (const XmlElement* child = element->firstChild; child; child = child->next) {
         const Name* name = 0;

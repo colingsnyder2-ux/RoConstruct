@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0064fd70  unit: RBX::ChatOutput  size: 145 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064fd70
@@ -64,7 +64,7 @@ struct Iterator {
 };
 
 struct S {
-    char padding0[0x174];
+    char padding0[0xa4];
     void *owner;
     char padding1[0x10];
     unsigned int mapSize;

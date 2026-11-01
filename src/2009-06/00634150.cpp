@@ -1,9 +1,9 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_scriptprint_fdc2d92e125ff2a0.cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: openrbx-client-dll roc_espclaude_cce5e3ef90e135a8.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -23,7 +23,7 @@ struct Output;
 typedef boost::shared_ptr<Output> OutputHandle;
 
 OutputHandle __cdecl get_output();
-void __cdecl write_output(Output*, int, const char*);
+struct Output { void write(int, const std::string&); };
 
 int __cdecl f(LuaState* state)
 {
@@ -55,6 +55,7 @@ int __cdecl f(LuaState* state)
         lua_settop(state, -2);
     }
 
-    write_output(get_output().get(), 0, text.c_str());
+    get_output().get()->write(0, text);
     return 0;
 }
+

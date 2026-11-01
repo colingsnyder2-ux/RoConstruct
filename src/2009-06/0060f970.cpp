@@ -1,4 +1,4 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -67,11 +67,11 @@ template<class T,class U> bool operator==(const shared_ptr<T>& a,const shared_pt
 namespace RBX {
 class Instance {};
 typedef std::vector<boost::shared_ptr<Instance> > Instances;
-struct Selection {char prefix[0x154];const Instances* selected;Instances::const_iterator begin()const{return selected->begin();}Instances::const_iterator end()const{return selected->end();}void clearSelection();};
-struct Model {char prefix[0x134];Selection* selection;};
+struct Selection {char prefix[0x8c];const Instances* selected;Instances::const_iterator begin()const{return selected->begin();}Instances::const_iterator end()const{return selected->end();}void clearSelection();};
+struct Model {char prefix[0x90];Selection* selection;};
 struct Context {Model* model();};
 struct Workspace {};
-struct Name {int id;std::string text;const char* c_str()const{return text.c_str();}};
+struct Name {std::string text;const char* c_str()const{return text.c_str();}};
 struct IDataState {virtual void setDirty(bool)=0;};
 struct ServiceClient {Instance* context;boost::shared_ptr<Selection> service;Selection* createService(bool)const;Selection* operator->()const{return createService(true);}};
 void __cdecl cannotSelect(boost::shared_ptr<Instance>);

@@ -1,4 +1,4 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc 2008-06 00644a30  unit: RBX::HUMAN::Climbing  size: 585 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00644a30
@@ -234,17 +234,18 @@ struct Adorn {
  virtual void box(const AABox&,const Color4&,const Color4&)=0;
 };
 struct Part;
-struct Instance {char prefix[0x104];Instance*parent;bool isDescendantOf(const Instance*ancestor)const{if(ancestor==parent)return true;if(!parent)return false;return parent->isDescendantOf(ancestor);}};
+struct Instance {char prefix[0x48];Instance*parent;bool isDescendantOf(const Instance*ancestor)const{if(ancestor==parent)return true;if(!parent)return false;return parent->isDescendantOf(ancestor);}};
 struct PartInstance:public Instance {const Part&getPart()const;};
-struct Body {char prefix[0x94];Frame frame;void updatePV()const;const Frame&getFrame()const{updatePV();return frame;}};
-struct Humanoid:public Instance {Body*getTorsoBody()const;};
+struct Body {char prefix[0x9c];Frame frame;void updatePV()const;const Frame&getFrame()const{updatePV();return frame;}};
+struct Primitive {char prefix[0xe4];Body*body;};
+struct Humanoid:public Instance {Primitive*getTorsoPrimitive()const;};
 struct PartArray {PartInstance**data;int count,capacity;void resize(int,bool);int size()const{return count;}PartInstance**getCArray(){return data;}PartInstance*const&operator[](int i)const{return data[i];}};
 struct Query {void collect(const Extents&,PartInstance*,PartArray*);};
 Query* __cdecl findQuery(Instance*);
 void __cdecl selectionBox(const Part&,Adorn*,const Color4&);
-struct Climbing {char prefix[8];Humanoid*humanoid;char reserved[8];PartArray parts;bool check(Adorn*);};
+struct Climbing {char prefix[8];Humanoid*humanoid;char reserved[0x10];PartArray parts;bool check(Adorn*);};
 bool Climbing::check(Adorn*adorn){
- const Frame&frame=humanoid->getTorsoBody()->getFrame();
+ const Frame&frame=humanoid->getTorsoPrimitive()->body->getFrame();
  Query*query=findQuery(humanoid);
  Vector3 center=frame.translation+frame.lookVector()*2.0f*0.5f;
  Extents bounds(center-Vector3(1,2.7f,1),center+Vector3(1,0,1));

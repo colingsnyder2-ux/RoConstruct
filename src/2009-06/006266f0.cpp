@@ -1,4 +1,4 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 005d0ec0  unit: VCRenderSettings::?$EnumPropDescriptor  size: 244 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d0ec0
@@ -108,14 +108,14 @@ inline String::~String()
 namespace RBX {
     struct Instance {
         virtual ~Instance();
-        char padding[0x100];
+        char padding[0x44];
         Instance* next;
 
         Instance* getRootAncestor();
     };
 
     struct ServiceProvider : Instance {
-        char padding2[0x2a0];
+        char padding2[0x184];
         void* service;
     };
 }
@@ -144,10 +144,10 @@ extern void __cdecl registerType(void (__cdecl*)(), const void*);
 extern Enumeration* __cdecl enumeration();
 
 struct S : RBX::Instance {
-    char padding2[0x98];
-    int key;
-    char padding3[0x24];
+    char padding2[0x84];
     Property property;
+    char padding3[0x2b];
+    int key;
 
     void f();
 };
@@ -164,7 +164,7 @@ void S::f()
     Enumeration* values = enumeration();
     String name(values->lookup(key), "Tool");
     Result* result = root->property.find(name);
-    if (result->available()) {
+    if (result && result->available()) {
         RBX::ServiceProvider* provider = func_00491e50(this);
         if (provider) {
             void* service = provider->service;

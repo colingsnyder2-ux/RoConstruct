@@ -1,9 +1,9 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_unit_1e49fe32c2e377dc.cpp
+// roc-lib: rbxgs-dll roc_espclaude_04a010370b4688f5.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef _RELEASEASSERT
@@ -31,7 +31,7 @@ namespace RBX {
 	{
 		for (size_t i = 0; i < numChildren(); i++)
 		{
-			Team* team = dynamic_cast<Team*>(getChild(i));
+			Team* team = dynamic_cast<Team*>((*(*reinterpret_cast<CopyOnWrite<std::vector<boost::shared_ptr<Instance> > >*>(reinterpret_cast<char*>(this) + 0x4c)))[i].get());
 			if (team && team->getTeamColor() == brickColor)
 				return team;
 		}

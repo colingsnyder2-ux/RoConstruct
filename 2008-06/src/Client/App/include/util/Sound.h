@@ -3,6 +3,7 @@
 #include "util/RunStateOwner.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Stats.h"
+class SoundServiceStatsItem;
 
 namespace FMOD
 {
@@ -158,6 +159,8 @@ namespace RBX
 							 public Service,
 							 public Listener<RunService, Heartbeat>
 		{
+			friend class ::SoundServiceStatsItem;
+			friend class SoundChannel;
 		private:
 			FMOD::System* system;
 			unsigned fmod_version;

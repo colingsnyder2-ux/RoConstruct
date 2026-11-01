@@ -50,7 +50,7 @@
  "App/include/v8datamodel/Stats.h": [
   [
    "",
-   "\n// rebuild overlay: Stats template bodies rbxgs declares but never defines\n#include <boost/bind.hpp>\n#include \"util/Utilities.h\"\nnamespace RBX\n{\n\tnamespace Stats\n\t{\n\t\ttemplate<typename T>\n\t\tT rebuildDeref(const T* value)\n\t\t{\n\t\t\treturn *value;\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tTypedStatsItem<T>::TypedStatsItem(const T* value)\n\t\t\t: func(boost::bind(&rebuildDeref<T>, value))\n\t\t{\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tTypedStatsItem<T>::TypedStatsItem(boost::function0<T> func)\n\t\t\t: func(func)\n\t\t{\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tvoid TypedStatsItem<T>::update()\n\t\t{\n\t\t\tformatValue(func());\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tvoid Item::formatValue(const T& value)\n\t\t{\n\t\t\tsetValue((double)value, StringConverter<T>::convertToString(value));\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tItem* Item::createBoundChildItem(const char* name, const T& value)\n\t\t{\n\t\t\tItem* item = Creatable<Instance>::create<TypedStatsItem<T> >(&value).get();\n\t\t\titem->setName(name);\n\t\t\titem->setParent(this);\n\t\t\treturn item;\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tItem* Item::createChildItem(const char* name, boost::function0<T> func)\n\t\t{\n\t\t\tItem* item = Creatable<Instance>::create<TypedStatsItem<T> >(func).get();\n\t\t\titem->setName(name);\n\t\t\titem->setParent(this);\n\t\t\treturn item;\n\t\t}\n\t}\n}\n"
+   "\n// rebuild overlay: Stats template bodies rbxgs declares but never defines\n#include <boost/bind.hpp>\n#include \"util/Utilities.h\"\nnamespace RBX\n{\n\tnamespace Stats\n\t{\n\t\ttemplate<typename T>\n\t\tT rebuildDeref(const T* value)\n\t\t{\n\t\t\treturn *value;\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tTypedStatsItem<T>::TypedStatsItem(const T* value)\n\t\t\t: func(boost::bind(&rebuildDeref<T>, value))\n\t\t{\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tTypedStatsItem<T>::TypedStatsItem(boost::function0<T> func)\n\t\t\t: func(func)\n\t\t{\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tvoid TypedStatsItem<T>::update()\n\t\t{\n\t\t\tformatValue(func());\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tvoid Item::formatValue(const T& value)\n\t\t{\n\t\t\tsetValue((double)value, StringConverter<T>::convertToString(value));\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tItem* Item::createBoundChildItem(const char* name, const T& value)\n\t\t{\n\t\t\tboost::shared_ptr<TypedStatsItem<T> > item = Creatable<Instance>::create<TypedStatsItem<T> >(&value);\n\t\t\titem->setName(name);\n\t\t\titem->setParent(this);\n\t\t\treturn item.get();\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tItem* Item::createChildItem(const char* name, boost::function0<T> func)\n\t\t{\n\t\t\tboost::shared_ptr<TypedStatsItem<T> > item = Creatable<Instance>::create<TypedStatsItem<T> >(func);\n\t\t\titem->setName(name);\n\t\t\titem->setParent(this);\n\t\t\treturn item.get();\n\t\t}\n\t}\n}\n"
   ]
  ],
  "App/include/util/StateStack.h": [
@@ -2432,6 +2432,14 @@
   ]
  ],
  "App/include/util/Sound.h": [
+  [
+    "#include \"v8datamodel/Stats.h\"",
+    "#include \"v8datamodel/Stats.h\"\nclass SoundServiceStatsItem;"
+  ],
+  [
+    "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{",
+    "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{\n\t\t\tfriend class ::SoundServiceStatsItem;\n\t\t\tfriend class SoundChannel;"
+  ],
   [
     "\t\t\tReflection::BoundProp<float, 1> prop_dopplerscale;",
     "\t\t\tstatic Reflection::BoundProp<float, 1> prop_dopplerscale;"

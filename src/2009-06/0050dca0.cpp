@@ -1,4 +1,4 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004b0ae0  unit: RBX::Network::Replicator::NewInstanceItem  size: 161 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004b0ae0
@@ -100,13 +100,13 @@ struct Item {
 };
 
 Item::Item(void** argument, unsigned int)
-    : storage(0x298), state()
+    : storage(0x38), state()
 {
     State* s = &state;
     Item* owner = s ? reinterpret_cast<Item*>(
         reinterpret_cast<char*>(s) - 12) : 0;
     void* buffer = owner->storage.data;
-    void* end = buffer ? reinterpret_cast<char*>(buffer) + 0x290 : 0;
+    void* end = buffer ? reinterpret_cast<char*>(buffer) + 0x30 : 0;
 
     s->link.initialize(&argument, end, *argument);
     s->scale = 1.0f;

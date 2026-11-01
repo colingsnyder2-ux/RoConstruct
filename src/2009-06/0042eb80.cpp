@@ -1,9 +1,9 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by user
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_declarationaccess_98f9113324c95267.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_3842a4e4e766b8b7.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <string>
@@ -15,7 +15,6 @@ struct Text {char storage[28];const char* c_str()const;};
 extern const char* (__thiscall* textAccess)(const Text*);
 inline const char* Text::c_str()const{return textAccess(this);}
 struct Name {
-    int unused;
     Text text;
 };
 
@@ -41,14 +40,14 @@ typedef boost::shared_ptr<Manager> Shared;
 Shared __cdecl getManager();
 
 struct Declaration {
-    char padding[0x130];
+    char padding[0x8c];
     unsigned char visible;
     unsigned char restricted;
     unsigned char special;
 };
 
 struct Settings {
-    char padding[0x130];
+    char padding[0x8c];
     unsigned char allowRestricted;
     unsigned char allowSpecial;
 };
@@ -72,9 +71,10 @@ void CDeclarationView::func(Node* node) {
             getManager()->invoke(reinterpret_cast<int>(node), 0));
     }
 
-    bool show = true;
+    bool show = false;
+    Settings* settings = getSettings();
     if (declaration) {
-        Settings* settings = getSettings();
+        show = true;
         if (declaration->restricted && !settings->allowRestricted)
             show = false;
         else if (declaration->special && !settings->allowSpecial)
@@ -94,3 +94,4 @@ void CDeclarationView::func(Node* node) {
 
     std::for_each(node->children.begin(),node->children.end(),boost::bind(&CDeclarationView::func,this,_1));
 }
+

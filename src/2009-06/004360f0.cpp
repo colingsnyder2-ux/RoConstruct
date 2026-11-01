@@ -1,4 +1,4 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0043c020  unit: std::D::DU?$char_traits::V?$basic_string::?$XItem  size: 168 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0043c020
@@ -68,7 +68,6 @@ __forceinline const char* String::c_str() const
 
 struct Holder
 {
-    char pad[4];
     String text;
 };
 

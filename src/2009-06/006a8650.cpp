@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005fb1a0  unit: RBX::Kernel  size: 74 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005fb1a0
@@ -50,7 +50,7 @@ struct Storage {
 };
 
 struct Kernel {
-    char pad0[16];
+    char pad0[20];
     Storage* storage;
     void remove(S_func_005fa610* object);
 };

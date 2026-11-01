@@ -1,4 +1,4 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
@@ -16,7 +16,6 @@ inline const char* String::c_str() const
 }
 
 struct Name {
-    int unused;
     String text;
 };
 

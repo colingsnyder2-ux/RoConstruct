@@ -1,4 +1,4 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00645060  unit: RBX::HUMAN::Climbing  size: 350 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00645060
@@ -301,7 +301,7 @@ extern "C" const Vector3& __cdecl getOne();
 extern "C" const Matrix3& __cdecl getIdentity();
 extern "C" void __cdecl drawPart(void*, Render*, const Color4*);
 extern "C" void __cdecl drawFrame(Render*, const Frame*, int, float,
-                                float, const Vector3*);
+                                float, const Vector3*, int);
 
 extern const float scaleValue;
 extern const float drawValue;
@@ -314,9 +314,9 @@ struct S
     Human* human;
     unsigned char pad0c[4];
     bool enabled;
-    unsigned char pad11[19];
+    unsigned char pad11[27];
     Part* part;
-    unsigned char pad28[4];
+    unsigned char pad30[4];
     Vector3 position;
 
     void prepare(Render*);
@@ -338,7 +338,7 @@ void S::f(Render* render)
             frame.position.x = position.x;
             frame.position.y = position.y;
             frame.position.z = position.z;
-            drawFrame(render, &frame, 1, scaleValue, 1.0f, &getOne());
+            drawFrame(render, &frame, 1, scaleValue, 1.0f, &getOne(), 1);
         }
 
         if (human->getPart())
@@ -350,7 +350,7 @@ void S::f(Render* render)
             width.y = drawValue;
             Vector3 result;
             const unsigned char* geometry = getGeometry();
-            render->draw(&result, geometry + 4, &width, lineValue,
+            render->draw(&result, geometry, &width, lineValue,
                          &color2, &color1, 1, 3, 0);
         }
     }

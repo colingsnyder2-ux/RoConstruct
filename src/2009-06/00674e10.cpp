@@ -1,9 +1,9 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_unit_317ea390c5522f93.cpp
+// roc-lib: rbxgs-dll roc_espclaude_80c24bf99675f83b.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <vector>
@@ -19,7 +19,7 @@ typedef RBX::BrickColor TeamColor;
 namespace RBX {
     class Instance { public:
         virtual ~Instance();
-        char padding[0x100];
+        char padding[0x44];
         Instance* next;
     };
 
@@ -37,7 +37,7 @@ namespace RBX {
 
 namespace RBX { namespace Network {
     class Player : public RBX::Instance { public:
-        char padding[0x68];
+        char padding[0x40];
         Team* team;
         int reserved;
         TeamColor color;
@@ -52,6 +52,7 @@ extern const Vector3& __cdecl func_00514a60();
 Vector3 RBX::VTeams::func_005d6180(int teamId)
 {
     ServiceProvider* provider = func_00491d50(this);
+    if (provider)
     for (unsigned int i = 0; i < provider->func_0048ae20(); ++i) {
         Children* children = provider->children;
         Network::Player* player = dynamic_cast<Network::Player*>((*children)[i].get());
@@ -63,3 +64,4 @@ Vector3 RBX::VTeams::func_005d6180(int teamId)
     }
     return func_00514a60();
 }
+

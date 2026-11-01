@@ -1,9 +1,9 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client roc_espeon_interpolationrehashfreehashddb2cbee99c4423b.cpp
+// roc-lib: boost-1.40.0 roc_espclaude_c9cb6d1c5e546da5.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/multi_index_container.hpp>
@@ -11,7 +11,7 @@
 #include <boost/multi_index/ordered_index.hpp>
 #include <boost/multi_index/identity.hpp>
 struct __declspec(align(8)) S {
- char storage[0x280];
+ char storage[0x20];
  ~S();
  bool keep(unsigned value) const;
 };
@@ -36,3 +36,4 @@ void Receiver::update(unsigned value) {
 }
 
 void reserveInterpolation(Table& table,unsigned n) { table.get<0>().rehash(n); }
+

@@ -1,4 +1,4 @@
-// from server: 85% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004a6250  unit: RBX::VHint::?$FactoryProduct::Creator  size: 119 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004a6250
@@ -55,12 +55,12 @@ struct RuntimeError {
 };
 
 struct BitStream {
-    bool readBits(unsigned char *destination, int count, bool align);
+    bool read(int &value);
 };
 
 BitStream &readInt(BitStream &stream, int &value)
 {
-    if (!stream.readBits(reinterpret_cast<unsigned char *>(&value), 32, true))
+    if (!stream.read(value))
         throw RuntimeError(String("BitStream >> int failed"));
     return stream;
 }

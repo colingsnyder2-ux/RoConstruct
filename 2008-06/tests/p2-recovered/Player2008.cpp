@@ -25,6 +25,7 @@ extern "C" void GetPartColor(float* r, float* g, float* b);
 extern "C" int  PartAlive(void);
 extern "C" void MovePartTo(float x, float y, float z);
 extern "C" void StepEngine(float dt);
+extern "C" void StartPlay();
 extern "C" void ClosePlace();
 extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
@@ -32,6 +33,7 @@ extern "C" int GetContactState(float*,float*,int*);
 extern "C" int ExecutePlayerScript(const char*);
 extern "C" int ConfigureContentRoot(const char*);
 extern "C" int CountHumanoids();
+extern "C" int CountInstancesByClass(const char*);
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -663,6 +665,7 @@ int main(int argc, char** argv)
     bool stability = false;
     bool inspectPlace = false;
     bool loadOnly = false;
+    bool p5Play = false;
     int stabilityExit = 0;
     int spinFrames = 0;
     std::string contentRoot;
@@ -678,6 +681,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
         else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
+        else if (std::strcmp(argv[i], "--p5-play") == 0) p5Play = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
         else if (std::strcmp(argv[i], "--capture-spin") == 0 && i+1<argc) { spinFrames=std::atoi(argv[++i]);demo=true; }
         else if (std::strcmp(argv[i], "--content-root") == 0 && i+1<argc) contentRoot=argv[++i];
@@ -715,7 +719,9 @@ int main(int argc, char** argv)
     if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
     if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
-    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
+    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
+
+    if(p5Play)StartPlay();
 
     Ogre::Root* root = new Ogre::Root("", "", "player.log");
     if (!root) { std::printf("root failed\n"); ClosePlace(); return 2; }

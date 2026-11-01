@@ -1,4 +1,4 @@
-// from server: 88% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0063c280  unit: RBX::DebrisService  size: 285 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0063c280
@@ -175,7 +175,7 @@ struct Source
 
 struct DebrisService
 {
-    unsigned char padding0[0x130];
+    unsigned char padding0[0x8c];
     void* owner;
     unsigned char padding1[12];
     Shared** map;

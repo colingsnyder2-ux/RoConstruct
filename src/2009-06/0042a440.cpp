@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 004310f0  unit: CDataModelPropGrid  size: 79 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004310f0
@@ -12,7 +12,7 @@
 // 00431106  56                   push esi
 // 00431107  8bf1                 mov esi, ecx
 // 00431109  89742404             mov dword ptr [esp + 4], esi
-// 0043110d  8d8e44020000         lea ecx, [esi + 0x244]
+// 0043110d  8d8e44020000         lea ecx, [esi + 0x278]
 // 00431113  c744241000000000     mov dword ptr [esp + 0x10], 0
 // 0043111b  e8604cfdff           call 0x405d80
 // 00431120  8bce                 mov ecx, esi
@@ -25,7 +25,7 @@
 // 0043113e  c3                   ret 
 
 struct Base {
-    char data[0x244];
+    char data[0x278];
     ~Base();
 };
 

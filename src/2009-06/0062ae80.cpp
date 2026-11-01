@@ -1,11 +1,11 @@
-// from server: 87% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005a0220  unit: RBX::Workspace  size: 32 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005a0220
 //
 // 005a0220  8b442404             mov eax, dword ptr [esp + 4]
-// 005a0224  8b9188020000         mov edx, dword ptr [ecx + 0x288]
-// 005a022a  81c188020000         add ecx, 0x288
+// 005a0224  8b9188020000         mov edx, dword ptr [ecx + 0x118]
+// 005a022a  81c188020000         add ecx, 0x118
 // 005a0230  50                   push eax
 // 005a0231  8b4204               mov eax, dword ptr [edx + 4]
 // 005a0234  ffd0                 call eax
@@ -25,7 +25,7 @@ struct Inner {
     virtual Target* slot1(int);
 };
 struct S {
-    char padding[0x288];
+    char padding[0x118];
     Inner inner;
     void f(volatile int);
 };

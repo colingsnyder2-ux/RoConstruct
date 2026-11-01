@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 005d6070  unit: RBX::VTeams::?$FactoryProduct  size: 123 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d6070
@@ -59,7 +59,7 @@ namespace RBX {
     class Instance {
     public:
         virtual ~Instance();
-        char padding[0x100];
+        char padding[0x44];
         Instance* next;
     };
 
@@ -82,7 +82,7 @@ namespace RBX {
     namespace Network {
         class Player : Instance {
         public:
-            char padding[0x74];
+            char padding[0x98-0x4c];
             bool flag;
         };
     }

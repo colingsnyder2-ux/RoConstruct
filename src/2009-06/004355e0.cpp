@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0043b400  unit: G3D::VColor3::?$XItem  size: 179 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0043b400
@@ -129,7 +129,6 @@ struct Text {
 };
 
 struct Name {
-    int id;
     String str;
 };
 

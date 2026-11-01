@@ -1,4 +1,4 @@
-// from server: 86% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0057d8e0  unit: RBX::AllCanSelectCommand  size: 82 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0057d8e0
@@ -78,11 +78,10 @@ static __declspec(noinline) void prepare(Context* c)
 }
 struct Selection;
 struct Context {
-    char padding[0x204];
+    char padding[0x20c];
     Selection* selection;
 };
 struct Description {
-    int unused;
     std::string name;
 };
 struct Listener { virtual void done(int); };
