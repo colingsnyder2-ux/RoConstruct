@@ -18,7 +18,7 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 cloud_allowed=False, cloud_concurrency="auto", max_cloud_requests=None,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
                 unit_name=None, family_id=None, targets=None, library="",
-                native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="auto", native_compile_batch=4,
+                native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="method", native_compile_batch=4,
                 native_selection='balanced', native_escalation_model='', native_escalate_after=2, native_max_no_improvement=3, native_repair_rounds=2, native_repair_trials=24)
 LIVE = {"workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "use_remill", "min_score", "max_score",

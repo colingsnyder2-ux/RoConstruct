@@ -62,6 +62,10 @@ def test_cli_provider_uses_signed_in_cli_and_returns_usage(monkeypatch, provider
     assert Path(start.call_args.kwargs['cwd']) != providers.ROOT
     if provider == 'codex':
         assert argv[argv.index('--sandbox') + 1] == 'read-only'
+        assert '--ignore-user-config' in argv
+        assert 'shell_tool' in argv and 'plugins' in argv
+        assert 'agents.enabled=false' in argv and 'project_doc_max_bytes=0' in argv
+        assert any(value.startswith('model_instructions_file=') for value in argv)
     else:
         assert argv[argv.index('--tools') + 1] == ''
     assert 'fix source' in process.communicate.call_args.args[0]
@@ -185,8 +189,8 @@ def test_native_loop_forwards_parallelism_budgets_and_context(monkeypatch):
     monkeypatch.setattr(providers, 'available', lambda _: True)
     monkeypatch.setattr('roc.rebuild_install.prepare', lambda **kwargs: None)
     config = {**gui_worker.DEFAULTS, 'lease_mode': 'native', 'client': '2008-06', 'model': 'codex:default',
-              'workers': 8, 'user': 'tester', 'server': 'localhost:8765', 'cloud_allowed': True,
-              'cloud_concurrency': 'auto', 'native_batch_files': 100, 'max_cloud_requests': 12}
+              'workers': 10, 'user': 'tester', 'server': 'localhost:8765', 'cloud_allowed': True,
+              'cloud_concurrency': 'auto', 'native_batch_files': 100, 'native_compile_batch': 10, 'max_cloud_requests': 12}
     events, calls = [], []
     control = gui_worker.Control(config, lambda event, **fields: events.append((event, fields)))
     def run(spec, name, **kwargs):
@@ -198,7 +202,9 @@ def test_native_loop_forwards_parallelism_budgets_and_context(monkeypatch):
     monkeypatch.setattr(integration, 'command', lambda _: None)
     gui_worker.native_loop(config, control, lambda event, **fields: events.append((event, fields)))
     options = calls[0][0]
-    assert calls[0][1]['jobs'] == 8
+    assert calls[0][1]['jobs'] == 10
+    assert options['generation'] == 'method' and options['compile_batch'] == 10
+    assert options['provider_options']['gate'].concurrency == 10
     assert options['wait'] is False
     assert options['max_files'] == 100 and options['context'] == 'methods'
     assert options['provider_options']['budget'] is control.budget

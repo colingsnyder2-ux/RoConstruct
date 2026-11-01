@@ -58,7 +58,7 @@ COMMON_FILES = [".gitattributes", "roc.py", "roc.cmd", "roc.sh", "install.cmd", 
                 "clients/clients.json", "clients/sources.json", "clients/donor.json"]
 # Native contributors need trusted recipes/generator, never private vendor trees.
 COMMON_FILES += ["docs/INTEGRATION.md", "docs/INTEGRATOR_PERFORMANCE.md", "benchmarks/native_compile_batches.py", "benchmarks/native_matcher.py", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
-COMMON_FILES += ["benchmarks/native_search.py", "benchmarks/integration_local.py"]
+COMMON_FILES += ["benchmarks/integrator_models.py", "benchmarks/native_search.py", "benchmarks/integration_local.py"]
 COMMON_FILES += ["docs/NATIVE_INTEGRATION_WORKFLOW.md"]
 COMMON_FILES += subprocess.check_output(["git", "ls-files", "rebuild/2008-06"],
                                         cwd=ROOT, text=True).splitlines()
@@ -212,7 +212,7 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 17,
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 18,
          "matching_workflow_version": 4}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
@@ -389,7 +389,7 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=17, matching_workflow_version=4,
+    data.update(schema=1, workflow_version=18, matching_workflow_version=4,
                 abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",

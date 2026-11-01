@@ -3182,7 +3182,7 @@ def main(argv=None):
         (["--escalate-after"], {"type": int, "default": 2}),
         (["--max-no-improvement"], {"type": int, "default": 3}),
         (["--mode"], {"choices": ["easy", "balanced", "large"], "default": "balanced"}),
-        (["--generation"], {"choices": ["auto", "edits", "method"], "default": "auto", "help": "auto: one-shot method then anchored repair; edits: SEARCH/REPLACE; method: complete method body"}),
+        (["--generation"], {"choices": ["auto", "edits", "method"], "default": "method", "help": "method: complete bodies with compiler feedback (default); auto: legacy anchored repair; edits: SEARCH/REPLACE"}),
         (["--compile-batch"], {"type": int, "default": 4, "help": "AI method workers sharing one source-file compile (1-32; 1 disables)"}),
         (["--model"], {"help": "codex:default, claude:sonnet, opencode:provider/model, API or local model"}),
         (["--workers"], {"default": "4", "help": "parallel AI jobs (1-256 or auto)"}),

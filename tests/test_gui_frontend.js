@@ -165,6 +165,19 @@ for(const count of [1,8,100,"auto"]) {
   assert.equal(config.max_cloud_cost,3);assert.equal(config.cloud_allowed,true);
   assert.match(formContext.workerForm({...automaticForm,...config,targets:[]}),new RegExp(`name="workers" value="${count}"`));
 }
+formContext.target={hasAttribute:name=>name==="data-native-batch"};
+formContext.readWorker=()=>({...automaticForm,model:"codex:gpt-6-luna",max_cloud_requests:12,max_cloud_tokens:20000});
+vm.runInContext('(function(){'+source.slice(source.indexOf('  if(target.hasAttribute("data-native-batch"))'),source.indexOf('  if(target.dataset.preset)'))+'})()',formContext);
+assert.equal(formContext.rendered.workers,10);
+assert.equal(formContext.rendered.cloud_concurrency,10);
+assert.equal(formContext.rendered.native_compile_batch,10);
+assert.equal(formContext.rendered.native_generation,"method");
+assert.equal(formContext.rendered.native_escalation_model,"");
+assert.equal(formContext.rendered.model,"codex:gpt-6-luna");
+assert.equal(formContext.rendered.max_cloud_requests,12);
+assert.equal(formContext.rendered.max_cloud_tokens,20000);
+assert.equal(formContext.rendered.cloud_allowed,true);
+assert.match(formContext.workerForm({...automaticForm,...formContext.rendered,lease_mode:"native",targets:[]}),/data-native-batch>10-worker recovery/);
 const feedNodes={};
 for(const id of ["worker-chat","worker-tabs","worker-status","chat-compact","chat-follow","jump-live","worker-chat-rows"])
   feedNodes["#"+id]={dataset:{},innerHTML:"",children:[],classList:{toggle() {}}};

@@ -1,5 +1,36 @@
 # Integrator performance experiments — 2026-10-28
 
+## Ten-worker small-model smoke — 2026-11-01
+
+The GUI now offers **10-worker recovery**: complete method bodies with compiler/diff
+feedback, ten AI slots, up to ten methods per shared compile, CPU-bounded compiler
+slots, and no automatic model escalation. Selected model and session budget caps
+are retained. The normal native output default is also complete-method recovery;
+legacy anchored edit modes remain available explicitly.
+
+An opt-in live run with signed-in `codex:gpt-6-luna` made ten model requests and
+matched all ten synthetic integer-method targets with genuine MSVC 21022 in 54.75s.
+It used one reference compile, one baseline compile, and one shared candidate compile.
+No Roblox claims, uploads, server credit or active executable changes occurred.
+This tests batch operation and simple recovery, not success on complex native classes.
+
+The initial CLI run reported 286,143 total tokens, revealing inherited agent-context
+overhead. Generation subprocesses now use compact C++ instructions and disable
+user config, plugins, shell tools and project-document discovery for that subprocess.
+A two-request follow-up matched 2/2 in 4.70s using 11,140 reported tokens total.
+Different prompts and account caches affect these numbers; subscription token usage
+does not establish a dollar cost. No additional live requests were made.
+
+Repeat only when explicitly authorized to consume model usage:
+
+```text
+python benchmarks/integrator_models.py --model codex:gpt-6-luna --workers 10 --output work/integrator-model-smoke
+```
+
+The script caps requests at the worker count, uses one feedback round, saves usage
+and proofs in `result.json`, and never submits. Runtime dispatch, GUI forwarding,
+budget preservation and concurrent batching also have offline tests.
+
 These are measured local experiments, not accepted integration credit. No server
 database, claims, jobs, binaries or installed source trees were changed by the
 benchmarks. Historical MSVC 21022 produced every compared object. Independent
