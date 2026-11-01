@@ -154,7 +154,7 @@ reuse the recorded inventory; rescan only missing/moved paths or changed require
 
 ## Editable integration workspace (when ready)
 
-Use a current Worker with `roc native-try edit --help` and native workflow version 17.
+Use a current Worker with `roc native-try edit --help` and native workflow version 18.
 This workspace is for edits against the accepted tree after the native recovery
 loop produces a coherent supported change; it is not mandatory for inactive probes.
 Edit real C++/header files in the editable workspace printed by the tool. No hand-written
@@ -297,10 +297,30 @@ only after independent server acceptance.
 Choose one execution path for a mutable workspace. For the GUI, run `roc gui`,
 open **Workers → + New → Integrator**, select the actual model, contributor and
 server, then **Start Integrator**. Native sessions currently use 2008-06 only.
+Choose **10-worker recovery** for ten simultaneous model requests, complete-method
+recovery, three feedback rounds, and up to ten compatible methods per shared compile.
+It preserves your selected model and request/token/spend caps, disables automatic
+model escalation, and lets the compiler limit follow CPU capacity. Set a request cap
+before a small trial. Worker v16 already supports ten workers; update to the current
+Worker for dependency fixes and this preset. Existing private sessions retain sources
+and proofs; stop and reopen a session to load the new runtime.
+
+These are bounded method workers, not ten unrestricted desktop chats. They use
+genuine source/assembly, compile candidate bodies, feed diagnostics back, and keep
+only independently verified submissions for credit. Missing declarations/layouts
+are parked for owner recovery. More workers require enough eligible methods and
+provider capacity. P5/P6 and first-class-swap requirements still apply.
+
+For a low-cost trial, select an available small model from the signed-in Codex
+catalog (tested locally with `codex:gpt-6-luna`). Codex generation uses compact
+instructions without project discovery, plugins or shell tools; update the Codex CLI
+if it does not support `--ignore-user-config`. Subscription usage remains billable
+against the account's allowance; output-token settings cannot impose a hard CLI
+token limit. API models require their own credentials and can enforce output caps.
 The equivalent continuous CLI uses the same backend:
 
 ```text
-roc integrator --model YOUR_ACTUAL_MODEL --workers 4 --rounds 3 --output-budget 3072 --batch-files 1 --compile-workers auto --compile-batch 4 --context methods --generation auto --thinking disabled --cloud-concurrency auto --allow-cloud
+roc integrator --model YOUR_ACTUAL_MODEL --workers 4 --rounds 3 --output-budget 3072 --batch-files 1 --compile-workers auto --compile-batch 4 --context methods --generation method --thinking disabled --cloud-concurrency auto --allow-cloud
 ```
 
 Use remote prompts only within the operator's authorization. The GUI offers
@@ -316,8 +336,8 @@ Do not launch a second editor or continuous session in its mutable staging tree.
 | Parallel local compilers | Independent compiler limit; `auto` caps at 8 slots subject to CPU capacity. |
 | Files per integration batch | Set 1 for immediate per-file submission (program default: 40). This does not promise acceptance. |
 | Methods per shared compile | Default 4 independent edits per file; split conflicting/failing combinations, recompile retained edits. |
-| Source context / AI output | Default `methods` / `auto`: one complete method, then anchored repairs. Manual native-try exports editable C++/headers and captures diffs. |
-| Rounds / Output tokens | New native sessions start at 3 / 3072; configured presets or edits can override these values. |
+| Source context / AI output | Default `methods` / `method`: complete bodies with compiler/diff feedback, without SEARCH/REPLACE. Manual native-try exports editable C++/headers and captures diffs. |
+| Rounds / Output tokens | The 10-worker recovery preset uses 3 rounds / 2048 output tokens; configured values can override these. |
 | Request / Token / Estimated spend caps | Session-wide limits. Editing a cap retains usage already spent; unknown pricing is not zero cost. CLI subscription dollar caps are unsupported. |
 
 GUI presets are shared with mining workers. **Balanced** preset does not select
@@ -540,7 +560,7 @@ report both versions; do not repeatedly download the same incompatible archive.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 17, download the current Worker package yourself:
+reports `native_workflow_version` below 18, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -554,7 +574,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 17 -or
+if ($nativeManifest.workflow_version -lt 18 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeWorkspace = (Get-Location).Path
