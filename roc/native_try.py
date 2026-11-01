@@ -345,6 +345,47 @@ def cmd_submit(args):
         native_sweep.restore_submitted_baseline(summary["job"])
 
 
+def cmd_accept(args):
+    """Offline fork workflow: run the linked preflight and commit its proven edits as a promotion."""
+    from roc import integration_offline
+    if not integration_offline.enabled():
+        raise ValueError("accept is the offline workflow; set ROC_INTEGRATION_OFFLINE=1 (online, use submit)")
+    proposals = saved()
+    if not proposals:
+        raise ValueError("no saved proposals")
+    native_edit.require_checked(OUT, proposals)
+    from roc.rebuild_install import prepare
+    prepare()
+    context()
+    proposals = saved()
+    additions = {}
+    for proposal in proposals:
+        for name, edits in dict(proposal.get("related_headers", {}), **{proposal["file"]: proposal["edits"]}).items():
+            for edit in edits:
+                if edit not in additions.setdefault(name, []):
+                    additions[name].append(edit)
+    from roc.integration_verify import linked_preflight
+    receipt = linked_preflight(native_sweep.ROOT, additions, OUT, lambda message: print(message, flush=True))
+    print(json.dumps({k: receipt.get(k) for k in ("accepted", "reason", "gains", "losses")}, indent=1))
+    job = integration_offline.accept(additions, receipt, getattr(args, "model", None), [p["file"] for p in proposals])
+    integration.atomic_json(PROPOSALS.with_name("accepted-%s.json" % job), proposals)
+    PROPOSALS.unlink()
+    print("accepted offline as %s: %d gains; commit rebuild/2008-06/patches/native-promotions.json "
+          "and rebuild/2008-06/offline/ledger.json" % (job, len(receipt.get("gains", []))))
+
+
+def cmd_snapshot(args):
+    from roc import integration_offline
+    if integration_offline.enabled():
+        raise ValueError("snapshot reads the group server; unset ROC_INTEGRATION_OFFLINE")
+    settings = worker.load_settings()
+    api = worker.Api(settings["server"], integration.native_token() or settings.get("native_token") or settings.get("token"))
+    try:
+        print(json.dumps(integration_offline.snapshot(api)))
+    finally:
+        api.close()
+
+
 def main(args):
     try:
         return dispatch(args)
@@ -357,6 +398,10 @@ def dispatch(args):
         return cmd_preflight(args)
     if args.action == "submit":
         return cmd_submit(args)
+    if args.action == "accept":
+        return cmd_accept(args)
+    if args.action == "snapshot":
+        return cmd_snapshot(args)
     if args.action == "reset":
         if getattr(args, "file", None):
             remaining = [p for p in saved() if p["file"].casefold() != args.file.casefold()]
@@ -408,8 +453,8 @@ def dispatch(args):
 
 
 def register(cmd):
-    cmd("native-try", main, "direct native edits: targets, evidence, edit, check, submit (docs/NATIVE_AGENT.md)",
-        (["action"], {"choices": ["targets", "evidence", "edit", "check", "preflight", "submit", "reset"]}),
+    cmd("native-try", main, "direct native edits: targets, evidence, edit, check, submit; offline: accept, snapshot (docs/NATIVE_AGENT.md, docs/OFFLINE_INTEGRATION.md)",
+        (["action"], {"choices": ["targets", "evidence", "edit", "check", "preflight", "submit", "accept", "snapshot", "reset"]}),
         (["file"], {"nargs": "?"}), (["blocks"], {"nargs": "?"}),
         (["--related"], {"nargs": "+", "default": [], "help": "edit: genuine headers to edit with this CPP"}),
         (["--all"], {"action": "store_true", "help": "check every editable translation unit; retain failed drafts"}),

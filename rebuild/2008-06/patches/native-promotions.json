@@ -2388,5 +2388,127 @@
     "\t\treturn G3D::Vector3(\n\t\t\tthis->low[0 + 3 * (i / 4)],\n\t\t\tthis->low[1 + 3 * (i / 2 % 2)],\n\t\t\tthis->low[2 + 3 * (i % 2)]\n\t\t);"
    ]
   ]
+ },
+ {
+  "App/v8world/Primitive.cpp": [
+   [
+    "\tvoid Primitive::setCanCollide(bool value)\n\t{\n\t\tbool oldDrag = !dragging && canCollide;\n\n\t\tif (canCollide != value)\n\t\t{\n\t\t\tcanCollide = value;\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tbool newDrag = !dragging && value;\n\t\t\t\tif (oldDrag != newDrag)\n\t\t\t\t\tworld->onPrimitiveCanCollideChanged(this);\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Primitive::setCanSleep(bool _canSleep)\n\t{\n\t\tif (_canSleep != canSleep)\n\t\t{\n\t\t\tcanSleep = _canSleep;\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveCanSleepChanged(this);\n\t\t}\n\t}",
+    "\tvoid Primitive::setCanCollide(bool value)\n\t{\n\t\tif (value != canCollide)\n\t\t{\n\t\t\tcanCollide = value;\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveCanCollideChanged(this);\n\t\t}\n\t}\n\n\tvoid Primitive::setCanSleep(bool _canSleep)\n\t{\n\t\tif (_canSleep != canSleep)\n\t\t\tcanSleep = _canSleep;\n\t}"
+   ],
+   [
+    "\t\tcanCollide(true),\n\t\tcanSleep(true),\n\t\tJointK(this, &Primitive::computeJointK),",
+    "\t\tcanCollide(true),\n\t\tcanSleep(false),\n\t\tJointK(this, &Primitive::computeJointK),"
+   ]
+  ]
+ },
+ {
+  "App/v8datamodel/DebrisService.cpp": [
+   [
+    "func_AddItem(&RBX::DebrisService::addItem, \"AddItem\", \"item\", \"lifetime\", RBX::Reflection::FunctionDescriptor::AnyCaller);",
+    "func_AddItem(&RBX::DebrisService::addItem, \"AddItem\", \"item\", \"lifetime\", 10.0, RBX::Reflection::FunctionDescriptor::AnyCaller);"
+   ]
+  ]
+ },
+ {
+  "App/include/v8kernel/Body.h": [
+   [
+    "\t\t\tconst RBX::PV& getPV() const\n",
+    "\t\t\tconst RBX::PV& getPvUnsafe() const {return pv;}\n\t\t\tconst RBX::PV& getPV() const\n"
+   ]
+  ],
+  "App/v8kernel/Point.cpp": [
+   [
+    "\tthis->worldPos = this->body->getPV().position.pointToWorldSpace(this->localPos);",
+    "\tthis->worldPos = this->body->getPvUnsafe().position.pointToWorldSpace(this->localPos);"
+   ]
+  ]
+ },
+ {
+  "App/util/RunningAverage.cpp": [
+   [
+    "#include \"util/RunningAverage.h\"",
+    "#pragma float_control(precise,off,push)\n#include \"util/RunningAverage.h\""
+   ],
+   [
+    "\t\tthis->position = this->position * 0.75f + cofm.translation * 0.25f;\n\t\tthis->angles = this->angles * 0.75f + Quaternion(cofm.rotation) * (radius * 0.25f);",
+    "\t\tconst float weightNew = 1.0f - 0.75f;\n\t\tposition = 0.75f * position + weightNew * cofm.translation;\n\t\tangles = (angles * 0.75f) + (Quaternion(cofm.rotation) * (weightNew * radius));"
+   ],
+   [
+    "",
+    "\n#pragma float_control(pop)\n"
+   ]
+  ]
+ },
+ {
+  "Network/Players.cpp": [
+   [
+    "\t\tbool Players::backendProcessing(const Instance* context, bool testInDatamodel)",
+    "\t\tbool Players::superSafeOn() const\n\t\t{\n\t\t\tif (localPlayer)\n\t\t\t\treturn Player::prop_SuperSafeChat.getValue(localPlayer.get());\n\n\t\t\treturn false;\n\t\t}\n\n\t\tbool Players::backendProcessing(const Instance* context, bool testInDatamodel)"
+   ]
+  ]
+ },
+ {
+  "Rendering/AppDraw/HitTest.cpp": [
+   [
+    "#include \"AppDraw/HitTest.h\"",
+    "// 2008 rbxgs-appdraw was compiled with /fp:fast\n#pragma float_control(precise, off)\n#include \"AppDraw/HitTest.h\""
+   ]
+  ]
+ },
+ {
+  "App/v8datamodel/Workspace.cpp": [
+   [
+    "\tvoid Workspace::zoomToExtents()\n\t{\n\t\tgetCamera()->zoomExtents(viewPort);\n\t}",
+    "\tvoid Workspace::zoomToExtents()\n\t{\n\t\tgetCamera()->zoomExtents(viewPort);\n\t}\n\n\tvoid Workspace::onWrapMouse(const G3D::Vector2& wrapMouseDelta)\n\t{\n\t\tgetCamera()->onWrapMouse(wrapMouseDelta);\n\t}\n\n\t// Camera.h declares Camera::onWrapMouse but no unit defines it; define it beside its\n\t// only caller, kept out of line as in the 2008 binary (thiscall at 005cce40).\n\t__declspec(noinline) void Camera::onWrapMouse(const G3D::Vector2& wrapMouseDelta)\n\t{\n\t\ttiltRadians(wrapMouseDelta.y * (-0.3f * Math::pi() / 180.0f));\n\t\tpanRadians(wrapMouseDelta.x * (-0.4f * Math::pi() / 180.0f));\n\t}"
+   ]
+  ]
+ },
+ {
+  "Rendering/RenderLib/EffectSettings.cpp": [
+   [
+    "#include \"RenderLib/EffectSettings.h\"\n\nnamespace RBX\n{\n\tnamespace Render\n\t{\n\t}\n}",
+    "#pragma float_control(precise, off)\n#include \"RenderLib/EffectSettings.h\"\n\n#include <GLG3D/glcalls.h>\n#include <algorithm>\n#include <memory>\n\nnamespace RBX\n{\n\tnamespace Render\n\t{\n\t\tstatic bool brighter(const G3D::GLight& A, const G3D::GLight& B)\n\t\t{\n\t\t\treturn (A.color.r + A.color.g + A.color.b) / 3.0 * (1.2 - A.position.w) >\n\t\t\t\t   (B.color.r + B.color.g + B.color.b) / 3.0 * (1.2 - B.position.w);\n\t\t}\n\n\t\tG3D::ToneMap* EffectSettings::getToneMap()\n\t\t{\n\t\t\tstatic std::auto_ptr<G3D::ToneMap> toneMap(new G3D::ToneMap());\n\t\t\treturn toneMap.get();\n\t\t}\n\n\t\tDepthBlur* EffectSettings::getDepthBlur()\n\t\t{\n\t\t\tstatic std::auto_ptr<DepthBlur> depthBlur(new DepthBlur());\n\t\t\treturn depthBlur.get();\n\t\t}\n\n\t\tG3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(\n\t\t\tfloat shadingDetail,\n\t\t\tfloat meshDetail,\n\t\t\tbool shadows,\n\t\t\tfloat cameraDistanceFromCharacters,\n\t\t\tconst G3D::ReferenceCountedPointer<G3D::Lighting>& desiredLighting,\n\t\t\tconst G3D::LightingParameters& desiredSkyParameters,\n\t\t\tG3D::LightingParameters& outSkyParameters)\n\t\t{\n\t\t\tint lightCount = desiredLighting->lightArray.size();\n\t\t\tint shadowLightCount = desiredLighting->shadowedLightArray.size();\n\t\t\tint numShadowLights = shadowLightCount >= 8 ? 8 : shadowLightCount;\n\t\t\tint maxLights = G3D::glGetInteger(GL_MAX_LIGHTS) - 3;\n\t\t\tint numNonShadowLights = lightCount >= maxLights ? maxLights : lightCount;\n\t\t\tnumNonShadowLights = numNonShadowLights > 0 ? numNonShadowLights : 0;\n\n\t\t\t_groundLOD = 1.0f;\n\t\t\t_LODShift = 0.0f;\n\t\t\t_skyBox = false;\n\t\t\t_alphaBlendShadowLights = true;\n\t\t\t_stencilShadows = false;\n\t\t\t_useAllLightsInUnshadowedPass = false;\n\t\t\t_toneMap = false;\n\t\t\t_hemisphereLighting = false;\n\t\t\t_depthBlur = false;\n\t\t\t_farCullZ = -G3D::inf();\n\n\t\t\tG3D::ReferenceCountedPointer<G3D::Lighting> lighting = G3D::Lighting::create();\n\t\t\t*lighting = *desiredLighting;\n\n\t\t\tG3D::glGetInteger(GL_STENCIL_BITS);\n\n\t\t\tif (shadingDetail >= 10)\n\t\t\t{\n\t\t\t\t_skyBox = true;\n\t\t\t}\n\n\t\t\t_groundLOD = meshDetail * 0.01f;\n\n\t\t\tif (shadingDetail >= 30.0f)\n\t\t\t{\n\t\t\t\t_hemisphereLighting = true;\n\t\t\t}\n\n\t\t\t_LODShift = meshDetail * 0.02f - 1.0f;\n\n\t\t\tif (shadows && numShadowLights > 0)\n\t\t\t{\n\t\t\t\t_stencilShadows = true;\n\t\t\t\tnumShadowLights = 1;\n\n\t\t\t\tif (numNonShadowLights == 0)\n\t\t\t\t{\n\t\t\t\t\t_alphaBlendShadowLights = false;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tlighting->shadowedLightArray.sort(brighter);\n\n\t\t\tint excessShadowLights = lighting->shadowedLightArray.size() - numShadowLights;\n\n\t\t\tif (excessShadowLights > 0)\n\t\t\t{\n\t\t\t\tfor (int i = 0; i < excessShadowLights; i++)\n\t\t\t\t{\n\t\t\t\t\tlighting->lightArray.append(\n\t\t\t\t\t\tlighting->shadowedLightArray[lighting->shadowedLightArray.size() - excessShadowLights + i]);\n\t\t\t\t}\n\n\t\t\t\tlighting->shadowedLightArray.resize(lighting->shadowedLightArray.size() - excessShadowLights, true);\n\t\t\t}\n\n\t\t\tlighting->lightArray.sort(brighter);\n\n\t\t\tint excessLights = lighting->lightArray.size() - numNonShadowLights;\n\n\t\t\tif (excessLights > 0)\n\t\t\t{\n\t\t\t\tlighting->lightArray.resize(lighting->lightArray.size() - excessLights, true);\n\t\t\t}\n\n\t\t\t_useAllLightsInUnshadowedPass = _stencilShadows == false;\n\n\t\t\tfor (int i = 0; i < lighting->lightArray.size(); i++)\n\t\t\t{\n\t\t\t\tG3D::GLight& l = lighting->lightArray[i];\n\t\t\t\tl.color *= 1.0f;\n\t\t\t}\n\t\t\tfor (int i = 0; i < lighting->shadowedLightArray.size(); i++)\n\t\t\t{\n\t\t\t\tG3D::GLight& l = lighting->shadowedLightArray[i];\n\t\t\t\tl.color *= 1.0f;\n\t\t\t}\n\n\t\t\tif (_toneMap)\n\t\t\t{\n\t\t\t\tgetToneMap()->setEnabled(true);\n\t\t\t\tlighting = getToneMap()->prepareLighting(lighting);\n\t\t\t\toutSkyParameters = getToneMap()->prepareLightingParameters(desiredSkyParameters);\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\toutSkyParameters = desiredSkyParameters;\n\t\t\t}\n\n\t\t\treturn lighting;\n\t\t}\n\t}\n}"
+   ],
+   [
+    "\t\tstatic bool brighter(const G3D::GLight& A, const G3D::GLight& B)\n\t\t{\n\t\t\treturn (A.color.r + A.color.g + A.color.b) / 3.0 * (1.2 - A.position.w) >\n\t\t\t\t   (B.color.r + B.color.g + B.color.b) / 3.0 * (1.2 - B.position.w);\n\t\t}",
+    "\t\tstatic bool brighter(const G3D::GLight& A, const G3D::GLight& B)\n\t\t{\n\t\t\treturn A.color.average() * (1.2 - A.position.w) > B.color.average() * (1.2 - B.position.w);\n\t\t}\n\n\t\tDepthBlur::~DepthBlur()\n\t\t{\n\t\t}"
+   ]
+  ],
+  "App/humanoid/Humanoid.cpp": [
+   [
+    "\t\tModelInstance* character = Network::Players::findLocalCharacter(context);\n\t\treturn character ? character->findFirstChildOfType<Humanoid>() : NULL;",
+    "\t\treturn modelIsCharacter(Network::Players::findLocalCharacter(context));"
+   ],
+   [
+    "\tvoid Humanoid::getIgnorePrims(std::vector<const Primitive*>& ignore)",
+    "\tvoid Humanoid::getPrimitives(std::vector<Primitive*>& primitives)\n\t{\n\t\tif (ModelInstance* character = getCharacterFromHumanoid(this))\n\t\t\tcharacter->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref(primitives)));\n\t}\n\n\tvoid Humanoid::getIgnorePrims(std::vector<const Primitive*>& ignore)"
+   ],
+   [
+    "\t\tModelInstance* character = getCharacterFromHumanoid(this);\n\t\tRBXASSERT(character);\n\n\t\tif (!character)",
+    "\t\tModelInstance* character = getCharacterFromHumanoid(this);\n\n\t\tif (!character)"
+   ],
+   [
+    "\t\tRBXASSERT(head && torso && rightArm && leftArm && rightLeg && leftLeg);\n\n\t\tif (!torso)\n\t\t\treturn;\n\n\t\thead->getPrimitive()->getBody()->setCanThrottle(false);\n\t\ttorso->getPrimitive()->getBody()->setCanThrottle(false);\n\t\trightArm->getPrimitive()->getBody()->setCanThrottle(false);\n\t\tleftArm->getPrimitive()->getBody()->setCanThrottle(false);\n\t\trightLeg->getPrimitive()->getBody()->setCanThrottle(false);\n\t\tleftLeg->getPrimitive()->getBody()->setCanThrottle(false);\n",
+    "\t\tif (!torso)\n\t\t\treturn;\n"
+   ]
+  ]
+ },
+ {
+  "App/v8datamodel/Workspace.cpp": [
+   [
+    "\tCamera* Workspace::getCamera() const\n\t{\n\t\tif (!currentCamera || !currentCamera->isDescendentOf(this))\n\t\t{\n\t\t\tboost::shared_ptr<Camera> newCamera = Creatable::create<Camera>();\n\t\t\tnewCamera->setParent(const_cast<Workspace*>(this));\n\t\t\tcurrentCamera = newCamera;\n\t\t}\n\n\t\tRBXASSERT(currentCamera->isDescendentOf(this));\n\t\treturn currentCamera.get();\n\t}",
+    "\tCamera* Workspace::getCamera() const\n\t{\n\t\treturn currentCamera ? currentCamera.get() : cameraTemplate.get();\n\t}"
+   ],
+   [
+    "\tWorld* Workspace::getMyWorldFast(const Instance* context)",
+    "\tInstance* Workspace::findTopInstance(Instance* context)\n\t{\n\t\tWorkspace* workspace = getMyWorkspaceFast(context);\n\t\twhile (context->getParent() != workspace)\n\t\t\tcontext = context->getParent();\n\t\treturn context;\n\t}\n\n\tWorld* Workspace::getMyWorldFast(const Instance* context)"
+   ]
+  ],
+  "Rendering/AppDraw/Draw.cpp": [
+   [
+    "#include \"AppDraw/Draw.h\"\n#include \"util/Math.h\"",
+    "// 2008 rbxgs-appdraw was compiled with /fp:fast\n#pragma float_control(precise, off)\n#include \"AppDraw/Draw.h\"\n#include \"util/Math.h\""
+   ]
+  ]
  }
 ]
