@@ -1193,3 +1193,21 @@ control, full physics, anchor-cycle, scheduler or input equivalence. The
 original process required forced termination after its window-close request;
 the rebuilt process exited normally. Continue original anchor-cycle and
 fixed-step investigation; P5 and later milestones remain open.
+
+## P5 checkpoint: original anchor cycle (e9be161e82)
+
+An authored fixture now drives release, re-anchor and final release in both
+clients. Three separately moved marker Parts confirm the original Lua setters
+completed; two matching process-memory position copies per marker and block
+were sampled read-only. In two runs original marker changes occurred at roughly
+0.094, 0.250-0.265 and 0.422 seconds; rebuilt fixed-step transitions occurred
+at frames 6, 15 and 24. The original re-anchor plateau is about y=17.271,
+rebuilt about y=17.796: a real 0.525-stud difference. Twelve original real-time
+observations pass a deliberately broad 1.25-stud, +/-3-frame comparison window;
+maximum observed best-window difference is 0.525. Both settle within 0.00452
+studs of each other. Receipts: p5-original-anchor-*-e9be161e82.
+
+This is a bounded comparison, not proof of exact fixed-step or anchor parity.
+Original required forced termination after window close; rebuilt exited cleanly.
+Investigate the re-anchor discrepancy and original scheduler/frame-loop, then
+continue remaining P5 and later milestones.
