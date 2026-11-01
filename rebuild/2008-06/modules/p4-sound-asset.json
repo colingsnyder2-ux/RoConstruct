@@ -9,7 +9,7 @@
       "name": "sound",
       "mode": "direct",
       "dir": "rebuild/2008-06/tests",
-      "files": "PlayerNativeSound.cpp PlayerNativeSoundService.cpp PlayerNativeSoundGC.cpp",
+      "files": "PlayerNativeSound.cpp PlayerNativeSoundService.cpp PlayerNativeSoundGC.cpp PlayerNativeSoundChannel.cpp",
       "includes_from_recipe": "rbxgs",
       "defines_from_recipe": "rbxgs",
       "extra_defines": "BOOST_ALL_NO_LIB",

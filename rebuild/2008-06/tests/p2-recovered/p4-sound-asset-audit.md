@@ -114,3 +114,12 @@ The listener-vector helper 005b70c0 is integrated with genuine Math/Vector3
 types. Original constants at 00837604 and 00826de0 are -5000 and +5000. The
 diagnostic checks denormal-to-zero, component clamping, infinity rejection and
 unchanged output after rejection. Heartbeat does not yet call this helper.
+
+SoundChannel constructor 005bc480, destructor 005b7680, parent acceptance
+00565ff0, provider detach 005b9840, heartbeat 005ba3d0 and spatial update
+005b9920 are recovered against real declarations. The constructor/destructor
+locally identify their original addresses. A temporary construction test did
+not link: onAncestorChanged remains missing (askSetParent was subsequently
+implemented). The channel object is therefore not selected or runtime-tested.
+The spatial and detach error reporting uses the same documented warning-gate
+adaptation as the asset loader. No audible playback or server credit is claimed.
