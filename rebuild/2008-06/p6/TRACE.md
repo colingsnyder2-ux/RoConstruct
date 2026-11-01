@@ -48,9 +48,18 @@ CSettingsDialog and CAboutRobloxDialog.
 - Ogre fails on recovered Rbx* symbols. The player avoids this by importing
   rgmain.dll, which P6 may also do.
 
-## Next
+## Client state
 
-Read 0044d810 end to end, list its first ordered calls, then build a minimal
-`p6-app` module: real CRobloxApp shell, resources, MFC and XTP, opening a window
-and exiting cleanly, before attaching the engine. Renaming the player harness
-does not count.
+`build_client.py` links `out/p6/Roblox.exe`: XTP frame, resource-129 place
+document, recovered engine in an MDI view. See `work/2008-06/p6-client/`.
+
+Passing: command-line open, bad path exit 1, real W input, clean exit twice.
+
+Open:
+
+- Command bar shows only File. Original builds the rest in code after 00431d00.
+- InitInstance skips engine setup, COM registration, crash reporter and
+  CIDEDocManager. Places open straight into play mode.
+- No docking panes, Explorer, Properties, or script editor.
+- Edit, save and reopen flow.
+- Links Codex's built libraries, so rebuild after engine changes.
