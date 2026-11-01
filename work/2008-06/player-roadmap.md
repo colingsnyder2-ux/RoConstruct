@@ -2091,3 +2091,6 @@ Doc DeleteContents source port at 2de64d130b now uses typed DataModel lock, owne
 
 
 Doc DeleteContents004513c0 now matches449 bytes with relocation fields masked. Caching end iterator, as in recovered source, removed the 10-byte mismatch. Verified at 147e8d8b5e; document-compile.json records the body. Workspace cleanup0046b0e0 and current-document helper00405aa0 remain unresolved; class inactive. Doc destructor still204/198. No selected-executable or runtime gate changes.
+
+
+Workspace cleanup boundary: MSVC21022 compiled donor DataModel::getWorkspace to offset0x218, while original getter0046a970 reads0x204. Evidence shared-layouts/datamodel-workspace-boundary.json and NativeDataModelProbe.cpp. The existing donor accessor cannot safely implement native CWorkspace::cleanup; recover native DataModel layout/accessor before connecting this ownership edge. No runtime or gate change.
