@@ -1,7 +1,7 @@
 {
  "milestone": "P6",
  "status": "OPEN",
- "scope": "MFC client with place document hosting recovered player engine; hidden runs only",
+ "scope": "MFC client with place document hosting recovered player engine; hidden runs and one visible real-input run",
  "exe_sha256": "5e37b39fd846c576c151d15afb4a06650b56a7b7cc0fc8ea9759a8bc0b1dae19",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
@@ -52,5 +52,24 @@
   "60 Hz frame cap, not original 00555190 deadline loop",
   "_afxForce symbols local",
   "WinMain from RTM appmodul.cpp"
- ]
+ ],
+ "visible_input_run": {
+  "command": "python rebuild/2008-06/p6/input_test.py Roblox.exe Places/p5-playable.rbxl",
+  "desktop_lock": true,
+  "focused": true,
+  "exit": 0,
+  "keys": "real W keybd_event for 1.5 s after engine open",
+  "actor_end": [
+   0.049753,
+   2.99842,
+   18.9889
+  ],
+  "idle_actor_end": [
+   0,
+   2.99913,
+   25.5
+  ],
+  "frames": 288,
+  "cleanup": "levels=0 refs=0 backends=0 spheres=0"
+ }
 }
