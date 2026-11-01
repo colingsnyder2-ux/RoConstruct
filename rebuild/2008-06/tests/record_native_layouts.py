@@ -49,7 +49,8 @@ classes = {}
 for match in names:
     name = match.group()[:-1].decode('ascii', errors='replace')
     if not (name in ('.?AVCRobloxDoc@@', '.?AVCRobloxView@@', '.?AVCMainFrame@@', '.?AVCRobloxApp@@',
-                     '.?AVCWorkspace@@', '.?AVCRobloxWnd@@', '.?AVCReflectorWnd@@', '.?AVDataModel@RBX@@')
+                     '.?AVCWorkspace@@', '.?AVCRobloxWnd@@', '.?AVCReflectorWnd@@', '.?AVDataModel@RBX@@',
+                     '.?AVWorkspace@RBX@@', '.?AVSelection@RBX@@')
             or 'CComObject@VCWorkspace@@' in name
             or 'VerbBinder@VCRoblox' in name
             or re.fullmatch(r'\.\?AV(?:HumanoidState|MovingNoPhysicsBase|RunningNoPhysics|Freefall|Landed|Jumping)@HUMAN@RBX@@', name)):

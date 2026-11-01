@@ -3,6 +3,7 @@
 #include <map>
 
 namespace RBX {
+class Service {};
 class Closing;
 struct ServiceAdded;
 struct ServiceRemoving;
