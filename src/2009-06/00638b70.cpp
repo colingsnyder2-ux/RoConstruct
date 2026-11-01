@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
@@ -40,6 +40,7 @@ struct CoordinateFrameBridge {static bool getValue(lua_State*,int,Reflection::Va
 struct Vector3Bridge {static bool getValue(lua_State*,int,Reflection::Value&);};
 struct Color3Bridge {static bool getValue(lua_State*,int,Reflection::Value&);};
 struct BrickColorBridge {static bool getValue(lua_State*,int,Reflection::Value&);};
+struct RayBridge {static bool getValue(lua_State*,int,Reflection::Value&);};
 struct ObjectBridge {static bool getPtr(lua_State*,int,Reflection::Value&);};
 struct LuaArguments {static bool get(lua_State*,int,Reflection::Value&,bool);};
 bool LuaArguments::get(lua_State*L,int luaIndex,Reflection::Value&value,bool nilIsMissing){
@@ -65,7 +66,7 @@ bool LuaArguments::get(lua_State*L,int luaIndex,Reflection::Value&value,bool nil
  case 6:value=lua_tofunction(L,luaIndex);break;
  default:value=Reflection::Value();break;
  case 7:
-  if(CoordinateFrameBridge::getValue(L,luaIndex,value)||Vector3Bridge::getValue(L,luaIndex,value)||Color3Bridge::getValue(L,luaIndex,value)||BrickColorBridge::getValue(L,luaIndex,value)||ObjectBridge::getPtr(L,luaIndex,value))break;
+  if(CoordinateFrameBridge::getValue(L,luaIndex,value)||Vector3Bridge::getValue(L,luaIndex,value)||Color3Bridge::getValue(L,luaIndex,value)||BrickColorBridge::getValue(L,luaIndex,value)||ObjectBridge::getPtr(L,luaIndex,value)||RayBridge::getValue(L,luaIndex,value))break;
   value=Reflection::Value();break;
  }
  return true;

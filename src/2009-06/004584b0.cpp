@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004596a0  unit: CRobloxView  size: 274 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004596a0
@@ -122,15 +122,15 @@ struct Factory {
 };
 
 struct Data {
-    char padding[148];
+    char padding[0x9c];
     Ref* reference;
 };
 
 struct View {
     char padding0[84];
     Data* data;
-    char padding1[88];
-    char owner[296];
+    char padding1[0x48];
+    char owner[0x16c];
     Window* window;
 
     void update();

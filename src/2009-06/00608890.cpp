@@ -1,9 +1,9 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs roc_unit_eebc4a1b846fb837.cpp
+// roc-lib: rbxgs roc_espclaude_d8e7f9905d4cba33.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "gui/Gui.h"
@@ -12,6 +12,7 @@ typedef RBX::Rect Rect;
 typedef RBX::GuiEvent Event;
 struct Result { int handled; void* value; };
 struct Child {
+    virtual void slotX();
     virtual void slot00();
     virtual void slot01();
     virtual void slot02();
@@ -38,6 +39,7 @@ struct Holder {
 };
 
 struct ChatEnter {
+    virtual void slotX();
     virtual void slot00();
     virtual void slot01();
     virtual void slot02();
@@ -65,7 +67,7 @@ struct ChatEnter {
     virtual void slot24();
     virtual void changed();
 
-    char reserved0[0x130];
+    char reserved0[0x8c];
     Holder holder;
     char reserved1[8];
     int state;
@@ -113,3 +115,4 @@ Result ChatEnter::process(Event* event)
     result.value = 0;
     return result;
 }
+

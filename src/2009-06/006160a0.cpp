@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005f6450  unit: std::D::V?$allocator::V?$basic_gzip_decompressor::?$stream_buffer  size: 390 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005f6450
@@ -225,7 +225,7 @@ int S::f(std::basic_streambuf<char, std::char_traits<char> > *source,
             int size = state->buffer.size;
             char *data = state->buffer.data;
             int result = sgetn(source, data, size);
-            int count = result ? result : (source->eof ? -1 : 0);
+            int count = result ? result : ((source->eof & 1) ? -1 : 0);
 
             if (count == -1) {
                 mode = 4;

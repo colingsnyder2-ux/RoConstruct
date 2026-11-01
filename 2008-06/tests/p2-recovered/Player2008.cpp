@@ -31,6 +31,7 @@ extern "C" void SetPartYaw(float);
 extern "C" int GetContactState(float*,float*,int*);
 extern "C" int ExecutePlayerScript(const char*);
 extern "C" int ConfigureContentRoot(const char*);
+extern "C" int CountHumanoids();
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -251,7 +252,7 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Mesh
     // link or adoption into this bounds-only Mesh's deletion list is required.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
     std::printf("native mesh: producer=%s upload=00549a50 block_calls=%u indices=%u\n",
-        geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
+        dynamic_cast<PlayerBlockMesh::PBBMesh*>(geometry)?"004f4cb0":geometry->geometryKind==3?"004fd6b0":geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
 }
 
@@ -661,6 +662,7 @@ int main(int argc, char** argv)
     bool skytest = false;
     bool stability = false;
     bool inspectPlace = false;
+    bool loadOnly = false;
     int stabilityExit = 0;
     int spinFrames = 0;
     std::string contentRoot;
@@ -675,6 +677,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--demo") == 0) demo = true;
         else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
         else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
+        else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
         else if (std::strcmp(argv[i], "--capture-spin") == 0 && i+1<argc) { spinFrames=std::atoi(argv[++i]);demo=true; }
         else if (std::strcmp(argv[i], "--content-root") == 0 && i+1<argc) contentRoot=argv[++i];
@@ -690,6 +693,7 @@ int main(int argc, char** argv)
     if(contentRoot.empty())contentRoot=moduleRoot+"/Content";
     GetFullPathNameA(contentRoot.c_str(),sizeof(path),path,0);contentRoot=path;
     if(!getenv("ROC_TEXTURE_STRIP"))_putenv(("ROC_TEXTURE_STRIP="+contentRoot+"/textures/SurfacesStrip.png").c_str());
+    if(!getenv("ROC_SKY_SPHERE"))_putenv(("ROC_SKY_SPHERE="+contentRoot+"/sky/skyspheremap.jpg").c_str());
     if(!std::ifstream(getenv("ROC_TEXTURE_STRIP"),std::ios::binary)){
         std::printf("missing SurfacesStrip.png; provide original Content with --content-root\n");return 1;
     }
@@ -708,7 +712,10 @@ int main(int argc, char** argv)
         std::printf("could not read place: %s\n",placePath.c_str());return 1;
     }
 
+    if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
+    if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
+    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
 
     Ogre::Root* root = new Ogre::Root("", "", "player.log");
     if (!root) { std::printf("root failed\n"); ClosePlace(); return 2; }

@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005813f0  unit: RBX::TrackCameraCommand  size: 278 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005813f0
@@ -146,8 +146,8 @@ struct Selection {boost::shared_ptr<Instance> first();};
 struct Context {Selection* selection();};
 struct Camera {void setSubject(PVInstance*);void setType(int);};
 struct CameraOwner {virtual ~CameraOwner();virtual Camera* getCamera();};
-struct Workspace {char pad[0x288];CameraOwner cameraOwner;};
-struct Name {int id;std::string text;const char* c_str()const{return text.c_str();}};
+struct Workspace {char pad[0x118];CameraOwner cameraOwner;};
+struct Name {std::string text;const char* c_str()const{return text.c_str();}};
 struct IDataState {virtual void setDirty(bool)=0;};
 void __cdecl trackVerb(const char*,Workspace*);
 struct TrackCameraCommand {

@@ -1,4 +1,4 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0059a040  unit: RBX::PartInstance  size: 130 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0059a040
@@ -6,8 +6,8 @@
 // 0059a040  53                   push ebx
 // 0059a041  8b5c2408             mov ebx, dword ptr [esp + 8]
 // 0059a045  6a00                 push 0
-// 0059a047  6850dd9200           push 0x92dd50
-// 0059a04c  687c909200           push 0x92907c
+// 0059a047  6850dd9200           push 0x9df950
+// 0059a04c  687c909200           push 0x9dbe40
 // 0059a051  6a00                 push 0
 // 0059a053  53                   push ebx
 // 0059a054  e86d771000           call 0x6a17c6
@@ -73,13 +73,13 @@ struct Children {
 };
 
 struct Instance {
-    char padding[0x108];
+    char padding[0x4c];
     Children* children;
     unsigned int childCount();
 };
 
 struct Part {
-    char padding[0x1f0];
+    char padding[0x130];
     bool value;
 };
 
@@ -90,8 +90,8 @@ bool __cdecl check(Instance* object)
 {
     Part* part = static_cast<Part*>(
         __RTDynamicCast(object, 0,
-                       reinterpret_cast<void*>(0x92907c),
-                       reinterpret_cast<void*>(0x92dd50), 0));
+                       reinterpret_cast<void*>(0x9dbe40),
+                       reinterpret_cast<void*>(0x9df950), 0));
     if (part)
         return part->value;
 

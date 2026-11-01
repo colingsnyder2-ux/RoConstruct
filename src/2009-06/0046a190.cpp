@@ -1,7 +1,7 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
 namespace G3D {
 class Vector2 { public: float x, y; };
 class Vector2int16 {
@@ -24,12 +24,12 @@ public:
     G3D::Vector2int16 windowSize;
     UIEvent(UserInputBase* u, EventType t, G3D::Vector2int16 mp, G3D::Vector2int16 ws) : userInput(u), eventType(t), mousePosition(mp), windowSize(ws) {}
 };
-class UserInputBase { public: char padding[0x59]; bool leftDown; };
+class EventSink { public: void sendEvent(const UIEvent&); };
+class UserInputBase { public: char padding[0x51]; bool leftDown; char pad2[0x178-0x52]; EventSink* sink; };
 }
 using namespace RBX;
 struct DxUserInput : public UserInputBase {
     G3D::Vector2int16 getWindowSize();
-    void sendEvent(const UIEvent&);
     void f(UIEvent::EventType type, const G3D::Vector2& position);
 };
 void DxUserInput::f(UIEvent::EventType type, const G3D::Vector2& position)
@@ -40,5 +40,5 @@ void DxUserInput::f(UIEvent::EventType type, const G3D::Vector2& position)
         leftDown = false;
     G3D::Vector2int16 p(position);
     UIEvent event(this, type, p, getWindowSize());
-    sendEvent(event);
+    sink->sendEvent(event);
 }

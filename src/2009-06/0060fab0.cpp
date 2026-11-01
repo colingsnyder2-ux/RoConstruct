@@ -1,4 +1,4 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00582770  unit: RBX::StopCommand  size: 25 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00582770
@@ -13,7 +13,7 @@
 // 00582788  c3                   ret 
 
 struct State {
-    char padding[0x1B4];
+    char padding[0x9C];
     int value;
 };
 

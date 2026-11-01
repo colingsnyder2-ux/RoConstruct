@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005bcd80  unit: SoundServiceStatsItem  size: 293 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005bcd80
@@ -123,7 +123,7 @@ std::basic_string<T, Traits, Allocator>::operator=(const basic_string& s)
 }
 
 struct Service {
-    char padding[0x134];
+    char padding[0x8c];
     int enabled;
     unsigned int handle;
     char padding2[0x44];
@@ -132,7 +132,7 @@ struct Service {
 };
 
 struct SoundServiceStatsItem {
-    char padding[0x130];
+    char padding[0x90];
     double value;
     String text;
     char padding2[4];

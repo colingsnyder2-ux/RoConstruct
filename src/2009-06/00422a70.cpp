@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00427a20  unit: ThreadLogManager  size: 217 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00427a20
@@ -100,7 +100,7 @@ struct ThreadLogManager {
     char first[128];
     char generated[128];
     char second[128];
-    char reserved[0x644];
+    char reserved[0x84];
     int argument;
 
     ThreadLogManager(const char *, const char *, int);
@@ -111,10 +111,10 @@ extern ThreadLogManager *currentManager;
 ThreadLogManager::ThreadLogManager(
     const char *secondText, const char *firstText, int suppliedArgument)
 {
+    value = 0;
     currentManager = this;
     argument = suppliedArgument;
     table = &managerTable;
-    value = 12;
 
     strcpy(second, secondText);
     strcpy(first, firstText);

@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc 2008-06 00666100  unit: RBX::PartDragTool  size: 313 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00666100
@@ -194,7 +194,6 @@ __forceinline const char* String::c_str() const
 }
 
 struct Name {
-    int prefix;
     String text;
 };
 

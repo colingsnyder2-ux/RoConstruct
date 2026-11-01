@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 005d05d0  unit: RBX::VHopperBin::?$FactoryProduct  size: 830 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d05d0
@@ -313,7 +313,7 @@ struct Name;
 struct ContentId {std::string id;const Name*mimeTypePtr;};struct TextureId:ContentId{};
 struct Instance {
  virtual ~Instance();virtual void setName(const std::string&);
- char opaque[0x104-4];Instance*parent;char opaque108[8];std::string name;
+ char opaque[0x48-4];Instance*parent;char opaque4c[0x8c-0x4c];
  int findChildIndex(const Instance*)const;
 };
 struct GuiItem:Instance {
@@ -322,7 +322,7 @@ struct GuiItem:Instance {
 struct GuiRoot {static int normalizedFontSize(int);static G3D::Vector2 canvasSize;static G3D::Vector2 getCanvasSize(){return canvasSize;}};
 struct Widget:GuiItem {
  enum WidgetState{NOTHING,HOVER,DOWN_OVER,DOWN_AWAY};
- char opaque12c[0x144-0x12c];WidgetState widgetState;
+ char opaque8c[0xa0-0x8c];WidgetState widgetState;
  void render2d(Adorn*);
 };
 struct GuiDrawImage {
@@ -330,15 +330,15 @@ struct GuiDrawImage {
  bool setImage(Adorn*,const TextureId&);void render2d(Adorn*,bool,Rect&,Widget::WidgetState);
 };
 template<class T>struct StringConverter;template<>struct StringConverter<int>{static std::string convertToString(const int&);};
-struct Workspace {char opaque[0x43c];int overlayLayout;static Workspace*findWorkspace(const Instance*);};
+struct Workspace {char opaque[0x29c];int overlayLayout;static Workspace*findWorkspace(const Instance*);};
 struct BackpackItem:Widget {
  GuiDrawImage guiImageDraw;TextureId textureId;
- virtual void pv2(); virtual void pv3(); virtual void pv4(); virtual void pv5(); virtual void pv6(); virtual void pv7(); virtual void pv8(); virtual void pv9(); virtual void pv10(); virtual void pv11(); virtual void pv12(); virtual void pv13(); virtual void pv14(); virtual void pv15(); virtual void pv16(); virtual void pv17(); virtual void pv18(); virtual void pv19(); virtual void pv20(); virtual void pv21(); virtual void pv22(); virtual void pv23(); virtual void pv24(); virtual void pv25(); virtual void pv26(); virtual void pv27(); virtual void pv28(); virtual void pv29();
+ virtual void pv2(); virtual void pv3(); virtual void pv4(); virtual void pv5(); virtual void pv6(); virtual void pv7(); virtual void pv8(); virtual void pv9(); virtual void pv10(); virtual void pv11(); virtual void pv12(); virtual void pv13(); virtual void pv14(); virtual void pv15(); virtual void pv16(); virtual void pv17(); virtual void pv18(); virtual void pv19(); virtual void pv20(); virtual void pv21(); virtual void pv22(); virtual void pv23(); virtual void pv24(); virtual void pv25(); virtual void pv26(); virtual void pv27(); virtual void pv28(); virtual void pv29(); virtual void pv30();
  virtual bool isEnabled()const; virtual void pv31(); virtual bool drawSelected()const;
  void render2d(Adorn*);
  void drawBack(Adorn*,const Rect&,bool,int);
 };
-typedef char LayoutCheck[(sizeof(std::string)==28&&sizeof(Widget)==0x148&&sizeof(GuiDrawImage)==56&&sizeof(BackpackItem)==0x1a0)?1:-1];
+typedef char LayoutCheck[(sizeof(Widget)==0xa4)?1:-1];
 __forceinline void BackpackItem::drawBack(Adorn*adorn,const Rect&rect,bool overlay,int fontSize){
 
  float side=rect.size().x*.2f;

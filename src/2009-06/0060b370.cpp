@@ -1,4 +1,4 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0057dc60  unit: RBX::TiltSelectionVerb  size: 65 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0057dc60
@@ -37,11 +37,12 @@ struct Source {
 struct Provider {
     virtual void slot0();
     virtual void slot1();
+    virtual void slot2();
     virtual Source& source();
 };
 
 struct Owner {
-    unsigned char padding[648];
+    unsigned char padding[0x118];
     Provider provider;
 };
 

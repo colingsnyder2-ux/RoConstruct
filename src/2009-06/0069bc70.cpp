@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
@@ -13,7 +13,7 @@ public:
 class FlagStandService {
 public:
     virtual ~FlagStandService();
-    char pad[0x130 - 4];
+    char pad[0x9c - 4];
     std::list<FlagStand*> flagStands;
     FlagStand* FindStandWithFlag(Flag* f);
 };

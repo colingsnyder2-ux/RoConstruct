@@ -1,12 +1,12 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00642210  unit: RBX::VWidget::?$NonFactoryProduct  size: 82 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00642210
 //
-// 00642210  8b81d0feffff         mov eax, dword ptr [ecx - 0x130]
+// 00642210  8b81d0feffff         mov eax, dword ptr [ecx - 0x8c]
 // 00642216  8b5078               mov edx, dword ptr [eax + 0x78]
 // 00642219  56                   push esi
-// 0064221a  8db1d0feffff         lea esi, [ecx - 0x130]
+// 0064221a  8db1d0feffff         lea esi, [ecx - 0x8c]
 // 00642220  8bce                 mov ecx, esi
 // 00642222  ffd2                 call edx
 // 00642224  84c0                 test al, al
@@ -60,7 +60,7 @@ __forceinline Result::Result()
 struct Base;
 
 struct Table {
-    void* slots[30];
+    void* slots[31];
     bool (__thiscall* enabled)(Base*);
 };
 
@@ -76,7 +76,7 @@ struct Widget {
 Result Widget::handle(Event* event)
 {
     Base* base = reinterpret_cast<Base*>(
-        reinterpret_cast<char*>(this) - 0x130);
+        reinterpret_cast<char*>(this) - 0x8c);
 
     if (base->table->enabled(base)) {
         int type = (int)event->type;

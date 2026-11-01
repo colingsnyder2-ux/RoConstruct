@@ -1,4 +1,4 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 004a50c0  unit: RBX::VHint::?$FactoryProduct::Creator  size: 87 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004a50c0
@@ -46,9 +46,9 @@ struct BoundFuncDesc {
 void* BoundFuncDesc::construct(unsigned int size) {
     field0 = 0;
     field8 = 0;
-    if ((int)size <= 0x100) {
+    if (size <= 0x400) {
         fieldC = (char*)this + 0x11;
-        field4 = 0x800;
+        field4 = 0x2000;
     } else {
         fieldC = malloc(size);
         field4 = size * 8;

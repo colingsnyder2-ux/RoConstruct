@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -67,7 +67,7 @@ namespace RBX {
 class Instance {};
 typedef std::vector<boost::shared_ptr<Instance> > Instances;
 struct Selection {
- char pad[0x154];
+ char pad[0x8c];
  const Instances* selected;
  Instances::const_iterator begin()const{return selected->begin();}
  Instances::const_iterator end()const{return selected->end();}
@@ -76,7 +76,7 @@ struct Selection {
 struct Workspace {boost::shared_ptr<Instance> group(Instances::const_iterator,Instances::const_iterator);};
 struct History {void record(int);};
 struct Context {Selection* selection();History* history();};
-struct Name {int id;std::string text;const char* c_str()const{return text.c_str();}};
+struct Name {std::string text;const char* c_str()const{return text.c_str();}};
 struct IDataState {virtual void setDirty(bool)=0;};
 void __cdecl trackVerb(const char*,Workspace*);
 struct GroupSelectionVerb {

@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0043ea20  unit: RBX::Soundscape::VSoundId::?$ContentItem  size: 165 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0043ea20
@@ -90,6 +90,5 @@ S::S(const void* first, const void* second)
 
     setFlags(getFlags() | 4);
 
-    buttons->table[22](buttons, browseText, 0, 0xe101);
     buttons->table[22](buttons, clearText, 1, 0xe120);
 }

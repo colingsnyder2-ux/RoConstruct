@@ -1,4 +1,4 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 005a1fc0  unit: RBX::Workspace  size: 276 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005a1fc0
@@ -233,9 +233,7 @@ void* __cdecl func(void*);
 Object* __cdecl create(void*);
 
 struct Workspace {
-    unsigned char padding[0x364];
-    Signal signal;
-    unsigned char remaining[0x4b];
+    unsigned char padding[0x1d8];
     Object* current;
     Object* secondary;
 
@@ -272,9 +270,5 @@ void Workspace::set(Object* object)
             }
             secondary = object;
         }
-
-        Flag flag;
-        flag.value = 0;
-        signal.notify(flag);
     }
 }

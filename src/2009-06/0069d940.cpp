@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0062db60  unit: RBX::VGeometryService::?$FactoryProduct  size: 129 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0062db60
@@ -80,19 +80,19 @@ struct Query
 
 struct Context
 {
-    char padding[0x84];
+    char padding[0xb0];
     Query* query;
 };
 
 struct Owner
 {
-    char padding[0x2e4];
+    char padding[0x150];
     Context* context;
 };
 
 struct S
 {
-    char padding[0x130];
+    char padding[0x8c];
     Owner* owner;
     Array temporary;
 

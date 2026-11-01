@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0064dc70  unit: RBX::Point  size: 29 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064dc70
@@ -25,12 +25,12 @@ struct Receiver {
 };
 
 struct Owner {
-    char padding[0x2C];
+    char padding[0x34];
     Receiver* receiver;
 };
 
 struct Link {
-    char padding[0x10];
+    char padding[0x2c];
     Owner* owner;
 };
 

@@ -1,4 +1,4 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00467720  unit: DxUserInput  size: 71 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00467720
@@ -46,7 +46,7 @@ struct Device {
 };
 
 struct DxUserInput {
-    char reserved0[0x170];
+    char reserved0[0x168];
     void* window;
     char reserved1[8];
     Device* device;

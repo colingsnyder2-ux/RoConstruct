@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0064e180  unit: RBX::P8Camera::?$GetSetImpl  size: 32 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064e180
@@ -29,7 +29,7 @@ struct Value {
 };
 
 struct S {
-    unsigned char padding[0x144];
+    unsigned char padding[0xa0];
     Value field;
     void set(const Value& source);
 };

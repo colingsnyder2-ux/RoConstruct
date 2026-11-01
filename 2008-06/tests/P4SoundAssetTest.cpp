@@ -1,15 +1,34 @@
 #define BOOST_ALL_NO_LIB
+#include "util/ContentProvider.h"
+#include "util/RunStateOwner.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Stats.h"
+// Compile the same cleanup body with public access in this isolated test;
+// MSVC encodes access in symbol names, so this cannot call the private binary.
+#define private public
 #include "util/Sound.h"
+#include "PlayerNativeSoundGC.cpp"
+#undef private
 #include "v8datamodel/GameSettings.h"
 #include <fmod.hpp>
 #include <cstdio>
 #include <cmath>
 #include <cstring>
 #include <stdexcept>
+#include <limits>
 #include <windows.h>
+namespace RBX { namespace Soundscape {
+bool sanitizeSoundVector(const G3D::Vector3&,G3D::Vector3&);
+} }
+#include <cstdlib>
 // DLL exports the stdcall entry without decoration; generated import library
 // preserves that export name. This is a symbol alias, not a calling-convention change.
 #pragma comment(linker,"/alternatename:_FMOD_System_Create@4=_FMOD_System_Create")
+
+// Native RTTI/constructors and factory allocation witnesses; no padding aliases.
+typedef char NativeInstanceSize[sizeof(RBX::Instance)==0x130?1:-1];
+typedef char NativeSoundChannelSize[sizeof(RBX::Soundscape::SoundChannel)==0x170?1:-1];
+typedef char NativeSoundServiceSize[sizeof(RBX::Soundscape::SoundService)==0x1c8?1:-1];
 
 static void check(FMOD_RESULT result){
     if(result!=FMOD_OK){std::printf("FMOD error %d\n",result);throw std::runtime_error("FMOD diagnostic failed");}
@@ -21,6 +40,15 @@ int main(int argc,char** argv){
     try{
         verify(std::strcmp(RBX::Soundscape::sSoundChannel,"Sound")==0);
         verify(std::strcmp(RBX::Soundscape::sSoundService,"SoundService")==0);
+        {
+            float denormal=std::numeric_limits<float>::denorm_min();
+            G3D::Vector3 result(9,9,9);
+            verify(RBX::Soundscape::sanitizeSoundVector(G3D::Vector3(denormal,6000,-7000),result));
+            verify(result==G3D::Vector3(0,5000,-5000));
+            verify(!RBX::Soundscape::sanitizeSoundVector(G3D::Vector3(std::numeric_limits<float>::infinity(),0,0),result));
+            verify(result==G3D::Vector3(0,5000,-5000));
+            std::printf("P4 Sound listener vector PASS denormal/clamp/infinity\n");
+        }
         std::string path=__FILE__;path=path.substr(0,path.find_last_of("/\\"))+"/fixtures/p4-assets";
         RBX::ContentProvider::singleton().setAssetFolder(argc>1?argv[1]:path.c_str());
         RBX::GameSettings::singleton().softwareSound=true;
@@ -30,6 +58,32 @@ int main(int argc,char** argv){
         std::printf("fmod loaded: %s\n",dllPath);
         // Isolate loader/PCM ownership. No claim of audible or service playback.
         check(system->setOutput(FMOD_OUTPUTTYPE_NOSOUND));check(system->init(100,FMOD_INIT_NORMAL,0));
+        {
+            typedef std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound> > Sounds;
+            Sounds sounds;bool retained[64];
+            for(int i=0;i<64;++i){
+                char name[32];std::sprintf(name,"rbxasset://%02d.wav",i);
+                RBX::Soundscape::SoundId id(name);
+                boost::shared_ptr<RBX::Soundscape::Sound> sound(new RBX::Soundscape::Sound(system,id,false));
+                sound->refCount=i%3==0?1:0;sounds[id]=sound;
+            }
+            std::srand(17);
+            for(int i=0;i<64;++i)retained[i]=i%3==0 || static_cast<float>(std::rand())*(1.0f/32767.0f)<.7f;
+            std::srand(17);RBX::Soundscape::SoundService::gcSounds(sounds);
+            verify(sounds.size()<64 && sounds.size()>=22);
+            for(int i=0;i<64;++i){
+                char name[32];std::sprintf(name,"rbxasset://%02d.wav",i);
+                verify((sounds.find(RBX::Soundscape::SoundId(name))!=sounds.end())==retained[i]);
+            }
+            sounds.clear();RBX::Soundscape::SoundId id("rbxasset://tone.wav");
+            boost::shared_ptr<RBX::Soundscape::Sound> sound(new RBX::Soundscape::Sound(system,id,false));
+            verify(sound->get()!=0);sounds[id]=sound;
+            int seed=1;
+            for(;;++seed){std::srand(seed);if(static_cast<float>(std::rand())*(1.0f/32767.0f)>=.7f)break;}
+            std::srand(seed);RBX::Soundscape::SoundService::gcSounds(sounds);
+            verify(sounds.empty() && sound->get()!=0);
+            std::printf("P4 Sound cache cleanup PASS retained/in-use/evicted/reload\n");
+        }
         for(int cycle=0;cycle<16;++cycle){
             RBX::Soundscape::Sound sound(system,RBX::Soundscape::SoundId("rbxasset://tone.wav"),false);
             verify(sound.refCount==0);

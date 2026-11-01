@@ -1,4 +1,4 @@
-// from server: 95% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0043dc00  unit: RefItem  size: 835 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0043dc00
@@ -304,8 +304,8 @@ template<class T,class U> bool operator==(const shared_ptr<T>& a,const shared_pt
 #include <string>
 namespace G3D {struct Vector3 {float x,y,z;Vector3():x(0),y(0),z(0){}Vector3(float a,float b,float c):x(a),y(b),z(c){}Vector3(const Vector3&v):x(v.x),y(v.y),z(v.z){}Vector3& operator=(const Vector3&v){x=v.x;y=v.y;z=v.z;return *this;}};}
 struct DescribedBase {virtual ~DescribedBase();};
-struct InstancePrimary {virtual ~InstancePrimary();char prefix[0x10];};
-struct Instance:InstancePrimary,DescribedBase {char gap[0x110-0x18];std::string name;const std::string&getName()const{return name;}};
+struct InstancePrimary {virtual ~InstancePrimary();char prefix[0x14];};
+struct Instance:InstancePrimary,DescribedBase {char gap[0x54-0x1c];std::string name;const std::string&getName()const{return name;}};
 struct RefDescriptor {virtual ~RefDescriptor();
 virtual void slot1();virtual void slot2();virtual void slot3();virtual void slot4();virtual void slot5();virtual void slot6();virtual void slot7();virtual void slot8();virtual void slot9();virtual void slot10();virtual void slot11();virtual DescribedBase* getRef(DescribedBase*)const;};
 struct ClassDescriptor;

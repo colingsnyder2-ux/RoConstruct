@@ -1,4 +1,4 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0058c8b0  unit: RBX::ChangeHistoryService  size: 97 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0058c8b0
@@ -38,12 +38,12 @@ extern char enabledName[];
 extern "C" Check* __stdcall getCheck(int, const char*);
 
 struct State {
-    char storage[20];
+    char storage[8];
     void clear();
 };
 
 struct S {
-    char padding[0x165];
+    char padding[0xc1];
     bool enabled;
     char alignment[2];
     State first;

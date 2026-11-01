@@ -1,11 +1,14 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll v8datamodel/BrickColor.cpp
+// roc-lib: rbxgs-dll roc_espclaude_d58c2d597e9811ad.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define map1 map1Unused_(); char exePad2009[0x18]; std::map<enum Number, G3D::Color4uint8> map1
+#include "v8datamodel/BrickColor.h"
+#undef map1
 #include "v8datamodel/BrickColor.h"
 
 namespace RBX
@@ -323,5 +326,34 @@ namespace RBX
 	G3D::Color3 BrickColor::color3() const
 	{
 		return G3D::Color3(color4());
+	}
+}
+
+namespace RBX
+{
+	BrickColor BrickColor::closest(G3D::Color4uint8 color)
+	{
+		Number number = lego_194;
+		int closestDistance = 10000;
+
+		std::map<enum Number, G3D::Color4uint8>::iterator iter = BrickMap::singleton().map1.begin();
+		std::map<enum Number, G3D::Color4uint8>::iterator end = BrickMap::singleton().map1.end();
+
+		for (; iter != end; iter++)
+		{
+			int distance = abs(iter->second.r - color.r);
+			distance += abs(iter->second.g - color.g);
+			distance += abs(iter->second.b - color.b);
+
+			if (distance < closestDistance)
+			{
+				number = iter->first;
+				if (distance == 0)
+					break;
+				closestDistance = distance;
+			}
+		}
+
+		return BrickColor(number);
 	}
 }

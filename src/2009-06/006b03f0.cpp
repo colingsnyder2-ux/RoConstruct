@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00607f90  unit: RBX::BlockBlockContact  size: 148 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00607f90
@@ -61,7 +61,7 @@ struct Geometry {
 };
 
 struct Object {
-    char pad[0x9c];
+    char pad[0xe0];
     Geometry* geometry;
     void* data;
 };
@@ -76,8 +76,10 @@ struct Contact {
     int firstIndex;
 };
 
+extern int vertexIndices[][4];
+
 struct S {
-    char pad[0x0c];
+    char pad[0x10];
     Object* objects[2];
 
     Contact* create(void*, void*, int, int, int);
@@ -93,7 +95,6 @@ Contact* S::f(int firstObject, int secondObject, int firstIndex,
     void* firstData = firstObjectPtr->data;
     Contact* result = create(firstData, secondData, 4, firstIndex, secondIndex);
 
-    int (*vertexIndices)[4] = reinterpret_cast<int (*)[4]>(0x84aec8);
     int offset = vertexIndices[secondIndex][0] * 3;
     Vector3* second = reinterpret_cast<Vector3*>(
         reinterpret_cast<float*>(objects[secondObject]->geometry->vertices)

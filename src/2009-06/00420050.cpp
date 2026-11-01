@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00424f80  unit: CRobloxTreeCtrlNode  size: 199 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00424f80
@@ -109,14 +109,14 @@ struct Control {
 #undef V
 
 struct Node {
-    char padding00[12];
+    char padding00[20];
     void *object;
     char padding10[69];
     volatile unsigned char flag;
     char padding56[2];
     Control *control;
     Node *next;
-    char padding60[32];
+    char padding60[36];
     int item;
 
     void update();

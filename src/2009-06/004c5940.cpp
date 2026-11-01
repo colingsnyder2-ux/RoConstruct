@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 004974c0  unit: RBX::Network::Players  size: 33 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004974c0
@@ -43,7 +43,7 @@ public:
 namespace Network {
 class Players
 {
-    char gap0[0x198];
+    char gap0[0xd4];
     CopyOnWrite<std::vector<boost::shared_ptr<Instance> > > players;
 public:
     boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > getPlayers();

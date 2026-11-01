@@ -1,4 +1,4 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc 2008-06 005cc740  unit: RBX::VCamera::?$FactoryProduct  size: 201 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005cc740
@@ -109,9 +109,6 @@ bool RBX::Camera::adjust(float delta) {
 
     if (value != y) {
         setAngles(x, (float)value, z);
-        ICameraOwner* owner = getCameraOwner();
-        if (owner)
-            owner->f();
         return true;
     }
     return false;

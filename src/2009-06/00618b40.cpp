@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -33,7 +33,7 @@ struct Proxy {
 };
 
 struct S {
-    char padding0[0x138];
+    char padding0[0x94];
     Proxy* volatile proxy;
     char padding1[0x10];
     Node* head;

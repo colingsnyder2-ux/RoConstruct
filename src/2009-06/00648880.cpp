@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005bd4b0  unit: VStockSound::?$FactoryProduct  size: 61 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005bd4b0
@@ -28,7 +28,7 @@
 extern unsigned char loopingProperty;
 
 struct SoundChannel {
-    unsigned char padding0[0x13c];
+    unsigned char padding0[0x9c];
     void *handle;
     unsigned char padding1[0x25];
     unsigned char unused : 1;

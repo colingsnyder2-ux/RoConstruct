@@ -1,4 +1,4 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 006423e0  unit: RBX::VerbWidget  size: 51 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 006423e0
@@ -53,9 +53,10 @@ struct Widget {
     virtual void slot18();
     virtual void slot19();
     virtual void slot20();
+    virtual void slot21();
     virtual bool enabled();
 
-    char padding[0x144];
+    char padding[0xa0];
     Action* action;
 
     int check();

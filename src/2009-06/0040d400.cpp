@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0040e670  unit: CBrowserView  size: 283 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0040e670
@@ -141,7 +141,7 @@ struct Request {
 };
 
 struct CBrowserView {
-    char padding[0x118];
+    char padding[0xfc];
     Control* control;
     int f(Request*);
 };

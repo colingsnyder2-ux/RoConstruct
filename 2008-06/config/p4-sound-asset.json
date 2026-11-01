@@ -9,7 +9,7 @@
       "name": "sound",
       "mode": "direct",
       "dir": "rebuild/2008-06/tests",
-      "files": "PlayerNativeSound.cpp",
+      "files": "PlayerNativeSound.cpp PlayerNativeSoundService.cpp PlayerNativeSoundGC.cpp PlayerNativeSoundChannel.cpp",
       "includes_from_recipe": "rbxgs",
       "defines_from_recipe": "rbxgs",
       "extra_defines": "BOOST_ALL_NO_LIB",
@@ -42,5 +42,9 @@
   "import_dlls": [
     "fmodex.dll"
   ],
-  "test_defines": "WIN32 NDEBUG _RELEASE"
+  "test_defines": "WIN32 NDEBUG _RELEASE",
+  "overlay": {
+    "root": "tools/rbxgs/Client",
+    "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+  }
 }

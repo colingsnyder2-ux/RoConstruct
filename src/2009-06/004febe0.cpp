@@ -1,4 +1,4 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 004bbd90  unit: ProfiledRakPeer  size: 57 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004bbd90
@@ -27,7 +27,7 @@
 
 struct ProfiledRakPeer
 {
-    char padding[0x6d4];
+    char padding[0x9fc];
     unsigned int denominator;
     unsigned int unused;
     unsigned int numerator;

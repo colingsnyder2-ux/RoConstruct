@@ -1,4 +1,4 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0064e1a0  unit: RBX::P8Camera::?$GetSetImpl  size: 54 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064e1a0
@@ -34,7 +34,7 @@ struct Result {
 };
 
 struct S {
-    char prefix[0x130];
+    char prefix[0x8c];
     char value[0x34];
     Callback* callback;
 

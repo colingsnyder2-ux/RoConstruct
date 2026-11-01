@@ -1,4 +1,4 @@
-// from server: 15% by atomic.potato
+// from server: 18% by Intel
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 
@@ -46,7 +46,7 @@ bool Wrapper::Equals(Wrapper* other) {
         }
     }
 
-    if (a == 0) {
+    if (a != 0) {
         if (b) {
             if (_InterlockedExchangeAdd((volatile long*)((char*)b + 4), -1) == 1) {
                 b->Release();

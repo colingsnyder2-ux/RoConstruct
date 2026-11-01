@@ -1,4 +1,4 @@
-// from server: 89% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 0049aca0  unit: RBX::Network::VPlayers::?$SignalDesc  size: 37 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0049aca0
@@ -9,10 +9,10 @@
 // 0049acaa  83c404               add esp, 4
 // 0049acad  85c0                 test eax, eax
 // 0049acaf  7411                 je 0x49acc2
-// 0049acb1  8b80a0010000         mov eax, dword ptr [eax + 0x1a0]
+// 0049acb1  8b80a0010000         mov eax, dword ptr [eax + 0xdc]
 // 0049acb7  85c0                 test eax, eax
 // 0049acb9  7407                 je 0x49acc2
-// 0049acbb  8b8070010000         mov eax, dword ptr [eax + 0x170]
+// 0049acbb  8b8070010000         mov eax, dword ptr [eax + 0x8c]
 // 0049acc1  c3                   ret 
 // 0049acc2  33c0                 xor eax, eax
 // 0049acc4  c3                   ret 
@@ -24,7 +24,7 @@ class ModelInstance;
 namespace Network {
 class Player
 {
-    char gap0[0x170];
+    char gap0[0x8c];
     ModelInstance* character;
 public:
     ModelInstance* getCharacter() const { return character; }
@@ -32,7 +32,7 @@ public:
 
 class Players
 {
-    char gap0[0x1a0];
+    char gap0[0xdc];
     Player* localPlayer;
 public:
     static Players* findPlayers(const Instance* context);

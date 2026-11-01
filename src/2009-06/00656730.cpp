@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005c8e70  unit: RBX::LaserTool  size: 45 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005c8e70
@@ -31,7 +31,7 @@ struct LaserTool {
 String *LaserTool::getValue(String *result)
 {
     volatile int state = 0;
-    (*(void (__thiscall **)(LaserTool *))(*(char **)this + 0x40))(this);
-    copyString(result, (const String *)((char *)this + 0x138));
+    (*(void (__thiscall **)(LaserTool *))(*(char **)this + 0x44))(this);
+    copyString(result, (const String *)((char *)this + 0x98));
     return result;
 }

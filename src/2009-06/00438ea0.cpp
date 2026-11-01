@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0043e840  unit: ScriptItem  size: 165 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0043e840
@@ -87,6 +87,5 @@ struct ScriptItem : Base {
 ScriptItem::ScriptItem(int a, int b) : Base(a, b)
 {
     setFlags(getFlags() | 4);
-    buttons->table[22](buttons, "Browse...", 0, 0xe101);
     buttons->table[22](buttons, "Clear", 1, 0xe120);
 }

@@ -1,4 +1,6 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
 // from server: 100% by king_originala
 // roc 2008-06 0053f280  unit: RBX::RenderBase::AggregatingSceneManager  size: 188 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0053f280

@@ -1,9 +1,9 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_resolution_f185f02428b33393.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_b19fa02c66e277fa.cpp
 
 // Candidate translation unit (score above; library headers required).
 // from server: 91% by king_originala
@@ -13,7 +13,8 @@ extern "C" long __cdecl _InterlockedDecrement(volatile long*);
 #pragma intrinsic(_InterlockedDecrement)
 
 #include <boost/shared_ptr.hpp>
-typedef boost::shared_ptr<void> Shared;
+struct Logger { void message(int, const char*); };
+typedef boost::shared_ptr<Logger> Shared;
 
 struct FlagGuard {
     unsigned char* flag;
@@ -48,7 +49,7 @@ Shared __cdecl getLogger();
 void __cdecl logMessage(void*, int, const char*, ...);
 
 struct CWrapperView {
-    char padding[0xfa];
+    char padding[0xfe];
     unsigned char restoring;
     unsigned char alignment;
     void* monitor;
@@ -61,8 +62,7 @@ struct CWrapperView {
 void CWrapperView::RestoreResolution() {
     FlagGuard guard(&restoring);
     if (!monitor) {
-        logMessage(getLogger().get(), 3,
-                   "CMainFrame::RestoreResolution hm is NULL");
+        getLogger()->message(3, "CMainFrame::RestoreResolution hm is NULL");
         return;
     }
 
@@ -78,3 +78,4 @@ void CWrapperView::RestoreResolution() {
     }
     modifyStyle(0, 0x00c40000, 0);
 }
+

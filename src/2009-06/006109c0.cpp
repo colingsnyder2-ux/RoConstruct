@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 005833e0  unit: RBX::CameraZoomExtentsCommand  size: 125 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005833e0
@@ -71,7 +71,7 @@ struct Owner {
     CommandMap commands;
 };
 
-extern "C" void* __cdecl intern_name(const char* name, int length);
+extern "C" void* __cdecl intern_name(const char* name);
 
 struct Command {
     unsigned reserved;
@@ -87,7 +87,7 @@ Command::Command(Owner* source, String text)
     if (text.capacity < 16)
         characters = text.storage.buffer;
 
-    void* interned = intern_name(characters, -1);
+    void* interned = intern_name(characters);
     name = interned;
     owner = source;
     *owner->commands.lookup((Owner*)interned) = this;

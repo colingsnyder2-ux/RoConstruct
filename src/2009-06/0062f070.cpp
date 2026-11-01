@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0045ee60  unit: G3D::VStopwatch::?$TypedStatsItem  size: 109 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0045ee60
@@ -39,7 +39,7 @@ typedef void (__cdecl *Manager)(void *, void *, int);
 
 struct Base
 {
-    char storage[0x158];
+    char storage[0xb8];
     ~Base();
 };
 
@@ -59,7 +59,7 @@ S::~S()
         Manager destroy = *manager;
         void *data = buffer;
         if (destroy)
-            destroy(data, data, 1);
+            destroy(data, data, 2);
         manager = 0;
     }
 }

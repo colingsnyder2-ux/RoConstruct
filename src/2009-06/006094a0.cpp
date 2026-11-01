@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00568910  unit: RBX::VInstance::?$NonFactoryProduct  size: 319 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00568910
@@ -130,12 +130,27 @@ inline Owner::Owner(Product* p) : pointer(p)
 {
 }
 
+struct CritSec { void* a; long b; long c; void* d; void* e; unsigned long f; };
+extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CritSec*);
+extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CritSec*);
+extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long volatile*);
+struct FreeNode { FreeNode* next; };
+struct Pool { CritSec cs; FreeNode* head; };
+extern Pool* __cdecl getPool();
+extern long productCount;
+
 inline Owner::~Owner()
 {
     if (pointer)
     {
         pointer->func_00413a70();
-        func_006a067a(pointer);
+        Pool* pool = getPool();
+        EnterCriticalSection(&pool->cs);
+        FreeNode* node = reinterpret_cast<FreeNode*>(pointer);
+        node->next = pool->head;
+        pool->head = node;
+        LeaveCriticalSection(&pool->cs);
+        InterlockedDecrement(&productCount);
     }
 }
 

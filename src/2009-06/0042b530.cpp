@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00431160  unit: CDataModelPropGrid  size: 247 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00431160
@@ -87,7 +87,22 @@ struct PackedColor
     Float3* getColor(Float3*);
 };
 
-extern PackedColor currentColor;
+struct MainFrame
+{
+    void updateColor(unsigned int);
+};
+void onColorChanged(unsigned int);
+namespace bb { template<class T> struct value { T t_; value(T t) : t_(t) {} }; template<class A> struct list1 { A a1_; list1(A a) : a1_(a) {} };
+template<class R, class F, class L> struct bind_t { F f_; L l_; bind_t(F f, const L& l) : f_(f), l_(l) {} };
+template<class R, class B1, class A1> inline bind_t<R, R (*)(B1), list1<value<A1> > > bind(R (*f)(B1), A1 a1) { return bind_t<R, R (*)(B1), list1<value<A1> > >(f, list1<value<A1> >(value<A1>(a1))); } }
+typedef bb::bind_t<void, void (*)(unsigned int), bb::list1<bb::value<unsigned int> > > Bound;
+struct Listener { void raise(Bound); };
+struct ColorSetting;
+
+struct ColorSetting { PackedColor color; Listener* listener;
+  };
+extern ColorSetting colorSetting;
+#define currentColor colorSetting.color
 extern "C" unsigned int* __cdecl closestColor(unsigned int*, RGB);
 
 struct CDataModelPropGrid
@@ -107,10 +122,6 @@ struct ColorDialog
     int doModal();
 };
 
-struct MainFrame
-{
-    void updateColor(unsigned int);
-};
 
 extern MainFrame mainFrame;
 
@@ -134,8 +145,11 @@ void CDataModelPropGrid::func_431160(int, int)
         unsigned int value = *closestColor(&result, selected);
         if (currentColor.value != value)
         {
+            Listener* listener = colorSetting.listener;
             currentColor.value = value;
-            mainFrame.updateColor(value);
+            Bound b = bb::bind(&onColorChanged, value);
+            if (listener)
+                listener->raise(b);
         }
     }
 }

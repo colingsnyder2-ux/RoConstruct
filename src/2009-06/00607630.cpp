@@ -1,95 +1,240 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/gui/GUI.cpp
+// roc-lib: openrbx-client roc_espclaude_deaa5ae173458251.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "gui/GUI.h"
+#ifndef GUI_GUI_H
+#define GUI_GUI_H
 
-#include "util/object.h"
+#include "decomp.h"
+#include "gui/GuiEvent.h"
+#include "gui/Layout.h"
+#include "rbxgraphics/Adorn.h"
+#include "util/Name.h"
+#include "util/Rect.h"
+#include "v8tree/Instance.h"
 
-#include <G3D/g3dmath.h>
-#include <algorithm>
-#include <math.h>
+#include <G3D/Color4.h>
+#include <G3D/CoordinateFrame.h>
+#include <G3D/Matrix4.h>
+#include <G3D/Rect2D.h>
+#include <G3D/Vector2.h>
+#include <G3D/Vector2int16.h>
 
 namespace RBX {
 
-G3D::Vector2 GuiRoot::canvasSize;
-G3D::Matrix4 GuiRoot::oldProjectionMatrix;
-G3D::CoordinateFrame GuiRoot::oldCameraWorld;
+// SIZE 0x10c
+class ExeInstance2009 {
+public:
+	virtual ~ExeInstance2009();
+	virtual void setName(const std::string& value);
+	virtual bool askAddChild(const Instance* instance) const;
+	virtual bool askSetParent(const Instance* instance) const;
+	virtual void v04();
+	virtual void v05();
+	virtual void onDescendentRemoving(const shared_ptr<Instance>& instance);
+	virtual void v07();
+	virtual void v08();
+	virtual void v09();
+	virtual void v10();
+	virtual void v11();
+	virtual void v12();
+	virtual void v13();
+	virtual void v14();
+	virtual void v15();
+	virtual void v16();
+	const std::string& getName() const;
+	char exePad[0x88];
+};
 
-// FUNCTION: WEBSERVICE 0x100d0fc0
-const G3D::Color4& GuiItem::disabledFill()
+class GuiItem : public ExeInstance2009, public GuiTarget
 {
-	static G3D::Color4 c(0.7f, 0.7f, 0.7f, 0.5f);
-	return c;
-}
+public:
+	GuiItem();
 
-// FUNCTION: WEBSERVICE 0x100d1000
-const G3D::Color4& GuiItem::translucentBackdrop()
+private:
+	// FUNCTION: WEBSERVICE 0x100c7460
+	virtual bool askAddChild(const Instance* instance) const { return dynamic_cast<const GuiItem*>(instance) != NULL; }
+
+public:
+
+protected:
+	virtual void onLoseFocus() {}                 // vtable+0x40
+	virtual bool canLoseFocus() { return false; } // vtable+0x44
+
+	// FUNCTION: WEBSERVICE 0x100c7490
+	virtual G3D::Vector2 getPosition() const { return getGuiParent()->getChildPosition(this); } // vtable+0x48
+
+	// FUNCTION: WEBSERVICE 0x100c74b0
+	virtual G3D::Vector2 getChildPosition(const GuiItem* child) const { return G3D::Vector2::zero(); } // vtable+0x4c
+
+	// FUNCTION: WEBSERVICE 0x100c72b0
+	virtual int getFontSize() const { return 14; } // vtable+0x50
+
+	virtual bool isVisible() const { return true; } // vtable+0x54
+
+	// FUNCTION: WEBSERVICE 0x100c72c0
+	virtual std::string getTitle() { return getName(); } // vtable+0x58
+
+public:
+	// FUNCTION: WEBSERVICE 0x100c75b0
+	virtual G3D::Vector2 getSize() const { return guiSize; } // vtable+0x5c
+
+	virtual void render2d(Adorn* adorn) {} // vtable+0x60
+
+	virtual GuiResponse process(const GuiEvent& event);
+
+	void addGuiItem(shared_ptr<GuiItem> item);
+
+	void setGuiSize(const G3D::Vector2& value) { guiSize = value; }
+	const G3D::Vector2& getGuiSize() const { return guiSize; }
+
+	const GuiItem* getGuiParent() const;
+	GuiItem* getGuiParent();
+
+	const GuiItem* getGuiItem(int index) const;
+	GuiItem* getGuiItem(int index);
+
+	static const G3D::Color4& enabledFill();
+	static const G3D::Color4& disabledFill();
+	static const G3D::Color4& menuEnabledFill();
+	static const G3D::Color4& menuDisabledFill();
+	static const G3D::Color4& translucentBorder();
+	static const G3D::Color4& menuSelect();
+	static const G3D::Color4& menuBackground();
+	static const G3D::Color4& fontBorder();
+	static const G3D::Color4& translucentBackdrop();
+	static const G3D::Color4& toolboxColor();
+
+protected:
+	GuiItem* getFocus();
+	void loseFocus();
+
+	Rect getMyRect() const;
+
+	void label2d(
+		Adorn* adorn,
+		const std::string& label,
+		const G3D::Color4& fill,
+		const G3D::Color4& border,
+		Adorn::XAlign align
+	) const;
+	// FUNCTION: WEBSERVICE 0x100d1460
+	G3D::Rect2D getMyRect2D() const { return getMyRect().toRect2D(); }
+
+private:
+	GuiResponse processNonFocus(const GuiEvent& event);
+	void switchFocus(GuiItem* item);
+
+	virtual void onDescendentRemoving(const shared_ptr<Instance>& instance);
+
+	shared_ptr<GuiItem> focus; // 0x0fc
+	G3D::Vector2 guiSize;      // 0x104
+};
+
+
+
+// SIZE 0x10c
+class GuiRoot : public GuiItem
 {
-	static G3D::Color4 c(0.6f, 0.6f, 0.6f, 0.6f);
-	return c;
-}
+public:
+	GuiRoot();
 
-// FUNCTION: WEBSERVICE 0x100d1040 FOLDED
-GuiItem* GuiItem::getGuiParent()
+	static void setCanvasSize(const G3D::Vector2& value) { canvasSize = value; }
+	static G3D::Vector2 getCanvasSize() { return canvasSize; }
+	static G3D::Vector2 toPixelSize(const G3D::Vector2& size);
+	static int normalizedFontSize(int size);
+
+	virtual void render2d(Adorn* adorn);
+
+private:
+	// FUNCTION: WEBSERVICE 0x100d16c0
+	virtual G3D::Vector2 getSize() const { return canvasSize; }
+
+	static G3D::Vector2 canvasSize;
+	static G3D::Matrix4 oldProjectionMatrix;
+	static G3D::CoordinateFrame oldCameraWorld;
+};
+
+
+
+// SIZE 0x124
+class TopMenuBar : public GuiItem
 {
-	return dynamic_cast<GuiItem*>(getParent());
-}
+public:
+	// FUNCTION: WEBSERVICE 0x100c7690
+	TopMenuBar() { init(); }
 
-// FUNCTION: WEBSERVICE 0x100d1040 FOLDED
-const GuiItem* GuiItem::getGuiParent() const
+	virtual GuiResponse process(const GuiEvent& event);
+	virtual void render2d(Adorn* adorn);
+	virtual G3D::Vector2 getSize() const;
+	// FUNCTION: WEBSERVICE 0x100c72f0
+	virtual bool isVisible() const { return visible; }
+
+	void setVisible(bool value) { visible = value; }
+
+protected:
+	virtual G3D::Vector2 getChildPosition(const GuiItem* child) const;
+
+	G3D::Color4 backdropColor; // 0x10c
+	Layout::Style layoutStyle; // 0x11c
+	bool visible;              // 0x120
+
+private:
+	void init();
+};
+
+
+
+// SIZE 0x130
+class RelativePanel : public TopMenuBar
 {
-	return dynamic_cast<const GuiItem*>(getParent());
-}
+public:
+	// FUNCTION: WEBSERVICE 0x100c7740
+	RelativePanel()
+	{
+		offset.x = 0;
+		offset.y = 0;
 
-// FUNCTION: WEBSERVICE 0x100d1060
-Rect GuiItem::getMyRect() const
-{
-	Vector2 pos = getPosition();
-
-	return Rect(pos, pos + getSize());
-}
-
-// STUB: WEBSERVICE 0x100d10b0
-void GuiItem::label2d(
-	Adorn* adorn,
-	const std::string& label,
-	const G3D::Color4& fill,
-	const G3D::Color4& border,
-	Adorn::XAlign align
-) const
-{
-	if (label.size() == 0) {
-		return;
+		Layout layout;
+		layout.xLocation = Rect::LEFT;
+		layout.yLocation = Rect::TOP;
+		layout.offset.x = 0;
+		layout.offset.y = 0;
+		layout.layoutStyle = Layout::HORIZONTAL;
+		layout.backdropColor = G3D::Color4::clear();
+		init(layout);
 	}
 
-	Rect myRect = getMyRect();
+	virtual G3D::Vector2 getPosition() const;
 
-	G3D::Vector2 size = myRect.size();
-	G3D::Vector2 pos = myRect.center();
+protected:
+	void init(const Layout& layout);
 
-	switch (align) {
-	case Adorn::XALIGN_RIGHT:
-		pos.x = myRect.high.x - size.x * 0.1f;
-		break;
+	Rect::Location xLocation; // 0x124
+	Rect::Location yLocation; // 0x128
+	G3D::Vector2int16 offset; // 0x12c
+};
 
-	case Adorn::XALIGN_CENTER:
-		break;
 
-	default:
-		pos.x = myRect.low.x + size.x * 0.1f;
-		break;
-	}
 
-	adorn
-		->drawFont2D(label, pos, getFontSize(), fill, border, align, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
-}
+// clang-format off
+// SYNTHETIC: WEBSERVICE 0x1021c440
+// `dynamic initializer for 'RBX::GuiRoot::oldProjectionMatrix''
+// SYNTHETIC: WEBSERVICE 0x1021c450
+// `dynamic initializer for 'RBX::GuiRoot::oldCameraWorld''
+// SYNTHETIC: WEBSERVICE 0x10223d80
+// `dynamic atexit destructor for 'RBX::GuiRoot::oldCameraWorld''
+// clang-format on
 
-// FUNCTION: WEBSERVICE 0x100d1180
+} // namespace RBX
+
+#endif // GUI_GUI_H
+
+namespace RBX {
 void RelativePanel::init(const Layout& layout)
 {
 	setName("RelativePanel");
@@ -99,245 +244,4 @@ void RelativePanel::init(const Layout& layout)
 	yLocation = layout.yLocation;
 	offset = layout.offset;
 }
-
-// FUNCTION: WEBSERVICE 0x100d1230
-void TopMenuBar::init()
-{
-	layoutStyle = Layout::HORIZONTAL;
-	backdropColor = G3D::Color4::clear();
-	visible = true;
 }
-
-// FUNCTION: WEBSERVICE 0x100d1270
-G3D::Vector2 GuiRoot::toPixelSize(const G3D::Vector2& percent)
-{
-	G3D::Vector2 pixelSize(0, 0);
-
-	if (canvasSize.y > 0.75f * canvasSize.x) {
-		pixelSize = (0.01f * percent) * G3D::Vector2(canvasSize.x, 0.75f * canvasSize.x);
-	}
-	else {
-		pixelSize = (0.01f * percent) * G3D::Vector2(1.33f * canvasSize.y, canvasSize.y);
-	}
-
-	return pixelSize;
-}
-
-// FUNCTION: WEBSERVICE 0x100d12f0
-int GuiRoot::normalizedFontSize(int fontSize)
-{
-	static G3D::Vector2 percentSize(100.0f, 75.0f);
-
-	return G3D::iRound(floorf(fontSize * toPixelSize(percentSize).x * 0.001f));
-}
-
-// FUNCTION: WEBSERVICE 0x100d1360
-G3D::Vector2 RelativePanel::getPosition() const
-{
-	Rect canvas(G3D::Vector2::zero(), GuiRoot::getCanvasSize());
-	Rect me(G3D::Vector2::zero(), getSize());
-
-	canvas = canvas.inset(offset);
-
-	return canvas.positionChild(me, xLocation, yLocation).low;
-}
-
-// FUNCTION: WEBSERVICE 0x100d14d0
-GuiItem::GuiItem() : guiSize(0, 0)
-{
-	setName("Unnamed GuiItem");
-}
-
-// FUNCTION: WEBSERVICE 0x100d15f0
-GuiRoot::GuiRoot()
-{
-	setName("GuiRoot");
-}
-
-// FUNCTION: WEBSERVICE 0x100d1700
-void GuiRoot::render2d(Adorn* adorn)
-{
-	setCanvasSize(G3D::Vector2(G3D::Vector2int16(adorn->getWidth(), adorn->getHeight())));
-
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* instance = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(instance);
-
-		if (item != NULL) {
-			item->render2d(adorn);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100d17c0
-G3D::Vector2 TopMenuBar::getSize() const
-{
-	G3D::Vector2 size(0, 0);
-
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* child = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(child);
-
-		if (item != NULL) {
-			G3D::Vector2 childSize = item->getSize();
-
-			switch (layoutStyle) {
-			case Layout::HORIZONTAL:
-				size.x += childSize.x;
-				size.y = std::max(size.y, childSize.y);
-				break;
-			case Layout::VERTICAL:
-				size.x = std::max(size.x, childSize.x);
-				size.y += childSize.y;
-				break;
-			}
-		}
-	}
-
-	return size;
-}
-
-// FUNCTION: WEBSERVICE 0x100d18d0
-G3D::Vector2 TopMenuBar::getChildPosition(const GuiItem* child) const
-{
-	G3D::Vector2 position = getPosition();
-	G3D::Vector2 mySize = getSize();
-
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* instance = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(instance);
-
-		if (item != NULL) {
-			G3D::Vector2 myChildSize = item->getSize();
-
-			if (item == child) {
-				int other = (layoutStyle + 1) % 2;
-
-				position[other] += (mySize[other] - myChildSize[other]) * 0.5f;
-
-				return position;
-			}
-
-			switch (layoutStyle) {
-			case Layout::HORIZONTAL:
-			case Layout::VERTICAL:
-				position[layoutStyle] += item->getSize()[layoutStyle];
-				break;
-			}
-		}
-	}
-
-	return position;
-}
-
-// FUNCTION: WEBSERVICE 0x100d19f0
-void TopMenuBar::render2d(Adorn* adorn)
-{
-	if (!isVisible()) {
-		return;
-	}
-
-	if (backdropColor != G3D::Color4::clear()) {
-		adorn->rect2d(getMyRect2D(), backdropColor);
-	}
-
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* instance = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(instance);
-
-		if (item != NULL) {
-			item->render2d(adorn);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100d1ae0
-void GuiItem::loseFocus()
-{
-	if (focus != NULL) {
-		focus->onLoseFocus();
-	}
-
-	focus.reset();
-}
-
-// FUNCTION: WEBSERVICE 0x100d1b50
-void GuiItem::onDescendentRemoving(const shared_ptr<Instance>& instance)
-{
-	if (instance.get() == focus.get()) {
-		loseFocus();
-	}
-
-	Instance::onDescendentRemoving(instance);
-}
-
-// STUB: WEBSERVICE 0x100d1b80
-GuiResponse GuiItem::processNonFocus(const GuiEvent& event)
-{
-	for (unsigned int i = 0; i < numChildren(); ++i) {
-		Instance* child = (*getChildren())[i].get();
-		GuiItem* item = dynamic_cast<GuiItem*>(child);
-
-		if (item != NULL && item != focus.get()) {
-			GuiResponse itemResponse = item->process(event);
-
-			if (itemResponse.wasUsed()) {
-				loseFocus();
-				focus = shared_from(item);
-				focus->loseFocus();
-
-				return itemResponse;
-			}
-		}
-	}
-
-	return GuiResponse::notUsed();
-}
-
-// FUNCTION: WEBSERVICE 0x100d1cf0
-GuiResponse GuiItem::process(const GuiEvent& event)
-{
-	if (event.isMouseEvent() && event.eventType == UIEvent::MOUSE_IDLE) {
-		return GuiResponse::notUsed();
-	}
-
-	if (focus != NULL) {
-		if (focus->canLoseFocus()) {
-			GuiResponse nonFocus = processNonFocus(event);
-
-			if (nonFocus.wasUsed()) {
-				return nonFocus;
-			}
-		}
-
-		GuiResponse focusResponse = focus->process(event);
-
-		if (focusResponse.wasUsed()) {
-			return focusResponse;
-		}
-
-		loseFocus();
-	}
-
-	return processNonFocus(event);
-}
-
-// FUNCTION: WEBSERVICE 0x100d1de0
-GuiResponse TopMenuBar::process(const GuiEvent& event)
-{
-	if (isVisible()) {
-		GuiResponse childResponse = GuiItem::process(event);
-
-		if (childResponse.wasUsed()) {
-			return childResponse;
-		}
-
-		if (backdropColor.a > 0 && event.isMouseEvent() && getMyRect().pointInRect(event.mousePosition)) {
-			return GuiResponse::used();
-		}
-	}
-
-	return GuiResponse::notUsed();
-}
-
-} // namespace RBX

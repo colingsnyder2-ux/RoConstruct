@@ -1,4 +1,4 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005b9890  unit: RBX::Soundscape::SoundChannel  size: 138 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005b9890
@@ -59,9 +59,9 @@ extern "C" int __stdcall setLoopCount(void *, int);
 void __cdecl checkResult(int);
 
 struct SoundChannel {
-    unsigned char padding0[0x13c];
+    unsigned char padding0[0x94];
     void *handle;
-    unsigned char padding1[0x25];
+    unsigned char padding1[0x2d];
     unsigned char unused : 1;
     unsigned char looping : 1;
     unsigned char remaining : 6;

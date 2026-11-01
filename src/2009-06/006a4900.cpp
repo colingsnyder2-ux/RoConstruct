@@ -1,4 +1,4 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0064e020  unit: RBX::ToolMouseCommand  size: 43 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064e020
@@ -27,7 +27,7 @@ struct Helper {
 };
 
 struct ToolMouseCommand {
-    char padding[0x130];
+    char padding[0x8c];
     char storage[0x34];
     Helper *helper;
 

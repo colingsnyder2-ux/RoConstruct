@@ -1,10 +1,10 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // from server: 85% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client roc_espclaude_0b9d6cfe49b1f9cd.cpp
+// roc-lib: openrbx-client roc_espclaude_4b9f88f38c3d108e.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "decomp.h"
@@ -24,10 +24,10 @@ struct ExGeometry {
 struct ExPrimitive {
 	char pad0[0x14];
 	unsigned int sizeMultiplier;    // 0x14
-	char pad1[0x9c - 0x18];
-	ExGeometry* geometry;           // 0x9c
+	char pad1[0xe0 - 0x18];
+	ExGeometry* geometry;           // 0xe0
 	ExGeometry* getGeometry() const { return geometry; }
-	unsigned int getSizeMultiplier() const { return sizeMultiplier; }
+	unsigned int getSizeMultiplier() const;
 };
 
 float getPrimitiveSize(const ExPrimitive* p)
@@ -55,7 +55,9 @@ haveArea:;
 
 	float gridArea = floor(area);
 
-	return (float) (G3D::iRound(gridArea) * (unsigned __int64) p->getSizeMultiplier());
+	int rounded = G3D::iRound(gridArea);
+	return (float) (rounded * (unsigned __int64) p->getSizeMultiplier());
 }
 
 }
+

@@ -1,9 +1,8 @@
-// from server: 91% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espclaude_0fe2b93c580135b5.cpp
+// roc-lib: rbxgs-dll roc_espclaude_15898ab6a1f122a6.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef _RELEASEASSERT
@@ -26,7 +25,9 @@ namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(co
 #undef Guid
 #undef AbstractFactoryProduct
 #include "v8datamodel/GuiBuilder.h"
+#define HealthHud HealthHud_unused2008
 #include "gui/HealthHud.h"
+#undef HealthHud
 #define relativeHealth() relativeHealth() const { return health / maxHealth; } float relativeHealthRbx()
 #define DIRECTION_MOVE DIRECTION_MOVE }; int exeHumanoidPad; enum ExeHumanoidDummy { EXE_HUMANOID_DUMMY
 #include "humanoid/Humanoid.h"
@@ -37,10 +38,31 @@ namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(co
 
 namespace RBX
 {
-	HealthHud::HealthHud()
+	class ExeGuiItem2009
 	{
-		setGuiSize(G3D::Vector2(10.0f, 100.0f));
-	}
+	public:
+		virtual ~ExeGuiItem2009();
+		char exePad[0x94];
+		G3D::Vector2 guiSize;
+		void setGuiSize(const G3D::Vector2& value) { guiSize = value; }
+		Rect getMyRect() const;
+	};
+	struct ExeHumanoid2009
+	{
+		char exePad[0x1dc];
+		float health;
+		float maxHealth;
+		float relativeHealth() const { return health / maxHealth; }
+	};
+	const G3D::Color3& exeHudColor(int index);
+
+	class HealthHud : public ExeGuiItem2009
+	{
+	private:
+		boost::shared_ptr<Visit> visit;
+	private:
+		virtual void render2d(Adorn* adorn);
+	};
 
 	void HealthHud::render2d(Adorn* adorn)
 	{
@@ -51,11 +73,11 @@ namespace RBX
 		int textSize = (int)(size.y * 0.18f);
 
 		if (!visit)
-			visit = RBX::shared_from(ServiceProvider::find<Visit>(this));
+			visit = RBX::shared_from(ServiceProvider::find<Visit>((Instance*)this));
 
 		if (visit)
 		{
-			if (Humanoid* humanoid = Humanoid::getLocalHumanoidFromContext(this))
+			if (Humanoid* humanoid = Humanoid::getLocalHumanoidFromContext((Instance*)this))
 			{
 
 				Rect rect = getMyRect();
@@ -63,10 +85,10 @@ namespace RBX
 				Rect greenBarRect = rect;
 				Rect redBarRect = rect;
 
-				greenBarRect.low.y = rect.high.y - humanoid->relativeHealth() * rect.size().y;
+				greenBarRect.low.y = rect.high.y - ((ExeHumanoid2009*)humanoid)->relativeHealth() * rect.size().y;
 				redBarRect.high.y = greenBarRect.low.y;
 
-				adorn->rect2d(greenBarRect.toRect2D(), Color::lightGreen());
+				adorn->rect2d(greenBarRect.toRect2D(), exeHudColor(8));
 				adorn->rect2d(redBarRect.toRect2D(), G3D::Color3::red());
 
 				adorn->drawFont2D(

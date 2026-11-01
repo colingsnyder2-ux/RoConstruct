@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 00464710  unit: CScriptDoc  size: 49 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00464710
@@ -50,7 +50,7 @@ public:
 struct Item;
 
 struct Owner {
-    char padding[0x25c];
+    char padding[0xcc];
     boost::shared_ptr<Item> item;
     boost::shared_ptr<Item> get() const;
 };

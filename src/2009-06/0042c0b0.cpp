@@ -1,4 +1,3 @@
-// from server: 91% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
@@ -18,6 +17,10 @@ struct ModuleState { void* pad; CWinAppLike* m_pCurrentWinApp; };
 ModuleState* __stdcall AfxGetModuleState();
 inline CWinAppLike* AfxGetApp() { return AfxGetModuleState()->m_pCurrentWinApp; }
 
+extern "C" __declspec(dllimport) int __stdcall SetTimer(void*, unsigned int, unsigned int, void*);
+extern "C" __declspec(dllimport) void __stdcall UseHandle(void*);
+extern const int g_guid;
+struct HandleObj { void* h; HandleObj() : h(0) {} ~HandleObj(); int Open(int a, int b, const void* c) throw(); };
 extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
 class ImageManager { public: virtual ~ImageManager(); long m_dwRef; int SetIcons(unsigned int id, int state); void InternalAddRef() { InterlockedIncrement(&m_dwRef); } };
 ImageManager* XTPImageManager();
@@ -42,12 +45,13 @@ public:
     void* m_hWnd;
     char pad1[0xc8];
     CommandBars* m_pCommandBars;
+    int m_f0;
     int OnCreate(CREATESTRUCTA* lpCreateStruct);
     int InitCommandBars(CRuntimeClass* cls);
     CommandBars* GetCommandBars() const { return m_pCommandBars; }
 };
 
-class Thing { public: Thing(); ~Thing(); char pad[0x14]; };
+class Thing { public: Thing(); ~Thing(); char pad[0x18]; };
 template<class T> class Owned { public: T* p; void reset(T* q); };
 struct StatusBar { int Create(void* parent, unsigned long style, unsigned int id); int SetIndicators(const unsigned int* ids, int n); char pad[0x10]; };
 struct ThemeManager { void SetTheme(int t); char pad[0x2c]; };
@@ -80,6 +84,7 @@ public:
     TabClientWnd m_tabClient;
     char pad_3a8[0xc];
     ThemeManager m_theme;
+    char pad_3e4[8];
     StatusBar m_statusBar;
     int OnCreate(CREATESTRUCTA* lpCreateStruct);
     void ShowFrame(int show);
@@ -124,5 +129,11 @@ int CMainFrame::OnCreate(CREATESTRUCTA* lpCreateStruct)
         SetFullScreen(1);
     PostMessageA(m_hWnd, 0x111, 0x8101, 0);
     m_f4.reset(new Thing());
+    {
+        HandleObj o;
+        if (o.Open(2, 0, &g_guid))
+            UseHandle(o.h);
+    }
+    SetTimer(m_hWnd, 0, 1000, 0);
     return 0;
 }

@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 93% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 004097c0  unit: RBX::VSelection::?$FactoryProduct::Creator  size: 352 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004097c0
@@ -245,7 +245,7 @@ inline String &String::operator+=(const String &s) { return stringAppendString(t
 inline const char *String::c_str() const { return stringData(this); }
 
 struct Request {
-    unsigned char storage[28];
+    unsigned char storage[56];
     String headers;
     Request(const char *);
     ~Request();

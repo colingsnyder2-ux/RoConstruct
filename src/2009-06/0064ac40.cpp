@@ -1,4 +1,4 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
@@ -25,7 +25,7 @@
 extern char property;
 
 struct Decal {
-    char padding[0x164];
+    char padding[0xC0];
     float value;
 
     void setValue(float v);

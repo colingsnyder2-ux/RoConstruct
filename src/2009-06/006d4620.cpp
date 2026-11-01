@@ -1,4 +1,4 @@
-// from server: 92% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
@@ -36,9 +36,9 @@
 // 006140ff  c20400               ret 4
 
 struct Link {
-    char reserved0[0x14];
+    char reserved0[0x4];
     Link* parent;
-    char reserved1[0x10];
+    char reserved1[0x28];
     char* flag28;
     char* flag2c;
     char reserved2[0x5c];

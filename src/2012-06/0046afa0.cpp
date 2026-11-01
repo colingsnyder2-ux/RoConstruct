@@ -1,21 +1,17 @@
-// from server: 74% by atomic.potato
-struct S
+// from server: 78% by Intel
+extern "C" void __stdcall G1_func_00414500();
+
+struct CRenderSettings_W4ShadowMode_EnumDesc
 {
-    int f(int value);
-    char padding[0x8c];
-    int field_8c;
-    char padding2[0x54];
-    int field_144;
+    void setValue(int value);
 };
 
-extern void G1_func_00414500(S *);
-
-int S::f(int value)
+void CRenderSettings_W4ShadowMode_EnumDesc::setValue(int value)
 {
-    if (value != field_8c)
+    if (value != *(int*)((char*)this + 0x8C))
     {
-        field_8c = value;
-        G1_func_00414500((S *)((char *)this + 0x144));
+        *(int*)((char*)this + 0x8C) = value;
+        *(int*)(reinterpret_cast<char*>(this) + 0x144) = 0;
+        G1_func_00414500();
     }
-    return 0;
 }

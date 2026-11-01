@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00588780  unit: RBX::VChangeHistoryService::?$FactoryProduct  size: 357 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00588780
@@ -158,7 +158,7 @@ inline RestoreFlag::~RestoreFlag()
 
 struct History
 {
-    char padding0[0x138];
+    char padding0[0x94];
     void *owner;
     char padding1[0x10];
     void *end;

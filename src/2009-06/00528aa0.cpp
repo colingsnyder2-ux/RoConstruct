@@ -1,4 +1,4 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004db690  unit: RBX::ViewNew::ViewG3D  size: 82 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004db690
@@ -48,6 +48,7 @@ struct Source {
 struct Query {
     virtual void slot0();
     virtual void slot1();
+    virtual void slot2();
     virtual int get();
 };
 
@@ -55,18 +56,16 @@ struct Target {
     virtual void slot0();
     virtual void slot1();
     virtual void slot2();
-    virtual void slot3();
-    virtual void slot4();
     virtual void apply(int, int);
 };
 
 struct Context {
-    char padding[0x288];
+    char padding[0x118];
     Query query;
 };
 
 struct Holder {
-    char padding[0x204];
+    char padding[0x20c];
     Context* context;
 };
 
@@ -79,7 +78,6 @@ struct S {
     virtual void slot5();
     virtual void slot6();
     virtual void slot7();
-    virtual void slot8();
     virtual void prepare();
 
     Source* source;

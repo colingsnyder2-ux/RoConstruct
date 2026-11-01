@@ -1,4 +1,4 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 005a2730  unit: RBX::Workspace  size: 43 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005a2730
@@ -20,7 +20,7 @@
 // 005a275a  c3                   ret 
 
 struct Workspace {
-    char pad[0x3b4];
+    char pad[0x1dc];
     void* field_31c;
     void func_57c3e0(int);
     void func_57ce80();

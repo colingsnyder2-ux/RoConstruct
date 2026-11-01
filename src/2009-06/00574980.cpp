@@ -1,9 +1,9 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 roc_unit_d38dd82e9975b3d5.cpp
+// roc-lib: g3d-6.09 roc_espclaude_846662a4aa8afd4b.cpp
 
 // Candidate translation unit (score above; library headers required).
 #line 1 ".\\g3dcpp\\BinaryInput.cpp"
@@ -45,11 +45,14 @@
 #include "G3D/BinaryInput.h"
 #include "G3D/Array.h"
 #include "G3D/fileutils.h"
+#define uncompress uncompress_unused_
 #ifdef G3D_WIN32
   #include "zlib/zlib.h"
 #else
   #include <zlib.h>
 #endif
+#undef uncompress
+extern "C" int __cdecl uncompress(Bytef* dest, uLongf* destLen, const Bytef* source, uLong sourceLen);
 
 namespace G3D {
 
@@ -530,3 +533,4 @@ void BinaryInput::endBits() {
 }
 
 }
+

@@ -1,4 +1,4 @@
-// from server: 93% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0059abb0  unit: RBX::PartInstance  size: 33 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0059abb0
@@ -25,5 +25,5 @@ struct S {
 };
 
 int S::f(int a, int b) {
-    return process(((PartInstance*)((char*)this - 0x1cc))->get(), a, b);
+    return process(((PartInstance*)((char*)this - 0xa8))->get(), a, b);
 }

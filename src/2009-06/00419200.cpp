@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0041f340  unit: InsertDecal  size: 76 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0041f340
@@ -43,10 +43,13 @@
 struct S {
     virtual void slot0();
     virtual void slot1();
+    virtual void slot1a();
+    virtual void slot1b();
+    virtual void slot1c();
     virtual bool slot2(S*);
     virtual unsigned char slot3(S*);
 
-    char padding[256];
+    char padding[0x44];
     S* parent;
 
     bool contains(S*);

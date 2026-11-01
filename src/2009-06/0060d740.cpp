@@ -1,10 +1,10 @@
-// from server: 90% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 #include <string>
-void* __cdecl lookup(void*, int);
+void* __cdecl lookup(void*);
 
 struct Base {
     virtual void dispatch();
@@ -24,5 +24,5 @@ struct S : Base {
 S::S(const std::string& name, int kind, void* source)
     : Base(name, kind)
 {
-    selection = lookup(source, -1);
+    selection = lookup(source);
 }

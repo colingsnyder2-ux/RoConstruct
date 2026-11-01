@@ -1,10 +1,10 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 struct Part
 {
-    unsigned char padding[0xb8];
+    unsigned char padding[0xfc];
     int state[1];
 };
 
@@ -20,17 +20,28 @@ extern void __cdecl getFrames(Part*, Part*, int, int, Frame*, Frame*);
 void* __cdecl operator new(unsigned int);
 void __cdecl operator delete(void*);
 
-struct JointBase
+struct JointA
 {
-    unsigned char data[0x84];
-    JointBase(Part*, Part*, const Frame&, const Frame&);
     virtual void type();
+    unsigned char dataA[0x1c];
+};
+
+struct JointB
+{
+    virtual void other();
+};
+
+struct JointBase : JointA, JointB
+{
+    unsigned char data[0x74];
+    JointBase(Part*, Part*, const Frame&, const Frame&);
 };
 
 struct Joint : JointBase
 {
     Joint(Part*, Part*, const Frame&, const Frame&);
     virtual void type();
+    virtual void other();
 };
 
 __forceinline Joint::Joint(Part* a, Part* b, const Frame& x, const Frame& y)

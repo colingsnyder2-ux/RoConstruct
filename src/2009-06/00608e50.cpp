@@ -1,4 +1,4 @@
-// from server: 94% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
@@ -21,7 +21,7 @@ public:
 	static GuiResponse used() { return GuiResponse(USED); }
 	static GuiResponse notUsed() { return GuiResponse(NOT_USED); }
 };
-class Instance { public: virtual ~Instance(); virtual void v1();virtual void v2();virtual void v3();virtual void v4();virtual void v5();virtual void v6();virtual void v7();virtual void v8();virtual void v9();virtual void v10();virtual void v11();virtual void v12();virtual void v13();virtual void v14();virtual void v15(); char pad[0x12c]; };
+class Instance { public: virtual ~Instance(); virtual void v1();virtual void v2();virtual void v3();virtual void v4();virtual void v5();virtual void v6();virtual void v7();virtual void v8();virtual void v9();virtual void v10();virtual void v11();virtual void v12();virtual void v13();virtual void v14();virtual void v15(); virtual void v16(); char pad[0x88]; };
 class GuiTarget { public: virtual GuiResponse process(const GuiEvent& event) = 0; };
 class GuiItem;
 template<class T> class shared_ptr { public: T* px; void* pn; T* get() const { return px; } operator bool() const { return px != 0; } T* operator->() const { return px; } void reset(); };

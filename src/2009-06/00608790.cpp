@@ -1,9 +1,9 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs roc_espeon_hoverauthentic34dc710fd49c915b.cpp
+// roc-lib: rbxgs roc_espclaude_60650aa923e339b8.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "gui/Gui.h"
@@ -28,6 +28,7 @@ struct Child {
     virtual void slot13();
     virtual void slot14();
     virtual void slot15();
+    virtual void slot15b();
     virtual void stop();
 };
 
@@ -56,6 +57,7 @@ struct ChatEnter {
     virtual void slot15();
     virtual void slot16();
     virtual void slot17();
+    virtual void slot17b();
     virtual Vec2 position();
     virtual void slot19();
     virtual void slot20();
@@ -65,7 +67,7 @@ struct ChatEnter {
     virtual void slot24();
     virtual void changed();
 
-    char reserved0[0x130];
+    char reserved0[0x8c];
     Holder holder;
     char reserved1[8];
     int state;
@@ -93,3 +95,4 @@ Result ChatEnter::process(Event* event)
       return Result::notUsed();
     }
 }
+

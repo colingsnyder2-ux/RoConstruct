@@ -1,4 +1,4 @@
-// from server: 91% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc 2008-06 005a86c0  unit: RBX::Log  size: 24 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005a86c0
@@ -14,7 +14,7 @@
 // 005a86d7  c3                   ret 
 
 struct Log {
-    char pad[0x138];
+    char pad[0x8c];
     void* stream;
     void closeStream();
 };
