@@ -1,5 +1,24 @@
 # Current player checkpoint
 
+P4 original asset comparison advanced after88e67662d4. Unmodified oracle in new
+work/2008-06/original-p4-reference/ with independent copied Content, no junction
+writes. Same2fixtures render same quadrant orientation/red sphere; Explorer
+shows Gallery->Brick/Other and positions-2/+2. Missingmesh omits panel;
+missingtexture uses same green standardmaterial fallback. compare_p4_assets.py
+passes independent original/rebuilt color-region checks; captured JPG/tree and
+asset-comparison.json retain bounded evidence. No full RGB/UI/camera parity.
+Controls39300/27148 required process termination after UI close failed; no clean
+original shutdown credited. All original processes terminal, authored copied
+assets restored. P4 still OPEN for native audio.
+Actual FMOD IAT/thunk proof:p4-fmod-import-calls.json. SystemCreate/init calls
+in005ba060; createSound in005bc6f0; playSound in005bceb0; update in005bc2c0.
+Unit labels unreliable. Saved005ba060 source uses opaque padded layout: reject
+its declarations, derive genuine SoundService/base/member layout before adopting
+algorithm. Sound.h donor and glue names SoundChannel/SoundService differ from
+observed original Soundscape service naming. Next: trace actual class descriptor
+initializers and constructor, then recover nativeSound wrapper/createSound and
+wire authored tone.wav through deserialized sound and original FMOD path.
+
 P4 IN PROGRESS, source88e67662d4. Canonical build linked/test0. Normal/default
 launch reads disk places; native00500b90/00500780 FileMesh and004eb190 file
 texture branch integrated with existing entities. Actual RBX::SpecialShape

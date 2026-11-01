@@ -58,9 +58,26 @@ Owner's newer diagnostic player/engine/entity edits remain outside this commit.
 
 ## Still open
 
-P4 is not complete. Compare both places' objects/materials/selected assets and
-failure behavior against the unmodified original. Recover and exercise the native
-sound path; authored tone.wav is presently an unused fixture. Preserve prior
-original reference captures and avoid writing through its Content junction.
+Original comparison now recorded in `work/2008-06/original-p4-reference/`.
+The unmodified target renders both fixtures. Explorer confirms one panel Part,
+and Gallery containing Brick/Other at (-2,0,0)/(2,0,0). SpecialMesh properties
+show FileMesh, local rbxasset mesh/texture IDs, Scale (2,2,2) and white VertexColor.
+`compare_p4_assets.py` independently checks four interior color quadrants in both
+fixtures, red sphere color, and green standard-material missing-texture fallback.
+Original missing mesh visibly omits the panel. Original and rebuilt sky, viewport,
+filtering and lighting differ; pixel equality is not claimed. Native size/property
+coverage beyond the recorded UI observations remains limited. Reference Content
+is a new copy, not the prior junction. Authored assets were restored after the
+failure controls. Two original failure-control processes needed termination after
+UI close failed; no clean original shutdown is credited for those controls.
+
+P4 is not complete. Recover and exercise the native sound path; authored tone.wav
+is presently an unused fixture. FMOD import-thunk xrefs now locate native startup
+at 005ba060 (System_Create/init), sound loading at 005bc6f0 (createSound), playback
+at 005bceb0 (playSound), heartbeat/update at 005bc2c0. These describe observed call
+stages; full owning method/receiver identity still needs verification. Several
+unit hints are wrong. Saved source005ba060 uses an opaque padded layout; do not
+integrate that layout. Existing Sound.h is a donor whose real field/base differences
+must be established first. See `work/2008-06/p4-fmod-import-calls.json`.
 These receipts grant behavioral integration evidence, not server-verified exact
 credit or full native renderer/startup ABI coverage. P5-P10 remain open.

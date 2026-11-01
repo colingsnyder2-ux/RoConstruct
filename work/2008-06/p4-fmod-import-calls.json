@@ -1,0 +1,552 @@
+[
+  {
+    "import": "?stop@Channel@FMOD@@QAG?AW4FMOD_RESULT@@XZ",
+    "iat": "00802f08",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc78"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bd5b5",
+        "destination": "0069fc78",
+        "owner_candidate": "005bd590",
+        "unit_hint": "VStockSound::?$FactoryProduct"
+      }
+    ]
+  },
+  {
+    "import": "?setPaused@Channel@FMOD@@QAG?AW4FMOD_RESULT@@_N@Z",
+    "iat": "00802f0c",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc72"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bcf15",
+        "destination": "0069fc72",
+        "owner_candidate": "005bceb0",
+        "unit_hint": "SoundServiceStatsItem"
+      },
+      {
+        "call_va": "005bd087",
+        "destination": "0069fc72",
+        "owner_candidate": "005bceb0",
+        "unit_hint": "SoundServiceStatsItem"
+      },
+      {
+        "call_va": "005bd550",
+        "destination": "0069fc72",
+        "owner_candidate": "005bd540",
+        "unit_hint": "VStockSound::?$FactoryProduct"
+      }
+    ]
+  },
+  {
+    "import": "?playSound@System@FMOD@@QAG?AW4FMOD_RESULT@@W4FMOD_CHANNELINDEX@@PAVSound@2@_NPAPAVChannel@2@@Z",
+    "iat": "00802f10",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc6c"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bd01c",
+        "destination": "0069fc6c",
+        "owner_candidate": "005bceb0",
+        "unit_hint": "SoundServiceStatsItem"
+      }
+    ]
+  },
+  {
+    "import": "?setVolume@Channel@FMOD@@QAG?AW4FMOD_RESULT@@M@Z",
+    "iat": "00802f14",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc66"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bd048",
+        "destination": "0069fc66",
+        "owner_candidate": "005bceb0",
+        "unit_hint": "SoundServiceStatsItem"
+      },
+      {
+        "call_va": "005bd477",
+        "destination": "0069fc66",
+        "owner_candidate": "005bd430",
+        "unit_hint": "VStockSound::?$FactoryProduct"
+      }
+    ]
+  },
+  {
+    "import": "?setCallback@Channel@FMOD@@QAG?AW4FMOD_RESULT@@W4FMOD_CHANNEL_CALLBACKTYPE@@P6G?AW43@PAUFMOD_CHANNEL@@0HII@ZH@Z",
+    "iat": "00802f18",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc60"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bd074",
+        "destination": "0069fc60",
+        "owner_candidate": "005bceb0",
+        "unit_hint": "SoundServiceStatsItem"
+      }
+    ]
+  },
+  {
+    "import": "FMOD_Memory_GetStats",
+    "iat": "00802f1c",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc5a"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bcde5",
+        "destination": "0069fc5a",
+        "owner_candidate": "005bcd80",
+        "unit_hint": "SoundServiceStatsItem"
+      }
+    ]
+  },
+  {
+    "import": "?createSound@System@FMOD@@QAG?AW4FMOD_RESULT@@PBDIPAUFMOD_CREATESOUNDEXINFO@@PAPAVSound@2@@Z",
+    "iat": "00802f20",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc54"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bc7f1",
+        "destination": "0069fc54",
+        "owner_candidate": "005bc6f0",
+        "unit_hint": "RBX::Soundscape::SoundService"
+      }
+    ]
+  },
+  {
+    "import": "FMOD_Channel_GetUserData",
+    "iat": "00802f24",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc4e"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bc6ca",
+        "destination": "0069fc4e",
+        "owner_candidate": "005bc6c0",
+        "unit_hint": "RBX::Soundscape::SoundService"
+      }
+    ]
+  },
+  {
+    "import": "?set3DListenerAttributes@System@FMOD@@QAG?AW4FMOD_RESULT@@HPBUFMOD_VECTOR@@000@Z",
+    "iat": "00802f28",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc48"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bc40b",
+        "destination": "0069fc48",
+        "owner_candidate": "005bc2c0",
+        "unit_hint": "RBX::Soundscape::SoundService"
+      }
+    ]
+  },
+  {
+    "import": "?update@System@FMOD@@QAG?AW4FMOD_RESULT@@XZ",
+    "iat": "00802f2c",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc42"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005bc45c",
+        "destination": "0069fc42",
+        "owner_candidate": "005bc2c0",
+        "unit_hint": "RBX::Soundscape::SoundService"
+      }
+    ]
+  },
+  {
+    "import": "?getVersion@System@FMOD@@QAG?AW4FMOD_RESULT@@PAI@Z",
+    "iat": "00802f30",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc3c"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba0d8",
+        "destination": "0069fc3c",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      }
+    ]
+  },
+  {
+    "import": "?getDriver@System@FMOD@@QAG?AW4FMOD_RESULT@@PAH@Z",
+    "iat": "00802f34",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc36"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba128",
+        "destination": "0069fc36",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      }
+    ]
+  },
+  {
+    "import": "?getDriverCaps@System@FMOD@@QAG?AW4FMOD_RESULT@@HPAIPAH1PAW4FMOD_SPEAKERMODE@@@Z",
+    "iat": "00802f38",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc30"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba17b",
+        "destination": "0069fc30",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      }
+    ]
+  },
+  {
+    "import": "?setSpeakerMode@System@FMOD@@QAG?AW4FMOD_RESULT@@W4FMOD_SPEAKERMODE@@@Z",
+    "iat": "00802f3c",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc2a"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba190",
+        "destination": "0069fc2a",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      },
+      {
+        "call_va": "005ba230",
+        "destination": "0069fc2a",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      }
+    ]
+  },
+  {
+    "import": "?setDSPBufferSize@System@FMOD@@QAG?AW4FMOD_RESULT@@IH@Z",
+    "iat": "00802f40",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc24"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba1dc",
+        "destination": "0069fc24",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      }
+    ]
+  },
+  {
+    "import": "?init@System@FMOD@@QAG?AW4FMOD_RESULT@@HIPAX@Z",
+    "iat": "00802f44",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc1e"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba1f3",
+        "destination": "0069fc1e",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      },
+      {
+        "call_va": "005ba247",
+        "destination": "0069fc1e",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      }
+    ]
+  },
+  {
+    "import": "?release@System@FMOD@@QAG?AW4FMOD_RESULT@@XZ",
+    "iat": "00802f48",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc18"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba28b",
+        "destination": "0069fc18",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      },
+      {
+        "call_va": "005baa4c",
+        "destination": "0069fc18",
+        "owner_candidate": "005ba970",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      }
+    ]
+  },
+  {
+    "import": "?release@Sound@FMOD@@QAG?AW4FMOD_RESULT@@XZ",
+    "iat": "00802f4c",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc12"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba2bf",
+        "destination": "0069fc12",
+        "owner_candidate": "005ba2b0",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      },
+      {
+        "call_va": "005ba374",
+        "destination": "0069fc12",
+        "owner_candidate": "005ba2e0",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      },
+      {
+        "call_va": "005ba43c",
+        "destination": "0069fc12",
+        "owner_candidate": "005ba410",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      }
+    ]
+  },
+  {
+    "import": "?set3DAttributes@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PBUFMOD_VECTOR@@0@Z",
+    "iat": "00802f50",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc0c"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b997f",
+        "destination": "0069fc0c",
+        "owner_candidate": "005b9920",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      }
+    ]
+  },
+  {
+    "import": "?getMode@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PAI@Z",
+    "iat": "00802f54",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc06"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b98a4",
+        "destination": "0069fc06",
+        "owner_candidate": "005b9890",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      }
+    ]
+  },
+  {
+    "import": "?setMode@Channel@FMOD@@QAG?AW4FMOD_RESULT@@I@Z",
+    "iat": "00802f58",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fc00"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b98e3",
+        "destination": "0069fc00",
+        "owner_candidate": "005b9890",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      }
+    ]
+  },
+  {
+    "import": "?setLoopCount@Channel@FMOD@@QAG?AW4FMOD_RESULT@@H@Z",
+    "iat": "00802f5c",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fbfa"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b9909",
+        "destination": "0069fbfa",
+        "owner_candidate": "005b9890",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      }
+    ]
+  },
+  {
+    "import": "?setUserData@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PAX@Z",
+    "iat": "00802f60",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fbf4"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b9800",
+        "destination": "0069fbf4",
+        "owner_candidate": "005b97f0",
+        "unit_hint": "VStockSound::?$FactoryProduct"
+      },
+      {
+        "call_va": "005b9850",
+        "destination": "0069fbf4",
+        "owner_candidate": "005b9840",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      },
+      {
+        "call_va": "005bc680",
+        "destination": "0069fbf4",
+        "owner_candidate": "005bc670",
+        "unit_hint": "RBX::Soundscape::SoundService"
+      },
+      {
+        "call_va": "005bd05a",
+        "destination": "0069fbf4",
+        "owner_candidate": "005bceb0",
+        "unit_hint": "SoundServiceStatsItem"
+      },
+      {
+        "call_va": "005bd3c1",
+        "destination": "0069fbf4",
+        "owner_candidate": "005bd360",
+        "unit_hint": "VStockSound::?$FactoryProduct"
+      },
+      {
+        "call_va": "005bd5a0",
+        "destination": "0069fbf4",
+        "owner_candidate": "005bd590",
+        "unit_hint": "VStockSound::?$FactoryProduct"
+      },
+      {
+        "call_va": "005bd8fb",
+        "destination": "0069fbf4",
+        "owner_candidate": "005bd890",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      }
+    ]
+  },
+  {
+    "import": "?set3DSettings@System@FMOD@@QAG?AW4FMOD_RESULT@@MMM@Z",
+    "iat": "00802f64",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fbee"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b97db",
+        "destination": "0069fbee",
+        "owner_candidate": "005b97b0",
+        "unit_hint": "VStockSound::?$FactoryProduct"
+      },
+      {
+        "call_va": "005ba04b",
+        "destination": "0069fbee",
+        "owner_candidate": "005ba020",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      }
+    ]
+  },
+  {
+    "import": "?setReverbProperties@System@FMOD@@QAG?AW4FMOD_RESULT@@PBUFMOD_REVERB_PROPERTIES@@@Z",
+    "iat": "00802f68",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fbe8"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b9735",
+        "destination": "0069fbe8",
+        "owner_candidate": "005b8880",
+        "unit_hint": "VStockSound::?$FactoryProduct"
+      }
+    ]
+  },
+  {
+    "import": "?isPlaying@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z",
+    "iat": "00802f6c",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fbe2"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b69a5",
+        "destination": "0069fbe2",
+        "owner_candidate": "005b6990",
+        "unit_hint": "RBX::DropperTool"
+      },
+      {
+        "call_va": "005bcefc",
+        "destination": "0069fbe2",
+        "owner_candidate": "005bceb0",
+        "unit_hint": "SoundServiceStatsItem"
+      }
+    ]
+  },
+  {
+    "import": "FMOD_System_Create",
+    "iat": "00802f70",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fbd6"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005ba0c0",
+        "destination": "0069fbd6",
+        "owner_candidate": "005ba060",
+        "unit_hint": "RBX::Soundscape::VSoundId::?$TypedPropertyDescriptor"
+      }
+    ]
+  },
+  {
+    "import": "?getPaused@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z",
+    "iat": "00802f74",
+    "direct_calls": [],
+    "jump_thunks": [
+      "0069fbdc"
+    ],
+    "thunk_calls": [
+      {
+        "call_va": "005b6975",
+        "destination": "0069fbdc",
+        "owner_candidate": "005b6960",
+        "unit_hint": "RBX::DropperTool"
+      },
+      {
+        "call_va": "005ba3e8",
+        "destination": "0069fbdc",
+        "owner_candidate": "005ba3d0",
+        "unit_hint": "RBX::Soundscape::SoundChannel"
+      }
+    ]
+  }
+]
