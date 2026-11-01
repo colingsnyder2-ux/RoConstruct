@@ -692,6 +692,7 @@ int main(int argc, char** argv)
     if(contentRoot.empty())contentRoot=moduleRoot+"/Content";
     GetFullPathNameA(contentRoot.c_str(),sizeof(path),path,0);contentRoot=path;
     if(!getenv("ROC_TEXTURE_STRIP"))_putenv(("ROC_TEXTURE_STRIP="+contentRoot+"/textures/SurfacesStrip.png").c_str());
+    if(!getenv("ROC_SKY_SPHERE"))_putenv(("ROC_SKY_SPHERE="+contentRoot+"/sky/skyspheremap.jpg").c_str());
     if(!std::ifstream(getenv("ROC_TEXTURE_STRIP"),std::ios::binary)){
         std::printf("missing SurfacesStrip.png; provide original Content with --content-root\n");return 1;
     }
