@@ -1712,3 +1712,28 @@ integration and state handoff next. Receipts: p5-simtime-jump-verified and
 p5-simtime-air-verified. Original joint construction still differs, closure
 needed forced termination, and desktop locks were released in TANDEM. P5
 and complete jump/air parity remain open.
+
+## P5 checkpoint: initialize replacement Jumping state (cdc32458ec)
+
+The frozen velocity fixture established a one-tick takeoff delay: at 1.0667s
+original torso velocity was 48.424 while rebuilt was still near zero; at 1.1s
+rebuilt reached 48.328, producing the apparent 6.44-stud/s flight difference.
+This was not evidence to change jump gain or gravity. Jumping now refreshes
+its floor before first force, adapting the same 006453a0 immediate replacement
+update used for Landed. The engine and player were explicitly rebuilt.
+
+At cdc32458ec, simulation timestamps align and the committed gates pass:
+maximum sampled jump-position difference 0.1035 studs (bound 0.12); in-flight
+velocity difference 0.0961 studs/s (bound 0.12 after 1.05s). Pre-jump original
+velocity remains about -1 versus rebuilt near zero. P3 lifetime/cache and
+Novetus animation pass. Receipts: p5-jump-prime-verified-{position,velocity,p3,
+animation}. The Jump flag probe sampled zeros in both clients; it does not
+establish request timing or callback order independently.
+
+Spawn movement regression had an old 10..14 final-Z range from before recovered
+air control. Holding forward at frames 12..71 now moves 16.0016 studs, consistent
+with original 16-stud/s goals. At 51065029a9 its gate checks displacement against
+idle baseline at 16 +/-0.15 studs; idle remains separately bounded. Receipt:
+p5-jump-prime-spawn-current. Original joint construction and callback/state
+lifetime still differ. This closes bounded jump position/flight velocity for
+this fixture, not complete humanoid parity or P5. Desktop locks released.
