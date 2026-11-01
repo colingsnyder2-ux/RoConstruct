@@ -1106,3 +1106,20 @@ objects; 30-frame script error stacks fall from 74 to 6. This is not proof of
 playability. Exact-revision receipts are in p5-values-*-62955063a7 and
 p5-supplied-values-62955063a7. Next investigate remaining missing-member
 errors and integrate the remaining value classes without claiming P5 complete.
+
+## P5 checkpoint: typed values and signals (8474b02525)
+
+The behavioral value reconstruction now includes Vector3Value, Color3Value,
+BrickColorValue and CFrameValue. Lua signal dispatch marshals these four types;
+unknown signal arguments push nil to preserve the Lua stack. At 8474b02525,
+the authored fixture verifies deserialization, writes and Changed callbacks
+for all nine value classes, including reference clearing. Build, script, P0,
+lifetime and P4 asset regressions pass. Receipts are in p5-typed-*-8474b02525.
+These reconstructed implementations and event ordering are not native parity.
+
+The supplied place still reports six script errors in 30 frames. A separate
+static inspection finds all six failing script expressions refer to direct
+children absent from their serialized parent models; see the aggregate-only
+p5-typed-map-audit receipt. This does not prove the place is playable or rule
+out other runtime issues. Continue testing other supplied places and roadmap
+acceptance; P5 and later milestones remain open.

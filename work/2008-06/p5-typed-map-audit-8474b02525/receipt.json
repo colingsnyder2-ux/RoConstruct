@@ -1,0 +1,7 @@
+{
+  "revision": "8474b025259efcecd5c390426008638fc649f588",
+  "input_sha256": "488a58983b0f65122a979aa50d0e11e225f8cb684a55abb0c785aaa11a89651c",
+  "scripts_checked": 6,
+  "referenced_direct_children_absent": 6,
+  "scope": "Static check of failing script lines in supplied XML; no broader fidelity claim."
+}
