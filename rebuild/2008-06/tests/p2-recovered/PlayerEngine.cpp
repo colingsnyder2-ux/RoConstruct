@@ -194,6 +194,7 @@ extern "C" int CheckLuaObjectConversion()
 static void RecordFreefall(std::vector<int>* values,bool active){values->push_back(active?1:0);}
 extern "C" int CheckJobTrackerOwnership()
 {
+    std::printf("SimJob base size=%u\n",static_cast<unsigned>(sizeof(RBX::SimJob)));
     RBX::Mechanism* first=new RBX::Mechanism;
     RBX::Mechanism* second=new RBX::Mechanism;
     RBX::MechanismTracker a,b,c;
@@ -206,7 +207,20 @@ extern "C" int CheckJobTrackerOwnership()
     if(b.tracking())return 2;
     RBX::MechanismTracker::transferTrackers(second,NULL);
     delete second;
-    return a.tracking() || b.tracking() || c.tracking() ? 3 : 0;
+    if(a.tracking() || b.tracking() || c.tracking())return 3;
+    RBX::Mechanism third;
+    {
+        struct NonMechanismJob : RBX::SimJob {
+            virtual RBX::Assembly* getAssembly() { return NULL; }
+            virtual const RBX::Assembly* getAssembly() const { return NULL; }
+        } job;
+        a.setJob(&job);b.setJob(&job);
+        if(!a.tracking() || a.getJob()!=&job || a.getMechanism()!=NULL)return 4;
+        RBX::MechanismTracker::transferTrackers(&job,&third);
+    }
+    if(a.getMechanism()!=&third || b.getMechanism()!=&third)return 5;
+    RBX::MechanismTracker::transferTrackers(&third,NULL);
+    return a.tracking() || b.tracking() ? 6 : 0;
 }
 extern "C" int CheckFreefallTransitions()
 {

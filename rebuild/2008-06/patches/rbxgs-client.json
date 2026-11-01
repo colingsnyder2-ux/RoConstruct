@@ -15,6 +15,62 @@
      "            lua_pushnil(L);"
    ]
  ],
+ "App/include/v8world/Mechanism.h": [
+  [
+    "\tclass Mechanism : public boost::noncopyable",
+    "\t// Native 005e50f0 / 005e53a0: shared tracker ownership, separate from grouping.\n\tclass SimJob : public boost::noncopyable\n\t{\n\t\tfriend class MechanismTracker;\n\t\tstd::vector<MechanismTracker*> trackers;\n\tpublic:\n\t\tstd::list<SimJob*>::iterator jobIterator;\n\t\tvirtual ~SimJob() { RBXASSERT(trackers.empty()); }\n\t\tvirtual Assembly* getAssembly() = 0;\n\t\tvirtual const Assembly* getAssembly() const = 0;\n\t};\n\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];\n\n\tclass Mechanism : public SimJob"
+  ],
+  [
+    "\t\tstd::vector<MechanismTracker*> trackers;\n\tpublic:\n\t\tstd::list<Mechanism*>",
+    "\tpublic:\n\t\tstd::list<Mechanism*>"
+  ],
+  [
+    "RBXASSERT(this->trackers.size() == 0);",
+    "// SimJob checks tracker lifetime."
+  ],
+  [
+    "\t\tvoid notifyMovingPrimitives();",
+    "\t\tvirtual Assembly* getAssembly() { return assemblies.empty()?NULL:*assemblies.begin(); }\n\t\tvirtual const Assembly* getAssembly() const { return assemblies.empty()?NULL:*assemblies.begin(); }\n\t\tvoid notifyMovingPrimitives();"
+  ],
+  [
+    "\t\tMechanism* mechanism;",
+    "\t\tSimJob* mechanism;"
+  ],
+  [
+    "bool containedBy(Mechanism*);",
+    "bool containedBy(SimJob*);"
+  ],
+  [
+    "void setMechanism(Mechanism*);",
+    "void setMechanism(Mechanism* m) { setJob(m); }\n\t\tvoid setJob(SimJob*);\n\t\tSimJob* getJob() const { return mechanism; }"
+  ],
+  [
+    "static void transferTrackers(Mechanism*, Mechanism*);",
+    "static void transferTrackers(SimJob*, SimJob*);"
+  ]
+],
+ "App/v8world/Mechanism.cpp": [
+  [
+    "bool MechanismTracker::containedBy(Mechanism* m)",
+    "bool MechanismTracker::containedBy(SimJob* m)"
+  ],
+  [
+    "return this->mechanism;",
+    "return dynamic_cast<Mechanism*>(this->mechanism);"
+  ],
+  [
+    "void MechanismTracker::setMechanism(Mechanism* m)",
+    "void MechanismTracker::setJob(SimJob* m)"
+  ],
+  [
+    "void MechanismTracker::transferTrackers(Mechanism* from, Mechanism* to)",
+    "void MechanismTracker::transferTrackers(SimJob* from, SimJob* to)"
+  ],
+  [
+    "from->trackers.back()->setMechanism(to);",
+    "from->trackers.back()->setJob(to);"
+  ]
+],
  "App/humanoid/Freefall.cpp": [
   ["#include \"humanoid/Freefall.h\"", "#include \"humanoid/Freefall.h\"\nnamespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); Humanoid::State* CreateRecoveredLanded(Humanoid*); }\n"],
   ["\t\tif (newState == this)\n\t\t{\n\t\t\tif (floorPart)", "\t\tif (newState == this)\n\t\t{\n\t\t\tif (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);\n\t\t\tif (floorPart)"],
