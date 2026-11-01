@@ -68,10 +68,12 @@ try:
   assert abs(delta[0]) < .05 and abs(delta[2]) < .05, (frames,delta)
   check={'frame':frames,'original_time':actual,'original_torso':positions[0],'original_head':positions[1],'delta':delta}
   comparisons.append(check)
+ if mode=='early':
+  assert max(abs(sample['delta'][1]) for sample in comparisons)<.6, comparisons
 finally:
  if handle:k.CloseHandle(handle)
  if windows:u.PostMessageW(windows[0],0x10,0,0)
  try:x.wait(timeout=4)
  except subprocess.TimeoutExpired:forced=True;x.terminate();x.wait(timeout=5)
-receipt={'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'original_sha256':sha(original),'player_sha256':sha(player),'fixture_sha256':sha(fixture),'observer_sha256':sha(pathlib.Path(__file__)),'candidate_counts':[len(v) for v in hits],'moving_copies':[len(v) for v in active],'rebuilt':rebuilt,'comparisons':comparisons,'original_exit':x.returncode,'original_forced_termination':forced,'mode':mode,'scope':'Observational jump comparison; original wall time vs rebuilt fixed steps +/-35ms. Joint construction differs; no vertical parity asserted.','P5_complete':False}
+receipt={'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'original_sha256':sha(original),'player_sha256':sha(player),'fixture_sha256':sha(fixture),'observer_sha256':sha(pathlib.Path(__file__)),'candidate_counts':[len(v) for v in hits],'moving_copies':[len(v) for v in active],'rebuilt':rebuilt,'comparisons':comparisons,'original_exit':x.returncode,'original_forced_termination':forced,'mode':mode,'scope':'Original wall time vs rebuilt fixed steps +/-35ms; joint construction differs. Early mode checks vertical error under 0.6 studs; other modes are observational.','P5_complete':False}
 (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');print('jump observations recorded:',mode,'max vertical delta',max(abs(x['delta'][1]) for x in comparisons))

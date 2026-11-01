@@ -13,6 +13,7 @@
 #include <cmath>
 namespace RBX {
     bool DetectClimb(Humanoid*);
+    Humanoid::State* CreateRecoveredLanded(Humanoid*);
     void ApplyRunningBaseForce(Humanoid*, PartInstance*, const G3D::Vector3&, const G3D::Vector3&, float, const G3D::Vector3&, float, float);
 }
 // 00644a30 / 00644c80: candidate box and vertical obstruction ray sweep.
@@ -67,7 +68,7 @@ public:
     virtual State* onStep(float dt,Controller& controller) {
         State* next=Balancing::onStep(dt,controller);
         if(next!=this)return next;
-        if(!DetectClimb(humanoid))return floorPart?static_cast<State*>(new Running(humanoid)):static_cast<State*>(new Freefall(humanoid));
+        if(!DetectClimb(humanoid))return floorPart?CreateRecoveredLanded(humanoid):static_cast<State*>(new Freefall(humanoid));
         desiredVelocity=humanoid->updateWalkDirection()*16.0f;
         float speed=desiredVelocity.magnitude();
         desiredRotation=speed>0?Math::radWrap(Math::getHeading(desiredVelocity)-humanoid->getTorsoHeading())*8.0f:0;

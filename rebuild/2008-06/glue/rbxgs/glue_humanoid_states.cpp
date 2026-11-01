@@ -24,6 +24,30 @@ namespace RBX
 {
 	bool DetectClimb(Humanoid*);
 	Humanoid::State* CreateRecoveredClimbing(Humanoid*);
+	// Original state 5: Landed waits 0.45 seconds before entering Running.
+	class RecoveredLanded : public Running
+	{
+		float remaining;
+		virtual Humanoid::State* onStep(float dt, Controller& controller)
+		{
+			Humanoid::State* next = Balancing::onStep(dt, controller);
+			if (next != this) return next;
+			if (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);
+			if (!floorPart) return new Freefall(humanoid);
+			remaining -= dt;
+			if (remaining <= 0.0f) {
+				Running* running = new Running(humanoid);
+				running->resumeFromLanding(*this, controller);
+				return running;
+			}
+			updateGoals(controller);
+			return this;
+		}
+	public:
+		RecoveredLanded(Humanoid* humanoid) : Running(humanoid), remaining(0.45f) {}
+		virtual const Name& getName() const { return Name::declare("Landed", -1); }
+	};
+	Humanoid::State* CreateRecoveredLanded(Humanoid* humanoid) { return new RecoveredLanded(humanoid); }
 	HitTestFilter::Result Balancing::filterResult(const Primitive* testMe) const
 	{
 		Primitive* torsoPrimitive = humanoid->getTorsoPrimitive();
