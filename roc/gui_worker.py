@@ -359,7 +359,10 @@ def native_loop(config, control, emit):
                     emit('usage', requests=control.budget.requests, tokens=control.budget.tokens, cost=None)
                     exhausted = any(limit is not None and used >= limit for used, limit in (
                         (control.budget.requests,control.budget.max_requests),(control.budget.tokens,control.budget.max_tokens)))
-                if exhausted:
+                if exhausted and (summary.get('remote_pending') or summary.get('integration_pending')):
+                    emit('stage',message='AI budget reached; finishing queued host checks/submissions without more AI calls')
+                    control.wait(5)
+                elif exhausted:
                     control.command({'action':'stop'})
                 elif not summary.get('attempted'):
                     control.wait(30)

@@ -760,7 +760,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     if url.path.endswith('/catalog'):return self.send(200,host.catalog())
                     if url.path.endswith('/status'):return self.send(200,host.status(q.get('id')))
                     return self.send(404,{'error':'Unknown native recovery action'})
-                except (ValueError,TypeError,OSError) as error:return self.send(400,{'error':str(error)})
+                except (ValueError,TypeError,OSError) as error:return self.send(503 if str(error).startswith('Native inputs changed') else 400,{'error':str(error)})
             if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence", "/v1/integration/context", "/v1/integration/metrics"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
@@ -915,7 +915,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                         return self.send(404, {"error": "Unknown integration action"})
                     return self.send(200, result)
                 except (ValueError, TypeError, OSError) as error:
-                    return self.send(400, {"error": str(error)})
+                    return self.send(503 if str(error).startswith("Native inputs changed") else 400, {"error": str(error)})
             if path == "/v1/admin/reseed":
                 # Host-only: loopback, not proxied by the tunnel, and the key file only this PC can read.
                 local = self.client_address[0] in ("127.0.0.1", "::1") and not (

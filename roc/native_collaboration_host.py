@@ -38,7 +38,10 @@ class Host:
 
     def catalog(self):
         with self.catalog_lock:
-            return self._catalog()
+            for attempt in range(3):
+                try:return self._catalog()
+                except ValueError as error:
+                    if not str(error).startswith('Native inputs changed') or attempt==2:raise
 
     def _catalog(self):
         manifest=self.root/'work/native-recovery/tasks.json'
@@ -160,12 +163,13 @@ class Host:
         with self.store.lock,self.store.db as db:
             old=db.execute('SELECT id,state,user FROM native_recovery_uploads WHERE lease=?',(body.get('lease'),)).fetchone()
             if old:
-                row=self.lease(user,body,db,live=False)
+                saved=json.loads(db.execute('SELECT record FROM native_recovery_uploads WHERE id=?',(old[0],)).fetchone()[0])
+                if old[2]!=user or saved.get('lease_worker')!=body.get('worker'):raise ValueError('Recovery upload belongs to another worker')
                 return dict(job=old[0],state=old[1],exact_credits=0)
             row=self.lease(user,body,db)
             record=json.loads(row[6]);task=record['task']
             if not check_only:recovery.method_change(record['original'],candidate,task['method'],task.get('add_method',False))
-            record.update(candidate_text=candidate,check_only=check_only,model=model,user=user)
+            record.update(candidate_text=candidate,check_only=check_only,model=model,user=user,lease_worker=row[3])
             identifier=uuid.uuid4().hex
             db.execute('INSERT INTO native_recovery_uploads VALUES(?,?,?,?,?,?,?,NULL)',
                 (identifier,row[1],user,model,'queued',json.dumps(record),time.time()))

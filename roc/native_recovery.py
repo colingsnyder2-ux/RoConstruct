@@ -554,6 +554,16 @@ def run(config, control, emit):
                 state=remote.status(record['collaboration_submission']['job'])
                 record['host_receipt']=state
                 if state['state'] in ('merged','already-exact','retained'):
+                    if state['state']=='merged':
+                        task=record['task']
+                        proof=lambda snapshot,rel:compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],record['baseline'],translation_unit=task.get('translation_unit'))
+                        try:
+                            merged=merge(shared_root,output/'merge'/uuid.uuid4().hex,task['file'],record['original'],Path(record['candidate']).read_text(encoding='utf-8'),task['method'],proof,output/'receipts'/(owner+'.json'),allow_add=task.get('add_method',False))
+                            record['merge']=merged
+                            totals['merged']+=merged['state']=='merged'
+                        except (ValueError,OSError) as error:
+                            record['local_merge_blocker']=str(error)
+                            log('Host-verified candidate retained; local editor/header conflict: '+str(error))
                     if state['state']=='merged' and config['native_agent_submit']:
                         try:
                             record['submission']=stage_submission(record,context,base,output/'canonical'/owner,log,recheck=False)
@@ -614,20 +624,22 @@ def run(config, control, emit):
                         proof = lambda snapshot, rel: compile_probe(snapshot, rel, context, matcher, {task['addr']}, task['method'], record['baseline'], translation_unit=task.get('translation_unit'))
                         if remote and record.get('remote_lease') and config['native_agent_submit']:
                             try:
-                                remote.renew(record['remote_lease'])
-                            except (worker.ApiFailure,OSError,ValueError):
-                                renewed=remote.claim(task)
-                                if not renewed.get('claimed'):raise ValueError('Server method lease busy; candidate retained')
-                                record['remote_lease']=renewed
-                            try:
-                                result=merge(shared_root,output/'merge'/uuid.uuid4().hex,task['file'],record['original'],candidate,
-                                    task['method'],proof,output/'receipts'/(owner+'.json'),allow_add=task.get('add_method',False))
-                                record['merge']=result
-                                totals['merged']+=result['state']=='merged'
-                            except (ValueError,OSError) as error:
-                                record['local_merge_blocker']=str(error)
-                                log('Local edit/header conflict retained; host will recheck independent candidate: '+str(error))
-                            record['collaboration_submission']=remote.submit(record['remote_lease'],record)
+                                submitted=remote.submit(record['remote_lease'],record)
+                            except worker.ApiFailure as error:
+                                if error.category!='bad_request':raise
+                                current=next((t for t in published['tasks'] if t['target']==task['target']),None)
+                                if current is None:raise ValueError('Published method changed; candidate retained')
+                                renewed=remote.claim(current)
+                                if not renewed.get('claimed'):raise worker.ApiFailure('server_fail','Server method lease busy; candidate retained for retry')
+                                original=published['files'][task['file']]
+                                edits=method_change(record['original'],candidate,task['method'],task.get('add_method',False))
+                                candidate=sweep.apply_edits(original,edits) if edits[0][0] else original+edits[0][1]
+                                method_change(original,candidate,task['method'],task.get('add_method',False))
+                                rebased=output/'candidates'/('resumed-'+uuid.uuid4().hex+'.cpp')
+                                rebased.write_text(candidate,encoding='utf-8')
+                                record.update(remote_lease=renewed,original=original,candidate=str(rebased),task=current)
+                                submitted=remote.submit(renewed,record)
+                            record['collaboration_submission']=submitted
                             claims.update(key,owner,'remote-submitted',record)
                             totals['remote_submitted']+=1
                             continue
@@ -702,6 +714,9 @@ def run(config, control, emit):
                     hosted=next((t for t in published['tasks'] if all(t[k]==task[k] for k in ('file','method','addr'))),None)
                     if hosted is None:raise ValueError('Explicit recovery target must be published by the host before collaborative mining')
                     task.update(hosted)
+        with control.budget._lock:
+            if any(limit is not None and used>=limit for used,limit in ((control.budget.requests,control.budget.max_requests),(control.budget.tokens,control.budget.max_tokens))):
+                available=[]
         headers = {k:v for k,v in before.items() if '/native-headers/' in k}
         library_inputs = sorted((p.name,str(p.resolve())) for p in libs.LIBS.iterdir() if p.is_dir()) if libs.LIBS.is_dir() else []
         for task in available:
@@ -875,6 +890,8 @@ def run(config, control, emit):
             for future in as_completed([pool.submit(one, slot, assignment) for slot, assignment in enumerate(tasks)]):
                 future.result()
         merge_pending()
+        totals['remote_pending']=len(claims.remote_submitted())
+        totals['integration_pending']=len(claims.submitted())
         integration.atomic_json(output/'summary.json', totals)
         emit('log', slot=0, message='Native recovery: '+json.dumps(totals)+'; local recovery is not server credit')
         return totals

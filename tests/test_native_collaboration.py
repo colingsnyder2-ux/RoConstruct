@@ -185,19 +185,20 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
     http=ThreadingHTTPServer(('127.0.0.1',0),handler);thread=threading.Thread(target=http.serve_forever,daemon=True);thread.start()
     url='http://127.0.0.1:'+str(http.server_port)
     config=dict(gui_worker.DEFAULTS,workers=1,model='codex:gpt-6.1-terra',user='Colin',server=url,cloud_allowed=True,max_cloud_requests=1)
+    controls={}
     def run(pc):
         shared=tmp_path/pc;p=shared/REL;p.parent.mkdir(parents=True,exist_ok=True)
         if not p.exists():p.write_text(BEFORE.replace('return 2;','return 77;'))
         monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared));monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(tmp_path/(pc+'-proofs')))
-        control=gui_worker.Control(config,lambda *a,**kw:None)
+        control=controls.setdefault(pc,gui_worker.Control(config,lambda *a,**kw:None))
         return recovery.run(config,control,lambda *a,**kw:None)
     try:
-        first=run('pc1');assert first['recovered']==1 and first['merged']==1 and first['remote_submitted']==1
+        first=run('pc1');assert first['recovered']==1 and first['merged']==0 and first['remote_submitted']==1 and first['remote_pending']==1
         second=run('pc2');assert second['attempted']==0 and calls==['A::f']
         assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
         result=service.process(service.take());assert result['receipt']['state']=='merged'
         assert (service.root/REL).read_text()==AFTER
-        resumed=run('pc1');assert resumed['host_merged']==1 and calls==['A::f']
+        resumed=run('pc1');assert resumed['host_merged']==1 and resumed['merged']==1 and resumed['remote_pending']==0 and controls['pc1'].budget.requests==1 and calls==['A::f']
     finally:http.shutdown();http.server_close();thread.join()
 
 
@@ -227,3 +228,24 @@ def test_generated_header_consumer_emits_real_inline_method(service,monkeypatch,
     result=recovery.compile_probe(folder,header,ctx,Matcher(),set(),'A::f',translation_unit=task['translation_unit'])
     assert result['ok'],result['error']
     assert any(symbol.startswith('?f@A@@') for symbol,_,_ in match.coff_functions(Path(result['object']).read_bytes()))
+
+
+def test_upload_retry_after_replaced_completed_lease_returns_original_job(service):
+    lease=claim(service);response=service.submit('Colin',body(lease,model='terra',candidate=AFTER))
+    with service.store.lock,service.store.db as db:
+        db.execute("UPDATE native_method_leases SET state='complete'")
+    newer=claim(service,worker='pc2');assert newer['lease']!=lease['lease']
+    retried=service.submit('Colin',body(lease,model='terra',candidate=AFTER))
+    assert retried['job']==response['job']
+    with pytest.raises(ValueError):service.renew('Colin',body(lease))
+    assert service.renew('Colin',body(newer))['renewed']
+
+
+def test_catalog_retries_only_observed_source_races(service,monkeypatch):
+    calls=[]
+    def snapshot():
+        calls.append(1)
+        if len(calls)==1:raise ValueError('Native inputs changed while publishing; refresh catalog')
+        return {'revision':'fresh'}
+    monkeypatch.setattr(service,'_catalog',snapshot)
+    assert service.catalog()=={'revision':'fresh'} and len(calls)==2
