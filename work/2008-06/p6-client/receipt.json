@@ -133,7 +133,10 @@
    "nativeInitializeTypes, class and name registration calls",
    "templates 185, 207, 138",
    "openFiles multi-file path"
-  ]
+  ],
+  "original_trace": "work/2008-06/p6-client/original-startup.json",
+  "original_kind": "One-shot int3 in unmodified original process memory; 14 of 15 sites hit in InitInstance order. ExitInstance not hit: trace terminates the process.",
+  "finding": "Slot 23 follows openFiles, consistent with Run. Original spends about 2.2 s between initializeSettings and CIDEDocManager."
  },
  "edit_selection": {
   "pick_scan": "Brick at 0.3-0.4, Other at 0.6-0.7, empty elsewhere",

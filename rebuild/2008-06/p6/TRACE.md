@@ -20,7 +20,7 @@ trace yet: slot names below are inferred, marked where so.
 |---|---|---|---|
 | 12 | 0044d440 | Message map getter (inferred) | Returns 00816c50 |
 | 22 | 0044d810 | InitInstance | String "ROBLOX InitInstance" |
-| 23 | 0044d790 | Unnamed; likely Run (inferred) | Slot follows InitInstance |
+| 23 | 0044d790 | Likely Run | Runtime: entered after openFiles |
 | 28 | 0044ad60 | ExitInstance | String "ROBLOX ExitInstance" |
 
 All four have mined sources; none is natively integrated in
@@ -63,5 +63,4 @@ Open:
 - Edit-mode camera, selection and drag tools.
 - Output pane, script editor, document tabs, Explorer icons, FPS readout,
   in-game menu overlay.
-- Original-side debugger trace of startup.
 - Links libraries from the Codex build, so rebuild after engine changes.
