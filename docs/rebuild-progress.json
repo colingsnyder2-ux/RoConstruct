@@ -1,23 +1,23 @@
 {
-  "updated": "2026-10-31 23:12 UTC",
+  "updated": "2026-11-01 00:24 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.2391,
+      "overall": 0.2396,
       "bars": {
         "compiled": {
-          "value": 30,
-          "total": 30,
+          "value": 32,
+          "total": 32,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 27,
-          "total": 30,
+          "value": 29,
+          "total": 32,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9852,
+          "value": 9870,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -188,8 +188,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 203,
-          "objectFunctions": 2177,
+          "exact": 236,
+          "objectFunctions": 2517,
           "unresolved": 0
         },
         {
@@ -209,11 +209,27 @@
           "unresolved": 0
         },
         {
+          "name": "P3SphereMesh",
+          "linked": true,
+          "test": 0,
+          "exact": 177,
+          "objectFunctions": 1479,
+          "unresolved": 0
+        },
+        {
           "name": "Player",
           "linked": true,
           "test": 0,
           "exact": 87,
           "objectFunctions": 935,
+          "unresolved": 0
+        },
+        {
+          "name": "P2RecoveredPlayer",
+          "linked": true,
+          "test": 0,
+          "exact": 236,
+          "objectFunctions": 2517,
           "unresolved": 0
         },
         {
