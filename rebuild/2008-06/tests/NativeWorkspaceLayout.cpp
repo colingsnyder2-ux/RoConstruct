@@ -1,5 +1,5 @@
 #include <afxwin.h>
-#include "../native-headers/CWorkspace.h"
+#include "../native-classes/CWorkspace.cpp"
 #include <cstddef>
 
 typedef char WorkspaceSize[sizeof(CWorkspace) == 0x34 ? 1 : -1];

@@ -44,4 +44,6 @@ class ATL_NO_VTABLE CWorkspace :
 public:
     boost::shared_ptr<RBX::DataModel> dataModel;
     boost::shared_ptr<RBX::RunService> runService;
+    CWorkspace();
+    boost::shared_ptr<RBX::DataModel> getDataModel();
 };

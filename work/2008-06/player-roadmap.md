@@ -2076,3 +2076,6 @@ Workspace owner trace: +0x2c is shared_ptr<RBX::RunService>. Original initializa
 
 
 CWorkspace shared storage candidate added: genuine ATL bases in original RTTI order, DataModel and RunService shared owners. MSVC21022 passes size0x34, owner offsets0x24/0x2c and safety-base size8. Probe NativeWorkspaceLayout.cpp; receipt shared-layouts/workspace-compile.json pins source hashes. Candidate remains abstract/inactive: COM overrides, callbacks, constructor/destructor and safety bodies pending. No active ABI swap or runtime-count change.
+
+
+CWorkspace constructor0046ab60 now matches33 bytes; typed DataModel getter0046a940 matches43. Native MIDL interfaces require novtable: omitting it emitted an extra primary interface-vptr store (39-byte constructor). Shared RobloxLib interfaces now carry that SDK convention. Storage checks still pass. Candidate inactive; callbacks/COM methods and Doc cleanup remain open. Running executable/count unchanged.
