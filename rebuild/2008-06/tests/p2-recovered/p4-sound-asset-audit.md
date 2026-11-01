@@ -143,6 +143,15 @@ or runtime-tested. An aggregate scan of the user's supplied compressed places
 found Sound instances in 39 of 58 readable XML places; four files were unreadable
 or non-XML. These user files and their content remain private.
 
+SoundService::openFmod 005ba060 is now adapted to genuine overlay fields and
+FMOD declarations: feature and user-setting gates, version check, driver caps,
+speaker mode, hardware-emulation buffer setting, stereo fallback, settings and
+reverb, and release on exception. The zero-initialized original flag byte at
+00976fc9 is represented by a named boolean; its broader settings connection is
+not proven. Reverb and service attachment remain unresolved, so this method is
+not linked into the diagnostic executable or runtime-tested. Error reporting
+uses the same documented user-setting gate adaptation as other sound pieces.
+
 An authored fixture with one Workspace Sound currently loads but retains zero
 Sounds. The load-only class-name traversal agrees with the independent Humanoid
 RTTI count on a control. A supplied place containing eight serialized Sounds
