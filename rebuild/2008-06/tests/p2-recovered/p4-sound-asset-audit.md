@@ -161,6 +161,15 @@ invalid enum and null-system paths make no FMOD call. The NOSOUND diagnostic
 also submits the Room preset to the actual FMOD DLL. This tests preset data and
 SDK interoperation; the service method is not yet called by player lifecycle.
 
+The 005bc2c0 service heartbeat is adapted with real Workspace, Camera,
+PVInstance, PartInstance and FMOD types. The target RTTI at 00947f1c identifies
+PVInstance, and 0045af00/00599850 dependencies lead to camera/Part state. It
+sanitizes listener vectors, uses the subject's primary-Part velocity, runs both
+sound-cache collectors on the original five-second interval, then updates FMOD.
+This compiled source is not selected or runtime-tested until provider attachment
+and the channel ancestry dependencies are linked. Error reporting retains the
+documented warning-gate adaptation.
+
 An authored fixture with one Workspace Sound currently loads but retains zero
 Sounds. The load-only class-name traversal agrees with the independent Humanoid
 RTTI count on a control. A supplied place containing eight serialized Sounds

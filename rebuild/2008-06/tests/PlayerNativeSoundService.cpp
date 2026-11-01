@@ -2,6 +2,9 @@
 #include "util/Sound.h"
 #include "util/StandardOut.h"
 #include "v8datamodel/GameSettings.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/Camera.h"
+#include "v8datamodel/PVInstance.h"
 #include <G3D/System.h>
 #include <fmod.hpp>
 #include <fmod_errors.h>
@@ -22,6 +25,7 @@ static void logSoundResult(FMOD_RESULT result){
 }
 
 namespace RBX { namespace Soundscape {
+bool sanitizeSoundVector(const G3D::Vector3&,G3D::Vector3&);
 SoundService::SoundService()
     : system(0),fmod_version(0),dopplerscale(1.0f),distancefactor(10.0f),
       rolloffscale(1.0f),ambientReverb(NoReverb),
@@ -68,6 +72,36 @@ void SoundService::openFmod(){
     }catch(const std::exception&){
         if(system){logSoundResult(system->release());system=0;}
     }
+}
+
+// 005bc2c0: update listener attributes, periodically collect caches, update FMOD.
+void SoundService::onEvent(const RunService*,Heartbeat){
+    if(!system)return;
+    Workspace* workspace=Workspace::findWorkspace(this);
+    Camera* camera=workspace?workspace->getCamera():0;
+    if(camera){
+        G3D::CoordinateFrame frame=camera->getCameraCoordinateFrame();
+        G3D::Vector3 position,forward,up,velocity(0,0,0);
+        if(sanitizeSoundVector(frame.translation,position) &&
+           sanitizeSoundVector(-frame.lookVector(),forward) &&
+           sanitizeSoundVector(frame.rotation.getColumn(1),up)){
+            PVInstance* subject=dynamic_cast<PVInstance*>(camera->getCameraSubjectInstance());
+            if(subject){
+                PartInstance* primary=subject->getPrimaryPart();
+                if(primary)sanitizeSoundVector(primary->getVelocity().linear,velocity);
+            }
+            FMOD_VECTOR p={position.x,position.y,position.z};
+            FMOD_VECTOR v={velocity.x,velocity.y,velocity.z};
+            FMOD_VECTOR f={forward.x,forward.y,forward.z};
+            FMOD_VECTOR u={up.x,up.y,up.z};
+            logSoundResult(system->set3DListenerAttributes(0,&p,&v,&f,&u));
+        }
+    }
+    if(G3D::System::getTick()>=nextGarbageCollectTime){
+        gcSounds(loadedSounds);gcSounds(loaded3DSounds);
+        nextGarbageCollectTime=G3D::System::getTick()+5.0;
+    }
+    logSoundResult(system->update());
 }
 
 // 005ba970: remove stock channels, detach cached handles, then release FMOD.
