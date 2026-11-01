@@ -30,7 +30,9 @@ void CRobloxDoc::OnCloseDocument() { CDocument::OnCloseDocument(); }
 void CRobloxDoc::DeleteContents() {
     {
         RBX::DataModel::Lock lock(getDataModel());
-        for (std::vector<RBX::Verb*>::iterator it = ownedVerbs.begin(); it != ownedVerbs.end(); ++it)
+        std::vector<RBX::Verb*>::iterator it = ownedVerbs.begin();
+        std::vector<RBX::Verb*>::iterator last = ownedVerbs.end();
+        for (; it != last; ++it)
             delete *it;
         ownedVerbs.erase(ownedVerbs.begin(), ownedVerbs.end());
         RBX::StandardVerbs* old = standardVerbs;

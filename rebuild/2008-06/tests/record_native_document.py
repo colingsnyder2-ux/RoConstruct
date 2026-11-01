@@ -39,6 +39,7 @@ assert match.exact_match(target, relocations, body, candidate_relocations)
 methods = []
 for address, method in (('00451a10', 'bindExisting'), ('00451a60', 'bindOwned'),
                         ('00403040', 'getDataModel'),
+                        ('004513c0', 'DeleteContents'),
                         ('00452f60', 'OnNewDocument'), ('0044f210', 'OnCloseDocument'),
                         ('0044f200', 'GetRuntimeClass'), ('00452f00', 'CreateObject')):
     expected, expected_relocations, _ = match.target('2008-06', address)
