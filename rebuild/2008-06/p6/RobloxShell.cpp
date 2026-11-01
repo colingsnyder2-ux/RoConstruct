@@ -23,6 +23,8 @@ static const UINT ID_PAUSE = 32967;
 static const UINT ID_RESET = 32968;
 static const UINT ID_HELP_OBJECT_BROWSER = 32990;  // CRobloxApp map, handler 0044a2e0
 static const UINT ID_VIEW_FULLSCREEN = 33012;      // CMainFrame map, handler 00431ce0
+static const UINT ID_INSERT_OBJECT = 32895;
+static const UINT ID_EDIT_DUPLICATE = 32773;
 static const UINT ID_VIEW_OUTPUT = 32927;          // CMainFrame map, handler 0042fbb0
 static const UINT ID_VIEW_EXPLORER = 32792;        // CMainFrame map, handler 0042e5e0
 static const UINT ID_TOOLS_EXECUTE_SCRIPT = 33009; // CRobloxApp map, handler 0044a300
@@ -224,6 +226,10 @@ public:
         else panes.ClosePane(ID_VIEW_OUTPUT);
     }
     afx_msg void OnUpdateViewOutput(CCmdUI* ui) { ui->SetCheck(!panes.IsPaneClosed(ID_VIEW_OUTPUT)); }
+    CString SelectedName() {
+        HTREEITEM item = explorer.GetSelectedItem();
+        return item ? explorer.GetItemText(item) : CString();
+    }
     void RemoveSelected() {
         printf("p6: remove %d\n", P6DataRemove(selected));
         g_undo.clear(); // ponytail: removal is not undoable and may invalidate moves
@@ -282,8 +288,11 @@ public:
         g_select.Empty();
     }
     void RefreshExplorer() {
+        CString keep = SelectedName();
         explorer.DeleteAllItems();
         P6DataWalk(addNode, this);
+        HTREEITEM kept = keep.IsEmpty() ? NULL : findNode(explorer.GetRootItem(), keep);
+        if (kept) explorer.SelectItem(kept);
         printf("p6: explorer nodes=%u\n", explorer.GetCount());
         ApplyTestSelection();
     }
@@ -306,8 +315,8 @@ public:
         CXTPCommandBar* menu = bars->SetMenu(_T("Menu Bar"), IDR_MAINFRAME_ROBLOX);
         if (!menu) return -1;
         menu->SetFlags(xtpFlagIgnoreSetMenuMessage); // keep menu 128; template 129 has File only
-        static const struct { UINT id; LPCTSTR title; } toolbars[] = {{128, _T("Standard")}, {137, _T("Run")}, {135, _T("Camera")}};
-        for (int i = 0; i < 3; ++i) {
+        static const struct { UINT id; LPCTSTR title; } toolbars[] = {{128, _T("Standard")}, {137, _T("Run")}, {135, _T("Camera")}, {145, _T("Surfaces")}, {150, _T("Tools")}};
+        for (int i = 0; i < 5; ++i) {
             CXTPToolBar* bar = bars->Add(toolbars[i].title, xtpBarTop);
             if (!bar || !bar->LoadToolBar(toolbars[i].id)) return -1;
         }
@@ -607,6 +616,18 @@ public:
         printf("p6: undo %d\n", P6DataSetPosition(move.item, move.position));
     }
     afx_msg void OnUpdateUndo(CCmdUI* ui) { ui->Enable(!g_undo.empty()); }
+    // ponytail: Lua by name, top-level Workspace only; originals use typed commands.
+    void Edit(const CString& script) {
+        printf("p6: edit %d\n", P6EngineScript(script));
+        GetDocument()->SetModifiedFlag();
+        static_cast<CMainFrame*>(AfxGetMainWnd())->RefreshExplorer();
+    }
+    afx_msg void OnInsertPart() { Edit("local p = Instance.new('Part') p.Name = 'Part' p.Parent = game.Workspace"); }
+    afx_msg void OnDuplicate() {
+        CString script;
+        script.Format("local c = game.Workspace['%s']:Clone() c.Parent = game.Workspace", (LPCSTR)static_cast<CMainFrame*>(AfxGetMainWnd())->SelectedName());
+        Edit(script);
+    }
     afx_msg void OnClear() { static_cast<CMainFrame*>(AfxGetMainWnd())->RemoveSelected(); GetDocument()->SetModifiedFlag(); }
     afx_msg void OnRButtonDown(UINT, CPoint point) { dragFrom = point; SetCapture(); }
     afx_msg void OnRButtonUp(UINT, CPoint) { ReleaseCapture(); }
@@ -640,6 +661,8 @@ BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_WM_LBUTTONUP()
     ON_COMMAND(ID_EDIT_UNDO, &CRobloxView::OnUndo)
     ON_COMMAND(ID_EDIT_CLEAR, &CRobloxView::OnClear)
+    ON_COMMAND(ID_INSERT_OBJECT, &CRobloxView::OnInsertPart)
+    ON_COMMAND(ID_EDIT_DUPLICATE, &CRobloxView::OnDuplicate)
     ON_UPDATE_COMMAND_UI(ID_EDIT_UNDO, &CRobloxView::OnUpdateUndo)
     ON_WM_RBUTTONDOWN()
     ON_WM_RBUTTONUP()
