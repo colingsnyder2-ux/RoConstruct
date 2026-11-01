@@ -1,5 +1,13 @@
 # Current player checkpoint
 
+SoundChannel pieces at source2a68b59182: constructor005bc480, destructor
+005b7680, parent acceptance00565ff0, provider detach005b9840, heartbeat005ba3d0,
+and spatial update005b9920 use genuine application types. Constructor and
+destructor locally identify the target addresses; sound diagnostics pass.
+These objects remain unselected/unexecuted: channel construction needs native
+onAncestorChanged and dependencies. Evidence: p4-sound-channel-2a68b59182/
+and p4-sound-channel-runtime-2a68b59182/. P4 audio remains open.
+
 Audio listener-vector helper005b70c0 integrated at source113d3a3fb5 with real
 Math/Vector3 types and original +/-5000 limits. Diagnostic verifies denormal
 cleanup, clamp, infinity rejection and untouched output on rejection; previous
