@@ -1,11 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0043dbf0  unit: RefItem  size: 13 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0043dbf0
-//
-// 0043dbf0  8d4c2404             lea ecx, [esp + 4]
-// 0043dbf4  ff15143f8000         call dword ptr [0x803f14]
-// 0043dbfa  c20400               ret 4
-
 struct RefItem {
     void method(void* arg);
 };

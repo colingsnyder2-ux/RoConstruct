@@ -3,6 +3,7 @@
 #include "util/RunStateOwner.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Stats.h"
+class SoundServiceStatsItem;
 
 namespace FMOD
 {
@@ -158,6 +159,8 @@ namespace RBX
 							 public Service,
 							 public Listener<RunService, Heartbeat>
 		{
+			friend class ::SoundServiceStatsItem;
+			friend class SoundChannel;
 		private:
 			FMOD::System* system;
 			unsigned fmod_version;
@@ -173,10 +176,10 @@ namespace RBX
 			bool mySoundDisabled;
 		public:
 			bool soundDisabled;
-			Reflection::BoundProp<float, 1> prop_dopplerscale;
-			Reflection::BoundProp<float, 1> prop_distancefactor;
-			Reflection::BoundProp<float, 1> prop_rolloffscale;
-			Reflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;
+			static Reflection::BoundProp<float, 1> prop_dopplerscale;
+			static Reflection::BoundProp<float, 1> prop_distancefactor;
+			static Reflection::BoundProp<float, 1> prop_rolloffscale;
+			static Reflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;
 
 		public:
 			boost::shared_ptr<Sound> loadSound(SoundId, bool);

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 007f9d30  unit: CEdit  size: 144 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 007f9d30
 //

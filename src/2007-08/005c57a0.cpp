@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 005c57a0  unit: RBX::Lua::VThreadRef::?$sp_counted_impl_p  size: 120 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 005c57a0
 //

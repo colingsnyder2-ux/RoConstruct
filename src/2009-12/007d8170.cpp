@@ -1,13 +1,6 @@
-// roc 2009-12 007d8170  unit: RBX::HUMAN::Flying  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 007d8170
-//
-// 007d8170  e9cb34fdff           jmp 0x7ab640
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_007d8170();
+void func_007d8170()
 {
-    G1_func_00401050();
-}
+    G1_func_007d8170();
 }

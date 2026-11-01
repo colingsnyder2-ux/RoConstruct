@@ -1,5 +1,11 @@
-// from server: 86% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/SyntaxEdit/XTPSyntaxEditView.cpp
+// from server: 100% by tester
+struct CWrapperView {
+    void Dispatch(int);
+};
+
+void CWrapperView::Dispatch(int a) {
+    typedef void (__thiscall *Fn)(void *, int);
+    char *p = (char *)a;
+    Fn fn = *(Fn *)(*(char **)p + 0xc);
+    fn(p, 0xb43be8);
+}

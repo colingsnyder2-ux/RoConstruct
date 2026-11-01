@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 008e5d30  unit: CXTCaptionButton  size: 46 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 008e5d30
 //

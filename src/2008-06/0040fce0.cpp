@@ -1,22 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0040fce0  unit: UIEnumConnectionPoints::V?$CComEnum::?$CComObject  size: 33 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0040fce0
-//
-// 0040fce0  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0040fce4  834118ff             add dword ptr [ecx + 0x18], -1
-// 0040fce8  56                   push esi
-// 0040fce9  8b7118               mov esi, dword ptr [ecx + 0x18]
-// 0040fcec  750d                 jne 0x40fcfb
-// 0040fcee  85c9                 test ecx, ecx
-// 0040fcf0  7409                 je 0x40fcfb
-// 0040fcf2  8b01                 mov eax, dword ptr [ecx]
-// 0040fcf4  8b501c               mov edx, dword ptr [eax + 0x1c]
-// 0040fcf7  6a01                 push 1
-// 0040fcf9  ffd2                 call edx
-// 0040fcfb  8bc6                 mov eax, esi
-// 0040fcfd  5e                   pop esi
-// 0040fcfe  c20400               ret 4
-
 struct GUID;
 
 struct IUnknown

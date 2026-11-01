@@ -1,16 +1,4 @@
-// roc 2010-06 007e0ea0  unit: VCXTPReportRecords::?$CXTPHeapObjectT  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 007e0ea0
-//
-// 007e0ea0  8bc1                 mov eax, ecx
-// 007e0ea2  33c9                 xor ecx, ecx
-// 007e0ea4  c70098a4a500         mov dword ptr [eax], 0xa5a498
-// 007e0eaa  894804               mov dword ptr [eax + 4], ecx
-// 007e0ead  894810               mov dword ptr [eax + 0x10], ecx
-// 007e0eb0  89480c               mov dword ptr [eax + 0xc], ecx
-// 007e0eb3  894808               mov dword ptr [eax + 8], ecx
-// 007e0eb6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

@@ -1,9 +1,4 @@
-// roc 2007-08 004a4e00  unit: RBX::VNetworkSettings::?$GlobalSettingsItem  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004a4e00
-//
-// 004a4e00  e9fbb80c00           jmp 0x570700
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_004a4e00();
 void func_004a4e00()
 {

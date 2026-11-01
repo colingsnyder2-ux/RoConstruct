@@ -1,9 +1,4 @@
-// roc 2007-08 00676110  unit: CXTPGroupLine  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00676110
-//
-// 00676110  e911270c00           jmp 0x738826
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00676110();
 void func_00676110()
 {

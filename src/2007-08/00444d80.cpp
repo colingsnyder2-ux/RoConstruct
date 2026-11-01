@@ -1,10 +1,4 @@
-// roc 2007-08 00444d80  unit: RBX::Reflection::Metadata::VItem::?$BoundPropGetSet  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00444d80
-//
-// 00444d80  d981ec000000         fld dword ptr [ecx + 0xec]
-// 00444d86  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00444d80 {
     char pad[236];
     float m_x;

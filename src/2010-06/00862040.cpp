@@ -1,9 +1,4 @@
-// roc 2010-06 00862040  unit: CXTPDockingPaneWindowSelect  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00862040
-//
-// 00862040  e93bfcffff           jmp 0x861c80
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00862040();
 void func_00862040()
 {

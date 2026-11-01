@@ -1,9 +1,4 @@
-// roc 2007-08 007124e0  unit: CXTColorSelectorCtrl  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 007124e0
-//
-// 007124e0  e9ebffffff           jmp 0x7124d0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_007124e0();
 void func_007124e0()
 {

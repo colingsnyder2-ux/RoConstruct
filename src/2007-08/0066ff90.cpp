@@ -1,18 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 0066ff90  unit: CXTPDockingPaneManager  size: 27 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0066ff90
-//
-// 0066ff90  56                   push esi
-// 0066ff91  8bf1                 mov esi, ecx
-// 0066ff93  8b8ed4000000         mov ecx, dword ptr [esi + 0xd4]
-// 0066ff99  8b01                 mov eax, dword ptr [ecx]
-// 0066ff9b  8b5068               mov edx, dword ptr [eax + 0x68]
-// 0066ff9e  ffd2                 call edx
-// 0066ffa0  8bce                 mov ecx, esi
-// 0066ffa2  e819f7ffff           call 0x66f6c0
-// 0066ffa7  5e                   pop esi
-// 0066ffa8  c20800               ret 8
-
 struct Inner {
     virtual void vf0();
     virtual void vf1();

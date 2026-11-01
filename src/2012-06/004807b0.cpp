@@ -1,12 +1,4 @@
-// from server: 50% by Intel
-struct XVRecordToggleVerb_XVmf0_Vbind_t_thread_data {
-    int get();
-};
-
-int XVRecordToggleVerb_XVmf0_Vbind_t_thread_data::get() {
-    int functionPtr = *(int*)((char*)this + 0x20);
-    int arg = *(int*)((char*)this + 0x24);
-    typedef int (__stdcall *FuncType)(int);
-    FuncType func = (FuncType)functionPtr;
-    return func(arg);
-}
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+struct S{char pad[0x20]; void* fn; void* ctx; void f();};
+void S::f(){typedef void(__thiscall* Fn)(void*);((Fn)fn)(ctx);}

@@ -1,14 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 0040b1b0  unit: CNullDoc  size: 15 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0040b1b0
-//
-// 0040b1b0  8b81ec000000         mov eax, dword ptr [ecx + 0xec]
-// 0040b1b6  8b08                 mov ecx, dword ptr [eax]
-// 0040b1b8  8b511c               mov edx, dword ptr [ecx + 0x1c]
-// 0040b1bb  50                   push eax
-// 0040b1bc  ffd2                 call edx
-// 0040b1be  c3                   ret 
-
 struct CNullDoc {
     char pad[0xec];
     void* field_ec;

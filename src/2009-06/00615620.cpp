@@ -1,89 +1,157 @@
-// from server: 84% by EspClaude
-// from server: 100% by king_originala
-// roc 2008-06 005f5020  unit: boost::iostreams::DUoutput::V?$basic_null_device::?$stream_buffer  size: 108 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005f5020
-//
-// 005f5020  55                   push ebp
-// 005f5021  8bec                 mov ebp, esp
-// 005f5023  6aff                 push -1
-// 005f5025  68e0757d00           push 0x7d75e0
-// 005f502a  64a100000000         mov eax, dword ptr fs:[0]
-// 005f5030  50                   push eax
-// 005f5031  64892500000000       mov dword ptr fs:[0], esp
-// 005f5038  83ec08               sub esp, 8
-// 005f503b  8b4124               mov eax, dword ptr [ecx + 0x24]
-// 005f503e  8b00                 mov eax, dword ptr [eax]
-// 005f5040  53                   push ebx
-// 005f5041  56                   push esi
-// 005f5042  8b7114               mov esi, dword ptr [ecx + 0x14]
-// 005f5045  2b06                 sub eax, dword ptr [esi]
-// 005f5047  57                   push edi
-// 005f5048  8965f0               mov dword ptr [ebp - 0x10], esp
-// 005f504b  c745fc00000000       mov dword ptr [ebp - 4], 0
-// 005f5052  85c0                 test eax, eax
-// 005f5054  7e16                 jle 0x5f506c
-// 005f5056  8b5148               mov edx, dword ptr [ecx + 0x48]
-// 005f5059  8b414c               mov eax, dword ptr [ecx + 0x4c]
-// 005f505c  8916                 mov dword ptr [esi], edx
-// 005f505e  8b7124               mov esi, dword ptr [ecx + 0x24]
-// 005f5061  03c2                 add eax, edx
-// 005f5063  8916                 mov dword ptr [esi], edx
-// 005f5065  2bc2                 sub eax, edx
-// 005f5067  8b5134               mov edx, dword ptr [ecx + 0x34]
-// 005f506a  8902                 mov dword ptr [edx], eax
-// 005f506c  8b4944               mov ecx, dword ptr [ecx + 0x44]
-// 005f506f  85c9                 test ecx, ecx
-// 005f5071  7406                 je 0x5f5079
-// 005f5073  ff1570238000         call dword ptr [0x802370]
-// 005f5079  33c0                 xor eax, eax
-// 005f507b  8b4df4               mov ecx, dword ptr [ebp - 0xc]
-// 005f507e  64890d00000000       mov dword ptr fs:[0], ecx
-// 005f5085  5f                   pop edi
-// 005f5086  5e                   pop esi
-// 005f5087  5b                   pop ebx
-// 005f5088  8be5                 mov esp, ebp
-// 005f508a  5d                   pop ebp
-// 005f508b  c3                   ret 
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-atl90-dll roc_http_wininet_catch_19404fecbe27f869.cpp
 
-namespace std {
-    class exception {};
-}
+// Candidate translation unit (score above; library headers required).
+#define _SCL_SECURE_NO_DEPRECATE // required to disable a warning
+#include "util/Http.h"
+#include <windows.h>
+#include <atlutil.h>
+#include <wininet.h>
+#include <sstream>
+#include <G3D/format.h>
+#include <boost/scoped_ptr.hpp>
+#include <boost/thread/mutex.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
 
-struct Stream;
-extern int (__thiscall *pubsync)(Stream*);
+class HttpRequest_source : public boost::iostreams::device<boost::iostreams::input>
+{
+private:
+	void* request;
 
-struct S {
-    char pad0[0x14];
-    char** first;
-    char pad1[0x0c];
-    char** current;
-    char pad2[0x0c];
-    int* available;
-    char pad3[0x0c];
-    Stream* stream;
-    char* buffer;
-    int length;
+public:
+	HttpRequest_source(void* request)
+		: request(request)
+	{
+	}
+public:
+	// does not match
+	int read(char* s, int n)
+	{
+		DWORD numBytes;
+		if (!InternetQueryDataAvailable(request, &numBytes, 0, NULL))
+			return -1;
+		if (numBytes == 0)
+			return -1;
 
-    int sync();
+		DWORD bytesRead;
+		if (!InternetReadFile(request, s, n, &bytesRead))
+			throw std::runtime_error("InternetReadFile failed");
+
+		return bytesRead;
+	}
 };
 
-int S::sync()
+struct String_sink : public boost::iostreams::device<boost::iostreams::output>
 {
-    int count = *current - *first;
-    try {
-        if (count > 0) {
-            char* start = buffer;
-            char* end = start + length;
-            *first = start;
-            *current = start;
-            *available = end - start;
-        }
-        if (stream)
-            pubsync(stream);
-        return 0;
-    }
-    catch (const std::exception&) {
-        volatile int result = -1;
-        return result;
-    }
+public:
+	std::string& s;
+
+public:
+	String_sink(std::string& s)
+		: s(s)
+	{
+	}
+public:
+	// NOTE: not checked
+	int write(const char* c, int n)
+	{
+		s.append(c, n);
+		return n;
+	}
+};
+
+
+namespace RBX {
+	class MD5Hasher
+	{
+	public:
+		virtual void addData(std::istream& data) = 0;
+		virtual void addData(const std::string& data) = 0;
+		virtual void addData(const char* data, size_t nBytes) = 0;
+		
+		virtual std::string toString() = 0;
+		virtual const char* c_str() = 0;
+
+	public:
+		static MD5Hasher* create();
+	};
+struct NativeInternetHandle {
+ HINTERNET value;
+ NativeInternetHandle(HINTERNET v):value(v){}
+ ~NativeInternetHandle(){InternetCloseHandle(value);}
+ operator HINTERNET()const{return value;}
+};
+class NativeHttp:public Http {public:void request(bool,std::istream&,bool,const char*,std::string&);void failure(bool,const char*);};
+void NativeHttp::request(bool isPost,std::istream& data,bool compressData,const char* additionalHeaders,std::string& response) {
+ if(url.empty())throw std::runtime_error("empty url");
+ if(!Http::trustCheck(url.c_str()))throw std::runtime_error(G3D::format("trust check failed for %s",url.c_str()));
+ ATL::CUrl crack;crack.CrackUrl(url.c_str());
+ if(crack.GetHostNameLength()==0)throw std::runtime_error(G3D::format("'%s' is missing a hostName",url.c_str()));
+ HINTERNET session=InternetOpenA("Roblox/WinInet",INTERNET_OPEN_TYPE_PRECONFIG,NULL,NULL,0);
+ try {
+ HINTERNET connection=InternetConnectA(session,crack.GetHostName(),crack.GetPortNumber(),crack.GetUserNameA(),crack.GetPassword(),INTERNET_SERVICE_HTTP,0,TRUE);
+ try {
+ ATL::CStringA path=crack.GetUrlPath();path+=crack.GetExtraInfo();
+ HINTERNET request=HttpOpenRequestA(connection,isPost?"POST":"GET",path.GetString(),NULL,NULL,NULL,INTERNET_FLAG_EXISTING_CONNECT|INTERNET_FLAG_KEEP_CONNECTION|INTERNET_FLAG_NEED_FILE,TRUE);
+ try {
+ if(!request)throw std::runtime_error(G3D::format("HttpOpenRequest failed for %s",url.c_str()));
+ if(additionalHeaders)failure(HttpAddRequestHeadersA(request,additionalHeaders,(int)strlen(additionalHeaders),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+ failure(HttpAddRequestHeadersA(request,"Accept-Encoding: gzip\r\n",(int)strlen("Accept-Encoding: gzip\r\n"),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+ boost::iostreams::gzip_params gzipParams(boost::iostreams::zlib::default_compression);
+ if(isPost) {
+  std::string uploadData;
+  {
+   boost::iostreams::filtering_stream<boost::iostreams::output> out;
+   if(compressData) {
+    std::string contentEncodingHeader="Content-Encoding: gzip\r\n";
+    failure(HttpAddRequestHeadersA(request,contentEncodingHeader.c_str(),(int)contentEncodingHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+    out.push(boost::iostreams::basic_gzip_compressor<>(gzipParams));
+   }
+   out.push(String_sink(uploadData));boost::iostreams::copy(data,out);
+  }
+  int length=(int)uploadData.size();
+  if(length>10000) {
+   std::string sizeHeader=G3D::format("Roblox-Content-Size: %d\r\n",length);
+   failure(HttpAddRequestHeadersA(request,sizeHeader.c_str(),(int)sizeHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   std::string firstHeader=G3D::format("Roblox-Content-First: %d\r\n",uploadData[0]);
+   failure(HttpAddRequestHeadersA(request,firstHeader.c_str(),(int)firstHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   std::string lastHeader=G3D::format("Roblox-Content-Last: %d\r\n",uploadData[length-1]);
+   failure(HttpAddRequestHeadersA(request,lastHeader.c_str(),(int)lastHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   boost::scoped_ptr<MD5Hasher> hasher(MD5Hasher::create());hasher->addData(uploadData);
+   std::string hashHeader=G3D::format("Roblox-Content-Hash: %s\r\n",hasher->c_str());
+   failure(HttpAddRequestHeadersA(request,hashHeader.c_str(),(int)hashHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+  }
+  INTERNET_BUFFERSA buffers={0};buffers.dwStructSize=sizeof(buffers);buffers.dwBufferTotal=length;
+  if(!HttpSendRequestExA(request,&buffers,NULL,0,0))throw std::runtime_error("HttpSendRequestEx failed");
+  DWORD written;
+  failure(InternetWriteFile(request,uploadData.c_str(),length,&written)==TRUE,"InternetWriteFile failed");
+  if(written!=length)throw std::runtime_error("Failed to upload content");
+  failure(HttpEndRequestA(request,NULL,0,0)==TRUE,"HttpEndRequest failed");
+ }else failure(HttpSendRequestA(request,NULL,0,NULL,0)==TRUE,"HttpSendRequest failed");
+ int status;DWORD length=sizeof(status);
+ failure(HttpQueryInfoA(request,HTTP_QUERY_STATUS_CODE|HTTP_QUERY_FLAG_NUMBER,&status,&length,NULL)==TRUE,"HttpQueryInfo failed");
+ {
+  boost::iostreams::filtering_stream<boost::iostreams::input> in;
+  char buffer[256];DWORD length=sizeof(buffer);
+  if(HttpQueryInfoA(request,HTTP_QUERY_CONTENT_ENCODING,buffer,&length,NULL))if(std::string(buffer)=="gzip")in.push(boost::iostreams::basic_gzip_decompressor<>());
+  in.push(HttpRequest_source(request));boost::iostreams::copy(in,String_sink(response));
+ }
+ if(status!=200) {
+  char buffer[512];DWORD length=sizeof(buffer);
+  if(HttpQueryInfoA(request,HTTP_QUERY_STATUS_TEXT,buffer,&length,NULL))throw std::runtime_error(std::string(buffer));
+  else throw std::runtime_error(G3D::format("statusCode = %d",status));
+ }
+ }catch(...){InternetCloseHandle(request);throw;}
+ InternetCloseHandle(request);
+ }catch(...){InternetCloseHandle(connection);throw;}
+ InternetCloseHandle(connection);
+ }catch(...){InternetCloseHandle(session);throw;}
+ InternetCloseHandle(session);
+
+}
 }

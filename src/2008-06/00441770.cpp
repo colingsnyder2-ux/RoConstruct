@@ -1,41 +1,4 @@
 // from server: 100% by colin
-// roc 2008-06 00441770  unit: HVCXTPPropertyGridItemEnum::?$XItem  size: 114 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00441770
-//
-// 00441770  6aff                 push -1
-// 00441772  6899037c00           push 0x7c0399
-// 00441777  64a100000000         mov eax, dword ptr fs:[0]
-// 0044177d  50                   push eax
-// 0044177e  64892500000000       mov dword ptr fs:[0], esp
-// 00441785  51                   push ecx
-// 00441786  56                   push esi
-// 00441787  8bf1                 mov esi, ecx
-// 00441789  51                   push ecx
-// 0044178a  8d44241c             lea eax, [esp + 0x1c]
-// 0044178e  8bcc                 mov ecx, esp
-// 00441790  89642408             mov dword ptr [esp + 8], esp
-// 00441794  50                   push eax
-// 00441795  c744241800000000     mov dword ptr [esp + 0x18], 0
-// 0044179d  ff15d43e8000         call dword ptr [0x803ed4]
-// 004417a3  8bce                 mov ecx, esi
-// 004417a5  e816032d00           call 0x711ac0
-// 004417aa  8b16                 mov edx, dword ptr [esi]
-// 004417ac  8b82f4000000         mov eax, dword ptr [edx + 0xf4]
-// 004417b2  8bce                 mov ecx, esi
-// 004417b4  ffd0                 call eax
-// 004417b6  8d4c2404             lea ecx, [esp + 4]
-// 004417ba  51                   push ecx
-// 004417bb  8bce                 mov ecx, esi
-// 004417bd  89442408             mov dword ptr [esp + 8], eax
-// 004417c1  e80aebffff           call 0x4402d0
-// 004417c6  8d4c2418             lea ecx, [esp + 0x18]
-// 004417ca  ff15143f8000         call dword ptr [0x803f14]
-// 004417d0  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 004417d4  64890d00000000       mov dword ptr fs:[0], ecx
-// 004417db  5e                   pop esi
-// 004417dc  83c410               add esp, 0x10
-// 004417df  c20400               ret 4
-
 // from server: 34% by colin
 // roc 2008-06 00441770  unit: HVCXTPPropertyGridItemEnum::?$XItem  size: 31 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00441770

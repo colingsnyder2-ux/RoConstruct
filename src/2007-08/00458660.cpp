@@ -1,9 +1,4 @@
-// roc 2007-08 00458660  unit: CRobloxWnd  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00458660
-//
-// 00458660  e98bfaffff           jmp 0x4580f0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00458660();
 void func_00458660()
 {

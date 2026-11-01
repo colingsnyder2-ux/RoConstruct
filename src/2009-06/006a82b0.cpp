@@ -1,29 +1,22 @@
-// from server: 57% by atomic.potato
-struct S_func_006a79a0 {
-    char pad0[32];
-    int m_x;
-    int* f();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Obj { int& index(); };
+struct Arr {
+	Obj** data; int num;
+	Obj*& operator[](int i) { return data[i]; }
+	int size() const { return num; }
+	void resize(int n, bool shrinkIfNecessary);
 };
-
-struct Vec_6a7b10 {
-    int* m_data;
-    int m_count;
-    void func(int idx, int val);
-};
-
-struct S {
-    char pad0[0xc];
-    Vec_6a7b10 m_vec;
-    void method(S_func_006a79a0* arg);
-};
-
-void S::method(S_func_006a79a0* arg)
+class K { char pad[0xc]; Arr arr; public: void remove(Obj* x); };
+void K::remove(Obj* x)
 {
-    int idx = *arg->f();
-    int* data = this->m_vec.m_data;
-    int count = this->m_vec.m_count;
-    data[idx] = data[count - 1];
-    *arg->f() = idx;
-    this->m_vec.func(count - 1, 0);
-    *arg->f() = -1;
+	Arr& a = arr;
+	int i = x->index();
+	Obj* last = a[a.size() - 1];
+	a[i] = last;
+	last->index() = i;
+	a.resize(a.size() - 1, false);
+	x->index() = -1;
 }

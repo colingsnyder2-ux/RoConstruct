@@ -1,5 +1,15 @@
-// from server: 74% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/dlgdhtml.cpp
+// from server: 100% by tester
+struct CAboutRobloxDialog {
+    int Method(int);
+};
+
+int CAboutRobloxDialog::Method(int)
+{
+    struct VTable {
+        char pad[0x160];
+        void (__thiscall *fn)(CAboutRobloxDialog*);
+    };
+    VTable* vt = *(VTable**)this;
+    vt->fn(this);
+    return 0;
+}

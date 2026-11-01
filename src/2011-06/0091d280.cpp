@@ -1,10 +1,4 @@
-// roc 2011-06 0091d280  unit: RBX::ViewRbxGfx  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0091d280
-//
-// 0091d280  c6412001             mov byte ptr [ecx + 0x20], 1
-// 0091d284  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_0091d280 {
     char pad0[32];
     char m_x;

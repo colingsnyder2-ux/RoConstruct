@@ -1,31 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 005dffe0  unit: RBX::P8Lighting::?$GetSetImpl  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005dffe0
-//
-// 005dffe0  8b442404             mov eax, dword ptr [esp + 4]
-// 005dffe4  56                   push esi
-// 005dffe5  8bd1                 mov edx, ecx
-// 005dffe7  85c0                 test eax, eax
-// 005dffe9  7405                 je 0x5dfff0
-// 005dffeb  8d70ec               lea esi, [eax - 0x14]
-// 005dffee  eb02                 jmp 0x5dfff2
-// 005dfff0  33f6                 xor esi, esi
-// 005dfff2  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 005dfff6  d901                 fld dword ptr [ecx]
-// 005dfff8  83ec0c               sub esp, 0xc
-// 005dfffb  8bc4                 mov eax, esp
-// 005dfffd  d918                 fstp dword ptr [eax]
-// 005dffff  d94104               fld dword ptr [ecx + 4]
-// 005e0002  d95804               fstp dword ptr [eax + 4]
-// 005e0005  d94108               fld dword ptr [ecx + 8]
-// 005e0008  8b4a14               mov ecx, dword ptr [edx + 0x14]
-// 005e000b  d95808               fstp dword ptr [eax + 8]
-// 005e000e  8b4210               mov eax, dword ptr [edx + 0x10]
-// 005e0011  03ce                 add ecx, esi
-// 005e0013  ffd0                 call eax
-// 005e0015  5e                   pop esi
-// 005e0016  c20800               ret 8
-
 namespace G3D {
 class Color3
 {

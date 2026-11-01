@@ -1,12 +1,4 @@
 // from server: 100% by tester
-// roc 2010-06 008eeea0  unit: Ogre::RbxMeshPartAdapter  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 008eeea0
-//
-// 008eeea0  8b4944               mov ecx, dword ptr [ecx + 0x44]
-// 008eeea3  8b01                 mov eax, dword ptr [ecx]
-// 008eeea5  8b4030               mov eax, dword ptr [eax + 0x30]
-// 008eeea8  ffe0                 jmp eax
-
 struct OgreRbxMeshPartAdapter {
     int getSomething();
 };

@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net roc_player_loadappearance_genuine_d68f705aae6a1ff2.cpp
+// roc-lib: rbxgs-net roc_player_loadcharacter_genuine_c6a41e4db096fd36.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef _RELEASEASSERT
@@ -19,36 +20,61 @@
 #include <boost/algorithm/string/split.hpp>
 #undef private
 
-static void setAppearanceParent(boost::shared_ptr<RBX::Instance> parent, boost::shared_ptr<RBX::Instance> instance)
+static void addChild(const boost::shared_ptr<RBX::ModelInstance>& parent, const boost::shared_ptr<RBX::Instance>& child)
 {
-	if (dynamic_cast<RBX::CharacterAppearance*>(instance.get()))
-		instance->setParent(parent.get());
-	else if (dynamic_cast<RBX::Accoutrement*>(instance.get()))
-		instance->setParent(parent.get());
-	else
-		throw std::runtime_error("Attempt to add a non-CharacterAppearance/Accoutrement object to a character");
+	child->setParent(parent.get());
 }
 
 namespace RBX { namespace Network {
-void Player::loadCharacterAppearance()
+void Player::loadCharacter()
 {
+	Workspace* workspace = ServiceProvider::find<Workspace>(this);
+	if (!workspace)
+		throw std::runtime_error("LoadCharacter can only be called when Player is in the world");
+
 	if (!Players::backendProcessing(this, true))
-		throw std::runtime_error("LoadCharacterAppearance can only be called by the backend server");
+		throw std::runtime_error("LoadCharacter can only be called by the backend server");
 
-	removeCharacterAppearance();
+	std::vector<boost::shared_ptr<Instance>> instances;
+	ContentProvider::singleton().load(ContentId::fromAssets("fonts\\character.rbxm"), instances);
 
-	if (character && !characterAppearance.empty())
+	if (instances.size() != 1)
+		throw std::runtime_error("character.rbxm should contain a Character model");
+
+	boost::shared_ptr<ModelInstance> model = boost::shared_dynamic_cast<ModelInstance>(instances.front());
+	if (!model)
+		throw std::runtime_error("character.rbxm should contain a Character model");
+
+	Humanoid* humanoid = Humanoid::modelIsCharacter(model.get());
+	if (!humanoid)
+		throw std::runtime_error("character.rbxm should contain a humanoid");
+
 	{
-		std::vector<boost::shared_ptr<Instance>> characterApperance;
-		{
-			std::vector<std::string> strings;
-			boost::algorithm::split(strings, this->characterAppearance, boost::algorithm::is_any_of(";"));
-			for (size_t i = 0; i < strings.size(); i++)
-				ContentProvider::singleton().load(ContentId(strings[i]), characterApperance);
-		}
-		std::for_each(characterApperance.begin(), characterApperance.end(), boost::bind(&setAppearanceParent, character, _1));
-		if (Workspace* workspace = ServiceProvider::find<Workspace>(this))
-			workspace->getWorld()->update();
+		std::vector<boost::shared_ptr<Instance>> extraSound;
+		ContentProvider::singleton().load(ContentId::fromAssets("fonts\\humanoidSound.rbxm"), extraSound);
+		std::for_each(extraSound.begin(), extraSound.end(), boost::bind(&addChild, model, _1));
 	}
+
+	{
+		std::vector<boost::shared_ptr<Instance>> extraHealth;
+		ContentProvider::singleton().load(ContentId::fromAssets("fonts\\humanoidHealth.rbxm"), extraHealth);
+		std::for_each(extraHealth.begin(), extraHealth.end(), boost::bind(&addChild, model, _1));
+	}
+
+	{
+		std::vector<boost::shared_ptr<Instance>> extraAnimate;
+		ContentProvider::singleton().load(ContentId::fromAssets("fonts\\humanoidAnimate.rbxm"), extraAnimate);
+		std::for_each(extraAnimate.begin(), extraAnimate.end(), boost::bind(&addChild, model, _1));
+	}
+
+	model->setName(getName());
+	humanoid->buildJoints();
+	Instance::propArchivable.setValue(model.get(), false);
+	setCharacter(model.get());
+	model->setParent(workspace);
+	loadCharacterAppearance();
+	SpawnerService* spawnerService = ServiceProvider::find<SpawnerService>(this);
+	G3D::Vector3 dropPoint = spawnerService ? spawnerService->FindSpawnPositionForPlayer(this) : G3D::Vector3(0.0f, 20.0f, 25.0f);
+	workspace->moveToPoint(model.get(), dropPoint);
 }
 }}

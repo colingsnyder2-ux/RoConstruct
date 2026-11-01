@@ -1,18 +1,4 @@
-// roc 2009-12 00469620  unit: CPublishAsPlaceDialog  size: 40 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00469620
-//
-// 00469620  b801000000           mov eax, 1
-// 00469625  840518bbb700         test byte ptr [0xb7bb18], al
-// 0046962b  7515                 jne 0x469642
-// 0046962d  090518bbb700         or dword ptr [0xb7bb18], eax
-// 00469633  33c0                 xor eax, eax
-// 00469635  33c9                 xor ecx, ecx
-// 00469637  a3f8b4b000           mov dword ptr [0xb0b4f8], eax
-// 0046963c  890dfcb4b000         mov dword ptr [0xb0b4fc], ecx
-// 00469642  b8ecb4b000           mov eax, 0xb0b4ec
-// 00469647  c3                   ret 
-// copied from an identical function in another client (function ?GetDHtmlEventMap@EmptyDHtmlEventMap@@MAEPBUDHtmlEventMapEntry@@XZ)
-
+// from server: 100% by colin
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /Zp4

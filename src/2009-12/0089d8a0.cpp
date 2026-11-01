@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0089d8a0  unit: CXTPReportPaintManager  size: 35 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0089d8a0
 //

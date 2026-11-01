@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0047aa40  unit: RBX::LDraw2Lua::LDraw2RobloxColorMap  size: 135 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0047aa40
 //

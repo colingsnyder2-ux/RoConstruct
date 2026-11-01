@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 00564b70  unit: G3D::Random  size: 19 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 00564b70
 //

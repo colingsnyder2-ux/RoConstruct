@@ -1,53 +1,110 @@
-// roc 2009-06 00403a10  unit: RBX::VRunService::?$FactoryProduct::Creator  size: 123 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00403a10
-//
-// 00403a10  53                   push ebx
-// 00403a11  8b5c2408             mov ebx, dword ptr [esp + 8]
-// 00403a15  57                   push edi
-// 00403a16  8bf9                 mov edi, ecx
-// 00403a18  85db                 test ebx, ebx
-// 00403a1a  750a                 jne 0x403a26
-// 00403a1c  6805400080           push 0x80004005
-// 00403a21  e88af4ffff           call 0x402eb0
-// 00403a26  803b00               cmp byte ptr [ebx], 0
-// 00403a29  7410                 je 0x403a3b
-// 00403a2b  80bf2201000000       cmp byte ptr [edi + 0x122], 0
-// 00403a32  7507                 jne 0x403a3b
-// 00403a34  5f                   pop edi
-// 00403a35  33c0                 xor eax, eax
-// 00403a37  5b                   pop ebx
-// 00403a38  c20400               ret 4
-// 00403a3b  56                   push esi
-// 00403a3c  6881000000           push 0x81
-// 00403a41  53                   push ebx
-// 00403a42  ff158ce98900         call dword ptr [0x89e98c]
-// 00403a48  8bf0                 mov esi, eax
-// 00403a4a  83c408               add esp, 8
-// 00403a4d  81fe80000000         cmp esi, 0x80
-// 00403a53  7608                 jbe 0x403a5d
-// 00403a55  5e                   pop esi
-// 00403a56  5f                   pop edi
-// 00403a57  33c0                 xor eax, eax
-// 00403a59  5b                   pop ebx
-// 00403a5a  c20400               ret 4
-// 00403a5d  56                   push esi
-// 00403a5e  53                   push ebx
-// 00403a5f  8d87a3010000         lea eax, [edi + 0x1a3]
-// 00403a65  6881000000           push 0x81
-// 00403a6a  50                   push eax
-// 00403a6b  ff15a0e98900         call dword ptr [0x89e9a0]
-// 00403a71  50                   push eax
-// 00403a72  e8a9f2ffff           call 0x402d20
-// 00403a77  83c414               add esp, 0x14
-// 00403a7a  89b738120000         mov dword ptr [edi + 0x1238], esi
-// 00403a80  5e                   pop esi
-// 00403a81  5f                   pop edi
-// 00403a82  b801000000           mov eax, 1
-// 00403a87  5b                   pop ebx
-// 00403a88  c20400               ret 4
-// copied from an identical function in another client (function ?SetPassword@CUrl@ATL@@QAEHPBD@Z)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: atl-9.0-dll-rtm roc_espclaude_188c2f09ea8697a7.cpp
+
+// Candidate translation unit (score above; library headers required).
+#ifndef _CPPUNWIND
+#define _CPPUNWIND 1
+#endif
+#ifndef _AFXDLL
+#define _AFXDLL
+#endif
+#ifndef _MBCS
+#define _MBCS
+#endif
+#include <new>
+#include <afxwin.h>
+#include <atlutil.h>
+#include <string>
+#include <exception>
+#include <intrin.h>
+
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0)
+        {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+    long use_count_;
+    long weak_count_;
+};
+
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+
+template<class T> class shared_ptr {
+public:
+    T* px;
+    shared_count pn;
+    T* operator->() const { return px; }
+};
+
+template <class T> class CStr {
+public:
+    __declspec(noinline) CStr(const wchar_t* psz) { m_pszData = (T*)psz; }
+    __declspec(noinline) ~CStr() throw() { m_pszData = 0; }
+    __declspec(noinline) operator const T*() const throw() { return m_pszData; }
+    T* m_pszData;
+};
+extern template class __declspec(dllimport) CStr<char>;
+typedef CStr<char> CStrA;
+
+class Logger {
+public:
+    void log(int level, const char* fmt, ...);
+};
+shared_ptr<Logger> __cdecl getLogger();
+CStrA __cdecl getBaseUrl();
+
+class Authenticator {
+public:
+    Authenticator(const char* host);
+    ~Authenticator();
+    std::string authenticate(const char* user, const char* password);
+    std::string host;
+};
+
+HRESULT __cdecl ReportException(const GUID& iid, std::exception& e);
+extern const GUID IID_IApp;
+
+class CApp {
+public:
+    HRESULT __stdcall RobloxAuthenticate(BSTR user, BSTR password) throw();
+};
+
+HRESULT __stdcall CApp::RobloxAuthenticate(BSTR user, BSTR password) throw()
+{
+    AFX_MANAGE_STATE(AfxGetAppModuleState());
+    getLogger()->log(1, "CApp::RobloxAuthenticate %s %s", (const char*)CStrA(user), (const char*)CStrA(password));
+    try
+    {
+        ATL::CUrl url;
+        url.CrackUrl(getBaseUrl());
+        Authenticator auth(url.GetHostName());
+        auth.authenticate(CStrA(user), CStrA(password));
+    }
+    catch (std::exception& e)
+    {
+        return ReportException(IID_IApp, e);
+    }
+    return S_OK;
+}
+

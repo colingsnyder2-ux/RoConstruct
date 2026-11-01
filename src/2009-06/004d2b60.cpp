@@ -1,167 +1,107 @@
-// from server: 53% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/util/RunStateOwner.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-
-#include "util/Timer.h"
-#include "v8datamodel/DataModel.h"
-
-#include <algorithm>
-#include <boost/thread/thread.hpp>
-#include <boost/thread/xtime.hpp>
-
+#include <intrin.h>
+#include <string>
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long volatile*);
+namespace boost {
+namespace noncopyable_ { class noncopyable { protected: noncopyable() {} ~noncopyable() {} }; }
+namespace detail {
+class sp_counted_base {
+public:
+    long use_count_;
+    long weak_count_;
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+    void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count() : pi_(0) {}
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    shared_ptr() : px(0), pn() {}
+};
+namespace detail { namespace function {
+union any_pointer { void* obj_ptr; };
+union function_buffer { double d; char data[0x18]; };
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag, check_functor_type_tag, get_functor_type_tag };
+struct vtable_base {
+    void (*manager)(const function_buffer& in_buffer, function_buffer& out_buffer, functor_manager_operation_type op);
+    void clear(function_buffer& functor) { if (manager) manager(functor, functor, destroy_functor_tag); }
+};
+} }
+class function_base {
+public:
+    detail::function::vtable_base* vtable;
+    mutable detail::function::function_buffer functor;
+    function_base() : vtable(0) {}
+};
+template<class Sig> class function : public function_base {
+public:
+    function(const function& f) : function_base() { assign_to_own(f); }
+    ~function() { clear(); }
+    void assign_to_own(const function& f)
+    {
+        if (f.vtable) {
+            this->vtable = f.vtable;
+            this->vtable->manager(f.functor, this->functor, detail::function::clone_functor_tag);
+        }
+    }
+    void clear()
+    {
+        if (vtable) {
+            vtable->clear(functor);
+            vtable = 0;
+        }
+    }
+};
+}
 namespace RBX {
-
-const char sRunService[] = "RunService";
-
-Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "step");
-
-// FUNCTION: WEBSERVICE 0x10054320
-void RunService::endRunThread(bool join)
-{
-	stopRequested = true;
-	stateChangedCondition.notify_all();
-
-	if (join) {
-		runThread->join();
-	}
+class Instance;
+template<class T> class Countable {
+    static long count;
+public:
+    Countable() { InterlockedIncrement(&count); }
+    ~Countable() { InterlockedDecrement(&count); }
+};
 }
-
-// FUNCTION: WEBSERVICE 0x100543b0
-void RunService::onAncestorChanged(const AncestorChanged& event)
-{
-	if (getParent() == NULL) {
-		endRunThread(false);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10054cb0
-void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-{
-	double desiredTime = getRealTime();
-
-	while (true) {
-		const double timeLeft = desiredTime - getRealTime();
-
-		{
-			boost::mutex::scoped_lock lock(viewMutex);
-
-			for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-				iter->first->AdjustThrottle(timeLeft);
-			}
-		}
-
-		const double waitTime = std::max(0.0, timeLeft);
-
-		boost::xtime xt;
-
-		boost::xtime_get(&xt, boost::TIME_UTC);
-		xt.nsec += (int) (waitTime * 1000000000.0);
-
-		bool signalled;
-
-		{
-			boost::mutex::scoped_lock lock(runMutex);
-
-			signalled = stateChangedCondition.timed_wait(lock, xt);
-		}
-
-		if (!signalled) {
-			boost::xtime xt;
-
-			boost::xtime_get(&xt, boost::TIME_UTC);
-			xt.sec += 1;
-
-			boost::mutex::scoped_lock lock(runMutex);
-
-			if (invalidRunViewCount != 0) {
-				runViewsDoneCondition.timed_wait(lock, xt);
-			}
-		}
-
-		if (timeLeft <= 0.0) {
-			desiredTime = getRealTime();
-		}
-
-		{
-			DataModel::Lock lock(dataModel);
-
-			if (stopRequested) {
-				break;
-			}
-
-			dataModel->step(framePeriod);
-		}
-
-		desiredTime += framePeriod;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10054fd0
-void RunService::invalidateRunViews()
-{
-	boost::mutex::scoped_lock lock(viewMutex);
-
-	if (invalidRunViewCount != 0) {
-		return;
-	}
-
-	invalidRunViewCount = views.size();
-
-	if (invalidRunViewCount > 0) {
-		for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-			iter->first->InvalidateRunView();
-			iter->second = false;
-		}
-
-		runViewsDoneCondition.notify_all();
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10055380
-RunService::~RunService()
-{
-}
-
-// FUNCTION: WEBSERVICE 0x10056950
-RunService::RunService()
-	: runState(RS_NORMAL), stopRequested(false), framePeriod(1.0f / 30.0f), runThread(NULL), invalidRunViewCount(0),
-	  runDisabled(false)
-{
-	setName("Run Service");
-}
-
-// STUB: WEBSERVICE 0x100573e0
-void RunService::start()
-{
-	STUB(0x100573e0);
-}
-
-// FUNCTION: WEBSERVICE 0x100577f0
-void RunService::raiseHeartbeat(float time, float step)
-{
-	Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-	event_Heartbeat.fire(this, step);
-}
-
-// FUNCTION: WEBSERVICE 0x10057860
-void RunService::raiseStepped(float time, float step)
-{
-	Notifier<RunService, Stepped>::raise(Stepped(time, step));
-	event_Stepped.fire(this, time, step);
-}
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService>;
-template class RBX::Reflection::Described<
-	RBX::RunService,
-	RBX::sRunService,
-	RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService> >;
-template class RBX::DescribedCreatable<RBX::RunService, RBX::Instance, RBX::sRunService>;
+extern void* const gDefault;
+struct NP { void* p; NP() : p(0) {} };
+namespace rbx { namespace signals {
+class connection {
+public:
+    class slot : boost::noncopyable_::noncopyable, RBX::Countable<slot> {
+    public:
+        slot(void* owner) : connected(true), def(gDefault), owner(owner) {}
+        virtual ~slot() {}
+        bool connected;
+        NP next;
+        void* def;
+        void* owner;
+    };
+};
+template<class Sig> class signal {
+public:
+    class slot : public connection::slot {
+    public:
+        slot(boost::function<Sig> f, void* owner) : connection::slot(owner), func(f) {}
+        virtual ~slot();
+        boost::function<Sig> func;
+        boost::shared_ptr<void> p1;
+        boost::shared_ptr<void> p2;
+    };
+};
+template<class Sig> signal<Sig>::slot::~slot() {}
+} }
+template class rbx::signals::signal<void(std::string, int, std::string)>::slot;

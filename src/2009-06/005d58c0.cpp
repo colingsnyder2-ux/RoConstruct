@@ -1,108 +1,67 @@
-// from server: 53% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include <intrin.h>
+namespace boost {
+namespace detail {
+inline long atomic_increment(long* pw) { return _InterlockedIncrement(pw); }
+inline long atomic_decrement(long* pw) { return _InterlockedDecrement(pw); }
+class sp_counted_base {
+public:
+    long use_count_;
+    long weak_count_;
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void weak_add_ref() { atomic_increment(&weak_count_); }
+    void weak_release() { if (atomic_decrement(&weak_count_) == 0) destroy(); }
+    void release() { if (atomic_decrement(&use_count_) == 0) { dispose(); weak_release(); } }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+class weak_count {
+public:
+    sp_counted_base* pi_;
+    weak_count(shared_count const& r) : pi_(r.pi_) { if (pi_ != 0) pi_->weak_add_ref(); }
+    ~weak_count() { if (pi_ != 0) pi_->weak_release(); }
+};
 }
-
-void initMoo()
-{
-	moo2();
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    T* get() const { return px; }
+};
+template<class T> class weak_ptr {
+public:
+    T* px;
+    detail::weak_count pn;
+    template<class Y> weak_ptr(shared_ptr<Y> const& r) : px(r.px), pn(r.pn) {}
+};
 }
-
-namespace RBX
+namespace RBX {
+class Arbiter { public: virtual ~Arbiter(); };
+class DataModelPad { public: virtual ~DataModelPad(); char pad[0xfc]; };
+class DataModel : public DataModelPad, public Arbiter {};
+class DataModelJob {
+public:
+    DataModelJob(const char* name, int type, bool b, Arbiter* arbiter);
+    virtual ~DataModelJob();
+    char pad[0x1cc - 4];
+};
+class PhysicsJob : public DataModelJob {
+public:
+    double fps;
+    boost::weak_ptr<DataModel> dataModel;
+    PhysicsJob(boost::shared_ptr<DataModel> dataModel);
+    virtual ~PhysicsJob();
+};
+PhysicsJob::PhysicsJob(boost::shared_ptr<DataModel> dataModel)
+    : DataModelJob("Physics", 3, false, dataModel.get()), fps(30.0), dataModel(dataModel)
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+}
 }

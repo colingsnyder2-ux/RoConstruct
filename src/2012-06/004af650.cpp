@@ -1,30 +1,77 @@
-// roc 2012-06 004af650  unit: VerbBinderJob  size: 51 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 004af650
-//
-// 004af650  56                   push esi
-// 004af651  8bf1                 mov esi, ecx
-// 004af653  8b4604               mov eax, dword ptr [esi + 4]
-// 004af656  57                   push edi
-// 004af657  33ff                 xor edi, edi
-// 004af659  897e10               mov dword ptr [esi + 0x10], edi
-// 004af65c  3bc7                 cmp eax, edi
-// 004af65e  740c                 je 0x4af66c
-// 004af660  50                   push eax
-// 004af661  e8542d4d00           call 0x9823ba
-// 004af666  83c404               add esp, 4
-// 004af669  897e04               mov dword ptr [esi + 4], edi
-// 004af66c  897e08               mov dword ptr [esi + 8], edi
-// 004af66f  897e0c               mov dword ptr [esi + 0xc], edi
-// 004af672  33c0                 xor eax, eax
-// 004af674  b9e4040000           mov ecx, 0x4e4
-// 004af679  5f                   pop edi
-// 004af67a  668906               mov word ptr [esi], ax
-// 004af67d  66894e02             mov word ptr [esi + 2], cx
-// 004af681  5e                   pop esi
-// 004af682  c3                   ret 
-// copied from an identical function in another client (function ?Reset@CFileVersionInfo@@QAEXXZ)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: atl-9.0-dll-rtm roc_espclaude_819913a7344f1e19.cpp
+
+// Candidate translation unit (score above; library headers required).
+#ifndef _CPPUNWIND
+#define _CPPUNWIND 1
+#endif
+#ifndef _AFXDLL
+#define _AFXDLL
+#endif
+#include <new>
+#include <afxwin.h>
+
+class CFileVersionInfo
+{
+public:
+    WORD m_wLang;
+    WORD m_wCodePage;
+    LPBYTE m_lpVersionData;
+    LPVOID m_lpTranslation;
+    UINT m_nTranslations;
+    VS_FIXEDFILEINFO* m_pFixedInfo;
+
+    CFileVersionInfo() : m_wLang(0), m_lpVersionData(NULL) { Reset(); }
+    ~CFileVersionInfo() { Reset(); }
+    void Reset()
+    {
+        m_pFixedInfo = NULL;
+        if (m_lpVersionData)
+        {
+            delete[] m_lpVersionData;
+            m_lpVersionData = NULL;
+        }
+        m_wLang = 0;
+        m_wCodePage = 1252;
+        m_lpTranslation = NULL;
+        m_nTranslations = 0;
+    }
+    BOOL Create(const CString& strFileName);
+};
+
+BOOL CFileVersionInfo::Create(const CString& strFileName)
+{
+    Reset();
+    CString strPath(strFileName);
+    BOOL bRet = FALSE;
+    DWORD dwHandle = 0;
+    DWORD dwSize = GetFileVersionInfoSize(strPath.GetBuffer(), &dwHandle);
+    if (dwSize)
+    {
+        m_lpVersionData = new BYTE[dwSize];
+        if (GetFileVersionInfo(strPath.GetBuffer(), dwHandle, dwSize, m_lpVersionData))
+        {
+        UINT uLen = 0;
+        if (VerQueryValue(m_lpVersionData, "\\", (LPVOID*)&m_pFixedInfo, &uLen))
+        {
+            if (VerQueryValue(m_lpVersionData, "\\VarFileInfo\\Translation", &m_lpTranslation, &uLen) && uLen >= 4)
+            {
+                m_nTranslations = uLen / 4;
+                m_wLang = ((WORD*)m_lpTranslation)[0];
+                m_wCodePage = ((WORD*)m_lpTranslation)[1];
+            }
+            bRet = TRUE;
+        }
+        }
+    }
+    if (!bRet && m_lpVersionData)
+    {
+        delete[] m_lpVersionData;
+        m_lpVersionData = NULL;
+    }
+    return bRet;
+}
+CFileVersionInfo* makeInfo(void* p) { return new (p) CFileVersionInfo; }

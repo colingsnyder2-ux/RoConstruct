@@ -1,16 +1,4 @@
-// roc 2007-08 00716570  unit: CXTPRibbonTab  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00716570
-//
-// 00716570  8bc1                 mov eax, ecx
-// 00716572  33c9                 xor ecx, ecx
-// 00716574  c700ecf27d00         mov dword ptr [eax], 0x7df2ec
-// 0071657a  894804               mov dword ptr [eax + 4], ecx
-// 0071657d  894810               mov dword ptr [eax + 0x10], ecx
-// 00716580  89480c               mov dword ptr [eax + 0xc], ecx
-// 00716583  894808               mov dword ptr [eax + 8], ecx
-// 00716586  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

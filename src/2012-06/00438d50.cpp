@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 00438d50  unit: boost::detail::thread_data_base  size: 74 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 00438d50
 //

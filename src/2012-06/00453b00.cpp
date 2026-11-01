@@ -1,10 +1,4 @@
-// from server: 70% by Intel
-struct CProgressDialog {
-    virtual void func();
-};
-
-void CProgressDialog::func() {
-    int (__thiscall *vtable_func)(CProgressDialog*, int);
-    vtable_func = (int (__thiscall *)(CProgressDialog*, int))(*(int**)this)[1];
-    vtable_func(this, 0);
-}
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+struct S{virtual void v0(); virtual void m(); void f(int a0);};
+void S::f(int a0){m();}

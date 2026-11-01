@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 008cec20  unit: CXTPTabManager::CNavigateButtonClose  size: 203 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 008cec20
 //

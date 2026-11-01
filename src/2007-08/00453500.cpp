@@ -1,10 +1,4 @@
-// roc 2007-08 00453500  unit: CRobloxDoc  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00453500
-//
-// 00453500  b8101a7900           mov eax, 0x791a10
-// 00453505  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_00453500()

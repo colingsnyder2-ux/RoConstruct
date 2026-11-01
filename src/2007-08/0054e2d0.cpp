@@ -1,177 +1,168 @@
-// from server: 80% by Espeon
+// from server: 100% by Yeetserama
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs roc_espeon_aug2007_http_iostreams_control_316ff47879a82139.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: boost-1.34.1-dll libs/program_options/src/convert.cpp
 
 // Candidate translation unit (score above; library headers required).
-#define _CPPUNWIND 1
-#undef _RELEASEASSERT
-#pragma include_alias("v8world/Edge.h", "../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp")
-#pragma include_alias(<v8world/Edge.h>, <../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp>)
-#pragma include_alias("v8world/Contact.h", "../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp")
-#pragma include_alias(<v8world/Contact.h>, <../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp>)
-#define _MT 1
-#define _DLL 1
-#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
-#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
-#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
-#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
-#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
-#pragma include_alias(<util/Debug.h>, <../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp>)
-#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_datamodel_header_e4d5a36bea2e4f16.cpp")
-#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_arg_header_14221fd67bb3ca43.cpp")
-#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
-#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_flags_header_a6acc69782cd7c29.cpp")
-#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
-#pragma include_alias("v8datamodel/DataModel.h", "../roc_espeon_aug2007_datamodel_mutex_header_321a3c67de644a82.cpp")
-#pragma include_alias("v8tree/Verb.h", "../roc_espeon_aug2007_datamodel_header_c06d28d1a6b724f6.cpp")
-#pragma include_alias("util/Evaluator.h", "../roc_espeon_aug2007_datamodel_header_4ba4cf67c400aa66.cpp")
-#pragma include_alias(<boost/signals/signal_template.hpp>, <../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp>)
-#pragma include_alias("boost/signals/signal_template.hpp", "../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp")
-#include "roc_espeon_boost133_header_d432d72f8740aec3.cpp"
-#include "roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
-#include "roc_espeon_boost133_signals_header_be197e98651271fa.cpp"
+// Copyright Vladimir Prus 2004.
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt
+// or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp")
-#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp>)
-#pragma include_alias("v8world/IPipelined.h", "../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp")
-#pragma include_alias(<v8world/IPipelined.h>, <../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp>)
-#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp")
-#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp>)
-#pragma include_alias("util/IRenderable.h", "../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp")
-#pragma include_alias(<util/IRenderable.h>, <../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp>)
-#pragma include_alias("v8datamodel/JointInstance.h", "../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp")
-#pragma include_alias(<v8datamodel/JointInstance.h>, <../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp>)
-#pragma include_alias("v8world/IMoving.h", "../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp")
-#pragma include_alias(<v8world/IMoving.h>, <../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp>)
-#pragma include_alias("v8kernel/IStage.h", "../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp")
-#pragma include_alias(<v8kernel/IStage.h>, <../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp>)
-#pragma include_alias("reflection/function.h", "../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp")
-#pragma include_alias(<reflection/function.h>, <../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp>)
-#pragma include_alias("reflection/member.h", "../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp")
-#pragma include_alias(<reflection/member.h>, <../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp>)
-#pragma include_alias("reflection/property.h", "../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp")
-#pragma include_alias(<reflection/property.h>, <../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp>)
-#pragma include_alias("reflection/signal.h", "../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp")
-#pragma include_alias(<reflection/signal.h>, <../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp>)
-#pragma include_alias("script/Script.h", "../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp")
-#pragma include_alias(<script/Script.h>, <../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp>)
-#pragma include_alias("util/ICameraSubject.h", "../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp")
-#pragma include_alias(<util/ICameraSubject.h>, <../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp>)
-#pragma include_alias("util/IControllable.h", "../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp")
-#pragma include_alias(<util/IControllable.h>, <../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp>)
-#pragma include_alias("util/ILocation.h", "../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp")
-#pragma include_alias(<util/ILocation.h>, <../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp>)
-#pragma include_alias("v8datamodel/ICameraOwner.h", "../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp")
-#pragma include_alias(<v8datamodel/ICameraOwner.h>, <../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp>)
-#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp")
-#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp>)
-#pragma include_alias("v8datamodel/IPrimaryPart.h", "../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp")
-#pragma include_alias(<v8datamodel/IPrimaryPart.h>, <../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp>)
-#pragma include_alias("v8datamodel/PVInstance.h", "../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp")
-#pragma include_alias(<v8datamodel/PVInstance.h>, <../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp>)
-#pragma include_alias("v8tree/Service.h", "../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp")
-#pragma include_alias(<v8tree/Service.h>, <../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp>)
-#pragma include_alias("util/UIEvent.h", "../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp")
-#pragma include_alias(<util/UIEvent.h>, <../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp>)
-#pragma include_alias("v8datamodel/Workspace.h", "../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp")
-#pragma include_alias(<v8datamodel/Workspace.h>, <../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp>)
-#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_character_state_f342eee04d017582.cpp")
-#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_character_state_f342eee04d017582.cpp>)
-#pragma include_alias("humanoid/Humanoid.h", "../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp")
-#pragma include_alias(<humanoid/Humanoid.h>, <../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp>)
-#pragma include_alias("humanoid/Running.h", "../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp")
-#pragma include_alias(<humanoid/Running.h>, <../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp>)
-#pragma include_alias("humanoid/Balancing.h", "../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp")
-#pragma include_alias(<humanoid/Balancing.h>, <../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp>)
-#pragma include_alias("humanoid/FallingDown.h", "../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp")
-#pragma include_alias(<humanoid/FallingDown.h>, <../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp>)
-#pragma include_alias("humanoid/Flying.h", "../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp")
-#pragma include_alias(<humanoid/Flying.h>, <../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp>)
-#pragma include_alias("humanoid/Freefall.h", "../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp")
-#pragma include_alias(<humanoid/Freefall.h>, <../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp>)
-#pragma include_alias("humanoid/GettingUp.h", "../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp")
-#pragma include_alias(<humanoid/GettingUp.h>, <../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp>)
-#pragma include_alias("humanoid/Jumping.h", "../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp")
-#pragma include_alias(<humanoid/Jumping.h>, <../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp>)
-#pragma include_alias("humanoid/Seated.h", "../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp")
-#pragma include_alias(<humanoid/Seated.h>, <../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp>)
-#pragma include_alias("RbxGraphics/Adorn.h", "../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp")
-#pragma include_alias(<RbxGraphics/Adorn.h>, <../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp>)
-#pragma include_alias("AppDraw/AdornG3D.h", "../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp")
-#pragma include_alias(<AppDraw/AdornG3D.h>, <../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp>)
-#pragma include_alias("v8kernel/Kernel.h", "../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp")
-#pragma include_alias(<v8kernel/Kernel.h>, <../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp>)
-#pragma include_alias("v8kernel/Point.h", "../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp")
-#pragma include_alias(<v8kernel/Point.h>, <../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp>)
-
-#include <windows.h>
-#include <wininet.h>
+#include <fstream>
+#include <locale.h>
+#include <locale>
+#include <iostream>
 #include <string>
+#include <locale>
 #include <stdexcept>
-#include <sstream>
-#include <boost/iostreams/filtering_stream.hpp>
-#include <boost/iostreams/copy.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-class HttpRequest_source : public boost::iostreams::device<boost::iostreams::input>
-{
-private:
-	void* request;
 
-public:
-	HttpRequest_source(void* request)
-		: request(request)
-	{
-	}
-public:
-	// does not match
-	int read(char* s, int n)
-	{
-		DWORD numBytes;
-		if (!InternetQueryDataAvailable(request, &numBytes, 0, NULL))
-			return -1;
-		if (numBytes == 0)
-			return -1;
+#include <boost/config.hpp>
 
-		DWORD bytesRead;
-		if (!InternetReadFile(request, s, n, &bytesRead))
-			throw std::runtime_error("InternetReadFile failed");
+#define BOOST_PROGRAM_OPTIONS_SOURCE
+#include <boost/program_options/config.hpp>
+#include <boost/program_options/detail/convert.hpp>
+#include <boost/program_options/detail/utf8_codecvt_facet.hpp>
+#include <boost/throw_exception.hpp>
 
-		return bytesRead;
-	}
-};
+#include <boost/bind.hpp>
 
-struct String_sink : public boost::iostreams::device<boost::iostreams::output>
-{
-public:
-	std::string& s;
+using namespace std;
 
-public:
-	String_sink(std::string& s)
-		: s(s)
-	{
-	}
-public:
-	// NOTE: not checked
-	int write(const char* c, int n)
-	{
-		s.append(c, n);
-		return n;
-	}
-};
+namespace boost { namespace detail {
+
+    /* Internal function to actually perform conversion.
+       The logic in from_8_bit and to_8_bit function is exactly
+       the same, except that one calls 'in' method of codecvt and another
+       calls the 'out' method, and that syntax difference makes straightforward
+       template implementation impossible.
+
+       This functions takes a 'fun' argument, which should have the same 
+       parameters and return type and the in/out methods. The actual converting
+       function will pass functional objects created with boost::bind.
+       Experiments show that the performance loss is less than 10%.
+    */
+    template<class ToChar, class FromChar, class Fun>
+    std::basic_string<ToChar>
+    convert(const std::basic_string<FromChar>& s, Fun fun)
+        
+    {
+        std::basic_string<ToChar> result;
+        
+        std::mbstate_t state = {0};
+
+        const FromChar* from = s.data();
+        const FromChar* from_end = s.data() + s.size();
+        // The interface of cvt is not really iterator-like, and it's
+        // not possible the tell the required output size without the conversion.
+        // All we can is convert data by pieces.
+        while(from != from_end) {
+            
+            // std::basic_string does not provide non-const pointers to the data,
+            // so converting directly into string is not possible.
+            ToChar buffer[32];
+            
+            ToChar* to_next = buffer;
+            // Need variable because boost::bind doesn't work with rvalues.
+            ToChar* to_end = buffer + 32;
+            std::codecvt_base::result r = 
+                fun(state, from, from_end, from, buffer, to_end, to_next);
+            
+            if (r == std::codecvt_base::error)
+                boost::throw_exception(
+                    std::logic_error("character conversion failed"));
+            // 'partial' is not an error, it just means not all source
+            // characters were converted. However, we need to check that at
+            // least one new target character was produced. If not, it means
+            // the source data is incomplete, and since we don't have extra
+            // data to add to source, it's error.
+            if (to_next == buffer)
+                boost::throw_exception(
+                    std::logic_error("character conversion failed"));
+            
+            // Add converted characters
+            result.append(buffer, to_next);
+        }
+        
+        return result;        
+    }           
+}}
+
+namespace boost {
+
+#ifndef BOOST_NO_STD_WSTRING
+    BOOST_PROGRAM_OPTIONS_DECL std::wstring 
+    from_8_bit(const std::string& s, 
+               const std::codecvt<wchar_t, char, std::mbstate_t>& cvt)
+    {
+        return detail::convert<wchar_t>(
+            s,                 
+            boost::bind(&std::codecvt<wchar_t, char, mbstate_t>::in,
+                        &cvt,
+                        _1, _2, _3, _4, _5, _6, _7));
+    }
+
+    BOOST_PROGRAM_OPTIONS_DECL std::string 
+    to_8_bit(const std::wstring& s, 
+             const std::codecvt<wchar_t, char, std::mbstate_t>& cvt)
+    {
+        return detail::convert<char>(
+            s,                 
+            boost::bind(&codecvt<wchar_t, char, mbstate_t>::out,
+                        &cvt,
+                        _1, _2, _3, _4, _5, _6, _7));
+    }
 
 
-void nativeHttpCompress(std::istream& data,std::string& uploadData,bool compressData) {
- boost::iostreams::gzip_params gzipParams(boost::iostreams::zlib::default_compression);
- boost::iostreams::filtering_stream<boost::iostreams::output> out;
- if(compressData) out.push(boost::iostreams::basic_gzip_compressor<>(gzipParams));
- out.push(String_sink(uploadData));
- boost::iostreams::copy(data,out);
-}
-void nativeHttpDecompress(void* request,std::string& response,bool compressed) {
- boost::iostreams::filtering_stream<boost::iostreams::input> in;
- if(compressed) in.push(boost::iostreams::basic_gzip_decompressor<>());
- in.push(HttpRequest_source(request));
- boost::iostreams::copy(in,String_sink(response));
+    namespace {
+        boost::program_options::detail::utf8_codecvt_facet
+            utf8_facet;
+    }
+    
+    BOOST_PROGRAM_OPTIONS_DECL std::wstring
+    from_utf8(const std::string& s)
+    {
+        return from_8_bit(s, utf8_facet);
+    }
+    
+    BOOST_PROGRAM_OPTIONS_DECL std::string
+    to_utf8(const std::wstring& s)
+    {
+        return to_8_bit(s, utf8_facet);
+    }
+
+    BOOST_PROGRAM_OPTIONS_DECL std::wstring
+    from_local_8_bit(const std::string& s)
+    {
+        typedef codecvt<wchar_t, char, mbstate_t> facet_type;
+        return from_8_bit(s, 
+                          BOOST_USE_FACET(facet_type, locale()));
+    }
+
+    BOOST_PROGRAM_OPTIONS_DECL std::string
+    to_local_8_bit(const std::wstring& s)
+    {
+        typedef codecvt<wchar_t, char, mbstate_t> facet_type;
+        return to_8_bit(s, 
+                        BOOST_USE_FACET(facet_type, locale()));                        
+    }
+#endif
+
+    namespace program_options
+    {
+        BOOST_PROGRAM_OPTIONS_DECL std::string to_internal(const std::string& s)
+        {
+            return s;
+        }
+
+#ifndef BOOST_NO_STD_WSTRING
+        BOOST_PROGRAM_OPTIONS_DECL std::string to_internal(const std::wstring& s)
+        {
+            return to_utf8(s);
+        }
+#endif
+    }
+
+
 }

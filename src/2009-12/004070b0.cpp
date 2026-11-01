@@ -1,41 +1,62 @@
-// roc 2009-12 004070b0  unit: VCApp::?$CComObject  size: 91 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 004070b0
-//
-// 004070b0  8b0ddcfaaf00         mov ecx, dword ptr [0xaffadc]
-// 004070b6  33c0                 xor eax, eax
-// 004070b8  85c9                 test ecx, ecx
-// 004070ba  7408                 je 0x4070c4
-// 004070bc  3905e4faaf00         cmp dword ptr [0xaffae4], eax
-// 004070c2  7515                 jne 0x4070d9
-// 004070c4  8b442410             mov eax, dword ptr [esp + 0x10]
-// 004070c8  50                   push eax
-// 004070c9  b9d0faaf00           mov ecx, 0xaffad0
-// 004070ce  e85dfaffff           call 0x406b30
-// 004070d3  8b0ddcfaaf00         mov ecx, dword ptr [0xaffadc]
-// 004070d9  85c9                 test ecx, ecx
-// 004070db  742b                 je 0x407108
-// 004070dd  8b442424             mov eax, dword ptr [esp + 0x24]
-// 004070e1  8b11                 mov edx, dword ptr [ecx]
-// 004070e3  50                   push eax
-// 004070e4  8b442424             mov eax, dword ptr [esp + 0x24]
-// 004070e8  50                   push eax
-// 004070e9  8b442424             mov eax, dword ptr [esp + 0x24]
-// 004070ed  50                   push eax
-// 004070ee  8b442424             mov eax, dword ptr [esp + 0x24]
-// 004070f2  50                   push eax
-// 004070f3  8b442424             mov eax, dword ptr [esp + 0x24]
-// 004070f7  50                   push eax
-// 004070f8  8b44241c             mov eax, dword ptr [esp + 0x1c]
-// 004070fc  50                   push eax
-// 004070fd  8b44241c             mov eax, dword ptr [esp + 0x1c]
-// 00407101  50                   push eax
-// 00407102  51                   push ecx
-// 00407103  8b4a2c               mov ecx, dword ptr [edx + 0x2c]
-// 00407106  ffd1                 call ecx
-// 00407108  c22400               ret 0x24
-// copied from an identical function in another client (function ?Invoke@?$IDispatchImpl@UIBrowserViewExternal@@$1?IID_IBrowserViewExternal@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: atl-9.0-dll-rtm roc_espclaude_2e752666f44a81f5.cpp
+
+// Candidate translation unit (score above; library headers required).
+#ifndef _CPPUNWIND
+#define _CPPUNWIND 1
+#endif
+#ifndef _AFXDLL
+#define _AFXDLL
+#endif
+#include <new>
+#include <afxwin.h>
+#include <atlbase.h>
+#include <atlcom.h>
+
+extern "C" const IID IID_IBrowserViewExternal;
+extern "C" const CLSID CLSID_BrowserViewExternal;
+extern "C" const GUID LIBID_RobloxLib;
+
+MIDL_INTERFACE("00000000-0000-0000-0000-000000000002")
+IBrowserViewExternal : public IDispatch
+{
+public:
+};
+
+struct __declspec(uuid("dd754d30-321a-45a2-a40c-75783afabfab")) _IBrowserViewExternalEvents;
+
+template<class T>
+class CProxy_IBrowserViewExternalEvents :
+    public IConnectionPointImpl<T, &__uuidof(_IBrowserViewExternalEvents)>
+{
+};
+
+class ATL_NO_VTABLE CBrowserViewExternal :
+    public CComObjectRootEx<CComSingleThreadModel>,
+    public CComCoClass<CBrowserViewExternal, &CLSID_BrowserViewExternal>,
+    public ISupportErrorInfoImpl<&IID_IBrowserViewExternal>,
+    public IConnectionPointContainerImpl<CBrowserViewExternal>,
+    public CProxy_IBrowserViewExternalEvents<CBrowserViewExternal>,
+    public IDispatchImpl<IBrowserViewExternal, &IID_IBrowserViewExternal, &LIBID_RobloxLib, 1, 0>
+{
+public:
+    CBrowserViewExternal() : m_flag(0) {}
+
+    BEGIN_COM_MAP(CBrowserViewExternal)
+        COM_INTERFACE_ENTRY(IBrowserViewExternal)
+        COM_INTERFACE_ENTRY(IDispatch)
+        COM_INTERFACE_ENTRY(ISupportErrorInfo)
+        COM_INTERFACE_ENTRY(IConnectionPointContainer)
+    END_COM_MAP()
+
+    BEGIN_CONNECTION_POINT_MAP(CBrowserViewExternal)
+        CONNECTION_POINT_ENTRY(__uuidof(_IBrowserViewExternalEvents))
+    END_CONNECTION_POINT_MAP()
+
+    short m_flag;
+};
+
+template ATL::CComAggObject<CBrowserViewExternal>::CComAggObject(void*);

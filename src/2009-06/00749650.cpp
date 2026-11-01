@@ -1,11 +1,4 @@
-// roc 2009-06 00749650  unit: CXTPReportControl  size: 13 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00749650
-//
-// 00749650  8b442404             mov eax, dword ptr [esp + 4]
-// 00749654  898184020000         mov dword ptr [ecx + 0x284], eax
-// 0074965a  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00749650 {
     char pad0[644];
     int m_x;

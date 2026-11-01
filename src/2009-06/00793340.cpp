@@ -1,16 +1,4 @@
-// roc 2009-06 00793340  unit: CXTPHookManagerHookAble  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00793340
-//
-// 00793340  8bc1                 mov eax, ecx
-// 00793342  33c9                 xor ecx, ecx
-// 00793344  c70050019000         mov dword ptr [eax], 0x900150
-// 0079334a  894804               mov dword ptr [eax + 4], ecx
-// 0079334d  894810               mov dword ptr [eax + 0x10], ecx
-// 00793350  89480c               mov dword ptr [eax + 0xc], ecx
-// 00793353  894808               mov dword ptr [eax + 8], ecx
-// 00793356  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

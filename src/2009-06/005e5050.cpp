@@ -1,32 +1,4 @@
-// roc 2009-06 005e5050  unit: RBX::ThreadPool::UPoolData::?$sp_counted_impl_p  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 005e5050
-//
-// 005e5050  56                   push esi
-// 005e5051  8b742408             mov esi, dword ptr [esp + 8]
-// 005e5055  85f6                 test esi, esi
-// 005e5057  742c                 je 0x5e5085
-// 005e5059  8b0e                 mov ecx, dword ptr [esi]
-// 005e505b  85c9                 test ecx, ecx
-// 005e505d  7409                 je 0x5e5068
-// 005e505f  8b01                 mov eax, dword ptr [ecx]
-// 005e5061  8b5004               mov edx, dword ptr [eax + 4]
-// 005e5064  ffd2                 call edx
-// 005e5066  eb05                 jmp 0x5e506d
-// 005e5068  b8d4c29d00           mov eax, 0x9dc2d4
-// 005e506d  688c10a000           push 0xa0108c
-// 005e5072  8bc8                 mov ecx, eax
-// 005e5074  ff15a4e98900         call dword ptr [0x89e9a4]
-// 005e507a  84c0                 test al, al
-// 005e507c  7407                 je 0x5e5085
-// 005e507e  8b06                 mov eax, dword ptr [esi]
-// 005e5080  83c004               add eax, 4
-// 005e5083  5e                   pop esi
-// 005e5084  c3                   ret 
-// 005e5085  33c0                 xor eax, eax
-// 005e5087  5e                   pop esi
-// 005e5088  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX000000@@YAPAXPAUAny@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 
 // boost::any_cast<T>(any *) shape: 0xb0030c = typeid(void), 0xb1316c = typeid(T)

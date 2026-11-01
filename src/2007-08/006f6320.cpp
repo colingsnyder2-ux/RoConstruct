@@ -1,10 +1,4 @@
-// roc 2007-08 006f6320  unit: CXTPPropertyGridInplaceEdit  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006f6320
-//
-// 006f6320  b880c37d00           mov eax, 0x7dc380
-// 006f6325  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_006f6320()

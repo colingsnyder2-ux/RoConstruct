@@ -1,6 +1,6 @@
 """Link out/p6/Roblox.exe: MFC client, RTM appmodul.cpp, original resources, and
 the player's engine libraries from this worktree's own player build."""
-import hashlib, json, shutil, sys
+import hashlib, json, shutil, subprocess, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).parent
@@ -8,6 +8,9 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(HERE))
 from roc import rebuild
 import gen_res
+
+subprocess.run([sys.executable, str(HERE / "build_native_icons.py")], cwd=ROOT, check=True)
+subprocess.run([sys.executable, str(HERE / "build_native_about.py")], cwd=ROOT, check=True)
 
 client = "2008-06"
 SNAPSHOT = Path(sys.argv[1]) if len(sys.argv) > 1 else rebuild.workspace(client) / "out"
@@ -56,6 +59,7 @@ xtp = ROOT / "tools" / "libs" / "xtp-11.2.2" / "Source"
 mfc_flags = ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD", "/DWIN32", "/DNDEBUG", "/D_MBCS", "/D_AFXDLL", "/D_XTP_STATICLINK", "/D_XTPLIB_NOAUTOLINK",
              "/I" + str(mfc), "/I" + str(xtp)]
 units = [("RobloxShell.obj", HERE / "RobloxShell.cpp", mfc_flags + ["/I" + str(HERE)]),
+         ("MyXTPCommandBars.obj", ROOT / "rebuild/2008-06/native-classes/MyXTPCommandBars.cpp", mfc_flags + ["/I" + str(ROOT / "rebuild/2008-06/native-headers")]),
          ("appmodul.obj", mfc.parent / "src" / "mfc" / "appmodul.cpp", mfc_flags + ["/I" + str(mfc.parent / "src" / "mfc")]),  # WinMain, AfxInitialize
          ("P6Engine.obj", HERE / "P6Engine.cpp", ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD"] + ["/D" + d for d in spec["test_defines"].split()]
           + ["/I" + str(HERE)] + ["/I" + str(i) for i in includes])]
@@ -78,10 +82,10 @@ for obj, source, flags in units:
     print(text[-2500:])
     if code:
         sys.exit(code)
-system = ["kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
+system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
 code, text = rebuild.run(tc, "link", ["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:Roblox.map", "/OUT:Roblox.exe",
-                                      "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + [u[0] for u in units] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
+                                      "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + [u[0] for u in units] + [str(ROOT / "rebuild/2008-06/out/native-layouts" / name) for name in ("NativeFrameIconsFresh.obj", "NativeFrameIconWidth.obj", "NativeDHtmlDialog.obj", "NativeAboutDialog.obj", "NativeAboutDialogData.obj", "NativeFileVersionInfo.obj", "NativeGLCaps.obj")] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
                          + [str(l) for l in libs] + [s + ".lib" for s in system]
                          + ["/NODEFAULTLIB:" + l for l in rebuild.VENDOR_AUTOLINK], out)
 print(text[-3500:])

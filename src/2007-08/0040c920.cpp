@@ -1,4 +1,4 @@
-// from server: 72% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 0040c920  unit: VCBrowserViewExternal::?$CComObjectNoLock  size: 74 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 0040c920
 //
@@ -25,28 +25,43 @@
 // 0040c962  33c0                 xor eax, eax
 // 0040c964  83c410               add esp, 0x10
 // 0040c967  c20800               ret 8
+// copied from an identical function in another client (function ?function@ns_ROCX000008@@YGHPBUInput@1@PAG@Z)
 
-extern "C" void __cdecl func_0062ff44();
-extern "C" void __cdecl func_0062ff3e();
-extern "C" void __cdecl func_0062ff38();
-
-struct S {
-    int f(int a, int b);
+namespace ns_ROCX000008 {
+// from server: 100% by king_originala
+struct Link {
+    void* unused;
+    void* previous;
 };
 
-int S::f(int a, int b)
+struct State {
+    void* previous;
+    Link* link;
+    void* context;
+    int active;
+
+    State(void*);
+};
+
+struct Input {
+    unsigned char reserved[8];
+    unsigned short value;
+};
+
+extern "C" void* __cdecl get_state();
+extern "C" void __stdcall release_state(int, void*);
+
+int __stdcall function(const Input* input, unsigned short* output)
 {
-    char buf[16];
-    func_0062ff44();
-    func_0062ff3e();
-    int v = *(int*)(buf + 4);
-    unsigned short w = *(unsigned short*)(a + 8);
-    *(unsigned short*)b = w;
-    if (v != 0) {
-        *(int*)(v + 4) = *(int*)buf;
-    }
-    if (*(int*)(buf + 12) != 0) {
-        func_0062ff38();
-    }
+    State state(get_state());
+    *output = input->value;
+
+    if (state.link)
+        state.link->previous = state.previous;
+
+    if (state.active)
+        release_state(0, state.context);
+
     return 0;
+}
 }

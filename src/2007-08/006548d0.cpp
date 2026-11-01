@@ -1,16 +1,4 @@
-// roc 2007-08 006548d0  unit: CInstanceRecord::CNameItem  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006548d0
-//
-// 006548d0  8bc1                 mov eax, ecx
-// 006548d2  33c9                 xor ecx, ecx
-// 006548d4  c700987f7c00         mov dword ptr [eax], 0x7c7f98
-// 006548da  894804               mov dword ptr [eax + 4], ecx
-// 006548dd  894810               mov dword ptr [eax + 0x10], ecx
-// 006548e0  89480c               mov dword ptr [eax + 0xc], ecx
-// 006548e3  894808               mov dword ptr [eax + 8], ecx
-// 006548e6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

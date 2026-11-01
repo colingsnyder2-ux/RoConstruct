@@ -1,14 +1,4 @@
-// roc 2011-06 00444030  unit: HVCXTPPropertyGridItemEnum::?$XItem  size: 20 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00444030
-//
-// 00444030  8b542404             mov edx, dword ptr [esp + 4]
-// 00444034  8b01                 mov eax, dword ptr [ecx]
-// 00444036  8b12                 mov edx, dword ptr [edx]
-// 00444038  8b80e8000000         mov eax, dword ptr [eax + 0xe8]
-// 0044403e  89542404             mov dword ptr [esp + 4], edx
-// 00444042  ffe0                 jmp eax
-// copied from an identical function in another client (function ?f@S@@QAEXPBH@Z)
-
+// from server: 100% by colin
 // from server: 100% by colin
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /MD

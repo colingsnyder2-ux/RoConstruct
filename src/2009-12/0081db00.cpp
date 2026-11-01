@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0081db00  unit: CXTPReportControl  size: 13 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0081db00
 //

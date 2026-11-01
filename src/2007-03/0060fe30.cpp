@@ -1,39 +1,66 @@
-// roc 2007-03 0060fe30  unit: seg_00600000  size: 36 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0060fe30
-//
-// 0060fe30  56                   push esi
-// 0060fe31  57                   push edi
-// 0060fe32  8b7c240c             mov edi, dword ptr [esp + 0xc]
-// 0060fe36  8b4728               mov eax, dword ptr [edi + 0x28]
-// 0060fe39  85c0                 test eax, eax
-// 0060fe3b  8bf1                 mov esi, ecx
-// 0060fe3d  7410                 je 0x60fe4f
-// 0060fe3f  90                   nop 
-// 0060fe40  50                   push eax
-// 0060fe41  8bce                 mov ecx, esi
-// 0060fe43  e898fdffff           call 0x60fbe0
-// 0060fe48  8b4728               mov eax, dword ptr [edi + 0x28]
-// 0060fe4b  85c0                 test eax, eax
-// 0060fe4d  75f1                 jne 0x60fe40
-// 0060fe4f  5f                   pop edi
-// 0060fe50  5e                   pop esi
-// 0060fe51  c20400               ret 4
-// copied from an identical function in another client (function ?func@VMotorFeature@ns_ROCX00001a@@QAEXPAX@Z)
+// from server: 73% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs v8datamodel/ToolMouseCommand.cpp
 
-namespace ns_ROCX00001a {
-struct VMotorFeature {
-    void removeAll();
-    void sub_5de6c0(void*);
-    void func(void*);
-};
+// Candidate translation unit (score above; library headers required).
+#include "v8datamodel/ToolMouseCommand.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Tool.h"
+#include "humanoid/Humanoid.h"
 
-void VMotorFeature::func(void* a) {
-    void* p = *(void**)((char*)a + 0x28);
-    if (p != 0) {
-        do {
-            sub_5de6c0(p);
-            p = *(void**)((char*)a + 0x28);
-        } while (p != 0);
-    }
-}
+namespace RBX
+{
+	ToolMouseCommand::ToolMouseCommand(Workspace* workspace, Tool* tool)
+		: Base(workspace),
+		  tool(shared_from(tool))
+	{
+	}
+
+	ToolMouseCommand::~ToolMouseCommand() {}
+
+	void ToolMouseCommand::onMouseHover(const UIEvent& uiEvent)
+	{
+		updateTargetPoint(uiEvent);
+		ScriptMouseCommand::onMouseHover(uiEvent);
+	}
+
+	void ToolMouseCommand::onMouseIdle(const UIEvent& uiEvent)
+	{
+		updateTargetPoint(uiEvent);
+		ScriptMouseCommand::onMouseIdle(uiEvent);
+	}
+
+	MouseCommand* ToolMouseCommand::onMouseDown(const UIEvent& uiEvent)
+	{
+		updateTargetPoint(uiEvent);
+		tool->activate();
+		return ScriptMouseCommand::onMouseDown(uiEvent);
+	}
+
+	MouseCommand* ToolMouseCommand::onMouseUp(const UIEvent& uiEvent)
+	{
+		updateTargetPoint(uiEvent);
+		tool->deactivate();
+		return ScriptMouseCommand::onMouseUp(uiEvent);
+	}
+
+	void ToolMouseCommand::updateTargetPoint(const UIEvent& uiEvent)
+	{
+		G3D::Vector3 hitWorld;
+		
+		Humanoid* humanoid = Humanoid::getLocalHumanoidFromContext(tool.get());
+		if (!humanoid)
+			return;
+
+		if (!getPartByLocalCharacter(uiEvent, hitWorld))
+		{
+			G3D::Ray ray = getSearchRay(uiEvent);
+			hitWorld = humanoid->getHead() ? humanoid->getHead()->getCoordinateFrame().translation : ray.origin;
+			hitWorld += ray.direction;
+		}
+
+		humanoid->setTargetPoint(hitWorld);
+	}
 }

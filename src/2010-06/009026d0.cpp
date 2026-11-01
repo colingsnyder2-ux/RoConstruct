@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 009026d0  unit: std::D::DU?$char_traits::V?$basic_string::V?$vector::?$SharedPtr  size: 110 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 009026d0
 //

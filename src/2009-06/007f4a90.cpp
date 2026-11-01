@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007f4a90  unit: CXTPDockingPaneAutoHidePanel::CAutoHidePanelTabManager  size: 70 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007f4a90
 //

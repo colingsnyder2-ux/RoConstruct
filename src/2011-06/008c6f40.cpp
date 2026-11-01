@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 008c6f40  unit: XTPDockingPanePaintThemes::CXTPDockingPaneOfficeTheme::COfficePanelColorSet  size: 54 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 008c6f40
 //

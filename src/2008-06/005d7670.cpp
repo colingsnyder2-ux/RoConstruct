@@ -1,23 +1,4 @@
 // from server: 100% by king_originala
-// roc 2008-06 005d7670  unit: RBX::Humanoid  size: 44 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005d7670
-//
-// 005d7670  8b442404             mov eax, dword ptr [esp + 4]
-// 005d7674  85c0                 test eax, eax
-// 005d7676  7421                 je 0x5d7699
-// 005d7678  8b8004010000         mov eax, dword ptr [eax + 0x104]
-// 005d767e  6a00                 push 0
-// 005d7680  68402a9300           push 0x932a40
-// 005d7685  687c909200           push 0x92907c
-// 005d768a  6a00                 push 0
-// 005d768c  50                   push eax
-// 005d768d  e834a10c00           call 0x6a17c6
-// 005d7692  83c414               add esp, 0x14
-// 005d7695  85c0                 test eax, eax
-// 005d7697  7502                 jne 0x5d769b
-// 005d7699  33c0                 xor eax, eax
-// 005d769b  c3                   ret 
-
 extern char instanceType;
 extern char modelType;
 

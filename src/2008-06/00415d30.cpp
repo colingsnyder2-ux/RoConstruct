@@ -1,14 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00415d30  unit: CopyVerb  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00415d30
-//
-// 00415d30  8b09                 mov ecx, dword ptr [ecx]
-// 00415d32  8b4108               mov eax, dword ptr [ecx + 8]
-// 00415d35  50                   push eax
-// 00415d36  b944bf9200           mov ecx, 0x92bf44
-// 00415d3b  ff1578288000         call dword ptr [0x802878]
-// 00415d41  c3                   ret 
-
 struct type_info {
     bool operator==(const type_info&) const;
 };

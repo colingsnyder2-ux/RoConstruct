@@ -1,16 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 007f9f0c  unit: seg_007f0000  size: 40 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 007f9f0c
-//
-// 007f9f0c  ff15b8228000         call dword ptr [0x8022b8]
-// 007f9f12  6854198000           push 0x801954
-// 007f9f17  c705e0f29700581f8700 mov dword ptr [0x97f2e0], 0x871f58
-// 007f9f21  a3e4f29700           mov dword ptr [0x97f2e4], eax
-// 007f9f26  c605e8f2970000       mov byte ptr [0x97f2e8], 0
-// 007f9f2d  e87d78eaff           call 0x6a17af
-// 007f9f32  59                   pop ecx
-// 007f9f33  c3                   ret 
-
 #include <stddef.h>
 
 typedef void* HANDLE;

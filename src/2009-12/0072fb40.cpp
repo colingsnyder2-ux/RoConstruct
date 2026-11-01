@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0072fb40  unit: G3D::$$A6AXVVector3::?$signal::slot  size: 136 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0072fb40
 //

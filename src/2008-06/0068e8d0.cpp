@@ -1,10 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 0068e8d0  unit: Ogre::RbxSceneManager  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0068e8d0
-//
-// 0068e8d0  8b811c010000         mov eax, dword ptr [ecx + 0x11c]
-// 0068e8d6  c3                   ret 
-
 struct S_func_0068e8d0 {
     char pad0[284];
     int m_x;

@@ -1,10 +1,4 @@
-// roc 2011-06 0048d530  unit: Scintilla::CScintillaView  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0048d530
-//
-// 0048d530  8d8190000000         lea eax, [ecx + 0x90]
-// 0048d536  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_0048d530 {
     char pad0[144];
     int m_x;

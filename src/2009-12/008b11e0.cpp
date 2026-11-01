@@ -1,11 +1,7 @@
-// roc 2009-12 008b11e0  unit: CXTPDockingPaneTabbedContainer  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 008b11e0
-//
-// 008b11e0  b8b873a000           mov eax, 0xa073b8
-// 008b11e5  c3                   ret 
-// library mfc-8.0/atlmfc\src\mfc\appcore.cpp (function ?GetThisMessageMap@CWinApp@@KGPBUAFX_MSGMAP@@XZ)
+// from server: 100% by auto
+extern char G;
 
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-8.0 atlmfc/src/mfc/appcore.cpp
+char* func_008b11e0()
+{
+    return &G;
+}

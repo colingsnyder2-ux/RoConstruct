@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00410000  unit: boost::Vbad_weak_ptr::?$error_info_injector  size: 69 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00410000
 //

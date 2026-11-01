@@ -1,130 +1,56 @@
-// from server: 33% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/Script.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-#include "script/ScriptContext.h"
-#include "v8tree/Service.h"
-#include "boost/thread/once.hpp"
-
-using namespace RBX;
-
-const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::LEGACY);
-const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::LEGACY);
-Reflection::BoundProp<bool, true> Script::prop_Disabled("Disabled", "Behavior", &Script::disabled, Reflection::PropertyDescriptor::STANDARD);
-
-static boost::shared_ptr<const std::string> helloWorld;
-static boost::once_flag flagInitScriptCpp = BOOST_ONCE_INIT;
-
-void initScriptCpp()
-{
-    helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <map>
+#include <string>
+namespace boost { struct once_flag { long v; }; void call_once(once_flag& f, void (*fn)()); }
+namespace tbb {
+class queuing_rw_mutex {
+public:
+    class scoped_lock {
+    public:
+        scoped_lock(queuing_rw_mutex& m, bool write = true) : mutex(0) { acquire(m, write); }
+        ~scoped_lock() { if (mutex) release(); }
+        void acquire(queuing_rw_mutex& m, bool write = true);
+        bool upgrade_to_writer();
+        void release();
+    private:
+        queuing_rw_mutex* mutex;
+        scoped_lock* prev;
+        scoped_lock* next;
+        unsigned char state;
+        unsigned char going;
+        unsigned char internal_lock;
+    };
+};
 }
-
-const char* RBX::sScript = "Script";
-
-Script::Script()
-    : DescribedCreatable("Script"),
-      disabled(false),
-      owner(NULL)
+namespace RBX {
+class Name {
+public:
+    std::string name;
+    Name(const char* s) : name(s) {}
+    static const Name& declare(const char* sName);
+};
+typedef std::map<std::string, Name*> NameMap;
+NameMap& getNames();
+tbb::queuing_rw_mutex& getMutex();
+extern Name* emptyName;
+extern boost::once_flag emptyFlag;
+void initEmpty();
+const Name& Name::declare(const char* sName)
 {
-    boost::call_once(&initScriptCpp, flagInitScriptCpp);
-    embeddedSource = helloWorld;
-}
-
-const char* RBX::sLocalScript = "LocalScript";
-
-LocalScript::LocalScript()
-{
-    setName("LocalScript");
-}
-
-Script::~Script()
-{
-    RBXASSERT(owner == NULL);
-}
-
-void Script::setEmbeddedCode(const std::string& value)
-{
-    if (getEmbeddedCode() != value)
-    {
-        embeddedSource.reset(new std::string(value));
-        raisePropertyChanged(prop_EmbeddedSourceCode);
+    if (sName == 0) {
+        boost::call_once(emptyFlag, initEmpty);
+        return *emptyName;
     }
+    tbb::queuing_rw_mutex::scoped_lock lock(getMutex(), false);
+    NameMap::iterator iter = getNames().find(std::string(sName));
+    if (iter != getNames().end())
+        return *iter->second;
+    lock.upgrade_to_writer();
+    Name* n = new Name(sName);
+    getNames()[sName] = n;
+    return *n;
 }
-
-void Script::setScriptId(const ContentId& value)
-{
-    if (getScriptId() != value)
-    {
-        scriptId = value;
-        requestCode();
-        raisePropertyChanged(prop_SourceCodeId);
-    }
-}
-
-void Script::onAncestorChanged(const AncestorChanged& event)
-{
-    Instance::onAncestorChanged(event);
-
-    IScriptOwner* newOwner = NULL;
-    Instance* parent = this->getParent();
-
-    while (parent)
-    {
-        IScriptOwner* parentOwner = dynamic_cast<IScriptOwner*>(parent);
-
-        if (parentOwner)
-        {
-            newOwner = parentOwner->scriptShouldRun(this);
-
-            if (newOwner)
-                break;
-        }
-
-        parent = parent->getParent();
-    }
-
-    if (newOwner != owner)
-    {
-        if (owner)
-            owner->releaseScript(this);
-
-        owner = newOwner;
-
-        ScriptContext* sc = ServiceProvider::find<ScriptContext>(this);
-
-        if (sc)
-        {
-            sc->removeScript(this);
-
-            if (owner)
-                owner->runScript(this, sc);
-        }
-    }
-}
-
-void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-{
-	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
-	{
-		sc->removeScript(this);
-	}
-
-	Instance::onServiceProvider(oldProvider, newProvider);
-}
-
-boost::shared_ptr<const std::string> Script::requestCode()
-{
-    if (scriptId.isNull())
-    {
-        return embeddedSource;
-    }
-    else 
-    {
-        return ContentProvider::singleton().requestContentString(scriptId);
-    }
 }

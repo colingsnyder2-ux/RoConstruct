@@ -1,10 +1,4 @@
-// roc 2007-08 00474f10  unit: G3D::VARArea  size: 4 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00474f10
-//
-// 00474f10  8b417c               mov eax, dword ptr [ecx + 0x7c]
-// 00474f13  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00474f10 {
     char pad0[124];
     int m_x;

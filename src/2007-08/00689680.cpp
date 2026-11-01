@@ -1,11 +1,4 @@
-// roc 2007-08 00689680  unit: CXTPTabClientWnd::CWorkspace  size: 13 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00689680
-//
-// 00689680  8b818c000000         mov eax, dword ptr [ecx + 0x8c]
-// 00689686  8b80bc000000         mov eax, dword ptr [eax + 0xbc]
-// 0068968c  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct I_func_00689680 {
     char pad[188];
     int m_x;

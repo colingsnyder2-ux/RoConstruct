@@ -1,9 +1,4 @@
-// roc 2007-08 00439830  unit: RBX::VSoundId::?$XItem  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00439830
-//
-// 00439830  e9ebf6ffff           jmp 0x438f20
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00439830();
 void func_00439830()
 {

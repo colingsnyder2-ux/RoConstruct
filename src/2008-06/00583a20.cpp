@@ -1,13 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00583a20  unit: RBX::ModelInstance  size: 25 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00583a20
-//
-// 00583a20  b001                 mov al, 1
-// 00583a22  888140020000         mov byte ptr [ecx + 0x240], al
-// 00583a28  888170020000         mov byte ptr [ecx + 0x270], al
-// 00583a2e  88810c020000         mov byte ptr [ecx + 0x20c], al
-// 00583a34  e9b7510800           jmp 0x608bf0
-
 struct RBX_ModelInstance {
     char pad[524];
     bool field_1ac;

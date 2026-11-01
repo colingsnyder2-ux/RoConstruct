@@ -1,18 +1,4 @@
-// roc 2012-06 0048cef0  unit: CRobloxPlayerDlg  size: 40 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 0048cef0
-//
-// 0048cef0  b801000000           mov eax, 1
-// 0048cef5  84057ca6e100         test byte ptr [0xe1a67c], al
-// 0048cefb  7515                 jne 0x48cf12
-// 0048cefd  09057ca6e100         or dword ptr [0xe1a67c], eax
-// 0048cf03  33c0                 xor eax, eax
-// 0048cf05  33c9                 xor ecx, ecx
-// 0048cf07  a32cf8d600           mov dword ptr [0xd6f82c], eax
-// 0048cf0c  890d30f8d600         mov dword ptr [0xd6f830], ecx
-// 0048cf12  b820f8d600           mov eax, 0xd6f820
-// 0048cf17  c3                   ret 
-// copied from an identical function in another client (function ?GetDHtmlEventMap@EmptyDHtmlEventMap@@MAEPBUDHtmlEventMapEntry@@XZ)
-
+// from server: 100% by colin
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /Zp4

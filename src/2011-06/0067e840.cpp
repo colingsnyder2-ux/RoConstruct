@@ -1,10 +1,4 @@
-// roc 2011-06 0067e840  unit: RBX::KernelJoint  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0067e840
-//
-// 0067e840  8b81a4010000         mov eax, dword ptr [ecx + 0x1a4]
-// 0067e846  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_0067e840 {
     char pad0[420];
     int m_x;

@@ -1,13 +1,6 @@
-// roc 2009-12 00402110  unit: RBX::VTaskSchedulerSettings::?$FactoryProduct::Creator  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00402110
-//
-// 00402110  e90bffffff           jmp 0x402020
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_00402110();
+void func_00402110()
 {
-    G1_func_00401050();
-}
+    G1_func_00402110();
 }

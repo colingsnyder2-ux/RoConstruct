@@ -1,18 +1,20 @@
-// from server: 91% by atomic.potato
-extern "C" void __stdcall call_004b247d0(void*);
+// from server: 100% by tester
+typedef void *(__thiscall *Fn)(void *);
+
+extern Fn g_fn_009ecef0;
 
 struct CRobloxControlMaterialSelector
 {
-    void f(void* first, void* last);
+    void f(void *, void *);
 };
 
-void CRobloxControlMaterialSelector::f(void* first, void* last)
+void CRobloxControlMaterialSelector::f(void *first, void *last)
 {
-    char* p = (char*)first;
-    char* end = (char*)last;
+    char *p = (char *)first;
+    char *end = (char *)last;
     while (p != end)
     {
-        call_004b247d0(p + 8);
+        g_fn_009ecef0(p + 8);
         p += 12;
     }
 }

@@ -209,18 +209,3 @@ namespace RBX
 		}
 	}
 }
-
-#include "gui/Button.h"
-
-namespace RBX
-{
-	// 0064ef90: KeyButton tracks its declared keyCode/keyIsDown fields then defers to Widget.
-	GuiResponse KeyButton::process(const GuiEvent& event)
-	{
-		if (event.eventType == UIEvent::KEY_DOWN && event.key == keyCode)
-			keyIsDown = true;
-		if (event.eventType == UIEvent::KEY_UP && event.key == keyCode)
-			keyIsDown = false;
-		return Widget::process(event);
-	}
-}

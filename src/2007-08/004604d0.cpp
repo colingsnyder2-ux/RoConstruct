@@ -1,32 +1,47 @@
-// from server: 56% by colin
-extern "C" int __stdcall _stricmp(const char*, const char*);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+extern "C" int (__cdecl* _stricmp)(const char*, const char*);
+extern const char comparisonText[];
+extern const char replacementText[];
 
-struct CScriptEditor {
-    void sub_4604D0(int);
+struct TextRange
+{
+    int start;
+    int end;
+    char* text;
 };
 
-struct Helper {
-    int sub_45C7D0(int);
-    int sub_45C800(int);
-    void sub_45C950(int*, int);
-    void sub_45C700(int, const char*);
+struct Control
+{
+    int selectionStart(int direct);
+    int selectionEnd(int direct);
+    int getTextRange(TextRange* range, int direct);
+    int replaceSelection(int unused, const char* text, int direct);
 };
 
-extern "C" void* __cdecl sub_45D230();
+struct CScriptEditor
+{
+    Control* getControl();
+    void func_00464460(int unused);
+};
 
-void CScriptEditor::sub_4604D0(int arg) {
-    int a;
-    int b;
-    void* p = sub_45D230();
-    Helper* h = (Helper*)p;
-    int v1 = h->sub_45C7D0(1);
-    int v2 = h->sub_45C800(1);
-    if (v1 == v2 && v1 > 12) {
-        b = v2 - 1;
-        a = v1 - 13;
-        h->sub_45C950(&a, 1);
-        if (_stricmp((const char*)&b, (const char*)0x794a70) == 0) {
-            h->sub_45C700(1, (const char*)0x794a4c);
-        }
+void CScriptEditor::func_00464460(int unused)
+{
+    Control* control = getControl();
+    int start = control->selectionStart(1);
+    int end = control->selectionEnd(1);
+
+    if (start == end && start > 12)
+    {
+        TextRange range;
+        char text[16];
+
+        range.end = end - 1;
+        range.start = start - 13;
+        range.text = text;
+        control->getTextRange(&range, 1);
+
+        if (_stricmp(text, comparisonText) == 0)
+            control->replaceSelection(0, replacementText, 1);
     }
 }

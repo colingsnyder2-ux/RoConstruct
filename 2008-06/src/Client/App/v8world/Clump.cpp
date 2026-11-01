@@ -1,466 +1,201 @@
+// Source-derived world pipeline port from openrbx v8world/Clump2.cpp.
+// June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
 #include "v8world/Clump.h"
+
+#include "v8kernel/Body.h"
+#include "v8world/Assembly.h"
+#include "v8world/IPipelined.h"
+#include "v8world/Joint.h"
+#include "v8world/MotorJoint.h"
 #include "v8world/Primitive.h"
 #include "v8world/RigidJoint.h"
-#include "v8world/Anchor.h"
-#include "v8world/Assembly.h"
-#include <deque>
 
-namespace RBX
+#include <cstddef>
+
+namespace RBX {
+
+// FUNCTION: WEBSERVICE 0x10117da0
+Edge* EdgeIterator::getNextExternalUtil(Primitive* p, Edge* e)
 {
-	// TODO: check which of these are meant for the header
+	while (e != NULL) {
+		Primitive* other = e->getPrimitive(0);
 
-	/*__forceinline*/ Primitive* SpanLink::isSpanningJoint(RigidJoint* r)
-	{
-		Primitive* prim0 = r->getPrimitive(0);
-		Primitive* prim1 = r->getPrimitive(1);
-		const Body* body0 = prim0->getBody();
-		const Body* body1 = prim1->getBody();
-
-		if (body1->getParent() == body0)
-		{
-			RBXASSERT(body0->getParent() != body1);
-			RBXASSERT(prim0->getClump() == prim1->getClump());
-			return prim0;
-		}
-		else if (body0->getParent() == body1)
-		{
-			RBXASSERT(prim0->getClump() == prim1->getClump());
-			return prim1;
+		if (p == other) {
+			other = e->getPrimitive(1);
 		}
 
+		if (other != NULL && p->getAssembly() != other->getAssembly()) {
+			return e;
+		}
+
+		e = p->getNextEdge(e);
+	}
+
+	return NULL;
+}
+
+// FUNCTION: WEBSERVICE 0x10117df0
+bool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType)
+{
+	if (parentCandidate == NULL || child == NULL) {
+		return false;
+	}
+
+	bool jointed;
+
+	if (searchType == IN_CLUMP) {
+		jointed = RigidJoint::isRigidJoint(joint);
+	}
+	else {
+		jointed = RigidJoint::isRigidJoint(joint) || MotorJoint::isMotorJoint(joint);
+	}
+
+	if (jointed) {
+		if (child->getBody()->getParent() == parentCandidate->getBody()) {
+			bool sameClump = parentCandidate->getClump() == child->getClump();
+
+			return searchType == IN_CLUMP ? sameClump
+										  : sameClump || parentCandidate->getAssembly() == child->getAssembly();
+		}
+	}
+
+	return false;
+}
+
+// FUNCTION: WEBSERVICE 0x10117ea0
+Primitive* PrimIterator::findParent(Primitive* p, SearchType searchType)
+{
+	Joint* joint = p->getFirstJoint();
+
+	while (joint != NULL) {
+		Primitive* other = p == joint->getPrimitive(0) ? joint->getPrimitive(1) : joint->getPrimitive(0);
+
+		if (isParent(other, p, joint, searchType)) {
+			return other;
+		}
+
+		joint = p->getNextJoint(joint);
+	}
+
+	return NULL;
+}
+
+// FUNCTION: WEBSERVICE 0x10117f00
+Primitive* PrimIterator::findFirstChild(Primitive* p, SearchType searchType)
+{
+	Joint* joint = p->getFirstJoint();
+
+	while (joint != NULL) {
+		Primitive* other = p == joint->getPrimitive(0) ? joint->getPrimitive(1) : joint->getPrimitive(0);
+
+		if (isParent(p, other, joint, searchType)) {
+			return other;
+		}
+
+		joint = p->getNextJoint(joint);
+	}
+
+	return NULL;
+}
+
+// FUNCTION: WEBSERVICE 0x10117f60
+Primitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* sibling, SearchType searchType)
+{
+	bool found = false;
+
+	for (Joint* joint = parent->getFirstJoint(); joint != NULL; joint = parent->getNextJoint(joint)) {
+		Primitive* other = parent == joint->getPrimitive(0) ? joint->getPrimitive(1) : joint->getPrimitive(0);
+
+		if (isParent(parent, other, joint, searchType)) {
+			if (found) {
+				return other;
+			}
+
+			if (other == sibling) {
+				found = true;
+			}
+		}
+	}
+
+	return NULL;
+}
+
+// FUNCTION: WEBSERVICE 0x10117fc0
+Primitive* PrimIterator::findNextRelative(Primitive* parent, Primitive* p, SearchType searchType)
+{
+	if (parent == NULL) {
 		return NULL;
 	}
 
-	bool SpanLink::isDownstreamSpanningJoint(Primitive* p, RigidJoint* r)
-	{
-		Primitive* prim = isSpanningJoint(r);
-		return prim && prim == p;
+	Primitive* sibling = findNextSibling(parent, p, searchType);
+
+	if (sibling != NULL) {
+		return sibling;
 	}
 
-	SpanLink SpanLink::bestSpanLink(const SpanLink& s0, const SpanLink& s1)
-	{
-		Primitive* p0 = s0.parent;
-		Primitive* p1 = s1.parent;
+	Primitive* grandparent = findParent(parent, searchType);
 
-		if (p0)
-		{
-			if (p1)
-			{
-				int p0cd = p0->getClumpDepth();
-				int p1cd = p1->getClumpDepth();
-				if (p0cd != p1cd)
-				{
-					return p0cd > p1cd ? s0 : s1;
-				}
-				else
-				{
-					float p0ps = p0->getPlanarSize();
-					float p1ps = p1->getPlanarSize();
+	return findNextRelative(grandparent, parent, searchType);
+}
 
-					return (p0ps > p1ps) ? s0 : s1;
-				}
-			}
-			else
-			{
-				return s0;
-			}
-		}
-		else
-		{
-			return s1;
-		}
+// FUNCTION: WEBSERVICE 0x10118000
+PrimIterator& PrimIterator::operator++()
+{
+	SearchType type = searchType;
+	Primitive* current = primitive;
+
+	Primitive* next = findFirstChild(current, type);
+
+	if (next == NULL) {
+		Primitive* parent = findParent(current, type);
+
+		primitive = findNextRelative(parent, current, type);
+	}
+	else {
+		primitive = next;
 	}
 
-	Clump* Clump::otherClump(Edge* e) const
-	{
-		return e->getPrimitive(0)->getClump() != this ? e->getPrimitive(0)->getClump() : e->getPrimitive(1)->getClump();
-	}
+	return *this;
+}
 
-	void Clump::addAnchor(Anchor* a)
-	{
-		RBXASSERT(!anchor);
-		RBXASSERT(a->getPrimitive() == rootPrimitive);
+// FUNCTION: WEBSERVICE 0x10118040
+void EdgeIterator::findEdgeOnNextPrimitive()
+{
+	while (edge == NULL) {
+		Primitive* next = *++PrimIterator::begin(primitive, PrimIterator::IN_ASSEMBLY);
 
-		anchor = a;
-	}
-
-	Anchor* Clump::removeAnchor()
-	{
-		RBXASSERT(anchor);
-
-		Anchor* a = anchor;
-		anchor = NULL;
-		return a;
-	}
-
-	bool Clump::inSpanTree(Primitive* p, Primitive* treeRoot)
-	{
-		Body* treeBody = treeRoot->getBody();
-		Body* body = p->getBody();
-
-		while (body)
-		{
-			if (body == treeBody)
-				return true;
-			body = body->getParent();
-		}
-		return false;
-	}
-
-	SpanLink Clump::findBestOutsideLink(Primitive* treeRoot, Primitive* current)
-	{
-		SpanLink bestChildLink;
-
-		RigidJoint* r = current->getFirstRigid();
-		while (r != NULL)
-		{
-			Primitive* other = r->otherPrimitive(current);
-			Primitive* prim = SpanLink::isSpanningJoint(r);
-
-			if (prim)
-			{
-				if (prim == current)
-				{
-					SpanLink outsideTree = findBestOutsideLink(treeRoot, other);
-					bestChildLink = SpanLink::bestSpanLink(bestChildLink, outsideTree);
-				}
-			}
-			else
-			{
-				if (other->getClump() == current->getClump())
-				{
-					if (!inSpanTree(other, treeRoot))
-					{
-						SpanLink outsideTree(other, r);
-						bestChildLink = SpanLink::bestSpanLink(bestChildLink, outsideTree);
-					}
-				}
-			}
-			r = current->getNextRigid(r);
-		}
-
-		return bestChildLink;
-	}
-
-	void Clump::setParent(Primitive* p, Primitive* newParent)
-	{
-		p->setClumpDepth(newParent->getClumpDepth() + 1);
-
-		Joint* j = Primitive::getJoint(p, newParent);
-		RigidJoint* r = rbx_static_cast<RigidJoint*>(j);
-
-		p->getBody()->setParent(newParent->getBody());
-		p->getBody()->setMeInParent(r->getChildInParent(newParent, p));
-	}
-
-	void Clump::setSpanParent(Primitive* onTree, RigidJoint* stop)
-	{
-		for (RigidJoint* r = onTree->getFirstRigid(); r != NULL; r = onTree->getNextRigid(r))
-		{
-			if (r != stop)
-			{
-				Primitive* prim = SpanLink::isSpanningJoint(r);
-				if (prim && prim != onTree)
-				{
-					setSpanParent(prim, stop);
-					onTree->getBody()->setParent(NULL);
-					setParent(prim, onTree);
-				}
-			}
-		}
-	}
-
-	void Clump::renumberSpanTree(Primitive* onTree)
-	{
-		RigidJoint* r = onTree->getFirstRigid();
-		while (r != NULL)
-		{
-			Primitive* p = SpanLink::isSpanningJoint(r);
-
-			if (p && p == onTree)
-			{
-				Primitive* other = r->otherPrimitive(onTree);
-				other->setClumpDepth(onTree->getClumpDepth() + 1);
-				renumberSpanTree(other);
-			}
-			r = onTree->getNextRigid(r);
-		}
-	}
-
-	// 100% match if inSpanTree has __declspec(noinline)
-	bool Clump::spanningTreeAdjust(RigidJoint* removing)
-	{
-		Primitive* prim = SpanLink::isSpanningJoint(removing);
-		RBXASSERT(prim);
-
-		Primitive* otherPrim = removing->otherPrimitive(prim);
-		RBXASSERT(otherPrim->getClumpDepth() == prim->getClumpDepth() + 1);
-
-		SpanLink bestLink = findBestOutsideLink(otherPrim, otherPrim);
-		RigidJoint* joint = bestLink.joint;
-		Primitive* parent = bestLink.parent;
-		if (parent)
-		{
-			RBXASSERT(joint != removing);
-
-			Primitive* otherPrimLink = joint->otherPrimitive(parent);
-			RBXASSERT(inSpanTree(otherPrimLink, prim));
-			RBXASSERT(inSpanTree(otherPrimLink, otherPrim));
-			RBXASSERT(!inSpanTree(parent, otherPrim));
-
-			setSpanParent(otherPrimLink, removing);
-			setParent(otherPrimLink, parent);
-			renumberSpanTree(otherPrimLink);
-
-			RBXASSERT(inSpanTree(otherPrim, otherPrimLink));
-			
-			return true;
-		}
-
-		return false;
-	}
-
-	Body* Clump::getRootBody() const
-	{
-		RBXASSERT(primitives.size() > 0);
-		return rootPrimitive->getBody();
-	}
-
-	void Clump::putInKernel(Kernel* kernel)
-	{
-		RBXASSERT(!anchor);
-		return kernel->insertBody(getRootBody());
-	}
-
-	void Clump::removeFromKernel(Kernel* kernel)
-	{
-		RBXASSERT(primitives.size() > 0);
-		return kernel->removeBody(getRootBody());
-	}
-
-	void Clump::setSleepStatus(Sim::AssemblyState _set)
-	{
-		RBXASSERT(primitives.size() > 0);
-		if (_set != sleepStatus)
-		{
-			switch (_set)
-			{
-			case Sim::AWAKE:
-				getRootBody()->resetAccumulators();
-				break;
-			case Sim::SLEEPING_CHECKING:
-				getRootBody()->setVelocity(Velocity::zero());
-				break;
-			case Sim::SLEEPING_DEEPLY:
-				getRootBody()->setVelocity(Velocity::zero());
-				break;
-			}
-
-			sleepStatus = _set;
-		}
-	}
-
-	void Clump::addPrimitive(Primitive* p, Primitive* parent, RigidJoint* j)
-	{
-		MaxRadius.setDirty();
-
-		RBXASSERT(!p->getAnchorObject());
-		RBXASSERT(!p->getClump());
-		RBXASSERT(p->getClumpDepth() == -1);
-
-		p->setClump(this);
-		setParent(p, parent);
-		bool success = primitives.insert(p).second;
-		RBXASSERT(success);
-		canSleep = canSleep && p->getCanSleep();
-	}
-
-	void Clump::onPrimitiveCanSleepChanged(Primitive* p)
-	{
-		RBXASSERT(containsPrimitive(p));
-
-		if (p->getCanSleep() && !canSleep)
-		{
-			canSleep = computeCanSleep();
+		if ((primitive = next) == NULL) {
 			return;
 		}
 
-		if (!p->getCanSleep() && canSleep)
-		{
-			canSleep = false;
-		}
-	}
-
-	bool Clump::calcShouldSleep()
-	{
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::CoordinateFrame cofm = rootPrimitive->getBody()->getBranchCofmCoordinateFrame();
-		runningAverageState.update(cofm, MaxRadius);
-
-		return runningAverageState.withinTolerance(cofm, MaxRadius, 0.02f);
-	}
-
-	bool Clump::okNeighborSleep()
-	{
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::CoordinateFrame cofm = rootPrimitive->getBody()->getBranchCofmCoordinateFrame();
-		return runningAverageState.withinTolerance(cofm, MaxRadius, 0.02f);
-	}
-
-	bool Clump::forceNeighborAwake()
-	{
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::CoordinateFrame cofm = rootPrimitive->getBody()->getBranchCofmCoordinateFrame();
-		return !runningAverageState.withinTolerance(cofm, MaxRadius, 0.04f);
-	}
-
-	bool Clump::computeCanSleep()
-	{
-		typedef std::set<Primitive*>::iterator Iterator;
-
-		for (Iterator iter = primitives.begin(); iter != primitives.end(); iter++)
-		{
-			if (!(*iter)->getCanSleep())
-				return false;
-		}
-
-		return true;
-	}
-
-	void Clump::addInconsistent(RigidJoint* r)
-	{
-		bool success = inconsistentJoints.insert(r).second;
-		RBXASSERT(success);
-	}
-
-	bool Clump::containsInconsistent(RigidJoint* r)
-	{
-		return inconsistentJoints.find(r) != inconsistentJoints.end();
-	}
-
-	bool Clump::containsPrimitive(Primitive* p) const
-	{
-		return primitives.find(p) != primitives.end();
-	}
-
-	Clump::~Clump()
-	{
-		RBXASSERT(!rootPrimitive);
-		RBXASSERT(primitives.size() == 0);
-		RBXASSERT(inconsistentJoints.size() == 0);
-		RBXASSERT(!anchor);
-	}
-
-	void Clump::removeInconsistent(RigidJoint* r)
-	{
-		size_t count = inconsistentJoints.erase(r);
-		RBXASSERT(count == 1);
-	}
-
-	void Clump::removePrimitive(Primitive* p)
-	{
-		if (p == rootPrimitive)
-			rootPrimitive = NULL;
-
-		MaxRadius.setDirty();
-		p->setClump(NULL);
-		p->setClumpDepth(-1);
-		p->getBody()->setParent(NULL);
-
-		size_t count = primitives.erase(p);
-		RBXASSERT(count == 1);
-
-		canSleep = computeCanSleep();
-	}
-
-	float Clump::computeMaxRadius() const
-	{
-		typedef std::set<Primitive*>::const_iterator Iterator;
-
-		if (primitives.size() == 1)
-			return (rootPrimitive->getGeometry()->getGridSize() * 0.5f).magnitude();
-		else
-		{
-			float answer = 0.0f;
-
-			RBXASSERT(primitives.size() > 0);
-
-			G3D::Vector3 branchPos = rootPrimitive->getBody()->getBranchCofmPos();
-
-			for (Iterator it = primitives.begin(); it != primitives.end(); it++)
-			{
-				Primitive* current = *it;
-
-				G3D::Vector3 offsetCenter = Math::vector3Abs(current->getBody()->getPV().position.translation - branchPos);
-				G3D::Vector3 offset = offsetCenter + current->getGeometry()->getGridSize() * 0.5f;
-
-				answer = G3D::max(answer, offset.magnitude());
-			}
-
-			return answer;
-		}
-	}
-
-#pragma warning (push)
-#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
-	Clump::Clump(Primitive* root)
-		: sleepStatus(Sim::AWAKE),
-		  runningAverageState(),
-		  assembly(NULL),
-		  rootPrimitive(root),
-		  anchor(NULL),
-		  canSleep(true),
-		  primitives(),
-		  inconsistentJoints(),
-		  MaxRadius(this, &Clump::computeMaxRadius)
-	{
-		RBXASSERT(root->getClumpDepth() == -1);
-		primitives.insert(root);
-		root->setClump(this);
-		root->setClumpDepth(0);
-	}
-#pragma warning (pop)
-
-	void Clump::removeAllPrimitives()
-	{
-		while (primitives.size() != 0)
-		{
-			removePrimitive(*primitives.begin());
-		}
-	}
-
-	// inling problem with the 2nd deque.push_back prevents matching
-	void Clump::getRigidJoints(std::set<RigidJoint*>& internalRigids, std::set<RigidJoint*>& externalRigids)
-	{
-		RBXASSERT(rootPrimitive);
-
-		std::deque<Primitive*> deque;
-		deque.push_back(rootPrimitive);
-
-		while (!deque.empty())
-		{
-			Primitive* p = deque.front();
-			deque.pop_front();
-
-			for (RigidJoint* r = p->getFirstRigid(); r != NULL; r = p->getNextRigid(r))
-			{
-				if (r->getPrimitive(0)->getClump() == this && r->getPrimitive(1)->getClump() == this)
-				{
-					SCOPED(
-					if (internalRigids.insert(r).second)
-					{
-						deque.push_back(r->otherPrimitive(p));
-					}
-					);
-				}
-				else
-				{
-					externalRigids.insert(r);
-				}
-			}
-		}
+		edge = getNextExternalUtil(next, next->getFirstEdge());
 	}
 }
+
+// FUNCTION: WEBSERVICE 0x101180c0
+EdgeIterator& EdgeIterator::operator++()
+{
+	Primitive* current = primitive;
+
+	edge = getNextExternalUtil(current, current->getNextEdge(edge));
+
+	if (edge == NULL) {
+		findEdgeOnNextPrimitive();
+	}
+
+	return *this;
+}
+
+// FUNCTION: WEBSERVICE 0x101180f0
+EdgeIterator EdgeIterator::begin(Primitive* p)
+{
+	EdgeIterator answer(p, getNextExternalUtil(p, p->getFirstEdge()));
+
+	if (answer.edge == NULL) {
+		answer.findEdgeOnNextPrimitive();
+	}
+
+	return answer;
+}
+
+} // namespace RBX

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 006025d0  unit: G3D::_internal::DialogTemplate  size: 192 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 006025d0
 //

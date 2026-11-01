@@ -1,19 +1,4 @@
-// roc 2007-03 0062f6e0  unit: seg_00620000  size: 30 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0062f6e0
-//
-// 0062f6e0  8b542408             mov edx, dword ptr [esp + 8]
-// 0062f6e4  8b01                 mov eax, dword ptr [ecx]
-// 0062f6e6  8b80e8000000         mov eax, dword ptr [eax + 0xe8]
-// 0062f6ec  52                   push edx
-// 0062f6ed  8b542408             mov edx, dword ptr [esp + 8]
-// 0062f6f1  52                   push edx
-// 0062f6f2  6a00                 push 0
-// 0062f6f4  ffd0                 call eax
-// 0062f6f6  b801000000           mov eax, 1
-// 0062f6fb  c20800               ret 8
-// copied from an identical function in another client (function ?method@CRobloxControlColorSelector@ns_ROCX00000a@@QAEHHH@Z)
-
-namespace ns_ROCX00000a {
+// from server: 100% by tester
 struct CRobloxControlColorSelector {
     virtual void vfunc_000();
     virtual void vfunc_004();
@@ -81,5 +66,4 @@ int CRobloxControlColorSelector::method(int a, int b)
 {
     vfunc_0e8(0, a, b);
     return 1;
-}
 }

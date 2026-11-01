@@ -1,108 +1,48 @@
-// from server: 59% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+namespace bb { template<class T> struct value { T t_; value(T t) : t_(t) {} }; template<class A> struct list1 { A a1_; list1(A a) : a1_(a) {} };
+template<class R, class F, class L> struct bind_t { F f_; L l_; bind_t(F f, const L& l) : f_(f), l_(l) {} };
+template<class R, class B1, class A1> inline bind_t<R, R (*)(B1), list1<value<A1> > > bind(R (*f)(B1), A1 a1) { return bind_t<R, R (*)(B1), list1<value<A1> > >(f, list1<value<A1> >(value<A1>(a1))); } }
+typedef bb::bind_t<void, void (*)(unsigned int), bb::list1<bb::value<unsigned int> > > Bound;
+void onColorChanged(unsigned int);
+struct Listener { void raise(Bound); };
+struct PackedColor { unsigned int value; };
+struct ColorSetting { PackedColor color; Listener* listener; };
+extern ColorSetting colorSetting;
+namespace RBX {
+class Instance;
+class UIEvent;
+class Filter;
+extern Filter exeFilter;
+class PartInstance { public: char pad[0x120]; PackedColor color; PackedColor getColor() const { return color; } };
+class SoundService { public: void playSound(int); };
+SoundService* findSoundService(Instance* context);
+class MouseCommand {
+public:
+    virtual ~MouseCommand();
+    char pad[0x14];
+    Instance* workspace;
+    PartInstance* getPart(const UIEvent& event, Instance* ignore, Filter* filter);
+};
+class DropperTool : public MouseCommand {
+public:
+    MouseCommand* onMouseDown(const UIEvent& event);
+};
+MouseCommand* DropperTool::onMouseDown(const UIEvent& event)
 {
-	static boost::mutex mutex2;
-	return mutex2;
+    if (PartInstance* part = getPart(event, 0, &exeFilter)) {
+        unsigned int value = part->getColor().value;
+        if (colorSetting.color.value != value) {
+            Listener* listener = colorSetting.listener;
+            colorSetting.color.value = value;
+            Bound b = bb::bind(&onColorChanged, value);
+            if (listener)
+                listener->raise(b);
+        }
+        findSoundService(workspace)->playSound(4);
+    }
+    return 0;
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

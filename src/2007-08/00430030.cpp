@@ -1,4 +1,4 @@
-// from server: 37% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00430030  unit: RBX::VFillToolColor::?$Listener  size: 95 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00430030
 //
@@ -32,21 +32,25 @@
 // 0043008a  5e                   pop esi
 // 0043008b  83c410               add esp, 0x10
 // 0043008e  c3                   ret 
+// copied from an identical function in another client (function ?fn_ROCX000000_00433280@@YAPAUCBrowserFrameWnd@@XZ)
 
-struct S_func_00430030 {
-    void* m_vtable;
-    int f();
+// from server: 100% by tester
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*) throw();
+
+struct FrameBase
+{
+    FrameBase();
+    virtual ~FrameBase();
+    char storage[200];
 };
 
-extern "C" void* __cdecl sub_0062FEF6(unsigned int size);
-extern "C" void __cdecl sub_00632EA0(void* p);
-
-int S_func_00430030::f()
+struct CBrowserFrameWnd : FrameBase
 {
-    S_func_00430030* p = (S_func_00430030*)sub_0062FEF6(0xcc);
-    if (p != 0) {
-        sub_00632EA0(p);
-        p->m_vtable = (void*)0x78a71c;
-    }
-    return (int)p;
+    virtual ~CBrowserFrameWnd();
+};
+
+CBrowserFrameWnd* func_00433280()
+{
+    return new CBrowserFrameWnd;
 }

@@ -1,4 +1,4 @@
-// from server: 73% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 0042ea20  unit: MyXTPCommandBars  size: 48 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 0042ea20
 //
@@ -21,18 +21,27 @@
 // 0042ea4b  5f                   pop edi
 // 0042ea4c  5e                   pop esi
 // 0042ea4d  c20c00               ret 0xc
+// copied from an identical function in another client (function ?f@S@ns_ROCX00000e@@QAEPAUControl@2@HHH@Z)
 
-extern "C" int __stdcall sub_6331d0(int, int, int);
-extern "C" void __stdcall sub_64ee00(int, int);
-
-struct MyXTPCommandBars {
-    int f(int, int, int);
+namespace ns_ROCX00000e {
+// from server: 100% by king_originala
+struct Control {
+    void f(int value);
 };
 
-int MyXTPCommandBars::f(int a, int b, int c) {
-    int r = sub_6331d0(a, b, c);
-    if (b == 0x3ed) {
-        sub_64ee00(r, 0x10);
-    }
-    return r;
+struct Base {
+    Control* f(int a1, int a2, int a3);
+};
+
+struct S : Base {
+    Control* f(int a1, int a2, int a3);
+};
+
+Control* S::f(int a1, int a2, int a3)
+{
+    Control* result = Base::f(a1, a2, a3);
+    if (a2 == 1005)
+        result->f(16);
+    return result;
+}
 }

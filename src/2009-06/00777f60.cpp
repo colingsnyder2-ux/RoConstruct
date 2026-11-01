@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 00777f60  unit: CXTPPropExchangeXMLNode  size: 49 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00777f60
 //

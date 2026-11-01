@@ -1,31 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 005ee1d0  unit: RBX::Network::VPlayer::?$RefPropDescriptor  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005ee1d0
-//
-// 005ee1d0  8b542404             mov edx, dword ptr [esp + 4]
-// 005ee1d4  56                   push esi
-// 005ee1d5  8bf1                 mov esi, ecx
-// 005ee1d7  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
-// 005ee1da  8b01                 mov eax, dword ptr [ecx]
-// 005ee1dc  8b4008               mov eax, dword ptr [eax + 8]
-// 005ee1df  57                   push edi
-// 005ee1e0  52                   push edx
-// 005ee1e1  ffd0                 call eax
-// 005ee1e3  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
-// 005ee1e6  8b11                 mov edx, dword ptr [ecx]
-// 005ee1e8  8b5208               mov edx, dword ptr [edx + 8]
-// 005ee1eb  8bf8                 mov edi, eax
-// 005ee1ed  8b442410             mov eax, dword ptr [esp + 0x10]
-// 005ee1f1  50                   push eax
-// 005ee1f2  ffd2                 call edx
-// 005ee1f4  33c9                 xor ecx, ecx
-// 005ee1f6  3bf8                 cmp edi, eax
-// 005ee1f8  0f94c1               sete cl
-// 005ee1fb  5f                   pop edi
-// 005ee1fc  8ac1                 mov al, cl
-// 005ee1fe  5e                   pop esi
-// 005ee1ff  c20800               ret 8
-
 #include <memory>
 #include <string>
 

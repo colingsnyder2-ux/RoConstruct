@@ -1,40 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 005c6db0  unit: RBX::VRightMotorTool::?$TToolVerb  size: 101 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005c6db0
-//
-// 005c6db0  6aff                 push -1
-// 005c6db2  683bf47b00           push 0x7bf43b
-// 005c6db7  64a100000000         mov eax, dword ptr fs:[0]
-// 005c6dbd  50                   push eax
-// 005c6dbe  64892500000000       mov dword ptr fs:[0], esp
-// 005c6dc5  51                   push ecx
-// 005c6dc6  56                   push esi
-// 005c6dc7  57                   push edi
-// 005c6dc8  6a48                 push 0x48
-// 005c6dca  8bf9                 mov edi, ecx
-// 005c6dcc  e84f9b0d00           call 0x6a0920
-// 005c6dd1  8bf0                 mov esi, eax
-// 005c6dd3  83c404               add esp, 4
-// 005c6dd6  89742408             mov dword ptr [esp + 8], esi
-// 005c6dda  33c0                 xor eax, eax
-// 005c6ddc  89442414             mov dword ptr [esp + 0x14], eax
-// 005c6de0  3bf0                 cmp esi, eax
-// 005c6de2  7420                 je 0x5c6e04
-// 005c6de4  8b470c               mov eax, dword ptr [edi + 0xc]
-// 005c6de7  8b8804020000         mov ecx, dword ptr [eax + 0x204]
-// 005c6ded  51                   push ecx
-// 005c6dee  8bce                 mov ecx, esi
-// 005c6df0  e8eb2f0500           call 0x619de0
-// 005c6df5  c706ec948300         mov dword ptr [esi], 0x8394ec
-// 005c6dfb  c74604d4948300       mov dword ptr [esi + 4], 0x8394d4
-// 005c6e02  8bc6                 mov eax, esi
-// 005c6e04  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 005c6e08  5f                   pop edi
-// 005c6e09  5e                   pop esi
-// 005c6e0a  64890d00000000       mov dword ptr fs:[0], ecx
-// 005c6e11  83c410               add esp, 0x10
-// 005c6e14  c3                   ret 
-
 void* __cdecl operator new(unsigned int);
 void __cdecl operator delete(void*);
 

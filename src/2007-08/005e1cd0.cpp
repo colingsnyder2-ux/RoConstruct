@@ -1,15 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 005e1cd0  unit: RBX::VMotorFeature::?$FactoryProduct  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005e1cd0
-//
-// 005e1cd0  8bc1                 mov eax, ecx
-// 005e1cd2  8b481c               mov ecx, dword ptr [eax + 0x1c]
-// 005e1cd5  85c9                 test ecx, ecx
-// 005e1cd7  7405                 je 0x5e1cde
-// 005e1cd9  e9a2300400           jmp 0x624d80
-// 005e1cde  d9407c               fld dword ptr [eax + 0x7c]
-// 005e1ce1  c3                   ret 
-
 struct RBX_VMotorFeature_FactoryProduct {
     int field0;
     int field4;

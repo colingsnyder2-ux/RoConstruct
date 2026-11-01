@@ -1,16 +1,17 @@
-// from server: 55% by atomic.potato
-struct VideoControl
-{
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+struct T4_004b0450 {
+    T4_004b0450();
+    virtual void f_004b0450();
+    char m_a;
+    char m_b;
 };
-
-void __cdecl f(int a, int b, int c)
+T4_004b0450::T4_004b0450() : m_a(0), m_b(0) {}
+extern "C" void* create_other_004b0450(void*, void*, int);
+void* create_004b0450(void* unused, T4_004b0450* out, int type)
 {
-    if (c == 4)
-    {
-        *(int*)b = 0x00d72498;
-        *((unsigned char*)b + 4) = 0;
-        *((unsigned char*)b + 5) = 0;
-        return;
-    }
-    f(a, b, c);
+    if (type != 4)
+        return create_other_004b0450(unused, out, type);
+    out->T4_004b0450::T4_004b0450();
+    return out;
 }

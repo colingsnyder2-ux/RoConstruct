@@ -1,191 +1,107 @@
-// from server: 66% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/VARArea.cpp
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+extern unsigned long totalSize;
+extern int allocationMode;
+extern bool ignoreAssertion;
 
-// Candidate translation unit (score above; library headers required).
-/**
- @file VARArea.cpp
- 
- Implementation of the vertex array system used by RenderDevice.
+void __cdecl lockLog();
+void __cdecl unlockLog();
 
- @maintainer Morgan McGuire, morgan@graphics3d.com
- 
- @created 2003-01-08
- @edited  2006-01-06
- */
+extern long (__stdcall *decrementReference)(long *);
+extern void (__cdecl *releaseMemory)(void *);
+extern void (__stdcall *terminateProcess)(int);
+extern void (__stdcall *deleteTextures)(int, unsigned long *);
 
-#include "G3D/Log.h"
-#include "GLG3D/RenderDevice.h"
-#include "GLG3D/glheaders.h"
-#include "GLG3D/getOpenGLState.h"
-#include "GLG3D/VAR.h"
-#include "GLG3D/VARArea.h"
-#include "GLG3D/GLCaps.h"
+struct Image {
+    virtual ~Image();
+    long references;
+    void release();
+};
 
-namespace G3D {
+struct ImageRef {
+    Image *p;
+    ~ImageRef();
+};
 
-Array<VARAreaRef>    VARArea::allVARAreas;
-
-VARArea::Mode VARArea::mode = VARArea::UNINITIALIZED;
-
-size_t VARArea::_sizeOfAllVARAreasInMemory = 0;
-
-VARAreaRef VARArea::create(size_t s, UsageHint h) {
-    cleanCache();
-    VARAreaRef x = new VARArea(s, h);
-    allVARAreas.push(x);
-    return x;
-}
-
-
-VARArea::VARArea(size_t _size, UsageHint hint) : size(_size) {
-    renderDevice = NULL;
-
-    // See if we've determined the mode yet.
-    if (mode == UNINITIALIZED) {
-        if (GLCaps::supports_GL_ARB_vertex_buffer_object() &&
-            (glGenBuffersARB != NULL) && 
-            (glBufferDataARB != NULL) &&
-            (glDeleteBuffersARB != NULL) &&			
-			! GLCaps::hasBug_slowVBO()) {
-			mode = VBO_MEMORY;
-        } else {
-            mode = MAIN_MEMORY;
+inline ImageRef::~ImageRef() {
+    if (p) {
+        if (decrementReference(&p->references) == 0) {
+            p->release();
+            if (p)
+                delete p;
         }
+        p = 0;
     }
+}
 
-    _sizeOfAllVARAreasInMemory += size;
+struct String {
+    unsigned char data[28];
+    String(const char *);
+    ~String();
+};
 
-    switch (mode) {
-    case VBO_MEMORY:
-        {
-            //glPushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT);
-                glGenBuffersARB(1, &glbuffer);
-                glBindBufferARB(GL_ARRAY_BUFFER_ARB, glbuffer);
+extern void (__thiscall *constructString)(String *, const char *);
+extern void (__thiscall *destroyString)(String *);
 
-                GLenum usage;
+inline String::String(const char *s) {
+    constructString(this, s);
+}
 
-                switch (hint) {
-                case WRITE_EVERY_FRAME:
-                    usage = GL_STREAM_DRAW_ARB;
-                    break;
+inline String::~String() {
+    destroyString(this);
+}
 
-                case WRITE_ONCE:
-                    usage = GL_STATIC_DRAW_ARB;
-                    break;
+extern bool (__cdecl *assertionHandler)(
+    const char *, const String &, const char *, int, bool *, bool);
 
-                case WRITE_EVERY_FEW_FRAMES:
-                    usage = GL_DYNAMIC_DRAW_ARB;
-                    break;
+struct Base {
+    virtual ~Base();
+};
 
-                default:
-                    usage = GL_STREAM_DRAW_ARB;
-                    debugAssertM(false, "Fell through switch");
-                }
+inline Base::~Base() {
+}
 
-                // Load some (undefined) data to initialize the buffer
-                glBufferDataARB(GL_ARRAY_BUFFER_ARB, size, NULL, usage);
-                debugAssertGLOk();    
+struct S : Base {
+    unsigned long padding0[2];
+    ImageRef image;
+    unsigned long padding1[6];
+    unsigned long size;
+    unsigned long texture;
+    void *memory;
+    virtual ~S();
+};
 
-                // The basePointer is always NULL for a VBO
-                basePointer = NULL;
+S::~S() {
+    totalSize -= size;
 
-                glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
-            //glPopClientAttrib();
-            debugAssertGLOk();
+    if (size) {
+        switch (allocationMode) {
+        case 1:
+            deleteTextures(1, &texture);
+            texture = 0;
+            break;
+
+        case 2:
+            releaseMemory(memory);
+            memory = 0;
+            break;
+
+        default:
+            if (!ignoreAssertion) {
+                lockLog();
+                if (assertionHandler &&
+                    assertionHandler(
+                        (const char *)0x81e21c,
+                        String((const char *)0x81e420),
+                        (const char *)0x81e408,
+                        136,
+                        &ignoreAssertion,
+                        true))
+                    terminateProcess(-1);
+                unlockLog();
+            }
+            break;
         }
-        break;
-
-    case MAIN_MEMORY:
-        // Use the base pointer
-        glbuffer = 0;
-        basePointer = malloc(size);
-        debugAssert(basePointer);
-        break;
-
-    default:
-        alwaysAssertM(false, "Fell through switch.");
-        glbuffer = 0;
-        basePointer = NULL;
-    }
-
-    milestone     = NULL;
-    allocated     = 0;
-	generation    = 1;
-	peakAllocated = 0;
-}
-
-
-VARArea::~VARArea() {
-    _sizeOfAllVARAreasInMemory -= size;
-
-    if (size == 0) {
-        // Already freed
-        return;
-    }
-
-    switch (mode) {
-    case VBO_MEMORY:
-        // Delete the vertex buffer
-        glDeleteBuffersARB(1, &glbuffer);
-        glbuffer = 0;
-        break;
-
-    case MAIN_MEMORY:
-        // Free the buffer
-        free(basePointer);
-        basePointer = NULL;
-        break;
-
-    default:
-        alwaysAssertM(false, "Fell through switch.");
-    }
-
-    size = 0;
-}
-
-
-void VARArea::finish() {
-    if (milestone.notNull()) {
-        renderDevice->waitForMilestone(milestone);
-        milestone = NULL;
+        size = 0;
     }
 }
-
-
-void VARArea::reset() {
-    finish();
-	++generation;
-	allocated = 0;
-}
-
-
-void VARArea::cleanCache() {
-    int i = 0;
-    while (i < allVARAreas.size()) {
-        if (allVARAreas[i].isLastReference()) {
-            allVARAreas.fastRemove(i);
-        } else {
-            ++i;
-        }
-    }
-}
-
-
-void VARArea::cleanupAllVARAreas() {
-    // Intentionally empty
-    for (int i = 0; i < allVARAreas.size(); ++i) {
-        debugAssert((void*)allVARAreas[i]->renderDevice != (void*)0xcdcdcdcd);
-
-        allVARAreas[i]->reset();
-
-        // Invoke the destructor, freeing the resources even if there are
-        // more pointers (but not actually deleting the object)
-        allVARAreas[i]->~VARArea();
-    }
-    allVARAreas.clear();
-}
-
-} // namespace

@@ -1,31 +1,4 @@
-// roc 2011-06 004434e0  unit: HVCXTPPropertyGridItem::?$XItem  size: 65 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 004434e0
-//
-// 004434e0  83ec20               sub esp, 0x20
-// 004434e3  8b442424             mov eax, dword ptr [esp + 0x24]
-// 004434e7  56                   push esi
-// 004434e8  8bf1                 mov esi, ecx
-// 004434ea  8b08                 mov ecx, dword ptr [eax]
-// 004434ec  51                   push ecx
-// 004434ed  8d542408             lea edx, [esp + 8]
-// 004434f1  681c91a600           push 0xa6911c
-// 004434f6  52                   push edx
-// 004434f7  ff15c009a400         call dword ptr [0xa409c0]
-// 004434fd  83c408               add esp, 8
-// 00443500  8d442408             lea eax, [esp + 8]
-// 00443504  8bcc                 mov ecx, esp
-// 00443506  8964242c             mov dword ptr [esp + 0x2c], esp
-// 0044350a  50                   push eax
-// 0044350b  ff15002ea400         call dword ptr [0xa42e00]
-// 00443511  8b16                 mov edx, dword ptr [esi]
-// 00443513  8b4260               mov eax, dword ptr [edx + 0x60]
-// 00443516  8bce                 mov ecx, esi
-// 00443518  ffd0                 call eax
-// 0044351a  5e                   pop esi
-// 0044351b  83c420               add esp, 0x20
-// 0044351e  c20400               ret 4
-// copied from an identical function in another client (function ?setValue@Item@ns_ROCX00001a@@QAEXPBH@Z)
-
+// from server: 100% by colin
 namespace ns_ROCX00001a {
 extern "C" {
     extern int (__cdecl *sprintf)(char *, const char *, ...);

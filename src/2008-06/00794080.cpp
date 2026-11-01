@@ -1,16 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 00794080  unit: CXTPRibbonTab  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00794080
-//
-// 00794080  8bc1                 mov eax, ecx
-// 00794082  33c9                 xor ecx, ecx
-// 00794084  c700c8b78600         mov dword ptr [eax], 0x86b7c8
-// 0079408a  894804               mov dword ptr [eax + 4], ecx
-// 0079408d  894810               mov dword ptr [eax + 0x10], ecx
-// 00794090  89480c               mov dword ptr [eax + 0xc], ecx
-// 00794093  894808               mov dword ptr [eax + 8], ecx
-// 00794096  c3                   ret 
-
 extern char G;
 
 extern char G;

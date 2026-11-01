@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 008f4960  unit: CXTPTabPaintManager::CColorSetWinXP  size: 362 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 008f4960
 //

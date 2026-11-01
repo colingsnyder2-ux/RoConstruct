@@ -1,5 +1,7 @@
-// from server: 52% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Geometry/WmlConvexClipper.cpp
+// roc-cl: 21022
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+#include <vector>
+#include <string>
+template std::vector<std::string>::vector(std::vector<std::string>::size_type);

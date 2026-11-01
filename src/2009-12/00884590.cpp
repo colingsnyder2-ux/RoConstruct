@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00884590  unit: XTPPaintThemes::CXTPOffice2003Theme  size: 111 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00884590
 //

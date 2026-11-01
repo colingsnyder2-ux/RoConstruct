@@ -1,9 +1,4 @@
-// roc 2012-06 00437ce0  unit: VCMDIFrameWnd::?$CXTPCommandBarsSiteBase  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00437ce0
-//
-// 00437ce0  e91be1ffff           jmp 0x435e00
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00437ce0();
 void func_00437ce0()
 {

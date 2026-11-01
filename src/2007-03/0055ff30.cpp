@@ -1,9 +1,4 @@
-// roc 2007-03 0055ff30  unit: seg_00550000  size: 3 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0055ff30
-//
-// 0055ff30  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_0055ff30 {
 
     void f(int a1);

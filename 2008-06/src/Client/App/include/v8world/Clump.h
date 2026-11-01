@@ -1,151 +1,94 @@
-#pragma once
-#include <boost/noncopyable.hpp>
-#include <set>
-#include "util/ComputeProp.h"
-#include "util/RunningAverage.h"
+// Source-derived world pipeline port from openrbx include/v8world/Clump2.h.
+// June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
+#ifndef V8WORLD_CLUMP2_H
+#define V8WORLD_CLUMP2_H
 
-namespace RBX
+
+#include <cstddef>
+
+namespace RBX {
+
+class Edge;
+class Joint;
+class Primitive;
+
+// SIZE 0x08
+class PrimIterator
 {
-	class Assembly;
-	class Primitive;
-	class Anchor;
-	class RigidJoint;
-	class Edge;
-	class Kernel;
-	class Body;
-
-	namespace Sim
+public:
+	enum SearchType
 	{
-		enum AssemblyState;
+		IN_CLUMP = 0,
+		IN_ASSEMBLY = 1,
+	};
+
+private:
+	Primitive* primitive;  // 0x00
+	SearchType searchType; // 0x04
+
+	static bool isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType);
+	static Primitive* findFirstChild(Primitive* primitive, SearchType searchType);
+	static Primitive* findNextSibling(Primitive* parent, Primitive* child, SearchType searchType);
+	static Primitive* findNextRelative(Primitive* parent, Primitive* child, SearchType searchType);
+
+	PrimIterator(Primitive* primitive, SearchType searchType) : primitive(primitive), searchType(searchType) {}
+
+public:
+	static PrimIterator begin(Primitive* primitive, SearchType searchType)
+	{
+		return PrimIterator(primitive, searchType);
 	}
+	static PrimIterator end(SearchType searchType) { return PrimIterator(NULL, searchType); }
 
-	class SpanLink
-	{
-	public:
-		Primitive* parent;
-		RigidJoint* joint;
-  
-	public:
-		SpanLink(Primitive* parent, RigidJoint* joint)
-			: parent(parent),
-			  joint(joint)
-		{
-		}
-		SpanLink()
-			: parent(NULL),
-			  joint(NULL)
-		{
-		}
-	public:
-		Primitive* child() const;
-  
-	public:
-		static Primitive* isSpanningJoint(RigidJoint* r);
-		static bool isDownstreamSpanningJoint(Primitive* p, RigidJoint* r);
-		static bool isUpstreamSpanningJoint(Primitive*, RigidJoint*);
-		static bool spansToChild(RigidJoint*, Primitive*);
-		static SpanLink bestSpanLink(const SpanLink& s0, const SpanLink& s1);
-	};
+	Primitive* operator*() const { return primitive; }
 
-	class Clump : public boost::noncopyable
-	{
-	private:
-		Sim::AssemblyState sleepStatus;
-		RunningAverageState runningAverageState;
-		Assembly* assembly;
-		Primitive* rootPrimitive;
-		Anchor* anchor;
-		bool canSleep;
-		std::set<Primitive*> primitives;
-		std::set<RigidJoint*> inconsistentJoints;
-		ComputeProp<float, Clump> MaxRadius;
-	private:
-		static Primitive* tempChild;
-  
-	private:
-		float computeMaxRadius() const;
-		Body* getRootBody() const;
-		bool computeCanSleep();
-		bool containsPrimitive(Primitive* p) const;
-		void setParent(Primitive* p, Primitive* newParent);
-		void setSpanParent(Primitive* onTree, RigidJoint* stop);
-		void renumberSpanTree(Primitive* onTree);
-		SpanLink findBestOutsideLink(Primitive* treeRoot, Primitive* current);
-		bool inSpanTree(Primitive* p, Primitive* treeRoot);
-		bool okSpanTree(Primitive*, RigidJoint*);
-	public:
-		//Clump(const Clump&);
-		Clump(Primitive*);
-		~Clump();
-	public:
-		const Primitive* getRootPrimitive() const
-		{
-			return rootPrimitive;
-		}
-		Primitive* getRootPrimitive()
-		{
-			return rootPrimitive;
-		}
-		const Assembly* getRootAssembly() const;
-		Assembly* getRootAssembly();
-		Assembly* getAssembly() const
-		{
-			return assembly;
-		}
-		void setAssembly(Assembly* a)
-		{
-			assembly = a;
-		}
-		void addPrimitive(Primitive* p, Primitive* parent, RigidJoint* j);
-		void removePrimitive(Primitive* p);
-		void removeAllPrimitives();
-		void getRigidJoints(std::set<RigidJoint*>& internalRigids, std::set<RigidJoint*>& externalRigids);
-		void addAnchor(Anchor* a);
-		Anchor* removeAnchor();
-		bool getAnchored() const
-		{
-			return anchor != NULL;
-		}
-		bool getCanSleep() const
-		{
-			return canSleep;
-		}
-		Sim::AssemblyState getSleepStatus()
-		{
-			return sleepStatus;
-		}
-		bool moving();
-		void putInKernel(Kernel* kernel);
-		void removeFromKernel(Kernel* kernel);
-		bool calcShouldSleep();
-		bool okNeighborSleep();
-		bool forceNeighborAwake();
-		std::set<RigidJoint*>& getInconsistents()
-		{
-			return inconsistentJoints;
-		}
-		void addInconsistent(RigidJoint* r);
-		void removeInconsistent(RigidJoint* r);
-		bool containsInconsistent(RigidJoint* r);
-		bool spanningTreeAdjust(RigidJoint* removing);
-		void setSleepStatus(Sim::AssemblyState _set);
-		void onPrimitiveCanSleepChanged(Primitive* p);
-		Clump* otherClump(Edge* e) const;
-		int size()
-		{
-			return (int)primitives.size(); // guess
-		}
-		std::set<Primitive*>::const_iterator clumpPrimBegin() const
-		{
-			return primitives.begin();
-		}
-		std::set<Primitive*>::const_iterator clumpPrimEnd() const
-		{
-			return primitives.end();
-		}
-		//Clump& operator=(const Clump&);
-  
-	private:
-		static float sleepTolerance();
-	};
+	bool operator==(const PrimIterator& other) const { return primitive == other.primitive; }
+	bool operator!=(const PrimIterator& other) const { return primitive != other.primitive; }
+
+	PrimIterator& operator++();
+
+	static Primitive* findParent(Primitive* primitive, SearchType searchType);
+};
+
+
+// SIZE 0x08
+class EdgeIterator
+{
+public:
+	static EdgeIterator begin(Primitive* primitive);
+
+	EdgeIterator() : primitive(NULL), edge(NULL) {}
+
+	EdgeIterator(Primitive* primitive, Edge* edge) : primitive(primitive), edge(edge) {}
+
+	static EdgeIterator& end();
+
+	EdgeIterator& operator++();
+
+	Edge* operator*() const { return edge; }
+
+	bool operator==(const EdgeIterator& other) const { return edge == other.edge && primitive == other.primitive; }
+
+	bool operator!=(const EdgeIterator& other) const { return !(*this == other); }
+
+private:
+	static Edge* getNextExternalUtil(Primitive* primitive, Edge* edge);
+
+	void findEdgeOnNextPrimitive();
+
+	Primitive* primitive; // 0x00
+	Edge* edge;           // 0x04
+};
+
+
+inline EdgeIterator& EdgeIterator::end()
+{
+	static EdgeIterator temp;
+	return temp;
 }
+
+} // namespace RBX
+
+#endif // V8WORLD_CLUMP2_H
+
+#include "v8world/Assembly.h"

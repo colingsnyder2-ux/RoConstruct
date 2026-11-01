@@ -1,49 +1,11 @@
-// from server: 55% by atomic.potato
-extern "C" void sub_40fe60(void *, void *);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: boost-1.40.0 roc_espclaude_baf452402f1f67d3.cpp
 
-struct S
-{
-    char pad00[16];
-    void *field10;
-    void *field14;
-    void *field18;
-    void *field1c;
-    char pad20[4];
-
-    S(void *);
-};
-
-S::S(void *arg)
-{
-    sub_40fe60(this, arg);
-    *(unsigned long *)((char *)this + 0x20) = 0;
-    *(unsigned long *)((char *)this + 0x20) = 0x008ad24c;
-    *(unsigned char *)((char *)this + 0x20) = 1;
-    *(void **)this = (void *)0x008af008;
-    *(void **)((char *)this + 0x0c) = (void *)0x008af000;
-    *(unsigned long *)((char *)this + 0x20) = 0x008aeff0;
-
-    {
-        char *p = arg ? (char *)arg + 0x0c : 0;
-        void *v = field10;
-        void *n = *(void **)(p + 4);
-
-        if (v)
-        {
-            void **vt = *(void ***)v;
-            ((void (__thiscall *)(void *))vt[4])(v);
-        }
-
-        field10 = n;
-
-        if (n)
-        {
-            void **vt = *(void ***)n;
-            ((void (__thiscall *)(void *))vt[3])(n);
-        }
-
-        field14 = *(void **)(p + 8);
-        field18 = *(void **)(p + 0x0c);
-        field1c = *(void **)(p + 0x10);
-    }
-}
+// Candidate translation unit (score above; library headers required).
+#define NDEBUG
+#include <boost/shared_ptr.hpp>
+#include <boost/exception/exception.hpp>
+template class boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr> >;

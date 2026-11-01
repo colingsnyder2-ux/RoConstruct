@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: g3d-6.09-rbx2008 GLG3Dcpp/GFont.cpp
+// roc-lib: g3d-6.09 GLG3Dcpp/GFont.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**

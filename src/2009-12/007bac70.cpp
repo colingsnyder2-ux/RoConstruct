@@ -1,32 +1,4 @@
-// roc 2009-12 007bac70  unit: RBX::MovingAssemblyStage  size: 55 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 007bac70
-//
-// 007bac70  56                   push esi
-// 007bac71  8b7114               mov esi, dword ptr [ecx + 0x14]
-// 007bac74  57                   push edi
-// 007bac75  8d7914               lea edi, [ecx + 0x14]
-// 007bac78  3bf7                 cmp esi, edi
-// 007bac7a  7426                 je 0x7baca2
-// 007bac7c  8d642400             lea esp, [esp]
-// 007bac80  85f6                 test esi, esi
-// 007bac82  7405                 je 0x7bac89
-// 007bac84  8d4ed4               lea ecx, [esi - 0x2c]
-// 007bac87  eb02                 jmp 0x7bac8b
-// 007bac89  33c9                 xor ecx, ecx
-// 007bac8b  8b01                 mov eax, dword ptr [ecx]
-// 007bac8d  dd44240c             fld qword ptr [esp + 0xc]
-// 007bac91  8b503c               mov edx, dword ptr [eax + 0x3c]
-// 007bac94  83ec08               sub esp, 8
-// 007bac97  dd1c24               fstp qword ptr [esp]
-// 007bac9a  ffd2                 call edx
-// 007bac9c  8b36                 mov esi, dword ptr [esi]
-// 007bac9e  3bf7                 cmp esi, edi
-// 007baca0  75de                 jne 0x7bac80
-// 007baca2  5f                   pop edi
-// 007baca3  5e                   pop esi
-// 007baca4  c20800               ret 8
-// copied from an identical function in another client (function ?method@S@ns_ROCX000002@@QAEXN@Z)
-
+// from server: 100% by colin
 namespace ns_ROCX000002 {
 // from server: 100% by atomic.potato
 struct Node {

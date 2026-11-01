@@ -1,5 +1,19 @@
-// from server: 68% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.36.0 libs/thread/src/win32/thread.cpp
+// from server: 100% by tester
+typedef void *HANDLE;
+typedef unsigned long DWORD;
+typedef int BOOL;
+
+extern "C" HANDLE __declspec(dllimport) __stdcall OpenEventA(DWORD, BOOL, const char *);
+
+struct S
+{
+    HANDLE value;
+    int f(DWORD access, DWORD inherit, const char *name);
+};
+
+int S::f(DWORD access, DWORD inherit, const char *name)
+{
+    HANDLE h = OpenEventA(access, inherit, name);
+    value = h;
+    return h != 0;
+}

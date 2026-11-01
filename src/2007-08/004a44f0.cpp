@@ -1,19 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 004a44f0  unit: RBX::VNetworkSettings::?$FactoryProduct  size: 80 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004a44f0
-//
-// 004a44f0  c705f8e28b0000000000 mov dword ptr [0x8be2f8], 0
-// 004a44fa  c70174cd7900         mov dword ptr [ecx], 0x79cd74
-// 004a4500  c741046ccd7900       mov dword ptr [ecx + 4], 0x79cd6c
-// 004a4507  c7411064cd7900       mov dword ptr [ecx + 0x10], 0x79cd64
-// 004a450e  c7411454cd7900       mov dword ptr [ecx + 0x14], 0x79cd54
-// 004a4515  c7412c44cd7900       mov dword ptr [ecx + 0x2c], 0x79cd44
-// 004a451c  c7414434cd7900       mov dword ptr [ecx + 0x44], 0x79cd34
-// 004a4523  c7415c24cd7900       mov dword ptr [ecx + 0x5c], 0x79cd24
-// 004a452a  c7417414cd7900       mov dword ptr [ecx + 0x74], 0x79cd14
-// 004a4531  c7818c00000004cd7900 mov dword ptr [ecx + 0x8c], 0x79cd04
-// 004a453b  e970bd0900           jmp 0x5402b0
-
 struct S_func_004a44f0 {
     int m_0;
     int m_4;

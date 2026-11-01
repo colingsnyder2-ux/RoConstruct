@@ -1,7 +1,8 @@
+// from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs roc_unit_1d8338cf2f16d51c.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-dll roc_unit_1d8338cf2f16d51c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias(<vector>, <roc_native_vector_cleanup_81d2f7b5fd70c773.cpp>)

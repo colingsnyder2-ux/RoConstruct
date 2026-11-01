@@ -1,32 +1,4 @@
-// roc 2010-06 005a5180  unit: RBX::VBrickColor::?$TypedPropertyDescriptor  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 005a5180
-//
-// 005a5180  56                   push esi
-// 005a5181  8b742408             mov esi, dword ptr [esp + 8]
-// 005a5185  85f6                 test esi, esi
-// 005a5187  742c                 je 0x5a51b5
-// 005a5189  8b0e                 mov ecx, dword ptr [esi]
-// 005a518b  85c9                 test ecx, ecx
-// 005a518d  7409                 je 0x5a5198
-// 005a518f  8b01                 mov eax, dword ptr [ecx]
-// 005a5191  8b5004               mov edx, dword ptr [eax + 4]
-// 005a5194  ffd2                 call edx
-// 005a5196  eb05                 jmp 0x5a519d
-// 005a5198  b80c93b700           mov eax, 0xb7930c
-// 005a519d  689823b900           push 0xb92398
-// 005a51a2  8bc8                 mov ecx, eax
-// 005a51a4  ff15d8a89e00         call dword ptr [0x9ea8d8]
-// 005a51aa  84c0                 test al, al
-// 005a51ac  7407                 je 0x5a51b5
-// 005a51ae  8b06                 mov eax, dword ptr [esi]
-// 005a51b0  83c004               add eax, 4
-// 005a51b3  5e                   pop esi
-// 005a51b4  c3                   ret 
-// 005a51b5  33c0                 xor eax, eax
-// 005a51b7  5e                   pop esi
-// 005a51b8  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX000000_00642c10@@YAPAXPAUAny@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 
 // boost::any_cast<T>(any *) shape: 0xb0030c = typeid(void), 0xb1316c = typeid(T)

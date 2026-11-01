@@ -1,108 +1,59 @@
-// from server: 58% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+//
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+//
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+//
 
-boost::mutex& moo2()
+#include <stdlib.h>
+
+namespace boost {
+template<class T>
+class shared_ptr
 {
-	static boost::mutex mutex2;
-	return mutex2;
+    T* px;
+    void* pn;
+public:
+    template<class Y, class D> shared_ptr(Y* p, D d);
+    ~shared_ptr();
+};
 }
 
-void initMoo()
+namespace RBX {
+template<class T>
+class Creatable
 {
-	moo2();
-}
+public:
+    class Deleter
+    {
+    public:
+        void operator()(T* instance);
+    };
 
-namespace RBX
+    template<class U>
+    static boost::shared_ptr<U> create()
+    {
+        return boost::shared_ptr<U>(new U(), Deleter());
+    }
+
+protected:
+    static void* operator new(size_t size) { return ::operator new(size); }
+};
+
+class Instance : public Creatable<Instance>
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+public:
+    virtual ~Instance();
+};
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+class IModelModifier { public: virtual ~IModelModifier(); };
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
+class ModelInstance : public Instance, public virtual IModelModifier
+{
+    char data[0x258 - 12];
+public:
+    ModelInstance();
+};
 
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+template boost::shared_ptr<ModelInstance> Creatable<Instance>::create<ModelInstance>();
 }

@@ -1,37 +1,4 @@
 // from server: 32% by colin
-// roc 2007-08 00428800  unit: COleException  size: 76 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00428800
-//
-// 00428800  53                   push ebx
-// 00428801  8b5c2410             mov ebx, dword ptr [esp + 0x10]
-// 00428805  55                   push ebp
-// 00428806  8b6c241c             mov ebp, dword ptr [esp + 0x1c]
-// 0042880a  56                   push esi
-// 0042880b  57                   push edi
-// 0042880c  8d642400             lea esp, [esp]
-// 00428810  3bdd                 cmp ebx, ebp
-// 00428812  7426                 je 0x42883a
-// 00428814  81ec40010000         sub esp, 0x140
-// 0042881a  8bfc                 mov edi, esp
-// 0042881c  8d7308               lea esi, [ebx + 8]
-// 0042881f  b950000000           mov ecx, 0x50
-// 00428824  f3a5                 rep movsd dword ptr es:[edi], dword ptr [esi]
-// 00428826  8d8c2468010000       lea ecx, [esp + 0x168]
-// 0042882d  e87ef3ffff           call 0x427bb0
-// 00428832  84c0                 test al, al
-// 00428834  7504                 jne 0x42883a
-// 00428836  8b1b                 mov ebx, dword ptr [ebx]
-// 00428838  ebd6                 jmp 0x428810
-// 0042883a  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0042883e  8b4c2418             mov ecx, dword ptr [esp + 0x18]
-// 00428842  5f                   pop edi
-// 00428843  5e                   pop esi
-// 00428844  5d                   pop ebp
-// 00428845  895804               mov dword ptr [eax + 4], ebx
-// 00428848  8908                 mov dword ptr [eax], ecx
-// 0042884a  5b                   pop ebx
-// 0042884b  c3                   ret 
-
 struct COleException_Helper
 {
     int field0;

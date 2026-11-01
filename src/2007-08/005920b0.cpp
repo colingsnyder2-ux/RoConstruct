@@ -1,30 +1,28 @@
+// from server: 100% by Espeon
 // roc-lang: cpp
-// roc-cl: 21022
+// roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs roc_unit_ac8dd88f66dc5191.cpp
+// roc-lib: rbxgs-net roc_espeon_aug2007_network_stack_8c50aae6e9c92624.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "G3D/Color3.h"
-#include "G3D/Vector3.h"
-#include "G3D/CoordinateFrame.h"
-#include "v8datamodel/BrickColor.h"
-#undef _RELEASEASSERT
-#include "reflection/object.h"
-#include "reflection/signal.h"
-namespace RBX { class Instance; }
-template void RBX::Reflection::SignalDescImpl<2,void(boost::shared_ptr<RBX::Instance>,float)>::fire(RBX::Reflection::SignalSource*,boost::shared_ptr<RBX::Instance>,float);
-template void RBX::Reflection::SignalDescImpl<1,void(boost::shared_ptr<RBX::Instance>)>::fire(RBX::Reflection::SignalSource*,const boost::shared_ptr<RBX::Instance>);
-template void RBX::Reflection::SignalDescImpl<1,void(float)>::fire(RBX::Reflection::SignalSource*,const float);
-template void RBX::Reflection::SignalDescImpl<0,void(void)>::fire(RBX::Reflection::SignalSource*);
-template void RBX::Reflection::SignalDescImpl<1,void(bool)>::fire(RBX::Reflection::SignalSource*,bool);
-template void RBX::Reflection::SignalDescImpl<1,void(int)>::fire(RBX::Reflection::SignalSource*,int);
-template void RBX::Reflection::SignalDescImpl<1,void(std::string)>::fire(RBX::Reflection::SignalSource*,std::string);
-template void RBX::Reflection::SignalDescImpl<1,void(G3D::Color3)>::fire(RBX::Reflection::SignalSource*,G3D::Color3);
-template void RBX::Reflection::SignalDescImpl<1,void(G3D::Vector3)>::fire(RBX::Reflection::SignalSource*,G3D::Vector3);
-template void RBX::Reflection::SignalDescImpl<1,void(G3D::CoordinateFrame)>::fire(RBX::Reflection::SignalSource*,G3D::CoordinateFrame);
-template void RBX::Reflection::SignalDescImpl<1,void(RBX::BrickColor)>::fire(RBX::Reflection::SignalSource*,RBX::BrickColor);
-template void RBX::Reflection::SignalDescImpl<1,void(const RBX::Reflection::PropertyDescriptor*)>::fire(RBX::Reflection::SignalSource*,const RBX::Reflection::PropertyDescriptor*);
-template void RBX::Reflection::SignalDescImpl<2,void(std::string,int)>::fire(RBX::Reflection::SignalSource*,std::string,int);
-template void RBX::Reflection::SignalDescImpl<2,void(std::string,boost::shared_ptr<RBX::Instance>)>::fire(RBX::Reflection::SignalSource*,std::string,boost::shared_ptr<RBX::Instance>);
-template void RBX::Reflection::SignalDescImpl<2,void(std::string,bool)>::fire(RBX::Reflection::SignalSource*,std::string,bool);
-template void RBX::Reflection::SignalDescImpl<2,void(float,float)>::fire(RBX::Reflection::SignalSource*,float,float);
+#define _DLL 1
+#define _MT 1
+#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
+#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
+#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
+#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
+#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
+#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_datamodel_header_e4d5a36bea2e4f16.cpp")
+#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_inline_3639f053c7370446.cpp")
+#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
+#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_header_7a4c998b489b0ddf.cpp")
+#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
+#pragma include_alias("v8datamodel/DataModel.h", "../roc_espeon_aug2007_datamodel_mutex_header_321a3c67de644a82.cpp")
+#pragma include_alias("v8tree/Verb.h", "../roc_espeon_aug2007_datamodel_header_c06d28d1a6b724f6.cpp")
+#pragma include_alias("util/Evaluator.h", "../roc_espeon_aug2007_datamodel_header_4ba4cf67c400aa66.cpp")
+#pragma include_alias(<boost/signals/signal_template.hpp>, <../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp>)
+#pragma include_alias("boost/signals/signal_template.hpp", "../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp")
+#include "roc_espeon_boost133_header_d432d72f8740aec3.cpp"
+#include "roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
+#include "roc_espeon_boost133_signals_header_be197e98651271fa.cpp"
+#include "Client.cpp"

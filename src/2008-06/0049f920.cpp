@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0049f920  unit: std::D::DU?$char_traits::$$A6AXV?$basic_string::?$TSignalDesc::TSignalInstance  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0049f920
-//
-// 0049f920  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0049f924  83f803               cmp eax, 3
-// 0049f927  741e                 je 0x49f947
-// 0049f929  8b542408             mov edx, dword ptr [esp + 8]
-// 0049f92d  c644240c00           mov byte ptr [esp + 0xc], 0
-// 0049f932  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 0049f936  51                   push ecx
-// 0049f937  50                   push eax
-// 0049f938  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0049f93c  52                   push edx
-// 0049f93d  50                   push eax
-// 0049f93e  e83dfdffff           call 0x49f680
-// 0049f943  83c410               add esp, 0x10
-// 0049f946  c3                   ret 
-// 0049f947  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0049f94b  c70140919300         mov dword ptr [ecx], 0x939140
-// 0049f951  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

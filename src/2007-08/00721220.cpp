@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 00721220  unit: CXTCaptionButtonTheme  size: 367 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00721220
 //

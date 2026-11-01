@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 007433b0  unit: RBX::VHttp::?$sp_counted_impl_p  size: 345 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 007433b0
 //

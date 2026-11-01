@@ -1,16 +1,4 @@
-// roc 2009-06 007bd5c0  unit: CXTPRibbonBar  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 007bd5c0
-//
-// 007bd5c0  8bc1                 mov eax, ecx
-// 007bd5c2  33c9                 xor ecx, ecx
-// 007bd5c4  c700944b9000         mov dword ptr [eax], 0x904b94
-// 007bd5ca  894804               mov dword ptr [eax + 4], ecx
-// 007bd5cd  894810               mov dword ptr [eax + 0x10], ecx
-// 007bd5d0  89480c               mov dword ptr [eax + 0xc], ecx
-// 007bd5d3  894808               mov dword ptr [eax + 8], ecx
-// 007bd5d6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

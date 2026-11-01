@@ -1,10 +1,4 @@
-// roc 2007-08 006ed630  unit: IIPAVCRgn::?$CMap  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006ed630
-//
-// 006ed630  b888af7d00           mov eax, 0x7daf88
-// 006ed635  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_006ed630()

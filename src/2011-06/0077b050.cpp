@@ -1,14 +1,4 @@
 // from server: 100% by tester
-// roc 2011-06 0077b050  unit: seg_00770000  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0077b050
-//
-// 0077b050  8b09                 mov ecx, dword ptr [ecx]
-// 0077b052  8b4108               mov eax, dword ptr [ecx + 8]
-// 0077b055  50                   push eax
-// 0077b056  b968d5c400           mov ecx, 0xc4d568
-// 0077b05b  ff15500aa400         call dword ptr [0xa40a50]
-// 0077b061  c3                   ret 
-
 struct type_info {
     bool operator==(const type_info&) const;
 };

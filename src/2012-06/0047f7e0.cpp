@@ -1,15 +1,17 @@
-// from server: 61% by atomic.potato
-extern "C" void __cdecl G1_func_0047b090();
-
-void func_0047f7e0(int a1, int a2, int a3)
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+struct T4_0047f7e0 {
+    T4_0047f7e0();
+    virtual void f_0047f7e0();
+    char m_a;
+    char m_b;
+};
+T4_0047f7e0::T4_0047f7e0() : m_a(0), m_b(0) {}
+extern "C" void* create_other_0047f7e0(void*, void*, int);
+void* create_0047f7e0(void* unused, T4_0047f7e0* out, int type)
 {
-    if (a3 != 4)
-    {
-        G1_func_0047b090();
-        return;
-    }
-
-    *(int*)a2 = 0x00D6D9D0;
-    ((char*)a2)[4] = 0;
-    ((char*)a2)[5] = 0;
+    if (type != 4)
+        return create_other_0047f7e0(unused, out, type);
+    out->T4_0047f7e0::T4_0047f7e0();
+    return out;
 }

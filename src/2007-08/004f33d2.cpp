@@ -1,10 +1,4 @@
-// roc 2007-08 004f33d2  unit: boost::bad_lexical_cast  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004f33d2
-//
-// 004f33d2  b801000000           mov eax, 1
-// 004f33d7  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 int func_004f33d2()
 {
     return 1;

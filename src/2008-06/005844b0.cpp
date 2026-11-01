@@ -1,14 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 005844b0  unit: RBX::ModelInstance  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005844b0
-//
-// 005844b0  8b09                 mov ecx, dword ptr [ecx]
-// 005844b2  8b4108               mov eax, dword ptr [ecx + 8]
-// 005844b5  50                   push eax
-// 005844b6  b980639400           mov ecx, 0x946380
-// 005844bb  ff1578288000         call dword ptr [0x802878]
-// 005844c1  c3                   ret 
-
 struct type_info {
     bool operator==(const type_info&) const;
 };

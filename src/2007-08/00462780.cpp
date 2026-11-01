@@ -1,218 +1,50 @@
-// from server: 53% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs gui/GUI.cpp
+// from server: 100% by Yeetserama
+// roc 2007-08 00462780  unit: CSelectionCaption  size: 86 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00462780
+//
+// 00462780  6aff                 push -1
+// 00462782  68682c7400           push 0x742c68
+// 00462787  64a100000000         mov eax, dword ptr fs:[0]
+// 0046278d  50                   push eax
+// 0046278e  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00462793  33c4                 xor eax, esp
+// 00462795  50                   push eax
+// 00462796  8d442404             lea eax, [esp + 4]
+// 0046279a  64a300000000         mov dword ptr fs:[0], eax
+// 004627a0  81c16cfeffff         add ecx, 0xfffffe6c
+// 004627a6  c744240c00000000     mov dword ptr [esp + 0xc], 0
+// 004627ae  e86df6ffff           call 0x461e20
+// 004627b3  8d4c2418             lea ecx, [esp + 0x18]
+// 004627b7  c744240cffffffff     mov dword ptr [esp + 0xc], 0xffffffff
+// 004627bf  e83cb2fbff           call 0x41da00
+// 004627c4  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 004627c8  64890d00000000       mov dword ptr fs:[0], ecx
+// 004627cf  59                   pop ecx
+// 004627d0  83c40c               add esp, 0xc
+// 004627d3  c21400               ret 0x14
+// copied from an identical function in another client (function ?f@CSelectionCaption@ns_ROCX000000@@QAEXHUArgument@2@@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "gui/Gui.h"
-
-namespace RBX
+namespace ns_ROCX000000 {
+// from server: 100% by king_originala
+struct Argument
 {
-	const G3D::Color4& GuiItem::disabledFill()
-	{
-		static G3D::Color4 c(0.7f, 0.7f, 0.7f, 0.5f);
-		return c;
-	}
+    unsigned char storage[16];
+    ~Argument();
+};
 
-	const G3D::Color4& GuiItem::translucentBackdrop()
-	{
-		static G3D::Color4 c(0.6f, 0.6f, 0.6f, 0.6f);
-		return c;
-	}
+struct Owner
+{
+    void g();
+};
 
-	G3D::Vector2 GuiRoot::canvasSize;
-	G3D::Matrix4 GuiRoot::oldProjectionMatrix;
-	G3D::CoordinateFrame GuiRoot::oldCameraWorld;
+struct CSelectionCaption
+{
+    void f(int, Argument);
+};
 
-	GuiItem::GuiItem() 
-	{
-		setName("Unnamed GuiItem");
-	}
-
-	const GuiItem* GuiItem::getGuiItem(int index) const
-	{
-		return dynamic_cast<const GuiItem*>(getChild(index));
-	}
-
-	GuiItem* GuiItem::getGuiItem(int index)
-	{
-		return dynamic_cast<GuiItem*>(getChild(index));
-	}
-
-	GuiResponse GuiItem::processNonFocus(const GuiEvent& event)
-	{
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			GuiItem* current = getGuiItem((int)i);
-
-			if (current && current != focus.get())
-			{
-				GuiResponse itemResponse = current->process(event);
-				if (itemResponse.wasUsed())
-				{
-					this->loseFocus();
-
-					focus = shared_from(current);
-					focus->loseFocus();
-
-					return itemResponse;
-				}
-			}
-		}
-
-		return GuiResponse::notUsed();
-	}
-
-	void GuiItem::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
-	{
-		if (instance == focus)
-			loseFocus();
-
-		Instance::onDescendentRemoving(instance);
-	}
-
-	Rect GuiItem::getMyRect() const
-	{
-		G3D::Vector2 pos = getPosition();
-		return Rect(pos, pos + getSize());
-	}
-
-	const GuiItem* GuiItem::getGuiParent() const
-	{
-		return dynamic_cast<const GuiItem*>(getParent());
-	}
-	
-	GuiResponse GuiItem::process(const GuiEvent& event)
-	{
-		if (event.isMouseEvent() && event.eventType == UIEvent::MOUSE_IDLE)
-			return GuiResponse::notUsed();
-
-		if (focus)
-		{
-			if (focus->canLoseFocus())
-			{
-				GuiResponse response = processNonFocus(event);
-				if (response.wasUsed())
-					return response;
-			}
-
-			GuiResponse focusResponse = focus->process(event);
-			if (focusResponse.wasUsed())
-				return focusResponse;
-
-			loseFocus();
-		}
-
-		RBXASSERT(!focus);
-		return processNonFocus(event);
-	}
-
-	void TopMenuBar::init()
-	{
-		layoutStyle = Layout::HORIZONTAL;
-		backdropColor = G3D::Color4::clear();
-		visible = true;
-	}
-
-	G3D::Vector2 TopMenuBar::getSize() const
-	{
-		G3D::Vector2 size(0.0f, 0.0f);
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			const GuiItem* current = getGuiItem((int)i);
-
-			if (current)
-			{
-				G3D::Vector2 childSize = current->getSize();
-				switch (layoutStyle)
-				{
-				case Layout::VERTICAL:
-					size.x = G3D::max(size.x, childSize.x);
-					size.y += childSize.y;
-					break;
-				case Layout::HORIZONTAL:
-					size.x += childSize.x;
-					size.y = G3D::max(size.y, childSize.y);
-					break;
-				}
-			}
-		}
-
-		return size;
-	}
-
-	void TopMenuBar::render2d(Adorn* adorn)
-	{
-		if (isVisible())
-		{
-			if (backdropColor != G3D::Color4::clear())
-			{
-				adorn->rect2d(getMyRect2D(), backdropColor);
-			}
-
-			for (size_t i = 0; i < numChildren(); i++)
-			{
-				GuiItem* current = getGuiItem((int)i);
-				if (current)
-					current->render2d(adorn);
-			}
-		}
-	}
-
-	GuiResponse TopMenuBar::process(const GuiEvent& event)
-	{
-		if (isVisible())
-		{
-			GuiResponse response = GuiItem::process(event);
-			if (response.wasUsed())
-			{
-				return response;
-			}
-
-			if (backdropColor.a > 0.0f && event.isMouseEvent() && getMyRect().pointInRect(event.mousePosition))
-			{
-				return GuiResponse::used();
-			}
-		}
-
-		return GuiResponse::notUsed();
-	}
-
-	void RelativePanel::init(const Layout& layout)
-	{
-		setName("RelativePanel");
-		layoutStyle = layout.layoutStyle;
-		backdropColor = layout.backdropColor;
-		xLocation = layout.xLocation;
-		yLocation = layout.yLocation;
-		offset = layout.offset;
-	}
-
-	GuiRoot::GuiRoot() 
-	{
-		setName("GuiRoot");
-	}
-
-	int GuiRoot::normalizedFontSize(int fontSize)
-	{
-		static G3D::Vector2 percentSize(100.0f, 75.0f);
-		return G3D::iRound(floorf(fontSize * toPixelSize(percentSize).x * 0.001f));
-	}
-
-	void GuiRoot::render2d(Adorn* adorn)
-	{
-		short height = static_cast<short>(adorn->getHeight());
-		short width = static_cast<short>(adorn->getWidth());
-
-		canvasSize = G3D::Vector2(width, height);
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			GuiItem* current = getGuiItem((int)i);
-			if (current)
-				current->render2d(adorn);
-		}
-	}
+void CSelectionCaption::f(int, Argument)
+{
+    reinterpret_cast<Owner*>(
+        reinterpret_cast<char*>(this) - 0x194)->g();
+}
 }

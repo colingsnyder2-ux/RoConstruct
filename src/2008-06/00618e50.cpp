@@ -1,19 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00618e50  unit: RBX::Flag  size: 35 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00618e50
-//
-// 00618e50  8b442404             mov eax, dword ptr [esp + 4]
-// 00618e54  8b4810               mov ecx, dword ptr [eax + 0x10]
-// 00618e57  8b91c0010000         mov edx, dword ptr [ecx + 0x1c0]
-// 00618e5d  56                   push esi
-// 00618e5e  8b7008               mov esi, dword ptr [eax + 8]
-// 00618e61  8b1432               mov edx, dword ptr [edx + esi]
-// 00618e64  035004               add edx, dword ptr [eax + 4]
-// 00618e67  8b00                 mov eax, dword ptr [eax]
-// 00618e69  8d8c0ac0010000       lea ecx, [edx + ecx + 0x1c0]
-// 00618e70  5e                   pop esi
-// 00618e71  ffe0                 jmp eax
-
 namespace boost {
 template<class T>
 class shared_ptr

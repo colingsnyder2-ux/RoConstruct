@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 00731fd0  unit: CXTPCommandBar  size: 199 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00731fd0
 //

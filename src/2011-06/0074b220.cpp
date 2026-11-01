@@ -1,11 +1,4 @@
-// roc 2011-06 0074b220  unit: RBX::Joint  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0074b220
-//
-// 0074b220  8b4118               mov eax, dword ptr [ecx + 0x18]
-// 0074b223  8b4004               mov eax, dword ptr [eax + 4]
-// 0074b226  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct I_func_0074b220 {
     char pad[4];
     int m_x;

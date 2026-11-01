@@ -1,3 +1,4 @@
+// from server: 100% by colin
 #include <exception>
 struct StandardOut {
     void print(int, const char *, ...);

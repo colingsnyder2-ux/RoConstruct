@@ -1,54 +1,149 @@
-// from server: 51% by colin
+// from server: 100% by Yeetserama
+// roc 2007-08 00407930  unit: RBX::VModelInstance::?$FactoryProduct::Creator  size: 176 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00407930
+//
+// 00407930  6aff                 push -1
+// 00407932  68d9717400           push 0x7471d9
+// 00407937  64a100000000         mov eax, dword ptr fs:[0]
+// 0040793d  50                   push eax
+// 0040793e  83ec0c               sub esp, 0xc
+// 00407941  56                   push esi
+// 00407942  57                   push edi
+// 00407943  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00407948  33c4                 xor eax, esp
+// 0040794a  50                   push eax
+// 0040794b  8d442418             lea eax, [esp + 0x18]
+// 0040794f  64a300000000         mov dword ptr fs:[0], eax
+// 00407955  8d442410             lea eax, [esp + 0x10]
+// 00407959  50                   push eax
+// 0040795a  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 00407962  e839ffffff           call 0x4078a0
+// 00407967  8b08                 mov ecx, dword ptr [eax]
+// 00407969  8b7c242c             mov edi, dword ptr [esp + 0x2c]
+// 0040796d  890f                 mov dword ptr [edi], ecx
+// 0040796f  8b4004               mov eax, dword ptr [eax + 4]
+// 00407972  83c404               add esp, 4
+// 00407975  85c0                 test eax, eax
+// 00407977  894704               mov dword ptr [edi + 4], eax
+// 0040797a  740c                 je 0x407988
+// 0040797c  83c004               add eax, 4
+// 0040797f  ba01000000           mov edx, 1
+// 00407984  f00fc110             lock xadd dword ptr [eax], edx
+// 00407988  8b742414             mov esi, dword ptr [esp + 0x14]
+// 0040798c  85f6                 test esi, esi
+// 0040798e  c744242000000000     mov dword ptr [esp + 0x20], 0
+// 00407996  c744240c01000000     mov dword ptr [esp + 0xc], 1
+// 0040799e  742a                 je 0x4079ca
+// 004079a0  8d4604               lea eax, [esi + 4]
+// 004079a3  83c9ff               or ecx, 0xffffffff
+// 004079a6  f00fc108             lock xadd dword ptr [eax], ecx
+// 004079aa  751e                 jne 0x4079ca
+// 004079ac  8b16                 mov edx, dword ptr [esi]
+// 004079ae  8b4204               mov eax, dword ptr [edx + 4]
+// 004079b1  8bce                 mov ecx, esi
+// 004079b3  ffd0                 call eax
+// 004079b5  8d4e08               lea ecx, [esi + 8]
+// 004079b8  83caff               or edx, 0xffffffff
+// 004079bb  f00fc111             lock xadd dword ptr [ecx], edx
+// 004079bf  7509                 jne 0x4079ca
+// 004079c1  8b06                 mov eax, dword ptr [esi]
+// 004079c3  8b5008               mov edx, dword ptr [eax + 8]
+// 004079c6  8bce                 mov ecx, esi
+// 004079c8  ffd2                 call edx
+// 004079ca  8bc7                 mov eax, edi
+// 004079cc  8b4c2418             mov ecx, dword ptr [esp + 0x18]
+// 004079d0  64890d00000000       mov dword ptr fs:[0], ecx
+// 004079d7  59                   pop ecx
+// 004079d8  5f                   pop edi
+// 004079d9  5e                   pop esi
+// 004079da  83c418               add esp, 0x18
+// 004079dd  c20400               ret 4
+// copied from an identical function in another client (function ?get@InsertTexture@ns_ROCX000016@@QAE?AUResult@2@XZ)
+
+namespace ns_ROCX000016 {
+// from server: 100% by king_originala
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-struct RefCounted {
-    void* vptr;
-    volatile long refCount;
+struct Control
+{
+    virtual ~Control();
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+
+    volatile long strong;
+    volatile long weak;
+
+    void release();
+    void releaseWeak();
 };
 
-struct Inner {
-    void* vptr;
-    volatile long refCount;
-    volatile long refCount2;
-};
+inline void Control::releaseWeak()
+{
+    if (_InterlockedDecrement(&weak) == 0)
+        destroy();
+}
 
-struct Holder {
-    Inner* ptr;
-};
-
-struct Creator {
-    void* vptr;
-    void* field4;
-};
-
-extern "C" void __cdecl sub_4078A0(Holder* out);
-extern "C" void __cdecl sub_4078A0_impl();
-
-struct S {
-    Creator* __thiscall init(Creator* result);
-};
-
-Creator* __thiscall S::init(Creator* result) {
-    Holder h;
-    h.ptr = 0;
-    sub_4078A0(&h);
-    result->vptr = h.ptr->vptr;
-    Inner* p = h.ptr;
-    result->field4 = p->vptr;
-    if (p->vptr) {
-        _InterlockedExchangeAdd((volatile long*)((char*)p->vptr + 4), 1);
+inline void Control::release()
+{
+    volatile long* count = &strong;
+    if (_InterlockedDecrement(count) == 0)
+    {
+        dispose();
+        releaseWeak();
     }
-    Inner* esi = h.ptr;
-    if (esi) {
-        if (_InterlockedExchangeAdd(&esi->refCount, -1) == 1) {
-            void** vt = (void**)esi->vptr;
-            ((void (__thiscall*)(Inner*))vt[1])(esi);
-            if (_InterlockedExchangeAdd(&esi->refCount2, -1) == 1) {
-                void** vt2 = (void**)esi->vptr;
-                ((void (__thiscall*)(Inner*))vt2[2])(esi);
-            }
-        }
+}
+
+struct Temporary
+{
+    void* pointer;
+    Control* control;
+
+    ~Temporary();
+};
+
+inline Temporary::~Temporary()
+{
+    if (control)
+        control->release();
+}
+
+struct Result
+{
+    void* pointer;
+    Control* control;
+
+    Result(const Temporary&);
+    ~Result();
+};
+
+inline Result::Result(const Temporary& other)
+    : pointer(other.pointer), control(other.control)
+{
+    if (control)
+    {
+        volatile long* count = &control->strong;
+        _InterlockedExchangeAdd(count, 1);
     }
-    return result;
+}
+
+inline Result::~Result()
+{
+    if (control)
+        control->release();
+}
+
+Temporary __cdecl makeTemporary();
+
+struct InsertTexture
+{
+    Result get();
+};
+
+Result InsertTexture::get()
+{
+    return Result(makeTemporary());
+}
 }

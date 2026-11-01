@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00814e20  unit: CXTPCommandBarKeyboardTip  size: 84 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00814e20
 //

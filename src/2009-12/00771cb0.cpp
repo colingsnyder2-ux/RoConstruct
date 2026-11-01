@@ -1,13 +1,6 @@
-// roc 2009-12 00771cb0  unit: RBX::VGuiButton::?$EventReplicator  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00771cb0
-//
-// 00771cb0  e98bffffff           jmp 0x771c40
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_00771cb0();
+void func_00771cb0()
 {
-    G1_func_00401050();
-}
+    G1_func_00771cb0();
 }

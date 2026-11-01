@@ -1,44 +1,4 @@
-// roc 2011-06 0046fa20  unit: VCWorkspace::?$CComObject  size: 98 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0046fa20
-//
-// 0046fa20  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0046fa24  33c9                 xor ecx, ecx
-// 0046fa26  3bc1                 cmp eax, ecx
-// 0046fa28  7441                 je 0x46fa6b
-// 0046fa2a  83f801               cmp eax, 1
-// 0046fa2d  743c                 je 0x46fa6b
-// 0046fa2f  83f802               cmp eax, 2
-// 0046fa32  744d                 je 0x46fa81
-// 0046fa34  83f803               cmp eax, 3
-// 0046fa37  7521                 jne 0x46fa5a
-// 0046fa39  56                   push esi
-// 0046fa3a  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 0046fa3e  8b0e                 mov ecx, dword ptr [esi]
-// 0046fa40  68e057c100           push 0xc157e0
-// 0046fa45  ff15500aa400         call dword ptr [0xa40a50]
-// 0046fa4b  0fb6c0               movzx eax, al
-// 0046fa4e  f7d8                 neg eax
-// 0046fa50  1bc0                 sbb eax, eax
-// 0046fa52  23442408             and eax, dword ptr [esp + 8]
-// 0046fa56  8906                 mov dword ptr [esi], eax
-// 0046fa58  5e                   pop esi
-// 0046fa59  c3                   ret 
-// 0046fa5a  8b442408             mov eax, dword ptr [esp + 8]
-// 0046fa5e  c700e057c100         mov dword ptr [eax], 0xc157e0
-// 0046fa64  884804               mov byte ptr [eax + 4], cl
-// 0046fa67  884805               mov byte ptr [eax + 5], cl
-// 0046fa6a  c3                   ret 
-// 0046fa6b  8b442408             mov eax, dword ptr [esp + 8]
-// 0046fa6f  3bc1                 cmp eax, ecx
-// 0046fa71  740e                 je 0x46fa81
-// 0046fa73  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0046fa77  8b11                 mov edx, dword ptr [ecx]
-// 0046fa79  8910                 mov dword ptr [eax], edx
-// 0046fa7b  8b4904               mov ecx, dword ptr [ecx + 4]
-// 0046fa7e  894804               mov dword ptr [eax + 4], ecx
-// 0046fa81  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /EHsc /MD
 #include <typeinfo>

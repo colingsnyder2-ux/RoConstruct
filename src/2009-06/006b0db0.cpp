@@ -1,10 +1,4 @@
-// roc 2009-06 006b0db0  unit: RBX::BallBallContact  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 006b0db0
-//
-// 006b0db0  8b4134               mov eax, dword ptr [ecx + 0x34]
-// 006b0db3  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_006b0db0 {
     char pad0[52];
     int m_x;

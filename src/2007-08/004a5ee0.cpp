@@ -1,18 +1,12 @@
-// from server: 53% by colin
-struct S {
-    void f(float);
-};
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-raknet roc_espeon_aug2007_bitstream_compressed_float_be3bb96b6dd3bbbb.cpp
 
-extern float g_79646c;
-extern double g_793198;
-extern double g_79d420;
-extern "C" void __stdcall sub_49fd90(int, int*);
-
-void S::f(float arg)
-{
-    float v = arg;
-    if (!(v < g_79646c) && !(v > 1.0f))
-        v = 1.0f;
-    int n = (int)((v + g_793198) * g_79d420);
-    sub_49fd90(0x10, &n);
-}
+// Candidate translation unit (score above; library headers required).
+#include "BitStream.h"
+void (RakNet::BitStream::*emitCompressedFloatWrite)(float)=&RakNet::BitStream::WriteCompressed<float>;
+void (RakNet::BitStream::*emitCompressedDoubleWrite)(double)=&RakNet::BitStream::WriteCompressed<double>;
+bool (RakNet::BitStream::*emitCompressedFloatRead)(float&)=&RakNet::BitStream::ReadCompressed<float>;
+bool (RakNet::BitStream::*emitCompressedDoubleRead)(double&)=&RakNet::BitStream::ReadCompressed<double>;

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 008fe550  unit: Ogre::RbxSceneUpdater::?1??debugCheckFrame::NodeVisiter  size: 90 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 008fe550
 //

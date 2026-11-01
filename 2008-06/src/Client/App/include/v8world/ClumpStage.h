@@ -1,256 +1,131 @@
-#pragma once
-#include <map>
-#include <set>
-#include <vector>
+// Source-derived world pipeline port from openrbx include/v8world/ClumpStage2.h.
+// June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
+#ifndef V8WORLD_CLUMPSTAGE2_H
+#define V8WORLD_CLUMPSTAGE2_H
+
 #include "v8world/IWorldStage.h"
+#include "v8world/Joint.h"
 
-namespace RBX
+#include <set>
+
+namespace RBX {
+
+class Assembly;
+class AssemblyStage;
+class MotorJoint;
+class Primitive;
+
+float getPrimitiveSize(const Primitive* primitive);
+
+int biggerJointGuid(const Joint* joint0, const Joint* joint1);
+int biggerJointSize(const Joint* joint0, const Joint* joint1);
+
+Joint* getJoint(Primitive* primitive, Joint::JointType jointType);
+
+class JointSort
 {
-	class Anchor;
-	class Primitive;
-	class RigidJoint;
-	class MotorJoint;
-	class Clump;
-	class Assembly;
+public:
+	static bool lighterJoint(const Joint* joint0, const Joint* joint1);
+};
 
-	// MYSTERY CLASS: only referenced here
-	class Influence;
+// VTABLE: WEBSERVICE 0x10247edc
+// SIZE 0x30
+class TreeStage : public IWorldStage
+{
+private:
+	void insertEdge(Edge* e);
+	void insertJoint(Joint* j);
 
-	class PrimitiveSort
+	void swap(Joint* deactivate, Joint* activate, Primitive* newParent);
+	void findHeaviestUpstream(Primitive* p0, Primitive* p1, Joint*& answer, int& heavySide);
+	Primitive* heavyParent(int index, Primitive* primitive, Joint*& heaviest, int& heaviestIndex);
+
+	void buildDownstreamTree(Primitive* p, std::set<Primitive*>& tree);
+	Joint* findLightestDownstream(Primitive* p, Primitive*& newParent);
+
+	void traverse(Joint* joint, Primitive* parent);
+	void rebuildClump(Joint* joint, Primitive* parent);
+
+	int getClumpDepth(Primitive* p);
+
+	void cleanEdge(Edge* e);
+
+	void dirtyAssemblies(Joint* j);
+	void destroyAssembly(Assembly* a);
+	void dirtyAssembly(Assembly* a);
+	void undirtyAssembly(Assembly* a);
+	void cleanAssembly(Assembly* assembly);
+
+public:
+	virtual ~TreeStage(); // vtable+0x00
+
+	// SYNTHETIC: WEBSERVICE 0x1011c1e0
+	// RBX::TreeStage::`scalar deleting destructor'
+
+	// FUNCTION: WEBSERVICE 0x100a7740 FOLDED
+	virtual StageType getStageType() { return TREE_STAGE; } // vtable+0x04
+
+	virtual void onEdgeAdded(Edge* edge);         // vtable+0x10
+	virtual void onEdgeRemoving(Edge* edge);      // vtable+0x14
+	virtual int getMetric(MetricType metricType); // vtable+0x18
+
+	virtual void stepWorld(int worldStepId, int uiStepId, bool throttling); // vtable+0x08
+
+	void process();
+
+private:
+	void eraseEdge(Edge* e);
+
+public:
+	TreeStage(IStage* upstream, World* world);
+
+private:
+	int maxTreeDepth;               // 0x10
+	bool dirty;                     // 0x14
+	std::set<Assembly*> assemblies; // 0x18
+	std::set<Edge*> edges;          // 0x24
+};
+
+
+// VTABLE: WEBSERVICE 0x10247e4c
+// SIZE 0x10
+class ClumpStage : public IWorldStage
+{
+public:
+	ClumpStage(IStage* upstream, World* world);
+
+	virtual ~ClumpStage() {} // vtable+0x00
+
+	void onPrimitiveCanSleepChanged(Primitive* p);
+
+	void onPrimitiveAddedAnchor(Primitive* p);
+	void onPrimitiveRemovingAnchor(Primitive* p);
+
+	void onPrimitiveCanCollideChanged(Primitive* p);
+	void onMotorAngleChanged(MotorJoint* motorJoint);
+
+	// SYNTHETIC: WEBSERVICE 0x1011b710
+	// RBX::ClumpStage::`scalar deleting destructor'
+
+	virtual StageType getStageType(); // vtable+0x04
+
+	// FUNCTION: WEBSERVICE 0x101187e0 FOLDED
+	virtual void stepWorld(int worldStepId, int uiStepId, bool throttling) // vtable+0x08
 	{
-	public:
-		bool anchored;
-		size_t surfaceAreaJoints;
-	  
-	public:
-		PrimitiveSort(const PrimitiveSort& other);
-		PrimitiveSort(const Primitive* p);
-		PrimitiveSort();
-	public:
-		bool operator==(const PrimitiveSort& other) const
-		{
-			return isEqual(*this, other);
-		}
-		bool operator!=(const PrimitiveSort& other) const
-		{
-			return !isEqual(*this, other);
-		}
-		bool operator<(const PrimitiveSort& other) const
-		{
-			return isLess(*this, other);
-		}
-		bool operator>(const PrimitiveSort& other) const
-		{
-			return isLess(other, *this);
-		}
-	  
-	private:
-		static bool isEqual(const PrimitiveSort& s0, const PrimitiveSort& s1)
-		{
-			return s0.anchored == s1.anchored && s0.surfaceAreaJoints == s1.surfaceAreaJoints;
-		}
-		static bool isLess(const PrimitiveSort& s0, const PrimitiveSort& s1)
-		{
-			return s0.anchored != s1.anchored ? s1.anchored : (s0.surfaceAreaJoints < s1.surfaceAreaJoints);
-		}
-	};
+		getDownstream()->stepWorld(worldStepId, uiStepId, throttling);
+	}
 
-	class PrimitiveEntry
-	{
-	public:
-		Primitive* primitive;
-		PrimitiveSort power;
+	void onPrimitiveAdded(Primitive* p);
+	void onPrimitiveRemoving(Primitive* p);
 
-	public:
-		PrimitiveEntry(Primitive* primitive, PrimitiveSort power);
-	};
+	void process();
 
-	class AnchorEntry
-	{
-	public:
-		Anchor* anchor;
-		int size;
+	void stepUi(int frameCount);
 
-	public:
-		AnchorEntry(Anchor* anchor, int size);
-	};
+private:
+};
 
-	class RigidEntry
-	{
-	public:
-		RigidJoint* rigidJoint;
-		PrimitiveSort power;
 
-	public:
-		RigidEntry(RigidJoint* rigidJoint, PrimitiveSort power);
-	};
+} // namespace RBX
 
-	class PrimitiveSortCriterion
-	{
-	public:
-		bool operator()(const PrimitiveEntry& p0, const PrimitiveEntry& p1) const;
-	};
-
-	class AnchorSortCriterion
-	{
-	public:
-		bool operator()(const AnchorEntry& a0, const AnchorEntry& a1) const;
-	};
-
-	class RigidSortCriterion
-	{
-	public:
-		bool operator()(const RigidEntry& r0, const RigidEntry& r1) const;
-	};
-
-	class ClumpStage : public IWorldStage
-	{
-	private:
-		World* world;
-		std::map<Anchor*, int> anchorSizeMap;
-		std::map<Primitive*, PrimitiveSort> primitiveSizeMap;
-		std::map<RigidJoint*, PrimitiveSort> rigidJointPowerMap;
-		std::set<AnchorEntry, AnchorSortCriterion> anchors;
-		std::set<RigidJoint*> rigidTwos;
-		std::set<RigidEntry, RigidSortCriterion> rigidOnes;
-		std::set<RigidJoint*> rigidZeros;
-		std::set<PrimitiveEntry, PrimitiveSortCriterion> primitives;
-		std::vector<MotorJoint*> motors;
-		std::set<Clump*> anchoredClumps;
-		std::set<Clump*> freeClumps;
-		std::set<Assembly*> assemblies;
-		std::set<Edge*> edges;
-		std::set<MotorJoint*> motorAngles;
-  
-	private:
-		Anchor* getBiggestAnchor();
-		RigidJoint* getBiggestRigidOne();
-		Primitive* getBiggestPrimitive();
-
-		void anchorsInsert(Anchor* a);
-		void rigidTwosInsert(RigidJoint* r);
-		void rigidOnesInsert(RigidJoint* r);
-		void rigidZerosInsert(RigidJoint* r);
-		void primitivesInsert(Primitive* p);
-		void motorsInsert(MotorJoint* m);
-		void anchoredClumpsInsert(Clump* c);
-		void freeClumpsInsert(Clump* c);
-		void assembliesInsert(Assembly* a);
-		void edgesInsert(Edge* e);
-		void motorAnglesInsert(MotorJoint* m);
-
-		bool anchorsFind(Anchor* a);
-		bool rigidTwosFind(RigidJoint* r);
-		bool rigidOnesFind(RigidJoint* r);
-		bool rigidZerosFind(RigidJoint* r);
-		bool primitivesFind(Primitive* p);
-		bool motorsFind(MotorJoint* m);
-		bool anchoredClumpsFind(Clump* c);
-		bool freeClumpsFind(Clump* c);
-		bool assembliesFind(Assembly* a);
-		bool edgesFind(Edge* e);
-		bool motorAnglesFind(MotorJoint* m);
-
-		void anchorsErase(Anchor* a);
-		void rigidTwosErase(RigidJoint* r);
-		void rigidOnesErase(RigidJoint* r);
-		void rigidZerosErase(RigidJoint* r);
-		void primitivesErase(Primitive* p);
-		void motorsErase(MotorJoint* m);
-		void anchoredClumpsErase(Clump* c);
-		void freeClumpsErase(Clump* c);
-		void assembliesErase(Assembly* a);
-		void edgesErase(Edge* e);
-		void motorAnglesErase(MotorJoint* m);
-
-		void processAnchors();
-		bool processRigidTwos();
-		bool processRigidOnes();
-		bool processRigidZeros();
-		bool processPrimitives();
-		void processMotors();
-		void processAssemblies();
-		void processEdges();
-		void processMotorAngles();
-
-		void addRigid(RigidJoint*);
-		void removeRigid(RigidJoint* r);
-
-		void addMotor(MotorJoint* m);
-		void removeMotor(MotorJoint* m);
-
-		void addEdge(Edge* e);
-		void removeEdge(Edge* e);
-
-		void addAnchor(Anchor*);
-		void removeAnchor(Anchor* a);
-
-		void addPrimitive(Primitive*);
-		void removePrimitive(Primitive* p);
-
-		void destroyClumpGuts(Clump* c);
-		void destroyClump(Clump* c);
-
-		void destroyAssembly(Assembly* a);
-		void destroyInfluence(Influence*);
-
-		void addAssemblyEdges(Assembly*);
-
-		void removeExternalEdge(Edge* e);
-		void removeInternalEdge(Edge* e);
-		void removeAssemblyEdges(Assembly* a);
-
-		bool inClump(Primitive*);
-		bool inBuffers(RigidJoint* r);
-
-		bool removeFromBuffers(RigidJoint* r);
-		void removeFromClump(Clump* c, RigidJoint* r);
-		void removeSpanningTreeFast(Primitive* topPrim, RigidJoint* toParent);
-		void removeFromClumpFast(Primitive* p, RigidJoint* toParent);
-		void removeFromAssemblyFast(Primitive* p);
-
-		void updateMotorJoint(MotorJoint* m);
-
-		bool validateAll();
-		bool validateEdge(Edge*);
-		bool validateRigid(RigidJoint*);
-		bool validateMotor(MotorJoint*);
-		bool validateExternal(Edge*);
-		bool validatePrimitive(Primitive*);
-		bool validateAnchor(Anchor*);
-		bool validateClump(Clump*);
-		bool validateAssembly(Assembly*);
-		bool validateInfluence(Influence*);
-
-		bool upToDate();
-	public:
-		ClumpStage(IStage* upstream, World* world);
-		virtual ~ClumpStage();
-	public:
-		virtual IStage::StageType getStageType()
-		{
-			return CLUMP_STAGE;
-		}
-		World* getWorld();
-		virtual void onEdgeAdded(Edge* e);
-		virtual void onEdgeRemoving(Edge* e);
-		virtual int getMetric(MetricType metricType);
-		void onPrimitiveAdded(Primitive* p);
-		void onPrimitiveRemoving(Primitive* p);
-		virtual void stepWorld(int worldStepId, int uiStepId, bool throttling);
-		void stepUi(int uiStepId);
-		void process();
-		void onPrimitiveAddedAnchor(Primitive* p);
-		void onPrimitiveRemovingAnchor(Primitive* p);
-		void onPrimitiveCanSleepChanged(Primitive* p);
-		void onPrimitiveCanCollideChanged(Primitive* p);
-		void onMotorAngleChanged(MotorJoint* m);
-  
-	private:
-		static PrimitiveSort getRigidPower(RigidJoint* r);
-	public:
-		static PrimitiveSort getMotorPower(const MotorJoint* m);
-	private:
-		static int numClumps(RigidJoint* r);
-	};
-}
+#endif // V8WORLD_CLUMPSTAGE2_H

@@ -1,9 +1,4 @@
-// roc 2007-08 0057b490  unit: RBX::RootInstance  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0057b490
-//
-// 0057b490  e93bcbfeff           jmp 0x567fd0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_0057b490();
 void func_0057b490()
 {

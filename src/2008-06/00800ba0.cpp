@@ -1,10 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 00800ba0  unit: seg_00800000  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00800ba0
-//
-// 00800ba0  b900d19700           mov ecx, 0x97d100
-// 00800ba5  e916a0c0ff           jmp 0x40abc0
-
 struct T_func_00800ba0 { void m(); };
 extern T_func_00800ba0 G1_func_00800ba0;
 void func_00800ba0()

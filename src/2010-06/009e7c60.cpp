@@ -1,10 +1,4 @@
-// roc 2010-06 009e7c60  unit: seg_009e0000  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 009e7c60
-//
-// 009e7c60  b92815c200           mov ecx, 0xc21528
-// 009e7c65  e906e9baff           jmp 0x596570
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct T_func_009e7c60 { void m(); };
 extern T_func_009e7c60 G1_func_009e7c60;
 void func_009e7c60()

@@ -1,108 +1,32 @@
-// from server: 60% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+namespace boost {
+template<class T> class shared_ptr {
+    T* px; void* pn;
+public:
+    template<class Y, class D> shared_ptr(Y* p, D d);
+    ~shared_ptr();
+};
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+namespace RBX {
+class GuidItemBase { public: virtual ~GuidItemBase(); int g[4]; };
+class AbstractFactoryProductBase { public: virtual ~AbstractFactoryProductBase(); };
+class DescribedBase { public: virtual ~DescribedBase(); int descriptor; };
+class Debugable { public: virtual ~Debugable(); int d; };
+class Base : public GuidItemBase, public AbstractFactoryProductBase, public DescribedBase, public Debugable {
+public:
+    Base();
+    virtual ~Base();
+    char pad[0xac - 0x28];
+};
+class Obj : public Base {
+public:
+    int a; int b;
+    Obj() : a(-1), b(0) {}
+};
+struct Deleter { void operator()(void*) const; };
+template<class B> class Creatable { public: template<class T> static boost::shared_ptr<T> create() { return boost::shared_ptr<T>(new T(), Deleter()); } };
+template boost::shared_ptr<Obj> Creatable<Base>::create<Obj>();
 }

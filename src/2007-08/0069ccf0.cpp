@@ -1,16 +1,4 @@
-// roc 2007-08 0069ccf0  unit: CXTPPropertyGridView  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0069ccf0
-//
-// 0069ccf0  8bc1                 mov eax, ecx
-// 0069ccf2  33c9                 xor ecx, ecx
-// 0069ccf4  c700041f7d00         mov dword ptr [eax], 0x7d1f04
-// 0069ccfa  894804               mov dword ptr [eax + 4], ecx
-// 0069ccfd  894810               mov dword ptr [eax + 0x10], ecx
-// 0069cd00  89480c               mov dword ptr [eax + 0xc], ecx
-// 0069cd03  894808               mov dword ptr [eax + 8], ecx
-// 0069cd06  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

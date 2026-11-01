@@ -1,11 +1,9 @@
-// roc 2007-03 00686090  unit: seg_00680000  size: 8 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 00686090
-//
-// 00686090  b801400080           mov eax, 0x80004001
-// 00686095  c20800               ret 8
-// library mfc-8.0/atlmfc\src\mfc\ctlinplc.cpp (function ?ContextSensitiveHelp@XOleInPlaceObject@COleControl@@UAGJH@Z)
+// from server: 100% by auto
+struct S_func_00686090 {
 
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-8.0 atlmfc/src/mfc/ctlinplc.cpp
+    unsigned int f(int a1, int a2);
+};
+unsigned int S_func_00686090::f(int a1, int a2)
+{
+    return 0x80004001u;
+}

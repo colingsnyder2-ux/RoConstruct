@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 0049d2a0  unit: G3D::VertexAndPixelShader  size: 17 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 0049d2a0
 //

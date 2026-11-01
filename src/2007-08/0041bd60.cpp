@@ -1,4 +1,4 @@
-// from server: 82% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 0041bd60  unit: VDHTMLWindow::?$SignalDesc  size: 28 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 0041bd60
 //
@@ -11,13 +11,14 @@
 // 0041bd71  25fbbfff7f           and eax, 0x7fffbffb
 // 0041bd76  0505400080           add eax, 0x80004005
 // 0041bd7b  c3                   ret 
+// copied from an identical function in another client (function ?function@ns_ROCX00000b@@YAJPAX@Z)
 
-extern "C" int __cdecl sub_00550dd0(int);
+namespace ns_ROCX00000b {
+// from server: 100% by king_originala
+extern bool __cdecl helper(void* value);
 
-int __cdecl sub_0041bd60(int a)
+long __cdecl function(void* value)
 {
-    int r = sub_00550dd0(a);
-    unsigned char al = (unsigned char)r;
-    int sbb = (al != 0) ? -1 : 0;
-    return (sbb & 0x7fffbffb) + 0x80004005;
+    return helper(value) ? 0L : (long)0x80004005UL;
+}
 }

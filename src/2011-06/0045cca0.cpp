@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 0045cca0  unit: VCRoblox3D::?$CComObject  size: 50 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 0045cca0
 //

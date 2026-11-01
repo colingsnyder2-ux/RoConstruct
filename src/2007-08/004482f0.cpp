@@ -1,26 +1,51 @@
-// from server: 43% by colin
-struct CIDEDocManager {
-    void OpenWiki();
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+struct Text;
+
+extern void (__cdecl *TextFormat)(Text *, const char *, ...);
+extern const char *(__thiscall *TextData)(const Text *);
+
+struct Text {
+    char *data;
+    __declspec(dllimport) Text();
+    __declspec(dllimport) ~Text() throw();
 };
 
-extern "C" void* __stdcall sub_6303D0();
-extern "C" void* __stdcall sub_77DDAC(void*);
-extern "C" void* __stdcall sub_77DD94(void*, const char*, const char*);
-extern "C" void* __stdcall sub_77DD98(void*, int, int);
-extern "C" void* __stdcall sub_77DDBC(void*);
-extern "C" int __stdcall sub_77EBBC(void*, const char*, const char*, const char*);
-extern "C" int __stdcall ShellExecuteA(void*, const char*, const char*, const char*, const char*, int);
 
-void CIDEDocManager::OpenWiki() {
-    char buf[16];
-    sub_77DDAC(buf);
-    sub_77DD94(buf, "http://wiki.roblox.com", "N Php");
-    void* p = sub_6303D0();
-    void* obj = 0;
-    if (p != 0) {
-        obj = (*(void* (__stdcall**)(void*))(*(int*)p + 0x7c))(p);
-    }
-    void* s = sub_77DD98(buf, 0, 10);
-    sub_77EBBC(*(void**)((char*)obj + 0x20), "open", "rundll32.exe", "url.dll,FileProtocolHandler %s");
-    sub_77DDBC(buf);
+
+
+
+struct Window {
+    char padding[32];
+    void *handle;
+};
+
+struct Application {
+    struct Table {
+        void *unused[31];
+        Window *(__thiscall *getWindow)(Application *);
+    };
+    Table *table;
+};
+
+extern Application *__cdecl GetApplication();
+
+extern void *(__stdcall *ShellExecuteA)(
+    void *, const char *, const char *, const char *, const char *, int);
+
+void OpenWiki()
+{
+    Text command;
+    TextFormat(&command, "url.dll,FileProtocolHandler %s",
+               "http://wiki.roblox.com");
+
+    Application *application = GetApplication();
+    Window *window;
+    if (application)
+        window = application->table->getWindow(application);
+    else
+        window = 0;
+
+    ShellExecuteA(window->handle, "open", "rundll32.exe",
+                  TextData(&command), 0, 10);
 }

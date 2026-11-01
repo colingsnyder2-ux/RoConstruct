@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 006d6270  unit: CXTPReportGroupRow  size: 27 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 006d6270
 //

@@ -1,24 +1,12 @@
-// roc 2009-12 00989f30  unit: seg_00980000  size: 25 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00989f30
-//
-// 00989f30  a1dc82b900           mov eax, dword ptr [0xb982dc]
-// 00989f35  50                   push eax
-// 00989f36  e81f99e6ff           call 0x7f385a
-// 00989f3b  83c404               add esp, 4
-// 00989f3e  c705c082b90070fd9900 mov dword ptr [0xb982c0], 0x99fd70
-// 00989f48  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX000034@ns_ROCX000034@@YAXXZ)
-
-namespace ns_ROCX000034 {
+// from server: 100% by auto
 extern char G;
 
 extern int G1_VALUE;
 extern int G2_VALUE;
 extern char G3_OBJ;
-extern int __cdecl G4_func_00893b60(int);
-void fn_ROCX000034()
+extern int __cdecl G4_func_00989f30(int);
+void func_00989f30()
 {
-    G4_func_00893b60(G1_VALUE);
+    G4_func_00989f30(G1_VALUE);
     G2_VALUE = (int)&G3_OBJ;
-}
 }

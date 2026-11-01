@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 0040f8c0  unit: CopyVerb  size: 86 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 0040f8c0
 //

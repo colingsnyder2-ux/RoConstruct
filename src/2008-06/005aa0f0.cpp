@@ -1,14 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 005aa0f0  unit: RBX::VScriptContext::?$FactoryProduct  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005aa0f0
-//
-// 005aa0f0  8b09                 mov ecx, dword ptr [ecx]
-// 005aa0f2  8b4108               mov eax, dword ptr [ecx + 8]
-// 005aa0f5  50                   push eax
-// 005aa0f6  b950899300           mov ecx, 0x938950
-// 005aa0fb  ff1578288000         call dword ptr [0x802878]
-// 005aa101  c3                   ret 
-
 struct type_info {
     bool operator==(const type_info&) const;
 };

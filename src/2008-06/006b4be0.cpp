@@ -1,15 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 006b4be0  unit: CXTPCommandBar  size: 17 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 006b4be0
-//
-// 006b4be0  8b01                 mov eax, dword ptr [ecx]
-// 006b4be2  8b9048010000         mov edx, dword ptr [eax + 0x148]
-// 006b4be8  6a00                 push 0
-// 006b4bea  6a01                 push 1
-// 006b4bec  6a00                 push 0
-// 006b4bee  ffd2                 call edx
-// 006b4bf0  c3                   ret 
-
 struct CXTPCommandBar {
     virtual void vfunc_0000();
     virtual void vfunc_0004();

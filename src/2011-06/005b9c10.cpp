@@ -1,41 +1,39 @@
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_unit_cae07938f2228138.cpp
+// from server: 100% by colin
+#include <typeinfo>
 
-// Candidate translation unit (score above; library headers required).
-#include "G3D/Vector2int16.h"
-#include "util/ContentProvider.h"
-#include "reflection/type.h"
-#include "util/Utilities.h"
-#include "G3D/format.h"
-#include "G3D/Vector3.h"
-#include "G3D/Color3.h"
-#include "G3D/CoordinateFrame.h"
-#include "v8datamodel/BrickColor.h"
-#include <stdexcept>
-namespace RBX { namespace Reflection {
-template<class T> T& Value::genericConvert() {
-    T* id = boost::any_cast<T>(&value);
-    if (id) return *id;
-    if (isType<std::string>()) {
-        T v;
-        if (StringConverter<T>::convertToValue(*boost::any_cast<std::string>(&value),v)) {
-            value = v;
-            _type = &Type::singleton<T>();
-            return *boost::any_cast<T>(&value);
-        }
+namespace G3D { class Vector2int16 { public: int value; }; }
+
+namespace boost {
+class any {
+public:
+    class placeholder {
+    public:
+        virtual ~placeholder() {}
+        virtual const std::type_info& type() const = 0;
+    };
+
+    template<typename ValueType>
+    class holder : public placeholder {
+    public:
+        virtual const std::type_info& type() const { return typeid(ValueType); }
+        ValueType held;
+    };
+
+    const std::type_info& type() const
+    {
+        return content ? content->type() : typeid(void);
     }
-    throw std::runtime_error(G3D::format("Unable to cast %s to %s", _type->tag.c_str(), Type::singleton<T>().tag.c_str()));
+
+    placeholder* content;
+};
+
+template<typename ValueType>
+ValueType* any_cast(any* operand)
+{
+    return operand && operand->type() == typeid(ValueType)
+        ? &static_cast<any::holder<ValueType>*>(operand->content)->held
+        : 0;
 }
-template int& Value::genericConvert<int>();
-template bool& Value::genericConvert<bool>();
-template float& Value::genericConvert<float>();
-template double& Value::genericConvert<double>();
-template G3D::Vector3& Value::genericConvert<G3D::Vector3>();
-template G3D::Color3& Value::genericConvert<G3D::Color3>();
-template G3D::CoordinateFrame& Value::genericConvert<G3D::CoordinateFrame>();
-template RBX::BrickColor& Value::genericConvert<RBX::BrickColor>();
-template G3D::Vector2int16& Value::genericConvert<G3D::Vector2int16>();
-template RBX::ContentId& Value::genericConvert<RBX::ContentId>();
-}}
+}
+
+template G3D::Vector2int16* boost::any_cast<G3D::Vector2int16>(boost::any*);

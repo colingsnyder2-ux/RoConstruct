@@ -1,42 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 005b0ac0  unit: RBX::Accoutrement  size: 93 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005b0ac0
-//
-// 005b0ac0  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 005b0ac4  85c0                 test eax, eax
-// 005b0ac6  752f                 jne 0x5b0af7
-// 005b0ac8  8b442408             mov eax, dword ptr [esp + 8]
-// 005b0acc  85c0                 test eax, eax
-// 005b0ace  744c                 je 0x5b0b1c
-// 005b0ad0  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 005b0ad4  8b11                 mov edx, dword ptr [ecx]
-// 005b0ad6  8910                 mov dword ptr [eax], edx
-// 005b0ad8  8b5104               mov edx, dword ptr [ecx + 4]
-// 005b0adb  895004               mov dword ptr [eax + 4], edx
-// 005b0ade  8b5108               mov edx, dword ptr [ecx + 8]
-// 005b0ae1  895008               mov dword ptr [eax + 8], edx
-// 005b0ae4  8b510c               mov edx, dword ptr [ecx + 0xc]
-// 005b0ae7  89500c               mov dword ptr [eax + 0xc], edx
-// 005b0aea  8b5110               mov edx, dword ptr [ecx + 0x10]
-// 005b0aed  895010               mov dword ptr [eax + 0x10], edx
-// 005b0af0  8b4914               mov ecx, dword ptr [ecx + 0x14]
-// 005b0af3  894814               mov dword ptr [eax + 0x14], ecx
-// 005b0af6  c3                   ret 
-// 005b0af7  83f801               cmp eax, 1
-// 005b0afa  7420                 je 0x5b0b1c
-// 005b0afc  56                   push esi
-// 005b0afd  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 005b0b01  8b0e                 mov ecx, dword ptr [esi]
-// 005b0b03  6878cc9400           push 0x94cc78
-// 005b0b08  ff1578288000         call dword ptr [0x802878]
-// 005b0b0e  0fb6d0               movzx edx, al
-// 005b0b11  f7da                 neg edx
-// 005b0b13  1bd2                 sbb edx, edx
-// 005b0b15  23542408             and edx, dword ptr [esp + 8]
-// 005b0b19  8916                 mov dword ptr [esi], edx
-// 005b0b1b  5e                   pop esi
-// 005b0b1c  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <new>

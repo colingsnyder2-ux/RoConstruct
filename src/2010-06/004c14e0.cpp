@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 004c14e0  unit: RBX::Network::Players::W4ChatOption::?$holder  size: 26 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 004c14e0
 //

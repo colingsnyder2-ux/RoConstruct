@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 00801f90  unit: boost::iostreams::zlib_error  size: 44 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 00801f90
 //

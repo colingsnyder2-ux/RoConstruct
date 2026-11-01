@@ -1,43 +1,4 @@
 // from server: 100% by king_originala
-// roc 2008-06 005ef530  unit: RBX::VDecal::?$FactoryProduct  size: 191 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005ef530
-//
-// 005ef530  6aff                 push -1
-// 005ef532  68e8d67b00           push 0x7bd6e8
-// 005ef537  64a100000000         mov eax, dword ptr fs:[0]
-// 005ef53d  50                   push eax
-// 005ef53e  64892500000000       mov dword ptr fs:[0], esp
-// 005ef545  51                   push ecx
-// 005ef546  56                   push esi
-// 005ef547  8bf1                 mov esi, ecx
-// 005ef549  89742404             mov dword ptr [esp + 4], esi
-// 005ef54d  e88ec2f6ff           call 0x55b7e0
-// 005ef552  c744241000000000     mov dword ptr [esp + 0x10], 0
-// 005ef55a  e8518afaff           call 0x597fb0
-// 005ef55f  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 005ef563  89461c               mov dword ptr [esi + 0x1c], eax
-// 005ef566  c7863c01000000000000 mov dword ptr [esi + 0x13c], 0
-// 005ef570  83c8ff               or eax, 0xffffffff
-// 005ef573  898634010000         mov dword ptr [esi + 0x134], eax
-// 005ef579  898638010000         mov dword ptr [esi + 0x138], eax
-// 005ef57f  c7062c078400         mov dword ptr [esi], 0x84072c
-// 005ef585  c7461020078400       mov dword ptr [esi + 0x10], 0x840720
-// 005ef58c  c7461418078400       mov dword ptr [esi + 0x14], 0x840718
-// 005ef593  c7462010078400       mov dword ptr [esi + 0x20], 0x840710
-// 005ef59a  c7462400078400       mov dword ptr [esi + 0x24], 0x840700
-// 005ef5a1  c74644f0068400       mov dword ptr [esi + 0x44], 0x8406f0
-// 005ef5a8  c74664e0068400       mov dword ptr [esi + 0x64], 0x8406e0
-// 005ef5af  c78684000000d0068400 mov dword ptr [esi + 0x84], 0x8406d0
-// 005ef5b9  c786a4000000c0068400 mov dword ptr [esi + 0xa4], 0x8406c0
-// 005ef5c3  c786c4000000b0068400 mov dword ptr [esi + 0xc4], 0x8406b0
-// 005ef5cd  c7863001000098068400 mov dword ptr [esi + 0x130], 0x840698
-// 005ef5d7  c7864001000005000000 mov dword ptr [esi + 0x140], 5
-// 005ef5e1  8bc6                 mov eax, esi
-// 005ef5e3  5e                   pop esi
-// 005ef5e4  64890d00000000       mov dword ptr fs:[0], ecx
-// 005ef5eb  83c410               add esp, 0x10
-// 005ef5ee  c3                   ret 
-
 unsigned int __cdecl descriptor();
 
 extern char table0[];

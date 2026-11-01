@@ -1,123 +1,63 @@
-// from server: 60% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
-
-namespace RBX
-{
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
-
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+template<class Class> class ClassRegistrar {
+	int x;
+public:
+	ClassRegistrar(int);
+	void dummy() { x++; }
+	static ClassRegistrar registrar;
+};
+}
+class GuidItemBase { public: virtual ~GuidItemBase(); int g[4]; };
+class AbstractFactoryProductBase { public: virtual ~AbstractFactoryProductBase(); };
+class DescribedBase { public: virtual ~DescribedBase(); protected: const Reflection::ClassDescriptor* descriptor; };
+class Debugable { public: virtual ~Debugable(); int d; };
+class Instance : public GuidItemBase, public AbstractFactoryProductBase, public DescribedBase, public Debugable {
+public:
+	Instance();
+	virtual ~Instance();
+	char instPad[0x8c - 0x28];
+};
+class __declspec(novtable) VB { public: virtual void vf(); };
+class A { public: virtual void a(); };
+class Mid : public Instance, public A, public virtual VB { public: int m[2]; };
+class B1 { public: virtual void b1(); int m[2]; };
+class B2 { public: virtual void b2(); int m[3]; };
+class B3 : public virtual VB { public: virtual void b3(); };
+class Base : public Mid, public B1, public B2, public B3 {
+public:
+	Base();
+	virtual ~Base();
+	virtual void vf();
+	char pad[0x238 - 0xc0];
+};
+template<class Class, class B, char** ClassName>
+class FactoryProduct : public B {
+protected:
+	FactoryProduct() {}
+};
+namespace Reflection {
+template<class Class, char** sClassName, class BaseClass>
+class __declspec(novtable) Described : public BaseClass {
+	void forceRegistration() { ClassRegistrar<Class>::registrar.dummy(); }
+public:
+	static ClassDescriptor& classDescriptor();
+	Described() {
+		this->descriptor = &classDescriptor();
+		forceRegistration();
 	}
-
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
-
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
-
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
-
-			PartInstance* handle = flag->getHandle();
-
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
-
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
-
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
-
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
-
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
-
-		return NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
+};
+}
+extern char* sObj;
+class Obj : public Reflection::Described<Obj, &sObj, FactoryProduct<Obj, Base, &sObj> > {
+public:
+	Obj();
+	virtual ~Obj();
+};
+Obj::Obj() {}
 }

@@ -1,4 +1,4 @@
-// from server: 72% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00404090  unit: VCWorkspace::?$CComObject  size: 79 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00404090
 //
@@ -29,33 +29,51 @@
 // 004040d6  c7460800000000       mov dword ptr [esi + 8], 0
 // 004040dd  5e                   pop esi
 // 004040de  c3                   ret 
+// copied from an identical function in another client (function ?destroy@S@ns_ROCX000015@@QAEXXZ)
 
-struct VCWorkspace_CComObject
+namespace ns_ROCX000015 {
+// from server: 100% by king_originala
+extern void (__cdecl *free_memory)(void *);
+extern unsigned char object_table[];
+
+struct Buffer
 {
-    void* field0;
-    void* field4;
-    void* field8;
+    void *first;
+    void *second;
+    unsigned int count;
+
+    void clear();
+};
+
+struct S
+{
+    void *table;
+    Buffer buffer;
+
     void destroy();
 };
 
-extern "C" void __stdcall sub_4031E0(void*);
-extern "C" void* __cdecl free_ptr;
-extern "C" void __cdecl free_import(void*);
-
-void VCWorkspace_CComObject::destroy()
+void S::destroy()
 {
-    field0 = (void*)0x784efc;
-    sub_4031E0(&field4);
-    sub_4031E0(&field4);
-    if (field4)
+    Buffer *b = &buffer;
+    table = object_table;
+    b->clear();
+    b->clear();
+
+    void (__cdecl *release)(void *) = free_memory;
+
+    if (b->first)
     {
-        free_import(field4);
-        field4 = 0;
+        release(b->first);
+        b->first = 0;
     }
-    if (field8)
+
+    if (b->second)
     {
-        free_import(field8);
-        field8 = 0;
+        release(b->second);
+        b->second = 0;
     }
-    field8 = 0;
+
+    b->count = 0;
+}
 }

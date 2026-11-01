@@ -1,34 +1,37 @@
-// from server: 56% by Yeetserama
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+namespace std {
+    template<class T> struct char_traits;
+    template<class T> class allocator;
+    template<class T, class Traits, class Alloc>
+    class __declspec(dllimport) basic_string {
+        char storage[28];
+    public:
+        basic_string(const T*);
+        basic_string(const basic_string&);
+        ~basic_string();
+    };
+    typedef basic_string<char, char_traits<char>, allocator<char> > string;
+}
+struct Context {
+    char padding[0x14c];
+    char selection;
+};
 struct Verb {
-    void* construct(int, int);
-    char pad[0x14];
+    virtual void execute();
+    unsigned int data[2];
+    Verb(void *, std::string);
 };
-
-struct CutVerb {
-    char pad0[0xc];
-    int field_c;
-    char field_10;
-    void* construct(int, int);
+struct PasteVerb : Verb {
+    Context *context;
+    bool pasteInto;
+    virtual void execute();
+    PasteVerb(Context *, bool);
 };
-
-void* CutVerb::construct(int a, int b)
+PasteVerb::PasteVerb(Context *owner, bool into)
+    : Verb(owner ? &owner->selection : 0,
+           std::string(into ? "PasteInto" : "Paste")),
+      context(owner),
+      pasteInto(into)
 {
-    extern void* g_786d38;
-    extern void* g_786d30;
-    extern void* g_786d1c;
-    extern void* g_77e698;
-
-    char bl = (char)a;
-    void* name = bl ? &g_786d38 : &g_786d30;
-    int* container = b ? (int*)((char*)b + 0x14c) : 0;
-
-    char buf[0x1c];
-    ((void (__stdcall*)(void*, void*))g_77e698)(buf, name);
-    ((void (__thiscall*)(Verb*, int*))0x564c50)((Verb*)this, container);
-
-    field_c = b;
-    field_10 = bl;
-    *(void**)this = &g_786d1c;
-
-    return this;
 }

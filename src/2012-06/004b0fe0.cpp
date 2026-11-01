@@ -1,14 +1,16 @@
-// from server: 57% by atomic.potato
-extern "C" void std_string_copy(void*, const void*);
+// from server: 100% by colin
 
-struct CWebToolbox
-{
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Str_004b0fe0 { int words[8]; };
+extern void (__thiscall* str_ctor_004b0fe0)(Str_004b0fe0*, Str_004b0fe0*);
+struct X_004b0fe0 {
     char pad[0xcb0];
-    void* field_cb0;
-    void func_004b0fe0(const void*);
+    Str_004b0fe0 value;
+    Str_004b0fe0* copy(Str_004b0fe0* out);
 };
-
-void CWebToolbox::func_004b0fe0(const void* arg)
+Str_004b0fe0* X_004b0fe0::copy(Str_004b0fe0* out)
 {
-    std_string_copy((char*)this + 0xcb0, arg);
+    volatile int zero = 0;
+    str_ctor_004b0fe0(out, &value);
+    return out;
 }

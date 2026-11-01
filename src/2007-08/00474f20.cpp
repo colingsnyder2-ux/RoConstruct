@@ -1,10 +1,4 @@
-// roc 2007-08 00474f20  unit: CInstanceRecord::CNameItem  size: 4 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00474f20
-//
-// 00474f20  8b4170               mov eax, dword ptr [ecx + 0x70]
-// 00474f23  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00474f20 {
     char pad0[112];
     int m_x;

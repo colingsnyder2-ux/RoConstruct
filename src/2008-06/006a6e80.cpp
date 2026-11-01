@@ -1,10 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 006a6e80  unit: CXTPToolBar::CControlButtonExpand  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 006a6e80
-//
-// 006a6e80  8b8174010000         mov eax, dword ptr [ecx + 0x174]
-// 006a6e86  c3                   ret 
-
 struct S_func_006a6e80 {
     char pad0[372];
     int m_x;

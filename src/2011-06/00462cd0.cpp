@@ -1,48 +1,4 @@
-// roc 2011-06 00462cd0  unit: CRobloxApp  size: 110 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00462cd0
-//
-// 00462cd0  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00462cd4  33c9                 xor ecx, ecx
-// 00462cd6  3bc1                 cmp eax, ecx
-// 00462cd8  7441                 je 0x462d1b
-// 00462cda  83f801               cmp eax, 1
-// 00462cdd  743c                 je 0x462d1b
-// 00462cdf  83f802               cmp eax, 2
-// 00462ce2  7459                 je 0x462d3d
-// 00462ce4  83f803               cmp eax, 3
-// 00462ce7  7521                 jne 0x462d0a
-// 00462ce9  56                   push esi
-// 00462cea  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 00462cee  8b0e                 mov ecx, dword ptr [esi]
-// 00462cf0  68f040c100           push 0xc140f0
-// 00462cf5  ff15500aa400         call dword ptr [0xa40a50]
-// 00462cfb  0fb6c0               movzx eax, al
-// 00462cfe  f7d8                 neg eax
-// 00462d00  1bc0                 sbb eax, eax
-// 00462d02  23442408             and eax, dword ptr [esp + 8]
-// 00462d06  8906                 mov dword ptr [esi], eax
-// 00462d08  5e                   pop esi
-// 00462d09  c3                   ret 
-// 00462d0a  8b442408             mov eax, dword ptr [esp + 8]
-// 00462d0e  c700f040c100         mov dword ptr [eax], 0xc140f0
-// 00462d14  884804               mov byte ptr [eax + 4], cl
-// 00462d17  884805               mov byte ptr [eax + 5], cl
-// 00462d1a  c3                   ret 
-// 00462d1b  8b442408             mov eax, dword ptr [esp + 8]
-// 00462d1f  3bc1                 cmp eax, ecx
-// 00462d21  741a                 je 0x462d3d
-// 00462d23  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 00462d27  8b11                 mov edx, dword ptr [ecx]
-// 00462d29  8910                 mov dword ptr [eax], edx
-// 00462d2b  8b5104               mov edx, dword ptr [ecx + 4]
-// 00462d2e  895004               mov dword ptr [eax + 4], edx
-// 00462d31  8b5108               mov edx, dword ptr [ecx + 8]
-// 00462d34  895008               mov dword ptr [eax + 8], edx
-// 00462d37  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 00462d3a  89480c               mov dword ptr [eax + 0xc], ecx
-// 00462d3d  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

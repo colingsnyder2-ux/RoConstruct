@@ -1,5 +1,7 @@
-// from server: 57% by TrollStein
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
+// roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/CommandBars/XTPDockState.cpp
+extern "C" long __stdcall PdhCloseQuery(void* q);
+struct PdhQuery { void* query; ~PdhQuery() { PdhCloseQuery(query); } };
+void destroyQuery(PdhQuery* p) { delete p; }

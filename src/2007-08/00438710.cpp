@@ -1,10 +1,4 @@
-// roc 2007-08 00438710  unit: CSelectionPropGrid  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00438710
-//
-// 00438710  b85cd37800           mov eax, 0x78d35c
-// 00438715  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_00438710()

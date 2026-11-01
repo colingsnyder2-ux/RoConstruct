@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 005cd1d0  unit: RBX::VRbxTextureProxy::?$sp_counted_impl_p  size: 132 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 005cd1d0
 //

@@ -1,16 +1,4 @@
-// roc 2007-08 006df100  unit: CXTPDockingPaneMiniWnd  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006df100
-//
-// 006df100  8bc1                 mov eax, ecx
-// 006df102  33c9                 xor ecx, ecx
-// 006df104  c70050997d00         mov dword ptr [eax], 0x7d9950
-// 006df10a  894804               mov dword ptr [eax + 4], ecx
-// 006df10d  894810               mov dword ptr [eax + 0x10], ecx
-// 006df110  89480c               mov dword ptr [eax + 0xc], ecx
-// 006df113  894808               mov dword ptr [eax + 8], ecx
-// 006df116  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

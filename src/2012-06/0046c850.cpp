@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 0046c850  unit: RBX::TeleportCallback  size: 70 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 0046c850
 //

@@ -1,29 +1,4 @@
-// roc 2011-06 0072fce0  unit: RBX::VInstance::?$NonFactoryProduct  size: 46 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0072fce0
-//
-// 0072fce0  51                   push ecx
-// 0072fce1  56                   push esi
-// 0072fce2  8bf1                 mov esi, ecx
-// 0072fce4  8b4604               mov eax, dword ptr [esi + 4]
-// 0072fce7  8b08                 mov ecx, dword ptr [eax]
-// 0072fce9  50                   push eax
-// 0072fcea  51                   push ecx
-// 0072fceb  8d44240c             lea eax, [esp + 0xc]
-// 0072fcef  50                   push eax
-// 0072fcf0  8bce                 mov ecx, esi
-// 0072fcf2  e8c912d6ff           call 0x490fc0
-// 0072fcf7  8b4e04               mov ecx, dword ptr [esi + 4]
-// 0072fcfa  51                   push ecx
-// 0072fcfb  e858a30d00           call 0x80a058
-// 0072fd00  83c404               add esp, 4
-// 0072fd03  33c0                 xor eax, eax
-// 0072fd05  894604               mov dword ptr [esi + 4], eax
-// 0072fd08  894608               mov dword ptr [esi + 8], eax
-// 0072fd0b  5e                   pop esi
-// 0072fd0c  59                   pop ecx
-// 0072fd0d  c3                   ret 
-// copied from an identical function in another client (function ?_Tidy@?$_Tree@V?$_Tmap_traits@HUValue16@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUValue16@@@std@@@3@$0A@@std@@@std@@IAEXXZ)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD

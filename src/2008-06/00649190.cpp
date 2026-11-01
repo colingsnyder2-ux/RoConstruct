@@ -1,12 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00649190  unit: RBX::Ball  size: 13 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00649190
-//
-// 00649190  d94104               fld dword ptr [ecx + 4]
-// 00649193  d80dac9b8100         fmul dword ptr [0x819bac]
-// 00649199  d95910               fstp dword ptr [ecx + 0x10]
-// 0064919c  c3                   ret 
-
 struct Ball {
     int vtbl;
     float realRadius;

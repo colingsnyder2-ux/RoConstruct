@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 0087e630  unit: CXTCaption  size: 95 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 0087e630
 //

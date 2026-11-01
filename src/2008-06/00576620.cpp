@@ -1,9 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 00576620  unit: RBX::DataModel  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00576620
-//
-// 00576620  e99befffff           jmp 0x5755c0
-
 extern void G1_func_00576620();
 void func_00576620()
 {

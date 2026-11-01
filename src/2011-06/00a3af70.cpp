@@ -1,10 +1,4 @@
-// roc 2011-06 00a3af70  unit: seg_00a30000  size: 11 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00a3af70
-//
-// 00a3af70  c70598e3cc00e0bea500 mov dword ptr [0xcce398], 0xa5bee0
-// 00a3af7a  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern void* G1_func_00a3af70;

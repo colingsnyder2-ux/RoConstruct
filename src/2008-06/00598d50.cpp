@@ -1,10 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 00598d50  unit: RBX::PartInstance  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00598d50
-//
-// 00598d50  d981d8020000         fld dword ptr [ecx + 0x2d8]
-// 00598d56  c3                   ret 
-
 struct S_func_00598d50 {
     char pad[728];
     float m_x;

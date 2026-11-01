@@ -1,3 +1,4 @@
+// from server: 23% by colin
 // from server: 32% by colin
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)

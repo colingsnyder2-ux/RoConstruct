@@ -1,16 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 00774640  unit: VCEdit::?$CXTMaskEditT  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00774640
-//
-// 00774640  8bc1                 mov eax, ecx
-// 00774642  33c9                 xor ecx, ecx
-// 00774644  c700008a8600         mov dword ptr [eax], 0x868a00
-// 0077464a  894804               mov dword ptr [eax + 4], ecx
-// 0077464d  894810               mov dword ptr [eax + 0x10], ecx
-// 00774650  89480c               mov dword ptr [eax + 0xc], ecx
-// 00774653  894808               mov dword ptr [eax + 8], ecx
-// 00774656  c3                   ret 
-
 extern char G;
 
 extern char G;

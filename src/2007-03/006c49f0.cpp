@@ -1,49 +1,10 @@
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8tree/Verb.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8tree/Verb.h"
-
-namespace RBX
+// from server: 100% by auto
+struct S_func_006c49f0 {
+    char pad0[16];
+    int m_x;
+    void f(int a1);
+};
+void S_func_006c49f0::f(int a1)
 {
-	VerbContainer::VerbContainer(VerbContainer* parent) 
-		: parent(parent) 
-	{
-	}
-
-	VerbContainer::~VerbContainer()
-	{
-		while (verbs.begin() != verbs.end())
-		{
-			delete verbs.begin()->second;
-		}
-	}
-
-	void VerbContainer::setVerbParent(VerbContainer* parent)
-	{
-		this->parent = parent;
-	}
-
-	Verb* VerbContainer::getVerb(std::string name)
-	{
-		return getVerb(Name::lookup(name));
-	}
-
-	Verb* VerbContainer::getVerb(const Name& name)
-	{
-		if (Name::getNullName() == name)
-			return NULL;
-
-		std::map<const Name*, Verb*>::iterator iter = verbs.find(&name);
-
-		if (iter != verbs.end())
-			return iter->second;
-
-		if (!parent)
-			return NULL;
-
-		return parent->getVerb(name);
-	}
+    m_x = (int)a1;
 }

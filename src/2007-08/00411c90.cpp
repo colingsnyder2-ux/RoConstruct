@@ -1,57 +1,79 @@
-// from server: 36% by tester
-// roc 2007-08 00411c90  unit: boost::bad_any_cast  size: 173 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00411c90
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct TypeInfo {};
+extern TypeInfo placeholderType;
+extern TypeInfo contentIdType;
+extern bool (__thiscall *sameType)(const TypeInfo *, const TypeInfo *);
 
-extern "C" {
-    int __stdcall sub_411850(void*);
-    void* __stdcall sub_77e69c();
-    int __stdcall sub_77e708();
-    int __stdcall sub_77e710();
+struct Placeholder {
+    virtual void destroy() = 0;
+    virtual const TypeInfo &type() const = 0;
+};
+
+struct Any {
+    Placeholder *value;
+};
+
+struct String {
+    unsigned char storage[28];
+    String(const String &);
+    ~String();
+};
+
+extern void (__thiscall *copyString)(String *, const String *);
+
+String::String(const String &other)
+{
+    copyString(this, &other);
 }
 
-struct type_info;
-struct bad_cast {
-    bad_cast(const char*);
-};
-
 struct ContentId {
-    void* vtable;
-    char pad[0x1c];
+    String text;
+    unsigned int value;
+    ContentId(const ContentId &);
 };
 
-struct basic_string {
-    void* pad[4];
+ContentId::ContentId(const ContentId &other)
+    : text(other.text), value(other.value)
+{
+}
+
+struct BadCast {
+    const void *vtable;
+    unsigned int data[2];
+    BadCast();
+    ~BadCast();
 };
 
-struct S {
-    ContentId* __cdecl f(ContentId* src);
-};
+extern const unsigned int badAnyCastVtable[];
+extern void (__thiscall *constructBadCast)(BadCast *, const char *);
+extern __declspec(noreturn) void __cdecl raiseBadCast(const BadCast &);
 
-ContentId* S::f(ContentId* src) {
-    ContentId* result;
-    if (src != 0) {
-        void* p = *(void**)src;
-        if (p != 0) {
-            void* vt = *(void**)p;
-            typedef void* (__stdcall *Fn)(void*);
-            Fn fn = *(Fn*)((char*)vt + 4);
-            p = fn(p);
-        } else {
-            p = (void*)0x8827c8;
-        }
-        if (sub_77e708() != 0) {
-            src = (ContentId*)((char*)*(void**)src + 4);
-            if (src != 0) {
-                goto do_copy;
-            }
-        }
+BadCast::BadCast()
+{
+    constructBadCast(this, "bad cast");
+    vtable = badAnyCastVtable;
+}
+
+static __forceinline const ContentId *contentPointer(const Any *source)
+{
+    if (source) {
+        const TypeInfo &type = source->value
+            ? source->value->type()
+            : placeholderType;
+        if (sameType(&type, &contentIdType))
+            return reinterpret_cast<const ContentId *>(
+                reinterpret_cast<const char *>(source->value) + 4);
     }
-    {
-        bad_cast bc("bad cast");
-        sub_411850(&bc);
+    return 0;
+}
+
+ContentId __cdecl extractContentId(const Any *source)
+{
+    const ContentId *content = contentPointer(source);
+    if (!content) {
+        BadCast error;
+        raiseBadCast(error);
     }
-do_copy:
-    result = (ContentId*)sub_77e69c();
-    *(void**)((char*)result + 0x1c) = *(void**)((char*)src + 0x1c);
-    return result;
+    return ContentId(*content);
 }

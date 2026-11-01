@@ -1,11 +1,11 @@
-// from server: 51% by why2
-struct RBX_RunService {
-    void sub_5D5E00(int);
-    void sub_5D5EE0(int, int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct RunService {
+    void step();
+    void onEvent(void* source, int ev);
 };
-
-void RBX_RunService::sub_5D5EE0(int a, int b) {
-    if (a != 0) {
-        sub_5D5E00(b);
-    }
+void RunService::onEvent(void* source, int ev) {
+    if (source) step();
 }

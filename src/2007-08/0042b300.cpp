@@ -1,10 +1,4 @@
-// roc 2007-08 0042b300  unit: RBX::Reflection::$$A6AXPBVPropertyDescriptor::V?$function::?$holder  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0042b300
-//
-// 0042b300  b888668800           mov eax, 0x886688
-// 0042b305  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0042b300()

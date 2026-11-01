@@ -1,14 +1,4 @@
-// from server: 88% by atomic.potato
-struct S
-{
-    int f(void *);
-};
-
-extern "C" int sub_467360(void *);
-extern "C" int __stdcall sub_76a190(void *, int *);
-
-int S::f(void *arg)
-{
-    int value = *(int *)sub_467360((char *)arg + 4);
-    return sub_76a190(this, &value);
-}
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /MD
+struct S{int f(int); int sub(int*);}; extern "C" int* sub1(int);
+int S::f(int value){int v=*sub1(value+4); return sub(&v);}

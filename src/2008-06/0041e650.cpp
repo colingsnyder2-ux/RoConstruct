@@ -1,19 +1,4 @@
 // from server: 100% by king_originala
-// roc 2008-06 0041e650  unit: InsertDecal  size: 30 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0041e650
-//
-// 0041e650  51                   push ecx
-// 0041e651  56                   push esi
-// 0041e652  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 0041e656  56                   push esi
-// 0041e657  c744240800000000     mov dword ptr [esp + 8], 0
-// 0041e65f  e86cfeffff           call 0x41e4d0
-// 0041e664  83c404               add esp, 4
-// 0041e667  8bc6                 mov eax, esi
-// 0041e669  5e                   pop esi
-// 0041e66a  59                   pop ecx
-// 0041e66b  c20400               ret 4
-
 extern "C" void __cdecl helper(void*);
 
 struct S {

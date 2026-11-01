@@ -1,21 +1,11 @@
-// from server: 73% by atomic.potato
-typedef unsigned char byte;
-typedef void (*InitFunction)();
-
-extern "C" InitFunction g_initFunction;
-extern "C" byte g_initialized;
-extern "C" int g_valueB0;
-extern "C" int g_valueB4;
-
-void Function9831F5();
-
-void Function44D700()
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" void seh_fn_0044d700(void*);
+extern int g_a_0044d700;
+extern int g_b_0044d700;
+extern int g_arg_0044d700;
+struct Reg_0044d700 { Reg_0044d700() { g_a_0044d700 = 0; g_b_0044d700 = 0; seh_fn_0044d700(&g_arg_0044d700); } };
+void func_0044d700()
 {
-    if (!g_initialized)
-    {
-        g_initialized = 1;
-        g_valueB0 = 0;
-        g_valueB4 = 0;
-        Function9831F5();
-    }
+    static Reg_0044d700 reg;
 }

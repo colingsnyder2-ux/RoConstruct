@@ -1,10 +1,4 @@
-// roc 2010-06 006e6ae0  unit: RBX::VPVAdornment::?$RefPropDescriptor  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 006e6ae0
-//
-// 006e6ae0  8d81b0000000         lea eax, [ecx + 0xb0]
-// 006e6ae6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_006e6ae0 {
     char pad0[176];
     int m_x;

@@ -1,39 +1,56 @@
-// from server: 56% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/instances.cpp
-
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        instances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex narrow character template instances.
-  */
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_NARROW_INSTANTIATE
-
-#ifdef __BORLANDC__
-#pragma hrdstop
-#endif
-
-#include <boost/regex.hpp>
-
-#endif
+namespace std {
+template<class E> struct char_traits {};
+template<class E> class allocator {};
+template<class E, class T = char_traits<E>, class A = allocator<E> >
+class basic_string {
+public:
+    __declspec(noinline) basic_string() { storage[0] = 0; }
+    __declspec(noinline) ~basic_string() { storage[1] = 0; }
+    __declspec(noinline) const E* c_str() const { return (const E*)storage; }
+private:
+    char storage[0x1c];
+};
+extern template class __declspec(dllimport) basic_string<char>;
+typedef basic_string<char> string;
+}
+namespace ATL {
+template<class T> class ChTraitsCRT {};
+}
+template<class T, class U> class StrTraitMFC_DLL {};
+namespace ATL {
+template<class T, class Traits> class CStringT {
+public:
+    __declspec(noinline) CStringT(const T* s) : m_pszData((T*)s) {}
+    __declspec(noinline) ~CStringT() throw() { m_pszData = 0; }
+private:
+    T* m_pszData;
+};
+extern template class __declspec(dllimport) CStringT<char, StrTraitMFC_DLL<char, ChTraitsCRT<char> > >;
+}
+typedef ATL::CStringT<char, StrTraitMFC_DLL<char, ATL::ChTraitsCRT<char> > > CString;
+namespace G3D { class System { public: static void describeSystem(std::string& s); }; }
+extern std::string versionString;
+class CDataExchange { public: int m_bSaveAndValidate; };
+class CDHtmlDialog {
+public:
+    virtual void DoDataExchange(CDataExchange* pDX);
+    void DDX_DHtml_ElementText(CDataExchange* pDX, const char* szId, long dispid, CString& value);
+};
+class CAboutDlg : public CDHtmlDialog {
+public:
+    virtual void DoDataExchange(CDataExchange* pDX);
+};
+void CAboutDlg::DoDataExchange(CDataExchange* pDX)
+{
+    if (!pDX->m_bSaveAndValidate) {
+        CString version(versionString.c_str());
+        DDX_DHtml_ElementText(pDX, "Version", 0x80010402, version);
+        std::string info;
+        G3D::System::describeSystem(info);
+        DDX_DHtml_ElementText(pDX, "systemInfo", 0x80010402, CString(info.c_str()));
+    }
+}

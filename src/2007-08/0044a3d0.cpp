@@ -1,35 +1,25 @@
-// from server: 51% by colin
-// roc 2007-08 0044a3d0  unit: CRobloxModule  size: 69 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0044a3d0
-
-extern "C" int __cdecl sub_409920();
-extern "C" char __cdecl sub_4085f0();
-
-struct CRobloxModule {
-    int method(int* arg);
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+struct Target {
+    virtual void invoke(int);
 };
 
-int CRobloxModule::method(int* arg) {
-    int state = sub_409920();
-    state = *(int*)(state + 0xec);
-    state = state - 1;
-    if (state == 0) {
-        if (sub_4085f0()) {
-            int* p = arg;
-            int* vtbl = (int*)*p;
-            int fn = vtbl[0];
-            arg = (int*)1;
-            return ((int (__cdecl*)(int*))fn)(arg);
-        }
-    } else {
-        state = state - 1;
-        if (state == 0) {
-            int* p = arg;
-            int* vtbl = (int*)*p;
-            int fn = vtbl[0];
-            arg = (int*)1;
-            return ((int (__cdecl*)(int*))fn)(arg);
-        }
+struct CRobloxModule {
+    void f(Target*);
+};
+
+extern "C" void* __cdecl sub_407BE0();
+extern "C" bool __cdecl sub_4061e0();
+
+void CRobloxModule::f(Target* target)
+{
+    switch (*(int*)((char*)sub_407BE0() + 0xec)) {
+    case 1:
+        if (sub_4061e0())
+            target->invoke(1);
+        break;
+    case 2:
+        target->invoke(1);
+        break;
     }
-    return 0;
 }

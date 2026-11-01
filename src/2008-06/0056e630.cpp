@@ -1,21 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0056e630  unit: std::D::DU?$char_traits::V?$basic_string::?$TypedPropertyDescriptor  size: 37 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0056e630
-//
-// 0056e630  51                   push ecx
-// 0056e631  8b542408             mov edx, dword ptr [esp + 8]
-// 0056e635  83ec1c               sub esp, 0x1c
-// 0056e638  8bc4                 mov eax, esp
-// 0056e63a  8964241c             mov dword ptr [esp + 0x1c], esp
-// 0056e63e  52                   push edx
-// 0056e63f  50                   push eax
-// 0056e640  e86bc10a00           call 0x61a7b0
-// 0056e645  8b4c2428             mov ecx, dword ptr [esp + 0x28]
-// 0056e649  83c110               add ecx, 0x10
-// 0056e64c  e87f77f2ff           call 0x495dd0
-// 0056e651  59                   pop ecx
-// 0056e652  c20800               ret 8
-
 #include <memory>
 #include <string>
 

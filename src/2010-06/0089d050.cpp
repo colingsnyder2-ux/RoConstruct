@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 0089d050  unit: CXTPTabPaintManager::CColorSetOffice2003  size: 302 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 0089d050
 //

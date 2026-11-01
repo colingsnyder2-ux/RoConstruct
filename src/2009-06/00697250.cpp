@@ -1,108 +1,59 @@
-// from server: 49% by colin
+// from server: 70% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include <exception>
+extern "C" long __cdecl _InterlockedDecrement(long volatile*);
+extern "C" long __cdecl _InterlockedIncrement(long volatile*);
+#pragma intrinsic(_InterlockedDecrement)
+#pragma intrinsic(_InterlockedIncrement)
+namespace boost { namespace detail {
+class sp_counted_base {
+    long use_count_;
+    long weak_count_;
+public:
+    sp_counted_base(): use_count_(1), weak_count_(1) {}
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
+    void weak_add_ref() { _InterlockedIncrement(&weak_count_); }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(): pi_(0) {}
+    shared_count(const shared_count& r): pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+class weak_count {
+public:
+    sp_counted_base* pi_;
+    weak_count(): pi_(0) {}
+    ~weak_count() { if (pi_ != 0) pi_->weak_release(); }
+};
 }
-
-void initMoo()
-{
-	moo2();
+template<class T> class shared_ptr { public: T* px; detail::shared_count pn; typedef T* shared_ptr::*unspecified_bool_type; operator unspecified_bool_type() const { return px == 0 ? 0 : &shared_ptr::px; } T* operator->() const { return px; } };
+template<class T> class weak_ptr { public: T* px; detail::weak_count pn; shared_ptr<T> lock() const throw(); };
 }
-
-namespace RBX
+namespace RBX {
+class Instance { public: void setParent(Instance* p); };
+enum MessageType { MESSAGE_OUTPUT, MESSAGE_INFO, MESSAGE_WARNING, MESSAGE_ERROR };
+class StandardOut { public: static boost::shared_ptr<StandardOut> singleton(); void print(MessageType type, const std::exception& e); };
+}
+static void cleanup(boost::weak_ptr<RBX::Instance> item)
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
+	try
 	{
-		boost::call_once(initMoo, flag);
-		return moo2();
+		boost::shared_ptr<RBX::Instance> i = item.lock();
+		if (i)
+			i->setParent(0);
 	}
-
-	std::map<int, Name*>& Name::dictionary()
+	catch (std::exception& e)
 	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
+		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
 	}
 }
+void use_cleanup(boost::weak_ptr<RBX::Instance> w) { cleanup(w); }

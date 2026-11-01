@@ -1,23 +1,4 @@
-// roc 2010-06 004341d0  unit: std::D::DU?$char_traits::V?$basic_string::?$XItem  size: 40 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 004341d0
-//
-// 004341d0  56                   push esi
-// 004341d1  8bf1                 mov esi, ecx
-// 004341d3  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 004341d7  ff1508a49e00         call dword ptr [0x9ea408]
-// 004341dd  51                   push ecx
-// 004341de  8bcc                 mov ecx, esp
-// 004341e0  8964240c             mov dword ptr [esp + 0xc], esp
-// 004341e4  50                   push eax
-// 004341e5  ff15e8ce9e00         call dword ptr [0x9ecee8]
-// 004341eb  8b06                 mov eax, dword ptr [esi]
-// 004341ed  8b5060               mov edx, dword ptr [eax + 0x60]
-// 004341f0  8bce                 mov ecx, esi
-// 004341f2  ffd2                 call edx
-// 004341f4  5e                   pop esi
-// 004341f5  c20400               ret 4
-// copied from an identical function in another client (function ?f@S@@QAEXPAUData@@@Z)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // from server: 76% by colin

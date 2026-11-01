@@ -1,39 +1,62 @@
-// roc 2009-12 00477630  unit: VCContent::?$CComObject  size: 90 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00477630
-//
-// 00477630  837c240800           cmp dword ptr [esp + 8], 0
-// 00477635  7408                 je 0x47763f
-// 00477637  b80b000280           mov eax, 0x8002000b
-// 0047763c  c21000               ret 0x10
-// 0047763f  56                   push esi
-// 00477640  8b742414             mov esi, dword ptr [esp + 0x14]
-// 00477644  85f6                 test esi, esi
-// 00477646  7509                 jne 0x477651
-// 00477648  b803400080           mov eax, 0x80004003
-// 0047764d  5e                   pop esi
-// 0047764e  c21000               ret 0x10
-// 00477651  33c0                 xor eax, eax
-// 00477653  3905bcbeb000         cmp dword ptr [0xb0bebc], eax
-// 00477659  750f                 jne 0x47766a
-// 0047765b  8b442410             mov eax, dword ptr [esp + 0x10]
-// 0047765f  50                   push eax
-// 00477660  b9b0beb000           mov ecx, 0xb0beb0
-// 00477665  e8c6f4f8ff           call 0x406b30
-// 0047766a  8b0dbcbeb000         mov ecx, dword ptr [0xb0bebc]
-// 00477670  890e                 mov dword ptr [esi], ecx
-// 00477672  8b0dbcbeb000         mov ecx, dword ptr [0xb0bebc]
-// 00477678  85c9                 test ecx, ecx
-// 0047767a  740a                 je 0x477686
-// 0047767c  8b11                 mov edx, dword ptr [ecx]
-// 0047767e  8b4204               mov eax, dword ptr [edx + 4]
-// 00477681  51                   push ecx
-// 00477682  ffd0                 call eax
-// 00477684  33c0                 xor eax, eax
-// 00477686  5e                   pop esi
-// 00477687  c21000               ret 0x10
-// copied from an identical function in another client (function ?GetTypeInfo@?$IDispatchImpl@UIBrowserViewExternal@@$1?IID_IBrowserViewExternal@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJIKPAPAUITypeInfo@@@Z)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: atl-9.0-dll-rtm roc_espclaude_2e752666f44a81f5.cpp
+
+// Candidate translation unit (score above; library headers required).
+#ifndef _CPPUNWIND
+#define _CPPUNWIND 1
+#endif
+#ifndef _AFXDLL
+#define _AFXDLL
+#endif
+#include <new>
+#include <afxwin.h>
+#include <atlbase.h>
+#include <atlcom.h>
+
+extern "C" const IID IID_IBrowserViewExternal;
+extern "C" const CLSID CLSID_BrowserViewExternal;
+extern "C" const GUID LIBID_RobloxLib;
+
+MIDL_INTERFACE("00000000-0000-0000-0000-000000000002")
+IBrowserViewExternal : public IDispatch
+{
+public:
+};
+
+struct __declspec(uuid("dd754d30-321a-45a2-a40c-75783afabfab")) _IBrowserViewExternalEvents;
+
+template<class T>
+class CProxy_IBrowserViewExternalEvents :
+    public IConnectionPointImpl<T, &__uuidof(_IBrowserViewExternalEvents)>
+{
+};
+
+class ATL_NO_VTABLE CBrowserViewExternal :
+    public CComObjectRootEx<CComSingleThreadModel>,
+    public CComCoClass<CBrowserViewExternal, &CLSID_BrowserViewExternal>,
+    public ISupportErrorInfoImpl<&IID_IBrowserViewExternal>,
+    public IConnectionPointContainerImpl<CBrowserViewExternal>,
+    public CProxy_IBrowserViewExternalEvents<CBrowserViewExternal>,
+    public IDispatchImpl<IBrowserViewExternal, &IID_IBrowserViewExternal, &LIBID_RobloxLib, 1, 0>
+{
+public:
+    CBrowserViewExternal() : m_flag(0) {}
+
+    BEGIN_COM_MAP(CBrowserViewExternal)
+        COM_INTERFACE_ENTRY(IBrowserViewExternal)
+        COM_INTERFACE_ENTRY(IDispatch)
+        COM_INTERFACE_ENTRY(ISupportErrorInfo)
+        COM_INTERFACE_ENTRY(IConnectionPointContainer)
+    END_COM_MAP()
+
+    BEGIN_CONNECTION_POINT_MAP(CBrowserViewExternal)
+        CONNECTION_POINT_ENTRY(__uuidof(_IBrowserViewExternalEvents))
+    END_CONNECTION_POINT_MAP()
+
+    short m_flag;
+};
+
+template ATL::CComAggObject<CBrowserViewExternal>::CComAggObject(void*);

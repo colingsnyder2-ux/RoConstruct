@@ -1,4 +1,4 @@
-// from server: 57% by atomic.potato
+// from server: 0% by atomic.potato
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void*, const char*);
 
 struct CXTPPropertyGridItemEnum

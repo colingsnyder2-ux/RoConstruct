@@ -1,44 +1,58 @@
-// from server: 45% by colin
-struct DxUserInput {
-    unsigned short f0;
-    unsigned short f2;
-    int f4;
-    void method(int a, int b);
+// from server: 100% by Yeetserama
+// from server: 100% by Espeon
+// from server: 86% by colin
+struct __declspec(dllimport) String
+{
+    char* data;
+
+    String() throw();
+    ~String() throw();
+    void __cdecl Format(const char* format, ...);
+    operator const char*() const throw();
+    String& operator=(const char* text);
 };
 
-extern "C" {
-    void __stdcall sub_77ddac(int);
-    void __stdcall sub_77dd94(int, int, int, int, int);
-    void __stdcall sub_77d5ac(int, int, int);
-    void __stdcall sub_77dd6c(int, int);
-    void __stdcall sub_77ddbc(int);
-    int __stdcall sub_727124(int, int);
-}
-
-void DxUserInput::method(int a, int b)
+struct __declspec(dllimport) PathString
 {
-    int local0 = 0;
-    int local1;
-    int local2;
-    int local3;
-    int local4;
+    char* data;
 
-    sub_77ddac(a);
-    sub_77ddac((int)&local0);
+    PathString() throw();
+    ~PathString() throw();
+    void __cdecl Format(const char* format, ...);
+    operator const char*() const throw();
+    PathString& operator=(const char* text);
+};
 
-    int v = *(int*)b;
-    unsigned short w2 = f2;
-    unsigned short w0 = f0;
+extern "C" int __stdcall VerQueryValueA(
+    const void* block,
+    const char* subBlock,
+    void** value,
+    unsigned int* length);
 
-    sub_77dd94((int)&local1, 0x795c34, w0, w2, v);
+extern "C" int __cdecl sub_7A6368(void*, void*);
 
-    local2 = 0;
-    local3 = 0;
-    sub_77d5ac((int)&local4, (int)&local3, (int)&local2);
+struct DxUserInput
+{
+    unsigned short language;
+    unsigned short codePage;
+    void* block;
 
-    if (sub_727124(f4, (int)&local4)) {
-        sub_77dd6c(a, local2);
-    }
+    String query(const String& name);
+};
 
-    sub_77ddbc((int)&local0);
+String DxUserInput::query(const String& name)
+{
+    String result;
+    PathString path;
+
+    path.Format("\\StringFileInfo\\%04x%04x\\%s",
+                language, codePage, name.data);
+
+    void* value = 0;
+    unsigned int length = 0;
+
+    if (VerQueryValueA(block, path, &value, &length))
+        result = static_cast<const char*>(value);
+
+    return result;
 }

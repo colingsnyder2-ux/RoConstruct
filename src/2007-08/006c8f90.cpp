@@ -1,16 +1,4 @@
-// roc 2007-08 006c8f90  unit: CXTPControlEditCtrl  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006c8f90
-//
-// 006c8f90  8bc1                 mov eax, ecx
-// 006c8f92  33c9                 xor ecx, ecx
-// 006c8f94  c7004c787d00         mov dword ptr [eax], 0x7d784c
-// 006c8f9a  894804               mov dword ptr [eax + 4], ecx
-// 006c8f9d  894810               mov dword ptr [eax + 0x10], ecx
-// 006c8fa0  89480c               mov dword ptr [eax + 0xc], ecx
-// 006c8fa3  894808               mov dword ptr [eax + 8], ecx
-// 006c8fa6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

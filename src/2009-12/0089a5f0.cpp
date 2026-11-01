@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0089a5f0  unit: CXTPFormulaMulDivC  size: 30 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0089a5f0
 //

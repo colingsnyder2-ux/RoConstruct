@@ -1,33 +1,34 @@
-// from server: 31% by colin
-struct LDraw2RobloxColorMap {
-    int f(int, int, int, int, int, int, int);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct String
+{
+    char storage[28];
+
+    String(const char *);
+    ~String();
 };
 
-extern "C" {
-    void __stdcall std_string_ctor(void*, const char*);
-    void __stdcall std_string_dtor(void*);
-    int __cdecl sub_46C5A0(void*, void*);
+extern void (__thiscall *constructString)(String *, const char *);
+extern void (__thiscall *destroyString)(String *);
+extern int __cdecl compare(const String &, const String &);
+
+inline String::String(const char *text)
+{
+    constructString(this, text);
 }
 
-int LDraw2RobloxColorMap::f(int a1, int a2, int a3, int a4, int a5, int a6, int a7)
+inline String::~String()
 {
-    char s1[28];
-    char s2[28];
-    int v;
+    destroyString(this);
+}
 
-    std_string_ctor(s1, "close");
-    v = sub_46C5A0(s2, s1);
-    std_string_dtor(s1);
-    if (v == 0) {
-        std_string_dtor(s2);
+int __stdcall classify(String value)
+{
+    if (compare(value, String("exact")) == 0)
         return 0;
-    }
 
-    std_string_ctor(s1, "exact");
-    v = sub_46C5A0(s2, s1);
-    std_string_dtor(s1);
-    std_string_dtor(s2);
-    if (v == 0)
+    bool matched = compare(value, String("close")) == 0;
+    if (matched)
         return 1;
     return 2;
 }

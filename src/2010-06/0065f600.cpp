@@ -1,44 +1,4 @@
-// roc 2010-06 0065f600  unit: RBX::VPlayerMouse::?$FactoryProduct  size: 98 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0065f600
-//
-// 0065f600  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0065f604  33c9                 xor ecx, ecx
-// 0065f606  3bc1                 cmp eax, ecx
-// 0065f608  7441                 je 0x65f64b
-// 0065f60a  83f801               cmp eax, 1
-// 0065f60d  743c                 je 0x65f64b
-// 0065f60f  83f802               cmp eax, 2
-// 0065f612  744d                 je 0x65f661
-// 0065f614  83f803               cmp eax, 3
-// 0065f617  7521                 jne 0x65f63a
-// 0065f619  56                   push esi
-// 0065f61a  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 0065f61e  8b0e                 mov ecx, dword ptr [esi]
-// 0065f620  68e0c1bb00           push 0xbbc1e0
-// 0065f625  ff15d8a89e00         call dword ptr [0x9ea8d8]
-// 0065f62b  0fb6c0               movzx eax, al
-// 0065f62e  f7d8                 neg eax
-// 0065f630  1bc0                 sbb eax, eax
-// 0065f632  23442408             and eax, dword ptr [esp + 8]
-// 0065f636  8906                 mov dword ptr [esi], eax
-// 0065f638  5e                   pop esi
-// 0065f639  c3                   ret 
-// 0065f63a  8b442408             mov eax, dword ptr [esp + 8]
-// 0065f63e  c700e0c1bb00         mov dword ptr [eax], 0xbbc1e0
-// 0065f644  884804               mov byte ptr [eax + 4], cl
-// 0065f647  884805               mov byte ptr [eax + 5], cl
-// 0065f64a  c3                   ret 
-// 0065f64b  8b442408             mov eax, dword ptr [esp + 8]
-// 0065f64f  3bc1                 cmp eax, ecx
-// 0065f651  740e                 je 0x65f661
-// 0065f653  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0065f657  8b11                 mov edx, dword ptr [ecx]
-// 0065f659  8910                 mov dword ptr [eax], edx
-// 0065f65b  8b4904               mov ecx, dword ptr [ecx + 4]
-// 0065f65e  894804               mov dword ptr [eax + 4], ecx
-// 0065f661  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /MD /GS /EHsc /Ob1
-// roc-lib: xtp-11.2.2-shared-mfc-string-calls Source\Common\XTPImageManager.cpp
+// roc-lib: xtp-11.2.2-lib-strlen Source\Common\XTPImageManager.cpp
 
 // Candidate translation unit (score above; library headers required).
 // XTPImageManager.cpp : implementation of the CXTPImageManager class.

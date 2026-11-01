@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00855b80  unit: CXTPTabClientWnd::CSingleWorkspace  size: 108 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00855b80
 //

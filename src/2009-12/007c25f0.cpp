@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 007c25f0  unit: RBX::VChatLine::?$sp_counted_impl_p  size: 133 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 007c25f0
 //

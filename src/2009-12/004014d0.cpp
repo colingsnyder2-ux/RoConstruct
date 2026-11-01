@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 004014d0  unit: std::bad_alloc  size: 81 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 004014d0
 //

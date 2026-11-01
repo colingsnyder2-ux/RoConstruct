@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00409390  unit: boost::exception_detail::clone_base  size: 83 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00409390
 //

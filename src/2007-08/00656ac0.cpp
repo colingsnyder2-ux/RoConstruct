@@ -1,16 +1,4 @@
-// roc 2007-08 00656ac0  unit: CXTPReportControl  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00656ac0
-//
-// 00656ac0  8bc1                 mov eax, ecx
-// 00656ac2  33c9                 xor ecx, ecx
-// 00656ac4  c700b4837c00         mov dword ptr [eax], 0x7c83b4
-// 00656aca  894804               mov dword ptr [eax + 4], ecx
-// 00656acd  894810               mov dword ptr [eax + 0x10], ecx
-// 00656ad0  89480c               mov dword ptr [eax + 0xc], ecx
-// 00656ad3  894808               mov dword ptr [eax + 8], ecx
-// 00656ad6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

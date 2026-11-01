@@ -1,3 +1,4 @@
+// from server: 100% by nuck16
 // roc 2009-12 008e9610  unit: CXTPRibbonGroupControlPopup  size: 36 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 008e9610
 //
@@ -17,20 +18,16 @@
 // 008e962e  8bc6                 mov eax, esi
 // 008e9630  5e                   pop esi
 // 008e9631  c20400               ret 4
-// copied from an identical function in another client (function ?sub_44cbb0@CRobloxControlColorSelector@ns_ROCX000031@@QAEPAXPAX@Z)
 
-namespace ns_ROCX000031 {
-struct CRobloxControlColorSelector {
-    void* sub_44cb40();
-    void* sub_44cbb0(void* arg);
+struct S
+{
+    void* f();
+    void* g(void* p);
 };
 
-void* CRobloxControlColorSelector::sub_44cbb0(void* arg)
+void* S::g(void* p)
 {
-    void* p = sub_44cb40();
-    void** vtbl = *(void***)p;
-    void (__thiscall *fn)(void*, void*, void*) = (void (__thiscall *)(void*, void*, void*))vtbl[0x38];
-    fn(p, this, arg);
-    return p;
-}
+    void* v = f();
+    ((void (__thiscall*)(void*, void*, void*))(*(void***)v)[56])(v, this, p);
+    return v;
 }

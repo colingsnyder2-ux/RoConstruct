@@ -1,33 +1,4 @@
-// roc 2009-06 00416190  unit: CopyVerb  size: 64 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00416190
-//
-// 00416190  56                   push esi
-// 00416191  8b742408             mov esi, dword ptr [esp + 8]
-// 00416195  57                   push edi
-// 00416196  8b7c2410             mov edi, dword ptr [esp + 0x10]
-// 0041619a  57                   push edi
-// 0041619b  56                   push esi
-// 0041619c  ff1530ea8900         call dword ptr [0x89ea30]
-// 004161a2  85c0                 test eax, eax
-// 004161a4  7c27                 jl 0x4161cd
-// 004161a6  85ff                 test edi, edi
-// 004161a8  7423                 je 0x4161cd
-// 004161aa  66833f0d             cmp word ptr [edi], 0xd
-// 004161ae  751d                 jne 0x4161cd
-// 004161b0  85f6                 test esi, esi
-// 004161b2  7419                 je 0x4161cd
-// 004161b4  0fb74e02             movzx ecx, word ptr [esi + 2]
-// 004161b8  f6c140               test cl, 0x40
-// 004161bb  7410                 je 0x4161cd
-// 004161bd  f7c100040000         test ecx, 0x400
-// 004161c3  7408                 je 0x4161cd
-// 004161c5  b909000000           mov ecx, 9
-// 004161ca  66890f               mov word ptr [edi], cx
-// 004161cd  5f                   pop edi
-// 004161ce  5e                   pop esi
-// 004161cf  c3                   ret 
-// copied from an identical function in another client (function ?f@@YAJPAUSafeArray@@PAG@Z)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // from server: 95% by colin

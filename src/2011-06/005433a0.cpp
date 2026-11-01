@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 005433a0  unit: G3D::Sphere  size: 87 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 005433a0
 //

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 007c51d0  unit: RBX::StepJointsStage  size: 13 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 007c51d0
 //

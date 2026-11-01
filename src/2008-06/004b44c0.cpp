@@ -1,7 +1,8 @@
+// from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs roc_bound_changed_callsite_e4e40d6be974493c.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_bound_changed_callsite_e4e40d6be974493c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias(<boost/function.hpp>, <roc_espeon_boost135functionheader672dcef995494068.cpp>)

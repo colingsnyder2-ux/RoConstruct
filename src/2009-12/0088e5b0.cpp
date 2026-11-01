@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0088e5b0  unit: CXTPShortcutManager  size: 104 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0088e5b0
 //

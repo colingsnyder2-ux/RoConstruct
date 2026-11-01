@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 00482f80  unit: RBX::LDraw2Lua::LDrawCommand  size: 15 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 00482f80
 //

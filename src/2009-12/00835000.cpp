@@ -1,13 +1,6 @@
-// roc 2009-12 00835000  unit: CXTTreeCtrl  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00835000
-//
-// 00835000  e9c3150f00           jmp 0x9265c8
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_00835000();
+void func_00835000()
 {
-    G1_func_00401050();
-}
+    G1_func_00835000();
 }

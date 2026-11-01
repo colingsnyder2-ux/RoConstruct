@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 00743d70  unit: VCXTPReportRow::V?$CXTPSmartPtrInternalT::?$CArray  size: 351 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00743d70
 //

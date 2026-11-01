@@ -1,9 +1,4 @@
-// roc 2007-08 00462750  unit: CSelectionCaption  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00462750
-//
-// 00462750  e999e21c00           jmp 0x6309ee
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00462750();
 void func_00462750()
 {

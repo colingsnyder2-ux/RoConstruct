@@ -1,108 +1,91 @@
-// from server: 33% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include <intrin.h>
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); }
+    }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+    long use_count_; long weak_count_;
+};
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    shared_count() : pi_(0) {}
+    shared_count(shared_count const& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
 }
-
-void initMoo()
-{
-	moo2();
+template<class T> class shared_ptr {
+public:
+    T* px; detail::shared_count pn;
+    T* operator->() const { return px; }
+};
 }
-
-namespace RBX
+namespace RBX {
+class Instance {
+public:
+    char pad[0x48];
+    Instance* parent;
+    Instance* getParent() const { return parent; }
+};
+class Humanoid { public: static Humanoid* modelIsCharacter(Instance* model); };
+struct BrickColor { int number; bool operator==(const BrickColor& o) const { return number == o.number; } };
+namespace Network {
+class Player {
+public:
+    char pad[0x94];
+    BrickColor teamColor;
+    bool neutral;
+    bool getNeutral() const { return neutral; }
+    BrickColor getTeamColor() const { return teamColor; }
+};
+class Players {
+public:
+    static Player* getPlayerFromCharacter(Instance* character);
+    static bool backendProcessing(Instance* context, bool required);
+};
+}
+class Flag;
+class FlagStand;
+class FlagStandService {
+public:
+    FlagStand* FindStandWithFlag(Flag* f);
+    void AffixFlagToClosestStand(Flag* f);
+};
+class ServiceProvider { public: template<class T> static T* create(const Instance* context); };
+class Flag : public Instance {
+public:
+    char pad2[0x1a0 - 0x4c];
+    BrickColor teamColor;
+    void onEvent_flagTouched(boost::shared_ptr<Instance> other);
+};
+void Flag::onEvent_flagTouched(boost::shared_ptr<Instance> other)
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    if (Network::Players::backendProcessing(this, true)) {
+        Instance* parent = other->getParent();
+        if (!Humanoid::modelIsCharacter(parent))
+            return;
+        Network::Player* player = Network::Players::getPlayerFromCharacter(parent);
+        if (!player)
+            return;
+        if (player->getNeutral())
+            return;
+        BrickColor current = teamColor;
+        if (player->getTeamColor() == current) {
+            FlagStandService* fss = ServiceProvider::create<FlagStandService>(this);
+            if (!fss->FindStandWithFlag(this))
+                fss->AffixFlagToClosestStand(this);
+        }
+    }
+}
 }

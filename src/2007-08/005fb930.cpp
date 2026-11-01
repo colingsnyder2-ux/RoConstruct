@@ -1,22 +1,38 @@
-// from server: 60% by colin
-struct LockTool {
-    char pad[0x20];
-    void* field_20;
-    LockTool* method(void* arg);
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct String {
+    unsigned char data[0x20];
 };
 
-extern "C" int __stdcall sub_574B80(void*);
-extern "C" void* __stdcall sub_77E698(const char*);
+extern "C" bool __cdecl isLocked(void *);
+extern void (__thiscall *constructString)(String *, const char *);
+extern const char unlockCursor[];
+extern const char lockCursor[];
 
-LockTool* LockTool::method(void* arg)
+struct LockTool {
+    unsigned char padding[0x20];
+    void *object;
+
+    String *cursorName(String *result);
+};
+
+String *LockTool::cursorName(String *result)
 {
-    void* p = field_20;
-    if (p != 0) {
-        if (sub_574B80(p)) {
-            sub_77E698("LockCursor");
-            return this;
+    volatile int state = 0;
+
+    if (object) {
+        bool locked = isLocked(object);
+        String *out = result;
+
+        if (locked) {
+            constructString(out, unlockCursor);
+            return out;
         }
+
+        constructString(out, lockCursor);
+        return out;
     }
-    sub_77E698("UnlockCursor");
-    return this;
+
+    constructString(result, lockCursor);
+    return result;
 }

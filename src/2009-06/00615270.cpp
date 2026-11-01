@@ -1,18 +1,4 @@
-// roc 2009-06 00615270  unit: UString_sink::?$stream_buffer  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00615270
-//
-// 00615270  8b414c               mov eax, dword ptr [ecx + 0x4c]
-// 00615273  8b5110               mov edx, dword ptr [ecx + 0x10]
-// 00615276  8902                 mov dword ptr [edx], eax
-// 00615278  8b5120               mov edx, dword ptr [ecx + 0x20]
-// 0061527b  8902                 mov dword ptr [edx], eax
-// 0061527d  8bd0                 mov edx, eax
-// 0061527f  2bd0                 sub edx, eax
-// 00615281  8b4130               mov eax, dword ptr [ecx + 0x30]
-// 00615284  8910                 mov dword ptr [eax], edx
-// 00615286  c3                   ret 
-// copied from an identical function in another client (function ?init_get_area@?$indirect_streambuf@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ)
-
+// from server: 100% by colin
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727

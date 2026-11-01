@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0041b0a0  unit: rbx::signals::connection::slot  size: 91 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0041b0a0
 //

@@ -1,162 +1,138 @@
-// from server: 26% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+// Analog for 0053fc00 (AggregatingSceneManager update): re-files pending chunks
+// (+0x28), clears the pending/dirty lists, then processes buckets (+0x8) until
+// the time budget is spent (System::time 005083d0, bucket work 0053fe10).
+template<class T>
+class Ref {
+public:
+    ~Ref();
+    T* operator->() const;
+    bool notNull() const;
+    T* pointer;
+};
 
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
+class Part;
 
-namespace RBX
+template<class T>
+class Owned {
+public:
+    ~Owned();
+    bool isNull() const;
+    T* pointer;
+};
+
+template<class T>
+class Weak {
+public:
+    Weak(const Owned<T>& owner);
+    ~Weak();
+    Owned<T> lock() const;
+    T* pointer;
+};
+
+class Levels;
+class Bounds;
+
+class Chunk {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual Ref<Bounds> bounds();
+    virtual Ref<Levels> levels();
+    char header[0x14];
+    Weak<Part> part;
+};
+
+class Manager;
+
+class Bucket {
+public:
+    void process(Manager* manager, double budget);
+};
+
+class BucketRef {
+public:
+    Bucket* get() const;
+};
+
+class Entry {
+public:
+    Ref<Chunk> lock() const;
+    char header[0x0c];
+    BucketRef bucket;
+};
+
+class Iter {
+public:
+    Iter();
+    bool operator!=(const Iter& other) const;
+    Iter& operator++();
+    Iter& next();
+    Entry& operator*() const;
+    void* node;
+    void* owner;
+};
+
+class EntryList {
+public:
+    Iter begin();
+    Iter end();
+    void clear();
+    char data[0x20];
+};
+
+class System {
+public:
+    static double time();
+};
+
+extern unsigned renderQuality;
+
+class Manager {
+public:
+    void update(double budget);
+    void schedule(Weak<Part> part);
+    void remove(const Ref<Chunk>& chunk);
+    void add(const Ref<Chunk>& chunk);
+    void* vtable;
+    void* owner;
+    EntryList buckets;
+    EntryList pending;
+    EntryList dirty;
+};
+
+void Manager::update(double budget)
 {
-	namespace Render
-	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
-		{
-		}
-
-		AggregatingSceneManager::~AggregatingSceneManager() {}
-
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
-
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
-
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
-
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
-
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
-			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidSleepingModels.insert(chunk);
-
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidMovingModels.insert(chunk);
-
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
-
-				dequeueSleepingChunk(chunk);
-			}
-		}
-
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
-		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
-		}
-	}
+    double deadline = System::time() + 1000.0 * budget;
+    for (Iter it = pending.begin(), end = pending.end(); it != end; ) {
+        Ref<Chunk> chunk = (*it).lock();
+        if (chunk.notNull()) {
+            chunk->levels();
+            chunk->bounds();
+            Owned<Part> part = chunk->part.lock();
+            if (part.isNull()) {
+                schedule(part);
+            } else {
+                remove(chunk);
+                add(chunk);
+            }
+        }
+        it.next();
+    }
+    pending.clear();
+    dirty.clear();
+    if (renderQuality > 1) {
+        Iter it = buckets.begin();
+        Iter end = buckets.end();
+        while (System::time() < deadline && it != end) {
+            (*it).bucket.get()->process(this, budget);
+            ++it;
+        }
+    }
 }

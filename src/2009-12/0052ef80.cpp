@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0052ef80  unit: RBX::VInstance::?$GuidItem::VRegistry::?$sp_counted_impl_p  size: 30 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0052ef80
 //

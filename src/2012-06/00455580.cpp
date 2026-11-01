@@ -1,18 +1,67 @@
-// roc 2012-06 00455580  unit: HVCXTPPropertyGridItemEnum::?$XItem  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00455580
-//
-// 00455580  8b01                 mov eax, dword ptr [ecx]
-// 00455582  8b90ec000000         mov edx, dword ptr [eax + 0xec]
-// 00455588  ffe2                 jmp edx
-// copied from an identical function in another client (function ?f@HVCXTPPropertyGridItemEnum_XItem@ns_ROCX000003@@UAEHXZ)
-
-namespace ns_ROCX000003 {
-struct HVCXTPPropertyGridItemEnum_XItem {
-    virtual int f();
+// from server: 100% by Intel
+struct HVCXTPPropertyGridItemEnum {
+    virtual void func0();
+    virtual void func1();
+    virtual void func2();
+    virtual void func3();
+    virtual void func4();
+    virtual void func5();
+    virtual void func6();
+    virtual void func7();
+    virtual void func8();
+    virtual void func9();
+    virtual void func10();
+    virtual void func11();
+    virtual void func12();
+    virtual void func13();
+    virtual void func14();
+    virtual void func15();
+    virtual void func16();
+    virtual void func17();
+    virtual void func18();
+    virtual void func19();
+    virtual void func20();
+    virtual void func21();
+    virtual void func22();
+    virtual void func23();
+    virtual void func24();
+    virtual void func25();
+    virtual void func26();
+    virtual void func27();
+    virtual void func28();
+    virtual void func29();
+    virtual void func30();
+    virtual void func31();
+    virtual void func32();
+    virtual void func33();
+    virtual void func34();
+    virtual void func35();
+    virtual void func36();
+    virtual void func37();
+    virtual void func38();
+    virtual void func39();
+    virtual void func40();
+    virtual void func41();
+    virtual void func42();
+    virtual void func43();
+    virtual void func44();
+    virtual void func45();
+    virtual void func46();
+    virtual void func47();
+    virtual void func48();
+    virtual void func49();
+    virtual void func50();
+    virtual void func51();
+    virtual void func52();
+    virtual void func53();
+    virtual void func54();
+    virtual void func55();
+    virtual void func56();
+    virtual void func57();
+    virtual void func58();
+    virtual void func_ec();
 };
 
-int HVCXTPPropertyGridItemEnum_XItem::f()
-{
-    return (*(int (__thiscall **)(HVCXTPPropertyGridItemEnum_XItem *))(*(int *)this + 0xec))(this);
-}
+void HVCXTPPropertyGridItemEnum::func_ec() {
+    this->func_ec();
 }

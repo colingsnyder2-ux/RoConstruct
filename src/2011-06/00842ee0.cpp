@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 00842ee0  unit: VCXTPReportRows::?$CXTPHeapObjectT  size: 17 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 00842ee0
 //

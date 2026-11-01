@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 008553a0  unit: PAUHWND__::?$CArray  size: 333 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 008553a0
 //

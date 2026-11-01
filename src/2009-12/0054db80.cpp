@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0054db80  unit: RBX::Network::VReplicator::?$EventDesc  size: 220 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0054db80
 //

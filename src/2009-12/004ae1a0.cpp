@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 004ae1a0  unit: Ogre::RbxManualTextureLoader  size: 132 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 004ae1a0
 //

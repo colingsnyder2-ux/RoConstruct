@@ -1,48 +1,4 @@
-// roc 2009-06 005d9b80  unit: RBX::MD5HasherImpl  size: 103 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 005d9b80
-//
-// 005d9b80  8b442408             mov eax, dword ptr [esp + 8]
-// 005d9b84  56                   push esi
-// 005d9b85  8bf1                 mov esi, ecx
-// 005d9b87  8b4c2410             mov ecx, dword ptr [esp + 0x10]
-// 005d9b8b  8906                 mov dword ptr [esi], eax
-// 005d9b8d  8b442414             mov eax, dword ptr [esp + 0x14]
-// 005d9b91  894e04               mov dword ptr [esi + 4], ecx
-// 005d9b94  894608               mov dword ptr [esi + 8], eax
-// 005d9b97  85c0                 test eax, eax
-// 005d9b99  7446                 je 0x5d9be1
-// 005d9b9b  57                   push edi
-// 005d9b9c  83c004               add eax, 4
-// 005d9b9f  ba01000000           mov edx, 1
-// 005d9ba4  f00fc110             lock xadd dword ptr [eax], edx
-// 005d9ba8  8b7c2418             mov edi, dword ptr [esp + 0x18]
-// 005d9bac  85ff                 test edi, edi
-// 005d9bae  742a                 je 0x5d9bda
-// 005d9bb0  8d4704               lea eax, [edi + 4]
-// 005d9bb3  83c9ff               or ecx, 0xffffffff
-// 005d9bb6  f00fc108             lock xadd dword ptr [eax], ecx
-// 005d9bba  751e                 jne 0x5d9bda
-// 005d9bbc  8b17                 mov edx, dword ptr [edi]
-// 005d9bbe  8b4204               mov eax, dword ptr [edx + 4]
-// 005d9bc1  8bcf                 mov ecx, edi
-// 005d9bc3  ffd0                 call eax
-// 005d9bc5  8d4f08               lea ecx, [edi + 8]
-// 005d9bc8  83caff               or edx, 0xffffffff
-// 005d9bcb  f00fc111             lock xadd dword ptr [ecx], edx
-// 005d9bcf  7509                 jne 0x5d9bda
-// 005d9bd1  8b07                 mov eax, dword ptr [edi]
-// 005d9bd3  8b5008               mov edx, dword ptr [eax + 8]
-// 005d9bd6  8bcf                 mov ecx, edi
-// 005d9bd8  ffd2                 call edx
-// 005d9bda  5f                   pop edi
-// 005d9bdb  8bc6                 mov eax, esi
-// 005d9bdd  5e                   pop esi
-// 005d9bde  c21000               ret 0x10
-// 005d9be1  8bc6                 mov eax, esi
-// 005d9be3  5e                   pop esi
-// 005d9be4  c21000               ret 0x10
-// copied from an identical function in another client (function ??0?$storage3@U?$arg@$00@boost@@V?$value@PAVDHTMLWindow@@@_bi@2@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@42@@_bi@boost@@QAE@U?$arg@$00@2@V?$value@PAVDHTMLWindow@@@12@V?$value@V?$shared_ptr@VInstance@RBX@@@boost@@@12@@Z)
-
+// from server: 100% by colin
 // from server: 94% by colin
 // roc-lang: cpp
 // roc-cl: 21022

@@ -1,22 +1,65 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espclaude_f9d6b222b335c1af.cpp
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
+struct Control
+{
+    virtual void unused() = 0;
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
 
-struct B1 { int a; };
-struct B2 { int b; };
-class D;
-class C : public B1, public B2 {
-public:
-    void handler(boost::shared_ptr<D> d, int x);
+    volatile long strong;
+    volatile long weak;
+
+    void release();
 };
 
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, C, boost::shared_ptr<D>, int>,
-    boost::_bi::list3<boost::_bi::value<C*>, boost::_bi::value<boost::shared_ptr<D> >, boost::arg<1> > > Bound;
+__forceinline void Control::release()
+{
+    if (_InterlockedDecrement(&strong) == 0)
+    {
+        dispose();
+        if (_InterlockedDecrement(&weak) == 0)
+            destroy();
+    }
+}
 
-template struct boost::detail::function::void_function_obj_invoker1<Bound, void, int>;
+struct Shared
+{
+    void* object;
+    Control* control;
+
+    Shared(const Shared&);
+    ~Shared();
+};
+
+__forceinline Shared::Shared(const Shared& other)
+    : object(other.object), control(other.control)
+{
+    if (control)
+        _InterlockedIncrement(&control->strong);
+}
+
+__forceinline Shared::~Shared()
+{
+    if (control)
+        control->release();
+}
+
+struct S
+{
+    typedef void (__thiscall *Function)(void*, Shared, int);
+    Function function;
+    int adjustment;
+
+    void f(void*, Shared, int);
+};
+
+void S::f(void* object, Shared value, int argument)
+{
+    function(static_cast<char*>(object) + adjustment, value, argument);
+}

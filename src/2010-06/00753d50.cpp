@@ -1,10 +1,4 @@
-// roc 2010-06 00753d50  unit: RBX::Ball  size: 8 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00753d50
-//
-// 00753d50  b804000000           mov eax, 4
-// 00753d55  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00753d50 {
 
     unsigned int f(int a1);

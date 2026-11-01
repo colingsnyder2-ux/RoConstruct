@@ -1,4 +1,5 @@
 // from server: 52% by colin
+// from server: 52% by colin
 extern "C" {
     unsigned long __stdcall GetCurrentProcessId();
     unsigned long __stdcall GetCurrentThreadId();

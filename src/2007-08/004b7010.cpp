@@ -1,10 +1,4 @@
-// roc 2007-08 004b7010  unit: Exposer  size: 8 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004b7010
-//
-// 004b7010  b808677900           mov eax, 0x796708
-// 004b7015  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 struct S_func_004b7010 {

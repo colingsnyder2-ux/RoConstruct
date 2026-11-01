@@ -1,31 +1,4 @@
 // from server: 100% by king_originala
-// roc 2008-06 00437c90  unit: RBX::VBrickColor::?$XItem  size: 61 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00437c90
-//
-// 00437c90  56                   push esi
-// 00437c91  57                   push edi
-// 00437c92  8d44240c             lea eax, [esp + 0xc]
-// 00437c96  8bf1                 mov esi, ecx
-// 00437c98  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 00437c9c  50                   push eax
-// 00437c9d  e87ee41700           call 0x5b6120
-// 00437ca2  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00437ca6  0fb64c240e           movzx ecx, byte ptr [esp + 0xe]
-// 00437cab  8b16                 mov edx, dword ptr [esi]
-// 00437cad  8b92e4000000         mov edx, dword ptr [edx + 0xe4]
-// 00437cb3  c1e108               shl ecx, 8
-// 00437cb6  0fb6fc               movzx edi, ah
-// 00437cb9  0bcf                 or ecx, edi
-// 00437cbb  0fb6c0               movzx eax, al
-// 00437cbe  c1e108               shl ecx, 8
-// 00437cc1  0bc8                 or ecx, eax
-// 00437cc3  51                   push ecx
-// 00437cc4  8bce                 mov ecx, esi
-// 00437cc6  ffd2                 call edx
-// 00437cc8  5f                   pop edi
-// 00437cc9  5e                   pop esi
-// 00437cca  c20400               ret 4
-
 struct Color {
     void convert(unsigned long* output);
 };

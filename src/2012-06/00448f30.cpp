@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 00448f30  unit: VCFrameWnd::?$CXTPCommandBarsSiteBase  size: 130 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 00448f30
 //

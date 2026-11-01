@@ -34,7 +34,7 @@ namespace RBX
 		{
 			profilingBroadphase->parent = profilingWorldStep.get();
 			profilingUiStep->parent = profilingWorldStep.get();
-			getCollisionStage()->profilingCollision->parent = profilingWorldStep.get();
+			getSleepStage()->profilingCollision->parent = profilingWorldStep.get();
 			getSleepStage()->profilingSleep->parent = profilingWorldStep.get();
 			jointStage->getKernel()->profilingKernel->parent = profilingWorldStep.get(); 
 		}
@@ -148,7 +148,7 @@ namespace RBX
 		Assembly* pAssembly = p->getAssembly();
 
 		if (pAssembly)
-			getSleepStage()->onWakeUpRequest(pAssembly);
+			getSleepStage()->onWakeUpRequest(pAssembly, false);
 	}
 
 	void World::onPrimitiveCanSleepChanged(Primitive* p)
@@ -181,8 +181,8 @@ namespace RBX
 	{
 		assertNotInStep();
 
-		Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);
-		Assembly::PrimIterator beginIt = Assembly::PrimIterator::begin(a);
+		PrimIterator endIt = a->assemblyPrimEnd();
+		PrimIterator beginIt = a->assemblyPrimBegin();
 		
 		for (; beginIt != endIt; ++beginIt)
 		{
@@ -251,15 +251,7 @@ namespace RBX
 		return rbx_static_cast<SleepStage*>(jointStage->findStage(IStage::SLEEP_STAGE));
 	}
 
-	CollisionStage* World::getCollisionStage()
-	{
-		return rbx_static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE));
-	}
 
-	const CollisionStage* World::getCollisionStage() const
-	{
-		return rbx_static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE));
-	}
 
 	ClumpStage* World::getClumpStage()
 	{
@@ -332,8 +324,8 @@ namespace RBX
 			const Assembly* current = *cIt;
 			if (current->getMainPrimitive()->getCoordinateFrame().translation.y < -500.0f)
 			{
-				Assembly::PrimIterator it = Assembly::PrimIterator::begin(current);
-				Assembly::PrimIterator pEnd = Assembly::PrimIterator::end(current);
+				PrimIterator it = current->assemblyPrimBegin();
+				PrimIterator pEnd = current->assemblyPrimEnd();
 				for (; it != pEnd; ++it)
 				{
 					Primitive* currentPrim = *it;

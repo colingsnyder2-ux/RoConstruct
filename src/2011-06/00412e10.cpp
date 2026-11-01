@@ -1,14 +1,4 @@
 // from server: 100% by tester
-// roc 2011-06 00412e10  unit: CIDEBrowserView  size: 15 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00412e10
-//
-// 00412e10  8b81f0000000         mov eax, dword ptr [ecx + 0xf0]
-// 00412e16  8b08                 mov ecx, dword ptr [eax]
-// 00412e18  8b5138               mov edx, dword ptr [ecx + 0x38]
-// 00412e1b  50                   push eax
-// 00412e1c  ffd2                 call edx
-// 00412e1e  c3                   ret 
-
 struct CNullDoc {
     char pad[0xf0];
     void* field_ec;

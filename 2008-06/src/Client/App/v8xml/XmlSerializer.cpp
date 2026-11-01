@@ -291,7 +291,7 @@ std::auto_ptr<XmlElement> TextXmlParser::parse()
 			{
 				bool isXsiNil;
 				const XmlAttribute* xsiNilAttribute = newElement->findAttribute(name_xsinil);
-				if (xsiNilAttribute && xsiNilAttribute->getValue(isXsiNil) && !isXsiNil)
+				if (!xsiNilAttribute || !xsiNilAttribute->getValue(isXsiNil) || !isXsiNil)
 				{
 					if (readText(false) == "")
 					{

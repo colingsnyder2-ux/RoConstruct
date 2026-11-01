@@ -1,214 +1,47 @@
-// from server: 60% by sophus
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Lighting.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Lighting.h"
-#include "util/RunStateOwner.h"
-
-namespace RBX
+namespace boost {
+template<class T> class shared_ptr {
+public:
+	T* get() const { return px; }
+	void reset();
+	T* px;
+	void* pn;
+};
+}
+namespace RBX {
+class Instance { public: virtual void onChildRemoving(Instance* child); };
+struct Slot;
+void callSlot(Slot* s, bool b);
+template<class F, class A> struct BindT {
+	F f;
+	A a;
+	BindT(F f_, A a_) : f(f_), a(a_) {}
+};
+struct SignalImpl {
+	template<class F> void visit(F f);
+};
+class Lighting : public Instance {
+	char pad[0x234 - 4];
+	SignalImpl* lightingChanged;
+	boost::shared_ptr<Instance> sky;
+	void fireLightingChanged(bool skyboxChanged)
+	{
+		BindT<void (*)(Slot*, bool), bool> f(&callSlot, skyboxChanged);
+		if (lightingChanged)
+			lightingChanged->visit(f);
+	}
+public:
+	virtual void onChildRemoving(Instance* child);
+};
+void Lighting::onChildRemoving(Instance* child)
 {
-	const char* sLighting = "Lighting";
-
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientTop("TopAmbientV9", "Appearance", &Lighting::getAmbientTop, &Lighting::setAmbientTop, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientBottom("BottomAmbientV9", "Appearance", &Lighting::getAmbientBottom, &Lighting::setAmbientBottom, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_LightColor("SpotLightV9", "Appearance", &Lighting::getLightColor, &Lighting::setLightColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ClearColor("ClearColor", "Appearance", &Lighting::getClearColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
-
-	static Reflection::BoundFuncDesc<Lighting, float(void), 0> prop_GetMoonPhase(&Lighting::getMoonPhase, "GetMoonPhase", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetMoonPosition(&Lighting::getMoonPosition, "GetMoonDirection", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetSunPosition(&Lighting::getSunPosition, "GetSunDirection", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, double(void), 0> prop_GetMinutesAfterMidnight(&Lighting::getMinutesAfterMidnight, "GetMinutesAfterMidnight", Reflection::FunctionDescriptor::AnyCaller);
-	static Reflection::BoundFuncDesc<Lighting, void(double), 1> prop_SetMinutesAfterMidnight(&Lighting::setMinutesAfterMidnight, "SetMinutesAfterMidnight", "minutes", Reflection::FunctionDescriptor::AnyCaller);
-
-	Lighting::Lighting()
-		: Base(),
-		  ambientTop(209/255.0f, 208/255.0f, 217/255.0f),
-		  ambientBottom(122/255.0f, 134/255.0f, 120/255.0f),
-		  hasSky(true),
-		  clearColor(G3D::Color3::white()),
-		  timeOfDay(boost::posix_time::duration_from_string("14:00:00"))
+	if (sky.get() == child)
 	{
-		skyParameters.lightColor = G3D::Color3(152/255.0f, 137/255.0f, 102/255.0f);
-		skyParameters.setTime(timeOfDay.total_seconds());
-		setName("Lighting");
+		sky.reset();
+		fireLightingChanged(true);
 	}
-
-	G3D::Vector3 Lighting::getMoonPosition()
-	{
-		return (skyParameters.physicallyCorrect) ? skyParameters.trueMoonPosition : skyParameters.moonPosition;
-	}
-
-	G3D::Vector3 Lighting::getSunPosition()
-	{
-		return (skyParameters.physicallyCorrect) ? skyParameters.trueSunPosition : skyParameters.sunPosition;
-	}
-
-	void Lighting::replaceSky(Sky* newSky)
-	{
-		while (Sky* currentSky = findFirstChildOfType<Sky>())
-		{
-			currentSky->setParent(NULL);
-		}
-
-		newSky->setParent(this);
-	}
-
-	std::string Lighting::getTimeStr() const
-	{
-		return boost::posix_time::to_simple_string(timeOfDay);
-	}
-
-	void Lighting::setTimeStr(const std::string& value)
-	{
-		setTime(boost::posix_time::duration_from_string(value));
-	}
-
-	void Lighting::setClearColor(G3D::Color4 value)
-	{
-		if (value != clearColor)
-		{
-			clearColor = value;
-
-			raisePropertyChanged(desc_ClearColor);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setLightColor(G3D::Color3 value)
-	{
-		if (value != skyParameters.lightColor)
-		{
-			skyParameters.lightColor = value;
-
-			raisePropertyChanged(desc_LightColor);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setAmbientBottom(G3D::Color3 value)
-	{
-		if (value != ambientBottom)
-		{
-			ambientBottom = value;
-
-			raisePropertyChanged(desc_AmbientBottom);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setAmbientTop(G3D::Color3 value)
-	{
-		if (value != ambientTop)
-		{
-			ambientTop = value;
-
-			raisePropertyChanged(desc_AmbientTop);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setGeographicLatitude(float value)
-	{
-		if (value != skyParameters.geoLatitude)
-		{
-			skyParameters.geoLatitude = value;
-
-			raisePropertyChanged(prop_GeographicLatitude);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::setTime(const boost::posix_time::time_duration& value)
-	{
-		int totalSeconds = value.total_seconds();
-		totalSeconds -= (totalSeconds / 86400) * 86400;
-
-		if (timeOfDay.total_seconds() != totalSeconds)
-		{
-			timeOfDay = boost::posix_time::seconds(totalSeconds);
-			skyParameters.setTime(timeOfDay.total_seconds());
-
-			raisePropertyChanged(prop_Time);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	double Lighting::getMinutesAfterMidnight()
-	{
-		return timeOfDay.total_milliseconds() / 60000.0;
-	}
-
-	void Lighting::setMinutesAfterMidnight(double value)
-	{
-		setTime(boost::posix_time::seconds(value * 60.0));
-	}
-
-	void Lighting::onChildAdded(Instance* child)
-	{
-		Sky* newSky = dynamic_cast<Sky*>(child);
-
-		if (newSky)
-		{
-			sky = shared_from(newSky);
-
-			fireLightingChanged(true);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::onChildRemoving(Instance* child)
-	{
-		if (sky.get() == child)
-		{
-			sky.reset();
-
-			fireLightingChanged(true);
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	void Lighting::onChildChanged(Instance* instance, const PropertyChanged& event)
-	{
-		Instance::onChildChanged(instance, event);
-		if (sky.get() == instance)
-		{
-			fireLightingChanged(true);
-
-			RunService* runService = ServiceProvider::find<RunService>(this);
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	bool Lighting::askAddChild(const Instance* instance) const
-	{
-		return dynamic_cast<const Sky*>(instance) != NULL;
-	}
+}
 }

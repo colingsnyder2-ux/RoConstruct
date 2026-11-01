@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007d93a0  unit: CXTPDockingPaneSplitterWnd  size: 120 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007d93a0
 //

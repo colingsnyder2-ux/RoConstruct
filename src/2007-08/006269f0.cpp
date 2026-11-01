@@ -1,9 +1,4 @@
-// roc 2007-08 006269f0  unit: RBX::Seated  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006269f0
-//
-// 006269f0  e98bffffff           jmp 0x626980
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_006269f0();
 void func_006269f0()
 {

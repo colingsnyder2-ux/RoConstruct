@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 005e6e30  unit: RBX::VBeveledBlockMesh::?$CustomizableMesh  size: 220 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 005e6e30
 //

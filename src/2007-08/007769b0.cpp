@@ -1,12 +1,4 @@
-// roc 2007-08 007769b0  unit: seg_00770000  size: 12 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 007769b0
-//
-// 007769b0  e85b6ff0ff           call 0x67d910
-// 007769b5  50                   push eax
-// 007769b6  e8359bebff           call 0x6304f0
-// 007769bb  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern int G1_func_007769b0();
 extern int __stdcall G2_func_007769b0(int);
 int func_007769b0()

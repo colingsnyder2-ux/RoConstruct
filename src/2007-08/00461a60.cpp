@@ -1,4 +1,4 @@
-// from server: 51% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00461a60  unit: CScriptEditor  size: 59 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00461a60
 //
@@ -22,27 +22,53 @@
 // 00461a92  e839fcffff           call 0x4616d0
 // 00461a97  5e                   pop esi
 // 00461a98  c20c00               ret 0xc
+// copied from an identical function in another client (function ?notify@CScriptEditor@ns_ROCX00001e@@QAEXHHH@Z)
 
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+namespace ns_ROCX00001e {
+// from server: 100% by colin
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
 #pragma intrinsic(_InterlockedExchangeAdd)
 
-struct CScriptEditor {
-    char pad[0x54];
-    void* field54;
-    void func(int, void*, void*);
+struct Control
+{
+    long unused;
+    volatile long references;
 };
 
-void CScriptEditor::func(int a, void* b, void* c) {
-    if (a == 1) {
-        void** p = (void**)((char*)field54 + 0x54);
-        void* v = p[0];
-        void* r = p[1];
-        void* local[2];
-        local[0] = v;
-        local[1] = r;
-        if (r != 0) {
-            _InterlockedExchangeAdd((volatile long*)((char*)r + 4), 1);
-        }
-        ((void (__thiscall*)(CScriptEditor*, void*))0x4616d0)(this, local);
-    }
+struct Shared
+{
+    void* pointer;
+    Control* control;
+
+    Shared(const Shared&);
+    ~Shared();
+};
+
+inline Shared::Shared(const Shared& other)
+    : pointer(other.pointer), control(other.control)
+{
+    if (control)
+        _InterlockedIncrement(&control->references);
+}
+
+struct Document
+{
+    char padding[0x54];
+    Shared value;
+};
+
+struct CScriptEditor
+{
+    char padding[0x54];
+    Document* document;
+
+    void consume(Shared);
+    void notify(int, int, int);
+};
+
+void CScriptEditor::notify(int, int event, int)
+{
+    if (event == 1)
+        consume(document->value);
+}
 }

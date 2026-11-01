@@ -1,23 +1,4 @@
-// roc 2012-06 00407390  unit: VCApp::?$CComObject  size: 36 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00407390
-//
-// 00407390  8b442404             mov eax, dword ptr [esp + 4]
-// 00407394  834018ff             add dword ptr [eax + 0x18], -1
-// 00407398  56                   push esi
-// 00407399  8b7018               mov esi, dword ptr [eax + 0x18]
-// 0040739c  7510                 jne 0x4073ae
-// 0040739e  85c0                 test eax, eax
-// 004073a0  740c                 je 0x4073ae
-// 004073a2  8d480c               lea ecx, [eax + 0xc]
-// 004073a5  8b01                 mov eax, dword ptr [ecx]
-// 004073a7  8b5014               mov edx, dword ptr [eax + 0x14]
-// 004073aa  6a01                 push 1
-// 004073ac  ffd2                 call edx
-// 004073ae  8bc6                 mov eax, esi
-// 004073b0  5e                   pop esi
-// 004073b1  c20400               ret 4
-// copied from an identical function in another client (function _release@4)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 struct Base {

@@ -222,7 +222,7 @@ namespace RBX
 			return players ? players->getLocalPlayer() : NULL;
 		}
 
-		Mechanism* Replicator::findTargetPlayerCharacterMechanism()
+		SimJob* Replicator::findTargetPlayerCharacterJob()
 		{
 			Player* player = findTargetPlayer();
 
@@ -231,7 +231,10 @@ namespace RBX
 				PartInstance* part = player->getCharacter()->getPrimaryPart();
 
 				if (part)
-					return Mechanism::getMechanismFromPrimitive(part->getPrimitive());
+					{
+					Assembly* assembly = part->getPrimitive()->getAssembly();
+					return assembly ? assembly->getJob() : NULL;
+				}
 			}
 			
 			return NULL;
@@ -369,7 +372,7 @@ namespace RBX
 				if (workspace)
 				{
 					SimJobStage& sim = workspace->getWorld()->getSimJobStage();
-					Mechanism* mech = findTargetPlayerCharacterMechanism();
+					SimJob* mech = findTargetPlayerCharacterJob();
 					if (mech)
 					{
 						G3D::RealTime t = G3D::System::getLocalTime();
@@ -387,7 +390,7 @@ namespace RBX
 						}
 					}
 
-					sim.reportMechanisms(jobSender, jobStagePos, mech);
+					sim.reportJobs(jobSender, jobStagePos, mech);
 				}
 
 				return jobSender.sentPacket;
@@ -714,7 +717,7 @@ namespace RBX
 			hasOpenPacket = false;
 		}
 
-		bool Replicator::JobSender::report(const Mechanism& m)
+		bool Replicator::JobSender::report(const SimJob& m)
 		{
 			if (!hasOpenPacket)
 			{

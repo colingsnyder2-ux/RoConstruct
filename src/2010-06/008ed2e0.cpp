@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 008ed2e0  unit: Ogre::RbxSceneManager  size: 31 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 008ed2e0
 //

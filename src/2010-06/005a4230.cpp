@@ -1,17 +1,27 @@
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs roc_espeon_aug2007_native_975132c5b7aac427.cpp
+// from server: 100% by colin
+#include <typeinfo>
 
-// Candidate translation unit (score above; library headers required).
-// Propagate independently verified August2007 pre-Guid Instance declarations; original native body remains unchanged.
-#ifndef _DLL
-#define _DLL
-#endif
-#ifndef _MT
-#define _MT
-#endif
-#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
-#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_header_7a4c998b489b0ddf.cpp")
-#include "roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp"
-#include "script/ScriptContext.cpp"
+// boost::any_cast<T>(any *) shape: 0xb0030c = typeid(void), 0xb1316c = typeid(T)
+extern const type_info type_descriptor_b0030c;
+extern const type_info type_descriptor_b1316c;
+
+struct Placeholder
+{
+    virtual ~Placeholder();
+    virtual const type_info &type() const;
+};
+
+struct Any
+{
+    Placeholder *content;
+    const type_info &type() const { return content ? content->type() : type_descriptor_b0030c; }
+};
+
+struct Holder : Placeholder { int held; };
+
+void *func_00642c10(Any *operand)
+{
+    if (operand && operand->type() == type_descriptor_b1316c)
+        return &static_cast<Holder *>(operand->content)->held;
+    return 0;
+}

@@ -1,78 +1,81 @@
-// from server: 82% by colin
-// roc 2007-08 00438760  unit: MVCXTPPropertyGridItem::?$XItem  size: 92 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00438760
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+// from server: 97% by colin
+// roc 2008-06 00437880  unit: MVCXTPPropertyGridItem::?$XItem  size: 70 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00437880
 //
-// 00438760  83ec28               sub esp, 0x28
-// 00438763  a188518b00           mov eax, dword ptr [0x8b5188]
-// 00438768  33c4                 xor eax, esp
-// 0043876a  89442424             mov dword ptr [esp + 0x24], eax
-// 0043876e  8b44242c             mov eax, dword ptr [esp + 0x2c]
-// 00438772  d900                 fld dword ptr [eax]
-// 00438774  56                   push esi
-// 00438775  83ec08               sub esp, 8
-// 00438778  dd1c24               fstp qword ptr [esp]
-// 0043877b  8d442410             lea eax, [esp + 0x10]
-// 0043877f  6898d37800           push 0x78d398
-// 00438784  50                   push eax
-// 00438785  8bf1                 mov esi, ecx
-// 00438787  ff1568e97700         call dword ptr [0x77e968]
-// 0043878d  83c40c               add esp, 0xc
-// 00438790  8d54240c             lea edx, [esp + 0xc]
-// 00438794  8bcc                 mov ecx, esp
-// 00438796  89642408             mov dword ptr [esp + 8], esp
-// 0043879a  52                   push edx
-// 0043879b  ff15b8dd7700         call dword ptr [0x77ddb8]
-// 004387a1  8b06                 mov eax, dword ptr [esi]
-// 004387a3  8b5060               mov edx, dword ptr [eax + 0x60]
-// 004387a6  8bce                 mov ecx, esi
-// 004387a8  ffd2                 call edx
-// 004387aa  8b4c2428             mov ecx, dword ptr [esp + 0x28]
-// 004387ae  5e                   pop esi
-// 004387af  33cc                 xor ecx, esp
-// 004387b1  e868821f00           call 0x630a1e
-// 004387b6  83c428               add esp, 0x28
-// 004387b9  c20400               ret 4
+// 00437880  83ec20               sub esp, 0x20
+// 00437883  8b442424             mov eax, dword ptr [esp + 0x24]
+// 00437887  d900                 fld dword ptr [eax]
+// 00437889  56                   push esi
+// 0043788a  83ec08               sub esp, 8
+// 0043788d  dd1c24               fstp qword ptr [esp]
+// 00437890  8bf1                 mov esi, ecx
+// 00437892  8d4c240c             lea ecx, [esp + 0xc]
+// 00437896  68c8358100           push 0x8135c8
+// 0043789b  51                   push ecx
+// 0043789c  ff1530288000         call dword ptr [0x802830]
+// 004378a2  83c40c               add esp, 0xc
+// 004378a5  8d542408             lea edx, [esp + 8]
+// 004378a9  8bcc                 mov ecx, esp
+// 004378ab  8964242c             mov dword ptr [esp + 0x2c], esp
+// 004378af  52                   push edx
+// 004378b0  ff15103f8000         call dword ptr [0x803f10]
+// 004378b6  8b06                 mov eax, dword ptr [esi]
+// 004378b8  8b5060               mov edx, dword ptr [eax + 0x60]
+// 004378bb  8bce                 mov ecx, esi
+// 004378bd  ffd2                 call edx
+// 004378bf  5e                   pop esi
+// 004378c0  83c420               add esp, 0x20
+// 004378c3  c20400               ret 4
 
-extern "C" int __cdecl sprintf(char*, const char*, ...);
-extern "C" void __stdcall G1_func_0077e968();
-extern "C" void __stdcall G1_func_0077ddb8(void*);
-extern "C" void __cdecl G1_func_00630a1e();
+extern "C" {
+    extern int (__cdecl *sprintf)(char *, const char *, ...);
+}
 
-struct S_func_00438760 {
-    virtual void vf0();
-    virtual void vf1();
-    virtual void vf2();
-    virtual void vf3();
-    virtual void vf4();
-    virtual void vf5();
-    virtual void vf6();
-    virtual void vf7();
-    virtual void vf8();
-    virtual void vf9();
-    virtual void vf10();
-    virtual void vf11();
-    virtual void vf12();
-    virtual void vf13();
-    virtual void vf14();
-    virtual void vf15();
-    virtual void vf16();
-    virtual void vf17();
-    virtual void vf18();
-    virtual void vf19();
-    virtual void vf20();
-    virtual void vf21();
-    virtual void vf22();
-    virtual void vf23();
-    virtual void vf24();
-    void f(float* p);
+struct Text;
+extern void (__thiscall *constructText)(Text *, const char *);
+
+struct Text {
+    void *data;
+    __declspec(dllimport) Text(const char *s);
+    Text(const Text &);
+    ~Text();
 };
 
-void S_func_00438760::f(float* p)
+struct S {
+    virtual void v00();
+    virtual void v01();
+    virtual void v02();
+    virtual void v03();
+    virtual void v04();
+    virtual void v05();
+    virtual void v06();
+    virtual void v07();
+    virtual void v08();
+    virtual void v09();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual void setText(Text);
+
+    void setValue(const float *);
+};
+
+void S::setValue(const float *value)
 {
-    char buf[36];
-    sprintf(buf, "%.3g", (double)*p);
-    G1_func_0077e968();
-    G1_func_0077ddb8(buf);
-    vf24();
-    G1_func_00630a1e();
+    char buffer[32];
+    sprintf(buffer, "%.3g", *value);
+    setText(Text(buffer));
 }

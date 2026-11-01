@@ -1,16 +1,4 @@
-// roc 2007-08 006a3980  unit: CXTPKeyboardManager  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006a3980
-//
-// 006a3980  8bc1                 mov eax, ecx
-// 006a3982  33c9                 xor ecx, ecx
-// 006a3984  c70058357d00         mov dword ptr [eax], 0x7d3558
-// 006a398a  894804               mov dword ptr [eax + 4], ecx
-// 006a398d  894810               mov dword ptr [eax + 0x10], ecx
-// 006a3990  89480c               mov dword ptr [eax + 0xc], ecx
-// 006a3993  894808               mov dword ptr [eax + 8], ecx
-// 006a3996  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

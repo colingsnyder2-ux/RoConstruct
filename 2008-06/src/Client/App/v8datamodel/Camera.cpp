@@ -360,7 +360,7 @@ namespace RBX
 		{
 			if (dynamic_cast<ICameraSubject*>(newSubject))
 			{
-				cameraSubject = shared_from((ModelInstance*) newSubject);
+				cameraSubject = shared_from(newSubject);
 				raisePropertyChanged(cameraSubjectProp);
 
 				tellCameraMoved();

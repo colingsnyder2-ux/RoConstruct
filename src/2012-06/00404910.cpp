@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 00404910  unit: RBX::Soundscape::VSoundChannel::?$FactoryProduct::Creator  size: 58 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 00404910
 //

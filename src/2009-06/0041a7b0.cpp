@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 0041a7b0  unit: CInstanceRecord::CNameItem  size: 13 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 0041a7b0
 //

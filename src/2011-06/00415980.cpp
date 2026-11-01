@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 00415980  unit: CBitmap  size: 21 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 00415980
 //

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 00658590  unit: RBX::VKeyframeSequence::?$FactoryProduct  size: 99 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 00658590
 //

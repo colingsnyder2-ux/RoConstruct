@@ -1,304 +1,45 @@
-// from server: 60% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8tree/Instance.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8tree/Instance.h"
-
-#include "decomp.h"
-
-#include <algorithm>
-#include <cstddef>
-
-namespace RBX {
-
-const char sInstance[] = "Instance";
-
-const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent(
-	"Parent",
-	"Data",
-	&Instance::getParent,
-	&Instance::setParent,
-	Reflection::PropertyDescriptor::UI
-);
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_ancestryChanged(
-	"AncestryChanged",
-	"child"
-);
-
-Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged(
-	"Changed",
-	"property"
-);
-
-ChildAdded::ChildAdded(Instance* child) : child(shared_from(child))
-{
+#include <string>
+#include <intrin.h>
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_;
+    long weak_count_;
+    void weak_add_ref() { _InterlockedIncrement(&weak_count_); }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+};
+class weak_count {
+public:
+    sp_counted_base* pi_;
+    weak_count(weak_count const& r) : pi_(r.pi_) { if (pi_ != 0) pi_->weak_add_ref(); }
+    ~weak_count() { if (pi_ != 0) pi_->weak_release(); }
+};
 }
-
-ChildRemoved::ChildRemoved(Instance* child) : child(shared_from(child))
-{
+template<class T> class weak_ptr {
+public:
+    T* px;
+    detail::weak_count pn;
+};
+namespace _bi {
+template<class T> class value { public: value(T const& t) : t_(t) {} T t_; };
+template<class A1> struct storage1 { explicit storage1(A1 a1); A1 a1_; };
+template<class A1, class A2> struct storage2 : public storage1<A1> {
+    storage2(A1 a1, A2 a2);
+    A2 a2_;
+};
+template<class A1, class A2, class A3> struct storage3 : public storage2<A1, A2> {
+    storage3(A1 a1, A2 a2, A3 a3) : storage2<A1, A2>(a1, a2), a3_(a3) {}
+    A3 a3_;
+};
 }
-
-// STUB: WEBSERVICE 0x10047af0
-void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
-{
-	if (parent != NULL) {
-		parent->onChildChanged(instance, event);
-	}
 }
-
-// FUNCTION: WEBSERVICE 0x10047b20
-bool Instance::contains(const Instance* child) const
-{
-	while (child != 0) {
-		if (child == this) {
-			return true;
-		}
-
-		child = child->parent;
-	}
-
-	return false;
-}
-
-// FUNCTION: WEBSERVICE 0x10048340
-void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
-{
-	for (XmlElement* child = container->firstChild(); child != NULL; child = child->nextSibling()) {
-		readProperty(child, binder);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10048370
-void Instance::writeChildren(XmlElement* container)
-{
-	const std::vector<shared_ptr<Instance> >* kids = children.operator->();
-
-	if (kids != NULL) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = kids->begin(); it != kids->end(); ++it) {
-			XmlElement* child = (*it)->write();
-
-			if (child != NULL) {
-				container->addChild(child);
-			}
-		}
-	}
-}
-
-// STUB: WEBSERVICE 0x100483f0
-Instance* Instance::findFirstChildByName(const std::string& findName) const
-{
-	STUB(0x100483f0);
-	return NULL;
-}
-
-// FUNCTION: WEBSERVICE 0x10048fb0
-void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == oldParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(oldParent)) {
-			break;
-		}
-
-		walk->onDescendentAdded(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentAdded(it->get(), beginParent, oldParent);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100490d0
-void Instance::signalDescendentRemoving(
-	const shared_ptr<Instance>& instance,
-	Instance* beginParent,
-	Instance* newParent
-)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == newParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(newParent)) {
-			break;
-		}
-
-		walk->onDescendentRemoving(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentRemoving(*it, beginParent, newParent);
-		}
-	}
-}
-
-// STUB: WEBSERVICE 0x10049d40
-XmlElement* Instance::write()
-{
-	STUB(0x10049d40);
-	return NULL;
-}
-
-// STUB: WEBSERVICE 0x1004a010
-void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-{
-	STUB(0x1004a010);
-}
-
-// STUB: WEBSERVICE 0x1004cdf0
-shared_ptr<Instance> Instance::createChild(const Name& className)
-{
-	STUB(0x1004cdf0);
-	return shared_ptr<Instance>();
-}
-
-// STUB: WEBSERVICE 0x1004d0b0
-Instance::~Instance()
-{
-}
-
-// STUB: WEBSERVICE 0x1004da80
-void Instance::setParent(Instance* newParent)
-{
-	if (newParent == parent) {
-		return;
-	}
-
-	shared_ptr<Instance> oldParent = shared_from(parent);
-	shared_ptr<Instance> self = shared_from_this();
-
-	if (oldParent) {
-		if (!oldParent->contains(newParent)) {
-			signalDescendentRemoving(self, oldParent.get(), newParent);
-		}
-
-		oldParent->onChildRemoving(this);
-
-		shared_ptr<std::vector<shared_ptr<Instance> > >& children = oldParent->children.write();
-
-		children->erase(std::find(children->begin(), children->end(), self));
-
-		if (children->size() == 0) {
-			oldParent->children.reset();
-		}
-
-		parent = NULL;
-
-		event_childRemoved.fire(oldParent.get(), self);
-
-		oldParent->Notifier<Instance, ChildRemoved>::raise(this);
-		oldParent->onChildRemoved(this);
-
-		if (oldParent->numChildren() == 0) {
-			oldParent->onLastChildRemoved();
-		}
-	}
-
-	if (newParent != NULL) {
-		newParent->children.write()->push_back(self);
-	}
-
-	parent = newParent;
-
-	if (newParent != NULL) {
-		newParent->onChildAdded(this);
-
-		if (!newParent->contains(oldParent.get())) {
-			signalDescendentAdded(this, newParent, oldParent.get());
-		}
-
-		newParent->Notifier<Instance, ChildAdded>::raise(this);
-
-		event_childAdded.fire(newParent, self);
-	}
-
-	onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
-	raisePropertyChanged(propParent);
-}
-
-// STUB: WEBSERVICE 0x1004ddb0
-void Instance::onAncestorChanged(const AncestorChanged& event)
-{
-	STUB(0x1004ddb0);
-}
-
-// STUB: WEBSERVICE 0x1004dee0
-void Instance::onDescendentAdded(Instance* instance)
-{
-	STUB(0x1004dee0);
-}
-
-// STUB: WEBSERVICE 0x1004df50
-void Instance::onDescendentRemoving(const shared_ptr<Instance>& instance)
-{
-	STUB(0x1004df50);
-}
-
-// STUB: WEBSERVICE 0x1004e040
-void Instance::setName(const std::string& value)
-{
-	STUB(0x1004e040);
-}
-
-// STUB: WEBSERVICE 0x1004e0f0
-void Instance::predelete()
-{
-	STUB(0x1004e0f0);
-}
-
-// STUB: WEBSERVICE 0x1004e5e0
-void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
-{
-	STUB(0x1004e5e0);
-}
-
-// STUB: WEBSERVICE 0x1004e6e0
-void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
-{
-	if (element != NULL) {
-		const XmlElement* item = element->findFirstChildByTag(tag_Item);
-
-		while (item != NULL) {
-			readChild(item, binder);
-			item = element->findNextChildWithSameTag(item);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e7b0
-void Instance::predelete(Instance* instance)
-{
-	instance->predelete();
-}
-
-// STUB: WEBSERVICE 0x1004eb10
-Instance::Instance() : parent(0), archivable(true)
-{
-}
-
-// STUB: WEBSERVICE 0x1004ec70
-Instance::Instance(const char* name) : name(name), parent(0), archivable(true)
-{
-	STUB(0x1004ec70);
-}
-
-} // namespace RBX
+namespace RBX { class Instance; class Player; }
+template struct boost::_bi::storage3<boost::_bi::value<std::string>, boost::_bi::value<boost::weak_ptr<RBX::Instance> >, boost::_bi::value<boost::weak_ptr<RBX::Player> > >;

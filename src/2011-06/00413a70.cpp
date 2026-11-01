@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 00413a70  unit: boost::bad_weak_ptr  size: 10 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 00413a70
 //

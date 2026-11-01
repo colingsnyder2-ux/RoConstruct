@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0079a9b0  unit: lua_exception  size: 141 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0079a9b0
 //

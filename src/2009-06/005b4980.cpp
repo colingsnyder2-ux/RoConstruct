@@ -1,5 +1,7 @@
-// from server: 55% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Geometry/WmlConvexClipper.cpp
+// roc-cl: 21022
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+#include <vector>
+struct Elem { int a, b; };
+template std::vector<Elem>::vector(const std::allocator<Elem>&);

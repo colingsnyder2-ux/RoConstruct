@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00788af0  unit: RBX::UniversalTool  size: 51 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00788af0
 //

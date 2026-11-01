@@ -1,25 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 004994d0  unit: RBX::Network::VClient::?$FactoryProduct  size: 97 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004994d0
-//
-// 004994d0  56                   push esi
-// 004994d1  8bf1                 mov esi, ecx
-// 004994d3  e898830100           call 0x4b1870
-// 004994d8  c70644c07900         mov dword ptr [esi], 0x79c044
-// 004994de  c7460438c07900       mov dword ptr [esi + 4], 0x79c038
-// 004994e5  c7461030c07900       mov dword ptr [esi + 0x10], 0x79c030
-// 004994ec  c7461420c07900       mov dword ptr [esi + 0x14], 0x79c020
-// 004994f3  c7462c10c07900       mov dword ptr [esi + 0x2c], 0x79c010
-// 004994fa  c7464400c07900       mov dword ptr [esi + 0x44], 0x79c000
-// 00499501  c7465cf0bf7900       mov dword ptr [esi + 0x5c], 0x79bff0
-// 00499508  c74674e0bf7900       mov dword ptr [esi + 0x74], 0x79bfe0
-// 0049950f  c7868c000000d0bf7900 mov dword ptr [esi + 0x8c], 0x79bfd0
-// 00499519  c786e8000000a0bf7900 mov dword ptr [esi + 0xe8], 0x79bfa0
-// 00499523  c786ec00000094bf7900 mov dword ptr [esi + 0xec], 0x79bf94
-// 0049952d  8bc6                 mov eax, esi
-// 0049952f  5e                   pop esi
-// 00499530  c3                   ret 
-
 struct FactoryProduct {
     int field0;
     int field4;

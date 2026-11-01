@@ -1,14 +1,4 @@
-// roc 2009-06 00407240  unit: VCApp::?$CComContainedObject  size: 17 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00407240
-//
-// 00407240  8b442404             mov eax, dword ptr [esp + 4]
-// 00407244  8b4018               mov eax, dword ptr [eax + 0x18]
-// 00407247  8b08                 mov ecx, dword ptr [eax]
-// 00407249  89442404             mov dword ptr [esp + 4], eax
-// 0040724d  8b01                 mov eax, dword ptr [ecx]
-// 0040724f  ffe0                 jmp eax
-// copied from an identical function in another client (function ?QueryInterface@CAppContained@@UAGJABUGUID@@PAPAX@Z)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 struct GUID { unsigned long Data1; unsigned short Data2, Data3; unsigned char Data4[8]; };

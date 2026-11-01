@@ -1,10 +1,4 @@
-// roc 2007-08 0054bd60  unit: boost::iostreams::DUoutput::V?$basic_null_device::?$stream_buffer  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0054bd60
-//
-// 0054bd60  b8f0ce8900           mov eax, 0x89cef0
-// 0054bd65  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0054bd60()

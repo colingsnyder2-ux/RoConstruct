@@ -26,6 +26,9 @@ public:
     template<class Class> static size_t getClassIndex();
     template<class Class> Class* find() const;
     template<class Class> Class* create() const;
+    template<class Class> static Class* create(const ServiceProvider* provider) {
+        return provider ? provider->create<Class>() : NULL;
+    }
 };
 
 // Layout recovered from the existing ServiceClient declaration. Method bodies

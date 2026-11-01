@@ -1,38 +1,99 @@
-// roc 2007-03 0045d860  unit: seg_00450000  size: 41 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0045d860
-//
-// 0045d860  56                   push esi
-// 0045d861  e84ad1ffff           call 0x45a9b0
-// 0045d866  8bf0                 mov esi, eax
-// 0045d868  6a01                 push 1
-// 0045d86a  8bce                 mov ecx, esi
-// 0045d86c  e87fbeffff           call 0x4596f0
-// 0045d871  6a01                 push 1
-// 0045d873  50                   push eax
-// 0045d874  8bce                 mov ecx, esi
-// 0045d876  e865c9ffff           call 0x45a1e0
-// 0045d87b  6a01                 push 1
-// 0045d87d  6a00                 push 0
-// 0045d87f  50                   push eax
-// 0045d880  8bce                 mov ecx, esi
-// 0045d882  e849c1ffff           call 0x4599d0
-// 0045d887  5e                   pop esi
-// 0045d888  c3                   ret 
-// copied from an identical function in another client (function ?func@CScriptEditor@ns_ROCX000006@@QAEXXZ)
+// from server: 68% by colin
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs util/RunStateOwner.cpp
 
-namespace ns_ROCX000006 {
-struct CScriptEditor {
-    void* method_45d230();
-    void* method_45bf60(int);
-    void* method_45ca50(void*, int);
-    void* method_45c240(void*, int, int);
-    void func();
-};
+// Candidate translation unit (score above; library headers required).
+#include "util/RunStateOwner.h"
+#include "v8datamodel/DataModel.h"
 
-void CScriptEditor::func() {
-    CScriptEditor* p = (CScriptEditor*)method_45d230();
-    void* a = p->method_45bf60(1);
-    void* b = p->method_45ca50(a, 1);
-    p->method_45c240(b, 0, 1);
-}
+namespace RBX
+{
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
+
+	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
+
+	RunService::RunService()
+		: framePeriod(1.0f/30.0f),
+		  runState(RS_NORMAL),
+		  invalidRunViewCount(0),
+		  stopRequested(false),
+		  runDisabled(false)
+	{
+		setName("Run Service");
+	}
+
+	RunService::~RunService()
+	{
+		RBXASSERT(views.empty());
+	}
+
+	void RunService::endRunThread(bool join)
+	{
+		stopRequested = true;
+		stateChangedCondition.notify_all();
+
+		if (join)
+			runThread->join();
+	}
+
+	void RunService::onAncestorChanged(const AncestorChanged& event)
+	{
+		if (!getParent())
+		{
+			stopRequested = true;
+			stateChangedCondition.notify_all();
+		}
+	}
+
+	void RunService::setRunState(RunState newState)
+	{
+		RunTransition transition(runState, newState);
+		runState = newState;
+
+		Notifier<RunService, RunState>::raise(newState);
+		Notifier<RunService, RunTransition>::raise(transition);
+	}
+
+	void RunService::raiseStepped(float time, float step)
+	{
+		Notifier<RunService, Stepped>::raise(Stepped(time, step));
+		event_Stepped.fire(this, time, step);
+	}
+
+	void RunService::raiseHeartbeat(float time, float step)
+	{
+		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
+		event_Heartbeat.fire(this, step);
+	}
+
+	void RunService::invalidateRunViews()
+	{
+		boost::mutex::scoped_lock lock(viewMutex);
+
+		if (invalidRunViewCount == 0)
+		{
+			invalidRunViewCount = (int)views.size();
+			if (invalidRunViewCount > 0)
+			{
+				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
+				{
+					iter->first->InvalidateRunView();
+					iter->second = false;
+				}
+				runViewsDoneCondition.notify_all();
+			}
+		}
+	}
+
+	void RunService::start()
+	{
+		RBXASSERT(!runThread);
+
+		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
+		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
+	}
 }

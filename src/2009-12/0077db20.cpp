@@ -1,19 +1,11 @@
-// roc 2009-12 0077db20  unit: RBX::BlockBlockContact  size: 8 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0077db20
-//
-// 0077db20  8b4924               mov ecx, dword ptr [ecx + 0x24]
-// 0077db23  e938feffff           jmp 0x77d960
-// copied from an identical function in another client (function ?f@S_func_00713fc0@ns_ROCX00002e@@QAEXXZ)
-
-namespace ns_ROCX00002e {
-struct P_func_00713fc0 { void g(); };
-struct S_func_00713fc0 {
+// from server: 100% by auto
+struct P_func_0077db20 { void g(); };
+struct S_func_0077db20 {
     char pad[36];
-    P_func_00713fc0* m_p;
+    P_func_0077db20* m_p;
     void f();
 };
-void S_func_00713fc0::f()
+void S_func_0077db20::f()
 {
     m_p->g();
-}
 }

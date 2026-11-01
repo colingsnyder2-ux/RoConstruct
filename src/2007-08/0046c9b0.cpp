@@ -1,49 +1,64 @@
-// from server: 58% by colin
-struct GLCaps {
-    static bool supports_two_sided_stencil();
+// from server: 100% by Yeetserama
+// from server: 100% by Espeon
+
+
+
+struct String {
+    unsigned int allocator;
+    union {
+        char buffer[16];
+        char* pointer;
+    } storage;
+    unsigned int length;
+    unsigned int capacity;
+
+    String(const char*);
+    ~String();
 };
 
-extern "C" void __stdcall sub_502880();
-extern "C" void __stdcall sub_5028F0();
-extern "C" void __stdcall sub_77E698();
-extern "C" void __stdcall sub_77E6AC();
-extern "C" void __stdcall sub_77E938(int);
-extern "C" void __stdcall sub_8980FC();
+extern void (__thiscall* constructString)(String*, const char*);
+extern void (__thiscall* destroyString)(String*);
 
-extern "C" char byte_8BCF73;
-extern "C" char byte_8BCF49;
-extern "C" char byte_8BCF5A;
-extern "C" void* dword_8980FC;
-extern "C" char str_796410[];
-extern "C" char str_796420[];
-extern "C" char str_796438[];
-
-struct FakeString {
-    void* pad[4];
-    FakeString(const char*);
-    ~FakeString();
-};
-
-bool GLCaps::supports_two_sided_stencil()
+__forceinline String::String(const char* text)
 {
-    if (byte_8BCF73 == 0 && byte_8BCF49 == 0)
-    {
-        sub_502880();
-        if (dword_8980FC != 0)
-        {
-            FakeString s(str_796438);
-            bool ok = false;
-            if (sub_8980FC)
-            {
-                ok = true;
-            }
-            s.~FakeString();
-            if (ok)
-            {
-                sub_77E938(-1);
-            }
+    constructString(this, text);
+}
+
+__forceinline String::~String()
+{
+    destroyString(this);
+}
+
+extern bool initialized;
+extern bool ignoreAssertion;
+extern const char assertionExpression[];
+extern const char assertionMessage[];
+extern const char assertionFile[];
+
+extern bool (__cdecl* assertionHandler)(
+    const char*, const String&, const char*, int, bool*, bool);
+
+extern void (__stdcall* terminateProcess)(int);
+extern void __cdecl lockAssertions();
+extern void __cdecl unlockAssertions();
+extern bool glCapsInitialized;
+
+bool __cdecl checkGLCaps()
+{
+    if (!ignoreAssertion && !initialized) {
+        lockAssertions();
+        bool terminate = assertionHandler &&
+            assertionHandler(
+                assertionExpression,
+                String(assertionMessage),
+                assertionFile,
+                567,
+                &ignoreAssertion,
+                true);
+        if (terminate) {
+            terminateProcess(-1);
         }
-        sub_5028F0();
+        unlockAssertions();
     }
-    return byte_8BCF5A != 0;
+    return glCapsInitialized;
 }

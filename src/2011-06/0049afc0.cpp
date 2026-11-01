@@ -1,48 +1,4 @@
-// roc 2011-06 0049afc0  unit: Ogre::IFrameDataCallback  size: 110 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0049afc0
-//
-// 0049afc0  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0049afc4  33c9                 xor ecx, ecx
-// 0049afc6  3bc1                 cmp eax, ecx
-// 0049afc8  7441                 je 0x49b00b
-// 0049afca  83f801               cmp eax, 1
-// 0049afcd  743c                 je 0x49b00b
-// 0049afcf  83f802               cmp eax, 2
-// 0049afd2  7459                 je 0x49b02d
-// 0049afd4  83f803               cmp eax, 3
-// 0049afd7  7521                 jne 0x49affa
-// 0049afd9  56                   push esi
-// 0049afda  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 0049afde  8b0e                 mov ecx, dword ptr [esi]
-// 0049afe0  68709bc100           push 0xc19b70
-// 0049afe5  ff15500aa400         call dword ptr [0xa40a50]
-// 0049afeb  0fb6c0               movzx eax, al
-// 0049afee  f7d8                 neg eax
-// 0049aff0  1bc0                 sbb eax, eax
-// 0049aff2  23442408             and eax, dword ptr [esp + 8]
-// 0049aff6  8906                 mov dword ptr [esi], eax
-// 0049aff8  5e                   pop esi
-// 0049aff9  c3                   ret 
-// 0049affa  8b442408             mov eax, dword ptr [esp + 8]
-// 0049affe  c700709bc100         mov dword ptr [eax], 0xc19b70
-// 0049b004  884804               mov byte ptr [eax + 4], cl
-// 0049b007  884805               mov byte ptr [eax + 5], cl
-// 0049b00a  c3                   ret 
-// 0049b00b  8b442408             mov eax, dword ptr [esp + 8]
-// 0049b00f  3bc1                 cmp eax, ecx
-// 0049b011  741a                 je 0x49b02d
-// 0049b013  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0049b017  8b11                 mov edx, dword ptr [ecx]
-// 0049b019  8910                 mov dword ptr [eax], edx
-// 0049b01b  8b5104               mov edx, dword ptr [ecx + 4]
-// 0049b01e  895004               mov dword ptr [eax + 4], edx
-// 0049b021  8b5108               mov edx, dword ptr [ecx + 8]
-// 0049b024  895008               mov dword ptr [eax + 8], edx
-// 0049b027  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 0049b02a  89480c               mov dword ptr [eax + 0xc], ecx
-// 0049b02d  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

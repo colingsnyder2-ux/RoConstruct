@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 004889b0  unit: P8CRenderSettings::?$GetSetImpl  size: 679 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004889b0
 //

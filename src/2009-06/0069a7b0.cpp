@@ -1,100 +1,26 @@
-// from server: 59% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/Renderbuffer.cpp
-
-// Candidate translation unit (score above; library headers required).
-/**
-@file Renderbuffer.cpp
-
-@maintainer Daniel Hilferty, djhilferty@users.sourceforge.net
-
-@cite http://oss.sgi.com/projects/ogl-sample/registry/EXT/framebuffer_object.txt
-
-@created 2006-01-07
-@edited  2006-02-14
-*/
-
-#include "GLG3D/Renderbuffer.h"
-#include "GLG3D/glcalls.h"
-#include "GLG3D/TextureFormat.h"
-
-namespace G3D {
-
-
-/////////////////////////////////////////////////////////////////////////////
-
-Renderbuffer::Renderbuffer (	
-    const std::string&			_name, 
-    const GLuint				_imageID,
-    const G3D::TextureFormat*	_format, 
-    const int					_width, 
-    const int					_height) : 
-    mName(_name),
-    mImageID(_imageID),
-    mFormat(_format),
-    mWidth(_width),
-    mHeight(_height) {
-
-    // Intentionally empty
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string>
+namespace RBX {
+struct A0 { virtual ~A0(); int pad[4]; };
+struct A1 { virtual void a1(); };
+struct A2 { virtual void a2(); void* descriptor; };
+struct A3 { virtual void a3(); char pad[0x68]; };
+struct A4 { virtual void a4(); };
+class Feature : public A0, public A1, public A2, public A3, public A4 {
+public:
+	Feature();
+	void setName(const std::string& name);
+};
+class Hole : public Feature {
+public:
+	Hole();
+	virtual ~Hole();
+};
+Hole::Hole()
+{
+	setName("Hole");
 }
-
-
-Renderbuffer::~Renderbuffer () {
-    glDeleteRenderbuffersEXT(1, &mImageID);
 }
-
-
-RenderbufferRef Renderbuffer::fromGLRenderbuffer(
-    const std::string&			_name, 
-    const GLuint				_imageID,
-    const G3D::TextureFormat	*_format) {
-
-    GLint w, h;
-
-    // Extract the width and height
-    glGetRenderbufferParameterivEXT (GL_RENDERBUFFER_EXT, GL_RENDERBUFFER_WIDTH_EXT, &w);
-    glGetRenderbufferParameterivEXT (GL_RENDERBUFFER_EXT, GL_RENDERBUFFER_WIDTH_EXT, &h);
-    debugAssertGLOk();
-
-    // Create new renderbuffer
-    return new Renderbuffer(_name, _imageID, _format, w, h);
-}
-
-
-RenderbufferRef Renderbuffer::createEmpty(
-    const std::string&			_name, 
-    const G3D::TextureFormat*   _format, 
-    const int					_width, 
-    const int					_height) {
-    // New Renderbuffer ID
-    GLuint _imageID;
-
-    // Save old renderbuffer state
-    GLint origBuffer;
-    glGetIntegerv(GL_RENDERBUFFER_BINDING_EXT, &origBuffer);
-
-    // Generate buffer
-    glGenRenderbuffersEXT (1, &_imageID);
-    debugAssertGLOk();
-
-    // Bind the buffer
-    glBindRenderbufferEXT (GL_RENDERBUFFER_EXT, _imageID);
-    debugAssertGLOk();
-
-    // Allocate storage for it
-    glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, _format->OpenGLFormat, _width, _height);
-
-    // Check for successful generation (ie, no INVALID_OPERATION)
-    debugAssertGLOk();
-
-    // Restore renderbuffer state
-    glBindRenderbufferEXT (GL_RENDERBUFFER_EXT, origBuffer);
-    debugAssertGLOk();
-
-    // Create new renderbuffer
-    return new Renderbuffer(_name, _imageID, _format, _width, _height);
-}
-
-} // End Namespace G3D

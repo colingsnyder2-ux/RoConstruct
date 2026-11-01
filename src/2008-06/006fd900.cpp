@@ -1,13 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 006fd900  unit: CXTCaptionButtonTheme  size: 11 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 006fd900
-//
-// 006fd900  8b01                 mov eax, dword ptr [ecx]
-// 006fd902  50                   push eax
-// 006fd903  ff15c0288000         call dword ptr [0x8028c0]
-// 006fd909  59                   pop ecx
-// 006fd90a  c3                   ret 
-
 extern "C" void (*free)(void*);
 
 struct S {

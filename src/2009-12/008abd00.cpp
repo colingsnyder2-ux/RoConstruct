@@ -1,12 +1,13 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /MD /GS /EHsc /Ob1
-// roc-lib: xtp-11.2.2-shared-mfc Source\DockingPane\XTPDockingPaneAutoHidePanel.cpp
+// roc-lib: xtp-11.2.2-lib-strlen Source\CommandBars\XTPScrollBar.cpp
 
 // Candidate translation unit (score above; library headers required).
-// XTPDockingPaneAutoHidePanel.cpp : implementation of the CXTPDockingPaneAutoHidePanel class.
+// XTPScrollBar.cpp : implementation of the CXTPScrollBar class.
 //
-// This file is a part of the XTREME DOCKINGPANE MFC class library.
+// This file is a part of the XTREME COMMANDBARS MFC class library.
 // (c)1998-2007 Codejock Software, All Rights Reserved.
 //
 // THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
@@ -25,1271 +26,772 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "Common/Resource.h"
 
-#include "Common/XTPVC80Helpers.h"
 #include "Common/XTPDrawHelpers.h"
-#include "Common/XTPColorManager.h"
-#include "Common/XTPImageManager.h"
-#include "Common/XTPResourceManager.h"
-#include "TabManager/XTPTabManager.h"
 
-#include "XTPDockingPane.h"
-#include "XTPDockingPaneManager.h"
-#include "XTPDockingPaneTabbedContainer.h"
-#include "XTPDockingPaneAutoHidePanel.h"
-#include "XTPDockingPaneLayout.h"
-#include "XTPDockingPaneSplitterContainer.h"
+#include "XTPCommandBars.h"
+#include "XTPPaintManager.h"
+#include "XTPControlGallery.h"
+#include "XTPScrollBar.h"
+#include "XTPMouseManager.h"
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
+//////////////////////////////////////////////////////////////////////////
+//  CXTPScrollBase
 
-#define TID_CHECKACTIVE 1
-#define TID_CLOSE 4
-#define TID_SLIDEIN 2
-#define TID_SLIDEOUT 3
 
-double CXTPDockingPaneAutoHideWnd::m_dAnimationDelay = -1;
-int CXTPDockingPaneAutoHideWnd::m_nAnimationInterval = 16;                 // smother animation
-int CXTPDockingPaneAutoHideWnd::m_nAnimationDuration = 128;                // fast slide completion
-BOOL CXTPDockingPaneAutoHidePanel::m_bCloseActiveWindow = TRUE;
-DWORD CXTPDockingPaneAutoHideWnd::m_nMouseHoverDelay = HOVER_DEFAULT;
-UINT CXTPDockingPaneAutoHideWnd::m_nInactiveCollapseDelay = 100;
-
-void CXTPDockingPaneAutoHideWnd::GetMinMaxInfo (LPMINMAXINFO pMinMaxInfo, BOOL bIncludeSplitter /*= TRUE*/) const
+CXTPScrollBase::CXTPScrollBase()
 {
-	ZeroMemory(pMinMaxInfo, sizeof(MINMAXINFO));
-	pMinMaxInfo->ptMaxTrackSize = CPoint(32000, 32000);
+	ZeroMemory(&m_spi, sizeof(m_spi));
+	m_spi.fVert = TRUE;
 
-	if (!m_pPane || !m_pPane->m_pSelectedPane)
-		return;
+	m_pSBTrack = NULL;
 
-	m_pPane->m_pSelectedPane->GetMinMaxInfo(pMinMaxInfo);
-	m_pPane->AdjustMinMaxInfoClientRect(pMinMaxInfo, TRUE);
+	m_scrollBarStyle = xtpScrollStyleDefault;
 
-	if (!bIncludeSplitter)
-		return;
+	m_bAnimation = FALSE;
+	m_nTimerElapse = 0;
+}
 
-	if (m_direction == xtpPaneDockLeft || m_direction == xtpPaneDockRight)
+CXTPScrollBase::~CXTPScrollBase()
+{
+
+}
+
+void CXTPScrollBase::CalcScrollBarInfo(LPRECT lprc, SCROLLBARPOSINFO* pSBInfo, SCROLLINFO* pSI)
+{
+	int cpx;
+	DWORD dwRange;
+	int denom;
+	BOOL fVert = pSBInfo->fVert;
+
+	pSBInfo->rc = *lprc;
+	pSBInfo->pxPopup = 0;
+
+	if (fVert)
 	{
-		pMinMaxInfo->ptMinTrackSize.x += 4;
-		pMinMaxInfo->ptMaxTrackSize.x += 4;
+		pSBInfo->pxTop = lprc->top;
+		pSBInfo->pxBottom = lprc->bottom;
+		pSBInfo->pxLeft = lprc->left;
+		pSBInfo->pxRight = lprc->right;
+		pSBInfo->cpxThumb = GetGalleryPaintManager()->m_cyVScroll;
 	}
 	else
 	{
-		pMinMaxInfo->ptMinTrackSize.y += 4;
-		pMinMaxInfo->ptMaxTrackSize.y += 4;
+		pSBInfo->pxTop = lprc->left;
+		pSBInfo->pxBottom = lprc->right;
+		pSBInfo->pxLeft = lprc->top;
+		pSBInfo->pxRight = lprc->bottom;
+		pSBInfo->cpxThumb = GetGalleryPaintManager()->m_cxHScroll;
 	}
+
+	pSBInfo->pos = pSI->nPos;
+	pSBInfo->page = pSI->nPage;
+	pSBInfo->posMin = pSI->nMin;
+	pSBInfo->posMax = pSI->nMax;
+
+	dwRange = ((DWORD)(pSBInfo->posMax - pSBInfo->posMin)) + 1;
+
+	cpx = min((pSBInfo->pxBottom - pSBInfo->pxTop) / 2, pSBInfo->cpxThumb);
+
+	pSBInfo->pxUpArrow  = pSBInfo->pxTop    + cpx;
+	pSBInfo->pxDownArrow = pSBInfo->pxBottom - cpx;
+
+	if ((pSBInfo->page != 0) && (dwRange != 0))
+	{
+		int i = MulDiv(pSBInfo->pxDownArrow - pSBInfo->pxUpArrow,
+			pSBInfo->page, dwRange);
+
+		pSBInfo->cpxThumb = max(pSBInfo->cpxThumb / 2, i);
+	}
+
+	pSBInfo->pxMin = pSBInfo->pxTop + cpx;
+	pSBInfo->cpx = pSBInfo->pxBottom - cpx - pSBInfo->cpxThumb - pSBInfo->pxMin;
+
+	denom = dwRange - (pSBInfo->page ? pSBInfo->page : 1);
+	if (denom)
+		pSBInfo->pxThumbTop = MulDiv(pSBInfo->pos - pSBInfo->posMin,
+		pSBInfo->cpx, denom) + pSBInfo->pxMin;
+	else
+		pSBInfo->pxThumbTop = pSBInfo->pxMin - 1;
+
+	pSBInfo->pxThumbBottom = pSBInfo->pxThumbTop + pSBInfo->cpxThumb;
 }
 
-CXTPDockingPaneAutoHideWnd::CXTPDockingPaneAutoHideWnd(CXTPDockingPaneAutoHidePanel* pPanel, CXTPDockingPaneTabbedContainer* pPane)
-	: m_pPanel(pPanel), m_pPane(pPane)
+void CXTPScrollBase::SetupScrollInfo()
 {
-	ASSERT(pPane);
-	if (!pPane)
-		return;
+	CRect rc = GetScrollBarRect();
 
-	ASSERT(pPane->m_pSelectedPane);
-	if (!pPane->m_pSelectedPane)
-		return;
+	SCROLLINFO si;
+	GetScrollInfo(&si);
 
-	m_bTracking = FALSE;
+	CalcScrollBarInfo(&rc, &m_spi, &si);
+}
 
-	m_direction = m_pPanel->GetDirection();
-	m_bHoriz = (m_direction == xtpPaneDockTop || m_direction == xtpPaneDockBottom);
-	CXTPDockingPaneManager* pManager = GetDockingPaneManager();
+int CXTPScrollBase::HitTestScrollBar(POINT pt)
+{
+	int px = m_spi.fVert ? pt.y : pt.x;
 
-	CWnd* pSite = pManager->GetSite();
-	CXTPDockingPaneBase* pTopPane = pManager->GetTopPane();
+	if (!::PtInRect(&m_spi.rc, pt))
+		return HTNOWHERE;
 
-	CRect rcClient = pTopPane->GetPaneWindowRect();
+	if (px < m_spi.pxUpArrow)
+		return XTP_HTSCROLLUP;
 
-	MINMAXINFO mmInfo;
-	GetMinMaxInfo(&mmInfo);
+	if (m_spi.pxPopup > 0 && px > m_spi.pxPopup)
+		return XTP_HTSCROLLPOPUP;
 
-	CSize szDocking = CSize(
-		max(mmInfo.ptMinTrackSize.x, min(mmInfo.ptMaxTrackSize.x, pPane->m_pSelectedPane->m_szDocking.cx + 4)),
-		max(mmInfo.ptMinTrackSize.y, min(mmInfo.ptMaxTrackSize.y, pPane->m_pSelectedPane->m_szDocking.cy + 4)));
+	if (px >= m_spi.pxDownArrow)
+		return XTP_HTSCROLLDOWN;
+
+	if (px < m_spi.pxThumbTop)
+		return XTP_HTSCROLLUPPAGE;
+
+	if (px < m_spi.pxThumbBottom)
+		return XTP_HTSCROLLTHUMB;
+
+	if (px < m_spi.pxDownArrow)
+		return XTP_HTSCROLLDOWNPAGE;
+
+	return HTERROR;
+}
 
 
-	switch (pManager->GetRTLDirection(m_direction))
+//////////////////////////////////////////////////////////////////////////
+// Scrolling
+
+void CXTPScrollBase::EndScroll(BOOL fCancel)
+{
+	SCROLLBARTRACKINFO* pSBTrack = m_pSBTrack;
+
+	if (pSBTrack)
 	{
-		case xtpPaneDockLeft:
-			rcClient.right = rcClient.left + szDocking.cx;
-			break;
+		pSBTrack->cmdSB = 0;
+		ReleaseCapture();
 
-		case xtpPaneDockRight:
-			rcClient.left = rcClient.right - szDocking.cx;
-			break;
-
-		case xtpPaneDockTop:
-			rcClient.bottom = rcClient.top + szDocking.cy;
-			break;
-
-		case xtpPaneDockBottom:
-			rcClient.top = rcClient.bottom - szDocking.cy;
-			break;
-	}
-
-	pSite->ScreenToClient(&rcClient);
-
-	CRect rcAvail, rc;
-	BOOL bResizable = GetAvailableRect(rcAvail, rc);
-
-	HCURSOR hCursor = !bResizable || pManager->IsSplittersLocked() ? AfxGetApp()->LoadStandardCursor(IDC_ARROW) :
-		XTPResourceManager()->LoadCursor(!m_bHoriz ? XTP_IDC_HSPLITBAR :  XTP_IDC_VSPLITBAR);
-	m_rcWindow = rcClient;
-
-	//pSite->UpdateWindow();
-	//pSite->SetRedraw(FALSE);
-
-	CreateEx(pSite->GetExStyle() & WS_EX_LAYOUTRTL, AfxRegisterWndClass(0, hCursor), _T(""),
-		WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN, rcClient, pSite, 0);
-
-	//pSite->SetRedraw(TRUE);
-
-
-	m_nSlideStep = 0;
-	m_nStepsCount = 1;
-
-	if (m_dAnimationDelay != .0 && m_nAnimationInterval != 0)
-	{
-		if (m_dAnimationDelay > 0)
+		if (pSBTrack->bTrackThumb)
 		{
-			// keep the animation delay behaviour relative to 50 ms frame interval as per original
-			// implementation
-			m_nStepsCount = int((m_bHoriz ? m_rcWindow.Width() : m_rcWindow.Height()) * m_dAnimationDelay * 50 / m_nAnimationInterval);
+			if (fCancel)
+			{
+				pSBTrack->posOld = pSBTrack->pSBInfo->pos;
+			}
+
+			DoScroll(SB_THUMBPOSITION, pSBTrack->posOld);
+
+			RedrawScrollBar();
 		}
 		else
 		{
-			m_nStepsCount = m_nAnimationDuration/m_nAnimationInterval;
+
+			if (pSBTrack->hTimerSB != 0)
+			{
+				::KillTimer(pSBTrack->hWndTrack, pSBTrack->hTimerSB);
+				pSBTrack->hTimerSB = 0;
+			}
+		}
+
+
+		DoScroll(SB_ENDSCROLL, 0);
+	}
+}
+
+int SBPosFromPx(CXTPScrollBase::SCROLLBARPOSINFO*  pSBInfo, int px)
+{
+	if (px < pSBInfo->pxMin)
+	{
+		return pSBInfo->posMin;
+	}
+
+	if (px >= pSBInfo->pxMin + pSBInfo->cpx)
+	{
+		return (pSBInfo->posMax - (pSBInfo->page ? pSBInfo->page - 1 : 0));
+	}
+
+	if (pSBInfo->cpx)
+		return (pSBInfo->posMin + MulDiv(pSBInfo->posMax - pSBInfo->posMin -
+		(pSBInfo->page ? pSBInfo->page - 1 : 0),
+		px - pSBInfo->pxMin, pSBInfo->cpx));
+	else
+		return (pSBInfo->posMin - 1);
+}
+
+
+void CXTPScrollBase::MoveThumb(int px)
+{
+	SCROLLBARTRACKINFO* pSBTrack = m_pSBTrack;
+
+	if ((pSBTrack == NULL) || (px == pSBTrack->pxOld))
+		return;
+
+	SCROLLBARPOSINFO* pSBInfo = m_pSBTrack->pSBInfo;
+
+pxReCalc:
+
+	pSBTrack->posNew = SBPosFromPx(pSBInfo, px);
+
+	if (pSBTrack->posNew != pSBTrack->posOld)
+	{
+		DoScroll(SB_THUMBTRACK, pSBTrack->posNew);
+
+		pSBTrack->posOld = pSBTrack->posNew;
+
+		if (px >= pSBInfo->pxMin + pSBInfo->cpx)
+		{
+			px = pSBInfo->pxMin + pSBInfo->cpx;
+			goto pxReCalc;
+		}
+
+	}
+
+	pSBInfo->pxThumbTop = px;
+	pSBInfo->pxThumbBottom = pSBInfo->pxThumbTop + pSBInfo->cpxThumb;
+	pSBTrack->pxOld = px;
+
+	RedrawScrollBar();
+}
+
+void CXTPScrollBase::TrackThumb(UINT message, CPoint pt)
+{
+	SCROLLBARTRACKINFO* pSBTrack = m_pSBTrack;
+	if (!pSBTrack)
+		return;
+
+	SCROLLBARPOSINFO* pSBInfo = pSBTrack->pSBInfo;
+
+	if (HIBYTE(message) != HIBYTE(WM_MOUSEFIRST))
+		return;
+
+	if (pSBInfo == NULL)
+		return;
+
+	int px;
+
+	if (!PtInRect(&pSBTrack->rcTrack, pt))
+		px = pSBInfo->pxStart;
+	else
+	{
+		px = (pSBTrack->pSBInfo->fVert ? pt.y : pt.x) + pSBTrack->dpxThumb;
+		if (px < pSBInfo->pxMin)
+			px = pSBInfo->pxMin;
+		else if (px >= pSBInfo->pxMin + pSBInfo->cpx)
+			px = pSBInfo->pxMin + pSBInfo->cpx;
+	}
+
+	MoveThumb(px);
+
+	if (message == WM_LBUTTONUP || GetKeyState(VK_LBUTTON) >= 0)
+	{
+		EndScroll(FALSE);
+	}
+}
+
+void CXTPScrollBase::TrackBox(UINT message, CPoint point)
+{
+	SCROLLBARTRACKINFO* pSBTrack = m_pSBTrack;
+
+	if (pSBTrack == NULL)
+		return;
+
+	if (message != WM_NULL && HIBYTE(message) != HIBYTE(WM_MOUSEFIRST))
+		return;
+
+	if ((pSBTrack->cmdSB == SB_PAGEUP || pSBTrack->cmdSB == SB_PAGEDOWN))
+	{
+		int* pLength = (int *)&pSBTrack->rcTrack;
+
+		if (pSBTrack->pSBInfo->fVert)
+			pLength++;
+
+		if (pSBTrack->cmdSB == SB_PAGEUP)
+			pLength[2] = pSBTrack->pSBInfo->pxThumbTop;
+		else
+			pLength[0] = pSBTrack->pSBInfo->pxThumbBottom;
+	}
+
+	BOOL fHit = PtInRect(&pSBTrack->rcTrack, point);
+
+	BOOL fHitChanged = fHit != (BOOL)pSBTrack->fHitOld;
+
+	if (fHitChanged)
+	{
+		pSBTrack->fHitOld = fHit;
+		RedrawScrollBar();
+	}
+
+	int cmsTimer = GetDoubleClickTime() / 10;
+
+	switch (message)
+	{
+	case WM_LBUTTONUP:
+		EndScroll(FALSE);
+		break;
+
+	case WM_LBUTTONDOWN:
+		pSBTrack->hTimerSB = 0;
+		cmsTimer = GetDoubleClickTime() * 4 / 5;
+
+		/*
+		*** FALL THRU **
+		*/
+
+	case WM_MOUSEMOVE:
+		if (fHit && fHitChanged)
+		{
+			pSBTrack->hTimerSB = SetTimer(m_pSBTrack->hWndTrack, IDSYS_SCROLL, m_nTimerElapse = cmsTimer, NULL);
+
+			DoScroll(pSBTrack->cmdSB, 0);
 		}
 	}
-	if (m_nStepsCount < 1) m_nStepsCount = 1;
-
-
-	m_bSlideOut = FALSE;
-	if (m_nStepsCount > 1)
-		SetTimer(TID_SLIDEIN, m_nAnimationInterval, NULL);
-	DoSlideStep();
-	m_pPane->ShowWindow(SW_SHOW);
-
-	SetTimer(TID_CHECKACTIVE, m_nInactiveCollapseDelay, NULL);
-
-	m_nDeactivationCount = 6;
-
 }
 
-CXTPDockingPaneManager* CXTPDockingPaneAutoHideWnd::GetDockingPaneManager() const
+void CXTPScrollBase::DoAnimate()
 {
-	ASSERT(m_pPanel);
-	return m_pPanel ? m_pPanel->GetDockingPaneManager() : NULL;
+
 }
-
-
-void CXTPDockingPaneAutoHideWnd::DoSlideStep()
+void CXTPScrollBase::ContScroll()
 {
-	CRect rc(m_rcWindow);
+	SCROLLBARTRACKINFO* pSBTrack = m_pSBTrack;
+	ASSERT(pSBTrack);
 
-	switch (m_direction)
-	{
-		case xtpPaneDockLeft:
-			rc.right = rc.left + (m_nSlideStep + 1) * m_rcWindow.Width() / m_nStepsCount;
-			break;
-
-		case xtpPaneDockRight:
-			rc.left = rc.right - (m_nSlideStep + 1) * m_rcWindow.Width() / m_nStepsCount;
-			break;
-
-		case xtpPaneDockTop:
-			rc.bottom = rc.top + (m_nSlideStep + 1) * m_rcWindow.Height() / m_nStepsCount;
-			break;
-
-		case xtpPaneDockBottom:
-			rc.top = rc.bottom - (m_nSlideStep + 1) * m_rcWindow.Height() / m_nStepsCount;
-			break;
-	}
-	SetWindowPos(&CWnd::wndTop, rc.left, rc.top, rc.Width(), rc.Height(), SWP_SHOWWINDOW | SWP_NOOWNERZORDER | SWP_NOACTIVATE);
-	Invalidate(FALSE);
-}
-
-void CXTPDockingPaneAutoHideWnd::RecalcLayout(BOOL /*bNotify*/)
-{
-	if (!m_pPane || !m_pPane->GetSafeHwnd())
+	if (pSBTrack == NULL)
 		return;
 
-	AFX_SIZEPARENTPARAMS layout;
-	layout.bStretch = TRUE;
-	GetClientRect(&layout.rect);
-	CRect rcClient(layout.rect);
-	layout.hDWP = ::BeginDeferWindowPos(8); // reasonable guess
+	CPoint pt;
+	GetCursorPos(&pt);
 
-	CRect rcPane(CPoint(0, 0), m_rcWindow.Size());
+	ScreenToClient(m_pSBTrack->hWndTrack, &pt);
 
-	switch (m_direction)
+	TrackBox(WM_NULL, pt);
+
+	if (pSBTrack->fHitOld)
 	{
-		case xtpPaneDockLeft:
-			rcPane.OffsetRect(- m_rcWindow.Width() + rcClient.Width(), 0);
-			rcPane.right -= 4;
-			break;
+		pSBTrack->hTimerSB = SetTimer(m_pSBTrack->hWndTrack, IDSYS_SCROLL, m_nTimerElapse = GetDoubleClickTime() / 10, NULL);
 
-		case xtpPaneDockTop:
-			rcPane.OffsetRect(0, - m_rcWindow.Height() + rcClient.Height());
-			rcPane.bottom -= 4;
-			break;
-
-		case xtpPaneDockRight:
-			rcPane.left += 4;
-			break;
-
-		case xtpPaneDockBottom:
-			rcPane.top += 4;
-			break;
+		DoScroll(pSBTrack->cmdSB, 0);
 	}
-
-	m_pPane->OnSizeParent(this, rcPane, &layout);
-
-	if (layout.hDWP == NULL || !::EndDeferWindowPos(layout.hDWP))
-		TRACE0("Warning: DeferWindowPos failed - low system resources.\n");
 }
 
-IMPLEMENT_DYNAMIC(CXTPDockingPaneAutoHideWnd, CMiniFrameWnd)
-
-BEGIN_MESSAGE_MAP(CXTPDockingPaneAutoHideWnd, CMiniFrameWnd)
-	ON_WM_PAINT()
-	ON_WM_TIMER()
-	ON_WM_CLOSE()
-	ON_WM_LBUTTONDOWN()
-	ON_WM_MOUSEMOVE()
-	ON_WM_ERASEBKGND()
-END_MESSAGE_MAP()
-
-
-void CXTPDockingPaneAutoHideWnd::CloseWindow()
+void CXTPScrollBase::CalcTrackDragRect(SCROLLBARTRACKINFO* pSBTrack) const
 {
-	if (!IsWindow(m_hWnd))
-		return;
 
-	ShowWindow(SW_HIDE);
+	int     cx;
+	int     cy;
+	LPINT   pwX, pwY;
 
-	if (m_pPane && m_pPane->GetSafeHwnd() && m_pPane->GetParent() == this)
+	pwX = pwY = (LPINT)&pSBTrack->rcTrack;
+
+	if (pSBTrack->pSBInfo->fVert)
 	{
-		m_pPane->ShowWindow(SW_HIDE);
-		m_pPane->SetDockingSite(GetDockingPaneManager()->GetSite());
-	}
-	m_pPane = 0;
-
-	if (m_pPanel && m_pPanel->m_pActiveWnd == this)
-		m_pPanel->m_pActiveWnd = 0;
-
-	PostMessage(WM_CLOSE);
-}
-
-void CXTPDockingPaneAutoHideWnd::PostNcDestroy()
-{
-	if (m_pPanel && m_pPanel->m_pActiveWnd == this)
-		m_pPanel->m_pActiveWnd = 0;
-
-	if (m_dwRef <= 1)
-	{
-		delete this;
+		cy = GetSystemMetrics(SM_CYVTHUMB);
+		pwY++;
 	}
 	else
 	{
-		InternalRelease();
+		cy = GetSystemMetrics(SM_CXHTHUMB);
+		pwX++;
 	}
+
+	cx = (pSBTrack->pSBInfo->pxRight - pSBTrack->pSBInfo->pxLeft) * 8;
+	cy *= 2;
+
+	*(pwX + 0) = pSBTrack->pSBInfo->pxLeft - cx;
+	*(pwY + 0) = pSBTrack->pSBInfo->pxTop - cy;
+	*(pwX + 2) = pSBTrack->pSBInfo->pxRight + cx;
+	*(pwY + 2) = pSBTrack->pSBInfo->pxBottom + cy;
 }
 
-void CXTPDockingPaneAutoHideWnd::OnTimer(UINT_PTR nIDEvent)
+void CXTPScrollBase::PerformTrackInit(HWND hWnd, CPoint point, SCROLLBARPOSINFO* pSBInfo, BOOL bDirect)
 {
-	if (nIDEvent == TID_CLOSE)
+
+	int px = m_spi.fVert ? point.y : point.x;
+
+	SCROLLBARTRACKINFO* pSBTrack = new SCROLLBARTRACKINFO;
+	memset(pSBTrack, 0, sizeof(SCROLLBARTRACKINFO));
+
+	pSBTrack->cmdSB = (UINT)-1;
+	pSBTrack->bTrackThumb = FALSE;
+	pSBTrack->pSBInfo = pSBInfo;
+	pSBTrack->hWndTrack = hWnd;
+
+	m_pSBTrack = pSBTrack;
+
+	CXTPMouseManager* pMouseManager = XTPMouseManager();
+
+	RECT rcSB;
+	LPINT pwX = (LPINT)&rcSB;
+	LPINT pwY = pwX + 1;
+	if (!pSBInfo->fVert)
+		pwX = pwY--;
+
+	*(pwX + 0) = pSBInfo->pxLeft;
+	*(pwY + 0) = pSBInfo->pxTop;
+	*(pwX + 2) = pSBInfo->pxRight;
+	*(pwY + 2) = pSBInfo->pxBottom;
+
+
+	if (px < pSBInfo->pxUpArrow)
 	{
-		CloseWindow();
-		return;
+		pSBInfo->ht = XTP_HTSCROLLUP;
+		pSBTrack->cmdSB = SB_LINEUP;
+		*(pwY + 2) = pSBInfo->pxUpArrow;
+
 	}
-
-	if (!m_pPane)
-		return;
-
-	if (m_pPanel && m_pPanel->m_pActiveWnd != this)
-		return;
-
-	if (nIDEvent == TID_CHECKACTIVE)
+	else if (px >= pSBInfo->pxDownArrow)
 	{
-		if (m_bTracking)
+		pSBInfo->ht = XTP_HTSCROLLDOWN;
+		pSBTrack->cmdSB = SB_LINEDOWN;
+		*(pwY + 0) = pSBInfo->pxDownArrow;
+	}
+	else if (px < pSBInfo->pxThumbTop)
+	{
+		pSBInfo->ht = XTP_HTSCROLLUPPAGE;
+		pSBTrack->cmdSB = SB_PAGEUP;
+		*(pwY + 0) = pSBInfo->pxUpArrow;
+		*(pwY + 2) = pSBInfo->pxThumbTop;
+	}
+	else if (px < pSBInfo->pxThumbBottom)
+	{
+		pSBInfo->ht = XTP_HTSCROLLTHUMB;
+DoThumbPos:
+
+		if (pSBInfo->pxDownArrow - pSBInfo->pxUpArrow <= pSBInfo->cpxThumb)
+		{
+			delete m_pSBTrack;
+			m_pSBTrack = NULL;
 			return;
-
-		CPoint pt;
-		GetCursorPos(&pt);
-		if (!m_pPane->IsActive() && !CXTPWindowRect(this).PtInRect(pt) && !CXTPWindowRect(m_pPanel).PtInRect(pt))
-		{
-			if (!m_bSlideOut)
-			{
-				if (--m_nDeactivationCount <= 0)
-				{
-					m_nDeactivationCount = 0;
-
-					InternalAddRef();
-
-					if (!CXTPDockingPaneAutoHidePanel::m_bCloseActiveWindow || GetDockingPaneManager()->_OnAction(xtpPaneActionCollapsing, m_pPane->GetSelected()))
-					{
-						m_nDeactivationCount = 6;
-					}
-					else
-					{
-						m_bSlideOut = TRUE;
-						if (m_hWnd) SetTimer(TID_SLIDEOUT, m_nAnimationInterval, NULL);
-					}
-
-					InternalRelease();
-				}
-			}
 		}
-		else
+
+		pSBTrack->cmdSB = SB_THUMBPOSITION;
+		CalcTrackDragRect(pSBTrack);
+
+		pSBTrack->pxOld = pSBInfo->pxStart = pSBInfo->pxThumbTop;
+		pSBTrack->posNew = pSBTrack->posOld = pSBInfo->pos;
+		pSBTrack->dpxThumb = pSBInfo->pxStart - px;
+
+		pSBTrack->bTrackThumb = TRUE;
+
+		::SetCapture(hWnd);
+
+		DoScroll(SB_THUMBTRACK, pSBTrack->posOld);
+
+	}
+	else if (px < pSBInfo->pxDownArrow)
+	{
+		pSBInfo->ht = XTP_HTSCROLLDOWNPAGE;
+		pSBTrack->cmdSB = SB_PAGEDOWN;
+		*(pwY + 0) = pSBInfo->pxThumbBottom;
+		*(pwY + 2) = pSBInfo->pxDownArrow;
+	}
+
+	if ((bDirect && pSBTrack->cmdSB != SB_LINEUP && pSBTrack->cmdSB != SB_LINEDOWN))
+	{
+		if (pSBTrack->cmdSB != SB_THUMBPOSITION)
 		{
-			m_nDeactivationCount = 6;
-			if (m_bSlideOut)
-			{
-				m_bSlideOut = FALSE;
-				KillTimer(TID_SLIDEOUT);
-				SetTimer(TID_SLIDEIN, m_nAnimationInterval, NULL);
-			}
+			goto DoThumbPos;
 		}
-		return;
+		pSBTrack->dpxThumb = -(pSBInfo->cpxThumb / 2);
 	}
 
-	if (nIDEvent == TID_SLIDEOUT && m_bSlideOut)
+	::SetCapture(hWnd);
+
+	if (pSBTrack->cmdSB != SB_THUMBPOSITION)
 	{
-		m_nSlideStep--;
-		if (m_nSlideStep > -1) DoSlideStep();
-		else
-		{
-			m_bSlideOut = FALSE;
-			KillTimer(TID_SLIDEOUT);
-
-			InternalAddRef();
-
-			GetDockingPaneManager()->_OnAction(xtpPaneActionCollapsed, m_pPane->GetSelected());
-			CloseWindow();
-
-			InternalRelease();
-		}
-		return;
+		CopyRect(&pSBTrack->rcTrack, &rcSB);
 	}
 
-	if (nIDEvent == TID_SLIDEIN && !m_bSlideOut)
+	if (!pSBTrack->bTrackThumb)
 	{
-		m_nSlideStep++;
-		if (m_nSlideStep < m_nStepsCount) DoSlideStep();
-		else
-		{
-			m_nSlideStep = m_nStepsCount - 1;
-			KillTimer(TID_SLIDEIN);
-
-			GetDockingPaneManager()->_OnAction(xtpPaneActionExpanded, m_pPane->GetSelected());
-		}
-		return;
-	}
-}
-
-
-void CXTPDockingPaneAutoHideWnd::OnMouseMove(UINT nFlags, CPoint point)
-{
-	if (m_bSlideOut)
-	{
-		OnTimer(TID_CHECKACTIVE);
-		return;
-	}
-
-	CMiniFrameWnd::OnMouseMove(nFlags, point);
-}
-
-
-void CXTPDockingPaneAutoHideWnd::OnClose()
-{
-	CMiniFrameWnd::OnClose();
-}
-
-BOOL CXTPDockingPaneAutoHideWnd::OnEraseBkgnd(CDC* /*pDC*/)
-{
-	return TRUE;
-}
-
-void CXTPDockingPaneAutoHideWnd::OnPaint()
-{
-	CPaintDC dc(this);
-
-	if (!m_pPane)
-		return;
-
-	CXTPDockingPanePaintManager* pPaintManager = m_pPane->CXTPDockingPaneBase::GetPaintManager();
-
-	CXTPClientRect rc(this);
-	dc.FillSolidRect(rc, pPaintManager->GetXtremeColor(XPCOLOR_3DFACE));
-
-
-	switch (m_direction)
-	{
-		case xtpPaneDockLeft:
-			dc.Draw3dRect(rc.right - 1, rc.top, 1, rc.Height(), pPaintManager->GetXtremeColor(COLOR_BTNTEXT), pPaintManager->GetXtremeColor(COLOR_BTNTEXT));
-			dc.Draw3dRect(rc.right - 2, rc.top, 1, rc.Height(), pPaintManager->GetXtremeColor(COLOR_3DSHADOW), pPaintManager->GetXtremeColor(COLOR_3DSHADOW));
-			break;
-
-		case xtpPaneDockTop:
-			dc.Draw3dRect(rc.left, rc.bottom - 1, rc.Width(), 1, pPaintManager->GetXtremeColor(COLOR_BTNTEXT), pPaintManager->GetXtremeColor(COLOR_BTNTEXT));
-			dc.Draw3dRect(rc.left, rc.bottom - 2, rc.Width(), 1, pPaintManager->GetXtremeColor(COLOR_3DSHADOW), pPaintManager->GetXtremeColor(COLOR_3DSHADOW));
-			break;
-
-		case xtpPaneDockRight:
-			dc.Draw3dRect(rc.left + 1, rc.top, 1, rc.Height(), pPaintManager->GetXtremeColor(COLOR_3DHIGHLIGHT), pPaintManager->GetXtremeColor(COLOR_3DHIGHLIGHT));
-			break;
-
-		case xtpPaneDockBottom:
-			dc.Draw3dRect(rc.left, rc.top + 1, rc.Width(), 1, pPaintManager->GetXtremeColor(COLOR_3DHIGHLIGHT), pPaintManager->GetXtremeColor(COLOR_3DHIGHLIGHT));
-			break;
-	}
-}
-
-void CXTPDockingPaneAutoHideWnd::Reposition(CRect rc, CRect rcClient)
-{
-	CWnd* pSite = GetDockingPaneManager()->GetSite();
-
-	switch (GetDockingPaneManager()->GetRTLDirection(m_direction))
-	{
-	case xtpPaneDockLeft:  rc.left = rcClient.left; break;
-	case xtpPaneDockRight: rc.right = rcClient.right; break;
-	case xtpPaneDockTop: rc.top = rcClient.top; break;
-	case xtpPaneDockBottom: rc.bottom = rcClient.bottom; break;
-	}
-	if (!m_bHoriz) m_pPane->m_pSelectedPane->m_szDocking.cx = rc.Width();
-	else m_pPane->m_pSelectedPane->m_szDocking.cy = rc.Height();
-
-	pSite->ScreenToClient(&rc);
-	m_rcWindow = rc;
-	MoveWindow(m_rcWindow);
-	Invalidate(FALSE);
-}
-
-BOOL CXTPDockingPaneAutoHideWnd::GetAvailableRect(CRect& rcAvail, CRect& rc) const
-{
-	CXTPDockingPaneManager* pManager = GetDockingPaneManager();
-	if (!pManager)
-		return FALSE;
-
-	CRect rcClient = pManager->GetTopPane()->GetPaneWindowRect();
-
-	int nGap = pManager->m_nSplitterGap + 4;
-
-	rcAvail = rcClient;
-
-	MINMAXINFO mmInfo;
-	GetMinMaxInfo(&mmInfo, m_direction == xtpPaneDockRight || m_direction == xtpPaneDockBottom);
-
-	switch (m_direction)
-	{
-		case xtpPaneDockLeft:
-			rcAvail.DeflateRect(max(mmInfo.ptMinTrackSize.x, nGap), 0, nGap, 0);
-
-			if (rcAvail.right - rcClient.left > mmInfo.ptMaxTrackSize.x)
-				rcAvail.right = mmInfo.ptMaxTrackSize.x + rcClient.left;
-
-			if (rcAvail.left >= rcAvail.right)
-				return FALSE;
-
-			rc.left = rc.right - 4;
-			break;
-
-		case xtpPaneDockRight:
-			rcAvail.DeflateRect(nGap, 0, max(mmInfo.ptMinTrackSize.x, nGap), 0);
-
-			if (rcClient.right - rcAvail.left > mmInfo.ptMaxTrackSize.x)
-				rcAvail.left = rcClient.right - mmInfo.ptMaxTrackSize.x;
-
-			if (rcAvail.left >= rcAvail.right)
-				return FALSE;
-
-			rc.right = rc.left + 4;
-			break;
-
-		case xtpPaneDockTop:
-			rcAvail.DeflateRect(0, max(mmInfo.ptMinTrackSize.y, nGap), 0, nGap);
-
-			if (rcAvail.bottom - rcClient.top > mmInfo.ptMaxTrackSize.y)
-				rcAvail.bottom = mmInfo.ptMaxTrackSize.y + rcClient.top;
-
-			if (rcAvail.top >= rcAvail.bottom)
-				return FALSE;
-
-			rc.top = rc.bottom - 4;
-			break;
-
-		case xtpPaneDockBottom:
-			rcAvail.DeflateRect(0, nGap, 0, max(mmInfo.ptMinTrackSize.y, nGap));
-
-			if (rcClient.bottom - rcAvail.top > mmInfo.ptMaxTrackSize.y)
-				rcAvail.top = rcClient.bottom - mmInfo.ptMaxTrackSize.y;
-
-			if (rcAvail.top >= rcAvail.bottom)
-				return FALSE;
-
-			rc.bottom = rc.top + 4;
-			break;
-	}
-	return TRUE;
-}
-
-void CXTPDockingPaneAutoHideWnd::OnLButtonDown(UINT /*nFlags*/, CPoint point)
-{
-	CXTPDockingPaneManager* pManager = GetDockingPaneManager();
-
-	if (!pManager || pManager->IsSplittersLocked())
-		return;
-
-	if (!m_pPane)
-		return;
-
-	CXTPWindowRect rc(this);
-	CRect rcClient = pManager->GetTopPane()->GetPaneWindowRect();
-
-	CRect rcAvail;
-	if (!GetAvailableRect(rcAvail, rc))
-		return;
-
-	m_bTracking = TRUE;
-
-	if (pManager->IsSplitterTrackerUsed())
-	{
-		if (GetExStyle() & WS_EX_LAYOUTRTL)
-			point = rc.TopLeft();
-		else ClientToScreen(&point);
-
-
-		CXTPSplitterTracker tracker;
-
-		if (tracker.Track(this, rcAvail, rc, point, !m_bHoriz))
-		{
-			Reposition(rc, rcClient);
-		}
+		TrackBox(WM_LBUTTONDOWN, point);
 	}
 	else
 	{
-		SetCapture();
+		TrackThumb(WM_LBUTTONDOWN, point);
+		RedrawScrollBar();
+	}
 
-		while (CWnd::GetCapture() == this)
-		{
+	pMouseManager->LockMouseMove();
+
+	while (::GetCapture() == hWnd)
+	{
 			MSG msg;
 
-			while (::PeekMessage(&msg, NULL, WM_PAINT, WM_PAINT, PM_NOREMOVE))
+			if (!::GetMessage(&msg, NULL, 0, 0))
 			{
-				if (!GetMessage(&msg, NULL, WM_PAINT, WM_PAINT))
-					return;
-				DispatchMessage(&msg);
+				AfxPostQuitMessage((int)msg.wParam);
+				break;
 			}
 
-			if (!GetMessage(&msg, NULL, 0, 0))
+			if (!IsWindow(hWnd))
 				break;
 
-			if (msg.message == WM_MOUSEMOVE)
+			UINT cmd = msg.message;
+
+			if (cmd == WM_TIMER && msg.wParam == IDSYS_SCROLL)
 			{
-				point = CPoint(msg.lParam);
-				ClientToScreen(&point);
+				ContScroll();
+			}
+			else if (cmd == WM_TIMER && msg.wParam == IDSYS_ANIMATE)
+			{
+				DoAnimate();
+			}
+			else if (cmd >= WM_MOUSEFIRST && cmd <= WM_MOUSELAST)
+			{
+				CPoint ptScreen = msg.pt;
 
-				point.x = max(min(point.x, rcAvail.right), rcAvail.left);
-				point.y = max(min(point.y, rcAvail.bottom), rcAvail.top);
+				ScreenToClient(hWnd, &ptScreen);
 
-				if (!m_bHoriz)
+				if (!pSBTrack->bTrackThumb)
 				{
-					if (rc.left == point.x)
-						continue;
-					rc.OffsetRect(point.x - rc.left, 0);
+					TrackBox(cmd, ptScreen);
 				}
 				else
 				{
-					if (rc.top == point.y)
-						continue;
-					rc.OffsetRect(0, point.y - rc.top);
+					TrackThumb(cmd, ptScreen);
 				}
-
-				Reposition(rc, rcClient);
 			}
-			else if (msg.message == WM_KEYDOWN && msg.wParam == VK_ESCAPE) break;
-			else if (msg.message == WM_LBUTTONUP) break;
-			else ::DispatchMessage(&msg);
-		}
-
-		if (CWnd::GetCapture() == this) ReleaseCapture();
-	}
-
-	m_bTracking = FALSE;
-}
-
-
-//////////////////////////////////////////////////////////////////////////
-// CPanelDropTarget
-
-class CXTPDockingPaneAutoHidePanel::CPanelDropTarget : public COleDropTarget
-{
-	virtual DROPEFFECT OnDragOver(CWnd* pWnd, COleDataObject* /*pDataObject*/, DWORD /*dwKeyState*/, CPoint point)
-	{
-		CXTPDockingPaneAutoHidePanel* pPanel = (CXTPDockingPaneAutoHidePanel*)pWnd;
-		ASSERT_VALID(pPanel);
-
-		if (!pPanel->GetPaintManager()->GetPanelPaintManager()->m_bSelectOnDragOver)
-			return DROPEFFECT_NONE;
-
-		CXTPDockingPane* pPane = pPanel->HitTest(point);
-		if (pPane)
-		{
-			if (!(pPanel->m_pActiveWnd && pPanel->m_pActiveWnd->GetPane()->GetSelected() == pPane))
+			else
 			{
-				pPanel->ShowPane(pPane, FALSE);
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
 			}
+
+	}
+	pMouseManager->UnlockMouseMove();
+
+	if (pSBTrack->hTimerSB != 0)
+	{
+		::KillTimer(hWnd, pSBTrack->hTimerSB);
+	}
+
+	delete m_pSBTrack;
+	m_pSBTrack = NULL;
+
+	if (IsWindow(hWnd))
+	{
+		GetCursorPos(&point);
+		ScreenToClient(hWnd, &point);
+		m_spi.ht = HitTestScrollBar(point);
+
+		RedrawScrollBar();
+	}
+
+	while (IsWindow(hWnd) && m_bAnimation)
+	{
+		MSG msg;
+
+		if (!::GetMessage(&msg, NULL, 0, 0))
+		{
+			AfxPostQuitMessage((int)msg.wParam);
+			break;
 		}
 
-		return DROPEFFECT_NONE;
-	}
-};
+		UINT cmd = msg.message;
 
-//////////////////////////////////////////////////////////////////////////
-// CAutoHidePanelTabManager
-
-class CXTPDockingPaneAutoHidePanel::CAutoHidePanelTabManager : public CXTPTabManager
-{
-public:
-	CAutoHidePanelTabManager()
-	{
-		FindNavigateButton(xtpTabNavigateButtonLeft)->SetFlags(xtpTabNavigateButtonNone);
-		FindNavigateButton(xtpTabNavigateButtonRight)->SetFlags(xtpTabNavigateButtonNone);
-	}
-
-	virtual void Reposition()
-	{
-
-	}
-	virtual BOOL DrawIcon(CDC* pDC, CPoint pt, CXTPTabManagerItem* pItem, BOOL bDraw, CSize& szIcon) const
-	{
-		if (!pItem)
-			return TRUE;
-
-		if (GetPanel()->GetPaintManager()->GetPanelPaintManager()->m_bShowIcons == FALSE)
-			return FALSE;
-
-
-		CXTPImageManagerIcon* pImage = ((CXTPDockingPane*)pItem->GetData())->GetIcon(szIcon.cx);
-
-		if (!pImage)
-			return FALSE;
-
-		if (!bDraw)
+		if (cmd == WM_TIMER && msg.wParam == IDSYS_ANIMATE)
 		{
-			return TRUE;
-		}
-
-		pItem->DrawImage(pDC, CRect(pt, szIcon), pImage);
-
-		return TRUE;
-
-	}
-
-	virtual void RedrawControl(LPCRECT lpRect, BOOL /*bAnimate*/)
-	{
-		if (GetPanel()->m_hWnd) GetPanel()->InvalidateRect(lpRect, FALSE);
-	}
-
-	virtual CXTPTabPaintManager* GetPaintManager() const
-	{
-		return GetPanel()->GetPaintManager()->GetPanelPaintManager();
-
-	}
-
-	CXTPTabManagerItem* Add()
-	{
-		return AddItem(GetItemCount());
-	}
-
-	XTPTabPosition GetPosition() const
-	{
-		switch (GetPanel()->GetDirection())
-		{
-			case xtpPaneDockLeft: return xtpTabPositionRight;
-			case xtpPaneDockRight: return xtpTabPositionLeft;
-			case xtpPaneDockTop: return xtpTabPositionBottom;
-			case xtpPaneDockBottom: return xtpTabPositionTop;
-		}
-		return xtpTabPositionTop;
-	}
-
-	void PerformMouseMove(HWND hwnd, CPoint pt)
-	{
-		CXTPTabManager::PerformMouseMove(hwnd, pt);
-	}
-
-	CXTPDockingPaneAutoHidePanel* GetPanel() const;
-
-public:
-	CAutoHidePanelTabManagersArray* m_pArray;
-	CRect m_rcManager;
-};
-
-class CXTPDockingPaneAutoHidePanel::CAutoHidePanelTabManagersArray : public CArray<CAutoHidePanelTabManager*, CAutoHidePanelTabManager*>
-{
-public:
-
-	~CAutoHidePanelTabManagersArray()
-	{
-		FreeAll();
-	}
-
-	void FreeAll()
-	{
-		for (int i = 0; i < GetSize(); i++)
-		{
-			delete GetAt(i);
-		}
-		RemoveAll();
-	}
-	CAutoHidePanelTabManager* AddManager()
-	{
-		CAutoHidePanelTabManager* pManager = new CAutoHidePanelTabManager();
-		Add(pManager);
-		pManager->m_pArray = this;
-		return pManager;
-	}
-
-	void Draw(CDC* pDC)
-	{
-		CRect rcClipBox;
-		pDC->GetClipBox(rcClipBox);
-
-		CXTPTabPaintManager* pPaintManager = m_pAutoHidePanel->GetPaintManager()->GetPanelPaintManager();
-		for (int i = 0; i < GetSize(); i++)
-		{
-			CAutoHidePanelTabManager* pManager = GetAt(i);
-
-			if (CRect().IntersectRect(rcClipBox, pManager->m_rcManager))
-				pPaintManager->DrawTabControl(pManager, pDC, pManager->m_rcManager);
-		}
-	}
-
-
-
-public:
-	CXTPDockingPaneAutoHidePanel* m_pAutoHidePanel;
-};
-
-
-
-CXTPDockingPaneAutoHidePanel* CXTPDockingPaneAutoHidePanel::CAutoHidePanelTabManager::GetPanel() const
-{
-	return m_pArray->m_pAutoHidePanel;
-}
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////
-// CXTPDockingPaneAutoHidePanel
-
-int CXTPDockingPaneAutoHidePanel::GetPanelHeight() const
-{
-	CXTPTabPaintManager::CAppearanceSet* pAppearanceSet = GetPaintManager()->GetPanelPaintManager()->GetAppearanceSet();
-
-	return pAppearanceSet->GetButtonHeight(NULL) +
-		pAppearanceSet->m_rcHeaderMargin.bottom + pAppearanceSet->m_rcHeaderMargin.top;
-}
-
-void CXTPDockingPaneAutoHidePanel::RefreshManagersArray(CDC* pDC, CRect rcClient)
-{
-	BOOL bIndent = (m_direction == xtpPaneDockLeft || m_direction == xtpPaneDockRight)
-		&& (m_pLayout->m_wndPanels[xtpPaneDockTop] != NULL && !m_pLayout->m_wndPanels[xtpPaneDockTop]->IsEmpty());
-
-	if (bIndent)
-	{
-		rcClient.top += GetPanelHeight();
-	}
-
-	m_pTabManagers->FreeAll();
-
-	CRect rcMargins = GetPaintManager()->GetPanelPaintManager()->GetAppearanceSet()->GetHeaderMargin();
-
-	POSITION pos = GetHeadPosition();
-	while (pos)
-	{
-		CXTPDockingPaneTabbedContainer* pContainer = (CXTPDockingPaneTabbedContainer*)GetNext(pos);
-		if (pContainer->IsEmpty())
-			continue;
-
-		CAutoHidePanelTabManager* pManager = m_pTabManagers->AddManager();
-
-		POSITION posPane = pContainer->GetHeadPosition();
-		while (posPane)
-		{
-			CXTPDockingPane* pPane = (CXTPDockingPane*)pContainer->GetNext(posPane);
-
-			CXTPTabManagerItem* pItem = pManager->Add();
-
-			pItem->SetData((DWORD_PTR)pPane);
-			if (pContainer->GetSelected() == pPane) pManager->SetSelectedItem(pItem);
-
-			pItem->SetCaption(pPane->GetShortTitle());
-			pItem->SetColor(pPane->GetItemColor());
-			pItem->SetEnabled(pPane->GetEnabled() & xtpPaneEnableClient);
-		}
-		pManager->GetPaintManager()->RepositionTabControl(pManager, pDC, rcClient);
-		pManager->m_rcManager = rcClient;
-
-		if (m_direction == xtpPaneDockLeft || m_direction == xtpPaneDockRight)
-		{
-			rcClient.top += pManager->GetItemsLength() + rcMargins.left + rcMargins.right + 8;
+			DoAnimate();
 		}
 		else
 		{
-			rcClient.left += pManager->GetItemsLength() + rcMargins.left + rcMargins.right + 8;
-
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
 		}
 	}
+
 }
 
-CXTPDockingPaneAutoHidePanel::CXTPDockingPaneAutoHidePanel(CXTPDockingPaneLayout* pLayout)
-	: CXTPDockingPaneBaseContainer(xtpPaneTypeAutoHidePanel, pLayout)
+XTPScrollBarStyle CXTPScrollBase::GetScrollBarStyle() const
 {
-	m_direction = xtpPaneDockLeft;
-	m_pActiveWnd = 0;
-	m_pTabManagers = new CAutoHidePanelTabManagersArray();
-	m_pTabManagers->m_pAutoHidePanel = this;
+	if (m_scrollBarStyle != xtpScrollStyleDefault)
+		return m_scrollBarStyle;
 
-	m_pDropTarget = new CPanelDropTarget();
-	m_rcFrameRect.SetRectEmpty();
+	switch (GetGalleryPaintManager()->GetPaintManager()->BaseTheme())
+	{
+		case xtpThemeOffice2000:
+			return xtpScrollStyleFlat;
 
+		case xtpThemeOffice2007:
+		case xtpThemeRibbon:
+			return xtpScrollStyleOffice2007Light;
+	}
+
+	return xtpScrollStyleSystem;
 }
 
-CXTPDockingPaneAutoHidePanel::~CXTPDockingPaneAutoHidePanel()
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPScrollBar
+
+CXTPScrollBar::CXTPScrollBar()
 {
-	if (m_pActiveWnd)
-	{
-		m_pActiveWnd->m_pPane = 0;
-		m_pActiveWnd->m_pPanel = 0;
-		CloseActiveWindow();
-	}
-
-	if (m_hWnd)
-		DestroyWindow();
-
-	delete m_pTabManagers;
-	delete m_pDropTarget;
+	m_pCommandBars = 0;
 }
 
-void CXTPDockingPaneAutoHidePanel::_InsertPane(CXTPDockingPaneBase* pPane)
+CXTPScrollBar::~CXTPScrollBar()
 {
-	m_lstPanes.AddTail(pPane);
 
-	pPane->SetParentContainer(this);
-	pPane->SetDockingSite(m_pDockingSite);
-
-	GetDockingPaneManager()->RecalcFrameLayout(this, TRUE);
-
-	pPane->OnParentContainerChanged(this);
-
-	if (pPane->GetType() == xtpPaneTypeTabbedContainer)
-	{
-		CWnd* pFocus = GetFocus();
-		if (((CXTPDockingPaneTabbedContainer*)pPane)->GetSafeHwnd() && pFocus->GetSafeHwnd() && (pFocus == ((CXTPDockingPaneTabbedContainer*)pPane) || ((CXTPDockingPaneTabbedContainer*)pPane)->IsChild(pFocus)))
-			GetDockingPaneManager()->GetSite()->SetFocus();
-	}
-
-	if (m_hWnd) Invalidate(FALSE);
 }
 
-void CXTPDockingPaneAutoHidePanel::RemovePane(CXTPDockingPaneBase* pPane)
-{
-	POSITION pos = m_lstPanes.Find(pPane);
-	ASSERT(pos);
-
-	m_lstPanes.RemoveAt(pos);
-	if (m_hWnd) Invalidate(FALSE);
-	GetDockingPaneManager()->RecalcFrameLayout(this, TRUE);
-
-	if (m_lstPanes.IsEmpty())
-	{
-		if (m_hWnd) DestroyWindow();
-	}
-
-	pPane->m_pParentContainer = NULL;
-}
-
-void CXTPDockingPaneAutoHidePanel::Create(CWnd* pParent)
-{
-	CWnd::Create(_T("XTPDockingPaneAutoHidePanel"), NULL, WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS, CXTPEmptyRect(), pParent, 0);
-	m_pDropTarget->Register(this);
-}
-
-void CXTPDockingPaneAutoHidePanel::OnSizeParentEx(CWnd* pParent, CRect& rect, LPVOID lParam)
-{
-	AFX_SIZEPARENTPARAMS* lpLayout = (AFX_SIZEPARENTPARAMS*)lParam;
-
-	if (IsEmpty())
-	{
-		if (m_hWnd) DestroyWindow();
-		return;
-	}
-
-	if (!m_hWnd)
-		Create(pParent);
-
-	if (m_rcFrameRect != rect)
-	{
-		CloseActiveWindow();
-		m_rcFrameRect = rect;
-	}
-
-	int nHeight = GetPanelHeight();
-
-	CRect rcClient(rect);
-	switch (m_direction)
-	{
-		case xtpPaneDockLeft:
-			rcClient.right = rect.left = rect.left + nHeight;
-			break;
-
-		case xtpPaneDockRight:
-			rcClient.left = rect.right = rect.right - nHeight;
-			break;
-
-		case xtpPaneDockTop:
-			rcClient.bottom = rect.top = rect.top + nHeight;
-			break;
-
-		case xtpPaneDockBottom:
-			rcClient.top = rect.bottom = rect.bottom - nHeight;
-			break;
-	}
-
-	CClientDC dc(this);
-	CRect rcPanel(rcClient);
-	rcPanel.OffsetRect(-rcPanel.TopLeft());
-	RefreshManagersArray(&dc, rcPanel);
-
-	if (lpLayout->hDWP != NULL)
-	{
-		MoveWindow(rcClient);
-		Invalidate(FALSE);
-	}
-}
-
-
-BEGIN_MESSAGE_MAP(CXTPDockingPaneAutoHidePanel, CWnd)
+BEGIN_MESSAGE_MAP(CXTPScrollBar, CScrollBar)
+	//{{AFX_MSG_MAP(CXTPStatusBar)
 	ON_WM_PAINT()
 	ON_MESSAGE(WM_PRINTCLIENT, OnPrintClient)
-	ON_WM_LBUTTONDOWN()
-	ON_WM_RBUTTONDOWN()
+	ON_WM_ENABLE()
 	ON_WM_MOUSEMOVE()
-	ON_MESSAGE(WM_MOUSEHOVER, OnMouseHover)
 	ON_MESSAGE_VOID(WM_MOUSELEAVE, OnMouseLeave)
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONDBLCLK()
+	ON_MESSAGE(SBM_SETSCROLLINFO, OnSetScrollInfo)
+	ON_MESSAGE(SBM_GETSCROLLINFO, OnGetScrollInfo)
+	ON_WM_SETFOCUS()
+	ON_WM_CONTEXTMENU()
+	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
-LRESULT CXTPDockingPaneAutoHidePanel::OnPrintClient(WPARAM wParam, LPARAM /*lParam*/)
-{
-	CDC* pDC = CDC::FromHandle((HDC)wParam);
-	if (pDC)
-	{
-		OnDraw(pDC);
-	}
 
-	return TRUE;
+CRect CXTPScrollBar::GetScrollBarRect()
+{
+	return CXTPClientRect(this);
 }
 
-void CXTPDockingPaneAutoHidePanel::OnPaint()
+void CXTPScrollBar::GetScrollInfo(SCROLLINFO* psi)
 {
-	CPaintDC dcPaint(this);
+	psi->cbSize = sizeof(SCROLLINFO);
+
+	psi->fMask = SIF_RANGE | SIF_PAGE | SIF_POS;
+	::GetScrollInfo(m_hWnd, SB_CTL, psi);
+}
+
+BOOL CXTPScrollBar::IsScrollBarEnabled() const
+{
+	return IsWindowEnabled();
+}
+
+CWnd* CXTPScrollBar::GetParentWindow() const
+{
+	return GetParent();
+}
+
+CXTPControlGalleryPaintManager* CXTPScrollBar::GetGalleryPaintManager() const
+{
+	if (m_pCommandBars)
+		return m_pCommandBars->GetPaintManager()->GetGalleryPaintManager();
+
+	return XTPPaintManager()->GetGalleryPaintManager();
+}
+
+void CXTPScrollBar::OnPaint()
+{
+	CPaintDC dcPaint(this); // device context for painting
 	CXTPBufferDC dc(dcPaint);
+
 	OnDraw(&dc);
 }
 
-void CXTPDockingPaneAutoHidePanel::OnDraw(CDC* pDC)
+LRESULT CXTPScrollBar::OnPrintClient(WPARAM wParam, LPARAM /*lParam*/)
 {
-	CXTPClientRect rc(this);
-
-	CXTPPaintManagerColorGradient& clr = GetPaintManager()->GetPanelPaintManager()->GetColorSet()->m_clrAutoHideFace;
-
-	if (clr.clrDark == clr.clrLight)
-	{
-		pDC->FillSolidRect(rc, clr.clrDark);
-	}
-	else
-	{
-		CRect rcFill(rc);
-
-		if (m_direction == xtpPaneDockRight)
-		{
-			rcFill.left -= CXTPClientRect(GetParent()).Width() - rcFill.Width();
-		}
-
-		rcFill.right = rcFill.left + max(rcFill.Width(), GetSystemMetrics(SM_CXFULLSCREEN) / 2);
-		XTPDrawHelpers()->GradientFill(pDC, rcFill, clr.clrLight, clr.clrDark, TRUE, rc);
-	}
-
-	m_pTabManagers->Draw(pDC);
+	CDC* pDC = CDC::FromHandle((HDC)wParam);
+	if (pDC) OnDraw(pDC);
+	return 1;
 }
 
-CXTPTabManagerItem* CXTPDockingPaneAutoHidePanel::GetPaneTab(CXTPDockingPane* pPane) const
+void CXTPScrollBar::OnDraw(CDC* pDC)
 {
-	for (int i = 0; i < m_pTabManagers->GetSize(); i++)
-	{
-		CAutoHidePanelTabManager* pTabManager = m_pTabManagers->GetAt(i);
+	DefWindowProc(WM_PAINT, (WPARAM)pDC->GetSafeHdc(), 0);
 
-		for (int j = 0; j < pTabManager->GetItemCount(); j++)
-		{
-			CXTPTabManagerItem* pItem = pTabManager->GetItem(j);
+	m_spi.fVert = GetStyle() & SBS_VERT;
 
-			if ((CXTPDockingPane*)pItem->GetData() == pPane)
-			{
-				return pItem;
-			}
-		}
-	}
-	return NULL;
+	if (!m_pSBTrack || !m_pSBTrack->bTrackThumb)
+		SetupScrollInfo();
+
+	GetGalleryPaintManager()->DrawScrollBar(pDC, this);
 }
 
-CXTPDockingPane* CXTPDockingPaneAutoHidePanel::HitTest(CPoint point) const
+void CXTPScrollBar::DoScroll(int cmd, int pos)
 {
-	for (int i = 0; i < m_pTabManagers->GetSize(); i++)
-	{
-		CXTPTabManagerItem* pItem = m_pTabManagers->GetAt(i)->HitTest(point);
-		if (pItem)
-		{
-			return (CXTPDockingPane*)pItem->GetData();
-		}
-
-	}
-	return NULL;
+	GetParent()->SendMessage((UINT)(m_spi.fVert ? WM_VSCROLL : WM_HSCROLL),
+		MAKELONG(cmd, pos), (LPARAM)m_hWnd);
 }
 
-void CXTPDockingPaneAutoHidePanel::CloseActiveWindows()
+void CXTPScrollBar::RedrawScrollBar()
 {
-	for (int i = 0; i < 4; i++)
-	{
-		SAFE_CALLPTR(m_pLayout->m_wndPanels[i], CloseActiveWindow());
-	}
+	Invalidate(FALSE);
 }
 
-void CXTPDockingPaneAutoHidePanel::CloseActiveWindow(BOOL bDelayed)
+
+void CXTPScrollBar::OnEnable(BOOL bEnable)
 {
-	if (!m_bCloseActiveWindow)
-		return;
-
-	if (m_pActiveWnd)
-	{
-		if (m_pActiveWnd->m_pPane)
-		{
-			if (GetDockingPaneManager()->_OnAction(xtpPaneActionCollapsing, m_pActiveWnd->m_pPane->GetSelected()))
-				return;
-
-			GetDockingPaneManager()->_OnAction(xtpPaneActionCollapsed,
-				m_pActiveWnd->m_pPane->GetSelected());
-		}
-
-		if (bDelayed)
-		{
-			// let the window close itself
-			if (m_pActiveWnd->m_pPane)
-			{
-				m_pActiveWnd->m_pPane->ShowWindow(SW_HIDE);
-				m_pActiveWnd->m_pPane->SetDockingSite(GetDockingPaneManager()->GetSite());
-				m_pActiveWnd->m_pPane = 0;
-			}
-			m_pActiveWnd->SetTimer(TID_CLOSE, 50, NULL);
-		}
-		else
-		{
-			m_pActiveWnd->CloseWindow();
-		}
-
-		m_pActiveWnd = 0;
-	}
+	CScrollBar::OnEnable(bEnable);
+	Invalidate(FALSE);
 }
 
-void CXTPDockingPaneAutoHidePanel::ShowPane(CXTPDockingPane* pPane, BOOL bSetFocus)
-{
-	if (m_pActiveWnd && m_pActiveWnd->m_pPane && m_pActiveWnd->m_pPane->GetSelected() == pPane)
-	{
-		if (bSetFocus) m_pActiveWnd->m_pPane->SelectPane(pPane, TRUE, FALSE);
-
-		if (m_pActiveWnd->m_bSlideOut)
-		{
-			m_pActiveWnd->OnTimer(TID_CHECKACTIVE);
-		}
-		return;
-	}
-
-	CloseActiveWindows();
-
-	if (GetDockingPaneManager()->_OnAction(xtpPaneActionExpanding, pPane))
-		return;
-
-	CXTPDockingPaneTabbedContainer* pContainer = ((CXTPDockingPaneTabbedContainer*)pPane->m_pParentContainer);
-
-	ASSERT(pContainer);
-	if (!pContainer)
-		return;
-	ASSERT(pContainer->GetType() == xtpPaneTypeTabbedContainer);
-
-	pContainer->SelectPane(pPane, FALSE, TRUE);
-	CXTPDockingPaneAutoHideWnd* pActiveWnd = new CXTPDockingPaneAutoHideWnd(this, pContainer);
-
-	if (bSetFocus) pContainer->SelectPane(pPane, TRUE, FALSE);
-
-	if (m_hWnd) Invalidate(FALSE);
-	GetDockingPaneManager()->RecalcFrameLayout(this);
-
-	m_pActiveWnd = pActiveWnd;
-}
-
-void CXTPDockingPaneAutoHidePanel::OnLButtonDown(UINT /*nFlags*/, CPoint point)
-{
-	CXTPDockingPane* pPane = HitTest(point);
-	if (pPane)
-	{
-		if (m_pActiveWnd && m_pActiveWnd->m_pPane->GetSelected() == pPane)
-		{
-			pPane->SetFocus();
-
-		}
-		else
-		{
-			ShowPane(pPane);
-		}
-	}
-}
-
-void CXTPDockingPaneAutoHidePanel::OnRButtonDown(UINT /*nFlags*/, CPoint point)
-{
-	CXTPDockingPane* pPane = HitTest(point);
-	if (pPane)
-	{
-		GetDockingPaneManager()->NotifyOwner(XTP_DPN_RCLICK, (LPARAM)(CXTPDockingPaneBase*)pPane);
-	}
-}
-
-void CXTPDockingPaneAutoHidePanel::OnMouseMove(UINT nFlags, CPoint point)
-{
-	for (int i = 0; i < m_pTabManagers->GetSize(); i++)
-	{
-		m_pTabManagers->GetAt(i)->PerformMouseMove(m_hWnd, point);
-	}
-
-
-
-	CXTPDockingPane* pPane = HitTest(point);
-	if (pPane)
-	{
-		TRACKMOUSEEVENT tme =
-		{
-			sizeof(TRACKMOUSEEVENT), TME_HOVER | TME_LEAVE, m_hWnd, CXTPDockingPaneAutoHideWnd::m_nMouseHoverDelay
-		};
-		_TrackMouseEvent(&tme);
-
-	}
-	CWnd::OnMouseMove(nFlags, point);
-}
-
-void CXTPDockingPaneAutoHidePanel::OnMouseLeave()
+void CXTPScrollBar::OnMouseLeave()
 {
 	OnMouseMove(0, CPoint(-1, -1));
 }
 
-LRESULT CXTPDockingPaneAutoHidePanel::OnMouseHover(WPARAM, LPARAM lParam)
+void CXTPScrollBar::OnMouseMove(UINT /*nFlags*/, CPoint point)
 {
-	CPoint point(lParam);
-	CXTPDockingPane* pPane = HitTest(point);
-	if (pPane)
+	int ht = HitTestScrollBar(point);
+
+	if (ht != m_spi.ht)
 	{
-		if (!CXTPDrawHelpers::IsTopParentActive(m_hWnd) || (m_pActiveWnd && m_pActiveWnd->m_pPane->GetSelected() == pPane))
-			return 1;
+		m_spi.ht = ht;
+		Invalidate(FALSE);
 
-		ShowPane(pPane, FALSE);
-	}
-
-	return 1;
-}
-
-
-void CXTPDockingPaneAutoHidePanel::Copy(CXTPDockingPaneAutoHidePanel* pClone, CXTPPaneToPaneMap* pMap)
-{
-	ASSERT(pClone);
-	if (!pClone)
-		return;
-
-	m_direction = pClone->m_direction;
-	m_pDockingSite = GetDockingPaneManager()->GetSite();
-
-	POSITION pos = pClone->GetHeadPosition();
-	while (pos)
-	{
-		CXTPDockingPaneBase* pPane = (CXTPDockingPaneBase*)pClone->GetNext(pos);
-		if (!pPane->IsEmpty() || pMap)
+		if (m_spi.ht != HTNOWHERE)
 		{
-			_InsertPane(pPane->Clone(m_pLayout, pMap));
+			TRACKMOUSEEVENT tme = {sizeof(TRACKMOUSEEVENT), TME_LEAVE, m_hWnd, HOVER_DEFAULT};
+			_TrackMouseEvent(&tme);
 		}
 	}
 }
 
-CXTPDockingPaneBase* CXTPDockingPaneAutoHidePanel::Clone(CXTPDockingPaneLayout* pLayout, CXTPPaneToPaneMap* pMap, DWORD /*dwIgnoredOptions*/)
+
+void CXTPScrollBar::OnLButtonDown(UINT /*nFlags*/, CPoint point)
 {
-	CXTPDockingPaneAutoHidePanel* pPane = (CXTPDockingPaneAutoHidePanel*)GetDockingPaneManager()->
-		OnCreatePane(GetType(), pLayout);
-
-	pPane->Copy(this, pMap);
-
-	SAFE_CALLPTR(pMap, SetAt(this, pPane));
-
-	return pPane;
+	PerformTrackInit(m_hWnd, point, &m_spi, (GetKeyState(VK_SHIFT) < 0) ? TRUE : FALSE);
 }
 
-void CXTPDockingPaneAutoHidePanel::InvalidatePane(BOOL /*bSelectionChanged*/)
+void CXTPScrollBar::OnContextMenu(CWnd* pWnd, CPoint pos)
 {
-	if (!m_hWnd)
-		return;
-
-	CClientDC dc(this);
-	CXTPClientRect rcPanel(this);
-
-	RefreshManagersArray(&dc, rcPanel);
+	CScrollBar::OnContextMenu(pWnd, pos);
 	Invalidate(FALSE);
 }
 
-
-void CXTPDockingPaneAutoHidePanel::OnChildContainerChanged(CXTPDockingPaneBase* /*pContainer*/)
+void CXTPScrollBar::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
-	if (m_pActiveWnd)
+	OnLButtonDown(nFlags, point);
+}
+
+LRESULT CXTPScrollBar::OnSetScrollInfo(WPARAM wParam, LPARAM lParam)
+{
+	LRESULT bResult = DefWindowProc(SBM_SETSCROLLINFO, FALSE, lParam);
+
+	if (wParam)
 	{
-		if (!m_bCloseActiveWindow)
-		{
-			GetDockingPaneManager()->RecalcFrameLayout(this);
-
-			m_pActiveWnd->RecalcLayout(TRUE);
-		}
-		else
-		{
-			CloseActiveWindow(GetDockingPaneManager()->m_bAttachingPane);
-		}
+		Invalidate(FALSE);
+		UpdateWindow();
 	}
+
+	return bResult;
 }
 
-void CXTPDockingPaneAutoHidePanel::DeletePane()
+LRESULT CXTPScrollBar::OnGetScrollInfo(WPARAM wParam, LPARAM lParam)
 {
-	InternalRelease();
+	LRESULT bResult = DefWindowProc(SBM_GETSCROLLINFO, wParam, lParam);
+
+	LPSCROLLINFO lpsi = (LPSCROLLINFO)lParam;
+
+	if (lpsi && (lpsi->fMask & SIF_TRACKPOS) && m_pSBTrack)
+	{
+		lpsi->nTrackPos = m_pSBTrack->posNew;
+	}
+
+	return bResult;
 }
 
-void CXTPDockingPaneAutoHidePanel::OnFinalRelease()
+
+void CXTPScrollBar::OnSetFocus(CWnd* pOldWnd)
 {
-	if (m_hWnd != NULL)
-		DestroyWindow();
-
-	CCmdTarget::OnFinalRelease();
+	pOldWnd;
 }
-

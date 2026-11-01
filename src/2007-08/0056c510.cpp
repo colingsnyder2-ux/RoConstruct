@@ -1,88 +1,80 @@
-// from server: 58% by colin
+// from server: 100% by Yeetserama
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/reflection/reflection_property.cpp
+// roc-lib: openrbx-client-dll App/util/standardout.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "reflection/enumconverter.h"
-#include "reflection/object.h"
-#include "reflection/property.h"
-#include "v8xml/XmlElement.h"
+#include "util/standardout.h"
+
+#include "decomp.h"
+#include "util/Log.h"
+
+#include <G3D/format.h>
+#include <cstdarg>
+#include <ctime>
 
 namespace RBX {
-namespace Reflection {
 
-// FUNCTION: WEBSERVICE 0x10094120
-void PropertyDescriptor::read(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+DECOMP_SIZE_ASSERT(StandardOut, 0x28)
+DECOMP_SIZE_ASSERT(StandardOutMessage, 0x28)
+
+// FUNCTION: WEBSERVICE 0x100010d0
+void StandardOut::print(MessageType type, const std::exception& exp)
 {
-	readValue(instance, element, binder);
+	print(type, exp.what());
 }
 
-// FUNCTION: WEBSERVICE 0x10094130
-template <>
-const Type& Type::singleton<const PropertyDescriptor*>()
+// FUNCTION: WEBSERVICE 0x10031e40
+void StandardOut::print(MessageType type, const char* format, ...)
 {
-	static Type type("Property", typeid(const PropertyDescriptor*));
+	va_list arguments;
+	va_start(arguments, format);
+	std::string message = G3D::vformat(format, arguments);
+	va_end(arguments);
 
-	return type;
-}
-
-// FUNCTION: WEBSERVICE 0x100941a0
-XmlElement* PropertyDescriptor::write(const DescribedBase* instance, bool ignoreWriteProtection) const
-{
-	if (!ignoreWriteProtection) {
-		if (isReadOnly()) {
-			return NULL;
+	if (Log::current()) {
+		if (type == MESSAGE_ERROR) {
+			Log::current()->writeEntry(Log::Error, message.c_str());
 		}
-
-		if (!canStreamWrite()) {
-			return NULL;
+		else if (type == MESSAGE_WARNING) {
+			Log::current()->writeEntry(Log::Warning, message.c_str());
+		}
+		else if (type == MESSAGE_INFO) {
+			Log::current()->writeEntry(Log::Information, message.c_str());
 		}
 	}
 
-	XmlElement* element = new XmlElement(type.tag);
+	if (hasListeners()) {
+		boost::mutex::scoped_lock lock(sync);
 
-	element->addAttribute<const RBX::Name*>(name_name, &name);
-
-	writeValue(instance, element);
-
-	return element;
+		if (hasListeners()) {
+			raise(StandardOutMessage(type, message.c_str()));
+		}
+	}
 }
 
-// FUNCTION: WEBSERVICE 0x10094250
-std::vector<const EnumDescriptor*>& EnumDescriptor::allEnums()
+// FUNCTION: WEBSERVICE 0x100320e0
+boost::shared_ptr<StandardOut> StandardOut::singleton()
 {
-	static std::vector<const EnumDescriptor*> s;
+	static boost::shared_ptr<StandardOut> standardOut(new StandardOut());
 
-	return s;
+	return standardOut;
 }
 
-// FUNCTION: WEBSERVICE 0x100942b0
-EnumDescriptor::~EnumDescriptor()
+// FUNCTION: WEBSERVICE 0x100321b0
+void StandardOut::print_exception(const boost::function0<void>& f, MessageType type, bool rethrow)
 {
-	allEnums().erase(std::find(allEnums().begin(), allEnums().end(), this));
+	try {
+		f();
+	}
+	catch (const std::exception& error) {
+		singleton()->print(type, error);
+
+		if (rethrow) {
+			throw;
+		}
+	}
 }
 
-// FUNCTION: WEBSERVICE 0x10094390
-EnumDescriptor::EnumDescriptor(const char* typeName, const std::type_info& type)
-	: Type(typeName, type, "token"), enumCount(0), enumCountMSB(0)
-{
-	allEnums().push_back(this);
-}
-
-// FUNCTION: WEBSERVICE 0x10094410
-PropertyDescriptor::PropertyDescriptor(
-	ClassDescriptor& classDescriptor,
-	const Type& type,
-	const char* name,
-	const char* category,
-	Functionality flags
-)
-	: MemberDescriptor(classDescriptor, name, category), type(type), bIsPublic(flags), bCanStreamWrite(flags >> 2)
-{
-	classDescriptor.MemberDescriptorContainer<PropertyDescriptor>::declare(this);
-}
-
-} // namespace Reflection
 } // namespace RBX

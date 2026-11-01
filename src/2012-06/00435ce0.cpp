@@ -1,5 +1,14 @@
-// from server: 85% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/afxtoolbarimages.cpp
+// from server: 100% by tester
+typedef unsigned char byte;
+
+static byte g_00D1F0E0;
+static int g_00D1F0E4;
+
+void f0092b920()
+{
+    if ((g_00D1F0E4 & 1) == 0)
+    {
+        g_00D1F0E4 |= 1;
+        g_00D1F0E0 = 0;
+    }
+}

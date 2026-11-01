@@ -1,4 +1,4 @@
-// from server: 80% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00437030  unit: RBX::VStandardOut::?$Listener  size: 90 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00437030
 //
@@ -34,16 +34,25 @@
 // 00437081  e898991f00           call 0x630a1e
 // 00437086  83c418               add esp, 0x18
 // 00437089  c3                   ret 
+// copied from an identical function in another client (function ?format_output@ns_ROCX000001@@YAHGPAX@Z)
 
-extern "C" int __stdcall swprintf_s(wchar_t*, unsigned int, const wchar_t*, ...);
-extern "C" int __cdecl memcpy_s(void*, unsigned int, const void*, unsigned int);
+namespace ns_ROCX000001 {
+// from server: 100% by king_originala
+extern "C" {
+    extern int (__cdecl *swprintf_s)(wchar_t *, unsigned int,
+                                    const wchar_t *, ...);
+    extern int (__cdecl *memcpy_s)(void *, unsigned int,
+                                  const void *, unsigned int);
+    void __cdecl check_error(int);
+}
 
-struct VStandardOutListener {
-};
+extern const wchar_t format[];
 
-int __cdecl method(unsigned short a, void* b) {
-    wchar_t buf[9];
-    int n = swprintf_s(buf, 9, L"t$Wh", a);
-    memcpy_s(b, 0x12, buf, 0x10);
-    return n;
+int __cdecl format_output(unsigned short value, void *destination)
+{
+    wchar_t buffer[9];
+    int result = swprintf_s(buffer, 9, format, value);
+    check_error(memcpy_s(destination, 18, buffer, 16));
+    return result;
+}
 }

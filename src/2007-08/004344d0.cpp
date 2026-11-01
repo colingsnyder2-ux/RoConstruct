@@ -1,9 +1,4 @@
-// roc 2007-08 004344d0  unit: CObjectBrowser  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004344d0
-//
-// 004344d0  e9c3bd1f00           jmp 0x630298
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_004344d0();
 void func_004344d0()
 {

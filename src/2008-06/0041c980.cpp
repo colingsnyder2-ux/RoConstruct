@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0041c980  unit: RBX::VDataModel::?$BoundFuncDesc  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0041c980
-//
-// 0041c980  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0041c984  83f803               cmp eax, 3
-// 0041c987  741e                 je 0x41c9a7
-// 0041c989  8b542408             mov edx, dword ptr [esp + 8]
-// 0041c98d  c644240c00           mov byte ptr [esp + 0xc], 0
-// 0041c992  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 0041c996  51                   push ecx
-// 0041c997  50                   push eax
-// 0041c998  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0041c99c  52                   push edx
-// 0041c99d  50                   push eax
-// 0041c99e  e87debffff           call 0x41b520
-// 0041c9a3  83c410               add esp, 0x10
-// 0041c9a6  c3                   ret 
-// 0041c9a7  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0041c9ab  c70108d29200         mov dword ptr [ecx], 0x92d208
-// 0041c9b1  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

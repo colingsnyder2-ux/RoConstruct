@@ -1,32 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00410d60  unit: CBrowserView  size: 89 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00410d60
-//
-// 00410d60  6aff                 push -1
-// 00410d62  681afa7b00           push 0x7bfa1a
-// 00410d67  64a100000000         mov eax, dword ptr fs:[0]
-// 00410d6d  50                   push eax
-// 00410d6e  64892500000000       mov dword ptr fs:[0], esp
-// 00410d75  51                   push ecx
-// 00410d76  68d0020000           push 0x2d0
-// 00410d7b  e8a0fb2800           call 0x6a0920
-// 00410d80  83c404               add esp, 4
-// 00410d83  890424               mov dword ptr [esp], eax
-// 00410d86  c744240c00000000     mov dword ptr [esp + 0xc], 0
-// 00410d8e  85c0                 test eax, eax
-// 00410d90  7416                 je 0x410da8
-// 00410d92  8bc8                 mov ecx, eax
-// 00410d94  e817fbffff           call 0x4108b0
-// 00410d99  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 00410d9d  64890d00000000       mov dword ptr fs:[0], ecx
-// 00410da4  83c410               add esp, 0x10
-// 00410da7  c3                   ret 
-// 00410da8  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 00410dac  33c0                 xor eax, eax
-// 00410dae  64890d00000000       mov dword ptr fs:[0], ecx
-// 00410db5  83c410               add esp, 0x10
-// 00410db8  c3                   ret 
-
 // 0044edf0  6aff                 push -1
 // 0044edf2  681afa7b00           push 0x7bfa1a
 // 0044edf7  64a100000000         mov eax, dword ptr fs:[0]

@@ -1,29 +1,4 @@
-// roc 2011-06 0096d5e0  unit: Ogre::RbxSceneUpdater  size: 46 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0096d5e0
-//
-// 0096d5e0  51                   push ecx
-// 0096d5e1  56                   push esi
-// 0096d5e2  8bf1                 mov esi, ecx
-// 0096d5e4  8b4604               mov eax, dword ptr [esi + 4]
-// 0096d5e7  8b08                 mov ecx, dword ptr [eax]
-// 0096d5e9  50                   push eax
-// 0096d5ea  51                   push ecx
-// 0096d5eb  8d44240c             lea eax, [esp + 0xc]
-// 0096d5ef  50                   push eax
-// 0096d5f0  8bce                 mov ecx, esi
-// 0096d5f2  e879f7ffff           call 0x96cd70
-// 0096d5f7  8b4e04               mov ecx, dword ptr [esi + 4]
-// 0096d5fa  51                   push ecx
-// 0096d5fb  e858cae9ff           call 0x80a058
-// 0096d600  83c404               add esp, 4
-// 0096d603  33c0                 xor eax, eax
-// 0096d605  894604               mov dword ptr [esi + 4], eax
-// 0096d608  894608               mov dword ptr [esi + 8], eax
-// 0096d60b  5e                   pop esi
-// 0096d60c  59                   pop ecx
-// 0096d60d  c3                   ret 
-// copied from an identical function in another client (function ?_Tidy@?$_Tree@V?$_Tmap_traits@HUValue16@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUValue16@@@std@@@3@$0A@@std@@@std@@IAEXXZ)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD

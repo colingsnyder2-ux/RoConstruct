@@ -1,3 +1,4 @@
+// from server: 100% by colin
 // roc 2007-08 00580420  unit: RBX::Log  size: 129 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00580420
 //

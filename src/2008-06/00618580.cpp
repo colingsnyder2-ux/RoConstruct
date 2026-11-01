@@ -1,42 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00618580  unit: RBX::Flag  size: 93 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00618580
-//
-// 00618580  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00618584  85c0                 test eax, eax
-// 00618586  752f                 jne 0x6185b7
-// 00618588  8b442408             mov eax, dword ptr [esp + 8]
-// 0061858c  85c0                 test eax, eax
-// 0061858e  744c                 je 0x6185dc
-// 00618590  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 00618594  8b11                 mov edx, dword ptr [ecx]
-// 00618596  8910                 mov dword ptr [eax], edx
-// 00618598  8b5104               mov edx, dword ptr [ecx + 4]
-// 0061859b  895004               mov dword ptr [eax + 4], edx
-// 0061859e  8b5108               mov edx, dword ptr [ecx + 8]
-// 006185a1  895008               mov dword ptr [eax + 8], edx
-// 006185a4  8b510c               mov edx, dword ptr [ecx + 0xc]
-// 006185a7  89500c               mov dword ptr [eax + 0xc], edx
-// 006185aa  8b5110               mov edx, dword ptr [ecx + 0x10]
-// 006185ad  895010               mov dword ptr [eax + 0x10], edx
-// 006185b0  8b4914               mov ecx, dword ptr [ecx + 0x14]
-// 006185b3  894814               mov dword ptr [eax + 0x14], ecx
-// 006185b6  c3                   ret 
-// 006185b7  83f801               cmp eax, 1
-// 006185ba  7420                 je 0x6185dc
-// 006185bc  56                   push esi
-// 006185bd  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 006185c1  8b0e                 mov ecx, dword ptr [esi]
-// 006185c3  6818ac9500           push 0x95ac18
-// 006185c8  ff1578288000         call dword ptr [0x802878]
-// 006185ce  0fb6d0               movzx edx, al
-// 006185d1  f7da                 neg edx
-// 006185d3  1bd2                 sbb edx, edx
-// 006185d5  23542408             and edx, dword ptr [esp + 8]
-// 006185d9  8916                 mov dword ptr [esi], edx
-// 006185db  5e                   pop esi
-// 006185dc  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <new>

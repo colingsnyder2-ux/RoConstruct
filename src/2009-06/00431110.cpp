@@ -1,31 +1,4 @@
-// roc 2009-06 00431110  unit: HVCXTPPropertyGridItem::?$XItem  size: 65 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00431110
-//
-// 00431110  83ec20               sub esp, 0x20
-// 00431113  8b442424             mov eax, dword ptr [esp + 0x24]
-// 00431117  56                   push esi
-// 00431118  8bf1                 mov esi, ecx
-// 0043111a  8b08                 mov ecx, dword ptr [eax]
-// 0043111c  51                   push ecx
-// 0043111d  8d542408             lea edx, [esp + 8]
-// 00431121  68683b8b00           push 0x8b3b68
-// 00431126  52                   push edx
-// 00431127  ff1538e98900         call dword ptr [0x89e938]
-// 0043112d  83c408               add esp, 8
-// 00431130  8d442408             lea eax, [esp + 8]
-// 00431134  8bcc                 mov ecx, esp
-// 00431136  8964242c             mov dword ptr [esp + 0x2c], esp
-// 0043113a  50                   push eax
-// 0043113b  ff1508fd8900         call dword ptr [0x89fd08]
-// 00431141  8b16                 mov edx, dword ptr [esi]
-// 00431143  8b4260               mov eax, dword ptr [edx + 0x60]
-// 00431146  8bce                 mov ecx, esi
-// 00431148  ffd0                 call eax
-// 0043114a  5e                   pop esi
-// 0043114b  83c420               add esp, 0x20
-// 0043114e  c20400               ret 4
-// copied from an identical function in another client (function ?setValue@Item@@QAEXPBH@Z)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // from server: 96% by colin

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 008101e0  unit: CXTPScrollBase  size: 125 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 008101e0
 //

@@ -1,19 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 0069e260  unit: CXTPPropertyGridItemEnum  size: 32 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0069e260
-//
-// 0069e260  8b8104010000         mov eax, dword ptr [ecx + 0x104]
-// 0069e266  85c0                 test eax, eax
-// 0069e268  7415                 je 0x69e27f
-// 0069e26a  8b00                 mov eax, dword ptr [eax]
-// 0069e26c  3b8100010000         cmp eax, dword ptr [ecx + 0x100]
-// 0069e272  740b                 je 0x69e27f
-// 0069e274  8b11                 mov edx, dword ptr [ecx]
-// 0069e276  50                   push eax
-// 0069e277  8b82e8000000         mov eax, dword ptr [edx + 0xe8]
-// 0069e27d  ffd0                 call eax
-// 0069e27f  c3                   ret 
-
 struct CXTPPropertyGridItemEnum {
     virtual void vfunc_00();
     virtual void vfunc_04();

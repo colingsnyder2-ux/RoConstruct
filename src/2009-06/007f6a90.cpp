@@ -1,16 +1,4 @@
-// roc 2009-06 007f6a90  unit: CXTPTabPaintManager  size: 21 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 007f6a90
-//
-// 007f6a90  c701c4a69000         mov dword ptr [ecx], 0x90a6c4
-// 007f6a96  8b4904               mov ecx, dword ptr [ecx + 4]
-// 007f6a99  85c9                 test ecx, ecx
-// 007f6a9b  7407                 je 0x7f6aa4
-// 007f6a9d  51                   push ecx
-// 007f6a9e  e83b22f2ff           call 0x718cde
-// 007f6aa3  59                   pop ecx
-// 007f6aa4  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern "C" void __cdecl G1_func_007f6a90(void*);
 struct S_func_007f6a90 {
     virtual ~S_func_007f6a90();

@@ -1,18 +1,9 @@
-// roc 2010-06 0040eb40  unit: VCApp::?$CComObject  size: 13 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0040eb40
-//
-// 0040eb40  8b442404             mov eax, dword ptr [esp + 4]
-// 0040eb44  ff4018               inc dword ptr [eax + 0x18]
-// 0040eb47  8b4018               mov eax, dword ptr [eax + 0x18]
-// 0040eb4a  c20400               ret 4
-// copied from an identical function in another client (function ?sub_0040b800@ns_ROCX00000b@@YGJPAUS@1@@Z)
+// from server: 100% by tester
+struct S {
+    int f(int* p);
+};
 
-namespace ns_ROCX00000b {
-struct S { int pad[6]; long m; };
-
-long __stdcall sub_0040b800(S* p)
-{
-    ++p->m;
-    return p->m;
-}
+int S::f(int* p) {
+    ++*(int*)((char*)p + 0x18);
+    return *(int*)((char*)p + 0x18);
 }

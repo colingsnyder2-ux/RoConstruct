@@ -1,10 +1,4 @@
-// roc 2012-06 00421900  unit: RBX::DS::CVideoStream  size: 8 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00421900
-//
-// 00421900  b8ffff0080           mov eax, 0x8000ffff
-// 00421905  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00421900 {
 
     unsigned int f(int a1);

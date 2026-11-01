@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 00405220  unit: VCApp::?$CComObject  size: 61 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 00405220
 //

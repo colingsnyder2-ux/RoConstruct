@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 004032a0  unit: RBX::VRunService::?$FactoryProduct::Creator  size: 300 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 004032a0
 //

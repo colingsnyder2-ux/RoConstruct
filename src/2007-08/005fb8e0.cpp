@@ -1,21 +1,30 @@
-// from server: 65% by colin
-struct AnchorTool {
-    char pad[0x20];
-    int m_flag20;
-    char pad2[4];
-    bool m_allAnchored;
-    void* getCursorName();
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+struct String;
+
+typedef String* (__thiscall *StringConstructor)(String*, const char*);
+extern StringConstructor constructString;
+
+struct S {
+    char padding0[0x20];
+    int active;
+    char padding1[4];
+    unsigned char anchored;
+
+    String* f(String* result);
 };
 
-extern "C" void* __stdcall string_ctor(void* self, const char* s);
-
-void* AnchorTool::getCursorName()
+String* S::f(String* result)
 {
-    void* result = (void*)0;
-    if (m_flag20 != 0 && m_allAnchored) {
-        string_ctor(&result, "AnchorCursor");
-    } else {
-        string_ctor(&result, "UnAnchorCursor");
+    volatile int temporary = 0;
+    if (active) {
+        if (anchored) {
+            constructString(result, "UnAnchorCursor");
+            return result;
+        }
+        constructString(result, "AnchorCursor");
+        return result;
     }
+    constructString(result, "AnchorCursor");
     return result;
 }

@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00491050  unit: RBX::Network::VPlayer::?$PropDescriptor  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00491050
-//
-// 00491050  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00491054  83f803               cmp eax, 3
-// 00491057  741e                 je 0x491077
-// 00491059  8b542408             mov edx, dword ptr [esp + 8]
-// 0049105d  c644240c00           mov byte ptr [esp + 0xc], 0
-// 00491062  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 00491066  51                   push ecx
-// 00491067  50                   push eax
-// 00491068  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0049106c  52                   push edx
-// 0049106d  50                   push eax
-// 0049106e  e8fdd3ffff           call 0x48e470
-// 00491073  83c410               add esp, 0x10
-// 00491076  c3                   ret 
-// 00491077  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0049107b  c70150569300         mov dword ptr [ecx], 0x935650
-// 00491081  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

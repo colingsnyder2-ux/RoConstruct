@@ -1,30 +1,4 @@
-// roc 2009-06 004596a0  unit: CRobloxView  size: 66 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 004596a0
-//
-// 004596a0  51                   push ecx
-// 004596a1  56                   push esi
-// 004596a2  c744240400000000     mov dword ptr [esp + 4], 0
-// 004596aa  e8f128fcff           call 0x41bfa0
-// 004596af  8b4c2410             mov ecx, dword ptr [esp + 0x10]
-// 004596b3  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 004596b7  83ec10               sub esp, 0x10
-// 004596ba  8bd4                 mov edx, esp
-// 004596bc  890a                 mov dword ptr [edx], ecx
-// 004596be  8b4c2424             mov ecx, dword ptr [esp + 0x24]
-// 004596c2  894a04               mov dword ptr [edx + 4], ecx
-// 004596c5  8b4c2428             mov ecx, dword ptr [esp + 0x28]
-// 004596c9  894a08               mov dword ptr [edx + 8], ecx
-// 004596cc  8b4c242c             mov ecx, dword ptr [esp + 0x2c]
-// 004596d0  894a0c               mov dword ptr [edx + 0xc], ecx
-// 004596d3  56                   push esi
-// 004596d4  8bc8                 mov ecx, eax
-// 004596d6  e8b5fbffff           call 0x459290
-// 004596db  8bc6                 mov eax, esi
-// 004596dd  5e                   pop esi
-// 004596de  59                   pop ecx
-// 004596df  c21400               ret 0x14
-// copied from an identical function in another client (function ?f@S@ns_ROCX000000@@QAE?AURet@2@UArg@2@@Z)
-
+// from server: 100% by colin
 namespace ns_ROCX000000 {
 struct Ret
 {

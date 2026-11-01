@@ -1,21 +1,12 @@
-// roc 2009-06 00770220  unit: CXTPPrintPageHeaderFooter  size: 21 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00770220
-//
-// 00770220  8b442408             mov eax, dword ptr [esp + 8]
-// 00770224  99                   cdq 
-// 00770225  f77c2404             idiv dword ptr [esp + 4]
-// 00770229  33c9                 xor ecx, ecx
-// 0077022b  85d2                 test edx, edx
-// 0077022d  0f95c1               setne cl
-// 00770230  03c1                 add eax, ecx
-// 00770232  c20800               ret 8
-// copied from an identical function in another client (function ?sub_0067FDB0@ns_ROCX000058@@YGHHH@Z)
-
-namespace ns_ROCX000058 {
-int __stdcall sub_0067FDB0(int divisor, int value)
+// from server: 100% by why2
+struct CXTPPrintPageHeaderFooter
 {
-    int quotient = value / divisor;
-    int remainder = value % divisor;
-    return quotient + (remainder != 0 ? 1 : 0);
-}
+    int f(int a, int b);
+};
+
+int CXTPPrintPageHeaderFooter::f(int a, int b)
+{
+    int q = b / a;
+    int r = b % a;
+    return q + (r != 0);
 }

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 00969060  unit: Ogre::RbxSpatialHashedSceneNode::?3??_findVisibleObjects::NodeVisiter  size: 16 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 00969060
 //

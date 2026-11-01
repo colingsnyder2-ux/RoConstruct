@@ -1,5 +1,8 @@
-// from server: 68% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/wincore.cpp
+// from server: 100% by colin
+
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+void* __stdcall make_value_004b13b0();
+void* func_004b13b0() {
+    static void* value = make_value_004b13b0();
+    return value;
+}

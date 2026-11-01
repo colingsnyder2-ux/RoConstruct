@@ -1,19 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 005885c0  unit: RBX::SoundChannel  size: 80 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005885c0
-//
-// 005885c0  c701cceb7a00         mov dword ptr [ecx], 0x7aebcc
-// 005885c6  c74104c0eb7a00       mov dword ptr [ecx + 4], 0x7aebc0
-// 005885cd  c74110b8eb7a00       mov dword ptr [ecx + 0x10], 0x7aebb8
-// 005885d4  c74114a8eb7a00       mov dword ptr [ecx + 0x14], 0x7aeba8
-// 005885db  c7412c98eb7a00       mov dword ptr [ecx + 0x2c], 0x7aeb98
-// 005885e2  c7414488eb7a00       mov dword ptr [ecx + 0x44], 0x7aeb88
-// 005885e9  c7415c78eb7a00       mov dword ptr [ecx + 0x5c], 0x7aeb78
-// 005885f0  c7417468eb7a00       mov dword ptr [ecx + 0x74], 0x7aeb68
-// 005885f7  c7818c00000058eb7a00 mov dword ptr [ecx + 0x8c], 0x7aeb58
-// 00588601  c781e80000004ceb7a00 mov dword ptr [ecx + 0xe8], 0x7aeb4c
-// 0058860b  e900feffff           jmp 0x588410
-
 struct SoundChannel {
     void construct();
 };

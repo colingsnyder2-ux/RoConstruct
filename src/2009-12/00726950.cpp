@@ -1,19 +1,4 @@
-// roc 2009-12 00726950  unit: std::D::V?$allocator::V?$basic_gzip_decompressor::?$stream_buffer  size: 27 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00726950
-//
-// 00726950  8b442410             mov eax, dword ptr [esp + 0x10]
-// 00726954  8b54240c             mov edx, dword ptr [esp + 0xc]
-// 00726958  50                   push eax
-// 00726959  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0072695d  52                   push edx
-// 0072695e  99                   cdq 
-// 0072695f  52                   push edx
-// 00726960  50                   push eax
-// 00726961  8b442414             mov eax, dword ptr [esp + 0x14]
-// 00726965  50                   push eax
-// 00726966  e8b5fcffff           call 0x726620
-// copied from an identical function in another client (function ?seekoff@?$indirect_streambuf@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAE?AV?$fpos@H@std@@JHH@Z)
-
+// from server: 100% by colin
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727

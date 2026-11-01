@@ -1,10 +1,4 @@
-// roc 2011-06 00840950  unit: VCXTPReportRow::?$CXTPHeapObjectT  size: 4 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00840950
-//
-// 00840950  8b414c               mov eax, dword ptr [ecx + 0x4c]
-// 00840953  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00840950 {
     char pad0[76];
     int m_x;

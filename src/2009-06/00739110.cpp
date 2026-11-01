@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 00739110  unit: CXTPImageManager  size: 39 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00739110
 //

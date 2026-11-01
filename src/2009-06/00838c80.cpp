@@ -1,51 +1,34 @@
-// from server: 59% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render TextureProxy.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/TextureProxy.h"
-
-namespace RBX
-{
-	namespace Render
-	{
-		G3D::ReferenceCountedPointer<G3D::Texture> TextureProxy::getIfResolved() const
-		{
-			return texture;
-		}
-
-		G3D::ReferenceCountedPointer<TextureProxy> TextureProxy::alphaOnlyVersion()
-		{
-			return new TextureProxy(this);
-		}
-
-		G3D::Vector2 TextureProxy::getSize()
-		{
-			G3D::ReferenceCountedPointer<G3D::Texture> t = getIfResolved();
-			G3D::Vector2 out;
-			if (t.notNull())
-			{
-				out.x = t->texelWidth();
-				out.y = t->texelHeight();
-			}
-			else
-			{
-				out.y = 0.0f;
-				out.x = 0.0f;
-			}
-			return out;
-		}
-
-		G3D::ReferenceCountedPointer<TextureProxy> TextureProxy::shade(const G3D::Color3& baseColor, const G3D::ReferenceCountedPointer<TextureProxy>& baseTex)
-		{
-			TextureProxy* newTex = new TextureProxy(baseTex);
-			newTex->textureManager = textureManager;
-			newTex->root = baseTex;
-			newTex->shadeColor = baseColor;
-			newTex->shadeTexture = this;
-			return newTex;
-		}
-	}
+#include <map>
+#include <string>
+namespace boost {
+template<class T> inline void checked_delete(T* x) { typedef char type_must_be_complete[sizeof(T) ? 1 : -1]; (void)sizeof(type_must_be_complete); delete x; }
+template<class T> class scoped_ptr {
+	T* ptr;
+	typedef scoped_ptr<T> this_type;
+public:
+	explicit scoped_ptr(T* p = 0) : ptr(p) {}
+	~scoped_ptr() { boost::checked_delete(ptr); }
+	void reset(T* p = 0) { this_type(p).swap(*this); }
+	void swap(scoped_ptr& b) { T* tmp = b.ptr; b.ptr = ptr; ptr = tmp; }
+	T* get() const { return ptr; }
+	bool operator!() const { return ptr == 0; }
+};
 }
+namespace RBX { namespace RenderNew {
+class TextureProxy;
+typedef std::map<std::string, TextureProxy*> Cache;
+class TextureProxy {
+public:
+	static boost::scoped_ptr<Cache> cache;
+	static void initCache();
+};
+void TextureProxy::initCache()
+{
+	if (!cache)
+		cache.reset(new Cache());
+}
+} }

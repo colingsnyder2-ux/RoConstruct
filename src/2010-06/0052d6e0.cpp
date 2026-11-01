@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 0052d6e0  unit: RBX::MaterialBaseRefMaterialAdapter  size: 19 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 0052d6e0
 //

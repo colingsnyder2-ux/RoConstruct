@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 00404260  unit: RBX::VRenderHooksService::?$FactoryProduct::Creator  size: 85 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 00404260
 //

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 00800190  unit: CXTColorHex::PAUHEXCOLOR_CELL::?$CList  size: 61 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00800190
 //

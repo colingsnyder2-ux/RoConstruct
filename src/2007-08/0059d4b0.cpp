@@ -1,9 +1,4 @@
-// roc 2007-08 0059d4b0  unit: RBX::StarterPackService  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0059d4b0
-//
-// 0059d4b0  e94bf6ffff           jmp 0x59cb00
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_0059d4b0();
 void func_0059d4b0()
 {

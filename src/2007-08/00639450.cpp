@@ -1,9 +1,4 @@
-// roc 2007-08 00639450  unit: CXTPEdit  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00639450
-//
-// 00639450  e96bf0ffff           jmp 0x6384c0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00639450();
 void func_00639450()
 {

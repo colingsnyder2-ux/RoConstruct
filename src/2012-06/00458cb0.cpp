@@ -1,17 +1,14 @@
-// from server: 72% by atomic.potato
+// from server: 100% by tester
 struct S
 {
-    int f(void*, void*);
-    int* a;
+    int value;
+    int f(int *a, int b);
 };
 
-typedef int (__thiscall *Fn)(void*, void*);
-
-int S::f(void* p, void* q)
+int S::f(int *a, int b)
 {
-    int* x = p ? (int*)((char*)p + 0x1c) : 0;
-    char* t = (char*)a[0x130 / 4];
-    t = *(char**)(t + 0x28);
-    Fn fn = *(Fn*)(*(int**)t + 0x0c);
-    return fn((void*)x, q);
+    int *p = a ? a + 7 : 0;
+    int *q = *(int **)((char *)this + 0x130);
+    q = *(int **)((char *)q + 0x28);
+    return ((int (__thiscall *)(int *, int *, int))(*(int ***)q)[3])(q, p, b);
 }

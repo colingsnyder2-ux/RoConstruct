@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 00498970  unit: std::D::DU?$char_traits::?$basic_ifstream  size: 89 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00498970
 //

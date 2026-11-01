@@ -1,68 +1,67 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espclaude_1f29ee3c3c2214e7.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-// Candidate translation unit (score above; library headers required).
-#define YieldingThreads YieldingThreadsHeader
-#include "script/ScriptContext.h"
-#include "script/ThreadRef.h"
-#include "util/RunStateOwner.h"
-#include "lua.h"
-#undef YieldingThreads
+struct Control {
+    virtual void unused();
+    virtual void dispose();
+    virtual void destroy();
+    volatile long strong;
+    volatile long weak;
 
-namespace RBX
+    __forceinline void add_ref();
+    __forceinline void release();
+};
+
+__forceinline void Control::add_ref()
 {
-    namespace Lua
-    {
-        class YieldingThreads
-        {
-        private:
-            struct WaitingThread
-            {
-            public:
-                boost::shared_ptr<ThreadRef> thread;
-                double requestedDelay;
-                double elapsedTime;
-            };
+    _InterlockedIncrement(&strong);
+}
 
-        private:
-            ScriptContext* context;
-            std::vector<WaitingThread> waitingThreads;
-
-        public:
-            void resume(Heartbeat heartbeat);
-        };
-
-        void YieldingThreads::resume(Heartbeat heartbeat)
-        {
-            if (waitingThreads.empty())
-                return;
-
-            std::vector<WaitingThread> copy = waitingThreads;
-            waitingThreads.erase(waitingThreads.begin(), waitingThreads.end());
-
-            std::vector<WaitingThread>::iterator it = copy.begin();
-            for (; it != copy.end(); it++)
-            {
-                if (it->thread->empty())
-                    continue;
-
-                it->elapsedTime += heartbeat.step;
-
-                if (it->elapsedTime < it->requestedDelay)
-                {
-                    waitingThreads.push_back(*it);
-                    continue;
-                }
-
-                lua_State* L = it->thread->thread();
-                const int oldTop = lua_gettop(L);
-                lua_pushnumber(L, it->elapsedTime);
-                lua_pushnumber(L, heartbeat.time);
-                context->resume(L, 2);
-                lua_settop(L, oldTop);
-            }
-        }
+__forceinline void Control::release()
+{
+    if (_InterlockedDecrement(&strong) == 0) {
+        dispose();
+        if (_InterlockedDecrement(&weak) == 0)
+            destroy();
     }
+}
+
+struct Value {
+    void* pointer;
+    Control* control;
+    double first;
+    double second;
+
+    __forceinline Value& operator=(const Value& source);
+};
+
+__forceinline Value& Value::operator=(const Value& source)
+{
+    pointer = source.pointer;
+    Control* incoming = source.control;
+    if (incoming != control) {
+        if (incoming)
+            incoming->add_ref();
+        Control* outgoing = control;
+        if (outgoing)
+            outgoing->release();
+        control = incoming;
+    }
+    first = source.first;
+    second = source.second;
+    return *this;
+}
+
+Value* __cdecl copy_values(Value* first, Value* last, Value* destination)
+{
+    for (; first != last; ++first, ++destination)
+        *destination = *first;
+    return destination;
 }

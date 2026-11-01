@@ -1,11 +1,4 @@
-// roc 2007-08 00639d60  unit: CXTPControlAction  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00639d60
-//
-// 00639d60  8b4170               mov eax, dword ptr [ecx + 0x70]
-// 00639d63  8b4034               mov eax, dword ptr [eax + 0x34]
-// 00639d66  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct I_func_00639d60 {
     char pad[52];
     int m_x;

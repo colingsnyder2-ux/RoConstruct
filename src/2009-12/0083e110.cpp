@@ -1,37 +1,18 @@
-// roc 2009-12 0083e110  unit: CXTPCustomizeSheet  size: 40 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0083e110
-//
-// 0083e110  8b81b8000000         mov eax, dword ptr [ecx + 0xb8]
-// 0083e116  8b4058               mov eax, dword ptr [eax + 0x58]
-// 0083e119  85c0                 test eax, eax
-// 0083e11b  7418                 je 0x83e135
-// 0083e11d  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0083e121  8b11                 mov edx, dword ptr [ecx]
-// 0083e123  53                   push ebx
-// 0083e124  33db                 xor ebx, ebx
-// 0083e126  399890000000         cmp dword ptr [eax + 0x90], ebx
-// 0083e12c  8b02                 mov eax, dword ptr [edx]
-// 0083e12e  0f9fc3               setg bl
-// 0083e131  53                   push ebx
-// 0083e132  ffd0                 call eax
-// 0083e134  5b                   pop ebx
-// 0083e135  c20400               ret 4
-// copied from an identical function in another client (function ?SetActivePage@CXTPCustomizeSheet@ns_ROCX000001@@QAEXPAX@Z)
-
-namespace ns_ROCX000001 {
-struct CXTPCustomizeSheet {
-    char pad[0xb8];
-    void* field_b8;
-    void SetActivePage(void* page);
+// from server: 64% by atomic.potato
+struct CXTPCustomizeSheet
+{
+    int f(int);
 };
 
-void CXTPCustomizeSheet::SetActivePage(void* page) {
-    void* p = *(void**)((char*)field_b8 + 0x58);
-    if (p != 0) {
-        int flag = (*(int*)((char*)p + 0x90) > 0) ? 1 : 0;
-        void** vtbl = *(void***)page;
-        typedef void (__thiscall *Fn)(void*, int);
-        ((Fn)vtbl[0])(page, flag);
+int CXTPCustomizeSheet::f(int value)
+{
+    int* p = *(int**)((char*)this + 0xb8);
+    p = *(int**)((char*)p + 0x58);
+    if (p != 0)
+    {
+        int* q = *(int**)((char*)value);
+        int flag = (*(int**)((char*)p + 0x90) > 0) ? 1 : 0;
+        return ((int (__thiscall *)(int*, int))q[0])(q, flag);
     }
-}
+    return 0;
 }

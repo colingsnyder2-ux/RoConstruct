@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007bf610  unit: CXTPDockContext  size: 254 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007bf610
 //

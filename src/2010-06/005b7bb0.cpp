@@ -1,38 +1,4 @@
-// roc 2010-06 005b7bb0  unit: RBX::W4KeywordFilterType::?$EnumDesc  size: 88 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 005b7bb0
-//
-// 005b7bb0  8b442404             mov eax, dword ptr [esp + 4]
-// 005b7bb4  56                   push esi
-// 005b7bb5  57                   push edi
-// 005b7bb6  50                   push eax
-// 005b7bb7  8bf1                 mov esi, ecx
-// 005b7bb9  e8a27cffff           call 0x5af860
-// 005b7bbe  8b38                 mov edi, dword ptr [eax]
-// 005b7bc0  83c404               add esp, 4
-// 005b7bc3  85ff                 test edi, edi
-// 005b7bc5  7d07                 jge 0x5b7bce
-// 005b7bc7  5f                   pop edi
-// 005b7bc8  33c0                 xor eax, eax
-// 005b7bca  5e                   pop esi
-// 005b7bcb  c20400               ret 4
-// 005b7bce  8b8eb4000000         mov ecx, dword ptr [esi + 0xb4]
-// 005b7bd4  2b8eb0000000         sub ecx, dword ptr [esi + 0xb0]
-// 005b7bda  c1f902               sar ecx, 2
-// 005b7bdd  3bf9                 cmp edi, ecx
-// 005b7bdf  73e6                 jae 0x5b7bc7
-// 005b7be1  8b96b4000000         mov edx, dword ptr [esi + 0xb4]
-// 005b7be7  2b96b0000000         sub edx, dword ptr [esi + 0xb0]
-// 005b7bed  c1fa02               sar edx, 2
-// 005b7bf0  3bfa                 cmp edi, edx
-// 005b7bf2  7206                 jb 0x5b7bfa
-// 005b7bf4  ff150ca99e00         call dword ptr [0x9ea90c]
-// 005b7bfa  8b86b0000000         mov eax, dword ptr [esi + 0xb0]
-// 005b7c00  8b04b8               mov eax, dword ptr [eax + edi*4]
-// 005b7c03  5f                   pop edi
-// 005b7c04  5e                   pop esi
-// 005b7c05  c20400               ret 4
-// copied from an identical function in another client (function ?f@S@@QAEPAUItem@@ABUKey@@@Z)
-
+// from server: 100% by colin
 #include <vector>
 
 struct Key;

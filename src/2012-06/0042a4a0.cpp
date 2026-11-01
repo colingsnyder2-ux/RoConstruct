@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 0042a4a0  unit: RBX::VInstance::$$A6AXV?$shared_ptr::?$signal::Vslot::?$callable  size: 36 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 0042a4a0
 //

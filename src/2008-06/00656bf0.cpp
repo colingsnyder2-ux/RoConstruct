@@ -1,33 +1,4 @@
 // from server: 100% by colin
-// roc 2008-06 00656bf0  unit: RBX::ArrowPanel  size: 59 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00656bf0
-//
-// 00656bf0  56                   push esi
-// 00656bf1  8bf1                 mov esi, ecx
-// 00656bf3  8b06                 mov eax, dword ptr [esi]
-// 00656bf5  8b5054               mov edx, dword ptr [eax + 0x54]
-// 00656bf8  ffd2                 call edx
-// 00656bfa  84c0                 test al, al
-// 00656bfc  7414                 je 0x656c12
-// 00656bfe  57                   push edi
-// 00656bff  8b7c240c             mov edi, dword ptr [esp + 0xc]
-// 00656c03  57                   push edi
-// 00656c04  8bce                 mov ecx, esi
-// 00656c06  e825d2f1ff           call 0x573e30
-// 00656c0b  8bc7                 mov eax, edi
-// 00656c0d  5f                   pop edi
-// 00656c0e  5e                   pop esi
-// 00656c0f  c20400               ret 4
-// 00656c12  e8892febff           call 0x509ba0
-// 00656c17  d900                 fld dword ptr [eax]
-// 00656c19  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 00656c1d  d919                 fstp dword ptr [ecx]
-// 00656c1f  5e                   pop esi
-// 00656c20  d94004               fld dword ptr [eax + 4]
-// 00656c23  8bc1                 mov eax, ecx
-// 00656c25  d95904               fstp dword ptr [ecx + 4]
-// 00656c28  c20400               ret 4
-
 struct Vec2 { float x; float y; };
 
 extern "C" Vec2* __cdecl get_zero_vec();

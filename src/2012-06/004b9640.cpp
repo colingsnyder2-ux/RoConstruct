@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 004b9640  unit: Ogre::VResource::?$SharedPtr  size: 114 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 004b9640
 //

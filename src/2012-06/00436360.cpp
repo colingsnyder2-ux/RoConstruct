@@ -1,5 +1,8 @@
-// from server: 61% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/afxtoolbarimages.cpp
+// from server: 100% by colin
+
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+void* __stdcall make_value_00436360();
+void* func_00436360() {
+    static void* value = make_value_00436360();
+    return value;
+}

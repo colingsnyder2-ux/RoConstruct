@@ -1,71 +1,10 @@
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs reflection/reflection_object.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "reflection/member.h"
-#include "reflection/object.h"
-
-namespace RBX
+// from server: 100% by auto
+struct S_func_00553f40 {
+    char pad0[132];
+    int m_x;
+    int f();
+};
+int S_func_00553f40::f()
 {
-	namespace Reflection
-	{
-		bool ClassDescriptor::lockedDown = false;
-
-		ClassDescriptor::ClassDescriptor(ClassDescriptor& base, const char* name)
-			: Descriptor(name),
-			  PropertyContainer(&base),
-			  SignalContainer(&base),
-			  FunctionContainer(&base),
-			  derivedClasses(),
-			  base(&base)
-		{
-			RBXASSERT(!lockedDown);
-
-			{
-				boost::recursive_mutex::scoped_lock lock(sync());
-				base.derivedClasses.push_back(this);
-			}
-		}
-
-		ClassDescriptor::ClassDescriptor()
-			: Descriptor("<<<ROOT>>>"),
-			  PropertyContainer(NULL),
-			  SignalContainer(NULL),
-			  FunctionContainer(NULL),
-			  derivedClasses(),
-			  base(NULL)
-		{
-		}
-
-		bool ClassDescriptor::operator==(const ClassDescriptor& other) const
-		{
-			return this == &other;
-		}
-
-		bool ClassDescriptor::operator!=(const ClassDescriptor& other) const
-		{
-			return this != &other;
-		}
-
-		bool MemberDescriptor::isMemberOf(const ClassDescriptor& classDescriptor) const
-		{
-			const ClassDescriptor* p = &classDescriptor;
-			do
-			{
-				if (p == &owner)
-					return true;
-				p = p->getBase();
-			}
-			while (p != &ClassDescriptor::rootDescriptor());
-
-			return false;
-		}
-
-		bool MemberDescriptor::isMemberOf(const DescribedBase* instance) const
-		{
-			return isMemberOf(instance->getDescriptor());
-		}
-	}
+    return m_x;
 }

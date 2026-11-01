@@ -1,10 +1,4 @@
-// roc 2007-08 0067d820  unit: CXTPControlToolbars  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0067d820
-//
-// 0067d820  b8306b8b00           mov eax, 0x8b6b30
-// 0067d825  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0067d820()

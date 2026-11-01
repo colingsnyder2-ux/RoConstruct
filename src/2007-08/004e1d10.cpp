@@ -1,9 +1,4 @@
-// roc 2007-08 004e1d10  unit: PBBBuilder  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004e1d10
-//
-// 004e1d10  e9db380100           jmp 0x4f55f0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_004e1d10();
 void func_004e1d10()
 {

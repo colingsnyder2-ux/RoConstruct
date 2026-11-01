@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 00445a90  unit: VCRenderSettingsItem::?$FactoryProduct  size: 47 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 00445a90
 //

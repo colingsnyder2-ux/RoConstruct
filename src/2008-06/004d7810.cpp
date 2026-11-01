@@ -1,39 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 004d7810  unit: std::X::ZV?$allocator::$$A6AX_N::V?$function::?$holder  size: 85 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 004d7810
-//
-// 004d7810  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 004d7814  83f803               cmp eax, 3
-// 004d7817  7441                 je 0x4d785a
-// 004d7819  85c0                 test eax, eax
-// 004d781b  7517                 jne 0x4d7834
-// 004d781d  8b442408             mov eax, dword ptr [esp + 8]
-// 004d7821  85c0                 test eax, eax
-// 004d7823  743f                 je 0x4d7864
-// 004d7825  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 004d7829  8b11                 mov edx, dword ptr [ecx]
-// 004d782b  8910                 mov dword ptr [eax], edx
-// 004d782d  8b4904               mov ecx, dword ptr [ecx + 4]
-// 004d7830  894804               mov dword ptr [eax + 4], ecx
-// 004d7833  c3                   ret 
-// 004d7834  83f801               cmp eax, 1
-// 004d7837  742b                 je 0x4d7864
-// 004d7839  56                   push esi
-// 004d783a  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 004d783e  8b0e                 mov ecx, dword ptr [esi]
-// 004d7840  68300c9400           push 0x940c30
-// 004d7845  ff1578288000         call dword ptr [0x802878]
-// 004d784b  0fb6d0               movzx edx, al
-// 004d784e  f7da                 neg edx
-// 004d7850  1bd2                 sbb edx, edx
-// 004d7852  23542408             and edx, dword ptr [esp + 8]
-// 004d7856  8916                 mov dword ptr [esi], edx
-// 004d7858  5e                   pop esi
-// 004d7859  c3                   ret 
-// 004d785a  8b442408             mov eax, dword ptr [esp + 8]
-// 004d785e  c700300c9400         mov dword ptr [eax], 0x940c30
-// 004d7864  c3                   ret 
-
 struct TypeInfo {};
 
 typedef bool (__thiscall *TypeEqual)(const TypeInfo*, const TypeInfo&);

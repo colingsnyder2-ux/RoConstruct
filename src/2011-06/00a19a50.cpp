@@ -1,19 +1,4 @@
 // from server: 100% by colin
-// roc 2011-06 00a19a50  unit: seg_00a10000  size: 44 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00a19a50
-//
-// 00a19a50  6a00                 push 0
-// 00a19a52  68389ea700           push 0xa79e38
-// 00a19a57  68309ea700           push 0xa79e30
-// 00a19a5c  6800ada700           push 0xa7ad00
-// 00a19a61  6860010000           push 0x160
-// 00a19a66  b99480cb00           mov ecx, 0xcb8094
-// 00a19a6b  e86016adff           call 0x4eb0d0
-// 00a19a70  68503aa300           push 0xa33a50
-// 00a19a75  e8e316dfff           call 0x80b15d
-// 00a19a7a  59                   pop ecx
-// 00a19a7b  c3                   ret 
-
 extern int g_00a19a50_1;
 extern int g_00a19a50_2;
 extern int g_00a19a50_3;

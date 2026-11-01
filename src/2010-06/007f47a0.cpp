@@ -1,10 +1,4 @@
-// roc 2010-06 007f47a0  unit: CXTPCustomizeOptionsPage  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 007f47a0
-//
-// 007f47a0  b810dba500           mov eax, 0xa5db10
-// 007f47a5  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_007f47a0()

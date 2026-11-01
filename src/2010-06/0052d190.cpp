@@ -1,11 +1,4 @@
-// roc 2010-06 0052d190  unit: RBX::TextureProxyBase  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0052d190
-//
-// 0052d190  8b442404             mov eax, dword ptr [esp + 4]
-// 0052d194  89410c               mov dword ptr [ecx + 0xc], eax
-// 0052d197  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_0052d190 {
     char pad0[12];
     int m_x;

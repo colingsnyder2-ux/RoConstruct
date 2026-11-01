@@ -1,27 +1,24 @@
-// roc 2009-12 0045f290  unit: InsertModelFromRobloxVerb  size: 28 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0045f290
-//
-// 0045f290  8b410c               mov eax, dword ptr [ecx + 0xc]
-// 0045f293  8b4820               mov ecx, dword ptr [eax + 0x20]
-// 0045f296  6a00                 push 0
-// 0045f298  68fe800000           push 0x80fe
-// 0045f29d  6811010000           push 0x111
-// 0045f2a2  51                   push ecx
-// 0045f2a3  ff15b8cb9800         call dword ptr [0x98cbb8]
-// 0045f2a9  c20400               ret 4
-// copied from an identical function in another client (function ?Run@InsertModelFromRobloxVerb@ns_ROCX00005b@@QAEXH@Z)
+// from server: 90% by atomic.potato
+typedef unsigned long DWORD;
+typedef int BOOL;
+typedef void* HWND;
+typedef unsigned int UINT;
+typedef unsigned int WPARAM;
+typedef long LPARAM;
 
-namespace ns_ROCX00005b {
+extern "C" BOOL __stdcall PostMessageA(HWND, UINT, WPARAM, LPARAM);
+
 struct InsertModelFromRobloxVerb {
-    char pad[0xc];
-    void** field_c;
-    void Run(int arg);
+    char pad[12];
+    struct State {
+        char pad[32];
+        HWND window;
+    };
+    State* state;
+    void f();
 };
 
-extern "C" int (__stdcall *PostMessageA)(void*, unsigned int, unsigned int, long);
-
-void InsertModelFromRobloxVerb::Run(int)
+void InsertModelFromRobloxVerb::f()
 {
-    PostMessageA(field_c[8], 0x111, 0x80fe, 0);
-}
+    PostMessageA(state->window, 0x111, 0x80fe, 0);
 }

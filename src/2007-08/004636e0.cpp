@@ -1,78 +1,64 @@
-// from server: 83% by colin
-struct Listener {
-    void evaluate();
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+struct Device;
+
+struct Property {
+    unsigned long size;
+    unsigned long headerSize;
+    unsigned long object;
+    unsigned long how;
+    unsigned long value;
 };
 
-struct MediaQueryEvaluator;
-
-extern "C" int __stdcall sub_401000(int);
-
-struct VTable1 {
-    void* pad[3];
-    int (__stdcall* fn0c)(void*, void*, const char*, int);
+struct Input;
+struct InputTable {
+    void* reserved[3];
+    long (__stdcall *createDevice)(Input*, const void*, Device**, void*);
+};
+struct Input {
+    InputTable* table;
 };
 
-struct VTable2 {
-    void* pad[11];
-    int (__stdcall* fn2c)(void*, const char*);
+struct DeviceTable {
+    void* reserved0[6];
+    long (__stdcall *setProperty)(Device*, unsigned long, const Property*);
+    void* reserved1[4];
+    long (__stdcall *setDataFormat)(Device*, const void*);
+};
+struct Device {
+    DeviceTable* table;
 };
 
-struct VTable3 {
-    void* pad[6];
-    int (__stdcall* fn18)(void*, int, void*);
+extern "C" __declspec(noreturn) void __stdcall checkError(long);
+
+struct S {
+    unsigned char reserved[0x188];
+    Input* input;
+    unsigned char gap[4];
+    Device* device;
+    void f();
 };
 
-struct Obj1 {
-    VTable1* vt;
-};
+void S::f()
+{
+    long result = input->table->createDevice(
+        input, (const void*)0x81f038, &device, 0);
+    if (result < 0)
+        checkError(result);
 
-struct Obj2 {
-    VTable2* vt;
-};
+    result = device->table->setDataFormat(device, (const void*)0x850114);
+    if (result < 0)
+        checkError(result);
 
-struct Obj3 {
-    VTable3* vt;
-};
+    Device* d = device;
+    Property property;
+    property.size = 20;
+    property.headerSize = 16;
+    property.object = 0;
+    property.how = 0;
+    property.value = 0x800;
 
-struct MediaQueryMatcher {
-    char pad[0x188];
-    Obj1* m_obj1;
-    Obj2* m_obj2;
-};
-
-struct EvalParams {
-    int a;
-    int b;
-    int c;
-    int d;
-    int e;
-};
-
-void Listener::evaluate() {
-    MediaQueryMatcher* self = (MediaQueryMatcher*)this;
-    Obj1* o1 = self->m_obj1;
-    Obj2* o2 = self->m_obj2;
-
-    int r1 = o1->vt->fn0c(o1, o2, " deflate 1.2.3 Copyright 1995-2005 Jean-loup Gailly ", 0);
-    if (r1 < 0) {
-        sub_401000(r1);
-    }
-
-    int r2 = o2->vt->fn2c(o2, "DEST");
-    if (r2 < 0) {
-        sub_401000(r2);
-    }
-
-    Obj3* o3 = (Obj3*)o2;
-    EvalParams p;
-    p.a = 0x14;
-    p.b = 0x10;
-    p.c = 0;
-    p.d = 0;
-    p.e = 0x800;
-
-    int r3 = o3->vt->fn18(o3, 1, &p);
-    if (r3 < 0) {
-        sub_401000(r3);
-    }
+    result = d->table->setProperty(d, 1, &property);
+    if (result < 0)
+        checkError(result);
 }

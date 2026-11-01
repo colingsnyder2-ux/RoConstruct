@@ -1,96 +1,132 @@
+// Source-derived world pipeline port from openrbx v8world/AssemblyStage2.cpp.
+// June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
 #include "v8world/AssemblyStage.h"
-#include "v8world/CollisionStage.h"
+
 #include "v8world/Assembly.h"
+#include "v8world/Contact.h"
 #include "v8world/Joint.h"
+#include "v8world/Primitive.h"
+#include "v8world/SleepStage.h"
 
-namespace RBX
+#include <cstddef>
+
+namespace RBX {
+
+// FUNCTION: WEBSERVICE 0x100d7a70 FOLDED
+IStage::StageType AssemblyStage::getStageType()
 {
-#pragma warning (push)
-#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
-	AssemblyStage::AssemblyStage(IStage* upstream, World* world)
-		: IWorldStage(upstream, new CollisionStage(this, world), world)
-	{
-	}
-#pragma warning (pop)
+	return ASSEMBLY_STAGE;
+}
 
-	AssemblyStage::~AssemblyStage()
-	{
-		RBXASSERT(assemblies.empty());
-		RBXASSERT(joints.empty());
-	}
+// FUNCTION: WEBSERVICE 0x10126de0
+void AssemblyStage::wakeAssembly(Assembly* a)
+{
+	static_cast<SleepStage*>(getDownstream())->onWakeUpRequest(a, false);
+}
 
-	void AssemblyStage::stepUi(int uiStepId)
-	{
-		typedef std::set<Joint*>::iterator JointIterator;
-		for (JointIterator it = joints.begin(); it != joints.end(); it++)
-		{
-			Joint* j = *it;
-			j->stepUi(uiStepId);
-		}
-
-		typedef std::set<Assembly*>::iterator AssemblyIterator;
-		for (AssemblyIterator it = assemblies.begin(); it != assemblies.end(); it++)
-		{
-			Assembly* a = *it;
-			a->stepUi(uiStepId);
-		}
+// FUNCTION: WEBSERVICE 0x10126e00
+void AssemblyStage::stepUi(int uiStepId)
+{
+	for (std::set<Assembly*>::iterator it = assemblies.begin(); it != assemblies.end(); ++it) {
+		(*it)->stepUi(uiStepId);
 	}
 
-	void AssemblyStage::onJointAdded(Joint* j)
-	{
-		bool inserted = joints.insert(j).second;
-		RBXASSERT(inserted);
-	}
-
-	void AssemblyStage::onJointRemoving(Joint* j)
-	{
-		size_t removed = joints.erase(j);
-		RBXASSERT(removed == 1);
-	}
-
-	void AssemblyStage::onEdgeAdded(Edge* e)
-	{
-		IWorldStage::onEdgeAdded(e);
-
-		if (e->getEdgeType() == Edge::JOINT)
-		{
-			Joint* j = rbx_static_cast<Joint*>(e);
-			onJointAdded(j);
-		}
-	}
-
-	void AssemblyStage::onEdgeRemoving(Edge* e)
-	{
-		if (e->getEdgeType() == Edge::JOINT)
-		{
-			Joint* j = rbx_static_cast<Joint*>(e);
-			onJointRemoving(j);
-		}
-
-		IWorldStage::onEdgeRemoving(e);
-	}
-
-	void AssemblyStage::onAssemblyAdded(Assembly* assembly)
-	{
-		assembly->putInStage(this);
-
-		bool inserted = assemblies.insert(assembly).second;
-		RBXASSERT(inserted);
-
-		if (!assembly->getAnchored())
-			rbx_static_cast<CollisionStage*>(getDownstreamWS())->onAssemblyAdded(assembly);
-	}
-
-	void AssemblyStage::onAssemblyRemoving(Assembly* assembly)
-	{
-		if (assembly->downstreamOfStage(this))
-			rbx_static_cast<CollisionStage*>(getDownstreamWS())->onAssemblyRemoving(assembly);
-
-		RBXASSERT(assembly->inStage(this));
-
-		size_t removed = assemblies.erase(assembly);
-		RBXASSERT(removed == 1);
-
-		assembly->removeFromStage(this);
+	for (std::set<Joint*>::iterator it = joints.begin(); it != joints.end(); ++it) {
+		(*it)->stepUi(uiStepId);
 	}
 }
+
+// FUNCTION: WEBSERVICE 0x10126ee0
+void AssemblyStage::onAssemblyAdded(Assembly* assembly)
+{
+	assembly->putInPipeline(this);
+
+	assemblies.insert(assembly);
+
+	static_cast<SleepStage*>(getDownstream())->onAssemblyAdded(assembly);
+}
+
+void AssemblyStage::onJointAdded(Joint* joint)
+{
+	if (joint->canStepUi()) {
+		joints.insert(joint);
+	}
+}
+
+void AssemblyStage::onJointRemoving(Joint* joint)
+{
+	joints.erase(joint);
+
+	joint->canStepUi();
+}
+
+// FUNCTION: WEBSERVICE 0x10126f20
+void AssemblyStage::onEdgeAdded(Edge* e)
+{
+	e->putInPipeline(this);
+
+	if (e->getEdgeType() == Edge::CONTACT) {
+		Joint* joint = Primitive::getJoint(e->getPrimitive(0), e->getPrimitive(1));
+
+		if (joint != NULL && joint->downstreamOfStage(this)) {
+			return;
+		}
+
+		getDownstreamWS()->onEdgeAdded(e);
+	}
+	else {
+		Contact* contact = Primitive::getContact(e->getPrimitive(0), e->getPrimitive(1));
+
+		if (contact != NULL && contact->downstreamOfStage(this)) {
+			getDownstreamWS()->onEdgeRemoving(contact);
+		}
+
+		getDownstreamWS()->onEdgeAdded(e);
+
+		onJointAdded(static_cast<Joint*>(e));
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x10127000
+AssemblyStage::~AssemblyStage()
+{
+}
+
+// FUNCTION: WEBSERVICE 0x101270c0
+void AssemblyStage::onAssemblyRemoving(Assembly* assembly)
+{
+	static_cast<SleepStage*>(getDownstream())->onAssemblyRemoving(assembly);
+
+	assemblies.erase(assembly);
+
+	assembly->removeFromStage(this);
+}
+
+// FUNCTION: WEBSERVICE 0x101270f0
+void AssemblyStage::onEdgeRemoving(Edge* e)
+{
+	if (e->downstreamOfStage(this)) {
+		getDownstreamWS()->onEdgeRemoving(e);
+	}
+
+	if (e->getEdgeType() != Edge::CONTACT) {
+		Joint* joint = static_cast<Joint*>(e);
+
+		onJointRemoving(joint);
+
+		Contact* contact = Primitive::getContact(e->getPrimitive(0), e->getPrimitive(1));
+
+		if (contact != NULL && contact->inStage(this)) {
+			getDownstreamWS()->onEdgeAdded(contact);
+		}
+	}
+
+	e->removeFromStage(this);
+}
+
+// FUNCTION: WEBSERVICE 0x10127180
+AssemblyStage::AssemblyStage(IStage* upstream, World* world) : IWorldStage(upstream, new SleepStage(this, world), world)
+{
+}
+
+} // namespace RBX

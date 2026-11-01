@@ -1,13 +1,16 @@
-// from server: 56% by atomic.potato
-struct S_func_0069a6b0 {
-    int f(int, int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Value;
+struct Target { void set(Value* const& v); };
+struct Desc {
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6();
+    virtual void v7(); virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
+    virtual Value* get(const void* obj) const;
+    void copy(const void* obj, Target* t) const;
 };
-
-extern "C" int __cdecl sub_0043dfb0(int, int);
-
-int S_func_0069a6b0::f(int a, int b)
+void Desc::copy(const void* obj, Target* t) const
 {
-    int (__thiscall *fn)(int, int) = *(int (__thiscall **)(int, int))((*(int *)this) + 0x38);
-    int r = fn(a, b);
-    return sub_0043dfb0(r, b);
+    t->set(get(obj));
 }

@@ -1,39 +1,28 @@
-// roc 2010-06 00791e00  unit: RBX::ContactStage  size: 30 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00791e00
-//
-// 00791e00  56                   push esi
-// 00791e01  57                   push edi
-// 00791e02  8b7c240c             mov edi, dword ptr [esp + 0xc]
-// 00791e06  8bf1                 mov esi, ecx
-// 00791e08  8b4e08               mov ecx, dword ptr [esi + 8]
-// 00791e0b  57                   push edi
-// 00791e0c  e85ff8fcff           call 0x761670
-// 00791e11  56                   push esi
-// 00791e12  8bcf                 mov ecx, edi
-// 00791e14  e8a7ecfbff           call 0x750ac0
-// 00791e19  5f                   pop edi
-// 00791e1a  5e                   pop esi
-// 00791e1b  c20400               ret 4
-// copied from an identical function in another client (function ?construct@GettingUp@ns_ROCX00000b@@QAEXPAX@Z)
+// from server: 66% by atomic.potato
+struct ContactStage;
+struct Stage;
+struct Assembly;
 
-namespace ns_ROCX00000b {
-struct SubA {
-    void methodA(int);
+struct ContactStage {
+    void f(Stage *stage);
 };
 
-struct SubB {
-    void methodB(void*);
+struct Stage {
+    int v;
 };
 
-struct GettingUp {
-    char pad[8];
-    SubA* subA;
-    void construct(void*);
+struct Assembly {
+    int pad;
+    int stage;
 };
 
-void GettingUp::construct(void* arg)
+void call761670(int value, Stage *stage);
+
+int call750ac0(Assembly *assembly, Stage *stage);
+
+void ContactStage::f(Stage *stage)
 {
-    subA->methodA((int)arg);
-    ((SubB*)arg)->methodB(this);
-}
+    int value = *(int *)((char *)this + 8);
+    call761670(value, stage);
+    call750ac0((Assembly *)this, stage);
 }

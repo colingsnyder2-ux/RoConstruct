@@ -1,32 +1,4 @@
-// roc 2009-06 0041ae20  unit: rbx::signals::connection::slot  size: 75 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 0041ae20
-//
-// 0041ae20  51                   push ecx
-// 0041ae21  83ec08               sub esp, 8
-// 0041ae24  8bc4                 mov eax, esp
-// 0041ae26  c70000000000         mov dword ptr [eax], 0
-// 0041ae2c  c7400400000000       mov dword ptr [eax + 4], 0
-// 0041ae33  8b151097a300         mov edx, dword ptr [0xa39710]
-// 0041ae39  89642408             mov dword ptr [esp + 8], esp
-// 0041ae3d  83ec08               sub esp, 8
-// 0041ae40  8bc4                 mov eax, esp
-// 0041ae42  8910                 mov dword ptr [eax], edx
-// 0041ae44  8b151497a300         mov edx, dword ptr [0xa39714]
-// 0041ae4a  895004               mov dword ptr [eax + 4], edx
-// 0041ae4d  8bc2                 mov eax, edx
-// 0041ae4f  89642410             mov dword ptr [esp + 0x10], esp
-// 0041ae53  85c0                 test eax, eax
-// 0041ae55  740c                 je 0x41ae63
-// 0041ae57  83c004               add eax, 4
-// 0041ae5a  ba01000000           mov edx, 1
-// 0041ae5f  f00fc110             lock xadd dword ptr [eax], edx
-// 0041ae63  8b01                 mov eax, dword ptr [ecx]
-// 0041ae65  8b10                 mov edx, dword ptr [eax]
-// 0041ae67  ffd2                 call edx
-// 0041ae69  59                   pop ecx
-// 0041ae6a  c3                   ret 
-// copied from an identical function in another client (function ?f@S@@QAEXXZ)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // from server: 96% by king_originala

@@ -1,46 +1,49 @@
-// from server: 29% by Viper
-struct COleException {
-    char pad[0x14];
-    unsigned long m_dwHelpContext;
-    int ReportError(unsigned long, const char*, const char*, unsigned int);
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+struct Text
+{
+    char reserved[20];
+    unsigned int length;
 };
 
-extern "C" {
-    int __stdcall FormatMessageA(unsigned long, const char*, unsigned long, unsigned long, char*, unsigned long, void*);
-    void* __stdcall LocalAlloc(unsigned int, unsigned int);
-    void* __stdcall LocalFree(void*);
-    const char* __stdcall GetLastError();
-}
-
-extern "C" void* __stdcall __CxxThrowException(void*, void*);
-
-void __stdcall sub_427C40(void*, int);
-
-int COleException::ReportError(unsigned long dwHelpContext, const char* lpszClassName, const char* lpszWindowTitle, unsigned int nHelpContext)
+struct Buffer
 {
-    char buffer[0x10];
-    unsigned long dwError;
-    void* pMsg;
+    char reserved[4];
 
-    dwError = (unsigned long)GetLastError();
-    if (dwError != 0)
-        return 0;
+    __declspec(dllimport) Buffer();
+    __declspec(dllimport) ~Buffer() throw();
+    __declspec(dllimport) const char* c_str() const;
+};
 
-    pMsg = LocalAlloc(0x40, 0x200);
-    if (pMsg != 0)
-        return 0;
+extern const char* (__thiscall* text_data)(const Text*);
+extern void (__cdecl* format_buffer)(Buffer*, const char*, ...);
 
-    FormatMessageA(0x1000, 0, dwError, 0x400, (char*)pMsg, 0x200, 0);
+extern const char format_with_text[];
+extern const char format_without_text[];
+extern void __cdecl log_message(int, const char*);
 
-    if (this->m_dwHelpContext > 0)
-    {
-        sub_427C40(pMsg, 1);
-    }
+
+
+
+
+
+
+bool __cdecl func_00428790(const char* expression, const Text* text,
+                          const char* file, int line)
+{
+    Buffer message;
+
+    if (text->length > 0)
+        format_buffer(&message, format_with_text,
+                      expression, text_data(text), file, line);
     else
-    {
-        sub_427C40(pMsg, 1);
-    }
+        format_buffer(&message, format_without_text,
+                      expression, file, line);
 
-    LocalFree(pMsg);
-    return 0;
+    log_message(1, message.c_str());
+
+    volatile unsigned int* p = 0;
+    p[0] = p[1];
+
+    return false;
 }

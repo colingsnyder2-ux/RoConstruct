@@ -1,0 +1,100 @@
+{
+  "default_source_status": "source-only; filename or mined percentage grants no integration credit",
+  "catalog_scope": "Generated units across client versions and dependencies; not a count of integrated 2008 functions",
+  "catalog_units": 3241,
+  "classes": [
+    {
+      "name": "MyXTPCommandBars",
+      "status": "linked and scoped-runtime-gated recovered class",
+      "source": "native-classes/MyXTPCommandBars.cpp"
+    },
+    {
+      "name": "Native icon initializer",
+      "status": "linked and scoped-runtime-gated; five relocation-masked code matches",
+      "source": "p6/build_native_icons.py"
+    },
+    {
+      "name": "CRobloxApp / CRobloxDoc / CRobloxView / CMainFrame",
+      "status": "active adapted shell",
+      "source": "p6/RobloxShell.cpp"
+    },
+    {
+      "name": "Shared native Doc/View/Frame and ActiveDocView",
+      "status": "inactive recovery candidates; compiler/body probes do not grant runtime credit",
+      "source": "native-classes/"
+    },
+    {
+      "name": "Humanoid shared headers",
+      "status": "inactive incomplete layouts",
+      "source": "native-headers/humanoid/"
+    },
+    {
+      "name": "rbxgs engine",
+      "status": "compiled and linked mixed donor/recovered/patched engine; exactness varies per function",
+      "source": "Source/App and modules/rbxgs-app.json"
+    },
+    {
+      "name": "native-world",
+      "status": "selected through overlay adoption; full native equivalence unproven",
+      "source": "native-world/"
+    },
+    {
+      "name": "CRobloxDHtmlDialog",
+      "status": "linked and exercised through native About; ten bodies, 121 virtual slots, size/event data verified",
+      "source": "native-classes/CRobloxDHtmlDialog.cpp"
+    },
+    {
+      "name": "CAboutRobloxDialog",
+      "status": "linked and scoped-runtime-gated; 11 lifecycle/event/data-exchange bodies match; visible version/system info verified, manual HTML OK click interrupted by user Escape",
+      "source": "native-classes/CAboutRobloxDialog.cpp"
+    },
+    {
+      "name": "CFileVersionInfo",
+      "status": "linked typed recovery; four of five bodies match; GetVersionInfo register allocation differs (no exact credit); native About version display verified",
+      "source": "native-classes/CFileVersionInfo.cpp"
+    },
+    {
+      "name": "CMarshalWindow / MarshaledListener / FilteredListener / CSelectionCaption",
+      "status": "inactive typed frame-pane recovery; five physical layouts and 12/13 selected bodies verified. Caption virtual/message ABI, weak pointee identity, marshal registry/dispatch and property-grid behavior remain open; no runtime credit",
+      "source": "native-headers/CSelectionCaption.h and util/MarshalWindow.h"
+    },
+    {
+      "name": "CPropGrid / CSelectionPropGrid / CDataModelPropGrid",
+      "status": "inactive; three physical layouts, eight separate-TU lifecycle/runtime bodies and three tree constructors verified; pointer payload identities, full virtual/message ABI and property/selection behavior open",
+      "source": "native-headers/CDataModelPropGrid.h"
+    }
+  ],
+  "gates": {
+    "P6": {
+      "artifact_matches_receipt": true,
+      "receipt": "work/2008-06/p6-native-about-gate-20261101/receipt.json",
+      "scope": "Merged MFC shell gate: x86, ordinary open/close twice, real input three times, edit/save/reopen, commands, selection, and original-client open control. Recovered CRobloxApp/CMainFrame and native layouts remain open.",
+      "status": "scoped pass after native About swap"
+    },
+    "P5": {
+      "artifact_matches_receipt": true,
+      "receipt": "work/2008-06/p5-native-about-swap-20261101/receipt.json",
+      "scope": "Combined authored collision/Lua/ground-joint fixture; frame/input remain adapted. Arrival is bounded by the held-input interval; original physics is checked separately.",
+      "status": "scoped pass after native About swap"
+    }
+  },
+  "whole_executable_exact_count": "unproven; selected relocation-masked counts and archive counts are separate observations",
+  "stopline": {
+    "fall": {
+      "receipt": "work/2008-06/p5-cleanup-fall-retry-20261101/receipt.json",
+      "status": "pass, max absolute y error 0.07493234 < 0.10"
+    },
+    "jump": {
+      "status": "unproven on rebuilt artifact: original Run activation failed before samples; prior artifact evidence not carried forward"
+    }
+  },
+  "selected_pe_code": {
+    "before": 3018,
+    "before_selected": 14394,
+    "after": 3049,
+    "after_selected": 14468,
+    "net_matches": 31,
+    "receipt": "work/2008-06/p6-native-about-swap-20261101/after-selected.json",
+    "scope": "relocation-masked known-source PE code, not raw exe identity or old 331/4152 metric"
+  }
+}

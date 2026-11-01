@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 004b5340  unit: Ogre::RbxMaterialAdapter  size: 44 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 004b5340
 //

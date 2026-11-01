@@ -1,9 +1,4 @@
-// roc 2007-08 0069f1d0  unit: CXTPWinThemeWrapper  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0069f1d0
-//
-// 0069f1d0  e9ab5c0700           jmp 0x714e80
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_0069f1d0();
 void func_0069f1d0()
 {

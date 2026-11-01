@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 0086e230  unit: CXTPDockingPane  size: 82 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 0086e230
 //

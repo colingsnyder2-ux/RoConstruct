@@ -73,3 +73,5 @@ namespace RBX
 		};
 	}
 }
+
+// Overlay copy: relative Replicator.h must resolve to the generic job API.

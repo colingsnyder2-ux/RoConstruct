@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 006b62f0  unit: RBX::Soundscape::W4ReverbType::?$EnumDesc  size: 112 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 006b62f0
 //

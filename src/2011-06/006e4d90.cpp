@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: templates-2008-06-dll roc_rtti_fc27c84cd7b01590.cpp
+// roc-lib: templates-2008-06-dll roc_rtti_a8b429b397bb580b.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <string>
@@ -12,4 +13,4 @@
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/iostreams/device/null.hpp>
 #include <boost/iostreams/stream_buffer.hpp>
-template class boost::iostreams::basic_gzip_compressor<std::allocator<char> >;
+template class boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_gzip_compressor<std::allocator<char> >,std::char_traits<char>,std::allocator<char>,boost::iostreams::output>;

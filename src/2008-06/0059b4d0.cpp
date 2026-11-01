@@ -1,20 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0059b4d0  unit: RBX::PartInstance  size: 32 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0059b4d0
-//
-// 0059b4d0  56                   push esi
-// 0059b4d1  51                   push ecx
-// 0059b4d2  8bf1                 mov esi, ecx
-// 0059b4d4  8a4c240c             mov cl, byte ptr [esp + 0xc]
-// 0059b4d8  8bc4                 mov eax, esp
-// 0059b4da  8808                 mov byte ptr [eax], cl
-// 0059b4dc  8d4ee0               lea ecx, [esi - 0x20]
-// 0059b4df  e83cfdffff           call 0x59b220
-// 0059b4e4  8d4e0c               lea ecx, [esi + 0xc]
-// 0059b4e7  e854200400           call 0x5dd540
-// 0059b4ec  5e                   pop esi
-// 0059b4ed  c20400               ret 4
-
 namespace RBX {
 struct CanAggregateChanged
 {

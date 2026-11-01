@@ -1,14 +1,4 @@
-// roc 2009-12 008f5abe  unit: CXTIconHandle  size: 14 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 008f5abe
-//
-// 008f5abe  33d2                 xor edx, edx
-// 008f5ac0  8d4114               lea eax, [ecx + 0x14]
-// 008f5ac3  42                   inc edx
-// 008f5ac4  f00fc110             lock xadd dword ptr [eax], edx
-// 008f5ac8  8d4108               lea eax, [ecx + 8]
-// 008f5acb  c3                   ret 
-// copied from an identical function in another client (function ?GetNilString@CAtlStringMgr@ATL@@UAEPAUCStringData@2@XZ)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD

@@ -1,14 +1,17 @@
-// from server: 57% by atomic.potato
-struct CRobloxWnd
-{
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+struct T4_00497730 {
+    T4_00497730();
+    virtual void f_00497730();
+    char m_a;
+    char m_b;
 };
-
-void __cdecl RenderJob(int a, void *p)
+T4_00497730::T4_00497730() : m_a(0), m_b(0) {}
+extern "C" void* create_other_00497730(void*, void*, int);
+void* create_00497730(void* unused, T4_00497730* out, int type)
 {
-    if (a == 4)
-    {
-        *(unsigned int *)p = 0x00D70E30;
-        *((unsigned char *)p + 4) = 0;
-        *((unsigned char *)p + 5) = 0;
-    }
+    if (type != 4)
+        return create_other_00497730(unused, out, type);
+    out->T4_00497730::T4_00497730();
+    return out;
 }

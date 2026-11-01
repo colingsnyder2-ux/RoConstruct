@@ -1,84 +1,49 @@
-// from server: 47% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-11.2.2-vc8 Source/Controls/XTTreeCtrlView.cpp
-
-// Candidate translation unit (score above; library headers required).
-// XTTreeCtrl.cpp : implementation file
+// from server: 100% by Yeetserama
+// roc 2007-08 00434700  unit: CClassTreeView  size: 103 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00434700
 //
-// This file is a part of the XTREME CONTROLS MFC class library.
-// (c)1998-2007 Codejock Software, All Rights Reserved.
-//
-// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
-// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
-// CONSENT OF CODEJOCK SOFTWARE.
-//
-// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
-// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
-// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
-// SINGLE COMPUTER.
-//
-// CONTACT INFORMATION:
-// support@codejock.com
-// http://www.codejock.com
-//
-/////////////////////////////////////////////////////////////////////////////
+// 00434700  6aff                 push -1
+// 00434702  68eaf27500           push 0x75f2ea
+// 00434707  64a100000000         mov eax, dword ptr fs:[0]
+// 0043470d  50                   push eax
+// 0043470e  51                   push ecx
+// 0043470f  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00434714  33c4                 xor eax, esp
+// 00434716  50                   push eax
+// 00434717  8d442408             lea eax, [esp + 8]
+// 0043471b  64a300000000         mov dword ptr fs:[0], eax
+// 00434721  6888020000           push 0x288
+// 00434726  e8cbb71f00           call 0x62fef6
+// 0043472b  83c404               add esp, 4
+// 0043472e  89442404             mov dword ptr [esp + 4], eax
+// 00434732  85c0                 test eax, eax
+// 00434734  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 0043473c  7417                 je 0x434755
+// 0043473e  8bc8                 mov ecx, eax
+// 00434740  e84bfaffff           call 0x434190
+// 00434745  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00434749  64890d00000000       mov dword ptr fs:[0], ecx
+// 00434750  59                   pop ecx
+// 00434751  83c410               add esp, 0x10
+// 00434754  c3                   ret 
+// 00434755  33c0                 xor eax, eax
+// 00434757  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0043475b  64890d00000000       mov dword ptr fs:[0], ecx
+// 00434762  59                   pop ecx
+// 00434763  83c410               add esp, 0x10
+// 00434766  c3                   ret 
+// copied from an identical function in another client (function ?createColorSelector@@YAPAUCRobloxControlColorSelector@@XZ)
 
-#include "stdafx.h"
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
 
-#include "XTTreeCtrlView.h"
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTTreeView
-
-CXTTreeView::CXTTreeView()
+struct CRobloxControlColorSelector
 {
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)&GetTreeCtrl();
+    char storage[0x288];
+    CRobloxControlColorSelector();
+};
 
-}
-
-CXTTreeView::~CXTTreeView()
+CRobloxControlColorSelector* createColorSelector()
 {
+    return new CRobloxControlColorSelector;
 }
-
-IMPLEMENT_DYNCREATE(CXTTreeView, CTreeView)
-
-BEGIN_MESSAGE_MAP(CXTTreeView, CTreeView)
-	//{{AFX_MSG_MAP(CXTTreeView)
-	ON_TREECTRL_REFLECT()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTTreeCtrl
-
-CXTTreeCtrl::CXTTreeCtrl()
-{
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)this;
-}
-
-CXTTreeCtrl::~CXTTreeCtrl()
-{
-}
-
-IMPLEMENT_DYNAMIC(CXTTreeCtrl, CTreeCtrl)
-
-BEGIN_MESSAGE_MAP(CXTTreeCtrl, CTreeCtrl)
-	//{{AFX_MSG_MAP(CXTTreeCtrl)
-	ON_TREECTRL_REFLECT()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTTreeCtrl message handlers

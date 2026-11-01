@@ -1,48 +1,4 @@
-// roc 2010-06 006fc610  unit: RBX::GuiButton  size: 110 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 006fc610
-//
-// 006fc610  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 006fc614  33c9                 xor ecx, ecx
-// 006fc616  3bc1                 cmp eax, ecx
-// 006fc618  7441                 je 0x6fc65b
-// 006fc61a  83f801               cmp eax, 1
-// 006fc61d  743c                 je 0x6fc65b
-// 006fc61f  83f802               cmp eax, 2
-// 006fc622  7459                 je 0x6fc67d
-// 006fc624  83f803               cmp eax, 3
-// 006fc627  7521                 jne 0x6fc64a
-// 006fc629  56                   push esi
-// 006fc62a  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 006fc62e  8b0e                 mov ecx, dword ptr [esi]
-// 006fc630  68e0f4bd00           push 0xbdf4e0
-// 006fc635  ff15d8a89e00         call dword ptr [0x9ea8d8]
-// 006fc63b  0fb6c0               movzx eax, al
-// 006fc63e  f7d8                 neg eax
-// 006fc640  1bc0                 sbb eax, eax
-// 006fc642  23442408             and eax, dword ptr [esp + 8]
-// 006fc646  8906                 mov dword ptr [esi], eax
-// 006fc648  5e                   pop esi
-// 006fc649  c3                   ret 
-// 006fc64a  8b442408             mov eax, dword ptr [esp + 8]
-// 006fc64e  c700e0f4bd00         mov dword ptr [eax], 0xbdf4e0
-// 006fc654  884804               mov byte ptr [eax + 4], cl
-// 006fc657  884805               mov byte ptr [eax + 5], cl
-// 006fc65a  c3                   ret 
-// 006fc65b  8b442408             mov eax, dword ptr [esp + 8]
-// 006fc65f  3bc1                 cmp eax, ecx
-// 006fc661  741a                 je 0x6fc67d
-// 006fc663  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 006fc667  8b11                 mov edx, dword ptr [ecx]
-// 006fc669  8910                 mov dword ptr [eax], edx
-// 006fc66b  8b5104               mov edx, dword ptr [ecx + 4]
-// 006fc66e  895004               mov dword ptr [eax + 4], edx
-// 006fc671  8b5108               mov edx, dword ptr [ecx + 8]
-// 006fc674  895008               mov dword ptr [eax + 8], edx
-// 006fc677  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 006fc67a  89480c               mov dword ptr [eax + 0xc], ecx
-// 006fc67d  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

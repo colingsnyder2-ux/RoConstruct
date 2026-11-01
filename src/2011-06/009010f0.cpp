@@ -1,15 +1,4 @@
-// roc 2011-06 009010f0  unit: CXTWindowMap  size: 20 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 009010f0
-//
-// 009010f0  8bc1                 mov eax, ecx
-// 009010f2  33c9                 xor ecx, ecx
-// 009010f4  c7008ce1ad00         mov dword ptr [eax], 0xade18c
-// 009010fa  89480c               mov dword ptr [eax + 0xc], ecx
-// 009010fd  894808               mov dword ptr [eax + 8], ecx
-// 00901100  894804               mov dword ptr [eax + 4], ecx
-// 00901103  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

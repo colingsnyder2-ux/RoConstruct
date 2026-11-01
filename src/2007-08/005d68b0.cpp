@@ -1,61 +1,28 @@
-// roc-cl: 50727
+// from server: 100% by Espeon
 // roc-lang: cpp
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_unit_90d96c1d696700ef.cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /DROC_FACTORY_TYPE=ChatOutput
+// roc-lib: rbxgs roc_espeon_aug2007_native_factory_1499128d7d75b9b5.cpp
 
 // Candidate translation unit (score above; library headers required).
-#undef _RELEASEASSERT
-#pragma include_alias("util/IRenderable.h", "roc_unit_b8671ae8d3010f90.cpp")
-#pragma include_alias("v8tree/Instance.h", "roc_unit_b34763c2f3d3f398.cpp")
-#pragma include_alias("v8datamodel/MouseCommand.h", "roc_unit_9958a7131e20354c.cpp")
-#include "v8datamodel/ScriptMouseCommand.h"
-#include "v8datamodel/Mouse.h"
-
-namespace RBX
-{
-	ScriptMouseCommand::ScriptMouseCommand(Workspace* workspace)
-		: MouseCommand(workspace)
-	{
-		mouse = Creatable<Instance>::create<Mouse>();
-		mouse->setCommand(this);
-	}
-
-	ScriptMouseCommand::~ScriptMouseCommand()
-	{
-		mouse->setCommand(NULL);
-		mouse->disconnect_all_slots();
-	}
-
-	TextureId ScriptMouseCommand::getCursorId() const
-	{
-		return mouse->getIcon();
-	}
-
-	MouseCommand* ScriptMouseCommand::onMouseDown(const UIEvent& uiEvent)
-	{
-		mouse->update(uiEvent);
-		return this;
-	}
-
-	MouseCommand* ScriptMouseCommand::onMouseUp(const UIEvent& uiEvent)
-	{
-		mouse->update(uiEvent);
-		return this;
-	}
-
-	MouseCommand* ScriptMouseCommand::onPeekKeyDown(const UIEvent& uiEvent)
-	{
-		mouse->update(uiEvent);
-		return this;
-	}
-
-	void ScriptMouseCommand::onMouseIdle(const UIEvent& uiEvent)
-	{
-		mouse->update(uiEvent);
-	}
-
-	void ScriptMouseCommand::onMouseHover(const UIEvent& uiEvent)
-	{
-		mouse->update(uiEvent);
-	}
-}
+#define _DLL 1
+#define _MT 1
+#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
+#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
+#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
+#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
+#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
+#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_ctor_notifier_131e539308ae6945.cpp")
+#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_inline_3639f053c7370446.cpp")
+#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
+#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_header_7a4c998b489b0ddf.cpp")
+#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
+#include "roc_espeon_boost133_header_d432d72f8740aec3.cpp"
+#include "roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
+#include "v8datamodel/Feature.h"
+#include "v8datamodel/LocalBackpack.h"
+#include "v8datamodel/DataModel.h"
+#include "v8datamodel/Gyro.h"
+#include "v8datamodel/Value.h"
+#include "gui/ChatOutput.h"
+namespace RBX { template boost::shared_ptr<ROC_FACTORY_TYPE> Creatable<Instance>::create<ROC_FACTORY_TYPE>(); }

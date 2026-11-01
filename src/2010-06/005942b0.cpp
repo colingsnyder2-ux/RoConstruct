@@ -1,13 +1,4 @@
-// roc 2010-06 005942b0  unit: VCRenderSettingsItem::?$EnumPropDescriptor  size: 19 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 005942b0
-//
-// 005942b0  68fe08a000           push 0xa008fe
-// 005942b5  e886feffff           call 0x594140
-// 005942ba  83c404               add esp, 4
-// 005942bd  a378b2c000           mov dword ptr [0xc0b278], eax
-// 005942c2  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G3_OBJ;

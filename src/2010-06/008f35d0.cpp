@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 008f35d0  unit: Ogre::UTVertexSurfaceTexTangent::?$SpecializedMeshGen  size: 101 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 008f35d0
 //

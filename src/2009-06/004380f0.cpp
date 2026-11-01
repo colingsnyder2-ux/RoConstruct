@@ -1,39 +1,4 @@
-// roc 2009-06 004380f0  unit: Vector3ComponentItem  size: 103 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 004380f0
-//
-// 004380f0  83ec20               sub esp, 0x20
-// 004380f3  8b442424             mov eax, dword ptr [esp + 0x24]
-// 004380f7  d900                 fld dword ptr [eax]
-// 004380f9  56                   push esi
-// 004380fa  8bf1                 mov esi, ecx
-// 004380fc  d99e34010000         fstp dword ptr [esi + 0x134]
-// 00438102  83ec08               sub esp, 8
-// 00438105  d94004               fld dword ptr [eax + 4]
-// 00438108  8d54240c             lea edx, [esp + 0xc]
-// 0043810c  d99e38010000         fstp dword ptr [esi + 0x138]
-// 00438112  d94008               fld dword ptr [eax + 8]
-// 00438115  d99e3c010000         fstp dword ptr [esi + 0x13c]
-// 0043811b  8b8e30010000         mov ecx, dword ptr [esi + 0x130]
-// 00438121  d90488               fld dword ptr [eax + ecx*4]
-// 00438124  dd1c24               fstp qword ptr [esp]
-// 00438127  68603b8b00           push 0x8b3b60
-// 0043812c  52                   push edx
-// 0043812d  ff1538e98900         call dword ptr [0x89e938]
-// 00438133  83c40c               add esp, 0xc
-// 00438136  8d442408             lea eax, [esp + 8]
-// 0043813a  8bcc                 mov ecx, esp
-// 0043813c  8964242c             mov dword ptr [esp + 0x2c], esp
-// 00438140  50                   push eax
-// 00438141  ff1508fd8900         call dword ptr [0x89fd08]
-// 00438147  8b16                 mov edx, dword ptr [esi]
-// 00438149  8b4260               mov eax, dword ptr [edx + 0x60]
-// 0043814c  8bce                 mov ecx, esi
-// 0043814e  ffd0                 call eax
-// 00438150  5e                   pop esi
-// 00438151  83c420               add esp, 0x20
-// 00438154  c20400               ret 4
-// copied from an identical function in another client (function ?setValue@Vector3ComponentItem@@QAEXPDM@Z)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // from server: 98% by king_originala

@@ -1,23 +1,14 @@
-// roc 2009-12 0069f2d0  unit: std::strstream  size: 25 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0069f2d0
-//
-// 0069f2d0  a1402bb600           mov eax, dword ptr [0xb62b40]
-// 0069f2d5  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0069f2d9  8b542404             mov edx, dword ptr [esp + 4]
-// 0069f2dd  50                   push eax
-// 0069f2de  51                   push ecx
-// 0069f2df  52                   push edx
-// 0069f2e0  e87bb30e00           call 0x78a660
-// 0069f2e5  83c40c               add esp, 0xc
-// 0069f2e8  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX000001@ns_ROCX000001@@YAHHH@Z)
+// from server: 100% by atomic.potato
+typedef unsigned long DWORD;
 
-namespace ns_ROCX000001 {
-extern int g_8abe80;
-extern int __cdecl sub_5bf240(int, int, int);
+extern DWORD g_value;
+extern "C" void __cdecl universal_tool(DWORD, DWORD, DWORD);
 
-int __cdecl fn_ROCX000001(int a, int b)
+struct S
 {
-    return sub_5bf240(a, b, g_8abe80);
-}
+};
+
+void __cdecl f(DWORD a, DWORD b)
+{
+    universal_tool(a, b, g_value);
 }

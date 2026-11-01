@@ -1,30 +1,27 @@
-// roc 2011-06 008de7e0  unit: CXTPPropertyGridInplaceButtons  size: 71 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 008de7e0
+// from server: 100% by tester
+// roc 2012-06 00a56af0  unit: CXTPPropertyGridInplaceButtons  size: 71 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 00a56af0
 //
-// 008de7e0  56                   push esi
-// 008de7e1  8bf1                 mov esi, ecx
-// 008de7e3  8d8e84000000         lea ecx, [esi + 0x84]
-// 008de7e9  ff15082ea400         call dword ptr [0xa42e08]
-// 008de7ef  8d8e80000000         lea ecx, [esi + 0x80]
-// 008de7f5  ff15082ea400         call dword ptr [0xa42e08]
-// 008de7fb  8d4e7c               lea ecx, [esi + 0x7c]
-// 008de7fe  ff15082ea400         call dword ptr [0xa42e08]
-// 008de804  8d4e78               lea ecx, [esi + 0x78]
-// 008de807  ff15082ea400         call dword ptr [0xa42e08]
-// 008de80d  8d4e74               lea ecx, [esi + 0x74]
-// 008de810  ff15082ea400         call dword ptr [0xa42e08]
-// 008de816  8d4e70               lea ecx, [esi + 0x70]
-// 008de819  ff15082ea400         call dword ptr [0xa42e08]
-// 008de81f  8bce                 mov ecx, esi
-// 008de821  5e                   pop esi
-// 008de822  e9d3dd0e00           jmp 0x9cc5fa
-// copied from an identical function in another client (function ?func@CXTPPropertyGridInplaceButtons@ns_ROCX000026@ns_ROCX00002a@@QAEXXZ)
+// 00a56af0  56                   push esi
+// 00a56af1  8bf1                 mov esi, ecx
+// 00a56af3  8d8e84000000         lea ecx, [esi + 0x84]
+// 00a56af9  ff15d047b200         call dword ptr [0xb247d0]
+// 00a56aff  8d8e80000000         lea ecx, [esi + 0x80]
+// 00a56b05  ff15d047b200         call dword ptr [0xb247d0]
+// 00a56b0b  8d4e7c               lea ecx, [esi + 0x7c]
+// 00a56b0e  ff15d047b200         call dword ptr [0xb247d0]
+// 00a56b14  8d4e78               lea ecx, [esi + 0x78]
+// 00a56b17  ff15d047b200         call dword ptr [0xb247d0]
+// 00a56b1d  8d4e74               lea ecx, [esi + 0x74]
+// 00a56b20  ff15d047b200         call dword ptr [0xb247d0]
+// 00a56b26  8d4e70               lea ecx, [esi + 0x70]
+// 00a56b29  ff15d047b200         call dword ptr [0xb247d0]
+// 00a56b2f  8bce                 mov ecx, esi
+// 00a56b31  5e                   pop esi
+// 00a56b32  e97d2a0400           jmp 0xa995b4
+// library xtp-15.2.1-shared-mfc/Source\Controls\Edit\XTPEdit.cpp (function ??1?$CXTPMaskEditT@VCEdit@@@@UAE@XZ)
 
-namespace ns_ROCX000026 {
-extern char G;
-
-char* fn_ROCX000026()
-{
-    return &G;
-}
-}
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /MD
+// roc-lib: xtp-15.2.1-shared-mfc Source/Controls/Edit/XTPEdit.cpp

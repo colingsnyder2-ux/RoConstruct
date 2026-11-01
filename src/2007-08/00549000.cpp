@@ -1,4 +1,4 @@
-// from DeepSeek/server: 100% by colin
+// from server: 100% by colin
 // roc 2007-08 00549000  unit: seg_00540000  size: 34 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00549000
 

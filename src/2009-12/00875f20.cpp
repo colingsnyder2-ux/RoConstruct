@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00875f20  unit: CXTPRibbonTheme  size: 154 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00875f20
 //

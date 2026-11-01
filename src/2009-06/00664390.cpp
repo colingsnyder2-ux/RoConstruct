@@ -1,31 +1,4 @@
-// roc 2009-06 00664390  unit: RBX::Network::VPlayer::?$RefPropDescriptor  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00664390
-//
-// 00664390  8b542404             mov edx, dword ptr [esp + 4]
-// 00664394  56                   push esi
-// 00664395  8bf1                 mov esi, ecx
-// 00664397  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
-// 0066439a  8b01                 mov eax, dword ptr [ecx]
-// 0066439c  8b4008               mov eax, dword ptr [eax + 8]
-// 0066439f  57                   push edi
-// 006643a0  52                   push edx
-// 006643a1  ffd0                 call eax
-// 006643a3  8b4e1c               mov ecx, dword ptr [esi + 0x1c]
-// 006643a6  8b11                 mov edx, dword ptr [ecx]
-// 006643a8  8b5208               mov edx, dword ptr [edx + 8]
-// 006643ab  8bf8                 mov edi, eax
-// 006643ad  8b442410             mov eax, dword ptr [esp + 0x10]
-// 006643b1  50                   push eax
-// 006643b2  ffd2                 call edx
-// 006643b4  33c9                 xor ecx, ecx
-// 006643b6  3bf8                 cmp edi, eax
-// 006643b8  0f94c1               sete cl
-// 006643bb  5f                   pop edi
-// 006643bc  8ac1                 mov al, cl
-// 006643be  5e                   pop esi
-// 006643bf  c20800               ret 8
-// copied from an identical function in another client (function ?equalValues@?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z)
-
+// from server: 100% by colin
 #include <memory>
 #include <string>
 

@@ -97,7 +97,7 @@ namespace RBX
 		}
 		NormalId getNormalId(int) const;
 		//Joint& operator=(const Joint&);
-  
+
 	private:
 		static bool canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1, float angleMax, float planarMax);
 	protected:
@@ -123,4 +123,35 @@ namespace RBX
 		static bool isGroundJoint(Joint*);
 		static bool isAutoJoinJoint(Joint*);
 	};
+class AnchorJoint : public Joint
+{
+public:
+	AnchorJoint(Primitive* p) : Joint(p, NULL, G3D::CoordinateFrame(), G3D::CoordinateFrame()) {}
+
+	static bool isAnchorJoint(const Joint* joint) { return joint->getJointType() == ANCHOR_JOINT; }
+
+private:
+	// FUNCTION: WEBSERVICE 0x1011b580 FOLDED
+	virtual JointType getJointType() const { return ANCHOR_JOINT; } // vtable+0x14
+};
+
+
+// VTABLE: WEBSERVICE 0x10247ea4
+// SIZE 0x88
+class FreeJoint : public Joint
+{
+public:
+	FreeJoint(Primitive* p) : Joint(p, NULL, G3D::CoordinateFrame(), G3D::CoordinateFrame()) {}
+
+	// SYNTHETIC: WEBSERVICE 0x1011b590
+	// RBX::FreeJoint::`scalar deleting destructor'
+
+	static bool isFreeJoint(const Joint* joint) { return joint->getJointType() == FREE_JOINT; }
+
+private:
+	// FUNCTION: WEBSERVICE 0x1011b5b0
+	virtual JointType getJointType() const { return FREE_JOINT; } // vtable+0x14
+};
+
+
 }

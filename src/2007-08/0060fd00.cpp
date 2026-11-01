@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 0060fd00  unit: RBX::Ball  size: 256 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 0060fd00
 //

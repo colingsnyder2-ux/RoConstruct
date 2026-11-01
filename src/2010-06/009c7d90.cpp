@@ -1,12 +1,4 @@
-// roc 2010-06 009c7d90  unit: seg_009c0000  size: 12 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 009c7d90
-//
-// 009c7d90  6870d59d00           push 0x9dd570
-// 009c7d95  e8c90cdeff           call 0x7a8a63
-// 009c7d9a  59                   pop ecx
-// 009c7d9b  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G2_func_009c7d90;

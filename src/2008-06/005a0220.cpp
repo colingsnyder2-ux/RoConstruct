@@ -1,17 +1,4 @@
 // from server: 100% by king_originala
-// roc 2008-06 005a0220  unit: RBX::Workspace  size: 32 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005a0220
-//
-// 005a0220  8b442404             mov eax, dword ptr [esp + 4]
-// 005a0224  8b9188020000         mov edx, dword ptr [ecx + 0x288]
-// 005a022a  81c188020000         add ecx, 0x288
-// 005a0230  50                   push eax
-// 005a0231  8b4204               mov eax, dword ptr [edx + 4]
-// 005a0234  ffd0                 call eax
-// 005a0236  8bc8                 mov ecx, eax
-// 005a0238  e803cc0200           call 0x5cce40
-// 005a023d  c20400               ret 4
-
 #include <intrin.h>
 // roc 2008-06 005a0220  unit: RBX::Workspace  size: 32 bytes
 

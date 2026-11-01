@@ -1,30 +1,23 @@
-// roc 2007-03 00448140  unit: seg_00440000  size: 11 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 00448140
-//
-// 00448140  8b4958               mov ecx, dword ptr [ecx + 0x58]
-// 00448143  8b4924               mov ecx, dword ptr [ecx + 0x24]
-// 00448146  e965fdffff           jmp 0x447eb0
-// copied from an identical function in another client (function ?get@CRobloxModule@ns_ROCX000013@@QAEHXZ)
+// from server: 81% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs reflection/reflection_function.cpp
 
-namespace ns_ROCX000013 {
-struct Inner {
-    int method();
-};
+// Candidate translation unit (score above; library headers required).
+#include "reflection/function.h"
+#include "reflection/object.h"
 
-struct Mid {
-    char pad0[0x24];
-    Inner* inner;
-};
-
-struct CRobloxModule {
-    char pad0[0x58];
-    Mid* mid;
-    int get();
-};
-
-int CRobloxModule::get()
+namespace RBX
 {
-    Mid* m = this->mid;
-    return m->inner->method();
-}
+	namespace Reflection
+	{
+		FunctionDescriptor::FunctionDescriptor(ClassDescriptor& classDescriptor, const char* name, Security security)
+			: MemberDescriptor(classDescriptor, name, "Function"),
+			  security(security),
+			  signature()
+		{
+			classDescriptor.FunctionContainer::declare(this);
+		}
+	}
 }

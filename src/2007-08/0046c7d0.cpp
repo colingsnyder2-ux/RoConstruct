@@ -1,52 +1,65 @@
-// from server: 46% by colin
-// roc 2007-08 0046c7d0  unit: RBX::LDraw2Lua::LuaWriter  size: 225 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0046c7d0
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+//
 
-extern "C" {
-    int __stdcall sub_502880();
-    int __stdcall sub_5028F0();
-    void __stdcall sub_77E698(void*);
-    void __stdcall sub_77E6AC(void*);
-    void __stdcall sub_77E938(int);
-}
+//
 
-extern "C" void __stdcall sub_796410();
-extern "C" void __stdcall sub_796420();
-extern "C" void __stdcall sub_796438();
+struct String {
+    unsigned int allocator;
+    union {
+        char buffer[16];
+        char* pointer;
+    } storage;
+    unsigned int length;
+    unsigned int capacity;
 
-extern "C" int (__stdcall *off_8980FC)(void*, void*, int, void*, void*, int);
-
-extern "C" unsigned char byte_8BCF49;
-extern "C" unsigned char byte_8BCF58;
-extern "C" unsigned char byte_8BCF71;
-
-struct LuaWriter {
-    bool checkInitialized();
+    String(const char*);
+    ~String();
 };
 
-bool LuaWriter::checkInitialized()
+extern void (__thiscall* constructString)(String*, const char*);
+extern void (__thiscall* destroyString)(String*);
+
+__forceinline String::String(const char* text)
 {
-    if (byte_8BCF71 != 0)
-        return byte_8BCF58 != 0;
-    if (byte_8BCF49 != 0)
-        return byte_8BCF58 != 0;
+    constructString(this, text);
+}
 
-    sub_502880();
+__forceinline String::~String()
+{
+    destroyString(this);
+}
 
-    bool result = false;
-    if (off_8980FC != 0) {
-        char buf[28];
-        sub_77E698(buf);
-        int local = 1;
-        int flag = 0;
-        if (off_8980FC(buf, (void*)0x796410, 0x22B, (void*)0x8BCF71, (void*)0x796420, 1)) {
-            result = true;
+extern bool initialized;
+extern bool ignoreAssertion;
+extern const char assertionExpression[];
+extern const char assertionMessage[];
+extern const char assertionFile[];
+
+extern bool (__cdecl* assertionHandler)(
+    const char*, const String&, const char*, int, bool*, bool);
+
+extern void (__stdcall* terminateProcess)(int);
+extern void __cdecl lockAssertions();
+extern void __cdecl unlockAssertions();
+extern bool glCapsInitialized;
+
+bool __cdecl checkGLCaps()
+{
+    if (!ignoreAssertion && !initialized) {
+        lockAssertions();
+        bool terminate = assertionHandler &&
+            assertionHandler(
+                assertionExpression,
+                String(assertionMessage),
+                assertionFile,
+                555,
+                &ignoreAssertion,
+                true);
+        if (terminate) {
+            terminateProcess(-1);
         }
-        if (flag & 1)
-            sub_77E6AC(buf);
-        if (result)
-            sub_77E938(-1);
+        unlockAssertions();
     }
-    sub_5028F0();
-    return byte_8BCF58 != 0;
+    return glCapsInitialized;
 }

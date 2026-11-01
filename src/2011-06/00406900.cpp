@@ -1,24 +1,5 @@
-// roc 2011-06 00406900  unit: ATL::VCComClassFactory::?$CComObjectNoLock  size: 28 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00406900
-//
-// 00406900  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00406904  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 00406908  8b542404             mov edx, dword ptr [esp + 4]
-// 0040690c  50                   push eax
-// 0040690d  51                   push ecx
-// 0040690e  68c4bba500           push 0xa5bbc4
-// 00406913  52                   push edx
-// 00406914  e8a7feffff           call 0x4067c0
-// 00406919  c20c00               ret 0xc
-// copied from an identical function in another client (function ?sub_404880@ns_ROCX000016@@YGHHHH@Z)
-
-namespace ns_ROCX000016 {
-extern "C" int __stdcall sub_4022a0(int, void*, int, int);
-
-extern int G_784f68;
-
-int __stdcall sub_404880(int a1, int a2, int a3)
-{
-    return sub_4022a0(a1, &G_784f68, a2, a3);
-}
-}
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /MD
+// roc-lib: atl-9.0 atl.cpp

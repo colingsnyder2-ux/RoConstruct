@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007e76b0  unit: CStatic  size: 75 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007e76b0
 //

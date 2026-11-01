@@ -1,16 +1,4 @@
-// roc 2010-06 00819e20  unit: CXTPPropertyGridItemConstraints  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00819e20
-//
-// 00819e20  8bc1                 mov eax, ecx
-// 00819e22  33c9                 xor ecx, ecx
-// 00819e24  c700a02ca600         mov dword ptr [eax], 0xa62ca0
-// 00819e2a  894804               mov dword ptr [eax + 4], ecx
-// 00819e2d  894810               mov dword ptr [eax + 0x10], ecx
-// 00819e30  89480c               mov dword ptr [eax + 0xc], ecx
-// 00819e33  894808               mov dword ptr [eax + 8], ecx
-// 00819e36  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

@@ -1,5 +1,9 @@
-// from server: 84% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/wincore.cpp
+// from server: 100% by tester
+struct S {
+    int f(int* p);
+};
+
+int S::f(int* p) {
+    ++*(int*)((char*)p + 0x1c);
+    return *(int*)((char*)p + 0x1c);
+}

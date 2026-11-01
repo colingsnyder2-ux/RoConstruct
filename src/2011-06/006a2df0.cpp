@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 006a2df0  unit: RBX::Geometry  size: 24 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 006a2df0
 //

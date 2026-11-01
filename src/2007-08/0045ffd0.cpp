@@ -1,25 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 0045ffd0  unit: CScriptEditor  size: 41 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0045ffd0
-//
-// 0045ffd0  56                   push esi
-// 0045ffd1  e85ad2ffff           call 0x45d230
-// 0045ffd6  8bf0                 mov esi, eax
-// 0045ffd8  6a01                 push 1
-// 0045ffda  8bce                 mov ecx, esi
-// 0045ffdc  e87fbfffff           call 0x45bf60
-// 0045ffe1  6a01                 push 1
-// 0045ffe3  50                   push eax
-// 0045ffe4  8bce                 mov ecx, esi
-// 0045ffe6  e865caffff           call 0x45ca50
-// 0045ffeb  6a01                 push 1
-// 0045ffed  6a00                 push 0
-// 0045ffef  50                   push eax
-// 0045fff0  8bce                 mov ecx, esi
-// 0045fff2  e899c2ffff           call 0x45c290
-// 0045fff7  5e                   pop esi
-// 0045fff8  c3                   ret 
-
 struct CScriptEditor {
     void* field0;
 

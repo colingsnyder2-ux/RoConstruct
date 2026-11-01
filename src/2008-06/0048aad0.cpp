@@ -1,9 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 0048aad0  unit: RBX::Network::VPlayer::?$FactoryProduct  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0048aad0
-//
-// 0048aad0  e9fbf3ffff           jmp 0x489ed0
-
 extern void G1_func_0048aad0();
 void func_0048aad0()
 {

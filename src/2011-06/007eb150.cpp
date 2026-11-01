@@ -1,22 +1,4 @@
-// roc 2011-06 007eb150  unit: RBX::PartDropTool  size: 42 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 007eb150
-//
-// 007eb150  51                   push ecx
-// 007eb151  8b11                 mov edx, dword ptr [ecx]
-// 007eb153  8b442408             mov eax, dword ptr [esp + 8]
-// 007eb157  8910                 mov dword ptr [eax], edx
-// 007eb159  8b4904               mov ecx, dword ptr [ecx + 4]
-// 007eb15c  c7042400000000       mov dword ptr [esp], 0
-// 007eb163  894804               mov dword ptr [eax + 4], ecx
-// 007eb166  85c9                 test ecx, ecx
-// 007eb168  740c                 je 0x7eb176
-// 007eb16a  83c108               add ecx, 8
-// 007eb16d  ba01000000           mov edx, 1
-// 007eb172  f00fc111             lock xadd dword ptr [ecx], edx
-// 007eb176  59                   pop ecx
-// 007eb177  c20400               ret 4
-// copied from an identical function in another client (function ?get@Owner@@QBE?AV?$weak_ptr@UItem@@@boost@@XZ)
-
+// from server: 100% by colin
 #include <intrin.h>
 
 namespace boost {

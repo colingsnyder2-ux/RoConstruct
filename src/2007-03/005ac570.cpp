@@ -1,33 +1,99 @@
-// roc 2007-03 005ac570  unit: seg_005a0000  size: 27 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 005ac570
-//
-// 005ac570  83ec0c               sub esp, 0xc
-// 005ac573  8d442410             lea eax, [esp + 0x10]
-// 005ac577  50                   push eax
-// 005ac578  8d542404             lea edx, [esp + 4]
-// 005ac57c  52                   push edx
-// 005ac57d  83c118               add ecx, 0x18
-// 005ac580  e8eb6e0600           call 0x613470
-// 005ac585  83c40c               add esp, 0xc
-// 005ac588  c20400               ret 4
-// copied from an identical function in another client (function ?func@Assembly@ns_ROCX000008@@QAEXH@Z)
+// from server: 74% by colin
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs util/RunStateOwner.cpp
 
-namespace ns_ROCX000008 {
-struct AssemblyHelper
-{
-    void method(int* a, int* b);
-};
+// Candidate translation unit (score above; library headers required).
+#include "util/RunStateOwner.h"
+#include "v8datamodel/DataModel.h"
 
-struct Assembly
+namespace RBX
 {
-    char pad[0x18];
-    AssemblyHelper helper;
-    void func(int arg);
-};
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
 
-void Assembly::func(int arg)
-{
-    int local[3];
-    helper.method(&local[0], &arg);
-}
+	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
+
+	RunService::RunService()
+		: framePeriod(1.0f/30.0f),
+		  runState(RS_NORMAL),
+		  invalidRunViewCount(0),
+		  stopRequested(false),
+		  runDisabled(false)
+	{
+		setName("Run Service");
+	}
+
+	RunService::~RunService()
+	{
+		RBXASSERT(views.empty());
+	}
+
+	void RunService::endRunThread(bool join)
+	{
+		stopRequested = true;
+		stateChangedCondition.notify_all();
+
+		if (join)
+			runThread->join();
+	}
+
+	void RunService::onAncestorChanged(const AncestorChanged& event)
+	{
+		if (!getParent())
+		{
+			stopRequested = true;
+			stateChangedCondition.notify_all();
+		}
+	}
+
+	void RunService::setRunState(RunState newState)
+	{
+		RunTransition transition(runState, newState);
+		runState = newState;
+
+		Notifier<RunService, RunState>::raise(newState);
+		Notifier<RunService, RunTransition>::raise(transition);
+	}
+
+	void RunService::raiseStepped(float time, float step)
+	{
+		Notifier<RunService, Stepped>::raise(Stepped(time, step));
+		event_Stepped.fire(this, time, step);
+	}
+
+	void RunService::raiseHeartbeat(float time, float step)
+	{
+		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
+		event_Heartbeat.fire(this, step);
+	}
+
+	void RunService::invalidateRunViews()
+	{
+		boost::mutex::scoped_lock lock(viewMutex);
+
+		if (invalidRunViewCount == 0)
+		{
+			invalidRunViewCount = (int)views.size();
+			if (invalidRunViewCount > 0)
+			{
+				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
+				{
+					iter->first->InvalidateRunView();
+					iter->second = false;
+				}
+				runViewsDoneCondition.notify_all();
+			}
+		}
+	}
+
+	void RunService::start()
+	{
+		RBXASSERT(!runThread);
+
+		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
+		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
+	}
 }

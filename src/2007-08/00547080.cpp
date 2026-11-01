@@ -1,9 +1,4 @@
-// roc 2007-08 00547080  unit: RBX::MD5HasherImpl  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00547080
-//
-// 00547080  e99b5becff           jmp 0x40cc20
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00547080();
 void func_00547080()
 {

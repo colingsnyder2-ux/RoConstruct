@@ -1,5 +1,10 @@
-// from server: 58% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+struct Tag {};
+int g(int* a, int* b, Tag t);
+int f(int* a, int* b)
+{
+	return g(a, b, Tag());
+}

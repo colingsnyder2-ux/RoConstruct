@@ -1,10 +1,4 @@
-// roc 2007-08 0044b960  unit: CRobloxControlColorSelector  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0044b960
-//
-// 0044b960  b8bc928800           mov eax, 0x8892bc
-// 0044b965  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0044b960()

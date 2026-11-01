@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 006575e0  unit: RBX::Network::P8Player::?$GetSetImpl  size: 73 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 006575e0
 //

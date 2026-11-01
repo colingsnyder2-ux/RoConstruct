@@ -1,22 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 007f61e0  unit: seg_007f0000  size: 48 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 007f61e0
-//
-// 007f61e0  6a05                 push 5
-// 007f61e2  33c9                 xor ecx, ecx
-// 007f61e4  51                   push ecx
-// 007f61e5  b8503b5d00           mov eax, 0x5d3b50
-// 007f61ea  50                   push eax
-// 007f61eb  6840010000           push 0x140
-// 007f61f0  68ac298300           push 0x8329ac
-// 007f61f5  68d0cc8300           push 0x83ccd0
-// 007f61fa  b9a4a09700           mov ecx, 0x97a0a4
-// 007f61ff  e88cedddff           call 0x5d4f90
-// 007f6204  6820f17f00           push 0x7ff120
-// 007f6209  e8a1b5eaff           call 0x6a17af
-// 007f620e  59                   pop ecx
-// 007f620f  c3                   ret 
-
 namespace RBX {
 namespace Reflection {
 class PropertyDescriptor

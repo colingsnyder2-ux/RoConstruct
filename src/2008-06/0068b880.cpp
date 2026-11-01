@@ -1,14 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0068b880  unit: Ogre::RbxSceneManager  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0068b880
-//
-// 0068b880  8b01                 mov eax, dword ptr [ecx]
-// 0068b882  8b15a4478000         mov edx, dword ptr [0x8047a4]
-// 0068b888  8b8040030000         mov eax, dword ptr [eax + 0x340]
-// 0068b88e  52                   push edx
-// 0068b88f  ffd0                 call eax
-// 0068b891  c3                   ret 
-
 // Ogre::RbxSceneManager: destroys all movable objects of one factory type.
 #define V1(n) virtual void n();
 #define V4(n) V1(n##0) V1(n##1) V1(n##2) V1(n##3)

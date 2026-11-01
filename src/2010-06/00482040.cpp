@@ -1,17 +1,34 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espclaude_91aa4c87e61b5685.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+extern void (__thiscall *destroy_string)(void*);
 
-// Candidate translation unit (score above; library headers required).
-#include <vector>
-#include <string>
-namespace RBX { namespace LDraw2Lua {
-struct NativeRobloxPart {
-    int shape,formFactor;
-    std::string size,offset;
-    NativeRobloxPart(int,int,std::string,std::string);
+namespace std {
+    template<class T> struct char_traits;
+    template<class T> class allocator;
+
+    template<class C, class T, class A>
+    class basic_string {
+        unsigned char storage[28];
+    public:
+        ~basic_string();
+    };
+
+    template<class C, class T, class A>
+    inline basic_string<C, T, A>::~basic_string()
+    {
+        destroy_string(this);
+    }
+}
+
+struct Element {
+    unsigned char prefix[8];
+    std::basic_string<char, std::char_traits<char>, std::allocator<char> > first;
+    std::basic_string<char, std::char_traits<char>, std::allocator<char> > second;
 };
-}}
-typedef std::vector<RBX::LDraw2Lua::NativeRobloxPart> PV;
-template void PV::_Insert_n(PV::const_iterator, PV::size_type, const RBX::LDraw2Lua::NativeRobloxPart&);
+
+void __cdecl destroy_elements(Element* first, Element* last)
+{
+    for (; first != last; ++first)
+        first->~Element();
+}

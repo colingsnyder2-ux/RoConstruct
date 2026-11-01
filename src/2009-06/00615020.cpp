@@ -1,112 +1,157 @@
-// from server: 91% by EspClaude
-// from server: 100% by king_originala
-// roc 2008-06 005f3fe0  unit: UString_sink::?$stream_buffer  size: 133 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005f3fe0
-//
-// 005f3fe0  55                   push ebp
-// 005f3fe1  8bec                 mov ebp, esp
-// 005f3fe3  6aff                 push -1
-// 005f3fe5  68e0747d00           push 0x7d74e0
-// 005f3fea  64a100000000         mov eax, dword ptr fs:[0]
-// 005f3ff0  50                   push eax
-// 005f3ff1  64892500000000       mov dword ptr fs:[0], esp
-// 005f3ff8  51                   push ecx
-// 005f3ff9  53                   push ebx
-// 005f3ffa  56                   push esi
-// 005f3ffb  8bf1                 mov esi, ecx
-// 005f3ffd  8b4624               mov eax, dword ptr [esi + 0x24]
-// 005f4000  8b4e14               mov ecx, dword ptr [esi + 0x14]
-// 005f4003  8b00                 mov eax, dword ptr [eax]
-// 005f4005  8b09                 mov ecx, dword ptr [ecx]
-// 005f4007  2bc1                 sub eax, ecx
-// 005f4009  57                   push edi
-// 005f400a  8965f0               mov dword ptr [ebp - 0x10], esp
-// 005f400d  c745fc00000000       mov dword ptr [ebp - 4], 0
-// 005f4014  85c0                 test eax, eax
-// 005f4016  7e24                 jle 0x5f403c
-// 005f4018  50                   push eax
-// 005f4019  51                   push ecx
-// 005f401a  8b4e40               mov ecx, dword ptr [esi + 0x40]
-// 005f401d  ff1540258000         call dword ptr [0x802540]
-// 005f4023  8b4e4c               mov ecx, dword ptr [esi + 0x4c]
-// 005f4026  8b5614               mov edx, dword ptr [esi + 0x14]
-// 005f4029  8b4650               mov eax, dword ptr [esi + 0x50]
-// 005f402c  890a                 mov dword ptr [edx], ecx
-// 005f402e  8b5624               mov edx, dword ptr [esi + 0x24]
-// 005f4031  03c1                 add eax, ecx
-// 005f4033  890a                 mov dword ptr [edx], ecx
-// 005f4035  2bc1                 sub eax, ecx
-// 005f4037  8b4e34               mov ecx, dword ptr [esi + 0x34]
-// 005f403a  8901                 mov dword ptr [ecx], eax
-// 005f403c  8b4e48               mov ecx, dword ptr [esi + 0x48]
-// 005f403f  b301                 mov bl, 1
-// 005f4041  85c9                 test ecx, ecx
-// 005f4043  740d                 je 0x5f4052
-// 005f4045  ff1570238000         call dword ptr [0x802370]
-// 005f404b  83f8ff               cmp eax, -1
-// 005f404e  7502                 jne 0x5f4052
-// 005f4050  32db                 xor bl, bl
-// 005f4052  8ac3                 mov al, bl
-// 005f4054  8b4df4               mov ecx, dword ptr [ebp - 0xc]
-// 005f4057  64890d00000000       mov dword ptr fs:[0], ecx
-// 005f405e  5f                   pop edi
-// 005f405f  5e                   pop esi
-// 005f4060  5b                   pop ebx
-// 005f4061  8be5                 mov esp, ebp
-// 005f4063  5d                   pop ebp
-// 005f4064  c3                   ret 
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-atl90-dll roc_http_wininet_catch_19404fecbe27f869.cpp
 
-struct String {};
-struct StreamBuffer {};
+// Candidate translation unit (score above; library headers required).
+#define _SCL_SECURE_NO_DEPRECATE // required to disable a warning
+#include "util/Http.h"
+#include <windows.h>
+#include <atlutil.h>
+#include <wininet.h>
+#include <sstream>
+#include <G3D/format.h>
+#include <boost/scoped_ptr.hpp>
+#include <boost/thread/mutex.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
 
-typedef String& (__thiscall *AppendFunction)(String*, const char*, unsigned int);
-typedef int (__thiscall *SyncFunction)(StreamBuffer*);
-
-extern AppendFunction append;
-extern SyncFunction pubsync;
-
-struct S
+class HttpRequest_source : public boost::iostreams::device<boost::iostreams::input>
 {
-    char padding0[0x14];
-    char** begin;
-    char padding1[0x0C];
-    char** end;
-    char padding2[0x0C];
-    int* remaining;
-    char padding3[0x08];
-    String* destination;
-    int padding4;
-    StreamBuffer* stream;
-    char* buffer;
-    int capacity;
+private:
+	void* request;
 
-    bool f();
+public:
+	HttpRequest_source(void* request)
+		: request(request)
+	{
+	}
+public:
+	// does not match
+	int read(char* s, int n)
+	{
+		DWORD numBytes;
+		if (!InternetQueryDataAvailable(request, &numBytes, 0, NULL))
+			return -1;
+		if (numBytes == 0)
+			return -1;
+
+		DWORD bytesRead;
+		if (!InternetReadFile(request, s, n, &bytesRead))
+			throw std::runtime_error("InternetReadFile failed");
+
+		return bytesRead;
+	}
 };
 
-bool S::f()
+struct String_sink : public boost::iostreams::device<boost::iostreams::output>
 {
-    try
-    {
-        char* last = *end;
-        char* first = *begin;
-        int length = last - first;
-        if (length > 0)
-        {
-            append(destination, first, length);
-            char* base = buffer;
-            char* limit = base + capacity;
-            *begin = base;
-            *end = base;
-            *remaining = limit - base;
-        }
+public:
+	std::string& s;
 
-        bool result = true;
-        if (stream && pubsync(stream) == -1)
-            result = false;
-        return result;
-    }
-    catch (...)
-    {
-        return false;
-    }
+public:
+	String_sink(std::string& s)
+		: s(s)
+	{
+	}
+public:
+	// NOTE: not checked
+	int write(const char* c, int n)
+	{
+		s.append(c, n);
+		return n;
+	}
+};
+
+
+namespace RBX {
+	class MD5Hasher
+	{
+	public:
+		virtual void addData(std::istream& data) = 0;
+		virtual void addData(const std::string& data) = 0;
+		virtual void addData(const char* data, size_t nBytes) = 0;
+		
+		virtual std::string toString() = 0;
+		virtual const char* c_str() = 0;
+
+	public:
+		static MD5Hasher* create();
+	};
+struct NativeInternetHandle {
+ HINTERNET value;
+ NativeInternetHandle(HINTERNET v):value(v){}
+ ~NativeInternetHandle(){InternetCloseHandle(value);}
+ operator HINTERNET()const{return value;}
+};
+class NativeHttp:public Http {public:void request(bool,std::istream&,bool,const char*,std::string&);void failure(bool,const char*);};
+void NativeHttp::request(bool isPost,std::istream& data,bool compressData,const char* additionalHeaders,std::string& response) {
+ if(url.empty())throw std::runtime_error("empty url");
+ if(!Http::trustCheck(url.c_str()))throw std::runtime_error(G3D::format("trust check failed for %s",url.c_str()));
+ ATL::CUrl crack;crack.CrackUrl(url.c_str());
+ if(crack.GetHostNameLength()==0)throw std::runtime_error(G3D::format("'%s' is missing a hostName",url.c_str()));
+ HINTERNET session=InternetOpenA("Roblox/WinInet",INTERNET_OPEN_TYPE_PRECONFIG,NULL,NULL,0);
+ try {
+ HINTERNET connection=InternetConnectA(session,crack.GetHostName(),crack.GetPortNumber(),crack.GetUserNameA(),crack.GetPassword(),INTERNET_SERVICE_HTTP,0,TRUE);
+ try {
+ ATL::CStringA path=crack.GetUrlPath();path+=crack.GetExtraInfo();
+ HINTERNET request=HttpOpenRequestA(connection,isPost?"POST":"GET",path.GetString(),NULL,NULL,NULL,INTERNET_FLAG_EXISTING_CONNECT|INTERNET_FLAG_KEEP_CONNECTION|INTERNET_FLAG_NEED_FILE,TRUE);
+ try {
+ if(!request)throw std::runtime_error(G3D::format("HttpOpenRequest failed for %s",url.c_str()));
+ if(additionalHeaders)failure(HttpAddRequestHeadersA(request,additionalHeaders,(int)strlen(additionalHeaders),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+ failure(HttpAddRequestHeadersA(request,"Accept-Encoding: gzip\r\n",(int)strlen("Accept-Encoding: gzip\r\n"),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+ boost::iostreams::gzip_params gzipParams(boost::iostreams::zlib::default_compression);
+ if(isPost) {
+  std::string uploadData;
+  {
+   boost::iostreams::filtering_stream<boost::iostreams::output> out;
+   if(compressData) {
+    std::string contentEncodingHeader="Content-Encoding: gzip\r\n";
+    failure(HttpAddRequestHeadersA(request,contentEncodingHeader.c_str(),(int)contentEncodingHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+    out.push(boost::iostreams::basic_gzip_compressor<>(gzipParams));
+   }
+   out.push(String_sink(uploadData));boost::iostreams::copy(data,out);
+  }
+  int length=(int)uploadData.size();
+  if(length>10000) {
+   std::string sizeHeader=G3D::format("Roblox-Content-Size: %d\r\n",length);
+   failure(HttpAddRequestHeadersA(request,sizeHeader.c_str(),(int)sizeHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   std::string firstHeader=G3D::format("Roblox-Content-First: %d\r\n",uploadData[0]);
+   failure(HttpAddRequestHeadersA(request,firstHeader.c_str(),(int)firstHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   std::string lastHeader=G3D::format("Roblox-Content-Last: %d\r\n",uploadData[length-1]);
+   failure(HttpAddRequestHeadersA(request,lastHeader.c_str(),(int)lastHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+   boost::scoped_ptr<MD5Hasher> hasher(MD5Hasher::create());hasher->addData(uploadData);
+   std::string hashHeader=G3D::format("Roblox-Content-Hash: %s\r\n",hasher->c_str());
+   failure(HttpAddRequestHeadersA(request,hashHeader.c_str(),(int)hashHeader.size(),HTTP_ADDREQ_FLAG_ADD)==TRUE,"HttpAddRequestHeaders failed");
+  }
+  INTERNET_BUFFERSA buffers={0};buffers.dwStructSize=sizeof(buffers);buffers.dwBufferTotal=length;
+  if(!HttpSendRequestExA(request,&buffers,NULL,0,0))throw std::runtime_error("HttpSendRequestEx failed");
+  DWORD written;
+  failure(InternetWriteFile(request,uploadData.c_str(),length,&written)==TRUE,"InternetWriteFile failed");
+  if(written!=length)throw std::runtime_error("Failed to upload content");
+  failure(HttpEndRequestA(request,NULL,0,0)==TRUE,"HttpEndRequest failed");
+ }else failure(HttpSendRequestA(request,NULL,0,NULL,0)==TRUE,"HttpSendRequest failed");
+ int status;DWORD length=sizeof(status);
+ failure(HttpQueryInfoA(request,HTTP_QUERY_STATUS_CODE|HTTP_QUERY_FLAG_NUMBER,&status,&length,NULL)==TRUE,"HttpQueryInfo failed");
+ {
+  boost::iostreams::filtering_stream<boost::iostreams::input> in;
+  char buffer[256];DWORD length=sizeof(buffer);
+  if(HttpQueryInfoA(request,HTTP_QUERY_CONTENT_ENCODING,buffer,&length,NULL))if(std::string(buffer)=="gzip")in.push(boost::iostreams::basic_gzip_decompressor<>());
+  in.push(HttpRequest_source(request));boost::iostreams::copy(in,String_sink(response));
+ }
+ if(status!=200) {
+  char buffer[512];DWORD length=sizeof(buffer);
+  if(HttpQueryInfoA(request,HTTP_QUERY_STATUS_TEXT,buffer,&length,NULL))throw std::runtime_error(std::string(buffer));
+  else throw std::runtime_error(G3D::format("statusCode = %d",status));
+ }
+ }catch(...){InternetCloseHandle(request);throw;}
+ InternetCloseHandle(request);
+ }catch(...){InternetCloseHandle(connection);throw;}
+ InternetCloseHandle(connection);
+ }catch(...){InternetCloseHandle(session);throw;}
+ InternetCloseHandle(session);
+
+}
 }

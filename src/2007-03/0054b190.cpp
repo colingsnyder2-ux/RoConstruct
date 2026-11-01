@@ -1,11 +1,4 @@
-// roc 2007-03 0054b190  unit: seg_00540000  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0054b190
-//
-// 0054b190  8b442404             mov eax, dword ptr [esp + 4]
-// 0054b194  894144               mov dword ptr [ecx + 0x44], eax
-// 0054b197  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_0054b190 {
     char pad0[68];
     int m_x;

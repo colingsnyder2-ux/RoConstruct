@@ -1,10 +1,13 @@
-// from server: 62% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/ContactManager.cpp
+// roc-lib: rbxgs roc_espclaude_2af11f81961d23fe.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define edgeState edgeState; int exePad2009Edge
+#include "v8world/Edge.h"
+#undef edgeState
 #include "v8world/ContactManager.h"
 #include "v8world/spatialHash.h" // TODO: move these out maybe?
 #include "v8world/World.h"
@@ -93,17 +96,18 @@ namespace RBX
 
 	void ContactManager::onPrimitiveGeometryTypeChanged(Primitive* p)
 	{
-		G3D::Array<Contact*> newContacts;
+		G3D::Array<Primitive*> others;
 
 		for (Contact* cur = p->getFirstContact(); cur != NULL; cur = p->getFirstContact())
 		{
-			newContacts.push_back(createContact(cur->getPrimitive(0), cur->getPrimitive(1)));
+			others.push_back(cur->otherPrimitive(p));
 			world->destroyContact(cur);
 		}
 
-		for (int i = 0; i < newContacts.size(); i++)
+		for (int i = 0; i < others.size(); i++)
 		{
-			world->insertContact(newContacts[i]);
+			Primitive* other = others[i];
+			world->insertContact(createContact(p, other));
 		}
 	}
 

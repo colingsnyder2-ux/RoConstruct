@@ -1,13 +1,6 @@
-// roc 2009-12 00811130  unit: CXTPImageManager  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00811130
-//
-// 00811130  e95b30ffff           jmp 0x804190
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_00811130();
+void func_00811130()
 {
-    G1_func_00401050();
-}
+    G1_func_00811130();
 }

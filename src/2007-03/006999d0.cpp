@@ -1,32 +1,99 @@
-// roc 2007-03 006999d0  unit: seg_00690000  size: 41 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 006999d0
-//
-// 006999d0  8b442404             mov eax, dword ptr [esp + 4]
-// 006999d4  89816c010000         mov dword ptr [ecx + 0x16c], eax
-// 006999da  b801000000           mov eax, 1
-// 006999df  3981a0000000         cmp dword ptr [ecx + 0xa0], eax
-// 006999e5  740f                 je 0x6999f6
-// 006999e7  8981a0000000         mov dword ptr [ecx + 0xa0], eax
-// 006999ed  89442404             mov dword ptr [esp + 4], eax
-// 006999f1  e9ba61f9ff           jmp 0x62fbb0
-// 006999f6  c20400               ret 4
-// copied from an identical function in another client (function ?setSomething@CXTPRibbonBar@ns_ROCX00002e@@QAEXH@Z)
+// from server: 65% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs util/RunStateOwner.cpp
 
-namespace ns_ROCX00002e {
-struct CXTPRibbonBar
-{
-    void setSomething(int value);
-};
+// Candidate translation unit (score above; library headers required).
+#include "util/RunStateOwner.h"
+#include "v8datamodel/DataModel.h"
 
-void CXTPRibbonBar::setSomething(int value)
+namespace RBX
 {
-    *(int*)((char*)this + 0x16c) = value;
-    int one = 1;
-    if (*(int*)((char*)this + 0xa0) != one)
-    {
-        *(int*)((char*)this + 0xa0) = one;
-        extern void __stdcall sub_0063a690(int);
-        sub_0063a690(one);
-    }
-}
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
+
+	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
+
+	RunService::RunService()
+		: framePeriod(1.0f/30.0f),
+		  runState(RS_NORMAL),
+		  invalidRunViewCount(0),
+		  stopRequested(false),
+		  runDisabled(false)
+	{
+		setName("Run Service");
+	}
+
+	RunService::~RunService()
+	{
+		RBXASSERT(views.empty());
+	}
+
+	void RunService::endRunThread(bool join)
+	{
+		stopRequested = true;
+		stateChangedCondition.notify_all();
+
+		if (join)
+			runThread->join();
+	}
+
+	void RunService::onAncestorChanged(const AncestorChanged& event)
+	{
+		if (!getParent())
+		{
+			stopRequested = true;
+			stateChangedCondition.notify_all();
+		}
+	}
+
+	void RunService::setRunState(RunState newState)
+	{
+		RunTransition transition(runState, newState);
+		runState = newState;
+
+		Notifier<RunService, RunState>::raise(newState);
+		Notifier<RunService, RunTransition>::raise(transition);
+	}
+
+	void RunService::raiseStepped(float time, float step)
+	{
+		Notifier<RunService, Stepped>::raise(Stepped(time, step));
+		event_Stepped.fire(this, time, step);
+	}
+
+	void RunService::raiseHeartbeat(float time, float step)
+	{
+		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
+		event_Heartbeat.fire(this, step);
+	}
+
+	void RunService::invalidateRunViews()
+	{
+		boost::mutex::scoped_lock lock(viewMutex);
+
+		if (invalidRunViewCount == 0)
+		{
+			invalidRunViewCount = (int)views.size();
+			if (invalidRunViewCount > 0)
+			{
+				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
+				{
+					iter->first->InvalidateRunView();
+					iter->second = false;
+				}
+				runViewsDoneCondition.notify_all();
+			}
+		}
+	}
+
+	void RunService::start()
+	{
+		RBXASSERT(!runThread);
+
+		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
+		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
+	}
 }

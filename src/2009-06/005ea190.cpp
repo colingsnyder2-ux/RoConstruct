@@ -1,9 +1,4 @@
-// roc 2009-06 005ea190  unit: G3D::VVector3::?$TypedPropertyDescriptor  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 005ea190
-//
-// 005ea190  e9fbf5ffff           jmp 0x5e9790
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_005ea190();
 void func_005ea190()
 {

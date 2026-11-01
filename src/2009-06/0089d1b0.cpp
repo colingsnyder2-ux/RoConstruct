@@ -1,10 +1,4 @@
-// roc 2009-06 0089d1b0  unit: seg_00890000  size: 11 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 0089d1b0
-//
-// 0089d1b0  b9f003a500           mov ecx, 0xa503f0
-// 0089d1b5  ff25c4e48900         jmp dword ptr [0x89e4c4]
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct __declspec(dllimport) T_func_0089d1b0 { void m(); };
 extern T_func_0089d1b0 G1_func_0089d1b0;
 void func_0089d1b0()

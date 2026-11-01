@@ -1,16 +1,4 @@
-// roc 2007-08 0068b840  unit: CXTPTabClientWnd  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0068b840
-//
-// 0068b840  8bc1                 mov eax, ecx
-// 0068b842  33c9                 xor ecx, ecx
-// 0068b844  c700dcfe7c00         mov dword ptr [eax], 0x7cfedc
-// 0068b84a  894804               mov dword ptr [eax + 4], ecx
-// 0068b84d  894810               mov dword ptr [eax + 0x10], ecx
-// 0068b850  89480c               mov dword ptr [eax + 0xc], ecx
-// 0068b853  894808               mov dword ptr [eax + 8], ecx
-// 0068b856  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

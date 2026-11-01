@@ -1,48 +1,4 @@
-// roc 2010-06 004c0670  unit: RBX::Network::VPlayer::?$EventDesc  size: 110 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 004c0670
-//
-// 004c0670  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 004c0674  33c9                 xor ecx, ecx
-// 004c0676  3bc1                 cmp eax, ecx
-// 004c0678  7441                 je 0x4c06bb
-// 004c067a  83f801               cmp eax, 1
-// 004c067d  743c                 je 0x4c06bb
-// 004c067f  83f802               cmp eax, 2
-// 004c0682  7459                 je 0x4c06dd
-// 004c0684  83f803               cmp eax, 3
-// 004c0687  7521                 jne 0x4c06aa
-// 004c0689  56                   push esi
-// 004c068a  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 004c068e  8b0e                 mov ecx, dword ptr [esi]
-// 004c0690  6868d3b800           push 0xb8d368
-// 004c0695  ff15d8a89e00         call dword ptr [0x9ea8d8]
-// 004c069b  0fb6c0               movzx eax, al
-// 004c069e  f7d8                 neg eax
-// 004c06a0  1bc0                 sbb eax, eax
-// 004c06a2  23442408             and eax, dword ptr [esp + 8]
-// 004c06a6  8906                 mov dword ptr [esi], eax
-// 004c06a8  5e                   pop esi
-// 004c06a9  c3                   ret 
-// 004c06aa  8b442408             mov eax, dword ptr [esp + 8]
-// 004c06ae  c70068d3b800         mov dword ptr [eax], 0xb8d368
-// 004c06b4  884804               mov byte ptr [eax + 4], cl
-// 004c06b7  884805               mov byte ptr [eax + 5], cl
-// 004c06ba  c3                   ret 
-// 004c06bb  8b442408             mov eax, dword ptr [esp + 8]
-// 004c06bf  3bc1                 cmp eax, ecx
-// 004c06c1  741a                 je 0x4c06dd
-// 004c06c3  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 004c06c7  8b11                 mov edx, dword ptr [ecx]
-// 004c06c9  8910                 mov dword ptr [eax], edx
-// 004c06cb  8b5104               mov edx, dword ptr [ecx + 4]
-// 004c06ce  895004               mov dword ptr [eax + 4], edx
-// 004c06d1  8b5108               mov edx, dword ptr [ecx + 8]
-// 004c06d4  895008               mov dword ptr [eax + 8], edx
-// 004c06d7  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 004c06da  89480c               mov dword ptr [eax + 0xc], ecx
-// 004c06dd  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

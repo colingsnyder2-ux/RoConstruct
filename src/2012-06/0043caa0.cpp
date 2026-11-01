@@ -1,39 +1,17 @@
-// from server: 54% by colin
-// roc-lang: cpp
-// roc-cl: 21022
+// from server: 100% by colin
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/instances.cpp
-
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        instances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex narrow character template instances.
-  */
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_NARROW_INSTANTIATE
-
-#ifdef __BORLANDC__
-#pragma hrdstop
-#endif
-
-#include <boost/regex.hpp>
-
-#endif
+struct T4_0043caa0 {
+    T4_0043caa0();
+    virtual void f_0043caa0();
+    char m_a;
+    char m_b;
+};
+T4_0043caa0::T4_0043caa0() : m_a(0), m_b(0) {}
+extern "C" void* create_other_0043caa0(void*, void*, int);
+void* create_0043caa0(void* unused, T4_0043caa0* out, int type)
+{
+    if (type != 4)
+        return create_other_0043caa0(unused, out, type);
+    out->T4_0043caa0::T4_0043caa0();
+    return out;
+}

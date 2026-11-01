@@ -1,9 +1,4 @@
-// roc 2007-08 0055ed60  unit: RBX::WatchCameraCommand  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0055ed60
-//
-// 0055ed60  e9abf9ffff           jmp 0x55e710
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_0055ed60();
 void func_0055ed60()
 {

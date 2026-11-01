@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00597040  unit: RBX::worker_thread::Udata::?$sp_counted_impl_p  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00597040
-//
-// 00597040  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00597044  83f803               cmp eax, 3
-// 00597047  741e                 je 0x597067
-// 00597049  8b542408             mov edx, dword ptr [esp + 8]
-// 0059704d  c644240c00           mov byte ptr [esp + 0xc], 0
-// 00597052  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 00597056  51                   push ecx
-// 00597057  50                   push eax
-// 00597058  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0059705c  52                   push edx
-// 0059705d  50                   push eax
-// 0059705e  e86dfcffff           call 0x596cd0
-// 00597063  83c410               add esp, 0x10
-// 00597066  c3                   ret 
-// 00597067  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0059706b  c701f89a9400         mov dword ptr [ecx], 0x949af8
-// 00597071  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

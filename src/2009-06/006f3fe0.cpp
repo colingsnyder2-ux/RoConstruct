@@ -1,108 +1,60 @@
-// from server: 61% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-lib: rbxgs-dll roc_espclaude_a55aecb973e21b7f.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+#include <boost/bind.hpp>
+namespace RBX {
+class Instance {
+public:
+    template<class F> void visitDescendants(F f);
+};
+class Humanoid {
+public:
+    Instance* getTorso() const { return torso; }
+private:
+    char pad[0x234];
+    Instance* torso;
+};
+class HitTestFilter { public: virtual int filterResult(int) const = 0; };
+namespace HUMAN {
+enum StateType { RUNNING_NO_PHYSICS = 8 };
+class HumanoidState { public: virtual ~HumanoidState(); };
+class MovingNoPhysicsBase : public HumanoidState, public HitTestFilter {
+public:
+    MovingNoPhysicsBase(Humanoid* humanoid, StateType priorState);
+    virtual ~MovingNoPhysicsBase();
+    virtual int filterResult(int) const;
+    int pad[0x20];
+};
+void setPartTransparency(Instance* i, float t);
+struct TransparencySetter {
+    void (*fn)(Instance*, float);
+    float value;
+    TransparencySetter(void (*f)(Instance*, float), float v) : fn(f), value(v) {}
+    void operator()(Instance* i) const { fn(i, value); }
+};
+inline TransparencySetter makeSetter(void (*f)(Instance*, float), float v) { return TransparencySetter(f, v); }
+template<class F> inline void visitTorso(Humanoid* h, F f)
 {
-	static boost::mutex mutex2;
-	return mutex2;
+    if (Instance* t = h->getTorso())
+        t->visitDescendants(f);
 }
-
-void initMoo()
+inline void setTransparency(Humanoid* humanoid, float t)
 {
-	moo2();
+    visitTorso(humanoid, boost::bind(&setPartTransparency, _1, t));
 }
-
-namespace RBX
+class RunningNoPhysics : public MovingNoPhysicsBase {
+public:
+    RunningNoPhysics(Humanoid* humanoid, StateType priorState);
+    virtual ~RunningNoPhysics();
+};
+RunningNoPhysics::RunningNoPhysics(Humanoid* humanoid, StateType priorState)
+    : MovingNoPhysicsBase(humanoid, priorState)
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    setTransparency(humanoid, 0.0f);
+}
+}
 }

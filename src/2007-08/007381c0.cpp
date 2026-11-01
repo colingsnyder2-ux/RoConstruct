@@ -1,3 +1,4 @@
+// from server: 100% by colin
 // roc 2007-08 007381c0  unit: G3D::GFont  size: 152 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 007381c0
 //

@@ -1,38 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00587530  unit: RBX::VChangeHistoryService::?$FactoryProduct  size: 81 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00587530
-//
-// 00587530  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00587534  85c0                 test eax, eax
-// 00587536  7523                 jne 0x58755b
-// 00587538  8b442408             mov eax, dword ptr [esp + 8]
-// 0058753c  85c0                 test eax, eax
-// 0058753e  7440                 je 0x587580
-// 00587540  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 00587544  8b11                 mov edx, dword ptr [ecx]
-// 00587546  8910                 mov dword ptr [eax], edx
-// 00587548  8b5104               mov edx, dword ptr [ecx + 4]
-// 0058754b  895004               mov dword ptr [eax + 4], edx
-// 0058754e  8b5108               mov edx, dword ptr [ecx + 8]
-// 00587551  895008               mov dword ptr [eax + 8], edx
-// 00587554  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 00587557  89480c               mov dword ptr [eax + 0xc], ecx
-// 0058755a  c3                   ret 
-// 0058755b  83f801               cmp eax, 1
-// 0058755e  7420                 je 0x587580
-// 00587560  56                   push esi
-// 00587561  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 00587565  8b0e                 mov ecx, dword ptr [esi]
-// 00587567  68488f9400           push 0x948f48
-// 0058756c  ff1578288000         call dword ptr [0x802878]
-// 00587572  0fb6d0               movzx edx, al
-// 00587575  f7da                 neg edx
-// 00587577  1bd2                 sbb edx, edx
-// 00587579  23542408             and edx, dword ptr [esp + 8]
-// 0058757d  8916                 mov dword ptr [esi], edx
-// 0058757f  5e                   pop esi
-// 00587580  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <new>

@@ -1,10 +1,4 @@
-// roc 2007-08 0040ed80  unit: CChildFrame  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0040ed80
-//
-// 0040ed80  b8dc6a7800           mov eax, 0x786adc
-// 0040ed85  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0040ed80()

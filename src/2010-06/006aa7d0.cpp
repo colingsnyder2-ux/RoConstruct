@@ -1,20 +1,54 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_backpacknativevisitor_10f23ffd264a3efb.cpp
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+#pragma intrinsic(_InterlockedDecrement)
 
-// Candidate translation unit (score above; library headers required).
-#include <vector>
-#include <algorithm>
-#include <boost/shared_ptr.hpp>
-#include <boost/bind.hpp>
-namespace RBX {
-class Instance;
-typedef boost::shared_ptr<Instance> Shared;
-typedef std::vector<Shared> Children;
-class Instance {public:virtual void unused()=0;char padding[0x104];Children* children;};
-struct Face {int getSurfaceType()const;void set(int);};
-struct Surfaces {Face* face(int);};
-class PartInstance:public Instance {public:Surfaces* surfaces();};
-void __cdecl clearBackpack(Shared value){PartInstance* part=dynamic_cast<PartInstance*>(value.get());if(part){Surfaces* surfaces=part->surfaces();for(int i=0;i<6;++i){if(surfaces->face(i)->getSurfaceType()==2) surfaces->face(i)->set(3);}}if(value->children) std::for_each(value->children->begin(),value->children->end(),boost::bind(clearBackpack,_1));}
+
+struct Control {
+    long reserved;
+    volatile long references;
+};
+
+struct Shared {
+    void* object;
+    Control* control;
+    Shared(const Shared&);
+    ~Shared();
+};
+
+__forceinline Shared::Shared(const Shared& other)
+    : object(other.object), control(other.control)
+{
+    if (control)
+        _InterlockedIncrement(&control->references);
+}
+
+struct Iterator {
+    void* owner;
+    Shared* position;
+};
+
+struct Function {
+    void (__cdecl *callback)(Shared);
+    unsigned long state;
+    Function(const Function&);
+};
+
+__forceinline Function::Function(const Function& other)
+    : callback(other.callback), state(other.state)
+{
+}
+
+Function __cdecl apply(Iterator first, Iterator last, Function function)
+{
+    Shared* current = first.position;
+    Shared* end = last.position;
+    for (; current != end; ++current)
+        function.callback(*current);
+    return function;
 }

@@ -1,5 +1,11 @@
-// from server: 65% by colin
-// roc-lang: cpp
-// roc-cl: 50727
+// from server: 100% by colin
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: ogre-1.7.0 OgreCompositionPass.cpp
+extern "C" void seh_fn_004ba480(void*);
+extern int g_a_004ba480;
+extern int g_b_004ba480;
+extern int g_arg_004ba480;
+struct Reg_004ba480 { Reg_004ba480() { g_a_004ba480 = 0; g_b_004ba480 = 0; seh_fn_004ba480(&g_arg_004ba480); } };
+void func_004ba480()
+{
+    static Reg_004ba480 reg;
+}

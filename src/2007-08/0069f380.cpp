@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 0069f380  unit: CSelectionCaption  size: 126 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 0069f380
 //

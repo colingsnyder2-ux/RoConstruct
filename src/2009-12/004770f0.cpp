@@ -1,22 +1,4 @@
-// roc 2009-12 004770f0  unit: VCContent::?$CComObject  size: 33 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 004770f0
-//
-// 004770f0  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 004770f4  834108ff             add dword ptr [ecx + 8], -1
-// 004770f8  56                   push esi
-// 004770f9  8b7108               mov esi, dword ptr [ecx + 8]
-// 004770fc  750d                 jne 0x47710b
-// 004770fe  85c9                 test ecx, ecx
-// 00477100  7409                 je 0x47710b
-// 00477102  8b01                 mov eax, dword ptr [ecx]
-// 00477104  8b5010               mov edx, dword ptr [eax + 0x10]
-// 00477107  6a01                 push 1
-// 00477109  ffd2                 call edx
-// 0047710b  8bc6                 mov eax, esi
-// 0047710d  5e                   pop esi
-// 0047710e  c20400               ret 4
-// copied from an identical function in another client (function ?Release@?$CComObject@VCContent@ATL@@@ATL@@UAGKXZ)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 struct GUID;

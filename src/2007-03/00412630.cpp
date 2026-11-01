@@ -1,7 +1,8 @@
+// from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll App/script/LuaSignalBridge.cpp
+// roc-lib: openrbx-client App/script/LuaSignalBridge.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "script/LuaSignalBridge.h"

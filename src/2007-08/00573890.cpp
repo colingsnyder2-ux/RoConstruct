@@ -1,10 +1,4 @@
-// roc 2007-08 00573890  unit: RBX::PartInstance  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00573890
-//
-// 00573890  8d81a4010000         lea eax, [ecx + 0x1a4]
-// 00573896  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00573890 {
     char pad0[420];
     int m_x;

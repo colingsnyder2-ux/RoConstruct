@@ -1,15 +1,7 @@
-// roc 2007-03 005acbe0  unit: seg_005a0000  size: 13 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 005acbe0
-//
-// 005acbe0  8b4934               mov ecx, dword ptr [ecx + 0x34]
-// 005acbe3  8b01                 mov eax, dword ptr [ecx]
-// 005acbe5  8b5018               mov edx, dword ptr [eax + 0x18]
-// 005acbe8  6a02                 push 2
-// 005acbea  ffd2                 call edx
-// 005acbec  c3                   ret 
-// copied from an identical function in another client (function ?fireSignal@VHumanoid@ns_ROCX000005@@QAEXXZ)
-
-namespace ns_ROCX000005 {
+// from server: 100% by tester
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
 struct SignalTarget
 {
 	virtual void slot0();
@@ -32,5 +24,4 @@ struct VHumanoid
 void VHumanoid::fireSignal()
 {
 	signal->slot6(2);
-}
 }

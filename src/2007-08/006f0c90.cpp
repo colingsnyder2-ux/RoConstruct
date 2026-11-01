@@ -1,11 +1,4 @@
-// roc 2007-08 006f0c90  unit: CXTPShadowsManager::CShadowWnd  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006f0c90
-//
-// 006f0c90  8b4164               mov eax, dword ptr [ecx + 0x64]
-// 006f0c93  8b80500a0000         mov eax, dword ptr [eax + 0xa50]
-// 006f0c99  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct I_func_006f0c90 {
     char pad[2640];
     int m_x;

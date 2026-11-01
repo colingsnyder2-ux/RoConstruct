@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 004c39b0  unit: Ogre::RbxCluster::VRbxPartBinding::?$sp_counted_impl_p  size: 83 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 004c39b0
 //

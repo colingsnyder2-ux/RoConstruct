@@ -1,30 +1,18 @@
-// from server: 13% by colin
-extern "C" void* __cdecl malloc(unsigned int size);
+// from server: 16% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 
-struct VCAppIObjectSafetyRobloxImpl
-{
-    void construct();
+struct VCAppIObjectSafetyRobloxImpl {
     void assign(void* p);
 };
 
-extern void func_00544ce0();
-extern void func_004091e0();
-
-void VCAppIObjectSafetyRobloxImpl::construct()
-{
-    void* p = malloc(0xf0);
-    if (p != 0)
-    {
-        func_00544ce0();
-    }
-    else
-    {
-        p = 0;
-    }
-    func_004091e0();
-}
+extern "C" __declspec(dllimport) void* __stdcall sym_func_77e6d0();
+extern "C" void __stdcall sub_544ce0(void* p);
 
 void VCAppIObjectSafetyRobloxImpl::assign(void* p)
 {
-    construct();
+    void* h = sym_func_77e6d0();
+    if (h != 0)
+        sub_544ce0(h);
 }

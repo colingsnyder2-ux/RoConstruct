@@ -1,10 +1,4 @@
-// roc 2010-06 004d6700  unit: CRobloxControlColorSelector  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 004d6700
-//
-// 004d6700  d98104010000         fld dword ptr [ecx + 0x104]
-// 004d6706  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_004d6700 {
     char pad[260];
     float m_x;

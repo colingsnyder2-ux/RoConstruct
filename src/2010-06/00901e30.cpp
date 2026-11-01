@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 00901e30  unit: Ogre::UFileInfo::V?$vector::?$SharedPtr  size: 55 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 00901e30
 //

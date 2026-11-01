@@ -1,9 +1,4 @@
-// roc 2007-08 005308d0  unit: RBX::VModelInstance::?$FactoryProduct  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005308d0
-//
-// 005308d0  e94bf5ffff           jmp 0x52fe20
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_005308d0();
 void func_005308d0()
 {

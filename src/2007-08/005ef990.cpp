@@ -1,10 +1,4 @@
-// roc 2007-08 005ef990  unit: RBX::BodyMover  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005ef990
-//
-// 005ef990  8d81f8000000         lea eax, [ecx + 0xf8]
-// 005ef996  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_005ef990 {
     char pad0[248];
     int m_x;

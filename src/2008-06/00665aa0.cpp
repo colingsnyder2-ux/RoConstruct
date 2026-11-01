@@ -1,22 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00665aa0  unit: RBX::PartDragTool  size: 42 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00665aa0
-//
-// 00665aa0  51                   push ecx
-// 00665aa1  8b11                 mov edx, dword ptr [ecx]
-// 00665aa3  8b442408             mov eax, dword ptr [esp + 8]
-// 00665aa7  8910                 mov dword ptr [eax], edx
-// 00665aa9  8b4904               mov ecx, dword ptr [ecx + 4]
-// 00665aac  c7042400000000       mov dword ptr [esp], 0
-// 00665ab3  894804               mov dword ptr [eax + 4], ecx
-// 00665ab6  85c9                 test ecx, ecx
-// 00665ab8  740c                 je 0x665ac6
-// 00665aba  83c108               add ecx, 8
-// 00665abd  ba01000000           mov edx, 1
-// 00665ac2  f00fc111             lock xadd dword ptr [ecx], edx
-// 00665ac6  59                   pop ecx
-// 00665ac7  c20400               ret 4
-
 #include <intrin.h>
 
 namespace boost {

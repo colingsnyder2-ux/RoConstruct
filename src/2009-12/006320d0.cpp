@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 006320d0  unit: RBX::Network::VPlayer::?$RefPropDescriptor  size: 211 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 006320d0
 //

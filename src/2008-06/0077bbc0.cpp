@@ -1,16 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 0077bbc0  unit: CXTPDockingPaneAutoHidePanel::CAutoHidePanelTabManager  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0077bbc0
-//
-// 0077bbc0  8bc1                 mov eax, ecx
-// 0077bbc2  33c9                 xor ecx, ecx
-// 0077bbc4  c700ac928600         mov dword ptr [eax], 0x8692ac
-// 0077bbca  894804               mov dword ptr [eax + 4], ecx
-// 0077bbcd  894810               mov dword ptr [eax + 0x10], ecx
-// 0077bbd0  89480c               mov dword ptr [eax + 0xc], ecx
-// 0077bbd3  894808               mov dword ptr [eax + 8], ecx
-// 0077bbd6  c3                   ret 
-
 extern char G;
 
 extern char G;

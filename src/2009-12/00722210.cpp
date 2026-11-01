@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00722210  unit: boost::iostreams::DUoutput::V?$basic_null_device::?$stream_buffer  size: 26 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00722210
 //

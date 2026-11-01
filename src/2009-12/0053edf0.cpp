@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0053edf0  unit: RBX::Network::Replicator::NewInstanceItem  size: 50 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0053edf0
 //

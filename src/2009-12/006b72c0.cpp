@@ -1,13 +1,6 @@
-// roc 2009-12 006b72c0  unit: RBX::Soundscape::W4ReverbType::?$EnumDesc  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 006b72c0
-//
-// 006b72c0  e91bf5ffff           jmp 0x6b67e0
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_006b72c0();
+void func_006b72c0()
 {
-    G1_func_00401050();
-}
+    G1_func_006b72c0();
 }

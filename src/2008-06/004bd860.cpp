@@ -1,31 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 004bd860  unit: ProfiledRakPeer  size: 129 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 004bd860
-//
-// 004bd860  33c0                 xor eax, eax
-// 004bd862  898184000000         mov dword ptr [ecx + 0x84], eax
-// 004bd868  898188000000         mov dword ptr [ecx + 0x88], eax
-// 004bd86e  89818c000000         mov dword ptr [ecx + 0x8c], eax
-// 004bd874  898190000000         mov dword ptr [ecx + 0x90], eax
-// 004bd87a  898194000000         mov dword ptr [ecx + 0x94], eax
-// 004bd880  898198000000         mov dword ptr [ecx + 0x98], eax
-// 004bd886  89819c000000         mov dword ptr [ecx + 0x9c], eax
-// 004bd88c  8981a0000000         mov dword ptr [ecx + 0xa0], eax
-// 004bd892  8981c4000000         mov dword ptr [ecx + 0xc4], eax
-// 004bd898  8981c8000000         mov dword ptr [ecx + 0xc8], eax
-// 004bd89e  8981cc000000         mov dword ptr [ecx + 0xcc], eax
-// 004bd8a4  8981d0000000         mov dword ptr [ecx + 0xd0], eax
-// 004bd8aa  8981f4000000         mov dword ptr [ecx + 0xf4], eax
-// 004bd8b0  8981f8000000         mov dword ptr [ecx + 0xf8], eax
-// 004bd8b6  8981fc000000         mov dword ptr [ecx + 0xfc], eax
-// 004bd8bc  898100010000         mov dword ptr [ecx + 0x100], eax
-// 004bd8c2  898124010000         mov dword ptr [ecx + 0x124], eax
-// 004bd8c8  898128010000         mov dword ptr [ecx + 0x128], eax
-// 004bd8ce  89812c010000         mov dword ptr [ecx + 0x12c], eax
-// 004bd8d4  898130010000         mov dword ptr [ecx + 0x130], eax
-// 004bd8da  888180000000         mov byte ptr [ecx + 0x80], al
-// 004bd8e0  c3                   ret 
-
 struct RakPeer {
     char pad0[0x80];
     unsigned char field80;

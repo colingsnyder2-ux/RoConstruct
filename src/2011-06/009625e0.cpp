@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 009625e0  unit: VThreadLogManager::?$thread_specific_ptr::delete_data  size: 25 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 009625e0
 //

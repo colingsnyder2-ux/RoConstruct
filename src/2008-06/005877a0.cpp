@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 005877a0  unit: RBX::VChangeHistoryService::?$FactoryProduct  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005877a0
-//
-// 005877a0  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 005877a4  83f803               cmp eax, 3
-// 005877a7  741e                 je 0x5877c7
-// 005877a9  8b542408             mov edx, dword ptr [esp + 8]
-// 005877ad  c644240c00           mov byte ptr [esp + 0xc], 0
-// 005877b2  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 005877b6  51                   push ecx
-// 005877b7  50                   push eax
-// 005877b8  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 005877bc  52                   push edx
-// 005877bd  50                   push eax
-// 005877be  e80dfdffff           call 0x5874d0
-// 005877c3  83c410               add esp, 0x10
-// 005877c6  c3                   ret 
-// 005877c7  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 005877cb  c701808e9400         mov dword ptr [ecx], 0x948e80
-// 005877d1  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

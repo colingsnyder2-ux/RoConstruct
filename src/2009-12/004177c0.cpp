@@ -1,13 +1,6 @@
-// roc 2009-12 004177c0  unit: VCContent::?$CComObject  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 004177c0
-//
-// 004177c0  e9cbfdffff           jmp 0x417590
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_004177c0();
+void func_004177c0()
 {
-    G1_func_00401050();
-}
+    G1_func_004177c0();
 }

@@ -1,14 +1,4 @@
-// roc 2009-06 0089be40  unit: seg_00890000  size: 25 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 0089be40
-//
-// 0089be40  a18ce6a400           mov eax, dword ptr [0xa4e68c]
-// 0089be45  50                   push eax
-// 0089be46  e8e7cbe7ff           call 0x718a32
-// 0089be4b  83c404               add esp, 4
-// 0089be4e  c70570e6a40030d28a00 mov dword ptr [0xa4e670], 0x8ad230
-// 0089be58  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern int G1_VALUE;

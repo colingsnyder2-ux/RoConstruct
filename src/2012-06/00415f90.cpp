@@ -1,36 +1,4 @@
-// roc 2012-06 00415f90  unit: CIDEBrowserView  size: 67 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00415f90
-//
-// 00415f90  51                   push ecx
-// 00415f91  8b81f0000000         mov eax, dword ptr [ecx + 0xf0]
-// 00415f97  8b08                 mov ecx, dword ptr [eax]
-// 00415f99  8d1424               lea edx, [esp]
-// 00415f9c  52                   push edx
-// 00415f9d  50                   push eax
-// 00415f9e  8b417c               mov eax, dword ptr [ecx + 0x7c]
-// 00415fa1  ffd0                 call eax
-// 00415fa3  85c0                 test eax, eax
-// 00415fa5  751b                 jne 0x415fc2
-// 00415fa7  66833c24ff           cmp word ptr [esp], -1
-// 00415fac  7514                 jne 0x415fc2
-// 00415fae  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 00415fb2  8b11                 mov edx, dword ptr [ecx]
-// 00415fb4  b801000000           mov eax, 1
-// 00415fb9  50                   push eax
-// 00415fba  8b02                 mov eax, dword ptr [edx]
-// 00415fbc  ffd0                 call eax
-// 00415fbe  59                   pop ecx
-// 00415fbf  c20400               ret 4
-// 00415fc2  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 00415fc6  8b11                 mov edx, dword ptr [ecx]
-// 00415fc8  33c0                 xor eax, eax
-// 00415fca  50                   push eax
-// 00415fcb  8b02                 mov eax, dword ptr [edx]
-// 00415fcd  ffd0                 call eax
-// 00415fcf  59                   pop ecx
-// 00415fd0  c20400               ret 4
-// copied from an identical function in another client (function ?invoke@CBrowserView@@QAEXPAUCallback@@@Z)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 struct Query {

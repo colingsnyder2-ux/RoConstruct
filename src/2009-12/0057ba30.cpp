@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0057ba30  unit: RBX::VCylinderMesh::?$FactoryProduct::Creator  size: 16 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0057ba30
 //

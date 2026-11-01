@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 00404b30  unit: ATL::CComClassFactory  size: 83 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00404b30
 //

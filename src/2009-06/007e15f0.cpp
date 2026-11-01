@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007e15f0  unit: XTPDockingPanePaintThemes::CXTPDockingPaneNativeXPTheme  size: 35 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007e15f0
 //

@@ -1,5 +1,4 @@
-// from server: 69% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.36.0 libs/thread/src/win32/thread.cpp
+// from server: 100% by colin
+// roc-flags: /O2 /Ob2 /Oy /GF- /GS- /EHsc /MD
+extern "C" int helper(void*,int,void*,void*,int);
+bool __stdcall func(void* p){return helper(p,0,(void*)0xd601e8,(void*)0xd60628,0)!=0;}

@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0042aba0  unit: RBX::Reflection::$$A6AXPBVPropertyDescriptor::V?$function::?$holder  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0042aba0
-//
-// 0042aba0  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0042aba4  83f803               cmp eax, 3
-// 0042aba7  741e                 je 0x42abc7
-// 0042aba9  8b542408             mov edx, dword ptr [esp + 8]
-// 0042abad  c644240c00           mov byte ptr [esp + 0xc], 0
-// 0042abb2  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 0042abb6  51                   push ecx
-// 0042abb7  50                   push eax
-// 0042abb8  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0042abbc  52                   push edx
-// 0042abbd  50                   push eax
-// 0042abbe  e8fdfaffff           call 0x42a6c0
-// 0042abc3  83c410               add esp, 0x10
-// 0042abc6  c3                   ret 
-// 0042abc7  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0042abcb  c701b0e69200         mov dword ptr [ecx], 0x92e6b0
-// 0042abd1  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

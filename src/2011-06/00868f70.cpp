@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-11.2.2 Source/CommandBars/XTPTabClientWnd.cpp
+// roc-flags: /O2 /MD /GS /EHsc /Ob1
+// roc-lib: xtp-11.2.2-lib-strlen Source/CommandBars/XTPTabClientWnd.cpp
 
 // Candidate translation unit (score above; library headers required).
 // XTPTabClientWnd.cpp : implementation of the CXTPTabClientWnd class.

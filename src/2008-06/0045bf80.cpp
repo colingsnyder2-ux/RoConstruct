@@ -1,14 +1,4 @@
 // from server: 100% by king_originala
-// roc 2008-06 0045bf80  unit: CRobloxWnd  size: 16 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0045bf80
-//
-// 0045bf80  56                   push esi
-// 0045bf81  8bf1                 mov esi, ecx
-// 0045bf83  e828ffffff           call 0x45beb0
-// 0045bf88  8bce                 mov ecx, esi
-// 0045bf8a  5e                   pop esi
-// 0045bf8b  e9d84c2400           jmp 0x6a0c68
-
 typedef unsigned long DWORD;
 
 extern "C" {

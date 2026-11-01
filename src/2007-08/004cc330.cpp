@@ -1,7 +1,8 @@
+// from server: 57% by colin
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /EHsc /MD
-// roc-lib: openrbx-raknet rijndael.cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-raknet rijndael.cpp
 
 // Candidate translation unit (score above; library headers required).
 // rijndael-alg-fst.c   v2.0   August '99
@@ -126,7 +127,6 @@ void MixColumn(word8 a[4][4], word8 BC) {
 			a[j][i] = b[j][i];
 }
 
-// FUNCTION: WEBSERVICE 0x101c3c50
 void InvMixColumn(word8 a[4][4], word8 BC) {
   // Mix the four bytes of every column in a linear way
 	// This is the opposite operation of Mixcolumn
@@ -142,7 +142,6 @@ void InvMixColumn(word8 a[4][4], word8 BC) {
 
 }
 
-// FUNCTION: WEBSERVICE 0x101c3ca0
 int rijndaelKeySched (word8 k[MAXKC][4], int keyBits __UNUS, word8 W[MAXROUNDS+1][4][4])
 {
 #ifdef _MSC_VER
@@ -205,7 +204,6 @@ int rijndaelKeySched (word8 k[MAXKC][4], int keyBits __UNUS, word8 W[MAXROUNDS+1
 	return 0;
 }
 
-// FUNCTION: WEBSERVICE 0x101c3e80
 int rijndaelKeyEnctoDec (int keyBits __UNUS, word8 W[MAXROUNDS+1][4][4])
 {
 #ifdef _MSC_VER
@@ -219,7 +217,6 @@ int rijndaelKeyEnctoDec (int keyBits __UNUS, word8 W[MAXROUNDS+1][4][4])
 	return 0;
 }	
 
-// FUNCTION: WEBSERVICE 0x101c3ec0
 int rijndaelEncrypt (word8 a[16], word8 b[16], word8 rk[MAXROUNDS+1][4][4])
 {
 	// Encryption of one block. 
@@ -366,7 +363,6 @@ int rijndaelEncryptRound (word8 a[4][4],
 }   
 
 
-// FUNCTION: WEBSERVICE 0x101c42b0
 int rijndaelDecrypt (word8 a[16], word8 b[16], word8 rk[MAXROUNDS+1][4][4])
 {
 	int r;
@@ -489,7 +485,6 @@ int rijndaelDecryptRound (word8 a[4][4],
 /*** End Rijndael algorithm,  Begin the AES Interface ***/
 
 
-// FUNCTION: WEBSERVICE 0x101c4650
 int makeKey(keyInstance *key, BYTE direction, int keyByteLen, char *keyMaterial)
 {
 	word8 k[MAXKC][4];
@@ -531,7 +526,6 @@ int makeKey(keyInstance *key, BYTE direction, int keyByteLen, char *keyMaterial)
 	return TRUE;
 }
 
-// FUNCTION: WEBSERVICE 0x101c47b0
 int cipherInit(cipherInstance *cipher, BYTE mode, char *IV)
 {
 	int i;
@@ -557,7 +551,6 @@ int cipherInit(cipherInstance *cipher, BYTE mode, char *IV)
 }
 
 
-// FUNCTION: WEBSERVICE 0x101c4820
 int blockEncrypt(cipherInstance *cipher,
 	keyInstance *key, BYTE *input, int inputByteLen, BYTE *outBuffer)
 {
@@ -653,7 +646,6 @@ int blockEncrypt(cipherInstance *cipher,
 	return numBlocks*128;
 }
 
-// FUNCTION: WEBSERVICE 0x101c4ba0
 int blockDecrypt(cipherInstance *cipher,
 	keyInstance *key, BYTE *input, int inputByteLen, BYTE *outBuffer)
 {

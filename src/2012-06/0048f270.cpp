@@ -1,5 +1,8 @@
-// from server: 61% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
-// roc-lib: ogre-1.6.4 OgreRenderQueueSortingGrouping.cpp
+// from server: 100% by colin
+
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+void* __stdcall make_value_0048f270();
+void* func_0048f270() {
+    static void* value = make_value_0048f270();
+    return value;
+}

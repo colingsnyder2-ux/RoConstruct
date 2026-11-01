@@ -1,67 +1,70 @@
-// from server: 57% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/usinstances.cpp
+#include <string>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
 
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
+namespace boost {
+struct once_flag { long status; long count; long throw_count; void* event_handle; };
+template<typename F> void call_once(once_flag& flag, F f);
 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        winstances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex unsigned short template instances (MSVC only).
-  */
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_NO_WREGEX) && defined(BOOST_REGEX_HAS_OTHER_WCHAR_T) && !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_US_INSTANTIATE
-
-#ifdef _DLL_CPPLIB
-#include <boost/detail/workaround.hpp>
-//
-// This is a horrible workaround, without declaring these symbols extern we get
-// duplicate symbol errors when linking if the application is built without
-// /Zc:wchar_t
-//
-namespace std{
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const unsigned short *,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator==(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const unsigned short *);
-template _CRTIMP2 bool __cdecl operator<(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-template _CRTIMP2 bool __cdecl operator>(
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&,
-   const basic_string<unsigned short, char_traits<unsigned short>, allocator<unsigned short> >&);
-#if BOOST_WORKAROUND(BOOST_MSVC, > 1300) && BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400))
-template<> _CRTIMP2 std::size_t __cdecl char_traits<unsigned short>::length(unsigned short const*);
-#endif
+namespace detail {
+struct sp_counted_base {
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_; long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+};
+struct shared_count {
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+struct tss_cleanup_function { virtual ~tss_cleanup_function() {} virtual void operator()(void*) = 0; };
 }
-#endif
+template<class T> class shared_ptr {
+public:
+    T* px; detail::shared_count pn;
+};
+namespace detail {
+void* get_tss_data(void const* key);
+void set_tss_data(void const* key, boost::shared_ptr<tss_cleanup_function> func, void* tss_data, bool cleanup_existing);
+}
+template<typename T> class thread_specific_ptr {
+    boost::shared_ptr<detail::tss_cleanup_function> cleanup;
+public:
+    T* get() const { return static_cast<T*>(detail::get_tss_data(this)); }
+    void reset(T* new_value = 0) {
+        T* const current_value = get();
+        if (current_value != new_value)
+            detail::set_tss_data(this, cleanup, new_value, true);
+    }
+};
+}
 
+extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId();
+void SetThreadName(unsigned long threadId, const char* name);
 
-#include <boost/regex.hpp>
+static boost::thread_specific_ptr<std::string>* threadName;
+static boost::once_flag threadNameFlag;
+static void initThreadName();
 
-#endif
+static boost::thread_specific_ptr<std::string>& getThreadName()
+{
+    boost::call_once(threadNameFlag, initThreadName);
+    return *threadName;
+}
 
+void setThreadName(const char* name)
+{
+    getThreadName().reset(new std::string(name));
+    SetThreadName(GetCurrentThreadId(), name);
+}
 
+void initThreadNameImpl();
+static void initThreadName() { initThreadNameImpl(); }

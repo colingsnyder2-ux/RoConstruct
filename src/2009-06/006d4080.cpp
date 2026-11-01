@@ -1,15 +1,4 @@
-// roc 2009-06 006d4080  unit: RBX::Ball  size: 22 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 006d4080
-//
-// 006d4080  d94104               fld dword ptr [ecx + 4]
-// 006d4083  d80d4cad8b00         fmul dword ptr [0x8bad4c]
-// 006d4089  d9c0                 fld st(0)
-// 006d408b  d8c9                 fmul st(1)
-// 006d408d  dec9                 fmulp st(1)
-// 006d408f  d80d6cc08c00         fmul dword ptr [0x8cc06c]
-// 006d4095  c3                   ret 
-// copied from an identical function in another client (function ?getGridVolume@Ball@RBX@@UBEMXZ)
-
+// from server: 100% by colin
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 21022

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 00747f00  unit: UCXTPReportDataAllocatorData::?$CXTPHeapAllocatorT  size: 66 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 00747f00
 //

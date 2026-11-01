@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007a3a60  unit: XTPPaintThemes::CXTPDefaultTheme  size: 490 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007a3a60
 //

@@ -119,7 +119,7 @@ namespace RBX
 			{
 			private:
 				const Assembly* firstA;
-				const Mechanism* firstM;
+				const SimJob* firstM;
 				Replicator& replicator;
 				RakPeerInterface* peer;
 				bool hasOpenPacket;
@@ -138,8 +138,8 @@ namespace RBX
 				void close();
 				~JobSender();
 				void setPacketPriority(PacketPriority packetPriority);
-				bool report(const Mechanism& m);
-				bool operator()(Mechanism&);
+				bool report(const SimJob& m);
+				bool operator()(SimJob&);
 			};
 
 			class MarkerItem : public Item
@@ -243,7 +243,7 @@ namespace RBX
 
 		protected:
 			virtual Player* findTargetPlayer();
-			Mechanism* findTargetPlayerCharacterMechanism();
+			SimJob* findTargetPlayerCharacterJob();
 		public:
 			Replicator(SystemAddress remotePlayerId, RakPeerInterface* peer);
 			virtual ~Replicator();
@@ -284,7 +284,7 @@ namespace RBX
 			bool isInReplicationScope(const Instance* instance) const;
 			bool sendItems();
 			bool sendPhysicsPacket();
-			void sendPhysicsData(RakNet::BitStream&, const Mechanism&);
+			void sendPhysicsData(RakNet::BitStream&, const SimJob&);
 			void sendPhysicsData(RakNet::BitStream&, const Assembly&);
 			void createStatsItems(Stats::StatsService* stats);
 			virtual bool remoteDeleteOnDisconnect(const Instance* instance) const;

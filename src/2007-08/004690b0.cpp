@@ -1,4 +1,4 @@
-// from server: 26% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 004690b0  unit: RBX::LDraw2Lua::LDraw2RobloxColorMap  size: 91 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004690b0
 //
@@ -27,18 +27,38 @@
 // 00469106  5e                   pop esi
 // 00469107  83c410               add esp, 0x10
 // 0046910a  c3                   ret 
+// copied from an identical function in another client (function ??1S@ns_ROCX00001b@@QAE@XZ)
 
-struct LDraw2RobloxColorMap {
-    char pad0[8];
-    char field8[0x1c];
-    char field24[0x1c];
-    void destruct();
+namespace ns_ROCX00001b {
+// from server: 100% by king_originala
+extern "C" void (__thiscall *destroy_string)(void *);
+
+namespace std {
+    template<class T> struct char_traits;
+    template<class T> class allocator;
+
+    template<class T, class Traits, class Allocator>
+    class basic_string {
+        char storage[28];
+    public:
+        ~basic_string();
+    };
+
+    template<class T, class Traits, class Allocator>
+    inline basic_string<T, Traits, Allocator>::~basic_string()
+    {
+        destroy_string(this);
+    }
+}
+
+struct S {
+    char padding[8];
+    std::basic_string<char, std::char_traits<char>, std::allocator<char> > first;
+    std::basic_string<char, std::char_traits<char>, std::allocator<char> > second;
+    ~S();
 };
 
-extern "C" void __stdcall sub_77E6AC(void*);
-
-void LDraw2RobloxColorMap::destruct()
+S::~S()
 {
-    sub_77E6AC(&field24);
-    sub_77E6AC(&field8);
+}
 }

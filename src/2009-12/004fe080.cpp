@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 004fe080  unit: RBX::Network::Player::W4BuildPermission::?$EnumDesc  size: 180 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 004fe080
 //

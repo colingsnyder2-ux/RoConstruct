@@ -1,16 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 005683f0  unit: RBX::Selection  size: 26 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005683f0
-//
-// 005683f0  56                   push esi
-// 005683f1  8bf1                 mov esi, ecx
-// 005683f3  ff1598288000         call dword ptr [0x802898]
-// 005683f9  c7460c00000000       mov dword ptr [esi + 0xc], 0
-// 00568400  c706a8b48000         mov dword ptr [esi], 0x80b4a8
-// 00568406  8bc6                 mov eax, esi
-// 00568408  5e                   pop esi
-// 00568409  c3                   ret 
-
 struct S {
     void* vfptr;
     int pad[2];

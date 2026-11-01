@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 005b17b0  unit: RBX::BrickBuilder  size: 94 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 005b17b0
 //

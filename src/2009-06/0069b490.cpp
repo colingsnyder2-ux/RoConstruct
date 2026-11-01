@@ -1,108 +1,57 @@
-// from server: 53% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+#include <string>
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+namespace RBX {
+class GuidItemBase { public: virtual void g0(); char pad[0x10]; };
+class Object { public: virtual void o0(); };
+class DescribedBase { public: virtual void d0(); int descriptor; };
+class Debugable { public: virtual void b0(); char pad[8]; };
+class Instance : public GuidItemBase, public Object, public DescribedBase, public Debugable {
+public:
+	Instance();
+	virtual ~Instance();
+	void setName(const std::string& name);
+	char ipad[0x8c - 0x2c];
+};
+class GuiTarget { public: virtual void t0(); char pad[0x6c]; };
+class IEquipable { public: virtual void e0(); char pad[0xc]; };
+class IRenderable { public: virtual void r0(); char pad[0xc]; };
+class IHasLocation { public: virtual void h0(); char pad[0x198 - 0x120]; };
+class Tool : public Instance, public GuiTarget, public IEquipable, public IRenderable, public IHasLocation {
+public:
+	Tool();
+	virtual ~Tool();
+};
+extern const char* const sFlag;
+template<class Class, class Base, const char* const* name> class DescribedCreatable : public Base {
+public:
+	DescribedCreatable();
+	virtual ~DescribedCreatable();
+};
+extern long counter2009;
+class Conn2009 {
+public:
+	Conn2009() { InterlockedIncrement(&counter2009); a = 0; b = 0; }
+	~Conn2009();
+	void* a; void* b;
+};
+class BrickColor {
+public:
+	int number;
+	BrickColor() : number(194) {}
+};
+class Flag : public DescribedCreatable<Flag, Tool, &sFlag> {
+	Conn2009 flagTouched;
+public:
+	BrickColor teamColor;
+	Flag();
+	virtual ~Flag();
+};
+Flag::Flag()
 {
-	static boost::mutex mutex2;
-	return mutex2;
+	setName("Flag");
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

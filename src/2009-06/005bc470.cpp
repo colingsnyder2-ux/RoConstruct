@@ -1,5 +1,5 @@
-// from server: 57% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+bool eqp(const void* a, const void* b) { return b == a; }

@@ -1,28 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 00530ac0  unit: RBX::ModelInstance  size: 68 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00530ac0
-//
-// 00530ac0  83ec18               sub esp, 0x18
-// 00530ac3  8d0424               lea eax, [esp]
-// 00530ac6  50                   push eax
-// 00530ac7  81c1f8010000         add ecx, 0x1f8
-// 00530acd  e8cef3ffff           call 0x52fea0
-// 00530ad2  d90424               fld dword ptr [esp]
-// 00530ad5  8b44241c             mov eax, dword ptr [esp + 0x1c]
-// 00530ad9  d918                 fstp dword ptr [eax]
-// 00530adb  d9442404             fld dword ptr [esp + 4]
-// 00530adf  d95804               fstp dword ptr [eax + 4]
-// 00530ae2  d9442408             fld dword ptr [esp + 8]
-// 00530ae6  d95808               fstp dword ptr [eax + 8]
-// 00530ae9  d944240c             fld dword ptr [esp + 0xc]
-// 00530aed  d9580c               fstp dword ptr [eax + 0xc]
-// 00530af0  d9442410             fld dword ptr [esp + 0x10]
-// 00530af4  d95810               fstp dword ptr [eax + 0x10]
-// 00530af7  d9442414             fld dword ptr [esp + 0x14]
-// 00530afb  d95814               fstp dword ptr [eax + 0x14]
-// 00530afe  83c418               add esp, 0x18
-// 00530b01  c20400               ret 4
-
 struct ModelInstance {
     char pad[0x1f8];
     void getWorldTransform(float* out);

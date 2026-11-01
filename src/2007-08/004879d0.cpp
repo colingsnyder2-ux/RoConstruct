@@ -1,10 +1,4 @@
-// roc 2007-08 004879d0  unit: RBX::VXmlState::?$StateStack  size: 3 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004879d0
-//
-// 004879d0  32c0                 xor al, al
-// 004879d2  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 bool func_004879d0()
 {
     return false;

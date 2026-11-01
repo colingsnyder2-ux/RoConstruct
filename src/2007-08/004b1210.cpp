@@ -1,10 +1,4 @@
-// roc 2007-08 004b1210  unit: RBX::Reflection::VDescribedBase::V?$shared_ptr::?$holder  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004b1210
-//
-// 004b1210  b878278900           mov eax, 0x892778
-// 004b1215  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_004b1210()

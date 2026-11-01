@@ -1,38 +1,49 @@
-// roc 2012-06 004a04c0  unit: CScriptEditor  size: 41 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 004a04c0
-//
-// 004a04c0  56                   push esi
-// 004a04c1  e8ca370500           call 0x4f3c90
-// 004a04c6  8bf0                 mov esi, eax
-// 004a04c8  6a01                 push 1
-// 004a04ca  8bce                 mov ecx, esi
-// 004a04cc  e85fc5ffff           call 0x49ca30
-// 004a04d1  6a01                 push 1
-// 004a04d3  50                   push eax
-// 004a04d4  8bce                 mov ecx, esi
-// 004a04d6  e885d0ffff           call 0x49d560
-// 004a04db  6a01                 push 1
-// 004a04dd  6a00                 push 0
-// 004a04df  50                   push eax
-// 004a04e0  8bce                 mov ecx, esi
-// 004a04e2  e869c8ffff           call 0x49cd50
-// 004a04e7  5e                   pop esi
-// 004a04e8  c3                   ret 
-// copied from an identical function in another client (function ?func@CScriptEditor@ns_ROCX000007@@QAEXXZ)
-
-namespace ns_ROCX000007 {
-struct CScriptEditor {
-    void* method_45d230();
-    void* method_45bf60(int);
-    void* method_45ca50(void*, int);
-    void* method_45c240(void*, int, int);
-    void func();
+// from server: 26% by atomic.potato
+struct S_func_004f3c90 {
+    char pad0[88];
+    int m_x;
+    int* f();
 };
 
-void CScriptEditor::func() {
-    CScriptEditor* p = (CScriptEditor*)method_45d230();
-    void* a = p->method_45bf60(1);
-    void* b = p->method_45ca50(a, 1);
-    p->method_45c240(b, 0, 1);
+struct S_func_004a04c0 {
+    int* f();
+};
+
+int* S_func_004f3c90::f()
+{
+    return &m_x;
 }
+
+extern "C" int* __cdecl func_004f3c90();
+
+struct S_ctrl {
+    char pad0[84];
+    int m_a;
+    int m_b;
+    int* f1(int);
+    int* f2(int, int);
+    int* f3(int, int, int);
+};
+
+int* S_ctrl::f1(int a)
+{
+    return (int*)a;
+}
+
+int* S_ctrl::f2(int a, int b)
+{
+    return (int*)a;
+}
+
+int* S_ctrl::f3(int a, int b, int c)
+{
+    return (int*)a;
+}
+
+int* S_func_004a04c0::f()
+{
+    S_ctrl* p = (S_ctrl*)func_004f3c90();
+    int* a = p->f1(1);
+    int* b = p->f2((int)a, 1);
+    return p->f3((int)b, 0, 1);
 }

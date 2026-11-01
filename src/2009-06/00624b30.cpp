@@ -1,22 +1,4 @@
-// roc 2009-06 00624b30  unit: RBX::P8HopperBin::?$SetImpl  size: 43 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00624b30
-//
-// 00624b30  51                   push ecx
-// 00624b31  8b511c               mov edx, dword ptr [ecx + 0x1c]
-// 00624b34  8b442408             mov eax, dword ptr [esp + 8]
-// 00624b38  8910                 mov dword ptr [eax], edx
-// 00624b3a  8b4920               mov ecx, dword ptr [ecx + 0x20]
-// 00624b3d  c7042400000000       mov dword ptr [esp], 0
-// 00624b44  894804               mov dword ptr [eax + 4], ecx
-// 00624b47  85c9                 test ecx, ecx
-// 00624b49  740c                 je 0x624b57
-// 00624b4b  83c104               add ecx, 4
-// 00624b4e  ba01000000           mov edx, 1
-// 00624b53  f00fc111             lock xadd dword ptr [ecx], edx
-// 00624b57  59                   pop ecx
-// 00624b58  c20400               ret 4
-// copied from an identical function in another client (function ?get@Owner@@QBE?AV?$shared_ptr@UItem@@@boost@@XZ)
-
+// from server: 100% by colin
 #include <intrin.h>
 
 namespace boost {

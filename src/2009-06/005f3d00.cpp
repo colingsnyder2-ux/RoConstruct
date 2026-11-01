@@ -1,123 +1,51 @@
-// from server: 59% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
-
-namespace RBX
-{
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
-
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
-
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
-
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
-
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
-
-			PartInstance* handle = flag->getHandle();
-
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
-
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
-
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
-
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
-
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
-
-		return NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+namespace boost { class Instance; template<class T> class shared_ptr { T* p; void* c; }; namespace noncopyable_ { class noncopyable { protected: noncopyable() {} }; } }
+namespace RBX {
+class Instance;
+template<class T> class Countable {
+	static long count;
+public:
+	Countable() { InterlockedIncrement(&count); }
+};
 }
+extern void* const gDefault;
+struct NP { void* p; NP() : p(0) {} };
+namespace rbx { namespace signals {
+class connection {
+public:
+	class slot : boost::noncopyable_::noncopyable, RBX::Countable<slot> {
+	public:
+		slot(void* owner) : connected(true), def(gDefault), owner(owner) {}
+		virtual ~slot();
+		bool connected;
+		NP next;
+		void* def;
+		void* owner;
+	};
+};
+struct function_base {
+	void* vtable;
+	union { __declspec(align(8)) char buf[0x18]; } functor;
+	function_base() : vtable(0) {}
+};
+template<class Sig> struct function : function_base {
+	template<class F> function(F f) { assign_to(f); }
+	template<class F> void assign_to(F f) throw();
+};
+struct Functor { void* a; void* b; void* c; void* d; void* e; void* f; };
+template<class Sig> class signal {
+public:
+	class slot : public connection::slot {
+	public:
+		slot(Functor f, void* owner) : connection::slot(owner), func(f), a(0), b(0), c(0), d(0) {}
+		virtual ~slot();
+		function<Sig> func;
+		int a, b, c, d;
+	};
+};
+template class signal<void()>::slot;
+} }

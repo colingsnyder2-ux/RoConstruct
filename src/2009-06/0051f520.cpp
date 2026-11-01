@@ -1,108 +1,49 @@
-// from server: 55% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+namespace boost {
+template<class T> inline void checked_delete(T* x) { typedef char type_must_be_complete[sizeof(T) ? 1 : -1]; (void)sizeof(type_must_be_complete); delete x; }
+template<class T> class scoped_ptr {
+    T* px;
+    typedef scoped_ptr<T> this_type;
+public:
+    explicit scoped_ptr(T* p = 0) : px(p) {}
+    ~scoped_ptr() { boost::checked_delete(px); }
+    void reset(T* p = 0) { this_type(p).swap(*this); }
+    T* get() const { return px; }
+    bool operator!() const { return px == 0; }
+    void swap(scoped_ptr& b) { T* tmp = b.px; b.px = px; px = tmp; }
+};
+namespace detail {
+class lightweight_mutex {
+public:
+    long l_;
+    class scoped_lock {
+        lightweight_mutex& m_;
+    public:
+        explicit scoped_lock(lightweight_mutex& m);
+        ~scoped_lock();
+    };
+};
 }
-
-void initMoo()
-{
-	moo2();
 }
-
-namespace RBX
+namespace RBX {
+class Dictionary { public: char data[0x34]; Dictionary(); ~Dictionary(); };
+template<int N> class Holder {
+    boost::scoped_ptr<Dictionary> p;
+    static boost::detail::lightweight_mutex mutex;
+public:
+    Dictionary* get();
+};
+template<int N> Dictionary* Holder<N>::get()
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    if (!p) {
+        boost::detail::lightweight_mutex::scoped_lock lock(mutex);
+        if (!p)
+            p.reset(new Dictionary());
+    }
+    return p.get();
+}
+template class Holder<0>;
 }

@@ -1,28 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 00556560  unit: RBX::UnifiedWidget  size: 42 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00556560
-//
-// 00556560  56                   push esi
-// 00556561  8bf1                 mov esi, ecx
-// 00556563  8b06                 mov eax, dword ptr [esi]
-// 00556565  8b5058               mov edx, dword ptr [eax + 0x58]
-// 00556568  ffd2                 call edx
-// 0055656a  84c0                 test al, al
-// 0055656c  7418                 je 0x556586
-// 0055656e  8b06                 mov eax, dword ptr [esi]
-// 00556570  8b5074               mov edx, dword ptr [eax + 0x74]
-// 00556573  57                   push edi
-// 00556574  8b7c240c             mov edi, dword ptr [esp + 0xc]
-// 00556578  57                   push edi
-// 00556579  8bce                 mov ecx, esi
-// 0055657b  ffd2                 call edx
-// 0055657d  57                   push edi
-// 0055657e  8bce                 mov ecx, esi
-// 00556580  e85bffffff           call 0x5564e0
-// 00556585  5f                   pop edi
-// 00556586  5e                   pop esi
-// 00556587  c20400               ret 4
-
 struct GuiItem {
     virtual void v000();
     virtual void v004();

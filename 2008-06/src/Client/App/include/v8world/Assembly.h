@@ -1,171 +1,159 @@
-#pragma once
-#include <set>
-#include <boost/noncopyable.hpp>
+// Source-derived world pipeline port from openrbx include/v8world/Assembly2.h.
+// June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
+#ifndef V8WORLD_ASSEMBLY2_H
+#define V8WORLD_ASSEMBLY2_H
+
+#include "util/ComputeProp.h"
+#include "util/RunningAverage.h"
 #include "v8world/IPipelined.h"
+#include "v8world/Clump.h"
+#include "v8world/Mechanism.h"
 
-namespace RBX
+#include <G3D/Vector3.h>
+#include <boost/noncopyable.hpp>
+#include <vector>
+
+namespace RBX {
+
+using G3D::Vector3;
+using G3D::CoordinateFrame;
+
+class Body;
+class EdgeIterator;
+class PrimIterator;
+class Edge;
+class Joint;
+class Mechanism;
+class MotorJoint;
+class RigidJoint;
+class Primitive;
+
+namespace Sim {
+
+enum AssemblyState
 {
-	class Primitive;
-	class Clump;
-	class Edge;
-	class MotorJoint;
-	class Mechanism;
-	class Kernel;
+	ANCHORED = 0,
+	RECURSIVE_WAKE_PENDING = 1,
+	WAKE_PENDING = 2,
+	AWAKE = 3,
+	SLEEPING_CHECKING = 4,
+	SLEEPING_DEEPLY = 5,
+};
 
-	namespace Sim
-	{
-		enum AssemblyState
-		{
-			ANCHORED,
-			RECURSIVE_WAKE_PENDING,
-			WAKE_PENDING,
-			AWAKE,
-			SLEEPING_CHECKING,
-			SLEEPING_DEEPLY
-		};
-	}
+} // namespace Sim
 
-	class Assembly : public IPipelined, public boost::noncopyable
-	{
-	public:
-		class PrimIterator
-		{
-		private:
-			const Assembly* assembly;
-			std::set<Clump*>::const_iterator clumpIterator;
-			std::set<Primitive*>::const_iterator primIterator;
-  
-		private:
-			PrimIterator(
-				const Assembly* assembly,
-				std::set<Clump*>::const_iterator clumpIterator,
-				std::set<Primitive*>::const_iterator primIterator)
-				: assembly(assembly),
-				  clumpIterator(clumpIterator),
-				  primIterator(primIterator)
-			{
-			}
-		public:
-			PrimIterator& operator=(const PrimIterator& other)
-			{
-				assembly = other.assembly;
-				clumpIterator = other.clumpIterator;
-				primIterator = other.primIterator;
-				return *this;
-			}
-			Primitive* operator*() const;
-			bool operator==(const PrimIterator&) const;
-			bool operator!=(const PrimIterator& other) const
-			{
-				RBXASSERT(assembly == other.assembly);
-				return clumpIterator != other.clumpIterator || primIterator != other.primIterator;
-			}
-			PrimIterator& operator++();
-  
-		public:
-			static PrimIterator begin(const Assembly* assembly);
-			static PrimIterator end(const Assembly* assembly);
-		};
+// SIZE 0x24
+class SleepInfo
+{
+public:
+	SleepInfo();
+	~SleepInfo();
 
-	private:
-		Clump* rootClump;
-		std::set<Clump*> clumps;
-		std::set<Edge*> internalEdges;
-		std::set<Edge*> externalEdges;
-		mutable std::vector<MotorJoint*> motors;
-		std::set<MotorJoint*> inconsistentMotors;
-		Mechanism* mechanism;
-		int sleepCount;
-  
-	private:
-		void insertClump(Clump* c);
-		void updateMotorJoint(MotorJoint*);
-	public:
-		//Assembly(const Assembly&);
-		Assembly(Clump* root);
-		virtual ~Assembly();
-	public:
-		void addClump(Clump* c, MotorJoint* m);
-		void addClumpNew(Clump*, MotorJoint*);
-		void removeClump(Clump* c);
-		void removeMotor(MotorJoint* m);
-		void removeAllMotors();
-		Primitive* getMainPrimitive() const;
-		Primitive* getAssemblyPrimitive() const;
-		const Primitive* getAssemblyPrimitiveConst() const;
-		Clump* getRootClump()
-		{
-			return rootClump;
-		}
-		const std::set<Clump*>& getClumps() const
-		{
-			return clumps;
-		}
-		std::set<Clump*>& getClumps()
-		{
-			return clumps;
-		}
-		bool getCanSleep();
-		bool getAnchored() const;
-		Sim::AssemblyState getSleepStatus();
-		bool moving();
-		int getDof() const;
-		int getSleepCount() const;
-		void setSleepCount(int count);
-		void incrementSleepCount();
-		virtual void putInKernel(Kernel* _kernel);
-		virtual void removeFromKernel();
-		void setMechanism(Mechanism* m) {this->mechanism = m;}
-		Mechanism* getMechanism();
-		void stepUi(int uiStepId);
-		bool calcShouldSleep();
-		bool okNeighborSleep();
-		bool forceNeighborAwake();
-		void setSleepStatus(Sim::AssemblyState _set);
-		void onPrimitiveCanSleepChanged(Primitive* p);
-		std::set<Edge*>& getExternalEdges()
-		{
-			return externalEdges;
-		}
-		PrimIterator assemblyPrimBegin() const;
-		PrimIterator assemblyPrimEnd() const;
-		std::set<Edge*>::const_iterator externalEdgeBegin() const
-		{
-			return externalEdges.begin();
-		}
-		std::set<Edge*>::const_iterator externalEdgeEnd() const
-		{
-			return externalEdges.end();
-		}
-		const std::set<Edge*>& getInternalEdges() const
-		{
-			return internalEdges;
-		}
-		std::set<Edge*>& getInternalEdges()
-		{
-			return internalEdges;
-		}
-		std::vector<MotorJoint*>& getMotors()
-		{
-			return motors;
-		}
-		std::set<MotorJoint*>& getInconsistentMotors()
-		{
-			return inconsistentMotors;
-		}
-		void addExternalEdge(Edge* e);
-		void removeInternalEdge(Edge* e);
-		bool containsInternalEdge(Edge* e);
-		void addInternalEdge(Edge* e);
-		void removeExternalEdge(Edge* e);
-		bool containsExternalEdge(Edge* e);
-		void addInconsistentMotor(MotorJoint* m);
-		void removeInconsistentMotor(MotorJoint* m);
-		void notifyMoved();
-		Assembly* otherAssembly(Edge* edge) const;
-		size_t numMotors() const;
-		MotorJoint* getMotor(unsigned int motorId);
-		const MotorJoint* getMotorConst(unsigned int motorId) const;
-		//Assembly& operator=(const Assembly&);
-	};
-}
+private:
+	friend class Assembly;
+	friend class SleepStage;
+
+	static float sleepTolerance() { return 0.02f; }
+
+	Sim::AssemblyState state;                // 0x00
+	int sleepCount;                          // 0x04
+	RunningAverageState runningAverageState; // 0x08
+};
+
+
+// VTABLE: WEBSERVICE 0x10246c4c
+// SIZE 0x50
+class Assembly : public IPipelined, public boost::noncopyable
+{
+private:
+	float computeMaxRadius() const;
+	bool computeCanSleep() const;
+	void onPrimitivesChanged();
+	static Joint* getJointToParent(Primitive* primitive);
+
+public:
+	Assembly(Primitive* root);
+	Primitive* getMainPrimitive() const { return const_cast<Primitive*>(getAssemblyPrimitiveConst()); }
+	bool moving() { return getSleepStatus()==Sim::AWAKE; }
+	int getDof() const { return getAnchored()?0:6; }
+	~Assembly();
+
+	// SYNTHETIC: WEBSERVICE 0x1011b5c0
+	// RBX::Assembly::`scalar deleting destructor'
+
+	PrimIterator assemblyPrimBegin() const;
+	PrimIterator assemblyPrimEnd() const;
+
+	EdgeIterator externalEdgeBegin() const;
+	EdgeIterator externalEdgeEnd() const;
+
+	Assembly* getRootAssembly();
+	const Assembly* getRootAssemblyConst() const;
+	Primitive* getAssemblyPrimitive();
+	const Primitive* getAssemblyPrimitiveConst() const;
+
+	SleepInfo* getSleepInfo() { return sleepInfo; }
+	void setSleepInfo(SleepInfo* value) { sleepInfo = value; }
+
+	float getMaxRadius() { return maxRadius; }
+	bool getCanSleep() { return canSleep; }
+
+	Assembly* otherAssembly(Edge* edge) const;
+
+	const Primitive* getRootPrimitive() const { return rootPrimitive; }
+
+	Mechanism* getMechanism();
+	void setMechanism(Mechanism* value) { job = value; }
+	void setJob(SimJob* value) { job = value; }
+	SimJob* getJob() const { return job; }
+
+	void onPrimitiveCanSleepChanged(Primitive* primitive);
+
+	unsigned int numMotors() const;
+	MotorJoint* getMotor(unsigned int index);
+
+	void stepUi(int frameCount);
+
+	void setParent(Assembly* value);
+
+	static void addRigidChild(Primitive* parent, RigidJoint* joint, Primitive* child);
+	static void addMotorChild(Primitive* parent, MotorJoint* joint, Primitive* child);
+	static void addGroundChild(Primitive* child);
+	Sim::AssemblyState getSleepStatus() const;
+	bool getAnchored() const;
+
+	void notifyMoved();
+
+	virtual void putInKernel(Kernel* kernel); // vtable+0x04
+	virtual void removeFromKernel();          // vtable+0x08
+
+private:
+	const MotorJoint* getMotorImp(unsigned int& index) const;
+
+	void addChild(Assembly* child);
+
+	SleepInfo* sleepInfo;                   // 0x08
+	Primitive* rootPrimitive;               // 0x0c
+	Assembly* parent;                       // 0x10
+	std::vector<Assembly*> children;        // 0x14
+	SimJob* job;                   // 0x24
+	ComputeProp<float, Assembly> maxRadius; // 0x28
+	ComputeProp<bool, Assembly> canSleep;   // 0x40
+};
+
+
+// VTABLE: WEBSERVICE 0x10247e3c
+// SIZE 0x50
+class Clump : public Assembly
+{
+public:
+	// FUNCTION: WEBSERVICE 0x1011b310
+	Clump(Primitive* root) : Assembly(root) {}
+};
+
+
+bool lessAssembly(const Assembly* a, const Assembly* b);
+
+} // namespace RBX
+
+#endif // V8WORLD_ASSEMBLY2_H

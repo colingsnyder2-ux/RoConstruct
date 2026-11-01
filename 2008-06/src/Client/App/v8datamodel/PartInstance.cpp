@@ -228,7 +228,7 @@ namespace RBX
 
 	bool PartInstance::getAnchored() const
 	{
-		return primitive.getAnchor();
+		return primitive.getAnchoredProperty();
 	}
 
 	float PartInstance::getFriction() const
@@ -426,7 +426,7 @@ namespace RBX
 
 		if (highlightSleepParts && primitive.getAssembly())
 		{
-			Sim::AssemblyState sleepStatus = primitive.getAssembly()->getRootClump()->getSleepStatus();
+			Sim::AssemblyState sleepStatus = primitive.getAssembly()->getSleepStatus();
 
 			if (sleepStatus != Sim::ANCHORED && sleepStatus != Sim::AWAKE)
 			{
@@ -456,7 +456,7 @@ namespace RBX
 
 		if (highlightAwakeParts && primitive.getAssembly())
 		{
-			Sim::AssemblyState sleepStatus = primitive.getAssembly()->getRootClump()->getSleepStatus();
+			Sim::AssemblyState sleepStatus = primitive.getAssembly()->getSleepStatus();
 
 			if (sleepStatus != Sim::ANCHORED && sleepStatus != Sim::SLEEPING_DEEPLY)
 			{

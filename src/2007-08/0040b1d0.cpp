@@ -1,59 +1,25 @@
-// from server: 69% by colin
-// roc 2007-08 0040b1d0  unit: CNullDoc  size: 67 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0040b1d0
-//
-// 0040b1d0  51                   push ecx
-// 0040b1d1  8b81ec000000         mov eax, dword ptr [ecx + 0xec]
-// 0040b1d7  8b08                 mov ecx, dword ptr [eax]
-// 0040b1d9  8d1424               lea edx, [esp]
-// 0040b1dc  52                   push edx
-// 0040b1dd  50                   push eax
-// 0040b1de  8b417c               mov eax, dword ptr [ecx + 0x7c]
-// 0040b1e1  ffd0                 call eax
-// 0040b1e3  85c0                 test eax, eax
-// 0040b1e5  751b                 jne 0x40b202
-// 0040b1e7  66833c24ff           cmp word ptr [esp], -1
-// 0040b1ec  7514                 jne 0x40b202
-// 0040b1ee  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0040b1f2  8b11                 mov edx, dword ptr [ecx]
-// 0040b1f4  b801000000           mov eax, 1
-// 0040b1f9  50                   push eax
-// 0040b1fa  8b02                 mov eax, dword ptr [edx]
-// 0040b1fc  ffd0                 call eax
-// 0040b1fe  59                   pop ecx
-// 0040b1ff  c20400               ret 4
-// 0040b202  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0040b206  8b11                 mov edx, dword ptr [ecx]
-// 0040b208  33c0                 xor eax, eax
-// 0040b20a  50                   push eax
-// 0040b20b  8b02                 mov eax, dword ptr [edx]
-// 0040b20d  ffd0                 call eax
-// 0040b20f  59                   pop ecx
-// 0040b210  c20400               ret 4
-
-struct CNullDoc {
-    void sub_40B1D0(int);
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+struct Query {
+    int (__stdcall **vtable)(Query*, short*);
 };
 
-void CNullDoc::sub_40B1D0(int arg) {
-    unsigned short local;
-    int* p = *(int**)((char*)this + 0xec);
-    int* vtbl = *(int**)p;
-    typedef int (__stdcall *Fn)(int*, unsigned short*);
-    Fn fn = (Fn)vtbl[0x7c / 4];
-    int r = fn(p, &local);
-    int* q;
-    if (r == 0 && local == 0xffff) {
-        q = *(int**)((char*)&arg + 4);
-        int* vt2 = *(int**)q;
-        typedef int (__stdcall *Fn2)(int*, int);
-        Fn2 fn2 = (Fn2)vt2[0];
-        fn2(q, 1);
-    } else {
-        q = *(int**)((char*)&arg + 4);
-        int* vt2 = *(int**)q;
-        typedef int (__stdcall *Fn2)(int*, int);
-        Fn2 fn2 = (Fn2)vt2[0];
-        fn2(q, 0);
-    }
+struct Callback {
+    virtual void invoke(int value);
+};
+
+struct CBrowserView {
+    char padding[0xec];
+    Query* query;
+    void invoke(Callback* callback);
+};
+
+void CBrowserView::invoke(Callback* callback) {
+    short value;
+    int result;
+    if (query->vtable[31](query, &value) == 0 && value == -1)
+        result = 1;
+    else
+        result = 0;
+    callback->invoke(result);
 }

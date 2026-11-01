@@ -1,13 +1,42 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_dispatchboundearlyreturn0f5e49173a845214.cpp
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" void __cdecl _ReadWriteBarrier(void);
+#pragma intrinsic(_ReadWriteBarrier)
 
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
-typedef boost::shared_ptr<void> Shared;
-struct Receiver {void invoke(boost::function<void()>);};
-extern void callback(Shared,Shared);
-void dispatch(Shared first,boost::shared_ptr<Receiver> receiver,int operation,Shared second){if(operation!=1)return;receiver->invoke(boost::bind(callback,first,second));}
+struct Control {
+    long reserved;
+    volatile long references;
+};
+
+struct S {
+    long a;
+    long b;
+    Control* c;
+    long d;
+    Control* e;
+
+    S* f(const S* source);
+};
+
+S* S::f(const S* source)
+{
+    a = source->a;
+    b = source->b;
+    c = source->c;
+    if (c) {
+        volatile long* count = &c->references;
+        _ReadWriteBarrier();
+        _InterlockedExchangeAdd(count, 1);
+    }
+    d = source->d;
+    e = source->e;
+    if (e) {
+        volatile long* count = &e->references;
+        _ReadWriteBarrier();
+        _InterlockedExchangeAdd(count, 1);
+    }
+    return this;
+}

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 004d22d0  unit: XVCrashReporter::XV?$mf0::V?$bind_t::?$thread_data  size: 44 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 004d22d0
 //

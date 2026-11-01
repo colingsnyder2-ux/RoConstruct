@@ -7,10 +7,14 @@
 #include <afxext.h>
 #include <afxmt.h>
 #include <XTToolkitPro.h>
+#include "../native-headers/MyXTPCommandBars.h"
+#include "../native-headers/CAboutRobloxDialog.h"
 #include <stdio.h>
 #include <vector>
 #include "P6Engine.h"
 #pragma comment(lib, "version.lib")
+
+void InitializeAllIcons(CXTPImageManager*);
 
 static const UINT IDR_MAINFRAME_ROBLOX = 128; // RT_MENU/RT_ACCELERATOR/RT_GROUP_ICON 128
 static const UINT IDR_PLACE = 129;            // RT_MENU and doc string "Places (*.rbxl)"
@@ -313,8 +317,11 @@ public:
         fpsFrames = 0;
         fullScreen = false;
         fpsTick = GetTickCount();
-        if (!InitCommandBars()) return -1;
+        if (!InitCommandBars(const_cast<CRuntimeClass*>(&MyXTPCommandBars::classMyXTPCommandBars))) return -1;
         CXTPCommandBars* bars = GetCommandBars();
+        XTPImageManager()->InternalAddRef();
+        bars->SetImageManager(XTPImageManager());
+        InitializeAllIcons(XTPImageManager());
         XTPPaintManager()->SetTheme(xtpThemeWhidbey);
         CXTPCommandBar* menu = bars->SetMenu(_T("Menu Bar"), IDR_MAINFRAME_ROBLOX);
         if (!menu) return -1;
@@ -801,7 +808,7 @@ public:
     }
     afx_msg void OnObjectBrowser() { static_cast<CIDEDocManager*>(m_pDocManager)->browserTemplate->OpenDocumentFile(NULL); }
     afx_msg void OnAbout() {
-        CDialog about(IDD_P6_ABOUT);
+        CAboutRobloxDialog about;
         g_about = &about;
         INT_PTR result = about.DoModal();
         g_about = NULL;

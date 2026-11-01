@@ -1,30 +1,4 @@
 // from server: 100% by king_originala
-// roc 2008-06 00465500  unit: CScriptEditor  size: 68 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00465500
-//
-// 00465500  51                   push ecx
-// 00465501  837c241400           cmp dword ptr [esp + 0x14], 0
-// 00465506  56                   push esi
-// 00465507  8bf1                 mov esi, ecx
-// 00465509  7534                 jne 0x46553f
-// 0046550b  83ec08               sub esp, 8
-// 0046550e  8bc4                 mov eax, esp
-// 00465510  c70000000000         mov dword ptr [eax], 0
-// 00465516  8d8e14ffffff         lea ecx, [esi - 0xec]
-// 0046551c  8964240c             mov dword ptr [esp + 0xc], esp
-// 00465520  c7400400000000       mov dword ptr [eax + 4], 0
-// 00465527  e834fdffff           call 0x465260
-// 0046552c  8b4654               mov eax, dword ptr [esi + 0x54]
-// 0046552f  8b4820               mov ecx, dword ptr [eax + 0x20]
-// 00465532  6a00                 push 0
-// 00465534  6a00                 push 0
-// 00465536  6a10                 push 0x10
-// 00465538  51                   push ecx
-// 00465539  ff150c2e8000         call dword ptr [0x802e0c]
-// 0046553f  5e                   pop esi
-// 00465540  59                   pop ecx
-// 00465541  c21000               ret 0x10
-
 // from server: 92% by Espeon
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD

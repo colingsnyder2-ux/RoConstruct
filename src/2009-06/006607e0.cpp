@@ -1,108 +1,45 @@
-// from server: 60% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+namespace RBX {
+namespace Reflection {
+class ClassDescriptor;
+class Type { public: template<class T> static const Type& singleton(); };
+extern int exeFuncDescCount;
+class FunctionDescriptor {
+public:
+    enum Security { AnyCaller };
+    struct Signature { const Type* resultType; char pad[0x1c]; Signature(); };
+protected:
+    FunctionDescriptor(ClassDescriptor& c, const char* name, Security security);
+public:
+    virtual ~FunctionDescriptor();
+    char pad[0x10];
+    Signature signature;
+};
+template<class Class> class FuncDesc : public FunctionDescriptor {
+public:
+    FuncDesc(const char* name, Security security)
+        : FunctionDescriptor(Class::classDescriptor(), name, security) {}
+};
+template<class Class, class Function, int N> class BoundFuncDesc;
+template<class Class> class BoundFuncDesc<Class, void(), 0> : public FuncDesc<Class> {
+public:
+    typedef void (Class::*FunctionSig)();
+    FunctionSig function;
+    BoundFuncDesc(FunctionSig function, const char* name, Security security)
+        : FuncDesc<Class>(name, security), function(function)
+    {
+        ++exeFuncDescCount;
+        signature.resultType = &Type::singleton<void>();
+    }
+    virtual ~BoundFuncDesc() {}
+};
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+class ExeBase { public: virtual void f(); };
+class ExeBase2 { public: virtual void g(); };
+class VB { public: virtual void h(); };
+class RunService : public ExeBase, public virtual VB { public: static Reflection::ClassDescriptor& classDescriptor(); };
+template class Reflection::BoundFuncDesc<RunService, void(), 0>;
 }

@@ -1,10 +1,4 @@
-// roc 2007-08 004c4ac0  unit: RakPeer  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004c4ac0
-//
-// 004c4ac0  8b81e0030000         mov eax, dword ptr [ecx + 0x3e0]
-// 004c4ac6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_004c4ac0 {
     char pad0[992];
     int m_x;

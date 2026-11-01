@@ -1,19 +1,4 @@
-// roc 2010-06 007ee680  unit: CXTPDockingPaneManager  size: 27 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 007ee680
-//
-// 007ee680  56                   push esi
-// 007ee681  8bf1                 mov esi, ecx
-// 007ee683  8b8ed4000000         mov ecx, dword ptr [esi + 0xd4]
-// 007ee689  8b01                 mov eax, dword ptr [ecx]
-// 007ee68b  8b5068               mov edx, dword ptr [eax + 0x68]
-// 007ee68e  ffd2                 call edx
-// 007ee690  8bce                 mov ecx, esi
-// 007ee692  e819f7ffff           call 0x7eddb0
-// 007ee697  5e                   pop esi
-// 007ee698  c20800               ret 8
-// copied from an identical function in another client (function ?func@CXTPDockingPaneManager@ns_ROCX000000@@QAEXHH@Z)
-
-namespace ns_ROCX000000 {
+// from server: 100% by tester
 struct Inner {
     virtual void vf0();
     virtual void vf1();
@@ -54,5 +39,4 @@ struct CXTPDockingPaneManager {
 void CXTPDockingPaneManager::func(int a, int b) {
     field_d4->vf26();
     sub_66f6c0();
-}
 }

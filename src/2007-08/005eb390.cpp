@@ -1,10 +1,4 @@
-// roc 2007-08 005eb390  unit: RBX::FlagStand  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005eb390
-//
-// 005eb390  c6811801000000       mov byte ptr [ecx + 0x118], 0
-// 005eb397  c20400               ret 4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_005eb390 {
     char pad0[280];
     char m_x;

@@ -1,17 +1,17 @@
-// from server: 62% by tester
-struct S {
-    char pad[8];
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+struct T4_0047f810 {
+    T4_0047f810();
+    virtual void f_0047f810();
+    char m_a;
+    char m_b;
 };
-
-void __cdecl f(int a, int b, int c)
+T4_0047f810::T4_0047f810() : m_a(0), m_b(0) {}
+extern "C" void* create_other_0047f810(void*, void*, int);
+void* create_0047f810(void* unused, T4_0047f810* out, int type)
 {
-    if (c == 4) {
-        char *p = (char *)b;
-        *(int *)p = 0xd6da50;
-        p[4] = 0;
-        p[5] = 0;
-    } else {
-        extern void __cdecl g(int, int, int);
-        g(a, b, c);
-    }
+    if (type != 4)
+        return create_other_0047f810(unused, out, type);
+    out->T4_0047f810::T4_0047f810();
+    return out;
 }

@@ -1,16 +1,4 @@
-// roc 2009-06 007b4b90  unit: CXTPShortcutManager::CKeyHelper  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 007b4b90
-//
-// 007b4b90  8bc1                 mov eax, ecx
-// 007b4b92  33c9                 xor ecx, ecx
-// 007b4b94  c700ec2f9000         mov dword ptr [eax], 0x902fec
-// 007b4b9a  894804               mov dword ptr [eax + 4], ecx
-// 007b4b9d  894810               mov dword ptr [eax + 0x10], ecx
-// 007b4ba0  89480c               mov dword ptr [eax + 0xc], ecx
-// 007b4ba3  894808               mov dword ptr [eax + 8], ecx
-// 007b4ba6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

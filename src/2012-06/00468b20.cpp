@@ -1,18 +1,4 @@
-// from server: 79% by atomic.potato
-struct EnumDesc
-{
-    void f(void *);
-};
-
-extern "C" void *sub_4672d0(void *);
-extern "C" void sub_76a190(void *, void *);
-
-void EnumDesc::f(void *arg)
-{
-    void *p;
-    int value;
-
-    p = sub_4672d0((char *)arg + 4);
-    value = *(int *)p;
-    sub_76a190(this, &value);
-}
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /MD
+struct S{int f(int); int sub(int*);}; extern "C" int* sub1(int);
+int S::f(int value){int v=*sub1(value+4); return sub(&v);}

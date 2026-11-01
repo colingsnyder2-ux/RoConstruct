@@ -1,10 +1,4 @@
-// roc 2007-08 0044f450  unit: VCRobloxDoc::?$VerbBinder  size: 4 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0044f450
-//
-// 0044f450  8b4148               mov eax, dword ptr [ecx + 0x48]
-// 0044f453  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_0044f450 {
     char pad0[72];
     int m_x;

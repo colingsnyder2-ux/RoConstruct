@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 008b81b0  unit: PAVCXTPReportHyperlink::?$CXTPArrayT  size: 70 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 008b81b0
 //

@@ -1,55 +1,61 @@
-// from server: 92% by EspClaude
-// from server: 100% by auto
-// roc 2008-06 004a1f90  unit: RBX::Network::P8Players::?$GetImpl  size: 127 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 004a1f90
+// from server: 100% by Yeetserama
+// roc 2009-06 00476450  unit: Ogre::RbxMeshLoader  size: 148 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00476450
 //
-// 004a1f90  55                   push ebp
-// 004a1f91  8bec                 mov ebp, esp
-// 004a1f93  6aff                 push -1
-// 004a1f95  68a17b7c00           push 0x7c7ba1
-// 004a1f9a  64a100000000         mov eax, dword ptr fs:[0]
-// 004a1fa0  50                   push eax
-// 004a1fa1  64892500000000       mov dword ptr fs:[0], esp
-// 004a1fa8  83ec0c               sub esp, 0xc
-// 004a1fab  53                   push ebx
-// 004a1fac  56                   push esi
-// 004a1fad  57                   push edi
-// 004a1fae  8965f0               mov dword ptr [ebp - 0x10], esp
-// 004a1fb1  6a2c                 push 0x2c
-// 004a1fb3  e868e91f00           call 0x6a0920
-// 004a1fb8  8bf0                 mov esi, eax
-// 004a1fba  83c404               add esp, 4
-// 004a1fbd  8975ec               mov dword ptr [ebp - 0x14], esi
-// 004a1fc0  c745fc00000000       mov dword ptr [ebp - 4], 0
-// 004a1fc7  8975e8               mov dword ptr [ebp - 0x18], esi
-// 004a1fca  c645fc01             mov byte ptr [ebp - 4], 1
-// 004a1fce  85f6                 test esi, esi
-// 004a1fd0  7428                 je 0x4a1ffa
-// 004a1fd2  8b4508               mov eax, dword ptr [ebp + 8]
-// 004a1fd5  8b4d0c               mov ecx, dword ptr [ebp + 0xc]
-// 004a1fd8  8b5510               mov edx, dword ptr [ebp + 0x10]
-// 004a1fdb  8906                 mov dword ptr [esi], eax
-// 004a1fdd  8b4514               mov eax, dword ptr [ebp + 0x14]
-// 004a1fe0  894e04               mov dword ptr [esi + 4], ecx
-// 004a1fe3  50                   push eax
-// 004a1fe4  8d4e0c               lea ecx, [esi + 0xc]
-// 004a1fe7  895608               mov dword ptr [esi + 8], edx
-// 004a1fea  ff155c248000         call dword ptr [0x80245c]
-// 004a1ff0  8a4d18               mov cl, byte ptr [ebp + 0x18]
-// 004a1ff3  884e28               mov byte ptr [esi + 0x28], cl
-// 004a1ff6  c6462900             mov byte ptr [esi + 0x29], 0
-// 004a1ffa  8b4df4               mov ecx, dword ptr [ebp - 0xc]
-// 004a1ffd  5f                   pop edi
-// 004a1ffe  8bc6                 mov eax, esi
-// 004a2000  5e                   pop esi
-// 004a2001  64890d00000000       mov dword ptr fs:[0], ecx
-// 004a2008  5b                   pop ebx
-// 004a2009  8be5                 mov esp, ebp
-// 004a200b  5d                   pop ebp
-// 004a200c  c21400               ret 0x14
+// 00476450  55                   push ebp
+// 00476451  8bec                 mov ebp, esp
+// 00476453  6aff                 push -1
+// 00476455  6881428500           push 0x854281
+// 0047645a  64a100000000         mov eax, dword ptr fs:[0]
+// 00476460  50                   push eax
+// 00476461  64892500000000       mov dword ptr fs:[0], esp
+// 00476468  83ec0c               sub esp, 0xc
+// 0047646b  53                   push ebx
+// 0047646c  56                   push esi
+// 0047646d  57                   push edi
+// 0047646e  8965f0               mov dword ptr [ebp - 0x10], esp
+// 00476471  6a2c                 push 0x2c
+// 00476473  e8c0252a00           call 0x718a38
+// 00476478  8bf0                 mov esi, eax
+// 0047647a  83c404               add esp, 4
+// 0047647d  8975ec               mov dword ptr [ebp - 0x14], esi
+// 00476480  c745fc00000000       mov dword ptr [ebp - 4], 0
+// 00476487  8975e8               mov dword ptr [ebp - 0x18], esi
+// 0047648a  c645fc01             mov byte ptr [ebp - 4], 1
+// 0047648e  85f6                 test esi, esi
+// 00476490  7428                 je 0x4764ba
+// 00476492  8b4508               mov eax, dword ptr [ebp + 8]
+// 00476495  8b4d0c               mov ecx, dword ptr [ebp + 0xc]
+// 00476498  8b5510               mov edx, dword ptr [ebp + 0x10]
+// 0047649b  8906                 mov dword ptr [esi], eax
+// 0047649d  8b4514               mov eax, dword ptr [ebp + 0x14]
+// 004764a0  894e04               mov dword ptr [esi + 4], ecx
+// 004764a3  50                   push eax
+// 004764a4  8d4e0c               lea ecx, [esi + 0xc]
+// 004764a7  895608               mov dword ptr [esi + 8], edx
+// 004764aa  ff15b8e48900         call dword ptr [0x89e4b8]
+// 004764b0  8a4d18               mov cl, byte ptr [ebp + 0x18]
+// 004764b3  884e28               mov byte ptr [esi + 0x28], cl
+// 004764b6  c6462900             mov byte ptr [esi + 0x29], 0
+// 004764ba  8b4df4               mov ecx, dword ptr [ebp - 0xc]
+// 004764bd  5f                   pop edi
+// 004764be  8bc6                 mov eax, esi
+// 004764c0  5e                   pop esi
+// 004764c1  64890d00000000       mov dword ptr fs:[0], ecx
+// 004764c8  5b                   pop ebx
+// 004764c9  8be5                 mov esp, ebp
+// 004764cb  5d                   pop ebp
+// 004764cc  c21400               ret 0x14
+// 004764cf  8b55ec               mov edx, dword ptr [ebp - 0x14]
+// 004764d2  52                   push edx
+// 004764d3  e85a252a00           call 0x718a32
+// 004764d8  83c404               add esp, 4
+// 004764db  6a00                 push 0
+// 004764dd  6a00                 push 0
+// 004764df  e866352a00           call 0x719a4a
+// copied from an identical function in another client (function ?_Buynode@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@2@PAU342@00ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@D@Z)
 
-// from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD
-// roc-lib: ogre-1.4.9-dll OgreBillboardChain.cpp
+// roc-lib: ogre-1.4.9-dll OgreBillboardSet.cpp

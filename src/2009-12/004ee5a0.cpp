@@ -1,18 +1,4 @@
-// roc 2009-12 004ee5a0  unit: seg_004e0000  size: 21 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 004ee5a0
-//
-// 004ee5a0  55                   push ebp
-// 004ee5a1  8bec                 mov ebp, esp
-// 004ee5a3  8b450c               mov eax, dword ptr [ebp + 0xc]
-// 004ee5a6  50                   push eax
-// 004ee5a7  8b4d08               mov ecx, dword ptr [ebp + 8]
-// 004ee5aa  51                   push ecx
-// 004ee5ab  e820020000           call 0x4ee7d0
-// 004ee5b0  83c408               add esp, 8
-// 004ee5b3  5d                   pop ebp
-// 004ee5b4  c3                   ret 
-// copied from an identical function in another client (function ??$iter_swap@PAVEdgePlus@?$ConvexClipper@M@Wml@@PAV123@@std@@YAXPAVEdgePlus@?$ConvexClipper@M@Wml@@0@Z)
-
+// from server: 100% by colin
 // roc-cl: 50727
 // roc-lang: cpp
 // roc-flags: /Od /Ob0 /GS /EHsc /MD

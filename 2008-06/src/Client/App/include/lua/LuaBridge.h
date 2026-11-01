@@ -73,22 +73,19 @@ namespace RBX
             template<typename Object>
             static bool getValue(lua_State* L, size_t index, Object& value)
             {
-                const Object* object = static_cast<const Object*>(lua_touserdata(L,static_cast<int>(index)));
+                const T* object = static_cast<const T*>(lua_touserdata(L,static_cast<int>(index)));
                 if (object)
                 {
                     if (lua_getmetatable(L, static_cast<int>(index)))
                     {
                         luaL_getmetatable(L, className);
-                        if (lua_rawequal(L, -1, -2))
+                        bool matches = lua_rawequal(L, -1, -2) != 0;
+                        lua_pop(L, 2);
+                        if (matches)
                         {
-                            lua_pop(L, 2);
                             value = *object;
                             return true;
                         }
-                    }
-                    else
-                    {
-                        lua_pop(L, 1);
                     }
                 }
 

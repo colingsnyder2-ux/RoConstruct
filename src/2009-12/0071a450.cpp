@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0071a450  unit: RBX::VPhysicsService::?$EventDesc  size: 55 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0071a450
 //

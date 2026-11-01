@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 008332e0  unit: CXTTreeBase::PAXPAXUCLRFONT::?$CMap  size: 14 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 008332e0
 //

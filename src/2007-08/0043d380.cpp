@@ -1,10 +1,4 @@
-// roc 2007-08 0043d380  unit: CPropertyGridItemBrickColor  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0043d380
-//
-// 0043d380  8b8100010000         mov eax, dword ptr [ecx + 0x100]
-// 0043d386  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_0043d380 {
     char pad0[256];
     int m_x;

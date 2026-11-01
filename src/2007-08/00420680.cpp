@@ -1,9 +1,4 @@
-// roc 2007-08 00420680  unit: CRobloxTreeCtrl  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00420680
-//
-// 00420680  e9bbf7ffff           jmp 0x41fe40
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00420680();
 void func_00420680()
 {

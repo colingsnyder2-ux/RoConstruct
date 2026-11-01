@@ -1,4 +1,4 @@
-// from server: 72% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00436450  unit: CDeclarationView  size: 58 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00436450
 //
@@ -22,27 +22,23 @@
 // 00436487  5f                   pop edi
 // 00436488  5e                   pop esi
 // 00436489  c3                   ret 
+// copied from an identical function in another client (function ?fn_ROCX000016_00435510@ns_ROCX000016@@YAXPAHPAUString@1@PAPAUEntry@1@@Z)
 
-struct QTextBrowser {
-    void setSource(const char*);
+namespace ns_ROCX000016 {
+// from server: 100% by tester
+struct String {};
+extern String& (__thiscall *append)(String*, const char*);
+extern const char* (__thiscall *get_text)(const String*);
+struct Entry {
+    int value;
+    String text;
 };
-
-struct DeclarationView : QTextBrowser {
-    void updateDeclarationView(int* item);
-};
-
-extern "C" {
-    void* __stdcall MSVCP80_StringAppendCStr(void*, const char*);
-    const char* __stdcall MSVCP80_StringCStr(const void*);
-}
-
-void DeclarationView::updateDeclarationView(int* item)
+void fn_ROCX000016_00435510(int* count, String* output, Entry** entry)
 {
-    if (*item > 0) {
-        setSource("%d: %s");
-    }
-    int* p = *(int**)item;
-    const char* s = MSVCP80_StringCStr((const char*)p + 4);
-    setSource(s);
-    *item = *item + 1;
+    if (*count > 0)
+        append(output, ", ");
+    Entry* e = *entry;
+    append(output, get_text(&e->text));
+    ++*count;
+}
 }

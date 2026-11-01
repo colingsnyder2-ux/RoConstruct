@@ -1,10 +1,4 @@
-// roc 2007-08 0040a7d0  unit: CPlayBrowserView  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0040a7d0
-//
-// 0040a7d0  b868557800           mov eax, 0x785568
-// 0040a7d5  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0040a7d0()

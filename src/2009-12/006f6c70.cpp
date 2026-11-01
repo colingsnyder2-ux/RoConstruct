@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 006f6c70  unit: G3D::VRay::?$TypedPropertyDescriptor  size: 169 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 006f6c70
 //

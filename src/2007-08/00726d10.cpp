@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 00726d10  unit: boost::thread_resource_error  size: 138 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00726d10
 //

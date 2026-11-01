@@ -1,13 +1,6 @@
-// roc 2009-12 0066b940  unit: RBX::DataModel  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0066b940
-//
-// 0066b940  e96bffffff           jmp 0x66b8b0
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_0066b940();
+void func_0066b940()
 {
-    G1_func_00401050();
-}
+    G1_func_0066b940();
 }

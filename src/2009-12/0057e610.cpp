@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0057e610  unit: Ogre::RbxSceneUpdater  size: 119 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0057e610
 //

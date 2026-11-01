@@ -1,4 +1,4 @@
-// from server: 0% by atomic.potato
+// from server: 29% by Intel
 extern "C" int __cdecl func_005c9fe8(int, const char*, int);
 extern "C" int __cdecl func_00511180(void*);
 extern "C" int __cdecl func_008f7fb0(int, float, float);

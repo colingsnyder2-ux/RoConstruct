@@ -1,10 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 00565ff0  unit: Ogre::RbxSceneManager::ShadowCasterSceneQueryListener  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00565ff0
-//
-// 00565ff0  b001                 mov al, 1
-// 00565ff2  c20400               ret 4
-
 struct S_func_00565ff0 {
 
     bool f(int a1);

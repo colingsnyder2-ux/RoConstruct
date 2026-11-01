@@ -1,81 +1,53 @@
-// from server: 56% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
-
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
-{
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
+namespace boost { template<class T> class shared_ptr { T* px; void* pn; }; }
+namespace RBX {
+class Instance;
+class Name { public: static const Name& declare(const char* name); };
+namespace Reflection {
+class ClassDescriptor;
+class Type { public: template<class T> static const Type& singleton(); };
+template<class T> struct ExeCounter { static int n; };
+template<class T> inline const Type& countedType() { ++ExeCounter<T>::n; return Type::singleton<T>(); }
+class Value { public: Value(); ~Value(); char pad[8]; };
+class FunctionDescriptor {
+public:
+    enum Security { AnyCaller };
+    struct Signature {
+        const Type* resultType; char pad[0x20];
+        void addArgument(const Name& name, const Type& type, const Value& def);
+    };
+protected:
+    FunctionDescriptor(ClassDescriptor& c, const char* name, Security security);
+public:
+    virtual ~FunctionDescriptor();
+    char pad[0x10];
+    Signature signature;
+};
+template<class Class> class FuncDesc : public FunctionDescriptor {
+public:
+    FuncDesc(const char* name, Security security)
+        : FunctionDescriptor(Class::classDescriptor(), name, security) {}
+};
+template<class Class, class Function, int N> class BoundFuncDesc;
+template<class Class, class R, class Arg1, class Arg2> class BoundFuncDesc<Class, R(Arg1, Arg2), 2> : public FuncDesc<Class> {
+public:
+    typedef R (Class::*FunctionSig)(Arg1, Arg2);
+    FunctionSig function;
+    Value default1;
+    Value default2;
+    void declareSignature(const char* arg1Name, const char* arg2Name)
+    {
+        signature.resultType = &countedType<R>();
+        signature.addArgument(Name::declare(arg1Name), countedType<Arg1>(), default1);
+        signature.addArgument(Name::declare(arg2Name), countedType<Arg2>(), default2);
+    }
+};
 }
-
-namespace RBX
-{
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+class ExeBase { public: virtual void f(); };
+class ExeBase2 { public: virtual void g(); };
+class DebrisService : public ExeBase, public ExeBase2 { public: static Reflection::ClassDescriptor& classDescriptor(); };
+template void Reflection::BoundFuncDesc<DebrisService, void(boost::shared_ptr<Instance>, double), 2>::declareSignature(const char*, const char*);
 }

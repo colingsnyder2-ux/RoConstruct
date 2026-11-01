@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0080c1c0  unit: KKPAVCXTPImageManagerResource::?$CMap  size: 74 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0080c1c0
 //

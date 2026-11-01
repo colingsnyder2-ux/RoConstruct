@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 0046f0c0  unit: RBX::Security::VContext::?$thread_specific_ptr::delete_data  size: 138 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 0046f0c0
 //

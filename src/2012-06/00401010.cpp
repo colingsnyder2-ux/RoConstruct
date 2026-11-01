@@ -1,5 +1,14 @@
-// from server: 82% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/Calendar/XTPCalendarController.cpp
+// from server: 100% by tester
+extern "C" __declspec(dllimport) int __stdcall CloseHandle(void*);
+
+struct S {
+    void* handle;
+    void f();
+};
+
+void S::f()
+{
+    void* h = handle;
+    if (h != 0 && h != (void*)-1)
+        CloseHandle(h);
+}

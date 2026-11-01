@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 004c7020  unit: RBX::Network::VPlayer::?$EventDesc  size: 12 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 004c7020
 //

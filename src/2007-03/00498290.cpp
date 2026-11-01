@@ -1,123 +1,123 @@
+// from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll App/v8world/SimJobStage.cpp
+// roc-lib: rbxgs v8datamodel/FlagStand.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8world/SimJobStage.h"
+#include "v8datamodel/FlagStand.h"
+#include "v8datamodel/Flag.h"
 
-#include "decomp.h"
-#include "v8kernel/Kernel.h"
-#include "v8world/Assembly2.h"
-#include "v8world/Primitive.h"
-
-#include <algorithm>
-#include <cstddef>
-#include <functional>
-
-namespace RBX {
-
-// FUNCTION: WEBSERVICE 0x1011c900
-void SimJobStage::onEdgeRemoving(Edge* e)
+namespace RBX
 {
-	e->removeFromKernel();
+	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
 
-	e->removeFromStage(this);
-}
-
-// FUNCTION: WEBSERVICE 0x1011c990
-SimJobStage::SimJobStage(IStage* upstream, World* world) : IWorldStage(upstream, new Kernel(this), world)
-{
-}
-
-// FUNCTION: WEBSERVICE 0x1011ca60
-void SimJobStage::notifyMovingPrimitives()
-{
-	std::for_each(mechanisms.begin(), mechanisms.end(), std::mem_fun(&Mechanism::notifyMovingPrimitives));
-}
-
-// FUNCTION: WEBSERVICE 0x1011cb40
-void SimJobStage::destroyMechanism(Mechanism* m)
-{
-	Mechanism* next = mechanisms.size() > 1 ? nextMechanism(mechanisms, m) : NULL;
-
-	MechanismTracker::transferTrackers(m, next);
-
-	mechanisms.erase(m->myIt);
-
-	delete m;
-}
-
-void SimJobStage::insertMechanism(Mechanism* mechanism)
-{
-	mechanisms.push_back(mechanism);
-
-	mechanism->myIt = --mechanisms.end();
-}
-
-// FUNCTION: WEBSERVICE 0x1011cba0
-void SimJobStage::onAssemblyAdded(Assembly* a)
-{
-	a->putInPipeline(this);
-
-	Mechanism* mechanism = new Mechanism();
-	mechanism->insertAssembly(a);
-
-	insertMechanism(mechanism);
-
-	a->putInKernel(getKernel());
-}
-
-// FUNCTION: WEBSERVICE 0x1011cc80
-void SimJobStage::onAssemblyRemoving(Assembly* a)
-{
-	a->removeFromKernel();
-
-	Mechanism* mechanism = a->getMechanism();
-
-	mechanism->removeAssembly(a);
-
-	if (mechanism->getAssemblies().size() == 0) {
-		destroyMechanism(mechanism);
+	FlagStand::FlagStand()
+	{
+		setName("FlagStand");
 	}
 
-	a->removeFromStage(this);
-}
-
-// FUNCTION: WEBSERVICE 0x1011ccc0
-void SimJobStage::combineMechanisms(Edge* e)
-{
-	Assembly* a0 = e->getPrimitive(0)->getAssembly();
-	Assembly* a1 = e->getPrimitive(1)->getAssembly();
-
-	Mechanism* m0 = a0->getMechanism();
-	Mechanism* m1 = a1->getMechanism();
-
-	if (m0 != m1) {
-		Mechanism* bigger = m0->getAssemblies().size() > m1->getAssemblies().size() ? m0 : m1;
-		Mechanism* smaller = bigger == m0 ? m1 : m0;
-
-		bigger->absorb(smaller);
-
-		destroyMechanism(smaller);
+	BrickColor FlagStand::getTeamColor() const
+	{
+		return teamColor;
 	}
-}
 
-// FUNCTION: WEBSERVICE 0x1011cd20
-void SimJobStage::onEdgeAdded(Edge* e)
-{
-	e->putInPipeline(this);
+	void FlagStand::setTeamColor(BrickColor color)
+	{
+		teamColor = color;
+		raisePropertyChanged(PartInstance::prop_Color);
+	}
 
-	if (e->getEdgeType() == Edge::JOINT) {
-		Assembly* a0 = e->getPrimitive(0)->getAssembly();
-		Assembly* a1 = e->getPrimitive(1)->getAssembly();
+	void FlagStand::AffixFlag(Flag* flag)
+	{
+		if (!GetFlag())
+		{
+			flag->setParent(getParent());
 
-		if (a0->inOrDownstreamOfStage(this) && a1->inOrDownstreamOfStage(this)) {
-			combineMechanisms(e);
+			PartInstance* handle = flag->getHandle();
+
+			handle->setCoordinateFrame(G3D::CoordinateFrame());
+
+			G3D::Vector3 location = getLocation().translation;
+			location.y += 0.5f;
+
+			handle->moveToPoint(location);
+			handle->join();
 		}
 	}
 
-	e->putInKernel(getKernel());
-}
+	Flag* FlagStand::GetFlag()
+	{
+		Primitive* primitive = getPrimitive();
 
-} // namespace RBX
+		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
+		{
+			for (int i = 0; i < 2; i++)
+			{
+				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
+				if (flag)
+					return flag;
+			}
+		}
+
+		return NULL;
+	}
+
+	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		Instance::onServiceProvider(oldProvider, newProvider);
+
+		if (!oldProvider)
+		{
+			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
+			RBXASSERT(flagStandService);
+
+			flagStandService->RegisterFlagStand(this);
+
+			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
+		}
+
+		if (!newProvider)
+		{
+			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
+			RBXASSERT(flagStandService);
+
+			flagStandService->UnregisterFlagStand(this);
+
+			standTouched.disconnect();
+		}
+	}
+
+	FlagStandService::FlagStandService()
+	{
+		setName("FlagStandService");
+		propArchivable.setValue(this, false);
+	}
+
+	FlagStandService::~FlagStandService() {}
+
+	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
+	{
+		if (flagStands.empty())
+			return NULL;
+
+		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
+		{
+			if ((*iter)->GetFlag() == f)
+				return *iter;
+		}
+
+		return NULL;
+	}
+
+	void FlagStandService::RegisterFlagStand(FlagStand* s)
+	{
+		flagStands.push_back(s);
+	}
+
+	void FlagStandService::UnregisterFlagStand(FlagStand* s)
+	{
+		flagStands.remove(s);
+	}
+}

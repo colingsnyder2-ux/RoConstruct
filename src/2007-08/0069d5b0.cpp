@@ -1,10 +1,4 @@
-// roc 2007-08 0069d5b0  unit: CXTPPropertyGridToolTip  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0069d5b0
-//
-// 0069d5b0  b8801f7d00           mov eax, 0x7d1f80
-// 0069d5b5  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0069d5b0()

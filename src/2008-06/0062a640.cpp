@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0062a640  unit: RBX::VExplosion::?$SignalDesc  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0062a640
-//
-// 0062a640  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0062a644  83f803               cmp eax, 3
-// 0062a647  741e                 je 0x62a667
-// 0062a649  8b542408             mov edx, dword ptr [esp + 8]
-// 0062a64d  c644240c00           mov byte ptr [esp + 0xc], 0
-// 0062a652  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 0062a656  51                   push ecx
-// 0062a657  50                   push eax
-// 0062a658  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0062a65c  52                   push edx
-// 0062a65d  50                   push eax
-// 0062a65e  e8cdfdffff           call 0x62a430
-// 0062a663  83c410               add esp, 0x10
-// 0062a666  c3                   ret 
-// 0062a667  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0062a66b  c70100ba9500         mov dword ptr [ecx], 0x95ba00
-// 0062a671  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

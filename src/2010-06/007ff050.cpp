@@ -1,21 +1,8 @@
-// roc 2010-06 007ff050  unit: CXTPPrintPageHeaderFooter  size: 21 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 007ff050
-//
-// 007ff050  8b442408             mov eax, dword ptr [esp + 8]
-// 007ff054  99                   cdq 
-// 007ff055  f77c2404             idiv dword ptr [esp + 4]
-// 007ff059  33c9                 xor ecx, ecx
-// 007ff05b  85d2                 test edx, edx
-// 007ff05d  0f95c1               setne cl
-// 007ff060  03c1                 add eax, ecx
-// 007ff062  c20800               ret 8
-// copied from an identical function in another client (function ?sub_0067FDB0@ns_ROCX000024@@YGHHH@Z)
-
-namespace ns_ROCX000024 {
-int __stdcall sub_0067FDB0(int divisor, int value)
+// from server: 100% by atomic.potato
+extern "C" int __stdcall func_007ff050(int divisor, int dividend)
 {
-    int quotient = value / divisor;
-    int remainder = value % divisor;
-    return quotient + (remainder != 0 ? 1 : 0);
-}
+    int quotient = dividend / divisor;
+    int remainder = dividend % divisor;
+    quotient += remainder != 0;
+    return quotient;
 }

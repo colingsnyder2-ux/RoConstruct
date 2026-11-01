@@ -31,7 +31,9 @@ namespace RBX
 		void hoverOnFloor(Body*);
 		void move(Body*);
 		bool isFacingStairs();
+	protected:
 		void updateGoals(Controller&);
+	private:
 		virtual void onComputeForce(const float);
 		virtual Humanoid::State* onStep(const float, Controller&);
 
@@ -47,6 +49,7 @@ namespace RBX
 
 	public:
 		Running(Humanoid* humanoid);
+		void resumeFromLanding(const Running& old, Controller& controller) { floorPart=old.floorPart; floorTouchInWorld=old.floorTouchInWorld; jumpWarmup=0.0f; updateGoals(controller); }
 		virtual ~Running();
 	};
 }

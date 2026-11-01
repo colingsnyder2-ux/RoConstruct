@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 006e8740  unit: RBX::VInstance::?$NonFactoryProduct  size: 141 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 006e8740
 //

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 004a7b60  unit: RBX::Network::Replicator::ChangePropertyItem  size: 57 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004a7b60
 //

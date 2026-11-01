@@ -1,9 +1,4 @@
-// roc 2007-08 006a7670  unit: CXTPMenuBar  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006a7670
-//
-// 006a7670  e91be3ffff           jmp 0x6a5990
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_006a7670();
 void func_006a7670()
 {

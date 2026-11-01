@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 00406f30  unit: VCApp::?$CComContainedObject  size: 283 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 00406f30
 //

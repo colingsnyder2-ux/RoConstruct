@@ -1,10 +1,4 @@
-// roc 2007-08 006a2b60  unit: CXTPDockBar  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006a2b60
-//
-// 006a2b60  c701e4347d00         mov dword ptr [ecx], 0x7d34e4
-// 006a2b66  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_006a2b60 { virtual ~S_func_006a2b60(); };
 S_func_006a2b60::~S_func_006a2b60()
 {

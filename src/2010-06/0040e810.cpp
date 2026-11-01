@@ -1,12 +1,76 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: atl-9.0-dll-rtm roc_campaign_enum_e48885f48ab9e114.cpp
+struct GUID;
 
-// Candidate translation unit (score above; library headers required).
-#define NDEBUG 1
-#define _ATL_APARTMENT_THREADED
-#include <atlbase.h>
-#include <atlcom.h>
-template class ATL::CComEnumImpl<IEnumUnknown, &IID_IEnumUnknown, IUnknown*, ATL::_CopyInterface<IUnknown> >;
-template class ATL::CComEnum<IEnumUnknown, &IID_IEnumUnknown, IUnknown*, ATL::_CopyInterface<IUnknown>, ATL::CComSingleThreadModel>;
+struct IUnknown
+{
+    virtual long __stdcall QueryInterface(const GUID& riid, void** ppvObject) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
+};
+
+struct IConnectionPoint;
+
+struct IEnumConnectionPoints : public IUnknown
+{
+    virtual long __stdcall Next(unsigned long cConnections, IConnectionPoint** ppCP, unsigned long* pcFetched) = 0;
+    virtual long __stdcall Skip(unsigned long cConnections) = 0;
+    virtual long __stdcall Reset() = 0;
+    virtual long __stdcall Clone(IEnumConnectionPoints** ppEnum) = 0;
+};
+
+namespace ATL {
+class CComSingleThreadModel
+{
+public:
+    static unsigned long Increment(long* p) throw() { return ++(*p); }
+    static unsigned long Decrement(long* p) throw() { return --(*p); }
+};
+
+class CComObjectRootBase
+{
+public:
+    long m_dwRef;
+};
+
+template<class ThreadModel>
+class CComObjectRootEx : public CComObjectRootBase
+{
+public:
+    unsigned long InternalRelease()
+    {
+        return ThreadModel::Decrement(&m_dwRef);
+    }
+};
+
+class CComEnumImpl : public IEnumConnectionPoints
+{
+public:
+    IConnectionPoint** m_begin;
+    IConnectionPoint** m_end;
+    IConnectionPoint** m_iter;
+    unsigned long m_dwFlags;
+    IUnknown* m_spUnk;
+};
+
+class CComEnumConnectionPoints : public CComEnumImpl, public CComObjectRootEx<CComSingleThreadModel>
+{
+};
+
+template<class Base>
+class CComObject : public Base
+{
+public:
+    virtual ~CComObject();
+    virtual unsigned long __stdcall Release()
+    {
+        unsigned long l = this->InternalRelease();
+        if (l == 0)
+            delete this;
+        return l;
+    }
+};
+
+template class CComObject<CComEnumConnectionPoints>;
+}

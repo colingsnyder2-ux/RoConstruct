@@ -1,5 +1,7 @@
 #pragma float_control(precise, off)
 #include "humanoid/Humanoid.h"
+namespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }
+
 #include "humanoid/Running.h"
 #include "humanoid/FallingDown.h"
 #include "v8datamodel/Tool.h"
@@ -165,7 +167,8 @@ namespace RBX
 
 	Humanoid* Humanoid::getLocalHumanoidFromContext(const Instance* context)
 	{
-		return modelIsCharacter(Network::Players::findLocalCharacter(context));
+		ModelInstance* character = Network::Players::findLocalCharacter(context);
+		return character ? character->findFirstChildOfType<Humanoid>() : NULL;
 	}
 
 	void Humanoid::render3dAdorn(Adorn* adorn)
@@ -310,6 +313,8 @@ namespace RBX
 				PVInstance* parent = static_cast<PVInstance*>(getParent());
 
 				setState(prevState->onStep(event.step, *parent->getTopPVController()));
+				if (currentState.get() && (currentState->getName()=="Freefall" || currentState->getName()=="Landed" || currentState->getName()=="Running" || currentState->getName()=="Climbing"))
+					ApplyRecoveredClimbCollision(this,true,false);
 			}
 
 			if (getTorsoPrimitive())
@@ -412,8 +417,13 @@ namespace RBX
 
 	void Humanoid::setState(State* value)
 	{
-		if (value != currentState.get())
+		if (value != currentState.get()) {
+			bool previousClimb=currentState.get() && currentState->getName()=="Climbing";
+			bool climbing=value && value->getName()=="Climbing";
+			bool running=value && value->getName()=="Running";
 			currentState.reset(value);
+			if(previousClimb || climbing) ApplyRecoveredClimbCollision(this,climbing,running);
+		}
 	}
 
 	void Humanoid::moveTo(const G3D::Vector3& worldPosition, PartInstance* part)
@@ -613,12 +623,6 @@ namespace RBX
 		}
 	}
 
-	void Humanoid::getPrimitives(std::vector<Primitive*>& primitives)
-	{
-		if (ModelInstance* character = getCharacterFromHumanoid(this))
-			character->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref(primitives)));
-	}
-
 	void Humanoid::getIgnorePrims(std::vector<const Primitive*>& ignore)
 	{
 		if (ModelInstance* character = getCharacterFromHumanoid(this))
@@ -702,6 +706,7 @@ namespace RBX
 	void Humanoid::buildJoints()
 	{
 		ModelInstance* character = getCharacterFromHumanoid(this);
+		RBXASSERT(character);
 
 		if (!character)
 			return;
@@ -713,8 +718,17 @@ namespace RBX
 		PartInstance* rightLeg = getRightLeg();
 		PartInstance* leftLeg = getLeftLeg();
 
+		RBXASSERT(head && torso && rightArm && leftArm && rightLeg && leftLeg);
+
 		if (!torso)
 			return;
+
+		head->getPrimitive()->getBody()->setCanThrottle(false);
+		torso->getPrimitive()->getBody()->setCanThrottle(false);
+		rightArm->getPrimitive()->getBody()->setCanThrottle(false);
+		leftArm->getPrimitive()->getBody()->setCanThrottle(false);
+		rightLeg->getPrimitive()->getBody()->setCanThrottle(false);
+		leftLeg->getPrimitive()->getBody()->setCanThrottle(false);
 
 		boost::shared_ptr<JointInstance> rightShoulder = newJoint(true);
 		boost::shared_ptr<JointInstance> leftShoulder = newJoint(true);

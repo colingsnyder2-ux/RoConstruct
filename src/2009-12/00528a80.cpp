@@ -1,11 +1,10 @@
-// roc 2009-12 00528a80  unit: RBX::Network::VClient::?$EventDesc  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00528a80
-//
-// 00528a80  8b81a0000000         mov eax, dword ptr [ecx + 0xa0]
-// 00528a86  c3                   ret 
-// library mfc-8.0/atlmfc\src\mfc\dlgdhtml.cpp (function ?GetDHtmlEventMap@CMultiPageDHtmlDialog@@MAEPBUDHtmlEventMapEntry@@XZ)
-
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-8.0 atlmfc/src/mfc/dlgdhtml.cpp
+// from server: 100% by auto
+struct S_func_00528a80 {
+    char pad0[160];
+    int m_x;
+    int f();
+};
+int S_func_00528a80::f()
+{
+    return m_x;
+}

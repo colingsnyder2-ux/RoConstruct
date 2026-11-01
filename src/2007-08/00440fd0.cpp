@@ -1,149 +1,78 @@
-// from server: 49% by Yeetserama
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/MouseCommand.cpp
+// from server: 100% by Yeetserama
+// roc 2007-08 00440fd0  unit: _NVCXTPPropertyGridItemBool::?$XItem  size: 128 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00440fd0
+//
+// 00440fd0  6aff                 push -1
+// 00440fd2  6869297600           push 0x762969
+// 00440fd7  64a100000000         mov eax, dword ptr fs:[0]
+// 00440fdd  50                   push eax
+// 00440fde  83ec08               sub esp, 8
+// 00440fe1  56                   push esi
+// 00440fe2  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00440fe7  33c4                 xor eax, esp
+// 00440fe9  50                   push eax
+// 00440fea  8d442410             lea eax, [esp + 0x10]
+// 00440fee  64a300000000         mov dword ptr fs:[0], eax
+// 00440ff4  8bf1                 mov esi, ecx
+// 00440ff6  51                   push ecx
+// 00440ff7  8d442424             lea eax, [esp + 0x24]
+// 00440ffb  8bcc                 mov ecx, esp
+// 00440ffd  89642410             mov dword ptr [esp + 0x10], esp
+// 00441001  50                   push eax
+// 00441002  c744242000000000     mov dword ptr [esp + 0x20], 0
+// 0044100a  ff1574dd7700         call dword ptr [0x77dd74]
+// 00441010  8bce                 mov ecx, esi
+// 00441012  e8e9762500           call 0x698700
+// 00441017  8b16                 mov edx, dword ptr [esi]
+// 00441019  8b82f0000000         mov eax, dword ptr [edx + 0xf0]
+// 0044101f  8bce                 mov ecx, esi
+// 00441021  ffd0                 call eax
+// 00441023  8d4c240b             lea ecx, [esp + 0xb]
+// 00441027  51                   push ecx
+// 00441028  8bce                 mov ecx, esi
+// 0044102a  8844240f             mov byte ptr [esp + 0xf], al
+// 0044102e  e82decffff           call 0x43fc60
+// 00441033  8d4c2420             lea ecx, [esp + 0x20]
+// 00441037  ff15bcdd7700         call dword ptr [0x77ddbc]
+// 0044103d  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 00441041  64890d00000000       mov dword ptr fs:[0], ecx
+// 00441048  59                   pop ecx
+// 00441049  5e                   pop esi
+// 0044104a  83c414               add esp, 0x14
+// 0044104d  c20400               ret 4
+// copied from an identical function in another client (function ?f@S@ns_ROCX000001@@QAEXUString@2@@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/MouseCommand.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/Filters.h"
-#include "v8world/ContactManager.h"
-#include "v8world/Primitive.h"
-#include "humanoid/Humanoid.h"
+namespace ns_ROCX000001 {
+// from server: 100% by colin
+struct String;
 
-namespace RBX
+
+struct String
 {
-	MouseCommand::MouseCommand(Workspace* workspace)
-		: workspace(workspace),
-		  capturedMouse(false)
-	{
-	}
+    void* data;
 
-	MouseCommand::~MouseCommand()
-	{
-		RBXASSERT(undoState.get() == NULL);
-	}
+    __declspec(dllimport) String(const String&);
+    __declspec(dllimport) ~String() throw();
+};
 
-	bool MouseCommand::characterCanReach(const G3D::Vector3& hitPoint) const
-	{
-		PartInstance* head = Humanoid::getLocalHeadFromContext(workspace);
 
-		if (head)
-			return (head->getCoordinateFrame().translation - hitPoint).magnitude() < 60.0;
-		else
-			return false;
-	}
 
-	TextureId MouseCommand::getCursorId() const
-	{
-		return TextureId::fromAssets("Textures\\" + getCursorName() + ".png");
-	}
 
-	PartInstance* MouseCommand::getMousePart(const G3D::Ray& unitRay, const ContactManager& contactManager, const std::vector<const Primitive*>& ignore, const HitTestFilter* filter, G3D::Vector3& hitPoint, float maxSearchGrid)
-	{
-		RBXASSERT(G3D::fuzzyEq(unitRay.direction.squaredMagnitude(), 1.0f));
 
-		G3D::Ray searchRay = G3D::Ray::fromOriginAndDirection(unitRay.origin, unitRay.direction * 2048.0f); // MouseCommand::getSearchRay inline
-		Primitive* primitive = contactManager.getHit(searchRay, &ignore, filter, hitPoint);
+struct S
+{
+    typedef bool (__thiscall *Query)(S*);
+    Query* vtable;
 
-		return primitive ? PartInstance::fromPrimitive(primitive) : NULL;
-	}
+    void f(String value);
+    void set(String value);
+    void update(const bool& value);
+};
 
-	PartInstance* MouseCommand::getMousePart(const G3D::Ray& unitRay, const ContactManager& contactManager, const Primitive* ignore, const HitTestFilter* filter, G3D::Vector3& hitPoint, float maxSearchGrid)
-	{
-		std::vector<const Primitive*> ignorePrims;
-		ignorePrims.push_back(ignore);
-
-		return getMousePart(unitRay, contactManager, ignorePrims, filter, hitPoint, maxSearchGrid);
-	}
-
-	G3D::Ray MouseCommand::getSearchRay(const G3D::Ray& unitRay)
-	{
-		RBXASSERT(unitRay.direction.isUnit());
-		return G3D::Ray::fromOriginAndDirection(unitRay.origin, unitRay.direction * 2048.0f);
-	}
-
-	G3D::Ray MouseCommand::getSearchRay(const UIEvent& uiEvent, ICameraOwner* _workspace)
-	{
-		G3D::Ray unitRay = getUnitMouseRay(uiEvent, _workspace);
-		return getSearchRay(unitRay);
-	}
-
-	G3D::Ray MouseCommand::getSearchRay(const UIEvent& uiEvent) const
-	{
-		return getSearchRay(uiEvent, workspace);
-	}
-
-	G3D::Ray MouseCommand::getUnitMouseRay(const UIEvent& uiEvent, ICameraOwner* _workspace)
-	{
-		return _workspace->getGCamera().worldRay(
-			uiEvent.mousePosition.x, 
-			uiEvent.mousePosition.y, 
-			G3D::Rect2D::xyxy(0.0f, 0.0f, uiEvent.windowSize.x, uiEvent.windowSize.y)
-		);
-	}
-
-	G3D::Ray MouseCommand::getUnitMouseRay(const UIEvent& uiEvent) const
-	{
-		return getUnitMouseRay(uiEvent, workspace);
-	}
-
-	PartInstance* MouseCommand::getPart(const UIEvent& uiEvent, const HitTestFilter* filter, G3D::Vector3& hitWorld)
-	{
-		G3D::Ray unitRay = getUnitMouseRay(uiEvent);
-		ContactManager& contactManager = workspace->getWorld()->getContactManager();
-
-		std::vector<const Primitive*> ignorePrims;
-		static_cast<ICameraOwner*>(workspace)->getCameraIgnorePrimitives(ignorePrims);
-
-		if (Camera* camera = workspace->getCamera())
-		{
-			if (ICharacterSubject* subject = dynamic_cast<ICharacterSubject*>(camera->getCameraSubject()))
-			{
-				subject->getCameraIgnorePrimitives(ignorePrims);
-			}
-		}
-
-		PartInstance* part = getMousePart(unitRay, contactManager, ignorePrims, filter, hitWorld, 2048.0f);
-
-		if (!part)
-			hitWorld = unitRay.origin + unitRay.direction * 10000.0f;
-
-		return part;
-	}
-
-	PartInstance* MouseCommand::getUnlockedPart(const UIEvent& uiEvent, G3D::Vector3& hitWorld)
-	{
-		Unlocked filter;
-		return getPart(uiEvent, &filter, hitWorld);
-	}
-
-	PartInstance* MouseCommand::getPartByLocalCharacter(const UIEvent& uiEvent, G3D::Vector3& hitWorld)
-	{
-		PartByLocalCharacter filter(workspace);
-		return getPart(uiEvent, &filter, hitWorld);
-	}
-
-	void MouseCommand::capture()
-	{
-		RBXASSERT(!workspace->getCurrentMouseCommand()->captured());
-		capturedMouse = true;
-	}
-
-	Instance* MouseCommand::getTopSelectable3d(PartInstance* part)
-	{
-		Instance* current = part;
-		Instance* top = part;
-
-		while (!dynamic_cast<Workspace*>(current->getParent()))
-		{
-			current = current->getParent();
-			if (dynamic_cast<ISelectable3d*>(current))
-				top = current;
-		}
-		
-		return top;
-	}
+void S::f(String value)
+{
+    set(value);
+    bool result = vtable[60](this);
+    update(result);
+}
 }

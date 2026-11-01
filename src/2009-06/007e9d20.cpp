@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007e9d20  unit: CXTPImageEditorDlg  size: 107 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007e9d20
 //

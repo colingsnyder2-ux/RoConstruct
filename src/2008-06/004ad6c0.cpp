@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 004ad6c0  unit: RBX::Network::Replicator::ChangePropertyItem  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 004ad6c0
-//
-// 004ad6c0  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 004ad6c4  83f803               cmp eax, 3
-// 004ad6c7  741e                 je 0x4ad6e7
-// 004ad6c9  8b542408             mov edx, dword ptr [esp + 8]
-// 004ad6cd  c644240c00           mov byte ptr [esp + 0xc], 0
-// 004ad6d2  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 004ad6d6  51                   push ecx
-// 004ad6d7  50                   push eax
-// 004ad6d8  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 004ad6dc  52                   push edx
-// 004ad6dd  50                   push eax
-// 004ad6de  e8cdefffff           call 0x4ac6b0
-// 004ad6e3  83c410               add esp, 0x10
-// 004ad6e6  c3                   ret 
-// 004ad6e7  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 004ad6eb  c701f8af9300         mov dword ptr [ecx], 0x93aff8
-// 004ad6f1  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

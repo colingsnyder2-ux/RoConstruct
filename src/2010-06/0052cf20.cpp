@@ -1,16 +1,24 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_texturekeyinheritance7a12dfe6085e438a.cpp
+struct Item {
+    char padding[12];
+    int value;
+    char key;
+};
 
-// Candidate translation unit (score above; library headers required).
-#include <map>
-#include <G3D/Vector3.h>
-#include <G3D/Vector2.h>
-#include <G3D/ReferenceCount.h>
-struct Mesh:G3D::ReferenceCountedObject{};
-struct DecalKey {G3D::Vector3 size;int face;bool operator<(const DecalKey&b)const{if(face<b.face)return true;if(face>b.face)return false;return &size.x<&b.size.x;}};
-struct Key:protected DecalKey {G3D::Vector2 tile;bool operator<(const Key&b)const{if(&tile.x<&b.tile.x)return true;if(&tile.x>&b.tile.x)return false;return DecalKey::operator<(b);}};
-typedef std::map<Key,G3D::ReferenceCountedPointer<Mesh> > Map;
-struct Cache:Map {std::pair<iterator,bool> add(const value_type&v);};
-std::pair<Map::iterator,bool> Cache::add(const value_type&v){return insert(v);}
+struct S {
+    unsigned char compare(const Item* a, const Item* b) const;
+};
+
+unsigned char S::compare(const Item* a, const Item* b) const {
+    if (&a->key < &b->key)
+        return 1;
+    if (&a->key > &b->key)
+        return 0;
+    if (a->value < b->value)
+        return 1;
+    if (a->value > b->value)
+        return 0;
+    return static_cast<unsigned char>(a < b);
+}

@@ -1,51 +1,51 @@
-// from server: 60% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct Inner {
-    char pad0[4];
-    volatile long ref1;
-    volatile long ref2;
-    virtual void v0();
-    virtual void v1();
-    virtual void v2();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <intrin.h>
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_;
+    long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
 };
-
-struct Holder {
-    Inner* p;
-    Inner* q;
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(shared_count const& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
 };
-
-extern Holder* __cdecl getHolder(Holder* out);
-
-struct Result {
-    Inner* a;
-    Inner* b;
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    template<class Y> shared_ptr(shared_ptr<Y> const& r) : px(r.px), pn(r.pn) {}
 };
-
-void __stdcall func(Result* out) {
-    Holder h;
-    h.p = 0;
-    Holder* ph = getHolder(&h);
-    Inner* ip = ph->p;
-    if (ip) {
-        ip = (Inner*)((char*)ip + 0x14);
-    } else {
-        ip = 0;
-    }
-    out->a = ip;
-    Inner* b = ph->q;
-    out->b = b;
-    if (b) {
-        _InterlockedExchangeAdd(&b->ref1, 1);
-    }
-    Inner* esi = h.p;
-    if (esi) {
-        if (_InterlockedExchangeAdd(&esi->ref1, -1) == 1) {
-            esi->v1();
-            if (_InterlockedExchangeAdd(&esi->ref2, -1) == 1) {
-                esi->v2();
-            }
-        }
-    }
+}
+namespace RBX {
+class GuidItemBase { public: virtual ~GuidItemBase(); int g[4]; };
+template<class T> class AbstractFactoryProduct { public: virtual ~AbstractFactoryProduct(); };
+class Instance : public GuidItemBase, public AbstractFactoryProduct<Instance> { public: virtual ~Instance(); };
+template<class Base> class Creatable { public: template<class T> static boost::shared_ptr<T> create(); };
+class Team : public Instance { public: Team(); };
+template<class Class, class Base> class FactoryProduct {
+public:
+    class Creator {
+    public:
+        virtual boost::shared_ptr<AbstractFactoryProduct<Base> > create() const;
+    };
+};
+template<class Class, class Base>
+boost::shared_ptr<AbstractFactoryProduct<Base> > FactoryProduct<Class, Base>::Creator::create() const {
+    return Creatable<Base>::template create<Class>();
+}
+template class FactoryProduct<Team, Instance>;
 }

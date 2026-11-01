@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 007c6df0  unit: CXTPToolBar  size: 91 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 007c6df0
 //

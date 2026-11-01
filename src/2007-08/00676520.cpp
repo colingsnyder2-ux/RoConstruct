@@ -1,16 +1,4 @@
-// roc 2007-08 00676520  unit: CXTPCustomizeCommandsPage  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00676520
-//
-// 00676520  8bc1                 mov eax, ecx
-// 00676522  33c9                 xor ecx, ecx
-// 00676524  c70050ce7c00         mov dword ptr [eax], 0x7cce50
-// 0067652a  894804               mov dword ptr [eax + 4], ecx
-// 0067652d  894810               mov dword ptr [eax + 0x10], ecx
-// 00676530  89480c               mov dword ptr [eax + 0xc], ecx
-// 00676533  894808               mov dword ptr [eax + 8], ecx
-// 00676536  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

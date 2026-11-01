@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 00643750  unit: CXTPCommandBar::CCommandBarCmdUI  size: 17 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00643750
 //

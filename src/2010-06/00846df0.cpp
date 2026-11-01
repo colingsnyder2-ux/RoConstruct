@@ -1,9 +1,4 @@
-// roc 2010-06 00846df0  unit: CXTPDockBar  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00846df0
-//
-// 00846df0  e9dbe3f7ff           jmp 0x7c51d0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00846df0();
 void func_00846df0()
 {

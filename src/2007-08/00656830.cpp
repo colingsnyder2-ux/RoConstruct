@@ -1,19 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 00656830  unit: CXTPReportRow_Batch  size: 29 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00656830
-//
-// 00656830  8b81cc000000         mov eax, dword ptr [ecx + 0xcc]
-// 00656836  83f8ff               cmp eax, -1
-// 00656839  740f                 je 0x65684a
-// 0065683b  8b89a0000000         mov ecx, dword ptr [ecx + 0xa0]
-// 00656841  8b11                 mov edx, dword ptr [ecx]
-// 00656843  50                   push eax
-// 00656844  8b425c               mov eax, dword ptr [edx + 0x5c]
-// 00656847  ffd0                 call eax
-// 00656849  c3                   ret 
-// 0065684a  33c0                 xor eax, eax
-// 0065684c  c3                   ret 
-
 struct CXTPReportRow_Batch {
     int GetValue();
 };

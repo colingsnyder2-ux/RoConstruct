@@ -1,13 +1,6 @@
-// roc 2009-12 006499e0  unit: G3D::VRay::?$TypedPropertyDescriptor  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 006499e0
-//
-// 006499e0  e91befffff           jmp 0x648900
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_006499e0();
+void func_006499e0()
 {
-    G1_func_00401050();
-}
+    G1_func_006499e0();
 }

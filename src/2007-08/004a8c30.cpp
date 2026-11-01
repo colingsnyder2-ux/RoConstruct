@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 004a8c30  unit: RBX::Network::VClient::?$FactoryProduct  size: 59 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004a8c30
 //

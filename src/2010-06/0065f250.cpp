@@ -1,48 +1,4 @@
-// roc 2010-06 0065f250  unit: RBX::Backpack  size: 110 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0065f250
-//
-// 0065f250  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0065f254  33c9                 xor ecx, ecx
-// 0065f256  3bc1                 cmp eax, ecx
-// 0065f258  7441                 je 0x65f29b
-// 0065f25a  83f801               cmp eax, 1
-// 0065f25d  743c                 je 0x65f29b
-// 0065f25f  83f802               cmp eax, 2
-// 0065f262  7459                 je 0x65f2bd
-// 0065f264  83f803               cmp eax, 3
-// 0065f267  7521                 jne 0x65f28a
-// 0065f269  56                   push esi
-// 0065f26a  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 0065f26e  8b0e                 mov ecx, dword ptr [esi]
-// 0065f270  6820b9bb00           push 0xbbb920
-// 0065f275  ff15d8a89e00         call dword ptr [0x9ea8d8]
-// 0065f27b  0fb6c0               movzx eax, al
-// 0065f27e  f7d8                 neg eax
-// 0065f280  1bc0                 sbb eax, eax
-// 0065f282  23442408             and eax, dword ptr [esp + 8]
-// 0065f286  8906                 mov dword ptr [esi], eax
-// 0065f288  5e                   pop esi
-// 0065f289  c3                   ret 
-// 0065f28a  8b442408             mov eax, dword ptr [esp + 8]
-// 0065f28e  c70020b9bb00         mov dword ptr [eax], 0xbbb920
-// 0065f294  884804               mov byte ptr [eax + 4], cl
-// 0065f297  884805               mov byte ptr [eax + 5], cl
-// 0065f29a  c3                   ret 
-// 0065f29b  8b442408             mov eax, dword ptr [esp + 8]
-// 0065f29f  3bc1                 cmp eax, ecx
-// 0065f2a1  741a                 je 0x65f2bd
-// 0065f2a3  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0065f2a7  8b11                 mov edx, dword ptr [ecx]
-// 0065f2a9  8910                 mov dword ptr [eax], edx
-// 0065f2ab  8b5104               mov edx, dword ptr [ecx + 4]
-// 0065f2ae  895004               mov dword ptr [eax + 4], edx
-// 0065f2b1  8b5108               mov edx, dword ptr [ecx + 8]
-// 0065f2b4  895008               mov dword ptr [eax + 8], edx
-// 0065f2b7  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 0065f2ba  89480c               mov dword ptr [eax + 0xc], ecx
-// 0065f2bd  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

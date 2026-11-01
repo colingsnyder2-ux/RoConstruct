@@ -1,44 +1,4 @@
 // from server: 100% by colin
-// roc 2008-06 00410cd0  unit: CBrowserView  size: 140 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00410cd0
-//
-// 00410cd0  6aff                 push -1
-// 00410cd2  684ad67b00           push 0x7bd64a
-// 00410cd7  64a100000000         mov eax, dword ptr fs:[0]
-// 00410cdd  50                   push eax
-// 00410cde  64892500000000       mov dword ptr fs:[0], esp
-// 00410ce5  83ec0c               sub esp, 0xc
-// 00410ce8  56                   push esi
-// 00410ce9  8bf1                 mov esi, ecx
-// 00410ceb  8974240c             mov dword ptr [esp + 0xc], esi
-// 00410cef  e8bcfbffff           call 0x4108b0
-// 00410cf4  8d442408             lea eax, [esp + 8]
-// 00410cf8  50                   push eax
-// 00410cf9  c744241c00000000     mov dword ptr [esp + 0x1c], 0
-// 00410d01  c706acdc8000         mov dword ptr [esi], 0x80dcac
-// 00410d07  e8c453ffff           call 0x4060d0
-// 00410d0c  689cdc8000           push 0x80dc9c
-// 00410d11  50                   push eax
-// 00410d12  8d4c2410             lea ecx, [esp + 0x10]
-// 00410d16  51                   push ecx
-// 00410d17  c644242801           mov byte ptr [esp + 0x28], 1
-// 00410d1c  e83fd4ffff           call 0x40e160
-// 00410d21  83c410               add esp, 0x10
-// 00410d24  50                   push eax
-// 00410d25  8d8ecc020000         lea ecx, [esi + 0x2cc]
-// 00410d2b  c644241c02           mov byte ptr [esp + 0x1c], 2
-// 00410d30  ff1544318000         call dword ptr [0x803144]
-// 00410d36  8d4c2404             lea ecx, [esp + 4]
-// 00410d3a  ff15143f8000         call dword ptr [0x803f14]
-// 00410d40  8d4c2408             lea ecx, [esp + 8]
-// 00410d44  ff15143f8000         call dword ptr [0x803f14]
-// 00410d4a  8b4c2410             mov ecx, dword ptr [esp + 0x10]
-// 00410d4e  8bc6                 mov eax, esi
-// 00410d50  5e                   pop esi
-// 00410d51  64890d00000000       mov dword ptr fs:[0], ecx
-// 00410d58  83c418               add esp, 0x18
-// 00410d5b  c3                   ret 
-
 // from server: 93% by colin
 // roc 2008-06 00410c40  unit: CBrowserView  size: 140 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00410c40

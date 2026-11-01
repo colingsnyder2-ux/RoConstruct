@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0086e080  unit: CXTPReportColumns  size: 24 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0086e080
 //

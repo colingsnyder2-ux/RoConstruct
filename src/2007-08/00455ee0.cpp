@@ -1,4 +1,4 @@
-// from server: 89% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00455ee0  unit: InsertModelFromRobloxVerb  size: 53 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00455ee0
 //
@@ -24,24 +24,31 @@
 // 00455f0f  1bc0                 sbb eax, eax
 // 00455f11  83c001               add eax, 1
 // 00455f14  c3                   ret 
+// copied from an identical function in another client (function ?f@InsertModelFromRobloxVerb@ns_ROCX00001b@@QAE_NXZ)
 
-struct InsertModelFromRobloxVerb {
+namespace ns_ROCX00001b {
+// from server: 100% by king_originala
+extern "C" bool __cdecl G1_func_00495e60(void*, int);
+extern "C" double __cdecl G2_func_005083d0();
+
+extern double g_8190b8;
+
+struct InsertModelFromRobloxVerb
+{
     char pad[0x10];
-    int field_10;
-    char pad2[4];
-    double field_18;
-    bool method();
+    void* field10;
+    char pad2[0x4];
+    double field18;
+
+    bool f();
 };
 
-extern double g_455ee0;
-
-extern "C" void __stdcall sub_4ffef0();
-extern "C" char __stdcall sub_4915a0(int, int);
-
-bool InsertModelFromRobloxVerb::method()
+bool InsertModelFromRobloxVerb::f()
 {
-    sub_4ffef0();
-    if (field_18 + g_455ee0 < field_18 + g_455ee0)
+    double now = G2_func_005083d0();
+    if (this->field18 + g_8190b8 > now)
         return false;
-    return sub_4915a0(field_10, 1) == 0;
+
+    return !G1_func_00495e60(this->field10, 1);
+}
 }

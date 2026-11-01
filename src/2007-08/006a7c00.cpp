@@ -1,10 +1,4 @@
-// roc 2007-08 006a7c00  unit: CXTPRibbonBar  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006a7c00
-//
-// 006a7c00  8b8140020000         mov eax, dword ptr [ecx + 0x240]
-// 006a7c06  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_006a7c00 {
     char pad0[576];
     int m_x;

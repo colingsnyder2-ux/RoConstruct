@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007609b0  unit: CXTPToolBar::CControlButtonExpand  size: 21 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007609b0
 //

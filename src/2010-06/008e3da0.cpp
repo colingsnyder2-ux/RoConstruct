@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 008e3da0  unit: RBX::RbxTextureProxy  size: 49 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 008e3da0
 //

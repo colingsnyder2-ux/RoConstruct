@@ -1,10 +1,4 @@
-// roc 2007-08 00436f90  unit: CMemberTreeView  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00436f90
-//
-// 00436f90  b860cc7800           mov eax, 0x78cc60
-// 00436f95  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_00436f90()

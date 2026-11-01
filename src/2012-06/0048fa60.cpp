@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 0048fa60  unit: CRobloxReportPaneView  size: 15 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 0048fa60
 //

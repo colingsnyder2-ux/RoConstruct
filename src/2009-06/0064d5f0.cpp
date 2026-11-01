@@ -1,125 +1,66 @@
-// from server: 61% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Explosion.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Explosion.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8world/ContactManager.h"
-#include "v8world/World.h"
-
-namespace RBX
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+namespace G3D {
+class Vector3 {
+public:
+    float x, y, z;
+    Vector3() {}
+    Vector3(const Vector3& v) : x(v.x), y(v.y), z(v.z) {}
+    Vector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
+    static const Vector3& zero() { static Vector3 v(0, 0, 0); return v; }
+};
+class Matrix3 {
+public:
+    float elt[3][3];
+    Matrix3(const Matrix3& m);
+    static const Matrix3& identity();
+};
+class CoordinateFrame {
+public:
+    Matrix3 rotation;
+    Vector3 translation;
+    CoordinateFrame(const Vector3& t) : rotation(Matrix3::identity()), translation(t) {}
+};
+class Color3 { public: float r, g, b; static const Color3& red(); };
+class Color4 {
+public:
+    float r, g, b, a;
+    Color4(const Color3& c, float _a = 1.0f) : r(c.r), g(c.g), b(c.b), a(_a) {}
+    static const Color4& clear();
+};
+class Sphere {
+public:
+    Vector3 center;
+    float radius;
+    Sphere(const Vector3& c, float r) : center(c), radius(r) {}
+    virtual ~Sphere() {}
+};
+}
+using namespace G3D;
+namespace RBX {
+class Adorn {
+public:
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
+    virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13();
+    virtual void setObjectToWorldMatrix(const CoordinateFrame& cf);
+    virtual void v15(); virtual void v16(); virtual void v17();
+    virtual void sphere(const Sphere& s, const Color4& c, const Color4& outline);
+};
+class ExplosionAdorn {
+public:
+    char pad[0x20];
+    Vector3 position;
+    float radius;
+    void render3dAdorn(Adorn* adorn);
+};
+void ExplosionAdorn::render3dAdorn(Adorn* adorn)
 {
-	static Reflection::PropDescriptor<Explosion, float> propBlastRadius("BlastRadius", "Data", &Explosion::getBlastRadius, &Explosion::setBlastRadius, Reflection::PropertyDescriptor::STANDARD);
-
-	Reflection::SignalDesc<Explosion, void(boost::shared_ptr<Instance>, float)> signal_Hit("Hit", "part", "distance");
-
-	Reflection::BoundProp<G3D::Vector3, 1> Explosion::propPosition("Position", "Data", &Explosion::position, Reflection::PropertyDescriptor::STANDARD);
-	Reflection::BoundProp<float, 1> Explosion::propBlastPressure("BlastPressure", "Data", &Explosion::blastPressure, Reflection::PropertyDescriptor::STANDARD);
-
-	Explosion::Explosion()
-		: blastRadius(4.0f),
-		  blastPressure(500000.0f),
-		  age(0.0f)
-	{
-		setName("Explosion");
-	}
-
-	bool Explosion::askSetParent(const Instance* instance) const
-	{
-		return true;
-	}
-
-	void Explosion::setBlastRadius(float _blastRadius)
-	{
-		float newRadius = G3D::clamp(_blastRadius, 0.0f, 100.0f);
-		if (blastRadius != newRadius)
-		{
-			blastRadius = newRadius;
-			raisePropertyChanged(propBlastRadius);
-		}
-	}
-
-	void Explosion::signalBlast(const G3D::Array<Primitive*>& primitives)
-	{
-		if (!signal_Hit.empty(this))
-		{
-			for (int i = 0; i < primitives.size(); i++)
-			{
-				Primitive* current = primitives[i];
-
-				if (blastRadius * 2.0f > current->getRadius())
-				{
-					if (Instance* part = PartInstance::fromPrimitive(current))
-					{
-						float distance = (current->getCoordinateFrame().translation - position).magnitude();
-						signal_Hit.fire(this, shared_from(part), distance);
-					}
-				}
-			}
-		}
-	}
-
-	//99% match
-	void Explosion::doBlast(const G3D::Array<Primitive*>& primitives)
-	{
-		if (blastPressure > 0.0f)
-		{
-			World* world = Workspace::getMyWorldFast(this);
-			RBXASSERT(world);
-
-			for (int i = 0; i < primitives.size(); i++)
-			{
-				Primitive* current = primitives[i];
-
-				if (blastRadius * 2.0f > current->getRadius())
-				{
-					PartInstance::fromPrimitive(current)->destroyJoints();
-				}
-			}
-
-			world->update();
-
-			for (int i = 0; i < primitives.size(); i++)
-			{
-				Primitive* current = primitives[i];
-
-				if (blastRadius * 2.0f > current->getRadius())
-				{
-					G3D::Vector3 delta = current->getCoordinateFrame().translation - position;
-					G3D::Vector3 normal = delta == G3D::Vector3::zero() ? G3D::Vector3::unitY() : delta.direction();
-					RBXASSERT(normal.magnitude() <= 1.001);
-
-					float radius = current->getRadius();
-					float squaredRadius = radius * radius;
-
-					G3D::Vector3 impulse = normal * blastPressure * squaredRadius * (1.0f/4560.0f);
-					G3D::Vector3 force = impulse * Constants::kernelStepsPerSec();
-
-					world->ticklePrimitive(current);
-
-					Body* body = current->getBody();
-
-					const G3D::Vector3& pos = body->getCoordinateFrame().translation;
-					body->accumulateForce(force, pos);
-
-					current->getBody()->accumulateTorque(force * 0.5f * radius);
-
-					world->addedBodyForce();
-				}
-			}
-		}
-	}
-
-	void Explosion::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Notifier<RunService, Stepped>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		Notifier<RunService, Stepped>::connect(ServiceProvider::find<RunService>(newProvider), this);
-	}
+    adorn->setObjectToWorldMatrix(CoordinateFrame(position));
+    float r = radius;
+    adorn->sphere(Sphere(Vector3::zero(), r), Color4(Color3::red()), Color4::clear());
+}
 }

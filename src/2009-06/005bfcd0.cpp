@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 005bfcd0  unit: RBX::AggregatingSceneManager::Bucket  size: 19 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 005bfcd0
 //

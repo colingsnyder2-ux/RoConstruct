@@ -1,9 +1,4 @@
-// roc 2010-06 00840970  unit: CXTPControlEditCtrl  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00840970
-//
-// 00840970  e91bffffff           jmp 0x840890
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00840970();
 void func_00840970()
 {

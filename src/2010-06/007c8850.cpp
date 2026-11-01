@@ -1,16 +1,4 @@
-// roc 2010-06 007c8850  unit: MyXTPCommandBars  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 007c8850
-//
-// 007c8850  8bc1                 mov eax, ecx
-// 007c8852  33c9                 xor ecx, ecx
-// 007c8854  c7008480a500         mov dword ptr [eax], 0xa58084
-// 007c885a  894804               mov dword ptr [eax + 4], ecx
-// 007c885d  894810               mov dword ptr [eax + 0x10], ecx
-// 007c8860  89480c               mov dword ptr [eax + 0xc], ecx
-// 007c8863  894808               mov dword ptr [eax + 8], ecx
-// 007c8866  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

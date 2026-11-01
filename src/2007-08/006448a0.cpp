@@ -1,20 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 006448a0  unit: CXTPCommandBar  size: 27 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006448a0
-//
-// 006448a0  56                   push esi
-// 006448a1  8bf1                 mov esi, ecx
-// 006448a3  e898f1ffff           call 0x643a40
-// 006448a8  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 006448ac  8b10                 mov edx, dword ptr [eax]
-// 006448ae  8b5274               mov edx, dword ptr [edx + 0x74]
-// 006448b1  56                   push esi
-// 006448b2  51                   push ecx
-// 006448b3  8bc8                 mov ecx, eax
-// 006448b5  ffd2                 call edx
-// 006448b7  5e                   pop esi
-// 006448b8  c20400               ret 4
-
 struct CXTPCommandBar;
 
 struct CXTPCommandBar_Inner {

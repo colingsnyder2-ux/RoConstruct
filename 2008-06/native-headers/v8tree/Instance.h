@@ -29,7 +29,8 @@ extern const char* sInstance;
 
 // Native hierarchy from RTTI and the existing 004b9bd0 recovered source.
 // Inactive until every virtual body, member lifetime and dependent ABI is proven.
-class Instance : public GuidItem<Instance>,
+class Instance : public boost::enable_shared_from_this<Instance>,
+                 public GuidItem<Instance>,
                  public AbstractFactoryProduct<Instance>,
                  public Reflection::Described<Instance, &sInstance, Reflection::DescribedBase>,
                  public Debugable,
@@ -39,9 +40,9 @@ class Instance : public GuidItem<Instance>,
                  public Notifier<Instance, DescendantRemoving>,
                  public Notifier<Instance, AncestorChanged>,
                  public Notifier<Instance, PropertyChanged>,
-                 public boost::enable_shared_from_this<Instance>,
                  public boost::noncopyable {
 public:
+    Instance();
     virtual ~Instance();
     virtual void setName(const std::string&);
     virtual bool askAddChild(const Instance*) const;

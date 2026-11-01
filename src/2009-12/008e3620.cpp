@@ -1,13 +1,6 @@
-// roc 2009-12 008e3620  unit: CXTShadowHook  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 008e3620
-//
-// 008e3620  e98bffffff           jmp 0x8e35b0
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_008e3620();
+void func_008e3620()
 {
-    G1_func_00401050();
-}
+    G1_func_008e3620();
 }

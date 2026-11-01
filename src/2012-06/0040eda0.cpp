@@ -1,5 +1,5 @@
-// from server: 69% by atomic.potato
-extern "C" void sub_40d250(void *, void *);
+// from server: 76% by atomic.potato
+extern "C" void __stdcall sub_40d250(void *, void *);
 
 struct S
 {

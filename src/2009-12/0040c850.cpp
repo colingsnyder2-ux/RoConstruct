@@ -1,13 +1,6 @@
-// roc 2009-12 0040c850  unit: RBX::Reflection::Metadata::VMember::?$FactoryProduct::Creator  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0040c850
-//
-// 0040c850  e9a1733e00           jmp 0x7f3bf6
-// copied from an identical function in another client (function ?fn_ROCX0000e9@ns_ROCX0000e9@@YAXXZ)
-
-namespace ns_ROCX0000e9 {
-extern void G1_func_00401050();
-void fn_ROCX0000e9()
+// from server: 100% by auto
+extern void G1_func_0040c850();
+void func_0040c850()
 {
-    G1_func_00401050();
-}
+    G1_func_0040c850();
 }

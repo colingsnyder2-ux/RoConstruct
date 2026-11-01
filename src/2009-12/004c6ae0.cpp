@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /arch:SSE2 /fp:fast
-// roc-lib: rbxgs-g3d GLG3Dcpp/Texture.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast
+// roc-lib: g3d-6.09 GLG3Dcpp/Texture.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**

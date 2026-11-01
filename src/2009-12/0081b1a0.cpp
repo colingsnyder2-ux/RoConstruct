@@ -1,17 +1,19 @@
-// roc 2009-12 0081b1a0  unit: CInstanceRecord::CNameItem  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0081b1a0
-//
-// 0081b1a0  8bc1                 mov eax, ecx
-// 0081b1a2  33c9                 xor ecx, ecx
-// 0081b1a4  c700a0499f00         mov dword ptr [eax], 0x9f49a0
-// 0081b1aa  894804               mov dword ptr [eax + 4], ecx
-// 0081b1ad  894810               mov dword ptr [eax + 0x10], ecx
-// 0081b1b0  89480c               mov dword ptr [eax + 0xc], ecx
-// 0081b1b3  894808               mov dword ptr [eax + 8], ecx
-// 0081b1b6  c3                   ret 
-// library mfc-8.0/atlmfc\src\mfc\array_b.cpp (function ??0CByteArray@@QAE@XZ)
+// from server: 100% by auto
+extern char G;
 
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-8.0 atlmfc/src/mfc/array_b.cpp
+extern char G;
+struct S_func_0081b1a0
+{
+    void* p0;
+    int z0;
+    int z1;
+    int z2;
+    int z3;
+    S_func_0081b1a0();
+};
+S_func_0081b1a0::S_func_0081b1a0()
+{
+    p0 = (void*)&G;
+    z0 = 0;
+    z1 = z2 = z3 = 0;
+}

@@ -1,33 +1,97 @@
-// roc 2007-03 00448d40  unit: seg_00440000  size: 14 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 00448d40
-//
-// 00448d40  e8635f1d00           call 0x61eca8
-// 00448d45  e846561d00           call 0x61e390
-// 00448d4a  8b4034               mov eax, dword ptr [eax + 0x34]
-// 00448d4d  c3                   ret 
-// copied from an identical function in another client (function ?getValue@CRobloxModule@ns_ROCX000010@@QAEHXZ)
-
-namespace ns_ROCX000010 {
+// from server: 80% by colin
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
+// roc-lib: xtp-11.2.2 Source/CommandBars/XTPControlButton.cpp
 
-struct Inner {
-    char pad[0x34];
-    int value;
-};
+// Candidate translation unit (score above; library headers required).
+// XTPControlButton.cpp : implementation of the CXTPControlButton class.
+//
+// This file is a part of the XTREME COMMANDBARS MFC class library.
+// (c)1998-2007 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
 
-extern "C" Inner* __cdecl sub_6307A8();
-extern "C" Inner* __cdecl sub_62FF02();
+#include "stdafx.h"
+#include "XTPControlButton.h"
+#include "XTPCommandBar.h"
 
-struct CRobloxModule {
-    int getValue();
-};
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
 
-int CRobloxModule::getValue()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPControlButton
+
+IMPLEMENT_XTP_CONTROL(CXTPControlButton, CXTPControl)
+
+CXTPControlButton::CXTPControlButton()
 {
-    sub_6307A8();
-    Inner* p = sub_62FF02();
-    return p->value;
+	EnableAutomation();
+
+	m_controlType = xtpControlButton;
 }
+
+CXTPControlButton::~CXTPControlButton()
+{
 }
+
+void CXTPControlButton::OnLButtonUp(CPoint /*point*/)
+{
+	if (GetEnabled() && (m_pParent->GetType() == xtpBarTypePopup || m_pParent->GetPosition() == xtpBarPopup))
+	{
+		OnExecute();
+	}
+}
+
+void CXTPControlButton::OnClick(BOOL bKeyboard, CPoint pt)
+{
+	if (!GetEnabled()) return;
+
+	if (IsCustomizeMode())
+	{
+		m_pParent->SetPopuped(-1);
+		m_pParent->SetSelected(-1);
+		CustomizeStartDrag(pt);
+		return;
+	}
+
+	if (!bKeyboard)
+	{
+		if (m_pParent->GetType() != xtpBarTypePopup)
+			ClickToolBarButton();
+	}
+	else
+	{
+		OnExecute();
+	}
+}
+
+void CXTPControlButton::Copy(CXTPControl* pControl, BOOL bRecursive)
+{
+	ASSERT(DYNAMIC_DOWNCAST(CXTPControlButton, pControl));
+
+	CXTPControl::Copy(pControl, bRecursive);
+}
+
+
+
+
+
+

@@ -1,10 +1,4 @@
-// roc 2007-08 004ff060  unit: G3D::Shader  size: 4 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004ff060
-//
-// 004ff060  8a4114               mov al, byte ptr [ecx + 0x14]
-// 004ff063  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_004ff060 {
     char pad0[20];
     char m_x;

@@ -1,22 +1,10 @@
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs reflection/reflection_function.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "reflection/function.h"
-#include "reflection/object.h"
-
-namespace RBX
+// from server: 100% by auto
+struct S_func_004aa510 {
+    char pad0[4];
+    int m_x;
+    void f(int a1);
+};
+void S_func_004aa510::f(int a1)
 {
-	namespace Reflection
-	{
-		FunctionDescriptor::FunctionDescriptor(ClassDescriptor& classDescriptor, const char* name, Security security)
-			: MemberDescriptor(classDescriptor, name, "Function"),
-			  security(security),
-			  signature()
-		{
-			classDescriptor.FunctionContainer::declare(this);
-		}
-	}
+    m_x = (int)a1;
 }

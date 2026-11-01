@@ -1,4 +1,4 @@
-// from server: 31% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00439850  unit: RBX::VSoundId::?$XItem  size: 85 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00439850
 //
@@ -30,22 +30,35 @@
 // 0043989e  5e                   pop esi
 // 0043989f  83c410               add esp, 0x10
 // 004398a2  c20400               ret 4
+// copied from an identical function in another client (function ??0S@ns_ROCX000004@@QAE@I@Z)
 
-struct ContentId {
-    int field0;
-    int field4;
-    int field8;
+namespace ns_ROCX000004 {
+// from server: 100% by king_originala
+struct First
+{
+    void* first;
+
+    First() : first(0) {}
 };
 
-struct SoundId : ContentId {
-    SoundId(const ContentId& id);
+struct Storage
+{
+    void* last;
+
+    Storage() : last(0) {}
+    ~Storage();
 };
 
-extern "C" void __cdecl sub_5592d0(int);
+struct S : First, Storage
+{
+    void* limit;
 
-SoundId::SoundId(const ContentId& id) {
-    field0 = 0;
-    field4 = 0;
-    field8 = 0;
-    sub_5592d0(*(int*)&id);
+    explicit S(unsigned int count);
+    void initialize(unsigned int count);
+};
+
+S::S(unsigned int count) : First(), Storage(), limit(0)
+{
+    initialize(count);
+}
 }

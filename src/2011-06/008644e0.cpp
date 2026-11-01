@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 008644e0  unit: CXTPTabClientWnd  size: 106 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 008644e0
 //

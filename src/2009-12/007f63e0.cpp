@@ -1,11 +1,7 @@
-// roc 2009-12 007f63e0  unit: CXTPPropertyGridItem  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 007f63e0
-//
-// 007f63e0  b8b0179f00           mov eax, 0x9f17b0
-// 007f63e5  c3                   ret 
-// library mfc-8.0/atlmfc\src\mfc\appcore.cpp (function ?GetThisMessageMap@CWinApp@@KGPBUAFX_MSGMAP@@XZ)
+// from server: 100% by auto
+extern char G;
 
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-8.0 atlmfc/src/mfc/appcore.cpp
+char* func_007f63e0()
+{
+    return &G;
+}

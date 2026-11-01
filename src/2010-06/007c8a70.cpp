@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 007c8a70  unit: PAVCXTPCommandBarKeyboardTip::?$CArray  size: 183 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 007c8a70
 //

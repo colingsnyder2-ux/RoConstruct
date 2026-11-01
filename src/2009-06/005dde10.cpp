@@ -1,108 +1,39 @@
-// from server: 59% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+union function_buffer { void* obj_ptr; double align; char buf[0x18]; };
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag };
+struct vtable_base {
+	void (*manager)(const function_buffer& in, function_buffer& out, functor_manager_operation_type op);
+};
+struct function_base {
+	vtable_base* vtable;
+	mutable function_buffer functor;
+	function_base() : vtable(0) {}
+};
+struct function : function_base {
+	~function() {
+		if (vtable) {
+			void (*m)(const function_buffer&, function_buffer&, functor_manager_operation_type) = vtable->manager;
+			if (m) m(functor, functor, destroy_functor_tag);
+		}
+	}
+	function(const function& f) {
+		if (f.vtable) {
+			vtable = f.vtable;
+			vtable->manager(f.functor, functor, clone_functor_tag);
+		}
+	}
+};
+struct Item { int id; function f; };
+struct Tag {};
+class Owner {
+public:
+	bool doIt(Item item, int x, Tag t);
+	bool run(Item item, int x);
+};
+bool Owner::run(Item item, int x)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+	return doIt(item, x, Tag());
 }

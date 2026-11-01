@@ -1,99 +1,52 @@
-// from server: 51% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
+// from server: 83% by Intel
+typedef unsigned long DWORD;
+typedef int BOOL;
 
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "v8datamodel/DataModel.h"
+extern "C" BOOL __stdcall G1_func_00972eb0(void* thisptr);
+extern "C" BOOL __stdcall G1_func_00972290(int, const char*);
+extern "C" BOOL __cdecl G1_func_00E5809C(int, const char*, const char*);
 
-namespace RBX
+extern unsigned char G1_byte_00E580B3;
+extern DWORD G1_dword_00E5809C;
+
+extern const char G1_str_00BA0D10[];
+extern const char G1_str_00BA1D98[];
+extern const char G1_str_00BA1EC0[];
+
+struct Tool
 {
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
+    void func_0070F460();
+    void func_00713300();
+    void func_00713530();
+    void func_00712540();
+    void func_007131E0(int);
 
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
+    void func_007144C0();
+};
 
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
+void Tool::func_007144C0()
+{
+    if (G1_byte_00E580B3 != 0)
+    {
+        void* checkPtr = (char*)this + 0x244;
+        if (G1_func_00972eb0(checkPtr))
+        {
+            if (G1_dword_00E5809C != 0)
+            {
+                if (G1_func_00E5809C(0x147, G1_str_00BA0D10, G1_str_00BA1D98))
+                {
+                    goto LABEL_END;
+                }
+            }
+            int flag = G1_byte_00E580B3;
+            G1_func_00972290(flag, G1_str_00BA1EC0);
+        }
+    }
 
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
+LABEL_END:
+    this->func_0070F460();
+    this->func_00713300();
+    this->func_00713530();
+    this->func_00712540();
+    this->func_007131E0(5);
 }

@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1-dll roc_bind_factories_17fe4b0ff94f7e66.cpp
+// roc-lib: boost-1.34.1-dll roc_unit_7c283c9b16193989.cpp
 
 // Candidate translation unit (score above; library headers required).
 // Declaration excerpt from RBLXDecomp/RBXGSdecomp at
@@ -102,16 +103,3 @@ template class boost::_mfi::mf3<void, DHTMLWindow, InstancePtr, PropertyRef, std
 template class boost::_bi::list4<WindowValue, boost::_bi::value<InstancePtr>, boost::reference_wrapper<RBX::Reflection::PropertyDescriptor const>, StringValue>;
 template class boost::_bi::bind_t<void, PropertyCallback, PropertyArguments>;
 void assign_property(boost::function<void()>& f, PropertyBound const& b) { f = b; }
-
-typedef boost::shared_ptr<DHTMLWindow> WindowPtr;
-typedef void (DHTMLWindow::*CloseMethod)();
-typedef void (DHTMLWindow::*FunctionMethod)(FunctionRef);
-typedef void (DHTMLWindow::*StringMethod)(std::string);
-typedef void (DHTMLWindow::*ResizeMethod)(int, int);
-typedef void (DHTMLWindow::*PropertyMethod)(InstancePtr, PropertyRef, std::string);
-typedef boost::reference_wrapper<RBX::Reflection::PropertyDescriptor const> PropertyWrapper;
-template CloseBound boost::bind<void, DHTMLWindow, WindowPtr>(CloseMethod, WindowPtr);
-template Bound boost::bind<void, DHTMLWindow, FunctionRef, WindowPtr, FunctionRef>(FunctionMethod, WindowPtr, FunctionRef);
-template StringBound boost::bind<void, DHTMLWindow, std::string, WindowPtr, std::string>(StringMethod, WindowPtr, std::string);
-template ResizeBound boost::bind<void, DHTMLWindow, int, int, WindowPtr, int, int>(ResizeMethod, WindowPtr, int, int);
-template PropertyBound boost::bind<void, DHTMLWindow, InstancePtr, PropertyRef, std::string, WindowPtr, InstancePtr, PropertyWrapper, std::string>(PropertyMethod, WindowPtr, InstancePtr, PropertyWrapper, std::string);

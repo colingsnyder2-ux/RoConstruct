@@ -1,10 +1,4 @@
-// roc 2007-08 005a4a70  unit: RBX::VHumanoid::?$FactoryProduct  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005a4a70
-//
-// 005a4a70  8b8138010000         mov eax, dword ptr [ecx + 0x138]
-// 005a4a76  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_005a4a70 {
     char pad0[312];
     int m_x;

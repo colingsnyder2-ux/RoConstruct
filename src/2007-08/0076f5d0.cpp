@@ -1,18 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 0076f5d0  unit: seg_00760000  size: 39 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0076f5d0
-//
-// 0076f5d0  6a05                 push 5
-// 0076f5d2  68f4000000           push 0xf4
-// 0076f5d7  68dcd07900           push 0x79d0dc
-// 0076f5dc  68e8d07900           push 0x79d0e8
-// 0076f5e1  b95ce88b00           mov ecx, 0x8be85c
-// 0076f5e6  e8f54fd3ff           call 0x4a45e0
-// 0076f5eb  6870887700           push 0x778870
-// 0076f5f0  e82e17ecff           call 0x630d23
-// 0076f5f5  59                   pop ecx
-// 0076f5f6  c3                   ret 
-
 extern int g_0076f5d0_0;
 extern int g_0076f5d0_1;
 // roc-flags: /O2 /GS /EHsc /MD /Ob2 /Oy /GF

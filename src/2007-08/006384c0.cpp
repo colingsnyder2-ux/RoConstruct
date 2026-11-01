@@ -1,10 +1,4 @@
-// roc 2007-08 006384c0  unit: CXTPControlEditCtrl  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006384c0
-//
-// 006384c0  b8f85f7c00           mov eax, 0x7c5ff8
-// 006384c5  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_006384c0()

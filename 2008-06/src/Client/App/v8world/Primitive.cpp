@@ -35,7 +35,7 @@ namespace RBX
 		anchored(false),
 		flag0xaa(false),
 		canCollide(true),
-		canSleep(false),
+		canSleep(true),
 		JointK(this, &Primitive::computeJointK),
 		controller(NullController::getStaticNullController())
 	{
@@ -239,7 +239,7 @@ namespace RBX
 
 	Assembly* Primitive::getAssembly() const 
 	{
-		return clump ? clump->getAssembly() : NULL;
+		return clump ? clump->getRootAssembly() : NULL;
 	}
 
 	void Primitive::setPrimitiveType(Geometry::GeometryType geometryType)
@@ -295,12 +295,16 @@ namespace RBX
 		{
 			dragging = _dragging;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored && world)
+			if (isAnchored != wasAnchored)
 			{
 				if (isAnchored)
-					world->onPrimitiveAddedAnchor(this);
+				{
+					if (world) world->onPrimitiveAddedAnchor(this);
+				}
 				else
-					world->onPrimitiveRemovingAnchor(this);
+				{
+					if (world) world->onPrimitiveRemovingAnchor(this);
+				}
 			}
 		}
 	}
@@ -312,12 +316,19 @@ namespace RBX
 		{
 			anchored = _anchored;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored && world)
+			if (isAnchored != wasAnchored)
 			{
 				if (isAnchored)
-					world->onPrimitiveAddedAnchor(this);
+				{
+					if (world)
+						world->onPrimitiveAddedAnchor(this);
+				}
 				else
-					world->onPrimitiveRemovingAnchor(this);
+				{
+					
+					if (world)
+						world->onPrimitiveRemovingAnchor(this);
+				}
 			}
 		}
 	}
@@ -329,12 +340,16 @@ namespace RBX
 		{
 			flag0xaa = value;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored && world)
+			if (isAnchored != wasAnchored)
 			{
 				if (isAnchored)
-					world->onPrimitiveAddedAnchor(this);
+				{
+					if (world) world->onPrimitiveAddedAnchor(this);
+				}
 				else
-					world->onPrimitiveRemovingAnchor(this);
+				{
+					if (world) world->onPrimitiveRemovingAnchor(this);
+				}
 			}
 		}
 	}
@@ -347,18 +362,28 @@ namespace RBX
 
 	void Primitive::setCanCollide(bool value)
 	{
-		if (value != canCollide)
+		bool oldDrag = !dragging && canCollide;
+
+		if (canCollide != value)
 		{
 			canCollide = value;
 			if (world)
-				world->onPrimitiveCanCollideChanged(this);
+			{
+				bool newDrag = !dragging && value;
+				if (oldDrag != newDrag)
+					world->onPrimitiveCanCollideChanged(this);
+			}
 		}
 	}
 
 	void Primitive::setCanSleep(bool _canSleep)
 	{
 		if (_canSleep != canSleep)
+		{
 			canSleep = _canSleep;
+			if (world)
+				world->onPrimitiveCanSleepChanged(this);
+		}
 	}
 
 	void Primitive::setFriction(float _friction)

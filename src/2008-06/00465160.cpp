@@ -1,32 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00465160  unit: CScriptEditor  size: 89 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00465160
-//
-// 00465160  6aff                 push -1
-// 00465162  681afa7b00           push 0x7bfa1a
-// 00465167  64a100000000         mov eax, dword ptr fs:[0]
-// 0046516d  50                   push eax
-// 0046516e  64892500000000       mov dword ptr fs:[0], esp
-// 00465175  51                   push ecx
-// 00465176  6860010000           push 0x160
-// 0046517b  e8a0b72300           call 0x6a0920
-// 00465180  83c404               add esp, 4
-// 00465183  890424               mov dword ptr [esp], eax
-// 00465186  c744240c00000000     mov dword ptr [esp + 0xc], 0
-// 0046518e  85c0                 test eax, eax
-// 00465190  7416                 je 0x4651a8
-// 00465192  8bc8                 mov ecx, eax
-// 00465194  e877feffff           call 0x465010
-// 00465199  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0046519d  64890d00000000       mov dword ptr fs:[0], ecx
-// 004651a4  83c410               add esp, 0x10
-// 004651a7  c3                   ret 
-// 004651a8  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 004651ac  33c0                 xor eax, eax
-// 004651ae  64890d00000000       mov dword ptr fs:[0], ecx
-// 004651b5  83c410               add esp, 0x10
-// 004651b8  c3                   ret 
-
 // 0044edf0  6aff                 push -1
 // 0044edf2  681afa7b00           push 0x7bfa1a
 // 0044edf7  64a100000000         mov eax, dword ptr fs:[0]

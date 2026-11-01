@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0055b690  unit: RBX::Network::ServerReplicator  size: 220 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0055b690
 //

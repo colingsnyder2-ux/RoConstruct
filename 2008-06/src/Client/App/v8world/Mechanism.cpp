@@ -52,7 +52,7 @@ namespace RBX
 		}
 	}
 
-	bool MechanismTracker::containedBy(Mechanism* m)
+	bool MechanismTracker::containedBy(SimJob* m)
 	{
 		return std::find(m->trackers.begin(), m->trackers.end(), this) != m->trackers.end();
 	}
@@ -82,10 +82,10 @@ namespace RBX
 	{
 		RBXASSERT(this->mechanism);
 		RBXASSERT(this->containedBy(this->mechanism));
-		return this->mechanism;
+		return dynamic_cast<Mechanism*>(this->mechanism);
 	}
 
-	void MechanismTracker::setMechanism(Mechanism* m)
+	void MechanismTracker::setJob(SimJob* m)
 	{
 		this->stopTracking();
 		if (m)
@@ -97,14 +97,14 @@ namespace RBX
 		}
 	}
 
-	void MechanismTracker::transferTrackers(Mechanism* from, Mechanism* to)
+	void MechanismTracker::transferTrackers(SimJob* from, SimJob* to)
 	{
 		RBXASSERT(from);
 		RBXASSERT(from != to);
 
 		while (!from->trackers.empty())
 		{
-			from->trackers.back()->setMechanism(to);
+			from->trackers.back()->setJob(to);
 		}
 	}
 

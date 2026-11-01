@@ -1,16 +1,4 @@
-// roc 2010-06 00822ff0  unit: CXTPResourceManager  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00822ff0
-//
-// 00822ff0  8bc1                 mov eax, ecx
-// 00822ff2  33c9                 xor ecx, ecx
-// 00822ff4  c700504ea600         mov dword ptr [eax], 0xa64e50
-// 00822ffa  894804               mov dword ptr [eax + 4], ecx
-// 00822ffd  894810               mov dword ptr [eax + 0x10], ecx
-// 00823000  89480c               mov dword ptr [eax + 0xc], ecx
-// 00823003  894808               mov dword ptr [eax + 8], ecx
-// 00823006  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

@@ -55,7 +55,7 @@ namespace RBX
 	private:
 		Guid guid;
 		bool guidSetExternally;
-		int unknown0x14; // 0x5e8770 initializes this to 1; purpose unknown
+		int unknown0x14; // 0x5e8770 initializes this to 1; joint size multiplier (00668bb0)
 		EdgeList contacts;
 		EdgeList joints;
 		int worldIndex;
@@ -110,6 +110,7 @@ namespace RBX
 		}
 		void setGuid(const Guid&);
 		void setUnknown0x14(int value); // 0x5e7420
+		unsigned int getSizeMultiplier() const { return static_cast<unsigned int>(unknown0x14); } // 00668bb0 reads +0x14
 		World* getWorld() const 
 		{
 			return world;
@@ -176,10 +177,9 @@ namespace RBX
 		void setFlag0xaa(bool value); // 0x5e8140
 		bool getAnchor() const
 		{
-			return getAnchorObject() != NULL;
+			return dragging || anchored || flag0xaa;
 		}
-		Anchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)
-		void setAnchorObject(Anchor* anchor);
+		bool getAnchoredProperty() const { return anchored; }
 		void setCanCollide(bool value);
 		const bool getCanCollide() const
 		{

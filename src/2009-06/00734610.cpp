@@ -1,16 +1,4 @@
-// roc 2009-06 00734610  unit: CXTPImageManagerResource::CBitmapDC  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00734610
-//
-// 00734610  8bc1                 mov eax, ecx
-// 00734612  33c9                 xor ecx, ecx
-// 00734614  c70008318f00         mov dword ptr [eax], 0x8f3108
-// 0073461a  894804               mov dword ptr [eax + 4], ecx
-// 0073461d  894810               mov dword ptr [eax + 0x10], ecx
-// 00734620  89480c               mov dword ptr [eax + 0xc], ecx
-// 00734623  894808               mov dword ptr [eax + 8], ecx
-// 00734626  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

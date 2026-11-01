@@ -1,9 +1,4 @@
-// roc 2007-08 0041d540  unit: InsertObject  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0041d540
-//
-// 0041d540  e9c72e2100           jmp 0x63040c
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_0041d540();
 void func_0041d540()
 {

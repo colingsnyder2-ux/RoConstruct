@@ -1,10 +1,4 @@
-// roc 2007-08 0067da10  unit: CXTPControlRadioButton  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0067da10
-//
-// 0067da10  b8f46b8b00           mov eax, 0x8b6bf4
-// 0067da15  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0067da10()

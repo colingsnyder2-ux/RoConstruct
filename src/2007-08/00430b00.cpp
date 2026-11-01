@@ -1,4 +1,4 @@
-// from server: 45% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00430b00  unit: CWrapperView  size: 32 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00430b00
 //
@@ -13,18 +13,25 @@
 // 00430b13  c744240401000000     mov dword ptr [esp + 4], 1
 // 00430b1b  ffe2                 jmp edx
 // 00430b1d  c20400               ret 4
+// copied from an identical function in another client (function ?replace@CWrapperView@ns_ROCX000012@@QAEXPAUObject@2@@Z)
 
-struct CWrapperView {
-    void* m_p;
-    void Set(void* p);
+namespace ns_ROCX000012 {
+// from server: 100% by king_originala
+struct Object {
+    virtual void first();
+    virtual void destroy(unsigned int);
 };
 
-void CWrapperView::Set(void* p) {
-    void* old = m_p;
-    m_p = p;
-    if (old) {
-        void** vtbl = *(void***)old;
-        void (__stdcall *fn)(void*, int) = (void (__stdcall *)(void*, int))vtbl[1];
-        fn(old, 1);
-    }
+struct CWrapperView {
+    Object *object;
+    void replace(Object *);
+};
+
+void CWrapperView::replace(Object *value)
+{
+    Object *old = object;
+    object = value;
+    if (old)
+        old->destroy(1);
+}
 }

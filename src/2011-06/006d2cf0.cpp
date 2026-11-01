@@ -1,11 +1,4 @@
-// roc 2011-06 006d2cf0  unit: RBX::MechToAssemblyStage  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 006d2cf0
-//
-// 006d2cf0  8b81b4000000         mov eax, dword ptr [ecx + 0xb4]
-// 006d2cf6  83c034               add eax, 0x34
-// 006d2cf9  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_006d2cf0 {
     char pad0[180];
     int m_x;

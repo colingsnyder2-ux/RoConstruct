@@ -1,32 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00437740  unit: CStandardOutputView  size: 89 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00437740
-//
-// 00437740  6aff                 push -1
-// 00437742  681afa7b00           push 0x7bfa1a
-// 00437747  64a100000000         mov eax, dword ptr fs:[0]
-// 0043774d  50                   push eax
-// 0043774e  64892500000000       mov dword ptr fs:[0], esp
-// 00437755  51                   push ecx
-// 00437756  684c010000           push 0x14c
-// 0043775b  e8c0912600           call 0x6a0920
-// 00437760  83c404               add esp, 4
-// 00437763  890424               mov dword ptr [esp], eax
-// 00437766  c744240c00000000     mov dword ptr [esp + 0xc], 0
-// 0043776e  85c0                 test eax, eax
-// 00437770  7416                 je 0x437788
-// 00437772  8bc8                 mov ecx, eax
-// 00437774  e827fcffff           call 0x4373a0
-// 00437779  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0043777d  64890d00000000       mov dword ptr fs:[0], ecx
-// 00437784  83c410               add esp, 0x10
-// 00437787  c3                   ret 
-// 00437788  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0043778c  33c0                 xor eax, eax
-// 0043778e  64890d00000000       mov dword ptr fs:[0], ecx
-// 00437795  83c410               add esp, 0x10
-// 00437798  c3                   ret 
-
 // 0044edf0  6aff                 push -1
 // 0044edf2  681afa7b00           push 0x7bfa1a
 // 0044edf7  64a100000000         mov eax, dword ptr fs:[0]

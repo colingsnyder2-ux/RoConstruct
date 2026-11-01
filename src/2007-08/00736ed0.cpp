@@ -1,9 +1,4 @@
-// roc 2007-08 00736ed0  unit: G3D::GFont  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00736ed0
-//
-// 00736ed0  e9bbffffff           jmp 0x736e90
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00736ed0();
 void func_00736ed0()
 {

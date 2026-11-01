@@ -1,9 +1,4 @@
-// roc 2007-03 00422380  unit: seg_00420000  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 00422380
-//
-// 00422380  e98bf8ffff           jmp 0x421c10
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00422380();
 void func_00422380()
 {

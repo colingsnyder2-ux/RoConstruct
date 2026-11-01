@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 0089af30  unit: CXTCaptionPopupWnd  size: 28 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 0089af30
 //

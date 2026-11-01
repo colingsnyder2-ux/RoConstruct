@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007f36a0  unit: CXTPTabManager::CNavigateButtonArrowLeft  size: 22 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007f36a0
 //

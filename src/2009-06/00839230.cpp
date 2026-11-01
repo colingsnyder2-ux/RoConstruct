@@ -1,12 +1,4 @@
 // from server: 100% by tester
-// roc 2009-06 00839230  unit: Ogre::RbxSubEntity::RbxSubEntityShadowRenderable  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00839230
-//
-// 00839230  8b496c               mov ecx, dword ptr [ecx + 0x6c]
-// 00839233  8b01                 mov eax, dword ptr [ecx]
-// 00839235  8b4010               mov eax, dword ptr [eax + 0x10]
-// 00839238  ffe0                 jmp eax
-
 struct OgreRbxMeshPartAdapter {
     int getSomething();
 };

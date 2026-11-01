@@ -1,48 +1,4 @@
-// roc 2009-06 004d0290  unit: Exposer  size: 110 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 004d0290
-//
-// 004d0290  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 004d0294  33c9                 xor ecx, ecx
-// 004d0296  3bc1                 cmp eax, ecx
-// 004d0298  7441                 je 0x4d02db
-// 004d029a  83f801               cmp eax, 1
-// 004d029d  743c                 je 0x4d02db
-// 004d029f  83f802               cmp eax, 2
-// 004d02a2  7459                 je 0x4d02fd
-// 004d02a4  83f803               cmp eax, 3
-// 004d02a7  7521                 jne 0x4d02ca
-// 004d02a9  56                   push esi
-// 004d02aa  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 004d02ae  8b0e                 mov ecx, dword ptr [esi]
-// 004d02b0  6838099f00           push 0x9f0938
-// 004d02b5  ff15a4e98900         call dword ptr [0x89e9a4]
-// 004d02bb  0fb6c0               movzx eax, al
-// 004d02be  f7d8                 neg eax
-// 004d02c0  1bc0                 sbb eax, eax
-// 004d02c2  23442408             and eax, dword ptr [esp + 8]
-// 004d02c6  8906                 mov dword ptr [esi], eax
-// 004d02c8  5e                   pop esi
-// 004d02c9  c3                   ret 
-// 004d02ca  8b442408             mov eax, dword ptr [esp + 8]
-// 004d02ce  c70038099f00         mov dword ptr [eax], 0x9f0938
-// 004d02d4  884804               mov byte ptr [eax + 4], cl
-// 004d02d7  884805               mov byte ptr [eax + 5], cl
-// 004d02da  c3                   ret 
-// 004d02db  8b442408             mov eax, dword ptr [esp + 8]
-// 004d02df  3bc1                 cmp eax, ecx
-// 004d02e1  741a                 je 0x4d02fd
-// 004d02e3  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 004d02e7  8b11                 mov edx, dword ptr [ecx]
-// 004d02e9  8910                 mov dword ptr [eax], edx
-// 004d02eb  8b5104               mov edx, dword ptr [ecx + 4]
-// 004d02ee  895004               mov dword ptr [eax + 4], edx
-// 004d02f1  8b5108               mov edx, dword ptr [ecx + 8]
-// 004d02f4  895008               mov dword ptr [eax + 8], edx
-// 004d02f7  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 004d02fa  89480c               mov dword ptr [eax + 0xc], ecx
-// 004d02fd  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

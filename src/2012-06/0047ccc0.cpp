@@ -1,5 +1,11 @@
-// from server: 67% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/wincore.cpp
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" void seh_fn_0047ccc0(void*);
+extern int g_a_0047ccc0;
+extern int g_b_0047ccc0;
+extern int g_arg_0047ccc0;
+struct Reg_0047ccc0 { Reg_0047ccc0() { g_a_0047ccc0 = 0; g_b_0047ccc0 = 0; seh_fn_0047ccc0(&g_arg_0047ccc0); } };
+void func_0047ccc0()
+{
+    static Reg_0047ccc0 reg;
+}

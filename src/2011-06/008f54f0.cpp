@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 008f54f0  unit: CXTPTabPaintManager::CColorSetVisualStudio  size: 185 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 008f54f0
 //

@@ -1,48 +1,4 @@
-// roc 2009-06 0047d940  unit: Ogre::ManualObject  size: 110 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 0047d940
-//
-// 0047d940  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0047d944  33c9                 xor ecx, ecx
-// 0047d946  3bc1                 cmp eax, ecx
-// 0047d948  7441                 je 0x47d98b
-// 0047d94a  83f801               cmp eax, 1
-// 0047d94d  743c                 je 0x47d98b
-// 0047d94f  83f802               cmp eax, 2
-// 0047d952  7459                 je 0x47d9ad
-// 0047d954  83f803               cmp eax, 3
-// 0047d957  7521                 jne 0x47d97a
-// 0047d959  56                   push esi
-// 0047d95a  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 0047d95e  8b0e                 mov ecx, dword ptr [esi]
-// 0047d960  68d89c9e00           push 0x9e9cd8
-// 0047d965  ff15a4e98900         call dword ptr [0x89e9a4]
-// 0047d96b  0fb6c0               movzx eax, al
-// 0047d96e  f7d8                 neg eax
-// 0047d970  1bc0                 sbb eax, eax
-// 0047d972  23442408             and eax, dword ptr [esp + 8]
-// 0047d976  8906                 mov dword ptr [esi], eax
-// 0047d978  5e                   pop esi
-// 0047d979  c3                   ret 
-// 0047d97a  8b442408             mov eax, dword ptr [esp + 8]
-// 0047d97e  c700d89c9e00         mov dword ptr [eax], 0x9e9cd8
-// 0047d984  884804               mov byte ptr [eax + 4], cl
-// 0047d987  884805               mov byte ptr [eax + 5], cl
-// 0047d98a  c3                   ret 
-// 0047d98b  8b442408             mov eax, dword ptr [esp + 8]
-// 0047d98f  3bc1                 cmp eax, ecx
-// 0047d991  741a                 je 0x47d9ad
-// 0047d993  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0047d997  8b11                 mov edx, dword ptr [ecx]
-// 0047d999  8910                 mov dword ptr [eax], edx
-// 0047d99b  8b5104               mov edx, dword ptr [ecx + 4]
-// 0047d99e  895004               mov dword ptr [eax + 4], edx
-// 0047d9a1  8b5108               mov edx, dword ptr [ecx + 8]
-// 0047d9a4  895008               mov dword ptr [eax + 8], edx
-// 0047d9a7  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 0047d9aa  89480c               mov dword ptr [eax + 0xc], ecx
-// 0047d9ad  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

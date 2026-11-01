@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 008229f0  unit: VCXTPReportRow::?$CXTPInternalCollectionT  size: 213 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 008229f0
 //

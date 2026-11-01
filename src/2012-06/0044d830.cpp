@@ -1,20 +1,11 @@
-// from server: 76% by atomic.potato
-typedef int BOOL;
-
-extern "C" void __cdecl Function_9831F5(const char *);
-
-static unsigned char g_flag_00E189C4;
-static int g_value_00E189BC;
-static int g_value_00E189C0;
-
-int Function_0044D830()
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" void seh_fn_0044d830(void*);
+extern int g_a_0044d830;
+extern int g_b_0044d830;
+extern int g_arg_0044d830;
+struct Reg_0044d830 { Reg_0044d830() { g_a_0044d830 = 0; g_b_0044d830 = 0; seh_fn_0044d830(&g_arg_0044d830); } };
+void func_0044d830()
 {
-    if (!g_flag_00E189C4)
-    {
-        g_flag_00E189C4 = 1;
-        g_value_00E189BC = 0;
-        g_value_00E189C0 = 0;
-        Function_9831F5("8csm");
-    }
-    return 0;
+    static Reg_0044d830 reg;
 }

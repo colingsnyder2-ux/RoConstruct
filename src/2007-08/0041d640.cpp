@@ -1,10 +1,4 @@
-// roc 2007-08 0041d640  unit: CInsertObjectDialog  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0041d640
-//
-// 0041d640  b8e87c7800           mov eax, 0x787ce8
-// 0041d645  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_0041d640()

@@ -1,29 +1,4 @@
-// roc 2011-06 007d39b0  unit: RBX::ScoreHud  size: 46 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 007d39b0
-//
-// 007d39b0  51                   push ecx
-// 007d39b1  56                   push esi
-// 007d39b2  8bf1                 mov esi, ecx
-// 007d39b4  8b4604               mov eax, dword ptr [esi + 4]
-// 007d39b7  8b08                 mov ecx, dword ptr [eax]
-// 007d39b9  50                   push eax
-// 007d39ba  51                   push ecx
-// 007d39bb  8d44240c             lea eax, [esp + 0xc]
-// 007d39bf  50                   push eax
-// 007d39c0  8bce                 mov ecx, esi
-// 007d39c2  e859eeffff           call 0x7d2820
-// 007d39c7  8b4e04               mov ecx, dword ptr [esi + 4]
-// 007d39ca  51                   push ecx
-// 007d39cb  e888660300           call 0x80a058
-// 007d39d0  83c404               add esp, 4
-// 007d39d3  33c0                 xor eax, eax
-// 007d39d5  894604               mov dword ptr [esi + 4], eax
-// 007d39d8  894608               mov dword ptr [esi + 8], eax
-// 007d39db  5e                   pop esi
-// 007d39dc  59                   pop ecx
-// 007d39dd  c3                   ret 
-// copied from an identical function in another client (function ?_Tidy@?$_Tree@V?$_Tmap_traits@HUValue16@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUValue16@@@std@@@3@$0A@@std@@@std@@IAEXXZ)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD

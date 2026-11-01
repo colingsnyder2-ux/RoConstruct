@@ -1,7 +1,8 @@
+// from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs roc_claudeM_9176ce383e321941.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-dll roc_claudeM_9176ce383e321941.cpp
 
 // Candidate translation unit (score above; library headers required).
 // from server: 73% by king_originala

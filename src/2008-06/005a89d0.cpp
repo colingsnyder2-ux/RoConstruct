@@ -1,30 +1,4 @@
 // from server: 100% by king_originala
-// roc 2008-06 005a89d0  unit: RBX::ScriptContext  size: 48 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005a89d0
-//
-// 005a89d0  56                   push esi
-// 005a89d1  8b742408             mov esi, dword ptr [esp + 8]
-// 005a89d5  57                   push edi
-// 005a89d6  6a00                 push 0
-// 005a89d8  6a02                 push 2
-// 005a89da  56                   push esi
-// 005a89db  e8e08c0600           call 0x6116c0
-// 005a89e0  8bf8                 mov edi, eax
-// 005a89e2  a174af9500           mov eax, dword ptr [0x95af74]
-// 005a89e7  50                   push eax
-// 005a89e8  6a01                 push 1
-// 005a89ea  56                   push esi
-// 005a89eb  e8c08b0600           call 0x6115b0
-// 005a89f0  56                   push esi
-// 005a89f1  57                   push edi
-// 005a89f2  50                   push eax
-// 005a89f3  e8a8330700           call 0x61bda0
-// 005a89f8  83c424               add esp, 0x24
-// 005a89fb  5f                   pop edi
-// 005a89fc  33c0                 xor eax, eax
-// 005a89fe  5e                   pop esi
-// 005a89ff  c3                   ret 
-
 extern "C" const char* __cdecl getText(void*, int, unsigned int*);
 extern "C" void* __cdecl getObject(void*, int, const char*);
 extern "C" void __cdecl invoke(void*, const char*, void*);

@@ -1,9 +1,4 @@
-// roc 2007-08 006732f0  unit: CXTPControlColorSelector  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006732f0
-//
-// 006732f0  e9ff530c00           jmp 0x7386f4
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_006732f0();
 void func_006732f0()
 {

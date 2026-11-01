@@ -1,41 +1,49 @@
-// from server: 28% by colin
-struct LDraw2RobloxColorMap
-{
-    int getColor(const char* name) const;
-};
+// from server: 100% by Yeetserama
+// from server: 100% by king_originala
+extern void (__thiscall *string_construct)(void*, const char*);
+extern void (__thiscall *string_destroy)(void*);
 
-extern "C" int __stdcall sub_46C5A0(const char*, const char*);
+namespace std {
+    template<class T> struct char_traits;
+    template<class T> class allocator;
 
-struct string_holder
-{
-    void* data[8];
-};
+    template<class T, class Traits, class Allocator>
+    class basic_string {
+        unsigned char allocator_storage[4];
+        union {
+            T buffer[16];
+            T* pointer;
+        } storage;
+        unsigned int length;
+        unsigned int capacity;
 
-extern "C" void __stdcall string_ctor(string_holder*, const char*);
-extern "C" void __stdcall string_dtor(string_holder*);
+    public:
+        basic_string(const T*);
+        ~basic_string();
+    };
 
-int LDraw2RobloxColorMap::getColor(const char* name) const
-{
-    string_holder s1;
-    string_holder s2;
-    int result;
-
-    string_ctor(&s1, "brick");
-    result = sub_46C5A0(name, (const char*)&s1);
-    string_dtor(&s1);
-
-    if (result == 0)
+    template<class T, class Traits, class Allocator>
+    inline basic_string<T, Traits, Allocator>::basic_string(const T* text)
     {
+        string_construct(this, text);
+    }
+
+    template<class T, class Traits, class Allocator>
+    inline basic_string<T, Traits, Allocator>::~basic_string()
+    {
+        string_destroy(this);
+    }
+
+    typedef basic_string<char, char_traits<char>, allocator<char> > string;
+}
+
+int __cdecl compare(const std::string&, const std::string&);
+
+int __stdcall classify(std::string value)
+{
+    if (compare(value, std::string("symmetric")) == 0)
         return 0;
-    }
-
-    string_ctor(&s2, "symmetric");
-    result = sub_46C5A0(name, (const char*)&s2);
-    string_dtor(&s2);
-
-    if (result == 0)
-    {
+    if (compare(value, std::string("brick")) == 0)
         return 1;
-    }
     return 2;
 }

@@ -1,32 +1,4 @@
-// roc 2011-06 00736a10  unit: RBX::VStudioTool::?$EventDesc  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00736a10
-//
-// 00736a10  56                   push esi
-// 00736a11  8b742408             mov esi, dword ptr [esp + 8]
-// 00736a15  85f6                 test esi, esi
-// 00736a17  742c                 je 0x736a45
-// 00736a19  8b0e                 mov ecx, dword ptr [esi]
-// 00736a1b  85c9                 test ecx, ecx
-// 00736a1d  7409                 je 0x736a28
-// 00736a1f  8b01                 mov eax, dword ptr [ecx]
-// 00736a21  8b5004               mov edx, dword ptr [eax + 4]
-// 00736a24  ffd2                 call edx
-// 00736a26  eb05                 jmp 0x736a2d
-// 00736a28  b8447ac000           mov eax, 0xc07a44
-// 00736a2d  685cebc300           push 0xc3eb5c
-// 00736a32  8bc8                 mov ecx, eax
-// 00736a34  ff15500aa400         call dword ptr [0xa40a50]
-// 00736a3a  84c0                 test al, al
-// 00736a3c  7407                 je 0x736a45
-// 00736a3e  8b06                 mov eax, dword ptr [esi]
-// 00736a40  83c004               add eax, 4
-// 00736a43  5e                   pop esi
-// 00736a44  c3                   ret 
-// 00736a45  33c0                 xor eax, eax
-// 00736a47  5e                   pop esi
-// 00736a48  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX000000_00642c10@@YAPAXPAUAny@@@Z)
-
+// from server: 100% by colin
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /EHsc /MD
 #include <typeinfo>

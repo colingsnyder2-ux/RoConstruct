@@ -1,30 +1,27 @@
-// from server: 61% by atomic.potato
-struct RBX_ViewG3D_ctor
-{
-    void* vftable;
-    int field_4;
-    float field_8;
-    float field_c;
-    float field_10;
-    int field_14;
-    int field_18;
-    int field_1c;
-    char field_20;
-    char pad_21[3];
-    int field_24;
-    void construct(int a, float b, float c, float d, int e, int f, int g, char h, int i);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string.h>
+#include <algorithm>
+struct Vector3 { float x, y, z; Vector3(const Vector3& o) : x(o.x), y(o.y), z(o.z) {} };
+#pragma pack(push, 1)
+struct Base {
+    int a;
+    Vector3 v;
+    int s;
+    int p;
+    int q;
+    bool flag;
+    Base(int a_, Vector3 v_, int p_, int q_, int s_, bool f_)
+        : a(a_), v(v_), s(s_), p(p_), q(q_), flag(f_) {}
+    virtual size_t getData(void* dst, size_t n);
 };
-
-void RBX_ViewG3D_ctor::construct(int a, float b, float c, float d, int e, int f, int g, char h, int i)
-{
-    field_4 = a;
-    field_8 = b;
-    field_c = c;
-    field_10 = d;
-    field_14 = e;
-    field_18 = f;
-    field_1c = g;
-    field_20 = h;
-    vftable = (void*)0x8ca21c;
-    field_24 = i;
-}
+struct Item : Base {
+    int r;
+    Item(int a, Vector3 v, int p, int q, int r, int s, bool flag);
+    virtual size_t getData(void* dst, size_t n);
+};
+#pragma pack(pop)
+Item::Item(int a_, Vector3 v_, int p_, int q_, int r_, int s_, bool f_)
+    : Base(a_, v_, p_, q_, s_, f_), r(r_) {}

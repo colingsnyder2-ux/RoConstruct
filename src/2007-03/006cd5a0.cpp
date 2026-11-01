@@ -1,61 +1,293 @@
-// roc 2007-03 006cd5a0  unit: seg_006c0000  size: 74 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 006cd5a0
+// from server: 62% by colin
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /MD
+// roc-lib: xtp-11.2.2-vc8 Source/Calendar/XTPTopLevelWndMsgNotifier.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPTopLevelWndMsgNotifier.cpp: implementation of the CXTPTopLevelWndMsgNotifier class.
 //
-// 006cd5a0  56                   push esi
-// 006cd5a1  8b742408             mov esi, dword ptr [esp + 8]
-// 006cd5a5  85f6                 test esi, esi
-// 006cd5a7  57                   push edi
-// 006cd5a8  8bf9                 mov edi, ecx
-// 006cd5aa  750f                 jne 0x6cd5bb
-// 006cd5ac  8b442410             mov eax, dword ptr [esp + 0x10]
-// 006cd5b0  50                   push eax
-// 006cd5b1  e87a41ffff           call 0x6c1730
-// 006cd5b6  5f                   pop edi
-// 006cd5b7  5e                   pop esi
-// 006cd5b8  c20800               ret 8
-// 006cd5bb  8b4e04               mov ecx, dword ptr [esi + 4]
-// 006cd5be  56                   push esi
-// 006cd5bf  51                   push ecx
-// 006cd5c0  8bcf                 mov ecx, edi
-// 006cd5c2  e8f9410100           call 0x6e17c0
-// 006cd5c7  8b542410             mov edx, dword ptr [esp + 0x10]
-// 006cd5cb  895008               mov dword ptr [eax + 8], edx
-// 006cd5ce  8b4e04               mov ecx, dword ptr [esi + 4]
-// 006cd5d1  85c9                 test ecx, ecx
-// 006cd5d3  740a                 je 0x6cd5df
-// 006cd5d5  8901                 mov dword ptr [ecx], eax
-// 006cd5d7  5f                   pop edi
-// 006cd5d8  894604               mov dword ptr [esi + 4], eax
-// 006cd5db  5e                   pop esi
-// 006cd5dc  c20800               ret 8
-// 006cd5df  894704               mov dword ptr [edi + 4], eax
-// 006cd5e2  5f                   pop edi
-// 006cd5e3  894604               mov dword ptr [esi + 4], eax
-// 006cd5e6  5e                   pop esi
-// 006cd5e7  c20800               ret 8
-// copied from an identical function in another client (function ?AddPane@CXTPDockingPaneSplitterContainer@ns_ROCX000001@@QAEXPAXH@Z)
+// This file is a part of the XTREME CALENDAR MFC class library.
+// (c)1998-2007 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
 
-namespace ns_ROCX000001 {
-struct CXTPDockingPaneSplitterContainer {
-    void* InsertPane(void*, void*);
-    void RemovePane(int);
-    void AddPane(void*, int);
-};
+#include "stdafx.h"
+#include "XTPTopLevelWndMsgNotifier.h"
 
-void CXTPDockingPaneSplitterContainer::AddPane(void* pane, int index) {
-    if (pane == 0) {
-        RemovePane(index);
-        return;
-    }
-    void* node = InsertPane(*(void**)((char*)pane + 4), pane);
-    *(int*)((char*)node + 8) = index;
-    int* prev = *(int**)((char*)pane + 4);
-    if (prev != 0) {
-        *prev = (int)node;
-        *(int**)((char*)pane + 4) = (int*)node;
-    } else {
-        *(int**)((char*)this + 4) = (int*)node;
-        *(int**)((char*)pane + 4) = (int*)node;
-    }
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+#define XTP_TOPLEVELNOTIFIER_CHECKDATE_TIMEOUT 10 * 1000
+
+static LPCTSTR XTP_TOP_LEVEL_WND_NOTIFIER_NAME = _T("XTPTopLevelWndMsgNotifier");
+
+CXTPTopLevelWndMsgNotifier* XTPGetTopLevelWndMsgNotifier()
+{
+	static CXTPTopLevelWndMsgNotifier s_TopLevelWndMsgNotifier;
+	return &s_TopLevelWndMsgNotifier;
 }
+/////////////////////////////////////////////////////////////////////////////
+// CXTPTopLevelWndMsgNotifier
+
+CXTPTopLevelWndMsgNotifier::CXTPTopLevelWndMsgNotifier()
+{
+	::ZeroMemory(&m_timeLastDate, sizeof(m_timeLastDate));
+	::ZeroMemory(&m_tziLast, sizeof(m_tziLast));
+}
+
+CXTPTopLevelWndMsgNotifier::~CXTPTopLevelWndMsgNotifier()
+{
+	DestroyWindow();
+}
+
+BOOL CXTPTopLevelWndMsgNotifier::CreateWnd()
+{
+	LPCTSTR pcszSimpleWndClass = AfxRegisterWndClass(0);
+	CRect rcEmpty(0, 0, 0, 0);
+
+	BOOL bCreated = CreateEx(0, pcszSimpleWndClass,
+							 XTP_TOP_LEVEL_WND_NOTIFIER_NAME,
+							 WS_POPUP, rcEmpty, NULL, 0);
+
+	::GetLocalTime(&m_timeLastDate);
+
+	VERIFY (::GetTimeZoneInformation(&m_tziLast) != TIME_ZONE_ID_INVALID);
+
+	SetTimer(1, XTP_TOPLEVELNOTIFIER_CHECKDATE_TIMEOUT, NULL);
+	return bCreated;
+}
+
+void CXTPTopLevelWndMsgNotifier::Advise(CWnd* pWnd, UINT uWndMsg)
+{
+	ASSERT(pWnd);
+
+	if (m_hWnd == NULL)
+	{
+		VERIFY(CreateWnd());
+	}
+
+	// WARNING! Already Advised.
+	ASSERT(-1 == m_arClients.FindExact(pWnd, uWndMsg));
+
+	m_arClients.Remove(pWnd, uWndMsg);
+
+	CLIENT_INFO clInf = {pWnd, msgAll};
+	m_arClients.Add(clInf);
+}
+
+void CXTPTopLevelWndMsgNotifier::Unadvise(CWnd* pWnd, UINT uWndMsg)
+{
+	// WARNING! Already Unadvised.
+	ASSERT(m_arClients.FindExact(pWnd, uWndMsg) >= 0);
+
+	m_arClients.Remove(pWnd, uWndMsg);
+
+	if (m_arClients.GetSize() == 0 && m_hWnd)
+	{
+		VERIFY(DestroyWindow());
+	}
+}
+
+void CXTPTopLevelWndMsgNotifier::SendToClients(UINT uWndMsg, WPARAM wParam, LPARAM lParam)
+{
+	CClientsArray arClients;
+
+	// prepare clients to local cache
+	int nCount = (int)m_arClients.GetSize(), i;
+	for (i = 0; i < nCount; i++)
+	{
+		CLIENT_INFO& rData = m_arClients.ElementAt(i);
+
+		if (rData.m_uWndMsg == uWndMsg || rData.m_uWndMsg == msgAll)
+		{
+			arClients.Add(rData);
+		}
+	}
+
+	// Send to clients from local cache
+	nCount = (int)arClients.GetSize();
+	for (i = 0; i < nCount; i++)
+	{
+		const CLIENT_INFO& rData = arClients.ElementAt(i);
+
+		if (-1 == m_arClients.FindClient(rData.m_pWnd, rData.m_uWndMsg))
+		{
+			continue;
+		}
+
+		try
+		{
+			if (::IsWindow(rData.m_pWnd->GetSafeHwnd()))
+			{
+				::SendMessage(rData.m_pWnd->GetSafeHwnd(), uWndMsg, wParam, lParam);
+			}
+		}
+		catch(...)
+		{
+			ASSERT(FALSE);
+			m_arClients.Remove(rData.m_pWnd, msgAll);
+		}
+	}
+
+	if (m_arClients.GetSize() == 0 && m_hWnd)
+	{
+		VERIFY(DestroyWindow());
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//class CClientsArray : public CArray<CLIENT_INFO, CLIENT_INFO&>
+
+CXTPTopLevelWndMsgNotifier::CClientsArray::CClientsArray()
+{
+}
+
+CXTPTopLevelWndMsgNotifier::CClientsArray::~CClientsArray()
+{
+}
+
+int CXTPTopLevelWndMsgNotifier::CClientsArray::FindExact(CWnd* pWnd, UINT uWndMsg)
+{
+	int nCount = (int)GetSize();
+	for (int i = 0; i < nCount; i++)
+	{
+		const CLIENT_INFO& rData = ElementAt(i);
+
+		if (rData.m_pWnd == pWnd && rData.m_uWndMsg == uWndMsg)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int CXTPTopLevelWndMsgNotifier::CClientsArray::FindClient(CWnd* pWnd, UINT uWndMsg)
+{
+	int nCount = (int)GetSize();
+	for (int i = 0; i < nCount; i++)
+	{
+		const CLIENT_INFO& rData = ElementAt(i);
+
+		if (rData.m_pWnd == pWnd)
+		{
+			if (rData.m_uWndMsg == uWndMsg || uWndMsg == CXTPTopLevelWndMsgNotifier::msgAll)
+			{
+				return i;
+			}
+		}
+	}
+	return -1;
+}
+
+void CXTPTopLevelWndMsgNotifier::CClientsArray::Remove(CWnd* pWnd, UINT uWndMsg)
+{
+	int nCount = (int)GetSize();
+	for (int i = nCount-1; i >= 0; i--)
+	{
+		const CLIENT_INFO& rData = ElementAt(i);
+
+		if (rData.m_pWnd == pWnd)
+		{
+			if (rData.m_uWndMsg == uWndMsg || uWndMsg == CXTPTopLevelWndMsgNotifier::msgAll)
+			{
+				RemoveAt(i);
+			}
+		}
+	}
+}
+
+
+BEGIN_MESSAGE_MAP(CXTPTopLevelWndMsgNotifier, CWnd)
+	ON_WM_TIMECHANGE()
+	ON_WM_SYSCOLORCHANGE()
+	ON_WM_TIMER()
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPTopLevelWndMsgNotifier message handlers
+
+void CXTPTopLevelWndMsgNotifier::OnTimeChange()
+{
+	_ProcessTimeZone();
+
+	SendToClients(WM_TIMECHANGE, 0, 0);
+}
+
+void CXTPTopLevelWndMsgNotifier::OnSysColorChange()
+{
+	SendToClients(WM_SYSCOLORCHANGE, 0, 0);
+}
+
+void CXTPTopLevelWndMsgNotifier::OnTimer(UINT_PTR uTimerID)
+{
+	if (uTimerID == 1)
+	{
+		SYSTEMTIME timeCurrent;
+		::ZeroMemory(&timeCurrent, sizeof(timeCurrent));
+		::GetLocalTime(&timeCurrent);
+
+		//Is date changed ?
+		if (timeCurrent.wDay    != m_timeLastDate.wDay ||
+			timeCurrent.wMonth  != m_timeLastDate.wMonth ||
+			timeCurrent.wYear   != m_timeLastDate.wYear)
+		{
+			m_timeLastDate = timeCurrent;
+			//OnTimeChange();
+			SendToClients(WM_TIMECHANGE, 0, 0);
+		}
+	}
+}
+
+void CXTPTopLevelWndMsgNotifier::_ProcessTimeZone()
+{
+	TIME_ZONE_INFORMATION tziCurrent;
+	::ZeroMemory(&tziCurrent, sizeof(tziCurrent));
+
+	if (::GetTimeZoneInformation(&tziCurrent) == TIME_ZONE_ID_INVALID)
+	{
+		ASSERT(FALSE);
+		return;
+	}
+
+	if (!IsTimeZoneEqual(tziCurrent, m_tziLast))
+	{
+		m_tziLast = tziCurrent;
+
+		SendToClients(XTP_WM_TIME_ZONE_CHANGED, 0, 0);
+
+		//TRACE(_T("XTP_WM_TIME_ZONE_CHANGED is sent \n"));
+	}
+}
+
+BOOL CXTPTopLevelWndMsgNotifier::IsTimeZoneEqual(const TIME_ZONE_INFORMATION& rTzi1, const TIME_ZONE_INFORMATION& rTzi2) const
+{
+	return  rTzi1.Bias == rTzi2.Bias &&
+
+			memcmp(&rTzi1.StandardDate, &rTzi2.StandardDate, sizeof(SYSTEMTIME)) == 0 &&
+
+			rTzi1.StandardBias == rTzi2.StandardBias &&
+
+			memcmp(&rTzi1.DaylightDate, &rTzi2.DaylightDate, sizeof(SYSTEMTIME)) == 0 &&
+
+			rTzi1.DaylightBias == rTzi2.DaylightBias;
+
+	//WCHAR StandardName[ 32 ];
+	//WCHAR DaylightName[ 32 ];
 }

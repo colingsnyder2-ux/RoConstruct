@@ -1,11 +1,9 @@
-// roc 2009-12 0047d9c0  unit: RBX::MeshGen  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0047d9c0
-//
-// 0047d9c0  8b442404             mov eax, dword ptr [esp + 4]
-// 0047d9c4  c20400               ret 4
-// standard library vector<ptr> (function ?get_allocator@?$vector@PAUT@@V?$allocator@PAUT@@@std@@@std@@QBE?AV?$allocator@PAUT@@@2@XZ)
+// from server: 100% by auto
+struct S_func_0047d9c0 {
 
-// stl: vector<ptr>
-struct T; typedef T* E;
-#include <vector>
-template class std::vector<E>;
+    int f(int a1);
+};
+int S_func_0047d9c0::f(int a1)
+{
+    return a1;
+}

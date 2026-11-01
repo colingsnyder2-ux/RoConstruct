@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 0081eb00  unit: CXTPPropertyGridItemColor::?8??OnInplaceButtonDown::CPropertyGridItemColorColorPopup  size: 107 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 0081eb00
 //

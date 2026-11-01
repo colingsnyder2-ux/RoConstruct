@@ -1,7 +1,8 @@
+// from server: 100% by king_originala_sol_resume_high
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-view-dll roc_resume_high_part_bool_native_381ff5b0aaa9ac2d.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-view roc_resume_high_part_bool_native_381ff5b0aaa9ac2d.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "RenderLib/RenderScene.h"

@@ -1,22 +1,12 @@
-// roc 2009-12 00833600  unit: CRobloxTreeCtrl  size: 18 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00833600
-//
-// 00833600  8b442404             mov eax, dword ptr [esp + 4]
-// 00833604  6a10                 push 0x10
-// 00833606  50                   push eax
-// 00833607  e874eeffff           call 0x832480
-// 0083360c  83e010               and eax, 0x10
-// 0083360f  c20400               ret 4
-// copied from an identical function in another client (function ?GetItemState@CRobloxTreeCtrl@ns_ROCX00001b@@QBEHH@Z)
+// from server: 100% by atomic.potato
+extern "C" int __stdcall sub_832480(int, int);
 
-namespace ns_ROCX00001b {
-struct CRobloxTreeCtrl {
-    int GetItemState(int item) const;
+struct CRobloxTreeCtrl
+{
+    int f(int);
 };
 
-extern "C" int __stdcall sub_665F90(int item, int mask);
-
-int CRobloxTreeCtrl::GetItemState(int item) const {
-    return sub_665F90(item, 0x10) & 0x10;
-}
+int CRobloxTreeCtrl::f(int value)
+{
+    return sub_832480(value, 16) & 16;
 }

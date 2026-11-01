@@ -1,9 +1,4 @@
-// roc 2007-08 00593cd0  unit: RBX::VVisit::?$BoundFuncDesc  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00593cd0
-//
-// 00593cd0  e90bf6ffff           jmp 0x5932e0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00593cd0();
 void func_00593cd0()
 {

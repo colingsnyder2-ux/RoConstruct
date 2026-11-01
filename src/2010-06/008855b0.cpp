@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 008855b0  unit: CXTPTabPaintManager  size: 79 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 008855b0
 //

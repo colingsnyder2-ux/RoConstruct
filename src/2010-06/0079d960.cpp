@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 0079d960  unit: RBX::Limits::VCounter::V?$shared_ptr::?$thread_specific_ptr::delete_data  size: 139 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 0079d960
 //

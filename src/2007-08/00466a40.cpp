@@ -1,3 +1,4 @@
+// from server: 100% by Yeetserama
 // from server: 94% by colin
 // roc 2007-08 00466a40  unit: CWebToolbox  size: 87 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00466a40
@@ -47,7 +48,7 @@ struct CWebToolbox {
     long method(void** out);
 };
 
-extern "C" void __stdcall sub_630004(void* p);
+extern "C" void __fastcall sub_630004(void* p);
 
 long CWebToolbox::method(void** out) {
     if (field_f4) {

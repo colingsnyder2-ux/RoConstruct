@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 00481f60  unit: RBX::LDraw2Lua::LDraw2RobloxMapRoot  size: 73 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 00481f60
 //

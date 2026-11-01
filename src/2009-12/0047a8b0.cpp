@@ -1,43 +1,4 @@
-// roc 2009-12 0047a8b0  unit: RBX::LDraw2Lua::LDraw2RobloxColorMap  size: 82 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0047a8b0
-//
-// 0047a8b0  53                   push ebx
-// 0047a8b1  8b5c2408             mov ebx, dword ptr [esp + 8]
-// 0047a8b5  56                   push esi
-// 0047a8b6  8bf1                 mov esi, ecx
-// 0047a8b8  8b06                 mov eax, dword ptr [esi]
-// 0047a8ba  83f8fc               cmp eax, -4
-// 0047a8bd  7439                 je 0x47a8f8
-// 0047a8bf  55                   push ebp
-// 0047a8c0  8b2d60b79800         mov ebp, dword ptr [0x98b760]
-// 0047a8c6  57                   push edi
-// 0047a8c7  85c0                 test eax, eax
-// 0047a8c9  7502                 jne 0x47a8cd
-// 0047a8cb  ffd5                 call ebp
-// 0047a8cd  8b3e                 mov edi, dword ptr [esi]
-// 0047a8cf  8bcf                 mov ecx, edi
-// 0047a8d1  ff15e4b59800         call dword ptr [0x98b5e4]
-// 0047a8d7  8b4e04               mov ecx, dword ptr [esi + 4]
-// 0047a8da  034714               add eax, dword ptr [edi + 0x14]
-// 0047a8dd  03cb                 add ecx, ebx
-// 0047a8df  3bc8                 cmp ecx, eax
-// 0047a8e1  7711                 ja 0x47a8f4
-// 0047a8e3  8bcf                 mov ecx, edi
-// 0047a8e5  ff15e4b59800         call dword ptr [0x98b5e4]
-// 0047a8eb  8b5604               mov edx, dword ptr [esi + 4]
-// 0047a8ee  03d3                 add edx, ebx
-// 0047a8f0  3bd0                 cmp edx, eax
-// 0047a8f2  7302                 jae 0x47a8f6
-// 0047a8f4  ffd5                 call ebp
-// 0047a8f6  5f                   pop edi
-// 0047a8f7  5d                   pop ebp
-// 0047a8f8  015e04               add dword ptr [esi + 4], ebx
-// 0047a8fb  8bc6                 mov eax, esi
-// 0047a8fd  5e                   pop esi
-// 0047a8fe  5b                   pop ebx
-// 0047a8ff  c20400               ret 4
-// copied from an identical function in another client (function ??YS@@QAEAAU0@H@Z)
-
+// from server: 100% by colin
 // from server: 98% by king_originala
 // roc 2008-06 0046cf40  unit: RBX::LDraw2Lua::LDraw2RobloxColorMap  size: 82 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0046cf40

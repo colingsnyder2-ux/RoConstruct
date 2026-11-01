@@ -1,29 +1,52 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espclaude_3d33995c2323af12.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+struct String
+{
+    unsigned int storage[7];
 
-// Candidate translation unit (score above; library headers required).
-#define _DLL
-#include <string>
-#pragma pack(push, 4)
-#include <boost/bind.hpp>
-#pragma pack(pop)
-
-namespace RBX {
-struct SoundItem {
-    std::string name;
-    int value;
+    String(const String&);
+    ~String();
 };
 
-class Base1 { public: virtual ~Base1(); int x; };
-class Base2 { public: virtual ~Base2(); int y; };
-class Listener : public Base1, public Base2 {
-public:
-    void onItem(int& a, int& b, SoundItem item);
-};
+extern String* (__thiscall *string_copy)(String*, const String&);
+extern void (__thiscall *string_destroy)(String*);
+
+inline String::String(const String& other)
+{
+    string_copy(this, other);
 }
 
-typedef boost::reference_wrapper<int> IntRef;
-template boost::_bi::bind_t<void, boost::_mfi::mf3<void, RBX::Listener, int&, int&, RBX::SoundItem>, boost::_bi::list_av_4<RBX::Listener*, IntRef, IntRef, RBX::SoundItem>::type>
-boost::bind<void, RBX::Listener, int&, int&, RBX::SoundItem, RBX::Listener*, IntRef, IntRef, RBX::SoundItem>(void (RBX::Listener::*)(int&, int&, RBX::SoundItem), RBX::Listener*, IntRef, IntRef, RBX::SoundItem);
+inline String::~String()
+{
+    string_destroy(this);
+}
+
+struct Value
+{
+    String text;
+    unsigned int last;
+
+    Value(const String&, unsigned int);
+};
+
+inline Value::Value(const String& value, unsigned int d)
+    : text(value), last(d)
+{
+}
+
+struct XItem
+{
+    unsigned int first;
+    unsigned int second;
+    unsigned int third;
+    Value value;
+
+    XItem(unsigned int, unsigned int, unsigned int, String, unsigned int);
+};
+
+XItem::XItem(unsigned int a, unsigned int b, unsigned int c,
+             String text, unsigned int d)
+    : first(a), second(b), third(c), value(text, d)
+{
+}

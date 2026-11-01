@@ -1,38 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 004ac6b0  unit: RBX::Reflection::VGenericSlotWrapper::?$sp_counted_impl_p  size: 81 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 004ac6b0
-//
-// 004ac6b0  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 004ac6b4  85c0                 test eax, eax
-// 004ac6b6  7523                 jne 0x4ac6db
-// 004ac6b8  8b442408             mov eax, dword ptr [esp + 8]
-// 004ac6bc  85c0                 test eax, eax
-// 004ac6be  7440                 je 0x4ac700
-// 004ac6c0  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 004ac6c4  8b11                 mov edx, dword ptr [ecx]
-// 004ac6c6  8910                 mov dword ptr [eax], edx
-// 004ac6c8  8b5104               mov edx, dword ptr [ecx + 4]
-// 004ac6cb  895004               mov dword ptr [eax + 4], edx
-// 004ac6ce  8b5108               mov edx, dword ptr [ecx + 8]
-// 004ac6d1  895008               mov dword ptr [eax + 8], edx
-// 004ac6d4  8b490c               mov ecx, dword ptr [ecx + 0xc]
-// 004ac6d7  89480c               mov dword ptr [eax + 0xc], ecx
-// 004ac6da  c3                   ret 
-// 004ac6db  83f801               cmp eax, 1
-// 004ac6de  7420                 je 0x4ac700
-// 004ac6e0  56                   push esi
-// 004ac6e1  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 004ac6e5  8b0e                 mov ecx, dword ptr [esi]
-// 004ac6e7  68f8af9300           push 0x93aff8
-// 004ac6ec  ff1578288000         call dword ptr [0x802878]
-// 004ac6f2  0fb6d0               movzx edx, al
-// 004ac6f5  f7da                 neg edx
-// 004ac6f7  1bd2                 sbb edx, edx
-// 004ac6f9  23542408             and edx, dword ptr [esp + 8]
-// 004ac6fd  8916                 mov dword ptr [esi], edx
-// 004ac6ff  5e                   pop esi
-// 004ac700  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <new>

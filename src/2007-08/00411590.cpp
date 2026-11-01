@@ -1,4 +1,4 @@
-// from server: 80% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 00411590  unit: CopyVerb  size: 66 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00411590
 //
@@ -29,22 +29,32 @@
 // 004115cd  5f                   pop edi
 // 004115ce  5e                   pop esi
 // 004115cf  c20400               ret 4
+// copied from an identical function in another client (function ?moveTo@Variant@ns_ROCX000001@@QAEJPAU12@@Z)
 
-struct CopyVerb {
-    int doIt(void* dataState);
+namespace ns_ROCX000001 {
+// from server: 100% by king_originala
+struct Variant {
+    unsigned short type;
+    unsigned char data[14];
+
+    long moveTo(Variant* destination);
 };
 
-extern "C" int __stdcall VariantClear(void* pvarg);
-extern "C" int __cdecl memcpy_s(void* dest, unsigned int destSize, const void* src, unsigned int count);
+extern "C" long (__stdcall *VariantClear)(Variant*);
+extern "C" int (__cdecl *memcpy_s)(void*, unsigned int, const void*, unsigned int);
+void __cdecl checkResult(int);
 
-int CopyVerb::doIt(void* dataState) {
-    if (dataState == 0) {
-        return (int)0x80004003;
+long Variant::moveTo(Variant* destination)
+{
+    if (!destination)
+        return (long)0x80004003;
+
+    long result = VariantClear(destination);
+    if (result >= 0) {
+        checkResult(memcpy_s(destination, 16, this, 16));
+        type = 0;
+        result = 0;
     }
-    if (VariantClear(dataState) < 0) {
-        return 0;
-    }
-    memcpy_s(this, 0x10, dataState, 0x10);
-    *(unsigned short*)this = 0;
-    return 0;
+    return result;
+}
 }

@@ -1,10 +1,4 @@
-// roc 2007-08 00720830  unit: CXTButtonThemeFactory  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00720830
-//
-// 00720830  b8e8227e00           mov eax, 0x7e22e8
-// 00720835  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_00720830()

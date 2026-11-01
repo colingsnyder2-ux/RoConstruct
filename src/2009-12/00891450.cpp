@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00891450  unit: CXTPDockBar::UDOCK_INFO::?$CArray  size: 60 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00891450
 //

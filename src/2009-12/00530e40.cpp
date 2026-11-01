@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00530e40  unit: RBX::VInstance::$$A6AXV?$shared_ptr::?$signal::Vslot::?$sp_counted_impl_p  size: 112 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00530e40
 //

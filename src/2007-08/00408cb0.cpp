@@ -1,9 +1,4 @@
-// roc 2007-08 00408cb0  unit: boost::thread_exception  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00408cb0
-//
-// 00408cb0  e96bf9ffff           jmp 0x408620
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00408cb0();
 void func_00408cb0()
 {

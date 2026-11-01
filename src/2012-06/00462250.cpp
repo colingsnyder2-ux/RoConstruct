@@ -1,15 +1,17 @@
-// from server: 89% by atomic.potato
+// from server: 100% by tester
 struct CSelectionPropGrid
 {
-    int Get(int, int);
-    int field8;
-    int fieldC;
-    int field10;
-    int field14;
-    int field18;
+    int f(int, int);
+    int value0;
+    int value4;
+    int value8;
+    int valueC;
+    int value10;
+    int value14;
+    int value18;
 };
 
-int CSelectionPropGrid::Get(int a, int b)
+int CSelectionPropGrid::f(int a, int b)
 {
-    return (field18 * a) / 8 + field14 * b + field8;
+    return ((value18 * a) / 8) + (value14 * b) + value8;
 }

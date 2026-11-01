@@ -1,162 +1,63 @@
-// from server: 55% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
-
-namespace RBX
-{
-	namespace Render
-	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
-		{
-		}
-
-		AggregatingSceneManager::~AggregatingSceneManager() {}
-
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
-
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
-
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
-
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
-
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
-			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidSleepingModels.insert(chunk);
-
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidMovingModels.insert(chunk);
-
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
-
-				dequeueSleepingChunk(chunk);
-			}
-		}
-
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
-		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
-		}
-	}
+#include <intrin.h>
+namespace boost {
+namespace detail {
+inline long atomic_increment(long* pw) { return _InterlockedIncrement(pw); }
+inline long atomic_decrement(long* pw) { return _InterlockedDecrement(pw); }
+class sp_counted_base {
+public:
+    long use_count_;
+    long weak_count_;
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void weak_add_ref() { atomic_increment(&weak_count_); }
+    void weak_release() { if (atomic_decrement(&weak_count_) == 0) destroy(); }
+    void release() { if (atomic_decrement(&use_count_) == 0) { dispose(); weak_release(); } }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    template<class Y> explicit shared_count(Y* p);
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+class weak_count {
+public:
+    sp_counted_base* pi_;
+    weak_count& operator=(shared_count const& r) {
+        sp_counted_base* tmp = r.pi_;
+        if (tmp != pi_) {
+            if (tmp != 0) tmp->weak_add_ref();
+            if (pi_ != 0) pi_->weak_release();
+            pi_ = tmp;
+        }
+        return *this;
+    }
+};
 }
+template<class T> class weak_ptr {
+public:
+    T* px;
+    detail::weak_count pn;
+    template<class Y> void _internal_assign(Y* px2, detail::shared_count const& pn2) { px = px2; pn = pn2; }
+};
+template<class T> class enable_shared_from_this {
+public:
+    mutable weak_ptr<T> _internal_weak_this;
+};
+template<class T, class Y> inline void sp_enable_shared_from_this(detail::shared_count const& pn, enable_shared_from_this<T> const* pe, Y const* px) {
+    if (pe != 0) pe->_internal_weak_this._internal_assign(const_cast<Y*>(px), pn);
+}
+inline void sp_enable_shared_from_this(detail::shared_count const&, ...) {}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    template<class Y> explicit shared_ptr(Y* p) : px(p), pn(p) { sp_enable_shared_from_this(pn, p, p); }
+};
+}
+class Obj : public boost::enable_shared_from_this<Obj> { public: int x; };
+template boost::shared_ptr<Obj>::shared_ptr(Obj*);

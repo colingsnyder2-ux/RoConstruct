@@ -1,43 +1,20 @@
-// from server: 96% by colin
-// roc 2007-08 004befb0  unit: RakPeer  size: 60 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004befb0
-//
-// 004befb0  8b442408             mov eax, dword ptr [esp + 8]
-// 004befb4  8b542404             mov edx, dword ptr [esp + 4]
-// 004befb8  6a00                 push 0
-// 004befba  6a00                 push 0
-// 004befbc  50                   push eax
-// 004befbd  52                   push edx
-// 004befbe  e8bddbffff           call 0x4bcb80
-// 004befc3  85c0                 test eax, eax
-// 004befc5  7506                 jne 0x4befcd
-// 004befc7  83c8ff               or eax, 0xffffffff
-// 004befca  c20800               ret 8
-// 004befcd  8b88fc070000         mov ecx, dword ptr [eax + 0x7fc]
-// 004befd3  85c9                 test ecx, ecx
-// 004befd5  750a                 jne 0x4befe1
-// 004befd7  0fb780f4070000       movzx eax, word ptr [eax + 0x7f4]
-// 004befde  c20800               ret 8
-// 004befe1  0fb784c8cc070000     movzx eax, word ptr [eax + ecx*8 + 0x7cc]
-// 004befe9  c20800               ret 8
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-raknet roc_espeon_aug2007_rakpeer_historical_ping_20e57361c792704f.cpp
 
-struct RakPeer {
-    char pad[0x7cc];
-    unsigned short field_7cc;
-    char pad2[0x7f4 - 0x7ce];
-    unsigned short field_7f4;
-    char pad3[0x7fc - 0x7f6];
-    unsigned int field_7fc;
-};
-
-extern "C" RakPeer* __stdcall sub_4bcb80(unsigned int, unsigned int, int, int);
-
-int __stdcall sub_4befb0(unsigned int a, unsigned int b)
-{
-    RakPeer* p = sub_4bcb80(a, b, 0, 0);
-    if (p == 0)
-        return -1;
-    if (p->field_7fc == 0)
-        return p->field_7f4;
-    return *(unsigned short*)((char*)p + p->field_7fc * 8 + 0x7cc);
+// Candidate translation unit (score above; library headers required).
+#undef _RELEASE
+#pragma include_alias("ReliabilityLayer.h", "roc_espeon_aug2007_reliability_header_db733c89c2c48cf7.cpp")
+#pragma include_alias(<ReliabilityLayer.h>, <roc_espeon_aug2007_reliability_header_db733c89c2c48cf7.cpp>)
+#include "RakPeer.h"
+int RakPeer::GetLastPing(const SystemAddress systemAddress) const {
+ RemoteSystemStruct* remoteSystem = GetRemoteSystemFromSystemAddress(systemAddress, false, false);
+ if (remoteSystem == 0) return -1;
+ if (remoteSystem->pingAndClockDifferentialWriteIndex == 0)
+  return remoteSystem->pingAndClockDifferential[PING_TIMES_ARRAY_SIZE - 1].pingTime;
+ return remoteSystem->pingAndClockDifferential[remoteSystem->pingAndClockDifferentialWriteIndex - 1].pingTime;
 }
+
+bool RakPeer::IsNetworkSimulatorActive(void){return _maxSendBPS>0 || _minExtraPing>0 || _extraPingVariance>0;}

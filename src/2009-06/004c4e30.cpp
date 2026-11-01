@@ -1,156 +1,48 @@
-// from server: 60% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render Mesh.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/Mesh.h"
-#include <GLG3D/VARArea.h>
-
-namespace RBX
+namespace boost { template<class T> class shared_ptr { T* px; void* pn; }; }
+namespace RBX {
+class Instance;
+class Name { public: static const Name& declare(const char* name); };
+namespace Reflection {
+class ClassDescriptor;
+class Type { public: template<class T> static const Type& singleton(); };
+template<class T> struct ExeCounter { static int n; };
+template<class T> inline const Type& countedType() { ++ExeCounter<T>::n; return Type::singleton<T>(); }
+class Value { public: Value(); ~Value(); char pad[8]; };
+class FunctionDescriptor {
+public:
+    enum Security { AnyCaller };
+    struct Signature {
+        const Type* resultType; char pad[0x20];
+        void addArgument(const Name& name, const Type& type, const Value& def);
+    };
+public:
+    virtual ~FunctionDescriptor();
+    char pad[0x10];
+    Signature signature;
+};
+template<class Class, class Function, int N> class BoundFuncDesc;
+template<class Class, class R, class Arg1, class Arg2> class BoundFuncDesc<Class, R(Arg1, Arg2), 2> : public FunctionDescriptor {
+public:
+    typedef R (Class::*FunctionSig)(Arg1, Arg2);
+    FunctionSig function;
+    Value default1;
+    Value default2;
+    void declareSignature(const char* arg1Name, const char* arg2Name);
+};
+template<class Class, class R, class Arg1, class Arg2>
+void BoundFuncDesc<Class, R(Arg1, Arg2), 2>::declareSignature(const char* arg1Name, const char* arg2Name)
 {
-	namespace Render
-	{
-		static int vertexRefCount = 0;
-		static bool init;
-
-		Mesh::Level::~Level()
-		{
-			for (int i = 0; i < indexArray.size(); i++)
-				freeVertex(indexArray[i]);
-		}
-
-		Mesh::Mesh()
-		{
-			if (!init)
-			{
-				initStatics();
-				init = true;
-			}
-
-			debugBoundingRadius = 0.0f;
-		}
-
-		Mesh::~Mesh() {}
-
-		void Mesh::endRender(G3D::RenderDevice* rd)
-		{
-			rd->endIndexedPrimitives();
-		}
-
-		unsigned Mesh::allocVertex(unsigned i, unsigned count)
-		{
-			vertexRefCounts[i] += count;
-			vertexRefCount += count;
-			return i;
-		}
-
-		void Mesh::sendGeometry(const Level* lvl, G3D::RenderDevice* rd)
-		{
-			if (lvl && lvl->indexArray.size() > 0)
-			{
-				G3D::RenderDevice::Primitive primitive = lvl->primitive;
-				rd->sendIndices(primitive, lvl->indexArray.size(), lvl->indexArray.begin());
-			}
-		}
-
-		void Mesh::initStatics()
-		{
-			visibleGeometry.vertexArray.resize(1);
-			visibleGeometry.normalArray.resize(1);
-			texCoordArray.resize(1);
-			tangentArray.resize(1);
-			vertexRefCounts.resize(1);
-			vertexRefCounts.front() = 1;
-			freeList.clear();
-		}
-
-		void Mesh::beginRender(G3D::RenderDevice* rd, bool usetexCoords, bool useTangent)
-		{
-			makeVAR();
-			rd->beginIndexedPrimitives();
-
-			if (vertexVAR.valid())
-				rd->setVertexArray(vertexVAR);
-
-			if (normalVAR.valid())
-				rd->setVertexArray(normalVAR);
-
-			if (usetexCoords && texCoordVAR.valid())
-				rd->setTexCoordArray(0, texCoordVAR);
-
-			if (useTangent && tangentVAR.valid())
-				rd->setTexCoordArray(2, tangentVAR);
-		}
-
-		void Mesh::freeVertex(unsigned index)
-		{
-			if (vertexRefCounts.begin())
-			{
-				vertexRefCount--;
-				int& refIndex = vertexRefCounts[index];
-
-				if (refIndex == 1)
-				{
-					refIndex = 0;
-					freeList.push_back(index);
-				}
-				else
-				{
-					refIndex--;
-				}
-			}
-		}
-
-		void Mesh::makeVAR()
-		{
-			if (varDirty)
-			{
-				G3D::ReferenceCountedPointer<G3D::VARArea> area = G3D::VARArea::create(visibleGeometry.vertexArray.size() * 44 + 1024, G3D::VARArea::WRITE_ONCE);
-
-				vertexVAR = G3D::VAR(visibleGeometry.vertexArray, area);
-				normalVAR = G3D::VAR(visibleGeometry.normalArray, area);
-				texCoordVAR = G3D::VAR(texCoordArray, area);
-				tangentVAR = G3D::VAR(tangentArray, area);
-
-				varDirty = false;
-			}
-		}
-
-		unsigned Mesh::allocVertex(const G3D::Vector3& vertex, const G3D::Vector3& normal, const G3D::Vector2& tex, bool share)
-		{
-			if (!varDirty)
-				varDirty = true;
-
-			if (freeList.size() == 0)
-			{
-				int index = visibleGeometry.vertexArray.size();
-
-				visibleGeometry.vertexArray.push_back(vertex);
-				visibleGeometry.normalArray.push_back(normal);
-				texCoordArray.push_back(tex);
-				tangentArray.push_back(G3D::Vector3::zero());
-
-				vertexRefCounts.push_back(1);
-				vertexRefCount++;
-
-				return index;
-			}
-			else
-			{
-				int index = freeList.pop();
-
-				visibleGeometry.vertexArray[index] = vertex;
-				visibleGeometry.normalArray[index] = normal;
-				texCoordArray[index] = tex;
-				tangentArray[index] = G3D::Vector3::zero();
-
-				vertexRefCount++;
-				vertexRefCounts[index] = 1;
-
-				return index;
-			}
-		}
-	}
+    signature.resultType = &countedType<R>();
+    signature.addArgument(Name::declare(arg1Name), countedType<Arg1>(), default1);
+    signature.addArgument(Name::declare(arg2Name), countedType<Arg2>(), default2);
+}
+}
+class MB1 { public: virtual void f(); };
+class MB2 { public: virtual void g(); };
+class Mesh : public MB1, public MB2 {};
+template class Reflection::BoundFuncDesc<Mesh, bool(boost::shared_ptr<Instance>, int), 2>;
 }

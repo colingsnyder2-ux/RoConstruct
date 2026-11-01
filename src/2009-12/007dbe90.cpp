@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 007dbe90  unit: RBX::GroupDragTool  size: 11 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 007dbe90
 //

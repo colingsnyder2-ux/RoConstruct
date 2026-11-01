@@ -1,9 +1,4 @@
-// roc 2007-08 004137d0  unit: DHTMLWindowService  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004137d0
-//
-// 004137d0  e9ab961500           jmp 0x56ce80
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_004137d0();
 void func_004137d0()
 {

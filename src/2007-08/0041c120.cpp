@@ -1,9 +1,4 @@
-// roc 2007-08 0041c120  unit: VDHTMLWindow::?$SignalDesc  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0041c120
-//
-// 0041c120  e92bfeffff           jmp 0x41bf50
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_0041c120();
 void func_0041c120()
 {

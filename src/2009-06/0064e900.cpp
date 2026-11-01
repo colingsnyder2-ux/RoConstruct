@@ -1,108 +1,66 @@
-// from server: 61% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+namespace boost { template<class T> class shared_ptr { T* p; void* c; }; namespace noncopyable_ { class noncopyable { protected: noncopyable() {} }; } }
+namespace RBX {
+class Instance;
+template<class T> class Countable {
+	static long count;
+public:
+	Countable() { InterlockedIncrement(&count); }
+};
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
+extern void* const gDefault;
+struct BT { bool b; BT() : b(true) {} };
+struct NP { void* p; NP() : p(0) {} };
+namespace rbx { namespace signals {
+class connection {
+public:
+	class slot : boost::noncopyable_::noncopyable, RBX::Countable<slot> {
+	public:
+		slot() : def(gDefault) {}
+		virtual ~slot();
+		BT connected;
+		NP next;
+		void* def;
+	};
+};
+union function_buffer { void* obj_ptr; double align; char buf[0x18]; };
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag };
+struct vtable_base {
+	void (*manager)(const function_buffer& in, function_buffer& out, functor_manager_operation_type op);
+};
+struct function_base {
+	vtable_base* vtable;
+	function_buffer functor;
+	function_base() : vtable(0) {}
+};
+template<class Sig> struct function : function_base {
+	~function() {
+		if (vtable) {
+			void (*m)(const function_buffer&, function_buffer&, functor_manager_operation_type) = vtable->manager;
+			if (m) m(functor, functor, destroy_functor_tag);
 		}
 	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
+	__forceinline function(const function& f) {
+		if (f.vtable) {
+			vtable = f.vtable;
+			vtable->manager(f.functor, functor, clone_functor_tag);
 		}
 	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
-}
+};
+template<class Sig> class signal {
+public:
+	class slot : public connection::slot {
+	public:
+		slot(function<Sig> f, void* owner) : connection::slot(), owner(owner), func(f), a(0), b(0), c(0), d(0) {}
+		virtual ~slot();
+		void* owner;
+		function<Sig> func;
+		int a, b, c, d;
+	};
+};
+template class signal<void(boost::shared_ptr<RBX::Instance>, float)>::slot;
+} }

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 007f8fe0  unit: CXTPEdit  size: 17 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 007f8fe0
 //

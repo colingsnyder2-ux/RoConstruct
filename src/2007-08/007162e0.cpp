@@ -1,10 +1,4 @@
-// roc 2007-08 007162e0  unit: CXTPRibbonTab  size: 11 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 007162e0
-//
-// 007162e0  8b8984000000         mov ecx, dword ptr [ecx + 0x84]
-// 007162e6  e9750c0000           jmp 0x716f60
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct P_func_007162e0 { void g(); };
 struct S_func_007162e0 {
     char pad[132];

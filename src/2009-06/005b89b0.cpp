@@ -1,5 +1,11 @@
-// from server: 53% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
+struct C {
+	void* p; int n;
+	~C();
+	void reset(C r);
+};
+void swapC(C& a, C& b);
+void C::reset(C r) { if (this != &r) swapC(*this, r); }

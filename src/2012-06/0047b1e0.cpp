@@ -1,44 +1,4 @@
-// roc 2012-06 0047b1e0  unit: VCWorkspace::?$CComObject  size: 98 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 0047b1e0
-//
-// 0047b1e0  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0047b1e4  33c9                 xor ecx, ecx
-// 0047b1e6  3bc1                 cmp eax, ecx
-// 0047b1e8  7441                 je 0x47b22b
-// 0047b1ea  83f801               cmp eax, 1
-// 0047b1ed  743c                 je 0x47b22b
-// 0047b1ef  83f802               cmp eax, 2
-// 0047b1f2  744d                 je 0x47b241
-// 0047b1f4  83f803               cmp eax, 3
-// 0047b1f7  7521                 jne 0x47b21a
-// 0047b1f9  56                   push esi
-// 0047b1fa  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 0047b1fe  8b0e                 mov ecx, dword ptr [esi]
-// 0047b200  6850dbd600           push 0xd6db50
-// 0047b205  ff15ec29b200         call dword ptr [0xb229ec]
-// 0047b20b  0fb6c0               movzx eax, al
-// 0047b20e  f7d8                 neg eax
-// 0047b210  1bc0                 sbb eax, eax
-// 0047b212  23442408             and eax, dword ptr [esp + 8]
-// 0047b216  8906                 mov dword ptr [esi], eax
-// 0047b218  5e                   pop esi
-// 0047b219  c3                   ret 
-// 0047b21a  8b442408             mov eax, dword ptr [esp + 8]
-// 0047b21e  c70050dbd600         mov dword ptr [eax], 0xd6db50
-// 0047b224  884804               mov byte ptr [eax + 4], cl
-// 0047b227  884805               mov byte ptr [eax + 5], cl
-// 0047b22a  c3                   ret 
-// 0047b22b  8b442408             mov eax, dword ptr [esp + 8]
-// 0047b22f  3bc1                 cmp eax, ecx
-// 0047b231  740e                 je 0x47b241
-// 0047b233  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0047b237  8b11                 mov edx, dword ptr [ecx]
-// 0047b239  8910                 mov dword ptr [eax], edx
-// 0047b23b  8b4904               mov ecx, dword ptr [ecx + 4]
-// 0047b23e  894804               mov dword ptr [eax + 4], ecx
-// 0047b241  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

@@ -1,5 +1,15 @@
-// from server: 50% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O1 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/CommandBars/XTPGalleryListBox.cpp
+// from server: 100% by tester
+struct CRobloxView {
+    char pad[0x1e0];
+    int field_198;
+    void method(int);
+};
+
+void CRobloxView::method(int arg) {
+    int* p = (int*)arg;
+    int* vtbl = (int*)*p;
+    int flag = (this->field_198 != 0) ? 1 : 0;
+    typedef void (__thiscall *Fn)(void*, int);
+    Fn fn = (Fn)vtbl[1];
+    fn((void*)arg, flag);
+}

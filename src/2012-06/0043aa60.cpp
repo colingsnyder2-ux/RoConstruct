@@ -1,5 +1,5 @@
-// from server: 62% by atomic.potato
-extern "C" void G1_func_0043a0f0(void *, void *);
+// from server: 66% by atomic.potato
+extern "C" void __cdecl G1_func_0043a0f0(void *, void *);
 
 struct CDataModelPropGrid
 {
@@ -8,6 +8,6 @@ struct CDataModelPropGrid
 
 void *CDataModelPropGrid::func_0043aa60(void *value)
 {
-    G1_func_0043a0f0(this, value);
+    G1_func_0043a0f0(0, value);
     return value;
 }

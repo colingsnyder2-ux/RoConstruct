@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-03 005099b0  unit: seg_00500000  size: 44 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-03 005099b0
 //

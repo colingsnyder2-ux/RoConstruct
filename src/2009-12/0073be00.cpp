@@ -1,28 +1,4 @@
-// roc 2009-12 0073be00  unit: RBX::Network::P8Player::?$GetSetImpl  size: 51 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0073be00
-//
-// 0073be00  8b442404             mov eax, dword ptr [esp + 4]
-// 0073be04  8bd1                 mov edx, ecx
-// 0073be06  85c0                 test eax, eax
-// 0073be08  7415                 je 0x73be1f
-// 0073be0a  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0073be0e  51                   push ecx
-// 0073be0f  8b4a14               mov ecx, dword ptr [edx + 0x14]
-// 0073be12  8b5210               mov edx, dword ptr [edx + 0x10]
-// 0073be15  83c0e4               add eax, -0x1c
-// 0073be18  03c8                 add ecx, eax
-// 0073be1a  ffd2                 call edx
-// 0073be1c  c20800               ret 8
-// 0073be1f  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0073be23  51                   push ecx
-// 0073be24  8b4a14               mov ecx, dword ptr [edx + 0x14]
-// 0073be27  8b5210               mov edx, dword ptr [edx + 0x10]
-// 0073be2a  33c0                 xor eax, eax
-// 0073be2c  03c8                 add ecx, eax
-// 0073be2e  ffd2                 call edx
-// 0073be30  c20800               ret 8
-// copied from an identical function in another client (function ?setValue@?$GetSetImpl@P8Class@@BEABVValue@@XZP81@AEXABV2@@Z@@UBEXPAVDescribedBase@@ABVValue@@@Z)
-
+// from server: 100% by colin
 // from server: 100% by tajop
 // roc-lang: cpp
 // roc-cl: 30729

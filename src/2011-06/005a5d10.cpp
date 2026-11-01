@@ -1,11 +1,4 @@
-// roc 2011-06 005a5d10  unit: RBX::VRenderHooksService::?$FactoryProduct  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 005a5d10
-//
-// 005a5d10  8b819c000000         mov eax, dword ptr [ecx + 0x9c]
-// 005a5d16  8b4014               mov eax, dword ptr [eax + 0x14]
-// 005a5d19  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct I_func_005a5d10 {
     char pad[20];
     int m_x;

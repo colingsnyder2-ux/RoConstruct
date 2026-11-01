@@ -1,50 +1,218 @@
-// roc 2007-03 005ecf10  unit: seg_005e0000  size: 71 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 005ecf10
-//
-// 005ecf10  56                   push esi
-// 005ecf11  57                   push edi
-// 005ecf12  8b7c240c             mov edi, dword ptr [esp + 0xc]
-// 005ecf16  8bf1                 mov esi, ecx
-// 005ecf18  3b7e24               cmp edi, dword ptr [esi + 0x24]
-// 005ecf1b  7507                 jne 0x5ecf24
-// 005ecf1d  c7462400000000       mov dword ptr [esi + 0x24], 0
-// 005ecf24  6a00                 push 0
-// 005ecf26  8bcf                 mov ecx, edi
-// 005ecf28  c6464c01             mov byte ptr [esi + 0x4c], 1
-// 005ecf2c  e82f1bfcff           call 0x5aea60
-// 005ecf31  8b4f64               mov ecx, dword ptr [edi + 0x64]
-// 005ecf34  6a00                 push 0
-// 005ecf36  e80535fcff           call 0x5b0440
-// 005ecf3b  8d44240c             lea eax, [esp + 0xc]
-// 005ecf3f  50                   push eax
-// 005ecf40  8d4e30               lea ecx, [esi + 0x30]
-// 005ecf43  e8a8f6fbff           call 0x5ac5f0
-// 005ecf48  8bce                 mov ecx, esi
-// 005ecf4a  e891fdffff           call 0x5ecce0
-// 005ecf4f  5f                   pop edi
-// 005ecf50  88462c               mov byte ptr [esi + 0x2c], al
-// 005ecf53  5e                   pop esi
-// 005ecf54  c20400               ret 4
-// copied from an identical function in another client (function ?SetTheme@CXTCaptionButtonTheme@ns_ROCX000004@@QAEXPAX@Z)
+// from server: 56% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs gui/GUI.cpp
 
-namespace ns_ROCX000004 {
-struct CXTCaptionButtonTheme {
-    void sub_5B4820(int);
-    void sub_5E24B0(int);
-    void sub_605B30(void*);
-    char sub_60BB80();
-    void SetTheme(void*);
-};
+// Candidate translation unit (score above; library headers required).
+#include "gui/Gui.h"
 
-void CXTCaptionButtonTheme::SetTheme(void* p) {
-    if (p == *(void**)((char*)this + 0x24)) {
-        *(void**)((char*)this + 0x24) = 0;
-    }
-    *(char*)((char*)this + 0x4c) = 1;
-    ((CXTCaptionButtonTheme*)p)->sub_5B4820(0);
-    ((CXTCaptionButtonTheme*)(*(void**)((char*)p + 0x64)))->sub_5E24B0(0);
-    void* tmp;
-    ((CXTCaptionButtonTheme*)((char*)this + 0x30))->sub_605B30(&tmp);
-    *(char*)((char*)this + 0x2c) = sub_60BB80();
-}
+namespace RBX
+{
+	const G3D::Color4& GuiItem::disabledFill()
+	{
+		static G3D::Color4 c(0.7f, 0.7f, 0.7f, 0.5f);
+		return c;
+	}
+
+	const G3D::Color4& GuiItem::translucentBackdrop()
+	{
+		static G3D::Color4 c(0.6f, 0.6f, 0.6f, 0.6f);
+		return c;
+	}
+
+	G3D::Vector2 GuiRoot::canvasSize;
+	G3D::Matrix4 GuiRoot::oldProjectionMatrix;
+	G3D::CoordinateFrame GuiRoot::oldCameraWorld;
+
+	GuiItem::GuiItem() 
+	{
+		setName("Unnamed GuiItem");
+	}
+
+	const GuiItem* GuiItem::getGuiItem(int index) const
+	{
+		return dynamic_cast<const GuiItem*>(getChild(index));
+	}
+
+	GuiItem* GuiItem::getGuiItem(int index)
+	{
+		return dynamic_cast<GuiItem*>(getChild(index));
+	}
+
+	GuiResponse GuiItem::processNonFocus(const GuiEvent& event)
+	{
+		for (size_t i = 0; i < numChildren(); i++)
+		{
+			GuiItem* current = getGuiItem((int)i);
+
+			if (current && current != focus.get())
+			{
+				GuiResponse itemResponse = current->process(event);
+				if (itemResponse.wasUsed())
+				{
+					this->loseFocus();
+
+					focus = shared_from(current);
+					focus->loseFocus();
+
+					return itemResponse;
+				}
+			}
+		}
+
+		return GuiResponse::notUsed();
+	}
+
+	void GuiItem::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
+	{
+		if (instance == focus)
+			loseFocus();
+
+		Instance::onDescendentRemoving(instance);
+	}
+
+	Rect GuiItem::getMyRect() const
+	{
+		G3D::Vector2 pos = getPosition();
+		return Rect(pos, pos + getSize());
+	}
+
+	const GuiItem* GuiItem::getGuiParent() const
+	{
+		return dynamic_cast<const GuiItem*>(getParent());
+	}
+	
+	GuiResponse GuiItem::process(const GuiEvent& event)
+	{
+		if (event.isMouseEvent() && event.eventType == UIEvent::MOUSE_IDLE)
+			return GuiResponse::notUsed();
+
+		if (focus)
+		{
+			if (focus->canLoseFocus())
+			{
+				GuiResponse response = processNonFocus(event);
+				if (response.wasUsed())
+					return response;
+			}
+
+			GuiResponse focusResponse = focus->process(event);
+			if (focusResponse.wasUsed())
+				return focusResponse;
+
+			loseFocus();
+		}
+
+		RBXASSERT(!focus);
+		return processNonFocus(event);
+	}
+
+	void TopMenuBar::init()
+	{
+		layoutStyle = Layout::HORIZONTAL;
+		backdropColor = G3D::Color4::clear();
+		visible = true;
+	}
+
+	G3D::Vector2 TopMenuBar::getSize() const
+	{
+		G3D::Vector2 size(0.0f, 0.0f);
+
+		for (size_t i = 0; i < numChildren(); i++)
+		{
+			const GuiItem* current = getGuiItem((int)i);
+
+			if (current)
+			{
+				G3D::Vector2 childSize = current->getSize();
+				switch (layoutStyle)
+				{
+				case Layout::VERTICAL:
+					size.x = G3D::max(size.x, childSize.x);
+					size.y += childSize.y;
+					break;
+				case Layout::HORIZONTAL:
+					size.x += childSize.x;
+					size.y = G3D::max(size.y, childSize.y);
+					break;
+				}
+			}
+		}
+
+		return size;
+	}
+
+	void TopMenuBar::render2d(Adorn* adorn)
+	{
+		if (isVisible())
+		{
+			if (backdropColor != G3D::Color4::clear())
+			{
+				adorn->rect2d(getMyRect2D(), backdropColor);
+			}
+
+			for (size_t i = 0; i < numChildren(); i++)
+			{
+				GuiItem* current = getGuiItem((int)i);
+				if (current)
+					current->render2d(adorn);
+			}
+		}
+	}
+
+	GuiResponse TopMenuBar::process(const GuiEvent& event)
+	{
+		if (isVisible())
+		{
+			GuiResponse response = GuiItem::process(event);
+			if (response.wasUsed())
+			{
+				return response;
+			}
+
+			if (backdropColor.a > 0.0f && event.isMouseEvent() && getMyRect().pointInRect(event.mousePosition))
+			{
+				return GuiResponse::used();
+			}
+		}
+
+		return GuiResponse::notUsed();
+	}
+
+	void RelativePanel::init(const Layout& layout)
+	{
+		setName("RelativePanel");
+		layoutStyle = layout.layoutStyle;
+		backdropColor = layout.backdropColor;
+		xLocation = layout.xLocation;
+		yLocation = layout.yLocation;
+		offset = layout.offset;
+	}
+
+	GuiRoot::GuiRoot() 
+	{
+		setName("GuiRoot");
+	}
+
+	int GuiRoot::normalizedFontSize(int fontSize)
+	{
+		static G3D::Vector2 percentSize(100.0f, 75.0f);
+		return G3D::iRound(floorf(fontSize * toPixelSize(percentSize).x * 0.001f));
+	}
+
+	void GuiRoot::render2d(Adorn* adorn)
+	{
+		short height = static_cast<short>(adorn->getHeight());
+		short width = static_cast<short>(adorn->getWidth());
+
+		canvasSize = G3D::Vector2(width, height);
+
+		for (size_t i = 0; i < numChildren(); i++)
+		{
+			GuiItem* current = getGuiItem((int)i);
+			if (current)
+				current->render2d(adorn);
+		}
+	}
 }

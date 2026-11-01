@@ -1,9 +1,4 @@
-// roc 2007-08 00602ca0  unit: RBX::FallingDown  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00602ca0
-//
-// 00602ca0  e98bffffff           jmp 0x602c30
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00602ca0();
 void func_00602ca0()
 {

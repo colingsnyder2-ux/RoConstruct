@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 007294d0  unit: boost::signals::detail::Ubasic_connection::?$sp_counted_impl_p  size: 119 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 007294d0
 //

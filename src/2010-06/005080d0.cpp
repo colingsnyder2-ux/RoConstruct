@@ -1,10 +1,4 @@
-// roc 2010-06 005080d0  unit: RBX::Network::ServerReplicator  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 005080d0
-//
-// 005080d0  8b81d0290000         mov eax, dword ptr [ecx + 0x29d0]
-// 005080d6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_005080d0 {
     char pad0[10704];
     int m_x;

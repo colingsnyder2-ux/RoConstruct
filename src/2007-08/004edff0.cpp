@@ -1,4 +1,4 @@
-// from server: 57% by colin
+// from server: 100% by Yeetserama
 // roc 2007-08 004edff0  unit: HeadBuilder  size: 60 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004edff0
 //
@@ -23,25 +23,46 @@
 // 004ee021  e8aaf5ffff           call 0x4ed5d0
 // 004ee026  83c40c               add esp, 0xc
 // 004ee029  c20400               ret 4
+// copied from an identical function in another client (function ?fn_ROCX00000d_005000c0@S@ns_ROCX00000d@@QAEXH@Z)
 
-struct HeadBuilder {
-    char pad[0x20];
-    float field_20;
-    int field_24;
-    void method(int);
+namespace ns_ROCX00000d {
+// from server: 100% by colin
+struct Pair
+{
+    short first;
+    short second;
 };
 
-extern "C" void __stdcall func_4ed5d0(int, int, int, int);
-
-void HeadBuilder::method(int arg)
+struct FloatValue
 {
-    int a = field_24 + 1;
-    float f = field_20;
-    int b = a - (a >> 31);
-    b = b >> 1;
-    short s = (short)field_24;
-    int packed;
-    *(short*)&packed = s;
-    *(short*)((char*)&packed + 2) = s;
-    func_4ed5d0(packed, *(int*)&f, b, arg);
+    float value;
+};
+
+struct Data
+{
+    Pair pair;
+    FloatValue value;
+    int half;
+};
+
+struct S
+{
+    char padding[32];
+    float value;
+    volatile int count;
+
+    void helper(FloatValue value, int half, Pair pair, int argument);
+    void fn_ROCX00000d_005000c0(int argument);
+};
+
+void S::fn_ROCX00000d_005000c0(int argument)
+{
+    Data data;
+    data.value.value = value;
+    data.half = (count + 1) / 2;
+    int n = count;
+    data.pair.first = (short)n;
+    data.pair.second = (short)n;
+    helper(data.value, data.half, data.pair, argument);
+}
 }

@@ -1,32 +1,4 @@
-// roc 2011-06 006da1b0  unit: RBX::VChatService::?$EventDesc  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 006da1b0
-//
-// 006da1b0  56                   push esi
-// 006da1b1  8b742408             mov esi, dword ptr [esp + 8]
-// 006da1b5  85f6                 test esi, esi
-// 006da1b7  742c                 je 0x6da1e5
-// 006da1b9  8b0e                 mov ecx, dword ptr [esi]
-// 006da1bb  85c9                 test ecx, ecx
-// 006da1bd  7409                 je 0x6da1c8
-// 006da1bf  8b01                 mov eax, dword ptr [ecx]
-// 006da1c1  8b5004               mov edx, dword ptr [eax + 4]
-// 006da1c4  ffd2                 call edx
-// 006da1c6  eb05                 jmp 0x6da1cd
-// 006da1c8  b8447ac000           mov eax, 0xc07a44
-// 006da1cd  6890a7c200           push 0xc2a790
-// 006da1d2  8bc8                 mov ecx, eax
-// 006da1d4  ff15500aa400         call dword ptr [0xa40a50]
-// 006da1da  84c0                 test al, al
-// 006da1dc  7407                 je 0x6da1e5
-// 006da1de  8b06                 mov eax, dword ptr [esi]
-// 006da1e0  83c004               add eax, 4
-// 006da1e3  5e                   pop esi
-// 006da1e4  c3                   ret 
-// 006da1e5  33c0                 xor eax, eax
-// 006da1e7  5e                   pop esi
-// 006da1e8  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX000000_00642c10@@YAPAXPAUAny@@@Z)
-
+// from server: 100% by colin
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /EHsc /MD
 #include <typeinfo>

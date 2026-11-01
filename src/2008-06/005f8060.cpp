@@ -1,36 +1,4 @@
 // from server: 100% by colin
-// roc 2008-06 005f8060  unit: std::D::V?$allocator::V?$basic_gzip_compressor::?$stream_buffer  size: 80 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 005f8060
-//
-// 005f8060  55                   push ebp
-// 005f8061  8bec                 mov ebp, esp
-// 005f8063  6aff                 push -1
-// 005f8065  6840797d00           push 0x7d7940
-// 005f806a  64a100000000         mov eax, dword ptr fs:[0]
-// 005f8070  50                   push eax
-// 005f8071  64892500000000       mov dword ptr fs:[0], esp
-// 005f8078  51                   push ecx
-// 005f8079  53                   push ebx
-// 005f807a  56                   push esi
-// 005f807b  57                   push edi
-// 005f807c  8965f0               mov dword ptr [ebp - 0x10], esp
-// 005f807f  8bf1                 mov esi, ecx
-// 005f8081  c745fc00000000       mov dword ptr [ebp - 4], 0
-// 005f8088  e8f3fcffff           call 0x5f7d80
-// 005f808d  8b8e8c000000         mov ecx, dword ptr [esi + 0x8c]
-// 005f8093  85c9                 test ecx, ecx
-// 005f8095  7406                 je 0x5f809d
-// 005f8097  ff1570238000         call dword ptr [0x802370]
-// 005f809d  8b4df4               mov ecx, dword ptr [ebp - 0xc]
-// 005f80a0  5f                   pop edi
-// 005f80a1  5e                   pop esi
-// 005f80a2  32c0                 xor al, al
-// 005f80a4  64890d00000000       mov dword ptr fs:[0], ecx
-// 005f80ab  5b                   pop ebx
-// 005f80ac  8be5                 mov esp, ebp
-// 005f80ae  5d                   pop ebp
-// 005f80af  c3                   ret 
-
 // from server: 87% by king_originala
 struct StreamBuffer;
 

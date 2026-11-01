@@ -1,108 +1,87 @@
-// from server: 26% by colin
-// roc-lang: cpp
+// from server: 78% by EspClaude
+// from server: 100% by king_originala
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// Complete 821-byte measured mouse-drag update; AxisDragUpdate is a descriptive label.
+// UIEvent/ServiceClient/MegaDragger and G3D operations follow native project headers.
+// SelectionView and createSelectionService name the observed transport ABI only.
+// Native ServiceClient body proves its stack object does not escape to the service.
+#include <memory>
+#include <vector>
+#include <intrin.h>
+#include <math.h>
+#include <stddef.h>
+namespace G3D {
+struct Vector2int16 {short x,y;};
+struct Vector2 {float x,y;Vector2(float a,float b):x(a),y(b){}Vector2(const Vector2int16&v):x(v.x),y(v.y){}Vector2 operator-(const Vector2&v)const{return Vector2(x-v.x,y-v.y);}float length()const{return (float)sqrt(x*x+y*y);}};
+struct Vector3 {float x,y,z;Vector3():x(0),y(0),z(0){}Vector3(float a,float b,float c):x(a),y(b),z(c){}Vector3(const Vector3&v):x(v.x),y(v.y),z(v.z){}
+ Vector3&operator=(const Vector3&v){x=v.x;y=v.y;z=v.z;return *this;}
+ Vector3 operator-(const Vector3&v)const{return Vector3(x-v.x,y-v.y,z-v.z);}Vector3 operator+(const Vector3&v)const{return Vector3(x+v.x,y+v.y,z+v.z);}
+ bool operator!=(const Vector3&v)const;
+ static const Vector3&zero();
+};
+struct Ray {Vector3 origin,direction;virtual ~Ray(){}};
 }
-
-void initMoo()
-{
-	moo2();
+namespace boost {namespace detail {
+struct sp_counted_base {virtual ~sp_counted_base(){}virtual void dispose()=0;virtual void destroy(){delete this;}long use_count_,weak_count_;void weak_release(){if(_InterlockedDecrement(&weak_count_)==0)destroy();}void release(){if(_InterlockedDecrement(&use_count_)==0){dispose();weak_release();}}};
+struct shared_count {sp_counted_base*pi_;shared_count():pi_(0){}shared_count(const shared_count&r):pi_(r.pi_){if(pi_)_InterlockedIncrement(&pi_->use_count_);}
+ shared_count&operator=(const shared_count&r){sp_counted_base*tmp=r.pi_;if(tmp!=pi_){if(tmp)_InterlockedIncrement(&tmp->use_count_);if(pi_)pi_->release();pi_=tmp;}return *this;}
+ ~shared_count(){if(pi_)pi_->release();}};
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+template<class T>struct shared_ptr {T*px;detail::shared_count pn;shared_ptr():px(0){}shared_ptr&operator=(const shared_ptr&r){px=r.px;pn=r.pn;return *this;}T*get()const{return px;}};
 }
+namespace RBX {
+struct UIEvent {int eventType;void*userInput;G3D::Vector2int16 mousePosition,mouseDelta,windowSize;};
+struct PartInstance;struct PVInstance;struct RootInstance;
+// Descriptive selection transport: items offset is observed at this call site.
+struct SelectionView {char unobserved[0x98];std::vector<PVInstance*>items;};
+template<class T>T*createSelectionService(RootInstance*);
+template<class T>boost::shared_ptr<T>shared_from(T*);
+template<class T>struct ServiceClient {RootInstance*context;mutable boost::shared_ptr<T>service;ServiceClient(RootInstance*c):context(c){}T*createService(bool)const;T*operator->()const{return createService(true);}};
+inline const G3D::Vector3&zeroInl(){static G3D::Vector3 v(0,0,0);return v;}
+inline bool notEq(const G3D::Vector3&a,const G3D::Vector3&b){return a.x!=b.x||a.y!=b.y||a.z!=b.z;}
+struct MegaDragger {
+ char unobserved[48];
+ MegaDragger(PartInstance*,const std::vector<PVInstance*>&,RootInstance*,int);~MegaDragger();void startDragging();void alignAndCleanParts();bool anyDragPartAlive();void continueDragging();G3D::Vector3 safeMoveAlongLine(const G3D::Vector3&);G3D::Vector3 safeMoveAlongPlane(const G3D::Vector3&);
+};
+struct Math {static G3D::Vector3 closestPointOnRay(const G3D::Ray&,const G3D::Ray&);static G3D::Vector3 toGrid(const G3D::Vector3&,const G3D::Vector3&);};
+// Descriptive member name; all accessed offsets come from the complete target.
+struct AxisDragUpdate {
+ virtual ~AxisDragUpdate();
+ char unobserved[0x14];RootInstance*workspace;char unobserved1c[4];std::auto_ptr<MegaDragger>megaDragger;char unobserved24[0x40-0x24];bool dragging;G3D::Vector2int16 downPoint;char unobserved46[2];G3D::Ray axisRay;char unobserved64[4];G3D::Vector3 lastHit;
+ G3D::Ray getUnitMouseRay(const UIEvent&)const;
+ static const G3D::Vector3&grid(){static G3D::Vector3 v(1.0f,0.4f,1.0f);return v;}
+ static const G3D::Vector3&dragGrid();
+ virtual void v1();virtual void v2();virtual void v3();virtual void v4();virtual void v5();virtual void v6();virtual void v7();virtual void v8();virtual void v9();virtual void v10();virtual void v11();virtual void v12();virtual void v13();virtual void v14();virtual void v15();virtual void v16();virtual void v17();
+ virtual int dragMode();
+ void onMouseMove(const UIEvent&);
+};
+void AxisDragUpdate::onMouseMove(const UIEvent&event){
+ if(!dragging&&(G3D::Vector2(event.mousePosition)-G3D::Vector2(downPoint)).length()>4.0f){
+  ServiceClient<SelectionView>selection(workspace);
+  megaDragger.reset(new MegaDragger(0,selection->items,workspace,0));
+  megaDragger->startDragging();megaDragger->alignAndCleanParts();dragging=true;
+ }
+ if(dragging&&megaDragger->anyDragPartAlive()){
+  G3D::Vector3 hit=Math::closestPointOnRay(axisRay,getUnitMouseRay(event));
+  hit=Math::toGrid(hit,grid());
+  G3D::Vector3 delta=Math::toGrid(hit-lastHit,grid());
+  if(notEq(delta,zeroInl())){
+   megaDragger->continueDragging();
+   G3D::Vector3 moved=(dragMode()==1)?megaDragger->safeMoveAlongLine(delta):megaDragger->safeMoveAlongPlane(delta);
+   if(moved!=G3D::Vector3::zero())lastHit=Math::toGrid(lastHit+moved,dragGrid());
+  }
+ }
+}
+}
+typedef char ray_extent[sizeof(G3D::Ray)==28?1:-1];
+typedef char dragger_extent[sizeof(RBX::MegaDragger)==48?1:-1];
+typedef char selection_extent[sizeof(RBX::ServiceClient<RBX::SelectionView>)==12?1:-1];
+typedef char event_position[offsetof(RBX::UIEvent,mousePosition)==8?1:-1];
+typedef char dragger_offset[offsetof(RBX::AxisDragUpdate,megaDragger)==0x20?1:-1];
+typedef char dragging_offset[offsetof(RBX::AxisDragUpdate,dragging)==0x40?1:-1];
+typedef char ray_offset[offsetof(RBX::AxisDragUpdate,axisRay)==0x48?1:-1];
+typedef char hit_offset[offsetof(RBX::AxisDragUpdate,lastHit)==0x68?1:-1];
+
+typedef char down_point_offset[offsetof(RBX::AxisDragUpdate,downPoint)==0x42?1:-1];
+typedef char selection_items_offset[offsetof(RBX::SelectionView,items)==0x98?1:-1];

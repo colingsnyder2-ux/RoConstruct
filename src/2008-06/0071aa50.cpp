@@ -1,16 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 0071aa50  unit: CXTPDockBar  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0071aa50
-//
-// 0071aa50  8bc1                 mov eax, ecx
-// 0071aa52  33c9                 xor ecx, ecx
-// 0071aa54  c7008cf18500         mov dword ptr [eax], 0x85f18c
-// 0071aa5a  894804               mov dword ptr [eax + 4], ecx
-// 0071aa5d  894810               mov dword ptr [eax + 0x10], ecx
-// 0071aa60  89480c               mov dword ptr [eax + 0xc], ecx
-// 0071aa63  894808               mov dword ptr [eax + 8], ecx
-// 0071aa66  c3                   ret 
-
 extern char G;
 
 extern char G;

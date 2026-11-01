@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 00633e80  unit: RBX::VBrickColor::V?$Value::?$DescribedCreatable  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00633e80
-//
-// 00633e80  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00633e84  83f803               cmp eax, 3
-// 00633e87  741e                 je 0x633ea7
-// 00633e89  8b542408             mov edx, dword ptr [esp + 8]
-// 00633e8d  c644240c00           mov byte ptr [esp + 0xc], 0
-// 00633e92  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 00633e96  51                   push ecx
-// 00633e97  50                   push eax
-// 00633e98  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00633e9c  52                   push edx
-// 00633e9d  50                   push eax
-// 00633e9e  e8cdfdffff           call 0x633c70
-// 00633ea3  83c410               add esp, 0x10
-// 00633ea6  c3                   ret 
-// 00633ea7  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 00633eab  c701f0e29500         mov dword ptr [ecx], 0x95e2f0
-// 00633eb1  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

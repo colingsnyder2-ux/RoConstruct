@@ -1,10 +1,4 @@
-// roc 2007-08 00570eaf  unit: RBX::Reflection::ClassDescriptor  size: 4 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00570eaf
-//
-// 00570eaf  83c8ff               or eax, 0xffffffff
-// 00570eb2  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 int func_00570eaf()
 {
     return -1;

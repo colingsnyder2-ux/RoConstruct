@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 0077f670  unit: CXTThemeManager  size: 48 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 0077f670
 //

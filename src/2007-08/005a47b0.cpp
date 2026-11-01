@@ -1,10 +1,4 @@
-// roc 2007-08 005a47b0  unit: RBX::IControllable  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005a47b0
-//
-// 005a47b0  8d8140010000         lea eax, [ecx + 0x140]
-// 005a47b6  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_005a47b0 {
     char pad0[320];
     int m_x;

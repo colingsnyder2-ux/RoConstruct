@@ -1,117 +1,447 @@
-// from server: 31% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS /EHsc /MD
+// roc-lib: rbxgs-net roc_espeon_aug2007_network_players_historical_chat_4d178d08bba4ccd3.cpp
 
-struct Players {
-    char pad[0x11c];
-    void* field_11c;
-    char pad2[0x138 - 0x120];
-    void* field_138;
-    void* field_140;
+// Candidate translation unit (score above; library headers required).
+#undef _RELEASEASSERT
+#pragma include_alias("v8world/Edge.h", "../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp")
+#pragma include_alias(<v8world/Edge.h>, <../roc_espeon_aug2007_edge_header_cb216aa0cb409651.cpp>)
+#pragma include_alias("v8world/Contact.h", "../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp")
+#pragma include_alias(<v8world/Contact.h>, <../roc_espeon_aug2007_contact_header_5ec74239b50ff6ca.cpp>)
+#define _MT 1
+#define _DLL 1
+#pragma include_alias("v8kernel/KernelIndex.h", "../roc_espeon_aug2007_kernelindex_header_d7778b4d74bcf4c0.cpp")
+#pragma include_alias("v8kernel/Body.h", "../roc_espeon_aug2007_body_header_b251c002665e01af.cpp")
+#pragma include_alias("util/Extents.h", "../roc_espeon_aug2007_extents_inline_58e475d56d206314.cpp")
+#pragma include_alias("reflection/object.h", "../roc_espeon_aug2007_describedbase_e64c736f24da029d.cpp")
+#pragma include_alias("util/Debug.h", "../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp")
+#pragma include_alias(<util/Debug.h>, <../roc_espeon_aug2007_ctor_debugable_025e0cb3bb8217d3.cpp>)
+#pragma include_alias("util/Events.h", "../roc_espeon_aug2007_datamodel_header_e4d5a36bea2e4f16.cpp")
+#pragma include_alias("reflection/reflection.h", "../roc_espeon_aug2007_described_arg_header_14221fd67bb3ca43.cpp")
+#pragma include_alias("v8tree/Instance.h", "../roc_espeon_aug2007_instance_header_47f25dc9e4368119.cpp")
+#pragma include_alias("v8datamodel/PartInstance.h", "../roc_espeon_aug2007_part_flags_header_a6acc69782cd7c29.cpp")
+#pragma include_alias("v8world/Primitive.h", "../roc_espeon_aug2007_primitive_trivial_header_ac300ff64c6fc5e6.cpp")
+#pragma include_alias("v8datamodel/DataModel.h", "../roc_espeon_aug2007_datamodel_mutex_header_321a3c67de644a82.cpp")
+#pragma include_alias("v8tree/Verb.h", "../roc_espeon_aug2007_datamodel_header_c06d28d1a6b724f6.cpp")
+#pragma include_alias("util/Evaluator.h", "../roc_espeon_aug2007_datamodel_header_4ba4cf67c400aa66.cpp")
+#pragma include_alias(<boost/signals/signal_template.hpp>, <../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp>)
+#pragma include_alias("boost/signals/signal_template.hpp", "../roc_espeon_boost133_signals_header_a54048d539243d2e.cpp")
+#include "../App/roc_espeon_boost133_header_d432d72f8740aec3.cpp"
+#include "../App/roc_espeon_boost133_header_d9eb4711b7fc841c.cpp"
+#include "../App/roc_espeon_boost133_signals_header_be197e98651271fa.cpp"
+
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_header_bb71fe27a95b99c9.cpp>)
+#pragma include_alias("v8world/IPipelined.h", "../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp")
+#pragma include_alias(<v8world/IPipelined.h>, <../roc_espeon_aug2007_ipipelined_header_459cfa06a40ba136.cpp>)
+#pragma include_alias("v8world/Joint.h", "../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp")
+#pragma include_alias(<v8world/Joint.h>, <../roc_espeon_aug2007_joint_accessor_header_d77e5f1c0b32672c.cpp>)
+#pragma include_alias("util/IRenderable.h", "../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp")
+#pragma include_alias(<util/IRenderable.h>, <../roc_espeon_aug2007_bucket_header_1deff476fbc5a7ac.cpp>)
+#pragma include_alias("v8datamodel/JointInstance.h", "../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp")
+#pragma include_alias(<v8datamodel/JointInstance.h>, <../roc_espeon_aug2007_jointinstance_header_2070a5362277cad1.cpp>)
+#pragma include_alias("v8world/IMoving.h", "../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp")
+#pragma include_alias(<v8world/IMoving.h>, <../roc_espeon_aug2007_imoving_header_a7323a6be498a3c4.cpp>)
+#pragma include_alias("v8kernel/IStage.h", "../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp")
+#pragma include_alias(<v8kernel/IStage.h>, <../roc_espeon_aug2007_istage_header_b0262a91d28a95d1.cpp>)
+#pragma include_alias("reflection/function.h", "../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp")
+#pragma include_alias(<reflection/function.h>, <../roc_espeon_aug2007_abstract_header_991b5e9635f5d75d.cpp>)
+#pragma include_alias("reflection/member.h", "../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp")
+#pragma include_alias(<reflection/member.h>, <../roc_espeon_aug2007_abstract_header_56ab3d07f46302ce.cpp>)
+#pragma include_alias("reflection/property.h", "../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp")
+#pragma include_alias(<reflection/property.h>, <../roc_espeon_aug2007_abstract_header_4b7af236c124d7bd.cpp>)
+#pragma include_alias("reflection/signal.h", "../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp")
+#pragma include_alias(<reflection/signal.h>, <../roc_espeon_aug2007_abstract_header_35400af2df14a7cc.cpp>)
+#pragma include_alias("script/Script.h", "../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp")
+#pragma include_alias(<script/Script.h>, <../roc_espeon_aug2007_abstract_header_206648adc176eff8.cpp>)
+#pragma include_alias("util/ICameraSubject.h", "../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp")
+#pragma include_alias(<util/ICameraSubject.h>, <../roc_espeon_aug2007_abstract_header_15846f007cad7f25.cpp>)
+#pragma include_alias("util/IControllable.h", "../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp")
+#pragma include_alias(<util/IControllable.h>, <../roc_espeon_aug2007_abstract_header_134fb1e5a9dd6b81.cpp>)
+#pragma include_alias("util/ILocation.h", "../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp")
+#pragma include_alias(<util/ILocation.h>, <../roc_espeon_aug2007_abstract_header_b220b165aaf2f641.cpp>)
+#pragma include_alias("v8datamodel/ICameraOwner.h", "../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp")
+#pragma include_alias(<v8datamodel/ICameraOwner.h>, <../roc_espeon_aug2007_abstract_header_328a7f313eb894b0.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_abstract_header_72d3fec55ed90c1f.cpp>)
+#pragma include_alias("v8datamodel/IPrimaryPart.h", "../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp")
+#pragma include_alias(<v8datamodel/IPrimaryPart.h>, <../roc_espeon_aug2007_abstract_header_d558c6e252d36c0e.cpp>)
+#pragma include_alias("v8datamodel/PVInstance.h", "../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp")
+#pragma include_alias(<v8datamodel/PVInstance.h>, <../roc_espeon_aug2007_abstract_header_e7c5a66547093118.cpp>)
+#pragma include_alias("v8tree/Service.h", "../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp")
+#pragma include_alias(<v8tree/Service.h>, <../roc_espeon_aug2007_abstract_header_cf6415ca14eaa52c.cpp>)
+#pragma include_alias("util/UIEvent.h", "../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp")
+#pragma include_alias(<util/UIEvent.h>, <../roc_espeon_aug2007_uievent_viewport_header_04331f71cbc5bc08.cpp>)
+#pragma include_alias("v8datamodel/Workspace.h", "../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp")
+#pragma include_alias(<v8datamodel/Workspace.h>, <../roc_espeon_aug2007_workspace_header_d38fc45c16cb1519.cpp>)
+#pragma include_alias("v8datamodel/ICharacterSubject.h", "../roc_espeon_aug2007_character_state_f342eee04d017582.cpp")
+#pragma include_alias(<v8datamodel/ICharacterSubject.h>, <../roc_espeon_aug2007_character_state_f342eee04d017582.cpp>)
+#pragma include_alias("humanoid/Humanoid.h", "../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp")
+#pragma include_alias(<humanoid/Humanoid.h>, <../roc_espeon_aug2007_humanoid_state_f78ef0aa0660622a.cpp>)
+#pragma include_alias("humanoid/Running.h", "../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp")
+#pragma include_alias(<humanoid/Running.h>, <../roc_espeon_aug2007_running_balance_hook_875f0bb95aec50f5.cpp>)
+#pragma include_alias("humanoid/Balancing.h", "../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp")
+#pragma include_alias(<humanoid/Balancing.h>, <../roc_espeon_aug2007_balancing_balance_hook_37ced1d1de755090.cpp>)
+#pragma include_alias("humanoid/FallingDown.h", "../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp")
+#pragma include_alias(<humanoid/FallingDown.h>, <../roc_espeon_aug2007_fallingdown_state_7499778b68c8dff0.cpp>)
+#pragma include_alias("humanoid/Flying.h", "../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp")
+#pragma include_alias(<humanoid/Flying.h>, <../roc_espeon_aug2007_flying_balance_hook_a9eee8e762225c01.cpp>)
+#pragma include_alias("humanoid/Freefall.h", "../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp")
+#pragma include_alias(<humanoid/Freefall.h>, <../roc_espeon_aug2007_freefall_state_671ebe3411c8030d.cpp>)
+#pragma include_alias("humanoid/GettingUp.h", "../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp")
+#pragma include_alias(<humanoid/GettingUp.h>, <../roc_espeon_aug2007_gettingup_balance_hook_972ad7ec2ed27c84.cpp>)
+#pragma include_alias("humanoid/Jumping.h", "../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp")
+#pragma include_alias(<humanoid/Jumping.h>, <../roc_espeon_aug2007_jumping_state_9af9b1e45a772018.cpp>)
+#pragma include_alias("humanoid/Seated.h", "../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp")
+#pragma include_alias(<humanoid/Seated.h>, <../roc_espeon_aug2007_seated_state_df5e271a3b8e21cd.cpp>)
+#pragma include_alias("RbxGraphics/Adorn.h", "../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp")
+#pragma include_alias(<RbxGraphics/Adorn.h>, <../roc_espeon_aug2007_adorn_header_6887d8bb2eb92360.cpp>)
+#pragma include_alias("AppDraw/AdornG3D.h", "../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp")
+#pragma include_alias(<AppDraw/AdornG3D.h>, <../roc_espeon_aug2007_adorng3d_header_62d495574bf52995.cpp>)
+#pragma include_alias("v8kernel/Kernel.h", "../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp")
+#pragma include_alias(<v8kernel/Kernel.h>, <../roc_espeon_aug2007_kernel_inline_header_359388a626d15479.cpp>)
+#pragma include_alias("v8kernel/Point.h", "../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp")
+#pragma include_alias(<v8kernel/Point.h>, <../roc_espeon_aug2007_point_inline_header_aac7baa3a10948cb.cpp>)
+#pragma include_alias("../Network/Client.h","roc_espeon_aug2007_client_idmanager_header_8e0769e8280c42e7.cpp")
+#pragma include_alias("Client.h","roc_espeon_aug2007_client_idmanager_header_8e0769e8280c42e7.cpp")
+#pragma include_alias("Network/Players.h","roc_espeon_aug2007_players_idmanager_connection_header_347690cc4a436fb4.cpp")
+#pragma include_alias("Players.h","roc_espeon_aug2007_players_idmanager_connection_header_347690cc4a436fb4.cpp")
+#pragma include_alias("PacketIds.h","roc_espeon_aug2007_packet_ids_historical_header_55a9a42b18a3ae51.cpp")
+#include <RakPeer.h>
+#include <BitStream.h>
+#include "Client.h"
+#include "Server.h"
+#include "Players.h"
+#include "Streaming.h"
+#include "PacketIds.h"
+#include "v8datamodel/GameSettings.h"
+#include "v8datamodel/Teams.h"
+#include "util/standardout.h"
+
+template<class Class>
+class PluginInterfaceAdapter : public PluginInterface
+{
+private:
+	Class* c;
+protected:
+	PluginInterfaceAdapter(Class* c)
+		: PluginInterface(),
+		  c(c)
+	{
+	}
+public:
+	virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet);
 };
 
-struct Player {
-    char pad[0xcc];
-    char pad2[0xe0 - 0xcc];
-    char pad3[0x15c - 0xe0];
-    void* field_15c;
-};
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>, std::string), 2> funcReportAbuse(&RBX::Network::Players::reportAbuse, "ReportAbuse", "player", "message", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_players(&RBX::Network::Players::getPlayers, "players", RBX::Reflection::FunctionDescriptor::AnyCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance>>>(void), 0> func_GetPlayers(&RBX::Network::Players::getPlayers, "GetPlayers", RBX::Reflection::FunctionDescriptor::AnyCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(int), 1> func_createLocalPlayer(&RBX::Network::Players::createLocalPlayer, "CreateLocalPlayer", "userId", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(std::string), 1> func_setAbuseReportUrl(&RBX::Network::Players::setAbuseReportUrl, "SetAbuseReportUrl", "url", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance>), 1> func_playerFromCharacterOld(&RBX::Network::Players::playerFromCharacter, "playerFromCharacter", "character", RBX::Reflection::FunctionDescriptor::AnyCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(boost::shared_ptr<RBX::Instance>), 1> func_playerFromCharacter(&RBX::Network::Players::playerFromCharacter, "GetPlayerFromCharacter", "character", RBX::Reflection::FunctionDescriptor::AnyCaller);
 
-extern "C" void* __cdecl sub_56c3b0(void*);
-extern "C" void __cdecl sub_56c0a0(void*, int, const char*, const char*);
-extern "C" void __cdecl sub_493930(void*);
-extern "C" void __cdecl sub_4939a0(void*);
-extern "C" void __cdecl sub_496dd0(void*, void*, void*);
-extern "C" void __cdecl sub_49f820(void*);
-extern "C" void __cdecl sub_49f930(void*);
-extern "C" void __cdecl sub_4a0590(void*, void*);
-extern "C" void __cdecl sub_4a05c0(void*, int);
-extern "C" void __cdecl sub_4a0660(void*, void*, void*);
-extern "C" void __cdecl sub_412dc0(void*, void*);
-extern "C" void __cdecl sub_630b9e(void*, void*);
-extern "C" void __stdcall sub_77e690(void*, void*);
-extern "C" void __stdcall sub_77e698(void*, const char*);
-extern "C" void __stdcall sub_77e6ac(void*);
+static RBX::Reflection::SignalDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>)> event_PlayerAdded("PlayerAdded", "player");
+static RBX::Reflection::SignalDesc<RBX::Network::Players, void(boost::shared_ptr<RBX::Instance>)> event_PlayerRemoving("PlayerRemoving", "player");
 
-extern void* g_88e334;
-extern void* g_88e338;
+static RBX::Reflection::PropDescriptor<RBX::Network::Players, int> propPlayerCount("NumPlayers", "Data", &RBX::Network::Players::numPlayers, NULL, RBX::Reflection::PropertyDescriptor::UI);
+static RBX::Reflection::PropDescriptor<RBX::Network::Players, int> propPlayerMaxCount("MaxPlayers", "Data", &RBX::Network::Players::getMaxPlayers, &RBX::Network::Players::setMaxPlayers, RBX::Reflection::PropertyDescriptor::STANDARD);
 
-struct BoundFuncDesc {
-    void reportAbuse(Player* player, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8);
-};
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, boost::shared_ptr<RBX::Instance>(int), 1> func_GetPlayerByID(&RBX::Network::Players::getPlayerByID, "GetPlayerByID", "userID", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+static RBX::Reflection::BoundFuncDesc<RBX::Network::Players, void(std::string), 1> funcChat(&RBX::Network::Players::chat, "Chat", "message", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 
-void BoundFuncDesc::reportAbuse(Player* player, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8) {
-    Players* self = (Players*)this;
-    char vm[0x160];
-    if (self->field_11c != 0) {
-        const char* name;
-        if (player != 0) {
-            if (*(unsigned int*)((char*)player + 0xe0) < 0x10) {
-                name = (char*)player + 0xcc;
-            } else {
-                name = *(char**)((char*)player + 0xcc);
-            }
-        } else {
-            name = (const char*)0x79bcfc;
-        }
-        void* tmp;
-        sub_56c3b0(&tmp);
-        void* str = *(void**)tmp;
-        sub_56c0a0(str, 1, (const char*)0x79bcdc, name);
-        void* ref = *(void**)((char*)&tmp + 0x18);
-        if (ref != 0) {
-            if (_InterlockedExchangeAdd((volatile long*)((char*)ref + 4), -1) == 1) {
-                void** vt = *(void***)ref;
-                ((void(__thiscall*)(void*))vt[1])(ref);
-                if (_InterlockedExchangeAdd((volatile long*)((char*)ref + 8), -1) == 1) {
-                    void** vt2 = *(void***)ref;
-                    ((void(__thiscall*)(void*))vt2[2])(ref);
-                }
-            }
-        }
-        sub_493930(vm);
-        void* a = self->field_138 ? *(void**)((char*)self->field_138 + 0x15c) : 0;
-        *(void**)(vm + 0) = a;
-        void* b = player ? *(void**)((char*)player + 0x15c) : 0;
-        *(void**)(vm + 4) = b;
-        sub_77e690(vm, vm + 0x15c);
-        void* f = self->field_11c;
-        sub_496dd0(f, vm, (char*)self + 0x120);
-        sub_4939a0(vm);
-    } else {
-        void* tmp;
-        sub_56c3b0(&tmp);
-        void* str = *(void**)tmp;
-        sub_56c0a0(str, 1, (const char*)0x79bcac, 0);
-        void* ref = *(void**)((char*)&tmp + 0x14);
-        if (ref != 0) {
-            if (_InterlockedExchangeAdd((volatile long*)((char*)ref + 4), -1) == 1) {
-                void** vt = *(void***)ref;
-                ((void(__thiscall*)(void*))vt[1])(ref);
-                if (_InterlockedExchangeAdd((volatile long*)((char*)ref + 8), -1) == 1) {
-                    void** vt2 = *(void***)ref;
-                    ((void(__thiscall*)(void*))vt2[2])(ref);
-                }
-            }
-        }
-        if (self->field_140 == 0) {
-            sub_77e698(&tmp, (const char*)0x79bc80);
-            sub_412dc0(&tmp, (char*)&tmp + 0x1c);
-            sub_630b9e((char*)&tmp + 0x1c, (void*)0x8410c0);
-        }
-        char buf[0x60];
-        sub_49f820(buf);
-        sub_4a05c0(buf, 0x4d);
-        void* a = self->field_138 ? *(void**)((char*)self->field_138 + 0x15c) : 0;
-        sub_4a0590(buf, a);
-        void* b = player ? *(void**)((char*)player + 0x15c) : 0;
-        sub_4a0590(buf, b);
-        sub_4a0660(buf, buf, buf + 0x1c);
-        void* p = self->field_140;
-        void** vt = *(void***)p;
-        void* fn = vt[0x34/4];
-        ((void(__thiscall*)(void*, void*, int, int, int, void*, void*, int))fn)(p, buf, 2, 2, 1, g_88e334, g_88e338, 1);
-        sub_49f930(buf);
-    }
-    sub_77e6ac(vm + 0x15c);
+namespace RBX
+{
+	namespace Network
+	{
+		class Players::Plugin : public PluginInterfaceAdapter<Players>
+		{
+		public:
+			Plugin(Players* players)
+				: PluginInterfaceAdapter<Players>(players)
+			{
+			}
+		};
+		
+		Players::Players()
+			: players(std::vector<boost::shared_ptr<Instance>>()),
+			  peer(NULL),
+			  maxPlayers(12)
+		{
+			setName("Players");
+			plugin.reset(new Plugin(this));
+		}
+
+		Players::~Players()
+		{
+			if (peer)
+				peer->DetachPlugin(plugin.get());
+
+			peer = NULL;
+		}
+
+		bool Players::clientIsPresent(const Instance* context, bool testInDatamodel)
+		{
+			return Client::clientIsPresent(context, testInDatamodel);
+		}
+
+		bool Players::askAddChild(const Instance* instance) const
+		{
+			return dynamic_cast<const Player*>(instance) != NULL;
+		}
+
+		void Players::setConnection(RakPeerInterface* peer,RBX::IdManager* idManager)
+		{
+			if (this->peer)
+				this->peer->DetachPlugin(plugin.get());
+
+			this->peer = peer;
+ this->idManager = idManager;
+
+			if (peer)
+				peer->AttachPlugin(plugin.get());
+		}
+
+		Player* Players::findLocalPlayer(const Instance* context)
+		{
+			Players* players = ServiceProvider::find<Players>(context);
+			return players ? players->getLocalPlayer() : NULL;
+		}
+
+		ModelInstance* Players::findLocalCharacter(const Instance* context)
+		{
+			Player* player = Players::findLocalPlayer(context);
+			return player ? player->getCharacter() : NULL;
+		}
+
+		void Players::setAbuseReportUrl(std::string value)
+		{
+			if (value.empty())
+				abuseReporter.reset(NULL);
+			else
+				abuseReporter.reset(new AbuseReporter(value));
+		}
+
+		void Players::setMaxPlayers(int value)
+		{
+			if (value != maxPlayers)
+			{
+				maxPlayers = value;
+				raisePropertyChanged(propPlayerMaxCount);
+			}
+		}
+
+		void Players::reportAbuse(boost::shared_ptr<Instance> player, std::string comment)
+		{
+			reportAbuse(dynamic_cast<Player*>(player.get()), comment);
+		}
+
+		void Players::reportAbuse(Player* player, std::string comment)
+		{
+			if (abuseReporter)
+			{
+				StandardOut::singleton()->print(MESSAGE_INFO, "Submitting abuse report from %s", player ? player->getName().c_str() : "[[[anonymous]]]");
+				
+				AbuseReport r;
+				r.submitterID = localPlayer ? localPlayer->getUserID() : 0;
+				r.allegedAbuserID = player ? player->getUserID() : 0;
+				r.comment = comment;
+
+				abuseReporter->add(r, chatHistory);
+			}
+			else
+			{
+				StandardOut::singleton()->print(MESSAGE_INFO, "Sending abuse report to game server via Raknet");
+				if (!peer)
+					throw std::runtime_error("Can\'t report abuse: Not in a networked game");
+
+				RakNet::BitStream bitStream;
+				bitStream << (unsigned char)ID_REPORT_ABUSE;
+				bitStream << (localPlayer ? localPlayer->getUserID() : 0);
+				bitStream << (player ? player->getUserID() : 0);
+				bitStream << comment;
+
+				peer->Send(&bitStream, HIGH_PRIORITY, RELIABLE, 2, UNASSIGNED_SYSTEM_ADDRESS, true);
+			}
+		}
+
+		Player* Players::getPlayerFromCharacter(Instance* character)
+		{
+			Players* players = ServiceProvider::find<Players>(character);
+			if (players)
+			{
+				boost::shared_ptr<Instance> found = players->playerFromCharacter(shared_from(character));
+				return static_cast<Player*>(found.get());
+			}
+			else
+			{
+				return NULL;
+			}
+		}
+
+		
+
+		bool Players::backendProcessing(const Instance* context, bool testInDatamodel)
+		{
+			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
+			RBXASSERT(!testInDatamodel || sp);
+
+			return sp && !Client::clientIsPresent(context, testInDatamodel);
+		}
+
+		bool Players::frontendProcessing(const Instance* context, bool testInDatamodel)
+		{
+			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
+			RBXASSERT(!testInDatamodel || sp);
+
+			return sp && !Server::serverIsPresent(context, testInDatamodel);
+		}
+
+		boost::shared_ptr<Instance> Players::playerFromCharacter(boost::shared_ptr<Instance> character)
+		{
+			boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> myPlayers = getPlayers();
+
+			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = myPlayers->begin();
+			std::vector<boost::shared_ptr<Instance>>::const_iterator end = myPlayers->end();
+
+			for (; iter != end; iter++)
+			{
+				if (static_cast<Player*>(iter->get())->getCharacter() == static_cast<ModelInstance*>(character.get()))
+					return *iter;
+			}
+
+			return boost::shared_ptr<Instance>();
+		}
+
+		boost::shared_ptr<Instance> Players::getPlayerByID(int userID)
+		{
+			std::vector<boost::shared_ptr<Instance>>::const_iterator iter = players->begin();
+			std::vector<boost::shared_ptr<Instance>>::const_iterator end = players->end();
+
+			for (; iter != end; iter++)
+			{
+				if (static_cast<Player*>(iter->get())->getUserID() == userID)
+					return *iter;
+			}
+
+			return boost::shared_ptr<Instance>();
+		}
+
+		void Players::onEvent(const Player* source, CharacterAdded event)
+		{
+			RBXASSERT(backendProcessing(this, true));
+			const_cast<Player*>(source)->rebuildBackpack();
+		}
+
+		void Players::addChatMessage(const ChatMessage& message)
+		{
+			chatHistory.push_front(message);
+
+			while (chatHistory.size() > (size_t)GameSettings::singleton().chatHistory)
+			{
+				chatHistory.pop_back();
+			}
+
+			Notifier<Players, ChatMessage>::raise(message);
+			Player::event_Chatted.fire(message.source.get(), message.message, message.destination);
+		}
+
+		void Players::onChildAdded(Instance* child)
+		{
+			Player* player = dynamic_cast<Player*>(child);
+			if (!player)
+				return;
+
+			if (player->getUserID() > 0)
+			{
+				boost::shared_ptr<Instance> otherPlayer = getPlayerByID(player->getUserID());
+				if (otherPlayer)
+					otherPlayer->setParent(NULL);
+			}
+
+			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myPlayers = players.write();
+			myPlayers->push_back(shared_from(child));
+
+			if (backendProcessing(this, true))
+			{
+				player->Notifier<Player, CharacterAdded>::addListener(this);
+				player->rebuildBackpack();
+
+				if (Teams* teams = ServiceProvider::find<Teams>(this))
+					teams->assignNewPlayerToTeam(player);
+
+				event_PlayerAdded.fire(this, shared_from(player));
+			}
+		}
+		
+		void Players::onChildRemoving(Instance* child)
+		{
+			Player* player = dynamic_cast<Player*>(child);
+			if (!player)
+				return;
+
+			boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myPlayers = players.write();
+			myPlayers->erase(std::find(myPlayers->begin(), myPlayers->end(), shared_from(child)));
+
+			if (backendProcessing(this, false))
+				event_PlayerRemoving.fire(this, shared_from(player));
+
+			Notifier<Player, CharacterAdded>::disconnect(player, this);
+		}
+
+		void Players::onChildChanged(Instance* instance, const PropertyChanged& event)
+		{
+			if (instance == localPlayer.get() && &event.getProperty().getDescriptor() == &Player::prop_SuperSafeChat)
+			{
+				bool s = localPlayer ? Player::prop_SuperSafeChat.getValue(localPlayer.get()) : false;
+				Notifier<Players, SuperSafeChanged>::raise(SuperSafeChanged(s));
+			}
+		}
+
+		// 98% match
+		boost::shared_ptr<Instance> Players::createLocalPlayer(int userId)
+		{
+			if (localPlayer)
+				throw std::runtime_error("Local player already exists");
+
+			localPlayer = Creatable::create<Player>();
+			Player::prop_userId.setValue(localPlayer.get(), userId);
+			localPlayer->setParent(this);
+			raisePropertyChanged(propLocalPlayer);
+
+			bool s = localPlayer ? Player::prop_SuperSafeChat.getValue(localPlayer.get()) : false;
+			Notifier<Players, SuperSafeChanged>::raise(SuperSafeChanged(s));
+
+			return localPlayer;
+		}
+
+		void AbuseReport::addMessage(const ChatMessage& cm)
+		{
+			int userId = cm.source ? Player::prop_userId.getValue(cm.source.get()) : 0;
+			AbuseReport::Message m = {userId, cm.message};
+			messages.push_back(m);
+		}
+
+		AbuseReporter::AbuseReporter(std::string abuseUrl)
+			: _data(new AbuseReporter::data)
+		{
+			requestProcessor.reset(new worker_thread(boost::bind(&AbuseReporter::processRequests, _data, abuseUrl), "rbx_abusereporter"));
+		}
+
+		void AbuseReporter::add(AbuseReport& r, const std::list<ChatMessage>& chatHistory)
+		{
+			std::for_each(chatHistory.begin(), chatHistory.end(), boost::bind(&AbuseReport::addMessage, boost::ref(r), _1));
+
+			{
+				boost::mutex::scoped_lock lock(_data->requestSync);
+				_data->queue.push(r);
+			}
+
+			requestProcessor->wake();
+		}
+	}
 }
+
+namespace RBX { namespace Network { void Players::chat(std::string message){ if(!localPlayer)throw std::runtime_error("No local Player to chat from"); if(!idManager->hasId(localPlayer.get())){ChatMessage event={message,localPlayer,localPlayer};addChatMessage(event);}else{RakNet::BitStream bitStream;bitStream << (unsigned char)0x4c;bitStream << idManager->getId(localPlayer.get());bitStream << message;peer->Send(&bitStream,MEDIUM_PRIORITY,RELIABLE,2,UNASSIGNED_SYSTEM_ADDRESS,true);ChatMessage event={message,localPlayer,boost::shared_ptr<Player>()};Notifier<Players,ChatMessage>::raise(event);}} }}

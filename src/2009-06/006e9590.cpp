@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 006e9590  unit: RBX::PartDropTool  size: 148 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 006e9590
 //

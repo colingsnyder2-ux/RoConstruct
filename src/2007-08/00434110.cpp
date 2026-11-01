@@ -1,84 +1,67 @@
-// from server: 50% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-11.2.2-vc8 Source/Controls/XTTreeCtrlView.cpp
-
-// Candidate translation unit (score above; library headers required).
-// XTTreeCtrl.cpp : implementation file
+// from server: 100% by Yeetserama
+// roc 2007-08 00434110  unit: CClassTreeView  size: 104 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00434110
 //
-// This file is a part of the XTREME CONTROLS MFC class library.
-// (c)1998-2007 Codejock Software, All Rights Reserved.
-//
-// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
-// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
-// CONSENT OF CODEJOCK SOFTWARE.
-//
-// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
-// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
-// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
-// SINGLE COMPUTER.
-//
-// CONTACT INFORMATION:
-// support@codejock.com
-// http://www.codejock.com
-//
-/////////////////////////////////////////////////////////////////////////////
+// 00434110  6aff                 push -1
+// 00434112  68d8df7300           push 0x73dfd8
+// 00434117  64a100000000         mov eax, dword ptr fs:[0]
+// 0043411d  50                   push eax
+// 0043411e  51                   push ecx
+// 0043411f  56                   push esi
+// 00434120  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00434125  33c4                 xor eax, esp
+// 00434127  50                   push eax
+// 00434128  8d44240c             lea eax, [esp + 0xc]
+// 0043412c  64a300000000         mov dword ptr fs:[0], eax
+// 00434132  8bf1                 mov esi, ecx
+// 00434134  89742408             mov dword ptr [esp + 8], esi
+// 00434138  c7060cc47800         mov dword ptr [esi], 0x78c40c
+// 0043413e  c746608cc37800       mov dword ptr [esi + 0x60], 0x78c38c
+// 00434145  8d8ea0000000         lea ecx, [esi + 0xa0]
+// 0043414b  c744241400000000     mov dword ptr [esp + 0x14], 0
+// 00434153  e862c31f00           call 0x6304ba
+// 00434158  8bce                 mov ecx, esi
+// 0043415a  c7442414ffffffff     mov dword ptr [esp + 0x14], 0xffffffff
+// 00434162  e8c90d2300           call 0x664f30
+// 00434167  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0043416b  64890d00000000       mov dword ptr fs:[0], ecx
+// 00434172  59                   pop ecx
+// 00434173  5e                   pop esi
+// 00434174  83c410               add esp, 0x10
+// 00434177  c3                   ret 
+// copied from an identical function in another client (function ??1CClassTreeView@ns_ROCX00001f@@UAE@XZ)
 
-#include "stdafx.h"
-
-#include "XTTreeCtrlView.h"
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTTreeView
-
-CXTTreeView::CXTTreeView()
+namespace ns_ROCX00001f {
+// from server: 100% by king_originala
+struct Primary
 {
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)&GetTreeCtrl();
+    virtual ~Primary();
+    char padding[0x5c];
+};
 
-}
-
-CXTTreeView::~CXTTreeView()
+struct Secondary
 {
-}
+    virtual ~Secondary();
+    char padding[0x3c];
+};
 
-IMPLEMENT_DYNCREATE(CXTTreeView, CTreeView)
-
-BEGIN_MESSAGE_MAP(CXTTreeView, CTreeView)
-	//{{AFX_MSG_MAP(CXTTreeView)
-	ON_TREECTRL_REFLECT()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTTreeCtrl
-
-CXTTreeCtrl::CXTTreeCtrl()
+struct Base : Primary, Secondary
 {
-	m_pTreeCtrl = (CTreeCtrl_Friendly*)this;
-}
+    virtual ~Base();
+};
 
-CXTTreeCtrl::~CXTTreeCtrl()
+struct Member
+{
+    ~Member();
+};
+
+struct CClassTreeView : Base
+{
+    Member member;
+    virtual ~CClassTreeView();
+};
+
+CClassTreeView::~CClassTreeView()
 {
 }
-
-IMPLEMENT_DYNAMIC(CXTTreeCtrl, CTreeCtrl)
-
-BEGIN_MESSAGE_MAP(CXTTreeCtrl, CTreeCtrl)
-	//{{AFX_MSG_MAP(CXTTreeCtrl)
-	ON_TREECTRL_REFLECT()
-	//}}AFX_MSG_MAP
-END_MESSAGE_MAP()
-
-/////////////////////////////////////////////////////////////////////////////
-// CXTTreeCtrl message handlers
+}

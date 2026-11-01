@@ -1,10 +1,4 @@
-// roc 2007-08 00715ae0  unit: CXTCaptionPopupWnd  size: 6 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00715ae0
-//
-// 00715ae0  b84cf07d00           mov eax, 0x7df04c
-// 00715ae5  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 char* func_00715ae0()

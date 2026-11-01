@@ -1,17 +1,7 @@
-// roc 2009-12 0097cd80  unit: seg_00970000  size: 12 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0097cd80
-//
-// 0097cd80  e8fbabefff           call 0x877980
-// 0097cd85  50                   push eax
-// 0097cd86  e89574e7ff           call 0x7f4220
-// 0097cd8b  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX0000e8@ns_ROCX0000e8@@YAHXZ)
-
-namespace ns_ROCX0000e8 {
-extern int G1_func_008929a0();
-extern int __stdcall G2_func_008929a0(int);
-int fn_ROCX0000e8()
+// from server: 100% by auto
+extern int G1_func_0097cd80();
+extern int __stdcall G2_func_0097cd80(int);
+int func_0097cd80()
 {
-    return G2_func_008929a0(G1_func_008929a0());
-}
+    return G2_func_0097cd80(G1_func_0097cd80());
 }

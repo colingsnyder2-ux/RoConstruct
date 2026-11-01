@@ -1,32 +1,4 @@
-// roc 2009-06 004310c0  unit: MVCXTPPropertyGridItem::?$XItem  size: 70 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 004310c0
-//
-// 004310c0  83ec20               sub esp, 0x20
-// 004310c3  8b442424             mov eax, dword ptr [esp + 0x24]
-// 004310c7  d900                 fld dword ptr [eax]
-// 004310c9  56                   push esi
-// 004310ca  83ec08               sub esp, 8
-// 004310cd  dd1c24               fstp qword ptr [esp]
-// 004310d0  8bf1                 mov esi, ecx
-// 004310d2  8d4c240c             lea ecx, [esp + 0xc]
-// 004310d6  68603b8b00           push 0x8b3b60
-// 004310db  51                   push ecx
-// 004310dc  ff1538e98900         call dword ptr [0x89e938]
-// 004310e2  83c40c               add esp, 0xc
-// 004310e5  8d542408             lea edx, [esp + 8]
-// 004310e9  8bcc                 mov ecx, esp
-// 004310eb  8964242c             mov dword ptr [esp + 0x2c], esp
-// 004310ef  52                   push edx
-// 004310f0  ff1508fd8900         call dword ptr [0x89fd08]
-// 004310f6  8b06                 mov eax, dword ptr [esi]
-// 004310f8  8b5060               mov edx, dword ptr [eax + 0x60]
-// 004310fb  8bce                 mov ecx, esi
-// 004310fd  ffd2                 call edx
-// 004310ff  5e                   pop esi
-// 00431100  83c420               add esp, 0x20
-// 00431103  c20400               ret 4
-// copied from an identical function in another client (function ?setValue@S@@QAEXPBM@Z)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // from server: 97% by colin

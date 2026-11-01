@@ -1,23 +1,10 @@
-// from server: 52% by atomic.potato
-struct S {
-    char pad0[0x28];
-    void* field28;
-    int field2c;
-    int field30;
-    int field34;
-    int field38;
-};
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: boost-1.40.0 roc_espclaude_d3a72d03c3966d61.cpp
 
-extern "C" void __stdcall sub_409480(void*);
-
-S* __fastcall sub_412100(S* self, void* unused, void* arg) {
-    sub_409480(arg);
-    self->field28 = (void*)0x8ad294;
-    self->field2c = 0;
-    self->field30 = 0;
-    self->field34 = 0;
-    self->field38 = -1;
-    *(void**)self = (void*)0x8af4bc;
-    self->field28 = (void*)0x8af4b4;
-    return self;
-}
+// Candidate translation unit (score above; library headers required).
+#include <boost/date_time/gregorian/greg_month.hpp>
+#include <boost/exception/exception.hpp>
+template boost::exception_detail::enable_error_info_return_type<boost::gregorian::bad_month>::type boost::enable_error_info<boost::gregorian::bad_month>(boost::gregorian::bad_month const&);

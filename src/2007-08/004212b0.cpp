@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 004212b0  unit: CSelectionTreeCtrl  size: 493 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004212b0
 //

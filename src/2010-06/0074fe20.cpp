@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 0074fe20  unit: RBX::Humanoid  size: 71 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 0074fe20
 //

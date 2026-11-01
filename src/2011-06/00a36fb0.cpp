@@ -1,9 +1,4 @@
-// roc 2011-06 00a36fb0  unit: seg_00a30000  size: 1 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00a36fb0
-//
-// 00a36fb0  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 void func_00a36fb0()
 {
 }

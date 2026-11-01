@@ -1,9 +1,4 @@
-// roc 2007-08 0040d280  unit: ChatEnter  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0040d280
-//
-// 0040d280  e9fbfaffff           jmp 0x40cd80
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_0040d280();
 void func_0040d280()
 {

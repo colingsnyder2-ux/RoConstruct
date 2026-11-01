@@ -1,10 +1,4 @@
-// roc 2007-08 006a0400  unit: CXTPDockingPaneAutoHidePanel  size: 4 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006a0400
-//
-// 006a0400  8b4114               mov eax, dword ptr [ecx + 0x14]
-// 006a0403  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_006a0400 {
     char pad0[20];
     int m_x;

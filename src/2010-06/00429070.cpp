@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: xtp-11.2.2-lib-imports roc_espeon_nativepngrowsourcea42c1dc54d2add70.cpp
+// roc-flags: /O2 /GS- /EHsc /MD /arch:SSE2
+// roc-lib: xtp-11.2.2-lib-imports roc_claudeM_55bb15a72a4fb4db.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias(<atlimage.h>, <roc_espeon_nativeatlimagewidthdecl2e5804ac680a6dd9.cpp>)
@@ -47,19 +48,19 @@ static __declspec(noinline) void SetIcon(CXTPImageManager* manager,UINT id,const
  text.Format("\"%s_%d_H\"",name,size);loadIcon(manager,id,text.MakeUpper(),xtpImageHot);
  }
 }
-void __cdecl InitializeIcons(CXTPImageManager* manager)
+__declspec(noinline) void __cdecl InitializeIcons(CXTPImageManager* manager)
 {
     manager->RemoveIcon(0x80BB);
     SetIcon(manager, 0x80BB, "stop", 16);
     SetIcon(manager, 0x80BB, "stop", 32);
 
     manager->RemoveIcon(0x80BD);
-    SetIcon(manager, 0x80BD, "refresh_doc", 16);
-    SetIcon(manager, 0x80BD, "refresh_doc", 32);
+    SetIcon(manager, 0x80BD, "home_brown", 16);
+    SetIcon(manager, 0x80BD, "home_brown", 32);
 
     manager->RemoveIcon(0x80BC);
-    SetIcon(manager, 0x80BC, "home_brown", 16);
-    SetIcon(manager, 0x80BC, "home_brown", 32);
+    SetIcon(manager, 0x80BC, "refresh_doc", 16);
+    SetIcon(manager, 0x80BC, "refresh_doc", 32);
 
     manager->RemoveIcon(0x80BA);
     SetIcon(manager, 0x80BA, "arrowleft_green", 16);
@@ -69,3 +70,101 @@ void __cdecl InitializeIcons(CXTPImageManager* manager)
     SetIcon(manager, 0x80B9, "arrowright_green", 16);
     SetIcon(manager, 0x80B9, "arrowright_green", 32);
 }
+
+void __cdecl InitializeAllIcons(CXTPImageManager* manager)
+{
+    InitializeIcons(manager);
+
+    manager->RemoveIcon(0xE100);
+    SetIcon(manager, 0xE100, "new_document", 16);
+    SetIcon(manager, 0xE100, "new_document", 32);
+
+    manager->RemoveIcon(0xE101);
+    SetIcon(manager, 0xE101, "open_document", 16);
+    SetIcon(manager, 0xE101, "open_document", 32);
+
+    manager->RemoveIcon(0xE103);
+    SetIcon(manager, 0xE103, "save", 16);
+    SetIcon(manager, 0xE103, "save", 32);
+
+    manager->RemoveIcon(0xE12B);
+    SetIcon(manager, 0xE12B, "undo", 16);
+    SetIcon(manager, 0xE12B, "undo", 32);
+
+    manager->RemoveIcon(0xE12C);
+    SetIcon(manager, 0xE12C, "redo", 16);
+    SetIcon(manager, 0xE12C, "redo", 32);
+
+    manager->RemoveIcon(0xE120);
+    SetIcon(manager, 0xE120, "delete_x", 16);
+    SetIcon(manager, 0xE120, "delete_x", 32);
+
+    manager->RemoveIcon(0xE122);
+    SetIcon(manager, 0xE122, "copy_clipboard", 16);
+    SetIcon(manager, 0xE122, "copy_clipboard", 32);
+
+    manager->RemoveIcon(0xE123);
+    SetIcon(manager, 0xE123, "cut_clipboard", 16);
+    SetIcon(manager, 0xE123, "cut_clipboard", 32);
+
+    manager->RemoveIcon(0xE125);
+    SetIcon(manager, 0xE125, "paste_clipboard", 16);
+    SetIcon(manager, 0xE125, "paste_clipboard", 32);
+
+    manager->RemoveIcon(0x8040);
+    SetIcon(manager, 0x8040, "paintcan", 16);
+    SetIcon(manager, 0x8040, "paintcan", 32);
+
+    manager->RemoveIcon(0x8073);
+    SetIcon(manager, 0x8073, "lock", 16);
+    SetIcon(manager, 0x8073, "lock", 32);
+
+    manager->RemoveIcon(0x8010);
+    SetIcon(manager, 0x8010, "lock", 16);
+    SetIcon(manager, 0x8010, "lock", 32);
+
+    manager->RemoveIcon(0x8011);
+    SetIcon(manager, 0x8011, "lock_open", 16);
+    SetIcon(manager, 0x8011, "lock_open", 32);
+
+    manager->RemoveIcon(0x80DA);
+    SetIcon(manager, 0x80DA, "recycle", 16);
+    SetIcon(manager, 0x80DA, "recycle", 32);
+
+    manager->RemoveIcon(0x80F1);
+    SetIcon(manager, 0x80F1, "script_go", 16);
+    SetIcon(manager, 0x80F1, "script_go", 32);
+
+    manager->RemoveIcon(0x80F3);
+    SetIcon(manager, 0x80F3, "report", 16);
+    SetIcon(manager, 0x80F3, "report", 32);
+
+    manager->RemoveIcon(0x800F);
+    SetIcon(manager, 0x800F, "table", 16);
+    SetIcon(manager, 0x800F, "table", 32);
+
+    manager->RemoveIcon(0x80E2);
+    SetIcon(manager, 0x80E2, "text_list_numbers", 16);
+    SetIcon(manager, 0x80E2, "text_list_numbers", 32);
+
+    manager->RemoveIcon(0x80BF);
+    SetIcon(manager, 0x80BF, "world", 16);
+    SetIcon(manager, 0x80BF, "world", 32);
+
+    manager->RemoveIcon(0x8101);
+    SetIcon(manager, 0x8101, "bug_error", 16);
+    SetIcon(manager, 0x8101, "bug_error", 32);
+
+    manager->RemoveIcon(0x8100);
+    SetIcon(manager, 0x8100, "shield", 16);
+    SetIcon(manager, 0x8100, "shield", 32);
+
+    manager->RemoveIcon(0x803A);
+    SetIcon(manager, 0x803A, "ungroup", 16);
+    SetIcon(manager, 0x803A, "ungroup", 32);
+
+    manager->RemoveIcon(0x8039);
+    SetIcon(manager, 0x8039, "group", 16);
+    SetIcon(manager, 0x8039, "group", 32);
+}
+

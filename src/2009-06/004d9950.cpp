@@ -1,162 +1,49 @@
-// from server: 29% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-render AggregatingSceneManager.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "RenderLib/AggregatingSceneManager.h"
-
-namespace RBX
+#include <string.h>
+typedef unsigned int BitSize_t;
+extern void* (*rakMalloc)(size_t);
+extern void* (*rakRealloc)(void*, size_t);
+#define BITS_TO_BYTES(x) (((x)+7)>>3)
+#define BITSTREAM_STACK_ALLOCATION_SIZE 1024
+namespace RakNet {
+class BitStream {
+public:
+	void AddBitsAndReallocate( const BitSize_t numberOfBitsToWrite );
+	BitSize_t numberOfBitsUsed;
+	BitSize_t numberOfBitsAllocated;
+	BitSize_t readOffset;
+	unsigned char *data;
+	bool copyData;
+	unsigned char stackData[BITSTREAM_STACK_ALLOCATION_SIZE];
+};
+void BitStream::AddBitsAndReallocate( const BitSize_t numberOfBitsToWrite )
 {
-	namespace Render
+	if ( numberOfBitsToWrite <= 0 )
+		return;
+	BitSize_t newNumberOfBitsAllocated = numberOfBitsToWrite + numberOfBitsUsed;
+	if ( numberOfBitsToWrite + numberOfBitsUsed > 0 && ( ( numberOfBitsAllocated - 1 ) >> 3 ) < ( ( newNumberOfBitsAllocated - 1 ) >> 3 ) )
 	{
-		AggregatingSceneManager::AggregatingSceneManager(RenderScene* renderScene)
-			: SceneManager(renderScene)
+		newNumberOfBitsAllocated = ( numberOfBitsToWrite + numberOfBitsUsed ) * 2;
+		if (newNumberOfBitsAllocated - ( numberOfBitsToWrite + numberOfBitsUsed ) > 1048576 )
+			newNumberOfBitsAllocated = numberOfBitsToWrite + numberOfBitsUsed + 1048576;
+		BitSize_t amountToAllocate = BITS_TO_BYTES( newNumberOfBitsAllocated );
+		if (data==(unsigned char*)stackData)
 		{
-		}
-
-		AggregatingSceneManager::~AggregatingSceneManager() {}
-
-		void AggregatingSceneManager::addModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			addToScene(chunk);
-		}
-
-		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			invalidSleepingModels.erase(chunk);
-			invalidMovingModels.erase(chunk);
-
-			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-			if (aggregate.notNull())
-				deconstructAggregate(aggregate);
-
-			removeFromScene(chunk);
-			dequeueSleepingChunk(chunk);
-		}
-
-		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
-		{
-			if (sleeping)
+			if (amountToAllocate > BITSTREAM_STACK_ALLOCATION_SIZE)
 			{
-				bool erased = invalidMovingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidSleepingModels.insert(chunk);
-
-				queueSleepingChunk(chunk);
-			}
-			else
-			{
-				bool erased = invalidSleepingModels.erase(chunk) == 1;
-
-				if (erased)
-					invalidMovingModels.insert(chunk);
-
-				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
-				if (aggregate.notNull())
-					deconstructAggregate(aggregate);
-
-				dequeueSleepingChunk(chunk);
+				data = ( unsigned char* ) rakMalloc( amountToAllocate );
+				memcpy ((void *)data, (void *)stackData, BITS_TO_BYTES( numberOfBitsAllocated ));
 			}
 		}
-
-		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
+		else
 		{
-			if (isSleeping)
-				invalidSleepingModels.insert(chunk);
-			else
-				invalidMovingModels.insert(chunk);
-		}
-
-		void AggregatingSceneManager::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				if (iter->second->dequeueSleepingChunk(chunk))
-					break;
-			}
-		}
-
-		void AggregatingSceneManager::clear()
-		{
-			invalidSleepingModels.clear();
-			invalidMovingModels.clear();
-
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.begin();
-			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator end = buckets.end();
-
-			for (; iter != end; iter++)
-			{
-				iter->second->clear();
-			}
-
-			clearScene();
-		}
-
-		bool AggregatingSceneManager::Bucket::dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			std::vector<G3D::ReferenceCountedPointer<Chunk>>::iterator found = std::find(queue.begin(), queue.end(), chunk);
-
-			if (found != queue.end())
-			{
-				queue.erase(found);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		void AggregatingSceneManager::queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk)
-		{
-			G3D::ReferenceCountedPointer<Bucket> queue;
-
-			{
-				BucketKey key(chunk);
-
-				std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket>>::iterator iter = buckets.find(key);
-
-				if (iter == buckets.end())
-				{
-					queue = new Bucket;
-					buckets[key] = queue;
-				}
-				else
-				{
-					queue = iter->second;
-				}
-			}
-
-			queue->addToQueue(chunk);
-		}
-
-		bool AggregatingSceneManager::BucketKey::operator<(const AggregatingSceneManager::BucketKey& that) const
-		{
-			if (this->material < that.material)
-				return true;
-			if (this->material > that.material)
-				return false;
-
-			if (this->castsShadows < that.castsShadows)
-				return true;
-			if (this->castsShadows > that.castsShadows)
-				return false;
-
-			if (this->polygonOffset < that.polygonOffset)
-				return true;
-			if (this->polygonOffset > that.polygonOffset)
-				return false;
-
-			if (this->cullable < that.cullable)
-				return true;
-			else
-				return false;
+			data = ( unsigned char* ) rakRealloc( data, amountToAllocate );
 		}
 	}
+	if ( newNumberOfBitsAllocated > numberOfBitsAllocated )
+		numberOfBitsAllocated = newNumberOfBitsAllocated;
+}
 }

@@ -1,38 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0056f750  unit: RBX::VBrickColor::?$TypedPropertyDescriptor  size: 73 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0056f750
-//
-// 0056f750  51                   push ecx
-// 0056f751  56                   push esi
-// 0056f752  57                   push edi
-// 0056f753  8b7c2414             mov edi, dword ptr [esp + 0x14]
-// 0056f757  8bf1                 mov esi, ecx
-// 0056f759  8bcf                 mov ecx, edi
-// 0056f75b  e8b0d00000           call 0x57c810
-// 0056f760  84c0                 test al, al
-// 0056f762  752f                 jne 0x56f793
-// 0056f764  8d442414             lea eax, [esp + 0x14]
-// 0056f768  50                   push eax
-// 0056f769  8d4f10               lea ecx, [edi + 0x10]
-// 0056f76c  e87fcd0000           call 0x57c4f0
-// 0056f771  84c0                 test al, al
-// 0056f773  741e                 je 0x56f793
-// 0056f775  8b4c2414             mov ecx, dword ptr [esp + 0x14]
-// 0056f779  51                   push ecx
-// 0056f77a  8d4c240c             lea ecx, [esp + 0xc]
-// 0056f77e  e80d690400           call 0x5b6090
-// 0056f783  8b4e18               mov ecx, dword ptr [esi + 0x18]
-// 0056f786  8b11                 mov edx, dword ptr [ecx]
-// 0056f788  8b520c               mov edx, dword ptr [edx + 0xc]
-// 0056f78b  50                   push eax
-// 0056f78c  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0056f790  50                   push eax
-// 0056f791  ffd2                 call edx
-// 0056f793  5f                   pop edi
-// 0056f794  5e                   pop esi
-// 0056f795  59                   pop ecx
-// 0056f796  c20c00               ret 0xc
-
 #include <memory>
 #include <string>
 

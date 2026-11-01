@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 004ae600  unit: VerbBinderJob  size: 117 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 004ae600
 //

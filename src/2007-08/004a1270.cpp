@@ -1,3 +1,4 @@
+// from server: 100% by colin
 // roc 2007-08 004a1270  unit: RBX::Network::VServer::?$BoundFuncDesc  size: 122 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004a1270
 //

@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 00938be0  unit: Ogre::VRbxTextureCompositorSceneManager::?$sp_counted_impl_p  size: 89 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 00938be0
 //

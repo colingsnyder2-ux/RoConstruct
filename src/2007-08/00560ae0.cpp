@@ -1,21 +1,8 @@
-// from server: 65% by colin
-extern "C" void* __stdcall sub_0077E698();
-
-struct RBX_Instance
-{
-    void method_00560600();
-};
-
-struct RBX_FilteredSelection : RBX_Instance
-{
-    void method_00560AE0(const char* name);
-};
-
-void RBX_FilteredSelection::method_00560AE0(const char* name)
-{
-    char buffer[28];
-    void* p = buffer;
-    sub_0077E698();
-    method_00560600();
-    *(void**)this = (void*)0x7a9544;
-}
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string>
+struct B{virtual ~B(){}; B(std::string,int);};
+struct CutVerb:B{CutVerb(int);};
+CutVerb::CutVerb(int p):B("Controller1",p){}

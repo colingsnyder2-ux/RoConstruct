@@ -1,29 +1,4 @@
-// roc 2011-06 00726850  unit: RBX::VBadgeService::?$BoundYieldFuncDesc  size: 46 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00726850
-//
-// 00726850  51                   push ecx
-// 00726851  56                   push esi
-// 00726852  8bf1                 mov esi, ecx
-// 00726854  8b4604               mov eax, dword ptr [esi + 4]
-// 00726857  8b08                 mov ecx, dword ptr [eax]
-// 00726859  50                   push eax
-// 0072685a  51                   push ecx
-// 0072685b  8d44240c             lea eax, [esp + 0xc]
-// 0072685f  50                   push eax
-// 00726860  8bce                 mov ecx, esi
-// 00726862  e8d9fcffff           call 0x726540
-// 00726867  8b4e04               mov ecx, dword ptr [esi + 4]
-// 0072686a  51                   push ecx
-// 0072686b  e8e8370e00           call 0x80a058
-// 00726870  83c404               add esp, 4
-// 00726873  33c0                 xor eax, eax
-// 00726875  894604               mov dword ptr [esi + 4], eax
-// 00726878  894608               mov dword ptr [esi + 8], eax
-// 0072687b  5e                   pop esi
-// 0072687c  59                   pop ecx
-// 0072687d  c3                   ret 
-// copied from an identical function in another client (function ?_Tidy@?$_Tree@V?$_Tmap_traits@HUValue16@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUValue16@@@std@@@3@$0A@@std@@@std@@IAEXXZ)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD

@@ -1,3 +1,4 @@
+// from server: 100% by colin
 // roc 2007-08 004806c0  unit: G3D::Win32Window  size: 5268 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004806c0
 //

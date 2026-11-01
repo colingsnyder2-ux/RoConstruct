@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /MD /GS /EHsc /Ob1
-// roc-lib: xtp-11.2.2-shared-mfc Source\ReportControl\XTPReportColumn.cpp
+// roc-lib: xtp-11.2.2-lib-strlen Source\ReportControl\XTPReportColumn.cpp
 
 // Candidate translation unit (score above; library headers required).
 // XTPReportColumn.cpp : implementation of the CXTPReportColumn class.

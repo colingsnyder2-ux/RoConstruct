@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 005bd9f0  unit: RBX::VPVInstance::?$EnumPropDescriptor  size: 108 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 005bd9f0
 //

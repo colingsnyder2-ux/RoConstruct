@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007814d0  unit: CXTPStatusBar  size: 15 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007814d0
 //

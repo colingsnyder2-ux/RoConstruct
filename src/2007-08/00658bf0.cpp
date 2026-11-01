@@ -1,41 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 00658bf0  unit: CXTPReportControl  size: 98 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00658bf0
-//
-// 00658bf0  83ec08               sub esp, 8
-// 00658bf3  56                   push esi
-// 00658bf4  8bf1                 mov esi, ecx
-// 00658bf6  8b8624020000         mov eax, dword ptr [esi + 0x224]
-// 00658bfc  3b442410             cmp eax, dword ptr [esp + 0x10]
-// 00658c00  7542                 jne 0x658c44
-// 00658c02  8d4c2404             lea ecx, [esp + 4]
-// 00658c06  51                   push ecx
-// 00658c07  ff1554ec7700         call dword ptr [0x77ec54]
-// 00658c0d  85c0                 test eax, eax
-// 00658c0f  7433                 je 0x658c44
-// 00658c11  8b4620               mov eax, dword ptr [esi + 0x20]
-// 00658c14  8d542404             lea edx, [esp + 4]
-// 00658c18  52                   push edx
-// 00658c19  50                   push eax
-// 00658c1a  ff1550ec7700         call dword ptr [0x77ec50]
-// 00658c20  8b442408             mov eax, dword ptr [esp + 8]
-// 00658c24  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 00658c28  8b16                 mov edx, dword ptr [esi]
-// 00658c2a  8b92bc010000         mov edx, dword ptr [edx + 0x1bc]
-// 00658c30  50                   push eax
-// 00658c31  8b86b8010000         mov eax, dword ptr [esi + 0x1b8]
-// 00658c37  51                   push ecx
-// 00658c38  8b8eb4010000         mov ecx, dword ptr [esi + 0x1b4]
-// 00658c3e  50                   push eax
-// 00658c3f  51                   push ecx
-// 00658c40  8bce                 mov ecx, esi
-// 00658c42  ffd2                 call edx
-// 00658c44  8bce                 mov ecx, esi
-// 00658c46  e8f375fdff           call 0x63023e
-// 00658c4b  5e                   pop esi
-// 00658c4c  83c408               add esp, 8
-// 00658c4f  c20400               ret 4
-
 struct CXTPReportControl {
     int field0;
     int field4;

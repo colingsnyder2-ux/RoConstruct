@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2010-06 007933c0  unit: RBX::CircleRadialNormal  size: 39 bytes
 // Make this compile to the exact bytes below, then: roc check 2010-06 007933c0
 //

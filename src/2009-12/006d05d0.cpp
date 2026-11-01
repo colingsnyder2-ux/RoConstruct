@@ -4,18 +4,9 @@ struct S
     void f();
 };
 
-struct CalleeClass
-{
-    void call(const void *);
-};
-
-typedef void (CalleeClass::*CalleeFunc)(const void *);
-
-extern "C" CalleeClass *getCallee(void *);
-extern "C" CalleeFunc getCalleeFunc();
+extern "C" void __stdcall sub_0040C080(void *, const void *);
 
 void S::f()
 {
-    CalleeClass *callee = getCallee((char *)this - 0xa4);
-    (callee->*getCalleeFunc())( (const void *)0x00b92a00 );
+    sub_0040C080((char *)this - 0xa4, (const void *)0x00b92a00);
 }

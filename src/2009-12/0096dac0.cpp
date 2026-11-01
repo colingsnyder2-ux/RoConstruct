@@ -1,30 +1,9 @@
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-appdraw Fonts.cpp
+// from server: 100% by auto
+extern char G;
 
-// Candidate translation unit (score above; library headers required).
-#include "AppDraw/Fonts.h"
-#include "util/ContentProvider.h"
-
-namespace RBX
+extern char G2_func_0096dac0;
+extern void G1_func_0096dac0(void*);
+void func_0096dac0()
 {
-    static G3D::GFontRef fontRef;
-
-    G3D::GFontRef Fonts::getFont()
-    {
-        if (fontRef.isNull())
-        {
-            try
-            {
-                std::string filePath = "Fonts\\comics.fnt";
-                fontRef = G3D::GFont::fromFile(ContentProvider::singleton().getAssetFile(filePath));
-            }
-            catch (std::exception)
-            {
-            }
-        }
-
-        return fontRef;
-    }
+    G1_func_0096dac0(&G2_func_0096dac0);
 }

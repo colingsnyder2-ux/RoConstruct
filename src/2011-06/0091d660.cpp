@@ -1,11 +1,4 @@
-// roc 2011-06 0091d660  unit: RBX::ViewRbxGfx  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0091d660
-//
-// 0091d660  8b410c               mov eax, dword ptr [ecx + 0xc]
-// 0091d663  8b80cc0a0000         mov eax, dword ptr [eax + 0xacc]
-// 0091d669  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct I_func_0091d660 {
     char pad[2764];
     int m_x;

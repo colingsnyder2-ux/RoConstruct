@@ -1,18 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 0063a190  unit: CRobloxControlColorSelector  size: 30 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0063a190
-//
-// 0063a190  8b542408             mov edx, dword ptr [esp + 8]
-// 0063a194  8b01                 mov eax, dword ptr [ecx]
-// 0063a196  8b80e8000000         mov eax, dword ptr [eax + 0xe8]
-// 0063a19c  52                   push edx
-// 0063a19d  8b542408             mov edx, dword ptr [esp + 8]
-// 0063a1a1  52                   push edx
-// 0063a1a2  6a00                 push 0
-// 0063a1a4  ffd0                 call eax
-// 0063a1a6  b801000000           mov eax, 1
-// 0063a1ab  c20800               ret 8
-
 struct CRobloxControlColorSelector {
     virtual void vfunc_000();
     virtual void vfunc_004();

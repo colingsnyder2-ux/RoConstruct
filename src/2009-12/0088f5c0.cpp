@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 0088f5c0  unit: ATL::D::DV?$ChTraitsCRT::DV?$StrTraitMFC_DLL::IIV?$CStringT::?$CMap  size: 103 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 0088f5c0
 //

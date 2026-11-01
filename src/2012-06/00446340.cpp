@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2012-06 00446340  unit: RBX::Lua::IAsyncResult  size: 112 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 00446340
 //

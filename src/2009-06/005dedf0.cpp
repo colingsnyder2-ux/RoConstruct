@@ -1,108 +1,56 @@
-// from server: 58% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+namespace boost { template<class T> class shared_ptr { T* px; void* pn; }; }
+namespace RBX {
+class Name { public: static const Name& declare(const char* name); };
+namespace Reflection {
+class ClassDescriptor;
+class Type { public: template<class T> static const Type& singleton(); };
+template<class T> struct ExeCounter { static int n; };
+template<class T> inline const Type& countedType() { ++ExeCounter<T>::n; return Type::singleton<T>(); }
+class Value { public: Value(); ~Value(); char pad[8]; };
+class FunctionDescriptor {
+public:
+    enum Security { AnyCaller };
+    struct Signature {
+        const Type* resultType; char pad[0x20];
+        void addArgument(const Name& name, const Type& type, const Value& def);
+    };
+protected:
+    FunctionDescriptor(ClassDescriptor& c, const char* name, Security security);
+public:
+    virtual ~FunctionDescriptor();
+    char pad[0x10];
+    Signature signature;
+};
+template<class Class> class FuncDesc : public FunctionDescriptor {
+public:
+    FuncDesc(const char* name, Security security)
+        : FunctionDescriptor(Class::classDescriptor(), name, security) {}
+};
+template<class Class, class Function, int N> class BoundFuncDesc;
+template<class Class, class R, class Arg1> class BoundFuncDesc<Class, R(Arg1), 1> : public FuncDesc<Class> {
+public:
+    typedef R (Class::*FunctionSig)(Arg1);
+    FunctionSig function;
+    Value default1;
+    void declareSignature(const char* arg1Name)
+    {
+        signature.resultType = &countedType<R>();
+        signature.addArgument(Name::declare(arg1Name), countedType<Arg1>(), default1);
+    }
+    BoundFuncDesc(FunctionSig function, const char* name, const char* arg1Name, Security security)
+        : FuncDesc<Class>(name, security), function(function)
+    {
+        declareSignature(arg1Name);
+    }
+    virtual ~BoundFuncDesc() {}
+};
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+class Instance { public: virtual void f(); static Reflection::ClassDescriptor& classDescriptor(); };
+class ExeBase2 { public: virtual void g(); };
+class Target2009 : public Instance, public ExeBase2 { };
+template class Reflection::BoundFuncDesc<Target2009, void(boost::shared_ptr<Instance>), 1>;
 }

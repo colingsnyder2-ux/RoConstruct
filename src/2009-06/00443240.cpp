@@ -1,9 +1,4 @@
-// roc 2009-06 00443240  unit: RBX::CRenderSettings::W4MaterialQuality::?$EnumDesc  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00443240
-//
-// 00443240  e99bffffff           jmp 0x4431e0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00443240();
 void func_00443240()
 {

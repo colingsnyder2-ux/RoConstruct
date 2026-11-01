@@ -1,11 +1,4 @@
-// roc 2009-06 007ba180  unit: CXTPRibbonBar  size: 13 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 007ba180
-//
-// 007ba180  8b8168020000         mov eax, dword ptr [ecx + 0x268]
-// 007ba186  8b80e0010000         mov eax, dword ptr [eax + 0x1e0]
-// 007ba18c  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct I_func_007ba180 {
     char pad[480];
     int m_x;

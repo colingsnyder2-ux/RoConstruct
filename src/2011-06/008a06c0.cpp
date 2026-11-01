@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2011-06 008a06c0  unit: UtagACCEL::?$CArray  size: 91 bytes
 // Make this compile to the exact bytes below, then: roc check 2011-06 008a06c0
 //

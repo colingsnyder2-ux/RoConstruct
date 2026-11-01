@@ -1,7 +1,8 @@
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: boost-1.34.1-dll roc_bind_factory_pairs_b0adafe46fc3a2a5.cpp
+// roc-lib: boost-1.34.1-dll roc_bind_factory_matrix_88fcf2790ed4c606.cpp
 
 // Candidate translation unit (score above; library headers required).
 // Declaration excerpt from RBLXDecomp/RBXGSdecomp at
@@ -108,63 +109,51 @@ typedef boost::shared_ptr<DHTMLWindow> FactoryOwner;
 typedef boost::weak_ptr<RBX::Instance> FactoryWeak;
 typedef boost::reference_wrapper<RBX::Reflection::PropertyDescriptor const> FactoryProperty;
 
-
-typedef void (DHTMLWindow::*PairFactory180Method)(InstancePtr, int);
-typedef boost::_bi::list_av_3<FactoryOwner, InstancePtr, int >::type PairFactory180Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, DHTMLWindow, InstancePtr, int >, PairFactory180Args> PairFactory180Bound;
-template PairFactory180Bound boost::bind<void, DHTMLWindow, InstancePtr, int, FactoryOwner, InstancePtr, int >(PairFactory180Method, FactoryOwner, InstancePtr, int);
-
-typedef void (DHTMLWindow::*PairFactory181Method)(InstancePtr, int);
-typedef boost::_bi::list_av_3<DHTMLWindow*, InstancePtr, int >::type PairFactory181Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, DHTMLWindow, InstancePtr, int >, PairFactory181Args> PairFactory181Bound;
-template PairFactory181Bound boost::bind<void, DHTMLWindow, InstancePtr, int, DHTMLWindow*, InstancePtr, int >(PairFactory181Method, DHTMLWindow*, InstancePtr, int);
-
-typedef void (*PairFactory182Method)(InstancePtr, int);
-typedef boost::_bi::list_av_2<InstancePtr, int >::type PairFactory182Args;
-typedef boost::_bi::bind_t<void, PairFactory182Method, PairFactory182Args> PairFactory182Bound;
-template PairFactory182Bound boost::bind<void, InstancePtr, int, InstancePtr, int >(PairFactory182Method, InstancePtr, int);
-
-typedef void (DHTMLWindow::*PairFactory183Method)(InstancePtr, bool);
-typedef boost::_bi::list_av_3<FactoryOwner, InstancePtr, bool >::type PairFactory183Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, DHTMLWindow, InstancePtr, bool >, PairFactory183Args> PairFactory183Bound;
-template PairFactory183Bound boost::bind<void, DHTMLWindow, InstancePtr, bool, FactoryOwner, InstancePtr, bool >(PairFactory183Method, FactoryOwner, InstancePtr, bool);
-
-typedef void (DHTMLWindow::*PairFactory184Method)(InstancePtr, bool);
-typedef boost::_bi::list_av_3<DHTMLWindow*, InstancePtr, bool >::type PairFactory184Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, DHTMLWindow, InstancePtr, bool >, PairFactory184Args> PairFactory184Bound;
-template PairFactory184Bound boost::bind<void, DHTMLWindow, InstancePtr, bool, DHTMLWindow*, InstancePtr, bool >(PairFactory184Method, DHTMLWindow*, InstancePtr, bool);
-
-typedef void (*PairFactory185Method)(InstancePtr, bool);
-typedef boost::_bi::list_av_2<InstancePtr, bool >::type PairFactory185Args;
-typedef boost::_bi::bind_t<void, PairFactory185Method, PairFactory185Args> PairFactory185Bound;
-template PairFactory185Bound boost::bind<void, InstancePtr, bool, InstancePtr, bool >(PairFactory185Method, InstancePtr, bool);
-
-typedef void (DHTMLWindow::*PairFactory186Method)(InstancePtr, float);
-typedef boost::_bi::list_av_3<FactoryOwner, InstancePtr, float >::type PairFactory186Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, DHTMLWindow, InstancePtr, float >, PairFactory186Args> PairFactory186Bound;
-template PairFactory186Bound boost::bind<void, DHTMLWindow, InstancePtr, float, FactoryOwner, InstancePtr, float >(PairFactory186Method, FactoryOwner, InstancePtr, float);
-
-typedef void (DHTMLWindow::*PairFactory187Method)(InstancePtr, float);
-typedef boost::_bi::list_av_3<DHTMLWindow*, InstancePtr, float >::type PairFactory187Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, DHTMLWindow, InstancePtr, float >, PairFactory187Args> PairFactory187Bound;
-template PairFactory187Bound boost::bind<void, DHTMLWindow, InstancePtr, float, DHTMLWindow*, InstancePtr, float >(PairFactory187Method, DHTMLWindow*, InstancePtr, float);
-
-typedef void (*PairFactory188Method)(InstancePtr, float);
-typedef boost::_bi::list_av_2<InstancePtr, float >::type PairFactory188Args;
-typedef boost::_bi::bind_t<void, PairFactory188Method, PairFactory188Args> PairFactory188Bound;
-template PairFactory188Bound boost::bind<void, InstancePtr, float, InstancePtr, float >(PairFactory188Method, InstancePtr, float);
-
-typedef void (DHTMLWindow::*PairFactory189Method)(InstancePtr, double);
-typedef boost::_bi::list_av_3<FactoryOwner, InstancePtr, double >::type PairFactory189Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, DHTMLWindow, InstancePtr, double >, PairFactory189Args> PairFactory189Bound;
-template PairFactory189Bound boost::bind<void, DHTMLWindow, InstancePtr, double, FactoryOwner, InstancePtr, double >(PairFactory189Method, FactoryOwner, InstancePtr, double);
-
-typedef void (DHTMLWindow::*PairFactory190Method)(InstancePtr, double);
-typedef boost::_bi::list_av_3<DHTMLWindow*, InstancePtr, double >::type PairFactory190Args;
-typedef boost::_bi::bind_t<void, boost::_mfi::mf2<void, DHTMLWindow, InstancePtr, double >, PairFactory190Args> PairFactory190Bound;
-template PairFactory190Bound boost::bind<void, DHTMLWindow, InstancePtr, double, DHTMLWindow*, InstancePtr, double >(PairFactory190Method, DHTMLWindow*, InstancePtr, double);
-
-typedef void (*PairFactory191Method)(InstancePtr, double);
-typedef boost::_bi::list_av_2<InstancePtr, double >::type PairFactory191Args;
-typedef boost::_bi::bind_t<void, PairFactory191Method, PairFactory191Args> PairFactory191Bound;
-template PairFactory191Bound boost::bind<void, InstancePtr, double, InstancePtr, double >(PairFactory191Method, InstancePtr, double);
+typedef void (DHTMLWindow::*Factory12Method)(double);
+typedef boost::_bi::list_av_2<FactoryOwner, double >::type Factory12Args;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, double >, Factory12Args> Factory12Bound;
+template Factory12Bound boost::bind<void, DHTMLWindow, double, FactoryOwner, double >(Factory12Method, FactoryOwner, double);
+typedef void (DHTMLWindow::*Factory13Method)(double);
+typedef boost::_bi::list_av_2<DHTMLWindow*, double >::type Factory13Args;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, double >, Factory13Args> Factory13Bound;
+template Factory13Bound boost::bind<void, DHTMLWindow, double, DHTMLWindow*, double >(Factory13Method, DHTMLWindow*, double);
+typedef void (*Factory14Method)(double);
+typedef boost::_bi::list_av_1<double >::type Factory14Args;
+typedef boost::_bi::bind_t<void, Factory14Method, Factory14Args> Factory14Bound;
+template Factory14Bound boost::bind<void, double, double >(Factory14Method, double);
+typedef void (DHTMLWindow::*Factory15Method)(void*);
+typedef boost::_bi::list_av_2<FactoryOwner, void* >::type Factory15Args;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, void* >, Factory15Args> Factory15Bound;
+template Factory15Bound boost::bind<void, DHTMLWindow, void*, FactoryOwner, void* >(Factory15Method, FactoryOwner, void*);
+typedef void (DHTMLWindow::*Factory16Method)(void*);
+typedef boost::_bi::list_av_2<DHTMLWindow*, void* >::type Factory16Args;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, void* >, Factory16Args> Factory16Bound;
+template Factory16Bound boost::bind<void, DHTMLWindow, void*, DHTMLWindow*, void* >(Factory16Method, DHTMLWindow*, void*);
+typedef void (*Factory17Method)(void*);
+typedef boost::_bi::list_av_1<void* >::type Factory17Args;
+typedef boost::_bi::bind_t<void, Factory17Method, Factory17Args> Factory17Bound;
+template Factory17Bound boost::bind<void, void*, void* >(Factory17Method, void*);
+typedef void (DHTMLWindow::*Factory18Method)(std::string);
+typedef boost::_bi::list_av_2<FactoryOwner, std::string >::type Factory18Args;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, std::string >, Factory18Args> Factory18Bound;
+template Factory18Bound boost::bind<void, DHTMLWindow, std::string, FactoryOwner, std::string >(Factory18Method, FactoryOwner, std::string);
+typedef void (DHTMLWindow::*Factory19Method)(std::string);
+typedef boost::_bi::list_av_2<DHTMLWindow*, std::string >::type Factory19Args;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, std::string >, Factory19Args> Factory19Bound;
+template Factory19Bound boost::bind<void, DHTMLWindow, std::string, DHTMLWindow*, std::string >(Factory19Method, DHTMLWindow*, std::string);
+typedef void (*Factory20Method)(std::string);
+typedef boost::_bi::list_av_1<std::string >::type Factory20Args;
+typedef boost::_bi::bind_t<void, Factory20Method, Factory20Args> Factory20Bound;
+template Factory20Bound boost::bind<void, std::string, std::string >(Factory20Method, std::string);
+typedef void (DHTMLWindow::*Factory21Method)(InstancePtr);
+typedef boost::_bi::list_av_2<FactoryOwner, InstancePtr >::type Factory21Args;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, InstancePtr >, Factory21Args> Factory21Bound;
+template Factory21Bound boost::bind<void, DHTMLWindow, InstancePtr, FactoryOwner, InstancePtr >(Factory21Method, FactoryOwner, InstancePtr);
+typedef void (DHTMLWindow::*Factory22Method)(InstancePtr);
+typedef boost::_bi::list_av_2<DHTMLWindow*, InstancePtr >::type Factory22Args;
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, DHTMLWindow, InstancePtr >, Factory22Args> Factory22Bound;
+template Factory22Bound boost::bind<void, DHTMLWindow, InstancePtr, DHTMLWindow*, InstancePtr >(Factory22Method, DHTMLWindow*, InstancePtr);
+typedef void (*Factory23Method)(InstancePtr);
+typedef boost::_bi::list_av_1<InstancePtr >::type Factory23Args;
+typedef boost::_bi::bind_t<void, Factory23Method, Factory23Args> Factory23Bound;
+template Factory23Bound boost::bind<void, InstancePtr, InstancePtr >(Factory23Method, InstancePtr);

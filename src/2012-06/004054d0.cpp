@@ -1,33 +1,89 @@
-// roc 2012-06 004054d0  unit: ATL::CRegObject  size: 63 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 004054d0
-//
-// 004054d0  56                   push esi
-// 004054d1  8d7104               lea esi, [ecx + 4]
-// 004054d4  8d442408             lea eax, [esp + 8]
-// 004054d8  50                   push eax
-// 004054d9  8bce                 mov ecx, esi
-// 004054db  e8b0f5ffff           call 0x404a90
-// 004054e0  83f8ff               cmp eax, -1
-// 004054e3  7506                 jne 0x4054eb
-// 004054e5  33c0                 xor eax, eax
-// 004054e7  5e                   pop esi
-// 004054e8  c20400               ret 4
-// 004054eb  85c0                 test eax, eax
-// 004054ed  7c0f                 jl 0x4054fe
-// 004054ef  3b4608               cmp eax, dword ptr [esi + 8]
-// 004054f2  7d0a                 jge 0x4054fe
-// 004054f4  8b4e04               mov ecx, dword ptr [esi + 4]
-// 004054f7  8b0481               mov eax, dword ptr [ecx + eax*4]
-// 004054fa  5e                   pop esi
-// 004054fb  c20400               ret 4
-// 004054fe  6a00                 push 0
-// 00405500  6a00                 push 0
-// 00405502  6a01                 push 1
-// 00405504  688c0000c0           push 0xc000008c
-// 00405509  ff15c021b200         call dword ptr [0xb221c0]
-// copied from an identical function in another client (function ?StrFromMap@CRegObject@ATL@@QAEPB_WPAD@Z)
-
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /MD
 // roc-lib: atl-9.0-rtm roc_atl_static_registry_wide_dc589bf9570d98db.cpp
+
+// Candidate translation unit (score above; library headers required).
+#define _CPPUNWIND
+#define _ATL_APARTMENT_THREADED
+#define _ATL_STATIC_REGISTRY
+#include <atlbase.h>
+
+HRESULT __stdcall roc_update_registry_from_resource_s(
+    ATL::CAtlModule* module,
+    LPCOLESTR resource,
+    BOOL registerResource,
+    ATL::_ATL_REGMAP_ENTRY* entries) throw()
+{
+    ATL::CRegObject registrar;
+    HRESULT result = registrar.FinalConstruct();
+    if (FAILED(result))
+        return result;
+
+    if (entries != NULL)
+    {
+        while (entries->szKey != NULL)
+        {
+            registrar.AddReplacement(entries->szKey, entries->szData);
+            entries++;
+        }
+    }
+
+    result = module->AddCommonRGSReplacements(&registrar);
+    if (FAILED(result))
+        return result;
+
+    USES_CONVERSION_EX;
+    TCHAR modulePath[MAX_PATH];
+    HINSTANCE instance = ATL::_AtlBaseModule.GetModuleInstance();
+    DWORD length = GetModuleFileName(instance, modulePath, MAX_PATH);
+    if (length == 0)
+        return ATL::AtlHresultFromLastError();
+    if (length == MAX_PATH)
+        return HRESULT_FROM_WIN32(ERROR_INSUFFICIENT_BUFFER);
+
+    LPOLESTR wideModule = T2OLE_EX(modulePath, _ATL_SAFE_ALLOCA_DEF_THRESHOLD);
+    if (wideModule == NULL)
+        return E_OUTOFMEMORY;
+
+    OLECHAR unquotedModule[_MAX_PATH * 2];
+    ATL::CAtlModule::EscapeSingleQuote(
+        unquotedModule, _countof(unquotedModule), wideModule);
+
+    HRESULT replacementResult;
+    if (instance == NULL || instance == GetModuleHandle(NULL))
+    {
+        OLECHAR quotedModule[(_MAX_PATH + _ATL_QUOTES_SPACE) * 2];
+        quotedModule[0] = OLESTR('"');
+        if (!ocscpy_s(
+                quotedModule + 1,
+                (_MAX_PATH + _ATL_QUOTES_SPACE) * 2 - 1,
+                unquotedModule))
+            return E_FAIL;
+
+        size_t quoteLength = ocslen(quotedModule);
+        quotedModule[quoteLength] = OLESTR('"');
+        quotedModule[quoteLength + 1] = 0;
+        replacementResult = registrar.AddReplacement(
+            OLESTR("Module"), quotedModule);
+    }
+    else
+    {
+        replacementResult = registrar.AddReplacement(
+            OLESTR("Module"), unquotedModule);
+    }
+
+    if (FAILED(replacementResult))
+        return replacementResult;
+
+    replacementResult = registrar.AddReplacement(
+        OLESTR("Module_Raw"), unquotedModule);
+    if (FAILED(replacementResult))
+        return replacementResult;
+
+    LPCOLESTR type = OLESTR("REGISTRY");
+    return registerResource
+        ? registrar.ResourceRegisterSz(wideModule, resource, type)
+        : registrar.ResourceUnregisterSz(wideModule, resource, type);
+}

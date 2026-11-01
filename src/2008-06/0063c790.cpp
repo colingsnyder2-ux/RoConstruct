@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0063c790  unit: RBX::VSeat::?$FactoryProduct  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0063c790
-//
-// 0063c790  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0063c794  83f803               cmp eax, 3
-// 0063c797  741e                 je 0x63c7b7
-// 0063c799  8b542408             mov edx, dword ptr [esp + 8]
-// 0063c79d  c644240c00           mov byte ptr [esp + 0xc], 0
-// 0063c7a2  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 0063c7a6  51                   push ecx
-// 0063c7a7  50                   push eax
-// 0063c7a8  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0063c7ac  52                   push edx
-// 0063c7ad  50                   push eax
-// 0063c7ae  e87dfdffff           call 0x63c530
-// 0063c7b3  83c410               add esp, 0x10
-// 0063c7b6  c3                   ret 
-// 0063c7b7  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0063c7bb  c701f0159600         mov dword ptr [ecx], 0x9615f0
-// 0063c7c1  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

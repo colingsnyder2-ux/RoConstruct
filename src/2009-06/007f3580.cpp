@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 007f3580  unit: CXTPTabClientWnd::CNavigateButtonActiveFiles  size: 31 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 007f3580
 //

@@ -1,9 +1,4 @@
-// roc 2007-08 00492070  unit: RBX::Network::VPlayer::?$Listener  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00492070
-//
-// 00492070  e91bf7ffff           jmp 0x491790
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00492070();
 void func_00492070()
 {

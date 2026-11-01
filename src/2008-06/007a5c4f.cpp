@@ -1,20 +1,4 @@
 // from server: 100% by colin
-// roc 2008-06 007a5c4f  unit: CXTIconHandle  size: 28 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 007a5c4f
-//
-// 007a5c4f  8bff                 mov edi, edi
-// 007a5c51  56                   push esi
-// 007a5c52  8bf1                 mov esi, ecx
-// 007a5c54  8d4e14               lea ecx, [esi + 0x14]
-// 007a5c57  e8e4bbc5ff           call 0x401840
-// 007a5c5c  33c0                 xor eax, eax
-// 007a5c5e  89462c               mov dword ptr [esi + 0x2c], eax
-// 007a5c61  894630               mov dword ptr [esi + 0x30], eax
-// 007a5c64  894634               mov dword ptr [esi + 0x34], eax
-// 007a5c67  8bc6                 mov eax, esi
-// 007a5c69  5e                   pop esi
-// 007a5c6a  c3                   ret 
-
 // from server: 70% by EspClaude
 // from server: 61% by atomic.potato
 // roc 2008-06 007a5c4f  unit: CXTIconHandle  size: 52 bytes

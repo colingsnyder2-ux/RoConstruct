@@ -1,10 +1,4 @@
-// roc 2007-08 00643c40  unit: CXTPReportControl  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00643c40
-//
-// 00643c40  8b81c4000000         mov eax, dword ptr [ecx + 0xc4]
-// 00643c46  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 struct S_func_00643c40 {
     char pad0[196];
     int m_x;

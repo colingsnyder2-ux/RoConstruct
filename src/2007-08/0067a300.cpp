@@ -1,9 +1,4 @@
-// roc 2007-08 0067a300  unit: CXTPControlComboBoxGalleryPopupBar  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0067a300
-//
-// 0067a300  e9abd0ffff           jmp 0x6773b0
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_0067a300();
 void func_0067a300()
 {

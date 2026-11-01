@@ -1,13 +1,43 @@
-// roc-lang: cpp
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_dispatchboundearlyreturn0f5e49173a845214.cpp
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedExchangeAdd)
 
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
-typedef boost::shared_ptr<void> Shared;
-struct Receiver {void invoke(boost::function<void()>);};
-extern void callback(Shared,Shared);
-void dispatch(Shared first,boost::shared_ptr<Receiver> receiver,int operation,Shared second){if(operation!=1)return;receiver->invoke(boost::bind(callback,first,second));}
+inline void increment(volatile long* count)
+{
+    _InterlockedIncrement(count);
+}
+
+struct Control {
+    void* reserved;
+    volatile long references;
+};
+
+struct Shared {
+    void* object;
+    Control* control;
+
+    Shared(const Shared& other);
+    ~Shared();
+};
+
+inline Shared::Shared(const Shared& other)
+    : object(other.object), control(other.control)
+{
+    if (control)
+        increment(&control->references);
+}
+
+struct S {
+    void (__cdecl *callback)(Shared, Shared);
+    Shared first;
+    Shared second;
+
+    void f();
+};
+
+void S::f()
+{
+    callback(first, second);
+}

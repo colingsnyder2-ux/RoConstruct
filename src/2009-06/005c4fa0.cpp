@@ -1,23 +1,4 @@
-// roc 2009-06 005c4fa0  unit: seg_005c0000  size: 35 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 005c4fa0
-//
-// 005c4fa0  55                   push ebp
-// 005c4fa1  8bec                 mov ebp, esp
-// 005c4fa3  51                   push ecx
-// 005c4fa4  894dfc               mov dword ptr [ebp - 4], ecx
-// 005c4fa7  8b45fc               mov eax, dword ptr [ebp - 4]
-// 005c4faa  50                   push eax
-// 005c4fab  8b4dfc               mov ecx, dword ptr [ebp - 4]
-// 005c4fae  8b5110               mov edx, dword ptr [ecx + 0x10]
-// 005c4fb1  52                   push edx
-// 005c4fb2  8b4d08               mov ecx, dword ptr [ebp + 8]
-// 005c4fb5  e836c3ffff           call 0x5c12f0
-// 005c4fba  8b4508               mov eax, dword ptr [ebp + 8]
-// 005c4fbd  8be5                 mov esp, ebp
-// 005c4fbf  5d                   pop ebp
-// 005c4fc0  c20400               ret 4
-// copied from an identical function in another client (function ?end@?$vector@VEdgePlus@?$ConvexClipper@M@Wml@@V?$allocator@VEdgePlus@?$ConvexClipper@M@Wml@@@std@@@std@@QAE?AV?$_Vector_iterator@VEdgePlus@?$ConvexClipper@M@Wml@@V?$allocator@VEdgePlus@?$ConvexClipper@M@Wml@@@std@@@2@XZ)
-
+// from server: 100% by colin
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 21022

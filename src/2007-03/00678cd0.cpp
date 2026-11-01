@@ -1,11 +1,10 @@
-// roc 2007-03 00678cd0  unit: seg_00670000  size: 7 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 00678cd0
-//
-// 00678cd0  8b81e4000000         mov eax, dword ptr [ecx + 0xe4]
-// 00678cd6  c3                   ret 
-// library mfc-8.0/atlmfc\src\mfc\dbview.cpp (function ?IsDeleted@CRecordset@@QBEHXZ)
-
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-8.0 atlmfc/src/mfc/dbview.cpp
+// from server: 100% by auto
+struct S_func_00678cd0 {
+    char pad0[228];
+    int m_x;
+    int f();
+};
+int S_func_00678cd0::f()
+{
+    return m_x;
+}

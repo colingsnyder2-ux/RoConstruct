@@ -1,16 +1,4 @@
-// roc 2010-06 00824e70  unit: CXTPControlGalleryPaintManager  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00824e70
-//
-// 00824e70  8bc1                 mov eax, ecx
-// 00824e72  33c9                 xor ecx, ecx
-// 00824e74  c700e850a600         mov dword ptr [eax], 0xa650e8
-// 00824e7a  894804               mov dword ptr [eax + 4], ecx
-// 00824e7d  894810               mov dword ptr [eax + 0x10], ecx
-// 00824e80  89480c               mov dword ptr [eax + 0xc], ecx
-// 00824e83  894808               mov dword ptr [eax + 8], ecx
-// 00824e86  c3                   ret 
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern char G;
 
 extern char G;

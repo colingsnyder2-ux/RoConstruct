@@ -1,9 +1,4 @@
-// roc 2007-08 00453990  unit: CRobloxReportDocView  size: 5 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00453990
-//
-// 00453990  e98bfcffff           jmp 0x453620
-// auto-matched from its assembly shape
-
+// from server: 100% by auto
 extern void G1_func_00453990();
 void func_00453990()
 {

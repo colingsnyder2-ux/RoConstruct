@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-06 0071bb60  unit: CXTPControlComboBoxList  size: 29 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 0071bb60
 //

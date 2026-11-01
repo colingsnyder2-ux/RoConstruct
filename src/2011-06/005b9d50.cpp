@@ -1,32 +1,4 @@
-// roc 2011-06 005b9d50  unit: RBX::VBrickColor::?$TypedPropertyDescriptor  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 005b9d50
-//
-// 005b9d50  56                   push esi
-// 005b9d51  8b742408             mov esi, dword ptr [esp + 8]
-// 005b9d55  85f6                 test esi, esi
-// 005b9d57  742c                 je 0x5b9d85
-// 005b9d59  8b0e                 mov ecx, dword ptr [esi]
-// 005b9d5b  85c9                 test ecx, ecx
-// 005b9d5d  7409                 je 0x5b9d68
-// 005b9d5f  8b01                 mov eax, dword ptr [ecx]
-// 005b9d61  8b5004               mov edx, dword ptr [eax + 4]
-// 005b9d64  ffd2                 call edx
-// 005b9d66  eb05                 jmp 0x5b9d6d
-// 005b9d68  b8447ac000           mov eax, 0xc07a44
-// 005b9d6d  6860a6c200           push 0xc2a660
-// 005b9d72  8bc8                 mov ecx, eax
-// 005b9d74  ff15500aa400         call dword ptr [0xa40a50]
-// 005b9d7a  84c0                 test al, al
-// 005b9d7c  7407                 je 0x5b9d85
-// 005b9d7e  8b06                 mov eax, dword ptr [esi]
-// 005b9d80  83c004               add eax, 4
-// 005b9d83  5e                   pop esi
-// 005b9d84  c3                   ret 
-// 005b9d85  33c0                 xor eax, eax
-// 005b9d87  5e                   pop esi
-// 005b9d88  c3                   ret 
-// copied from an identical function in another client (function ?fn_ROCX000000_00642c10@@YAPAXPAUAny@@@Z)
-
+// from server: 100% by colin
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /EHsc /MD
 #include <typeinfo>

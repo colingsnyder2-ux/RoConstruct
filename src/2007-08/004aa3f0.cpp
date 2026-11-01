@@ -1,6 +1,4 @@
-// from compiler repair: 100% by colin
-// roc 2007-08 004aa3f0  unit: RBX::VInstance::?$NonFactoryProduct  size: 18 bytes
-
+// from server: 100% by colin
 struct S {
 };
 

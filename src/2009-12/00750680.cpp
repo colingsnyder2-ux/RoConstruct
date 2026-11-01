@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2009-12 00750680  unit: RBX::VLocalBackpack::?$FactoryProduct  size: 180 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-12 00750680
 //

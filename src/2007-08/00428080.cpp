@@ -1,24 +1,29 @@
-// from server: 40% by colin
-struct COleException {
-    void* p;
-    COleException();
+// from server: 100% by Yeetserama
+// from server: 100% by colin
+struct S;
+
+extern S &(__cdecl *G_append)(S &, const char *);
+extern const char *(__thiscall *G_text)(S *);
+extern void __cdecl G_func_00427c20(int, const char *);
+
+struct S
+{
+    unsigned int storage;
+    __declspec(dllimport) S();
+    __declspec(dllimport) ~S() throw();
 };
 
-extern "C" {
-    void __stdcall sub_77ddac(void*);
-    void __stdcall sub_77dd94(void*, const char*);
-    void* __stdcall sub_77dd98(void*);
-    void __stdcall sub_77ddbc(void*);
-    void __cdecl sub_427c40(void*, int);
-}
-
-COleException::COleException()
+struct Crash
 {
-    void* local;
-    sub_77ddac(&local);
-    sub_77dd94(&local, "Pure Call Error");
-    void* p = sub_77dd98(&local);
-    sub_427c40(p, 1);
-    *(int*)0 = *(int*)4;
-    sub_77ddbc(&local);
+    int value;
+    int source;
+};
+
+void func_004282a0()
+{
+    S message;
+    G_append(message, "Pure Call Error");
+    G_func_00427c20(1, G_text(&message));
+    Crash *p = 0;
+    p->value = p->source;
 }

@@ -1,16 +1,4 @@
 // from server: 100% by auto
-// roc 2008-06 006e3490  unit: CXTPCustomizeSheet::CCustomizeEdit  size: 23 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 006e3490
-//
-// 006e3490  8bc1                 mov eax, ecx
-// 006e3492  33c9                 xor ecx, ecx
-// 006e3494  c70084688500         mov dword ptr [eax], 0x856884
-// 006e349a  894804               mov dword ptr [eax + 4], ecx
-// 006e349d  894810               mov dword ptr [eax + 0x10], ecx
-// 006e34a0  89480c               mov dword ptr [eax + 0xc], ecx
-// 006e34a3  894808               mov dword ptr [eax + 8], ecx
-// 006e34a6  c3                   ret 
-
 extern char G;
 
 extern char G;

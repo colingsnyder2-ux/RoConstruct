@@ -1,130 +1,38 @@
-// from server: 55% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 30729
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/Script.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-#include "script/ScriptContext.h"
-#include "v8tree/Service.h"
-#include "boost/thread/once.hpp"
-
-using namespace RBX;
-
-const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::LEGACY);
-const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::LEGACY);
-Reflection::BoundProp<bool, true> Script::prop_Disabled("Disabled", "Behavior", &Script::disabled, Reflection::PropertyDescriptor::STANDARD);
-
-static boost::shared_ptr<const std::string> helloWorld;
-static boost::once_flag flagInitScriptCpp = BOOST_ONCE_INIT;
-
-void initScriptCpp()
+namespace RBX {
+struct ClassDescriptor;
+struct B0 { virtual void f0(); char p[0x10]; };
+struct B14 { virtual void f1(); };
+struct B18 { virtual void f2(); const ClassDescriptor* descriptor; };
+struct B20 { virtual void f3(); char p[0x68]; };
+struct B8c { virtual void f4(); char p[0x1c]; };
+struct Bac { virtual void f5(); char p[0x74]; };
+struct B124 { virtual void f6(); };
+class BodyMover : public B0, public B14, public B18, public B20, public B8c, public Bac, public B124 {
+public:
+    BodyMover(const char* name);
+    virtual ~BodyMover();
+};
+template<class T> struct Described { static ClassDescriptor& classDescriptor(); };
+template<class T> struct Counter { static int count; };
+extern const char* sBodyVelocity;
+class BodyVelocity;
+template<class Class, class DerivedClass, const char* const* ClassName>
+class FactoryProduct : public DerivedClass {
+public:
+    template<class Arg0Type> FactoryProduct(Arg0Type arg0) : DerivedClass(arg0) {}
+    virtual ~FactoryProduct() {}
+};
+class __declspec(novtable) BodyVelocity : public FactoryProduct<BodyVelocity, BodyMover, &sBodyVelocity> {
+public:
+    BodyVelocity(const char* name);
+};
+BodyVelocity::BodyVelocity(const char* name) : FactoryProduct<BodyVelocity, BodyMover, &sBodyVelocity>(name)
 {
-    helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
+    descriptor = &Described<BodyVelocity>::classDescriptor();
+    ++Counter<BodyVelocity>::count;
 }
-
-const char* RBX::sScript = "Script";
-
-Script::Script()
-    : DescribedCreatable("Script"),
-      disabled(false),
-      owner(NULL)
-{
-    boost::call_once(&initScriptCpp, flagInitScriptCpp);
-    embeddedSource = helloWorld;
-}
-
-const char* RBX::sLocalScript = "LocalScript";
-
-LocalScript::LocalScript()
-{
-    setName("LocalScript");
-}
-
-Script::~Script()
-{
-    RBXASSERT(owner == NULL);
-}
-
-void Script::setEmbeddedCode(const std::string& value)
-{
-    if (getEmbeddedCode() != value)
-    {
-        embeddedSource.reset(new std::string(value));
-        raisePropertyChanged(prop_EmbeddedSourceCode);
-    }
-}
-
-void Script::setScriptId(const ContentId& value)
-{
-    if (getScriptId() != value)
-    {
-        scriptId = value;
-        requestCode();
-        raisePropertyChanged(prop_SourceCodeId);
-    }
-}
-
-void Script::onAncestorChanged(const AncestorChanged& event)
-{
-    Instance::onAncestorChanged(event);
-
-    IScriptOwner* newOwner = NULL;
-    Instance* parent = this->getParent();
-
-    while (parent)
-    {
-        IScriptOwner* parentOwner = dynamic_cast<IScriptOwner*>(parent);
-
-        if (parentOwner)
-        {
-            newOwner = parentOwner->scriptShouldRun(this);
-
-            if (newOwner)
-                break;
-        }
-
-        parent = parent->getParent();
-    }
-
-    if (newOwner != owner)
-    {
-        if (owner)
-            owner->releaseScript(this);
-
-        owner = newOwner;
-
-        ScriptContext* sc = ServiceProvider::find<ScriptContext>(this);
-
-        if (sc)
-        {
-            sc->removeScript(this);
-
-            if (owner)
-                owner->runScript(this, sc);
-        }
-    }
-}
-
-void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-{
-	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
-	{
-		sc->removeScript(this);
-	}
-
-	Instance::onServiceProvider(oldProvider, newProvider);
-}
-
-boost::shared_ptr<const std::string> Script::requestCode()
-{
-    if (scriptId.isNull())
-    {
-        return embeddedSource;
-    }
-    else 
-    {
-        return ContentProvider::singleton().requestContentString(scriptId);
-    }
 }

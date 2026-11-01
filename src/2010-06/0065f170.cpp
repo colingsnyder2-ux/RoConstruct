@@ -1,44 +1,4 @@
-// roc 2010-06 0065f170  unit: RBX::Backpack  size: 98 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0065f170
-//
-// 0065f170  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0065f174  33c9                 xor ecx, ecx
-// 0065f176  3bc1                 cmp eax, ecx
-// 0065f178  7441                 je 0x65f1bb
-// 0065f17a  83f801               cmp eax, 1
-// 0065f17d  743c                 je 0x65f1bb
-// 0065f17f  83f802               cmp eax, 2
-// 0065f182  744d                 je 0x65f1d1
-// 0065f184  83f803               cmp eax, 3
-// 0065f187  7521                 jne 0x65f1aa
-// 0065f189  56                   push esi
-// 0065f18a  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 0065f18e  8b0e                 mov ecx, dword ptr [esi]
-// 0065f190  68f8b6bb00           push 0xbbb6f8
-// 0065f195  ff15d8a89e00         call dword ptr [0x9ea8d8]
-// 0065f19b  0fb6c0               movzx eax, al
-// 0065f19e  f7d8                 neg eax
-// 0065f1a0  1bc0                 sbb eax, eax
-// 0065f1a2  23442408             and eax, dword ptr [esp + 8]
-// 0065f1a6  8906                 mov dword ptr [esi], eax
-// 0065f1a8  5e                   pop esi
-// 0065f1a9  c3                   ret 
-// 0065f1aa  8b442408             mov eax, dword ptr [esp + 8]
-// 0065f1ae  c700f8b6bb00         mov dword ptr [eax], 0xbbb6f8
-// 0065f1b4  884804               mov byte ptr [eax + 4], cl
-// 0065f1b7  884805               mov byte ptr [eax + 5], cl
-// 0065f1ba  c3                   ret 
-// 0065f1bb  8b442408             mov eax, dword ptr [esp + 8]
-// 0065f1bf  3bc1                 cmp eax, ecx
-// 0065f1c1  740e                 je 0x65f1d1
-// 0065f1c3  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0065f1c7  8b11                 mov edx, dword ptr [ecx]
-// 0065f1c9  8910                 mov dword ptr [eax], edx
-// 0065f1cb  8b4904               mov ecx, dword ptr [ecx + 4]
-// 0065f1ce  894804               mov dword ptr [eax + 4], ecx
-// 0065f1d1  c3                   ret 
-// copied from an identical function in another client (function ?manage@@YAXABTfunction_buffer@@AAT1@W4functor_manager_operation_type@@@Z)
-
+// from server: 100% by colin
 #include <typeinfo>
 #include <new>
 

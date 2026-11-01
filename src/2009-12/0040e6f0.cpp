@@ -1,22 +1,4 @@
-// roc 2009-12 0040e6f0  unit: UIEnumConnectionPoints::V?$CComEnum::?$CComObject  size: 33 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0040e6f0
-//
-// 0040e6f0  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 0040e6f4  834118ff             add dword ptr [ecx + 0x18], -1
-// 0040e6f8  56                   push esi
-// 0040e6f9  8b7118               mov esi, dword ptr [ecx + 0x18]
-// 0040e6fc  750d                 jne 0x40e70b
-// 0040e6fe  85c9                 test ecx, ecx
-// 0040e700  7409                 je 0x40e70b
-// 0040e702  8b01                 mov eax, dword ptr [ecx]
-// 0040e704  8b501c               mov edx, dword ptr [eax + 0x1c]
-// 0040e707  6a01                 push 1
-// 0040e709  ffd2                 call edx
-// 0040e70b  8bc6                 mov eax, esi
-// 0040e70d  5e                   pop esi
-// 0040e70e  c20400               ret 4
-// copied from an identical function in another client (function ?Release@?$CComObject@VCComEnumConnectionPoints@ATL@@@ATL@@UAGKXZ)
-
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 struct GUID;

@@ -98,8 +98,8 @@ namespace RBX
 			return *contactManager;
 		}
 		ClumpStage* getClumpStage();
-		const CollisionStage* getCollisionStage() const;
-		CollisionStage* getCollisionStage();
+
+
 		const SleepStage* getSleepStage() const;
 		SleepStage* getSleepStage();
 		SimJobStage& getSimJobStage();

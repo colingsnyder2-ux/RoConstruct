@@ -120,12 +120,31 @@ for name, offset in notifiers:
     position = layout_log.index(marker)
     assert "| -%d" % offset in layout_log[position:position + 300], name
 assert native_bases[".?AVService@RBX@@"] == 0x1b1
-paths = [source, ROOT / "rebuild/2008-06/native-headers/util/RunStateOwner.h", ROOT / "rebuild/2008-06/native-headers/util/Events.h", ROOT / "rebuild/2008-06/tests/NativeRunServiceLayout.cpp", Path(__file__)]
+# Relocation masking does not validate the primary vtable contents.
+original_primary_slot0 = read32(0x82d4c4)
+assert original_primary_slot0 == 0x47d410 and pe.get_data(original_primary_slot0 - base, 1) == b"\xc3"
+vtables = [name for name in definitions if name.startswith("??_7RunService@RBX@@6B?$GuidItem@")]
+assert len(vtables) == 1
+vtable_start, vtable_section = definitions[vtables[0]]
+vtable_table = sections[vtable_section]
+primary_symbol = None
+for index in range(vtable_table[7]):
+    offset, symbol, kind = struct.unpack_from("<IIH", obj, vtable_table[5] + 10 * index)
+    if offset == vtable_start:
+        primary_symbol = symbols[symbol][0]
+assert primary_symbol and primary_symbol.startswith("?onGuidChanged@?$GuidItem@VInstance@RBX@@")
+slot_name, slot_body, slot_relocs = next((name, body, refs) for name, body, refs in match.coff_functions(obj)
+                                          if name == primary_symbol)
+assert slot_body == b"\xc3" and not slot_relocs
+primary_vtable = dict(original_slot0=hex(original_primary_slot0), original_body="ret",
+                      candidate_slot0=primary_symbol, compatible=True,
+                      source="roc_instance_guid_callback_5e8a3f385d045a38.cpp")
+paths = [source, ROOT / "rebuild/2008-06/native-headers/util/RunStateOwner.h", ROOT / "rebuild/2008-06/native-headers/util/Events.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", ROOT / "rebuild/2008-06/tests/NativeRunServiceLayout.cpp", Path(__file__)]
 receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
-               compiler_build=21022, flags=flags, compile_exit=code, size=0x2d8, offsets=list(offsets), notifier_bases=dict(notifiers), original_sha256=hashlib.sha256(original.read_bytes()).hexdigest(), methods=results,
-               scope="Inactive compiler proof; runDisabled field, call/data relocations and runtime linking remain unverified.")
+               compiler_build=21022, flags=flags, compile_exit=code, size=0x2d8, offsets=list(offsets), primary_vtable=primary_vtable, notifier_bases=dict(notifiers), original_sha256=hashlib.sha256(original.read_bytes()).hexdigest(), methods=results,
+               scope="Inactive compiler proof; primary slot 0 matches; remaining virtual slots, runDisabled field, call/data relocations and runtime linking remain unverified.")
 output = ROOT / "work/2008-06" / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + "\n")
-print("PASS: RunService constructor, state transitions and notifier callbacks match")
+print("PASS: RunService bodies and primary vtable slot match")

@@ -1,19 +1,4 @@
 // from server: 100% by colin
-// roc 2007-08 005cfcb0  unit: RBX::VLocalBackpackItem::?$FactoryProduct  size: 80 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005cfcb0
-//
-// 005cfcb0  c701eca77b00         mov dword ptr [ecx], 0x7ba7ec
-// 005cfcb6  c74104e0a77b00       mov dword ptr [ecx + 4], 0x7ba7e0
-// 005cfcbd  c74110d8a77b00       mov dword ptr [ecx + 0x10], 0x7ba7d8
-// 005cfcc4  c74114c8a77b00       mov dword ptr [ecx + 0x14], 0x7ba7c8
-// 005cfccb  c7412cb8a77b00       mov dword ptr [ecx + 0x2c], 0x7ba7b8
-// 005cfcd2  c74144a8a77b00       mov dword ptr [ecx + 0x44], 0x7ba7a8
-// 005cfcd9  c7415c98a77b00       mov dword ptr [ecx + 0x5c], 0x7ba798
-// 005cfce0  c7417488a77b00       mov dword ptr [ecx + 0x74], 0x7ba788
-// 005cfce7  c7818c00000078a77b00 mov dword ptr [ecx + 0x8c], 0x7ba778
-// 005cfcf1  c781e800000070a77b00 mov dword ptr [ecx + 0xe8], 0x7ba770
-// 005cfcfb  e960d2e3ff           jmp 0x40cf60
-
 struct RBX_VLocalBackpackItem_FactoryProduct {
     void construct();
     int field0;

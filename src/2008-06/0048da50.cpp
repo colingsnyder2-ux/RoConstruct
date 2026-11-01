@@ -1,25 +1,4 @@
 // from server: 100% by tester
-// roc 2008-06 0048da50  unit: RBX::Reflection::Z::$$A6AXM::?$TSignalDesc::TSignalInstance  size: 50 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0048da50
-//
-// 0048da50  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0048da54  83f803               cmp eax, 3
-// 0048da57  741e                 je 0x48da77
-// 0048da59  8b542408             mov edx, dword ptr [esp + 8]
-// 0048da5d  c644240c00           mov byte ptr [esp + 0xc], 0
-// 0048da62  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 0048da66  51                   push ecx
-// 0048da67  50                   push eax
-// 0048da68  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0048da6c  52                   push edx
-// 0048da6d  50                   push eax
-// 0048da6e  e83dfbffff           call 0x48d5b0
-// 0048da73  83c410               add esp, 0x10
-// 0048da76  c3                   ret 
-// 0048da77  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0048da7b  c701a8549300         mov dword ptr [ecx], 0x9354a8
-// 0048da81  c3                   ret 
-
 #include <typeinfo>
 #include <memory>
 #include <string>

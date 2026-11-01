@@ -1,3 +1,4 @@
+// from server: 100% by auto
 // roc 2007-08 004fca30  unit: RBX::Render::AggregateChunk  size: 89 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004fca30
 //
