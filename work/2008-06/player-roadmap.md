@@ -1470,3 +1470,12 @@ floor, force, controller, climbing, spawn and combined play pass. Original
 right-turn and moving-floor bounded comparisons pass. Receipts:
 p5-novetus-e49d-*. Original-client animation, all poses, audio playback,
 jump physics, scheduler and full P5 remain open.
+
+At ce9c96c76b, the recovered player enables Ogre stencil-modulative shadows,
+as used by the 2008 renderer. Recovered geometry supplies shadow volumes; this
+is an integration adaptation, not proof of original shadow-mesh fidelity.
+Block, sphere and cylinder controls cast shadows; moving and removing the part
+updates them. P3 lifetime/cache, Novetus animation and a 606-model supplied
+place pass. Receipts: ce9c96c-shadow, ce9c96c-shadow-p3,
+ce9c96c-shadow-animation and ce9c96c-shadow-supplied. Meshes exceeding 32767
+vertices do not cast stencil shadows; shadow distance is currently 300 studs.

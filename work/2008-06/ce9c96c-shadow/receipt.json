@@ -1,0 +1,58 @@
+{
+  "revision": "ce9c96c76b477d18b67a41e4494b8b5676c9409b",
+  "exe_sha256": "6c83c6c7b91bf467d41dd0ae8e4090516e42e305826e0a3ab295bf26480b82d1",
+  "observer_sha256": "2e30a9f1be6abc5070c3d3ab8938fd7bde8dd8613ee42f8477990738c4cf62c0",
+  "cases": {
+    "center": {
+      "dark_pixels": 21471,
+      "centroid_x": 529.2679428065763,
+      "fixture_sha256": "f2c1869ab9263f0ceee63cd64ea5b06e4f5318212bc8c63f0fcfa933b8054518",
+      "on_sha256": "051108e1d1361143da82da16e9dbec89c013175ad4b5aba6fc59b42651af6626",
+      "off_sha256": "4e33cfb303328bdd7afc68effe0b3594b35b6ddb178f2aea6bbd62fb92a68e6b"
+    },
+    "sphere": {
+      "dark_pixels": 9999,
+      "centroid_x": 523.2036203620362,
+      "fixture_sha256": "06317e2a36ada7eff3f4486104e7daa1442fa5695b6a35da3bfa05707c16e06a",
+      "on_sha256": "0e9a528fed7744b0447773bd867c10ea8b03b0874419137f6f75fab2030c0670",
+      "off_sha256": "6a78730b8cf263f6dbab003846424f2db7f2eccdbcaff51a3566058039904e4e"
+    },
+    "cylinder": {
+      "dark_pixels": 16355,
+      "centroid_x": 531.7322531335983,
+      "fixture_sha256": "3a6df73f5fceffc1cfb1f4a5c7b3760b63a39b54501f92ff401cec8cc16031eb",
+      "on_sha256": "3b7942309b31c22eede29292dd26440b6cd9b958bf88fce27996366853c4b925",
+      "off_sha256": "e4fb54fd477a3e8ce6f6992a7b1c0dacdefab1817ab3eed0924094fd25f8fc1e"
+    },
+    "empty": {
+      "dark_pixels": 0,
+      "centroid_x": null,
+      "fixture_sha256": "a619ff0348a45c57625892c422ff04cb79e159343906d8ad9bb0fe9051d48dac",
+      "on_sha256": "1f59d2af945c6120fd8c10193e0aa4727b79120b523fd2a0abe239e87b1cd88b",
+      "off_sha256": "088a2eb9465554f5510b75496c13c6c4517d861755f7146cf415178add036e5d"
+    },
+    "before": {
+      "dark_pixels": 7836,
+      "centroid_x": 348.80819295558956,
+      "fixture_sha256": "ce88e1e5c5c163622e3e0875111eb45bf34408f9c82a815056a7af1d159af0be",
+      "on_sha256": "a16d755a58720ea14bb4546472c437a6bb82158b7f0ad40c639593f79f4160e9",
+      "off_sha256": "069dfe425af41936121f556be9dac1abb475a104b4f5bcaae543d19c6aa7cd38"
+    },
+    "after": {
+      "dark_pixels": 22460,
+      "centroid_x": 694.1157168299198,
+      "fixture_sha256": "ce88e1e5c5c163622e3e0875111eb45bf34408f9c82a815056a7af1d159af0be",
+      "on_sha256": "cb5afd164b1bf3d9efd54ec6006a3c79fb15d5cda625b23921b8a5a2c15c1cb0",
+      "off_sha256": "42189fd0aa3a90b50cbaf9e60a7bfcee17bbe4ba5de3ffb361ac94e3e8ef2a01"
+    },
+    "removed": {
+      "dark_pixels": 0,
+      "centroid_x": null,
+      "fixture_sha256": "7ef79d9f26a2cb3be2b4b6ed1033bcb5cf28f2471f104e0c30d1b72f5fea1567",
+      "on_sha256": "1f59d2af945c6120fd8c10193e0aa4727b79120b523fd2a0abe239e87b1cd88b",
+      "off_sha256": "088a2eb9465554f5510b75496c13c6c4517d861755f7146cf415178add036e5d"
+    }
+  },
+  "scope": "Stencil shadow visibility on authored floor, moving and removed part, plus disabled-shadow and empty controls. Original-client shadow fidelity and large-mesh coverage remain open.",
+  "P5_complete": false
+}
