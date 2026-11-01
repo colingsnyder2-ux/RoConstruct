@@ -2100,3 +2100,6 @@ Original DataModel RTTI recorded at 89c4a45b9d: ServiceProvider at0, VerbContain
 
 
 Native DataModel factory0057c080 allocates0x264 bytes and calls constructor0057b9f0; constructor writes original DataModel RTTI vtable008303cc and initializes workspace member at0x204. Destructor0057ad70 independently writes the same vtable. Original-binary instructions and hashes saved in shared-layouts/datamodel-rtti.json at aedd5224d9. Remaining fields and inherited layouts require recovery; no class swap.
+
+
+Native DataModel constructor boundary receipt at ff46ffa855: 15 member writes and 13 calls extracted from original0057b9f0. Original constructs workspace at0x204, initializes paired owners at0x1fc/0x200,0x20c/0x210,0x214/0x218, and constructs members at0x21c/0x224; other initialized boundaries include0x22c,0x230,0x234,0x250,0x258,0x259,0x25c/0x260. Types beyond independently proven fields remain open. Receipt shared-layouts/datamodel-constructor.json; reproducible with record_datamodel_constructor.py. No active ABI change.
