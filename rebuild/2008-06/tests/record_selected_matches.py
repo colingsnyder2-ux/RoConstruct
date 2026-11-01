@@ -10,9 +10,9 @@ import pefile
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
-from roc import match
+from roc import match, rebuild
 
-exe = ROOT / 'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
+exe = Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else ROOT / 'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
 link_map = exe.with_suffix('.map')
 pe = pefile.PE(str(exe))
 mapped = {}
@@ -23,14 +23,20 @@ for line in link_map.read_text().splitlines():
 
 modules = {}
 selected_all, matched_all = set(), set()
-for name in ('P2RecoveredPlayer', 'RbxgsApp'):
+names = ['P2RecoveredPlayer', 'RbxgsApp'] + (['p6'] if exe.parent.name == 'p6' else [])
+for name in names:
     folder = ROOT / 'rebuild/2008-06/out' / name
-    ownership = json.loads((folder / 'owned-symbols.json').read_text())
+    ownership = json.loads((folder / 'owned-symbols.json').read_text()) if name != 'p6' else {}
     native = {(entry['symbol'], entry['object']): address
               for address, entries in ownership.items() for entry in entries}
     selected, matched, mismatches, rows = set(), set(), set(), []
-    for obj in sorted((folder / 'linked').glob('*.obj')):
-        for symbol, body, relocations in match.coff_functions(obj.read_bytes()):
+    for obj in sorted((folder if name == 'p6' else folder / 'linked').glob('*.obj')):
+        functions = match.coff_functions(obj.read_bytes())
+        if name == 'p6':
+            for symbol, _, addresses in rebuild.pair('2008-06', functions):
+                if len(addresses) == 1:
+                    native[(symbol, obj.name)] = addresses[0]
+        for symbol, body, relocations in functions:
             key = (symbol, obj.name)
             address = mapped.get(key)
             if address is None:
@@ -53,7 +59,7 @@ sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
 receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                exe_sha256=sha(exe), map_sha256=sha(link_map), observer_sha256=sha(Path(__file__)),
                selected_functions=len(selected_all), selected_code_matches=len(matched_all), modules=modules,
-               scope='Known player/engine COFF functions selected by this final PE map, with code bytes rechecked in the PE. Relocated operands are masked; data, ABI, system-library functions, runtime coverage and raw PE identity are separate gates.')
+               scope='Known player/engine and optional P6 COFF functions selected by this final PE map, with code bytes rechecked in the PE. Relocated operands are masked; data, ABI, other system-library functions, runtime coverage and raw PE identity are separate gates.')
 output = ROOT / 'work/2008-06' / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + '\n')

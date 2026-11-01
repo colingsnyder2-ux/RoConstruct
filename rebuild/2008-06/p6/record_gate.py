@@ -29,7 +29,7 @@ def run(name, command, expected=0):
     (OUT / (name + '.txt')).write_text(text)
     runs[name] = dict(command=[str(value) for value in command], exit=result.returncode)
     assert result.returncode == expected, (name, result.returncode, text[-1000:])
-    print(name, 'PASS', flush=True)
+    print(name, 'exit', result.returncode, flush=True)
     return text
 
 
