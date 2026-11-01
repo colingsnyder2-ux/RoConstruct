@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01 01:32 UTC",
+ "updated": "2026-11-01 02:45 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -478,15 +478,15 @@
    "built": "2009-06-16",
    "started": true,
    "functions": 26124,
-   "matched": 18458,
-   "partial": 4035,
-   "source_matched": 10887,
-   "mined_matched": 7571,
+   "matched": 18591,
+   "partial": 3902,
+   "source_matched": 10920,
+   "mined_matched": 7671,
    "bytes": 4310694,
-   "matched_bytes": 2385228,
-   "source_bytes": 1941861,
-   "mined_bytes": 443367,
-   "partial_bytes": 801893,
+   "matched_bytes": 2408883,
+   "source_bytes": 1951342,
+   "mined_bytes": 457541,
+   "partial_bytes": 778238,
    "data_bytes": 1809822,
    "leaderboard": [
     {
@@ -509,12 +509,12 @@
     },
     {
      "user": "EspClaude",
-     "matched": 1858,
-     "mining_points": 143216,
-     "points": 143216,
+     "matched": 1991,
+     "mining_points": 144475,
+     "points": 144475,
      "native_integrated": 0,
-     "submissions": 2905,
-     "last": 1793496650.8383088
+     "submissions": 3040,
+     "last": 1793501014.9336104
     },
     {
      "user": "why2",
@@ -733,15 +733,15 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39655,
-   "matched": 17276,
-   "partial": 10612,
+   "matched": 17278,
+   "partial": 10618,
    "source_matched": 9875,
-   "mined_matched": 7401,
+   "mined_matched": 7403,
    "bytes": 6736062,
-   "matched_bytes": 1622552,
+   "matched_bytes": 1622716,
    "source_bytes": 1431437,
-   "mined_bytes": 191115,
-   "partial_bytes": 1841240,
+   "mined_bytes": 191279,
+   "partial_bytes": 1842372,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -773,12 +773,12 @@
     },
     {
      "user": "Intel",
-     "matched": 100,
-     "mining_points": 22502,
-     "points": 22502,
+     "matched": 102,
+     "mining_points": 22909,
+     "points": 22909,
      "native_integrated": 0,
-     "submissions": 487,
-     "last": 1793496270.964101
+     "submissions": 500,
+     "last": 1793500399.0812595
     },
     {
      "user": "intel",
@@ -897,12 +897,12 @@
   },
   {
    "user": "EspClaude",
-   "matched": 2394,
-   "mining_points": 159350,
-   "points": 159402,
+   "matched": 2527,
+   "mining_points": 160609,
+   "points": 160661,
    "native_integrated": 52,
-   "submissions": 3736,
-   "last": 1793496650.8383088
+   "submissions": 3871,
+   "last": 1793501014.9336104
   },
   {
    "user": "why2",
@@ -915,12 +915,12 @@
   },
   {
    "user": "Intel",
-   "matched": 107,
-   "mining_points": 22943,
-   "points": 22943,
+   "matched": 109,
+   "mining_points": 23350,
+   "points": 23350,
    "native_integrated": 0,
-   "submissions": 504,
-   "last": 1793496270.964101
+   "submissions": 517,
+   "last": 1793500399.0812595
   },
   {
    "user": "intel",

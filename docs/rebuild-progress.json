@@ -1,23 +1,23 @@
 {
-  "updated": "2026-11-01 01:37 UTC",
+  "updated": "2026-11-01 02:50 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.2398,
+      "overall": 0.24,
       "bars": {
         "compiled": {
-          "value": 33,
-          "total": 33,
+          "value": 35,
+          "total": 35,
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 30,
-          "total": 33,
+          "value": 32,
+          "total": 35,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9878,
+          "value": 9886,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -188,8 +188,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 244,
-          "objectFunctions": 2678,
+          "exact": 258,
+          "objectFunctions": 2925,
           "unresolved": 0
         },
         {
@@ -212,16 +212,32 @@
           "name": "P3SphereMesh",
           "linked": true,
           "test": 0,
-          "exact": 177,
-          "objectFunctions": 1479,
+          "exact": 192,
+          "objectFunctions": 1670,
+          "unresolved": 0
+        },
+        {
+          "name": "P4CylinderMesh",
+          "linked": true,
+          "test": 0,
+          "exact": 192,
+          "objectFunctions": 1670,
+          "unresolved": 0
+        },
+        {
+          "name": "P4PBBMesh",
+          "linked": true,
+          "test": 0,
+          "exact": 192,
+          "objectFunctions": 1670,
           "unresolved": 0
         },
         {
           "name": "P4SoundAsset",
           "linked": true,
           "test": 0,
-          "exact": 36,
-          "objectFunctions": 188,
+          "exact": 109,
+          "objectFunctions": 1221,
           "unresolved": 0
         },
         {
@@ -236,8 +252,8 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 244,
-          "objectFunctions": 2678,
+          "exact": 258,
+          "objectFunctions": 2925,
           "unresolved": 0
         },
         {
@@ -268,8 +284,8 @@
           "name": "RbxgsApp",
           "linked": true,
           "test": 0,
-          "exact": 3323,
-          "objectFunctions": 95352,
+          "exact": 3318,
+          "objectFunctions": 95322,
           "unresolved": 0
         },
         {
