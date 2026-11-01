@@ -18,7 +18,8 @@ CRobloxDoc::CRobloxDoc() : standardVerbs(0), workspace(0) {}
 CRobloxDoc::~CRobloxDoc() { delete standardVerbs; }
 
 boost::shared_ptr<RBX::DataModel> CRobloxDoc::getDataModel() {
-    return workspace ? workspace->getDataModel() : boost::shared_ptr<RBX::DataModel>();
+    if (workspace) return workspace->getDataModel();
+    return boost::shared_ptr<RBX::DataModel>();
 }
 
 void CRobloxDoc::OnCloseDocument() { CDocument::OnCloseDocument(); }
