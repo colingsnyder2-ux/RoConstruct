@@ -29,6 +29,7 @@ bool sanitizeSoundVector(const G3D::Vector3&,G3D::Vector3&);
 // DLL exports the stdcall entry without decoration; generated import library
 // preserves that export name. This is a symbol alias, not a calling-convention change.
 #pragma comment(linker,"/alternatename:_FMOD_System_Create@4=_FMOD_System_Create")
+#pragma comment(linker,"/alternatename:_FMOD_System_GetOutput@8=_FMOD_System_GetOutput")
 
 // Native RTTI/constructors and factory allocation witnesses; no padding aliases.
 typedef char NativeInstanceSize[sizeof(RBX::Instance)==0x130?1:-1];
@@ -41,6 +42,16 @@ static void check(FMOD_RESULT result){
 
 static void verify(bool condition){if(!condition)throw std::runtime_error("Sound assertion failed");}
 static size_t readCounter(const size_t* value){return *value;}
+
+class NoSoundArguments : public RBX::Reflection::FunctionDescriptor::Arguments {
+public:
+    size_t size() const{return 0;}
+    void get(int,RBX::Reflection::Value&) const{throw std::runtime_error("Unexpected sound argument");}
+};
+static void invokeSound(RBX::Soundscape::SoundChannel& sound,const char* name){
+    RBX::Reflection::FunctionIterator fn=sound.findFunction(RBX::Name::lookup(name));
+    verify(fn!=sound.functions_end());NoSoundArguments args;fn.getDescriptor().execute(&sound,args);
+}
 
 // Exercise real descriptor dispatch and XML conversion without constructing
 // SoundChannel, whose native ancestry dependencies are still being recovered.
@@ -62,6 +73,30 @@ public:
 
 int main(int argc,char** argv){
     try{
+        if(argc>1 && std::strcmp(argv[1],"--device-test")==0){
+            std::string path=__FILE__;path=path.substr(0,path.find_last_of("/\\"))+"/fixtures/p4-assets";
+            RBX::ContentProvider::singleton().setAssetFolder(argc>2?argv[2]:path.c_str());
+            RBX::GameSettings::singleton().soundEnabled=true;
+            RBX::GameSettings::singleton().softwareSound=true;
+            boost::shared_ptr<RBX::DataModel> model=RBX::DataModel::createDataModel();
+            bool opened=false,played=false;int output=-1;
+            {
+                RBX::DataModel::Lock lock(model);
+                boost::shared_ptr<RBX::Soundscape::SoundService> service=RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundService>();
+                service->setParent(model.get());opened=service->system!=0;
+                if(opened){
+                    FMOD_OUTPUTTYPE mode;check(service->system->getOutput(&mode));output=mode;
+                    verify(mode!=FMOD_OUTPUTTYPE_NOSOUND && mode!=FMOD_OUTPUTTYPE_NOSOUND_NRT);
+                    boost::shared_ptr<RBX::Soundscape::SoundChannel> sound=RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>();
+                    sound->setSoundId(RBX::Soundscape::SoundId("rbxasset://tone.wav"));sound->setParent(model->getWorkspace());
+                    sound->play();played=sound->isPlaying();Sleep(50);service->system->update();sound->stop();sound->setParent(0);
+                }
+                service->setParent(0);
+            }
+            RBX::DataModel::closeDataModel(model,true);model.reset();
+            std::printf("P4 Sound device opened=%d playing=%d output=%d\n",opened,played,output);
+            return opened && played?0:2;
+        }
         verify(std::strcmp(RBX::Soundscape::sSoundChannel,"Sound")==0);
         verify(std::strcmp(RBX::Soundscape::sSoundService,"SoundService")==0);
         {
@@ -95,13 +130,14 @@ int main(int argc,char** argv){
             boost::shared_ptr<RBX::DataModel> model=RBX::DataModel::createDataModel();
             {
                 RBX::DataModel::Lock lock(model);
-                std::istringstream xml("<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties><Item class=\"Sound\"><Properties><string name=\"Name\">TestSound</string><Content name=\"SoundId\"><url>rbxasset://tone.wav</url></Content></Properties></Item></Item></roblox>");
+                std::istringstream xml("<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties><Item class=\"Sound\"><Properties><string name=\"Name\">TestSound</string><Content name=\"SoundId\"><url>rbxasset://tone.wav</url></Content><float name=\"Volume\">0.25</float><bool name=\"Looped\">true</bool><bool name=\"PlayOnRemove\">true</bool></Properties></Item></Item></roblox>");
                 SerializerV2 serializer;serializer.loadXML(xml,model.get());
                 RBX::Soundscape::SoundChannel* sound=dynamic_cast<RBX::Soundscape::SoundChannel*>(model->getWorkspace()->findFirstChildByName("TestSound"));
                 verify(sound && sound->getSoundId().toString()=="rbxasset://tone.wav");
+                verify(sound->getVolume()==0.25f && sound->getLooped() && sound->playOnRemove);
             }
             RBX::DataModel::closeDataModel(model,true);model.reset();
-            std::printf("P4 Sound service PASS serialized SoundId/factory\n");
+            std::printf("P4 Sound service PASS serialized SoundId/volume/loop/remove/factory\n");
         }
         {
             static SoundIdProbe probe;
@@ -153,16 +189,20 @@ int main(int argc,char** argv){
                 service->setParent(model.get());service->system=system;
                 boost::shared_ptr<RBX::Soundscape::SoundChannel> sound=RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>();
                 sound->setSoundId(RBX::Soundscape::SoundId("rbxasset://tone.wav"));
-                sound->setParent(model->getWorkspace());sound->setPlayCount(1);
+                sound->setParent(model->getWorkspace());sound->setVolume(2.0f);sound->setLooped(true);invokeSound(*sound,"Play");
+                verify(sound->getVolume()==1.0f && sound->getLooped() && sound->getPlayCount()==1 && sound->isPlaying() && !sound->isPaused());
                 verify(sound->fmod_channel && sound->sound && sound->sound->refCount==1);
                 bool playing=false;check(sound->fmod_channel->isPlaying(&playing));verify(playing);
-                sound->pause();bool paused=false;check(sound->fmod_channel->getPaused(&paused));verify(paused);
-                sound->stop();verify(!sound->fmod_channel && sound->getPlayCount()==-1);
+                sound->setVolume(0.25f);float volume=0;check(sound->fmod_channel->getVolume(&volume));verify(volume==0.25f);
+                FMOD_MODE mode;check(sound->fmod_channel->getMode(&mode));verify((mode & FMOD_LOOP_NORMAL)!=0);
+                sound->setLooped(false);check(sound->fmod_channel->getMode(&mode));verify((mode & FMOD_LOOP_OFF)!=0);
+                invokeSound(*sound,"Pause");bool paused=false;check(sound->fmod_channel->getPaused(&paused));verify(paused && sound->isPaused());
+                invokeSound(*sound,"Stop");verify(!sound->fmod_channel && sound->getPlayCount()==-1 && !sound->isPlaying() && sound->isPaused());
                 sound->setParent(0);verify(!sound->sound);
                 service->system=0;service->setParent(0);
             }
             RBX::DataModel::closeDataModel(model,true);model.reset();
-            std::printf("P4 Sound service PASS native FMOD play/pause/stop/detach NOSOUND\n");
+            std::printf("P4 Sound service PASS native FMOD play/pause/stop/volume/loop/detach NOSOUND\n");
         }
         {
             FMOD_REVERB_PROPERTIES preset;

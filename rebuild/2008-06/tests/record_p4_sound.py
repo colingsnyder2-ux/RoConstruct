@@ -39,13 +39,15 @@ def main():
     run = subprocess.run(command, cwd=output, env=env, capture_output=True, text=True, timeout=30)
     stdout = run.stdout + run.stderr
     (output / 'stdout.txt').write_text(stdout)
+    device = subprocess.run([str(binary), '--device-test', str(content)], cwd=output, env=env, capture_output=True, text=True, timeout=30)
+    (output / 'device-stdout.txt').write_text(device.stdout + device.stderr)
     receipt = {'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(),
                'exe_sha256': sha(binary), 'map_sha256': sha(binary.with_suffix('.map')),
                'sources_sha256': {name: sha(root / name) for name in names},
                'tone_sha256': sha(content / 'tone.wav'), 'command': command, 'cwd': str(output),
                'reverb_presets_sha256': sha(output / 'reverb-presets.bin'),
-               'exit': run.returncode, 'P4_complete': False,
-               'scope': 'Native Sound memory loader, decoded PCM and ownership; NOSOUND diagnostic.',
+               'exit': run.returncode, 'device_exit': device.returncode, 'P4_complete': False,
+               'scope': 'Native Sound loader and lifecycle; NOSOUND and optional real-device diagnostics.',
                'remaining': ['Sound service/factory/reflection/heartbeat integration', 'audible output and original audio comparison']}
     lines = [line.removeprefix('fmod loaded: ') for line in stdout.splitlines() if line.startswith('fmod loaded: ')]
     if lines:
@@ -60,8 +62,8 @@ def main():
     assert 'P4 SoundId reflection PASS text/XML roundtrip' in stdout
     assert 'P4 Sound service PASS constructor/cache/channel state' in stdout
     assert 'P4 Sound service PASS provider/14 stock sounds/detach' in stdout
-    assert 'P4 Sound service PASS native FMOD play/pause/stop/detach NOSOUND' in stdout
-    assert 'P4 Sound service PASS serialized SoundId/factory' in stdout
+    assert 'P4 Sound service PASS native FMOD play/pause/stop/volume/loop/detach NOSOUND' in stdout
+    assert 'P4 Sound service PASS serialized SoundId/volume/loop/remove/factory' in stdout
     print('P4 Sound asset prerequisite PASS; service/audible gate open')
 
 

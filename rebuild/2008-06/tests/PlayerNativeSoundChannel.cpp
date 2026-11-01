@@ -18,6 +18,19 @@ static void channelCheck(FMOD_RESULT result){
 }
 namespace RBX { namespace Soundscape {
 bool sanitizeSoundVector(const G3D::Vector3&,G3D::Vector3&);
+static Reflection::PropDescriptor<SoundChannel,float> volumeProperty(
+    "Volume","Data",&SoundChannel::getVolume,&SoundChannel::setVolume,Reflection::PropertyDescriptor::STANDARD);
+static Reflection::PropDescriptor<SoundChannel,bool> loopedProperty(
+    "Looped","Behavior",&SoundChannel::getLooped,&SoundChannel::setLooped,Reflection::PropertyDescriptor::STANDARD);
+static Reflection::PropDescriptor<SoundChannel,bool> playingProperty(
+    "IsPlaying","Data",&SoundChannel::isPlaying,0,Reflection::PropertyDescriptor::UI);
+static Reflection::PropDescriptor<SoundChannel,bool> pausedProperty(
+    "IsPaused","Data",&SoundChannel::isPaused,0,Reflection::PropertyDescriptor::UI);
+Reflection::BoundProp<bool,1> SoundChannel::sound_desc_playOnRemove(
+    "PlayOnRemove","Behavior",&SoundChannel::playOnRemove,Reflection::PropertyDescriptor::STANDARD);
+static Reflection::BoundFuncDesc<SoundChannel,void(void),0> playFunction(&SoundChannel::play,"Play",Reflection::FunctionDescriptor::AnyCaller);
+static Reflection::BoundFuncDesc<SoundChannel,void(void),0> pauseFunction(&SoundChannel::pause,"Pause",Reflection::FunctionDescriptor::AnyCaller);
+static Reflection::BoundFuncDesc<SoundChannel,void(void),0> stopFunction(&SoundChannel::stop,"Stop",Reflection::FunctionDescriptor::AnyCaller);
 static Reflection::PropDescriptor<SoundChannel,int> playCountProperty(
     "PlayCount","Data",&SoundChannel::getPlayCount,&SoundChannel::setPlayCount,Reflection::PropertyDescriptor::STREAMING);
 static Reflection::PropDescriptor<SoundChannel,SoundId> soundIdProperty(
@@ -44,6 +57,31 @@ void SoundChannel::setSoundId(SoundId value){
         releaseChannel();raisePropertyChanged(soundIdProperty);
     }
 }
+
+// 005b69c0 / 005bd430: clamp volume and update a live FMOD channel.
+float SoundChannel::getVolume() const{return volume;}
+void SoundChannel::setVolume(float value){
+    if(value<=0.0f)value=0.0f;else if(value>=1.0f)value=1.0f;
+    if(volume!=value){
+        volume=value;
+        if(fmod_channel){FMOD_RESULT result=fmod_channel->setVolume(volume);if(result!=FMOD_OK)StandardOut::singleton()->print(MESSAGE_WARNING,"FMOD %d: %s",result,FMOD_ErrorString(result));}
+        raisePropertyChanged(volumeProperty);
+    }
+}
+// 005b69d0 / 005bd4b0: keep reflected looping and FMOD mode in sync.
+bool SoundChannel::getLooped() const{return looped;}
+void SoundChannel::setLooped(bool value){if(looped!=value){looped=value;updateLooped();raisePropertyChanged(loopedProperty);}}
+// 005b6990 / 005b6960: invalid or absent channels are not playing and are paused.
+bool SoundChannel::isPlaying() const{
+    if(!fmod_channel)return false;bool value=false;
+    return fmod_channel->isPlaying(&value)!=FMOD_ERR_INVALID_HANDLE && value;
+}
+bool SoundChannel::isPaused() const{
+    if(!fmod_channel)return true;bool value=true;
+    return fmod_channel->getPaused(&value)==FMOD_ERR_INVALID_HANDLE || value;
+}
+// 005bd4f0: start playing and advance the replicated counter.
+void SoundChannel::play(){playSound(this);++playCount;if(playCount<1)playCount=1;raisePropertyChanged(playCountProperty);}
 
 // 005b65a0 / 005bda10: replicated play counter drives pause, stop and play.
 int SoundChannel::getPlayCount() const{return playCount;}
