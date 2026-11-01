@@ -19,4 +19,19 @@ public:
     std::vector<boost::shared_ptr<Instance> > serviceArray;
     std::map<const Name*, boost::shared_ptr<Instance> > serviceMap;
 };
+
+// Layout recovered from the existing ServiceClient declaration. Method bodies
+// require the native service-creation path and are intentionally unresolved.
+template<class T>
+class ServiceClient {
+    Instance* context;
+    mutable boost::shared_ptr<T> service;
+public:
+    explicit ServiceClient(Instance*);
+    bool isNull() const;
+    operator T*();
+    operator const T*() const;
+    T* operator->();
+    const T* operator->() const;
+};
 }

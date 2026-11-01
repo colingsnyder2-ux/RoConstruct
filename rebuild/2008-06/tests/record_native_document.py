@@ -88,7 +88,8 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                          ROOT / 'rebuild/2008-06/native-classes/CRobloxDoc.cpp',
                          ROOT / 'rebuild/2008-06/native-classes/StandardVerbs.cpp',
                          header.parent / 'StandardVerbs.h', header.parent / 'v8xml/XmlElement.h',
-                         header.parent / 'RobloxLib.h')},
+                         header.parent / 'RobloxLib.h', header.parent / 'v8datamodel/DataModel.h',
+                         header.parent / 'v8tree/Verb.h', header.parent / 'v8tree/Service.h')},
                original_sha256=sha(original), object_sha256=sha(out / 'NativeDocumentLayout.obj'),
                compile_log_sha256=sha(out / 'doc-compile.log'),
                static_layout_gates=dict(size=0x98, XmlElement=0x28, StandardVerbs=0x704,
@@ -106,6 +107,6 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
 output = ROOT / 'work/2008-06' / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS: document storage, seven document bodies and XML/StandardVerbs destructors. Document destructor:',
+print('PASS: document storage, %d document bodies and XML/StandardVerbs destructors. Document destructor:' % (len(methods) + 1),
       'exact' if unresolved[0]['relocation_normalized_exact'] else 'OPEN (%d/%d bytes)' %
       (unresolved[0]['compiled_size'], unresolved[0]['target_size']))
