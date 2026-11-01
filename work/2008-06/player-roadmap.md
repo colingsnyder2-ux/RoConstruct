@@ -1,3 +1,21 @@
+# Sound service and factory checkpoint
+
+Source bbe43074c2 connects recovered SoundService provider lifecycle, stock
+sounds, SoundChannel ancestry, SoundId and PlayCount, and FMOD playback to
+the isolated player. Tests pass for 14 stock sounds and service detachment,
+serialized SoundId, and injected FMOD NOSOUND play/pause/stop/detach. P3
+lifetime/self/cache regressions pass. User-place control: six of eight Sounds
+retained (previously zero); the other two sit under StarterGui > ScreenGui.
+Evidence: p4-sound-service-runtime-bbe43074c2/,
+p4-sound-service-load-bbe43074c2/ and
+p4-sound-service-regressions-bbe43074c2/. User place/log remain private.
+
+P4 remains open: test injects FMOD system; normal device startup and audible
+output are unproven. Sound volume/loop/play-on-remove reflection and script
+methods need recovery, plus missing GUI hierarchy and remaining place assets.
+The ContentProvider singleton is an adapter for the original contextual lookup.
+Do not treat recovered-source labels as proof of byte matching.
+
 # SoundId reflection checkpoint
 
 Source 2a03269d2b adds SoundId Content text/XML adapter. Isolated descriptor
