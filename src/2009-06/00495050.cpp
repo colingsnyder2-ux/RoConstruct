@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: ogre-1.4.5-dll roc_twod_add_quad_color_fork_f8f01467d94dfda6.cpp
+// roc-lib: ogre-1.4.9-dll roc_espclaude_532a9d9bd6976259.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef OGRE_NONCLIENT_BUILD
@@ -49,6 +49,7 @@ namespace Ogre
         RenderOperation operation;
         HardwareVertexBufferSharedPtr vertices;
         HardwareIndexBufferSharedPtr indices;
+        uint32 reserved[2];
         std::list<Quad> quads;
 
         void addQuad(
@@ -58,8 +59,6 @@ namespace Ogre
             float u0, float v0, float u1, float v1);
     };
 
-    typedef char QuadList_quads_offset_is_0x3c[
-        offsetof(QuadList, quads) == 0x3c ? 1 : -1];
 
     void QuadList::addQuad(
         String textureName,
@@ -109,3 +108,4 @@ namespace Ogre
         quads.push_back(quad);
     }
 }
+

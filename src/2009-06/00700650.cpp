@@ -1,11 +1,13 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_adorn_owner_native_particle_localb0ade42fadd1538d.cpp
+// roc-lib: rbxgs-dll roc_espclaude_cbb86c8a71384cf3.cpp
 
 // Candidate translation unit (score above; library headers required).
+// 2009: exe Ogre SceneManager has 13 more virtuals before destroySceneNode (getRootSceneNode slot 0xe8)
+#define destroyAllLights destroyAllLights(void); virtual void exeOgre16Slot0(); virtual void exeOgre16Slot1(); virtual void exeOgre16Slot2(); virtual void exeOgre16Slot3(); virtual void exeOgre16Slot4(); virtual void exeOgre16Slot5(); virtual void exeOgre16Slot6(); virtual void exeOgre16Slot7(); virtual void exeOgre16Slot8(); virtual void exeOgre16Slot9(); virtual void exeOgre16Slot10(); virtual void exeOgre16Slot11(); virtual void exeOgre16Slot12
 // Native324B allocation0045b425, ctor674210, dtor673a90.
 #undef OGRE_NONCLIENT_BUILD
 #include "roc_adorn_native_novtable_interface91b88275e0007f5c.cpp"
@@ -14,6 +16,7 @@
 #include <map>
 #include <cstdio>
 #include <exception>
+#undef destroyAllLights
 namespace Ogre {
 class VisualEngine;
 class RbxSubEntity : public SubEntity, public ShadowCaster {
@@ -115,7 +118,7 @@ public:
 		virtual void lineSegment(const G3D::LineSegment& lineSegment, const G3D::Color4& color, float scale);
 		virtual void axes(const G3D::Color4& xColor, const G3D::Color4& yColor, const G3D::Color4& zColor, float scale);
 		virtual void quad(const G3D::Vector3& v0, const G3D::Vector3& v1, const G3D::Vector3& v2, const G3D::Vector3& v3, const G3D::Color4& color);
-    Ogre::SceneManager* sceneManager() {return *(Ogre::SceneManager**)((char*)engine+4);}
+    Ogre::SceneManager* sceneManager() {return *(Ogre::SceneManager**)((char*)engine+0x10);}
 };
 typedef char NativeAdornSize[sizeof(AdornRbxGfx)==0x144?1:-1];
 typedef char NativeEntitySize[sizeof(Ogre::RbxEntity)==0x2bc?1:-1];

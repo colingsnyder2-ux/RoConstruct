@@ -1,121 +1,97 @@
-// from server: 41% by colin
+// from server: 79% by EspClaude
+// from server: 100% by EspClaude
+// from server: 95% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client RbxView/PBBMesh.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: openrbx-client-dll roc_espclaude_f8ab8247c52ec0b7.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "PBBMesh.h"
-
-#include "QuadVolume.h"
-
-#include <G3D/Vector3int16.h>
-
-// SIZE 0x28
-class PBBBuilder : public RBX::View::LevelBuilder
-{
-private:
-	G3D::Vector3int16 strips; // 0x20
-
-public:
-	PBBBuilder(
-		G3D::ReferenceCountedPointer<RBX::Render::Mesh::Level>& level,
-		G3D::Vector3 size,
-		RBX::View::RenderSurfaceTypes surfaceTypes
-	);
-
-protected:
-	virtual void buildTop(Purpose purpose);    // vtable+0x04
-	virtual void buildBottom(Purpose purpose); // vtable+0x08
-	virtual void buildLeft(Purpose purpose);   // vtable+0x0c
-	virtual void buildRight(Purpose purpose);  // vtable+0x10
-	virtual void buildFront(Purpose purpose);  // vtable+0x14
-	virtual void buildBack(Purpose purpose);   // vtable+0x18
+#include <boost/shared_ptr.hpp>
+struct String {
+    unsigned char storage[28];
+    const char* c_str() const;
+    ~String();
 };
 
-DECOMP_SIZE_ASSERT(PBBBuilder, 0x28)
+extern const char* (__thiscall *string_c_str)(const String*);
+extern void (__thiscall *string_destroy)(String*);
 
-// STUB: WEBSERVICE 0x1017abc0
-PBBBuilder::PBBBuilder(
-	G3D::ReferenceCountedPointer<RBX::Render::Mesh::Level>& level,
-	G3D::Vector3 size,
-	RBX::View::RenderSurfaceTypes surfaceTypes
-)
-	: RBX::View::LevelBuilder(level, size, surfaceTypes), strips(0, 0, 0)
-{
-	strips.x = G3D::max(1, (int) (size.x / 6.0));
-	strips.y = G3D::max(1, (int) (size.y / 6.0));
-	strips.z = G3D::max(1, (int) (size.z / 6.0));
-
-	strips.x = G3D::min(4, (int) strips.x);
-	strips.y = G3D::min(4, (int) strips.y);
-	strips.z = G3D::min(4, (int) strips.z);
+inline const char* String::c_str() const {
+    return string_c_str(this);
 }
 
-// STUB: WEBSERVICE 0x1017d7c0
-void PBBBuilder::buildTop(Purpose)
-{
-	STUB(0x1017d7c0);
+inline String::~String() {
+    string_destroy(this);
 }
 
-// STUB: WEBSERVICE 0x1017d820
-void PBBBuilder::buildBottom(Purpose)
+String __cdecl formatText(const char*, const char*);
+
+struct Stream {
+    Stream& write(int, const char*);
+};
+
+struct StreamSource {
+    virtual Stream* getStream() = 0;
+};
+
+extern StreamSource* streamSource;
+
+#include <vector>
+#include <iterator>
+namespace RBX { namespace Reflection {
+class DescribedBase;
+class PropertyDescriptor;
+class Property { public: Property(const PropertyDescriptor*, DescribedBase*); };
+class Descriptor { public: virtual ~Descriptor() {} const void* name; };
+template <class T>
+class MemberDescriptorContainer
 {
-	STUB(0x1017d820);
+public:
+    typedef std::vector<T*> Collection;
+    class Iterator : public std::iterator<std::forward_iterator_tag, Property, void, Property, Property&>
+    {
+    public:
+        Iterator(DescribedBase* instance, typename Collection::const_iterator iter) : instance(instance), iter(iter) {}
+    private:
+        DescribedBase* instance;
+        typename Collection::const_iterator iter;
+    };
+    Iterator begin(DescribedBase* instance) const { return Iterator(instance, descriptors.begin()); }
+    Iterator end(DescribedBase* instance) const { return Iterator(instance, descriptors.end()); }
+    Collection descriptors;
+};
+class ClassDescriptor : public Descriptor, public MemberDescriptorContainer<PropertyDescriptor> {};
+typedef MemberDescriptorContainer<PropertyDescriptor>::Iterator PropertyIterator;
+class DescribedBase {
+public:
+    virtual ~DescribedBase() {}
+    void* signalSource;
+    const ClassDescriptor* descriptor;
+    const ClassDescriptor& getDescriptor() const { return *descriptor; }
+    PropertyIterator properties_begin() { return getDescriptor().MemberDescriptorContainer<PropertyDescriptor>::begin(this); }
+    PropertyIterator properties_end() { return getDescriptor().MemberDescriptorContainer<PropertyDescriptor>::end(this); }
+};
+}}
+struct Object {
+    unsigned char padding[0x14];
+    RBX::Reflection::DescribedBase range;
+    unsigned char padding2[0x110 - 0x14 - sizeof(RBX::Reflection::DescribedBase)];
+    String text;
+};
+
+typedef boost::shared_ptr<Object> Shared;
+
+void __cdecl visitElement(RBX::Reflection::Property);
+void __cdecl visitRange(RBX::Reflection::PropertyIterator, RBX::Reflection::PropertyIterator, void (__cdecl *)(RBX::Reflection::Property));
+
+inline void print(int type, const String& message) {
+    Stream* stream = streamSource ? streamSource->getStream() : 0;
+    stream->write(type, message.c_str());
 }
 
-// STUB: WEBSERVICE 0x1017d880
-void PBBBuilder::buildLeft(Purpose)
-{
-	STUB(0x1017d880);
+void __cdecl process(Shared value) {
+    print(0, formatText("\t%s",
+            value->text.c_str()));
+    visitRange(value->range.properties_begin(), value->range.properties_end(), visitElement);
 }
-
-// STUB: WEBSERVICE 0x1017d8e0
-void PBBBuilder::buildRight(Purpose)
-{
-	STUB(0x1017d8e0);
-}
-
-// STUB: WEBSERVICE 0x1017d940
-void PBBBuilder::buildFront(Purpose)
-{
-	STUB(0x1017d940);
-}
-
-// STUB: WEBSERVICE 0x1017d9a0
-void PBBBuilder::buildBack(Purpose)
-{
-	STUB(0x1017d9a0);
-}
-
-namespace RBX {
-namespace View {
-
-// STUB: WEBSERVICE 0x1017da00
-PBBMesh::PBBMesh(const G3D::Vector3& size, NormalId decalFace)
-{
-	Render::Mesh::LevelRef level = new Render::Mesh::Level(G3D::RenderDevice::QUADS);
-
-	levels.append(level);
-
-	PBBBuilder builder(level, size, RenderSurfaceTypes());
-
-	builder.buildFace(decalFace, LevelBuilder::Decal);
-}
-
-// STUB: WEBSERVICE 0x1017db60
-PBBMesh::PBBMesh(const G3D::Vector3& size, NormalId, const G3D::Vector2&)
-{
-	Render::Mesh::LevelRef level = new Render::Mesh::Level(G3D::RenderDevice::QUADS);
-
-	levels.append(level);
-
-	PBBBuilder builder(level, size, RenderSurfaceTypes());
-}
-
-template PBBMesh* MeshFactory<PBBMesh, 4>::createDecal(const G3D::Vector3&, NormalId);
-
-template PBBMesh* MeshFactory<PBBMesh, 4>::createTexture(const G3D::Vector3&, NormalId, const G3D::Vector2&);
-
-} // namespace View
-} // namespace RBX

@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
@@ -9,7 +9,7 @@ struct Context {
 };
 
 struct OwnerPadding {
-    char storage[0x1c8];
+    char storage[0xd0];
 };
 
 struct Owner : OwnerPadding, Context {

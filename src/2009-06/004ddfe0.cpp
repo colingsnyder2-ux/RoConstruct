@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004a7000  unit: RBX::VHint::?$FactoryProduct::Creator  size: 167 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004a7000
@@ -118,7 +118,7 @@ extern InvalidParameterHandler invalidParameter;
 BitStream& __cdecl readBrickColor(BitStream& stream, BrickColor& color)
 {
     unsigned int index = 0;
-    if (!stream.readBits(reinterpret_cast<unsigned char*>(&index), 5, true))
+    if (!stream.readBits(reinterpret_cast<unsigned char*>(&index), 6, true))
         throw std::runtime_error(std::string("BitStream >> BrickColor failed"));
 
     const unsigned int selected = index;

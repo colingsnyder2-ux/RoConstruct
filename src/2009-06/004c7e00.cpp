@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004990a0  unit: RBX::Network::VPlayers::?$SignalDesc  size: 193 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004990a0
@@ -97,7 +97,7 @@ namespace std {
 }
 
 struct Owner {
-    char padding[0x1b4];
+    char padding[0xc8];
     void* value;
 };
 

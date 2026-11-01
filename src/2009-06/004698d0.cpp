@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
@@ -21,7 +21,7 @@ extern "C" __declspec(dllimport) int __stdcall GetClientRect(void* hwnd, WinRect
 struct Window { char pad[0x20]; void* m_hWnd; };
 
 struct CSettingsDialog {
-    char pad[0x16c];
+    char pad[0x164];
     Window* view;
     Vector2int16 getSize();
 };

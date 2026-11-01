@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005fadd0  unit: UString_sink::?$stream_buffer  size: 35 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005fadd0
@@ -31,7 +31,7 @@ struct Data {
 };
 
 struct S {
-    char reserved[0x10];
+    char reserved[0x14];
     Data* data;
     int f();
 };

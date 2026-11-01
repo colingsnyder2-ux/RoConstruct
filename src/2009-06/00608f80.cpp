@@ -1,9 +1,9 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_widgetshownslotsaf46923195e234cf.cpp
+// roc-lib: rbxgs-dll roc_espclaude_6dda80b137593be0.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise,off,push)
@@ -29,6 +29,7 @@ virtual void slot14();
 virtual void slot15();
 virtual void slot16();
 virtual void slot17();
+virtual void slot17b();
 virtual G3D::Vector2 getPosition() const;
 virtual void slot19();
 virtual void slot20();
@@ -40,3 +41,4 @@ Rect getMyRect() const {G3D::Vector2 p=getPosition();return Rect::fromLowSize(p,
 class UnifiedWidget:public GuiItem {public:GuiResponse processShown_InTitle(const GuiEvent&);GuiResponse processShown_OutOfTitle(const GuiEvent&);GuiResponse processShown(const GuiEvent&);};
 GuiResponse UnifiedWidget::processShown(const GuiEvent& event){Rect titleRect=getMyRect();if(titleRect.pointInRect(event.mousePosition))return processShown_InTitle(event);else return processShown_OutOfTitle(event);}
 }
+

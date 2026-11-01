@@ -1,108 +1,70 @@
-// from server: 43% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 006b8630  unit: RBX::StudsTool  size: 64 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006b8630
+//
+// 006b8630  56                   push esi
+// 006b8631  8b742408             mov esi, dword ptr [esp + 8]
+// 006b8635  57                   push edi
+// 006b8636  8bf9                 mov edi, ecx
+// 006b8638  8b0e                 mov ecx, dword ptr [esi]
+// 006b863a  e8513cfaff           call 0x65c290
+// 006b863f  8bce                 mov ecx, esi
+// 006b8641  e80aa2fcff           call 0x682850
+// 006b8646  6a03                 push 3
+// 006b8648  8bce                 mov ecx, esi
+// 006b864a  e841a0fcff           call 0x682690
+// 006b864f  8b0e                 mov ecx, dword ptr [esi]
+// 006b8651  e85a3cfaff           call 0x65c2b0
+// 006b8656  8b4718               mov eax, dword ptr [edi + 0x18]
+// 006b8659  6a08                 push 8
+// 006b865b  50                   push eax
+// 006b865c  e8cf51f5ff           call 0x60d830
+// 006b8661  83c404               add esp, 4
+// 006b8664  8bc8                 mov ecx, eax
+// 006b8666  e84519f9ff           call 0x649fb0
+// 006b866b  5f                   pop edi
+// 006b866c  5e                   pop esi
+// 006b866d  c20400               ret 4
+// copied from an identical function in another client (function ?fn_ROCX000006_00619ff0@S@ns_ROCX000006@@QAEXPAUArgument@2@@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+namespace ns_ROCX000006 {
+struct Object
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
+    void fn_ROCX000006_00598c70();
+    void fn_ROCX000006_00598c90();
+};
 
-void initMoo()
+struct Argument
 {
-	moo2();
-}
+    Object* object;
+    void fn_ROCX000006_005f1690();
+    void fn_ROCX000006_005f13e0(int value);
+};
 
 namespace RBX
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+    struct Instance;
+    struct ServiceProvider
+    {
+        void fn_ROCX000006_005bd820(int value);
+    };
+}
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+extern RBX::ServiceProvider* __cdecl fn_ROCX000006_005807b0(RBX::Instance* object);
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
+struct S
+{
+    char padding[0x18];
+    RBX::Instance* object;
+    void fn_ROCX000006_00619ff0(Argument* argument);
+};
 
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+void S::fn_ROCX000006_00619ff0(Argument* argument)
+{
+    argument->object->fn_ROCX000006_00598c70();
+    argument->fn_ROCX000006_005f1690();
+    argument->fn_ROCX000006_005f13e0(3);
+    argument->object->fn_ROCX000006_00598c90();
+    fn_ROCX000006_005807b0(object)->fn_ROCX000006_005bd820(8);
+}
 }

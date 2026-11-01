@@ -1,351 +1,373 @@
-// from server: 48% by colin
+// from server: 85% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/RootInstance.cpp
+// roc-lib: rbxgs v8datamodel/ModelInstance.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/RootInstance.h"
+#include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/PartInstance.h"
-#include "v8datamodel/SpawnLocation.h"
-#include "v8datamodel/Camera.h"
-#include "v8datamodel/Teams.h"
-#include "v8datamodel/Hopper.h"
-#include "v8datamodel/Backpack.h"
-#include "v8datamodel/Tool.h"
-#include "v8datamodel/Lighting.h"
-#include "v8datamodel/Sky.h"
-#include "Network/Players.h"
-#include "tool/Dragger.h"
-#include "tool/MegaDragger.h"
+#include "humanoid/Humanoid.h"
+#include "v8world/Primitive.h"
 #include "tool/DragUtilities.h"
-#include <boost/bind.hpp>
+#include "AppDraw/Draw.h"
+
+static bool physicalCharacterHacked = false;
 
 namespace RBX
 {
-	const char* sRootInstance = "RootInstance";
+	const char* sModel = "Model";
+
+	static const Name& partName = Name::declare(sModel, 2000);
+
+	static Reflection::PropDescriptor<ModelInstance, G3D::CoordinateFrame> desc_ModelInPrimary("ModelInPrimary", "Data", &ModelInstance::getModelInPrimary, &ModelInstance::setModelInPrimary, Reflection::PropertyDescriptor::STREAMING); // L25
+	static Reflection::RefPropDescriptor<ModelInstance, PartInstance> primaryPartProp("PrimaryPart", "Data", &ModelInstance::getPrimaryPartInternal, &ModelInstance::setPrimaryPart, Reflection::PropertyDescriptor::STANDARD); // L26
+	static Reflection::BoundFuncDesc<ModelInstance, void(), 0> desc_breakJoints(&ModelInstance::breakJoints, "BreakJoints", Reflection::FunctionDescriptor::AnyCaller); // L27
+	static Reflection::BoundFuncDesc<ModelInstance, void(), 0> desc_makeJoints(&ModelInstance::makeJoints, "MakeJoints", Reflection::FunctionDescriptor::AnyCaller); // L28
+
+	static Reflection::BoundFuncDesc<ModelInstance, void(G3D::Vector3), 1> model_moveFunctionOld(&PVInstance::moveToPoint, "move", "location", Reflection::FunctionDescriptor::AnyCaller); // L30
+	static Reflection::BoundFuncDesc<ModelInstance, void(G3D::Vector3), 1> model_moveFunction(&PVInstance::moveToPoint, "MoveTo", "location", Reflection::FunctionDescriptor::AnyCaller); // L31
+
+	bool ModelInstance::showModelCoord = false;
 
 #pragma warning (push)
 #pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
-	RootInstance::RootInstance()
-		: Base(),
-		  ControllersUsed(this, &RootInstance::computeControllersUsed),
-		  insertPoint(G3D::Vector3::zero()),
-		  viewPort(G3D::Vector2(800.0f, 600.0f)),
-		  world(new World())
+	ModelInstance::ModelInstance()
+		: Base("Model"),
+		  modelInPrimary(),
+		  primaryPart(NULL),
+		  FlagHeight(this, &ModelInstance::computeFlagHeight),
+		  LocalGridExtents(this, &ModelInstance::computeLocalGridExtents),
+		  WorldGridExtents(this, &ModelInstance::computeWorldGridExtents)
 	{
+		if (!physicalCharacterHacked)
+		{
+			const Name& name = Name::declare("PhysicalCharacter", -1);
+			AbstractFactoryProduct<Instance>::getCreators()[&name] = &getCreator();
+			physicalCharacterHacked = true;
+		}
 	}
 #pragma warning (pop)
 
-	RootInstance::~RootInstance()
+	ModelInstance::~ModelInstance()
 	{
+		RBXASSERT(!primaryPart);
 	}
 
-	void RootInstance::onDescendentAdded(Instance* instance)
+	void ModelInstance::dirtyAll() const
 	{
-		ModelInstance::onDescendentAdded(instance);
-		ControllersUsed.setDirty();
+		LocalGridExtents.setDirty();
+		WorldGridExtents.setDirty();
+		FlagHeight.setDirty();
 	}
 
-	void RootInstance::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
+	bool ModelInstance::askSetParent(const Instance* instance) const
 	{
-		ControllersUsed.setDirty();
-		ModelInstance::onDescendentRemoving(instance);
+		return dynamic_cast<const ModelInstance*>(instance) != NULL;
 	}
 
-	void RootInstance::setInsertPoint(const G3D::Vector3& topCenter)
+	void ModelInstance::onExtentsChanged() const
 	{
-		insertPoint = Dragger::toGrid(topCenter);
+		dirtyAll();
+		PVInstance::onExtentsChanged();
 	}
 
-	G3D::Vector3 RootInstance::computeIdeInsertPoint() const
+	void ModelInstance::onDescendentAdded(Instance* instance)
 	{
-		insertPoint.y = G3D::max(0.0f, insertPoint.y);
-		float tempY = insertPoint.y;
+		PVInstance::onDescendentAdded(instance);
+		dirtyAll();
 
-		G3D::Vector3 newInsertPoint = getExtentsWorld().clip(insertPoint);
-
-		insertPoint = newInsertPoint;
-		insertPoint.y = tempY;
-
-		insertPoint = Dragger::toGrid(insertPoint);
-		return insertPoint;
-	}
-
-	G3D::Vector3 RootInstance::computeCharacterInsertPoint(const Extents& extents) const
-	{
-		ModelInstance* character = Network::Players::findLocalCharacter(this);
-		if (character)
+		if (instance == candidatePrimaryPart.get())
 		{
-			G3D::Vector3 cameraLook = getCamera()->getCameraCoordinateFrame().lookVector();
-			cameraLook.unitize();
+			RBXASSERT(primaryPart != candidatePrimaryPart.get());
+			candidatePrimaryPart.reset();
 
-			G3D::Vector3 halfSize = extents.size() * 0.5f;
-
-			std::vector<boost::weak_ptr<PartInstance>> partArray;
-			PartInstance::findParts(character, partArray);
-
-			Extents modelExtents = DragUtilities::computeExtents(partArray);
-
-			G3D::Vector3 insertPoint = modelExtents.center() + (cameraLook * 7.0f) + (halfSize * cameraLook) * G3D::Vector3(1,0,1);
-			insertPoint = Dragger::toGrid(insertPoint);
-
-			return insertPoint;
+			updatePrimaryPart(rbx_static_cast<PartInstance*>(instance));
 		}
-		else
+
+		shouldRenderSetDirty();
+	}
+
+	void ModelInstance::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
+	{
+		if (primaryPart == instance.get())
+			primaryPart = NULL;
+
+		if (candidatePrimaryPart == instance)
 		{
 			RBXASSERT(0);
-			return computeIdeInsertPoint();
+			candidatePrimaryPart.reset();
 		}
+
+		dirtyAll();
+		shouldRenderSetDirty();
+		PVInstance::onDescendentRemoving(instance);
 	}
 
-	void RootInstance::moveSafe(MegaDragger& megaDragger, G3D::Vector3 move, MoveType moveType)
+	const Primitive* ModelInstance::getBiggestPrimitive() const
 	{
-		megaDragger.startDragging();
-		megaDragger.alignAndCleanParts();
+		const PartInstance* primaryPart = getPrimaryPartConst();
+		if (primaryPart)
+			return primaryPart->getPrimitive();
 
-		if (moveType == MOVE_DROP)
-			megaDragger.safeMoveYDrop(move);
-		else
-			megaDragger.safeMoveNoDrop(move);
-
-		megaDragger.finishDragging();
+		return NULL;
 	}
 
-	void RootInstance::moveSafe(std::vector<boost::weak_ptr<PartInstance>>& partArray, G3D::Vector3 move, MoveType moveType)
+	void ModelInstance::updatePrimaryPart(PartInstance* set) const
 	{
-		MegaDragger megaDragger(NULL, partArray, this);
-		moveSafe(megaDragger, move, moveType);
-	}
-
-	void RootInstance::moveToPoint(PVInstance* pv, G3D::Vector3 point)
-	{
-		if (this->contains(pv))
+		if (primaryPart == set)
 		{
-			RBXASSERT(pv->getPrimaryPart());
-
-			std::vector<PVInstance*> pvInstances;
-			pvInstances.push_back(pv);
-
-			G3D::Vector3 move = Dragger::toGrid(point - pv->getLocation().translation);
-
-			MegaDragger megaDragger(pv->getPrimaryPart(), pvInstances, this);
-			moveSafe(megaDragger, move, MOVE_NO_DROP);
+			RBXASSERT(!set || primaryPart->isDescendentOf(this));
 		}
-	}
-
-	void RootInstance::moveToCharacterInsertPoint(std::vector<boost::weak_ptr<PartInstance>>& partArray)
-	{
-		if (!partArray.empty())
+		else if (set)
 		{
-			Extents extents = DragUtilities::computeExtents(partArray);
-
-			G3D::Vector3 characterInsertPoint = computeCharacterInsertPoint(extents);
-			G3D::Vector3 moveToInsert = Dragger::toGrid(characterInsertPoint - extents.bottomCenter());
-
-			moveSafe(partArray, moveToInsert, MOVE_DROP);
-		}
-	}
-
-	void RootInstance::moveToIdeInsertPoint(std::vector<boost::weak_ptr<PartInstance>>& partArray)
-	{
-		if (!partArray.empty())
-		{
-			Extents extents = DragUtilities::computeExtents(partArray);
-
-			G3D::Vector3 insertPoint = computeIdeInsertPoint();
-			G3D::Vector3 moveToInsert = Dragger::toGrid(insertPoint - extents.bottomCenter());
-
-			moveSafe(partArray, moveToInsert, MOVE_DROP);
-		}
-	}
-
-	void RootInstance::insertRaw(const std::vector<boost::shared_ptr<Instance>>& instances, Instance* requestedParent, std::vector<boost::weak_ptr<PartInstance>>& partArray)
-	{
-		RBXASSERT(requestedParent && this->contains(requestedParent));
-
-		std::for_each(instances.begin(), instances.end(), boost::bind(&Instance::setParent, _1, requestedParent));
-
-		for (size_t i = 0; i < instances.size(); ++i)
-			PartInstance::findParts(instances[i].get(), partArray);
-
-		DragUtilities::join(partArray);
-	}
-
-	void RootInstance::insertToTree(const std::vector<boost::shared_ptr<Instance>>& instances, Instance* requestedParent)
-	{
-		std::vector<boost::weak_ptr<PartInstance>> partArray;
-		insertRaw(instances, requestedParent, partArray);
-
-		if (!partArray.empty())
-			moveSafe(partArray, G3D::Vector3::zero(), MOVE_NO_DROP);
-	}
-
-	void RootInstance::insertCharacterView(const std::vector<boost::shared_ptr<Instance>>& instances, std::vector<boost::weak_ptr<PartInstance>>& partArray)
-	{
-		RBXASSERT(instances.size() > 0);
-
-		if (instances.size() == 1)
-		{
-			Instance* instance = instances[0].get();
-			if (dynamic_cast<HopperBin*>(instance))
+			RBXASSERT(!set->getParent() || set->isDescendentOf(this));
+			if (primaryPart)
 			{
-				Network::Player* localPlayer = Network::Players::findLocalPlayer(this);
-				if (localPlayer)
-				{
-					instance->setParent(localPlayer->getPlayerBackpack());
-					return;
-				}
-			}
-		}
-
-		insertRaw(instances, this, partArray);
-		moveToCharacterInsertPoint(partArray);
-	}
-
-	void RootInstance::insertIdeView(const std::vector<boost::shared_ptr<Instance>>& instances, std::vector<boost::weak_ptr<PartInstance>>& partArray, PromptMode promptMode)
-	{
-		RBXASSERT(instances.size() > 0);
-
-		if (instances.size() == 1)
-		{
-			Instance* instance = instances[0].get();
-			if (dynamic_cast<HopperBin*>(instance))
-			{
-				instance->setParent(ServiceProvider::create<StarterPackService>(this));
-				return;
-			}
-			else if (dynamic_cast<Tool*>(instance))
-			{
-				if (promptMode == ALLOW_PROMPTS && MessageBoxA(NULL, "Put this tool into the starter pack (otherwise drop into the 3d view)?", "Inserting Tool", MB_YESNO) == IDYES)
-				{
-					instance->setParent(ServiceProvider::create<StarterPackService>(this));
-					return;
-				}
-			}
-		}
-
-		insertRaw(instances, this, partArray);
-		if (!partArray.empty())
-		{
-			moveToIdeInsertPoint(partArray);
-			Extents extents = DragUtilities::computeExtents(partArray);
-			getCamera()->lookAt(extents.center());
-		}
-	}
-
-	void RootInstance::insert3dView(const std::vector<boost::shared_ptr<Instance>>& instances, PromptMode promptMode)
-	{
-		RBXASSERT(instances.size() > 0);
-
-		std::vector<boost::weak_ptr<PartInstance>> partArray;
-		if (Network::Players::findLocalCharacter(this))
-			insertCharacterView(instances, partArray);
-		else
-			insertIdeView(instances, partArray, promptMode);
-
-		if (!partArray.empty())
-		{
-			Extents extents = DragUtilities::computeExtents(partArray);
-			getCamera()->zoomExtents(extents, viewPort, Camera::ZOOM_OUT_ONLY);
-		}
-	}
-
-	void RootInstance::insertHopperBin(HopperBin* h)	
-	{
-		Network::Player* localPlayer = Network::Players::findLocalPlayer(this);
-		if (localPlayer)
-			h->setParent(localPlayer->getPlayerBackpack());
-		else
-			h->setParent(ServiceProvider::create<StarterPackService>(this));
-	}
-
-	void RootInstance::insertSpawnLocation(SpawnLocation* s)
-	{
-		if (!s->neutral)
-		{
-			Teams* teams = ServiceProvider::create<Teams>(this);
-			if (!teams->teamExists(s->getTeamColor()))
-			{
-				boost::shared_ptr<Team> team = Creatable<Instance>::create<Team>();
-				team->setParent(teams);
-				team->setTeamColor(s->getTeamColor());
-				team->setName(s->getTeamColor().name() + " Team");
-			}
-		}
-	}
-
-	void RootInstance::insertInstances(const std::vector<boost::shared_ptr<Instance>>& instances, Instance* requestedParent, InsertMode insertMode, PromptMode promptMode)
-	{
-		RBXASSERT(instances.size() > 0);
-		RBXASSERT(!requestedParent || this->contains(requestedParent));
-		RBXASSERT(!((insertMode == INSERT_TO_3D_VIEW) && (requestedParent != this)));
-
-		std::vector<boost::shared_ptr<Instance>> remaining;
-		for (size_t i = 0; i < instances.size(); ++i)
-		{
-			Instance* instance = instances[i].get();
-			if (Sky* sky = dynamic_cast<Sky*>(instance))
-			{
-				Lighting* lighting = ServiceProvider::create<Lighting>(this);
-				lighting->replaceSky(sky);
-			}
-			else if (Team* team = dynamic_cast<Team*>(instance))
-			{
-				instance->setParent(ServiceProvider::create<Teams>(this));
-			}
-			else if (HopperBin* hopperBin = dynamic_cast<HopperBin*>(instance))
-			{
-				insertHopperBin(hopperBin);
-			}
-			else if (SpawnLocation* spawnLocation = dynamic_cast<SpawnLocation*>(instance))	
-			{
-				insertSpawnLocation(spawnLocation);
-				remaining.push_back(instances[i]);
+				RBXASSERT(primaryPart->isDescendentOf(this));
+				G3D::Matrix3 oldMe = getLocation().rotation;
+				modelInPrimary = G3D::CoordinateFrame(primaryPart->getCoordinateFrame().rotation.transpose() * oldMe, G3D::Vector3::zero());
+				primaryPart = set;
 			}
 			else
 			{
-				remaining.push_back(instances[i]);
+				modelInPrimary = G3D::CoordinateFrame();
+				primaryPart = set;
+			}
+		}
+		else
+		{
+			modelInPrimary = G3D::CoordinateFrame();
+			primaryPart = NULL;
+		}
+	}
+
+	void ModelInstance::setPrimaryPart(PartInstance* set)
+	{
+		if (!set || set->isDescendentOf(this))
+		{
+			candidatePrimaryPart.reset();
+			updatePrimaryPart(set);
+		}
+		else
+		{
+			candidatePrimaryPart = shared_from(set);
+
+			if (primaryPart)
+			{
+				modelInPrimary = G3D::CoordinateFrame();
+				primaryPart = NULL;
 			}
 		}
 
-		if (!remaining.empty())
-		{
-			if (requestedParent && !this->contains(requestedParent))
-				std::for_each(remaining.begin(), remaining.end(), boost::bind(&Instance::setParent, _1, requestedParent));
+		raisePropertyChanged(primaryPartProp);
+	}
 
-			switch (insertMode)
+	static void makeJ(Instance* instance)
+	{
+		PartInstance* partInstance = dynamic_cast<PartInstance*>(instance);
+		if (partInstance)
+		{
+			partInstance->join();
+		}
+		else
+		{
+			ModelInstance* modelInstance = dynamic_cast<ModelInstance*>(instance);
+			if (modelInstance)
+				modelInstance->for_eachChild(makeJ);
+		}
+	}
+
+	void ModelInstance::makeJoints()
+	{
+		for_eachChild(makeJ);
+	}
+
+	static void breakJ(Instance* instance)
+	{
+		PartInstance* partInstance = dynamic_cast<PartInstance*>(instance);
+		if (partInstance)
+		{
+			partInstance->destroyJoints();
+		}
+		else
+		{
+			ModelInstance* modelInstance = dynamic_cast<ModelInstance*>(instance);
+			if (modelInstance)
+				modelInstance->for_eachChild(breakJ);
+		}
+	}
+
+	void ModelInstance::breakJoints()
+	{
+		for_eachChild(breakJ);
+	}
+
+	float ModelInstance::computeFlagHeight() const
+	{
+		float answer = 6.0f;
+
+		if (primaryPart)
+		{
+			RBXASSERT(primaryPart->isDescendentOf(this));
+			float primaryPartY = primaryPart->getExtentsWorld().max().y;
+			answer = (getExtentsWorld().max().y - primaryPartY) + 6.0f;
+		}
+
+		return answer;
+	}
+
+	PartInstance* ModelInstance::getPrimaryPartInternal() const
+	{
+		if (primaryPart)
+		{
+			RBXASSERT(primaryPart->isDescendentOf(this));
+			return primaryPart;
+		}
+		else
+		{
+			float biggest = -1.0f;
+			PartInstance* biggestPart = NULL;
+			for (size_t i = 0; i < numChildren(); ++i)
 			{
-			case INSERT_TO_3D_VIEW:
-				insert3dView(remaining, promptMode);
-				return;
-			case INSERT_TO_TREE:
-				insertToTree(remaining, requestedParent);
-				return;
-			case INSERT_RAW:
+				const Instance* child = getChild(i);
+				const PVInstance* pvChild = dynamic_cast<const PVInstance*>(child);
+				if (pvChild)
 				{
-					std::vector<boost::weak_ptr<PartInstance>> partArray;
-					insertRaw(remaining, requestedParent, partArray);
+					const Primitive* primitive = pvChild->getBiggestPrimitive();
+					if (primitive)
+					{
+						PartInstance* part = PartInstance::fromPrimitive(const_cast<Primitive*>(primitive));
+						RBXASSERT(!part || part->isDescendentOf(this));
+
+						float area = part->getExtentsWorld().areaXZ();
+						if (area > biggest)
+						{
+							biggest = area;
+							biggestPart = part;
+						}
+					}
 				}
-				return;
+			}
+
+			updatePrimaryPart(biggestPart);
+			return biggestPart;
+		}
+	}
+
+	Extents ModelInstance::computeLocalGridExtents() const
+	{
+		std::vector<const Primitive*> primitives;
+		DragUtilities::getPrimitivesConst(this, primitives);
+
+		Extents answer = Extents::negativeInfiniteExtents();
+
+		for (size_t i = 0; i < primitives.size(); i++)
+		{
+			const Primitive* primitive = primitives[i];
+			Extents localExtents = primitive->getExtentsLocal();
+			Extents childExtentsInMe = localExtents.express(primitive->getCoordinateFrame(), getLocation());
+			answer.unionWith(childExtentsInMe);
+		}
+
+		return primitives.size() != 0 ? answer : Extents::zero();
+	}
+
+	Extents ModelInstance::computeWorldGridExtents() const
+	{
+		return LocalGridExtents.getValue().express(getLocation(), G3D::CoordinateFrame());
+	}
+
+	void ModelInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)
+	{
+		RBXASSERT(legacyOffset);
+
+		if (getChildren())
+		{
+			int count = (int)getChildren()->size();
+			if (count > 0)
+			{
+				G3D::CoordinateFrame myState = parentState * (*legacyOffset);
+				for (int i = 0; i < count; ++i)
+				{
+					Instance* child = getChild(i);
+					PVInstance* pvChild = dynamic_cast<PVInstance*>(child);
+					if (pvChild)
+						pvChild->legacyTraverseState(myState);
+				}
 			}
 		}
 	}
 
-	ControllerTypeArray RootInstance::computeControllersUsed() const
+	const G3D::CoordinateFrame ModelInstance::getLocation() const
 	{
-		ControllerTypeArray array;
+		if (getPrimaryPartConst())
+		{
+			G3D::CoordinateFrame cf = primaryPart->getCoordinateFrame();
+			return G3D::CoordinateFrame(cf.rotation * modelInPrimary.rotation, cf.translation);
+		}
 
+		return G3D::CoordinateFrame();
+	}
+
+	bool ModelInstance::hitTest(const G3D::Ray& worldRay, G3D::Vector3& worldHitPoint)
+	{
 		for (size_t i = 0; i < numChildren(); ++i)
 		{
-			const PVInstance* pvChild = queryTypedChild<PVInstance>(i);
+			Instance* child = getChild(i);
+			PVInstance* pvChild = dynamic_cast<PVInstance*>(child);
 			if (pvChild)
 			{
-				if (pvChild->isControllable())
-					array.setController(pvChild->getControllerType(), true);
+				if (pvChild->hitTest(worldRay, worldHitPoint))
+					return true;
 			}
 		}
 
-		return array;
+		return false;
+	}
+
+	bool ModelInstance::shouldRender3dAdorn() const
+	{
+		return isTopLevelPVInstance() && showModelCoord;
+	}
+
+	void ModelInstance::render3dAdorn(Adorn* adorn)
+	{
+		if (isTopLevelPVInstance())
+		{
+			if (showModelCoord)
+				renderCoordinateFrame(adorn);
+		}
+	}
+
+	void ModelInstance::render3dSelect(Adorn* adorn, SelectState selectState)
+	{
+		Extents localExtents = getExtentsLocal();
+		G3D::CoordinateFrame location = getLocation();
+		location.translation = location.pointToWorldSpace(localExtents.center());
+
+		Part part(Part::BLOCK_PART, localExtents.size(), G3D::Color3::white(), location);
+		Draw::selectionBox(part, adorn, selectState);
+	}
+
+	void ModelInstance::onCameraNear(float distance)
+	{
+		for (size_t i = 0; i < numChildren(); ++i)
+		{
+			Instance* child = getChild(i);
+			ICameraSubject* cameraSubject = dynamic_cast<ICameraSubject*>(child);
+			if (cameraSubject)
+				cameraSubject->onCameraNear(distance);
+		}
+	}
+
+	void ModelInstance::getCameraIgnorePrimitives(std::vector<const Primitive*>& primitives)
+	{
+		DragUtilities::getPrimitivesConst(this, primitives);
+
+		Humanoid* humanoid = findFirstChildOfType<Humanoid>();
+		if (humanoid)
+			humanoid->getIgnorePrims(primitives);
 	}
 }

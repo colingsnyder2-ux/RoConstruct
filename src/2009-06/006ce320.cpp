@@ -1,9 +1,9 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_geopair_native_family_e0c506f05a63ac15.cpp
+// roc-lib: rbxgs-dll roc_espclaude_e083087660a904dd.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef _RELEASEASSERT
@@ -13,7 +13,7 @@ namespace RBX {
 // Native6136a0 loads coordinate frame directly at94; no updatePV call.
 class PairBodyApi {
 public:
- const PV& getPvFast() const { return *(const PV*)((const char*)this+0x94); }
+ const PV& getPvFast() const { return *(const PV*)((const char*)this+0x9c); }
 };
 }
 #include "v8kernel/Pair.h"

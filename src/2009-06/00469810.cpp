@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00467380  unit: CSettingsDialog  size: 100 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00467380
@@ -62,7 +62,7 @@ struct Window {
 };
 
 struct CSettingsDialog {
-    char padding[0x16c];
+    char padding[0x164];
     Window* window;
     bool f();
 };

@@ -1,108 +1,63 @@
-// from server: 39% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 86% by EspClaude
+// from server: 100% by colin
+// roc 2008-06 006060b0  unit: seg_00600000  size: 76 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 006060b0
+//
+// 006060b0  8b4110               mov eax, dword ptr [ecx + 0x10]
+// 006060b3  56                   push esi
+// 006060b4  8b702c               mov esi, dword ptr [eax + 0x2c]
+// 006060b7  85f6                 test esi, esi
+// 006060b9  743d                 je 0x6060f8
+// 006060bb  807e0800             cmp byte ptr [esi + 8], 0
+// 006060bf  7407                 je 0x6060c8
+// 006060c1  8bce                 mov ecx, esi
+// 006060c3  e8582c0500           call 0x658d20
+// 006060c8  8b442408             mov eax, dword ptr [esp + 8]
+// 006060cc  d98690000000         fld dword ptr [esi + 0x90]
+// 006060d2  d800                 fadd dword ptr [eax]
+// 006060d4  d99e90000000         fstp dword ptr [esi + 0x90]
+// 006060da  d94004               fld dword ptr [eax + 4]
+// 006060dd  d88694000000         fadd dword ptr [esi + 0x94]
+// 006060e3  d99e94000000         fstp dword ptr [esi + 0x94]
+// 006060e9  d94008               fld dword ptr [eax + 8]
+// 006060ec  d88698000000         fadd dword ptr [esi + 0x98]
+// 006060f2  d99e98000000         fstp dword ptr [esi + 0x98]
+// 006060f8  5e                   pop esi
+// 006060f9  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct Vector {
+    float x, y, z;
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Geometry {
+    unsigned char pad0[8];
+    unsigned char dirty;
+    unsigned char pad1[0x87];
+    float x, y, z;
 
-boost::mutex& moo2()
+    void update();
+};
+
+struct Holder {
+    unsigned char pad[0x2C];
+    Geometry *geometry;
+};
+
+struct S {
+    unsigned char pad[0x10];
+    Holder *holder;
+
+    void translate(const Vector &offset);
+};
+
+void S::translate(const Vector &offset)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    Geometry *g = holder->geometry;
+    if (g) {
+        if (g->dirty)
+            g->update();
+        g->x = g->x + offset.x;
+        g->y = offset.y + g->y;
+        g->z = offset.z + g->z;
+    }
 }

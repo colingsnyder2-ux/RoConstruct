@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0063dd00  unit: VAuthoringSettings::?$BoundPropGetSet  size: 70 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0063dd00
@@ -57,7 +57,7 @@ struct S
 void S::setValue(void* instance, const bool& value)
 {
     Object* object = instance
-        ? reinterpret_cast<Object*>(static_cast<char*>(instance) - 20)
+        ? reinterpret_cast<Object*>(static_cast<char*>(instance) - 24)
         : 0;
 
     bool& field = *reinterpret_cast<bool*>(

@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004a7570  unit: RBX::VHint::?$FactoryProduct::Creator  size: 56 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004a7570
@@ -43,5 +43,5 @@ void func_004a7570(Source* source, Writer* writer)
     Color temporary;
     Color color = *source->getColor(&temporary);
     unsigned int index = color.getClosestPaletteIndex();
-    writer->write(&index, 5, 1);
+    writer->write(&index, 6, 1);
 }

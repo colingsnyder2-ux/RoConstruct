@@ -29,6 +29,7 @@ extern "C" void ClosePlace();
 extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
 extern "C" int GetContactState(float*,float*,int*);
+extern "C" int ExecutePlayerScript(const char*);
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -551,10 +552,115 @@ static int runCacheTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::stri
 
 // ---------------------------------------------------------------------- main
 
+// P3 block lifetime gate. Non-box/reference silhouette remains a separate gate.
+static bool lifetimeFrame(Ogre::Root* root,Ogre::RenderWindow* win,int cycle,
+    const char* stage,int expected,bool green,const void* stationaryId,
+    Ogre::SceneNode* stationaryNode,PlayerBlockMesh::BlockMesh* stationaryMesh,
+    int& redBaseline,std::ofstream& records)
+{
+    drawModels();
+    char name[96];_snprintf(name,sizeof(name),"p3_%d_%s.png",cycle,stage);
+    Image image;
+    if(!capture(root,win,name,image))return false;
+    int red=0;
+    for(int y=0;y<image.height;++y)for(int x=0;x<image.width;++x){
+        const unsigned char* pixel=&image.rgb[(y*image.width+x)*3];
+        if(pixel[0]>50 && pixel[0]>2*pixel[1] && 2*pixel[0]>3*pixel[2])++red;
+    }
+    int greenPixels=countGreen(image,0,0,image.width,image.height);
+    if(redBaseline<0)redBaseline=red;
+    std::map<const void*,DrawEntry>::iterator stationary=g_drawn.find(stationaryId);
+    bool stable=stationary!=g_drawn.end() && stationary->second.node==stationaryNode &&
+        stationary->second.geometry.getPointer()==stationaryMesh &&
+        stationaryNode->getPosition()==Ogre::Vector3(2,0,0) &&
+        stationaryNode->getOrientation()==Ogre::Quaternion::IDENTITY &&
+        stationary->second.size[0]==1 && stationary->second.size[1]==2.4f && stationary->second.size[2]==1;
+    bool pass=SceneModelCount()==expected && g_drawn.size()==static_cast<unsigned>(expected) &&
+        stable && red>100 && red==redBaseline && (green?greenPixels>100:greenPixels<30);
+    records<<cycle<<","<<stage<<","<<SceneModelCount()<<","<<g_drawn.size()<<","<<red<<","<<greenPixels<<","<<stable<<","<<pass<<"\n";
+    std::printf("p3 cycle=%d %s models=%d red=%d green=%d stationary=%d %s\n",
+        cycle,stage,SceneModelCount(),red,greenPixels,stable,pass?"PASS":"FAIL");
+    return pass;
+}
+
+static int runLifetimeTest(Ogre::Root* root,Ogre::RenderWindow* win,const std::string& place)
+{
+    unsigned meshes=resourceCount(Ogre::MeshManager::getSingleton());
+    unsigned materials=resourceCount(Ogre::MaterialManager::getSingleton());
+    unsigned textures=resourceCount(Ogre::TextureManager::getSingleton());
+    unsigned nodes=g_sceneManager->getRootSceneNode()->numChildren();
+    std::ofstream records("p3_lifetime.csv",std::ios::binary);
+    if(!records)return 1;
+    records<<"cycle,stage,models,drawn,red,green,stationary,pass\n";
+    for(int cycle=0;cycle<2;++cycle){
+        if(cycle && LoadPlace(place.c_str()))return 2;
+        if(SceneAttach())return 3;
+        drawModels();
+        const void* stationaryId=0;
+        for(std::map<const void*,DrawEntry>::iterator it=g_drawn.begin();it!=g_drawn.end();++it)
+            if(it->second.node->getPosition()==Ogre::Vector3(2,0,0))stationaryId=it->first;
+        if(!stationaryId)return 4;
+        DrawEntry& stationary=g_drawn.find(stationaryId)->second;
+        Ogre::SceneNode* stationaryNode=stationary.node;
+        PlayerBlockMesh::BlockMesh* stationaryMesh=stationary.geometry.getPointer();
+        int red=-1;
+        if(!lifetimeFrame(root,win,cycle,"loaded",2,true,stationaryId,stationaryNode,stationaryMesh,red,records))return 5;
+        const char* commands[]={
+            "game.Workspace.Brick.Size=Vector3.new(3,1.2,1); game.Workspace.Brick.CFrame=CFrame.new(-2,.5,0)*CFrame.fromEulerAnglesXYZ(0,0,.6)",
+            "p3Group=Instance.new('Model');p3Group.Name='Group';p3Group.Parent=game.Workspace;p3Held=game.Workspace.Brick;p3Held.Parent=p3Group",
+            "p3Held.Parent=nil",
+            "p3Held.Parent=game.Workspace",
+            "p3Inserted=Instance.new('Part');p3Inserted.Name='Inserted';p3Inserted.Anchored=true;p3Inserted.Size=Vector3.new(1,1.2,1);p3Inserted.CFrame=CFrame.new(-2,-2,0);p3Inserted.Parent=game.Workspace",
+            "p3Inserted.Parent=nil;p3Inserted=nil",
+            "p3Held.Parent=nil;p3Held=nil"
+        };
+        const char* stages[]={"transformed","reparented","detached","reattached","inserted","insert_removed","removed"};
+        const int counts[]={2,2,1,2,3,2,1};
+        for(int step=0;step<7;++step){
+            if(ExecutePlayerScript(commands[step]))return 6;
+            if(!lifetimeFrame(root,win,cycle,stages[step],counts[step],step!=2 && step!=6,
+                stationaryId,stationaryNode,stationaryMesh,red,records))return 7;
+            if(step==0){
+                bool transformed=false;
+                for(int i=0;i<SceneModelCount();++i){
+                    SceneModel model;
+                    if(!SceneModelGet(i,&model) && model.position[0]==-2 && model.position[1]==.5f &&
+                        model.size[0]==3 && model.size[1]==1.2f && model.size[2]==1 &&
+                        std::fabs(model.rotation[0]-.8253356f)<.0001f &&
+                        std::fabs(model.rotation[1]+.5646425f)<.0001f)transformed=true;
+                }
+                if(!transformed){std::printf("p3 resize/rotation model values FAIL\n");return 13;}
+            }
+        }
+        SceneDetach();drawModels();ClosePlace();PlayerBlockMesh::flushUnused();
+        for(int i=0;i<32;++i)PlayerNativeMaterial::collectUnusedTextures();
+        if(!g_drawn.empty() || PlayerBlockMesh::cachedMeshes() || PlayerBlockMesh::liveLevels() ||
+            PlayerBlockMesh::activeReferences() || PlayerMeshBackend::liveMeshes() || PlayerSphereCache::size())return 8;
+        if(resourceCount(Ogre::MeshManager::getSingleton())!=meshes ||
+            resourceCount(Ogre::MaterialManager::getSingleton())!=materials ||
+            resourceCount(Ogre::TextureManager::getSingleton())!=textures ||
+            g_sceneManager->getRootSceneNode()->numChildren()!=nodes)return 9;
+        if(LoadPlace(kEmptyPlace) || SceneAttach())return 10;
+        drawModels();
+        Image empty;char name[64];_snprintf(name,sizeof(name),"p3_%d_empty.png",cycle);
+        if(!capture(root,win,name,empty) || SceneModelCount() || !g_drawn.empty() ||
+            countGreen(empty,0,0,empty.width,empty.height))return 11;
+        SceneDetach();drawModels();ClosePlace();
+        std::printf("p3 cycle=%d empty/reopen mesh/material/texture/node baseline PASS counts=%u/%u/%u/%u\n",
+            cycle,meshes,materials,textures,nodes);
+    }
+    std::ofstream result("p3_result.json",std::ios::binary);
+    result<<"{\"block_lifetime_pass\":true,\"cycles\":2,\"non_box_proven\":false,"
+        <<"\"mesh_baseline\":"<<meshes<<",\"material_baseline\":"<<materials
+        <<",\"texture_baseline\":"<<textures<<",\"node_baseline\":"<<nodes<<"}\n";
+    return result?0:12;
+}
+
 int main(int argc, char** argv)
 {
     bool selftest = false;
     bool cachetest = false;
+    bool lifetest = false;
     bool frames = false;
     bool demo = false;
     bool skytest = false;
@@ -569,6 +675,7 @@ int main(int argc, char** argv)
     for (int i = 1; i < argc; ++i)
     {
         if (std::strcmp(argv[i], "--selftest") == 0) selftest = true;
+        else if (std::strcmp(argv[i], "--p3test") == 0) lifetest = true;
         else if (std::strcmp(argv[i], "--demo") == 0) demo = true;
         else if (std::strcmp(argv[i], "--stability-test") == 0) stability = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
@@ -588,7 +695,7 @@ int main(int argc, char** argv)
     if(!std::ifstream(getenv("ROC_TEXTURE_STRIP"),std::ios::binary)){
         std::printf("missing SurfacesStrip.png; provide original Content with --content-root\n");return 1;
     }
-    if(!selftest && !cachetest && !frames && placePath.empty())demo=true;
+    if(!selftest && !cachetest && !lifetest && !frames && placePath.empty())demo=true;
 
     if (selftest)
         placeText = kPartPlace;
@@ -596,6 +703,7 @@ int main(int argc, char** argv)
     else
         placeText = placePath.empty() ? "" : readPlace(placePath.c_str());
     if(cachetest && placeText.empty()){std::printf("cachetest requires readable fixture\n");return 1;}
+    if(lifetest && placeText.empty()){std::printf("p3test requires readable lifetime fixture\n");return 1;}
     if (!selftest && placeText.empty())
     {
         std::printf("could not read place: %s\n",placePath.c_str());return 1;
@@ -644,9 +752,9 @@ int main(int argc, char** argv)
         delete root;ClosePlace();return 0;
     }
 
-    if (selftest || cachetest)
+    if (selftest || cachetest || lifetest)
     {
-        int rc = selftest ? runSelftest(root, win) : runCacheTest(root,win,placeText);
+        int rc = selftest ? runSelftest(root, win) : lifetest ? runLifetimeTest(root,win,placeText) : runCacheTest(root,win,placeText);
         SceneDetach();
         drawModels();
         PlayerBlockMesh::flushUnused();

@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
@@ -31,7 +31,7 @@ struct ClearBackpack : Base
 };
 
 ClearBackpack::ClearBackpack(std::string name, void* object)
-    : Base(object ? static_cast<char*>(object) + 0x1c8 : 0, name),
+    : Base(object ? static_cast<char*>(object) + 0xd0 : 0, name),
       owner(object),
       target(object),
       state(0),

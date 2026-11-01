@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00449270  unit: RBX::Reflection::Metadata::VItem::?$BoundPropGetSet  size: 91 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00449270
@@ -66,7 +66,7 @@ struct Property {
 void Property::set(void* instance, const String& value)
 {
     Object* object = instance
-        ? reinterpret_cast<Object*>(static_cast<char*>(instance) - 20)
+        ? reinterpret_cast<Object*>(static_cast<char*>(instance) - 24)
         : 0;
 
     if (stringNotEqual(

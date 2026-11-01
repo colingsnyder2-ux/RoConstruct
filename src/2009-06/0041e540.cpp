@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00423d50  unit: CSelectionTreeCtrl  size: 217 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00423d50
@@ -111,6 +111,7 @@ struct SelectionTree
     void* window;
     char padding1[0x30];
     BaseControl base;
+    char padding2[8];
     int active;
 
     void* hitTest(Point, unsigned int*);

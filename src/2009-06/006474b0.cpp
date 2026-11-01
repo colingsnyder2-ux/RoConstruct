@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_fmod_b2ffaf4c16384e8e.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: openrbx-client-dll roc_espclaude_cc968d99eafffcdb.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "../3rdparty/fmod/api/inc/fmod_errors.h"
@@ -19,7 +19,7 @@ extern "C" long __cdecl _InterlockedDecrement(volatile long*);
 extern "C" __declspec(dllimport) char* __cdecl strncpy(char*, const char*, unsigned int);
 
 struct Settings {
-    char padding[0x133];
+    char padding[0x99];
     unsigned char enabled;
 };
 

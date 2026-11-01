@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00640b40  unit: RBX::AxisMoveTool  size: 513 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00640b40
@@ -216,7 +216,7 @@ struct Instance;struct Part;
 typedef std::vector<boost::shared_ptr<Instance> > Instances;
 typedef std::vector<Part*> Parts;
 struct Snapshot {boost::shared_ptr<Instances> object;const Instances*operator->()const{return object.get();}};
-struct Selection {char prefix[0x154];Snapshot selected;Instances::const_iterator begin()const{return selected->begin();}Instances::const_iterator end()const{return selected->end();}};
+struct Selection {char prefix[0x8c];Snapshot selected;Instances::const_iterator begin()const{return selected->begin();}Instances::const_iterator end()const{return selected->end();}};
 struct CachedSelection {Instance* context;boost::shared_ptr<Selection> selected;CachedSelection(Instance*p):context(p){}Selection*get(int);};
 void __cdecl collectPart(boost::shared_ptr<Instance>,Parts*);
 struct Callback {void(__cdecl* function)(boost::shared_ptr<Instance>,Parts*);Parts* parts;Callback(void(__cdecl*f)(boost::shared_ptr<Instance>,Parts*),Parts*p):function(f),parts(p){}void operator()(const boost::shared_ptr<Instance>&p){function(p,parts);}};

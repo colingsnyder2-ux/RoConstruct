@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 00449bf0  unit: CIDEDocManager  size: 293 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00449bf0
@@ -282,7 +282,7 @@ public:
     virtual int LoadFrame(unsigned int id, unsigned long style, void* parent, void* context);
     char pad[0x1c];
     HWND m_hWnd;
-    char pad2[0x4b4 - 0x24];
+    char pad2[0x4c0 - 0x24];
     CMainFrame();
     void restore(int state);
     void show();

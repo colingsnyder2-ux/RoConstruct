@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0057e140  unit: RBX::ClearBackpack  size: 140 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0057e140
@@ -62,7 +62,7 @@ struct Node {
 struct Object;
 
 struct ObjectVTable {
-    void* reserved[14];
+    void* reserved[4];
     Node* (__thiscall* getNode)(Object*);
 };
 

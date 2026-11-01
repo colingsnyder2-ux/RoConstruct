@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 0044fd30  unit: CRobloxDoc  size: 195 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0044fd30
@@ -198,7 +198,7 @@ struct Dialog {
 };
 
 struct S {
-    char padding[148];
+    char padding[156];
     void* owner;
     void report();
 };

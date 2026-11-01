@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00615a50  unit: RBX::ArrowTool  size: 260 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00615a50
@@ -130,6 +130,7 @@ struct Tool {
     virtual void slot12();
     virtual void slot13();
     virtual void slot14();
+    virtual void slot15();
     virtual String name();
 
     Result getTexture();

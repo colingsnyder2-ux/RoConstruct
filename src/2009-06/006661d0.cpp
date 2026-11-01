@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espclaude_0273d3be2b1c5160.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espclaude_c72f70368c0cabc4.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _DLL
@@ -18,9 +18,9 @@ class Instance
 {
 public:
 	virtual ~Instance();
-	char pad[0x100];
+	char pad[0x44];
 	Instance* parent;
-	char pad2[0x28];
+	char pad2[0x40];
 	Instance* getParent() const { return parent; }
 };
 class IRenderable
@@ -45,3 +45,4 @@ void FaceInstance::render3dSelect(Adorn* adorn, SelectState selectState)
 		DrawAdorn::surfaceBorder(part->getPrimitive(), face, adorn, G3D::Color4(Draw::selectColor(), 1.0f));
 }
 }
+

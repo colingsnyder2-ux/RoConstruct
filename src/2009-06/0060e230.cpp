@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc 2008-06 00581090  unit: RBX::DeleteSelectionVerb  size: 540 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00581090
@@ -254,10 +254,10 @@ class Workspace:public Instance {};
 namespace Network {class Players:public Instance {};}
 typedef std::vector<boost::shared_ptr<Instance> > Instances;
 struct Children {boost::shared_ptr<Instances> object;operator boost::shared_ptr<Instances>::unspecified_bool_type()const{return object;}const Instances* operator->()const{return object.get();}__declspec(noinline) boost::shared_ptr<const Instances> read()const{return object;}};
-struct Selection {char prefix[0x154];Children selected;};
+struct Selection {char prefix[0x8c];Children selected;};
 struct History {void record(int);};
 struct Context {Selection* selection();History* history();};
-struct Name {int id;std::string text;const char*c_str()const{return text.c_str();}};
+struct Name {std::string text;const char*c_str()const{return text.c_str();}};
 struct IDataState {virtual void setDirty(bool)=0;};
 void __cdecl trackVerb(const char*,Workspace*);
 struct DeleteSelectionVerb {void*table;const Name*name;void*unused;Workspace* workspace;char prefix[0x10];Context* context;void doIt(IDataState*);};

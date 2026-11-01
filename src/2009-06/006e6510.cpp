@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
@@ -131,12 +131,12 @@ class Color {public:static const G3D::Color3&colorFromIndex8(int);};
 // Observed ScoreHud data view. Native GuiItem is the primary base at offset0.
 // The rendering method only writes native GuiItem::guiSize at13c/140.
 class ScoreHud {public:
- char unobserved00[0x13c];G3D::Vector2 guiSize;
+ char unobserved00[0x98];G3D::Vector2 guiSize;
  void setGuiSize(const G3D::Vector2&v){guiSize=v;}
  void BuildBoardData(BoardData&);
  void renderFFALeaderboard(Adorn*);
 };
-typedef char score_gui_size_offset[offsetof(ScoreHud,guiSize)==0x13c?1:-1];
+typedef char score_gui_size_offset[offsetof(ScoreHud,guiSize)==0x98?1:-1];
 typedef char score_board_size[sizeof(BoardData)==48?1:-1];
 void ScoreHud::renderFFALeaderboard(Adorn* adorn) {
     bool hasStats=true;

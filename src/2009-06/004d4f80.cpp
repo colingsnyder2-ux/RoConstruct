@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00563ad0  unit: RBX::P8DebugSettings::?$GetSetImpl  size: 42 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00563ad0
@@ -33,7 +33,7 @@ struct S {
 void S::f(void* object, const double& value)
 {
     Object* target = object
-        ? reinterpret_cast<Object*>(static_cast<char*>(object) - 20)
+        ? reinterpret_cast<Object*>(static_cast<char*>(object) - 24)
         : 0;
     (target->*setter)(value);
 }

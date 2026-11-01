@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by user
 // roc 2008-06 0057e730  unit: RBX::ClearBackpack  size: 175 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0057e730
@@ -131,8 +131,8 @@ inline String::~String() {
 }
 
 struct Owner {
-    char padding[0x1c8];
-    char context[0x3c];
+    char padding[0xd0];
+    char context[0x13c];
     void* value;
     void* getValue() const { return value; }
 };

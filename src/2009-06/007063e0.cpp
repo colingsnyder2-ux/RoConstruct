@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005964f0  unit: RBX::worker_thread::Udata::?$sp_counted_impl_p  size: 206 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005964f0
@@ -112,7 +112,7 @@ inline Function::~Function() {
     if (manager) {
         Manager invoke = manager->invoke;
         if (invoke)
-            invoke(storage, storage, 1);
+            invoke(storage, storage, 2);
         manager = 0;
     }
 }

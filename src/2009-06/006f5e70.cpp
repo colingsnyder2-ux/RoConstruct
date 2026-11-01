@@ -1,103 +1,63 @@
-// from server: 19% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/AssemblyStage.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 006f5e70  unit: RBX::AssemblyStage  size: 90 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006f5e70
+//
+// 006f5e70  6aff                 push -1
+// 006f5e72  6828268700           push 0x872628
+// 006f5e77  64a100000000         mov eax, dword ptr fs:[0]
+// 006f5e7d  50                   push eax
+// 006f5e7e  64892500000000       mov dword ptr fs:[0], esp
+// 006f5e85  51                   push ecx
+// 006f5e86  56                   push esi
+// 006f5e87  8bf1                 mov esi, ecx
+// 006f5e89  89742404             mov dword ptr [esp + 4], esi
+// 006f5e8d  c70620d28e00         mov dword ptr [esi], 0x8ed220
+// 006f5e93  8d4e10               lea ecx, [esi + 0x10]
+// 006f5e96  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 006f5e9e  e83d44efff           call 0x5ea2e0
+// 006f5ea3  8b4e08               mov ecx, dword ptr [esi + 8]
+// 006f5ea6  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 006f5eae  5e                   pop esi
+// 006f5eaf  85c9                 test ecx, ecx
+// 006f5eb1  7408                 je 0x6f5ebb
+// 006f5eb3  8b01                 mov eax, dword ptr [ecx]
+// 006f5eb5  8b10                 mov edx, dword ptr [eax]
+// 006f5eb7  6a01                 push 1
+// 006f5eb9  ffd2                 call edx
+// 006f5ebb  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 006f5ebf  64890d00000000       mov dword ptr fs:[0], ecx
+// 006f5ec6  83c410               add esp, 0x10
+// 006f5ec9  c3                   ret 
+// copied from an identical function in another client (function ??1ClumpStage@ns_ROCX000002@@UAE@XZ)
 
-// Candidate translation unit (score above; library headers required).
-#include "v8world/AssemblyStage.h"
-#include "v8world/CollisionStage.h"
-#include "v8world/Assembly.h"
-#include "v8world/Joint.h"
+namespace ns_ROCX000002 {
+struct Stage {
+    virtual ~Stage();
+};
 
-namespace RBX
+struct StageOwner {
+    unsigned int reserved0;
+    Stage* owned;
+    unsigned int reserved1;
+    ~StageOwner();
+};
+
+inline StageOwner::~StageOwner()
 {
-#pragma warning (push)
-#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
-	AssemblyStage::AssemblyStage(IStage* upstream, World* world)
-		: IWorldStage(upstream, new CollisionStage(this, world), world)
-	{
-	}
-#pragma warning (pop)
+    if (owned)
+        delete owned;
+}
 
-	AssemblyStage::~AssemblyStage()
-	{
-		RBXASSERT(assemblies.empty());
-		RBXASSERT(joints.empty());
-	}
+struct Collection {
+    ~Collection();
+};
 
-	void AssemblyStage::stepUi(int uiStepId)
-	{
-		typedef std::set<Joint*>::iterator JointIterator;
-		for (JointIterator it = joints.begin(); it != joints.end(); it++)
-		{
-			Joint* j = *it;
-			j->stepUi(uiStepId);
-		}
+struct ClumpStage : StageOwner {
+    Collection collection;
+    virtual ~ClumpStage();
+};
 
-		typedef std::set<Assembly*>::iterator AssemblyIterator;
-		for (AssemblyIterator it = assemblies.begin(); it != assemblies.end(); it++)
-		{
-			Assembly* a = *it;
-			a->stepUi(uiStepId);
-		}
-	}
-
-	void AssemblyStage::onJointAdded(Joint* j)
-	{
-		bool inserted = joints.insert(j).second;
-		RBXASSERT(inserted);
-	}
-
-	void AssemblyStage::onJointRemoving(Joint* j)
-	{
-		size_t removed = joints.erase(j);
-		RBXASSERT(removed == 1);
-	}
-
-	void AssemblyStage::onEdgeAdded(Edge* e)
-	{
-		IWorldStage::onEdgeAdded(e);
-
-		if (e->getEdgeType() == Edge::JOINT)
-		{
-			Joint* j = rbx_static_cast<Joint*>(e);
-			onJointAdded(j);
-		}
-	}
-
-	void AssemblyStage::onEdgeRemoving(Edge* e)
-	{
-		if (e->getEdgeType() == Edge::JOINT)
-		{
-			Joint* j = rbx_static_cast<Joint*>(e);
-			onJointRemoving(j);
-		}
-
-		IWorldStage::onEdgeRemoving(e);
-	}
-
-	void AssemblyStage::onAssemblyAdded(Assembly* assembly)
-	{
-		assembly->putInStage(this);
-
-		bool inserted = assemblies.insert(assembly).second;
-		RBXASSERT(inserted);
-
-		if (!assembly->getAnchored())
-			rbx_static_cast<CollisionStage*>(getDownstreamWS())->onAssemblyAdded(assembly);
-	}
-
-	void AssemblyStage::onAssemblyRemoving(Assembly* assembly)
-	{
-		if (assembly->downstreamOfStage(this))
-			rbx_static_cast<CollisionStage*>(getDownstreamWS())->onAssemblyRemoving(assembly);
-
-		RBXASSERT(assembly->inStage(this));
-
-		size_t removed = assemblies.erase(assembly);
-		RBXASSERT(removed == 1);
-
-		assembly->removeFromStage(this);
-	}
+ClumpStage::~ClumpStage()
+{
+}
 }

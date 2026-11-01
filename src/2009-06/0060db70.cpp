@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_joinpermissionda0cc9a207d655eb.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_92337273b0b3d70c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <string>
@@ -41,7 +41,7 @@ struct Collection {
 };
 
 struct Node {
-    unsigned char padding[0x154];
+    unsigned char padding[0x8c];
     Collection* collection;
     Node* resolve();
     Pair first();
@@ -74,3 +74,4 @@ void JoinCommand::execute(int)
         combine(a.get(), b.get());
     }
 }
+

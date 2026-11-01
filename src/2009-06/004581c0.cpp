@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc 2008-06 00459570  unit: CRobloxView  size: 236 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00459570
@@ -180,7 +180,7 @@ inline const int &minimum(const int &a, const int &b)
 }
 
 struct S {
-    char padding[0xb0];
+    char padding[0xa0];
     char browser[0x20];
     void *window;
     void f();

@@ -1,102 +1,60 @@
-// from server: 68% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-view View.cpp
+// from server: 96% by EspClaude
+// from server: 100% by king_originala
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <vector>
+#include <intrin.h>
+#include <utility>
+namespace boost {
+namespace detail {
+struct sp_counted_base {
+    virtual ~sp_counted_base() {}
+    virtual void dispose()=0;
+    virtual void destroy(){delete this;}
+    long use_count_,weak_count_;
+    void weak_release(){if(_InterlockedDecrement(&weak_count_)==0)destroy();}
+    void release(){if(_InterlockedDecrement(&use_count_)==0){dispose();weak_release();}}
+};
+struct shared_count {
+    sp_counted_base* pi_;
+    shared_count():pi_(0){}
+    shared_count& operator=(const shared_count& r){sp_counted_base* tmp=r.pi_;if(tmp!=pi_){if(tmp)_InterlockedIncrement(&tmp->use_count_);if(pi_)pi_->release();pi_=tmp;}return *this;}
+    void swap(shared_count& r){sp_counted_base* tmp=r.pi_;r.pi_=pi_;pi_=tmp;}
+    shared_count(const shared_count& r):pi_(r.pi_){if(pi_)_InterlockedIncrement(&pi_->use_count_);}
+    ~shared_count(){if(pi_)pi_->release();}
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px; detail::shared_count pn;
+    shared_ptr():px(0),pn(){}
+    shared_ptr& operator=(const shared_ptr& r){px=r.px;pn=r.pn;return *this;}
+    void swap(shared_ptr& r){std::swap(px,r.px);pn.swap(r.pn);}
+    void reset(){shared_ptr().swap(*this);}
+    typedef T* shared_ptr::*unspecified_bool_type;
+    operator unspecified_bool_type()const{return px==0?0:&shared_ptr::px;}
+    shared_ptr(const shared_ptr& r):px(r.px),pn(r.pn){}
+    template<class Y> shared_ptr(const shared_ptr<Y>& r):px(r.px),pn(r.pn){}
+    T* get()const{return px;}
+    T* operator->()const{return px;}
+};
+template<class T,class U> bool operator==(const shared_ptr<T>& a,const shared_ptr<U>& b){return a.get()==b.get();}
+}
 
-// Candidate translation unit (score above; library headers required).
-#include "RbxView/View.h"
-#include "BrickMesh.h"
-#include "CylinderMesh.h"
-#include "SphereMesh.h"
-#include "PBBMesh.h"
-#include "Part.h"
-#include "RenderLib/AggregatingSceneManager.h"
-#include "v8datamodel/Lighting.h"
-#include "v8datamodel/DataModel.h"
-#include "v8datamodel/Workspace.h"
-#include "v8datamodel/Decal.h"
-
-namespace RBX
-{
-	namespace View
-	{
-		View::View(boost::shared_ptr<DataModel> dataModel)
-			: dataModel(dataModel),
-			  renderLibScene(new Render::RenderScene),
-			  textureManager(new G3D::TextureManager),
-			  lightingValid(false)
-		{
-			sceneManager.reset(new Render::AggregatingSceneManager(renderLibScene.get()));
-			materialFactory.reset(new MaterialFactory(textureManager.get()));
-
-			renderLibScene->setThrottle(0.0f, 0.0f, false, 0.0f);
-
-			Lighting* lighting = ServiceProvider::find<Lighting>(dataModel.get());
-			lightingChangedConnection = Lighting::event_LightingChanged.connect(lighting, boost::bind(&View::invalidateLighting, this, _1));
-
-			dataModel->getWorkspace()->visitDescendents(boost::bind(&View::onWorkspaceDescendentAdded, this, _1));
-			workspaceDescendentAddedConnection = Instance::event_descendentAdded.connect(dataModel->getWorkspace(), boost::bind(&View::onWorkspaceDescendentAdded, this, _1));
-		}
-
-		View::~View()
-		{
-			sceneManager->clear();
-
-			Lighting* unused = ServiceProvider::create<Lighting>(dataModel.get());
-
-			MeshFactory<CylinderAlongXMesh, 1>::flushCache();
-			MeshFactory<SphereMesh, 1>::flushCache();
-			MeshFactory<PBBMesh, 4>::flushCache();
-			BrickMesh::flushCache();
-		}
-
-		void View::suppressSkybox()
-		{
-			Lighting* lighting = ServiceProvider::create<Lighting>(dataModel.get());
-
-			renderLibScene->presetLighting(NULL, lighting->getSkyParameters(), lighting->getAmbientTop(), lighting->getAmbientBottom());
-			sky = NULL;
-			renderLibScene->colorClearValue = lighting->getClearColor();
-		}
-
-		Instance* View::getWorkspace()
-		{
-			return dataModel->getWorkspace();
-		}
-
-		float View::getMeshDetail() const
-		{
-			return renderLibScene->getMeshDetail();
-		}
-
-		float View::getShadingQuality() const
-		{
-			return renderLibScene->getShadingQuality();
-		}
-
-		RenderStats& View::getRenderStats()
-		{
-			return renderLibScene->renderStats;
-		}
-
-		void View::invalidateLighting(bool updateSkybox)
-		{
-			lightingValid = false;
-			if (updateSkybox)
-				sky = NULL;
-		}
-
-		void View::render(void* rd)
-		{
-			updateLighting();
-			sceneManager->prerender(0.1f); // intentional type mismatch! causes value of constant to be different
-			renderLibScene->render((G3D::RenderDevice*)rd, dataModel->getWorkspace()->getGCamera());
-		}
-
-		void View::updateSettings(float shadingQuality, float meshDetail, bool shadows, float cameraDistance)
-		{
-			renderLibScene->setThrottle(shadingQuality, meshDetail, shadows, cameraDistance);
-		}
-	}
+namespace RBX {
+class Instance;class Adorn;
+typedef std::vector<boost::shared_ptr<Instance> > Instances;
+struct Children {boost::shared_ptr<Instances> object;operator boost::shared_ptr<Instances>::unspecified_bool_type()const{return object;}__declspec(noinline) boost::shared_ptr<const Instances> read()const{return object;}};
+typedef void(__cdecl*Visitor)(boost::shared_ptr<Instance>);
+class Instance {char prefix[0x108];Children children;public:void visitChildren(Visitor)const;};
+void Instance::visitChildren(Visitor func)const{
+ if(children){
+  boost::shared_ptr<const Instances> c=children.read();
+  Instances::const_iterator end=c->end();
+  Instances::const_iterator iter=c->begin();
+  for(;iter!=end;iter++){
+   func(*iter);
+  }
+ }
+}
 }

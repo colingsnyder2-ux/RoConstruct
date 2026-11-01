@@ -1,11 +1,12 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_materialbase4a0a4d7cb410e784.cpp
+// roc-lib: rbxgs-dll roc_espclaude_03da774976adfcf2.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define Render RbxG3D
 #include "RenderLib/TextureProxy.h"
 #include "G3D/Color3.h"
 struct LevelBase {virtual ~LevelBase();};
@@ -21,3 +22,4 @@ Level::Level(G3D::ReferenceCountedPointer<RBX::TextureProxyBase> value,G3D::Colo
  if(value.notNull())texture=dynamic_cast<RBX::Render::TextureProxy*>(value.operator->())->alphaOnlyVersion();
  if(g>0)f=0;
 }
+

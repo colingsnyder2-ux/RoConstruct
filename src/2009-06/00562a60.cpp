@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc 2008-06 004dc590  unit: RBX::ViewNew::ViewG3D  size: 138 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004dc590
@@ -80,7 +80,7 @@ struct Node
     Node* parent;
     Node* right;
     Key key;
-    char padding[21];
+    char padding[69];
     unsigned char nil;
 };
 

@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -34,6 +34,7 @@ namespace RBX {
         virtual void v18();
         virtual void v19();
         virtual void v20();
+        virtual void v20b();
         virtual bool enabled();
 
         Hit hit(int);
@@ -71,7 +72,7 @@ struct ChatWidget {
 Result* ChatWidget::f(Result* result, Event* event) {
     RBX::Instance* owner =
         reinterpret_cast<RBX::Instance*>(
-            reinterpret_cast<char*>(this) - 0x130);
+            reinterpret_cast<char*>(this) - 0x8c);
 
     if (owner->enabled()) {
         int type = event->type;

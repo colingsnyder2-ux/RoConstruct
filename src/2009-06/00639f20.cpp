@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005aeea0  unit: RBX::ScriptContext  size: 246 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005aeea0
@@ -100,7 +100,7 @@ struct Count {
     volatile long weak;
 };
 
-struct Prefix { char storage[20]; };
+struct Prefix { char storage[24]; };
 struct Context { int storage; };
 struct Source : Prefix, Context {};
 

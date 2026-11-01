@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005b6120  unit: RBX::VHat::?$FactoryProduct  size: 84 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005b6120
@@ -61,7 +61,7 @@ struct Map {
 };
 
 struct Registry {
-    char padding[0x30];
+    char padding[0x48];
     Map map;
 };
 

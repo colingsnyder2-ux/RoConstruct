@@ -1,9 +1,9 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: ogre-1.4.5-dll roc_espclaude_be1af347978f4727.cpp
+// roc-lib: ogre-1.4.9-dll roc_espclaude_d00614e597055395.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef OGRE_NONCLIENT_BUILD
@@ -17,7 +17,7 @@ namespace Ogre {
 struct Queue:RenderQueue {__declspec(dllimport) void enqueue(Renderable*,unsigned,unsigned short);};
 struct Special {void update(Camera*,RenderQueue*,unsigned);};
 struct RbxSceneManager:SceneManager {
- char tail[0x8bdc-sizeof(SceneManager)];Special* special;unsigned reserved;SceneNode* extra;
+ char tail[0x8be0-sizeof(SceneManager)];Special* special;unsigned reserved;SceneNode* extra;
  void f(Camera*);
 };
 void RbxSceneManager::f(Camera* cam)

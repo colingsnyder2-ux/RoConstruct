@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_claudeM_9176ce383e321941.cpp
+// roc-lib: rbxgs-dll roc_espclaude_870eb565a51ca25d.cpp
 
 // Candidate translation unit (score above; library headers required).
 // from server: 73% by king_originala
@@ -33,7 +33,7 @@ enum NormalId{NORM_X,NORM_Y,NORM_Z,NORM_X_NEG,NORM_Y_NEG,NORM_Z_NEG,NORM_UNDEFIN
 struct Extents {G3D::Vector3 low,high;Extents(const G3D::Vector3&a,const G3D::Vector3&b):low(a),high(b){}const G3D::Vector3&min()const{return low;}const G3D::Vector3&max()const{return high;}G3D::Plane getPlane(NormalId)const;};
 struct Geometry {virtual ~Geometry();G3D::Vector3 gridSize;};
 struct Primitive {
- char unobserved[0x9c];Geometry*geometry;
+ char unobserved[0xe0];Geometry*geometry;
  const G3D::CoordinateFrame&getCoordinateFrame()const;void setCoordinateFrame(const G3D::CoordinateFrame&);
  const G3D::Vector3&getGridSize()const{return geometry->gridSize;}
  Extents getExtentsLocal()const{G3D::Vector3 half=getGridSize()*.5f;return Extents(-half,half);}
@@ -79,8 +79,9 @@ typedef char ray_size[sizeof(G3D::Ray)==28?1:-1];
 typedef char plane_size[sizeof(G3D::Plane)==20?1:-1];
 typedef char dragger_size[sizeof(RBX::RunDragger)==0x70?1:-1];
 
-typedef char primitive_geometry_offset[offsetof(RBX::Primitive,geometry)==0x9c?1:-1];
+typedef char primitive_geometry_offset[offsetof(RBX::Primitive,geometry)==0xe0?1:-1];
 typedef char geometry_size_offset[offsetof(RBX::Geometry,gridSize)==4?1:-1];
 typedef char shared_size[sizeof(boost::shared_ptr<RBX::PartInstance>)==8?1:-1];
 typedef char weak_size[sizeof(boost::weak_ptr<RBX::PartInstance>)==8?1:-1];
+
 

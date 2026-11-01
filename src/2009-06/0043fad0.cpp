@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0063b210  unit: RBX::Reflection::Metadata::VClass::?$BoundPropGetSet  size: 70 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0063b210
@@ -54,7 +54,7 @@ struct S {
 
 void S::set(void* object, const int& value)
 {
-    char* base = object ? static_cast<char*>(object) - 20 : 0;
+    char* base = object ? static_cast<char*>(object) - 24 : 0;
     int* destination = reinterpret_cast<int*>(base + valueOffset);
 
     if (*destination != value) {

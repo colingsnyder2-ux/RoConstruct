@@ -1,138 +1,441 @@
-// from server: 26% by colin
+// from server: 76% by EspClaude
+// from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-appdraw Draw.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-dll roc_unit_7d2f0ab88aedddfb.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "AppDraw/Draw.h"
-#include "util/Math.h"
+#pragma include_alias("util/Rect.h", "roc_native_rect_center_f0523507542fe513.cpp")
+/**
+  @file Rect2D.h
+ 
+  @maintainer Morgan McGuire, matrix@graphics3d.com
+ 
+  @created 2003-11-13
+  @created 2005-01-16
 
-namespace RBX
-{
-	void Draw::spokes(float radius, float axis, Adorn* adorn)
-    {
-        // no idea where the 0.51 comes from lol
-        float halfAxis = axis*0.51f;
-        float subRadius = radius*0.7f;
+  Copyright 2000-2005, Morgan McGuire.
+  All rights reserved.
+ */
 
-        for (int i = 0; i < 2; i++)
-        {
-            float x = (i == 0) ? halfAxis : -halfAxis;
-            float ccw = i ? -1.0f : 1.0f;
+#ifndef G3D_RECT2D_H
+#define G3D_RECT2D_H
 
-            for (int j = 0; j < 2; j++)
-            {
-                float y = (j == 0) ? subRadius : 0.1f;
-                float z = (j == 0) ? 0.1f : subRadius;
+// Linux defines this as a macro
+#ifdef border
+#undef border
+#endif
 
-                adorn->quad(
-                    G3D::Vector3(x, y * ccw, z),
-                    G3D::Vector3(x, -y * ccw, z),
-                    G3D::Vector3(x, -y * ccw, -z),
-                    G3D::Vector3(x, y * ccw, -z),
-                    G3D::Color4(0.5f, 0.5f, 0.5f, 1.0f)
-                );
-            }
+#include "G3D/platform.h"
+#include "G3D/Array.h"
+#include "G3D/Vector2.h"
+
+namespace G3D {
+
+/**
+ If you are using this class for pixel rectangles, keep in mind that the last
+ pixel you can draw to is at x0() + width() - 1.
+ */
+class Rect2D {
+private:
+    Vector2 min, max;
+
+    /**
+     Returns true if the whole polygon is clipped.
+     @param p Value of the point
+     @param axis Index [0 or 1] of the axis to clip along?
+     @param clipGreater Are we clipping greater than or less than the line?
+     @param inPoly Polygon being clipped
+     @param outPoly The clipped polygon
+     */
+    template<class T>
+    static bool clipSide2D(
+        const float p, bool clipGreater, int axis, 
+        const Array<T>& inPoly, Array<T>& outPoly) {
+
+        outPoly.clear();
+        int i0 = -1;
+
+        Vector2 pt1;
+        bool c1 = true;
+
+        float negate = clipGreater ? -1 : 1;
+
+        // Find a point that is not clipped
+        for (i0 = 0; (i0 < inPoly.length()) && c1; ++i0) {
+            pt1 = inPoly[i0];       
+            c1  = (negate * pt1[axis]) < (negate * p);
         }
-    }
 
-	void Draw::partAdorn(const Part& part, Adorn* adorn, const G3D::Color3& controllerColor)
-    {
-        adornSurfaces(part, adorn, controllerColor);
+        // We incremented i0 one time to many
+        --i0;
 
-        if (part.type == Part::CYLINDER_PART)
-        {
-            adorn->setObjectToWorldMatrix(part.coordinateFrame);
-
-            G3D::Vector3 bleh = part.gridSize;
-            spokes(bleh.z * 0.5, bleh.x, adorn);
+        if (c1) {
+            // We could not find an unclipped point
+            return true;
         }
-    }
 
-    const G3D::Color3& Draw::selectColor()
-    {
-        static G3D::Color3 c(0.1f, 0.6f, 1.0f);
-        return c;
-    }
+        outPoly.append(pt1);
 
-	void Draw::selectionBox(const Part& part, Adorn* adorn, SelectState selectState)
-    {
-        Draw::selectionBox(part, adorn, (selectState == SELECT_NORMAL) ? Draw::selectColor() : G3D::Color3(0.2f, 0.7f, 1.0f));
-    }
+        // for each point in inPoly,
+        //     if the point is outside the side and the previous one was also outside, continue
+        //     if the point is outside the side and the previous one was inside, cut the line
+        //     if the point is inside the side and the previous one was also inside, append the points
+        //     if the point is inside the side and the previous one was outside, cut the line    
+        for (int i = 1; i <= inPoly.length(); ++i) {
+            T pt2 = inPoly[(i + i0) % inPoly.length()];
+            bool    c2  = (negate * pt2[axis]) < (negate * p);
 
-	void Draw::adornSurfaces(const Part& part, Adorn* adorn, const G3D::Color3& controllerColor)
-    {
-        for (int i = 0; i < 6; i++)
-        {
-			SurfaceType type = part.surfaceType[i];
-            if (type >= ROTATE && type <= ROTATE_P) // ROTATE, ROTATE_V, ROTATE_P
-            {
-                Draw::constraint(part, adorn, i, controllerColor);
-            }
-        }
-    }
+            if (c1 ^ c2) {
 
-    // TODO: 94.56% match
-	// classic case of MSVC optimizer being really inconsistent
-	void Draw::constraint(const Part& part, Adorn* adorn, int face, const G3D::Color3& controllerColor)
-    {
-		SurfaceType surfaceType = part.surfaceType[face];
-
-        G3D::Vector3 halfSize = part.gridSize * 0.5f;
-
-        const G3D::Matrix3& rot = Math::getAxisRotationMatrix(face);
-
-        G3D::Vector3 relativeTranslation;
-
-        int axis = face % 3;
-        float posNeg = (face > 2) ? -1.0f : 1.0f;
-
-        relativeTranslation[axis] = halfSize[axis]*posNeg;
-
-        G3D::CoordinateFrame translation(rot, relativeTranslation);
-        G3D::CoordinateFrame newObject = part.coordinateFrame*translation;
-
-        adorn->setObjectToWorldMatrix(newObject);
-        adorn->cylinderAlongX(0.2f, 1.0f, G3D::Color3::yellow(), G3D::Color4::clear());
-
-        if (surfaceType == ROTATE_V || surfaceType == ROTATE_P)
-        {
-            adorn->cylinderAlongX(0.4f, 0.25f, controllerColor, G3D::Color4::clear());
-        }
-    }
-
-	void Draw::selectionBox(const Part& part, Adorn* adorn, const G3D::Color4& selectColor)
-    {
-        adorn->setObjectToWorldMatrix(part.coordinateFrame);
-
-        G3D::Vector3 halfSize = part.gridSize*0.5;
-
-        const float offset = 0.15f;
-
-        for (int ix = 0; ix < 3; ix++)
-        {
-            int iy = (ix+1) % 3;
-            int iz = (ix+2) % 3;
-
-            for (int d2 = -1; d2 < 2; d2+=2)
-            {
-                for (int d3 = -1; d3 < 2; d3+=2)
-                {
-                    G3D::Vector3 p0;
-                    G3D::Vector3 p1;
-
-                    p0[ix] = -halfSize[ix] - offset;
-                    p0[iy] = d2 * halfSize[iy] - offset;
-                    p0[iz] = d3 * halfSize[iz] - offset;
-
-                    p1[ix] = halfSize[ix] + offset;
-                    p1[iy] = d2 * halfSize[iy] + offset;
-                    p1[iz] = d3 * halfSize[iz] + offset;
-
-                    adorn->box(G3D::AABox(p0, p1), selectColor, G3D::Color4::clear());
+                if (!c1 && c2 && (i > 1)) {
+                    // Unclipped to clipped trasition and not the first iteration
+                    outPoly.append(pt1);
                 }
+
+                // only one point is clipped, find where the line crosses the clipping plane
+
+
+                float alpha;
+                if (pt2[axis] == pt1[axis]) {
+                    alpha = 0;
+                } else {
+                    alpha = (p - pt1[axis]) / (pt2[axis] - pt1[axis]);
+                }
+                outPoly.append(pt1.lerp(pt2, alpha));
+            } else if (! (c1 || c2) && (i != 1)) {
+                // neither point is clipped (don't do this the first time 
+                // because we appended the first pt before the loop)
+                outPoly.append(pt1);
+            }
+        
+            pt1 = pt2;
+            c1 = c2;
+        }
+
+        return false;
+    }
+
+public:
+
+    inline Rect2D() : min(0, 0), max(0, 0) {}
+
+    /** Creates a rectangle at 0,0 with the given width and height*/
+    inline Rect2D(const Vector2& wh) : min(0, 0), max(wh.x, wh.y) {}
+
+    /** Computes a rectangle that contains both @a a and @a b.*/
+    inline Rect2D(const Rect2D& a, const Rect2D& b) {
+        min = a.min.min(b.min);
+        max = a.max.max(b.max);
+    }
+
+    inline float width() const {
+        return max.x - min.x;
+    }
+
+    inline float height() const {
+        return max.y - min.y;
+    }
+
+    inline float x0() const {
+        return min.x;
+    }
+
+    inline float x1() const {
+        return max.x;
+    }
+
+    inline float y0() const {
+        return min.y;
+    }
+
+    inline float y1() const {
+        return max.y;
+    }
+
+    /** Min, min corner */
+    inline Vector2 x0y0() const {
+        return min;
+    }
+
+    inline Vector2 x1y0() const {
+        return Vector2(max.x, min.y);
+    }
+
+    inline Vector2 x0y1() const {
+        return Vector2(min.x, max.y);
+    }
+
+    /** Max,max corner */
+    inline Vector2 x1y1() const {
+        return max;
+    }
+
+    /** Width and height */
+    inline Vector2 wh() const {
+        return max - min;
+    }
+
+    inline Vector2 center() const {
+        return (max + min) * 0.5;
+    }
+
+    __forceinline static Rect2D xyxy(float x0, float y0, float x1, float y1) {
+        Rect2D r;
+        
+        r.min.x = G3D::min(x0, x1);
+        r.min.y = G3D::min(y0, y1);
+        r.max.x = G3D::max(x0, x1);
+        r.max.y = G3D::max(y0, y1);
+
+        return r;
+    }
+
+    inline static Rect2D xyxy(const Vector2& v0, const Vector2& v1) {
+        Rect2D r;
+
+        r.min = v0.min(v1);
+        r.max = v0.max(v1);
+
+        return r;
+    }
+
+    inline static Rect2D xywh(float x, float y, float w, float h) {
+        return xyxy(x, y, x + w, y + h);
+    }
+
+    inline static Rect2D xywh(const Vector2& v, const Vector2& w) {
+        return xyxy(v.x, v.y, v.x + w.x, v.y + w.y);
+    }
+
+    inline bool contains(const Vector2& v) const {
+        return (v.x >= min.x) && (v.y >= min.y) && (v.x <= max.x) && (v.y <= max.y);
+    }
+
+    inline bool contains(const Rect2D& r) const {
+        return (min.x <= r.min.x) && (min.y <= r.min.y) &&
+               (max.x >= r.max.x) && (max.y >= r.max.y);
+    }
+
+    /** True if there is non-zero area to the intersection between @a this and @a r.
+        Note that two rectangles that are adjacent do not intersect because there is
+        zero area to the overlap, even though one of them "contains" the corners of the other.*/
+    inline bool intersects(const Rect2D& r) const {
+        return (min.x < r.max.x) && (min.y < r.max.y) &&
+               (max.x > r.min.x) && (max.y > r.min.y);
+    }
+
+    /** Like intersection, but counts the adjacent case as touching. */
+    inline bool intersectsOrTouches(const Rect2D& r) const {
+        return (min.x <= r.max.x) && (min.y <= r.max.y) &&
+               (max.x >= r.min.x) && (max.y >= r.min.y);
+    }
+
+    inline Rect2D operator*(float s) const {
+        return xyxy(min.x * s, min.y * s, max.x * s, max.y * s);
+    }
+
+    inline Rect2D operator/(float s) const {
+        return xyxy(min / s, max / s);
+    }
+
+    inline Rect2D operator+(const Vector2& v) const {
+        return xyxy(min + v, max + v);
+    }
+
+    inline Rect2D operator-(const Vector2& v) const {
+        return xyxy(min - v, max - v);
+    }
+
+    inline bool operator==(const Rect2D& other) const {
+        return (min == other.min) && (max == other.max);
+    }
+
+    inline bool operator!=(const Rect2D& other) const {
+        return (min != other.min) || (max != other.max);
+    }
+
+    /** Returns the corners in the order: (min,min), (max,min), (max,max), (min,max). */
+    inline Vector2 corner(int i) const {
+        debugAssert(i >= 0 && i < 4);
+        switch (i & 3) {
+        case 0:
+            return Vector2(min.x, min.y);
+        case 1:
+            return Vector2(max.x, min.y);
+        case 2:
+            return Vector2(max.x, max.y);
+        case 3:
+            return Vector2(min.x, max.y);
+        default:
+            // Should never get here
+            return Vector2(0, 0);
+        }
+    }
+
+
+    /** Returns a new Rect2D that is bigger/smaller by the specified amount 
+        (negative is shrink.) */
+    inline Rect2D border(float delta) const {
+        return Rect2D::xywh(x0() + delta, 
+                     y0() + delta, 
+                     width() - 2.0f * delta, 
+                     height() - 2.0f * delta);
+    }
+
+
+    /** 
+     Clips so that the rightmost point of the outPoly is at rect.x1 (e.g. a 800x600 window produces
+     rightmost point 799, not 800).  The results are suitable for pixel rendering if iRounded.
+     Templated so that it will work for Vector2,3,4 (the z and w components are interpolated linearly).
+     The template parameter must define T.lerp and contain x and y components.
+
+     If the entire polygon is clipped by a single side, the result will be empty.
+     The result might also have zero area but not be empty.
+     */
+    template<class T>
+    void clip(const Array<T>& inPoly, Array<T>& outPoly) const {
+
+        const bool greaterThan = true;
+        const bool lessThan    = false;
+        const int  X = 0;
+        const int  Y = 1;
+
+        Array<T> temp;
+
+        bool entirelyClipped =
+          clipSide2D(x0(), lessThan,    X,    inPoly,  temp)    ||
+          clipSide2D(x1(), greaterThan, X,    temp,    outPoly) ||
+          clipSide2D(y0(), lessThan,    Y,    outPoly, temp)    || 
+          clipSide2D(y1(), greaterThan, Y,    temp,    outPoly);
+
+        if (entirelyClipped) {
+            outPoly.clear();
+        }
+    }
+
+
+    /** Returns the largest, centered Rect2D that can fit inside this
+        while maintaining the aspect ratio of x:y.  Convenient for
+        displaying images in odd-shaped windows.
+    */
+    Rect2D largestCenteredSubRect(float ww, float hh) const {
+        float textureAspect = hh / ww;
+        float viewAspect = height() / width();
+
+        if (viewAspect > textureAspect) {
+            // The view is too tall
+            float h = width() * textureAspect;
+            float y = (height() - h) / 2;
+            return Rect2D::xywh(0, y, width(), h) + corner(0);
+        } else {
+            // The view is too wide
+            float w = height() / textureAspect;
+            float x = (width() - w) / 2;
+            return Rect2D::xywh(x, 0, w, height()) + corner(0);
+        }
+    }
+
+    /**
+     Returns the overlap region between the two rectangles.  This may have zero area
+     if they do not intersect.  See the two-Rect2D constructor for a way to compute
+     a union-like rectangle.
+     */
+    Rect2D intersect(const Rect2D& other) const {
+		if (intersects(other)) {
+			return Rect2D::xyxy(min.max(other.min), max.min(other.max));
+		}else{
+			return Rect2D::xywh(0, 0, 0, 0);
+		}
+    }
+
+    float area() const {
+        return width() * height();
+    }
+};
+
+}
+
+#endif
+
+#include "util/Rect.h"
+#include <AppDraw/DrawAdorn.h>
+#include <AppDraw/HitTest.h>
+#include <G3D/Ray.h>
+
+namespace RBX {
+// Native Adorn ray dispatch is byte offset 0x54. The older header puts ray
+// at 0x50; retain the actual ray prototype without inventing the missing slot.
+static inline void nativeRay(Adorn* adorn, const G3D::Ray& ray,
+                             const G3D::Color4& color, float scale) {
+    typedef void (__thiscall *RayMethod)(Adorn*, const G3D::Ray&, const G3D::Color4&, float);
+    reinterpret_cast<RayMethod>((*reinterpret_cast<void***>(adorn))[21])(adorn, ray, color, scale);
+}
+
+const G3D::Color3& DrawAdorn::resizeColor() {
+    static G3D::Color3 color(0.1f, 0.6f, 1.0f);
+    return color;
+}
+
+void DrawAdorn::handles3d(const G3D::Vector3& size, const G3D::CoordinateFrame& frame,
+                         Adorn* adorn, HandleType type, const G3D::Vector3& camera) {
+    G3D::Vector3 halfSize = size * 0.5f;
+    for (int side = 0; side < 2; ++side) {
+        float sign = side < 1.0f ? -1.0f : 1.0f;
+        for (int axis = 0; axis < 3; ++axis) {
+            switch (type) {
+            case HANDLE_RESIZE:
+            case HANDLE_VELOCITY: {
+                G3D::Vector3 point(0, 0, 0);
+                point[axis] = (halfSize[axis] + 3.0f) * sign;
+                G3D::Vector3 worldPoint = frame.pointToWorldSpace(point);
+                float radius = HitTest::distanceToHandleRadius(camera, worldPoint);
+                adorn->setObjectToWorldMatrix(G3D::CoordinateFrame(worldPoint));
+                adorn->sphere(G3D::Sphere(G3D::Vector3::zero(), radius), resizeColor(), G3D::Color4::clear());
+                break;
+            }
+            case HANDLE_MOVE: {
+                G3D::Ray ray;
+                ray.origin[axis] = halfSize[axis] * sign;
+                ray.direction[axis] = sign * 3.5f;
+                G3D::Vector3 worldPoint = frame.pointToWorldSpace(ray.origin);
+                float scale = HitTest::distanceToHandleRadius(camera, worldPoint) * 4.0f;
+                adorn->setObjectToWorldMatrix(frame);
+                nativeRay(adorn, ray, G3D::Color3::orange(), scale);
+                break;
+            }
+            default: {
+                G3D::Vector3 point(0, 0, 0);
+                point[axis] = (halfSize[axis] + 4.0f) * sign;
+                adorn->setObjectToWorldMatrix(G3D::CoordinateFrame(frame.translation + point));
+                cylinder(adorn, frame, 0, 1.0f, 0.5f, G3D::Color3::red());
+                break;
+            }
             }
         }
     }
 }
+
+static inline G3D::Rect2D handleRect(const G3D::Vector2& c) {
+    G3D::Vector2 lo = c - G3D::Vector2(3.0f, 3.0f);
+    G3D::Vector2 hi = c + G3D::Vector2(3.0f, 3.0f);
+    return G3D::Rect2D::xyxy(lo, hi);
+}
+void DrawAdorn::handles2d(const G3D::Vector3& size, const G3D::CoordinateFrame& frame,
+                         const G3D::GCamera& camera, Adorn* adorn, const G3D::Color3& color) {
+    G3D::Vector3 halfSize = size * 0.5f;
+    for (int side = 0; side < 2; ++side) {
+        float sign = side < 1.0f ? -1.0f : 1.0f;
+        for (int axis = 0; axis < 3; ++axis) {
+            G3D::Vector3 point(0, 0, 0);
+            point[axis] = (halfSize[axis] + 3.0f) * sign;
+            G3D::Vector2 screen = camera.project(frame.pointToWorldSpace(point), adorn->getViewport()).xy();
+            adorn->rect2d(Rect::fromCenterSize(screen, 6.0f).toRect2D(), color);
+        }
+    }
+}
+
+}
+
+typedef char native_rect_size[sizeof(RBX::Rect)==16?1:-1];

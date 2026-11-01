@@ -1,73 +1,82 @@
-// from server: 17% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 98% by EspClaude
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs v8datamodel/DebrisService.cpp
 
-struct InnerThing {
-    char pad0[0x18];
-    int m_18;
-    int m_1c;
-    void method_697730(void* arg);
-};
+// Candidate translation unit (score above; library headers required).
+#include "v8datamodel/DebrisService.h"
+#include "v8datamodel/TimerService.h"
+#include "util/standardout.h"
 
-struct ArgThing {
-    char pad0[4];
-    long refcount;
-    long weakrefcount;
-};
+static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
+static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
 
-extern "C" void __stdcall func_006973f0(void*, void*, void*, void*);
-extern "C" void __stdcall func_00697b80(void*, void*);
-extern "C" void __stdcall func_00675780(void*);
-
-struct S_func_00697da0 {
-    char pad0[0x8c];
-    InnerThing m_8c;
-    char pad_98[0xb0 - 0x98];
-    void* m_b0;
-    void method_697880();
-    void f(int a, ArgThing* b, double c, int d);
-};
-
-void S_func_00697da0::f(int a, ArgThing* b, double c, int d)
+static void cleanup(boost::weak_ptr<RBX::Instance> item)
 {
-    if (m_b0 != 0) {
-        func_006973f0(&m_8c, b, &c, (void*)0x697250);
-        func_00697b80(&m_8c, b);
-        func_00675780(m_b0);
-    }
+	try
+	{
+		boost::shared_ptr<RBX::Instance> i = item.lock();
+		if (i)
+			i->setParent(NULL);
+	}
+	catch (std::exception& e)
+	{
+		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
+	}
+}
 
-    ArgThing* p = b;
-    if (p != 0) {
-        _InterlockedExchangeAdd(&p->refcount, 1);
-    }
+namespace RBX
+{
+	DebrisService::DebrisService()
+		: Base("Debris"),
+		  maxItems(300),
+		  timer(NULL)
+	{
+	}
 
-    m_8c.method_697730(&p);
+	void DebrisService::setMaxItems(int value)
+	{
+		if (value != maxItems)
+		{
+			if (value < 0)
+				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
 
-    if (p != 0) {
-        if (_InterlockedExchangeAdd(&p->refcount, -1) == 1) {
-            void** vt = *(void***)p;
-            void (*dtor)(void*) = (void (*)(void*))vt[1];
-            dtor(p);
-        }
-        if (_InterlockedExchangeAdd(&p->weakrefcount, -1) == 1) {
-            void** vt = *(void***)p;
-            void (*dtor)(void*) = (void (*)(void*))vt[2];
-            dtor(p);
-        }
-    }
+			maxItems = value;
+			raisePropertyChanged(prop_MaxItems);
+			DebrisService::cleanup();
+		}
+	}
 
-    method_697880();
+	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
+	{
+		if (timer)
+			timer->delay(boost::bind(&::cleanup, item), lifetime);
 
-    if (b != 0) {
-        if (_InterlockedExchangeAdd(&b->refcount, -1) == 1) {
-            void** vt = *(void***)b;
-            void (*dtor)(void*) = (void (*)(void*))vt[1];
-            dtor(b);
-        }
-        if (_InterlockedExchangeAdd(&b->weakrefcount, -1) == 1) {
-            void** vt = *(void***)b;
-            void (*dtor)(void*) = (void (*)(void*))vt[2];
-            dtor(b);
-        }
-    }
+		queue.push(item);
+		DebrisService::cleanup();
+	}
+
+	void DebrisService::cleanup()
+	{
+		while ((int)queue.size() > maxItems)
+		{
+			::cleanup(queue.front());
+			queue.pop();
+		}
+	}
+
+	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		while ((int)queue.size() > 0)
+		{
+			::cleanup(queue.front());
+			queue.pop();
+		}
+
+		Instance::onServiceProvider(oldProvider, newProvider);
+
+		timer = ServiceProvider::create<TimerService>(newProvider);
+	}
 }

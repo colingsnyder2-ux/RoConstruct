@@ -1,8 +1,9 @@
-// from server: 54% by colin
-// roc-lang: cpp
+// from server: 91% by EspClaude
+// from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/util/Guid.cpp
+// roc-lang: cpp
+// roc-lib: openrbx-client-dll App/util/Guid.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "util/Guid.h"

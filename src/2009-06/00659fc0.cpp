@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005ccb50  unit: RBX::P8Camera::?$GetSetImpl  size: 102 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005ccb50
@@ -80,18 +80,18 @@ namespace RBX
         virtual Transform getTransform() = 0;
     };
 
-    class ICameraSubject : public virtual Camera
+    class CameraSubject : public virtual Camera
     {
     public:
-        virtual ~ICameraSubject();
+        virtual ~CameraSubject();
     };
 }
 
 struct S
 {
-    char padding[0x1a4];
+    char padding[0x10c];
     Transform transform;
-    char gap[8];
+    char gap[4];
     RBX::Instance* subject;
 
     void f();
@@ -100,5 +100,5 @@ struct S
 void S::f()
 {
     if (subject)
-        transform = dynamic_cast<RBX::ICameraSubject*>(subject)->getTransform();
+        transform = dynamic_cast<RBX::CameraSubject*>(subject)->getTransform();
 }

@@ -1,304 +1,127 @@
-// from server: 65% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8tree/Instance.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 004b9950  unit: RBX::Network::Player  size: 91 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 004b9950
+//
+// 004b9950  64a100000000         mov eax, dword ptr fs:[0]
+// 004b9956  6aff                 push -1
+// 004b9958  6848c38500           push 0x85c348
+// 004b995d  50                   push eax
+// 004b995e  64892500000000       mov dword ptr fs:[0], esp
+// 004b9965  8b01                 mov eax, dword ptr [ecx]
+// 004b9967  83ec28               sub esp, 0x28
+// 004b996a  85c0                 test eax, eax
+// 004b996c  7516                 jne 0x4b9984
+// 004b996e  8d0c24               lea ecx, [esp]
+// 004b9971  e86afbf4ff           call 0x4094e0
+// 004b9976  50                   push eax
+// 004b9977  c744243400000000     mov dword ptr [esp + 0x34], 0
+// 004b997f  e8dc08f5ff           call 0x40a260
+// 004b9984  dd442438             fld qword ptr [esp + 0x38]
+// 004b9988  8b4004               mov eax, dword ptr [eax + 4]
+// 004b998b  83ec08               sub esp, 8
+// 004b998e  83c108               add ecx, 8
+// 004b9991  dd1c24               fstp qword ptr [esp]
+// 004b9994  51                   push ecx
+// 004b9995  ffd0                 call eax
+// 004b9997  8b4c2434             mov ecx, dword ptr [esp + 0x34]
+// 004b999b  83c40c               add esp, 0xc
+// 004b999e  64890d00000000       mov dword ptr fs:[0], ecx
+// 004b99a5  83c434               add esp, 0x34
+// 004b99a8  c20800               ret 8
+// copied from an identical function in another client (function ??RCallable@ns_ROCX000013@@QAEXN@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "v8tree/Instance.h"
+namespace ns_ROCX000013 {
+extern "C" void (__cdecl *invalid_parameter_noinfo)();
 
-#include "decomp.h"
-
-#include <algorithm>
-#include <cstddef>
-
-namespace RBX {
-
-const char sInstance[] = "Instance";
-
-const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent(
-	"Parent",
-	"Data",
-	&Instance::getParent,
-	&Instance::setParent,
-	Reflection::PropertyDescriptor::UI
-);
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_ancestryChanged(
-	"AncestryChanged",
-	"child"
-);
-
-Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged(
-	"Changed",
-	"property"
-);
-
-ChildAdded::ChildAdded(Instance* child) : child(shared_from(child))
+struct ExceptionObject
 {
+    unsigned long words[10];
+    ExceptionObject();
+    ~ExceptionObject();
+};
+
+extern __declspec(noreturn) void __cdecl raise_exception(const void *);
+
+struct FunctionManager
+{
+    void *reserved;
+    void (__cdecl *invoke)(void *, double);
+};
+
+struct Callable
+{
+    FunctionManager *manager;
+    unsigned long unused;
+    unsigned long storage[2];
+
+    void operator()(double value);
+};
+
+inline void Callable::operator()(double value)
+{
+    if (!manager)
+        (raise_exception(&ExceptionObject()), __assume(0));
+    manager->invoke(storage, value);
 }
 
-ChildRemoved::ChildRemoved(Instance* child) : child(shared_from(child))
+struct FunctionObject
 {
-}
+    unsigned long reserved[2];
+    Callable callable;
+};
 
-// STUB: WEBSERVICE 0x10047af0
-void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
+struct Node
 {
-	if (parent != NULL) {
-		parent->onChildChanged(instance, event);
-	}
-}
+    unsigned long reserved[6];
+    FunctionObject *function;
+};
 
-// FUNCTION: WEBSERVICE 0x10047b20
-bool Instance::contains(const Instance* child) const
+struct Owner
 {
-	while (child != 0) {
-		if (child == this) {
-			return true;
-		}
+    unsigned long reserved[5];
+    Node *end;
+};
 
-		child = child->parent;
-	}
-
-	return false;
-}
-
-// FUNCTION: WEBSERVICE 0x10048340
-void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
+struct Iterator
 {
-	for (XmlElement* child = container->firstChild(); child != NULL; child = child->nextSibling()) {
-		readProperty(child, binder);
-	}
-}
+    unsigned long reserved[4];
+    Owner **owner;
+    Node *node;
+    unsigned long unused[8];
+    double *value;
+    bool *done;
 
-// FUNCTION: WEBSERVICE 0x10048370
-void Instance::writeChildren(XmlElement* container)
+    bool equal(const Iterator &other);
+    void advance();
+};
+
+void *__stdcall process(void *result, Iterator first, Iterator last)
 {
-	const std::vector<shared_ptr<Instance> >* kids = children.operator->();
+    if (!first.equal(last))
+    {
+        void (__cdecl *invalid)() = invalid_parameter_noinfo;
+        do
+        {
+            if (!*first.done)
+            {
+                if (!first.owner)
+                    invalid();
 
-	if (kids != NULL) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = kids->begin(); it != kids->end(); ++it) {
-			XmlElement* child = (*it)->write();
+                Owner *owner = first.owner ? *first.owner : 0;
+                if (first.node == owner->end)
+                    invalid();
 
-			if (child != NULL) {
-				container->addChild(child);
-			}
-		}
-	}
+                Callable *callable = &first.node->function->callable;
+                (*callable)(*first.value);
+
+                if (!*first.done)
+                    *first.done = true;
+            }
+
+            first.advance();
+        } while (!first.equal(last));
+    }
+
+    return result;
 }
-
-// STUB: WEBSERVICE 0x100483f0
-Instance* Instance::findFirstChildByName(const std::string& findName) const
-{
-	STUB(0x100483f0);
-	return NULL;
 }
-
-// FUNCTION: WEBSERVICE 0x10048fb0
-void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == oldParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(oldParent)) {
-			break;
-		}
-
-		walk->onDescendentAdded(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentAdded(it->get(), beginParent, oldParent);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100490d0
-void Instance::signalDescendentRemoving(
-	const shared_ptr<Instance>& instance,
-	Instance* beginParent,
-	Instance* newParent
-)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == newParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(newParent)) {
-			break;
-		}
-
-		walk->onDescendentRemoving(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentRemoving(*it, beginParent, newParent);
-		}
-	}
-}
-
-// STUB: WEBSERVICE 0x10049d40
-XmlElement* Instance::write()
-{
-	STUB(0x10049d40);
-	return NULL;
-}
-
-// STUB: WEBSERVICE 0x1004a010
-void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-{
-	STUB(0x1004a010);
-}
-
-// STUB: WEBSERVICE 0x1004cdf0
-shared_ptr<Instance> Instance::createChild(const Name& className)
-{
-	STUB(0x1004cdf0);
-	return shared_ptr<Instance>();
-}
-
-// STUB: WEBSERVICE 0x1004d0b0
-Instance::~Instance()
-{
-}
-
-// STUB: WEBSERVICE 0x1004da80
-void Instance::setParent(Instance* newParent)
-{
-	if (newParent == parent) {
-		return;
-	}
-
-	shared_ptr<Instance> oldParent = shared_from(parent);
-	shared_ptr<Instance> self = shared_from_this();
-
-	if (oldParent) {
-		if (!oldParent->contains(newParent)) {
-			signalDescendentRemoving(self, oldParent.get(), newParent);
-		}
-
-		oldParent->onChildRemoving(this);
-
-		shared_ptr<std::vector<shared_ptr<Instance> > >& children = oldParent->children.write();
-
-		children->erase(std::find(children->begin(), children->end(), self));
-
-		if (children->size() == 0) {
-			oldParent->children.reset();
-		}
-
-		parent = NULL;
-
-		event_childRemoved.fire(oldParent.get(), self);
-
-		oldParent->Notifier<Instance, ChildRemoved>::raise(this);
-		oldParent->onChildRemoved(this);
-
-		if (oldParent->numChildren() == 0) {
-			oldParent->onLastChildRemoved();
-		}
-	}
-
-	if (newParent != NULL) {
-		newParent->children.write()->push_back(self);
-	}
-
-	parent = newParent;
-
-	if (newParent != NULL) {
-		newParent->onChildAdded(this);
-
-		if (!newParent->contains(oldParent.get())) {
-			signalDescendentAdded(this, newParent, oldParent.get());
-		}
-
-		newParent->Notifier<Instance, ChildAdded>::raise(this);
-
-		event_childAdded.fire(newParent, self);
-	}
-
-	onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
-	raisePropertyChanged(propParent);
-}
-
-// STUB: WEBSERVICE 0x1004ddb0
-void Instance::onAncestorChanged(const AncestorChanged& event)
-{
-	STUB(0x1004ddb0);
-}
-
-// STUB: WEBSERVICE 0x1004dee0
-void Instance::onDescendentAdded(Instance* instance)
-{
-	STUB(0x1004dee0);
-}
-
-// STUB: WEBSERVICE 0x1004df50
-void Instance::onDescendentRemoving(const shared_ptr<Instance>& instance)
-{
-	STUB(0x1004df50);
-}
-
-// STUB: WEBSERVICE 0x1004e040
-void Instance::setName(const std::string& value)
-{
-	STUB(0x1004e040);
-}
-
-// STUB: WEBSERVICE 0x1004e0f0
-void Instance::predelete()
-{
-	STUB(0x1004e0f0);
-}
-
-// STUB: WEBSERVICE 0x1004e5e0
-void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
-{
-	STUB(0x1004e5e0);
-}
-
-// STUB: WEBSERVICE 0x1004e6e0
-void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
-{
-	if (element != NULL) {
-		const XmlElement* item = element->findFirstChildByTag(tag_Item);
-
-		while (item != NULL) {
-			readChild(item, binder);
-			item = element->findNextChildWithSameTag(item);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e7b0
-void Instance::predelete(Instance* instance)
-{
-	instance->predelete();
-}
-
-// STUB: WEBSERVICE 0x1004eb10
-Instance::Instance() : parent(0), archivable(true)
-{
-}
-
-// STUB: WEBSERVICE 0x1004ec70
-Instance::Instance(const char* name) : name(name), parent(0), archivable(true)
-{
-	STUB(0x1004ec70);
-}
-
-} // namespace RBX

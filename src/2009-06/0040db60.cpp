@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0040ed50  unit: CBrowserView  size: 71 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0040ed50
@@ -46,7 +46,7 @@ static const char key[11] = {
 struct CBrowserView {
     char padding0[0x54];
     CBrowserView* link;
-    char padding1[0x2cc - 0x58];
+    char padding1[0x2b0 - 0x58];
     Control control;
 
     void initialize();

@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0055c710  unit: RBX::MD5HasherImpl  size: 42 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0055c710
@@ -31,6 +31,7 @@ struct S {
     virtual void slot1();
     virtual void slot2();
     virtual void slot3();
+    virtual void slot3b();
     virtual void finish();
 
     unsigned char padding[8];

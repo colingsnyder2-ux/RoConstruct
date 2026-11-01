@@ -1,108 +1,40 @@
-// from server: 38% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 85% by EspClaude
+// from server: 100% by tester
+// roc 2008-06 005b97b0  unit: VStockSound::?$FactoryProduct  size: 56 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005b97b0
+//
+// 005b97b0  8b8134010000         mov eax, dword ptr [ecx + 0x134]
+// 005b97b6  85c0                 test eax, eax
+// 005b97b8  742d                 je 0x5b97e7
+// 005b97ba  d98164010000         fld dword ptr [ecx + 0x164]
+// 005b97c0  83ec0c               sub esp, 0xc
+// 005b97c3  d95c2408             fstp dword ptr [esp + 8]
+// 005b97c7  d98160010000         fld dword ptr [ecx + 0x160]
+// 005b97cd  d95c2404             fstp dword ptr [esp + 4]
+// 005b97d1  d9815c010000         fld dword ptr [ecx + 0x15c]
+// 005b97d7  d91c24               fstp dword ptr [esp]
+// 005b97da  50                   push eax
+// 005b97db  e80e640e00           call 0x69fbee
+// 005b97e0  50                   push eax
+// 005b97e1  e8baefffff           call 0x5b87a0
+// 005b97e6  59                   pop ecx
+// 005b97e7  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct VStockSound {
+    char pad[0x134];
+    int field134;
+    char pad2[0x15c - 0x138];
+    float field15c;
+    float field160;
+    float field164;
+    void method();
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+extern "C" int __stdcall sub_69fbee(int, float, float, float);
+extern "C" void __cdecl sub_5b87a0(int);
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+void VStockSound::method() {
+    if (field134 != 0) {
+        sub_5b87a0(sub_69fbee(field134, field15c, field160, field164));
+    }
 }

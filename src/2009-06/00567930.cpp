@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-render roc_unit_6c5e3f5d7442c234.cpp
+// roc-lib: rbxgs-render roc_espclaude_50e877b4c74258ad.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "RenderLib/RenderScene.h"
@@ -421,15 +421,15 @@ namespace RBX
 
 			float farPlane = G3D::min(10000.0f, -camera.getFarPlaneZ() * 0.2f);
 
-			(*reinterpret_cast<G3D::Array<unsigned>*>(reinterpret_cast<char*>(this) + 0x2f8)).fastClear();
-			computeShadowVolumeGeometry((*reinterpret_cast<G3D::Array<unsigned>*>(reinterpret_cast<char*>(this) + 0x2f8)), shadowVertex, light, true, farPlane);
+			(*reinterpret_cast<G3D::Array<unsigned>*>(reinterpret_cast<char*>(this) + 0xb8)).fastClear();
+			computeShadowVolumeGeometry((*reinterpret_cast<G3D::Array<unsigned>*>(reinterpret_cast<char*>(this) + 0xb8)), shadowVertex, light, true, farPlane);
 
 			updateShadowVAR(shadowVertex);
 
 			rd->pushState();
 			rd->setDepthTest(G3D::RenderDevice::DEPTH_LEQUAL);
 
-			if ((*reinterpret_cast<bool*>(reinterpret_cast<char*>(this) + 0x304)))
+			if ((*reinterpret_cast<bool*>(reinterpret_cast<char*>(this) + 0x10c)))
 			{
 				rd->setColor(G3D::Color3::white() * 0.25);
 				rd->setCullFace(G3D::RenderDevice::CULL_NONE);
@@ -464,7 +464,7 @@ namespace RBX
 			rd->setObjectToWorldMatrix(G3D::CoordinateFrame());
 			renderShadowVolumeGeometry(rd, light, true, farPlane);
 
-			if (!G3D::GLCaps::supports_two_sided_stencil() && !(*reinterpret_cast<bool*>(reinterpret_cast<char*>(this) + 0x304)))
+			if (!G3D::GLCaps::supports_two_sided_stencil() && !(*reinterpret_cast<bool*>(reinterpret_cast<char*>(this) + 0x10c)))
 			{
 				rd->setCullFace(G3D::RenderDevice::CULL_FRONT);
 				rd->setStencilOp(G3D::RenderDevice::STENCIL_KEEP, G3D::RenderDevice::STENCIL_INCR_WRAP, G3D::RenderDevice::STENCIL_KEEP);
@@ -479,3 +479,4 @@ namespace RBX
 		}
 	}
 }
+

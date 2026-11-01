@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by user
 // roc 2008-06 004233d0  unit: CRobloxTreeCtrl  size: 252 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004233d0
@@ -312,7 +312,7 @@ extern "C" {
 struct CRobloxTreeCtrl {
     char padding0[0x20];
     void* window;
-    char padding1[0x108];
+    char padding1[0x110];
     Item* current;
 
     Item* findItem(void*);

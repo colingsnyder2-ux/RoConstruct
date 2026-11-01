@@ -1,108 +1,89 @@
-// from server: 51% by colin
+// from server: 86% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-lib: openrbx-client App/reflection/reflection_property.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include "reflection/enumconverter.h"
+#include "reflection/object.h"
+#include "reflection/property.h"
+#include "v8xml/XmlElement.h"
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+namespace RBX {
+namespace Reflection {
 
-boost::mutex& moo2()
+// FUNCTION: WEBSERVICE 0x10094120
+void PropertyDescriptor::read(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
 {
-	static boost::mutex mutex2;
-	return mutex2;
+	readValue(instance, element, binder);
 }
 
-void initMoo()
+// FUNCTION: WEBSERVICE 0x10094130
+template <>
+const Type& Type::singleton<const PropertyDescriptor*>()
 {
-	moo2();
+	static Type type("Property", typeid(const PropertyDescriptor*));
+
+	return type;
 }
 
-namespace RBX
+// FUNCTION: WEBSERVICE 0x100941a0
+XmlElement* PropertyDescriptor::write(const DescribedBase* instance, bool ignoreWriteProtection) const
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
+	if (!ignoreWriteProtection) {
+		if (isReadOnly()) {
+			return NULL;
 		}
 
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
+		if (!canStreamWrite()) {
+			return NULL;
 		}
 	}
 
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
+	XmlElement* element = new XmlElement(type.tag);
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
+	element->addAttribute<const RBX::Name*>(name_name, &name);
 
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
+	writeValue(instance, element);
 
-		return lookup(std::string(sName));
-	}
+	return element;
 }
+
+// FUNCTION: WEBSERVICE 0x10094250
+std::vector<const EnumDescriptor*>& EnumDescriptor::allEnums()
+{
+	static std::vector<const EnumDescriptor*> s;
+
+	return s;
+}
+
+// FUNCTION: WEBSERVICE 0x100942b0
+EnumDescriptor::~EnumDescriptor()
+{
+	allEnums().erase(std::find(allEnums().begin(), allEnums().end(), this));
+}
+
+// FUNCTION: WEBSERVICE 0x10094390
+EnumDescriptor::EnumDescriptor(const char* typeName, const std::type_info& type)
+	: Type(typeName, type, "token"), enumCount(0), enumCountMSB(0)
+{
+	allEnums().push_back(this);
+}
+
+// FUNCTION: WEBSERVICE 0x10094410
+PropertyDescriptor::PropertyDescriptor(
+	ClassDescriptor& classDescriptor,
+	const Type& type,
+	const char* name,
+	const char* category,
+	Functionality flags
+)
+	: MemberDescriptor(classDescriptor, name, category), type(type), bIsPublic(flags), bCanStreamWrite(flags >> 2)
+{
+	classDescriptor.MemberDescriptorContainer<PropertyDescriptor>::declare(this);
+}
+
+} // namespace Reflection
+} // namespace RBX

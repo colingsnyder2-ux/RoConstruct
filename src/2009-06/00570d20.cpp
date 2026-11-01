@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/roc_line_0dec62d7bd4d609a.cpp
+// roc-lib: g3d-6.09 roc_espclaude_88a388e4c34bc291.cpp
 
 // Candidate translation unit (score above; library headers required).
 #line 1 ".\\G3Dcpp\\GImage.cpp"
@@ -954,7 +954,7 @@ void GImage::convertToRGB() {
         break;
 
     default:
-#line 3072
+#line 3156
         alwaysAssertM(false, "Bad number of channels in input image");
 #line 949
     }
@@ -1008,4 +1008,5 @@ void GImage::makeCheckerboard(GImage& im, int checkerSize, const Color4uint8& A,
 }
 
 }
+
 

@@ -1,108 +1,106 @@
-// from server: 44% by colin
+// from server: 85% by EspClaude
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: openrbx-client-dll roc_espeon_toolprocess_34050624e3c21ea8.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+#include <boost/shared_ptr.hpp>
 
-boost::mutex& moo2()
+struct Argument
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
+    char padding[0x104];
+    void* value;
+};
 
-void initMoo()
+typedef boost::shared_ptr<Argument> SharedArgument;
+
+struct Object
 {
-	moo2();
-}
+    virtual void v00();
+    virtual void v01();
+    virtual void v02();
+    virtual void v03();
+    virtual void v04();
+    virtual void v05();
+    virtual void v06();
+    virtual void v07();
+    virtual void v08();
+    virtual void v09();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual void v24();
+    virtual void v25();
+    virtual void v26();
+    virtual void v27();
+    virtual void v28();
+    virtual void v29();
+    virtual void v30();
+    virtual void v31();
+    virtual void v32();
+    virtual void v33();
+    virtual void v34();
+    virtual bool permitted();
+    virtual bool accept(void*);
 
-namespace RBX
+    char padding[0x1c0];
+    int state;
+
+    void apply(void*);
+    void process(SharedArgument);
+};
+
+struct Model
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+    Object* query();
+};
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+extern char instanceType;
+extern char modelType;
+extern int __stdcall classify(void*);
+extern "C" void* __cdecl __RTDynamicCast(void*, long, void*, void*, int);
+extern int __cdecl checkModel(Model*);
+extern void* __cdecl resolveObject(void*);
+extern void __cdecl consume(void*);
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
+void Object::process(SharedArgument argument)
+{
+    if (state == 2)
+    {
+        void* value = argument->value;
+        if (classify(value) == 5)
+        {
+            Model* model = static_cast<Model*>(
+                __RTDynamicCast(value, 0, &instanceType, &modelType, 0));
+            if (model && checkModel(model))
+            {
+                Object* object = model->query();
+                if (object && !object->permitted())
+                    goto done;
+            }
 
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+            void* object = resolveObject(value);
+            if (object && accept(object))
+            {
+                consume(object);
+                apply(value);
+            }
+        }
+    }
+done:
+    ;
 }

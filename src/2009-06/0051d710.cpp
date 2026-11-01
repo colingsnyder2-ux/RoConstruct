@@ -1,108 +1,84 @@
-// from server: 26% by colin
+// from server: 79% by EspClaude
+// from server: 100% by EspClaude
+// from server: 90% by king_originala_sol_resume_high
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-view roc_espclaude_8db6c33f163e0aa1.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+#include <boost/shared_ptr.hpp>
+#include <G3D/ReferenceCount.h>
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+namespace RBX {
+class Instance {
+public:
+	virtual ~Instance();
+	char pad[0x100];
+	Instance* parent;
+	Instance* getParent() const { return parent; }
+	bool isDescendentOf(const Instance*) const;
+};
+class PartInstance : public Instance {
+public:
+	virtual ~PartInstance();
+};
+class Workspace {
+public:
+	static Workspace* findWorkspace(const Instance*);
+};
+template<class T> boost::shared_ptr<T> shared_from(T*);
 
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+namespace Render {
+class Chunk : public G3D::ReferenceCountedObject {
+public:
+	char pad[0xb0];
+};
+class SceneManager {
+public:
+	virtual void addModel(const G3D::ReferenceCountedPointer<Chunk>&);
+	virtual void invalidateModel(const G3D::ReferenceCountedPointer<Chunk>&, bool);
+	virtual void removeModel(const G3D::ReferenceCountedPointer<Chunk>&);
+};
 }
+namespace View {
+class View {
+public:
+	void* unk;
+	Render::SceneManager* sceneManager;
+};
+class PartChunk : public Render::Chunk {
+protected:
+	boost::shared_ptr<PartInstance> partInstance;
+	int material;
+	bool materialInvalid;
+	int mesh;
+	View* view;
+	void* specialShape;
+	void invalidateMaterial();
+	void invalidateMesh();
+};
+class Decal : public PartChunk {
+	boost::shared_ptr<Instance> decal;
+public:
+	void onDecalAncestorChanged(boost::shared_ptr<Instance>);
+};
 
-void initMoo()
+void Decal::onDecalAncestorChanged(boost::shared_ptr<Instance> ancestor)
 {
-	moo2();
+	if (!decal)
+		return;
+	{
+		Workspace* workspace = Workspace::findWorkspace(decal.get());
+		partInstance = shared_from(dynamic_cast<PartInstance*>(decal->getParent()));
+		if (workspace && decal->isDescendentOf((Instance*)workspace))
+		{
+			invalidateMesh();
+			invalidateMaterial();
+		}
+		if (!workspace || !decal->isDescendentOf((Instance*)workspace))
+			view->sceneManager->removeModel(this);
+	}
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+}
 }

@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_extentsarray89d7746782cf5475.cpp
+// roc-lib: rbxgs-dll roc_espclaude_310fed2617a3d8d5.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise,off)
@@ -20,7 +20,7 @@ struct Extents {
 };
 extern const Extents& negativeInfiniteExtents();
 struct Geometry {unsigned header;Vector3 size;};
-struct Primitive {char pad[0x9c];Geometry* geometry;const G3D::CoordinateFrame& getFrame();};
+struct Primitive {char pad[0xe0];Geometry* geometry;const G3D::CoordinateFrame& getFrame();};
 typedef G3D::Array<Primitive*> List;
 Extents computeExtents(const List* list){
  Extents result=negativeInfiniteExtents();

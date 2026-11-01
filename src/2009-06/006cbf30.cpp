@@ -1,9 +1,9 @@
-// from server: 98% by EspClaude
+// from server: 99% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_lasertool_a73b1193b03a933d.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_b90737c4eebf67c9.cpp
 
 // Candidate translation unit (score above; library headers required).
 
@@ -65,7 +65,7 @@ struct FloatProperty {
 };
 
 struct Hit {
-    char pad[0x1f0];
+    char pad[0x130];
     unsigned char active;
     void activate();
 };
@@ -105,12 +105,12 @@ S* S::f(void* argument) {
             Handle handle = makeHandle();
 
             vectorProperty->set(
-                handle.get() ? reinterpret_cast<char*>(handle.get()) + 0x14 : 0,
+                handle.get() ? reinterpret_cast<char*>(handle.get()) + 0x18 : 0,
                 &point);
 
             float value = 0.0f;
             floatProperty->set(
-                handle.get() ? reinterpret_cast<char*>(handle.get()) + 0x14 : 0,
+                handle.get() ? reinterpret_cast<char*>(handle.get()) + 0x18 : 0,
                 &value);
 
             handle.get()->attach(instance);

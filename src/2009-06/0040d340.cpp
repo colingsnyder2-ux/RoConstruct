@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0040e5b0  unit: CBrowserView  size: 189 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0040e5b0
@@ -167,7 +167,7 @@ struct Bar {
 struct Browser {
     char reserved0[0x20];
     void* window;
-    char reserved1[0xF8];
+    char reserved1[0xDC];
     Bar bar;
 
     int BaseCreate(void*);

@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_unit_4bcacccd78e95d4b.cpp
+// roc-lib: rbxgs-dll roc_espclaude_1de6b06fcf7c8758.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define private public
@@ -25,7 +25,7 @@ namespace RBX
 	// 2008-06 layout from the target: Primitive::geometry at +0x9c.
 	struct Primitive2008View
 	{
-		char prefix[0x9c];
+		char prefix[0xe0];
 		Geometry* geometry;
 		Extents getExtentsLocal() const
 		{
@@ -77,4 +77,5 @@ namespace RBX
 		return found ? answer : SnapInfo();
 	}
 }
+
 

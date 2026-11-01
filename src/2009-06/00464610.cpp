@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by user
 // roc 2008-06 004639a0  unit: CScriptEditor  size: 1324 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004639a0
@@ -917,7 +917,7 @@ struct Control {
 };
 
 struct CScriptEditor {
-    char padding[0x140];
+    char padding[0xec];
     void* parent;
 
     void initialize();
@@ -937,13 +937,13 @@ void CScriptEditor::func_004639a0()
 
     Control* c = control();
     c->lexer(15, 1);
-    c->keywords(0, reinterpret_cast<const char*>(0x81b180), 1);
+    c->keywords(0, "and break do else elseif end false for function if in local nil not or repeat return then true until while", 1);
 
     Control* s = control();
     s->foreground(32, 0, 1);
     s->background(32, 0xffffff, 1);
     s->size(32, 9, 1);
-    s->font(32, reinterpret_cast<const char*>(0x81b258), 1);
+    s->font(32, "Verdana", 1);
     c->clearStyles(1);
 
     s = control();
@@ -1020,8 +1020,8 @@ void CScriptEditor::func_004639a0()
     c->marginSensitive(2, 1, 1);
     c->marginType(2, 0, 1);
     c->marginMask(2, 0xfe000000U, 1);
-    c->property(reinterpret_cast<const char*>(0x81b24c),
-                reinterpret_cast<const char*>(0x81b254), 1);
+    c->property("fold",
+                "1", 1);
 
     s = control();
     s->markerDefine(31, 7, 1);

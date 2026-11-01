@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00468a60  unit: DxUserInput  size: 182 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00468a60
@@ -86,7 +86,7 @@ struct ScopedDevice {
 };
 
 struct S_func_00468a60 {
-    char pad0[364];
+    char pad0[356];
     Device *device;
     char pad1[32];
     bool active;

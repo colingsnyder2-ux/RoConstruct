@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -43,7 +43,7 @@ template<class T,class U> bool operator==(const shared_ptr<T>& a,const shared_pt
 
 struct Iterator {void* owner;void* position;};
 struct Instance {bool acceptChildren(Iterator,Iterator);};
-struct ItemData {char unused[12];boost::shared_ptr<Instance> instance;};
+struct ItemData {char unused[20];boost::shared_ptr<Instance> instance;};
 struct Selection {Iterator begin()const;Iterator end()const;};
 struct TreeCtrl {
  unsigned long GetItemData(void*)const;

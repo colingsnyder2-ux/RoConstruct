@@ -1,9 +1,9 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-raknet rijndael.cpp
+// roc-lib: openrbx-raknet roc_espclaude_a179eba3119b2367.cpp
 
 // Candidate translation unit (score above; library headers required).
 // rijndael-alg-fst.c   v2.0   August '99
@@ -41,7 +41,7 @@
 
 #include "Rijndael-Boxes.h"
 
-int ROUNDS;
+static int ROUNDS;
 
 static word8 shifts[3][4][2] = {
   {
@@ -816,3 +816,4 @@ int cipherUpdateRounds(cipherInstance *cipher,
 	
 	return TRUE;
 }
+

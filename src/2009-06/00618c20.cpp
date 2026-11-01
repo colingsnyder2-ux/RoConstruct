@@ -1,108 +1,91 @@
-// from server: 30% by colin
-// roc-lang: cpp
+// from server: 92% by EspClaude
+// from server: 100% by Espeon
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" __declspec(dllimport) void __cdecl _invalid_parameter_noinfo();
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct String {};
+extern String &(__thiscall *string_assign)(String *, const String *);
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Owner;
+struct Proxy {
+    Owner *owner;
+};
 
-boost::mutex& moo2()
+struct Node {
+    Node *previous;
+    Node *next;
+    char *value;
+};
+
+struct Owner {
+    char padding[0x14];
+    Node *head;
+};
+
+struct S {
+    char padding0[0x138];
+    Proxy * volatile owner;
+    char padding1[0x10];
+    Node *head;
+    char padding2[0x0c];
+    Proxy *iteratorOwner;
+    Node *iteratorNode;
+    char padding3;
+    bool enabled;
+
+    bool f(String *result, int count);
+};
+
+bool S::f(String *result, int count)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
+    if (!enabled)
+        return false;
 
-void initMoo()
-{
-	moo2();
-}
+    Node *node = iteratorNode;
+    Proxy *proxy = iteratorOwner;
 
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+    for (int i = 0; i < count; ++i) {
+        Node *limit = head->previous;
+        Proxy *expected = owner;
+        if (!proxy || proxy != expected)
+            _invalid_parameter_noinfo();
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
+        if (node == limit)
+            return false;
 
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
+        if (!proxy)
+            _invalid_parameter_noinfo();
 
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
+        node = node->next;
+        Owner *container = proxy ? proxy->owner : 0;
+        if (node == container->head)
+            _invalid_parameter_noinfo();
+    }
 
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
+    Node *limit = head;
+    Proxy *expected = owner;
+    if (!proxy || proxy != expected)
+        _invalid_parameter_noinfo();
 
-		boost::mutex::scoped_lock scoped_lock(mutex());
+    if (node == limit)
+        return false;
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
+    limit = head->previous;
+    expected = owner;
+    if (!proxy || proxy != expected)
+        _invalid_parameter_noinfo();
 
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
+    if (node == limit)
+        return false;
 
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
+    if (!proxy)
+        _invalid_parameter_noinfo();
 
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
+    Owner *container = proxy ? proxy->owner : 0;
+    if (node == container->head)
+        _invalid_parameter_noinfo();
 
-		return lookup(std::string(sName));
-	}
+    string_assign(result, reinterpret_cast<const String *>(node->value + 0x24));
+    return true;
 }

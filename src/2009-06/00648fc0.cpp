@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005bd6d0  unit: RBX::VNetworkSettings::?$BoundPropGetSet  size: 336 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005bd6d0
@@ -208,7 +208,7 @@ extern Manager* getManager();
 extern Value makeValue(const String*);
 
 struct S {
-    char padding[0x13c];
+    char padding[0x94];
     Table table;
     void f(int key, String value);
 };

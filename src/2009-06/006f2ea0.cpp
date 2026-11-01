@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00665e20  unit: RBX::PartDragTool  size: 219 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00665e20
@@ -94,7 +94,7 @@ struct Event {
 };
 
 struct Object {
-    char padding[0x1cc];
+    char padding[0xa8];
     Event event;
 };
 

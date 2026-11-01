@@ -1,9 +1,9 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs roc_unit_39635652f58f6bf1.cpp
+// roc-lib: rbxgs roc_espclaude_e9bc8bbe85f50205.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <G3D/Vector2.h>
@@ -32,7 +32,8 @@ struct S {
     virtual void v21();
     virtual void v22();
     virtual void v23();
-    virtual void v24(S*);
+    virtual void v24();
+    virtual void v25(S*);
 };
 
 extern G3D::Vector2 canvasSize;
@@ -40,5 +41,6 @@ void __cdecl f(S* item,S* target) {
  short y=item->v6();
  short x=item->v5();
  canvasSize=G3D::Vector2(x,y);
- target->v24(item);
+ target->v25(item);
 }
+

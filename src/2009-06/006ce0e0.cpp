@@ -1,10 +1,10 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // from server: 55% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // roc-lang: cpp
-// roc-lib: openrbx-client roc_espclaude_73def1f408596618.cpp
+// roc-lib: openrbx-client roc_espclaude_0629b3ff4e2f7125.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "v8kernel/Pair.h"
@@ -16,7 +16,7 @@
 namespace RBX {
 
 struct ExBody {
-	char pad[0x94];
+	char pad[0x9c];
 	G3D::CoordinateFrame position;  // pv.position at 0x94
 };
 
@@ -54,3 +54,4 @@ void ExGeoPair::computeBallEdge(RBX::PairParams& _params)
 }
 
 }
+

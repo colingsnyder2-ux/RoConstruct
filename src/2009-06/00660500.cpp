@@ -1,108 +1,47 @@
-// from server: 46% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 78% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 0059dd80  unit: VCRenderSettings::?$EnumPropDescriptor  size: 55 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0059dd80
+//
+// 0059dd80  807c240400           cmp byte ptr [esp + 4], 0
+// 0059dd85  56                   push esi
+// 0059dd86  0f94c0               sete al
+// 0059dd89  8bf1                 mov esi, ecx
+// 0059dd8b  88442408             mov byte ptr [esp + 8], al
+// 0059dd8f  3a86d3020000         cmp al, byte ptr [esi + 0x2d3]
+// 0059dd95  741c                 je 0x59ddb3
+// 0059dd97  8b442408             mov eax, dword ptr [esp + 8]
+// 0059dd9b  50                   push eax
+// 0059dd9c  8d8e28020000         lea ecx, [esi + 0x228]
+// 0059dda2  e839980400           call 0x5e75e0
+// 0059dda7  6800609700           push 0x976000
+// 0059ddac  8bce                 mov ecx, esi
+// 0059ddae  e84dfde6ff           call 0x40db00
+// 0059ddb3  5e                   pop esi
+// 0059ddb4  c20400               ret 4
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+extern unsigned char property;
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Value {
+    unsigned char padding[0xAB];
+    unsigned char value;
 
-boost::mutex& moo2()
+    void setValue(unsigned char v);
+};
+
+struct Settings {
+    unsigned char padding[0x228];
+    Value setting;
+
+    void notify(void*);
+    void setEnabled(unsigned char v);
+};
+
+void Settings::setEnabled(unsigned char v)
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    v = !v;
+    if (v != setting.value) {
+        setting.setValue(v);
+        notify(&property);
+    }
 }

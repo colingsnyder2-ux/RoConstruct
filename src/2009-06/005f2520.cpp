@@ -1,108 +1,109 @@
-// from server: 64% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 005f2520  unit: RBX::VLocalBackpackTool::?$FactoryProduct  size: 89 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005f2520
+//
+// 005f2520  6aff                 push -1
+// 005f2522  68991c8700           push 0x871c99
+// 005f2527  64a100000000         mov eax, dword ptr fs:[0]
+// 005f252d  50                   push eax
+// 005f252e  64892500000000       mov dword ptr fs:[0], esp
+// 005f2535  51                   push ecx
+// 005f2536  56                   push esi
+// 005f2537  8bf1                 mov esi, ecx
+// 005f2539  57                   push edi
+// 005f253a  89742408             mov dword ptr [esp + 8], esi
+// 005f253e  ff15c0e48900         call dword ptr [0x89e4c0]
+// 005f2544  33ff                 xor edi, edi
+// 005f2546  897c2414             mov dword ptr [esp + 0x14], edi
+// 005f254a  e811b4fdff           call 0x5cd960
+// 005f254f  d9ee                 fldz 
+// 005f2551  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 005f2555  89461c               mov dword ptr [esi + 0x1c], eax
+// 005f2558  d95630               fst dword ptr [esi + 0x30]
+// 005f255b  897e20               mov dword ptr [esi + 0x20], edi
+// 005f255e  d95e34               fstp dword ptr [esi + 0x34]
+// 005f2561  897e24               mov dword ptr [esi + 0x24], edi
+// 005f2564  897e28               mov dword ptr [esi + 0x28], edi
+// 005f2567  897e2c               mov dword ptr [esi + 0x2c], edi
+// 005f256a  5f                   pop edi
+// 005f256b  8bc6                 mov eax, esi
+// 005f256d  5e                   pop esi
+// 005f256e  64890d00000000       mov dword ptr fs:[0], ecx
+// 005f2575  83c410               add esp, 0x10
+// 005f2578  c3                   ret 
+// copied from an identical function in another client (function ??0ChatEnter@ns_ROCX000006@@QAE@XZ)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+namespace ns_ROCX000006 {
+// from server: 96% by king_originala
+// roc 2008-06 005cf870  unit: ChatEnter  size: 89 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 005cf870
+//
+// 005cf870  6aff                 push -1
+// 005cf872  68496b7c00           push 0x7c6b49
+// 005cf877  64a100000000         mov eax, dword ptr fs:[0]
+// 005cf87d  50                   push eax
+// 005cf87e  64892500000000       mov dword ptr fs:[0], esp
+// 005cf885  51                   push ecx
+// 005cf886  56                   push esi
+// 005cf887  8bf1                 mov esi, ecx
+// 005cf889  57                   push edi
+// 005cf88a  89742408             mov dword ptr [esp + 8], esi
+// 005cf88e  ff1560248000         call dword ptr [0x802460]
+// 005cf894  33ff                 xor edi, edi
+// 005cf896  897c2414             mov dword ptr [esp + 0x14], edi
+// 005cf89a  e8d149f8ff           call 0x554270
+// 005cf89f  d9ee                 fldz 
+// 005cf8a1  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 005cf8a5  89461c               mov dword ptr [esi + 0x1c], eax
+// 005cf8a8  d95630               fst dword ptr [esi + 0x30]
+// 005cf8ab  897e20               mov dword ptr [esi + 0x20], edi
+// 005cf8ae  d95e34               fstp dword ptr [esi + 0x34]
+// 005cf8b1  897e24               mov dword ptr [esi + 0x24], edi
+// 005cf8b4  897e28               mov dword ptr [esi + 0x28], edi
+// 005cf8b7  897e2c               mov dword ptr [esi + 0x2c], edi
+// 005cf8ba  5f                   pop edi
+// 005cf8bb  8bc6                 mov eax, esi
+// 005cf8bd  5e                   pop esi
+// 005cf8be  64890d00000000       mov dword ptr fs:[0], ecx
+// 005cf8c5  83c410               add esp, 0x10
+// 005cf8c8  c3                   ret 
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct Name;
+extern const Name& __cdecl getLocalScope();
 
-boost::mutex& moo2()
+typedef void (__thiscall *StringConstructor)(void*);
+extern StringConstructor stringConstructor;
+
+struct String
 {
-	static boost::mutex mutex2;
-	return mutex2;
+    char data[28];
+    String() { stringConstructor(this); }
+    ~String();
+};
+
+struct ScopeRef
+{
+    const Name* p;
+    ScopeRef(const Name& n) : p(&n) {}
+};
+
+struct ChatEnter
+{
+    String text;
+    ScopeRef scope;
+    unsigned int a;
+    unsigned int b;
+    unsigned int c;
+    unsigned int d;
+    float x;
+    float y;
+
+    ChatEnter();
+};
+
+ChatEnter::ChatEnter()
+    : scope(getLocalScope()),
+      a(0), b(0), c(0), d(0), x(0.0f), y(0.0f)
+{
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

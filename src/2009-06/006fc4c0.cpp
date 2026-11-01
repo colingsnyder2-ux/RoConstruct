@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-flags: /O2 /MD /GS /EHsc /Ob1 /fp:fast
 struct Text {
@@ -18,7 +18,7 @@ struct Renderer {
 };
 
 struct State {
-    unsigned char padding[20];
+    unsigned char padding[48];
     Renderer* renderer;
 };
 

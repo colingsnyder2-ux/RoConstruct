@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 0063b260  unit: RBX::N$1?sDoubleValue::V?$Value::?$BoundPropGetSet  size: 78 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0063b260
@@ -133,7 +133,7 @@ struct S {
 };
 void S::set(void* object, double* value)
 {
-    Owner* base = object ? reinterpret_cast<Owner*>(static_cast<char*>(object) - 20) : 0;
+    Owner* base = object ? reinterpret_cast<Owner*>(static_cast<char*>(object) - 24) : 0;
     if (base->*member != *value) {
         base->*member = *value;
         if (handler)

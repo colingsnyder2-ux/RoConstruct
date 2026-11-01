@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005fbf50  unit: RBX::VLocalBackpack::?$FactoryProduct  size: 152 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005fbf50
@@ -98,7 +98,7 @@ inline SharedValue& SharedValue::operator=(const SharedValue& other) {
 SharedValue __cdecl makeValue(void* argument);
 
 struct S {
-    char padding[0x148];
+    char padding[0x110];
     SharedValue value;
     void f(void* argument);
 };

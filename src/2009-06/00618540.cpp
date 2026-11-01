@@ -1,4 +1,4 @@
-// from server: 97% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005872a0  unit: RBX::VChangeHistoryService::?$FactoryProduct  size: 37 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005872a0
@@ -43,6 +43,6 @@ struct S {
 
 void S::f(Argument *arg)
 {
-    void *p = object ? object + 20 : 0;
+    void *p = object ? object + 24 : 0;
     arg->callback->invoke(p, arg->data);
 }

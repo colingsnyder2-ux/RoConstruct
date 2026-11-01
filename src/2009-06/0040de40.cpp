@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 0040f050  unit: VCBrowserViewExternal::?$CProxy_IBrowserViewExternalEvents  size: 366 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0040f050
@@ -460,7 +460,7 @@ struct Window {
 };
 
 struct View {
-    unsigned char storage[708];
+    unsigned char storage[680];
     Unknown *object;
     unsigned long reserved;
     String text;

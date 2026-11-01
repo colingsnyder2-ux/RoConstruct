@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_snapinfonative8176958b308ca092.cpp
+// roc-lib: rbxgs-dll roc_espclaude_ac5e98e9859b71ce.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise,off)
@@ -12,7 +12,7 @@
 #include "G3D/Plane.h"
 #include "util/Extents.h"
 struct Dimensions{unsigned tag;G3D::Vector3 size;};
-struct Primitive{char padding[0x9c];Dimensions*dimensions;const G3D::CoordinateFrame&getFrame();};
+struct Primitive{char padding[0xe0];Dimensions*dimensions;const G3D::CoordinateFrame&getFrame();};
 extern bool intersect(const G3D::Ray&,const G3D::Plane&,G3D::Vector3&);
 struct SnapInfo{Primitive*snap;RBX::NormalId surface;G3D::Vector3 hitWorld;void update(const G3D::Ray&);};
 void SnapInfo::update(const G3D::Ray&mouseRay){
@@ -26,3 +26,4 @@ void SnapInfo::update(const G3D::Ray&mouseRay){
  static G3D::Ray savedRay=ray;
  static G3D::Plane savedPlane=plane;
 }
+

@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00490af0  unit: RBX::VHumanoid::?$FactoryProduct::Creator  size: 320 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00490af0
@@ -162,7 +162,7 @@ __forceinline Pair& Vector::at(unsigned int index, void (__cdecl* handler)())
 }
 
 struct S {
-    unsigned char padding[0x190];
+    unsigned char padding[0x8c];
     Vector values;
     Pair create(void*);
     void* get();

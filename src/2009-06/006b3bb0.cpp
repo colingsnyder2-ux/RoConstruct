@@ -1,8 +1,8 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_king_originala_physics_e24ee4e3b4be38d6.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_1661501522375e02.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -12,7 +12,7 @@
 struct Primitive;
 // Borrowed PartInstance receiver; native LEA edi+228 and sibling construction
 // establish the embedded Primitive address. No owner is constructed here.
-struct Object {Primitive* getPrimitive(){return reinterpret_cast<Primitive*>(reinterpret_cast<char*>(this)+0x228);}};
+struct Object {char pad[0x118];Primitive* primitive;Primitive* getPrimitive(){return primitive;}};
 typedef boost::shared_ptr<Object> Shared;
 typedef std::vector<boost::weak_ptr<Object> > Collection;
 typedef G3D::Array<Primitive*> Output;
@@ -33,3 +33,4 @@ void* __cdecl reconstruct(Collection* collection,Output* output) {
 }
 typedef char weak_size[sizeof(boost::weak_ptr<Object>)==8?1:-1];
 typedef char vector_size[sizeof(Collection)==24?1:-1];
+

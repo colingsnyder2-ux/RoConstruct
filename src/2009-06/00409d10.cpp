@@ -1,304 +1,446 @@
-// from server: 65% by colin
+// from server: 75% by EspClaude
+// from server: 100% by tester
 // roc-lang: cpp
-// roc-cl: 30729
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8tree/Instance.cpp
+// roc-lib: rbxgs-dll script/LuaInstanceBridge.cpp
 
 // Candidate translation unit (score above; library headers required).
+#include "script/LuaInstanceBridge.h"
+#include "script/LuaSignalBridge.h"
+#include "script/LuaArguments.h"
+#include "script/LuaAtomicClasses.h"
+#include "script/ThreadRef.h"
+#include "util/Sound.h"
+#include "util/TextureId.h"
+#include "util/standardout.h"
 #include "v8tree/Instance.h"
+#include "G3D/format.h"
+#include "G3D/Vector3.h"
 
-#include "decomp.h"
+// matches generally aren't very good here
 
-#include <algorithm>
-#include <cstddef>
+using namespace RBX;
+using namespace RBX::Lua;
+using namespace RBX::Reflection;
+using namespace RBX::Soundscape;
 
-namespace RBX {
-
-const char sInstance[] = "Instance";
-
-const Reflection::RefPropDescriptor<Instance, Instance> Instance::propParent(
-	"Parent",
-	"Data",
-	&Instance::getParent,
-	&Instance::setParent,
-	Reflection::PropertyDescriptor::UI
-);
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childAdded("ChildAdded", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_childRemoved("ChildRemoved", "child");
-
-Reflection::SignalDesc<Instance, void(shared_ptr<Instance>)> Instance::event_ancestryChanged(
-	"AncestryChanged",
-	"child"
-);
-
-Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> Instance::event_propertyChanged(
-	"Changed",
-	"property"
-);
-
-ChildAdded::ChildAdded(Instance* child) : child(shared_from(child))
+void RBX::Lua::newweaktable(lua_State* L, const char* mode)
 {
+    lua_newtable(L);
+    lua_pushvalue(L, -1);
+    lua_setmetatable(L, -2);
+    lua_pushliteral(L, "__mode");
+    lua_pushstring(L, mode);
+    lua_settable(L, -3);
 }
 
-ChildRemoved::ChildRemoved(Instance* child) : child(shared_from(child))
+const luaL_Reg ObjectBridge::classLibrary[] = 
 {
+    {"new", ObjectBridge::newInstance},
+    {NULL, NULL}
+};
+
+int ObjectBridge::newInstance(lua_State* thread)
+{
+    const Name& name = Name::lookup(lua_tostring(thread, 1));
+    boost::shared_ptr<Instance> instance = AbstractFactoryProduct<Instance>::create(name);
+
+    if (lua_gettop(thread) >= 2)
+    {
+        boost::shared_ptr<Instance> parent = ObjectBridge::getInstance(thread, 2);
+
+        if (parent)
+            instance->setParent(parent.get());
+    }
+
+    ObjectBridge::push(thread, instance);
+
+    return 1;
 }
 
-// STUB: WEBSERVICE 0x10047af0
-void Instance::onChildChanged(Instance* instance, const PropertyChanged& event)
+// TODO: 98.80% (functional match)
+static void pushLuaValue(ConstProperty p, lua_State* L)
 {
-	if (parent != NULL) {
-		parent->onChildChanged(instance, event);
-	}
+    // (0024BC)  S_BPREL32: [FFFFFF40], Type:             0x3639, objects
+    // (0024D0)  S_BPREL32: [FFFFFF50], Type:             0x36A2, end
+    // (0024E0)  S_BPREL32: [FFFFFF48], Type:             0x36A2, iter
+
+    PropertyDescriptor& descriptor = const_cast<PropertyDescriptor&>(p.getDescriptor());
+
+    if (descriptor.type == Type::singleton<int>())
+    {
+        lua_pushinteger(L, p.getValue<int>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<bool>())
+    {
+        lua_pushboolean(L, p.getValue<bool>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<float>())
+    {
+        lua_pushnumber(L, p.getValue<float>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<std::string>())
+    {
+        lua_pushstring(L, p.getStringValue().c_str());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<boost::shared_ptr<Instance>>())
+    {
+        ObjectBridge::push(L, p.getValue<boost::shared_ptr<Instance>>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<boost::shared_ptr<DescribedBase>>())
+    {
+        ObjectBridge::push(L, p.getValue<boost::shared_ptr<DescribedBase>>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<G3D::Vector3>())
+    {
+        Vector3Bridge::pushVector3(L, p.getValue<G3D::Vector3>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<G3D::CoordinateFrame>())
+    {
+        CoordinateFrameBridge::pushCoordinateFrame(L, p.getValue<G3D::CoordinateFrame>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<G3D::Color3>())
+    {
+        Color3Bridge::pushColor3(L, p.getValue<G3D::Color3>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<BrickColor>())
+    {
+        BrickColorBridge::pushNewObject(L, p.getValue<BrickColor>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<ContentId>())
+    {
+        lua_pushstring(L, p.getStringValue().c_str());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<FunctionRef>())
+    {
+        lua_pushfunction(L, p.getValue<FunctionRef>());
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<boost::shared_ptr<Instances>>())
+    {
+        boost::shared_ptr<Instances> objects = p.getValue<boost::shared_ptr<Instances>>();
+        if (objects)
+        {
+            Instances::const_iterator iter = objects->begin();
+            Instances::const_iterator end = objects->end();
+
+            // objects->size() doesn't match
+            lua_createtable(L, end-iter, 0);
+
+            for (int i = 1; iter != end; i++)
+            {
+                ObjectBridge::push(L, *iter);
+                lua_rawseti(L, -2, i);
+                ++iter;
+            }
+        }
+        else
+        {
+            lua_newtable(L);
+        }
+        return;
+    }
+
+    EnumPropertyDescriptor* enumDesc = dynamic_cast<EnumPropertyDescriptor*>(&descriptor);
+    if (enumDesc)
+    {
+        lua_pushinteger(L, enumDesc->getEnumValue(p.getInstance()));
+        return;
+    }
+
+    RefPropertyDescriptor* refDesc = dynamic_cast<RefPropertyDescriptor*>(&descriptor);
+    if (refDesc)
+    {
+        DescribedBase* ref = refDesc->getRefValue(p.getInstance());
+
+        // this just seems strange /shrug
+        if (ref)
+            ObjectBridge::push(L, static_cast<Instance*>(ref)->shared_from_this());
+        else
+            ObjectBridge::push(L, boost::shared_ptr<Instance>());
+
+        return;
+    }
+
+    throw std::runtime_error(G3D::format(
+        "Unable to get property %s, type %s",
+        descriptor.name.c_str(),
+        descriptor.type.name.c_str()));
 }
 
-// FUNCTION: WEBSERVICE 0x10047b20
-bool Instance::contains(const Instance* child) const
+template<>
+int ObjectBridge::on_index(const boost::shared_ptr<DescribedBase>& object, const char* name, lua_State* L)
 {
-	while (child != 0) {
-		if (child == this) {
-			return true;
-		}
+    if (!object)
+        throw std::runtime_error("The object has been deleted");
 
-		child = child->parent;
-	}
+    const Name& name2 = Name::lookup(name);
 
-	return false;
+    // what's with the scopes? they can't be inlines
+
+    {
+        PropertyIterator iter = object->findProperty(name2);
+        if (iter != object->properties_end())
+        {
+            pushLuaValue(*iter, L);
+            return 1;
+        }
+    }
+
+    {
+        FunctionIterator iter = object->findFunction(name2);
+        if (iter != object->functions_end())
+        {
+            const FunctionDescriptor* fd = (*iter).getDescriptor();
+
+            lua_pushlightuserdata(L, (void*)fd);
+            lua_rawget(L, LUA_ENVIRONINDEX);
+
+            if (lua_type(L, -1) == LUA_TNIL)
+            {
+                lua_pop(L, 1);
+                lua_pushlightuserdata(L, (void*)fd);
+                lua_pushcclosure(L, ObjectBridge::callMemberFunction, 1);
+                lua_pushlightuserdata(L, (void*)fd);
+                lua_pushvalue(L, -2);
+                lua_settable(L, LUA_ENVIRONINDEX);
+            }
+
+            RBXASSERT(lua_type(L, -1) == LUA_TFUNCTION);
+
+            return 1;
+        }
+    }
+
+    {
+        SignalIterator iter = object->findSignal(name2);
+        if (iter != object->signals_end())
+        {
+            Signal s = *iter;
+            SignalBridge::push(L, s.getSignalInstance());
+            return 1;
+        }
+    }
+
+    Instance* instance = dynamic_cast<Instance*>(object.get());
+    if (instance)
+    {
+        Instance* child = instance->findFirstChildByName(name);
+        if (child)
+        {
+            ObjectBridge::push(L, shared_from(child));
+            return 1;
+        }
+    }
+
+    if (name2.empty())
+    {
+        std::string pascalName = name;
+        pascalName[0] = toupper(name[0]);
+
+        if (pascalName[0] != name[0] && !Name::lookup(pascalName).empty())
+            return on_index(object, pascalName.c_str(), L);
+    }
+
+    throw std::runtime_error(G3D::format("%s is not a valid member of %s", name, instance->getClassName().c_str()));
 }
 
-// FUNCTION: WEBSERVICE 0x10048340
-void Instance::readProperties(const XmlElement* container, IReferenceBinder& binder)
+// TODO: 94.38% (functional match)
+static void assignLuaValue(Property p, lua_State* L, int index)
 {
-	for (XmlElement* child = container->firstChild(); child != NULL; child = child->nextSibling()) {
-		readProperty(child, binder);
-	}
+    // (002DA8)  S_BPREL32: [FFFFFF60], Type:             0x238B, value
+
+    PropertyDescriptor& descriptor = const_cast<PropertyDescriptor&>(p.getDescriptor());
+
+    if (descriptor.type == Type::singleton<int>())
+    {
+        p.setValue<int>(lua_tointeger(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<bool>())
+    {
+        p.setValue<bool>(lua_toboolean(L, index) != 0);
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<float>())
+    {
+        p.setValue<float>(lua_tonumber(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<std::string>())
+    {
+        p.setValue<std::string>(lua_tostring(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<FunctionRef>())
+    {
+        p.setValue(FunctionRef(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<boost::shared_ptr<Instance>>())
+    {
+        p.setValue(ObjectBridge::getInstance(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<boost::shared_ptr<DescribedBase>>())
+    {
+        p.setValue(ObjectBridge::getPtr(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<G3D::Vector3>())
+    {
+        p.setValue(Vector3Bridge::getObject(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<G3D::CoordinateFrame>())
+    {
+        p.setValue(CoordinateFrameBridge::getObject(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<G3D::Color3>())
+    {
+        p.setValue(Color3Bridge::getObject(L, index));
+        return;
+    }
+
+    if (descriptor.type == Type::singleton<BrickColor>())
+    {
+        p.setValue(BrickColorBridge::getObject(L, index));
+        return;
+    }
+
+    // the contentid dtors for these two checks should be merged
+    // seems like an inline, but i can't get it to work
+    if (dynamic_cast<TypedPropertyDescriptor<SoundId>*>(&descriptor))
+    {
+        p.setValue<SoundId>(ContentId(lua_tostring(L, index)));
+        return;
+    }
+
+    if (dynamic_cast<TypedPropertyDescriptor<TextureId>*>(&descriptor))
+    {
+        p.setValue<TextureId>(ContentId(lua_tostring(L, index)));
+        return;
+    }
+
+    EnumPropertyDescriptor* enumDesc = dynamic_cast<EnumPropertyDescriptor*>(&descriptor);
+    if (enumDesc)
+    {
+        int value = lua_tointeger(L, index);
+        enumDesc->setEnumValue(p.getInstance(), value);
+        return;
+    }
+
+    RefPropertyDescriptor* refDesc = dynamic_cast<RefPropertyDescriptor*>(&descriptor);
+    if (refDesc)
+    {
+        boost::shared_ptr<Instance> value = ObjectBridge::getInstance(L, index);
+        refDesc->setRefValue(p.getInstance(), value.get());
+        return;
+    }
+
+    throw std::runtime_error(G3D::format("Unable to set property %s, type %s", descriptor.name.c_str(), descriptor.type.name.c_str()));
 }
 
-// FUNCTION: WEBSERVICE 0x10048370
-void Instance::writeChildren(XmlElement* container)
+// TODO: 91.56%
+// a lot of stack space gets wasted for some reason
+template <>
+void ObjectBridge::on_newindex(boost::shared_ptr<DescribedBase>& object, const char* name, lua_State* L)
 {
-	const std::vector<shared_ptr<Instance> >* kids = children.operator->();
+    // (0033F8)  S_BPREL32: [FFFFFF68], Type:             0x3058, iter
+    // (00340C)  S_BPREL32: [FFFFFF58], Type:             0x238B, parent (boost::shared_ptr<RBX::Instance>)
 
-	if (kids != NULL) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = kids->begin(); it != kids->end(); ++it) {
-			XmlElement* child = (*it)->write();
+    if (!object)
+        throw std::runtime_error("The object has been deleted");
 
-			if (child != NULL) {
-				container->addChild(child);
-			}
-		}
-	}
+    DescribedBase* objectPtr = object.get();
+    PropertyIterator iter = object->findProperty(Name::lookup(name));
+    if (iter != object->properties_end())
+    {
+        if ((*iter).getDescriptor() == Instance::propParent)
+        {
+            Instance* instance = dynamic_cast<Instance*>(objectPtr);
+
+            if (!instance)
+                throw std::runtime_error(G3D::format("%s is not a valid member of %s", name, object->classDescriptor().name.c_str()));
+
+            boost::shared_ptr<Instance> parent = ObjectBridge::getInstance(L, 3);
+
+            if (instance->getParent() != parent.get())
+            {
+                if (!instance->canSetParent(parent.get()))
+                    StandardOut::singleton()->print(MESSAGE_WARNING, "%s should not be a child of %s", instance->getName().c_str(), parent->getName().c_str());
+
+                instance->setParent2(parent);
+            }
+        }
+        else
+        {
+            assignLuaValue(*iter, L, 3);    
+        }
+
+        return;
+    }
+
+    throw std::runtime_error(G3D::format("%s is not a valid member of %s", name, object->classDescriptor().name.c_str()));
 }
 
-// STUB: WEBSERVICE 0x100483f0
-Instance* Instance::findFirstChildByName(const std::string& findName) const
+int ObjectBridge::callMemberFunction(lua_State* L)
 {
-	STUB(0x100483f0);
-	return NULL;
+    int idx = lua_upvalueindex(1);
+    RBXASSERT(lua_type(L, idx) == LUA_TLIGHTUSERDATA);
+    Reflection::FunctionDescriptor* fd = static_cast<Reflection::FunctionDescriptor*>(lua_touserdata(L, idx));
+
+    if (fd->security == FunctionDescriptor::NeedTrustedCaller)
+        Security::Context::current().requirePermission(Security::Administrator, fd->name.c_str());
+
+    boost::shared_ptr<Reflection::DescribedBase> instance;
+
+    if (!getPtr(L, 1, instance) || !instance)
+        throw std::runtime_error(G3D::format(
+            "Did you forget a semicolon?  The first argument of member function %s must be an Object",
+            fd->name.c_str()));
+
+    if (!fd->isMemberOf(instance.get()))
+        throw std::runtime_error(G3D::format(
+        "The function %s is not a member of \"%s\"",
+        fd->name.c_str(),
+        instance->classDescriptor().name.c_str()));
+
+    LuaArguments args(L, 1);
+    fd->execute(instance.get(), args);
+    return args.pushReturnValue();
 }
-
-// FUNCTION: WEBSERVICE 0x10048fb0
-void Instance::signalDescendentAdded(Instance* instance, Instance* beginParent, Instance* oldParent)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == oldParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(oldParent)) {
-			break;
-		}
-
-		walk->onDescendentAdded(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentAdded(it->get(), beginParent, oldParent);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x100490d0
-void Instance::signalDescendentRemoving(
-	const shared_ptr<Instance>& instance,
-	Instance* beginParent,
-	Instance* newParent
-)
-{
-	for (Instance* walk = beginParent; walk != NULL; walk = walk->parent) {
-		if (walk == newParent) {
-			break;
-		}
-
-		if (walk->isAncestorOf(newParent)) {
-			break;
-		}
-
-		walk->onDescendentRemoving(instance);
-	}
-
-	boost::shared_ptr<const std::vector<shared_ptr<Instance> > > c = instance->children.read();
-
-	if (c) {
-		for (std::vector<shared_ptr<Instance> >::const_iterator it = c->begin(); it != c->end(); ++it) {
-			signalDescendentRemoving(*it, beginParent, newParent);
-		}
-	}
-}
-
-// STUB: WEBSERVICE 0x10049d40
-XmlElement* Instance::write()
-{
-	STUB(0x10049d40);
-	return NULL;
-}
-
-// STUB: WEBSERVICE 0x1004a010
-void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-{
-	STUB(0x1004a010);
-}
-
-// STUB: WEBSERVICE 0x1004cdf0
-shared_ptr<Instance> Instance::createChild(const Name& className)
-{
-	STUB(0x1004cdf0);
-	return shared_ptr<Instance>();
-}
-
-// STUB: WEBSERVICE 0x1004d0b0
-Instance::~Instance()
-{
-}
-
-// STUB: WEBSERVICE 0x1004da80
-void Instance::setParent(Instance* newParent)
-{
-	if (newParent == parent) {
-		return;
-	}
-
-	shared_ptr<Instance> oldParent = shared_from(parent);
-	shared_ptr<Instance> self = shared_from_this();
-
-	if (oldParent) {
-		if (!oldParent->contains(newParent)) {
-			signalDescendentRemoving(self, oldParent.get(), newParent);
-		}
-
-		oldParent->onChildRemoving(this);
-
-		shared_ptr<std::vector<shared_ptr<Instance> > >& children = oldParent->children.write();
-
-		children->erase(std::find(children->begin(), children->end(), self));
-
-		if (children->size() == 0) {
-			oldParent->children.reset();
-		}
-
-		parent = NULL;
-
-		event_childRemoved.fire(oldParent.get(), self);
-
-		oldParent->Notifier<Instance, ChildRemoved>::raise(this);
-		oldParent->onChildRemoved(this);
-
-		if (oldParent->numChildren() == 0) {
-			oldParent->onLastChildRemoved();
-		}
-	}
-
-	if (newParent != NULL) {
-		newParent->children.write()->push_back(self);
-	}
-
-	parent = newParent;
-
-	if (newParent != NULL) {
-		newParent->onChildAdded(this);
-
-		if (!newParent->contains(oldParent.get())) {
-			signalDescendentAdded(this, newParent, oldParent.get());
-		}
-
-		newParent->Notifier<Instance, ChildAdded>::raise(this);
-
-		event_childAdded.fire(newParent, self);
-	}
-
-	onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
-	raisePropertyChanged(propParent);
-}
-
-// STUB: WEBSERVICE 0x1004ddb0
-void Instance::onAncestorChanged(const AncestorChanged& event)
-{
-	STUB(0x1004ddb0);
-}
-
-// STUB: WEBSERVICE 0x1004dee0
-void Instance::onDescendentAdded(Instance* instance)
-{
-	STUB(0x1004dee0);
-}
-
-// STUB: WEBSERVICE 0x1004df50
-void Instance::onDescendentRemoving(const shared_ptr<Instance>& instance)
-{
-	STUB(0x1004df50);
-}
-
-// STUB: WEBSERVICE 0x1004e040
-void Instance::setName(const std::string& value)
-{
-	STUB(0x1004e040);
-}
-
-// STUB: WEBSERVICE 0x1004e0f0
-void Instance::predelete()
-{
-	STUB(0x1004e0f0);
-}
-
-// STUB: WEBSERVICE 0x1004e5e0
-void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
-{
-	STUB(0x1004e5e0);
-}
-
-// STUB: WEBSERVICE 0x1004e6e0
-void Instance::readChildren(const XmlElement* element, IReferenceBinder& binder)
-{
-	if (element != NULL) {
-		const XmlElement* item = element->findFirstChildByTag(tag_Item);
-
-		while (item != NULL) {
-			readChild(item, binder);
-			item = element->findNextChildWithSameTag(item);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1004e7b0
-void Instance::predelete(Instance* instance)
-{
-	instance->predelete();
-}
-
-// STUB: WEBSERVICE 0x1004eb10
-Instance::Instance() : parent(0), archivable(true)
-{
-}
-
-// STUB: WEBSERVICE 0x1004ec70
-Instance::Instance(const char* name) : name(name), parent(0), archivable(true)
-{
-	STUB(0x1004ec70);
-}
-
-} // namespace RBX

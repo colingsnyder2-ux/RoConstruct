@@ -1,7 +1,7 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-flags: /O2 /GS- /EHsc /MD
 // RunDragger layout and APIs: native tool/RunDragger.h; complete target is 642 bytes.
 // Native G3D Array/Ray/CoordinateFrame and measured Workspace/World access paths.
 // faceOverlapTest is a descriptive ABI label; no original symbol identity is claimed.
@@ -139,8 +139,8 @@ struct Face {G3D::Vector3 corners[4];};
 bool __cdecl faceOverlapTest(const Face&,const Face&,float);
 struct Primitive {Face getFaceInWorld(NormalId);const G3D::CoordinateFrame&getCoordinateFrame()const;};
 struct ContactManager {bool intersectingOthers(Primitive*,float);};
-struct World {char unobserved[0x84];ContactManager*contactManager;ContactManager&getContactManager(){return *contactManager;}};
-struct Workspace {char unobserved[0x2e4];World*world;World*getWorld(){return world;}};
+struct World {char unobserved[0xb0];ContactManager*contactManager;ContactManager&getContactManager(){return *contactManager;}};
+struct Workspace {char unobserved[0x150];World*world;World*getWorld(){return world;}};
 struct WeakPart {char unobserved[8];};
 class RunDragger {
 public:
@@ -185,6 +185,6 @@ typedef char frame_extent[sizeof(G3D::CoordinateFrame)==48?1:-1];
 typedef char ray_extent[sizeof(G3D::Ray)==28?1:-1];
 typedef char snap_extent[sizeof(RBX::RunDragger::SnapInfo)==32?1:-1];
 
-typedef char world_contact_offset[offsetof(RBX::World,contactManager)==0x84?1:-1];
-typedef char workspace_world_offset[offsetof(RBX::Workspace,world)==0x2e4?1:-1];
+typedef char world_contact_offset[offsetof(RBX::World,contactManager)==0xb0?1:-1];
+typedef char workspace_world_offset[offsetof(RBX::Workspace,world)==0x150?1:-1];
 typedef char dragger_extent[sizeof(RBX::RunDragger)==0x70?1:-1];

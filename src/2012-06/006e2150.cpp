@@ -1,17 +1,15 @@
-// from server: 27% by atomic.potato
-struct GenericJob
-{
-    unsigned char m_padding[0x23c];
-    int m_count;
-    void getValue(double* result);
+// from server: 48% by Intel
+struct GenericJob {
+    int getTime(double* out);
 };
 
-void GenericJob::getValue(double* result)
-{
+int GenericJob::getTime(double* out) {
     double value;
-    if (m_count > 0)
+    if (*reinterpret_cast<int*>(reinterpret_cast<char*>(this) + 0x23C) == 0) {
+        value = *reinterpret_cast<double*>(0xB53EF8);
+    } else {
         value = 0.0;
-    else
-        value = 0.0;
-    *result = value;
+    }
+    *out = value;
+    return 0;
 }

@@ -1,74 +1,21 @@
-// from server: 53% by colin
+// from server: 70% by EspClaude
+// from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/TimerService.cpp
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espeon_timerreversecomparison1758a4a34986db57.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-namespace RBX
-{
-	TimerService::TimerService() {}
-
-	void TimerService::delay(boost::function0<void> func, double seconds)
-	{
-		Item item;
-		item.time = G3D::System::getLocalTime() + seconds;
-		item.func = func;
-
-		std::list<Item>::iterator pos = items.end();
-
-		std::list<Item>::reverse_iterator iter = items.rbegin();
-		std::list<Item>::reverse_iterator end = items.rend();
-
-		for (; iter != end; iter++)
-		{
-			if (iter->time > item.time)
-				pos = iter.base();
-			else
-				break;
-		}
-
-		items.insert(pos, item);
-	}
-
-	void TimerService::onEvent(const RunService* source, Heartbeat event)
-	{
-		G3D::RealTime time = G3D::System::getLocalTime();
-
-		while (items.size() > 0)
-		{
-			Item& item = items.front();
-
-			if (time >= item.time)
-			{
-				try
-				{
-					item.func();
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_WARNING, e);
-				}
-
-				items.pop_front();
-			}
-			else
-			{
-				break;
-			}
-		}
-	}
-
-	void TimerService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Notifier<RunService, Heartbeat>::disconnect(runService, this);
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-		runService = shared_from(ServiceProvider::create<RunService>(newProvider));
-
-		Notifier<RunService,Heartbeat>::connect(runService, this);
-	}
+#include <list>
+#include <boost/function.hpp>
+extern double __cdecl timer_now();
+struct Value {double time; boost::function<void()> callback;};
+struct Service {char padding[316];std::list<Value> timers;void schedule(boost::function<void()> callback,double delay);};
+void Service::schedule(boost::function<void()> callback,double delay) {
+ Value value;value.time=timer_now()+delay;value.callback=callback;
+ for(std::list<Value>::iterator i=timers.begin();i!=timers.end();++i) {
+  if(i->time>value.time) {timers.insert(i,value);goto finished;}
+ }
+ timers.push_back(value);
+finished:;
 }

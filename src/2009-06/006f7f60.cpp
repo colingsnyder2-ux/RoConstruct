@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala_sol_native
 // roc 2008-06 0066ccc0  unit: RBX::GroupDragTool  size: 346 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0066ccc0
@@ -133,7 +133,7 @@ class Primitive;class Contact;class Kernel;class IStage;
 enum NormalId {NORM_X=0,NORM_Y=1,NORM_Z=2,NORM_X_NEG=3,NORM_Y_NEG=4,NORM_Z_NEG=5,NORM_UNDEFINED=6};
 class __declspec(novtable) IPipelined {IStage*currentStage;public:virtual~IPipelined(){}virtual void putInKernel(Kernel*);virtual void removeFromKernel();};
 namespace Sim {enum EdgeState {UNDEFINED,STEPPING,SLEEPING,TOUCHING,TOUCHING_SLEEPING};}
-class __declspec(novtable) Edge:public IPipelined {Sim::EdgeState edgeState;Primitive*prim0;Primitive*prim1;Edge*next0;Edge*next1;bool inEdgeList;public:enum EdgeType {JOINT,CONTACT};virtual~Edge(){}virtual EdgeType getEdgeType()const=0;virtual void setPrimitive(int,Primitive*);Primitive*otherPrimitive(const Primitive*p)const{return p==prim0?prim1:prim0;}};
+class __declspec(novtable) Edge:public IPipelined {Sim::EdgeState edgeState;int exePad;Primitive*prim0;Primitive*prim1;Edge*next0;Edge*next1;bool inEdgeList;public:enum EdgeType {JOINT,CONTACT};virtual~Edge(){}virtual EdgeType getEdgeType()const=0;virtual void setPrimitive(int,Primitive*);Primitive*otherPrimitive(const Primitive*p)const{return p==prim0?prim1:prim0;}};
 class __declspec(novtable) Contact:public Edge {int lastContactStep,steppingIndex;float jointK,elasticJointK,kFriction;private:virtual void putInKernel(Kernel*);virtual void removeFromKernel();virtual EdgeType getEdgeType()const{return CONTACT;}protected:virtual void deleteAllConnectors()=0;virtual bool stepContact()=0;public:virtual~Contact(){}virtual bool computeIsColliding(float)=0;bool computeIsAdjacent(float);};
 class Primitive {public:Contact*getFirstContact();Contact*getNextContact(Contact*);};
 class RunDragger {public:class SnapInfo {public:Primitive*snap;NormalId surface;G3D::Vector3 hitWorld,lastDragSnap;SnapInfo():surface(NORM_UNDEFINED),hitWorld(G3D::Vector3::inf()),lastDragSnap(G3D::Vector3::inf()),snap(NULL){}float hitOutsideExtents();};

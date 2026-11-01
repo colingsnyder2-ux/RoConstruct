@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 004a5a70  unit: RBX::VHint::?$FactoryProduct::Creator  size: 159 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004a5a70
@@ -125,7 +125,7 @@ struct PropertyTable {
 };
 
 struct EnumInfo {
-    unsigned char reserved[44];
+    unsigned char reserved[48];
     int count;
 };
 

@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_claudeA_selgrid32fc8a6d1bba2a76.cpp
+// roc-lib: rbxgs-dll roc_espclaude_f1e73c4573cebd62.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias(<afxwin.h>, <roc_espeon_mfcnativeheader280d8d01456bb571.cpp>)
@@ -331,7 +331,7 @@ struct Map {
 };
 
 struct Selection {
-    char pad[0x19c];
+    char pad[0x1a4];
     Listener listener;
     Map map;
     Group* group(void*);
@@ -354,3 +354,4 @@ void Selection::f(Item* item)
     map.find(item->descriptor) = h;
     listener.notify(h);
 }
+

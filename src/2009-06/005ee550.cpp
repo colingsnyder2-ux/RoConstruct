@@ -1,43 +1,14 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll v8datamodel/FaceInstance.cpp
+// roc-lib: rbxgs-dll roc_espclaude_52a69bcfd136e820.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FaceInstance.h"
-#include "v8datamodel/PartInstance.h"
-#include "util/NormalId.h"
-#include "v8tree/Instance.h"
-#include "reflection/reflection.h"
-namespace RBX 
-{
-	const char* sFaceInstance = "FaceInstance";
-	const Reflection::EnumPropDescriptor<FaceInstance,NormalId> FaceInstance::prop_Face("Face", "Data", &FaceInstance::getFace, &FaceInstance::setFace, Reflection::PropertyDescriptor::STANDARD);
-
-	FaceInstance::FaceInstance()
-		:face(NORM_Z_NEG)
-	{
-	}
-
-	void FaceInstance::setFace(NormalId value) 
-	{
-		if (face != value) 
-		{
-			face = value;
-			raisePropertyChanged(prop_Face);
-		}
-	}
-
-
-	NormalId FaceInstance::getFace() const 
-	{
-		return face;
-	}
-
-	bool FaceInstance::askSetParent(const Instance* instance) const 
-	{
-		return dynamic_cast<const PartInstance*>(instance) != NULL;
-	}
-}
+#include "reflection/type.h"
+namespace RBX { namespace Reflection { struct ExePad2009 { int exePad2009; }; } }
+#define Type Type, public ExePad2009
+#include "reflection/enumconverter.h"
+#undef Type
+#include "v8datamodel/FaceInstance.cpp"

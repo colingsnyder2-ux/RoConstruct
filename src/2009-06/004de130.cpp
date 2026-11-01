@@ -1,9 +1,9 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net-dll roc_espclaude_e352497fd30fc5e7.cpp
+// roc-lib: rbxgs-net-dll roc_espclaude_700e9f23893ba27b.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _DLL
@@ -14,7 +14,7 @@
 #define hasListeners() hasListeners() const { return listeners.size() > 0; } bool hasListenersEmpty()
 #include "util/Events.h"
 #undef hasListeners
-namespace RBX { template<class T> class GuidItem { public: virtual ~GuidItem() {} char guidPad[0xc]; }; }
+namespace RBX { template<class T> class GuidItem { public: virtual ~GuidItem() {} char guidPad[0x10]; }; }
 #define AbstractFactoryProduct GuidItem<Instance>, public AbstractFactoryProduct
 #include "util/Guid.h"
 namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(const Data&) {} operator const Guid&() const { return *(const Guid*)0; } }; }
@@ -43,3 +43,4 @@ namespace RBX
 		}
 	}
 }
+

@@ -1,108 +1,54 @@
-// from server: 50% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+// from server: 100% by EspClaude
+// roc 2009-06 006ca1f0  unit: RBX::AnchorTool  size: 53 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006ca1f0
+//
+// 006ca1f0  8b4118               mov eax, dword ptr [ecx + 0x18]
+// 006ca1f3  85c0                 test eax, eax
+// 006ca1f5  742b                 je 0x6ca222
+// 006ca1f7  6a00                 push 0
+// 006ca1f9  68e0289f00           push 0x9f28e0
+// 006ca1fe  6840be9d00           push 0x9dbe40
+// 006ca203  6a00                 push 0
+// 006ca205  50                   push eax
+// 006ca206  e86ffa0400           call 0x719c7a
+// 006ca20b  83c414               add esp, 0x14
+// 006ca20e  85c0                 test eax, eax
+// 006ca210  7410                 je 0x6ca222
+// 006ca212  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 006ca216  8b10                 mov edx, dword ptr [eax]
+// 006ca218  8b5210               mov edx, dword ptr [edx + 0x10]
+// 006ca21b  6a00                 push 0
+// 006ca21d  51                   push ecx
+// 006ca21e  8bc8                 mov ecx, eax
+// 006ca220  ffd2                 call edx
+// 006ca222  c20400               ret 4
+// copied from an identical function in another client (function ?f@S@ns_ROCX000014@@QAEXPAX@Z)
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+namespace ns_ROCX000014 {
+extern char sourceType[];
+extern char targetType[];
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+extern "C" void* __cdecl __RTDynamicCast(
+    void*, long, void*, void*, int);
 
-boost::mutex& moo2()
+struct Renderable {
+    typedef void (__thiscall *Method)(Renderable*, void*, int);
+    Method* vtable;
+};
+
+struct S {
+    char padding[24];
+    void* instance;
+    void f(void* argument);
+};
+
+void S::f(void* argument)
 {
-	static boost::mutex mutex2;
-	return mutex2;
+    if (instance) {
+        Renderable* object = static_cast<Renderable*>(
+            __RTDynamicCast(instance, 0, sourceType, targetType, 0));
+        if (object)
+            object->vtable[4](object, argument, 0);
+    }
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

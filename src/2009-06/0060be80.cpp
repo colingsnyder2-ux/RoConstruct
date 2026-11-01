@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0057e660  unit: RBX::ClearBackpack  size: 201 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0057e660
@@ -150,7 +150,7 @@ inline unsigned int List::size() const
 
 struct S
 {
-    char padding[340];
+    char padding[0x8c];
     List* children;
 
     Shared f();

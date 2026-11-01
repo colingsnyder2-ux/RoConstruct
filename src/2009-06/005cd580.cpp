@@ -1,130 +1,140 @@
-// from server: 52% by colin
-// roc-lang: cpp
-// roc-cl: 30729
+// from server: 93% by EspClaude
+// from server: 100% by colin
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/Script.cpp
+// roc-lang: cpp
+// roc-lib: openrbx-client-dll App/util/Name.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-#include "script/ScriptContext.h"
-#include "v8tree/Service.h"
-#include "boost/thread/once.hpp"
+#include "util/Name.h"
 
-using namespace RBX;
+#include "decomp.h"
 
-const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::LEGACY);
-const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::LEGACY);
-Reflection::BoundProp<bool, true> Script::prop_Disabled("Disabled", "Behavior", &Script::disabled, Reflection::PropertyDescriptor::STANDARD);
+#include <boost/thread/mutex.hpp>
+#include <boost/thread/once.hpp>
 
-static boost::shared_ptr<const std::string> helloWorld;
-static boost::once_flag flagInitScriptCpp = BOOST_ONCE_INIT;
+namespace RBX {
 
-void initScriptCpp()
+DECOMP_SIZE_ASSERT(Name, 0x20)
+
+class Name::NamMap : public std::map<std::string, Name*>
 {
-    helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
+public:
+	~NamMap();
+};
+
+static boost::once_flag flag = BOOST_ONCE_INIT;
+
+// FUNCTION: WEBSERVICE 0x10057ed0
+boost::mutex& moo2()
+{
+	static boost::mutex mutex2;
+
+	return mutex2;
 }
 
-const char* RBX::sScript = "Script";
-
-Script::Script()
-    : DescribedCreatable("Script"),
-      disabled(false),
-      owner(NULL)
+// FUNCTION: WEBSERVICE 0x10057f30
+void initMoo()
 {
-    boost::call_once(&initScriptCpp, flagInitScriptCpp);
-    embeddedSource = helloWorld;
+	moo2();
 }
 
-const char* RBX::sLocalScript = "LocalScript";
-
-LocalScript::LocalScript()
+// FUNCTION: WEBSERVICE 0x10058640
+std::map<int, Name*>& Name::dictionary()
 {
-    setName("LocalScript");
+	static std::map<int, Name*> d;
+
+	return d;
 }
 
-Script::~Script()
+// FUNCTION: WEBSERVICE 0x100586d0
+Name::NamMap::~NamMap()
 {
-    RBXASSERT(owner == NULL);
+	for (iterator iter = begin(); iter != end(); ++iter) {
+		delete iter->second;
+	}
 }
 
-void Script::setEmbeddedCode(const std::string& value)
+// FUNCTION: WEBSERVICE 0x100587b0
+Name::NamMap& Name::namMap()
 {
-    if (getEmbeddedCode() != value)
-    {
-        embeddedSource.reset(new std::string(value));
-        raisePropertyChanged(prop_EmbeddedSourceCode);
-    }
+	static NamMap n;
+
+	return n;
 }
 
-void Script::setScriptId(const ContentId& value)
+// FUNCTION: WEBSERVICE 0x10058840
+const Name& Name::declare(const char* sName, int dictionaryIndex)
 {
-    if (getScriptId() != value)
-    {
-        scriptId = value;
-        requestCode();
-        raisePropertyChanged(prop_SourceCodeId);
-    }
-}
-
-void Script::onAncestorChanged(const AncestorChanged& event)
-{
-    Instance::onAncestorChanged(event);
-
-    IScriptOwner* newOwner = NULL;
-    Instance* parent = this->getParent();
-
-    while (parent)
-    {
-        IScriptOwner* parentOwner = dynamic_cast<IScriptOwner*>(parent);
-
-        if (parentOwner)
-        {
-            newOwner = parentOwner->scriptShouldRun(this);
-
-            if (newOwner)
-                break;
-        }
-
-        parent = parent->getParent();
-    }
-
-    if (newOwner != owner)
-    {
-        if (owner)
-            owner->releaseScript(this);
-
-        owner = newOwner;
-
-        ScriptContext* sc = ServiceProvider::find<ScriptContext>(this);
-
-        if (sc)
-        {
-            sc->removeScript(this);
-
-            if (owner)
-                owner->runScript(this, sc);
-        }
-    }
-}
-
-void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-{
-	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
-	{
-		sc->removeScript(this);
+	if (sName == NULL) {
+		return getNullName();
 	}
 
-	Instance::onServiceProvider(oldProvider, newProvider);
+	boost::call_once(initMoo, flag);
+
+	boost::mutex::scoped_lock lock(moo2());
+	NamMap::iterator iter = namMap().find(std::string(sName));
+
+	if (iter != namMap().end()) {
+		if (dictionaryIndex != -1) {
+			iter->second->dictionaryIndex = dictionaryIndex;
+			dictionary()[dictionaryIndex] = iter->second;
+		}
+
+		return *iter->second;
+	}
+
+	Name* declared = new Name(sName, dictionaryIndex);
+	namMap()[sName] = declared;
+	dictionary()[dictionaryIndex] = declared;
+
+	return *declared;
 }
 
-boost::shared_ptr<const std::string> Script::requestCode()
+// FUNCTION: WEBSERVICE 0x10058a30
+const Name& Name::getNullName()
 {
-    if (scriptId.isNull())
-    {
-        return embeddedSource;
-    }
-    else 
-    {
-        return ContentProvider::singleton().requestContentString(scriptId);
-    }
+	boost::call_once(initMoo, flag);
+
+	boost::mutex::scoped_lock lock(moo2());
+	static const Name* nullName = &declare("", 0);
+
+	return *nullName;
 }
+
+// FUNCTION: WEBSERVICE 0x10058ad0
+const Name& Name::lookup(const std::string& sName)
+{
+	boost::call_once(initMoo, flag);
+
+	boost::mutex::scoped_lock lock(moo2());
+	NamMap::iterator iter = namMap().find(sName);
+
+	if (iter != namMap().end()) {
+		return *iter->second;
+	}
+
+	return getNullName();
+}
+
+// FUNCTION: WEBSERVICE 0x10058ba0
+const Name& Name::lookup(const char* sName)
+{
+	if (sName == NULL) {
+		return getNullName();
+	}
+
+	return lookup(std::string(sName));
+}
+
+// FUNCTION: WEBSERVICE 0x10058c70
+bool Name::empty() const
+{
+	return this == &getNullName();
+}
+
+Name::Name(const char* name, int dictionaryIndex) : dictionaryIndex(dictionaryIndex), name(name)
+{
+}
+
+} // namespace RBX

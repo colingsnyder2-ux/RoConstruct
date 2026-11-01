@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // roc 2009-06 006f6cc0  unit: RBX::MechToAssemblyStage  size: 30 bytes
 // Make this compile to the exact bytes below, then: roc check 2009-06 006f6cc0
 //
@@ -14,26 +15,28 @@
 // 006f6cd9  5f                   pop edi
 // 006f6cda  5e                   pop esi
 // 006f6cdb  c20400               ret 4
-// copied from an identical function in another client (function ?construct@GettingUp@ns_ROCX000001@@QAEXPAX@Z)
+// copied from an identical function in another client (function ?f@S@ns_ROCX00000c@@QAEXPAUS_func_00645820@2@@Z)
 
-namespace ns_ROCX000001 {
-struct SubA {
-    void methodA(int);
+namespace ns_ROCX00000c {
+struct S_func_00645820 {
+    char pad0[4];
+    int m_x;
+    void f(int a1);
 };
 
-struct SubB {
-    void methodB(void*);
+struct S_func_00668850 {
+    void f(S_func_00645820* a1);
 };
 
-struct GettingUp {
-    char pad[8];
-    SubA* subA;
-    void construct(void*);
+struct S {
+    char pad0[8];
+    S_func_00668850* member;
+    void f(S_func_00645820* a1);
 };
 
-void GettingUp::construct(void* arg)
+void S::f(S_func_00645820* a1)
 {
-    subA->methodA((int)arg);
-    ((SubB*)arg)->methodB(this);
+    member->f(a1);
+    a1->f((int)this);
 }
 }

@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00640360  unit: RBX::GameTool  size: 237 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00640360
@@ -88,7 +88,7 @@ void __cdecl operator delete(void*);
 struct Edge;
 
 struct Geometry {
-    char padding[0x1F0];
+    char padding[0x130];
     bool flag;
     Edge* getFirst();
 };

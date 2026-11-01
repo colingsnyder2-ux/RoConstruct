@@ -1,21 +1,16 @@
-// from server: 61% by atomic.potato
-struct S_func_005d8be0 {
-    int f(int a);
-};
+// from server: 100% by Intel
 
-int S_func_005d8be0::f(int a)
+int __cdecl sub_005d8be0(int arg)
 {
-    int v = a + 1;
-    if (v > 3)
+    int v = arg + 1;
+    if ((unsigned)v > 3u)
         return -1;
-    switch (v) {
-    case 0:
-        return 9;
-    case 1:
-        return 6;
-    case 2:
-        return 3;
-    default:
-        return -1;
+    switch (v)
+    {
+        case 0: return 9;
+        case 1: return 6;
+        case 2: return 3;
+        case 3: return -1;
     }
+    return -1;
 }

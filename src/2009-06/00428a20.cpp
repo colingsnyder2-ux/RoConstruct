@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0042f9d0  unit: MyXTPCommandBars  size: 336 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0042f9d0
@@ -183,7 +183,7 @@ struct DockingPane {
 struct MyXTPCommandBars {
     char pad0[236];
     CommandBars* bars;
-    char pad1[72];
+    char pad1[76];
     DockingPane docking;
     void exchange(Section*, int);
 };

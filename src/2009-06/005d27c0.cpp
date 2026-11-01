@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0055b5a0  unit: RBX::VInstance::?$SignalDesc  size: 255 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0055b5a0
@@ -152,16 +152,6 @@ struct S {
     virtual void slot0();
     virtual void slot1();
     virtual void slot2();
-    virtual void slot3();
-    virtual void slot4();
-    virtual void slot5();
-    virtual void slot6();
-    virtual void slot7();
-    virtual void slot8();
-    virtual void slot9();
-    virtual void slot10();
-    virtual void slot11();
-    virtual void slot12();
     virtual Shared getConnection(int);
     void process(Document*, Sink*);
 };

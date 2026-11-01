@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 0064c6b0  unit: RBX::SleepStage  size: 410 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0064c6b0
@@ -263,7 +263,7 @@
 #include <deque>
 
 struct Body {
-    char padding[68];
+    char padding[96];
     int stamp;
     int state;
 };
@@ -272,7 +272,7 @@ typedef std::set<Body*> BodySet;
 typedef std::deque<Body*> BodyQueue;
 
 struct Stage {
-    char padding[472];
+    char padding[496];
     int stamp;
     unsigned char active;
 

@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00585df0  unit: RBX::P8Script::?$GetSetImpl  size: 60 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00585df0
@@ -73,6 +73,6 @@ Value S::method(Object* object)
     volatile int temporary = 0;
     Base* base = 0;
     if (object != 0)
-        base = reinterpret_cast<Base*>(reinterpret_cast<char*>(object) - 20);
+        base = reinterpret_cast<Base*>(reinterpret_cast<char*>(object) - 24);
     return (base->*fn)();
 }

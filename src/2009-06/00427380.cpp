@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0042e610  unit: CMainFrame  size: 149 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0042e610
@@ -90,7 +90,7 @@ struct PaneManager
 
 struct CMainFrame
 {
-    char padding[0x138];
+    char padding[0x13c];
     PaneManager manager;
 
     Pane* FindPane(int id, Rect rect, bool show);

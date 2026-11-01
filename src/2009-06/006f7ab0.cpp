@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espeon_extentobject2ba6da6b13b49e6a.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_eae08ecb2dd13b85.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <G3D/CoordinateFrame.h>
@@ -22,7 +22,7 @@ struct Dimensions {
 };
 
 struct Primitive {
-    char pad[0x9c];
+    char pad[0xe0];
     Dimensions* dimensions;
     Body* body;
     const Frame& getValue();
@@ -43,3 +43,4 @@ float S::f(){
  float dx=local.x-nearest.x,dy=local.y-nearest.y,dz=local.z-nearest.z;
  return (float)sqrt(dz*dz+dy*dy+dx*dx);
 }
+

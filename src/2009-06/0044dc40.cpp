@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 0044f8d0  unit: CRobloxDoc  size: 213 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0044f8d0
@@ -287,7 +287,7 @@ inline bool canEdit(DataModel* dm)
 }
 
 struct CRobloxDoc : CDocument {
-    char pad[0x94];
+    char pad[0x9c];
     Workspace* workspace;
     int CanCloseFrame(void* frame, int x);
 };

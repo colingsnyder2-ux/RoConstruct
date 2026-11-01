@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
@@ -28,7 +28,7 @@ struct Provider {
 };
 
 struct Owner {
-    char padding[32];
+    char padding[24];
     Provider provider;
 };
 

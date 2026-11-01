@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-atl90-dll roc_declaration_view_native_string_boundaries706ef8adc45a4d91.cpp
+// roc-lib: rbxgs-atl90-dll roc_espclaude_d6f36344f63870ad.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias("atlsimpstr.h", "roc_dom_native_cstring_call_boundaries_headera7016f3a175a8c2b.cpp")
@@ -90,7 +90,7 @@ void CDeclarationView::setDeclaration(const void* node, const char* text, const 
     }
     if (summaryDiv)
     {
-        CString text(node ? reinterpret_cast<const std::string*>(static_cast<const char*>(node)+0x134)->c_str() : "");
+        CString text(node ? reinterpret_cast<const std::string*>(static_cast<const char*>(node)+0x90)->c_str() : "");
         CComPtr<IHTMLStyle> style;
         summaryDiv->get_style(&style);
         style->put_display(!text.IsEmpty() ? CComBSTR("block") : CComBSTR("none"));
@@ -101,13 +101,13 @@ void CDeclarationView::setDeclaration(const void* node, const char* text, const 
     {
         CComPtr<IHTMLStyle> style;
         deprecated->get_style(&style);
-        style->put_display(node && *reinterpret_cast<const bool*>(static_cast<const char*>(node)+0x131) ? CComBSTR("block") : CComBSTR("none"));
+        style->put_display(node && *reinterpret_cast<const bool*>(static_cast<const char*>(node)+0x8d) ? CComBSTR("block") : CComBSTR("none"));
     }
     if (preliminary)
     {
         CComPtr<IHTMLStyle> style;
         preliminary->get_style(&style);
-        style->put_display(node && *reinterpret_cast<const bool*>(static_cast<const char*>(node)+0x132) ? CComBSTR("block") : CComBSTR("none"));
+        style->put_display(node && *reinterpret_cast<const bool*>(static_cast<const char*>(node)+0x8e) ? CComBSTR("block") : CComBSTR("none"));
     }
 }
 #undef document
@@ -118,3 +118,4 @@ void CDeclarationView::setDeclaration(const void* node, const char* text, const 
 #undef summary
 #undef deprecated
 #undef preliminary
+

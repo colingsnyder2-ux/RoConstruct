@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 00670020  unit: RBX::AdornRbxGfx  size: 148 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00670020
@@ -122,7 +122,7 @@ struct S {
 // G3D Rect2D::xywh
 inline Rect xywh(float x, float y, float w, float h) { return makeRect(x, y, x + w, y + h); }
 Rect S::f() const {
-    const void* viewport = *(void**)((char*)context + 0x10);
+    const void* viewport = *(void**)((char*)context + 0x2c);
     return xywh((float)getActualLeft(viewport), (float)getActualTop(viewport),
                 (float)getActualWidth(viewport), (float)getActualHeight(viewport));
 }

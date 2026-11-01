@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0048c3e0  unit: G3D::VVector2int16::?$TypedPropertyDescriptor  size: 130 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0048c3e0
@@ -100,7 +100,7 @@ struct Appearance
 
 struct Object
 {
-    unsigned char padding[0x170];
+    unsigned char padding[0x8c];
     Appearance* appearance;
 
     void removeCharacterAppearance();

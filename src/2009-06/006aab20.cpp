@@ -1,9 +1,9 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 // roc-lang: cpp
-// roc-lib: rbxgs-dll roc_guibuilder_native_palette_9d2f31ec2bed2e23.cpp
+// roc-lib: rbxgs-dll roc_espclaude_a87de4c3ec669a28.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <v8datamodel/GuiBuilder.h>
@@ -24,10 +24,10 @@ public:
     }
     void setGuiSize(const G3D::Vector2& value) { *(G3D::Vector2*)((char*)this+0x13c)=value; }
 };
-// Actual Workspace VerbContainer base begins at2ec in every native lookup.
+// Actual Workspace VerbContainer base begins at 0x158 (2009) in every native lookup.
 // Genuine public getVerb(std::string) performs the lookup, not a substitute map.
 __forceinline Verb* GuiBuilder::getVerb(const std::string& name) {
-    return ((VerbContainer*)((char*)workspace+0x2ec))->getVerb(name);
+    return ((VerbContainer*)((char*)workspace+0x158))->getVerb(name);
 }
 void GuiBuilder::buildRightPaletteItems(Adorn* adorn,boost::shared_ptr<TopMenuBar> palette) {
     palette->addGuiItem(nativeBuilderImageButton(adorn,getVerb("FirstPersonIndicator"),"FirstPersonIndicator"));

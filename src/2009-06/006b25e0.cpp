@@ -1,4 +1,4 @@
-// from server: 99% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0060e200  unit: RBX::BlockBlockContact  size: 270 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0060e200
@@ -130,7 +130,7 @@ extern void __cdecl calculate(Vector3*, const Array&, const Vector3&, int);
 
 struct Contact {
     char prefix[8];
-    char geometry[32];
+    char geometry[36];
     int value;
 
     Vector3 evaluate(const Vector3&);
