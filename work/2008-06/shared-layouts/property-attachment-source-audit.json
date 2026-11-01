@@ -1,0 +1,13 @@
+{
+  "source": "tools\\rbxgs\\Client\\App\\roc_claudeA_selgridbd1b79475b721655.cpp",
+  "source_sha256": "84a362768cb2411ffda5986b9242671d67dea3c77c2df2ffb30d8b7a08d460bf",
+  "original_function": "00439ba0",
+  "related_attachment_variants": [
+    "00439810",
+    "00439940",
+    "00439a70"
+  ],
+  "native_adoption_allowed": false,
+  "finding": "Mined Map::find returns one static slot and does not implement std::map semantics. Source comment explicitly uses this to force caller stack reuse. Preserve as code-generation experiment, not a native runtime implementation.",
+  "next": "Recover genuine SDK category insertion, descriptor map and Item vector attachment; validate callee definitions, not only masked caller bytes."
+}

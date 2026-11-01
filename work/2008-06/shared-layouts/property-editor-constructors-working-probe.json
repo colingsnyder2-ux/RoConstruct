@@ -1,0 +1,715 @@
+{
+  "revision": "3238b08c7b1288996f09aaf57ab92f899ba8f234",
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_property_editors.py": "991f09abe662e9a247c267ee7de96ffb650c34c5c256e578c00b19c8fe2a44ba",
+    "rebuild\\2008-06\\tests\\NativePropertyEditorConstructors.cpp": "0401f1c6027fed75ffbdafdabc24d471848d3d8513db3961bc99c5fdc9ced836",
+    "rebuild\\2008-06\\native-classes\\CPropGridCategory.cpp": "190a572fc497544b8e1232d69420259e2cfc23dce2e2f4832812df089c8740d2",
+    "rebuild\\2008-06\\native-headers\\PropertyGridItems.h": "dfc9f3840eba524d188d16f2a47b54c743ff119263a642409099f892d692a63c",
+    "rebuild\\2008-06\\native-headers\\CPropGrid.h": "f8c49281322309579f6916350ccb9a7da22d2d1092e8a70bd14576464d9d383e",
+    "rebuild\\2008-06\\native-headers\\SelectionGroup.h": "009c20d44a8a6c5caeb6677ca0825083f1bcffdf33dbe7f6f79de0459735b792",
+    "tools\\libs\\xtp-11.2.2\\Source\\PropertyGrid\\XTPPropertyGridItem.h": "a2f976519efd679490ec041a4aa946c582fd19e62e6687982ec901e151ecb708",
+    "tools\\rbxgs\\Client\\App\\include\\util\\Name.h": "1b3153ef7d32f3491bdd558018b86d69e66a3c5cb71443beb33e07c365d3754b"
+  },
+  "compiler": 21022,
+  "preprocess_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "compilations": {
+    "NativePropertyEditorConstructors.obj": {
+      "compile_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePropertyEditorConstructors.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePropertyEditorConstructorsNoInline.cpp"
+      ],
+      "object_sha256": "696103879a18bf88bad4ab4541b02b02860737eef4357f9eef427919dde4854f"
+    },
+    "NativeCPropGridCategory.obj": {
+      "compile_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeCPropGridCategory.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeCPropGridCategoryNoInline.cpp"
+      ],
+      "object_sha256": "1d78a31abdf6f7b45244bc1f2e04d8e07a865b3041e7ef1fb9d4f387709f58da"
+    }
+  },
+  "methods": [
+    {
+      "address": "00438630",
+      "symbol": "?getCategory@CPropGrid@@QAEPAVCXTPPropertyGridItem@@ABVName@RBX@@@Z",
+      "size": 83,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0043a650",
+      "symbol": "??0?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@M@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0043ab10",
+      "symbol": "??0?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@H@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0043af00",
+      "symbol": "??0?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0043a0f0",
+      "symbol": "??0?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@_N@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0043d330",
+      "symbol": "??0XBoolItem@@QAE@PBV?$TypedPropertyDescriptor@_N@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 106,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0043b860",
+      "symbol": "??0?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "size": 168,
+      "relocation_masked_match": true
+    }
+  ],
+  "verified_bindings": [
+    {
+      "caller": "00438630",
+      "symbol": "?GetGridView@CXTPPropertyGrid@@QBEAAVCXTPPropertyGridView@@XZ",
+      "offset": 23,
+      "target": "0x6fa3b0"
+    },
+    {
+      "caller": "00438630",
+      "symbol": "?FindItem@CXTPPropertyGridItems@@QBEPAVCXTPPropertyGridItem@@PBD@Z",
+      "offset": 34,
+      "target": "0x712460"
+    },
+    {
+      "caller": "00438630",
+      "symbol": "?GetGridView@CXTPPropertyGrid@@QBEAAVCXTPPropertyGridView@@XZ",
+      "offset": 56,
+      "target": "0x6fa3b0"
+    },
+    {
+      "caller": "00438630",
+      "symbol": "?AddCategory@CXTPPropertyGridView@@QAEPAVCXTPPropertyGridItem@@PBDPAV2@@Z",
+      "offset": 63,
+      "target": "0x716f60"
+    },
+    {
+      "caller": "00438630",
+      "symbol": "?Expand@CXTPPropertyGridItem@@QAEXXZ",
+      "offset": 72,
+      "target": "0x7117e0"
+    },
+    {
+      "caller": "0043a650",
+      "symbol": "??0CXTPPropertyGridItem@@QAE@PBD0PAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "offset": 55,
+      "target": "0x713510"
+    },
+    {
+      "caller": "0043a650",
+      "symbol": "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z",
+      "offset": 82,
+      "target": "0x43a070"
+    },
+    {
+      "caller": "0043a650",
+      "symbol": "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z",
+      "offset": 142,
+      "target": "0x7120e0"
+    },
+    {
+      "caller": "0043ab10",
+      "symbol": "??0CXTPPropertyGridItem@@QAE@PBD0PAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "offset": 55,
+      "target": "0x713510"
+    },
+    {
+      "caller": "0043ab10",
+      "symbol": "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z",
+      "offset": 82,
+      "target": "0x43a070"
+    },
+    {
+      "caller": "0043ab10",
+      "symbol": "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z",
+      "offset": 142,
+      "target": "0x7120e0"
+    },
+    {
+      "caller": "0043af00",
+      "symbol": "??0CXTPPropertyGridItemColor@@QAE@PBDKPAK@Z",
+      "offset": 55,
+      "target": "0x713b80"
+    },
+    {
+      "caller": "0043af00",
+      "symbol": "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z",
+      "offset": 82,
+      "target": "0x43a070"
+    },
+    {
+      "caller": "0043af00",
+      "symbol": "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z",
+      "offset": 142,
+      "target": "0x7120e0"
+    },
+    {
+      "caller": "0043a0f0",
+      "symbol": "??0CXTPPropertyGridItemBool@@QAE@PBDHPAH@Z",
+      "offset": 55,
+      "target": "0x717b20"
+    },
+    {
+      "caller": "0043a0f0",
+      "symbol": "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z",
+      "offset": 82,
+      "target": "0x43a070"
+    },
+    {
+      "caller": "0043a0f0",
+      "symbol": "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z",
+      "offset": 142,
+      "target": "0x7120e0"
+    },
+    {
+      "caller": "0043d330",
+      "symbol": "??0?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@QAE@PBV?$TypedPropertyDescriptor@_N@Reflection@RBX@@PAVCPropGrid@@@Z",
+      "offset": 42,
+      "target": "0x43a0f0"
+    },
+    {
+      "caller": "0043d330",
+      "symbol": "?SetCheckBoxStyle@CXTPPropertyGridItemBool@@QAEXH@Z",
+      "offset": 82,
+      "target": "0x717780"
+    },
+    {
+      "caller": "0043b860",
+      "symbol": "??0CXTPPropertyGridItem@@QAE@PBD0PAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "offset": 55,
+      "target": "0x713510"
+    },
+    {
+      "caller": "0043b860",
+      "symbol": "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z",
+      "offset": 82,
+      "target": "0x43a070"
+    },
+    {
+      "caller": "0043b860",
+      "symbol": "?SetReadOnly@CXTPPropertyGridItem@@QAEXH@Z",
+      "offset": 142,
+      "target": "0x7120e0"
+    }
+  ],
+  "original_editor_rtti": [
+    {
+      "constructor": "0043d330",
+      "allocation_size": 324,
+      "primary_vtable": "0x81469c",
+      "name": ".?AVXBoolItem@@",
+      "bases": [
+        {
+          "name": ".?AVXBoolItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$XItem@_NVCXTPPropertyGridItemBool@@V?$TypedPropertyDescriptor@_N@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItemBool@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 288
+        }
+      ]
+    },
+    {
+      "constructor": "0043a650",
+      "allocation_size": 304,
+      "primary_vtable": "0x813984",
+      "name": ".?AV?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@",
+      "bases": [
+        {
+          "name": ".?AV?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 268
+        }
+      ]
+    },
+    {
+      "constructor": "0043ab10",
+      "allocation_size": 304,
+      "primary_vtable": "0x813aec",
+      "name": ".?AV?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@",
+      "bases": [
+        {
+          "name": ".?AV?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 268
+        }
+      ]
+    },
+    {
+      "constructor": "0043af00",
+      "allocation_size": 316,
+      "primary_vtable": "0x813c54",
+      "name": ".?AV?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@",
+      "bases": [
+        {
+          "name": ".?AV?$XItem@VColor3@G3D@@VCXTPPropertyGridItemColor@@V?$TypedPropertyDescriptor@VColor3@G3D@@@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItemColor@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 280
+        }
+      ]
+    },
+    {
+      "constructor": "0043d560",
+      "allocation_size": 316,
+      "primary_vtable": "0x81480c",
+      "name": ".?AVXBrickColorItem@@",
+      "bases": [
+        {
+          "name": ".?AVXBrickColorItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$XItem@VBrickColor@RBX@@VCPropertyGridItemBrickColor@@V?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@2@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCPropertyGridItemBrickColor@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItemColor@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 280
+        }
+      ]
+    },
+    {
+      "constructor": "0043d6c0",
+      "allocation_size": 316,
+      "primary_vtable": "0x81497c",
+      "name": ".?AVVector3Item@@",
+      "bases": [
+        {
+          "name": ".?AVVector3Item@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$XItem@VVector3@G3D@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 268
+        }
+      ]
+    },
+    {
+      "constructor": "0043e3a0",
+      "allocation_size": 312,
+      "primary_vtable": "0x814f24",
+      "name": ".?AVEnumItem@@",
+      "bases": [
+        {
+          "name": ".?AVEnumItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$XItem@HVCXTPPropertyGridItemEnum@@VEnumPropertyDescriptor@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItemEnum@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 276
+        }
+      ]
+    },
+    {
+      "constructor": "0043db80",
+      "allocation_size": 308,
+      "primary_vtable": "0x814c4c",
+      "name": ".?AVRefItem@@",
+      "bases": [
+        {
+          "name": ".?AVRefItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 268
+        }
+      ]
+    },
+    {
+      "constructor": "0043df50",
+      "allocation_size": 304,
+      "primary_vtable": "0x814dbc",
+      "name": ".?AVScriptItem@@",
+      "bases": [
+        {
+          "name": ".?AVScriptItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 268
+        }
+      ]
+    },
+    {
+      "constructor": "00440db0",
+      "allocation_size": 304,
+      "primary_vtable": "0x815524",
+      "name": ".?AVTextureItem@@",
+      "bases": [
+        {
+          "name": ".?AVTextureItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$ContentItem@VTextureId@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$XItem@VTextureId@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@2@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 268
+        }
+      ]
+    },
+    {
+      "constructor": "00440d30",
+      "allocation_size": 304,
+      "primary_vtable": "0x8153b4",
+      "name": ".?AVSoundItem@@",
+      "bases": [
+        {
+          "name": ".?AVSoundItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$ContentItem@VSoundId@Soundscape@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$XItem@VSoundId@Soundscape@RBX@@VCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@3@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 268
+        }
+      ]
+    },
+    {
+      "constructor": "0043b860",
+      "allocation_size": 304,
+      "primary_vtable": "0x813f34",
+      "name": ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+      "bases": [
+        {
+          "name": ".?AV?$XItem@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VCXTPPropertyGridItem@@VPropertyDescriptor@Reflection@RBX@@@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGridItem@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPAccessible@@",
+          "offset": 32
+        },
+        {
+          "name": ".?AVItem@CPropGrid@@",
+          "offset": 268
+        }
+      ]
+    }
+  ],
+  "profile": "Existing std::string::c_str noinline import recipe",
+  "layouts": {
+    "Item": 32,
+    "SDKItem": 268,
+    "SDKBool": 288,
+    "SDKColor": 280,
+    "Float": 304,
+    "Int": 304,
+    "Color": 316,
+    "String": 304,
+    "BoolBase": 324,
+    "XBool": 324
+  },
+  "scope": "Inactive constructor/layout evidence. Native SDK field m_bHidden at +0xfc starts rows hidden. Item vector/grid state corrected to 32 bytes; one RTTI slot never proved old size4 hypothesis. Template update methods and SDK virtual overrides remain unresolved; full virtual data, property-row factory, linking and game integration remain open. No runtime credit."
+}

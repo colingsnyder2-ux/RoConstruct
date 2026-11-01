@@ -57,6 +57,23 @@ def test_apply_edits_requires_unique_anchor():
         raise AssertionError(bad)
 
 
+def test_method_recovery_parks_missing_declarations_without_model_request(monkeypatch):
+    def unexpected(*args, **kwargs):
+        raise AssertionError('No request allowed without a native method')
+    monkeypatch.setattr(providers, 'generate', unexpected)
+    proposal, records = native_sweep.model_proposal('App/util/A.cpp', 'class A {};', ['00000001'],
+        set(), set(), 'codex:gpt-6-luna', 3, unexpected, None, lambda addr: {'addr': addr},
+        lambda _: None, {'generation': 'method'})
+    assert proposal is None and 'declaration recovery required' in records[0]['error']
+
+
+def test_method_prompt_contains_native_rules_without_edit_block_instructions():
+    prompt = native_sweep.method_prompt('App/util/A.cpp', 'int A::f(){return 1;}',
+                                      {'rebuilt_symbol':'?f@A@@QAEHXZ'}, 'A::f')
+    assert 'invented fields' in prompt and 'untrusted reference data' in prompt
+    assert '<<<<<<< SEARCH' not in prompt and 'Each SEARCH' not in prompt
+
+
 def test_model_proposal_keeps_only_edits_the_new_exact_needs(tmp_path, monkeypatch):
     reply = block("return 1;", "return 3;") + block("int g()", "int g2()") + block("int h()", "int h()")
     monkeypatch.setattr(providers, "generate", lambda model, messages, options: SimpleNamespace(text=reply))

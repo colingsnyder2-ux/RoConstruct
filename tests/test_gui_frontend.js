@@ -165,6 +165,28 @@ for(const count of [1,8,100,"auto"]) {
   assert.equal(config.max_cloud_cost,3);assert.equal(config.cloud_allowed,true);
   assert.match(formContext.workerForm({...automaticForm,...config,targets:[]}),new RegExp(`name="workers" value="${count}"`));
 }
+formContext.target={hasAttribute:name=>name==="data-native-batch"};
+formContext.readWorker=()=>({...automaticForm,model:"codex:gpt-6-luna",max_cloud_requests:12,max_cloud_tokens:20000});
+vm.runInContext('(function(){'+source.slice(source.indexOf('  if(target.hasAttribute("data-native-batch"))'),source.indexOf('  if(target.dataset.preset)'))+'})()',formContext);
+assert.equal(formContext.rendered.workers,10);
+assert.equal(formContext.rendered.cloud_concurrency,10);
+assert.equal(formContext.rendered.native_compile_batch,10);
+assert.equal(formContext.rendered.native_generation,"method");
+assert.equal(formContext.rendered.native_escalation_model,"");
+assert.equal(formContext.rendered.model,"codex:gpt-6-luna");
+assert.equal(formContext.rendered.max_cloud_requests,12);
+assert.equal(formContext.rendered.max_cloud_tokens,20000);
+assert.equal(formContext.rendered.cloud_allowed,true);
+assert.doesNotMatch(formContext.workerForm({...automaticForm,...formContext.rendered,lease_mode:"native",targets:[]}),/data-native-batch|SEARCH\/REPLACE|name="native_context"/);
+formContext.target={hasAttribute:name=>name==="data-native-agents"};
+formContext.readWorker=()=>({...automaticForm,model:"codex:gpt-6-luna",max_cloud_requests:10});
+vm.runInContext('(function(){'+source.slice(source.indexOf('  if(target.hasAttribute("data-native-agents"))'),source.indexOf('  if(target.hasAttribute("data-native-batch"))'))+'})()',formContext);
+assert.equal(formContext.rendered.workers,10);
+assert.equal(formContext.rendered.native_generation,"agent");
+assert.equal(formContext.rendered.native_agent_checks,6);
+assert.equal(formContext.rendered.max_cloud_requests,10);
+assert.equal(formContext.rendered.model,"codex:gpt-6-luna");
+assert.match(formContext.workerForm({...automaticForm,...formContext.rendered,lease_mode:"native",targets:[]}),/Native C\+\+ recovery/);
 const feedNodes={};
 for(const id of ["worker-chat","worker-tabs","worker-status","chat-compact","chat-follow","jump-live","worker-chat-rows"])
   feedNodes["#"+id]={dataset:{},innerHTML:"",children:[],classList:{toggle() {}}};
@@ -177,6 +199,9 @@ vm.runInContext(source.slice(source.indexOf("function tabModel("),source.indexOf
 vm.runInContext(source.slice(source.indexOf("function terminalMessage("),source.indexOf("function setChatFollow(")),feedContext);
 vm.runInContext(source.slice(source.indexOf("function logText("),source.indexOf("function filteredLogs(")),feedContext);
 feedContext.codeBlock=(text)=>`<pre>${text}</pre>`;
+const blockedNative=feedContext.terminalMessage({job:"native",seq:1,time:1,event:"native_result",slot:2,file:"App/Frame.cpp",local_exact:0,seconds:3,error:"C:/very/long/path/Frame.h(7): fatal error C1083: Cannot open include file: XTToolkitPro.h",error_summary:"fatal error C1083: Cannot open include file: XTToolkitPro.h"},new Map(),true);
+assert.match(blockedNative,/<details/);
+assert.match(blockedNative,/C:\/very\/long\/path/);
 const nativeResult=feedContext.terminalMessage({job:"native",seq:1,time:1,event:"native_result",slot:2,file:"App/Block.cpp",local_exact:3,seconds:19.8},new Map(),true);
 assert.match(nativeResult,/native_result exact/);
 assert.match(nativeResult,/w3/);
@@ -305,3 +330,20 @@ const nativeCardsHTML=nativeCardsContext.workerCards();
 assert.match(nativeCardsHTML,/<b>7<\/b> active \/ <b>20<\/b> slots/);
 assert.match(nativeCardsHTML,/Waiting for file/);
 assert.doesNotMatch(nativeCardsHTML,/20<\/b> loops/);
+
+const nativeOnly=formContext.workerForm({...automaticForm,lease_mode:"native",native_generation:"method",model:"opencode:legacy",workers:1});
+assert.match(nativeOnly,/name="native_generation" value="agent"/);
+assert.match(nativeOnly,/name="workers" value="10"/);
+assert.match(nativeOnly,/codex:gpt-5.6-terra/);
+assert.doesNotMatch(nativeOnly,/SEARCH\/REPLACE|Legacy auto|data-native-batch|data-preset=|Model connection/);
+assert.equal(formContext.nativeRecoveryConfig({native_generation:"agent",model:"codex:gpt-6-luna",workers:2,max_cloud_requests:1}).workers,2);
+
+assert.equal(formContext.nativeRecoveryConfig({model:"opencode:old",source_only:true,max_cloud_cost:3}).source_only,false);
+assert.equal(formContext.nativeRecoveryConfig({model:"opencode:old",source_only:true,max_cloud_cost:3}).max_cloud_cost,null);
+const nativeConfigure={jobs:[{id:"saved",kind:"worker",status:"completed",config:{lease_mode:"native",native_generation:"agent",model:"codex:gpt-6.1-terra",max_cloud_requests:1}}],workerRun:"saved",workerMode:"function",editing:null,controlsOpen:false,isWorker:()=>true,active:j=>j.status==="running",target:{hasAttribute:key=>key==="data-configure"},render:config=>{nativeConfigure.rendered=config;}};
+vm.createContext(nativeConfigure);
+vm.runInContext('(function(){'+source.slice(source.indexOf('  if(target.hasAttribute("data-configure"))'),source.indexOf('  if(target.hasAttribute("data-close-controls"))'))+'})()',nativeConfigure);
+assert.equal(nativeConfigure.workerMode,"native");assert.equal(nativeConfigure.editing,null);assert.equal(nativeConfigure.rendered.max_cloud_requests,1);
+
+assert.equal(formContext.nativeRecoveryConfig({native_generation:"agent",model:"codex:gpt-5.6-terra",workers:3,max_cloud_requests:null}).max_cloud_requests,null);
+assert.equal(formContext.nativeRecoveryConfig({native_generation:"method",model:"opencode:old",max_cloud_requests:null}).max_cloud_requests,10);

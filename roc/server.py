@@ -709,6 +709,14 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
         integration = Promotions(store)
     from roc import libs
     recipe_versions = libs.recipe_versions()
+    recovery_lock=threading.Lock()
+    def recovery_host(port):
+        with recovery_lock:
+            if not hasattr(integration,'recovery'):
+                from roc.native_collaboration_host import Host
+                integration.recovery=Host(integration,start=True,server='http://127.0.0.1:'+str(port))
+            return integration.recovery
+
     lease_slots = threading.BoundedSemaphore(8)
     verification_slots = threading.BoundedSemaphore(3)
     class Handler(BaseHTTPRequestHandler):
@@ -745,6 +753,14 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
         def do_GET(self):
             url = urlparse(self.path)
             q = {k: v[0] for k, v in parse_qs(url.query).items()}
+            if url.path.startswith('/v1/integration/recovery/'):
+                if integration is None:return self.send(503,{'error':'Native recovery unavailable'})
+                try:
+                    host=recovery_host(self.server.server_address[1])
+                    if url.path.endswith('/catalog'):return self.send(200,host.catalog())
+                    if url.path.endswith('/status'):return self.send(200,host.status(q.get('id')))
+                    return self.send(404,{'error':'Unknown native recovery action'})
+                except (ValueError,TypeError,OSError) as error:return self.send(503 if str(error).startswith('Native inputs changed') else 400,{'error':str(error)})
             if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence", "/v1/integration/context", "/v1/integration/metrics"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
@@ -865,7 +881,14 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 if not USER_RE.fullmatch(user):
                     return self.send(400, {"error": "Need a valid contributor username"})
                 try:
-                    if path.endswith("/claim"):
+                    if path.startswith('/v1/integration/recovery/'):
+                        host=recovery_host(self.server.server_address[1])
+                        action=path.rsplit('/',1)[-1]
+                        if action=='claim':result=host.claim(user,body)
+                        elif action in ('renew','release'):result=host.renew(user,body,release=action=='release')
+                        elif action=='candidate':result=host.submit(user,body)
+                        else:return self.send(404,{'error':'Unknown native recovery action'})
+                    elif path.endswith("/claim"):
                         if integration.worker_error:
                             return self.send(503, {"error": "Native verifier unavailable: " + integration.worker_error})
                         claim_args = (user, str(body.get("worker", "")), body.get("count", 1), body.get("unit"),
@@ -892,7 +915,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                         return self.send(404, {"error": "Unknown integration action"})
                     return self.send(200, result)
                 except (ValueError, TypeError, OSError) as error:
-                    return self.send(400, {"error": str(error)})
+                    return self.send(503 if str(error).startswith("Native inputs changed") else 400, {"error": str(error)})
             if path == "/v1/admin/reseed":
                 # Host-only: loopback, not proxied by the tunnel, and the key file only this PC can read.
                 local = self.client_address[0] in ("127.0.0.1", "::1") and not (

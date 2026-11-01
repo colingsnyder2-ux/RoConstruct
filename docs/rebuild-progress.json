@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-01 16:10 UTC",
+  "updated": "2026-11-01 23:13 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.2418,
+      "overall": 0.1289,
       "bars": {
         "compiled": {
           "value": 35,
@@ -12,12 +12,12 @@
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 32,
+          "value": 31,
           "total": 35,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 9963,
+          "value": 5310,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -45,6 +45,7 @@
           "linked": true,
           "test": 0,
           "exact": 0,
+          "compileErrors": 0,
           "objectFunctions": 0,
           "unresolved": 0
         },
@@ -52,8 +53,9 @@
           "name": "Boost",
           "linked": true,
           "test": 0,
-          "exact": 346,
-          "objectFunctions": 10298,
+          "exact": 347,
+          "compileErrors": 0,
+          "objectFunctions": 10308,
           "unresolved": 0
         },
         {
@@ -61,6 +63,7 @@
           "linked": true,
           "test": 0,
           "exact": 7,
+          "compileErrors": 0,
           "objectFunctions": 124,
           "unresolved": 0
         },
@@ -68,8 +71,9 @@
           "name": "G3D-GL",
           "linked": true,
           "test": 0,
-          "exact": 425,
-          "objectFunctions": 5822,
+          "exact": 427,
+          "compileErrors": 0,
+          "objectFunctions": 6080,
           "unresolved": 0
         },
         {
@@ -77,6 +81,7 @@
           "linked": true,
           "test": 0,
           "exact": 1168,
+          "compileErrors": 0,
           "objectFunctions": 16751,
           "unresolved": 0
         },
@@ -85,6 +90,7 @@
           "linked": true,
           "test": 0,
           "exact": 256,
+          "compileErrors": 0,
           "objectFunctions": 335,
           "unresolved": 0
         },
@@ -93,6 +99,7 @@
           "linked": true,
           "test": 0,
           "exact": 109,
+          "compileErrors": 0,
           "objectFunctions": 332,
           "unresolved": 0
         },
@@ -101,6 +108,7 @@
           "linked": true,
           "test": 0,
           "exact": 441,
+          "compileErrors": 0,
           "objectFunctions": 941,
           "unresolved": 0
         },
@@ -109,6 +117,7 @@
           "linked": false,
           "test": null,
           "exact": 163,
+          "compileErrors": 0,
           "objectFunctions": 1422,
           "unresolved": 1
         },
@@ -117,6 +126,7 @@
           "linked": false,
           "test": null,
           "exact": 564,
+          "compileErrors": 0,
           "objectFunctions": 41795,
           "unresolved": 16
         },
@@ -125,6 +135,7 @@
           "linked": true,
           "test": 0,
           "exact": 177,
+          "compileErrors": 0,
           "objectFunctions": 1479,
           "unresolved": 0
         },
@@ -133,6 +144,7 @@
           "linked": true,
           "test": 0,
           "exact": 147,
+          "compileErrors": 0,
           "objectFunctions": 1198,
           "unresolved": 0
         },
@@ -141,6 +153,7 @@
           "linked": true,
           "test": 0,
           "exact": 816,
+          "compileErrors": 0,
           "objectFunctions": 6244,
           "unresolved": 0
         },
@@ -149,6 +162,7 @@
           "linked": true,
           "test": 0,
           "exact": 29,
+          "compileErrors": 0,
           "objectFunctions": 81,
           "unresolved": 0
         },
@@ -157,6 +171,7 @@
           "linked": true,
           "test": 0,
           "exact": 55,
+          "compileErrors": 0,
           "objectFunctions": 349,
           "unresolved": 0
         },
@@ -165,6 +180,7 @@
           "linked": true,
           "test": 0,
           "exact": 0,
+          "compileErrors": 0,
           "objectFunctions": 6,
           "unresolved": 0
         },
@@ -173,6 +189,7 @@
           "linked": true,
           "test": 0,
           "exact": 129,
+          "compileErrors": 0,
           "objectFunctions": 874,
           "unresolved": 0
         },
@@ -181,6 +198,7 @@
           "linked": true,
           "test": 0,
           "exact": 87,
+          "compileErrors": 0,
           "objectFunctions": 927,
           "unresolved": 0
         },
@@ -189,6 +207,7 @@
           "linked": true,
           "test": 0,
           "exact": 335,
+          "compileErrors": 0,
           "objectFunctions": 4277,
           "unresolved": 0
         },
@@ -197,6 +216,7 @@
           "linked": true,
           "test": 0,
           "exact": 11,
+          "compileErrors": 0,
           "objectFunctions": 57,
           "unresolved": 0
         },
@@ -205,6 +225,7 @@
           "linked": true,
           "test": 0,
           "exact": 425,
+          "compileErrors": 0,
           "objectFunctions": 5822,
           "unresolved": 0
         },
@@ -213,6 +234,7 @@
           "linked": true,
           "test": 0,
           "exact": 192,
+          "compileErrors": 0,
           "objectFunctions": 1670,
           "unresolved": 0
         },
@@ -221,6 +243,7 @@
           "linked": true,
           "test": 0,
           "exact": 192,
+          "compileErrors": 0,
           "objectFunctions": 1670,
           "unresolved": 0
         },
@@ -229,6 +252,7 @@
           "linked": true,
           "test": 0,
           "exact": 192,
+          "compileErrors": 0,
           "objectFunctions": 1670,
           "unresolved": 0
         },
@@ -237,6 +261,7 @@
           "linked": true,
           "test": 0,
           "exact": 190,
+          "compileErrors": 0,
           "objectFunctions": 2376,
           "unresolved": 0
         },
@@ -245,6 +270,7 @@
           "linked": true,
           "test": 0,
           "exact": 87,
+          "compileErrors": 0,
           "objectFunctions": 935,
           "unresolved": 0
         },
@@ -253,6 +279,7 @@
           "linked": true,
           "test": 0,
           "exact": 335,
+          "compileErrors": 0,
           "objectFunctions": 4277,
           "unresolved": 0
         },
@@ -261,6 +288,7 @@
           "linked": true,
           "test": 0,
           "exact": 392,
+          "compileErrors": 0,
           "objectFunctions": 2890,
           "unresolved": 0
         },
@@ -268,7 +296,8 @@
           "name": "RbxApp",
           "linked": false,
           "test": null,
-          "exact": 895,
+          "exact": 0,
+          "compileErrors": 114,
           "objectFunctions": 48635,
           "unresolved": 4
         },
@@ -277,6 +306,7 @@
           "linked": true,
           "test": 0,
           "exact": 508,
+          "compileErrors": 0,
           "objectFunctions": 5140,
           "unresolved": 0
         },
@@ -285,6 +315,7 @@
           "linked": true,
           "test": 0,
           "exact": 3375,
+          "compileErrors": 0,
           "objectFunctions": 98102,
           "unresolved": 0
         },
@@ -293,14 +324,16 @@
           "linked": true,
           "test": 0,
           "exact": 127,
+          "compileErrors": 0,
           "objectFunctions": 718,
           "unresolved": 0
         },
         {
           "name": "XTP",
-          "linked": true,
+          "linked": false,
           "test": 0,
-          "exact": 4784,
+          "exact": 0,
+          "compileErrors": 1,
           "objectFunctions": 86461,
           "unresolved": 0
         },
@@ -309,6 +342,7 @@
           "linked": true,
           "test": 0,
           "exact": 24,
+          "compileErrors": 0,
           "objectFunctions": 108,
           "unresolved": 0
         },
@@ -317,6 +351,7 @@
           "linked": true,
           "test": 0,
           "exact": 27,
+          "compileErrors": 0,
           "objectFunctions": 108,
           "unresolved": 0
         }

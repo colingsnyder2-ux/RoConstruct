@@ -14,7 +14,7 @@ import uuid
 from pathlib import Path
 
 from roc import rebuild
-from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches, canonical_patches
+from roc.integration import CLIENT, MODULE, ROOT, atomic_json, digest, merge_patches, canonical_patches, adopted_path
 
 WRITABLE_OUT = {"RbxgsApp", "tests"}  # out/ folders a snapshot build or milestone link writes into
 
@@ -124,7 +124,7 @@ def input_paths(root, live_only=False):
         for edits in json.loads(overlay.read_text()).values():
             for old, new in edits:
                 if old == "@replace":
-                    referenced.add(root / "tools/rbxgs/Client" / new)
+                    referenced.add(adopted_path(root / "tools/rbxgs/Client", new, root))
     for deps in (root / "rebuild/2008-06/out/RbxgsApp").glob("layer-*/*.deps"):
         referenced.update(Path(p) for p in json.loads(deps.read_text()) if Path(p).name.startswith("roc_"))
     for parent in native_tools(root):
@@ -151,6 +151,7 @@ def input_paths(root, live_only=False):
     paths.extend(p for p in out.glob("*/*.json") if p.is_file()
                  and p.name not in ("report.json", "owned-symbols.json"))
     paths.extend(p for p in out.glob("*/report.json") if p.parent.name != "RbxgsApp")
+    paths.extend(p for p in out.glob("*/owned-symbols.json") if p.parent.name != "RbxgsApp")
     for path in sorted((root / "rebuild" / CLIENT / "out").glob("*/linked/*")):
         if path.parent.parent.name != "RbxgsApp" and path.is_file() and path.suffix in (".obj", ".lib"):
             paths.append(path)
@@ -246,7 +247,7 @@ def snapshot(root, destination, link=False):
             if relative[0] == "RbxgsApp":
                 return [name for name in names if name != "verified" and not (link and name.startswith("layer-"))]
             if relative[0] != "mfclib":
-                return [name for name in names if name not in {"linked", "report.json", "placed.json"}]
+                return [name for name in names if name not in {"linked", "report.json", "owned-symbols.json", "placed.json"}]
         return [name for name in names if name.endswith((".pdb", ".ilk"))]
 
     if source.exists():
@@ -494,7 +495,7 @@ def preflight(root, base, patches):
             existing = len(base.get(name, []))
             for index, (old, new) in enumerate(edits):
                 if old == "@replace":
-                    text = (tree / new).read_text(errors="replace")
+                    text = adopted_path(tree, new, root).read_text(errors="replace")
                 elif old.startswith("@all:"):
                     anchor = old[5:]
                     if not anchor or anchor not in text:
@@ -563,15 +564,16 @@ def prepare_baseline(root, cache, input_key):
 def verify(promotions, job):
     from roc.integration_notify import notify
     root = promotions.root
+    source = promotions.source_root
     baseline = promotions.baseline()
     patches = json.loads(job["patches"])
     promotions.progress(job["id"], "preflight")
-    combined, kept, dropped = preflight(root, baseline["overlay"], patches)
+    combined, kept, dropped = preflight(source, baseline["overlay"], patches)
     if dropped:
         # finish() records job["patches"] as the accepted overlay: keep only what was verified.
         job["patches"] = json.dumps(kept)
     promotions.progress(job["id"], "fingerprinting inputs")
-    before_hash, live_hash = input_hashes(root)
+    before_hash, live_hash = input_hashes(source)
     # Builds run in a copied snapshot: only read-through trees can still change under them.
     cache = promotions.directory / "baselines" / before_hash
     index_file = promotions.directory / "baselines/index.json"
@@ -586,7 +588,7 @@ def verify(promotions, job):
     baseline_file = cache / "integration-result.json"
     if not baseline_file.exists():
         progress("baseline: preparing snapshot")
-        cache, resumed = prepare_baseline(root, cache, before_hash)
+        cache, resumed = prepare_baseline(source, cache, before_hash)
         baseline_file = cache / "integration-result.json"
         # Persist the prepared location before compiling so a restart can reuse its content-checked objects.
         index[before_hash] = cache.relative_to(root).as_posix()
@@ -596,7 +598,7 @@ def verify(promotions, job):
         before = verify_build(cache, lambda phase: progress("baseline: " + phase))
         check_gates(before)
         before["linked_addresses"] = json.loads((cache / "integration-linked.json").read_text())
-        if input_hash(root, live_only=True) != live_hash:
+        if input_hash(source, live_only=True) != live_hash:
             raise ValueError("Server inputs changed during baseline verification; retry on a stable baseline")
         atomic_json(baseline_file, before)
         index[before_hash] = cache.relative_to(root).as_posix()
@@ -627,7 +629,7 @@ def verify(promotions, job):
     check_gates(after, before, elsewhere)
     from roc.native_promotions import check_result
     check_result(promotions, job, after, dropped, candidate)
-    if input_hash(root, live_only=True) != live_hash or promotions.baseline()["revision"] != baseline["revision"]:
+    if input_hash(source, live_only=True) != live_hash or promotions.baseline()["revision"] != baseline["revision"]:
         raise ValueError("Server inputs changed during candidate verification; retry on a stable baseline")
     old_owned = set(before["report"]["owned_addrs"])
     gains = set(after["report"]["owned_addrs"]) - old_owned
@@ -656,7 +658,7 @@ def publish(promotions, patches=None):
     old_overlay = promotions.overlay.read_bytes()
     try:
         atomic_json(path, promotions.accepted() if patches is None else patches)
-        subprocess.run([sys.executable, str(promotions.generator)], cwd=promotions.root,
+        subprocess.run([sys.executable, str(promotions.generator)], cwd=promotions.source_root,
                        check=True, capture_output=True, stdin=subprocess.DEVNULL, timeout=60)
     except BaseException:
         if old_ledger is None:
@@ -679,7 +681,7 @@ def cache_accepted(promotions, receipt):
     atomic_json(candidate / "integration-result.json", result)
     index_file = promotions.directory / "baselines/index.json"
     index = json.loads(index_file.read_text()) if index_file.exists() else {}
-    index[input_hash(promotions.root)] = candidate.relative_to(promotions.root).as_posix()
+    index[input_hash(promotions.source_root)] = candidate.relative_to(promotions.root).as_posix()
     atomic_json(index_file, index)
 
 

@@ -1,0 +1,117 @@
+{
+  "revision": "f6e8dccfd35b95e2551f0675f8875045af2c8e43",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "476fde454f1636fbe376517cbda1cf0a5ac0856280b992ddcc4add3192c7fc70",
+  "factory": "00643660",
+  "states": [
+    {
+      "case": 0,
+      "name": "FallingDown",
+      "size": 160,
+      "case_address": "0x643689",
+      "constructor": "0x666e30",
+      "vtable": "0x84cd10",
+      "rtti": ".?AVFallingDown@HUMAN@RBX@@"
+    },
+    {
+      "case": 1,
+      "name": "GettingUp",
+      "size": 168,
+      "case_address": "0x6436c4",
+      "constructor": "0x667e20",
+      "vtable": "0x84cf30",
+      "rtti": ".?AVGettingUp@HUMAN@RBX@@"
+    },
+    {
+      "case": 2,
+      "name": "Jumping",
+      "size": 168,
+      "case_address": "0x6436ff",
+      "constructor": "0x667c40",
+      "vtable": "0x84ceec",
+      "rtti": ".?AVJumping@HUMAN@RBX@@"
+    },
+    {
+      "case": 3,
+      "name": "Freefall",
+      "size": 192,
+      "case_address": "0x64373a",
+      "constructor": "0x667810",
+      "vtable": "0x84cea0",
+      "rtti": ".?AVFreefall@HUMAN@RBX@@"
+    },
+    {
+      "case": 4,
+      "name": "Flying",
+      "size": 168,
+      "case_address": "0x643775",
+      "constructor": "0x6674b0",
+      "vtable": "0x84ce54",
+      "rtti": ".?AVFlying@HUMAN@RBX@@"
+    },
+    {
+      "case": 5,
+      "name": "Landed",
+      "size": 204,
+      "case_address": "0x6437b0",
+      "constructor": "0x643550",
+      "vtable": "0x84ac9c",
+      "rtti": ".?AVLanded@HUMAN@RBX@@"
+    },
+    {
+      "case": 6,
+      "name": "Running",
+      "size": 204,
+      "case_address": "0x6437eb",
+      "constructor": "0x666ac0",
+      "vtable": "0x84cc94",
+      "rtti": ".?AVRunning@HUMAN@RBX@@"
+    },
+    {
+      "case": 7,
+      "name": "RunningNoPhysics",
+      "size": 276,
+      "case_address": "0x643809",
+      "constructor": "0x667370",
+      "vtable": "0x84ce10",
+      "rtti": ".?AVRunningNoPhysics@HUMAN@RBX@@"
+    },
+    {
+      "case": 8,
+      "name": "StrafingNoPhysics",
+      "size": 276,
+      "case_address": "0x643844",
+      "constructor": "0x667210",
+      "vtable": "0x84cdb0",
+      "rtti": ".?AVStrafingNoPhysics@HUMAN@RBX@@"
+    },
+    {
+      "case": 9,
+      "name": "Climbing",
+      "size": 204,
+      "case_address": "0x64387f",
+      "constructor": "0x6435a0",
+      "vtable": "0x84acd0",
+      "rtti": ".?AVClimbing@HUMAN@RBX@@"
+    },
+    {
+      "case": 10,
+      "name": "Seated",
+      "size": 160,
+      "case_address": "0x6438ba",
+      "constructor": "0x667010",
+      "vtable": "0x84cd54",
+      "rtti": ".?AVSeated@HUMAN@RBX@@"
+    },
+    {
+      "case": 11,
+      "name": "Dead",
+      "size": 160,
+      "case_address": "0x6438f5",
+      "constructor": "0x666d30",
+      "vtable": "0x84cce0",
+      "rtti": ".?AVDead@HUMAN@RBX@@"
+    }
+  ],
+  "scope": "Original factory jump table, allocation sizes, constructor targets and constructor-assigned RTTI only; no class member layout or runtime swap claim."
+}

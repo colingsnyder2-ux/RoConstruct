@@ -1,0 +1,140 @@
+{
+  "revision": "32eb16a43f51ff37aed13f37d2fceed867e54f9f",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "2112a7f16f89d45449eeb1bc57a6e4e6e23ffabafade5885ef15a56f2d3c8dcc",
+  "panes": [
+    {
+      "name": "CSelectionCaption",
+      "vtable": "0x81bbc4",
+      "deleting_wrapper": "0x466920",
+      "destructor": "0x466510",
+      "bases": [
+        {
+          "name": ".?AVCSelectionCaption@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTCaption@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCStatic@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCWnd@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTThemeManagerStyleHost@@",
+          "offset": 84
+        },
+        {
+          "name": ".?AVActiveDocView@@",
+          "offset": 400
+        },
+        {
+          "name": ".?AV?$FilteredListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@",
+          "offset": 404
+        },
+        {
+          "name": ".?AV?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@",
+          "offset": 404
+        },
+        {
+          "name": ".?AV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@",
+          "offset": 404
+        }
+      ]
+    },
+    {
+      "name": "CDataModelPropGrid",
+      "vtable": "0x811444",
+      "deleting_wrapper": "0x431140",
+      "destructor": "0x4310f0",
+      "bases": [
+        {
+          "name": ".?AVCDataModelPropGrid@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCSelectionPropGrid@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCPropGrid@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTPPropertyGrid@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCWnd@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@",
+          "offset": 392
+        },
+        {
+          "name": ".?AV?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@",
+          "offset": 568
+        },
+        {
+          "name": ".?AVActiveDocView@@",
+          "offset": 580
+        }
+      ]
+    },
+    {
+      "name": "CXTSplitterWnd",
+      "vtable": "0x85c064",
+      "deleting_wrapper": "0x708d30",
+      "destructor": "0x708280",
+      "bases": [
+        {
+          "name": ".?AVCXTSplitterWnd@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCSplitterWnd@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCWnd@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCCmdTarget@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCObject@@",
+          "offset": 0
+        },
+        {
+          "name": ".?AVCXTThemeManagerStyleHost@@",
+          "offset": 220
+        }
+      ]
+    }
+  ],
+  "scope": "Original binary RTTI and primary deleting-destructor slots; complete native pane declarations, ownership templates and runtime remain unverified."
+}

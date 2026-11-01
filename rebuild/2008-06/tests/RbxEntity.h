@@ -41,6 +41,7 @@ public:
     ~RbxEntity();
     SubEntity* createSubEntity(SubMesh* mesh, unsigned int lod);
     void setMesh(const MeshPtr& mesh);
+    void setSubEntitiesVisible(bool);
     friend void RbxEntitySetMesh(RbxEntity*, const MeshPtr&);
 };
 }

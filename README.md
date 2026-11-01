@@ -60,9 +60,11 @@ in [RoConstruct-findings](https://github.com/colingsnyder2-ux/RoConstruct-findin
 
 ## Native rebuild
 
-The complete [2008-06 native rebuild](https://github.com/colingsnyder2-ux/RoConstruct-findings/tree/main/2008-06) lives in RoConstruct-findings: assembled C++, configs, patches, required runtime harnesses and verification metadata. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
+Work locally in `rebuild/2008-06/`. Its `Source/App`, `Source/Network`, `Source/RbxView`, and `Source/Rendering` views expose the shared Roblox source tree; `native-headers/` and `native-classes/` hold recovered declarations and implementations. See `rebuild/2008-06/SOURCE_LAYOUT.txt` for build inputs and audit locations.
 
-Existing local `rebuild/` files remain available but are not tracked here. `roc rebuild 2008-06 install` restores the small build inputs from findings for existing ROC commands; it does not download the large build artifacts. Missing build inputs are installed automatically by `roc rebuild`.
+The [findings source package](https://github.com/colingsnyder2-ux/RoConstruct-findings/tree/main/2008-06) exports assembled C++, configs, patches, runtime harnesses and verification metadata. Native runtime integration remains partial. Run its `compile_test.bat` with `ROC_ROOT` pointing to this configured tooling checkout.
+
+Keep current native work under `rebuild/2008-06/`; source exports are maintained in findings. `integration-status.json` distinguishes source-only recovery, inactive compiler probes, linked code, and scoped runtime evidence. `roc rebuild 2008-06 install` restores missing build inputs from findings while preserving existing files; generated build artifacts remain local.
 
 ## Rules
 

@@ -1,0 +1,78 @@
+{
+  "handlers": [
+    {
+      "address": "0044fc50",
+      "size": 104,
+      "target_sha256": "99c67d7635f1c835ca677f121c2926270d370b98f3361289844e98bb9bc68086",
+      "calls": [
+        {
+          "site": "0x44fc78",
+          "target": "0x44f500"
+        },
+        {
+          "site": "0x44fc8b",
+          "target": "0x6a084e"
+        },
+        {
+          "site": "0x44fc9e",
+          "target": "0x45fe20"
+        }
+      ]
+    },
+    {
+      "address": "0044fcc0",
+      "size": 104,
+      "target_sha256": "177fd7b2993c127fdbd8f7d11ae5fe6d1168b2703c20110d830a0f0367f4c053",
+      "calls": [
+        {
+          "site": "0x44fce8",
+          "target": "0x44f660"
+        },
+        {
+          "site": "0x44fcfb",
+          "target": "0x6a084e"
+        },
+        {
+          "site": "0x44fd0e",
+          "target": "0x45fe20"
+        }
+      ]
+    },
+    {
+      "address": "00453670",
+      "size": 209,
+      "target_sha256": "3f9bd0c0841e69d4ee6311b713c2ce62b66229d50cb7d2807dbfededb32a9584",
+      "calls": [
+        {
+          "site": "0x453694",
+          "target": "0x46a940"
+        },
+        {
+          "site": "0x4536cf",
+          "target": "0x411b40"
+        },
+        {
+          "site": "0x4536dd",
+          "target": "0x453000"
+        },
+        {
+          "site": "0x4536e4",
+          "target": "0x58a130"
+        },
+        {
+          "site": "0x4536f2",
+          "target": "0x5773c0"
+        },
+        {
+          "site": "0x45371a",
+          "target": "eax"
+        },
+        {
+          "site": "0x45372f",
+          "target": "edx"
+        }
+      ]
+    }
+  ],
+  "scope": "Original call evidence; dialog and method identities require independent proof before native adoption."
+}

@@ -121,3 +121,29 @@ extern "C" void ClosePlace()
     g_brickRef.reset();
     if (g_dataModel) { RBX::DataModel::closeDataModel(g_dataModel, true); g_dataModel.reset(); }
 }
+
+extern "C" void ResizePart(float x, float y, float z)
+{
+    if (!g_brick || !g_dataModel) return;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ScriptContext* scripts = RBX::ServiceProvider::create<RBX::ScriptContext>(g_dataModel.get());
+    char command[160];
+    _snprintf(command, sizeof(command),
+        "game.Workspace.Brick.Size = Vector3.new(%g,%g,%g)", x, y, z);
+    try { scripts->executeInNewThread(RBX::Security::CmdLine, command, "resize"); }
+    catch (std::exception& e) { std::printf("script: %s\n", e.what()); }
+    g_dataModel->step(1.0f / 30.0f);
+}
+
+extern "C" void RotatePart(float x, float y, float z)
+{
+    if (!g_brick || !g_dataModel) return;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ScriptContext* scripts = RBX::ServiceProvider::create<RBX::ScriptContext>(g_dataModel.get());
+    char command[256];
+    _snprintf(command, sizeof(command),
+        "game.Workspace.Brick.CFrame = CFrame.new(game.Workspace.Brick.Position) * CFrame.fromEulerAnglesXYZ(%g,%g,%g)", x, y, z);
+    try { scripts->executeInNewThread(RBX::Security::CmdLine, command, "rotate"); }
+    catch (std::exception& e) { std::printf("script: %s\n", e.what()); }
+    g_dataModel->step(1.0f / 30.0f);
+}

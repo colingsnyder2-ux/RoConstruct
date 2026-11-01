@@ -427,6 +427,9 @@ class Dashboard:
                     job["improved"] += fields.get("improved", fields["score"] > fields["previous"]) and fields["score"] != 100
                     job["failed"] += fields["score"] == 0
                     job["slots"].setdefault(str(fields["slot"]), {}).update(busy=False, score=fields["score"])
+                elif kind == "native_recovery":
+                    job["native_recovery"] = dict(fields)
+                    job["host_merged"] = job.get("host_merged",0) + fields.get("host_merged",0)
                 elif kind == "benchmark":
                     job["attempted"] = max(job["attempted"], fields.get("completed", 0))
                     job["matched"] = max(job["matched"], fields.get("matched", 0))

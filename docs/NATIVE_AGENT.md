@@ -1,5 +1,143 @@
 # Native integration with an agent (Codex, Claude)
 
+## Native source recovery with real Codex agents (Worker 31)
+
+Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
+launch cap, then **Start native recovery**. This panel exposes native C++ recovery
+only. It defaults to ten worker slots, two compiler slots and at most ten agent
+launches. Worker count, time/probe limits and independent submissions stay adjustable.
+
+Equivalent CLI (worker count defaults to ten):
+
+```text
+roc integrator --generation agent --model codex:gpt-6.1-terra --workers 10 --compile-workers 2 --agent-minutes 4 --agent-checks 6 --max-cloud-requests 10 --allow-cloud
+```
+
+Real Codex subprocesses read original assembly/RTTI and genuine headers, edit private
+C++, run `python check.py`, and iterate from compiler errors and target diffs. Each
+agent has one method assignment and a private snapshot including uncommitted native
+work. Installed clients, compilers and original source inputs are reused. Recovery
+setup defers full dependency builds until submission needs them. Compiler concurrency
+is separate from agent concurrency. Only signed-in `codex:` models support this mode;
+API/local models remain available in method-generation mode.
+
+Proven method bodies merge into the launching checkout's
+`rebuild/2008-06/native-classes`, `native-headers`, or `native-world`, according to the
+assignment. Another agent's changed target body causes a conflict, never a stale
+whole-file replacement. Unrelated changes are preserved. Current shared source and
+candidate are recompiled against freshly copied current headers; existing matches
+must survive. Source/header changes during recheck abort that write. Backups, hashes,
+source candidates and receipts are retained. No commit, player swap or credit is
+implied by merge-back. A different editor can still save its own stale copy later;
+recovery controllers cannot govern unrelated editors' later writes.
+
+Automatic discovery uses unambiguous existing out-of-line C++ methods, original
+address annotations and compiler-probe nominations. Missing evidence is a blocker,
+not permission to guess a layout. Header bodies and specific assignments can use
+`--agent-tasks PATH` (GUI: **Native task manifest**), a JSON list:
+
+```json
+[
+  {
+    "file": "rebuild/2008-06/native-classes/CRobloxDoc.cpp",
+    "method": "CRobloxDoc::SetModifiedFlag",
+    "addr": "0044fad0"
+  }
+]
+```
+
+Header tasks require `translation_unit`, naming an existing consuming native `.cpp`
+or `rebuild/2008-06/tests/Native*.cpp` probe. They support unambiguous qualified
+method definitions; in-class inline definitions, fields, signatures and layout changes
+remain owner work. Existing C++ sources under `native-world` use the same mechanism;
+a manifest alone is not a recoverable C++ body. An explicit `add_method: true` task
+may append one missing qualified definition to an existing source; its genuine header
+declaration must already exist and compile. It cannot add fields or declarations.
+
+Worker 24 collaborates across PCs using the **same server URL**. Server method
+leases last 120 seconds and renew every 20 seconds, including baseline compilation.
+An expired/replaced lease cannot upload, renew or release another worker's method.
+Local SQLite still protects multiple sessions on one PC. An older server prints a
+local-only warning; update/restart the host before relying on cross-PC coordination.
+
+The server publishes its current native source/header catalog, so classes added by
+owners become available without downloading another compiler or waiting for a new
+Worker ZIP. Agents compile private server snapshots. New host files can be created
+locally; existing local files are never replaced wholesale. After host verification, a proven body uses the
+same guarded merge against current local headers. Header tasks edit existing public
+inline/out-of-line method bodies only; private force-emission probes use genuine
+member declarations. Fields, bases, signatures and layouts remain owner-only.
+
+Candidates upload into the host's file inbox and independent native recheck queue.
+The host preserves concurrent body/header edits, rejects wrong known imports, and
+retains unresolved imported callees for owner review. Host-verified source merges
+post a batched **report-only, zero-credit** milestone to the configured mining
+webhook. Already-exact, failed and conflicting tasks do not post gain reports.
+The Integrator resumes supported canonical mappings through existing linked
+preflight/submission/acceptance; keep it running to finish that stage. Missing
+class linkage stays pending. No contributor text is queued into a coding chat.
+
+The agent preset selects Terra when no explicit Codex model was chosen and caps
+the initial batch at ten agent launches; explicit model choices are preserved.
+Reaching the AI budget stops new agents while queued host checks and canonical
+submissions finish without additional model calls.
+Snapshots/proofs use a persistent short path printed at startup (Windows:
+`%LOCALAPPDATA%/RoConstruct/nr/<session-hash>`), avoiding historical MSVC path limits.
+Restarting the same GUI session retains private work; expired claims can be recovered.
+Pause holds new tasks. Stop kills active agent process trees; partial source stays
+saved. No stronger-model escalation occurs automatically.
+
+**Submissions stay independently gated.** A native method with one supported
+accepted-module mapping is recompiled in that canonical context, then joins one combined submission batch per model. That batch follows the
+existing claims, linked preflight and server verifier. Missing mapping or linkage
+leaves an explicit pending candidate. Uncheck **Submit linkable recoveries** or use
+`--no-agent-submit` for local-only recovery; drafts persist for later submission.
+The GUI distinguishes local recovery, merged changes, conflicts, submitted jobs,
+accepted jobs and pending work. Only server receipts establish credit. P5/P6 are
+still required for an actual active class swap; the shared-header workflow remains
+provisional until that first swap lands.
+
+A request cap in this mode counts launched Codex agents, not their internal model
+turns. Subscription token usage is reported after an agent exits; in-flight agents
+can exceed a token cap. Time and check budgets bound each task. CLI subscription
+runs have no reliable USD cap. Start with one worker/one agent for a cheap trial.
+Contributor source/evidence are untrusted data, never agent instructions. Inbox
+uploads are never automatically queued into chats.
+
+Worker 20 uses the original frame probes' XTP include/static-link profile, retaining
+Windows `min`/`max` macros for XTP while keeping `NOMINMAX` for other native probes.
+A source file shares one baseline compile across its method workers per pass.
+Compiler/profile updates reopen previously blocked local assignments on restart.
+The feed distinguishes already locally exact methods (AI skipped) from baseline
+failures, and expandable errors retain the complete compiler diagnostic.
+
+Worker 21 reuses missing library/source directories from verified compiler/client
+locations before any dependency downloads. Native-only startup prepares the RTM
+compiler, SDK/MFC, donor sources and required XTP headers; standalone linked-library
+recipes (including SDL 1.2.11) wait until submission needs them. New private sessions
+share the launching checkout's tool/client cache, and resumed sessions repair missing
+or broken input links while preserving private source and proofs.
+
+Worker 22 resolves the installed Codex executable before launch. Each task gets an
+assigned-header path and its baseline instruction/data diff. `python check.py`
+prints a compact verdict and the full proof's filename; it exits unsuccessfully
+unless `ok` and `target_exact` are true with no losses. Compiler success alone does
+not prove recovery. Tiny bodies and identical sibling bodies are checked against
+the assigned emitted symbol before spending an AI request. Missing canonical
+module mappings leave proven native recoveries pending; they cannot earn server
+acceptance until genuine linkage is implemented.
+
+For an additional installed input cache, set `ROC_REUSE_TOOLS` to its `tools`
+directory (multiple roots use the platform path separator), or record:
+
+```json
+{"tools_roots": ["C:/path/to/existing/RoConstruct/tools"]}
+```
+
+in `local/config/roconstruct-inputs.json`. Only missing directories are linked;
+existing files are preserved. These paths are local configuration, not contributor
+instructions. A genuinely missing required input still needs installation.
+
 ## Native recovery loop (default)
 
 Trace original code, reconstruct native pieces, compile focused probes, record
@@ -154,7 +292,7 @@ reuse the recorded inventory; rescan only missing/moved paths or changed require
 
 ## Editable integration workspace (when ready)
 
-Use a current Worker with `roc native-try edit --help` and native workflow version 17.
+Use a current Worker with `roc native-try edit --help` and native workflow version 21.
 This workspace is for edits against the accepted tree after the native recovery
 loop produces a coherent supported change; it is not mandatory for inactive probes.
 Edit real C++/header files in the editable workspace printed by the tool. No hand-written
@@ -297,10 +435,30 @@ only after independent server acceptance.
 Choose one execution path for a mutable workspace. For the GUI, run `roc gui`,
 open **Workers → + New → Integrator**, select the actual model, contributor and
 server, then **Start Integrator**. Native sessions currently use 2008-06 only.
+Choose **10-worker recovery** for ten simultaneous model requests, complete-method
+recovery, three feedback rounds, and up to ten compatible methods per shared compile.
+It preserves your selected model and request/token/spend caps, disables automatic
+model escalation, and lets the compiler limit follow CPU capacity. Set a request cap
+before a small trial. Worker v16 already supports ten workers; update to the current
+Worker for dependency fixes and this preset. Existing private sessions retain sources
+and proofs; stop and reopen a session to load the new runtime.
+
+These are bounded method workers, not ten unrestricted desktop chats. They use
+genuine source/assembly, compile candidate bodies, feed diagnostics back, and keep
+only independently verified submissions for credit. Missing declarations/layouts
+are parked for owner recovery. More workers require enough eligible methods and
+provider capacity. P5/P6 and first-class-swap requirements still apply.
+
+For a low-cost trial, select an available small model from the signed-in Codex
+catalog (tested locally with `codex:gpt-6-luna`). Codex generation uses compact
+instructions without project discovery, plugins or shell tools; update the Codex CLI
+if it does not support `--ignore-user-config`. Subscription usage remains billable
+against the account's allowance; output-token settings cannot impose a hard CLI
+token limit. API models require their own credentials and can enforce output caps.
 The equivalent continuous CLI uses the same backend:
 
 ```text
-roc integrator --model YOUR_ACTUAL_MODEL --workers 4 --rounds 3 --output-budget 3072 --batch-files 1 --compile-workers auto --compile-batch 4 --context methods --generation auto --thinking disabled --cloud-concurrency auto --allow-cloud
+roc integrator --model YOUR_ACTUAL_MODEL --workers 4 --rounds 3 --output-budget 3072 --batch-files 1 --compile-workers auto --compile-batch 4 --context methods --generation method --thinking disabled --cloud-concurrency auto --allow-cloud
 ```
 
 Use remote prompts only within the operator's authorization. The GUI offers
@@ -316,8 +474,8 @@ Do not launch a second editor or continuous session in its mutable staging tree.
 | Parallel local compilers | Independent compiler limit; `auto` caps at 8 slots subject to CPU capacity. |
 | Files per integration batch | Set 1 for immediate per-file submission (program default: 40). This does not promise acceptance. |
 | Methods per shared compile | Default 4 independent edits per file; split conflicting/failing combinations, recompile retained edits. |
-| Source context / AI output | Default `methods` / `auto`: one complete method, then anchored repairs. Manual native-try exports editable C++/headers and captures diffs. |
-| Rounds / Output tokens | New native sessions start at 3 / 3072; configured presets or edits can override these values. |
+| Source context / AI output | Default `methods` / `method`: complete bodies with compiler/diff feedback, without SEARCH/REPLACE. Manual native-try exports editable C++/headers and captures diffs. |
+| Rounds / Output tokens | The 10-worker recovery preset uses 3 rounds / 2048 output tokens; configured values can override these. |
 | Request / Token / Estimated spend caps | Session-wide limits. Editing a cap retains usage already spent; unknown pricing is not zero cost. CLI subscription dollar caps are unsupported. |
 
 GUI presets are shared with mining workers. **Balanced** preset does not select
@@ -540,7 +698,7 @@ report both versions; do not repeatedly download the same incompatible archive.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 17, download the current Worker package yourself:
+reports `native_workflow_version` below 21, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -554,7 +712,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 17 -or
+if ($nativeManifest.workflow_version -lt 21 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeWorkspace = (Get-Location).Path
@@ -896,3 +1054,47 @@ roc integrate header-report --class-name CRobloxDoc --exact N --total 49 --note 
 ```
 
 The feed is a contributor report only and earns no credit.
+
+
+Worker 25 prefers addresses from owner compiler probes over rebuilt-name hints,
+including truncated decorated-symbol prefixes. Hitting an agent admission cap
+skips unstarted work while already admitted agents finish; it does not cancel
+an active recovery. The GUI hides legacy Integrator presets/output modes.
+Existing owner-established Win32 casts may remain unchanged while another part
+of the same method body is recovered. New/changed casts and offset views remain
+blocked; the actual unmodified casts still compile and appear in proof receipts.
+
+Worker 27 makes world probes consume accepted overlay declarations after their
+published world headers, preserving the genuine SimJob/Mechanism hierarchy and
+Assembly job accessors. A raw vendor header alone is insufficient ABI evidence.
+Saved recovery proposals now carry an evidence mode, including older drafts,
+so linked preflight can proceed into normal independent submission.
+Shared contributor lease limits return a wait condition across PCs; active work
+continues and other contributors can still claim distinct work.
+
+Native source adoptions resolve inside the current Worker workspace even when
+installed vendor tools are junctions to another checkout. Private rechecks must
+never read another agent's live native headers through a reused tools path.
+
+Worker 28 includes and hashes other modules' owned-symbol metadata in independent
+verification snapshots. Missing metadata must never be mistaken for a byte mismatch.
+Partially blocked canonical batches retain unsubmitted proofs for later retry;
+accepted credit comes only from actual receipt gains. Host source merges are
+counted separately, including when canonical linking is pending or already integrated.
+Tasks now include the real declaration headers and bounded genuine source context.
+The GUI defaults new Codex model selections to GPT-5.6 Terra. Clear the launch cap
+for continuous watching; worker count remains adjustable and can be set to one.
+
+Worker 29 rechecks explicitly assigned targets even when discovery eligibility omits them.
+A canonical body already exact but not linked stays pending linkage and earns no credit.
+Failed saved canonical proofs wait for changed source/baseline inputs; candidates remain saved.
+GUI reports canonical blockers separately from active host checks.
+
+Worker 30 keeps independently accepted integration inputs separate from ongoing player/P5 source
+work. Maintainer-pinned canonical inputs ship in the Worker and seed new GUI private workspaces;
+shared native recovery still uses the host's current published sources and guarded method merges.
+Old private work and proposals remain saved; use the updated Worker/new recovery session when the
+server announces a changed baseline. All accepted-body, ABI, runtime and reference gates remain active.
+
+Worker 31 retains current cold-build dependency compatibility: G3D-GL `NO_SDL_MAIN`,
+RakNet `/FImalloc.h`, and Boost source recipe metadata. Canonical application source stays separate.

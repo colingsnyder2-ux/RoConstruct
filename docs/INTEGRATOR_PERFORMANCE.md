@@ -1,5 +1,57 @@
 # Integrator performance experiments — 2026-10-28
 
+## Tool-using native recovery — 2026-11-01
+
+Worker 19 adds actual Codex agents with isolated sources and a bounded file-based
+compiler probe service. Ten-way offline recovery exercised distinct assignments,
+ten concurrent agent stand-ins, a two-compiler limit and ten safe shared-file merges.
+Conflict, concurrent header/source edit, baseline regression, restart, append-only
+new method, cancellation and canonical submission-adapter cases are also tested.
+
+One live `codex:gpt-6-luna` agent recovered a controlled regression of the original
+`CRobloxDoc::SetModifiedFlag` at `0044fad0`. It read original assembly and native
+headers, changed the private C++ body, ran genuine MSVC, passed code/data comparison,
+and merged into an isolated shared copy with no losses. No project source was
+changed by this trial, and submission was disabled. This validates the recovery
+mechanism, not a newly discovered function or a ten-times speedup.
+
+The CLI reported 83,948 total tokens for that run, including 61,312 cached input
+tokens. These are subscription usage figures, not dollar costs. Initial packets now
+include focused method excerpts to reduce repeated full-file reads. Tool-using agents
+consume more context than method-only workers; time/probe limits and agent-launch
+caps remain necessary.
+
+## Ten-worker small-model smoke — 2026-11-01
+
+The GUI now offers **10-worker recovery**: complete method bodies with compiler/diff
+feedback, ten AI slots, up to ten methods per shared compile, CPU-bounded compiler
+slots, and no automatic model escalation. Selected model and session budget caps
+are retained. The normal native output default is also complete-method recovery;
+legacy anchored edit modes remain available explicitly.
+
+An opt-in live run with signed-in `codex:gpt-6-luna` made ten model requests and
+matched all ten synthetic integer-method targets with genuine MSVC 21022 in 54.75s.
+It used one reference compile, one baseline compile, and one shared candidate compile.
+No Roblox claims, uploads, server credit or active executable changes occurred.
+This tests batch operation and simple recovery, not success on complex native classes.
+
+The initial CLI run reported 286,143 total tokens, revealing inherited agent-context
+overhead. Generation subprocesses now use compact C++ instructions and disable
+user config, plugins, shell tools and project-document discovery for that subprocess.
+A two-request follow-up matched 2/2 in 4.70s using 11,140 reported tokens total.
+Different prompts and account caches affect these numbers; subscription token usage
+does not establish a dollar cost. No additional live requests were made.
+
+Repeat only when explicitly authorized to consume model usage:
+
+```text
+python benchmarks/integrator_models.py --model codex:gpt-6-luna --workers 10 --output work/integrator-model-smoke
+```
+
+The script caps requests at the worker count, uses one feedback round, saves usage
+and proofs in `result.json`, and never submits. Runtime dispatch, GUI forwarding,
+budget preservation and concurrent batching also have offline tests.
+
 These are measured local experiments, not accepted integration credit. No server
 database, claims, jobs, binaries or installed source trees were changed by the
 benchmarks. Historical MSVC 21022 produced every compared object. Independent

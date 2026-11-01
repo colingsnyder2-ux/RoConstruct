@@ -1,9 +1,9 @@
 #pragma once
 #include "v8tree/Service.h"
+#include "v8datamodel/SelectionChanged.h"
 
 namespace RBX {
 class ISelectionBase;
-class SelectionChanged;
 extern const char* sSelection;
 
 // Original RTTI: notifier at 0x130, ancestor listener at 0x150;

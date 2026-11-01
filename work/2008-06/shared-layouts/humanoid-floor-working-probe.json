@@ -1,0 +1,61 @@
+{
+  "revision": "f6e8dccfd35b95e2551f0675f8875045af2c8e43",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeHumanoidFloorLayout.cpp": "412e257f817bfb3369a41c781a9ecf2f574a46d4c3890e6f08a6ec8362e7cce8",
+    "rebuild\\2008-06\\native-headers\\humanoid\\HumanoidFloorFields.h": "7d3637a8eba60b343396410f77c94afc8b5ff66e27b2d749c6e96e5efeecfa52",
+    "rebuild\\2008-06\\tests\\record_native_humanoid_floor.py": "60f1c45fb546d90a33a5a42a9a2583ebd3ba4e04f05f8df1f3f2b9c9b13a6e33"
+  },
+  "compiler": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeHumanoidFloorLayout.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeHumanoidFloorLayout.cpp"
+  ],
+  "original_functions": [
+    "00643e00",
+    "006435c0",
+    "006451c0",
+    "00643d30"
+  ],
+  "offsets": {
+    "active": 32,
+    "floorPart": 36,
+    "floorTouchInWorld": 44,
+    "previous": 64,
+    "current": 112
+  },
+  "scope": "Inactive relative floor-fields layout; strong/weak control, array allocation and state getter supported by code. PartInstance identity and exact field meanings are inferred, not independently proven. No full HumanoidState or runtime swap."
+}

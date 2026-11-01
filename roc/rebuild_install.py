@@ -99,9 +99,9 @@ def install(root, client='2008-06', package=None):
     return destination
 
 
-def prepare(client='2008-06', log=print):
+def prepare(client='2008-06', log=print, build_dependencies=True):
     """Complete cold contributor inputs before the expensive pinned native proof."""
-    from roc import analyze, clients, libs, rebuild, setup
+    from roc import analyze, clients, libs, rebuild, setup, input_reuse
     root = rebuild.ROOT
     log('Native setup: checking published ABI manifest')
     install(root, client)
@@ -126,7 +126,14 @@ def prepare(client='2008-06', log=print):
         for dependency in spec.get('depends', []):
             visit(dependency)
         modules.append((name, spec))
-    visit('rbxgs-app')
+    if build_dependencies:
+        visit('rbxgs-app')
+    verified = list(setup.compilers().values())
+    if entry.get('exe'):
+        verified.append(clients.exe_path(client,entry))
+    if input_reuse.attach(root/'tools',verified,log):
+        setup.toolchain_paths.cache_clear()
+        if hasattr(setup.compilers,'cache_clear'): setup.compilers.cache_clear()
     required = {rebuild.BUILD}
     for _, spec in modules:
         for layer in spec.get('layers', []):
@@ -148,14 +155,21 @@ def prepare(client='2008-06', log=print):
         profile = rebuild.toolchain(build)
         if any(not profile.get(k) for k in ('cl', 'link', 'lib', 'vc_include', 'sdk_include', 'sdk_lib')):
             raise ValueError('Incomplete historical compiler profile %s; repair installation before preflight' % build)
-    for _, spec in modules:
-        for layer in spec.get('layers', []):
-            for key in ('recipe', 'includes_from_recipe', 'defines_from_recipe'):
-                if layer.get(key):
-                    recipe = layer[key]
-                    if not libs._case_path(libs.LIBS / libs.RECIPES[recipe]['src']).is_dir():
-                        log('Native setup: fetching source recipe ' + recipe)
-                        libs.fetch(recipe)
+    recipes = {layer[key] for _,spec in modules for layer in spec.get('layers',[])
+               for key in ('recipe','includes_from_recipe','defines_from_recipe') if layer.get(key)} if build_dependencies else {'rbxgs','openrbx-client'}
+    for recipe in sorted(recipes):
+        if not libs._case_path(libs.LIBS / libs.RECIPES[recipe]['src']).is_dir():
+            log('Native setup: fetching source recipe '+recipe)
+            libs.fetch(recipe)
+    if not build_dependencies:
+        headers = root / 'rebuild' / client / 'native-headers'
+        if any('XTToolkitPro.h' in p.read_text(encoding='utf-8',errors='replace') for p in headers.rglob('*.h')):
+            toolkit = libs._case_path(libs.LIBS / libs.RECIPES['xtp-11.2.2']['src'])
+            if not toolkit.is_dir():
+                log('Native setup: fetching required XTP source headers')
+                libs.fetch('xtp-11.2.2')
+        log('Native setup: source/compiler inputs ready; linked dependencies deferred until submission')
+        return
     for name, spec in modules[:-1]:
         out = root / 'rebuild' / client / 'out' / spec['name']
         report = json.loads((out / 'report.json').read_text()) if (out / 'report.json').exists() else {}

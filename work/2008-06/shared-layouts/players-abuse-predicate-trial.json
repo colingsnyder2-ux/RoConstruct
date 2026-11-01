@@ -1,0 +1,6 @@
+{
+  "source_sha256": "48b4c02d32634d4fb8de4670d1278f239a58d594f82b990992174ba3e7589b53",
+  "compile_exit": 2,
+  "finding": "Donor Network/Players.h declares bool canReportAbuse() const, but does not compile against current native Instance hierarchy. Original 00496390 reads reporter +0x174 and calls Client::clientIsPresent 0049fe20. Native class layout and actual bool return ABI must be reconciled before live linkage.",
+  "scope": "Inactive trial, no credit."
+}

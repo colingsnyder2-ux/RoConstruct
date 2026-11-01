@@ -389,8 +389,8 @@ def test_packages_split_keeps_maintainer_modules_out():
     build = load_build()
     worker_modules = set(build.WORKER_MODULES)
     server_modules = set(build.SERVER_MODULES)
-    assert server_modules == {"cluster", "server", "reports", "progress", "integration_notify", "integration_site", "agent_inbox"}
-    assert {"graph", "source"} <= worker_modules
+    assert server_modules == {"cluster", "server", "reports", "progress", "integration_notify", "integration_site", "agent_inbox", "native_collaboration_host"}
+    assert {"graph", "source", "native_collaboration", "native_methods"} <= worker_modules
     assert not (worker_modules & server_modules), "helper packages must not carry server code"
     for helper in ("worker", "link", "doctor", "setup", "analyze", "draft", "providers",
                    "native_try", "native_edit", "native_sweep", "native_search", "native_transforms", "native_promotions", "standins", "rebuild_install", "integration_verify"):
@@ -423,7 +423,7 @@ def test_worker_bootstrap_publishes_both_guides_and_verified_archive(tmp_path):
     build.prepare_downloads(package)
     folder = tmp_path / 'local/findings/data'
     manifest = json.loads((folder / 'native-worker.json').read_text())
-    assert manifest['workflow_version'] == 17
+    assert manifest['workflow_version'] == 31
     assert manifest['matching_workflow_version'] == 4
     assert manifest['abi_manifest_classes'] == 1
     assert manifest['sha256'] == hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest()
@@ -1048,6 +1048,19 @@ def test_worker_stages_repository_native_dependency(tmp_path, monkeypatch):
     assert json.loads((staged / 'research/native-units.json').read_text()) == {'../rbxgs/Client/App': {}}
     with pytest.raises(SystemExit, match='Missing packaged native dependency'):
         build.stage('worker', {'files': list(files)[1:], 'modules': [], 'docs': {}}, tmp_path / 'missing')
+    frozen=tmp_path/'work/integration/sources/accepted'
+    for name,content in files.items():
+        if name.startswith('rebuild/'):
+            path=frozen/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(content)
+    generator=frozen/'rebuild/2008-06/patches/make_rbxgs_client.py'
+    generator.write_text('# accepted generator\n')
+    (frozen/native).write_text('// independently accepted source')
+    from roc.integration import atomic_json
+    atomic_json(tmp_path/'work/integration/source-root.json',dict(path='sources/accepted'))
+    selected=build.stage('worker', {'files': list(files), 'modules': [], 'docs': {}}, tmp_path/'pinned-stage')
+    assert (selected/native).read_text()=='// independently accepted source'
+    assert (tmp_path/native).read_text()=='// recovered source'
+    assert json.loads((selected/'roconstruct-package.json').read_text())['native_workflow_version']==build.NATIVE_WORKFLOW_VERSION
 
 
 def test_package_rejects_crlf_generator_before_publication(tmp_path):

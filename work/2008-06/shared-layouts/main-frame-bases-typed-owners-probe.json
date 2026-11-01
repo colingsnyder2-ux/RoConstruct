@@ -1,0 +1,26 @@
+{
+  "revision": "54e50084f4de40ae7db714e465f219be23e75b32",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeMainFrameBases.cpp": "b9d0dde3f2c959b41becc590ea17d9196b38afea3275cb78fe2e355016fabbff",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
+    "rebuild\\2008-06\\native-headers\\CMainFrameBases.h": "3e10b26ea2691550e68ba105aab1b10e1ce95fe76f36c13edd5ddeb55b8ee1f0",
+    "rebuild\\2008-06\\native-headers\\util\\Events.h": "63b847d0808007e8c1d6c87e7af6224954ac904379f518647bb3dc63969e5cb1",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_bases.py": "3629989217e1b654df68ff84624a7620e7c58b880435fee61ecbf8a7e4b6c8d7"
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "compiler_build": 21022,
+  "base_extent": 244,
+  "listener_offset": 240,
+  "full_class_size": 1204,
+  "members": {
+    "CXTWindowPos": "0x10c",
+    "CXTPDockingPaneManager": "0x138",
+    "CXTPTabClientWnd": "0x284",
+    "CXTThemeManager": "0x3b4",
+    "CXTPStatusBar": "0x3e0",
+    "splitter": "0x3a8",
+    "propertyGrid": "0x3ac",
+    "selectionCaption": "0x3b0"
+  },
+  "scope": "Candidate size and selected member offsets verified; some pointer identities, ownership, virtual bodies and runtime linkage unverified."
+}

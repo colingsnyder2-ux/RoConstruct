@@ -1,0 +1,124 @@
+{
+  "revision": "9cf9f160fd4ff19f4d93b21f546ba0302b53b658",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeChatPrompt.cpp": "370234c3fa4101893346043c51834748e2e2be332cc0227fce8622b2b310c31c",
+    "rebuild\\2008-06\\native-headers\\CChatPrompt.h": "9b68a86014d83320f7692b8c81e4a20f998b63ff1b91f6c3bb7929075cb9cb75",
+    "rebuild\\2008-06\\native-classes\\CChatPrompt.cpp": "524da9df43ddb6ff8ddaedc0e0272128d85266dd8f724c976befa8514baab789",
+    "rebuild\\2008-06\\native-headers\\ChatEnter.h": "42be5a74cba117030ede1fe3846887c7daad22a2ecab4392002eb4442b1b79d6",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild\\2008-06\\tests\\record_native_chat_prompt.py": "f906399209f0ad4b7aac2d79a79f0e8ea8e220213dc505d0541773fad07e2572"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeChatPrompt.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeChatPrompt.cpp"
+  ],
+  "compile_exit": 0,
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "methods": [
+    {
+      "address": "00411be0",
+      "symbol": "??0CChatPrompt@@QAE@XZ",
+      "size": 72,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00412800",
+      "symbol": "?bind@CChatPrompt@@QAEXPAVDataModel@RBX@@PAVCWnd@@@Z",
+      "size": 446,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 41,
+          "symbol": "??$shared_from@VDataModel@RBX@@@RBX@@YA?AV?$shared_ptr@VDataModel@RBX@@@boost@@PAVDataModel@0@@Z",
+          "target": "0x618a40"
+        },
+        {
+          "offset": 75,
+          "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+          "target": "0x4025b0"
+        },
+        {
+          "offset": 188,
+          "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+          "target": "0x411b40"
+        },
+        {
+          "offset": 227,
+          "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z",
+          "target": "0x55a8f0"
+        },
+        {
+          "offset": 234,
+          "symbol": "?reset@?$shared_ptr@VChatEnter@@@boost@@QAEXXZ",
+          "target": "0x456e80"
+        },
+        {
+          "offset": 255,
+          "symbol": "??$create@VPlayers@Network@RBX@@@ServiceProvider@RBX@@QBEPAVPlayers@Network@1@XZ",
+          "target": "0x412710"
+        },
+        {
+          "offset": 279,
+          "symbol": "??$create@VChatEnter@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VChatEnter@@@boost@@XZ",
+          "target": "0x411f50"
+        },
+        {
+          "offset": 303,
+          "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+          "target": "0x4025b0"
+        },
+        {
+          "offset": 379,
+          "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z",
+          "target": "0x55a8f0"
+        },
+        {
+          "offset": 404,
+          "symbol": "?EnableWindow@CWnd@@QAEHH@Z",
+          "target": "0x6a0d16"
+        },
+        {
+          "offset": 421,
+          "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+          "target": "0x5773c0"
+        }
+      ]
+    }
+  ],
+  "scope": "Inactive layout candidate; Context is passed to DataModel::Lock; Players factory RTTI corroborates +0xa4 type. ChatEnter ownership, other virtual methods, GuiItem ABI and runtime linking need further verification."
+}

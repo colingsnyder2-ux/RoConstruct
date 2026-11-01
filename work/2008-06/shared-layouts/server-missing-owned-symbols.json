@@ -1,0 +1,254 @@
+{
+  "source": "work\\integration\\jobs\\bc06e52f7970494682e9ab8e6e95486b\\rebuild\\2008-06\\out\\RbxgsApp\\owned-symbols.json",
+  "mapping": {
+    "00497600": [
+      {
+        "object": "Players.obj",
+        "symbol": "?superSafeOn@Players@Network@RBX@@QBE_NXZ"
+      }
+    ],
+    "005058f0": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "?brighter@Render@RBX@@YA_NABVGLight@G3D@@0@Z"
+      }
+    ],
+    "00505940": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Push_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@HHV12@P6A_NABV12@2@Z@Z"
+      }
+    ],
+    "00505a20": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Copy_backward_opt@PAVGLight@G3D@@PAV12@Uforward_iterator_tag@std@@@std@@YAPAVGLight@G3D@@PAV12@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+      }
+    ],
+    "00505ad0": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??1ToneMap@G3D@@QAE@XZ"
+      }
+    ],
+    "00505b90": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??1DepthBlur@Render@RBX@@QAE@XZ"
+      }
+    ],
+    "00505c70": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Med3@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@00P6A_NABV12@1@Z@Z"
+      }
+    ],
+    "00505d20": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Adjust_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@HHV12@P6A_NABV12@2@Z@Z"
+      }
+    ],
+    "00505e30": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Median@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@00P6A_NABV12@1@Z@Z"
+      }
+    ],
+    "00505ee0": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Make_heap@PAVGLight@G3D@@HV12@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@ZPAH0@Z"
+      }
+    ],
+    "00505ff0": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Unguarded_partition@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YA?AU?$pair@PAVGLight@G3D@@PAV12@@0@PAVGLight@G3D@@0P6A_NABV23@1@Z@Z"
+      }
+    ],
+    "00506890": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Insertion_sort1@PAVGLight@G3D@@P6A_NABV12@0@ZV12@@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@Z0@Z"
+      }
+    ],
+    "00506ae0": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Sort_heap@PAVGLight@G3D@@P6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0P6A_NABV12@1@Z@Z"
+      }
+    ],
+    "00506c00": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "?getDepthBlur@EffectSettings@Render@RBX@@SAPAVDepthBlur@23@XZ"
+      }
+    ],
+    "00506c80": [
+      {
+        "object": "EffectSettings.obj",
+        "symbol": "??$_Sort@PAVGLight@G3D@@HP6A_NABV12@0@Z@std@@YAXPAVGLight@G3D@@0HP6A_NABV12@1@Z@Z"
+      }
+    ],
+    "00556b00": [
+      {
+        "object": "RunStateOwner.obj",
+        "symbol": "??0RunService@RBX@@QAE@XZ"
+      }
+    ],
+    "005a0220": [
+      {
+        "object": "Workspace.obj",
+        "symbol": "?onWrapMouse@Workspace@RBX@@QAEXABVVector2@G3D@@@Z"
+      }
+    ],
+    "005a05a0": [
+      {
+        "object": "Workspace.obj",
+        "symbol": "?getCamera@Workspace@RBX@@UBEPAVCamera@2@XZ"
+      }
+    ],
+    "005a0d90": [
+      {
+        "object": "Workspace.obj",
+        "symbol": "?findTopInstance@Workspace@RBX@@SAPAVInstance@2@PAV32@@Z"
+      }
+    ],
+    "005d9340": [
+      {
+        "object": "Humanoid.obj",
+        "symbol": "?buildJoints@Humanoid@RBX@@QAEXXZ"
+      }
+    ],
+    "005d9bb0": [
+      {
+        "object": "Humanoid.obj",
+        "symbol": "?getLocalHumanoidFromContext@Humanoid@RBX@@SAPAV12@PBVInstance@2@@Z"
+      }
+    ],
+    "005d9db0": [
+      {
+        "object": "Humanoid.obj",
+        "symbol": "?getPrimitives@Humanoid@RBX@@AAEXAAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z"
+      }
+    ],
+    "005e5da0": [
+      {
+        "object": "MotorJoint.obj",
+        "symbol": "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z"
+      }
+    ],
+    "005e75b0": [
+      {
+        "object": "Primitive.obj",
+        "symbol": "?setCanCollide@Primitive@RBX@@QAEX_N@Z"
+      }
+    ],
+    "005e75e0": [
+      {
+        "object": "Primitive.obj",
+        "symbol": "?setCanSleep@Primitive@RBX@@QAEX_N@Z"
+      }
+    ],
+    "005e8050": [
+      {
+        "object": "Primitive.obj",
+        "symbol": "?setDragging@Primitive@RBX@@QAEX_N@Z"
+      }
+    ],
+    "005e80d0": [
+      {
+        "object": "Primitive.obj",
+        "symbol": "?setAnchor@Primitive@RBX@@QAEX_N@Z"
+      }
+    ],
+    "005e8140": [
+      {
+        "object": "Primitive.obj",
+        "symbol": "?setFlag0xaa@Primitive@RBX@@QAEX_N@Z"
+      }
+    ],
+    "005e8770": [
+      {
+        "object": "Primitive.obj",
+        "symbol": "??0Primitive@RBX@@QAE@W4GeometryType@Geometry@1@@Z"
+      }
+    ],
+    "0063c070": [
+      {
+        "object": "DebrisService.obj",
+        "symbol": "??0?$BoundFuncDesc@VDebrisService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@N@Z$01@Reflection@RBX@@QAE@P8DebrisService@2@AEXV?$shared_ptr@VInstance@RBX@@@boost@@N@ZPBD22NW4Security@FunctionDescriptor@12@@Z"
+      }
+    ],
+    "0064dc90": [
+      {
+        "object": "Point.obj",
+        "symbol": "?step@Point@RBX@@QAEXXZ"
+      }
+    ],
+    "00668a20": [
+      {
+        "object": "RunningAverage.obj",
+        "symbol": "?update@RunningAverageState@RBX@@QAEXABVCoordinateFrame@G3D@@M@Z"
+      }
+    ],
+    "00676b20": [
+      {
+        "object": "Draw.obj",
+        "symbol": "?spokes@Draw@RBX@@CAXMMPAVAdorn@2@@Z"
+      }
+    ],
+    "00676e00": [
+      {
+        "object": "Draw.obj",
+        "symbol": "?selectionBox@Draw@RBX@@SAXABVPart@2@PAVAdorn@2@ABVColor4@G3D@@@Z"
+      }
+    ],
+    "006770f0": [
+      {
+        "object": "Draw.obj",
+        "symbol": "?partAdorn@Draw@RBX@@SAXABVPart@2@PAVAdorn@2@ABVColor3@G3D@@@Z"
+      }
+    ],
+    "00677190": [
+      {
+        "object": "HitTest.obj",
+        "symbol": "?hitTestBall@HitTest@RBX@@CA_NABVPart@2@AAVRay@G3D@@AAVVector3@5@M@Z"
+      }
+    ],
+    "00677260": [
+      {
+        "object": "HitTest.obj",
+        "symbol": "?hitTestCylinder@HitTest@RBX@@CA_NABVPart@2@AAVRay@G3D@@AAVVector3@5@M@Z"
+      }
+    ],
+    "00677300": [
+      {
+        "object": "HitTest.obj",
+        "symbol": "?hitTestBox@HitTest@RBX@@CA_NABVPart@2@AAVRay@G3D@@AAVVector3@5@M@Z"
+      }
+    ],
+    "007f8ba0": [
+      {
+        "object": "DebrisService.obj",
+        "symbol": "??__Efunc_AddItem@@YAXXZ"
+      }
+    ]
+  },
+  "objects": {
+    "Players.obj": 1,
+    "EffectSettings.obj": 14,
+    "RunStateOwner.obj": 1,
+    "Workspace.obj": 3,
+    "Humanoid.obj": 3,
+    "MotorJoint.obj": 1,
+    "Primitive.obj": 6,
+    "DebrisService.obj": 2,
+    "Point.obj": 1,
+    "RunningAverage.obj": 1,
+    "Draw.obj": 3,
+    "HitTest.obj": 3
+  },
+  "scope": "Historical accepted ownership; fresh rebuild needed before restoration."
+}

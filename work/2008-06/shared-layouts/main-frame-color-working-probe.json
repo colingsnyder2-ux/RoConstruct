@@ -1,0 +1,83 @@
+{
+  "revision": "363b8d813b1a8f5d1a8fde19e067f3c4a3edfb35",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeMainFrameVtable.cpp": "7a17c26bb44a2e83cabc13e18c620aa8e08b9dc21e811b753d90f21ab8e18687",
+    "rebuild\\2008-06\\native-classes\\CMainFrameColor.cpp": "c727ccc55a277fc18693427ded89ec0ee04fb793b3a60d69f76e8eb193876de0",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "d63af35ad131e23f509c3ccdd9d5163099aee085e80c34a4d137f92b90738f9f",
+    "rebuild\\2008-06\\native-headers\\CMainFrameBases.h": "3e10b26ea2691550e68ba105aab1b10e1ce95fe76f36c13edd5ddeb55b8ee1f0",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_color.py": "bd12e470aa340d41a4d5e96bf6971cc820220c82ecb98c20937fd60fe5305447"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/FoNativeMainFrameColor.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeMainFrameVtable.cpp"
+  ],
+  "compile_exit": 0,
+  "methods": [
+    {
+      "address": "0042fb20",
+      "symbol": "?onEvent@CMainFrame@@UAEXPBVFillToolColor@RBX@@VBrickColor@3@@Z",
+      "size": 95,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 17,
+          "symbol": "?color3@BrickColor@RBX@@QBE?AVColor3@G3D@@XZ",
+          "target": "0x5b6270"
+        },
+        {
+          "offset": 27,
+          "symbol": "??0Color3uint8@G3D@@QAE@ABVColor3@1@@Z",
+          "target": "0x5106a0"
+        },
+        {
+          "offset": 71,
+          "symbol": "?FindControl@CXTPCommandBars@@QBEPAVCXTPControl@@W4XTPControlType@@IHH@Z",
+          "target": "0x6a4f40"
+        },
+        {
+          "offset": 83,
+          "symbol": "?SetColor@CXTPControlPopupColor@@QAEXK@Z",
+          "target": "0x6e97f0"
+        }
+      ]
+    }
+  ],
+  "scope": "Listener slot and primary GetRuntimeClass body verified; runtime class data, remaining ABI and runtime linkage open."
+}

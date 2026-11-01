@@ -1,0 +1,123 @@
+{
+  "revision": "9cf9f160fd4ff19f4d93b21f546ba0302b53b658",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeMultiPlayerPane.cpp": "9c7e6a687451e58068cb290375e55ab3510f2126ad2a21b75b4f306555c1359d",
+    "rebuild\\2008-06\\native-headers\\CMultiPlayerPane.h": "47b185f4d3129e6b7b3dcd30848cbad1024570abc57d4914a8576a5859d7212b",
+    "rebuild\\2008-06\\native-classes\\CMultiPlayerPane.cpp": "e574b1bb9f58979b34175e900918f3ce6c23cbc05d52fe2f4af7d687aa4d2367",
+    "rebuild\\2008-06\\tests\\record_native_multiplayer_pane.py": "80ced860dc48313b2e4567cefe27790c80ce91efd21d53f122384180bb37348b"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeMultiPlayerPane.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeMultiPlayerPane.cpp"
+  ],
+  "compile_exit": 0,
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "mfc_exports_sha256": "aa2a4434e60113c7475e8e36edac5e2863a3f34ff89feeaa57d85ce68506ea15",
+  "verified_mfc_calls": [
+    {
+      "symbol": "?MoveWindow@CWnd@@QAEXHHHHH@Z",
+      "thunk": "0x6a0a4c",
+      "ordinal": 4529
+    },
+    {
+      "symbol": "?Default@CWnd@@IAEJXZ",
+      "thunk": "0x6a0c68",
+      "ordinal": 2069
+    },
+    {
+      "symbol": "?OnDestroy@CWnd@@IAEXXZ",
+      "thunk": "0x6a107c",
+      "ordinal": 4760
+    },
+    {
+      "symbol": "?Create@CWnd@@UAEHPBD0KABUtagRECT@@PAV1@IPAUCCreateContext@@@Z",
+      "thunk": "0x6a06f2",
+      "ordinal": 1728
+    },
+    {
+      "symbol": "?CreateObject@CRuntimeClass@@QAEPAVCObject@@XZ",
+      "thunk": "0x6a0fc2",
+      "ordinal": 1855
+    }
+  ],
+  "methods": [
+    {
+      "address": "00432e30",
+      "symbol": "??0CMultiPlayerPane@@QAE@XZ",
+      "size": 25,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00432e50",
+      "symbol": "??1CMultiPlayerPane@@UAE@XZ",
+      "size": 11,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00432e60",
+      "symbol": "?initialize@CMultiPlayerPane@@QAEHPAVCWnd@@PAVDataModel@RBX@@@Z",
+      "size": 180,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00432e20",
+      "symbol": "?GetRuntimeClass@CMultiPlayerPane@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00432fa0",
+      "symbol": "?GetMessageMap@CMultiPlayerPane@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00432f20",
+      "symbol": "?OnSize@CMultiPlayerPane@@QAEXIHH@Z",
+      "size": 49,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00432f60",
+      "symbol": "?OnDestroy@CMultiPlayerPane@@QAEXXZ",
+      "size": 12,
+      "relocation_normalized_exact": true
+    }
+  ],
+  "scope": "Inactive compiler proof; CChatPrompt runtime-class allocation and storage confirmed. Five original MFC thunk ordinals are mapped to SDK export symbols; ChatPrompt bind symbol remains provisional; full pane virtual methods and runtime linkage remain unverified."
+}

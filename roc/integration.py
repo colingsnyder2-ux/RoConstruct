@@ -266,12 +266,20 @@ def resume_pending(api, directory, user):
     return recovered
 
 
+def adopted_path(tree, name, workspace=None):
+    """Native source adoptions belong to this workspace, not a reused vendor checkout."""
+    value = name.replace('\\', '/')
+    if value.startswith('../../../rebuild/'):
+        return (Path(workspace or ROOT) / value[9:]).resolve()
+    return Path(os.path.abspath(Path(tree) / name))
+
+
 def overlay_text(tree, name, patches):
     path = tree/name
     text = path.read_text(errors='replace') if path.exists() else ''
     for old, new in patches.get(name, []):
         if old == '@replace':
-            text = (tree/new).read_text(errors='replace')
+            text = adopted_path(tree,new).read_text(errors='replace')
         elif old.startswith('@all:'):
             text = text.replace(old[5:], new)
         elif old:
@@ -283,11 +291,32 @@ def overlay_text(tree, name, patches):
     return text
 
 
+def source_root(root):
+    """Optional maintainer-owned canonical source lane; contributor uploads cannot select it."""
+    root = Path(root)
+    directory = root / 'work/integration'
+    pin = directory / 'source-root.json'
+    if not pin.exists():
+        return root
+    selected = (directory / json.loads(pin.read_text(encoding='utf-8'))['path']).resolve()
+    if selected == (directory/'sources').resolve() or not selected.is_relative_to((directory/'sources').resolve()):
+        raise ValueError('Canonical source lane must stay inside work/integration/sources')
+    if not (selected / 'rebuild/2008-06/patches/make_rbxgs_client.py').is_file():
+        raise ValueError('Canonical source lane is missing trusted rebuild inputs')
+    return selected
+
+
 class Promotions:
     def __init__(self, store, root=ROOT):
         self.store, self.root = store, Path(root)
         self.directory = self.root / "work" / "integration"
-        self.overlay = self.root / "rebuild" / CLIENT / "patches" / "rbxgs-client.json"
+        self.source_root = source_root(self.root)
+        if self.source_root != self.root:
+            import shutil
+            shutil.copytree(self.root/'roc', self.source_root/'roc', dirs_exist_ok=True,
+                            ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+            shutil.copy2(self.root/'roc.py', self.source_root/'roc.py')
+        self.overlay = self.source_root / "rebuild" / CLIENT / "patches" / "rbxgs-client.json"
         self.generator = self.overlay.with_name("make_rbxgs_client.py")
         self.wake = threading.Event()
         self.worker_error = None
@@ -325,7 +354,7 @@ class Promotions:
                 accepted.append(json.loads(row[0]))
             result = {"revision": digest([base, generator]), "overlay": base,
                       "generator": generator, "accepted": accepted,
-                      "features": {"context": 1, "metrics": 1, "native_reference_gate": 1, "exact_unit_batches": True, "selection_modes": ["easy", "balanced", "large"]},
+                      "features": {"context": 1, "metrics": 1, "native_reference_gate": 1, "native_recovery_collaboration": 1, "exact_unit_batches": True, "selection_modes": ["easy", "balanced", "large"]},
                       "limits": {"claims": MAX_CLAIMS, "targets": MAX_TARGETS,
                                  "overlay_paths": MAX_OVERLAY_PATHS, "edits_per_path": MAX_EDITS_PER_PATH,
                                  "overlay_bytes": MAX_OVERLAY_BYTES, "evidence_bytes": MAX_EVIDENCE_BYTES,
@@ -340,7 +369,7 @@ class Promotions:
 
     def _catalog(self, requested_unit, revisit_parked):
         path = self.root / "rebuild" / CLIENT / "manifests" / "functions.json"
-        report = path.parent.parent / "out" / "RbxgsApp" / "report.json"
+        report = self.source_root / "rebuild" / CLIENT / "out" / "RbxgsApp" / "report.json"
         queue = path.parent.parent / "out" / "agent-queue.json"
         with self.store.lock:
             accepted_version = self.store.db.execute("SELECT COUNT(*),MAX(ts) FROM integration_accepted").fetchone()
@@ -349,14 +378,14 @@ class Promotions:
         analysis_stamp = (analysis_path.stat().st_mtime_ns, analysis_path.stat().st_size) if analysis_path.exists() else None
         names_path = self.root/'rebuild'/CLIENT/'out/native-names.json'
         names_stamp = (names_path.stat().st_mtime_ns,names_path.stat().st_size) if names_path.exists() else None
-        coverage_reports = sorted((path.parent.parent/'out').glob('*/report.json'))
+        coverage_reports = sorted((self.source_root/'rebuild'/CLIENT/'out').glob('*/report.json'))
         coverage_stamp = tuple((str(p),p.stat().st_mtime_ns,p.stat().st_size) for p in coverage_reports)
-        indexed_paths, declaration_hash = type_paths(self.root, json.loads(self.overlay.read_text()))
+        indexed_paths, declaration_hash = type_paths(self.source_root, json.loads(self.overlay.read_text()))
         key = (path.stat().st_mtime_ns, self.overlay.stat().st_mtime_ns, report.stat().st_mtime_ns if report.exists() else 0,
                queue.stat().st_mtime_ns if queue.exists() else 0, accepted_version, declaration_hash, analysis_stamp, names_stamp, coverage_stamp)
         if self.catalog_key != key:
             from collections import defaultdict
-            tree = self.root / "tools/rbxgs/Client"
+            tree = self.source_root / "tools/rbxgs/Client"
             accepted_overlay = json.loads(self.overlay.read_text())
             self.native_paths = indexed_paths
             classes = {name.rsplit('::', 1)[-1] for name in indexed_paths}

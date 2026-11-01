@@ -1,0 +1,899 @@
+{
+  "revision": "cb7f066c59733d4c4260c95a431edb652a1dea69",
+  "sources": {
+    "rebuild\\2008-06\\native-classes\\CRobloxDHtmlDialog.cpp": "456bbabbde7838124745c3ba79ba71de69febc7a508f773d2e410a5c566058cf",
+    "rebuild\\2008-06\\native-headers\\CRobloxDHtmlDialog.h": "16357866b06bcd6d9ea55a60ae1097627e1c04dde8f2746cdaf34a981ac2bd55",
+    "rebuild\\2008-06\\native-classes\\CAboutRobloxDialog.cpp": "f0b941d00a51b4653d18724503606358229028ffb37a901d9bd6ac3245c55579",
+    "rebuild\\2008-06\\native-headers\\CAboutRobloxDialog.h": "0c5f5179acfa995263ea9322b1e62e25cc6f2e1cc0701ebaea2e157aa08056f7",
+    "rebuild\\2008-06\\tests\\record_native_dhtml_dialog.py": "de51dbda76351877a16c0f1892266ee6d0a5ecd1848179241fe8c858ff4ea8ce"
+  },
+  "compiler_build": 21022,
+  "compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoNativeDHtmlDialog.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDHtmlDialogPreprocessed.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0044ef40",
+      "symbol": "??0CRobloxDHtmlDialog@@QAE@IIPAVCWnd@@@Z",
+      "size": 138,
+      "target_size": 138,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00401050",
+      "symbol": "??1CRobloxDHtmlDialog@@UAE@XZ",
+      "size": 80,
+      "target_size": 80,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0044ee90",
+      "symbol": "?GetRuntimeClass@CRobloxDHtmlDialog@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "target_size": 6,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0044f0a0",
+      "symbol": "??_GCRobloxDHtmlDialog@@UAEPAXI@Z",
+      "size": 30,
+      "target_size": 30,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0044efd0",
+      "symbol": "?OnInitDialog@CRobloxDHtmlDialog@@UAEHXZ",
+      "size": 58,
+      "target_size": 58,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0044eea0",
+      "symbol": "?GetEventSinkMap@CRobloxDHtmlDialog@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+      "size": 6,
+      "target_size": 6,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "007286a0",
+      "symbol": "?IsExternalDispatchSafe@CRobloxDHtmlDialog@@UAEHXZ",
+      "size": 6,
+      "target_size": 6,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0044f010",
+      "symbol": "?BeforeNavigate2@CRobloxDHtmlDialog@@QAEXPAUIDispatch@@PAUtagVARIANT@@1111PAH@Z",
+      "size": 143,
+      "target_size": 143,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0044f0c0",
+      "symbol": "?WindowClosing@CRobloxDHtmlDialog@@QAEXHPAH@Z",
+      "size": 170,
+      "target_size": 170,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0041dcb0",
+      "symbol": "?checkDialogUrl@@YAJPBD@Z",
+      "size": 31,
+      "target_size": 31,
+      "relocation_masked_match": true
+    }
+  ],
+  "vtables": [
+    {
+      "address": "0x8170bc",
+      "slots": [
+        {
+          "slot": 0,
+          "address": "0x44ee90",
+          "symbol": "?GetRuntimeClass@CRobloxDHtmlDialog@@UBEPAUCRuntimeClass@@XZ",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 1,
+          "address": "0x44f0a0",
+          "symbol": "??_ECRobloxDHtmlDialog@@UAEPAXI@Z",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 2,
+          "address": "0x70bdf0",
+          "symbol": "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+          "proof": "folded release no-op; symbol identity inferred from base slot"
+        },
+        {
+          "slot": 3,
+          "address": "0x47d410",
+          "symbol": "?AssertValid@CObject@@UBEXXZ",
+          "proof": "folded release no-op; symbol identity inferred from base slot"
+        },
+        {
+          "slot": 4,
+          "address": "0x70bdf0",
+          "symbol": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+          "proof": "folded release no-op; symbol identity inferred from base slot"
+        },
+        {
+          "slot": 5,
+          "address": "0x6a0692",
+          "symbol": "?OnCmdMsg@CDialog@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 6,
+          "address": "0x6a0698",
+          "symbol": "?OnFinalRelease@CWnd@@UAEXXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 7,
+          "address": "0x6a069e",
+          "symbol": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 8,
+          "address": "0x6a06a4",
+          "symbol": "?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 9,
+          "address": "0x6a06aa",
+          "symbol": "?GetTypeInfoCount@CCmdTarget@@UAEIXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 10,
+          "address": "0x6a06b0",
+          "symbol": "?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 11,
+          "address": "0x6a06b6",
+          "symbol": "?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 12,
+          "address": "0x6a1376",
+          "symbol": "?GetMessageMap@CDHtmlDialog@@MBEPBUAFX_MSGMAP@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 13,
+          "address": "0x6a06bc",
+          "symbol": "?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 14,
+          "address": "0x6a06c2",
+          "symbol": "?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 15,
+          "address": "0x6a06c8",
+          "symbol": "?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 16,
+          "address": "0x6a06ce",
+          "symbol": "?GetInterfaceMap@CWnd@@MBEPBUAFX_INTERFACEMAP@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 17,
+          "address": "0x44eea0",
+          "symbol": "?GetEventSinkMap@CRobloxDHtmlDialog@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 18,
+          "address": "0x6a06d4",
+          "symbol": "?OnCreateAggregates@CCmdTarget@@UAEHXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 19,
+          "address": "0x6a06da",
+          "symbol": "?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 20,
+          "address": "0x6a06e0",
+          "symbol": "?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 21,
+          "address": "0x6a06e6",
+          "symbol": "?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 22,
+          "address": "0x6a06ec",
+          "symbol": "?PreSubclassWindow@CWnd@@UAEXXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 23,
+          "address": "0x6a06f2",
+          "symbol": "?Create@CWnd@@UAEHPBD0KABUtagRECT@@PAV1@IPAUCCreateContext@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 24,
+          "address": "0x6a06f8",
+          "symbol": "?CreateEx@CWnd@@UAEHKPBD0KABUtagRECT@@PAV1@IPAX@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 25,
+          "address": "0x6a06fe",
+          "symbol": "?CreateEx@CWnd@@UAEHKPBD0KHHHHPAUHWND__@@PAUHMENU__@@PAX@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 26,
+          "address": "0x6a0704",
+          "symbol": "?DestroyWindow@CWnd@@UAEHXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 27,
+          "address": "0x6a070a",
+          "symbol": "?PreCreateWindow@CWnd@@UAEHAAUtagCREATESTRUCTA@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 28,
+          "address": "0x6a0710",
+          "symbol": "?CalcWindowRect@CWnd@@UAEXPAUtagRECT@@I@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 29,
+          "address": "0x6a0716",
+          "symbol": "?GetMenu@CWnd@@UBEPAVCMenu@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 30,
+          "address": "0x6a071c",
+          "symbol": "?SetMenu@CWnd@@UAEHPAVCMenu@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 31,
+          "address": "0x6a0722",
+          "symbol": "?OnToolHitTest@CWnd@@UBEHVCPoint@@PAUtagTOOLINFOA@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 32,
+          "address": "0x6a0728",
+          "symbol": "?GetScrollBarCtrl@CWnd@@UBEPAVCScrollBar@@H@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 33,
+          "address": "0x6a072e",
+          "symbol": "?WinHelpA@CWnd@@UAEXKI@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 34,
+          "address": "0x6a0734",
+          "symbol": "?HtmlHelpA@CWnd@@UAEXKI@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 35,
+          "address": "0x6a073a",
+          "symbol": "?WinHelpInternal@CWnd@@UAEXKI@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 36,
+          "address": "0x6a0740",
+          "symbol": "?ContinueModal@CWnd@@UAEHXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 37,
+          "address": "0x6a0746",
+          "symbol": "?EndModalLoop@CWnd@@UAEXH@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 38,
+          "address": "0x6a074c",
+          "symbol": "?EnsureStdObj@CWnd@@UAEJXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 39,
+          "address": "0x6a0752",
+          "symbol": "?get_accParent@CWnd@@UAEJPAPAUIDispatch@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 40,
+          "address": "0x6a0758",
+          "symbol": "?get_accChildCount@CWnd@@UAEJPAJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 41,
+          "address": "0x6a075e",
+          "symbol": "?get_accChild@CWnd@@UAEJUtagVARIANT@@PAPAUIDispatch@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 42,
+          "address": "0x6a0764",
+          "symbol": "?get_accName@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 43,
+          "address": "0x6a076a",
+          "symbol": "?get_accValue@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 44,
+          "address": "0x6a0770",
+          "symbol": "?get_accDescription@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 45,
+          "address": "0x6a0776",
+          "symbol": "?get_accRole@CWnd@@UAEJUtagVARIANT@@PAU2@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 46,
+          "address": "0x6a077c",
+          "symbol": "?get_accState@CWnd@@UAEJUtagVARIANT@@PAU2@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 47,
+          "address": "0x6a0782",
+          "symbol": "?get_accHelp@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 48,
+          "address": "0x6a0788",
+          "symbol": "?get_accHelpTopic@CWnd@@UAEJPAPA_WUtagVARIANT@@PAJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 49,
+          "address": "0x6a078e",
+          "symbol": "?get_accKeyboardShortcut@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 50,
+          "address": "0x6a0794",
+          "symbol": "?get_accFocus@CWnd@@UAEJPAUtagVARIANT@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 51,
+          "address": "0x6a079a",
+          "symbol": "?get_accSelection@CWnd@@UAEJPAUtagVARIANT@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 52,
+          "address": "0x6a07a0",
+          "symbol": "?get_accDefaultAction@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 53,
+          "address": "0x6a07a6",
+          "symbol": "?accSelect@CWnd@@UAEJJUtagVARIANT@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 54,
+          "address": "0x6a07ac",
+          "symbol": "?accLocation@CWnd@@UAEJPAJ000UtagVARIANT@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 55,
+          "address": "0x6a07b2",
+          "symbol": "?accNavigate@CWnd@@UAEJJUtagVARIANT@@PAU2@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 56,
+          "address": "0x6a07b8",
+          "symbol": "?accHitTest@CWnd@@UAEJJJPAUtagVARIANT@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 57,
+          "address": "0x6a07be",
+          "symbol": "?accDoDefaultAction@CWnd@@UAEJUtagVARIANT@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 58,
+          "address": "0x6a07c4",
+          "symbol": "?put_accName@CWnd@@UAEJUtagVARIANT@@PA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 59,
+          "address": "0x6a07ca",
+          "symbol": "?put_accValue@CWnd@@UAEJUtagVARIANT@@PA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 60,
+          "address": "0x6a07d0",
+          "symbol": "?SetProxy@CWnd@@UAEJPAUIAccessibleProxy@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 61,
+          "address": "0x6a07d6",
+          "symbol": "?CreateAccessibleProxy@CWnd@@UAEJIJPAJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 62,
+          "address": "0x6a07dc",
+          "symbol": "?OnCommand@CWnd@@MAEHIJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 63,
+          "address": "0x6a07e2",
+          "symbol": "?OnNotify@CWnd@@MAEHIJPAJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 64,
+          "address": "0x6a07e8",
+          "symbol": "?GetSuperWndProcAddr@CWnd@@MAEPAP6GJPAUHWND__@@IIJ@ZXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 65,
+          "address": "0x70bdf0",
+          "symbol": "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 66,
+          "address": "0x401120",
+          "symbol": "?BeginModalState@CWnd@@UAEXXZ",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 67,
+          "address": "0x401130",
+          "symbol": "?EndModalState@CWnd@@UAEXXZ",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 68,
+          "address": "0x6a07ee",
+          "symbol": "?PreTranslateMessage@CDialog@@UAEHPAUtagMSG@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 69,
+          "address": "0x6a07f4",
+          "symbol": "?OnAmbientProperty@CWnd@@UAEHPAVCOleControlSite@@JPAUtagVARIANT@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 70,
+          "address": "0x6a07fa",
+          "symbol": "?WindowProc@CWnd@@MAEJIIJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 71,
+          "address": "0x6a0800",
+          "symbol": "?OnWndMsg@CWnd@@MAEHIIJPAJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 72,
+          "address": "0x6a0806",
+          "symbol": "?DefWindowProcA@CWnd@@MAEJIIJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 73,
+          "address": "0x6a080c",
+          "symbol": "?PostNcDestroy@CWnd@@MAEXXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 74,
+          "address": "0x6a0812",
+          "symbol": "?OnChildNotify@CWnd@@MAEHIIJPAJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 75,
+          "address": "0x6a0818",
+          "symbol": "?CheckAutoCenter@CDialog@@UAEHXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 76,
+          "address": "0x6a081e",
+          "symbol": "?IsFrameWnd@CWnd@@UBEHXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 77,
+          "address": "0x6a0824",
+          "symbol": "?CreateControlContainer@CWnd@@MAEHPAPAVCOleControlContainer@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 78,
+          "address": "0x6a082a",
+          "symbol": "?CreateControlSite@CDHtmlDialog@@UAEHPAVCOleControlContainer@@PAPAVCOleControlSite@@IABU_GUID@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 79,
+          "address": "0x6a0830",
+          "symbol": "?SetOccDialogInfo@CDialog@@MAEHPAU_AFX_OCC_DIALOG_INFO@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 80,
+          "address": "0x6a0836",
+          "symbol": "?GetOccDialogInfo@CDialog@@MAEPAU_AFX_OCC_DIALOG_INFO@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 81,
+          "address": "0x401140",
+          "symbol": "?Create@CDialog@@UAEHIPAVCWnd@@@Z",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 82,
+          "address": "0x6a083c",
+          "symbol": "?Create@CDialog@@UAEHPBDPAVCWnd@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 83,
+          "address": "0x6a0842",
+          "symbol": "?CreateIndirect@CDialog@@UAEHPAXPAVCWnd@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 84,
+          "address": "0x6a0848",
+          "symbol": "?CreateIndirect@CDialog@@UAEHPBUDLGTEMPLATE@@PAVCWnd@@PAX@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 85,
+          "address": "0x6a084e",
+          "symbol": "?DoModal@CDialog@@UAEHXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 86,
+          "address": "0x44efd0",
+          "symbol": "?OnInitDialog@CRobloxDHtmlDialog@@UAEHXZ",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 87,
+          "address": "0x6a0854",
+          "symbol": "?OnSetFont@CDialog@@UAEXPAVCFont@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 88,
+          "address": "0x6a085a",
+          "symbol": "?OnOK@CDialog@@MAEXXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 89,
+          "address": "0x6a0860",
+          "symbol": "?OnCancel@CDialog@@MAEXXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 90,
+          "address": "0x6a0866",
+          "symbol": "?PreInitDialog@CDialog@@MAEXXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 91,
+          "address": "0x6a086c",
+          "symbol": "?CanAccessExternal@CDHtmlDialog@@UAEHXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 92,
+          "address": "0x6a0872",
+          "symbol": "?OnBeforeNavigate@CDHtmlDialog@@UAEXPAUIDispatch@@PBD@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 93,
+          "address": "0x6a0878",
+          "symbol": "?OnNavigateComplete@CDHtmlDialog@@UAEXPAUIDispatch@@PBD@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 94,
+          "address": "0x6a0914",
+          "symbol": "?OnDocumentComplete@CDHtmlDialog@@UAEXPAUIDispatch@@PBD@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 95,
+          "address": "0x7286a0",
+          "symbol": "?IsExternalDispatchSafe@CRobloxDHtmlDialog@@UAEHXZ",
+          "proof": "relocation-masked body; deleting alias still needs linked proof"
+        },
+        {
+          "slot": 96,
+          "address": "0x6a087e",
+          "symbol": "?ShowContextMenu@CDHtmlDialog@@UAGJKPAUtagPOINT@@PAUIUnknown@@PAUIDispatch@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 97,
+          "address": "0x6a0884",
+          "symbol": "?GetHostInfo@CDHtmlDialog@@UAGJPAU_DOCHOSTUIINFO@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 98,
+          "address": "0x6a088a",
+          "symbol": "?ShowUI@CDHtmlDialog@@UAGJKPAUIOleInPlaceActiveObject@@PAUIOleCommandTarget@@PAUIOleInPlaceFrame@@PAUIOleInPlaceUIWindow@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 99,
+          "address": "0x6a0890",
+          "symbol": "?HideUI@CDHtmlDialog@@UAGJXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 100,
+          "address": "0x6a0896",
+          "symbol": "?UpdateUI@CDHtmlDialog@@UAGJXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 101,
+          "address": "0x6a089c",
+          "symbol": "?EnableModeless@CDHtmlDialog@@UAGJH@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 102,
+          "address": "0x6a08a2",
+          "symbol": "?OnDocWindowActivate@CDHtmlDialog@@UAGJH@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 103,
+          "address": "0x6a08a8",
+          "symbol": "?OnFrameWindowActivate@CDHtmlDialog@@UAGJH@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 104,
+          "address": "0x6a08ae",
+          "symbol": "?ResizeBorder@CDHtmlDialog@@UAGJPBUtagRECT@@PAUIOleInPlaceUIWindow@@H@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 105,
+          "address": "0x6a08b4",
+          "symbol": "?TranslateAcceleratorA@CDHtmlDialog@@UAGJPAUtagMSG@@PBU_GUID@@K@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 106,
+          "address": "0x6a08ba",
+          "symbol": "?GetOptionKeyPath@CDHtmlDialog@@UAGJPAPA_WK@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 107,
+          "address": "0x6a08c0",
+          "symbol": "?GetDropTarget@CDHtmlDialog@@UAGJPAUIDropTarget@@PAPAU2@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 108,
+          "address": "0x6a08c6",
+          "symbol": "?GetExternal@CDHtmlDialog@@UAGJPAPAUIDispatch@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 109,
+          "address": "0x6a08cc",
+          "symbol": "?TranslateUrl@CDHtmlDialog@@UAGJKPA_WPAPA_W@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 110,
+          "address": "0x6a08d2",
+          "symbol": "?FilterDataObject@CDHtmlDialog@@UAGJPAUIDataObject@@PAPAU2@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        }
+      ]
+    },
+    {
+      "address": "0x81708c",
+      "slots": [
+        {
+          "slot": 0,
+          "address": "0x6a08d8",
+          "symbol": "?CDHtmlSinkHandlerQueryInterface@CDHtmlEventSink@@UAGJABU_GUID@@PAPAX@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 1,
+          "address": "0x6a08de",
+          "symbol": "?AddRef@CDHtmlEventSink@@UAGKXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 2,
+          "address": "0x6a08e4",
+          "symbol": "?Release@CDHtmlEventSink@@UAGKXZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 3,
+          "address": "0x6a08ea",
+          "symbol": "?GetTypeInfoCount@CDHtmlEventSink@@UAGJPAI@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 4,
+          "address": "0x6a08f0",
+          "symbol": "?GetTypeInfo@CDHtmlEventSink@@UAGJIKPAPAUITypeInfo@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 5,
+          "address": "0x6a08f6",
+          "symbol": "?GetIDsOfNames@CDHtmlEventSink@@UAGJABU_GUID@@PAPA_WIKPAJ@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 6,
+          "address": "0x6a08fc",
+          "symbol": "?Invoke@CDHtmlEventSink@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 7,
+          "address": "0x6a137c",
+          "symbol": "?GetDHtmlEventMap@CDHtmlDialog@@MAEPBUDHtmlEventMapEntry@@XZ",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 8,
+          "address": "0x6a0902",
+          "symbol": "?DHtmlEventHook@CDHtmlEventSink@@UAEHPAJJPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        },
+        {
+          "slot": 9,
+          "address": "0x6a0908",
+          "symbol": "?GetDHtmlDocument@CDHtmlDialog@@UAEJPAPAUIHTMLDocument2@@@Z",
+          "proof": "MFC import ordinal and decorated symbol"
+        }
+      ]
+    }
+  ],
+  "runtime_size": 304,
+  "verified_event_entries": 3,
+  "about_methods": [
+    {
+      "address": "00401220",
+      "symbol": "??0CAboutRobloxDialog@@QAE@PAVCWnd@@@Z",
+      "size": 104,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00401290",
+      "symbol": "??_GCAboutRobloxDialog@@UAEPAXI@Z",
+      "size": 43,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00401040",
+      "symbol": "?GetRuntimeClass@CAboutRobloxDialog@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004012c0",
+      "symbol": "?GetMessageMap@CAboutRobloxDialog@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004010f0",
+      "symbol": "?OnInitDialog@CAboutRobloxDialog@@UAEHXZ",
+      "size": 11,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004010c0",
+      "symbol": "?OnDocumentComplete@CAboutRobloxDialog@@UAEXPAUIDispatch@@PBD@Z",
+      "size": 33,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00401100",
+      "symbol": "?OnClickedButtonOK@CAboutRobloxDialog@@QAEJPAUIHTMLElement@@@Z",
+      "size": 15,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004012d0",
+      "symbol": "?GetDHtmlEventMap@CAboutRobloxDialog@@MAEPBUDHtmlEventMapEntry@@XZ",
+      "size": 81,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00401330",
+      "symbol": "?CreateObject@CAboutRobloxDialog@@SGPAVCObject@@XZ",
+      "size": 91,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00401030",
+      "symbol": "?_GetBaseClass@CAboutRobloxDialog@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "relocation_masked_match": true
+    }
+  ],
+  "scope": "Inactive candidate. Complete vtable/data/EH linkage and runtime integration remain unproven; no integration count credit."
+}

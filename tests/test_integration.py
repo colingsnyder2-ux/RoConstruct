@@ -590,6 +590,8 @@ def test_cli_worker_identity_is_stable_per_checkout_not_shared_by_same_pc(promot
     api = Mock()
     identities = []
     def call(path, body=None):
+        if path == "/v1/integration":
+            return {"jobs": []}
         if path.endswith("/base"):
             return promotions.baseline()
         identities.append(body["worker"])
@@ -609,9 +611,10 @@ def test_cli_compact_claim_batch_selects_only_its_own_packets(promotions, monkey
     from unittest.mock import Mock
     api = Mock()
     calls = []
+    server_base = promotions.baseline()
     def call(path, body=None, **kwargs):
         if path.endswith('/base'):
-            return promotions.baseline()
+            return server_base
         if path.endswith('/claim'):
             assert body['targets'] == 2000 and body['compact'] and kwargs['timeout'] == 300
             return promotions.claim('alice', body['worker'], targets=2000, compact=True)
@@ -1344,7 +1347,7 @@ def test_verify_build_runs_header_gates_beside_the_build(tmp_path, monkeypatch):
 def test_snapshot_links_read_only_module_objects_and_copies_writable_outputs(tmp_path):
     root = tmp_path / "root"
     out = root / "rebuild/2008-06/out"
-    for rel in ("XTP/linked/a.obj", "XTP/placed.json", "RbxgsApp/layer-rbxgs/b.obj", "tests/t/c.obj"):
+    for rel in ("XTP/linked/a.obj", "XTP/placed.json", "XTP/owned-symbols.json", "RbxgsApp/layer-rbxgs/b.obj", "tests/t/c.obj"):
         (out / rel).parent.mkdir(parents=True, exist_ok=True)
         (out / rel).write_text(rel)
     for name in ("roc", "research", "rebuild/2008-06/patches", "tools", "clients", "src"):
@@ -1356,6 +1359,12 @@ def test_snapshot_links_read_only_module_objects_and_copies_writable_outputs(tmp
     integration_verify.snapshot(root, tmp_path / "snap", link=True)
     copy = tmp_path / "snap/rebuild/2008-06/out"
     assert os.path.samefile(out / "XTP/linked/a.obj", copy / "XTP/linked/a.obj")
+    assert (copy / "XTP/owned-symbols.json").read_text()=="XTP/owned-symbols.json"
+    assert not os.path.samefile(out / "XTP/owned-symbols.json",copy / "XTP/owned-symbols.json")
+    assert out/"XTP/owned-symbols.json" in integration_verify.input_paths(root)[0]
+    before=integration_verify.input_hash(root)
+    (out/"XTP/owned-symbols.json").write_text("changed binding metadata")
+    assert integration_verify.input_hash(root)!=before
     for rel in ("XTP/placed.json", "RbxgsApp/layer-rbxgs/b.obj"):
         assert not os.path.samefile(out / rel, copy / rel)
     assert not (copy / 'tests').exists()
@@ -1691,3 +1700,62 @@ def test_notify_records_accepted_integration_without_webhook(monkeypatch):
     integration_notify.notify(None, job, {'accepted': False})
     integration_notify.notify(None, job, {'accepted': True, 'gains': ['00500000'], 'credits': 1})
     assert events == [(('integration', 'alice', 'gpt-6.1-sol'), {'gains': ['00500000'], 'credits': 1})]
+
+
+def test_native_adoption_stays_in_private_workspace_with_reused_vendor_junction(tmp_path,monkeypatch):
+    import os,subprocess
+    from roc import rebuild,integration_verify
+    root=tmp_path/'private';vendor=tmp_path/'other/tools/rbxgs/Client'
+    vendor.mkdir(parents=True);tree=root/'tools/rbxgs/Client';tree.parent.mkdir(parents=True)
+    if os.name=='nt':
+        subprocess.run(['cmd','/c','mklink','/J',str(tree),str(vendor)],check=True,capture_output=True)
+    else:tree.symlink_to(vendor,target_is_directory=True)
+    rel='rebuild/2008-06/native-world/App/include/A.h'
+    own=root/rel;own.parent.mkdir(parents=True);own.write_text('private typed declaration')
+    other=tmp_path/'other'/rel;other.parent.mkdir(parents=True);other.write_text('other agent declaration')
+    name='../../../'+rel;patches={'App/include/A.h':[['@replace',name]]}
+    patch=root/'patches.json';patch.write_text(json.dumps(patches))
+    monkeypatch.setattr(integration,'ROOT',root);monkeypatch.setattr(rebuild,'ROOT',root)
+    assert integration.overlay_text(tree.resolve(),'App/include/A.h',patches)=='private typed declaration'
+    _,overlay=rebuild.build_overlay('2008-06','fixture',dict(root='tools/rbxgs/Client',patches='patches.json'))
+    assert (overlay/'App/include/A.h').read_text()=='private typed declaration'
+    combined,kept,dropped=integration_verify.preflight(root,{},patches)
+    assert kept==patches and not dropped
+    registry=root/'rebuild/2008-06/patches/rbxgs-client.json';registry.parent.mkdir(parents=True);registry.write_text(json.dumps(patches))
+    paths,_=integration_verify.input_paths(root)
+    assert own.resolve() in paths and other.resolve() not in paths
+    assert other.read_text()=='other agent declaration'
+
+
+def test_canonical_source_lane_keeps_live_sources_and_authoritative_state_separate(promotions, monkeypatch):
+    root=promotions.root
+    frozen=root/'work/integration/sources/accepted'
+    patchdir=frozen/'rebuild/2008-06/patches'
+    patchdir.mkdir(parents=True)
+    (patchdir/'make_rbxgs_client.py').write_text('# accepted generator\n')
+    (patchdir/'rbxgs-client.json').write_text('{"App/Frozen.cpp": []}')
+    (root/'roc').mkdir();(root/'roc/current.py').write_text('# current verifier\n')
+    (root/'roc.py').write_text('# current CLI\n')
+    integration.atomic_json(root/'work/integration/source-root.json',dict(path='sources/accepted'))
+    pinned=integration.Promotions(promotions.store,root)
+    assert pinned.root==root and pinned.directory==promotions.directory
+    assert pinned.source_root==frozen.resolve()
+    assert pinned.baseline()['overlay']=={'App/Frozen.cpp': []}
+    assert (frozen/'roc/current.py').read_text()=='# current verifier\n'
+    before=promotions.overlay.read_bytes()
+    def generate(argv,**kw):
+        assert Path(argv[-1])==pinned.generator and kw['cwd']==frozen.resolve()
+        pinned.overlay.write_text('{}')
+    monkeypatch.setattr(integration_verify.subprocess,'run',generate)
+    integration_verify.publish(pinned,[])
+    assert promotions.overlay.read_bytes()==before
+    assert json.loads(pinned.overlay.read_text())=={}
+    assert pinned.overlay.with_name('native-promotions.json').exists()
+    assert not promotions.overlay.with_name('native-promotions.json').exists()
+
+
+@pytest.mark.parametrize('selected',['../../outside','jobs/accepted','.','sources'])
+def test_canonical_source_pin_cannot_modify_receipt_artifacts_or_escape_state(tmp_path,selected):
+    integration.atomic_json(tmp_path/'work/integration/source-root.json',dict(path=selected))
+    with pytest.raises(ValueError,match='inside work/integration/sources'):
+        integration.source_root(tmp_path)

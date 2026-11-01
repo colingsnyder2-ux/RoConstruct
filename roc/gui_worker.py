@@ -18,9 +18,9 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 cloud_allowed=False, cloud_concurrency="auto", max_cloud_requests=None,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
                 unit_name=None, family_id=None, targets=None, library="",
-                native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="auto", native_compile_batch=4,
+                native_agent_submit=True, native_agent_minutes=4, native_agent_checks=6, native_agent_tasks="", native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="method", native_compile_batch=4,
                 native_selection='balanced', native_escalation_model='', native_escalate_after=2, native_max_no_improvement=3, native_repair_rounds=2, native_repair_trials=24)
-LIVE = {"workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
+LIVE = {"native_agent_submit","native_agent_minutes", "native_agent_checks", "native_agent_tasks", "workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "use_remill", "min_score", "max_score",
         "diverse_candidates", "guided_mutations", "near_repair", "max_cloud_requests",
         "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch", "native_selection", "native_escalation_model", "native_escalate_after", "native_max_no_improvement", "native_repair_rounds", "native_repair_trials"}
@@ -53,7 +53,7 @@ def validate(values, base=None, check_model=True):
     if not isinstance(values, dict) or set(values) - set(DEFAULTS):
         raise ValueError("Unknown worker settings")
     config = {**DEFAULTS, **(base or {}), **values}
-    for key, low, high in (("workers", 1, 256), ("rounds", 1, 100), ("max_size", 0, 1000000),
+    for key, low, high in (("native_agent_minutes", 1, 60), ("native_agent_checks", 1, 30), ("workers", 1, 256), ("rounds", 1, 100), ("max_size", 0, 1000000),
                            ("native_batch_files", 1, 1024), ("native_compile_workers", 1, 64),
                            ("native_compile_batch", 1, 32), ("native_escalate_after", 1, 99), ("native_max_no_improvement", 1, 100),
                            ("native_repair_rounds", 0, 8), ("native_repair_trials", 1, 256),
@@ -95,15 +95,22 @@ def validate(values, base=None, check_model=True):
         raise ValueError("Invalid native context")
     if config['native_selection'] not in ('easy', 'balanced', 'large'):
         raise ValueError('Invalid native selection')
-    if config["native_generation"] not in ("auto", "edits", "method"):
+    if config["native_generation"] not in ("auto", "edits", "method", "agent"):
         raise ValueError("Invalid native generation mode")
+    if not isinstance(config['native_agent_tasks'], str):
+        raise ValueError('Native task manifest must be a path')
+    if config['native_generation'] == 'agent':
+        if not isinstance(config['model'], str) or not config['model'].startswith('codex:'):
+            raise ValueError('Native class recovery uses a signed-in codex: model')
+        if config['max_cloud_cost'] is not None:
+            raise ValueError('Codex agents use plan limits; use agent/request and token budgets instead of USD')
     if config["lease_mode"] == "native":
         if config["client"] not in ("", "2008-06"):
             raise ValueError("Integrator currently supports 2008-06")
         if config["source_only"]:
             raise ValueError("Integrator requires a model")
         config["client"] = "2008-06"
-    for key in ("use_revng", "use_remill", "guided_mutations", "near_repair", "source_only", "cloud_allowed"):
+    for key in ("native_agent_submit", "use_revng", "use_remill", "guided_mutations", "near_repair", "source_only", "cloud_allowed"):
         if type(config[key]) is not bool:
             raise ValueError("Invalid %s" % key)
     if not worker.USER_RE.fullmatch(config["user"]):
@@ -262,7 +269,7 @@ def native_loop(config, control, emit):
     spec = json.loads(json.dumps(research.recipes()["native-model-2008"]))
     emit('log', slot=0, message='Startup: validating ABI, RTTI and dependency compiler profiles')
     from roc.rebuild_install import prepare
-    prepare(log=lambda message: emit('log', slot=0, message=message))
+    prepare(log=lambda message: emit('log', slot=0, message=message), **({'build_dependencies':False} if config['native_generation']=='agent' else {}))
     worker.save_settings(user=config["user"], server=config["server"])
     emit("log", slot=0, message="Startup: syncing accepted native baseline (unchanged overlays are reused)")
     while not control.stopping:
@@ -328,7 +335,7 @@ def native_loop(config, control, emit):
                     control.matched += credits
                     advanced |= job["state"] == "accepted"
                     emit("native_accepted" if credits else "log", credits=credits,
-                         message="Native batch %s: %s · %d new server verified" % (identifier[:8], job["state"], credits))
+                         message="Native batch %s: %s Â· %d new server verified" % (identifier[:8], job["state"], credits))
             emit("benchmark", workers=control.workers, completed=control.completed,
                  matched=control.matched, improved=0, errors=control.errors)
         except worker.ApiFailure:
@@ -340,13 +347,39 @@ def native_loop(config, control, emit):
         current = control.before_lease(0)
         if current is None:
             break
+        if current['native_generation'] == 'agent':
+            from roc import native_recovery
+            emit('stage', message='Native recovery: up to %d Codex agents; server leases and guarded shared-folder merge' % control.workers)
+            try:
+                summary = native_recovery.run(current, control, emit)
+                control.completed += summary.get('attempted', 0)
+                emit('native_recovery', **summary)
+                emit('benchmark',workers=control.workers,completed=control.completed,matched=control.matched,improved=0,errors=control.errors)
+                with control.budget._lock:
+                    emit('usage', requests=control.budget.requests, tokens=control.budget.tokens, cost=None)
+                    exhausted = any(limit is not None and used >= limit for used, limit in (
+                        (control.budget.requests,control.budget.max_requests),(control.budget.tokens,control.budget.max_tokens)))
+                if exhausted and (summary.get('remote_pending') or summary.get('integration_pending')):
+                    emit('stage',message='AI budget reached; finishing queued host checks/submissions without more AI calls')
+                    control.wait(5)
+                elif exhausted:
+                    control.command({'action':'stop'})
+                elif not summary.get('attempted'):
+                    control.wait(30)
+            except (Exception, SystemExit) as error:
+                emit('error', slot=0, message='Native recovery retained sources/proofs: '+str(error))
+                if getattr(error,'category','') == 'cloud_budget':
+                    control.command({'action':'stop'})
+                else:
+                    control.wait(30)
+            continue
         if refresh_pending():
             tried.clear()
             file_offsets.clear()
         for slot in range(control.workers):
             emit("applied", slot=slot, revision=control.revision)
         inflight = providers.cloud_slots(current["model"],control.workers,current["cloud_concurrency"])
-        emit("stage", message="Integrator: %d file workers · %d AI requests · %d compilers · up to %d files per batch" % (
+        emit("stage", message="Integrator: %d file workers Â· %d AI requests Â· %d compilers Â· up to %d files per batch" % (
             control.workers, inflight, native_sweep.resolve_compile_workers(current["native_compile_workers"], control.workers), current["native_batch_files"]))
         spec["native_sweep"].update(llm=current["model"], model=current["model"],
             rounds=3 if current["rounds"] == "auto" else current["rounds"], wait=False, exclude_files=sorted(tried),
@@ -476,8 +509,10 @@ def main(initial=None, receive_commands=True):
                     print('[%s] %s %s | partial %.3f%% -> %.3f%% | local search, no exact credit' % (
                         slot, fields['file'], fields['addr'], fields['previous'], fields['score']), flush=True)
                 elif event == "native_progress":
-                    if "Requesting" in fields["message"] or "new exact" in fields["message"]:
+                    if initial["config"].get("native_generation")=="agent" or "Requesting" in fields["message"] or "new exact" in fields["message"]:
                         print("[%s] %s | %s" % (slot, fields["file"], fields["message"]), flush=True)
+                elif event == "native_recovery":
+                    print("[roc] Native recovery: "+json.dumps(fields),flush=True)
                 elif event in ("log", "error", "stage", "native_accepted"):
                     print("[%s] %s" % (slot, fields.get("message", "")), flush=True)
             else:
@@ -509,7 +544,7 @@ def main(initial=None, receive_commands=True):
         with control.condition:
             current = dict(control.config)
         options = {key: value for key, value in current.items() if key not in
-                   ("workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency",
+                   ("native_agent_submit", "native_agent_minutes", "native_agent_checks", "native_agent_tasks", "workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency",
                     "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch", "native_selection", "native_escalation_model", "native_escalate_after", "native_max_no_improvement", "native_repair_rounds", "native_repair_trials")}
         options.update(token=initial.get("token"), only=[current["client"]] if current["client"] else None,
                        model=current["model"] or None, forever=True, cloud_budget=control.budget, cloud_gate=gate,

@@ -15,16 +15,22 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def link_directory(source, target):
-    if os.name == "nt":
-        subprocess.run(["cmd", "/d", "/c", "mklink", "/J", str(target), str(source)],
-                       check=True, capture_output=True, stdin=subprocess.DEVNULL, timeout=30)
-    else:
-        target.symlink_to(source, target_is_directory=True)
+    from roc.input_reuse import link_directory as link
+    link(source,target)
+
+
+def refresh_input_links(folder):
+    from roc.input_reuse import ensure_link
+    for name in ('tools','src'):
+        if (ROOT/name).is_dir(): ensure_link(ROOT/name,folder/name)
+    for path in (ROOT/'clients').iterdir():
+        if path.is_dir(): ensure_link(path,folder/'clients'/path.name)
 
 
 def workspace(log=print):
     """Copy runtime and rebuild inputs; source overlays, claims and outputs remain private."""
     started = time.monotonic()
+    (ROOT/"tools").mkdir(parents=True,exist_ok=True)
     folder = ROOT / "local/integrators" / uuid.uuid4().hex
     folder.parent.mkdir(parents=True, exist_ok=True)
     log("Preparing private integrator workspace: " + str(folder))
@@ -36,7 +42,8 @@ def workspace(log=print):
     log("Startup 2/6: copying recipe metadata")
     shutil.copytree(ROOT / "research", folder / "research", ignore=shutil.ignore_patterns("*.jsonl"))
     log("Startup 3/6: snapshotting private rebuild inputs")
-    shutil.copytree(ROOT / "rebuild/2008-06", folder / "rebuild/2008-06",
+    from roc.integration import source_root
+    shutil.copytree(source_root(ROOT) / "rebuild/2008-06", folder / "rebuild/2008-06",
                     ignore=shutil.ignore_patterns("out", "__pycache__", "*.obj", "*.pdb", "*.exe", "*.dll"))
     log("Startup 4/6: loading contributor configuration")
     (folder / "clients").mkdir()
@@ -104,6 +111,7 @@ def session_workspace(log=print):
                 from roc.integration import atomic_json
                 atomic_json(folder/'integrator-session.json', {'session':identifier})
                 atomic_json(marker, {'workspace':str(folder)})
+            refresh_input_links(folder)
             yield folder
         finally:
             handle.seek(0)
@@ -114,6 +122,11 @@ def session_workspace(log=print):
 
 
 def run_private(initial, receive_commands=True, commands=None):
+    client = initial.get('config',{}).get('client')
+    if client:
+        if not re.fullmatch(r'[A-Za-z0-9_-]{1,32}',client):
+            raise ValueError('Invalid client cache name')
+        (ROOT/'clients'/client).mkdir(parents=True,exist_ok=True)
     def log(message):
         print("ROC_EVENT " + json.dumps({"event": "log", "slot": 0, "message": message}), flush=True)
     with session_workspace(log) as folder:

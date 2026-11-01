@@ -36,7 +36,7 @@ def context(promotions, identifier, addr):
     if not row or addr not in json.loads(row[1]):
         raise ValueError('Function is not in this claim')
     promotions.catalog(row[0])  # Refresh native path index.
-    root = promotions.root
+    root = promotions.source_root
     source = root / 'src' / integration.CLIENT / (addr + '.cpp')
     manifest = root / 'rebuild/2008-06/manifests/functions.json'
     function = next((r for r in json.loads(manifest.read_text()) if r['addr'] == addr), {})

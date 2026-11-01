@@ -1,0 +1,34 @@
+{
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_base_url.py": "41e4f1678bd094d23e557c2af85ca7427c49caa6af2a1b1faa02b2f7318c7fef",
+    "rebuild\\2008-06\\native-classes\\ApplicationBaseUrl.cpp": "5315da6fd2702ef4d90d13d3ab90291761be41f1e24ef81dd98f2ed36900aef4",
+    "rebuild\\2008-06\\native-classes\\CSaveToRobloxDialog.cpp": "7b6654fb13a52e8499da9eb72c9bef64952b76702ba95f36985203daca17047f"
+  },
+  "object_sha256": "2f26c5d2bbd47818df23ebd9a80146630fda27e12235d0f3f1cadceda5370692",
+  "methods": [
+    {
+      "address": "004060d0",
+      "size": 32,
+      "global_relocations": [
+        7
+      ]
+    },
+    {
+      "address": "007ef840",
+      "size": 23,
+      "global_relocations": [
+        1
+      ]
+    },
+    {
+      "address": "007fade0",
+      "size": 11,
+      "global_relocations": [
+        1
+      ]
+    }
+  ],
+  "original_global": "0x96dcf0",
+  "registry_key": "BaseUrl",
+  "scope": "Inactive original CString lifetime/accessor and registry xref; full native startup initialization and runtime integration remain open."
+}

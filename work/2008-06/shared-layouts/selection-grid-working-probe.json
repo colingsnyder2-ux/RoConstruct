@@ -1,0 +1,467 @@
+{
+  "revision": "3238b08c7b1288996f09aaf57ab92f899ba8f234",
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_selection_grid.py": "019f1c6e20a66c0b13535100bbb57e3c09e8eeaf327953d024627bc8fe3ec4ef",
+    "rebuild\\2008-06\\native-headers\\SelectionGroup.h": "009c20d44a8a6c5caeb6677ca0825083f1bcffdf33dbe7f6f79de0459735b792",
+    "rebuild\\2008-06\\native-headers\\CPropGrid.h": "f8c49281322309579f6916350ccb9a7da22d2d1092e8a70bd14576464d9d383e",
+    "rebuild\\2008-06\\native-headers\\CSelectionPropGrid.h": "13fafeb53f903ffc62b81903ecdd8190eadcb09db62ba71e52130798b658e09a",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "8b2b081e02f7c3d78ab02293161263b4392cafcb62398135a948b82f02f296c6",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "b6a0cfa8124e4724bf6288321bb3a6bbe33f38abe174bad5b3a559cd86861a0f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\SelectionChanged.h": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
+    "rebuild\\2008-06\\native-headers\\v8tree\\PropertyChanged.h": "c5fc5062ea7482f19ed3875f42d9823f54bfbecafc2dacaf09212bee33c715ca",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild\\2008-06\\native-classes\\DataModelLock.cpp": "91b5b385524cf57fedd5dbbf7a5b4bcb6557ef969e105d11ace5416776a625f1",
+    "rebuild\\2008-06\\native-classes\\CPropGridItem.cpp": "454a4adfb9c4cbaa2f843de7406167a8c4d1c648049416b687a3f23bd9fb0312",
+    "rebuild\\2008-06\\native-classes\\CPropGridRebuild.cpp": "b47411145d6c7818adf0b4e861ab8279bd97ba88c81df848357a79e60d1a7055",
+    "rebuild\\2008-06\\native-classes\\CPropGridMap.cpp": "5b515cc59f1aebe5dc1e188cfdd1588577187cb0a496c42fa6896cb703dec9bf",
+    "rebuild\\2008-06\\native-classes\\CPropGridRefresh.cpp": "e88132599b3d898c0e114051c1447b129f18df3e1b30706c401f639f52c1aa27",
+    "rebuild\\2008-06\\native-classes\\SelectionGroup.cpp": "c04fe2b8783169e32f0434d184a7aa0b36ed16a02e790804ea5947f7e8ff0fed",
+    "rebuild\\2008-06\\native-classes\\CPropGridInstances.cpp": "e685c212cdc868ff90d201478fc36a8cf58381d5da9554b3de546123b6d4ac81",
+    "rebuild\\2008-06\\native-classes\\CPropGridEvents.cpp": "bdaa3b5ebbc6dc994e44f6f097800a1cd69ee5afafda155f7b16eeea4022c7f8",
+    "rebuild\\2008-06\\native-classes\\CSelectionPropGridEvents.cpp": "00549db7da322fafc742fd4f497ccbf4ecf746aaa47dc5ee70a6e8fb576121dd",
+    "rebuild\\2008-06\\native-classes\\CSelectionPropGridSelection.cpp": "2f49c566c2a96723ee65c5fd1cae924f9345dcd389a2179414bfe2466c796df7"
+  },
+  "compiler": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "methods": [
+    {
+      "address": "0043a070",
+      "symbol": "??0Item@CPropGrid@@QAE@PBVPropertyDescriptor@Reflection@RBX@@PAV1@@Z",
+      "size": 125,
+      "object": "NativeCPropGridItem.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00439600",
+      "symbol": "?addClass@Item@CPropGrid@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+      "size": 91,
+      "object": "NativeCPropGridItem.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004391d0",
+      "symbol": "?rebuild@CPropGrid@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+      "size": 327,
+      "object": "NativeCPropGridRebuild.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00438010",
+      "symbol": "??_9CPropGrid@@$BBGI@AE",
+      "size": 8,
+      "object": "NativeCPropGridRebuild.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004385f0",
+      "symbol": "?OnCreate@CPropGrid@@QAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 62,
+      "object": "NativeCPropGridMap.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00440d20",
+      "symbol": "?GetMessageMap@CPropGrid@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "object": "NativeCPropGridMap.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00439d70",
+      "symbol": "?OnUpdate@CPropGrid@@QAEJIJ@Z",
+      "size": 754,
+      "object": "NativeCPropGridRefresh.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00442350",
+      "symbol": "?add@SelectionGroup@RBX@@QAEXPAVInstance@2@@Z",
+      "size": 158,
+      "object": "NativeSelectionGroup.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00439660",
+      "symbol": "?remove@SelectionGroup@RBX@@QAEXPAVInstance@2@@Z",
+      "size": 405,
+      "object": "NativeSelectionGroup.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00439cd0",
+      "symbol": "?removeInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 158,
+      "object": "NativeCPropGridInstances.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004423f0",
+      "symbol": "?addInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 158,
+      "object": "NativeCPropGridInstances.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00439370",
+      "symbol": "?onEvent@CPropGrid@@UAEXPBVInstance@RBX@@VPropertyChanged@3@@Z",
+      "size": 267,
+      "object": "NativeCPropGridEvents.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00442490",
+      "symbol": "?onEvent@CSelectionPropGrid@@UAEXPBVSelection@RBX@@VSelectionChanged@3@@Z",
+      "size": 325,
+      "object": "NativeCSelectionPropGridEvents.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00442650",
+      "symbol": "?setSelection@CSelectionPropGrid@@QAEXPAVSelection@RBX@@@Z",
+      "size": 680,
+      "object": "NativeCSelectionPropGridSelection.obj",
+      "relocation_masked_match": true
+    }
+  ],
+  "verified_bindings": [
+    {
+      "caller": "0043a070",
+      "offset": 100,
+      "symbol": "?addClass@Item@CPropGrid@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+      "target": "0x439600"
+    },
+    {
+      "caller": "00439600",
+      "offset": 73,
+      "symbol": "?addClass@Item@CPropGrid@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+      "target": "0x439600"
+    },
+    {
+      "caller": "004391d0",
+      "offset": 31,
+      "symbol": "?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ",
+      "target": "0x438060"
+    },
+    {
+      "caller": "004391d0",
+      "offset": 42,
+      "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x563090"
+    },
+    {
+      "caller": "004391d0",
+      "offset": 68,
+      "symbol": "?rebuild@CPropGrid@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+      "target": "0x4391d0"
+    },
+    {
+      "caller": "004391d0",
+      "offset": 189,
+      "symbol": "??_9CPropGrid@@$BBGI@AE",
+      "target": "0x438010"
+    },
+    {
+      "caller": "004391d0",
+      "offset": 302,
+      "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x5630e0"
+    },
+    {
+      "caller": "004385f0",
+      "offset": 4,
+      "symbol": "?Default@CWnd@@IAEJXZ",
+      "target": "0x6a0c68"
+    },
+    {
+      "caller": "004385f0",
+      "offset": 24,
+      "symbol": "?SetTheme@CXTPPropertyGrid@@QAEXW4XTPPropertyGridPaintTheme@@@Z",
+      "target": "0x6fc0b0"
+    },
+    {
+      "caller": "004385f0",
+      "offset": 29,
+      "symbol": "?XTPImageManager@@YAPAVCXTPImageManager@@XZ",
+      "target": "0x6c0e80"
+    },
+    {
+      "caller": "004385f0",
+      "offset": 44,
+      "symbol": "?XTPImageManager@@YAPAVCXTPImageManager@@XZ",
+      "target": "0x6c0e80"
+    },
+    {
+      "caller": "004385f0",
+      "offset": 52,
+      "symbol": "?SetImageManager@CXTPPropertyGrid@@QAEXPAVCXTPImageManager@@@Z",
+      "target": "0x6fa560"
+    },
+    {
+      "caller": "00439d70",
+      "offset": 89,
+      "symbol": "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ",
+      "target": "0x40ad20"
+    },
+    {
+      "caller": "00439d70",
+      "offset": 97,
+      "symbol": "?rebuild@CPropGrid@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+      "target": "0x4391d0"
+    },
+    {
+      "caller": "00439d70",
+      "offset": 228,
+      "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x563090"
+    },
+    {
+      "caller": "00439d70",
+      "offset": 377,
+      "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x5630e0"
+    },
+    {
+      "caller": "00439d70",
+      "offset": 413,
+      "symbol": "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z",
+      "target": "0x576f00"
+    },
+    {
+      "caller": "00439d70",
+      "offset": 542,
+      "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+      "target": "0x5773c0"
+    },
+    {
+      "caller": "00442350",
+      "offset": 45,
+      "symbol": "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z",
+      "target": "0x618a40"
+    },
+    {
+      "caller": "00439660",
+      "offset": 79,
+      "symbol": "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z",
+      "target": "0x618a40"
+    },
+    {
+      "caller": "00439cd0",
+      "offset": 62,
+      "symbol": "?removeListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+      "target": "0x5e5a80"
+    },
+    {
+      "caller": "00439cd0",
+      "offset": 78,
+      "symbol": "?remove@SelectionGroup@RBX@@QAEXPAVInstance@2@@Z",
+      "target": "0x439660"
+    },
+    {
+      "caller": "004423f0",
+      "offset": 44,
+      "symbol": "?add@SelectionGroup@RBX@@QAEXPAVInstance@2@@Z",
+      "target": "0x442350"
+    },
+    {
+      "caller": "004423f0",
+      "offset": 78,
+      "symbol": "?addListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z",
+      "target": "0x4218a0"
+    },
+    {
+      "caller": "00439370",
+      "offset": 38,
+      "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x563090"
+    },
+    {
+      "caller": "00439370",
+      "offset": 175,
+      "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x563090"
+    },
+    {
+      "caller": "00439370",
+      "offset": 220,
+      "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x5630e0"
+    },
+    {
+      "caller": "00439370",
+      "offset": 239,
+      "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x5630e0"
+    },
+    {
+      "caller": "00442490",
+      "offset": 93,
+      "symbol": "?addInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "target": "0x4423f0"
+    },
+    {
+      "caller": "00442490",
+      "offset": 147,
+      "symbol": "?removeInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "target": "0x439cd0"
+    },
+    {
+      "caller": "00442490",
+      "offset": 164,
+      "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x563090"
+    },
+    {
+      "caller": "00442490",
+      "offset": 229,
+      "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x563090"
+    },
+    {
+      "caller": "00442490",
+      "offset": 271,
+      "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x5630e0"
+    },
+    {
+      "caller": "00442490",
+      "offset": 283,
+      "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x5630e0"
+    },
+    {
+      "caller": "00442650",
+      "offset": 43,
+      "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x563090"
+    },
+    {
+      "caller": "00442650",
+      "offset": 97,
+      "symbol": "?removeListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z",
+      "target": "0x5e5a80"
+    },
+    {
+      "caller": "00442650",
+      "offset": 102,
+      "symbol": "?removeInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "target": "0x439cd0"
+    },
+    {
+      "caller": "00442650",
+      "offset": 325,
+      "symbol": "??$shared_from@VSelection@RBX@@@RBX@@YA?AV?$shared_ptr@VSelection@RBX@@@boost@@PAVSelection@0@@Z",
+      "target": "0x618a40"
+    },
+    {
+      "caller": "00442650",
+      "offset": 356,
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "target": "0x4025b0"
+    },
+    {
+      "caller": "00442650",
+      "offset": 442,
+      "symbol": "?addInstance@CPropGrid@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "target": "0x4423f0"
+    },
+    {
+      "caller": "00442650",
+      "offset": 572,
+      "symbol": "?addListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z",
+      "target": "0x4218a0"
+    },
+    {
+      "caller": "00442650",
+      "offset": 592,
+      "symbol": "?do_lock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x563090"
+    },
+    {
+      "caller": "00442650",
+      "offset": 638,
+      "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x5630e0"
+    },
+    {
+      "caller": "00442650",
+      "offset": 655,
+      "symbol": "?do_unlock@recursive_mutex@boost@@AAEXXZ",
+      "target": "0x5630e0"
+    }
+  ],
+  "helpers": [
+    {
+      "address": "00442140",
+      "symbol": "??A?$map@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@@std@@QAEAAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@1@ABQBVClassDescriptor@Reflection@RBX@@@Z",
+      "object": "NativeSelectionGroup.obj",
+      "size": 295
+    },
+    {
+      "address": "00420110",
+      "symbol": "?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "object": "NativeSelectionGroup.obj",
+      "size": 128
+    },
+    {
+      "address": "00439480",
+      "symbol": "?erase@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@@Z",
+      "object": "NativeSelectionGroup.obj",
+      "size": 132
+    },
+    {
+      "address": "00438d40",
+      "symbol": "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCSelectionPropGrid@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCPropGrid@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCSelectionPropGrid@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+      "object": "NativeCSelectionPropGridSelection.obj",
+      "size": 108
+    },
+    {
+      "address": "00442100",
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@2@@Z",
+      "object": "NativeCSelectionPropGridSelection.obj",
+      "size": 61
+    }
+  ],
+  "compilation_pairing": {
+    "CPropGridRefresh": "DataModelLock.cpp definitions visible in same translation unit"
+  },
+  "objects": {
+    "NativeCPropGridItem.obj": "fc2f7a24fe18873e21bc2fd6dbbeba10ea48fce0ab1f903f4e30c6f3662db591",
+    "NativeCPropGridRebuild.obj": "fb2c70f9297c16e3e1d8cd81f1342b549c9915a904aaba61321bbfd1640dac2f",
+    "NativeCPropGridMap.obj": "1977433fbd8a53315f5460cab966cf1e4fc2b37285d6f9409c9debe92aa8b654",
+    "NativeCPropGridRefresh.obj": "9415e903b17e4c2d1e73515f173cf4b15b492ef9101b9adfd3e162d6a5b54081",
+    "NativeSelectionGroup.obj": "ad643b619a155a574966d1732b0d4520acd3777739ed7f3056ea7b9bc4c33349",
+    "NativeCPropGridInstances.obj": "09719e6f60adc358414ec4ba10778477c7509e5d54aa82645e97f67bedaa7ef9",
+    "NativeCPropGridEvents.obj": "8b89f4b0bf00327b7d5cb725df33ef485fbd5f570857c6fa30a1283a1b0c089b",
+    "NativeCSelectionPropGridEvents.obj": "88e4fcfc0524d04832ae9038cc48196b13100ade6d4b3c8411153bb25ee1d0d6",
+    "NativeCSelectionPropGridSelection.obj": "6e455acd8ac1c472e9881363021ab5a0b08405039cc967b21156cdd00de277d3"
+  },
+  "scope": "Inactive typed recovery. SelectionGroup is a recovery name. Descriptor-keyed map of shared Instance vectors replaces disproven set<string> at CPropGrid+0x218. Fourteen body matches, selected bindings, two-message map and original one-slot Item RTTI interface; full helper closure, other containers, property-grid behavior, linking and runtime remain open. No game integration credit."
+}

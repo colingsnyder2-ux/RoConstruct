@@ -1,106 +1,4 @@
 {
- "App/script/ScriptEvent.cpp": [["                lua_pushnumber(L, it->elapsedTime);\n                context->resume(L, 1);", "                lua_pushnumber(L, it->elapsedTime);\n                lua_pushnumber(L, heartbeat.time);\n                context->resume(L, 2);"]],
- "App/include/script/ScriptEvent.h": [["                float requestedDelay;\n                float elapsedTime;", "                double requestedDelay;\n                double elapsedTime;"]],
- "App/script/LuaSignalBridge.cpp": [
-   [
-     "#include \"script/LuaInstanceBridge.h\"",
-     "#include \"script/LuaInstanceBridge.h\"\n#include \"script/LuaAtomicClasses.h\""
-   ],
-   [
-     "        else if (argType == typeid(const Reflection::PropertyDescriptor*))",
-     "        else if (argType == typeid(G3D::Vector3))\n            Vector3Bridge::pushVector3(L, boost::any_cast<G3D::Vector3>(*iter));\n        else if (argType == typeid(G3D::Color3))\n            Color3Bridge::pushColor3(L, boost::any_cast<G3D::Color3>(*iter));\n        else if (argType == typeid(BrickColor))\n            BrickColorBridge::pushNewObject(L, boost::any_cast<BrickColor>(*iter));\n        else if (argType == typeid(G3D::CoordinateFrame))\n            CoordinateFrameBridge::pushCoordinateFrame(L, boost::any_cast<G3D::CoordinateFrame>(*iter));\n        else if (argType == typeid(const Reflection::PropertyDescriptor*))"
-   ],
-   [
-     "            argType.name();",
-     "            lua_pushnil(L);"
-   ]
- ],
- "App/include/v8world/Mechanism.h": [
-  [
-    "\tclass Mechanism : public boost::noncopyable",
-    "\t// Native 005e50f0 / 005e53a0: shared tracker ownership, separate from grouping.\n\tclass SimJob : public boost::noncopyable\n\t{\n\t\tfriend class MechanismTracker;\n\t\tstd::vector<MechanismTracker*> trackers;\n\tpublic:\n\t\tstd::list<SimJob*>::iterator jobIterator;\n\t\tvirtual ~SimJob() { RBXASSERT(trackers.empty()); }\n\t\tvirtual Assembly* getAssembly() = 0;\n\t\tvirtual const Assembly* getAssembly() const = 0;\n\t};\n\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];\n\n\tclass Mechanism : public SimJob"
-  ],
-  [
-    "\t\tstd::vector<MechanismTracker*> trackers;\n\tpublic:\n\t\tstd::list<Mechanism*>",
-    "\tpublic:\n\t\tstd::list<Mechanism*>"
-  ],
-  [
-    "RBXASSERT(this->trackers.size() == 0);",
-    "// SimJob checks tracker lifetime."
-  ],
-  [
-    "\t\tvoid notifyMovingPrimitives();",
-    "\t\tvirtual Assembly* getAssembly() { return assemblies.empty()?NULL:*assemblies.begin(); }\n\t\tvirtual const Assembly* getAssembly() const { return assemblies.empty()?NULL:*assemblies.begin(); }\n\t\tvoid notifyMovingPrimitives();"
-  ],
-  [
-    "\t\tMechanism* mechanism;",
-    "\t\tSimJob* mechanism;"
-  ],
-  [
-    "bool containedBy(Mechanism*);",
-    "bool containedBy(SimJob*);"
-  ],
-  [
-    "void setMechanism(Mechanism*);",
-    "void setMechanism(Mechanism* m) { setJob(m); }\n\t\tvoid setJob(SimJob*);\n\t\tSimJob* getJob() const { return mechanism; }"
-  ],
-  [
-    "static void transferTrackers(Mechanism*, Mechanism*);",
-    "static void transferTrackers(SimJob*, SimJob*);"
-  ],
-  [
-    "\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];",
-    "\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];\n\n\t// 005e51e0 / 0074eed0: one assembly pointer after the 36-byte base.\n\tclass AssemblyJob : public SimJob\n\t{\n\t\tAssembly* assembly;\n\tpublic:\n\t\texplicit AssemblyJob(Assembly* value) : assembly(value) {}\n\t\tvirtual Assembly* getAssembly() { return assembly; }\n\t\tvirtual const Assembly* getAssembly() const { return assembly; }\n\t};\n\ttypedef char AssemblyJobSize[sizeof(AssemblyJob)==40?1:-1];"
-  ]
-],
- "App/v8world/Mechanism.cpp": [
-  [
-    "bool MechanismTracker::containedBy(Mechanism* m)",
-    "bool MechanismTracker::containedBy(SimJob* m)"
-  ],
-  [
-    "return this->mechanism;",
-    "return dynamic_cast<Mechanism*>(this->mechanism);"
-  ],
-  [
-    "void MechanismTracker::setMechanism(Mechanism* m)",
-    "void MechanismTracker::setJob(SimJob* m)"
-  ],
-  [
-    "void MechanismTracker::transferTrackers(Mechanism* from, Mechanism* to)",
-    "void MechanismTracker::transferTrackers(SimJob* from, SimJob* to)"
-  ],
-  [
-    "from->trackers.back()->setMechanism(to);",
-    "from->trackers.back()->setJob(to);"
-  ]
-],
- "App/humanoid/Freefall.cpp": [
-  ["#include \"humanoid/Freefall.h\"", "#include \"humanoid/Freefall.h\"\nnamespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); Humanoid::State* CreateRecoveredLanded(Humanoid*); }\n"],
-  ["\t\tif (newState == this)\n\t\t{\n\t\t\tif (floorPart)", "\t\tif (newState == this)\n\t\t{\n\t\t\tif (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);\n\t\t\tif (floorPart)"],
-  ["#include \"humanoid/Running.h\"", "#include \"humanoid/Running.h\"\n#include \"v8datamodel/PartInstance.h\""],
-  ["return new Running(humanoid);", "return CreateRecoveredLanded(humanoid);"],
-  ["\t\t: Base(humanoid)\n\t{\n\t}", "\t\t: Base(humanoid), savedHeadFriction(0), savedTorsoFriction(0)\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, true);\n\t\tif (humanoid->getHead()) { savedHeadFriction=humanoid->getHead()->getFriction(); humanoid->getHead()->setFriction(0); }\n\t\tif (humanoid->getTorso()) { savedTorsoFriction=humanoid->getTorso()->getFriction(); humanoid->getTorso()->setFriction(0); }\n\t}\n\n\tFreefall::~Freefall()\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, false);\n\t\tif (humanoid->getHead()) humanoid->getHead()->setFriction(savedHeadFriction);\n\t\tif (humanoid->getTorso()) humanoid->getTorso()->setFriction(savedTorsoFriction);\n\t}"]
- ],
- "App/include/humanoid/Flying.h": [
-  ["\t\tfloat desiredYRotationalVelocity;", "\t\tfloat desiredYRotationalVelocity;\n\t\tG3D::Vector3 desiredVelocity;"]
- ],
- "App/humanoid/Flying.cpp": [
-  ["desiredYRotationalVelocity(0.0f)", "desiredYRotationalVelocity(0.0f), desiredVelocity(humanoid->updateWalkDirection() * 16.0f)"],
-  ["desiredYRotationalVelocity = controller.getValue(Controller::RIGHT_LEFT_INPUT) * 6.0f;", "desiredYRotationalVelocity = controller.getValue(Controller::RIGHT_LEFT_INPUT) * 6.0f;\n\t\t\t\tdesiredVelocity = humanoid->updateWalkDirection() * 16.0f;"]
- ],
- "App/humanoid/Jumping.cpp": [
-  ["#include \"humanoid/Jumping.h\"", "#include \"humanoid/Jumping.h\"\n#include \"v8world/Controller.h\""],
-  ["Humanoid::event_Jumping.fire(humanoid, true);", "Humanoid::event_Jumping.fire(humanoid, true);\n\t\t// 006453a0 refreshes replacement floor before its first force.\n\t\tBalancing::onStep(0.0f, *NullController::getStaticNullController());"],
-  ["\t\tif (done)\n", "\t\ttimeout -= stepDt;\n\t\tif (done || timeout <= 0.0f)\n"]
- ],
- "App/include/humanoid/Running.h": [
-  ["\t\tvoid updateGoals(Controller&);", "\tprotected:\n\t\tvoid updateGoals(Controller&);\n\tprivate:"],
-  ["\t\tRunning(Humanoid* humanoid);", "\t\tRunning(Humanoid* humanoid);\n\t\tvoid resumeFromLanding(const Running& old, Controller& controller) { floorPart=old.floorPart; floorTouchInWorld=old.floorTouchInWorld; jumpWarmup=0.0f; updateGoals(controller); }"]
- ],
- "App/include/humanoid/Freefall.h": [
-  ["\t\tFreefall(Humanoid* humanoid);", "\t\tFreefall(Humanoid* humanoid);\n\t\tvirtual ~Freefall();\n\tprivate:\n\t\tfloat savedHeadFriction, savedTorsoFriction;"]
- ],
  "App/include/util/object.h": [
   [
    "\tclass AbstractFactoryProduct : public Creatable<T>\n\t{\n",
@@ -153,6 +51,22 @@
   [
    "",
    "\n// rebuild overlay: Stats template bodies rbxgs declares but never defines\n#include <boost/bind.hpp>\n#include \"util/Utilities.h\"\nnamespace RBX\n{\n\tnamespace Stats\n\t{\n\t\ttemplate<typename T>\n\t\tT rebuildDeref(const T* value)\n\t\t{\n\t\t\treturn *value;\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tTypedStatsItem<T>::TypedStatsItem(const T* value)\n\t\t\t: func(boost::bind(&rebuildDeref<T>, value))\n\t\t{\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tTypedStatsItem<T>::TypedStatsItem(boost::function0<T> func)\n\t\t\t: func(func)\n\t\t{\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tvoid TypedStatsItem<T>::update()\n\t\t{\n\t\t\tformatValue(func());\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tvoid Item::formatValue(const T& value)\n\t\t{\n\t\t\tsetValue((double)value, StringConverter<T>::convertToString(value));\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tItem* Item::createBoundChildItem(const char* name, const T& value)\n\t\t{\n\t\t\tboost::shared_ptr<TypedStatsItem<T> > item = Creatable<Instance>::create<TypedStatsItem<T> >(&value);\n\t\t\titem->setName(name);\n\t\t\titem->setParent(this);\n\t\t\treturn item.get();\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tItem* Item::createChildItem(const char* name, boost::function0<T> func)\n\t\t{\n\t\t\tboost::shared_ptr<TypedStatsItem<T> > item = Creatable<Instance>::create<TypedStatsItem<T> >(func);\n\t\t\titem->setName(name);\n\t\t\titem->setParent(this);\n\t\t\treturn item.get();\n\t\t}\n\t}\n}\n"
+  ]
+ ],
+ "App/gui/GUI.cpp": [
+  [
+   "#include \"gui/Gui.h\"\n",
+   "#pragma float_control(precise, off)\n#include \"gui/Gui.h\"\n"
+  ],
+  [
+   "\t\tRBXASSERT(!focus);\n\t\treturn processNonFocus(event);",
+   "\t\treturn processNonFocus(event);"
+  ]
+ ],
+ "App/v8datamodel/ToolMouseCommand.cpp": [
+  [
+   "#include \"v8datamodel/ToolMouseCommand.h\"\n",
+   "#pragma float_control(precise, off)\n#include \"v8datamodel/ToolMouseCommand.h\"\n"
   ]
  ],
  "App/include/util/StateStack.h": [
@@ -247,10 +161,10 @@
  ],
  "App/include/v8world/SimJobStage.h": [
   [
-    "#pragma once\n#include <list>\n#include \"v8world/IWorldStage.h\"\n\nnamespace RBX\n{\n\tclass Mechanism;\n\tclass MechanismTracker;\n\tclass Assembly;\n\tclass World;\n\tclass Edge;\n\n\tclass SimJobStage : public IWorldStage\n\t{\n\tprivate:\n\t\tstd::list<Mechanism*> mechanisms;\n\t  \n\tprivate:\n\t\tvoid combineMechanisms(Edge* e);\n\t\tvoid insertMechanism(Mechanism* m);\n\t\tvoid destroyMechanism(Mechanism* m);\n\t\tvoid splitMechanisms(Assembly*, Assembly*);\n\t\tbool validateEdge(Edge* e);\n\tpublic:\n\t\tMechanism* nextMechanism(std::list<Mechanism*>& list, const Mechanism* current);\n\tpublic:\n\t\tSimJobStage(IStage* upstream, World* world);\n\t\tvirtual ~SimJobStage();\n\tpublic:\n\t\tvirtual StageType getStageType()\n\t\t{\n\t\t\treturn SIMJOB_STAGE;\n\t\t}\n\t\tvirtual void onEdgeAdded(Edge* e);\n\t\tvirtual void onEdgeRemoving(Edge* e);\n\t\tvoid onAssemblyAdded(Assembly* a);\n\t\tvoid onAssemblyRemoving(Assembly* a);\n\t\tvoid notifyMovingPrimitives();\n\n\t\ttemplate<typename Class>\n\t\tvoid reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore);\n\t};\n}\n",
-    "#pragma once\n#include <list>\n#include \"v8world/IWorldStage.h\"\n#include \"v8world/Mechanism.h\"\n\nnamespace RBX\n{\n\tclass Assembly;\n\tclass World;\n\tclass Edge;\n\n\tclass SimJobStage : public IWorldStage\n\t{\n\t\tstd::list<SimJob*> jobs;\n\tpublic:\n\t\tSimJobStage(IStage* upstream, World* world);\n\t\tvirtual ~SimJobStage();\n\t\tvirtual StageType getStageType() { return SIMJOB_STAGE; }\n\t\tvirtual void onEdgeAdded(Edge* e);\n\t\tvirtual void onEdgeRemoving(Edge* e);\n\t\tvoid onAssemblyAdded(Assembly* a);\n\t\tvoid onAssemblyRemoving(Assembly* a);\n\t\tvoid notifyMovingPrimitives();\n\t\tvoid insertJob(SimJob* job);\n\t\tvoid removeJob(SimJob* job);\n\n\t\ttemplate<typename Class>\n\t\tvoid reportJobs(Class& callback, MechanismTracker& tracker, const SimJob* ignore)\n\t\t{\n\t\t\tif (jobs.empty()) return;\n\t\t\tSimJob* start = tracker.tracking() ? tracker.getJob() : jobs.front();\n\t\t\tstd::list<SimJob*>::iterator it = start->jobIterator;\n\t\t\tdo\n\t\t\t{\n\t\t\t\tSimJob* current = *it;\n\t\t\t\tif (++it == jobs.end()) it = jobs.begin();\n\t\t\t\tif (current != ignore && !callback(*current))\n\t\t\t\t{\n\t\t\t\t\ttracker.setJob(*it);\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t} while (*it != start);\n\t\t\ttracker.setJob(start);\n\t\t}\n\t};\n\ttypedef char SimJobStageSize[sizeof(SimJobStage)==44?1:-1];\n}\n"
+   "#pragma once\n#include <list>\n#include \"v8world/IWorldStage.h\"\n\nnamespace RBX\n{\n\tclass Mechanism;\n\tclass MechanismTracker;\n\tclass Assembly;\n\tclass World;\n\tclass Edge;\n\n\tclass SimJobStage : public IWorldStage\n\t{\n\tprivate:\n\t\tstd::list<Mechanism*> mechanisms;\n\t  \n\tprivate:\n\t\tvoid combineMechanisms(Edge* e);\n\t\tvoid insertMechanism(Mechanism* m);\n\t\tvoid destroyMechanism(Mechanism* m);\n\t\tvoid splitMechanisms(Assembly*, Assembly*);\n\t\tbool validateEdge(Edge* e);\n\tpublic:\n\t\tMechanism* nextMechanism(std::list<Mechanism*>& list, const Mechanism* current);\n\tpublic:\n\t\tSimJobStage(IStage* upstream, World* world);\n\t\tvirtual ~SimJobStage();\n\tpublic:\n\t\tvirtual StageType getStageType()\n\t\t{\n\t\t\treturn SIMJOB_STAGE;\n\t\t}\n\t\tvirtual void onEdgeAdded(Edge* e);\n\t\tvirtual void onEdgeRemoving(Edge* e);\n\t\tvoid onAssemblyAdded(Assembly* a);\n\t\tvoid onAssemblyRemoving(Assembly* a);\n\t\tvoid notifyMovingPrimitives();\n\n\t\ttemplate<typename Class>\n\t\tvoid reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore);\n\t};\n}\n",
+   "#pragma once\n#include <list>\n#include \"v8world/IWorldStage.h\"\n#include \"v8world/Mechanism.h\"\n\nnamespace RBX\n{\n\tclass Assembly;\n\tclass World;\n\tclass Edge;\n\n\tclass SimJobStage : public IWorldStage\n\t{\n\t\tstd::list<SimJob*> jobs;\n\tpublic:\n\t\tSimJobStage(IStage* upstream, World* world);\n\t\tvirtual ~SimJobStage();\n\t\tvirtual StageType getStageType() { return SIMJOB_STAGE; }\n\t\tvirtual void onEdgeAdded(Edge* e);\n\t\tvirtual void onEdgeRemoving(Edge* e);\n\t\tvoid onAssemblyAdded(Assembly* a);\n\t\tvoid onAssemblyRemoving(Assembly* a);\n\t\tvoid notifyMovingPrimitives();\n\t\tvoid insertJob(SimJob* job);\n\t\tvoid removeJob(SimJob* job);\n\n\t\ttemplate<typename Class>\n\t\tvoid reportJobs(Class& callback, MechanismTracker& tracker, const SimJob* ignore)\n\t\t{\n\t\t\tif (jobs.empty()) return;\n\t\t\tSimJob* start = tracker.tracking() ? tracker.getJob() : jobs.front();\n\t\t\tstd::list<SimJob*>::iterator it = start->jobIterator;\n\t\t\tdo\n\t\t\t{\n\t\t\t\tSimJob* current = *it;\n\t\t\t\tif (++it == jobs.end()) it = jobs.begin();\n\t\t\t\tif (current != ignore && !callback(*current))\n\t\t\t\t{\n\t\t\t\t\ttracker.setJob(*it);\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t} while (*it != start);\n\t\t\ttracker.setJob(start);\n\t\t}\n\t};\n\ttypedef char SimJobStageSize[sizeof(SimJobStage)==44?1:-1];\n}\n"
   ]
-],
+ ],
  "App/include/v8tree/Service.h": [
   [
    "",
@@ -262,7 +176,10 @@
   ]
  ],
  "App/include/reflection/type.h": [
-  ["", "\n#include <boost/shared_ptr.hpp>\nnamespace RBX { class Instance; namespace Reflection {\ntemplate<> boost::shared_ptr<Instance>& Value::convert<boost::shared_ptr<Instance> >();\n}}\n"],
+  [
+   "",
+   "\n#include <boost/shared_ptr.hpp>\nnamespace RBX { class Instance; namespace Reflection {\ntemplate<> boost::shared_ptr<Instance>& Value::convert<boost::shared_ptr<Instance> >();\n}}\n"
+  ],
   [
    "",
    "\n// rebuild overlay: template bodies rbxgs declares but never defines\n#include <stdexcept>\n#include <stdio.h>\n#include \"util/Utilities.h\"\nnamespace RBX\n{\n\tnamespace Reflection\n\t{\n\t\t// types without a StringConverter never convert from text\n\t\ttemplate<typename T>\n\t\tinline bool rebuildFromString(const std::string&, T&) { return false; }\n#define RBX_REBUILD_FROM_STRING(T) \\\n\t\ttemplate<> inline bool rebuildFromString<T>(const std::string& text, T& value) { return StringConverter<T>::convertToValue(text, value); }\n\t\tRBX_REBUILD_FROM_STRING(bool) RBX_REBUILD_FROM_STRING(int) RBX_REBUILD_FROM_STRING(unsigned)\n\t\tRBX_REBUILD_FROM_STRING(float) RBX_REBUILD_FROM_STRING(double)\n#undef RBX_REBUILD_FROM_STRING\n\n\t\ttemplate<typename T>\n\t\tT& Value::convert()\n\t\t{\n\t\t\tif (T* held = boost::any_cast<T>(&value))\n\t\t\t\treturn *held;\n\t\t\tif (const std::string* text = boost::any_cast<std::string>(&value))\n\t\t\t{\n\t\t\t\tT converted;\n\t\t\t\tif (rebuildFromString(*text, converted))\n\t\t\t\t{\n\t\t\t\t\tset(converted);\n\t\t\t\t\treturn *boost::any_cast<T>(&value);\n\t\t\t\t}\n\t\t\t}\n\t\t\tchar message[256];\n\t\t\t_snprintf(message, sizeof(message), \"Unable to cast %s to %s\", type().name.c_str(), Type::singleton<T>().name.c_str());\n\t\t\tthrow std::runtime_error(message);\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tT& Value::genericConvert()\n\t\t{\n\t\t\treturn convert<T>();\n\t\t}\n\n\t\ttemplate<typename T>\n\t\tT Value::get() const\n\t\t{\n\t\t\treturn boost::any_cast<T>(value);\n\t\t}\n\t}\n}\n"
@@ -345,9 +262,18 @@
   ]
  ],
  "App/script/ScriptContext.cpp": [
-  ["void ScriptContext::addScript(Script* script)\n{", "void ScriptContext::addScript(Script* script)\n{\n    if (!script->getParent()) return;"],
-  ["void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{", "void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{\n    if (!script->getParent()) return;"],
-  ["    else \n    {\n        return NULL; \n    }\n}\n\n// TODO: 99.78%", "    else \n    {\n        return instance->getName();\n    }\n}\n\n// TODO: 99.78%"],
+  [
+   "void ScriptContext::addScript(Script* script)\n{",
+   "void ScriptContext::addScript(Script* script)\n{\n    if (!script->getParent()) return;"
+  ],
+  [
+   "void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{",
+   "void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{\n    if (!script->getParent()) return;"
+  ],
+  [
+   "    else \n    {\n        return NULL; \n    }\n}\n\n// TODO: 99.78%",
+   "    else \n    {\n        return instance->getName();\n    }\n}\n\n// TODO: 99.78%"
+  ],
   [
    "@all:StandardOut::singleton()->print(MESSAGE_ERROR, lua_tostring(thread, -1));",
    "StandardOut::singleton()->print(MESSAGE_ERROR, \"%s\", lua_tostring(thread, -1) ? lua_tostring(thread, -1) : \"(error object)\");"
@@ -370,7 +296,10 @@
   ]
  ],
  "App/include/lua/LuaBridge.h": [
-  ["                        if (lua_rawequal(L, -1, -2))\n                        {\n                            lua_pop(L, 2);\n                            value = *object;\n                            return true;\n                        }\n                    }\n                    else\n                    {\n                        lua_pop(L, 1);\n                    }", "                        bool matches = lua_rawequal(L, -1, -2) != 0;\n                        lua_pop(L, 2);\n                        if (matches)\n                        {\n                            value = *object;\n                            return true;\n                        }\n                    }"],
+  [
+   "                        if (lua_rawequal(L, -1, -2))\n                        {\n                            lua_pop(L, 2);\n                            value = *object;\n                            return true;\n                        }\n                    }\n                    else\n                    {\n                        lua_pop(L, 1);\n                    }",
+   "                        bool matches = lua_rawequal(L, -1, -2) != 0;\n                        lua_pop(L, 2);\n                        if (matches)\n                        {\n                            value = *object;\n                            return true;\n                        }\n                    }"
+  ],
   [
    "const Object* object = static_cast<const Object*>(lua_touserdata(L,static_cast<int>(index)));",
    "const T* object = static_cast<const T*>(lua_touserdata(L,static_cast<int>(index)));"
@@ -543,9 +472,18 @@
   ]
  ],
  "App/humanoid/Humanoid.cpp": [
-  ["\t\t\t\tsetState(prevState->onStep(event.step, *parent->getTopPVController()));", "\t\t\t\tsetState(prevState->onStep(event.step, *parent->getTopPVController()));\n\t\t\t\tif (currentState.get() && (currentState->getName()==\"Freefall\" || currentState->getName()==\"Landed\" || currentState->getName()==\"Running\" || currentState->getName()==\"Climbing\"))\n\t\t\t\t\tApplyRecoveredClimbCollision(this,true,false);"],
-  ["#include \"humanoid/Humanoid.h\"", "#include \"humanoid/Humanoid.h\"\nnamespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }\n"],
-  ["\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get())\n\t\t\tcurrentState.reset(value);\n\t}", "\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get()) {\n\t\t\tbool previousClimb=currentState.get() && currentState->getName()==\"Climbing\";\n\t\t\tbool climbing=value && value->getName()==\"Climbing\";\n\t\t\tbool running=value && value->getName()==\"Running\";\n\t\t\tcurrentState.reset(value);\n\t\t\tif(previousClimb || climbing) ApplyRecoveredClimbCollision(this,climbing,running);\n\t\t}\n\t}"],
+  [
+   "\t\t\t\tsetState(prevState->onStep(event.step, *parent->getTopPVController()));",
+   "\t\t\t\tsetState(prevState->onStep(event.step, *parent->getTopPVController()));\n\t\t\t\tif (currentState.get() && (currentState->getName()==\"Freefall\" || currentState->getName()==\"Landed\" || currentState->getName()==\"Running\" || currentState->getName()==\"Climbing\"))\n\t\t\t\t\tApplyRecoveredClimbCollision(this,true,false);"
+  ],
+  [
+   "#include \"humanoid/Humanoid.h\"",
+   "#include \"humanoid/Humanoid.h\"\nnamespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }\n"
+  ],
+  [
+   "\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get())\n\t\t\tcurrentState.reset(value);\n\t}",
+   "\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get()) {\n\t\t\tbool previousClimb=currentState.get() && currentState->getName()==\"Climbing\";\n\t\t\tbool climbing=value && value->getName()==\"Climbing\";\n\t\t\tbool running=value && value->getName()==\"Running\";\n\t\t\tcurrentState.reset(value);\n\t\t\tif(previousClimb || climbing) ApplyRecoveredClimbCollision(this,climbing,running);\n\t\t}\n\t}"
+  ],
   [
    "@all:AutoJoint",
    "JointInstance"
@@ -582,8 +520,10 @@
   ]
  ],
  "App/include/humanoid/Humanoid.h": [
-  ["\t\t\tState(Humanoid* humanoid)\n\t\t\t\t: humanoid(humanoid)\n\t\t\t{\n\t\t\t}",
-   "\t\t\tState(Humanoid* humanoid)\n\t\t\t\t: humanoid(humanoid)\n\t\t\t{\n\t\t\t\t// Original HumanoidState constructor 00643e00 resets transient controls.\n\t\t\t\thumanoid->setJump(false);\n\t\t\t\thumanoid->setStrafe(false);\n\t\t\t}"],
+  [
+   "\t\t\tState(Humanoid* humanoid)\n\t\t\t\t: humanoid(humanoid)\n\t\t\t{\n\t\t\t}",
+   "\t\t\tState(Humanoid* humanoid)\n\t\t\t\t: humanoid(humanoid)\n\t\t\t{\n\t\t\t\t// Original HumanoidState constructor 00643e00 resets transient controls.\n\t\t\t\thumanoid->setJump(false);\n\t\t\t\thumanoid->setStrafe(false);\n\t\t\t}"
+  ],
   [
    "\t\t\t\t\t public ICharacterSubject,\n\t\t\t\t\t public Listener<RunService, Stepped>\n",
    "\t\t\t\t\t public ICharacterSubject,\n\t\t\t\t\t public IModelModifier,\n\t\t\t\t\t public Listener<RunService, Stepped>\n"
@@ -673,184 +613,184 @@
  ],
  "App/include/v8world/Primitive.h": [
   [
-    "\tclass EdgeList\n\t{\n\tpublic:\n\t\tRBX::Edge* first;\n\t\tint num;\n  \n\tpublic:\n\t\tEdgeList() : num(0), first(NULL) {}\n\t\t~EdgeList()\n\t\t{\n\t\t\tRBXASSERT(!first);\n\t\t\tRBXASSERT(!num);\n\t\t}\n\tpublic:\n\t\tbool hasEdge();\n  \n\tpublic:\n\t\tstatic void insertEdge(Primitive*, Edge*, EdgeList&);\n\t\tstatic void removeEdge(Primitive*, Edge*, EdgeList&);\n\t};\n",
-    "\tclass EdgeList\n\t{\n\tpublic:\n\t\tPrimitive* owner;\n\t\tG3D::Array<Edge*> edges;\n\t\tG3D::Array<Primitive*> neighbors; // the other primitive of each edge\n\n\tpublic:\n\t\tEdgeList(Primitive* owner) : owner(owner) {}\n\n\t\tbool hasEdge();\n\t\tvoid insertEdge(Edge* e);\n\t\tvoid removeEdge(Edge* e);\n\t\tEdge* first() const;\n\t\tEdge* next(Edge* e) const;\n\t};\n"
+   "\tclass EdgeList\n\t{\n\tpublic:\n\t\tRBX::Edge* first;\n\t\tint num;\n  \n\tpublic:\n\t\tEdgeList() : num(0), first(NULL) {}\n\t\t~EdgeList()\n\t\t{\n\t\t\tRBXASSERT(!first);\n\t\t\tRBXASSERT(!num);\n\t\t}\n\tpublic:\n\t\tbool hasEdge();\n  \n\tpublic:\n\t\tstatic void insertEdge(Primitive*, Edge*, EdgeList&);\n\t\tstatic void removeEdge(Primitive*, Edge*, EdgeList&);\n\t};\n",
+   "\tclass EdgeList\n\t{\n\tpublic:\n\t\tPrimitive* owner;\n\t\tG3D::Array<Edge*> edges;\n\t\tG3D::Array<Primitive*> neighbors; // the other primitive of each edge\n\n\tpublic:\n\t\tEdgeList(Primitive* owner) : owner(owner) {}\n\n\t\tbool hasEdge();\n\t\tvoid insertEdge(Edge* e);\n\t\tvoid removeEdge(Edge* e);\n\t\tEdge* first() const;\n\t\tEdge* next(Edge* e) const;\n\t};\n"
   ],
   [
-    "\t\tbool guidSetExternally;\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n\t\tint traverseId;\n",
-    "\t\tbool guidSetExternally;\n\t\tint unknown0x14; // 0x5e8770 initializes this to 1; joint size multiplier (00668bb0)\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tint traverseId;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n"
+   "\t\tbool guidSetExternally;\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n\t\tint traverseId;\n",
+   "\t\tbool guidSetExternally;\n\t\tint unknown0x14; // 0x5e8770 initializes this to 1; joint size multiplier (00668bb0)\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tint traverseId;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n"
   ],
   [
-    "\t\tIMoving* myOwner;\n\t\tAnchor* anchorObject;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool canCollide;\n\t\tbool canSleep;\n",
-    "\t\tIMoving* myOwner;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool flag0xaa; // 0xaa: third of the dragging/anchored set (exact 0x5e8140); name unknown\n\t\tbool canSleep;\n\t\tbool canCollide;\n"
+   "\t\tIMoving* myOwner;\n\t\tAnchor* anchorObject;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool canCollide;\n\t\tbool canSleep;\n",
+   "\t\tIMoving* myOwner;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool flag0xaa; // 0xaa: third of the dragging/anchored set (exact 0x5e8140); name unknown\n\t\tbool canSleep;\n\t\tbool canCollide;\n"
   ],
   [
-    "\t\t\treturn anchorObject != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject()\n\t\t{\n\t\t\treturn anchorObject;\n\t\t}\n",
-    "\t\t\treturn dragging || anchored || flag0xaa;\n\t\t}\n\t\tbool getAnchoredProperty() const { return anchored; }\n"
+   "\t\t\treturn anchorObject != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject()\n\t\t{\n\t\t\treturn anchorObject;\n\t\t}\n",
+   "\t\t\treturn dragging || anchored || flag0xaa;\n\t\t}\n\t\tbool getAnchoredProperty() const { return anchored; }\n"
   ],
   [
-    "\t\t\treturn joints.num;",
-    "\t\t\treturn joints.edges.size();"
+   "\t\t\treturn joints.num;",
+   "\t\t\treturn joints.edges.size();"
   ],
   [
-    "\t\t\treturn contacts.num;",
-    "\t\t\treturn contacts.edges.size();"
+   "\t\t\treturn contacts.num;",
+   "\t\t\treturn contacts.edges.size();"
   ],
   [
-    "\t\tvoid setGuid(const Guid&);\n",
-    "\t\tvoid setGuid(const Guid&);\n\t\tvoid setUnknown0x14(int value); // 0x5e7420\n"
+   "\t\tvoid setGuid(const Guid&);\n",
+   "\t\tvoid setGuid(const Guid&);\n\t\tvoid setUnknown0x14(int value); // 0x5e7420\n"
   ],
   [
-    "\t\t\t// TODO: get this fully matching\n\t\t\t// check RotateJoint::getChannelValue\n\t\t\tconst SurfaceData* data = surfaceData[id];\n\t\t\treturn data ? *data : SurfaceData::empty();\n",
-    "\t\t\tif (!surfaceData[id])\n\t\t\t\treturn SurfaceData::empty();\n\t\t\telse\n\t\t\t\treturn *surfaceData[id];\n"
+   "\t\t\t// TODO: get this fully matching\n\t\t\t// check RotateJoint::getChannelValue\n\t\t\tconst SurfaceData* data = surfaceData[id];\n\t\t\treturn data ? *data : SurfaceData::empty();\n",
+   "\t\t\tif (!surfaceData[id])\n\t\t\t\treturn SurfaceData::empty();\n\t\t\telse\n\t\t\t\treturn *surfaceData[id];\n"
   ],
   [
-    "\t\tvoid setAnchor(bool _anchored);\n",
-    "\t\tvoid setAnchor(bool _anchored);\n\t\tvoid setFlag0xaa(bool value); // 0x5e8140\n"
+   "\t\tvoid setAnchor(bool _anchored);\n",
+   "\t\tvoid setAnchor(bool _anchored);\n\t\tvoid setFlag0xaa(bool value); // 0x5e8140\n"
   ],
   [
-    "\t\tvoid setUnknown0x14(int value); // 0x5e7420",
-    "\t\tvoid setUnknown0x14(int value); // 0x5e7420\n\t\tunsigned int getSizeMultiplier() const { return static_cast<unsigned int>(unknown0x14); } // 00668bb0 reads +0x14"
+   "\t\tvoid setUnknown0x14(int value); // 0x5e7420",
+   "\t\tvoid setUnknown0x14(int value); // 0x5e7420\n\t\tunsigned int getSizeMultiplier() const { return static_cast<unsigned int>(unknown0x14); } // 00668bb0 reads +0x14"
   ]
-],
+ ],
  "App/v8world/Primitive.cpp": [
   [
-    "\t\t\tRBXASSERT(!anchorObject);\n\t\t\tanchorObject = new Anchor(this);",
-    "\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));"
+   "\t\t\tRBXASSERT(!anchorObject);\n\t\t\tanchorObject = new Anchor(this);",
+   "\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));"
   ],
   [
-    "\t\t\tRBXASSERT(anchorObject);",
-    "\t\t\tRBXASSERT(getAnchorObject());"
+   "\t\t\tRBXASSERT(anchorObject);",
+   "\t\t\tRBXASSERT(getAnchorObject());"
   ],
   [
-    "\t\t\tif (anchorObject)\n\t\t\t\tdelete anchorObject;\n\n\t\t\tanchorObject = NULL;",
-    "\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);"
+   "\t\t\tif (anchorObject)\n\t\t\t\tdelete anchorObject;\n\n\t\t\tanchorObject = NULL;",
+   "\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);"
   ],
   [
-    "\t\tmyOwner(NULL),\n\t\tanchorObject(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n",
-    "\t\tmyOwner(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n\t\tflag0xaa(false),\n"
+   "\t\tmyOwner(NULL),\n\t\tanchorObject(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n",
+   "\t\tmyOwner(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n\t\tflag0xaa(false),\n"
   ],
   [
-    "\t\tspatialNodes(NULL),\n\t\tworldIndex(-1),\n",
-    "\t\tspatialNodes(NULL),\n\t\tunknown0x14(1),\n\t\tcontacts(this),\n\t\tjoints(this),\n\t\tworldIndex(-1),\n"
+   "\t\tspatialNodes(NULL),\n\t\tworldIndex(-1),\n",
+   "\t\tspatialNodes(NULL),\n\t\tunknown0x14(1),\n\t\tcontacts(this),\n\t\tjoints(this),\n\t\tworldIndex(-1),\n"
   ],
   [
-    "\t\treturn joints.first ? joints.first : contacts.first;",
-    "\t\treturn joints.edges.size() ? joints.first() : contacts.first();"
+   "\t\treturn joints.first ? joints.first : contacts.first;",
+   "\t\treturn joints.edges.size() ? joints.first() : contacts.first();"
   ],
   [
-    "\t\treturn rbx_static_cast<Joint*>(joints.first);",
-    "\t\treturn rbx_static_cast<Joint*>(joints.first());"
+   "\t\treturn rbx_static_cast<Joint*>(joints.first);",
+   "\t\treturn rbx_static_cast<Joint*>(joints.first());"
   ],
   [
-    "\t\treturn rbx_static_cast<Contact*>(contacts.first);",
-    "\t\treturn rbx_static_cast<Contact*>(contacts.first());"
+   "\t\treturn rbx_static_cast<Contact*>(contacts.first);",
+   "\t\treturn rbx_static_cast<Contact*>(contacts.first());"
   ],
   [
-    "\t\treturn rbx_static_cast<Joint*>(prev->getNext(this));",
-    "\t\treturn rbx_static_cast<Joint*>(joints.next(prev));"
+   "\t\treturn rbx_static_cast<Joint*>(prev->getNext(this));",
+   "\t\treturn rbx_static_cast<Joint*>(joints.next(prev));"
   ],
   [
-    "\t\treturn rbx_static_cast<Contact*>(prev->getNext(this));",
-    "\t\treturn rbx_static_cast<Contact*>(contacts.next(prev));"
+   "\t\treturn rbx_static_cast<Contact*>(prev->getNext(this));",
+   "\t\treturn rbx_static_cast<Contact*>(contacts.next(prev));"
   ],
   [
-    "\t\tEdge* next = e->getNext(this);\n\n\t\tif (next)\n\t\t\treturn next;\n\t\telse\n\t\t\treturn Joint::isJoint(e) ? contacts.first : NULL;",
-    "\t\tif (Joint::isJoint(e))\n\t\t{\n\t\t\tEdge* next = joints.next(e);\n\t\t\treturn next ? next : contacts.first();\n\t\t}\n\t\treturn contacts.next(e);"
+   "\t\tEdge* next = e->getNext(this);\n\n\t\tif (next)\n\t\t\treturn next;\n\t\telse\n\t\t\treturn Joint::isJoint(e) ? contacts.first : NULL;",
+   "\t\tif (Joint::isJoint(e))\n\t\t{\n\t\t\tEdge* next = joints.next(e);\n\t\t\treturn next ? next : contacts.first();\n\t\t}\n\t\treturn contacts.next(e);"
   ],
   [
-    "@all:EdgeList::insertEdge(p0, e, e->getPrimitive(0)->joints);",
-    "e->getPrimitive(0)->joints.insertEdge(e);"
+   "@all:EdgeList::insertEdge(p0, e, e->getPrimitive(0)->joints);",
+   "e->getPrimitive(0)->joints.insertEdge(e);"
   ],
   [
-    "@all:EdgeList::insertEdge(p1, e, e->getPrimitive(1)->joints);",
-    "e->getPrimitive(1)->joints.insertEdge(e);"
+   "@all:EdgeList::insertEdge(p1, e, e->getPrimitive(1)->joints);",
+   "e->getPrimitive(1)->joints.insertEdge(e);"
   ],
   [
-    "@all:EdgeList::insertEdge(p0, e, e->getPrimitive(0)->contacts);",
-    "e->getPrimitive(0)->contacts.insertEdge(e);"
+   "@all:EdgeList::insertEdge(p0, e, e->getPrimitive(0)->contacts);",
+   "e->getPrimitive(0)->contacts.insertEdge(e);"
   ],
   [
-    "@all:EdgeList::insertEdge(p1, e, e->getPrimitive(1)->contacts);",
-    "e->getPrimitive(1)->contacts.insertEdge(e);"
+   "@all:EdgeList::insertEdge(p1, e, e->getPrimitive(1)->contacts);",
+   "e->getPrimitive(1)->contacts.insertEdge(e);"
   ],
   [
-    "@all:EdgeList::removeEdge(p0, e, e->getPrimitive(0)->joints);",
-    "e->getPrimitive(0)->joints.removeEdge(e);"
+   "@all:EdgeList::removeEdge(p0, e, e->getPrimitive(0)->joints);",
+   "e->getPrimitive(0)->joints.removeEdge(e);"
   ],
   [
-    "@all:EdgeList::removeEdge(p1, e, e->getPrimitive(1)->joints);",
-    "e->getPrimitive(1)->joints.removeEdge(e);"
+   "@all:EdgeList::removeEdge(p1, e, e->getPrimitive(1)->joints);",
+   "e->getPrimitive(1)->joints.removeEdge(e);"
   ],
   [
-    "@all:EdgeList::removeEdge(p0, e, e->getPrimitive(0)->contacts);",
-    "e->getPrimitive(0)->contacts.removeEdge(e);"
+   "@all:EdgeList::removeEdge(p0, e, e->getPrimitive(0)->contacts);",
+   "e->getPrimitive(0)->contacts.removeEdge(e);"
   ],
   [
-    "@all:EdgeList::removeEdge(p1, e, e->getPrimitive(1)->contacts);",
-    "e->getPrimitive(1)->contacts.removeEdge(e);"
+   "@all:EdgeList::removeEdge(p1, e, e->getPrimitive(1)->contacts);",
+   "e->getPrimitive(1)->contacts.removeEdge(e);"
   ],
   [
-    "\tvoid EdgeList::insertEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\te->setNext(p, list.first);\n\t\tlist.first = e;\n\t\tlist.num++;\n\t}\n\n\tvoid EdgeList::removeEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\tEdge* currentEdge = list.first;\n\n\t\tif (list.first == e)\n\t\t{\n\t\t\tlist.first = e->getNext(p);\n\t\t}\n\t\telse\n\t\t{\n\t\t\twhile (currentEdge->getNext(p) != e)\n\t\t\t{\n\t\t\t\tcurrentEdge = currentEdge->getNext(p);\n\t\t\t}\n\n\t\t\tcurrentEdge->setNext(p, e->getNext(p));\n\t\t}\n\n\t\tlist.num--;\n\t}\n",
-    "\tvoid EdgeList::insertEdge(Edge* e)\n\t{\n\t\te->setIndex(owner, edges.size());\n\t\tedges.append(e);\n\t\tneighbors.append(e->otherPrimitive(owner));\n\t}\n\n\tvoid EdgeList::removeEdge(Edge* e)\n\t{\n\t\tint index = e->getIndex(owner);\n\t\tEdge* lastEdge = edges.last();\n\t\tPrimitive* lastNeighbor = neighbors.last();\n\t\tedges[index] = lastEdge;\n\t\tneighbors[index] = lastNeighbor;\n\t\tedges.popDiscard();\n\t\tneighbors.popDiscard();\n\t\tlastEdge->setIndex(owner, index);\n\t\te->setIndex(owner, -1);\n\t}\n\n\tEdge* EdgeList::first() const\n\t{\n\t\treturn edges.size() ? edges[0] : NULL;\n\t}\n\n\tEdge* EdgeList::next(Edge* e) const\n\t{\n\t\tint i = e->getIndex(owner) + 1;\n\t\treturn i < edges.size() ? edges[i] : NULL;\n\t}\n"
+   "\tvoid EdgeList::insertEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\te->setNext(p, list.first);\n\t\tlist.first = e;\n\t\tlist.num++;\n\t}\n\n\tvoid EdgeList::removeEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\tEdge* currentEdge = list.first;\n\n\t\tif (list.first == e)\n\t\t{\n\t\t\tlist.first = e->getNext(p);\n\t\t}\n\t\telse\n\t\t{\n\t\t\twhile (currentEdge->getNext(p) != e)\n\t\t\t{\n\t\t\t\tcurrentEdge = currentEdge->getNext(p);\n\t\t\t}\n\n\t\t\tcurrentEdge->setNext(p, e->getNext(p));\n\t\t}\n\n\t\tlist.num--;\n\t}\n",
+   "\tvoid EdgeList::insertEdge(Edge* e)\n\t{\n\t\te->setIndex(owner, edges.size());\n\t\tedges.append(e);\n\t\tneighbors.append(e->otherPrimitive(owner));\n\t}\n\n\tvoid EdgeList::removeEdge(Edge* e)\n\t{\n\t\tint index = e->getIndex(owner);\n\t\tEdge* lastEdge = edges.last();\n\t\tPrimitive* lastNeighbor = neighbors.last();\n\t\tedges[index] = lastEdge;\n\t\tneighbors[index] = lastNeighbor;\n\t\tedges.popDiscard();\n\t\tneighbors.popDiscard();\n\t\tlastEdge->setIndex(owner, index);\n\t\te->setIndex(owner, -1);\n\t}\n\n\tEdge* EdgeList::first() const\n\t{\n\t\treturn edges.size() ? edges[0] : NULL;\n\t}\n\n\tEdge* EdgeList::next(Edge* e) const\n\t{\n\t\tint i = e->getIndex(owner) + 1;\n\t\treturn i < edges.size() ? edges[i] : NULL;\n\t}\n"
   ],
   [
-    "",
-    "\nnamespace RBX {\n    // 0x5e7420: int +0x14, guarded by world +0x58 (clump is +0x5c).\n    void Primitive::setUnknown0x14(int value)\n    {\n        if (value != unknown0x14 && !world)\n            unknown0x14 = value;\n    }\n}\n"
+   "",
+   "\nnamespace RBX {\n    // 0x5e7420: int +0x14, guarded by world +0x58 (clump is +0x5c).\n    void Primitive::setUnknown0x14(int value)\n    {\n        if (value != unknown0x14 && !world)\n            unknown0x14 = value;\n    }\n}\n"
   ],
   [
-    "\tPrimitive::~Primitive()\n\t{\n\t\tGeometry::GeometryType type = geometry->getGeometryType();\n\n\t\tif (type != Geometry::GEOMETRY_NONE) {\n\t\t\tdelete geometry;\n\t\t\tdelete body;\n\t\t}\n\n\t\tfor (int i = 0; i < 6; i++)\n\t\t\tdelete surfaceData[i];\n\n\t\tRBXASSERT(!world);\n\t\tRBXASSERT(!clump);\n\t}",
-    "\tPrimitive::~Primitive()\n\t{\n\t\tGeometry::GeometryType type = geometry->getGeometryType();\n\n\t\tif (type != Geometry::GEOMETRY_NONE) {\n\t\t\tdelete geometry;\n\t\t\tdelete body;\n\t\t}\n\n\t\tfor (int i = 0; i < 6; i++)\n\t\t\tdelete surfaceData[i];\n\n\t}"
+   "\tPrimitive::~Primitive()\n\t{\n\t\tGeometry::GeometryType type = geometry->getGeometryType();\n\n\t\tif (type != Geometry::GEOMETRY_NONE) {\n\t\t\tdelete geometry;\n\t\t\tdelete body;\n\t\t}\n\n\t\tfor (int i = 0; i < 6; i++)\n\t\t\tdelete surfaceData[i];\n\n\t\tRBXASSERT(!world);\n\t\tRBXASSERT(!clump);\n\t}",
+   "\tPrimitive::~Primitive()\n\t{\n\t\tGeometry::GeometryType type = geometry->getGeometryType();\n\n\t\tif (type != Geometry::GEOMETRY_NONE) {\n\t\t\tdelete geometry;\n\t\t\tdelete body;\n\t\t}\n\n\t\tfor (int i = 0; i < 6; i++)\n\t\t\tdelete surfaceData[i];\n\n\t}"
   ],
   [
-    "\tvoid Primitive::setPrimitiveType(Geometry::GeometryType geometryType)\n\t{\n\t\tRBXASSERT(geometry->getGeometryType() != Geometry::GEOMETRY_NONE);\n\t\tRBXASSERT(geometryType != Geometry::GEOMETRY_NONE);\n\n\t\tif (geometry->getGeometryType() != geometryType)\n\t\t{\n\t\t\tG3D::Vector3 oldSize = geometry->getGridSize();\n\t\t\tif (geometry)\n\t\t\t\tdelete geometry;\n\n\t\t\tgeometry = newGeometry(geometryType);\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveGeometryTypeChanged(this);\n\n\t\t\tsetGridSize(oldSize);\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
-    "\tvoid Primitive::setPrimitiveType(Geometry::GeometryType geometryType)\n\t{\n\n\t\tif (geometry->getGeometryType() != geometryType)\n\t\t{\n\t\t\tG3D::Vector3 oldSize = geometry->getGridSize();\n\t\t\tif (geometry)\n\t\t\t\tdelete geometry;\n\n\t\t\tgeometry = newGeometry(geometryType);\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveGeometryTypeChanged(this);\n\n\t\t\tsetGridSize(oldSize);\n\t\t\tJointK.setDirty();\n\t\t}\n\t}"
+   "\tvoid Primitive::setPrimitiveType(Geometry::GeometryType geometryType)\n\t{\n\t\tRBXASSERT(geometry->getGeometryType() != Geometry::GEOMETRY_NONE);\n\t\tRBXASSERT(geometryType != Geometry::GEOMETRY_NONE);\n\n\t\tif (geometry->getGeometryType() != geometryType)\n\t\t{\n\t\t\tG3D::Vector3 oldSize = geometry->getGridSize();\n\t\t\tif (geometry)\n\t\t\t\tdelete geometry;\n\n\t\t\tgeometry = newGeometry(geometryType);\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveGeometryTypeChanged(this);\n\n\t\t\tsetGridSize(oldSize);\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
+   "\tvoid Primitive::setPrimitiveType(Geometry::GeometryType geometryType)\n\t{\n\n\t\tif (geometry->getGeometryType() != geometryType)\n\t\t{\n\t\t\tG3D::Vector3 oldSize = geometry->getGridSize();\n\t\t\tif (geometry)\n\t\t\t\tdelete geometry;\n\n\t\t\tgeometry = newGeometry(geometryType);\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveGeometryTypeChanged(this);\n\n\t\t\tsetGridSize(oldSize);\n\t\t\tJointK.setDirty();\n\t\t}\n\t}"
   ],
   [
-    "#include \"v8world/Primitive.h\"\n",
-    "#pragma float_control(precise, off)\n#include \"v8world/Primitive.h\"\n"
+   "#include \"v8world/Primitive.h\"\n",
+   "#pragma float_control(precise, off)\n#include \"v8world/Primitive.h\"\n"
   ],
   [
-    "Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)\n\t{\n\t\tif (!surfaceData[id] && newSurfaceData.isEmpty())\n\t\t\treturn;\n\n\t\tif (surfaceData[id] && *surfaceData[id] == newSurfaceData)\n\t\t\treturn;\n\n\t\tif (newSurfaceData.isEmpty())\n\t\t{\n\t\t\tRBXASSERT(surfaceData[id]);\n\t\t\tdelete surfaceData[id];\n\t\t\tsurfaceData[id] = NULL;\n\t\t\treturn;\n\t\t}\n\t\telse if (!surfaceData[id])\n\t\t{\n\t\t\tsurfaceData[id] = new SurfaceData;\n\t\t}\n\n\t\t*surfaceData[id] = newSurfaceData;\n\t}",
-    "Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)\n\t{\n\t\tif (!surfaceData[id] && newSurfaceData.isEmpty())\n\t\t\treturn;\n\n\t\tif (surfaceData[id] && *surfaceData[id] == newSurfaceData)\n\t\t\treturn;\n\n\t\tif (newSurfaceData.isEmpty())\n\t\t{\n\t\t\t                          ;\n\t\t\tdelete surfaceData[id];\n\t\t\tsurfaceData[id] = NULL;\n\t\t\treturn;\n\t\t}\n\t\telse if (!surfaceData[id])\n\t\t{\n\t\t\tsurfaceData[id] = new SurfaceData;\n\t\t}\n\n\t\t*surfaceData[id] = newSurfaceData;\n\t}"
+   "Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)\n\t{\n\t\tif (!surfaceData[id] && newSurfaceData.isEmpty())\n\t\t\treturn;\n\n\t\tif (surfaceData[id] && *surfaceData[id] == newSurfaceData)\n\t\t\treturn;\n\n\t\tif (newSurfaceData.isEmpty())\n\t\t{\n\t\t\tRBXASSERT(surfaceData[id]);\n\t\t\tdelete surfaceData[id];\n\t\t\tsurfaceData[id] = NULL;\n\t\t\treturn;\n\t\t}\n\t\telse if (!surfaceData[id])\n\t\t{\n\t\t\tsurfaceData[id] = new SurfaceData;\n\t\t}\n\n\t\t*surfaceData[id] = newSurfaceData;\n\t}",
+   "Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)\n\t{\n\t\tif (!surfaceData[id] && newSurfaceData.isEmpty())\n\t\t\treturn;\n\n\t\tif (surfaceData[id] && *surfaceData[id] == newSurfaceData)\n\t\t\treturn;\n\n\t\tif (newSurfaceData.isEmpty())\n\t\t{\n\t\t\t                          ;\n\t\t\tdelete surfaceData[id];\n\t\t\tsurfaceData[id] = NULL;\n\t\t\treturn;\n\t\t}\n\t\telse if (!surfaceData[id])\n\t\t{\n\t\t\tsurfaceData[id] = new SurfaceData;\n\t\t}\n\n\t\t*surfaceData[id] = newSurfaceData;\n\t}"
   ],
   [
-    "return edges.size() ? edges[0] : NULL;",
-    "return edges.size() > 0 ? edges[0] : NULL;"
+   "return edges.size() ? edges[0] : NULL;",
+   "return edges.size() > 0 ? edges[0] : NULL;"
   ],
   [
-    "return rbx_static_cast<Contact*>(contacts.next(prev));",
-    "int i = prev->getIndex(this) + 1;\n\t\treturn i < contacts.edges.size() ? rbx_static_cast<Contact*>(contacts.edges[i]) : NULL;"
+   "return rbx_static_cast<Contact*>(contacts.next(prev));",
+   "int i = prev->getIndex(this) + 1;\n\t\treturn i < contacts.edges.size() ? rbx_static_cast<Contact*>(contacts.edges[i]) : NULL;"
   ],
   [
-    "return getFirstRigidAt(getFirstEdge());",
-    "return getFirstRigidAt(joints.first());"
+   "return getFirstRigidAt(getFirstEdge());",
+   "return getFirstRigidAt(joints.first());"
   ],
   [
-    "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tbool oldDrag = !dragging && canCollide;\n\t\t\tdragging = _dragging;\n\n\t\t\tsetAnchor(anchored);\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tbool newDrag = !dragging && canCollide;\n\t\t\t\tif (newDrag != oldDrag)\n\t\t\t\t\tworld->onPrimitiveCanCollideChanged(this);\n\t\t\t}\n\t\t}\n\t}",
-    "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tdragging = _dragging;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
+   "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tbool oldDrag = !dragging && canCollide;\n\t\t\tdragging = _dragging;\n\n\t\t\tsetAnchor(anchored);\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tbool newDrag = !dragging && canCollide;\n\t\t\t\tif (newDrag != oldDrag)\n\t\t\t\t\tworld->onPrimitiveCanCollideChanged(this);\n\t\t\t}\n\t\t}\n\t}",
+   "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tdragging = _dragging;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
   ],
   [
-    "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tanchored = _anchored;\n\n\t\tbool exists = getAnchor();\n\n\t\tif (_anchored || dragging)\n\t\t\t_anchored = true;\n\n\t\tif (_anchored == exists)\n\t\t\treturn;\n\n\t\tif (_anchored)\n\t\t{\n\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tRBXASSERT(getAnchorObject());\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\n\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);\n\t\t}\n\t}",
-    "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (anchored != _anchored)\n\t\t{\n\t\t\tanchored = _anchored;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\t\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
+   "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tanchored = _anchored;\n\n\t\tbool exists = getAnchor();\n\n\t\tif (_anchored || dragging)\n\t\t\t_anchored = true;\n\n\t\tif (_anchored == exists)\n\t\t\treturn;\n\n\t\tif (_anchored)\n\t\t{\n\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tRBXASSERT(getAnchorObject());\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\n\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);\n\t\t}\n\t}",
+   "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (anchored != _anchored)\n\t\t{\n\t\t\tanchored = _anchored;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\t\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
   ],
   [
-    "\tvoid Primitive::setCanCollide(bool value)\n\t{",
-    "\tvoid Primitive::setFlag0xaa(bool value)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (flag0xaa != value)\n\t\t{\n\t\t\tflag0xaa = value;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Primitive::setPV(const PV& pv)\n\t{\n\t\tbody->setVelocity(pv.velocity);\n\t\tsetCoordinateFrame(pv.position);\n\t}\n\n\tvoid Primitive::setCanCollide(bool value)\n\t{"
+   "\tvoid Primitive::setCanCollide(bool value)\n\t{",
+   "\tvoid Primitive::setFlag0xaa(bool value)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (flag0xaa != value)\n\t\t{\n\t\t\tflag0xaa = value;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Primitive::setPV(const PV& pv)\n\t{\n\t\tbody->setVelocity(pv.velocity);\n\t\tsetCoordinateFrame(pv.position);\n\t}\n\n\tvoid Primitive::setCanCollide(bool value)\n\t{"
   ],
   [
-    "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\n\t\t\tfloat newSize = geometry->getGridVolume();\n\t\t\tbody->setMass(newSize);\n\t\t\tbody->setMoment(geometry->getMoment(newSize));\n\t\t\tJointK.setDirty();\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
-    "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\t\t\tsetMassInertia(geometry->getGridVolume());\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}\n\n\tvoid Primitive::setMassInertia(float mass)\n\t{\n\t\tbody->setMass(mass);\n\t\tbody->setMoment(geometry->getMoment(mass));\n\t\tJointK.setDirty();\n\t}"
+   "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\n\t\t\tfloat newSize = geometry->getGridVolume();\n\t\t\tbody->setMass(newSize);\n\t\t\tbody->setMoment(geometry->getMoment(newSize));\n\t\t\tJointK.setDirty();\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
+   "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\t\t\tsetMassInertia(geometry->getGridVolume());\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}\n\n\tvoid Primitive::setMassInertia(float mass)\n\t{\n\t\tbody->setMass(mass);\n\t\tbody->setMoment(geometry->getMoment(mass));\n\t\tJointK.setDirty();\n\t}"
   ],
   [
-    "Primitive::setGuid(const Guid& value) \n\t{\n\t\tRBXASSERT(!world);\n\t\tguid.copyDataFrom(value);\n\t\tguidSetExternally = true;\n\t}",
-    "Primitive::setGuid(const Guid& value) \n\t{\n\t\t                 ;\n\t\tguid.copyDataFrom(value);\n\t\tguidSetExternally = true;\n\t}"
+   "Primitive::setGuid(const Guid& value) \n\t{\n\t\tRBXASSERT(!world);\n\t\tguid.copyDataFrom(value);\n\t\tguidSetExternally = true;\n\t}",
+   "Primitive::setGuid(const Guid& value) \n\t{\n\t\t                 ;\n\t\tguid.copyDataFrom(value);\n\t\tguidSetExternally = true;\n\t}"
   ],
   [
-    "return clump ? clump->getAssembly() : NULL;",
-    "return clump ? clump->getRootAssembly() : NULL;"
+   "return clump ? clump->getAssembly() : NULL;",
+   "return clump ? clump->getRootAssembly() : NULL;"
   ]
-],
+ ],
  "App/include/v8datamodel/PartInstance.h": [
   [
    "#include \"util/ISelectable3d.h\"\n",
@@ -879,74 +819,74 @@
  ],
  "App/v8datamodel/PartInstance.cpp": [
   [
-    "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchor();\n\t}",
-    "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchoredProperty();\n\t}"
+   "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchor();\n\t}",
+   "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchoredProperty();\n\t}"
   ],
   [
-    "\t\t  primitive(new Primitive(Geometry::GEOMETRY_BLOCK)),\n",
-    "\t\t  primitive(Geometry::GEOMETRY_BLOCK),\n"
+   "\t\t  primitive(new Primitive(Geometry::GEOMETRY_BLOCK)),\n",
+   "\t\t  primitive(Geometry::GEOMETRY_BLOCK),\n"
   ],
   [
-    "@all:primitive.get()",
-    "&primitive"
+   "@all:primitive.get()",
+   "&primitive"
   ],
   [
-    "@all:primitive->",
-    "primitive."
+   "@all:primitive->",
+   "primitive."
   ],
   [
-    "",
-    "\nnamespace RBX {\n    // 0x598c20: base name update, then the byte-proven Torso-dependent value.\n    void PartInstance::setName(const std::string& value)\n    {\n        Base::setName(value);\n        if (value == \"Torso\")\n            primitive.setUnknown0x14(5);\n        else\n            primitive.setUnknown0x14(1);\n    }\n}\n"
+   "",
+   "\nnamespace RBX {\n    // 0x598c20: base name update, then the byte-proven Torso-dependent value.\n    void PartInstance::setName(const std::string& value)\n    {\n        Base::setName(value);\n        if (value == \"Torso\")\n            primitive.setUnknown0x14(5);\n        else\n            primitive.setUnknown0x14(1);\n    }\n}\n"
   ],
   [
-    "#include \"v8datamodel/PartInstance.h\"\n",
-    "#pragma float_control(precise, off)\n#include \"v8datamodel/PartInstance.h\"\n"
+   "#include \"v8datamodel/PartInstance.h\"\n",
+   "#pragma float_control(precise, off)\n#include \"v8datamodel/PartInstance.h\"\n"
   ],
   [
-    "\t\t\t   SurfacesNeedAdorn || \n\t\t\t   highlightSleepParts || ",
-    "\t\t\t   SurfacesNeedAdorn || \n\t\t\t   showContactPoints ||\n\t\t\t   highlightSleepParts || "
+   "\t\t\t   SurfacesNeedAdorn || \n\t\t\t   highlightSleepParts || ",
+   "\t\t\t   SurfacesNeedAdorn || \n\t\t\t   showContactPoints ||\n\t\t\t   highlightSleepParts || "
   ],
   [
-    "\tconst char* category_Part = \"Part\";",
-    "\tconst char* category_Part = \"Part\";\n\n\tbool PartInstance::showContactPoints = false;"
+   "\tconst char* category_Part = \"Part\";",
+   "\tconst char* category_Part = \"Part\";\n\n\tbool PartInstance::showContactPoints = false;"
   ],
   [
-    "\tbool PartInstance::nonNullInWorkspace(boost::shared_ptr<PartInstance> part)\n\t{\n\t\tbool null = part.get() && part->myWorld;\n\t\tRBXASSERT(!null || part->primitive.inPipeline());\n\t\treturn null;\n\t}",
-    "\tbool PartInstance::nonNullInWorkspace(boost::shared_ptr<PartInstance> part)\n\t{\n\t\treturn part && part->myWorld;\n\t}"
+   "\tbool PartInstance::nonNullInWorkspace(boost::shared_ptr<PartInstance> part)\n\t{\n\t\tbool null = part.get() && part->myWorld;\n\t\tRBXASSERT(!null || part->primitive.inPipeline());\n\t\treturn null;\n\t}",
+   "\tbool PartInstance::nonNullInWorkspace(boost::shared_ptr<PartInstance> part)\n\t{\n\t\treturn part && part->myWorld;\n\t}"
   ],
   [
-    "namespace RBX\n{\n\tconst char* category_Part = \"Part\";",
-    "namespace RBX\n{\n\tbool __fastcall rocInPipelineAnchor(const IPipelined* p)\n\t{\n\t\treturn p->inPipeline();\n\t}\n\n\tconst char* category_Part = \"Part\";"
+   "namespace RBX\n{\n\tconst char* category_Part = \"Part\";",
+   "namespace RBX\n{\n\tbool __fastcall rocInPipelineAnchor(const IPipelined* p)\n\t{\n\t\treturn p->inPipeline();\n\t}\n\n\tconst char* category_Part = \"Part\";"
   ],
   [
-    "PartInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)\n\t{\n\t\tRBXASSERT(legacyOffset.get());\n\n\t\tG3D::CoordinateFrame myState = parentState * *legacyOffset;\n\t\tprimitive.setGridCorner(myState);\n\t}",
-    "PartInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)\n\t{\n\t\t                             ;\n\n\t\tG3D::CoordinateFrame myState = parentState * *legacyOffset;\n\t\tprimitive.setGridCorner(myState);\n\t}"
+   "PartInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)\n\t{\n\t\tRBXASSERT(legacyOffset.get());\n\n\t\tG3D::CoordinateFrame myState = parentState * *legacyOffset;\n\t\tprimitive.setGridCorner(myState);\n\t}",
+   "PartInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)\n\t{\n\t\t                             ;\n\n\t\tG3D::CoordinateFrame myState = parentState * *legacyOffset;\n\t\tprimitive.setGridCorner(myState);\n\t}"
   ],
   [
-    "PartInstance::fromPrimitiveConst(const Primitive* p)\n\t{\n\t\tRBXASSERT(!p || dynamic_cast<PartInstance*>(p->getOwner()));\n\n\t\tif (p)\n\t\t\treturn rbx_static_cast<PartInstance*>(p->getOwner());\n\t\telse\n\t\t\treturn NULL;\n\t}",
-    "PartInstance::fromPrimitiveConst(const Primitive* p)\n\t{\n\t\t                                                           ;\n\n\t\tif (p)\n\t\t\treturn rbx_static_cast<PartInstance*>(p->getOwner());\n\t\telse\n\t\t\treturn NULL;\n\t}"
+   "PartInstance::fromPrimitiveConst(const Primitive* p)\n\t{\n\t\tRBXASSERT(!p || dynamic_cast<PartInstance*>(p->getOwner()));\n\n\t\tif (p)\n\t\t\treturn rbx_static_cast<PartInstance*>(p->getOwner());\n\t\telse\n\t\t\treturn NULL;\n\t}",
+   "PartInstance::fromPrimitiveConst(const Primitive* p)\n\t{\n\t\t                                                           ;\n\n\t\tif (p)\n\t\t\treturn rbx_static_cast<PartInstance*>(p->getOwner());\n\t\telse\n\t\t\treturn NULL;\n\t}"
   ],
   [
-    "PartInstance::onCanAggregateChanged(bool canAggregate)\n\t{\n\t\tRBXASSERT(canAggregate == getCanAggregate());\n\t\tNotifier<PartInstance, CanAggregateChanged>::raise(canAggregate);\n\t\tshouldRenderSetDirty();\n\t}",
-    "PartInstance::onCanAggregateChanged(bool canAggregate)\n\t{\n\t\t                                            ;\n\t\tNotifier<PartInstance, CanAggregateChanged>::raise(canAggregate);\n\t\tshouldRenderSetDirty();\n\t}"
+   "PartInstance::onCanAggregateChanged(bool canAggregate)\n\t{\n\t\tRBXASSERT(canAggregate == getCanAggregate());\n\t\tNotifier<PartInstance, CanAggregateChanged>::raise(canAggregate);\n\t\tshouldRenderSetDirty();\n\t}",
+   "PartInstance::onCanAggregateChanged(bool canAggregate)\n\t{\n\t\t                                            ;\n\t\tNotifier<PartInstance, CanAggregateChanged>::raise(canAggregate);\n\t\tshouldRenderSetDirty();\n\t}"
   ],
   [
-    "PartInstance::onAncestorChanged(const AncestorChanged& event)\n\t{\n\t\tInstance::onAncestorChanged(event);\n\t\tRBXASSERT(&primitive);\n\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\tif (world != myWorld)\n\t\t{\n\t\t\tRBXASSERT(myWorld || !primitive.getClump());\n\n\t\t\tif (myWorld)\n\t\t\t{\n\t\t\t\tsetMovingManager(NULL);\n\t\t\t\tmyWorld->removePrimitive(&primitive);\n\t\t\t}\n\n\t\t\tmyWorld = world;\n\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tworld->insertPrimitive(&primitive);\n\t\t\t\tsetMovingManager(Workspace::getMyWorkspaceFast(this));\n\t\t\t\tprimitive.setController(getTopPVController());\n\t\t\t}\n\t\t}\n\t}",
-    "PartInstance::onAncestorChanged(const AncestorChanged& event)\n\t{\n\t\tInstance::onAncestorChanged(event);\n\t\t                     ;\n\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\tif (world != myWorld)\n\t\t{\n\t\t\t                                           ;\n\n\t\t\tif (myWorld)\n\t\t\t{\n\t\t\t\tsetMovingManager(NULL);\n\t\t\t\tmyWorld->removePrimitive(&primitive);\n\t\t\t}\n\n\t\t\tmyWorld = world;\n\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tworld->insertPrimitive(&primitive);\n\t\t\t\tsetMovingManager(Workspace::getMyWorkspaceFast(this));\n\t\t\t\tprimitive.setController(getTopPVController());\n\t\t\t}\n\t\t}\n\t}"
+   "PartInstance::onAncestorChanged(const AncestorChanged& event)\n\t{\n\t\tInstance::onAncestorChanged(event);\n\t\tRBXASSERT(&primitive);\n\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\tif (world != myWorld)\n\t\t{\n\t\t\tRBXASSERT(myWorld || !primitive.getClump());\n\n\t\t\tif (myWorld)\n\t\t\t{\n\t\t\t\tsetMovingManager(NULL);\n\t\t\t\tmyWorld->removePrimitive(&primitive);\n\t\t\t}\n\n\t\t\tmyWorld = world;\n\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tworld->insertPrimitive(&primitive);\n\t\t\t\tsetMovingManager(Workspace::getMyWorkspaceFast(this));\n\t\t\t\tprimitive.setController(getTopPVController());\n\t\t\t}\n\t\t}\n\t}",
+   "PartInstance::onAncestorChanged(const AncestorChanged& event)\n\t{\n\t\tInstance::onAncestorChanged(event);\n\t\t                     ;\n\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\tif (world != myWorld)\n\t\t{\n\t\t\t                                           ;\n\n\t\t\tif (myWorld)\n\t\t\t{\n\t\t\t\tsetMovingManager(NULL);\n\t\t\t\tmyWorld->removePrimitive(&primitive);\n\t\t\t}\n\n\t\t\tmyWorld = world;\n\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tworld->insertPrimitive(&primitive);\n\t\t\t\tsetMovingManager(Workspace::getMyWorkspaceFast(this));\n\t\t\t\tprimitive.setController(getTopPVController());\n\t\t\t}\n\t\t}\n\t}"
   ],
   [
-    "PartInstance::safeMove()\n\t{\n\t\tRBXASSERT(&primitive);\n\n\t\tif (World* world = Workspace::getWorldIfInWorkspace(this))\n\t\t{\n\t\t\tG3D::Array<Primitive*> temp;\n\t\t\ttemp.append(&primitive);\n\t\t\t\n\t\t\tDragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());\n\t\t}\n\t}",
-    "PartInstance::safeMove()\n\t{\n\t\t                     ;\n\n\t\tif (World* world = Workspace::getWorldIfInWorkspace(this))\n\t\t{\n\t\t\tG3D::Array<Primitive*> temp;\n\t\t\ttemp.append(&primitive);\n\t\t\t\n\t\t\tDragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());\n\t\t}\n\t}"
+   "PartInstance::safeMove()\n\t{\n\t\tRBXASSERT(&primitive);\n\n\t\tif (World* world = Workspace::getWorldIfInWorkspace(this))\n\t\t{\n\t\t\tG3D::Array<Primitive*> temp;\n\t\t\ttemp.append(&primitive);\n\t\t\t\n\t\t\tDragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());\n\t\t}\n\t}",
+   "PartInstance::safeMove()\n\t{\n\t\t                     ;\n\n\t\tif (World* world = Workspace::getWorldIfInWorkspace(this))\n\t\t{\n\t\t\tG3D::Array<Primitive*> temp;\n\t\t\ttemp.append(&primitive);\n\t\t\t\n\t\t\tDragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());\n\t\t}\n\t}"
   ],
   [
-    "PartInstance::setPartTypeUi(Part::PartType _type)\n\t{\n\t\tif (partType != Part::BLOCK_PART)\n\t\t\tRBXASSERT(formFactor == SYMETRIC);\n\n\t\tif (getPartType() != _type)\n\t\t{\n\t\t\tdestroyJoints();\n\n\t\t\tsetPartTypeXml(_type);\n\n\t\t\tif (_type != Part::BLOCK_PART)\n\t\t\t{\n\t\t\t\tG3D::Vector3 xmlSize = uiToXmlSize(getPartSizeUi());\n\t\t\t\tsetPartSizeXml(xmlSize);\n\t\t\t\tsafeMove();\n\t\t\t}\n\n\t\t\tsafeMove();\n\t\t\tjoin();\n\t\t}\n\t}",
-    "PartInstance::setPartTypeUi(Part::PartType _type)\n\t{\n\t\tif (partType != Part::BLOCK_PART)\n\t\t\t                                 ;\n\n\t\tif (getPartType() != _type)\n\t\t{\n\t\t\tdestroyJoints();\n\n\t\t\tsetPartTypeXml(_type);\n\n\t\t\tif (_type != Part::BLOCK_PART)\n\t\t\t{\n\t\t\t\tG3D::Vector3 xmlSize = uiToXmlSize(getPartSizeUi());\n\t\t\t\tsetPartSizeXml(xmlSize);\n\t\t\t\tsafeMove();\n\t\t\t}\n\n\t\t\tsafeMove();\n\t\t\tjoin();\n\t\t}\n\t}"
+   "PartInstance::setPartTypeUi(Part::PartType _type)\n\t{\n\t\tif (partType != Part::BLOCK_PART)\n\t\t\tRBXASSERT(formFactor == SYMETRIC);\n\n\t\tif (getPartType() != _type)\n\t\t{\n\t\t\tdestroyJoints();\n\n\t\t\tsetPartTypeXml(_type);\n\n\t\t\tif (_type != Part::BLOCK_PART)\n\t\t\t{\n\t\t\t\tG3D::Vector3 xmlSize = uiToXmlSize(getPartSizeUi());\n\t\t\t\tsetPartSizeXml(xmlSize);\n\t\t\t\tsafeMove();\n\t\t\t}\n\n\t\t\tsafeMove();\n\t\t\tjoin();\n\t\t}\n\t}",
+   "PartInstance::setPartTypeUi(Part::PartType _type)\n\t{\n\t\tif (partType != Part::BLOCK_PART)\n\t\t\t                                 ;\n\n\t\tif (getPartType() != _type)\n\t\t{\n\t\t\tdestroyJoints();\n\n\t\t\tsetPartTypeXml(_type);\n\n\t\t\tif (_type != Part::BLOCK_PART)\n\t\t\t{\n\t\t\t\tG3D::Vector3 xmlSize = uiToXmlSize(getPartSizeUi());\n\t\t\t\tsetPartSizeXml(xmlSize);\n\t\t\t\tsafeMove();\n\t\t\t}\n\n\t\t\tsafeMove();\n\t\t\tjoin();\n\t\t}\n\t}"
   ],
   [
-    "@all:primitive.getAssembly()->getRootClump()->getSleepStatus()",
-    "primitive.getAssembly()->getSleepStatus()"
+   "@all:primitive.getAssembly()->getRootClump()->getSleepStatus()",
+   "primitive.getAssembly()->getSleepStatus()"
   ]
-],
+ ],
  "App/include/v8kernel/Body.h": [
   [
    "\t\t\tint& getIndex() {return index;};\n\t\t\tBody *root;\n",
@@ -1166,7 +1106,10 @@
   ]
  ],
  "App/v8world/Contact.cpp": [
-  ["\tvoid BallBlockContact::deleteAllConnectors()\n\t{\n\t\tthis->deleteConnector(this->ballBlockConnector);\n\t}\n", "\tvoid BallBlockContact::deleteAllConnectors()\n\t{\n\t\tif (this->ballBlockConnector)\n\t\t\tthis->deleteConnector(this->ballBlockConnector);\n\t}\n"],
+  [
+   "\tvoid BallBlockContact::deleteAllConnectors()\n\t{\n\t\tthis->deleteConnector(this->ballBlockConnector);\n\t}\n",
+   "\tvoid BallBlockContact::deleteAllConnectors()\n\t{\n\t\tif (this->ballBlockConnector)\n\t\t\tthis->deleteConnector(this->ballBlockConnector);\n\t}\n"
+  ],
   [
    "\t\t:Contact(p0, p1),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n",
    "\t\t:Contact(p0, p1),\n\t\tunknown0x54(1e9f),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n"
@@ -1306,6 +1249,160 @@
   [
    "SimBody::getOwnerPV()\n{\n\tRBXASSERT(!dirty);\n\tG3D::Vector3 cofmOffset = body->getCofmOffset();\n\treturn pv.pvAtLocalOffset(G3D::Vector3(-cofmOffset.x, -cofmOffset.y, -cofmOffset.z));\n}",
    "SimBody::getOwnerPV()\n{\n\t                 ;\n\tG3D::Vector3 cofmOffset = body->getCofmOffset();\n\treturn pv.pvAtLocalOffset(G3D::Vector3(-cofmOffset.x, -cofmOffset.y, -cofmOffset.z));\n}"
+  ]
+ ],
+ "App/script/ScriptEvent.cpp": [
+  [
+   "                lua_pushnumber(L, it->elapsedTime);\n                context->resume(L, 1);",
+   "                lua_pushnumber(L, it->elapsedTime);\n                lua_pushnumber(L, heartbeat.time);\n                context->resume(L, 2);"
+  ]
+ ],
+ "App/include/script/ScriptEvent.h": [
+  [
+   "                float requestedDelay;\n                float elapsedTime;",
+   "                double requestedDelay;\n                double elapsedTime;"
+  ]
+ ],
+ "App/script/LuaSignalBridge.cpp": [
+  [
+   "#include \"script/LuaInstanceBridge.h\"",
+   "#include \"script/LuaInstanceBridge.h\"\n#include \"script/LuaAtomicClasses.h\""
+  ],
+  [
+   "        else if (argType == typeid(const Reflection::PropertyDescriptor*))",
+   "        else if (argType == typeid(G3D::Vector3))\n            Vector3Bridge::pushVector3(L, boost::any_cast<G3D::Vector3>(*iter));\n        else if (argType == typeid(G3D::Color3))\n            Color3Bridge::pushColor3(L, boost::any_cast<G3D::Color3>(*iter));\n        else if (argType == typeid(BrickColor))\n            BrickColorBridge::pushNewObject(L, boost::any_cast<BrickColor>(*iter));\n        else if (argType == typeid(G3D::CoordinateFrame))\n            CoordinateFrameBridge::pushCoordinateFrame(L, boost::any_cast<G3D::CoordinateFrame>(*iter));\n        else if (argType == typeid(const Reflection::PropertyDescriptor*))"
+  ],
+  [
+   "            argType.name();",
+   "            lua_pushnil(L);"
+  ]
+ ],
+ "App/include/v8world/Mechanism.h": [
+  [
+   "\tclass Mechanism : public boost::noncopyable",
+   "\t// Native 005e50f0 / 005e53a0: shared tracker ownership, separate from grouping.\n\tclass SimJob : public boost::noncopyable\n\t{\n\t\tfriend class MechanismTracker;\n\t\tstd::vector<MechanismTracker*> trackers;\n\tpublic:\n\t\tstd::list<SimJob*>::iterator jobIterator;\n\t\tvirtual ~SimJob() { RBXASSERT(trackers.empty()); }\n\t\tvirtual Assembly* getAssembly() = 0;\n\t\tvirtual const Assembly* getAssembly() const = 0;\n\t};\n\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];\n\n\tclass Mechanism : public SimJob"
+  ],
+  [
+   "\t\tstd::vector<MechanismTracker*> trackers;\n\tpublic:\n\t\tstd::list<Mechanism*>",
+   "\tpublic:\n\t\tstd::list<Mechanism*>"
+  ],
+  [
+   "RBXASSERT(this->trackers.size() == 0);",
+   "// SimJob checks tracker lifetime."
+  ],
+  [
+   "\t\tvoid notifyMovingPrimitives();",
+   "\t\tvirtual Assembly* getAssembly() { return assemblies.empty()?NULL:*assemblies.begin(); }\n\t\tvirtual const Assembly* getAssembly() const { return assemblies.empty()?NULL:*assemblies.begin(); }\n\t\tvoid notifyMovingPrimitives();"
+  ],
+  [
+   "\t\tMechanism* mechanism;",
+   "\t\tSimJob* mechanism;"
+  ],
+  [
+   "bool containedBy(Mechanism*);",
+   "bool containedBy(SimJob*);"
+  ],
+  [
+   "void setMechanism(Mechanism*);",
+   "void setMechanism(Mechanism* m) { setJob(m); }\n\t\tvoid setJob(SimJob*);\n\t\tSimJob* getJob() const { return mechanism; }"
+  ],
+  [
+   "static void transferTrackers(Mechanism*, Mechanism*);",
+   "static void transferTrackers(SimJob*, SimJob*);"
+  ],
+  [
+   "\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];",
+   "\ttypedef char SimJobSize[sizeof(SimJob)==36?1:-1];\n\n\t// 005e51e0 / 0074eed0: one assembly pointer after the 36-byte base.\n\tclass AssemblyJob : public SimJob\n\t{\n\t\tAssembly* assembly;\n\tpublic:\n\t\texplicit AssemblyJob(Assembly* value) : assembly(value) {}\n\t\tvirtual Assembly* getAssembly() { return assembly; }\n\t\tvirtual const Assembly* getAssembly() const { return assembly; }\n\t};\n\ttypedef char AssemblyJobSize[sizeof(AssemblyJob)==40?1:-1];"
+  ]
+ ],
+ "App/v8world/Mechanism.cpp": [
+  [
+   "bool MechanismTracker::containedBy(Mechanism* m)",
+   "bool MechanismTracker::containedBy(SimJob* m)"
+  ],
+  [
+   "return this->mechanism;",
+   "return dynamic_cast<Mechanism*>(this->mechanism);"
+  ],
+  [
+   "void MechanismTracker::setMechanism(Mechanism* m)",
+   "void MechanismTracker::setJob(SimJob* m)"
+  ],
+  [
+   "void MechanismTracker::transferTrackers(Mechanism* from, Mechanism* to)",
+   "void MechanismTracker::transferTrackers(SimJob* from, SimJob* to)"
+  ],
+  [
+   "from->trackers.back()->setMechanism(to);",
+   "from->trackers.back()->setJob(to);"
+  ]
+ ],
+ "App/humanoid/Freefall.cpp": [
+  [
+   "#include \"humanoid/Freefall.h\"",
+   "#include \"humanoid/Freefall.h\"\nnamespace RBX { bool DetectClimb(Humanoid*); Humanoid::State* CreateRecoveredClimbing(Humanoid*); Humanoid::State* CreateRecoveredLanded(Humanoid*); }\n"
+  ],
+  [
+   "\t\tif (newState == this)\n\t\t{\n\t\t\tif (floorPart)",
+   "\t\tif (newState == this)\n\t\t{\n\t\t\tif (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);\n\t\t\tif (floorPart)"
+  ],
+  [
+   "#include \"humanoid/Running.h\"",
+   "#include \"humanoid/Running.h\"\n#include \"v8datamodel/PartInstance.h\""
+  ],
+  [
+   "return new Running(humanoid);",
+   "return CreateRecoveredLanded(humanoid);"
+  ],
+  [
+   "\t\t: Base(humanoid)\n\t{\n\t}",
+   "\t\t: Base(humanoid), savedHeadFriction(0), savedTorsoFriction(0)\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, true);\n\t\tif (humanoid->getHead()) { savedHeadFriction=humanoid->getHead()->getFriction(); humanoid->getHead()->setFriction(0); }\n\t\tif (humanoid->getTorso()) { savedTorsoFriction=humanoid->getTorso()->getFriction(); humanoid->getTorso()->setFriction(0); }\n\t}\n\n\tFreefall::~Freefall()\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, false);\n\t\tif (humanoid->getHead()) humanoid->getHead()->setFriction(savedHeadFriction);\n\t\tif (humanoid->getTorso()) humanoid->getTorso()->setFriction(savedTorsoFriction);\n\t}"
+  ]
+ ],
+ "App/include/humanoid/Flying.h": [
+  [
+   "\t\tfloat desiredYRotationalVelocity;",
+   "\t\tfloat desiredYRotationalVelocity;\n\t\tG3D::Vector3 desiredVelocity;"
+  ]
+ ],
+ "App/humanoid/Flying.cpp": [
+  [
+   "desiredYRotationalVelocity(0.0f)",
+   "desiredYRotationalVelocity(0.0f), desiredVelocity(humanoid->updateWalkDirection() * 16.0f)"
+  ],
+  [
+   "desiredYRotationalVelocity = controller.getValue(Controller::RIGHT_LEFT_INPUT) * 6.0f;",
+   "desiredYRotationalVelocity = controller.getValue(Controller::RIGHT_LEFT_INPUT) * 6.0f;\n\t\t\t\tdesiredVelocity = humanoid->updateWalkDirection() * 16.0f;"
+  ]
+ ],
+ "App/humanoid/Jumping.cpp": [
+  [
+   "#include \"humanoid/Jumping.h\"",
+   "#include \"humanoid/Jumping.h\"\n#include \"v8world/Controller.h\""
+  ],
+  [
+   "Humanoid::event_Jumping.fire(humanoid, true);",
+   "Humanoid::event_Jumping.fire(humanoid, true);\n\t\t// 006453a0 refreshes replacement floor before its first force.\n\t\tBalancing::onStep(0.0f, *NullController::getStaticNullController());"
+  ],
+  [
+   "\t\tif (done)\n",
+   "\t\ttimeout -= stepDt;\n\t\tif (done || timeout <= 0.0f)\n"
+  ]
+ ],
+ "App/include/humanoid/Running.h": [
+  [
+   "\t\tvoid updateGoals(Controller&);",
+   "\tprotected:\n\t\tvoid updateGoals(Controller&);\n\tprivate:"
+  ],
+  [
+   "\t\tRunning(Humanoid* humanoid);",
+   "\t\tRunning(Humanoid* humanoid);\n\t\tvoid resumeFromLanding(const Running& old, Controller& controller) { floorPart=old.floorPart; floorTouchInWorld=old.floorTouchInWorld; jumpWarmup=0.0f; updateGoals(controller); }"
+  ]
+ ],
+ "App/include/humanoid/Freefall.h": [
+  [
+   "\t\tFreefall(Humanoid* humanoid);",
+   "\t\tFreefall(Humanoid* humanoid);\n\t\tvirtual ~Freefall();\n\tprivate:\n\t\tfloat savedHeadFriction, savedTorsoFriction;"
   ]
  ],
  "App/v8datamodel/Surface.cpp": [
@@ -1766,16 +1863,6 @@
    "BackpackItem::setTextureId(const TextureId& value)\n\t{\n\tif (value != textureId)\n\t{\n\t\ttextureId = value;\n\n\t\tWorkspace* workspace = ServiceProvider::find<Workspace>(this);\n\t\tif (workspace)\n\t\t\tworkspace->raiseDrawChanged();\n\n\t\traisePropertyChanged(desc_TextureId);\n\t}\n}"
   ]
  ],
- "App/gui/GUI.cpp": [
-  [
-   "#include \"gui/Gui.h\"\n",
-   "#pragma float_control(precise, off)\n#include \"gui/Gui.h\"\n"
-  ],
-  [
-   "\t\tRBXASSERT(!focus);\n\t\treturn processNonFocus(event);",
-   "\t\treturn processNonFocus(event);"
-  ]
- ],
  "App/v8kernel/Kernel.cpp": [
   [
    "#include \"v8kernel/Kernel.h\"\n",
@@ -1850,38 +1937,38 @@
  ],
  "Network/Replicator.cpp": [
   [
-    "#include <RakPeer.h>\n",
-    "#pragma float_control(precise, off)\n#include <RakPeer.h>\n"
+   "#include <RakPeer.h>\n",
+   "#pragma float_control(precise, off)\n#include <RakPeer.h>\n"
   ],
   [
-    "findTargetPlayerCharacterMechanism",
-    "findTargetPlayerCharacterJob"
+   "findTargetPlayerCharacterMechanism",
+   "findTargetPlayerCharacterJob"
   ],
   [
-    "const Mechanism&",
-    "const SimJob&"
+   "const Mechanism&",
+   "const SimJob&"
   ],
   [
-    "Mechanism*",
-    "SimJob*"
+   "Mechanism*",
+   "SimJob*"
   ],
   [
-    "sim.reportMechanisms(",
-    "sim.reportJobs("
+   "sim.reportMechanisms(",
+   "sim.reportJobs("
   ],
   [
-    "return Mechanism::getMechanismFromPrimitive(part->getPrimitive());",
-    "{\n\t\t\t\t\tAssembly* assembly = part->getPrimitive()->getAssembly();\n\t\t\t\t\treturn assembly ? assembly->getJob() : NULL;\n\t\t\t\t}"
+   "return Mechanism::getMechanismFromPrimitive(part->getPrimitive());",
+   "{\n\t\t\t\t\tAssembly* assembly = part->getPrimitive()->getAssembly();\n\t\t\t\t\treturn assembly ? assembly->getJob() : NULL;\n\t\t\t\t}"
   ],
   [
-    "findTargetPlayerCharacterMechanism",
-    "findTargetPlayerCharacterJob"
+   "findTargetPlayerCharacterMechanism",
+   "findTargetPlayerCharacterJob"
   ],
   [
-    "Mechanism*",
-    "SimJob*"
+   "Mechanism*",
+   "SimJob*"
   ]
-],
+ ],
  "App/v8datamodel/Selection.cpp": [
   [
    "\tvoid Selection::clearSelection()\n\t{\n\t\twhile (!selection->empty())",
@@ -1924,12 +2011,6 @@
   [
    "GroupDragTool::GroupDragTool(PartInstance* mousePart, const G3D::Vector3& hitPointWorld, const std::vector<boost::weak_ptr<PartInstance>>& partArray, Workspace* workspace)\n\t\t: Base(workspace),\n\t\t  dragging(false)\n\t{\n\t\tRBXASSERT(mousePart);\n\t\tmegaDragger.reset(new MegaDragger(mousePart, partArray, (RootInstance*)workspace));\n\t}",
    "GroupDragTool::GroupDragTool(PartInstance* mousePart, const G3D::Vector3& hitPointWorld, const std::vector<boost::weak_ptr<PartInstance>>& partArray, Workspace* workspace)\n\t\t: Base(workspace),\n\t\t  dragging(false)\n\t{\n\t\t                    ;\n\t\tmegaDragger.reset(new MegaDragger(mousePart, partArray, (RootInstance*)workspace));\n\t}"
-  ]
- ],
- "App/v8datamodel/ToolMouseCommand.cpp": [
-  [
-   "#include \"v8datamodel/ToolMouseCommand.h\"\n",
-   "#pragma float_control(precise, off)\n#include \"v8datamodel/ToolMouseCommand.h\"\n"
   ]
  ],
  "App/tool/PartDragTool.cpp": [
@@ -2150,10 +2231,10 @@
  ],
  "App/v8world/SimJobStage.cpp": [
   [
-    "#include \"v8world/SimJobStage.h\"\n#include \"v8world/Mechanism.h\"\n#include \"v8world/Primitive.h\"\n#include \"v8world/Edge.h\"\n#include \"v8world/Assembly.h\"\n#include \"v8world/RigidJoint.h\"\n#include \"v8world/MotorJoint.h\"\n\nnamespace RBX\n{\n\tbool SimJobStage::validateEdge(Edge* e)\n\t{\n\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\t\tRBXASSERT(a0 && a1);\n\n\t\treturn true;\n\t}\n\n\tMechanism* SimJobStage::nextMechanism(std::list<Mechanism*>& list, const Mechanism* current)\n\t{\n\t\tRBXASSERT(!list.empty());\n\t\tstd::list<Mechanism*>::iterator myIt = current->myIt;\n\t\tmyIt++;\n\t\tif (myIt == list.end())\n\t\t{\n\t\t\treturn *list.begin();\n\t\t}\n\t\telse\n\t\t{\n\t\t\treturn *myIt;\n\t\t}\n\t}\n\n\tvoid SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}\n\n#pragma warning (push)\n#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list\n\tSimJobStage::SimJobStage(IStage* upstream, World* world)\n\t\t: IWorldStage(upstream, new Kernel(this), world)\n\t{}\n#pragma warning (pop)\n\n\tSimJobStage::~SimJobStage()\n\t{}\n\n\tvoid SimJobStage::insertMechanism(Mechanism* m)\n\t{\n\t\tthis->mechanisms.push_back(m);\n\t\tstd::list<Mechanism*>::iterator mechEnd = this->mechanisms.end();\n\t\tmechEnd--;\n\t\tRBXASSERT(*mechEnd == m);\n\t\tm->myIt = mechEnd;\n\t}\n\n\tvoid call_notifyMovingPrimitives(Mechanism* m)\n\t{\n\t\tm->notifyMovingPrimitives();\n\t}\n\n\tvoid SimJobStage::notifyMovingPrimitives()\n\t{\n\t\tstd::for_each(this->mechanisms.begin(), this->mechanisms.end(), call_notifyMovingPrimitives);\n\t}\n\n\tvoid SimJobStage::destroyMechanism(Mechanism* m)\n\t{\n\t\tRBXASSERT(std::find(this->mechanisms.begin(), this->mechanisms.end(), m) == m->myIt);\n\t\tMechanism* next = this->mechanisms.size() > 1 ? this->nextMechanism(this->mechanisms, m) : NULL;\n\t\tMechanismTracker::transferTrackers(m, next);\n\t\tthis->mechanisms.erase(m->myIt);\n\t\tdelete m;\n\t}\n\n\tvoid SimJobStage::onAssemblyAdded(Assembly* a)\n\t{\n\t\ta->putInStage(this);\n\t\tRBXASSERT(!a->getMechanism());\n\t\tMechanism* newMech = new Mechanism;\n\t\tnewMech->insertAssembly(a);\n\t\tthis->insertMechanism(newMech);\n\t\ta->putInKernel(this->getKernel());\n\t}\n\n\tvoid SimJobStage::onAssemblyRemoving(Assembly* a)\n\t{\n\t\ta->removeFromKernel();\n\t\tMechanism* mech = a->getMechanism();\n\t\tmech->removeAssembly(a);\n\t\tif (mech->getAssemblies().empty())\n\t\t\tthis->destroyMechanism(mech);\n\t\ta->removeFromStage(this);\n\t}\n\n\tvoid SimJobStage::combineMechanisms(Edge* e)\n\t{\n\t\tRBXASSERT(e->getEdgeType() == Edge::JOINT);\n\t\tRBXASSERT(!RigidJoint::isRigidJoint(e));\n\t\tRBXASSERT(!MotorJoint::isMotorJoint(e));\n\n\t\tJoint* j = rbx_static_cast<Joint*>(e);\n\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\t\tRBXASSERT(a0->inOrDownstreamOfStage(this));\n\t\tRBXASSERT(a1->inOrDownstreamOfStage(this));\n\n\t\tMechanism* m0 = a0->getMechanism();\n\t\tMechanism* m1 = a1->getMechanism();\n\t\tif (m0 != m1)\n\t\t{\n\t\t\tMechanism* m = (m0->getAssemblies().size() > m1->getAssemblies().size()) ? m0 : m1;\n\t\t\tMechanism* other = (m == m1) ? m0 : m1;\n\n\t\t\tm->absorb(other);\n\t\t\tdestroyMechanism(other);\n\t\t}\n\t}\n\n\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->putInStage(this);\n\n\t\tif (e->getEdgeType() == Edge::JOINT)\n\t\t{\n\t\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\n\t\t\tif (a0->inOrDownstreamOfStage(this) && a1->inOrDownstreamOfStage(this))\n\t\t\t{\n\t\t\t\tRBXASSERT(a0->getDof() > 0);\n\t\t\t\tRBXASSERT(a1->getDof() > 0);\n\n\t\t\t\tcombineMechanisms(e);\n\t\t\t}\n\t\t}\n\n\t\te->putInKernel(getKernel());\n\t}\n}\n",
-    "#include \"v8world/SimJobStage.h\"\n#include \"v8world/Assembly.h\"\n#include \"v8world/Edge.h\"\n#include \"v8kernel/Kernel.h\"\n\nnamespace RBX\n{\n#pragma warning (push)\n#pragma warning (disable : 4355)\n\tSimJobStage::SimJobStage(IStage* upstream, World* world)\n\t\t: IWorldStage(upstream, new Kernel(this), world) {}\n#pragma warning (pop)\n\tSimJobStage::~SimJobStage() { RBXASSERT(jobs.empty()); }\n\n\t// 0064d0f0 / 0064d180: association, saved iterator, observer transfer.\n\t// Externally registered jobs remain caller-owned.\n\tvoid SimJobStage::insertJob(SimJob* job)\n\t{\n\t\tif (job->getAssembly()) job->getAssembly()->setJob(job);\n\t\tjobs.push_back(job);\n\t\tjob->jobIterator = --jobs.end();\n\t}\n\n\tvoid SimJobStage::removeJob(SimJob* job)\n\t{\n\t\tstd::list<SimJob*>::iterator next = job->jobIterator;\n\t\tif (++next == jobs.end()) next = jobs.begin();\n\t\tMechanismTracker::transferTrackers(job, jobs.size() > 1 ? *next : NULL);\n\t\tjobs.erase(job->jobIterator);\n\t\tif (job->getAssembly()) job->getAssembly()->setJob(NULL);\n\t}\n\n\t// 0064d200 / 0064d2a0 own the ordinary assembly job, not a donor group.\n\tvoid SimJobStage::onAssemblyAdded(Assembly* a)\n\t{\n\t\ta->putInStage(this);\n\t\ta->putInKernel(getKernel());\n\t\tinsertJob(new AssemblyJob(a));\n\t}\n\n\tvoid SimJobStage::onAssemblyRemoving(Assembly* a)\n\t{\n\t\tSimJob* job = a->getJob();\n\t\tremoveJob(job);\n\t\tdelete job;\n\t\ta->removeFromKernel();\n\t\ta->removeFromStage(this);\n\t}\n\n\tvoid SimJobStage::notifyMovingPrimitives()\n\t{\n\t\tfor (std::list<SimJob*>::iterator it = jobs.begin(); it != jobs.end(); ++it)\n\t\t\tif ((*it)->getAssembly()) (*it)->getAssembly()->notifyMoved();\n\t}\n\n\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\te->putInStage(this);\n\t\te->putInKernel(getKernel());\n\t}\n\n\tvoid SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}\n}\n"
+   "#include \"v8world/SimJobStage.h\"\n#include \"v8world/Mechanism.h\"\n#include \"v8world/Primitive.h\"\n#include \"v8world/Edge.h\"\n#include \"v8world/Assembly.h\"\n#include \"v8world/RigidJoint.h\"\n#include \"v8world/MotorJoint.h\"\n\nnamespace RBX\n{\n\tbool SimJobStage::validateEdge(Edge* e)\n\t{\n\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\t\tRBXASSERT(a0 && a1);\n\n\t\treturn true;\n\t}\n\n\tMechanism* SimJobStage::nextMechanism(std::list<Mechanism*>& list, const Mechanism* current)\n\t{\n\t\tRBXASSERT(!list.empty());\n\t\tstd::list<Mechanism*>::iterator myIt = current->myIt;\n\t\tmyIt++;\n\t\tif (myIt == list.end())\n\t\t{\n\t\t\treturn *list.begin();\n\t\t}\n\t\telse\n\t\t{\n\t\t\treturn *myIt;\n\t\t}\n\t}\n\n\tvoid SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}\n\n#pragma warning (push)\n#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list\n\tSimJobStage::SimJobStage(IStage* upstream, World* world)\n\t\t: IWorldStage(upstream, new Kernel(this), world)\n\t{}\n#pragma warning (pop)\n\n\tSimJobStage::~SimJobStage()\n\t{}\n\n\tvoid SimJobStage::insertMechanism(Mechanism* m)\n\t{\n\t\tthis->mechanisms.push_back(m);\n\t\tstd::list<Mechanism*>::iterator mechEnd = this->mechanisms.end();\n\t\tmechEnd--;\n\t\tRBXASSERT(*mechEnd == m);\n\t\tm->myIt = mechEnd;\n\t}\n\n\tvoid call_notifyMovingPrimitives(Mechanism* m)\n\t{\n\t\tm->notifyMovingPrimitives();\n\t}\n\n\tvoid SimJobStage::notifyMovingPrimitives()\n\t{\n\t\tstd::for_each(this->mechanisms.begin(), this->mechanisms.end(), call_notifyMovingPrimitives);\n\t}\n\n\tvoid SimJobStage::destroyMechanism(Mechanism* m)\n\t{\n\t\tRBXASSERT(std::find(this->mechanisms.begin(), this->mechanisms.end(), m) == m->myIt);\n\t\tMechanism* next = this->mechanisms.size() > 1 ? this->nextMechanism(this->mechanisms, m) : NULL;\n\t\tMechanismTracker::transferTrackers(m, next);\n\t\tthis->mechanisms.erase(m->myIt);\n\t\tdelete m;\n\t}\n\n\tvoid SimJobStage::onAssemblyAdded(Assembly* a)\n\t{\n\t\ta->putInStage(this);\n\t\tRBXASSERT(!a->getMechanism());\n\t\tMechanism* newMech = new Mechanism;\n\t\tnewMech->insertAssembly(a);\n\t\tthis->insertMechanism(newMech);\n\t\ta->putInKernel(this->getKernel());\n\t}\n\n\tvoid SimJobStage::onAssemblyRemoving(Assembly* a)\n\t{\n\t\ta->removeFromKernel();\n\t\tMechanism* mech = a->getMechanism();\n\t\tmech->removeAssembly(a);\n\t\tif (mech->getAssemblies().empty())\n\t\t\tthis->destroyMechanism(mech);\n\t\ta->removeFromStage(this);\n\t}\n\n\tvoid SimJobStage::combineMechanisms(Edge* e)\n\t{\n\t\tRBXASSERT(e->getEdgeType() == Edge::JOINT);\n\t\tRBXASSERT(!RigidJoint::isRigidJoint(e));\n\t\tRBXASSERT(!MotorJoint::isMotorJoint(e));\n\n\t\tJoint* j = rbx_static_cast<Joint*>(e);\n\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\t\tRBXASSERT(a0->inOrDownstreamOfStage(this));\n\t\tRBXASSERT(a1->inOrDownstreamOfStage(this));\n\n\t\tMechanism* m0 = a0->getMechanism();\n\t\tMechanism* m1 = a1->getMechanism();\n\t\tif (m0 != m1)\n\t\t{\n\t\t\tMechanism* m = (m0->getAssemblies().size() > m1->getAssemblies().size()) ? m0 : m1;\n\t\t\tMechanism* other = (m == m1) ? m0 : m1;\n\n\t\t\tm->absorb(other);\n\t\t\tdestroyMechanism(other);\n\t\t}\n\t}\n\n\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->putInStage(this);\n\n\t\tif (e->getEdgeType() == Edge::JOINT)\n\t\t{\n\t\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\n\t\t\tif (a0->inOrDownstreamOfStage(this) && a1->inOrDownstreamOfStage(this))\n\t\t\t{\n\t\t\t\tRBXASSERT(a0->getDof() > 0);\n\t\t\t\tRBXASSERT(a1->getDof() > 0);\n\n\t\t\t\tcombineMechanisms(e);\n\t\t\t}\n\t\t}\n\n\t\te->putInKernel(getKernel());\n\t}\n}\n",
+   "#include \"v8world/SimJobStage.h\"\n#include \"v8world/Assembly.h\"\n#include \"v8world/Edge.h\"\n#include \"v8kernel/Kernel.h\"\n\nnamespace RBX\n{\n#pragma warning (push)\n#pragma warning (disable : 4355)\n\tSimJobStage::SimJobStage(IStage* upstream, World* world)\n\t\t: IWorldStage(upstream, new Kernel(this), world) {}\n#pragma warning (pop)\n\tSimJobStage::~SimJobStage() { RBXASSERT(jobs.empty()); }\n\n\t// 0064d0f0 / 0064d180: association, saved iterator, observer transfer.\n\t// Externally registered jobs remain caller-owned.\n\tvoid SimJobStage::insertJob(SimJob* job)\n\t{\n\t\tif (job->getAssembly()) job->getAssembly()->setJob(job);\n\t\tjobs.push_back(job);\n\t\tjob->jobIterator = --jobs.end();\n\t}\n\n\tvoid SimJobStage::removeJob(SimJob* job)\n\t{\n\t\tstd::list<SimJob*>::iterator next = job->jobIterator;\n\t\tif (++next == jobs.end()) next = jobs.begin();\n\t\tMechanismTracker::transferTrackers(job, jobs.size() > 1 ? *next : NULL);\n\t\tjobs.erase(job->jobIterator);\n\t\tif (job->getAssembly()) job->getAssembly()->setJob(NULL);\n\t}\n\n\t// 0064d200 / 0064d2a0 own the ordinary assembly job, not a donor group.\n\tvoid SimJobStage::onAssemblyAdded(Assembly* a)\n\t{\n\t\ta->putInStage(this);\n\t\ta->putInKernel(getKernel());\n\t\tinsertJob(new AssemblyJob(a));\n\t}\n\n\tvoid SimJobStage::onAssemblyRemoving(Assembly* a)\n\t{\n\t\tSimJob* job = a->getJob();\n\t\tremoveJob(job);\n\t\tdelete job;\n\t\ta->removeFromKernel();\n\t\ta->removeFromStage(this);\n\t}\n\n\tvoid SimJobStage::notifyMovingPrimitives()\n\t{\n\t\tfor (std::list<SimJob*>::iterator it = jobs.begin(); it != jobs.end(); ++it)\n\t\t\tif ((*it)->getAssembly()) (*it)->getAssembly()->notifyMoved();\n\t}\n\n\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\te->putInStage(this);\n\t\te->putInKernel(getKernel());\n\t}\n\n\tvoid SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}\n}\n"
   ]
-],
+ ],
  "App/util/RunStateOwner.cpp": [
   [
    "\tRunService::RunService()\n\t\t: framePeriod(1.0f/30.0f),\n\t\t  runState(RS_NORMAL),\n\t\t  invalidRunViewCount(0),\n\t\t  stopRequested(false),\n\t\t  runDisabled(false)\n\t{\n\t\tsetName(\"Run Service\");\n\t}\n",
@@ -2221,7 +2302,10 @@
   ]
  ],
  "App/v8datamodel/Camera.cpp": [
-  ["cameraSubject = shared_from((ModelInstance*) newSubject);", "cameraSubject = shared_from(newSubject);"],
+  [
+   "cameraSubject = shared_from((ModelInstance*) newSubject);",
+   "cameraSubject = shared_from(newSubject);"
+  ],
   [
    "#include \"v8datamodel/Camera.h\"",
    "#pragma float_control(precise,off)\n#include \"v8datamodel/Camera.h\""
@@ -2289,88 +2373,88 @@
  ],
  "App/include/v8world/World.h": [
   [
-    "\tclass ClumpStage;\n\tclass CollisionStage;\n",
-    "\tclass ClumpStage;\n\tclass CollisionStage;\n\tclass AutoA;\n\tclass AutoB;\n"
+   "\tclass ClumpStage;\n\tclass CollisionStage;\n",
+   "\tclass ClumpStage;\n\tclass CollisionStage;\n\tclass AutoA;\n\tclass AutoB;\n"
   ],
   [
-    "\tclass World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>\n",
-    "\tclass World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>,\n\t\t\t\t  public Notifier<World, AutoA>, public Notifier<World, AutoB>\n"
+   "\tclass World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>\n",
+   "\tclass World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>,\n\t\t\t\t  public Notifier<World, AutoA>, public Notifier<World, AutoB>\n"
   ],
   [
-    "\tprivate:\n\t\tContactManager* contactManager;\n\t\tJointStage* jointStage;\n\t\tG3D::Array<Primitive*> touch;\n\t\tG3D::Array<Primitive*> touchOther;\n\t\tbool canThrottle;\n\t\tbool inStepCode;\n\t\tbool inJointNotification;\n\t\tint worldStepId;\n\t\tIndexArray<Primitive, &Primitive::worldIndexFunc> primitives;\n\t\tstd::set<Joint*> breakableJoints;\n\t\tint numJoints;\n\t\tint numContacts;\n\t\tint numLinkCalls;\n\t\tG3D::Array<Primitive*> tempPrimitives;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingWorldStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingUiStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;\n",
-    "\tprivate:\n\t\tfloat throttle;\n\t\tContactManager* contactManager;\n\t\tJointStage* jointStage;\n\t\tG3D::Array<Primitive*> touch;\n\t\tG3D::Array<Primitive*> touchOther;\n\t\tbool inStepCode;\n\t\tbool inJointNotification;\n\t\tint worldStepId;\n\t\tIndexArray<Primitive, &Primitive::worldIndexFunc> primitives;\n\t\tG3D::Array<Primitive*> primitives2;\n\t\tstd::set<Joint*> breakableJoints;\n\t\tint numJoints;\n\t\tint numContacts;\n\t\tint numLinkCalls;\n\t\tG3D::Array<Primitive*> tempPrimitives;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingWorldStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingPreStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingAssemblyStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingUiStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingPreStep8Inner;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;\n"
+   "\tprivate:\n\t\tContactManager* contactManager;\n\t\tJointStage* jointStage;\n\t\tG3D::Array<Primitive*> touch;\n\t\tG3D::Array<Primitive*> touchOther;\n\t\tbool canThrottle;\n\t\tbool inStepCode;\n\t\tbool inJointNotification;\n\t\tint worldStepId;\n\t\tIndexArray<Primitive, &Primitive::worldIndexFunc> primitives;\n\t\tstd::set<Joint*> breakableJoints;\n\t\tint numJoints;\n\t\tint numContacts;\n\t\tint numLinkCalls;\n\t\tG3D::Array<Primitive*> tempPrimitives;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingWorldStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingUiStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;\n",
+   "\tprivate:\n\t\tfloat throttle;\n\t\tContactManager* contactManager;\n\t\tJointStage* jointStage;\n\t\tG3D::Array<Primitive*> touch;\n\t\tG3D::Array<Primitive*> touchOther;\n\t\tbool inStepCode;\n\t\tbool inJointNotification;\n\t\tint worldStepId;\n\t\tIndexArray<Primitive, &Primitive::worldIndexFunc> primitives;\n\t\tG3D::Array<Primitive*> primitives2;\n\t\tstd::set<Joint*> breakableJoints;\n\t\tint numJoints;\n\t\tint numContacts;\n\t\tint numLinkCalls;\n\t\tG3D::Array<Primitive*> tempPrimitives;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingWorldStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingPreStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingAssemblyStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingUiStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingPreStep8Inner;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;\n"
   ],
   [
-    "\t\tvoid setCanThrottle(bool value)\n\t\t{\n\t\t\tcanThrottle = value;\n\t\t}\n",
-    "\t\tvoid setCanThrottle(bool value)\n\t\t{\n\t\t\tthrottle = value ? 100.0f : 0.0f;\n\t\t}\n"
+   "\t\tvoid setCanThrottle(bool value)\n\t\t{\n\t\t\tcanThrottle = value;\n\t\t}\n",
+   "\t\tvoid setCanThrottle(bool value)\n\t\t{\n\t\t\tthrottle = value ? 100.0f : 0.0f;\n\t\t}\n"
   ],
   [
-    "\t\tconst CollisionStage* getCollisionStage() const;",
-    ""
+   "\t\tconst CollisionStage* getCollisionStage() const;",
+   ""
   ],
   [
-    "\t\tCollisionStage* getCollisionStage();",
-    ""
+   "\t\tCollisionStage* getCollisionStage();",
+   ""
   ]
-],
+ ],
  "App/v8world/World.cpp": [
   [
-    "\t\tcontactManager(new ContactManager(this)),\n\t\tjointStage(new JointStage(NULL, this)),\n\t\tcanThrottle(true),\n",
-    "\t\tthrottle(100.0f),\n\t\tcontactManager(new ContactManager(this)),\n\t\tjointStage(new JointStage(NULL, this)),\n"
+   "\t\tcontactManager(new ContactManager(this)),\n\t\tjointStage(new JointStage(NULL, this)),\n\t\tcanThrottle(true),\n",
+   "\t\tthrottle(100.0f),\n\t\tcontactManager(new ContactManager(this)),\n\t\tjointStage(new JointStage(NULL, this)),\n"
   ],
   [
-    "if (!World::disableEnvironmentalThrottle && canThrottle)",
-    "if (!World::disableEnvironmentalThrottle && throttle > 0.0f)"
+   "if (!World::disableEnvironmentalThrottle && canThrottle)",
+   "if (!World::disableEnvironmentalThrottle && throttle > 0.0f)"
   ],
   [
-    "\tvoid World::removePrimitive(Primitive* p)\n\t{\n\t\tassertNotInStep();\n\t\tRBXASSERT(p->inPipeline());\n\t\tRBXASSERT(p->getWorld());\n\n\t\tdestroyJoints(p);\n\t\tcontactManager->onPrimitiveRemoved(p);\n\t\tjointStage->onPrimitiveRemoving(p);\n\t\tprimitives.fastRemove(p);\n\t\tp->setWorld(NULL);\n\n\t\tRBXASSERT(!p->getFirstEdge());\n\t\tRBXASSERT(p->getNumJoints2() + p->getNumContacts() == 0);\n\t\tassertNotInStep();\n\t\tRBXASSERT(!p->getClump());\n\t\tRBXASSERT(!p->inPipeline());\n\t\tRBXASSERT(!p->getWorld());\n\t}",
-    "\tvoid World::removePrimitive(Primitive* p)\n\t{\n\t\tdestroyJoints(p);\n\t\tcontactManager->onPrimitiveRemoved(p);\n\t\tjointStage->onPrimitiveRemoving(p);\n\t\tprimitives.fastRemove(p);\n\t\tp->setWorld(NULL);\n\t}"
+   "\tvoid World::removePrimitive(Primitive* p)\n\t{\n\t\tassertNotInStep();\n\t\tRBXASSERT(p->inPipeline());\n\t\tRBXASSERT(p->getWorld());\n\n\t\tdestroyJoints(p);\n\t\tcontactManager->onPrimitiveRemoved(p);\n\t\tjointStage->onPrimitiveRemoving(p);\n\t\tprimitives.fastRemove(p);\n\t\tp->setWorld(NULL);\n\n\t\tRBXASSERT(!p->getFirstEdge());\n\t\tRBXASSERT(p->getNumJoints2() + p->getNumContacts() == 0);\n\t\tassertNotInStep();\n\t\tRBXASSERT(!p->getClump());\n\t\tRBXASSERT(!p->inPipeline());\n\t\tRBXASSERT(!p->getWorld());\n\t}",
+   "\tvoid World::removePrimitive(Primitive* p)\n\t{\n\t\tdestroyJoints(p);\n\t\tcontactManager->onPrimitiveRemoved(p);\n\t\tjointStage->onPrimitiveRemoving(p);\n\t\tprimitives.fastRemove(p);\n\t\tp->setWorld(NULL);\n\t}"
   ],
   [
-    "World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\t\tassertNotInStep();\n\n\t\tstd::set<Primitive*> ignore;\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tignore.insert(primitives[i]);\n\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tdestroyJoints(primitives[i], &ignore);\n\t}",
-    "World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\tstd::set<Primitive*> ignore;\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tignore.insert(primitives[i]);\n\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tdestroyJoints(primitives[i], &ignore);\n}"
+   "World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\t\tassertNotInStep();\n\n\t\tstd::set<Primitive*> ignore;\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tignore.insert(primitives[i]);\n\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tdestroyJoints(primitives[i], &ignore);\n\t}",
+   "World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\tstd::set<Primitive*> ignore;\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tignore.insert(primitives[i]);\n\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tdestroyJoints(primitives[i], &ignore);\n}"
   ],
   [
-    "World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\t\tassertNotInStep();\n\n\t\tstd::set<Primitive*> ignore;\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tignore.insert(primitives[i]);\n\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tcreateJoints(primitives[i], &ignore);\n\t}",
-    "World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\tstd::set<Primitive*> ignore;\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tignore.insert(primitives[i]);\n\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tcreateJoints(primitives[i], &ignore);\n}"
+   "World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\t\tassertNotInStep();\n\n\t\tstd::set<Primitive*> ignore;\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tignore.insert(primitives[i]);\n\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tcreateJoints(primitives[i], &ignore);\n\t}",
+   "World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\tstd::set<Primitive*> ignore;\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tignore.insert(primitives[i]);\n\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tcreateJoints(primitives[i], &ignore);\n}"
   ],
   [
-    "World::~World()\n\t{\n\t\tRBXASSERT(numJoints == 0);\n\t\tRBXASSERT(numContacts == 0);\n\t\tRBXASSERT(primitives.size() == 0);\n\t\tRBXASSERT(breakableJoints.size() == 0);\n\t\t\n\t\tdelete jointStage;\n\t\tdelete contactManager;\n\t}",
-    "World::~World()\n\t{\n\t\t                         ;\n\t\t                           ;\n\t\t                                 ;\n\t\t                                      ;\n\t\t\n\t\tdelete jointStage;\n\t\tdelete contactManager;\n\t}"
+   "World::~World()\n\t{\n\t\tRBXASSERT(numJoints == 0);\n\t\tRBXASSERT(numContacts == 0);\n\t\tRBXASSERT(primitives.size() == 0);\n\t\tRBXASSERT(breakableJoints.size() == 0);\n\t\t\n\t\tdelete jointStage;\n\t\tdelete contactManager;\n\t}",
+   "World::~World()\n\t{\n\t\t                         ;\n\t\t                           ;\n\t\t                                 ;\n\t\t                                      ;\n\t\t\n\t\tdelete jointStage;\n\t\tdelete contactManager;\n\t}"
   ],
   [
-    "getCollisionStage()->profilingCollision->parent",
-    "getSleepStage()->profilingCollision->parent"
+   "getCollisionStage()->profilingCollision->parent",
+   "getSleepStage()->profilingCollision->parent"
   ],
   [
-    "getSleepStage()->onWakeUpRequest(pAssembly);",
-    "getSleepStage()->onWakeUpRequest(pAssembly, false);"
+   "getSleepStage()->onWakeUpRequest(pAssembly);",
+   "getSleepStage()->onWakeUpRequest(pAssembly, false);"
   ],
   [
-    "Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);",
-    "PrimIterator endIt = a->assemblyPrimEnd();"
+   "Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);",
+   "PrimIterator endIt = a->assemblyPrimEnd();"
   ],
   [
-    "Assembly::PrimIterator beginIt = Assembly::PrimIterator::begin(a);",
-    "PrimIterator beginIt = a->assemblyPrimBegin();"
+   "Assembly::PrimIterator beginIt = Assembly::PrimIterator::begin(a);",
+   "PrimIterator beginIt = a->assemblyPrimBegin();"
   ],
   [
-    "Assembly::PrimIterator it = Assembly::PrimIterator::begin(current);",
-    "PrimIterator it = current->assemblyPrimBegin();"
+   "Assembly::PrimIterator it = Assembly::PrimIterator::begin(current);",
+   "PrimIterator it = current->assemblyPrimBegin();"
   ],
   [
-    "Assembly::PrimIterator pEnd = Assembly::PrimIterator::end(current);",
-    "PrimIterator pEnd = current->assemblyPrimEnd();"
+   "Assembly::PrimIterator pEnd = Assembly::PrimIterator::end(current);",
+   "PrimIterator pEnd = current->assemblyPrimEnd();"
   ],
   [
-    "\tCollisionStage* World::getCollisionStage()\n\t{\n\t\treturn rbx_static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE));\n\t}\n",
-    ""
+   "\tCollisionStage* World::getCollisionStage()\n\t{\n\t\treturn rbx_static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE));\n\t}\n",
+   ""
   ],
   [
-    "\tconst CollisionStage* World::getCollisionStage() const\n\t{\n\t\treturn rbx_static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE));\n\t}\n",
-    ""
+   "\tconst CollisionStage* World::getCollisionStage() const\n\t{\n\t\treturn rbx_static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE));\n\t}\n",
+   ""
   ]
-],
+ ],
  "App/include/v8datamodel/TimerService.h": [
   [
    "\t\tvoid delay(boost::function0<void> func, double seconds);",
@@ -2577,10 +2661,10 @@
  ],
  "App/v8world/ClumpStage.cpp": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp"
   ]
-],
+ ],
  "App/util/Extents.cpp": [
   [
    "#include \"util/Extents.h\"\n",
@@ -2631,30 +2715,30 @@
  ],
  "App/include/util/Sound.h": [
   [
-    "#include \"v8datamodel/Stats.h\"",
-    "#include \"v8datamodel/Stats.h\"\nclass SoundServiceStatsItem;"
+   "#include \"v8datamodel/Stats.h\"",
+   "#include \"v8datamodel/Stats.h\"\nclass SoundServiceStatsItem;"
   ],
   [
-    "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{",
-    "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{\n\t\t\tfriend class ::SoundServiceStatsItem;\n\t\t\tfriend class SoundChannel;"
+   "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{",
+   "class SoundService : public DescribedCreatable<SoundService, Instance, &sSoundService>,\n\t\t\t\t\t\t\t public Service,\n\t\t\t\t\t\t\t public Listener<RunService, Heartbeat>\n\t\t{\n\t\t\tfriend class ::SoundServiceStatsItem;\n\t\t\tfriend class SoundChannel;"
   ],
   [
-    "\t\t\tReflection::BoundProp<float, 1> prop_dopplerscale;",
-    "\t\t\tstatic Reflection::BoundProp<float, 1> prop_dopplerscale;"
+   "\t\t\tReflection::BoundProp<float, 1> prop_dopplerscale;",
+   "\t\t\tstatic Reflection::BoundProp<float, 1> prop_dopplerscale;"
   ],
   [
-    "\t\t\tReflection::BoundProp<float, 1> prop_distancefactor;",
-    "\t\t\tstatic Reflection::BoundProp<float, 1> prop_distancefactor;"
+   "\t\t\tReflection::BoundProp<float, 1> prop_distancefactor;",
+   "\t\t\tstatic Reflection::BoundProp<float, 1> prop_distancefactor;"
   ],
   [
-    "\t\t\tReflection::BoundProp<float, 1> prop_rolloffscale;",
-    "\t\t\tstatic Reflection::BoundProp<float, 1> prop_rolloffscale;"
+   "\t\t\tReflection::BoundProp<float, 1> prop_rolloffscale;",
+   "\t\t\tstatic Reflection::BoundProp<float, 1> prop_rolloffscale;"
   ],
   [
-    "\t\t\tReflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;",
-    "\t\t\tstatic Reflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;"
+   "\t\t\tReflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;",
+   "\t\t\tstatic Reflection::EnumPropDescriptor<SoundService, ReverbType> prop_AmbientReverb;"
   ]
-],
+ ],
  "App/include/v8datamodel/ICharacterSubject.h": [
   [
    "\t\tbool getCursorCenterLocked() const;",
@@ -2670,113 +2754,109 @@
    "temp.Format(\"%x\", hashValue[i]);",
    "temp.Format(\"%02x\", (unsigned char)hashValue[i]);"
   ]
- ]
-,
+ ],
  "App/include/v8world/Assembly.h": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/include/v8world/Assembly.h"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/include/v8world/Assembly.h"
   ]
-]
-,
+ ],
  "App/v8world/Assembly.cpp": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/v8world/Assembly.cpp"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/v8world/Assembly.cpp"
   ]
-]
-,
+ ],
  "Network/Replicator.h": [
   [
-    "findTargetPlayerCharacterMechanism",
-    "findTargetPlayerCharacterJob"
+   "findTargetPlayerCharacterMechanism",
+   "findTargetPlayerCharacterJob"
   ],
   [
-    "const Mechanism&",
-    "const SimJob&"
+   "const Mechanism&",
+   "const SimJob&"
   ],
   [
-    "Mechanism&",
-    "SimJob&"
+   "Mechanism&",
+   "SimJob&"
   ],
   [
-    "Mechanism*",
-    "SimJob*"
+   "Mechanism*",
+   "SimJob*"
   ],
   [
-    "const Mechanism&",
-    "const SimJob&"
+   "const Mechanism&",
+   "const SimJob&"
   ],
   [
-    "Mechanism*",
-    "SimJob*"
+   "Mechanism*",
+   "SimJob*"
   ]
-]
-,
- "Network/Server.h": [["", "\n// Overlay copy: relative Replicator.h must resolve to the generic job API.\n"]]
-,
- "Network/Client.h": [["", "\n// Overlay copy: relative Replicator.h must resolve to the generic job API.\n"]]
-,
+ ],
+ "Network/Server.h": [
+  [
+   "",
+   "\n// Overlay copy: relative Replicator.h must resolve to the generic job API.\n"
+  ]
+ ],
+ "Network/Client.h": [
+  [
+   "",
+   "\n// Overlay copy: relative Replicator.h must resolve to the generic job API.\n"
+  ]
+ ],
  "App/include/v8world/Clump.h": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/include/v8world/Clump.h"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/include/v8world/Clump.h"
   ]
-]
-,
+ ],
  "App/include/v8world/ClumpStage.h": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/include/v8world/ClumpStage.h"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/include/v8world/ClumpStage.h"
   ]
-]
-,
+ ],
  "App/include/v8world/AssemblyStage.h": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/include/v8world/AssemblyStage.h"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/include/v8world/AssemblyStage.h"
   ]
-]
-,
+ ],
  "App/include/v8world/SleepStage.h": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/include/v8world/SleepStage.h"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/include/v8world/SleepStage.h"
   ]
-]
-,
+ ],
  "App/v8world/Clump.cpp": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/v8world/Clump.cpp"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/v8world/Clump.cpp"
   ]
-]
-,
+ ],
  "App/v8world/AssemblyStage.cpp": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp"
   ]
-]
-,
+ ],
  "App/v8world/SleepStage.cpp": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/v8world/SleepStage.cpp"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/v8world/SleepStage.cpp"
   ]
-]
-,
+ ],
  "App/include/v8world/Joint.h": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/include/v8world/Joint.h"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/include/v8world/Joint.h"
   ]
-]
-,
+ ],
  "App/v8world/WorldHelpers.cpp": [
   [
-    "@replace",
-    "../../../rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp"
+   "@replace",
+   "../../../rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp"
   ]
-]
+ ]
 }
