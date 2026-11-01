@@ -1557,3 +1557,18 @@ comparison remains observational: maximum sampled vertical difference is
 p5-limb-verified-{original,walk,climb,p3,animation,airborne}. Original process
 closure required forced termination. Native state machine, start-up, character
 fall and remaining P5 gates remain open.
+
+## P5 checkpoint: player dependency refresh (497e8fafda)
+
+`roc rebuild 2008-06 player` and `module player` now refresh six maintained
+engine/render dependencies in declared order, stop on failed dependency tests,
+and only then link the player. Image and material tests use the staged player
+SurfacesStrip when ROC_TEXTURE_STRIP is unset; an explicit override wins.
+Vendor libraries outside this list remain cached. This replaces the manual
+rbxgs-app rebuild instruction above; staging external Content is still needed.
+
+At 497e8fafda, the normal command rebuilt and tested all six dependencies
+and the player successfully. Thirteen build-tool tests and P3 lifetime,
+selftest and cache checks passed. Receipts: p5-refresh-497e and
+p5-refresh-497e-p3. Full rebuild is slower than the prior stale-library path.
+This improves build reliability; character physics and P5 remain open.
