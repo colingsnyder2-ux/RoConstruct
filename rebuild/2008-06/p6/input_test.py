@@ -4,7 +4,7 @@ import ctypes, subprocess, sys, threading, time
 from ctypes import wintypes
 user = ctypes.windll.user32
 exe, place = sys.argv[1], sys.argv[2]
-process = subprocess.Popen([exe, "-p6-visible", place], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, cwd=exe.rsplit("\\", 1)[0], errors="replace")
+process = subprocess.Popen([exe, "-p6-visible", "-p6-play", place], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, cwd=exe.rsplit("\\", 1)[0], errors="replace")
 lines = []
 ready = threading.Event()
 def read():

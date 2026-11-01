@@ -1,16 +1,18 @@
 {
  "milestone": "P6",
  "status": "OPEN",
- "scope": "MFC client with place document hosting recovered player engine; hidden runs and one visible real-input run",
- "exe_sha256": "5e37b39fd846c576c151d15afb4a06650b56a7b7cc0fc8ea9759a8bc0b1dae19",
+ "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
+ "exe_sha256": "ace43e3d6ec9baf2aa0ed874d12a0c8f653a8b1ca3818ad2b638645b3a3cc0ec",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "481b011bed19b3d97e6f5e9258a3920f5dcaa9cea0f9172fc3c5ba7a6bd81147",
-  "P6Engine.cpp": "61c39880fea6888c2ecbda25101baec5d87e5fdf02b8037f8aee130b5d120af8",
-  "P6Engine.h": "ad9684439309c87a8c0d020e527e4f74a6e44500646654e38b68a85736263191",
-  "build_client.py": "a817cb2f5ed554c16a8b1a36157712c2caa69b4b25b6a5c73d651a8f6558b368",
-  "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497"
+  "RobloxShell.cpp": "6a54140e483755eaf24be11a4ed6679b01a20447570cc1fa61c237e312eff90f",
+  "P6Engine.cpp": "b041e4364212440694a3e2291aae9701892f45a0b1f9b05a12ee9ee04488d15b",
+  "P6Data.cpp": "7a5a34decc2dc05f215cfec031dfb1109bc77dc7ad6089fb2351865c70c67b1b",
+  "P6Engine.h": "a8073658d018e7cc99173901f63eb28cfd078c68586d59280c847d9350ca1adc",
+  "build_client.py": "0edca67009716d1e727cf3f4e33c0ad948fb2c2cc169d797f10277775d0a2a2c",
+  "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
+  "input_test.py": "d8201e701c37d76f11d1ab2e9f53bc4ff7ff67f42538afb407c44c6b3087c7f2"
  },
  "player_libs": "C:/Users/colin/RoConstruct/rebuild/2008-06/out built 06:17, before later Codex commits",
  "runs": [
@@ -46,12 +48,11 @@
   }
  ],
  "shims": [
-  "CMainFrame is plain CMDIFrameWnd; original is XTP-based",
   "InitInstance omits engine setup, crash reporter, COM registration, IDE doc manager",
-  "Play path via player API, opens in play mode",
   "60 Hz frame cap, not original 00555190 deadline loop",
   "_afxForce symbols local",
-  "WinMain from RTM appmodul.cpp"
+  "WinMain from RTM appmodul.cpp",
+  "Edit via Lua command line, no selection or drag tools"
  ],
  "visible_input_run": {
   "command": "python rebuild/2008-06/p6/input_test.py Roblox.exe Places/p5-playable.rbxl",
@@ -60,16 +61,36 @@
   "exit": 0,
   "keys": "real W keybd_event for 1.5 s after engine open",
   "actor_end": [
-   0.049753,
-   2.99842,
-   18.9889
+   -1.00758e-06,
+   2.9984,
+   18.9892
   ],
   "idle_actor_end": [
    0,
    2.99913,
    25.5
   ],
-  "frames": 288,
+  "frames": 301,
   "cleanup": "levels=0 refs=0 backends=0 spheres=0"
+ },
+ "edit_save_reopen": {
+  "fixture": "lifetime-shapes.rbxl",
+  "script": "game.Workspace.Brick.CFrame = CFrame.new(7,8,9)",
+  "after_edit": [
+   7,
+   8,
+   9
+  ],
+  "after_reopen": [
+   7,
+   8,
+   9
+  ],
+  "exit": [
+   0,
+   0
+  ],
+  "saved_sha256": "ccf2290249b937a688a783f4546c639b79c68addc9080ca1f6257815e305d7ea",
+  "note": "Saved file also holds services the fixture lacked (Camera, RunService, Lighting and others). Not yet opened in the original client."
  }
 }

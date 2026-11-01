@@ -5,7 +5,9 @@
 extern "C" {
 #endif
 int P6EngineReadable(const char* path);
-int P6EngineOpen(void* window, const char* path, int width, int height);
+int P6EngineOpen(void* window, const char* path, int width, int height, int play);
+int P6EngineScript(const char* command);
+int P6EngineSave(const char* path);
 int P6EngineFrame(void);
 int P6EngineFrames(void);
 void P6EngineReport(void);

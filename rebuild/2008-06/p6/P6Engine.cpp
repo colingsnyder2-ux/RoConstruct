@@ -5,6 +5,9 @@
 #undef main
 #include "P6Engine.h"
 
+extern "C" int P6DataCamera(float* values);
+extern "C" int P6DataSave(const char* path);
+
 static Ogre::Root* g_root;
 static Ogre::RenderWindow* g_window;
 static Ogre::Camera* g_camera;
@@ -13,6 +16,19 @@ static Ogre::Timer* g_timer;
 static unsigned long g_last;
 static int g_frames;
 static bool g_placeOpen;
+static bool g_play;
+
+static void syncEditCamera()
+{
+    float pose[12];
+    if (P6DataCamera(pose)) {
+        g_camera->setPosition(0, 10, 30);
+        g_camera->lookAt(0, 0, 0);
+        return;
+    }
+    g_camera->setPosition(pose[9], pose[10], pose[11]);
+    g_camera->setOrientation(Ogre::Quaternion(Ogre::Matrix3(pose[0], pose[1], pose[2], pose[3], pose[4], pose[5], pose[6], pose[7], pose[8])));
+}
 
 static std::string moduleRoot()
 {
@@ -26,7 +42,7 @@ extern "C" int P6EngineReadable(const char* path)
     return !readPlace(path).empty();
 }
 
-extern "C" int P6EngineOpen(void* window, const char* path, int width, int height)
+extern "C" int P6EngineOpen(void* window, const char* path, int width, int height, int play)
 {
     if (g_root) return 1;
     std::string content = moduleRoot() + "/Content";
@@ -36,10 +52,13 @@ extern "C" int P6EngineOpen(void* window, const char* path, int width, int heigh
     std::string place = readPlace(path);
     if (place.empty() || LoadPlace(place.c_str())) return 3;
     g_placeOpen = true;
-    if (AttachPlayerController(1)) return 4;
-    float pose[15];
-    if (GetPlayerCameraPose(pose)) return 5;
-    StartPlay();
+    g_play = play != 0;
+    if (g_play) {
+        if (AttachPlayerController(1)) return 4;
+        float pose[15];
+        if (GetPlayerCameraPose(pose)) return 5;
+        StartPlay();
+    }
 
     g_root = new Ogre::Root("", "", "player.log");
     g_root->loadPlugin("rgdx.dll");
@@ -63,7 +82,9 @@ extern "C" int P6EngineOpen(void* window, const char* path, int width, int heigh
     g_camera = scene->createCamera("cam");
     g_camera->setNearClipDistance(0.1f);
     g_viewport = g_window->addViewport(g_camera);
-    if (!SyncPlayerCamera(g_camera, g_viewport)) return 7;
+    if (g_play) {
+        if (!SyncPlayerCamera(g_camera, g_viewport)) return 7;
+    } else syncEditCamera();
     PlayerSkybox::apply(*scene, content);
     if (SceneAttach()) return 8;
     g_timer = new Ogre::Timer;
@@ -81,8 +102,10 @@ extern "C" int P6EngineFrame(void)
     }
     float dt = (now - g_last) / 1000.0f;
     g_last = now;
-    StepEngine(dt);
-    if (!SyncPlayerCamera(g_camera, g_viewport)) return 0;
+    if (g_play) {
+        StepEngine(dt);
+        if (!SyncPlayerCamera(g_camera, g_viewport)) return 0;
+    } else syncEditCamera();
     drawModels();
     g_root->renderOneFrame();
     ++g_frames;
@@ -97,7 +120,22 @@ extern "C" int P6EngineFrames(void)
 extern "C" void P6EngineReport(void)
 {
     float x = 0, y = 0, z = 0;
-    if (g_timer && !GetActorTorsoPosition(&x, &y, &z)) std::printf("p6: actor %g %g %g\n", x, y, z);
+    if (g_play) {
+        if (g_timer && !GetActorTorsoPosition(&x, &y, &z)) std::printf("p6: actor %g %g %g\n", x, y, z);
+    } else if (PartAlive()) {
+        GetPartPosition(&x, &y, &z);
+        std::printf("p6: part %g %g %g\n", x, y, z);
+    }
+}
+
+extern "C" int P6EngineScript(const char* command)
+{
+    return ExecutePlayerScript(command);
+}
+
+extern "C" int P6EngineSave(const char* path)
+{
+    return P6DataSave(path);
 }
 
 extern "C" int P6EngineCapture(const char* path)

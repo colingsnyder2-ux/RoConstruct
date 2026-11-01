@@ -17,19 +17,24 @@ class CRobloxCommandLineInfo : public CCommandLineInfo {
 public:
     bool autoClose;
     bool visible;
-    bool expectCapture;
-    CString capture;
-    CRobloxCommandLineInfo() : autoClose(false), visible(false), expectCapture(false) {}
+    bool play;
+    CString* expecting;
+    CString capture, script, saveAs;
+    CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), expecting(NULL) {}
     virtual void ParseParam(const char* param, BOOL flag, BOOL last) {
-        if (expectCapture) { capture = param; expectCapture = false; return; }
+        if (expecting) { *expecting = param; expecting = NULL; return; }
         if (flag && !lstrcmpiA(param, "p6-autoclose")) { autoClose = true; return; }
         if (flag && !lstrcmpiA(param, "p6-visible")) { autoClose = visible = true; return; }
-        if (flag && !lstrcmpiA(param, "p6-capture")) { expectCapture = true; return; }
+        if (flag && !lstrcmpiA(param, "p6-play")) { play = true; return; }
+        if (flag && !lstrcmpiA(param, "p6-capture")) { expecting = &capture; return; }
+        if (flag && !lstrcmpiA(param, "p6-script")) { expecting = &script; return; }
+        if (flag && !lstrcmpiA(param, "p6-saveas")) { expecting = &saveAs; return; }
         CCommandLineInfo::ParseParam(param, flag, last);
     }
 };
 
-static CString g_capture;
+static CString g_capture, g_script, g_saveAs;
+static bool g_play;
 static bool g_openFailed;
 
 // 00431d00: status bar 0000e801, then command bars with the frame menu.
@@ -45,13 +50,20 @@ public:
         CXTPCommandBars* bars = GetCommandBars();
         XTPPaintManager()->SetTheme(xtpThemeOffice2003);
         CXTPCommandBar* menu = bars->SetMenu(_T("Menu Bar"), IDR_MAINFRAME_ROBLOX);
-        return menu ? 0 : -1;
+        if (!menu) return -1;
+        menu->SetFlags(xtpFlagIgnoreSetMenuMessage); // keep menu 128; template 129 has File only
+        return 0;
     }
     afx_msg void OnTimer(UINT_PTR id) {
         if (id != ID_P6_AUTOCLOSE) { CXTPMDIFrameWnd::OnTimer(id); return; }
         KillTimer(id);
         printf("p6: autoclose frames=%d\n", P6EngineFrames());
         P6EngineReport();
+        if (!g_saveAs.IsEmpty()) {
+            CFrameWnd* child = GetActiveFrame();
+            CDocument* document = child ? child->GetActiveDocument() : NULL;
+            printf("p6: save %s\n", document && document->OnSaveDocument(g_saveAs) ? "ok" : "failed");
+        }
         if (!g_capture.IsEmpty()) printf("p6: capture %s\n", P6EngineCapture(g_capture) ? "ok" : "failed");
         PostMessage(WM_CLOSE);
     }
@@ -72,6 +84,12 @@ public:
         g_openFailed = true;
         return FALSE;
     }
+    virtual BOOL OnSaveDocument(LPCTSTR path) {
+        int status = P6EngineSave(path);
+        if (status) printf("p6: save status %d\n", status);
+        else SetModifiedFlag(FALSE);
+        return !status;
+    }
     virtual void OnCloseDocument() {
         P6EngineClose();
         CDocument::OnCloseDocument();
@@ -87,8 +105,9 @@ public:
         CView::OnInitialUpdate();
         CRect rect;
         GetClientRect(rect);
-        int status = P6EngineOpen(m_hWnd, GetDocument()->GetPathName(), rect.Width(), rect.Height());
+        int status = P6EngineOpen(m_hWnd, GetDocument()->GetPathName(), rect.Width(), rect.Height(), g_play);
         printf("p6: engine open %d\n", status);
+        if (!status && !g_script.IsEmpty()) printf("p6: script %d\n", P6EngineScript(g_script));
     }
     afx_msg void OnSize(UINT type, int width, int height) {
         CView::OnSize(type, width, height);
@@ -111,6 +130,9 @@ public:
         CRobloxCommandLineInfo command;
         ParseCommandLine(command);
         g_capture = command.capture;
+        g_script = command.script;
+        g_saveAs = command.saveAs;
+        g_play = command.play;
         AddDocTemplate(new CMultiDocTemplate(IDR_PLACE, RUNTIME_CLASS(CRobloxDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CRobloxView)));
         CMainFrame* frame = new CMainFrame;
         if (!frame->LoadFrame(IDR_MAINFRAME_ROBLOX)) { delete frame; return FALSE; }
