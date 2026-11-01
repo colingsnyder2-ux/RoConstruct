@@ -2,7 +2,8 @@
 import csv,ctypes,hashlib,json,pathlib,statistics,struct,subprocess,sys,time
 from ctypes import wintypes
 root=pathlib.Path(__file__).resolve().parents[3];original=root/'work/2008-06/original-p4-reference/Roblox.exe';player=root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe';mode=sys.argv[2] if len(sys.argv)>2 else 'grounded';assert mode in ('grounded','early','airborne');fixture=root/'rebuild/2008-06/tests/fixtures'/({'grounded':'p5-original-jump.rbxl','early':'p5-original-jump-early.rbxl','airborne':'p5-original-jump-airborne.rbxl'}[mode]);out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False);sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();rebuilt={}
-for frames in (15,30,45,60,75,90,105,120,150,180,240):
+sample_frames = (15,30,45,60,75,90,105,120,150,180,240)
+for frames in sorted(set(sample_frames) | ({13,14,16,17} if mode=='airborne' else set())):
  folder=out/str(frames);folder.mkdir();run=subprocess.run([str(player),'--p5-join','--p5-play','--frames',str(frames),'--inspect-place',str(fixture)],cwd=folder,capture_output=True,text=True,timeout=90)
  assert run.returncode==0 and 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in run.stdout and '[output]    stack end' not in run.stdout
  with (folder/'place_snapshot.csv').open() as f:rows=list(csv.DictReader(f))
@@ -67,6 +68,10 @@ try:
   actual,positions=min(candidates,key=lambda z:abs(z[0]-target));delta=[positions[0][i]-rebuilt[frames]['torso'][i] for i in range(3)]
   assert abs(delta[0]) < .05 and abs(delta[2]) < .05, (frames,delta)
   check={'frame':frames,'original_time':actual,'original_torso':positions[0],'original_head':positions[1],'delta':delta}
+  if mode=='airborne' and frames==15:
+   # Additional timing diagnostic; retain the exact-time delta and existing gates.
+   nearby=min(range(13,18),key=lambda frame:abs(positions[0][1]-rebuilt[frame]['torso'][1]))
+   check['timing_window']={'frames':[13,17],'best_frame':nearby,'best_vertical_error':abs(positions[0][1]-rebuilt[nearby]['torso'][1]),'scope':'Sensitivity to +/-2 rebuilt frames; not an original simulation-time measurement.'}
   comparisons.append(check)
  if mode=='early':
   assert max(abs(sample['delta'][1]) for sample in comparisons)<.6, comparisons

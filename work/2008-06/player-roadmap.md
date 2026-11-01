@@ -1629,3 +1629,86 @@ studs), P3 lifetime/cache and Novetus animation pass at 6cc844c0df. Receipts:
 p5-air-verified, p5-air-verified-{walk,early,p3,animation}. Original uses wall
 samples within 35 ms, different joint construction, and forced termination.
 Full air/landing physics, native frame/state integration and P5 remain open.
+
+## P5 checkpoint: initialize replacement landing state (40cbe42fa2)
+
+Original Humanoid callback 005dc740 reaches 00645450 (direct call at
+005dc782). That wrapper runs state update 006451c0, transition 006453a0,
+and the selected state's goal update. Recovered 006453a0 destroys the old
+state, constructs the replacement and immediately updates it before goal
+update. Donor transitions left the replacement's floor unset until next tick.
+Landed now refreshes floor and goals before its first force. This constructor
+initialization adapts the native ordering; full state lifetime/ABI integration
+remains open, including donor construction-before-destruction ordering.
+
+At 40cbe42fa2, maximum observed high-fall torso error fell from 14.29 to
+1.65 studs and grounded-jump error from 2.59 to 1.16. Early-jump bounded
+comparison passes at maximum 0.096 studs. Original walking, climbing, Novetus
+animation and P3 lifetime/self/cache pass. Receipts:
+p5-land-prime-verified-{airborne,grounded,early,walk,climb,animation,p3}.
+Original samples are wall time within 35 ms of fixed-step targets, joint
+construction differs and original termination was forced. These improvements
+do not close physics parity or P5; preserve original bouncing and investigate
+remaining state/timing and contact differences next.
+
+## P5 checkpoint: timing sensitivity and tandem ownership (be12214a62)
+
+Claude owns P6 in roc-p6; Codex continues P5 here under TANDEM.md. Both
+original-client runs below held and released the shared desktop lock; only
+observer-owned original processes were closed/terminated.
+
+The airborne observer now additionally samples rebuilt frames 13,14,16,17
+around its first comparison, retaining the original exact-time delta and
+existing early-jump gate. This diagnoses sensitivity without claiming original
+simulation-time access. At the same executable, one run had maximum exact
+sample error 0.07493 studs; a repeat had 3.14027 at the impact sample (0.5s).
+Both first samples agreed within 0.01005 studs; later settled samples within
+0.075. Therefore previous max-error comparisons can change with original
+wall-clock phase even without code changes. Do not tune physics to one such
+maximum. Next add an original Lua simulation-time marker and align observations
+by that clock. Receipts: p5-tandem-fall-timing and its -repeat. These are
+observational; fixed-step/contact parity and P5 remain open.
+
+## P5 checkpoint: simulation-time-aligned high fall (46537cf31d)
+
+New authored p5-simtime-fall.rbxl freezes thirteen Stepped callback records
+in anchored, noncolliding marker Parts. Each marker contains the simulation
+timestamp and torso height from the same callback; both clients run identical
+Lua. The observer reads the original markers through read-only process memory,
+requires at least two agreeing updated copies, and compares against rebuilt
+marker snapshots. All recorded timestamps must agree within 0.0001 seconds;
+the vertical gate is 0.1 studs. Original markers freeze after sampling, so
+foreground-launch wall-time phase no longer selects the measured pose.
+
+Two runs at 46537cf31d reproduce all thirteen samples exactly. Maximum original
+versus rebuilt height difference is 0.07494 studs; before landing it remains
+under 0.022. Thus earlier multi-stud maxima on this high fall were wall-clock
+sampling artifacts after the landing initialization fix. Receipts:
+p5-simtime-verified and p5-simtime-verified-repeat. This closes the bounded
+high-fall comparison for this fixture, not all character/contact physics.
+Original joint construction still differs and closure required forced
+termination of the observer-owned process. Desktop locks released in TANDEM.
+Next apply frozen simulation-time sampling to grounded jump and air movement,
+then continue native frame/state lifetime integration and other P5 gates.
+
+## P5 checkpoint: simulation-time jump and air samples (8599e32205)
+
+Frozen callback sampling now supports two additional authored fixtures. Jump
+records torso Y around the scripted one-second request; air records torso X
+through a 30-stud fall with WalkDirection set after 0.2 seconds. Thirteen
+original/rebuilt timestamps agree within 0.0001 seconds for each run; at least
+two updated original memory copies agree. Air checks X within 0.01 studs
+through one second, then records later positions without claiming parity.
+Receipt fields retain delta_y as the scalar difference; measured_coordinate
+identifies X versus Y explicitly.
+
+At 8599e32205, air X agrees within 0.000001 studs through one second, then
+lags original by about 0.532 at 1.5 seconds and 0.530 thereafter. Jump differs
+by 1.415 at 1.1 seconds, 0.126 at 1.3, and -1.807 at 1.6, with original
+minus rebuilt velocity differing by roughly -6.44 studs/s over that interval.
+This confirms a real jump trajectory difference after removing wall-time
+phase; its cause is not established. Check original and donor force/substep
+integration and state handoff next. Receipts: p5-simtime-jump-verified and
+p5-simtime-air-verified. Original joint construction still differs, closure
+needed forced termination, and desktop locks were released in TANDEM. P5
+and complete jump/air parity remain open.
