@@ -1,0 +1,3120 @@
+{
+  "revision": "6f9be17cb55182cc77061385bd18c0369d10bbd2",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "a6288620cb56d0166b222ec3d0b2ee4b336f3d32bfb0deb7ec07656def4234b0",
+  "runtime_classes_sha256": "bf63791688d842003eaaa27757425e8b1b4f07afcfb42553322974fcbedd6f67",
+  "runtime_sizes": {
+    "CRobloxDoc": {
+      "base": null,
+      "baseGetter": "0044f1f0",
+      "create": "00452f00",
+      "size": 152,
+      "va": "008172c0",
+      "schema": 65535,
+      "verified_against_original": true
+    },
+    "CRobloxView": {
+      "base": null,
+      "baseGetter": "006c4cb0",
+      "create": "00459fd0",
+      "size": 496,
+      "va": "00819070",
+      "schema": 65535,
+      "verified_against_original": true
+    },
+    "CMainFrame": {
+      "base": null,
+      "baseGetter": "0042e450",
+      "create": "00000000",
+      "size": 1204,
+      "va": "008107a8",
+      "schema": 65535,
+      "verified_against_original": true
+    }
+  },
+  "classes": {
+    ".?AVCRobloxView@@": {
+      "type_descriptor": "0x928a08",
+      "tables": [
+        {
+          "vtable": "0x81933c",
+          "locator": "0x884470",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x884484",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCRobloxView@@",
+                "descriptor": "0x8844c0",
+                "contained_bases": 9,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$VerbBinder@VCRobloxView@@VCView@@@@",
+                "descriptor": "0x884454",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCView@@",
+                "descriptor": "0x87b2a0",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVVerbContainer@RBX@@",
+                "descriptor": "0x8844dc",
+                "contained_bases": 0,
+                "member_displacement": 120,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@",
+                "descriptor": "0x88452c",
+                "contained_bases": 0,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@",
+                "descriptor": "0x88457c",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@",
+                "descriptor": "0x8845cc",
+                "contained_bases": 0,
+                "member_displacement": 168,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x819330",
+          "locator": "0x88461c",
+          "subobject_offset": 120,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x884484",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCRobloxView@@",
+                "descriptor": "0x8844c0",
+                "contained_bases": 9,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$VerbBinder@VCRobloxView@@VCView@@@@",
+                "descriptor": "0x884454",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCView@@",
+                "descriptor": "0x87b2a0",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVVerbContainer@RBX@@",
+                "descriptor": "0x8844dc",
+                "contained_bases": 0,
+                "member_displacement": 120,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@",
+                "descriptor": "0x88452c",
+                "contained_bases": 0,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@",
+                "descriptor": "0x88457c",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@",
+                "descriptor": "0x8845cc",
+                "contained_bases": 0,
+                "member_displacement": 168,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x819324",
+          "locator": "0x884630",
+          "subobject_offset": 160,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x884484",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCRobloxView@@",
+                "descriptor": "0x8844c0",
+                "contained_bases": 9,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$VerbBinder@VCRobloxView@@VCView@@@@",
+                "descriptor": "0x884454",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCView@@",
+                "descriptor": "0x87b2a0",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVVerbContainer@RBX@@",
+                "descriptor": "0x8844dc",
+                "contained_bases": 0,
+                "member_displacement": 120,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@",
+                "descriptor": "0x88452c",
+                "contained_bases": 0,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@",
+                "descriptor": "0x88457c",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@",
+                "descriptor": "0x8845cc",
+                "contained_bases": 0,
+                "member_displacement": 168,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x819318",
+          "locator": "0x884644",
+          "subobject_offset": 164,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x884484",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCRobloxView@@",
+                "descriptor": "0x8844c0",
+                "contained_bases": 9,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$VerbBinder@VCRobloxView@@VCView@@@@",
+                "descriptor": "0x884454",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCView@@",
+                "descriptor": "0x87b2a0",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVVerbContainer@RBX@@",
+                "descriptor": "0x8844dc",
+                "contained_bases": 0,
+                "member_displacement": 120,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@",
+                "descriptor": "0x88452c",
+                "contained_bases": 0,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@",
+                "descriptor": "0x88457c",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@",
+                "descriptor": "0x8845cc",
+                "contained_bases": 0,
+                "member_displacement": 168,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x81930c",
+          "locator": "0x884658",
+          "subobject_offset": 168,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x884484",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCRobloxView@@",
+                "descriptor": "0x8844c0",
+                "contained_bases": 9,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$VerbBinder@VCRobloxView@@VCView@@@@",
+                "descriptor": "0x884454",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCView@@",
+                "descriptor": "0x87b2a0",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVVerbContainer@RBX@@",
+                "descriptor": "0x8844dc",
+                "contained_bases": 0,
+                "member_displacement": 120,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@",
+                "descriptor": "0x88452c",
+                "contained_bases": 0,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@",
+                "descriptor": "0x88457c",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@",
+                "descriptor": "0x8845cc",
+                "contained_bases": 0,
+                "member_displacement": 168,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVCRobloxDoc@@": {
+      "type_descriptor": "0x92e140",
+      "tables": [
+        {
+          "vtable": "0x817ce4",
+          "locator": "0x883734",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x883748",
+            "attributes": 0,
+            "bases": [
+              {
+                "type": ".?AVCRobloxDoc@@",
+                "descriptor": "0x883770",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$VerbBinder@VCRobloxDoc@@VCDocument@@@@",
+                "descriptor": "0x883718",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCDocument@@",
+                "descriptor": "0x87b0d4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVCMainFrame@@": {
+      "type_descriptor": "0x92ef10",
+      "tables": [
+        {
+          "vtable": "0x811a1c",
+          "locator": "0x87f8a0",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x87f8b4",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCMainFrame@@",
+                "descriptor": "0x87f8f0",
+                "contained_bases": 9,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCXTPMDIFrameWnd@@",
+                "descriptor": "0x87f90c",
+                "contained_bases": 7,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CXTPFrameWndBase@VCMDIFrameWnd@@@@",
+                "descriptor": "0x87f7c0",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CXTPCommandBarsSiteBase@VCMDIFrameWnd@@@@",
+                "descriptor": "0x87f5d0",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCMDIFrameWnd@@",
+                "descriptor": "0x87f5ec",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCFrameWnd@@",
+                "descriptor": "0x87c214",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VFillToolColor@RBX@@VBrickColor@2@@RBX@@",
+                "descriptor": "0x87f95c",
+                "contained_bases": 0,
+                "member_displacement": 240,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x811a0c",
+          "locator": "0x87f9ac",
+          "subobject_offset": 240,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x87f8b4",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVCMainFrame@@",
+                "descriptor": "0x87f8f0",
+                "contained_bases": 9,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCXTPMDIFrameWnd@@",
+                "descriptor": "0x87f90c",
+                "contained_bases": 7,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CXTPFrameWndBase@VCMDIFrameWnd@@@@",
+                "descriptor": "0x87f7c0",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$CXTPCommandBarsSiteBase@VCMDIFrameWnd@@@@",
+                "descriptor": "0x87f5d0",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCMDIFrameWnd@@",
+                "descriptor": "0x87f5ec",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCFrameWnd@@",
+                "descriptor": "0x87c214",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Listener@VFillToolColor@RBX@@VBrickColor@2@@RBX@@",
+                "descriptor": "0x87f95c",
+                "contained_bases": 0,
+                "member_displacement": 240,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVCRobloxApp@@": {
+      "type_descriptor": "0x931a9c",
+      "tables": [
+        {
+          "vtable": "0x816a64",
+          "locator": "0x882ebc",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x882ed0",
+            "attributes": 0,
+            "bases": [
+              {
+                "type": ".?AVCRobloxApp@@",
+                "descriptor": "0x882ef8",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWinApp@@",
+                "descriptor": "0x882f14",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWinThread@@",
+                "descriptor": "0x882f54",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AV?$VerbBinder@VCRobloxDoc@@VCDocument@@@@": {
+      "type_descriptor": "0x931f24",
+      "tables": [
+        {
+          "vtable": "0x817c24",
+          "locator": "0x8836e0",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8836f4",
+            "attributes": 0,
+            "bases": [
+              {
+                "type": ".?AV?$VerbBinder@VCRobloxDoc@@VCDocument@@@@",
+                "descriptor": "0x883718",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCDocument@@",
+                "descriptor": "0x87b0d4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AV?$VerbBinder@VCRobloxView@@VCView@@@@": {
+      "type_descriptor": "0x932564",
+      "tables": [
+        {
+          "vtable": "0x819174",
+          "locator": "0x884418",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x88442c",
+            "attributes": 0,
+            "bases": [
+              {
+                "type": ".?AV?$VerbBinder@VCRobloxView@@VCView@@@@",
+                "descriptor": "0x884454",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCView@@",
+                "descriptor": "0x87b2a0",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCWnd@@",
+                "descriptor": "0x8761e4",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCCmdTarget@@",
+                "descriptor": "0x876220",
+                "contained_bases": 1,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVCObject@@",
+                "descriptor": "0x876258",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVHumanoidState@HUMAN@RBX@@": {
+      "type_descriptor": "0x961c68",
+      "tables": [
+        {
+          "vtable": "0x84ad00",
+          "locator": "0x8bece0",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8beb74",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x84acf8",
+          "locator": "0x8becf4",
+          "subobject_offset": 4,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8beb74",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVLanded@HUMAN@RBX@@": {
+      "type_descriptor": "0x961cd8",
+      "tables": [
+        {
+          "vtable": "0x84ac9c",
+          "locator": "0x8bebf8",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8bec0c",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVLanded@HUMAN@RBX@@",
+                "descriptor": "0x8bec3c",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VRunningBase@HUMAN@RBX@@$1?sLanded@23@3QBDB@RBX@@",
+                "descriptor": "0x8beab8",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVRunningBase@HUMAN@RBX@@",
+                "descriptor": "0x8bead4",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVBalancing@HUMAN@RBX@@",
+                "descriptor": "0x8beb18",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x84ac94",
+          "locator": "0x8bec58",
+          "subobject_offset": 4,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8bec0c",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVLanded@HUMAN@RBX@@",
+                "descriptor": "0x8bec3c",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VRunningBase@HUMAN@RBX@@$1?sLanded@23@3QBDB@RBX@@",
+                "descriptor": "0x8beab8",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVRunningBase@HUMAN@RBX@@",
+                "descriptor": "0x8bead4",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVBalancing@HUMAN@RBX@@",
+                "descriptor": "0x8beb18",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVMovingNoPhysicsBase@HUMAN@RBX@@": {
+      "type_descriptor": "0x962904",
+      "tables": [
+        {
+          "vtable": "0x84d168",
+          "locator": "0x8c1208",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0b74",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+                "descriptor": "0x8c0b58",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ba4",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVSimJob@RBX@@",
+                "descriptor": "0x8c0be4",
+                "contained_bases": 1,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVnoncopyable@noncopyable_@boost@@",
+                "descriptor": "0x8c0c00",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x84d160",
+          "locator": "0x8c121c",
+          "subobject_offset": 4,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0b74",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+                "descriptor": "0x8c0b58",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ba4",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVSimJob@RBX@@",
+                "descriptor": "0x8c0be4",
+                "contained_bases": 1,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVnoncopyable@noncopyable_@boost@@",
+                "descriptor": "0x8c0c00",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x84d150",
+          "locator": "0x8c1230",
+          "subobject_offset": 160,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0b74",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+                "descriptor": "0x8c0b58",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ba4",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVSimJob@RBX@@",
+                "descriptor": "0x8c0be4",
+                "contained_bases": 1,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVnoncopyable@noncopyable_@boost@@",
+                "descriptor": "0x8c0c00",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVRunningNoPhysics@HUMAN@RBX@@": {
+      "type_descriptor": "0x962a10",
+      "tables": [
+        {
+          "vtable": "0x84ce10",
+          "locator": "0x8c0cfc",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0d10",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVRunningNoPhysics@HUMAN@RBX@@",
+                "descriptor": "0x8c0d48",
+                "contained_bases": 8,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VMovingNoPhysicsBase@HUMAN@RBX@@$1?sRunningNoPhysics@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ce0",
+                "contained_bases": 7,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+                "descriptor": "0x8c0b58",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ba4",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVSimJob@RBX@@",
+                "descriptor": "0x8c0be4",
+                "contained_bases": 1,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVnoncopyable@noncopyable_@boost@@",
+                "descriptor": "0x8c0c00",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x84ce08",
+          "locator": "0x8c0d64",
+          "subobject_offset": 4,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0d10",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVRunningNoPhysics@HUMAN@RBX@@",
+                "descriptor": "0x8c0d48",
+                "contained_bases": 8,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VMovingNoPhysicsBase@HUMAN@RBX@@$1?sRunningNoPhysics@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ce0",
+                "contained_bases": 7,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+                "descriptor": "0x8c0b58",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ba4",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVSimJob@RBX@@",
+                "descriptor": "0x8c0be4",
+                "contained_bases": 1,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVnoncopyable@noncopyable_@boost@@",
+                "descriptor": "0x8c0c00",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x84cdf8",
+          "locator": "0x8c0d78",
+          "subobject_offset": 160,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0d10",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVRunningNoPhysics@HUMAN@RBX@@",
+                "descriptor": "0x8c0d48",
+                "contained_bases": 8,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VMovingNoPhysicsBase@HUMAN@RBX@@$1?sRunningNoPhysics@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ce0",
+                "contained_bases": 7,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+                "descriptor": "0x8c0b58",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0ba4",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVSimJob@RBX@@",
+                "descriptor": "0x8c0be4",
+                "contained_bases": 1,
+                "member_displacement": 160,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVnoncopyable@noncopyable_@boost@@",
+                "descriptor": "0x8c0c00",
+                "contained_bases": 0,
+                "member_displacement": 164,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVFreefall@HUMAN@RBX@@": {
+      "type_descriptor": "0x962af8",
+      "tables": [
+        {
+          "vtable": "0x84cea0",
+          "locator": "0x8c0e84",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0e98",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVFreefall@HUMAN@RBX@@",
+                "descriptor": "0x8c0ec4",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VBalancing@HUMAN@RBX@@$1?sFreefall@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0e68",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVBalancing@HUMAN@RBX@@",
+                "descriptor": "0x8beb18",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x84ce98",
+          "locator": "0x8c0ee0",
+          "subobject_offset": 4,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0e98",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVFreefall@HUMAN@RBX@@",
+                "descriptor": "0x8c0ec4",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VBalancing@HUMAN@RBX@@$1?sFreefall@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0e68",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVBalancing@HUMAN@RBX@@",
+                "descriptor": "0x8beb18",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    },
+    ".?AVJumping@HUMAN@RBX@@": {
+      "type_descriptor": "0x962b64",
+      "tables": [
+        {
+          "vtable": "0x84ceec",
+          "locator": "0x8c0f40",
+          "subobject_offset": 0,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0f54",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVJumping@HUMAN@RBX@@",
+                "descriptor": "0x8c0f88",
+                "contained_bases": 7,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VFlying@HUMAN@RBX@@$1?sJumping@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0f24",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVFlying@HUMAN@RBX@@",
+                "descriptor": "0x8c0e10",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VBalancing@HUMAN@RBX@@$1?sFlying@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0db4",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVBalancing@HUMAN@RBX@@",
+                "descriptor": "0x8beb18",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        },
+        {
+          "vtable": "0x84cee4",
+          "locator": "0x8c0fa4",
+          "subobject_offset": 4,
+          "construction_displacement": 0,
+          "hierarchy": {
+            "address": "0x8c0f54",
+            "attributes": 1,
+            "bases": [
+              {
+                "type": ".?AVJumping@HUMAN@RBX@@",
+                "descriptor": "0x8c0f88",
+                "contained_bases": 7,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VFlying@HUMAN@RBX@@$1?sJumping@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0f24",
+                "contained_bases": 6,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVFlying@HUMAN@RBX@@",
+                "descriptor": "0x8c0e10",
+                "contained_bases": 5,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AV?$Named@VBalancing@HUMAN@RBX@@$1?sFlying@23@3QBDB@RBX@@",
+                "descriptor": "0x8c0db4",
+                "contained_bases": 4,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVBalancing@HUMAN@RBX@@",
+                "descriptor": "0x8beb18",
+                "contained_bases": 3,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHumanoidState@HUMAN@RBX@@",
+                "descriptor": "0x8beb58",
+                "contained_bases": 2,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVINamed@RBX@@",
+                "descriptor": "0x89b528",
+                "contained_bases": 0,
+                "member_displacement": 0,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              },
+              {
+                "type": ".?AVHitTestFilter@RBX@@",
+                "descriptor": "0x8beb94",
+                "contained_bases": 0,
+                "member_displacement": 4,
+                "vbtable_displacement": -1,
+                "virtual_displacement": 0,
+                "attributes": 64
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "functions": {
+    "0x451590": {
+      "role": "document intermediate-base constructor",
+      "window_length": 112,
+      "window_sha256": "5b40eb8995083ab8620aa6a99dc292bbd8e910db187936402aaea545ac0a2028",
+      "instructions": [
+        {
+          "address": "0x451590",
+          "instruction": "push -1"
+        },
+        {
+          "address": "0x451592",
+          "instruction": "push 0x7c1cc8"
+        },
+        {
+          "address": "0x451597",
+          "instruction": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "address": "0x45159d",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x45159e",
+          "instruction": "mov dword ptr fs:[0], esp"
+        },
+        {
+          "address": "0x4515a5",
+          "instruction": "sub esp, 8"
+        },
+        {
+          "address": "0x4515a8",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x4515a9",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x4515ab",
+          "instruction": "mov dword ptr [esp + 8], esi"
+        },
+        {
+          "address": "0x4515af",
+          "instruction": "call 0x6a0980"
+        },
+        {
+          "address": "0x4515b4",
+          "instruction": "lea eax, [esp + 7]"
+        },
+        {
+          "address": "0x4515b8",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x4515b9",
+          "instruction": "lea ecx, [esp + 0xb]"
+        },
+        {
+          "address": "0x4515bd",
+          "instruction": "push ecx"
+        },
+        {
+          "address": "0x4515be",
+          "instruction": "lea ecx, [esi + 0x54]"
+        },
+        {
+          "address": "0x4515c1",
+          "instruction": "mov dword ptr [esp + 0x1c], 0"
+        },
+        {
+          "address": "0x4515c9",
+          "instruction": "mov dword ptr [esi], 0x817c24"
+        },
+        {
+          "address": "0x4515cf",
+          "instruction": "call 0x446110"
+        },
+        {
+          "address": "0x4515d4",
+          "instruction": "mov ecx, dword ptr [esp + 0xc]"
+        },
+        {
+          "address": "0x4515d8",
+          "instruction": "mov eax, esi"
+        },
+        {
+          "address": "0x4515da",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x4515db",
+          "instruction": "mov dword ptr fs:[0], ecx"
+        },
+        {
+          "address": "0x4515e2",
+          "instruction": "add esp, 0x14"
+        },
+        {
+          "address": "0x4515e5",
+          "instruction": "ret "
+        }
+      ]
+    },
+    "0x451ac0": {
+      "role": "CRobloxDoc constructor",
+      "window_length": 144,
+      "window_sha256": "ffdd4f288a7c34a64939a2dc61b4b0524d4a0a5937ae0de1fb1410c5a4ab17e4",
+      "instructions": [
+        {
+          "address": "0x451ac0",
+          "instruction": "push -1"
+        },
+        {
+          "address": "0x451ac2",
+          "instruction": "push 0x7c1d4b"
+        },
+        {
+          "address": "0x451ac7",
+          "instruction": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "address": "0x451acd",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x451ace",
+          "instruction": "mov dword ptr fs:[0], esp"
+        },
+        {
+          "address": "0x451ad5",
+          "instruction": "sub esp, 8"
+        },
+        {
+          "address": "0x451ad8",
+          "instruction": "push ebx"
+        },
+        {
+          "address": "0x451ad9",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x451ada",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x451adc",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x451add",
+          "instruction": "mov dword ptr [esp + 0x10], esi"
+        },
+        {
+          "address": "0x451ae1",
+          "instruction": "call 0x451590"
+        },
+        {
+          "address": "0x451ae6",
+          "instruction": "xor ebx, ebx"
+        },
+        {
+          "address": "0x451ae8",
+          "instruction": "mov dword ptr [esi], 0x817ce4"
+        },
+        {
+          "address": "0x451aee",
+          "instruction": "mov dword ptr [esp + 0x1c], ebx"
+        },
+        {
+          "address": "0x451af2",
+          "instruction": "mov dword ptr [esi + 0x74], ebx"
+        },
+        {
+          "address": "0x451af5",
+          "instruction": "push 4"
+        },
+        {
+          "address": "0x451af7",
+          "instruction": "mov byte ptr [esp + 0x20], 1"
+        },
+        {
+          "address": "0x451afc",
+          "instruction": "lea edi, [esi + 0x78]"
+        },
+        {
+          "address": "0x451aff",
+          "instruction": "call 0x6a0920"
+        },
+        {
+          "address": "0x451b04",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x451b07",
+          "instruction": "cmp eax, ebx"
+        },
+        {
+          "address": "0x451b09",
+          "instruction": "je 0x451b0f"
+        },
+        {
+          "address": "0x451b0b",
+          "instruction": "mov dword ptr [eax], edi"
+        },
+        {
+          "address": "0x451b0d",
+          "instruction": "jmp 0x451b11"
+        },
+        {
+          "address": "0x451b0f",
+          "instruction": "xor eax, eax"
+        },
+        {
+          "address": "0x451b11",
+          "instruction": "mov dword ptr [edi], eax"
+        },
+        {
+          "address": "0x451b13",
+          "instruction": "mov ecx, dword ptr [esp + 0x14]"
+        },
+        {
+          "address": "0x451b17",
+          "instruction": "mov dword ptr [edi + 0xc], ebx"
+        },
+        {
+          "address": "0x451b1a",
+          "instruction": "mov dword ptr [edi + 0x10], ebx"
+        },
+        {
+          "address": "0x451b1d",
+          "instruction": "mov dword ptr [edi + 0x14], ebx"
+        },
+        {
+          "address": "0x451b20",
+          "instruction": "mov dword ptr [esi + 0x90], ebx"
+        },
+        {
+          "address": "0x451b26",
+          "instruction": "mov dword ptr [esi + 0x94], ebx"
+        },
+        {
+          "address": "0x451b2c",
+          "instruction": "pop edi"
+        },
+        {
+          "address": "0x451b2d",
+          "instruction": "mov eax, esi"
+        },
+        {
+          "address": "0x451b2f",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x451b30",
+          "instruction": "pop ebx"
+        },
+        {
+          "address": "0x451b31",
+          "instruction": "mov dword ptr fs:[0], ecx"
+        },
+        {
+          "address": "0x451b38",
+          "instruction": "add esp, 0x14"
+        },
+        {
+          "address": "0x451b3b",
+          "instruction": "ret "
+        }
+      ]
+    },
+    "0x446110": {
+      "role": "document member tree constructor (payload type unresolved)",
+      "window_length": 160,
+      "window_sha256": "02010f856936a03804a51827fa986ff2d350b2f27017297a7f28cb613ba93408",
+      "instructions": [
+        {
+          "address": "0x446110",
+          "instruction": "push -1"
+        },
+        {
+          "address": "0x446112",
+          "instruction": "push 0x7d72e8"
+        },
+        {
+          "address": "0x446117",
+          "instruction": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "address": "0x44611d",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x44611e",
+          "instruction": "mov dword ptr fs:[0], esp"
+        },
+        {
+          "address": "0x446125",
+          "instruction": "push ecx"
+        },
+        {
+          "address": "0x446126",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x446127",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x446129",
+          "instruction": "push 4"
+        },
+        {
+          "address": "0x44612b",
+          "instruction": "mov dword ptr [esp + 8], esi"
+        },
+        {
+          "address": "0x44612f",
+          "instruction": "call 0x6a0920"
+        },
+        {
+          "address": "0x446134",
+          "instruction": "add esp, 4"
+        },
+        {
+          "address": "0x446137",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x446139",
+          "instruction": "je 0x44613f"
+        },
+        {
+          "address": "0x44613b",
+          "instruction": "mov dword ptr [eax], esi"
+        },
+        {
+          "address": "0x44613d",
+          "instruction": "jmp 0x446141"
+        },
+        {
+          "address": "0x44613f",
+          "instruction": "xor eax, eax"
+        },
+        {
+          "address": "0x446141",
+          "instruction": "mov dword ptr [esi], eax"
+        },
+        {
+          "address": "0x446143",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x446145",
+          "instruction": "mov dword ptr [esp + 0x10], 0"
+        },
+        {
+          "address": "0x44614d",
+          "instruction": "call 0x56d3d0"
+        },
+        {
+          "address": "0x446152",
+          "instruction": "mov ecx, dword ptr [esp + 8]"
+        },
+        {
+          "address": "0x446156",
+          "instruction": "mov dword ptr [esi + 0x18], eax"
+        },
+        {
+          "address": "0x446159",
+          "instruction": "mov byte ptr [eax + 0x15], 1"
+        },
+        {
+          "address": "0x44615d",
+          "instruction": "mov eax, dword ptr [esi + 0x18]"
+        },
+        {
+          "address": "0x446160",
+          "instruction": "mov dword ptr [eax + 4], eax"
+        },
+        {
+          "address": "0x446163",
+          "instruction": "mov eax, dword ptr [esi + 0x18]"
+        },
+        {
+          "address": "0x446166",
+          "instruction": "mov dword ptr [eax], eax"
+        },
+        {
+          "address": "0x446168",
+          "instruction": "mov eax, dword ptr [esi + 0x18]"
+        },
+        {
+          "address": "0x44616b",
+          "instruction": "mov dword ptr [eax + 8], eax"
+        },
+        {
+          "address": "0x44616e",
+          "instruction": "mov dword ptr [esi + 0x1c], 0"
+        },
+        {
+          "address": "0x446175",
+          "instruction": "mov eax, esi"
+        },
+        {
+          "address": "0x446177",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x446178",
+          "instruction": "mov dword ptr fs:[0], ecx"
+        },
+        {
+          "address": "0x44617f",
+          "instruction": "add esp, 0x10"
+        },
+        {
+          "address": "0x446182",
+          "instruction": "ret 8"
+        }
+      ]
+    },
+    "0x66f070": {
+      "role": "MovingNoPhysicsBase constructor",
+      "window_length": 384,
+      "window_sha256": "a8546916df6e5be00d26425a12835eda74b5a531a4465a12ca1390a3e383fa10",
+      "instructions": [
+        {
+          "address": "0x66f070",
+          "instruction": "push -1"
+        },
+        {
+          "address": "0x66f072",
+          "instruction": "push 0x7dc71a"
+        },
+        {
+          "address": "0x66f077",
+          "instruction": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "address": "0x66f07d",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x66f07e",
+          "instruction": "mov dword ptr fs:[0], esp"
+        },
+        {
+          "address": "0x66f085",
+          "instruction": "sub esp, 0x4c"
+        },
+        {
+          "address": "0x66f088",
+          "instruction": "mov eax, dword ptr [esp + 0x5c]"
+        },
+        {
+          "address": "0x66f08c",
+          "instruction": "push ebx"
+        },
+        {
+          "address": "0x66f08d",
+          "instruction": "push ebp"
+        },
+        {
+          "address": "0x66f08e",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x66f08f",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x66f090",
+          "instruction": "mov ebp, ecx"
+        },
+        {
+          "address": "0x66f092",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x66f093",
+          "instruction": "mov dword ptr [esp + 0x14], ebp"
+        },
+        {
+          "address": "0x66f097",
+          "instruction": "call 0x643e00"
+        },
+        {
+          "address": "0x66f09c",
+          "instruction": "mov dword ptr [ebp], 0x84d128"
+        },
+        {
+          "address": "0x66f0a3",
+          "instruction": "mov dword ptr [ebp + 4], 0x84d120"
+        },
+        {
+          "address": "0x66f0aa",
+          "instruction": "lea esi, [ebp + 0xa0]"
+        },
+        {
+          "address": "0x66f0b0",
+          "instruction": "xor edi, edi"
+        },
+        {
+          "address": "0x66f0b2",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x66f0b4",
+          "instruction": "mov dword ptr [esp + 0x64], edi"
+        },
+        {
+          "address": "0x66f0b8",
+          "instruction": "call 0x5e50f0"
+        },
+        {
+          "address": "0x66f0bd",
+          "instruction": "mov dword ptr [ebp], 0x84d168"
+        },
+        {
+          "address": "0x66f0c4",
+          "instruction": "mov dword ptr [ebp + 4], 0x84d160"
+        },
+        {
+          "address": "0x66f0cb",
+          "instruction": "mov dword ptr [esi], 0x84d150"
+        },
+        {
+          "address": "0x66f0d1",
+          "instruction": "mov dword ptr [ebp + 0xc4], edi"
+        },
+        {
+          "address": "0x66f0d7",
+          "instruction": "mov dword ptr [ebp + 0xc8], edi"
+        },
+        {
+          "address": "0x66f0dd",
+          "instruction": "mov dword ptr [ebp + 0xcc], edi"
+        },
+        {
+          "address": "0x66f0e3",
+          "instruction": "mov dword ptr [ebp + 0xd4], edi"
+        },
+        {
+          "address": "0x66f0e9",
+          "instruction": "mov dword ptr [ebp + 0xd8], edi"
+        },
+        {
+          "address": "0x66f0ef",
+          "instruction": "mov byte ptr [ebp + 0xdc], 0"
+        },
+        {
+          "address": "0x66f0f6",
+          "instruction": "mov byte ptr [ebp + 0xe0], 0"
+        },
+        {
+          "address": "0x66f0fd",
+          "instruction": "lea ebx, [ebp + 0xe4]"
+        },
+        {
+          "address": "0x66f103",
+          "instruction": "mov ecx, ebx"
+        },
+        {
+          "address": "0x66f105",
+          "instruction": "mov byte ptr [esp + 0x64], 3"
+        },
+        {
+          "address": "0x66f10a",
+          "instruction": "call 0x4782d0"
+        },
+        {
+          "address": "0x66f10f",
+          "instruction": "mov ecx, dword ptr [esp + 0x6c]"
+        },
+        {
+          "address": "0x66f113",
+          "instruction": "call 0x5d76d0"
+        },
+        {
+          "address": "0x66f118",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x66f119",
+          "instruction": "lea ecx, [esp + 0x18]"
+        },
+        {
+          "address": "0x66f11d",
+          "instruction": "push ecx"
+        },
+        {
+          "address": "0x66f11e",
+          "instruction": "call 0x618a40"
+        },
+        {
+          "address": "0x66f123",
+          "instruction": "add esp, 8"
+        },
+        {
+          "address": "0x66f126",
+          "instruction": "mov edx, dword ptr [eax]"
+        },
+        {
+          "address": "0x66f128",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x66f12b",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x66f12c",
+          "instruction": "lea ecx, [ebp + 0xc8]"
+        },
+        {
+          "address": "0x66f132",
+          "instruction": "mov byte ptr [esp + 0x68], 4"
+        },
+        {
+          "address": "0x66f137",
+          "instruction": "mov dword ptr [ebp + 0xc4], edx"
+        },
+        {
+          "address": "0x66f13d",
+          "instruction": "call 0x4025b0"
+        },
+        {
+          "address": "0x66f142",
+          "instruction": "mov eax, dword ptr [esp + 0x18]"
+        },
+        {
+          "address": "0x66f146",
+          "instruction": "mov byte ptr [esp + 0x64], 3"
+        },
+        {
+          "address": "0x66f14b",
+          "instruction": "cmp eax, edi"
+        },
+        {
+          "address": "0x66f14d",
+          "instruction": "je 0x66f17b"
+        },
+        {
+          "address": "0x66f14f",
+          "instruction": "mov esi, eax"
+        },
+        {
+          "address": "0x66f151",
+          "instruction": "add eax, 4"
+        },
+        {
+          "address": "0x66f154",
+          "instruction": "or ecx, 0xffffffff"
+        },
+        {
+          "address": "0x66f157",
+          "instruction": "lock xadd dword ptr [eax], ecx"
+        },
+        {
+          "address": "0x66f15b",
+          "instruction": "jne 0x66f17b"
+        },
+        {
+          "address": "0x66f15d",
+          "instruction": "mov edx, dword ptr [esi]"
+        },
+        {
+          "address": "0x66f15f",
+          "instruction": "mov eax, dword ptr [edx + 4]"
+        },
+        {
+          "address": "0x66f162",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x66f164",
+          "instruction": "call eax"
+        },
+        {
+          "address": "0x66f166",
+          "instruction": "lea ecx, [esi + 8]"
+        },
+        {
+          "address": "0x66f169",
+          "instruction": "or edx, 0xffffffff"
+        },
+        {
+          "address": "0x66f16c",
+          "instruction": "lock xadd dword ptr [ecx], edx"
+        },
+        {
+          "address": "0x66f170",
+          "instruction": "jne 0x66f17b"
+        },
+        {
+          "address": "0x66f172",
+          "instruction": "mov eax, dword ptr [esi]"
+        },
+        {
+          "address": "0x66f174",
+          "instruction": "mov edx, dword ptr [eax + 8]"
+        },
+        {
+          "address": "0x66f177",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x66f179",
+          "instruction": "call edx"
+        },
+        {
+          "address": "0x66f17b",
+          "instruction": "mov ecx, dword ptr [ebp + 0xc4]"
+        },
+        {
+          "address": "0x66f181",
+          "instruction": "cmp ecx, edi"
+        },
+        {
+          "address": "0x66f183",
+          "instruction": "je 0x66f275"
+        },
+        {
+          "address": "0x66f189",
+          "instruction": "call 0x598cb0"
+        },
+        {
+          "address": "0x66f18e",
+          "instruction": "mov esi, eax"
+        },
+        {
+          "address": "0x66f190",
+          "instruction": "mov ecx, 9"
+        },
+        {
+          "address": "0x66f195",
+          "instruction": "mov edi, ebx"
+        },
+        {
+          "address": "0x66f197",
+          "instruction": "rep movsd dword ptr es:[edi], dword ptr [esi]"
+        },
+        {
+          "address": "0x66f199",
+          "instruction": "fld dword ptr [eax + 0x24]"
+        },
+        {
+          "address": "0x66f19c",
+          "instruction": "fstp dword ptr [ebx + 0x24]"
+        },
+        {
+          "address": "0x66f19f",
+          "instruction": "fld dword ptr [eax + 0x28]"
+        },
+        {
+          "address": "0x66f1a2",
+          "instruction": "fstp dword ptr [ebx + 0x28]"
+        },
+        {
+          "address": "0x66f1a5",
+          "instruction": "fld dword ptr [eax + 0x2c]"
+        },
+        {
+          "address": "0x66f1a8",
+          "instruction": "fstp dword ptr [ebx + 0x2c]"
+        },
+        {
+          "address": "0x66f1ab",
+          "instruction": "mov eax, dword ptr [ebp + 0xc4]"
+        },
+        {
+          "address": "0x66f1b1",
+          "instruction": "push 1"
+        },
+        {
+          "address": "0x66f1b3",
+          "instruction": "lea ecx, [eax + 0x228]"
+        },
+        {
+          "address": "0x66f1b9",
+          "instruction": "call 0x5e8140"
+        },
+        {
+          "address": "0x66f1be",
+          "instruction": "mov eax, 0x66edc0"
+        },
+        {
+          "address": "0x66f1c3",
+          "instruction": "xor ecx, ecx"
+        },
+        {
+          "address": "0x66f1c5",
+          "instruction": "mov dword ptr [esp + 0x14], eax"
+        },
+        {
+          "address": "0x66f1c9",
+          "instruction": "lea eax, [esp + 0x14]"
+        },
+        {
+          "address": "0x66f1cd",
+          "instruction": "mov dword ptr [esp + 0x18], ecx"
+        },
+        {
+          "address": "0x66f1d1",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x66f1d2",
+          "instruction": "lea ecx, [esp + 0x38]"
+        },
+        {
+          "address": "0x66f1d6",
+          "instruction": "mov dword ptr [esp + 0x20], ebp"
+        },
+        {
+          "address": "0x66f1da",
+          "instruction": "call 0x66ef70"
+        },
+        {
+          "address": "0x66f1df",
+          "instruction": "mov eax, dword ptr [ebp + 0xc4]"
+        },
+        {
+          "address": "0x66f1e5",
+          "instruction": "mov bl, 5"
+        },
+        {
+          "address": "0x66f1e7",
+          "instruction": "mov byte ptr [esp + 0x64], bl"
+        },
+        {
+          "address": "0x66f1eb",
+          "instruction": "test eax, eax"
+        },
+        {
+          "address": "0x66f1ed",
+          "instruction": "je 0x66f1f4"
+        }
+      ]
+    },
+    "0x66ed50": {
+      "role": "MovingNoPhysicsBase release",
+      "window_length": 320,
+      "window_sha256": "c0848e1f0cd05f7086cf27f9632ba9f34343c831c0fc6a21cf1a21b4033138c1",
+      "instructions": [
+        {
+          "address": "0x66ed50",
+          "instruction": "push ebx"
+        },
+        {
+          "address": "0x66ed51",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x66ed52",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x66ed54",
+          "instruction": "mov eax, dword ptr [esi + 0xc4]"
+        },
+        {
+          "address": "0x66ed5a",
+          "instruction": "push edi"
+        },
+        {
+          "address": "0x66ed5b",
+          "instruction": "lea edi, [esi + 0xc4]"
+        },
+        {
+          "address": "0x66ed61",
+          "instruction": "lea ecx, [eax + 0x228]"
+        },
+        {
+          "address": "0x66ed67",
+          "instruction": "test ecx, ecx"
+        },
+        {
+          "address": "0x66ed69",
+          "instruction": "je 0x66ed72"
+        },
+        {
+          "address": "0x66ed6b",
+          "instruction": "push 0"
+        },
+        {
+          "address": "0x66ed6d",
+          "instruction": "call 0x5e8140"
+        },
+        {
+          "address": "0x66ed72",
+          "instruction": "lea ecx, [esi + 0xd0]"
+        },
+        {
+          "address": "0x66ed78",
+          "instruction": "call 0x595230"
+        },
+        {
+          "address": "0x66ed7d",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x66ed7f",
+          "instruction": "lea ebx, [esi + 0xa0]"
+        },
+        {
+          "address": "0x66ed85",
+          "instruction": "call 0x793d50"
+        },
+        {
+          "address": "0x66ed8a",
+          "instruction": "mov eax, dword ptr [eax + 0x21c]"
+        },
+        {
+          "address": "0x66ed90",
+          "instruction": "push ebx"
+        },
+        {
+          "address": "0x66ed91",
+          "instruction": "mov ecx, eax"
+        },
+        {
+          "address": "0x66ed93",
+          "instruction": "call 0x5e93b0"
+        },
+        {
+          "address": "0x66ed98",
+          "instruction": "mov ecx, eax"
+        },
+        {
+          "address": "0x66ed9a",
+          "instruction": "call 0x64d1f0"
+        },
+        {
+          "address": "0x66ed9f",
+          "instruction": "mov eax, dword ptr [edi]"
+        },
+        {
+          "address": "0x66eda1",
+          "instruction": "mov ecx, dword ptr [esi + 0xcc]"
+        },
+        {
+          "address": "0x66eda7",
+          "instruction": "push eax"
+        },
+        {
+          "address": "0x66eda8",
+          "instruction": "call 0x5e9040"
+        },
+        {
+          "address": "0x66edad",
+          "instruction": "mov ecx, edi"
+        },
+        {
+          "address": "0x66edaf",
+          "instruction": "pop edi"
+        },
+        {
+          "address": "0x66edb0",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x66edb1",
+          "instruction": "pop ebx"
+        },
+        {
+          "address": "0x66edb2",
+          "instruction": "jmp 0x456e80"
+        },
+        {
+          "address": "0x66edb7",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edb8",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edb9",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edba",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edbb",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edbc",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edbd",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edbe",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edbf",
+          "instruction": "int3 "
+        },
+        {
+          "address": "0x66edc0",
+          "instruction": "push esi"
+        },
+        {
+          "address": "0x66edc1",
+          "instruction": "mov esi, ecx"
+        },
+        {
+          "address": "0x66edc3",
+          "instruction": "call 0x793d50"
+        },
+        {
+          "address": "0x66edc8",
+          "instruction": "mov ecx, eax"
+        },
+        {
+          "address": "0x66edca",
+          "instruction": "call 0x5d76d0"
+        },
+        {
+          "address": "0x66edcf",
+          "instruction": "cmp dword ptr [esi + 0xc4], eax"
+        },
+        {
+          "address": "0x66edd5",
+          "instruction": "je 0x66eddf"
+        },
+        {
+          "address": "0x66edd7",
+          "instruction": "mov ecx, esi"
+        },
+        {
+          "address": "0x66edd9",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x66edda",
+          "instruction": "jmp 0x66ed50"
+        },
+        {
+          "address": "0x66eddf",
+          "instruction": "pop esi"
+        },
+        {
+          "address": "0x66ede0",
+          "instruction": "ret "
+        }
+      ]
+    }
+  },
+  "scope": "Original RTTI supplies inheritance and PMD offsets. Runtime metadata supplies complete MFC class sizes. Constructor instructions supply accessed offsets; unresolved member types remain open. Mined codegen analog declarations are not ABI proof."
+}

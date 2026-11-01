@@ -1,0 +1,116 @@
+{
+  "revision": "6f9be17cb55182cc77061385bd18c0369d10bbd2",
+  "exe_sha256": "6f7b6751f1857d2726b84831e809d41e78e7cc3ef573ba8ee4ef52f31e2b57ca",
+  "map_sha256": "eb976592e757bce027208adff43dc1ef2efb0b4fecd573f3cc6a7bc1fa84c117",
+  "observer_sha256": "1f4f24cc5d8e223d24fd024b6fd32f668295fff246332ccce653ed946d987eb6",
+  "runtime_manifest_sha256": "e2024aed2bebe7aa3972d9c7eb406e7fde8420395d6dcee41641244d737dbfe4",
+  "fixture_sha256": "a3767501e407f73ac942b7d426a3995ca8d2a920f468378c757b256e5b9f5841",
+  "saved_sha256": "ca3a765b62c653ef0af278f1acb59ab25f8f7e5cffae19f3aaab4e916f50e033",
+  "runs": {
+    "edit-save": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "-p6-autoclose",
+        "-p6-select",
+        "Brick",
+        "-p6-setprop",
+        "Name=Renamed",
+        "-p6-script",
+        "game.Workspace.Brick.CFrame = CFrame.new(3,4,5)",
+        "-p6-saveas",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-merged-gate-final\\gate.rbxl",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\lifetime-blocks.rbxl"
+      ],
+      "exit": 0
+    },
+    "reopen": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "-p6-autoclose",
+        "-p6-select",
+        "Renamed",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-merged-gate-final\\gate.rbxl"
+      ],
+      "exit": 0
+    },
+    "bad-path": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "-p6-autoclose",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-merged-gate-final\\missing.rbxl"
+      ],
+      "exit": 1
+    },
+    "commands": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "-p6-autoclose",
+        "-p6-script",
+        "print(\"p6-output-marker\")",
+        "-p6-command",
+        "32966,32967,32968,57664",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\lifetime-blocks.rbxl"
+      ],
+      "exit": 0
+    },
+    "ordinary-launch-twice": {
+      "command": [
+        "C:\\Users\\colin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\p6\\ordinary_launch.py",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\lifetime-blocks.rbxl"
+      ],
+      "exit": 0
+    },
+    "real-input-0": {
+      "command": [
+        "C:\\Users\\colin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\p6\\input_test.py",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Places\\p5-playable.rbxl"
+      ],
+      "exit": 0
+    },
+    "real-input-1": {
+      "command": [
+        "C:\\Users\\colin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\p6\\input_test.py",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Places\\p5-playable.rbxl"
+      ],
+      "exit": 0
+    },
+    "real-input-2": {
+      "command": [
+        "C:\\Users\\colin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\p6\\input_test.py",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Places\\p5-playable.rbxl"
+      ],
+      "exit": 0
+    },
+    "real-click-drag": {
+      "command": [
+        "C:\\Users\\colin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\p6\\click_test.py",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\p6\\Roblox.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\lifetime-blocks.rbxl",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-merged-gate-final\\click.png"
+      ],
+      "exit": 0
+    },
+    "original-opens-save": {
+      "command": [
+        "C:\\Users\\colin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\p6\\original_check.py",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-p4-reference\\Roblox.exe",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-merged-gate-final\\gate.rbxl",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p6-merged-gate-final\\original.png"
+      ],
+      "exit": 0
+    }
+  },
+  "P6_scoped_gate": "PASS",
+  "P6_native_complete": false,
+  "scope": "Merged MFC shell gate: x86, ordinary open/close twice, real input three times, edit/save/reopen, commands, selection, and original-client open control. Recovered CRobloxApp/CMainFrame and native layouts remain open."
+}

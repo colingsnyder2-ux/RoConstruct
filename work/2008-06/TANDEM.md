@@ -306,3 +306,27 @@ affected by anything on the P6 branch.
 - RELEASED Codex 2026-11-01T13:18:24.9050539Z combined P5 gate finished.
 
 - 2026-11-01T13:22:05.681919+00:00 Codex P5 STOP LINE CLOSED at 730f303138: high-fall .07493234 < .10; landing/jump .10347796 < .12; original anchor, combined real input/Lua/collision/anchor, reopen, lifetime, spawn, animation and 48 builder tests pass. Further donor physics tuning stops. Per Colin's updated objective, merging P6 into this branch next, then combined P6 gate. UI implementation ownership stays Claude; shared headers will have a single explicitly logged owner before edits. P7/P8 deferred.
+
+- 2026-11-01T13:24:14.5290545Z Codex MERGED P6 at 49fffcf262; client links against current root P5 libraries. Integration fix: build_client.py will stage current player Content/Places/DLLs into root out/p6 (fresh folder currently lacks them). UI class source ownership remains Claude; no shared header edits yet.
+
+- DESKTOP LOCK Codex 2026-11-01T13:34:23.1573011Z merged P6 scoped gate, real input and original saved-place control.
+
+- RELEASED Codex 2026-11-01T13:34:53.9238555Z merged P6 scoped gate finished.
+
+- DESKTOP LOCK Codex 2026-11-01T13:38:59.6272898Z repeat merged P6 gate after Colin's manual walking interrupted held-input sample count (22/30).
+
+- RELEASED Codex 2026-11-01T13:39:47.2469467Z merged P6 gate retry finished.
+
+- DESKTOP LOCK Codex 2026-11-01T13:44:31.9007463Z validate drag observer against live CView bounds.
+
+- RELEASED Codex 2026-11-01T13:44:37.5103860Z live CView drag validation finished.
+
+- DESKTOP LOCK Codex 2026-11-01T13:45:37.7981600Z live CView drag observer validation.
+
+- RELEASED Codex 2026-11-01T13:45:43.3700519Z live CView drag validation finished.
+
+- DESKTOP LOCK Codex 2026-11-01T13:53:29.1540722Z full merged P6 gate with foreground/live-view drag observer.
+
+- RELEASED Codex 2026-11-01T13:54:27.7552483Z final merged P6 gate finished.
+
+- 2026-11-01T13:58:41.900916+00:00 Codex merged scoped P6 gate PASS at 6f9be17cb5; evidence p6-merged-gate-final. Three input runs, live-view drag, ordinary launch twice, edit/save/reopen and original open pass. P5 remains stop-line PASS. Merged selected code 2997/14344, zero COFF-to-PE mismatches. Native P6 remains open. Codex owns new shared-layout recovery evidence/candidate headers; Claude retains UI implementation. No active header ABI change yet; relink hold will be logged before any swap. RTTI proves Doc/View VerbBinder bases, View listeners and Frame color listener; see shared-layouts/original-evidence.json.

@@ -1973,3 +1973,35 @@ Claude's MFC shell has a scoped gate pass; real mined CRobloxApp/CMainFrame stil
 need integration. Then establish one shared header owner at a time, beginning
 with CRobloxDoc (152 bytes), CRobloxView (496), CMainFrame (1204) and Humanoid
 states. runtime-classes.json provides size evidence, not complete field layouts.
+
+
+## Merged client baseline and shared layout start (6f9be17cb5)
+
+P6 merged at 49fffcf262. The client now stages this checkout's current P5
+runtime and links its current engine libraries. The final scoped P6 gate passes
+on executable SHA-256 6f7b6751f1857d2726b84831e809d41e78e7cc3ef573ba8ee4ef52f31e2b57ca:
+ordinary launch/close twice, three clean 30-sample held-input runs, selection and
+drag, edit/save/reopen, commands and original-client saved-file open control.
+The drag observer now resolves the owned live CView bounds and checks foreground.
+Earlier runs affected by manual input or stale click geometry are not passes.
+Evidence: p6-merged-gate-final/receipt.json and evidence-manifest.json.
+
+The same merged PE selects 2,997 relocation-normalized code matches among 14,344
+known source bodies, with zero COFF-to-PE mismatches. This is selected code,
+not runtime coverage, complete native layouts, data identity or raw PE identity.
+Full per-module details: p6-merged-gate-final/selected-functions.json.
+P5 remains PASS at the documented stop line; no physics changes since 730f303138.
+Real native P6 remains OPEN: CRobloxApp/CMainFrame are still the scoped shell.
+
+Shared layout evidence now reproduces original RTTI and independently verifies
+runtime size records (shared-layouts/original-evidence.json). CRobloxDoc derives
+through VerbBinder<CRobloxDoc, CDocument>. View also has VerbBinder plus
+VerbContainer at 0x78 and three listener bases at 0xa0/0xa4/0xa8. CMainFrame has
+a FillToolColor/BrickColor listener at 0xf0. HumanoidState has INamed and
+HitTestFilter; MovingNoPhysicsBase adds SimJob at 0xa0. These original hierarchies
+must replace the shell's simpler declarations only after member types are proven.
+
+Codex owns new shared-header recovery; Claude keeps UI implementation ownership.
+No active shared header/class swap yet. Next: resolve binder map semantics and
+Doc members, then compile pinned size/offset probes. Both gates after each swap.
+P7/P8 stay deferred; donor physics tuning stays stopped.
