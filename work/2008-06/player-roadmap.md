@@ -1,5 +1,20 @@
 # Current player checkpoint
 
+P4 real-place probe on sourcea9eb20a932: user supplied OnlyRetroRobloxHere
+maps/Base contains seven 2008E/M/L compressed XML places. Bread Factory Tycoon
+2008E (786 Parts, no HTTP asset URLs) crashes0xc0000005. Isolated Home model
+with either Humanoid reproduces; removing both Humanoids passes, while removing
+Scripts or value objects alone does not. Crash still reproduces with Humanoid
+health properties removed. New --load-only flag confirms crash during model
+deserialization before renderer; control without Humanoid loads/closes. Root
+cause and exact original callee not proven; debug EIP observed in stack region.
+Input hashes and bounded evidence:p4-user-place-analysis-a9eb20a932/. User map
+and derived XML remain local, not committed. P4 asset5cases and P3 lifetime/
+selftest/cachetest pass same revision. Next trace Humanoid factory/parent and
+ancestry callbacks, particularly state construction; verify with actual map and
+original client, do not remove Humanoids as a fix. Audio work remains open.
+
+
 P4 SoundService constructor recovered at source29cf44360b. Genuine members,
 normal base constructors, original name Soundscape, doppler1/distance10/rolloff1,
 NoReverb, G3D::System::getTick, null FMOD, empty maps; no fabricated padding.

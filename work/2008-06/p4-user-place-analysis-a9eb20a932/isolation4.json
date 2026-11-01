@@ -1,0 +1,93 @@
+[
+  {
+    "index": 13,
+    "class": "IntValue",
+    "name": "leaderstats",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "index": 14,
+    "class": "ObjectValue",
+    "name": "Factory3",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "index": 15,
+    "class": "Part",
+    "name": "RepairGround",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "index": 16,
+    "class": "Part",
+    "name": "Ground",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "index": 17,
+    "class": "Part",
+    "name": "RepairGround",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "index": 18,
+    "class": "Model",
+    "name": "Home",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "index": 19,
+    "class": "Model",
+    "name": "Home",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "index": 20,
+    "class": "Model",
+    "name": "Factory",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "index": 21,
+    "class": "Model",
+    "name": "Factory",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "index": 22,
+    "class": "Model",
+    "name": "Factory",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "index": 23,
+    "class": "Model",
+    "name": "Factory",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "index": 24,
+    "class": "ObjectValue",
+    "name": "Factory2",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "index": 25,
+    "class": "SpawnLocation",
+    "name": "WhiteSpawnLocation",
+    "exit": 0,
+    "timeout": false
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "case": "hum0",
+    "exit": 3221225501,
+    "output_bytes": 0
+  },
+  {
+    "case": "no-humanoid",
+    "exit": 0,
+    "output_bytes": 122
+  },
+  {
+    "case": "hum0",
+    "exit": 3221225501,
+    "output_bytes": 0
+  },
+  {
+    "case": "no-humanoid",
+    "exit": 0,
+    "output_bytes": 122
+  },
+  {
+    "case": "hum0",
+    "exit": 3221225501,
+    "output_bytes": 0
+  },
+  {
+    "case": "no-humanoid",
+    "exit": 0,
+    "output_bytes": 122
+  },
+  {
+    "case": "hum0",
+    "exit": 3221225477,
+    "output_bytes": 0
+  },
+  {
+    "case": "no-humanoid",
+    "exit": 0,
+    "output_bytes": 122
+  },
+  {
+    "case": "hum0",
+    "exit": 3221225622,
+    "output_bytes": 0
+  },
+  {
+    "case": "no-humanoid",
+    "exit": 0,
+    "output_bytes": 122
+  }
+]
