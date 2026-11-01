@@ -2109,3 +2109,6 @@ Native DataModel member type evidence at aea284c006: +0x204 is shared_ptr<Worksp
 
 
 DataModel constructor type trace: +0x234 invokes imported MSVCP90 std::basic_string<char> default constructor and ends at0x250; +0x25c/+0x260 hold a shared recursive mutex: allocated object calls Boost recursive_mutex constructor00563070, then control-block constructor00576c80. Evidence shared-layouts/datamodel-value-members.json; names and unrelated fields still open. No active ABI change.
+
+
+MSVC21022 class-layout comparison: native DataModel size0x264 vs donor0x27c. Original RTTI versus compiler report gives native/donor VerbContainer0x1c8/0x1c0, IDataState0x1f0/0x1e8, Evaluator0x1f4/0x208, RunTransition listener0x1f8/0x20c and workspace0x204/0x218. GuidItem is native primary base, whereas donor stores Guid at instance tail. Differences are not a uniform offset; native Instance/ServiceProvider and IDataState layouts need recovery, not a constant adjustment. Evidence datamodel-layout-comparison.json and datamodel-donor-layout.log. No active ABI change.

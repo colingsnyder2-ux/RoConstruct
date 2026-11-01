@@ -1,0 +1,40 @@
+{
+  "revision": "d3165e5b90daec015d32e69745852ed9630e5c2d",
+  "compiler": 21022,
+  "compiler_option": "/d1reportSingleClassLayoutDataModel",
+  "log_sha256": "008f2c9349c63127239c776aefe27b4200d63b5f66f8c96262e3faa7b1625560",
+  "native_rtti_evidence": "datamodel-rtti.json",
+  "native_factory_size": 612,
+  "donor_compiler_size": 636,
+  "comparison": {
+    "AbstractFactoryProduct": {
+      "native": 16,
+      "donor": 0
+    },
+    "Debugable": {
+      "native": 32,
+      "donor": 16
+    },
+    "VerbContainer": {
+      "native": 456,
+      "donor": 448
+    },
+    "IDataState": {
+      "native": 496,
+      "donor": 488
+    },
+    "Evaluator": {
+      "native": 500,
+      "donor": 520
+    },
+    "RunTransitionListener": {
+      "native": 504,
+      "donor": 524
+    },
+    "Workspace": {
+      "native": 516,
+      "donor": 536
+    }
+  },
+  "scope": "Original RTTI and allocation versus compiled donor layout; mismatches are not uniformly shifted. No active ABI change."
+}
