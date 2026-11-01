@@ -20,7 +20,7 @@ static bool g_play;
 
 static void syncEditCamera()
 {
-    float pose[12];
+    float pose[13];
     if (P6DataCamera(pose)) {
         g_camera->setPosition(0, 10, 30);
         g_camera->lookAt(0, 0, 0);
@@ -28,6 +28,11 @@ static void syncEditCamera()
     }
     g_camera->setPosition(pose[9], pose[10], pose[11]);
     g_camera->setOrientation(Ogre::Quaternion(Ogre::Matrix3(pose[0], pose[1], pose[2], pose[3], pose[4], pose[5], pose[6], pose[7], pose[8])));
+    if (g_viewport->getActualWidth() > 0 && g_viewport->getActualHeight() > 0) {
+        float aspect = float(g_viewport->getActualWidth()) / float(g_viewport->getActualHeight());
+        g_camera->setAspectRatio(aspect);
+        g_camera->setFOVy(Ogre::Radian(float(2.0 * atan(tan(pose[12] * .5) / aspect))));
+    }
 }
 
 static std::string moduleRoot()
@@ -49,7 +54,7 @@ extern "C" int P6EngineOpen(void* window, const char* path, int width, int heigh
     if (!getenv("ROC_TEXTURE_STRIP")) _putenv(("ROC_TEXTURE_STRIP=" + content + "/textures/SurfacesStrip.png").c_str());
     if (!getenv("ROC_SKY_SPHERE")) _putenv(("ROC_SKY_SPHERE=" + content + "/sky/skyspheremap.jpg").c_str());
     if (ConfigureContentRoot(content.c_str())) return 2;
-    std::string place = readPlace(path);
+    std::string place = readPlace(path && *path ? path : (moduleRoot() + "/Places/default.rbxl").c_str());
     if (place.empty() || LoadPlace(place.c_str())) return 3;
     g_placeOpen = true;
     g_play = play != 0;

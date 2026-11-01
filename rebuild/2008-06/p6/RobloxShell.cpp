@@ -24,7 +24,7 @@ public:
     bool visible;
     bool play;
     CString* expecting;
-    CString capture, script, saveAs, post;
+    CString capture, script, saveAs, post, runFile;
     CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), expecting(NULL) {}
     virtual void ParseParam(const char* param, BOOL flag, BOOL last) {
         if (expecting) { *expecting = param; expecting = NULL; return; }
@@ -35,11 +35,13 @@ public:
         if (flag && !lstrcmpiA(param, "p6-script")) { expecting = &script; return; }
         if (flag && !lstrcmpiA(param, "p6-saveas")) { expecting = &saveAs; return; }
         if (flag && !lstrcmpiA(param, "p6-command")) { expecting = &post; return; }
+        if (flag && !lstrcmpiA(param, "p6-runfile")) { expecting = &runFile; return; }
         CCommandLineInfo::ParseParam(param, flag, last);
     }
 };
 
-static CString g_capture, g_script, g_saveAs;
+static CString g_capture, g_script, g_saveAs, g_runFile;
+static CDialog* g_about;
 static bool g_play;
 static UINT g_post;
 static bool g_openFailed;
@@ -52,17 +54,21 @@ class CMainFrame : public CXTPMDIFrameWnd {
     CTreeCtrl explorer;
     static void addNode(int depth, const char* className, const char* name, void* context) {
         CMainFrame* frame = static_cast<CMainFrame*>(context);
-        CString label;
-        label.Format("%s (%s)", name, className);
-        HTREEITEM parent = depth ? frame->path[depth - 1] : TVI_ROOT;
-        if (depth < 64) frame->path[depth] = frame->explorer.InsertItem(label, parent);
+        if (!depth || depth >= 64) return; // original Explorer has no DataModel root
+        if (depth == 1) {
+            frame->shown = false;
+            static const char* const services[] = {"Workspace", "Players", "Lighting", "StarterPack", "Teams", "SoundService"};
+            for (int i = 0; i < 6; ++i)
+                if (!lstrcmpA(className, services[i])) frame->shown = true;
+        }
+        if (frame->shown) frame->path[depth] = frame->explorer.InsertItem(name, depth > 1 ? frame->path[depth - 1] : TVI_ROOT);
     }
     HTREEITEM path[64];
+    bool shown;
 public:
     void RefreshExplorer() {
         explorer.DeleteAllItems();
         P6DataWalk(addNode, this);
-        explorer.Expand(explorer.GetRootItem(), TVE_EXPAND);
         printf("p6: explorer nodes=%u\n", explorer.GetCount());
     }
     afx_msg void OnViewExplorer() {
@@ -97,6 +103,11 @@ public:
         }
         if (id != ID_P6_AUTOCLOSE) { CXTPMDIFrameWnd::OnTimer(id); return; }
         KillTimer(id);
+        if (g_about) {
+            g_about->EndDialog(IDCANCEL);
+            SetTimer(ID_P6_AUTOCLOSE, 200, NULL);
+            return;
+        }
         printf("p6: autoclose frames=%d\n", P6EngineFrames());
         P6EngineReport();
         if (!g_saveAs.IsEmpty()) {
@@ -116,6 +127,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CXTPMDIFrameWnd)
     ON_UPDATE_COMMAND_UI(ID_VIEW_EXPLORER, &CMainFrame::OnUpdateViewExplorer)
     ON_WM_TIMER()
 END_MESSAGE_MAP()
+
+static void RunScriptFile(const CString& path);
 
 class CRobloxDoc : public CDocument {
     DECLARE_DYNCREATE(CRobloxDoc)
@@ -156,6 +169,10 @@ public:
         int status = P6EngineOpen(m_hWnd, GetDocument()->GetPathName(), rect.Width(), rect.Height(), g_play);
         printf("p6: engine open %d\n", status);
         if (!status && !g_script.IsEmpty()) printf("p6: script %d\n", P6EngineScript(g_script));
+        if (!status && !g_runFile.IsEmpty()) {
+            RunScriptFile(g_runFile);
+            g_runFile.Empty();
+        }
         static_cast<CMainFrame*>(AfxGetMainWnd())->RefreshExplorer();
     }
     afx_msg void OnSize(UINT type, int width, int height) {
@@ -182,6 +199,7 @@ public:
         ParseCommandLine(command);
         g_capture = command.capture;
         g_script = command.script;
+        g_runFile = command.runFile;
         g_saveAs = command.saveAs;
         g_play = command.play;
         AddDocTemplate(new CMultiDocTemplate(IDR_PLACE, RUNTIME_CLASS(CRobloxDoc), RUNTIME_CLASS(CMDIChildWnd), RUNTIME_CLASS(CRobloxView)));
@@ -202,15 +220,36 @@ public:
         BOOL more = CWinApp::OnIdle(count);
         return P6EngineFrame() || more;
     }
-    afx_msg void OnAbout() { CDialog(IDD_P6_ABOUT).DoModal(); }
-    afx_msg void OnExecuteScript() {
-        CFileDialog dialog(TRUE, "lua", NULL, OFN_FILEMUSTEXIST | OFN_HIDEREADONLY, "Lua scripts (*.lua)|*.lua|All files (*.*)|*.*||");
-        if (dialog.DoModal() != IDOK) return;
+    afx_msg void OnAbout() {
+        CDialog about(IDD_P6_ABOUT);
+        g_about = &about;
+        INT_PTR result = about.DoModal();
+        g_about = NULL;
+        printf("p6: about %d\n", (int)result);
+    }
+    afx_msg void OnFileNewPlace() {
+        CloseAllDocuments(FALSE); // ponytail: engine holds one DataModel; original allows several documents
+        OnFileNew();
+    }
+    afx_msg void OnFileOpenPlace() {
+        CString path;
+        if (DoPromptFileName(path, AFX_IDS_OPENFILE, OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, TRUE, NULL)) ReplaceDocument(path);
+    }
+    void ReplaceDocument(const CString& path) {
+        CloseAllDocuments(FALSE);
+        OpenDocumentFile(path);
+    }
+    static void RunFile(const CString& path) {
         CStdioFile file;
-        if (!file.Open(dialog.GetPathName(), CFile::modeRead)) return;
+        if (!file.Open(path, CFile::modeRead)) { printf("p6: execute script unreadable\n"); return; }
         CString text, line;
         while (file.ReadString(line)) text += line + "\n";
         printf("p6: execute script %d\n", P6EngineScript(text));
+    }
+    afx_msg void OnExecuteScript() {
+        CFileDialog dialog(TRUE, "lua", NULL, OFN_FILEMUSTEXIST | OFN_HIDEREADONLY, "Lua scripts (*.lua)|*.lua|All files (*.*)|*.*||");
+        if (dialog.DoModal() != IDOK) return;
+        RunFile(dialog.GetPathName());
     }
     virtual int ExitInstance() {
         printf("p6: ExitInstance\n");
@@ -220,7 +259,8 @@ public:
     DECLARE_MESSAGE_MAP()
 };
 BEGIN_MESSAGE_MAP(CRobloxApp, CWinApp)
-    ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
+    ON_COMMAND(ID_FILE_NEW, &CRobloxApp::OnFileNewPlace)
+    ON_COMMAND(ID_FILE_OPEN, &CRobloxApp::OnFileOpenPlace)
     ON_COMMAND(ID_APP_ABOUT, &CRobloxApp::OnAbout)
     ON_COMMAND(ID_TOOLS_EXECUTE_SCRIPT, &CRobloxApp::OnExecuteScript)
 END_MESSAGE_MAP()
@@ -229,3 +269,5 @@ END_MESSAGE_MAP()
 extern "C" { int _afxForceEXCLUDE; int _afxForceSTDAFX; }
 
 CRobloxApp theApp;
+
+static void RunScriptFile(const CString& path) { CRobloxApp::RunFile(path); }

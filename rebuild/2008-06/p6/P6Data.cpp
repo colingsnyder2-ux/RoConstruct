@@ -26,7 +26,7 @@ extern "C" void P6DataWalk(P6TreeVisitor visitor, void* context)
     walk(model, 0, visitor, context);
 }
 
-// Rotation rows, then translation. Edit mode has no character subject.
+// Rotation rows, translation, then horizontal field of view. Edit mode has no character subject.
 extern "C" int P6DataCamera(float* values)
 {
     RBX::DataModel* model = EngineDataModel();
@@ -40,6 +40,7 @@ extern "C" int P6DataCamera(float* values)
     values[9] = frame.translation.x;
     values[10] = frame.translation.y;
     values[11] = frame.translation.z;
+    values[12] = float(camera->getGCamera().getFieldOfView());
     return 0;
 }
 
