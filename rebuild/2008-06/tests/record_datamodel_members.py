@@ -30,10 +30,15 @@ assert read(0x573b45, 6) == b'\xc7\x06' + struct.pack('<I', 0x82f9fc)
 assert read(0x5a4e50, 6) == b'\xc7\x06' + struct.pack('<I', 0x833a54)
 assert rtti(0x82f9fc) == '.?AVGuiRoot@RBX@@'
 assert rtti(0x833a54) == '.?AVWorkspace@RBX@@'
+# DataModel initialization obtains the independently traced RunService and
+# stores the returned shared pointer into +0x20c/+0x210.
+assert read(0x57ab08, 5) == b'\xe8' + struct.pack('<i', 0x4530f0 - 0x57ab0d)
+assert read(0x57ab20, 6) == bytes.fromhex('898e0c020000')
 receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                original_sha256=hashlib.sha256(exe.read_bytes()).hexdigest(),
                observer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                fields={'0x204': dict(type='boost::shared_ptr<RBX::Workspace>', factory='00576ff0', constructor='005a4d90', vtable='00833a54'),
+                       '0x20c': dict(type='boost::shared_ptr<RBX::RunService>', getter='004530f0', store='0057ab20', proof='workspace-owner-trace.json'),
                        '0x21c': dict(type='boost::shared_ptr<RBX::GuiRoot>', factory='00577090', constructor='00573b10', vtable='0082f9fc'),
                        '0x224': dict(type='boost::shared_ptr<RBX::GuiRoot>', factory='00577090', constructor='00573b10', vtable='0082f9fc')},
                scope='Original constructor/factory flow and RTTI prove pointee classes and shared ownership. Field names and remaining fields require further evidence; no active ABI swap.')
