@@ -1,3 +1,19 @@
+# P5 scripted play checkpoint
+
+Source a8b6964fcd adds an opt-in --p5-play diagnostic: the existing RunService
+play transition starts serialized workspace Scripts. Fixed-step harness emits
+Stepped and Heartbeat after DataModel::step, following the existing reconstructed
+runProc order; this is a shim, not yet verified original frame-loop code.
+Authored controls prove edit mode idle, immediate play script, wait(0.1) pending
+after one frame and resumed by ten, and disabled script idle. P3 lifetime,
+selftest and cache controls pass. Evidence: p5-script-controls-a8b6964fcd/
+and p5-script-regressions-a8b6964fcd/.
+
+P5 remains open: original scheduler/timing comparison, normal visible launch
+and input, local character/controller, anchoring transitions and original
+fixed-step physics comparison. Do not claim native scheduler equivalence from
+the donor/rebuild shim.
+
 # P4 acceptance checkpoint; begin P5
 
 At source 866583a618, two authored disk places load from clean working
