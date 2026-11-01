@@ -1,0 +1,127 @@
+{
+  "revision": "0bc4b85c42f007fe12a488484ff1a9d7c468f31c",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "66f4deb58b39a0a9ce672f2e0ce5af3e0f0908f05e014a0f205f7bbefa62f069",
+  "fixture_sha256": "67a36f18c108df6fd9ac0e4123f9317ec4128ec79fe19280e61318e1619cea7c",
+  "observer_sha256": "01fff6bfbba4d8b700710b7af4fa23e515458f62f0edb00ba5f9c349d2530c91",
+  "original_candidate_count": 5,
+  "agreeing_moving_copies": 3,
+  "comparisons": [
+    {
+      "time": 0.0940000000409782,
+      "original_y": 19.016849517822266,
+      "fixed_frame_window": [
+        4,
+        8
+      ],
+      "best_error": 0.004302982177733838
+    },
+    {
+      "time": 0.20400000002700835,
+      "original_y": 16.071712493896484,
+      "fixed_frame_window": [
+        10,
+        14
+      ],
+      "best_error": 0.00860600610351625
+    },
+    {
+      "time": 0.2970000000204891,
+      "original_y": 11.164594650268555,
+      "fixed_frame_window": [
+        16,
+        20
+      ],
+      "best_error": 0.012907949731445711
+    },
+    {
+      "time": 0.40700000000651926,
+      "original_y": 4.2954421043396,
+      "fixed_frame_window": [
+        22,
+        26
+      ],
+      "best_error": 0.017210485660400288
+    },
+    {
+      "time": 0.5,
+      "original_y": -4.008589744567871,
+      "fixed_frame_window": [
+        28,
+        32
+      ],
+      "best_error": 0.02076602456787091
+    },
+    {
+      "time": 0.5940000000409782,
+      "original_y": 2.344194173812866,
+      "fixed_frame_window": [
+        34,
+        38
+      ],
+      "best_error": 0.0008282661871339414
+    },
+    {
+      "time": 0.7970000000204891,
+      "original_y": 9.163769721984863,
+      "fixed_frame_window": [
+        46,
+        50
+      ],
+      "best_error": 0.03904819198486287
+    },
+    {
+      "time": 1.0,
+      "original_y": 8.13538932800293,
+      "fixed_frame_window": [
+        58,
+        62
+      ],
+      "best_error": 0.07892417800293039
+    },
+    {
+      "time": 1.5,
+      "original_y": 3.465700387954712,
+      "fixed_frame_window": [
+        88,
+        92
+      ],
+      "best_error": 0.04202604204528804
+    },
+    {
+      "time": 2.0,
+      "original_y": 0.3068001866340637,
+      "fixed_frame_window": [
+        118,
+        122
+      ],
+      "best_error": 0.009400516365936307
+    },
+    {
+      "time": 3.0,
+      "original_y": -3.4711241722106934,
+      "fixed_frame_window": [
+        178,
+        182
+      ],
+      "best_error": 1.3347789306727975e-05
+    },
+    {
+      "time": 4.0,
+      "original_y": -3.807239294052124,
+      "fixed_frame_window": [
+        238,
+        242
+      ],
+      "best_error": 0.004516844052123936
+    }
+  ],
+  "original_final_y": -3.807239294052124,
+  "rebuilt_final_y": -3.80272245,
+  "final_difference": 0.004516844052123936,
+  "original_exit": 1,
+  "original_forced_termination": true,
+  "player_exit": 0,
+  "scope": "One authored falling block, original real-time samples versus rebuilt fixed steps, with +/-2 frame timing tolerance. Not full fixed-step, input, anchor-cycle or physics parity.",
+  "P5_complete": false
+}

@@ -1175,3 +1175,22 @@ p5-long-map-*-3090182770. These are bounded smoke tests, not gameplay or asset
 parity. The combined run uses reconstructed frame, camera and anchor adapters;
 the required original-client fixed-step comparison and later milestones remain
 open. Do not mark P5 complete on this evidence.
+
+## P5 checkpoint: original falling comparison (0bc4b85c42)
+
+A newly authored offset falling-block fixture was run in the original June 2008
+executable and reconstructed player. The original editor run was sampled via
+read-only process memory: three independent matching position copies moved and
+agreed; two static copies were excluded. Twelve original wall-time observations
+were compared against the rebuilt 60 Hz fixed-step trace within a two-frame
+timing window. Two independent runs pass: maximum best-window error 0.079
+studs; original settles at y=-3.8072393 and rebuilt at y=-3.80272245, difference
+0.004517. Original floor remains represented at its authored position; rebuilt
+floor anchoring and mesh cleanup pass. Exact-revision receipts are in
+p5-original-fall-*-0bc4b85c42.
+
+This measures one authored fall and bounce, not direct original single-step
+control, full physics, anchor-cycle, scheduler or input equivalence. The
+original process required forced termination after its window-close request;
+the rebuilt process exited normally. Continue original anchor-cycle and
+fixed-step investigation; P5 and later milestones remain open.
