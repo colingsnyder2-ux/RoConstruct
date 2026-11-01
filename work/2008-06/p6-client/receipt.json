@@ -1,0 +1,56 @@
+{
+ "milestone": "P6",
+ "status": "OPEN",
+ "scope": "MFC client with place document hosting recovered player engine; hidden runs only",
+ "exe_sha256": "5e37b39fd846c576c151d15afb4a06650b56a7b7cc0fc8ea9759a8bc0b1dae19",
+ "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
+ "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
+ "sources": {
+  "RobloxShell.cpp": "481b011bed19b3d97e6f5e9258a3920f5dcaa9cea0f9172fc3c5ba7a6bd81147",
+  "P6Engine.cpp": "61c39880fea6888c2ecbda25101baec5d87e5fdf02b8037f8aee130b5d120af8",
+  "P6Engine.h": "ad9684439309c87a8c0d020e527e4f74a6e44500646654e38b68a85736263191",
+  "build_client.py": "a817cb2f5ed554c16a8b1a36157712c2caa69b4b25b6a5c73d651a8f6558b368",
+  "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497"
+ },
+ "player_libs": "C:/Users/colin/RoConstruct/rebuild/2008-06/out built 06:17, before later Codex commits",
+ "runs": [
+  {
+   "command": "Roblox.exe -p6-autoclose -p6-capture p6-frameN.png Places/p5-playable.rbxl",
+   "exit": 0,
+   "observed": [
+    "p6: frame=01C40676 menus=8",
+    "p6: engine open 0",
+    "p6: autoclose frames=300",
+    "p6: actor 1.31497e-019 2.99913 25.5",
+    "p6: capture ok",
+    "mesh cleanup: levels=0 refs=0 backends=0 spheres=0",
+    "p6: ExitInstance"
+   ]
+  },
+  {
+   "command": "Roblox.exe -p6-autoclose -p6-capture p6-frameN.png Places/p5-playable.rbxl",
+   "exit": 0,
+   "observed": [
+    "p6: frame=01C50676 menus=8",
+    "p6: engine open 0",
+    "p6: autoclose frames=302",
+    "p6: actor 1.31497e-019 2.99913 25.5",
+    "p6: capture ok",
+    "mesh cleanup: levels=0 refs=0 backends=0 spheres=0",
+    "p6: ExitInstance"
+   ]
+  },
+  {
+   "command": "Roblox.exe -p6-autoclose Places/nope.rbxl",
+   "exit": 1
+  }
+ ],
+ "shims": [
+  "CMainFrame is plain CMDIFrameWnd; original is XTP-based",
+  "InitInstance omits engine setup, crash reporter, COM registration, IDE doc manager",
+  "Play path via player API, opens in play mode",
+  "60 Hz frame cap, not original 00555190 deadline loop",
+  "_afxForce symbols local",
+  "WinMain from RTM appmodul.cpp"
+ ]
+}
