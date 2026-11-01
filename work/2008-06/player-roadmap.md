@@ -1737,3 +1737,25 @@ idle baseline at 16 +/-0.15 studs; idle remains separately bounded. Receipt:
 p5-jump-prime-spawn-current. Original joint construction and callback/state
 lifetime still differ. This closes bounded jump position/flight velocity for
 this fixture, not complete humanoid parity or P5. Desktop locks released.
+
+## P5 checkpoint: initialize replacement air goal (5d94151e0d)
+
+Original transition wrapper 00645450 calls replacement update and goal update
+before the next force; Flying/Freefall goal update 00667510 obtains walk
+velocity through 00643b60. Donor Flying initialized desired velocity to zero
+until a later step. Its constructor now adapts the immediate goal initialization
+from Humanoid walk direction. No class layout changed; engine/player rebuilt.
+
+At 5d94151e0d, frozen air X samples remain within 0.000001 studs through one
+second and improve from 0.5304 to 0.0031 studs error at three/four seconds.
+The temporary 0.532/0.531 offset at 1.5/2s remains. The gate now covers early
+and late intervals at 0.01 studs and keeps that intermediate gap observational.
+Frozen jump, original walking, P3 lifetime/cache, spawn and Novetus animation
+pass. Receipts: p5-air-prime-verified and its -jump, -walk, -p3, -spawn,
+-animation siblings. Desktop lock released in TANDEM.
+
+Full state lifetime/order remains donor-based. Original RunningNoPhysics
+constructor 00667370 and StrafingNoPhysics 00667210 use base 0066f070; these
+states are absent from the donor path. Trace their entry/exit and common
+velocity implementation before deciding whether they explain the remaining
+landing offset. Do not claim complete air/state parity or P5 from these gates.
