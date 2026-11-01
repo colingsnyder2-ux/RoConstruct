@@ -194,6 +194,13 @@ extern "C" int ExecutePlayerScript(const char* command)
     return 0;
 }
 
+extern "C" int GetBrickAnchored()
+{
+    if (!g_brick || !g_dataModel) return -1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    return g_brick->getAnchored() ? 1 : 0;
+}
+
 extern "C" int GetContactState(float* expectedY,float* floorY,int* anchored)
 {
     RBX::DataModel::Lock lock(g_dataModel);
