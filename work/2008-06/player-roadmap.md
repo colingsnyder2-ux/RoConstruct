@@ -963,3 +963,6 @@ P5 remains open: original humanoid Sound and Animate scripts error, including
 missing FreeFalling signal. Recover and integrate actual humanoid state event
 registration and firing before claiming script functionality; then normal launch,
 camera, native physics/joints and scheduler parity.
+
+FreeFalling trace: descriptor initialization 007f68d0; original state entry
+00667810 fires true and exit 00667930 fires false. See p5-freefall-trace.md.
