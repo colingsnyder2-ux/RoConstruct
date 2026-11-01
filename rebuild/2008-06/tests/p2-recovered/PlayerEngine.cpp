@@ -5,6 +5,8 @@
 #include "humanoid/Humanoid.h"
 #include "humanoid/Freefall.h"
 #include "v8world/Mechanism.h"
+#include "v8world/SimJobStage.h"
+#include "v8world/Assembly.h"
 #include "v8xml/SerializerV2.h"
 #include "script/ScriptContext.h"
 #include "script/LuaArguments.h"
@@ -194,6 +196,8 @@ extern "C" int CheckLuaObjectConversion()
 static void RecordFreefall(std::vector<int>* values,bool active){values->push_back(active?1:0);}
 extern "C" int CheckJobTrackerOwnership()
 {
+    std::printf("SimJob base size=%u\n",static_cast<unsigned>(sizeof(RBX::SimJob)));
+    std::printf("AssemblyJob size=%u\n",static_cast<unsigned>(sizeof(RBX::AssemblyJob)));
     RBX::Mechanism* first=new RBX::Mechanism;
     RBX::Mechanism* second=new RBX::Mechanism;
     RBX::MechanismTracker a,b,c;
@@ -206,7 +210,50 @@ extern "C" int CheckJobTrackerOwnership()
     if(b.tracking())return 2;
     RBX::MechanismTracker::transferTrackers(second,NULL);
     delete second;
-    return a.tracking() || b.tracking() || c.tracking() ? 3 : 0;
+    if(a.tracking() || b.tracking() || c.tracking())return 3;
+    RBX::Mechanism third;
+    {
+        struct NonMechanismJob : RBX::SimJob {
+            virtual RBX::Assembly* getAssembly() { return NULL; }
+            virtual const RBX::Assembly* getAssembly() const { return NULL; }
+        } job;
+        a.setJob(&job);b.setJob(&job);
+        if(!a.tracking() || a.getJob()!=&job || a.getMechanism()!=NULL)return 4;
+        RBX::MechanismTracker::transferTrackers(&job,&third);
+    }
+    if(a.getMechanism()!=&third || b.getMechanism()!=&third)return 5;
+    RBX::MechanismTracker::transferTrackers(&third,NULL);
+    if(a.tracking() || b.tracking())return 6;
+    {
+        RBX::SimJobStage stage(NULL,NULL);
+        struct StageJob : RBX::SimJob {
+            virtual RBX::Assembly* getAssembly() { return NULL; }
+            virtual const RBX::Assembly* getAssembly() const { return NULL; }
+        } firstJob,middleJob,lastJob;
+        stage.insertJob(&firstJob);stage.insertJob(&middleJob);stage.insertJob(&lastJob);
+        if(*firstJob.jobIterator!=&firstJob || *middleJob.jobIterator!=&middleJob ||
+           *lastJob.jobIterator!=&lastJob)return 7;
+        struct Reporter {
+            std::vector<RBX::SimJob*> values;
+            bool operator()(RBX::SimJob& job) { values.push_back(&job);return values.size()<2; }
+        } report;
+        stage.reportJobs(report,a,NULL);
+        if(report.values.size()!=2 || report.values[0]!=&firstJob ||
+           report.values[1]!=&middleJob || a.getJob()!=&lastJob)return 11;
+        report.values.clear();
+        stage.reportJobs(report,a,&firstJob);
+        if(report.values.size()!=2 || report.values[0]!=&lastJob ||
+           report.values[1]!=&middleJob || a.getJob()!=&lastJob)return 12;
+        a.setJob(&middleJob);b.setJob(&lastJob);c.setJob(&firstJob);
+        stage.removeJob(&middleJob);
+        if(a.getJob()!=&lastJob || b.getJob()!=&lastJob || c.getJob()!=&firstJob)return 8;
+        stage.removeJob(&lastJob); // Wrap to first; caller-owned jobs remain alive.
+        if(a.getJob()!=&firstJob || b.getJob()!=&firstJob || c.getJob()!=&firstJob)return 9;
+        stage.removeJob(&firstJob);
+        if(a.tracking() || b.tracking() || c.tracking())return 10;
+    }
+    std::printf("SimJob stage lifecycle: PASS\n");
+    return 0;
 }
 extern "C" int CheckFreefallTransitions()
 {
@@ -215,6 +262,11 @@ extern "C" int CheckFreefallTransitions()
     RBX::ModelInstance* actor=dynamic_cast<RBX::ModelInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Actor"));
     RBX::Humanoid* humanoid=actor?RBX::Humanoid::modelIsCharacter(actor):NULL;
     if(!humanoid || !humanoid->getHead() || !humanoid->getTorso())return 2;
+    g_dataModel->getWorkspace()->getWorld()->update();
+    RBX::Assembly* assembly=humanoid->getTorsoPrimitive()->getAssembly();
+    if(!assembly || !dynamic_cast<RBX::AssemblyJob*>(assembly->getJob()) ||
+       assembly->getJob()->getAssembly()!=assembly)return 5;
+    std::printf("native assembly job association: PASS\n");
     RBX::PartInstance* head=humanoid->getHead();RBX::PartInstance* torso=humanoid->getTorso();
     head->setFriction(.23f);torso->setFriction(.67f);
     std::vector<int> events;

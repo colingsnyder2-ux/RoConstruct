@@ -93,6 +93,20 @@ try:
         forward,backward,_=struct.unpack('<3I',links)
         assert read(forward+4,4)==struct.pack('<I',node) and read(backward,4)==struct.pack('<I',node)
         state['job_registration']=dict(address=hex(job),vtable=hex(words[0]),iterator_owner=hex(words[7]),iterator_node=hex(node),node_words=[hex(v) for v in struct.unpack('<3I',links)])
+        # 0066eaa0 -> 005e7570: torso Primitive+0x5c -> clump+0x24.
+        # 0064d0f0 binds the resulting object+0x40 to this job.
+        def word(address):
+         raw=read(address,4);assert len(raw)==4,hex(address)
+         return struct.unpack('<I',raw)[0]
+        torso=word(start+pos+0xc4);assert torso
+        primitive=torso+0x228
+        clump=word(primitive+0x5c);assert clump
+        assembly=word(clump+0x24);assert assembly
+        owner_job=word(assembly+0x40)
+        assert owner_job==job,(hex(assembly),hex(owner_job),hex(job))
+        flags=read(primitive+0xa8,3)
+        assert len(flags)==3 and flags[2]==1,flags.hex()
+        state['job_registration']['assembly_binding']=dict(torso=hex(torso),primitive=hex(primitive),clump=hex(clump),assembly=hex(assembly),owner_job=hex(owner_job),anchor_flags=list(flags))
        active_states.append(state)
      pos=data.find(needle,pos+1)
   addr=start+size

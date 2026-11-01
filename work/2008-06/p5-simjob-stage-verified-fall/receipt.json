@@ -1,0 +1,163 @@
+{
+  "mode": "fall",
+  "measured_coordinate": "torso y",
+  "revision": "c241e32733ba1e8a39a782511b90364cd0274c7d",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "9aa64feb189d054d8ec7021b54c24b528ccac20e8cf8e3c31780d2aeaa798c38",
+  "fixture_sha256": "8beacc2ec348e95598c3cdaea087db14e3fc7f4811e17345cbe47a182d2c51bc",
+  "observer_sha256": "5806bd2db26eafb2ed67047093ea8e4fd77f02c4a54185bd978eaf31367d60ee",
+  "records": [
+    {
+      "sample": 0,
+      "original_time": 0.100006103515625,
+      "rebuilt_time": 0.10000600000000759,
+      "aligned": true,
+      "original_y": 29.016849517822266,
+      "rebuilt_y": 29.0211525,
+      "delta_y": -0.004302982177733838,
+      "copies": 2
+    },
+    {
+      "sample": 1,
+      "original_time": 0.1999969482421875,
+      "rebuilt_time": 0.1999969999999962,
+      "aligned": true,
+      "original_y": 26.071712493896484,
+      "rebuilt_y": 26.0803185,
+      "delta_y": -0.00860600610351625,
+      "copies": 2
+    },
+    {
+      "sample": 2,
+      "original_time": 0.26666259765625,
+      "rebuilt_time": 0.2666629999999941,
+      "aligned": true,
+      "original_y": 23.01829719543457,
+      "rebuilt_y": 23.0297699,
+      "delta_y": -0.011472704565431258,
+      "copies": 2
+    },
+    {
+      "sample": 3,
+      "original_time": 0.3000030517578125,
+      "rebuilt_time": 0.3000030000000038,
+      "aligned": true,
+      "original_y": 21.164592742919922,
+      "rebuilt_y": 21.1774998,
+      "delta_y": -0.012907057080077777,
+      "copies": 2
+    },
+    {
+      "sample": 4,
+      "original_time": 0.399993896484375,
+      "rebuilt_time": 0.3999939999999924,
+      "aligned": true,
+      "original_y": 14.295434951782227,
+      "rebuilt_y": 14.3126478,
+      "delta_y": -0.017212848217774024,
+      "copies": 2
+    },
+    {
+      "sample": 5,
+      "original_time": 0.5,
+      "rebuilt_time": 0.5,
+      "aligned": true,
+      "original_y": 5.46412467956543,
+      "rebuilt_y": 5.48564005,
+      "delta_y": -0.02151537043457008,
+      "copies": 2
+    },
+    {
+      "sample": 6,
+      "original_time": 0.600006103515625,
+      "rebuilt_time": 0.6000060000000076,
+      "aligned": true,
+      "original_y": 2.05983829498291,
+      "rebuilt_y": 2.07494307,
+      "delta_y": -0.015104775017089622,
+      "copies": 2
+    },
+    {
+      "sample": 7,
+      "original_time": 0.76666259765625,
+      "rebuilt_time": 0.7666629999999941,
+      "aligned": true,
+      "original_y": 2.7507503032684326,
+      "rebuilt_y": 2.75473213,
+      "delta_y": -0.003981826731567217,
+      "copies": 2
+    },
+    {
+      "sample": 8,
+      "original_time": 1.0,
+      "rebuilt_time": 1.0,
+      "aligned": true,
+      "original_y": 2.960015296936035,
+      "rebuilt_y": 2.96062684,
+      "delta_y": -0.0006115430639650477,
+      "copies": 2
+    },
+    {
+      "sample": 9,
+      "original_time": 1.5,
+      "rebuilt_time": 1.5,
+      "aligned": true,
+      "original_y": 2.924201250076294,
+      "rebuilt_y": 2.9982729,
+      "delta_y": -0.07407164992370596,
+      "copies": 2
+    },
+    {
+      "sample": 10,
+      "original_time": 2.0,
+      "rebuilt_time": 2.0,
+      "aligned": true,
+      "original_y": 2.924201250076294,
+      "rebuilt_y": 2.99913359,
+      "delta_y": -0.07493233992370607,
+      "copies": 2
+    },
+    {
+      "sample": 11,
+      "original_time": 3.0,
+      "rebuilt_time": 3.0,
+      "aligned": true,
+      "original_y": 2.924201250076294,
+      "rebuilt_y": 2.99912167,
+      "delta_y": -0.07492041992370613,
+      "copies": 2
+    },
+    {
+      "sample": 12,
+      "original_time": 4.0,
+      "rebuilt_time": 4.0,
+      "aligned": true,
+      "original_y": 2.924201250076294,
+      "rebuilt_y": 2.99912643,
+      "delta_y": -0.07492517992370606,
+      "copies": 2
+    }
+  ],
+  "original_forced_termination": true,
+  "scope": "Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.",
+  "P5_complete": false,
+  "original_final_active_states": [
+    {
+      "address": "0x3b62920",
+      "owner": "0xd3c25a0",
+      "vtable": "0x84ce10",
+      "state": "RunningNoPhysics",
+      "job_registration": {
+        "address": "0x3b629c0",
+        "vtable": "0x84cdf8",
+        "iterator_owner": "0x3bdedc8",
+        "iterator_node": "0xdd129e8",
+        "node_words": [
+          "0x3bd84c8",
+          "0x3bd84c8",
+          "0x3b629c0"
+        ]
+      }
+    }
+  ]
+}

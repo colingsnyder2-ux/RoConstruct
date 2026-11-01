@@ -20,8 +20,8 @@ namespace RBX
 	{
 		void rebuildRegisterGuid(const Instance* instance);  // glue_guid_registry.cpp
 
-		// a job sender takes mechanisms until its packet is full (SimJobStage::reportMechanisms)
-		bool Replicator::JobSender::operator()(Mechanism& mechanism)
+		// a job sender takes jobs until its packet is full (SimJobStage::reportJobs)
+		bool Replicator::JobSender::operator()(SimJob& mechanism)
 		{
 			return report(mechanism);
 		}
@@ -212,11 +212,10 @@ namespace RBX
 			bitStream.IgnoreBits(bitStream.GetNumberOfUnreadBits());
 		}
 
-		void Replicator::sendPhysicsData(RakNet::BitStream& bitStream, const Mechanism& mechanism)
+		void Replicator::sendPhysicsData(RakNet::BitStream& bitStream, const SimJob& mechanism)
 		{
-			const std::set<Assembly*>& assemblies = mechanism.getAssemblies();
-			for (std::set<Assembly*>::const_iterator iter = assemblies.begin(); iter != assemblies.end(); ++iter)
-				sendPhysicsData(bitStream, **iter);
+			if (mechanism.getAssembly())
+				sendPhysicsData(bitStream, *mechanism.getAssembly());
 		}
 
 		// root part id, frame, velocity
