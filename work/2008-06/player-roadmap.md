@@ -1301,3 +1301,21 @@ physics parity. The rider lag remains a real discrepancy. Original 00644000
 has recovered floor-sensor source with torso-bottom and corner rays; compare it
 with the current single-center donor sensor next. P5 and later milestones stay
 open.
+
+## P5 checkpoint: original floor sensor adaptation (24be78e1e2)
+
+Adapted recovered 00644000 floor sensing to the donor ABI: a downward ray
+starts at the torso bottom, then tries its four corners, with leg-length and
+existing-floor distance rules from the original. An authored edge fixture
+remains standing with its center outside the floor but a torso corner over it;
+a control with every corner outside falls. Floor sensing, force/friction,
+controller, climbing, spawn and combined play checks pass at 24be78e1e2.
+Receipts: p5-floor-sensor-24be-*.
+
+Original/rebuilt walk and moving-floor comparisons pass their existing bounded
+tolerances. In one moving-floor run the rebuilt rider lags 0.13-0.30 studs
+farther than the original, still a discrepancy; this alone does not prove a
+causal improvement over earlier samples. Original joint construction and
+wall-time sampling differ, and original closure required forced termination.
+This is an adaptation, not byte-identical integration; native loop, state ABI,
+full humanoid parity, P5 acceptance and later milestones remain open.
