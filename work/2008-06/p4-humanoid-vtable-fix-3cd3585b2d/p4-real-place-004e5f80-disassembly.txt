@@ -1,0 +1,40 @@
+004e5f80  83b9d400000000       cmp dword ptr [ecx + 0xd4], 0
+004e5f87  755e                 jne 0x4e5fe7
+004e5f89  8b89bc000000         mov ecx, dword ptr [ecx + 0xbc]
+004e5f8f  83b9dc01000001       cmp dword ptr [ecx + 0x1dc], 1
+004e5f96  754f                 jne 0x4e5fe7
+004e5f98  e8332d0b00           call 0x598cd0
+004e5f9d  d900                 fld dword ptr [eax]
+004e5f9f  d94004               fld dword ptr [eax + 4]
+004e5fa2  d94008               fld dword ptr [eax + 8]
+004e5fa5  d9ca                 fxch st(2)
+004e5fa7  d9e1                 fabs 
+004e5fa9  d9c9                 fxch st(1)
+004e5fab  d9e1                 fabs 
+004e5fad  d9ca                 fxch st(2)
+004e5faf  d9e1                 fabs 
+004e5fb1  d9c9                 fxch st(1)
+004e5fb3  d8d2                 fcom st(2)
+004e5fb5  dfe0                 fnstsw ax
+004e5fb7  f6c441               test ah, 0x41
+004e5fba  7504                 jne 0x4e5fc0
+004e5fbc  ddda                 fstp st(2)
+004e5fbe  eb02                 jmp 0x4e5fc2
+004e5fc0  ddd8                 fstp st(0)
+004e5fc2  d8d1                 fcom st(1)
+004e5fc4  dfe0                 fnstsw ax
+004e5fc6  f6c405               test ah, 5
+004e5fc9  7a04                 jp 0x4e5fcf
+004e5fcb  ddd8                 fstp st(0)
+004e5fcd  eb02                 jmp 0x4e5fd1
+004e5fcf  ddd9                 fstp st(1)
+004e5fd1  d81d884d8700         fcomp dword ptr [0x874d88]
+004e5fd7  dfe0                 fnstsw ax
+004e5fd9  f6c405               test ah, 5
+004e5fdc  7a06                 jp 0x4e5fe4
+004e5fde  b801000000           mov eax, 1
+004e5fe3  c3                   ret 
+004e5fe4  33c0                 xor eax, eax
+004e5fe6  c3                   ret 
+004e5fe7  32c0                 xor al, al
+004e5fe9  c3                   ret 

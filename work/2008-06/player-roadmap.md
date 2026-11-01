@@ -1,5 +1,29 @@
 # Current player checkpoint
 
+P4 real-place crash FIXED on source3cd3585b2d: verified Humanoid destructor
+object supplied vtable with extra onGuidChanged slot. Instance::readProperties
+called bare ret as readProperty, corrupting stack. Module config now explicitly
+excludes that one incompatible verified swap; actual Humanoid.obj vtable slot11
+points to Instance::readProperty. Seven additional swapped methods auto-fell back
+due missing helpers; forced-link count119->111, local unique object matches
+3323->3318. Track these in P9; no exact/server credit claim. Evidence:
+p4-humanoid-vtable-fix-3cd3585b2d/, p4-real-place-audit.md.
+Independent authored Humanoid fixture now loads, retains1, clean shutdown.
+User Bread Factory full XML loads with68 Humanoids and renders2frames exit0.
+792 models:480 geometry/status0,312 unsupported/status3; cleanup allzero.
+User input/map/log/image remain local; only sanitized hashes/counts committed.
+Reflection fix: original renderer007ab0a0 references skyspheremap.jpg at
+00874a44; stage original external sky/skyspheremap.jpg and set its default path,
+preserving ROC_SKY_SPHERE override. Authored reflective-sphere test passes.
+Normal P4 assets/Humanoid/reflection, P3 lifetime/selftest/cachetest and P4 sound
+asset tests pass same revision; rebuild-tool pytest8 passed.
+Next: original dispatch004ef930 non-mega shape1->004edb20 factory->004f4cb0
+producer, shape2->004eef30->004fd6b0. Selector004e5f80 threshold30.0. XML
+contains300 size>=30 block candidates and4 shape2; not exact omitted mapping.
+Trace and integrate native large-block mesh with real source, not a manual box;
+then cylinder, lifecycle and original comparison. Audio and P5-P10 remain open.
+
+
 P4 real-place probe on sourcea9eb20a932: user supplied OnlyRetroRobloxHere
 maps/Base contains seven 2008E/M/L compressed XML places. Bread Factory Tycoon
 2008E (786 Parts, no HTTP asset URLs) crashes0xc0000005. Isolated Home model
