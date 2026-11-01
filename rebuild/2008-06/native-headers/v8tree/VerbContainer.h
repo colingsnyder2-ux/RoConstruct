@@ -9,6 +9,7 @@ class Verb;
 // Split from the recovered Verb.h so native IDataState can be used without
 // importing the donor's incompatible StateStack-based IDataState declaration.
 class VerbContainer {
+    friend class Verb; // 005833e0 registers itself in the verb map inline
     std::map<const Name*, Verb*> verbs;
     VerbContainer* parent;
 public:
