@@ -874,6 +874,9 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                                                                    if body.get('revisit_parked') else {}))
                     elif path.endswith("/submit"):
                         result = integration.submit(user, body)
+                    elif path.endswith('/header-report'):
+                        from roc.integration_notify import record_header
+                        result = record_header(integration, user, body)
                     elif path.endswith('/partials'):
                         from roc.integration_notify import record_partials
                         result = record_partials(integration, user, body)
@@ -1000,6 +1003,9 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 if body.get("lease"):
                     store.release(str(body["lease"]))
                 if improved:
+                    from roc.agent_inbox import record
+                    record("submit", user, str(body.get("model", "")), source, addr=addr, client=client,
+                           score=stored, previous=previous, verified=verified)
                     feed = mine_log
                     if feed is not None:
                         feed.submit(store.function_info(client, addr), user,

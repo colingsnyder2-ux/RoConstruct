@@ -121,7 +121,8 @@ def inline_code(text):
     return "`%s`" % str(text).replace("`", "'")
 
 
-def _post(url, payload):
+def _post(url, payload, retry=True):
+    payload = {"allowed_mentions": {"parse": []}, **payload}  # user text must never ping the channel
     try:
         body = json.dumps(payload).encode()
         req = urllib.request.Request(url, data=body,
@@ -131,6 +132,9 @@ def _post(url, payload):
             print("Discord mine log sent")
     except urllib.error.HTTPError as error:
         detail = error.read().decode("utf-8", "replace")[:300]
+        if error.code == 429 and retry:  # rate limited: wait as told, once, on this reporting thread
+            time.sleep(min(30, float(error.headers.get("Retry-After") or 5)))
+            return _post(url, payload, False)
         print("Discord mine log failed: HTTP %d: %s" % (error.code, detail))
     except (OSError, ValueError) as error:
         print("Discord mine log failed: %s" % error)

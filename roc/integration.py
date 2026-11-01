@@ -842,6 +842,17 @@ def command(args):
     overlay = generator.with_name("rbxgs-client.json")
     action = args.action
 
+    if action == 'header-report':
+        if not args.class_name or args.exact is None or args.total is None or not args.model:
+            raise SystemExit('header-report needs --class-name, --exact, --total and --model')
+        try:
+            result = api.call('/v1/integration/header-report', {'user': user,
+                'class': args.class_name, 'exact': args.exact, 'total': args.total, 'note': args.note or '', 'model': args.model})
+            print(json.dumps(result))
+            return result
+        finally:
+            api.close()
+
     if action == 'context':
         if not args.claim or not getattr(args, 'address', None):
             raise SystemExit('context needs --claim ID --address ADDR')

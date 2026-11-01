@@ -10,6 +10,7 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import PurePosixPath
 
+from roc.agent_inbox import record
 from roc.integration import CLIENT, atomic_json, digest
 from roc.reports import RATE_WINDOW, fmt_duration, inline_code, server_mines_webhook
 
@@ -85,12 +86,48 @@ def record_partials(promotions, user, body):
                  row['frame_ok'] or bool(previous and previous[1]), row['calls_ok'] or bool(previous and previous[2]),
                  user, model, json.dumps(row), time.time()))
             fresh.append(row)
+    for row in fresh:
+        record('partial', user, model, addr=row['addr'], file=row['file'], previous=row['previous'], score=row['score'])
     url = server_mines_webhook()
     if fresh and url:
         from roc.reports import _post
         import threading
         threading.Thread(target=_post, args=(url, partial_payload(user, model, fresh)), daemon=True).start()
     return dict(recorded=len(fresh), local_only=True, exact_credits=0)
+
+
+def header_payload(user, model, name, exact, total, note):
+    """Shared-header progress is contributor-reported and earns no credit by itself."""
+    filled = 23 * exact // total
+    return {'embeds': [{
+        'title': '\U0001f9f1 RoConstruct Shared Header Progress', 'color': 0x22C55E,
+        'description': ('**2008-06 Client** \u00b7 %s\n%s **%d / %d** methods exact on shared header\n\n%s' % (
+            inline_code(name), '\U0001f7e9' * filled + '\u2b1c' * (23 - filled), exact, total, note))[:4096],
+        'fields': [{'name': 'Worker', 'value': inline_code(user), 'inline': True},
+                   {'name': 'Model', 'value': inline_code(model), 'inline': True},
+                   {'name': 'Credit', 'value': 'Report only \u00b7 server credit comes from accepted submissions', 'inline': False}],
+        'timestamp': datetime.now(timezone.utc).isoformat()}]}
+
+
+def record_header(promotions, user, body):
+    """Post one shared-header milestone and leave it in the host's agent inbox."""
+    name, model, note = body.get('class'), body.get('model'), body.get('note', '')
+    exact, total = body.get('exact'), body.get('total')
+    if not isinstance(name, str) or not re.fullmatch(r'[A-Za-z_][A-Za-z0-9_:]{0,80}', name):
+        raise ValueError('Need a class name')
+    if not isinstance(model, str) or not 1 <= len(model.strip()) <= 120:
+        raise ValueError('Header reports need actual model identity')
+    if type(exact) is not int or type(total) is not int or not 0 <= exact <= total or not 1 <= total <= 5000:
+        raise ValueError('Need 0 <= exact <= total')
+    if not isinstance(note, str) or len(note) > 1000:
+        raise ValueError('Note must be under 1000 characters')
+    record('header', user, model, addr=name, exact=exact, total=total, note=note)
+    url = server_mines_webhook()
+    if url:
+        from roc.reports import _post
+        import threading
+        threading.Thread(target=_post, args=(url, header_payload(user, model, name, exact, total, note)), daemon=True).start()
+    return dict(recorded=True, exact_credits=0)
 
 
 def payload(promotions, job, receipt=None):
@@ -159,6 +196,8 @@ def payload(promotions, job, receipt=None):
 
 def notify(promotions, job, receipt=None):
     url = server_mines_webhook()
+    if receipt and receipt.get("accepted"):
+        record("integration", job["user"], job["model"], gains=receipt.get("gains", []), credits=receipt.get("credits", 0))
     # Post only real progress: an accepted job that integrated something. Phase changes, retries, merges
     # and rejections changed the digest every time and flooded the channel with zero-gain messages.
     if not url or not (receipt and receipt.get("accepted") and receipt.get("gains")):
@@ -179,6 +218,6 @@ def notify(promotions, job, receipt=None):
         with urllib.request.urlopen(request, timeout=15) as response:
             result = json.loads(response.read() or b"{}")
         atomic_json(state_path, {"message_id": result["id"], "digest": key})
-    except (OSError, ValueError, KeyError, sqlite3.Error, urllib.error.URLError):
-        # Optional reporting cannot reject independently verified code.
-        return
+    except (OSError, ValueError, KeyError, sqlite3.Error, urllib.error.URLError) as error:
+        # Optional reporting cannot reject independently verified code, but say why it failed.
+        print("Integration digest failed: %s" % error)
