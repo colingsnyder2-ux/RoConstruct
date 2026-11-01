@@ -2115,3 +2115,6 @@ MSVC21022 class-layout comparison: native DataModel size0x264 vs donor0x27c. Ori
 
 
 Native IDataState recovered as a four-byte interface, two virtual slots setDirty/isDirty. Original DataModel RTTI shows no StateStack base; vtable0083030c points to0057b020/0057b030, accessing DataModel dirty byte0x258 from interface offset0x1f0. MSVC21022 native interface size gate passes. Candidate shared header is inactive; donor IDataState still embeds StateStack and must not be treated as ABI-equivalent. Evidence shared-layouts/idatastate.json.
+
+
+Native GuidItem<Instance> shared declaration recovered from existing openrbx source. MSVC21022 confirms Guid size8 and GuidItem size0x10, consistent with original RTTI: primary GuidItem at0 followed by AbstractFactoryProduct at0x10. Probe currently uses donor Guid type, so method semantics remain unproven and declaration is inactive. Evidence shared-layouts/guiditem-compile.json at 8b27441d91. Full native Instance/ServiceProvider remains open.
