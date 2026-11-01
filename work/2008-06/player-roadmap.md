@@ -1211,3 +1211,20 @@ This is a bounded comparison, not proof of exact fixed-step or anchor parity.
 Original required forced termination after window close; rebuilt exited cleanly.
 Investigate the re-anchor discrepancy and original scheduler/frame-loop, then
 continue remaining P5 and later milestones.
+
+## P5 checkpoint: recovered waiting-thread behavior (6c7b1ff3a8)
+
+Original function 00621590 has server-reported 100% source in
+`roc_espclaude_1f29ee3c3c2214e7.cpp`: WaitingThread stores requested/elapsed
+time as doubles and resume pushes both elapsed and heartbeat time to Lua.
+The rbxgs overlay now adapts those behaviors to its existing interfaces; the
+integrated object has not itself been verified byte-identical. A shared fixture
+checks both wait return values are numeric in the original and rebuilt clients.
+
+At 6c7b1ff3a8 the original returned about 0.1000, 0.1667, 0.1667 seconds for
+waits of 0.1, 0.15 and 0.15; rebuilt returned 0.1000, 0.1500, 0.1500. Thus
+precision and return-value recovery does not resolve the one-frame discrepancy;
+original heartbeat cadence and scheduler/clock ordering remain unproven. The
+probe, anchor cycle, combined live play, script/lifetime, P0, value, P4 assets
+and 240-frame supplied-place tests pass. Receipts are in p5-*-6c7b1ff3a8.
+The original required forced termination after close. P5 remains incomplete.
