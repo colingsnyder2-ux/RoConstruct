@@ -265,7 +265,8 @@ def test_explicit_new_body_appends_without_replacing_other_agents_source(tmp_pat
         recovery.merge(shared,tmp_path/'proof2',REL,BEFORE,BEFORE+added.replace('17','18'),'A::h',good,tmp_path/'receipt2.json',allow_add=True)
 
 
-def test_historical_compiler_header_probe_checks_actual_consuming_tu(tmp_path):
+def test_historical_compiler_header_probe_checks_actual_consuming_tu(tmp_path,monkeypatch):
+    monkeypatch.setattr(recovery,'target_proof',lambda *a:dict(target_exact=False))
     from roc import setup, native_sweep as sweep, match
     if 21022 not in setup.compilers(): pytest.skip('Historical MSVC not installed')
     unit=source(tmp_path,'#include "../native-headers/A.h"\nint use(A* a){return a->f();}\n')
@@ -277,6 +278,10 @@ def test_historical_compiler_header_probe_checks_actual_consuming_tu(tmp_path):
     first=recovery.compile_probe(tmp_path,header.relative_to(tmp_path).as_posix(),ctx,Empty(),{'00000001'},'A::f',translation_unit=REL)
     assert first['ok'],first['error']
     golden={n:(b,r) for n,b,r in match.coff_functions(Path(first['object']).read_bytes())}
+    def target(data,matcher,addr,method):
+        matches=[n for n,b,r in match.coff_functions(data) if n.startswith('?f@A@@') and golden.get(n)==(b,r)]
+        return dict(target_exact=bool(matches),symbol=matches[0] if matches else '')
+    monkeypatch.setattr(recovery,'target_proof',target)
     class Compare:
         def scan(self,data):
             return [dict(addr='00000001',symbol=n) for n,b,r in match.coff_functions(data)
@@ -363,3 +368,51 @@ def test_xtp_compiler_profile_adds_toolkit_defines_without_nominmax(tmp_path,mon
     assert '_XTP_STATICLINK' in defines and '_XTPLIB_NOAUTOLINK' in defines
     assert 'NOMINMAX' not in defines
     assert any(str(p).replace('\\','/').endswith('xtp-11.2.2/Source') for p in includes)
+
+
+def test_codex_launch_resolves_windows_path_before_popen(tmp_path, monkeypatch):
+    executable = str(tmp_path/'codex.cmd')
+    monkeypatch.setattr(recovery.shutil, 'which', lambda name: executable)
+    class LaunchObserved(Exception): pass
+    def launch(argv, **kwargs):
+        assert argv[0] == executable
+        raise LaunchObserved
+    monkeypatch.setattr(recovery.subprocess, 'Popen', launch)
+    with pytest.raises(LaunchObserved):
+        recovery.run_codex(tmp_path, 'codex:gpt-6-luna', 1, lambda:False, lambda text:None)
+
+
+def test_missing_codex_fails_with_actionable_message(tmp_path, monkeypatch):
+    monkeypatch.setattr(recovery.shutil, 'which', lambda name: None)
+    with pytest.raises(recovery.providers.ProviderError, match='Codex CLI not found'):
+        recovery.run_codex(tmp_path, 'codex:gpt-6-luna', 1, lambda:False, lambda text:None)
+
+
+@pytest.mark.parametrize('exact',[False,True])
+def test_probe_client_returns_compact_verdict_and_failure_exit(tmp_path,exact):
+    (tmp_path/'check.py').write_text(recovery.PROBE_CLIENT)
+    checks=tmp_path/'checks';checks.mkdir()
+    child=subprocess.Popen([sys.executable,'check.py'],cwd=tmp_path,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+    end=time.monotonic()+10
+    while not list(checks.glob('*.request')) and time.monotonic()<end:time.sleep(.01)
+    request=next(checks.glob('*.request'))
+    payload=dict(ok=True,target_exact=exact,losses=[],error='',diff='original diff',hits=[dict(addr='00400000')]*10000)
+    request.with_suffix('.json').write_text(json.dumps(payload))
+    stdout,stderr=child.communicate(timeout=10)
+    assert child.returncode==(0 if exact else 1),stderr
+    summary=json.loads(stdout)
+    assert summary['target_exact']==exact and summary['diff']=='original diff'
+    assert 'hits' not in summary and len(stdout)<1000
+    assert Path(summary['full_proof_file']).exists()
+
+
+def test_direct_target_proof_accepts_tiny_symbol_hidden_by_sweep(monkeypatch):
+    symbol='?f@A@@QAEXXZ'
+    monkeypatch.setattr(recovery.match,'coff_functions',lambda obj:[(symbol,b'abcde',[])])
+    monkeypatch.setattr(recovery.match,'coff_data_refs',lambda *a:[])
+    monkeypatch.setattr(recovery.match,'data_check',lambda *a:([],[]))
+    monkeypatch.setattr(recovery.sweep,'body_diff',lambda *a:'identical after masking')
+    matcher=SimpleNamespace(target=SimpleNamespace(same=lambda addr,code,relocs:b'abcde'))
+    assert recovery.target_proof(b'object',matcher,'00400000','A::f')['target_exact']
+    monkeypatch.setattr(recovery.match,'data_check',lambda *a:([],['wrong string']))
+    assert not recovery.target_proof(b'object',matcher,'00400000','A::f')['target_exact']

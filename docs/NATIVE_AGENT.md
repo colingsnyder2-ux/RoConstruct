@@ -92,6 +92,15 @@ recipes (including SDL 1.2.11) wait until submission needs them. New private ses
 share the launching checkout's tool/client cache, and resumed sessions repair missing
 or broken input links while preserving private source and proofs.
 
+Worker 22 resolves the installed Codex executable before launch. Each task gets an
+assigned-header path and its baseline instruction/data diff. `python check.py`
+prints a compact verdict and the full proof's filename; it exits unsuccessfully
+unless `ok` and `target_exact` are true with no losses. Compiler success alone does
+not prove recovery. Tiny bodies and identical sibling bodies are checked against
+the assigned emitted symbol before spending an AI request. Missing canonical
+module mappings leave proven native recoveries pending; they cannot earn server
+acceptance until genuine linkage is implemented.
+
 For an additional installed input cache, set `ROC_REUSE_TOOLS` to its `tools`
 directory (multiple roots use the platform path separator), or record:
 
