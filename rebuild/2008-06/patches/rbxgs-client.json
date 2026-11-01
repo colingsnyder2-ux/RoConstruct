@@ -22,6 +22,9 @@
   ["return new Running(humanoid);", "return CreateRecoveredLanded(humanoid);"],
   ["\t\t: Base(humanoid)\n\t{\n\t}", "\t\t: Base(humanoid), savedHeadFriction(0), savedTorsoFriction(0)\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, true);\n\t\tif (humanoid->getHead()) { savedHeadFriction=humanoid->getHead()->getFriction(); humanoid->getHead()->setFriction(0); }\n\t\tif (humanoid->getTorso()) { savedTorsoFriction=humanoid->getTorso()->getFriction(); humanoid->getTorso()->setFriction(0); }\n\t}\n\n\tFreefall::~Freefall()\n\t{\n\t\tHumanoid::event_FreeFalling.fire(humanoid, false);\n\t\tif (humanoid->getHead()) humanoid->getHead()->setFriction(savedHeadFriction);\n\t\tif (humanoid->getTorso()) humanoid->getTorso()->setFriction(savedTorsoFriction);\n\t}"]
  ],
+ "App/humanoid/Jumping.cpp": [
+  ["\t\tif (done)\n", "\t\ttimeout -= stepDt;\n\t\tif (done || timeout <= 0.0f)\n"]
+ ],
  "App/include/humanoid/Running.h": [
   ["\t\tvoid updateGoals(Controller&);", "\tprotected:\n\t\tvoid updateGoals(Controller&);\n\tprivate:"],
   ["\t\tRunning(Humanoid* humanoid);", "\t\tRunning(Humanoid* humanoid);\n\t\tvoid resumeFromLanding(const Running& old, Controller& controller) { floorPart=old.floorPart; floorTouchInWorld=old.floorTouchInWorld; jumpWarmup=0.0f; updateGoals(controller); }"]
