@@ -18,3 +18,14 @@ Original target executable, address-based evidence:
   Before replacing it, recover the target joint constructors, pipeline/edge
   layouts and dependent stages; do not mix the two object models or fabricate
   padding/vtables.
+
+- Descriptor initializer `007f4810` binds `Anchored` to getter `00598d40`
+  and setter `0059ddc0`. The getter reads the Part's byte at `+2d1` (the
+  embedded Primitive's `+a9`), and the setter delegates to `005e80d0`.
+  `DraggingV1` binds setter `0059dd20` to `005e8050` (`+a8`). Thus public
+  Anchored is the individual flag, while pipeline anchoring uses the OR.
+- Prior shim dereferenced a null Anchor when a live unanchored Part entered
+  DraggingV1; this was reproduced as exit 0xc0000005 before the fix. The
+  shim now creates/removes its legacy Anchor for aggregate transitions from
+  any of the three flags. This maintains the old stage contract; it is still
+  an adapter and does not implement the original AnchorJoint pipeline.

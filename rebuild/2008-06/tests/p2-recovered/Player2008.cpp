@@ -31,6 +31,8 @@ extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
 extern "C" int GetContactState(float*,float*,int*);
 extern "C" int GetBrickAnchored();
+extern "C" void GetBrickAnchorFlags(int*,int*);
+extern "C" int CheckBrickAnchorFlags();
 extern "C" int ExecutePlayerScript(const char*);
 extern "C" int ConfigureContentRoot(const char*);
 extern "C" int CountHumanoids();
@@ -668,6 +670,7 @@ int main(int argc, char** argv)
     bool loadOnly = false;
     bool p5Play = false;
     bool anchorTrace = false;
+    bool anchorFlagsTest = false;
     int stabilityExit = 0;
     int spinFrames = 0;
     std::string contentRoot;
@@ -685,6 +688,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
         else if (std::strcmp(argv[i], "--p5-play") == 0) p5Play = true;
         else if (std::strcmp(argv[i], "--anchor-trace") == 0) anchorTrace = true;
+        else if (std::strcmp(argv[i], "--anchor-flags-test") == 0) anchorFlagsTest = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
         else if (std::strcmp(argv[i], "--capture-spin") == 0 && i+1<argc) { spinFrames=std::atoi(argv[++i]);demo=true; }
         else if (std::strcmp(argv[i], "--content-root") == 0 && i+1<argc) contentRoot=argv[++i];
@@ -723,6 +727,11 @@ int main(int argc, char** argv)
     if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
     if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
+    if(anchorFlagsTest){
+        int result=CheckBrickAnchorFlags();
+        std::printf("anchor flags: %s\n",result?"FAIL":"PASS");
+        ClosePlace();return result;
+    }
     if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
 
     if(p5Play)StartPlay();
@@ -809,7 +818,7 @@ int main(int argc, char** argv)
         if(anchorTrace){
             anchorSamples.open("anchor_samples.csv",std::ios::binary);anchorSamples.precision(9);
             if(!anchorSamples)return 7;
-            anchorSamples<<"frame,brick_y,brick_anchored,floor_y,floor_anchored,expected_y\n";
+            anchorSamples<<"frame,brick_y,brick_anchored,dragging,aggregate,floor_y,floor_anchored,expected_y\n";
         }
         if(stability){
             if(GetContactState(&expectedY,&initialFloorY,&anchored)){std::printf("stability fixture needs Brick and Floor\n");return 9;}
@@ -823,10 +832,11 @@ int main(int argc, char** argv)
             drawModels();
             root->renderOneFrame(); win->update();
             if(anchorTrace){
-                float x,y,z,currentExpected,floorY;int floorAnchored;
+                float x,y,z,currentExpected,floorY;int floorAnchored,dragging,aggregate;
+                GetBrickAnchorFlags(&dragging,&aggregate);
                 GetPartPosition(&x,&y,&z);
                 if(GetContactState(&currentExpected,&floorY,&floorAnchored))return 9;
-                anchorSamples<<(i+1)<<","<<y<<","<<GetBrickAnchored()<<","<<floorY<<","<<floorAnchored<<","<<currentExpected<<"\n";
+                anchorSamples<<(i+1)<<","<<y<<","<<GetBrickAnchored()<<","<<dragging<<","<<aggregate<<","<<floorY<<","<<floorAnchored<<","<<currentExpected<<"\n";
             }
             if(stability){
                 float x,y,z,currentExpected,floorY;

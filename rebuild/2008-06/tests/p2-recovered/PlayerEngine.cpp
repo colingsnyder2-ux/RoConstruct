@@ -194,6 +194,35 @@ extern "C" int ExecutePlayerScript(const char* command)
     return 0;
 }
 
+extern "C" void GetBrickAnchorFlags(int* dragging,int* aggregate)
+{
+    if (!g_brick || !g_dataModel) { *dragging = *aggregate = -1; return; }
+    RBX::DataModel::Lock lock(g_dataModel);
+    *dragging = g_brick->getPrimitive()->getDragging() ? 1 : 0;
+    *aggregate = g_brick->getPrimitive()->getAnchor() ? 1 : 0;
+}
+
+// Exercise all flag combinations while the Part is in Workspace.
+extern "C" int CheckBrickAnchorFlags()
+{
+    if (!g_brick || !g_dataModel) return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::Primitive* primitive=g_brick->getPrimitive();
+    for (int i=0;i<8;++i) {
+        int bits=i^(i>>1);
+        g_brick->setDragging((bits&1)!=0);
+        g_brick->setAnchored((bits&2)!=0);
+        primitive->setFlag0xaa((bits&4)!=0);
+        bool aggregate=bits!=0;
+        if (g_brick->getDragging()!=((bits&1)!=0) || g_brick->getAnchored()!=((bits&2)!=0) ||
+            primitive->getAnchor()!=aggregate || (primitive->getAnchorObject()!=NULL)!=aggregate) return 2;
+    }
+    primitive->setFlag0xaa(false);
+    g_brick->setDragging(false);
+    g_brick->setAnchored(false);
+    return primitive->getAnchorObject() || primitive->getAnchor() ? 3 : 0;
+}
+
 extern "C" int GetBrickAnchored()
 {
     if (!g_brick || !g_dataModel) return -1;

@@ -570,7 +570,7 @@
   ],
   [
    "\t\t\treturn anchorObject != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject()\n\t\t{\n\t\t\treturn anchorObject;\n\t\t}\n",
-   "\t\t\treturn dragging || anchored || flag0xaa;\n\t\t}\n\t\tAnchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)\n\t\tvoid setAnchorObject(Anchor* anchor);\n"
+   "\t\t\treturn dragging || anchored || flag0xaa;\n\t\t}\n\t\tbool getAnchoredProperty() const { return anchored; }\n\t\tAnchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)\n\t\tvoid setAnchorObject(Anchor* anchor);\n"
   ],
   [
    "\t\t\treturn joints.num;",
@@ -708,7 +708,7 @@
   ],
   [
    "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tbool oldDrag = !dragging && canCollide;\n\t\t\tdragging = _dragging;\n\n\t\t\tsetAnchor(anchored);\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tbool newDrag = !dragging && canCollide;\n\t\t\t\tif (newDrag != oldDrag)\n\t\t\t\t\tworld->onPrimitiveCanCollideChanged(this);\n\t\t\t}\n\t\t}\n\t}",
-   "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tdragging = _dragging;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored && world)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t\t\telse\n\t\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t}\n\t\t}\n\t}"
+   "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tdragging = _dragging;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t\tdelete getAnchorObject();\n\t\t\t\t\tsetAnchorObject(NULL);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
   ],
   [
    "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tanchored = _anchored;\n\n\t\tbool exists = getAnchor();\n\n\t\tif (_anchored || dragging)\n\t\t\t_anchored = true;\n\n\t\tif (_anchored == exists)\n\t\t\treturn;\n\n\t\tif (_anchored)\n\t\t{\n\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tRBXASSERT(getAnchorObject());\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\n\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);\n\t\t}\n\t}",
@@ -716,7 +716,7 @@
   ],
   [
    "\tvoid Primitive::setCanCollide(bool value)\n\t{",
-   "\tvoid Primitive::setFlag0xaa(bool value)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (flag0xaa != value)\n\t\t{\n\t\t\tflag0xaa = value;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored && world)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t\t\telse\n\t\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Primitive::setPV(const PV& pv)\n\t{\n\t\tbody->setVelocity(pv.velocity);\n\t\tsetCoordinateFrame(pv.position);\n\t}\n\n\tvoid Primitive::setCanCollide(bool value)\n\t{"
+   "\tvoid Primitive::setFlag0xaa(bool value)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (flag0xaa != value)\n\t\t{\n\t\t\tflag0xaa = value;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t\tdelete getAnchorObject();\n\t\t\t\t\tsetAnchorObject(NULL);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Primitive::setPV(const PV& pv)\n\t{\n\t\tbody->setVelocity(pv.velocity);\n\t\tsetCoordinateFrame(pv.position);\n\t}\n\n\tvoid Primitive::setCanCollide(bool value)\n\t{"
   ],
   [
    "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\n\t\t\tfloat newSize = geometry->getGridVolume();\n\t\t\tbody->setMass(newSize);\n\t\t\tbody->setMoment(geometry->getMoment(newSize));\n\t\t\tJointK.setDirty();\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
@@ -754,6 +754,10 @@
   ]
  ],
  "App/v8datamodel/PartInstance.cpp": [
+  [
+   "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchor();\n\t}",
+   "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchoredProperty();\n\t}"
+  ],
   [
    "\t\t  primitive(new Primitive(Geometry::GEOMETRY_BLOCK)),\n",
    "\t\t  primitive(Geometry::GEOMETRY_BLOCK),\n"
