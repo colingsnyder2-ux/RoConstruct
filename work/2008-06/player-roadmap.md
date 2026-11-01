@@ -1257,3 +1257,26 @@ start in either order; its fixture now waits before the removed script's marker,
 so it verifies cancellation without assuming startup ordering. P5 remains open:
 native frame-loop/humanoid reconstruction, exact step parity and other roadmap
 acceptance remain unproven.
+
+## P5 checkpoint: adapted original running force (033913505c)
+
+The previously guessed Running force is replaced by an adaptation of the
+server-reported byte-matched 00666550 RunningBase::onComputeForce source. It
+uses the original torque, altitude, acceleration, low-friction and floor
+reaction formulas. Bounds come from 00666350/006663a0 and original executable
+constants: max (1000,10000,1000), min (-1000,0,-1000). Climbing shares that
+force path with its existing reconstructed state; contact-point floor velocity
+is adapted from 00643a70. Donor class layouts, state transitions, goal update,
+floor scaling and direct byte identity remain unproven.
+
+With the force adaptation, 30 Hz internal Stepped updates no longer launch the
+character. The prior 60 Hz internal notification shim was removed; physics
+still runs at 60 Hz in the harness. At 033913505c, grounded idle, movement,
+climb, exit, Lua events, noncollidable and idle controls, live controls and
+combined play pass. On an authored moving floor, floor moves 3.993 studs and
+the character 3.319; stationary control stays put. A low-friction floor moves
+the character 2.411 studs versus 15.999 on normal friction. Original heartbeat
+and anchor comparisons, P0, spawn, scripts, lifetime, assets, values and a
+240-frame supplied-place run pass. Receipts are p5-nativeforce-*-033913505c.
+Original character/moving-floor comparison, recovered frame loop, native state
+ABI and later milestones remain open; do not claim full P5 parity.
