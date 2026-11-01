@@ -5,6 +5,7 @@
 #include "humanoid/Humanoid.h"
 #include "humanoid/Freefall.h"
 #include "v8world/Mechanism.h"
+#include "v8world/SimJobStage.h"
 #include "v8xml/SerializerV2.h"
 #include "script/ScriptContext.h"
 #include "script/LuaArguments.h"
@@ -220,7 +221,26 @@ extern "C" int CheckJobTrackerOwnership()
     }
     if(a.getMechanism()!=&third || b.getMechanism()!=&third)return 5;
     RBX::MechanismTracker::transferTrackers(&third,NULL);
-    return a.tracking() || b.tracking() ? 6 : 0;
+    if(a.tracking() || b.tracking())return 6;
+    {
+        RBX::SimJobStage stage(NULL,NULL);
+        struct StageJob : RBX::SimJob {
+            virtual RBX::Assembly* getAssembly() { return NULL; }
+            virtual const RBX::Assembly* getAssembly() const { return NULL; }
+        } firstJob,middleJob,lastJob;
+        stage.insertJob(&firstJob);stage.insertJob(&middleJob);stage.insertJob(&lastJob);
+        if(*firstJob.jobIterator!=&firstJob || *middleJob.jobIterator!=&middleJob ||
+           *lastJob.jobIterator!=&lastJob)return 7;
+        a.setJob(&middleJob);b.setJob(&lastJob);c.setJob(&firstJob);
+        stage.removeJob(&middleJob);
+        if(a.getJob()!=&lastJob || b.getJob()!=&lastJob || c.getJob()!=&firstJob)return 8;
+        stage.removeJob(&lastJob); // Wrap to first; caller-owned jobs remain alive.
+        if(a.getJob()!=&firstJob || b.getJob()!=&firstJob || c.getJob()!=&firstJob)return 9;
+        stage.removeJob(&firstJob);
+        if(a.tracking() || b.tracking() || c.tracking())return 10;
+    }
+    std::printf("SimJob stage lifecycle: PASS\n");
+    return 0;
 }
 extern "C" int CheckFreefallTransitions()
 {

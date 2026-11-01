@@ -243,10 +243,22 @@
  ],
  "App/include/v8world/SimJobStage.h": [
   [
-   "",
-   "\n// rebuild overlay: SimJobStage::reportMechanisms rbxgs declares but never defines\n#include \"v8world/Mechanism.h\"\nnamespace RBX\n{\n\ttemplate<typename Class>\n\tvoid SimJobStage::reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore)\n\t{\n\t\tif (mechanisms.empty())\n\t\t\treturn;\n\t\tMechanism* start = tracker.tracking() ? tracker.getMechanism() : mechanisms.front();\n\t\tMechanism* current = start;\n\t\tdo\n\t\t{\n\t\t\tif (current != ignore && !callback(*current))\n\t\t\t{\n\t\t\t\ttracker.setMechanism(nextMechanism(mechanisms, current));  // reporter is full: resume after this one\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tcurrent = nextMechanism(mechanisms, current);\n\t\t} while (current != start);\n\t\ttracker.setMechanism(start);\n\t}\n}\n"
+    "\tclass Mechanism;",
+    "\tclass SimJob;\n\tclass Mechanism;"
+  ],
+  [
+    "\t\tstd::list<Mechanism*> mechanisms;",
+    "\t\tstd::list<SimJob*> jobs;\n\t\tstd::list<Mechanism*> mechanisms;"
+  ],
+  [
+    "\t\tvoid notifyMovingPrimitives();",
+    "\t\tvoid notifyMovingPrimitives();\n\t\tvoid insertJob(SimJob* job);\n\t\tvoid removeJob(SimJob* job);"
+  ],
+  [
+    "",
+    "\n// rebuild overlay: SimJobStage::reportMechanisms rbxgs declares but never defines\n#include \"v8world/Mechanism.h\"\nnamespace RBX\n{\n\ttemplate<typename Class>\n\tvoid SimJobStage::reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore)\n\t{\n\t\tif (mechanisms.empty())\n\t\t\treturn;\n\t\tMechanism* start = tracker.tracking() ? tracker.getMechanism() : NULL;\n\t\tif (!start) start = mechanisms.front();\n\t\tMechanism* current = start;\n\t\tdo\n\t\t{\n\t\t\tif (current != ignore && !callback(*current))\n\t\t\t{\n\t\t\t\ttracker.setMechanism(nextMechanism(mechanisms, current));  // reporter is full: resume after this one\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tcurrent = nextMechanism(mechanisms, current);\n\t\t} while (current != start);\n\t\ttracker.setMechanism(start);\n\t}\n}\n"
   ]
- ],
+],
  "App/include/v8tree/Service.h": [
   [
    "",
@@ -2106,14 +2118,26 @@
  ],
  "App/v8world/SimJobStage.cpp": [
   [
-   "\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->putInStage(this);\n\n\t\tif (e->getEdgeType() == Edge::JOINT)\n\t\t{\n\t\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\n\t\t\tif (a0->inOrDownstreamOfStage(this) && a1->inOrDownstreamOfStage(this))\n\t\t\t{\n\t\t\t\tRBXASSERT(a0->getDof() > 0);\n\t\t\t\tRBXASSERT(a1->getDof() > 0);\n\n\t\t\t\tcombineMechanisms(e);\n\t\t\t}\n\t\t}\n\n\t\te->putInKernel(getKernel());\n\t}\n",
-   "\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\te->putInStage(this);\n\t\te->putInKernel(getKernel());\n\t}"
+    "\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->putInStage(this);\n\n\t\tif (e->getEdgeType() == Edge::JOINT)\n\t\t{\n\t\t\tAssembly* a0 = e->getPrimitive(0)->getAssembly();\n\t\t\tAssembly* a1 = e->getPrimitive(1)->getAssembly();\n\n\t\t\tif (a0->inOrDownstreamOfStage(this) && a1->inOrDownstreamOfStage(this))\n\t\t\t{\n\t\t\t\tRBXASSERT(a0->getDof() > 0);\n\t\t\t\tRBXASSERT(a1->getDof() > 0);\n\n\t\t\t\tcombineMechanisms(e);\n\t\t\t}\n\t\t}\n\n\t\te->putInKernel(getKernel());\n\t}\n",
+    "\tvoid SimJobStage::onEdgeAdded(Edge* e)\n\t{\n\t\te->putInStage(this);\n\t\te->putInKernel(getKernel());\n\t}"
   ],
   [
-   "SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}",
-   "SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\te->removeFromKernel();\n\te->removeFromStage(this);\n}"
+    "SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\t\tRBXASSERT(validateEdge(e));\n\n\t\te->removeFromKernel();\n\t\te->removeFromStage(this);\n\t}",
+    "SimJobStage::onEdgeRemoving(Edge* e)\n\t{\n\te->removeFromKernel();\n\te->removeFromStage(this);\n}"
+  ],
+  [
+    "\tSimJobStage::~SimJobStage()\n\t{}",
+    "\tSimJobStage::~SimJobStage()\n\t{ RBXASSERT(jobs.empty()); }\n\n\t// 0064d0f0 / 0064d180 list and tracker contract. Assembly binding is separate\n\t// while donor Mechanism still groups multiple assemblies. Jobs stay caller-owned.\n\tvoid SimJobStage::insertJob(SimJob* job)\n\t{\n\t\tjobs.push_back(job);\n\t\tjob->jobIterator = --jobs.end();\n\t}\n\n\tvoid SimJobStage::removeJob(SimJob* job)\n\t{\n\t\tstd::list<SimJob*>::iterator next = job->jobIterator;\n\t\t++next;\n\t\tif (next == jobs.end()) next = jobs.begin();\n\t\tMechanismTracker::transferTrackers(job, jobs.size() > 1 ? *next : NULL);\n\t\tjobs.erase(job->jobIterator);\n\t}"
+  ],
+  [
+    "\t\tthis->mechanisms.push_back(m);",
+    "\t\tinsertJob(m);\n\t\tthis->mechanisms.push_back(m);"
+  ],
+  [
+    "\t\tMechanism* next = this->mechanisms.size() > 1 ? this->nextMechanism(this->mechanisms, m) : NULL;\n\t\tMechanismTracker::transferTrackers(m, next);",
+    "\t\tremoveJob(m);"
   ]
- ],
+],
  "App/util/RunStateOwner.cpp": [
   [
    "\tRunService::RunService()\n\t\t: framePeriod(1.0f/30.0f),\n\t\t  runState(RS_NORMAL),\n\t\t  invalidRunViewCount(0),\n\t\t  stopRequested(false),\n\t\t  runDisabled(false)\n\t{\n\t\tsetName(\"Run Service\");\n\t}\n",
