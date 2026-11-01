@@ -5,6 +5,7 @@
 #include "humanoid/Freefall.h"
 #include "v8xml/SerializerV2.h"
 #include "script/ScriptContext.h"
+#include "script/LuaArguments.h"
 #include "security/SecurityContext.h"
 #include "util/ContentProvider.h"
 #include "util/Sound.h"
@@ -151,6 +152,25 @@ extern "C" int CheckNativeMD5()
     boost::scoped_ptr<RBX::MD5Hasher> binary(RBX::MD5Hasher::create());
     const char bytes[]={0,static_cast<char>(0xff),0x10};binary->addData(bytes,sizeof(bytes));
     return binary->toString()=="481e4551ec039aada760901cf52b1917"?0:3;
+}
+
+// Exercise the actual Lua userdata conversion and stack balance.
+extern "C" int CheckLuaObjectConversion()
+{
+    if(!g_dataModel)return 1;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::Instance* actor=g_dataModel->getWorkspace()->findFirstChildByName("Actor");
+    if(!actor)return 2;
+    lua_State* state=luaL_newstate();
+    RBX::Lua::ObjectBridge::registerClass(state);
+    RBX::Lua::ObjectBridge::registerClassLibrary(state);
+    RBX::Lua::ObjectBridge::push(state,boost::static_pointer_cast<RBX::Reflection::DescribedBase>(actor->shared_from_this()));
+    int top=lua_gettop(state);RBX::Reflection::Value value;
+    bool read=RBX::Lua::LuaArguments::get(state,1,value,false);
+    bool balanced=lua_gettop(state)==top;
+    bool same=read && value.convert<boost::shared_ptr<RBX::Instance> >().get()==actor;
+    lua_close(state);
+    return same && balanced ? 0 : 3;
 }
 
 static void RecordFreefall(std::vector<int>* values,bool active){values->push_back(active?1:0);}

@@ -21,10 +21,10 @@ def main():
                'exe_sha256': sha(EXE), 'fixture_sha256': sha(FIXTURE), 'observer_sha256': sha(Path(__file__)),
                'assets_sha256': {name: sha(CONTENT / name) for name in ('character.rbxm','humanoidSound.rbxm','humanoidHealth.rbxm','humanoidAnimate.rbxm')},
                'P5_complete': False, 'remaining': ['Original sound and animation scripts', 'Normal launch, camera, physics and scheduler parity'], 'runs': {}}
-    for name, flags in [('hash', ['--p5-hash-check']), ('freefall', ['--p5-freefall-check']), ('idle', ['--p5-spawn']), ('input', ['--p5-spawn', '--p5-input-test'])]:
+    for name, flags in [('hash', ['--p5-hash-check']), ('freefall', ['--p5-freefall-check']), ('lua-object', ['--p5-lua-object-check']), ('lookup', ['--p5-control','--p5-play']), ('idle', ['--p5-spawn']), ('input', ['--p5-spawn', '--p5-input-test'])]:
         folder = out / name
         folder.mkdir()
-        args = [str(EXE)] + flags + ([str(ROOT/'rebuild/2008-06/tests/fixtures/p5-humanoid-idle.rbxl')] if name == 'freefall' else [] if name == 'hash' else ['--frames','120','--inspect-place',str(FIXTURE)])
+        args = [str(EXE)] + flags + ([str(ROOT/'rebuild/2008-06/tests/fixtures/p5-humanoid-idle.rbxl')] if name in ('freefall','lua-object') else ['--frames','60',str(ROOT/'rebuild/2008-06/tests/fixtures/p5-player-lookup-probe.rbxl')] if name == 'lookup' else [] if name == 'hash' else ['--frames','120','--inspect-place',str(FIXTURE)])
         run = subprocess.run(args, cwd=folder, capture_output=True, text=True, timeout=60)
         (folder/'stdout.txt').write_text(run.stdout + run.stderr)
         assert run.returncode == 0, (name, run.returncode)
@@ -32,6 +32,10 @@ def main():
             assert 'MD5 vectors: PASS (0)' in run.stdout
         elif name == 'freefall':
             assert 'freefall transitions: PASS (0)' in run.stdout
+        elif name == 'lua-object':
+            assert 'Lua object conversion: PASS (0)' in run.stdout
+        elif name == 'lookup':
+            assert 'CALL true Player' in run.stdout and 'CALL false' not in run.stdout
         else:
             assert 'scene attached: 7 model(s)' in run.stdout
             assert 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in run.stdout
@@ -49,7 +53,7 @@ def main():
             continue
         receipt['runs'][name] = {'exit': run.returncode}
     (out/'receipt.json').write_text(json.dumps(receipt, indent=2)+'\n')
-    print('MD5, freefall and partial spawn/movement: PASS; animation remains open')
+    print('MD5, Lua conversion, freefall and partial spawn/movement: PASS; animation remains open')
 
 if __name__ == '__main__':
     main()

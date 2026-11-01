@@ -16,3 +16,12 @@ only calling the method fails. An instrumented controller check also invokes
 `Players::getPlayerFromCharacter(actor)` directly and obtains the local Player,
 so the observed failure lies in the Lua/member-call boundary or argument/result
 conversion, not the native player lookup itself. Further trace is required.
+
+Instrumented call boundary reported `Unable to cast Object to Instance`.
+Generic Value::convert had displaced the recovered 0056f8c0 specialization;
+its existing source now compiles in glue with an explicit declaration, and
+Lua lookup returns the local Player. Bridge metatable checks also left eight
+extra Lua stack entries on this path; the overlay now balances the stack.
+`--p5-lua-object-check` exercises conversion, object identity and stack depth.
+The original Animate script advances to the missing Climbing signal, so its
+full functionality remains open.

@@ -34,6 +34,7 @@ extern "C" void SetPlayerTestKey(int);
 extern "C" int CheckPlayerController();
 extern "C" int CheckShortTimer();
 extern "C" int CheckNativeMD5();
+extern "C" int CheckLuaObjectConversion();
 extern "C" int CheckFreefallTransitions();
 extern "C" int GetActorTorsoPosition(float*,float*,float*);
 extern "C" void ClosePlace();
@@ -689,6 +690,7 @@ int main(int argc, char** argv)
     bool p5LiveObserve = false;
     bool p5ClockCheck = false;
     bool p5HashCheck = false;
+    bool p5LuaObjectCheck = false;
     bool p5FreefallCheck = false;
     bool anchorTrace = false;
     bool anchorFlagsTest = false;
@@ -714,6 +716,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
         else if (std::strcmp(argv[i], "--p5-clock-check") == 0) p5ClockCheck = true;
         else if (std::strcmp(argv[i], "--p5-hash-check") == 0) p5HashCheck = true;
+        else if (std::strcmp(argv[i], "--p5-lua-object-check") == 0) p5LuaObjectCheck = true;
         else if (std::strcmp(argv[i], "--p5-freefall-check") == 0) p5FreefallCheck = true;
         else if (std::strcmp(argv[i], "--p5-controller-check") == 0) {p5Control=true;p5ControllerCheck=true;}
         else if (std::strcmp(argv[i], "--p5-input-test") == 0) {p5Control=true;p5InputTest=true;}
@@ -769,6 +772,7 @@ int main(int argc, char** argv)
     }
     if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);}
 
+    if(p5LuaObjectCheck){int result=CheckLuaObjectConversion();std::printf("Lua object conversion: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5FreefallCheck){int result=CheckFreefallTransitions();std::printf("freefall transitions: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5Join && BuildPlayerJoints()){std::printf("actor joint build failed\n");ClosePlace();return 1;}
     if(p5Control && AttachPlayerController(p5Spawn?1:0)){std::printf("local controller attach failed\n");ClosePlace();return 1;}
