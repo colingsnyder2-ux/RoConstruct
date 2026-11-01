@@ -1,6 +1,6 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with ten real Codex agents (Worker 19)
+## Native source recovery with real Codex agents (Worker 23)
 
 For tool-using batch recovery, open `roc gui`, choose **Workers → Integrator →
 10 Codex agents · shared native files**, select your signed-in Codex model and
@@ -10,7 +10,7 @@ method-generation mode; it does not merge into shared native folders.
 Equivalent CLI (worker count defaults to ten):
 
 ```text
-roc integrator --generation agent --model codex:gpt-6-luna --workers 10 --compile-workers 2 --agent-minutes 4 --agent-checks 6 --max-cloud-requests 10 --allow-cloud
+roc integrator --generation agent --model codex:gpt-6.1-terra --workers 10 --compile-workers 2 --agent-minutes 4 --agent-checks 6 --max-cloud-requests 10 --allow-cloud
 ```
 
 Real Codex subprocesses read original assembly/RTTI and genuine headers, edit private
@@ -54,7 +54,31 @@ a manifest alone is not a recoverable C++ body. An explicit `add_method: true` t
 may append one missing qualified definition to an existing source; its genuine header
 declaration must already exist and compile. It cannot add fields or declarations.
 
-Method claims are atomic across local sessions in `work/native-recovery/claims.sqlite`.
+Worker 23 collaborates across PCs using the **same server URL**. Server method
+leases last 120 seconds and renew every 20 seconds, including baseline compilation.
+An expired/replaced lease cannot upload, renew or release another worker's method.
+Local SQLite still protects multiple sessions on one PC. An older server prints a
+local-only warning; update/restart the host before relying on cross-PC coordination.
+
+The server publishes its current native source/header catalog, so classes added by
+owners become available without downloading another compiler or waiting for a new
+Worker ZIP. Agents compile private server snapshots. New host files can be created
+locally; existing local files are never replaced wholesale. A proven body uses the
+same guarded merge against current local headers. Header tasks edit existing public
+inline/out-of-line method bodies only; private force-emission probes use genuine
+member declarations. Fields, bases, signatures and layouts remain owner-only.
+
+Candidates upload into the host's file inbox and independent native recheck queue.
+The host preserves concurrent body/header edits, rejects wrong known imports, and
+retains unresolved imported callees for owner review. Host-verified source merges
+post a batched **report-only, zero-credit** milestone to the configured mining
+webhook. Already-exact, failed and conflicting tasks do not post gain reports.
+The Integrator resumes supported canonical mappings through existing linked
+preflight/submission/acceptance; keep it running to finish that stage. Missing
+class linkage stays pending. No contributor text is queued into a coding chat.
+
+The agent preset selects Terra when no explicit Codex model was chosen and caps
+the initial batch at ten agent launches; explicit model choices are preserved.
 Snapshots/proofs use a persistent short path printed at startup (Windows:
 `%LOCALAPPDATA%/RoConstruct/nr/<session-hash>`), avoiding historical MSVC path limits.
 Restarting the same GUI session retains private work; expired claims can be recovered.
