@@ -2124,3 +2124,6 @@ Native Instance hierarchy candidate at 5ac7039870 uses GuidItem primary base, or
 
 
 Native ServiceProvider candidate at c1aedcaf36 builds on native Instance and original three-notifier RTTI. MSVC21022 confirms size0x1c8, serviceArray0x190 and serviceMap0x1a8, matching original00568bf0 member boundaries. Existing source supplies container type candidates; virtual behavior and ownership still require proof. Receipt shared-layouts/service-compile.json. Inactive; no runtime change.
+
+
+Native DataModel base probe at 5c3a4c18bd combines recovered Instance/ServiceProvider, VerbContainer, IDataState, Evaluator and RunTransition listener. MSVC21022 reproduces original RTTI offsets 0x1c8/0x1f0/0x1f4/0x1f8 and base extent0x1fc. Split native VerbContainer declaration avoids donor StateStack-based IDataState; existing constructor source matches original00583460, 40 bytes with relocations masked. Reproduce record_native_datamodel_bases.py; receipt shared-layouts/datamodel-bases.json. Probe omits DataModel members; none of these classes are active or yet proven behaviorally complete.
