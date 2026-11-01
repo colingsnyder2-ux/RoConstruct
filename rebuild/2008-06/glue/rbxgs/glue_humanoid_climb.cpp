@@ -11,7 +11,10 @@
 #include "util/Math.h"
 #include <G3D/Ray.h>
 #include <cmath>
-namespace RBX { bool DetectClimb(Humanoid*); }
+namespace RBX {
+    bool DetectClimb(Humanoid*);
+    void ApplyRunningBaseForce(Humanoid*, PartInstance*, const G3D::Vector3&, const G3D::Vector3&, float, const G3D::Vector3&, float, float);
+}
 // 00644a30 / 00644c80: candidate box and vertical obstruction ray sweep.
 class ClimbRayFilter : public RBX::HitTestFilter {
     const RBX::Humanoid* humanoid;
@@ -74,22 +77,15 @@ public:
     }
     virtual void onComputeForce(float dt) {
         Balancing::onComputeForce(dt);
-        Body* root=humanoid->getRootBody();
-        if(!root || !humanoid->getTorsoBody())return;
-        float mass=root->getBranchMass();if(mass<=0)return;
-        const Velocity& velocity=root->getVelocity();
-        float inertia=root->getBranchIBodyV3().y;
-        float torque=((humanoid->getWalkRotationalVelocity()*4.0f+desiredRotation)-velocity.rotational.y)*inertia*7500.0f-root->getBranchTorque().y;
-        root->accumulateTorque(G3D::Vector3(0,G3D::clamp(torque,-inertia*160000.0f,inertia*160000.0f),0));
-        G3D::Vector3 current=root->getBranchForce()/mass;
-        G3D::Vector3 acceleration((desiredVelocity.x-velocity.linear.x)*1250.0f,
-            desiredVelocity.y>0?(desiredVelocity.y-velocity.linear.y)*1250.0f:current.y,
-            (desiredVelocity.z-velocity.linear.z)*1250.0f);
-        acceleration-=current;
-        acceleration.x=G3D::clamp(acceleration.x,-1000.0f,1000.0f);
-        acceleration.y=G3D::clamp(acceleration.y,0.0f,10000.0f);
-        acceleration.z=G3D::clamp(acceleration.z,-1000.0f,1000.0f);
-        root->accumulateForceAtBranchCofm(acceleration*mass);
+        G3D::Vector3 floorVelocity=G3D::Vector3::zero();
+        float floorRotation=0;
+        if (floorPart) {
+            const PV& floor=floorPart->getPrimitive()->getBody()->getPV();
+            floorVelocity=floor.linearVelocityAtPoint(floorTouchInWorld);
+            floorRotation=floor.velocity.rotational.y;
+        }
+        ApplyRunningBaseForce(humanoid,floorPart.get(),floorTouchInWorld,floorVelocity,floorRotation,
+            desiredVelocity,desiredRotation,floorPart ? floorTouchInWorld.y+3.0f : 0.0f);
     }
 };
 // 006451c0 / 00643bc0 / 00643c20: limb flags for climb and running.

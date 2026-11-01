@@ -380,13 +380,7 @@ extern "C" void StartPlay()
     g_playing = true;
 }
 
-// The donor humanoid needs one internal update per 60 Hz physics step.
-// Lua Stepped and Heartbeat use the original observed 30 Hz cadence.
-void RBX::RunService::raiseSteppedCompat(float time, float step)
-{
-    Notifier<RunService, Stepped>::raise(Stepped(time, step));
-}
-
+// The original exposes Stepped and Heartbeat at 30 Hz; physics remains 60 Hz.
 extern "C" void StepEngine(float dt)
 {
     if (!g_dataModel) return;
@@ -394,13 +388,12 @@ extern "C" void StepEngine(float dt)
     float stepped = g_dataModel->step(dt);
     if (!g_playing) return;
     RBX::RunService* run = RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get());
-    run->raiseSteppedCompat(g_dataModel->getSimTime(), stepped);
     g_eventElapsed += dt;
     g_eventStepped += stepped;
     if (g_eventElapsed >= 1.0f / 30.0f) {
         float interval = g_eventElapsed, simulated = g_eventStepped;
         g_eventElapsed = g_eventStepped = 0.0f;
-        RBX::RunService::event_Stepped.fire(run, g_dataModel->getSimTime(), simulated);
+        run->raiseStepped(g_dataModel->getSimTime(), simulated);
         run->raiseHeartbeat(g_dataModel->getSimTime(), interval);
     }
 }

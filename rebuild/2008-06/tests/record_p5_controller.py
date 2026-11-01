@@ -35,7 +35,7 @@ def fixed(out, name, fixture, extra):
     expected=[(0,1.5,0),(-1.5,0,0),(1.5,0,0),(-.5,-2,0),(.5,-2,0)]
     for position,relative in zip(positions[2:],expected):
         assert max(abs(position[i]-torso[i]-relative[i]) for i in range(3))<.05, (name,positions)
-    assert abs(torso[1]-2.8)<.06, (name,torso)
+    assert abs(torso[1]-3.0)<.06, (name,torso)
     return {'exit':run.returncode,'positions':positions,'fixture_sha256':sha(FIXTURES/fixture),
             'snapshot_sha256':sha(folder/'place_snapshot.csv')}
 
@@ -96,7 +96,7 @@ def live(out):
     data={key:float(value) for key,value in row.items()}
     assert data['actor_end_z']-data['actor_start_z'] < -3, data
     assert data['camera_end_y']-data['camera_start_y'] > 1, data
-    assert abs(data['actor_end_y']-2.8)<.15, data
+    assert abs(data['actor_end_y']-3.0)<.15, data
     assert 'mesh cleanup: levels=0 refs=0 backends=0 spheres=0' in (folder/'stdout.txt').read_text()
     return {'exit':run.returncode,'forced':forced,'observation':data,'observation_sha256':sha(folder/'p5_live.csv')}
 

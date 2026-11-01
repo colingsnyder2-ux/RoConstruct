@@ -50,8 +50,8 @@ def main():
             assert int(rows[1]['source_indices']) == 1944 and int(rows[1]['backend_indices']) == 2916
             assert 'native mesh: producer=00500180' in run.stdout
             torso = [float(rows[2][k]) for k in ('x','y','z')]
-            assert abs(torso[1] - 2.8) < .1
-            assert (24 < torso[2] < 27) if name == 'idle' else (8 < torso[2] < 11)
+            assert abs(torso[1] - 3.0) < .1
+            assert (24 < torso[2] < 27) if name == 'idle' else (10 < torso[2] < 14)
             receipt['runs'][name] = {'exit': run.returncode, 'torso': torso, 'head_mesh_status': 0, 'snapshot_sha256': sha(folder/'place_snapshot.csv')}
             continue
         receipt['runs'][name] = {'exit': run.returncode}

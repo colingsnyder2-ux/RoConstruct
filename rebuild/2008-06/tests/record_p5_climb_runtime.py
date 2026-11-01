@@ -17,10 +17,10 @@ def main():
              'exe_sha256':sha(EXE),'observer_sha256':sha(Path(__file__)),'P5_complete':False,
              'scope':'Reconstructed climb state using recovered sensor, velocity and force formulas.',
              'remaining':['Original-client comparison','Native transition and solver parity','Full animation, sound and camera'],'cases':{}}
-    for name,fixture,frames,pressed in [('climb','p5-climb-runtime-stable.rbxl',18,True),
-                                         ('exit','p5-climb-runtime-stable.rbxl',30,True),
-                                         ('control','p5-climb-runtime-stable-control.rbxl',18,True),
-                                         ('idle','p5-climb-runtime-stable.rbxl',30,False)]:
+    for name,fixture,frames,pressed in [('climb','p5-climb-runtime-stable.rbxl',30,True),
+                                         ('exit','p5-climb-runtime-stable.rbxl',60,True),
+                                         ('control','p5-climb-runtime-stable-control.rbxl',30,True),
+                                         ('idle','p5-climb-runtime-stable.rbxl',60,False)]:
         folder=out/name;folder.mkdir();path=FIXTURES/fixture
         args=[str(EXE),'--p5-climb-observe']+(['--p5-input-test'] if pressed else [])+['--frames',str(frames),'--inspect-place',str(path)]
         run=subprocess.run(args,cwd=folder,capture_output=True,text=True,timeout=60)
