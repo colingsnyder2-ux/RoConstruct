@@ -16,8 +16,8 @@ They are evidence about the executable, not yet linked into this player.
 
 Current glue_runtime.cpp runProc is a reconstruction: it steps, emits both
 notifications, invalidates views and sleeps on a simpler loop. The player test
-harness StepEngine separately accumulates two 60 Hz physics steps per 30 Hz
-event pair. Passing cadence or character comparisons does not prove either
+harness StepEngine batches elapsed render time into 30 Hz DataModel steps and
+event pairs; the donor world performs its own fixed substeps. Passing cadence or character comparisons does not prove either
 loop has original scheduling, view synchronization, run-mode behavior, or
 camera/backpack heartbeat behavior. The original uses different class layouts;
 source must be adapted with explicit behavior and lifetime tests before use.

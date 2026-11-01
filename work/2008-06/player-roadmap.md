@@ -1345,3 +1345,21 @@ closure still required forced termination. Rider lag and differing joint
 construction remain. This change batches donor physics but does not integrate
 the native scheduler, world stages, view synchronization or run-mode logic;
 see p5-native-frame-loop-trace.md. P5 and later milestones remain open.
+
+## P5 checkpoint: scaled standing altitude (11f424ae13)
+
+Adapted original 00643360: desired standing height is floor-contact Y plus
+half torso grid height plus left-leg grid height, or right-leg height if left
+is absent. The 0.5 factor comes from executable float 0x819bac. The prior
+constant 3 only handled standard dimensions. An authored 4-stud-leg walking
+character matches original within existing bounded comparisons: rebuilt torso
+settles at 5.000, original around 4.905; standard walk and moving-floor
+comparisons also pass. Right-leg fallback is source-derived but not separately
+exercised. Normal timing, floor, force, controller, climb, spawn, combined and
+P0 checks pass. Receipts: p5-altitude-11f4-*.
+
+A separate diagnostic starting the tall actor touching the floor reproduced a
+locked torso and access-violation shutdown twice (0xc0000005), after mesh
+cleanup. See p5-altitude-11f4-initial-contact/; fixture and receipt saved.
+Cause and original behavior are unverified. Keep this failure open alongside
+native scheduler, physics/state parity and later roadmap milestones.
