@@ -38,7 +38,7 @@ try:
     while idx>=0:hits[n].append(start+idx);idx=data.find(needle,idx+1)
   addr=start+size
  assert all(len(group)>=2 for group in hits)
- u.SetForegroundWindow(h);time.sleep(.4);rect=wintypes.RECT();assert u.GetWindowRect(h,ctypes.byref(rect)) and u.GetForegroundWindow()==h
+ u.ShowWindow(h,9);u.SetForegroundWindow(h);time.sleep(.4);rect=wintypes.RECT();assert u.GetWindowRect(h,ctypes.byref(rect)) and u.GetForegroundWindow()==h
  # The run toolbar button's location is checked against this known 816x638 window.
  assert rect.right-rect.left>=800 and rect.bottom-rect.top>=600
  u.SetCursorPos(rect.left+390,rect.top+70);u.mouse_event(2,0,0,0,0);u.mouse_event(4,0,0,0,0)

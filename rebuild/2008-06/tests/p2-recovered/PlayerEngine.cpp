@@ -262,7 +262,8 @@ extern "C" int CheckFreefallTransitions()
     RBX::ModelInstance* actor=dynamic_cast<RBX::ModelInstance*>(g_dataModel->getWorkspace()->findFirstChildByName("Actor"));
     RBX::Humanoid* humanoid=actor?RBX::Humanoid::modelIsCharacter(actor):NULL;
     if(!humanoid || !humanoid->getHead() || !humanoid->getTorso())return 2;
-    g_dataModel->getWorkspace()->getWorld()->update();
+    // Recovered SleepStage creates an assembly job when wake-pending advances.
+    g_dataModel->step(1.0f/60.0f);
     RBX::Assembly* assembly=humanoid->getTorsoPrimitive()->getAssembly();
     if(!assembly || !dynamic_cast<RBX::AssemblyJob*>(assembly->getJob()) ||
        assembly->getJob()->getAssembly()!=assembly)return 5;
@@ -588,6 +589,7 @@ extern "C" void GetBrickAnchorFlags(int* dragging,int* aggregate)
 // Exercise all flag combinations while the Part is in Workspace.
 extern "C" int CheckBrickAnchorFlags()
 {
+    typedef char GroundJointSizes[(sizeof(RBX::AnchorJoint)==0x88 && sizeof(RBX::FreeJoint)==0x88)?1:-1];
     if (!g_brick || !g_dataModel) return 1;
     RBX::DataModel::Lock lock(g_dataModel);
     RBX::Primitive* primitive=g_brick->getPrimitive();
@@ -598,12 +600,22 @@ extern "C" int CheckBrickAnchorFlags()
         primitive->setFlag0xaa((bits&4)!=0);
         bool aggregate=bits!=0;
         if (g_brick->getDragging()!=((bits&1)!=0) || g_brick->getAnchored()!=((bits&2)!=0) ||
-            primitive->getAnchor()!=aggregate || (primitive->getAnchorObject()!=NULL)!=aggregate) return 2;
+            primitive->getAnchor()!=aggregate) return 2;
+        int anchors=0,free=0;
+        for(RBX::Joint* joint=primitive->getFirstJoint();joint; joint=primitive->getNextJoint(joint)) {
+            anchors+=joint->getJointType()==RBX::Joint::ANCHOR_JOINT;
+            free+=joint->getJointType()==RBX::Joint::FREE_JOINT;
+        }
+        if(anchors!=int(aggregate) || free!=int(!aggregate))return 4;
+        g_dataModel->getWorkspace()->getWorld()->update();
+        if(!primitive->getAssembly() || primitive->getAssembly()->getAnchored()!=aggregate)return 5;
     }
     primitive->setFlag0xaa(false);
     g_brick->setDragging(false);
     g_brick->setAnchored(false);
-    return primitive->getAnchorObject() || primitive->getAnchor() ? 3 : 0;
+    g_dataModel->getWorkspace()->getWorld()->update();
+    std::printf("ground joint swap: PASS\n");
+    return primitive->getAnchor() ? 3 : 0;
 }
 
 extern "C" int GetBrickAnchored()

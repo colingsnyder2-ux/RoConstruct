@@ -673,176 +673,184 @@
  ],
  "App/include/v8world/Primitive.h": [
   [
-   "\tclass EdgeList\n\t{\n\tpublic:\n\t\tRBX::Edge* first;\n\t\tint num;\n  \n\tpublic:\n\t\tEdgeList() : num(0), first(NULL) {}\n\t\t~EdgeList()\n\t\t{\n\t\t\tRBXASSERT(!first);\n\t\t\tRBXASSERT(!num);\n\t\t}\n\tpublic:\n\t\tbool hasEdge();\n  \n\tpublic:\n\t\tstatic void insertEdge(Primitive*, Edge*, EdgeList&);\n\t\tstatic void removeEdge(Primitive*, Edge*, EdgeList&);\n\t};\n",
-   "\tclass EdgeList\n\t{\n\tpublic:\n\t\tPrimitive* owner;\n\t\tG3D::Array<Edge*> edges;\n\t\tG3D::Array<Primitive*> neighbors; // the other primitive of each edge\n\n\tpublic:\n\t\tEdgeList(Primitive* owner) : owner(owner) {}\n\n\t\tbool hasEdge();\n\t\tvoid insertEdge(Edge* e);\n\t\tvoid removeEdge(Edge* e);\n\t\tEdge* first() const;\n\t\tEdge* next(Edge* e) const;\n\t};\n"
+    "\tclass EdgeList\n\t{\n\tpublic:\n\t\tRBX::Edge* first;\n\t\tint num;\n  \n\tpublic:\n\t\tEdgeList() : num(0), first(NULL) {}\n\t\t~EdgeList()\n\t\t{\n\t\t\tRBXASSERT(!first);\n\t\t\tRBXASSERT(!num);\n\t\t}\n\tpublic:\n\t\tbool hasEdge();\n  \n\tpublic:\n\t\tstatic void insertEdge(Primitive*, Edge*, EdgeList&);\n\t\tstatic void removeEdge(Primitive*, Edge*, EdgeList&);\n\t};\n",
+    "\tclass EdgeList\n\t{\n\tpublic:\n\t\tPrimitive* owner;\n\t\tG3D::Array<Edge*> edges;\n\t\tG3D::Array<Primitive*> neighbors; // the other primitive of each edge\n\n\tpublic:\n\t\tEdgeList(Primitive* owner) : owner(owner) {}\n\n\t\tbool hasEdge();\n\t\tvoid insertEdge(Edge* e);\n\t\tvoid removeEdge(Edge* e);\n\t\tEdge* first() const;\n\t\tEdge* next(Edge* e) const;\n\t};\n"
   ],
   [
-   "\t\tbool guidSetExternally;\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n\t\tint traverseId;\n",
-   "\t\tbool guidSetExternally;\n\t\tint unknown0x14; // 0x5e8770 initializes this to 1; purpose unknown\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tint traverseId;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n"
+    "\t\tbool guidSetExternally;\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n\t\tint traverseId;\n",
+    "\t\tbool guidSetExternally;\n\t\tint unknown0x14; // 0x5e8770 initializes this to 1; joint size multiplier (00668bb0)\n\t\tEdgeList contacts;\n\t\tEdgeList joints;\n\t\tint worldIndex;\n\t\tint traverseId;\n\t\tWorld* world;\n\t\tClump* clump;\n\t\tint clumpDepth;\n"
   ],
   [
-   "\t\tIMoving* myOwner;\n\t\tAnchor* anchorObject;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool canCollide;\n\t\tbool canSleep;\n",
-   "\t\tIMoving* myOwner;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool flag0xaa; // 0xaa: third of the dragging/anchored set (exact 0x5e8140); name unknown\n\t\tbool canSleep;\n\t\tbool canCollide;\n"
+    "\t\tIMoving* myOwner;\n\t\tAnchor* anchorObject;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool canCollide;\n\t\tbool canSleep;\n",
+    "\t\tIMoving* myOwner;\n\t\tbool dragging;\n\t\tbool anchored;\n\t\tbool flag0xaa; // 0xaa: third of the dragging/anchored set (exact 0x5e8140); name unknown\n\t\tbool canSleep;\n\t\tbool canCollide;\n"
   ],
   [
-   "\t\t\treturn anchorObject != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject()\n\t\t{\n\t\t\treturn anchorObject;\n\t\t}\n",
-   "\t\t\treturn dragging || anchored || flag0xaa;\n\t\t}\n\t\tbool getAnchoredProperty() const { return anchored; }\n\t\tAnchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)\n\t\tvoid setAnchorObject(Anchor* anchor);\n"
+    "\t\t\treturn anchorObject != NULL;\n\t\t}\n\t\tAnchor* getAnchorObject()\n\t\t{\n\t\t\treturn anchorObject;\n\t\t}\n",
+    "\t\t\treturn dragging || anchored || flag0xaa;\n\t\t}\n\t\tbool getAnchoredProperty() const { return anchored; }\n"
   ],
   [
-   "\t\t\treturn joints.num;",
-   "\t\t\treturn joints.edges.size();"
+    "\t\t\treturn joints.num;",
+    "\t\t\treturn joints.edges.size();"
   ],
   [
-   "\t\t\treturn contacts.num;",
-   "\t\t\treturn contacts.edges.size();"
+    "\t\t\treturn contacts.num;",
+    "\t\t\treturn contacts.edges.size();"
   ],
   [
-   "\t\tvoid setGuid(const Guid&);\n",
-   "\t\tvoid setGuid(const Guid&);\n\t\tvoid setUnknown0x14(int value); // 0x5e7420\n"
+    "\t\tvoid setGuid(const Guid&);\n",
+    "\t\tvoid setGuid(const Guid&);\n\t\tvoid setUnknown0x14(int value); // 0x5e7420\n"
   ],
   [
-   "\t\t\t// TODO: get this fully matching\n\t\t\t// check RotateJoint::getChannelValue\n\t\t\tconst SurfaceData* data = surfaceData[id];\n\t\t\treturn data ? *data : SurfaceData::empty();\n",
-   "\t\t\tif (!surfaceData[id])\n\t\t\t\treturn SurfaceData::empty();\n\t\t\telse\n\t\t\t\treturn *surfaceData[id];\n"
+    "\t\t\t// TODO: get this fully matching\n\t\t\t// check RotateJoint::getChannelValue\n\t\t\tconst SurfaceData* data = surfaceData[id];\n\t\t\treturn data ? *data : SurfaceData::empty();\n",
+    "\t\t\tif (!surfaceData[id])\n\t\t\t\treturn SurfaceData::empty();\n\t\t\telse\n\t\t\t\treturn *surfaceData[id];\n"
   ],
   [
-   "\t\tvoid setAnchor(bool _anchored);\n",
-   "\t\tvoid setAnchor(bool _anchored);\n\t\tvoid setFlag0xaa(bool value); // 0x5e8140\n"
+    "\t\tvoid setAnchor(bool _anchored);\n",
+    "\t\tvoid setAnchor(bool _anchored);\n\t\tvoid setFlag0xaa(bool value); // 0x5e8140\n"
+  ],
+  [
+    "\t\tvoid setUnknown0x14(int value); // 0x5e7420",
+    "\t\tvoid setUnknown0x14(int value); // 0x5e7420\n\t\tunsigned int getSizeMultiplier() const { return static_cast<unsigned int>(unknown0x14); } // 00668bb0 reads +0x14"
   ]
- ],
+],
  "App/v8world/Primitive.cpp": [
   [
-   "\t\t\tRBXASSERT(!anchorObject);\n\t\t\tanchorObject = new Anchor(this);",
-   "\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));"
+    "\t\t\tRBXASSERT(!anchorObject);\n\t\t\tanchorObject = new Anchor(this);",
+    "\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));"
   ],
   [
-   "\t\t\tRBXASSERT(anchorObject);",
-   "\t\t\tRBXASSERT(getAnchorObject());"
+    "\t\t\tRBXASSERT(anchorObject);",
+    "\t\t\tRBXASSERT(getAnchorObject());"
   ],
   [
-   "\t\t\tif (anchorObject)\n\t\t\t\tdelete anchorObject;\n\n\t\t\tanchorObject = NULL;",
-   "\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);"
+    "\t\t\tif (anchorObject)\n\t\t\t\tdelete anchorObject;\n\n\t\t\tanchorObject = NULL;",
+    "\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);"
   ],
   [
-   "\t\tmyOwner(NULL),\n\t\tanchorObject(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n",
-   "\t\tmyOwner(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n\t\tflag0xaa(false),\n"
+    "\t\tmyOwner(NULL),\n\t\tanchorObject(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n",
+    "\t\tmyOwner(NULL),\n\t\tdragging(false),\n\t\tanchored(false),\n\t\tflag0xaa(false),\n"
   ],
   [
-   "\t\tspatialNodes(NULL),\n\t\tworldIndex(-1),\n",
-   "\t\tspatialNodes(NULL),\n\t\tunknown0x14(1),\n\t\tcontacts(this),\n\t\tjoints(this),\n\t\tworldIndex(-1),\n"
+    "\t\tspatialNodes(NULL),\n\t\tworldIndex(-1),\n",
+    "\t\tspatialNodes(NULL),\n\t\tunknown0x14(1),\n\t\tcontacts(this),\n\t\tjoints(this),\n\t\tworldIndex(-1),\n"
   ],
   [
-   "\t\treturn joints.first ? joints.first : contacts.first;",
-   "\t\treturn joints.edges.size() ? joints.first() : contacts.first();"
+    "\t\treturn joints.first ? joints.first : contacts.first;",
+    "\t\treturn joints.edges.size() ? joints.first() : contacts.first();"
   ],
   [
-   "\t\treturn rbx_static_cast<Joint*>(joints.first);",
-   "\t\treturn rbx_static_cast<Joint*>(joints.first());"
+    "\t\treturn rbx_static_cast<Joint*>(joints.first);",
+    "\t\treturn rbx_static_cast<Joint*>(joints.first());"
   ],
   [
-   "\t\treturn rbx_static_cast<Contact*>(contacts.first);",
-   "\t\treturn rbx_static_cast<Contact*>(contacts.first());"
+    "\t\treturn rbx_static_cast<Contact*>(contacts.first);",
+    "\t\treturn rbx_static_cast<Contact*>(contacts.first());"
   ],
   [
-   "\t\treturn rbx_static_cast<Joint*>(prev->getNext(this));",
-   "\t\treturn rbx_static_cast<Joint*>(joints.next(prev));"
+    "\t\treturn rbx_static_cast<Joint*>(prev->getNext(this));",
+    "\t\treturn rbx_static_cast<Joint*>(joints.next(prev));"
   ],
   [
-   "\t\treturn rbx_static_cast<Contact*>(prev->getNext(this));",
-   "\t\treturn rbx_static_cast<Contact*>(contacts.next(prev));"
+    "\t\treturn rbx_static_cast<Contact*>(prev->getNext(this));",
+    "\t\treturn rbx_static_cast<Contact*>(contacts.next(prev));"
   ],
   [
-   "\t\tEdge* next = e->getNext(this);\n\n\t\tif (next)\n\t\t\treturn next;\n\t\telse\n\t\t\treturn Joint::isJoint(e) ? contacts.first : NULL;",
-   "\t\tif (Joint::isJoint(e))\n\t\t{\n\t\t\tEdge* next = joints.next(e);\n\t\t\treturn next ? next : contacts.first();\n\t\t}\n\t\treturn contacts.next(e);"
+    "\t\tEdge* next = e->getNext(this);\n\n\t\tif (next)\n\t\t\treturn next;\n\t\telse\n\t\t\treturn Joint::isJoint(e) ? contacts.first : NULL;",
+    "\t\tif (Joint::isJoint(e))\n\t\t{\n\t\t\tEdge* next = joints.next(e);\n\t\t\treturn next ? next : contacts.first();\n\t\t}\n\t\treturn contacts.next(e);"
   ],
   [
-   "@all:EdgeList::insertEdge(p0, e, e->getPrimitive(0)->joints);",
-   "e->getPrimitive(0)->joints.insertEdge(e);"
+    "@all:EdgeList::insertEdge(p0, e, e->getPrimitive(0)->joints);",
+    "e->getPrimitive(0)->joints.insertEdge(e);"
   ],
   [
-   "@all:EdgeList::insertEdge(p1, e, e->getPrimitive(1)->joints);",
-   "e->getPrimitive(1)->joints.insertEdge(e);"
+    "@all:EdgeList::insertEdge(p1, e, e->getPrimitive(1)->joints);",
+    "e->getPrimitive(1)->joints.insertEdge(e);"
   ],
   [
-   "@all:EdgeList::insertEdge(p0, e, e->getPrimitive(0)->contacts);",
-   "e->getPrimitive(0)->contacts.insertEdge(e);"
+    "@all:EdgeList::insertEdge(p0, e, e->getPrimitive(0)->contacts);",
+    "e->getPrimitive(0)->contacts.insertEdge(e);"
   ],
   [
-   "@all:EdgeList::insertEdge(p1, e, e->getPrimitive(1)->contacts);",
-   "e->getPrimitive(1)->contacts.insertEdge(e);"
+    "@all:EdgeList::insertEdge(p1, e, e->getPrimitive(1)->contacts);",
+    "e->getPrimitive(1)->contacts.insertEdge(e);"
   ],
   [
-   "@all:EdgeList::removeEdge(p0, e, e->getPrimitive(0)->joints);",
-   "e->getPrimitive(0)->joints.removeEdge(e);"
+    "@all:EdgeList::removeEdge(p0, e, e->getPrimitive(0)->joints);",
+    "e->getPrimitive(0)->joints.removeEdge(e);"
   ],
   [
-   "@all:EdgeList::removeEdge(p1, e, e->getPrimitive(1)->joints);",
-   "e->getPrimitive(1)->joints.removeEdge(e);"
+    "@all:EdgeList::removeEdge(p1, e, e->getPrimitive(1)->joints);",
+    "e->getPrimitive(1)->joints.removeEdge(e);"
   ],
   [
-   "@all:EdgeList::removeEdge(p0, e, e->getPrimitive(0)->contacts);",
-   "e->getPrimitive(0)->contacts.removeEdge(e);"
+    "@all:EdgeList::removeEdge(p0, e, e->getPrimitive(0)->contacts);",
+    "e->getPrimitive(0)->contacts.removeEdge(e);"
   ],
   [
-   "@all:EdgeList::removeEdge(p1, e, e->getPrimitive(1)->contacts);",
-   "e->getPrimitive(1)->contacts.removeEdge(e);"
+    "@all:EdgeList::removeEdge(p1, e, e->getPrimitive(1)->contacts);",
+    "e->getPrimitive(1)->contacts.removeEdge(e);"
   ],
   [
-   "\tvoid EdgeList::insertEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\te->setNext(p, list.first);\n\t\tlist.first = e;\n\t\tlist.num++;\n\t}\n\n\tvoid EdgeList::removeEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\tEdge* currentEdge = list.first;\n\n\t\tif (list.first == e)\n\t\t{\n\t\t\tlist.first = e->getNext(p);\n\t\t}\n\t\telse\n\t\t{\n\t\t\twhile (currentEdge->getNext(p) != e)\n\t\t\t{\n\t\t\t\tcurrentEdge = currentEdge->getNext(p);\n\t\t\t}\n\n\t\t\tcurrentEdge->setNext(p, e->getNext(p));\n\t\t}\n\n\t\tlist.num--;\n\t}\n",
-   "\tvoid EdgeList::insertEdge(Edge* e)\n\t{\n\t\te->setIndex(owner, edges.size());\n\t\tedges.append(e);\n\t\tneighbors.append(e->otherPrimitive(owner));\n\t}\n\n\tvoid EdgeList::removeEdge(Edge* e)\n\t{\n\t\tint index = e->getIndex(owner);\n\t\tEdge* lastEdge = edges.last();\n\t\tPrimitive* lastNeighbor = neighbors.last();\n\t\tedges[index] = lastEdge;\n\t\tneighbors[index] = lastNeighbor;\n\t\tedges.popDiscard();\n\t\tneighbors.popDiscard();\n\t\tlastEdge->setIndex(owner, index);\n\t\te->setIndex(owner, -1);\n\t}\n\n\tEdge* EdgeList::first() const\n\t{\n\t\treturn edges.size() ? edges[0] : NULL;\n\t}\n\n\tEdge* EdgeList::next(Edge* e) const\n\t{\n\t\tint i = e->getIndex(owner) + 1;\n\t\treturn i < edges.size() ? edges[i] : NULL;\n\t}\n"
+    "\tvoid EdgeList::insertEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\te->setNext(p, list.first);\n\t\tlist.first = e;\n\t\tlist.num++;\n\t}\n\n\tvoid EdgeList::removeEdge(Primitive* p, Edge* e, EdgeList& list)\n\t{\n\t\tEdge* currentEdge = list.first;\n\n\t\tif (list.first == e)\n\t\t{\n\t\t\tlist.first = e->getNext(p);\n\t\t}\n\t\telse\n\t\t{\n\t\t\twhile (currentEdge->getNext(p) != e)\n\t\t\t{\n\t\t\t\tcurrentEdge = currentEdge->getNext(p);\n\t\t\t}\n\n\t\t\tcurrentEdge->setNext(p, e->getNext(p));\n\t\t}\n\n\t\tlist.num--;\n\t}\n",
+    "\tvoid EdgeList::insertEdge(Edge* e)\n\t{\n\t\te->setIndex(owner, edges.size());\n\t\tedges.append(e);\n\t\tneighbors.append(e->otherPrimitive(owner));\n\t}\n\n\tvoid EdgeList::removeEdge(Edge* e)\n\t{\n\t\tint index = e->getIndex(owner);\n\t\tEdge* lastEdge = edges.last();\n\t\tPrimitive* lastNeighbor = neighbors.last();\n\t\tedges[index] = lastEdge;\n\t\tneighbors[index] = lastNeighbor;\n\t\tedges.popDiscard();\n\t\tneighbors.popDiscard();\n\t\tlastEdge->setIndex(owner, index);\n\t\te->setIndex(owner, -1);\n\t}\n\n\tEdge* EdgeList::first() const\n\t{\n\t\treturn edges.size() ? edges[0] : NULL;\n\t}\n\n\tEdge* EdgeList::next(Edge* e) const\n\t{\n\t\tint i = e->getIndex(owner) + 1;\n\t\treturn i < edges.size() ? edges[i] : NULL;\n\t}\n"
   ],
   [
-   "",
-   "\nnamespace RBX {\n    // 0x5e7420: int +0x14, guarded by world +0x58 (clump is +0x5c).\n    void Primitive::setUnknown0x14(int value)\n    {\n        if (value != unknown0x14 && !world)\n            unknown0x14 = value;\n    }\n}\n"
+    "",
+    "\nnamespace RBX {\n    // 0x5e7420: int +0x14, guarded by world +0x58 (clump is +0x5c).\n    void Primitive::setUnknown0x14(int value)\n    {\n        if (value != unknown0x14 && !world)\n            unknown0x14 = value;\n    }\n}\n"
   ],
   [
-   "\tPrimitive::~Primitive()\n\t{\n\t\tGeometry::GeometryType type = geometry->getGeometryType();\n\n\t\tif (type != Geometry::GEOMETRY_NONE) {\n\t\t\tdelete geometry;\n\t\t\tdelete body;\n\t\t}\n\n\t\tfor (int i = 0; i < 6; i++)\n\t\t\tdelete surfaceData[i];\n\n\t\tRBXASSERT(!world);\n\t\tRBXASSERT(!clump);\n\t}",
-   "\tPrimitive::~Primitive()\n\t{\n\t\tGeometry::GeometryType type = geometry->getGeometryType();\n\n\t\tif (type != Geometry::GEOMETRY_NONE) {\n\t\t\tdelete geometry;\n\t\t\tdelete body;\n\t\t}\n\n\t\tfor (int i = 0; i < 6; i++)\n\t\t\tdelete surfaceData[i];\n\n\t}"
+    "\tPrimitive::~Primitive()\n\t{\n\t\tGeometry::GeometryType type = geometry->getGeometryType();\n\n\t\tif (type != Geometry::GEOMETRY_NONE) {\n\t\t\tdelete geometry;\n\t\t\tdelete body;\n\t\t}\n\n\t\tfor (int i = 0; i < 6; i++)\n\t\t\tdelete surfaceData[i];\n\n\t\tRBXASSERT(!world);\n\t\tRBXASSERT(!clump);\n\t}",
+    "\tPrimitive::~Primitive()\n\t{\n\t\tGeometry::GeometryType type = geometry->getGeometryType();\n\n\t\tif (type != Geometry::GEOMETRY_NONE) {\n\t\t\tdelete geometry;\n\t\t\tdelete body;\n\t\t}\n\n\t\tfor (int i = 0; i < 6; i++)\n\t\t\tdelete surfaceData[i];\n\n\t}"
   ],
   [
-   "\tvoid Primitive::setPrimitiveType(Geometry::GeometryType geometryType)\n\t{\n\t\tRBXASSERT(geometry->getGeometryType() != Geometry::GEOMETRY_NONE);\n\t\tRBXASSERT(geometryType != Geometry::GEOMETRY_NONE);\n\n\t\tif (geometry->getGeometryType() != geometryType)\n\t\t{\n\t\t\tG3D::Vector3 oldSize = geometry->getGridSize();\n\t\t\tif (geometry)\n\t\t\t\tdelete geometry;\n\n\t\t\tgeometry = newGeometry(geometryType);\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveGeometryTypeChanged(this);\n\n\t\t\tsetGridSize(oldSize);\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
-   "\tvoid Primitive::setPrimitiveType(Geometry::GeometryType geometryType)\n\t{\n\n\t\tif (geometry->getGeometryType() != geometryType)\n\t\t{\n\t\t\tG3D::Vector3 oldSize = geometry->getGridSize();\n\t\t\tif (geometry)\n\t\t\t\tdelete geometry;\n\n\t\t\tgeometry = newGeometry(geometryType);\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveGeometryTypeChanged(this);\n\n\t\t\tsetGridSize(oldSize);\n\t\t\tJointK.setDirty();\n\t\t}\n\t}"
+    "\tvoid Primitive::setPrimitiveType(Geometry::GeometryType geometryType)\n\t{\n\t\tRBXASSERT(geometry->getGeometryType() != Geometry::GEOMETRY_NONE);\n\t\tRBXASSERT(geometryType != Geometry::GEOMETRY_NONE);\n\n\t\tif (geometry->getGeometryType() != geometryType)\n\t\t{\n\t\t\tG3D::Vector3 oldSize = geometry->getGridSize();\n\t\t\tif (geometry)\n\t\t\t\tdelete geometry;\n\n\t\t\tgeometry = newGeometry(geometryType);\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveGeometryTypeChanged(this);\n\n\t\t\tsetGridSize(oldSize);\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
+    "\tvoid Primitive::setPrimitiveType(Geometry::GeometryType geometryType)\n\t{\n\n\t\tif (geometry->getGeometryType() != geometryType)\n\t\t{\n\t\t\tG3D::Vector3 oldSize = geometry->getGridSize();\n\t\t\tif (geometry)\n\t\t\t\tdelete geometry;\n\n\t\t\tgeometry = newGeometry(geometryType);\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveGeometryTypeChanged(this);\n\n\t\t\tsetGridSize(oldSize);\n\t\t\tJointK.setDirty();\n\t\t}\n\t}"
   ],
   [
-   "#include \"v8world/Primitive.h\"\n",
-   "#pragma float_control(precise, off)\n#include \"v8world/Primitive.h\"\n"
+    "#include \"v8world/Primitive.h\"\n",
+    "#pragma float_control(precise, off)\n#include \"v8world/Primitive.h\"\n"
   ],
   [
-   "Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)\n\t{\n\t\tif (!surfaceData[id] && newSurfaceData.isEmpty())\n\t\t\treturn;\n\n\t\tif (surfaceData[id] && *surfaceData[id] == newSurfaceData)\n\t\t\treturn;\n\n\t\tif (newSurfaceData.isEmpty())\n\t\t{\n\t\t\tRBXASSERT(surfaceData[id]);\n\t\t\tdelete surfaceData[id];\n\t\t\tsurfaceData[id] = NULL;\n\t\t\treturn;\n\t\t}\n\t\telse if (!surfaceData[id])\n\t\t{\n\t\t\tsurfaceData[id] = new SurfaceData;\n\t\t}\n\n\t\t*surfaceData[id] = newSurfaceData;\n\t}",
-   "Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)\n\t{\n\t\tif (!surfaceData[id] && newSurfaceData.isEmpty())\n\t\t\treturn;\n\n\t\tif (surfaceData[id] && *surfaceData[id] == newSurfaceData)\n\t\t\treturn;\n\n\t\tif (newSurfaceData.isEmpty())\n\t\t{\n\t\t\t                          ;\n\t\t\tdelete surfaceData[id];\n\t\t\tsurfaceData[id] = NULL;\n\t\t\treturn;\n\t\t}\n\t\telse if (!surfaceData[id])\n\t\t{\n\t\t\tsurfaceData[id] = new SurfaceData;\n\t\t}\n\n\t\t*surfaceData[id] = newSurfaceData;\n\t}"
+    "Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)\n\t{\n\t\tif (!surfaceData[id] && newSurfaceData.isEmpty())\n\t\t\treturn;\n\n\t\tif (surfaceData[id] && *surfaceData[id] == newSurfaceData)\n\t\t\treturn;\n\n\t\tif (newSurfaceData.isEmpty())\n\t\t{\n\t\t\tRBXASSERT(surfaceData[id]);\n\t\t\tdelete surfaceData[id];\n\t\t\tsurfaceData[id] = NULL;\n\t\t\treturn;\n\t\t}\n\t\telse if (!surfaceData[id])\n\t\t{\n\t\t\tsurfaceData[id] = new SurfaceData;\n\t\t}\n\n\t\t*surfaceData[id] = newSurfaceData;\n\t}",
+    "Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)\n\t{\n\t\tif (!surfaceData[id] && newSurfaceData.isEmpty())\n\t\t\treturn;\n\n\t\tif (surfaceData[id] && *surfaceData[id] == newSurfaceData)\n\t\t\treturn;\n\n\t\tif (newSurfaceData.isEmpty())\n\t\t{\n\t\t\t                          ;\n\t\t\tdelete surfaceData[id];\n\t\t\tsurfaceData[id] = NULL;\n\t\t\treturn;\n\t\t}\n\t\telse if (!surfaceData[id])\n\t\t{\n\t\t\tsurfaceData[id] = new SurfaceData;\n\t\t}\n\n\t\t*surfaceData[id] = newSurfaceData;\n\t}"
   ],
   [
-   "return edges.size() ? edges[0] : NULL;",
-   "return edges.size() > 0 ? edges[0] : NULL;"
+    "return edges.size() ? edges[0] : NULL;",
+    "return edges.size() > 0 ? edges[0] : NULL;"
   ],
   [
-   "return rbx_static_cast<Contact*>(contacts.next(prev));",
-   "int i = prev->getIndex(this) + 1;\n\t\treturn i < contacts.edges.size() ? rbx_static_cast<Contact*>(contacts.edges[i]) : NULL;"
+    "return rbx_static_cast<Contact*>(contacts.next(prev));",
+    "int i = prev->getIndex(this) + 1;\n\t\treturn i < contacts.edges.size() ? rbx_static_cast<Contact*>(contacts.edges[i]) : NULL;"
   ],
   [
-   "return getFirstRigidAt(getFirstEdge());",
-   "return getFirstRigidAt(joints.first());"
+    "return getFirstRigidAt(getFirstEdge());",
+    "return getFirstRigidAt(joints.first());"
   ],
   [
-   "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tbool oldDrag = !dragging && canCollide;\n\t\t\tdragging = _dragging;\n\n\t\t\tsetAnchor(anchored);\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tbool newDrag = !dragging && canCollide;\n\t\t\t\tif (newDrag != oldDrag)\n\t\t\t\t\tworld->onPrimitiveCanCollideChanged(this);\n\t\t\t}\n\t\t}\n\t}",
-   "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tdragging = _dragging;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t\tdelete getAnchorObject();\n\t\t\t\t\tsetAnchorObject(NULL);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
+    "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tbool oldDrag = !dragging && canCollide;\n\t\t\tdragging = _dragging;\n\n\t\t\tsetAnchor(anchored);\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tbool newDrag = !dragging && canCollide;\n\t\t\t\tif (newDrag != oldDrag)\n\t\t\t\t\tworld->onPrimitiveCanCollideChanged(this);\n\t\t\t}\n\t\t}\n\t}",
+    "\tvoid Primitive::setDragging(bool _dragging)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (dragging != _dragging)\n\t\t{\n\t\t\tdragging = _dragging;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
   ],
   [
-   "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tanchored = _anchored;\n\n\t\tbool exists = getAnchor();\n\n\t\tif (_anchored || dragging)\n\t\t\t_anchored = true;\n\n\t\tif (_anchored == exists)\n\t\t\treturn;\n\n\t\tif (_anchored)\n\t\t{\n\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tRBXASSERT(getAnchorObject());\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\n\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);\n\t\t}\n\t}",
-   "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (anchored != _anchored)\n\t\t{\n\t\t\tanchored = _anchored;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tRBXASSERT(getAnchorObject());\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\t\tdelete getAnchorObject();\n\t\t\t\t\tsetAnchorObject(NULL);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
+    "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tanchored = _anchored;\n\n\t\tbool exists = getAnchor();\n\n\t\tif (_anchored || dragging)\n\t\t\t_anchored = true;\n\n\t\tif (_anchored == exists)\n\t\t\treturn;\n\n\t\tif (_anchored)\n\t\t{\n\t\t\tRBXASSERT(!getAnchorObject());\n\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tRBXASSERT(getAnchorObject());\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\n\t\t\tdelete getAnchorObject();\n\t\t\tsetAnchorObject(NULL);\n\t\t}\n\t}",
+    "\tvoid Primitive::setAnchor(bool _anchored)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (anchored != _anchored)\n\t\t{\n\t\t\tanchored = _anchored;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\t\n\t\t\t\t\tif (world)\n\t\t\t\t\t\tworld->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
   ],
   [
-   "\tvoid Primitive::setCanCollide(bool value)\n\t{",
-   "\tvoid Primitive::setFlag0xaa(bool value)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (flag0xaa != value)\n\t\t{\n\t\t\tflag0xaa = value;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tsetAnchorObject(new Anchor(this));\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t\tdelete getAnchorObject();\n\t\t\t\t\tsetAnchorObject(NULL);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Primitive::setPV(const PV& pv)\n\t{\n\t\tbody->setVelocity(pv.velocity);\n\t\tsetCoordinateFrame(pv.position);\n\t}\n\n\tvoid Primitive::setCanCollide(bool value)\n\t{"
+    "\tvoid Primitive::setCanCollide(bool value)\n\t{",
+    "\tvoid Primitive::setFlag0xaa(bool value)\n\t{\n\t\tbool wasAnchored = dragging || anchored || flag0xaa;\n\t\tif (flag0xaa != value)\n\t\t{\n\t\t\tflag0xaa = value;\n\t\t\tbool isAnchored = dragging || anchored || flag0xaa;\n\t\t\tif (isAnchored != wasAnchored)\n\t\t\t{\n\t\t\t\tif (isAnchored)\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveAddedAnchor(this);\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tif (world) world->onPrimitiveRemovingAnchor(this);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Primitive::setPV(const PV& pv)\n\t{\n\t\tbody->setVelocity(pv.velocity);\n\t\tsetCoordinateFrame(pv.position);\n\t}\n\n\tvoid Primitive::setCanCollide(bool value)\n\t{"
   ],
   [
-   "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\n\t\t\tfloat newSize = geometry->getGridVolume();\n\t\t\tbody->setMass(newSize);\n\t\t\tbody->setMoment(geometry->getMoment(newSize));\n\t\t\tJointK.setDirty();\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
-   "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\t\t\tsetMassInertia(geometry->getGridVolume());\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}\n\n\tvoid Primitive::setMassInertia(float mass)\n\t{\n\t\tbody->setMass(mass);\n\t\tbody->setMoment(geometry->getMoment(mass));\n\t\tJointK.setDirty();\n\t}"
+    "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\n\t\t\tfloat newSize = geometry->getGridVolume();\n\t\t\tbody->setMass(newSize);\n\t\t\tbody->setMoment(geometry->getMoment(newSize));\n\t\t\tJointK.setDirty();\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}",
+    "\t\t\tfuzzyExtentsStateId = -2;\n\t\t\tgeometry->setGridSize(protectedSize);\n\t\t\tsetMassInertia(geometry->getGridVolume());\n\n\t\t\tif (world)\n\t\t\t\tworld->onPrimitiveExtentsChanged(this);\n\n\t\t\tJointK.setDirty();\n\t\t}\n\t}\n\n\tvoid Primitive::setMassInertia(float mass)\n\t{\n\t\tbody->setMass(mass);\n\t\tbody->setMoment(geometry->getMoment(mass));\n\t\tJointK.setDirty();\n\t}"
   ],
   [
-   "Primitive::setGuid(const Guid& value) \n\t{\n\t\tRBXASSERT(!world);\n\t\tguid.copyDataFrom(value);\n\t\tguidSetExternally = true;\n\t}",
-   "Primitive::setGuid(const Guid& value) \n\t{\n\t\t                 ;\n\t\tguid.copyDataFrom(value);\n\t\tguidSetExternally = true;\n\t}"
+    "Primitive::setGuid(const Guid& value) \n\t{\n\t\tRBXASSERT(!world);\n\t\tguid.copyDataFrom(value);\n\t\tguidSetExternally = true;\n\t}",
+    "Primitive::setGuid(const Guid& value) \n\t{\n\t\t                 ;\n\t\tguid.copyDataFrom(value);\n\t\tguidSetExternally = true;\n\t}"
+  ],
+  [
+    "return clump ? clump->getAssembly() : NULL;",
+    "return clump ? clump->getRootAssembly() : NULL;"
   ]
- ],
+],
  "App/include/v8datamodel/PartInstance.h": [
   [
    "#include \"util/ISelectable3d.h\"\n",
@@ -871,70 +879,74 @@
  ],
  "App/v8datamodel/PartInstance.cpp": [
   [
-   "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchor();\n\t}",
-   "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchoredProperty();\n\t}"
+    "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchor();\n\t}",
+    "\tbool PartInstance::getAnchored() const\n\t{\n\t\treturn primitive->getAnchoredProperty();\n\t}"
   ],
   [
-   "\t\t  primitive(new Primitive(Geometry::GEOMETRY_BLOCK)),\n",
-   "\t\t  primitive(Geometry::GEOMETRY_BLOCK),\n"
+    "\t\t  primitive(new Primitive(Geometry::GEOMETRY_BLOCK)),\n",
+    "\t\t  primitive(Geometry::GEOMETRY_BLOCK),\n"
   ],
   [
-   "@all:primitive.get()",
-   "&primitive"
+    "@all:primitive.get()",
+    "&primitive"
   ],
   [
-   "@all:primitive->",
-   "primitive."
+    "@all:primitive->",
+    "primitive."
   ],
   [
-   "",
-   "\nnamespace RBX {\n    // 0x598c20: base name update, then the byte-proven Torso-dependent value.\n    void PartInstance::setName(const std::string& value)\n    {\n        Base::setName(value);\n        if (value == \"Torso\")\n            primitive.setUnknown0x14(5);\n        else\n            primitive.setUnknown0x14(1);\n    }\n}\n"
+    "",
+    "\nnamespace RBX {\n    // 0x598c20: base name update, then the byte-proven Torso-dependent value.\n    void PartInstance::setName(const std::string& value)\n    {\n        Base::setName(value);\n        if (value == \"Torso\")\n            primitive.setUnknown0x14(5);\n        else\n            primitive.setUnknown0x14(1);\n    }\n}\n"
   ],
   [
-   "#include \"v8datamodel/PartInstance.h\"\n",
-   "#pragma float_control(precise, off)\n#include \"v8datamodel/PartInstance.h\"\n"
+    "#include \"v8datamodel/PartInstance.h\"\n",
+    "#pragma float_control(precise, off)\n#include \"v8datamodel/PartInstance.h\"\n"
   ],
   [
-   "\t\t\t   SurfacesNeedAdorn || \n\t\t\t   highlightSleepParts || ",
-   "\t\t\t   SurfacesNeedAdorn || \n\t\t\t   showContactPoints ||\n\t\t\t   highlightSleepParts || "
+    "\t\t\t   SurfacesNeedAdorn || \n\t\t\t   highlightSleepParts || ",
+    "\t\t\t   SurfacesNeedAdorn || \n\t\t\t   showContactPoints ||\n\t\t\t   highlightSleepParts || "
   ],
   [
-   "\tconst char* category_Part = \"Part\";",
-   "\tconst char* category_Part = \"Part\";\n\n\tbool PartInstance::showContactPoints = false;"
+    "\tconst char* category_Part = \"Part\";",
+    "\tconst char* category_Part = \"Part\";\n\n\tbool PartInstance::showContactPoints = false;"
   ],
   [
-   "\tbool PartInstance::nonNullInWorkspace(boost::shared_ptr<PartInstance> part)\n\t{\n\t\tbool null = part.get() && part->myWorld;\n\t\tRBXASSERT(!null || part->primitive.inPipeline());\n\t\treturn null;\n\t}",
-   "\tbool PartInstance::nonNullInWorkspace(boost::shared_ptr<PartInstance> part)\n\t{\n\t\treturn part && part->myWorld;\n\t}"
+    "\tbool PartInstance::nonNullInWorkspace(boost::shared_ptr<PartInstance> part)\n\t{\n\t\tbool null = part.get() && part->myWorld;\n\t\tRBXASSERT(!null || part->primitive.inPipeline());\n\t\treturn null;\n\t}",
+    "\tbool PartInstance::nonNullInWorkspace(boost::shared_ptr<PartInstance> part)\n\t{\n\t\treturn part && part->myWorld;\n\t}"
   ],
   [
-   "namespace RBX\n{\n\tconst char* category_Part = \"Part\";",
-   "namespace RBX\n{\n\tbool __fastcall rocInPipelineAnchor(const IPipelined* p)\n\t{\n\t\treturn p->inPipeline();\n\t}\n\n\tconst char* category_Part = \"Part\";"
+    "namespace RBX\n{\n\tconst char* category_Part = \"Part\";",
+    "namespace RBX\n{\n\tbool __fastcall rocInPipelineAnchor(const IPipelined* p)\n\t{\n\t\treturn p->inPipeline();\n\t}\n\n\tconst char* category_Part = \"Part\";"
   ],
   [
-   "PartInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)\n\t{\n\t\tRBXASSERT(legacyOffset.get());\n\n\t\tG3D::CoordinateFrame myState = parentState * *legacyOffset;\n\t\tprimitive.setGridCorner(myState);\n\t}",
-   "PartInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)\n\t{\n\t\t                             ;\n\n\t\tG3D::CoordinateFrame myState = parentState * *legacyOffset;\n\t\tprimitive.setGridCorner(myState);\n\t}"
+    "PartInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)\n\t{\n\t\tRBXASSERT(legacyOffset.get());\n\n\t\tG3D::CoordinateFrame myState = parentState * *legacyOffset;\n\t\tprimitive.setGridCorner(myState);\n\t}",
+    "PartInstance::legacyTraverseState(const G3D::CoordinateFrame& parentState)\n\t{\n\t\t                             ;\n\n\t\tG3D::CoordinateFrame myState = parentState * *legacyOffset;\n\t\tprimitive.setGridCorner(myState);\n\t}"
   ],
   [
-   "PartInstance::fromPrimitiveConst(const Primitive* p)\n\t{\n\t\tRBXASSERT(!p || dynamic_cast<PartInstance*>(p->getOwner()));\n\n\t\tif (p)\n\t\t\treturn rbx_static_cast<PartInstance*>(p->getOwner());\n\t\telse\n\t\t\treturn NULL;\n\t}",
-   "PartInstance::fromPrimitiveConst(const Primitive* p)\n\t{\n\t\t                                                           ;\n\n\t\tif (p)\n\t\t\treturn rbx_static_cast<PartInstance*>(p->getOwner());\n\t\telse\n\t\t\treturn NULL;\n\t}"
+    "PartInstance::fromPrimitiveConst(const Primitive* p)\n\t{\n\t\tRBXASSERT(!p || dynamic_cast<PartInstance*>(p->getOwner()));\n\n\t\tif (p)\n\t\t\treturn rbx_static_cast<PartInstance*>(p->getOwner());\n\t\telse\n\t\t\treturn NULL;\n\t}",
+    "PartInstance::fromPrimitiveConst(const Primitive* p)\n\t{\n\t\t                                                           ;\n\n\t\tif (p)\n\t\t\treturn rbx_static_cast<PartInstance*>(p->getOwner());\n\t\telse\n\t\t\treturn NULL;\n\t}"
   ],
   [
-   "PartInstance::onCanAggregateChanged(bool canAggregate)\n\t{\n\t\tRBXASSERT(canAggregate == getCanAggregate());\n\t\tNotifier<PartInstance, CanAggregateChanged>::raise(canAggregate);\n\t\tshouldRenderSetDirty();\n\t}",
-   "PartInstance::onCanAggregateChanged(bool canAggregate)\n\t{\n\t\t                                            ;\n\t\tNotifier<PartInstance, CanAggregateChanged>::raise(canAggregate);\n\t\tshouldRenderSetDirty();\n\t}"
+    "PartInstance::onCanAggregateChanged(bool canAggregate)\n\t{\n\t\tRBXASSERT(canAggregate == getCanAggregate());\n\t\tNotifier<PartInstance, CanAggregateChanged>::raise(canAggregate);\n\t\tshouldRenderSetDirty();\n\t}",
+    "PartInstance::onCanAggregateChanged(bool canAggregate)\n\t{\n\t\t                                            ;\n\t\tNotifier<PartInstance, CanAggregateChanged>::raise(canAggregate);\n\t\tshouldRenderSetDirty();\n\t}"
   ],
   [
-   "PartInstance::onAncestorChanged(const AncestorChanged& event)\n\t{\n\t\tInstance::onAncestorChanged(event);\n\t\tRBXASSERT(&primitive);\n\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\tif (world != myWorld)\n\t\t{\n\t\t\tRBXASSERT(myWorld || !primitive.getClump());\n\n\t\t\tif (myWorld)\n\t\t\t{\n\t\t\t\tsetMovingManager(NULL);\n\t\t\t\tmyWorld->removePrimitive(&primitive);\n\t\t\t}\n\n\t\t\tmyWorld = world;\n\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tworld->insertPrimitive(&primitive);\n\t\t\t\tsetMovingManager(Workspace::getMyWorkspaceFast(this));\n\t\t\t\tprimitive.setController(getTopPVController());\n\t\t\t}\n\t\t}\n\t}",
-   "PartInstance::onAncestorChanged(const AncestorChanged& event)\n\t{\n\t\tInstance::onAncestorChanged(event);\n\t\t                     ;\n\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\tif (world != myWorld)\n\t\t{\n\t\t\t                                           ;\n\n\t\t\tif (myWorld)\n\t\t\t{\n\t\t\t\tsetMovingManager(NULL);\n\t\t\t\tmyWorld->removePrimitive(&primitive);\n\t\t\t}\n\n\t\t\tmyWorld = world;\n\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tworld->insertPrimitive(&primitive);\n\t\t\t\tsetMovingManager(Workspace::getMyWorkspaceFast(this));\n\t\t\t\tprimitive.setController(getTopPVController());\n\t\t\t}\n\t\t}\n\t}"
+    "PartInstance::onAncestorChanged(const AncestorChanged& event)\n\t{\n\t\tInstance::onAncestorChanged(event);\n\t\tRBXASSERT(&primitive);\n\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\tif (world != myWorld)\n\t\t{\n\t\t\tRBXASSERT(myWorld || !primitive.getClump());\n\n\t\t\tif (myWorld)\n\t\t\t{\n\t\t\t\tsetMovingManager(NULL);\n\t\t\t\tmyWorld->removePrimitive(&primitive);\n\t\t\t}\n\n\t\t\tmyWorld = world;\n\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tworld->insertPrimitive(&primitive);\n\t\t\t\tsetMovingManager(Workspace::getMyWorkspaceFast(this));\n\t\t\t\tprimitive.setController(getTopPVController());\n\t\t\t}\n\t\t}\n\t}",
+    "PartInstance::onAncestorChanged(const AncestorChanged& event)\n\t{\n\t\tInstance::onAncestorChanged(event);\n\t\t                     ;\n\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\tif (world != myWorld)\n\t\t{\n\t\t\t                                           ;\n\n\t\t\tif (myWorld)\n\t\t\t{\n\t\t\t\tsetMovingManager(NULL);\n\t\t\t\tmyWorld->removePrimitive(&primitive);\n\t\t\t}\n\n\t\t\tmyWorld = world;\n\n\t\t\tif (world)\n\t\t\t{\n\t\t\t\tworld->insertPrimitive(&primitive);\n\t\t\t\tsetMovingManager(Workspace::getMyWorkspaceFast(this));\n\t\t\t\tprimitive.setController(getTopPVController());\n\t\t\t}\n\t\t}\n\t}"
   ],
   [
-   "PartInstance::safeMove()\n\t{\n\t\tRBXASSERT(&primitive);\n\n\t\tif (World* world = Workspace::getWorldIfInWorkspace(this))\n\t\t{\n\t\t\tG3D::Array<Primitive*> temp;\n\t\t\ttemp.append(&primitive);\n\t\t\t\n\t\t\tDragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());\n\t\t}\n\t}",
-   "PartInstance::safeMove()\n\t{\n\t\t                     ;\n\n\t\tif (World* world = Workspace::getWorldIfInWorkspace(this))\n\t\t{\n\t\t\tG3D::Array<Primitive*> temp;\n\t\t\ttemp.append(&primitive);\n\t\t\t\n\t\t\tDragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());\n\t\t}\n\t}"
+    "PartInstance::safeMove()\n\t{\n\t\tRBXASSERT(&primitive);\n\n\t\tif (World* world = Workspace::getWorldIfInWorkspace(this))\n\t\t{\n\t\t\tG3D::Array<Primitive*> temp;\n\t\t\ttemp.append(&primitive);\n\t\t\t\n\t\t\tDragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());\n\t\t}\n\t}",
+    "PartInstance::safeMove()\n\t{\n\t\t                     ;\n\n\t\tif (World* world = Workspace::getWorldIfInWorkspace(this))\n\t\t{\n\t\t\tG3D::Array<Primitive*> temp;\n\t\t\ttemp.append(&primitive);\n\t\t\t\n\t\t\tDragger::safeMoveNoDrop(temp, G3D::Vector3::zero(), world->getContactManager());\n\t\t}\n\t}"
   ],
   [
-   "PartInstance::setPartTypeUi(Part::PartType _type)\n\t{\n\t\tif (partType != Part::BLOCK_PART)\n\t\t\tRBXASSERT(formFactor == SYMETRIC);\n\n\t\tif (getPartType() != _type)\n\t\t{\n\t\t\tdestroyJoints();\n\n\t\t\tsetPartTypeXml(_type);\n\n\t\t\tif (_type != Part::BLOCK_PART)\n\t\t\t{\n\t\t\t\tG3D::Vector3 xmlSize = uiToXmlSize(getPartSizeUi());\n\t\t\t\tsetPartSizeXml(xmlSize);\n\t\t\t\tsafeMove();\n\t\t\t}\n\n\t\t\tsafeMove();\n\t\t\tjoin();\n\t\t}\n\t}",
-   "PartInstance::setPartTypeUi(Part::PartType _type)\n\t{\n\t\tif (partType != Part::BLOCK_PART)\n\t\t\t                                 ;\n\n\t\tif (getPartType() != _type)\n\t\t{\n\t\t\tdestroyJoints();\n\n\t\t\tsetPartTypeXml(_type);\n\n\t\t\tif (_type != Part::BLOCK_PART)\n\t\t\t{\n\t\t\t\tG3D::Vector3 xmlSize = uiToXmlSize(getPartSizeUi());\n\t\t\t\tsetPartSizeXml(xmlSize);\n\t\t\t\tsafeMove();\n\t\t\t}\n\n\t\t\tsafeMove();\n\t\t\tjoin();\n\t\t}\n\t}"
+    "PartInstance::setPartTypeUi(Part::PartType _type)\n\t{\n\t\tif (partType != Part::BLOCK_PART)\n\t\t\tRBXASSERT(formFactor == SYMETRIC);\n\n\t\tif (getPartType() != _type)\n\t\t{\n\t\t\tdestroyJoints();\n\n\t\t\tsetPartTypeXml(_type);\n\n\t\t\tif (_type != Part::BLOCK_PART)\n\t\t\t{\n\t\t\t\tG3D::Vector3 xmlSize = uiToXmlSize(getPartSizeUi());\n\t\t\t\tsetPartSizeXml(xmlSize);\n\t\t\t\tsafeMove();\n\t\t\t}\n\n\t\t\tsafeMove();\n\t\t\tjoin();\n\t\t}\n\t}",
+    "PartInstance::setPartTypeUi(Part::PartType _type)\n\t{\n\t\tif (partType != Part::BLOCK_PART)\n\t\t\t                                 ;\n\n\t\tif (getPartType() != _type)\n\t\t{\n\t\t\tdestroyJoints();\n\n\t\t\tsetPartTypeXml(_type);\n\n\t\t\tif (_type != Part::BLOCK_PART)\n\t\t\t{\n\t\t\t\tG3D::Vector3 xmlSize = uiToXmlSize(getPartSizeUi());\n\t\t\t\tsetPartSizeXml(xmlSize);\n\t\t\t\tsafeMove();\n\t\t\t}\n\n\t\t\tsafeMove();\n\t\t\tjoin();\n\t\t}\n\t}"
+  ],
+  [
+    "@all:primitive.getAssembly()->getRootClump()->getSleepStatus()",
+    "primitive.getAssembly()->getSleepStatus()"
   ]
- ],
+],
  "App/include/v8kernel/Body.h": [
   [
    "\t\t\tint& getIndex() {return index;};\n\t\t\tBody *root;\n",
@@ -2277,48 +2289,88 @@
  ],
  "App/include/v8world/World.h": [
   [
-   "\tclass ClumpStage;\n\tclass CollisionStage;\n",
-   "\tclass ClumpStage;\n\tclass CollisionStage;\n\tclass AutoA;\n\tclass AutoB;\n"
+    "\tclass ClumpStage;\n\tclass CollisionStage;\n",
+    "\tclass ClumpStage;\n\tclass CollisionStage;\n\tclass AutoA;\n\tclass AutoB;\n"
   ],
   [
-   "\tclass World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>\n",
-   "\tclass World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>,\n\t\t\t\t  public Notifier<World, AutoA>, public Notifier<World, AutoB>\n"
+    "\tclass World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>\n",
+    "\tclass World : public Notifier<World, AutoJoin>, public Notifier<World, AutoDestroy>,\n\t\t\t\t  public Notifier<World, AutoA>, public Notifier<World, AutoB>\n"
   ],
   [
-   "\tprivate:\n\t\tContactManager* contactManager;\n\t\tJointStage* jointStage;\n\t\tG3D::Array<Primitive*> touch;\n\t\tG3D::Array<Primitive*> touchOther;\n\t\tbool canThrottle;\n\t\tbool inStepCode;\n\t\tbool inJointNotification;\n\t\tint worldStepId;\n\t\tIndexArray<Primitive, &Primitive::worldIndexFunc> primitives;\n\t\tstd::set<Joint*> breakableJoints;\n\t\tint numJoints;\n\t\tint numContacts;\n\t\tint numLinkCalls;\n\t\tG3D::Array<Primitive*> tempPrimitives;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingWorldStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingUiStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;\n",
-   "\tprivate:\n\t\tfloat throttle;\n\t\tContactManager* contactManager;\n\t\tJointStage* jointStage;\n\t\tG3D::Array<Primitive*> touch;\n\t\tG3D::Array<Primitive*> touchOther;\n\t\tbool inStepCode;\n\t\tbool inJointNotification;\n\t\tint worldStepId;\n\t\tIndexArray<Primitive, &Primitive::worldIndexFunc> primitives;\n\t\tG3D::Array<Primitive*> primitives2;\n\t\tstd::set<Joint*> breakableJoints;\n\t\tint numJoints;\n\t\tint numContacts;\n\t\tint numLinkCalls;\n\t\tG3D::Array<Primitive*> tempPrimitives;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingWorldStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingPreStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingAssemblyStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingUiStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingPreStep8Inner;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;\n"
+    "\tprivate:\n\t\tContactManager* contactManager;\n\t\tJointStage* jointStage;\n\t\tG3D::Array<Primitive*> touch;\n\t\tG3D::Array<Primitive*> touchOther;\n\t\tbool canThrottle;\n\t\tbool inStepCode;\n\t\tbool inJointNotification;\n\t\tint worldStepId;\n\t\tIndexArray<Primitive, &Primitive::worldIndexFunc> primitives;\n\t\tstd::set<Joint*> breakableJoints;\n\t\tint numJoints;\n\t\tint numContacts;\n\t\tint numLinkCalls;\n\t\tG3D::Array<Primitive*> tempPrimitives;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingWorldStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingUiStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;\n",
+    "\tprivate:\n\t\tfloat throttle;\n\t\tContactManager* contactManager;\n\t\tJointStage* jointStage;\n\t\tG3D::Array<Primitive*> touch;\n\t\tG3D::Array<Primitive*> touchOther;\n\t\tbool inStepCode;\n\t\tbool inJointNotification;\n\t\tint worldStepId;\n\t\tIndexArray<Primitive, &Primitive::worldIndexFunc> primitives;\n\t\tG3D::Array<Primitive*> primitives2;\n\t\tstd::set<Joint*> breakableJoints;\n\t\tint numJoints;\n\t\tint numContacts;\n\t\tint numLinkCalls;\n\t\tG3D::Array<Primitive*> tempPrimitives;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingWorldStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingPreStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingAssemblyStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingUiStep;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingPreStep8Inner;\n\t\tboost::scoped_ptr<Profiling::CodeProfiler> profilingBroadphase;\n"
   ],
   [
-   "\t\tvoid setCanThrottle(bool value)\n\t\t{\n\t\t\tcanThrottle = value;\n\t\t}\n",
-   "\t\tvoid setCanThrottle(bool value)\n\t\t{\n\t\t\tthrottle = value ? 100.0f : 0.0f;\n\t\t}\n"
+    "\t\tvoid setCanThrottle(bool value)\n\t\t{\n\t\t\tcanThrottle = value;\n\t\t}\n",
+    "\t\tvoid setCanThrottle(bool value)\n\t\t{\n\t\t\tthrottle = value ? 100.0f : 0.0f;\n\t\t}\n"
+  ],
+  [
+    "\t\tconst CollisionStage* getCollisionStage() const;",
+    ""
+  ],
+  [
+    "\t\tCollisionStage* getCollisionStage();",
+    ""
   ]
- ],
+],
  "App/v8world/World.cpp": [
   [
-   "\t\tcontactManager(new ContactManager(this)),\n\t\tjointStage(new JointStage(NULL, this)),\n\t\tcanThrottle(true),\n",
-   "\t\tthrottle(100.0f),\n\t\tcontactManager(new ContactManager(this)),\n\t\tjointStage(new JointStage(NULL, this)),\n"
+    "\t\tcontactManager(new ContactManager(this)),\n\t\tjointStage(new JointStage(NULL, this)),\n\t\tcanThrottle(true),\n",
+    "\t\tthrottle(100.0f),\n\t\tcontactManager(new ContactManager(this)),\n\t\tjointStage(new JointStage(NULL, this)),\n"
   ],
   [
-   "if (!World::disableEnvironmentalThrottle && canThrottle)",
-   "if (!World::disableEnvironmentalThrottle && throttle > 0.0f)"
+    "if (!World::disableEnvironmentalThrottle && canThrottle)",
+    "if (!World::disableEnvironmentalThrottle && throttle > 0.0f)"
   ],
   [
-   "\tvoid World::removePrimitive(Primitive* p)\n\t{\n\t\tassertNotInStep();\n\t\tRBXASSERT(p->inPipeline());\n\t\tRBXASSERT(p->getWorld());\n\n\t\tdestroyJoints(p);\n\t\tcontactManager->onPrimitiveRemoved(p);\n\t\tjointStage->onPrimitiveRemoving(p);\n\t\tprimitives.fastRemove(p);\n\t\tp->setWorld(NULL);\n\n\t\tRBXASSERT(!p->getFirstEdge());\n\t\tRBXASSERT(p->getNumJoints2() + p->getNumContacts() == 0);\n\t\tassertNotInStep();\n\t\tRBXASSERT(!p->getClump());\n\t\tRBXASSERT(!p->inPipeline());\n\t\tRBXASSERT(!p->getWorld());\n\t}",
-   "\tvoid World::removePrimitive(Primitive* p)\n\t{\n\t\tdestroyJoints(p);\n\t\tcontactManager->onPrimitiveRemoved(p);\n\t\tjointStage->onPrimitiveRemoving(p);\n\t\tprimitives.fastRemove(p);\n\t\tp->setWorld(NULL);\n\t}"
+    "\tvoid World::removePrimitive(Primitive* p)\n\t{\n\t\tassertNotInStep();\n\t\tRBXASSERT(p->inPipeline());\n\t\tRBXASSERT(p->getWorld());\n\n\t\tdestroyJoints(p);\n\t\tcontactManager->onPrimitiveRemoved(p);\n\t\tjointStage->onPrimitiveRemoving(p);\n\t\tprimitives.fastRemove(p);\n\t\tp->setWorld(NULL);\n\n\t\tRBXASSERT(!p->getFirstEdge());\n\t\tRBXASSERT(p->getNumJoints2() + p->getNumContacts() == 0);\n\t\tassertNotInStep();\n\t\tRBXASSERT(!p->getClump());\n\t\tRBXASSERT(!p->inPipeline());\n\t\tRBXASSERT(!p->getWorld());\n\t}",
+    "\tvoid World::removePrimitive(Primitive* p)\n\t{\n\t\tdestroyJoints(p);\n\t\tcontactManager->onPrimitiveRemoved(p);\n\t\tjointStage->onPrimitiveRemoving(p);\n\t\tprimitives.fastRemove(p);\n\t\tp->setWorld(NULL);\n\t}"
   ],
   [
-   "World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\t\tassertNotInStep();\n\n\t\tstd::set<Primitive*> ignore;\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tignore.insert(primitives[i]);\n\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tdestroyJoints(primitives[i], &ignore);\n\t}",
-   "World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\tstd::set<Primitive*> ignore;\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tignore.insert(primitives[i]);\n\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tdestroyJoints(primitives[i], &ignore);\n}"
+    "World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\t\tassertNotInStep();\n\n\t\tstd::set<Primitive*> ignore;\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tignore.insert(primitives[i]);\n\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tdestroyJoints(primitives[i], &ignore);\n\t}",
+    "World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\tstd::set<Primitive*> ignore;\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tignore.insert(primitives[i]);\n\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tdestroyJoints(primitives[i], &ignore);\n}"
   ],
   [
-   "World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\t\tassertNotInStep();\n\n\t\tstd::set<Primitive*> ignore;\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tignore.insert(primitives[i]);\n\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tcreateJoints(primitives[i], &ignore);\n\t}",
-   "World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\tstd::set<Primitive*> ignore;\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tignore.insert(primitives[i]);\n\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tcreateJoints(primitives[i], &ignore);\n}"
+    "World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\t\tassertNotInStep();\n\n\t\tstd::set<Primitive*> ignore;\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tignore.insert(primitives[i]);\n\n\t\tfor (int i = 0; i < primitives.size(); i++)\n\t\t\tcreateJoints(primitives[i], &ignore);\n\t}",
+    "World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)\n\t{\n\tstd::set<Primitive*> ignore;\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tignore.insert(primitives[i]);\n\n\tfor (int i = 0; i < primitives.size(); i++)\n\t\tcreateJoints(primitives[i], &ignore);\n}"
   ],
   [
-   "World::~World()\n\t{\n\t\tRBXASSERT(numJoints == 0);\n\t\tRBXASSERT(numContacts == 0);\n\t\tRBXASSERT(primitives.size() == 0);\n\t\tRBXASSERT(breakableJoints.size() == 0);\n\t\t\n\t\tdelete jointStage;\n\t\tdelete contactManager;\n\t}",
-   "World::~World()\n\t{\n\t\t                         ;\n\t\t                           ;\n\t\t                                 ;\n\t\t                                      ;\n\t\t\n\t\tdelete jointStage;\n\t\tdelete contactManager;\n\t}"
+    "World::~World()\n\t{\n\t\tRBXASSERT(numJoints == 0);\n\t\tRBXASSERT(numContacts == 0);\n\t\tRBXASSERT(primitives.size() == 0);\n\t\tRBXASSERT(breakableJoints.size() == 0);\n\t\t\n\t\tdelete jointStage;\n\t\tdelete contactManager;\n\t}",
+    "World::~World()\n\t{\n\t\t                         ;\n\t\t                           ;\n\t\t                                 ;\n\t\t                                      ;\n\t\t\n\t\tdelete jointStage;\n\t\tdelete contactManager;\n\t}"
+  ],
+  [
+    "getCollisionStage()->profilingCollision->parent",
+    "getSleepStage()->profilingCollision->parent"
+  ],
+  [
+    "getSleepStage()->onWakeUpRequest(pAssembly);",
+    "getSleepStage()->onWakeUpRequest(pAssembly, false);"
+  ],
+  [
+    "Assembly::PrimIterator endIt = Assembly::PrimIterator::end(a);",
+    "PrimIterator endIt = a->assemblyPrimEnd();"
+  ],
+  [
+    "Assembly::PrimIterator beginIt = Assembly::PrimIterator::begin(a);",
+    "PrimIterator beginIt = a->assemblyPrimBegin();"
+  ],
+  [
+    "Assembly::PrimIterator it = Assembly::PrimIterator::begin(current);",
+    "PrimIterator it = current->assemblyPrimBegin();"
+  ],
+  [
+    "Assembly::PrimIterator pEnd = Assembly::PrimIterator::end(current);",
+    "PrimIterator pEnd = current->assemblyPrimEnd();"
+  ],
+  [
+    "\tCollisionStage* World::getCollisionStage()\n\t{\n\t\treturn rbx_static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE));\n\t}\n",
+    ""
+  ],
+  [
+    "\tconst CollisionStage* World::getCollisionStage() const\n\t{\n\t\treturn rbx_static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE));\n\t}\n",
+    ""
   ]
- ],
+],
  "App/include/v8datamodel/TimerService.h": [
   [
    "\t\tvoid delay(boost::function0<void> func, double seconds);",
@@ -2525,10 +2577,10 @@
  ],
  "App/v8world/ClumpStage.cpp": [
   [
-   "ClumpStage::stepWorld(int worldStepId, int uiStepId, bool throttling)\n\t{\n\t\tRBXASSERT(upToDate());\n\t\tprocess();\n\n\t\tAssemblyStage* assemblyStage = rbx_static_cast<AssemblyStage*>(getDownstreamWS());\n\t\tassemblyStage->stepWorld(worldStepId, uiStepId, throttling);\n\t}",
-   "ClumpStage::stepWorld(int worldStepId, int uiStepId, bool throttling)\n\t{\n\t\t                     ;\n\t\tprocess();\n\n\t\tAssemblyStage* assemblyStage = rbx_static_cast<AssemblyStage*>(getDownstreamWS());\n\t\tassemblyStage->stepWorld(worldStepId, uiStepId, throttling);\n\t}"
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/v8world/ClumpStage.cpp"
   ]
- ],
+],
  "App/util/Extents.cpp": [
   [
    "#include \"util/Extents.h\"\n",
@@ -2622,39 +2674,15 @@
 ,
  "App/include/v8world/Assembly.h": [
   [
-    "\tclass Mechanism;",
-    "\tclass Mechanism;\n\tclass SimJob;"
-  ],
-  [
-    "\t\tMechanism* mechanism;",
-    "\t\tSimJob* job;"
-  ],
-  [
-    "\t\tvoid setMechanism(Mechanism* m) {this->mechanism = m;}",
-    "\t\tvoid setMechanism(Mechanism* m);\n\t\tvoid setJob(SimJob* value) { job = value; }\n\t\tSimJob* getJob() const { return job; }"
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/include/v8world/Assembly.h"
   ]
 ]
 ,
  "App/v8world/Assembly.cpp": [
   [
-    "#include \"v8world/Assembly.h\"",
-    "#include \"v8world/Assembly.h\"\n#include \"v8world/Mechanism.h\""
-  ],
-  [
-    "mechanism(NULL)",
-    "job(NULL)"
-  ],
-  [
-    "\t\treturn mechanism;",
-    "\t\treturn dynamic_cast<Mechanism*>(job);"
-  ],
-  [
-    "\tMechanism* Assembly::getMechanism()",
-    "\tvoid Assembly::setMechanism(Mechanism* value) { job = value; }\n\n\tMechanism* Assembly::getMechanism()"
-  ],
-  [
-    "RBXASSERT(!mechanism);",
-    "RBXASSERT(!job);"
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/v8world/Assembly.cpp"
   ]
 ]
 ,
@@ -2688,4 +2716,67 @@
  "Network/Server.h": [["", "\n// Overlay copy: relative Replicator.h must resolve to the generic job API.\n"]]
 ,
  "Network/Client.h": [["", "\n// Overlay copy: relative Replicator.h must resolve to the generic job API.\n"]]
+,
+ "App/include/v8world/Clump.h": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/include/v8world/Clump.h"
+  ]
+]
+,
+ "App/include/v8world/ClumpStage.h": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/include/v8world/ClumpStage.h"
+  ]
+]
+,
+ "App/include/v8world/AssemblyStage.h": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/include/v8world/AssemblyStage.h"
+  ]
+]
+,
+ "App/include/v8world/SleepStage.h": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/include/v8world/SleepStage.h"
+  ]
+]
+,
+ "App/v8world/Clump.cpp": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/v8world/Clump.cpp"
+  ]
+]
+,
+ "App/v8world/AssemblyStage.cpp": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/v8world/AssemblyStage.cpp"
+  ]
+]
+,
+ "App/v8world/SleepStage.cpp": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/v8world/SleepStage.cpp"
+  ]
+]
+,
+ "App/include/v8world/Joint.h": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/include/v8world/Joint.h"
+  ]
+]
+,
+ "App/v8world/WorldHelpers.cpp": [
+  [
+    "@replace",
+    "../../../rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp"
+  ]
+]
 }

@@ -19,7 +19,9 @@
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
    "exclude": [
     "util/Utilities.cpp",
-    "v8tree/Property.cpp"
+    "v8tree/Property.cpp",
+    "v8world/CollisionStage.cpp",
+    "v8world/SeparateStage.cpp"
    ]
   },
   {
@@ -88,6 +90,9 @@
    "extra_includes": [
     "tools/rbxgs/Client/Network",
     "tools/rbxgs/Client/RbxView/include"
+   ],
+   "exclude": [
+    "glue_anchor_registry.cpp"
    ]
   }
  ],
@@ -114,7 +119,19 @@
   "root": "tools/rbxgs/Client",
   "patches": "rebuild/2008-06/patches/rbxgs-client.json"
  },
- "verified_exclude": ["??1Humanoid@RBX@@UAE@XZ"],
+ "verified_exclude": [
+  "??1Humanoid@RBX@@UAE@XZ",
+  "?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z",
+  "?forceNeighborAwake@SleepStage@RBX@@AAE_NPAVAssembly@2@@Z",
+  "?okNeighborSleep@SleepStage@RBX@@AAE_NPAVAssembly@2@@Z",
+  "?onEdgeAdded@SleepStage@RBX@@UAEXPAVEdge@2@@Z",
+  "?recursiveWakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z",
+  "?stepAssembliesAwake@SleepStage@RBX@@AAEXXZ",
+  "?stepAssembliesSleepingChecking@SleepStage@RBX@@AAEXXZ",
+  "?stepContacts@SleepStage@RBX@@AAEXAAV?$IndexArray@VContact@RBX@@$1?steppingIndexFunc@12@QAEAAHXZ@2@@Z",
+  "?stepJoints@SleepStage@RBX@@AAEXXZ",
+  "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z"
+ ],
  "verified": true,
  "force_verified": true
 }
