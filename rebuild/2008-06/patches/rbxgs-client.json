@@ -266,6 +266,8 @@
   ]
  ],
  "App/script/ScriptContext.cpp": [
+  ["void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{", "void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{\n    if (!script->getParent()) return;"],
+  ["    else \n    {\n        return NULL; \n    }\n}\n\n// TODO: 99.78%", "    else \n    {\n        return instance->getName();\n    }\n}\n\n// TODO: 99.78%"],
   [
    "@all:StandardOut::singleton()->print(MESSAGE_ERROR, lua_tostring(thread, -1));",
    "StandardOut::singleton()->print(MESSAGE_ERROR, \"%s\", lua_tostring(thread, -1) ? lua_tostring(thread, -1) : \"(error object)\");"
@@ -1069,6 +1071,7 @@
   ]
  ],
  "App/v8world/Contact.cpp": [
+  ["\tvoid BallBlockContact::deleteAllConnectors()\n\t{\n\t\tthis->deleteConnector(this->ballBlockConnector);\n\t}\n", "\tvoid BallBlockContact::deleteAllConnectors()\n\t{\n\t\tif (this->ballBlockConnector)\n\t\t\tthis->deleteConnector(this->ballBlockConnector);\n\t}\n"],
   [
    "\t\t:Contact(p0, p1),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n",
    "\t\t:Contact(p0, p1),\n\t\tunknown0x54(1e9f),\n\t\tseparatingAxisId(0),\n\t\tseparatingBodyId(0)\n"
