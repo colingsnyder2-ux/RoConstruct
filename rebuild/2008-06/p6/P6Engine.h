@@ -7,6 +7,8 @@ extern "C" {
 int P6EngineReadable(const char* path);
 int P6EngineOpen(void* window, const char* path, int width, int height, int play);
 int P6EngineScript(const char* command);
+typedef void (*P6TreeVisitor)(int depth, const char* className, const char* name, void* context);
+void P6DataWalk(P6TreeVisitor visitor, void* context);
 int P6EnginePlay(void);
 int P6EngineIsOpen(void);
 int P6EngineSave(const char* path);

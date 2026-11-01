@@ -2,15 +2,15 @@
  "milestone": "P6",
  "status": "OPEN",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "ace43e3d6ec9baf2aa0ed874d12a0c8f653a8b1ca3818ad2b638645b3a3cc0ec",
+ "exe_sha256": "e53bee4bef7e72b62fb60f19c49338813f58a84a9fbe5e86baf8ed4847351e5a",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "6a54140e483755eaf24be11a4ed6679b01a20447570cc1fa61c237e312eff90f",
-  "P6Engine.cpp": "b041e4364212440694a3e2291aae9701892f45a0b1f9b05a12ee9ee04488d15b",
-  "P6Data.cpp": "7a5a34decc2dc05f215cfec031dfb1109bc77dc7ad6089fb2351865c70c67b1b",
-  "P6Engine.h": "a8073658d018e7cc99173901f63eb28cfd078c68586d59280c847d9350ca1adc",
-  "build_client.py": "0edca67009716d1e727cf3f4e33c0ad948fb2c2cc169d797f10277775d0a2a2c",
+  "RobloxShell.cpp": "ccc28ab06ed04ba5f3868fdebd2181b2544f4630e83b65287259254e3d2f3776",
+  "P6Engine.cpp": "73bfec3ac345bb8dcbd99cb46677e25bf7fb683f27ae31b6536d55df8b3a292d",
+  "P6Data.cpp": "42bb7d60dec6c585b819e7ebccc089c05db1972f842b49b292904a6434f34843",
+  "P6Engine.h": "e71833f5788b0c251e4c4b275ceaf9fe7b7a61cd17d95ec351e46513d4e18b9e",
+  "build_client.py": "883a911fc951ac8d3c4c41dce96bc548d765fe707d3e0054ecb70e3bdaeaad66",
   "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
   "input_test.py": "d8201e701c37d76f11d1ab2e9f53bc4ff7ff67f42538afb407c44c6b3087c7f2"
  },
@@ -92,5 +92,13 @@
   ],
   "saved_sha256": "ccf2290249b937a688a783f4546c639b79c68addc9080ca1f6257815e305d7ea",
   "note": "Saved file also holds services the fixture lacked (Camera, RunService, Lighting and others). Not yet opened in the original client."
- }
+ },
+ "menu_commands": {
+  "33028 Play Solo": "WM_COMMAND switches edit to play; status 0; explorer nodes 14 to 56",
+  "32792 Explorer": "XTP docking pane with live DataModel tree"
+ },
+ "not_rerun_on_this_exe": [
+  "edit_save_reopen",
+  "visible_input_run"
+ ]
 }

@@ -51,6 +51,7 @@ from roc import libs as recipes
 engine = spec["layers"][0]
 recipe = recipes.RECIPES[engine["includes_from_recipe"]]
 data_includes = [(recipes.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"] + [(ROOT / i).resolve() for i in engine["extra_includes"]]
+data_includes.append(HERE)
 data_defines = (recipes.RECIPES[engine["defines_from_recipe"]]["defines"] + " " + engine["extra_defines"]).strip()
 built = rebuild.compile_direct(client, [HERE / "P6Data.cpp"], out, data_includes, data_defines, engine["flags"],
                                overlay=rebuild.build_overlay(client, spec["name"], spec["overlay"]))

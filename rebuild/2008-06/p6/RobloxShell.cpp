@@ -14,6 +14,7 @@ static const UINT IDR_PLACE = 129;            // RT_MENU and doc string "Places 
 static const UINT ID_P6_AUTOCLOSE = 1;
 static const UINT ID_P6_COMMAND = 2;
 static const UINT IDD_P6_ABOUT = 117;              // 00401220 passes 0x75 to the dialog base
+static const UINT ID_VIEW_EXPLORER = 32792;        // CMainFrame map, handler 0042e5e0
 static const UINT ID_TOOLS_EXECUTE_SCRIPT = 33009; // CRobloxApp map, handler 0044a300
 static const UINT ID_TOOLS_PLAY_SOLO = 33028;      // Tools > Test > Play Solo
 
@@ -47,7 +48,28 @@ static bool g_openFailed;
 class CMainFrame : public CXTPMDIFrameWnd {
     DECLARE_DYNAMIC(CMainFrame)
     CXTPStatusBar statusBar;
+    CXTPDockingPaneManager panes;
+    CTreeCtrl explorer;
+    static void addNode(int depth, const char* className, const char* name, void* context) {
+        CMainFrame* frame = static_cast<CMainFrame*>(context);
+        CString label;
+        label.Format("%s (%s)", name, className);
+        HTREEITEM parent = depth ? frame->path[depth - 1] : TVI_ROOT;
+        if (depth < 64) frame->path[depth] = frame->explorer.InsertItem(label, parent);
+    }
+    HTREEITEM path[64];
 public:
+    void RefreshExplorer() {
+        explorer.DeleteAllItems();
+        P6DataWalk(addNode, this);
+        explorer.Expand(explorer.GetRootItem(), TVE_EXPAND);
+        printf("p6: explorer nodes=%u\n", explorer.GetCount());
+    }
+    afx_msg void OnViewExplorer() {
+        if (panes.IsPaneClosed(ID_VIEW_EXPLORER)) panes.ShowPane(ID_VIEW_EXPLORER);
+        else panes.ClosePane(ID_VIEW_EXPLORER);
+    }
+    afx_msg void OnUpdateViewExplorer(CCmdUI* ui) { ui->SetCheck(!panes.IsPaneClosed(ID_VIEW_EXPLORER)); }
     afx_msg int OnCreate(LPCREATESTRUCT create) {
         if (CXTPMDIFrameWnd::OnCreate(create) == -1) return -1;
         static const UINT indicators[] = {ID_SEPARATOR};
@@ -58,6 +80,12 @@ public:
         CXTPCommandBar* menu = bars->SetMenu(_T("Menu Bar"), IDR_MAINFRAME_ROBLOX);
         if (!menu) return -1;
         menu->SetFlags(xtpFlagIgnoreSetMenuMessage); // keep menu 128; template 129 has File only
+        if (!explorer.Create(WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_HASBUTTONS | TVS_LINESATROOT, CRect(0, 0, 0, 0), this, 1)) return -1;
+        panes.InstallDockingPanes(this);
+        panes.SetTheme(xtpPaneThemeOffice2003);
+        CXTPDockingPane* pane = panes.CreatePane(ID_VIEW_EXPLORER, CRect(0, 0, 240, 400), xtpPaneDockRight);
+        pane->SetTitle(_T("Explorer"));
+        pane->Attach(&explorer);
         return 0;
     }
     afx_msg void OnTimer(UINT_PTR id) {
@@ -84,6 +112,8 @@ public:
 IMPLEMENT_DYNAMIC(CMainFrame, CXTPMDIFrameWnd)
 BEGIN_MESSAGE_MAP(CMainFrame, CXTPMDIFrameWnd)
     ON_WM_CREATE()
+    ON_COMMAND(ID_VIEW_EXPLORER, &CMainFrame::OnViewExplorer)
+    ON_UPDATE_COMMAND_UI(ID_VIEW_EXPLORER, &CMainFrame::OnUpdateViewExplorer)
     ON_WM_TIMER()
 END_MESSAGE_MAP()
 
@@ -116,6 +146,7 @@ public:
     afx_msg void OnPlaySolo() {
         int status = P6EnginePlay();
         printf("p6: play solo %d\n", status);
+        static_cast<CMainFrame*>(AfxGetMainWnd())->RefreshExplorer();
     }
     afx_msg void OnUpdatePlaySolo(CCmdUI* ui) { ui->Enable(P6EngineIsOpen()); }
     virtual void OnInitialUpdate() {
@@ -125,6 +156,7 @@ public:
         int status = P6EngineOpen(m_hWnd, GetDocument()->GetPathName(), rect.Width(), rect.Height(), g_play);
         printf("p6: engine open %d\n", status);
         if (!status && !g_script.IsEmpty()) printf("p6: script %d\n", P6EngineScript(g_script));
+        static_cast<CMainFrame*>(AfxGetMainWnd())->RefreshExplorer();
     }
     afx_msg void OnSize(UINT type, int width, int height) {
         CView::OnSize(type, width, height);

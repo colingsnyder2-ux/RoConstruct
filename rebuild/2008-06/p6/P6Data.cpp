@@ -6,8 +6,25 @@
 #include "v8xml/XmlSerializer.h"
 #include <boost/scoped_ptr.hpp>
 #include <fstream>
+#include "P6Engine.h"
 
 RBX::DataModel* EngineDataModel();
+
+static void walk(RBX::Instance* item, int depth, P6TreeVisitor visitor, void* context)
+{
+    visitor(depth, item->getClassName().toString().c_str(), item->getName().c_str(), context);
+    if (!item->getChildren()) return;
+    boost::shared_ptr<const std::vector<boost::shared_ptr<RBX::Instance> > > children = item->getChildren().read();
+    for (size_t i = 0; i < children->size(); ++i) walk((*children)[i].get(), depth + 1, visitor, context);
+}
+
+extern "C" void P6DataWalk(P6TreeVisitor visitor, void* context)
+{
+    RBX::DataModel* model = EngineDataModel();
+    if (!model) return;
+    RBX::DataModel::Lock lock(model);
+    walk(model, 0, visitor, context);
+}
 
 // Rotation rows, then translation. Edit mode has no character subject.
 extern "C" int P6DataCamera(float* values)
