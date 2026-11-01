@@ -1,5 +1,6 @@
-// from server: 77% by EspClaude
-// from server: 100% by king_originala
+// from server: 100% by EspClaude
+//
+
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 #include <intrin.h>
@@ -45,15 +46,14 @@ typedef boost::shared_ptr<void> Shared;
 typedef std::vector<Shared> Vector;
 struct Holder {boost::shared_ptr<Vector> object;operator boost::shared_ptr<Vector>::unspecified_bool_type()const{return object;}__declspec(noinline) boost::shared_ptr<const Vector> get()const{return object;}};
 namespace G3D {struct System {static void alignedFree(void*);};}
-struct Buffer {void* data; unsigned long reserved[4]; ~Buffer(){G3D::System::alignedFree(data);}};
-struct Operation {unsigned long storage[2];void apply(unsigned long,Shared,Buffer*);};
-struct S {unsigned char reserved[0x108];Holder children;void f(Operation,unsigned long,Buffer);};
-void S::f(Operation operation,unsigned long argument,Buffer buffer){
+struct Operation {unsigned long storage[2];unsigned long argument;bool flag;void apply(unsigned long,Shared,bool)const;};
+struct S {unsigned char reserved[0x4c];Holder children;void f(const Operation&);};
+void S::f(const Operation& operation){
  if(children){
   boost::shared_ptr<const Vector> snapshot=children.get();
   Vector::const_iterator end=snapshot->end();
   Vector::const_iterator current=snapshot->begin();
-  for(;current!=end;++current){const Shared& item=*current;operation.apply(argument,item,&buffer);}
+  for(;current!=end;++current){const Shared& item=*current;operation.apply(operation.argument,item,operation.flag);}
  }
 }
 

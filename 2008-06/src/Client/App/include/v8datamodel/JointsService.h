@@ -40,5 +40,6 @@ namespace RBX
 			setName("JointsService");
 		}
 		virtual ~JointsService();
+		virtual const Name& getClassName() const { return Name::getNullName(); }
 	};
 }

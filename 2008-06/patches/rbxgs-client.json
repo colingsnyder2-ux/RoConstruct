@@ -2452,7 +2452,7 @@
  "App/include/v8datamodel/JointsService.h": [
   [
    "\t\tJointsService()\n\t\t\t: world(NULL)\n\t\t{\n\t\t\tsetName(\"JointsService\");\n\t\t}\n",
-   "\t\tJointsService()\n\t\t\t: world(NULL)\n\t\t{\n\t\t\tsetName(\"JointsService\");\n\t\t}\n\t\tvirtual ~JointsService();\n"
+   "\t\tJointsService()\n\t\t\t: world(NULL)\n\t\t{\n\t\t\tsetName(\"JointsService\");\n\t\t}\n\t\tvirtual ~JointsService();\n\t\tvirtual const Name& getClassName() const { return Name::getNullName(); }\n"
   ]
  ],
  "App/tool/NullTool.cpp": [

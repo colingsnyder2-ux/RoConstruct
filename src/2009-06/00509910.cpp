@@ -1,10 +1,8 @@
-// from server: 77% by EspClaude
-// from server: 100% by colin
-// from server: 81% by Espeon
+// from server: 81% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client roc_espeon_senderexternalassignmentfe6548abc09e4e8a.cpp
+// roc-lib: boost-1.40.0 roc_espclaude_fe6548abc09e4e8a.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _CPPUNWIND 1

@@ -1,10 +1,11 @@
-// from server: 77% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/System.cpp
+// roc-lib: g3d-6.09 roc_espclaude_0506ea206a17dc75.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define NO_BUFFERPOOL
 /** 
   @file System.cpp
  
@@ -1523,6 +1524,7 @@ void System::free(void* p) {
 
 
 void* System::alignedMalloc(size_t bytes, size_t alignment) {
+#line 1537 ".\\G3Dcpp\\System.cpp"
     alwaysAssertM(isPow2(alignment), "alignment must be a power of 2");
 
     // We must align to at least a word boundary.

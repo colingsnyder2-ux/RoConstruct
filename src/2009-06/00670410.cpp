@@ -1,4 +1,4 @@
-// from server: 76% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005e8000  unit: RBX::Primitive  size: 77 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e8000
@@ -48,11 +48,13 @@ struct Source {
 };
 
 struct Primitive {
-    char reserved0[0x9c];
+    char reserved0[0xe0];
     Provider* provider;
     Source* source;
     char reserved1[0x4c];
     char changed;
+    char reserved2[0x13];
+    char changed2;
 
     void func_005e8000(float value);
 };
@@ -60,6 +62,8 @@ struct Primitive {
 void Primitive::func_005e8000(float value)
 {
     source->set(value);
-    source->consume(provider->compute(value));
+    Source* s = source;
+    s->consume(provider->compute(value));
     changed = 1;
+    changed2 = 0;
 }

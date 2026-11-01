@@ -1,9 +1,9 @@
-// from server: 76% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs roc_unit_0615eda839f81e91.cpp
+// roc-lib: rbxgs roc_espclaude_9a293c568f3c9565.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef _RELEASEASSERT
@@ -18,17 +18,15 @@ void Camera::tellCameraMoved() {
 }
 void Camera::setCameraType(CameraType type)
 	{
-		if ((*reinterpret_cast<CameraType*>(reinterpret_cast<char*>(this) + 0x1d4)) != type)
+		if ((*reinterpret_cast<CameraType*>(reinterpret_cast<char*>(this) + 0x13c)) != type)
 		{
-			(*reinterpret_cast<CameraType*>(reinterpret_cast<char*>(this) + 0x1d4)) = type;
+			(*reinterpret_cast<CameraType*>(reinterpret_cast<char*>(this) + 0x13c)) = type;
 			raisePropertyChanged(desc_cameraType);
-
-			tellCameraMoved();
 		}
 	}
 void Camera::setCameraCoordinateFrameNoLerp(const G3D::CoordinateFrame& value)
 	{
-		(*reinterpret_cast<G3D::CoordinateFrame*>(reinterpret_cast<char*>(this) + 0x174)) = value;
+		(*reinterpret_cast<G3D::CoordinateFrame*>(reinterpret_cast<char*>(this) + 0xdc)) = value;
 		goalToCamera();
 	}
 void Camera::setImageServerViewNoLerp(const G3D::CoordinateFrame& modelCoord, const G3D::Rect2D& viewPort)
@@ -64,14 +62,4 @@ void Camera::setImageServerViewNoLerp(const G3D::CoordinateFrame& modelCoord, co
 	}
 }
 
-namespace RBX {
-bool Camera::zoomExtents(const G3D::Rect2D& viewPort)
-	{
-		if (ICameraOwner* owner = getCameraOwner())
-		{
-			zoomExtents(owner->computeCameraOwnerExtents(), viewPort, ZOOM_IN_OR_OUT);
-			return true;
-		}
-		return false;
-	}
-}
+

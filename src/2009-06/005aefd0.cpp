@@ -1,7 +1,7 @@
-// from server: 76% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 00551820  unit: seg_00550000  size: 242 bytes
-// roc-flags: /Od /GS /EHsc /MD
+// roc-flags: /Od /GS- /EHsc /MD
 #include <exception>
 
 extern int factoryType;
@@ -10,11 +10,11 @@ struct Factory {
     virtual ~Factory();
 };
 struct First : Factory {
-    char data[0x58c];
+    char data[0x2e4];
     First();
 };
 struct Second : Factory {
-    char data[0x4fc];
+    char data[0x304];
     Second();
 };
 

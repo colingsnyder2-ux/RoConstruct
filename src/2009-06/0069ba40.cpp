@@ -1,9 +1,9 @@
-// from server: 78% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_flagstandvirtualbe7b24435e7fb07c.cpp
+// roc-lib: rbxgs-dll roc_espclaude_14d38a9371d29e6c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <G3D/CoordinateFrame.h>
@@ -33,9 +33,9 @@ extern float positionOffset;
 
 struct S
 {
-    char padding0[0x104];
+    char padding0[0x48];
     unsigned int value;
-    char padding1[0x2c];
+    char padding1[0x44];
     int* baseOffsets;
 
     int check();
@@ -55,7 +55,7 @@ void S::update(Argument* argument)
     object->setFrame(Frame());
 
     Interface* interfaceObject = reinterpret_cast<Interface*>(
-        reinterpret_cast<char*>(&baseOffsets) + baseOffsets[2]);
+        reinterpret_cast<char*>(&baseOffsets) + baseOffsets[1]);
 
     Vector3 position=interfaceObject->getFrame().translation;
     position.y+=0.5f;

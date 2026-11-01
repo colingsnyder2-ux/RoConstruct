@@ -1,4 +1,4 @@
-// from server: 77% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004438c0  unit: RBX::Reflection::H::?$TypedPropertyDescriptor  size: 160 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004438c0
@@ -96,7 +96,7 @@ struct Storage {
 };
 
 struct S {
-    unsigned char padding[0x108];
+    unsigned char padding[0x4c];
     Storage* storage;
     void* f();
 };

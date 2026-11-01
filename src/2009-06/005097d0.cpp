@@ -1,4 +1,4 @@
-// from server: 77% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004cb7b0  unit: RBX::VInstance::?$NonFactoryProduct  size: 157 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004cb7b0
@@ -75,12 +75,12 @@
 struct Link;
 
 struct Tag {
-    bool value;
 };
 
 struct Position {
-    Tag tag;
+    int side;
     Link *link;
+    Position() : side(0) {}
 };
 
 struct Object {
@@ -101,9 +101,8 @@ struct Factory {
 Product *Factory::create(Object *argument, Product *storage)
 {
     Position position;
-    position.tag.value = false;
 
-    if (!find(argument->key, &position, position.tag)) {
+    if (!find(argument->key, &position, Tag())) {
         if (position.link)
             return reinterpret_cast<Product *>(
                 reinterpret_cast<char *>(position.link) - 0x50);

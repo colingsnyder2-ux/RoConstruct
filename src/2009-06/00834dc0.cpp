@@ -1,9 +1,9 @@
-// from server: 76% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-render roc_claude28f_d5d8792dbcf22071.cpp
+// roc-lib: rbxgs-render roc_espclaude_1c6367add675bc7c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "RenderLib/RenderScene.h"
@@ -224,7 +224,7 @@ namespace RBX
 
 		void RenderScene::presetLighting(G3D::ReferenceCountedPointer<G3D::Sky> sky, G3D::LightingParameters skyParameters, G3D::Color3 ambientTop, G3D::Color3 ambientBottom)
 		{
-			*reinterpret_cast<G3D::LightingParameters*>(reinterpret_cast<char*>(this) + 0x3a0) = skyParameters;
+			*reinterpret_cast<G3D::LightingParameters*>(reinterpret_cast<char*>(this) + 0xf8) = skyParameters;
 
 			G3D::ReferenceCountedPointer<G3D::Lighting> lighting = G3D::Lighting::create();
 			lighting->ambientTop = ambientTop;
@@ -233,7 +233,7 @@ namespace RBX
 			G3D::GLight sun = G3D::GLight::directional(skyParameters.lightDirection, skyParameters.lightColor * 0.9f);
 			lighting->shadowedLightArray.append(sun);
 
-			setLighting(lighting);
+			*reinterpret_cast<G3D::ReferenceCountedPointer<G3D::Lighting>*>(reinterpret_cast<char*>(this) + 0x68) = *reinterpret_cast<G3D::ReferenceCountedPointer<G3D::Lighting>*>(reinterpret_cast<char*>(this) + 0x64) = lighting;
 		}
 
 		void RenderScene::classifyProxies()
@@ -473,3 +473,4 @@ namespace RBX
 		}
 	}
 }
+

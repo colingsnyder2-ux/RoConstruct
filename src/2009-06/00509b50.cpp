@@ -1,10 +1,8 @@
-// from server: 77% by EspClaude
-// from server: 100% by nuck16
-// from server: 90% by Espeon
+// from server: 82% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_physicsnativeownerkeya66fc5ae92b36cca.cpp
+// roc-lib: boost-1.40.0 roc_espclaude_22bdea43a94939ed.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _CPPUNWIND 1
@@ -13,14 +11,14 @@
 #include <boost/multi_index/hashed_index.hpp>
 #include <boost/multi_index/ordered_index.hpp>
 #include <boost/multi_index/member.hpp>
-#include <G3D/CoordinateFrame.h>
+#include <boost/functional/hash.hpp>
 #include <functional>
 #include <stddef.h>
 // Value and three index keys established by the server-exact PhysicsSender update.
 struct PhysicsRecord {
  boost::shared_ptr<void> part;
  double priority;
- G3D::CoordinateFrame previous;
+ float previous[12];
  float scale;
  int sequence;
  float distance;
@@ -42,3 +40,4 @@ void erasePhysics(PhysicsRecords&t,PhysicsRecords::iterator i){t.erase(i);}
 std::pair<PhysicsRecords::iterator,bool>insertPhysics(PhysicsRecords&t,const PhysicsRecord&v){return t.insert(v);}
 typedef char ValueSize[sizeof(PhysicsRecord)==80?1:-1];
 typedef char SequenceOffset[offsetof(PhysicsRecord,sequence)==68?1:-1];
+

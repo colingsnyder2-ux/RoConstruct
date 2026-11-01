@@ -1,37 +1,21 @@
-// from server: 76% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8datamodel/FaceInstance.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FaceInstance.h"
-
-#include "reflection/property.h"
-
 namespace RBX {
-
-const char sFaceInstance[] = "FaceInstance";
-
-// FUNCTION: WEBSERVICE 0x101219f0
-FaceInstance::FaceInstance() : face(NORM_Z_NEG)
-{
+class GuidItemBase { public: virtual void g0(); char pad[0x10]; };
+class Object { public: virtual void o0(); };
+class DescribedBase { public: virtual void d0(); int descriptor; };
+class Debugable { public: virtual void b0(); char pad[8]; };
+class Instance : public GuidItemBase, public Object, public DescribedBase, public Debugable {
+public:
+	Instance();
+	virtual ~Instance();
+};
+class Derived2009 : public Instance {
+public:
+	Derived2009();
+	virtual ~Derived2009() {}
+};
+Derived2009::Derived2009() {}
 }
-
-const Reflection::EnumPropDescriptor<FaceInstance, NormalId> FaceInstance::prop_Face(
-	"Face",
-	"Data",
-	&RBX::FaceInstance::getFace,
-	&RBX::FaceInstance::setFace
-);
-
-// FUNCTION: WEBSERVICE 0x10121d10
-void FaceInstance::setFace(NormalId value)
-{
-	if (face != value) {
-		face = value;
-		raisePropertyChanged(prop_Face);
-	}
-}
-
-} // namespace RBX

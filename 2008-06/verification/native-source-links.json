@@ -2412,7 +2412,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0740": {
-  "line": 171,
+  "line": 174,
   "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
  },
  "005a0e40": {
@@ -2464,7 +2464,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a20e0": {
-  "line": 139,
+  "line": 142,
   "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
  },
  "005a2730": {
@@ -2512,7 +2512,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a3470": {
-  "line": 161,
+  "line": 164,
   "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
  },
  "005a36d0": {
@@ -3104,7 +3104,7 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d18e0": {
-  "line": 177,
+  "line": 180,
   "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
  },
  "005d1a80": {

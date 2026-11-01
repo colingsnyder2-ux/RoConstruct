@@ -1,7 +1,7 @@
-// from server: 76% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 #pragma optimize("", off)
 
 struct Handle {
@@ -13,7 +13,7 @@ struct Handle {
 Handle __cdecl makeHandle(void*, void*, void*);
 
 struct TextureProxy {
-    char padding[0x1c];
+    char padding[0x14];
     char first[0x10];
     Handle handle;
     char second[0xc0];

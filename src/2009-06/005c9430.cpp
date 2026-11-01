@@ -1,5 +1,9 @@
-// from server: 77% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/afxbutton.cpp
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct G { char pad[0x78]; double d; };
+G* get();
+double f()
+{
+    return get()->d;
+}

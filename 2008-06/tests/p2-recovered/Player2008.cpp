@@ -28,6 +28,7 @@ extern "C" void GetPartColor(float* r, float* g, float* b);
 extern "C" int  PartAlive(void);
 extern "C" void MovePartTo(float x, float y, float z);
 extern "C" void StepEngine(float dt);
+extern "C" float GetSimulationTime();
 extern "C" void StartPlay();
 extern "C" int BuildPlayerJoints();
 extern "C" int AttachPlayerController(int);
@@ -731,6 +732,7 @@ int main(int argc, char** argv)
     bool p5HashCheck = false;
     bool p5RunInitCheck = false;
     bool p5ClimbProbe = false;
+    bool p5TimingCheck = false;
     bool p5ClimbObserve = false;
     bool p5LuaObjectCheck = false;
     bool p5FreefallCheck = false;
@@ -760,6 +762,7 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--p5-spawn") == 0) {p5Spawn=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
         else if (std::strcmp(argv[i], "--p5-clock-check") == 0) p5ClockCheck = true;
+        else if (std::strcmp(argv[i], "--p5-timing-check") == 0) {p5TimingCheck=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-hash-check") == 0) p5HashCheck = true;
         else if (std::strcmp(argv[i], "--p5-run-init-check") == 0) p5RunInitCheck = true;
         else if (std::strcmp(argv[i], "--p5-climb-probe") == 0) {p5ClimbProbe=true;p5Join=true;}
@@ -836,6 +839,16 @@ int main(int argc, char** argv)
     }
     if(p5ClimbObserve && BeginClimbObservation()){ClosePlace();return 1;}
     if(p5Play)StartPlay();
+    if(p5TimingCheck){
+        const float tick=1.0f/30.0f, start=GetSimulationTime();
+        StepEngine(0.0f); StepEngine(tick*0.25f); StepEngine(tick*0.25f);
+        float half=GetSimulationTime()-start;
+        StepEngine(tick*0.5f); float one=GetSimulationTime()-start;
+        StepEngine(tick*2.0f); float three=GetSimulationTime()-start;
+        int result=std::fabs(half)>0.0001f || std::fabs(one-tick)>0.0001f || std::fabs(three-3*tick)>0.0001f;
+        std::printf("timing check: %s half=%.6f one=%.6f three=%.6f\n",result?"FAIL":"PASS",half,one,three);
+        ClosePlace();return result;
+    }
 
     Ogre::Root* root = new Ogre::Root("", "", "player.log");
     if (!root) { std::printf("root failed\n"); ClosePlace(); return 2; }
@@ -1021,7 +1034,7 @@ int main(int argc, char** argv)
             if(win->isClosed())break;
             unsigned long now = timer.getMilliseconds();
             float dt = (now - last) / 1000.0f;
-            if (dt <= 0) dt = 1.0f / 60.0f;
+            if (dt < 0) dt = 0;
             last = now;
 
             Ogre::Vector3 camMove(0, 0, 0);

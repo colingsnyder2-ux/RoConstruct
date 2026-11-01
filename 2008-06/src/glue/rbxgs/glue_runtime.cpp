@@ -9,6 +9,7 @@
 #include "v8datamodel/GameSettings.h"
 #include "NetworkSettings.h"
 #include "v8datamodel/Workspace.h"
+#include "v8datamodel/JointsService.h"
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/Surface.h"
@@ -58,6 +59,8 @@ namespace RBX
 		Notifier<RunService, RunTransition>::connect(runService.get(), this);
 		starterPackService = shared_from(ServiceProvider::create<StarterPackService>(this));
 		localBackpack = shared_from(ServiceProvider::create<LocalBackpack>(this));
+		// Original initializeContents 0057a9f0 creates the joint owner/listener.
+		Creatable<Instance>::create<JointsService>()->setParent(this);
 		ServiceProvider::create<Lighting>(this);
 		ServiceProvider::create<Teams>(this);
 		ServiceProvider::create<ScriptContext>(this);

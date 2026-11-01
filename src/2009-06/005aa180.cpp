@@ -1,12 +1,10 @@
-// from server: 77% by EspClaude
-// from server: 100% by colin
+// from server: 100% by EspClaude
+// roc 2009-06 005aa180  unit: seg_005a0000  size: 1035 bytes
+//
+
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
-// Local names were chosen to reproduce the /Od frame layout (MSVC orders locals by name hash).
-// Analog for 00548150: builds a level's welded geometry and face normals with
-// G3D::MeshAlg (createIndexArray 007baea0, computeWeld 007badc0,
-// computeAdjacency 007b9940) and the strip/quad triangulator 00551010.
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 class Vec3 {
 public:
     Vec3();
@@ -36,7 +34,7 @@ public:
 
 class LevelData {
 public:
-    int header[0x0c / 4];
+    int header[0x10 / 4];
     Array<int> indices;
     int type;
 };

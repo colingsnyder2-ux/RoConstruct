@@ -1,23 +1,33 @@
-// from server: 76% by atomic.potato
-struct Stage;
-struct IPipelined {
-    char pad0[4];
-    IPipelined* next;
-    void removeFromStage(Stage*);
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Primitive;
+struct Stage {
+    void g(Primitive* a1);
+    void h(Primitive* a1);
+};
+typedef void (Stage::*StageFn)(Primitive*);
+
+struct Functor { StageFn fn; Stage* s; Functor(StageFn f, Stage* p) { s = p; fn = f; } };
+struct Prims {
+    void visit(Functor fn);
 };
 
-struct MechToAssemblyStage {
+struct Primitive {
     char pad0[8];
-    void* field8;
-    void func(void*);
+    Prims prims;
+    void detach(void* a1);
 };
 
-extern "C" void __stdcall sub_6f6d20(void*, void*, void*);
-extern "C" void __stdcall sub_6dad30(void*, void*);
+struct S {
+    char pad0[8];
+    Stage* m_p;
+    void f(Primitive* a1);
+};
 
-void MechToAssemblyStage::func(void* arg) {
-    void* p = field8;
-    sub_6f6d20((char*)arg + 8, (void*)0x6dad50, p);
-    sub_6dad30(field8, arg);
-    ((IPipelined*)arg)->removeFromStage((Stage*)this);
+void S::f(Primitive* a1)
+{
+    a1->prims.visit(Functor(&Stage::g, m_p));
+    m_p->h(a1);
+    a1->detach(this);
 }

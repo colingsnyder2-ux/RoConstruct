@@ -1,4 +1,4 @@
-// from server: 76% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005fd3e0  unit: RBX::Tool  size: 122 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005fd3e0
@@ -85,12 +85,12 @@ void Tool::changed(Descriptor* descriptor, int argument)
         bool (__cdecl *equals)(const String&, const char*) = stringEquals;
         if (equals(
                 *reinterpret_cast<const String*>(
-                    reinterpret_cast<const char*>(property) + 4),
+                    reinterpret_cast<const char*>(property)),
                 "BackendToolState"))
             return;
         if (equals(
                 *reinterpret_cast<const String*>(
-                    reinterpret_cast<const char*>(property) + 4),
+                    reinterpret_cast<const char*>(property)),
                 "ActivationState"))
             return;
     }

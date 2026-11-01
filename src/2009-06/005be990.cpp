@@ -1,9 +1,10 @@
-// from server: 77% by EspClaude
-// from server: 100% by colin
+// from server: 100% by EspClaude
+// roc 2009-06 005be990  unit: RBX::AggregatingSceneManager  size: 418 bytes
+//
+
 // roc-cl: 50727
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 #pragma optimize("", off)
-#pragma strict_gs_check(on)
 
 struct Node;
 struct Owner;
@@ -20,7 +21,7 @@ struct HandleSource {
 };
 
 struct Owner {
-    char padding[32];
+    char padding[24];
     HandleSource source;
 };
 

@@ -1,100 +1,76 @@
-// from server: 76% by EspClaude
-// from server: 100% by auto
-// roc-lang: cpp
+// from server: 100% by EspClaude
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "v8datamodel/DataModel.h"
-
-namespace RBX
+namespace RBX {
+class Name { public: static const Name& declare(const char* s); };
+extern int typeCounter;
+namespace Reflection {
+class ClassDescriptor;
+class Type;
+struct Holder { virtual ~Holder(); };
+struct Variant {
+    void* type;
+    Holder* content;
+    Variant();
+    ~Variant() { if (content) delete content; }
+};
+struct Item {
+    const Name* name;
+    const Type* type;
+    Variant def;
+};
+struct Node { Node* next; Node* prev; };
+struct ArgList {
+    char pad[0x14];
+    Node* head;
+    char pad2[4];
+    Node* _Buynode(Node* next, Node* prev, const Item& v);
+    void _Incsize(unsigned int n);
+    static Node*& _Prevnode(Node* p) { return p->prev; }
+    static Node*& _Nextnode(Node* p) { return p->next; }
+    void _Insert(Node* where, const Item& v) {
+        Node* n = _Buynode(where, _Prevnode(where), v);
+        _Incsize(1);
+        _Prevnode(where) = n;
+        _Nextnode(_Prevnode(n)) = n;
+    }
+    Node* end() { return head; }
+    void push_back(const Item& v) { _Insert(end(), v); }
+};
+const Type& typeSingleton();
+inline const Type& singletonT() { ++typeCounter; return typeSingleton(); }
+class SignalDescriptor {
+public:
+    SignalDescriptor(const ClassDescriptor& c, const char* name);
+    virtual ~SignalDescriptor();
+    char pad[0x10];
+    ArgList arguments;
+};
+template<class C, class Sig>
+class __declspec(novtable) TSignalDesc : public SignalDescriptor {
+protected:
+    Sig C::* sig;
+    TSignalDesc(Sig C::* s, const char* name) : SignalDescriptor(C::classDescriptor(), name), sig(s) {}
+};
+template<class C, class Sig>
+class SignalDesc : public TSignalDesc<C, Sig> {
+public:
+    SignalDesc(Sig C::* s, const char* name, const char* arg1name);
+    virtual ~SignalDesc() {}
+};
+template<class C, class Sig>
+SignalDesc<C, Sig>::SignalDesc(Sig C::* s, const char* name, const char* arg1name)
+    : TSignalDesc<C, Sig>(s, name)
 {
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
-
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
+    Item arg1 = {&Name::declare(arg1name), &singletonT()};
+    this->arguments.push_back(arg1);
+}
+}
+struct Signal { int x; };
+class Target {
+public:
+    static const Reflection::ClassDescriptor& classDescriptor();
+    Signal sigm;
+};
+template Reflection::SignalDesc<Target, Signal>::SignalDesc(Signal Target::*, const char*, const char*);
 }

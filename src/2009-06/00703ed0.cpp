@@ -1,9 +1,9 @@
-// from server: 76% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_unit_7d2f0ab88aedddfb.cpp
+// roc-lib: rbxgs-dll roc_espclaude_73f9abf08d2c9c17.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias("util/Rect.h", "roc_native_rect_center_f0523507542fe513.cpp")
@@ -422,20 +422,22 @@ static inline G3D::Rect2D handleRect(const G3D::Vector2& c) {
     G3D::Vector2 hi = c + G3D::Vector2(3.0f, 3.0f);
     return G3D::Rect2D::xyxy(lo, hi);
 }
-void DrawAdorn::handles2d(const G3D::Vector3& size, const G3D::CoordinateFrame& frame,
-                         const G3D::GCamera& camera, Adorn* adorn, const G3D::Color3& color) {
+void handles2d(const G3D::Vector3& size, const G3D::CoordinateFrame& frame,
+                         const G3D::GCamera& camera, Adorn* adorn, const G3D::Color3& color, int normalIdMask) {
     G3D::Vector3 halfSize = size * 0.5f;
     for (int side = 0; side < 2; ++side) {
         float sign = side < 1.0f ? -1.0f : 1.0f;
         for (int axis = 0; axis < 3; ++axis) {
-            G3D::Vector3 point(0, 0, 0);
-            point[axis] = (halfSize[axis] + 3.0f) * sign;
-            G3D::Vector2 screen = camera.project(frame.pointToWorldSpace(point), adorn->getViewport()).xy();
-            adorn->rect2d(Rect::fromCenterSize(screen, 6.0f).toRect2D(), color);
+            if (normalIdMask & (1 << (side * 3 + axis))) {
+                G3D::Vector3 point(0, 0, 0);
+                point[axis] = (halfSize[axis] + 3.0f) * sign;
+                G3D::Vector2 screen = camera.project(frame.pointToWorldSpace(point), adorn->getViewport()).xy();
+                adorn->rect2d(Rect::fromCenterSize(screen, 6.0f).toRect2D(), color);
+            }
         }
     }
 }
-
 }
 
 typedef char native_rect_size[sizeof(RBX::Rect)==16?1:-1];
+

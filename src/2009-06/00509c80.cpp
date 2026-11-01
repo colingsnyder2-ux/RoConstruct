@@ -1,4 +1,4 @@
-// from server: 77% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 004cbea0  unit: RBX::VInstance::?$NonFactoryProduct  size: 157 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004cbea0
@@ -79,12 +79,12 @@ struct Link {
 };
 
 struct Tag {
-    bool value;
 };
 
 struct Position {
-    Tag tag;
+    int side;
     Link* link;
+    Position() : side(0) {}
 };
 
 struct Node {
@@ -110,9 +110,8 @@ struct S {
 Node* S::f(Node* source, Node* candidate)
 {
     Position position;
-    position.tag.value = false;
 
-    if (!find(&source->key, &position, position.tag))
+    if (!find(&source->key, &position, Tag()))
         return position.link
             ? reinterpret_cast<Node*>(
                 reinterpret_cast<char*>(position.link) - 0x60)

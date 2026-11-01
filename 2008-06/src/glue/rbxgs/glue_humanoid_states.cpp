@@ -3,8 +3,8 @@
 //    that rights the torso, keeping the user torque where it is small against the body's inertia.
 //  - Balancing::filterResult follows OpenRBX humanoid/Balancing.cpp (matched against WEBSERVICE).
 //  - Flying::onComputeForce and its constants follow OpenRBX humanoid/Flying.cpp.
-//  - Running (walk, hover on the floor, turn with the ground) and the floor probe are behavioural
-//    reconstructions in the same PD style; their constants are not yet read from the binary.
+//  - Running/Climbing force follows 2008-06 00666550; state ABI, floor probe and goal
+//    integration remain adaptations. Acceleration limits are read from 00666350/006663a0.
 // Not byte-verified.
 #include "humanoid/Balancing.h"
 #include "humanoid/Flying.h"
@@ -68,14 +68,28 @@ namespace RBX
 		return torso ? torso->getCoordinateFrame().rotation.getColumn(1) : G3D::Vector3::unitY();
 	}
 
-	// straight down from the torso; a floor already stood on is kept a little further away
+	// Adapted from original 00644000: torso bottom, then four corner rays.
 	PartInstance* Balancing::findFloor(bool existingFloor)
 	{
-		Body* torso = humanoid->getTorsoBody();
-		if (!torso)
-			return NULL;
-		G3D::Ray ray = G3D::Ray::fromOriginAndDirection(torso->getCoordinateFrame().translation, -G3D::Vector3::unitY());
-		return tryFloor(ray, existingFloor ? 4.5f : 3.5f);
+		if (!humanoid->getTorsoBody()) return NULL;
+		Primitive* torso = humanoid->getTorsoPrimitive();
+		if (!torso) return NULL;
+		const G3D::CoordinateFrame& frame = torso->getCoordinateFrame();
+		G3D::Vector3 half = torso->getGridSize() * 0.5f;
+		float distance = 1.0f;
+		float factor = existingFloor ? 1.5f : 1.1f;
+		Primitive* leg = humanoid->getLeftLegPrimitive();
+		if (!leg) leg = humanoid->getRightLegPrimitive();
+		if (leg) distance = leg->getGridSize().y * factor + 1.0f;
+		G3D::Vector3 origin = frame.pointToWorldSpace(G3D::Vector3(0,-half.y,0));
+		PartInstance* hit = tryFloor(G3D::Ray::fromOriginAndDirection(origin,-G3D::Vector3::unitY()),distance);
+		if (hit) return hit;
+		for (int x=-1; x<=1; x+=2) for (int z=-1; z<=1; z+=2) {
+			origin = frame.pointToWorldSpace(G3D::Vector3(x*half.x,-half.y,z*half.z));
+			hit = tryFloor(G3D::Ray::fromOriginAndDirection(origin,-G3D::Vector3::unitY()),distance);
+			if (hit) return hit;
+		}
+		return NULL;
 	}
 
 	const float Flying::kTurnP = 7500.0f;
@@ -110,22 +124,29 @@ namespace RBX
 
 	const float Running::manualTurnSpeed = 8.0f;
 	const float Running::autoTurnSpeed = 8.0f;
-	const float Running::kTurnP = 7500.0f;
-	const float Running::kTurnAccelMax = 120000.0f;
-	const float Running::kMoveP = 30.0f;
-	const float Running::kAltitudeP = 1000.0f;
-	const float Running::kAltitudeD = 50.0f;
-	const G3D::Vector3 Running::maxMoveAccelerationGrid(150.0f, 0.0f, 150.0f);
 
 	void Running::updateGoals(Controller&)
 	{
+		floorVelocity = G3D::Vector3::zero();
+		floorRotationalVelocity = 0.0f;
+		if (floorPart) {
+			const PV& floor = floorPart->getPrimitive()->getBody()->getPV();
+			floorVelocity = floor.linearVelocityAtPoint(floorTouchInWorld);
+			floorRotationalVelocity = floor.velocity.rotational.y;
+		}
 		G3D::Vector3 direction = humanoid->updateWalkDirection();
 		direction.y = 0;
 		desiredVelocity = direction * 16.0f;
 		desiredYRotationalVelocity = humanoid->getWalkRotationalVelocity();
 		if (direction.squaredLength() > 0.0001f)
 			intendedYRotation = atan2f(-direction.x, -direction.z);
-		desiredAltitude = floorTouchInWorld.y + 3.0f;
+		// Original 00643360: torso half-height plus left leg, or right leg if absent.
+		desiredAltitude = floorTouchInWorld.y;
+		Primitive* torso = humanoid->getTorsoPrimitive();
+		if (torso) desiredAltitude += torso->getGridSize().y * 0.5f;
+		Primitive* leg = humanoid->getLeftLegPrimitive();
+		if (!leg) leg = humanoid->getRightLegPrimitive();
+		if (leg) desiredAltitude += leg->getGridSize().y;
 	}
 
 	bool Running::isFacingStairs()
@@ -133,47 +154,53 @@ namespace RBX
 		return false;
 	}
 
-	// match the floor's spin plus the requested turn
-	void Running::rotateWithGround(Body* body)
+	// Adapted from server-verified 2008 RunningBase::onComputeForce 00666550.
+	// Running's donor layout and goal update remain reconstructed.
+	void ApplyRunningBaseForce(Humanoid* humanoid, PartInstance* floorPart, const G3D::Vector3& floorTouchInWorld,
+		const G3D::Vector3& floorVelocity, float floorRotationalVelocity, const G3D::Vector3& desiredVelocity,
+		float desiredYRotationalVelocity, float desiredAltitude)
 	{
-		float momentY = body->getBranchIBodyV3().y;
-		float error = (desiredYRotationalVelocity + floorRotationalVelocity) - body->getVelocity().rotational.y;
-		float torqueY = error * momentY * kTurnP - body->getBranchTorque().y;
-		float maxTorqueY = momentY * kTurnAccelMax;
-		body->accumulateTorque(G3D::Vector3(0, G3D::clamp(torqueY, -maxTorqueY, maxTorqueY), 0));
-	}
-
-	// hold the torso at hip height over the floor, carrying gravity
-	void Running::hoverOnFloor(Body* body)
-	{
-		float mass = body->getBranchMass();
-		float error = desiredAltitude - body->getCoordinateFrame().translation.y;
-		float force = mass * (kAltitudeP * error - kAltitudeD * body->getVelocity().linear.y) - mass * Constants::getKmsGravity().y;
-		body->accumulateForceAtBranchCofm(G3D::Vector3(0, force, 0));
-	}
-
-	// steer horizontal velocity toward the walk goal (relative to a moving floor)
-	void Running::move(Body* body)
-	{
-		float mass = body->getBranchMass();
-		G3D::Vector3 error = desiredVelocity + floorVelocity - body->getVelocity().linear;
-		error.y = 0;
-		G3D::Vector3 force = error * (mass * kMoveP);
-		G3D::Vector3 limit = maxMoveAccelerationGrid * mass;
-		force.x = G3D::clamp(force.x, -limit.x, limit.x);
-		force.z = G3D::clamp(force.z, -limit.z, limit.z);
-		body->accumulateForceAtBranchCofm(force);
+		Body* torso = humanoid->getTorsoBody();
+		Body* root = humanoid->getRootBody();
+		if (!torso || !root) return;
+		const Velocity& velocity = root->getVelocity();
+		float torque = ((humanoid->getWalkRotationalVelocity()*4.0f + desiredYRotationalVelocity)
+			+ floorRotationalVelocity - velocity.rotational.y) * root->getBranchIBodyV3().y * 7500.0f;
+		torque -= root->getBranchTorque().y;
+		float maxTorque = root->getBranchIBodyV3().y * 160000.0f;
+		root->accumulateTorque(G3D::Vector3(0, G3D::clamp(torque,-maxTorque,maxTorque), 0));
+		Primitive* floor = floorPart ? floorPart->getPrimitive() : NULL;
+		float rootMass = root->getBranchMass();
+		float moveMass = rootMass;
+		if (floor) {
+			Body* floorBody = floor->getBody();
+			moveMass = std::min(rootMass, floorBody->getRoot()->getBranchMass());
+			if (desiredAltitude != 0.0f) {
+				float acceleration = (desiredAltitude - torso->getCoordinateFrame().translation.y)*10000.0f - root->getVelocity().linear.y*1250.0f;
+				float current = root->getBranchForce().y / rootMass;
+				if (acceleration > 0.0f && current < acceleration) {
+					float force = std::min(acceleration-current, 10000.0f)*moveMass;
+					root->accumulateForceAtBranchCofm(G3D::Vector3(0,force,0));
+					floorBody->accumulateForce(G3D::Vector3(0,-force,0),floorTouchInWorld);
+				}
+			}
+		}
+		G3D::Vector3 current = root->getBranchForce() / rootMass;
+		const Velocity& branchVelocity = root->getRoot()->getVelocity();
+		G3D::Vector3 acceleration((desiredVelocity.x+floorVelocity.x-branchVelocity.linear.x)*1250.0f,
+			desiredVelocity.y>0.0f ? (desiredVelocity.y-branchVelocity.linear.y)*1250.0f : current.y,
+			(desiredVelocity.z+floorVelocity.z-branchVelocity.linear.z)*1250.0f);
+		G3D::Vector3 force = (acceleration-current).clamp(G3D::Vector3(-1000,0,-1000),G3D::Vector3(1000,10000,1000))*moveMass;
+		if (floor && floor->getFriction()<0.3f) { float scale=floor->getFriction()*floor->getFriction(); force.x*=scale; force.z*=scale; }
+		root->accumulateForceAtBranchCofm(force);
+		if (floor) floor->getBody()->accumulateForce(-force,floorTouchInWorld);
 	}
 
 	void Running::onComputeForce(const float dt)
 	{
 		Balancing::onComputeForce(dt);
-		if (Body* body = humanoid->getRootBody())
-		{
-			rotateWithGround(body);
-			hoverOnFloor(body);
-			move(body);
-		}
+		ApplyRunningBaseForce(humanoid,floorPart.get(),floorTouchInWorld,floorVelocity,
+			floorRotationalVelocity,desiredVelocity,desiredYRotationalVelocity,desiredAltitude);
 	}
 
 	Humanoid::State* Running::onStep(const float stepDt, Controller& controller)

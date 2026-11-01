@@ -1,5 +1,6 @@
-// from server: 77% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+struct A { int pad; int n; int* data; int* end(); };
+int* A::end() { return data + n; }

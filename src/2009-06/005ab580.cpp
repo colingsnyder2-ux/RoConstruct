@@ -1,7 +1,9 @@
-// from server: 77% by EspClaude
-// from server: 100% by colin
+// from server: 100% by EspClaude
+// roc 2009-06 005ab580  unit: RBX::Mesh  size: 399 bytes
+//
+
 // roc-cl: 50727
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 typedef unsigned int size_t;
 
 void * __cdecl operator new(size_t, void *);
@@ -23,7 +25,6 @@ struct S {
     void append(const V &, const V &);
 };
 
-#pragma strict_gs_check(on)
 #pragma optimize("", off)
 
 void S::append(const V &a, const V &b)
@@ -43,4 +44,3 @@ void S::append(const V &a, const V &b)
 }
 
 #pragma optimize("", on)
-#pragma strict_gs_check(off)

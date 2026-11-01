@@ -1,73 +1,63 @@
-// from server: 76% by EspClaude
-// from server: 100% by auto
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/standardout.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/standardout.h"
-#include "util/Log.h"
-#include <G3D/format.h>
-
-namespace RBX
-{
-	void StandardOut::print(MessageType type, const char* format, ...)
-	{
-		va_list argsList;
-		va_start(argsList, format);
-		std::string message = G3D::vformat(format, argsList);
-		va_end(argsList);
-
-		if (Log::current())
-		{
-			if (type == MESSAGE_ERROR)
-				Log::current()->writeEntry(Log::Error, message.c_str());
-			else if (type == MESSAGE_WARNING)
-				Log::current()->writeEntry(Log::Warning, message.c_str());
-			else if (type == MESSAGE_INFO)
-				Log::current()->writeEntry(Log::Information, message.c_str());
-		}
-
-		if (Notifier<StandardOut, StandardOutMessage>::hasListeners())
-		{
-			boost::mutex::scoped_lock lock(sync);
-			if (Notifier<StandardOut, StandardOutMessage>::hasListeners())
-				Notifier<StandardOut, StandardOutMessage>::raise(StandardOutMessage(type, message.c_str()));
-		}
-	}
-
-	void StandardOut::print(MessageType type, const std::exception& exp)
-	{
-		print(type, exp.what());
-	}
-
-	void StandardOut::print_exception(const boost::function0<void>& f, MessageType type, bool rethrow)
-	{
-		try
-		{
-			f();
-		}
-		catch (std::exception& ex)
-		{
-			singleton()->print(type, ex);
-
-			if (rethrow)
-				throw;
-		}
-	}
-
-	boost::shared_ptr<StandardOut> StandardOut::singleton()
-	{
-		static boost::shared_ptr<StandardOut> standardOut(new StandardOut());
-		return standardOut;
-	}
-
-	StandardOut::StandardOut()
-	{
-	}
-
-	StandardOut::~StandardOut()
-	{
-	}
+#include <intrin.h>
+namespace boost {
+namespace detail {
+inline long atomic_increment(long* pw) { return _InterlockedIncrement(pw); }
+inline long atomic_decrement(long* pw) { return _InterlockedDecrement(pw); }
+class sp_counted_base {
+public:
+    long use_count_;
+    long weak_count_;
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void weak_add_ref() { atomic_increment(&weak_count_); }
+    void weak_release() { if (atomic_decrement(&weak_count_) == 0) destroy(); }
+    void release() { if (atomic_decrement(&use_count_) == 0) { dispose(); weak_release(); } }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    template<class Y> explicit shared_count(Y* p);
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+class weak_count {
+public:
+    sp_counted_base* pi_;
+    weak_count& operator=(shared_count const& r) {
+        sp_counted_base* tmp = r.pi_;
+        if (tmp != pi_) {
+            if (tmp != 0) tmp->weak_add_ref();
+            if (pi_ != 0) pi_->weak_release();
+            pi_ = tmp;
+        }
+        return *this;
+    }
+};
 }
+template<class T> class weak_ptr {
+public:
+    T* px;
+    detail::weak_count pn;
+    template<class Y> void _internal_assign(Y* px2, detail::shared_count const& pn2) { px = px2; pn = pn2; }
+};
+template<class T> class enable_shared_from_this {
+public:
+    mutable weak_ptr<T> _internal_weak_this;
+};
+template<class T, class Y> inline void sp_enable_shared_from_this(detail::shared_count const& pn, enable_shared_from_this<T> const* pe, Y const* px) {
+    if (pe != 0) pe->_internal_weak_this._internal_assign(const_cast<Y*>(px), pn);
+}
+inline void sp_enable_shared_from_this(detail::shared_count const&, ...) {}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    template<class Y> explicit shared_ptr(Y* p) : px(p), pn(p) { sp_enable_shared_from_this(pn, p, p); }
+};
+}
+namespace RBX { class StandardOut : public boost::enable_shared_from_this<StandardOut> { public: int x; }; }
+template boost::shared_ptr<RBX::StandardOut>::shared_ptr(RBX::StandardOut*);

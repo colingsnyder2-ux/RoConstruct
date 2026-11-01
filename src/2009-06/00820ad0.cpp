@@ -1,27 +1,20 @@
-// from server: 76% by atomic.potato
-typedef int (__cdecl *FunctionType)();
-
-extern "C" int __cdecl sub_00820471();
-extern FunctionType g_00A3183C;
-extern FunctionType g_00A31840;
-extern FunctionType sub_00820766;
-extern FunctionType sub_00820890;
-extern FunctionType sub_0082097C;
-
-struct seg_00820000
+// from server: 100% by EspClaude
+// roc-flags: /O2 /GS- /EHsc /MD /Oy- /hotpatch
+typedef int (__stdcall *Fn)(int);
+extern "C" int __cdecl check_820471();
+extern "C" int __stdcall impl_82097c(int);
+extern "C" int __stdcall impl_820766(int);
+extern "C" int __stdcall impl_820890(int);
+extern Fn g_a3183c;
+extern Fn g_a31840;
+extern "C" int __stdcall dispatch_820ad0(int a)
 {
-    void f();
-};
-
-void seg_00820000::f()
-{
-    if (sub_00820471())
-        g_00A3183C = sub_0082097C;
-    else
-    {
-        g_00A3183C = sub_00820766;
-        sub_00820890;
+    if (check_820471()) {
+        g_a3183c = impl_82097c;
+        g_a31840 = impl_82097c;
+    } else {
+        g_a3183c = impl_820766;
+        g_a31840 = impl_820890;
     }
-
-    g_00A31840 = sub_00820890;
+    return g_a31840(a);
 }
