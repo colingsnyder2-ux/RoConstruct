@@ -54,7 +54,7 @@ public:
     virtual void setDirty(bool value) { dirty = value; }
     virtual bool isDirty() const { return dirty; }
     Workspace* getWorkspace() const { return workspace.get(); }
-    Selection* getSelection(); // Original service lookup 004153b0; linkage pending.
+    Selection* findSelection(); // Original lookup 00415200; symbol/linkage pending.
     static void closeDataModel(boost::shared_ptr<DataModel>, bool);
 };
 }
