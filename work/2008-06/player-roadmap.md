@@ -2112,3 +2112,6 @@ DataModel constructor type trace: +0x234 invokes imported MSVCP90 std::basic_str
 
 
 MSVC21022 class-layout comparison: native DataModel size0x264 vs donor0x27c. Original RTTI versus compiler report gives native/donor VerbContainer0x1c8/0x1c0, IDataState0x1f0/0x1e8, Evaluator0x1f4/0x208, RunTransition listener0x1f8/0x20c and workspace0x204/0x218. GuidItem is native primary base, whereas donor stores Guid at instance tail. Differences are not a uniform offset; native Instance/ServiceProvider and IDataState layouts need recovery, not a constant adjustment. Evidence datamodel-layout-comparison.json and datamodel-donor-layout.log. No active ABI change.
+
+
+Native IDataState recovered as a four-byte interface, two virtual slots setDirty/isDirty. Original DataModel RTTI shows no StateStack base; vtable0083030c points to0057b020/0057b030, accessing DataModel dirty byte0x258 from interface offset0x1f0. MSVC21022 native interface size gate passes. Candidate shared header is inactive; donor IDataState still embeds StateStack and must not be treated as ABI-equivalent. Evidence shared-layouts/idatastate.json.
