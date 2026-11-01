@@ -198,12 +198,13 @@ extern "C" int CheckFreefallTransitions()
 
 // 00644a30 / 00644c80: candidate box and vertical obstruction ray sweep.
 class ClimbRayFilter : public RBX::HitTestFilter {
-    const RBX::Instance* character;
+    const RBX::Humanoid* humanoid;
 public:
-    explicit ClimbRayFilter(const RBX::Instance* value):character(value){}
+    explicit ClimbRayFilter(const RBX::Humanoid* value):humanoid(value){}
     Result filterResult(const RBX::Primitive* primitive) const {
-        const RBX::PartInstance* part=RBX::PartInstance::fromPrimitiveConst(primitive);
-        return part && part->isDescendentOf(character) ? IGNORE_PRIM : INCLUDE_PRIM;
+        RBX::Primitive* torso=humanoid->getTorsoPrimitive();
+        return primitive->getDragging() || !primitive->getCanCollide() ||
+            (torso && torso->getAssembly()==primitive->getAssembly()) ? IGNORE_PRIM : INCLUDE_PRIM;
     }
 };
 static bool DetectClimb(RBX::Humanoid* humanoid)
@@ -222,7 +223,7 @@ static bool DetectClimb(RBX::Humanoid* humanoid)
         if(part && !part->isDescendentOf(character)){nearby=true;break;}
     }
     if(!nearby)return false;
-    ClimbRayFilter filter(character);float firstHeight=0,span=0;bool first=true,inContact=false;
+    ClimbRayFilter filter(humanoid);float firstHeight=0,span=0;bool first=true,inContact=false;
     for(int i=1;i<18;++i){
         float height=float(i)*.1428571492433548f;
         G3D::Vector3 origin=frame.translation+G3D::Vector3(0,height-2.7f,0),hit;

@@ -30,3 +30,7 @@ uses the rebuilt contact manager and excludes the character. After one physics
 step it detects a close rung and rejects distant, tall-wall, behind-character,
 and character-descendant controls. Target-client parity, filtering equivalence,
 state entry/exit, and climb forces remain unproven.
+
+Original ray filter vtable 0084acc8 points to 006432e0: ignore dragged,
+noncollidable, and same-assembly primitives; broadphase excludes character
+descendants separately. The probe follows those existing filter semantics.

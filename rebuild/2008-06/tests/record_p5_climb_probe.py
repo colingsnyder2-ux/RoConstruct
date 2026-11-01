@@ -21,7 +21,8 @@ def main():
                'remaining': ['Original-client comparison', 'Filtering parity', 'Climb state and forces'], 'cases': {}}
     for name,fixture,expected in [('empty','p5-humanoid-idle.rbxl',0),('rung','p5-climb-rung.rbxl',1),
                                   ('distant','p5-climb-distant.rbxl',0),('tall','p5-climb-tall.rbxl',0),
-                                  ('behind','p5-climb-behind.rbxl',0),('self','p5-climb-self.rbxl',0)]:
+                                  ('behind','p5-climb-behind.rbxl',0),('self','p5-climb-self.rbxl',0),
+                                  ('nocollide','p5-climb-nocollide.rbxl',0)]:
         path=FIXTURES/fixture
         run=subprocess.run([str(EXE),'--p5-climb-probe',str(path)],cwd=out,capture_output=True,text=True,timeout=30)
         (out/(name+'.txt')).write_text(run.stdout+run.stderr)
