@@ -12,6 +12,10 @@
 static const UINT IDR_MAINFRAME_ROBLOX = 128; // RT_MENU/RT_ACCELERATOR/RT_GROUP_ICON 128
 static const UINT IDR_PLACE = 129;            // RT_MENU and doc string "Places (*.rbxl)"
 static const UINT ID_P6_AUTOCLOSE = 1;
+static const UINT ID_P6_COMMAND = 2;
+static const UINT IDD_P6_ABOUT = 117;              // 00401220 passes 0x75 to the dialog base
+static const UINT ID_TOOLS_EXECUTE_SCRIPT = 33009; // CRobloxApp map, handler 0044a300
+static const UINT ID_TOOLS_PLAY_SOLO = 33028;      // Tools > Test > Play Solo
 
 class CRobloxCommandLineInfo : public CCommandLineInfo {
 public:
@@ -19,7 +23,7 @@ public:
     bool visible;
     bool play;
     CString* expecting;
-    CString capture, script, saveAs;
+    CString capture, script, saveAs, post;
     CRobloxCommandLineInfo() : autoClose(false), visible(false), play(false), expecting(NULL) {}
     virtual void ParseParam(const char* param, BOOL flag, BOOL last) {
         if (expecting) { *expecting = param; expecting = NULL; return; }
@@ -29,12 +33,14 @@ public:
         if (flag && !lstrcmpiA(param, "p6-capture")) { expecting = &capture; return; }
         if (flag && !lstrcmpiA(param, "p6-script")) { expecting = &script; return; }
         if (flag && !lstrcmpiA(param, "p6-saveas")) { expecting = &saveAs; return; }
+        if (flag && !lstrcmpiA(param, "p6-command")) { expecting = &post; return; }
         CCommandLineInfo::ParseParam(param, flag, last);
     }
 };
 
 static CString g_capture, g_script, g_saveAs;
 static bool g_play;
+static UINT g_post;
 static bool g_openFailed;
 
 // 00431d00: status bar 0000e801, then command bars with the frame menu.
@@ -55,6 +61,12 @@ public:
         return 0;
     }
     afx_msg void OnTimer(UINT_PTR id) {
+        if (id == ID_P6_COMMAND) {
+            KillTimer(id);
+            printf("p6: command %u\n", g_post);
+            PostMessage(WM_COMMAND, g_post);
+            return;
+        }
         if (id != ID_P6_AUTOCLOSE) { CXTPMDIFrameWnd::OnTimer(id); return; }
         KillTimer(id);
         printf("p6: autoclose frames=%d\n", P6EngineFrames());
@@ -101,6 +113,11 @@ class CRobloxView : public CView {
     DECLARE_DYNCREATE(CRobloxView)
 public:
     virtual void OnDraw(CDC*) {}
+    afx_msg void OnPlaySolo() {
+        int status = P6EnginePlay();
+        printf("p6: play solo %d\n", status);
+    }
+    afx_msg void OnUpdatePlaySolo(CCmdUI* ui) { ui->Enable(P6EngineIsOpen()); }
     virtual void OnInitialUpdate() {
         CView::OnInitialUpdate();
         CRect rect;
@@ -118,6 +135,8 @@ public:
 IMPLEMENT_DYNCREATE(CRobloxView, CView)
 BEGIN_MESSAGE_MAP(CRobloxView, CView)
     ON_WM_SIZE()
+    ON_COMMAND(ID_TOOLS_PLAY_SOLO, &CRobloxView::OnPlaySolo)
+    ON_UPDATE_COMMAND_UI(ID_TOOLS_PLAY_SOLO, &CRobloxView::OnUpdatePlaySolo)
 END_MESSAGE_MAP()
 
 class CRobloxApp : public CWinApp {
@@ -143,11 +162,23 @@ public:
         frame->UpdateWindow();
         if (command.m_nShellCommand == CCommandLineInfo::FileOpen && !ProcessShellCommand(command)) return FALSE;
         if (command.autoClose) frame->SetTimer(ID_P6_AUTOCLOSE, 5000, NULL);
+        g_post = (UINT)atoi(command.post);
+        if (g_post) frame->SetTimer(ID_P6_COMMAND, 1000, NULL);
         return TRUE;
     }
     virtual BOOL OnIdle(LONG count) {
         BOOL more = CWinApp::OnIdle(count);
         return P6EngineFrame() || more;
+    }
+    afx_msg void OnAbout() { CDialog(IDD_P6_ABOUT).DoModal(); }
+    afx_msg void OnExecuteScript() {
+        CFileDialog dialog(TRUE, "lua", NULL, OFN_FILEMUSTEXIST | OFN_HIDEREADONLY, "Lua scripts (*.lua)|*.lua|All files (*.*)|*.*||");
+        if (dialog.DoModal() != IDOK) return;
+        CStdioFile file;
+        if (!file.Open(dialog.GetPathName(), CFile::modeRead)) return;
+        CString text, line;
+        while (file.ReadString(line)) text += line + "\n";
+        printf("p6: execute script %d\n", P6EngineScript(text));
     }
     virtual int ExitInstance() {
         printf("p6: ExitInstance\n");
@@ -158,6 +189,8 @@ public:
 };
 BEGIN_MESSAGE_MAP(CRobloxApp, CWinApp)
     ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
+    ON_COMMAND(ID_APP_ABOUT, &CRobloxApp::OnAbout)
+    ON_COMMAND(ID_TOOLS_EXECUTE_SCRIPT, &CRobloxApp::OnExecuteScript)
 END_MESSAGE_MAP()
 
 // Normally supplied by mfcs90.lib, which this client does not link yet.

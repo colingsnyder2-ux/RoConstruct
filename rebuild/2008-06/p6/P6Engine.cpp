@@ -128,6 +128,22 @@ extern "C" void P6EngineReport(void)
     }
 }
 
+extern "C" int P6EnginePlay(void)
+{
+    if (!g_timer || g_play) return 1;
+    if (AttachPlayerController(1)) return 2;
+    float pose[15];
+    if (GetPlayerCameraPose(pose)) return 3;
+    StartPlay();
+    g_play = true;
+    return 0;
+}
+
+extern "C" int P6EngineIsOpen(void)
+{
+    return g_timer != NULL;
+}
+
 extern "C" int P6EngineScript(const char* command)
 {
     return ExecutePlayerScript(command);
