@@ -51,7 +51,12 @@ def main():
             assert 'native mesh: producer=00500180' in run.stdout
             torso = [float(rows[2][k]) for k in ('x','y','z')]
             assert abs(torso[1] - 3.0) < .1
-            assert (24 < torso[2] < 27) if name == 'idle' else (10 < torso[2] < 14)
+            if name == 'idle':
+                assert 24 < torso[2] < 27
+            else:
+                # Frames 12..71 hold forward for one second. Recovered air and
+                # running goals both use the original 16-stud/s movement speed.
+                assert abs(receipt['runs']['idle']['torso'][2]-torso[2]-16)<.15
             receipt['runs'][name] = {'exit': run.returncode, 'torso': torso, 'head_mesh_status': 0, 'snapshot_sha256': sha(folder/'place_snapshot.csv')}
             continue
         receipt['runs'][name] = {'exit': run.returncode}
