@@ -43,6 +43,7 @@ public:
     void* slots_ac_b8[4];
     unsigned unaccessed_bc;    // same evidence as unaccessed_8c
     explicit CRobloxWnd(int);
+    void finishAttach();       // 0045ead0
     void setDataModel(void*); // 0045f7b0, argument is compared with +0x6c
     virtual ~CRobloxWnd(); // 0045fbe0, called out of line from 00459ba0
     // Interface overrides; bodies not recovered here. IRunView vtable 008199e8, IMetric 008199dc.

@@ -15,6 +15,12 @@ inline RBX::VerbContainer* cameraVerbs(RBX::DataModel* model) {
     return reinterpret_cast<RBX::VerbContainer*>(reinterpret_cast<char*>(model->getWorkspace()) + 0x2ec);
 }
 
+// Scaffolding for tail calls: 00452a00 is a DataModel method returning a service with
+// method 0058c5e0 (ChangeHistoryService per the mined label); 0044aa70 reports a caught exception.
+struct HistorySite { void touch(); };
+struct ModelSite { HistorySite* history(); };
+void reportViewException(const std::exception&);
+
 // Inline derived verbs from 0045a4a0. Sizes come from operator new in the original.
 class HelpVerb : public RBX::Verb {            // 0x10, vtable 00819140
     CRobloxView* view;
@@ -41,6 +47,7 @@ public:
 
 // 0045a4a0
 void CRobloxView::OnInitialUpdate() {
+    try {
     detachDataModel();                       // 0045a2f0
     window.setDataModel(0);                  // 0045f7b0
     owner_170.reset();                       // 00456e80
@@ -81,6 +88,11 @@ void CRobloxView::OnInitialUpdate() {
     { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("TrackCamera")); commandNames[0x80a3] = v ? &v->getName() : &RBX::Name::getNullName(); }
     { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("FollowCamera")); commandNames[0x8032] = v ? &v->getName() : &RBX::Name::getNullName(); }
     { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("WatchCamera")); commandNames[0x80a2] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("SelectionRotate")); commandNames[0x8043] = v ? &v->getName() : &RBX::Name::getNullName(); }
-    { RBX::Verb* v = cameraVerbs(owner_170.get())->getVerb(std::string("SelectionTilt")); commandNames[0x8044] = v ? &v->getName() : &RBX::Name::getNullName(); }
+    commandNames[0x8043] = &RBX::Name::lookup("SelectionRotate");
+    commandNames[0x8044] = &RBX::Name::lookup("SelectionTilt");
+    window.finishAttach();                                            // 0045ead0
+    if (HistorySite* history = reinterpret_cast<ModelSite*>(owner_170.get())->history()) history->touch();  // 00452a00, 0058c5e0
+    } catch (std::exception& error) {
+        reportViewException(error);                                   // 0044aa70
+    }
 }

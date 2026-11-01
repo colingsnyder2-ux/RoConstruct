@@ -136,14 +136,19 @@
   },
   "full_draft": {
    "file": "rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
-   "status": "COMPILES, not matching: 2129 bytes vs 1915",
+   "status": "COMPILES, not matching: 2031 bytes vs 1915; prologue with ebp frame now matches",
    "what is in it": "all sections: detach, window and data model setup, listeners, verb parent, five owned verbs, 16 getVerb bindings",
    "known_differences": [
-    "original uses an ebp frame with [ebp-0x14] temporaries; mine uses esp",
-    "binding sequences larger than the original 78 bytes each",
-    "getName is now inline in native Verb.h"
+    "original saves the window pointer in ebx and [ebp-0x18], owner pointer in edi; mine allocates edi for the window",
+    "original has one fewer 4-byte local (sub esp,0x24 vs 0x28)",
+    "binding blocks still larger than the original 78 bytes"
    ],
-   "next": "Match one binding sequence exactly (it repeats 16 times), then the verb creation blocks"
+   "next": "Match one binding sequence exactly (it repeats 16 times), then the verb creation blocks",
+   "learned": [
+    "whole body is inside try/catch (std::exception) whose handler calls 0044aa70; this is what forces the ebp frame",
+    "SelectionRotate and SelectionTilt bind through Name::lookup(const char*) (00554290), not getVerb",
+    "function ends with window method 0045ead0, DataModel method 00452a00 then 0058c5e0 on its result if non-null, then the lock destructor"
+   ]
   }
  },
  "owned_slot_type_hint": "Verb-derived objects created in OnInitialUpdate; replace OwnedPolymorphic once their class is recovered"
