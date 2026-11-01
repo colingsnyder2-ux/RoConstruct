@@ -17,6 +17,7 @@
 static boost::shared_ptr<RBX::DataModel> g_dataModel;
 static boost::shared_ptr<RBX::PartInstance> g_brickRef;
 static RBX::PartInstance* g_brick = NULL;
+static bool g_playing = false;
 
 extern "C" int ConfigureContentRoot(const char* path)
 {
@@ -131,11 +132,25 @@ extern "C" int PartAlive(void)
     return g_brick && g_brickRef && g_brick->getParent() != NULL;
 }
 
+// Diagnostic play transition: use the existing RunService state change.
+extern "C" void StartPlay()
+{
+    if (!g_dataModel) return;
+    RBX::DataModel::Lock lock(g_dataModel);
+    RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get())->run();
+    g_playing = true;
+}
+
 extern "C" void StepEngine(float dt)
 {
     if (!g_dataModel) return;
     RBX::DataModel::Lock lock(g_dataModel);
-    g_dataModel->step(dt);
+    float stepped = g_dataModel->step(dt);
+    if (g_playing) {
+        RBX::RunService* run = RBX::ServiceProvider::create<RBX::RunService>(g_dataModel.get());
+        run->raiseStepped(g_dataModel->getSimTime(), stepped);
+        run->raiseHeartbeat(g_dataModel->getSimTime(), dt);
+    }
 }
 
 extern "C" void MovePartTo(float x, float y, float z)
@@ -192,6 +207,7 @@ extern "C" int GetContactState(float* expectedY,float* floorY,int* anchored)
 
 extern "C" void ClosePlace()
 {
+    g_playing = false;
     g_brick = NULL;
     g_brickRef.reset();
     if (g_dataModel) { RBX::DataModel::closeDataModel(g_dataModel, true); g_dataModel.reset(); }
