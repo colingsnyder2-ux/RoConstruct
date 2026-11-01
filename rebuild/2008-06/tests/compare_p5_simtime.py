@@ -68,6 +68,7 @@ try:
  # Native onEvent 005dc740 adjusts listener this by -0x1a4 and passes
  # the state holder at +0x7c: Humanoid+0x220 owns the active state.
  state_types={0x84ce10:'RunningNoPhysics',0x84cdb0:'StrafingNoPhysics',0x84cc94:'Running',0x84ac9c:'Landed',0x84cea0:'Freefall'}
+ state_types.update({0x84cd10:'FallingDown',0x84cf30:'GettingUp',0x84ceec:'Jumping',0x84ce54:'Flying',0x84acd0:'Climbing',0x84cd54:'Seated',0x84cce0:'Dead'})
  active_states=[];addr=0
  while addr<0x80000000 and k.VirtualQueryEx(handle,ctypes.c_void_p(addr),ctypes.byref(mbi),ctypes.sizeof(mbi)):
   start=mbi.BaseAddress or 0;size=mbi.RegionSize
