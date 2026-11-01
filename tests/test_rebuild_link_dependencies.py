@@ -3,6 +3,56 @@ import json
 from roc import rebuild
 
 
+def test_refresh_dependencies_run_before_player_and_stop_on_failure(tmp_path, monkeypatch):
+    calls = []
+    original = rebuild.build_module
+    monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path)
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {
+        'name': 'Player', 'layers': [], 'test': 'player',
+        'refresh_dependencies': ['engine', 'materials'],
+    })
+
+    def build(client, name, log=print):
+        calls.append(name)
+        if name == 'engine':
+            return {'linked': True, 'test_exit': 0}
+        if name == 'materials':
+            return {'linked': False, 'test_exit': None}
+        return original(client, name, log=log)
+
+    monkeypatch.setattr(rebuild, 'build_module', build)
+    import pytest
+    with pytest.raises(RuntimeError, match='dependency materials failed'):
+        rebuild.build_module('test', 'player', log=lambda _: None)
+    assert calls == ['player', 'engine', 'materials']
+    assert not (tmp_path / 'out' / 'Player').exists()
+
+
+def test_refresh_dependencies_run_before_link(tmp_path, monkeypatch):
+    calls = []
+    original = rebuild.build_module
+    monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path)
+    monkeypatch.setattr(rebuild, 'load_module', lambda *args: {
+        'name': 'Player', 'layers': [], 'test': 'player',
+        'refresh_dependencies': ['engine', 'materials'],
+    })
+    def build(client, name, log=print):
+        if name != 'player':
+            calls.append(name)
+            return {'linked': True, 'test_exit': 0}
+        return original(client, name, log=log)
+    monkeypatch.setattr(rebuild, 'build_module', build)
+    monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
+    monkeypatch.setattr(rebuild, 'verified_layer', lambda *args, **kwargs: (None, set()))
+    def link(*args, **kwargs):
+        calls.append('link')
+        return {'linked': True, 'exit': 0, 'output': '', 'unresolved': []}
+    monkeypatch.setattr(rebuild, 'resolve_objects', link)
+    monkeypatch.setattr(rebuild, 'progress', lambda *args, **kwargs: None)
+    assert rebuild.build_module('test', 'player', log=lambda _: None)['linked']
+    assert calls == ['engine', 'materials', 'link']
+
+
 def test_unresolved_symbols_keeps_imported_cpp_names():
     output = '\n'.join([
         'a.obj : error LNK2019: unresolved external symbol "public: void A::f(void)" (__imp_?f@A@@QAEXXZ) referenced in function "main" (_main)',

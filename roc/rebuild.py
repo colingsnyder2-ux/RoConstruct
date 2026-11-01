@@ -477,6 +477,10 @@ def link_test(client=None, test=None, libs=(), includes=(), defines="WIN32 NDEBU
         return result
     run_env = dict(os.environ)
     run_env['ROC_BUILD'] = '1'
+    if test in ('P2ImageCodecTest', 'P2NativeMaterialTest') and not run_env.get('ROC_TEXTURE_STRIP'):
+        strip = ws / 'out' / 'tests' / 'P2RecoveredPlayer' / 'Content' / 'textures' / 'SurfacesStrip.png'
+        if strip.is_file():
+            run_env['ROC_TEXTURE_STRIP'] = str(strip)
     done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300, env=run_env)
     result.update(ran=True, exit=done.returncode, output=(done.stdout + done.stderr).strip()[-1500:])
     return result
@@ -974,6 +978,14 @@ def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
     spec = load_module(client, name)
+    # Some runnable modules require fresh, locally maintained dependency code.
+    # Build in declared order; do not silently link an older successful library
+    # after a failed refresh.
+    for dependency in spec.get("refresh_dependencies", []):
+        log("refresh dependency: %s" % dependency)
+        refreshed = build_module(client, dependency, log=log)
+        if not refreshed["linked"] or refreshed["test_exit"] != 0:
+            raise RuntimeError("dependency %s failed to build or test" % dependency)
     out = workspace(client) / "out" / spec["name"]
     if spec.get("mfc_import"):  # MFC headers auto-link mfc90.lib by name: the linker finds it in the test's folder
         import shutil
