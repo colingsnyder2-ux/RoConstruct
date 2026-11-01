@@ -9,7 +9,7 @@ namespace RBX { class Name; }
 // view initialization 0045a4a0 establish unsigned command-ID -> Name* entries.
 // Not active until the containing classes and routing definitions are recovered.
 template<class Derived, class Base>
-class VerbBinder : public Base {
+class __declspec(novtable) VerbBinder : public Base {
 protected:
     std::map<DWORD, const RBX::Name*> commandNames;
 
