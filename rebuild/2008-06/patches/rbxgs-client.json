@@ -266,6 +266,7 @@
   ]
  ],
  "App/script/ScriptContext.cpp": [
+  ["void ScriptContext::addScript(Script* script)\n{", "void ScriptContext::addScript(Script* script)\n{\n    if (!script->getParent()) return;"],
   ["void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{", "void ScriptContext::startScript(boost::shared_ptr<Script> script)\n{\n    if (!script->getParent()) return;"],
   ["    else \n    {\n        return NULL; \n    }\n}\n\n// TODO: 99.78%", "    else \n    {\n        return instance->getName();\n    }\n}\n\n// TODO: 99.78%"],
   [
