@@ -38,10 +38,39 @@ static void check(FMOD_RESULT result){
 static void verify(bool condition){if(!condition)throw std::runtime_error("Sound assertion failed");}
 static size_t readCounter(const size_t* value){return *value;}
 
+// Exercise real descriptor dispatch and XML conversion without constructing
+// SoundChannel, whose native ancestry dependencies are still being recovered.
+class SoundIdProbe : public RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId> {
+    struct Access : GetSet {
+        mutable RBX::Soundscape::SoundId value;
+        bool isReadOnly() const{return false;}
+        RBX::Soundscape::SoundId getValue(const RBX::Reflection::DescribedBase*) const{return value;}
+        void setValue(RBX::Reflection::DescribedBase*,const RBX::Soundscape::SoundId& next) const{value=next;}
+    };
+public:
+    SoundIdProbe():TypedPropertyDescriptor(RBX::Stats::Item::classDescriptor(),"SoundIdProbe","Data",std::auto_ptr<GetSet>(new Access),STANDARD){}
+};
+class SoundIdBinder : public RBX::IReferenceBinder {
+public:
+    void announceID(const XmlNameValuePair*,RBX::Instance*){}
+    void announceIDREF(const XmlNameValuePair*,RBX::Reflection::DescribedBase*,const RBX::IIDREF*){}
+};
+
 int main(int argc,char** argv){
     try{
         verify(std::strcmp(RBX::Soundscape::sSoundChannel,"Sound")==0);
         verify(std::strcmp(RBX::Soundscape::sSoundService,"SoundService")==0);
+        {
+            static SoundIdProbe probe;
+            verify(probe.type.name.toString()=="Content" && probe.type.tag.toString()=="Content");
+            verify(probe.setStringValue(0,"rbxasset://sounds/test.wav"));
+            verify(probe.getStringValue(0)=="rbxasset://sounds/test.wav");
+            std::auto_ptr<XmlElement> xml(probe.write(0,true));
+            RBX::ContentId value;verify(xml.get() && xml->getValue(value) && value.toString()=="rbxasset://sounds/test.wav");
+            probe.setStringValue(0,"changed");SoundIdBinder binder;probe.read(0,xml.get(),binder);
+            verify(probe.getStringValue(0)=="rbxasset://sounds/test.wav");
+            std::printf("P4 SoundId reflection PASS text/XML roundtrip\n");
+        }
         {
             SoundServiceStatsItem stats(0);
             verify(stats.getName()=="Sound" && stats.getChildren() && stats.getChildren().read()->size()==4);
