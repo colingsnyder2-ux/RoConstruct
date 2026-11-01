@@ -2130,3 +2130,6 @@ Native DataModel base probe at 5c3a4c18bd combines recovered Instance/ServicePro
 
 
 Native DataModel +0x20c/+0x210 is shared_ptr<RunService>: initialization0057a9f0 calls independently traced RunService getter004530f0 and stores its shared owner at0057ab20. Verified original instruction bytes and prior factory RTTI; datamodel-members.json pins observer revision464a00f92f. Remaining owner types still need proof; no active ABI swap.
+
+
+Native DataModel shared owners resolved: +0x1fc LocalBackpack and +0x214 StarterPackService. Original initialization calls getters00578930/004b3960 and stores returned shared owners; their factories invoke constructors005fceb0/005d0fc0, whose vtable RTTI identifies exact pointees. All six consecutive owner types now evidenced in datamodel-members.json at dfddcb3f5f. Remaining non-owner member types and method ABI still open; no active swap.

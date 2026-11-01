@@ -1,8 +1,15 @@
 {
-  "revision": "464a00f92f7b6a85d847b1b403a0282c50f7c586",
+  "revision": "dfddcb3f5fafdb3ef4b7eb44d8e067658b6590a9",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "observer_sha256": "fcdb184aa7b7e3754cdf29ae7244b022b9881f70324f47e59edde217534bf768",
+  "observer_sha256": "6e7a6c18a0b7a3a7c8522e1009eb0cad40867caab6e34c711c6d913f4cfae8d2",
   "fields": {
+    "0x1fc": {
+      "type": "boost::shared_ptr<RBX::LocalBackpack>",
+      "getter": "00578930",
+      "factory": "005771b0",
+      "constructor": "005fceb0",
+      "vtable": "00841364"
+    },
     "0x204": {
       "type": "boost::shared_ptr<RBX::Workspace>",
       "factory": "00576ff0",
@@ -14,6 +21,13 @@
       "getter": "004530f0",
       "store": "0057ab20",
       "proof": "workspace-owner-trace.json"
+    },
+    "0x214": {
+      "type": "boost::shared_ptr<RBX::StarterPackService>",
+      "getter": "004b3960",
+      "factory": "0048ea00",
+      "constructor": "005d0fc0",
+      "vtable": "0083b454"
     },
     "0x21c": {
       "type": "boost::shared_ptr<RBX::GuiRoot>",
