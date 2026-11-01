@@ -5,7 +5,7 @@ root=pathlib.Path(__file__).resolve().parents[3]
 original=root/'work/2008-06/original-p4-reference/Roblox.exe'
 player=root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
 mode=sys.argv[2] if len(sys.argv)>2 else 'fall'
-assert mode in ('fall','jump','air')
+assert mode in ('fall','jump','air','jumpvelocity','jumpflag')
 fixture=root/'rebuild/2008-06/tests/fixtures'/('p5-simtime-'+mode+'.rbxl')
 out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
@@ -53,7 +53,7 @@ try:
    d=read(address,12)
    if len(d)==12:
     mx,y,z=struct.unpack('<3f',d)
-    if 177.25<mx<182 and ((100<y<250) if mode=='air' else (-10<y<40)) and abs(z-(100+j*3))<.01:values.append((mx-177.25,y))
+    if 177.25<mx<182 and ((100<y<250) if mode=='air' else ((-100<y<100) if mode=='jumpvelocity' else (-10<y<40))) and abs(z-(100+j*3))<.01:values.append((mx-177.25,y))
   assert len(values)>=2,(j,values)
   assert max(v[0] for v in values)-min(v[0] for v in values)<.0001
   assert max(v[1] for v in values)-min(v[1] for v in values)<.001
@@ -62,11 +62,13 @@ try:
  assert all(r['aligned'] for r in records), records
  if mode=='fall':assert max(abs(r['delta_y']) for r in records)<.1, records
  if mode=='air':assert max(abs(r['delta_y']) for r in records if r['original_time']<=1.0001)<.01, records
+ if mode=='jump':assert max(abs(r['delta_y']) for r in records)<.12, records
+ if mode=='jumpvelocity':assert max(abs(r['delta_y']) for r in records if r['original_time']>1.05)<.12, records
 finally:
  if handle:k.CloseHandle(handle)
  if windows:u.PostMessageW(windows[0],0x10,0,0)
  try:x.wait(timeout=4)
  except subprocess.TimeoutExpired:forced=True;x.terminate();x.wait(timeout=5)
-receipt=dict(mode=mode,measured_coordinate='torso x' if mode=='air' else 'torso y',revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),original_sha256=sha(original),player_sha256=sha(player),fixture_sha256=sha(fixture),observer_sha256=sha(pathlib.Path(__file__)),records=records,original_forced_termination=forced,scope='Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.',P5_complete=False)
+receipt=dict(mode=mode,measured_coordinate='torso x' if mode=='air' else ('torso velocity y' if mode=='jumpvelocity' else ('Jump flag' if mode=='jumpflag' else 'torso y')),revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),original_sha256=sha(original),player_sha256=sha(player),fixture_sha256=sha(fixture),observer_sha256=sha(pathlib.Path(__file__)),records=records,original_forced_termination=forced,scope='Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.',P5_complete=False)
 (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
 for r in records:print(r['sample'],r['original_time'],r['rebuilt_time'],r['delta_y'])
