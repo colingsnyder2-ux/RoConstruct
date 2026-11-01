@@ -1,8 +1,11 @@
-#include "../native-headers/v8datamodel/Selection.h"
 #include <boost/thread/once.hpp>
+#pragma include_alias("util/Name.h", "../roc_name_native_declare_header_cb8db0995b353ca7.cpp")
+#include "../native-headers/v8datamodel/Selection.h"
 
 // Existing recovered ServiceProvider template, instantiated for Selection.
 namespace RBX {
+template<class Class, class Derived, const char** Name>
+const RBX::Name& FactoryProduct<Class, Derived, Name>::className() { return RBX::Name::declare<Name>(); }
 template<class Class> size_t ServiceProvider::doGetClassIndex() { static size_t index = newIndex(); return index; }
 template<class Class> void ServiceProvider::callDoGetClassIndex() { doGetClassIndex<Class>(); }
 template<class Class> size_t ServiceProvider::getClassIndex() {
