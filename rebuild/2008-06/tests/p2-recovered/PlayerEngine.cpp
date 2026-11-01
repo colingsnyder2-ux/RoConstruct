@@ -595,6 +595,9 @@ extern "C" int CheckBrickAnchorFlags()
     RBX::Primitive* primitive=g_brick->getPrimitive();
     for (int i=0;i<8;++i) {
         int bits=i^(i>>1);
+        RBX::Velocity velocity=primitive->getBody()->getVelocity();
+        velocity.linear.y=-7.0f;
+        primitive->getBody()->setVelocity(velocity);
         g_brick->setDragging((bits&1)!=0);
         g_brick->setAnchored((bits&2)!=0);
         primitive->setFlag0xaa((bits&4)!=0);
@@ -609,6 +612,7 @@ extern "C" int CheckBrickAnchorFlags()
         if(anchors!=int(aggregate) || free!=int(!aggregate))return 4;
         g_dataModel->getWorkspace()->getWorld()->update();
         if(!primitive->getAssembly() || primitive->getAssembly()->getAnchored()!=aggregate)return 5;
+        if(fabs(primitive->getBody()->getVelocity().linear.y+7.0f)>.00001f)return 6;
     }
     primitive->setFlag0xaa(false);
     g_brick->setDragging(false);

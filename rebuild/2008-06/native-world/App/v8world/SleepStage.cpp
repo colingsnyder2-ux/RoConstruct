@@ -298,19 +298,16 @@ void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 	a->getSleepInfo()->state = newState;
 }
 
-// STUB: WEBSERVICE 0x10119970
+// Detaching an assembly is not a sleep transition. The original anchor-cycle
+// oracle retains its velocity while anchored and resumes it on release.
 void SleepStage::onAssemblyRemoving(Assembly* assembly)
 {
-	if (getState(assembly) != Sim::SLEEPING_DEEPLY) {
-		changeAssemblyState(assembly, Sim::SLEEPING_DEEPLY);
-	}
-
-	sleepingDeeply.erase(assembly);
-
-	delete assembly->getSleepInfo();
-
-	assembly->setSleepInfo(NULL);
-	assembly->removeFromStage(this);
+    stateToSet(getState(assembly))->erase(assembly);
+    if (assembly->downstreamOfStage(this))
+        static_cast<SimJobStage*>(getDownstream())->onAssemblyRemoving(assembly);
+    delete assembly->getSleepInfo();
+    assembly->setSleepInfo(NULL);
+    assembly->removeFromStage(this);
 }
 
 // FUNCTION: WEBSERVICE 0x10119ae0

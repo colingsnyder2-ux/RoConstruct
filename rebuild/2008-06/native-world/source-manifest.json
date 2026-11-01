@@ -24,7 +24,7 @@
     "App/v8world/SleepStage.cpp": {
       "origin": "tools\\openrbx\\Client\\App\\v8world\\SleepStage2.cpp",
       "origin_sha256": "ea949f90798363090d8f98d73ab39864ffa6e236f6a1a9f386afddcb351841d3",
-      "ported_sha256": "73063f1a5ff8011dd89bdcf4599c3e1cdad1c795de27012e608e286ab2dc543c"
+      "ported_sha256": "cb99f0990ba01f2bab0817164f4b80df0e1d0d2632e8ec62f6fd41747fc5de8c"
     },
     "App/include/v8world/Assembly.h": {
       "origin": "tools\\openrbx\\Client\\App\\include\\v8world\\Assembly2.h",
@@ -64,7 +64,8 @@
     "Preserve current Primitive/Body ABI",
     "Generic SimJob assembly ownership",
     "Anchoring queried through evidenced aggregate flags instead of removed Anchor object registry",
-    "Existing World consumers use tree iterators; collision/separation handled by SleepStage"
+    "Existing World consumers use tree iterators; collision/separation handled by SleepStage",
+    "Assembly removal detaches the job and sleep record without zeroing velocity, as required by the original anchor-cycle oracle."
   ],
   "remaining": [
     "Native frame/scheduler",
