@@ -40,6 +40,8 @@ try:
     process.wait(timeout=15)
 except subprocess.TimeoutExpired:
     process.kill()
+    reader.join()
+    print("\n".join(lines[-6:]))
     sys.exit("hung")
 reader.join()
 for line in lines:

@@ -2,21 +2,21 @@
  "milestone": "P6",
  "status": "OPEN",
  "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
- "exe_sha256": "7b98e92ae69ab9a25b3609d795c4ca16a4ca9a877a91981ea234ce49c3b01783",
+ "exe_sha256": "14d7f7ada3fc7a48fc85958d3f0788d2ce26479e33ee0cb8bacf49187bae2bc0",
  "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
  "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
  "sources": {
-  "RobloxShell.cpp": "20a66a7c68e097aaceb4da365e661f0440c943cf9391f668f825bbc0d1cb017c",
-  "P6Engine.cpp": "dc7afc13b3d2b654b9cea4eb945c5425494b8f77958bba79eabedbab6def17fb",
-  "P6Data.cpp": "33997a4db11761c1dbfc31c1bcc0b014f18d2ce7faf5a6944685b0a22f616fa6",
-  "P6Engine.h": "94c18d173adfc925c92f3d33255a41db4b1a35c15f045e816801402380e16ee5",
+  "RobloxShell.cpp": "742b6cfcbc324c7be5ca8860880d1cdfd40a434632cdceed1e79de4dd25cdfb6",
+  "P6Engine.cpp": "4c928418d62e0d149ee4a4e6d163bbe5cdabc5412ba7316de5082aaf71a63706",
+  "P6Data.cpp": "879c97044664d452b4e835709d18d9070e641f322533f28a0552196a0c5b908a",
+  "P6Engine.h": "73f0eca8d9c3d51d959aca0bc1ef9fa1f2d3302b45728d0eef24133234d42426",
   "build_client.py": "883a911fc951ac8d3c4c41dce96bc548d765fe707d3e0054ecb70e3bdaeaad66",
   "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
   "input_test.py": "d8201e701c37d76f11d1ab2e9f53bc4ff7ff67f42538afb407c44c6b3087c7f2",
-  "click_test.py": "38a5bde2510935890b618b396a9f4d97d8e37bede90306c69740e451af137090",
+  "click_test.py": "5891541d9212ce039647a229c7fd358ccb64faa3feb3ff8417cb1516742d3a76",
   "original_check.py": "61e158d23bd868df42ceac4e32d52309c8d725210b0935b417724e33b811b418"
  },
- "player_libs": "C:/Users/colin/RoConstruct/rebuild/2008-06/out built 06:17, before later Codex commits",
+ "player_libs": "rebuild/2008-06/out seeded from Codex tree, RbxgsApp rebuilt from merged 9919e46fd5-era sources; later player layers did not finish a rebuild, build stopped silently after p2-image-core",
  "runs": [
   {
    "command": "Roblox.exe -p6-autoclose -p6-capture p6-frameN.png Places/p5-playable.rbxl",
@@ -109,7 +109,11 @@
   "57664 About": "dialog 117 DoModal returned IDCANCEL (2)",
   "32966 Run": "toolbar command runs simulation, status logged, cleanup zero"
  },
- "not_rerun_on_this_exe": [],
+ "not_rerun_on_this_exe": [
+  "edit_save_reopen",
+  "property_edit",
+  "visible_input_run ran one build earlier"
+ ],
  "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised",
  "property_edit": {
   "select": "Brick",
@@ -134,5 +138,10 @@
   "pick_scan": "Brick at 0.3-0.4, Other at 0.6-0.7, empty elsewhere",
   "real_click": "click at 35 percent width selected a Part, properties 50, exit 0",
   "limits": "Right-drag orbit and wheel zoom are wired but not driven in a test; picking uses oriented boxes, so a ball picks by its box"
+ },
+ "drag": {
+  "real_mouse": "Brick -2 0 0 to -1 0 0, exit 0",
+  "undo": "bound to Edit Undo, not driven in a test",
+  "limit": "horizontal plane, whole-stud snap only, no collision check"
  }
 }

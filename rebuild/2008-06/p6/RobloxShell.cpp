@@ -120,6 +120,14 @@ public:
             void* hit = P6EnginePick(i / 10.0f, 0.5f);
             printf("p6: pick %.1f %s\n", i / 10.0f, hit ? (LPCSTR)NameOf(hit, explorer.GetRootItem()) : "-");
         }
+        float start[3], end[3];
+        void* item = P6EngineDragBegin(0.35f, 0.5f, start);
+        printf("p6: drag begin %s\n", item ? "hit" : "miss");
+        if (item) {
+            printf("p6: drag to %d\n", P6EngineDragTo(0.45f, 0.55f));
+            P6DataGetPosition(item, end);
+            printf("p6: drag %g %g %g to %g %g %g\n", start[0], start[1], start[2], end[0], end[1], end[2]);
+        }
     }
     void ShowProperties(void* item) {
         selected = item;
@@ -222,6 +230,8 @@ public:
             printf("p6: save %s\n", document && document->OnSaveDocument(g_saveAs) ? "ok" : "failed");
         }
         if (!g_capture.IsEmpty()) printf("p6: capture %s\n", P6EngineCapture(g_capture) ? "ok" : "failed");
+        CFrameWnd* activeChild = GetActiveFrame();
+        if (activeChild && activeChild->GetActiveDocument()) activeChild->GetActiveDocument()->SetModifiedFlag(FALSE); // tests must not stop at the save prompt
         PostMessage(WM_CLOSE);
     }
     DECLARE_MESSAGE_MAP()
