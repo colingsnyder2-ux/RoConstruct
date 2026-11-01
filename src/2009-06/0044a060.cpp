@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00452a00  unit: RBX::VVisit::?$FactoryProduct::Creator  size: 320 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00452a00
@@ -168,7 +168,7 @@ inline Entry& Entries::at(unsigned int index, void (__cdecl *handler)())
 
 struct S
 {
-    unsigned char padding[0x190];
+    unsigned char padding[0x8c];
     Entries entries;
 
     Result create(void*);

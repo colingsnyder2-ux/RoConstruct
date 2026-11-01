@@ -1,4 +1,21 @@
+// from server: 100% by EspClaude
 // from server: 97% by EspClaude
+// roc 2009-06 0062a6d0  unit: RBX::Mouse  size: 37 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0062a6d0
+//
+// 0062a6d0  8b442404             mov eax, dword ptr [esp + 4]
+// 0062a6d4  56                   push esi
+// 0062a6d5  8bf1                 mov esi, ecx
+// 0062a6d7  3b8620010000         cmp eax, dword ptr [esi + 0x120]
+// 0062a6dd  7412                 je 0x62a6f1
+// 0062a6df  50                   push eax
+// 0062a6e0  e88bfeffff           call 0x62a570
+// 0062a6e5  6830b7a400           push 0xa4b730
+// 0062a6ea  8bce                 mov ecx, esi
+// 0062a6ec  e8df1bdeff           call 0x40c2d0
+// 0062a6f1  5e                   pop esi
+// 0062a6f2  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 005ff8d0  unit: RBX::Mouse  size: 37 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005ff8d0
@@ -20,7 +37,7 @@ extern char propertyDescriptor;
 
 struct S
 {
-    char storage[0x1c4];
+    char storage[0x120];
     int value;
 
     void applyValue(int newValue);

@@ -1,4 +1,77 @@
+// from server: 100% by EspClaude
 // from server: 89% by EspClaude
+// roc 2009-06 00671b30  unit: RBX::VSpawnerService::?$FactoryProduct  size: 219 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00671b30
+//
+// 00671b30  64a100000000         mov eax, dword ptr fs:[0]
+// 00671b36  6aff                 push -1
+// 00671b38  6838938500           push 0x859338
+// 00671b3d  50                   push eax
+// 00671b3e  64892500000000       mov dword ptr fs:[0], esp
+// 00671b45  56                   push esi
+// 00671b46  57                   push edi
+// 00671b47  8bf9                 mov edi, ecx
+// 00671b49  80bf4502000000       cmp byte ptr [edi + 0x245], 0
+// 00671b50  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 00671b58  7520                 jne 0x671b7a
+// 00671b5a  8b74241c             mov esi, dword ptr [esp + 0x1c]
+// 00671b5e  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 00671b66  85f6                 test esi, esi
+// 00671b68  0f848a000000         je 0x671bf8
+// 00671b6e  8d4604               lea eax, [esi + 4]
+// 00671b71  83c9ff               or ecx, 0xffffffff
+// 00671b74  f00fc108             lock xadd dword ptr [eax], ecx
+// 00671b78  eb5e                 jmp 0x671bd8
+// 00671b7a  8b442418             mov eax, dword ptr [esp + 0x18]
+// 00671b7e  8b7048               mov esi, dword ptr [eax + 0x48]
+// 00671b81  85f6                 test esi, esi
+// 00671b83  7439                 je 0x671bbe
+// 00671b85  56                   push esi
+// 00671b86  e8e569ffff           call 0x668570
+// 00671b8b  83c404               add esp, 4
+// 00671b8e  85c0                 test eax, eax
+// 00671b90  742c                 je 0x671bbe
+// 00671b92  56                   push esi
+// 00671b93  e81894e5ff           call 0x4cafb0
+// 00671b98  8bf0                 mov esi, eax
+// 00671b9a  83c404               add esp, 4
+// 00671b9d  85f6                 test esi, esi
+// 00671b9f  741d                 je 0x671bbe
+// 00671ba1  8b8738020000         mov eax, dword ptr [edi + 0x238]
+// 00671ba7  50                   push eax
+// 00671ba8  8bce                 mov ecx, esi
+// 00671baa  e8b1f1e4ff           call 0x4c0d60
+// 00671baf  0fb68f44020000       movzx ecx, byte ptr [edi + 0x244]
+// 00671bb6  51                   push ecx
+// 00671bb7  8bce                 mov ecx, esi
+// 00671bb9  e8c2f1e4ff           call 0x4c0d80
+// 00671bbe  8b74241c             mov esi, dword ptr [esp + 0x1c]
+// 00671bc2  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 00671bca  85f6                 test esi, esi
+// 00671bcc  742a                 je 0x671bf8
+// 00671bce  8d5604               lea edx, [esi + 4]
+// 00671bd1  83c8ff               or eax, 0xffffffff
+// 00671bd4  f00fc102             lock xadd dword ptr [edx], eax
+// 00671bd8  751e                 jne 0x671bf8
+// 00671bda  8b16                 mov edx, dword ptr [esi]
+// 00671bdc  8b4204               mov eax, dword ptr [edx + 4]
+// 00671bdf  8bce                 mov ecx, esi
+// 00671be1  ffd0                 call eax
+// 00671be3  83caff               or edx, 0xffffffff
+// 00671be6  8d4e08               lea ecx, [esi + 8]
+// 00671be9  f00fc111             lock xadd dword ptr [ecx], edx
+// 00671bed  7509                 jne 0x671bf8
+// 00671bef  8b06                 mov eax, dword ptr [esi]
+// 00671bf1  8b5008               mov edx, dword ptr [eax + 8]
+// 00671bf4  8bce                 mov ecx, esi
+// 00671bf6  ffd2                 call edx
+// 00671bf8  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 00671bfc  5f                   pop edi
+// 00671bfd  64890d00000000       mov dword ptr fs:[0], ecx
+// 00671c04  5e                   pop esi
+// 00671c05  83c40c               add esp, 0xc
+// 00671c08  c20800               ret 8
+
 // from server: 100% by EspClaude
 // roc 2008-06 005d1ec0  unit: RBX::VSpawnerService::?$FactoryProduct  size: 222 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d1ec0
@@ -89,7 +162,7 @@ struct Control {
 };
 
 struct Object {
-    char padding[0x104];
+    char padding[0x48];
     void* instance;
 };
 
@@ -125,9 +198,9 @@ int __cdecl checkInstance(void* instance);
 Player* __cdecl getPlayer(void* instance);
 
 struct S {
-    char padding0[0x3e8];
+    char padding0[0x238];
     BrickColor color;
-    char padding1[0x14];
+    char padding1[0x8];
     bool neutral;
     bool enabled;
 

@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 85% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_toolprocess_34050624e3c21ea8.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_55872f527832f622.cpp
 
 // Candidate translation unit (score above; library headers required).
 
@@ -11,7 +12,7 @@
 
 struct Argument
 {
-    char padding[0x104];
+    char padding[0x48];
     void* value;
 };
 
@@ -54,10 +55,11 @@ struct Object
     virtual void v32();
     virtual void v33();
     virtual void v34();
+    virtual void v35();
     virtual bool permitted();
     virtual bool accept(void*);
 
-    char padding[0x1c0];
+    char padding[0x11c];
     int state;
 
     void apply(void*);

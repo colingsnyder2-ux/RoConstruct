@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 98% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_unit_72a4aa186f2a5f36.cpp
+// roc-lib: rbxgs-dll roc_espclaude_aa97e9be1e8f55aa.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define private public
@@ -14,9 +15,9 @@
 
 namespace RBX
 {
-	// 2008-06 layouts from the target: ScoreHud::players at +0x150, Player::neutral at +0x17c.
-	struct ScoreHud2008View { char prefix[0x150]; Network::Players* players; };
-	struct Player2008View { char prefix[0x17c]; bool neutral; };
+	// 2009-06 layouts from the target: ScoreHud::players at +0x150, Player::neutral at +0x17c.
+	struct ScoreHud2008View { char prefix[0xa4]; Network::Players* players; };
+	struct Player2008View { char prefix[0x98]; bool neutral; };
 
 	ScoreHud::BoardType ScoreHud::DetermineBoardType()
 	{

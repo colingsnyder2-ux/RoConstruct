@@ -1,4 +1,78 @@
+// from server: 100% by EspClaude
 // from server: 97% by EspClaude
+// roc 2009-06 00456670  unit: RBX::VInstance::?$NonFactoryProduct  size: 228 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00456670
+//
+// 00456670  64a100000000         mov eax, dword ptr fs:[0]
+// 00456676  6aff                 push -1
+// 00456678  68e8a68600           push 0x86a6e8
+// 0045667d  50                   push eax
+// 0045667e  64892500000000       mov dword ptr fs:[0], esp
+// 00456685  83ec08               sub esp, 8
+// 00456688  56                   push esi
+// 00456689  8bf1                 mov esi, ecx
+// 0045668b  e850fbffff           call 0x4561e0
+// 00456690  85c0                 test eax, eax
+// 00456692  0f85ac000000         jne 0x456744
+// 00456698  53                   push ebx
+// 00456699  8d442408             lea eax, [esp + 8]
+// 0045669d  57                   push edi
+// 0045669e  50                   push eax
+// 0045669f  e82cffffff           call 0x4565d0
+// 004566a4  8b5c2410             mov ebx, dword ptr [esp + 0x10]
+// 004566a8  68b0484500           push 0x4548b0
+// 004566ad  68e8b3a300           push 0xa3b3e8
+// 004566b2  c744242800000000     mov dword ptr [esp + 0x28], 0
+// 004566ba  e851b0faff           call 0x401710
+// 004566bf  83c40c               add esp, 0xc
+// 004566c2  e849dbffff           call 0x454210
+// 004566c7  8b8e9c000000         mov ecx, dword ptr [esi + 0x9c]
+// 004566cd  2b8e98000000         sub ecx, dword ptr [esi + 0x98]
+// 004566d3  8bf8                 mov edi, eax
+// 004566d5  c1f903               sar ecx, 3
+// 004566d8  3bf9                 cmp edi, ecx
+// 004566da  7206                 jb 0x4566e2
+// 004566dc  ff15ace98900         call dword ptr [0x89e9ac]
+// 004566e2  8b9698000000         mov edx, dword ptr [esi + 0x98]
+// 004566e8  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 004566ec  8d04fa               lea eax, [edx + edi*8]
+// 004566ef  8d542410             lea edx, [esp + 0x10]
+// 004566f3  8908                 mov dword ptr [eax], ecx
+// 004566f5  52                   push edx
+// 004566f6  8d4804               lea ecx, [eax + 4]
+// 004566f9  e802befaff           call 0x402500
+// 004566fe  56                   push esi
+// 004566ff  8bcb                 mov ecx, ebx
+// 00456701  e84ab71700           call 0x5d1e50
+// 00456706  8b742410             mov esi, dword ptr [esp + 0x10]
+// 0045670a  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 00456712  85f6                 test esi, esi
+// 00456714  742a                 je 0x456740
+// 00456716  8d4604               lea eax, [esi + 4]
+// 00456719  83c9ff               or ecx, 0xffffffff
+// 0045671c  f00fc108             lock xadd dword ptr [eax], ecx
+// 00456720  751e                 jne 0x456740
+// 00456722  8b16                 mov edx, dword ptr [esi]
+// 00456724  8b4204               mov eax, dword ptr [edx + 4]
+// 00456727  8bce                 mov ecx, esi
+// 00456729  ffd0                 call eax
+// 0045672b  8d4e08               lea ecx, [esi + 8]
+// 0045672e  83caff               or edx, 0xffffffff
+// 00456731  f00fc111             lock xadd dword ptr [ecx], edx
+// 00456735  7509                 jne 0x456740
+// 00456737  8b06                 mov eax, dword ptr [esi]
+// 00456739  8b5008               mov edx, dword ptr [eax + 8]
+// 0045673c  8bce                 mov ecx, esi
+// 0045673e  ffd2                 call edx
+// 00456740  5f                   pop edi
+// 00456741  8bc3                 mov eax, ebx
+// 00456743  5b                   pop ebx
+// 00456744  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00456748  5e                   pop esi
+// 00456749  64890d00000000       mov dword ptr fs:[0], ecx
+// 00456750  83c414               add esp, 0x14
+// 00456753  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 00458610  unit: RBX::VInstance::?$NonFactoryProduct  size: 228 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00458610
@@ -122,7 +196,7 @@ struct Entry {
 };
 
 struct S {
-    char padding[0x19c];
+    char padding[0x98];
     Entry* first;
     Entry* last;
 

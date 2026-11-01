@@ -1,4 +1,94 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
+// roc 2009-06 005e09a0  unit: RBX::ContentProvider  size: 310 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005e09a0
+//
+// 005e09a0  6aff                 push -1
+// 005e09a2  68803d8600           push 0x863d80
+// 005e09a7  64a100000000         mov eax, dword ptr fs:[0]
+// 005e09ad  50                   push eax
+// 005e09ae  64892500000000       mov dword ptr fs:[0], esp
+// 005e09b5  81ec90000000         sub esp, 0x90
+// 005e09bb  55                   push ebp
+// 005e09bc  56                   push esi
+// 005e09bd  57                   push edi
+// 005e09be  8bf9                 mov edi, ecx
+// 005e09c0  8bac24ac000000       mov ebp, dword ptr [esp + 0xac]
+// 005e09c7  8d8424b0000000       lea eax, [esp + 0xb0]
+// 005e09ce  50                   push eax
+// 005e09cf  6a01                 push 1
+// 005e09d1  83ec20               sub esp, 0x20
+// 005e09d4  8bf4                 mov esi, esp
+// 005e09d6  89642434             mov dword ptr [esp + 0x34], esp
+// 005e09da  55                   push ebp
+// 005e09db  8bce                 mov ecx, esi
+// 005e09dd  c78424d000000000000000 mov dword ptr [esp + 0xd0], 0
+// 005e09e8  ff15b8e48900         call dword ptr [0x89e4b8]
+// 005e09ee  8b4d1c               mov ecx, dword ptr [ebp + 0x1c]
+// 005e09f1  894e1c               mov dword ptr [esi + 0x1c], ecx
+// 005e09f4  8bcf                 mov ecx, edi
+// 005e09f6  e825f4ffff           call 0x5dfe20
+// 005e09fb  85c0                 test eax, eax
+// 005e09fd  0f848b000000         je 0x5e0a8e
+// 005e0a03  8b08                 mov ecx, dword ptr [eax]
+// 005e0a05  85c9                 test ecx, ecx
+// 005e0a07  743a                 je 0x5e0a43
+// 005e0a09  6a01                 push 1
+// 005e0a0b  6a01                 push 1
+// 005e0a0d  51                   push ecx
+// 005e0a0e  8d4c241c             lea ecx, [esp + 0x1c]
+// 005e0a12  ff159ce48900         call dword ptr [0x89e49c]
+// 005e0a18  50                   push eax
+// 005e0a19  6a01                 push 1
+// 005e0a1b  8d8c24b8000000       lea ecx, [esp + 0xb8]
+// 005e0a22  c68424ac00000001     mov byte ptr [esp + 0xac], 1
+// 005e0a2a  e85155ffff           call 0x5d5f80
+// 005e0a2f  8d4c2410             lea ecx, [esp + 0x10]
+// 005e0a33  c68424a400000000     mov byte ptr [esp + 0xa4], 0
+// 005e0a3b  ff15a0e48900         call dword ptr [0x89e4a0]
+// 005e0a41  eb4b                 jmp 0x5e0a8e
+// 005e0a43  8b4008               mov eax, dword ptr [eax + 8]
+// 005e0a46  83781810             cmp dword ptr [eax + 0x18], 0x10
+// 005e0a4a  7205                 jb 0x5e0a51
+// 005e0a4c  8b4004               mov eax, dword ptr [eax + 4]
+// 005e0a4f  eb03                 jmp 0x5e0a54
+// 005e0a51  83c004               add eax, 4
+// 005e0a54  6a01                 push 1
+// 005e0a56  6a40                 push 0x40
+// 005e0a58  6a21                 push 0x21
+// 005e0a5a  50                   push eax
+// 005e0a5b  8d4c2420             lea ecx, [esp + 0x20]
+// 005e0a5f  ff153ce48900         call dword ptr [0x89e43c]
+// 005e0a65  50                   push eax
+// 005e0a66  6a01                 push 1
+// 005e0a68  8d8c24b8000000       lea ecx, [esp + 0xb8]
+// 005e0a6f  c68424ac00000002     mov byte ptr [esp + 0xac], 2
+// 005e0a77  e80455ffff           call 0x5d5f80
+// 005e0a7c  8d4c2410             lea ecx, [esp + 0x10]
+// 005e0a80  c68424a400000000     mov byte ptr [esp + 0xa4], 0
+// 005e0a88  ff1540e48900         call dword ptr [0x89e440]
+// 005e0a8e  8b8424b0000000       mov eax, dword ptr [esp + 0xb0]
+// 005e0a95  c78424a4000000ffffffff mov dword ptr [esp + 0xa4], 0xffffffff
+// 005e0aa0  85c0                 test eax, eax
+// 005e0aa2  7418                 je 0x5e0abc
+// 005e0aa4  8b00                 mov eax, dword ptr [eax]
+// 005e0aa6  85c0                 test eax, eax
+// 005e0aa8  7412                 je 0x5e0abc
+// 005e0aaa  8d9424b8000000       lea edx, [esp + 0xb8]
+// 005e0ab1  6a02                 push 2
+// 005e0ab3  52                   push edx
+// 005e0ab4  8bca                 mov ecx, edx
+// 005e0ab6  51                   push ecx
+// 005e0ab7  ffd0                 call eax
+// 005e0ab9  83c40c               add esp, 0xc
+// 005e0abc  8b8c249c000000       mov ecx, dword ptr [esp + 0x9c]
+// 005e0ac3  5f                   pop edi
+// 005e0ac4  5e                   pop esi
+// 005e0ac5  64890d00000000       mov dword ptr fs:[0], ecx
+// 005e0acc  5d                   pop ebp
+// 005e0acd  81c49c000000         add esp, 0x9c
+// 005e0ad3  c22400               ret 0x24
+
 // from server: 100% by king_originala
 // roc 2008-06 00562530  unit: std::D::DU?$char_traits::?$basic_ifstream  size: 310 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00562530
@@ -168,7 +258,7 @@ inline Callback::~Callback()
     if (table) {
         Manager destroy = *table;
         if (destroy)
-            destroy(&callable, &callable, 1);
+            destroy(&callable, &callable, 2);
     }
 }
 

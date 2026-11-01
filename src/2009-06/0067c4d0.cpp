@@ -1,4 +1,21 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
+// roc 2009-06 0067c4d0  unit: RBX::JointInstance  size: 37 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0067c4d0
+//
+// 0067c4d0  8b442404             mov eax, dword ptr [esp + 4]
+// 0067c4d4  56                   push esi
+// 0067c4d5  8bf1                 mov esi, ecx
+// 0067c4d7  8b8eac000000         mov ecx, dword ptr [esi + 0xac]
+// 0067c4dd  50                   push eax
+// 0067c4de  6a00                 push 0
+// 0067c4e0  e8eb9f0200           call 0x6a64d0
+// 0067c4e5  6888e4a400           push 0xa4e488
+// 0067c4ea  8bce                 mov ecx, esi
+// 0067c4ec  e8dffdd8ff           call 0x40c2d0
+// 0067c4f1  5e                   pop esi
+// 0067c4f2  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 005e4490  unit: RBX::VMotor::?$FactoryProduct  size: 37 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e4490
@@ -25,7 +42,7 @@ struct MotorData
 
 struct S
 {
-    unsigned char padding[0x150];
+    unsigned char padding[0xac];
     MotorData* motor;
 
     void notify(const void* descriptor);

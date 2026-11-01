@@ -1,4 +1,27 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
+// roc 2009-06 0067e9d0  unit: RBX::Mechanism  size: 46 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0067e9d0
+//
+// 0067e9d0  56                   push esi
+// 0067e9d1  8bb1b8000000         mov esi, dword ptr [ecx + 0xb8]
+// 0067e9d7  8b06                 mov eax, dword ptr [esi]
+// 0067e9d9  8b5004               mov edx, dword ptr [eax + 4]
+// 0067e9dc  8bce                 mov ecx, esi
+// 0067e9de  ffd2                 call edx
+// 0067e9e0  83f805               cmp eax, 5
+// 0067e9e3  7411                 je 0x67e9f6
+// 0067e9e5  8b7608               mov esi, dword ptr [esi + 8]
+// 0067e9e8  8b06                 mov eax, dword ptr [esi]
+// 0067e9ea  8b5004               mov edx, dword ptr [eax + 4]
+// 0067e9ed  8bce                 mov ecx, esi
+// 0067e9ef  ffd2                 call edx
+// 0067e9f1  83f805               cmp eax, 5
+// 0067e9f4  75ef                 jne 0x67e9e5
+// 0067e9f6  8bce                 mov ecx, esi
+// 0067e9f8  5e                   pop esi
+// 0067e9f9  e9e2ce0500           jmp 0x6db8e0
+
 // from server: 100% by king_originala
 // roc 2008-06 005e9520  unit: RBX::PhysicsService  size: 46 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e9520
@@ -31,7 +54,7 @@ struct Node {
 };
 
 struct PhysicsService {
-    unsigned char reserved[0x88];
+    unsigned char reserved[0xb8];
     Node* node;
     void finish();
 };
@@ -39,7 +62,7 @@ struct PhysicsService {
 void PhysicsService::finish()
 {
     Node* current = node;
-    while (current->type() != 2)
+    while (current->type() != 5)
         current = current->next;
     current->finish();
 }

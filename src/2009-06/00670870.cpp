@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll v8world/Primitive.cpp
+// roc-lib: rbxgs-dll roc_espclaude_86133b67b8621c7e.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "v8world/Primitive.h"
@@ -69,9 +70,9 @@ namespace RBX
 
 	G3D::Vector3 Primitive::clipToSafeSize(const G3D::Vector3& newSize)
 	{
-		G3D::Vector3 r = newSize.min(G3D::Vector3(512.0f, 512.0f, 512.0f));
+		G3D::Vector3 r = newSize.min(G3D::Vector3(2048.0f, 2048.0f, 2048.0f));
 
-		if (r.x * r.y * r.z > 1e+6f) 
+		if (r.x * r.y * r.z > 64e+6f) 
 		{
 			r.y = floorf(1e+6f / (r.x * r.z));
 		}

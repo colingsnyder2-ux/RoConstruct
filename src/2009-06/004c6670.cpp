@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_codex_lookup_2b694745c76e1751.cpp
+// roc-lib: rbxgs-dll roc_espclaude_743528324c78af4d.cpp
 
 // Candidate translation unit (score above; library headers required).
 // roc-lang: cpp
@@ -21,7 +22,7 @@ class ModelInstance : public Instance {};
 namespace Network {
 class Player : public Instance {
 public:
-    char pad[0x170 - 4];
+    char pad[0x8c - 4];
     ModelInstance* character;
     ModelInstance* getCharacter() const { return character; }
 };
@@ -50,3 +51,4 @@ shared_ptr<Instance> Players::playerFromCharacter(shared_ptr<Instance> character
 }
 }
 }
+

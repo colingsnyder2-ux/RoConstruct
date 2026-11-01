@@ -1,4 +1,113 @@
+// from server: 100% by EspClaude
 // from server: 86% by EspClaude
+// roc 2009-06 00451c70  unit: CRobloxDoc  size: 352 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00451c70
+//
+// 00451c70  6aff                 push -1
+// 00451c72  6802178500           push 0x851702
+// 00451c77  64a100000000         mov eax, dword ptr fs:[0]
+// 00451c7d  50                   push eax
+// 00451c7e  64892500000000       mov dword ptr fs:[0], esp
+// 00451c85  83ec30               sub esp, 0x30
+// 00451c88  8b899c000000         mov ecx, dword ptr [ecx + 0x9c]
+// 00451c8e  55                   push ebp
+// 00451c8f  56                   push esi
+// 00451c90  57                   push edi
+// 00451c91  8d442418             lea eax, [esp + 0x18]
+// 00451c95  50                   push eax
+// 00451c96  e8952e1d00           call 0x624b30
+// 00451c9b  8b4c2418             mov ecx, dword ptr [esp + 0x18]
+// 00451c9f  6a01                 push 1
+// 00451ca1  83ec08               sub esp, 8
+// 00451ca4  8bc4                 mov eax, esp
+// 00451ca6  8908                 mov dword ptr [eax], ecx
+// 00451ca8  8b542428             mov edx, dword ptr [esp + 0x28]
+// 00451cac  895004               mov dword ptr [eax + 4], edx
+// 00451caf  8b442428             mov eax, dword ptr [esp + 0x28]
+// 00451cb3  c744245000000000     mov dword ptr [esp + 0x50], 0
+// 00451cbb  89642420             mov dword ptr [esp + 0x20], esp
+// 00451cbf  85c0                 test eax, eax
+// 00451cc1  740c                 je 0x451ccf
+// 00451cc3  83c004               add eax, 4
+// 00451cc6  b901000000           mov ecx, 1
+// 00451ccb  f00fc108             lock xadd dword ptr [eax], ecx
+// 00451ccf  8d4c241c             lea ecx, [esp + 0x1c]
+// 00451cd3  e8381e1b00           call 0x603b10
+// 00451cd8  8b4c2418             mov ecx, dword ptr [esp + 0x18]
+// 00451cdc  c644244401           mov byte ptr [esp + 0x44], 1
+// 00451ce1  e82a86ffff           call 0x44a310
+// 00451ce6  8d4c2420             lea ecx, [esp + 0x20]
+// 00451cea  8bf8                 mov edi, eax
+// 00451cec  ff15c0e48900         call dword ptr [0x89e4c0]
+// 00451cf2  8b74244c             mov esi, dword ptr [esp + 0x4c]
+// 00451cf6  8b2e                 mov ebp, dword ptr [esi]
+// 00451cf8  6a00                 push 0
+// 00451cfa  8d542424             lea edx, [esp + 0x24]
+// 00451cfe  52                   push edx
+// 00451cff  8bcf                 mov ecx, edi
+// 00451d01  c644244c02           mov byte ptr [esp + 0x4c], 2
+// 00451d06  e8356e1c00           call 0x618b40
+// 00451d0b  8b5500               mov edx, dword ptr [ebp]
+// 00451d0e  0fb6c0               movzx eax, al
+// 00451d11  50                   push eax
+// 00451d12  8bce                 mov ecx, esi
+// 00451d14  ffd2                 call edx
+// 00451d16  8d4c240c             lea ecx, [esp + 0xc]
+// 00451d1a  ff15bcfc8900         call dword ptr [0x89fcbc]
+// 00451d20  8d4c2420             lea ecx, [esp + 0x20]
+// 00451d24  c644244403           mov byte ptr [esp + 0x44], 3
+// 00451d29  ff15bce48900         call dword ptr [0x89e4bc]
+// 00451d2f  50                   push eax
+// 00451d30  8d442410             lea eax, [esp + 0x10]
+// 00451d34  6883000000           push 0x83
+// 00451d39  50                   push eax
+// 00451d3a  ff1510028a00         call dword ptr [0x8a0210]
+// 00451d40  8b3e                 mov edi, dword ptr [esi]
+// 00451d42  83c40c               add esp, 0xc
+// 00451d45  8d4c240c             lea ecx, [esp + 0xc]
+// 00451d49  83c70c               add edi, 0xc
+// 00451d4c  ff15d0fc8900         call dword ptr [0x89fcd0]
+// 00451d52  8b17                 mov edx, dword ptr [edi]
+// 00451d54  50                   push eax
+// 00451d55  8bce                 mov ecx, esi
+// 00451d57  ffd2                 call edx
+// 00451d59  8d4c240c             lea ecx, [esp + 0xc]
+// 00451d5d  ff1510fd8900         call dword ptr [0x89fd10]
+// 00451d63  8d4c2420             lea ecx, [esp + 0x20]
+// 00451d67  c644244401           mov byte ptr [esp + 0x44], 1
+// 00451d6c  ff15c4e48900         call dword ptr [0x89e4c4]
+// 00451d72  8d4c2410             lea ecx, [esp + 0x10]
+// 00451d76  c644244400           mov byte ptr [esp + 0x44], 0
+// 00451d7b  e820d81a00           call 0x5ff5a0
+// 00451d80  8b44241c             mov eax, dword ptr [esp + 0x1c]
+// 00451d84  c7442444ffffffff     mov dword ptr [esp + 0x44], 0xffffffff
+// 00451d8c  85c0                 test eax, eax
+// 00451d8e  742c                 je 0x451dbc
+// 00451d90  8bf0                 mov esi, eax
+// 00451d92  83c004               add eax, 4
+// 00451d95  83c9ff               or ecx, 0xffffffff
+// 00451d98  f00fc108             lock xadd dword ptr [eax], ecx
+// 00451d9c  751e                 jne 0x451dbc
+// 00451d9e  8b16                 mov edx, dword ptr [esi]
+// 00451da0  8b4204               mov eax, dword ptr [edx + 4]
+// 00451da3  8bce                 mov ecx, esi
+// 00451da5  ffd0                 call eax
+// 00451da7  8d4e08               lea ecx, [esi + 8]
+// 00451daa  83caff               or edx, 0xffffffff
+// 00451dad  f00fc111             lock xadd dword ptr [ecx], edx
+// 00451db1  7509                 jne 0x451dbc
+// 00451db3  8b06                 mov eax, dword ptr [esi]
+// 00451db5  8b5008               mov edx, dword ptr [eax + 8]
+// 00451db8  8bce                 mov ecx, esi
+// 00451dba  ffd2                 call edx
+// 00451dbc  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 00451dc0  5f                   pop edi
+// 00451dc1  5e                   pop esi
+// 00451dc2  64890d00000000       mov dword ptr fs:[0], ecx
+// 00451dc9  5d                   pop ebp
+// 00451dca  83c43c               add esp, 0x3c
+// 00451dcd  c20400               ret 4
+
 // from server: 100% by colin
 // roc 2008-06 00453990  unit: CRobloxDoc  size: 350 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00453990
@@ -150,8 +259,8 @@ Pair::~Pair()
 }
 
 struct Guard {
-    unsigned char storage[12];
-    Guard(Pair);
+    unsigned char storage[4];
+    Guard(Pair, bool);
     ~Guard();
 };
 
@@ -234,7 +343,7 @@ struct Source {
 };
 
 struct Document {
-    unsigned char padding[148];
+    unsigned char padding[0x9c];
     Source* source;
     void update(Command*);
 };
@@ -242,7 +351,7 @@ struct Document {
 void Document::update(Command* command)
 {
     Pair model = source->get();
-    Guard guard(model);
+    Guard guard(model, true);
     Controller* controller = model.object->controller();
     String message;
     command->enable(controller->query(&message, 0));

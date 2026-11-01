@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by EspClaude
 // roc 2008-06 004d8320  unit: RBX::RenderBase::SimpleSceneManager  size: 84 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004d8320
@@ -68,7 +68,7 @@ struct Array {
 };
 
 struct Outer {
-    char pad[8];
+    char pad[4];
     Array arr;
 };
 

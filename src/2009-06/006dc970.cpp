@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 0065a870  unit: RBX::BallBallContact  size: 212 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0065a870
@@ -96,7 +96,7 @@ struct Geometry {
 };
 
 struct Edge {
-    char pad[12];
+    char pad[16];
     Geometry* g0;
     Geometry* g1;
 };
@@ -115,9 +115,9 @@ struct Controller {
 };
 
 struct Contact {
-    char pad0[8];
+    char pad0[0x14];
     Controller* controller;
-    char pad1[0x80 - 12];
+    char pad1[0x80 - 0x18];
     GeometryArray pending;
 
     bool intersects(Geometry* first, Geometry* second);

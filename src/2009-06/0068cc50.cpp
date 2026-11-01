@@ -1,4 +1,61 @@
+// from server: 100% by EspClaude
 // from server: 95% by EspClaude
+// roc 2009-06 0068cc50  unit: G3D::$$A6AXVCoordinateFrame::?$signal::slot  size: 164 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0068cc50
+//
+// 0068cc50  6aff                 push -1
+// 0068cc52  68882f8600           push 0x862f88
+// 0068cc57  64a100000000         mov eax, dword ptr fs:[0]
+// 0068cc5d  50                   push eax
+// 0068cc5e  64892500000000       mov dword ptr fs:[0], esp
+// 0068cc65  83ec1c               sub esp, 0x1c
+// 0068cc68  57                   push edi
+// 0068cc69  8bf9                 mov edi, ecx
+// 0068cc6b  6a01                 push 1
+// 0068cc6d  8d4c240c             lea ecx, [esp + 0xc]
+// 0068cc71  e8ca17e3ff           call 0x4be440
+// 0068cc76  8b442418             mov eax, dword ptr [esp + 0x18]
+// 0068cc7a  2b442414             sub eax, dword ptr [esp + 0x14]
+// 0068cc7e  c744242800000000     mov dword ptr [esp + 0x28], 0
+// 0068cc86  c1f802               sar eax, 2
+// 0068cc89  85c0                 test eax, eax
+// 0068cc8b  7706                 ja 0x68cc93
+// 0068cc8d  ff15ace98900         call dword ptr [0x89e9ac]
+// 0068cc93  56                   push esi
+// 0068cc94  8b742418             mov esi, dword ptr [esp + 0x18]
+// 0068cc98  8d4c2434             lea ecx, [esp + 0x34]
+// 0068cc9c  51                   push ecx
+// 0068cc9d  8d4c240c             lea ecx, [esp + 0xc]
+// 0068cca1  e8ea86f5ff           call 0x5e5390
+// 0068cca6  3bc6                 cmp eax, esi
+// 0068cca8  7408                 je 0x68ccb2
+// 0068ccaa  8b16                 mov edx, dword ptr [esi]
+// 0068ccac  8b08                 mov ecx, dword ptr [eax]
+// 0068ccae  8910                 mov dword ptr [eax], edx
+// 0068ccb0  890e                 mov dword ptr [esi], ecx
+// 0068ccb2  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0068ccb6  5e                   pop esi
+// 0068ccb7  85c9                 test ecx, ecx
+// 0068ccb9  7408                 je 0x68ccc3
+// 0068ccbb  8b01                 mov eax, dword ptr [ecx]
+// 0068ccbd  8b10                 mov edx, dword ptr [eax]
+// 0068ccbf  6a01                 push 1
+// 0068ccc1  ffd2                 call edx
+// 0068ccc3  8b07                 mov eax, dword ptr [edi]
+// 0068ccc5  8b5004               mov edx, dword ptr [eax + 4]
+// 0068ccc8  8d4c2408             lea ecx, [esp + 8]
+// 0068cccc  51                   push ecx
+// 0068cccd  8bcf                 mov ecx, edi
+// 0068cccf  ffd2                 call edx
+// 0068ccd1  8d4c2408             lea ecx, [esp + 8]
+// 0068ccd5  c7442428ffffffff     mov dword ptr [esp + 0x28], 0xffffffff
+// 0068ccdd  e84e15e3ff           call 0x4be230
+// 0068cce2  8b4c2420             mov ecx, dword ptr [esp + 0x20]
+// 0068cce6  5f                   pop edi
+// 0068cce7  64890d00000000       mov dword ptr fs:[0], ecx
+// 0068ccee  83c428               add esp, 0x28
+// 0068ccf1  c23000               ret 0x30
+
 // from server: 100% by king_originala
 // roc 2008-06 006365c0  unit: RBX::VBrickColor::V?$Value::?$FactoryProduct  size: 164 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 006365c0
@@ -95,7 +152,8 @@ struct Receiver
 
 struct S
 {
-    Receiver* receiver;
+    virtual ~S();
+    virtual void assign(const Container&);
     void f(Value value);
 };
 
@@ -125,5 +183,5 @@ void S::f(Value value)
     Holder* first = items.first;
     Holder(value).swap(*first);
 
-    receiver->assign(items);
+    assign(items);
 }

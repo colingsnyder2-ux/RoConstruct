@@ -1,11 +1,32 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /EHsc /MD
-// roc-lib: openrbx-raknet ReliabilityLayer.cpp
+// roc-lib: openrbx-raknet roc_espclaude_8219c0b2860dc727.cpp
 
 // Candidate translation unit (score above; library headers required).
+#include <malloc.h>
+#include <stdlib.h>
+#define alloca _malloca
+extern void (*rakFree)(void*);
+extern void* (*rakMalloc)(size_t);
+#define free rakFree
+#include "BitStream.h"
+#include "DataBlockEncryptor.h"
+#define packetNumber packetNumber; int exePad2009IP
+#include "InternalPacket.h"
+#undef packetNumber
+#define waitingForOrderedPacketWriteIndex exePadBS[0x300/sizeof(OrderingIndexType)], waitingForOrderedPacketWriteIndex
+#define histogramBitsSent histogramBitsSent; char exePadA[0x48]
+#define throughputCapCountdown throughputCapCountdown; char exePadB[0x800]
+#define freeThreadedMemoryOnNextUpdate freeThreadedMemoryOnNextUpdate; char exePadC[0x10]
+#include "ReliabilityLayer.h"
+#undef waitingForOrderedPacketWriteIndex
+#undef histogramBitsSent
+#undef throughputCapCountdown
+#undef freeThreadedMemoryOnNextUpdate
 /// \file
 ///
 /// This file is part of RakNet Copyright 2003 Kevin Jenkins.
@@ -29,6 +50,7 @@
 #include "RakAssert.h"
 #include "Rand.h"
 #include "MessageIdentifiers.h"
+#define ID_DOWNLOAD_PROGRESS 0x1f
 
 // alloca
 #ifdef _COMPATIBILITY_1
@@ -2121,7 +2143,7 @@ void ReliabilityLayer::InsertIntoSplitPacketList( InternalPacket * internalPacke
 		// Write data, splitPacketChannelList[index]->splitPacketList[0]->data
 		InternalPacket *progressIndicator = internalPacketPool.Allocate();
 		unsigned int length = sizeof(MessageID) + sizeof(unsigned int)*2 + sizeof(unsigned int) + BITS_TO_BYTES(splitPacketChannelList[index]->splitPacketList[0]->dataBitLength);
-		progressIndicator->data = new unsigned char [length];
+		progressIndicator->data = (unsigned char*) rakMalloc(length);
 		progressIndicator->dataBitLength=BYTES_TO_BITS(length);
 		progressIndicator->data[0]=(MessageID)ID_DOWNLOAD_PROGRESS;
 		unsigned int temp;

@@ -1,4 +1,46 @@
+// from server: 100% by EspClaude
 // from server: 95% by EspClaude
+// roc 2009-06 0045bc20  unit: CRobloxWnd::UserInputJob  size: 126 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0045bc20
+//
+// 0045bc20  56                   push esi
+// 0045bc21  8bf1                 mov esi, ecx
+// 0045bc23  57                   push edi
+// 0045bc24  8bbeec000000         mov edi, dword ptr [esi + 0xec]
+// 0045bc2a  85ff                 test edi, edi
+// 0045bc2c  741a                 je 0x45bc48
+// 0045bc2e  393d88c8a300         cmp dword ptr [0xa3c888], edi
+// 0045bc34  7412                 je 0x45bc48
+// 0045bc36  8b07                 mov eax, dword ptr [edi]
+// 0045bc38  8b9098000000         mov edx, dword ptr [eax + 0x98]
+// 0045bc3e  8bcf                 mov ecx, edi
+// 0045bc40  ffd2                 call edx
+// 0045bc42  893d88c8a300         mov dword ptr [0xa3c888], edi
+// 0045bc48  8b8ef4000000         mov ecx, dword ptr [esi + 0xf4]
+// 0045bc4e  85c9                 test ecx, ecx
+// 0045bc50  7429                 je 0x45bc7b
+// 0045bc52  e8697c0400           call 0x4a38c0
+// 0045bc57  8bbef4000000         mov edi, dword ptr [esi + 0xf4]
+// 0045bc5d  85ff                 test edi, edi
+// 0045bc5f  7410                 je 0x45bc71
+// 0045bc61  8bcf                 mov ecx, edi
+// 0045bc63  e838770400           call 0x4a33a0
+// 0045bc68  57                   push edi
+// 0045bc69  e8c4cd2b00           call 0x718a32
+// 0045bc6e  83c404               add esp, 4
+// 0045bc71  c786f400000000000000 mov dword ptr [esi + 0xf4], 0
+// 0045bc7b  8b8eec000000         mov ecx, dword ptr [esi + 0xec]
+// 0045bc81  85c9                 test ecx, ecx
+// 0045bc83  7416                 je 0x45bc9b
+// 0045bc85  8b01                 mov eax, dword ptr [ecx]
+// 0045bc87  8b909c000000         mov edx, dword ptr [eax + 0x9c]
+// 0045bc8d  6a01                 push 1
+// 0045bc8f  ffd2                 call edx
+// 0045bc91  c786ec00000000000000 mov dword ptr [esi + 0xec], 0
+// 0045bc9b  5f                   pop edi
+// 0045bc9c  5e                   pop esi
+// 0045bc9d  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 0045bde0  unit: CRobloxWnd  size: 126 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0045bde0
@@ -42,7 +84,7 @@
 // 0045be5d  c3                   ret 
 
 struct CRobloxWnd {
-    char pad0[0xa4];
+    char pad0[0xec];
     void* m_a4;
     char pad1[4];
     void* m_ac;

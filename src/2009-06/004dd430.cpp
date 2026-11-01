@@ -1,4 +1,41 @@
+// from server: 100% by EspClaude
 // from server: 85% by EspClaude
+// roc 2009-06 004dd430  unit: RBX::Network::ConcurrentRakPeer::PacketJob  size: 115 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 004dd430
+//
+// 004dd430  64a100000000         mov eax, dword ptr fs:[0]
+// 004dd436  6aff                 push -1
+// 004dd438  6849b88500           push 0x85b849
+// 004dd43d  50                   push eax
+// 004dd43e  8b442414             mov eax, dword ptr [esp + 0x14]
+// 004dd442  64892500000000       mov dword ptr fs:[0], esp
+// 004dd449  83ec44               sub esp, 0x44
+// 004dd44c  56                   push esi
+// 004dd44d  8b742458             mov esi, dword ptr [esp + 0x58]
+// 004dd451  50                   push eax
+// 004dd452  8bce                 mov ecx, esi
+// 004dd454  e8c7f7ffff           call 0x4dcc20
+// 004dd459  84c0                 test al, al
+// 004dd45b  7534                 jne 0x4dd491
+// 004dd45d  6818668c00           push 0x8c6618
+// 004dd462  8d4c2408             lea ecx, [esp + 8]
+// 004dd466  ff15b4e48900         call dword ptr [0x89e4b4]
+// 004dd46c  8d4c2404             lea ecx, [esp + 4]
+// 004dd470  51                   push ecx
+// 004dd471  8d4c2424             lea ecx, [esp + 0x24]
+// 004dd475  c744245400000000     mov dword ptr [esp + 0x54], 0
+// 004dd47d  e88ebff2ff           call 0x409410
+// 004dd482  6850a79700           push 0x97a750
+// 004dd487  8d542424             lea edx, [esp + 0x24]
+// 004dd48b  52                   push edx
+// 004dd48c  e8b9c52300           call 0x719a4a
+// 004dd491  8b4c2448             mov ecx, dword ptr [esp + 0x48]
+// 004dd495  8bc6                 mov eax, esi
+// 004dd497  5e                   pop esi
+// 004dd498  64890d00000000       mov dword ptr fs:[0], ecx
+// 004dd49f  83c450               add esp, 0x50
+// 004dd4a2  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 004a64e0  unit: RBX::VHint::?$FactoryProduct::Creator  size: 119 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004a64e0
@@ -60,12 +97,12 @@ struct Error {
 };
 
 struct Stream {
-    bool readBits(void *, int, bool);
+    bool read(double &);
 };
 
 Stream &readDouble(Stream &stream, double &value)
 {
-    if (!stream.readBits(&value, 64, true)) {
+    if (!stream.read(value)) {
         String message("BitStream >> double failed");
         throw Error(message);
     }

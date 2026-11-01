@@ -1,4 +1,106 @@
+// from server: 100% by EspClaude
 // from server: 98% by EspClaude
+// roc 2009-06 00451230  unit: RBX::VVisit::?$FactoryProduct::Creator  size: 320 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00451230
+//
+// 00451230  6aff                 push -1
+// 00451232  64a100000000         mov eax, dword ptr fs:[0]
+// 00451238  68e8a68600           push 0x86a6e8
+// 0045123d  50                   push eax
+// 0045123e  64892500000000       mov dword ptr fs:[0], esp
+// 00451245  83ec0c               sub esp, 0xc
+// 00451248  53                   push ebx
+// 00451249  55                   push ebp
+// 0045124a  56                   push esi
+// 0045124b  57                   push edi
+// 0045124c  68a0ed4400           push 0x44eda0
+// 00451251  68a0b3a300           push 0xa3b3a0
+// 00451256  8bd9                 mov ebx, ecx
+// 00451258  e8b304fbff           call 0x401710
+// 0045125d  83c408               add esp, 8
+// 00451260  e84bc3ffff           call 0x44d5b0
+// 00451265  8b8b9c000000         mov ecx, dword ptr [ebx + 0x9c]
+// 0045126b  2b8b98000000         sub ecx, dword ptr [ebx + 0x98]
+// 00451271  8b2dace98900         mov ebp, dword ptr [0x89e9ac]
+// 00451277  8db38c000000         lea esi, [ebx + 0x8c]
+// 0045127d  8bf8                 mov edi, eax
+// 0045127f  8d4701               lea eax, [edi + 1]
+// 00451282  c1f903               sar ecx, 3
+// 00451285  3bc1                 cmp eax, ecx
+// 00451287  7620                 jbe 0x4512a9
+// 00451289  83ec08               sub esp, 8
+// 0045128c  8bcc                 mov ecx, esp
+// 0045128e  c70100000000         mov dword ptr [ecx], 0
+// 00451294  89642418             mov dword ptr [esp + 0x18], esp
+// 00451298  c7410400000000       mov dword ptr [ecx + 4], 0
+// 0045129f  50                   push eax
+// 004512a0  8bce                 mov ecx, esi
+// 004512a2  e839f4fbff           call 0x4106e0
+// 004512a7  eb1d                 jmp 0x4512c6
+// 004512a9  8b5610               mov edx, dword ptr [esi + 0x10]
+// 004512ac  2b560c               sub edx, dword ptr [esi + 0xc]
+// 004512af  c1fa03               sar edx, 3
+// 004512b2  3bfa                 cmp edi, edx
+// 004512b4  7202                 jb 0x4512b8
+// 004512b6  ffd5                 call ebp
+// 004512b8  8b460c               mov eax, dword ptr [esi + 0xc]
+// 004512bb  8b04f8               mov eax, dword ptr [eax + edi*8]
+// 004512be  85c0                 test eax, eax
+// 004512c0  0f8597000000         jne 0x45135d
+// 004512c6  6870254000           push 0x402570
+// 004512cb  684097a300           push 0xa39740
+// 004512d0  e83b04fbff           call 0x401710
+// 004512d5  83c408               add esp, 8
+// 004512d8  e8b311fbff           call 0x402490
+// 004512dd  50                   push eax
+// 004512de  8d4c2418             lea ecx, [esp + 0x18]
+// 004512e2  51                   push ecx
+// 004512e3  8bcb                 mov ecx, ebx
+// 004512e5  e8768c1a00           call 0x5f9f60
+// 004512ea  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 004512ee  c744242400000000     mov dword ptr [esp + 0x24], 0
+// 004512f6  85c9                 test ecx, ecx
+// 004512f8  7526                 jne 0x451320
+// 004512fa  8d4c2414             lea ecx, [esp + 0x14]
+// 004512fe  c7442424ffffffff     mov dword ptr [esp + 0x24], 0xffffffff
+// 00451306  e8a5341d00           call 0x6247b0
+// 0045130b  33c0                 xor eax, eax
+// 0045130d  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
+// 00451311  64890d00000000       mov dword ptr fs:[0], ecx
+// 00451318  5f                   pop edi
+// 00451319  5e                   pop esi
+// 0045131a  5d                   pop ebp
+// 0045131b  5b                   pop ebx
+// 0045131c  83c418               add esp, 0x18
+// 0045131f  c3                   ret 
+// 00451320  8b5610               mov edx, dword ptr [esi + 0x10]
+// 00451323  2b560c               sub edx, dword ptr [esi + 0xc]
+// 00451326  8bd9                 mov ebx, ecx
+// 00451328  c1fa03               sar edx, 3
+// 0045132b  3bfa                 cmp edi, edx
+// 0045132d  7206                 jb 0x451335
+// 0045132f  ffd5                 call ebp
+// 00451331  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 00451335  8b460c               mov eax, dword ptr [esi + 0xc]
+// 00451338  8d04f8               lea eax, [eax + edi*8]
+// 0045133b  8908                 mov dword ptr [eax], ecx
+// 0045133d  8d4c2418             lea ecx, [esp + 0x18]
+// 00451341  51                   push ecx
+// 00451342  8d4804               lea ecx, [eax + 4]
+// 00451345  e8b611fbff           call 0x402500
+// 0045134a  8d4c2414             lea ecx, [esp + 0x14]
+// 0045134e  c7442424ffffffff     mov dword ptr [esp + 0x24], 0xffffffff
+// 00451356  e855341d00           call 0x6247b0
+// 0045135b  8bc3                 mov eax, ebx
+// 0045135d  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
+// 00451361  5f                   pop edi
+// 00451362  5e                   pop esi
+// 00451363  5d                   pop ebp
+// 00451364  64890d00000000       mov dword ptr fs:[0], ecx
+// 0045136b  5b                   pop ebx
+// 0045136c  83c418               add esp, 0x18
+// 0045136f  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 00452c80  unit: RBX::VVisit::?$FactoryProduct::Creator  size: 320 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00452c80
@@ -162,7 +264,7 @@ __forceinline Pair& Vector::at(unsigned int index, void (__cdecl* handler)())
 }
 
 struct S {
-    unsigned char padding[0x190];
+    unsigned char padding[0x8c];
     Vector values;
     Pair create(void*);
     void* get();

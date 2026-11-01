@@ -228,7 +228,7 @@ namespace RBX
 
 	bool PartInstance::getAnchored() const
 	{
-		return primitive.getAnchor();
+		return primitive.getAnchoredProperty();
 	}
 
 	float PartInstance::getFriction() const

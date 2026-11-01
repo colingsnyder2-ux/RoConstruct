@@ -1,4 +1,58 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
+// roc 2009-06 00690840  unit: RBX::VBlockMesh::?$FactoryProduct  size: 197 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00690840
+//
+// 00690840  64a100000000         mov eax, dword ptr fs:[0]
+// 00690846  6aff                 push -1
+// 00690848  68f5e78600           push 0x86e7f5
+// 0069084d  50                   push eax
+// 0069084e  64892500000000       mov dword ptr fs:[0], esp
+// 00690855  81ec88000000         sub esp, 0x88
+// 0069085b  56                   push esi
+// 0069085c  8bf1                 mov esi, ecx
+// 0069085e  56                   push esi
+// 0069085f  e8ccd9f9ff           call 0x62e230
+// 00690864  83c404               add esp, 4
+// 00690867  85c0                 test eax, eax
+// 00690869  7537                 jne 0x6908a2
+// 0069086b  68b0688e00           push 0x8e68b0
+// 00690870  8d4c2424             lea ecx, [esp + 0x24]
+// 00690874  ff15b4e48900         call dword ptr [0x89e4b4]
+// 0069087a  8d442420             lea eax, [esp + 0x20]
+// 0069087e  50                   push eax
+// 0069087f  8d4c2440             lea ecx, [esp + 0x40]
+// 00690883  c784249800000000000000 mov dword ptr [esp + 0x98], 0
+// 0069088e  e87d8bd7ff           call 0x409410
+// 00690893  6850a79700           push 0x97a750
+// 00690898  8d4c2440             lea ecx, [esp + 0x40]
+// 0069089c  51                   push ecx
+// 0069089d  e8a8910800           call 0x719a4a
+// 006908a2  6a01                 push 1
+// 006908a4  56                   push esi
+// 006908a5  e88636e3ff           call 0x4c3f30
+// 006908aa  83c408               add esp, 8
+// 006908ad  84c0                 test al, al
+// 006908af  7437                 je 0x6908e8
+// 006908b1  6884688e00           push 0x8e6884
+// 006908b6  8d4c2408             lea ecx, [esp + 8]
+// 006908ba  ff15b4e48900         call dword ptr [0x89e4b4]
+// 006908c0  8d542404             lea edx, [esp + 4]
+// 006908c4  52                   push edx
+// 006908c5  8d4c2468             lea ecx, [esp + 0x68]
+// 006908c9  c784249800000001000000 mov dword ptr [esp + 0x98], 1
+// 006908d4  e8378bd7ff           call 0x409410
+// 006908d9  6850a79700           push 0x97a750
+// 006908de  8d442468             lea eax, [esp + 0x68]
+// 006908e2  50                   push eax
+// 006908e3  e862910800           call 0x719a4a
+// 006908e8  8b8c248c000000       mov ecx, dword ptr [esp + 0x8c]
+// 006908ef  c6865c01000001       mov byte ptr [esi + 0x15c], 1
+// 006908f6  5e                   pop esi
+// 006908f7  64890d00000000       mov dword ptr fs:[0], ecx
+// 006908fe  81c494000000         add esp, 0x94
+// 00690904  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 0062e1c0  unit: RBX::VDecal::?$FactoryProduct  size: 197 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0062e1c0
@@ -81,7 +135,7 @@ ThrowError(void *, void *);
 
 struct S
 {
-    unsigned char padding[0x148];
+    unsigned char padding[0x15c];
     bool fired;
     void fire();
 };

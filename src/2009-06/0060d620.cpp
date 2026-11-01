@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 96% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_servicefindnullname17d0646a46609007.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_21311e34973e45de.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -16,7 +17,7 @@ unsigned int __cdecl typeIndex();
 struct Base { virtual ~Base(); };
 struct Derived : Base {};
 struct S {
- char padding[0x190];
+ char padding[0x8c];
  std::vector<boost::shared_ptr<Base> > values;
  Derived* f();
 };
@@ -31,3 +32,4 @@ Derived* S::f() {
  values[index]=i;
  return static_cast<Derived*>(i.get());
 }
+

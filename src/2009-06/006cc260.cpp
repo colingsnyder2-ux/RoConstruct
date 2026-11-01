@@ -1,4 +1,91 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
+// roc 2009-06 006cc260  unit: RBX::GrabTool  size: 238 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006cc260
+//
+// 006cc260  6aff                 push -1
+// 006cc262  68980e8700           push 0x870e98
+// 006cc267  64a100000000         mov eax, dword ptr fs:[0]
+// 006cc26d  50                   push eax
+// 006cc26e  64892500000000       mov dword ptr fs:[0], esp
+// 006cc275  83ec24               sub esp, 0x24
+// 006cc278  d9ee                 fldz 
+// 006cc27a  53                   push ebx
+// 006cc27b  8b5c2438             mov ebx, dword ptr [esp + 0x38]
+// 006cc27f  d9542404             fst dword ptr [esp + 4]
+// 006cc283  55                   push ebp
+// 006cc284  d954240c             fst dword ptr [esp + 0xc]
+// 006cc288  56                   push esi
+// 006cc289  d95c2414             fstp dword ptr [esp + 0x14]
+// 006cc28d  57                   push edi
+// 006cc28e  8d442410             lea eax, [esp + 0x10]
+// 006cc292  50                   push eax
+// 006cc293  53                   push ebx
+// 006cc294  8bf1                 mov esi, ecx
+// 006cc296  e805a1feff           call 0x6b63a0
+// 006cc29b  8bf8                 mov edi, eax
+// 006cc29d  33ed                 xor ebp, ebp
+// 006cc29f  3bfd                 cmp edi, ebp
+// 006cc2a1  0f8490000000         je 0x6cc337
+// 006cc2a7  8d4c241c             lea ecx, [esp + 0x1c]
+// 006cc2ab  e860e3f8ff           call 0x65a610
+// 006cc2b0  57                   push edi
+// 006cc2b1  8bce                 mov ecx, esi
+// 006cc2b3  896c2440             mov dword ptr [esp + 0x40], ebp
+// 006cc2b7  e8e498feff           call 0x6b5ba0
+// 006cc2bc  8d4c2444             lea ecx, [esp + 0x44]
+// 006cc2c0  51                   push ecx
+// 006cc2c1  8d4c2420             lea ecx, [esp + 0x20]
+// 006cc2c5  89442448             mov dword ptr [esp + 0x48], eax
+// 006cc2c9  e8a27ad6ff           call 0x433d70
+// 006cc2ce  83ec08               sub esp, 8
+// 006cc2d1  8bc4                 mov eax, esp
+// 006cc2d3  8928                 mov dword ptr [eax], ebp
+// 006cc2d5  8964244c             mov dword ptr [esp + 0x4c], esp
+// 006cc2d9  896804               mov dword ptr [eax + 4], ebp
+// 006cc2dc  8b5618               mov edx, dword ptr [esi + 0x18]
+// 006cc2df  52                   push edx
+// 006cc2e0  53                   push ebx
+// 006cc2e1  8d44242c             lea eax, [esp + 0x2c]
+// 006cc2e5  50                   push eax
+// 006cc2e6  8d4c2424             lea ecx, [esp + 0x24]
+// 006cc2ea  51                   push ecx
+// 006cc2eb  57                   push edi
+// 006cc2ec  e88fc20100           call 0x6e8580
+// 006cc2f1  8bf0                 mov esi, eax
+// 006cc2f3  8b442444             mov eax, dword ptr [esp + 0x44]
+// 006cc2f7  83c41c               add esp, 0x1c
+// 006cc2fa  3bc5                 cmp eax, ebp
+// 006cc2fc  7409                 je 0x6cc307
+// 006cc2fe  50                   push eax
+// 006cc2ff  e82ec70400           call 0x718a32
+// 006cc304  83c404               add esp, 4
+// 006cc307  8b54241c             mov edx, dword ptr [esp + 0x1c]
+// 006cc30b  52                   push edx
+// 006cc30c  896c242c             mov dword ptr [esp + 0x2c], ebp
+// 006cc310  896c2430             mov dword ptr [esp + 0x30], ebp
+// 006cc314  896c2434             mov dword ptr [esp + 0x34], ebp
+// 006cc318  e815c70400           call 0x718a32
+// 006cc31d  83c404               add esp, 4
+// 006cc320  8bc6                 mov eax, esi
+// 006cc322  8b4c2434             mov ecx, dword ptr [esp + 0x34]
+// 006cc326  64890d00000000       mov dword ptr fs:[0], ecx
+// 006cc32d  5f                   pop edi
+// 006cc32e  5e                   pop esi
+// 006cc32f  5d                   pop ebp
+// 006cc330  5b                   pop ebx
+// 006cc331  83c430               add esp, 0x30
+// 006cc334  c20400               ret 4
+// 006cc337  8b4c2434             mov ecx, dword ptr [esp + 0x34]
+// 006cc33b  5f                   pop edi
+// 006cc33c  5e                   pop esi
+// 006cc33d  5d                   pop ebp
+// 006cc33e  33c0                 xor eax, eax
+// 006cc340  64890d00000000       mov dword ptr fs:[0], ecx
+// 006cc347  5b                   pop ebx
+// 006cc348  83c430               add esp, 0x30
+// 006cc34b  c20400               ret 4
+
 // from server: 100% by colin
 // roc 2008-06 0063fca0  unit: RBX::GrabTool  size: 239 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0063fca0
@@ -223,7 +310,6 @@ __forceinline EmptyReference::~EmptyReference()
 {
 }
 
-extern void *__cdecl getValue(void *);
 extern int __cdecl perform(void *, Vec3 *, Buffer *, int, void *,
                            EmptyReference);
 
@@ -232,6 +318,7 @@ struct S {
     void *context;
 
     void *find(int, Vec3 *);
+    void *getValue(void *);
     int f(int);
 };
 

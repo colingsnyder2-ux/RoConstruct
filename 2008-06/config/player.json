@@ -12,7 +12,7 @@
       "name": "engine",
       "mode": "direct",
       "dir": "rebuild/2008-06/tests/p2-recovered",
-      "files": "PlayerEngine.cpp PlayerScene.cpp RbxEntityLocal.cpp",
+      "files": "PlayerEngine.cpp PlayerScene.cpp RbxEntityLocal.cpp ../PlayerNativeInput.cpp",
       "includes_from_recipe": "rbxgs",
       "defines_from_recipe": "rbxgs",
       "extra_defines": "BOOST_ALL_NO_LIB",

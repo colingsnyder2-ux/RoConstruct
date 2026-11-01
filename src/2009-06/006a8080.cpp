@@ -1,4 +1,37 @@
+// from server: 100% by EspClaude
 // from server: 98% by EspClaude
+// roc 2009-06 006a8080  unit: RBX::Kernel  size: 74 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006a8080
+//
+// 006a8080  53                   push ebx
+// 006a8081  8b5c2408             mov ebx, dword ptr [esp + 8]
+// 006a8085  56                   push esi
+// 006a8086  8b7114               mov esi, dword ptr [ecx + 0x14]
+// 006a8089  57                   push edi
+// 006a808a  8bcb                 mov ecx, ebx
+// 006a808c  83c630               add esi, 0x30
+// 006a808f  e81cf9ffff           call 0x6a79b0
+// 006a8094  8b38                 mov edi, dword ptr [eax]
+// 006a8096  8b06                 mov eax, dword ptr [esi]
+// 006a8098  8b4e04               mov ecx, dword ptr [esi + 4]
+// 006a809b  8b4c88fc             mov ecx, dword ptr [eax + ecx*4 - 4]
+// 006a809f  890cb8               mov dword ptr [eax + edi*4], ecx
+// 006a80a2  e809f9ffff           call 0x6a79b0
+// 006a80a7  8938                 mov dword ptr [eax], edi
+// 006a80a9  8b5604               mov edx, dword ptr [esi + 4]
+// 006a80ac  6a00                 push 0
+// 006a80ae  4a                   dec edx
+// 006a80af  52                   push edx
+// 006a80b0  8bce                 mov ecx, esi
+// 006a80b2  e859f9ffff           call 0x6a7a10
+// 006a80b7  8bcb                 mov ecx, ebx
+// 006a80b9  e8f2f8ffff           call 0x6a79b0
+// 006a80be  5f                   pop edi
+// 006a80bf  5e                   pop esi
+// 006a80c0  c700ffffffff         mov dword ptr [eax], 0xffffffff
+// 006a80c6  5b                   pop ebx
+// 006a80c7  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 005fad80  unit: UString_sink::?$stream_buffer  size: 74 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005fad80
@@ -50,7 +83,7 @@ struct Storage {
 };
 
 struct Sink {
-    char pad[16];
+    char pad[20];
     Storage* storage;
     void f(Item*);
 };

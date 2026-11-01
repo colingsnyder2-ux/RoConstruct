@@ -1,4 +1,70 @@
+// from server: 100% by EspClaude
 // from server: 88% by EspClaude
+// roc 2009-06 00451b90  unit: CRobloxDoc  size: 211 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00451b90
+//
+// 00451b90  6aff                 push -1
+// 00451b92  68d0168500           push 0x8516d0
+// 00451b97  64a100000000         mov eax, dword ptr fs:[0]
+// 00451b9d  50                   push eax
+// 00451b9e  64892500000000       mov dword ptr fs:[0], esp
+// 00451ba5  83ec10               sub esp, 0x10
+// 00451ba8  8b899c000000         mov ecx, dword ptr [ecx + 0x9c]
+// 00451bae  56                   push esi
+// 00451baf  8d44240c             lea eax, [esp + 0xc]
+// 00451bb3  50                   push eax
+// 00451bb4  e8772f1d00           call 0x624b30
+// 00451bb9  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00451bbd  6a01                 push 1
+// 00451bbf  83ec08               sub esp, 8
+// 00451bc2  8bc4                 mov eax, esp
+// 00451bc4  8908                 mov dword ptr [eax], ecx
+// 00451bc6  8b54241c             mov edx, dword ptr [esp + 0x1c]
+// 00451bca  895004               mov dword ptr [eax + 4], edx
+// 00451bcd  8b44241c             mov eax, dword ptr [esp + 0x1c]
+// 00451bd1  c744242800000000     mov dword ptr [esp + 0x28], 0
+// 00451bd9  89642414             mov dword ptr [esp + 0x14], esp
+// 00451bdd  85c0                 test eax, eax
+// 00451bdf  740c                 je 0x451bed
+// 00451be1  83c004               add eax, 4
+// 00451be4  b901000000           mov ecx, 1
+// 00451be9  f00fc108             lock xadd dword ptr [eax], ecx
+// 00451bed  8d4c2410             lea ecx, [esp + 0x10]
+// 00451bf1  e81a1f1b00           call 0x603b10
+// 00451bf6  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00451bfa  c644241c01           mov byte ptr [esp + 0x1c], 1
+// 00451bff  e80c87ffff           call 0x44a310
+// 00451c04  8bc8                 mov ecx, eax
+// 00451c06  e8657d1c00           call 0x619970
+// 00451c0b  8d4c2404             lea ecx, [esp + 4]
+// 00451c0f  c644241c00           mov byte ptr [esp + 0x1c], 0
+// 00451c14  e887d91a00           call 0x5ff5a0
+// 00451c19  8b742410             mov esi, dword ptr [esp + 0x10]
+// 00451c1d  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 00451c25  85f6                 test esi, esi
+// 00451c27  742a                 je 0x451c53
+// 00451c29  8d5604               lea edx, [esi + 4]
+// 00451c2c  83c8ff               or eax, 0xffffffff
+// 00451c2f  f00fc102             lock xadd dword ptr [edx], eax
+// 00451c33  751e                 jne 0x451c53
+// 00451c35  8b16                 mov edx, dword ptr [esi]
+// 00451c37  8b4204               mov eax, dword ptr [edx + 4]
+// 00451c3a  8bce                 mov ecx, esi
+// 00451c3c  ffd0                 call eax
+// 00451c3e  8d4e08               lea ecx, [esi + 8]
+// 00451c41  83caff               or edx, 0xffffffff
+// 00451c44  f00fc111             lock xadd dword ptr [ecx], edx
+// 00451c48  7509                 jne 0x451c53
+// 00451c4a  8b06                 mov eax, dword ptr [esi]
+// 00451c4c  8b5008               mov edx, dword ptr [eax + 8]
+// 00451c4f  8bce                 mov ecx, esi
+// 00451c51  ffd2                 call edx
+// 00451c53  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 00451c57  64890d00000000       mov dword ptr fs:[0], ecx
+// 00451c5e  5e                   pop esi
+// 00451c5f  83c41c               add esp, 0x1c
+// 00451c62  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 004538b0  unit: CRobloxDoc  size: 209 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004538b0
@@ -138,15 +204,15 @@ struct Context
 
 struct Guard
 {
-    char storage[12];
+    char storage[4];
 
-    Guard(Shared);
+    Guard(Shared, bool);
     ~Guard();
 };
 
 struct CRobloxDoc
 {
-    char padding[0x94];
+    char padding[0x9c];
     Context *context;
 
     void func_004538b0();
@@ -155,6 +221,6 @@ struct CRobloxDoc
 void CRobloxDoc::func_004538b0()
 {
     Shared object = context->getObject();
-    Guard guard(object);
+    Guard guard(object, true);
     object.object->getService()->perform();
 }

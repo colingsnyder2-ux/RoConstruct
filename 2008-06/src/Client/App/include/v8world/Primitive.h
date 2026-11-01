@@ -178,6 +178,7 @@ namespace RBX
 		{
 			return dragging || anchored || flag0xaa;
 		}
+		bool getAnchoredProperty() const { return anchored; }
 		Anchor* getAnchorObject() const; // rebuild shim (glue_anchor_registry.cpp)
 		void setAnchorObject(Anchor* anchor);
 		void setCanCollide(bool value);

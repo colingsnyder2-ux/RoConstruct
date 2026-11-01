@@ -1,4 +1,42 @@
+// from server: 100% by EspClaude
 // from server: 95% by EspClaude
+// roc 2009-06 004087a0  unit: VCApp::?$CComObject  size: 119 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 004087a0
+//
+// 004087a0  6aff                 push -1
+// 004087a2  686b088500           push 0x85086b
+// 004087a7  64a100000000         mov eax, dword ptr fs:[0]
+// 004087ad  50                   push eax
+// 004087ae  64892500000000       mov dword ptr fs:[0], esp
+// 004087b5  83ec08               sub esp, 8
+// 004087b8  c7042400000000       mov dword ptr [esp], 0
+// 004087bf  680c010000           push 0x10c
+// 004087c4  c644240400           mov byte ptr [esp + 4], 0
+// 004087c9  e86a023100           call 0x718a38
+// 004087ce  83c404               add esp, 4
+// 004087d1  89442404             mov dword ptr [esp + 4], eax
+// 004087d5  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 004087dd  85c0                 test eax, eax
+// 004087df  7409                 je 0x4087ea
+// 004087e1  8bc8                 mov ecx, eax
+// 004087e3  e878b20300           call 0x443a60
+// 004087e8  eb02                 jmp 0x4087ec
+// 004087ea  33c0                 xor eax, eax
+// 004087ec  8b0c24               mov ecx, dword ptr [esp]
+// 004087ef  56                   push esi
+// 004087f0  8b74241c             mov esi, dword ptr [esp + 0x1c]
+// 004087f4  51                   push ecx
+// 004087f5  50                   push eax
+// 004087f6  8bce                 mov ecx, esi
+// 004087f8  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 00408800  e8ebfeffff           call 0x4086f0
+// 00408805  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00408809  8bc6                 mov eax, esi
+// 0040880b  5e                   pop esi
+// 0040880c  64890d00000000       mov dword ptr fs:[0], ecx
+// 00408813  83c414               add esp, 0x14
+// 00408816  c3                   ret 
+
 // from server: 100% by tester
 // roc 2008-06 00408ed0  unit: RBX::VDebugSettings::?$FactoryProduct::Creator  size: 120 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00408ed0
@@ -37,19 +75,12 @@
 // 00408f44  83c414               add esp, 0x14
 // 00408f47  c3                   ret 
 
-extern "C" {
-    extern void* (__cdecl *allocate)(unsigned int);
-}
-
-inline void* __cdecl operator new(unsigned int size)
-{
-    return allocate(size);
-}
+void* __cdecl operator new(unsigned int size);
 
 void __cdecl operator delete(void*);
 
 struct Product {
-    unsigned char storage[0x17c];
+    unsigned char storage[0x10c];
     Product();
 };
 

@@ -10,6 +10,8 @@
 #include <vector>
 #include <iterator>
 #include <cmath>
+#include <float.h>
+#include <G3D/System.h>
 
 #include <windows.h>
 #include <d3d9.h>
@@ -26,14 +28,27 @@ extern "C" int  PartAlive(void);
 extern "C" void MovePartTo(float x, float y, float z);
 extern "C" void StepEngine(float dt);
 extern "C" void StartPlay();
+extern "C" int BuildPlayerJoints();
+extern "C" int AttachPlayerController(int);
+extern "C" void SetPlayerTestKey(int);
+extern "C" int CheckPlayerController();
+extern "C" int CheckShortTimer();
+extern "C" int CheckNativeMD5();
+extern "C" int CheckFreefallTransitions();
+extern "C" int GetActorTorsoPosition(float*,float*,float*);
 extern "C" void ClosePlace();
 extern "C" void RemovePart(void);
 extern "C" void SetPartYaw(float);
 extern "C" int GetContactState(float*,float*,int*);
+extern "C" int GetBrickAnchored();
+extern "C" void GetBrickAnchorFlags(int*,int*);
+extern "C" int CheckBrickAnchorFlags();
 extern "C" int ExecutePlayerScript(const char*);
 extern "C" int ConfigureContentRoot(const char*);
 extern "C" int CountHumanoids();
 extern "C" int CountInstancesByClass(const char*);
+
+
 
 static const char* kPartPlace =
     "<roblox version=\"4\"><Item class=\"Workspace\"><Properties></Properties>"
@@ -254,7 +269,7 @@ static Ogre::MeshPtr createRecoveredMesh(const char* name, PlayerBlockMesh::Mesh
     // link or adoption into this bounds-only Mesh's deletion list is required.
     mesh->_setBounds(bounds);mesh->_setBoundingSphereRadius(level.backend->radius);mesh->load();
     std::printf("native mesh: producer=%s upload=00549a50 block_calls=%u indices=%u\n",
-        dynamic_cast<PlayerBlockMesh::PBBMesh*>(geometry)?"004f4cb0":geometry->geometryKind==3?"004fd6b0":geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
+        dynamic_cast<PlayerBlockMesh::PBBMesh*>(geometry)?"004f4cb0":dynamic_cast<PlayerBlockMesh::HeadMesh*>(geometry)?"00500180":geometry->geometryKind==3?"004fd6b0":geometry->geometryKind==2?"004fcfb0":geometry->geometryKind==1?"004e2c80":"00500780",PlayerBlockMesh::producerCalls(),static_cast<unsigned>(level.backend->indexData->indexCount));
     return mesh;
 }
 
@@ -666,6 +681,17 @@ int main(int argc, char** argv)
     bool inspectPlace = false;
     bool loadOnly = false;
     bool p5Play = false;
+    bool p5Join = false;
+    bool p5Control = false;
+    bool p5Spawn = false;
+    bool p5InputTest = false;
+    bool p5ControllerCheck = false;
+    bool p5LiveObserve = false;
+    bool p5ClockCheck = false;
+    bool p5HashCheck = false;
+    bool p5FreefallCheck = false;
+    bool anchorTrace = false;
+    bool anchorFlagsTest = false;
     int stabilityExit = 0;
     int spinFrames = 0;
     std::string contentRoot;
@@ -682,6 +708,17 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--inspect-place") == 0) inspectPlace = true;
         else if (std::strcmp(argv[i], "--load-only") == 0) loadOnly = true;
         else if (std::strcmp(argv[i], "--p5-play") == 0) p5Play = true;
+        else if (std::strcmp(argv[i], "--p5-join") == 0) p5Join = true;
+        else if (std::strcmp(argv[i], "--p5-control") == 0) p5Control = true;
+        else if (std::strcmp(argv[i], "--p5-spawn") == 0) {p5Spawn=true;p5Control=true;p5Play=true;}
+        else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
+        else if (std::strcmp(argv[i], "--p5-clock-check") == 0) p5ClockCheck = true;
+        else if (std::strcmp(argv[i], "--p5-hash-check") == 0) p5HashCheck = true;
+        else if (std::strcmp(argv[i], "--p5-freefall-check") == 0) p5FreefallCheck = true;
+        else if (std::strcmp(argv[i], "--p5-controller-check") == 0) {p5Control=true;p5ControllerCheck=true;}
+        else if (std::strcmp(argv[i], "--p5-input-test") == 0) {p5Control=true;p5InputTest=true;}
+        else if (std::strcmp(argv[i], "--anchor-trace") == 0) anchorTrace = true;
+        else if (std::strcmp(argv[i], "--anchor-flags-test") == 0) anchorFlagsTest = true;
         else if (std::strcmp(argv[i], "--capture-sky") == 0) { demo=true;skytest=true; }
         else if (std::strcmp(argv[i], "--capture-spin") == 0 && i+1<argc) { spinFrames=std::atoi(argv[++i]);demo=true; }
         else if (std::strcmp(argv[i], "--content-root") == 0 && i+1<argc) contentRoot=argv[++i];
@@ -691,6 +728,8 @@ int main(int argc, char** argv)
     }
     if(stability && (!frames || frameCount<240)){std::printf("stability test requires --frames 240 or more\n");return 1;}
     if(inspectPlace && !frames){std::printf("inspect-place requires --frames\n");return 1;}
+    if(anchorTrace && !frames){std::printf("anchor-trace requires --frames\n");return 1;}
+    if(p5LiveObserve && (!p5Control || frames)){std::printf("p5-live-observe requires interactive p5-control\n");return 1;}
 
     char path[MAX_PATH];GetModuleFileNameA(0,path,sizeof(path));
     std::string moduleRoot=std::string(path).substr(0,std::string(path).find_last_of("\\/"));
@@ -719,8 +758,24 @@ int main(int argc, char** argv)
     if(loadOnly && selftest){std::fprintf(stderr,"load-only requires a disk place\n");return 1;}
     if(loadOnly){std::fprintf(stderr,"load-only: deserializing\n");std::fflush(stderr);}
     if (!selftest && LoadPlace(placeText.c_str()) != 0) { std::printf("place load failed\n"); return 1; }
-    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
+    if(p5HashCheck){
+        int result=CheckNativeMD5();std::printf("MD5 vectors: %s (%d)\n",result?"FAIL":"PASS",result);
+        ClosePlace();return result;
+    }
+    if(anchorFlagsTest){
+        int result=CheckBrickAnchorFlags();
+        std::printf("anchor flags: %s\n",result?"FAIL":"PASS");
+        ClosePlace();return result;
+    }
+    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);}
 
+    if(p5FreefallCheck){int result=CheckFreefallTransitions();std::printf("freefall transitions: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
+    if(p5Join && BuildPlayerJoints()){std::printf("actor joint build failed\n");ClosePlace();return 1;}
+    if(p5Control && AttachPlayerController(p5Spawn?1:0)){std::printf("local controller attach failed\n");ClosePlace();return 1;}
+    if(p5ControllerCheck){
+        int result=CheckPlayerController();std::printf("controller checks: %s (%d)\n",result?"FAIL":"PASS",result);
+        ClosePlace();return result;
+    }
     if(p5Play)StartPlay();
 
     Ogre::Root* root = new Ogre::Root("", "", "player.log");
@@ -735,10 +790,19 @@ int main(int argc, char** argv)
     if (!rs) { std::printf("no d3d9 renderer\n"); delete root; ClosePlace(); return 3; }
     root->setRenderSystem(rs);
     Ogre::ResourceGroupManager::getSingleton().addResourceLocation(contentRoot,"FileSystem","General");
+    // Original renderer setup 0067ab34 forces consistent floating-point mode.
+    rs->setConfigOption("Floating-point mode", "Consistent");
     rs->setConfigOption("Full Screen", "No");
     rs->setConfigOption("Video Mode", demo?"800 x 600 @ 32-bit colour":"320 x 240 @ 32-bit colour");
     Ogre::RenderWindow* win = root->initialise(true, "Player2008");
     if (!win) { std::printf("window failed\n"); delete root; ClosePlace(); return 4; }
+    if(p5ClockCheck){
+        volatile double now=G3D::System::getLocalTime();
+        volatile double later=now+0.01;
+        int calls=CheckShortTimer();
+        std::printf("timer check: precision=%08x delta=%.9g calls=%d\n",_controlfp(0,0)&_MCW_PC,later-now,calls);
+        delete root;ClosePlace();return calls==1?0:11;
+    }
     Ogre::SceneManager* sm = root->createSceneManager(Ogre::ST_GENERIC, "sm");
     g_sceneManager = sm;
     Ogre::Camera* cam = sm->createCamera("cam");
@@ -801,7 +865,12 @@ int main(int argc, char** argv)
     {
         float expectedY=0,initialFloorY=0,minY=1e30f,maxY=-1e30f;
         int anchored=0,tailSamples=0;bool stable=true,floorStable=true;
-        std::ofstream samples;
+        std::ofstream samples, anchorSamples;
+        if(anchorTrace){
+            anchorSamples.open("anchor_samples.csv",std::ios::binary);anchorSamples.precision(9);
+            if(!anchorSamples)return 7;
+            anchorSamples<<"frame,brick_y,brick_anchored,dragging,aggregate,floor_y,floor_anchored,expected_y\n";
+        }
         if(stability){
             if(GetContactState(&expectedY,&initialFloorY,&anchored)){std::printf("stability fixture needs Brick and Floor\n");return 9;}
             samples.open("stability_samples.csv",std::ios::binary);samples.precision(9);
@@ -810,9 +879,18 @@ int main(int argc, char** argv)
         }
         for (int i = 0; i < frameCount; ++i)
         {
+            if(p5InputTest && i==12)SetPlayerTestKey(1);
+            if(p5InputTest && i==72)SetPlayerTestKey(0);
             StepEngine(1.0f / 60.0f);
             drawModels();
             root->renderOneFrame(); win->update();
+            if(anchorTrace){
+                float x,y,z,currentExpected,floorY;int floorAnchored,dragging,aggregate;
+                GetBrickAnchorFlags(&dragging,&aggregate);
+                GetPartPosition(&x,&y,&z);
+                if(GetContactState(&currentExpected,&floorY,&floorAnchored))return 9;
+                anchorSamples<<(i+1)<<","<<y<<","<<GetBrickAnchored()<<","<<dragging<<","<<aggregate<<","<<floorY<<","<<floorAnchored<<","<<currentExpected<<"\n";
+            }
             if(stability){
                 float x,y,z,currentExpected,floorY;
                 GetPartPosition(&x,&y,&z);
@@ -857,6 +935,9 @@ int main(int argc, char** argv)
     }
     else
     {
+        float actorX=0,actorY=0,actorZ=0;
+        Ogre::Vector3 cameraStart=cam->getPosition();
+        if(p5LiveObserve && GetActorTorsoPosition(&actorX,&actorY,&actorZ))return 1;
         Ogre::Timer timer;
         unsigned long last = timer.getMilliseconds();
         bool moved = false, removed = false;
@@ -870,10 +951,12 @@ int main(int argc, char** argv)
             last = now;
 
             Ogre::Vector3 camMove(0, 0, 0);
-            if (GetAsyncKeyState('A') & 0x8000) camMove.x -= 1;
-            if (GetAsyncKeyState('D') & 0x8000) camMove.x += 1;
-            if (GetAsyncKeyState('W') & 0x8000) camMove.z -= 1;
-            if (GetAsyncKeyState('S') & 0x8000) camMove.z += 1;
+            if (!p5Control) {
+                if (GetAsyncKeyState('A') & 0x8000) camMove.x -= 1;
+                if (GetAsyncKeyState('D') & 0x8000) camMove.x += 1;
+                if (GetAsyncKeyState('W') & 0x8000) camMove.z -= 1;
+                if (GetAsyncKeyState('S') & 0x8000) camMove.z += 1;
+            }
             if (GetAsyncKeyState('Q') & 0x8000) camMove.y += 1;
             if (GetAsyncKeyState('E') & 0x8000) camMove.y -= 1;
             cam->moveRelative(camMove * dt * 5.0f);
@@ -886,6 +969,14 @@ int main(int argc, char** argv)
             drawModels();
             root->renderOneFrame();
             win->update();
+        }
+        if(p5LiveObserve){
+            float x,y,z;if(GetActorTorsoPosition(&x,&y,&z))return 1;
+            Ogre::Vector3 cameraEnd=cam->getPosition();
+            std::ofstream observation("p5_live.csv",std::ios::binary);observation.precision(9);
+            observation<<"actor_start_x,actor_start_y,actor_start_z,actor_end_x,actor_end_y,actor_end_z,camera_start_x,camera_start_y,camera_start_z,camera_end_x,camera_end_y,camera_end_z\n";
+            observation<<actorX<<","<<actorY<<","<<actorZ<<","<<x<<","<<y<<","<<z<<","<<cameraStart.x<<","<<cameraStart.y<<","<<cameraStart.z<<","<<cameraEnd.x<<","<<cameraEnd.y<<","<<cameraEnd.z<<"\n";
+            if(!observation)return 7;
         }
     }
 

@@ -41,6 +41,6 @@ namespace RBX
 		float panAdjust();
 		void onHeartBeat(G3D::CoordinateFrame& cameraGoal, G3D::CoordinateFrame& cameraFocus);
 		void setCursorCenterLocked(bool);
-		bool getCursorCenterLocked() const;
+		bool getCursorCenterLocked() const { return cursorLocked; }
 	};
 }

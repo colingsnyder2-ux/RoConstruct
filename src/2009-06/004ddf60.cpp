@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net-dll Streaming.cpp
+// roc-lib: rbxgs-net-dll roc_espclaude_bd49c1227db528cd.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <BitStream.h>
@@ -14,6 +15,8 @@
 #include <G3D/vectorMath.h>
 #include <algorithm>
 
+namespace RBX { class Name; }
+const RBX::Name& Name_declare2009(const char*);
 namespace RBX
 {
 	namespace Network
@@ -140,6 +143,16 @@ namespace RBX
 			stream >> value.r;
 			stream >> value.g;
 			stream >> value.b;
+			return stream;
+		}
+
+		RakNet::BitStream& operator>>(RakNet::BitStream& stream, ContentId& value)
+		{
+			std::string id;
+			stream >> id;
+
+			value = ContentId(id);
+
 			return stream;
 		}
 
@@ -287,6 +300,36 @@ namespace RBX
 			bitStream.WriteBits((unsigned char*)&value, (int)prop.enumDescriptor.getEnumCountMSB() + 1);
 		}
 
+		template<>
+		void serialize<BrickColor>(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream)
+		{
+			BrickColor color(property.getValue<BrickColor>().number);
+			unsigned int index = color.getClosestPaletteIndex();
+			bitStream.WriteBits((unsigned char*)&index, 5);
+		}
+
+		template<>
+		void deserialize<BrickColor>(Reflection::Property& property, RakNet::BitStream& bitStream)
+		{
+			BrickColor value;
+			bitStream >> value;
+			property.setValue<BrickColor>(value);
+		}
+
+		template<>
+		void serialize<ContentId>(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream)
+		{
+			bitStream << property.getStringValue();
+		}
+
+		template<>
+		void deserialize<ContentId>(Reflection::Property& property, RakNet::BitStream& bitStream)
+		{
+			std::string value;
+			bitStream >> value;
+			property.setStringValue(value);
+		}
+
 		void StringReceiver::receive(RakNet::BitStream& stream, std::string& value)
 		{
 			unsigned char id;
@@ -312,7 +355,7 @@ namespace RBX
 			std::string s;
 			receive(stream, s);
 
-			value = &Name::declare(s.c_str(), -1);
+			value = &Name_declare2009(s.c_str());
 		}
 
 		void StringReceiver::deserializeString(Reflection::Property& property, RakNet::BitStream& bitStream)
@@ -456,5 +499,21 @@ namespace RBX
 				id.index = 0;
 			}
 		}
+
+		bool IdSerializer::deserializeInstanceRef(RakNet::BitStream& stream, Instance*& instance, Guid::Data& id)
+		{
+			deserializeId(stream, id);
+			if ((*id.scope) != Name::getNullName())
+			{
+				instance = ServiceProvider::create<IdManager>(this)->getInstance(id);
+				return instance != NULL;
+			}
+			else
+			{
+				instance = NULL;
+				return true;
+			}
+		}
 	}
 }
+

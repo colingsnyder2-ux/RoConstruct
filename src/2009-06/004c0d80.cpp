@@ -1,51 +1,27 @@
-// from server: 88% by EspClaude
-// from server: 100% by auto
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client Network/Player.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "network/Player.h"
-
-#include "reflection/property.h"
-
 namespace RBX {
+namespace Reflection { class PropertyDescriptor { public: int x; }; }
+class Instance {
+public:
+    void raisePropertyChanged(const Reflection::PropertyDescriptor& d);
+    char pad[0x98];
+};
 namespace Network {
-
-char sPlayer[] = "Player";
-
-static Reflection::PropDescriptor<Player, BrickColor> prop_teamColor(
-	"TeamColor",
-	"Team",
-	&RBX::Network::Player::getTeamColor,
-	&RBX::Network::Player::setTeamColor
-);
-
-static Reflection::PropDescriptor<Player, bool> prop_neutral(
-	"Neutral",
-	"Team",
-	&RBX::Network::Player::getNeutral,
-	&RBX::Network::Player::setNeutral
-);
-
-// FUNCTION: WEBSERVICE 0x1018f9c0
-void Player::setTeamColor(BrickColor value)
-{
-	if (value.number != teamColor.number) {
-		teamColor = value;
-		raisePropertyChanged(prop_teamColor);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x1018f9f0
+class Player : public Instance {
+public:
+    bool neutral;
+    static Reflection::PropertyDescriptor prop_neutral;
+    void setNeutral(bool value);
+};
 void Player::setNeutral(bool value)
 {
-	if (value != neutral) {
-		neutral = value;
-		raisePropertyChanged(prop_neutral);
-	}
+    if (value != neutral) {
+        neutral = value;
+        raisePropertyChanged(prop_neutral);
+    }
 }
-
-} // namespace Network
-} // namespace RBX
+}
+}

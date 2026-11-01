@@ -1,4 +1,25 @@
+// from server: 100% by EspClaude
 // from server: 86% by EspClaude
+// roc 2009-06 00648c00  unit: RBX::VStockSound::?$FactoryProduct::Creator  size: 58 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00648c00
+//
+// 00648c00  8b818c000000         mov eax, dword ptr [ecx + 0x8c]
+// 00648c06  85c0                 test eax, eax
+// 00648c08  742d                 je 0x648c37
+// 00648c0a  d981bc000000         fld dword ptr [ecx + 0xbc]
+// 00648c10  83ec0c               sub esp, 0xc
+// 00648c13  d95c2408             fstp dword ptr [esp + 8]
+// 00648c17  d981b8000000         fld dword ptr [ecx + 0xb8]
+// 00648c1d  d95c2404             fstp dword ptr [esp + 4]
+// 00648c21  d981b4000000         fld dword ptr [ecx + 0xb4]
+// 00648c27  d91c24               fstp dword ptr [esp]
+// 00648c2a  50                   push eax
+// 00648c2b  e814f20c00           call 0x717e44
+// 00648c30  50                   push eax
+// 00648c31  e87ae8ffff           call 0x6474b0
+// 00648c36  59                   pop ecx
+// 00648c37  c20400               ret 4
+
 // from server: 100% by tester
 // roc 2008-06 005b97b0  unit: VSoundIdTypedPropertyDescriptor::?$FactoryProduct  size: 56 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005b97b0
@@ -21,9 +42,9 @@
 // 005b97e7  c3                   ret 
 
 struct VSoundIdTypedPropertyDescriptor {
-    char pad[0x134];
+    char pad[0x8c];
     int field134;
-    char pad2[0x15c - 0x138];
+    char pad2[0xb4 - 0x90];
     float field15c;
     float field160;
     float field164;

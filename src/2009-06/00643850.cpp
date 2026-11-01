@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 92% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_fmod_2008_exact_56149336968faa42.cpp
+// roc-lib: rbxgs-dll roc_espclaude_c99f0766423635ac.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <G3D/format.h>
@@ -105,11 +106,13 @@ case 0: return "No errors.";
     default: return "Unknown error.";
     }
 }
+struct ExeStdOut { void print(RBX::MessageType, const char*); };
 void checkResult(FMOD_RESULT result)
 {
     if (result != 0) {
         std::string message = G3D::format("FMOD %d: %s", result, FMOD_ErrorString(result));
-        RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, message.c_str());
+        reinterpret_cast<ExeStdOut*>(RBX::StandardOut::singleton().get())->print(RBX::MESSAGE_WARNING, message.c_str());
         throw std::runtime_error(message);
     }
 }
+

@@ -1,4 +1,62 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
+// roc 2009-06 00648630  unit: RBX::Soundscape::SoundChannel  size: 194 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00648630
+//
+// 00648630  64a100000000         mov eax, dword ptr fs:[0]
+// 00648636  6aff                 push -1
+// 00648638  68b8ac8600           push 0x86acb8
+// 0064863d  50                   push eax
+// 0064863e  64892500000000       mov dword ptr fs:[0], esp
+// 00648645  56                   push esi
+// 00648646  57                   push edi
+// 00648647  8bf1                 mov esi, ecx
+// 00648649  8d442418             lea eax, [esp + 0x18]
+// 0064864d  50                   push eax
+// 0064864e  8dbe98000000         lea edi, [esi + 0x98]
+// 00648654  57                   push edi
+// 00648655  c744241800000000     mov dword ptr [esp + 0x18], 0
+// 0064865d  e80e06f9ff           call 0x5d8c70
+// 00648662  83c408               add esp, 8
+// 00648665  84c0                 test al, al
+// 00648667  7464                 je 0x6486cd
+// 00648669  8d4c2418             lea ecx, [esp + 0x18]
+// 0064866d  51                   push ecx
+// 0064866e  8bcf                 mov ecx, edi
+// 00648670  ff1564e48900         call dword ptr [0x89e464]
+// 00648676  8b542434             mov edx, dword ptr [esp + 0x34]
+// 0064867a  8bce                 mov ecx, esi
+// 0064867c  89571c               mov dword ptr [edi + 0x1c], edx
+// 0064867f  e84cffffff           call 0x6485d0
+// 00648684  8b8694000000         mov eax, dword ptr [esi + 0x94]
+// 0064868a  85c0                 test eax, eax
+// 0064868c  741b                 je 0x6486a9
+// 0064868e  6a00                 push 0
+// 00648690  50                   push eax
+// 00648691  e8b4f70c00           call 0x717e4a
+// 00648696  50                   push eax
+// 00648697  e814eeffff           call 0x6474b0
+// 0064869c  83c404               add esp, 4
+// 0064869f  c7869400000000000000 mov dword ptr [esi + 0x94], 0
+// 006486a9  8b868c000000         mov eax, dword ptr [esi + 0x8c]
+// 006486af  8d8e8c000000         lea ecx, [esi + 0x8c]
+// 006486b5  85c0                 test eax, eax
+// 006486b7  7408                 je 0x6486c1
+// 006486b9  ff4808               dec dword ptr [eax + 8]
+// 006486bc  e8dfe8e1ff           call 0x466fa0
+// 006486c1  6870bda400           push 0xa4bd70
+// 006486c6  8bce                 mov ecx, esi
+// 006486c8  e8033cdcff           call 0x40c2d0
+// 006486cd  8d4c2418             lea ecx, [esp + 0x18]
+// 006486d1  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 006486d9  ff15c4e48900         call dword ptr [0x89e4c4]
+// 006486df  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 006486e3  5f                   pop edi
+// 006486e4  64890d00000000       mov dword ptr fs:[0], ecx
+// 006486eb  5e                   pop esi
+// 006486ec  83c40c               add esp, 0xc
+// 006486ef  c22000               ret 0x20
+
 // from server: 100% by king_originala
 // roc 2008-06 005bd360  unit: VStockSound::?$FactoryProduct  size: 194 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005bd360
@@ -97,7 +155,7 @@ extern "C" void __cdecl dispose(void*);
 extern char notification[];
 
 struct S {
-    char padding[0x134];
+    char padding[0x8c];
     Reference reference;
     void* resource;
     String value;

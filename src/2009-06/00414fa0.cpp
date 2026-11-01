@@ -1,4 +1,43 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
+// roc 2009-06 00414fa0  unit: CopyVerb  size: 121 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00414fa0
+//
+// 00414fa0  6aff                 push -1
+// 00414fa2  686b088500           push 0x85086b
+// 00414fa7  64a100000000         mov eax, dword ptr fs:[0]
+// 00414fad  50                   push eax
+// 00414fae  64892500000000       mov dword ptr fs:[0], esp
+// 00414fb5  83ec08               sub esp, 8
+// 00414fb8  c7042400000000       mov dword ptr [esp], 0
+// 00414fbf  6820010000           push 0x120
+// 00414fc4  c644240400           mov byte ptr [esp + 4], 0
+// 00414fc9  e86a3a3000           call 0x718a38
+// 00414fce  83c404               add esp, 4
+// 00414fd1  89442404             mov dword ptr [esp + 4], eax
+// 00414fd5  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 00414fdd  85c0                 test eax, eax
+// 00414fdf  740b                 je 0x414fec
+// 00414fe1  6a01                 push 1
+// 00414fe3  8bc8                 mov ecx, eax
+// 00414fe5  e836dc1f00           call 0x612c20
+// 00414fea  eb02                 jmp 0x414fee
+// 00414fec  33c0                 xor eax, eax
+// 00414fee  8b0c24               mov ecx, dword ptr [esp]
+// 00414ff1  56                   push esi
+// 00414ff2  8b74241c             mov esi, dword ptr [esp + 0x1c]
+// 00414ff6  51                   push ecx
+// 00414ff7  50                   push eax
+// 00414ff8  8bce                 mov ecx, esi
+// 00414ffa  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 00415002  e8e9feffff           call 0x414ef0
+// 00415007  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0041500b  8bc6                 mov eax, esi
+// 0041500d  5e                   pop esi
+// 0041500e  64890d00000000       mov dword ptr fs:[0], ecx
+// 00415015  83c414               add esp, 0x14
+// 00415018  c3                   ret 
+
 // from server: 100% by tester
 // roc 2008-06 00414960  unit: CopyVerb  size: 122 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00414960
@@ -70,7 +109,7 @@ public:
     }
 
 protected:
-    static void* operator new(size_t size) { return malloc(size); }
+    static void* operator new(size_t size) { return ::operator new(size); }
 };
 
 class Instance : public Creatable<Instance>
@@ -83,7 +122,7 @@ class IModelModifier { public: virtual ~IModelModifier(); };
 
 class ModelInstance : public Instance, public virtual IModelModifier
 {
-    char data[0x2a4 - 12];
+    char data[0x120 - 12];
 public:
     ModelInstance();
 };

@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 00491090  unit: RBX::Network::VPlayer::?$PropDescriptor  size: 280 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00491090
@@ -150,7 +150,8 @@ struct Receiver {
 };
 
 struct S {
-    Receiver* receiver;
+    virtual void unused();
+    virtual void invoke(const Arguments&);
     void f(String, Shared);
 };
 
@@ -205,5 +206,5 @@ void S::f(String name, Shared instance)
         error();
 
     arguments.begin[1].assign(instance);
-    receiver->invoke(arguments);
+    invoke(arguments);
 }

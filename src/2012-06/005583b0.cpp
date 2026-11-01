@@ -1,5 +1,18 @@
-// from server: 53% by colin
-// roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-15.2.1 Source/Calendar/XTPCalendarControl.cpp
+// from server: 58% by Intel
+
+
+
+
+extern "C" void __stdcall _exit(int);
+
+int __cdecl sub_558310(int);
+
+struct CrashReporter {
+    int func(int arg);
+};
+
+int CrashReporter::func(int arg) {
+    int result = sub_558310(arg);
+    _exit(1);
+    return result;
+}

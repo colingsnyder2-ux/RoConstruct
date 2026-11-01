@@ -1,4 +1,60 @@
+// from server: 100% by EspClaude
 // from server: 96% by EspClaude
+// roc 2009-06 006d7fa0  unit: RBX::MultiJoint  size: 153 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006d7fa0
+//
+// 006d7fa0  55                   push ebp
+// 006d7fa1  57                   push edi
+// 006d7fa2  8bf9                 mov edi, ecx
+// 006d7fa4  33ed                 xor ebp, ebp
+// 006d7fa6  39af98000000         cmp dword ptr [edi + 0x98], ebp
+// 006d7fac  7e78                 jle 0x6d8026
+// 006d7fae  53                   push ebx
+// 006d7faf  56                   push esi
+// 006d7fb0  8d9fbc000000         lea ebx, [edi + 0xbc]
+// 006d7fb6  8db7a0000000         lea esi, [edi + 0xa0]
+// 006d7fbc  8d642400             lea esp, [esp]
+// 006d7fc0  8b03                 mov eax, dword ptr [ebx]
+// 006d7fc2  50                   push eax
+// 006d7fc3  8bcf                 mov ecx, edi
+// 006d7fc5  e896dcffff           call 0x6d5c60
+// 006d7fca  8bc8                 mov ecx, eax
+// 006d7fcc  e8cf06fdff           call 0x6a86a0
+// 006d7fd1  8b0b                 mov ecx, dword ptr [ebx]
+// 006d7fd3  85c9                 test ecx, ecx
+// 006d7fd5  7408                 je 0x6d7fdf
+// 006d7fd7  8b11                 mov edx, dword ptr [ecx]
+// 006d7fd9  8b02                 mov eax, dword ptr [edx]
+// 006d7fdb  6a01                 push 1
+// 006d7fdd  ffd0                 call eax
+// 006d7fdf  8b4efc               mov ecx, dword ptr [esi - 4]
+// 006d7fe2  51                   push ecx
+// 006d7fe3  8bcf                 mov ecx, edi
+// 006d7fe5  e876dcffff           call 0x6d5c60
+// 006d7fea  8bc8                 mov ecx, eax
+// 006d7fec  e81f08fdff           call 0x6a8810
+// 006d7ff1  8b16                 mov edx, dword ptr [esi]
+// 006d7ff3  52                   push edx
+// 006d7ff4  8bcf                 mov ecx, edi
+// 006d7ff6  e865dcffff           call 0x6d5c60
+// 006d7ffb  8bc8                 mov ecx, eax
+// 006d7ffd  e80e08fdff           call 0x6a8810
+// 006d8002  c746fc00000000       mov dword ptr [esi - 4], 0
+// 006d8009  c70600000000         mov dword ptr [esi], 0
+// 006d800f  c70300000000         mov dword ptr [ebx], 0
+// 006d8015  45                   inc ebp
+// 006d8016  83c304               add ebx, 4
+// 006d8019  83c608               add esi, 8
+// 006d801c  3baf98000000         cmp ebp, dword ptr [edi + 0x98]
+// 006d8022  7c9c                 jl 0x6d7fc0
+// 006d8024  5e                   pop esi
+// 006d8025  5b                   pop ebx
+// 006d8026  c7879800000000000000 mov dword ptr [edi + 0x98], 0
+// 006d8030  8bcf                 mov ecx, edi
+// 006d8032  5f                   pop edi
+// 006d8033  5d                   pop ebp
+// 006d8034  e947dcffff           jmp 0x6d5c80
+
 // from server: 100% by king_originala
 // roc 2008-06 006469e0  unit: RBX::MultiJoint  size: 153 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 006469e0
@@ -70,7 +126,7 @@ struct Pair {
 };
 
 struct MultiJoint {
-    unsigned char padding[0x88];
+    unsigned char padding[0x98];
     int count;
     Pair pairs[4];
     Joint* joints[4];

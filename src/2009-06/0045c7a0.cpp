@@ -1,4 +1,86 @@
+// from server: 100% by EspClaude
 // from server: 87% by EspClaude
+// roc 2009-06 0045c7a0  unit: RBX::AdornG3D  size: 258 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0045c7a0
+//
+// 0045c7a0  6aff                 push -1
+// 0045c7a2  6846248500           push 0x852446
+// 0045c7a7  64a100000000         mov eax, dword ptr fs:[0]
+// 0045c7ad  50                   push eax
+// 0045c7ae  64892500000000       mov dword ptr fs:[0], esp
+// 0045c7b5  83ec08               sub esp, 8
+// 0045c7b8  56                   push esi
+// 0045c7b9  57                   push edi
+// 0045c7ba  6a54                 push 0x54
+// 0045c7bc  8bf1                 mov esi, ecx
+// 0045c7be  e875c22b00           call 0x718a38
+// 0045c7c3  83c404               add esp, 4
+// 0045c7c6  89442408             mov dword ptr [esp + 8], eax
+// 0045c7ca  c744241800000000     mov dword ptr [esp + 0x18], 0
+// 0045c7d2  85c0                 test eax, eax
+// 0045c7d4  7435                 je 0x45c80b
+// 0045c7d6  8b8ecc000000         mov ecx, dword ptr [esi + 0xcc]
+// 0045c7dc  83ec08               sub esp, 8
+// 0045c7df  8bfc                 mov edi, esp
+// 0045c7e1  890f                 mov dword ptr [edi], ecx
+// 0045c7e3  8b96d0000000         mov edx, dword ptr [esi + 0xd0]
+// 0045c7e9  89642414             mov dword ptr [esp + 0x14], esp
+// 0045c7ed  895704               mov dword ptr [edi + 4], edx
+// 0045c7f0  85d2                 test edx, edx
+// 0045c7f2  740c                 je 0x45c800
+// 0045c7f4  83c204               add edx, 4
+// 0045c7f7  b901000000           mov ecx, 1
+// 0045c7fc  f00fc10a             lock xadd dword ptr [edx], ecx
+// 0045c800  8bc8                 mov ecx, eax
+// 0045c802  e869cd0c00           call 0x529570
+// 0045c807  8bf8                 mov edi, eax
+// 0045c809  eb02                 jmp 0x45c80d
+// 0045c80b  33ff                 xor edi, edi
+// 0045c80d  8b8ef8000000         mov ecx, dword ptr [esi + 0xf8]
+// 0045c813  c7442418ffffffff     mov dword ptr [esp + 0x18], 0xffffffff
+// 0045c81b  3bf9                 cmp edi, ecx
+// 0045c81d  740c                 je 0x45c82b
+// 0045c81f  85c9                 test ecx, ecx
+// 0045c821  7408                 je 0x45c82b
+// 0045c823  8b11                 mov edx, dword ptr [ecx]
+// 0045c825  8b02                 mov eax, dword ptr [edx]
+// 0045c827  6a01                 push 1
+// 0045c829  ffd0                 call eax
+// 0045c82b  6a20                 push 0x20
+// 0045c82d  89bef8000000         mov dword ptr [esi + 0xf8], edi
+// 0045c833  e800c22b00           call 0x718a38
+// 0045c838  8bf8                 mov edi, eax
+// 0045c83a  83c404               add esp, 4
+// 0045c83d  897c240c             mov dword ptr [esp + 0xc], edi
+// 0045c841  c744241801000000     mov dword ptr [esp + 0x18], 1
+// 0045c849  85ff                 test edi, edi
+// 0045c84b  741e                 je 0x45c86b
+// 0045c84d  8b86f4000000         mov eax, dword ptr [esi + 0xf4]
+// 0045c853  680000a000           push 0xa00000
+// 0045c858  8d4f08               lea ecx, [edi + 8]
+// 0045c85b  c70714a58b00         mov dword ptr [edi], 0x8ba514
+// 0045c861  894704               mov dword ptr [edi + 4], eax
+// 0045c864  e8b7900400           call 0x4a5920
+// 0045c869  eb02                 jmp 0x45c86d
+// 0045c86b  33ff                 xor edi, edi
+// 0045c86d  8b8efc000000         mov ecx, dword ptr [esi + 0xfc]
+// 0045c873  c7442418ffffffff     mov dword ptr [esp + 0x18], 0xffffffff
+// 0045c87b  3bf9                 cmp edi, ecx
+// 0045c87d  740c                 je 0x45c88b
+// 0045c87f  85c9                 test ecx, ecx
+// 0045c881  7408                 je 0x45c88b
+// 0045c883  8b11                 mov edx, dword ptr [ecx]
+// 0045c885  8b02                 mov eax, dword ptr [edx]
+// 0045c887  6a01                 push 1
+// 0045c889  ffd0                 call eax
+// 0045c88b  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0045c88f  89befc000000         mov dword ptr [esi + 0xfc], edi
+// 0045c895  5f                   pop edi
+// 0045c896  64890d00000000       mov dword ptr fs:[0], ecx
+// 0045c89d  5e                   pop esi
+// 0045c89e  83c414               add esp, 0x14
+// 0045c8a1  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 0045d850  unit: RBX::AdornG3D  size: 252 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0045d850
@@ -113,7 +195,7 @@ struct Shared {
 
 struct Renderer {
     virtual ~Renderer();
-    char storage[104];
+    char storage[80];
     Renderer(Shared);
 };
 
@@ -136,9 +218,9 @@ inline TextureRenderer::TextureRenderer(void* value)
 }
 
 struct S {
-    char padding0[0x70];
+    char padding0[0xcc];
     Shared shared;
-    char padding1[0x34];
+    char padding1[0x20];
     void* owner;
     Renderer* renderer;
     TextureRenderer* textureRenderer;

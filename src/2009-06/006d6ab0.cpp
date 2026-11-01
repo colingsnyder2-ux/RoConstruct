@@ -1,4 +1,39 @@
+// from server: 100% by EspClaude
 // from server: 86% by EspClaude
+// roc 2009-06 006d6ab0  unit: RBX::MotorJoint  size: 98 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 006d6ab0
+//
+// 006d6ab0  56                   push esi
+// 006d6ab1  8bf1                 mov esi, ecx
+// 006d6ab3  8b4614               mov eax, dword ptr [esi + 0x14]
+// 006d6ab6  8b88e4000000         mov ecx, dword ptr [eax + 0xe4]
+// 006d6abc  8b4104               mov eax, dword ptr [ecx + 4]
+// 006d6abf  8b5610               mov edx, dword ptr [esi + 0x10]
+// 006d6ac2  33c9                 xor ecx, ecx
+// 006d6ac4  3b82e4000000         cmp eax, dword ptr [edx + 0xe4]
+// 006d6aca  0f95c1               setne cl
+// 006d6acd  8bc1                 mov eax, ecx
+// 006d6acf  83f801               cmp eax, 1
+// 006d6ad2  7505                 jne 0x6d6ad9
+// 006d6ad4  8d4e38               lea ecx, [esi + 0x38]
+// 006d6ad7  eb0a                 jmp 0x6d6ae3
+// 006d6ad9  85c0                 test eax, eax
+// 006d6adb  8d4e68               lea ecx, [esi + 0x68]
+// 006d6ade  8d4638               lea eax, [esi + 0x38]
+// 006d6ae1  7403                 je 0x6d6ae6
+// 006d6ae3  8d4668               lea eax, [esi + 0x68]
+// 006d6ae6  51                   push ecx
+// 006d6ae7  8b8e98000000         mov ecx, dword ptr [esi + 0x98]
+// 006d6aed  50                   push eax
+// 006d6aee  e82d80ffff           call 0x6ceb20
+// 006d6af3  d9869c000000         fld dword ptr [esi + 0x9c]
+// 006d6af9  8b8e98000000         mov ecx, dword ptr [esi + 0x98]
+// 006d6aff  d999cc000000         fstp dword ptr [ecx + 0xcc]
+// 006d6b05  e80680ffff           call 0x6ceb10
+// 006d6b0a  8b8698000000         mov eax, dword ptr [esi + 0x98]
+// 006d6b10  5e                   pop esi
+// 006d6b11  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 005e5c90  unit: RBX::JointsService  size: 98 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e5c90
@@ -39,12 +74,12 @@ struct Frame {
 };
 
 struct NodeData {
-    char padding[0x14];
+    char padding[0x4];
     NodeData* owner;
 };
 
 struct Node {
-    char padding[0xa0];
+    char padding[0xe4];
     NodeData* data;
 };
 
@@ -57,10 +92,10 @@ struct Pair {
 };
 
 struct S {
-    char padding0[0x0c];
+    char padding0[0x10];
     Node* first;
     Node* second;
-    char padding1[0x14];
+    char padding1[0x20];
     Frame frame0;
     Frame frame1;
     Pair* pair;

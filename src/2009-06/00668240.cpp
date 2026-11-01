@@ -1,4 +1,72 @@
+// from server: 100% by EspClaude
 // from server: 96% by EspClaude
+// roc 2009-06 00668240  unit: RBX::VHumanoid::?$FactoryProduct  size: 162 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00668240
+//
+// 00668240  83ec08               sub esp, 8
+// 00668243  53                   push ebx
+// 00668244  8b1dace98900         mov ebx, dword ptr [0x89e9ac]
+// 0066824a  55                   push ebp
+// 0066824b  56                   push esi
+// 0066824c  8bf1                 mov esi, ecx
+// 0066824e  8bae10010000         mov ebp, dword ptr [esi + 0x110]
+// 00668254  57                   push edi
+// 00668255  39ae0c010000         cmp dword ptr [esi + 0x10c], ebp
+// 0066825b  7602                 jbe 0x66825f
+// 0066825d  ffd3                 call ebx
+// 0066825f  8bbe0c010000         mov edi, dword ptr [esi + 0x10c]
+// 00668265  8b8600010000         mov eax, dword ptr [esi + 0x100]
+// 0066826b  89442410             mov dword ptr [esp + 0x10], eax
+// 0066826f  3bbe10010000         cmp edi, dword ptr [esi + 0x110]
+// 00668275  7602                 jbe 0x668279
+// 00668277  ffd3                 call ebx
+// 00668279  8bb600010000         mov esi, dword ptr [esi + 0x100]
+// 0066827f  90                   nop 
+// 00668280  85f6                 test esi, esi
+// 00668282  7406                 je 0x66828a
+// 00668284  3b742410             cmp esi, dword ptr [esp + 0x10]
+// 00668288  7402                 je 0x66828c
+// 0066828a  ffd3                 call ebx
+// 0066828c  3bfd                 cmp edi, ebp
+// 0066828e  7448                 je 0x6682d8
+// 00668290  85f6                 test esi, esi
+// 00668292  753c                 jne 0x6682d0
+// 00668294  ffd3                 call ebx
+// 00668296  33c0                 xor eax, eax
+// 00668298  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 0066829b  7202                 jb 0x66829f
+// 0066829d  ffd3                 call ebx
+// 0066829f  8b0f                 mov ecx, dword ptr [edi]
+// 006682a1  6a00                 push 0
+// 006682a3  68e4ca9e00           push 0x9ecae4
+// 006682a8  6858dd9e00           push 0x9edd58
+// 006682ad  6a00                 push 0
+// 006682af  51                   push ecx
+// 006682b0  e8c5190b00           call 0x719c7a
+// 006682b5  83c414               add esp, 0x14
+// 006682b8  85c0                 test eax, eax
+// 006682ba  751e                 jne 0x6682da
+// 006682bc  85f6                 test esi, esi
+// 006682be  7514                 jne 0x6682d4
+// 006682c0  ffd3                 call ebx
+// 006682c2  33c0                 xor eax, eax
+// 006682c4  3b7810               cmp edi, dword ptr [eax + 0x10]
+// 006682c7  7202                 jb 0x6682cb
+// 006682c9  ffd3                 call ebx
+// 006682cb  83c704               add edi, 4
+// 006682ce  ebb0                 jmp 0x668280
+// 006682d0  8b06                 mov eax, dword ptr [esi]
+// 006682d2  ebc4                 jmp 0x668298
+// 006682d4  8b06                 mov eax, dword ptr [esi]
+// 006682d6  ebec                 jmp 0x6682c4
+// 006682d8  33c0                 xor eax, eax
+// 006682da  5f                   pop edi
+// 006682db  5e                   pop esi
+// 006682dc  5d                   pop ebp
+// 006682dd  5b                   pop ebx
+// 006682de  83c408               add esp, 8
+// 006682e1  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 005d8690  unit: RBX::VHumanoid::?$FactoryProduct  size: 162 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d8690
@@ -70,6 +138,10 @@
 extern "C" void* __cdecl __RTDynamicCast(
     void*, long, void*, void*, int);
 
+extern "C" __declspec(dllimport) void __cdecl _invalid_parameter_noinfo();
+extern char td_src[];
+extern char td_dst[];
+
 struct Container {
     unsigned char padding[16];
     void** finish;
@@ -85,7 +157,7 @@ struct Iterator {
 };
 
 struct S {
-    unsigned char padding0[0x1ec];
+    unsigned char padding0[0x100];
     Proxy* proxy;
     unsigned char padding1[8];
     void** first;
@@ -96,8 +168,7 @@ struct S {
 
 void* S::f()
 {
-    void (__cdecl *invalid)() =
-        *reinterpret_cast<void (__cdecl **)()>(0x802890);
+    void (__cdecl *invalid)() = _invalid_parameter_noinfo;
 
     Iterator finish;
     finish.position = last;
@@ -127,8 +198,8 @@ void* S::f()
 
         void* result = __RTDynamicCast(
             *current, 0,
-            reinterpret_cast<void*>(0x936908),
-            reinterpret_cast<void*>(0x9534e0), 0);
+            td_src,
+            td_dst, 0);
 
         if (result)
             return result;

@@ -1,17 +1,16 @@
+// from server: 100% by EspClaude
 // from server: 98% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
+// roc-lib: rbxgs roc_espclaude_80e8df6c7fd397c0.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
+#include <queue>
+#include "v8tree/Instance.h"
 #include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
-
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
 
 static void cleanup(boost::weak_ptr<RBX::Instance> item)
 {
@@ -29,25 +28,17 @@ static void cleanup(boost::weak_ptr<RBX::Instance> item)
 
 namespace RBX
 {
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
+	class DebrisService
 	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
+		char exePad2009[0x8c];
+		std::queue<boost::weak_ptr<Instance>> queue;
+		int maxItems;
+		TimerService* timer;
+	public:
+		void addItem(boost::shared_ptr<Instance> item, double lifetime);
+	private:
+		void cleanup();
+	};
 
 	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
 	{
@@ -65,18 +56,5 @@ namespace RBX
 			::cleanup(queue.front());
 			queue.pop();
 		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
 	}
 }

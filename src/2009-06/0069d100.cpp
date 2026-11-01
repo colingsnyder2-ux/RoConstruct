@@ -1,10 +1,11 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by EspClaude
 // from server: 95% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client-dll roc_espclaude_8ac19faa8bb50df6.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_c69499db55066f1c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <G3D/Color4.h>
@@ -17,7 +18,7 @@ class Instance { public:
 struct Part;
 class PartInstance : public Instance { public:
  const Part& getPart();
-    unsigned char padding[804];
+    unsigned char padding[360];
     float value;
 };
 }
@@ -42,4 +43,5 @@ void __cdecl render(Shared object, void* context, int phase)
     }
     }
 }
+
 

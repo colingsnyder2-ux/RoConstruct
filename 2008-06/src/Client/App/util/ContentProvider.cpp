@@ -401,7 +401,7 @@ namespace RBX
 				}
 
 				char* hashValue = new char[hashSize];
-				if (!CryptGetHashParam(hHash, HP_HASHVAL, (BYTE*)&hashValue, &hashSize, 0))
+				if (!CryptGetHashParam(hHash, HP_HASHVAL, (BYTE*)hashValue, &hashSize, 0))
 				{
 					StandardOut::singleton()->print(MESSAGE_ERROR, "Error during CryptGetHashParam. GetLastError = %d", GetLastError());
 				}
@@ -409,7 +409,7 @@ namespace RBX
 				for (int i = 0; i < (int)hashSize; ++i)
 				{
 					ATL::CString temp;
-					temp.Format("%x", hashValue[i]);
+					temp.Format("%02x", (unsigned char)hashValue[i]);
 					result += temp.GetString();
 				}
 

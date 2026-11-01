@@ -1,4 +1,29 @@
+// from server: 100% by EspClaude
 // from server: 87% by EspClaude
+// roc 2009-06 00648530  unit: RBX::VStockSound::?$FactoryProduct  size: 66 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00648530
+//
+// 00648530  56                   push esi
+// 00648531  8bf1                 mov esi, ecx
+// 00648533  8b8694000000         mov eax, dword ptr [esi + 0x94]
+// 00648539  85c0                 test eax, eax
+// 0064853b  741b                 je 0x648558
+// 0064853d  6a00                 push 0
+// 0064853f  50                   push eax
+// 00648540  e805f90c00           call 0x717e4a
+// 00648545  50                   push eax
+// 00648546  e865efffff           call 0x6474b0
+// 0064854b  83c404               add esp, 4
+// 0064854e  c7869400000000000000 mov dword ptr [esi + 0x94], 0
+// 00648558  8b868c000000         mov eax, dword ptr [esi + 0x8c]
+// 0064855e  8d8e8c000000         lea ecx, [esi + 0x8c]
+// 00648564  5e                   pop esi
+// 00648565  85c0                 test eax, eax
+// 00648567  7408                 je 0x648571
+// 00648569  ff4808               dec dword ptr [eax + 8]
+// 0064856c  e92feae1ff           jmp 0x466fa0
+// 00648571  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 005b97f0  unit: VStockSound::?$FactoryProduct  size: 66 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005b97f0
@@ -38,7 +63,7 @@ struct Reference {
 };
 
 struct S {
-    char padding[0x134];
+    char padding[0x8c];
     Reference reference;
     char gap[4];
     void* resource;

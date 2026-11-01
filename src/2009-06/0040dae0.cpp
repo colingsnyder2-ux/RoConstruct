@@ -1,4 +1,39 @@
+// from server: 100% by EspClaude
 // from server: 86% by EspClaude
+// roc 2009-06 0040dae0  unit: VCBrowserViewExternal::?$CProxy_IBrowserViewExternalEvents  size: 115 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0040dae0
+//
+// 0040dae0  6aff                 push -1
+// 0040dae2  68c8d38400           push 0x84d3c8
+// 0040dae7  64a100000000         mov eax, dword ptr fs:[0]
+// 0040daed  50                   push eax
+// 0040daee  64892500000000       mov dword ptr fs:[0], esp
+// 0040daf5  51                   push ecx
+// 0040daf6  56                   push esi
+// 0040daf7  8bf1                 mov esi, ecx
+// 0040daf9  89742404             mov dword ptr [esp + 4], esi
+// 0040dafd  c70634e18a00         mov dword ptr [esi], 0x8ae134
+// 0040db03  8d8eb0020000         lea ecx, [esi + 0x2b0]
+// 0040db09  c744241000000000     mov dword ptr [esp + 0x10], 0
+// 0040db11  ff1510fd8900         call dword ptr [0x89fd10]
+// 0040db17  8b86a8020000         mov eax, dword ptr [esi + 0x2a8]
+// 0040db1d  85c0                 test eax, eax
+// 0040db1f  7408                 je 0x40db29
+// 0040db21  8b08                 mov ecx, dword ptr [eax]
+// 0040db23  8b5108               mov edx, dword ptr [ecx + 8]
+// 0040db26  50                   push eax
+// 0040db27  ffd2                 call edx
+// 0040db29  8d8e00010000         lea ecx, [esi + 0x100]
+// 0040db2f  e8acc83200           call 0x73a3e0
+// 0040db34  8bce                 mov ecx, esi
+// 0040db36  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 0040db3e  e88df4ffff           call 0x40cfd0
+// 0040db43  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0040db47  5e                   pop esi
+// 0040db48  64890d00000000       mov dword ptr fs:[0], ecx
+// 0040db4f  83c410               add esp, 0x10
+// 0040db52  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 00410950  unit: UIEnumConnections::V?$CComEnum::?$CComObject  size: 131 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00410950
@@ -39,7 +74,7 @@
 
 struct Base {
     virtual ~Base();
-    char storage[0xF8];
+    char storage[0xFC];
 };
 
 struct Member {
@@ -61,7 +96,6 @@ struct Interface {
 extern void (__thiscall *destroyLock)(void *);
 
 struct S : Base {
-    Member member;
     Buffer buffer;
     Interface *connection;
     unsigned long reserved;

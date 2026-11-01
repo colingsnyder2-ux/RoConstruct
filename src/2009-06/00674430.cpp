@@ -1,4 +1,51 @@
+// from server: 100% by EspClaude
 // from server: 90% by EspClaude
+// roc 2009-06 00674430  unit: RBX::VShirtGraphic::?$FactoryProduct  size: 103 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00674430
+//
+// 00674430  56                   push esi
+// 00674431  57                   push edi
+// 00674432  8b7c240c             mov edi, dword ptr [esp + 0xc]
+// 00674436  57                   push edi
+// 00674437  8bf1                 mov esi, ecx
+// 00674439  e812d6f5ff           call 0x5d1a50
+// 0067443e  3937                 cmp dword ptr [edi], esi
+// 00674440  7550                 jne 0x674492
+// 00674442  6a00                 push 0
+// 00674444  68e0db9e00           push 0x9edbe0
+// 00674449  68b0c39e00           push 0x9ec3b0
+// 0067444e  6a00                 push 0
+// 00674450  56                   push esi
+// 00674451  e824580a00           call 0x719c7a
+// 00674456  83c414               add esp, 0x14
+// 00674459  85c0                 test eax, eax
+// 0067445b  740c                 je 0x674469
+// 0067445d  8bc8                 mov ecx, eax
+// 0067445f  e86cffffff           call 0x6743d0
+// 00674464  5f                   pop edi
+// 00674465  5e                   pop esi
+// 00674466  c20400               ret 4
+// 00674469  6a00                 push 0
+// 0067446b  56                   push esi
+// 0067446c  e80ffbe4ff           call 0x4c3f80
+// 00674471  83c408               add esp, 8
+// 00674474  84c0                 test al, al
+// 00674476  741a                 je 0x674492
+// 00674478  8b4648               mov eax, dword ptr [esi + 0x48]
+// 0067447b  50                   push eax
+// 0067447c  e8ef40ffff           call 0x668570
+// 00674481  83c404               add esp, 4
+// 00674484  85c0                 test eax, eax
+// 00674486  740a                 je 0x674492
+// 00674488  8b16                 mov edx, dword ptr [esi]
+// 0067448a  50                   push eax
+// 0067448b  8b4244               mov eax, dword ptr [edx + 0x44]
+// 0067448e  8bce                 mov ecx, esi
+// 00674490  ffd0                 call eax
+// 00674492  5f                   pop edi
+// 00674493  5e                   pop esi
+// 00674494  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 005d4c40  unit: RBX::VClothing::?$FactoryProduct  size: 106 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d4c40
@@ -52,13 +99,13 @@ struct Appearance {
 };
 
 struct VTable {
-    void* slots[16];
+    void* slots[17];
     void (__thiscall *apply)(S*, void*);
 };
 
 struct S {
     VTable* table;
-    char padding[256];
+    char padding[0x44];
     void* appearance;
 
     void base(S**);

@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 98% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espclaude_74d006487e31440b.cpp
+// roc-lib: rbxgs-dll roc_espclaude_9ce9b1988b7036d7.cpp
 
 // Candidate translation unit (score above; library headers required).
 #undef _RELEASEASSERT
@@ -30,7 +31,10 @@ namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(co
 #undef undoState
 #include "util/Name.h"
 #include "tool/RunDragger.h"
+#define MegaDragger MegaDraggerBase
 #include "tool/MegaDragger.h"
+#undef MegaDragger
+namespace RBX { class MegaDragger : public MegaDraggerBase { int exePad2009; public: MegaDragger(PartInstance* p, const std::vector<PVInstance*>& v, RootInstance* r, int x); }; }
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Workspace.h"
 
@@ -78,6 +82,6 @@ namespace RBX
 		std::vector<PVInstance*> pvInstances;
 		pvInstances.push_back(mousePart);
 
-		megaDragger.reset(new MegaDragger(mousePart, pvInstances, (RootInstance*)workspace));
+		megaDragger.reset(new MegaDragger(mousePart, pvInstances, (RootInstance*)workspace, 0));
 	}
 }

@@ -1,4 +1,65 @@
+// from server: 100% by EspClaude
 // from server: 97% by EspClaude
+// roc 2009-06 00529850  unit: RBX::ViewG3D  size: 200 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00529850
+//
+// 00529850  6aff                 push -1
+// 00529852  68feeb8500           push 0x85ebfe
+// 00529857  64a100000000         mov eax, dword ptr fs:[0]
+// 0052985d  50                   push eax
+// 0052985e  64892500000000       mov dword ptr fs:[0], esp
+// 00529865  51                   push ecx
+// 00529866  56                   push esi
+// 00529867  8bf1                 mov esi, ecx
+// 00529869  89742404             mov dword ptr [esp + 4], esi
+// 0052986d  c706d4a18c00         mov dword ptr [esi], 0x8ca1d4
+// 00529873  8b4e04               mov ecx, dword ptr [esi + 4]
+// 00529876  8b01                 mov eax, dword ptr [ecx]
+// 00529878  8b500c               mov edx, dword ptr [eax + 0xc]
+// 0052987b  c744241002000000     mov dword ptr [esp + 0x10], 2
+// 00529883  ffd2                 call edx
+// 00529885  8b4e14               mov ecx, dword ptr [esi + 0x14]
+// 00529888  85c9                 test ecx, ecx
+// 0052988a  7405                 je 0x529891
+// 0052988c  e85f0bfcff           call 0x4ea3f0
+// 00529891  e88aa40300           call 0x563d20
+// 00529896  e835ebffff           call 0x5283d0
+// 0052989b  e870edffff           call 0x528610
+// 005298a0  e8abe6ffff           call 0x527f50
+// 005298a5  e806eaffff           call 0x5282b0
+// 005298aa  e841ecffff           call 0x5284f0
+// 005298af  e87ceeffff           call 0x528730
+// 005298b4  8d4e34               lea ecx, [esi + 0x34]
+// 005298b7  c644241001           mov byte ptr [esp + 0x10], 1
+// 005298bc  e81f0a0c00           call 0x5ea2e0
+// 005298c1  8b4630               mov eax, dword ptr [esi + 0x30]
+// 005298c4  c644241000           mov byte ptr [esp + 0x10], 0
+// 005298c9  85c0                 test eax, eax
+// 005298cb  742c                 je 0x5298f9
+// 005298cd  83c004               add eax, 4
+// 005298d0  50                   push eax
+// 005298d1  ff15a4e18900         call dword ptr [0x89e1a4]
+// 005298d7  85c0                 test eax, eax
+// 005298d9  7517                 jne 0x5298f2
+// 005298db  8b4e30               mov ecx, dword ptr [esi + 0x30]
+// 005298de  e89db4f1ff           call 0x444d80
+// 005298e3  8b4e30               mov ecx, dword ptr [esi + 0x30]
+// 005298e6  85c9                 test ecx, ecx
+// 005298e8  7408                 je 0x5298f2
+// 005298ea  8b01                 mov eax, dword ptr [ecx]
+// 005298ec  8b10                 mov edx, dword ptr [eax]
+// 005298ee  6a01                 push 1
+// 005298f0  ffd2                 call edx
+// 005298f2  c7463000000000       mov dword ptr [esi + 0x30], 0
+// 005298f9  8bce                 mov ecx, esi
+// 005298fb  c7442410ffffffff     mov dword ptr [esp + 0x10], 0xffffffff
+// 00529903  e8b8cbffff           call 0x5264c0
+// 00529908  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0052990c  5e                   pop esi
+// 0052990d  64890d00000000       mov dword ptr fs:[0], ecx
+// 00529914  83c410               add esp, 0x10
+// 00529917  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 004dc270  unit: RBX::ViewNew::ViewG3D  size: 200 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004dc270
@@ -115,7 +176,7 @@ struct S : Base {
     Interface *interfacePointer;
     unsigned char padding08[12];
     Auxiliary *auxiliary;
-    unsigned char padding18[48];
+    unsigned char padding18[24];
     ImageReference image;
     Resource resource;
 

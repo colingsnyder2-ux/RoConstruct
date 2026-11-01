@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005b1190  unit: RBX::Accoutrement  size: 150 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005b1190
@@ -75,7 +75,7 @@ struct Shared {
 extern Accoutrement* __cdecl helper(Accoutrement*);
 
 struct Accoutrement {
-    char padding[0x134];
+    char padding[0x90];
     Accoutrement* attached;
     void update();
     void change(int, Accoutrement*);

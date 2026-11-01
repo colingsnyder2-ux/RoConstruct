@@ -1,4 +1,36 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
+// roc 2009-06 0064a180  unit: RBX::Soundscape::SoundChannel  size: 74 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0064a180
+//
+// 0064a180  56                   push esi
+// 0064a181  57                   push edi
+// 0064a182  8b7c240c             mov edi, dword ptr [esp + 0xc]
+// 0064a186  8bf1                 mov esi, ecx
+// 0064a188  83ffff               cmp edi, -1
+// 0064a18b  750a                 jne 0x64a197
+// 0064a18d  e88ef6ffff           call 0x649820
+// 0064a192  5f                   pop edi
+// 0064a193  5e                   pop esi
+// 0064a194  c20400               ret 4
+// 0064a197  85ff                 test edi, edi
+// 0064a199  750a                 jne 0x64a1a5
+// 0064a19b  e830f6ffff           call 0x6497d0
+// 0064a1a0  5f                   pop edi
+// 0064a1a1  5e                   pop esi
+// 0064a1a2  c20400               ret 4
+// 0064a1a5  3bbec8000000         cmp edi, dword ptr [esi + 0xc8]
+// 0064a1ab  7e18                 jle 0x64a1c5
+// 0064a1ad  56                   push esi
+// 0064a1ae  e82dfbffff           call 0x649ce0
+// 0064a1b3  68dcbca400           push 0xa4bcdc
+// 0064a1b8  8bce                 mov ecx, esi
+// 0064a1ba  89bec8000000         mov dword ptr [esi + 0xc8], edi
+// 0064a1c0  e80b21dcff           call 0x40c2d0
+// 0064a1c5  5f                   pop edi
+// 0064a1c6  5e                   pop esi
+// 0064a1c7  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 005bda10  unit: RBX::Soundscape::SoundChannel  size: 74 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005bda10
@@ -36,7 +68,7 @@ extern "C" void __stdcall prepare(S *);
 extern unsigned char descriptor;
 
 struct S {
-    unsigned char padding[0x168];
+    unsigned char padding[0xc8];
     int value;
 
     void setValue(int);

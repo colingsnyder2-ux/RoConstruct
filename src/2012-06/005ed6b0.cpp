@@ -1,4 +1,4 @@
-// from server: 10% by intel
+// from server: 27% by Intel
 // roc 2012-06 005ed6b0  unit: G3D::Random  size: 7848 bytes
 // Make this compile to the exact bytes below, then: roc check 2012-06 005ed6b0
 //

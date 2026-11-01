@@ -1,4 +1,54 @@
+// from server: 100% by EspClaude
 // from server: 85% by EspClaude
+// roc 2009-06 0046da40  unit: PartDataSource  size: 157 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0046da40
+//
+// 0046da40  6aff                 push -1
+// 0046da42  68f8358500           push 0x8535f8
+// 0046da47  64a100000000         mov eax, dword ptr fs:[0]
+// 0046da4d  50                   push eax
+// 0046da4e  64892500000000       mov dword ptr fs:[0], esp
+// 0046da55  83ec08               sub esp, 8
+// 0046da58  56                   push esi
+// 0046da59  8bf1                 mov esi, ecx
+// 0046da5b  8b461c               mov eax, dword ptr [esi + 0x1c]
+// 0046da5e  6a01                 push 1
+// 0046da60  83ec08               sub esp, 8
+// 0046da63  8bcc                 mov ecx, esp
+// 0046da65  89642410             mov dword ptr [esp + 0x10], esp
+// 0046da69  8901                 mov dword ptr [ecx], eax
+// 0046da6b  8b4620               mov eax, dword ptr [esi + 0x20]
+// 0046da6e  894104               mov dword ptr [ecx + 4], eax
+// 0046da71  85c0                 test eax, eax
+// 0046da73  740c                 je 0x46da81
+// 0046da75  83c004               add eax, 4
+// 0046da78  b901000000           mov ecx, 1
+// 0046da7d  f00fc108             lock xadd dword ptr [eax], ecx
+// 0046da81  8d4c2410             lea ecx, [esp + 0x10]
+// 0046da85  e886601900           call 0x603b10
+// 0046da8a  8b461c               mov eax, dword ptr [esi + 0x1c]
+// 0046da8d  8b54241c             mov edx, dword ptr [esp + 0x1c]
+// 0046da91  50                   push eax
+// 0046da92  52                   push edx
+// 0046da93  8d4c2410             lea ecx, [esp + 0x10]
+// 0046da97  c744241c00000000     mov dword ptr [esp + 0x1c], 0
+// 0046da9f  e83c671b00           call 0x6241e0
+// 0046daa4  8b761c               mov esi, dword ptr [esi + 0x1c]
+// 0046daa7  85f6                 test esi, esi
+// 0046daa9  7408                 je 0x46dab3
+// 0046daab  8b8e0c020000         mov ecx, dword ptr [esi + 0x20c]
+// 0046dab1  eb02                 jmp 0x46dab5
+// 0046dab3  33c9                 xor ecx, ecx
+// 0046dab5  e8e6e31b00           call 0x62bea0
+// 0046daba  8d4c2404             lea ecx, [esp + 4]
+// 0046dabe  c7442414ffffffff     mov dword ptr [esp + 0x14], 0xffffffff
+// 0046dac6  e8d51a1900           call 0x5ff5a0
+// 0046dacb  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0046dacf  64890d00000000       mov dword ptr fs:[0], ecx
+// 0046dad6  5e                   pop esi
+// 0046dad7  83c414               add esp, 0x14
+// 0046dada  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 0046aa70  unit: VCWorkspace::?$CComObject  size: 155 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0046aa70
@@ -68,7 +118,7 @@ struct Service {
 };
 
 struct Object {
-    char padding[0x204];
+    char padding[0x20c];
     Service* service;
 };
 
@@ -88,8 +138,8 @@ inline Shared::Shared(const Shared& other)
 }
 
 struct Guard {
-    unsigned long storage[3];
-    Guard(Shared value);
+    unsigned long storage;
+    Guard(Shared value, bool);
     ~Guard();
 };
 
@@ -99,14 +149,14 @@ struct Action {
 };
 
 struct S {
-    char padding[0x24];
+    char padding[0x1c];
     Shared value;
     void f(unsigned long argument);
 };
 
 void S::f(unsigned long argument)
 {
-    Guard guard(value);
+    Guard guard(value, true);
     Object* target = value.object;
     Action action;
     action.apply(argument, target);

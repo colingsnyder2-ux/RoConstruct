@@ -1,4 +1,78 @@
+// from server: 100% by EspClaude
 // from server: 97% by EspClaude
+// roc 2009-06 00672a00  unit: RBX::VSpawnLocation::?$BoundPropGetSet  size: 228 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00672a00
+//
+// 00672a00  64a100000000         mov eax, dword ptr fs:[0]
+// 00672a06  6aff                 push -1
+// 00672a08  68e8a68600           push 0x86a6e8
+// 00672a0d  50                   push eax
+// 00672a0e  64892500000000       mov dword ptr fs:[0], esp
+// 00672a15  83ec08               sub esp, 8
+// 00672a18  56                   push esi
+// 00672a19  8bf1                 mov esi, ecx
+// 00672a1b  e880a8e4ff           call 0x4bd2a0
+// 00672a20  85c0                 test eax, eax
+// 00672a22  0f85ac000000         jne 0x672ad4
+// 00672a28  53                   push ebx
+// 00672a29  8d442408             lea eax, [esp + 8]
+// 00672a2d  57                   push edi
+// 00672a2e  50                   push eax
+// 00672a2f  e8ec93e4ff           call 0x4bbe20
+// 00672a34  8b5c2410             mov ebx, dword ptr [esp + 0x10]
+// 00672a38  68804b4b00           push 0x4b4b80
+// 00672a3d  6830d5a300           push 0xa3d530
+// 00672a42  c744242800000000     mov dword ptr [esp + 0x28], 0
+// 00672a4a  e8c1ecd8ff           call 0x401710
+// 00672a4f  83c40c               add esp, 0xc
+// 00672a52  e85916e4ff           call 0x4b40b0
+// 00672a57  8b8e9c000000         mov ecx, dword ptr [esi + 0x9c]
+// 00672a5d  2b8e98000000         sub ecx, dword ptr [esi + 0x98]
+// 00672a63  8bf8                 mov edi, eax
+// 00672a65  c1f903               sar ecx, 3
+// 00672a68  3bf9                 cmp edi, ecx
+// 00672a6a  7206                 jb 0x672a72
+// 00672a6c  ff15ace98900         call dword ptr [0x89e9ac]
+// 00672a72  8b9698000000         mov edx, dword ptr [esi + 0x98]
+// 00672a78  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00672a7c  8d04fa               lea eax, [edx + edi*8]
+// 00672a7f  8d542410             lea edx, [esp + 0x10]
+// 00672a83  8908                 mov dword ptr [eax], ecx
+// 00672a85  52                   push edx
+// 00672a86  8d4804               lea ecx, [eax + 4]
+// 00672a89  e872fad8ff           call 0x402500
+// 00672a8e  56                   push esi
+// 00672a8f  8bcb                 mov ecx, ebx
+// 00672a91  e8baf3f5ff           call 0x5d1e50
+// 00672a96  8b742410             mov esi, dword ptr [esp + 0x10]
+// 00672a9a  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 00672aa2  85f6                 test esi, esi
+// 00672aa4  742a                 je 0x672ad0
+// 00672aa6  8d4604               lea eax, [esi + 4]
+// 00672aa9  83c9ff               or ecx, 0xffffffff
+// 00672aac  f00fc108             lock xadd dword ptr [eax], ecx
+// 00672ab0  751e                 jne 0x672ad0
+// 00672ab2  8b16                 mov edx, dword ptr [esi]
+// 00672ab4  8b4204               mov eax, dword ptr [edx + 4]
+// 00672ab7  8bce                 mov ecx, esi
+// 00672ab9  ffd0                 call eax
+// 00672abb  8d4e08               lea ecx, [esi + 8]
+// 00672abe  83caff               or edx, 0xffffffff
+// 00672ac1  f00fc111             lock xadd dword ptr [ecx], edx
+// 00672ac5  7509                 jne 0x672ad0
+// 00672ac7  8b06                 mov eax, dword ptr [esi]
+// 00672ac9  8b5008               mov edx, dword ptr [eax + 8]
+// 00672acc  8bce                 mov ecx, esi
+// 00672ace  ffd2                 call edx
+// 00672ad0  5f                   pop edi
+// 00672ad1  8bc3                 mov eax, ebx
+// 00672ad3  5b                   pop ebx
+// 00672ad4  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00672ad8  5e                   pop esi
+// 00672ad9  64890d00000000       mov dword ptr fs:[0], ecx
+// 00672ae0  83c414               add esp, 0x14
+// 00672ae3  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 005d33a0  unit: RBX::VSpawnLocation::?$FactoryProduct  size: 228 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005d33a0
@@ -122,7 +196,7 @@ struct Entry {
 };
 
 struct S {
-    char padding[0x19c];
+    char padding[0x98];
     Entry* first;
     Entry* last;
 

@@ -1,4 +1,36 @@
+// from server: 100% by EspClaude
 // from server: 97% by EspClaude
+// roc 2009-06 0046a900  unit: DxUserInput  size: 98 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0046a900
+//
+// 0046a900  6aff                 push -1
+// 0046a902  6888328500           push 0x853288
+// 0046a907  64a100000000         mov eax, dword ptr fs:[0]
+// 0046a90d  50                   push eax
+// 0046a90e  64892500000000       mov dword ptr fs:[0], esp
+// 0046a915  83ec08               sub esp, 8
+// 0046a918  56                   push esi
+// 0046a919  57                   push edi
+// 0046a91a  8bf1                 mov esi, ecx
+// 0046a91c  8d7e2c               lea edi, [esi + 0x2c]
+// 0046a91f  57                   push edi
+// 0046a920  897c240c             mov dword ptr [esp + 0xc], edi
+// 0046a924  ff15a8e18900         call dword ptr [0x89e1a8]
+// 0046a92a  c644240c01           mov byte ptr [esp + 0xc], 1
+// 0046a92f  8a442420             mov al, byte ptr [esp + 0x20]
+// 0046a933  8bce                 mov ecx, esi
+// 0046a935  c744241800000000     mov dword ptr [esp + 0x18], 0
+// 0046a93d  888689010000         mov byte ptr [esi + 0x189], al
+// 0046a943  e858f3ffff           call 0x469ca0
+// 0046a948  57                   push edi
+// 0046a949  ff15ace18900         call dword ptr [0x89e1ac]
+// 0046a94f  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0046a953  5f                   pop edi
+// 0046a954  5e                   pop esi
+// 0046a955  64890d00000000       mov dword ptr fs:[0], ecx
+// 0046a95c  83c414               add esp, 0x14
+// 0046a95f  c20400               ret 4
+
 // from server: 100% by colin
 // roc 2008-06 00468050  unit: DxUserInput  size: 98 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00468050
@@ -52,7 +84,7 @@ struct Guard {
 };
 
 struct S {
-    unsigned char reserved0[0x34];
+    unsigned char reserved0[0x2c];
     unsigned char criticalSection[0x18];
     unsigned char reserved1[0x145];
     bool enabled;

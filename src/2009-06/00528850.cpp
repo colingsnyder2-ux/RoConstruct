@@ -1,4 +1,77 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
+// roc 2009-06 00528850  unit: RBX::ViewRbxGfx  size: 219 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00528850
+//
+// 00528850  6aff                 push -1
+// 00528852  68d8ea8500           push 0x85ead8
+// 00528857  64a100000000         mov eax, dword ptr fs:[0]
+// 0052885d  50                   push eax
+// 0052885e  64892500000000       mov dword ptr fs:[0], esp
+// 00528865  51                   push ecx
+// 00528866  53                   push ebx
+// 00528867  56                   push esi
+// 00528868  8bf1                 mov esi, ecx
+// 0052886a  57                   push edi
+// 0052886b  8974240c             mov dword ptr [esp + 0xc], esi
+// 0052886f  c70694a18c00         mov dword ptr [esi], 0x8ca194
+// 00528875  8b4e04               mov ecx, dword ptr [esi + 4]
+// 00528878  8b01                 mov eax, dword ptr [ecx]
+// 0052887a  8b500c               mov edx, dword ptr [eax + 0xc]
+// 0052887d  33db                 xor ebx, ebx
+// 0052887f  895c2418             mov dword ptr [esp + 0x18], ebx
+// 00528883  ffd2                 call edx
+// 00528885  8b4e08               mov ecx, dword ptr [esi + 8]
+// 00528888  3bcb                 cmp ecx, ebx
+// 0052888a  7408                 je 0x528894
+// 0052888c  8b01                 mov eax, dword ptr [ecx]
+// 0052888e  8b10                 mov edx, dword ptr [eax]
+// 00528890  6a01                 push 1
+// 00528892  ffd2                 call edx
+// 00528894  895e08               mov dword ptr [esi + 8], ebx
+// 00528897  8b7e10               mov edi, dword ptr [esi + 0x10]
+// 0052889a  3bfb                 cmp edi, ebx
+// 0052889c  7410                 je 0x5288ae
+// 0052889e  8bcf                 mov ecx, edi
+// 005288a0  e89bd3ffff           call 0x525c40
+// 005288a5  57                   push edi
+// 005288a6  e887011f00           call 0x718a32
+// 005288ab  83c404               add esp, 4
+// 005288ae  895e10               mov dword ptr [esi + 0x10], ebx
+// 005288b1  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 005288b4  3bfb                 cmp edi, ebx
+// 005288b6  7416                 je 0x5288ce
+// 005288b8  8bcf                 mov ecx, edi
+// 005288ba  c70708a58b00         mov dword ptr [edi], 0x8ba508
+// 005288c0  e83b3df3ff           call 0x45c600
+// 005288c5  57                   push edi
+// 005288c6  e867011f00           call 0x718a32
+// 005288cb  83c404               add esp, 4
+// 005288ce  895e0c               mov dword ptr [esi + 0xc], ebx
+// 005288d1  8b4e14               mov ecx, dword ptr [esi + 0x14]
+// 005288d4  3bcb                 cmp ecx, ebx
+// 005288d6  7405                 je 0x5288dd
+// 005288d8  e8131bfcff           call 0x4ea3f0
+// 005288dd  e88ef7ffff           call 0x528070
+// 005288e2  e8a9f8ffff           call 0x528190
+// 005288e7  e834b40300           call 0x563d20
+// 005288ec  e8dffaffff           call 0x5283d0
+// 005288f1  e81afdffff           call 0x528610
+// 005288f6  e855f6ffff           call 0x527f50
+// 005288fb  e8b0f9ffff           call 0x5282b0
+// 00528900  e8ebfbffff           call 0x5284f0
+// 00528905  e826feffff           call 0x528730
+// 0052890a  8bce                 mov ecx, esi
+// 0052890c  c7442418ffffffff     mov dword ptr [esp + 0x18], 0xffffffff
+// 00528914  e8a7dbffff           call 0x5264c0
+// 00528919  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0052891d  5f                   pop edi
+// 0052891e  5e                   pop esi
+// 0052891f  5b                   pop ebx
+// 00528920  64890d00000000       mov dword ptr fs:[0], ecx
+// 00528927  83c410               add esp, 0x10
+// 0052892a  c3                   ret 
+
 // from server: 100% by Espeon
 // roc 2008-06 004db4f0  unit: RBX::ViewNew::ViewRbxGfx  size: 209 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004db4f0
@@ -81,6 +154,8 @@ extern "C" void __cdecl cleanup_004e5670();
 extern "C" void __cdecl cleanup_004db310();
 extern "C" void __cdecl cleanup_004db220();
 extern "C" void __cdecl cleanup_004db400();
+extern "C" void __cdecl cleanup_x1();
+extern "C" void __cdecl cleanup_x2();
 
 struct Interface {
     virtual void slot0();
@@ -150,4 +225,6 @@ View::~View()
     cleanup_004db310();
     cleanup_004db220();
     cleanup_004db400();
+    cleanup_x1();
+    cleanup_x2();
 }

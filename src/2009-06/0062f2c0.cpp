@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 91% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espclaude_5b5c0b802f1d05c7.cpp
+// roc-lib: openrbx-client-dll roc_espclaude_2ea5587fc0178957.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -23,9 +24,9 @@ extern Pointer __cdecl resolve(void*);
 extern Pointer __cdecl convert(const Pointer&) throw();
 
 struct S {
-    unsigned char prefix[0x104];
+    unsigned char prefix[0x48];
     S* parent;
-    unsigned char middle[0x2f4];
+    unsigned char middle[0x1dc];
     S* context;
     unsigned int reserved;
     Provider* provider;
@@ -51,4 +52,5 @@ void S::update() {
     }
     set(result.get());
 }
+
 

@@ -1,4 +1,78 @@
+// from server: 100% by EspClaude
 // from server: 97% by EspClaude
+// roc 2009-06 00601870  unit: RBX::VInstance::$$A6AXV?$shared_ptr::?$signal::slot  size: 228 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00601870
+//
+// 00601870  64a100000000         mov eax, dword ptr fs:[0]
+// 00601876  6aff                 push -1
+// 00601878  68e8a68600           push 0x86a6e8
+// 0060187d  50                   push eax
+// 0060187e  64892500000000       mov dword ptr fs:[0], esp
+// 00601885  83ec08               sub esp, 8
+// 00601888  56                   push esi
+// 00601889  8bf1                 mov esi, ecx
+// 0060188b  e870e3ffff           call 0x5ffc00
+// 00601890  85c0                 test eax, eax
+// 00601892  0f85ac000000         jne 0x601944
+// 00601898  53                   push ebx
+// 00601899  8d442408             lea eax, [esp + 8]
+// 0060189d  57                   push edi
+// 0060189e  50                   push eax
+// 0060189f  e81c5be3ff           call 0x4373c0
+// 006018a4  8b5c2410             mov ebx, dword ptr [esp + 0x10]
+// 006018a8  68c0ba5f00           push 0x5fbac0
+// 006018ad  68d8a9a400           push 0xa4a9d8
+// 006018b2  c744242800000000     mov dword ptr [esp + 0x28], 0
+// 006018ba  e851fedfff           call 0x401710
+// 006018bf  83c40c               add esp, 0xc
+// 006018c2  e82995ffff           call 0x5fadf0
+// 006018c7  8b8e9c000000         mov ecx, dword ptr [esi + 0x9c]
+// 006018cd  2b8e98000000         sub ecx, dword ptr [esi + 0x98]
+// 006018d3  8bf8                 mov edi, eax
+// 006018d5  c1f903               sar ecx, 3
+// 006018d8  3bf9                 cmp edi, ecx
+// 006018da  7206                 jb 0x6018e2
+// 006018dc  ff15ace98900         call dword ptr [0x89e9ac]
+// 006018e2  8b9698000000         mov edx, dword ptr [esi + 0x98]
+// 006018e8  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 006018ec  8d04fa               lea eax, [edx + edi*8]
+// 006018ef  8d542410             lea edx, [esp + 0x10]
+// 006018f3  8908                 mov dword ptr [eax], ecx
+// 006018f5  52                   push edx
+// 006018f6  8d4804               lea ecx, [eax + 4]
+// 006018f9  e8020ce0ff           call 0x402500
+// 006018fe  56                   push esi
+// 006018ff  8bcb                 mov ecx, ebx
+// 00601901  e84a05fdff           call 0x5d1e50
+// 00601906  8b742410             mov esi, dword ptr [esp + 0x10]
+// 0060190a  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 00601912  85f6                 test esi, esi
+// 00601914  742a                 je 0x601940
+// 00601916  8d4604               lea eax, [esi + 4]
+// 00601919  83c9ff               or ecx, 0xffffffff
+// 0060191c  f00fc108             lock xadd dword ptr [eax], ecx
+// 00601920  751e                 jne 0x601940
+// 00601922  8b16                 mov edx, dword ptr [esi]
+// 00601924  8b4204               mov eax, dword ptr [edx + 4]
+// 00601927  8bce                 mov ecx, esi
+// 00601929  ffd0                 call eax
+// 0060192b  8d4e08               lea ecx, [esi + 8]
+// 0060192e  83caff               or edx, 0xffffffff
+// 00601931  f00fc111             lock xadd dword ptr [ecx], edx
+// 00601935  7509                 jne 0x601940
+// 00601937  8b06                 mov eax, dword ptr [esi]
+// 00601939  8b5008               mov edx, dword ptr [eax + 8]
+// 0060193c  8bce                 mov ecx, esi
+// 0060193e  ffd2                 call edx
+// 00601940  5f                   pop edi
+// 00601941  8bc3                 mov eax, ebx
+// 00601943  5b                   pop ebx
+// 00601944  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 00601948  5e                   pop esi
+// 00601949  64890d00000000       mov dword ptr fs:[0], ecx
+// 00601950  83c414               add esp, 0x14
+// 00601953  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 004531e0  unit: CRobloxDoc  size: 228 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004531e0
@@ -122,7 +196,7 @@ struct Entry {
 };
 
 struct S {
-    char padding[0x19c];
+    char padding[0x98];
     Entry* first;
     Entry* last;
 

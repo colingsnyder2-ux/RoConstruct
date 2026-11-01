@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc 2008-06 005ff680  unit: RBX::Mouse  size: 193 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005ff680
@@ -199,7 +199,7 @@ Shared __cdecl create();
 
 struct S
 {
-    char padding[0x200];
+    char padding[0x15c];
     Source* source;
 
     Shared get();

@@ -1,4 +1,4 @@
-// from server: 98% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by king_originala
 // roc 2008-06 005b0b70  unit: RBX::VAccoutrement::?$FactoryProduct  size: 88 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005b0b70
@@ -65,6 +65,6 @@ Frame S::getFrame()
 {
     volatile int state = 0;
     Part* part = reinterpret_cast<Owner*>(
-        reinterpret_cast<char*>(this) - 456)->getPart();
+        reinterpret_cast<char*>(this) - 284)->getPart();
     return part ? part->getFrame() : Frame();
 }

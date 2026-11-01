@@ -295,12 +295,19 @@ namespace RBX
 		{
 			dragging = _dragging;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored && world)
+			if (isAnchored != wasAnchored)
 			{
 				if (isAnchored)
-					world->onPrimitiveAddedAnchor(this);
+				{
+					setAnchorObject(new Anchor(this));
+					if (world) world->onPrimitiveAddedAnchor(this);
+				}
 				else
-					world->onPrimitiveRemovingAnchor(this);
+				{
+					if (world) world->onPrimitiveRemovingAnchor(this);
+					delete getAnchorObject();
+					setAnchorObject(NULL);
+				}
 			}
 		}
 	}
@@ -340,12 +347,19 @@ namespace RBX
 		{
 			flag0xaa = value;
 			bool isAnchored = dragging || anchored || flag0xaa;
-			if (isAnchored != wasAnchored && world)
+			if (isAnchored != wasAnchored)
 			{
 				if (isAnchored)
-					world->onPrimitiveAddedAnchor(this);
+				{
+					setAnchorObject(new Anchor(this));
+					if (world) world->onPrimitiveAddedAnchor(this);
+				}
 				else
-					world->onPrimitiveRemovingAnchor(this);
+				{
+					if (world) world->onPrimitiveRemovingAnchor(this);
+					delete getAnchorObject();
+					setAnchorObject(NULL);
+				}
 			}
 		}
 	}

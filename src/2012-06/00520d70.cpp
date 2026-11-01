@@ -1,4 +1,4 @@
-// from server: 62% by atomic.potato
+// from server: 68% by Intel
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 
@@ -10,22 +10,19 @@ struct VPlayer {
     void* field20;
     void* field24;
     void* field28;
-    void construct(void* src);
+    void construct(void* a, void* src);
 };
 
-void VPlayer::construct(void* src) {
-    char* s = (char*)src;
-    field0 = *(void**)s;
-    string_copy_ctor((char*)this + 4, s + 4);
-    *(void**)((char*)this + 0x20) = *(void**)(s + 0x20);
-    void* p = *(void**)(s + 0x20);
-    if (p) {
-        _InterlockedExchangeAdd((volatile long*)((char*)p + 8), 1);
+void VPlayer::construct(void* a, void* src) {
+    field0 = a;
+    string_copy_ctor((char*)this + 4, (char*)src + 4);
+    field20 = *(void**)((char*)src + 0x20);
+    if (field20) {
+        _InterlockedExchangeAdd((volatile long*)((char*)field20 + 8), 1);
     }
-    *(void**)((char*)this + 0x24) = *(void**)(s + 0x24);
-    void* q = *(void**)(s + 0x28);
-    *(void**)((char*)this + 0x28) = q;
-    if (q) {
-        _InterlockedExchangeAdd((volatile long*)((char*)q + 8), 1);
+    field24 = *(void**)((char*)src + 0x24);
+    field28 = *(void**)((char*)src + 0x28);
+    if (field28) {
+        _InterlockedExchangeAdd((volatile long*)((char*)field28 + 8), 1);
     }
 }

@@ -1,8 +1,14 @@
-// from server: 35% by atomic.potato
+// from server: 36% by Intel
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 
-extern "C" int __cdecl type_info_equal(const void*, const void*);
+extern "C" int __stdcall type_info_equal(const void*, const void*);
+
+struct RbxRefObject
+{
+    void* vtable;
+    long references;
+};
 
 struct RbxSignalValue
 {
@@ -12,12 +18,6 @@ struct RbxSignalValue
     int a;
     int b;
     int c;
-};
-
-struct RbxRefObject
-{
-    void* vtable;
-    long references;
 };
 
 struct RbxCallable

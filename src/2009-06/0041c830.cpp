@@ -1,5 +1,131 @@
-// from server: 42% by colin
+// from server: 85% by EspClaude
+// from server: 100% by nuck16
 // roc-lang: cpp
-// roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
-// roc-lib: mfc-9.0 atlmfc/src/mfc/afxbasepane.cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: mfc-9.0-shared roc_unit_2443da6d71cf756c.cpp
+
+// Candidate translation unit (score above; library headers required).
+#define _AFXDLL
+#include <afxwin.h>
+#include <afxcomctl32.h>
+template<class T> void rocSink(T);
+void rocRefs()
+{
+    rocSink(&CComCtlWrapper::_InitCommonControls);
+    rocSink(&CComCtlWrapper::_InitCommonControlsEx);
+    rocSink(&CComCtlWrapper::_ImageList_Create);
+    rocSink(&CComCtlWrapper::_ImageList_Destroy);
+    rocSink(&CComCtlWrapper::_ImageList_GetImageCount);
+    rocSink(&CComCtlWrapper::_ImageList_SetImageCount);
+    rocSink(&CComCtlWrapper::_ImageList_Add);
+    rocSink(&CComCtlWrapper::_ImageList_ReplaceIcon);
+    rocSink(&CComCtlWrapper::_ImageList_SetBkColor);
+    rocSink(&CComCtlWrapper::_ImageList_GetBkColor);
+    rocSink(&CComCtlWrapper::_ImageList_SetOverlayImage);
+    rocSink(&CComCtlWrapper::_ImageList_Draw);
+    rocSink(&CComCtlWrapper::_ImageList_Replace);
+    rocSink(&CComCtlWrapper::_ImageList_AddMasked);
+    rocSink(&CComCtlWrapper::_ImageList_DrawEx);
+    rocSink(&CComCtlWrapper::_ImageList_DrawIndirect);
+    rocSink(&CComCtlWrapper::_ImageList_Remove);
+    rocSink(&CComCtlWrapper::_ImageList_GetIcon);
+    rocSink(&CComCtlWrapper::_ImageList_LoadImageA);
+    rocSink(&CComCtlWrapper::_ImageList_LoadImageW);
+    rocSink(&CComCtlWrapper::_ImageList_Copy);
+    rocSink(&CComCtlWrapper::_ImageList_BeginDrag);
+    rocSink(&CComCtlWrapper::_ImageList_EndDrag);
+    rocSink(&CComCtlWrapper::_ImageList_DragEnter);
+    rocSink(&CComCtlWrapper::_ImageList_DragLeave);
+    rocSink(&CComCtlWrapper::_ImageList_DragMove);
+    rocSink(&CComCtlWrapper::_ImageList_SetDragCursorImage);
+    rocSink(&CComCtlWrapper::_ImageList_DragShowNolock);
+    rocSink(&CComCtlWrapper::_ImageList_GetDragImage);
+    rocSink(&CComCtlWrapper::_ImageList_Read);
+    rocSink(&CComCtlWrapper::_ImageList_Write);
+    rocSink(&CComCtlWrapper::_ImageList_ReadEx);
+    rocSink(&CComCtlWrapper::_ImageList_WriteEx);
+    rocSink(&CComCtlWrapper::_ImageList_GetIconSize);
+    rocSink(&CComCtlWrapper::_ImageList_SetIconSize);
+    rocSink(&CComCtlWrapper::_ImageList_GetImageInfo);
+    rocSink(&CComCtlWrapper::_ImageList_Merge);
+    rocSink(&CComCtlWrapper::_ImageList_Duplicate);
+    rocSink(&CComCtlWrapper::_CreateToolbarEx);
+    rocSink(&CComCtlWrapper::_CreateMappedBitmap);
+    rocSink(&CComCtlWrapper::_DrawStatusTextA);
+    rocSink(&CComCtlWrapper::_DrawStatusTextW);
+    rocSink(&CComCtlWrapper::_CreateStatusWindowA);
+    rocSink(&CComCtlWrapper::_CreateStatusWindowW);
+    rocSink(&CComCtlWrapper::_MenuHelp);
+    rocSink(&CComCtlWrapper::_ShowHideMenuCtl);
+    rocSink(&CComCtlWrapper::_GetEffectiveClientRect);
+    rocSink(&CComCtlWrapper::_MakeDragList);
+    rocSink(&CComCtlWrapper::_DrawInsert);
+    rocSink(&CComCtlWrapper::_LBItemFromPt);
+    rocSink(&CComCtlWrapper::_CreateUpDownControl);
+    rocSink(&CComCtlWrapper::_InitMUILanguage);
+    rocSink(&CComCtlWrapper::_GetMUILanguage);
+    rocSink(&CComCtlWrapper::_DSA_Create);
+    rocSink(&CComCtlWrapper::_DSA_Destroy);
+    rocSink(&CComCtlWrapper::_DSA_DestroyCallback);
+    rocSink(&CComCtlWrapper::_DSA_GetItemPtr);
+    rocSink(&CComCtlWrapper::_DSA_InsertItem);
+    rocSink(&CComCtlWrapper::_DPA_Create);
+    rocSink(&CComCtlWrapper::_DPA_Destroy);
+    rocSink(&CComCtlWrapper::_DPA_DeletePtr);
+    rocSink(&CComCtlWrapper::_DPA_DeleteAllPtrs);
+    rocSink(&CComCtlWrapper::_DPA_EnumCallback);
+    rocSink(&CComCtlWrapper::_DPA_DestroyCallback);
+    rocSink(&CComCtlWrapper::_DPA_SetPtr);
+    rocSink(&CComCtlWrapper::_DPA_InsertPtr);
+    rocSink(&CComCtlWrapper::_DPA_GetPtr);
+    rocSink(&CComCtlWrapper::_DPA_Sort);
+    rocSink(&CComCtlWrapper::_DPA_Search);
+    rocSink(&CComCtlWrapper::_Str_SetPtrW);
+    rocSink(&CComCtlWrapper::__TrackMouseEvent);
+    rocSink(&CComCtlWrapper::_FlatSB_EnableScrollBar);
+    rocSink(&CComCtlWrapper::_FlatSB_ShowScrollBar);
+    rocSink(&CComCtlWrapper::_FlatSB_GetScrollRange);
+    rocSink(&CComCtlWrapper::_FlatSB_GetScrollInfo);
+    rocSink(&CComCtlWrapper::_FlatSB_GetScrollPos);
+    rocSink(&CComCtlWrapper::_FlatSB_GetScrollProp);
+    rocSink(&CComCtlWrapper::_FlatSB_GetScrollPropPtr);
+    rocSink(&CComCtlWrapper::_FlatSB_SetScrollPos);
+    rocSink(&CComCtlWrapper::_FlatSB_SetScrollInfo);
+    rocSink(&CComCtlWrapper::_FlatSB_SetScrollRange);
+    rocSink(&CComCtlWrapper::_FlatSB_SetScrollProp);
+    rocSink(&CComCtlWrapper::_InitializeFlatSB);
+    rocSink(&CComCtlWrapper::_UninitializeFlatSB);
+    rocSink(&CComCtlWrapper::_SetWindowSubclass);
+    rocSink(&CComCtlWrapper::_GetWindowSubclass);
+    rocSink(&CComCtlWrapper::_RemoveWindowSubclass);
+    rocSink(&CComCtlWrapper::_DefSubclassProc);
+    rocSink(&CComCtlWrapper::_DrawShadowText);
+    rocSink(&CComCtlWrapper::_CreatePropertySheetPageA);
+    rocSink(&CComCtlWrapper::_CreatePropertySheetPageW);
+    rocSink(&CComCtlWrapper::_DestroyPropertySheetPage);
+    rocSink(&CComCtlWrapper::_PropertySheetA);
+    rocSink(&CComCtlWrapper::_PropertySheetW);
+    rocSink(&CCommDlgWrapper::_GetOpenFileNameA);
+    rocSink(&CCommDlgWrapper::_GetOpenFileNameW);
+    rocSink(&CCommDlgWrapper::_GetSaveFileNameA);
+    rocSink(&CCommDlgWrapper::_GetSaveFileNameW);
+    rocSink(&CCommDlgWrapper::_GetFileTitleA);
+    rocSink(&CCommDlgWrapper::_GetFileTitleW);
+    rocSink(&CCommDlgWrapper::_ChooseColorA);
+    rocSink(&CCommDlgWrapper::_ChooseColorW);
+    rocSink(&CCommDlgWrapper::_FindTextA);
+    rocSink(&CCommDlgWrapper::_FindTextW);
+    rocSink(&CCommDlgWrapper::_ReplaceTextA);
+    rocSink(&CCommDlgWrapper::_ReplaceTextW);
+    rocSink(&CCommDlgWrapper::_ChooseFontA);
+    rocSink(&CCommDlgWrapper::_ChooseFontW);
+    rocSink(&CCommDlgWrapper::_PrintDlgA);
+    rocSink(&CCommDlgWrapper::_PrintDlgW);
+    rocSink(&CCommDlgWrapper::_CommDlgExtendedError);
+    rocSink(&CCommDlgWrapper::_PageSetupDlgA);
+    rocSink(&CCommDlgWrapper::_PageSetupDlgW);
+    rocSink(&CCommDlgWrapper::_PrintDlgExA);
+    rocSink(&CCommDlgWrapper::_PrintDlgExW);
+    rocSink(&CShellWrapper::_InitNetworkAddressControl);
+}

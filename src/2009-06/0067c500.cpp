@@ -1,4 +1,21 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
+// roc 2009-06 0067c500  unit: RBX::JointInstance  size: 37 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0067c500
+//
+// 0067c500  8b442404             mov eax, dword ptr [esp + 4]
+// 0067c504  56                   push esi
+// 0067c505  8bf1                 mov esi, ecx
+// 0067c507  8b8eac000000         mov ecx, dword ptr [esi + 0xac]
+// 0067c50d  50                   push eax
+// 0067c50e  6a01                 push 1
+// 0067c510  e8bb9f0200           call 0x6a64d0
+// 0067c515  6830e5a400           push 0xa4e530
+// 0067c51a  8bce                 mov ecx, esi
+// 0067c51c  e8affdd8ff           call 0x40c2d0
+// 0067c521  5e                   pop esi
+// 0067c522  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 005e44c0  unit: RBX::VMotor::?$FactoryProduct  size: 37 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005e44c0
@@ -23,7 +40,7 @@ struct Target {
 };
 
 struct S {
-    char padding[0x150];
+    char padding[0xac];
     Target* target;
 
     void notify(const void* descriptor);
