@@ -1,7 +1,7 @@
 {
  "source": "rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
- "source_sha256": "e7d0f1fe587a259e1b62168b381a93c4101eaa4585c288c3804e280d5c4ac439",
- "object_sha256": "b6799f50175208124479538c3a484c065e3ede9a5dccbc56443c0d8341ad36bf",
+ "source_sha256": "f55f39f87ae71a1265e6603d39a23010de8eea0868d923779eb07adcb5b78312",
+ "object_sha256": "ea7deccdc8ba5b471c586bb196dd70f4273be68b99907f9e666e10d671876a7a",
  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
  "flags": [
   "/nologo",

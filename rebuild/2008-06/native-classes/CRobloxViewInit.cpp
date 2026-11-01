@@ -4,6 +4,9 @@
 #include "../native-headers/ToggleToolboxVerb.h"
 #include "../native-headers/v8datamodel/DataModel.h"
 
+// Inline in the original, as in CRobloxDoc.cpp.
+inline const RBX::Name& RBX::Verb::getName() const { return name; }
+
 // Scaffolding, not recovered declarations: DataModel+0x150 and +0x170 are Notifier
 // bases the native DataModel.h does not declare yet; 004218a0 is their addListener.
 struct ListenerSite { void addListener(void*); };

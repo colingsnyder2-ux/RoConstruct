@@ -1,13 +1,15 @@
 {
  "source": "rebuild/2008-06/native-classes/Verb.cpp",
  "source_sha256": "fe4a1662f8de8417d32842067c195ff73b72d920777babb8f562ba9d9292cf38",
- "object_sha256": "3940314626bfa8da5c93b99afa5a8a7fb3a002241de3ad0a8e8e1e44949dddd1",
+ "object_sha256": "2d61cff11c610b1ad6c047ec765d773b27e9cd99470f93aa93cb271126c72923",
  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
  "flags": [
   "/nologo",
   "/c",
   "/O2",
   "/Ob2",
+  "/Oi",
+  "/Ot",
   "/Oy",
   "/GF",
   "/GS-",

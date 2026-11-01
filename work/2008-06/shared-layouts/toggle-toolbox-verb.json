@@ -1,13 +1,15 @@
 {
  "source": "rebuild/2008-06/native-classes/ToggleToolboxVerb.cpp",
  "source_sha256": "286b173fc785c74735c545b89e95c16839003f0d9b98f7ab9da34cded88dc6d3",
- "object_sha256": "940fefeceb4ed6e960cd839f11b205fcb71361fa16e540b4e35fc6bff22f8668",
+ "object_sha256": "a9e756d7afd6483031856723fbd011fda165dbe2afef89a27c4fe2eae0848ac4",
  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
  "flags": [
   "/nologo",
   "/c",
   "/O2",
   "/Ob2",
+  "/Oi",
+  "/Ot",
   "/Oy",
   "/GF",
   "/GS-",
