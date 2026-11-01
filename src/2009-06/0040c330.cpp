@@ -1,49 +1,40 @@
-// from server: 52% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct Inner {
-    char pad0[4];
-    volatile long ref1;
-    volatile long ref2;
-    virtual void vf1();
-    virtual void vf2();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <intrin.h>
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    long use_count_;
+    long weak_count_;
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+    void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
 };
-
-struct Holder {
-    Inner* p;
-    Inner* q;
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(shared_count const& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
 };
-
-extern "C" Holder* __cdecl sub_40BFB0(Holder* out);
-
-struct S {
-    Holder* f(Holder* out);
-};
-
-Holder* S::f(Holder* out) {
-    Holder tmp;
-    sub_40BFB0(&tmp);
-    Inner* a = tmp.p;
-    if (a) {
-        a = (Inner*)((char*)a + 0x14);
-    } else {
-        a = 0;
-    }
-    out->p = a;
-    Inner* b = tmp.q;
-    out->q = b;
-    if (b) {
-        _InterlockedExchangeAdd(&b->ref1, 1);
-    }
-    Inner* esi = tmp.p;
-    if (esi) {
-        if (_InterlockedExchangeAdd(&esi->ref1, -1) == 1) {
-            esi->vf1();
-            if (_InterlockedExchangeAdd(&esi->ref2, -1) == 1) {
-                esi->vf2();
-            }
-        }
-    }
-    return out;
 }
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    template<class Y> shared_ptr(shared_ptr<Y> const& r) : px(r.px), pn(r.pn) {}
+};
+}
+struct Pad0 { virtual ~Pad0(); char pad[0x10]; };
+class Base { public: virtual ~Base(); };
+class Derived : public Pad0, public Base {};
+boost::shared_ptr<Derived> makeDerived();
+struct Creator {
+    virtual boost::shared_ptr<Base> create() const;
+};
+boost::shared_ptr<Base> Creator::create() const { return makeDerived(); }

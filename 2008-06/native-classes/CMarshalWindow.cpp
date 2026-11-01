@@ -34,8 +34,11 @@ LRESULT CMarshalWindow::OnDestroy(UINT, WPARAM, LPARAM, BOOL& handled)
 {
     ATL::CCritSecLock lock(criticalSection);
     MSG message;
-    while (::PeekMessage(&message, m_hWnd, WM_USER + 101, WM_USER + 101, PM_REMOVE))
+    for (;;) {
+        HWND window = m_hWnd;
+        if (!::PeekMessage(&message, window, WM_USER + 101, WM_USER + 101, PM_REMOVE)) break;
         delete reinterpret_cast<EventDataBase*>(message.lParam);
+    }
     handled = FALSE;
     lock.Unlock();
     return 0;

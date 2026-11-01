@@ -1,40 +1,30 @@
-// from server: 53% by atomic.potato
+// from server: 88% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
-extern "C" char __stdcall sub_5FCFC0(void*, int, int, int, int);
-
-struct G3DTexture {
-    void* vtable;
-    char pad1[4];
-    char flag;
-    char pad2[2];
-    int field8;
-    int fieldC;
-    int field10;
-    int field14;
-    int field18;
-    char pad3[0x1C];
-    int field38;
-    int field3C;
-    int field40;
-    int field44;
-    void* construct(int a, int b, int c, int d, int e);
+extern long g_count;
+extern int g_val;
+struct Counted { Counted() { InterlockedIncrement(&g_count); } };
+struct Key { int a, b, c, d; };
+struct Reg { bool add(Key k, void* slot); };
+extern Reg g;
+struct Base : Counted {
+    virtual void f();
+    char b4;
+    bool b5;
+    int m8;
+    int mc;
+    int m10;
+    Base(int x) : b5(true), m8(0), mc(g_val), m10(x) {}
 };
-
-void* G3DTexture::construct(int a, int b, int c, int d, int e)
-{
-    InterlockedIncrement((long*)0xa3a1bc);
-    this->vtable = (void*)0x8afff4;
-    this->flag = 1;
-    this->field8 = 0;
-    this->fieldC = *(int*)0x8ef840;
-    this->field10 = e;
-    this->vtable = (void*)0x8bea84;
-    char r = sub_5FCFC0((void*)0x9faab8, a, b, c, d);
-    this->field18 = r ? 0x9faab8 : 0;
-    this->field38 = 0;
-    this->field3C = 0;
-    this->field40 = 0;
-    this->field44 = 0;
-
-    return this;
-}
+struct Tex : Base {
+    int m14;
+    Reg* r;
+    int m1c;
+    char slot[0x18];
+    struct Z { void* a; void* b; void* c; void* d; Z() : a(0), b(0), c(0), d(0) {} } z;
+    Tex(Key k, int x);
+    virtual void f();
+};
+Tex::Tex(Key k, int x) : Base(x), r(g.add(k, slot) ? &g : 0) {}

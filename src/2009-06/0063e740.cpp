@@ -1,123 +1,112 @@
-// from server: 25% by colin
+// from server: 91% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
+#define NULL 0
+namespace G3D {
+class Vector3 {
+public:
+    float x, y, z;
+    Vector3() {}
+    Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
+    Vector3(const Vector3& V) : x(V.x), y(V.y), z(V.z) {}
+    Vector3& operator=(const Vector3& v) { x = v.x; y = v.y; z = v.z; return *this; }
+    Vector3 operator*(float s) const { return Vector3(x * s, y * s, z * s); }
+    Vector3 operator+(const Vector3& v) const { return Vector3(x + v.x, y + v.y, z + v.z); }
+    Vector3 operator-() const { return Vector3(-x, -y, -z); }
+};
+class Matrix3 {
+public:
+    float elt[3][3];
+    Vector3 getColumn(int iCol) const;
+};
+class CoordinateFrame {
+public:
+    Matrix3 rotation;
+    Vector3 translation;
+    static const float zLookDirection;
+    Vector3 lookVector() const { return rotation.getColumn(2) * zLookDirection; }
+};
+}
 
-namespace RBX
+namespace boost {
+template<class T> class shared_ptr {
+public:
+    T* px;
+    void* pn;
+    typedef T* shared_ptr::*unspecified_bool_type;
+    operator unspecified_bool_type() const { return px == 0 ? 0 : &shared_ptr::px; }
+    T* operator->() const { return px; }
+    void reset();
+};
+}
+
+namespace RBX {
+class Instance {
+public:
+    virtual ~Instance();
+    char pad0[0x44];
+    Instance* parent;
+    char pad1[0x8c - 0x4c];
+    Instance* getParent() const { return parent; }
+    void setParent(Instance* p);
+};
+class ExePad4 { public: virtual void exePad4(); };
+class IHasLocation { public: virtual const G3D::CoordinateFrame getLocation() = 0; };
+class ModelInstance : public Instance, public ExePad4, public virtual IHasLocation {};
+class PartInstance : public Instance {
+public:
+    void setCanCollide(bool);
+    void moveToPoint(G3D::Vector3);
+    void setRotationalVelocity(const G3D::Vector3&);
+};
+class JointInstance : public Instance {
+public:
+    PartInstance* getPart0();
+};
+class Humanoid {
+public:
+    static Humanoid* modelIsCharacter(Instance*);
+};
+class IExeListener { public: virtual void v0(); virtual void v1(); virtual void v2(); virtual void setValue(float); };
+class Tool : public Instance {
+public:
+    int exePad8c;
+    boost::shared_ptr<JointInstance> weld;
+    char pad98[0xac - 0x98];
+    IExeListener listener;
+    PartInstance* getHandle();
+    void onUnequipped();
+    void downFrom_Equipped();
+};
+
+void Tool::downFrom_Equipped()
 {
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
+    ModelInstance* character = NULL;
+    if (weld)
+    {
+        if (PartInstance* part0 = weld->getPart0())
+            character = dynamic_cast<ModelInstance*>(part0->getParent());
+        weld->setParent(NULL);
+        weld.reset();
+    }
 
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
+    if (Humanoid::modelIsCharacter(character))
+    {
+        G3D::CoordinateFrame location = character->getLocation();
+        G3D::Vector3 pos = location.translation;
+        pos.y += 4;
+        G3D::Vector3 dest = location.lookVector() * 8 + pos;
+        if (PartInstance* handle = getHandle())
+        {
+            handle->setCanCollide(true);
+            handle->moveToPoint(dest);
+            handle->setRotationalVelocity(G3D::Vector3(1, 1, 1));
+        }
+    }
 
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
-
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
-
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
-
-			PartInstance* handle = flag->getHandle();
-
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
-
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
-
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
-
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
-
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
-
-		return NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
+    listener.setValue(999.0f);
+    onUnequipped();
+}
 }

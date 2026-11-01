@@ -1,100 +1,68 @@
-// from server: 50% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/Renderbuffer.cpp
-
-// Candidate translation unit (score above; library headers required).
-/**
-@file Renderbuffer.cpp
-
-@maintainer Daniel Hilferty, djhilferty@users.sourceforge.net
-
-@cite http://oss.sgi.com/projects/ogl-sample/registry/EXT/framebuffer_object.txt
-
-@created 2006-01-07
-@edited  2006-02-14
-*/
-
-#include "GLG3D/Renderbuffer.h"
-#include "GLG3D/glcalls.h"
-#include "GLG3D/TextureFormat.h"
-
-namespace G3D {
-
-
-/////////////////////////////////////////////////////////////////////////////
-
-Renderbuffer::Renderbuffer (	
-    const std::string&			_name, 
-    const GLuint				_imageID,
-    const G3D::TextureFormat*	_format, 
-    const int					_width, 
-    const int					_height) : 
-    mName(_name),
-    mImageID(_imageID),
-    mFormat(_format),
-    mWidth(_width),
-    mHeight(_height) {
-
-    // Intentionally empty
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+namespace std {
+template<class T> class auto_ptr {
+public:
+    T* p;
+    explicit auto_ptr(T* x = 0) throw() : p(x) {}
+    auto_ptr(auto_ptr& o) throw() : p(o.release()) {}
+    ~auto_ptr() { delete p; }
+    T* release() throw() { T* t = p; p = 0; return t; }
+};
 }
-
-
-Renderbuffer::~Renderbuffer () {
-    glDeleteRenderbuffersEXT(1, &mImageID);
+namespace boost { struct once_flag { long v; }; void call_once(once_flag& f, void (*fn)()); }
+namespace RBX {
+class PartInstance;
+namespace Reflection {
+class Type;
+class EnumDescriptor;
+class PropertyDescriptor {
+public:
+    enum Functionality { STANDARD = 7 };
+};
+class EnumPropertyDescriptor {
+public:
+    EnumPropertyDescriptor(const Type& type, const EnumDescriptor& e, const char* name, const char* category, PropertyDescriptor::Functionality f);
+    virtual ~EnumPropertyDescriptor();
+    char pad[0x14];
+};
+template<class E> class EnumDesc {
+public:
+    static void init();
+    static boost::once_flag flag;
+    static EnumDesc& singleton2();
+    static EnumDesc& singleton() { boost::call_once(flag, &init); return singleton2(); }
+};
+template<class T> class TypeOf { public: static const Type& impl(); static const Type& singleton() { return impl(); } };
+template<class C, class V> class GetSet { public: int dummy; };
+template<class C, class V> class TypedEnumPropertyDescriptor : public EnumPropertyDescriptor {
+public:
+    const EnumDescriptor& enumDescriptor;
+    TypedEnumPropertyDescriptor(const EnumDescriptor& e, const char* name, const char* category, PropertyDescriptor::Functionality f)
+        : EnumPropertyDescriptor(TypeOf<V>::singleton(), e, name, category, f), enumDescriptor(e) {}
+};
+template<class C, class V> class EnumPropDescriptor : public TypedEnumPropertyDescriptor<C, V> {
+public:
+    std::auto_ptr<GetSet<C, V> > getset;
+    EnumDesc<V>& enumDesc;
+    template<class G, class S>
+    static std::auto_ptr<GetSet<C, V> > make(G g, S s);
+    template<class G, class S>
+    EnumPropDescriptor(const char* name, const char* category, G g, S s, PropertyDescriptor::Functionality f)
+        : TypedEnumPropertyDescriptor<C, V>((const EnumDescriptor&)EnumDesc<V>::singleton(), name, category, f),
+          getset(make(g, s).release()), enumDesc(EnumDesc<V>::singleton()) {}
+    virtual ~EnumPropDescriptor();
+};
 }
-
-
-RenderbufferRef Renderbuffer::fromGLRenderbuffer(
-    const std::string&			_name, 
-    const GLuint				_imageID,
-    const G3D::TextureFormat	*_format) {
-
-    GLint w, h;
-
-    // Extract the width and height
-    glGetRenderbufferParameterivEXT (GL_RENDERBUFFER_EXT, GL_RENDERBUFFER_WIDTH_EXT, &w);
-    glGetRenderbufferParameterivEXT (GL_RENDERBUFFER_EXT, GL_RENDERBUFFER_WIDTH_EXT, &h);
-    debugAssertGLOk();
-
-    // Create new renderbuffer
-    return new Renderbuffer(_name, _imageID, _format, w, h);
+class RenderBase { public: int x; };
+class RenderBase2 { public: int y; };
+class CRenderSettings : public RenderBase, public RenderBase2 {
+public:
+    enum Quality { A };
+    Quality getQuality() const;
+    void setQuality(Quality);
+};
+template RBX::Reflection::EnumPropDescriptor<CRenderSettings, CRenderSettings::Quality>::EnumPropDescriptor(const char*, const char*, CRenderSettings::Quality (RenderBase::*)() const, void (CRenderSettings::*)(CRenderSettings::Quality), RBX::Reflection::PropertyDescriptor::Functionality);
 }
-
-
-RenderbufferRef Renderbuffer::createEmpty(
-    const std::string&			_name, 
-    const G3D::TextureFormat*   _format, 
-    const int					_width, 
-    const int					_height) {
-    // New Renderbuffer ID
-    GLuint _imageID;
-
-    // Save old renderbuffer state
-    GLint origBuffer;
-    glGetIntegerv(GL_RENDERBUFFER_BINDING_EXT, &origBuffer);
-
-    // Generate buffer
-    glGenRenderbuffersEXT (1, &_imageID);
-    debugAssertGLOk();
-
-    // Bind the buffer
-    glBindRenderbufferEXT (GL_RENDERBUFFER_EXT, _imageID);
-    debugAssertGLOk();
-
-    // Allocate storage for it
-    glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, _format->OpenGLFormat, _width, _height);
-
-    // Check for successful generation (ie, no INVALID_OPERATION)
-    debugAssertGLOk();
-
-    // Restore renderbuffer state
-    glBindRenderbufferEXT (GL_RENDERBUFFER_EXT, origBuffer);
-    debugAssertGLOk();
-
-    // Create new renderbuffer
-    return new Renderbuffer(_name, _imageID, _format, _width, _height);
-}
-
-} // End Namespace G3D

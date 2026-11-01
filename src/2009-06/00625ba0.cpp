@@ -1,130 +1,76 @@
-// from server: 52% by colin
-// roc-lang: cpp
-// roc-cl: 30729
+// from server: 100% by EspClaude
+// roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/Script.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "script/Script.h"
-#include "script/ScriptContext.h"
-#include "v8tree/Service.h"
-#include "boost/thread/once.hpp"
-
-using namespace RBX;
-
-const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::LEGACY);
-const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::LEGACY);
-Reflection::BoundProp<bool, true> Script::prop_Disabled("Disabled", "Behavior", &Script::disabled, Reflection::PropertyDescriptor::STANDARD);
-
-static boost::shared_ptr<const std::string> helloWorld;
-static boost::once_flag flagInitScriptCpp = BOOST_ONCE_INIT;
-
-void initScriptCpp()
-{
-    helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
-}
-
-const char* RBX::sScript = "Script";
-
-Script::Script()
-    : DescribedCreatable("Script"),
-      disabled(false),
-      owner(NULL)
-{
-    boost::call_once(&initScriptCpp, flagInitScriptCpp);
-    embeddedSource = helloWorld;
-}
-
-const char* RBX::sLocalScript = "LocalScript";
-
-LocalScript::LocalScript()
-{
-    setName("LocalScript");
-}
-
-Script::~Script()
-{
-    RBXASSERT(owner == NULL);
-}
-
-void Script::setEmbeddedCode(const std::string& value)
-{
-    if (getEmbeddedCode() != value)
-    {
-        embeddedSource.reset(new std::string(value));
-        raisePropertyChanged(prop_EmbeddedSourceCode);
+namespace RBX {
+class Name { public: static const Name& declare(const char* s); };
+extern int typeCounter;
+namespace Reflection {
+class ClassDescriptor;
+class Type;
+struct Holder { virtual ~Holder(); };
+struct Variant {
+    void* type;
+    Holder* content;
+    Variant();
+    ~Variant() { if (content) delete content; }
+};
+struct Item {
+    const Name* name;
+    const Type* type;
+    Variant def;
+};
+struct Node { Node* next; Node* prev; };
+struct ArgList {
+    char pad[0x14];
+    Node* head;
+    char pad2[4];
+    Node* _Buynode(Node* next, Node* prev, const Item& v);
+    void _Incsize(unsigned int n);
+    static Node*& _Prevnode(Node* p) { return p->prev; }
+    static Node*& _Nextnode(Node* p) { return p->next; }
+    void _Insert(Node* where, const Item& v) {
+        Node* n = _Buynode(where, _Prevnode(where), v);
+        _Incsize(1);
+        _Prevnode(where) = n;
+        _Nextnode(_Prevnode(n)) = n;
     }
-}
-
-void Script::setScriptId(const ContentId& value)
+    Node* end() { return head; }
+    void push_back(const Item& v) { _Insert(end(), v); }
+};
+const Type& typeSingleton();
+inline const Type& singletonT() { ++typeCounter; return typeSingleton(); }
+class SignalDescriptor {
+public:
+    SignalDescriptor(const ClassDescriptor& c, const char* name);
+    virtual ~SignalDescriptor();
+    char pad[0x10];
+    ArgList arguments;
+};
+template<class C, class Sig>
+class __declspec(novtable) TSignalDesc : public SignalDescriptor {
+protected:
+    Sig C::* sig;
+    TSignalDesc(Sig C::* s, const char* name) : SignalDescriptor(C::classDescriptor(), name), sig(s) {}
+};
+template<class C, class Sig>
+class SignalDesc : public TSignalDesc<C, Sig> {
+public:
+    SignalDesc(Sig C::* s, const char* name, const char* arg1name);
+    virtual ~SignalDesc() {}
+};
+template<class C, class Sig>
+SignalDesc<C, Sig>::SignalDesc(Sig C::* s, const char* name, const char* arg1name)
+    : TSignalDesc<C, Sig>(s, name)
 {
-    if (getScriptId() != value)
-    {
-        scriptId = value;
-        requestCode();
-        raisePropertyChanged(prop_SourceCodeId);
-    }
+    Item arg1 = {&Name::declare(arg1name), &singletonT()};
+    this->arguments.push_back(arg1);
 }
-
-void Script::onAncestorChanged(const AncestorChanged& event)
-{
-    Instance::onAncestorChanged(event);
-
-    IScriptOwner* newOwner = NULL;
-    Instance* parent = this->getParent();
-
-    while (parent)
-    {
-        IScriptOwner* parentOwner = dynamic_cast<IScriptOwner*>(parent);
-
-        if (parentOwner)
-        {
-            newOwner = parentOwner->scriptShouldRun(this);
-
-            if (newOwner)
-                break;
-        }
-
-        parent = parent->getParent();
-    }
-
-    if (newOwner != owner)
-    {
-        if (owner)
-            owner->releaseScript(this);
-
-        owner = newOwner;
-
-        ScriptContext* sc = ServiceProvider::find<ScriptContext>(this);
-
-        if (sc)
-        {
-            sc->removeScript(this);
-
-            if (owner)
-                owner->runScript(this, sc);
-        }
-    }
 }
-
-void Script::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-{
-	if (ScriptContext* sc = ServiceProvider::find<ScriptContext>(oldProvider))
-	{
-		sc->removeScript(this);
-	}
-
-	Instance::onServiceProvider(oldProvider, newProvider);
-}
-
-boost::shared_ptr<const std::string> Script::requestCode()
-{
-    if (scriptId.isNull())
-    {
-        return embeddedSource;
-    }
-    else 
-    {
-        return ContentProvider::singleton().requestContentString(scriptId);
-    }
+struct Signal { int x; };
+class Target {
+public:
+    static const Reflection::ClassDescriptor& classDescriptor();
+    Signal sigm;
+};
+template Reflection::SignalDesc<Target, Signal>::SignalDesc(Signal Target::*, const char*, const char*);
 }

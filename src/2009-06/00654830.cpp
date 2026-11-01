@@ -1,23 +1,37 @@
-// from server: 50% by atomic.potato
-struct VLeftMotorTool {
-    char pad[0xc];
-    void* p;
-    void* f();
+// from server: 100% by EspClaude
+
+
+void* __cdecl operator new(unsigned int);
+void __cdecl operator delete(void*);
+
+extern char table1[];
+extern char table2[];
+
+struct Base {
+    void* primary;
+    void* secondary;
+    char pad[0x40];
+    Base(void*);
 };
 
-struct Alloc {
-    void* __thiscall ctor(void*);
-};
-
-extern "C" void* __cdecl sub_718A38(unsigned int);
-
-void* VLeftMotorTool::f() {
-    void* mem = sub_718A38(0x48);
-    if (mem) {
-        void* q = *(void**)((char*)p + 0x20c);
-        ((Alloc*)mem)->ctor(q);
-        *(void**)mem = (void*)0x8e03cc;
-        *(void**)((char*)mem + 4) = (void*)0x8e03b0;
+struct Tool : Base {
+    Tool(void* p) : Base(p) {
+        primary = table1;
+        secondary = table2;
     }
-    return mem;
+};
+
+struct Context {
+    char pad[0x20c];
+    void* value;
+};
+
+struct Verb {
+    char pad[0x0c];
+    Context* context;
+    Tool* f();
+};
+
+Tool* Verb::f() {
+    return new Tool(context->value);
 }

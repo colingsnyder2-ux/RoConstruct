@@ -1,108 +1,36 @@
-// from server: 53% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
+namespace RBX {
+class Joint { public: virtual ~Joint(); char jpad[0x1c]; };
+class Second { public: virtual void s(); };
+class RotateJoint : public Joint, public Second { public: RotateJoint(); char pad2[0xd4 - 0x24]; };
+class __declspec(novtable) MidJoint : public RotateJoint {
+public:
+    int value;
+    float angle;
+    MidJoint() { angle = 0.0f; value = 0; }
+};
+class RotatePJoint : public MidJoint {
+public:
+    virtual ~RotatePJoint();
+};
+struct B0 { virtual ~B0(); char pad[0x10]; };
+struct B1 { virtual ~B1(); };
+struct B2 { virtual ~B2(); int x; };
+struct B3 { virtual ~B3(); char pad[0x68]; };
+struct B4 { virtual ~B4(); };
+class JointInstance : public B0, public B1, public B2, public B3, public B4 {
+public:
+    JointInstance(Joint* joint);
+};
+class RotateP : public JointInstance {
+public:
+    RotateP();
+    virtual ~RotateP();
+};
+RotateP::RotateP() : JointInstance(new RotatePJoint())
 {
-	static boost::mutex mutex2;
-	return mutex2;
 }
-
-void initMoo()
-{
-	moo2();
-}
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

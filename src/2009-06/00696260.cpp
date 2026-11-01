@@ -1,108 +1,51 @@
-// from server: 52% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include <string>
+namespace boost {
+template<class T> class scoped_ptr {
+    T* ptr;
+public:
+    explicit scoped_ptr(T* p = 0) : ptr(p) {}
+    ~scoped_ptr();
+};
 }
-
-void initMoo()
+namespace RBX {
+class GuidItemBase { public: virtual void g0(); char pad[0x10]; };
+class Object { public: virtual void o0(); };
+class ClassDescriptor;
+class DescribedBase { public: virtual ~DescribedBase() {} const ClassDescriptor* descriptor; };
+class Debugable { public: virtual void b0(); char pad[8]; };
+class Instance : public GuidItemBase, public Object, public DescribedBase, public Debugable {
+public:
+	virtual ~Instance();
+	void setName(const std::string& name);
+	char ipad[0x8c - 0x2c];
+};
+class DescribedCD : public Instance {
+public:
+	DescribedCD();
+	~DescribedCD();
+};
+class __declspec(novtable) SecondCD {
+public:
+	SecondCD() : a(-1), b(-1), c(0) {}
+	virtual ~SecondCD();
+	int a, b, c;
+};
+class ClickHelper;
+class ClickDetector : public DescribedCD, public SecondCD {
+public:
+	ClickDetector();
+	int x9c;
+	float maxActivationDistance;
+	int xa4;
+	boost::scoped_ptr<ClickHelper> helper;
+};
+ClickDetector::ClickDetector()
+	: x9c(0), maxActivationDistance(32.0f)
 {
-	moo2();
+	setName("ClickDetector");
 }
-
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
 }

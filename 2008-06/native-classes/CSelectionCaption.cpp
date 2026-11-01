@@ -1,4 +1,5 @@
 #include "CSelectionCaption.h"
+#include "v8datamodel/Selection.h"
 #include "v8datamodel/SelectionChanged.h"
 
 IMPLEMENT_DYNAMIC(CSelectionCaption, CXTCaption)

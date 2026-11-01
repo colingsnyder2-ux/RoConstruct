@@ -2,8 +2,8 @@
 #include <XTToolkitPro.h>
 #include "ActiveDocView.h"
 #include "util/MarshaledListener.h"
+#include "v8datamodel/Selection.h"
 
-namespace RBX { class Selection; class SelectionChanged; }
 
 // Inactive layout recovery. Remaining message handlers/virtual ABI and
 // Marshal framework and full virtual bindings remain under verification.

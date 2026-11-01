@@ -1,5 +1,8 @@
-// from server: 50% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull3.cpp
+// roc-flags: /Od /Ob1 /GS- /EHsc /MT
+struct E { ~E(); };
+struct M { ~M(); int x[4]; };
+struct S : E { M a; M b; ~S(); };
+S::~S() {}

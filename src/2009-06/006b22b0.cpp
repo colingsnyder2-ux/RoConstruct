@@ -1,152 +1,96 @@
-// from server: 46% by colin
+// from server: 98% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs tool/MegaDragger.cpp
 
-// Candidate translation unit (score above; library headers required).
-#include "tool/MegaDragger.h"
-#include "tool/DragUtilities.h"
-#include "tool/Dragger.h"
-#include "v8world/ContactManager.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/RootInstance.h"
-#include "v8datamodel/MouseCommand.h"
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+extern "C" long __cdecl _InterlockedDecrement(volatile long*);
+#pragma intrinsic(_InterlockedDecrement)
 
-namespace RBX
+struct Control {
+    virtual void unused() = 0;
+    virtual void dispose() = 0;
+    virtual void destroy() = 0;
+    volatile long strong;
+    volatile long weak;
+};
+
+struct Matrix {
+    float data[9];
+    Matrix(const Matrix&);
+};
+
+struct Vector {
+    float x, y, z;
+    Vector(float, float, float);
+};
+
+inline Vector::Vector(float a, float b, float c)
+    : x(a), y(b), z(c)
 {
-	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<PVInstance*>& pvInstances, RootInstance* rootInstance)
-		: mousePart(shared_from(mousePartPtr)),
-		  dragParts(),
-		  joined(true),
-		  rootInstance(rootInstance),
-          contactManager(rootInstance->getWorld()->getContactManager())
-	{
-		DragUtilities::pvsToParts(pvInstances, dragParts);
-	}
+}
 
-	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<boost::weak_ptr<PartInstance>>& partArray, RootInstance* rootInstance)
-		: mousePart(shared_from(mousePartPtr)),
-		  dragParts(partArray),
-		  rootInstance(rootInstance),
-		  joined(true),
-		  contactManager(rootInstance->getWorld()->getContactManager())
-	{
-	}
+struct Frame {
+    Matrix rotation;
+    float x, y, z;
+    ~Frame();
+};
 
+inline Frame::~Frame()
+{
+}
 
-	MegaDragger::~MegaDragger()
-	{
-		if (!joined)
-		{
-			RBXASSERT(0);
-			DragUtilities::joinAndStopDragging(dragParts);
-		}
-	}
+struct Part {
+    bool blocked();
+    Frame frame();
+};
 
-	void MegaDragger::startDragging()
-	{
-		DragUtilities::unJoinAndSetDragging(dragParts);
+struct Shared {
+    Part* object;
+    Control* control;
+    Shared(const Shared&);
+    typedef Part* Shared::*unspecified_bool_type;
+    operator unspecified_bool_type() const { return object == 0 ? 0 : &Shared::object; }
+    Part* operator->() const { return object; }
+    ~Shared();
+};
 
-		if (PartInstance::nonNullInWorkspace(mousePart.lock()))
-		{
-			rootInstance->setCameraIgnoreParts(mousePart.lock().get());
-		}
-		joined = false;
-	}
+inline Shared::~Shared()
+{
+    if (control) {
+        Control* p = control;
+        if (_InterlockedDecrement(&p->strong) == 0) {
+            p->dispose();
+            if (_InterlockedDecrement(&p->weak) == 0)
+                p->destroy();
+        }
+    }
+}
 
-	void MegaDragger::continueDragging()
-	{
-		RBXASSERT(!joined);
-		DragUtilities::unJoinAndSetDragging(dragParts);
-	}
+bool __cdecl enabled(Shared);
+Frame __cdecl transform(const Frame&, const Vector&);
+const Vector& __cdecl direction();
+void __cdecl update(void*, Frame, Frame);
+bool __cdecl finish(void*);
 
-	void MegaDragger::finishDragging()
-	{
-		RBXASSERT(!joined);
-		rootInstance->clearCameraIgnoreParts();
-		DragUtilities::joinAndStopDragging(dragParts);
-		if (DragUtilities::anyPartAlive(dragParts))
-		{
-			rootInstance->setInsertPoint(DragUtilities::computeExtents(dragParts).topCenter());
-		}
-		joined = true;
-	}
+struct Contact {
+    unsigned char prefix[8];
+    unsigned char state[1];
+    Shared part();
+    bool run();
+};
 
-	G3D::Vector3 MegaDragger::hitObjectOrPlane(const UIEvent& uiEvent)
-	{
-		G3D::Vector3 result;
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-		DragUtilities::hitObjectOrPlane(contactManager, MouseCommand::getUnitMouseRay(uiEvent, rootInstance), &primitives, result);
-		return result;
-	}
-
-	void MegaDragger::alignAndCleanParts()
-	{
-		RBXASSERT(!joined);
-		if (PartInstance::nonNullInWorkspace(mousePart.lock()))
-		{
-			PartInstance* part = mousePart.lock().get();
-
-			if (!part->aligned())
-			{
-				G3D::CoordinateFrame snap = part->worldSnapLocation();
-				G3D::CoordinateFrame snapToGrid = Math::snapToGrid(snap, Dragger::dragSnap());
-				DragUtilities::move(dragParts, snap, snapToGrid);
-			}
-		}
-		DragUtilities::clean(dragParts);
-	}
-
-	G3D::Vector3 MegaDragger::safeMoveYDrop(const G3D::Vector3& tryDrag)
-	{
-		RBXASSERT(!joined);
-		RBXASSERT(tryDrag == Math::toGrid(tryDrag, 0.1f));
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::Vector3 result = Dragger::safeMoveYDrop(primitives, tryDrag, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-		return result;
-	}
-
-	G3D::Vector3 MegaDragger::safeMoveNoDrop(const G3D::Vector3& tryDrag)
-	{
-		RBXASSERT(!joined);
-		RBXASSERT(tryDrag == Math::toGrid(tryDrag, 0.1f));
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		G3D::Vector3 result = Dragger::safeMoveNoDrop(primitives, tryDrag, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-		return result;
-	}
-
-	void MegaDragger::safeRotate(const G3D::Matrix3& rotMatrix)
-	{
-		RBXASSERT(!joined);
-
-		G3D::Array<Primitive*> primitives;
-		DragUtilities::partsToPrimitives(dragParts, primitives);
-
-		RBXASSERT(primitives.size() > 0);
-
-		Dragger::safeRotate(primitives, rotMatrix, contactManager);
-
-		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
-	}
-
-	bool MegaDragger::mousePartAlive()
-	{
-		return PartInstance::nonNullInWorkspace(mousePart.lock());
-	}
+bool Contact::run()
+{
+    if (enabled(part())) {
+        Shared sp = part();
+        Part* p = sp.object;
+        if (p != 0 && p->blocked() == false) {
+            Frame original = p->frame();
+            Frame modified = transform(original, direction());
+            update(state, original, modified);
+        }
+    }
+    return finish(state);
 }

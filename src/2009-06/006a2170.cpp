@@ -1,98 +1,58 @@
-// from server: 50% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net ClientPhysics.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "ClientPhysics.h"
-#include "NetworkSettings.h"
-#include "v8datamodel/PartInstance.h"
-
-//99.98% match
-bool areClose(const G3D::CoordinateFrame& c1, const G3D::CoordinateFrame& c2)
-{
-	if (fabs(c1.translation.x - c2.translation.x) > 0.2f)
-		return false;
-
-	if (fabs(c1.translation.y - c2.translation.y) > 0.2f)
-		return false;
-
-	if (fabs(c1.translation.z - c2.translation.z) > 0.2f)
-		return false;
-
-	for (int i = 0; i < 3; i++)
-	{
-		G3D::Vector3 v1, v2;
-
-		v1.x = c1.rotation[0][i];
-		v1.y = c1.rotation[1][i];
-		v1.z = c1.rotation[2][i];
-		v2.x = c2.rotation[0][i];
-		v2.y = c2.rotation[1][i];
-		v2.z = c2.rotation[2][i];
-
-		if ((v1 - v2).squaredMagnitude() > 0.010000001f)
-			return false;
-	}
-
-	return true;
+#include <string>
+#include <intrin.h>
+namespace boost {
+namespace detail {
+struct sp_counted_base {
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_;
+    long weak_count_;
+    void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+};
+struct shared_count {
+    sp_counted_base* pi_;
+    shared_count() : pi_(0) {}
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_) _InterlockedIncrement(&pi_->use_count_); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
 }
-
-namespace RBX
-{
-	namespace Network
-	{
-		ClientPhysics::ClientPhysics(PartInstance* part)
-			: part(part)
-		{
-		}
-
-		ClientPhysics::~ClientPhysics()
-		{
-			Notifier<RunService, Heartbeat>::disconnect(runService.lock(), this);
-		}
-
-		void ClientPhysics::sleep()
-		{
-			Notifier<RunService, Heartbeat>::disconnect(runService.lock(), this);
-			runService.reset();
-
-			lastPos = part->getCoordinateFrame();
-		}
-
-		void ClientPhysics::onEvent(const RunService* source, Heartbeat event)
-		{
-			G3D::RealTime currentTime = G3D::System::getLocalTime();
-
-			if (NetworkSettings::singleton().clientPhysicsLifetime + lastUpdateTime < currentTime)
-				sleep();
-			else
-				RBXASSERT(0);
-		}
-
-		void ClientPhysics::update(const boost::shared_ptr<RunService>& runService)
-		{
-			lastUpdateTime = G3D::System::getLocalTime();
-
-			const G3D::CoordinateFrame& cframe = part->getCoordinateFrame();
-
-			if (areClose(lastPos, cframe))
-			{
-				sleep();
-				return;
-			}
-
-			lastPos = cframe;
-
-			if (this->runService.lock() != runService)
-			{
-				Notifier<RunService, Heartbeat>::disconnect(this->runService.lock(), this);
-
-				this->runService = runService;
-
-				Notifier<RunService, Heartbeat>::connect(this->runService.lock(), this);
-			}
-		}
-	}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+};
+}
+namespace RBX {
+class Instance {
+public:
+    virtual ~Instance();
+    char pad[0x50];
+    std::string name;
+    const std::string& getName() const { return name; }
+    void setParent(Instance* parent);
+};
+class Weld : public Instance {};
+template<class Base> class SeatImpl : public Base {
+public:
+    Weld* isChildSeatWeld(Instance* child) {
+        if (child->getName() == "SeatWeld") {
+            if (Weld* childWeld = dynamic_cast<Weld*>(child)) return childWeld;
+        }
+        return 0;
+    }
+    void destroyOtherWeld(boost::shared_ptr<Instance> child, Weld* childWeld) {
+        if ((child.get() != childWeld) && isChildSeatWeld(child.get()))
+            child->setParent(0);
+    }
+};
+class PartInstance : public Instance {};
+template class SeatImpl<PartInstance>;
 }

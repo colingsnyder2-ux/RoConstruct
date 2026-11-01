@@ -55,8 +55,9 @@
     },
     {
       "name": "CMarshalWindow / MarshaledListener / FilteredListener / CSelectionCaption",
-      "status": "inactive typed frame-pane recovery; five layouts and 12/13 marshalling lifecycle bodies verified; 14 pane/activation/caption bodies separately match. Caption message map/parent import and selected call/global bindings verified. Full marshal dispatch, global initialization, remaining virtual bindings and runtime open; no runtime credit",
-      "source": "native-headers/CSelectionCaption.h and util/MarshalWindow.h"
+      "status": "27/27 selected window/registry/selection dispatch/lifecycle bodies match; six layouts verified. EventDataBase corrected to4, derived EventData owns strong source pointer. Isolated native window PE has11 selected matches; three two-thread dispatch/queue-cleanup runs pass. Original global initialization, Selection payload delivery and game/frame integration remain open; game credit unchanged",
+      "source": "native-headers/CSelectionCaption.h and util/MarshalWindow.h",
+      "evidence": "work/2008-06/shared-layouts/marshal-dispatch-checkpoint.json"
     },
     {
       "name": "CPropGrid / CSelectionPropGrid / CDataModelPropGrid",

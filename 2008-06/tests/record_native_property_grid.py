@@ -40,6 +40,17 @@ for name, targets in (
     if name == 'CPropGrid':
         data = obj.read_bytes()
         sections, symbols, definitions, _ = match._coff_data_index(data)
+        vtable = next(n for n in definitions if n.startswith('??_7CPropGrid@@6BCXTPPropertyGrid@@@'))
+        vstart, vsection = definitions[vtable]
+        vtable_data = sections[vsection]
+        assert vtable_data[3] - vstart == 91 * 4
+        virtuals = {}
+        for i in range(vtable_data[7]):
+            offset, symbol, kind = struct.unpack_from('<IIH', data, vtable_data[5] + i * 10)
+            if vstart <= offset < vstart + 91 * 4:
+                virtuals[(offset - vstart) // 4] = symbols[symbol][0]
+        assert virtuals[12].startswith('?GetMessageMap@CPropGrid@@')
+        assert virtuals[90].startswith('?addProperty@CPropGrid@@')
         ctor = next(n for n in definitions if n.startswith('??0CPropGrid'))
         start, index = definitions[ctor]
         section = sections[index]
@@ -63,13 +74,15 @@ for name, targets in (
         methods.append(dict(address=address, symbol=symbol, size=len(data), object=obj.name,
                             relocation_masked_match=True))
 
-paths = [Path(__file__), fixture, HEADERS / 'CMainFrame.h']
+paths = [Path(__file__), fixture, HEADERS / 'CMainFrame.h', HEADERS / 'SelectionGroup.h',
+         HEADERS / 'v8tree/PropertyChanged.h']
 for name in ('CPropGrid', 'CSelectionPropGrid', 'CDataModelPropGrid'):
     paths += [HEADERS / (name + '.h'), CLASSES / (name + '.cpp')]
 receipt = dict(revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
                sources={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
                compiler_build=21022, flags=flags, methods=methods, verified_tree_calls=tree_calls,
+               primary_virtual_slots=91, selected_virtual_slots={12: "GetMessageMap", 90: "addProperty"},
                layouts=dict(CPropGrid=0x238, CSelectionPropGrid=0x244, CDataModelPropGrid=0x248),
-               scope='Inactive separate-TU lifecycle/layout evidence. Pointer-map key/value identities, full message/virtual ABI and selection/property behavior remain open; no runtime credit.')
+               scope='Inactive separate-TU lifecycle/layout evidence. Descriptor/item and descriptor/Instance-vector payloads corrected by separate selection-grid proofs; reverse-map identity and full message/virtual ABI remain open; no runtime credit.')
 (ROOT / 'work/2008-06/shared-layouts/property-grid-working-probe.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf8')
 print('Property grids: eight separate-TU body matches; layouts/offsets verified')

@@ -1,5 +1,5 @@
-// from server: 52% by colin
-// roc-lang: cpp
+// from server: 100% by EspClaude
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull2.cpp
+struct E8 { double d; };
+void advance8(E8*& p, int tag, int n) { p += n; }

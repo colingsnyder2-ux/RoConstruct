@@ -1,18 +1,16 @@
-// from server: 74% by atomic.potato
-extern "C" void __stdcall UpdateRenderSetting(void *, int);
-
+// from server: 86% by Intel
 struct CRenderSettingsItem
 {
-    char padding[0xb4];
-    int value;
-    void SetValue(int);
+    void SetValue(int value);
 };
+
+extern "C" void __stdcall NotifyChange(int);
 
 void CRenderSettingsItem::SetValue(int value)
 {
-    if (value != this->value)
+    if (value != *(int*)((char*)this + 0xB4))
     {
-        this->value = value;
-        UpdateRenderSetting((char *)this + 0x144, 0x00e19d70);
+        *(int*)((char*)this + 0xB4) = value;
+        NotifyChange(0xE19D70);
     }
 }

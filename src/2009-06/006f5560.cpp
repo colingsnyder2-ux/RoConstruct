@@ -1,208 +1,91 @@
-// from server: 43% by colin
+// from server: 97% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8world/JointStage.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8world/JointStage.h"
-
-#include "decomp.h"
-#include "v8world/ClumpStage2.h"
-#include "v8world/Joint.h"
-#include "v8world/Primitive.h"
-
-#include <cstddef>
 #include <vector>
+#include <set>
+#include <map>
 
 namespace RBX {
-ClumpStage* JointStage::getClumpStage()
-{
-	return static_cast<ClumpStage*>(getDownstream());
+class Primitive;
+class IStage {
+public:
+    virtual ~IStage();
+    virtual int getStageType() const = 0;
+    virtual void v2();
+    virtual void v3();
+    virtual void onEdgeRemoving(class Edge* e);
+};
+class Edge {
+public:
+    virtual ~Edge();
+    IStage* currentStage;
+    char pad8[8];
+    Primitive* prim[2];
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    bool downstreamOfStage(IStage* s) const
+    {
+        return currentStage && s && currentStage->getStageType() > s->getStageType();
+    }
+    Primitive* getPrimitive(int i) const { return prim[i]; }
+};
+class Joint : public Edge {
+public:
+    enum JointType { NO_JOINT = 0, FREE_JOINT = 8 };
+    virtual JointType getJointType() const;
+};
+class Primitive {
+public:
+    Joint* getFirstJoint();
+    Joint* getNextJoint(Joint* prev);
+    void removeFromPipeline(IStage* stage);
+};
 }
-
-void JointStage::moveEdgeToDownstream(Edge* e)
-{
-	getDownstreamWS()->onEdgeAdded(e);
+namespace std {
+template<> void _Distance2(std::set<RBX::Primitive*>::iterator, std::set<RBX::Primitive*>::iterator, size_t&, bidirectional_iterator_tag);
 }
+namespace RBX {
+class ClumpStage : public IStage {
+public:
+    void onPrimitiveRemoving(Primitive* p);
+};
+class JointStage : public IStage {
+public:
+    IStage* upstream;
+    IStage* downstream;
+    char pad0c[0x18 - 0xc];
+    std::multimap<Primitive*, Joint*> jointMap;
+    std::set<Joint*> joints;
+    std::set<Primitive*> primitives;
+    IStage* getDownstreamWS() { return downstream; }
+    ClumpStage* getClumpStage() { return static_cast<ClumpStage*>(downstream); }
+    void onPrimitiveRemoving(Primitive* p);
+    void onEdgeAdded(Edge* e)
+    {
+        Joint* j = static_cast<Joint*>(e);
+        joints.insert(j);
+        jointMap.insert(std::multimap<Primitive*, Joint*>::value_type(j->getPrimitive(0), j));
+        jointMap.insert(std::multimap<Primitive*, Joint*>::value_type(j->getPrimitive(1), j));
+    }
+};
 
-void JointStage::removeEdgeFromDownstream(Edge* e)
-{
-	getDownstreamWS()->onEdgeRemoving(e);
-}
-
-void JointStage::removeFromList(Joint* j)
-{
-	incompleteJoints.erase(j);
-}
-
-void JointStage::insertToList(Joint* j)
-{
-	incompleteJoints.insert(j);
-}
-
-void JointStage::insertToMap(Joint* j, Primitive* p)
-{
-	if (p != NULL) {
-		jointMap.insert(std::make_pair(p, j));
-	}
-}
-
-bool JointStage::edgeHasPrimitivesDownstream(Edge* e)
-{
-	Primitive* prim0 = e->getPrimitive(0);
-	Primitive* prim1 = e->getPrimitive(1);
-
-	return prim0 != NULL && prim1 != NULL && prim0->inPipeline() && prim1->inPipeline() &&
-		   prim0->downstreamOfStage(this) && prim1->downstreamOfStage(this);
-}
-
-// FUNCTION: WEBSERVICE 0x10118350
-void JointStage::removeFromMap(Joint* j, Primitive* p)
-{
-	do {
-		if (p == NULL) {
-			break;
-		}
-
-		JointMap::iterator pos;
-
-		for (pos = jointMap.lower_bound(p); pos != jointMap.upper_bound(p); ++pos) {
-			if (pos->second == j) {
-				jointMap.erase(pos);
-				return;
-			}
-		}
-	} while (0);
-}
-
-// FUNCTION: WEBSERVICE 0x10118480
-void JointStage::onJointPrimitiveNulling(Joint* j, Primitive* nulling)
-{
-	if (j->downstreamOfStage(this)) {
-		removeEdgeFromDownstream(j);
-
-		insertToList(j);
-
-		insertToMap(j, j->otherPrimitive(nulling));
-	}
-	else {
-		removeFromMap(j, nulling);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10118510
-void JointStage::onJointPrimitiveSet(Joint* j, Primitive* p)
-{
-	if (edgeHasPrimitivesDownstream(j)) {
-		removeFromList(j);
-
-		removeFromMap(j, j->otherPrimitive(p));
-
-		moveEdgeToDownstream(j);
-	}
-	else {
-		insertToMap(j, p);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x101185c0
-void JointStage::onEdgeAdded(Edge* e)
-{
-	e->putInPipeline(this);
-
-	if (edgeHasPrimitivesDownstream(e)) {
-		moveEdgeToDownstream(e);
-	}
-	else {
-		Joint* j = static_cast<Joint*>(e);
-
-		insertToList(j);
-		insertToMap(j, j->getPrimitive(0));
-		insertToMap(j, j->getPrimitive(1));
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10118680
-void JointStage::onEdgeRemoving(Edge* e)
-{
-	if (e->downstreamOfStage(this)) {
-		removeEdgeFromDownstream(e);
-	}
-	else {
-		Joint* j = static_cast<Joint*>(e);
-
-		removeFromList(j);
-		removeFromMap(j, j->getPrimitive(0));
-		removeFromMap(j, j->getPrimitive(1));
-	}
-
-	e->removeFromPipeline(this);
-}
-
-// FUNCTION: WEBSERVICE 0x10118700
-JointStage::JointStage(IStage* upstream, World* world) : IWorldStage(upstream, new ClumpStage(this, world), world)
-{
-}
-
-// STUB: WEBSERVICE 0x101188f0
-void JointStage::onPrimitiveAdded(Primitive* p)
-{
-	p->putInPipeline(this);
-
-	getClumpStage()->onPrimitiveAdded(p);
-
-	std::vector<Joint*> jointsToPush;
-
-	JointMap::iterator pos;
-
-	for (pos = jointMap.lower_bound(p); pos != jointMap.upper_bound(p); ++pos) {
-		if (edgeHasPrimitivesDownstream(pos->second)) {
-			jointsToPush.push_back(pos->second);
-		}
-	}
-
-	for (unsigned int i = 0; i < jointsToPush.size(); ++i) {
-		Joint* j = jointsToPush[i];
-
-		removeFromList(j);
-		removeFromMap(j, p);
-		removeFromMap(j, j->otherPrimitive(p));
-
-		moveEdgeToDownstream(j);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10118b40
 void JointStage::onPrimitiveRemoving(Primitive* p)
 {
-	std::vector<Joint*> jointsToPop;
-
-	Joint* j = p->getFirstJoint();
-
-	while (j != NULL) {
-		if (j->getJointType() != Joint::ANCHOR_JOINT && j->getJointType() != Joint::FREE_JOINT) {
-
-			jointsToPop.push_back(j);
-		}
-
-		j = p->getNextJoint(j);
-	}
-
-	for (unsigned int i = 0; i < jointsToPop.size(); ++i) {
-
-		Joint* joint = jointsToPop[i];
-
-		removeEdgeFromDownstream(joint);
-
-		insertToList(joint);
-		insertToMap(joint, p);
-		insertToMap(joint, joint->otherPrimitive(p));
-	}
-
-	getClumpStage()->onPrimitiveRemoving(p);
-
-	p->removeFromPipeline(this);
+    std::vector<Joint*> removing;
+    for (Joint* j = p->getFirstJoint(); j; j = p->getNextJoint(j)) {
+        if (j->getJointType() != Joint::NO_JOINT && j->getJointType() != Joint::FREE_JOINT && j->downstreamOfStage(this))
+            removing.push_back(j);
+    }
+    for (unsigned int i = 0; i < removing.size(); ++i) {
+        Joint* j = removing[i];
+        getDownstreamWS()->onEdgeRemoving(j);
+        JointStage::onEdgeAdded(j);
+    }
+    getClumpStage()->onPrimitiveRemoving(p);
+    p->removeFromPipeline(this);
+    primitives.erase(p);
 }
-
-} // namespace RBX
+}

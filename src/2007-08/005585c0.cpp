@@ -1,601 +1,522 @@
-// from server: 55% by colin
+// from server: 100% by Yeetserama
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8xml/XmlSerializer.cpp
+// roc-lib: rbxgs v8datamodel/Workspace.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8xml/XmlSerializer.h"
-#include "util/Debug.h"
-#include "util/base64.hpp"
-#include "reflection/type.h"
-#include <G3D/format.h>
-#include <sstream>
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/MouseCommand.h"
+#include "v8datamodel/Flag.h"
+#include "v8datamodel/Camera.h"
+#include "v8datamodel/Hopper.h"
+#include "v8datamodel/Selection.h"
+#include "script/ScriptContext.h"
+#include "humanoid/Humanoid.h"
+#include "v8world/World.h"
+#include "tool/NullTool.h"
+#include "tool/ToolsArrow.h"
+#include "Network/Players.h"
 
-class Whitespaces
+namespace RBX
 {
-public:
-	char data[256];
-  
-public:
-	Whitespaces()
+	static Reflection::RefPropDescriptor<Workspace, Camera> currentCameraProxyProp("CurrentCamera", "Data", &Workspace::getCamera, &Workspace::setCamera, Reflection::PropertyDescriptor::STANDARD);
+
+	static Reflection::BoundFuncDesc<Workspace, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(ContentId), 1> workspace_insertContent(&Workspace::insertContent, "InsertContent", "url", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<Workspace, void(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>), 1> workspace_makeJoints(&Workspace::makeJoints, "MakeJoints", "objects", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<Workspace, void(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>), 1> workspace_breakJoints(&Workspace::breakJoints, "BreakJoints", "objects", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<Workspace, void(bool), 1> workspace_SetThrottleEnabled(&Workspace::setThrottleEnabled, "SetPhysicsThrottleEnabled", "value", Reflection::FunctionDescriptor::NeedTrustedCaller);
+	static Reflection::BoundFuncDesc<Workspace, void(void), 0> workspace_zoomToExtents(&Workspace::zoomToExtents, "ZoomToExtents", Reflection::FunctionDescriptor::NeedTrustedCaller);
+
+	Workspace::Workspace(IDataState* dataState)
+		: VerbContainer(NULL),
+		  dataState(dataState),
+		  profileWorkspaceStep(new Profiling::CodeProfiler("DataModel Step")),
+		  profileRunServiceStepped(new Profiling::CodeProfiler("RunService Stepped")),
+		  profileRunServiceHeartbeat(new Profiling::CodeProfiler("RunService Heartbeat")),
+		  profileRun(new Profiling::ThreadProfiler("Run Thread")),
+		  arrowCameraControls(false),
+		  inMouselookMode(false),
+		  isSimulating(false),
+		  scriptContext(NULL),
+		  imageServerViewHack(0)
 	{
-		data[9] = true;
-		data[10] = true;
-		data[12] = true;
-		data[13] = true;
-		data[32] = true;
+		RBXASSERT(dataState);
+		setName("Workspace");
+
+		world->getProfileWorldStep().parent = profileWorkspaceStep.get();
+		profileRunServiceStepped->parent = profileWorkspaceStep.get();
+		profileRunServiceHeartbeat->parent = profileWorkspaceStep.get();
 	}
-};
 
-static Whitespaces whitespaces;
+	Workspace::~Workspace() {}
 
-XmlParser::XmlParser(std::streambuf* buffer)
-	: buffer(buffer)
-{
-	
-}
-
-void TextXmlParser::skipWhitespace()
-{
-	while (whitespaces.data[(char)buffer->sgetc()])
-		buffer->sbumpc();
-}
-
-std::string TextXmlParser::readTag()
-{
-	skipWhitespace();
-
-	if ((char)buffer->sbumpc() != '<')
-		throw std::runtime_error("tag expected");
-
-	std::string tag;
-	tag += '<';
-
-	char lastChar;
-	do
+	bool Workspace::askAddChild(const Instance* instance) const
 	{
-		lastChar = buffer->sbumpc();
-		tag += lastChar;
+		return dynamic_cast<const IRenderable*>(instance) != NULL;
 	}
-	while (lastChar != '>');
 
-	return tag;
-}
-
-std::string TextXmlParser::readFirstTag()
-{
-	skipWhitespace();
-
-	std::string s;
-	char c = buffer->sbumpc();
-	if (c != '<')
+	const G3D::GCamera& Workspace::getGCamera() const
 	{
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		c = buffer->sbumpc();
-		s += c;
-		if (c != '<')
+		RBXASSERT(getCamera());
+		return getCamera()->getGCamera();
+	}
+
+	void Workspace::zoomToExtents()
+	{
+		getCamera()->zoomExtents(viewPort);
+	}
+
+	void Workspace::insertItems(XmlElement* root, std::vector<boost::shared_ptr<Instance>>& instances, InsertMode insertMode, PromptMode promptMode)
+	{
+		RBXASSERT(instances.size() == 0);
+
+		SerializerV2 serializer;
+		serializer.loadInstances(root, instances);
+
+		if (instances.size() != 0)
+			insertInstances(instances, this, insertMode, promptMode);
+	}
+
+	void Workspace::stop()
+	{
+		RBXASSERT(isSimulating);
+		isSimulating = false;
+
+		getCamera()->autoMode();
+		RBXASSERT(!getCurrentMouseCommand()->captured());
+	}
+
+	MouseCommand* newNullTool(Workspace* workspace)
+	{
+		return new NewNullTool(workspace);
+	}
+
+	void Workspace::setNullMouseCommand()
+	{
+		stickyCommand.reset();
+		currentCommand.reset(newNullTool(this));
+	}
+
+	void Workspace::render2d(Adorn* adorn)
+	{
+		getCurrentMouseCommand()->render2d(adorn);
+		render2dItems(adorn);
+	}
+
+	void Workspace::setThrottleEnabled(bool value)
+	{
+		world->setCanThrottle(value);
+	}
+
+	void Workspace::joinAllHack()
+	{
+		world->joinAll();
+	}
+
+	void Workspace::reset()
+	{
+		stop();
+		world->reset();
+	}
+
+	Camera* Workspace::getCamera() const
+	{
+		if (!currentCamera || !currentCamera->isDescendentOf(this))
 		{
-			for (int i = 0; i != 50; i++)
-			{
-				if (buffer->sgetc() == -1)
-					continue;
-				s += buffer->sbumpc();
-			}
+			boost::shared_ptr<Camera> newCamera = Creatable::create<Camera>();
+			newCamera->setParent(const_cast<Workspace*>(this));
+			currentCamera = newCamera;
+		}
 
-			std::string message = "tag expected after Byte-Order-Mark:";
-			message += s;
-			throw std::runtime_error(message);
+		RBXASSERT(currentCamera->isDescendentOf(this));
+		return currentCamera.get();
+	}
+
+	void Workspace::onChildChanged(Instance* instance, const PropertyChanged& event)
+	{
+		Instance::onChildChanged(instance, event);
+		raiseDrawChanged();
+	}
+
+	void Workspace::onDescendentAdded(Instance* instance)
+	{
+		RootInstance::onDescendentAdded(instance);
+		raiseDrawChanged();
+
+		IRenderable* renderable = dynamic_cast<IRenderable*>(instance);
+		if (renderable)
+			onAdded(renderable);
+
+		PVInstance* pvInstance = dynamic_cast<PVInstance*>(instance);
+		if (pvInstance && pvInstance->getLegacyOffset())
+		{
+			RBXASSERT(instance->getParent() == this);
+
+			pvInstance->legacyTraverseState(G3D::CoordinateFrame());
+			pvInstance->clearLegacyOffset();
+			if (legacyOffset)
+				legacyOffset.reset();
 		}
 	}
 
-	std::string tag;
-	tag += c;
-
-	char lastChar;
-	do
+	void Workspace::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
 	{
-		lastChar = buffer->sbumpc();
-		tag += lastChar;
+		IRenderable* renderable = dynamic_cast<IRenderable*>(instance.get());
+		if (renderable)
+			onRemoving(renderable);
+
+		RootInstance::onDescendentRemoving(instance);
+		raiseDrawChanged();
 	}
-	while (lastChar != '>');
 
-	return tag;
-}
-
-std::string decodeString(std::string source)
-{
-	std::string result;
-
-	size_t i = 0;
-	while (i < source.size())
+	template<bool isJoin>
+	static void wrapper(Instance* instance)
 	{
-		char c = source[i++];
-		if (c == '&')
+		PartInstance* part = dynamic_cast<PartInstance*>(instance);
+		if (part)
 		{
-			std::string entity;
-			while (i < source.size())
-			{
-				c = source[i++];
-				if (c == ';')
-					break;
-				entity += c;
-			}
-
-			if (entity == "lt")
-				result += '<';
-			else if (entity == "gt")
-				result += '>';
-			else if (entity == "amp")
-				result += '&';
-			else if (entity == "quot")
-				result += '"';
-			else if (entity == "apos")
-				result += '\'';
-			else if (entity[0] == '#')
-				result += atoi(entity.substr(1).c_str());
+			if (isJoin)
+				part->join();
 			else
-				RBXASSERT(0);
+				part->destroyJoints();
 		}
 		else
 		{
-			result += c;
+			instance->for_eachChild(&wrapper<isJoin>);
 		}
 	}
 
-	return result;
-}
-
-std::string TextXmlParser::readText(bool decode)
-{
-	skipWhitespace();
-
-	std::string text;
-	while ((char)buffer->sgetc() != '<')
-		text += buffer->sgetc();
-
-	if (decode)
-		text = decodeString(text);
-
-	return text;
-}
-
-std::string TextXmlParser::removeTag(const std::string& contents, int& index)
-{
-	size_t i = 0;
-	while (whitespaces.data[contents[i]] && i < contents.size())
-		i++;
-
-	size_t j = i;
-	while (!whitespaces.data[contents[j]] && j < contents.size())
-		j++;
-
-	std::string contentsNoTag = contents.substr(i, j - i);
-	index = (int)j + 1;
-
-	return contentsNoTag;
-}
-
-std::string TextXmlParser::findNextToken(const std::string& contents, int& index)
-{
-	size_t i;
-	for (i = index; i < contents.size(); i++)
+	template<bool isJoin>
+	static void wrapper2(boost::shared_ptr<Instance> instance)
 	{
-		if (!whitespaces.data[contents[i]])
-			break;
+		wrapper<isJoin>(instance.get());
 	}
 
-	bool inQuotes = false;
-	size_t j = i;
-
-	for (; j < contents.size(); j++)
+	void Workspace::makeJoints(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> instances)
 	{
-		if (contents[j] == '"')
-		{
-			inQuotes = !inQuotes;
-		}
-		else if (!inQuotes && whitespaces.data[contents[j]])
-		{
-			break;
-		}
+		std::for_each(instances->begin(), instances->end(), &wrapper2<true>);
 	}
 
-	if (j != i)
+	void Workspace::breakJoints(boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> instances)
 	{
-		std::string answer = contents.substr(i, j - i);
-		index = (int)j + 1;
-		return answer;
+		std::for_each(instances->begin(), instances->end(), &wrapper2<false>);
 	}
 
-	index = (int)contents.size();
-	return "";
-}
-
-XmlElement* TextXmlParser::parseAttributes(const std::string& currentTag)
-{
-	std::string tagGuts = currentTag.substr(1, currentTag.size() - 2);
-
-	int index = 0;
-	std::string tagName = removeTag(tagGuts, index);
-
-	XmlElement* element = new XmlElement(RBX::Name::lookup(tagName));
-
-	std::string attribute = findNextToken(tagGuts, index);
-	while (attribute.size() > 0)
+	void clearEmptiedModels(boost::shared_ptr<Instance> test, Instance* parent)
 	{
-		size_t equalsSignIndex = attribute.find("=", 0, 1);
-		std::string attributeName = attribute.substr(0, equalsSignIndex);
-
-		size_t startQuoteMarkIndex = attribute.find('\"');
-		size_t endQuoteMarkIndex = attribute.rfind('\"');
-		std::string text = decodeString(attribute.substr(startQuoteMarkIndex + 1, endQuoteMarkIndex - startQuoteMarkIndex - 1));
-
-		element->addAttribute(RBX::Name::lookup(attributeName), text);
-
-		attribute = findNextToken(tagGuts, index);
-	}
-
-	return element;
-}
-
-bool isCloseTag(const std::string& test)
-{
-	if (test.size() >= 2)
-		return test.substr(0, 2) == "</";
-
-	return false;
-}
-
-bool endsWithClose(const std::string& test)
-{
-	if (test.size() >= 2)
-		return test.substr(test.size() - 2, 2) == "/>";
-
-	return false;
-}
-
-std::auto_ptr<XmlElement> TextXmlParser::parse()
-{
-	if (buffer->sgetc() == -1)
-		throw std::runtime_error("TextXmlParser::parse empty file");
-
-	bool firstTag = true;
-	while (true)
-	{
-		std::string currentTag;
-		if (firstTag)
+		if (test.get() != parent)
 		{
-			firstTag = false;
-			currentTag = readFirstTag();
-			if (currentTag.substr(0, 2) == "<?")
-				continue;
-		}
-		else
-		{
-			currentTag = readTag();
-		}
-
-		XmlElement* currentElement = elements.empty() ? NULL : elements.top();
-		if (isCloseTag(currentTag))
-		{
-			if (!currentElement)
-				throw std::runtime_error(G3D::format("TextXmlParser::parse - Got close tag %s without open tag.", currentTag.c_str()));
-
-			elements.pop();
-			if (elements.empty())
-				return std::auto_ptr<XmlElement>(currentElement);
-		}
-		else
-		{
-			XmlElement* newElement = parseAttributes(currentTag);
-			elements.push(newElement);
-
-			if (newElement->getTag() == RBX::Reflection::Type::singleton<RBX::ContentId>().tag)
+			ModelInstance* model = dynamic_cast<ModelInstance*>(test.get());
+			if (model && !Humanoid::modelIsCharacter(model) && !model->findFirstChildOfType<PartInstance>() && !model->findFirstChildOfType<ModelInstance>())
 			{
-				bool isXsiNil;
-				const XmlAttribute* xsiNilAttribute = newElement->findAttribute(name_xsinil);
-				if (xsiNilAttribute && xsiNilAttribute->getValue(isXsiNil) && !isXsiNil)
-				{
-					if (readText(false) == "")
-					{
-						const RBX::Name* mimeType;
-						const XmlAttribute* mimeTypeAttribute = newElement->findAttribute(tag_mimeType);
-						if (mimeTypeAttribute)
-							mimeTypeAttribute->getValue(mimeType);
-						else
-							mimeType = &RBX::Name::getNullName();
-
-						std::string contentChild = readTag();
-						std::string tagName = contentChild.substr(1, contentChild.size() - 2);
-
-						if (tagName.substr(0, 6) == "binary")
-						{
-							std::stringbuf encoded(readText(false), std::ios_base::in);
-							std::stringstream decoded;
-
-							int ioStatus = 0;
-							base64<char> decoder;
-							decoder.get(
-								std::istreambuf_iterator<char>(&encoded),
-								std::istreambuf_iterator<char>(),
-								std::ostreambuf_iterator<char>(decoded),
-								ioStatus);
-
-							decoded.flush();
-
-							RBX::ContentId contentId = RBX::ContentProvider::singleton().registerContent(decoded, *mimeType);
-							newElement->setValue(contentId);
-						}
-						else if (tag_hash == tagName)
-						{
-							std::string name = readText(false);
-							newElement->setValue(RBX::ContentId(name.c_str(), *mimeType));
-						}
-						else if (tagName.substr(0, 3) == "url")
-						{
-							std::string url = readText(true);
-							newElement->setValue(RBX::ContentId(url.c_str(), *mimeType));
-						}
-						else if (tag_null == tagName)
-						{
-							newElement->setValue(RBX::ContentId());
-						}
-						else
-						{
-							throw std::runtime_error(G3D::format("TextXmlParser::parse - Unknown tag '%s'.", tagName.substr(0, 32).c_str()));
-						}
-
-						std::string closingTag = readTag();
-						if (!isCloseTag(closingTag))
-							throw std::runtime_error(G3D::format("TextXmlParser::parse - '%s' should be a closing tag", tagName.substr(0, 32).c_str()));
-					}
-				}
-			}
-			else
-			{
-				newElement->setValue(readText(true));
+				boost::shared_ptr<Instance> oldParent = shared_from(model->getParent());
+				model->setParent(NULL);
+				clearEmptiedModels(oldParent, parent);
 			}
 
-			currentElement->pushBackChild(newElement);
-
-			if (endsWithClose(currentTag))
-				elements.pop();
-		}
-	}
-}
-
-XmlWriter::XmlWriter(std::ostream& stream)
-	: stream(stream)
-{
-}
-
-int XmlWriter::getHandleIndex(RBX::InstanceHandle h)
-{
-	std::map<RBX::InstanceHandle, int>::iterator iter = handles.find(h);
-	if (iter == handles.end())
-	{
-		int index = (int)handles.size();
-		handles[h] = index;
-		return index;
-	}
-	else
-	{
-		return iter->second;
-	}
-}
-
-void TextXmlWriter::writeOpenTag(const XmlElement* element, int depth, const XmlAttribute* extraAttribute)
-{
-	for (int i = 0; i < depth; i++)
-		stream << '\t';
-
-	stream << '<' << element->getTag().name;
-
-	for (const XmlAttribute* attribute = element->getFirstAttribute(); attribute != NULL; attribute = attribute->nextSibling())
-	{
-		stream << ' ' << attribute->getTag().name << "=\"";
-		encodedWrite(stream, attribute->toString(this));
-		stream << '\"';
-	}
-
-	if (extraAttribute)
-	{
-		stream << ' ' << extraAttribute->getTag().name << "=\"";
-		encodedWrite(stream, extraAttribute->toString(this));
-		stream << '\"';
-	}
-
-	stream << '>';
-}
-
-void TextXmlWriter::writeCloseTag(const XmlElement* element, int depth)
-{
-	for (int i = 0; i < depth; i++)
-		stream << '\t';
-
-	stream << "</" << element->getTag().name << '>';
-}
-
-void TextXmlWriter::serializeNode(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode->isValueType<RBX::ContentId>())
-	{
-		writeOpenTag(xmlNode, depth, NULL);
-
-		RBX::ContentId contentId;
-		xmlNode->getValue(contentId);
-		if (contentId.isNull())
-		{
-			stream << "<null></null>";
-		}
-		else
-		{
-			stream << "<hash>";
-			stream << xmlNode->toString(this);
-			stream << "</hash>";
-		}
-	}
-	else
-	{
-		writeOpenTag(xmlNode, depth, NULL);
-		encodedWrite(stream, xmlNode->toString(this));
-	}
-}
-
-void TextXmlWriter::serialize(const XmlElement* xmlNode)
-{
-	serialize(xmlNode, 0);
-}
-
-void TextXmlWriter::serialize(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode)
-	{
-		serializeNode(xmlNode, depth);
-		if (xmlNode->firstChild())
-		{
-			for (const XmlElement* child = xmlNode->firstChild(); child != NULL; child = child->nextSibling())
+			Flag* flag = dynamic_cast<Flag*>(test.get());
+			if (flag && !flag->findFirstChildOfType<PartInstance>())
 			{
-				stream << '\n';
-				serialize(child, depth + 1);
+				boost::shared_ptr<Instance> oldParent = shared_from(flag->getParent());
+				flag->setParent(NULL);
+				clearEmptiedModels(oldParent, parent);
 			}
-			stream << '\n';
-			writeCloseTag(xmlNode, depth);
-		}
-		else
-		{
-			writeCloseTag(xmlNode, 0);
 		}
 	}
-}
 
-void TextXmlWriter::encodedWrite(std::ostream& stream, const std::string& text)
-{
-	encodedWrite(stream, text.c_str());
-}
-
-void TextXmlWriter::encodedWrite(std::ostream& stream, const char* text)
-{
-	size_t len = strlen(text);
-	for (size_t i = 0; i != len; ++i)
+	void Workspace::handleFallenParts(const G3D::Array<boost::shared_ptr<PartInstance>>& fallenParts)
 	{
-		unsigned char c = *text++;
-		if (c == '<')
+		for (int i = 0; i < fallenParts.size(); i++)
 		{
-			stream << "&lt;";
-		}
-		else if (c == '>')
-		{
-			stream << "&gt;";
-		}
-		else if (c == '&')
-		{
-			stream << "&amp;";
-		}
-		else if (c == '"')
-		{
-			stream << "&quot;";
-		}
-		else if (c == '\'')
-		{
-			stream << "&apos";
-		}
-		else if (c >= ' ' && c <= '~') // every other printable character
-		{
-			stream << c;
-		}
-		else
-		{
-			char buffer[8];
-			sprintf(buffer, "&#%d;", c);
-			stream << buffer;
+			boost::shared_ptr<PartInstance> part = fallenParts[i];
+
+			boost::shared_ptr<Instance> oldParent = shared_from(part->getParent());
+			part->setParent(NULL);
+			clearEmptiedModels(oldParent, this);
 		}
 	}
-}
 
-void TextXmlWriterWithEmbeddedContent::serializeNode(const XmlElement* xmlNode, int depth)
-{
-	if (xmlNode->isValueType<RBX::ContentId>())
+	void Workspace::setMouseCommand(MouseCommand* newMouseCommand)
 	{
-		RBX::ContentId contentId;
-		xmlNode->getValue(contentId);
-
-		if (contentId.mimeType() == RBX::Name::getNullName())
+		if (!newMouseCommand)
 		{
-			writeOpenTag(xmlNode, depth, NULL);
-		}
-		else
-		{
-			XmlAttribute mimeTypeAttribute(tag_mimeType, contentId.mimeType().c_str());
-			writeOpenTag(xmlNode, depth, &mimeTypeAttribute);
-		}
-
-		if (!xmlNode->findAttribute(name_xsinil))
-		{
-			if (contentId.isNull())
+			if (!stickyCommand.get() || (newMouseCommand = stickyCommand->isSticky(), !newMouseCommand))
 			{
-				stream << "<null></null>";
-			}
-			else
-			{
-				if (contentId.isAsset() || contentId.isHttp())
-				{
-					stream << "<url>";
-					TextXmlWriter::encodedWrite(stream, contentId.toString());
-					stream << "</url>";
-				}
-				else if (embeddedContent.find(contentId) == embeddedContent.end())
-				{
-					embeddedContent.insert(contentId);
-
-					std::auto_ptr<std::istream> contentStream;
-
-					try
-					{
-						contentStream = RBX::ContentProvider::singleton().getContent(contentId);
-
-						if (contentId.mimeType() == RBX::Name::getNullName())
-						{
-							stream << "<binary>";
-						}
-						else
-						{
-							stream << "<binary xmime:contentType=\"" << contentId.mimeType().c_str() << "\">";
-						}
-
-						std::istreambuf_iterator<char> _From(contentStream->rdbuf());
-						std::istreambuf_iterator<char> _To;
-						std::ostreambuf_iterator<char> _Out(stream.rdbuf());
-						int _State;
-
-						base64<char> encoder;
-						encoder.put(_From, _To, _Out, _State, base64<>::crlf());
-
-						stream << "</binary>";
-					}
-					catch (std::exception&)
-					{
-						goto hash;
-					}
-				}
+				if (!Network::Players::findLocalPlayer(this))
+					newMouseCommand = new ArrowTool(this);
 				else
-				{
-hash:
-					embeddedContent.insert(contentId);
+					newMouseCommand = newNullTool(this);
+			}
+		}
 
-					stream << "<hash>";
-					stream << xmlNode->toString(this);
-					stream << "</hash>";
-				}
+		RBXASSERT(newMouseCommand);
+
+		if (newMouseCommand != currentCommand.get())
+		{
+			RBXASSERT(!currentCommand.get() || !currentCommand->captured());
+
+			currentCommand.reset(newMouseCommand);
+
+			MouseCommand* sticky = newMouseCommand->isSticky();
+			if (sticky)
+				stickyCommand.reset(sticky);
+
+			Notifier<Workspace, ToolChanged>::raise(ToolChanged());
+		}
+	}
+
+	float Workspace::step(float timeInterval)
+	{
+		RBXASSERT(isSimulating);
+
+		timeInterval = world->step(timeInterval);
+		
+		G3D::Array<boost::shared_ptr<PartInstance>> touchParts;
+		G3D::Array<boost::shared_ptr<PartInstance>> touchOtherParts;
+		G3D::Array<Primitive*> fallen;
+		G3D::Array<boost::shared_ptr<PartInstance>> fallenParts;
+
+		PartInstance::primitivesToParts(world->getTouch(), touchParts);
+		PartInstance::primitivesToParts(world->getTouchOther(), touchOtherParts);
+		world->computeFallen(fallen);
+		PartInstance::primitivesToParts(fallen, fallenParts);
+		
+		handleFallenParts(fallenParts);
+
+		for (int i = 0; i < touchParts.size(); i++)
+		{
+			touchParts[i]->onTouchThisStep(touchOtherParts[i]);
+		}
+
+		raiseDrawChanged();
+		return timeInterval;
+	}
+
+	void Workspace::setDefaultMouseCommand()
+	{
+		stickyCommand.reset();
+		setMouseCommand(NULL);
+	}
+
+	void Workspace::runScript(Script* script, ScriptContext* context)
+	{
+		RBXASSERT(context == scriptContext);
+
+		if (Network::Players::backendProcessing(this, true) && !isSimulating)
+			pendingScripts.insert(script);
+		else
+			context->addScript(script);
+	}
+
+	void Workspace::releaseScript(Script* script)
+	{
+		pendingScripts.erase(script);
+	}
+
+	Workspace* Workspace::findWorkspace(const Instance* context)
+	{
+		return ServiceProvider::find<Workspace>(context);
+	}
+
+	Workspace* Workspace::getWorkspaceIfInWorkspace(const Instance* context)
+	{
+		Workspace* workspace = ServiceProvider::find<Workspace>(context);
+
+		if (workspace && (context == workspace || context->isDescendentOf(workspace)))
+			return workspace;
+		else
+			return NULL;
+	}
+
+	World* Workspace::getWorldIfInWorkspace(const Instance* context)
+	{
+		Workspace* workspace = ServiceProvider::find<Workspace>(context);
+
+		if (workspace && (context == workspace || context->isDescendentOf(workspace)))
+			return workspace->getWorld();
+		else
+			return NULL;
+	}
+
+	bool Workspace::contextInWorkspace(const Instance* context)
+	{
+		return getWorkspaceIfInWorkspace(context) != NULL;
+	}
+
+	void Workspace::setCamera(Camera* value)
+	{
+		if (value != currentCamera.get())
+		{
+			if (currentCamera)
+				currentCamera->setParent(NULL);
+
+			currentCamera = shared_from(value);
+			raisePropertyChanged(currentCameraProxyProp);
+		}
+	}
+
+	Workspace* Workspace::getMyWorkspaceFast(const Instance* context)
+	{
+		RBXASSERT(getWorldIfInWorkspace(context));
+
+		Instance* parent = context->getParent();
+		RBXASSERT(parent);
+
+		Instance* parent2 = parent->getParent();
+		RBXASSERT(parent2);
+
+		while (parent2->getParent())
+		{
+			parent = parent2;
+			parent2 = parent2->getParent();
+		}
+
+		return rbx_static_cast<Workspace*>(parent);
+	}
+
+	World* Workspace::getMyWorldFast(const Instance* context)
+	{
+		return getMyWorkspaceFast(context)->getWorld();
+	}
+
+	//94% match
+	//std::set<>::clear is being inlined more aggressively
+	void Workspace::start()
+	{
+		RBXASSERT(!isSimulating);
+		isSimulating = true;
+
+		getCamera()->alwaysMode();
+
+		RBXASSERT(!getCurrentMouseCommand()->captured());
+
+		if (scriptContext)
+		{
+			std::vector<boost::shared_ptr<Script>> startScripts;
+
+			std::set<Script*>::const_iterator iter = pendingScripts.begin();
+			std::set<Script*>::const_iterator end = pendingScripts.end();
+
+			for (; iter != end; iter++)
+			{
+				startScripts.push_back(shared_from(*iter));
+			}
+
+			pendingScripts.clear();
+			std::for_each(startScripts.begin(), startScripts.end(), boost::bind(&ScriptContext::addScript, scriptContext, boost::bind(&boost::shared_ptr<Script>::get, _1)));
+		}
+	}
+
+	void Workspace::setImageServerView(const G3D::Rect2D& viewPortRect)
+	{
+		HopperBin* superHack = NULL;
+
+		for (size_t i = 0; i < numChildren(); i++)
+		{
+			HopperBin* hopperBin = queryTypedChild<HopperBin>((int)i);
+			ILocation* location = queryTypedChild<ILocation>((int)i);
+			IRenderable* renderable = queryTypedChild<IRenderable>((int)i);
+
+			if (location && renderable)
+			{
+				G3D::CoordinateFrame modelCoord = location->getLocation();
+				getCamera()->setImageServerViewNoLerp(modelCoord, viewPortRect); 
+			}
+
+			if (hopperBin)
+				superHack = hopperBin;
+		}
+
+		if (superHack)
+		{
+			StarterPackService* starterPack = ServiceProvider::create<StarterPackService>(this);
+			superHack->setParent(starterPack);
+		}
+
+		imageServerViewHack = (imageServerViewHack <= 0);
+	}
+
+	static void append(const boost::shared_ptr<Instance>& item, std::vector<boost::shared_ptr<Instance>>* values)
+	{
+		values->push_back(item);
+	}
+
+	boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> Workspace::insertContent(ContentId contentId)
+	{
+		std::vector<boost::shared_ptr<Instance>> items;
+		insertContent(contentId, items, INSERT_TO_TREE, SUPPRESS_PROMPTS);
+
+		boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> values(new std::vector<boost::shared_ptr<Instance>>);
+		std::for_each(items.begin(), items.end(), boost::bind(&append, _1, values.get()));
+
+		return values;
+	}
+
+	void Workspace::insertContent(ContentId contentId, std::vector<boost::shared_ptr<Instance>>& items, InsertMode insertMode, PromptMode promptMode)
+	{
+		std::auto_ptr<std::istream> stream = ContentProvider::singleton().getContent(contentId);
+
+		TextXmlParser machine(stream->rdbuf());
+		std::auto_ptr<XmlElement> root = machine.parse();
+
+		insertItems(root.get(), items, insertMode, promptMode);
+	}
+
+	void Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		Notifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
+
+		if (statsItem)
+		{
+			statsItem->setParent(NULL);
+			statsItem.reset();
+		}
+
+		Instance::onServiceProvider(oldProvider, newProvider);
+
+		scriptContext = ServiceProvider::create<ScriptContext>(newProvider);
+
+		if (Stats::Item* item = ServiceProvider::create<Stats::Item>(newProvider))
+		{
+			statsItem = Creatable::create<WorkspaceStatsItem>(this, world.get());
+			statsItem->setParent(item);
+		}
+
+		Notifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);
+	}
+
+	static void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)
+	{
+		if (IRenderable* ir = dynamic_cast<IRenderable*>(wsi.get()))
+		{
+			if (workspace->contains(wsi.get()))
+			{
+				ir->render3dSelect(adorn, selectState);
 			}
 		}
 	}
-	else
+
+	void Workspace::render3dAdorn(Adorn* adorn)
 	{
-		TextXmlWriter::serializeNode(xmlNode, depth);
+		viewPort = adorn->getViewport();
+		ServiceClient<Selection> sel(this);
+
+		if (sel)
+			std::for_each(sel->getSelection()->begin(), sel->getSelection()->end(), boost::bind(&DrawAdorn, _1, adorn, SELECT_NORMAL, this));
+
+		render3dAdornItems(adorn);
+		if (showWorldCoord)
+		{
+			adorn->setObjectToWorldMatrix(G3D::CoordinateFrame());
+			adorn->axes(G3D::Color3::red(), G3D::Color3::green(), G3D::Color3::blue(), 50.0f);
+		}
+
+		if (showHashGrid)
+		{
+			adorn->setObjectToWorldMatrix(G3D::CoordinateFrame());
+			adorn->box(G3D::AABox(G3D::Vector3(28, 4, 12), G3D::Vector3(32, 8, 16)), G3D::Color4(1.0, 0.2, 0.2, 0.5), G3D::Color4::clear());
+		}
 	}
 }

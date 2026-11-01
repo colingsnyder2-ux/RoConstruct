@@ -140,7 +140,9 @@ bindings = dict(caption_message_map='0081bb1c', parent='CWnd::GetThisMessageMap 
 
 paths = [Path(__file__), HEADERS / 'ActiveDocView.h', HEADERS / 'CSelectionCaption.h',
          HEADERS / 'v8tree/Service.h', HEADERS / 'v8datamodel/Selection.h',
-         HEADERS / 'v8datamodel/SelectionChanged.h']
+         HEADERS / 'v8datamodel/SelectionChanged.h', HEADERS / 'CDataModelPropGrid.h',
+         HEADERS / 'util/MarshaledListener.h', HEADERS / 'util/EventDataBase.h',
+         HEADERS / 'util/MarshalWindow.h', HEADERS / 'CPropGrid.h', HEADERS / 'SelectionGroup.h']
 paths += [CLASSES / (name + '.cpp') for name in ('ActiveDocument', 'ActiveDocViewRefresh', 'CDataModelPropGridUpdate', 'CSelectionCaptionUpdate',
                                                'CSelectionCaption', 'CSelectionCaptionText')]
 receipt = dict(revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),

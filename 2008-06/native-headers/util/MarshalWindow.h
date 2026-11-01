@@ -6,7 +6,7 @@
 namespace RBX {
 class EventDataBase;
 
-// Inactive native declaration. Window class metadata and registry remain open.
+// Native window/registry recovery; original global initialization remains open.
 class CMarshalWindow : public ATL::CWindowImpl<CMarshalWindow> {
 public:
     unsigned references;
@@ -16,7 +16,6 @@ public:
     explicit CMarshalWindow(DWORD);
     virtual ~CMarshalWindow();
     void post(EventDataBase*);
-    static ATL::CWndClassInfo& GetWndClassInfo();
     BEGIN_MSG_MAP(CMarshalWindow)
         MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
         MESSAGE_HANDLER(WM_USER + 101, OnMarshalEvent)

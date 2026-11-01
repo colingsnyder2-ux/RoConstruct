@@ -1,16 +1,13 @@
-// from server: 52% by why2
-struct RBX_VehicleSeat {
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+struct VehicleSeat {
     char pad[0x30c];
-    int field_30c;
-
-    void sub_6a2f70();
+    int value;
+    void update();
     int get();
 };
-
-void RBX_VehicleSeat::sub_6a2f70() {
-}
-
-int RBX_VehicleSeat::get() {
-    sub_6a2f70();
-    return field_30c;
+int VehicleSeat::get() {
+    update();
+    return value;
 }
