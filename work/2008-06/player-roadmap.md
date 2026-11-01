@@ -1438,3 +1438,35 @@ rebounds much higher in the rebuild: at 1 s original/rebuilt torso Y was about
 P0, timing, joint contact, floor, force, controller, climbing, spawn, combined
 play and original right-turn checks pass. Receipts: p5-state-a05a-*; P5 remains
 open.
+
+## P5 checkpoint: Novetus 2008M Animate and motor transforms (e49dd2e24c)
+
+The user-supplied Novetus 2008M content contains character.rbxm and an Animate
+script. Its character model matches the previously staged model by SHA-256;
+its Animate, Sound and Health scripts differ, so their provenance and original
+2008-client equivalence are not assumed. Novetus also supplies Play_Solo.lua,
+a custom launcher script using CreateLocalPlayer, RunService:run and
+LoadCharacter. The player already loads the character and those four assets
+through its adapted Player::loadCharacter path.
+
+Running now emits speed changes using the 00666b20/00643330 half/double
+threshold, enabling the supplied Animate script. The donor clump graph also
+needs motor-angle invalidation to propagate moving joints to part transforms.
+With actual Novetus 2008M content, idle and disabled-Animate controls remain
+still; walking changes desired and actual hip angles and moves the right leg
+relative to the torso by 0.882 studs across the measured window. Movement stops
+when input stops. The control edits only a local temporary copy of the asset.
+A local animated preview from separate fixed-frame runs is in
+p5-novetus-e49d-walk-preview/walk.gif; user assets and images remain local.
+
+Full Novetus content initially crashed when swoosh.wav was available. Tracing
+identified the empty RaiseRange::removeIndex stub during Heartbeat listener
+removal. Its replacement follows target 00420740 range updates, including
+nested dispatch; self/next/previous/nested removal controls and the full content
+run now pass. Sound startup is covered; audible output is not verified.
+
+At e49dd2e24c, Novetus animation controls, P0, P4 asset cases, timing, joint,
+floor, force, controller, climbing, spawn and combined play pass. Original
+right-turn and moving-floor bounded comparisons pass. Receipts:
+p5-novetus-e49d-*. Original-client animation, all poses, audio playback,
+jump physics, scheduler and full P5 remain open.
