@@ -1,8 +1,13 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
+// roc 2009-06 005a94a0  unit: seg_005a0000  size: 450 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005a94a0
+//
+
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 // Local names were chosen to reproduce the /Od frame layout (MSVC orders locals by name hash).
 // Analog for 00547440: world-space bounds of every chunk's level-0 vertices
 // (G3D Vector3 inf/min/max, CoordinateFrame::pointToWorldSpace, handleFor 00548f80).
@@ -42,7 +47,7 @@ public:
 
 class LevelData {
 public:
-    char header[0x0c];
+    char header[0x10];
     Array<int> indices;
 };
 

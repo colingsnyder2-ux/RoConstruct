@@ -1,4 +1,43 @@
+// from server: 100% by EspClaude
 // from server: 71% by EspClaude
+// roc 2009-06 004d5210  unit: RBX::VNetworkSettings::?$FactoryProduct  size: 86 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 004d5210
+//
+// 004d5210  ff0514a7a400         inc dword ptr [0xa4a714]
+// 004d5216  56                   push esi
+// 004d5217  57                   push edi
+// 004d5218  8bf1                 mov esi, ecx
+// 004d521a  e8010a1100           call 0x5e5c20
+// 004d521f  6a10                 push 0x10
+// 004d5221  8906                 mov dword ptr [esi], eax
+// 004d5223  8d7e04               lea edi, [esi + 4]
+// 004d5226  e80d382400           call 0x718a38
+// 004d522b  83c404               add esp, 4
+// 004d522e  85c0                 test eax, eax
+// 004d5230  7411                 je 0x4d5243
+// 004d5232  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 004d5236  c70084498c00         mov dword ptr [eax], 0x8c4984
+// 004d523c  dd01                 fld qword ptr [ecx]
+// 004d523e  dd5808               fstp qword ptr [eax + 8]
+// 004d5241  eb02                 jmp 0x4d5245
+// 004d5243  33c0                 xor eax, eax
+// 004d5245  8d54240c             lea edx, [esp + 0xc]
+// 004d5249  8bc8                 mov ecx, eax
+// 004d524b  3bd7                 cmp edx, edi
+// 004d524d  7404                 je 0x4d5253
+// 004d524f  8b0f                 mov ecx, dword ptr [edi]
+// 004d5251  8907                 mov dword ptr [edi], eax
+// 004d5253  85c9                 test ecx, ecx
+// 004d5255  7408                 je 0x4d525f
+// 004d5257  8b01                 mov eax, dword ptr [ecx]
+// 004d5259  8b10                 mov edx, dword ptr [eax]
+// 004d525b  6a01                 push 1
+// 004d525d  ffd2                 call edx
+// 004d525f  5f                   pop edi
+// 004d5260  8bc6                 mov eax, esi
+// 004d5262  5e                   pop esi
+// 004d5263  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 00564050  unit: RBX::Reflection::N::?$TypedPropertyDescriptor  size: 80 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00564050
@@ -50,6 +89,7 @@ struct HolderData {
 extern "C" void* __cdecl getDescriptor();
 extern "C" void* __cdecl allocate(unsigned int);
 extern unsigned int holderVtable[];
+extern int exeCounterDouble;
 
 struct S {
     void* descriptor;
@@ -60,6 +100,7 @@ struct S {
 
 S* S::f(const double* value)
 {
+    ++exeCounterDouble;
     descriptor = getDescriptor();
     Holder** slot = &held;
 

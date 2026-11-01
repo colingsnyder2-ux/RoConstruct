@@ -1,22 +1,23 @@
-// from server: 71% by atomic.potato
-extern "C" int __cdecl sub_719EB6(int, int, int);
-
-struct RBX_MeshFaceCustomizableKey {
-    int f(unsigned int, int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string.h>
+#include <algorithm>
+namespace RBX {
+struct MeshTrussPartKey {
+    char data[0x6c];
+    size_t copyTo(void* dst, size_t n) const;
 };
-
-int RBX_MeshFaceCustomizableKey::f(unsigned int a, int b) {
-    int v = 0x6c;
-    if (a > 0) {
-        unsigned int t = a;
-        unsigned int *p;
-        if (a > 0x6c)
-            p = (unsigned int *)&v;
-        else
-            p = &t;
-        int r = *p;
-        sub_719EB6(t, v, r);
-        return r;
+size_t MeshTrussPartKey::copyTo(void* dst, size_t n) const
+{
+    size_t size = sizeof(data);
+    if (n > 0) {
+        size_t len = n;
+        len = std::min(len, size);
+        memcpy(dst, this, len);
+        return len;
     }
-    return 0;
+    return n;
+}
 }

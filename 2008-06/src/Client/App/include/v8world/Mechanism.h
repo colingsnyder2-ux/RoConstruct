@@ -11,17 +11,29 @@ namespace RBX
 	class Assembly;
 	class MechanismTracker;
 
-	class Mechanism : public boost::noncopyable
+	// Native 005e50f0 / 005e53a0: shared tracker ownership, separate from grouping.
+	class SimJob : public boost::noncopyable
+	{
+		friend class MechanismTracker;
+		std::vector<MechanismTracker*> trackers;
+	public:
+		std::list<SimJob*>::iterator jobIterator;
+		virtual ~SimJob() { RBXASSERT(trackers.empty()); }
+		virtual Assembly* getAssembly() = 0;
+		virtual const Assembly* getAssembly() const = 0;
+	};
+	typedef char SimJobSize[sizeof(SimJob)==36?1:-1];
+
+	class Mechanism : public SimJob
 	{
 	private:
 		std::set<Assembly*> assemblies;
-		std::vector<MechanismTracker*> trackers;
 	public:
 		std::list<Mechanism*>::iterator myIt;
 
 		Mechanism::~Mechanism() 
 		{ 
-			RBXASSERT(this->trackers.size() == 0); 
+			// SimJob checks tracker lifetime. 
 		}
 
 		const std::set<Assembly*>& getAssemblies() const 
@@ -34,6 +46,8 @@ namespace RBX
 			return assemblies;
 		}
 
+		virtual Assembly* getAssembly() { return assemblies.empty()?NULL:*assemblies.begin(); }
+		virtual const Assembly* getAssembly() const { return assemblies.empty()?NULL:*assemblies.begin(); }
 		void notifyMovingPrimitives();
 		void insertAssembly(Assembly* a);
 		void removeAssembly(Assembly* a);
@@ -47,8 +61,8 @@ namespace RBX
 	class MechanismTracker
 	{
 	private:
-		Mechanism* mechanism;
-		bool containedBy(Mechanism*);
+		SimJob* mechanism;
+		bool containedBy(SimJob*);
 		void stopTracking();
 	public:
 		MechanismTracker()
@@ -62,8 +76,10 @@ namespace RBX
 		}
 
 		bool tracking();
-		void setMechanism(Mechanism*);
+		void setMechanism(Mechanism* m) { setJob(m); }
+		void setJob(SimJob*);
+		SimJob* getJob() const { return mechanism; }
 		Mechanism* getMechanism();
-		static void transferTrackers(Mechanism*, Mechanism*);
+		static void transferTrackers(SimJob*, SimJob*);
 	};
 }

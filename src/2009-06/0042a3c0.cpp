@@ -1,48 +1,28 @@
-// from server: 72% by EspClaude
 // from server: 100% by EspClaude
-// roc 2008-06 00431040  unit: VCMDIFrameWnd::?$CXTPFrameWndBase  size: 143 bytes
-
-struct FrameA { virtual ~FrameA(); char pad[0x184]; };
-struct FrameB { virtual void b(); char pad[0xac]; };
-struct FrameC { virtual void c(); };
-
-class VCMDIFrameWnd : public FrameA, public FrameB, public FrameC {
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+class CPropGrid {
 public:
-    VCMDIFrameWnd();
-    virtual ~VCMDIFrameWnd();
+	CPropGrid();
+	virtual ~CPropGrid();
+	char pad[0x268 - 4];
 };
-
-class CXTPCommandBars;
-
-template<class TBase>
-class CXTPCommandBarsSiteBase : public TBase {
+extern long selectionGridCount;
+class CSelectionPropGrid : public CPropGrid {
 public:
-    CXTPCommandBarsSiteBase() {}
-protected:
-    virtual int PreTranslateMessage(void* pMsg);
+	struct SC { void* pi; SC() : pi(0) {} }; struct SP { void* px; SC pn; SP() : px(0) {} } ab;
+	struct M { void* c; void* d; M() { InterlockedIncrement(&selectionGridCount); c = 0; d = 0; } } cd;
+	CSelectionPropGrid() {}
 };
-
-template<class TBase>
-class CXTPFrameWndBase : public CXTPCommandBarsSiteBase<TBase> {
+class ActiveDocView {
 public:
-    CXTPFrameWndBase() : m_pCommandBars(0), m_nState(0) {}
-    CXTPCommandBars* m_pCommandBars;
-    int m_nState;
+	ActiveDocView();
+	virtual ~ActiveDocView();
 };
-
-class Listener {
+class CDataModelPropGrid : public CSelectionPropGrid, public ActiveDocView {
 public:
-    Listener();
-    virtual ~Listener();
-    char pad[0x20];
+	CDataModelPropGrid();
 };
-
-class CMainFrame : public CXTPFrameWndBase<VCMDIFrameWnd>, public Listener {
-public:
-    CMainFrame();
-    virtual ~CMainFrame();
-};
-
-CMainFrame::CMainFrame()
-{
-}
+CDataModelPropGrid::CDataModelPropGrid() {}

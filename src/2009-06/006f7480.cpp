@@ -1,31 +1,35 @@
-// from server: 71% by atomic.potato
-struct S {
-    char pad0[0x18];
-    int field18;
-    int field1c;
-    char pad2[0x8];
-    char field28;
-    int method0();
-    int method28();
-    int method();
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <string>
+namespace RBX {
+class DataModel;
+class UIEvent;
+class MouseCommand;
+class Dragger { public: void stop(); };
+class ChangeHistoryService { public: static void requestWaypoint(const char* name, DataModel* dm); };
+class DragTool {
+public:
+	virtual const std::string& getName() const;
+	virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4();
+	virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8(); virtual void v9();
+	virtual void releaseCapture();
+	virtual MouseCommand* onMouseUp(const UIEvent& event);
+	char pad[0x14];
+	DataModel* dataModel;
+	Dragger* dragger;
+	char pad2[8];
+	bool captured;
 };
-
-extern "C" int __stdcall sub_006b2af0(int);
-extern "C" int __stdcall sub_0061d4a0(const char*, int);
-
-int S::method()
+MouseCommand* DragTool::onMouseUp(const UIEvent& event)
 {
-    if (field28 != 0) {
-        sub_006b2af0(field1c);
-        int v = method0();
-        field28 = 0;
-        const char* p;
-        if (*(int*)(v + 0x18) < 0x10)
-            p = (const char*)(v + 4);
-        else
-            p = *(const char**)(v + 4);
-        sub_0061d4a0(p, field18);
-    }
-    method28();
-    return 0;
+	if (captured) {
+		dragger->stop();
+		captured = false;
+		ChangeHistoryService::requestWaypoint(getName().c_str(), dataModel);
+	}
+	releaseCapture();
+	return 0;
+}
 }

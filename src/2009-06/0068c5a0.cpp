@@ -1,80 +1,81 @@
-// from server: 72% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by EspClaude
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <typeinfo>
+extern "C" long __cdecl _InterlockedIncrement(long volatile*);
+extern "C" long __cdecl _InterlockedDecrement(long volatile*);
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
+inline void* operator new(unsigned int, void* p) throw() { return p; }
+inline void operator delete(void*, void*) throw() {}
 
-struct TypeInfo {
-    bool operator==(const TypeInfo&) const;
+struct sp_counted_base {
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_;
+    long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0) destroy();
+    }
 };
-
-struct RefCounted {
-    virtual void f0();
-    virtual void f1();
-    virtual void f2();
-    long m_ref1;
-    long m_ref2;
+namespace boost {
+namespace detail {
+struct shared_count {
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
 };
-
-struct Slot {
-    void* m_a;
-    void* m_b;
-    void* m_c;
-    RefCounted* m_ptr;
+}
+template<class T> class shared_ptr { public: T* px; detail::shared_count pn; };
+template<int I> struct arg {};
+namespace _mfi {
+template<class R, class T, class A1> class mf1 { public: R (T::*f_)(A1); };
+}
+namespace _bi {
+template<class T> class value { public: T t_; };
+template<class A1, class A2> class list2 { public: A1 a1_; };
+template<class R, class F, class L> class bind_t { public: F f_; L l_; };
+}
+}
+namespace G3D { class Vector3 { public: float x, y, z; }; }
+namespace RBX { namespace Reflection {
+struct SB1 { virtual void f(); };
+struct SB2 { virtual void g(); };
+class GenericSlotWrapper : public SB1, public SB2 { public: void call(G3D::Vector3); };
+} }
+typedef boost::_bi::bind_t<void, boost::_mfi::mf1<void, RBX::Reflection::GenericSlotWrapper, G3D::Vector3>,
+    boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper> >, boost::arg<1> > > Functor;
+union function_buffer {
+    mutable void* obj_ptr;
+    struct type_t { const std::type_info* type; bool const_qualified; bool volatile_qualified; } type;
+    mutable void (*func_ptr)();
+    struct bound_memfunc_ptr_t { void (RBX::Reflection::SB1::*memfunc_ptr)(int); void* obj_ptr; } bound_memfunc_ptr;
+    mutable char data;
 };
+enum functor_manager_operation_type { clone_functor_tag, move_functor_tag, destroy_functor_tag, check_functor_type_tag, get_functor_type_tag };
 
-struct Holder {
-    void* m_a;
-    void* m_b;
-    void* m_c;
-    RefCounted* m_ptr;
-};
-
-extern TypeInfo* g_type_00a1be68;
-extern bool (__stdcall *g_fn_0089e9a4)(TypeInfo*);
-
-void __cdecl func_0068c5a0(Slot* dst, int op, Holder* src)
+void manage(const function_buffer& in_buffer, function_buffer& out_buffer, functor_manager_operation_type op)
 {
-    if (op == 0 || op == 1) {
-        if (dst) {
-            dst->m_a = src->m_a;
-            dst->m_b = src->m_b;
-            dst->m_c = src->m_c;
-            dst->m_ptr = src->m_ptr;
-            if (dst->m_ptr) {
-                _InterlockedExchangeAdd(&dst->m_ptr->m_ref1, 1);
-            }
-        }
-        if (op == 1) {
-            RefCounted* p = src->m_ptr;
-            if (p) {
-                if (_InterlockedExchangeAdd(&p->m_ref1, -1) == 1) {
-                    p->f1();
-                    if (_InterlockedExchangeAdd(&p->m_ref2, -1) == 1) {
-                        p->f2();
-                    }
-                }
-            }
-        }
-        return;
+    if (op == clone_functor_tag || op == move_functor_tag) {
+        const Functor* in_functor = reinterpret_cast<const Functor*>(&in_buffer.data);
+        new ((void*)&out_buffer.data) Functor(*in_functor);
+        if (op == move_functor_tag)
+            reinterpret_cast<Functor*>(&in_buffer.data)->~Functor();
+    } else if (op == destroy_functor_tag) {
+        reinterpret_cast<Functor*>(&out_buffer.data)->~Functor();
+    } else if (op == check_functor_type_tag) {
+        const std::type_info& check_type = *out_buffer.type.type;
+        if (check_type == typeid(Functor))
+            out_buffer.obj_ptr = &in_buffer.data;
+        else
+            out_buffer.obj_ptr = 0;
+    } else {
+        out_buffer.type.type = &typeid(Functor);
+        out_buffer.type.const_qualified = false;
+        out_buffer.type.volatile_qualified = false;
     }
-    if (op == 2) {
-        RefCounted* p = src->m_ptr;
-        if (p) {
-            if (_InterlockedExchangeAdd(&p->m_ref1, -1) == 1) {
-                p->f1();
-                if (_InterlockedExchangeAdd(&p->m_ref2, -1) == 1) {
-                    p->f2();
-                }
-            }
-        }
-        return;
-    }
-    if (op == 3) {
-        TypeInfo* t = *(TypeInfo**)dst;
-        bool r = g_fn_0089e9a4(g_type_00a1be68);
-        *(int*)dst = r ? 0 : (int)src;
-        return;
-    }
-    *(TypeInfo**)dst = g_type_00a1be68;
-    ((char*)dst)[4] = 0;
-    ((char*)dst)[5] = 0;
 }

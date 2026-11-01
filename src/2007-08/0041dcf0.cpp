@@ -1,5 +1,5 @@
-// from server: 93% by colin
-extern "C" void __stdcall _invalid_parameter_noinfo();
+// from server: 100% by Yeetserama
+extern "C" __declspec(dllimport) void __stdcall _invalid_parameter_noinfo();
 
 struct CInstanceExplorer
 {
@@ -10,7 +10,7 @@ struct CInstanceExplorer
 
 void CInstanceExplorer::func_0041dcf0(int* first, int* last, int* other_first, int* other_last)
 {
-    void (*handler)() = *(void (**)())0x77e6d8;
+    void (__stdcall *handler)() = _invalid_parameter_noinfo;
 
     func_005330f0();
 

@@ -1,74 +1,42 @@
-// from server: 71% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/TimerService.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
-
-namespace RBX
-{
-	TimerService::TimerService() {}
-
-	void TimerService::delay(boost::function0<void> func, double seconds)
-	{
-		Item item;
-		item.time = G3D::System::getLocalTime() + seconds;
-		item.func = func;
-
-		std::list<Item>::iterator pos = items.end();
-
-		std::list<Item>::reverse_iterator iter = items.rbegin();
-		std::list<Item>::reverse_iterator end = items.rend();
-
-		for (; iter != end; iter++)
-		{
-			if (iter->time > item.time)
-				pos = iter.base();
-			else
-				break;
-		}
-
-		items.insert(pos, item);
-	}
-
-	void TimerService::onEvent(const RunService* source, Heartbeat event)
-	{
-		G3D::RealTime time = G3D::System::getLocalTime();
-
-		while (items.size() > 0)
-		{
-			Item& item = items.front();
-
-			if (time >= item.time)
-			{
-				try
-				{
-					item.func();
-				}
-				catch (std::exception& e)
-				{
-					StandardOut::singleton()->print(MESSAGE_WARNING, e);
-				}
-
-				items.pop_front();
-			}
-			else
-			{
-				break;
-			}
-		}
-	}
-
-	void TimerService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Notifier<RunService, Heartbeat>::disconnect(runService, this);
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-		runService = shared_from(ServiceProvider::create<RunService>(newProvider));
-
-		Notifier<RunService,Heartbeat>::connect(runService, this);
-	}
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+namespace RBX {
+class GuidItemBase { public: virtual void g0(); char pad[0x10]; };
+class Object { public: virtual void o0(); };
+class ClassDescriptor;
+class DescribedBase { public: virtual ~DescribedBase() {} const ClassDescriptor* descriptor; };
+class Debugable { public: virtual void b0(); char pad[8]; };
+class Instance : public GuidItemBase, public Object, public DescribedBase, public Debugable {
+public:
+	virtual ~Instance();
+	char ipad[0x8c - 0x2c];
+};
+class DescribedTS : public Instance {
+public:
+	DescribedTS();
+};
+class Mid : public DescribedTS {
+public:
+	Mid() {}
+	virtual const char* getClassName() const;
+};
+extern long counter;
+class Second {
+public:
+	Second() { InterlockedIncrement(&counter); a = 0; b = 0; }
+	virtual ~Second();
+	void* a; void* b;
+};
+class Item { public: Item(); void* a; int b; int c; };
+class TimerService : public Mid, public Second {
+public:
+	TimerService();
+	virtual void t0();
+	int r;
+	Item items;
+};
+TimerService::TimerService() {}
 }

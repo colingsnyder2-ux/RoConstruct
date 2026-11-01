@@ -1,18 +1,18 @@
-// from server: 43% by atomic.potato
+// from server: 100% by Intel
 struct S
 {
     unsigned long value;
+    unsigned long pad;
     unsigned long data;
-    unsigned long size;
-    void f(unsigned long index);
+    unsigned long limit;
+    void __thiscall f(unsigned long);
+    void __thiscall g(unsigned long);
 };
 
-extern "C" void Function_007adbd0(S* object, unsigned long value);
-
-void S::f(unsigned long index)
+void __thiscall S::f(unsigned long n)
 {
-    while (size > index)
+    while (limit > n)
     {
-        Function_007adbd0(this, *(unsigned long*)(*(unsigned long*)((char*)this + 8) + 4) + 8);
+        g(*((unsigned long*)data + 1) + 8);
     }
 }

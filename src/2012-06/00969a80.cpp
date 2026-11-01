@@ -1,19 +1,19 @@
-// from server: 44% by atomic.potato
-struct S
-{
-    int v;
-    short x;
-    short y;
-    float a;
-    float b;
-    S* f(const S&);
-    S* g(const S&);
+// from server: 46% by Intel
+struct VPartDragTool {
+    void* vftable;
+    float field_44;
+    float field_48;
+    void (__thiscall *vfunc_34)(VPartDragTool*);
+    int __thiscall method(void* arg);
 };
 
-S* S::f(const S& p)
+int __thiscall VPartDragTool::method(void* arg)
 {
-    a = (float)p.x;
-    b = (float)p.y;
-    g(*this);
-    return this;
+    short* s = (short*)arg;
+    int x = s[4];
+    int y = s[5];
+    field_44 = (float)x;
+    field_48 = (float)y;
+    vfunc_34(this);
+    return (int)this;
 }

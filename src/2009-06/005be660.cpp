@@ -1,8 +1,13 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
+// roc 2009-06 005be660  unit: RBX::AggregatingSceneManager  size: 497 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 005be660
+//
+
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 // Analog for 0053f720 (AggregatingSceneManager): adds a chunk to the list at
 // +0xc unless it is orphaned, has no levels, is not a quad level (type 5), is
 // not visible (0053f920) or is already listed (find 00545d40).
@@ -36,7 +41,7 @@ class CFrame;
 
 class LevelData {
 public:
-    char header[0x18];
+    char header[0x1c];
     int type;
 };
 
@@ -55,7 +60,7 @@ public:
     virtual void v5();
     virtual Ref<Levels> levels();
     virtual const CFrame& frame();
-    char header[0x1c];
+    char header[0x14];
     Weak<Part> part;
 };
 

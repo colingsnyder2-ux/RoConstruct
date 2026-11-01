@@ -1,11 +1,7 @@
-// from server: 72% by EspClaude
-// from server: 100% by Espeon
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_selectionmap_b7ec641d3790ea4e.cpp
-
-// Candidate translation unit (score above; library headers required).
 #include <map>
 
 struct Primary {
@@ -32,8 +28,8 @@ struct Member {
 };
 
 struct Content {
-    int storage[3];
-    Content();
+    int a, b, c, d;
+    Content() : a(0), b(0), c(0), d(0) {}
     ~Content();
 };
 

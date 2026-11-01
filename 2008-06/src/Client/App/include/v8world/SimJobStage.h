@@ -4,6 +4,7 @@
 
 namespace RBX
 {
+	class SimJob;
 	class Mechanism;
 	class MechanismTracker;
 	class Assembly;
@@ -13,6 +14,7 @@ namespace RBX
 	class SimJobStage : public IWorldStage
 	{
 	private:
+		std::list<SimJob*> jobs;
 		std::list<Mechanism*> mechanisms;
 	  
 	private:
@@ -36,6 +38,8 @@ namespace RBX
 		void onAssemblyAdded(Assembly* a);
 		void onAssemblyRemoving(Assembly* a);
 		void notifyMovingPrimitives();
+		void insertJob(SimJob* job);
+		void removeJob(SimJob* job);
 
 		template<typename Class>
 		void reportMechanisms(Class& callback, MechanismTracker& tracker, const Mechanism* ignore);
@@ -51,7 +55,8 @@ namespace RBX
 	{
 		if (mechanisms.empty())
 			return;
-		Mechanism* start = tracker.tracking() ? tracker.getMechanism() : mechanisms.front();
+		Mechanism* start = tracker.tracking() ? tracker.getMechanism() : NULL;
+		if (!start) start = mechanisms.front();
 		Mechanism* current = start;
 		do
 		{

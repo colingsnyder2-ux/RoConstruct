@@ -1,14 +1,12 @@
-// from server: 72% by EspClaude
-// from server: 100% by Espeon
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_propgridcontainers_fdf37cf8a5e473bb.cpp
-
-// Candidate translation unit (score above; library headers required).
 #include <map>
 #include <vector>
 void* __cdecl operator new(unsigned int);
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+extern long g_trackCount;
 
 struct Base
 {
@@ -20,47 +18,73 @@ struct Base
     char reserved64[0x124];
 };
 
-struct __declspec(novtable) Interface
+struct sp_counted_base;
+struct SharedCount
 {
-    virtual void interfaceFunction() = 0;
+    sp_counted_base* pi_;
+    SharedCount() : pi_(0) {}
+    ~SharedCount();
+};
+struct SharedPtr
+{
+    void* px;
+    SharedCount pn;
+    SharedPtr() : px(0), pn() {}
 };
 
-struct Resource
+struct Handle
 {
-    Resource();
-    ~Resource();
-    char data[12];
+    void* h;
+    Handle() : h(0) {}
+    ~Handle();
+};
+
+struct WeakBase
+{
+    void* px;
+    sp_counted_base* pn;
+    WeakBase() { InterlockedIncrement(&g_trackCount); px = 0; pn = 0; }
+    ~WeakBase();
+};
+
+struct WeakDerived : WeakBase
+{
+    ~WeakDerived();
 };
 
 typedef std::vector<void*> Owner;
 typedef std::map<void*,void*> Map;
-typedef Map OtherMap;
-typedef Map FinalMap;
-struct CPropGrid : Base, Interface
+typedef std::map<int,void*> OtherMap;
+typedef std::map<void*,int> FinalMap;
+typedef std::map<int,int> LastMap;
+struct CPropGrid : Base
 {
     CPropGrid();
     virtual ~CPropGrid();
-    virtual void interfaceFunction();
 
-    Resource resource;
-    int value198;
+    SharedPtr shared;
+    int a, b, c;
+    Handle handle;
+    int value1a0;
     Owner owner;
     Map map1;
     Map map2;
-    bool flag1;
-    bool flag2;
     OtherMap map3;
+    bool flag1;
     FinalMap map4;
+    LastMap map5;
+    WeakDerived weak;
 };
 
 CPropGrid::CPropGrid()
-    : value198(0),
+    : a(0), b(0), c(0),
+      value1a0(0),
       map1(),
       map2(),
-      flag1(false),
-      flag2(false),
       map3(),
-      map4()
+      flag1(false),
+      map4(),
+      map5()
 {
     value60 = 0;
 }

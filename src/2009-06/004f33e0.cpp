@@ -1,11 +1,13 @@
-// from server: 71% by why2
-struct EventSource {
-    void invoke(void*);
+// from server: 90% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+class __multiple_inheritance Target;
+struct Arg { int a; };
+struct Holder {
+	void (Target::*pmf)(Arg*);
+	Target* obj;
+	int pad;
+	Arg arg;
 };
-
-void EventSource::invoke(void* arg)
-{
-    char* p = *(char**)arg;
-    void (*fn)(void*) = *(void (**)(void*))p;
-    fn(p + 0x10);
-}
+void invoke(Holder** h){ Holder* p=*h; ((*p).obj->*(*p).pmf)(&(*p).arg); }

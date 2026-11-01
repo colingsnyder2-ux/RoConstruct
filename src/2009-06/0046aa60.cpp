@@ -1,4 +1,286 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
+// roc 2009-06 0046aa60  unit: DxUserInput  size: 866 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 0046aa60
+//
+// 0046aa60  55                   push ebp
+// 0046aa61  8bec                 mov ebp, esp
+// 0046aa63  83e4f8               and esp, 0xfffffff8
+// 0046aa66  6aff                 push -1
+// 0046aa68  68cb328500           push 0x8532cb
+// 0046aa6d  64a100000000         mov eax, dword ptr fs:[0]
+// 0046aa73  50                   push eax
+// 0046aa74  64892500000000       mov dword ptr fs:[0], esp
+// 0046aa7b  51                   push ecx
+// 0046aa7c  b870a00000           mov eax, 0xa070
+// 0046aa81  e85af12a00           call 0x719be0
+// 0046aa86  53                   push ebx
+// 0046aa87  55                   push ebp
+// 0046aa88  56                   push esi
+// 0046aa89  57                   push edi
+// 0046aa8a  8bf1                 mov esi, ecx
+// 0046aa8c  8d7e2c               lea edi, [esi + 0x2c]
+// 0046aa8f  57                   push edi
+// 0046aa90  c744241c00080000     mov dword ptr [esp + 0x1c], 0x800
+// 0046aa98  897c2450             mov dword ptr [esp + 0x50], edi
+// 0046aa9c  ff15a8e18900         call dword ptr [0x89e1a8]
+// 0046aaa2  c644245001           mov byte ptr [esp + 0x50], 1
+// 0046aaa7  8b8670010000         mov eax, dword ptr [esi + 0x170]
+// 0046aaad  50                   push eax
+// 0046aaae  8d44241c             lea eax, [esp + 0x1c]
+// 0046aab2  50                   push eax
+// 0046aab3  8d8c2488000000       lea ecx, [esp + 0x88]
+// 0046aaba  51                   push ecx
+// 0046aabb  33db                 xor ebx, ebx
+// 0046aabd  8bce                 mov ecx, esi
+// 0046aabf  899c2498a00000       mov dword ptr [esp + 0xa098], ebx
+// 0046aac6  e865f2ffff           call 0x469d30
+// 0046aacb  57                   push edi
+// 0046aacc  84c0                 test al, al
+// 0046aace  7522                 jne 0x46aaf2
+// 0046aad0  889e8a010000         mov byte ptr [esi + 0x18a], bl
+// 0046aad6  ff15ace18900         call dword ptr [0x89e1ac]
+// 0046aadc  8b8c2484a00000       mov ecx, dword ptr [esp + 0xa084]
+// 0046aae3  64890d00000000       mov dword ptr fs:[0], ecx
+// 0046aaea  5f                   pop edi
+// 0046aaeb  5e                   pop esi
+// 0046aaec  5d                   pop ebp
+// 0046aaed  5b                   pop ebx
+// 0046aaee  8be5                 mov esp, ebp
+// 0046aaf0  5d                   pop ebp
+// 0046aaf1  c3                   ret 
+// 0046aaf2  c7842490a00000ffffffff mov dword ptr [esp + 0xa090], 0xffffffff
+// 0046aafd  ff15ace18900         call dword ptr [0x89e1ac]
+// 0046ab03  d9ee                 fldz 
+// 0046ab05  d954241c             fst dword ptr [esp + 0x1c]
+// 0046ab09  885c2413             mov byte ptr [esp + 0x13], bl
+// 0046ab0d  d9542420             fst dword ptr [esp + 0x20]
+// 0046ab11  895c2414             mov dword ptr [esp + 0x14], ebx
+// 0046ab15  395c2418             cmp dword ptr [esp + 0x18], ebx
+// 0046ab19  0f861c010000         jbe 0x46ac3b
+// 0046ab1f  8b1d9cee8900         mov ebx, dword ptr [0x89ee9c]
+// 0046ab25  8dbc2484000000       lea edi, [esp + 0x84]
+// 0046ab2c  eb04                 jmp 0x46ab32
+// 0046ab2e  8bff                 mov edi, edi
+// 0046ab30  d9ee                 fldz 
+// 0046ab32  8b4ffc               mov ecx, dword ptr [edi - 4]
+// 0046ab35  8d47fc               lea eax, [edi - 4]
+// 0046ab38  83f90d               cmp ecx, 0xd
+// 0046ab3b  0f87e0000000         ja 0x46ac21
+// 0046ab41  0fb691b4ad4600       movzx edx, byte ptr [ecx + 0x46adb4]
+// 0046ab48  ff2495a0ad4600       jmp dword ptr [edx*4 + 0x46ada0]
+// 0046ab4f  8b8664010000         mov eax, dword ptr [esi + 0x164]
+// 0046ab55  ddd8                 fstp st(0)
+// 0046ab57  8b4820               mov ecx, dword ptr [eax + 0x20]
+// 0046ab5a  6a00                 push 0
+// 0046ab5c  6a00                 push 0
+// 0046ab5e  68bb040000           push 0x4bb
+// 0046ab63  51                   push ecx
+// 0046ab64  ffd3                 call ebx
+// 0046ab66  8b16                 mov edx, dword ptr [esi]
+// 0046ab68  8b12                 mov edx, dword ptr [edx]
+// 0046ab6a  8d44243c             lea eax, [esp + 0x3c]
+// 0046ab6e  50                   push eax
+// 0046ab6f  8bce                 mov ecx, esi
+// 0046ab71  ffd2                 call edx
+// 0046ab73  50                   push eax
+// 0046ab74  33c0                 xor eax, eax
+// 0046ab76  813f80000000         cmp dword ptr [edi], 0x80
+// 0046ab7c  8bce                 mov ecx, esi
+// 0046ab7e  0f95c0               setne al
+// 0046ab81  83c003               add eax, 3
+// 0046ab84  50                   push eax
+// 0046ab85  e806f6ffff           call 0x46a190
+// 0046ab8a  e994000000           jmp 0x46ac23
+// 0046ab8f  8b8e64010000         mov ecx, dword ptr [esi + 0x164]
+// 0046ab95  ddd8                 fstp st(0)
+// 0046ab97  8b5120               mov edx, dword ptr [ecx + 0x20]
+// 0046ab9a  6a00                 push 0
+// 0046ab9c  6a00                 push 0
+// 0046ab9e  68bb040000           push 0x4bb
+// 0046aba3  52                   push edx
+// 0046aba4  ffd3                 call ebx
+// 0046aba6  8b06                 mov eax, dword ptr [esi]
+// 0046aba8  8b10                 mov edx, dword ptr [eax]
+// 0046abaa  8d4c2478             lea ecx, [esp + 0x78]
+// 0046abae  51                   push ecx
+// 0046abaf  8bce                 mov ecx, esi
+// 0046abb1  ffd2                 call edx
+// 0046abb3  50                   push eax
+// 0046abb4  33c0                 xor eax, eax
+// 0046abb6  813f80000000         cmp dword ptr [edi], 0x80
+// 0046abbc  8bce                 mov ecx, esi
+// 0046abbe  0f95c0               setne al
+// 0046abc1  40                   inc eax
+// 0046abc2  50                   push eax
+// 0046abc3  e8c8f5ffff           call 0x46a190
+// 0046abc8  eb59                 jmp 0x46ac23
+// 0046abca  8d4c241c             lea ecx, [esp + 0x1c]
+// 0046abce  ddd8                 fstp st(0)
+// 0046abd0  51                   push ecx
+// 0046abd1  50                   push eax
+// 0046abd2  8d542470             lea edx, [esp + 0x70]
+// 0046abd6  52                   push edx
+// 0046abd7  c644241f01           mov byte ptr [esp + 0x1f], 1
+// 0046abdc  e84f080000           call 0x46b430
+// 0046abe1  83c408               add esp, 8
+// 0046abe4  50                   push eax
+// 0046abe5  8bce                 mov ecx, esi
+// 0046abe7  e814faffff           call 0x46a600
+// 0046abec  eb35                 jmp 0x46ac23
+// 0046abee  db07                 fild dword ptr [edi]
+// 0046abf0  bd08000000           mov ebp, 8
+// 0046abf5  d80d34d08b00         fmul dword ptr [0x8bd034]
+// 0046abfb  ded9                 fcompp 
+// 0046abfd  dfe0                 fnstsw ax
+// 0046abff  f6c441               test ah, 0x41
+// 0046ac02  7405                 je 0x46ac09
+// 0046ac04  bd09000000           mov ebp, 9
+// 0046ac09  8b06                 mov eax, dword ptr [esi]
+// 0046ac0b  8b10                 mov edx, dword ptr [eax]
+// 0046ac0d  8d4c2444             lea ecx, [esp + 0x44]
+// 0046ac11  51                   push ecx
+// 0046ac12  8bce                 mov ecx, esi
+// 0046ac14  ffd2                 call edx
+// 0046ac16  50                   push eax
+// 0046ac17  55                   push ebp
+// 0046ac18  8bce                 mov ecx, esi
+// 0046ac1a  e871f5ffff           call 0x46a190
+// 0046ac1f  eb02                 jmp 0x46ac23
+// 0046ac21  ddd8                 fstp st(0)
+// 0046ac23  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0046ac27  40                   inc eax
+// 0046ac28  83c714               add edi, 0x14
+// 0046ac2b  89442414             mov dword ptr [esp + 0x14], eax
+// 0046ac2f  3b442418             cmp eax, dword ptr [esp + 0x18]
+// 0046ac33  0f82f7feffff         jb 0x46ab30
+// 0046ac39  eb02                 jmp 0x46ac3d
+// 0046ac3b  ddd8                 fstp st(0)
+// 0046ac3d  e84e1f1000           call 0x56cb90
+// 0046ac42  8bc8                 mov ecx, eax
+// 0046ac44  d901                 fld dword ptr [ecx]
+// 0046ac46  d85c241c             fcomp dword ptr [esp + 0x1c]
+// 0046ac4a  dfe0                 fnstsw ax
+// 0046ac4c  f6c444               test ah, 0x44
+// 0046ac4f  7a12                 jp 0x46ac63
+// 0046ac51  d94104               fld dword ptr [ecx + 4]
+// 0046ac54  d85c2420             fcomp dword ptr [esp + 0x20]
+// 0046ac58  dfe0                 fnstsw ax
+// 0046ac5a  f6c444               test ah, 0x44
+// 0046ac5d  0f8bc2000000         jnp 0x46ad25
+// 0046ac63  8b8e78010000         mov ecx, dword ptr [esi + 0x178]
+// 0046ac69  8b890c020000         mov ecx, dword ptr [ecx + 0x20c]
+// 0046ac6f  8d44241c             lea eax, [esp + 0x1c]
+// 0046ac73  50                   push eax
+// 0046ac74  e807021c00           call 0x62ae80
+// 0046ac79  8b16                 mov edx, dword ptr [esi]
+// 0046ac7b  8b12                 mov edx, dword ptr [edx]
+// 0046ac7d  8d442444             lea eax, [esp + 0x44]
+// 0046ac81  50                   push eax
+// 0046ac82  8bce                 mov ecx, esi
+// 0046ac84  ffd2                 call edx
+// 0046ac86  50                   push eax
+// 0046ac87  8d4c2418             lea ecx, [esp + 0x18]
+// 0046ac8b  e8709a1000           call 0x574700
+// 0046ac90  8d44243c             lea eax, [esp + 0x3c]
+// 0046ac94  50                   push eax
+// 0046ac95  8bce                 mov ecx, esi
+// 0046ac97  e834ecffff           call 0x4698d0
+// 0046ac9c  8b00                 mov eax, dword ptr [eax]
+// 0046ac9e  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0046aca2  33d2                 xor edx, edx
+// 0046aca4  894c242c             mov dword ptr [esp + 0x2c], ecx
+// 0046aca8  33c9                 xor ecx, ecx
+// 0046acaa  6689542430           mov word ptr [esp + 0x30], dx
+// 0046acaf  8d542424             lea edx, [esp + 0x24]
+// 0046acb3  66894c2432           mov word ptr [esp + 0x32], cx
+// 0046acb8  8b8e78010000         mov ecx, dword ptr [esi + 0x178]
+// 0046acbe  52                   push edx
+// 0046acbf  c744242806000000     mov dword ptr [esp + 0x28], 6
+// 0046acc7  8974242c             mov dword ptr [esp + 0x2c], esi
+// 0046accb  89442438             mov dword ptr [esp + 0x38], eax
+// 0046accf  e85c081900           call 0x5fb530
+// 0046acd4  8b06                 mov eax, dword ptr [esi]
+// 0046acd6  8b10                 mov edx, dword ptr [eax]
+// 0046acd8  8d4c2444             lea ecx, [esp + 0x44]
+// 0046acdc  51                   push ecx
+// 0046acdd  8bce                 mov ecx, esi
+// 0046acdf  ffd2                 call edx
+// 0046ace1  50                   push eax
+// 0046ace2  8d4c2418             lea ecx, [esp + 0x18]
+// 0046ace6  e8159a1000           call 0x574700
+// 0046aceb  8d44243c             lea eax, [esp + 0x3c]
+// 0046acef  50                   push eax
+// 0046acf0  8bce                 mov ecx, esi
+// 0046acf2  e8d9ebffff           call 0x4698d0
+// 0046acf7  8b00                 mov eax, dword ptr [eax]
+// 0046acf9  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0046acfd  33d2                 xor edx, edx
+// 0046acff  894c242c             mov dword ptr [esp + 0x2c], ecx
+// 0046ad03  33c9                 xor ecx, ecx
+// 0046ad05  6689542430           mov word ptr [esp + 0x30], dx
+// 0046ad0a  c744242405000000     mov dword ptr [esp + 0x24], 5
+// 0046ad12  89742428             mov dword ptr [esp + 0x28], esi
+// 0046ad16  66894c2432           mov word ptr [esp + 0x32], cx
+// 0046ad1b  89442434             mov dword ptr [esp + 0x34], eax
+// 0046ad1f  8d542424             lea edx, [esp + 0x24]
+// 0046ad23  eb56                 jmp 0x46ad7b
+// 0046ad25  807c241300           cmp byte ptr [esp + 0x13], 0
+// 0046ad2a  745b                 je 0x46ad87
+// 0046ad2c  8b06                 mov eax, dword ptr [esi]
+// 0046ad2e  8b10                 mov edx, dword ptr [eax]
+// 0046ad30  8d4c2470             lea ecx, [esp + 0x70]
+// 0046ad34  51                   push ecx
+// 0046ad35  8bce                 mov ecx, esi
+// 0046ad37  ffd2                 call edx
+// 0046ad39  50                   push eax
+// 0046ad3a  8d4c243c             lea ecx, [esp + 0x3c]
+// 0046ad3e  e8bd991000           call 0x574700
+// 0046ad43  8d44244c             lea eax, [esp + 0x4c]
+// 0046ad47  50                   push eax
+// 0046ad48  8bce                 mov ecx, esi
+// 0046ad4a  e881ebffff           call 0x4698d0
+// 0046ad4f  8b00                 mov eax, dword ptr [eax]
+// 0046ad51  8b4c2438             mov ecx, dword ptr [esp + 0x38]
+// 0046ad55  33d2                 xor edx, edx
+// 0046ad57  894c245c             mov dword ptr [esp + 0x5c], ecx
+// 0046ad5b  33c9                 xor ecx, ecx
+// 0046ad5d  6689542460           mov word ptr [esp + 0x60], dx
+// 0046ad62  c744245405000000     mov dword ptr [esp + 0x54], 5
+// 0046ad6a  89742458             mov dword ptr [esp + 0x58], esi
+// 0046ad6e  66894c2462           mov word ptr [esp + 0x62], cx
+// 0046ad73  89442464             mov dword ptr [esp + 0x64], eax
+// 0046ad77  8d542454             lea edx, [esp + 0x54]
+// 0046ad7b  8b8e78010000         mov ecx, dword ptr [esi + 0x178]
+// 0046ad81  52                   push edx
+// 0046ad82  e8a9071900           call 0x5fb530
+// 0046ad87  8b8c2484a00000       mov ecx, dword ptr [esp + 0xa084]
+// 0046ad8e  5f                   pop edi
+// 0046ad8f  64890d00000000       mov dword ptr fs:[0], ecx
+// 0046ad96  5e                   pop esi
+// 0046ad97  5d                   pop ebp
+// 0046ad98  5b                   pop ebx
+// 0046ad99  8be5                 mov esp, ebp
+// 0046ad9b  5d                   pop ebp
+// 0046ad9c  c3                   ret 
+// 0046ad9d  8d4900               lea ecx, [ecx]
+// 0046ada0  caab46               retf 0x46ab
+// 0046ada3  00ee                 add dh, ch
+// 0046ada5  ab                   stosd dword ptr es:[edi], eax
+// 0046ada6  46                   inc esi
+// 0046ada7  004fab               add byte ptr [edi - 0x55], cl
+// 0046adaa  46                   inc esi
+// 0046adab  008fab460021         add byte ptr [edi + 0x210046ab], cl
+// 0046adb1  ac                   lodsb al, byte ptr [esi]
+// 0046adb2  46                   inc esi
+// 0046adb3  0000                 add byte ptr [eax], al
+// 0046adb5  0404                 add al, 4
+// 0046adb7  0400                 add al, 0
+// 0046adb9  0404                 add al, 4
+// 0046adbb  0401                 add al, 1
+// 0046adbd  0404                 add al, 4
+// 0046adbf  0402                 add al, 2
+
 // from server: 100% by EspClaude
 // roc 2008-06 004685b0  unit: DxUserInput  size: 1026 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004685b0
@@ -853,18 +1135,18 @@ class UIEvent {public:enum EventType {NO_EVENT,MOUSE_RIGHT_BUTTON_DOWN,MOUSE_RIG
 class Workspace {public:void onWrapMouse(const G3D::Vector2&);}; //005a0220
 class DataModel {public:
  class Lock {boost::shared_ptr<boost::recursive_mutex>mutex;boost::detail::scoped_lock<boost::recursive_mutex>*lock;public:Lock(boost::shared_ptr<const DataModel>);~Lock();};
- char observed00[0x204];boost::shared_ptr<Workspace>workspace;
+ char observed00[0x20c];boost::shared_ptr<Workspace>workspace;void processInputEvent(const UIEvent&);
  Workspace*getWorkspace()const{return workspace.get();}
 };
 }
 // Existing CWnd pointer only; observed HWND field20. No CWnd objects or size claim.
 class CWnd {public:char observed00[0x20];HWND m_hWnd;BOOL PostMessage(unsigned int message,unsigned int wParam=0,long lParam=0){return ::PostMessageA(m_hWnd,message,wParam,lParam);}};
-class DxUserInput:public RBX::UserInputBase,public RBX::Listener<RBX::RunService,RBX::RunTransition>,public RBX::Listener<RBX::RunService,RBX::Heartbeat> {
+class DxUserInput:public RBX::UserInputBase,public RBX::Listener<RBX::RunService,RBX::RunTransition> {
 public:
- char observed30[4];ATL::CComCriticalSection critical;char observed4c[0x120];CWnd*window;char observed170[8];IDirectInputDevice8A*mouseDevice;char observed17c[4];boost::shared_ptr<RBX::DataModel>model;char observed188[10];bool acquired;char observed193;
+ ATL::CComCriticalSection critical;char observed4c[0x120];CWnd*window;char observed170[8];IDirectInputDevice8A*mouseDevice;char observed17c[4];boost::shared_ptr<RBX::DataModel>model;char observed188[10];bool acquired;char observed193;
  DxUserInput(CWnd*,RBX::DataModel*);~DxUserInput();
  G3D::Vector2 getCursorPosition();void setWrapMode(WrapMode);WrapMode getWrapMode()const;void centerCursor();bool keyDown(SDLKey)const;void setKeyState(SDLKey,bool);
- void onEvent(const RBX::RunService*,RBX::RunTransition);void onEvent(const RBX::RunService*,RBX::Heartbeat);
+ void onEvent(const RBX::RunService*,RBX::RunTransition);
  bool readBufferedInput(DIDEVICEOBJECTDATA*,DWORD*,IDirectInputDevice8A*); //00467880 ret12
  G3D::Vector2int16 getWindowSize(); //00467440 hiddenret4
  void sendMouseEvent(RBX::UIEvent::EventType,const G3D::Vector2&); //004684a0 ret8
@@ -890,38 +1172,10 @@ void DxUserInput::processMouseInput(){
   }
  }
  if(delta!=G3D::Vector2::zero()){
-  RBX::DataModel::Lock lock(model);
   model->getWorkspace()->onWrapMouse(delta);
-  {RBX::UIEvent event(this,RBX::UIEvent::MOUSE_DELTA,getWindowSize(),getCursorPosition());dispatchEvent(event);}
-  {RBX::UIEvent event(this,RBX::UIEvent::MOUSE_MOVE,getWindowSize(),getCursorPosition());dispatchEvent(event);}
+  {RBX::UIEvent event(this,RBX::UIEvent::MOUSE_DELTA,getWindowSize(),getCursorPosition());model->processInputEvent(event);}
+  {RBX::UIEvent event(this,RBX::UIEvent::MOUSE_MOVE,getWindowSize(),getCursorPosition());model->processInputEvent(event);}
  }else if(moved){
-  RBX::DataModel::Lock lock(model);
-  RBX::UIEvent event(this,RBX::UIEvent::MOUSE_MOVE,getWindowSize(),getCursorPosition());dispatchEvent(event);
+  RBX::UIEvent event(this,RBX::UIEvent::MOUSE_MOVE,getWindowSize(),getCursorPosition());model->processInputEvent(event);
  }
 }
-
-
-
-typedef char input_vec_size[sizeof(G3D::Vector2)==8?1:-1];
-typedef char input_shortvec_size[sizeof(G3D::Vector2int16)==4?1:-1];
-typedef char input_shortvec_align[__alignof(G3D::Vector2int16)==2?1:-1];
-typedef char input_event_size[sizeof(RBX::UIEvent)==20?1:-1];
-typedef char input_event_position[offsetof(RBX::UIEvent,mousePosition)==8?1:-1];
-typedef char input_event_delta[offsetof(RBX::UIEvent,mouseDelta)==12?1:-1];
-typedef char input_event_window[offsetof(RBX::UIEvent,windowSize)==16?1:-1];
-typedef char input_data_size[sizeof(DIDEVICEOBJECTDATA)==20?1:-1];
-typedef char input_data_data[offsetof(DIDEVICEOBJECTDATA,dwData)==4?1:-1];
-typedef char input_cs_size[sizeof(CRITICAL_SECTION)==24?1:-1];
-typedef char input_cs_align[__alignof(CRITICAL_SECTION)==4?1:-1];
-typedef char input_guard_size[sizeof(ATL::CComCritSecLock<ATL::CComCriticalSection>)==8?1:-1];
-typedef char input_shared_size[sizeof(boost::shared_ptr<RBX::DataModel>)==8?1:-1];
-typedef char input_lock_size[sizeof(RBX::DataModel::Lock)==12?1:-1];
-typedef char input_base_size[sizeof(RBX::UserInputBase)==40?1:-1];
-typedef char input_dx_size[sizeof(DxUserInput)==404?1:-1];
-typedef char input_mutex_offset[offsetof(DxUserInput,critical)==0x34?1:-1];
-typedef char input_window_offset[offsetof(DxUserInput,window)==0x16c?1:-1];
-typedef char input_device_offset[offsetof(DxUserInput,mouseDevice)==0x178?1:-1];
-typedef char input_model_offset[offsetof(DxUserInput,model)==0x180?1:-1];
-typedef char input_acquired_offset[offsetof(DxUserInput,acquired)==0x192?1:-1];
-typedef char input_workspace_offset[offsetof(RBX::DataModel,workspace)==0x204?1:-1];
-typedef char input_hwnd_offset[offsetof(CWnd,m_hWnd)==0x20?1:-1];

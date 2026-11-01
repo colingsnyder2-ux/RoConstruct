@@ -1,7 +1,7 @@
-// from server: 71% by EspClaude
+// from server: 100% by EspClaude
 // from server: 100% by colin
 // roc-cl: 21022
-// roc-flags: /Od /Ob0 /GS /EHsc /MD
+// roc-flags: /Od /Ob0 /GS- /EHsc /MD
 #pragma optimize("g", off)
 
 struct First {

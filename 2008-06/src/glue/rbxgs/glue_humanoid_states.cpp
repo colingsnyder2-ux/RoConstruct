@@ -44,7 +44,12 @@ namespace RBX
 			return this;
 		}
 	public:
-		RecoveredLanded(Humanoid* humanoid) : Running(humanoid), remaining(0.45f) {}
+		RecoveredLanded(Humanoid* humanoid) : Running(humanoid), remaining(0.45f) {
+			// 00645450 / 006453a0 refresh replacement floor before its first force.
+			Controller& controller = *NullController::getStaticNullController();
+			Balancing::onStep(0.0f, controller);
+			updateGoals(controller);
+		}
 		virtual const Name& getName() const { return Name::declare("Landed", -1); }
 	};
 	Humanoid::State* CreateRecoveredLanded(Humanoid* humanoid) { return new RecoveredLanded(humanoid); }
@@ -132,6 +137,14 @@ namespace RBX
 		float maxTorqueY = body->getBranchIBodyV3().y * kTurnAccelMax;
 		desiredTorqueY = G3D::clamp(desiredTorqueY, -maxTorqueY, maxTorqueY);
 		body->accumulateTorque(G3D::Vector3(0, desiredTorqueY, 0));
+		// Original 006675d0 applies bounded horizontal air control, no vertical force.
+		Body* torso = humanoid->getTorsoBody();
+		if (torso) {
+			G3D::Vector3 acceleration = ((desiredVelocity - body->getVelocity().linear) * 1250.0f).clamp(
+				G3D::Vector3(-1000,0,-1000), G3D::Vector3(1000,10000,1000));
+			acceleration.y = 0;
+			body->accumulateForceAtBranchCofm(acceleration * torso->getBranchMass());
+		}
 	}
 
 	// Adapted from 00667a40: drive torso velocity toward 50 and react on floor.

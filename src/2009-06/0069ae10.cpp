@@ -1,123 +1,31 @@
-// from server: 71% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
-
-namespace RBX
-{
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
-
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
-
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
-
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
-
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
-
-			PartInstance* handle = flag->getHandle();
-
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
-
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
-
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
-
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
-
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
-
-		return NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
+namespace RBX {
+class GuidItemBase { public: virtual void g0(); char pad[0x10]; };
+class Object { public: virtual void o0(); };
+class DescribedBase { public: virtual void d0(); int descriptor; };
+class Debugable { public: virtual void b0(); char pad[8]; };
+class Instance : public GuidItemBase, public Object, public DescribedBase, public Debugable {
+public:
+	Instance();
+	virtual ~Instance();
+	char ipad[0x8c - 0x2c];
+};
+class GuiTarget { public: virtual void t0(); char pad[0x6c]; };
+class IEquipable { public: virtual void e0(); char pad[0xc]; };
+class IRenderable { public: virtual void r0(); char pad[0xc]; };
+class IHasLocation { public: virtual void h0(); };
+class Tool : public Instance, public GuiTarget, public IEquipable, public IRenderable, public IHasLocation {
+public:
+	Tool();
+	virtual ~Tool();
+};
+class Flag : public Tool {
+public:
+	Flag();
+	virtual ~Flag();
+};
+Flag::~Flag() {}
 }

@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espeon_nativeobjectvalueconvert5bd45d0870ea4db6.cpp
+// roc-lib: rbxgs-dll roc_espclaude_132cc58fb0f8c7af.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "reflection/type.h"
@@ -16,13 +17,14 @@
 
 
 namespace RBX { namespace Reflection {
+template<class T> struct ExeCounter { static int n; };
 		template<>
 		boost::shared_ptr<Instance>& Value::convert<boost::shared_ptr<Instance>>()
 		{
 			if (isType<void>())
 			{
 				value = boost::shared_ptr<Instance>();
-				_type = &Type::singleton<boost::shared_ptr<Instance>>();
+				++ExeCounter<boost::shared_ptr<Instance> >::n; _type = &Type::singleton<boost::shared_ptr<Instance>>();
 			}
 			if (isType<boost::shared_ptr<DescribedBase>>())
 			{
@@ -40,7 +42,7 @@ namespace RBX { namespace Reflection {
 					value = boost::shared_ptr<Instance>();
 				}
 
-				_type = &Type::singleton<boost::shared_ptr<Instance>>();
+				++ExeCounter<boost::shared_ptr<Instance> >::n; _type = &Type::singleton<boost::shared_ptr<Instance>>();
 			}
 
 			boost::shared_ptr<Instance>* val = boost::any_cast<boost::shared_ptr<Instance>>(&value);
@@ -51,3 +53,4 @@ namespace RBX { namespace Reflection {
 		}
 
 }}
+
