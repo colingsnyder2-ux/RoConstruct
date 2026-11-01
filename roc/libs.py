@@ -203,6 +203,11 @@ for _v, _sha in [("1.34.1", "ef99062117068a0d641f4045c421661768657262a3d119c4a27
 
 def winsdk_include():
     """Windows SDK headers ship inside the VCForPython compiler package."""
+    configured = [Path(path) for path in os.environ.get('ROC_WINSDK', '').split(os.pathsep) if path]
+    for root in configured:
+        if (root/'Include').is_dir() and (root/'Lib').is_dir() and any(
+                path.name.lower() == 'kernel32.lib' for path in (root/'Lib').iterdir()):
+            return str(root/'Include')
     found = sorted(root/'Include' for root in setup.toolchain_paths(setup.TOOLS)[1] if (root/'Include').is_dir())
     return str(found[0]) if found else ""
 

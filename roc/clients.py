@@ -577,9 +577,26 @@ def _remember_build(name, label):
         pass
 
 
-def fetch(name, quiet=False, extras=True):
+def fetch(name, quiet=False, extras=True, local=None):
     """Get one client onto disk and verified. Drive first, clients.zip as fallback."""
     entry = _need(name)
+    if local:
+        source = Path(local).expanduser().resolve()
+        if not source.is_file() or sha256(source) != entry['sha256']:
+            raise FetchError('Local client must match the registered SHA-256: ' + str(source))
+        target = exe_path(name, entry)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if source != target.resolve():
+            shutil.copy2(source, target)
+        if extras:
+            for item in source.parent.iterdir():
+                if item.is_file() and item.suffix.lower() in ('.dll', '.xml', '.manifest'):
+                    dest = target.parent / item.name
+                    if not dest.exists():
+                        shutil.copy2(item, dest)
+        if not quiet:
+            print('%-8s reused verified local client: %s' % (name, source))
+        return 'ok'
     if verify(name, entry) == "ok":
         if not quiet:
             print("%-8s already here, hash matches the registry" % name)

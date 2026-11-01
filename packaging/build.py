@@ -212,7 +212,7 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 14,
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 15,
          "matching_workflow_version": 4}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
@@ -325,6 +325,10 @@ print('direct edit capture passed')
                                cwd=staged, capture_output=True, text=True)
     if edit_help.returncode or not all(flag in edit_help.stdout for flag in ("--related", "--all", "--fresh")):
         raise SystemExit("package lacks direct native editing commands")
+    reuse_help = subprocess.run([sys.executable, "roc.py", "client-fetch", "--help"],
+                               cwd=staged, capture_output=True, text=True)
+    if reuse_help.returncode or '--from' not in reuse_help.stdout:
+        raise SystemExit("package lacks verified local client reuse")
     return run.stdout.strip()
 
 
@@ -384,7 +388,7 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=14, matching_workflow_version=4,
+    data.update(schema=1, workflow_version=15, matching_workflow_version=4,
                 abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",

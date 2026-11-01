@@ -1,8 +1,63 @@
 # Native integration with an agent (Codex, Claude)
 
+## Local prerequisites first (mandatory)
+
+After selecting the client, search for installed inputs BEFORE `roc install`,
+`client-fetch` downloads or `rebuild prepare`. A fresh chat or Worker ZIP does not
+mean a fresh compiler/client install. Reuse verified inputs across checkouts.
+
+1. Read the session checkpoint and any recorded `reuse-tools.ps1` first. Inspect
+   the chosen checkout, the preserved previous Worker, immediate sibling
+   `RoConstruct*` folders and the workspace parent. Also inspect prior dated task
+   folders under the authorized Codex workspace (commonly Documents/Codex),
+   Downloads and the standard installed Visual Studio/VCForPython locations.
+   Search those identified roots to a bounded depth; skip vendor/source/output
+   trees and never recursively scan an entire drive. Use any explicit paths the
+   user or checkpoint supplies before expanding the search. Do not take over
+   another agent's checkout; its verified compiler/client files can be read as inputs.
+2. Locate the selected client's EXE and compare its SHA-256 with the installed
+   `clients/clients.json` entry. Names and month labels are insufficient. Reuse it
+   through `roc client-fetch CLIENT --from "ABSOLUTE_EXE_PATH"`; this verifies the
+   registered hash and copies the EXE plus missing adjacent DLL/XML/manifest files
+   without network access. It preserves the registry and existing companion files.
+   Content/Places folders are not copied by this command; use the established
+   runtime setup when required. Never use `client add` to bless an unknown hash.
+3. Locate each required historical `cl.exe`. Check its actual version banner;
+   native setup normally needs 21022, 50727 and sometimes 30729, not modern MSVC.
+   Reuse complete installs with sibling linker, librarian, VC headers/libraries
+   and Common7 runtime. Locate a complete SDK with Include and Lib/kernel32.lib;
+   reuse ATL/MFC and pinned ISO/MSI media too. Do not copy isolated compiler EXEs.
+4. Save verified absolute paths as environment assignments in this checkout's
+   `local/config/reuse-tools.ps1` (Linux: a shell env file). Set `ROC_CL` to the
+   compiler paths, `ROC_WINSDK` to the SDK root, `ROC_ATLMFC` if external and
+   `ROC_DOWNLOAD_CACHE` to cached media folders. Use the platform path separator
+   (semicolon on Windows, colon on Linux). Preserve existing working assignments.
+   Load that file before EVERY separate terminal invocation, including submit:
+
+   ```powershell
+   . .\local\config\reuse-tools.ps1
+   .\roc.cmd doctor
+   .\roc.cmd rebuild 2008-06 doctor
+   ```
+
+   Shell variables and Set-Location do not persist between tool calls. Verify both
+   compiler discovery and the native compile/link/run smoke with the reused paths.
+5. Record verified client path/hash, compiler builds/paths, SDK root, env-file path
+   and genuinely missing items in the checkpoint. Download ONLY those missing
+   items. If an existing install is not detected, repair its configuration first;
+   discovery failure is not proof that a new download is needed. A subsequent
+   command which forgets the env file must reload it, not reinstall dependencies.
+
+After a Worker update, carry forward only the verified reuse-path configuration
+and selected client using `client-fetch --from`; keep old installs intact. Reuse
+matching client analysis/RTTI only after checking its binary identity. Do not copy
+credentials, server databases or an entire mutable work tree into the new Worker.
+Do not rerun the setup download list after a successful unchanged setup. On resume,
+reuse the recorded inventory; rescan only missing/moved paths or changed requirements.
+
 ## Direct editing workflow (default)
 
-Use a current Worker with `roc native-try edit --help` and native workflow version 14.
+Use a current Worker with `roc native-try edit --help` and native workflow version 15.
 Edit real C++/header files in the editable workspace printed by the tool. No hand-written
 SEARCH/REPLACE blocks or JSON edit packets are needed. Work by shared cause/class:
 change the related methods together, keep unrelated methods unchanged, then check
@@ -383,7 +438,7 @@ report both versions; do not repeatedly download the same incompatible archive.
 
 Do not ask the user to locate or attach a Worker ZIP. If `roc/native_try.py`, `research/native-units.json`,
 or `research/native-source-lock.json` is missing, `roc native-try --help` is unavailable, or a package marker
-reports `native_workflow_version` below 14, download the current Worker package yourself:
+reports `native_workflow_version` below 15, download the current Worker package yourself:
 
 - Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip
@@ -397,7 +452,7 @@ into a new folder without overwriting the user's existing checkout or edits:
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
-if ($nativeManifest.workflow_version -lt 14 -or
+if ($nativeManifest.workflow_version -lt 15 -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip' -or
     $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
 $nativeWorkspace = (Get-Location).Path
@@ -491,13 +546,9 @@ if not already configured. Use the supplied server URL, not the owner's `localho
 Leave `ROC_NATIVE_EVIDENCE_ROOT` unset on
 another PC; it is an optional same-machine testing override.
 
-Before downloads, inventory existing dependencies once. Run `roc doctor` and
-`roc rebuild 2008-06 doctor`; inspect this checkout's tools, client executable,
-analysis files and native source trees. Also check the selected checkpoint and
-nearby existing RoConstruct installs for working tools and compiler media.
-`roc install` already skips detected compiler builds. For compilers outside its
-tool tree, set `ROC_CL` to the verified cl.exe paths (platform path separator);
-for a working SDK use `ROC_WINSDK`. Do not reinstall working Python, Git or SDKs.
+Follow **Local prerequisites first** before this setup list. Load the persisted
+reuse environment before every command. Doctor/preflight must see the same verified
+compiler and SDK paths. Do not reinstall working Python, Git, compilers or SDKs.
 
 Compiler downloads first reuse pinned ISO/MSI hashes from `tools/dl`, immediate
 nearby RoConstruct installs, the workspace parent and Downloads. Extra cache
@@ -510,11 +561,13 @@ replace this checkout's modified tools.
 
 On Windows, use `.\roc.cmd` (Linux: `./roc.sh`). The following is the dependency
 order for missing/stale prerequisites, not a mandatory full setup on every run.
-Run only needed steps; keep baseline sync and validation before new trials:
+Run only needed steps; keep baseline sync and validation before new trials.
+The `--from` argument below stands for the verified existing EXE; omit it and
+download only if the required local search found no matching client:
 
 ```text
 roc install --yes --client 2008-06
-roc client-fetch 2008-06
+roc client-fetch 2008-06 --from VERIFIED_EXISTING_EXE
 roc analyze 2008-06
 roc vtables 2008-06
 roc rebuild 2008-06 install

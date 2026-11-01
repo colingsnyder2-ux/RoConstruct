@@ -269,13 +269,18 @@ def cmd_client_fetch(a):
     """Download a client's files from Drive into clients/<name>/ and verify them."""
     from roc import clients
     reg = clients.load()
+    if getattr(a, 'local', None) and a.name == 'all':
+        raise SystemExit('client-fetch --from needs one selected client')
     names = sorted(reg) if a.name == "all" else [a.name]
     bad = 0
     for name in names:
         if name not in reg:
             sys.exit("%s is not registered. See:  roc client list" % name)
         try:
-            clients.fetch(name)
+            if getattr(a, 'local', None):
+                clients.fetch(name, local=a.local)
+            else:
+                clients.fetch(name)
         except clients.FetchError as error:
             print("%-8s %s" % (name, error))
             bad += 1
@@ -2789,7 +2794,7 @@ def main(argv=None):
     p.set_defaults(fn=cmd_client_add)
     c.add_parser("verify", help="check your exes: same build as registered, not modified").set_defaults(fn=cmd_client_verify)
     cmd("client-fetch", cmd_client_fetch, "download a client from Drive and verify it ('all' for every client)",
-        (["name"], {}))
+        (["name"], {}), (["--from"], {"dest": "local", "help": "reuse an existing EXE after verifying the registered SHA-256; no download"}))
     p = cmd("client-sources", cmd_client_sources, "set the clients.zip bundle, or index a Drive folder",
             (["folder"], {"nargs": "?"}), (["--bundle"], {"help": "local clients.zip to hash and record"}),
             (["--also"], {"help": "comma-separated months to index even though they are not "

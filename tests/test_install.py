@@ -422,7 +422,7 @@ def test_worker_bootstrap_publishes_both_guides_and_verified_archive(tmp_path):
     build.prepare_downloads(package)
     folder = tmp_path / 'local/findings/data'
     manifest = json.loads((folder / 'native-worker.json').read_text())
-    assert manifest['workflow_version'] == 14
+    assert manifest['workflow_version'] == 15
     assert manifest['matching_workflow_version'] == 4
     assert manifest['abi_manifest_classes'] == 1
     assert manifest['sha256'] == hashlib.sha256((folder / 'native-worker.zip').read_bytes()).hexdigest()
@@ -1057,3 +1057,53 @@ def test_package_rejects_crlf_generator_before_publication(tmp_path):
     generator.write_bytes(b'pass\r\n')
     with pytest.raises(SystemExit, match='LF line endings'):
         build.verify(tmp_path)
+
+
+def test_client_fetch_reuses_verified_local_binary_without_download(tmp_path, monkeypatch):
+    import hashlib
+    from roc import clients
+    monkeypatch.setattr(clients, 'ROOT', tmp_path/'new-checkout')
+    original = tmp_path/'old-checkout/clients/2008-06/Roblox.exe'
+    original.parent.mkdir(parents=True)
+    original.write_bytes(b'verified registered client')
+    (original.parent/'rgmain.dll').write_bytes(b'existing runtime')
+    (original.parent/'provider-credentials.json').write_text('do not copy')
+    entry = {'exe':'Roblox.exe', 'sha256':hashlib.sha256(original.read_bytes()).hexdigest()}
+    monkeypatch.setattr(clients, 'load', lambda: {'2008-06':entry})
+    monkeypatch.setattr(clients, 'from_drive', lambda *a, **k: (_ for _ in ()).throw(AssertionError('No download')))
+    assert clients.fetch('2008-06', local=original) == 'ok'
+    dest = clients.exe_path('2008-06', entry)
+    assert dest.read_bytes() == original.read_bytes()
+    assert (dest.parent/'rgmain.dll').read_bytes() == b'existing runtime'
+    assert not (dest.parent/'provider-credentials.json').exists()
+    (dest.parent/'rgmain.dll').write_bytes(b'preserved existing runtime')
+    clients.fetch('2008-06', local=original)
+    assert (dest.parent/'rgmain.dll').read_bytes() == b'preserved existing runtime'
+
+
+def test_client_fetch_rejects_wrong_local_hash_before_writing(tmp_path, monkeypatch):
+    import pytest
+    from roc import clients
+    monkeypatch.setattr(clients, 'ROOT', tmp_path/'new-checkout')
+    original = tmp_path/'Roblox.exe'
+    original.write_bytes(b'wrong build')
+    monkeypatch.setattr(clients, 'load', lambda: {'2008-06':{'exe':'Roblox.exe','sha256':'0'*64}})
+    with pytest.raises(clients.FetchError, match='registered SHA-256'):
+        clients.fetch('2008-06', local=original)
+    assert not clients.ROOT.exists()
+
+
+def test_external_sdk_is_visible_to_prepare_and_compiler_discovery(tmp_path, monkeypatch):
+    from roc import libs, rebuild, setup
+    sdk = tmp_path/'external SDK'
+    (sdk/'Include').mkdir(parents=True)
+    (sdk/'Lib').mkdir()
+    (sdk/'Lib/Kernel32.Lib').write_bytes(b'library')
+    monkeypatch.setenv('ROC_WINSDK', str(sdk))
+    monkeypatch.setattr(setup, 'toolchain_paths', lambda *a: ((),()))
+    monkeypatch.setattr(setup, 'compilers', lambda: {})
+    assert libs.winsdk_include() == str(sdk/'Include')
+    assert rebuild.toolchain()['sdk_include'] == sdk/'Include'
+    assert rebuild.toolchain()['sdk_lib'] == sdk/'Lib'
+    (sdk/'Lib/Kernel32.Lib').unlink()
+    assert libs.winsdk_include() == ''
