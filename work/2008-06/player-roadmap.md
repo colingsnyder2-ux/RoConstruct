@@ -1590,3 +1590,23 @@ Novetus animation, P3 lifetime/cache, combined play, live input and reopening
 pass. Receipts: p5-landed-verified-*. Grounded jump and high fall remain
 observational: maximum differences 2.22 and 14.29 studs respectively. Do not
 remove bounce; trace original force/contact/state timing next. P5 remains open.
+
+## P5 checkpoint: recovered jump force (de264cd8ec)
+
+00667a40's server-matched source, with original constants 0084ced0=5000 and
+0084ced4=50, applies a velocity-target force limited by the smaller torso and
+floor branch masses, subtracts existing branch force, and reacts on the floor.
+The donor Jumping state now adapts this behavior and the original 0.5-second
+timeout instead of applying a one-step mass*50/dt impulse. Body/state layouts
+and floor ownership remain donor adaptations; no byte-identical runtime claim.
+The engine dependency and player were explicitly rebuilt for this revision.
+
+Early-jump comparison remains within 0.162 studs across eleven samples;
+controller, combined play/reopen/live input, Novetus animation and P3
+lifetime/cache pass. In grounded-jump observation, original/rebuilt torso Y
+at 1.5 seconds was 7.18/8.34 (previous rebuild 4.96), but at 2 seconds was
+2.97/5.56: an extra rebound. Maximum sampled difference 2.59 studs. Original
+wall samples are within 35 ms; joint construction differs and original needed
+forced termination. Receipts p5-jump-force-verified-*. This source-aligned
+change does not close jump/contact parity; investigate landing and floor force
+ordering next. High-fall discrepancy and remaining P5 gates remain open.
