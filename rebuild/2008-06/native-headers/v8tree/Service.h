@@ -17,8 +17,14 @@ class __declspec(novtable) ServiceProvider :
     public Notifier<ServiceProvider, ServiceAdded>,
     public Notifier<ServiceProvider, ServiceRemoving> {
 public:
-    std::vector<boost::shared_ptr<Instance> > serviceArray;
+    mutable std::vector<boost::shared_ptr<Instance> > serviceArray;
     std::map<const Name*, boost::shared_ptr<Instance> > serviceMap;
+    boost::shared_ptr<Instance> findServiceByClassName(const Name&) const;
+    static size_t newIndex();
+    template<class Class> static size_t doGetClassIndex();
+    template<class Class> static void callDoGetClassIndex();
+    template<class Class> static size_t getClassIndex();
+    template<class Class> Class* find() const;
 };
 
 // Layout recovered from the existing ServiceClient declaration. Method bodies

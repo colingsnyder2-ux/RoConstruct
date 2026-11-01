@@ -16,7 +16,7 @@ void CWorkspace::cleanup() {
         {
             RBX::DataModel::Lock lock(dataModel);
             RBX::Listener<RBX::Selection, RBX::SelectionChanged>* first = this;
-            RBX::Selection* selection = dataModel->findSelection();
+            RBX::Selection* selection = dataModel->find<RBX::Selection>();
             if (selection) selection->RBX::Notifier<RBX::Selection, RBX::SelectionChanged>::removeListener(first);
             RBX::Workspace* workspace = dataModel->getWorkspace();
             if (workspace) {
