@@ -25,3 +25,10 @@ source must be adapted with explicit behavior and lifetime tests before use.
 Next identify Workspace::step timing and DataModel run-mode inputs, then test
 idle/play transitions and view synchronization against the original before
 replacing the harness. P5 remains open.
+
+Original Workspace::step at 005a2580 passes elapsed interval and settings to
+World::step 005e9fd0. The latter derives the number of fixed world substeps,
+processes clumps and UI once per call, prepares primitives, then updates active
+primitives, broadphase and joint stages for each substep. The donor World::step
+instead performs UI on world-step boundaries and lacks several 2008 stages;
+matching the outer tick does not resolve these world implementation differences.

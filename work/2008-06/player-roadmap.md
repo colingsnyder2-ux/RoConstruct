@@ -1328,3 +1328,20 @@ Workspace/idle and event dispatch at 00578ca0. The original has deadline,
 view wait, scheduler-item and interruptible wait behavior absent from the
 current reconstructed loop. See p5-native-frame-loop-trace.md. No native
 frame-loop integration or full P5 acceptance is claimed.
+
+## P5 checkpoint: 30 Hz simulation batching (f4fa486adf)
+
+The player harness now accumulates render elapsed time and calls DataModel::step
+once per 1/30-second play tick, matching the original outer frame period, then
+emits Stepped and Heartbeat. Zero elapsed frames no longer invent 1/60 second
+in the live loop. A timing control verifies zero/half tick cause no step, one
+tick advances 1/30 second, and a two-tick input advances twice. Edit-mode
+positive-time behavior remains the existing harness behavior.
+
+At f4fa486adf, timing, floor edge, force, controller, climbing, spawn, combined
+play and P0 controls pass. Original walk, moving floor, Stepped and Heartbeat
+bounded comparisons also pass. Receipts: p5-batched-f4fa-*; original process
+closure still required forced termination. Rider lag and differing joint
+construction remain. This change batches donor physics but does not integrate
+the native scheduler, world stages, view synchronization or run-mode logic;
+see p5-native-frame-loop-trace.md. P5 and later milestones remain open.
