@@ -106,10 +106,43 @@ def env(tc):
     return e
 
 
-def run(tc, tool, args, cwd, timeout=600):
+_PATH_FLAGS = ("/I", "/Fo", "/Fe", "/Fd", "/Fp", "/FI", "/Fa", "/OUT:", "/LIBPATH:", "/DEF:",
+               "/IMPLIB:", "/PDB:", "/MAP:", "/MANIFESTFILE:", "@")
+
+
+def _wine_arg(arg):
+    """On Linux an absolute Unix path reads as a cl/link option ('/tmp/x.c' -> D8003),
+    bare or after a path-taking flag; pass it as a Z:\\ path instead."""
+    if setup.WINDOWS:
+        return arg
+    for flag in sorted(_PATH_FLAGS, key=len, reverse=True):
+        rest = arg[len(flag):]
+        if arg.startswith(flag) and rest.startswith("/") and Path(rest).parent.exists():
+            return flag + setup.to_wine_path(rest)
+    if arg.startswith("/") and len(arg) > 1 and Path(arg).parent.exists() and "/" in arg[1:]:
+        return setup.to_wine_path(arg)
+    return arg
+
+
+def _host_include(path):
+    """An include path cl.exe printed under Wine (Z:\\x or /unix/dir\\file) as a host path."""
+    if setup.WINDOWS:
+        return path
+    if re.match(r"(?i)[a-z]:\\", path):
+        path = path[2:]
+    path = path.replace("\\", "/")
+    if not os.path.exists(path):  # Windows headers are case-insensitive (basetsd.h -> BaseTsd.h)
+        from roc import libs
+        path = str(libs._case_path(path))
+    return path
+
+
+def run(tc, tool, args, cwd, timeout=None):
     """Run cl/link/lib (or a tool path such as ml.exe); returns (returncode, combined output)."""
+    if timeout is None:  # Wine on a shared Linux box compiles large TUs far slower than Windows
+        timeout = int(os.environ.get("ROC_CL_TIMEOUT", "600" if setup.WINDOWS else "1800"))
     exe = tc[tool] if isinstance(tool, str) and tool in tc else Path(tool)
-    cmd = setup.cl_command(exe) + [str(a) for a in args]  # Wine on Linux
+    cmd = setup.cl_command(exe) + [_wine_arg(str(a)) for a in args]  # Wine on Linux
     done = subprocess.run(cmd, cwd=cwd, env=env(tc), stdin=subprocess.DEVNULL, capture_output=True, text=True, errors="replace", timeout=timeout)
     return done.returncode, (done.stdout + done.stderr).strip()
 
@@ -481,7 +514,8 @@ def link_test(client=None, test=None, libs=(), includes=(), defines="WIN32 NDEBU
         strip = ws / 'out' / 'tests' / 'P2RecoveredPlayer' / 'Content' / 'textures' / 'SurfacesStrip.png'
         if strip.is_file():
             run_env['ROC_TEXTURE_STRIP'] = str(strip)
-    done = subprocess.run([str(out / (test + ".exe"))] + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300, env=run_env)
+    exe = [str(out / (test + ".exe"))] if setup.WINDOWS else [setup.wine_exe(), str(out / (test + ".exe"))]  # Wine on Linux
+    done = subprocess.run(exe + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300, env=run_env)
     result.update(ran=True, exit=done.returncode, output=(done.stdout + done.stderr).strip()[-1500:])
     return result
 
@@ -784,7 +818,7 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
         args = ["/nologo", "/c"] + flags.split() + ["/D" + d for d in defines.split()] + \
                ["/I" + str(i) for i in siblings + list(includes)] + ["/showIncludes", "/Fo" + src.stem + ".obj", str(unit)]
         code, text = run(tc, "cl", args, out)
-        included = re.findall(r"^Note: including file:\s*(.+?)\s*$", text, re.M)
+        included = [_host_include(p) for p in re.findall(r"^Note: including file:\s*(.+?)\s*$", text, re.M)]
         command_file.write_text(json.dumps({"compiler": str(tc.get("cl")), "args": args,
             "cwd": str(out), "source": str(src), "source_sha256": content(src),
             "environment": dict({k: os.environ.get(k, "") for k in ("CL", "_CL_")},
