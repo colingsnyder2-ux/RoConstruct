@@ -61,7 +61,7 @@ try:
   records.append(dict(sample=j,original_time=t,rebuilt_time=bt,aligned=abs(t-bt)<.0001,original_y=y,rebuilt_y=by,delta_y=y-by,copies=len(values)))
  assert all(r['aligned'] for r in records), records
  if mode=='fall':assert max(abs(r['delta_y']) for r in records)<.1, records
- if mode=='air':assert max(abs(r['delta_y']) for r in records if r['original_time']<=1.0001)<.01, records
+ if mode=='air':assert max(abs(r['delta_y']) for r in records if r['original_time']<=1.0001 or r['original_time']>=2.9999)<.01, records
  if mode=='jump':assert max(abs(r['delta_y']) for r in records)<.12, records
  if mode=='jumpvelocity':assert max(abs(r['delta_y']) for r in records if r['original_time']>1.05)<.12, records
 finally:
