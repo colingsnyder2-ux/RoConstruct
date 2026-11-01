@@ -1787,3 +1787,29 @@ Mechanisms and lacks this registration interface. Next integrate the existing
 job source with removal/stepping ownership verified, then native state entry
 and exit. Do not substitute another guessed state before that edge is proven.
 No shared ABI edits made. Desktop locks released; P5 remains open.
+
+## P5 checkpoint: SimJob registration/removal contract (ba2e1b7dfe)
+
+Live RunningNoPhysics now verifies its secondary SimJob at state+0xa0,
+secondary vtable 0084cdf8, saved iterator owner/node at job+0x1c/+0x20,
+node payload back to the job, and both reciprocal ring links. Owner active-state
+validation remains required. Receipt: p5-simjob-links-verified. Frozen fall
+gate still passes. This proves a registered live job, not merely matching
+vtable bytes in stale memory.
+
+Dispatch correction: secondary virtual entries at 0084cdf8 are destructor
+00667400 and two copies of thunk 00667160. The latter adjusts this by -0xa0
+and reaches 0066eaa0, returning the torso assembly via 005d90a0/005e7570;
+these are identity queries, not movement callbacks. Actual motion is the state
+goal-update virtual 006672b0 ->0066f2c0. Do not invent a virtual step interface
+on SimJob. Native stage registration is part of assembly/simulation ownership.
+
+Removal: scalar destructor 00667410 ->MovingNoPhysicsBase destructor 0066ee10
+->release 0066ed50 clears torso flag aa with 005e8140, disconnects ancestry,
+finds stage through 005e93b0, removes job through 0064d1f0 ->0064d180,
+releases control-scope ownership through 005e9040 and resets torso shared_ptr.
+The stage removal first updates job grouping via 005e53a0, erases saved list
+iterator, and clears assembly+0x40 through job's assembly query. Next resolve
+005e53a0's vector element/assembly contract and stage ownership before adding
+this native dependency; donor SimJobStage is not ABI-compatible. No shared ABI
+changes made. Desktop released; full P5 remains open.
