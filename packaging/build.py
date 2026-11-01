@@ -186,6 +186,12 @@ def stage(slug, spec, out):
         for old, ref in edits:
             if old != '@replace':
                 continue
+            path = (ROOT / 'tools/rbxgs/Client' / ref).resolve()
+            if path.is_relative_to(ROOT / 'rebuild'):
+                relative = path.relative_to(ROOT)
+                if relative.as_posix() not in spec['files'] or not (out / relative).is_file():
+                    raise SystemExit('Missing packaged native dependency: ' + ref)
+                continue
             relative = Path(ref)
             if relative.parts[0] != 'App' or '..' in relative.parts or not relative.name.startswith('roc_'):
                 raise SystemExit('Unsupported native dependency: ' + ref)
