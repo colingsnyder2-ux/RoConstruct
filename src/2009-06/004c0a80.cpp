@@ -1,99 +1,35 @@
-// from server: 54% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "v8datamodel/DataModel.h"
-
-namespace RBX
-{
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
-	{
-		setName("Run Service");
-	}
-
-	RunService::~RunService()
-	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
-		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
-		}
-	}
-
-	void RunService::setRunState(RunState newState)
-	{
-		RunTransition transition(runState, newState);
-		runState = newState;
-
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
-	}
-
-	void RunService::raiseStepped(float time, float step)
-	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
-		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
-		}
-	}
-
-	void RunService::start()
-	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
+#include <memory>
+struct Arg2c { char d[0x2c]; Arg2c(const Arg2c&); ~Arg2c(); };
+namespace boost {
+namespace _bi {
+template<class T> struct value { T t_; };
+template<class A1, class A2> struct list2 { A1 a1_; A2 a2_; };
+template<class R, class F, class L> struct bind_t { F f_; L l_; };
+}
+namespace detail { namespace function {
+union function_buffer { void* obj_ptr; char data[8]; double d; };
+struct vtable_base { void* manager; };
+template<class R, class Alloc> struct basic_vtable0 {
+    vtable_base base;
+    void* invoker;
+    template<class F> bool assign_to(F f, function_buffer& functor);
+};
+}}
+template<class R, class Alloc = std::allocator<int> > class function0 {
+public:
+    typedef detail::function::basic_vtable0<R, Alloc> vtable_type;
+    detail::function::vtable_base* vtable;
+    detail::function::function_buffer functor;
+    template<class Functor> void assign_to(Functor f) {
+        static vtable_type stored_vtable = { { 0 }, 0 };
+        if (stored_vtable.assign_to(f, functor)) vtable = &stored_vtable.base;
+        else vtable = 0;
+    }
+};
+typedef _bi::bind_t<void, void (*)(Arg2c, bool), _bi::list2<Arg2c, bool> > B;
+template void function0<void>::assign_to<B>(B);
 }

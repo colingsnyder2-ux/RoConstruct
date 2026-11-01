@@ -1,108 +1,97 @@
-// from server: 21% by colin
+// from server: 98% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+#include <intrin.h>
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_;
+    long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() { if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); } }
+    void weak_release() { if (_InterlockedDecrement(&weak_count_) == 0) destroy(); }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+struct sp_empty {};
+template<class Y, class T> struct sp_enable_if_convertible { typedef sp_empty type; };
 }
-
-void initMoo()
-{
-	moo2();
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const& r, typename detail::sp_enable_if_convertible<Y,T>::type = detail::sp_empty());
+    T* operator->() const { return px; }
+};
 }
-
-namespace RBX
+namespace RBX {
+struct BrickColor { int number; };
+class Player {
+public:
+    BrickColor getTeamColor() const;
+};
+class Instance {
+public:
+    virtual ~Instance();
+    char padding[0x44];
+    Instance* parent;
+    Instance* getParent() const { return parent; }
+    Player* getPlayer();
+};
+class Flag : public Instance {
+public:
+    char more[0x94 - 0x4c];
+    BrickColor teamColor;
+    bool inactive;
+};
+class Teams {
+public:
+    void captured(Player*);
+};
+struct FlagSignal {
+    void operator()(boost::shared_ptr<Instance> flag);
+};
+bool __cdecl isServer(Instance*, bool);
+int __cdecl isPart(Instance*);
+Flag* __cdecl findFlag(Instance*);
+boost::shared_ptr<Flag> __cdecl sharedFrom(Flag*);
+Teams* __cdecl findTeams(Instance*);
+class FlagStand : public Instance {
+public:
+    char more[0x250 - 0x4c];
+    FlagSignal flagCaptured;
+    BrickColor teamColor;
+    void onTouched(boost::shared_ptr<Instance> other);
+};
+void FlagStand::onTouched(boost::shared_ptr<Instance> other)
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    if (isServer(this, true))
+    {
+        Instance* part = other->getParent();
+        if (!isPart(part))
+            return;
+        Player* player = part->getPlayer();
+        if (!player)
+            return;
+        Flag* flag = findFlag(part);
+        if (!flag || flag->inactive)
+            return;
+        int myColor = teamColor.number;
+        if (flag->teamColor.number == myColor && player->getTeamColor().number != myColor)
+        {
+            flagCaptured(sharedFrom(flag));
+            findTeams(this)->captured(player);
+        }
+    }
+}
 }

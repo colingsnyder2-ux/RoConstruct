@@ -1,108 +1,80 @@
-// from server: 45% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
+#include <stdexcept>
+#include <typeinfo>
+namespace RBX { enum SurfaceType {}; }
+typedef type_info TypeInfo;
+extern int onceFlag;
+extern int exeCounter;
+extern char castFormat[];
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
+struct String {
+    unsigned int allocator;
+    union {
+        char buffer[16];
+        char *pointer;
+    } data;
+    unsigned int length;
+    unsigned int capacity;
+    const char* c_str() const { return capacity >= 16 ? data.pointer : data.buffer; }
+};
 
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
+struct NamedString {
+    String value;
+};
 
-boost::mutex& moo2()
+struct Placeholder;
+struct PlaceholderTable {
+    void (__thiscall *destroy)(Placeholder *, unsigned int);
+    const TypeInfo &(__thiscall *type)(const Placeholder *);
+};
+
+struct Placeholder {
+    PlaceholderTable *vtable;
+};
+
+struct Descriptor {
+    unsigned int fields[2];
+    const TypeInfo *type;
+    NamedString *name;
+};
+
+extern void __cdecl descriptorCallback();
+extern void __cdecl callOnce(int *, void (__cdecl *)());
+extern Descriptor *__cdecl getDescriptor();
+extern void *__cdecl convert(Placeholder **);
+extern std::runtime_error __cdecl format(const char *, ...);
+
+struct SurfaceDescriptor {
+    Descriptor *descriptor;
+    Placeholder *storage;
+
+    int *cast();
+};
+
+int *SurfaceDescriptor::cast()
 {
-	static boost::mutex mutex2;
-	return mutex2;
-}
+    Placeholder **source = &storage;
+    if (source) {
+        const TypeInfo &type = *source
+            ? (*source)->vtable->type(*source)
+            : typeid(void);
+        if (type == typeid(RBX::SurfaceType)) {
+            int *result = reinterpret_cast<int *>(*source) + 1;
+            if (result)
+                return result;
+        }
+    }
 
-void initMoo()
-{
-	moo2();
-}
+    const TypeInfo *actualType = descriptor->type;
+    if (typeid(std::string) == *actualType)
+        convert(source);
 
-namespace RBX
-{
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
+    ++exeCounter;
+    callOnce(&onceFlag, descriptorCallback);
 
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    const Descriptor& d = *getDescriptor();
+    throw format(castFormat, descriptor->name->value.c_str(), d.name->value.c_str());
 }

@@ -1,40 +1,32 @@
-// from server: 54% by atomic.potato
-struct S {
-    void f(int);
-    char pad[8];
-    int field_8;
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace RakNet {
+class BitStream {
+public:
+    BitStream(unsigned char* _data, const unsigned int lengthInBytes, bool _copyData);
+    ~BitStream();
+    void IgnoreBits(const unsigned int numberOfBits);
+    unsigned int numberOfBitsUsed;
+    unsigned int numberOfBitsAllocated;
+    unsigned int readOffset;
+    unsigned char* data;
+    bool copyData;
+    unsigned char stackData[1024];
 };
-
-struct Inner {
-    char pad[0x18];
-    int field_1c;
-    int field_20;
-    int field_24;
-};
-
-struct Outer {
-    char pad[0x1c];
-    int field_1c;
-    int field_20;
-    int field_24;
-};
-
-extern "C" void __stdcall sub_4d96a0(void*, int, int, int);
-extern "C" void __stdcall sub_4d9720(void*);
-extern "C" void __stdcall sub_4d9a30(void*, int);
-extern "C" void __stdcall sub_4f0fd0(void*, void*);
-
-struct Replicator {
-    void SendDataJob(void*);
-};
-
-void Replicator::SendDataJob(void* a) {
-    char buf[0x414];
-    Outer* o = (Outer*)a;
-    sub_4d96a0(buf, o->field_24, o->field_1c, 0);
-    *(int*)(buf + 0x420) = 0;
-    sub_4d9a30(buf, 8);
-    sub_4f0fd0(this, buf);
-    *(int*)(buf + 0x420) = -1;
-    sub_4d9720(buf);
 }
+struct Packet { char pad[0x1c]; unsigned int length; unsigned int bitSize; unsigned char* data; };
+namespace RBX { namespace Network {
+class Replicator {
+public:
+    void receiveData(Packet* packet);
+    void deserializeData(RakNet::BitStream& bitStream);
+};
+void Replicator::receiveData(Packet* packet)
+{
+    RakNet::BitStream bitStream(packet->data, packet->length, false);
+    bitStream.IgnoreBits(8);
+    deserializeData(bitStream);
+}
+}}

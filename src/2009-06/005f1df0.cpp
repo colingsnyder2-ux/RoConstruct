@@ -1,58 +1,50 @@
-// from server: 54% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct Inner {
-    char pad0[4];
-    volatile long ref1;
-    volatile long ref2;
-    virtual void v0();
-    virtual void v1();
-    virtual void v2();
-};
-
-struct Holder {
-    Inner* p;
-    Inner* q;
-};
-
-struct Outer {
-    char pad0[0x14];
-};
-
-extern "C" void* __cdecl sub_5f1d70(void** out);
-
-struct S {
-    void* f(Holder* out);
-};
-
-void* S::f(Holder* out) {
-    void* tmp = 0;
-    void* r = sub_5f1d70(&tmp);
-    Inner* a = *(Inner**)r;
-    if (a) {
-        a = (Inner*)((char*)a + 0x14);
-    } else {
-        a = 0;
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <intrin.h>
+namespace boost { namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_; long weak_count_;
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); }
     }
-    out->p = a;
-    Inner* b = *(Inner**)((char*)r + 4);
-    out->q = b;
-    if (b) {
-        _InterlockedExchangeAdd(&b->ref1, 1);
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0) destroy();
     }
-    Inner* esi = *(Inner**)&tmp;
-    if (esi) {
-        if (_InterlockedExchangeAdd(&esi->ref1, -1) == 1) {
-            void** vt = *(void***)esi;
-            void (*fn)(Inner*) = (void (*)(Inner*))vt[1];
-            fn(esi);
-            if (_InterlockedExchangeAdd(&esi->ref2, -1) == 1) {
-                void** vt2 = *(void***)esi;
-                void (*fn2)(Inner*) = (void (*)(Inner*))vt2[2];
-                fn2(esi);
-            }
-        }
-    }
-    return out;
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count() : pi_(0) {}
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+struct sp_empty {};
+template<class Y, class T> struct sp_enable_if_convertible { typedef sp_empty type; };
+}
+template<class T> class shared_ptr {
+public:
+    T* px; detail::shared_count pn;
+    shared_ptr() : px(0), pn() {}
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const& r, typename detail::sp_enable_if_convertible<Y,T>::type = detail::sp_empty())
+        : px(r.px), pn(r.pn) {}
+};
+}
+namespace RBX {
+class Instance { public: virtual ~Instance(); };
+class Pad14 { public: virtual ~Pad14(); char pad[0x10]; };
+class BodyVelocity : public Pad14, public Instance {};
+class Creatable { public: template<class T> static boost::shared_ptr<T> create(); };
+template<class T> class Creator {
+public:
+    boost::shared_ptr<Instance> create() const { return Creatable::create<T>(); }
+};
+template class Creator<BodyVelocity>;
 }

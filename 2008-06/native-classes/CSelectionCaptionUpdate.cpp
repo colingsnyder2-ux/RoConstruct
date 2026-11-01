@@ -4,6 +4,12 @@
 
 typedef RBX::Notifier<RBX::Selection, RBX::SelectionChanged> SelectionNotifier;
 
+CSelectionCaption::~CSelectionCaption()
+{
+    RBX::DataModel::Lock lock(dataModel);
+    SelectionNotifier::disconnect(selection, this);
+}
+
 void CSelectionCaption::update(boost::shared_ptr<RBX::DataModel> model,
                                boost::shared_ptr<RBX::Instance>)
 {
