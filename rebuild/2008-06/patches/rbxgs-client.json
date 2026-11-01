@@ -466,6 +466,7 @@
   ]
  ],
  "App/humanoid/Humanoid.cpp": [
+  ["\t\t\t\tsetState(prevState->onStep(event.step, *parent->getTopPVController()));", "\t\t\t\tsetState(prevState->onStep(event.step, *parent->getTopPVController()));\n\t\t\t\tif (currentState.get() && (currentState->getName()==\"Freefall\" || currentState->getName()==\"Running\" || currentState->getName()==\"Climbing\"))\n\t\t\t\t\tApplyRecoveredClimbCollision(this,true,false);"],
   ["#include \"humanoid/Humanoid.h\"", "#include \"humanoid/Humanoid.h\"\nnamespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }\n"],
   ["\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get())\n\t\t\tcurrentState.reset(value);\n\t}", "\tvoid Humanoid::setState(State* value)\n\t{\n\t\tif (value != currentState.get()) {\n\t\t\tbool previousClimb=currentState.get() && currentState->getName()==\"Climbing\";\n\t\t\tbool climbing=value && value->getName()==\"Climbing\";\n\t\t\tbool running=value && value->getName()==\"Running\";\n\t\t\tcurrentState.reset(value);\n\t\t\tif(previousClimb || climbing) ApplyRecoveredClimbCollision(this,climbing,running);\n\t\t}\n\t}"],
   [

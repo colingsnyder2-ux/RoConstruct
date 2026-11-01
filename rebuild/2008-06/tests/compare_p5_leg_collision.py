@@ -66,6 +66,7 @@ try:
   assert candidates,frames
   actual,positions=min(candidates,key=lambda z:abs(z[0]-target));delta=[positions[0][i]-rebuilt[frames]['torso'][i] for i in range(3)]
   print(frames, positions[2][0], rebuilt[frames]['marker'][0], flush=True)
+  assert abs(positions[2][0]-177.25)<.01 and abs(rebuilt[frames]['marker'][0]-177.25)<.01
   check={'frame':frames,'original_time':actual,'original_torso':positions[0],'original_head':positions[1],'original_marker':positions[2],'rebuilt_marker':rebuilt[frames]['marker'],'delta':delta}
   comparisons.append(check)
 finally:
