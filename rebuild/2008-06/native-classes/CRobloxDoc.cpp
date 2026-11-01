@@ -13,6 +13,13 @@ IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)
 void reportDocumentCreateException(const std::exception&);
 extern CRobloxDoc* currentDocument;
 void setCurrentDocument(int, CRobloxDoc*);
+// Original save predicates 00495e60 and 00495e70; semantic names/linkage pending.
+bool __cdecl documentSavePredicateA(RBX::DataModel*, bool);
+bool __cdecl documentSavePredicateB(RBX::DataModel*, bool);
+inline bool canSaveDocument(RBX::DataModel* model) {
+    if (documentSavePredicateA(model, true) && !documentSavePredicateB(model, true)) return false;
+    return true;
+}
 
 // Existing recovered 00451ac0, expressed through the shared native fields.
 CRobloxDoc::CRobloxDoc() : standardVerbs(0), workspace(0) {}
@@ -23,6 +30,12 @@ CRobloxDoc::~CRobloxDoc() { delete standardVerbs; }
 boost::shared_ptr<RBX::DataModel> CRobloxDoc::getDataModel() {
     if (workspace) return workspace->getDataModel();
     return boost::shared_ptr<RBX::DataModel>();
+}
+
+// 0044f8d0: preserve original save guard before calling MFC.
+BOOL CRobloxDoc::DoSave(LPCTSTR path, BOOL replace) {
+    if (!canSaveDocument(workspace->getDataModel().get())) return FALSE;
+    return CDocument::DoSave(path, replace);
 }
 
 // 0044fb80: keep document and DataModel titles in sync.
