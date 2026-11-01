@@ -1,5 +1,14 @@
 # Current player checkpoint
 
+At sourcef34d1b3e46, the authored Workspace Sound fixture loads but retains
+zero Sounds. A user-supplied place with8 serialized Sounds likewise retains0;
+its2 Humanoids match both RTTI and class-name traversal. One Sound was directly
+under Workspace. The player map lacks Sound creator symbols; exact registration
+and lifecycle linkage still need proof. Diagnostic counts and sanitized receipts:
+p4-sound-load-f34d1b3e46/; user XML/logs remain private. Next recover
+SoundChannel::onAncestorChanged and real dependencies, then register native
+factory, retain serialized Sound and test playback. P4 remains open.
+
 At source50fff4e96c, SoundService 3D settings005b97b0 and reflection callback
 005ba020 are recovered; original initializer007f5220 identifies the callback.
 Sound diagnostic passes; these methods are unselected/unexecuted until service
