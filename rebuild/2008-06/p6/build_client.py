@@ -1,5 +1,5 @@
 """Link out/p6/Roblox.exe: MFC client, RTM appmodul.cpp, original resources, and
-the player's engine libraries, read from a finished player build."""
+the player's engine libraries from this worktree's own player build."""
 import shutil, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
@@ -10,7 +10,7 @@ from roc import rebuild
 import gen_res
 
 client = "2008-06"
-SNAPSHOT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(r"C:\Users\colin\RoConstruct\rebuild\2008-06\out")
+SNAPSHOT = Path(sys.argv[1]) if len(sys.argv) > 1 else rebuild.workspace(client) / "out"
 out = rebuild.workspace(client) / "out" / "p6"
 out.mkdir(parents=True, exist_ok=True)
 tc = rebuild.toolchain()
