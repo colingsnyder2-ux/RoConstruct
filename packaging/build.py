@@ -41,7 +41,7 @@ WORKER_MODULES += ["bounds_proof", "agent_memory", "research", "agent_recovery",
 WORKER_MODULES += ["integration", "integrator", "rebuild", "rebuild_install", "mutsearch", "twinpatch", "native_try", "native_sweep", "native_batch", "standins"]
 WORKER_MODULES += ["integration_verify", "native_search", "native_transforms", "native_promotions"]  # contributor linked preflight shares authoritative build/gates
 WORKER_MODULES += ["native_repair"]
-WORKER_MODULES += ["native_edit"]
+WORKER_MODULES += ["native_edit", "native_recovery"]
 WORKER_MODULES += ["integration_local", "integration_context", "integration_policy", "integration_audit", "native_adapt", "native_refs"]
 WORKER_MODULES += ["rebuild_audit", "graph", "source"]
 SERVER_MODULES += ["integration_notify", "integration_site", "agent_inbox"]
@@ -212,7 +212,7 @@ def stage(slug, spec, out):
     shutil.copytree(ROOT / "roc" / "web", out / "roc" / "web", dirs_exist_ok=True)
     (out / "roc" / "__init__.py").write_text("", encoding="utf-8")
     (out / "roconstruct-package.json").write_text(json.dumps(
-        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 18,
+        {"package": slug, "revision": version(), "native_workflow": True, "native_workflow_version": 19,
          "matching_workflow_version": 4}, indent=2) + "\n", encoding="utf-8")
     for name, text in spec["docs"].items():
         (out / name).write_text(text, encoding="utf-8")
@@ -389,7 +389,7 @@ def prepare_downloads(package):
     shutil.copy2(package, archive)
     for name in ("NATIVE_AGENT.md", "MATCHING_AGENT.md"):
         shutil.copy2(ROOT / "docs" / name, folder / name)
-    data.update(schema=1, workflow_version=18, matching_workflow_version=4,
+    data.update(schema=1, workflow_version=19, matching_workflow_version=4,
                 abi_manifest_sha256=hashlib.sha256(abi).hexdigest(), abi_manifest_classes=len(json.loads(abi)),
                 url=base + archive.name, sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 size=archive.stat().st_size, guide=base + "NATIVE_AGENT.md", matching_guide=base + "MATCHING_AGENT.md",

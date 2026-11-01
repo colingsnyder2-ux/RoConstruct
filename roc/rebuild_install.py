@@ -99,7 +99,7 @@ def install(root, client='2008-06', package=None):
     return destination
 
 
-def prepare(client='2008-06', log=print):
+def prepare(client='2008-06', log=print, build_dependencies=True):
     """Complete cold contributor inputs before the expensive pinned native proof."""
     from roc import analyze, clients, libs, rebuild, setup
     root = rebuild.ROOT
@@ -156,6 +156,9 @@ def prepare(client='2008-06', log=print):
                     if not libs._case_path(libs.LIBS / libs.RECIPES[recipe]['src']).is_dir():
                         log('Native setup: fetching source recipe ' + recipe)
                         libs.fetch(recipe)
+    if not build_dependencies:
+        log('Native setup: source/compiler inputs ready; linked dependencies deferred until submission')
+        return
     for name, spec in modules[:-1]:
         out = root / 'rebuild' / client / 'out' / spec['name']
         report = json.loads((out / 'report.json').read_text()) if (out / 'report.json').exists() else {}

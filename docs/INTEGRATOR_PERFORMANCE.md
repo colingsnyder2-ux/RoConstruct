@@ -1,5 +1,26 @@
 # Integrator performance experiments — 2026-10-28
 
+## Tool-using native recovery — 2026-11-01
+
+Worker 19 adds actual Codex agents with isolated sources and a bounded file-based
+compiler probe service. Ten-way offline recovery exercised distinct assignments,
+ten concurrent agent stand-ins, a two-compiler limit and ten safe shared-file merges.
+Conflict, concurrent header/source edit, baseline regression, restart, append-only
+new method, cancellation and canonical submission-adapter cases are also tested.
+
+One live `codex:gpt-6-luna` agent recovered a controlled regression of the original
+`CRobloxDoc::SetModifiedFlag` at `0044fad0`. It read original assembly and native
+headers, changed the private C++ body, ran genuine MSVC, passed code/data comparison,
+and merged into an isolated shared copy with no losses. No project source was
+changed by this trial, and submission was disabled. This validates the recovery
+mechanism, not a newly discovered function or a ten-times speedup.
+
+The CLI reported 83,948 total tokens for that run, including 61,312 cached input
+tokens. These are subscription usage figures, not dollar costs. Initial packets now
+include focused method excerpts to reduce repeated full-file reads. Tool-using agents
+consume more context than method-only workers; time/probe limits and agent-launch
+caps remain necessary.
+
 ## Ten-worker small-model smoke — 2026-11-01
 
 The GUI now offers **10-worker recovery**: complete method bodies with compiler/diff
