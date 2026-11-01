@@ -25,6 +25,15 @@ boost::shared_ptr<RBX::DataModel> CRobloxDoc::getDataModel() {
     return boost::shared_ptr<RBX::DataModel>();
 }
 
+// 0044fb80: keep document and DataModel titles in sync.
+void CRobloxDoc::SetTitle(LPCTSTR title) {
+    CDocument::SetTitle(title);
+    if (workspace) {
+        std::string name(title);
+        workspace->getDataModel()->setName(name);
+    }
+}
+
 // 0044fad0: synchronize MFC modification flag with native IDataState.
 void CRobloxDoc::SetModifiedFlag(BOOL modified) {
     m_bModified = modified;
