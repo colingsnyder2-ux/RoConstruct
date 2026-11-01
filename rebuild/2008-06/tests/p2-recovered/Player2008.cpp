@@ -822,7 +822,7 @@ int main(int argc, char** argv)
         std::printf("anchor flags: %s\n",result?"FAIL":"PASS");
         ClosePlace();return result;
     }
-    if(loadOnly){std::fprintf(stderr,"load-only: humanoids=%d; closing\n",CountHumanoids());std::fprintf(stderr,"load-only: named humanoids=%d sounds=%d\n",CountInstancesByClass("Humanoid"),CountInstancesByClass("Sound"));std::fprintf(stderr,"load-only: scripts=%d\n",CountInstancesByClass("Script"));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);}
+    if(loadOnly){const char* classes[]={"Workspace","Model","Part","Script","Humanoid","Sound","IntValue","StringValue","ObjectValue","FloatValue","NumberValue"};for(size_t i=0;i<sizeof(classes)/sizeof(classes[0]);++i)std::fprintf(stderr,"load-only: %s=%d\n",classes[i],CountInstancesByClass(classes[i]));std::fflush(stderr);ClosePlace();std::fprintf(stderr,"load-only: complete\n");std::fflush(stderr);return 0;}
 
     if(p5LuaObjectCheck){int result=CheckLuaObjectConversion();std::printf("Lua object conversion: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
     if(p5FreefallCheck){int result=CheckFreefallTransitions();std::printf("freefall transitions: %s (%d)\n",result?"FAIL":"PASS",result);ClosePlace();return result;}
