@@ -2106,3 +2106,6 @@ Native DataModel constructor boundary receipt at ff46ffa855: 15 member writes an
 
 
 Native DataModel member type evidence at aea284c006: +0x204 is shared_ptr<Workspace>; +0x21c and +0x224 are shared_ptr<GuiRoot>. Constructor calls factories00576ff0/00577090; allocated objects write original RTTI vtables00833a54/0082f9fc for Workspace/GuiRoot. The shared-pointer factory behavior and constructor arguments remain in original-binary trace; names of the two GuiRoot fields remain unproven. Reproduce record_datamodel_members.py; receipt shared-layouts/datamodel-members.json. No active ABI swap.
+
+
+DataModel constructor type trace: +0x234 invokes imported MSVCP90 std::basic_string<char> default constructor and ends at0x250; +0x25c/+0x260 hold a shared recursive mutex: allocated object calls Boost recursive_mutex constructor00563070, then control-block constructor00576c80. Evidence shared-layouts/datamodel-value-members.json; names and unrelated fields still open. No active ABI change.

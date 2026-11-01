@@ -1,0 +1,19 @@
+{
+  "revision": "8436cecd1b2e4b5f9f4a30881e3256153b91b13a",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "fields": {
+    "0x234": {
+      "type": "std::string",
+      "constructor_instruction": "0057bb2d",
+      "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "end": "0x250"
+    },
+    "0x25c": {
+      "type": "boost::shared_ptr<boost::recursive_mutex>",
+      "mutex_constructor": "00563070",
+      "control_constructor": "00576c80",
+      "control_offset": "0x260"
+    }
+  },
+  "scope": "Types inferred from constructor allocation, imported std::string constructor, and recovered Boost constructor/shared-count code. No ABI swap."
+}
