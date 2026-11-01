@@ -1011,6 +1011,7 @@ def build_module(client, name, log=print):
                 extra = {p.relative_to(overlay_src).as_posix() for g in globs for p in overlay_src.glob(g)
                          if not p.name.startswith('roc_')}
                 files = sorted((set(files) | extra) - set(layer.get('exclude', [])))
+            live_objects = {Path(f).stem + ".obj" for f in files}
             if layer.get("direct"):  # plain cl: /MD defines _DLL, so CRT data is imported as the linker expects
                 rep = {"compile_errors": {f: "direct" for f in files}}
             else:
@@ -1039,12 +1040,18 @@ def build_module(client, name, log=print):
             defines = (defines + " " + layer.get("extra_defines", "")).strip()
             sources = [p for g in layer["files"].split() for p in sorted((ROOT / layer["dir"]).glob(g))
                        if not p.name.startswith("roc_") and p.name not in layer.get("exclude", [])]
+            live_objects = {p.stem + ".obj" for p in sources}
             append = (ROOT / layer["append_include"]).resolve() if layer.get("append_include") else None
             res = compile_direct(client, sources, folder, includes, defines, layer["flags"], cl=layer.get("cl", BUILD), append=append, overlay=ov)
             if layer.get("fallback_cl"):
                 res.update(compile_direct(client, [Path(k) for k, (ok, _) in res.items() if not ok], folder, includes,
                                           defines, layer["flags"], cl=layer["fallback_cl"], append=append, overlay=ov))
             errors = {Path(k).name: v for k, (ok, v) in res.items() if not ok}
+        # Resolution scans the layer directory, so excluded/removed sources must
+        # not survive through objects left by an earlier build.
+        for obj in folder.glob("*.obj"):
+            if obj.name not in live_objects:
+                obj.unlink()
         _dump(folder / "errors.json", errors)
         log("layer %s: %d compile errors%s" % (layer["name"], len(errors), (" (" + ", ".join(sorted(errors)) + ")") if errors else ""))
         layer_dirs.append(folder)

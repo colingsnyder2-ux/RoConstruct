@@ -157,3 +157,42 @@ def test_verified_dependency_resolution_converges_beyond_twelve_rounds(tmp_path,
     monkeypatch.setattr(rebuild,'progress',lambda *a,**kw:None)
     assert rebuild.build_module('test','app',log=lambda *a:None)['linked']
     assert len(calls)==14
+
+
+def test_layer_exclusion_cannot_link_stale_objects(tmp_path, monkeypatch):
+    import pytest
+    from roc import libs
+    for mode in ('direct', 'recipe'):
+        source = tmp_path / mode / 'src'
+        source.mkdir(parents=True)
+        (source / 'kept.cpp').write_text('void kept();')
+        (source / 'retired.cpp').write_text('void retired();')
+        layer = tmp_path / mode / 'out' / 'App' / 'layer-native'
+        layer.mkdir(parents=True)
+        for name in ('kept.obj', 'retired.obj', 'deleted.obj', 'notes.txt'):
+            (layer / name).write_bytes(b'previous build')
+        config = dict(name='native', mode=mode, files='*.cpp', flags='/O2',
+                      exclude=['retired.cpp'])
+        if mode == 'recipe':
+            config.update(recipe='exclusion-test', direct=True)
+            monkeypatch.setitem(libs.RECIPES, 'exclusion-test',
+                                dict(src=str(source), include=[], defines=''))
+            monkeypatch.setattr(rebuild, 'patched_tree', lambda *args: source)
+        else:
+            config['dir'] = str(source)
+        monkeypatch.setattr(rebuild, 'workspace', lambda client: tmp_path / mode)
+        monkeypatch.setattr(rebuild, 'load_module', lambda *args: dict(
+            name='App', layers=[config], test='unused'))
+        monkeypatch.setattr(rebuild, 'build_overlay', lambda *args: None)
+        monkeypatch.setattr(rebuild, 'compile_direct', lambda client, sources, *args, **kwargs:
+                            {str(p): (True, '') for p in sources})
+        monkeypatch.setattr(rebuild, 'coff_externals', lambda data: {})
+        class ReachedArchive(Exception):
+            pass
+        def archive(*args, **kwargs):
+            assert {p.name for p in layer.glob('*.obj')} == {'kept.obj'}
+            assert (layer / 'notes.txt').read_bytes() == b'previous build'
+            raise ReachedArchive()
+        monkeypatch.setattr(rebuild, 'verified_layer', archive)
+        with pytest.raises(ReachedArchive):
+            rebuild.build_module('test', 'app', log=lambda _: None)
