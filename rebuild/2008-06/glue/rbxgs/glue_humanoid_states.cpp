@@ -68,14 +68,28 @@ namespace RBX
 		return torso ? torso->getCoordinateFrame().rotation.getColumn(1) : G3D::Vector3::unitY();
 	}
 
-	// straight down from the torso; a floor already stood on is kept a little further away
+	// Adapted from original 00644000: torso bottom, then four corner rays.
 	PartInstance* Balancing::findFloor(bool existingFloor)
 	{
-		Body* torso = humanoid->getTorsoBody();
-		if (!torso)
-			return NULL;
-		G3D::Ray ray = G3D::Ray::fromOriginAndDirection(torso->getCoordinateFrame().translation, -G3D::Vector3::unitY());
-		return tryFloor(ray, existingFloor ? 4.5f : 3.5f);
+		if (!humanoid->getTorsoBody()) return NULL;
+		Primitive* torso = humanoid->getTorsoPrimitive();
+		if (!torso) return NULL;
+		const G3D::CoordinateFrame& frame = torso->getCoordinateFrame();
+		G3D::Vector3 half = torso->getGridSize() * 0.5f;
+		float distance = 1.0f;
+		float factor = existingFloor ? 1.5f : 1.1f;
+		Primitive* leg = humanoid->getLeftLegPrimitive();
+		if (!leg) leg = humanoid->getRightLegPrimitive();
+		if (leg) distance = leg->getGridSize().y * factor + 1.0f;
+		G3D::Vector3 origin = frame.pointToWorldSpace(G3D::Vector3(0,-half.y,0));
+		PartInstance* hit = tryFloor(G3D::Ray::fromOriginAndDirection(origin,-G3D::Vector3::unitY()),distance);
+		if (hit) return hit;
+		for (int x=-1; x<=1; x+=2) for (int z=-1; z<=1; z+=2) {
+			origin = frame.pointToWorldSpace(G3D::Vector3(x*half.x,-half.y,z*half.z));
+			hit = tryFloor(G3D::Ray::fromOriginAndDirection(origin,-G3D::Vector3::unitY()),distance);
+			if (hit) return hit;
+		}
+		return NULL;
 	}
 
 	const float Flying::kTurnP = 7500.0f;
