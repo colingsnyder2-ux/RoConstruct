@@ -58,8 +58,12 @@ try:
  active=[[i for i,v in enumerate(history[-1][1][j]) if v is not None and abs(v-specs[j][1])>.05] for j in range(4)]
  assert all(len(group)>=2 for group in active),[len(group) for group in active]
  def observe(t):
-  actual,values=min(history,key=lambda v:abs(v[0]-t));values=[values[0][i] for i in active[0] if values[0][i] is not None];assert len(values)>=2 and max(values)-min(values)<.06
-  return actual,statistics.median(values)
+  matches=[]
+  for actual,groups in history:
+   values=[groups[0][i] for i in active[0] if groups[0][i] is not None]
+   if abs(actual-t)<.05 and len(values)>=2 and max(values)-min(values)<.06:matches.append((actual,statistics.median(values)))
+  assert matches, t
+  return min(matches,key=lambda v:abs(v[0]-t))
  checks=[]
  marker_times=[]
  for group in range(1,4):
