@@ -315,19 +315,23 @@ public:
         fpsTick = GetTickCount();
         if (!InitCommandBars()) return -1;
         CXTPCommandBars* bars = GetCommandBars();
-        XTPPaintManager()->SetTheme(xtpThemeOffice2003);
+        XTPPaintManager()->SetTheme(xtpThemeWhidbey);
         CXTPCommandBar* menu = bars->SetMenu(_T("Menu Bar"), IDR_MAINFRAME_ROBLOX);
         if (!menu) return -1;
         menu->SetFlags(xtpFlagIgnoreSetMenuMessage); // keep menu 128; template 129 has File only
-        static const struct { UINT id; LPCTSTR title; } toolbars[] = {{128, _T("Standard")}, {137, _T("Run")}, {135, _T("Camera")}, {145, _T("Surfaces")}, {150, _T("Tools")}};
+        static const struct { UINT id; LPCTSTR title; } toolbars[] = {{128, _T("Standard")}, {137, _T("Run")}, {135, _T("Tools")}, {145, _T("Camera")}, {150, _T("Advanced")}};
+        CXTPToolBar* previous = NULL;
         for (int i = 0; i < 5; ++i) {
             CXTPToolBar* bar = bars->Add(toolbars[i].title, xtpBarTop);
             if (!bar || !bar->LoadToolBar(toolbars[i].id)) return -1;
+            if (i == 1 || i == 2) DockRightOf(bar, previous); // original row: Standard, Run, Tools
+            if (i == 4) bar->SetVisible(FALSE);
+            previous = bar;
         }
         if (!explorer.Create(WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_HASBUTTONS | TVS_LINESATROOT, CRect(0, 0, 0, 0), this, 1)) return -1;
         LoadClassImages();
         panes.InstallDockingPanes(this);
-        panes.SetTheme(xtpPaneThemeOffice2003);
+        panes.SetTheme(xtpPaneThemeWhidbey);
         CXTPDockingPane* pane = panes.CreatePane(ID_VIEW_EXPLORER, CRect(0, 0, 240, 400), xtpPaneDockRight);
         pane->SetTitle(_T("Explorer"));
         pane->Attach(&explorer);
@@ -341,6 +345,7 @@ public:
         CXTPDockingPane* log = panes.CreatePane(ID_VIEW_OUTPUT, CRect(0, 0, 500, 120), xtpPaneDockBottom);
         log->SetTitle(_T("Output"));
         log->Attach(&output);
+        panes.ClosePane(log); // original opens with Explorer and Properties only
         P6DataSetOutput(queueOutput);
         tabs.Attach(this, TRUE);
         return 0;
