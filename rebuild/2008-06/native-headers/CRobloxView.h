@@ -9,6 +9,7 @@
 
 namespace RBX {
 class ServiceProvider;
+class Name;
 class Verb;
 class DataModel;
 struct ServiceAdded;
@@ -85,7 +86,7 @@ class CRobloxView : public VerbBinder<CRobloxView, CView>,
     DECLARE_DYNCREATE(CRobloxView)
 public:
     CRobloxWnd window;        // +0xb0
-    boost::shared_ptr<RBX::DataModel> owner_170;  // pointer and control block, zeroed by its constructor
+    boost::shared_ptr<const RBX::DataModel> owner_170;  // pointer and control block, zeroed by its constructor
     CMenu popupMenu;          // +0x178, menu resource 0x67 loaded at construction
     CReflectorWnd reflector;  // +0x180
     void* slot_1d8;           // not destroyed by 00459ba0, so not owned
@@ -99,6 +100,8 @@ public:
     virtual ~CRobloxView(); // 00459ba0, scalar deleting wrapper 00459fb0
     virtual void OnInitialUpdate(); // 0045a4a0
     void bindExisting(UINT, RBX::Verb*);
+    void bindName(UINT, const RBX::Name&);
+    class CRobloxDoc* RobloxDocument() const { return reinterpret_cast<class CRobloxDoc*>(m_pDocument); }
     void detachDataModel();         // 0045a2f0
     DECLARE_MESSAGE_MAP()
 };

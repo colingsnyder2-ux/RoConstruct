@@ -62,7 +62,7 @@
   }
  ],
  "onInitialUpdate_0045a4a0": {
-  "status": "traced, not compiled; roughly 1 KB with about 15 unrecovered callees",
+  "status": "EXACT 1915 bytes, relocation-masked. Call and data targets not independently verified; EH tables not compared; inactive.",
   "proven": {
    "View+0x54": "CView::m_pDocument; reads document+0x94, the CWorkspace pointer, matching the Doc layout",
    "View+0x170": "boost shared_ptr<DataModel>: 46a940 returns it from the workspace, stored pointer at +0x170, control at +0x174",
@@ -117,11 +117,6 @@
    "note": "Camera verbs look like donor RBX::Camera*Command types (mined unit label for 5833e0 is CameraZoomExtentsCommand). Their constructors may already exist in mined or donor code."
   },
   "plan": "Write OnInitialUpdate with 16 getVerb-and-bind steps (a View::bindExisting analogue), three inline derived verbs (Help, ToggleFullScreen, LockPlayMode), ToggleToolbox (exact), listener registration, and the data model lock. Then match 1897 bytes.",
-  "blockers": {
-   "DataModel header (Codex owns)": "Still needed: DataModel+0x150 and +0x170, the notifier bases the view listens to through Notifier::addListener 4218a0. RESOLVED: DataModel+0x204 is the workspace shared_ptr (offsetof(DataModel, workspace) == 0x204 in the native header, checked with MSVC 21022); +0x2ec is a VerbContainer inside the workspace object.",
-   "CRobloxWnd+0xfc": "45a597-45a5c8 reads and replaces an owned pointer at offset 0xfc of the object stored at View+0x1d8, so that type needs recovery before this function can compile.",
-   "45f7b0 chain": "55a8f0, 45dce0, 555830, 5773c0 plus DataModel::Lock bodies 411b40 and 576f00"
-  },
   "first_source": {
    "file": "rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
    "status": "COMPILES, partial: covers base call, window and data model setup, listeners, verb parent and the toolbox verb (383 bytes of the original 1915)",
@@ -134,22 +129,14 @@
    ],
    "next": "Write the remaining sections: the object at View+0x1d8 (+0xfc assignment), Help, ToggleFullScreen and LockPlayMode verbs, and the 16 getVerb bindings; then enable /Oi /Ot and compare all 1915 bytes."
   },
-  "full_draft": {
-   "file": "rebuild/2008-06/native-classes/CRobloxViewInit.cpp",
-   "status": "COMPILES, not matching: 2031 bytes vs 1915; prologue with ebp frame now matches",
-   "what is in it": "all sections: detach, window and data model setup, listeners, verb parent, five owned verbs, 16 getVerb bindings",
-   "known_differences": [
-    "original saves the window pointer in ebx and [ebp-0x18], owner pointer in edi; mine allocates edi for the window",
-    "original has one fewer 4-byte local (sub esp,0x24 vs 0x28)",
-    "binding blocks still larger than the original 78 bytes"
-   ],
-   "next": "Match one binding sequence exactly (it repeats 16 times), then the verb creation blocks",
-   "learned": [
-    "whole body is inside try/catch (std::exception) whose handler calls 0044aa70; this is what forces the ebp frame",
-    "SelectionRotate and SelectionTilt bind through Name::lookup(const char*) (00554290), not getVerb",
-    "function ends with window method 0045ead0, DataModel method 00452a00 then 0058c5e0 on its result if non-null, then the lock destructor"
-   ]
-  }
+  "scaffolding_still_in_source": [
+   "ListenerSite for DataModel+0x150/+0x170",
+   "ModelSite/HistorySite for 00452a00/0058c5e0",
+   "Workspace+0x2ec cast",
+   "slot_1d8+0xfc cast",
+   "Verb458fd0 fields",
+   "reportViewException 0044aa70"
+  ]
  },
  "owned_slot_type_hint": "Verb-derived objects created in OnInitialUpdate; replace OwnedPolymorphic once their class is recovered"
 }
