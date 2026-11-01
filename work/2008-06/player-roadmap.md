@@ -1,5 +1,13 @@
 # Current player checkpoint
 
+SoundService::openFmod005ba060 is recovered at source091c56b252 against real
+overlay/FMOD fields: original gates, driver/version checks, stereo fallback,
+3D settings, reverb and exception cleanup. Original zero-initialized global flag
+is represented locally; its settings connection remains unproven. Existing sound
+diagnostic passes but openFmod is unselected/unexecuted pending service lifecycle
+and reverb. Evidence: p4-sound-open-091c56b252/ and
+p4-sound-open-runtime-pinned-091c56b252/. Audio/P4 remain open.
+
 At sourcef34d1b3e46, the authored Workspace Sound fixture loads but retains
 zero Sounds. A user-supplied place with8 serialized Sounds likewise retains0;
 its2 Humanoids match both RTTI and class-name traversal. One Sound was directly
