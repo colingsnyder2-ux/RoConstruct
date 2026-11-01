@@ -1,0 +1,18 @@
+{
+  "revision": "da05c686d1e55d03ab40b412e38e24aa288615e8",
+  "compiler": 21022,
+  "compile_exit": 0,
+  "size": 372,
+  "notifier_offset": 304,
+  "listener_offset": 336,
+  "selection_offset": 340,
+  "filteredSelections_offset": 348,
+  "original_factory": "00409620",
+  "original_rtti": "workspace-selection-rtti.json",
+  "sources": {
+    "rebuild/2008-06/native-headers/v8datamodel/Selection.h": "4a6872e36c62ea9286644a362792b0cb6d1d8a9159c4ef158d4ef66768ca8631",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "f75c349f2798644a284db541f80a02506fc5b89cdf1a2c5a0482eb121dee09fc",
+    "rebuild/2008-06/tests/NativeSelectionLayout.cpp": "2366924c67a3e2b8d6185273611fe881f313d6c6027eb19940934e80bebb338d"
+  },
+  "scope": "Inactive layout candidate; method ABI and ownership behavior remain open."
+}
