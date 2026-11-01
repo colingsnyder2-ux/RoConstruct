@@ -17,7 +17,8 @@ def main():
     output.mkdir(exist_ok=False)
     binary = root / 'rebuild/2008-06/out/tests/P4SoundAssetTest/P4SoundAssetTest.exe'
     content = root / 'rebuild/2008-06/tests/fixtures/p4-assets'
-    names = ['rebuild/2008-06/tests/PlayerNativeSound.cpp', 'rebuild/2008-06/tests/P4SoundAssetTest.cpp',
+    names = ['rebuild/2008-06/tests/PlayerNativeSound.cpp', 'rebuild/2008-06/tests/PlayerNativeSoundService.cpp',
+             'rebuild/2008-06/tests/P4SoundAssetTest.cpp',
              'rebuild/2008-06/modules/p4-sound-asset.json', 'rebuild/2008-06/tests/record_p4_sound.py',
              'rebuild/2008-06/glue/rbxgs/glue_link_stubs.cpp',
              'rebuild/2008-06/patches/rbxgs-client.json',
