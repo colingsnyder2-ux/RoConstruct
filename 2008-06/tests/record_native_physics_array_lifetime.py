@@ -41,6 +41,22 @@ native_shared_count = '''template<class P, class D> shared_count(P p, D d): pi_(
     }'''
 assert text.count(old_shared_count) == 1
 text = text.replace(old_shared_count, native_shared_count, 1)
+old_pointer_count = '''template<class Y> explicit shared_count( Y * p ): pi_( 0 )
+    {
+        pi_ = new sp_counted_impl_p<Y>( p );
+        if( pi_ == 0 )
+        {
+            boost::checked_delete( p );
+            boost::throw_exception( std::bad_alloc() );
+        }
+    }'''
+native_pointer_count = '''template<class Y> explicit shared_count( Y * p ): pi_( 0 )
+    {
+        try { pi_ = new sp_counted_impl_p<Y>( p ); }
+        catch (...) { boost::checked_delete( p ); throw; }
+    }'''
+assert text.count(old_pointer_count) == 1
+text = text.replace(old_pointer_count, native_pointer_count, 1)
 weak_definition = '''inline shared_count::shared_count( weak_count const & r ): pi_( r.pi_ )
 {
     if( pi_ == 0 || !pi_->add_ref_lock() )
@@ -80,6 +96,10 @@ Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> Physic
 Reflection::SignalDesc<PhysicsService, void(boost::shared_ptr<Instance>)> PhysicsService::eventRemoved("AssemblyRemoved", "part");
 void PhysicsService::onEvent(const World*, AssemblyPhysicsOn e) { onAdded(PartInstance::fromPrimitive(e.primitive)); }
 void PhysicsService::onEvent(const World*, AssemblyPhysicsOff e) { onRemoved(PartInstance::fromPrimitive(e.primitive)); }
+void PhysicsService::onAdded(PartInstance* part) {
+    eventAdded.fire(this, shared_from(part));
+    std::pair<std::set<PartInstance*>::iterator, bool> result = parts.insert(part);
+}
 void PhysicsService::onRemoved(PartInstance* part) { parts.erase(part); eventRemoved.fire(this, shared_from(part)); }
 }
 '''
@@ -95,6 +115,8 @@ for prefix, address, expected in [
     ('??__E?eventAdded@PhysicsService', 0x7f6e40, [('AssemblyAdded', 0x83f878), ('part', 0x81c960), ('?eventAdded@', 0x97abec), ('??0?$SignalDesc@VPhysicsService', 0x5e8df0), ('_atexit', 0x6a17af)]),
     ('??__E?eventRemoved@PhysicsService', 0x7f6e60, [('AssemblyRemoved', 0x83f888), ('part', 0x81c960), ('?eventRemoved@', 0x97ac20), ('??0?$SignalDesc@VPhysicsService', 0x5e8df0), ('_atexit', 0x6a17af)]),
     ('??0?$SignalDesc@VPhysicsService', 0x5e8df0, [('?classDescriptor@', 0x4cd300), ('??0SignalDescriptor@', 0x56bab0), ('??_7?$SignalDesc@', 0x83f86c), ('?declare@Name@', 0x553f90)]),
+    ('?connectGeneric@?$SignalDescImpl@', 0x49de70, [('??$?0VGenericSlotWrapper@Reflection@RBX@@@shared_count@', 0x41a620)]),
+    ('??$?0VGenericSlotWrapper@Reflection@RBX@@@shared_count@', 0x41a620, [('??2@YAPAXI@Z', 0x6a0920), ('__CxxThrowException@8', 0x6a158c)]),
 ]:
     name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith(prefix))
     target, targetrefs, _ = match.target('2008-06', '%08x' % address)
@@ -145,6 +167,25 @@ for i in range(remove_table[7]):
         remove_bindings[symbols[index][0]] = value
 for key, value in [('??$shared_from@VPartInstance@RBX@@', 0x618a40), ('?fire@?$SignalDescImpl@', 0x49d200), ('?erase@', 0x5e9f60), ('?eventRemoved@PhysicsService@RBX@@', 0x97ac20)]:
     assert any(k.startswith(key) and v == value for k, v in remove_bindings.items()), (key, remove_bindings)
+added_name, added_body, added_refs = next(x for x in match.coff_functions(raw) if x[0].startswith('?onAdded@PhysicsService@RBX@@'))
+added_target, added_targetrefs, _ = match.target('2008-06', '005e8f70')
+assert match.exact_match(added_target, added_targetrefs, added_body, added_refs)
+added_offset, added_section = definitions[added_name]
+added_table = sections[added_section]
+added_bindings = {}
+for i in range(added_table[7]):
+    offset, index, kind = struct.unpack_from('<IIH', raw, added_table[5] + 10 * i)
+    offset -= added_offset
+    if 0 <= offset < len(added_body) - 3:
+        value = struct.unpack_from('<I', added_target, offset)[0]
+        if kind == 20:
+            value = (0x5e8f70 + offset + 4 + struct.unpack_from('<i', added_target, offset)[0]) & 0xffffffff
+        added_bindings[symbols[index][0]] = value
+for key, value in [('??$shared_from@VPartInstance@RBX@@', 0x618a40), ('?fire@?$SignalDescImpl@', 0x49d200), ('?insert@', 0x5e8c40), ('?eventAdded@PhysicsService@RBX@@', 0x97abec)]:
+    assert any(k.startswith(key) and v == value for k, v in added_bindings.items()), (key, added_bindings)
+insert_name, insert_body, insert_refs = next(x for x in match.coff_functions(raw) if x[0].startswith('?insert@') and 'PartInstance' in x[0])
+insert_target, insert_targetrefs, _ = match.target('2008-06', '005e8c40')
+assert match.exact_match(insert_target, insert_targetrefs, insert_body, insert_refs)
 weak_name = '??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z'
 assert weak_name not in definitions
 donor = root / 'rebuild/2008-06/out/RbxgsApp/linked/PartInstance.obj'
@@ -233,11 +274,14 @@ assert descriptor_bindings[instance_symbol] == 0x82d6a0
 assert any(k.startswith('?rootDescriptor@ClassDescriptor@') and v == 0x40ad20 for k, v in descriptor_bindings.items())
 rtti = '??_R0?AV?$DescribedNonCreatable@VPhysicsService@RBX@@VInstance@2@$1?sPhysicsService@2@3QBDB@RBX@@@8'
 assert rtti in definitions
+assert struct.unpack('<I', pe.get_data(0x83f870 - pe.OPTIONAL_HEADER.ImageBase, 4))[0] == 0x49de70
 assert b'.?AV?$DescribedNonCreatable@VPhysicsService@RBX@@VInstance@2@$1?sPhysicsService@2@3QBDB@RBX@@' in pe.__data__[:]
 receipt = {'scope': 'Inactive original array-name class profile and Boost exception path match selected methods. Full base/data, event and runtime ABI remain unproven.', 'observer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'profile_sha256': hashlib.sha256(profile.read_bytes()).hexdigest(), 'object_sha256': hashlib.sha256(raw).hexdigest(), 'unit': unit, 'methods': rows, 'shared_count': {'address': '004ca3c0', 'symbol': count_name, 'size': len(count_body), 'exact': True, 'bindings': {k: hex(v) for k, v in count_bindings.items()}}, 'name': {'symbol': name_symbol, 'original_address': '0x83f858', 'value': name_bytes.decode().rstrip('\0')}, 'instance_name': {'symbol': instance_symbol, 'original_address': '0x82d6a0', 'value': 'Instance'}, 'instance_class_descriptor': {'symbol': descriptor_name, 'address': '0040ad80', 'size': len(descriptor_body), 'exact': True, 'bindings': {k: hex(v) for k, v in descriptor_bindings.items()}}, 'rtti_symbol': rtti, 'flags': flags}
 receipt['event_methods'] = events
 receipt['signal_methods'] = signal_methods
 receipt['on_removed'] = {'address': '005e9040', 'symbol': remove_name, 'size': len(remove_body), 'exact': True, 'bindings': {k: hex(v) for k, v in remove_bindings.items()}}
+receipt['on_added'] = {'address': '005e8f70', 'symbol': added_name, 'size': len(added_body), 'exact': True, 'bindings': {k: hex(v) for k, v in added_bindings.items()}}
+receipt['set_insert'] = {'address': '005e8c40', 'symbol': insert_name, 'size': len(insert_body), 'exact': True}
 receipt['weak_count_donor'] = {'address': '00411ad0', 'symbol': weak_name, 'size': len(weak_body), 'exact': True, 'object_sha256': hashlib.sha256(donor_raw).hexdigest(), 'note': 'Recovered no-exception definition excluded; donor body matches. Link selection and live ABI remain unproven.'}
 receipt['function1_donor'] = {'address': '00496a00', 'symbol': function_name, 'size': len(function_body), 'exact': True, 'object_sha256': hashlib.sha256(donor_raw).hexdigest(), 'note': 'Recovered no-exception definition excluded; donor body matches. Link selection and live ABI remain unproven.'}
 (root / 'work/2008-06/shared-layouts/physics-array-lifetime-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')

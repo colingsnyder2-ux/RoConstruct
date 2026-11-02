@@ -60,6 +60,7 @@ public:
     STDMETHOD(Insert)(BSTR);
     STDMETHOD(Write)(IContent**);
     STDMETHOD(WriteSelection)(IContent**);
+    HRESULT execScript(const char*, VARIANT, VARIANT, VARIANT, VARIANT, SAFEARRAY**);
     STDMETHOD(ExecScript)(BSTR, VARIANT, VARIANT, VARIANT, VARIANT, SAFEARRAY**);
     STDMETHOD(ExecUrlScript)(BSTR, VARIANT, VARIANT, VARIANT, VARIANT, SAFEARRAY**);
     STDMETHOD(Close)();

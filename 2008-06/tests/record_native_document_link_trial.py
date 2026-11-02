@@ -65,6 +65,11 @@ libs += [rebuild.dll_import_lib('2008-06', dll) for dll in spec['import_dlls']]
 objects = [out/'NativeDocShell.obj'] + [p6/name for name in ['MyXTPCommandBars.obj','appmodul.obj','P6Engine.obj','P6Data.obj','roblox.res','mfc90.lib']]
 objects += [snap/'native-layouts'/name for name in ['NativeFrameIconsFresh.obj','NativeFrameIconWidth.obj','NativeDHtmlDialog.obj','NativeAboutDialog.obj','NativeAboutDialogData.obj','NativeFileVersionInfo.obj','NativeGLCaps.obj','NativeSaveDialogProfile.obj','NativeApplicationBaseUrl.obj','NativeDocumentHistoryProfile.obj','NativeDocumentException.obj','NativeWorkspaceLayout.obj','NativeWorkspaceLoad.obj','WorkspaceInsertNativeProfile.obj','NativeParserDestructor.obj','SelectionFront.obj','InstanceClassLookup.obj','NativeDataModelTiming.obj','NativeDataModelDutyCycle.obj','NativePlayersAbuse.obj','NativeLuaAllocatorStats.obj']]
 objects += [snap/'native-layouts'/name for name in ['NativeVerbLifetime.obj','NativeVerbBaseLifetime.obj','NativeVerbQueries.obj']]
+objects.append(snap/'native-layouts'/'NativeRotateAxisTrial.obj')
+objects.append(snap/'native-layouts/execscript-probe/NativeExecScriptProfile.obj')
+objects.append(snap/'native-layouts/execscript-helper-probe/CWorkspaceExecScriptHelperProfile.obj')
+objects.append(snap/'native-layouts/execurl-probe/NativeWorkspaceExecUrlProfile.obj')
+objects.append(snap/'native-layouts/lua-args-probe/LuaArgsProfile.obj')
 objects += [snap/'native-layouts'/name for name in ['NativeWorkspaceObjectSafety.obj','NativeWorkspaceSiteUrl.obj']]
 objects += [snap/'native-layouts'/name for name in ['ServiceSelectionProfile.obj','NativeServiceLookup.obj']]
 objects += [snap/'native-layouts'/name for name in ['ServiceChangeHistoryProfile.obj','ServiceChangeHistoryCreate.obj']]
