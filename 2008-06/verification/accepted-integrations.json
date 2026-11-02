@@ -2955,6 +2955,18 @@
         ]
       },
       "timestamp": 1793590562.3414364
+    },
+    {
+      "job": "1a0c8c2265b441ce9c939effd0998b7e",
+      "patches": {
+        "App/util/Name.cpp": [
+          [
+            "Name::declare(const char* sName, int dictionaryIndex)\n\t{\n\t\tif (!sName)\n\t\t{\n\t\t\tRBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);\n\t\t\treturn getNullName();\n\t\t}\n\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(sName);\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\tRBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tName* name = new Name(sName, dictionaryIndex);\n\t\t\tnamMap()[sName] = name;\n\t\t\tdictionary()[dictionaryIndex] = name;\n\t\t\treturn *name;\n\t\t}\n\t}",
+            "Name::declare(const char* sName, int dictionaryIndex)\n\t{\n\t\tif (!sName)\n\t\t{\n\t\t\treturn getNullName();\n\t\t}\n\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(std::string(sName));\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\titer->second->dictionaryIndex = dictionaryIndex;\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tName* name = new Name(sName, dictionaryIndex);\n\t\t\tnamMap()[sName] = name;\n\t\t\tdictionary()[dictionaryIndex] = name;\n\t\t\treturn *name;\n\t\t}\n\t}"
+          ]
+        ]
+      },
+      "timestamp": 1793596686.3835566
     }
   ],
   "initial_patches": {}

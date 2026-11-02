@@ -18,7 +18,7 @@ namespace RBX
 		osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
 
 		GetVersionExA(&osvi);
-		
+
 		if (osvi.dwMajorVersion < 6) // anything earlier than Windows Vista
 			return S_OK;
 

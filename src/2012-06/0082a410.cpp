@@ -1,93 +1,42 @@
-// from server: 33% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/IRenderable.cpp
+// from server: 70% by Intel
 
-// Candidate translation unit (score above; library headers required).
-#include "util/IRenderable.h"
 
-namespace RBX 
-{
-	IRenderable::~IRenderable()
-	{
-		RBXASSERT(index2d == -1);
-		RBXASSERT(index3d == -1);
-		RBXASSERT(bucket == NULL);
-	}
 
-	void IRenderable::shouldRenderSetDirty()
-	{
-		if (bucket)
-			bucket->recomputeShouldRender(this);
-	}
 
-	IRenderableBucket::~IRenderableBucket()
-	{
-		RBXASSERT(renderable2ds.size() == 0);
-		RBXASSERT(renderable3ds.size() == 0);
-	}
+struct BallBallContact {
+    void* vfptr;
+    void* next;
+    void* pool;
 
-	void IRenderableBucket::onAdded(IRenderable* iR)
-	{
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-		RBXASSERT(iR->bucket == NULL);
+    void* __stdcall Create(void* a1, void* a2, void* a3);
+};
 
-		iR->bucket = this;
-		recomputeShouldRender(iR);
-	}
+extern "C" void* __stdcall AllocateFromPool(void* pool);
 
-	void IRenderableBucket::onRemoving(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->index2d >= 0)
-			renderable2ds.fastRemove(iR);
-
-		if (iR->index3d >= 0)
-			renderable3ds.fastRemove(iR);
-
-		iR->bucket = NULL;
-
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-	}
-
-	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->shouldRender2d())
-		{
-			if (iR->index2d < 0)
-				renderable2ds.fastAppend(iR);
-		}
-		else if (iR->index2d >= 0)
-		{
-			renderable2ds.fastRemove(iR);
-		}
-
-		if (iR->shouldRender3dAdorn())
-		{
-			if (iR->index3d < 0)
-				renderable3ds.fastAppend(iR);
-		}
-		else if (iR->index3d >= 0)
-		{
-			renderable3ds.fastRemove(iR);
-		}
-	}
-
-	void IRenderableBucket::render2dItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable2ds.size(); ++i)
-			renderable2ds[i]->render2d(adorn);
-	}
-
-	void IRenderableBucket::render3dAdornItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable3ds.size(); ++i)
-			renderable3ds[i]->render3dAdorn(adorn);
-	}
+void* __stdcall BallBallContact::Create(void* a1, void* a2, void* a3) {
+    BallBallContact* thisPtr = this;
+    void* eax = thisPtr->vfptr;
+    if (eax) {
+        void* edx = *reinterpret_cast<void**>(eax);
+        thisPtr->vfptr = edx;
+    } else {
+        eax = AllocateFromPool(thisPtr->pool);
+    }
+    if (!eax) {
+        return 0;
+    }
+    void* ecx = *reinterpret_cast<void**>(a2);
+    unsigned short dx = *reinterpret_cast<unsigned short*>(a1);
+    *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 4) = ecx;
+    void* edx = *reinterpret_cast<void**>(a3);
+    *reinterpret_cast<unsigned short*>(eax) = dx;
+    *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 8) = edx;
+    edx = *reinterpret_cast<void**>(reinterpret_cast<char*>(a3) + 4);
+    *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 12) = edx;
+    ecx = *reinterpret_cast<void**>(reinterpret_cast<char*>(a3) + 8);
+    *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 16) = ecx;
+    *reinterpret_cast<int*>(reinterpret_cast<char*>(eax) + 20) = 0;
+    *reinterpret_cast<int*>(reinterpret_cast<char*>(eax) + 24) = 0;
+    *reinterpret_cast<int*>(reinterpret_cast<char*>(eax) + 28) = 0;
+    return eax;
 }

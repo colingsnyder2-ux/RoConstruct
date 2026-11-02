@@ -1,93 +1,36 @@
-// from server: 60% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/IRenderable.cpp
+// from server: 85% by Intel
+extern "C" void __stdcall InitializeCriticalSection(void* lpCriticalSection);
+extern "C" void __cdecl sub_9831f5(void*);
 
-// Candidate translation unit (score above; library headers required).
-#include "util/IRenderable.h"
+struct CriticalSection {
+    char data[24];
+};
 
-namespace RBX 
-{
-	IRenderable::~IRenderable()
-	{
-		RBXASSERT(index2d == -1);
-		RBXASSERT(index3d == -1);
-		RBXASSERT(bucket == NULL);
-	}
+CriticalSection g_criticalSection;
+int g_dword_E51250;
+int g_dword_E51254;
+int g_dword_E51258;
+int g_dword_E5125C;
+int g_dword_E51260;
+int g_dword_E51264;
+int g_dword_E51268;
+int g_ptr_B1EB50;
 
-	void IRenderable::shouldRenderSetDirty()
-	{
-		if (bucket)
-			bucket->recomputeShouldRender(this);
-	}
-
-	IRenderableBucket::~IRenderableBucket()
-	{
-		RBXASSERT(renderable2ds.size() == 0);
-		RBXASSERT(renderable3ds.size() == 0);
-	}
-
-	void IRenderableBucket::onAdded(IRenderable* iR)
-	{
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-		RBXASSERT(iR->bucket == NULL);
-
-		iR->bucket = this;
-		recomputeShouldRender(iR);
-	}
-
-	void IRenderableBucket::onRemoving(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->index2d >= 0)
-			renderable2ds.fastRemove(iR);
-
-		if (iR->index3d >= 0)
-			renderable3ds.fastRemove(iR);
-
-		iR->bucket = NULL;
-
-		RBXASSERT(iR->index2d == -1);
-		RBXASSERT(iR->index3d == -1);
-	}
-
-	void IRenderableBucket::recomputeShouldRender(IRenderable* iR)
-	{
-		RBXASSERT(iR->bucket == this);
-
-		if (iR->shouldRender2d())
-		{
-			if (iR->index2d < 0)
-				renderable2ds.fastAppend(iR);
-		}
-		else if (iR->index2d >= 0)
-		{
-			renderable2ds.fastRemove(iR);
-		}
-
-		if (iR->shouldRender3dAdorn())
-		{
-			if (iR->index3d < 0)
-				renderable3ds.fastAppend(iR);
-		}
-		else if (iR->index3d >= 0)
-		{
-			renderable3ds.fastRemove(iR);
-		}
-	}
-
-	void IRenderableBucket::render2dItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable2ds.size(); ++i)
-			renderable2ds[i]->render2d(adorn);
-	}
-
-	void IRenderableBucket::render3dAdornItems(Adorn* adorn)
-	{
-		for (int i = 0; i < renderable3ds.size(); ++i)
-			renderable3ds[i]->render3dAdorn(adorn);
-	}
+void* __cdecl sub_82B6C0() {
+    int eax = 1;
+    if (reinterpret_cast<char&>(g_dword_E51268) & 1) {
+        return &g_criticalSection;
+    }
+    g_dword_E51268 |= eax;
+    InitializeCriticalSection(&g_criticalSection);
+    eax = 0;
+    g_dword_E51250 = eax;
+    g_dword_E51254 = eax;
+    g_dword_E51258 = eax;
+    eax = 0x20;
+    sub_9831f5(reinterpret_cast<void*>(0xB1EB50));
+    g_dword_E5125C = 0xE4;
+    g_dword_E51260 = eax;
+    g_dword_E51264 = eax;
+    return &g_criticalSection;
 }

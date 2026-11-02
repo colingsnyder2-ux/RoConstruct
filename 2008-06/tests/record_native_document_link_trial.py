@@ -45,7 +45,7 @@ if native_instance or filtered_donor:
     filtered = out/'RbxgsAppWithoutInstance.lib'
     remove = ['/REMOVE:Instance.obj']
     if provider_trial:
-        remove += ['/REMOVE:glue_content_provider.obj', '/REMOVE:MouseCommand.obj', '/REMOVE:Primitive.obj']
+        remove += ['/REMOVE:glue_content_provider.obj', '/REMOVE:MouseCommand.obj', '/REMOVE:Primitive.obj', '/REMOVE:Workspace.obj']
     filter_code, filter_log = rebuild.run(rebuild.toolchain(), 'lib',
         ['/nologo'] + remove + ['/OUT:' + str(filtered), str(archive)], out)
     (out/'filter.log').write_text(filter_log)
@@ -89,6 +89,7 @@ if provider_trial:
     objects.append(snap/'native-layouts/content-source-probe/glue_without_content_get.obj')
     objects.append(snap/'native-layouts/mousecommand-source-probe/MouseCommandWithoutLifetime.obj')
     objects.append(snap/'native-layouts/primitive-source-probe/PrimitiveWithoutJointIteration.obj')
+    objects.append(snap/'native-layouts/workspace-source-probe/WorkspaceWithoutDefault.obj')
     objects += [snap/'native-layouts'/name for name in
                 ['NativeProviderFindProfile.obj', 'NativeProviderCreateTrial.obj', 'NativeContentProviderTrial.obj',
                  'NativeContentProviderWorkerTrial.obj', 'NativeContentReadTrial.obj', 'NativeContentGetTrial.obj',
@@ -115,7 +116,16 @@ if provider_trial:
                  'NativeGameToolLifetimeTrial.obj', 'NativeGameToolEventsTrial.obj',
                  'NativeGameToolNameTrial.obj', 'NativeGameToolDragTrial.obj',
                  'NativeMouseUnlockedTrial.obj', 'NativeGameToolMouseDownTrial.obj',
-                 'NativePartLockProfile.obj', 'NativeJointIterationProfile.obj']]
+                 'NativePartLockProfile.obj', 'NativeJointIterationProfile.obj',
+                 'NativeWorkspaceDefaultProfile.obj', 'NativeDefaultMouseCommandTrial.obj',
+                 'NativeWorkspaceSiteCheck.obj', 'WorkspaceSiteTrustProfile.obj',
+                 'NativeWorkspaceErrorTrial.obj', 'NativeWorkspaceStatusTrial.obj',
+                 'NativeAtlErrorCoreTrial.obj', 'NativeWorkspaceComMapTrial.obj',
+                 'NativeWorkspaceEventsTrial.obj', 'NativeWorkspaceCloseTrial.obj',
+                 'NativeWorkspaceGuidsTrial.obj', 'NativeWorkspaceFinalConstructVectorTrial.obj',
+                 'NativeDataModelCreateTrial.obj', 'NativeToolCheckedMultiTrial.obj',
+                 'NativeDataModelInitializeTrial.obj', 'NativeWorkspaceNullProfile.obj',
+                 'NativeWorldServiceFactoriesTrial.obj']]
 objects += [snap/'native-layouts'/'NativeInstanceBaseCallbacks.obj']
 objects += [snap/'native-layouts'/'NativeInstanceReadPropertyTrial.obj']
 objects += [snap/'native-layouts'/'NativeDescendantHelpersTrial.obj']
@@ -128,6 +138,8 @@ objects += [snap/'property-abi-trial'/'HistoryItemPropertyTrial.obj']
 objects += [snap/'history-start-trial'/'NativeChangeHistoryStartTrial.obj']
 system = ['gdiplus','kernel32','user32','gdi32','advapi32','shell32','ole32','oleaut32','comdlg32','comctl32','ws2_32','winmm','opengl32','glu32','imagehlp','version','wininet','dbghelp','psapi']
 args = ['/nologo','/SUBSYSTEM:WINDOWS','/MACHINE:X86','/MAP:NativeDoc.map','/OUT:NativeDoc.exe','/NODEFAULTLIB:mfcs90.lib','/MANIFEST:NO']
+if provider_trial:
+    args.append('/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z')
 args += [str(path) for path in objects+libs] + [name+'.lib' for name in system] + ['/NODEFAULTLIB:'+name for name in rebuild.VENDOR_AUTOLINK]
 code, log = rebuild.run(rebuild.toolchain(), 'link', args, out)
 (out/'link.log').write_text(log)

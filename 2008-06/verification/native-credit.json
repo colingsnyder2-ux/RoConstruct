@@ -308,6 +308,13 @@
     "user": "EspClaude"
   },
   {
+    "addr": "00553f90",
+    "client": "2008-06",
+    "job": "1a0c8c2265b441ce9c939effd0998b7e",
+    "model": "codex:gpt-6.1-terra",
+    "user": "colin"
+  },
+  {
     "addr": "00554160",
     "client": "2008-06",
     "job": "73b6035f086a479198d42388a3fcf43b",
