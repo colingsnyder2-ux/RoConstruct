@@ -39,15 +39,20 @@
   ],
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
-    "rebuild/2008-06/tests/record_native_insert_object_dialog.py": "f434c49f7efb3a85ba95324c3ae648b32b90a0ef2a8bf9bde783bd09a398dac9",
-    "rebuild/2008-06/native-classes/CInsertObjectDialog.cpp": "e49c6e94d82a885a91be3d7562533eab107d000b806afaaa2e6729fd903c66b1",
+    "rebuild/2008-06/tests/record_native_insert_object_dialog.py": "c7e67cc8fa73769ca0d10a7ee9710234b66c5380735e9b3c42c1c544bd308ad1",
+    "rebuild/2008-06/native-classes/CInsertObjectDialog.cpp": "c4c8a4f04a403c2dff97b2c3c46712d09d99bbd93f426f75406abbfade0b1950",
     "rebuild/2008-06/tests/NativeInsertObjectDialogLayout.cpp": "922691178e346a91ed6a7fd3b321e7777a491ae7bc3651e03818a0cd4d1ea0f3",
     "rebuild/2008-06/native-classes/CClassImages.cpp": "d699077e651939b779874f945f86f8e024b2e88618af537a60de488fde87ce86",
+    "rebuild/2008-06/native-classes/MetadataClass.cpp": "0b5309ae3370b208afbcfd2df9f14210622ce996c7350794c7dd4187b85ad02d",
+    "rebuild/2008-06/native-classes/AuthoringSettings.cpp": "ed4f18b8ddb9b97b811a4daadeae33d0e058b5f939cd1e2c52e27a694847c168",
+    "rebuild/2008-06/tests/NativeMetadataLayout.cpp": "00b18844e1942923231f7458a759824a35cfd1ba24b0c8b67ff29bc4f2758621",
+    "rebuild/2008-06/native-headers/reflection/Metadata.h": "a508536d3397609bae4c5b94c1dbe2d45ff9f15e37cfffec9406c3af5710e3dc",
+    "rebuild/2008-06/native-headers/AuthoringSettings.h": "6b9e3718340ce22b64d0ce9300433aa0dddeafdd5c6fc4700ec44b3f23dfb126",
     "rebuild/2008-06/native-headers/CInsertObjectDialog.h": "deb184be6b2e95dd0cd4c0bbf57839d63a32bee65d8785ab7306b6ebe20ae79a",
     "rebuild/2008-06/native-headers/CClassImages.h": "6e745f384762545234b801f6669af380dbd4c5dbe849c8faa8bb17d393419ed0"
   },
-  "object_sha256": "eb517beae3d99db6327c69aea295273c5604d7273fd7be1087ff221a693c9388",
-  "images_object_sha256": "878d0533ae5ee50ef9d4345ec9b2887efdae4771b05e035db5f35c038624d9de",
+  "object_sha256": "79f959dd1ad83badb4e39c9837d6227c3acbf1d85f8cb06399fc82c2a482741e",
+  "images_object_sha256": "3c7e08fc51275d453c3ea25d3ae41abd62d5994eeee84edcfbfddd79c0dec41b",
   "layout": {
     "size": "0xfc",
     "parent": "0x74",
@@ -265,6 +270,176 @@
       },
       "local_eh": [],
       "profile": "XTP headers (/UNOMINMAX /D_XTP_STATICLINK)"
+    },
+    {
+      "address": "0041fb30",
+      "symbol": "?getImageIndex@Class@Metadata@Reflection@RBX@@QBEHXZ",
+      "size": 127,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVClass@Metadata@Reflection@RBX@@@8": "0x92ac4c (.?AVClass@Metadata@Reflection@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+        "?getImageIndex@Class@Metadata@Reflection@RBX@@QBEHXZ": "0x41fb30"
+      },
+      "local_eh": [],
+      "unit": "NativeMetadataClass"
+    },
+    {
+      "address": "0041fcf0",
+      "symbol": "?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@SAAAVAuthoringSettings@@XZ",
+      "size": 266,
+      "exact": true,
+      "verified_targets": {
+        "?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A": "0x974aa0",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090",
+        "?sing@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@0PAV12@A": "0x96c39c",
+        "??$create@VAuthoringSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VAuthoringSettings@@@boost@@XZ": "0x40d410",
+        "?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ": "0x5690f0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0"
+      },
+      "local_eh": [
+        "__ehhandler$?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@SAAAVAuthoringSettings@@XZ"
+      ],
+      "unit": "NativeAuthoringSettings"
+    },
+    {
+      "address": "0040d140",
+      "symbol": "??0AuthoringSettings@@QAE@XZ",
+      "size": 104,
+      "exact": true,
+      "verified_targets": {
+        "??0?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@IAE@XZ": "0x40ccc0",
+        "??_7AuthoringSettings@@6B?$GuidItem@VInstance@RBX@@@RBX@@@": "0x80bbd4 (RTTI .?AVAuthoringSettings@@, offset 0x0)",
+        "??_7AuthoringSettings@@6B?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@@": "0x80bbc8 (RTTI .?AVAuthoringSettings@@, offset 0x10)",
+        "??_7AuthoringSettings@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@RBX@@@": "0x80bbc0 (RTTI .?AVAuthoringSettings@@, offset 0x14)",
+        "??_7AuthoringSettings@@6BDebugable@RBX@@@": "0x80bbb8 (RTTI .?AVAuthoringSettings@@, offset 0x20)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@@": "0x80bba8 (RTTI .?AVAuthoringSettings@@, offset 0x24)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@@": "0x80bb98 (RTTI .?AVAuthoringSettings@@, offset 0x44)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@@": "0x80bb88 (RTTI .?AVAuthoringSettings@@, offset 0x64)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@": "0x80bb78 (RTTI .?AVAuthoringSettings@@, offset 0x84)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@@": "0x80bb68 (RTTI .?AVAuthoringSettings@@, offset 0xa4)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@@": "0x80bb58 (RTTI .?AVAuthoringSettings@@, offset 0xc4)"
+      },
+      "local_eh": [],
+      "unit": "NativeAuthoringSettings"
+    },
+    {
+      "address": "0040a990",
+      "symbol": "??1AuthoringSettings@@UAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7AuthoringSettings@@6B?$GuidItem@VInstance@RBX@@@RBX@@@": "0x80bbd4 (RTTI .?AVAuthoringSettings@@, offset 0x0)",
+        "??_7AuthoringSettings@@6B?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@@": "0x80bbc8 (RTTI .?AVAuthoringSettings@@, offset 0x10)",
+        "??_7AuthoringSettings@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@RBX@@@": "0x80bbc0 (RTTI .?AVAuthoringSettings@@, offset 0x14)",
+        "??_7AuthoringSettings@@6BDebugable@RBX@@@": "0x80bbb8 (RTTI .?AVAuthoringSettings@@, offset 0x20)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@@": "0x80bba8 (RTTI .?AVAuthoringSettings@@, offset 0x24)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@@": "0x80bb98 (RTTI .?AVAuthoringSettings@@, offset 0x44)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@@": "0x80bb88 (RTTI .?AVAuthoringSettings@@, offset 0x64)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@": "0x80bb78 (RTTI .?AVAuthoringSettings@@, offset 0x84)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@@": "0x80bb68 (RTTI .?AVAuthoringSettings@@, offset 0xa4)",
+        "??_7AuthoringSettings@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@@": "0x80bb58 (RTTI .?AVAuthoringSettings@@, offset 0xc4)",
+        "??1?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ": "0x40a6c0"
+      },
+      "local_eh": [],
+      "unit": "NativeAuthoringSettings"
+    },
+    {
+      "address": "0040ab90",
+      "symbol": "??_GAuthoringSettings@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1AuthoringSettings@@UAE@XZ": "0x40a990",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": [],
+      "unit": "NativeAuthoringSettings"
+    },
+    {
+      "address": "0040a6c0",
+      "symbol": "??1?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ",
+      "size": 93,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x80bb14 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x80bb04 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x80bafc (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6BDebugable@1@@": "0x80baf4 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x80bae4 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x80bad4 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x80bac4 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x80bab4 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x80baa4 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x80ba94 (RTTI .?AV?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0xc4)",
+        "?sing@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@0PAV12@A": "0x96c39c",
+        "??1?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ": "0x40a0e0"
+      },
+      "local_eh": [],
+      "unit": "NativeAuthoringSettings"
+    },
+    {
+      "address": "0040a7c0",
+      "symbol": "??_G?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ": "0x40a6c0",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": [],
+      "unit": "NativeAuthoringSettings"
+    },
+    {
+      "address": "0040a0e0",
+      "symbol": "??1?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x80b984 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x80b978 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x80b970 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6BDebugable@1@@": "0x80b968 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x80b958 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x80b948 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x80b938 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x80b928 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x80b918 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x80b908 (RTTI .?AV?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3QBDB@RBX@@, offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540"
+      },
+      "local_eh": [],
+      "unit": "NativeAuthoringSettings"
+    },
+    {
+      "address": "0040d410",
+      "symbol": "??$create@VAuthoringSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VAuthoringSettings@@@boost@@XZ",
+      "size": 120,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "msvcr90.dll!malloc",
+        "??0AuthoringSettings@@QAE@XZ": "0x40d140",
+        "??$?0VAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VAuthoringSettings@@@boost@@QAE@PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z": "0x40c6b0"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VAuthoringSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VAuthoringSettings@@@boost@@XZ"
+      ],
+      "unit": "NativeAuthoringSettings"
+    },
+    {
+      "address": "0040c6b0",
+      "symbol": "??$?0VAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VAuthoringSettings@@@boost@@QAE@PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z",
+      "size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@shared_count@detail@boost@@QAE@PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z": "0x40c620"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VAuthoringSettings@@@boost@@QAE@PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z"
+      ],
+      "unit": "NativeAuthoringSettings"
     }
   ],
   "vtable": {
@@ -319,9 +494,10 @@
     ]
   },
   "open": [
-    "addClasses 004202b0: needs Reflection::Metadata::Class (+0x104 base, +0x130..0x132 flags) and the 0041fcf0 settings singleton (+0x130/+0x131) layouts",
+    "addClasses 004202b0: 711 of 713 bytes under the c_str/PCXSTR/compare noinline profile; every call target lines up, the remaining difference is register allocation (descriptor/metadata in esi/edi swapped, getImageIndex/c_str order). Layouts and callees are recovered; parked after the source-shape grid in work/2008-06/shared-layouts/insert-object-dialog-working.json notes",
+    "GlobalSettingsItem<AuthoringSettings> constructor 0040ccc0 (258 vs 255): the original folds *ClassName to the literal \"Authoring\", which needs const char* const template parameters in the shared reflection templates",
     "Bodies of call targets owned by other units (CComCtlWrapper COMDATs 00412fc0/004130d0, CGdiObject destructor 004111a0, XTP LoadBitmapFromResource 006bc520): bound by call site and name only",
     "Name::compare 0041faa0 body (shared util/Name.h)"
   ],
-  "scope": "Inactive. Exact bodies with verified call/data targets; addClasses and dependent class bodies remain open. No active build, swap or credit."
+  "scope": "Inactive. Exact bodies with verified call/data targets for CInsertObjectDialog, CClassImages, Metadata::Class::getImageIndex and the AuthoringSettings singleton/lifetime; addClasses remains open. No active build, swap or credit."
 }

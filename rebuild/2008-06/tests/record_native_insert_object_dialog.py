@@ -31,10 +31,16 @@ fixture = root / 'rebuild/2008-06/tests/NativeInsertObjectDialogLayout.cpp'
 obj = out / 'NativeInsertObjectDialog.obj'
 images_source = root / 'rebuild/2008-06/native-classes/CClassImages.cpp'
 images_obj = out / 'NativeClassImages.obj'
+metadata_source = root / 'rebuild/2008-06/native-classes/MetadataClass.cpp'
+metadata_obj = out / 'NativeMetadataClass.obj'
+authoring_source = root / 'rebuild/2008-06/native-classes/AuthoringSettings.cpp'
+authoring_obj = out / 'NativeAuthoringSettings.obj'
 # CClassImages calls the statically linked XTP 11.2.2 bitmap loader: XTP headers need min/max.
 xtp_flags = ['/UNOMINMAX', '/I' + str(root / 'tools/libs/xtp-11.2.2/Source'), '/D_XTP_STATICLINK']
 for path, target, extra in [(source, obj, []), (fixture, out / 'NativeInsertObjectDialogLayout.obj', []),
-                            (images_source, images_obj, xtp_flags)]:
+                            (images_source, images_obj, xtp_flags),
+                            (metadata_source, metadata_obj, []), (authoring_source, authoring_obj, []),
+                            (root / 'rebuild/2008-06/tests/NativeMetadataLayout.cpp', out / 'NativeMetadataLayout.obj', [])]:
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + extra + ['/Fo' + str(target), str(path)], out)
     assert code == 0, log
 
@@ -92,8 +98,30 @@ INTERNAL = {
     '?_ImageList_AddMasked@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@K@Z': 0x4130d0,
     '??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z': 0x409d50,
     '__TI2?AVruntime_error@std@@': 0x8d1bc8,
+    '?getImageIndex@Class@Metadata@Reflection@RBX@@QBEHXZ': 0x41fb30,
+    '??1Instance@RBX@@UAE@XZ': 0x55a540,
+    '?setParent@Instance@RBX@@QAEXPAV12@@Z': 0x55a8f0,
+    '?do_lock@recursive_mutex@boost@@AAEXXZ': 0x563090,
+    '?do_unlock@recursive_mutex@boost@@AAEXXZ': 0x5630e0,
+    '?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ': 0x5690f0,
+    '?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A': 0x974aa0,
+    '?sing@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@0PAV12@A': 0x96c39c,
+    '??0?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@IAE@XZ': 0x40ccc0,
+    '??$?0PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@shared_count@detail@boost@@QAE@PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z': 0x40c620,
     '?messageMap@?1??GetThisMessageMap@CInsertObjectDialog@@KGPBUAFX_MSGMAP@@XZ@4U3@B': 0x80f44c,
 }
+OWN = {}  # exact bodies proven by this probe, filled as rows pass
+
+def vtable_identity(symbol, value):
+    """A ??_7 table binds to an original vtable whose RTTI complete-object locator names the same class.
+    The binary's template arguments use const char* const (3QBDB) where the shared templates use 3PBDB."""
+    cls = symbol[4:symbol.index('@@6B') + 2]
+    locator = struct.unpack('<I', data(value - 4, 4))[0]
+    descriptor = struct.unpack('<I', data(locator + 12, 4))[0]
+    rtti = pe.get_string_at_rva(descriptor + 8 - image).decode()
+    assert rtti.replace('3QBDB', '3PBDB') == '.?AV' + cls, (symbol, hex(value), rtti)
+    return '%s (RTTI %s, offset %#x)' % (hex(value), rtti, struct.unpack('<I', data(locator + 4, 4))[0])
+
 LOCAL_EH = re.compile(r'^(__ehhandler\$|__unwindfunclet\$|__catch\$|__tryblocktable\$|__unwindtable\$|__ehfuncinfo\$|\$LN\d)')
 
 def load(path):
@@ -134,8 +162,14 @@ def bind(name, address):
             literal = raw[table[4] + pos:table[4] + table[3]].split(b'\0')[0] + b'\0'
             assert data(value, len(literal)) == literal, (name, symbol, hex(value))
             verified[symbol] = hex(value)
+        elif symbol.startswith('??_R0') and symbol.endswith('@8'):
+            rtti = pe.get_string_at_rva(value + 8 - image).decode()
+            assert rtti == '.' + symbol[5:-2], (name, symbol, hex(value), rtti)
+            verified[symbol] = '%s (%s)' % (hex(value), rtti)
+        elif symbol.startswith('??_7') and symbol not in INTERNAL:
+            verified[symbol] = vtable_identity(symbol, value)
         else:
-            assert INTERNAL.get(symbol) == value, (name, symbol, hex(value), symbol_section)
+            assert INTERNAL.get(symbol, OWN.get(symbol)) == value, (name, symbol, hex(value), symbol_section)
             verified[symbol] = hex(value)
     return verified, sorted(local)
 
@@ -177,6 +211,31 @@ for name, address in IMAGES:
     verified, local = bind(name, address)
     rows.append({'address': '%08x' % address, 'symbol': name, 'size': len(body), 'exact': True,
                  'verified_targets': verified, 'local_eh': local, 'profile': 'XTP headers (/UNOMINMAX /D_XTP_STATICLINK)'})
+DEPENDENCIES = [
+    (metadata_obj, [('?getImageIndex@Class@Metadata@Reflection@RBX@@QBEHXZ', 0x41fb30)]),
+    (authoring_obj, [
+        ('?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@SAAAVAuthoringSettings@@XZ', 0x41fcf0),
+        ('??0AuthoringSettings@@QAE@XZ', 0x40d140),
+        ('??1AuthoringSettings@@UAE@XZ', 0x40a990),
+        ('??_GAuthoringSettings@@UAEPAXI@Z', 0x40ab90),
+        ('??1?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ', 0x40a6c0),
+        ('??_G?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@MAEPAXI@Z', 0x40a7c0),
+        ('??1?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ', 0x40a0e0),
+        ('??$create@VAuthoringSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VAuthoringSettings@@@boost@@XZ', 0x40d410),
+        ('??$?0VAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VAuthoringSettings@@@boost@@QAE@PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z', 0x40c6b0)]),
+]
+for dependency_obj, methods in DEPENDENCIES:
+    OWN.update(methods)
+for dependency_obj, methods in DEPENDENCIES:
+    load(dependency_obj)
+    dependency_bodies = {n: (b, r) for n, b, r in match.coff_functions(raw)}
+    for name, address in methods:
+        body, refs = dependency_bodies[name]
+        target, target_refs, _ = match.target('2008-06', '%08x' % address)
+        assert match.exact_match(target, target_refs, body, refs), (name, hex(address), len(body), len(target))
+        verified, local = bind(name, address)
+        rows.append({'address': '%08x' % address, 'symbol': name, 'size': len(body), 'exact': True,
+                     'verified_targets': verified, 'local_eh': local, 'unit': dependency_obj.stem})
 load(obj)
 
 # Primary vtable: same slot count, and every slot this object defines binds to the original slot value
@@ -213,7 +272,9 @@ assert imported(base_getter)[1] == '?GetThisMessageMap@CDialog@@KGPBUAFX_MSGMAP@
 assert struct.unpack('<6I', data(entries, 24)) == (0x4e, 0xfffd, 1000, 1000, 0x3d, 0x41f9f0)
 assert struct.unpack('<6I', data(entries + 24, 24)) == (0, 0, 0, 0, 0, 0)
 
-paths = [Path(__file__), source, fixture, images_source, root / 'rebuild/2008-06/native-headers/CInsertObjectDialog.h',
+paths = [Path(__file__), source, fixture, images_source, metadata_source, authoring_source,
+         root / 'rebuild/2008-06/tests/NativeMetadataLayout.cpp', root / 'rebuild/2008-06/native-headers/reflection/Metadata.h',
+         root / 'rebuild/2008-06/native-headers/AuthoringSettings.h', root / 'rebuild/2008-06/native-headers/CInsertObjectDialog.h',
          root / 'rebuild/2008-06/native-headers/CClassImages.h']
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {
@@ -230,10 +291,11 @@ receipt = {
     'vtable': {'address': '0080f48c', 'slots': 91, 'verified_slots': len(vtable), 'unverified_slots': unverified_slots},
     'runtime_class': {'address': '0080f2e0', 'size': '0xfc', 'base_getter': '0041f9b0'},
     'message_map': {'address': '0080f44c', 'entries': [{'message': 'WM_NOTIFY', 'code': 'NM_DBLCLK', 'id': 1000, 'handler': '0041f9f0'}]},
-    'open': ['addClasses 004202b0: needs Reflection::Metadata::Class (+0x104 base, +0x130..0x132 flags) and the 0041fcf0 settings singleton (+0x130/+0x131) layouts',
+    'open': ['addClasses 004202b0: 711 of 713 bytes under the c_str/PCXSTR/compare noinline profile; every call target lines up, the remaining difference is register allocation (descriptor/metadata in esi/edi swapped, getImageIndex/c_str order). Layouts and callees are recovered; parked after the source-shape grid in work/2008-06/shared-layouts/insert-object-dialog-working.json notes',
+             'GlobalSettingsItem<AuthoringSettings> constructor 0040ccc0 (258 vs 255): the original folds *ClassName to the literal "Authoring", which needs const char* const template parameters in the shared reflection templates',
              'Bodies of call targets owned by other units (CComCtlWrapper COMDATs 00412fc0/004130d0, CGdiObject destructor 004111a0, XTP LoadBitmapFromResource 006bc520): bound by call site and name only',
              'Name::compare 0041faa0 body (shared util/Name.h)'],
-    'scope': 'Inactive. Exact bodies with verified call/data targets; addClasses and dependent class bodies remain open. No active build, swap or credit.',
+    'scope': 'Inactive. Exact bodies with verified call/data targets for CInsertObjectDialog, CClassImages, Metadata::Class::getImageIndex and the AuthoringSettings singleton/lifetime; addClasses remains open. No active build, swap or credit.',
 }
 (root / 'work/2008-06/shared-layouts/insert-object-dialog-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native CInsertObjectDialog: %d exact methods, targets verified; %d vtable slots verified' % (len(rows), len(vtable)))
