@@ -491,6 +491,20 @@ def test_project_probe_headers_fence_tasks_without_replacing_canonical_sources(s
     assert task['signature']!=second['tasks'][0]['signature']
 
 
+def test_long_probe_context_uses_short_immutable_cache(tmp_path,monkeypatch):
+    cache=tmp_path.parent/'short-cache';monkeypatch.setenv('LOCALAPPDATA',str(cache))
+    headers={'App/include/v8datamodel/CharacterAppearance.h':'class Header {};'}
+    payload=dict(probe_headers=headers,probe_revision=integration.digest(headers))
+    long=tmp_path/('deep-'*24)/('nested-'*20)
+    folder=client.materialize_probe_headers(payload,long)
+    assert folder.is_relative_to(cache) and folder.name==payload['probe_revision']
+    path=folder/next(iter(headers))
+    assert len(str(path))<=259 and path.read_text()=='class Header {};'
+    assert client.materialize_probe_headers(payload,long)==folder
+    path.write_text('modified')
+    with pytest.raises(ValueError,match='modified'):client.materialize_probe_headers(payload,long)
+
+
 def test_probe_context_is_immutable_versioned_and_cannot_escape(tmp_path):
     headers={'v8world/Mechanism.h':'struct SimJob {};'}
     payload=dict(probe_headers=headers,probe_revision=integration.digest(headers))

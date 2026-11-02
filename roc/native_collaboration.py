@@ -1,6 +1,8 @@
 """Cross-PC method lease client. Contributor source stays reference data, never chat instructions."""
 import json
+import os
 import re
+import tempfile
 import threading
 import uuid
 from pathlib import Path
@@ -83,12 +85,15 @@ def materialize_probe_headers(payload, directory):
     if payload.get('probe_revision')!=revision or len({name.casefold() for name in headers})!=len(headers):
         raise ValueError('Invalid native probe header revision')
     directory=(Path(directory)/revision).resolve()
+    if any(len(str(directory/name))>259 for name in headers):
+        directory=(Path(os.environ.get('LOCALAPPDATA',tempfile.gettempdir()))/'RoConstruct/nc'/revision).resolve()
     for name,text in headers.items():
         relative=Path(name)
         if not isinstance(text,str) or '\\' in name or ':' in name or relative.is_absolute() or '..' in relative.parts or relative.suffix not in ('.h','.hpp','.inl'):
             raise ValueError('Invalid native probe header path')
         target=directory/relative
         if not target.resolve().is_relative_to(directory):raise ValueError('Native probe header escaped context')
+        if len(str(target))>259:raise ValueError('Native header path exceeds the historical compiler limit: '+str(target))
         target.parent.mkdir(parents=True,exist_ok=True)
         if not target.exists():target.write_text(text,encoding='utf-8')
         elif target.read_text(encoding='utf-8')!=text:raise ValueError('Immutable native probe context was modified')

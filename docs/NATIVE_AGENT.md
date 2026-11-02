@@ -1,5 +1,13 @@
 # Native integration with an agent (Codex, Claude)
 
+## Short shared-header cache paths (Worker 48)
+
+Historical MSVC can silently skip headers with paths longer than 259 characters.
+When a recovery snapshot would exceed this limit, shared probe/canonical headers
+use a short immutable cache under `%LOCALAPPDATA%/RoConstruct/nc`, keyed by the
+full header-content revision. Modified cache contents are rejected. A header
+that still cannot fit fails explicitly instead of falling back to raw SDK declarations.
+
 ## Original virtual dispatch clues (Worker 47)
 
 Native task packets include bounded `virtual_dispatch` entries from the original
