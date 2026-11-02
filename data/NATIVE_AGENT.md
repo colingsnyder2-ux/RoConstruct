@@ -1,5 +1,19 @@
 # Native integration with an agent (Codex, Claude)
 
+## Explicit overload recovery (Worker 41)
+
+Host task mappings can select an existing out-of-line overload using its full
+source signature, for example `Name::lookup(const std::string& sName)`, plus
+`expected_symbol` containing its exact MSVC decorated symbol. The compiler must
+emit that symbol and match the assigned original address, including data checks.
+Ambiguous names remain blocked. Header overloads require an owner-established
+consuming translation unit; constructor overloads remain unsupported.
+
+Each lease binds the signature and symbol. Older Workers cannot claim these
+tasks. Recovery changes only the selected body, preserves sibling overloads,
+recompiles before merging, and retains normal submission and independent gates.
+Use console `roc integrator` for testing; desktop automation is unnecessary.
+
 ## Native source recovery with real Codex agents (Worker 32)
 
 Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
