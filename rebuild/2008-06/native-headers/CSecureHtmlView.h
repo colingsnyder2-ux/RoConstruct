@@ -3,7 +3,7 @@
 #include <afxext.h>
 #include <afxhtml.h>
 
-// Declarations only (bodies live elsewhere in the original). CRuntimeClass 0081b840 (size 0xf8,
+// Bodies: native-classes/CSecureHtmlView.cpp (7 exact). CRuntimeClass 0081b840 (size 0xf8,
 // no CreateObject, base CHtmlView via GetThisClass import), vtable 0081b864, constructor 00465a60
 // (CHtmlView::CHtmlView, vtable, byte +0xf4 = 0), destructor 00465a80 / deleting 00465b20.
 // Own overrides from the vtable: slots 27, 69 and 118.
