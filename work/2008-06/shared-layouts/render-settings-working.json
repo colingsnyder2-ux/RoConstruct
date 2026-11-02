@@ -45,7 +45,7 @@
     "rebuild/2008-06/tests/NativeRenderSettingsLayout.cpp": "2f219ebb0c995dd6d1cbd9ea09c6459e2139f0c05e64433011e3d98e0bcc0c03",
     "rebuild/2008-06/native-headers/CRenderSettings.h": "093642b966ad890cd49ace6fd7659abeb0bbf5f418dca5f06c395fad4e595757"
   },
-  "object_sha256": "e5b8564a2c7c39b589da630d1c57edcd8ea275af8dedeefe8b3e21332b4a055f",
+  "object_sha256": "445622fdf2802abc19257c4597ba4efa94c8b41a4a86703d327fcb520a4c5b65",
   "layout": {
     "size": "0x17c",
     "evidence": "Creatable<Instance>::create<CRenderSettings> 00408ed0 malloc(0x17c); constructor 00448c60, destructor 00448e60, getters/setters; compile-time sizeof/offsetof test"

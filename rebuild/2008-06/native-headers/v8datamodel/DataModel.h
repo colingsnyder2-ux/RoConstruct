@@ -59,6 +59,8 @@ public:
     double getDutyCycle() const;
     void clearContents();
     void initializeContents(bool);
+    boost::shared_ptr<boost::recursive_mutex> getMutex() const;
+    static boost::shared_ptr<boost::recursive_mutex> getMutex(Instance*);
     static boost::shared_ptr<DataModel> createDataModel(bool);
     static void closeDataModel(boost::shared_ptr<DataModel>, bool);
 };
