@@ -49,9 +49,13 @@ objects += [snap/'native-layouts'/name for name in ['NativeFrameIconsFresh.obj',
 objects += [snap/'native-layouts'/name for name in ['NativeVerbLifetime.obj','NativeVerbBaseLifetime.obj','NativeVerbQueries.obj']]
 objects += [snap/'native-layouts'/name for name in ['NativeWorkspaceObjectSafety.obj','NativeWorkspaceSiteUrl.obj']]
 objects += [snap/'native-layouts'/name for name in ['ServiceSelectionProfile.obj','NativeServiceLookup.obj']]
+objects += [snap/'native-layouts'/name for name in ['ServiceChangeHistoryProfile.obj','ServiceChangeHistoryCreate.obj']]
 objects += [snap/'native-layouts'/name for name in ['NativeChangeHistoryQueries.obj','NativeChangeHistoryPlayback.obj','NativeHistoryRecordPlayback.obj','NativeHistoryItemPlayback.obj','NativeChangeHistoryEnable.obj','NativeChangeHistoryReset.obj','NativeHistoryRecordLifetime.obj']]
+objects += [snap/'native-layouts'/'NativeChangeHistoryLayout.obj']
+objects += [snap/'native-layouts'/'NativeInstanceLifetimeLink.obj']
 objects += [snap/'native-layouts'/name for name in ['NativeChangeHistoryEvents.obj','NativeHistoryRecordLookup.obj','NativeHistoryItemState.obj']]
 objects += [snap/'property-abi-trial'/'HistoryItemPropertyTrial.obj']
+objects += [snap/'history-start-trial'/'NativeChangeHistoryStartTrial.obj']
 system = ['gdiplus','kernel32','user32','gdi32','advapi32','shell32','ole32','oleaut32','comdlg32','comctl32','ws2_32','winmm','opengl32','glu32','imagehlp','version','wininet','dbghelp','psapi']
 args = ['/nologo','/SUBSYSTEM:WINDOWS','/MACHINE:X86','/MAP:NativeDoc.map','/OUT:NativeDoc.exe','/NODEFAULTLIB:mfcs90.lib','/MANIFEST:NO']
 args += [str(path) for path in objects+libs] + [name+'.lib' for name in system] + ['/NODEFAULTLIB:'+name for name in rebuild.VENDOR_AUTOLINK]
@@ -59,7 +63,7 @@ code, log = rebuild.run(rebuild.toolchain(), 'link', args, out)
 (out/'link.log').write_text(log)
 errors = [line.strip() for line in log.splitlines() if 'unresolved external symbol' in line or 'already defined' in line]
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-receipt = {'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(), 'shell_sha256':sha(shell), 'generated_shell_sha256':sha(trial), 'script_sha256':sha(pathlib.Path(__file__)), 'compile_flags':flags,'link_exit':code,'link_flags':args,'errors':errors,'objects':{str(path.relative_to(root)):sha(path) for path in objects}, 'scope':'Isolated diagnostic native Doc shell with incompatible descriptor ABI trial object; never run. No runtime swap, no stubs, no P5/P6 gates.'}
+receipt = {'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(), 'shell_sha256':sha(shell), 'generated_shell_sha256':sha(trial), 'script_sha256':sha(pathlib.Path(__file__)), 'compile_flags':flags,'link_exit':code,'link_flags':args,'errors':errors,'objects':{str(path.relative_to(root)):sha(path) for path in objects}, 'scope':'Isolated diagnostic native Doc shell with descriptor and signal ABI trial objects; incompatible ABI, never run. No runtime swap, no stubs, no P5/P6 gates.'}
 if code == 0:
     receipt['exe_sha256'] = sha(out/'NativeDoc.exe')
 (root/'work/2008-06/shared-layouts/document-swap-link-trial.json').write_text(json.dumps(receipt,indent=2)+'\n')

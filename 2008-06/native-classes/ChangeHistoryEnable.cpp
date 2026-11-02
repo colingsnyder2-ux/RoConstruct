@@ -15,3 +15,15 @@ void RBX::ChangeHistoryService::setEnabled(bool value)
         }
     }
 }
+
+void RBX::ChangeHistoryService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+{
+    if (oldProvider) {
+        reset();
+        connectionAdded.disconnect();
+        connectionRemoved.disconnect();
+        connectionChanged.disconnect();
+        context = NULL;
+    }
+    if (newProvider) context = const_cast<ServiceProvider*>(newProvider);
+}

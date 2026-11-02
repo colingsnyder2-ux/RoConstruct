@@ -21,6 +21,7 @@ methods += [('playback','00588780','?play@ChangeHistoryService@RBX@@',[('?play@H
 methods += [('item','00588440','?play@HistoryItem@RBX@@',[('?setParent@Instance@RBX@@',0x55a8f0),('??$for_each@',0x588240)])]
 methods += [('item','00589a20','?unplay@HistoryItem@RBX@@',[('?find@?$_Tree@',0x587ce0),('?push_back@?$deque@',0x589330),('?play@HistoryItem@RBX@@',0x588440),('?_Tidy@?$deque@',0x64fa10)])]
 methods += [('enable','0058c8b0','?setEnabled@ChangeHistoryService@RBX@@',[('?current@Context@Security@RBX@@',0x493760),('?requirePermission@Context@Security@RBX@@',0x489810),('?start@ChangeHistoryService@RBX@@',0x58c620),('?reset@ChangeHistoryService@RBX@@',0x58c3c0),('?disconnect@connection@signals@boost@@',0x595230)])]
+methods += [('enable','0058c4f0','?onServiceProvider@ChangeHistoryService@RBX@@',[('?reset@ChangeHistoryService@RBX@@',0x58c3c0),('?disconnect@connection@signals@boost@@',0x595230)])]
 methods += [('reset','0058c3c0','?reset@ChangeHistoryService@RBX@@',[('??1HistoryRecord@RBX@@',0x58bed0),('??0HistoryRecord@RBX@@',0x58bf20),('??1?$_Tree@',0x58be50)])]
 methods += [('record_lifetime','0058bf20','??0HistoryRecord@RBX@@',[('??0?$_Tree@',0x5892b0)]),('reset','0058bed0','??1HistoryRecord@RBX@@',[('??1?$_Tree@',0x58be50)])]
 methods += [('reset','00589720','??1HistoryItem@RBX@@',[('??1?$_Tree@',0x589120)])]
@@ -68,10 +69,10 @@ start,index=definitions[vname];section=sections[index];slots={}
 for i in range(section[7]):
  offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+10*i)
  if offset>=start and kind==6:slots[(offset-start)//4]=symbols[symbol][0]
-for index,name,address in [(16,'onHistoryAdded',0x58b870),(17,'onHistoryRemoving',0x58b970),(18,'onHistoryChanged',0x58ba70)]:
+for index,name,address in [(12,'onServiceProvider',0x58c4f0),(16,'onHistoryAdded',0x58b870),(17,'onHistoryRemoving',0x58b970),(18,'onHistoryChanged',0x58ba70)]:
  assert slots[index].startswith('?'+name+'@ChangeHistoryService@RBX@@') and u(vtable+4*index)==address
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();paths=[Path(__file__),root/'rebuild/2008-06/native-classes/ChangeHistoryLifetime.cpp',root/'rebuild/2008-06/native-classes/ChangeHistoryQueries.cpp',root/'rebuild/2008-06/tests/NativeChangeHistoryLayout.cpp',root/'rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h',root/'rebuild/2008-06/native-headers/v8datamodel/HistoryRecord.h',root/'rebuild/2008-06/native-headers/v8tree/Instance.h']
 paths += [root/'rebuild/2008-06/native-classes/ChangeHistoryPlayback.cpp',root/'rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp',root/'rebuild/2008-06/native-classes/HistoryItemPlayback.cpp']
 paths += [root/'rebuild/2008-06/native-classes/ChangeHistoryEnable.cpp',root/'rebuild/2008-06/native-classes/ChangeHistoryReset.cpp',root/'rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp',root/'rebuild/2008-06/native-classes/ChangeHistoryEvents.cpp',root/'rebuild/2008-06/native-classes/HistoryRecordLookup.cpp',root/'rebuild/2008-06/native-classes/HistoryItemState.cpp']
-receipt={'scope':'Inactive layout and twenty-six matched bodies; descriptor ABI, context identity, record behavior, data/vtable linkage and runtime remain unverified.', 'inputs':{str(p.relative_to(root)):sha(p) for p in paths},'objects':{k:sha(v) for k,v in objects.items()},'flags':flags,'methods':rows,'factory':'004150d0','size':0x1a4,'vtable':hex(vtable),'record_size':0x40,'record_name_offset':0x24}
+receipt={'scope':'Inactive layout and twenty-seven matched bodies; descriptor ABI, context identity, record behavior, data/vtable linkage and runtime remain unverified.', 'inputs':{str(p.relative_to(root)):sha(p) for p in paths},'objects':{k:sha(v) for k,v in objects.items()},'flags':flags,'methods':rows,'factory':'004150d0','size':0x1a4,'vtable':hex(vtable),'record_size':0x40,'record_name_offset':0x24}
 (root/'work/2008-06/shared-layouts/change-history-layout-working.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS change history lifecycle, queries, playback and original RTTI')

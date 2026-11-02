@@ -35,6 +35,12 @@ reflection_text = reflection_text[:at] + '''
             virtual bool isWriteOnly() const { return getset->isWriteOnly(); }
             virtual void getVariant(const DescribedBase*, Value&) const;
             virtual void setVariant(DescribedBase*, const Value&) const;''' + reflection_text[at:]
+assert reflection_text.count('ReturnType* getValue(const DescribedBase*) const;') == 1
+reflection_text = reflection_text.replace('ReturnType* getValue(const DescribedBase*) const;',
+    'ReturnType* getValue(const DescribedBase* instance) const { return getset->getValue(instance); }')
+assert reflection_text.count('void setValue(DescribedBase*, ReturnType*) const;') == 1
+reflection_text = reflection_text.replace('void setValue(DescribedBase*, ReturnType*) const;',
+    'void setValue(DescribedBase* instance, ReturnType* value) const { getset->setValue(instance, value); }')
 reflection_overlay.write_text(reflection_text)
 source = root / 'rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp'
 obj = out / 'HistoryItemPropertyTrial.obj'
@@ -114,6 +120,21 @@ for i in range(section[7]):
         slots[(offset-start)//4] = symbols[symbol][0]
 for index, method in [(2, 'isWriteOnly'), (4, 'getVariant'), (5, 'setVariant')]:
     assert slots[index].startswith('?' + method + '@?$RefPropDescriptor@VInstance')
+getset_vname = next(n for n in definitions if n.startswith('??_7?$GetSetImpl@') and 'Instance@RBX@@' in n)
+start, index = definitions[getset_vname]
+section = sections[index]
+compiled_getset_slots = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    if offset >= start and kind == 6:
+        compiled_getset_slots[(offset-start)//4] = symbols[symbol][0]
+for index, method in enumerate(('isReadOnly', 'isWriteOnly', 'getValue', 'setValue')):
+    assert compiled_getset_slots[index].startswith('?' + method + '@?$GetSetImpl@')
+for address, prefix in [('005cf660', '?getValue@?$GetSetImpl@'), ('00563b00', '?setValue@?$GetSetImpl@')]:
+    name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith(prefix) and 'Instance@RBX@@' in x[0])
+    target, targetrefs, _ = match.target('2008-06', address)
+    assert match.exact_match(target, targetrefs, body, refs), (address, len(body), len(target))
+    rows.append({'address': address, 'symbol': name, 'size': len(body)})
 pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
 baseaddr = pe.OPTIONAL_HEADER.ImageBase
 original_slots = [struct.unpack('<I', pe.get_data(0x82d768 + 4*i - baseaddr, 4))[0] for i in range(14)]
@@ -121,11 +142,42 @@ assert [original_slots[i] for i in (2, 4, 5)] == [0x565960, 0x585420, 0x5da5b0]
 getset_slots = [struct.unpack('<I', pe.get_data(0x82d6f4 + 4*i - baseaddr, 4))[0] for i in range(4)]
 assert getset_slots == [0x60a2f0, 0x60a2f0, 0x5cf660, 0x563b00]
 
+variant_fixture = root / 'rebuild/2008-06/tests/NativeParentVariantTrial.cpp'
+variant_obj = out / 'NativeParentVariantTrial.obj'
+variant_flags = flags[:-2] + ['/Fo' + str(variant_obj), str(variant_fixture)]
+code, log = rebuild.run(rebuild.toolchain(21022), 'cl', variant_flags, out)
+assert code == 0, log
+raw = variant_obj.read_bytes()
+sections, symbols, definitions, _ = match._coff_data_index(raw)
+for address, prefix, required in [
+    ('0059d490', '?isReadOnly@?$RefPropDescriptor@VInstance', []),
+    ('005ee1d0', '?equalValues@?$RefPropDescriptor@VInstance', []),
+    ('00585360', '?getRefValue@?$RefPropDescriptor@VInstance', []),
+    ('005cd810', '?setRefValue@?$RefPropDescriptor@VInstance', [('??$polymorphic_cast@PAVInstance@RBX@@', 0x5599d0)]),
+    ('00585420', '?getVariant@?$RefPropDescriptor@VInstance', [('??$shared_from@VInstance@', 0x618a40), ('??$singleton@V?$shared_ptr@VDescribedBase@', 0x56ca70), ('??$?4V?$shared_ptr@VDescribedBase@', 0x491790)]),
+    ('005da5b0', '?setVariant@?$RefPropDescriptor@VInstance', [('??$get@V?$shared_ptr@VDescribedBase@', 0x4917f0)]),
+]:
+    name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith(prefix))
+    target, targetrefs, _ = match.target('2008-06', address)
+    assert match.exact_match(target, targetrefs, body, refs), (address, len(body), len(target))
+    start, index = definitions[name]
+    section = sections[index]
+    edges = {}
+    for i in range(section[7]):
+        offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+        offset -= start
+        if 0 <= offset < len(body)-4 and kind == 20:
+            edges[symbols[symbol][0]] = int(address, 16) + offset + 4 + struct.unpack_from('<i', target, offset)[0]
+    for symbol, destination in required:
+        assert any(k.startswith(symbol) and v == destination for k, v in edges.items()), (address, symbol, edges)
+    rows.append({'address': address, 'symbol': name, 'size': len(body), 'direct_calls': {k: hex(v) for k, v in edges.items()}})
+
 sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
 receipt = {'candidate_sha256': sha(candidate), 'overlay_sha256': sha(overlay), 'source_sha256': sha(source),
            'observer_sha256': sha(Path(__file__)), 'object_sha256': sha(obj), 'flags': flags, 'methods': rows,
            'reflection_overlay_sha256': sha(reflection_overlay), 'fixture_sha256': sha(fixture), 'fixture_object_sha256': sha(fixture_obj),
-           'candidate_slots': slots, 'original_slots': [hex(x) for x in original_slots], 'original_parent_getset_slots': [hex(x) for x in getset_slots],
-           'scope': 'Isolated descriptor ABI candidate only. Parent descriptor ctor, deleting dtor and isWriteOnly match; concrete getVariant/setVariant bodies, other descriptor specializations, data bindings and cross-module ABI remain unproven. Never link into live client.'}
+           'variant_fixture_sha256': sha(variant_fixture), 'variant_object_sha256': sha(variant_obj),
+           'candidate_slots': slots, 'original_slots': [hex(x) for x in original_slots], 'candidate_parent_getset_slots': compiled_getset_slots, 'original_parent_getset_slots': [hex(x) for x in getset_slots],
+           'scope': 'Isolated descriptor ABI candidate only. Parent descriptor ctor, deleting dtor, isWriteOnly and variant bodies match; other descriptor slots and specializations, data bindings and cross-module ABI remain unproven. Never link into live client.'}
 (root / 'work/2008-06/shared-layouts/history-property-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS isolated history property methods, parent descriptor lifetime and write-only slot; other ABI remains open')
+print('PASS isolated history methods and parent descriptor lifetime, write-only and variant bodies; other ABI remains open')

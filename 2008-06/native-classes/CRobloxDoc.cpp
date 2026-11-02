@@ -261,7 +261,7 @@ void CRobloxDoc::handle_4545d0() {
 // 00454f30: enable abuse reporting when the players service supports it.
 void CRobloxDoc::handle_454f30(CCmdUI* ui) {
     RBX::DataModel::Lock lock(workspace->getDataModel());
-    ui->Enable(getDataModel()->create<RBX::Network::Players>()->canReportAbuse());
+    ui->Enable(getDataModel()->create<RBX::Network::Players>()->canReportAbuse() != 0);
 }
 
 // 0044f7c0: save selected instances to a model file.
