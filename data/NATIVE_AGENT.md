@@ -1,5 +1,17 @@
 # Native integration with an agent (Codex, Claude)
 
+## Code and data ownership (Worker 44)
+
+Discovery, linked ownership counts and status use the same whole-binary pairing:
+exact relocation-masked code plus all resolvable referenced data. Wrong data
+rejects a match even when its code was unique. Missing data retains ambiguity.
+Other modules can cover a regression only through current object checks and a
+passing build/smoke result, rather than an old ownership report alone.
+
+A tooling refresh can reclassify already compiled functions. Fresh baseline and
+candidate builds use the same rule; inventory changes alone earn no submission
+credit. Runtime, ABI, referenced-call and P5/P6 requirements remain unchanged.
+
 ## Durable attempts and visible blockers (Worker 43)
 
 Replaced local attempts remain in the claims database's `task_history` table.
