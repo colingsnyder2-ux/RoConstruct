@@ -1,5 +1,16 @@
 # Native integration with an agent (Codex, Claude)
 
+## Budget refusal handling (Worker 42)
+
+Native recovery stops new assignments when a request/token reservation is refused,
+while already admitted agents finish and queued host checks drain. It does not
+retry the same refused assignment indefinitely. Restart with adjusted limits to
+admit more work.
+
+CLI input reservations estimate tokens from evidence and instructions; measured
+multi-turn usage replaces the estimate after the agent exits. Token caps are soft
+for an individual CLI invocation. Use launch, time and probe caps to bound trials.
+
 ## Explicit overload recovery (Worker 41)
 
 Host task mappings can select an existing out-of-line overload using its full
