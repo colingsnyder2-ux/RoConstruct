@@ -127,6 +127,10 @@
   [
    "\t\ttemplate<typename Function>\n\t\tvoid visitChildren(Function func) const;",
    "\t\ttemplate<typename Type>\n\t\tType* findFirstDescendentOfType() const\n\t\t{\n\t\t\tif (children)\n\t\t\t{\n\t\t\t\tstd::vector<boost::shared_ptr<Instance>>::const_iterator end = children->end();\n\t\t\t\tstd::vector<boost::shared_ptr<Instance>>::const_iterator iter = children->begin();\n\t\t\t\tfor (; iter != end; iter++)\n\t\t\t\t{\n\t\t\t\t\tInstance* child = (*iter).get();\n\t\t\t\t\tif (Type* result = dynamic_cast<Type*>(child))\n\t\t\t\t\t\treturn result;\n\t\t\t\t\tif (Type* result = child->findFirstDescendentOfType<Type>())\n\t\t\t\t\t\treturn result;\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn NULL;\n\t\t}\n\n\t\ttemplate<typename Function>\n\t\tvoid visitChildren(Function func) const;"
+  ],
+  [
+   "\t\ttemplate<typename Type>\n\t\tconst Type* getTypedRoot() const\n\t\t{\n\t\t\tRBXASSERT(dynamic_cast<const Type*>(this));\n\t\t\tconst Type* typedParent = dynamic_cast<const Type*>(parent);\n\t\t\tif (typedParent)\n\t\t\t\treturn typedParent->getTypedRoot<Type>();\n",
+   "\t\ttemplate<typename Type>\n\t\tconst Type* getTypedRoot() const\n\t\t{\n\t\t\tconst Type* typedParent = dynamic_cast<const Type*>(parent);\n\t\t\tif (typedParent)\n\t\t\t\treturn typedParent->getTypedRoot<Type>();\n"
   ]
  ],
  "App/include/v8datamodel/MouseCommand.h": [

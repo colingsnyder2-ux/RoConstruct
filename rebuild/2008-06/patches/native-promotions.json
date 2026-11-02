@@ -2604,5 +2604,13 @@
     "\t\tHumanoid* humanoid = Humanoid::modelIsCharacter(getParent());\n\t\tPartInstance* torso = humanoid->getTorso();\n\n\t\ttorsoChildAdded = Instance::event_childAdded.connect(torso, boost::bind(&Tool::onEvent_AddedBackend, this, _1), 10);\n\t\ttorsoChildRemoved = Instance::event_childRemoved.connect(torso, boost::bind(&Tool::onEvent_RemovedBackend, this, _1), 10);"
    ]
   ]
+ },
+ {
+  "App/include/v8tree/Instance.h": [
+   [
+    "\t\ttemplate<typename Type>\n\t\tconst Type* getTypedRoot() const\n\t\t{\n\t\t\tRBXASSERT(dynamic_cast<const Type*>(this));\n\t\t\tconst Type* typedParent = dynamic_cast<const Type*>(parent);\n\t\t\tif (typedParent)\n\t\t\t\treturn typedParent->getTypedRoot<Type>();\n",
+    "\t\ttemplate<typename Type>\n\t\tconst Type* getTypedRoot() const\n\t\t{\n\t\t\tconst Type* typedParent = dynamic_cast<const Type*>(parent);\n\t\t\tif (typedParent)\n\t\t\t\treturn typedParent->getTypedRoot<Type>();\n"
+   ]
+  ]
  }
 ]
