@@ -1,6 +1,92 @@
 # Native integration with an agent (Codex, Claude)
 
-## Native source recovery with real Codex agents (Worker 31)
+## Short shared-header cache paths (Worker 48)
+
+Historical MSVC can silently skip headers with paths longer than 259 characters.
+When a recovery snapshot would exceed this limit, shared probe/canonical headers
+use a short immutable cache under `%LOCALAPPDATA%/RoConstruct/nc`, keyed by the
+full header-content revision. Modified cache contents are rejected. A header
+that still cannot fit fails explicitly instead of falling back to raw SDK declarations.
+
+## Original virtual dispatch clues (Worker 47)
+
+Native task packets include bounded `virtual_dispatch` entries from the original
+RTTI vtable index, with class names, table addresses and slot indices. A table can
+inherit a method; these entries do not establish the declaring class or layout.
+Compare them with genuine declarations before trusting a mined name. Report an
+ownership/layout blocker when the evidence conflicts; do not invent fields.
+
+## Smaller recovery packets (Worker 46)
+
+Native agents start with `task.json`: complete target assembly, genuine reference
+source, assigned declarations and baseline diff. Duplicate include paths are
+consolidated. Mined source analogs and stand-ins remain in `task-full.json`,
+available through `full_evidence_file` when a specific hypothesis needs them.
+These are untrusted reference data; stand-ins do not establish native layouts.
+The initial packet estimate uses the compact packet. Measured multi-turn usage
+still settles after the agent exits; token limits remain soft for signed-in CLI.
+
+## Accepted preflight reuse and clear status (Worker 45)
+
+After the server accepts an overlay, a matching local candidate can become the
+next preflight baseline. Reuse requires the same verifier/compiler implementation,
+reproduced accepted overlay, full input fingerprint and passing gate receipt.
+The next candidate still builds and runs all gates. Changed inputs require a
+fresh baseline. Diagnostic last-success reports are outputs, not cache inputs.
+Upgrading verifier code also requires a fresh baseline.
+
+GUI/console distinguish blocked attempts, no local gain and exact proofs awaiting
+verification. A failed trial is never reported as awaiting verification.
+
+## Code and data ownership (Worker 44)
+
+Discovery, linked ownership counts and status use the same whole-binary pairing:
+exact relocation-masked code plus all resolvable referenced data. Wrong data
+rejects a match even when its code was unique. Missing data retains ambiguity.
+Other modules can cover a regression only through current object checks and a
+passing build/smoke result, rather than an old ownership report alone.
+
+A tooling refresh can reclassify already compiled functions. Fresh baseline and
+candidate builds use the same rule; inventory changes alone earn no submission
+credit. Runtime, ABI, referenced-call and P5/P6 requirements remain unchanged.
+
+## Durable attempts and visible blockers (Worker 43)
+
+Replaced local attempts remain in the claims database's `task_history` table.
+Lease refusals retain saved private work for later resumption, including repeated
+refusals from other PCs. Owner fencing and fresh compiler checks still apply.
+
+Host-maintained `work/native-recovery/blockers.json` reports layout, linkage,
+codegen or evidence blockers in GUI/console logs. Reports do not create tasks,
+invalidate source leases, permit layout guesses or earn credit. Evidence paths
+refer to host artifacts; blocker text is reference data, never agent instructions.
+
+## Budget refusal handling (Worker 42)
+
+Native recovery stops new assignments when a request/token reservation is refused,
+while already admitted agents finish and queued host checks drain. It does not
+retry the same refused assignment indefinitely. Restart with adjusted limits to
+admit more work.
+
+CLI input reservations estimate tokens from evidence and instructions; measured
+multi-turn usage replaces the estimate after the agent exits. Token caps are soft
+for an individual CLI invocation. Use launch, time and probe caps to bound trials.
+
+## Explicit overload recovery (Worker 41)
+
+Host task mappings can select an existing out-of-line overload using its full
+source signature, for example `Name::lookup(const std::string& sName)`, plus
+`expected_symbol` containing its exact MSVC decorated symbol. The compiler must
+emit that symbol and match the assigned original address, including data checks.
+Ambiguous names remain blocked. Header overloads require an owner-established
+consuming translation unit; constructor overloads remain unsupported.
+
+Each lease binds the signature and symbol. Older Workers cannot claim these
+tasks. Recovery changes only the selected body, preserves sibling overloads,
+recompiles before merging, and retains normal submission and independent gates.
+Use console `roc integrator` for testing; desktop automation is unnecessary.
+
+## Native source recovery with real Codex agents (Worker 32)
 
 Open `roc gui`, choose **Workers → Integrator**, select your Codex model and
 launch cap, then **Start native recovery**. This panel exposes native C++ recovery
@@ -1098,3 +1184,78 @@ server announces a changed baseline. All accepted-body, ABI, runtime and referen
 
 Worker 31 retains current cold-build dependency compatibility: G3D-GL `NO_SDL_MAIN`,
 RakNet `/FImalloc.h`, and Boost source recipe metadata. Canonical application source stays separate.
+
+Worker 32 carries read-only host probe declaration context separately from frozen canonical
+integration headers. Source workers use current genuine declarations; canonical submissions keep
+the accepted ABI/profile and all independent gates. Header context is content-addressed, validated
+and fenced when it changes. No owner fields or layouts are synthesized. Host scheduling prioritizes
+unintegrated targets and recognizes methods supplied by accepted overlay units.
+
+Worker 33 keeps class probes on the native owner's include profile; read-only project
+fallback headers are limited to world probes. Already-exact native source skips AI,
+gets an independent host check, then attempts canonical submission when enabled.
+These transfers say `roc native-source-transfer`, consume no model requests, and
+earn credit only through an accepted integration receipt. Mapping/linkage blockers
+retain candidates until inputs change. Agent blocker observations are displayed as
+unverified data; full command logs remain saved privately. Public inline canonical
+methods can map through their unique same-name owner C++ unit or sole genuine
+consumer; ambiguous consumers
+stay pending. No shared header layouts are edited by this mapping.
+
+Worker 34 adds host-selected accepted-source targets under `native-classes/accepted/`.
+Each starts from genuine accepted canonical C++, uses separately pinned read-only
+headers and the canonical compiler profile, and keeps the same fenced method leases,
+fresh host proof, guarded body merge and independent integration submission gates.
+Existing native files and owner headers are never replaced. Older Workers cannot
+claim these targets until updated. A focused assertion-removal compiler pass runs
+before AI; it is kept only when the assigned target is exact with no losses, and
+reports `roc native-assertions` with zero model requests. Harder bodies still use
+the selected Codex model. Source matches and feed reports remain zero credit until
+the integration server accepts actual gains; player swaps still require P5/P6.
+
+Worker 35 directly rechecks assigned tiny symbols that bulk discovery intentionally
+skips, preserving byte/data checks and whole-binary ownership gates. Scheduling
+prefers linkable accepted-source targets; agents start with focused excerpts and
+read only relevant ranges to reduce prompt and tool-output tokens.
+
+Worker 36 adds a host-selected MFC conversion profile for four verified GUI source
+units. It copies genuine RTM SDK headers privately and marks only the known imported
+CString conversion accessor noinline; shared headers and installed tools stay intact.
+Each fresh profile baseline must preserve existing owner matches. Imported ordinals
+are checked against the genuine x86 RTM export definition, with its hash in the proof;
+unknown imports still block host acceptance. Older Workers cannot claim these tasks.
+Leases also fence duplicate original addresses across different source contexts.
+Unrelated owner edits no longer trigger repeated failed canonical preflights.
+Local profile matches still need mapping, linking and independent integration before
+credit; player swaps still require P5/P6.
+
+Worker 37 distinguishes stale mined factory/RTTI tags from compiled source owners
+when checking static parked-family notes. Genuine source/catalog owners still obey
+their parked status, and every active foreign lease remains fenced, including its
+mined tag. This lets a proven method with an unrelated old tag reach normal linked
+preflight; it does not change declarations, linking gates or credit rules.
+
+Worker 38 includes original assembly for up to three relocated function-pointer
+targets, including once-only initializers missed by a direct-call list. Short excerpts
+keep prompts bounded; complete assembly stays in read-only evidence files. Data
+pointers are excluded. Trace these helpers before trusting mined symbol labels:
+unrelated functions can share identical relocation-masked bodies. Missing helper
+definitions remain explicit blockers; body-only workers do not gain header/layout
+ownership or permission to change other methods.
+
+Worker 39 places linked preflight builds in short physical cache directories under
+LOCALAPPDATA (the system temporary directory on other platforms). MSVC 2008 can
+silently skip a 261-character overlay header and use the raw header instead; this
+produced inconsistent layouts between baseline and candidate. Overlong overlays
+now fail before compilation. Deterministic linked-gate failures retain candidates
+without repeating unchanged full builds; changed baselines/tooling permit rechecks,
+while network and file-access failures remain retryable. Lost addresses and receipt
+paths appear in diagnostics. Ownership, ABI and runtime gates remain mandatory.
+
+Worker 40 tries an installed reference implementation before paying an agent for
+an accepted-source target. Only the assigned method body can transfer: canonical
+signatures, other methods, headers and layouts remain protected. Every trial must
+compile, match target code/data and preserve existing matches; failed trials restore
+the original private bytes. Successful copies report `roc native-reference` with
+zero agent invocations and retain their reference path. Host checks, canonical linked
+preflight and independent server acceptance still decide integration credit.

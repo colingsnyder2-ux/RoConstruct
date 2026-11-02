@@ -1,0 +1,586 @@
+{
+  "source_sha256": "06ae92a6c7ef775a2cb5dc37436017a175b7074ef4eaf0e41b4930d8a7dc4fc1",
+  "header_sha256": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
+  "observer_sha256": "a9150e6684d86a29c893de64b14d6739f1ed5e8f035af0c0de7572318038cdfc",
+  "object_sha256": "280cba3e16ce945406b27a7930cd86a3e181078aa1663698d0218f78ea502230",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeSelectionCommandsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeSelectionCommandsTrial.cpp"
+  ],
+  "methods": [
+    {
+      "class": "GroupSelectionVerb",
+      "address": "0x57e7e0",
+      "size": 47,
+      "label": "Group",
+      "literal": "0x817e50",
+      "vtable": "0x830794",
+      "type_descriptor": "0x947be4"
+    },
+    {
+      "class": "WeldSelectionVerb",
+      "address": "0x57e810",
+      "size": 47,
+      "label": "WeldSelection",
+      "literal": "0x817e38",
+      "vtable": "0x8307ac",
+      "type_descriptor": "0x947c0c"
+    },
+    {
+      "class": "SnapSelectionVerb",
+      "address": "0x57e840",
+      "size": 47,
+      "label": "SnapSelection",
+      "literal": "0x817e28",
+      "vtable": "0x8307c4",
+      "type_descriptor": "0x947c30"
+    },
+    {
+      "class": "UngroupSelectionVerb",
+      "address": "0x57e870",
+      "size": 47,
+      "label": "UnGroup",
+      "literal": "0x817e48",
+      "vtable": "0x8307dc",
+      "type_descriptor": "0x947c54"
+    },
+    {
+      "class": "DuplicateSelectionVerb",
+      "address": "0x57e8a0",
+      "size": 47,
+      "label": "Duplicate",
+      "literal": "0x830808",
+      "vtable": "0x8307f4",
+      "type_descriptor": "0x947c7c"
+    },
+    {
+      "class": "AttachCameraCommand",
+      "address": "0x57e950",
+      "size": 47,
+      "label": "AttachCamera",
+      "literal": "0x819500",
+      "vtable": "0x830830",
+      "type_descriptor": "0x947ca8"
+    },
+    {
+      "class": "TrackCameraCommand",
+      "address": "0x57e980",
+      "size": 47,
+      "label": "TrackCamera",
+      "literal": "0x8194f4",
+      "vtable": "0x830848",
+      "type_descriptor": "0x947cd0"
+    },
+    {
+      "class": "FollowCameraCommand",
+      "address": "0x57e9b0",
+      "size": 47,
+      "label": "FollowCamera",
+      "literal": "0x8194e4",
+      "vtable": "0x830860",
+      "type_descriptor": "0x947cf8"
+    },
+    {
+      "class": "WatchCameraCommand",
+      "address": "0x57e9e0",
+      "size": 47,
+      "label": "WatchCamera",
+      "literal": "0x8194d8",
+      "vtable": "0x830878",
+      "type_descriptor": "0x947d20"
+    },
+    {
+      "class": "MoveDownSelectionVerb",
+      "address": "0x57ea10",
+      "size": 47,
+      "label": "SelectionDown",
+      "literal": "0x817dd0",
+      "vtable": "0x830890",
+      "type_descriptor": "0x947d48"
+    }
+  ],
+  "property_ctors": [
+    {
+      "class": "AnchorVerb",
+      "address": "0x5c6010",
+      "size": 117,
+      "vtable": "0x8390a4",
+      "base": "0x57f530",
+      "labels": [
+        "AnchorVerb",
+        "Anchored"
+      ]
+    },
+    {
+      "class": "TranslucentVerb",
+      "address": "0x5c5300",
+      "size": 117,
+      "vtable": "0x838f74",
+      "base": "0x57f530",
+      "labels": [
+        "TranslucentVerb",
+        "Transparent"
+      ]
+    },
+    {
+      "class": "CanCollideVerb",
+      "address": "0x5c5380",
+      "size": 117,
+      "vtable": "0x838f9c",
+      "base": "0x57f530",
+      "labels": [
+        "CanCollideVerb",
+        "CanCollide"
+      ]
+    }
+  ],
+  "property_base_ctor": {
+    "address": "0x57f530",
+    "size": 113,
+    "vtable": "0x830a84",
+    "edges": {
+      "__ehhandler$??0BoolPropertyVerb@RBX@@IAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@PBD@Z": 8196136,
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": 8397916,
+      "??0EditSelectionVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z": 5760816,
+      "??_7BoolPropertyVerb@RBX@@6B@": 8587908,
+      "?declare@Name@RBX@@SAABV12@PBDH@Z": 5586832
+    }
+  },
+  "attach_enabled": {
+    "address": "00582d70",
+    "size": 221,
+    "vtable": "0x830830",
+    "calls": {
+      "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+      "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z": 5774720
+    }
+  },
+  "follow_enabled": [
+    {
+      "class": "FollowCameraCommand",
+      "vtable": "0x830860",
+      "size": 75,
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656
+      }
+    },
+    {
+      "class": "WatchCameraCommand",
+      "vtable": "0x830878",
+      "size": 75,
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656
+      }
+    }
+  ],
+  "track_enabled": {
+    "address": "00582e50",
+    "size": 77,
+    "vtable": "0x830848",
+    "calls": {
+      "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+      "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+    }
+  },
+  "selection_camera_actions": [
+    {
+      "class": "AttachCameraCommand",
+      "address": "0x581360",
+      "size": 131,
+      "vtable": "0x830830",
+      "calls": {
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?front@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@XZ": 5761600,
+        "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": 6086096,
+        "?setCameraSubject@Camera@RBX@@QAEXPAVInstance@2@@Z": 6086160,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "WatchCameraCommand",
+      "address": "0x5815a0",
+      "size": 131,
+      "vtable": "0x830878",
+      "calls": {
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?front@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@XZ": 5761600,
+        "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": 6086096,
+        "?setCameraSubject@Camera@RBX@@QAEXPAVInstance@2@@Z": 6086160,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "TrackCameraCommand",
+      "address": "0x5813f0",
+      "size": 278,
+      "vtable": "0x830848",
+      "calls": {
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264,
+        "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": 4275232,
+        "___RTDynamicCast": 6952902,
+        "?setCameraSubject@Camera@RBX@@QAEXPAVInstance@2@@Z": 6086160,
+        "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": 6086096,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "FollowCameraCommand",
+      "address": "0x581510",
+      "size": 131,
+      "vtable": "0x830860",
+      "calls": {
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?front@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@XZ": 5761600,
+        "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": 6086096,
+        "?setCameraSubject@Camera@RBX@@QAEXPAVInstance@2@@Z": 6086160,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    }
+  ],
+  "selection_enabled": [
+    {
+      "class": "WeldSelectionVerb",
+      "address": "0x582940",
+      "size": 77,
+      "vtable": "0x8307ac",
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+      }
+    },
+    {
+      "class": "SnapSelectionVerb",
+      "address": "0x582940",
+      "size": 77,
+      "vtable": "0x8307c4",
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+      }
+    },
+    {
+      "class": "DuplicateSelectionVerb",
+      "address": "0x580fe0",
+      "size": 40,
+      "vtable": "0x8307f4",
+      "calls": {
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+      }
+    },
+    {
+      "class": "GroupSelectionVerb",
+      "address": "0x582860",
+      "size": 215,
+      "vtable": "0x830794",
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528
+      }
+    }
+  ],
+  "ungroup_checks": [
+    {
+      "address": "0x582b50",
+      "size": 90,
+      "edges": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VModelInstance@RBX@@@1@XZ": 5768896,
+        "?hasChildren@RBX@@YA_NPAVModelInstance@1@@Z": 5759248,
+        "?findFirst@?$FilteredSelection@VModelInstance@RBX@@@RBX@@QAEPAVModelInstance@2@P6A_NPAV32@@Z@Z": 5762480
+      }
+    },
+    {
+      "address": "0x57e110",
+      "size": 43,
+      "edges": {}
+    },
+    {
+      "address": "0x57edb0",
+      "size": 172,
+      "edges": {
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "??$_Find_if@PAPAVPVInstance@RBX@@P6A_NPAV12@@Z@std@@YAPAPAVPVInstance@RBX@@PAPAV12@0P6A_NPAV12@@Z@Z": 5756864
+      }
+    }
+  ],
+  "controller_checks": [
+    {
+      "address": "0x582ef0",
+      "size": 90,
+      "edges": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?controllable@RBX@@YA_NPAVPVInstance@1@@Z": 5756240,
+        "?findFirst@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@P6A_NPAV32@@Z@Z": 5762480
+      }
+    },
+    {
+      "address": "0x57d550",
+      "size": 21,
+      "edges": {}
+    },
+    {
+      "address": "0x57edb0",
+      "size": 172,
+      "edges": {
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "??$_Find_if@PAPAVPVInstance@RBX@@P6A_NPAV12@@Z@std@@YAPAPAVPVInstance@RBX@@PAPAV12@0P6A_NPAV12@@Z@Z": 5756864
+      }
+    }
+  ],
+  "controller_actions": [
+    {
+      "address": "0x581920",
+      "size": 62,
+      "edges": {
+        "?applyController@ControllerCommand@RBX@@IAEXH@Z": 5773456,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "address": "0x581960",
+      "size": 62,
+      "edges": {
+        "?applyController@ControllerCommand@RBX@@IAEXH@Z": 5773456,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "address": "0x581890",
+      "size": 139,
+      "edges": {
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?findDifferent@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@W4ControllerType@Controller@2@@Z": 5762224,
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "?setController@RBX@@YAXW4ControllerType@Controller@1@PAVPVInstance@1@@Z": 5756224,
+        "??$for_each@V?$_Vector_const_iterator@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@UApplyController@RBX@@@std@@YA?AUApplyController@RBX@@V?$_Vector_const_iterator@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@0@0U12@@Z": 5762416
+      }
+    },
+    {
+      "address": "0x57ecb0",
+      "size": 180,
+      "edges": {
+        "__imp___invalid_parameter_noinfo": 8398992
+      }
+    },
+    {
+      "address": "0x57d540",
+      "size": 15,
+      "edges": {
+        "?setControllerType@PVInstance@RBX@@QAEXW4ControllerType@Controller@2@@Z": 6330816
+      }
+    },
+    {
+      "address": "0x57ed70",
+      "size": 58,
+      "edges": {}
+    }
+  ],
+  "delete_action": {
+    "address": "00581090",
+    "size": 540,
+    "bindings": {
+      "__ehhandler$?doIt@DeleteBase@RBX@@UAEXPAVIDataState@2@@Z": 8229792,
+      "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+      "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264,
+      "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": 4789680,
+      "__imp___invalid_parameter_noinfo": 8398992,
+      "??_R0?AVWorkspace@RBX@@@8": 9732536,
+      "??_R0?AVInstance@RBX@@@8": 9605244,
+      "___RTDynamicCast": 6952902,
+      "??_R0?AVPlayers@Network@RBX@@@8": 9665560,
+      "?setParent@Instance@RBX@@QAEXPAV12@@Z": 5613808,
+      "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": 4534752,
+      "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": 6019104,
+      "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+    }
+  },
+  "weld_actions": [
+    {
+      "class": "WeldSelectionVerb",
+      "address": "0x582990",
+      "size": 213,
+      "vtable": "0x8307ac",
+      "bindings": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264,
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "?weldInstance@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": 5761920,
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": 5760208,
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": 4534752,
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": 6019104,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "SnapSelectionVerb",
+      "address": "0x582a70",
+      "size": 213,
+      "vtable": "0x8307c4",
+      "bindings": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264,
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "?snapInstance@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": 5760304,
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": 5760208,
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": 4534752,
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": 6019104,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    }
+  ],
+  "camera_checks": [
+    {
+      "class": "AttachCameraCommand",
+      "address": "0x57dcb0",
+      "size": 35,
+      "vtable_slot": "0x83083c",
+      "exact": true
+    },
+    {
+      "class": "TrackCameraCommand",
+      "address": "0x57dce0",
+      "size": 35,
+      "vtable_slot": "0x830854",
+      "exact": true
+    },
+    {
+      "class": "FollowCameraCommand",
+      "address": "0x57dd10",
+      "size": 35,
+      "vtable_slot": "0x83086c",
+      "exact": true
+    },
+    {
+      "class": "WatchCameraCommand",
+      "address": "0x57dd40",
+      "size": 35,
+      "vtable_slot": "0x830884",
+      "exact": true
+    }
+  ],
+  "first_person_enabled": {
+    "address": "0x57d9c0",
+    "size": 33,
+    "vtable": "0x830600",
+    "calls": {
+      "?isFirstPersonCamera@Camera@RBX@@QBE_NXZ": 6081280
+    }
+  },
+  "run_actions": [
+    {
+      "class": "RunCommand",
+      "address": "0x582740",
+      "size": 39,
+      "vtable": "0x83905c",
+      "calls": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+        "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": 5590432
+      }
+    },
+    {
+      "class": "StopCommand",
+      "address": "0x582790",
+      "size": 39,
+      "vtable": "0x839074",
+      "calls": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+        "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": 5590432
+      }
+    },
+    {
+      "class": "ResetCommand",
+      "address": "0x582800",
+      "size": 39,
+      "vtable": "0x83908c",
+      "calls": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+        "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": 5590432
+      }
+    }
+  ],
+  "permission_helper": {
+    "address": "0x57d250",
+    "size": 120,
+    "edges": {
+      "__ehhandler$?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 8191673,
+      "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": 4808288,
+      "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z": 4808304,
+      "??_C@_0BJ@IGGCCLGC@Insufficinet?5permissions?$AA@": 8586720,
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": 8397912,
+      "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": 4234576,
+      "__TI2?AVruntime_error@std@@": 9247688,
+      "__CxxThrowException@8": 6952332
+    }
+  },
+  "reset_enabled": {
+    "address": "0x5827c0",
+    "size": 56,
+    "exact": true,
+    "vtable": "0x83908c",
+    "calls": {
+      "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+      "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z": 4828288
+    }
+  },
+  "run_enabled": {
+    "address": "0x582700",
+    "size": 56,
+    "exact": true,
+    "vtable": "0x83905c",
+    "calls": {
+      "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+      "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": 4808288
+    }
+  },
+  "stop_enabled": {
+    "address": "0x582770",
+    "size": 33,
+    "exact": true,
+    "vtable": "0x839074",
+    "calls": {
+      "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336
+    }
+  },
+  "scope": "Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven."
+}

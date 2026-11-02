@@ -1,0 +1,91 @@
+{
+  "scope": "Inactive selection serializer and collector match; Workspace/Selection layout, XML object ownership and live ABI remain unproven. Do not run.",
+  "source_sha256": "34b8d98dd754bdd5f4bc3455829d406d5190374c8eb381b20532b34974380c05",
+  "observer_sha256": "b5a3d5fdf6bc3e2ee310b35c42d30b40280ca2b69bd066322a4e7f3ab93e5474",
+  "workspace_header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+  "selection_header_sha256": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
+  "object_sha256": "9525f8336074f4041372cb1e7bec7a2b3d3d365127a111ec357449d286096648",
+  "methods": [
+    {
+      "symbol": "?writeXmlSelection@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+      "address": "0x46b750",
+      "size": 261,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?writeXmlSelection@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": [
+          "0x7c39d1"
+        ],
+        "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ": [
+          "0x591a30"
+        ],
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": [
+          "0x411b40"
+        ],
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@SAPAVSelection@1@PBVInstance@1@@Z": [
+          "0x421cb0"
+        ],
+        "__imp___invalid_parameter_noinfo": [
+          "0x802890"
+        ],
+        "?collectSelection@@YAXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": [
+          "0x57e140"
+        ],
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": [
+          "0x423ba0"
+        ],
+        "??1Lock@DataModel@RBX@@QAE@XZ": [
+          "0x5773c0"
+        ]
+      }
+    },
+    {
+      "symbol": "?collectSelection@@YAXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "address": "0x57e140",
+      "size": 140,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?collectSelection@@YAXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": [
+          "0x7c0418"
+        ]
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\CWorkspaceSelectionTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceSelection.cpp"
+  ]
+}

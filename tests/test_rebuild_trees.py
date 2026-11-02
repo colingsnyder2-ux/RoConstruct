@@ -8,6 +8,19 @@ import pytest
 from roc import libs, rebuild
 
 
+def test_overlay_rejects_overlong_header_before_compiler_can_fall_back(tmp_path,monkeypatch):
+    import json
+    vendor=tmp_path/'vendor';vendor.mkdir();(vendor/'Class.h').write_text('class Original {};')
+    (tmp_path/'patches.json').write_text(json.dumps({'Class.h':[['Original','Recovered']]}))
+    monkeypatch.setattr(rebuild,'ROOT',tmp_path)
+    work=tmp_path/('x'*150)/('y'*50)
+    monkeypatch.setattr(rebuild,'workspace',lambda _:work)
+    with pytest.raises(ValueError,match='historical MSVC limit'):
+        rebuild.build_overlay('2008-06','Module',dict(root='vendor',patches='patches.json'))
+    assert not (work/'out/Module/overlay').exists()
+    assert (vendor/'Class.h').read_text()=='class Original {};'
+
+
 def test_recipe_layer_compiles_reviewed_overlay_only_cpp(tmp_path, monkeypatch):
     tree, overlay = tmp_path/'vendor', tmp_path/'overlay'
     tree.mkdir(); overlay.mkdir()

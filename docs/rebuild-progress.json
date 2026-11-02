@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-01 23:13 UTC",
+  "updated": "2026-11-02 10:57 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.1289,
+      "overall": 0.1395,
       "bars": {
         "compiled": {
           "value": 35,
@@ -17,7 +17,7 @@
           "label": "Modules linked"
         },
         "exact": {
-          "value": 5310,
+          "value": 5746,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -53,7 +53,7 @@
           "name": "Boost",
           "linked": true,
           "test": 0,
-          "exact": 347,
+          "exact": 348,
           "compileErrors": 0,
           "objectFunctions": 10308,
           "unresolved": 0
@@ -71,7 +71,7 @@
           "name": "G3D-GL",
           "linked": true,
           "test": 0,
-          "exact": 427,
+          "exact": 415,
           "compileErrors": 0,
           "objectFunctions": 6080,
           "unresolved": 0
@@ -80,7 +80,7 @@
           "name": "G3D",
           "linked": true,
           "test": 0,
-          "exact": 1168,
+          "exact": 1145,
           "compileErrors": 0,
           "objectFunctions": 16751,
           "unresolved": 0
@@ -107,7 +107,7 @@
           "name": "Lua",
           "linked": true,
           "test": 0,
-          "exact": 441,
+          "exact": 442,
           "compileErrors": 0,
           "objectFunctions": 941,
           "unresolved": 0
@@ -116,7 +116,7 @@
           "name": "MfcAtl",
           "linked": false,
           "test": null,
-          "exact": 163,
+          "exact": 0,
           "compileErrors": 0,
           "objectFunctions": 1422,
           "unresolved": 1
@@ -125,7 +125,7 @@
           "name": "Ogre",
           "linked": false,
           "test": null,
-          "exact": 564,
+          "exact": 0,
           "compileErrors": 0,
           "objectFunctions": 41795,
           "unresolved": 16
@@ -134,7 +134,7 @@
           "name": "P2BlockFactory",
           "linked": true,
           "test": 0,
-          "exact": 177,
+          "exact": 178,
           "compileErrors": 0,
           "objectFunctions": 1479,
           "unresolved": 0
@@ -143,7 +143,7 @@
           "name": "P2BlockMesh",
           "linked": true,
           "test": 0,
-          "exact": 147,
+          "exact": 148,
           "compileErrors": 0,
           "objectFunctions": 1198,
           "unresolved": 0
@@ -152,7 +152,7 @@
           "name": "P2ImageCore",
           "linked": true,
           "test": 0,
-          "exact": 816,
+          "exact": 820,
           "compileErrors": 0,
           "objectFunctions": 6244,
           "unresolved": 0
@@ -170,7 +170,7 @@
           "name": "P2MeshBackend",
           "linked": true,
           "test": 0,
-          "exact": 55,
+          "exact": 56,
           "compileErrors": 0,
           "objectFunctions": 349,
           "unresolved": 0
@@ -188,7 +188,7 @@
           "name": "P2NativeMaterial",
           "linked": true,
           "test": 0,
-          "exact": 129,
+          "exact": 131,
           "compileErrors": 0,
           "objectFunctions": 874,
           "unresolved": 0
@@ -197,7 +197,7 @@
           "name": "P2PlayerBaseline",
           "linked": true,
           "test": 0,
-          "exact": 87,
+          "exact": 88,
           "compileErrors": 0,
           "objectFunctions": 927,
           "unresolved": 0
@@ -206,7 +206,7 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 335,
+          "exact": 340,
           "compileErrors": 0,
           "objectFunctions": 4277,
           "unresolved": 0
@@ -224,7 +224,7 @@
           "name": "P2TextureInterop",
           "linked": true,
           "test": 0,
-          "exact": 425,
+          "exact": 413,
           "compileErrors": 0,
           "objectFunctions": 5822,
           "unresolved": 0
@@ -233,7 +233,7 @@
           "name": "P3SphereMesh",
           "linked": true,
           "test": 0,
-          "exact": 192,
+          "exact": 193,
           "compileErrors": 0,
           "objectFunctions": 1670,
           "unresolved": 0
@@ -242,7 +242,7 @@
           "name": "P4CylinderMesh",
           "linked": true,
           "test": 0,
-          "exact": 192,
+          "exact": 193,
           "compileErrors": 0,
           "objectFunctions": 1670,
           "unresolved": 0
@@ -251,7 +251,7 @@
           "name": "P4PBBMesh",
           "linked": true,
           "test": 0,
-          "exact": 192,
+          "exact": 193,
           "compileErrors": 0,
           "objectFunctions": 1670,
           "unresolved": 0
@@ -260,7 +260,7 @@
           "name": "P4SoundAsset",
           "linked": true,
           "test": 0,
-          "exact": 190,
+          "exact": 202,
           "compileErrors": 0,
           "objectFunctions": 2376,
           "unresolved": 0
@@ -269,7 +269,7 @@
           "name": "Player",
           "linked": true,
           "test": 0,
-          "exact": 87,
+          "exact": 88,
           "compileErrors": 0,
           "objectFunctions": 935,
           "unresolved": 0
@@ -278,7 +278,7 @@
           "name": "P2RecoveredPlayer",
           "linked": true,
           "test": 0,
-          "exact": 335,
+          "exact": 340,
           "compileErrors": 0,
           "objectFunctions": 4277,
           "unresolved": 0
@@ -287,7 +287,7 @@
           "name": "RakNet",
           "linked": true,
           "test": 0,
-          "exact": 392,
+          "exact": 394,
           "compileErrors": 0,
           "objectFunctions": 2890,
           "unresolved": 0
@@ -305,7 +305,7 @@
           "name": "RbxUtil",
           "linked": true,
           "test": 0,
-          "exact": 508,
+          "exact": 544,
           "compileErrors": 0,
           "objectFunctions": 5140,
           "unresolved": 0
@@ -314,7 +314,7 @@
           "name": "RbxgsApp",
           "linked": true,
           "test": 0,
-          "exact": 3375,
+          "exact": 3795,
           "compileErrors": 0,
           "objectFunctions": 98102,
           "unresolved": 0

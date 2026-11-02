@@ -46,6 +46,141 @@ def test_ten_pcs_claim_one_method_only_once(service):
     assert not service.catalog()['tasks'][0]['available']
 
 
+def test_host_blockers_publish_without_tasks_or_source_changes_and_refresh(service):
+    path=service.root/'work/native-recovery/blockers.json';path.parent.mkdir(parents=True,exist_ok=True)
+    initial=service.catalog();blocker=dict(class_name='Clump',status='needs-layout-owner',reason='Original vtable conflicts with SDK class',evidence='work/proofs/clump.json')
+    path.write_text(json.dumps([blocker]));updated=service.catalog()
+    assert updated['blockers']==[blocker]
+    assert updated['tasks']==initial['tasks'] and updated['files']==initial['files']
+    assert updated['revision']==initial['revision']  # Status does not invalidate source snapshots or leases.
+    blocker['evidence']='work/../outside.json';path.write_text(json.dumps([blocker]));service.cache_key=None
+    with pytest.raises(ValueError,match='Invalid native blocker record'):service.catalog()
+
+
+def test_mfc_profile_is_host_selected_and_old_workers_are_fenced(service,monkeypatch):
+    rel=REL.replace('A.cpp','CMainFrameCommands.cpp');(service.root/rel).write_text(BEFORE)
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=rel,method='A::f',addr='00400000')])
+    task=service.catalog()['tasks'][0]
+    assert task['include_profile']=='owner-mfc-conversion'
+    request=dict(target=task['target'],signature=task['signature'],worker='other-pc',include_profiles=['owner','accepted'])
+    assert service.claim('Colin',request)==dict(claimed=False,reason='worker-update-required')
+    assert service.claim('Colin',dict(request,include_profiles=list(recovery.INCLUDE_PROFILES)))['claimed']
+
+
+def test_explicit_overload_catalog_fences_old_workers_and_binds_symbol(service,monkeypatch):
+    (service.root/REL).write_text('int A::f(int value){return 1;} int A::f(char* value){return 2;}')
+    task=dict(file=REL,method='A::f(int value)',addr='00400000',expected_symbol='?f@A@@QAEHH@Z')
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[task])
+    published=service.catalog()['tasks'][0]
+    assert published['class_name']=='A'
+    request=dict(target=published['target'],signature=published['signature'],worker='pc2')
+    assert service.claim('Colin',request)==dict(claimed=False,reason='worker-update-required')
+    lease=service.claim('Colin',dict(request,method_selectors=['signature-v1']))
+    assert lease['claimed']
+    old_signature=published['signature'];task['expected_symbol']='?f@A@@QAEHPAD@Z'
+    service.cache_key=None
+    assert service.catalog()['tasks'][0]['signature']!=old_signature
+    task['expected_symbol']='?g@A@@QAEHH@Z';service.cache_key=None
+    with pytest.raises(ValueError,match='explicit matching MSVC symbol'):service.catalog()
+
+
+def test_two_pcs_cannot_lease_same_address_through_different_source_contexts(service,monkeypatch):
+    alternative=REL.replace('A.cpp','Alternative.cpp');(service.root/alternative).write_text(BEFORE)
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=p,method='A::f',addr='00400000') for p in [REL,alternative]])
+    tasks=service.catalog()['tasks'];barrier=threading.Barrier(2)
+    def take(pair):
+        n,task=pair;barrier.wait();return service.claim('Colin',dict(target=task['target'],signature=task['signature'],worker='pc'+str(n)))
+    with ThreadPoolExecutor(max_workers=2) as pool:leases=list(pool.map(take,enumerate(tasks)))
+    assert not any(t['available'] for t in service.catalog()['tasks'])
+    assert sum(x['claimed'] for x in leases)==1
+    winner=next(n for n,x in enumerate(leases) if x['claimed']);lease=leases[winner];other=tasks[1-winner]
+    service.submit('Colin',body(lease,model='terra',candidate=AFTER))
+    request=dict(target=other['target'],signature=other['signature'],worker='other-pc')
+    assert service.claim('Colin',request)==dict(claimed=False,reason='address-busy')
+    with service.store.lock,service.store.db as db:db.execute("UPDATE native_method_leases SET state='complete',expires=0")
+    assert service.claim('Colin',request)['claimed']
+
+
+def accepted_task(service):
+    name='App/test/B.cpp'
+    path=service.root/'tools/rbxgs/Client'/name;path.parent.mkdir(parents=True)
+    path.write_text('#include "test/B.h"\nint B::f(){return 1;}\n')
+    service.promotions.overlay.write_text(json.dumps({'App/include/test/B.h':[['','struct B { int f(); };']]}))
+    task=dict(file=(recovery.NATIVE/'native-classes/accepted'/name).as_posix(),canonical_file=name,
+              include_profile='accepted',method='B::f',addr='00400001')
+    manifest=service.root/'work/native-recovery/tasks.json';manifest.parent.mkdir(parents=True)
+    manifest.write_text(json.dumps([task]))
+    return task
+
+
+def test_accepted_source_seeds_exclusively_and_fences_only_its_declaration_context(service):
+    task=accepted_task(service)
+    (service.root/'tools/rbxgs/Client/App/test/A.cpp').write_text(BEFORE)
+    catalog=service.catalog();assert catalog['tasks'][0]['method']=='B::f'
+    first=next(t for t in catalog['tasks'] if t['method']=='B::f')
+    assert first['integration_mapping']=='App/test/B.cpp'
+    source=service.root/task['file'];assert 'return 1;' in source.read_text()
+    (service.root/'rebuild/2008-06/native-headers/A.h').write_text('struct A{int f();int ownerChange;};')
+    assert next(t for t in service.catalog()['tasks'] if t['method']=='B::f')['signature']==first['signature']
+    source.write_text(source.read_text().replace('return 1;','return 77;'))
+    current=service.catalog();assert 'return 77;' in current['files'][task['file']]
+    previous=next(t for t in current['tasks'] if t['method']=='B::f')['signature']
+    service.promotions.overlay.write_text(json.dumps({'App/include/test/B.h':[['','struct B { int f(); int g(); };']]}))
+    fresh=next(t for t in service.catalog()['tasks'] if t['method']=='B::f')
+    assert fresh['signature']!=previous and 'return 77;' in source.read_text()
+
+
+@pytest.mark.parametrize('name',['../outside.cpp','App/test/roc_fake.cpp','App/include/B.h'])
+def test_accepted_recovery_rejects_noncanonical_units_before_seeding(service,name):
+    task=accepted_task(service);task['canonical_file']=name
+    (service.root/'work/native-recovery/tasks.json').write_text(json.dumps([task]))
+    with pytest.raises(ValueError,match='genuine canonical'):service.catalog()
+    assert not (service.root/task['file']).exists()
+
+
+@pytest.mark.parametrize('profile',['accepted','owner-mfc-conversion'])
+def test_profile_cross_pc_upload_gets_independent_same_context_proof(service,tmp_path,monkeypatch,profile):
+    from roc import native_sweep as sweep,worker,match,native_refs
+    if profile=='accepted':task=accepted_task(service)
+    else:
+        rel=REL.replace('A.cpp','CMainFrameCommands.cpp');(service.root/rel).write_text(BEFORE)
+        task=dict(file=rel,method='A::f',addr='00400000')
+        monkeypatch.setattr(recovery,'nominations',lambda *a:[task])
+    service.promotions.recovery=service
+    service.promotions.baseline=lambda:dict(revision='base')
+    class Api:
+        def __init__(self,*a):pass
+        def close(self):pass
+    monkeypatch.setattr(worker,'Api',Api)
+    monkeypatch.setattr(sweep,'native_context',lambda *a:SimpleNamespace())
+    monkeypatch.setattr(sweep,'Matcher',lambda *a:None)
+    monkeypatch.setattr(match,'_functions',lambda *a:{})
+    monkeypatch.setattr(native_refs,'import_checks',lambda *a:[])
+    monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='pending-mapping'))
+    contexts=[]
+    def compile(root,rel,context,*a,**kw):
+        assert kw['include_profile']==profile
+        if profile=='accepted':assert (context.accepted_headers/'App/include/test/B.h').read_text()=='struct B { int f(); };'
+        contexts.append(True);text=(root/rel).read_text();obj=root/'proof.obj';obj.write_bytes(b'independent object')
+        return dict(ok=True,target_exact='return 3;' in text,hits=[],losses=[],object=str(obj),symbol='?f@B@@QAEHXZ')
+    monkeypatch.setattr(recovery,'compile_probe',compile)
+    catalog=service.catalog();published=next(t for t in catalog['tasks'] if t['method']==task['method'])
+    request=dict(target=published['target'],signature=published['signature'],worker='pc2')
+    assert service.claim('Colin',request)==dict(claimed=False,reason='worker-update-required')
+    lease=service.claim('Colin',dict(request,include_profiles=list(recovery.INCLUDE_PROFILES)))
+    before=(service.root/task['file']).read_text()
+    service.submit('Colin',body(lease,model='terra',candidate=before.replace('return 1;','return 3;')))
+    result=service.process(service.take())
+    assert result['receipt']['state']=='merged' and len(contexts)==2
+    assert 'return 3;' in (service.root/task['file']).read_text()
+    assert (service.root/REL).read_text()==BEFORE
+    if profile!='accepted':return
+    context=client.materialize_canonical_headers(catalog,tmp_path/'pc2')
+    assert (context/'App/include/test/B.h').read_text()=='struct B { int f(); };'
+    with pytest.raises(ValueError,match='Invalid native probe header revision'):
+        client.materialize_canonical_headers(dict(catalog,canonical_revision='0'*64),tmp_path/'bad')
+
+
 def test_ten_distinct_methods_cross_pc_no_duplicates(service,monkeypatch):
     p=service.root/REL;p.write_text('\n'.join('int A::f%d(){return %d;}'%(n,n) for n in range(10)))
     monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=REL,method='A::f%d'%n,addr='%08x'%(0x400000+n)) for n in range(10)])
@@ -162,12 +297,14 @@ def test_http_two_pcs_share_real_server_lease_routes(service):
 
 
 @pytest.mark.parametrize('cold_resume',[False,True])
-@pytest.mark.parametrize('canonical_wait',[False,True])
-def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch,cold_resume,canonical_wait):
-    from roc import native_sweep as sweep,gui_worker,match,native_refs
+@pytest.mark.parametrize('canonical_wait',[False,True,'gate-failure','transport-failure'])
+@pytest.mark.parametrize('existing_source',[False,True])
+def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch,cold_resume,canonical_wait,existing_source):
+    from roc import native_sweep as sweep,gui_worker,match,native_refs,worker
     service.promotions.recovery=service
     service.promotions.baseline=lambda:dict(revision='base',features=dict(native_recovery_collaboration=1))
     service.promotions.status=lambda *a:dict(jobs=[])
+    if existing_source:(service.root/REL).write_text(AFTER)
     context=SimpleNamespace(names={},by_addr={},includes=[])
     monkeypatch.setattr(sweep,'model_evidence',lambda *a:dict(target_asm=['fixture assembly']))
     monkeypatch.setattr(sweep,'native_context',lambda *a:context)
@@ -179,7 +316,10 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
     if canonical_wait:
         monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='mapped',proposals='saved.json'))
         def submit(*a,**kw):
+            assert a[5]==('roc native-source-transfer' if existing_source else config['model'])
             batches.append(1)
+            if len(batches)==1 and canonical_wait=='gate-failure':raise ValueError('Need new module ownership without losing existing owned bodies')
+            if len(batches)==1 and canonical_wait=='transport-failure':raise worker.ApiFailure('offline','server temporarily unavailable')
             return dict(state='blocked',reason='Class held on another PC') if len(batches)==1 else dict(job='queued',submitted_addresses=['00400000'])
         monkeypatch.setattr(recovery,'submit_batch',submit)
     def target(data,*a):return dict(target_exact=b'return 3;' in data,symbol='?f@A@@QAEHXZ',diff='fixture diff')
@@ -215,21 +355,34 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
         control=controls.setdefault(pc,gui_worker.Control(config,lambda *a,**kw:None))
         return recovery.run(config,control,lambda *a,**kw:None)
     try:
-        first=run('pc1');assert first['recovered']==1 and first['merged']==0
+        first=run('pc1');assert first['recovered']==int(not existing_source) and first['merged']==0
+        assert first['already_exact']==int(existing_source)
         if cold_resume:
             assert first['remote_submitted']==0 and first['pending']==1
             with service.store.lock,service.store.db as db:db.execute('UPDATE native_method_leases SET expires=0')
             folders['pc1']='pc1-cold-proof'
             first=run('pc1')
         assert first['remote_submitted']==1 and first['remote_pending']==1
-        second=run('pc2');assert second['attempted']==0 and calls==['A::f']
+        expected_calls=[] if existing_source else ['A::f']
+        second=run('pc2');assert second['attempted']==0 and calls==expected_calls
         assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
-        result=service.process(service.take());assert result['receipt']['state']=='merged'
+        result=service.process(service.take());assert result['receipt']['state']==('already-exact' if existing_source else 'merged')
         assert (service.root/REL).read_text()==AFTER
-        resumed=run('pc1');assert resumed['host_merged']==1 and resumed['merged']==1 and resumed['remote_pending']==int(canonical_wait) and controls['pc1'].budget.requests==1 and calls==['A::f']
+        resumed=run('pc1');assert resumed['host_merged']==int(not existing_source) and resumed['merged']==int(not existing_source) and resumed['remote_pending']==int(bool(canonical_wait) and canonical_wait!='gate-failure') and controls['pc1'].budget.requests==int(not existing_source) and calls==expected_calls
+        assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
+        if existing_source:assert 'return 1;' in (tmp_path/'pc1'/REL).read_text()
         if canonical_wait:
+            if canonical_wait=='gate-failure':
+                unrelated=tmp_path/'pc1/rebuild/2008-06/native-headers/Unrelated.h'
+                unrelated.write_text('struct Unrelated { int ownerChanged; };')
+                assert run('pc1')['remote_pending']==0 and len(batches)==1
+                service.promotions.baseline=lambda:dict(revision='new-base',features=dict(native_recovery_collaboration=1))
             retried=run('pc1');assert retried['host_merged']==0 and retried['submitted']==1 and retried['remote_pending']==0 and retried['integration_pending']==1
-            assert len(batches)==2 and controls['pc1'].budget.requests==1 and calls==['A::f']
+            assert len(batches)==2 and controls['pc1'].budget.requests==int(not existing_source) and calls==expected_calls
+        else:
+            unrelated=tmp_path/'pc1/rebuild/2008-06/native-headers/Unrelated.h'
+            unrelated.write_text('struct Unrelated { int ownerChanged; };')
+            repeated=run('pc1');assert repeated['pending']==0 and not batches
     finally:http.shutdown();http.server_close();thread.join()
 
 
@@ -324,3 +477,45 @@ def test_recovery_prioritizes_unintegrated_work_without_changing_source_leases(s
     assert [t['addr'] for t in tasks]==['00400001','00400000']
     assert tasks[1]['integration_state']=='integrated' and tasks[1]['signature']==signature
     assert all(t['available'] for t in tasks)
+
+
+def test_project_probe_headers_fence_tasks_without_replacing_canonical_sources(service):
+    path=service.promotions.overlay
+    integration.atomic_json(path,{'App/include/Stage.h':[['','struct GenuineStage {};']]})
+    first=service.catalog();task=first['tasks'][0]
+    assert first['probe_headers']=={'Stage.h':'struct GenuineStage {};'}
+    integration.atomic_json(path,{'App/include/Stage.h':[['','struct RevisedStage {};']]})
+    second=service.catalog()
+    assert first['probe_revision']!=second['probe_revision']
+    assert first['revision']==second['revision']
+    assert task['signature']!=second['tasks'][0]['signature']
+
+
+def test_long_probe_context_uses_short_immutable_cache(tmp_path,monkeypatch):
+    cache=tmp_path.parent/'short-cache';monkeypatch.setenv('LOCALAPPDATA',str(cache))
+    headers={'App/include/v8datamodel/CharacterAppearance.h':'class Header {};'}
+    payload=dict(probe_headers=headers,probe_revision=integration.digest(headers))
+    long=tmp_path/('deep-'*24)/('nested-'*20)
+    folder=client.materialize_probe_headers(payload,long)
+    assert folder.is_relative_to(cache) and folder.name==payload['probe_revision']
+    path=folder/next(iter(headers))
+    assert len(str(path))<=259 and path.read_text()=='class Header {};'
+    assert client.materialize_probe_headers(payload,long)==folder
+    path.write_text('modified')
+    with pytest.raises(ValueError,match='modified'):client.materialize_probe_headers(payload,long)
+
+
+def test_probe_context_is_immutable_versioned_and_cannot_escape(tmp_path):
+    headers={'v8world/Mechanism.h':'struct SimJob {};'}
+    payload=dict(probe_headers=headers,probe_revision=integration.digest(headers))
+    first=client.materialize_probe_headers(payload,tmp_path)
+    assert (first/'v8world/Mechanism.h').read_text()=='struct SimJob {};'
+    assert client.materialize_probe_headers(payload,tmp_path)==first
+    newer={'v8world/Mechanism.h':'struct NewJob {};'}
+    second=client.materialize_probe_headers(dict(probe_headers=newer,probe_revision=integration.digest(newer)),tmp_path)
+    assert second!=first and (first/'v8world/Mechanism.h').read_text()=='struct SimJob {};'
+    (first/'v8world/Mechanism.h').write_text('modified')
+    with pytest.raises(ValueError,match='modified'):client.materialize_probe_headers(payload,tmp_path)
+    for name in ('../escape.h','C:/escape.h','bad.py','a\\b.h'):
+        bad={name:'contents'}
+        with pytest.raises(ValueError):client.materialize_probe_headers(dict(probe_headers=bad,probe_revision=integration.digest(bad)),tmp_path)

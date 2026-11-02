@@ -414,8 +414,11 @@ class Dashboard:
                         file=fields['file'], partial_score=fields['score'],
                         phase='Partial %.3f%% -> %.3f%% (local)' % (fields['previous'], fields['score']))
                 elif kind in ("native_started", "native_progress", "native_result"):
+                    phase=fields.get('message','Recovering method')
+                    if kind=='native_result':
+                        phase='Awaiting verification' if fields.get('local_exact') else 'Blocked: '+(fields.get('error_summary') or fields['error']).splitlines()[0] if fields.get('error') else 'No local gain'
                     job["slots"].setdefault(str(fields["slot"]), {}).update(
-                        file=fields["file"], phase=fields.get("message", "Working"),
+                        file=fields["file"], phase=phase,error=fields.get('error',''),
                         busy=kind != "native_result", local_exact=fields.get("local_exact", 0))
                     if kind == "native_result":
                         job["attempted"] += 1

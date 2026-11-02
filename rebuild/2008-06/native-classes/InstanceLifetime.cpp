@@ -7,13 +7,19 @@ Instance::Instance() : parent(0), name("Instance"), archivable(true)
 {
     InterlockedIncrement(&instanceCount);
 }
+Instance::Instance(const char* value) : parent(0), name(value), archivable(true)
+{
+    InterlockedIncrement(&instanceCount);
+}
 Instance::~Instance()
 {
     InterlockedDecrement(&instanceCount);
 }
 }
 
+#ifndef NATIVE_INSTANCE_EXTERNAL_CREATE_CHILD
 boost::shared_ptr<RBX::Instance> RBX::Instance::createChild(const Name& className)
 {
     return AbstractFactoryProduct::create(className);
 }
+#endif

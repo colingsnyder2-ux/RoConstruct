@@ -1,0 +1,334 @@
+{
+  "source_sha256": "3a50870838b57ef2a0f5fa8dcab22599b3ad8a3132569741060d40174ffb510d",
+  "header_sha256": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
+  "observer_sha256": "96c4b9fe08119aae1fdad4b7a07357ab362e2e6fd7ae7338787e49db6723613d",
+  "object_sha256": "f22714d573484993c90b9c87965c9b9c63caa454ceb0f1239d71048ae8b3f6a9",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawMapRootLifetimeTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawMapRootLifetimeTrial.cpp"
+  ],
+  "address": "0046d590",
+  "size": 349,
+  "bindings": {
+    "__ehhandler$??1LDraw2RobloxMapRoot@LDraw2Lua@RBX@@UAE@XZ": [
+      "0x7c3cae"
+    ],
+    "??_7LDraw2RobloxMapRoot@LDraw2Lua@RBX@@6B@": [
+      "0x81c904"
+    ],
+    "__imp___invalid_parameter_noinfo": [
+      "0x802890",
+      "0x802890",
+      "0x802890",
+      "0x802890",
+      "0x802890",
+      "0x802890"
+    ],
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAEXXZ": [
+      "0x68dfa0"
+    ],
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAEXXZ": [
+      "0x68d1a0"
+    ],
+    "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ": [
+      "0x46b070"
+    ],
+    "??1?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      "0x553d80"
+    ],
+    "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+      "0x802468",
+      "0x802468"
+    ]
+  },
+  "constructor": {
+    "address": "0046d710",
+    "size": 1950,
+    "source_sha256": "781a1750764b1981fa00d45b615482856aba97b4fe7a5f8c7813fd91da24ec61",
+    "object_sha256": "7f9f85b8e128166756eae1ef71f83b166e7df6b6833e369d2702e77f4100771b",
+    "flags": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawMapRootConstructorTrial.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawMapRootConstructorTrial.cpp"
+    ],
+    "bindings": {
+      "__ehhandler$??0LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+        "0x7c3ddc"
+      ],
+      "??_7LDraw2RobloxMapRoot@LDraw2Lua@RBX@@6B@": [
+        "0x81c904"
+      ],
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": [
+        "0x80245c",
+        "0x80245c",
+        "0x80245c",
+        "0x80245c",
+        "0x80245c",
+        "0x80245c",
+        "0x80245c",
+        "0x80245c",
+        "0x80245c"
+      ],
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+        "0x802460",
+        "0x802460"
+      ],
+      "??0?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@1@@Z": [
+        "0x446110"
+      ],
+      "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@1@@Z": [
+        "0x699b30"
+      ],
+      "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": [
+        "0x802464",
+        "0x802464",
+        "0x802464"
+      ],
+      "__imp_??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": [
+        "0x802404"
+      ],
+      "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": [
+        "0x415350"
+      ],
+      "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": [
+        "0x58f6c0"
+      ],
+      "??1XmlElement@@QAE@XZ": [
+        "0x413a70",
+        "0x413a70"
+      ],
+      "??3@YAXPAX@Z": [
+        "0x6a067a",
+        "0x6a067a"
+      ],
+      "?tag_schema_version@@3ABVName@RBX@@B": [
+        "0x96ee1c"
+      ],
+      "?findFirstChildByTag@XmlElement@@QBEPBV1@ABVName@RBX@@@Z": [
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230",
+        "0x57c230"
+      ],
+      "?getValue@XmlNameValuePair@@QBE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+        "0x57c210",
+        "0x57c210",
+        "0x57c210",
+        "0x57c210",
+        "0x57c210",
+        "0x57c210",
+        "0x57c210",
+        "0x57c210",
+        "0x57c210",
+        "0x57c210",
+        "0x57c210"
+      ],
+      "?tag_color_map@@3ABVName@RBX@@B": [
+        "0x96ee20"
+      ],
+      "?tag_color@@3ABVName@RBX@@B": [
+        "0x96ee24"
+      ],
+      "?tag_name@@3ABVName@RBX@@B": [
+        "0x96ee38",
+        "0x96ee38"
+      ],
+      "?tag_ldraw_code@@3ABVName@RBX@@B": [
+        "0x96ee28"
+      ],
+      "__imp__atoi": [
+        "0x802868",
+        "0x802868"
+      ],
+      "?tag_roblox_code@@3ABVName@RBX@@B": [
+        "0x96ee2c"
+      ],
+      "??2@YAPAXI@Z": [
+        "0x6a0920",
+        "0x6a0920"
+      ],
+      "??0LDraw2RobloxColorMap@LDraw2Lua@RBX@@QAE@HH@Z": [
+        "0x46cac0"
+      ],
+      "?findColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxColorMap@23@H@Z": [
+        "0x46d010"
+      ],
+      "??A?$map@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@@std@@QAEAAPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@ABH@Z": [
+        "0x46d3d0"
+      ],
+      "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+        "0x802468",
+        "0x802468",
+        "0x802468",
+        "0x802468",
+        "0x802468",
+        "0x802468",
+        "0x802468",
+        "0x802468",
+        "0x802468",
+        "0x802468",
+        "0x802468"
+      ],
+      "?tag_part_map@@3ABVName@RBX@@B": [
+        "0x96ee30"
+      ],
+      "?tag_part@@3ABVName@RBX@@B": [
+        "0x96ee34"
+      ],
+      "??_C@_00CNPNBAHC@?$AA@": [
+        "0x80b716",
+        "0x80b716",
+        "0x80b716",
+        "0x80b716",
+        "0x80b716",
+        "0x80b716",
+        "0x80b716",
+        "0x80b716"
+      ],
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+        "0x802458",
+        "0x802458",
+        "0x802458",
+        "0x802458",
+        "0x802458",
+        "0x802458",
+        "0x802458"
+      ],
+      "?tag_description@@3ABVName@RBX@@B": [
+        "0x96ee3c"
+      ],
+      "?tag_ldraw_filename@@3ABVName@RBX@@B": [
+        "0x96ee40"
+      ],
+      "?tag_mapping_fidelity@@3ABVName@RBX@@B": [
+        "0x96ee44"
+      ],
+      "?readFidelity@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+        "0x46cb80"
+      ],
+      "??0LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00H@Z": [
+        "0x46e6b0"
+      ],
+      "?tag_roblox_part@@3ABVName@RBX@@B": [
+        "0x96ee48"
+      ],
+      "?tag_shape@@3ABVName@RBX@@B": [
+        "0x96ee4c"
+      ],
+      "?readShape@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+        "0x46cc80"
+      ],
+      "?tag_form_factor@@3ABVName@RBX@@B": [
+        "0x96ee50"
+      ],
+      "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": [
+        "0x80244c"
+      ],
+      "?readFormFactor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+        "0x46cde0"
+      ],
+      "?tag_size_vect3@@3ABVName@RBX@@B": [
+        "0x96ee54"
+      ],
+      "?tag_y_offset@@3ABVName@RBX@@B": [
+        "0x96ee58"
+      ],
+      "??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@HHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": [
+        "0x46e970"
+      ],
+      "?addPart@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAEXABUNativeRobloxPart@23@@Z": [
+        "0x46e960"
+      ],
+      "?addPartMap@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEXPAVLDraw2RobloxPartMap@23@@Z": [
+        "0x46d480"
+      ],
+      "??1TextXmlParser@@QAE@XZ": [
+        "0x4147c0"
+      ],
+      "__imp_??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ": [
+        "0x802408"
+      ]
+    }
+  },
+  "scope": "Inactive candidate; element layouts, XML tag identity, RTTI ownership, exception tables and runtime remain unproven."
+}

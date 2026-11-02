@@ -1,0 +1,52 @@
+{
+  "observer_sha256": "842b65e5c2e9c0072ce556e607afc5da79b5bef4f56f9a66b506f2a3dc6ee118",
+  "body_sha256": "27cdb54c26f261e21e6360a1e2f7b22da54ca66aa72bd4226db302e6c24a5648",
+  "recipe": "roc_part_grouped_tail_constructor_9b19d0716f31ff52.cpp",
+  "preprocessed_sha256": "b558ea6385821f409354d3350d0300753c740510bc8301f5e20fc028b19a6b0c",
+  "profile_sha256": "72318069f54f69b33ea067187302f448940f3a7330b1a60c1a2e76b520dd1874",
+  "object_sha256": "be74a616e3171703b0444379bfc4df6dfcfd327fa5af17f9d33e40b5ba2273a4",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeJointIterationProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeJointIterationProfile.cpp"
+  ],
+  "part_constructor": {
+    "address": "0059d4d0",
+    "size": 785,
+    "object_sha256": "6e845b08ccfd9003cf99ecf46bc1cbda38d98d03aabc61df32c951065eff9e0b",
+    "flags": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeJointIterationCtorProfile.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeJointIterationCtorProfile.cpp"
+    ]
+  },
+  "methods": [
+    {
+      "address": "005e7b90",
+      "symbol": "?getFirstJoint@Primitive@RBX@@QBEPAVJoint@2@XZ",
+      "size": 15
+    },
+    {
+      "address": "005e7ba0",
+      "symbol": "?getNextJoint@Primitive@RBX@@QBEPAVJoint@2@PAV32@@Z",
+      "size": 37
+    }
+  ],
+  "scope": "Inactive typed profile. Part constructor matches with Edge index fields; Edge constructor/destructor, full Primitive/Part destructors, layouts and runtime ABI remain unproven."
+}

@@ -62,7 +62,7 @@ def type_paths(root, patches):
                  and Path(p).suffix in ('.h', '.hpp', '.inl'))
     paths, contents = {}, {}
     for rel in sorted(files):
-        text = integration.overlay_text(tree, rel, patches)
+        text = integration.overlay_text(tree, rel, patches, workspace=root)
         contents[rel] = text
         for name in declared_types(text):
             paths.setdefault(name, set()).add(rel)

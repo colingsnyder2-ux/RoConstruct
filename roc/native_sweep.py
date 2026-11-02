@@ -84,6 +84,21 @@ def rebase_saved_edits(text, edits):
     return kept
 
 
+def proposal_hits(obj, matcher, expected_symbols):
+    """Explicit assigned symbols may be shorter than the bulk discovery cutoff."""
+    hits=matcher.scan(obj);found={h['addr'] for h in hits}
+    if not expected_symbols:return hits
+    functions=list(match.coff_functions(obj))
+    for addr,symbol in expected_symbols.items():
+        if addr in found:continue
+        choices=[(code,relocs) for name,code,relocs in functions if name==symbol]
+        if len(choices)!=1:continue
+        target=matcher.target.same(addr,*choices[0])
+        if target is not None and not match.data_check(matcher.client,addr,target,match.coff_data_refs(obj,symbol))[1]:
+            hits.append(dict(addr=addr,symbol=symbol))
+    return hits
+
+
 def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False):
     rel = proposal['file']
     if rel not in texts:
@@ -100,7 +115,8 @@ def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False)
         raise ValueError('Saved proposal baseline compile failed: ' + rel)
     wanted = {h['addr'] for h in proposal['witnesses']}
     matcher = ctx.matcher.with_targets(wanted)
-    keep = {h['addr'] for h in matcher.scan(Path(baseline['object']).read_bytes())}
+    expected=proposal.get('expected_symbols',{})
+    keep = {h['addr'] for h in proposal_hits(Path(baseline['object']).read_bytes(),matcher,expected)}
     if recover:
         wanted -= keep | ctx.integrated
         if not wanted:
@@ -122,7 +138,7 @@ def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False)
     missing = set(proposal.get('proof', {}).get('defined_symbols', ())).intersection(final.get('undefined_symbols', ()))
     if missing:
         raise SavedProposalError('Saved proposal lost required definitions: ' + ', '.join(sorted(missing)))
-    hits = matcher.scan(Path(final['object']).read_bytes())
+    hits = proposal_hits(Path(final['object']).read_bytes(),matcher,expected)
     found = {h['addr'] for h in hits}
     if not wanted <= found or keep - found:
         raise SavedProposalError('Saved proposal lost exact matches; missing targets: ' + ','.join(sorted(wanted-found)) + '; regressions: ' + ','.join(sorted(keep-found)) + '; rerun roc native-try check ' + rel)
@@ -165,7 +181,7 @@ def methods(text):
 
 
 @functools.lru_cache(maxsize=32)
-def _method_spans(text):
+def _method_spans(text, overloads=False):
     """Unambiguous out-of-line methods, including balanced constructor initializers."""
     clean = masked_cpp(text)
     result = defaultdict(list)
@@ -205,7 +221,18 @@ def _method_spans(text):
             continue
         token = found[1] + "::" + found[2]
         result[token].append((found.start(), finish))
-    return tuple((token, spans[0]) for token, spans in result.items() if len(spans) == 1)
+    selected=[]
+    for token,spans in result.items():
+        if len(spans)==1:
+            selected.append((token,spans[0]))
+        elif overloads and token.split('::')[0]!=token.split('::')[1]:
+            signatures=defaultdict(list)
+            for start,finish in spans:
+                brace=clean.index('{',start)
+                signature=' '.join(clean[start:brace].split())
+                signatures[signature].append((start,finish))
+            selected.extend((signature,items[0]) for signature,items in signatures.items() if len(items)==1)
+    return tuple(selected)
 
 
 def without_assertions(text):
@@ -671,8 +698,7 @@ def ownership_candidates(obj, hits, client='2008-06'):
     if not hits:
         return {}
     symbols = {h["symbol"] for h in hits}
-    candidates = {symbol: addrs for symbol, _, addrs in rebuild.pair(
-        client, [f for f in match.coff_functions(obj) if f[0] in symbols])}
+    candidates = {symbol: addrs for symbol, _, addrs in rebuild.pair_object(client,obj,symbols)}
     return {h["addr"]: candidates.get(h["symbol"], []) for h in hits}
 
 
@@ -903,16 +929,18 @@ def model_evidence(addr, names, by_addr):
             api.close()
         if not source:
             raise ValueError("No mined source available for " + addr + "; check the group server or run roc pull 2008-06")
-    code = match.target("2008-06", addr)[0]
+    code, absolute_relocs, _ = match.target("2008-06", addr)
     rebuilt = names.get(addr) or {}
     displayed = strip_asm(source)
     reference = match.directives(source).get("lib", "")
     recipe, _, rel = reference.partition(" ")
     definition = libs.RECIPES.get(recipe, {})
     expanded = False
+    library_root = None
     if definition.get("src") and not definition.get("generate") and Path(rel.strip()).name.startswith("roc_"):
         try:
             folder = libs._case_path(libs.LIBS / definition["src"]).resolve()
+            library_root = str(folder)
             proof = (folder / rel.strip().replace("\\", "/")).resolve()
             if proof.is_relative_to(folder) and proof.is_file():
                 displayed += "\n" + strip_asm(proof.read_text(errors="replace"))
@@ -934,12 +962,30 @@ def model_evidence(addr, names, by_addr):
         item["target_asm_truncated"] = {"shown": 120, "total": len(assembly)}
     if reference:
         item.update(mined_source_reference=reference, mined_source_expanded=expanded)
+    if library_root:item['mined_library_root']=library_root
     calls = list(dict.fromkeys(m[1].lower().zfill(8) for line in assembly
                                if (m := re.search(r"\b(?:call|jmp) 0x([0-9a-fA-F]+)\s*$", line))
                                and not int(addr, 16) <= int(m[1], 16) < int(addr, 16) + len(code)))
     item["target_calls"] = [{"addr": a, "native_symbol_hint": names.get(a, {}).get("symbol"),
                              "native_score": names.get(a, {}).get("score"),
                              "inventory_unit_hint": by_addr.get(a, {}).get("unit")} for a in calls]
+    # once-only initializers are passed by pointer, so a call-only list hides them.
+    functions = match._functions('2008-06') if absolute_relocs else {}
+    pointers = {}
+    for offset in absolute_relocs:
+        if not 0 <= offset <= len(code)-4:continue
+        destination = '%08x' % int.from_bytes(code[offset:offset+4], 'little')
+        row = functions.get(destination)
+        if not row or row.get('kind','code')!='code' or destination==addr or destination in pointers:continue
+        helper = match.target('2008-06',destination)[0]
+        lines = match.disasm(helper,int(destination,16))
+        path = evidence_dir/(destination+'.asm')
+        text = '\n'.join(lines)
+        if not path.exists() or path.read_text(encoding='utf-8')!=text:path.write_text(text,encoding='utf-8')
+        pointers[destination] = dict(addr=destination,size=len(helper),native_symbol_hint=names.get(destination,{}).get('symbol'),
+            target_asm=lines[:24],target_asm_file=str(path.resolve()),truncated=len(lines)>24)
+        if len(pointers)==3:break
+    if pointers:item['target_function_pointers']=list(pointers.values())
     try:
         item["standins"] = standins.mapping("2008-06", addr, source)
     except Exception as error:  # noqa: BLE001 - the map is optional evidence
@@ -1954,18 +2000,23 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                    (c["user"], c["worker"]) != (settings["user"], worker_name)}
         max_claims = base.get("limits", {}).get("claims", 16)
         for proposal in proposals:
-            labels = {h["claim_unit"] for h in proposal["witnesses"]}
+            proof_labels = {h["claim_unit"] for h in proposal["witnesses"]}
+            labels = set(proof_labels)
             labels.update(by_addr[h["addr"]]["unit"] for h in proposal["witnesses"] if h["addr"] in by_addr)
+            catalog_labels = {catalog_units[h['addr']] for h in proposal['witnesses'] if h['addr'] in catalog_units}
             needed = set()
             for hit in proposal["witnesses"]:
                 unit = catalog_units.get(hit["addr"], by_addr.get(hit["addr"], {}).get("unit", hit["claim_unit"]))
                 needed.add(unit if re.fullmatch(r"RBX::(?:\w+::)*\w+", unit) else hit["claim_unit"])
-            if (labels | needed) & (parked | foreign):
-                blocked.update((labels | needed) & (parked | foreign))
+            # A stale RTTI/factory tag may name an unrelated parked family. Only
+            # actual proof/catalog owners inherit that stop; all live leases stay fenced.
+            conflicts = ((proof_labels | catalog_labels) & parked) | ((labels | needed) & foreign)
+            if conflicts:
+                blocked.update(conflicts)
                 blockers_path = output / 'blockers.json'
                 blockers = json.loads(blockers_path.read_text()) if blockers_path.exists() else {}
                 blockers.setdefault('scheduling-claim', []).append(dict(file=proposal['file'],
-                    units=sorted((labels | needed) & (parked | foreign)), accepted=False))
+                    units=sorted(conflicts), accepted=False))
                 integration.atomic_json(blockers_path, blockers)
                 continue
             if inventory is not None:
@@ -2021,12 +2072,14 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                         additions[path].append(pair)
         if not additions or not used:
             summary.update(state="blocked", blocked_units=sorted(blocked),
-                           reason="Classes held by another worker" if blocked else "No native claim available")
+                           reason="Classes parked or held by another worker" if blocked else "No native claim available")
             return finish(summary)
         additions = integration.canonical_patches(additions, base["overlay"])
         renewed = api.call("/v1/integration/renew", {"user": settings["user"], "claims": [units[u]["id"] for u in sorted(used)]})
         if not renewed.get("ok"):
             raise ValueError("Claims changed before linked preflight; saved proposals retained")
+        from roc.integration_verify import cache_client_accepted
+        cache_client_accepted(ROOT,base,log)
         linked = linked_preflight_progress(ROOT, additions, output, log)
         if api.call("/v1/integration/base")["revision"] != base["revision"]:
             hold_proposals(output, proposals, base['revision'], ticket=recovery_ticket, model=config.get('model'))

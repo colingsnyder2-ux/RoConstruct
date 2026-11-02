@@ -1,0 +1,247 @@
+{
+  "scope": "Inactive emitted vtable slot inventory. Target addresses recorded; matches do not verify data identity or runtime ABI.",
+  "observer_sha256": "d2e5be546b96baeb224858c8c0807540e4d3f01bbc37c1d96e6f2ae4e8cd7ce1",
+  "object_sha256": "09648ec7c38d1090d519077e3b8ca179cae41eef1344b4ed31d5f69d28c40c7f",
+  "tables": [
+    {
+      "symbol": "??_7?$CComObject@VCWorkspace@@@ATL@@6B?$Listener@VWorkspace@RBX@@VDrawChanged@2@@RBX@@@",
+      "original_address": "0x80ae0c",
+      "slots": [
+        {
+          "offset": "0x0",
+          "symbol": "?onEvent@CWorkspace@@UAEXPBVWorkspace@RBX@@VDrawChanged@3@@Z",
+          "original_target": "0x46a990",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x4",
+          "symbol": "??_E?$CComObject@VCWorkspace@@@ATL@@WBM@AEPAXI@Z",
+          "original_target": "0x401aa0",
+          "local_body_matches": true
+        }
+      ]
+    },
+    {
+      "symbol": "??_7?$CComObject@VCWorkspace@@@ATL@@6B?$Listener@VSelection@RBX@@VSelectionChanged@2@@RBX@@@",
+      "original_address": "0x80ae18",
+      "slots": [
+        {
+          "offset": "0x0",
+          "symbol": "?onEvent@CWorkspace@@UAEXPBVSelection@RBX@@VSelectionChanged@3@@Z",
+          "original_target": "0x46ab10",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x4",
+          "symbol": "??_E?$CComObject@VCWorkspace@@@ATL@@WBI@AEPAXI@Z",
+          "original_target": "0x401b50",
+          "local_body_matches": true
+        }
+      ]
+    },
+    {
+      "symbol": "??_7?$CComObject@VCWorkspace@@@ATL@@6B?$IObjectWithSiteImpl@VCWorkspace@@@1@@",
+      "original_address": "0x80ae24",
+      "slots": [
+        {
+          "offset": "0x0",
+          "symbol": "?QueryInterface@?$CComObject@VCWorkspace@@@ATL@@WBA@AGJABU_GUID@@PAPAX@Z",
+          "original_target": "0x402a20",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x4",
+          "symbol": "?AddRef@?$CComObject@VCWorkspace@@@ATL@@WBA@AGKXZ",
+          "original_target": "0x402b00",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x8",
+          "symbol": "?Release@?$CComObject@VCWorkspace@@@ATL@@WBA@AGKXZ",
+          "original_target": "0x402aa0",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0xc",
+          "symbol": "?SetSite@?$IObjectWithSiteImpl@VCWorkspace@@@ATL@@UAGJPAUIUnknown@@@Z",
+          "original_target": "0x403070",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x10",
+          "symbol": "?GetSite@?$IObjectWithSiteImpl@VCWorkspace@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+          "original_target": "0x4026b0",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x14",
+          "symbol": "??_E?$CComObject@VCWorkspace@@@ATL@@WBA@AEPAXI@Z",
+          "original_target": "0x401b30",
+          "local_body_matches": true
+        }
+      ]
+    },
+    {
+      "symbol": "??_7?$CComObject@VCWorkspace@@@ATL@@6B?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@@",
+      "original_address": "0x80ae40",
+      "slots": [
+        {
+          "offset": "0x0",
+          "symbol": "?QueryInterface@?$CComObject@VCWorkspace@@@ATL@@W7AGJABU_GUID@@PAPAX@Z",
+          "original_target": "0x402b10",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x4",
+          "symbol": "?AddRef@?$CComObject@VCWorkspace@@@ATL@@W7AGKXZ",
+          "original_target": "0x402ab0",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x8",
+          "symbol": "?Release@?$CComObject@VCWorkspace@@@ATL@@W7AGKXZ",
+          "original_target": "0x402a50",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0xc",
+          "symbol": "?GetInterfaceSafetyOptions@?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@UAGJABU_GUID@@PAK1@Z",
+          "original_target": "0x404d20",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x10",
+          "symbol": "?SetInterfaceSafetyOptions@?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@UAGJABU_GUID@@KK@Z",
+          "original_target": "0x404db0",
+          "local_body_matches": null
+        }
+      ]
+    },
+    {
+      "symbol": "??_7?$CComObject@VCWorkspace@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IWorkspace@@3U_GUID@@B@1@@",
+      "original_address": "0x80ae58",
+      "slots": [
+        {
+          "offset": "0x0",
+          "symbol": "?QueryInterface@?$CComObject@VCWorkspace@@@ATL@@W3AGJABU_GUID@@PAPAX@Z",
+          "original_target": "0x402af0",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x4",
+          "symbol": "?AddRef@?$CComObject@VCWorkspace@@@ATL@@W3AGKXZ",
+          "original_target": "0x402a70",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x8",
+          "symbol": "?Release@?$CComObject@VCWorkspace@@@ATL@@W3AGKXZ",
+          "original_target": "0x402a30",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0xc",
+          "symbol": "?InterfaceSupportsErrorInfo@?$ISupportErrorInfoImpl@$1?IID_IWorkspace@@3U_GUID@@B@ATL@@UAGJABU_GUID@@@Z",
+          "original_target": "0x401980",
+          "local_body_matches": true
+        }
+      ]
+    },
+    {
+      "symbol": "??_7?$CComObject@VCWorkspace@@@ATL@@6B?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@1@@",
+      "original_address": "0x80ae6c",
+      "slots": [
+        {
+          "offset": "0x0",
+          "symbol": "?QueryInterface@?$CComObject@VCWorkspace@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+          "original_target": "0x402730",
+          "local_body_matches": false
+        },
+        {
+          "offset": "0x4",
+          "symbol": "?AddRef@?$CComObject@VCWorkspace@@@ATL@@UAGKXZ",
+          "original_target": "0x4026f0",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x8",
+          "symbol": "?Release@?$CComObject@VCWorkspace@@@ATL@@UAGKXZ",
+          "original_target": "0x402700",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0xc",
+          "symbol": "?GetTypeInfoCount@?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@UAGJPAI@Z",
+          "original_target": "0x401960",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x10",
+          "symbol": "?GetTypeInfo@?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@UAGJIKPAPAUITypeInfo@@@Z",
+          "original_target": "0x4052b0",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x14",
+          "symbol": "?GetIDsOfNames@?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@UAGJABU_GUID@@PAPA_WIKPAJ@Z",
+          "original_target": "0x405310",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x18",
+          "symbol": "?Invoke@?$IDispatchImpl@UIWorkspace@@$1?IID_IWorkspace@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$01VCComTypeInfoHolder@ATL@@@ATL@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z",
+          "original_target": "0x405340",
+          "local_body_matches": true
+        },
+        {
+          "offset": "0x1c",
+          "symbol": "?SaveToFile@CWorkspace@@UAGJPA_W@Z",
+          "original_target": "0x46c780",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x20",
+          "symbol": "?SaveSelectionToFile@CWorkspace@@UAGJPA_W@Z",
+          "original_target": "0x46b8d0",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x24",
+          "symbol": "?Insert@CWorkspace@@UAGJPA_W@Z",
+          "original_target": "0x46c920",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x28",
+          "symbol": "?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original_target": "0x46bd70",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x2c",
+          "symbol": "?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original_target": "0x46bfd0",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x30",
+          "symbol": "?ExecScript@CWorkspace@@UAGJPA_WUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z",
+          "original_target": "0x46c230",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x34",
+          "symbol": "?ExecUrlScript@CWorkspace@@UAGJPA_WUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z",
+          "original_target": "0x46c430",
+          "local_body_matches": null
+        },
+        {
+          "offset": "0x38",
+          "symbol": "?Close@CWorkspace@@UAGJXZ",
+          "original_target": "0x46b500",
+          "local_body_matches": null
+        }
+      ]
+    }
+  ]
+}

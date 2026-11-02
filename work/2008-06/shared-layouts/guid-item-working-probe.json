@@ -1,10 +1,11 @@
 {
-  "revision": "9cf9f160fd4ff19f4d93b21f546ba0302b53b658",
+  "revision": "880a129c05ab8f4641c47de4c29cf7d80eb2d0bb",
   "sources": {
-    "rebuild\\2008-06\\tests\\..\\native-classes\\GuidItem.cpp": "e60bdc9cf441adce3ad88879e7710ca44ad55c35ff07b01f1bd18a3167a3d1aa",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "3c071a220c63be248196b42d1ccae5e38c5bfdc082d5950b246d75a4ac28a7c4",
+    "rebuild\\2008-06\\tests\\..\\native-classes\\GuidItem.cpp": "86aca9b1988816199eec2ce302b06d3230f1b3fb838b37be7da103f6cdb9581c",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "1761155f9c9e24e66f46616a62e0abbf3ad36d25af6c74a9afc396c5d68b03ef",
     "rebuild\\2008-06\\native-headers\\util\\GuidItem.h": "f76a772f00e2606e278066e8f4bd935a1b4fc69a2b56a07f4863ca6a8fd09b53",
-    "rebuild\\2008-06\\tests\\record_native_guid_item.py": "23021f4effa41f118cc55f66ab9283d361de2c3dba2bb623a1c1e340d051c35d"
+    "rebuild\\2008-06\\native-headers\\util\\GuidRegistry.h": "70cb57f82f847c8b4f2a16e7ec35a109aaa0d1234ffa7cee588398340eb64893",
+    "rebuild\\2008-06\\tests\\record_native_guid_item.py": "3c6ec753f5c455a8d5416b897fb15865492fd77b6d02acce24c835cdbcca0534"
   },
   "compiler_build": 21022,
   "flags": [
@@ -65,7 +66,7 @@
         },
         {
           "offset": 108,
-          "symbol": "?remove@GuidRegistry@RBX@@QAEXABUData@Guid@2@@Z",
+          "symbol": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAEIABUData@Guid@RBX@@@Z",
           "target": "0x4af4c0"
         },
         {

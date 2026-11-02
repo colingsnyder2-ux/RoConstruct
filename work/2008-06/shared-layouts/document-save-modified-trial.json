@@ -1,0 +1,124 @@
+{
+  "inputs": {
+    "rebuild\\2008-06\\tests\\NativeDocumentSaveModifiedTrial.cpp": "9797171d5934400b5591708653cecf129658e8e5745a3dd290ea5d8ac6309f20",
+    "rebuild\\2008-06\\tests\\record_native_document_save_modified_trial.py": "16001b82d84a3c052d810d5ec3649126bea7bff6ec1922ed81f0be9f23746ade",
+    "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
+    "rebuild\\2008-06\\native-headers\\CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
+    "rebuild\\2008-06\\native-headers\\util\\RunStateOwner.h": "a7f28d3b844e55269b3bf457b25216c74ea8bfe019e1da5396f761154e7a974b",
+    "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Visit.h": "844fb204428195ea968885c19005f804bac8e09f158d488b859399b337770d47"
+  },
+  "object_sha256": "dec28bfe12f260f57f4f6c84541159f3c7439db25e99f92eb56700720b674434",
+  "preprocess_flags": [
+    "/nologo",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/P",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDocumentSaveModifiedTrial.cpp"
+  ],
+  "compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentSaveModifiedProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentSaveModifiedProfile.cpp"
+  ],
+  "address": "00455060",
+  "size": 1020,
+  "upload_url": {
+    "address": "0044f1b0",
+    "size": 36
+  },
+  "targets": {
+    "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": [
+      "0x46a940",
+      "0x46a940"
+    ],
+    "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": [
+      "0x403040",
+      "0x403040",
+      "0x403040",
+      "0x403040"
+    ],
+    "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": [
+      "0x411b40"
+    ],
+    "??$find@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": [
+      "0x4530f0",
+      "0x4530f0",
+      "0x4530f0"
+    ],
+    "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": [
+      "0x554da0",
+      "0x554da0"
+    ],
+    "??$find@VVisit@RBX@@@ServiceProvider@RBX@@QBEPAVVisit@1@XZ": [
+      "0x452b40"
+    ],
+    "?getUploadUrl@Visit@RBX@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": [
+      "0x44f1b0",
+      "0x44f1b0"
+    ],
+    "?AfxGetThread@@YGPAVCWinThread@@XZ": [
+      "0x6a0e4e",
+      "0x6a0e4e"
+    ],
+    "?SaveModified@CDocument@@UAEHXZ": [
+      "0x6a13a6"
+    ],
+    "??1Lock@DataModel@RBX@@QAE@XZ": [
+      "0x5773c0",
+      "0x5773c0"
+    ],
+    "??0CPublishAsPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z": [
+      "0x44f5c0"
+    ],
+    "?DoModal@CDialog@@UAEHXZ": [
+      "0x6a084e"
+    ],
+    "??1?$shared_ptr@VDataModel@RBX@@@boost@@QAE@XZ": [
+      "0x600660"
+    ],
+    "??1CSaveToRobloxDialog@@UAE@XZ": [
+      "0x45fe20"
+    ]
+  },
+  "scope": "Inactive trial. Visit constructor/destructor and service identity, dialog ownership, linked exception metadata and runtime remain unproven."
+}

@@ -1,0 +1,142 @@
+{
+  "source_sha256": "67fe03d1f24524a8d7e3e68f00675ae73edcc630086a95edf24b523d1eb93ebd",
+  "observer_sha256": "fd0f489195782196a8e2efa1f3007206cf8e2e0a850b4697f68445d190ba2e44",
+  "object_sha256": "b968c0a2dbe957a7fb1016d17708b15d516db4ec7cd2ccd7a1b07055517a6692",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawTagsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawTagsTrial.cpp"
+  ],
+  "tags": [
+    {
+      "tag": "schema_version",
+      "address": "0x7efb60",
+      "storage": "0x96ee1c",
+      "literal": "0x81c918"
+    },
+    {
+      "tag": "color_map",
+      "address": "0x7efb80",
+      "storage": "0x96ee20",
+      "literal": "0x81c928"
+    },
+    {
+      "tag": "color",
+      "address": "0x7efba0",
+      "storage": "0x96ee24",
+      "literal": "0x81c934"
+    },
+    {
+      "tag": "ldraw_code",
+      "address": "0x7efbc0",
+      "storage": "0x96ee28",
+      "literal": "0x81c93c"
+    },
+    {
+      "tag": "roblox_code",
+      "address": "0x7efbe0",
+      "storage": "0x96ee2c",
+      "literal": "0x81c948"
+    },
+    {
+      "tag": "part_map",
+      "address": "0x7efc00",
+      "storage": "0x96ee30",
+      "literal": "0x81c954"
+    },
+    {
+      "tag": "part",
+      "address": "0x7efc20",
+      "storage": "0x96ee34",
+      "literal": "0x81c960"
+    },
+    {
+      "tag": "name",
+      "address": "0x7efc40",
+      "storage": "0x96ee38",
+      "literal": "0x81c968"
+    },
+    {
+      "tag": "description",
+      "address": "0x7efc60",
+      "storage": "0x96ee3c",
+      "literal": "0x81c970"
+    },
+    {
+      "tag": "ldraw_filename",
+      "address": "0x7efc80",
+      "storage": "0x96ee40",
+      "literal": "0x81c97c"
+    },
+    {
+      "tag": "mapping_fidelity",
+      "address": "0x7efca0",
+      "storage": "0x96ee44",
+      "literal": "0x81c98c"
+    },
+    {
+      "tag": "roblox_part",
+      "address": "0x7efcc0",
+      "storage": "0x96ee48",
+      "literal": "0x81c9a0"
+    },
+    {
+      "tag": "shape",
+      "address": "0x7efce0",
+      "storage": "0x96ee4c",
+      "literal": "0x81c9ac"
+    },
+    {
+      "tag": "form_factor",
+      "address": "0x7efd00",
+      "storage": "0x96ee50",
+      "literal": "0x81c9b4"
+    },
+    {
+      "tag": "size_vect3",
+      "address": "0x7efd20",
+      "storage": "0x96ee54",
+      "literal": "0x81c9c0"
+    },
+    {
+      "tag": "y_offset",
+      "address": "0x7efd40",
+      "storage": "0x96ee58",
+      "literal": "0x81c9cc"
+    }
+  ],
+  "scope": "Inactive trial; global ordering, name registry ABI and runtime ownership remain unproven."
+}

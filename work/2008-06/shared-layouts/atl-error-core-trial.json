@@ -1,0 +1,79 @@
+{
+  "scope": "Inactive original ATL ANSI error helper matches; helper implementations and runtime ABI remain unproven.",
+  "source_sha256": "903436c0f69d5df3def73521f8c4f80823418d385aecc049a99b467098d266b5",
+  "object_sha256": "376101363670fdb32db4ac03e638a496df1a9ae366df83c4562798f0de9c321e",
+  "vendor_header_sha256": "5c55658ca436c99db7ce8ee28a76fd1e9e4b0461fb339d5532aef1a155720c06",
+  "address": "004290b0",
+  "size": 332,
+  "relocation_normalized_exact": true,
+  "bindings": {
+    "__ehhandler$?AtlReportError@ATL@@YGJABU_GUID@@PBDK10J@Z": [
+      "0x7bf298"
+    ],
+    "__imp__lstrlenA@4": [
+      "0x8021b8"
+    ],
+    "__allmul": [
+      "0x6a16d0"
+    ],
+    "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": [
+      "0x402610"
+    ],
+    "__alloca_probe_16": [
+      "0x6a1560"
+    ],
+    "?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z": [
+      "0x402f50"
+    ],
+    "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z": [
+      "0x401760"
+    ],
+    "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": [
+      "0x401150"
+    ],
+    "??$AtlMultiply@H@ATL@@YAJPAHHH@Z": [
+      "0x401710"
+    ],
+    "?AtlSetErrorInfo@ATL@@YGJABU_GUID@@PB_WK10JPAUHINSTANCE__@@@Z": [
+      "0x428ae0"
+    ]
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeAtlErrorCoreTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeAtlErrorCoreTrial.cpp"
+  ]
+}

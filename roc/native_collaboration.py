@@ -1,6 +1,8 @@
 """Cross-PC method lease client. Contributor source stays reference data, never chat instructions."""
 import json
+import os
 import re
+import tempfile
 import threading
 import uuid
 from pathlib import Path
@@ -31,6 +33,10 @@ class Remote:
             raise ValueError('Invalid shared snapshot revision')
         folder=Path(folder)/revision
         payload['workspace']=str(folder)
+        context=materialize_probe_headers(payload,folder/'context')
+        if context:payload['probe_context']=str(context)
+        canonical=materialize_canonical_headers(payload,folder/'canonical-context')
+        if canonical:payload['canonical_context']=str(canonical)
         if not isinstance(files, dict) or len(files)>4096 or len(json.dumps(files).encode())>integration.MAX_OVERLAY_BYTES:
             raise ValueError('Invalid shared native snapshot size')
         if len({rel.casefold() for rel in files})!=len(files):raise ValueError('Case-colliding shared source paths')
@@ -43,7 +49,8 @@ class Remote:
         return payload
 
     def claim(self, task):
-        return self.call('claim', dict(target=task['target'], signature=task['signature']))
+        from roc.native_recovery import INCLUDE_PROFILES
+        return self.call('claim', dict(target=task['target'], signature=task['signature'],include_profiles=list(INCLUDE_PROFILES),method_selectors=['signature-v1']))
 
     def renew(self, lease):
         return self.call('renew',dict(lease=lease['lease'],worker=lease.get('worker',self.worker)))
@@ -61,6 +68,36 @@ class Remote:
 
     def close(self):
         self.api.close()
+
+
+def materialize_canonical_headers(payload, directory):
+    return materialize_probe_headers(dict(probe_headers=payload.get('canonical_headers',{}),
+                                         probe_revision=payload.get('canonical_revision')),directory)
+
+
+def materialize_probe_headers(payload, directory):
+    """Separate immutable compiler fallback declarations from editable native source files."""
+    headers=payload.get('probe_headers',{})
+    if not isinstance(headers,dict) or len(headers)>2048 or len(json.dumps(headers).encode())>integration.MAX_OVERLAY_BYTES:
+        raise ValueError('Invalid native probe header context')
+    if not headers:return None
+    revision=integration.digest(headers)
+    if payload.get('probe_revision')!=revision or len({name.casefold() for name in headers})!=len(headers):
+        raise ValueError('Invalid native probe header revision')
+    directory=(Path(directory)/revision).resolve()
+    if any(len(str(directory/name))>259 for name in headers):
+        directory=(Path(os.environ.get('LOCALAPPDATA',tempfile.gettempdir()))/'RoConstruct/nc'/revision).resolve()
+    for name,text in headers.items():
+        relative=Path(name)
+        if not isinstance(text,str) or '\\' in name or ':' in name or relative.is_absolute() or '..' in relative.parts or relative.suffix not in ('.h','.hpp','.inl'):
+            raise ValueError('Invalid native probe header path')
+        target=directory/relative
+        if not target.resolve().is_relative_to(directory):raise ValueError('Native probe header escaped context')
+        if len(str(target))>259:raise ValueError('Native header path exceeds the historical compiler limit: '+str(target))
+        target.parent.mkdir(parents=True,exist_ok=True)
+        if not target.exists():target.write_text(text,encoding='utf-8')
+        elif target.read_text(encoding='utf-8')!=text:raise ValueError('Immutable native probe context was modified')
+    return directory
 
 
 def seed_missing(shared, files):

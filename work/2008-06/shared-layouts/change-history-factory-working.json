@@ -1,0 +1,92 @@
+{
+  "source_sha256": "94e47106e75482752a024102b269c2b634c237cf9aaed28ffd4fe9bf4bfbc294",
+  "header_sha256": "9dda3c77e2cbc83796c33e262b800644d2e04427fbcfa2f56d557c1863afb5d9",
+  "observer_sha256": "72d8e0d136f6b1406f91c81031989ca05df902b273b974c718912f76e7b610e3",
+  "object_sha256": "002f06b7ffc8ccb6b7c1fb0b5071bbdf33cdeda88a7599db0b32c3730ba895ca",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeChangeHistoryFactory.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ChangeHistoryFactory.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0058a8d0",
+      "symbol": "??$?0PBD@?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@IAE@PBD@Z",
+      "size": 153,
+      "calls": [
+        {
+          "symbol": "??$?0PBD@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@IAE@PBD@Z",
+          "target": "0x5871d0"
+        },
+        {
+          "symbol": "?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PBDBV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+          "target": "0x58a2a0"
+        }
+      ]
+    },
+    {
+      "address": "005871d0",
+      "symbol": "??$?0PBD@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@IAE@PBD@Z",
+      "size": 97,
+      "calls": [
+        {
+          "symbol": "??0Instance@RBX@@QAE@PBD@Z",
+          "target": "0x55b960"
+        }
+      ]
+    },
+    {
+      "address": "0058a2a0",
+      "symbol": "?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PBDBV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "targets": {
+        "??_B?1??classDescriptor@": "0x9759e8",
+        "??_C@": "0x948df8",
+        "?classDescriptor@?$Described@VInstance@": "0x40ad80",
+        "?descriptor@": "0x975928",
+        "??0ClassDescriptor@": "0x5708f0",
+        "??__Fdescriptor@": "0x7fd930",
+        "_atexit": "0x6a17af"
+      }
+    },
+    {
+      "address": "007fd930",
+      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PBDBV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10
+    }
+  ],
+  "scope": "Inactive diagnostic. Constructor bodies and direct calls match; vtable and descriptor identities and factory destructor remain unproven."
+}

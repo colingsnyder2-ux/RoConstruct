@@ -1,0 +1,241 @@
+{
+  "scope": "Inactive original array-name class profile and Boost exception path match selected methods. Full base/data, event and runtime ABI remain unproven.",
+  "observer_sha256": "edb55601f63093f31d21334f8289f910a0633a4a1af836655cd62e3d25bfb03b",
+  "source_sha256": "0b77d7a1222f5a3cb6886aacc9c0749401d64b0ff8867fb66ea0de413776b213",
+  "profile_sha256": "0995ecef63e0625f1c123f1338bf65610a4a7b32733dca667e1adf1a9b932c68",
+  "object_sha256": "14b9dcd8e693b996cc2678bb21a72f15384ed3fe10b06e388b8beec81caa92f3",
+  "unit": "roc_espeon_physicsservicenativeconstructorcfa29528d50b74b1.cpp",
+  "methods": [
+    {
+      "address": "004cd5b0",
+      "symbol": "??0PhysicsService@RBX@@QAE@XZ",
+      "candidate_size": 233,
+      "original_size": 233,
+      "exact": true,
+      "calls": {
+        "??0?$DescribedNonCreatable@VPhysicsService@RBX@@VInstance@2@$1?sPhysicsService@2@3QBDB@RBX@@QAE@XZ": "0x4cd510",
+        "??0?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVPartInstance@RBX@@@1@ABV?$allocator@PAVPartInstance@RBX@@@1@@Z": "0x64b2a0",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90"
+      }
+    },
+    {
+      "address": "005e8d30",
+      "symbol": "??1PhysicsService@RBX@@UAE@XZ",
+      "candidate_size": 177,
+      "original_size": 177,
+      "exact": true,
+      "calls": {
+        "??1?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230",
+        "??1Instance@RBX@@MAE@XZ": "0x55a540"
+      }
+    },
+    {
+      "address": "004cd760",
+      "symbol": "??$create@VPhysicsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPhysicsService@RBX@@@boost@@XZ",
+      "candidate_size": 120,
+      "original_size": 120,
+      "exact": true,
+      "calls": {
+        "??0PhysicsService@RBX@@QAE@XZ": "0x4cd5b0",
+        "??$?0VPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VPhysicsService@RBX@@@boost@@QAE@PAVPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x4cb0c0"
+      }
+    }
+  ],
+  "shared_count": {
+    "address": "004ca3c0",
+    "symbol": "??$?0PAVPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+    "size": 131,
+    "exact": true,
+    "bindings": {
+      "__ehhandler$??$?0PAVPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x7c9800",
+      "??2@YAPAXI@Z": "0x6a0920",
+      "??_7?$sp_counted_impl_pd@PAVPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x826830",
+      "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30",
+      "__CxxThrowException@8": "0x6a158c"
+    }
+  },
+  "name": {
+    "symbol": "?sPhysicsService@RBX@@3QBDB",
+    "original_address": "0x83f858",
+    "value": "PhysicsService"
+  },
+  "instance_name": {
+    "symbol": "?sInstance@RBX@@3QBDB",
+    "original_address": "0x82d6a0",
+    "value": "Instance"
+  },
+  "instance_class_descriptor": {
+    "symbol": "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+    "address": "0040ad80",
+    "size": 101,
+    "exact": true,
+    "bindings": {
+      "__ehhandler$?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x7bd13e",
+      "??_B?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96c528",
+      "?sInstance@RBX@@3QBDB": "0x82d6a0",
+      "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0x40ad20",
+      "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468",
+      "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0",
+      "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fa2a0",
+      "_atexit": "0x6a17af"
+    }
+  },
+  "rtti_symbol": "??_R0?AV?$DescribedNonCreatable@VPhysicsService@RBX@@VInstance@2@$1?sPhysicsService@2@3QBDB@RBX@@@8",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePhysicsArrayLifetimeTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePhysicsArrayLifetimeProfile.cpp"
+  ],
+  "event_methods": [
+    {
+      "address": "005e9110",
+      "symbol": "?onEvent@PhysicsService@RBX@@EAEXPBVWorld@2@UAssemblyPhysicsOn@2@@Z",
+      "size": 32,
+      "exact": true,
+      "calls": {
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z": "0x599f80",
+        "?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z": "0x5e8f70"
+      }
+    },
+    {
+      "address": "005e9130",
+      "symbol": "?onEvent@PhysicsService@RBX@@EAEXPBVWorld@2@UAssemblyPhysicsOff@2@@Z",
+      "size": 32,
+      "exact": true,
+      "calls": {
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z": "0x599f80",
+        "?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z": "0x5e9040"
+      }
+    }
+  ],
+  "signal_methods": [
+    {
+      "address": "0x7f6e40",
+      "symbol": "??__E?eventAdded@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ",
+      "size": 32,
+      "exact": true,
+      "bindings": {
+        "??_C@_04FPLDHIIH@part?$AA@": "0x81c960",
+        "??_C@_0O@HMNMCABN@AssemblyAdded?$AA@": "0x83f878",
+        "?eventAdded@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x97abec",
+        "??0?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z": "0x5e8df0",
+        "??__F?eventAdded@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ": "0x7ffa30",
+        "_atexit": "0x6a17af"
+      }
+    },
+    {
+      "address": "0x7f6e60",
+      "symbol": "??__E?eventRemoved@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ",
+      "size": 32,
+      "exact": true,
+      "bindings": {
+        "??_C@_04FPLDHIIH@part?$AA@": "0x81c960",
+        "??_C@_0BA@EIGDHMGB@AssemblyRemoved?$AA@": "0x83f888",
+        "?eventRemoved@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x97ac20",
+        "??0?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z": "0x5e8df0",
+        "??__F?eventRemoved@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ": "0x7ff9f0",
+        "_atexit": "0x6a17af"
+      }
+    },
+    {
+      "address": "0x5e8df0",
+      "symbol": "??0?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z",
+      "size": 194,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??0?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z": "0x7da130",
+        "?classDescriptor@?$Described@VPhysicsService@RBX@@$1?sPhysicsService@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sPhysicsService@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x4cd300",
+        "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0",
+        "??_7?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@6B@": "0x83f86c",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0",
+        "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00",
+        "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0"
+      }
+    },
+    {
+      "address": "0x49de70",
+      "symbol": "?connectGeneric@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z",
+      "size": 219,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?connectGeneric@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@MBE?AVconnection@signals@boost@@PAVSignalInstance@23@PAVGenericSlotWrapper@23@W4connect_position@56@@Z": "0x7c8a59",
+        "??$?0VGenericSlotWrapper@Reflection@RBX@@@shared_count@detail@boost@@QAE@PAVGenericSlotWrapper@Reflection@RBX@@@Z": "0x41a620",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410",
+        "??$?0VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABVGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@@Z": "0x49d390",
+        "?connect@?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z": "0x499aa0",
+        "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0x49f710"
+      }
+    },
+    {
+      "address": "0x41a620",
+      "symbol": "??$?0VGenericSlotWrapper@Reflection@RBX@@@shared_count@detail@boost@@QAE@PAVGenericSlotWrapper@Reflection@RBX@@@Z",
+      "size": 131,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??$?0VGenericSlotWrapper@Reflection@RBX@@@shared_count@detail@boost@@QAE@PAVGenericSlotWrapper@Reflection@RBX@@@Z": "0x7bdf40",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??_7?$sp_counted_impl_p@VGenericSlotWrapper@Reflection@RBX@@@detail@boost@@6B@": "0x80ece8",
+        "??$checked_delete@VGenericSlotWrapper@Reflection@RBX@@@boost@@YAXPAVGenericSlotWrapper@Reflection@RBX@@@Z": "0x427b70",
+        "__CxxThrowException@8": "0x6a158c"
+      }
+    }
+  ],
+  "on_removed": {
+    "address": "005e9040",
+    "symbol": "?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+    "size": 196,
+    "exact": true,
+    "bindings": {
+      "__ehhandler$?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z": "0x7d9168",
+      "?erase@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@QAEIABQAVPartInstance@RBX@@@Z": "0x5e9f60",
+      "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z": "0x618a40",
+      "?eventRemoved@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x97ac20",
+      "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x49d200"
+    }
+  },
+  "on_added": {
+    "address": "005e8f70",
+    "symbol": "?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+    "size": 203,
+    "exact": true,
+    "bindings": {
+      "__ehhandler$?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z": "0x7d14e8",
+      "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z": "0x618a40",
+      "?eventAdded@PhysicsService@RBX@@0V?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x97abec",
+      "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x49d200",
+      "?insert@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVPartInstance@RBX@@@Z": "0x5e8c40"
+    }
+  },
+  "set_insert": {
+    "address": "005e8c40",
+    "symbol": "?insert@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVPartInstance@RBX@@@Z",
+    "size": 239,
+    "exact": true
+  },
+  "weak_count_donor": {
+    "address": "00411ad0",
+    "symbol": "??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z",
+    "size": 104,
+    "exact": true,
+    "object_sha256": "48e30693e6d145dc600408ab5c022e304a382091baf52eeba1c7e6d2bf352b9e",
+    "note": "Recovered no-exception definition excluded; donor body matches. Link selection and live ABI remain unproven."
+  },
+  "function1_donor": {
+    "address": "00496a00",
+    "symbol": "??R?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@QBEXV?$shared_ptr@VInstance@RBX@@@1@@Z",
+    "size": 190,
+    "exact": true,
+    "object_sha256": "48e30693e6d145dc600408ab5c022e304a382091baf52eeba1c7e6d2bf352b9e",
+    "note": "Recovered no-exception definition excluded; donor body matches. Link selection and live ABI remain unproven."
+  }
+}

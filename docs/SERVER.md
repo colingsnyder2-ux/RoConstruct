@@ -154,3 +154,12 @@ Server startup copies the current verifier runtime into the lane. Restart is req
 New GUI private workspaces and packaged Worker rebuild inputs use the selected lane; existing private
 workspaces and proposals remain saved. Publish the matching Worker before resuming other PCs.
 Source body matches, linked integration acceptance and P5/P6 executable swaps remain separate gates.
+
+Worker 34 also supports explicitly selected accepted-source targets in
+`work/native-recovery/tasks.json`: set `canonical_file` to an existing `App/FOLDER/CLASS.cpp`,
+`file` to `rebuild/2008-06/native-classes/accepted/App/FOLDER/CLASS.cpp`,
+`include_profile` to `accepted`, and provide the existing `method` and target `addr`.
+The host seeds that file exclusively from the selected canonical source, preserving any
+existing edits. It publishes immutable accepted headers separately from current owner
+headers; only updated Workers may claim this profile. Body merges and ordinary independent
+integration gates still apply. No new declarations, fields, or player swaps are inferred.

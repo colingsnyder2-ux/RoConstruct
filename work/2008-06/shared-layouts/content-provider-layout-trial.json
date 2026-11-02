@@ -1,0 +1,193 @@
+{
+  "source_sha256": "bac1b447620f2dc8110ccfaac3a1d81db7507b559fd32a1a377ba4e00c995ded",
+  "observer_sha256": "3a223b793b4c4606e283b079aa8301a24f7d7aeabcbea755eaf597b9af5a8139",
+  "object_sha256": "3cf20a10d6b38fe84f3ef8938bb9469b0150b1fec184471c1d8e10f5e04b0c87",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeContentProviderTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeContentProviderTrial.cpp"
+  ],
+  "class_size": "0x19c",
+  "member_offsets": {
+    "requestSync": "0x130",
+    "requestQueue": "0x138",
+    "failedUrls": "0x154",
+    "contentCacheMutex": "0x170",
+    "contentCache": "0x178",
+    "requestProcessor": "0x198"
+  },
+  "rtti": "RBX::ContentProvider",
+  "methods": [
+    {
+      "address": "00562c30",
+      "symbol": "??0ContentProvider@RBX@@QAE@XZ",
+      "size": 418,
+      "calls": [
+        {
+          "symbol": "??0?$DescribedNonCreatable@VContentProvider@RBX@@VInstance@2@$1?sContentProvider@2@3PBDB@RBX@@IAE@XZ",
+          "target": "0x5613f0"
+        },
+        {
+          "symbol": "??0mutex@boost@@QAE@XZ",
+          "target": "0x594c90"
+        },
+        {
+          "symbol": "??0?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAE@XZ",
+          "target": "0x55e530"
+        },
+        {
+          "symbol": "??0?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@std@@QAE@XZ",
+          "target": "0x55e590"
+        },
+        {
+          "symbol": "??0mutex@boost@@QAE@XZ",
+          "target": "0x594c90"
+        },
+        {
+          "symbol": "??0?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@VContentId@RBX@@@1@ABV?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@1@@Z",
+          "target": "0x4b0b90"
+        },
+        {
+          "symbol": "??2@YAPAXI@Z",
+          "target": "0x6a0920"
+        },
+        {
+          "symbol": "??$?0V?$bind_t@W4work_result@worker_thread@RBX@@V?$mf0@W4work_result@worker_thread@RBX@@VContentProvider@3@@_mfi@boost@@V?$list1@V?$value@PAVContentProvider@RBX@@@_bi@boost@@@_bi@6@@_bi@boost@@@?$function0@W4work_result@worker_thread@RBX@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@W4work_result@worker_thread@RBX@@V?$mf0@W4work_result@worker_thread@RBX@@VContentProvider@3@@_mfi@boost@@V?$list1@V?$value@PAVContentProvider@RBX@@@_bi@boost@@@_bi@6@@_bi@1@H@Z",
+          "target": "0x55f350"
+        },
+        {
+          "symbol": "??0worker_thread@RBX@@QAE@ABV?$function0@W4work_result@worker_thread@RBX@@V?$allocator@Vfunction_base@boost@@@std@@@boost@@PBD@Z",
+          "target": "0x5971d0"
+        },
+        {
+          "symbol": "??1worker_thread@RBX@@QAE@XZ",
+          "target": "0x595cb0"
+        },
+        {
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x6a067a"
+        }
+      ],
+      "vtable_targets": [
+        "0x82df6c",
+        "0x82df5c",
+        "0x82df54",
+        "0x82df4c",
+        "0x82df3c",
+        "0x82df2c",
+        "0x82df1c",
+        "0x82df0c",
+        "0x82defc",
+        "0x82deec"
+      ]
+    },
+    {
+      "address": "00562e60",
+      "symbol": "??1ContentProvider@RBX@@UAE@XZ",
+      "size": 270,
+      "calls": [
+        {
+          "symbol": "?join@worker_thread@RBX@@QAEXXZ",
+          "target": "0x595d70"
+        },
+        {
+          "symbol": "??1worker_thread@RBX@@QAE@XZ",
+          "target": "0x595cb0"
+        },
+        {
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x6a067a"
+        },
+        {
+          "symbol": "??1?$_Tree@V?$_Tmap_traits@VContentId@RBX@@UCachedContent@ContentProvider@2@U?$less@VContentId@RBX@@@std@@V?$allocator@U?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+          "target": "0x561180"
+        },
+        {
+          "symbol": "??1mutex@boost@@QAE@XZ",
+          "target": "0x594cb0"
+        },
+        {
+          "symbol": "??1?$list@UFailedUrl@ContentProvider@RBX@@V?$allocator@UFailedUrl@ContentProvider@RBX@@@std@@@std@@QAE@XZ",
+          "target": "0x55e5f0"
+        },
+        {
+          "symbol": "??1?$list@UContentRequest@RBX@@V?$allocator@UContentRequest@RBX@@@std@@@std@@QAE@XZ",
+          "target": "0x562bd0"
+        },
+        {
+          "symbol": "??1mutex@boost@@QAE@XZ",
+          "target": "0x594cb0"
+        },
+        {
+          "symbol": "??1Instance@RBX@@UAE@XZ",
+          "target": "0x55a540"
+        }
+      ],
+      "vtable_targets": [
+        "0x82df6c",
+        "0x82df5c",
+        "0x82df54",
+        "0x82df4c",
+        "0x82df3c",
+        "0x82df2c",
+        "0x82df1c",
+        "0x82df0c",
+        "0x82defc",
+        "0x82deec"
+      ]
+    },
+    {
+      "address": "005612b0",
+      "symbol": "?classDescriptor@?$Described@VContentProvider@RBX@@$1?sContentProvider@2@3PBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "targets": {
+        "??_B?1??classDescriptor@": "0x9740e8",
+        "??_C@": "0x9441cc",
+        "?classDescriptor@?$Described@VInstance@": "0x40ad80",
+        "?descriptor@": "0x974028",
+        "??0ClassDescriptor@": "0x5708f0",
+        "??__Fdescriptor@": "0x7fcc00",
+        "_atexit": "0x6a17af"
+      }
+    },
+    {
+      "address": "007fcc00",
+      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VContentProvider@RBX@@$1?sContentProvider@2@3PBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sContentProvider@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10
+    }
+  ],
+  "scope": "Inactive trial. Template name representation, dependent layouts, vtable slots, exception metadata and runtime ownership remain unproven."
+}

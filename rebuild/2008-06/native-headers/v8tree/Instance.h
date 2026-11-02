@@ -43,7 +43,12 @@ class Instance : public boost::enable_shared_from_this<Instance>,
                  public Notifier<Instance, PropertyChanged>,
                  public boost::noncopyable {
 public:
+    static const Reflection::RefPropDescriptor<Instance, Instance> propParent;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentAdded;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_ancestryChanged;
     Instance();
+    explicit Instance(const char*);
     virtual ~Instance();
     virtual void setName(const std::string&);
     virtual bool askAddChild(const Instance*) const;
@@ -59,6 +64,7 @@ public:
     virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);
     virtual boost::shared_ptr<Instance> createChild(const Name&);
     const std::string& getName() const { return name; }
+    Instance* getParent() const { return parent; }
     size_t numChildren() const
     {
         if (children) return children->size();
@@ -76,6 +82,8 @@ public:
     template<class T> const T* queryTypedParent() const { return dynamic_cast<T*>(parent); }
     template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
     void setParent(Instance*);
+    std::string getClassNameStr() const;
+    Instance* findFirstChildByClassName(std::string) const; // 0046ae30; name provisional.
     void writeChildren(::XmlElement*);
     virtual XmlElement* write();
     virtual void onChildChanged(Instance*, const PropertyChanged&);

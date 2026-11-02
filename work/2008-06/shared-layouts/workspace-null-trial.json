@@ -1,0 +1,28 @@
+{
+  "scope": "Inactive null-command method matches; Workspace, MouseCommand and linked target ABI remain unproven.",
+  "observer_sha256": "190a1b6d2448f71ff1e42f0b24e2ec2fd6c2f2fdf3b185065fe12c18a91dad1f",
+  "source_sha256": "303aa1620f1412d19ea36a0890b6722c829f98f02d3d3f9b38a8caa5a4b2d4de",
+  "base_sha256": "52a0a3e8fde8f75fc4bee0f2104242c920160cd98acf112e7919a5b8be8dbd76",
+  "profile_sha256": "6b404a72fe8636502287d2a58ae66994e718fb4acce422bf9d919616a74a0d4a",
+  "object_sha256": "21190f9c25866d537028bddbcd1b3ec30280346710849da9ab8bf201bfd19089",
+  "address": "005a2730",
+  "symbol": "?setNullMouseCommand@Workspace@RBX@@QAEXXZ",
+  "size": 43,
+  "exact": true,
+  "calls": {
+    "?setMouseCommand@Workspace@RBX@@QAEXPAVMouseCommand@2@@Z": "0x5a1fc0"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceNullProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceNullProfile.cpp"
+  ]
+}

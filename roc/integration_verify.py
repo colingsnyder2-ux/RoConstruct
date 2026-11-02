@@ -5,10 +5,12 @@ import functools
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
 import threading
+import tempfile
 import time
 import uuid
 from pathlib import Path
@@ -149,7 +151,7 @@ def input_paths(root, live_only=False):
     out = root / "rebuild" / CLIENT / "out"
     paths.extend(p for p in out.glob("*/verified/*") if p.is_file())
     paths.extend(p for p in out.glob("*/*.json") if p.is_file()
-                 and p.name not in ("report.json", "owned-symbols.json"))
+                 and p.name not in ("report.json", "owned-symbols.json", "last-successful-report.json"))
     paths.extend(p for p in out.glob("*/report.json") if p.parent.name != "RbxgsApp")
     paths.extend(p for p in out.glob("*/owned-symbols.json") if p.parent.name != "RbxgsApp")
     for path in sorted((root / "rebuild" / CLIENT / "out").glob("*/linked/*")):
@@ -337,13 +339,14 @@ def collect(root):
 
 
 def other_module_owned(root):
-    """Addresses owned by linked modules other than RbxgsApp (their reports are fixed inputs of a native job)."""
+    """Recount other linked, source-clean, smoke-tested modules with current code/data checks."""
     owned = set()
     for report in (root / "rebuild" / CLIENT / "out").glob("*/report.json"):
         if report.parent.name != "RbxgsApp":
             data = json.loads(report.read_text())
-            if data.get("linked") and not rebuild.source_errors(report.parent, report=data):
-                owned.update(data.get("owned_addrs", []))
+            if data.get("linked") and data.get('test_exit')==0 and not rebuild.source_errors(report.parent, report=data):
+                for obj in (report.parent/'linked').glob('*.obj'):
+                    owned.update(addresses[0] for _,_,addresses in rebuild.pair_object(CLIENT,obj.read_bytes()) if len(addresses)==1)
     return owned
 
 
@@ -382,6 +385,14 @@ def check_credited(root, report, addresses):
     return dict(checked=len(wanted), modules=checked)
 
 
+def _client_baselines(work):
+    try:
+        value=json.loads((work/'accepted-baselines.json').read_text())
+        return value if isinstance(value,dict) else {}
+    except (OSError,ValueError):
+        return {}
+
+
 def linked_preflight(root, patches, output, log=print):
     """Contributor proof uses the independent verifier's snapshots, build and gates."""
     root, output = Path(root), Path(output)
@@ -393,11 +404,24 @@ def linked_preflight(root, patches, output, log=print):
     if dropped:
         raise ValueError("Saved proposals stale; retained for repair: " + json.dumps(dropped))
     key, live = input_hashes(root)
-    cache = root / "work/native-linked-preflight" / key[:20]
+    # Period MSVC silently skips overlong include paths and may pick raw headers
+    # instead of the overlay. Both builds need ordinary, short physical paths.
+    work = Path(os.environ.get('LOCALAPPDATA',tempfile.gettempdir()))/'RoConstruct/verify'/digest(str(root.resolve()))[:12]
+    cache = work / "b" / key[:20]
     cache.parent.mkdir(parents=True, exist_ok=True)
     result_file = cache / "integration-result.json"
     checkpoint = cache / "integration-prepared.json"
-    if result_file.exists() and checkpoint.exists() and json.loads(checkpoint.read_text()) == {"format": 1, "inputs": key}:
+    indexed=_client_baselines(work).get(key)
+    accepted=work/'c'/indexed if isinstance(indexed,str) and re.fullmatch('[0-9a-f]{12}',indexed) else None
+    if accepted and accepted.resolve().is_relative_to((work/'c').resolve()) and all((accepted/name).is_file() for name in ('integration-result.json','integration-linked.json','preflight-receipt.json')) and input_hash(accepted)==key:
+        proof=json.loads((accepted/'preflight-receipt.json').read_text())
+        if proof.get('accepted') is not True or proof.get('overlay_hash')!=digest(base):raise ValueError('Invalid accepted preflight cache')
+        cache=accepted
+        before=json.loads((cache/'integration-result.json').read_text())
+        check_gates(before)
+        before['linked_addresses']=json.loads((cache/'integration-linked.json').read_text())
+        log('Linked preflight baseline: reusing accepted candidate '+str(cache))
+    elif result_file.exists() and checkpoint.exists() and json.loads(checkpoint.read_text()) == {"format": 1, "inputs": key}:
         before = json.loads(result_file.read_text())
     else:
         cache, _ = prepare_baseline(root, cache, key)
@@ -407,7 +431,7 @@ def linked_preflight(root, patches, output, log=print):
         before["linked_addresses"] = json.loads((cache / "integration-linked.json").read_text())
         atomic_json(cache / "integration-result.json", before)
     identifier = uuid.uuid4().hex[:12]
-    candidate = root / 'work/nv' / identifier
+    candidate = work / 'c' / identifier
     evidence = output / ('linked-preflight-' + identifier)
     snapshot(cache, candidate, link=True)
     atomic_json(candidate / "rebuild/2008-06/patches/rbxgs-client.json", combined)
@@ -431,6 +455,9 @@ def linked_preflight(root, patches, output, log=print):
         receipt["accepted"] = True
     except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
         receipt["reason"] = str(error)
+        if isinstance(error,ValueError) and receipt.get('uncovered_losses'):
+            receipt['reason'] += '; lost exact functions: '+','.join(receipt['uncovered_losses'])
+            raise ValueError(receipt['reason']+'; receipt: '+str(candidate/'preflight-receipt.json')) from error
         raise
     finally:
         atomic_json(candidate / "preflight-receipt.json", receipt)
@@ -457,6 +484,45 @@ def apply_source_edits(candidate):
         target.unlink()
         target.write_text(text.replace(old, new, 1), encoding="utf-8")
     return edits
+
+
+def cache_client_accepted(root, base, log=print):
+    """Finalize a local proof only when the server accepted its exact overlay and all inputs still match."""
+    root=Path(root);work=Path(os.environ.get('LOCALAPPDATA',tempfile.gettempdir()))/'RoConstruct/verify'/digest(str(root.resolve()))[:12]
+    candidates=sorted((work/'c').glob('*'),key=lambda p:p.stat().st_mtime,reverse=True)
+    if not candidates:return
+    expected=digest(base['overlay']);key=None
+    index_file=work/'accepted-baselines.json'
+    index=_client_baselines(work)
+    for candidate in candidates:
+        if not re.fullmatch('[0-9a-f]{12}',candidate.name) or not candidate.resolve().is_relative_to((work/'c').resolve()):continue
+        receipt=candidate/'preflight-receipt.json'
+        if not all((candidate/name).is_file() for name in ('preflight-receipt.json','integration-result.json','integration-linked.json','rebuild/2008-06/patches/native-promotions.json','rebuild/2008-06/patches/rbxgs-client.json')):continue
+        try:proof=json.loads(receipt.read_text())
+        except (OSError,ValueError):continue
+        if proof.get('accepted') is not True or proof.get('overlay_hash')!=expected:continue
+        files=[Path('roc')/(name+'.py') for name in NATIVE_CODE]+[Path('rebuild/2008-06/patches/make_rbxgs_client.py')]
+        if any((root/p).exists()!=(candidate/p).exists() or (root/p).is_file() and file_hash(root/p)!=file_hash(candidate/p) for p in files):continue
+        if key is None:key=input_hash(root)
+        if key in index:return
+        ledger=candidate/'rebuild/2008-06/patches/native-promotions.json';overlay=ledger.with_name('rbxgs-client.json')
+        previous_ledger=ledger.read_bytes();previous_overlay=overlay.read_bytes()
+        try:
+            atomic_json(ledger,base['accepted'])
+            run(candidate,['rebuild/2008-06/patches/make_rbxgs_client.py'],candidate/'integration-generator.log')
+            if digest(json.loads(overlay.read_text()))!=expected:raise ValueError('Accepted overlay does not reproduce the local proof')
+            if input_hash(candidate)!=key:
+                log('Accepted local proof has different inputs; fresh baseline required')
+                return
+            check_gates(json.loads((candidate/'integration-result.json').read_text()))
+        except (OSError,ValueError,RuntimeError,subprocess.SubprocessError) as error:
+            ledger.write_bytes(previous_ledger);overlay.write_bytes(previous_overlay)
+            log('Accepted preflight cache not reused: '+str(error))
+            return
+        index[key]=candidate.name
+        atomic_json(index_file,index)
+        log('Accepted local preflight cached for current inputs; no baseline recompilation needed')
+        return
 
 
 def check_gates(result, baseline=None, elsewhere=frozenset(), require_gain=True):

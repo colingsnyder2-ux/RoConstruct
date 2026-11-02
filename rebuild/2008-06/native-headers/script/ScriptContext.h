@@ -91,7 +91,7 @@ namespace RBX
         void executeInNewThread(Security::Identities, const char*, const char*, PushArgumentsClosure pushArguments, ReadResultsClosure readResults);
         Result resume(lua_State* thread, int narg);
         void resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults);
-        void gc()
+        __declspec(noinline) void gc()
         {
             if (globalState)
                 lua_gc(globalState, LUA_GCCOLLECT, 0);

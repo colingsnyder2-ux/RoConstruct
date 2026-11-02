@@ -1,0 +1,68 @@
+{
+  "scope": "Inactive vendor ATL factory and object constructor match. Interface methods, COM map, FinalConstruct, generated vtables, EH data and runtime remain unproven.",
+  "observer_sha256": "6aa3b28dbfdd5a82bddf0fbabb13a6ce8f8463c4c5b10ecdc2f7288be0617e7c",
+  "source_sha256": "a43c9fa93d62aa3f5afdb0660ad90b3baaf016c8363eefba6db0e9d57e8daf8e",
+  "header_sha256": "7c5747b7f367e7a4cccf4f27e379a3ad016f812987468fa0483f8e82a92da386",
+  "profile_sha256": "4d87ba573fb106a06368f96c293089ef274dc092fad7205d8fd89b8242b5b574",
+  "object_sha256": "23bc0a1da5516800e027ba070a818634b51ffdc8e927b92966c8fe30e270ec3b",
+  "address": "00450370",
+  "symbol": "?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z",
+  "size": 209,
+  "relocation_normalized_exact": true,
+  "constructor": {
+    "address": "00401910",
+    "symbol": "??0?$CComObject@VCWorkspace@@@ATL@@QAE@PAX@Z",
+    "size": 68,
+    "relocation_normalized_exact": true
+  },
+  "calls": {
+    "??2@YAPAXI@Z": [
+      "0x6a0920"
+    ],
+    "??0?$CComObject@VCWorkspace@@@ATL@@QAE@PAX@Z": [
+      "0x401910"
+    ],
+    "?FinalConstruct@CWorkspace@@QAEJXZ": [
+      "0x46b5c0"
+    ],
+    "?Delete@CException@@QAEXXZ": [
+      "0x6a0950"
+    ]
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ]
+}

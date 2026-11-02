@@ -8,7 +8,7 @@ from roc import native_sweep as sweep
 
 @lru_cache(maxsize=32)
 def methods(text):
-    result=dict(sweep.methods(text));found=defaultdict(list)
+    result=dict(sweep._method_spans(text,overloads=True));found=defaultdict(list)
     clean=sweep.masked_cpp(text)
     for owner in re.finditer(r'\b(class|struct)\s+(?:__declspec\([^)]*\)\s+)?(\w+)\s*(?:\bfinal\s*)?(?::[^;{]+)?\{',clean):
         begin=owner.end();finish=sweep.closing(clean,begin-1,'{','}')
@@ -33,7 +33,24 @@ def methods(text):
             cursor=sweep.closing(clean,at,'{','}')+1
     for method,spans in found.items():
         if method not in result and len(spans)==1:result[method]=spans[0]
+        elif len(spans)>1:
+            signatures=defaultdict(list)
+            for start,stop in spans:
+                brace=clean.index('{',start)
+                signature=method.rsplit('::',1)[0]+'::'+' '.join(clean[start:brace].split())
+                signatures[signature].append((start,stop))
+            result.update((signature,items[0]) for signature,items in signatures.items() if len(items)==1)
     return result
+
+
+def span(text,method):
+    found=methods(text).get(method)
+    if found or '(' not in method:return found
+    # A returned body fragment has no sibling overload to make its name ambiguous.
+    found=methods(text).get(method.split('(',1)[0])
+    if found:
+        clean=sweep.masked_cpp(text);brace=clean.index('{',found[0])
+        if ' '.join(clean[found[0]:brace].split())==method:return found
 
 
 def body_edits(before,after,method):
@@ -71,12 +88,12 @@ def validation_edits(edits):
 
 def canonical_edits(native,body,method):
     """Transfer a body across identically typed, named parameters; keep canonical declarations."""
-    original=sweep.methods(native);returned=sweep.methods(body)
-    if method not in original or method not in returned:raise ValueError('Missing canonical method')
-    a,b=original[method];c,d=returned[method]
+    original=span(native,method);returned=span(body,method)
+    if original is None or returned is None:raise ValueError('Missing canonical method')
+    a,b=original;c,d=returned
     old=sweep.masked_cpp(native);new=sweep.masked_cpp(body)
     brace=old.index('{',a);new_brace=new.index('{',c)
-    if re.sub(r'\s+','',old[a:brace])==re.sub(r'\s+','',new[c:new_brace]):return sweep.method_edits(native,body,method)
+    if re.sub(r'\s+','',old[a:brace])==re.sub(r'\s+','',new[c:new_brace]):return [[native[a:b],native[a:brace]+body[new_brace:d]]]
     def parameters(clean,start):
         opening=clean.index('(',start);end=sweep.closing(clean,opening,'(',')')
         text=clean[opening+1:end].strip()
@@ -98,4 +115,4 @@ def canonical_edits(native,body,method):
         name=token[0];prefix=clean[:token.start()].rstrip()
         if name in rename and not prefix.endswith(('.', '->', '::')):edits.append((token.start(),token.end(),rename[name]))
     for start,end,name in reversed(edits):expression=expression[:start]+name+expression[end:]
-    return sweep.method_edits(native,native[a:brace]+expression,method)
+    return [[native[a:b],native[a:brace]+expression]]

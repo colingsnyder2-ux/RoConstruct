@@ -1,0 +1,33 @@
+{
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "4446bba34f67808d754da233b24b773b88c5a1670ee2195c38dac8f57b8b96ae",
+  "startup": "0x58c620",
+  "service_vtable": "0x8318bc",
+  "events": [
+    {
+      "name": "DescendantAdded",
+      "storage": "0x973e40",
+      "initializer": "0x7f2b50",
+      "callback_thunk": "0x587240",
+      "vtable_slot": 16,
+      "callback": "0x58b870"
+    },
+    {
+      "name": "DescendantRemoving",
+      "storage": "0x973ca0",
+      "initializer": "0x7f2b70",
+      "callback_thunk": "0x587280",
+      "vtable_slot": 17,
+      "callback": "0x58b970"
+    },
+    {
+      "name": "ItemChanged",
+      "storage": "0x9751b0",
+      "initializer": "0x7f3440",
+      "callback_thunk": "0x587290",
+      "vtable_slot": 18,
+      "callback": "0x58ba70"
+    }
+  ],
+  "scope": "Original PE evidence only. Signal types, context ownership, callback bodies and runtime integration remain unverified."
+}

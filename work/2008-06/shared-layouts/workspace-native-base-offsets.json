@@ -1,0 +1,114 @@
+{
+  "scope": "Inactive candidate base conversions match original RTTI; full Workspace lifetime and live ABI remain unproven.",
+  "observer_sha256": "93489e121dc676e8fea976b56f9d95462655829c71062b5f822db8779ef71872",
+  "source_sha256": "f18d7d2b24638b1315becd7fecd4e4b2ce9fa131269439c6d2516cf4bd4e03cc",
+  "model_header_sha256": "251179898656bc9ac383dc3004d49b46b7dd7931f7c4266e95746b015ccc7365",
+  "rtti_sha256": "62e62c283fd71927a1d679c1acbc2f4c4fd60614d33dcf8b9962fd4d0cdcc224",
+  "object_sha256": "e1d82b7bc211bb206d2588de6ea9e884e855a2b8046d811abb1ccf53f47b79e9",
+  "rows": [
+    {
+      "base": "guiOffset",
+      "candidate_offset": "0x2e8",
+      "original_offset": "0x2e8",
+      "delta": 0
+    },
+    {
+      "base": "verbOffset",
+      "candidate_offset": "0x2ec",
+      "original_offset": "0x2ec",
+      "delta": 0
+    },
+    {
+      "base": "movingOffset",
+      "candidate_offset": "0x314",
+      "original_offset": "0x314",
+      "delta": 0
+    },
+    {
+      "base": "scriptOffset",
+      "candidate_offset": "0x340",
+      "original_offset": "0x340",
+      "delta": 0
+    },
+    {
+      "base": "drawOffset",
+      "candidate_offset": "0x344",
+      "original_offset": "0x344",
+      "delta": 0
+    },
+    {
+      "base": "toolOffset",
+      "candidate_offset": "0x364",
+      "original_offset": "0x364",
+      "delta": 0
+    },
+    {
+      "base": "heartbeatOffset",
+      "candidate_offset": "0x384",
+      "original_offset": "0x384",
+      "delta": 0
+    },
+    {
+      "base": "cameraOffset",
+      "candidate_offset": "0x288",
+      "original_offset": "0x288",
+      "delta": 0
+    },
+    {
+      "base": "renderOffset",
+      "candidate_offset": "0x1a0",
+      "original_offset": "0x1a0",
+      "delta": 0
+    },
+    {
+      "base": "controllableOffset",
+      "candidate_offset": "0x130",
+      "original_offset": "0x130",
+      "delta": 0
+    },
+    {
+      "base": "childNotifierOffset",
+      "candidate_offset": "0x24",
+      "original_offset": "0x24",
+      "delta": 0
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceBaseOffsetsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorkspaceBaseOffsetsTrial.cpp"
+  ]
+}

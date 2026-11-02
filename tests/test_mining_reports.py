@@ -6,8 +6,7 @@ import pytest
 from roc import reports, server, worker
 
 
-@pytest.mark.parametrize("automatic", [False, True])
-def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
+def test_mixed_clients_send_separate_messages(monkeypatch):
     store = Mock()
     store.display_progress.side_effect = lambda client: (8, 10, 80, 100) if client == "2008-06" else (2, 20, 20, 200)
     store.digest_progress.return_value = (20, 20, 40, 100)
@@ -25,7 +24,7 @@ def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
 
     monkeypatch.setattr(reports.threading, "Thread", ImmediateThread)
     monkeypatch.setattr(reports, "_post", lambda url, payload: sent.append(payload))
-    log = reports.MineLog("unused", store, server=automatic)
+    log = reports.MineLog("unused", store)
     events = [dict(job=dict(client=client, addr=addr, unit="unit", size=10), user=user,
                    worker=user, model=model, score=score, points=10)
               for client, addr, user, model, score in [
@@ -39,7 +38,7 @@ def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
     assert "2012-06 Client" in second["description"] and "2 / 20 matched" in second["description"]
     assert "00800001" in str(first) and "00800002" in str(first) and "01200001" not in str(first)
     assert "01200001" in str(second) and "008000" not in str(second) and "colin" not in str(second)
-    assert first["fields"][-1]["name"] == ("🔧 Functions" if automatic else "🔧 Models")
+    assert first["fields"][-1]["name"] == "🔧 Models"
     assert "gpt-6.1-sol" in str(first) and "gpt-6.1-sol" not in str(second)
     assert "negative_squared_cross_mark" not in str(sent) and "❎" not in str(sent)
     assert ":yellow_square:" in first["description"] and "🟨 partial" in first["description"]
@@ -47,9 +46,8 @@ def test_mixed_clients_send_separate_messages(monkeypatch, automatic):
     assert "🟡" in first["fields"][1]["value"]
     assert first["fields"][2]["value"] == "**1 functions/hr** · **10 B/hr** *(last 6h)* · byte ETA 2h 0m"
     assert second["fields"][2]["value"].endswith("byte ETA 18h 0m")
-    if not automatic:
-        assert first["fields"][3]["value"] == "**colin** · 100 pts *(+10)*\n**intel** · 100 pts *(+10)*"
-        assert "workers in batch" not in str(first) and "worker in batch" not in str(first)
+    assert first["fields"][3]["value"] == "**colin** · 100 pts *(+10)*\n**intel** · 100 pts *(+10)*"
+    assert "workers in batch" not in str(first) and "worker in batch" not in str(first)
     assert store.match_rate.call_args_list[0].args == ("2008-06", 21600)
     assert store.match_rate.call_args_list[1].args == ("2012-06", 21600)
     assert store.match_byte_rate.call_args_list[0].args == ("2008-06", 21600)

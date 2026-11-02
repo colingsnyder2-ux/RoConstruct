@@ -1,6 +1,16 @@
 from roc import rebuild_audit as audit
 
 
+def test_object_pairing_filters_wrong_data_even_when_code_was_unique(monkeypatch):
+    rebuild=audit.rebuild
+    monkeypatch.setattr(rebuild.match,'coff_functions',lambda obj:[('f',b'code',[])])
+    monkeypatch.setattr(rebuild,'pair',lambda *a:[('f',36,['good','bad']),('wrong',36,['bad']),('unknown',36,['good','twin'])])
+    monkeypatch.setattr(rebuild.match,'coff_data_refs',lambda *a:[(0,b'Type',[])])
+    monkeypatch.setattr(rebuild.match,'target',lambda client,addr:(addr.encode(),[],{}))
+    monkeypatch.setattr(rebuild.match,'data_check',lambda client,addr,code,refs:([],['wrong type'] if addr=='bad' else []))
+    assert rebuild.pair_object('test',b'obj')==[('f',36,['good']),('wrong',36,[]),('unknown',36,['good','twin'])]
+
+
 def test_namespace_function_is_not_a_class():
     assert audit.scope('?f@RBX@@YAXXZ') is None
     assert audit.scope('?f@Thing@RBX@@QAEXXZ') == 'RBX::Thing'
@@ -93,7 +103,7 @@ def test_status_per_kind_uses_linked_set_not_failed_report_counts(tmp_path, monk
     modules = workspace / 'modules'
     modules.mkdir(parents=True)
     for name, linked, addrs in [('Good', True, ['a', 'b']), ('Bad', False, ['b', 'c'])]:
-        (modules / (name + '.json')).write_text(json.dumps({'name': name}))
+        (modules / (name + '.json')).write_text(json.dumps({'name': name,'layers':[]}))
         out = workspace / 'out' / name
         (out / 'linked').mkdir(parents=True)
         (out / 'report.json').write_text(json.dumps({'linked': linked, 'test_exit': 0 if linked else None,
@@ -101,6 +111,7 @@ def test_status_per_kind_uses_linked_set_not_failed_report_counts(tmp_path, monk
         (out / 'linked/a.obj').write_bytes(b'object')
     monkeypatch.setattr(rebuild, 'ROOT', tmp_path)
     monkeypatch.setattr(rebuild.match, 'coff_functions', lambda _: [])
+    monkeypatch.setattr(rebuild.match, 'coff_data_refs', lambda *a: [])
     monkeypatch.setattr(rebuild, 'pair', lambda *_: [('one', 20, ['a']), ('twins', 20, ['b', 'c'])])
     monkeypatch.setattr(rebuild.match, '_functions', lambda _: {'a': {'kind': 'code'}})
     monkeypatch.setattr(rebuild, 'progress', lambda *_, **kw: None)

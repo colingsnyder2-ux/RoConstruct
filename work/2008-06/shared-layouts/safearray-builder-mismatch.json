@@ -1,0 +1,130 @@
+{
+  "scope": "Inactive builder mismatch; do not link or run. Original ATL GetAt matches; builder and Reflection::Value conversion remain unproven.",
+  "observer_sha256": "050a815742e4e592533890e61ff5aad039d1a85fdf27946fdfb8a2f36a792661",
+  "source_sha256": "69a64655111042068a99503b4e3934e08e3ef9622c52bd5e6cf97dc54bfbf218",
+  "object_sha256": "e28d83361d7481dd82fbabd73135040337c6731b2a2855b596c000951b6e44a1",
+  "builder": {
+    "address": "004165e0",
+    "symbol": "?makeSafeArray@@YAPAUtagSAFEARRAY@@PAV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@Z",
+    "candidate_size": 189,
+    "original_size": 168,
+    "exact": false
+  },
+  "accessor": {
+    "address": "00415b00",
+    "symbol": "?GetAt@?$CComSafeArray@UtagVARIANT@@$0M@@ATL@@QAEAAVCComVariant@2@J@Z",
+    "size": 135,
+    "exact": true,
+    "bindings": {
+      "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000",
+      "__imp__SafeArrayGetLBound@12": "0x802918",
+      "__imp__SafeArrayGetUBound@12": "0x802914"
+    }
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeSafeArrayMismatch.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeSafeArrayMismatch.cpp"
+  ],
+  "value_converter": {
+    "address": "00416370",
+    "type_checks": [
+      {
+        "address": "0x415d10",
+        "descriptor": "0x92bef8",
+        "type": ".?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@"
+      },
+      {
+        "address": "0x415d30",
+        "descriptor": "0x92bf44",
+        "type": ".?AVContentId@RBX@@"
+      },
+      {
+        "address": "0x415d50",
+        "descriptor": "0x92bf60",
+        "type": ".?AV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@"
+      }
+    ],
+    "nested_array_target": "0x4165e0",
+    "note": "Original nested type is vector<Reflection::Value>, not vector<Instance> from mined stub."
+  },
+  "unchecked_vector_trial": {
+    "flags": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeSafeArrayMismatch.cpp",
+      "/D_SECURE_SCL=0",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeSafeArrayUncheckedTrial.obj"
+    ],
+    "object_sha256": "4866ed2d44b17330302a0f52c6ff649a468b67c699b5aba84a7488c6acbce6b0",
+    "candidate_size": 166,
+    "original_size": 168,
+    "exact": false,
+    "note": "Unchecked profile uses vector storage at +4/+8; original accesses +0xc/+0x10. This ABI change is not a valid integration."
+  }
+}

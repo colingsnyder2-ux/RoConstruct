@@ -1,0 +1,378 @@
+{
+  "source_sha256": "9c245a5ad570e642d2df8cd1314d7b6f838dedf9f22151f4453ba311452d77d6",
+  "header_sha256": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
+  "observer_sha256": "51b30f9d2d2dff6ce26d4ccf66a99e2acdbed9b3de8e725844247cd91bd0247b",
+  "object_sha256": "3defcf9869deda16306420a05d95468f8301374a62ddd2cd34d3856c1a98e5fc",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawMapOperationsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawMapOperationsTrial.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0x46cac0",
+      "symbol": "??0LDraw2RobloxColorMap@LDraw2Lua@RBX@@QAE@HH@Z",
+      "size": 25,
+      "bindings": {
+        "??_7LDraw2RobloxColorMap@LDraw2Lua@RBX@@6B@": [
+          "0x81c8b8"
+        ]
+      }
+    },
+    {
+      "address": "0x46e970",
+      "symbol": "??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@HHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+      "size": 136,
+      "bindings": {
+        "__ehhandler$??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@HHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": [
+          "0x7c3f1e"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": [
+          "0x80245c",
+          "0x80245c"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468",
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "address": "0x46e6b0",
+      "symbol": "??0LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00H@Z",
+      "size": 216,
+      "bindings": {
+        "__ehhandler$??0LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00H@Z": [
+          "0x7c3eb7"
+        ],
+        "??_7LDraw2RobloxPartMap@LDraw2Lua@RBX@@6B@": [
+          "0x81c9f8"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": [
+          "0x80245c",
+          "0x80245c",
+          "0x80245c"
+        ],
+        "??2@YAPAXI@Z": [
+          "0x6a0920"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468",
+          "0x802468",
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "address": "0x46e960",
+      "symbol": "?addPart@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAEXABUNativeRobloxPart@23@@Z",
+      "size": 8,
+      "bindings": {
+        "?push_back@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAEXABUNativeRobloxPart@LDraw2Lua@RBX@@@Z": [
+          "0x46e8e0"
+        ]
+      }
+    },
+    {
+      "address": "0x46d010",
+      "symbol": "?findColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxColorMap@23@H@Z",
+      "size": 102,
+      "bindings": {
+        "?find@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABH@Z": [
+          "0x5b3990"
+        ],
+        "__imp___invalid_parameter_noinfo": [
+          "0x802890"
+        ]
+      }
+    },
+    {
+      "address": "0x46e790",
+      "symbol": "??1LDraw2RobloxPartMap@LDraw2Lua@RBX@@UAE@XZ",
+      "size": 112,
+      "bindings": {
+        "__ehhandler$??1LDraw2RobloxPartMap@LDraw2Lua@RBX@@UAE@XZ": [
+          "0x7c3ef4"
+        ],
+        "??_7LDraw2RobloxPartMap@LDraw2Lua@RBX@@6B@": [
+          "0x81c9f8"
+        ],
+        "??1?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAE@XZ": [
+          "0x46e3c0"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468",
+          "0x802468",
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "address": "0x46cae0",
+      "symbol": "??_GLDraw2RobloxColorMap@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "bindings": {
+        "??_7LDraw2RobloxColorMap@LDraw2Lua@RBX@@6B@": [
+          "0x81c8b8"
+        ],
+        "??3@YAXPAX@Z": [
+          "0x6a067a"
+        ]
+      }
+    },
+    {
+      "address": "0x46e8c0",
+      "symbol": "??_GLDraw2RobloxPartMap@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "bindings": {
+        "??1LDraw2RobloxPartMap@LDraw2Lua@RBX@@UAE@XZ": [
+          "0x46e790"
+        ],
+        "??3@YAXPAX@Z": [
+          "0x6a067a"
+        ]
+      }
+    },
+    {
+      "address": "0x46cb00",
+      "symbol": "?getFilename@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 33,
+      "bindings": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": [
+          "0x80245c"
+        ]
+      }
+    },
+    {
+      "address": "0x46d0a0",
+      "symbol": "?findPart@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 102,
+      "bindings": {
+        "?find@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": [
+          "0x696f30"
+        ],
+        "__imp___invalid_parameter_noinfo": [
+          "0x802890"
+        ]
+      }
+    },
+    {
+      "address": "0x46d480",
+      "symbol": "?addPartMap@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEXPAVLDraw2RobloxPartMap@23@@Z",
+      "size": 243,
+      "bindings": {
+        "__ehhandler$?addPartMap@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEXPAVLDraw2RobloxPartMap@23@@Z": [
+          "0x7ce709"
+        ],
+        "?getFilename@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": [
+          "0x46cb00"
+        ],
+        "__imp_?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": [
+          "0x80246c",
+          "0x80246c"
+        ],
+        "__imp_?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": [
+          "0x802354"
+        ],
+        "__imp__tolower": [
+          "0x802800"
+        ],
+        "??$_Transform@PADV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@P6AHH@Z@std@@YA?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAD0V10@P6AHH@ZUrandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+          "0x46cfa0"
+        ],
+        "?findPart@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+          "0x46d0a0"
+        ],
+        "??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@@std@@QAEAAPAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": [
+          "0x671910"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "address": "0x46d110",
+      "symbol": "?findPartCaseInsensitive@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 215,
+      "bindings": {
+        "__ehhandler$?findPartCaseInsensitive@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+          "0x7ce709"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": [
+          "0x80245c"
+        ],
+        "__imp_?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": [
+          "0x80246c",
+          "0x80246c"
+        ],
+        "__imp_?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": [
+          "0x802354"
+        ],
+        "__imp__tolower": [
+          "0x802800"
+        ],
+        "??$_Transform@PADV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@P6AHH@Z@std@@YA?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAD0V10@P6AHH@ZUrandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+          "0x46cfa0"
+        ],
+        "?findPart@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+          "0x46d0a0"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "address": "0x46e370",
+      "symbol": "?getPart@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAEPAUNativeRobloxPart@23@XZ",
+      "size": 27,
+      "bindings": {
+        "?at@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAEAAUNativeRobloxPart@LDraw2Lua@RBX@@I@Z": [
+          "0x46e280"
+        ]
+      }
+    },
+    {
+      "address": "0x46d080",
+      "symbol": "?mapColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHH@Z",
+      "size": 28,
+      "bindings": {
+        "?findColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxColorMap@23@H@Z": [
+          "0x46d010"
+        ]
+      }
+    },
+    {
+      "address": "0x46cb80",
+      "symbol": "?readFidelity@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 241,
+      "bindings": {
+        "__ehhandler$?readFidelity@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+          "0x7c3c6b"
+        ],
+        "??_C@_05FNPODCFG@exact?$AA@": [
+          "0x81c8d0"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+          "0x802458",
+          "0x802458"
+        ],
+        "?stringCompareNoCase@@YAHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": [
+          "0x46f9f0",
+          "0x46f9f0"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468",
+          "0x802468",
+          "0x802468",
+          "0x802468"
+        ],
+        "??_C@_05LBOHBHFK@close?$AA@": [
+          "0x81c8c8"
+        ]
+      }
+    },
+    {
+      "address": "0x46cc80",
+      "symbol": "?readShape@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 344,
+      "bindings": {
+        "__ehhandler$?readShape@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+          "0x7c3c44"
+        ],
+        "??_C@_04NBDAKKEG@ball?$AA@": [
+          "0x81c8e4"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+          "0x802458",
+          "0x802458",
+          "0x802458"
+        ],
+        "?stringCompareNoCase@@YAHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": [
+          "0x46f9f0",
+          "0x46f9f0",
+          "0x46f9f0"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468",
+          "0x802468",
+          "0x802468",
+          "0x802468",
+          "0x802468",
+          "0x802468"
+        ],
+        "??_C@_05PIBOEKAB@block?$AA@": [
+          "0x812bb8"
+        ],
+        "??_C@_08GNLJBPEP@cylinder?$AA@": [
+          "0x81c8d8"
+        ]
+      }
+    },
+    {
+      "address": "0x46cde0",
+      "symbol": "?readFormFactor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 241,
+      "bindings": {
+        "__ehhandler$?readFormFactor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+          "0x7c3c6b"
+        ],
+        "??_C@_09GAAPDMOJ@symmetric?$AA@": [
+          "0x81c8f4"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+          "0x802458",
+          "0x802458"
+        ],
+        "?stringCompareNoCase@@YAHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": [
+          "0x46f9f0",
+          "0x46f9f0"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468",
+          "0x802468",
+          "0x802468",
+          "0x802468"
+        ],
+        "??_C@_05CKFDMDO@brick?$AA@": [
+          "0x81c8ec"
+        ]
+      }
+    }
+  ],
+  "scope": "Inactive trial. RTTI, template identities, copy semantics, linked exception metadata and runtime remain unproven."
+}

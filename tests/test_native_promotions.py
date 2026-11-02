@@ -17,7 +17,7 @@ def host(tmp_path):
     (folder/'abi-evidence.json').write_text(json.dumps({'RBX::Clothing': dict(alloc_sizes={'0x174': ['00500000']})}))
     db = sqlite3.connect(':memory:', check_same_thread=False)
     db.executescript(integration.SCHEMA)
-    result = SimpleNamespace(root=root, directory=root/'work/integration',
+    result = SimpleNamespace(root=root, source_root=root, directory=root/'work/integration',
         store=SimpleNamespace(lock=threading.RLock(), db=db), baseline=lambda: dict(revision='baseline'), wake=threading.Event())
     yield result
     db.close()

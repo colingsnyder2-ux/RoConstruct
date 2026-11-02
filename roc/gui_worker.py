@@ -357,7 +357,7 @@ def native_loop(config, control, emit):
                 emit('benchmark',workers=control.workers,completed=control.completed,matched=control.matched,improved=0,errors=control.errors)
                 with control.budget._lock:
                     emit('usage', requests=control.budget.requests, tokens=control.budget.tokens, cost=None)
-                    exhausted = any(limit is not None and used >= limit for used, limit in (
+                    exhausted = getattr(control,'native_budget_blocked',False) or any(limit is not None and used >= limit for used, limit in (
                         (control.budget.requests,control.budget.max_requests),(control.budget.tokens,control.budget.max_tokens)))
                 if exhausted and (summary.get('remote_pending') or summary.get('integration_pending')):
                     emit('stage',message='AI budget reached; finishing queued host checks/submissions without more AI calls')
@@ -500,11 +500,12 @@ def main(initial=None, receive_commands=True):
             if initial.get("terminal"):
                 slot = "w%d" % (fields["slot"] + 1) if "slot" in fields else "roc"
                 if event == "native_result":
-                    print("[%s] %s +%d local exact (awaiting verification) | %.1fs%s" % (
-                        slot, fields["file"], fields["local_exact"], fields["seconds"],
+                    state='awaiting verification' if fields['local_exact'] else 'blocked' if fields.get('error') else 'no local gain'
+                    print("[%s] %s +%d local exact (%s) | %.1fs%s" % (
+                        slot, fields["file"], fields["local_exact"], state, fields["seconds"],
                         " | " + fields["error"] if fields.get("error") else ""), flush=True)
                 elif event == "native_started":
-                    print("[%s] %s | baseline" % (slot, fields["file"]), flush=True)
+                    print("[%s] %s | recovery started" % (slot, fields["file"]), flush=True)
                 elif event == 'native_partial':
                     print('[%s] %s %s | partial %.3f%% -> %.3f%% | local search, no exact credit' % (
                         slot, fields['file'], fields['addr'], fields['previous'], fields['score']), flush=True)

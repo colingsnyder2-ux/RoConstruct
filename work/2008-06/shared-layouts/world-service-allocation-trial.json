@@ -1,0 +1,89 @@
+{
+  "scope": "Inactive typed service factories match; class layouts, cache/once identity, constructors and runtime ABI remain unproven.",
+  "observer_sha256": "7e362a7b67610ca4cc836bf400c19a2d24549cae2d221c57e921988d60e06d88",
+  "source_sha256": "fbbb5a1a94c0e7628086425a011528fee50b6681c8c06977f7b116a358b57360",
+  "object_sha256": "2460ac89f174da487a7d6904a509db19217bc24461d3af5157401a96c0446852",
+  "methods": [
+    {
+      "class": "JointsService",
+      "address": "004b3a50",
+      "symbol": "??$create@VJointsService@RBX@@@ServiceProvider@RBX@@QBEPAVJointsService@1@XZ",
+      "size": 228,
+      "exact": true,
+      "calls": {
+        "??$find@VJointsService@RBX@@@ServiceProvider@RBX@@QBEPAVJointsService@1@XZ": "0x4b34c0",
+        "??$create@VJointsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VJointsService@RBX@@@boost@@XZ": "0x4b0df0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@VJointsService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x4ab4d0",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+      }
+    },
+    {
+      "class": "PhysicsService",
+      "address": "004cd7e0",
+      "symbol": "??$create@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ",
+      "size": 228,
+      "exact": true,
+      "calls": {
+        "??$find@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ": "0x4ccca0",
+        "??$create@VPhysicsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPhysicsService@RBX@@@boost@@XZ": "0x4cd760",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x4c9be0",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/DWORLD_ALLOCATION_PROFILE",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldServiceAllocationTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorldServiceFactoriesTrial.cpp"
+  ],
+  "allocation": {
+    "address": "004cd760",
+    "symbol": "??$create@VPhysicsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPhysicsService@RBX@@@boost@@XZ",
+    "candidate_size": 120,
+    "original_size": 120,
+    "exact": true,
+    "allocation_size": "0x158",
+    "calls": {
+      "??0PhysicsService@RBX@@QAE@XZ": "0x4cd5b0",
+      "??$?0VPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VPhysicsService@RBX@@@boost@@QAE@PAVPhysicsService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x4cb0c0"
+    }
+  }
+}

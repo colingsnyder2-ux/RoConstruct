@@ -1,0 +1,24 @@
+#include <afxwin.h>
+#include <atlbase.h>
+#include <stdexcept>
+#include "CRobloxDoc.h"
+#include "CWorkspace.h"
+#include "util/FileSystem.h"
+
+static CString copyDocument(CRobloxDoc* doc, const char* suffix)
+{
+    CString result;
+    GetShortPathNameA(RBX::FileSystem::getUserAppDataDirectory(true, "Test").c_str(), result.GetBuffer(MAX_PATH), MAX_PATH);
+    result.ReleaseBuffer();
+    result += suffix;
+    result += ".rbxl";
+    if (doc->workspace->SaveToFile(ATL::CComBSTR(result)) != S_OK)
+        throw std::runtime_error("Failed to copy document");
+    return result;
+}
+
+// Diagnostic bridge only; the original calls copyDocument directly.
+CString documentUrl(CRobloxDoc* doc, const char* suffix)
+{
+    return copyDocument(doc, suffix);
+}

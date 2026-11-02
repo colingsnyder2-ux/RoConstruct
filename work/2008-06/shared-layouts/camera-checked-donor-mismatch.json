@@ -1,0 +1,83 @@
+{
+  "source_sha256": "1d334d2cd6148b9abe014e98e849f4e7125755b695e379dbc4b7d1e5c122b1b1",
+  "observer_sha256": "5c8a6ac1e6a4ebed350f4c03d5270e66889923446fa148558b444ec4154ef94b",
+  "object_sha256": "fae251691756beab3b26640ffd638e6057d8d5cdba6eb2e97db4920882d5940f",
+  "headers": {
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "7a48e0178f955854b8a4c16c06476388e4ffcbc1f171a97886379fadaaa3d0cd",
+    "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Workspace.h": "2ed391867e49e12497e567740dccb42655e413d90112d7f918a8b9d1fe2beb07",
+    "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Camera.h": "7202b59835afb56f64751779bd1a282fae37130f5f57c9a01fdecbdbe0a428ce"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeCameraCheckedTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeCameraCheckedTrial.cpp"
+  ],
+  "methods": [
+    {
+      "class": "AttachCameraCommand",
+      "address": "0057dcb0",
+      "size": 35,
+      "donor_workspace_interface": "0x270",
+      "original_workspace_interface": "0x288",
+      "normalization_only_matches": true
+    },
+    {
+      "class": "TrackCameraCommand",
+      "address": "0057dce0",
+      "size": 35,
+      "donor_workspace_interface": "0x270",
+      "original_workspace_interface": "0x288",
+      "normalization_only_matches": true
+    },
+    {
+      "class": "FollowCameraCommand",
+      "address": "0057dd10",
+      "size": 35,
+      "donor_workspace_interface": "0x270",
+      "original_workspace_interface": "0x288",
+      "normalization_only_matches": true
+    },
+    {
+      "class": "WatchCameraCommand",
+      "address": "0057dd40",
+      "size": 35,
+      "donor_workspace_interface": "0x270",
+      "original_workspace_interface": "0x288",
+      "normalization_only_matches": true
+    }
+  ],
+  "scope": "Mismatch evidence only; normalization is not compiled or linked. Workspace constructor/destructor and interface offsets require native layout proof."
+}

@@ -1,0 +1,352 @@
+{
+  "source_sha256": "045e093db31b888e4cef6596e8e79888f242dd58cc73ae7161511bd8925ef935",
+  "donor_sha256": "05d53f96904e98c864b1661ca7c6f747630fac54f7d5df17f7487b6fe013b767",
+  "observer_sha256": "7cbf5cf198272ffc79ea49e845a88c9768b4ff6b62a5bb4b09425134c4f2eb5d",
+  "trial_header_sha256": "2f9877106b811874a640568fce26427c79ff696d1846e7f4a444c8fdf2362d03",
+  "profiles": [
+    {
+      "profile": "donor",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeInstanceDescendant-donor.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceDescendantEvents.cpp"
+      ],
+      "methods": [
+        {
+          "address": "0055ae20",
+          "symbol": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+          "candidate_size": 97,
+          "original_size": 97,
+          "match": false
+        },
+        {
+          "address": "0055ae90",
+          "symbol": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+          "candidate_size": 242,
+          "original_size": 241,
+          "match": false
+        }
+      ]
+    },
+    {
+      "profile": "size",
+      "flags": [
+        "/nologo",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\descendant-event-trial",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeInstanceDescendant-size.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceDescendantEvents.cpp"
+      ],
+      "methods": [
+        {
+          "address": "0055ae20",
+          "symbol": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+          "candidate_size": 97,
+          "original_size": 97,
+          "match": true
+        },
+        {
+          "address": "0055ae90",
+          "symbol": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+          "candidate_size": 289,
+          "original_size": 241,
+          "match": false
+        }
+      ]
+    },
+    {
+      "profile": "size-no-unwind",
+      "flags": [
+        "/nologo",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\descendant-event-match",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/DNATIVE_DESCENDANT_REMOVE_ONLY",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeInstanceDescendantThrow.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceDescendantEvents.cpp"
+      ],
+      "methods": [
+        {
+          "address": "0055ae90",
+          "original_size": 241,
+          "candidate_sizes": [
+            241
+          ],
+          "match": true,
+          "targets": {
+            "?event_descendentRemoving@Instance@": "0x973ca0",
+            "?fire@?$SignalDescImpl@": "0x49d200",
+            "??$shared_from@VInstance@": "0x618a40",
+            "?raise@?$Notifier@": "0x558660"
+          },
+          "original_vtable_slot": "0x8318d4"
+        },
+        {
+          "address": "0049d200",
+          "original_size": 175,
+          "candidate_sizes": [
+            124
+          ],
+          "match": false
+        },
+        {
+          "address": "00558660",
+          "original_size": 202,
+          "candidate_sizes": [
+            273,
+            205
+          ],
+          "match": false
+        }
+      ]
+    },
+    {
+      "profile": "added-no-unwind",
+      "flags": [
+        "/nologo",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\descendant-event-match",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/DNATIVE_DESCENDANT_ADD_ONLY",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeInstanceDescendantAddTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceDescendantEvents.cpp"
+      ],
+      "methods": [
+        {
+          "address": "0055ae20",
+          "symbol": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+          "match": true,
+          "targets": {
+            "??0DescendantAdded@": "0x558910",
+            "?raise@?$Notifier@": "0x557e80",
+            "??$shared_from@VInstance@": "0x618a40",
+            "?event_descendentAdded@Instance@": "0x973e40",
+            "?fire@?$SignalDescImpl@": "0x49d200"
+          },
+          "original_vtable_slot": "0x8318d0"
+        },
+        {
+          "address": "00558910",
+          "symbol": "??0DescendantAdded@RBX@@QAE@PAVInstance@1@0@Z",
+          "match": true
+        }
+      ]
+    }
+  ],
+  "helper_source_sha256": "0f20408f1b5d950cac2e25ddc55a6f496c3fd841e13ff24778d6586e8cbd7df6",
+  "helper_object_sha256": "cf9738254075437b753ea1278fb8037779a53df3ee292ea2eb713ea5fd52d458",
+  "helper_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDescendantHelpersTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDescendantHelpersTrial.cpp"
+  ],
+  "exact_helpers": [
+    {
+      "address": "0049d200",
+      "symbol": "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 175,
+      "calls": [
+        {
+          "symbol": "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z",
+          "target": "0x56b620"
+        },
+        {
+          "symbol": "??R?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@V?$shared_ptr@VInstance@RBX@@@1@@Z",
+          "target": "0x49cd00"
+        }
+      ]
+    },
+    {
+      "address": "00558660",
+      "symbol": "?raise@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@IBEXUDescendantRemoving@2@@Z",
+      "size": 202,
+      "calls": [
+        {
+          "symbol": "?raise@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@IBEXUDescendantRemoving@2@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z",
+          "target": "0x557c40"
+        },
+        {
+          "symbol": "??1DescendantRemoving@RBX@@QAE@XZ",
+          "target": "0x422c60"
+        }
+      ]
+    },
+    {
+      "address": "00557e80",
+      "symbol": "?raise@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@IBEXUDescendantAdded@2@@Z",
+      "size": 202,
+      "calls": [
+        {
+          "symbol": "?raise@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@IBEXUDescendantAdded@2@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
+          "target": "0x557780"
+        },
+        {
+          "symbol": "??1DescendantAdded@RBX@@QAE@XZ",
+          "target": "0x422c60"
+        }
+      ]
+    }
+  ],
+  "added_object_sha256": "a733f6e068f6db1ff8a2114da140cbe1efaaf19ffd47f879e4b29ae2863986f3",
+  "scope": "Inactive mixed-profile trial: callback and separate helper bodies match, but COMDAT selection, target data and runtime ABI remain unproven."
+}

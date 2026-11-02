@@ -1,0 +1,173 @@
+{
+  "scope": "Inactive Decal/Texture constructors, base constructor chains and actual original deletion chain match; full virtual identity and runtime ownership remain unproven.",
+  "source_sha256": "967d3293a2b2bdab4c4bd92bc0c92a034f073dbf8c7779fc863ed866a2a861ea",
+  "face_header_sha256": "3ca3f9387ce192b0c1c7928e8615805d16ae1689d2603cc34f3bad57dc6343f2",
+  "observer_sha256": "313531b78ecea188f96a2db3cfb365520364a3f5a0334ea75efbd2fb9ad39cc5",
+  "object_sha256": "7a3956a9e5f2f0363c27041a79ad69918767fe36fde4dc6bd253367423f0a3b2",
+  "methods": [
+    {
+      "symbol": "??0Decal@RBX@@QAE@XZ",
+      "address": "0x598400",
+      "size": 255,
+      "exact": true,
+      "calls": {
+        "??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@IAE@XZ": "0x598340",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90"
+      }
+    },
+    {
+      "symbol": "??0Texture@RBX@@QAE@XZ",
+      "address": "0x598870",
+      "size": 215,
+      "exact": true,
+      "calls": {
+        "??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@IAE@XZ": "0x598790",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90"
+      }
+    },
+    {
+      "symbol": "??1Decal@RBX@@UAE@XZ",
+      "address": "0x597d30",
+      "size": 80,
+      "exact": true,
+      "calls": {
+        "??1?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@MAE@XZ": "0x597680"
+      }
+    },
+    {
+      "symbol": "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@MAE@XZ",
+      "address": "0x597da0",
+      "size": 93,
+      "exact": true,
+      "calls": {
+        "??1Decal@RBX@@UAE@XZ": "0x597d30"
+      }
+    }
+  ],
+  "base_source_sha256": "a0d13477537e341e8c19f11fbd44d657b61c449b59bdcdf84cb4738f2889342e",
+  "base_object_sha256": "ff8c064cd61d7a137e4463d79dabbe6374760bfc71e0e8c03edc7a77a6f42ead",
+  "base_methods": [
+    {
+      "symbol": "??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@IAE@XZ",
+      "address": "0x598340",
+      "size": 156,
+      "exact": true,
+      "calls": {
+        "??0?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@IAE@XZ": "0x597550",
+        "?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PBDBV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598020"
+      }
+    },
+    {
+      "symbol": "??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@IAE@XZ",
+      "address": "0x598790",
+      "size": 156,
+      "exact": true,
+      "calls": {
+        "??0?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@IAE@XZ": "0x5985a0",
+        "?classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PBDBV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598090"
+      }
+    },
+    {
+      "symbol": "??0?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@IAE@XZ",
+      "address": "0x597550",
+      "size": 100,
+      "exact": true,
+      "calls": {
+        "??0FaceInstance@RBX@@QAE@XZ": "0x5ef530"
+      }
+    },
+    {
+      "symbol": "??0?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@IAE@XZ",
+      "address": "0x5985a0",
+      "size": 100,
+      "exact": true,
+      "calls": {
+        "??0Decal@RBX@@QAE@XZ": "0x598400"
+      }
+    },
+    {
+      "symbol": "?getClassName@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "address": "0x597d80",
+      "size": 23,
+      "exact": true,
+      "calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sDecal@RBX@@3PBDB@Name@RBX@@CAABV01@XZ": "0x41de20"
+      }
+    },
+    {
+      "symbol": "?getClassName@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "address": "0x597e20",
+      "size": 23,
+      "exact": true,
+      "calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sTexture@RBX@@3PBDB@Name@RBX@@CAABV01@XZ": "0x41de90"
+      }
+    },
+    {
+      "symbol": "??$doDeclare@$1?sDecal@RBX@@3PBDB@Name@RBX@@CAABV01@XZ",
+      "address": "0x41de20",
+      "size": 101,
+      "exact": true,
+      "calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      }
+    },
+    {
+      "symbol": "??$doDeclare@$1?sTexture@RBX@@3PBDB@Name@RBX@@CAABV01@XZ",
+      "address": "0x41de90",
+      "size": 101,
+      "exact": true,
+      "calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      }
+    }
+  ],
+  "texture_deletion": {
+    "control_vtable": "0x80f18c",
+    "dispose": "0x48ee50",
+    "object_base_vtable": "0x832960",
+    "adjustor": "0x598950",
+    "scalar_delete": "0x598970",
+    "factory_base_destructor": "0x597da0",
+    "decal_destructor": "0x597d30"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "scope": "Inactive lookup matches; original PhysicsService class-name storage and RTTI use an array, candidate uses a pointer. Name declaration body and type identity differ; do not use this profile as live ABI.",
+  "observer_sha256": "599215583868ad33b62ab17b4f1413043909a4ae4c961505f920e5aab6e5941f",
+  "source_sha256": "b6747eefa25cf906850c51be9c3b40d234d79c3668aebd32ac2adaf1d37181ea",
+  "profile_sha256": "9e182fb834ece2e036472c38f83d4932225d9e7fa3902937b9281e5050d28e31",
+  "object_sha256": "4ae663f6e41abd2cdc9e3a5ac776c94209bec2c3575914adae7e3e49001a12c7",
+  "address": "004ccca0",
+  "symbol": "??$find@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ",
+  "size": 320,
+  "exact": true,
+  "calls": {
+    "?call_once@boost@@YAXP6AXXZAAJ@Z": [
+      "0x557330"
+    ],
+    "??$doGetClassIndex@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAIXZ": [
+      "0x4c9be0"
+    ],
+    "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": [
+      "0x4124c0"
+    ],
+    "??$doDeclare@$1?sPhysicsService@RBX@@3PBDB@Name@RBX@@CAABV01@XZ": [
+      "0x4c9b70"
+    ],
+    "?findServiceByClassName@ServiceProvider@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": [
+      "0x572a90"
+    ],
+    "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": [
+      "0x600660"
+    ],
+    "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": [
+      "0x4025b0"
+    ]
+  },
+  "selected_destructor": {
+    "object_sha256": "d0e11f998d62d94c9a1d8aecfaed91eac5adc0eff48a7bf2ee80a6f3532f73b5",
+    "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+    "address": "00600660",
+    "size": 53,
+    "exact": true
+  },
+  "name_declaration": {
+    "symbol": "??$doDeclare@$1?sPhysicsService@RBX@@3PBDB@Name@RBX@@CAABV01@XZ",
+    "address": "004c9b70",
+    "candidate_size": 102,
+    "original_size": 101,
+    "exact": false,
+    "original_rtti": ".?AV?$DescribedNonCreatable@VPhysicsService@RBX@@VInstance@2@$1?sPhysicsService@2@3QBDB@RBX@@",
+    "candidate_rtti": "??_R0?AV?$DescribedNonCreatable@VPhysicsService@RBX@@VInstance@2@$1?sPhysicsService@2@3PBDB@RBX@@@8"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePhysicsFindTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePhysicsFindProfile.cpp"
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "candidate_sha256": "34bfabe26a4eaf22135ec1698127a7b69796ffc302bfa02d36e6956d1beabae6",
+  "overlay_sha256": "b465ba5e4b2b2c27ab65ecf29c786e4c18cf8b6983570800e285059397ae3416",
+  "source_sha256": "eec8f748fc34b75b2224a3b92960789f2ec37b8319b4e4d75ceee69b30273bf0",
+  "observer_sha256": "f9a1941d1154dbf7b7ccb4c3cec243f85d8f7eac46b804ec4c032d1f4cb93822",
+  "object_sha256": "4ddc285cb0369b6dc3251acdd0c967f9fcd9b493811bb3237e2439b4e7fd9f1f",
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\property-abi-trial",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\property-abi-trial\\HistoryItemPropertyTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HistoryItemPropertyTrial.cpp"
+  ],
+  "methods": [
+    {
+      "address": "00589410",
+      "symbol": "?captureProperty@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z",
+      "size": 176,
+      "direct_calls": {
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0",
+        "??A?$map@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@@std@@QAEAAVValue@Reflection@RBX@@ABQBVPropertyDescriptor@34@@Z": "0x589000",
+        "??4Value@Reflection@RBX@@QAEAAV012@ABV012@@Z": "0x42d0a0"
+      }
+    },
+    {
+      "address": "005872a0",
+      "symbol": "?applyProperty@HistoryItem@RBX@@QAEXABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z",
+      "size": 37,
+      "direct_calls": {}
+    },
+    {
+      "address": "005884d0",
+      "symbol": "?unplayProperty@HistoryItem@RBX@@QAEXABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z",
+      "size": 563,
+      "direct_calls": {
+        "?find@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQAVInstance@RBX@@@Z": "0x587ce0",
+        "?find@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@ABQBVPropertyDescriptor@Reflection@RBX@@@Z": "0x591bd0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+      }
+    },
+    {
+      "address": "00559920",
+      "symbol": "??$?0P8Instance@RBX@@BEPAV01@XZP801@AEXPAV01@@Z@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@QAE@PBD0P8Instance@2@BEPAV32@XZP832@AEXPAV32@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 169,
+      "direct_calls": {
+        "??$singleton@PAVInstance@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x557700",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650",
+        "??$getset@P8Instance@RBX@@BEPAV12@XZP812@AEXPAV12@@Z@?$PropDescriptor@VInstance@RBX@@PAV12@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVInstance@RBX@@@Reflection@RBX@@@std@@P8Instance@2@BEPAV52@XZP852@AEXPAV52@@Z@Z": "0x557fe0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "address": "00631180",
+      "symbol": "??_G?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "direct_calls": {
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "address": "00565960",
+      "symbol": "?isWriteOnly@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBE_NXZ",
+      "size": 10,
+      "direct_calls": {}
+    },
+    {
+      "address": "005cf660",
+      "symbol": "?getValue@?$GetSetImpl@P8Instance@RBX@@BEPAV12@XZP812@AEXPAV12@@Z@?$PropDescriptor@VInstance@RBX@@PAV12@@Reflection@RBX@@UBEPAVInstance@4@PBVDescribedBase@34@@Z",
+      "size": 41
+    },
+    {
+      "address": "00563b00",
+      "symbol": "?setValue@?$GetSetImpl@P8Instance@RBX@@BEPAV12@XZP812@AEXPAV12@@Z@?$PropDescriptor@VInstance@RBX@@PAV12@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABQAVInstance@4@@Z",
+      "size": 55
+    },
+    {
+      "address": "0059d490",
+      "symbol": "?isReadOnly@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBE_NXZ",
+      "size": 9,
+      "direct_calls": {}
+    },
+    {
+      "address": "005ee1d0",
+      "symbol": "?equalValues@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+      "size": 50,
+      "direct_calls": {}
+    },
+    {
+      "address": "00585360",
+      "symbol": "?getRefValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEPAVDescribedBase@23@PBV423@@Z",
+      "size": 30,
+      "direct_calls": {}
+    },
+    {
+      "address": "005cd810",
+      "symbol": "?setRefValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPAVDescribedBase@23@0@Z",
+      "size": 52,
+      "direct_calls": {
+        "??$polymorphic_cast@PAVInstance@RBX@@VDescribedBase@Reflection@2@@boost@@YAPAVInstance@RBX@@PAVDescribedBase@Reflection@2@@Z": "0x5599d0"
+      }
+    },
+    {
+      "address": "00585420",
+      "symbol": "?getVariant@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z",
+      "size": 254,
+      "direct_calls": {
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40",
+        "??$singleton@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56ca70",
+        "??$?4V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@VDescribedBase@Reflection@RBX@@@1@@Z": "0x491790"
+      }
+    },
+    {
+      "address": "005da5b0",
+      "symbol": "?setVariant@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z",
+      "size": 144,
+      "direct_calls": {
+        "??$get@V?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@@Value@Reflection@RBX@@QBE?AV?$shared_ptr@VDescribedBase@Reflection@RBX@@@boost@@XZ": "0x4917f0"
+      }
+    }
+  ],
+  "reflection_overlay_sha256": "0cbf5325ea6e28f129b6371e514f18d503cc2a42f71d3b4dde03ad8b168da669",
+  "fixture_sha256": "b8882cc6900212f6dbe74149f7aee5c71fa45977d0f447c6dbe66e68d9b26206",
+  "fixture_object_sha256": "dba1d90f0a7b657c215d6e37943a8d3257c0aee7c857f02764db9a8a6266b127",
+  "variant_fixture_sha256": "7ab937acd63a8c37b2823eedd0e2f882390c0e36deefd570e3795f3b5435201f",
+  "variant_object_sha256": "791448ce912c80866cd86cacc17f353ccad288c924d69aca8b6cbf2b6fb07e50",
+  "candidate_slots": {
+    "0": "??_E?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UAEPAXI@Z",
+    "1": "?isReadOnly@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBE_NXZ",
+    "2": "?isWriteOnly@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBE_NXZ",
+    "3": "?equalValues@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z",
+    "4": "?getVariant@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z",
+    "5": "?setVariant@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z",
+    "6": "?hasStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE_NXZ",
+    "7": "?getStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+    "8": "?setStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "9": "?read@PropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+    "10": "?writeValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z",
+    "11": "?readValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+    "12": "?getRefValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEPAVDescribedBase@23@PBV423@@Z",
+    "13": "?setRefValue@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBEXPAVDescribedBase@23@0@Z"
+  },
+  "original_slots": [
+    "0x631180",
+    "0x59d490",
+    "0x565960",
+    "0x5ee1d0",
+    "0x585420",
+    "0x5da5b0",
+    "0x60a2f0",
+    "0x5eecf0",
+    "0x5eedf0",
+    "0x56be00",
+    "0x491760",
+    "0x4914b0",
+    "0x585360",
+    "0x5cd810"
+  ],
+  "candidate_parent_getset_slots": {
+    "0": "?isReadOnly@?$GetSetImpl@P8Instance@RBX@@BEPAV12@XZP812@AEXPAV12@@Z@?$PropDescriptor@VInstance@RBX@@PAV12@@Reflection@RBX@@UBE_NXZ",
+    "1": "?isWriteOnly@?$GetSetImpl@P8Instance@RBX@@BEPAV12@XZP812@AEXPAV12@@Z@?$PropDescriptor@VInstance@RBX@@PAV12@@Reflection@RBX@@UBE_NXZ",
+    "2": "?getValue@?$GetSetImpl@P8Instance@RBX@@BEPAV12@XZP812@AEXPAV12@@Z@?$PropDescriptor@VInstance@RBX@@PAV12@@Reflection@RBX@@UBEPAVInstance@4@PBVDescribedBase@34@@Z",
+    "3": "?setValue@?$GetSetImpl@P8Instance@RBX@@BEPAV12@XZP812@AEXPAV12@@Z@?$PropDescriptor@VInstance@RBX@@PAV12@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABQAVInstance@4@@Z"
+  },
+  "original_parent_getset_slots": [
+    "0x60a2f0",
+    "0x60a2f0",
+    "0x5cf660",
+    "0x563b00"
+  ],
+  "scope": "Isolated descriptor ABI candidate only. Parent descriptor ctor, deleting dtor, isWriteOnly and variant bodies match; other descriptor slots and specializations, data bindings and cross-module ABI remain unproven. Never link into live client."
+}

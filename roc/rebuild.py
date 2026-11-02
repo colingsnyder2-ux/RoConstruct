@@ -424,6 +424,19 @@ def pair(client, funcs):
             for name, body, relocs in funcs]
 
 
+def pair_object(client, obj, symbols=None):
+    """Pair exact code and all resolvable referenced data; unknown data cannot break a tie."""
+    functions=match.coff_functions(obj)
+    if symbols is not None:functions=[f for f in functions if f[0] in symbols]
+    rows=pair(client,functions);result=[]
+    for symbol,size,addresses in rows:
+        refs=match.coff_data_refs(obj,symbol) if addresses else []
+        if refs:
+            addresses=[addr for addr in addresses if not match.data_check(client,addr,match.target(client,addr)[0],refs)[1]]
+        result.append((symbol,size,addresses))
+    return result
+
+
 def build_library(client, recipe, files, flags, name, cl=BUILD, jobs=6, log=print):
     """Compile each authentic file whole into out/<name>/, archive <name>.lib, and write <name>.tudiff.json."""
     import concurrent.futures as cf
@@ -919,6 +932,8 @@ def build_overlay(client, module, spec):
                 raise ValueError("overlay patch for %s no longer applies: %r" % (rel, old[:60]))
             text = text.replace(old, new, 1) if old else text + new
         wanted[Path(rel).as_posix()] = text
+    if any(len(str((overlay / rel).absolute()))>259 for rel in wanted):
+        raise ValueError('Native overlay path exceeds historical MSVC limit; use a shorter build workspace')
     for path in [p for p in overlay.rglob("*") if p.is_file()] if overlay.exists() else []:
         if path.relative_to(overlay).as_posix() not in wanted:
             path.unlink()  # no longer patched: dependents see it gone and rebuild
@@ -1192,7 +1207,7 @@ def build_module(client, name, log=print):
     funcs, owned_addrs, owned16_addrs = 0, set(), set()
     owned_symbols = {}
     for obj in sorted(linked.glob("*.obj")):
-        rows = pair(client, match.coff_functions(obj.read_bytes()))
+        rows = pair_object(client, obj.read_bytes())
         funcs += len(rows)
         for symbol, _, addresses in rows:
             if len(addresses)==1:
@@ -1203,6 +1218,7 @@ def build_module(client, name, log=print):
     report = {"module": spec["name"], "linked": result["linked"], "test_exit": result["exit"], "test_output": result["output"][-500:],
               "unresolved": result["unresolved"], "object_functions": funcs, "owned_2008": owned, "owned_2008_16b": owned16,
               "choices": result.get("choices"), "owned_addrs": sorted(owned_addrs), "owned_symbols_file": "owned-symbols.json",
+              "ownership_policy": "code-and-data-v1",
               "compile_errors": {}, "source_layers": source_layers}
     _dump(out / "owned-symbols.json", owned_symbols)
     _dump(out / "report.json", report)
@@ -1347,16 +1363,18 @@ def status(client="2008-06", log=print):
         r = json.loads(report_path.read_text(encoding="utf-8"))
         errors = source_errors(report_path.parent, spec, r)
         compiled_all.update(r.get("owned_addrs", []))
+        module_owned=set()
         linked = workspace(client) / "out" / spec["name"] / "linked"
         for obj in linked.glob("*.obj") if r["linked"] and not errors else ():
-            for _, size, h in pair(client, match.coff_functions(obj.read_bytes())):
+            for _, size, h in pair_object(client, obj.read_bytes()):
                 if len(h) == 1:
                     owned_all.update(h)
+                    module_owned.update(h)
                 elif size >= 16:  # identical 2008 functions (e.g. template copies): reproduced, address ambiguous
                     shared_all.update(h)
         rows.append((spec_path.stem, "SOURCE FAIL" if errors else "linked" if r["linked"] else "LINK FAIL",
                      "test ok" if r.get("test_exit") == 0 else "test %s" % r.get("test_exit"),
-                     r["object_functions"], r["owned_2008"]))
+                     r["object_functions"], len(module_owned)))
     for name, state, test, funcs, owned in rows:
         log("%-12s %-9s %-8s %6s object functions  %5s owned 2008" % (name, state, test, funcs, owned))
     log("distinct 2008 functions reproduced by linked rebuilt code: %d" % len(owned_all))
@@ -1406,19 +1424,21 @@ def progress(client="2008-06", log=print, notify=True):
         report = json.loads(report_path.read_text(encoding="utf-8"))
         errors = source_errors(report_path.parent, spec, report)
         linked = bool(report.get("linked")) and not errors
+        module_owned=set()
         if linked:
             linked_count += 1
             linked_dir = out_dir / spec["name"] / "linked"
             for obj in linked_dir.glob("*.obj"):
-                rows = pair(client, match.coff_functions(obj.read_bytes()))
-                distinct.update(h[0] for _, _, h in rows if len(h) == 1)
+                rows = pair_object(client, obj.read_bytes())
+                module_owned.update(h[0] for _, _, h in rows if len(h) == 1)
+            distinct.update(module_owned)
         unresolved = report.get("unresolved") or []
         unresolved_count += len(unresolved)
         modules.append({
             "name": spec["name"],
             "linked": linked,
             "test": report.get("test_exit"),
-            "exact": 0 if errors else report.get("owned_2008", 0),
+            "exact": len(module_owned),
             "compileErrors": sum(len(failed) for failed in errors.values()),
             "objectFunctions": report.get("object_functions", 0),
             "unresolved": len(unresolved),

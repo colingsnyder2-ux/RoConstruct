@@ -1,0 +1,62 @@
+{
+  "scope": "Inactive GUID data matches original holder inputs; type-info holder identity and COM runtime remain unproven.",
+  "observer_sha256": "446fabe428d80d5b9fdc142292af7016c0d86f8993391d146442b78b1befe0d3",
+  "source_sha256": "45b1efca46bc75788a4e67bd19109f6f9d951c0e717d3566d65917540418156e",
+  "object_sha256": "197112b3568011002843c7950ac6c68b916f2a8ecd205adb120d017f937ad912",
+  "original_holder_address": "0x928754",
+  "holder_words": [
+    "0x8164b8",
+    "0x8164e8",
+    "0x20001"
+  ],
+  "guids": [
+    {
+      "symbol": "?IID_IWorkspace@@3U_GUID@@B",
+      "original_address": "0x8164b8",
+      "bytes": "c6c330072d09454fb8b9bdeb82de1c7b"
+    },
+    {
+      "symbol": "?LIBID_RobloxLib@@3U_GUID@@B",
+      "original_address": "0x8164e8",
+      "bytes": "edc8e103c6c1bf47b9b9a37b677318dd"
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceGuidsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorkspaceGuidsTrial.cpp"
+  ]
+}

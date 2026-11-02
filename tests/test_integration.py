@@ -746,6 +746,15 @@ def test_live_hash_ignores_snapshotted_code_but_sees_vendor_trees(promotions):
     assert integration_verify.input_hash(root, live_only=True) != live
 
 
+def test_diagnostic_last_successful_reports_do_not_change_native_inputs(promotions):
+    root=promotions.root;before=integration_verify.input_hash(root)
+    for module in ('RbxgsApp','G3D'):
+        integration.atomic_json(root/'rebuild/2008-06/out'/module/'last-successful-report.json',{'diagnostic':'old result'})
+    assert integration_verify.input_hash(root)==before
+    integration.atomic_json(root/'rebuild/2008-06/out/G3D/report.json',{'linked':True})
+    assert integration_verify.input_hash(root)!=before
+
+
 def test_content_hash_invalidates_same_size_same_mtime_header(promotions):
     path = promotions.root / "tools/rbxgs/Client/App/include/Classes.h"
     before = integration_verify.input_hash(promotions.root)
@@ -965,6 +974,50 @@ def gate_result():
             "base": {"checked": 4, "mismatch": [], "probe_errors": {}}}
 
 
+@pytest.mark.parametrize('mismatch',[None,'code','source','unaccepted','overlay','generator'])
+def test_local_cache_requires_accepted_overlay_current_code_and_all_inputs(promotions,monkeypatch,mismatch):
+    root=promotions.root;monkeypatch.setenv('LOCALAPPDATA',str(root.parent/'short-cache'))
+    integration.atomic_json(root/'rebuild/2008-06/patches/rbxgs-client.json',{})
+    (root/'roc').mkdir(exist_ok=True);(root/'roc/rebuild.py').write_text('# compiler and gate implementation')
+    integration.atomic_json(root/'rebuild/2008-06/patches/native-promotions.json',[{'accepted':'ledger'}])
+    work=root.parent/'short-cache/RoConstruct/verify'/integration.digest(str(root.resolve()))[:12]
+    candidate=work/'c/0123456789ab';shutil.copytree(root,candidate)
+    ledger=candidate/'rebuild/2008-06/patches/native-promotions.json';integration.atomic_json(ledger,[])
+    base=dict(overlay={},accepted=[{'accepted':'ledger'}])
+    integration.atomic_json(candidate/'preflight-receipt.json',dict(accepted=mismatch!='unaccepted',overlay_hash='wrong' if mismatch=='overlay' else integration.digest({})))
+    integration.atomic_json(candidate/'integration-result.json',gate_result())
+    integration.atomic_json(candidate/'integration-linked.json',['00500000'])
+    if mismatch=='code':(candidate/'roc/rebuild.py').write_text('# changed gate')
+    if mismatch=='source':(candidate/'tools/rbxgs/Client/App/include/Classes.h').write_text('changed declaration')
+    if mismatch=='generator':(candidate/'rebuild/2008-06/patches/make_rbxgs_client.py').write_text('# changed generator')
+    calls=[]
+    def generate(folder,args,log):
+        calls.append(folder)
+        assert json.loads(ledger.read_text())==base['accepted']
+        integration.atomic_json(folder/'rebuild/2008-06/patches/rbxgs-client.json',base['overlay'])
+    monkeypatch.setattr(integration_verify,'run',generate)
+    messages=[]
+    integration_verify.cache_client_accepted(root,base,messages.append)
+    index=work/'accepted-baselines.json'
+    if mismatch:
+        assert not index.exists()
+        assert bool(calls)==(mismatch=='source')
+    else:
+        key=integration_verify.input_hash(root)
+        assert index.exists(),messages
+        assert json.loads(index.read_text())=={key:candidate.name}
+        after=copy.deepcopy(gate_result());after['report']['owned_addrs'].append('00500001');after['distinct']+=1
+        monkeypatch.setattr(integration_verify.subprocess,'run',lambda *a,**kw:None)
+        monkeypatch.setattr(integration_verify,'prepare_baseline',lambda *a:pytest.fail('Accepted baseline was unnecessarily rebuilt'))
+        def snapshot(source,destination,**kw):assert source==candidate;destination.mkdir(parents=True)
+        monkeypatch.setattr(integration_verify,'snapshot',snapshot)
+        built=[]
+        monkeypatch.setattr(integration_verify,'verify_build',lambda folder,*a:(built.append(folder) or after))
+        receipt=integration_verify.linked_preflight(root,{'App/include/Classes.h':[['class First {};','class First {}; // candidate']]},root/'proof',lambda _:None)
+        assert receipt['accepted'] and len(built)==1 and receipt['baseline_artifacts']==str(candidate)
+        assert receipt['gains']==['00500001']
+
+
 @pytest.mark.parametrize('lost', [False, True])
 def test_contributor_linked_preflight_detects_losses_and_writes_receipt(promotions, monkeypatch, lost):
     monkeypatch.setattr(integration_verify.subprocess, 'run', lambda *a, **k: None)
@@ -974,7 +1027,9 @@ def test_contributor_linked_preflight_detects_losses_and_writes_receipt(promotio
     after = copy.deepcopy(before)
     after['report']['owned_addrs'] = ['00500001'] if lost else ['00500000', '00500001']
     after['distinct'] += 1
-    cache = root / 'work/native-linked-preflight/fingerprint'
+    monkeypatch.setenv('LOCALAPPDATA',str(root.parent/'short-cache'))
+    work=root.parent/'short-cache/RoConstruct/verify'/integration.digest(str(root.resolve()))[:12]
+    cache = work / 'b/fingerprint'
     integration.atomic_json(cache / 'integration-result.json', before)
     integration.atomic_json(cache / 'integration-prepared.json', {'format': 1, 'inputs': 'fingerprint'})
     monkeypatch.setattr(integration_verify, 'input_hashes', lambda root: ('fingerprint', 'live'))
@@ -997,7 +1052,9 @@ def test_contributor_linked_preflight_detects_losses_and_writes_receipt(promotio
     assert receipt['uncovered_losses'] == receipt['losses']
     assert (Path(receipt['artifacts'])/'preflight-receipt.json').exists()
     assert json.loads((Path(receipt['artifacts'])/'preflight-receipt.json').read_text()) == receipt
-    assert Path(receipt['artifacts']).parent == root/'work/nv'
+    assert Path(receipt['artifacts']).parent == work/'c'
+    assert not Path(receipt['artifacts']).is_relative_to(root)
+    if lost:assert '00500000' in receipt['reason']
     assert receipt['baseline_artifacts'] == str(cache)
 
 
@@ -1057,6 +1114,20 @@ def test_failed_source_module_cannot_cover_ownership_loss(tmp_path):
     (out / 'report.json').write_text(json.dumps(dict(linked=True, test_exit=0, owned_addrs=['00500000'])))
     (out / 'layer-upstream/errors.json').write_text(json.dumps({'unit.cpp': 'compile failed'}))
     assert integration_verify.other_module_owned(tmp_path) == set()
+
+
+def test_other_module_ownership_rechecks_objects_instead_of_legacy_report(tmp_path,monkeypatch):
+    out=tmp_path/'rebuild/2008-06/out/Dependency';(out/'linked').mkdir(parents=True)
+    report=out/'report.json';report.write_text(json.dumps(dict(linked=True,test_exit=0,owned_addrs=['stale-address'])))
+    (out/'linked/a.obj').write_bytes(b'actual-linked-object')
+    seen=[]
+    def pair(client,obj):
+        seen.append((client,obj));return [('typed',36,['00500000']),('unresolved',36,['00500001','00500002'])]
+    monkeypatch.setattr(integration_verify.rebuild,'pair_object',pair)
+    assert integration_verify.other_module_owned(tmp_path)=={'00500000'}
+    assert seen==[('2008-06',b'actual-linked-object')]
+    report.write_text(json.dumps(dict(linked=True,test_exit=1,owned_addrs=['stale-address'])))
+    assert integration_verify.other_module_owned(tmp_path)==set()
 
 
 def test_two_pcs_use_http_without_shared_client_files(promotions):
@@ -1759,3 +1830,18 @@ def test_canonical_source_pin_cannot_modify_receipt_artifacts_or_escape_state(tm
     integration.atomic_json(tmp_path/'work/integration/source-root.json',dict(path=selected))
     with pytest.raises(ValueError,match='inside work/integration/sources'):
         integration.source_root(tmp_path)
+
+
+def test_external_canonical_evidence_uses_its_adopted_headers_not_launcher_headers(tmp_path,monkeypatch):
+    from roc import native_adapt
+    launcher=tmp_path/'launcher';selected=tmp_path/'accepted'
+    relative='rebuild/2008-06/native-headers/A.h'
+    for root,name in [(launcher,'WrongLauncherType'),(selected,'AcceptedType')]:
+        path=root/relative;path.parent.mkdir(parents=True);path.write_text('namespace RBX { class '+name+' {}; }')
+    monkeypatch.setattr(integration,'ROOT',launcher)
+    tree=tmp_path/'shared-vendor';tree.mkdir()
+    patches={'App/include/A.h':[['@replace','../../../'+relative]]}
+    text=integration.overlay_text(tree,'App/include/A.h',patches,workspace=selected)
+    assert 'AcceptedType' in text and 'WrongLauncherType' not in text
+    paths,_=native_adapt.type_paths(selected,patches)
+    assert 'RBX::AcceptedType' in paths and 'RBX::WrongLauncherType' not in paths

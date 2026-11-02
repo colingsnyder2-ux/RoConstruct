@@ -1,0 +1,104 @@
+{
+  "scope": "Inactive ModelInstance constructor/destructor match; vector RTTI and pointer stride corroborated by removeIModelModifier. Full base layout and runtime ownership remain unproven.",
+  "observer_sha256": "3b04d8213b9caa7dae9c78fb3ea1aced73f9e6a91fb5832b75b203f01626c4e7",
+  "source_sha256": "6e7c8810ad17dbcbaf2597e54bb3c5454a1fe21fcc043293f63b111e4e89e426",
+  "header_sha256": "251179898656bc9ac383dc3004d49b46b7dd7931f7c4266e95746b015ccc7365",
+  "object_sha256": "61681ebf87f0e01c15973df370e13bfbf9cad308a280c7ea98bbc0ab88fce2f4",
+  "methods": [
+    {
+      "symbol": "??0ModelInstance@RBX@@QAE@XZ",
+      "address": "00585630",
+      "size": 594,
+      "original_size": 594,
+      "exact": true,
+      "calls": {
+        "??$?0PBD@?$DescribedCreatable@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PBDB@RBX@@IAE@PBD@Z": [
+          "0x585520"
+        ],
+        "??0CoordinateFrame@G3D@@QAE@XZ": [
+          "0x4782d0"
+        ],
+        "??2@YAPAXI@Z": [
+          "0x6a0920"
+        ],
+        "??0?$ComputeProp@VExtents@RBX@@VModelInstance@2@@RBX@@QAE@PAVModelInstance@1@P821@BE?AVExtents@1@XZ@Z": [
+          "0x583ee0"
+        ],
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": [
+          "0x553f90"
+        ],
+        "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ": [
+          "0x405da0"
+        ],
+        "??A?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@QAEAAPBVICreator@RBX@@ABQBVName@3@@Z": [
+          "0x5644a0"
+        ]
+      }
+    },
+    {
+      "symbol": "??1ModelInstance@RBX@@UAE@XZ",
+      "address": "00584790",
+      "size": 421,
+      "original_size": 421,
+      "exact": true,
+      "calls": {
+        "??3@YAXPAX@Z": [
+          "0x6a067a"
+        ],
+        "??1IRenderable@RBX@@QAE@XZ": [
+          "0x47d410"
+        ],
+        "??1?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PBDB@RBX@@MAE@XZ": [
+          "0x5835b0"
+        ]
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/fp:fast",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeModelLifetimeTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeModelLifetimeTrial.cpp"
+  ],
+  "modifiers": {
+    "offset": "0x1ec",
+    "element": "RBX::IModelModifier*",
+    "remove_address": "00584fc0",
+    "instance_type_descriptor": "0x92907c",
+    "modifier_type_descriptor": "0x936908",
+    "pointer_stride": 4
+  }
+}

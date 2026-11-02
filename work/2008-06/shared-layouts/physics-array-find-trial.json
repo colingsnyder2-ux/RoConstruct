@@ -1,0 +1,93 @@
+{
+  "scope": "Inactive array-name PhysicsService lookup and Name::doDeclare match original. Static cache identity, ServiceProvider hierarchy and runtime ABI remain unproven.",
+  "observer_sha256": "7c0362705a9d9790a425a19e57dae5fd07a78203aae21abf8027be9e6b6c3f33",
+  "source_sha256": "1d7e06400ef3ef5647ce35c61129f7ddf735d08f13b1b4ce2590209ebca6c065",
+  "profile_sha256": "234a22cecbe37628099d6352c736ba0c571ffe87606567d305882a4009d00ac3",
+  "object_sha256": "655edea445c75f7679844cd551d4e27da7f71be2f626b2aa7da9606b25db65d0",
+  "name_receipt_sha256": "780ca9285bff81f203191a8d74528d1880ab3be337c1110fabe931f68d6e1cb9",
+  "methods": [
+    {
+      "address": "004ccca0",
+      "symbol": "??$find@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ",
+      "size": 320,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??$find@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ": [
+          "0x7d9168"
+        ],
+        "?flag@?1???$getClassIndex@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": [
+          "0x971ad4"
+        ],
+        "??$callDoGetClassIndex@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAXXZ": [
+          "0x4ca350"
+        ],
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": [
+          "0x557330"
+        ],
+        "??$doGetClassIndex@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAIXZ": [
+          "0x4c9be0"
+        ],
+        "__imp___invalid_parameter_noinfo": [
+          "0x802890"
+        ],
+        "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": [
+          "0x4124c0"
+        ],
+        "?flag@?1???$declare@$1?sPhysicsService@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": [
+          "0x971ad0"
+        ],
+        "??$callDoDeclare@$1?sPhysicsService@RBX@@3QBDB@Name@RBX@@CAXXZ": [
+          "0x4ca340"
+        ],
+        "??$doDeclare@$1?sPhysicsService@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": [
+          "0x4c9b70"
+        ],
+        "?findServiceByClassName@ServiceProvider@RBX@@ABE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": [
+          "0x572a90"
+        ],
+        "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": [
+          "0x600660"
+        ],
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": [
+          "0x4025b0"
+        ]
+      }
+    },
+    {
+      "address": "004c9b70",
+      "symbol": "??$doDeclare@$1?sPhysicsService@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??$doDeclare@$1?sPhysicsService@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": [
+          "0x7c97ce"
+        ],
+        "??_B?1???$doDeclare@$1?sPhysicsService@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": [
+          "0x971ac4"
+        ],
+        "?sPhysicsService@RBX@@3QBDB": [
+          "0x83f858"
+        ],
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": [
+          "0x553f90"
+        ],
+        "?n@?1???$doDeclare@$1?sPhysicsService@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": [
+          "0x971ac0"
+        ]
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePhysicsArrayFindTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePhysicsArrayFindProfile.cpp"
+  ]
+}

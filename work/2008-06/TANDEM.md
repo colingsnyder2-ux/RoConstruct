@@ -434,3 +434,85 @@ affected by anything on the P6 branch.
 
 - 2026-11-01 Codex: primitive XItem primary tables extend SDK57 slots with slots57-61 (read editor, display typed value, equality, per-instance write, empty value); OnValueChanged overrides SDK slot25. Adding actual virtual declarations in PropertyGridItems.h; object sizes unchanged. Original 60/61 addresses43a7d0/43b4e0 for float/int, not guessed SDK inherited slots.
 - 2026-11-01 Codex: GUI integrator isolation: use C:/Users/colin/RoConstruct-gui-integrator (detached at 3238b08c7b) for future GUI integrator edits. Existing uncommitted work remains in original checkout; transfer deliberately with hashes, never overwrite. Shared headers have one owner in original checkout; integrator must not edit them. Prior stale record_native_document.py overwrite involved concurrent writers in shared checkout; exact writer not identified. No active client swap.
+
+- 2026-11-01 Codex: inactive CWorkspace::insert recovery; adding nonvirtual Instance name lookup declaration, Selection donor methods/template, and ServiceProvider context lookup declaration. No layout or virtual slot changes; original 0046ae30 uses by-value string and donor signature differs. No live swap.
+
+- 2026-11-01 Codex: shared XML parser correction. Original TextXmlParser ctor 00415350 and dtor 004147c0 construct/destroy std::map<string,string> at +0x28; donor lacks it (donor sizeof 0x28, original 0x48). Adding native header overlay; no runtime swap.
+
+- 2026-11-01 Codex: correcting provisional Instance lookup declaration to class-name lookup. Original 0046ae30 calls 0041f2b0, which obtains virtual getClassName() and copies Name::name, not Instance::name. Nonvirtual declarations only; no layout change.
+
+- 2026-11-01 Codex: mark existing ScriptContext::gc donor body noinline to test original out-of-line 005a86c0 call; no field or vtable changes. Recovering Doc script-heap command and native LuaAllocator stats getter.
+
+- 2026-11-01 Codex: adding genuine donor ServiceClient createService/operator-> bodies for Selection verb recovery; no data members or virtual-slot changes. Original Selection service-client target 00581cc0.
+
+- 2026-11-01 Codex: native CWorkspace IObjectSafety methods; adding nonvirtual site-check declaration evidenced by original 00404d20/00404db0 -> 00403b60. No layout or virtual-slot changes.
+
+- 2026-11-01 Codex: add nonvirtual workspace safety GetOurUrl declaration, recover original 00403210 using real COM interfaces and original failure behavior. No layout or virtual-slot changes.
+
+- 2026-11-01 Codex: introduce shared Name.h overlay from previously accepted roc_name_native_declare_header; restores const-char pointer once-guarded declare template used by original service cache. No fields or virtual slots change.
+
+- 2026-11-01 Codex: replace partial ChangeHistoryService interface with original RTTI DescribedCreatable+Service hierarchy and constructor-evidenced list, iterators, flags, scoped connections. Layout candidate only; constructor and destructor must both match before runtime use.
+
+- 2026-11-01 Codex: declare nonvirtual HistoryRecord play/unplay used by original history operations; no object storage or vtable changes.
+
+- 2026-11-01 Codex: declare original HistoryItem play/unplay/property operations to recover Doc undo/redo path. No field or vtable changes; behavior remains inactive.
+
+- 2026-11-01 Codex: declare HistoryItem applyProperty nonvirtual 005872a0; original parent-property RTTI confirms descriptor slot5 applies a Reflection::Value. Donor PropertyDescriptor slot5 is setStringValue, so descriptor ABI is not adopted pending correction; no vtable changes now.
+
+- 2026-11-01 Codex: declare ChangeHistoryService start/reset nonvirtual from original 0058c8b0 calls and recovered history sources; no layout or vtable change. Diagnostic only.
+
+- 2026-11-01 Codex: declare HistoryRecord(ChangeHistoryService*) used by original reset 0058c3c0; nonvirtual declaration only. No live integration.
+
+- 2026-11-01 Codex: test implicit HistoryRecord destructor against original reset and service lifetime; no storage or vtable change. Revert unless both match.
+
+- 2026-11-01 Codex: test implicit HistoryItem destructor against original tree item destructor 00589720 and record/service lifetimes; no field or virtual changes.
+
+- 2026-11-01 Codex: add three ChangeHistoryService virtual callback declarations, original vtable slots 16-18 and thunks verified by history-start-abi.json. Inactive; retest ctor/dtor and vtable slots.
+
+- 2026-11-01 Codex: declare history record lookup and item capture/reset/update methods from original callbacks 0058b870/0058b970/0058ba70; nonvirtual only, no storage changes. Inactive pending exact verification.
+
+- 2026-11-01 Codex: declare HistoryItem(ChangeHistoryService*, shared_ptr<Instance>) for original record lookup 0058b6c0. No layout or virtual changes; validate ctor and dtor.
+
+- 2026-11-01 Codex: restore Instance::propParent declaration from donor and original 00973d34 RTTI; pointer identity only, donor property vtable remains incompatible. Declare HistoryItem captureProperty nonvirtual from 00589650 -> 00589410.
+
+- 2026-11-01 Codex: restore donor Instance::getParent inline accessor; same proven +104 member, no layout or vtable change. Comparing history update codegen.
+
+- 2026-11-01 Codex: declare HistoryItem capture(Reflection::Property const&) based on 00589530 source and target; nonvirtual only. Property vtable still unverified; no activation.
+
+- 2026-11-01 GUI recovery: capped three GPT-6.1 Terra agents. Host independently merged Doc handle_454f30 boolean normalization (`!= 0`), no lost TU matches or unrelated source edits. Upload81ffdb19a75c46e7b336ae0d0590b9f6; receipt work/gui-live-validation/terra33-doc-host-receipt.json. Canonical GUI-class mapping absent: zero integration credits, no player swap. Worker33 probe profile correction restores owner include order without shared header edits.
+
+- 2026-11-01 Codex: recover ChangeHistoryService override onServiceProvider in original primary vtable slot 12 -> 0058c4f0; overrides existing virtual, no extra slot/field. Context pointer still provisional.
+
+- 2026-11-01 Codex: introduce inactive shared GuidRegistry.h candidate: GUID-keyed map and mutex layout inferred from original registry ctor, GuidItem dtor and map methods; runtime ABI and registry destruction remain unproven. No live swap.
+
+- 2026-11-01 Codex request to GUI Doc owner: CRobloxDoc provisional currentDocument/setCurrentDocument(int, ...) bind original 0096c238/00405aa0. Existing ActiveDocument.cpp names are activeRobloxDoc/setActiveDocument(bool, ...); please coordinate before editing Doc. Isolated profile verifies replacement and original DeleteContents bytes/call targets; no direct Doc edit made.
+
+- 2026-11-01 Codex: testing recovered Instance(const char*) declaration for ChangeHistoryService factory base 005871d0 -> 0055b960. No field or virtual-slot change; validate both Instance constructors and destructor before any use.
+
+- 2026-11-01 Codex: introduce native util/Object.h overlay from existing donor with forwarding FactoryProduct constructor; isolated 005871d0 and 0058a8d0 match original and calls. No field/virtual-slot changes; rerun Instance and ChangeHistory ctor/dtor proofs.
+
+- 2026-11-01 Codex: declare original Instance ancestry/descendant signal statics in shared Instance.h. Existing archive Instance.obj defines them; original PE storage and initializer/cleanup bytes checked. Rebind isolated callbacks to these same statics; no field or vtable changes, runtime signal ABI still unproven.
+
+- 2026-11-01 GUI recovery: accepted canonical MouseCommand::capture 00615820 via free assigned-body assertion pass, host merge and full linked/server gates. Job f9a64bca67c64f3bb99ec49e3ec6da21: +1 credit, no losses, zero unresolved references. Source stays in native-classes/accepted/App/v8datamodel/MouseCommand.cpp; owner headers untouched; no player swap. Worker35 fixes tiny-symbol submission and reduces agent context.
+
+- 2026-11-01 Codex: declare nonvirtual CRobloxDoc::loadFile(std::string), original 00455a20, for recovered insert-model handler 00455c30. No storage or vtable change; implementation remains independently unresolved.
+
+- 2026-11-01 Codex: declare nonvirtual CRobloxDoc::loadFromString(std::string) and DataModel::getContentProvider() for original loadFile 00455a20 call chain. No fields or virtual slots change; provider identity and ABI under test.
+
+- 2026-11-01 Codex: correct provisional DataModel::getContentProvider declaration: original 0041eea0 is service create path, allocation 0041e5d0 -> 00562c30 RTTI ContentProvider. Remove invented method; use ServiceProvider::create<ContentProvider>. No field or vtable changes; native provider class ABI remains open.
+
+- 2026-11-01 Codex: add original nonvirtual ContentProvider getContent(ContentId), isUrl(std::string) declarations to inactive trial class for Doc command handler 00453c30. No fields or virtual slots changed; service ABI remains under test.
+
+- 2026-11-01 Codex: add inactive ContentProvider::loadContent(ContentId, int, RequestCallback const*) candidate declaration for original 00561f20 getContent dependency. No field or virtual layout changes; mode/type and lifetime remain under verification.
+
+- 2026-11-01 Codex: add nonvirtual isUrlBad declaration and ContentRequest equality to inactive ContentProvider trial for 00561980 cache dependency. No field or vtable changes; ABI and runtime remain unproven.
+
+- 2026-11-01 Codex: declare nonvirtual CWorkspace::getWorkspace for Doc initializer 00451b60, following original 0046a970. No fields/vtable changes; trial ABI remains under verification.
+
+- 2026-11-01 Codex: correct inactive TToolVerb::newMouseCommand return from boost::shared_ptr<MouseCommand> to MouseCommand*. Original factory 005c6270 returns raw allocation in EAX with plain ret; caller 005c6f00 passes EAX directly. No fields or virtual slots changed. Rerun StandardVerbs/Doc layout and initializer probes; runtime still unproven.
+
+- 2026-11-01 Codex: add inactive native v8datamodel/MouseCommand.h based on donor declaration without 2007 undoState field. Original 006159f0 constructor, 00615a20 deleting destructor and 005c6270 Arrow factory match this layout; methods/virtual slots and live runtime ABI remain unproven. No active build selection.
+
+- 2026-11-02 Codex: promote evidenced CWorkspace COM map, protected FinalConstruct, IWorkspace and listener method declarations into inactive shared header. Original 00402730, 00450370, 00401910 and COM map entries matched in trial; full vtable, implementation and runtime ABI remain under verification.
+
+- 2026-11-02 Codex: add nonvirtual DataModel::initializeContents(bool) and static createDataModel(bool) declarations from original 0057a9f0/0057c100. No storage or vtable change; bodies and full DataModel ABI remain under verification.

@@ -1,0 +1,143 @@
+{
+  "source_sha256": "e498c0c5467cc279871b1123f70159f86573706a0e8c312cbf275c38811430ff",
+  "observer_sha256": "59a7af3bfe577b03b3e871d03d1a1a7baae413816ff15b4b53738e177b95b3cd",
+  "object_sha256": "00a8057e39c0c4c4b90b0ae39f7d1807fad0f4817bd845292debf161b83983f6",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawPathTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawPathTrial.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0x55d0b0",
+      "size": 145,
+      "bindings": {
+        "__ehhandler$?resolveMapPath@LDraw2Lua@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBD@Z": "0x7ce84c",
+        "?originalAssetFolder@LDraw2Lua@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x55c4c0",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "0x8023e4",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468"
+      }
+    },
+    {
+      "address": "0x55c4c0",
+      "size": 50,
+      "bindings": {
+        "?assetFolderOnce@LDraw2Lua@RBX@@3JA": "0x973fe4",
+        "?initializeAssetFolder@LDraw2Lua@RBX@@YAXXZ": "0x55c3e0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?assetFolder@LDraw2Lua@RBX@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A": "0x9740f0",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c"
+      }
+    }
+  ],
+  "initializer": {
+    "address": "0055c3e0",
+    "size": 214,
+    "source_sha256": "6e63cbc9385daef11893c6fce81bc111e2027a6335b60e1af2a500fd2247f463",
+    "object_sha256": "8b1c53b6f6a2717652764e8dcb3e779ba6b131c3aecb2e3161cca803b0f34529",
+    "flags": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawAssetStateTrial.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawAssetStateTrial.cpp"
+    ],
+    "bindings": {
+      "__ehhandler$?initializeAssetFolder@LDraw2Lua@RBX@@YAXXZ": "0x7ce7bb",
+      "??_C@_0BA@OGDMAMDL@Roblox?2content?2?$AA@": "0x82dc24",
+      "__imp__SHGetFolderPathAndSubDirA@24": "0x802af4",
+      "?assetFolder@LDraw2Lua@RBX@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A": "0x9740f0",
+      "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c",
+      "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620",
+      "??_C@_0CJ@MGBGBKEP@Failed?5to?5get?5asset?5folder?5from?5@": "0x82dbf8",
+      "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0"
+    },
+    "lifetimes": [
+      {
+        "address": "007faff0",
+        "symbol": "??__FcurrentMap@LDraw2Lua@RBX@@YAXXZ",
+        "size": 19,
+        "global": "0x96ee60"
+      },
+      {
+        "address": "007f2c10",
+        "symbol": "??__EassetFolder@LDraw2Lua@RBX@@YAXXZ",
+        "size": 23,
+        "global": "0x9740f0"
+      },
+      {
+        "address": "007fcbf0",
+        "symbol": "??__FassetFolder@LDraw2Lua@RBX@@YAXXZ",
+        "size": 11,
+        "global": "0x9740f0"
+      }
+    ],
+    "map_header_sha256": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9"
+  },
+  "scope": "Inactive trial. Global ownership, static initialization ordering, exception metadata and runtime remain unproven; never run."
+}

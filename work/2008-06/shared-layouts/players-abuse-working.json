@@ -2,11 +2,11 @@
   "sources": {
     "rebuild\\2008-06\\tests\\record_native_players_abuse.py": "ce87c41de40833ecaed006908a032df63cb9f8e540e0fd33e514c2c8dcc15f6b",
     "rebuild\\2008-06\\native-classes\\PlayersAbusePredicate.cpp": "48b4c02d32634d4fb8de4670d1278f239a58d594f82b990992174ba3e7589b53",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "5d94a12aa3cb65e53c482feb9fa573287c2e1d81d41a810e06ac76c19f94385f",
-    "rebuild\\2008-06\\native-headers\\util\\IRenderable.h": "d2ed4fe66cc91d01d9ca7777bc8297c742156a7fda619a25adfad62f19a6dac1",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "74b952f551c822bf600e465fbd975d3767f4be8e2a67d30e06edfd2e103a10ac",
+    "rebuild\\2008-06\\native-headers\\util\\IRenderable.h": "2cbc9cf0b1702eef547d1a9df1ea3b9dce43822cf7277cc5d93065354a721cd5",
     "tools\\rbxgs\\Client\\Network\\include\\Network\\Players.h": "d9de8cc1f467a2df8217d4baa8c3c58c461fc90fb9ea3569aee62fc2a0880045"
   },
-  "object_sha256": "dfd9da2ebed89d2c7456ac4460ef520f37155a468d9a97ef032623a2fcc3638d",
+  "object_sha256": "5d9939e6fcb6c1654654fee46e8eebd618c275db83e2da98d43d10eb9105d82f",
   "address": "00496390",
   "size": 33,
   "direct_calls": {

@@ -32,7 +32,7 @@ protected:
     ServiceClient<Selection> selection;
     DataModel* dataModel;
     EditSelectionVerb(std::string,DataModel*);
-    EditSelectionVerb(VerbContainer*,std::string,DataModel*);
+    __declspec(noinline) EditSelectionVerb(VerbContainer*,std::string,DataModel*);
 public:
     virtual ~EditSelectionVerb();
     virtual bool isEnabled() const;
@@ -48,7 +48,7 @@ class DeleteBase : public EditSelectionVerb {
     bool rewardHopper;
 protected:
     DeleteBase(DataModel*,std::string,bool=false);
-    DeleteBase(VerbContainer*,DataModel*,std::string);
+    __declspec(noinline) DeleteBase(VerbContainer*,DataModel*,std::string);
 public:
     virtual void doIt(IDataState*);
 };
@@ -59,6 +59,7 @@ public:
 class DeleteSelectionVerb : public DeleteBase {
 public:
     DeleteSelectionVerb(DataModel* dm) : DeleteBase(dm,"Delete") {}
+    __declspec(noinline) DeleteSelectionVerb(VerbContainer*,DataModel*,std::string);
 };
 class SelectAllCommand : public RunStateVerb {
 public:
@@ -188,6 +189,7 @@ protected:
 class ControllerCommand : public EditSelectionVerb {
 protected:
     ControllerCommand(std::string,DataModel*);
+    void applyController(int);
 public:
     virtual bool isEnabled() const;
 };
@@ -294,7 +296,7 @@ public:
         : ParentClass(NativeToolName<MouseCommandClass>::get().toString()+"Tool",dm) {}
     virtual void doIt(IDataState*);
     virtual bool isChecked() const;
-    virtual boost::shared_ptr<MouseCommand> newMouseCommand();
+    virtual MouseCommand* newMouseCommand();
 };
 class ArrowTool;
 template<> struct NativeToolText<ArrowTool> {static const char* get() {return "Arrow";}};

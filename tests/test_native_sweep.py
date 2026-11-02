@@ -8,6 +8,20 @@ import pytest
 from roc import native_sweep as sweep
 
 
+@pytest.mark.parametrize('wrong_symbol,bad_data',[(False,False),(True,False),(False,True)])
+@pytest.mark.parametrize('targets',[1,2])
+def test_explicit_five_byte_target_requires_assigned_symbol_and_referenced_data(monkeypatch,wrong_symbol,bad_data,targets):
+    symbol='?capture@MouseCommand@RBX@@QAEXXZ'
+    expected={'%08x'%(0x615820+n*16):symbol+str(n) for n in range(targets)}
+    matcher=SimpleNamespace(client='2008-06',scan=lambda _:[],target=SimpleNamespace(same=lambda addr,code,relocs:b'original' if code==b'short' else None))
+    monkeypatch.setattr(sweep.match,'coff_functions',lambda _:iter([('other'+name if wrong_symbol else name,b'short',[]) for name in expected.values()]))
+    monkeypatch.setattr(sweep.match,'coff_data_refs',lambda *a:[])
+    monkeypatch.setattr(sweep.match,'data_check',lambda *a:(0,['wrong data'] if bad_data else []))
+    hits=sweep.proposal_hits(b'object',matcher,expected)
+    assert hits==([] if wrong_symbol or bad_data else [dict(addr=addr,symbol=name) for addr,name in expected.items()])
+    assert sweep.proposal_hits(b'object',matcher,{})==[]
+
+
 def test_provider_family_keeps_real_instantiation_and_scopes_base_omission():
     source = '''namespace RBX {
 void A::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider) {
@@ -407,6 +421,7 @@ def test_linked_preflight_heartbeat_propagates_gate_failure_and_stops(monkeypatc
 
 
 def test_ownership_checks_twins_outside_discovery_targets(monkeypatch):
+    monkeypatch.setattr(sweep.match,'coff_data_refs',lambda *a:[])
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda obj: [('f', b'body', []), ('unrelated', b'other', [])])
     def pair(client, functions):
         assert [f[0] for f in functions] == ['f']
@@ -439,9 +454,26 @@ def test_evidence_embeds_local_generated_proof_without_changing_compiled_referen
     monkeypatch.setattr(standins, 'mapping', mapping)
     result = sweep.model_evidence('00500000', {}, {})
     assert result['mined_source_expanded'] == (not missing_proof)
+    assert result.get('mined_library_root') == (None if missing_proof else str(folder.resolve()))
     assert ('struct RealProof' in result['mined_source']) == (not missing_proof)
     assert result['target_asm_truncated'] == {'shown': 120, 'total': len(assembly)}
     assert [call['addr'] for call in result['target_calls']] == ['00600000', '00600100']
+
+
+def test_evidence_exposes_initializer_pointer_but_not_bss_data(tmp_path,monkeypatch):
+    from roc import packet,standins
+    caller=bytes.fromhex('682c3a97006860415500e8b1300000a1d039970083c408c3')
+    initializer=bytes.fromhex('6a006816b78000e824feffff83c408a3d0399700c3')
+    monkeypatch.setattr(sweep,'ROOT',tmp_path)
+    monkeypatch.setattr(packet,'_source',lambda *a:('// reference data','local',100))
+    monkeypatch.setattr(sweep.match,'target',lambda client,addr:(caller,[1,6,16],{}) if addr=='00554270' else (initializer,[],{}))
+    monkeypatch.setattr(sweep.match,'_functions',lambda *a:{'00554160':{'kind':'code'},'00973a2c':{'kind':'data'},'009739d0':{'kind':'data'}})
+    monkeypatch.setattr(standins,'mapping',lambda *a:[])
+    evidence=sweep.model_evidence('00554270',{}, {})
+    helper,=evidence['target_function_pointers']
+    assert helper['addr']=='00554160' and helper['size']==21 and not helper['truncated']
+    assert any('0x553f90' in line for line in helper['target_asm'])
+    assert Path(helper['target_asm_file']).read_text()=='\n'.join(helper['target_asm'])
 
 
 @pytest.mark.parametrize('configured', [False, True])
@@ -495,7 +527,7 @@ def test_wait_uses_authoritative_terminal_receipt(monkeypatch, state):
                                                             (False, True, 'accepted'), (False, True, 'rejected'),
                                                             (False, True, 'timeout')])
 @pytest.mark.parametrize('saved_proof', [False, True, 'stale', 'unversioned', 'ambiguous', 'linked-failure',
-                                      'catalog-alias', 'parked', 'carrier', 'reuse', 'mixed-invalid'])
+                                      'catalog-alias', 'parked', 'carrier', 'reuse', 'mixed-invalid', 'stale-parked-tag', 'held-stale-tag'])
 def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch, lose_owned, existing_owned, terminal, saved_proof):
     root = tmp_path / 'checkout'
     tree, overlay = root / 'tools/rbxgs/Client', root / 'work/overlay'
@@ -517,6 +549,8 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
             'features': {'native_reference_gate': 1}}
     manifest, owned = root / 'manifest.json', root / 'owned.json'
     manifest.write_text(json.dumps([{'addr': '00500001', 'score': 100, 'source_kind': 'snippet', 'unit': 'RBX::A'}]))
+    if saved_proof in ('stale-parked-tag','held-stale-tag'):
+        manifest.write_text(json.dumps([{'addr':'00500001','score':100,'unit':'RBX::OldTag'}]))
     owned.write_text(json.dumps({'owned_addrs': ['00500000'] if existing_owned else []}))
     sweep.integration.atomic_json(root / 'rebuild/2008-06/out/native-names.json', {})
     sweep.integration.atomic_json(root / 'work/integration/progress-native.json', {'addresses': []})
@@ -531,6 +565,10 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
                 return base
             if path == '/v1/integration':
                 return {'jobs': []}
+            if path == '/v1/integration?claims=1' and saved_proof in ('stale-parked-tag','held-stale-tag'):
+                return dict(inventory={'RBX::Carrier':['00500099']},parked_units=['RBX::OldTag'],claims=[
+                    dict(unit='RBX::OldTag',user='other',worker='other-pc',expires=sweep.time.time()+7200,state='claimed')
+                ] if saved_proof=='held-stale-tag' else [])
             if path == '/v1/integration?claims=1' and saved_proof in ('catalog-alias', 'parked', 'carrier', 'reuse'):
                 unit = 'RBX::Humanoid' if saved_proof == 'catalog-alias' else 'RBX::Carrier' if saved_proof == 'carrier' else 'RBX::A'
                 state = {'inventory': {unit: ['00500000' if saved_proof == 'carrier' else '00500001']},
@@ -650,7 +688,7 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         assert result['proposed_files'] == 0 and result['local_exact'] == 0
         assert generator.read_bytes() == original and '/v1/integration/claim' not in calls
         return
-    if saved_proof == 'parked':
+    if saved_proof in ('parked','held-stale-tag'):
         before = proposals.read_bytes()
         result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
         assert result['state'] == 'blocked' and '/v1/integration/claim' not in calls
@@ -781,4 +819,18 @@ def test_body_diff_handles_zero_displacement_symbol_with_scaled_index(monkeypatc
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda obj: [('symbol', bytes.fromhex('8b048500000000c3'), [3])])
     monkeypatch.setattr(sweep.match, 'target', lambda *args: (bytes.fromhex('8b0485aabbccddc3'), [3], None))
     assert sweep.body_diff(b'obj', 'symbol', '00500000') == 'identical after masking'
+
+def test_ownership_pairing_checks_referenced_data_and_preserves_unknown_ambiguity(monkeypatch):
+    from roc import native_sweep as sweep
+    symbol='?f@A@@QAEXXZ';hits=[dict(addr='00400000',symbol=symbol)]
+    monkeypatch.setattr(sweep.match,'coff_functions',lambda obj:[(symbol,b'code',[])])
+    monkeypatch.setattr(sweep.rebuild,'pair',lambda *a:[(symbol,b'code',['00400000','00400010'])])
+    monkeypatch.setattr(sweep.match,'coff_data_refs',lambda *a:[('rtti',b'Team',[])])
+    monkeypatch.setattr(sweep.match,'target',lambda client,addr:(addr.encode(),[],{}))
+    monkeypatch.setattr(sweep.match,'data_check',lambda client,addr,code,refs:([],[] if addr=='00400000' else ['wrong RTTI descriptor']))
+    assert sweep.ownership_candidates(b'obj',hits)=={'00400000':['00400000']}
+    monkeypatch.setattr(sweep.match,'data_check',lambda *a:([],[]))
+    assert sweep.ownership_candidates(b'obj',hits)=={'00400000':['00400000','00400010']}
+    monkeypatch.setattr(sweep.match,'coff_data_refs',lambda *a:[])
+    assert sweep.ownership_candidates(b'obj',hits)=={'00400000':['00400000','00400010']}
 
