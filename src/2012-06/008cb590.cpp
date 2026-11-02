@@ -1,13 +1,17 @@
-// from server: 84% by atomic.potato
-struct FlagStandService
-{
-    void *Find(void *);
-    void Update(void *);
+// from server: 100% by Intel
+extern "C" void* __stdcall sub_8cb190(void* arg);
+
+struct UnknownObject {
+    void __thiscall method(void* arg);
 };
 
-void FlagStandService::Update(void *arg)
-{
-    void *value = Find(arg);
-    if (value)
-        ((FlagStandService *)value)->Update(arg);
+struct FlagStandService {
+    void __thiscall func(void* arg);
+};
+
+void __thiscall FlagStandService::func(void* arg) {
+    void* result = sub_8cb190(arg);
+    if (result != 0) {
+        static_cast<UnknownObject*>(result)->method(arg);
+    }
 }

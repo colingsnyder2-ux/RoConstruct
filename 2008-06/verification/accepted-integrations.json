@@ -2915,6 +2915,18 @@
         ]
       },
       "timestamp": 1793466416.0030236
+    },
+    {
+      "job": "a713698e91454d33acfae94820286a79",
+      "patches": {
+        "App/util/RunStateOwner.cpp": [
+          [
+            "RunService::setRunState(RunState newState)\n\t{\n\t\tRunTransition transition(runState, newState);\n\t\trunState = newState;\n\n\t\tNotifier<RunService, RunState>::raise(newState);\n\t\tNotifier<RunService, RunTransition>::raise(transition);\n\t}",
+            "RunService::setRunState(RunState newState)\n\t{\n    if (newState == RS_RUNNING) {\n        if (runState != RS_NORMAL && runState != RS_PAUSED) return;\n    } else if (newState == RS_PAUSED) {\n        if (runState != RS_RUNNING) return;\n    } else if (newState == RS_NORMAL) {\n        unknown0x1b8 = 0.0;\n    }\n    RunState old = runState;\n    if (old != newState) {\n        runState = newState;\n        Notifier<RunService, RunState>::raise(newState);\n        Notifier<RunService, RunTransition>::raise(RunTransition(old, newState));\n    }\n}"
+          ]
+        ]
+      },
+      "timestamp": 1793576321.3478677
     }
   ],
   "initial_patches": {}

@@ -1,47 +1,46 @@
-// from server: 25% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8kernel/Link.cpp
+// from server: 91% by tajop
+struct Node;
 
-// Candidate translation unit (score above; library headers required).
-#include "v8kernel/Link.h"
-#include "v8kernel/Body.h"
+struct Container {
+    int pad0;
+    int pad4;
+    int pad8;
+    Node* head;
+    Node* forward(Node* node, int n);
+    Node* backward(Node* node, int n);
+};
 
-using namespace RBX;
+struct Iterator {
+    Container* container;
+    Node* node;
+    Iterator(Container* c, Node* p) : container(c), node(p) {}
+    Iterator& operator+=(int n);
+    Iterator operator+(int n) const;
+};
 
-Link::Link():body(NULL) {stateIndex = Body::getNextStateIndex();}
-
-Link::~Link()
-{
-}
-
-void Link::dirty()
-{
-	if (body)
-	{
-		RBXASSERT(body->getLink() == this);
-		body->getRoot()->advanceStateIndex();
-	}
-}
-
-const G3D::CoordinateFrame& Link::getChildInParent() const
-{
-	int bodyStateIndex = body->getParent()->getStateIndex();
-
-	if (stateIndex != bodyStateIndex)
-	{
-		computeChildInParent(childInParent);
-		stateIndex = bodyStateIndex;
-	}
-	return childInParent;
-}
-
-void RevoluteLink::computeChildInParent(G3D::CoordinateFrame& answer) const
-{
-    G3D::CoordinateFrame rotatedParentCoord(
-        Math::rotateAboutZ(parentCoord.rotation, jointAngle), 
-        parentCoord.translation);
-
-    answer = rotatedParentCoord * childCoordInverse;
+Iterator Iterator::operator+(int n) const {
+    Container* c = container;
+    Node* p = node;
+    Iterator tmp(c, p);
+    if (n > 0) {
+        p = c->forward(p, n);
+        tmp.node = p;
+        if (p == c->head) {
+            p = 0;
+            return Iterator(c, p);
+        }
+    } else if (n < 0) {
+        int m = -n;
+        if (m > 0) {
+            if (!p)
+                p = c->head;
+            p = c->backward(p, m);
+            return Iterator(c, p);
+        } else if (m < 0) {
+            tmp += -m;
+            p = tmp.node;
+            c = tmp.container;
+        }
+    }
+    return Iterator(c, p);
 }

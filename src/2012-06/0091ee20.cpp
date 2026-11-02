@@ -1,13 +1,17 @@
-// from server: 94% by atomic.potato
-extern "C" int __stdcall sub_751300(int);
-extern "C" int __stdcall sub_79b020(int);
+// from server: 100% by Intel
+// External function declarations
+extern "C" int __cdecl func_751300(int arg);
+extern "C" int __cdecl func_79b020(int arg);
 
-struct FilterHumanoidParts
-{
-    int f(int);
+struct FilterHumanoidParts {
+    static int __stdcall someFunction(int arg);
 };
 
-int FilterHumanoidParts::f(int value)
-{
-    return sub_79b020(sub_751300(value)) ? 1 : 2;
+int __stdcall FilterHumanoidParts::someFunction(int arg) {
+    int result1 = func_751300(arg);
+    int result2 = func_79b020(result1);
+    
+    // neg eax; sbb eax, eax; add eax, 2
+    // Returns 1 if result2 != 0, 2 if result2 == 0
+    return (result2 != 0) ? 1 : 2;
 }

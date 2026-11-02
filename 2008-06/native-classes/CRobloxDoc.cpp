@@ -5,13 +5,16 @@
 #include "v8tree/Verb.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"
+#include "v8datamodel/Workspace.h"
 #include "v8datamodel/ChangeHistoryService.h"
 #include "script/ScriptContext.h"
 #include "../native-headers/CRobloxDoc.h"
+#include "../native-headers/CSaveToRobloxDialog.h"
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/CWorkspace.h"
 #include "util/RunStateOwner.h"
 #include "util/Log.h"
+#include "util/StandardOut.h"
 #include "Network/Players.h"
 #include <exception>
 #include <fstream>
@@ -64,8 +67,8 @@ BEGIN_MESSAGE_MAP(CRobloxDoc, CDocument)
 END_MESSAGE_MAP()
 
 // Original 00428850 logs std::exception::what(); recovery/linking remains open.
-void reportDocumentCreateException(const std::exception&);
-void reportOpenException(const std::exception&);
+void reportDocumentException(const std::exception&);
+CString applicationBaseUrl();
 extern CRobloxDoc* currentDocument;
 void setCurrentDocument(int, CRobloxDoc*);
 // Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
@@ -240,6 +243,21 @@ void CRobloxDoc::handle_454920(CCmdUI* ui) {
     }
 }
 
+// 004545d0: collect Lua garbage and report allocator and thread totals.
+void CRobloxDoc::handle_4545d0() {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::ScriptContext* context = RBX::ServiceProvider::create<RBX::ScriptContext>(getDataModel().get());
+    if (context && context->allocator) {
+        context->gc();
+        size_t bytes, blocks;
+        context->allocator->getHeapStats(bytes, blocks);
+        std::string heap = RBX::Log::formatMem(bytes);
+        unsigned int threads = context->getThreadCount();
+        RBX::StandardOut::singleton()->print(RBX::MESSAGE_INFO,
+            "Script heap %s (%d blocks), %d threads", heap.c_str(), blocks, threads);
+    }
+}
+
 // 00454f30: enable abuse reporting when the players service supports it.
 void CRobloxDoc::handle_454f30(CCmdUI* ui) {
     RBX::DataModel::Lock lock(workspace->getDataModel());
@@ -254,6 +272,47 @@ void CRobloxDoc::handle_44f7c0() {
     if (dialog.DoModal() == IDOK) {
         ATL::CComBSTR filename((LPCSTR)dialog.GetPathName());
         workspace->SaveSelectionToFile(filename);
+    }
+}
+
+// 0044fc50 / 0044fcc0: open native publish dialogs.
+void CRobloxDoc::handle_44fc50() {
+    CPublishAsPlaceDialog dialog(workspace, 0);
+    dialog.DoModal();
+}
+void CRobloxDoc::handle_44fcc0() {
+    CSaveModelToRobloxDialog dialog(workspace, 0);
+    dialog.DoModal();
+}
+
+// 0044fd30: show the in-game abuse report dialog.
+void CRobloxDoc::handle_44fd30() {
+    CRobloxDHtmlDialog dialog(0x7b, applicationBaseUrl() + "/AbuseReport/InGameChat.aspx", 0);
+    dialog.SetExternalDispatch(workspace);
+    dialog.DoModal();
+}
+
+// 00455580: stop simulation, restore the saved place and rebuild joints.
+void CRobloxDoc::handle_455580() {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    if (getDataModel()->create<RBX::RunService>()->getRunState() != RBX::RS_NORMAL) {
+        documentRunService(getDataModel())->setRunState(RBX::RS_NORMAL);
+        getDataModel()->clearContents();
+        SerializerV2::load(savedState.get(), getDataModel().get());
+        getDataModel()->getWorkspace()->joinAllHack();
+        savedState.reset();
+    }
+}
+
+// 00450f30: insert a model file into the current place.
+void CRobloxDoc::handle_450f30() {
+    CString filter;
+    filter.LoadString(184);
+    CFileDialog dialog(TRUE, "rbxm", NULL, 6, filter, NULL, 0, TRUE);
+    if (dialog.DoModal() == IDOK) {
+        std::ifstream input(dialog.GetPathName(), std::ios::in | std::ios::binary);
+        RBX::DataModel::Lock lock(workspace->getDataModel());
+        workspace->insert(input, true);
     }
 }
 
@@ -314,7 +373,7 @@ BOOL CRobloxDoc::OnOpenDocument(LPCTSTR path) {
         history->setEnabled(true);
         return TRUE;
     } catch (const std::exception& error) {
-        reportOpenException(error);
+        reportDocumentException(error);
         ReportSaveLoadException(path, 0, FALSE, 0xf101);
         return FALSE;
     }
@@ -372,7 +431,7 @@ BOOL CRobloxDoc::OnNewDocument() {
     try {
         initializeCommands();
     } catch (std::exception& error) {
-        reportDocumentCreateException(error);
+        reportDocumentException(error);
         AfxMessageBox("An error occured while creating the document", MB_ICONEXCLAMATION, 0);
         return FALSE;
     }

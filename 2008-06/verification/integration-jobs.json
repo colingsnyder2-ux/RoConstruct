@@ -8425,5 +8425,43 @@
     "unit": "RBX::RunService",
     "updated": 1793571935.7499456,
     "user": "colin"
+  },
+  {
+    "created": 1793575500.7187946,
+    "id": "a713698e91454d33acfae94820286a79",
+    "model": "gpt-6.1-sol",
+    "patches": {
+      "App/util/RunStateOwner.cpp": [
+        [
+          "RunService::setRunState(RunState newState)\n\t{\n\t\tRunTransition transition(runState, newState);\n\t\trunState = newState;\n\n\t\tNotifier<RunService, RunState>::raise(newState);\n\t\tNotifier<RunService, RunTransition>::raise(transition);\n\t}",
+          "RunService::setRunState(RunState newState)\n\t{\n    if (newState == RS_RUNNING) {\n        if (runState != RS_NORMAL && runState != RS_PAUSED) return;\n    } else if (newState == RS_PAUSED) {\n        if (runState != RS_RUNNING) return;\n    } else if (newState == RS_NORMAL) {\n        unknown0x1b8 = 0.0;\n    }\n    RunState old = runState;\n    if (old != newState) {\n        runState = newState;\n        Notifier<RunService, RunState>::raise(newState);\n        Notifier<RunService, RunTransition>::raise(RunTransition(old, newState));\n    }\n}"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "6179c045d0b5813649e1101c9925ca1df62b584c1ec9eaa60c40a6af02b244d9",
+      "credits": 1,
+      "distinct_after": 9837,
+      "distinct_before": 9836,
+      "gains": [
+        "00554da0"
+      ],
+      "input_hash": "a39659ffad0bed8f125ace83fedbad0178a7296a19051c4f39a6fb037eacb72e",
+      "losses": [],
+      "new_distinct": [
+        "00554da0"
+      ],
+      "overlay_hash": "91c4f4075b764e41423fb2bf30dba6a1f9499d25aa011653f9b9077d28c48f37",
+      "owned_after": 3365,
+      "owned_before": 3364,
+      "rebased": false,
+      "submitted_revision": "6179c045d0b5813649e1101c9925ca1df62b584c1ec9eaa60c40a6af02b244d9"
+    },
+    "state": "accepted",
+    "unit": "RBX::RunService",
+    "updated": 1793576322.0106995,
+    "user": "colin"
   }
 ]

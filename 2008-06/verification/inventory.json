@@ -1,5 +1,5 @@
 {
-  "accepted_jobs": 101,
+  "accepted_jobs": 102,
   "clients": [
     {
       "client": "2008-06",
@@ -7,6 +7,6 @@
       "stored_sources": 22293
     }
   ],
-  "native_credits": 475,
+  "native_credits": 476,
   "sha256": {}
 }

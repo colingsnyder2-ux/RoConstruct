@@ -1,25 +1,16 @@
-// from server: 90% by atomic.potato
-extern "C" void __cdecl release(void *);
-
-struct S
-{
-    void clear();
-    void *a;
-    void *b;
-    void *c;
-    void *d;
-    void *e;
-    void *f;
-    void *g;
-    void *h;
-    void *i;
+// from server: 100% by tajop
+struct S {
+    char pad[0x1c];
+    void* first;
+    void* last;
+    void* end;
+    void f();
 };
 
-void S::clear()
-{
-    if (d)
-        release(d);
-    d = 0;
-    e = 0;
-    f = 0;
+void S::f() {
+    if (first)
+        operator delete(first);
+    first = 0;
+    last = 0;
+    end = 0;
 }

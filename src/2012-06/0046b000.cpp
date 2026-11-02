@@ -1,20 +1,23 @@
-// from server: 73% by atomic.potato
+// from server: 100% by tajop
+struct Desc;
+extern const Desc g_desc;
+struct Signal
+{
+    void fire(const Desc* d);
+};
 struct S
 {
+    char pad0[0xa0];
     int value;
-    int pad[39];
-    int mode;
-    int pad2[16];
-    int f(int);
+    char pad1[0x144 - 0xa4];
+    Signal changed;
+    void set(int v);
 };
-
-extern void G1_func_00414500();
-
-int S::f(int value)
+void S::set(int v)
 {
-    if (mode == value)
-        return 0;
-    mode = value;
-    G1_func_00414500();
-    return 0;
+    if (v != value)
+    {
+        value = v;
+        changed.fire(&g_desc);
+    }
 }

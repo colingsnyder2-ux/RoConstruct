@@ -30,7 +30,7 @@ namespace RBX
 			{
 			}
 		};
-		
+
 		Players::Players()
 			: players(std::vector<boost::shared_ptr<Instance>>()),
 			  peer(NULL),

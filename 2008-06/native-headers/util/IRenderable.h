@@ -3,7 +3,7 @@
 #include "AppDraw/SelectState.h"
 #include "util/IndexArray.h"
 
-namespace RBX 
+namespace RBX
 {
 	class IRenderableBucket;
 
@@ -71,7 +71,7 @@ namespace RBX
 	private:
 		IndexArray<IRenderable, &IRenderable::indexFunc2d> renderable2ds;
 		IndexArray<IRenderable, &IRenderable::indexFunc3d> renderable3ds;
-	  
+
 	protected:
 		void onAdded(IRenderable* iR);
 		void onRemoving(IRenderable* iR);

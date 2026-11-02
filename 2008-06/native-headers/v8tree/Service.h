@@ -26,6 +26,7 @@ public:
     template<class Class> static size_t getClassIndex();
     template<class Class> Class* find() const;
     template<class Class> Class* create() const;
+    template<class Class> static Class* create(const Instance* context);
     template<class Class> static Class* create(const ServiceProvider* provider) {
         return provider ? provider->create<Class>() : NULL;
     }
@@ -42,7 +43,12 @@ public:
     bool isNull() const;
     operator T*();
     operator const T*() const;
-    T* operator->();
-    const T* operator->() const;
+    T* operator->() { return createService(true); }
+    const T* operator->() const { return createService(true); }
+private:
+    __declspec(noinline) T* createService(bool) const {
+        if (service == NULL) service = shared_from<T>(ServiceProvider::create<T>(context));
+        return service.get();
+    }
 };
 }

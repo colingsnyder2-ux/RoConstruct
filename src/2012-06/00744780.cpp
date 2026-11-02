@@ -1,16 +1,26 @@
-// from server: 72% by atomic.potato
-extern "C" void __stdcall sub_7444E0(void *, void *);
-
-struct S {
-    int f(void *);
+// from server: 100% by tajop
+struct bad_lexical_cast_base {
+    virtual void what_fn() const;
+    int data[4];
 };
 
-int S::f(void *arg)
-{
-    sub_7444E0(this, arg);
-    *(unsigned long *)((char *)this + 0x28) = 0x00B43C34;
-    *(unsigned long *)this = 0x00BAA978;
-    *(unsigned long *)((char *)this + 0x14) = 0x00BAA970;
-    *(unsigned long *)((char *)this + 0x28) = 0x00BAA960;
-    return 0;
+struct exception_base {
+    virtual void get_diag() const;
+    int data[4];
+};
+
+struct error_info_injector : bad_lexical_cast_base, exception_base {
+    error_info_injector(error_info_injector const& x);
+};
+
+struct clone_base {
+    virtual void clone() const;
+};
+
+struct clone_impl : error_info_injector, clone_base {
+    clone_impl(clone_impl const& x);
+    virtual void clone() const;
+};
+
+clone_impl::clone_impl(clone_impl const& x) : error_info_injector(x), clone_base() {
 }
