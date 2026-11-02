@@ -51,7 +51,7 @@
     "rebuild/2008-06/native-headers/CInstanceExplorer.h": "e6a583b07fb992bb08dd6bda7a41b3c96b873b69f5f51b22623d971a11e872d0",
     "rebuild/2008-06/native-headers/CSettingsPropGrid.h": "b48a74305fd58efb144651e77a2550124f293d4be35b8ba7175c55555f49a081"
   },
-  "object_sha256": "ac7cd0e34a7405f5d75226bba0e87ccde39ac847ecd6c96a212642f4e51651cb",
+  "object_sha256": "f9ec94b0b96879f2ca0b1656c08d3bbbd237bf7bf7ebf2be91b1b6c706cf5a79",
   "layout": {
     "size": "0x3d4",
     "splitter": "0x74 (CXTSplitterWnd, 0x118)",

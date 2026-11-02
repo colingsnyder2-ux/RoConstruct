@@ -45,7 +45,7 @@
     "rebuild/2008-06/native-headers/CUploadPlaceDialog.h": "85d76acc708a03fefd2712edb70218cc1b72ca2669991a14602835fea8d7354d",
     "rebuild/2008-06/native-headers/CSaveToRobloxDialog.h": "b2df25b8c64a5a0cdb842017bec5f63f17ab8c3664c053426638fde4565d1369"
   },
-  "object_sha256": "bed8275b978f134813fd706e8891e045382cff7d2358d2ad78ca9c62b33e7133",
+  "object_sha256": "8a955a2ab9c2acafe6f45aa3e670fc4768a5f4bdfd72e1fd89d92c5e35b0decd",
   "layout": {
     "size": "0x130 (no own members)",
     "evidence": "constructor 0044f5c0 stores only vtables 0081757c/00817550; deleting destructor 0044f5a0 forwards to ~CSaveToRobloxDialog; RTTI base chain; stack-only construction at 004553b2, so the size rests on the CSaveToRobloxDialog layout"
