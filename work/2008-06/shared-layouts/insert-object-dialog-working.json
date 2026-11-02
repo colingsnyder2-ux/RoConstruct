@@ -40,14 +40,14 @@
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
     "rebuild/2008-06/tests/record_native_insert_object_dialog.py": "f434c49f7efb3a85ba95324c3ae648b32b90a0ef2a8bf9bde783bd09a398dac9",
-    "rebuild/2008-06/native-classes/CInsertObjectDialog.cpp": "cbf925481cf5a7cfab599e6069f9deb4271178ec80affa6f84ca0756a4e95c97",
+    "rebuild/2008-06/native-classes/CInsertObjectDialog.cpp": "e49c6e94d82a885a91be3d7562533eab107d000b806afaaa2e6729fd903c66b1",
     "rebuild/2008-06/tests/NativeInsertObjectDialogLayout.cpp": "922691178e346a91ed6a7fd3b321e7777a491ae7bc3651e03818a0cd4d1ea0f3",
     "rebuild/2008-06/native-classes/CClassImages.cpp": "d699077e651939b779874f945f86f8e024b2e88618af537a60de488fde87ce86",
     "rebuild/2008-06/native-headers/CInsertObjectDialog.h": "deb184be6b2e95dd0cd4c0bbf57839d63a32bee65d8785ab7306b6ebe20ae79a",
     "rebuild/2008-06/native-headers/CClassImages.h": "6e745f384762545234b801f6669af380dbd4c5dbe849c8faa8bb17d393419ed0"
   },
-  "object_sha256": "996dde43dc0944d8e5444f360748d8a120f7a134e7bef5652799f502ff13e9d6",
-  "images_object_sha256": "a44b6cdf7703dbc670979c559ab8e1a34b3fe5f6038ddca6947ba782bc2b8c67",
+  "object_sha256": "eb517beae3d99db6327c69aea295273c5604d7273fd7be1087ff221a693c9388",
+  "images_object_sha256": "878d0533ae5ee50ef9d4345ec9b2887efdae4771b05e035db5f35c038624d9de",
   "layout": {
     "size": "0xfc",
     "parent": "0x74",
