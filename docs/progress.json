@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02 04:53 UTC",
+ "updated": "2026-11-02 05:51 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -300,10 +300,10 @@
      "user": "colin",
      "matched": 3108,
      "mining_points": 685188,
-     "points": 685536,
-     "native_integrated": 348,
+     "points": 685537,
+     "native_integrated": 349,
      "submissions": 23217,
-     "last": 1793590562.3414364
+     "last": 1793596686.3825567
     },
     {
      "user": "king_originala",
@@ -761,14 +761,14 @@
    "started": true,
    "functions": 39655,
    "matched": 17368,
-   "partial": 10732,
+   "partial": 10739,
    "source_matched": 9796,
    "mined_matched": 7572,
    "bytes": 6736062,
    "matched_bytes": 1635994,
    "source_bytes": 1429871,
    "mined_bytes": 206123,
-   "partial_bytes": 1863388,
+   "partial_bytes": 1864785,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -801,11 +801,11 @@
     {
      "user": "Intel",
      "matched": 111,
-     "mining_points": 29049,
-     "points": 29049,
+     "mining_points": 29462,
+     "points": 29462,
      "native_integrated": 0,
-     "submissions": 687,
-     "last": 1793594957.8388696
+     "submissions": 698,
+     "last": 1793597217.6164882
     },
     {
      "user": "intel",
@@ -890,10 +890,10 @@
    "user": "colin",
    "matched": 29774,
    "mining_points": 6613926,
-   "points": 6614274,
-   "native_integrated": 348,
+   "points": 6614275,
+   "native_integrated": 349,
    "submissions": 201566,
-   "last": 1793590562.3414364
+   "last": 1793596686.3825567
   },
   {
    "user": "atomic.potato",
@@ -961,11 +961,11 @@
   {
    "user": "Intel",
    "matched": 118,
-   "mining_points": 29490,
-   "points": 29490,
+   "mining_points": 29903,
+   "points": 29903,
    "native_integrated": 0,
-   "submissions": 704,
-   "last": 1793594957.8388696
+   "submissions": 715,
+   "last": 1793597217.6164882
   },
   {
    "user": "intel",
