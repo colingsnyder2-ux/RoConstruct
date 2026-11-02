@@ -2957,6 +2957,14 @@
   [
    "@replace",
    "../../../rebuild/2008-06/native-world/App/v8world/Clump.cpp"
+  ],
+  [
+   "// FUNCTION: WEBSERVICE 0x10117df0\nbool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType)\n{\n\tif (parentCandidate == NULL || child == NULL) {\n\t\treturn false;\n\t}\n\n",
+   "// FUNCTION: WEBSERVICE 0x10117df0\nbool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType)\n{\n\tif (parentCandidate == NULL || child == NULL || !joint->getActive()) {\n\t\treturn false;\n\t}\n\n"
+  ],
+  [
+   "// FUNCTION: WEBSERVICE 0x10117f60\nPrimitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* sibling, SearchType searchType)\n{\n\tbool found = false;\n\n\tfor (Joint* joint = parent->getFirstJoint(); joint != NULL; joint = parent->getNextJoint(joint)) {\n\t\tPrimitive* other = parent == joint->getPrimitive(0) ? joint->getPrimitive(1) : joint->getPrimitive(0);\n\n\t\tif (isParent(parent, other, joint, searchType)) {\n\t\t\tif (found) {\n\t\t\t\treturn other;\n\t\t\t}\n\n\t\t\tif (other == sibling) {\n\t\t\t\tfound = true;\n\t\t\t}\n\t\t}\n\t}\n",
+   "// FUNCTION: WEBSERVICE 0x10117f60\nPrimitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* sibling, SearchType searchType)\n{\n\tJoint* siblingJoint = NULL;\n\n\tfor (Joint* joint = parent->getFirstJoint(); joint != NULL; joint = parent->getNextJoint(joint)) {\n\t\tPrimitive* other = parent == joint->getPrimitive(0) ? joint->getPrimitive(1) : joint->getPrimitive(0);\n\n\t\tif (isParent(parent, other, joint, searchType)) {\n\t\t\tif (other == sibling) {\n\t\t\t\tsiblingJoint = joint;\n\t\t\t}\n\t\t\telse if (siblingJoint != NULL) {\n\t\t\t\treturn other;\n\t\t\t}\n\t\t}\n\t}\n"
   ]
  ],
  "App/v8world/AssemblyStage.cpp": [

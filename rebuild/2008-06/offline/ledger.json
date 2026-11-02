@@ -1334,6 +1334,23 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-0c98eca3ca9c64a9",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8world/Clump.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793627342,
+   "receipt": {
+    "gains": [
+     "00647430",
+     "006475a0"
+    ],
+    "losses": []
+   }
   }
  ]
 }
