@@ -196,6 +196,10 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
     final=(shared/REL).read_text()
     assert all('A::f%d(){return %d;}'%(n,n+100 if n in seen else n) in final for n in range(10))
     assert len(list((private/'work/native-recovery/receipts').glob('*.json')))==cap
+    if cap==1:
+        assert control.native_budget_blocked
+        assert recovery.run(config,control,lambda *a,**kw:None)['attempted']==0
+        assert len(seen)==cap  # Refused reservations cannot restart cancelled assignments.
 
 
 def test_submission_adapter_uses_current_canonical_method_and_rechecks_before_export(tmp_path,monkeypatch):
@@ -261,6 +265,26 @@ def test_gui_agent_mode_defers_full_dependency_build_and_routes_real_recovery(mo
     gui_worker.native_loop(config,control,lambda event,**kw:events.append((event,kw)))
     assert calls[0]['build_dependencies'] is False
     assert next(row for kind,row in events if kind=='native_recovery')['merged']==3
+
+
+@pytest.mark.parametrize('queued',[False,True])
+def test_gui_budget_refusal_stops_new_work_but_drains_existing_jobs(monkeypatch,queued):
+    from roc import integration,providers
+    config=dict(gui_worker.DEFAULTS,lease_mode='native',native_generation='agent',model='codex:gpt-6-luna',user='tester',server='localhost:8765',cloud_allowed=True)
+    control=gui_worker.Control(config,lambda *a,**kw:None);calls=[]
+    monkeypatch.setattr(providers,'available',lambda _:True)
+    monkeypatch.setattr('roc.rebuild_install.prepare',lambda **kw:None)
+    monkeypatch.setattr(gui_worker.worker,'save_settings',lambda **kw:None)
+    monkeypatch.setattr(integration,'command',lambda _:None)
+    monkeypatch.setattr(control,'wait',lambda *a:None)
+    def run(current,ctl,emit):
+        calls.append(True);ctl.native_budget_blocked=True
+        if len(calls)>2:ctl.command({'action':'stop'})  # Bound the test if retry prevention regresses.
+        return dict(attempted=int(len(calls)==1),remote_pending=int(queued and len(calls)==1))
+    monkeypatch.setattr(recovery,'run',run)
+    gui_worker.native_loop(config,control,lambda *a,**kw:None)
+    assert control.stopping and len(calls)==(2 if queued else 1)
+    assert control.budget.tokens==control.budget.requests==0
 
 
 def test_explicit_new_body_appends_without_replacing_other_agents_source(tmp_path):

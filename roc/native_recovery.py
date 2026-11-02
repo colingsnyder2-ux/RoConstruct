@@ -895,7 +895,7 @@ def run(config, control, emit):
                     if hosted is None:raise ValueError('Explicit recovery target must be published by the host before collaborative mining')
                     task.update(hosted)
         with control.budget._lock:
-            if any(limit is not None and used>=limit for used,limit in ((control.budget.requests,control.budget.max_requests),(control.budget.tokens,control.budget.max_tokens))):
+            if getattr(control,'native_budget_blocked',False) or any(limit is not None and used>=limit for used,limit in ((control.budget.requests,control.budget.max_requests),(control.budget.tokens,control.budget.max_tokens))):
                 available=[]
         headers = {k:v for k,v in before.items() if Path(k).suffix in ('.h','.hpp','.inl')}
         library_inputs = sorted((p.name,str(p.resolve())) for p in libs.LIBS.iterdir() if p.is_dir()) if libs.LIBS.is_dir() else []
@@ -1064,7 +1064,11 @@ def run(config, control, emit):
                 if control.before_lease(slot) is None:
                     claims.update(key,owner,'cancelled',record)
                     return
-                reserved = control.budget.reserve(len(json.dumps(evidence).encode()) + (2048 if config['max_tokens']=='auto' else config['max_tokens']))
+                # CLI accounting settles measured multi-turn usage after completion.
+                # Reserve estimated tokens, including instructions, rather than JSON bytes.
+                input_bytes=len(json.dumps(evidence,ensure_ascii=False).encode())+len(RULES.encode())
+                record['estimated_input_tokens']=(input_bytes+2)//3+512
+                reserved = control.budget.reserve(record['estimated_input_tokens'] + (2048 if config['max_tokens']=='auto' else config['max_tokens']))
                 usage = dict(input_tokens=0, output_tokens=0, usage_reported=False)
                 try:
                     usage = run_codex(folder, config['model'], config['native_agent_minutes']*60, lambda: control.stopping or lease_lost.is_set(),
@@ -1097,6 +1101,7 @@ def run(config, control, emit):
                 record['blocker'] = str(error)
                 record['agent_blocker'] = read_agent_blocker(folder)
                 if getattr(error,'category','') == 'cloud_budget':
+                    control.native_budget_blocked=True
                     claims.update(key,owner,'cancelled',record)
                 elif getattr(error,'category','') in providers.FATAL_ERRORS:
                     claims.update(key, owner, 'cancelled', record)
