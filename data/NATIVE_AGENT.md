@@ -1148,3 +1148,11 @@ when checking static parked-family notes. Genuine source/catalog owners still ob
 their parked status, and every active foreign lease remains fenced, including its
 mined tag. This lets a proven method with an unrelated old tag reach normal linked
 preflight; it does not change declarations, linking gates or credit rules.
+
+Worker 38 includes original assembly for up to three relocated function-pointer
+targets, including once-only initializers missed by a direct-call list. Short excerpts
+keep prompts bounded; complete assembly stays in read-only evidence files. Data
+pointers are excluded. Trace these helpers before trusting mined symbol labels:
+unrelated functions can share identical relocation-masked bodies. Missing helper
+definitions remain explicit blockers; body-only workers do not gain header/layout
+ownership or permission to change other methods.
