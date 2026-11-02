@@ -192,7 +192,10 @@ td.user { font: 600 15px Inter, sans-serif; color: var(--cyan); }
 .tree summary small, .tree .fn small { color: var(--dim); }
 .tree .fn { margin-left: 32px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tree .st { display: inline-block; width: 92px; font-weight: 600; }
-.st.integrated, .st-n.integrated { color: #58a6ff; } .st.inactive, .st-n.inactive { color: #a371f7; } .st.draft, .st-n.draft { color: #db61a2; }
+.st.integrated, .st-n.integrated { color: #58a6ff; } .st.working, .st-n.working, .agent.live { color: #f0883e; }
+.st.error, .st-n.error { color: #f85149; }
+.tree .link-err { white-space: normal; margin-left: 16px; }
+.tree .agent { color: var(--dim); font-size: 12px; margin-left: 6px; } .st.inactive, .st-n.inactive { color: #a371f7; } .st.draft, .st-n.draft { color: #db61a2; }
 .st.exact, .st-n.exact { color: #3fb950; } .st.partial, .st-n.partial { color: #d29922; } .st.unmined, .st-n.unmined { color: var(--dim); }
 /* client page bits */
 .back { font: 14px var(--mono); display: inline-block; margin-top: 28px; }
@@ -892,17 +895,22 @@ function wireLibraries(onMap) {
 }
 
 // Class tree: namespace > unit > function, status per function. Methods render lazily on open.
-const TREE_STATES = ["integrated", "inactive", "draft", "exact", "partial", "unmined"];
-function treeStatus(f, nativeSet, inactive) {
+const TREE_STATES = ["integrated", "working", "inactive", "draft", "exact", "partial", "unmined"];
+function treeStatus(f, nativeSet, inactive, working) {
   const a = hex(f[0]);
-  return nativeSet.has(a) ? "integrated" : inactive[a] ? (inactive[a][1] ? "inactive" : "draft")
+  return nativeSet.has(a) ? "integrated" : working[a] ? "working" : inactive[a] ? (inactive[a][1] ? "inactive" : "draft")
     : f[2] === 100 ? "exact" : f[2] ? "partial" : "unmined";
 }
 function renderTree(data, byUnit, nativeSet, native) {
   const box = document.getElementById("tree"), input = document.getElementById("tree-filter");
-  const names = native?.names || {}, inactive = native?.inactive || {};
+  const names = native?.names || {}, inactive = native?.inactive || {}, working = native?.working || {}, activity = native?.activity || {};
   const fname = f => names[hex(f[0])]?.[0] || inactive[hex(f[0])]?.[0] || f[5]?.[2] || "sub_" + hex(f[0]);
-  const status = f => treeStatus(f, nativeSet, inactive);
+  const status = f => treeStatus(f, nativeSet, inactive, working);
+  const linkFam = native?.link_errors?.families || {};
+  // family "RBX::Foo" or "TToolVerb::isChecked" -> unit whose name matches its class part
+  const linkFor = unit => Object.entries(linkFam).filter(([fam]) => { const cls = fam.split("::").slice(0, fam.startsWith("RBX::") ? 2 : 1).join("::"); return cls === unit || unit.endsWith("::" + cls) || unit.startsWith(cls + "<"); });
+  const linkHtml = rows => rows.length ? `<div class="fn link-err">${rows.map(([fam, e]) => `<details><summary><span class="st error">link</span>${esc(fam)} <small>${e.symbols.length} unresolved · ${esc(e.objects.join(", "))}</small></summary>${e.symbols.map(x => `<div class="fn"><small>${esc(x)}</small></div>`).join("")}</details>`).join("")}</div>` : "";
+  const agent = unit => { const a = activity[unit]; return a ? ` <span class="agent ${a[0] === "working" ? "live" : ""}" title="${esc(a[0])}">${esc(a[0] === "working" ? "● " + a[1] + " working" : a[0].startsWith("parked") ? "parked" : a[0])}${a[0].startsWith("parked") ? ": " + esc(a[0].slice(8)) : ""}</span>` : ""; };
   const ns = new Map();
   for (const [u, fs] of byUnit) {
     const unit = data.units[u], i = unit.lastIndexOf("::"), key = i < 0 ? "(global)" : unit.slice(0, i);
@@ -918,18 +926,20 @@ function renderTree(data, byUnit, nativeSet, native) {
       if (!units.length) return "";
       return `<details ${q ? "open" : ""}><summary>${esc(key)} ${summary(counts(units.flatMap(x => x[2])))}</summary>${units
         .sort((a, b) => a[1].localeCompare(b[1])).map(([u, unit, fs]) =>
-          `<details data-unit="${u}"><summary>${esc(unit)} ${summary(counts(fs))}</summary></details>`).join("")}</details>`;
+          `<details data-unit="${u}"><summary>${esc(unit)} ${summary(counts(fs))}${agent(unit)}${linkFor(unit).length ? ` <span class="st-n error">${linkFor(unit).reduce((n, [, e]) => n + e.symbols.length, 0)} link errors</span>` : ""}</summary></details>`).join("")}</details>`;
     }).join("") || "<p>No classes match.</p>";
   };
   box.addEventListener("toggle", e => {
     const d = e.target;
     if (!d.open || !d.dataset.unit || d.dataset.drawn) return;
     d.dataset.drawn = 1;
-    d.insertAdjacentHTML("beforeend", [...byUnit.get(+d.dataset.unit)].sort((a, b) => a[0] - b[0]).map(f => {
-      const st = status(f), receipt = inactive[hex(f[0])]?.[2];
+    d.insertAdjacentHTML("beforeend", linkHtml(linkFor(data.units[+d.dataset.unit])) + [...byUnit.get(+d.dataset.unit)].sort((a, b) => a[0] - b[0]).map(f => {
+      const st = status(f), w = working[hex(f[0])], receipt = w ? w[0] + " · " + w[1] : inactive[hex(f[0])]?.[2];
       return `<div class="fn" title="${esc(fname(f))}"><span class="st ${st}">${st}</span>${hex(f[0])} ${esc(fname(f))} <small>${f[1]} B · mined ${f[2]}%${receipt ? " · " + esc(receipt) : ""}</small></div>`;
     }).join(""));
   }, true);
+  const trials = native?.link_errors?.trials || [];
+  document.getElementById("link-summary").innerHTML = trials.length ? `<p class="note">${trials.map(t => `Link trial <code>${esc(t.receipt)}</code>: exit ${esc(t.link_exit)} · ${esc(t.error_lines)} error lines${t.revision ? " · rev " + esc(t.revision) : ""}`).join("<br>")}</p>` + linkHtml(Object.entries(linkFam).filter(([fam]) => !data.units.some(u => linkFor(u).some(([f]) => f === fam)))).replace('class="fn link-err"', 'class="tree link-err"') : "";
   input.oninput = draw;
   draw();
 }
@@ -1016,8 +1026,9 @@ async function client(name) {
     <div id="live-mining">${native && views.daily==="integration" ? integrationDaily(native, true) : miningGraph({...latest,
       source_matched: latest.source_matched ?? data.funcs.filter(f => f[2] === 100 && f[5]).length,
       mined_matched: latest.mined_matched ?? data.funcs.filter(f => f[2] === 100 && !f[5]).length}, !!native)}</div>
-    <div class="head"><h2><small>Tree</small>Classes</h2><p>Every unit and every function. <b>integrated</b>: in the linked rebuild · <b>inactive</b>: native code exists, receipt-proven exact, not integrated · <b>draft</b>: native code exists, not yet exact · <b>exact</b>/<b>partial</b>/<b>unmined</b>: mining only.${native?.commit ? ` Built from commit <code>${esc(native.commit)}</code> · ${esc(native.updated)}.` : ""}</p></div>
+    <div class="head"><h2><small>Tree</small>Classes</h2><p>Every unit and every function. <b>integrated</b>: in the linked rebuild · <b>working</b>: an agent (Codex, Claude, …) holds a live claim · <b>inactive</b>: native code exists, receipt-proven exact, not integrated · <b>draft</b>: native code exists, not yet exact · <b>exact</b>/<b>partial</b>/<b>unmined</b>: mining only.${native?.commit ? ` Built from commit <code>${esc(native.commit)}</code> · ${esc(native.updated)}.` : ""}</p></div>
     <div class="controls"><input id="tree-filter" placeholder="Filter classes, e.g. CRobloxDoc"></div>
+    <div id="link-summary"></div>
     <div class="tree" id="tree"></div>
     ${leaderboard(latest.leaderboard, "", name)}
     <div class="head"><h2 id="remaining-title">${native && views.remaining==="integration" ? "Functions not integrated" : "Functions Remaining"}</h2><p>Click a column to sort · 25 per page.</p></div>

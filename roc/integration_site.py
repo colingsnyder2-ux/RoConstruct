@@ -94,6 +94,24 @@ def inactive_code(root):
     return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] for a, v in sorted(found.items())}
 
 
+def link_errors(root):
+    """Unresolved-symbol families from linked trial receipts (*blocker-ranking.json): family -> errors."""
+    out = {"trials": [], "families": {}}
+    for path in sorted((root / "work" / CLIENT / "shared-layouts").glob("*blocker-ranking*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            continue
+        out["trials"].append({"receipt": path.name, "link_exit": data.get("link_exit"),
+                              "error_lines": data.get("error_lines"), "revision": str(data.get("receipt_revision", ""))[:10]})
+        for row in data.get("ranked", []):
+            entry = out["families"].setdefault(row["family"], {"symbols": [], "objects": [], "receipts": []})
+            entry["symbols"] = sorted(set(entry["symbols"]) | {s["name"] for s in row.get("symbols", [])})
+            entry["objects"] = sorted(set(entry["objects"]) | set(row.get("objects", [])))
+            entry["receipts"].append(path.name)
+    return out
+
+
 def commit(root):
     head = root / ".git" / "HEAD"
     try:
@@ -116,6 +134,17 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
                           "ORDER BY updated DESC").fetchall()
         leaders = db.execute("SELECT user,model,COUNT(*) FROM integration_credit WHERE client=? GROUP BY user,model "
                              "ORDER BY COUNT(*) DESC", (CLIENT,)).fetchall()
+        # agent (Codex/Claude/...) claims: latest per unit; unexpired ones are live work
+        now = datetime.now(timezone.utc).timestamp()
+        activity, working = {}, {}
+        for unit, user, worker, expires, state, addresses in db.execute(
+                "SELECT unit,user,worker,expires,state,addresses FROM integration_claims WHERE client=? ORDER BY rowid",
+                (CLIENT,)):
+            live = expires > now and state == "claimed"
+            activity[unit] = ["working" if live else state, user, worker]
+            if live:
+                for addr in json.loads(addresses or "[]"):
+                    working[str(addr).lower().removeprefix("0x").zfill(8)] = [user, worker, unit]
     finally:
         db.close()
     owned = owned_inventory(root, extra_reports)
@@ -148,6 +177,11 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
     data = {"client": CLIENT, "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
             "groups": groups,
             "commit": commit(root),
+            "link_errors": link_errors(root),
+            # unit -> [latest claim state ("working", "released", "parked: reason", ...), user, worker]
+            "activity": activity,
+            # addr -> [user, worker, unit] for unexpired agent claims
+            "working": working,
             "native": sorted(native),
             "owned": sorted(set(owned) & functions.keys()),
             "owned_waiting": sorted((set(owned) & functions.keys()) - native),
