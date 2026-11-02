@@ -516,3 +516,5 @@ affected by anything on the P6 branch.
 - 2026-11-02 Codex: promote evidenced CWorkspace COM map, protected FinalConstruct, IWorkspace and listener method declarations into inactive shared header. Original 00402730, 00450370, 00401910 and COM map entries matched in trial; full vtable, implementation and runtime ABI remain under verification.
 
 - 2026-11-02 Codex: add nonvirtual DataModel::initializeContents(bool) and static createDataModel(bool) declarations from original 0057a9f0/0057c100. No storage or vtable change; bodies and full DataModel ABI remain under verification.
+
+- 2026-11-02 Claude (fork mewpokemons/RoConstruct): new inactive files only: native-headers/CInsertObjectDialog.h, CClassImages.h, native-classes/CInsertObjectDialog.cpp, tests/NativeInsertObjectDialogLayout.cpp, tests/record_native_insert_object_dialog.py. No shared header, layout or vtable edits; no active build or swap. compareItems calls the existing Name::compare(Name&, Name&) declaration (original 0041faa0) through const_cast because the shared declaration takes non-const references.

@@ -1,0 +1,259 @@
+{
+  "class": "CInsertObjectDialog",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_insert_object_dialog.py": "ab2758ac56dd22b2db9292053310ce1eb94fbe0202cab4e67084423174836862",
+    "rebuild/2008-06/native-classes/CInsertObjectDialog.cpp": "cbf925481cf5a7cfab599e6069f9deb4271178ec80affa6f84ca0756a4e95c97",
+    "rebuild/2008-06/tests/NativeInsertObjectDialogLayout.cpp": "922691178e346a91ed6a7fd3b321e7777a491ae7bc3651e03818a0cd4d1ea0f3",
+    "rebuild/2008-06/native-headers/CInsertObjectDialog.h": "deb184be6b2e95dd0cd4c0bbf57839d63a32bee65d8785ab7306b6ebe20ae79a",
+    "rebuild/2008-06/native-headers/CClassImages.h": "1bf66ca00a6d084a1ff5645d53a7f53d151cae0ad4139667a88803a9e7b0d89b"
+  },
+  "object_sha256": "fc2d7df3b13ca48c92c2bab059eac85c4d498ed634e4b04b5884d13e9dfa60f3",
+  "layout": {
+    "size": "0xfc",
+    "parent": "0x74",
+    "instances": "0x7c",
+    "className": "0x94",
+    "selected": "0x98",
+    "images": "0xa0 (CClassImages, 8 bytes)",
+    "list": "0xa8 (CListCtrl)",
+    "evidence": "CRuntimeClass 0080f2e0 size; constructor 0041fe00 and destructor 0041ff40 member order; compile-time sizeof/offsetof test"
+  },
+  "methods": [
+    {
+      "address": "0041fe00",
+      "symbol": "??0CInsertObjectDialog@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@PAVCWnd@@@Z",
+      "size": 307,
+      "exact": true,
+      "verified_targets": {
+        "??0CDialog@@QAE@IPAVCWnd@@@Z": "mfc90.dll!??0CDialog@@QAE@IPAVCWnd@@@Z",
+        "??_7CInsertObjectDialog@@6B@": "0x80f48c",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+        "??0CClassImages@@QAE@XZ": "0x413230",
+        "??0CWnd@@QAE@XZ": "mfc90.dll!??0CWnd@@QAE@XZ",
+        "??_7CListCtrl@@6B@": "0x80f304"
+      },
+      "local_eh": [
+        "__ehhandler$??0CInsertObjectDialog@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@PAVCWnd@@@Z"
+      ]
+    },
+    {
+      "address": "0041ff40",
+      "symbol": "??1CInsertObjectDialog@@UAE@XZ",
+      "size": 239,
+      "exact": true,
+      "verified_targets": {
+        "??_7CInsertObjectDialog@@6B@": "0x80f48c",
+        "??1CListCtrl@@UAE@XZ": "mfc90.dll!??1CListCtrl@@UAE@XZ",
+        "??1CClassImages@@UAE@XZ": "0x412f30",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0",
+        "??1CDialog@@UAE@XZ": "mfc90.dll!??1CDialog@@UAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??1CInsertObjectDialog@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "004200f0",
+      "symbol": "??_GCInsertObjectDialog@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CInsertObjectDialog@@UAE@XZ": "0x41ff40",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041f9c0",
+      "symbol": "?GetRuntimeClass@CInsertObjectDialog@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCInsertObjectDialog@CInsertObjectDialog@@2UCRuntimeClass@@B": "0x80f2e0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041f9b0",
+      "symbol": "?_GetBaseClass@CInsertObjectDialog@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CDialog@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CDialog@@SGPAUCRuntimeClass@@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041fcb0",
+      "symbol": "?GetMessageMap@CInsertObjectDialog@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CInsertObjectDialog@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x80f44c"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041f9d0",
+      "symbol": "?OnInitDialog@CInsertObjectDialog@@UAEHXZ",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?OnInitDialog@CDialog@@UAEHXZ": "mfc90.dll!?OnInitDialog@CDialog@@UAEHXZ",
+        "?SetFocus@CWnd@@QAEPAV1@XZ": "mfc90.dll!?SetFocus@CWnd@@QAEPAV1@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041f9f0",
+      "symbol": "?OnNMDblclk@CInsertObjectDialog@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00420580",
+      "symbol": "?DoDataExchange@CInsertObjectDialog@@UAEXPAVCDataExchange@@@Z",
+      "size": 444,
+      "exact": true,
+      "verified_targets": {
+        "?DDX_Control@@YGXPAVCDataExchange@@HAAVCWnd@@@Z": "mfc90.dll!?DDX_Control@@YGXPAVCDataExchange@@HAAVCWnd@@@Z",
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?GetItemText@CListCtrl@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@HH@Z": "mfc90.dll!?GetItemText@CListCtrl@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@HH@Z",
+        "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z": "mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "?GetItemData@CListCtrl@@QBEKH@Z": "mfc90.dll!?GetItemData@CListCtrl@@QBEKH@Z",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "?ModifyStyle@CWnd@@QAEHKKI@Z": "mfc90.dll!?ModifyStyle@CWnd@@QAEHKKI@Z",
+        "?FromHandle@CImageList@@SGPAV1@PAU_IMAGELIST@@@Z": "mfc90.dll!?FromHandle@CImageList@@SGPAV1@PAU_IMAGELIST@@@Z",
+        "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0x40ad20",
+        "?addClasses@CInsertObjectDialog@@QAEXABVClassDescriptor@Reflection@RBX@@@Z": "0x4202b0",
+        "?compareItems@CInsertObjectDialog@@SGHJJJ@Z": "0x41fbb0"
+      },
+      "local_eh": [
+        "__ehhandler$?DoDataExchange@CInsertObjectDialog@@UAEXPAVCDataExchange@@@Z"
+      ]
+    },
+    {
+      "address": "0041fbb0",
+      "symbol": "?compareItems@CInsertObjectDialog@@SGHJJJ@Z",
+      "size": 46,
+      "exact": true,
+      "verified_targets": {
+        "?compare@Name@RBX@@SAHAAV12@0@Z": "0x41faa0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041fa10",
+      "symbol": "??_GCListCtrl@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CListCtrl@@UAE@XZ": "mfc90.dll!??1CListCtrl@@UAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    }
+  ],
+  "vtable": {
+    "address": "0080f48c",
+    "slots": 91,
+    "verified_slots": 84,
+    "unverified_slots": {
+      "1": [
+        "??_ECInsertObjectDialog@@UAEPAXI@Z",
+        "0x4200f0"
+      ],
+      "2": [
+        "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+        "0x70bdf0"
+      ],
+      "3": [
+        "?AssertValid@CObject@@UBEXXZ",
+        "0x47d410"
+      ],
+      "4": [
+        "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+        "0x70bdf0"
+      ],
+      "66": [
+        "?BeginModalState@CWnd@@UAEXXZ",
+        "0x401120"
+      ],
+      "67": [
+        "?EndModalState@CWnd@@UAEXXZ",
+        "0x401130"
+      ],
+      "81": [
+        "?Create@CDialog@@UAEHIPAVCWnd@@@Z",
+        "0x401140"
+      ]
+    }
+  },
+  "runtime_class": {
+    "address": "0080f2e0",
+    "size": "0xfc",
+    "base_getter": "0041f9b0"
+  },
+  "message_map": {
+    "address": "0080f44c",
+    "entries": [
+      {
+        "message": "WM_NOTIFY",
+        "code": "NM_DBLCLK",
+        "id": 1000,
+        "handler": "0041f9f0"
+      }
+    ]
+  },
+  "open": [
+    "addClasses 004202b0: needs Reflection::Metadata::Class (+0x104 base, +0x130..0x132 flags) and the 0041fcf0 settings singleton (+0x130/+0x131) layouts",
+    "CClassImages constructor 00413230 / destructor 00412f30 bodies",
+    "Name::compare 0041faa0 body (shared util/Name.h)"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; addClasses and dependent class bodies remain open. No active build, swap or credit."
+}
