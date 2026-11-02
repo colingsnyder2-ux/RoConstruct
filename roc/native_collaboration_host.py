@@ -157,7 +157,7 @@ class Host:
         if progress.exists():integrated.update(json.loads(progress.read_text(encoding='utf-8'))['addresses'])
         tasks=[dict(t,available=t['target'] not in busy and verified.get(t['target'])!=t['signature'],
                     integration_state='integrated' if t['addr'] in integrated else 'unintegrated') for t in self.cached['tasks']]
-        tasks.sort(key=lambda t:(t['integration_state']=='integrated',not bool(t['integration_mapping'])))
+        tasks.sort(key=lambda t:(t['integration_state']=='integrated',not bool(t['integration_mapping']),t.get('include_profile')!='accepted'))
         return dict(self.cached,tasks=tasks)
 
     def claim(self,user,body):

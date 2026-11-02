@@ -1126,3 +1126,8 @@ before AI; it is kept only when the assigned target is exact with no losses, and
 reports `roc native-assertions` with zero model requests. Harder bodies still use
 the selected Codex model. Source matches and feed reports remain zero credit until
 the integration server accepts actual gains; player swaps still require P5/P6.
+
+Worker 35 directly rechecks assigned tiny symbols that bulk discovery intentionally
+skips, preserving byte/data checks and whole-binary ownership gates. Scheduling
+prefers linkable accepted-source targets; agents start with focused excerpts and
+read only relevant ranges to reduce prompt and tool-output tokens.

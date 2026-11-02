@@ -59,7 +59,9 @@ def accepted_task(service):
 
 
 def test_accepted_source_seeds_exclusively_and_fences_only_its_declaration_context(service):
-    task=accepted_task(service);catalog=service.catalog()
+    task=accepted_task(service)
+    (service.root/'tools/rbxgs/Client/App/test/A.cpp').write_text(BEFORE)
+    catalog=service.catalog();assert catalog['tasks'][0]['method']=='B::f'
     first=next(t for t in catalog['tasks'] if t['method']=='B::f')
     assert first['integration_mapping']=='App/test/B.cpp'
     source=service.root/task['file'];assert 'return 1;' in source.read_text()
