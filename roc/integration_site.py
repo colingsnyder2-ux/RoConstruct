@@ -28,6 +28,47 @@ def coverage(root, scores, native):
     return groups, functions
 
 
+def inactive_code(root):
+    """addr -> [symbol, exact, receipt] from inactive native trial receipts (code exists, not integrated)."""
+    found = {}
+    def walk(node, name, stamp):
+        if isinstance(node, dict):
+            addr = node.get("address") or node.get("original_address")
+            symbol = node.get("symbol") or node.get("source_symbol")
+            exact = node.get("relocation_normalized_exact", node.get("exact"))
+            if isinstance(addr, str) and isinstance(symbol, str) and isinstance(exact, bool):
+                addr = addr.lower().removeprefix("0x").zfill(8)
+                old = found.get(addr)
+                # exact beats not-exact; otherwise the newest receipt wins
+                if not old or (exact, stamp) > (old[1], old[3]):
+                    found[addr] = [symbol, exact, name, stamp]
+            for value in node.values():
+                walk(value, name, stamp)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value, name, stamp)
+    for path in (root / "work" / CLIENT / "shared-layouts").glob("*.json"):
+        try:
+            walk(json.loads(path.read_text(encoding="utf-8")), path.name, path.stat().st_mtime)
+        except (ValueError, OSError):
+            continue
+    # native source with an address-named method but no receipt yet (e.g. CRobloxDoc::handle_453c30)
+    for path in sorted((root / "rebuild" / CLIENT).glob("*/*.cpp")):
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for cls, addr in re.findall(r"\b(\w+)::handle_([0-9a-f]{6,8})\b", text):
+            found.setdefault(addr.zfill(8), ["%s::handle_%s" % (cls, addr), False, path.relative_to(root).as_posix(), 0])
+    return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] for a, v in sorted(found.items())}
+
+
+def commit(root):
+    head = root / ".git" / "HEAD"
+    try:
+        ref = head.read_text().strip()
+        return (root / ".git" / ref[5:]).read_text().strip()[:10] if ref.startswith("ref: ") else ref[:10]
+    except OSError:
+        return ""
+
+
 def build(root=ROOT, log=print):
     out = root / "rebuild" / CLIENT / "out"
     native_path = root / "work/integration/progress-native.json"
@@ -71,7 +112,10 @@ def build(root=ROOT, log=print):
     sources = json.loads(links_path.read_text(encoding='utf-8')) if links_path.exists() else {}
     data = {"client": CLIENT, "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
             "groups": groups,
+            "commit": commit(root),
             "native": sorted(native),
+            # inactive native code: addr -> [decorated symbol, receipt-proven exact, receipt file]
+            "inactive": {a: v for a, v in inactive_code(root).items() if a not in native},
             "sources": {a: value for a, value in sources.items() if a in native},
             # addr -> [readable name, decorated symbol, rebuilt score (100 = integrated)]
             "names": {a: [readable(v["symbol"]), v["symbol"], 100 if a in native else v.get("score")] for a, v in sorted(shown.items())},
