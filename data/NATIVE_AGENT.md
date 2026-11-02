@@ -1,5 +1,17 @@
 # Native integration with an agent (Codex, Claude)
 
+## Accepted preflight reuse and clear status (Worker 45)
+
+After the server accepts an overlay, a matching local candidate can become the
+next preflight baseline. Reuse requires the same verifier/compiler implementation,
+reproduced accepted overlay, full input fingerprint and passing gate receipt.
+The next candidate still builds and runs all gates. Changed inputs require a
+fresh baseline. Diagnostic last-success reports are outputs, not cache inputs.
+Upgrading verifier code also requires a fresh baseline.
+
+GUI/console distinguish blocked attempts, no local gain and exact proofs awaiting
+verification. A failed trial is never reported as awaiting verification.
+
 ## Code and data ownership (Worker 44)
 
 Discovery, linked ownership counts and status use the same whole-binary pairing:
