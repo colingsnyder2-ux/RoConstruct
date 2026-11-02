@@ -1970,18 +1970,23 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                    (c["user"], c["worker"]) != (settings["user"], worker_name)}
         max_claims = base.get("limits", {}).get("claims", 16)
         for proposal in proposals:
-            labels = {h["claim_unit"] for h in proposal["witnesses"]}
+            proof_labels = {h["claim_unit"] for h in proposal["witnesses"]}
+            labels = set(proof_labels)
             labels.update(by_addr[h["addr"]]["unit"] for h in proposal["witnesses"] if h["addr"] in by_addr)
+            catalog_labels = {catalog_units[h['addr']] for h in proposal['witnesses'] if h['addr'] in catalog_units}
             needed = set()
             for hit in proposal["witnesses"]:
                 unit = catalog_units.get(hit["addr"], by_addr.get(hit["addr"], {}).get("unit", hit["claim_unit"]))
                 needed.add(unit if re.fullmatch(r"RBX::(?:\w+::)*\w+", unit) else hit["claim_unit"])
-            if (labels | needed) & (parked | foreign):
-                blocked.update((labels | needed) & (parked | foreign))
+            # A stale RTTI/factory tag may name an unrelated parked family. Only
+            # actual proof/catalog owners inherit that stop; all live leases stay fenced.
+            conflicts = ((proof_labels | catalog_labels) & parked) | ((labels | needed) & foreign)
+            if conflicts:
+                blocked.update(conflicts)
                 blockers_path = output / 'blockers.json'
                 blockers = json.loads(blockers_path.read_text()) if blockers_path.exists() else {}
                 blockers.setdefault('scheduling-claim', []).append(dict(file=proposal['file'],
-                    units=sorted((labels | needed) & (parked | foreign)), accepted=False))
+                    units=sorted(conflicts), accepted=False))
                 integration.atomic_json(blockers_path, blockers)
                 continue
             if inventory is not None:
@@ -2037,7 +2042,7 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
                         additions[path].append(pair)
         if not additions or not used:
             summary.update(state="blocked", blocked_units=sorted(blocked),
-                           reason="Classes held by another worker" if blocked else "No native claim available")
+                           reason="Classes parked or held by another worker" if blocked else "No native claim available")
             return finish(summary)
         additions = integration.canonical_patches(additions, base["overlay"])
         renewed = api.call("/v1/integration/renew", {"user": settings["user"], "claims": [units[u]["id"] for u in sorted(used)]})

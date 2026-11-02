@@ -509,7 +509,7 @@ def test_wait_uses_authoritative_terminal_receipt(monkeypatch, state):
                                                             (False, True, 'accepted'), (False, True, 'rejected'),
                                                             (False, True, 'timeout')])
 @pytest.mark.parametrize('saved_proof', [False, True, 'stale', 'unversioned', 'ambiguous', 'linked-failure',
-                                      'catalog-alias', 'parked', 'carrier', 'reuse', 'mixed-invalid'])
+                                      'catalog-alias', 'parked', 'carrier', 'reuse', 'mixed-invalid', 'stale-parked-tag', 'held-stale-tag'])
 def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkeypatch, lose_owned, existing_owned, terminal, saved_proof):
     root = tmp_path / 'checkout'
     tree, overlay = root / 'tools/rbxgs/Client', root / 'work/overlay'
@@ -531,6 +531,8 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
             'features': {'native_reference_gate': 1}}
     manifest, owned = root / 'manifest.json', root / 'owned.json'
     manifest.write_text(json.dumps([{'addr': '00500001', 'score': 100, 'source_kind': 'snippet', 'unit': 'RBX::A'}]))
+    if saved_proof in ('stale-parked-tag','held-stale-tag'):
+        manifest.write_text(json.dumps([{'addr':'00500001','score':100,'unit':'RBX::OldTag'}]))
     owned.write_text(json.dumps({'owned_addrs': ['00500000'] if existing_owned else []}))
     sweep.integration.atomic_json(root / 'rebuild/2008-06/out/native-names.json', {})
     sweep.integration.atomic_json(root / 'work/integration/progress-native.json', {'addresses': []})
@@ -545,6 +547,10 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
                 return base
             if path == '/v1/integration':
                 return {'jobs': []}
+            if path == '/v1/integration?claims=1' and saved_proof in ('stale-parked-tag','held-stale-tag'):
+                return dict(inventory={'RBX::Carrier':['00500099']},parked_units=['RBX::OldTag'],claims=[
+                    dict(unit='RBX::OldTag',user='other',worker='other-pc',expires=sweep.time.time()+7200,state='claimed')
+                ] if saved_proof=='held-stale-tag' else [])
             if path == '/v1/integration?claims=1' and saved_proof in ('catalog-alias', 'parked', 'carrier', 'reuse'):
                 unit = 'RBX::Humanoid' if saved_proof == 'catalog-alias' else 'RBX::Carrier' if saved_proof == 'carrier' else 'RBX::A'
                 state = {'inventory': {unit: ['00500000' if saved_proof == 'carrier' else '00500001']},
@@ -664,7 +670,7 @@ def test_pipeline_recompiles_minimal_fix_before_claim_and_apply(tmp_path, monkey
         assert result['proposed_files'] == 0 and result['local_exact'] == 0
         assert generator.read_bytes() == original and '/v1/integration/claim' not in calls
         return
-    if saved_proof == 'parked':
+    if saved_proof in ('parked','held-stale-tag'):
         before = proposals.read_bytes()
         result = sweep.run({'native_sweep': config}, 'test', output=root / 'work/sweep', log=lambda _: None)
         assert result['state'] == 'blocked' and '/v1/integration/claim' not in calls
