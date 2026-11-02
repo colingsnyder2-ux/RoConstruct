@@ -46,6 +46,77 @@ def test_ten_pcs_claim_one_method_only_once(service):
     assert not service.catalog()['tasks'][0]['available']
 
 
+def accepted_task(service):
+    name='App/test/B.cpp'
+    path=service.root/'tools/rbxgs/Client'/name;path.parent.mkdir(parents=True)
+    path.write_text('#include "test/B.h"\nint B::f(){return 1;}\n')
+    service.promotions.overlay.write_text(json.dumps({'App/include/test/B.h':[['','struct B { int f(); };']]}))
+    task=dict(file=(recovery.NATIVE/'native-classes/accepted'/name).as_posix(),canonical_file=name,
+              include_profile='accepted',method='B::f',addr='00400001')
+    manifest=service.root/'work/native-recovery/tasks.json';manifest.parent.mkdir(parents=True)
+    manifest.write_text(json.dumps([task]))
+    return task
+
+
+def test_accepted_source_seeds_exclusively_and_fences_only_its_declaration_context(service):
+    task=accepted_task(service);catalog=service.catalog()
+    first=next(t for t in catalog['tasks'] if t['method']=='B::f')
+    assert first['integration_mapping']=='App/test/B.cpp'
+    source=service.root/task['file'];assert 'return 1;' in source.read_text()
+    (service.root/'rebuild/2008-06/native-headers/A.h').write_text('struct A{int f();int ownerChange;};')
+    assert next(t for t in service.catalog()['tasks'] if t['method']=='B::f')['signature']==first['signature']
+    source.write_text(source.read_text().replace('return 1;','return 77;'))
+    current=service.catalog();assert 'return 77;' in current['files'][task['file']]
+    previous=next(t for t in current['tasks'] if t['method']=='B::f')['signature']
+    service.promotions.overlay.write_text(json.dumps({'App/include/test/B.h':[['','struct B { int f(); int g(); };']]}))
+    fresh=next(t for t in service.catalog()['tasks'] if t['method']=='B::f')
+    assert fresh['signature']!=previous and 'return 77;' in source.read_text()
+
+
+@pytest.mark.parametrize('name',['../outside.cpp','App/test/roc_fake.cpp','App/include/B.h'])
+def test_accepted_recovery_rejects_noncanonical_units_before_seeding(service,name):
+    task=accepted_task(service);task['canonical_file']=name
+    (service.root/'work/native-recovery/tasks.json').write_text(json.dumps([task]))
+    with pytest.raises(ValueError,match='genuine canonical'):service.catalog()
+    assert not (service.root/task['file']).exists()
+
+
+def test_accepted_profile_cross_pc_upload_gets_independent_same_context_proof(service,tmp_path,monkeypatch):
+    from roc import native_sweep as sweep,worker,match,native_refs
+    task=accepted_task(service);service.promotions.recovery=service
+    service.promotions.baseline=lambda:dict(revision='base')
+    class Api:
+        def __init__(self,*a):pass
+        def close(self):pass
+    monkeypatch.setattr(worker,'Api',Api)
+    monkeypatch.setattr(sweep,'native_context',lambda *a:SimpleNamespace())
+    monkeypatch.setattr(sweep,'Matcher',lambda *a:None)
+    monkeypatch.setattr(match,'_functions',lambda *a:{})
+    monkeypatch.setattr(native_refs,'import_checks',lambda *a:[])
+    monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='pending-mapping'))
+    contexts=[]
+    def compile(root,rel,context,*a,**kw):
+        assert kw['include_profile']=='accepted'
+        assert (context.accepted_headers/'App/include/test/B.h').read_text()=='struct B { int f(); };'
+        contexts.append(True);text=(root/rel).read_text();obj=root/'proof.obj';obj.write_bytes(b'independent object')
+        return dict(ok=True,target_exact='return 3;' in text,hits=[],losses=[],object=str(obj),symbol='?f@B@@QAEHXZ')
+    monkeypatch.setattr(recovery,'compile_probe',compile)
+    catalog=service.catalog();published=next(t for t in catalog['tasks'] if t['method']=='B::f')
+    request=dict(target=published['target'],signature=published['signature'],worker='pc2')
+    assert service.claim('Colin',request)==dict(claimed=False,reason='worker-update-required')
+    lease=service.claim('Colin',dict(request,include_profiles=['owner','accepted']))
+    before=(service.root/task['file']).read_text()
+    service.submit('Colin',body(lease,model='terra',candidate=before.replace('return 1;','return 3;')))
+    result=service.process(service.take())
+    assert result['receipt']['state']=='merged' and len(contexts)==2
+    assert 'return 3;' in (service.root/task['file']).read_text()
+    assert (service.root/REL).read_text()==BEFORE
+    context=client.materialize_canonical_headers(catalog,tmp_path/'pc2')
+    assert (context/'App/include/test/B.h').read_text()=='struct B { int f(); };'
+    with pytest.raises(ValueError,match='Invalid native probe header revision'):
+        client.materialize_canonical_headers(dict(catalog,canonical_revision='0'*64),tmp_path/'bad')
+
+
 def test_ten_distinct_methods_cross_pc_no_duplicates(service,monkeypatch):
     p=service.root/REL;p.write_text('\n'.join('int A::f%d(){return %d;}'%(n,n) for n in range(10)))
     monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=REL,method='A::f%d'%n,addr='%08x'%(0x400000+n)) for n in range(10)])

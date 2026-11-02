@@ -62,11 +62,27 @@ class Host:
                    for p in inputs if Path(p).suffix in ('.cpp','.h','.hpp','.inl')}
             names_path=self.root/recovery.NATIVE/'out/native-names.json'
             names=json.loads(names_path.read_text()) if names_path.exists() else {}
-            texts={p:t for p,t in files.items() if '/tests/' not in p}
+            texts={p:t for p,t in files.items() if '/tests/' not in p and '/native-classes/accepted/' not in p}
             tasks=recovery.nominations(self.root,texts,names)
+            patches=json.loads(registry.read_text(encoding='utf-8')) if registry.exists() else {}
+            canonical_headers={rel:integration.overlay_text(canonical/'tools/rbxgs/Client',rel,patches,workspace=canonical)
+                               for rel in patches if Path(rel).suffix in ('.h','.hpp','.inl')}
+            canonical_revision=integration.digest(canonical_headers)
             if manifest.exists():
                 extra=json.loads(manifest.read_text(encoding='utf-8'))
                 if not isinstance(extra,list):raise ValueError('Host task manifest must be a list')
+                from roc.native_collaboration import seed_missing
+                for task in extra:
+                    if task.get('include_profile')!='accepted':continue
+                    name=task.get('canonical_file','')
+                    if not re.fullmatch(r'App/[\w-]+/[\w-]+\.cpp',name) or Path(name).name.startswith('roc_'):
+                        raise ValueError('Accepted recovery needs a genuine canonical C++ unit')
+                    rel=(recovery.NATIVE/'native-classes/accepted'/name).as_posix()
+                    if task.get('file')!=rel:raise ValueError('Accepted recovery source path differs from canonical unit')
+                    text=integration.overlay_text(canonical/'tools/rbxgs/Client',name,patches,workspace=canonical)
+                    if task.get('method') not in sweep.methods(text):raise ValueError('Accepted recovery method missing from canonical source')
+                    seed_missing(self.root,{rel:text})
+                    files[rel]=(self.root/rel).read_text(encoding='utf-8-sig')
                 tasks+=extra
             headers={p:recovery.digest(t.encode()) for p,t in files.items() if Path(p).suffix in ('.h','.hpp','.inl')}
             project=json.loads(project_registry.read_text(encoding='utf-8')) if project_registry.exists() else {}
@@ -110,12 +126,12 @@ class Host:
                 target=integration.digest([task['file'].casefold(),method,task['addr']])
                 if target in seen:continue
                 seen.add(target)
-                task.update(target=target,signature=integration.digest([text,headers,probe_revision,files.get(task.get('translation_unit'))]),scope='method-body-only',class_name=method.rsplit('::',1)[0])
+                context=[canonical_revision] if task.get('include_profile')=='accepted' else [headers,probe_revision]
+                task.update(target=target,signature=integration.digest([text,context,files.get(task.get('translation_unit'))]),scope='method-body-only',class_name=method.rsplit('::',1)[0])
                 clean.append(task)
             # Prefer bodies that can use the existing independent integration route.
             mappings={}
             tree=canonical/'tools/rbxgs/Client'
-            patches=json.loads(registry.read_text(encoding='utf-8')) if registry.exists() else {}
             sources={p.relative_to(tree).as_posix() for p in tree.glob('App/*/*.cpp')}
             sources.update(p for p in patches if p.startswith('App/') and p.endswith('.cpp'))
             sources.update(p.relative_to(tree).as_posix() for p in (tree/'App/include').rglob('*') if p.suffix in ('.h','.hpp','.inl'))
@@ -130,6 +146,7 @@ class Host:
             if any(not Path(p).exists() or [Path(p).stat().st_size,Path(p).stat().st_mtime_ns]!=stamp for p,stamp in inputs.items()):
                 raise ValueError('Native inputs changed while publishing; refresh catalog')
             self.cached=dict(revision=integration.digest(files),files=files,tasks=clean,probe_headers=probe_headers,probe_revision=probe_revision,
+                canonical_headers=canonical_headers,canonical_revision=canonical_revision,
                 classes=sorted({t['class_name'] for t in clean}),layout_policy='owner-only; no invented fields',lease_seconds=TTL)
             self.cache_key=key
         with self.store.lock:
@@ -149,6 +166,8 @@ class Host:
         catalog=self.catalog()
         task=next((t for t in catalog['tasks'] if t['target']==body.get('target') and t['signature']==body.get('signature')),None)
         if task is None:raise ValueError('Unknown or changed target; refresh catalog')
+        if task.get('include_profile')=='accepted' and 'accepted' not in body.get('include_profiles',[]):
+            return dict(claimed=False,reason='worker-update-required')
         packet=dict(task=task,original=catalog['files'][task['file']])
         now=time.time()
         with self.store.lock,self.store.db as db:
@@ -221,10 +240,11 @@ class Host:
         try:
             context=sweep.native_context({},api);base=self.promotions.baseline()
             matcher=sweep.Matcher(set(match._functions('2008-06')))
-            from roc.native_collaboration import materialize_probe_headers
+            from roc.native_collaboration import materialize_probe_headers,materialize_canonical_headers
             published=self.catalog()
             probe_context=materialize_probe_headers(published,folder/'context')
             if probe_context:context.probe_includes=[probe_context]
+            context.accepted_headers=materialize_canonical_headers(published,folder/'canonical-context')
             def prove(snapshot,rel):
                 unit=task.get('translation_unit')
                 if unit and Path(unit).name.startswith('NativeRecovery'):
@@ -234,10 +254,11 @@ class Host:
                     target=snapshot_path(snapshot,unit)
                     target.parent.mkdir(parents=True,exist_ok=True)
                     target.write_text(probe,encoding='utf-8')
-                if self.catalog().get('probe_revision')!=published.get('probe_revision'):
+                revision='canonical_revision' if task.get('include_profile')=='accepted' else 'probe_revision'
+                if self.catalog().get(revision)!=published.get(revision):
                     raise ValueError('Probe declarations changed; candidate retained for fresh verification')
-                result=recovery.compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],translation_unit=task.get('translation_unit'))
-                if self.catalog().get('probe_revision')!=published.get('probe_revision'):
+                result=recovery.compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'))
+                if self.catalog().get(revision)!=published.get(revision):
                     raise ValueError('Probe declarations changed during compilation; candidate retained')
                 if result.get('target_exact'):
                     refs=native_refs.import_checks(Path(result['object']).read_bytes(),result['symbol'],task['addr'])

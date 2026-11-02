@@ -1115,3 +1115,14 @@ unverified data; full command logs remain saved privately. Public inline canonic
 methods can map through their unique same-name owner C++ unit or sole genuine
 consumer; ambiguous consumers
 stay pending. No shared header layouts are edited by this mapping.
+
+Worker 34 adds host-selected accepted-source targets under `native-classes/accepted/`.
+Each starts from genuine accepted canonical C++, uses separately pinned read-only
+headers and the canonical compiler profile, and keeps the same fenced method leases,
+fresh host proof, guarded body merge and independent integration submission gates.
+Existing native files and owner headers are never replaced. Older Workers cannot
+claim these targets until updated. A focused assertion-removal compiler pass runs
+before AI; it is kept only when the assigned target is exact with no losses, and
+reports `roc native-assertions` with zero model requests. Harder bodies still use
+the selected Codex model. Source matches and feed reports remain zero credit until
+the integration server accepts actual gains; player swaps still require P5/P6.

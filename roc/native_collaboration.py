@@ -33,6 +33,8 @@ class Remote:
         payload['workspace']=str(folder)
         context=materialize_probe_headers(payload,folder/'context')
         if context:payload['probe_context']=str(context)
+        canonical=materialize_canonical_headers(payload,folder/'canonical-context')
+        if canonical:payload['canonical_context']=str(canonical)
         if not isinstance(files, dict) or len(files)>4096 or len(json.dumps(files).encode())>integration.MAX_OVERLAY_BYTES:
             raise ValueError('Invalid shared native snapshot size')
         if len({rel.casefold() for rel in files})!=len(files):raise ValueError('Case-colliding shared source paths')
@@ -45,7 +47,7 @@ class Remote:
         return payload
 
     def claim(self, task):
-        return self.call('claim', dict(target=task['target'], signature=task['signature']))
+        return self.call('claim', dict(target=task['target'], signature=task['signature'],include_profiles=['owner','accepted']))
 
     def renew(self, lease):
         return self.call('renew',dict(lease=lease['lease'],worker=lease.get('worker',self.worker)))
@@ -63,6 +65,11 @@ class Remote:
 
     def close(self):
         self.api.close()
+
+
+def materialize_canonical_headers(payload, directory):
+    return materialize_probe_headers(dict(probe_headers=payload.get('canonical_headers',{}),
+                                         probe_revision=payload.get('canonical_revision')),directory)
 
 
 def materialize_probe_headers(payload, directory):
