@@ -70,8 +70,7 @@ namespace RBX
 				setDesiredState(computeDesiredState(), provider);
 	}
 
-	void Tool::setGripUp(const G3D::Vector3& v) { setGrip(withUp(grip, v)); }
-	void Tool::setGripRight(const G3D::Vector3& v) { setGrip(withRight(grip, v)); }
+	// Tool::setGripUp/setGripRight: native (Tool.cpp)
 
 	void Tool::upTo_HasHandle() { connectTouchEvent(); }
 	void Tool::downFrom_HasHandle() { handleTouched.disconnect(); }
@@ -80,12 +79,7 @@ namespace RBX
 	void Tool::upTo_Activated() {}
 	void Tool::downFrom_Activated() {}
 
-	// undo upTo_Equipped: drop the right-grip weld, listen for pickups again
-	void Tool::downFrom_Equipped()
-	{
-		dropWeld(weld);
-		connectTouchEvent();
-	}
+	// Tool::downFrom_Equipped: native (Tool.cpp)
 
 	// walk one state at a time toward the desired state, as Accoutrement::setDesiredState
 	void Tool::setDesiredState(ToolState desiredState, const ServiceProvider* serviceProvider)

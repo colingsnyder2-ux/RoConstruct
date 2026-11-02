@@ -2578,5 +2578,31 @@
     "#include \"v8datamodel/JointInstance.h\"\n#include \"v8datamodel/ModelInstance.h\"\n#include \"v8datamodel/Workspace.h\"\n#include \"v8datamodel/Selection.h\"\n#include \"v8world/World.h\"\n#include \"Network/Players.h\"\n#include \"AppDraw/DrawAdorn.h\"\n"
    ]
   ]
+ },
+ {
+  "App/include/reflection/signal.h": [
+   [
+    "\t\t\t\treturn boost::signals::connection();\n\t\t\t}\n\t\t\tbool empty(const SignalSource* source)",
+    "\t\t\t\treturn boost::signals::connection();\n\t\t\t}\n\t\t\tboost::signals::connection connect(SignalSource* source, const boost::slot<boost::function<CallbackSignature>>& slot, int group)\n\t\t\t{\n\t\t\t\tif (source)\n\t\t\t\t\treturn sig(*source).connect(group, slot);\n\n\t\t\t\treturn boost::signals::connection();\n\t\t\t}\n\t\t\tbool empty(const SignalSource* source)"
+   ]
+  ],
+  "App/v8datamodel/Tool.cpp": [
+   [
+    "\t\tc.rotation.setColumn(2, z);\n\n\t\tsetGrip(c);\n\t}\n\n\tconst PartInstance* Tool::getHandleConst() const",
+    "\t\tc.rotation.setColumn(2, z);\n\n\t\tsetGrip(c);\n\t}\n\n\tvoid Tool::setGripUp(const G3D::Vector3& v)\n\t{\n\t\tG3D::CoordinateFrame c = grip;\n\t\tG3D::Vector3 col0 = c.rotation.getColumn(0);\n\t\tG3D::Vector3 oldZ = c.rotation.getColumn(2);\n\n\t\tG3D::Vector3 y = v.direction();\n\t\tG3D::Vector3 yc = y;\n\t\tG3D::Vector3 oldX = col0;\n\n\t\tG3D::Vector3 z = oldX.cross(yc);\n\t\tz.unitize();\n\n\t\t\n\t\tG3D::Vector3 yy = y;\n\t\tG3D::Vector3 zc = z;\n\t\tG3D::Vector3 x = yy.cross(zc);\n\t\tx.unitize();\n\t\t\n\t\tc.rotation.setColumn(0, x);\n\t\tc.rotation.setColumn(1, y);\n\t\tc.rotation.setColumn(2, z);\n\n\t\tsetGrip(c);\n\t}\n\n\tvoid Tool::setGripRight(const G3D::Vector3& v)\n\t{\n\t\tG3D::CoordinateFrame c = grip;\n\t\tG3D::Vector3 col1 = c.rotation.getColumn(1);\n\t\tG3D::Vector3 oldZ = c.rotation.getColumn(2);\n\n\t\tG3D::Vector3 x = v.direction();\n\t\tG3D::Vector3 xc = x;\n\t\tG3D::Vector3 oldY = col1;\n\n\t\tG3D::Vector3 z = xc.cross(oldY);\n\t\tz.unitize();\n\n\t\tG3D::Vector3 xx = x;\n\t\tG3D::Vector3 zc = z;\n\t\tG3D::Vector3 y = zc.cross(xx);\n\t\ty.unitize();\n\t\t\n\t\tc.rotation.setColumn(0, x);\n\t\tc.rotation.setColumn(1, y);\n\t\tc.rotation.setColumn(2, z);\n\n\t\tsetGrip(c);\n\t}\n\n\tvoid Tool::downFrom_Equipped()\n\t{\n\t\tModelInstance* character = NULL;\n\t\tif (weld)\n\t\t{\n\t\t\tif (PartInstance* part0 = weld->getPart0())\n\t\t\t\tcharacter = dynamic_cast<ModelInstance*>(part0->getParent());\n\t\t\tweld->setParent(NULL);\n\t\t\tweld.reset();\n\t\t}\n\n\t\tif (PartInstance* handle = getHandle())\n\t\t{\n\t\t\thandle->setCanCollide(true);\n\t\t\tif (Humanoid::modelIsCharacter(character))\n\t\t\t{\n\t\t\t\tG3D::CoordinateFrame location = character->getLocation();\n\t\t\t\tG3D::Vector3 pos = location.translation;\n\t\t\t\tpos.y += 4;\n\t\t\t\tG3D::Vector3 dest = location.lookVector() * 8 + pos;\n\t\t\t\thandle->moveToPoint(dest);\n\t\t\t\thandle->setRotationalVelocity(G3D::Vector3(1, 1, 1));\n\t\t\t}\n\t\t}\n\n\t\tconnectTouchEvent();\n\t}\n\n\tconst PartInstance* Tool::getHandleConst() const"
+   ],
+   [
+    "\t\tRBXASSERT(Humanoid::modelIsCharacter(getParent()));\n\n\t\tcharacterChildAdded = Instance::event_childAdded.connect(getParent(), boost::bind(&Tool::onEvent_AddedBackend, this, _1));\n\t\tcharacterChildRemoved = Instance::event_childRemoved.connect(getParent(), boost::bind(&Tool::onEvent_RemovedBackend, this, _1));",
+    "\t\tcharacterChildAdded = Instance::event_childAdded.connect(getParent(), boost::bind(&Tool::onEvent_AddedBackend, this, _1), 10);\n\t\tcharacterChildRemoved = Instance::event_childRemoved.connect(getParent(), boost::bind(&Tool::onEvent_RemovedBackend, this, _1), 10);"
+   ],
+   [
+    "handleTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Tool::onEvent_HandleTouched, this, _1));",
+    "handleTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Tool::onEvent_HandleTouched, this, _1), 10);"
+   ],
+   [
+    "\t\tHumanoid* humanoid = Humanoid::modelIsCharacter(getParent());\n\t\tRBXASSERT(humanoid);\n\t\t\n\t\tPartInstance* torso = humanoid->getTorso();\n\t\tRBXASSERT(torso);\n\n\t\ttorsoChildAdded = Instance::event_childAdded.connect(torso, boost::bind(&Tool::onEvent_AddedBackend, this, _1));\n\t\ttorsoChildRemoved = Instance::event_childRemoved.connect(torso, boost::bind(&Tool::onEvent_RemovedBackend, this, _1));",
+    "\t\tHumanoid* humanoid = Humanoid::modelIsCharacter(getParent());\n\t\tPartInstance* torso = humanoid->getTorso();\n\n\t\ttorsoChildAdded = Instance::event_childAdded.connect(torso, boost::bind(&Tool::onEvent_AddedBackend, this, _1), 10);\n\t\ttorsoChildRemoved = Instance::event_childRemoved.connect(torso, boost::bind(&Tool::onEvent_RemovedBackend, this, _1), 10);"
+   ]
+  ]
  }
 ]
