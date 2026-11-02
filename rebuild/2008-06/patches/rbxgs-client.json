@@ -523,6 +523,14 @@
   [
    "\tContactManager* Humanoid::getContactManager()\n\t{\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\treturn world ? &world->getContactManager() : NULL;\n\t}",
    "\tContactManager* Humanoid::getContactManager()\n\t{\n\t\treturn world ? &world->getContactManager() : NULL;\n\t}"
+  ],
+  [
+   "\t{\n\t\tif (ModelInstance* character = getCharacterFromHumanoid(this))\n\t\t\tcharacter->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref((std::vector<Primitive*>&)ignore)));\n\t}\n\n\tvoid Humanoid::tellCameraNear(float distance)\n",
+   "\t{\n\t\tif (ModelInstance* character = getCharacterFromHumanoid(this))\n\t\t\tcharacter->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref((std::vector<Primitive*>&)ignore)));\n\n\t\tif (FilteredSelection<PartInstance>* selection = ServiceProvider::create<FilteredSelection<PartInstance> >(this))\n\t\t{\n\t\t\tfor (std::vector<PartInstance*>::const_iterator iter = selection->items().begin(); iter != selection->items().end(); ++iter)\n\t\t\t\tignore.push_back((*iter)->getPrimitive());\n\t\t}\n\t}\n\n\tvoid Humanoid::tellCameraNear(float distance)\n"
+  ],
+  [
+   "#include \"v8datamodel/JointInstance.h\"\n#include \"v8datamodel/ModelInstance.h\"\n#include \"v8datamodel/Workspace.h\"\n#include \"v8world/World.h\"\n#include \"Network/Players.h\"\n#include \"AppDraw/DrawAdorn.h\"\n",
+   "#include \"v8datamodel/JointInstance.h\"\n#include \"v8datamodel/ModelInstance.h\"\n#include \"v8datamodel/Workspace.h\"\n#include \"v8datamodel/Selection.h\"\n#include \"v8world/World.h\"\n#include \"Network/Players.h\"\n#include \"AppDraw/DrawAdorn.h\"\n"
   ]
  ],
  "App/include/v8datamodel/CharacterAppearance.h": [

@@ -2566,5 +2566,17 @@
     "\n\tvoid Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (oldProvider)\n\t\t{\n\t\t\tNotifier<RunService, Heartbeat>::disconnect(oldProvider->find<RunService>(), this);\n\n\t\t\tif (statsItem)\n\t\t\t{\n\t\t\t\tstatsItem->setParent(NULL);\n\t\t\t\tstatsItem.reset();\n\t\t\t}\n\t\t}\n\n\t\tif (newProvider)\n\t\t{\n\t\t\tscriptContext = newProvider->create<ScriptContext>();\n\n\t\t\tRunService* runService = newProvider->find<RunService>();\n\t\t\tNotifier<RunService, Heartbeat>::connect(runService, this);\n\n\t\t\tif (Stats::Item* item = newProvider->create<Stats::Item>())\n\t\t\t{\n\t\t\t\tstatsItem = Creatable::create<WorkspaceStatsItem>(this, world.get(), runService);\n\t\t\t\tstatsItem->setParent(item);\n\t\t\t}\n\t\t}\n\t}\n\n\tstatic void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)\n"
    ]
   ]
+ },
+ {
+  "App/humanoid/Humanoid.cpp": [
+   [
+    "\t{\n\t\tif (ModelInstance* character = getCharacterFromHumanoid(this))\n\t\t\tcharacter->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref((std::vector<Primitive*>&)ignore)));\n\t}\n\n\tvoid Humanoid::tellCameraNear(float distance)\n",
+    "\t{\n\t\tif (ModelInstance* character = getCharacterFromHumanoid(this))\n\t\t\tcharacter->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref((std::vector<Primitive*>&)ignore)));\n\n\t\tif (FilteredSelection<PartInstance>* selection = ServiceProvider::create<FilteredSelection<PartInstance> >(this))\n\t\t{\n\t\t\tfor (std::vector<PartInstance*>::const_iterator iter = selection->items().begin(); iter != selection->items().end(); ++iter)\n\t\t\t\tignore.push_back((*iter)->getPrimitive());\n\t\t}\n\t}\n\n\tvoid Humanoid::tellCameraNear(float distance)\n"
+   ],
+   [
+    "#include \"v8datamodel/JointInstance.h\"\n#include \"v8datamodel/ModelInstance.h\"\n#include \"v8datamodel/Workspace.h\"\n#include \"v8world/World.h\"\n#include \"Network/Players.h\"\n#include \"AppDraw/DrawAdorn.h\"\n",
+    "#include \"v8datamodel/JointInstance.h\"\n#include \"v8datamodel/ModelInstance.h\"\n#include \"v8datamodel/Workspace.h\"\n#include \"v8datamodel/Selection.h\"\n#include \"v8world/World.h\"\n#include \"Network/Players.h\"\n#include \"AppDraw/DrawAdorn.h\"\n"
+   ]
+  ]
  }
 ]

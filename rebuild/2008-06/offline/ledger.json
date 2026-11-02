@@ -1137,6 +1137,22 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-ad438808ec95874d",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/humanoid/Humanoid.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793597739,
+   "receipt": {
+    "gains": [
+     "005db9e0"
+    ],
+    "losses": []
+   }
   }
  ]
 }
