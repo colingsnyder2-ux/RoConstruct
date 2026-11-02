@@ -1104,3 +1104,14 @@ integration headers. Source workers use current genuine declarations; canonical 
 the accepted ABI/profile and all independent gates. Header context is content-addressed, validated
 and fenced when it changes. No owner fields or layouts are synthesized. Host scheduling prioritizes
 unintegrated targets and recognizes methods supplied by accepted overlay units.
+
+Worker 33 keeps class probes on the native owner's include profile; read-only project
+fallback headers are limited to world probes. Already-exact native source skips AI,
+gets an independent host check, then attempts canonical submission when enabled.
+These transfers say `roc native-source-transfer`, consume no model requests, and
+earn credit only through an accepted integration receipt. Mapping/linkage blockers
+retain candidates until inputs change. Agent blocker observations are displayed as
+unverified data; full command logs remain saved privately. Public inline canonical
+methods can map through their unique same-name owner C++ unit or sole genuine
+consumer; ambiguous consumers
+stay pending. No shared header layouts are edited by this mapping.
