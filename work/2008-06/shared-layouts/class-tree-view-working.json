@@ -4,14 +4,14 @@
   "profile": "document-swap flags + XTP 11.2.2 headers (/UNOMINMAX /D_XTP_STATICLINK); noinline: static std::vector<const EnumDescriptor*>::const_iterator enumsBegin(); static std::vector<const EnumDescriptor*>::const_iterator enumsEnd(); operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );; const _Elem * c_str() const",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
-    "rebuild/2008-06/tests/record_native_class_tree_view.py": "e2c35afe0c40d106b2b5bc485a97227400349afe26671f57fa5dc1f58d9408a8",
+    "rebuild/2008-06/tests/record_native_class_tree_view.py": "31aa5f10d6b555b49b150aa2b41a728ea240f5f00ed759ae60b7d7177ea5a59b",
     "rebuild/2008-06/tests/class_tree_view_profile.py": "10050c737d83082c41d0407a427958f8f1413e4801e6656bc991ab253d73f399",
-    "rebuild/2008-06/native-classes/CClassTreeView.cpp": "e79e9ed729f1834c7834b9d20a1914d880873adc7e6689470c147c1ef65b6620",
-    "rebuild/2008-06/native-headers/CClassTreeView.h": "399db0b80150ad6a86ebbd9aa9803c5d80741d6d93a178ebcd187b0773899756",
-    "rebuild/2008-06/native-headers/CReflectionTreeView.h": "561e1d6f088be09fa14783aedeeadb38c8e58ff4a85e761e748348b68ee5f337",
+    "rebuild/2008-06/native-classes/CClassTreeView.cpp": "06b524ddaebb7ffb17b0abded1a2c608184a0fa878710eac248cf4e6ffdd4b41",
+    "rebuild/2008-06/native-headers/CClassTreeView.h": "67af96d51b39fddebeae5fbe5c75828fe3673cc8794d9d0d934c009c3dfcb412",
+    "rebuild/2008-06/native-headers/CReflectionTreeView.h": "2b92ece70a272c3049301164ded4209dd7d7cadd6ed017c0e3bca8b0f60120b7",
     "rebuild/2008-06/tests/NativeClassTreeViewLayout.cpp": "5cd0db0e68fd81882f8672921beeabe00cdfa64bfbc1c25e0ebfecf397001e34"
   },
-  "object_sha256": "566a44d1c674b8afa86479f7284089281160a15f7a343baf506f8c9e765d01a4",
+  "object_sha256": "631c723f61e22ba804c675d1348337478f9c9bb69aa9161f9634c649ff2e6e11",
   "layout": {
     "size": "0xb0",
     "bases": "CReflectionTreeView (novtable, no data) : CXTTreeView (0xa0) : CXTTreeViewBase : CTreeView @0 + CXTTreeBase @0x60",
@@ -199,7 +199,7 @@
         "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
         "?InsertItem@CTreeCtrl@@QAEPAU_TREEITEM@@IPBDHHIIJPAU2@1@Z": "mfc90.dll!?InsertItem@CTreeCtrl@@QAEPAU_TREEITEM@@IPBDHHIIJPAU2@1@Z",
         "?SetItem@CTreeCtrl@@QAEHPAU_TREEITEM@@IPBDHHIIJ@Z": "mfc90.dll!?SetItem@CTreeCtrl@@QAEHPAU_TREEITEM@@IPBDHHIIJ@Z",
-        "?setItemStyle@CReflectionTreeView@@IAEXPAU_TREEITEM@@PBVClass@Metadata@Reflection@RBX@@@Z": "0x433ef0",
+        "?setItemStyle@CReflectionTreeView@@IAEXPAU_TREEITEM@@PBVItem@Metadata@Reflection@RBX@@@Z": "0x433ef0",
         "?addClass@CClassTreeView@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z": "0x434ff0",
         "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
         "??$for_each@V?$_Vector_const_iterator@PAVClassDescriptor@Reflection@RBX@@V?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCClassTreeView@@PBVClassDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCClassTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCClassTreeView@@PBVClassDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCClassTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PAVClassDescriptor@Reflection@RBX@@V?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z": "0x434ed0"
@@ -257,7 +257,7 @@
     },
     {
       "address": "00433ef0",
-      "symbol": "?setItemStyle@CReflectionTreeView@@IAEXPAU_TREEITEM@@PBVClass@Metadata@Reflection@RBX@@@Z",
+      "symbol": "?setItemStyle@CReflectionTreeView@@IAEXPAU_TREEITEM@@PBVItem@Metadata@Reflection@RBX@@@Z",
       "size": 201,
       "exact": true,
       "verified_targets": {

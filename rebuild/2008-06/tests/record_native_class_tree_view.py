@@ -105,7 +105,7 @@ METHODS = [
     ('?addEnum@CClassTreeView@@QAEXPBVEnumDescriptor@Reflection@RBX@@@Z', 0x433d00),
     ('?rank@@YAHPBVDescriptor@Reflection@RBX@@@Z', 0x433500),
     ('?compareItems@CClassTreeView@@SGHJJJ@Z', 0x4335d0),
-    ('?setItemStyle@CReflectionTreeView@@IAEXPAU_TREEITEM@@PBVClass@Metadata@Reflection@RBX@@@Z', 0x433ef0),
+    ('?setItemStyle@CReflectionTreeView@@IAEXPAU_TREEITEM@@PBVItem@Metadata@Reflection@RBX@@@Z', 0x433ef0),
     ('?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ', 0x433860),
     ('??__Fs@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@YAXXZ', 0x7fa9e0),
     ('??$for_each@V?$_Vector_const_iterator@PBVEnumDescriptor', 0x434ed0),

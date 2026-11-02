@@ -1,0 +1,650 @@
+{
+  "class": "CMemberTreeView",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "profile": "document-swap flags + XTP 11.2.2 headers (/UNOMINMAX /D_XTP_STATICLINK); noinline: CString operator PCXSTR; std::string::c_str; EnumDescriptor enumsBegin/enumsEnd (shared class_tree_view_profile)",
+  "open": [
+    "addProperty 004352a0 and addFunction 00435680: the original reads PropertyDescriptor::bIsPublic and FunctionDescriptor::signature inline; the donor reflection/property.h and function.h declare isPublic()/getSignature() out of line, and inline copies would shadow the donor headers for every native unit (needs maintainer sign-off)"
+  ],
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_member_tree_view.py": "74a25acd2e391e466f49ef13cfa26588fbef2fc82e7d45d70887b24e62eee30f",
+    "rebuild/2008-06/tests/class_tree_view_profile.py": "10050c737d83082c41d0407a427958f8f1413e4801e6656bc991ab253d73f399",
+    "rebuild/2008-06/native-classes/CMemberTreeView.cpp": "107ce37615844acbc7a6e566ca0fa828dedc1d637128efb9ed98571bb3940eeb",
+    "rebuild/2008-06/native-headers/CMemberTreeView.h": "ae1eb83a34085a612175987447317a2a95584b2fd5ff52fc1e564f16dec93c48",
+    "rebuild/2008-06/native-headers/CClassTreeView.h": "67af96d51b39fddebeae5fbe5c75828fe3673cc8794d9d0d934c009c3dfcb412",
+    "rebuild/2008-06/native-headers/CReflectionTreeView.h": "2b92ece70a272c3049301164ded4209dd7d7cadd6ed017c0e3bca8b0f60120b7",
+    "rebuild/2008-06/native-headers/reflection/Metadata.h": "e345a7b78c775b45bbdbc53d3e48da5c43a6fb8fc7cdf00ae0c0fb2a048d49c8",
+    "rebuild/2008-06/tests/NativeMemberTreeViewLayout.cpp": "91452a94134eae793c5d3ee1d0ba1ca3eb1d02e298522a441cf031423a241b4e"
+  },
+  "object_sha256": "98498250cb10cb18a33f33500702e9d764782946af281682445bf75efe2e7cd6",
+  "layout": {
+    "size": "0xb4",
+    "bases": "CReflectionTreeView (novtable, no data) : CXTTreeView (0xa0) : CXTTreeViewBase : CTreeView @0 + CXTTreeBase @0x60",
+    "images": "0xa0 (CImageList)",
+    "showInherited": "0xa8 (bool)",
+    "current": "0xac (const Descriptor*)",
+    "declarationView": "0xb0 (CDeclarationView*)",
+    "evidence": "CRuntimeClass 0081253c size and CreateObject 00433db0 new(0xb4); RTTI; constructor 00433670 and destructor 004336e0; OnSelChanged 00435e70 (+0xb0); member adders (+0xa8 byte test, +0xac compare with owner); compile-time layout test"
+  },
+  "methods": [
+    {
+      "address": "00433670",
+      "symbol": "??0CMemberTreeView@@QAE@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??0CXTTreeView@@IAE@XZ": "0x6dbcd0",
+        "??_7CMemberTreeView@@6BCTreeView@@@": "0x8129b4",
+        "??_7CMemberTreeView@@6BCXTTreeBase@@@": "0x81292c",
+        "??0CImageList@@QAE@XZ": "mfc90.dll!??0CImageList@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0CMemberTreeView@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004336e0",
+      "symbol": "??1CMemberTreeView@@UAE@XZ",
+      "size": 92,
+      "exact": true,
+      "verified_targets": {
+        "??_7CMemberTreeView@@6BCTreeView@@@": "0x8129b4",
+        "??_7CMemberTreeView@@6BCXTTreeBase@@@": "0x81292c",
+        "??1CImageList@@UAE@XZ": "mfc90.dll!??1CImageList@@UAE@XZ",
+        "??1CXTTreeView@@MAE@XZ": "0x6dbd00"
+      },
+      "local_eh": [
+        "__ehhandler$??1CMemberTreeView@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00433e10",
+      "symbol": "??_GCMemberTreeView@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CMemberTreeView@@UAE@XZ": "0x4336e0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433740",
+      "symbol": "??_ECMemberTreeView@@WGA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ECMemberTreeView@@UAEPAXI@Z": "0x433e10"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433db0",
+      "symbol": "?CreateObject@CMemberTreeView@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CMemberTreeView@@QAE@XZ": "0x433670"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CMemberTreeView@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00433660",
+      "symbol": "?GetRuntimeClass@CMemberTreeView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCMemberTreeView@CMemberTreeView@@2UCRuntimeClass@@B": "0x81253c"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433650",
+      "symbol": "?_GetBaseClass@CMemberTreeView@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CXTTreeView@@SGPAUCRuntimeClass@@XZ": "0x6dbaa0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00436040",
+      "symbol": "?GetMessageMap@CMemberTreeView@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CMemberTreeView@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x812e74"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004334f0",
+      "symbol": "?OnInitialUpdate@CMemberTreeView@@UAEXXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?OnInitialUpdate@CView@@UAEXXZ": "mfc90.dll!?OnInitialUpdate@CView@@UAEXXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433e30",
+      "symbol": "?OnCreate@CMemberTreeView@@QAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 106,
+      "exact": true,
+      "verified_targets": {
+        "?OnCreate@CView@@IAEHPAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?OnCreate@CView@@IAEHPAUtagCREATESTRUCTA@@@Z",
+        "?createImageList@@YAHAAVCImageList@@I@Z": "0x433ab0",
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?FromHandle@CImageList@@SGPAV1@PAU_IMAGELIST@@@Z": "mfc90.dll!?FromHandle@CImageList@@SGPAV1@PAU_IMAGELIST@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433ab0",
+      "symbol": "?createImageList@@YAHAAVCImageList@@I@Z",
+      "size": 204,
+      "exact": true,
+      "verified_targets": {
+        "?Create@CImageList@@QAEHHHIHH@Z": "mfc90.dll!?Create@CImageList@@QAEHHHIHH@Z",
+        "??_7CBitmap@@6B@": "0x80e8a0 (RTTI .?AVCBitmap@@, offset 0x0)",
+        "?AfxFindResourceHandle@@YGPAUHINSTANCE__@@PBD0@Z": "mfc90.dll!?AfxFindResourceHandle@@YGPAUHINSTANCE__@@PBD0@Z",
+        "__imp__LoadBitmapA@8": "user32.dll!LoadBitmapA",
+        "?Attach@CGdiObject@@QAEHPAX@Z": "mfc90.dll!?Attach@CGdiObject@@QAEHPAX@Z",
+        "?GetBitmapMaskColor@CXTPImageManager@@SAKAAVCBitmap@@VCPoint@@@Z": "0x6bbed0",
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+        "?_ImageList_AddMasked@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@K@Z": "0x4130d0",
+        "??1CGdiObject@@UAE@XZ": "0x4111a0"
+      },
+      "local_eh": [
+        "__ehhandler$?createImageList@@YAHAAVCImageList@@I@Z"
+      ]
+    },
+    {
+      "address": "00435e70",
+      "symbol": "?OnSelChanged@CMemberTreeView@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {
+        "?showDescriptor@CDeclarationView@@QAEXPBVDescriptor@Reflection@RBX@@@Z": "0x435860"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433ea0",
+      "symbol": "?addEnumItem@CMemberTreeView@@QAEXPBVDescriptor@Reflection@RBX@@@Z",
+      "size": 76,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "?InsertItem@CTreeCtrl@@QAEPAU_TREEITEM@@IPBDHHIIJPAU2@1@Z": "mfc90.dll!?InsertItem@CTreeCtrl@@QAEPAU_TREEITEM@@IPBDHHIIJPAU2@1@Z",
+        "?SetItem@CTreeCtrl@@QAEHPAU_TREEITEM@@IPBDHHIIJ@Z": "mfc90.dll!?SetItem@CTreeCtrl@@QAEHPAU_TREEITEM@@IPBDHHIIJ@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00435180",
+      "symbol": "?showEnum@CMemberTreeView@@QAEXPBVEnumDescriptor@Reflection@RBX@@@Z",
+      "size": 277,
+      "exact": true,
+      "verified_targets": {
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ": "0x433860",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090",
+        "?addEnumItem@CMemberTreeView@@QAEXPBVDescriptor@Reflection@RBX@@@Z": "0x433ea0",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??$for_each@V?$_Vector_const_iterator@PBVItem@EnumDescriptor@Reflection@RBX@@V?$allocator@PBVItem@EnumDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PBVItem@EnumDescriptor@Reflection@RBX@@V?$allocator@PBVItem@EnumDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z": "0x434ed0",
+        "?compareItems@CClassTreeView@@SGHJJJ@Z": "0x4335d0",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0"
+      },
+      "local_eh": [
+        "__ehhandler$?showEnum@CMemberTreeView@@QAEXPBVEnumDescriptor@Reflection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00435c80",
+      "symbol": "?showClass@CMemberTreeView@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+      "size": 483,
+      "exact": true,
+      "verified_targets": {
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ": "0x433860",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090",
+        "?addProperty@CMemberTreeView@@QAEXPBVPropertyDescriptor@Reflection@RBX@@@Z": "0x4352a0",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??$for_each@V?$_Vector_const_iterator@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVPropertyDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVPropertyDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z": "0x434ed0",
+        "?addFunction@CMemberTreeView@@QAEXPBVFunctionDescriptor@Reflection@RBX@@@Z": "0x435680",
+        "??$for_each@V?$_Vector_const_iterator@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVFunctionDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVFunctionDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z": "0x434ed0",
+        "?addSignal@CMemberTreeView@@QAEXPBVSignalDescriptor@Reflection@RBX@@@Z": "0x4353e0",
+        "??$for_each@V?$_Vector_const_iterator@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVSignalDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVSignalDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z": "0x434ed0",
+        "?compareItems@CClassTreeView@@SGHJJJ@Z": "0x4335d0",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0"
+      },
+      "local_eh": [
+        "__ehhandler$?showClass@CMemberTreeView@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "004353e0",
+      "symbol": "?addSignal@CMemberTreeView@@QAEXPBVSignalDescriptor@Reflection@RBX@@@Z",
+      "size": 300,
+      "exact": true,
+      "verified_targets": {
+        "?singleton@Reflection@Metadata@RBX@@SA?AV?$shared_ptr@VReflection@Metadata@RBX@@@boost@@XZ": "0x445020",
+        "?lookup@Reflection@Metadata@RBX@@QBEPAVMember@213@ABVSignalDescriptor@13@@Z": "0x443b50",
+        "?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@SAAAVAuthoringSettings@@XZ": "0x41fcf0",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "?InsertItem@CTreeCtrl@@QAEPAU_TREEITEM@@IPBDHHIIJPAU2@1@Z": "mfc90.dll!?InsertItem@CTreeCtrl@@QAEPAU_TREEITEM@@IPBDHHIIJPAU2@1@Z",
+        "?SetItem@CTreeCtrl@@QAEHPAU_TREEITEM@@IPBDHHIIJ@Z": "mfc90.dll!?SetItem@CTreeCtrl@@QAEHPAU_TREEITEM@@IPBDHHIIJ@Z",
+        "?setItemStyle@CReflectionTreeView@@IAEXPAU_TREEITEM@@PBVItem@Metadata@Reflection@RBX@@@Z": "0x433ef0"
+      },
+      "local_eh": [
+        "__ehhandler$?addSignal@CMemberTreeView@@QAEXPBVSignalDescriptor@Reflection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00435510",
+      "symbol": "?appendArgument@@YAXAAHAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABUItem@SignatureDescriptor@Reflection@RBX@@@Z",
+      "size": 57,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_02KEGNLNML@?0?5?$AA@": "0x812e50",
+        "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00435630",
+      "symbol": "??$for_each@V?$_Const_iterator@$00@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XP6AXAAHAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABUItem@SignatureDescriptor@Reflection@RBX@@@ZV?$list3@V?$reference_wrapper@H@boost@@V?$reference_wrapper@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$arg@$00@2@@_bi@boost@@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXAAHAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABUItem@SignatureDescriptor@Reflection@RBX@@@ZV?$list3@V?$reference_wrapper@H@boost@@V?$reference_wrapper@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$arg@$00@2@@_bi@boost@@@_bi@boost@@V?$_Const_iterator@$00@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z",
+      "size": 68,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00433860",
+      "symbol": "?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "?$S1@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@4IA": "0x96d1a0",
+        "?s@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@4V45@A": "0x96d194",
+        "??0recursive_mutex@boost@@QAE@XZ": "0x563070",
+        "??__Fs@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@YAXXZ": "0x7fa9e0",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ"
+      ]
+    },
+    {
+      "address": "007fa9e0",
+      "symbol": "??__Fs@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?s@?1??sync@Reflection@RBX@@YAAAVrecursive_mutex@boost@@XZ@4V45@A": "0x96d194",
+        "??1recursive_mutex@boost@@QAE@XZ": "0x594cb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004337c0",
+      "symbol": "?PreSubclassWindow@CXTTreeViewBase@@MAEXXZ",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "?PreSubclassWindow@CWnd@@UAEXXZ": "mfc90.dll!?PreSubclassWindow@CWnd@@UAEXXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004337e0",
+      "symbol": "?PreCreateWindow@CXTTreeViewBase@@MAEHAAUtagCREATESTRUCTA@@@Z",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "?PreCreateWindow@CTreeView@@UAEHAAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?PreCreateWindow@CTreeView@@UAEHAAUtagCREATESTRUCTA@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433760",
+      "symbol": "?GetItemState@CXTTreeViewBase@@UBEIPAU_TREEITEM@@I@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?GetItemState@CXTTreeBase@@QBEIPAU_TREEITEM@@I@Z": "0x6dcd30"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433770",
+      "symbol": "?SelectItem@CXTTreeViewBase@@UAEHPAU_TREEITEM@@@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?SelectItem@CXTTreeBase@@QAEHPAU_TREEITEM@@@Z": "0x6dcd80"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433780",
+      "symbol": "?SetItemState@CXTTreeViewBase@@UAEHPAU_TREEITEM@@II@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?SetItemState@CXTTreeBase@@QAEHPAU_TREEITEM@@II@Z": "0x6dca00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004337a0",
+      "symbol": "?OnNotify@CXTTreeViewBase@@MAEHIJPAJ@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?OnNotify@CXTTreeBase@@MAEHIJPAJ@Z": "0x6dc070"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004337b0",
+      "symbol": "?PreTranslateMessage@CXTTreeViewBase@@MAEHPAUtagMSG@@@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?PreTranslateMessage@CXTTreeBase@@MAEHPAUtagMSG@@@Z": "0x6dd610"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433840",
+      "symbol": "?PreTranslateMessage@CXTTreeViewBase@@OGA@AEHPAUtagMSG@@@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?PreTranslateMessage@CXTTreeViewBase@@MAEHPAUtagMSG@@@Z": "0x4337b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433850",
+      "symbol": "?OnNotify@CXTTreeViewBase@@OGA@AEHIJPAJ@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?OnNotify@CXTTreeViewBase@@MAEHIJPAJ@Z": "0x4337a0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433810",
+      "symbol": "?OnCreate@CXTTreeViewBase@@IAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {
+        "?OnCreate@CView@@IAEHPAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?OnCreate@CView@@IAEHPAUtagCREATESTRUCTA@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00434ed0",
+      "symbol": "??$for_each@V?$_Vector_const_iterator@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVFunctionDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVFunctionDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z",
+      "size": 74,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00434ed0",
+      "symbol": "??$for_each@V?$_Vector_const_iterator@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVPropertyDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVPropertyDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z",
+      "size": 74,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00434ed0",
+      "symbol": "??$for_each@V?$_Vector_const_iterator@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVSignalDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVSignalDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z",
+      "size": 74,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00434ed0",
+      "symbol": "??$for_each@V?$_Vector_const_iterator@PBVItem@EnumDescriptor@Reflection@RBX@@V?$allocator@PBVItem@EnumDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCMemberTreeView@@PBVDescriptor@Reflection@RBX@@@_mfi@boost@@V?$list2@V?$value@PAVCMemberTreeView@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@PBVItem@EnumDescriptor@Reflection@RBX@@V?$allocator@PBVItem@EnumDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z",
+      "size": 74,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    }
+  ],
+  "dependencies": [
+    {
+      "address": "004130d0",
+      "symbol": "?_ImageList_AddMasked@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@K@Z",
+      "exact": false,
+      "note": "COMDAT of another unit/flag set: bound by call site and name only"
+    },
+    {
+      "address": "004111a0",
+      "symbol": "??1CGdiObject@@UAE@XZ",
+      "exact": false,
+      "note": "COMDAT of another unit/flag set: bound by call site and name only"
+    }
+  ],
+  "xtp_targets": {
+    "??0CXTTreeView@@IAE@XZ": "XTP recipe body exact",
+    "??1CXTTreeView@@MAE@XZ": "XTP recipe body exact",
+    "?GetThisClass@CXTTreeView@@SGPAUCRuntimeClass@@XZ": "XTP recipe body exact",
+    "?GetThisMessageMap@CXTTreeView@@KGPBUAFX_MSGMAP@@XZ": "XTP recipe body exact",
+    "?GetItemState@CXTTreeBase@@QBEIPAU_TREEITEM@@I@Z": "XTP recipe body exact",
+    "?SelectItem@CXTTreeBase@@QAEHPAU_TREEITEM@@@Z": "XTP recipe body exact",
+    "?SetItemState@CXTTreeBase@@QAEHPAU_TREEITEM@@II@Z": "XTP recipe body exact",
+    "?OnNotify@CXTTreeBase@@MAEHIJPAJ@Z": "XTP recipe body exact",
+    "?PreTranslateMessage@CXTTreeBase@@MAEHPAUtagMSG@@@Z": "XTP recipe body exact",
+    "?GetBitmapMaskColor@CXTPImageManager@@SAKAAVCBitmap@@VCPoint@@@Z": "XTP recipe body exact"
+  },
+  "vtables": {
+    "??_7CMemberTreeView@@6BCTreeView@@@": {
+      "verified": 104,
+      "xtp": {
+        "2": [
+          "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+          "0x70bdf0"
+        ],
+        "3": [
+          "?AssertValid@CObject@@UBEXXZ",
+          "0x47d410"
+        ],
+        "4": [
+          "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+          "0x70bdf0"
+        ],
+        "65": [
+          "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+          "0x70bdf0"
+        ],
+        "66": [
+          "?BeginModalState@CWnd@@UAEXXZ",
+          "0x401120"
+        ],
+        "67": [
+          "?EndModalState@CWnd@@UAEXXZ",
+          "0x401130"
+        ]
+      },
+      "unverified": {},
+      "address": "008129b4",
+      "slots": 104
+    },
+    "??_7CMemberTreeView@@6BCXTTreeBase@@@": {
+      "verified": 30,
+      "xtp": {
+        "1": [
+          "?GetNextItem@CXTTreeViewBase@@UBEPAU_TREEITEM@@PAU2@I@Z",
+          "0x425ba0"
+        ],
+        "2": [
+          "?GetNextItem@CXTTreeViewBase@@UBEPAU_TREEITEM@@PAU2@@Z",
+          "0x433790"
+        ],
+        "3": [
+          "?GetPrevItem@CXTTreeBase@@UBEPAU_TREEITEM@@PAU2@@Z",
+          "0x6dc290"
+        ],
+        "4": [
+          "?GetLastItem@CXTTreeBase@@UBEPAU_TREEITEM@@PAU2@@Z",
+          "0x6dc2e0"
+        ],
+        "7": [
+          "?SetItemFont@CXTTreeBase@@UAEXPAU_TREEITEM@@AAUtagLOGFONTA@@@Z",
+          "0x6def70"
+        ],
+        "8": [
+          "?GetItemFont@CXTTreeBase@@UAEHPAU_TREEITEM@@PAUtagLOGFONTA@@@Z",
+          "0x6de790"
+        ],
+        "9": [
+          "?SetItemBold@CXTTreeBase@@UAEXPAU_TREEITEM@@H@Z",
+          "0x6dde70"
+        ],
+        "10": [
+          "?GetItemBold@CXTTreeBase@@UAEHPAU_TREEITEM@@@Z",
+          "0x6ddeb0"
+        ],
+        "11": [
+          "?SetItemColor@CXTTreeBase@@UAEXPAU_TREEITEM@@K@Z",
+          "0x6df000"
+        ],
+        "12": [
+          "?SetItemBackColor@CXTTreeBase@@UAEXPAU_TREEITEM@@K@Z",
+          "0x6df090"
+        ],
+        "13": [
+          "?GetItemColor@CXTTreeBase@@UAEKPAU_TREEITEM@@@Z",
+          "0x6de810"
+        ],
+        "14": [
+          "?GetItemBackColor@CXTTreeBase@@MBEKI_NKK@Z",
+          "0x6dbec0"
+        ],
+        "15": [
+          "?GetItemBackColor@CXTTreeBase@@UAEKPAU_TREEITEM@@@Z",
+          "0x6de880"
+        ],
+        "16": [
+          "?EnableMultiSelect@CXTTreeBase@@UAEHH@Z",
+          "0x6ddf60"
+        ],
+        "17": [
+          "?GetPrevSelectedItem@CXTTreeBase@@UBEPAU_TREEITEM@@PAU2@@Z",
+          "0x6dded0"
+        ],
+        "18": [
+          "?Init@CXTTreeViewBase@@MAE_NXZ",
+          "0x425c10"
+        ],
+        "19": [
+          "?SendNotify@CXTTreeBase@@MAEJPAUtagNMHDR@@@Z",
+          "0x6ddfd0"
+        ],
+        "20": [
+          "?SelectAllIgnore@CXTTreeBase@@MAEXHPAU_TREEITEM@@@Z",
+          "0x6dcf50"
+        ],
+        "21": [
+          "?OnButtonDown@CXTTreeBase@@MAEHHIVCPoint@@@Z",
+          "0x6dbfa0"
+        ],
+        "22": [
+          "?DoPreSelection@CXTTreeBase@@MAEXPAU_TREEITEM@@HI@Z",
+          "0x6dd120"
+        ],
+        "23": [
+          "?DoAction@CXTTreeBase@@MAEXPAU_TREEITEM@@HIVCPoint@@@Z",
+          "0x6dd210"
+        ],
+        "24": [
+          "?DoBanding@CXTTreeBase@@MAEXIVCPoint@@@Z",
+          "0x6de020"
+        ],
+        "25": [
+          "?UpdateSelectionForRect@CXTTreeBase@@MAEXPBUtagRECT@@IAAV?$CTypedPtrList@VCPtrList@@PAU_TREEITEM@@@@@Z",
+          "0x6dd420"
+        ],
+        "26": [
+          "?IsFindValid@CXTTreeBase@@MAEHPAU_TREEITEM@@@Z",
+          "0x6e8870"
+        ],
+        "28": [
+          "?GetTreeBackColor@CXTTreeBase@@MBEKXZ",
+          "0x6dc940"
+        ],
+        "29": [
+          "?GetTreeTextColor@CXTTreeBase@@MBEKXZ",
+          "0x6dc9a0"
+        ],
+        "30": [
+          "?GetItemTextColor@CXTTreeBase@@MBEKI_NKK@Z",
+          "0x6dbf30"
+        ]
+      },
+      "unverified": {
+        "5": [
+          "?FindItem@CXTTreeBase@@UAEPAU_TREEITEM@@PBDHHHPAU2@@Z",
+          "0x6dc620"
+        ],
+        "6": [
+          "?FindItemInBranch@CXTTreeBase@@UAEPAU_TREEITEM@@PBDHHPAU2@@Z",
+          "0x6dc360"
+        ],
+        "27": [
+          "?DoPaint@CXTTreeBase@@MAEXAAVCDC@@H@Z",
+          "0x6de8f0"
+        ]
+      },
+      "address": "0081292c",
+      "slots": 33
+    }
+  },
+  "runtime_class": {
+    "address": "0081253c",
+    "size": "0xb4",
+    "create": "00433db0",
+    "base_getter": "00433650 -> 006dbaa0"
+  },
+  "message_map": {
+    "address": "00812e74",
+    "entries": [
+      {
+        "message": "WM_CREATE",
+        "handler": "00433e30"
+      },
+      {
+        "message": "WM_NOTIFY reflect",
+        "code": "TVN_SELCHANGED",
+        "handler": "00435e70"
+      }
+    ]
+  },
+  "class_tree_view_regression": {
+    "004338d0": true,
+    "004333b0": true,
+    "00433e30": true,
+    "00435fa0": true,
+    "00435eb0": true,
+    "00434ff0": true,
+    "00433d00": true,
+    "004335d0": true,
+    "00433500": true,
+    "00433ef0": true
+  }
+}

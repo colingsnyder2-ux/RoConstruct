@@ -6,7 +6,7 @@
 #include <boost/bind.hpp>
 #include <algorithm>
 
-void CReflectionTreeView::setItemStyle(HTREEITEM item, const RBX::Reflection::Metadata::Class* metadata)
+void CReflectionTreeView::setItemStyle(HTREEITEM item, const RBX::Reflection::Metadata::Item* metadata)
 {
     if (!metadata)
         return;

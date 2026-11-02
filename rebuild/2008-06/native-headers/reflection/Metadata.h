@@ -8,6 +8,9 @@
 namespace RBX {
 namespace Reflection {
 class ClassDescriptor;
+class PropertyDescriptor;
+class FunctionDescriptor;
+class SignalDescriptor;
 namespace Metadata {
 extern const char* sItem;
 extern const char* sClass;
@@ -30,6 +33,12 @@ public:
     int unknown_154;
     int getImageIndex() const; // 0041fb30; name provisional (result is the list/tree image index).
 };
+
+// RTTI .?AVMember@Metadata@Reflection@RBX@@ (DescribedCreatable<Member, Item, &sMember>). Declaration only:
+// the member views read only the inherited Item flags of the lookup results.
+extern const char* sMember;
+class Member : public DescribedCreatable<Member, Item, &sMember> {
+};
 } // namespace Metadata
 } // namespace Reflection
 
@@ -43,6 +52,11 @@ public:
     RBX::Reflection::Metadata::Classes* classes;
     static boost::shared_ptr<Reflection> singleton();                                           // 00445020; name provisional
     RBX::Reflection::Metadata::Class* lookup(const RBX::Reflection::ClassDescriptor&, bool) const; // 00443210; name provisional
+    // Member lookups by owner class name then member name (0x130 -> findFirstChildByName(owner->name),
+    // its Properties/Functions/Events child 00443780/00443820/004438c0, findFirstChildByName(name)).
+    RBX::Reflection::Metadata::Member* lookup(const RBX::Reflection::PropertyDescriptor&) const; // 00443ab0; name provisional
+    RBX::Reflection::Metadata::Member* lookup(const RBX::Reflection::FunctionDescriptor&) const; // 00443b00; name provisional
+    RBX::Reflection::Metadata::Member* lookup(const RBX::Reflection::SignalDescriptor&) const;   // 00443b50; name provisional
 };
 } // namespace Metadata
 } // namespace RBX

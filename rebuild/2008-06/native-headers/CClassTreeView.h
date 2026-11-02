@@ -1,5 +1,6 @@
 #pragma once
 #include "CReflectionTreeView.h"
+#include "CMemberTreeView.h"
 #include <afxhtml.h>
 
 namespace RBX {
@@ -10,7 +11,6 @@ class EnumDescriptor;
 }
 }
 
-class CMemberTreeView;
 class CDeclarationView;
 
 // Inactive layout recovery from CRuntimeClass 00812504 (size 0xb0, CreateObject 00433fc0, base
@@ -41,18 +41,8 @@ public:
     CDeclarationView* declarationView;                      // +0xac
 };
 
-// Declarations only: the other panes of the same object browser. Neither is thin, so only the
-// methods this class calls are declared (no layout is claimed here).
-// CMemberTreeView: RTTI 008129b4 (CMemberTreeView : CReflectionTreeView : CXTTreeView), CRuntimeClass
-// 0081253c (size 0xb4); constructor 00433670 constructs a CImageList at +0xa0, stores byte +0xa8 = 1 and
-// +0xac = 0; 00435c80/00435180 store their argument at +0xac. Bodies 433ea0, 433ef0-shared, 434470,
-// 435180 (277 bytes), 435c80 (483 bytes) and 435e70 remain for a separate recovery.
-class CMemberTreeView : public CReflectionTreeView {
-public:
-    void showClass(const RBX::Reflection::ClassDescriptor* descriptor);  // 00435c80; name provisional
-    void showEnum(const RBX::Reflection::EnumDescriptor* descriptor);    // 00435180; name provisional
-};
-
+// Declaration only: the third pane of the same object browser. It is not thin, so only the method
+// this class calls is declared (no layout is claimed here).
 // CDeclarationView: RTTI 00812bc4 (CDeclarationView : CHtmlView), CRuntimeClass 008124e8 (size 0x114);
 // constructor 00434500, destructor 00434570, 004346b0 (2074 bytes) and 00435860 (1048 bytes, null-tests
 // its argument) remain for a separate recovery.

@@ -4,7 +4,7 @@
 namespace RBX {
 namespace Reflection {
 namespace Metadata {
-class Class;
+class Item;
 }
 }
 }
@@ -19,6 +19,7 @@ class Class;
 class __declspec(novtable) CReflectionTreeView : public CXTTreeView {
 protected:
     // Original 00433ef0, shared by both views: strike-out font for items whose metadata sets
-    // +0x131, italic for +0x132. Name provisional.
-    void setItemStyle(HTREEITEM item, const RBX::Reflection::Metadata::Class* metadata);
+    // +0x131, italic for +0x132. Name provisional. Takes the Item base: CClassTreeView passes the
+    // class metadata, CMemberTreeView the Member metadata of properties, functions and events.
+    void setItemStyle(HTREEITEM item, const RBX::Reflection::Metadata::Item* metadata);
 };
