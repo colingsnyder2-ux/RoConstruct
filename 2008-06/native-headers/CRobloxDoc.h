@@ -1,6 +1,7 @@
 #pragma once
 #include "VerbBinder.h"
 #include <memory>
+#include <string>
 #include <vector>
 #include <boost/shared_ptr.hpp>
 
@@ -26,6 +27,8 @@ public:
     void bindExisting(UINT, RBX::Verb*);
     void bindOwned(UINT, RBX::Verb*);
     void initializeCommands();
+    int loadFile(std::string);
+    int loadFromString(std::string);
     void OnUpdateAlwaysEnable(CCmdUI*);
     // Original message handlers, named by address until their identities are recovered.
     void handle_44f7c0();
