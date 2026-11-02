@@ -125,7 +125,8 @@ if provider_trial:
                  'NativeWorkspaceGuidsTrial.obj', 'NativeWorkspaceFinalConstructVectorTrial.obj',
                  'NativeDataModelCreateTrial.obj', 'NativeToolCheckedMultiTrial.obj',
                  'NativeDataModelInitializeTrial.obj', 'NativeWorkspaceNullProfile.obj',
-                 'NativeWorldServiceFactoriesTrial.obj']]
+                 'NativeWorldServiceJointFindTrial.obj', 'NativePhysicsArrayLifetimeTrial.obj',
+                 'NativePhysicsArrayFindTrial.obj']]
 objects += [snap/'native-layouts'/'NativeInstanceBaseCallbacks.obj']
 objects += [snap/'native-layouts'/'NativeInstanceReadPropertyTrial.obj']
 objects += [snap/'native-layouts'/'NativeDescendantHelpersTrial.obj']

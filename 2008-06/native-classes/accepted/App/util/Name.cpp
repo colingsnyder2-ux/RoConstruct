@@ -80,7 +80,7 @@ namespace RBX
 
 	const Name& Name::lookup(const std::string& sName)
 	{
-		RBXASSERT(sName.size() < 50);
+		                            ;
 		boost::mutex::scoped_lock scoped_lock(mutex());
 
 		NamMap::iterator iter = namMap().find(sName);

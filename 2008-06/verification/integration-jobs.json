@@ -8583,5 +8583,43 @@
     "unit": "RBX::NullController",
     "updated": 1793596686.5539827,
     "user": "colin"
+  },
+  {
+    "created": 1793598339.8242497,
+    "id": "d1e6646f87714249841f8434b9393a6b",
+    "model": "gpt-6.1-sol",
+    "patches": {
+      "App/util/Name.cpp": [
+        [
+          "Name::lookup(const std::string& sName)\n\t{\n\t\tRBXASSERT(sName.size() < 50);\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(sName);\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\treturn *iter->second;\n\t\t}\n\t\telse\n\t\t{\n\t\t\treturn getNullName();\n\t\t}\n\t}",
+          "Name::lookup(const std::string& sName)\n\t{\n\t\t                            ;\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(sName);\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\treturn *iter->second;\n\t\t}\n\t\telse\n\t\t{\n\t\t\treturn getNullName();\n\t\t}\n\t}"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "44ba97d24381f3811346fbbe3d5af78c66af73940a89924ba666e5cabe3fd244",
+      "credits": 1,
+      "distinct_after": 9842,
+      "distinct_before": 9841,
+      "gains": [
+        "00554180"
+      ],
+      "input_hash": "03c2a4f1e234e113733783bb63393e3f1d52194ec07e9cb7f6f74341490ae6e4",
+      "losses": [],
+      "new_distinct": [
+        "00554180"
+      ],
+      "overlay_hash": "f49d78377ec97199b855469c6f842afc231854ce92b79e433e205205ecfdde25",
+      "owned_after": 3370,
+      "owned_before": 3369,
+      "rebased": false,
+      "submitted_revision": "44ba97d24381f3811346fbbe3d5af78c66af73940a89924ba666e5cabe3fd244"
+    },
+    "state": "accepted",
+    "unit": "RBX::AIController",
+    "updated": 1793598645.170819,
+    "user": "colin"
   }
 ]
