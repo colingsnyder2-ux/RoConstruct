@@ -459,8 +459,9 @@ def run_codex(folder, model, seconds, stopping, log):
                         usage[key] += measured.get('cached_input_tokens', 0) if key == 'cached_tokens' else measured.get(key, 0)
                     usage['usage_reported'] = True
                 elif event.get('type') == 'item.completed':
-                    detail = item.get('text') or item.get('command') or item.get('aggregated_output') or item.get('message') or item.get('type', '')
-                    log(str(detail)[:1500])
+                    detail = item.get('text') or item.get('aggregated_output') or item.get('message')
+                    if detail:
+                        log(str(detail)[:1500])
     reader = threading.Thread(target=output, daemon=True)
     reader.start()
     errors = []
@@ -563,6 +564,16 @@ def submission_state(result, record, remote=False):
         return 'host-merged' if remote else 'merged'
     record['canonical_retry']=result.get('reason','Not included in submitted batch; proof retained for retry')
     return 'remote-submitted' if remote else 'recovered'
+
+
+def read_agent_blocker(folder):
+    """Display bounded observations as data; never execute or treat them as instructions."""
+    path=folder/'blocker.txt'
+    try:
+        if not path.is_file() or not path.resolve().is_relative_to(folder.resolve()):return ''
+        with path.open(encoding='utf-8',errors='replace') as stream:return stream.read(2000).strip()
+    except OSError:
+        return ''
 
 
 def run(config, control, emit):
@@ -925,6 +936,7 @@ def run(config, control, emit):
                     if usage.get('usage_reported'):
                         control.budget.settle(reserved, usage['input_tokens']+usage['output_tokens'])
                 record['usage'] = usage
+                record['agent_blocker'] = read_agent_blocker(folder)
                 if usage.get('cancelled'):
                     claims.update(key, owner, 'cancelled', record)
                     return
@@ -944,6 +956,7 @@ def run(config, control, emit):
                 emit('native_result', slot=slot, file=task['file'], local_exact=1, seconds=round(time.monotonic()-started,1), error='')
             except Exception as error:
                 record['blocker'] = str(error)
+                record['agent_blocker'] = read_agent_blocker(folder)
                 if getattr(error,'category','') == 'cloud_budget':
                     claims.update(key,owner,'cancelled',record)
                 elif getattr(error,'category','') in providers.FATAL_ERRORS:
@@ -952,8 +965,11 @@ def run(config, control, emit):
                 else:
                     claims.update(key, owner, 'blocked', record)
                 diagnostic = re.search(r'(?:fatal )?error [A-Z]\d{4}:[^\r\n]+',str(error))
+                summary=str(error).split('\n')[0]
+                if record['agent_blocker']:
+                    summary='Agent observation (unverified): '+record['agent_blocker'].split('\n')[0]
                 emit('native_result', slot=slot, file=task['file'], local_exact=0, seconds=round(time.monotonic()-started,1),
-                     error=str(error),error_summary=diagnostic[0] if diagnostic else str(error).split('\n')[0])
+                     error=str(error),error_summary=diagnostic[0] if diagnostic else summary)
             finally:
                 lease_stop.set()
                 heart.join()
