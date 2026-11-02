@@ -1,5 +1,14 @@
 # Native integration with an agent (Codex, Claude)
 
+## Integration-aware recovery leases (Worker/Server 49)
+
+Recovery catalog entries become unavailable while their addresses are reserved
+by an active integration claim or submitted verification job. The claim endpoint
+rechecks this under a database write transaction, so a stale catalog cannot grant
+duplicate recovery work. Submitted work stays fenced after lease expiry; released
+or expired unsubmitted claims stop blocking. This server change requires a host
+restart after pending verification finishes.
+
 ## Short shared-header cache paths (Worker 48)
 
 Historical MSVC can silently skip headers with paths longer than 259 characters.

@@ -46,6 +46,46 @@ def test_ten_pcs_claim_one_method_only_once(service):
     assert not service.catalog()['tasks'][0]['available']
 
 
+@pytest.mark.parametrize('state,expires,client_name,busy',[
+    ('claimed',3600,'2008-06',True),('submitted',-1,'2008-06',True),
+    ('claimed',-1,'2008-06',False),('released',3600,'2008-06',False),
+    ('submitted',3600,'2012-06',False)])
+def test_integration_work_fences_recovery_catalog_and_stale_claims(service,monkeypatch,state,expires,client_name,busy):
+    stale=service.catalog();task=stale['tasks'][0]
+    with service.store.lock,service.store.db as db:
+        db.execute('INSERT INTO integration_claims VALUES(?,?,?,?,?,?,?,?,?)',
+            ('integration-test',client_name,'RBX::A','other-user','other-pc',time.time()+expires,
+             state,json.dumps(['00400000']),'base'))
+    assert service.catalog()['tasks'][0]['available'] is not busy
+    monkeypatch.setattr(service,'catalog',lambda:stale)
+    result=service.claim('Colin',dict(target=task['target'],signature=task['signature'],worker='pc2'))
+    assert result['claimed'] is not busy
+    if busy:
+        assert result['reason']=='integration-busy'
+        assert service.store.db.execute('SELECT COUNT(*) FROM native_method_leases').fetchone()[0]==0
+
+
+def test_two_server_connections_fence_same_address_with_stale_catalogs(service,monkeypatch):
+    alternative=REL.replace('A.cpp','Alternative.cpp');(service.root/alternative).write_text(BEFORE)
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=p,method='A::f',addr='00400000') for p in (REL,alternative)])
+    catalog=service.catalog();database=service.store.db.execute('PRAGMA database_list').fetchone()[2]
+    store=SimpleNamespace(db=sqlite3.connect(database,check_same_thread=False),lock=threading.Lock())
+    promotions=SimpleNamespace(**{**vars(service.promotions),'store':store})
+    second=host.Host(promotions)
+    for instance in (service,second):monkeypatch.setattr(instance,'catalog',lambda:catalog)
+    try:
+        for attempt in range(10):
+            barrier=threading.Barrier(2)
+            def take(n):
+                task=catalog['tasks'][n];barrier.wait(timeout=10)
+                return (service,second)[n].claim('Colin',dict(target=task['target'],signature=task['signature'],worker='pc'+str(n)))
+            with ThreadPoolExecutor(max_workers=2) as pool:results=list(pool.map(take,(0,1)))
+            assert sum(result['claimed'] for result in results)==1
+            with service.store.lock,service.store.db as db:
+                db.execute("UPDATE native_method_leases SET state='complete',expires=0")
+    finally:store.db.close()
+
+
 def test_host_blockers_publish_without_tasks_or_source_changes_and_refresh(service):
     path=service.root/'work/native-recovery/blockers.json';path.parent.mkdir(parents=True,exist_ok=True)
     initial=service.catalog();blocker=dict(class_name='Clump',status='needs-layout-owner',reason='Original vtable conflicts with SDK class',evidence='work/proofs/clump.json')
@@ -288,7 +328,15 @@ def test_http_two_pcs_share_real_server_lease_routes(service):
     a=client.Remote('http://127.0.0.1:'+str(http.server_port),'Colin',identity='pc1')
     b=client.Remote(a.api.server,'Colin',identity='pc2')
     try:
-        task=a.call('catalog')['tasks'][0];lease=a.claim(task)
+        task=a.call('catalog')['tasks'][0]
+        with service.store.lock,service.store.db as db:
+            db.execute('INSERT INTO integration_claims VALUES(?,?,?,?,?,?,?,?,?)',
+                ('http-integration','2008-06','RBX::A','other-user','pc3',0,'submitted',json.dumps([task['addr']]),'base'))
+        assert not b.call('catalog')['tasks'][0]['available']
+        assert b.claim(task)==dict(claimed=False,reason='integration-busy')
+        with service.store.lock,service.store.db as db:
+            db.execute("UPDATE integration_claims SET state='released' WHERE id='http-integration'")
+        lease=a.claim(task)
         assert lease['claimed'] and not b.claim(task)['claimed']
         assert a.renew(lease)['renewed']
         job=a.submit(lease,dict(model='terra',candidate=service.root/REL),check_only=True)

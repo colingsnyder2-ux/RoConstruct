@@ -18,6 +18,13 @@ CREATE TABLE IF NOT EXISTS native_recovery_verified(target TEXT PRIMARY KEY,sign
 '''
 
 
+def integration_busy(db, now):
+    return {row[0] for row in db.execute(
+        "SELECT j.value FROM integration_claims c,json_each(c.addresses) j "
+        "WHERE c.client=? AND (c.state='submitted' OR (c.state='claimed' AND c.expires>?))",
+        (integration.CLIENT,now))}
+
+
 class Host:
     def __init__(self, promotions, start=False, server=None):
         self.server=server or worker.load_settings().get('server','http://127.0.0.1:8765')
@@ -169,6 +176,7 @@ class Host:
         with self.store.lock:
             busy=list(self.store.db.execute("SELECT target,json_extract(packet,'$.task.addr') FROM native_method_leases WHERE (state='claimed' AND expires>?) OR state='submitted'",(time.time(),)))
             busy_targets={r[0] for r in busy};busy_addresses={r[1] for r in busy}
+            busy_addresses.update(integration_busy(self.store.db,time.time()))
             verified=dict(self.store.db.execute('SELECT target,signature FROM native_recovery_verified'))
             integrated={r[0] for r in self.store.db.execute('SELECT addr FROM integration_credit WHERE client=?',(integration.CLIENT,))}
         progress=self.promotions.directory/'progress-native.json'
@@ -189,8 +197,10 @@ class Host:
         if task.get('include_profile','owner')!='owner' and task['include_profile'] not in body.get('include_profiles',[]):
             return dict(claimed=False,reason='worker-update-required')
         packet=dict(task=task,original=catalog['files'][task['file']])
-        now=time.time()
         with self.store.lock,self.store.db as db:
+            db.execute('BEGIN IMMEDIATE')
+            now=time.time()
+            if task['addr'] in integration_busy(db,now):return dict(claimed=False,reason='integration-busy')
             busy=db.execute("SELECT 1 FROM native_method_leases WHERE ((state='claimed' AND expires>?) OR state='submitted') AND json_extract(packet,'$.task.addr')=? LIMIT 1",(now,task['addr'])).fetchone()
             if busy:return dict(claimed=False,reason='address-busy')
             old=db.execute('SELECT expires,state FROM native_method_leases WHERE target=?',(task['target'],)).fetchone()
