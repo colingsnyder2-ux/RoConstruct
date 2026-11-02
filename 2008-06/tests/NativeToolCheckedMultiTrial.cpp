@@ -9,6 +9,8 @@
 #include "NativeFlatToolTrial.h"
 #include "NativeSurfaceSiblingsTrial.h"
 #include "NativeModelToolsTrial.h"
+#include "NativeCloneToolTrial.h"
+#include "NativeGrabToolTrial.h"
 #include "StandardVerbs.h"
 #include <typeinfo>
 
@@ -29,6 +31,8 @@ template bool TToolVerb<OscillateMotorTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<ModelSetFrontTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<AnchorTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<LockTool, RunStateVerb>::isChecked() const;
+template bool TToolVerb<CloneTool, RunStateVerb>::isChecked() const;
+template bool TToolVerb<GrabTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<FlatTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<AxisMoveTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<ResizeTool, RunStateVerb>::isChecked() const;

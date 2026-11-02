@@ -1,7 +1,10 @@
 #include "NativeModelToolsTrial.h"
 namespace RBX {
 const std::string AnchorTool::getCursorName() const {
-    return target && anchored ? "UnAnchorCursor" : "AnchorCursor";
+    if (target) {
+        if (anchored) return "UnAnchorCursor";
+        return "AnchorCursor";
+    }
+    return "AnchorCursor";
 }
-MouseCommand* AnchorTool::isSticky() const { return NULL; }
 }

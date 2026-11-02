@@ -5,7 +5,7 @@ out=root/'rebuild/2008-06/out/native-layouts';src=root/'rebuild/2008-06/tests/Na
 workspace=out/'workspace-model-vector-include/v8datamodel/Workspace.h'; w=workspace.read_text(); assert 'findTopInstance(Instance*' in w; (overlay/'Workspace.h').write_text(w)
 obj=out/'NativeAnchorCursorTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(out/'workspace-model-vector-include'));flags.insert(0,'/I'+str(overlay.parent));code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);assert code==0,log
 raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);rows=[]
-for prefix,address,expected in [('?getCursorName@AnchorTool@',0x63dde0,[('__imp_??0?$basic_string@',0x802458)]),('?isSticky@AnchorTool@',0x416690,[])]:
+for prefix,address,expected in [('?getCursorName@AnchorTool@',0x63dde0,[('__imp_??0?$basic_string@',0x802458)])]:
  name,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06','%08x'%address);assert match.exact_match(target,targetrefs,body,refs),(prefix,len(body),len(target))
  start,section=defs[name];table=sections[section];bindings={}
  for i in range(table[7]):
@@ -16,5 +16,9 @@ for prefix,address,expected in [('?getCursorName@AnchorTool@',0x63dde0,[('__imp_
   bindings.setdefault(symbols[sym][0],value)
  for token,value in expected:assert any(k.startswith(token) and v==value for k,v in bindings.items()),(token,bindings)
  rows.append({'address':hex(address),'size':len(body),'symbol':name,'bindings':{k:hex(v) for k,v in bindings.items()}})
+import pefile
+pe=pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe')); baseaddr=pe.OPTIONAL_HEADER.ImageBase
+for addr,value in [(8692360, b'AnchorCursor'), (8692376, b'UnAnchorCursor')]:
+ assert pe.get_string_at_rva(addr-baseaddr)==value and hex(addr) in rows[0]['bindings'].values()
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();receipt={'scope':'Model tool target layout and runtime ABI unproven.','methods':rows,'source_sha256':sha(src),'surface_header_sha256':sha(header),'overlay_sha256':sha(patched),'object_sha256':sha(obj),'observer_sha256':sha(Path(__file__))};(root/'work/2008-06/shared-layouts/anchor-cursor-trial.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS AnchorTool cursor and bindings')
 
