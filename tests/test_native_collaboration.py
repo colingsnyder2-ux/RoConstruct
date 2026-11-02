@@ -163,11 +163,13 @@ def test_http_two_pcs_share_real_server_lease_routes(service):
 
 @pytest.mark.parametrize('cold_resume',[False,True])
 @pytest.mark.parametrize('canonical_wait',[False,True])
-def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch,cold_resume,canonical_wait):
+@pytest.mark.parametrize('existing_source',[False,True])
+def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch,cold_resume,canonical_wait,existing_source):
     from roc import native_sweep as sweep,gui_worker,match,native_refs
     service.promotions.recovery=service
     service.promotions.baseline=lambda:dict(revision='base',features=dict(native_recovery_collaboration=1))
     service.promotions.status=lambda *a:dict(jobs=[])
+    if existing_source:(service.root/REL).write_text(AFTER)
     context=SimpleNamespace(names={},by_addr={},includes=[])
     monkeypatch.setattr(sweep,'model_evidence',lambda *a:dict(target_asm=['fixture assembly']))
     monkeypatch.setattr(sweep,'native_context',lambda *a:context)
@@ -179,6 +181,7 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
     if canonical_wait:
         monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='mapped',proposals='saved.json'))
         def submit(*a,**kw):
+            assert a[5]==('roc native-source-transfer' if existing_source else config['model'])
             batches.append(1)
             return dict(state='blocked',reason='Class held on another PC') if len(batches)==1 else dict(job='queued',submitted_addresses=['00400000'])
         monkeypatch.setattr(recovery,'submit_batch',submit)
@@ -215,21 +218,27 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
         control=controls.setdefault(pc,gui_worker.Control(config,lambda *a,**kw:None))
         return recovery.run(config,control,lambda *a,**kw:None)
     try:
-        first=run('pc1');assert first['recovered']==1 and first['merged']==0
+        first=run('pc1');assert first['recovered']==int(not existing_source) and first['merged']==0
+        assert first['already_exact']==int(existing_source)
         if cold_resume:
             assert first['remote_submitted']==0 and first['pending']==1
             with service.store.lock,service.store.db as db:db.execute('UPDATE native_method_leases SET expires=0')
             folders['pc1']='pc1-cold-proof'
             first=run('pc1')
         assert first['remote_submitted']==1 and first['remote_pending']==1
-        second=run('pc2');assert second['attempted']==0 and calls==['A::f']
+        expected_calls=[] if existing_source else ['A::f']
+        second=run('pc2');assert second['attempted']==0 and calls==expected_calls
         assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
-        result=service.process(service.take());assert result['receipt']['state']=='merged'
+        result=service.process(service.take());assert result['receipt']['state']==('already-exact' if existing_source else 'merged')
         assert (service.root/REL).read_text()==AFTER
-        resumed=run('pc1');assert resumed['host_merged']==1 and resumed['merged']==1 and resumed['remote_pending']==int(canonical_wait) and controls['pc1'].budget.requests==1 and calls==['A::f']
+        resumed=run('pc1');assert resumed['host_merged']==int(not existing_source) and resumed['merged']==int(not existing_source) and resumed['remote_pending']==int(canonical_wait) and controls['pc1'].budget.requests==int(not existing_source) and calls==expected_calls
+        assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
+        if existing_source:assert 'return 1;' in (tmp_path/'pc1'/REL).read_text()
         if canonical_wait:
             retried=run('pc1');assert retried['host_merged']==0 and retried['submitted']==1 and retried['remote_pending']==0 and retried['integration_pending']==1
-            assert len(batches)==2 and controls['pc1'].budget.requests==1 and calls==['A::f']
+            assert len(batches)==2 and controls['pc1'].budget.requests==int(not existing_source) and calls==expected_calls
+        else:
+            repeated=run('pc1');assert repeated['pending']==0 and not batches
     finally:http.shutdown();http.server_close();thread.join()
 
 

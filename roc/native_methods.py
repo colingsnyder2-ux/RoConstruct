@@ -71,12 +71,12 @@ def validation_edits(edits):
 
 def canonical_edits(native,body,method):
     """Transfer a body across identically typed, named parameters; keep canonical declarations."""
-    original=sweep.methods(native);returned=sweep.methods(body)
+    original=methods(native);returned=methods(body)
     if method not in original or method not in returned:raise ValueError('Missing canonical method')
     a,b=original[method];c,d=returned[method]
     old=sweep.masked_cpp(native);new=sweep.masked_cpp(body)
     brace=old.index('{',a);new_brace=new.index('{',c)
-    if re.sub(r'\s+','',old[a:brace])==re.sub(r'\s+','',new[c:new_brace]):return sweep.method_edits(native,body,method)
+    if re.sub(r'\s+','',old[a:brace])==re.sub(r'\s+','',new[c:new_brace]):return [[native[a:b],native[a:brace]+body[new_brace:d]]]
     def parameters(clean,start):
         opening=clean.index('(',start);end=sweep.closing(clean,opening,'(',')')
         text=clean[opening+1:end].strip()
@@ -98,4 +98,4 @@ def canonical_edits(native,body,method):
         name=token[0];prefix=clean[:token.start()].rstrip()
         if name in rename and not prefix.endswith(('.', '->', '::')):edits.append((token.start(),token.end(),rename[name]))
     for start,end,name in reversed(edits):expression=expression[:start]+name+expression[end:]
-    return sweep.method_edits(native,native[a:brace]+expression,method)
+    return [[native[a:b],native[a:brace]+expression]]

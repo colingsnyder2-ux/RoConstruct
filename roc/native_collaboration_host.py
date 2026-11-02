@@ -118,8 +118,10 @@ class Host:
             patches=json.loads(registry.read_text(encoding='utf-8')) if registry.exists() else {}
             sources={p.relative_to(tree).as_posix() for p in tree.glob('App/*/*.cpp')}
             sources.update(p for p in patches if p.startswith('App/') and p.endswith('.cpp'))
+            sources.update(p.relative_to(tree).as_posix() for p in (tree/'App/include').rglob('*') if p.suffix in ('.h','.hpp','.inl'))
+            sources.update(p for p in patches if p.startswith('App/include/') and Path(p).suffix in ('.h','.hpp','.inl'))
             for rel in sorted(sources):
-                for method in sweep.methods(integration.overlay_text(tree,rel,patches,workspace=canonical)):
+                for method in native_methods.methods(integration.overlay_text(tree,rel,patches,workspace=canonical)):
                     mappings.setdefault(method,[]).append(rel)
             for task in clean:
                 paths=mappings.get(task['method'],[])

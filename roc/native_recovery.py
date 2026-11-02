@@ -356,7 +356,7 @@ def compile_probe(root, rel, context, matcher, addresses, method, baseline=None,
     out = Path(output) if output else root/'proof'/integration.digest([rel,translation_unit,inventory(root),context.defines,context.flags,digest(Path(__file__).read_bytes())])[:16]
     world = root/NATIVE/'native-world/App/include'
     is_world = unit.is_relative_to((root/NATIVE/'native-world').resolve()) or path.is_relative_to((root/NATIVE/'native-world').resolve())
-    includes = [root / NATIVE / 'native-headers', *([world] if is_world else []), *getattr(context,'probe_includes',[]),
+    includes = [root / NATIVE / 'native-headers', *([world,*getattr(context,'probe_includes',[])] if is_world else []),
                 *(getattr(context,'includes',[]) if is_world else []), path.parent,
                 libs.LIBS / 'mfc-9.0-rtm/atlmfc/include', libs.LIBS / 'xtp-11.2.2/Source',
                 *[libs._case_path(libs.LIBS / p).resolve() for p in libs.RECIPES['rbxgs']['include'] if p != 'WINSDK']]
@@ -491,11 +491,15 @@ def run_codex(folder, model, seconds, stopping, log):
 def canonical_methods(context, method):
     if not hasattr(context,'tree'):return []
     result=[]
-    for path in context.tree.glob('App/*/*.cpp'):
-        rel=path.relative_to(context.tree).as_posix()
+    sources={p.relative_to(base).as_posix() for base in (context.tree,context.overlay)
+             for p in [*base.glob('App/*/*.cpp'),*(base/'App/include').rglob('*')]
+             if p.suffix in ('.cpp','.h','.hpp','.inl')}
+    for rel in sorted(sources):
+        path=context.tree/rel
         source=context.overlay/rel if (context.overlay/rel).exists() else path
         text=source.read_text(errors='replace')
-        if method in sweep.methods(text):result.append((rel,text))
+        if not re.search(r'\b'+re.escape(method.rsplit('::',1)[-1])+r'\s*\(',text):continue
+        if method in native_methods.methods(text):result.append((rel,text))
     return result
 
 
@@ -513,6 +517,17 @@ def stage_submission(record, context, base, output, log, recheck=True):
         if '::' not in body.split('(',1)[0]:body=method.rsplit('::',1)[0]+'::'+body
         edits = native_methods.canonical_edits(text, body, method)
         proposal = dict(mode='native-source-recovery', file=rel, edits=edits, witnesses=[dict(addr=record['task']['addr'])], base_revision=base['revision'])
+        if Path(rel).suffix!='.cpp':
+            include=rel.removeprefix('App/include/')
+            consumers=[]
+            for path in context.tree.glob('App/*/*.cpp'):
+                name=path.relative_to(context.tree).as_posix()
+                source=context.overlay/name if (context.overlay/name).exists() else path
+                if re.search(r'^\s*#\s*include\s*[<"]'+re.escape(include)+r'[>"]',source.read_text(errors='replace'),re.M):consumers.append(name)
+            owners=[name for name in consumers if Path(name).stem==Path(rel).stem]
+            if owners:consumers=owners
+            if len(consumers)!=1:return dict(state='pending-mapping',reason='Inline canonical method needs one genuine consuming translation unit')
+            proposal['translation_unit']=consumers[0]
         if recheck:
             proposal = sweep.recheck_proposal(proposal, context, {rel:text}, output, base['revision'], log, recover=True)
         if proposal:
@@ -612,8 +627,9 @@ def run(config, control, emit):
     try:
         if remote:
             canonical_ready={}
-            canonical_signature=integration.digest([inventory(shared_root),base['revision'],digest(Path(__file__).read_bytes()),digest(Path(sweep.__file__).read_bytes())])
-            for key,owner,record in claims.remote_submitted(canonical_signature):
+            def canonical_signature():
+                return integration.digest([inventory(shared_root),base['revision'],digest(Path(__file__).read_bytes()),digest(Path(sweep.__file__).read_bytes())])
+            for key,owner,record in claims.remote_submitted(canonical_signature()):
                 state=remote.status(record['collaboration_submission']['job'])
                 record['host_receipt']=state
                 if state['state'] in ('merged','already-exact','retained'):
@@ -632,11 +648,15 @@ def run(config, control, emit):
                         record['host_merge_counted']=True
                         claims.update(key,owner,'remote-submitted',record)
                         log('Host recovery '+record['task']['method']+': merged; integration credits remain receipt-only')
-                    if state['state']=='merged' and config['native_agent_submit']:
+                    if state['state'] in ('merged','already-exact') and record.get('candidate') and config['native_agent_submit']:
                         try:
                             record['submission']=stage_submission(record,context,base,output/'canonical'/owner,log,recheck=False)
                             if record['submission']['state']=='mapped':
                                 canonical_ready.setdefault(record['model'],[]).append((key,owner,record))
+                                continue
+                            if record['submission']['state'].startswith('pending'):
+                                claims.block_canonical(key,owner,record,record['submission'].get('reason',record['submission']['state']),canonical_signature())
+                                totals['pending']+=1
                                 continue
                         except (ValueError,OSError,worker.ApiFailure) as error:
                             record['canonical_retry']=str(error)
@@ -651,12 +671,12 @@ def run(config, control, emit):
                     for key,owner,record in group:
                         if result.get('state')=='pending-linkage':
                             record['submission']=result
-                            claims.block_canonical(key,owner,record,result['reason'],canonical_signature)
+                            claims.block_canonical(key,owner,record,result['reason'],canonical_signature())
                         else:
                             claims.update(key,owner,submission_state(result,record,remote=True),record)
                 except sweep.SavedProposalError as error:
                     for key,owner,record in group:
-                        claims.block_canonical(key,owner,record,error,canonical_signature)
+                        claims.block_canonical(key,owner,record,error,canonical_signature())
                     log('Canonical proof blocked until source/baseline changes; candidates retained: '+str(error))
                 except (ValueError,OSError,worker.ApiFailure) as error:
                     log('Canonical submissions retained for next pass: '+str(error))
@@ -698,7 +718,7 @@ def run(config, control, emit):
                         proof = lambda snapshot, rel: compile_probe(snapshot, rel, context, matcher, {task['addr']}, task['method'], record['baseline'], translation_unit=task.get('translation_unit'))
                         if remote and record.get('remote_lease') and config['native_agent_submit']:
                             try:
-                                submitted=remote.submit(record['remote_lease'],record)
+                                submitted=remote.submit(record['remote_lease'],record,check_only=record.get('existing_source',False))
                             except worker.ApiFailure as error:
                                 if error.category!='bad_request':raise
                                 current=next((t for t in published['tasks'] if t['target']==task['target']),None)
@@ -708,20 +728,24 @@ def run(config, control, emit):
                                 record['remote_lease']=renewed
                                 claims.update(key,owner,'merging',record)
                                 original=published['files'][task['file']]
-                                edits=method_change(record['original'],candidate,task['method'],task.get('add_method',False))
-                                candidate=sweep.apply_edits(original,edits) if edits[0][0] else original+edits[0][1]
-                                method_change(original,candidate,task['method'],task.get('add_method',False))
+                                if record.get('existing_source'):
+                                    candidate=original
+                                else:
+                                    edits=method_change(record['original'],candidate,task['method'],task.get('add_method',False))
+                                    candidate=sweep.apply_edits(original,edits) if edits[0][0] else original+edits[0][1]
+                                    method_change(original,candidate,task['method'],task.get('add_method',False))
                                 rebased=output/'candidates'/('resumed-'+uuid.uuid4().hex+'.cpp')
                                 rebased.parent.mkdir(parents=True,exist_ok=True)
                                 rebased.write_text(candidate,encoding='utf-8')
                                 record.update(remote_lease=renewed,original=original,candidate=str(rebased),task=current)
-                                submitted=remote.submit(renewed,record)
+                                submitted=remote.submit(renewed,record,check_only=record.get('existing_source',False))
                             record['collaboration_submission']=submitted
                             claims.update(key,owner,'remote-submitted',record)
                             totals['remote_submitted']+=1
                             continue
-                        result = merge(shared_root, output/'merge'/uuid.uuid4().hex, task['file'], record['original'], candidate,
-                                       task['method'], proof, output/'receipts'/(owner+'.json'), allow_add=task.get('add_method',False))
+                        result = dict(state='already-present') if record.get('existing_source') else merge(
+                            shared_root, output/'merge'/uuid.uuid4().hex, task['file'], record['original'], candidate,
+                            task['method'], proof, output/'receipts'/(owner+'.json'), allow_add=task.get('add_method',False))
                         record.update(merge=result)
                         if remote and record.get('remote_lease'):
                             remote.release(record['remote_lease'])
@@ -863,16 +887,20 @@ def run(config, control, emit):
                 if not baseline['ok']:
                     totals['baseline_blocked'] += 1
                     raise ValueError('Native baseline blocked: '+baseline['error'])
+                if baseline.get('diff')=='Assigned method has no unique emitted symbol' and not task.get('add_method'):
+                    totals['baseline_blocked'] += 1
+                    raise ValueError('Native target has no unique emitted symbol; correct its consuming translation unit or signature before AI recovery')
+                record['baseline'] = [h['addr'] for h in baseline['hits']]
                 if baseline['target_exact']:
                     totals['already_exact'] += 1
                     emit('log',slot=slot,message=task['method']+': baseline already code/data exact locally; AI skipped')
-                    if remote:
-                        record['collaboration_submission']=remote.submit(record['remote_lease'],record,check_only=True)
-                        claims.update(key,owner,'remote-submitted',record)
-                        totals['remote_submitted']+=1
-                    else:claims.update(key, owner, 'already-exact', record)
+                    candidate=output/'candidates'/(owner+'.cpp')
+                    candidate.parent.mkdir(parents=True,exist_ok=True)
+                    candidate.write_bytes(native_path(folder,task['file']).read_bytes())
+                    record.update(candidate=str(candidate),proof=baseline,existing_source=True,
+                                  model='roc native-source-transfer',source_provenance='Existing native source; no model invocation in this pass')
+                    claims.update(key,owner,'recovered' if config['native_agent_submit'] else 'already-exact',record)
                     return
-                record['baseline'] = [h['addr'] for h in baseline['hits']]
                 saved = record.get('resume')
                 if saved:
                     try:
@@ -914,7 +942,7 @@ def run(config, control, emit):
                 evidence['read_only_header_roots'] = [str(p) for p in getattr(context,'probe_includes',[])]
                 reference=canonical_methods(context,task['method'])
                 if len(reference)==1:
-                    rel,text=reference[0];a,b=sweep.methods(text)[task['method']]
+                    rel,text=reference[0];a,b=native_methods.methods(text)[task['method']]
                     evidence['reference_file']=rel
                     evidence['reference_source']=text[max(0,a-1000):min(len(text),b+300)][:8000]
                 integration.atomic_json(folder/'task.json', evidence)

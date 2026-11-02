@@ -188,7 +188,7 @@ def tool_digest(tool, description, fields=()):
 class MineLog:
     """Thread-safe submit batcher. submit() never blocks the request handler."""
 
-    def __init__(self, webhook, store, batch_events=None, batch_seconds=BATCH_SECONDS, server=False):
+    def __init__(self, webhook, store, batch_seconds=BATCH_SECONDS):
         self.webhook = webhook
         self.store = store
         self.batch_seconds = batch_seconds

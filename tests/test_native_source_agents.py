@@ -152,6 +152,9 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
     monkeypatch.setattr(sweep,'Matcher',lambda *a:None)
     monkeypatch.setattr(match,'_functions',lambda *a:{})
     monkeypatch.setattr(match,'coff_functions',lambda *a:[])
+    monkeypatch.setattr(recovery,'target_proof',lambda data,matcher,addr,method:dict(
+        target_exact=('A::f%d(){return %d;}'%(int(addr,16),int(addr,16)+100)).encode() in data,
+        symbol='?f%d@A@@QAEHXZ'%int(addr,16),diff='fixture body diff'))
     assignments=[dict(file=REL,method='A::f%d'%n,addr='%08x'%n) for n in range(10)]
     monkeypatch.setattr(recovery,'nominations',lambda *a:assignments)
     monkeypatch.setattr(sweep,'model_evidence',lambda *a:{'asm':'genuine test fixture'})
@@ -501,6 +504,27 @@ def test_reference_source_uses_current_overlay_and_requires_unique_method(tmp_pa
     assert len(recovery.canonical_methods(context,'A::f'))==2
 
 
+def test_inline_canonical_body_maps_only_with_unique_genuine_consumer(tmp_path):
+    tree=tmp_path/'vendor';overlay=tmp_path/'overlay'
+    header=tree/'App/include/world/A.h';header.parent.mkdir(parents=True)
+    header.write_text('struct A { int f(){return 1;} };')
+    caller=tree/'App/world/A.cpp';caller.parent.mkdir(parents=True);caller.write_text('#include "world/A.h"\nint use(A* a){return a->f();}')
+    candidate=source(tmp_path/'candidate',AFTER)
+    context=SimpleNamespace(tree=tree,overlay=overlay)
+    record=dict(candidate=str(candidate),task=dict(method='A::f',addr='00400000'))
+    result=recovery.stage_submission(record,context,{'revision':'base'},tmp_path/'out',lambda _:None,recheck=False)
+    assert result['state']=='mapped'
+    proposal=json.loads(Path(result['proposals']).read_text())[0]
+    assert proposal['file']=='App/include/world/A.h' and proposal['translation_unit']=='App/world/A.cpp'
+    from roc import native_sweep as sweep
+    changed=sweep.apply_edits(header.read_text(),proposal['edits'])
+    assert changed=='struct A { int f(){return 3;} };'
+    (tree/'App/world/Other.cpp').write_text('#include "world/A.h"')
+    assert recovery.stage_submission(record,context,{'revision':'base'},tmp_path/'out2',lambda _:None,recheck=False)['state']=='mapped'
+    duplicate=tree/'App/other/A.cpp';duplicate.parent.mkdir(parents=True);duplicate.write_text('#include "world/A.h"')
+    assert recovery.stage_submission(record,context,{'revision':'base'},tmp_path/'out2',lambda _:None,recheck=False)['state']=='pending-mapping'
+
+
 def test_relative_world_snapshot_keeps_its_headers_before_canonical_fallbacks(tmp_path,monkeypatch):
     root=tmp_path/'shared';rel='rebuild/2008-06/native-world/App/v8world/Stage.cpp'
     path=root/rel;path.parent.mkdir(parents=True);path.write_text('int A::f(){return 1;}')
@@ -531,6 +555,57 @@ def test_probe_fallback_headers_do_not_mutate_canonical_compiler_context(tmp_pat
     world=root/'rebuild/2008-06/native-world/App/include'
     assert seen.index(world)<seen.index(published)<seen.index(canonical)
     assert context.includes==[canonical]
+
+
+def test_class_probe_keeps_owner_profile_without_world_fallback_headers(tmp_path,monkeypatch):
+    root=tmp_path/'shared';source(root)
+    canonical=tmp_path/'canonical';published=tmp_path/'published'
+    context=SimpleNamespace(defines='',flags='/O2',includes=[canonical],probe_includes=[published])
+    seen=[]
+    def compile(client,sources,out,includes,*args):
+        seen.extend(includes);return {str(sources[0]):(False,'test stop')}
+    monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
+    recovery.compile_probe(root,REL,context,None,set(),'A::f')
+    assert published not in seen and canonical not in seen
+    assert seen[0]==root/'rebuild/2008-06/native-headers'
+    assert context.includes==[canonical] and context.probe_includes==[published]
+
+
+@pytest.mark.parametrize('emitted',[False,True])
+def test_exact_or_unemitted_source_skips_ai_and_preserves_shared_files(tmp_path,monkeypatch,emitted):
+    from roc import native_sweep as sweep,match
+    shared=tmp_path/'shared';path=source(shared,AFTER.replace('return 2;','return 77;'))
+    original=path.read_bytes()
+    monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared))
+    monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(tmp_path/'proofs'))
+    class Api:
+        def __init__(self,*a):pass
+        def call(self,*a,**kw):return {'revision':'base'}
+        def close(self):pass
+    monkeypatch.setattr(recovery.worker,'Api',Api)
+    monkeypatch.setattr(sweep,'native_context',lambda *a:SimpleNamespace(names={},by_addr={},includes=[]))
+    monkeypatch.setattr(sweep,'Matcher',lambda *a:None)
+    monkeypatch.setattr(match,'_functions',lambda *a:{})
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=REL,method='A::f',addr='00400000')])
+    def compile(root,*a,**kw):
+        obj=root/'proof.obj';obj.write_bytes(b'original object')
+        return dict(ok=True,target_exact=True,hits=[],object=str(obj))
+    monkeypatch.setattr(recovery,'compile_probe',compile)
+    monkeypatch.setattr(recovery,'target_proof',lambda *a:dict(target_exact=emitted,diff='' if emitted else 'Assigned method has no unique emitted symbol'))
+    monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='mapped'))
+    def submit(records,ctx,base,out,server,model,log):
+        assert model=='roc native-source-transfer' and records[0]['existing_source']
+        assert records[0]['source_provenance']=='Existing native source; no model invocation in this pass'
+        return dict(job='queued',submitted_addresses=['00400000'])
+    monkeypatch.setattr(recovery,'submit_batch',submit)
+    monkeypatch.setattr(recovery,'run_codex',lambda *a:pytest.fail('Exact baseline must not invoke AI'))
+    config=dict(gui_worker.DEFAULTS,workers=1,model='codex:gpt-6-luna',user='tester',server='localhost:8765',cloud_allowed=True)
+    control=gui_worker.Control(config,lambda *a,**kw:None)
+    result=recovery.run(config,control,lambda *a,**kw:None)
+    assert result['already_exact']==result['submitted']==int(emitted)
+    assert result['baseline_blocked']==int(not emitted)
+    assert result['recovered']==result['merged']==control.budget.requests==0
+    assert path.read_bytes()==original
 
 
 def test_agent_blocker_is_bounded_literal_data_not_instructions(tmp_path):

@@ -1262,7 +1262,7 @@ def test_mine_digest():
     assert st.display_progress("C") == (1, 3, 9, 27)
     assert st.match_rate("C") > 0 and st.match_rate("other") == 0
     sent = []
-    log = MineLog("http://example.invalid/hook", st, batch_events=10, batch_seconds=60)
+    log = MineLog("http://example.invalid/hook", st, batch_seconds=60)
     with patch("roc.reports._post", side_effect=lambda url, payload: sent.append(payload)):
         log.submit({"client": "C", "addr": "a1", "unit": "U1", "size": 9}, "alice", "w", "m", 100, 10)
         log.submit({"client": "C", "addr": "a2", "unit": "U2", "size": 9}, "alice", "w", "m", 50, 50)
@@ -1281,7 +1281,7 @@ def test_mine_digest():
     assert embed["footer"]["text"] == "RoConstruct Mining" and "T" in embed["timestamp"]
     events = [{"job": {"client": "C", "addr": "a1"}, "user": "alice", "worker": "w", "model": "roc fingerprint",
                "score": 100, "points": 10}]
-    server_embed = MineLog("http://example.invalid/server", st, server=True).digest(events)
+    server_embed = MineLog("http://example.invalid/server", st).digest(events)
     assert server_embed["title"] == "⛏️ RoConstruct Mining Digest"
     assert server_embed["fields"][3]["name"] == "🏆 Workers"
     assert "alice" in str(server_embed)
