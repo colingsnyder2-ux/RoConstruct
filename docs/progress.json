@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02 05:51 UTC",
+ "updated": "2026-11-02 06:22 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -300,10 +300,10 @@
      "user": "colin",
      "matched": 3108,
      "mining_points": 685188,
-     "points": 685537,
-     "native_integrated": 349,
+     "points": 685538,
+     "native_integrated": 350,
      "submissions": 23217,
-     "last": 1793596686.3825567
+     "last": 1793598644.979921
     },
     {
      "user": "king_originala",
@@ -890,10 +890,10 @@
    "user": "colin",
    "matched": 29774,
    "mining_points": 6613926,
-   "points": 6614275,
-   "native_integrated": 349,
+   "points": 6614276,
+   "native_integrated": 350,
    "submissions": 201566,
-   "last": 1793596686.3825567
+   "last": 1793598644.979921
   },
   {
    "user": "atomic.potato",
