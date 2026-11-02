@@ -413,6 +413,9 @@ def linked_preflight(root, patches, output, log=print):
     atomic_json(candidate / "rebuild/2008-06/patches/rbxgs-client.json", combined)
     receipt = {"accepted": False, "baseline_artifacts": str(cache), "artifacts": str(candidate),
                "input_hash": key, "overlay_hash": digest(combined)}
+    source_edits = apply_source_edits(candidate)
+    if source_edits:
+        receipt["source_edits"] = source_edits
     try:
         after = verify_build(candidate, lambda phase: log("Linked preflight candidate: " + phase))
         atomic_json(candidate / "integration-result.json", after)
@@ -434,6 +437,26 @@ def linked_preflight(root, patches, output, log=print):
         atomic_json(evidence / 'preflight-receipt.json', receipt)
         log("Linked preflight receipt: " + str(candidate / "preflight-receipt.json"))
     return receipt
+
+
+def apply_source_edits(candidate):
+    """Offline forks only: ROC_PREFLIGHT_SOURCE_EDITS names a JSON list of [path, old, new] edits to tracked
+    rebuild sources outside the overlay (glue stand-ins that a native body now defines). They are applied to the
+    candidate snapshot only, so the baseline stays the committed tree; the fork commits them with the promotion."""
+    name = os.environ.get("ROC_PREFLIGHT_SOURCE_EDITS")
+    if not name:
+        return []
+    edits = json.loads(Path(name).read_text(encoding="utf-8"))
+    for path, old, new in edits:
+        if not path.startswith("rebuild/" + CLIENT + "/") or "/patches/" in path or ".." in Path(path).parts:
+            raise ValueError("source edit outside the rebuild sources: " + path)
+        target = candidate / path
+        text = target.read_text(encoding="utf-8")
+        if text.count(old) != 1:
+            raise ValueError("source edit anchor not unique in " + path)
+        target.unlink()
+        target.write_text(text.replace(old, new, 1), encoding="utf-8")
+    return edits
 
 
 def check_gates(result, baseline=None, elsewhere=frozenset(), require_gain=True):
