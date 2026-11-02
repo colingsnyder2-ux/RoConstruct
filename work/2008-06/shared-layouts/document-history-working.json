@@ -1,21 +1,22 @@
 {
   "sources": {
-    "rebuild\\2008-06\\tests\\record_native_document_history.py": "1c2635dd4119a45cc1acce8a41171717030a22f8cccbdcc742f7679f244bd86c",
-    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "3fc1d450cb6946b17d07d9bf94ea093d5bb57616afbbfa8b787e35c89ceaac51",
+    "rebuild\\2008-06\\tests\\record_native_document_history.py": "000c920b10a9f13a1db906df7386e16e1411fcc6bb1dd56a7e2d4538c01c1500",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "8e9fe9ca0b3eb2c5ce65c28da6338077fb4286fb7e70e045d4c8d845e74d631b",
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "bd63e71b42041c61756532b71353f57096361d17372c8093813bda7a3830fceb",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "0afe97a9a03851a77495d43048b08ab42e515715ea7e6ab13ce8ced5557209c1",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
     "rebuild\\2008-06\\native-headers\\RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4",
     "rebuild\\2008-06\\native-headers\\CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "d17468e5b74420e801fcb144fcb79614b22780274b134a574235ec378e5eb6c6",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "b6a0cfa8124e4724bf6288321bb3a6bbe33f38abe174bad5b3a559cd86861a0f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "88c977161dee24562d0a9512894f43ba35fad2427a3c10b8b7bed9e404b94d3a",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
-    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "ef1554c1d86dc1d058c7db8b6b11d910bda8ec3b51c3a1f0ac330f360cc2099d",
+    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "6b5e8766c0a695e297cb999b80c64c5e93b0180e8f43b26c121a9a25f289bb42",
     "tools\\rbxgs\\Client\\App\\include\\util\\Log.h": "8caadf614c181ee1fe3cd46ac3bb0cb61a82a0d47c2d2b1d6b5df3669f7f71c6",
     "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Workspace.h": "2ed391867e49e12497e567740dccb42655e413d90112d7f918a8b9d1fe2beb07",
     "tools\\rbxgs\\Client\\App\\include\\v8xml\\SerializerV2.h": "624c06919715364772dee0f0a63911e589d5282b659c5d8ff6684b311e091d08",
-    "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c"
+    "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c",
+    "rebuild\\2008-06\\native-classes\\LuaAllocatorStats.cpp": "a174770c08f446c59161f7073387754b6e6f1beb58fa85707f63aa96aa8290f4"
   },
-  "object_sha256": "6a65bafcd156b66126d51198471c2560dbf550c10d8641bdfcde557669a7066f",
+  "object_sha256": "ff390f802f6c530def13e56190fcd834c2d7e771b89be442a878d8d9c2922bce",
   "profile": [
     "const _Elem * c_str() const",
     "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );"
@@ -230,6 +231,23 @@
       }
     },
     {
+      "address": "004545d0",
+      "size": 480,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": "0x42de90",
+        "?gc@ScriptContext@RBX@@QAEXXZ": "0x5a86c0",
+        "?getHeapStats@LuaAllocator@@QBEXAAI0@Z": "0x5c8940",
+        "?formatMem@Log@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z": "0x5a6bc0",
+        "?getThreadCount@ScriptContext@RBX@@QBEIXZ": "0x5a9120",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620",
+        "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
       "address": "0044f7c0",
       "size": 258,
       "direct_calls": {
@@ -256,6 +274,18 @@
         "??0CSaveModelToRobloxDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z": "0x44f660",
         "?DoModal@CDialog@@UAEHXZ": "0x6a084e",
         "??1CSaveToRobloxDialog@@UAE@XZ": "0x45fe20"
+      }
+    },
+    {
+      "address": "0044fd30",
+      "size": 195,
+      "direct_calls": {
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "??0CRobloxDHtmlDialog@@QAE@IPBDPAVCWnd@@@Z": "0x44eeb0",
+        "?SetExternalDispatch@CDHtmlDialog@@QAEXPAUIDispatch@@@Z": "0x6a1394",
+        "?DoModal@CDialog@@UAEHXZ": "0x6a084e",
+        "??1CRobloxDHtmlDialog@@UAE@XZ": "0x401050"
       }
     },
     {
@@ -290,5 +320,56 @@
       }
     }
   ],
+  "heap_dependencies": {
+    "gc": {
+      "address": "005a86c0",
+      "symbol": "?gc@ScriptContext@RBX@@QAEXXZ",
+      "size": 24
+    },
+    "allocator": {
+      "address": "005c8940",
+      "symbol": "?getHeapStats@LuaAllocator@@QBEXAAI0@Z",
+      "size": 20,
+      "object_sha256": "5b03c62772032199487851eb37df0a252e21067ef85c7c135adf55047ad7454f",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLuaAllocatorStats.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LuaAllocatorStats.cpp"
+      ]
+    }
+  },
   "scope": "Inactive compiler proof, direct history targets verified; no runtime integration credit."
 }

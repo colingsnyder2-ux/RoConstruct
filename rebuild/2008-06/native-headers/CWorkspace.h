@@ -19,6 +19,8 @@ class IObjectSafetyRobloxImpl : public IObjectSafety {
 public:
     DWORD currentSafety;
     IObjectSafetyRobloxImpl() : currentSafety(0) {}
+    HRESULT checkSite(); // 00403b60; implementation pending.
+    HRESULT getSiteUrl(ATL::CComBSTR&, DWORD&); // 00403210.
     STDMETHOD(GetInterfaceSafetyOptions)(REFIID, DWORD*, DWORD*);
     STDMETHOD(SetInterfaceSafetyOptions)(REFIID, DWORD, DWORD);
 };

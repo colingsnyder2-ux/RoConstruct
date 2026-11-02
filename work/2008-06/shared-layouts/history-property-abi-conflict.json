@@ -1,0 +1,26 @@
+{
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "77277674442eb341e88533a87247f9073343d5150c35dd209f4fb836c82d8dd3",
+  "donor_header_sha256": "8606e058eda0c18b87a6e4b3305123bc33283a829a1f5ed304ccc19ba571cafd",
+  "parent_property_address": "0x973d34",
+  "constructor": "0x559920",
+  "vtable": "0x82d768",
+  "rtti": ".?AV?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@",
+  "slots": [
+    "0x631180",
+    "0x59d490",
+    "0x565960",
+    "0x5ee1d0",
+    "0x585420",
+    "0x5da5b0",
+    "0x60a2f0",
+    "0x5eecf0",
+    "0x5eedf0",
+    "0x56be00"
+  ],
+  "history_apply_property": "0x5872a0",
+  "original_slot5_setter": "0x5da5b0",
+  "slot5_calls_value_getter": "0x4917f0",
+  "donor_slot5": "setStringValue(DescribedBase*, const std::string&)",
+  "scope": "Original slot 5 handles Reflection::Value, donor slot 5 accepts std::string. Do not call donor virtual interface for native history restoration until full descriptor ABI is reconciled."
+}

@@ -1,0 +1,190 @@
+{
+  "scope": "Inactive native destructor and query bodies; referenced class constructors, complete virtual tables and runtime swap remain unverified.",
+  "inputs": {
+    "rebuild\\2008-06\\tests\\record_native_verb_lifetime.py": "94bebc45735dbddfae9cc3bb5828913d929a6fb43adb3a494a89b5ae64569321",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "7a48e0178f955854b8a4c16c06476388e4ffcbc1f171a97886379fadaaa3d0cd",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Verb.h": "aa94b9409b10392ebee9d81c40b6d594a08a773922321533004d5432af47fcbc",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "2a41b0f5a9d305b824c415892c14562fdfd79008f5b42d865ed6cd145b5f4737",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
+    "rebuild\\2008-06\\native-classes\\VerbLifetime.cpp": "7678e97a27c5a39f32b6ac6eb377ca565ba4f104922e5f66d809364bb78c3a7e",
+    "rebuild\\2008-06\\native-classes\\VerbBaseLifetime.cpp": "c0ca879c62d640acdc66d6791c4dee147eafa2aa969a2e91511270a71decc558",
+    "rebuild\\2008-06\\native-classes\\VerbQueries.cpp": "d05983f88e9fe93cd78f939980b5f94de23e6d35d74deb1c35004d3a3c3125e1"
+  },
+  "objects": {
+    "VerbLifetime": "0a3f3d493c3eeccf59870c1f38f2ceb51ee184ae551bcff974a64e853ef4b454",
+    "VerbBaseLifetime": "8fcb2bc865cc618ae923491dd0300fc61b87ea8f54d2cb97ae52bc13c0ea45b9",
+    "VerbQueries": "6dfceaa84fc43c5353b46ddfa3375cc397557999a25955217f0ace443bfff7da"
+  },
+  "flags": {
+    "VerbLifetime": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeVerbLifetime.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\VerbLifetime.cpp"
+    ],
+    "VerbBaseLifetime": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeVerbBaseLifetime.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\VerbBaseLifetime.cpp"
+    ],
+    "VerbQueries": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeVerbQueries.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\VerbQueries.cpp"
+    ]
+  },
+  "methods": [
+    {
+      "address": "005832c0",
+      "symbol": "??1Verb@RBX@@UAE@XZ",
+      "size": 28,
+      "direct_calls": {
+        "?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PAVVerb@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PAVVerb@2@@std@@@5@$0A@@std@@@std@@QAEIABQBVName@RBX@@@Z": "0x405ce0"
+      }
+    },
+    {
+      "address": "0057dfd0",
+      "symbol": "??1RunStateVerb@RBX@@UAE@XZ",
+      "size": 125,
+      "direct_calls": {
+        "??1Verb@RBX@@UAE@XZ": "0x5832c0"
+      }
+    },
+    {
+      "address": "0057e050",
+      "symbol": "??1EditSelectionVerb@RBX@@UAE@XZ",
+      "size": 179,
+      "direct_calls": {
+        "??1Verb@RBX@@UAE@XZ": "0x5832c0"
+      }
+    },
+    {
+      "address": "00565950",
+      "symbol": "?isEnabled@Verb@RBX@@UBE_NXZ",
+      "size": 3,
+      "direct_calls": {}
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isChecked@Verb@RBX@@UBE_NXZ",
+      "size": 3,
+      "direct_calls": {}
+    },
+    {
+      "address": "00582830",
+      "symbol": "?isEnabled@EditSelectionVerb@RBX@@UBE_NXZ",
+      "size": 34,
+      "direct_calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0"
+      }
+    },
+    {
+      "address": "00581cc0",
+      "symbol": "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z",
+      "size": 186,
+      "direct_calls": {
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@SAPAVSelection@1@PBVInstance@1@@Z": "0x421cb0",
+        "??$shared_from@VSelection@RBX@@@RBX@@YA?AV?$shared_ptr@VSelection@RBX@@@boost@@PAVSelection@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
+      }
+    }
+  ]
+}

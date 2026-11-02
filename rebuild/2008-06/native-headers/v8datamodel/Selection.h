@@ -15,5 +15,13 @@ class Selection : public DescribedCreatable<Selection, Instance, &sSelection>,
 public:
     CopyOnWrite<std::vector<boost::shared_ptr<Instance> > > selection;
     std::vector<ISelectionBase*> filteredSelections;
+    size_t size() const { return selection->size(); }
+    boost::shared_ptr<Instance> front() const;
+    void clearSelection();
+    void addToSelection(Instance*);
+    template<class Iterator> void setSelection(Iterator first, Iterator last) {
+        clearSelection();
+        for (; first != last; first++) addToSelection(first->get());
+    }
 };
 }

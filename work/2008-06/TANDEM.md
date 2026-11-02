@@ -434,3 +434,27 @@ affected by anything on the P6 branch.
 
 - 2026-11-01 Codex: primitive XItem primary tables extend SDK57 slots with slots57-61 (read editor, display typed value, equality, per-instance write, empty value); OnValueChanged overrides SDK slot25. Adding actual virtual declarations in PropertyGridItems.h; object sizes unchanged. Original 60/61 addresses43a7d0/43b4e0 for float/int, not guessed SDK inherited slots.
 - 2026-11-01 Codex: GUI integrator isolation: use C:/Users/colin/RoConstruct-gui-integrator (detached at 3238b08c7b) for future GUI integrator edits. Existing uncommitted work remains in original checkout; transfer deliberately with hashes, never overwrite. Shared headers have one owner in original checkout; integrator must not edit them. Prior stale record_native_document.py overwrite involved concurrent writers in shared checkout; exact writer not identified. No active client swap.
+
+- 2026-11-01 Codex: inactive CWorkspace::insert recovery; adding nonvirtual Instance name lookup declaration, Selection donor methods/template, and ServiceProvider context lookup declaration. No layout or virtual slot changes; original 0046ae30 uses by-value string and donor signature differs. No live swap.
+
+- 2026-11-01 Codex: shared XML parser correction. Original TextXmlParser ctor 00415350 and dtor 004147c0 construct/destroy std::map<string,string> at +0x28; donor lacks it (donor sizeof 0x28, original 0x48). Adding native header overlay; no runtime swap.
+
+- 2026-11-01 Codex: correcting provisional Instance lookup declaration to class-name lookup. Original 0046ae30 calls 0041f2b0, which obtains virtual getClassName() and copies Name::name, not Instance::name. Nonvirtual declarations only; no layout change.
+
+- 2026-11-01 Codex: mark existing ScriptContext::gc donor body noinline to test original out-of-line 005a86c0 call; no field or vtable changes. Recovering Doc script-heap command and native LuaAllocator stats getter.
+
+- 2026-11-01 Codex: adding genuine donor ServiceClient createService/operator-> bodies for Selection verb recovery; no data members or virtual-slot changes. Original Selection service-client target 00581cc0.
+
+- 2026-11-01 Codex: native CWorkspace IObjectSafety methods; adding nonvirtual site-check declaration evidenced by original 00404d20/00404db0 -> 00403b60. No layout or virtual-slot changes.
+
+- 2026-11-01 Codex: add nonvirtual workspace safety GetOurUrl declaration, recover original 00403210 using real COM interfaces and original failure behavior. No layout or virtual-slot changes.
+
+- 2026-11-01 Codex: introduce shared Name.h overlay from previously accepted roc_name_native_declare_header; restores const-char pointer once-guarded declare template used by original service cache. No fields or virtual slots change.
+
+- 2026-11-01 Codex: replace partial ChangeHistoryService interface with original RTTI DescribedCreatable+Service hierarchy and constructor-evidenced list, iterators, flags, scoped connections. Layout candidate only; constructor and destructor must both match before runtime use.
+
+- 2026-11-01 Codex: declare nonvirtual HistoryRecord play/unplay used by original history operations; no object storage or vtable changes.
+
+- 2026-11-01 Codex: declare original HistoryItem play/unplay/property operations to recover Doc undo/redo path. No field or vtable changes; behavior remains inactive.
+
+- 2026-11-01 Codex: declare HistoryItem applyProperty nonvirtual 005872a0; original parent-property RTTI confirms descriptor slot5 applies a Reflection::Value. Donor PropertyDescriptor slot5 is setStringValue, so descriptor ABI is not adopted pending correction; no vtable changes now.

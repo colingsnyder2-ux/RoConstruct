@@ -14,6 +14,7 @@
 #include "../native-headers/CWorkspace.h"
 #include "util/RunStateOwner.h"
 #include "util/Log.h"
+#include "util/StandardOut.h"
 #include "Network/Players.h"
 #include <exception>
 #include <fstream>
@@ -66,8 +67,8 @@ BEGIN_MESSAGE_MAP(CRobloxDoc, CDocument)
 END_MESSAGE_MAP()
 
 // Original 00428850 logs std::exception::what(); recovery/linking remains open.
-void reportDocumentCreateException(const std::exception&);
-void reportOpenException(const std::exception&);
+void reportDocumentException(const std::exception&);
+CString applicationBaseUrl();
 extern CRobloxDoc* currentDocument;
 void setCurrentDocument(int, CRobloxDoc*);
 // Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
@@ -242,6 +243,21 @@ void CRobloxDoc::handle_454920(CCmdUI* ui) {
     }
 }
 
+// 004545d0: collect Lua garbage and report allocator and thread totals.
+void CRobloxDoc::handle_4545d0() {
+    RBX::DataModel::Lock lock(workspace->getDataModel());
+    RBX::ScriptContext* context = RBX::ServiceProvider::create<RBX::ScriptContext>(getDataModel().get());
+    if (context && context->allocator) {
+        context->gc();
+        size_t bytes, blocks;
+        context->allocator->getHeapStats(bytes, blocks);
+        std::string heap = RBX::Log::formatMem(bytes);
+        unsigned int threads = context->getThreadCount();
+        RBX::StandardOut::singleton()->print(RBX::MESSAGE_INFO,
+            "Script heap %s (%d blocks), %d threads", heap.c_str(), blocks, threads);
+    }
+}
+
 // 00454f30: enable abuse reporting when the players service supports it.
 void CRobloxDoc::handle_454f30(CCmdUI* ui) {
     RBX::DataModel::Lock lock(workspace->getDataModel());
@@ -266,6 +282,13 @@ void CRobloxDoc::handle_44fc50() {
 }
 void CRobloxDoc::handle_44fcc0() {
     CSaveModelToRobloxDialog dialog(workspace, 0);
+    dialog.DoModal();
+}
+
+// 0044fd30: show the in-game abuse report dialog.
+void CRobloxDoc::handle_44fd30() {
+    CRobloxDHtmlDialog dialog(0x7b, applicationBaseUrl() + "/AbuseReport/InGameChat.aspx", 0);
+    dialog.SetExternalDispatch(workspace);
     dialog.DoModal();
 }
 
@@ -350,7 +373,7 @@ BOOL CRobloxDoc::OnOpenDocument(LPCTSTR path) {
         history->setEnabled(true);
         return TRUE;
     } catch (const std::exception& error) {
-        reportOpenException(error);
+        reportDocumentException(error);
         ReportSaveLoadException(path, 0, FALSE, 0xf101);
         return FALSE;
     }
@@ -408,7 +431,7 @@ BOOL CRobloxDoc::OnNewDocument() {
     try {
         initializeCommands();
     } catch (std::exception& error) {
-        reportDocumentCreateException(error);
+        reportDocumentException(error);
         AfxMessageBox("An error occured while creating the document", MB_ICONEXCLAMATION, 0);
         return FALSE;
     }
