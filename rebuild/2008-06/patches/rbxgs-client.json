@@ -11,6 +11,10 @@
   [
    "",
    "\n// rebuild overlay: template bodies rbxgs declares but never defines\nnamespace RBX\n{\n\ttemplate<typename T>\n\tvoid Creatable<T>::Deleter::operator()(T* instance)\n\t{\n\t\tT::predelete(instance);\n\t\tdelete instance;\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tconst Name& FactoryProduct<Class, DerivedClass, ClassName>::className()\n\t{\n\t\tstatic const Name& n = Name::declare(*ClassName, -1);\n\t\treturn n;\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tconst Name& FactoryProduct<Class, DerivedClass, ClassName>::getClassName() const\n\t{\n\t\treturn className();\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tFactoryProduct<Class, DerivedClass, ClassName>::Creator::Creator()\n\t{\n\t\tFactoryProduct::getCreators()[&FactoryProduct::className()] = this;\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tFactoryProduct<Class, DerivedClass, ClassName>::Creator::~Creator()\n\t{\n\t\tFactoryProduct::getCreators().erase(&FactoryProduct::className());\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tboost::shared_ptr<Object> FactoryProduct<Class, DerivedClass, ClassName>::Creator::create() const\n\t{\n\t\treturn Class::CreatableBase::template create<Class>();\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tconst Name& FactoryProduct<Class, DerivedClass, ClassName>::Creator::getClassName() const\n\t{\n\t\treturn FactoryProduct::className();\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tconst typename FactoryProduct<Class, DerivedClass, ClassName>::Creator FactoryProduct<Class, DerivedClass, ClassName>::creator;\n\n\ttemplate<typename DerivedClass, const char** ClassName>\n\tconst Name& NonFactoryProduct<DerivedClass, ClassName>::className()\n\t{\n\t\tstatic const Name& n = Name::declare(*ClassName, -1);\n\t\treturn n;\n\t}\n\n\ttemplate<typename DerivedClass, const char** ClassName>\n\tconst Name& NonFactoryProduct<DerivedClass, ClassName>::getClassName() const\n\t{\n\t\treturn className();\n\t}\n}\n"
+  ],
+  [
+   "\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2), Deleter());\n\t\t}\n\tprivate:\n\t\tstatic void* operator new(size_t size)\n",
+   "\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2), Deleter());\n\t\t}\n\t\ttemplate<typename Class, typename Parameter1, typename Parameter2, typename Parameter3>\n\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2, p3), Deleter());\n\t\t}\n\tprivate:\n\t\tstatic void* operator new(size_t size)\n"
   ]
  ],
  "App/include/util/Name.h": [
@@ -173,6 +177,10 @@
   [
    "\ttemplate<typename Class>\n\tClass* ServiceProvider::find(const Instance* context)\n\t{\n\t\treturn find<Class>(findServiceProvider(context));\n\t}\n\n\ttemplate<typename Class>\n\tClass* ServiceProvider::create(const Instance* context)\n\t{\n\t\treturn create<Class>(findServiceProvider(context));\n\t}",
    "\t// 2008 emits these two as out-of-line template instantiations (e.g. 0x4651c0 for RunService), so callers\n\t// must not inline the walk-and-cast; keep the body here but stop MSVC from folding it into callers.\n\ttemplate<typename Class>\n\t__declspec(noinline) Class* ServiceProvider::find(const Instance* context)\n\t{\n\t\treturn find<Class>(findServiceProvider(context));\n\t}\n\n\ttemplate<typename Class>\n\t__declspec(noinline) Class* ServiceProvider::create(const Instance* context)\n\t{\n\t\treturn create<Class>(findServiceProvider(context));\n\t}"
+  ],
+  [
+   "\t}\n\n\ttemplate<typename Class>\n\tClass* ServiceProvider::create() const\n\t{\n\t\treturn dynamic_cast<Class*>(ServiceProvider::create(const_cast<ServiceProvider*>(this), Class::className()));\n\t}\n",
+   "\t}\n\n\ttemplate<typename Class>\n\t__declspec(noinline) Class* ServiceProvider::create() const\n\t{\n\t\treturn dynamic_cast<Class*>(ServiceProvider::create(const_cast<ServiceProvider*>(this), Class::className()));\n\t}\n"
   ]
  ],
  "App/include/reflection/type.h": [
@@ -975,6 +983,10 @@
   [
    "\t\tvoid setCamera(Camera* value);",
    "\t\tvoid setCamera(Camera* value);\n\tprivate:\n\t\tvoid checkCamera();\n\tpublic:"
+  ],
+  [
+   "\tclass WorkspaceStatsItem : public Stats::Item\n\t{\n\tpublic:\n\t\tWorkspaceStatsItem(const Workspace*, const World*);\n\t};\n}\n",
+   "\tclass WorkspaceStatsItem : public Stats::Item\n\t{\n\tpublic:\n\t\tWorkspaceStatsItem(const Workspace*, const World*, const RunService*);\n\t};\n}\n"
   ]
  ],
  "App/v8datamodel/Workspace.cpp": [
@@ -1029,6 +1041,10 @@
   [
    "\t\t  unknown0x3cc(NULL),",
    "\t\t  unknown0x3cc(NULL),\n\t\t  cameraTemplate(Creatable::create<Camera>()),"
+  ],
+  [
+   "\n\tvoid Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tNotifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);\n\n\t\tif (statsItem)\n\t\t{\n\t\t\tstatsItem->setParent(NULL);\n\t\t\tstatsItem.reset();\n\t\t}\n\n\t\tInstance::onServiceProvider(oldProvider, newProvider);\n\n\t\tscriptContext = ServiceProvider::create<ScriptContext>(newProvider);\n\n\t\tif (Stats::Item* item = ServiceProvider::create<Stats::Item>(newProvider))\n\t\t{\n\t\t\tstatsItem = Creatable::create<WorkspaceStatsItem>(this, world.get());\n\t\t\tstatsItem->setParent(item);\n\t\t}\n\n\t\tNotifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);\n\t}\n\n\tstatic void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)\n",
+   "\n\tvoid Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (oldProvider)\n\t\t{\n\t\t\tNotifier<RunService, Heartbeat>::disconnect(oldProvider->find<RunService>(), this);\n\n\t\t\tif (statsItem)\n\t\t\t{\n\t\t\t\tstatsItem->setParent(NULL);\n\t\t\t\tstatsItem.reset();\n\t\t\t}\n\t\t}\n\n\t\tif (newProvider)\n\t\t{\n\t\t\tscriptContext = newProvider->create<ScriptContext>();\n\n\t\t\tRunService* runService = newProvider->find<RunService>();\n\t\t\tNotifier<RunService, Heartbeat>::connect(runService, this);\n\n\t\t\tif (Stats::Item* item = newProvider->create<Stats::Item>())\n\t\t\t{\n\t\t\t\tstatsItem = Creatable::create<WorkspaceStatsItem>(this, world.get(), runService);\n\t\t\t\tstatsItem->setParent(item);\n\t\t\t}\n\t\t}\n\t}\n\n\tstatic void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)\n"
   ]
  ],
  "App/include/script/ScriptContext.h": [

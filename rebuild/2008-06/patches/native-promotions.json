@@ -2540,5 +2540,31 @@
     "void ScriptContext::call(const Lua::FunctionRef& f, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)\n{\n    if (f.empty())\n        throw std::runtime_error(\"Cannot call a nil function\");\n    Lua::lua_pushfunction(f.thread(), f);\n    resume(f.thread(), pushArguments, readResults);\n}\n\nvoid ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)\n{"
    ]
   ]
+ },
+ {
+  "App/include/v8datamodel/Workspace.h": [
+   [
+    "\tclass WorkspaceStatsItem : public Stats::Item\n\t{\n\tpublic:\n\t\tWorkspaceStatsItem(const Workspace*, const World*);\n\t};\n}\n",
+    "\tclass WorkspaceStatsItem : public Stats::Item\n\t{\n\tpublic:\n\t\tWorkspaceStatsItem(const Workspace*, const World*, const RunService*);\n\t};\n}\n"
+   ]
+  ],
+  "App/include/util/object.h": [
+   [
+    "\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2), Deleter());\n\t\t}\n\tprivate:\n\t\tstatic void* operator new(size_t size)\n",
+    "\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2), Deleter());\n\t\t}\n\t\ttemplate<typename Class, typename Parameter1, typename Parameter2, typename Parameter3>\n\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2, p3), Deleter());\n\t\t}\n\tprivate:\n\t\tstatic void* operator new(size_t size)\n"
+   ]
+  ],
+  "App/include/v8tree/Service.h": [
+   [
+    "\t}\n\n\ttemplate<typename Class>\n\tClass* ServiceProvider::create() const\n\t{\n\t\treturn dynamic_cast<Class*>(ServiceProvider::create(const_cast<ServiceProvider*>(this), Class::className()));\n\t}\n",
+    "\t}\n\n\ttemplate<typename Class>\n\t__declspec(noinline) Class* ServiceProvider::create() const\n\t{\n\t\treturn dynamic_cast<Class*>(ServiceProvider::create(const_cast<ServiceProvider*>(this), Class::className()));\n\t}\n"
+   ]
+  ],
+  "App/v8datamodel/Workspace.cpp": [
+   [
+    "\n\tvoid Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tNotifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);\n\n\t\tif (statsItem)\n\t\t{\n\t\t\tstatsItem->setParent(NULL);\n\t\t\tstatsItem.reset();\n\t\t}\n\n\t\tInstance::onServiceProvider(oldProvider, newProvider);\n\n\t\tscriptContext = ServiceProvider::create<ScriptContext>(newProvider);\n\n\t\tif (Stats::Item* item = ServiceProvider::create<Stats::Item>(newProvider))\n\t\t{\n\t\t\tstatsItem = Creatable::create<WorkspaceStatsItem>(this, world.get());\n\t\t\tstatsItem->setParent(item);\n\t\t}\n\n\t\tNotifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);\n\t}\n\n\tstatic void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)\n",
+    "\n\tvoid Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (oldProvider)\n\t\t{\n\t\t\tNotifier<RunService, Heartbeat>::disconnect(oldProvider->find<RunService>(), this);\n\n\t\t\tif (statsItem)\n\t\t\t{\n\t\t\t\tstatsItem->setParent(NULL);\n\t\t\t\tstatsItem.reset();\n\t\t\t}\n\t\t}\n\n\t\tif (newProvider)\n\t\t{\n\t\t\tscriptContext = newProvider->create<ScriptContext>();\n\n\t\t\tRunService* runService = newProvider->find<RunService>();\n\t\t\tNotifier<RunService, Heartbeat>::connect(runService, this);\n\n\t\t\tif (Stats::Item* item = newProvider->create<Stats::Item>())\n\t\t\t{\n\t\t\t\tstatsItem = Creatable::create<WorkspaceStatsItem>(this, world.get(), runService);\n\t\t\t\tstatsItem->setParent(item);\n\t\t\t}\n\t\t}\n\t}\n\n\tstatic void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)\n"
+   ]
+  ]
  }
 ]
