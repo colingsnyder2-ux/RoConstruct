@@ -42,8 +42,40 @@ def names(client):
     return out
 
 
+@functools.lru_cache(maxsize=4)
+def mfc_ordinals():
+    """ordinal -> MFC90 export name, read from the installed MFC .def when present."""
+    out = {}
+    for path in (ROOT / "tools/libs/mfc-9.0-rtm/atlmfc/src/mfc/intel").glob("mfc90.def"):
+        for line in path.read_text(errors="replace").splitlines():
+            m = re.match(r"\s*(\S+)\s+@\s*(\d+)", line)
+            if m:
+                out[int(m.group(2))] = m.group(1)
+    return out
+
+
+def thunk_label(client, value):
+    """Name an MFC/CRT import thunk (jmp [iat]) by its export."""
+    try:
+        base, image = match._image(client)
+        raw = bytes(image[value - base:value - base + 6])
+    except Exception:
+        return None
+    if raw[:2] != bytes([0xff, 0x25]):
+        return None
+    target = int.from_bytes(raw[2:], "little")
+    name = names(client).get(target)
+    m = re.match(r"mfc90[.]dll!#([0-9]+)$", name or "")
+    if m:
+        return "MFC " + mfc_ordinals().get(int(m.group(1)), name)
+    return name
+
+
 def label(client, value):
     name = names(client).get(value)
+    if name:
+        return name
+    name = thunk_label(client, value)
     if name:
         return name
     try:
