@@ -1,0 +1,12 @@
+{
+ "name": "MfcAtl",
+ "description": "Static MFC 9.0 / ATL 8.0-9.0 code the 2008-06 exe links (mfcs90.lib, atls.lib). No upstream layer: only exact mined mfc-*/atl-* sources, swapped in by swap_build.py (verified layer) and force-linked by the test.",
+ "mfc_import": true,
+ "layers": [],
+ "test": "mfcatl_link",
+ "test_includes": [
+  "rebuild/2008-06/out/MfcAtl/force"
+ ],
+ "verified": true,
+ "force_verified": true
+}

@@ -44,8 +44,9 @@ dist/
 docs/data/
 docs/integration.json
 
-# Native rebuilds are published in RoConstruct-findings/2008-06.
-/rebuild/
+# Native rebuild build output stays local; the mined Source tree is published in RoConstruct-findings.
+/rebuild/*/out/
+/rebuild/*/Source/
 
 # Compiler scratch belongs under work/.
 /*.obj
