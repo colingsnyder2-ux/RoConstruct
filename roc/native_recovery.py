@@ -98,6 +98,7 @@ class Claims:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as db:
             db.execute('CREATE TABLE IF NOT EXISTS tasks(key TEXT PRIMARY KEY, signature TEXT, owner TEXT, expires REAL, state TEXT, record TEXT)')
+            db.execute('CREATE TABLE IF NOT EXISTS task_history(owner TEXT PRIMARY KEY, key TEXT, signature TEXT, state TEXT, record TEXT, replaced REAL)')
 
     @contextmanager
     def connect(self):
@@ -112,13 +113,19 @@ class Claims:
         owner = uuid.uuid4().hex
         with self.connect() as db:
             db.execute('BEGIN IMMEDIATE')
-            previous = db.execute('SELECT signature,expires,state,record FROM tasks WHERE key=?', (key,)).fetchone()
+            previous = db.execute('SELECT signature,expires,state,record,owner FROM tasks WHERE key=?', (key,)).fetchone()
             if previous and (previous[2] in ('recovered','merging','draft','submitted','remote-submitted','canonical-blocked') or previous[1] > time.time() or previous[0] == signature and previous[2] not in ('running', 'cancelled')):
                 return None
             if previous and previous[2] in ('running','cancelled'):
                 saved = json.loads(previous[3])
                 if saved.get('workspace') and saved.get('original'):
                     record['resume'] = {k:saved[k] for k in ('workspace','original','task')}
+                elif saved.get('resume'):
+                    record['resume'] = saved['resume']
+            if previous:
+                db.execute('INSERT OR IGNORE INTO task_history VALUES(?,?,?,?,?,?)',
+                           (previous[4],key,previous[0],previous[2],previous[3],time.time()))
+                record['previous_attempt']=previous[4]
             db.execute('INSERT OR REPLACE INTO tasks VALUES(?,?,?,?,?,?)',
                        (key, signature, owner, time.time()+90, 'running', json.dumps(record)))
         return owner
@@ -690,6 +697,8 @@ def run(config, control, emit):
         seed_missing(shared_root,published['files'])
         log('Cross-PC recovery: %d tasks across %d classes; server leases, owner-only layouts' % (len(published['tasks']),len(published['classes'])))
         log('Published classes: '+', '.join(published['classes'][:30]))
+        for blocker in published.get('blockers',[]):
+            log('Native blocker [%s] %s: %s | %s'%(blocker['status'],blocker['class_name'],blocker['reason'],blocker['evidence']))
     else:
         log('Server lacks cross-PC recovery leases; this pass is coordinated on this PC only')
     context = sweep.native_context({}, api)
@@ -907,7 +916,9 @@ def run(config, control, emit):
                 if remote:
                     lease=remote.claim(task)
                     if not lease.get('claimed'):
-                        claims.update(key,owner,'cancelled',dict(task=task))
+                        record=claims.record(key,owner)
+                        record['lease_refusal']=lease.get('reason','busy')
+                        claims.update(key,owner,'cancelled',record)
                         if lease.get('reason')=='contributor-limit':
                             log('Contributor lease limit reached across PCs; waiting for active work to finish')
                             break

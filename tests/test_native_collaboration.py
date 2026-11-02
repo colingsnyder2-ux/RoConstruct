@@ -46,6 +46,17 @@ def test_ten_pcs_claim_one_method_only_once(service):
     assert not service.catalog()['tasks'][0]['available']
 
 
+def test_host_blockers_publish_without_tasks_or_source_changes_and_refresh(service):
+    path=service.root/'work/native-recovery/blockers.json';path.parent.mkdir(parents=True,exist_ok=True)
+    initial=service.catalog();blocker=dict(class_name='Clump',status='needs-layout-owner',reason='Original vtable conflicts with SDK class',evidence='work/proofs/clump.json')
+    path.write_text(json.dumps([blocker]));updated=service.catalog()
+    assert updated['blockers']==[blocker]
+    assert updated['tasks']==initial['tasks'] and updated['files']==initial['files']
+    assert updated['revision']==initial['revision']  # Status does not invalidate source snapshots or leases.
+    blocker['evidence']='work/../outside.json';path.write_text(json.dumps([blocker]));service.cache_key=None
+    with pytest.raises(ValueError,match='Invalid native blocker record'):service.catalog()
+
+
 def test_mfc_profile_is_host_selected_and_old_workers_are_fenced(service,monkeypatch):
     rel=REL.replace('A.cpp','CMainFrameCommands.cpp');(service.root/rel).write_text(BEFORE)
     monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=rel,method='A::f',addr='00400000')])

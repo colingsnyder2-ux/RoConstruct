@@ -86,6 +86,61 @@ def test_ten_simultaneous_sessions_cannot_duplicate_method_claim(tmp_path):
     assert claims.take('method','changed snapshot',{})
 
 
+def test_replaced_attempt_is_archived_and_resume_survives_repeated_refusals(tmp_path):
+    claims=recovery.Claims(tmp_path);original=dict(task={'method':'A::f'},workspace='saved-private',original=BEFORE,usage={'input_tokens':123})
+    first=claims.take('method','old',{});claims.update('method',first,'cancelled',original)
+    second=claims.take('method','new',{'task':original['task']});record=claims.record('method',second)
+    assert record['resume']['workspace']=='saved-private'
+    record['lease_refusal']='address-busy';claims.update('method',second,'cancelled',record)
+    third=claims.take('method','newer',{'task':original['task']})
+    assert claims.record('method',third)['resume']['original']==BEFORE
+    with recovery.Claims(tmp_path).connect() as db:
+        rows=db.execute('SELECT owner,state,record FROM task_history ORDER BY replaced').fetchall()
+    assert [r[0] for r in rows]==[first,second]
+    assert json.loads(rows[0][2])==original and rows[0][1]=='cancelled'
+    assert json.loads(rows[1][2])['lease_refusal']=='address-busy'
+    completed=dict(original,host_receipt={'state':'merged','job':'verified-upload'})
+    claims.update('method',third,'merged',completed)
+    assert claims.take('method','newest',{'task':original['task']})
+    with claims.connect() as db:archived=db.execute('SELECT state,record FROM task_history WHERE owner=?',(third,)).fetchone()
+    assert archived[0]=='merged' and json.loads(archived[1])==completed
+
+
+def test_remote_lease_refusal_retains_private_resume_without_compiling(tmp_path,monkeypatch):
+    import os
+    from roc import native_collaboration as collaboration,native_sweep as sweep
+    shared=tmp_path/'shared';source(shared);task=dict(file=REL,method='A::f',addr='00400000',available=True)
+    monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared))
+    monkeypatch.setenv('ROC_NATIVE_RECOVERY_OUTPUT',str(tmp_path/'proofs'))
+    monkeypatch.setattr(recovery,'ROOT',tmp_path/'controller')
+    class Api:
+        token='fixture'
+        def __init__(self,*a):pass
+        def call(self,*a):return dict(revision='base',features={'native_recovery_collaboration':True})
+        def close(self):pass
+    class Remote:
+        def __init__(self,*a):pass
+        def snapshot(self,*a):return dict(workspace=str(shared),files={REL:BEFORE},tasks=[task],classes=['A'])
+        def claim(self,*a):return dict(claimed=False,reason='address-busy')
+        def close(self):pass
+    monkeypatch.setattr(recovery.worker,'Api',Api)
+    monkeypatch.setattr(collaboration,'Remote',Remote)
+    monkeypatch.setattr(sweep,'native_context',lambda *a:SimpleNamespace(names={},by_addr={},includes=[]))
+    monkeypatch.setattr(sweep,'Matcher',lambda *a:None)
+    monkeypatch.setattr(recovery.match,'_functions',lambda *a:{})
+    def forbidden(*a,**kw):raise AssertionError('Lease refusal must not compile or launch an agent')
+    monkeypatch.setattr(recovery,'compile_probe',forbidden);monkeypatch.setattr(recovery,'run_codex',forbidden)
+    claims=recovery.Claims(shared);key=recovery.integration.digest([os.path.normcase(str((shared/REL).resolve())),task['method']])
+    original=dict(task=task,workspace='saved-private',original=BEFORE)
+    owner=claims.take(key,'old',{});claims.update(key,owner,'cancelled',original)
+    config=dict(gui_worker.DEFAULTS,model='codex:gpt-6-luna',workers=1,user='tester',server='localhost:8765',cloud_allowed=True)
+    for _ in range(2):
+        assert recovery.run(config,gui_worker.Control(config,lambda *a,**kw:None),lambda *a,**kw:None)['attempted']==0
+        with claims.connect() as db:state,raw=db.execute('SELECT state,record FROM tasks WHERE key=?',(key,)).fetchone()
+        row=json.loads(raw)
+        assert state=='cancelled' and row['resume']==original and row['lease_refusal']=='address-busy'
+
+
 def test_cancelled_claim_can_resume_without_wait(tmp_path):
     claims=recovery.Claims(tmp_path);owner=claims.take('a','s',{})
     claims.update('a',owner,'cancelled',{})

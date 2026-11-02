@@ -45,10 +45,11 @@ class Host:
 
     def _catalog(self):
         manifest=self.root/'work/native-recovery/tasks.json'
+        blocker_manifest=self.root/'work/native-recovery/blockers.json'
         inputs={str(p):[p.stat().st_size,p.stat().st_mtime_ns] for scope in recovery.SCOPES
                 for p in (self.root/recovery.NATIVE/scope).rglob('*') if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.inl')}
         for p in [* (self.root/recovery.NATIVE/'tests').glob('Native*.cpp'),
-                  * (self.root/recovery.NATIVE/'tests').glob('record_native_*.py'),manifest,
+                  * (self.root/recovery.NATIVE/'tests').glob('record_native_*.py'),manifest,blocker_manifest,
                   self.root/recovery.NATIVE/'out/native-names.json',self.root/'work/2008-06/functions.jsonl']:
             if p.exists():inputs[str(p)]=[p.stat().st_size,p.stat().st_mtime_ns]
         canonical=self.promotions.source_root
@@ -58,6 +59,16 @@ class Host:
         if project_registry.exists():inputs[str(project_registry)]=[project_registry.stat().st_size,project_registry.stat().st_mtime_ns]
         key=integration.digest(inputs)
         if key!=self.cache_key:
+            blockers=json.loads(blocker_manifest.read_text(encoding='utf-8')) if blocker_manifest.exists() else []
+            if not isinstance(blockers,list) or len(blockers)>64:raise ValueError('Invalid native blocker manifest')
+            for blocker in blockers:
+                if not isinstance(blocker,dict) or set(blocker)!={'class_name','status','reason','evidence'} or \
+                        any(not isinstance(value,str) for value in blocker.values()) or \
+                        not re.fullmatch(r'[A-Za-z_]\w*(?:::\w+)*',blocker['class_name']) or \
+                        blocker['status'] not in ('needs-layout-owner','needs-linkage','needs-codegen','needs-evidence') or \
+                        not 1<=len(blocker['reason'])<=2000 or \
+                        not re.fullmatch(r'work/[\w./-]+\.json',blocker['evidence']) or '..' in Path(blocker['evidence']).parts:
+                    raise ValueError('Invalid native blocker record')
             files={Path(p).relative_to(self.root).as_posix():Path(p).read_text(encoding='utf-8-sig')
                    for p in inputs if Path(p).suffix in ('.cpp','.h','.hpp','.inl')}
             names_path=self.root/recovery.NATIVE/'out/native-names.json'
@@ -151,7 +162,7 @@ class Host:
             clean.sort(key=lambda t:(not bool(t['integration_mapping']),len(files[t['file']][slice(*native_methods.methods(files[t['file']]).get(t['method'],(0,len(files[t['file']]))))]),t['file'],t['method']))
             if any(not Path(p).exists() or [Path(p).stat().st_size,Path(p).stat().st_mtime_ns]!=stamp for p,stamp in inputs.items()):
                 raise ValueError('Native inputs changed while publishing; refresh catalog')
-            self.cached=dict(revision=integration.digest(files),files=files,tasks=clean,probe_headers=probe_headers,probe_revision=probe_revision,
+            self.cached=dict(revision=integration.digest(files),files=files,tasks=clean,blockers=blockers,probe_headers=probe_headers,probe_revision=probe_revision,
                 canonical_headers=canonical_headers,canonical_revision=canonical_revision,
                 classes=sorted({t['class_name'] for t in clean}),layout_policy='owner-only; no invented fields',lease_seconds=TTL)
             self.cache_key=key

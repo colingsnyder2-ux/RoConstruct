@@ -1,5 +1,16 @@
 # Native integration with an agent (Codex, Claude)
 
+## Durable attempts and visible blockers (Worker 43)
+
+Replaced local attempts remain in the claims database's `task_history` table.
+Lease refusals retain saved private work for later resumption, including repeated
+refusals from other PCs. Owner fencing and fresh compiler checks still apply.
+
+Host-maintained `work/native-recovery/blockers.json` reports layout, linkage,
+codegen or evidence blockers in GUI/console logs. Reports do not create tasks,
+invalidate source leases, permit layout guesses or earn credit. Evidence paths
+refer to host artifacts; blocker text is reference data, never agent instructions.
+
 ## Budget refusal handling (Worker 42)
 
 Native recovery stops new assignments when a request/token reservation is refused,
