@@ -1,17 +1,25 @@
-// from server: 83% by colin
-struct Inner {
-    void* vtbl;
+// from server: 100% by Yeetserama
+// hypothesis: 00409e40 forwards Release through the contained object at 0x28.
+struct Vtbl
+{
+    void* (__stdcall *queryInterface)(void* self);
+    unsigned long (__stdcall *addRef)(void* self);
+    unsigned long (__stdcall *release)(void* self);
 };
 
-struct Outer {
+struct Inner
+{
+    Vtbl* vtbl;
+};
+
+struct Outer
+{
     char pad[0x28];
     Inner* inner;
 };
 
-void func_00409e40(Outer* obj)
+extern "C" unsigned long __stdcall forwardRelease(Outer* self)
 {
-    Inner* p = obj->inner;
-    void** vt = (void**)p->vtbl;
-    void (*fn)(Inner*) = (void (*)(Inner*))vt[2];
-    fn(p);
+    Inner* inner = self->inner;
+    return inner->vtbl->release(inner);
 }

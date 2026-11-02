@@ -20,6 +20,7 @@ class ServiceProvider;
 class IReferenceBinder;
 class XmlState;
 class Name;
+class RaiseDescendentAdded2;
 struct ChildAdded;
 struct ChildRemoved;
 struct DescendantAdded;
@@ -48,6 +49,7 @@ class Instance : public boost::enable_shared_from_this<Instance>,
                  public Notifier<Instance, AncestorChanged>,
                  public Notifier<Instance, PropertyChanged>,
                  public boost::noncopyable {
+    friend class RaiseDescendentAdded2;
 public:
     static Reflection::BoundProp<bool, 1> propArchivable;
     static const Reflection::RefPropDescriptor<Instance, Instance> propParent;
@@ -61,6 +63,8 @@ public:
     virtual void setName(const std::string&);
     virtual bool askAddChild(const Instance*) const;
     virtual bool askSetParent(const Instance*) const;
+    virtual void onAddListener(Listener<Instance, ChildAdded>*) const;
+    virtual void onAddListener(Listener<Instance, DescendantAdded>*) const;
     virtual void onAncestorChanged(const AncestorChanged&);
     virtual void onDescendentAdded(Instance*);
     virtual void onDescendentRemoving(const boost::shared_ptr<Instance>&);
@@ -79,6 +83,14 @@ public:
     }
     const Instance* getChild(size_t i) const { return (*children)[i].get(); }
     Instance* getChild(size_t i) { return (*children)[i].get(); }
+    template<class Function> void for_eachChild(Function func) const {
+        if (children) {
+            boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > values = children.read();
+            std::vector<boost::shared_ptr<Instance> >::const_iterator end = values->end();
+            std::vector<boost::shared_ptr<Instance> >::const_iterator it = values->begin();
+            for (; it != end; ++it) func(it->get());
+        }
+    }
     template<class T> const T* getTypedParent() const { return rbx_static_cast<const T*>(parent); }
     template<class T> T* getTypedParent() { return rbx_static_cast<T*>(parent); }
     template<class T> const T* getTypedRoot() const {

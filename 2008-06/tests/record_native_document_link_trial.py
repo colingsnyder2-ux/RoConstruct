@@ -222,6 +222,11 @@ objects += [snap/'native-layouts'/'NativeInstanceSignalDescriptors.obj']
 objects += [snap/'native-layouts'/name for name in ['NativeChangeHistoryEvents.obj','NativeHistoryRecordLookup.obj','NativeHistoryItemState.obj']]
 objects += [snap/'property-abi-trial'/'HistoryItemPropertyTrial.obj']
 objects += [snap/'history-start-trial'/'NativeChangeHistoryStartTrial.obj']
+if provider_trial:
+    listener = snap/'native-layouts/instance-child-listener-integrated/InstanceChildListener.obj'
+    listener_receipt = json.loads((root/'work/2008-06/shared-layouts/instance-child-listener-integrated.json').read_text())
+    assert hashlib.sha256(listener.read_bytes()).hexdigest() == listener_receipt['object_sha256']
+    objects.append(listener)
 system = ['gdiplus','kernel32','user32','gdi32','advapi32','shell32','ole32','oleaut32','comdlg32','comctl32','ws2_32','winmm','opengl32','glu32','imagehlp','version','wininet','dbghelp','psapi']
 args = ['/nologo','/SUBSYSTEM:WINDOWS','/MACHINE:X86','/MAP:NativeDoc.map','/OUT:NativeDoc.exe','/NODEFAULTLIB:mfcs90.lib','/MANIFEST:NO']
 if provider_trial:

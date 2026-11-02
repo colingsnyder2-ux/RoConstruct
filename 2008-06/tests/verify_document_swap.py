@@ -11,6 +11,7 @@ tests = root / 'rebuild/2008-06/tests'
 out = root / 'rebuild/2008-06/out/native-layouts/document-swap-link-trial'
 out.mkdir(parents=True, exist_ok=True)
 steps = [
+    'record_native_instance_child_listener.py',
     'record_native_face_lifetime.py',
     'record_native_class_names_trial.py',
     'record_native_group_action_trial.py',
@@ -145,7 +146,7 @@ def run_check(name):
 with log_path.open('w', encoding='utf-8') as log:
     failures = []
     name, result = run_check('refresh_workspace_vector_headers.py')
-    log.write(f'\n=== {name} (exit {result.returncode}) ===\n{result.stdout}')
+    log.write(f'\n=== {name} (exit {result.returncode}, {result.elapsed_seconds:.2f}s) ===\n{result.stdout}')
     if result.returncode:
         print(f'FAIL {name}: {result.stdout[-3000:]}', flush=True)
         sys.exit(result.returncode)
@@ -155,7 +156,7 @@ with log_path.open('w', encoding='utf-8') as log:
         futures = [pool.submit(run_check, name) for name in steps]
         for future in as_completed(futures):
             name, result = future.result()
-            log.write(f'\n=== {name} (exit {result.returncode}) ===\n{result.stdout}')
+            log.write(f'\n=== {name} (exit {result.returncode}, {result.elapsed_seconds:.2f}s) ===\n{result.stdout}')
             log.flush()
             if result.returncode:
                 failures.append((name, result))
@@ -180,13 +181,13 @@ with log_path.open('w', encoding='utf-8') as log:
                  'record_native_rocket_launch_worker_trial.py']
     for name in serial_checks:
         name, result = run_check(name)
-        log.write(f'\n=== {name} (exit {result.returncode}) ===\n{result.stdout}')
+        log.write(f'\n=== {name} (exit {result.returncode}, {result.elapsed_seconds:.2f}s) ===\n{result.stdout}')
         if result.returncode:
             print(f'FAIL {name}: {result.stdout[-3000:]}', flush=True)
             sys.exit(result.returncode)
         print(f'PASS {name} ({result.elapsed_seconds:.1f}s)', flush=True)
     name, result = run_check('record_native_test_move_bool_trial.py')
-    log.write(f'\n=== {name} (exit {result.returncode}) ===\n{result.stdout}')
+    log.write(f'\n=== {name} (exit {result.returncode}, {result.elapsed_seconds:.2f}s) ===\n{result.stdout}')
     if result.returncode:
         print(f'FAIL {name}: {result.stdout[-3000:]}', flush=True)
         sys.exit(result.returncode)

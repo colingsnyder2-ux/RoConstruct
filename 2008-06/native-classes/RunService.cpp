@@ -1,4 +1,6 @@
 #include "util/RunStateOwner.h"
+#include "util/StandardOut.h"
+#include <exception>
 
 namespace RBX {
 // 00556b00: constructor fields recovered from native initialization.
@@ -8,6 +10,32 @@ RunService::RunService()
       unknown0x1d8(0.0), unknown0x1e0(0.0), invalidRunViewCount(0), stopRequested(false) {
     setName("Run Service");
     stopwatch.tick();
+}
+
+RunService::~RunService() {
+    stopwatch.tock();
+}
+
+void RunService::enqueueTask(boost::function<void()> task) {
+    boost::mutex::scoped_lock lock(unknownMutex0x2ac);
+    unknownQueue0x2b4.push_back(task);
+}
+
+void RunService::drainTasks() {
+    while (true) {
+        boost::function<void()> item;
+        {
+            boost::mutex::scoped_lock lock(unknownMutex0x2ac);
+            if (unknownQueue0x2b4.empty()) return;
+            item = unknownQueue0x2b4.front();
+            unknownQueue0x2b4.pop_front();
+        }
+        try {
+            item();
+        } catch (std::exception& e) {
+            StandardOut::singleton()->print(MESSAGE_ERROR, "%s", e.what());
+        }
+    }
 }
 
 // 00554da0: enforce native state transitions and notify listeners.

@@ -1,0 +1,8 @@
+from pathlib import Path
+import json,sys
+root=Path.cwd();sys.path.insert(0,str(root));from roc import match,rebuild
+out=root/'rebuild/2008-06/out/native-layouts/instance-listener-override-trial';src=out/'InstanceDescListenerTrial.cpp';src.write_text('''#include "v8tree/Instance.h"\nnamespace RBX { struct DescendantAdded { const boost::shared_ptr<Instance> instance; const boost::shared_ptr<Instance> parent; DescendantAdded(Instance* a,Instance* b):instance(shared_from(a)),parent(shared_from(b)) {} }; class RaiseDescendentAdded2 { const Instance* volatile notifier; Listener<Instance,DescendantAdded>* listener; public: RaiseDescendentAdded2(const Instance* a,Listener<Instance,DescendantAdded>* b):notifier(a),listener(b) {} void operator()(Instance* instance) { notifier->Notifier<Instance,DescendantAdded>::raise(DescendantAdded(instance,instance->parent),listener); instance->for_eachChild(*this); } }; void Instance::onAddListener(Listener<Instance,DescendantAdded>* listener) const { for_eachChild(RaiseDescendentAdded2(this,listener)); } }\n''');r=json.loads((root/'work/2008-06/shared-layouts/runservice-fresh-current.json').read_text());flags=['/I'+str(out)]+[x for x in r['flags'] if not x.startswith('/Fo') and not x.endswith('RunService.cpp')];obj=out/'descendant.obj';c,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);assert c==0,log
+for n,b,refs in match.coff_functions(obj.read_bytes()):
+ if n.startswith('?onAddListener@Instance@RBX@@') or n.startswith('??$for_eachChild@'):
+  for a in ('00559230','00558ff0'):
+   t,tr,_=match.target('2008-06',a);print(n[:110],len(b),a,len(t),match.exact_match(t,tr,b,refs))

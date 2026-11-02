@@ -8,6 +8,7 @@
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/thread.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/function.hpp>
 #include <G3D/Stopwatch.h>
 #include <deque>
 
@@ -95,7 +96,8 @@ namespace RBX
 		std::map<IRunView*, bool> views;
 		int invalidRunViewCount;
 		boost::mutex unknownMutex0x2ac;
-		std::deque<void*> unknownQueue0x2b4;
+		// Original enqueue and drain paths store zero-argument callables; return type remains inferred.
+		std::deque<boost::function<void()> > unknownQueue0x2b4;
 	public:
 		bool runDisabled;
 		static Reflection::SignalDesc<RunService, void(float, float)> event_Stepped;
@@ -105,6 +107,8 @@ namespace RBX
 		RunService();
 		virtual ~RunService();
 		void setRunState(RunState newState);
+		void enqueueTask(boost::function<void()> task); // 00555900; name provisional.
+		void drainTasks(); // 005559a0; name provisional.
 
 		void run()
 		{

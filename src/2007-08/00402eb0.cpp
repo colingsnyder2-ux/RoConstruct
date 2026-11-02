@@ -1,22 +1,24 @@
-// from server: 84% by colin
-struct Inner {
-    void* pad0;
-    void* fn;
+// from server: 100% by Yeetserama
+// hypothesis: 00402eb0 forwards AddRef through the contained object at 0x30.
+struct Vtbl
+{
+    void* (__stdcall *queryInterface)(void* self);
+    unsigned long (__stdcall *addRef)(void* self);
 };
 
-struct Mid {
+struct Inner
+{
+    Vtbl* vtbl;
+};
+
+struct Outer
+{
     char pad[0x30];
     Inner* inner;
 };
 
-struct Outer {
-    void invoke(Mid* p);
-};
-
-void Outer::invoke(Mid* p)
+extern "C" unsigned long __stdcall forwardAddRef(Outer* self)
 {
-    Inner* i = p->inner;
-    void* f = *(void**)i;
-    typedef void (__stdcall *Fn)(Inner*);
-    ((Fn)f)(i);
+    Inner* inner = self->inner;
+    return inner->vtbl->addRef(inner);
 }

@@ -1,15 +1,25 @@
-// from server: 77% by colin
-struct VCWorkspace_CComContainedObject {
-    char pad[0x30];
-    void* field30;
-
-    void* func(void* arg);
+// from server: 100% by Yeetserama
+// hypothesis: 00402ed0 forwards Release through the contained object at 0x30.
+struct Vtbl
+{
+    void* (__stdcall *queryInterface)(void* self);
+    unsigned long (__stdcall *addRef)(void* self);
+    unsigned long (__stdcall *release)(void* self);
 };
 
-void* VCWorkspace_CComContainedObject::func(void* arg)
+struct Inner
 {
-    void* p = *(void**)((char*)arg + 0x30);
-    void** vtbl = *(void***)p;
-    void* (__stdcall *fn)(void*) = (void* (__stdcall *)(void*))vtbl[2];
-    return fn(p);
+    Vtbl* vtbl;
+};
+
+struct Outer
+{
+    char pad[0x30];
+    Inner* inner;
+};
+
+extern "C" unsigned long __stdcall forwardRelease(Outer* self)
+{
+    Inner* inner = self->inner;
+    return inner->vtbl->release(inner);
 }

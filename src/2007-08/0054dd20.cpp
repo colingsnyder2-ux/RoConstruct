@@ -1,25 +1,25 @@
-// from server: 87% by colin
-struct locale {
-    void destroy();
-};
+// from server: 100% by Yeetserama
+// hypothesis: 0054dd20 is the same stream-buffer imbue twin as exact 0054d050,
+// with the buffer at 0x4c and the flags byte at 0x5c.
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /EHsc /MD
+extern void (__thiscall *pubimbue)(void*, void*, const void*);
+extern void (__thiscall *locale_destructor)(void*);
 
-struct streambuf {
-    locale* pubimbue(locale* result, const locale* loc);
-};
-
-struct zlib_decompressor_stream_buffer {
-    char pad[0x4c];
-    streambuf* buf;
-    char pad2[0x0c];
+struct S {
+    char padding0[0x4c];
+    void* buffer;
+    char padding1[0x0C];
     unsigned char flags;
-    void imbue(const locale* loc);
+
+    void imbue(const void* locale);
 };
 
-void zlib_decompressor_stream_buffer::imbue(const locale* loc)
+void S::imbue(const void* locale)
 {
-    if ((flags & 1) != 0 && buf != 0) {
-        locale tmp;
-        buf->pubimbue(&tmp, loc);
-        tmp.destroy();
+    if ((flags & 1) && buffer) {
+        pubimbue(buffer, &locale, locale);
+        locale_destructor(&locale);
     }
 }

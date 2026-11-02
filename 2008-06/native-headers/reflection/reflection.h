@@ -112,6 +112,7 @@ namespace RBX
 				{
 					return false;
 				}
+				virtual bool isWriteOnly() const { return false; }
 				virtual PropType getValue(const DescribedBase* object) const
 				{
 					Class* o = (Class*)object;
@@ -169,6 +170,7 @@ namespace RBX
 				{
 					return true;
 				}
+				virtual bool isWriteOnly() const { return false; }
 				virtual ReturnType getValue(const DescribedBase* object) const
 				{
 					Class* o = (Class*)object;
@@ -198,6 +200,7 @@ namespace RBX
 				{
 					return false;
 				}
+				virtual bool isWriteOnly() const { return true; }
 				virtual ReturnType getValue(const DescribedBase* object) const
 				{
 					throw std::runtime_error("can't get value");
@@ -229,6 +232,7 @@ namespace RBX
 				{
 					return false;
 				}
+				virtual bool isWriteOnly() const { return false; }
 				virtual ReturnType getValue(const DescribedBase* object) const
 				{
 					Class* o = (Class*)object;

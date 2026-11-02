@@ -1,16 +1,24 @@
-// from server: 88% by colin
-struct Inner {
-    virtual int f();
+// from server: 100% by Yeetserama
+// hypothesis: 00402ef0 is a COM QueryInterface forwarding thunk; the only
+// difference from exact 00412490 is the contained-object offset (0x30 vs 8).
+struct Vtbl
+{
+    void* (__stdcall *queryInterface)(void* self, const void* guid, void** out);
 };
 
-struct Outer {
+struct Inner
+{
+    Vtbl* vtbl;
+};
+
+struct Outer
+{
     char pad[0x30];
     Inner* inner;
 };
 
-int g(Outer* p)
+extern "C" void* __stdcall forwardQueryInterface(Outer* self, const void* guid, void** out)
 {
-    Inner* q = p->inner;
-    int (**vtbl)(Inner*) = *(int (***)(Inner*))q;
-    return vtbl[0](q);
+    Inner* inner = self->inner;
+    return inner->vtbl->queryInterface(inner, guid, out);
 }

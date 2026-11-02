@@ -1,11 +1,14 @@
-// from server: 76% by colin
-struct CRobloxView {
-    char pad[0x198];
-    int field_0x198;
-    void func_4566c0(int, int);
-    void target();
+// from server: 100% by Yeetserama
+// hypothesis: 00456800 tests a pointer field against NULL; the helper takes
+// bool arguments, so the compiler only sets AL before pushing.
+struct S_func_00456800 {
+    char pad0[0x198];
+    void* ptr;
 };
 
-void CRobloxView::target() {
-    func_4566c0(field_0x198 == 0, 1);
+extern "C" void __stdcall sub_004566c0(bool, bool);
+
+void __fastcall f(S_func_00456800* self)
+{
+    sub_004566c0(self->ptr == 0, true);
 }

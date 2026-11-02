@@ -28,13 +28,11 @@ void CWorkspace::cleanup() {
             RBX::Listener<RBX::Selection, RBX::SelectionChanged>* first = this;
             RBX::Selection* selection = dataModel->find<RBX::Selection>();
             if (selection) selection->RBX::Notifier<RBX::Selection, RBX::SelectionChanged>::removeListener(first);
+            RBX::Listener<RBX::Workspace, RBX::DrawChanged>* second = this;
             RBX::Workspace* workspace = dataModel->getWorkspace();
-            if (workspace) {
-                RBX::Notifier<RBX::Workspace, RBX::DrawChanged>* notifier =
-                    reinterpret_cast<RBX::Notifier<RBX::Workspace, RBX::DrawChanged>*>(
-                        reinterpret_cast<char*>(workspace) + 0x344);
-                notifier->removeListener(this);
-            }
+            if (workspace)
+                reinterpret_cast<RBX::Notifier<RBX::Workspace, RBX::DrawChanged>*>(
+                    reinterpret_cast<char*>(workspace) + 0x344)->removeListener(second);
         }
         runService.reset();
         RBX::DataModel::closeDataModel(dataModel, true);
