@@ -730,12 +730,12 @@ def run(config, control, emit):
                             claims.block_canonical(key,owner,record,result['reason'],canonical_signature())
                         else:
                             claims.update(key,owner,submission_state(result,record,remote=True),record)
-                except sweep.SavedProposalError as error:
+                except (worker.ApiFailure,OSError) as error:
+                    log('Canonical submissions retained for next pass: '+str(error))
+                except (ValueError,RuntimeError,subprocess.SubprocessError) as error:
                     for key,owner,record in group:
                         claims.block_canonical(key,owner,record,error,canonical_signature())
                     log('Canonical proof blocked until source/baseline changes; candidates retained: '+str(error))
-                except (ValueError,OSError,worker.ApiFailure) as error:
-                    log('Canonical submissions retained for next pass: '+str(error))
         server_jobs = {}
         for key, owner, record in claims.submitted():
             identifier = record['submission']['job']

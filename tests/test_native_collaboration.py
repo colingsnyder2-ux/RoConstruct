@@ -269,10 +269,10 @@ def test_http_two_pcs_share_real_server_lease_routes(service):
 
 
 @pytest.mark.parametrize('cold_resume',[False,True])
-@pytest.mark.parametrize('canonical_wait',[False,True])
+@pytest.mark.parametrize('canonical_wait',[False,True,'gate-failure','transport-failure'])
 @pytest.mark.parametrize('existing_source',[False,True])
 def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tmp_path,monkeypatch,cold_resume,canonical_wait,existing_source):
-    from roc import native_sweep as sweep,gui_worker,match,native_refs
+    from roc import native_sweep as sweep,gui_worker,match,native_refs,worker
     service.promotions.recovery=service
     service.promotions.baseline=lambda:dict(revision='base',features=dict(native_recovery_collaboration=1))
     service.promotions.status=lambda *a:dict(jobs=[])
@@ -290,6 +290,8 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
         def submit(*a,**kw):
             assert a[5]==('roc native-source-transfer' if existing_source else config['model'])
             batches.append(1)
+            if len(batches)==1 and canonical_wait=='gate-failure':raise ValueError('Need new module ownership without losing existing owned bodies')
+            if len(batches)==1 and canonical_wait=='transport-failure':raise worker.ApiFailure('offline','server temporarily unavailable')
             return dict(state='blocked',reason='Class held on another PC') if len(batches)==1 else dict(job='queued',submitted_addresses=['00400000'])
         monkeypatch.setattr(recovery,'submit_batch',submit)
     def target(data,*a):return dict(target_exact=b'return 3;' in data,symbol='?f@A@@QAEHXZ',diff='fixture diff')
@@ -338,10 +340,15 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
         assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
         result=service.process(service.take());assert result['receipt']['state']==('already-exact' if existing_source else 'merged')
         assert (service.root/REL).read_text()==AFTER
-        resumed=run('pc1');assert resumed['host_merged']==int(not existing_source) and resumed['merged']==int(not existing_source) and resumed['remote_pending']==int(canonical_wait) and controls['pc1'].budget.requests==int(not existing_source) and calls==expected_calls
+        resumed=run('pc1');assert resumed['host_merged']==int(not existing_source) and resumed['merged']==int(not existing_source) and resumed['remote_pending']==int(bool(canonical_wait) and canonical_wait!='gate-failure') and controls['pc1'].budget.requests==int(not existing_source) and calls==expected_calls
         assert 'return 77;' in (tmp_path/'pc1'/REL).read_text()
         if existing_source:assert 'return 1;' in (tmp_path/'pc1'/REL).read_text()
         if canonical_wait:
+            if canonical_wait=='gate-failure':
+                unrelated=tmp_path/'pc1/rebuild/2008-06/native-headers/Unrelated.h'
+                unrelated.write_text('struct Unrelated { int ownerChanged; };')
+                assert run('pc1')['remote_pending']==0 and len(batches)==1
+                service.promotions.baseline=lambda:dict(revision='new-base',features=dict(native_recovery_collaboration=1))
             retried=run('pc1');assert retried['host_merged']==0 and retried['submitted']==1 and retried['remote_pending']==0 and retried['integration_pending']==1
             assert len(batches)==2 and controls['pc1'].budget.requests==int(not existing_source) and calls==expected_calls
         else:

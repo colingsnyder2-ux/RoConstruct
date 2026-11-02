@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import sys
 import threading
+import tempfile
 import time
 import uuid
 from pathlib import Path
@@ -393,7 +394,10 @@ def linked_preflight(root, patches, output, log=print):
     if dropped:
         raise ValueError("Saved proposals stale; retained for repair: " + json.dumps(dropped))
     key, live = input_hashes(root)
-    cache = root / "work/native-linked-preflight" / key[:20]
+    # Period MSVC silently skips overlong include paths and may pick raw headers
+    # instead of the overlay. Both builds need ordinary, short physical paths.
+    work = Path(os.environ.get('LOCALAPPDATA',tempfile.gettempdir()))/'RoConstruct/verify'/digest(str(root.resolve()))[:12]
+    cache = work / "b" / key[:20]
     cache.parent.mkdir(parents=True, exist_ok=True)
     result_file = cache / "integration-result.json"
     checkpoint = cache / "integration-prepared.json"
@@ -407,7 +411,7 @@ def linked_preflight(root, patches, output, log=print):
         before["linked_addresses"] = json.loads((cache / "integration-linked.json").read_text())
         atomic_json(cache / "integration-result.json", before)
     identifier = uuid.uuid4().hex[:12]
-    candidate = root / 'work/nv' / identifier
+    candidate = work / 'c' / identifier
     evidence = output / ('linked-preflight-' + identifier)
     snapshot(cache, candidate, link=True)
     atomic_json(candidate / "rebuild/2008-06/patches/rbxgs-client.json", combined)
@@ -428,6 +432,9 @@ def linked_preflight(root, patches, output, log=print):
         receipt["accepted"] = True
     except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
         receipt["reason"] = str(error)
+        if isinstance(error,ValueError) and receipt.get('uncovered_losses'):
+            receipt['reason'] += '; lost exact functions: '+','.join(receipt['uncovered_losses'])
+            raise ValueError(receipt['reason']+'; receipt: '+str(candidate/'preflight-receipt.json')) from error
         raise
     finally:
         atomic_json(candidate / "preflight-receipt.json", receipt)

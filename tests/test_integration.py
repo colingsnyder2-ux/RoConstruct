@@ -974,7 +974,9 @@ def test_contributor_linked_preflight_detects_losses_and_writes_receipt(promotio
     after = copy.deepcopy(before)
     after['report']['owned_addrs'] = ['00500001'] if lost else ['00500000', '00500001']
     after['distinct'] += 1
-    cache = root / 'work/native-linked-preflight/fingerprint'
+    monkeypatch.setenv('LOCALAPPDATA',str(root.parent/'short-cache'))
+    work=root.parent/'short-cache/RoConstruct/verify'/integration.digest(str(root.resolve()))[:12]
+    cache = work / 'b/fingerprint'
     integration.atomic_json(cache / 'integration-result.json', before)
     integration.atomic_json(cache / 'integration-prepared.json', {'format': 1, 'inputs': 'fingerprint'})
     monkeypatch.setattr(integration_verify, 'input_hashes', lambda root: ('fingerprint', 'live'))
@@ -997,7 +999,9 @@ def test_contributor_linked_preflight_detects_losses_and_writes_receipt(promotio
     assert receipt['uncovered_losses'] == receipt['losses']
     assert (Path(receipt['artifacts'])/'preflight-receipt.json').exists()
     assert json.loads((Path(receipt['artifacts'])/'preflight-receipt.json').read_text()) == receipt
-    assert Path(receipt['artifacts']).parent == root/'work/nv'
+    assert Path(receipt['artifacts']).parent == work/'c'
+    assert not Path(receipt['artifacts']).is_relative_to(root)
+    if lost:assert '00500000' in receipt['reason']
     assert receipt['baseline_artifacts'] == str(cache)
 
 

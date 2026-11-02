@@ -885,6 +885,8 @@ def build_overlay(client, module, spec):
                 raise ValueError("overlay patch for %s no longer applies: %r" % (rel, old[:60]))
             text = text.replace(old, new, 1) if old else text + new
         wanted[Path(rel).as_posix()] = text
+    if any(len(str((overlay / rel).absolute()))>259 for rel in wanted):
+        raise ValueError('Native overlay path exceeds historical MSVC limit; use a shorter build workspace')
     for path in [p for p in overlay.rglob("*") if p.is_file()] if overlay.exists() else []:
         if path.relative_to(overlay).as_posix() not in wanted:
             path.unlink()  # no longer patched: dependents see it gone and rebuild
