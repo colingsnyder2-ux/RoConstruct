@@ -453,6 +453,7 @@ def test_evidence_embeds_local_generated_proof_without_changing_compiled_referen
     monkeypatch.setattr(standins, 'mapping', mapping)
     result = sweep.model_evidence('00500000', {}, {})
     assert result['mined_source_expanded'] == (not missing_proof)
+    assert result.get('mined_library_root') == (None if missing_proof else str(folder.resolve()))
     assert ('struct RealProof' in result['mined_source']) == (not missing_proof)
     assert result['target_asm_truncated'] == {'shown': 120, 'total': len(assembly)}
     assert [call['addr'] for call in result['target_calls']] == ['00600000', '00600100']

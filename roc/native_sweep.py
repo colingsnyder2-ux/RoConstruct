@@ -926,9 +926,11 @@ def model_evidence(addr, names, by_addr):
     recipe, _, rel = reference.partition(" ")
     definition = libs.RECIPES.get(recipe, {})
     expanded = False
+    library_root = None
     if definition.get("src") and not definition.get("generate") and Path(rel.strip()).name.startswith("roc_"):
         try:
             folder = libs._case_path(libs.LIBS / definition["src"]).resolve()
+            library_root = str(folder)
             proof = (folder / rel.strip().replace("\\", "/")).resolve()
             if proof.is_relative_to(folder) and proof.is_file():
                 displayed += "\n" + strip_asm(proof.read_text(errors="replace"))
@@ -950,6 +952,7 @@ def model_evidence(addr, names, by_addr):
         item["target_asm_truncated"] = {"shown": 120, "total": len(assembly)}
     if reference:
         item.update(mined_source_reference=reference, mined_source_expanded=expanded)
+    if library_root:item['mined_library_root']=library_root
     calls = list(dict.fromkeys(m[1].lower().zfill(8) for line in assembly
                                if (m := re.search(r"\b(?:call|jmp) 0x([0-9a-fA-F]+)\s*$", line))
                                and not int(addr, 16) <= int(m[1], 16) < int(addr, 16) + len(code)))
