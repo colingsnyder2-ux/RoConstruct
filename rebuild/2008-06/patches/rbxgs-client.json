@@ -2291,6 +2291,14 @@
   [
    "\t\t// - 0.00001f is necessary to get the same value as the compiled binary\n\t\tstatic float ssr = (Math::pi() - 0.00001f) / 128;\n\t\treturn ssr;\n\t}\n\n\tG3D::uint8 rotationToByteBase(float angle)\n\t{\n\t\tRBXASSERT(angle <= Math::pi());\n\t\tRBXASSERT(angle >= -Math::pi());\n\n\t\tfloat result = (angle + Math::pi()) / segSizeRadians();\n\t\tint resInt = G3D::iRound(result);\n\t\t\n\t\tRBXASSERT(resInt >= -1);\n\t\tRBXASSERT(resInt <= 256);\n\n\t\tresInt = std::max(0, resInt);\n\t\tresInt = std::min(255, resInt);\n\n\t\tG3D::uint8 byte = (G3D::uint8)resInt;\n\n\t\tRBXASSERT(byte <= 255);\n\n\t\treturn byte;\n\t}",
    "\t\t// 2008 binary stores twoPi()/256 (0x3cc90fda)\n\t\tstatic float ssr = Math::twoPi() / 256;\n\t\treturn ssr;\n\t}\n\n\tG3D::uint8 rotationToByteBase(float angle)\n\t{\n\t\tfloat result = (angle + Math::pi()) / segSizeRadians();\n\t\tint resInt = G3D::iRound(result);\n\n\t\tresInt = std::max(0, resInt);\n\t\tresInt = std::min(255, resInt);\n\n\t\treturn (G3D::uint8)resInt;\n\t}"
+  ],
+  [
+   "\tfloat Math::getHeading(const G3D::Vector3& look)\n\t{\n\t\treturn atan2(-look.x, -look.z);\n\t}\n\n\tfloat Math::getElevation(const G3D::Vector3& look)\n",
+   "\tfloat Math::getHeading(const G3D::Vector3& look)\n\t{\n\t\treturn atan2(-look.x, -look.z);\n\t}\n\n\tint Math::radiansToQuadrant(float radians)\n\t{\n\t\treturn G3D::iFloor((radians + (2 * pi() + pi() / 4)) * 4 / G3D::twoPi()) % 4;\n\t}\n\n\tint Math::toYAxisQuadrant(const G3D::CoordinateFrame& c)\n\t{\n\t\treturn Math::radiansToQuadrant(Math::getHeading(c.lookVector()));\n\t}\n\n\tfloat Math::getElevation(const G3D::Vector3& look)\n"
+  ],
+  [
+   "\t\treturn tiltNegativeZ;\n\t}\n\n\tbool Math::isDenormal(float f)\n\t{\n\t\treturn (LODWORD(f) & 0x7F800000) == 0 && (LODWORD(f) & 0x7FFFFF) != 0;\n\t}\n\n\tbool Math::isNanInfDenorm(float f)\n\t{\n\t\treturn f == std::numeric_limits<float>::infinity()\n\t\t\t|| f == -std::numeric_limits<float>::infinity()\n\t\t\t|| f == std::numeric_limits<float>::quiet_NaN()\n\t\t\t|| f == std::numeric_limits<float>::signaling_NaN();\n\t}\n\n\tbool Math::isNanInfDenormVector3(const G3D::Vector3& v)\n",
+   "\t\treturn tiltNegativeZ;\n\t}\n\n\tconst G3D::Matrix3 Math::matrixTiltQuadrant(int quadrant)\n\t{\n\t\tswitch (quadrant)\n\t\t{\n\t\tcase 0:\n\t\t\treturn G3D::Matrix3(1, 0, 0, 0, 0, -1, 0, 1, 0);\n\t\tcase 1:\n\t\t\treturn Math::matrixTiltZ();\n\t\tcase 2:\n\t\t\treturn G3D::Matrix3(1, 0, 0, 0, 0, 1, 0, -1, 0);\n\t\tcase 3:\n\t\t\treturn Math::matrixTiltNegativeZ();\n\t\tdefault:\n\t\t\treturn G3D::Matrix3::identity();\n\t\t}\n\t}\n\n\tbool Math::isDenormal(float f)\n\t{\n\t\treturn (LODWORD(f) & 0x7F800000) == 0 && (LODWORD(f) & 0x7FFFFF) != 0;\n\t}\n\n\tbool Math::isNanInf(float f)\n\t{\n\t\treturn f == std::numeric_limits<float>::infinity()\n\t\t\t|| f == -std::numeric_limits<float>::infinity()\n\t\t\t|| f == std::numeric_limits<float>::quiet_NaN()\n\t\t\t|| f == std::numeric_limits<float>::signaling_NaN();\n\t}\n\n\tbool Math::isNanInfVector3(const G3D::Vector3& v)\n\t{\n\t\treturn Math::isNanInf(v.x)\n\t\t\t|| Math::isNanInf(v.y)\n\t\t\t|| Math::isNanInf(v.z);\n\t}\n\n\tbool Math::isNanInfDenorm(float f)\n\t{\n\t\treturn Math::isNanInf(f) || Math::isDenormal(f);\n\t}\n\n\tbool Math::isNanInfDenormVector3(const G3D::Vector3& v)\n"
   ]
  ],
  "App/v8datamodel/Teams.cpp": [
@@ -3009,6 +3017,12 @@
   [
    "\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(sName);\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\tRBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n",
    "\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(std::string(sName));\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\titer->second->dictionaryIndex = dictionaryIndex;\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n"
+  ]
+ ],
+ "App/include/util/Math.h": [
+  [
+   "\t\t\t\treturn 0.0f;\n\t\t\t}\n\t\t\tstatic bool isDenormal(float f);\n\t\t\tstatic bool isNanInfDenorm(float f);\n\t\t\tstatic bool isNanInfDenormVector3(const G3D::Vector3& v);\n\t\t\tstatic bool isNanInfDenormMatrix3(const G3D::Matrix3&);\n",
+   "\t\t\t\treturn 0.0f;\n\t\t\t}\n\t\t\tstatic bool isDenormal(float f);\n\t\t\tstatic bool isNanInf(float f);\n\t\t\tstatic bool isNanInfVector3(const G3D::Vector3& v);\n\t\t\tstatic bool isNanInfDenorm(float f);\n\t\t\tstatic bool isNanInfDenormVector3(const G3D::Vector3& v);\n\t\t\tstatic bool isNanInfDenormMatrix3(const G3D::Matrix3&);\n"
   ]
  ]
 }

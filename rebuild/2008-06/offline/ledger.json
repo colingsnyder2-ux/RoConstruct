@@ -1299,6 +1299,25 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-19f4ee92cac8e00b",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/util/Math.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793621535,
+   "receipt": {
+    "gains": [
+     "005dd820",
+     "005dd8b0",
+     "005de990",
+     "005dea60"
+    ],
+    "losses": []
+   }
   }
  ]
 }
