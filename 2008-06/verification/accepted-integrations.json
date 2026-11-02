@@ -2939,6 +2939,22 @@
         ]
       },
       "timestamp": 1793584715.0180705
+    },
+    {
+      "job": "73b6035f086a479198d42388a3fcf43b",
+      "patches": {
+        "App/util/Name.cpp": [
+          [
+            "Name::getNullName()\n\t{\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\t\tstatic const Name& nullName = declare(\"\", 0);\n\t\treturn nullName;\n\t}",
+            "Name::getNullName()\n\t{\n        static boost::once_flag nullNameFlag = BOOST_ONCE_INIT;\n        boost::call_once(initNullName, nullNameFlag);\n        return *nullName;\n    }"
+          ],
+          [
+            "namespace RBX\n",
+            "static const RBX::Name* nullName;\nstatic void initNullName()\n{\n    nullName = &RBX::Name::declare(\"\", 0);\n}\n\nnamespace RBX\n"
+          ]
+        ]
+      },
+      "timestamp": 1793590562.3414364
     }
   ],
   "initial_patches": {}

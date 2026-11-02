@@ -8,7 +8,6 @@ void initializeAssetFolder();
 
 std::string originalAssetFolder()
 {
-    volatile int state = 0;
     boost::call_once(&initializeAssetFolder, assetFolderOnce);
     return assetFolder;
 }

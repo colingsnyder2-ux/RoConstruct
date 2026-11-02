@@ -43,8 +43,11 @@ assert not provider_trial or filtered_donor
 if native_instance or filtered_donor:
     archive = snap/'RbxgsApp/linked/linked.lib'
     filtered = out/'RbxgsAppWithoutInstance.lib'
+    remove = ['/REMOVE:Instance.obj']
+    if provider_trial:
+        remove.append('/REMOVE:glue_content_provider.obj')
     filter_code, filter_log = rebuild.run(rebuild.toolchain(), 'lib',
-        ['/nologo', '/REMOVE:Instance.obj', '/OUT:' + str(filtered), str(archive)], out)
+        ['/nologo'] + remove + ['/OUT:' + str(filtered), str(archive)], out)
     (out/'filter.log').write_text(filter_log)
     assert filter_code == 0, filter_log
 pending = list(spec['depends'])
@@ -83,13 +86,27 @@ objects += [snap/'native-layouts'/'NativeDocumentLoadFileProfile.obj']
 objects += [snap/'native-layouts'/'NativeDocumentLoadFromStringProfile.obj']
 objects += [snap/'native-layouts'/'NativeContentProviderUrl.obj']
 if provider_trial:
+    objects.append(snap/'native-layouts/content-source-probe/glue_without_content_get.obj')
     objects += [snap/'native-layouts'/name for name in
                 ['NativeProviderFindProfile.obj', 'NativeProviderCreateTrial.obj', 'NativeContentProviderTrial.obj',
-                 'NativeContentProviderWorkerTrial.obj', 'NativeContentReadTrial.obj', 'NativeDocumentLaunchTrial.obj',
-                 'NativeDocumentUrlProfile.obj', 'NativeFilesystemIsolated.obj',
+                 'NativeContentProviderWorkerTrial.obj', 'NativeContentReadTrial.obj', 'NativeContentGetTrial.obj',
+                 'NativeContentLoadTrial.obj', 'NativeContentFindTrial.obj', 'NativeCacheDirectoryTrial.obj',
+                 'NativeDocumentLaunchTrial.obj',
+                 'NativeDocumentUrlProfile.obj',
                  'NativeDocumentSaveModifiedProfile.obj', 'NativeVisitFindProfile.obj',
                  'NativeDocumentLDrawProfile.obj', 'NativeLDrawParserLifetimeTrial.obj',
-                 'NativeLDrawParserConstructorTrial.obj']]
+                 'NativeLDrawParserConstructorTrial.obj', 'NativeLDrawPathTrial.obj',
+                 'NativeLDrawAssetStateTrial.obj', 'NativeLDrawMapRootLifetimeTrial.obj',
+                 'NativeLDrawMapRootConstructorTrial.obj', 'NativeLDrawTagsTrial.obj',
+                 'NativeLDrawMapOperationsTrial.obj', 'NativeLDrawCompareProfile.obj',
+                 'NativeLDrawParseProfile.obj', 'NativeLDrawEntitiesTrial.obj', 'NativeLDrawWriteProfile.obj',
+                 'NativeLDrawPartWriteTrial.obj', 'NativeLDrawPartParentProfile.obj', 'NativeLDrawPartColorTrial.obj',
+                 'NativeLDrawPartShapeProfile.obj', 'NativeLDrawPartTransformProfile.obj',
+                 'NativeDocumentExecuteProfile.obj', 'NativeDocumentInitializeTrial.obj',
+                 'NativeWorkspaceGetWorkspaceTrial.obj', 'NativeVerbConstructor.obj',
+                 'NativeStandardVerbsConstructorTrial.obj', 'NativeRunStateVerbConstructorTrial.obj',
+                 'NativeEditSelectionVerbConstructorTrial.obj', 'NativeWorkspaceSharedFromTrial.obj',
+                 'NativeSelectionCommandsTrial.obj', 'NativeAxisCommandsTrial.obj']]
 objects += [snap/'native-layouts'/'NativeInstanceBaseCallbacks.obj']
 objects += [snap/'native-layouts'/'NativeInstanceReadPropertyTrial.obj']
 objects += [snap/'native-layouts'/'NativeDescendantHelpersTrial.obj']

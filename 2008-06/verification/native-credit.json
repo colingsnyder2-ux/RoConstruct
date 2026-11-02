@@ -308,6 +308,20 @@
     "user": "EspClaude"
   },
   {
+    "addr": "00554160",
+    "client": "2008-06",
+    "job": "73b6035f086a479198d42388a3fcf43b",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00554290",
+    "client": "2008-06",
+    "job": "73b6035f086a479198d42388a3fcf43b",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
     "addr": "00554da0",
     "client": "2008-06",
     "job": "a713698e91454d33acfae94820286a79",

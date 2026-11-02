@@ -8501,5 +8501,49 @@
     "unit": "RBX::ArrowTool",
     "updated": 1793584715.7077765,
     "user": "colin"
+  },
+  {
+    "created": 1793589930.395491,
+    "id": "73b6035f086a479198d42388a3fcf43b",
+    "model": "gpt-6.1-sol",
+    "patches": {
+      "App/util/Name.cpp": [
+        [
+          "Name::getNullName()\n\t{\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\t\tstatic const Name& nullName = declare(\"\", 0);\n\t\treturn nullName;\n\t}",
+          "Name::getNullName()\n\t{\n        static boost::once_flag nullNameFlag = BOOST_ONCE_INIT;\n        boost::call_once(initNullName, nullNameFlag);\n        return *nullName;\n    }"
+        ],
+        [
+          "namespace RBX\n",
+          "static const RBX::Name* nullName;\nstatic void initNullName()\n{\n    nullName = &RBX::Name::declare(\"\", 0);\n}\n\nnamespace RBX\n"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "af68c9b5bf093f2efc7e485d7ce71a541e7cafac1fea46853bb0f3d50dc0e7b0",
+      "credits": 2,
+      "distinct_after": 9840,
+      "distinct_before": 9838,
+      "gains": [
+        "00554160",
+        "00554290"
+      ],
+      "input_hash": "40988761d0aa6027f366ffc75af8c7592e8557dc2f90b3c8eb9f8fe28c2ddaf4",
+      "losses": [],
+      "new_distinct": [
+        "00554160",
+        "00554290"
+      ],
+      "overlay_hash": "3663839971f6995a1760946aff4f3bdb6dec8cb644f0f4e815817d7d058df877",
+      "owned_after": 3368,
+      "owned_before": 3366,
+      "rebased": false,
+      "submitted_revision": "af68c9b5bf093f2efc7e485d7ce71a541e7cafac1fea46853bb0f3d50dc0e7b0"
+    },
+    "state": "accepted",
+    "unit": "RBX::VerbContainer",
+    "updated": 1793590562.70026,
+    "user": "colin"
   }
 ]

@@ -52,6 +52,7 @@ public:
     boost::shared_ptr<RBX::RunService> runService;
     CWorkspace();
     boost::shared_ptr<RBX::DataModel> getDataModel();
+    RBX::Workspace* getWorkspace();
     void cleanup();
     std::auto_ptr<XmlElement> writeXmlModel();
     void load(std::istream&); // 0046aa70; original symbol linkage pending.

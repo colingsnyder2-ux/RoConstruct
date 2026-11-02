@@ -94,7 +94,7 @@ for prefix, wanted in [('??0CFileDialog@@',0x6a0e72), ('?DoModal@CFileDialog@@',
                        ('?AfxMessageBox@@',0x6a0c50)]:
     assert any(k.startswith(prefix) and hex(wanted) in v for k,v in calls.items()), (prefix,calls)
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-paths = [source,Path(__file__),lifetime_source,constructor_source,root/'rebuild/2008-06/tests/NativeLDrawParserTrial.h',root/'rebuild/2008-06/native-headers/CRobloxDoc.h',
+paths = [source,Path(__file__),lifetime_source,constructor_source,root/'rebuild/2008-06/tests/NativeLDrawParserTrial.h',root/'rebuild/2008-06/tests/NativeLDrawMapRootTrial.h',root/'rebuild/2008-06/native-headers/CRobloxDoc.h',
          root/'rebuild/2008-06/native-headers/CWorkspace.h',root/'rebuild/2008-06/native-headers/script/ScriptContext.h']
 receipt = {'inputs':{str(p.relative_to(root)):sha(p) for p in paths},'object_sha256':sha(obj),
            'preprocess_flags':flags,'compile_flags':compile_flags,'address':'00454c90','size':len(body),'calls':calls,
