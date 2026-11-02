@@ -8744,11 +8744,33 @@
         ]
       ]
     },
-    "phase": "building",
-    "receipt": {},
-    "state": "verifying",
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "12aa71ad39bc9550002a2bff2ad5004f7cdce0e8488b83a58800e3a4070b7f71",
+      "credits": 2,
+      "distinct_after": 10270,
+      "distinct_before": 10268,
+      "gains": [
+        "005137f0",
+        "005989d0",
+        "00613cc0"
+      ],
+      "input_hash": "bac8af42ee7f4a714bbae0f03305c5c6fc304de181d961508746d2552eee055d",
+      "losses": [],
+      "new_distinct": [
+        "005989d0",
+        "00613cc0"
+      ],
+      "overlay_hash": "e71985ed44584d132867f4272f296da6f6534313eccd4c422328d5b8ffdc9b49",
+      "owned_after": 3779,
+      "owned_before": 3776,
+      "rebased": false,
+      "submitted_revision": "12aa71ad39bc9550002a2bff2ad5004f7cdce0e8488b83a58800e3a4070b7f71"
+    },
+    "state": "accepted",
     "unit": "RBX::RevoluteLink",
-    "updated": 1793616260.5051587,
+    "updated": 1793616994.5472035,
     "user": "colin"
   }
 ]

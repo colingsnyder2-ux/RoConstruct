@@ -4,6 +4,7 @@
 #include "tool/NullTool.h"
 #include "v8datamodel/ToolsPart.h"
 #include "NativeGameToolTrial.h"
+#include "NativeResizeToolTrial.h"
 #include "StandardVerbs.h"
 #include <typeinfo>
 
@@ -13,6 +14,7 @@ template<class Tool, class Base> bool TToolVerb<Tool, Base>::isChecked() const {
     if (command) return typeid(Tool) == typeid(*command);
     return false;
 }
+template bool TToolVerb<ResizeTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<ArrowTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<NullTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<GameTool, RunStateVerb>::isChecked() const;

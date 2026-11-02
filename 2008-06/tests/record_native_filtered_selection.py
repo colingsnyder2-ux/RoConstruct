@@ -100,11 +100,37 @@ for i in range(table[7]):
     model_bindings[factory_symbols[index][0]]=value
 for prefix,address in [('??$find@V?$FilteredSelection@VModelInstance',0x57fdd0),('??$create@V?$FilteredSelection@VModelInstance',0x57f790),('??$doGetClassIndex@V?$FilteredSelection@VModelInstance',0x57d860),('?setParent@Instance@RBX@@',0x55a8f0)]:
     assert any(k.startswith(prefix) and v==address for k,v in model_bindings.items()),(prefix,model_bindings)
+lookup_rows = []
+for tool, address, flag, callback, index in [
+    ('PVInstance', 0x57fd20, 0x9753c4, 0x57dda0, 0x57d800),
+    ('ModelInstance', 0x57fdd0, 0x9753c8, 0x57ddb0, 0x57d860),
+]:
+    prefix = '??$find@V?$FilteredSelection@V' + tool + '@'
+    name, body, refs = next(x for x in match.coff_functions(factory_raw) if x[0].startswith(prefix))
+    target, targetrefs, _ = match.target('2008-06', '%08x' % address)
+    assert match.exact_match(target, targetrefs, body, refs), tool
+    start, section = factory_definitions[name]
+    table = factory_sections[section]
+    bindings = {}
+    for i in range(table[7]):
+        offset, symbol, kind = struct.unpack_from('<IIH', factory_raw, table[5] + 10*i)
+        offset -= start
+        if not 0 <= offset < len(body) - 3: continue
+        value = struct.unpack_from('<I', target, offset)[0]
+        if kind == 20:
+            value = (address + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+        bindings[factory_symbols[symbol][0]] = value
+    for token, value in [('?flag@', flag), ('??$callDoGetClassIndex@', callback),
+                         ('?call_once@boost@@', 0x557330), ('??$doGetClassIndex@', index),
+                         ('?resize@?$vector@', 0x4124c0), ('__imp___invalid_parameter_noinfo', 0x802890)]:
+        assert any(k.startswith(token) and v == value for k, v in bindings.items()), (tool, token, bindings)
+    lookup_rows.append({'tool': tool, 'address': hex(address), 'size': len(body), 'exact': True,
+                        'bindings': {k: hex(v) for k, v in bindings.items()}})
 pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
 assert pe.get_string_at_rva(0x8308a4 - pe.OPTIONAL_HEADER.ImageBase) == b'FilteredSelection'
 assert pe.get_string_at_rva(0x947f1c + 8 - pe.OPTIONAL_HEADER.ImageBase) == b'.?AVPVInstance@RBX@@'
 assert struct.unpack('<I', pe.get_data(0x8308bc - pe.OPTIONAL_HEADER.ImageBase, 4))[0] == 0x57fba0
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-receipt = {'scope': 'Inactive FilteredSelection<PVInstance> constructor, destructor, context lookup and provider factory match; singleton identity, virtual behavior, ownership and runtime remain unproven.', 'source_sha256': sha(source), 'header_sha256': sha(header), 'observer_sha256': sha(Path(__file__)), 'object_sha256': sha(obj), 'methods': rows, 'service_source_sha256': sha(service_source), 'service_object_sha256': sha(service_obj), 'service_lookup': {'address': '00580800', 'size': len(service_body), 'exact': True, 'bindings': {k: hex(v) for k, v in service_bindings.items()}}, 'factory_source_sha256': sha(factory_source), 'factory_object_sha256': sha(factory_obj), 'model_provider_factory':{'address':'005806c0','size':len(model_body),'exact':True,'bindings':{k:hex(v) for k,v in model_bindings.items()}}, 'provider_factory': {'address': '005805d0', 'size': len(factory_body), 'exact': True, 'bindings': {k: hex(v) for k, v in factory_bindings.items()}}, 'flags': flags}
+receipt = {'scope': 'Inactive FilteredSelection<PVInstance> constructor, destructor, context lookup and provider factory match; singleton identity, virtual behavior, ownership and runtime remain unproven.', 'source_sha256': sha(source), 'header_sha256': sha(header), 'observer_sha256': sha(Path(__file__)), 'object_sha256': sha(obj), 'methods': rows, 'service_source_sha256': sha(service_source), 'service_object_sha256': sha(service_obj), 'service_lookup': {'address': '00580800', 'size': len(service_body), 'exact': True, 'bindings': {k: hex(v) for k, v in service_bindings.items()}}, 'factory_source_sha256': sha(factory_source), 'factory_object_sha256': sha(factory_obj), 'model_provider_factory':{'address':'005806c0','size':len(model_body),'exact':True,'bindings':{k:hex(v) for k,v in model_bindings.items()}}, 'provider_lookups': lookup_rows, 'provider_factory': {'address': '005805d0', 'size': len(factory_body), 'exact': True, 'bindings': {k: hex(v) for k, v in factory_bindings.items()}}, 'flags': flags}
 (root / 'work/2008-06/shared-layouts/filtered-selection-lifetime-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native filtered selection constructor and destructor')

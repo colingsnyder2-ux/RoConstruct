@@ -987,6 +987,13 @@
     "user": "colin"
   },
   {
+    "addr": "005989d0",
+    "client": "2008-06",
+    "job": "c15e6f85c0274c18916c28b38adbe750",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
     "addr": "00598b60",
     "client": "2008-06",
     "job": "6c4c6e4f955944b8b0397c68491501e2",
@@ -2580,6 +2587,13 @@
     "client": "2008-06",
     "job": "23ba88f68b6f4336a4e355013c7f394c",
     "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00613cc0",
+    "client": "2008-06",
+    "job": "c15e6f85c0274c18916c28b38adbe750",
+    "model": "gpt-6.1-sol",
     "user": "colin"
   },
   {

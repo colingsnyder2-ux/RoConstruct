@@ -1,0 +1,30 @@
+#pragma once
+#include "v8datamodel/DataModel.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/PVInstance.h"
+#include "tool/ToolsArrow.h"
+#include "util/NormalId.h"
+namespace RBX {
+extern const char* sResizeTool;
+class ResizeTool : public Named<ArrowToolBase, &sResizeTool> {
+    boost::weak_ptr<PVInstance> target;
+    bool overHandle;
+    NormalId face;
+    G3D::Vector3 handlePosition;
+    G3D::Vector2int16 mouseDownView;
+    int accumulatedResize;
+    unsigned int resetState;
+    virtual MouseCommand* onMouseDown(const UIEvent&);
+    virtual void onMouseMove(const UIEvent&);
+    virtual MouseCommand* onMouseUp(const UIEvent&);
+    virtual void onMouseHover(const UIEvent&);
+    virtual void render2d(Adorn*);
+    virtual void render3dAdorn(Adorn*);
+    virtual const std::string getCursorName() const;
+    virtual void writeSize(XmlState*);
+public:
+    ResizeTool(Workspace*);
+    virtual MouseCommand* isSticky() const;
+};
+typedef char check_size[sizeof(ResizeTool) == 0x48 ? 1 : -1];
+}
