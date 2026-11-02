@@ -266,6 +266,7 @@ def nominations(root, texts, names):
     result = []
     for rel, text in texts.items():
         for method, (start, end) in native_methods.methods(text).items():
+            if '(' in method:continue  # Explicit host mapping must bind an overload to its emitted symbol.
             addresses = set(declared.get(method, known.get(method, ())))
             prefix = text[max(0, start-240):start]
             annotation = re.search(r'//\s*(00[4-9a-f][0-9a-f]{5})[^\n]*\n\s*$', prefix)
@@ -299,10 +300,13 @@ def toolkit_profile(root, unit):
     return False
 
 
-def target_proof(obj, matcher, addr, method):
+def target_proof(obj, matcher, addr, method, expected_symbol=None):
     """Check the assigned symbol directly, including tiny bodies hidden by sweep deduplication."""
     functions = [(symbol, code, relocs) for symbol, code, relocs in match.coff_functions(obj)
-                 if sweep.symbol_method(symbol) == method]
+                 if sweep.symbol_method(symbol) == method.split('(',1)[0]
+                 and (not expected_symbol or symbol==expected_symbol)]
+    if '(' in method and not expected_symbol:
+        return dict(target_exact=False, diff='Overloaded method requires an explicit emitted symbol', data_mismatches=[])
     if len(functions) != 1:
         return dict(target_exact=False, diff='Assigned method has no unique emitted symbol', data_mismatches=[])
     symbol, code, relocs = functions[0]
@@ -367,7 +371,7 @@ def mfc_conversion_headers():
     return target
 
 
-def compile_probe(root, rel, context, matcher, addresses, method, baseline=None, output=None, translation_unit=None, include_profile='owner'):
+def compile_probe(root, rel, context, matcher, addresses, method, baseline=None, output=None, translation_unit=None, include_profile='owner', expected_symbol=None):
     root = Path(root).resolve()
     path = native_path(root, rel)
     if include_profile not in INCLUDE_PROFILES:raise ValueError('Unknown native include profile')
@@ -425,7 +429,7 @@ def compile_probe(root, rel, context, matcher, addresses, method, baseline=None,
     hits = matcher.scan(obj.read_bytes()) if ok else []
     found = {h['addr'] for h in hits}
     addr = next(iter(addresses), None)
-    assigned = target_proof(obj.read_bytes(), matcher, addr, method) if ok and addr else dict(target_exact=False)
+    assigned = target_proof(obj.read_bytes(), matcher, addr, method, expected_symbol) if ok and addr else dict(target_exact=False)
     if assigned['target_exact'] and not any(h['addr']==addr and h['symbol']==assigned['symbol'] for h in hits):
         hits.append(dict(addr=addr,symbol=assigned['symbol']))
         found.add(addr)
@@ -549,7 +553,7 @@ def canonical_methods(context, method):
         path=context.tree/rel
         source=context.overlay/rel if (context.overlay/rel).exists() else path
         text=source.read_text(errors='replace')
-        if not re.search(r'\b'+re.escape(method.rsplit('::',1)[-1])+r'\s*\(',text):continue
+        if not re.search(r'\b'+re.escape(method.split('(',1)[0].rsplit('::',1)[-1])+r'\s*\(',text):continue
         if method in native_methods.methods(text):result.append((rel,text))
     return result
 
@@ -565,7 +569,7 @@ def stage_submission(record, context, base, output, log, recheck=True):
     rel, text = matches[0]
     try:
         body=candidate[span[0]:span[1]]
-        if '::' not in body.split('(',1)[0]:body=method.rsplit('::',1)[0]+'::'+body
+        if '::' not in body.split('(',1)[0]:body=method.split('(',1)[0].rsplit('::',1)[0]+'::'+body
         edits = native_methods.canonical_edits(text, body, method)
         proposal = dict(mode='native-source-recovery', file=rel, edits=edits, witnesses=[dict(addr=record['task']['addr'])], base_revision=base['revision'])
         if record.get('proof',{}).get('symbol'):
@@ -709,7 +713,7 @@ def run(config, control, emit):
                 if state['state'] in ('merged','already-exact','retained'):
                     if state['state']=='merged':
                         task=record['task']
-                        proof=lambda snapshot,rel:compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],record['baseline'],translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'))
+                        proof=lambda snapshot,rel:compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],record['baseline'],translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'),expected_symbol=task.get('expected_symbol'))
                         try:
                             merged=merge(shared_root,output/'merge'/uuid.uuid4().hex,task['file'],record['original'],Path(record['candidate']).read_text(encoding='utf-8'),task['method'],proof,output/'receipts'/(owner+'.json'),allow_add=task.get('add_method',False))
                             record['merge']=merged
@@ -789,7 +793,7 @@ def run(config, control, emit):
                     try:
                         task = record['task']
                         candidate = Path(record['candidate']).read_text(encoding='utf-8')
-                        proof = lambda snapshot, rel: compile_probe(snapshot, rel, context, matcher, {task['addr']}, task['method'], record['baseline'], translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'))
+                        proof = lambda snapshot, rel: compile_probe(snapshot, rel, context, matcher, {task['addr']}, task['method'], record['baseline'], translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'),expected_symbol=task.get('expected_symbol'))
                         if remote and record.get('remote_lease') and config['native_agent_submit']:
                             try:
                                 submitted=remote.submit(record['remote_lease'],record,check_only=record.get('existing_source',False))
@@ -882,6 +886,8 @@ def run(config, control, emit):
                 text = path.read_text(encoding='utf-8')
                 if (task.get('method') not in native_methods.methods(text) and not task.get('add_method')) or not re.fullmatch('[0-9a-f]{8}', task.get('addr','')):
                     raise ValueError('Native task needs an existing unambiguous method and original address')
+                if '(' in task['method'] and (not isinstance(task.get('expected_symbol'),str) or sweep.symbol_method(task['expected_symbol'])!=task['method'].split('(',1)[0]):
+                    raise ValueError('Overloaded recovery task needs an explicit matching MSVC symbol')
                 task['file'] = path.relative_to(snapshot).as_posix()
                 texts[task['file']] = text
                 if published:
@@ -895,7 +901,7 @@ def run(config, control, emit):
         library_inputs = sorted((p.name,str(p.resolve())) for p in libs.LIBS.iterdir() if p.is_dir()) if libs.LIBS.is_dir() else []
         for task in available:
             key = integration.digest([os.path.normcase(str(native_path(shared_root,task['file']))), task['method']])
-            signature = integration.digest([before[task['file']],task.get('signature'),{} if task.get('include_profile')=='accepted' else headers, config['model'], config['native_agent_checks'], config['native_agent_minutes'],library_inputs,digest(Path(__file__).read_bytes())])
+            signature = integration.digest([before[task['file']],task.get('signature'),task['addr'],task.get('expected_symbol'),{} if task.get('include_profile')=='accepted' else headers, config['model'], config['native_agent_checks'], config['native_agent_minutes'],library_inputs,digest(Path(__file__).read_bytes())])
             owner = claims.take(key, signature, dict(task=task))
             if owner:
                 if remote:
@@ -921,10 +927,10 @@ def run(config, control, emit):
             with lock:
                 if key not in baseline_cache:
                     with broker.slots:
-                        baseline_cache[key] = compile_probe(snapshot,task['file'],context,matcher,set(),'',translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'))
+                        baseline_cache[key] = compile_probe(snapshot,task['file'],context,matcher,set(),'',translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'),expected_symbol=task.get('expected_symbol'))
                 result = dict(baseline_cache[key])
                 if result['ok']:
-                    result.update(target_proof(Path(result['object']).read_bytes(),matcher,task['addr'],task['method']))
+                    result.update(target_proof(Path(result['object']).read_bytes(),matcher,task['addr'],task['method'],task.get('expected_symbol')))
                 return result
 
         def one(slot, assignment):
@@ -996,7 +1002,7 @@ def run(config, control, emit):
                     current = native_path(folder, task['file']).read_text(encoding='utf-8')
                     if current != record['original']:
                         method_change(record['original'], current, task['method'], allow_add=task.get('add_method',False))
-                    result = compile_probe(folder, task['file'], context, matcher, {task['addr']}, task['method'], record['baseline'], translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'))
+                    result = compile_probe(folder, task['file'], context, matcher, {task['addr']}, task['method'], record['baseline'], translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'),expected_symbol=task.get('expected_symbol'))
                     emit('native_progress', slot=slot, file=task['file'], message='Probe: '+json.dumps({k:result[k] for k in ('ok','target_exact','losses','error')}))
                     return result
                 current=native_path(folder,task['file']);before=current.read_bytes();text=before.decode('utf-8')

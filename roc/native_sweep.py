@@ -181,7 +181,7 @@ def methods(text):
 
 
 @functools.lru_cache(maxsize=32)
-def _method_spans(text):
+def _method_spans(text, overloads=False):
     """Unambiguous out-of-line methods, including balanced constructor initializers."""
     clean = masked_cpp(text)
     result = defaultdict(list)
@@ -221,7 +221,18 @@ def _method_spans(text):
             continue
         token = found[1] + "::" + found[2]
         result[token].append((found.start(), finish))
-    return tuple((token, spans[0]) for token, spans in result.items() if len(spans) == 1)
+    selected=[]
+    for token,spans in result.items():
+        if len(spans)==1:
+            selected.append((token,spans[0]))
+        elif overloads and token.split('::')[0]!=token.split('::')[1]:
+            signatures=defaultdict(list)
+            for start,finish in spans:
+                brace=clean.index('{',start)
+                signature=' '.join(clean[start:brace].split())
+                signatures[signature].append((start,finish))
+            selected.extend((signature,items[0]) for signature,items in signatures.items() if len(items)==1)
+    return tuple(selected)
 
 
 def without_assertions(text):

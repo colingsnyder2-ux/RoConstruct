@@ -152,7 +152,7 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
     monkeypatch.setattr(sweep,'Matcher',lambda *a:None)
     monkeypatch.setattr(match,'_functions',lambda *a:{})
     monkeypatch.setattr(match,'coff_functions',lambda *a:[])
-    monkeypatch.setattr(recovery,'target_proof',lambda data,matcher,addr,method:dict(
+    monkeypatch.setattr(recovery,'target_proof',lambda data,matcher,addr,method,expected_symbol=None:dict(
         target_exact=('A::f%d(){return %d;}'%(int(addr,16),int(addr,16)+100)).encode() in data,
         symbol='?f%d@A@@QAEHXZ'%int(addr,16),diff='fixture body diff'))
     assignments=[dict(file=REL,method='A::f%d'%n,addr='%08x'%n) for n in range(10)]
@@ -285,7 +285,7 @@ def test_historical_compiler_header_probe_checks_actual_consuming_tu(tmp_path,mo
     first=recovery.compile_probe(tmp_path,header.relative_to(tmp_path).as_posix(),ctx,Empty(),{'00000001'},'A::f',translation_unit=REL)
     assert first['ok'],first['error']
     golden={n:(b,r) for n,b,r in match.coff_functions(Path(first['object']).read_bytes())}
-    def target(data,matcher,addr,method):
+    def target(data,matcher,addr,method,expected_symbol=None):
         matches=[n for n,b,r in match.coff_functions(data) if n.startswith('?f@A@@') and golden.get(n)==(b,r)]
         return dict(target_exact=bool(matches),symbol=matches[0] if matches else '')
     monkeypatch.setattr(recovery,'target_proof',target)
@@ -424,6 +424,46 @@ def test_direct_target_proof_accepts_tiny_symbol_hidden_by_sweep(monkeypatch):
     assert recovery.target_proof(b'object',matcher,'00400000','A::f')['target_exact']
     monkeypatch.setattr(recovery.match,'data_check',lambda *a:([],['wrong string']))
     assert not recovery.target_proof(b'object',matcher,'00400000','A::f')['target_exact']
+
+
+def test_overload_body_merge_preserves_sibling_and_rejects_signature_change(tmp_path):
+    before='int A::f(int value){return value;}\nint A::f(const std::string& value){return 2;}\n'
+    after=before.replace('return 2;','return 3;');method='A::f(const std::string& value)'
+    assert 'A::f' not in recovery.native_methods.methods(before)
+    assert method in recovery.native_methods.methods(before)
+    fragment=after[slice(*recovery.native_methods.methods(after)[method])]
+    edits=recovery.native_methods.canonical_edits(before,fragment,method)
+    assert recovery.sweep.apply_edits(before,edits)==after
+    shared=tmp_path/'shared';path=source(shared,before.replace('return value;','return value+10;'))
+    recovery.merge(shared,tmp_path/'proof',REL,before,after,method,good,tmp_path/'receipt.json')
+    assert path.read_text()==after.replace('return value;','return value+10;')
+    with pytest.raises(ValueError):recovery.method_change(before,after.replace('int value','long value'),method)
+    with pytest.raises(ValueError):recovery.method_change(before,after.replace('return value;','return 99;'),method)
+    with pytest.raises(ValueError,match='Conflict'):
+        recovery.merge(shared,tmp_path/'again',REL,before,after.replace('return 3;','return 4;'),method,good,tmp_path/'conflict.json')
+
+
+def test_overload_proof_requires_exact_explicit_symbol(monkeypatch):
+    first='?f@A@@QAEHH@Z';second='?f@A@@QAEHPBD@Z'
+    monkeypatch.setattr(recovery.match,'coff_functions',lambda obj:[(first,b'one',[]),(second,b'two',[])])
+    monkeypatch.setattr(recovery.match,'coff_data_refs',lambda *a:[])
+    monkeypatch.setattr(recovery.match,'data_check',lambda *a:([],[]))
+    monkeypatch.setattr(recovery.sweep,'body_diff',lambda *a:'identical')
+    matcher=SimpleNamespace(target=SimpleNamespace(same=lambda addr,code,relocs:code if code==b'two' else None))
+    assert not recovery.target_proof(b'',matcher,'00400000','A::f(const char* value)')['target_exact']
+    assert not recovery.target_proof(b'',matcher,'00400000','A::f')['target_exact']
+    assert not recovery.target_proof(b'',matcher,'00400000','A::f(const char* value)',first)['target_exact']
+    assert recovery.target_proof(b'',matcher,'00400000','A::f(const char* value)',second)['target_exact']
+    assert not recovery.target_proof(b'',matcher,'00400000','A::g(const char* value)',second)['target_exact']
+
+
+def test_inline_overload_preserves_fields_and_sibling():
+    text='struct A { int field; int f(int value){return value;} int f(char* value){return field;} };'
+    method='A::f(int value)';changed=text.replace('return value;','return value+1;')
+    assert method in recovery.native_methods.methods(text)
+    assert 'A::f' not in recovery.native_methods.methods(text)
+    assert recovery.method_change(text,changed,method)==[['f(int value){return value;}','f(int value){return value+1;}']]
+    with pytest.raises(ValueError):recovery.method_change(text,changed.replace('int field','long field'),method)
 
 
 def test_probe_addresses_override_misleading_rebuilt_names_and_truncated_symbols(tmp_path):
@@ -699,12 +739,16 @@ def test_agent_blocker_is_bounded_literal_data_not_instructions(tmp_path):
 
 
 @pytest.mark.parametrize('regression',[False,True])
-@pytest.mark.parametrize('mode',['assertions','reference'])
+@pytest.mark.parametrize('mode',['assertions','reference','overload'])
 def test_focused_free_pass_requires_lossless_proof_and_restores_failed_trial(tmp_path,monkeypatch,regression,mode):
     from roc import native_sweep as sweep,match
     shared=tmp_path/'shared';original='int A::f(){RBXASSERT(false);return 3;}\nint A::g(){return 2;}\n'
     path=source(shared,original);monkeypatch.setenv('ROC_NATIVE_EVIDENCE_ROOT',str(shared))
     rel=REL;evidence={};task=dict(file=rel,method='A::f',addr='00400000')
+    if mode=='overload':
+        original='int A::f(int value){RBXASSERT(false);return 3;}\nint A::f(char* value){return 2;}\n'
+        path.write_text(original)
+        task.update(method='A::f(int value)',expected_symbol='?f@A@@QAEHH@Z')
     if mode=='reference':
         original='int A::f(){return 1;}\nint A::g(){return 2;}\n'
         rel='rebuild/2008-06/native-classes/accepted/App/test/A.cpp';path=shared/rel;path.parent.mkdir(parents=True);path.write_text(original)
@@ -723,6 +767,7 @@ def test_focused_free_pass_requires_lossless_proof_and_restores_failed_trial(tmp
     monkeypatch.setattr(match,'_functions',lambda *a:{})
     monkeypatch.setattr(recovery,'nominations',lambda *a:[task])
     def compile(root,*a,**kw):
+        if mode=='overload':assert kw['expected_symbol']==task['expected_symbol']
         text=(root/rel).read_text();obj=root/'proof.obj';obj.write_text(text)
         exact='RBXASSERT' not in text and 'return 3;' in text
         return dict(ok=True,error='',target_exact=exact,hits=[],object=str(obj),losses=['existing'] if exact and regression else [])
@@ -738,7 +783,7 @@ def test_focused_free_pass_requires_lossless_proof_and_restores_failed_trial(tmp
     result=recovery.run(config,control,lambda *a,**kw:None)
     assert result['automatic_recovered']==result['recovered']==result['merged']==int(not regression)
     assert control.budget.requests==int(regression)
-    expected=original if regression else original.replace('RBXASSERT(false)','') if mode=='assertions' else original.replace('return 1;','return 3;')
+    expected=original if regression else original.replace('RBXASSERT(false)','') if mode in ('assertions','overload') else original.replace('return 1;','return 3;')
     assert ''.join(path.read_text().split())==''.join(expected.split())
 
 

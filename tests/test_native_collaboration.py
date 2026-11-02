@@ -56,6 +56,23 @@ def test_mfc_profile_is_host_selected_and_old_workers_are_fenced(service,monkeyp
     assert service.claim('Colin',dict(request,include_profiles=list(recovery.INCLUDE_PROFILES)))['claimed']
 
 
+def test_explicit_overload_catalog_fences_old_workers_and_binds_symbol(service,monkeypatch):
+    (service.root/REL).write_text('int A::f(int value){return 1;} int A::f(char* value){return 2;}')
+    task=dict(file=REL,method='A::f(int value)',addr='00400000',expected_symbol='?f@A@@QAEHH@Z')
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[task])
+    published=service.catalog()['tasks'][0]
+    assert published['class_name']=='A'
+    request=dict(target=published['target'],signature=published['signature'],worker='pc2')
+    assert service.claim('Colin',request)==dict(claimed=False,reason='worker-update-required')
+    lease=service.claim('Colin',dict(request,method_selectors=['signature-v1']))
+    assert lease['claimed']
+    old_signature=published['signature'];task['expected_symbol']='?f@A@@QAEHPAD@Z'
+    service.cache_key=None
+    assert service.catalog()['tasks'][0]['signature']!=old_signature
+    task['expected_symbol']='?g@A@@QAEHH@Z';service.cache_key=None
+    with pytest.raises(ValueError,match='explicit matching MSVC symbol'):service.catalog()
+
+
 def test_two_pcs_cannot_lease_same_address_through_different_source_contexts(service,monkeypatch):
     alternative=REL.replace('A.cpp','Alternative.cpp');(service.root/alternative).write_text(BEFORE)
     monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=p,method='A::f',addr='00400000') for p in [REL,alternative]])

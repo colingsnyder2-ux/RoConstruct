@@ -80,7 +80,7 @@ class Host:
                     rel=(recovery.NATIVE/'native-classes/accepted'/name).as_posix()
                     if task.get('file')!=rel:raise ValueError('Accepted recovery source path differs from canonical unit')
                     text=integration.overlay_text(canonical/'tools/rbxgs/Client',name,patches,workspace=canonical)
-                    if task.get('method') not in sweep.methods(text):raise ValueError('Accepted recovery method missing from canonical source')
+                    if task.get('method') not in native_methods.methods(text):raise ValueError('Accepted recovery method missing from canonical source')
                     seed_missing(self.root,{rel:text})
                     files[rel]=(self.root/rel).read_text(encoding='utf-8-sig')
                 tasks+=extra
@@ -105,7 +105,10 @@ class Host:
                 method=task.get('method')
                 if text is None or not re.fullmatch('[0-9a-f]{8}',task.get('addr','')):continue
                 if method not in native_methods.methods(text) and not task.get('add_method'):continue
+                if '(' in method and (not isinstance(task.get('expected_symbol'),str) or sweep.symbol_method(task['expected_symbol'])!=method.split('(',1)[0]):
+                    raise ValueError('Overloaded recovery task needs an explicit matching MSVC symbol')
                 if path.suffix!='.cpp' and not task.get('translation_unit'):
+                    if '(' in method:continue  # An overload needs an owner-established consuming translation unit.
                     unit=None if method not in sweep.methods(text) else next((p for p,t in files.items() if p.endswith('.cpp') and re.search(r'#include\s*[<"][^>"\n]*'+re.escape(path.name)+r'[>"]',t)),None)
                     if not unit:
                         symbol=names.get(task['addr'],{}).get('symbol','')
@@ -130,7 +133,7 @@ class Host:
                 if target in seen:continue
                 seen.add(target)
                 context=[canonical_revision] if task.get('include_profile')=='accepted' else [headers,probe_revision]
-                task.update(target=target,signature=integration.digest([text,context,task.get('include_profile','owner'),files.get(task.get('translation_unit'))]),scope='method-body-only',class_name=method.rsplit('::',1)[0])
+                task.update(target=target,signature=integration.digest([text,context,task.get('include_profile','owner'),files.get(task.get('translation_unit')),task.get('expected_symbol')]),scope='method-body-only',class_name=method.split('(',1)[0].rsplit('::',1)[0])
                 clean.append(task)
             # Prefer bodies that can use the existing independent integration route.
             mappings={}
@@ -170,6 +173,8 @@ class Host:
         catalog=self.catalog()
         task=next((t for t in catalog['tasks'] if t['target']==body.get('target') and t['signature']==body.get('signature')),None)
         if task is None:raise ValueError('Unknown or changed target; refresh catalog')
+        if '(' in task['method'] and 'signature-v1' not in body.get('method_selectors',[]):
+            return dict(claimed=False,reason='worker-update-required')
         if task.get('include_profile','owner')!='owner' and task['include_profile'] not in body.get('include_profiles',[]):
             return dict(claimed=False,reason='worker-update-required')
         packet=dict(task=task,original=catalog['files'][task['file']])
@@ -263,7 +268,7 @@ class Host:
                 revision='canonical_revision' if task.get('include_profile')=='accepted' else 'probe_revision'
                 if self.catalog().get(revision)!=published.get(revision):
                     raise ValueError('Probe declarations changed; candidate retained for fresh verification')
-                result=recovery.compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'))
+                result=recovery.compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'),expected_symbol=task.get('expected_symbol'))
                 if self.catalog().get(revision)!=published.get(revision):
                     raise ValueError('Probe declarations changed during compilation; candidate retained')
                 if result.get('target_exact'):

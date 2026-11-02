@@ -48,7 +48,7 @@ class Remote:
 
     def claim(self, task):
         from roc.native_recovery import INCLUDE_PROFILES
-        return self.call('claim', dict(target=task['target'], signature=task['signature'],include_profiles=list(INCLUDE_PROFILES)))
+        return self.call('claim', dict(target=task['target'], signature=task['signature'],include_profiles=list(INCLUDE_PROFILES),method_selectors=['signature-v1']))
 
     def renew(self, lease):
         return self.call('renew',dict(lease=lease['lease'],worker=lease.get('worker',self.worker)))
