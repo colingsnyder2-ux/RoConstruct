@@ -5,7 +5,7 @@ extern char sRocketTool[];
 class RocketTool : public Named<ShootTool,sRocketTool> {
     virtual boost::shared_ptr<PartInstance> createProjectile();
     virtual PV launch(const UIEvent&,const G3D::CoordinateFrame&);
-    virtual int getDamage();
+    virtual int getShootSound();
 public:
     RocketTool(Workspace* w) : Named<ShootTool,sRocketTool>(w,false,90) {}
     virtual MouseCommand* isSticky() const;

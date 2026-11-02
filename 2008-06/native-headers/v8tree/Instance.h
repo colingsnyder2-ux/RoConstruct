@@ -24,7 +24,13 @@ struct ChildAdded;
 struct ChildRemoved;
 struct DescendantAdded;
 struct DescendantRemoving;
-struct AncestorChanged;
+struct AncestorChanged {
+    Instance* child;
+    Instance* oldParent;
+    Instance* newParent;
+    AncestorChanged(Instance* child, Instance* oldParent, Instance* newParent)
+        : child(child), oldParent(oldParent), newParent(newParent) {}
+};
 class PropertyChanged;
 extern char sInstance[];
 
@@ -43,6 +49,7 @@ class Instance : public boost::enable_shared_from_this<Instance>,
                  public Notifier<Instance, PropertyChanged>,
                  public boost::noncopyable {
 public:
+    static Reflection::BoundProp<bool, 1> propArchivable;
     static const Reflection::RefPropDescriptor<Instance, Instance> propParent;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentAdded;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
@@ -81,6 +88,8 @@ public:
     template<class T> const T* queryTypedParent() const { return dynamic_cast<T*>(parent); }
     template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
     void setParent(Instance*);
+    bool contains(const Instance*) const;
+    void raisePropertyChanged(const Reflection::PropertyDescriptor&);
     void removeAllChildren();
     std::string getClassNameStr() const;
     Instance* findFirstChildByClassName(std::string) const; // 0046ae30; name provisional.

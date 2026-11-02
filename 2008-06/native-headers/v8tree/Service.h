@@ -28,6 +28,7 @@ class __declspec(novtable) ServiceProvider :
     public Notifier<ServiceProvider, ServiceAdded>,
     public Notifier<ServiceProvider, ServiceRemoving> {
 public:
+    static const ServiceProvider* findServiceProvider(const Instance*);
     mutable std::vector<boost::shared_ptr<Instance> > serviceArray;
     std::map<const Name*, boost::shared_ptr<Instance> > serviceMap;
     boost::shared_ptr<Instance> findServiceByClassName(const Name&) const;

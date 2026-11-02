@@ -3,7 +3,7 @@ import hashlib,json,struct,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
 out=root/'rebuild/2008-06/out/native-layouts';overlay=out/'setlocked-include/v8tree';overlay.mkdir(parents=True,exist_ok=True)
-base_header=root/'rebuild/2008-06/native-headers/v8tree/Instance.h';header=base_header.read_text();needle='    void setParent(Instance*);';assert header.count(needle)==1;header=header.replace(needle,'    void raisePropertyChanged(const Reflection::PropertyDescriptor&);\n'+needle);(overlay/'Instance.h').write_text(header)
+base_header=root/'rebuild/2008-06/native-headers/v8tree/Instance.h';header=base_header.read_text();assert header.count('    void raisePropertyChanged(const Reflection::PropertyDescriptor&);')==1;(overlay/'Instance.h').write_text(header)
 src=root/'rebuild/2008-06/tests/NativePartSetLockedCompactTrial.cpp';obj=out/'NativePartSetLockedCompactTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags[:0]=['/I'+str(overlay.parent),'/I'+str(out/'workspace-model-vector-include')]
 code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);assert code==0,log
 raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);name,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?setLocked@PartInstance@'));address=0x59de20;target,targetrefs,_=match.target('2008-06','0059de20');assert match.exact_match(target,targetrefs,body,refs)

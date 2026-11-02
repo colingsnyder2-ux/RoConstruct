@@ -107,6 +107,8 @@ objects += [snap/'native-layouts/insertdecal-property-probe/DecalPropertyWorker.
 objects += [snap/'native-layouts/laser-trial'/name for name in ['NativeLaserTrial.obj', 'NativeLaserMethodsTrial.obj', 'NativeLaserRenderTrial.obj']]
 objects.append(snap/'native-layouts/laser-click-trial/NativeLaserClickTrial.obj')
 objects.append(snap/'native-layouts/insert-object-worker2/NativeInsertObjectActionWorker.obj')
+objects += [snap/'native-layouts/worker-slingshot'/name for name in ['NativeSlingshotWorkerTrial.obj', 'NativeSlingshotMethodsWorkerTrial.obj', 'NativeSlingshotLaunchWorkerTrial.obj', 'NativeShootWorkerTrial.obj', 'NativeSlingshotPelletWorkerTrial.obj', 'NativeSlingshotProviderWorkerTrial.obj', 'NativeSlingshotContentIdWorkerTrial.obj', 'NativeSlingshotBallisticWorkerTrial.obj']]
+objects += [snap/'native-layouts/rocket-worker'/name for name in ['NativeRocketWorkerTrial.obj', 'NativeRocketPrototypeWorkerTrial.obj', 'NativeRocketLaunchWorkerTrial.obj']]
 if provider_trial:
     objects += [snap/'native-layouts'/(name+'.obj') for name in ('NativeGrabToolTrial','NativeGrabMethodsTrial','NativeGrabNameTrial','NativeGroupDragLifetimeTrial','NativeGroupDragMethodsTrial','NativeGroupDragNameTrial','NativePartDragLifetimeTrial','NativePartDragMethodsTrial','NativePartDragNameTrial','NativeCollectDragPartsTrial')]
     objects.append(snap/'native-layouts/worker-grab-factory/verified/NativeDragFactoryWorkerTrial.obj')
@@ -225,7 +227,9 @@ args = ['/nologo','/SUBSYSTEM:WINDOWS','/MACHINE:X86','/MAP:NativeDoc.map','/OUT
 if provider_trial:
     args.append('/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z')
 args += [str(path) for path in objects+libs] + [name+'.lib' for name in system] + ['/NODEFAULTLIB:'+name for name in rebuild.VENDOR_AUTOLINK]
-code, log = rebuild.run(rebuild.toolchain(), 'link', args, out)
+response = out/'NativeDoc.rsp'
+response.write_text('\n'.join(subprocess.list2cmdline([arg]) for arg in args) + '\n')
+code, log = rebuild.run(rebuild.toolchain(), 'link', ['@' + str(response)], out)
 (out/'link.log').write_text(log)
 errors = [line.strip() for line in log.splitlines() if 'unresolved external symbol' in line or 'already defined' in line]
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
