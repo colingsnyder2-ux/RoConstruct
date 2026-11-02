@@ -1142,3 +1142,9 @@ Leases also fence duplicate original addresses across different source contexts.
 Unrelated owner edits no longer trigger repeated failed canonical preflights.
 Local profile matches still need mapping, linking and independent integration before
 credit; player swaps still require P5/P6.
+
+Worker 37 distinguishes stale mined factory/RTTI tags from compiled source owners
+when checking static parked-family notes. Genuine source/catalog owners still obey
+their parked status, and every active foreign lease remains fenced, including its
+mined tag. This lets a proven method with an unrelated old tag reach normal linked
+preflight; it does not change declarations, linking gates or credit rules.
