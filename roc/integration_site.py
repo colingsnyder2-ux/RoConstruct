@@ -87,6 +87,23 @@ def commit(root):
         return ""
 
 
+def announce_inactive(before, after, log=print):
+    """Integration Digest (report only) for addresses that newly became inactive (exact) or draft native code."""
+    rows = [(a, v) for a, v in after.items() if a not in before or (v[1] and not before[a][1])]
+    if not rows:
+        return
+    from roc.integration_notify import post_section
+    from roc.reports import inline_code
+    rows.sort(key=lambda r: (not r[1][1], r[0]))
+    lines = ["%s `%s` %s" % ("🟣 inactive" if v[1] else "🩷 draft", a, inline_code(v[0])) for a, v in rows[:12]]
+    if len(rows) > 12:
+        lines.append("+%d more" % (len(rows) - 12))
+    section = {"name": "🟪 New Native Code · inactive (exact) / draft, not integrated",
+               "value": "\n".join(lines)[:1024], "inline": False}
+    post_section(None, "site", "rebuild", section, background=False)
+    log("Integration digest: %d newly inactive/draft" % len(rows))
+
+
 def build(root=ROOT, log=print):
     out = root / "rebuild" / CLIENT / "out"
     native_path = root / "work/integration/progress-native.json"
@@ -113,7 +130,7 @@ def build(root=ROOT, log=print):
                     working[str(addr).lower().removeprefix("0x").zfill(8)] = [user, worker, unit]
     finally:
         db.close()
-    groups, _ = coverage(root, scores, native)
+    groups, functions = coverage(root, scores, native)
     units = {job: unit for job, _, _, unit, _, _ in jobs}
     receipts = []
     daily = {}
@@ -156,13 +173,19 @@ def build(root=ROOT, log=print):
             "daily": [daily[day] for day in sorted(daily)],
             "jobs": receipts[:100],
             "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
+    for key, exact in (("native_inactive", True), ("native_draft", False)):
+        hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
+        # separate from "groups": groups partition the code and are summed by the site
+        data.setdefault("native_code", {})[key[7:]] = {"functions": len(hits), "bytes": sum(f["size"] for f in hits)}
     path = root / "docs/integration.json"
     previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     history = {row["day"]: row for row in previous.get("history", [])} if previous.get("client") == CLIENT else {}
     day = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
-    history[day] = {"day": day, "groups": data["groups"]}
+    history[day] = {"day": day, "groups": data["groups"], "native_code": data.get("native_code", {})}
     data["history"] = [history[day] for day in sorted(history)]
     atomic_json(root / "docs/integration.json", data)
+    if "inactive" in previous:  # first build has no baseline: don't announce everything
+        announce_inactive(previous["inactive"], data["inactive"], log)
     log("Integration site data: %d integrated, %d named" % (len(native), len(data["names"])))
     return data
 
