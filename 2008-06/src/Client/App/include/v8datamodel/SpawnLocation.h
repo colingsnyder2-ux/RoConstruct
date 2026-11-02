@@ -44,7 +44,7 @@ namespace RBX
 		SpawnerService();
 		virtual ~SpawnerService();
 		G3D::Vector3 FindSpawnPositionForPlayer(Network::Player* p);
-		void RegisterSpawner(SpawnLocation* spawner);
-		void UnregisterSpawner(SpawnLocation* spawner);
+		void RegisterSpawner(SpawnLocation* spawner) { spawners.push_back(spawner); }
+		void UnregisterSpawner(SpawnLocation* spawner) { spawners.remove(spawner); }
 	};
 }

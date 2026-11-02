@@ -163,6 +163,6 @@ namespace RBX
 	class WorkspaceStatsItem : public Stats::Item
 	{
 	public:
-		WorkspaceStatsItem(const Workspace*, const World*);
+		WorkspaceStatsItem(const Workspace*, const World*, const RunService*);
 	};
 }

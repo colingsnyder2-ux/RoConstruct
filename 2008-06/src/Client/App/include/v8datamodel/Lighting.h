@@ -21,8 +21,8 @@ namespace RBX
 		boost::posix_time::time_duration timeOfDay;
 		// Names are placeholders from the 100% codegen proof for the 2008 ctor;
 		// the types and stores are what the target bytes prove (0x270..0x2d3).
-		G3D::Vector3 v0;
-		G3D::Vector3 v1;
+		G3D::Color3 v0;	// ColorShift_Top (2008 PropDescriptor<Lighting, Color3>)
+		G3D::Color3 v1;	// ColorShift_Bottom (2008 PropDescriptor<Lighting, Color3>)
 		float f0;
 		G3D::Color3 c0;
 		G3D::Color3 c1;
@@ -96,6 +96,36 @@ namespace RBX
 		}
 
 		void setGeographicLatitude(float value);
+
+		// 2008 "ColorShift_Top", "ColorShift_Bottom", "Brightness" and "Ambient"
+		// properties (names from the 2008 descriptor strings; storage 0x270/0x27c/0x288/0x28c).
+		G3D::Color3 getColorShift_Top() const
+		{
+			return v0;
+		}
+
+		void setColorShift_Top(G3D::Color3 value);
+
+		G3D::Color3 getColorShift_Bottom() const
+		{
+			return v1;
+		}
+
+		void setColorShift_Bottom(G3D::Color3 value);
+
+		float getBrightness() const
+		{
+			return f0;
+		}
+
+		void setBrightness(float value);
+
+		G3D::Color3 getAmbient() const
+		{
+			return c0;
+		}
+
+		void setAmbient(G3D::Color3 value);
 
 		G3D::Color3 getClearColor3() const
 		{

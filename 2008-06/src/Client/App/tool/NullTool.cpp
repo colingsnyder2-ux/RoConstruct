@@ -14,6 +14,20 @@ namespace RBX
 
 	NewNullTool::~NewNullTool() {}
 
+	bool NewNullTool::localHeadHidden() const
+	{
+		if (ModelInstance* character = Network::Players::findLocalCharacter(workspace))
+		{
+			if (Humanoid* humanoid = Humanoid::modelIsCharacter(character))
+			{
+				PartInstance* head = humanoid->getHead();
+				if (head && head->getAlphaModifier() == 0.0f)
+					return true;
+			}
+		}
+		return false;
+	}
+
 	void NewNullTool::onMouseIdle(const UIEvent& uiEvent)
 	{
 		RBXASSERT(uiEvent.eventType == UIEvent::MOUSE_IDLE);

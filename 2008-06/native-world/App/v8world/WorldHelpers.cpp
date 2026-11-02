@@ -7,45 +7,18 @@
 #include "v8kernel/Body.h"
 namespace RBX {
 using G3D::CoordinateFrame;
-int Guid::compare(const Guid* a, const Guid* b)
+// Guid::compare(const Guid*, const Guid*): native (Guid.cpp). That body calls Name::compare(Name&, Name&)
+// (native 0041faa0, not yet recovered); behavioural stand-in keeping the former ordering: identical
+// scopes equal, NULL scope first, else name order.
+int Name::compare(Name& a, Name& b)
 {
-	const Name* scopeA = a != NULL ? a->data.scope : NULL;
-	const Name* scopeB = b != NULL ? b->data.scope : NULL;
-	int order;
-
-	if (scopeA == NULL) {
-		order = scopeB != NULL ? -1 : 0;
-	}
-	else if (scopeB == NULL) {
-		order = 1;
-	}
-	else if (scopeA == scopeB) {
-		order = 0;
-	}
-	else {
-		order = scopeA->name.compare(scopeB->name);
-	}
-
-	if (order != -1) {
-		if (order != 0 && order != 1) {
-			return 0;
-		}
-
-		if (order == 0) {
-			int indexA = a != NULL ? a->data.index : 0;
-			int indexB = b != NULL ? b->data.index : 0;
-
-			if (indexA > indexB) {
-				return 1;
-			}
-
-			return indexA >= indexB ? 0 : -1;
-		}
-
+	if (&a == &b)
+		return 0;
+	if (&a == NULL)
+		return -1;
+	if (&b == NULL)
 		return 1;
-	}
-
-	return -1;
+	return a.name.compare(b.name);
 }
 
 int Guid::compare(const Guid* a0, const Guid* a1, const Guid* b0, const Guid* b1)

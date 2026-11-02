@@ -163,7 +163,6 @@ namespace RBX
 	{
 		if (value != getCoordinateFrame())
 		{
-			RBXASSERT(Math::isOrthonormal(value.rotation));
 			primitive.setCoordinateFrame(value);
 			PersistentPart.setDirty();
 			onExtentsChanged();

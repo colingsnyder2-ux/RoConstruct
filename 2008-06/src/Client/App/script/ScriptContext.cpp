@@ -348,6 +348,14 @@ void ScriptContext::executeInNewThread(Security::Identities identity, const char
     resume(newThread, pushArguments, readResults);
 }
 
+void ScriptContext::call(const Lua::FunctionRef& f, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)
+{
+    if (f.empty())
+        throw std::runtime_error("Cannot call a nil function");
+    Lua::lua_pushfunction(f.thread(), f);
+    resume(f.thread(), pushArguments, readResults);
+}
+
 void ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)
 {
     int nStack = lua_gettop(thread);

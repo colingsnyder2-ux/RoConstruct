@@ -183,7 +183,7 @@ namespace RBX
 	}
 
 	template<typename Class>
-	Class* ServiceProvider::create() const
+	__declspec(noinline) Class* ServiceProvider::create() const
 	{
 		return dynamic_cast<Class*>(ServiceProvider::create(const_cast<ServiceProvider*>(this), Class::className()));
 	}

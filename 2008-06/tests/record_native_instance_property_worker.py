@@ -3,7 +3,7 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
 work=root/'rebuild/2008-06/out/native-layouts/instance-property-worker';overlay=work/'v8tree';overlay.mkdir(parents=True,exist_ok=True)
 h=(root/'rebuild/2008-06/native-headers/v8tree/Instance.h').read_text()
-for decl in ['static Reflection::BoundProp<bool, 1> propArchivable;', 'static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> event_propertyChanged;', 'void raisePropertyChanged(const Reflection::PropertyDescriptor&);']:
+for decl in ['static Reflection::BoundProp<bool, 1> propArchivable;', 'static Reflection::SignalDesc<Instance, void(const Reflection::PropertyDescriptor*)> event_propertyChanged;', 'void raisePropertyChanged(const Reflection::PropertyDescriptor&']:
  if decl not in h: h=h.replace('    void setParent(Instance*);','    '+decl+'\n    void setParent(Instance*);')
 (overlay/'Instance.h').write_text(h)
 (work/'reflection').mkdir(exist_ok=True); p=(root/'tools/rbxgs/Client/App/include/reflection/property.h').read_text().replace('Property(const Property&);','Property(const Property& other) : ConstProperty(other) {}');(work/'reflection/property.h').write_text(p);e=(root/'rebuild/2008-06/native-headers/v8tree/PropertyChanged.h').read_text().replace('PropertyChanged(const PropertyChanged&);','PropertyChanged(const PropertyChanged& other) : property(Reflection::Property(other.property.getDescriptor(), other.property.getInstance())) {}');(overlay/'PropertyChanged.h').write_text(e)

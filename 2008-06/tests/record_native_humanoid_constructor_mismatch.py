@@ -13,7 +13,7 @@ assert text.count('extern const char* sHumanoid;')==1 and text.count('&sHumanoid
 (overlay/'roc_Humanoid_2008.h').write_text(text.replace('extern const char* sHumanoid;', 'extern char sHumanoid[];').replace('&sHumanoid>', 'sHumanoid>').replace('bool sit : 1;', 'bool sit : 1;\n        bool strafe : 1;').replace('void setJump(bool value);','bool getStrafe() const;\n        void setStrafe(bool);\n        void setJump(bool value);'))
 instance_dir=overlay.parent/'v8tree';instance_dir.mkdir(exist_ok=True)
 instance_header=root/'rebuild/2008-06/native-headers/v8tree/Instance.h'
-instance_text=instance_header.read_text();assert instance_text.count('void raisePropertyChanged(const Reflection::PropertyDescriptor&);')==1
+instance_text=instance_header.read_text();assert instance_text.count('void raisePropertyChanged(const Reflection::PropertyDescriptor&')==1
 (instance_dir/'Instance.h').write_text(instance_text)
 flags.insert(0,'/I'+str(overlay.parent))
 code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(source)],out);assert code==0,log

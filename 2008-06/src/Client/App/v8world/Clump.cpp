@@ -37,7 +37,7 @@ Edge* EdgeIterator::getNextExternalUtil(Primitive* p, Edge* e)
 // FUNCTION: WEBSERVICE 0x10117df0
 bool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType)
 {
-	if (parentCandidate == NULL || child == NULL) {
+	if (parentCandidate == NULL || child == NULL || !joint->getActive()) {
 		return false;
 	}
 
@@ -101,18 +101,17 @@ Primitive* PrimIterator::findFirstChild(Primitive* p, SearchType searchType)
 // FUNCTION: WEBSERVICE 0x10117f60
 Primitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* sibling, SearchType searchType)
 {
-	bool found = false;
+	Joint* siblingJoint = NULL;
 
 	for (Joint* joint = parent->getFirstJoint(); joint != NULL; joint = parent->getNextJoint(joint)) {
 		Primitive* other = parent == joint->getPrimitive(0) ? joint->getPrimitive(1) : joint->getPrimitive(0);
 
 		if (isParent(parent, other, joint, searchType)) {
-			if (found) {
-				return other;
-			}
-
 			if (other == sibling) {
-				found = true;
+				siblingJoint = joint;
+			}
+			else if (siblingJoint != NULL) {
+				return other;
 			}
 		}
 	}

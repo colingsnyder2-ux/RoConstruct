@@ -129,7 +129,10 @@ namespace RBX
 		void endRunThread(bool join);
 		void raiseHeartbeat(float time, float step);
 		void raiseStepped(float time, float step);
-		RunState getRunState() const;
+		RunState getRunState() const
+		{
+			return runState;
+		}
 		bool isEditState() const;
 		bool isRunState() const;
 		bool isPauseState() const;

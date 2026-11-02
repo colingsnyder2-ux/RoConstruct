@@ -64,6 +64,30 @@ namespace RBX
 		result.erase(3, 1);
 	}
 
+	int Guid::compare(const Guid* a, const Guid* b)
+	{
+		Name* scopeA = const_cast<Name*>(a ? a->data.scope : NULL);
+		Name* scopeB = const_cast<Name*>(b ? b->data.scope : NULL);
+
+		switch (Name::compare(*scopeA, *scopeB))
+		{
+		case -1:
+			return -1;
+		case 0:
+			{
+				int indexA = a ? a->data.index : 0;
+				int indexB = b ? b->data.index : 0;
+				if (indexA > indexB)
+					return 1;
+				return indexA < indexB ? -1 : 0;
+			}
+		case 1:
+			return 1;
+		default:
+			return 0;
+		}
+	}
+
 	std::string Guid::Data::readableString(int scopeLength) const
 	{
 		char result[64];

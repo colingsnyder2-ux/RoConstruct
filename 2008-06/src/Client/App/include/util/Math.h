@@ -41,6 +41,8 @@ namespace RBX
 				return 0.0f;
 			}
 			static bool isDenormal(float f);
+			static bool isNanInf(float f);
+			static bool isNanInfVector3(const G3D::Vector3& v);
 			static bool isNanInfDenorm(float f);
 			static bool isNanInfDenormVector3(const G3D::Vector3& v);
 			static bool isNanInfDenormMatrix3(const G3D::Matrix3&);

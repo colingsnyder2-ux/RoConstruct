@@ -1,3 +1,5 @@
+// 2008 rbxgs-appdraw was compiled with /fp:fast
+#pragma float_control(precise, off)
 #include "AppDraw/AdornG3D.h"
 #include "AppDraw/DrawPrimitives.h"
 #include "AppDraw/Fonts.h"

@@ -1,27 +1,31 @@
 #pragma once
-#include <afxwin.h>
-#include <afxext.h>
-#include <afxhtml.h>
+#include "CSecureHtmlView.h"
+#include <atlbase.h>
 
-struct IWorkspace;
-
-// RTTI (vtables 0081b864 and 0081c4f4) gives CWebToolbox : CSecureHtmlView : CHtmlView, all
-// single inheritance. Constructors 00465a60 and 0046a850 prove the new members; operator new
-// in 0046a850 gives sizeof(CWebToolbox) == 0x100. Only members the code writes or reads are named.
-class CSecureHtmlView : public CHtmlView {
-    DECLARE_DYNCREATE(CSecureHtmlView)
-public:
-    bool flag_f4;                 // 00465a60 clears it at +0xf4
-    CSecureHtmlView();            // 00465a60
-    virtual ~CSecureHtmlView();   // 00465a80
-};
-
+// Inactive layout recovery from CRuntimeClass 0081c4a8 (size 0x100, CreateObject 0046a850, base
+// CSecureHtmlView), vtable 0081c4f4, the inlined constructor in CreateObject (CSecureHtmlView
+// constructor 00465a60, vtable, +0xfc = 0) and the deleting destructor 0046a7e0 (vtable, release
+// of +0xfc, ~CSecureHtmlView 00465a80). CRobloxView::showToolbox (004596a0) creates it through the runtime class, stores the
+// workspace at +0xfc and the view's render window at +0xf8.
 class CWebToolbox : public CSecureHtmlView {
     DECLARE_DYNCREATE(CWebToolbox)
+    DECLARE_MESSAGE_MAP()
 public:
-    CWnd* owner;                  // +0xf8: 004596a0 stores &CRobloxView::window; the overrides focus it
-    IWorkspace* site;             // +0xfc: counted workspace set by CRobloxView, cleared by the constructor
-    CWebToolbox();                // 0046a850
-    virtual ~CWebToolbox();       // 0046a7e0
-    void showPage(int);           // 0046a590, builds the page address and navigates; defined in its own unit
+    CWebToolbox();
+    virtual ~CWebToolbox();
+    virtual void OnInitialUpdate();                                            // 0046a710
+    virtual void OnActivateView(BOOL activate, CView* activateView, CView* deactiveView); // 0046a6a0
+    virtual HRESULT OnGetExternal(LPDISPATCH* dispatch);                       // 0046a8e0
+    virtual HRESULT OnGetHostInfo(DOCHOSTUIINFO* info);                        // 0046a680
+    virtual HRESULT OnDocWindowActivate(BOOL activate);                        // 0046a640
+    virtual HRESULT OnFrameWindowActivate(BOOL activate);                      // 0046a660
+    void OnGetMinMaxInfo(MINMAXINFO* info);                                    // 0046a7a0
+    void OnSetFocus(CWnd* oldWnd);                                             // 0046a6d0
+    int OnMouseActivate(CWnd* desktopWnd, UINT hitTest, UINT message);         // 0046a6f0
+    void showPage(int page);                                                   // 0046a590, called by CRobloxView 00459810
+    void OnLButtonUp(UINT flags, CPoint point);                                // 0046a7c0 (folded)
+    void OnActivate(UINT state, CWnd* other, BOOL minimized);                  // 0046a7c0 (folded)
+
+    CWnd* owner;                    // +0xf8, set to &CRobloxView::window by 004596a0; receives SetFocus in every handler
+    CComPtr<IDispatch> external;    // +0xfc, nulled by the constructor, released by the destructor, returned by OnGetExternal
 };

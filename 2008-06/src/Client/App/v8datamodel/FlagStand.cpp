@@ -59,22 +59,18 @@ namespace RBX
 
 	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
 		if (!oldProvider)
 		{
 			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
 
 			flagStandService->RegisterFlagStand(this);
 
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
+			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1), 10);
 		}
 
 		if (!newProvider)
 		{
 			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
 
 			flagStandService->UnregisterFlagStand(this);
 
@@ -104,13 +100,4 @@ namespace RBX
 		return NULL;
 	}
 
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
 }

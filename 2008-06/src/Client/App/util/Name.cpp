@@ -16,6 +16,14 @@ void initMoo()
 	moo2();
 }
 
+static const RBX::Name* nullName;
+static boost::once_flag nullFlag = BOOST_ONCE_INIT;
+
+static void initNull()
+{
+	nullName = &RBX::Name::declare("", 0);
+}
+
 namespace RBX
 {
 	// seems to be inlined
@@ -39,27 +47,25 @@ namespace RBX
 
 	const Name& Name::getNullName()
 	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
+		boost::call_once(initNull, nullFlag);
+		return *nullName;
 	}
 
 	const Name& Name::declare(const char* sName, int dictionaryIndex)
 	{
 		if (!sName)
 		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
 			return getNullName();
 		}
 
 		boost::mutex::scoped_lock scoped_lock(mutex());
 
-		NamMap::iterator iter = namMap().find(sName);
+		NamMap::iterator iter = namMap().find(std::string(sName));
 		if (iter != namMap().end())
 		{
 			if (dictionaryIndex != -1)
 			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
+				iter->second->dictionaryIndex = dictionaryIndex;
 				dictionary()[dictionaryIndex] = iter->second;
 			}
 			return *iter->second;

@@ -86,8 +86,6 @@ namespace RBX
 
 	Accoutrement::AccoutrementState Accoutrement::computeDesiredState()
 	{
-		RBXASSERT(Network::Players::backendProcessing(this, true));
-
 		if (!getHandleConst())
 			return NOTHING;
 
@@ -127,19 +125,17 @@ namespace RBX
 		}
 	}
 
+	void Accoutrement::rebuildBackendState()
+	{
+		AccoutrementState state = computeDesiredState();
+		setDesiredState(state, ServiceProvider::findServiceProvider(this));
+	}
+
 	void Accoutrement::onEvent_AddedBackend(boost::shared_ptr<Instance> child)
 	{
 		if (child.get() != this)
 		{
-			RBXASSERT(ServiceProvider::findServiceProvider(this));
-			RBXASSERT(Network::Players::backendProcessing(this, true));
-
-			AccoutrementState state = computeDesiredState();
-			const ServiceProvider* serviceProvider = ServiceProvider::findServiceProvider(this);
-
-			RBXASSERT(serviceProvider);
-
-			setDesiredState(state, serviceProvider);
+			rebuildBackendState();
 		}
 	}
 
@@ -147,21 +143,12 @@ namespace RBX
 	{
 		if (child.get() != this)
 		{
-			RBXASSERT(ServiceProvider::findServiceProvider(this));
-			RBXASSERT(Network::Players::backendProcessing(this, true));
-
 			if (child.get() == (Instance*)this->weld.get())
 			{
-				RBXASSERT(Accoutrement::drawSelected());
 				setDesiredState(NOTHING, ServiceProvider::findServiceProvider(this));
 			}
 
-			AccoutrementState state = computeDesiredState();
-			const ServiceProvider* serviceProvider = ServiceProvider::findServiceProvider(this);
-
-			RBXASSERT(serviceProvider);
-
-			setDesiredState(state, serviceProvider);
+			rebuildBackendState();
 		}
 	}
 
@@ -176,6 +163,18 @@ namespace RBX
 			if (humanoid && humanoid->getTorso() && !otherParent->findFirstChildOfType<Accoutrement>())
 			{
 				setParent(otherParent);
+			}
+		}
+	}
+
+	void Accoutrement::dropAllOthers(ModelInstance* character, Accoutrement* exclude)
+	{
+		if (Workspace* workspace = Workspace::findWorkspace(character))
+		{
+			while (Accoutrement* accoutrement = character->findFirstChildOfType<Accoutrement>())
+			{
+				if (accoutrement != exclude)
+					accoutrement->setParent(workspace);
 			}
 		}
 	}
@@ -275,6 +274,52 @@ namespace RBX
 		G3D::Vector3 y = z.cross(x);
 		y.unitize();
 		
+		c.rotation.setColumn(0, x);
+		c.rotation.setColumn(1, y);
+		c.rotation.setColumn(2, z);
+
+		setAttachmentPoint(c);
+	}
+
+	void Accoutrement::setAttachmentUp(const G3D::Vector3& v)
+	{
+		G3D::CoordinateFrame c = attachmentPoint;
+		G3D::Vector3 oldX = c.rotation.getColumn(0);
+		G3D::Vector3 oldZ = c.rotation.getColumn(2);
+
+		G3D::Vector3 y = v.direction();
+
+		G3D::Vector3 z = oldX.cross(y);
+		z.unitize();
+
+		G3D::Vector3 x = y.cross(z);
+		x.unitize();
+
+		c.rotation.setColumn(0, x);
+		c.rotation.setColumn(1, y);
+		c.rotation.setColumn(2, z);
+
+		setAttachmentPoint(c);
+	}
+
+	void Accoutrement::setAttachmentRight(const G3D::Vector3& v)
+	{
+		G3D::CoordinateFrame c = attachmentPoint;
+		G3D::Vector3 col1 = c.rotation.getColumn(1);
+		G3D::Vector3 oldZ = c.rotation.getColumn(2);
+
+		G3D::Vector3 x = v.direction();
+		G3D::Vector3 xc = x;
+		G3D::Vector3 oldY = col1;
+
+		G3D::Vector3 z = xc.cross(oldY);
+		z.unitize();
+
+		G3D::Vector3 xx = x;
+		G3D::Vector3 zc = z;
+		G3D::Vector3 y = zc.cross(xx);
+		y.unitize();
+
 		c.rotation.setColumn(0, x);
 		c.rotation.setColumn(1, y);
 		c.rotation.setColumn(2, z);

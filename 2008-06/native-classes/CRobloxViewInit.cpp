@@ -75,7 +75,7 @@ void CRobloxView::OnInitialUpdate() {
     owner_170 = DOC()->workspace->getDataModel();                  // 0046a940, 004025b0
     RBX::DataModel::Lock lock(owner_170); // 00411b40
     if (slot_1d8) {
-        IWorkspace** site = &slot_1d8->site;
+        IDispatch** site = &slot_1d8->external.p;
         IWorkspace* workspace = DOC()->workspace;
         if (*site != workspace) {
             if (workspace) workspace->AddRef();

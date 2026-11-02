@@ -421,7 +421,6 @@ protected:
 		template<typename Type>
 		const Type* getTypedRoot() const
 		{
-			RBXASSERT(dynamic_cast<const Type*>(this));
 			const Type* typedParent = dynamic_cast<const Type*>(parent);
 			if (typedParent)
 				return typedParent->getTypedRoot<Type>();

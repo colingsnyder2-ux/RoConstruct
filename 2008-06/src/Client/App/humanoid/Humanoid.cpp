@@ -9,6 +9,7 @@ namespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }
 #include "v8datamodel/JointInstance.h"
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/Workspace.h"
+#include "v8datamodel/Selection.h"
 #include "v8world/World.h"
 #include "Network/Players.h"
 #include "AppDraw/DrawAdorn.h"
@@ -627,6 +628,12 @@ namespace RBX
 	{
 		if (ModelInstance* character = getCharacterFromHumanoid(this))
 			character->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref((std::vector<Primitive*>&)ignore)));
+
+		if (FilteredSelection<PartInstance>* selection = ServiceProvider::create<FilteredSelection<PartInstance> >(this))
+		{
+			for (std::vector<PartInstance*>::const_iterator iter = selection->items().begin(); iter != selection->items().end(); ++iter)
+				ignore.push_back((*iter)->getPrimitive());
+		}
 	}
 
 	void Humanoid::tellCameraNear(float distance)

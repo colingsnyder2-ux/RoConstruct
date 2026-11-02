@@ -11,6 +11,10 @@
   [
    "",
    "\n// rebuild overlay: template bodies rbxgs declares but never defines\nnamespace RBX\n{\n\ttemplate<typename T>\n\tvoid Creatable<T>::Deleter::operator()(T* instance)\n\t{\n\t\tT::predelete(instance);\n\t\tdelete instance;\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tconst Name& FactoryProduct<Class, DerivedClass, ClassName>::className()\n\t{\n\t\tstatic const Name& n = Name::declare(*ClassName, -1);\n\t\treturn n;\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tconst Name& FactoryProduct<Class, DerivedClass, ClassName>::getClassName() const\n\t{\n\t\treturn className();\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tFactoryProduct<Class, DerivedClass, ClassName>::Creator::Creator()\n\t{\n\t\tFactoryProduct::getCreators()[&FactoryProduct::className()] = this;\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tFactoryProduct<Class, DerivedClass, ClassName>::Creator::~Creator()\n\t{\n\t\tFactoryProduct::getCreators().erase(&FactoryProduct::className());\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tboost::shared_ptr<Object> FactoryProduct<Class, DerivedClass, ClassName>::Creator::create() const\n\t{\n\t\treturn Class::CreatableBase::template create<Class>();\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tconst Name& FactoryProduct<Class, DerivedClass, ClassName>::Creator::getClassName() const\n\t{\n\t\treturn FactoryProduct::className();\n\t}\n\n\ttemplate<typename Class, typename DerivedClass, const char** ClassName>\n\tconst typename FactoryProduct<Class, DerivedClass, ClassName>::Creator FactoryProduct<Class, DerivedClass, ClassName>::creator;\n\n\ttemplate<typename DerivedClass, const char** ClassName>\n\tconst Name& NonFactoryProduct<DerivedClass, ClassName>::className()\n\t{\n\t\tstatic const Name& n = Name::declare(*ClassName, -1);\n\t\treturn n;\n\t}\n\n\ttemplate<typename DerivedClass, const char** ClassName>\n\tconst Name& NonFactoryProduct<DerivedClass, ClassName>::getClassName() const\n\t{\n\t\treturn className();\n\t}\n}\n"
+  ],
+  [
+   "\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2), Deleter());\n\t\t}\n\tprivate:\n\t\tstatic void* operator new(size_t size)\n",
+   "\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2), Deleter());\n\t\t}\n\t\ttemplate<typename Class, typename Parameter1, typename Parameter2, typename Parameter3>\n\t\tstatic boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3)\n\t\t{\n\t\t\treturn boost::shared_ptr<Class>(new Class(p1, p2, p3), Deleter());\n\t\t}\n\tprivate:\n\t\tstatic void* operator new(size_t size)\n"
   ]
  ],
  "App/include/util/Name.h": [
@@ -45,6 +49,10 @@
   [
    "",
    "\n// rebuild overlay: SignalDescImpl members rbxgs declares but never defines\nnamespace RBX\n{\n\tnamespace Reflection\n\t{\n\t\ttemplate<typename CallbackSignature>\n\t\tSignalDescImpl<0, CallbackSignature>::GenericSlotAdapter::GenericSlotAdapter(GenericSlotWrapper* wrapper)\n\t\t\t: wrapper(wrapper)\n\t\t{\n\t\t}\n\n\t\ttemplate<typename CallbackSignature>\n\t\tvoid SignalDescImpl<0, CallbackSignature>::GenericSlotAdapter::operator()()\n\t\t{\n\t\t\tstd::vector<boost::any> args;\n\t\t\twrapper->execute(args);\n\t\t}\n\n\t\ttemplate<typename CallbackSignature>\n\t\tSignalDescImpl<1, CallbackSignature>::GenericSlotAdapter::GenericSlotAdapter(GenericSlotWrapper* wrapper)\n\t\t\t: wrapper(wrapper)\n\t\t{\n\t\t}\n\n\t\ttemplate<typename CallbackSignature>\n\t\tSignalDescImpl<2, CallbackSignature>::GenericSlotAdapter::GenericSlotAdapter(GenericSlotWrapper* wrapper)\n\t\t\t: wrapper(wrapper)\n\t\t{\n\t\t}\n\n\t\ttemplate<typename CallbackSignature>\n\t\tvoid SignalDescImpl<2, CallbackSignature>::GenericSlotAdapter::operator()(\n\t\t\ttypename boost::function_traits<CallbackSignature>::arg1_type arg1,\n\t\t\ttypename boost::function_traits<CallbackSignature>::arg2_type arg2)\n\t\t{\n\t\t\tstd::vector<boost::any> args(2);\n\t\t\targs[0] = boost::any(arg1);\n\t\t\targs[1] = boost::any(arg2);\n\t\t\twrapper->execute(args);\n\t\t}\n\n#define RBX_REBUILD_CONNECT_GENERIC(N) \\\n\t\ttemplate<typename CallbackSignature> \\\n\t\tboost::signals::connection SignalDescImpl<N, CallbackSignature>::connectGeneric( \\\n\t\t\tSignalInstance* instance, GenericSlotWrapper* wrapper, boost::signals::connect_position pos) const \\\n\t\t{ \\\n\t\t\ttypedef typename TSignalDesc<CallbackSignature>::TSignalInstance Typed; \\\n\t\t\treturn static_cast<Typed*>(instance)->connect(GenericSlotAdapter(wrapper), pos); \\\n\t\t}\n\t\tRBX_REBUILD_CONNECT_GENERIC(0)\n\t\tRBX_REBUILD_CONNECT_GENERIC(1)\n\t\tRBX_REBUILD_CONNECT_GENERIC(2)\n#undef RBX_REBUILD_CONNECT_GENERIC\n\t}\n}\n"
+  ],
+  [
+   "\t\t\t\treturn boost::signals::connection();\n\t\t\t}\n\t\t\tbool empty(const SignalSource* source)",
+   "\t\t\t\treturn boost::signals::connection();\n\t\t\t}\n\t\t\tboost::signals::connection connect(SignalSource* source, const boost::slot<boost::function<CallbackSignature>>& slot, int group)\n\t\t\t{\n\t\t\t\tif (source)\n\t\t\t\t\treturn sig(*source).connect(group, slot);\n\n\t\t\t\treturn boost::signals::connection();\n\t\t\t}\n\t\t\tbool empty(const SignalSource* source)"
   ]
  ],
  "App/include/v8datamodel/Stats.h": [
@@ -119,6 +127,10 @@
   [
    "\t\ttemplate<typename Function>\n\t\tvoid visitChildren(Function func) const;",
    "\t\ttemplate<typename Type>\n\t\tType* findFirstDescendentOfType() const\n\t\t{\n\t\t\tif (children)\n\t\t\t{\n\t\t\t\tstd::vector<boost::shared_ptr<Instance>>::const_iterator end = children->end();\n\t\t\t\tstd::vector<boost::shared_ptr<Instance>>::const_iterator iter = children->begin();\n\t\t\t\tfor (; iter != end; iter++)\n\t\t\t\t{\n\t\t\t\t\tInstance* child = (*iter).get();\n\t\t\t\t\tif (Type* result = dynamic_cast<Type*>(child))\n\t\t\t\t\t\treturn result;\n\t\t\t\t\tif (Type* result = child->findFirstDescendentOfType<Type>())\n\t\t\t\t\t\treturn result;\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn NULL;\n\t\t}\n\n\t\ttemplate<typename Function>\n\t\tvoid visitChildren(Function func) const;"
+  ],
+  [
+   "\t\ttemplate<typename Type>\n\t\tconst Type* getTypedRoot() const\n\t\t{\n\t\t\tRBXASSERT(dynamic_cast<const Type*>(this));\n\t\t\tconst Type* typedParent = dynamic_cast<const Type*>(parent);\n\t\t\tif (typedParent)\n\t\t\t\treturn typedParent->getTypedRoot<Type>();\n",
+   "\t\ttemplate<typename Type>\n\t\tconst Type* getTypedRoot() const\n\t\t{\n\t\t\tconst Type* typedParent = dynamic_cast<const Type*>(parent);\n\t\t\tif (typedParent)\n\t\t\t\treturn typedParent->getTypedRoot<Type>();\n"
   ]
  ],
  "App/include/v8datamodel/MouseCommand.h": [
@@ -173,6 +185,10 @@
   [
    "\ttemplate<typename Class>\n\tClass* ServiceProvider::find(const Instance* context)\n\t{\n\t\treturn find<Class>(findServiceProvider(context));\n\t}\n\n\ttemplate<typename Class>\n\tClass* ServiceProvider::create(const Instance* context)\n\t{\n\t\treturn create<Class>(findServiceProvider(context));\n\t}",
    "\t// 2008 emits these two as out-of-line template instantiations (e.g. 0x4651c0 for RunService), so callers\n\t// must not inline the walk-and-cast; keep the body here but stop MSVC from folding it into callers.\n\ttemplate<typename Class>\n\t__declspec(noinline) Class* ServiceProvider::find(const Instance* context)\n\t{\n\t\treturn find<Class>(findServiceProvider(context));\n\t}\n\n\ttemplate<typename Class>\n\t__declspec(noinline) Class* ServiceProvider::create(const Instance* context)\n\t{\n\t\treturn create<Class>(findServiceProvider(context));\n\t}"
+  ],
+  [
+   "\t}\n\n\ttemplate<typename Class>\n\tClass* ServiceProvider::create() const\n\t{\n\t\treturn dynamic_cast<Class*>(ServiceProvider::create(const_cast<ServiceProvider*>(this), Class::className()));\n\t}\n",
+   "\t}\n\n\ttemplate<typename Class>\n\t__declspec(noinline) Class* ServiceProvider::create() const\n\t{\n\t\treturn dynamic_cast<Class*>(ServiceProvider::create(const_cast<ServiceProvider*>(this), Class::className()));\n\t}\n"
   ]
  ],
  "App/include/reflection/type.h": [
@@ -293,6 +309,10 @@
   [
    "ScriptContext::getContext(lua_State* thread)\n{\n    lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_SCRIPTCONTEXT);\n    lua_gettable(thread, LUA_GLOBALSINDEX);\n\n    RBXASSERT(lua_type(thread, -1) == LUA_TLIGHTUSERDATA);\n    ScriptContext* sc = static_cast<ScriptContext*>(lua_touserdata(thread, -1));\n    lua_pop(thread, 1);\n\n    return *sc;\n}",
    "ScriptContext::getContext(lua_State* thread)\n{\n    lua_pushlightuserdata(thread, RBX_LUA_GLOBAL_SCRIPTCONTEXT);\n    lua_gettable(thread, LUA_GLOBALSINDEX);\n\n    ScriptContext* sc = static_cast<ScriptContext*>(lua_touserdata(thread, -1));\n    lua_pop(thread, 1);\n\n    return *sc;\n}"
+  ],
+  [
+   "void ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)\n{",
+   "void ScriptContext::call(const Lua::FunctionRef& f, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)\n{\n    if (f.empty())\n        throw std::runtime_error(\"Cannot call a nil function\");\n    Lua::lua_pushfunction(f.thread(), f);\n    resume(f.thread(), pushArguments, readResults);\n}\n\nvoid ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)\n{"
   ]
  ],
  "App/include/lua/LuaBridge.h": [
@@ -511,6 +531,14 @@
   [
    "\tContactManager* Humanoid::getContactManager()\n\t{\n\t\tWorld* world = Workspace::getWorldIfInWorkspace(this);\n\t\treturn world ? &world->getContactManager() : NULL;\n\t}",
    "\tContactManager* Humanoid::getContactManager()\n\t{\n\t\treturn world ? &world->getContactManager() : NULL;\n\t}"
+  ],
+  [
+   "\t{\n\t\tif (ModelInstance* character = getCharacterFromHumanoid(this))\n\t\t\tcharacter->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref((std::vector<Primitive*>&)ignore)));\n\t}\n\n\tvoid Humanoid::tellCameraNear(float distance)\n",
+   "\t{\n\t\tif (ModelInstance* character = getCharacterFromHumanoid(this))\n\t\t\tcharacter->visitDescendents(boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref((std::vector<Primitive*>&)ignore)));\n\n\t\tif (FilteredSelection<PartInstance>* selection = ServiceProvider::create<FilteredSelection<PartInstance> >(this))\n\t\t{\n\t\t\tfor (std::vector<PartInstance*>::const_iterator iter = selection->items().begin(); iter != selection->items().end(); ++iter)\n\t\t\t\tignore.push_back((*iter)->getPrimitive());\n\t\t}\n\t}\n\n\tvoid Humanoid::tellCameraNear(float distance)\n"
+  ],
+  [
+   "#include \"v8datamodel/JointInstance.h\"\n#include \"v8datamodel/ModelInstance.h\"\n#include \"v8datamodel/Workspace.h\"\n#include \"v8world/World.h\"\n#include \"Network/Players.h\"\n#include \"AppDraw/DrawAdorn.h\"\n",
+   "#include \"v8datamodel/JointInstance.h\"\n#include \"v8datamodel/ModelInstance.h\"\n#include \"v8datamodel/Workspace.h\"\n#include \"v8datamodel/Selection.h\"\n#include \"v8world/World.h\"\n#include \"Network/Players.h\"\n#include \"AppDraw/DrawAdorn.h\"\n"
   ]
  ],
  "App/include/v8datamodel/CharacterAppearance.h": [
@@ -815,6 +843,10 @@
   [
    "\t\tstatic bool highlightSleepParts;",
    "\t\tstatic bool showContactPoints;\n\t\tstatic bool highlightSleepParts;"
+  ],
+  [
+   "\t\t\treturn getTransparencyUi() > 0.1f;\n\t\t}\n\t\tvoid setTransparency(float value);\n\t\tvoid setAlphaModifier(float value);\n\t\tfloat getReflectance() const\n\t\t{\n",
+   "\t\t\treturn getTransparencyUi() > 0.1f;\n\t\t}\n\t\tvoid setTransparency(float value);\n\t\tfloat getAlphaModifier() const\n\t\t{\n\t\t\treturn alphaModifier;\n\t\t}\n\t\tvoid setAlphaModifier(float value);\n\t\tfloat getReflectance() const\n\t\t{\n"
   ]
  ],
  "App/v8datamodel/PartInstance.cpp": [
@@ -885,6 +917,10 @@
   [
    "@all:primitive.getAssembly()->getRootClump()->getSleepStatus()",
    "primitive.getAssembly()->getSleepStatus()"
+  ],
+  [
+   "\t\tif (value != getCoordinateFrame())\n\t\t{\n\t\t\tRBXASSERT(Math::isOrthonormal(value.rotation));\n\t\t\tprimitive.setCoordinateFrame(value);",
+   "\t\tif (value != getCoordinateFrame())\n\t\t{\n\t\t\tprimitive.setCoordinateFrame(value);"
   ]
  ],
  "App/include/v8kernel/Body.h": [
@@ -967,6 +1003,10 @@
   [
    "\t\tvoid setCamera(Camera* value);",
    "\t\tvoid setCamera(Camera* value);\n\tprivate:\n\t\tvoid checkCamera();\n\tpublic:"
+  ],
+  [
+   "\tclass WorkspaceStatsItem : public Stats::Item\n\t{\n\tpublic:\n\t\tWorkspaceStatsItem(const Workspace*, const World*);\n\t};\n}\n",
+   "\tclass WorkspaceStatsItem : public Stats::Item\n\t{\n\tpublic:\n\t\tWorkspaceStatsItem(const Workspace*, const World*, const RunService*);\n\t};\n}\n"
   ]
  ],
  "App/v8datamodel/Workspace.cpp": [
@@ -1021,6 +1061,10 @@
   [
    "\t\t  unknown0x3cc(NULL),",
    "\t\t  unknown0x3cc(NULL),\n\t\t  cameraTemplate(Creatable::create<Camera>()),"
+  ],
+  [
+   "\n\tvoid Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tNotifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);\n\n\t\tif (statsItem)\n\t\t{\n\t\t\tstatsItem->setParent(NULL);\n\t\t\tstatsItem.reset();\n\t\t}\n\n\t\tInstance::onServiceProvider(oldProvider, newProvider);\n\n\t\tscriptContext = ServiceProvider::create<ScriptContext>(newProvider);\n\n\t\tif (Stats::Item* item = ServiceProvider::create<Stats::Item>(newProvider))\n\t\t{\n\t\t\tstatsItem = Creatable::create<WorkspaceStatsItem>(this, world.get());\n\t\t\tstatsItem->setParent(item);\n\t\t}\n\n\t\tNotifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);\n\t}\n\n\tstatic void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)\n",
+   "\n\tvoid Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (oldProvider)\n\t\t{\n\t\t\tNotifier<RunService, Heartbeat>::disconnect(oldProvider->find<RunService>(), this);\n\n\t\t\tif (statsItem)\n\t\t\t{\n\t\t\t\tstatsItem->setParent(NULL);\n\t\t\t\tstatsItem.reset();\n\t\t\t}\n\t\t}\n\n\t\tif (newProvider)\n\t\t{\n\t\t\tscriptContext = newProvider->create<ScriptContext>();\n\n\t\t\tRunService* runService = newProvider->find<RunService>();\n\t\t\tNotifier<RunService, Heartbeat>::connect(runService, this);\n\n\t\t\tif (Stats::Item* item = newProvider->create<Stats::Item>())\n\t\t\t{\n\t\t\t\tstatsItem = Creatable::create<WorkspaceStatsItem>(this, world.get(), runService);\n\t\t\t\tstatsItem->setParent(item);\n\t\t\t}\n\t\t}\n\t}\n\n\tstatic void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)\n"
   ]
  ],
  "App/include/script/ScriptContext.h": [
@@ -1045,6 +1089,10 @@
   [
    "double unknown0x1c8[4]; // names unknown",
    "double unknown0x1c8;\n\t\tdouble unknown0x1d0;\n\t\tdouble unknown0x1d8;\n\t\tdouble unknown0x1e0;"
+  ],
+  [
+   "\t\tvoid endRunThread(bool join);\n\t\tvoid raiseHeartbeat(float time, float step);\n\t\tvoid raiseStepped(float time, float step);\n\t\tRunState getRunState() const;\n\t\tbool isEditState() const;\n\t\tbool isRunState() const;\n\t\tbool isPauseState() const;\n",
+   "\t\tvoid endRunThread(bool join);\n\t\tvoid raiseHeartbeat(float time, float step);\n\t\tvoid raiseStepped(float time, float step);\n\t\tRunState getRunState() const\n\t\t{\n\t\t\treturn runState;\n\t\t}\n\t\tbool isEditState() const;\n\t\tbool isRunState() const;\n\t\tbool isPauseState() const;\n"
   ]
  ],
  "Network/include/Network/Player.h": [
@@ -1065,6 +1113,14 @@
   [
    "\t\tbool hasSky;\n\t\tfloat unknown0x244[4]; // 2008 keeps this block ahead of clearColor\n\t\tG3D::Color4 clearColor;\n\t\tboost::posix_time::time_duration timeOfDay;\n\t\tfloat unknown0x270[25]; // names unknown",
    "\t\tbool hasSky;\n\t\tG3D::Color4 shadowColor;\n\t\tG3D::Color4 clearColor;\n\t\tboost::posix_time::time_duration timeOfDay;\n\t\t// Names are placeholders from the 100% codegen proof for the 2008 ctor;\n\t\t// the types and stores are what the target bytes prove (0x270..0x2d3).\n\t\tG3D::Vector3 v0;\n\t\tG3D::Vector3 v1;\n\t\tfloat f0;\n\t\tG3D::Color3 c0;\n\t\tG3D::Color3 c1;\n\t\tG3D::Color3 c2;\n\t\tG3D::Color3 c3;\n\t\tG3D::Vector3 v2;\n\t\tG3D::Vector3 v3;"
+  ],
+  [
+   "\n\t\tvoid setGeographicLatitude(float value);\n\n\t\tG3D::Color3 getClearColor3() const\n\t\t{\n\t\t\treturn G3D::Color3(clearColor.r, clearColor.g, clearColor.b);\n",
+   "\n\t\tvoid setGeographicLatitude(float value);\n\n\t\t// 2008 \"ColorShift_Top\", \"ColorShift_Bottom\", \"Brightness\" and \"Ambient\"\n\t\t// properties (names from the 2008 descriptor strings; storage 0x270/0x27c/0x288/0x28c).\n\t\tG3D::Color3 getColorShift_Top() const\n\t\t{\n\t\t\treturn v0;\n\t\t}\n\n\t\tvoid setColorShift_Top(G3D::Color3 value);\n\n\t\tG3D::Color3 getColorShift_Bottom() const\n\t\t{\n\t\t\treturn v1;\n\t\t}\n\n\t\tvoid setColorShift_Bottom(G3D::Color3 value);\n\n\t\tfloat getBrightness() const\n\t\t{\n\t\t\treturn f0;\n\t\t}\n\n\t\tvoid setBrightness(float value);\n\n\t\tG3D::Color3 getAmbient() const\n\t\t{\n\t\t\treturn c0;\n\t\t}\n\n\t\tvoid setAmbient(G3D::Color3 value);\n\n\t\tG3D::Color3 getClearColor3() const\n\t\t{\n\t\t\treturn G3D::Color3(clearColor.r, clearColor.g, clearColor.b);\n"
+  ],
+  [
+   "\t\tboost::posix_time::time_duration timeOfDay;\n\t\t// Names are placeholders from the 100% codegen proof for the 2008 ctor;\n\t\t// the types and stores are what the target bytes prove (0x270..0x2d3).\n\t\tG3D::Vector3 v0;\n\t\tG3D::Vector3 v1;\n\t\tfloat f0;\n\t\tG3D::Color3 c0;\n\t\tG3D::Color3 c1;\n",
+   "\t\tboost::posix_time::time_duration timeOfDay;\n\t\t// Names are placeholders from the 100% codegen proof for the 2008 ctor;\n\t\t// the types and stores are what the target bytes prove (0x270..0x2d3).\n\t\tG3D::Color3 v0;\t// ColorShift_Top (2008 PropDescriptor<Lighting, Color3>)\n\t\tG3D::Color3 v1;\t// ColorShift_Bottom (2008 PropDescriptor<Lighting, Color3>)\n\t\tfloat f0;\n\t\tG3D::Color3 c0;\n\t\tG3D::Color3 c1;\n"
   ]
  ],
  "App/v8datamodel/DataModel.cpp": [
@@ -1453,6 +1509,26 @@
   [
    "\t\t\t\tif (name->toString() == \"BackendAccoutrementState\")\n\t\t\t\t\treturn;",
    "\t\t\t\tif (name->name == \"BackendAccoutrementState\")\n\t\t\t\t\treturn;"
+  ],
+  [
+   "\t{\n\t\tif (child.get() != this)\n\t\t{\n\t\t\tRBXASSERT(ServiceProvider::findServiceProvider(this));\n\t\t\tRBXASSERT(Network::Players::backendProcessing(this, true));\n\n\t\t\tif (child.get() == (Instance*)this->weld.get())\n\t\t\t{\n\t\t\t\tRBXASSERT(Accoutrement::drawSelected());\n\t\t\t\tsetDesiredState(NOTHING, ServiceProvider::findServiceProvider(this));\n\t\t\t}\n\n\t\t\tAccoutrementState state = computeDesiredState();\n\t\t\tconst ServiceProvider* serviceProvider = ServiceProvider::findServiceProvider(this);\n\n\t\t\tRBXASSERT(serviceProvider);\n\n\t\t\tsetDesiredState(state, serviceProvider);\n\t\t}\n\t}\n\n",
+   "\t{\n\t\tif (child.get() != this)\n\t\t{\n\t\t\tif (child.get() == (Instance*)this->weld.get())\n\t\t\t{\n\t\t\t\tsetDesiredState(NOTHING, ServiceProvider::findServiceProvider(this));\n\t\t\t}\n\n\t\t\trebuildBackendState();\n\t\t}\n\t}\n\n"
+  ],
+  [
+   "\t\t}\n\t}\n\n\tvoid Accoutrement::onEvent_AddedBackend(boost::shared_ptr<Instance> child)\n\t{\n\t\tif (child.get() != this)\n\t\t{\n\t\t\tRBXASSERT(ServiceProvider::findServiceProvider(this));\n\t\t\tRBXASSERT(Network::Players::backendProcessing(this, true));\n\n\t\t\tAccoutrementState state = computeDesiredState();\n\t\t\tconst ServiceProvider* serviceProvider = ServiceProvider::findServiceProvider(this);\n\n\t\t\tRBXASSERT(serviceProvider);\n\n\t\t\tsetDesiredState(state, serviceProvider);\n\t\t}\n\t}\n\n",
+   "\t\t}\n\t}\n\n\tvoid Accoutrement::rebuildBackendState()\n\t{\n\t\tAccoutrementState state = computeDesiredState();\n\t\tsetDesiredState(state, ServiceProvider::findServiceProvider(this));\n\t}\n\n\tvoid Accoutrement::onEvent_AddedBackend(boost::shared_ptr<Instance> child)\n\t{\n\t\tif (child.get() != this)\n\t\t{\n\t\t\trebuildBackendState();\n\t\t}\n\t}\n\n"
+  ],
+  [
+   "\n\tAccoutrement::AccoutrementState Accoutrement::computeDesiredState()\n\t{\n\t\tRBXASSERT(Network::Players::backendProcessing(this, true));\n\n\t\tif (!getHandleConst())\n\t\t\treturn NOTHING;\n\n",
+   "\n\tAccoutrement::AccoutrementState Accoutrement::computeDesiredState()\n\t{\n\t\tif (!getHandleConst())\n\t\t\treturn NOTHING;\n\n"
+  ],
+  [
+   "\t\tsetAttachmentPoint(c);\n\t}\n\n\tconst PartInstance* Accoutrement::getHandleConst() const\n\t{\n\t\treturn dynamic_cast<PartInstance*>(findFirstChildByName(\"Handle\"));\n",
+   "\t\tsetAttachmentPoint(c);\n\t}\n\n\tvoid Accoutrement::setAttachmentUp(const G3D::Vector3& v)\n\t{\n\t\tG3D::CoordinateFrame c = attachmentPoint;\n\t\tG3D::Vector3 oldX = c.rotation.getColumn(0);\n\t\tG3D::Vector3 oldZ = c.rotation.getColumn(2);\n\n\t\tG3D::Vector3 y = v.direction();\n\n\t\tG3D::Vector3 z = oldX.cross(y);\n\t\tz.unitize();\n\n\t\tG3D::Vector3 x = y.cross(z);\n\t\tx.unitize();\n\n\t\tc.rotation.setColumn(0, x);\n\t\tc.rotation.setColumn(1, y);\n\t\tc.rotation.setColumn(2, z);\n\n\t\tsetAttachmentPoint(c);\n\t}\n\n\tvoid Accoutrement::setAttachmentRight(const G3D::Vector3& v)\n\t{\n\t\tG3D::CoordinateFrame c = attachmentPoint;\n\t\tG3D::Vector3 col1 = c.rotation.getColumn(1);\n\t\tG3D::Vector3 oldZ = c.rotation.getColumn(2);\n\n\t\tG3D::Vector3 x = v.direction();\n\t\tG3D::Vector3 xc = x;\n\t\tG3D::Vector3 oldY = col1;\n\n\t\tG3D::Vector3 z = xc.cross(oldY);\n\t\tz.unitize();\n\n\t\tG3D::Vector3 xx = x;\n\t\tG3D::Vector3 zc = z;\n\t\tG3D::Vector3 y = zc.cross(xx);\n\t\ty.unitize();\n\n\t\tc.rotation.setColumn(0, x);\n\t\tc.rotation.setColumn(1, y);\n\t\tc.rotation.setColumn(2, z);\n\n\t\tsetAttachmentPoint(c);\n\t}\n\n\tconst PartInstance* Accoutrement::getHandleConst() const\n\t{\n\t\treturn dynamic_cast<PartInstance*>(findFirstChildByName(\"Handle\"));\n"
+  ],
+  [
+   "\t\t}\n\t}\n\n\tXmlElement* Accoutrement::write()\n\t{\n\t\tif (!writeUnlocked)\n",
+   "\t\t}\n\t}\n\n\tvoid Accoutrement::dropAllOthers(ModelInstance* character, Accoutrement* exclude)\n\t{\n\t\tif (Workspace* workspace = Workspace::findWorkspace(character))\n\t\t{\n\t\t\twhile (Accoutrement* accoutrement = character->findFirstChildOfType<Accoutrement>())\n\t\t\t{\n\t\t\t\tif (accoutrement != exclude)\n\t\t\t\t\taccoutrement->setParent(workspace);\n\t\t\t}\n\t\t}\n\t}\n\n\tXmlElement* Accoutrement::write()\n\t{\n\t\tif (!writeUnlocked)\n"
   ]
  ],
  "App/include/v8world/IPipelined.h": [
@@ -1529,6 +1605,22 @@
   [
    "\t\tHumanoid* humanoid = Humanoid::modelIsCharacter(getParent());\n\t\tRBXASSERT(humanoid);\n\n\t\tPartInstance* rightArm = humanoid->getRightArm();\n\t\tRBXASSERT(rightArm);\n\n\t\tPartInstance* handle = getHandle();\n\t\tRBXASSERT(handle);\n\n\t\tbuildWeld(rightArm, handle, humanoid->getRightArmGrip(), grip, \"RightGrip\");",
    "\t\tHumanoid* humanoid = Humanoid::modelIsCharacter(getParent());\n\t\tPartInstance* rightArm = humanoid->getRightArm();\n\n\t\tPartInstance* handle = getHandle();\n\t\tif (handle)\n\t\t\thandle->setCanCollide(false);\n\n\t\tbuildWeld(rightArm, handle, humanoid->getRightArmGrip(), grip, \"RightGrip\");"
+  ],
+  [
+   "\t\tc.rotation.setColumn(2, z);\n\n\t\tsetGrip(c);\n\t}\n\n\tconst PartInstance* Tool::getHandleConst() const",
+   "\t\tc.rotation.setColumn(2, z);\n\n\t\tsetGrip(c);\n\t}\n\n\tvoid Tool::setGripUp(const G3D::Vector3& v)\n\t{\n\t\tG3D::CoordinateFrame c = grip;\n\t\tG3D::Vector3 col0 = c.rotation.getColumn(0);\n\t\tG3D::Vector3 oldZ = c.rotation.getColumn(2);\n\n\t\tG3D::Vector3 y = v.direction();\n\t\tG3D::Vector3 yc = y;\n\t\tG3D::Vector3 oldX = col0;\n\n\t\tG3D::Vector3 z = oldX.cross(yc);\n\t\tz.unitize();\n\n\t\t\n\t\tG3D::Vector3 yy = y;\n\t\tG3D::Vector3 zc = z;\n\t\tG3D::Vector3 x = yy.cross(zc);\n\t\tx.unitize();\n\t\t\n\t\tc.rotation.setColumn(0, x);\n\t\tc.rotation.setColumn(1, y);\n\t\tc.rotation.setColumn(2, z);\n\n\t\tsetGrip(c);\n\t}\n\n\tvoid Tool::setGripRight(const G3D::Vector3& v)\n\t{\n\t\tG3D::CoordinateFrame c = grip;\n\t\tG3D::Vector3 col1 = c.rotation.getColumn(1);\n\t\tG3D::Vector3 oldZ = c.rotation.getColumn(2);\n\n\t\tG3D::Vector3 x = v.direction();\n\t\tG3D::Vector3 xc = x;\n\t\tG3D::Vector3 oldY = col1;\n\n\t\tG3D::Vector3 z = xc.cross(oldY);\n\t\tz.unitize();\n\n\t\tG3D::Vector3 xx = x;\n\t\tG3D::Vector3 zc = z;\n\t\tG3D::Vector3 y = zc.cross(xx);\n\t\ty.unitize();\n\t\t\n\t\tc.rotation.setColumn(0, x);\n\t\tc.rotation.setColumn(1, y);\n\t\tc.rotation.setColumn(2, z);\n\n\t\tsetGrip(c);\n\t}\n\n\tvoid Tool::downFrom_Equipped()\n\t{\n\t\tModelInstance* character = NULL;\n\t\tif (weld)\n\t\t{\n\t\t\tif (PartInstance* part0 = weld->getPart0())\n\t\t\t\tcharacter = dynamic_cast<ModelInstance*>(part0->getParent());\n\t\t\tweld->setParent(NULL);\n\t\t\tweld.reset();\n\t\t}\n\n\t\tif (PartInstance* handle = getHandle())\n\t\t{\n\t\t\thandle->setCanCollide(true);\n\t\t\tif (Humanoid::modelIsCharacter(character))\n\t\t\t{\n\t\t\t\tG3D::CoordinateFrame location = character->getLocation();\n\t\t\t\tG3D::Vector3 pos = location.translation;\n\t\t\t\tpos.y += 4;\n\t\t\t\tG3D::Vector3 dest = location.lookVector() * 8 + pos;\n\t\t\t\thandle->moveToPoint(dest);\n\t\t\t\thandle->setRotationalVelocity(G3D::Vector3(1, 1, 1));\n\t\t\t}\n\t\t}\n\n\t\tconnectTouchEvent();\n\t}\n\n\tconst PartInstance* Tool::getHandleConst() const"
+  ],
+  [
+   "\t\tRBXASSERT(Humanoid::modelIsCharacter(getParent()));\n\n\t\tcharacterChildAdded = Instance::event_childAdded.connect(getParent(), boost::bind(&Tool::onEvent_AddedBackend, this, _1));\n\t\tcharacterChildRemoved = Instance::event_childRemoved.connect(getParent(), boost::bind(&Tool::onEvent_RemovedBackend, this, _1));",
+   "\t\tcharacterChildAdded = Instance::event_childAdded.connect(getParent(), boost::bind(&Tool::onEvent_AddedBackend, this, _1), 10);\n\t\tcharacterChildRemoved = Instance::event_childRemoved.connect(getParent(), boost::bind(&Tool::onEvent_RemovedBackend, this, _1), 10);"
+  ],
+  [
+   "handleTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Tool::onEvent_HandleTouched, this, _1));",
+   "handleTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Tool::onEvent_HandleTouched, this, _1), 10);"
+  ],
+  [
+   "\t\tHumanoid* humanoid = Humanoid::modelIsCharacter(getParent());\n\t\tRBXASSERT(humanoid);\n\t\t\n\t\tPartInstance* torso = humanoid->getTorso();\n\t\tRBXASSERT(torso);\n\n\t\ttorsoChildAdded = Instance::event_childAdded.connect(torso, boost::bind(&Tool::onEvent_AddedBackend, this, _1));\n\t\ttorsoChildRemoved = Instance::event_childRemoved.connect(torso, boost::bind(&Tool::onEvent_RemovedBackend, this, _1));",
+   "\t\tHumanoid* humanoid = Humanoid::modelIsCharacter(getParent());\n\t\tPartInstance* torso = humanoid->getTorso();\n\n\t\ttorsoChildAdded = Instance::event_childAdded.connect(torso, boost::bind(&Tool::onEvent_AddedBackend, this, _1), 10);\n\t\ttorsoChildRemoved = Instance::event_childRemoved.connect(torso, boost::bind(&Tool::onEvent_RemovedBackend, this, _1), 10);"
   ]
  ],
  "App/v8datamodel/ModelInstance.cpp": [
@@ -1643,6 +1735,14 @@
   [
    "\t\t  hasSky(true),\n\t\t  clearColor(G3D::Color3::white()),\n\t\t  timeOfDay(boost::posix_time::duration_from_string(\"14:00:00\"))",
    "\t\t  hasSky(true),\n\t\t  shadowColor(G3D::Color3::white()),\n\t\t  clearColor(0.7f, 0.7f, 0.72f),\n\t\t  timeOfDay(boost::posix_time::duration_from_string(\"14:00:00\")),\n\t\t  v0(0.0f, 0.0f, 0.0f),\n\t\t  v1(0.0f, 0.0f, 0.0f),\n\t\t  f0(1.0f),\n\t\t  c0(0.5f, 0.5f, 0.5f),\n\t\t  c1(1.0f, 1.0f, 1.0f),\n\t\t  c2(1.0f, 1.0f, 1.0f),\n\t\t  c3(1.0f, 1.0f, 1.0f),\n\t\t  v2(0.0f, 0.0f, 0.0f),\n\t\t  v3(1.0f, 1.0f, 1.0f)"
+  ],
+  [
+   "\t\t}\n\t}\n\n\tvoid Lighting::setGeographicLatitude(float value)\n\t{\n\t\tif (value != skyParameters.geoLatitude)\n",
+   "\t\t}\n\t}\n\n\tvoid Lighting::setColorShift_Top(G3D::Color3 value)\n\t{\n\t\tif (value != v0)\n\t\t{\n\t\t\tv0 = value;\n\n\t\t\traisePropertyChanged(prop_ColorShift_Top);\n\t\t\tfireLightingChanged(false);\n\t\t\tRunService* runService = ServiceProvider::find<RunService>(this);\n\t\t\tif (runService)\n\t\t\t\trunService->invalidateRunViews();\n\t\t}\n\t}\n\n\tvoid Lighting::setColorShift_Bottom(G3D::Color3 value)\n\t{\n\t\tif (value != v1)\n\t\t{\n\t\t\tv1 = value;\n\n\t\t\traisePropertyChanged(prop_ColorShift_Bottom);\n\t\t\tfireLightingChanged(false);\n\t\t\tRunService* runService = ServiceProvider::find<RunService>(this);\n\t\t\tif (runService)\n\t\t\t\trunService->invalidateRunViews();\n\t\t}\n\t}\n\n\tvoid Lighting::setBrightness(float value)\n\t{\n\t\tif (value != f0)\n\t\t{\n\t\t\tf0 = value;\n\n\t\t\traisePropertyChanged(prop_Brightness);\n\t\t\tfireLightingChanged(false);\n\t\t\tRunService* runService = ServiceProvider::find<RunService>(this);\n\t\t\tif (runService)\n\t\t\t\trunService->invalidateRunViews();\n\t\t}\n\t}\n\n\tvoid Lighting::setAmbient(G3D::Color3 value)\n\t{\n\t\tif (value != c0)\n\t\t{\n\t\t\tc0 = value;\n\n\t\t\traisePropertyChanged(prop_Ambient);\n\t\t\tfireLightingChanged(false);\n\t\t\tRunService* runService = ServiceProvider::find<RunService>(this);\n\t\t\tif (runService)\n\t\t\t\trunService->invalidateRunViews();\n\t\t}\n\t}\n\n\tvoid Lighting::setGeographicLatitude(float value)\n\t{\n\t\tif (value != skyParameters.geoLatitude)\n"
+  ],
+  [
+   "\tstatic Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetSunPosition(&Lighting::getSunPosition, \"GetSunDirection\", Reflection::FunctionDescriptor::AnyCaller);\n\tstatic Reflection::BoundFuncDesc<Lighting, double(void), 0> prop_GetMinutesAfterMidnight(&Lighting::getMinutesAfterMidnight, \"GetMinutesAfterMidnight\", Reflection::FunctionDescriptor::AnyCaller);\n\tstatic Reflection::BoundFuncDesc<Lighting, void(double), 1> prop_SetMinutesAfterMidnight(&Lighting::setMinutesAfterMidnight, \"SetMinutesAfterMidnight\", \"minutes\", Reflection::FunctionDescriptor::AnyCaller);\n\n\tLighting::Lighting()\n\t\t: Base(),\n",
+   "\tstatic Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetSunPosition(&Lighting::getSunPosition, \"GetSunDirection\", Reflection::FunctionDescriptor::AnyCaller);\n\tstatic Reflection::BoundFuncDesc<Lighting, double(void), 0> prop_GetMinutesAfterMidnight(&Lighting::getMinutesAfterMidnight, \"GetMinutesAfterMidnight\", Reflection::FunctionDescriptor::AnyCaller);\n\tstatic Reflection::BoundFuncDesc<Lighting, void(double), 1> prop_SetMinutesAfterMidnight(&Lighting::setMinutesAfterMidnight, \"SetMinutesAfterMidnight\", \"minutes\", Reflection::FunctionDescriptor::AnyCaller);\n\tstatic Reflection::PropDescriptor<Lighting, float> prop_Brightness(\"Brightness\", \"Appearance\", &Lighting::getBrightness, &Lighting::setBrightness, Reflection::PropertyDescriptor::STANDARD);\n\tstatic Reflection::PropDescriptor<Lighting, G3D::Color3> prop_ColorShift_Top(\"ColorShift_Top\", \"Appearance\", &Lighting::getColorShift_Top, &Lighting::setColorShift_Top, Reflection::PropertyDescriptor::STANDARD);\n\tstatic Reflection::PropDescriptor<Lighting, G3D::Color3> prop_ColorShift_Bottom(\"ColorShift_Bottom\", \"Appearance\", &Lighting::getColorShift_Bottom, &Lighting::setColorShift_Bottom, Reflection::PropertyDescriptor::STANDARD);\n\tstatic Reflection::PropDescriptor<Lighting, G3D::Color3> prop_Ambient(\"Ambient\", \"Appearance\", &Lighting::getAmbient, &Lighting::setAmbient, Reflection::PropertyDescriptor::STANDARD);\n\n\tLighting::Lighting()\n\t\t: Base(),\n"
   ]
  ],
  "App/tool/RunDragger.cpp": [
@@ -1691,6 +1791,10 @@
   [
    "IPipelined::removeFromKernel()\n\t{\n\t\tRBXASSERT(currentStage);\n\t\tRBXASSERT(currentStage->getStageType() == IStage::KERNEL_STAGE);\n\n\t\tthis->removeFromStage(currentStage);\n\t}",
    "IPipelined::removeFromKernel()\n\t{\n\tthis->removeFromStage(currentStage);\n}"
+  ],
+  [
+   "{\n\tIStage* IPipelined::getStage(IStage::StageType stageType) const\n\t{\n\t\tRBXASSERT(currentStage);\n\n\t\tIStage* stage = currentStage;\n\t\twhile (stage->getStageType() != stageType)\n\t\t{\n",
+   "{\n\tIStage* IPipelined::getStage(IStage::StageType stageType) const\n\t{\n\t\tIStage* stage = currentStage;\n\t\twhile (stage->getStageType() != stageType)\n\t\t{\n"
   ]
  ],
  "App/v8datamodel/UserController.cpp": [
@@ -1907,12 +2011,28 @@
   [
    "\t\tbool allowTeamChangeOnTouch;\n",
    "\t\tbool allowTeamChangeOnTouch;\n\t\tint forcefieldDuration;\n"
+  ],
+  [
+   "\t\tSpawnerService();\n\t\tvirtual ~SpawnerService();\n\t\tG3D::Vector3 FindSpawnPositionForPlayer(Network::Player* p);\n\t\tvoid RegisterSpawner(SpawnLocation* spawner);\n\t\tvoid UnregisterSpawner(SpawnLocation* spawner);\n\t};\n}\n",
+   "\t\tSpawnerService();\n\t\tvirtual ~SpawnerService();\n\t\tG3D::Vector3 FindSpawnPositionForPlayer(Network::Player* p);\n\t\tvoid RegisterSpawner(SpawnLocation* spawner) { spawners.push_back(spawner); }\n\t\tvoid UnregisterSpawner(SpawnLocation* spawner) { spawners.remove(spawner); }\n\t};\n}\n"
   ]
  ],
  "App/v8datamodel/SpawnLocation.cpp": [
   [
    "SpawnLocation::SpawnLocation()\n\t\t:",
    "SpawnLocation::SpawnLocation()\n\t\t:\n\t\t  forcefieldDuration(10),"
+  ],
+  [
+   "\t}\n\n\tSpawnerService::~SpawnerService() {}\n\n\tvoid SpawnerService::RegisterSpawner(SpawnLocation* spawner)\n\t{\n\t\tspawners.push_back(spawner);\n\t}\n\n\tvoid SpawnerService::UnregisterSpawner(SpawnLocation* spawner)\n\t{\n\t\tspawners.remove(spawner);\n\t}\n\n\tG3D::Vector3 SpawnerService::FindSpawnPositionForPlayer(Network::Player* p)\n\t{\n",
+   "\t}\n\n\tSpawnerService::~SpawnerService() {}\n\n\tG3D::Vector3 SpawnerService::FindSpawnPositionForPlayer(Network::Player* p)\n\t{\n"
+  ],
+  [
+   "\t\t{\n\t\t\tspawnerTouched.disconnect();\n\n\t\t\tSpawnerService* spawnerService = ServiceProvider::create<SpawnerService>(oldProvider);\n\t\t\tRBXASSERT(spawnerService != NULL);\n\n\t\t\tspawnerService->UnregisterSpawner(this);\n\t\t}\n",
+   "\t\t{\n\t\t\tspawnerTouched.disconnect();\n\n\t\t\tSpawnerService* spawnerService = ServiceProvider::find<SpawnerService>(oldProvider);\n\n\t\t\tspawnerService->UnregisterSpawner(this);\n\t\t}\n"
+  ],
+  [
+   "\n\tvoid SpawnLocation::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tInstance::onServiceProvider(oldProvider, newProvider);\n\t\t\n\t\tif (!oldProvider)\n\t\t{\n\t\t\tspawnerTouched = PartInstance::event_Touched.connect(this, boost::bind(&SpawnLocation::onEvent_spawnerTouched, this, _1));\n\n\t\t\tSpawnerService* spawnerService = ServiceProvider::create<SpawnerService>(newProvider);\n\t\t\tRBXASSERT(spawnerService != NULL);\n\n\t\t\tspawnerService->RegisterSpawner(this);\n\t\t}\n",
+   "\n\tvoid SpawnLocation::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (!oldProvider)\n\t\t{\n\t\t\tspawnerTouched = PartInstance::event_Touched.connect(this, boost::bind(&SpawnLocation::onEvent_spawnerTouched, this, _1), 10);\n\n\t\t\tSpawnerService* spawnerService = ServiceProvider::create<SpawnerService>(newProvider);\n\n\t\t\tspawnerService->RegisterSpawner(this);\n\t\t}\n"
   ]
  ],
  "App/include/util/Debug.h": [
@@ -2187,6 +2307,22 @@
   [
    "\t\tstatic G3D::Matrix3 tiltZ(0, 1, 0, -1, 0, 0, 0, 0, 1);\n\t\treturn tiltZ;\n\t}",
    "\t\tstatic G3D::Matrix3 tiltZ(0, 1, 0, -1, 0, 0, 0, 0, 1);\n\t\treturn tiltZ;\n\t}\n\n\tconst G3D::Matrix3& Math::matrixTiltNegativeZ()\n\t{\n\t\tstatic G3D::Matrix3 tiltNegativeZ(0, -1, 0, 1, 0, 0, 0, 0, 1);\n\t\treturn tiltNegativeZ;\n\t}"
+  ],
+  [
+   "\t\tG3D::Line myLine = G3D::Line::fromPointAndDirection(ray.origin, ray.direction);\n\t\thit = myLine.intersection(plane);\n\t\treturn true;\n\t}",
+   "\t\tG3D::Line myLine = G3D::Line::fromPointAndDirection(ray.origin, ray.direction);\n\t\thit = myLine.intersection(plane);\n\t\treturn true;\n\t}\n\n\tG3D::Vector3 Math::closestPointOnRay(const G3D::Ray& pointOnRay, const G3D::Ray& otherRay)\n\t{\n\t\tG3D::Vector3 pa = pointOnRay.origin;\n\t\tG3D::Vector3 pPlane = otherRay.origin;\n\t\tG3D::Vector3 ua = pointOnRay.direction;\n\t\tG3D::Vector3 ub = otherRay.direction;\n\t\tG3D::Vector3 p = pPlane - pa;\n\t\tfloat uaub = ua.dot(ub);\n\t\tfloat q1 = ua.dot(p);\n\t\tfloat q2 = -ub.dot(p);\n\t\tfloat d = 1 - uaub * uaub;\n\t\tif (d > 1e-5)\n\t\t{\n\t\t\tfloat alpha = (q1 + uaub * q2) / d;\n\t\t\treturn pa + alpha * ua;\n\t\t}\n\t\telse\n\t\t{\n\t\t\treturn pa;\n\t\t}\n\t}\n\n\tfloat Math::computeLaunchAngle(float speed, float distance, float height, float gravity)\n\t{\n\t\tdouble g = fabs(gravity);\n\t\tdouble disc = speed * speed * speed * speed\n\t\t\t- (distance * distance * g + 2.0 * (speed * speed) * height) * g;\n\n\t\tif (disc <= 0.0)\n\t\t\treturn Math::pi() / 4;\n\n\t\tdouble root = sqrt(disc);\n\t\tdouble v2 = speed * speed;\n\t\tfloat upper = (float)atan((root + v2) / (distance * g));\n\t\tfloat lower = (float)atan((v2 - root) / (g * distance));\n\t\treturn std::min(upper, lower);\n\t}"
+  ],
+  [
+   "\t\t// - 0.00001f is necessary to get the same value as the compiled binary\n\t\tstatic float ssr = (Math::pi() - 0.00001f) / 128;\n\t\treturn ssr;\n\t}\n\n\tG3D::uint8 rotationToByteBase(float angle)\n\t{\n\t\tRBXASSERT(angle <= Math::pi());\n\t\tRBXASSERT(angle >= -Math::pi());\n\n\t\tfloat result = (angle + Math::pi()) / segSizeRadians();\n\t\tint resInt = G3D::iRound(result);\n\t\t\n\t\tRBXASSERT(resInt >= -1);\n\t\tRBXASSERT(resInt <= 256);\n\n\t\tresInt = std::max(0, resInt);\n\t\tresInt = std::min(255, resInt);\n\n\t\tG3D::uint8 byte = (G3D::uint8)resInt;\n\n\t\tRBXASSERT(byte <= 255);\n\n\t\treturn byte;\n\t}",
+   "\t\t// 2008 binary stores twoPi()/256 (0x3cc90fda)\n\t\tstatic float ssr = Math::twoPi() / 256;\n\t\treturn ssr;\n\t}\n\n\tG3D::uint8 rotationToByteBase(float angle)\n\t{\n\t\tfloat result = (angle + Math::pi()) / segSizeRadians();\n\t\tint resInt = G3D::iRound(result);\n\n\t\tresInt = std::max(0, resInt);\n\t\tresInt = std::min(255, resInt);\n\n\t\treturn (G3D::uint8)resInt;\n\t}"
+  ],
+  [
+   "\tfloat Math::getHeading(const G3D::Vector3& look)\n\t{\n\t\treturn atan2(-look.x, -look.z);\n\t}\n\n\tfloat Math::getElevation(const G3D::Vector3& look)\n",
+   "\tfloat Math::getHeading(const G3D::Vector3& look)\n\t{\n\t\treturn atan2(-look.x, -look.z);\n\t}\n\n\tint Math::radiansToQuadrant(float radians)\n\t{\n\t\treturn G3D::iFloor((radians + (2 * pi() + pi() / 4)) * 4 / G3D::twoPi()) % 4;\n\t}\n\n\tint Math::toYAxisQuadrant(const G3D::CoordinateFrame& c)\n\t{\n\t\treturn Math::radiansToQuadrant(Math::getHeading(c.lookVector()));\n\t}\n\n\tfloat Math::getElevation(const G3D::Vector3& look)\n"
+  ],
+  [
+   "\t\treturn tiltNegativeZ;\n\t}\n\n\tbool Math::isDenormal(float f)\n\t{\n\t\treturn (LODWORD(f) & 0x7F800000) == 0 && (LODWORD(f) & 0x7FFFFF) != 0;\n\t}\n\n\tbool Math::isNanInfDenorm(float f)\n\t{\n\t\treturn f == std::numeric_limits<float>::infinity()\n\t\t\t|| f == -std::numeric_limits<float>::infinity()\n\t\t\t|| f == std::numeric_limits<float>::quiet_NaN()\n\t\t\t|| f == std::numeric_limits<float>::signaling_NaN();\n\t}\n\n\tbool Math::isNanInfDenormVector3(const G3D::Vector3& v)\n",
+   "\t\treturn tiltNegativeZ;\n\t}\n\n\tconst G3D::Matrix3 Math::matrixTiltQuadrant(int quadrant)\n\t{\n\t\tswitch (quadrant)\n\t\t{\n\t\tcase 0:\n\t\t\treturn G3D::Matrix3(1, 0, 0, 0, 0, -1, 0, 1, 0);\n\t\tcase 1:\n\t\t\treturn Math::matrixTiltZ();\n\t\tcase 2:\n\t\t\treturn G3D::Matrix3(1, 0, 0, 0, 0, 1, 0, -1, 0);\n\t\tcase 3:\n\t\t\treturn Math::matrixTiltNegativeZ();\n\t\tdefault:\n\t\t\treturn G3D::Matrix3::identity();\n\t\t}\n\t}\n\n\tbool Math::isDenormal(float f)\n\t{\n\t\treturn (LODWORD(f) & 0x7F800000) == 0 && (LODWORD(f) & 0x7FFFFF) != 0;\n\t}\n\n\tbool Math::isNanInf(float f)\n\t{\n\t\treturn f == std::numeric_limits<float>::infinity()\n\t\t\t|| f == -std::numeric_limits<float>::infinity()\n\t\t\t|| f == std::numeric_limits<float>::quiet_NaN()\n\t\t\t|| f == std::numeric_limits<float>::signaling_NaN();\n\t}\n\n\tbool Math::isNanInfVector3(const G3D::Vector3& v)\n\t{\n\t\treturn Math::isNanInf(v.x)\n\t\t\t|| Math::isNanInf(v.y)\n\t\t\t|| Math::isNanInf(v.z);\n\t}\n\n\tbool Math::isNanInfDenorm(float f)\n\t{\n\t\treturn Math::isNanInf(f) || Math::isDenormal(f);\n\t}\n\n\tbool Math::isNanInfDenormVector3(const G3D::Vector3& v)\n"
   ]
  ],
  "App/v8datamodel/Teams.cpp": [
@@ -2511,6 +2647,10 @@
   [
    "\t\t\tint size = std::min<int>(3, (int)scopeName.size());\n\t\t\tscopeName = scopeName.substr(size);",
    "\t\t\tscopeName = scopeName.substr(std::min<size_t>(3, scopeName.size()), std::min<int>(scopeLength, 32));"
+  ],
+  [
+   "\t\tresult.erase(17, 1);\n\t\tresult.erase(12, 1);\n\t\tresult.erase(3, 1);\n\t}\n\n\tstd::string Guid::Data::readableString(int scopeLength) const\n",
+   "\t\tresult.erase(17, 1);\n\t\tresult.erase(12, 1);\n\t\tresult.erase(3, 1);\n\t}\n\n\tint Guid::compare(const Guid* a, const Guid* b)\n\t{\n\t\tName* scopeA = const_cast<Name*>(a ? a->data.scope : NULL);\n\t\tName* scopeB = const_cast<Name*>(b ? b->data.scope : NULL);\n\n\t\tswitch (Name::compare(*scopeA, *scopeB))\n\t\t{\n\t\tcase -1:\n\t\t\treturn -1;\n\t\tcase 0:\n\t\t\t{\n\t\t\t\tint indexA = a ? a->data.index : 0;\n\t\t\t\tint indexB = b ? b->data.index : 0;\n\t\t\t\tif (indexA > indexB)\n\t\t\t\t\treturn 1;\n\t\t\t\treturn indexA < indexB ? -1 : 0;\n\t\t\t}\n\t\tcase 1:\n\t\t\treturn 1;\n\t\tdefault:\n\t\t\treturn 0;\n\t\t}\n\t}\n\n\tstd::string Guid::Data::readableString(int scopeLength) const\n"
   ]
  ],
  "App/v8world/RotateJoint.cpp": [
@@ -2529,6 +2669,10 @@
   [
    "RotateJoint::removeFromKernel()\n\t{\n\t\tRBXASSERT(getKernel());\n\t\trotateConnector = NULL;\n\t\tMultiJoint::removeFromKernel();\n\t}",
    "RotateJoint::removeFromKernel()\n\t{\n\t\t                      ;\n\t\trotateConnector = NULL;\n\t\tMultiJoint::removeFromKernel();\n\t}"
+  ],
+  [
+   "\t\tG3D::Vector3 n0 = Math::getWorldNormal(nId0, c0);\n\t\tG3D::Vector3 n1 = Math::getWorldNormal(nId1, c1);\n\n\t\tG3D::Vector3 holePtWorld = -n1;\n\t\tif (Math::angle(n0, holePtWorld) > 0.025f)\n\t\t\treturn NULL;\n\n\t\tFace f0 = p0->getFaceInWorld(nId0);\n\t\tFace f1 = p1->getFaceInWorld(nId1);\n\n\t\tif (Face::hasOverlap(f0, f1, 0.35f) && Face::overlapWithinPlanes(f0, f1, 0.05f))\n\t\t{\n\t\t\tG3D::Vector3 center0 = f0.center();\n\t\t\tG3D::Vector3 center1 = f1.center();\n\n\t\t\tbool inExtrusion0 = f0.fuzzyContainsInExtrusion(center0, 0.05f);\n\t\t\tbool inExtrusion1 = f1.fuzzyContainsInExtrusion(center1, 0.05f);\n\t\t\tbool cond0 = s0 >= ROTATE && inExtrusion0;\n\t\t\tbool cond1 = s1 >= ROTATE && inExtrusion1;\n\n\t\t\tif (!cond0 && !cond1)\n\t\t\t\treturn NULL;\n\n\t\t\tif (!cond0 || (cond1 && p0->getGridSize().sum() > p1->getGridSize().sum()))\n\t\t\t{\n\t\t\t\tstd::swap(nId0, nId1);\n\t\t\t\tstd::swap(s0, s1);\n\t\t\t\tstd::swap(center0, center1);\n\t\t\t\tstd::swap(n0, n1);\n\t\t\t\tstd::swap(p0, p1);\n\t\t\t}\n\n\t\t\tG3D::CoordinateFrame axleInP0 = p0->getFaceCoordInObject(nId0);\n\t\t\tG3D::Vector3 axlePtWorld = p0->getCoordinateFrame().pointToWorldSpace(axleInP0.translation);\n\t\t\tG3D::Vector3 axlePtInP1 = p1->getCoordinateFrame().pointToObjectSpace(axlePtWorld);\n\t\t\t\n\t\t\tNormalId oppNId1 = normalIdOpposite(nId1);\n\t\t\tG3D::Vector3 byAtLeast = Math::toGrid(axlePtInP1, 0.1f);\n\n\t\t\tG3D::CoordinateFrame holeInP1(normalIdToMatrix3(oppNId1), byAtLeast);\n\t\t\tG3D::Vector3 holePtWorld = p1->getCoordinateFrame().pointToWorldSpace(holeInP1.translation);\n\t\t\tif (!Tolerance::pointsUnaligned(axlePtWorld, holePtWorld))\n\t\t\t{\n\t\t\t\tfor (int i = 0; i < 2; i++)\n\t\t\t\t{\n\t\t\t\t\tfloat multiplier = i == 0 ? 1.0f : -1.0f;\n\n\t\t\t\t\tG3D::Vector3 ref0 = axlePtWorld - n0 * multiplier;\n\t\t\t\t\tG3D::Vector3 ref1 = holePtWorld + n1 * multiplier;\n\t\t\t\t\tif (Tolerance::pointsUnaligned(ref0, ref1))\n\t\t\t\t\t\treturn NULL;\n\t\t\t\t}\n\n\t\t\t\treturn surfaceTypeToJoint(s0, p0, p1, axleInP0, holeInP1);\n\t\t\t}\n\t\t}\n\n\t\treturn NULL;\n\t}\n\n\tfloat RotateJoint::getTorqueArmLength()\n",
+   "\t\tG3D::Vector3 n0 = Math::getWorldNormal(nId0, c0);\n\t\tG3D::Vector3 n1 = Math::getWorldNormal(nId1, c1);\n\n\t\tif (Math::angle(n0, -n1) > 0.025f)\n\t\t\treturn NULL;\n\n\t\tFace f0 = p0->getFaceInWorld(nId0);\n\t\tFace f1 = p1->getFaceInWorld(nId1);\n\n\t\tif (!Face::hasOverlap(f0, f1, 0.35f))\n\t\t\treturn NULL;\n\n\t\tif (!Face::overlapWithinPlanes(f0, f1, 0.05f))\n\t\t\treturn NULL;\n\n\t\tG3D::Vector3 center0 = f0.center();\n\t\tG3D::Vector3 center1 = f1.center();\n\n\t\tbool inExtrusion0 = f1.fuzzyContainsInExtrusion(center0, 0.05f);\n\t\tbool inExtrusion1 = f0.fuzzyContainsInExtrusion(center1, 0.05f);\n\t\tbool cond0 = s0 >= ROTATE && inExtrusion0;\n\t\tbool cond1 = s1 >= ROTATE && inExtrusion1;\n\n\t\tif (!cond0 && !cond1)\n\t\t\treturn NULL;\n\n\t\tif (!cond0 || (cond1 && p1->getGridSize().sum() > p0->getGridSize().sum()))\n\t\t{\n\t\t\ts0 = s1;\n\t\t\tstd::swap(p0, p1);\n\t\t\tstd::swap(nId0, nId1);\n\t\t\tstd::swap(center0, center1);\n\t\t\tstd::swap(n0, n1);\n\t\t}\n\n\t\tG3D::CoordinateFrame axleInP0 = p0->getFaceCoordInObject(nId0);\n\t\tG3D::Vector3 axlePtWorld = p0->getCoordinateFrame().pointToWorldSpace(axleInP0.translation);\n\t\tG3D::Vector3 axlePtInP1 = p1->getCoordinateFrame().pointToObjectSpace(axlePtWorld);\n\n\t\tNormalId oppNId1 = normalIdOpposite(nId1);\n\n\t\tG3D::CoordinateFrame holeInP1(normalIdToMatrix3(oppNId1), Math::toGrid(axlePtInP1, 0.1f));\n\t\tG3D::Vector3 holePtWorld = p1->getCoordinateFrame().pointToWorldSpace(holeInP1.translation);\n\t\tif (Tolerance::pointsUnaligned(axlePtWorld, holePtWorld))\n\t\t\treturn NULL;\n\n\t\tfor (int i = 0; i < 2; i++)\n\t\t{\n\t\t\tfloat multiplier = i == 0 ? 1.0f : -1.0f;\n\n\t\t\tG3D::Vector3 ref0 = axlePtWorld - n0 * multiplier;\n\t\t\tG3D::Vector3 ref1 = holePtWorld + n1 * multiplier;\n\t\t\tif (Tolerance::pointsUnaligned(ref0, ref1))\n\t\t\t\treturn NULL;\n\t\t}\n\n\t\treturn surfaceTypeToJoint(s0, p0, p1, axleInP0, holeInP1);\n\t}\n\n\tfloat RotateJoint::getTorqueArmLength()\n"
   ]
  ],
  "App/v8datamodel/custommesh.cpp": [
@@ -2699,6 +2843,10 @@
   [
    "\t\t\t\t\tHumanoid::renderWaypoint(adorn, waypoint);\n\t\t\t}\n\t\t}\n\t}\n}",
    "\t\t\t\t\tHumanoid::renderWaypoint(adorn, waypoint);\n\t\t\t}\n\t\t}\n\t}\n\n\tconst char* sNullTool = \"NullTool\";\n\n\tNullTool::NullTool(Workspace* workspace)\n\t\t: Base(workspace)\n\t{\n\t}\n\n\tNullTool::~NullTool() {}\n\n\tconst std::string NullTool::getCursorName() const\n\t{\n\t\treturn \"ArrowFarCursor\";\n\t}\n\n\tMouseCommand* NullTool::isSticky() const\n\t{\n\t\treturn new NullTool(workspace);\n\t}\n\n\tMouseCommand* NullTool::onMouseUp(const UIEvent& uiEvent)\n\t{\n\t\treleaseCapture();\n\t\treturn this;\n\t}\n}"
+  ],
+  [
+   "\t}\n\n\tNewNullTool::~NewNullTool() {}\n\n\tvoid NewNullTool::onMouseIdle(const UIEvent& uiEvent)\n\t{\n",
+   "\t}\n\n\tNewNullTool::~NewNullTool() {}\n\n\tbool NewNullTool::localHeadHidden() const\n\t{\n\t\tif (ModelInstance* character = Network::Players::findLocalCharacter(workspace))\n\t\t{\n\t\t\tif (Humanoid* humanoid = Humanoid::modelIsCharacter(character))\n\t\t\t{\n\t\t\t\tPartInstance* head = humanoid->getHead();\n\t\t\t\tif (head && head->getAlphaModifier() == 0.0f)\n\t\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t\treturn false;\n\t}\n\n\tvoid NewNullTool::onMouseIdle(const UIEvent& uiEvent)\n\t{\n"
   ]
  ],
  "App/v8datamodel/Filters.cpp": [
@@ -2833,6 +2981,14 @@
   [
    "@replace",
    "../../../rebuild/2008-06/native-world/App/v8world/Clump.cpp"
+  ],
+  [
+   "// FUNCTION: WEBSERVICE 0x10117df0\nbool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType)\n{\n\tif (parentCandidate == NULL || child == NULL) {\n\t\treturn false;\n\t}\n\n",
+   "// FUNCTION: WEBSERVICE 0x10117df0\nbool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType)\n{\n\tif (parentCandidate == NULL || child == NULL || !joint->getActive()) {\n\t\treturn false;\n\t}\n\n"
+  ],
+  [
+   "// FUNCTION: WEBSERVICE 0x10117f60\nPrimitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* sibling, SearchType searchType)\n{\n\tbool found = false;\n\n\tfor (Joint* joint = parent->getFirstJoint(); joint != NULL; joint = parent->getNextJoint(joint)) {\n\t\tPrimitive* other = parent == joint->getPrimitive(0) ? joint->getPrimitive(1) : joint->getPrimitive(0);\n\n\t\tif (isParent(parent, other, joint, searchType)) {\n\t\t\tif (found) {\n\t\t\t\treturn other;\n\t\t\t}\n\n\t\t\tif (other == sibling) {\n\t\t\t\tfound = true;\n\t\t\t}\n\t\t}\n\t}\n",
+   "// FUNCTION: WEBSERVICE 0x10117f60\nPrimitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* sibling, SearchType searchType)\n{\n\tJoint* siblingJoint = NULL;\n\n\tfor (Joint* joint = parent->getFirstJoint(); joint != NULL; joint = parent->getNextJoint(joint)) {\n\t\tPrimitive* other = parent == joint->getPrimitive(0) ? joint->getPrimitive(1) : joint->getPrimitive(0);\n\n\t\tif (isParent(parent, other, joint, searchType)) {\n\t\t\tif (other == sibling) {\n\t\t\t\tsiblingJoint = joint;\n\t\t\t}\n\t\t\telse if (siblingJoint != NULL) {\n\t\t\t\treturn other;\n\t\t\t}\n\t\t}\n\t}\n"
   ]
  ],
  "App/v8world/AssemblyStage.cpp": [
@@ -2857,6 +3013,84 @@
   [
    "@replace",
    "../../../rebuild/2008-06/native-world/App/v8world/WorldHelpers.cpp"
+  ]
+ ],
+ "Rendering/AppDraw/AdornG3D.cpp": [
+  [
+   "#include \"AppDraw/AdornG3D.h\"",
+   "// 2008 rbxgs-appdraw was compiled with /fp:fast\n#pragma float_control(precise, off)\n#include \"AppDraw/AdornG3D.h\""
+  ]
+ ],
+ "App/v8world/GlueJoint.cpp": [
+  [
+   "\n\t\tfor (int i = 0; i < 4; ++i)\n\t\t{\n\t\t\tG3D::Vector3 p0World = b0->getPV().position.pointToWorldSpace(overlapInP0[i]);\n\t\t\tG3D::Vector3 p1World = b1->getPV().position.pointToWorldSpace(overlapInP1[i]);\n\n\t\t\tPoint* p0 = getKernel()->newPoint(b0, p0World);\n",
+   "\n\t\tfor (int i = 0; i < 4; ++i)\n\t\t{\n\t\t\tG3D::Vector3 p0World = gluePointWorld(b0->getPV().position, overlapInP0[i]);\n\t\t\tG3D::Vector3 p1World = b1->getPV().position.pointToWorldSpace(overlapInP1[i]);\n\n\t\t\tPoint* p0 = getKernel()->newPoint(b0, p0World);\n"
+  ],
+  [
+   "\t\treturn Units::kmsForceToRbx(Constants::getKmsMaxJointForce(size.x, size.y));\n\t}\n\n\tvoid GlueJoint::putInKernel(Kernel* _kernel)\n\t{\n\t\tMultiJoint::putInKernel(_kernel);\n",
+   "\t\treturn Units::kmsForceToRbx(Constants::getKmsMaxJointForce(size.x, size.y));\n\t}\n\n\t__forceinline G3D::Vector3 gluePointWorld(const G3D::CoordinateFrame& f, const G3D::Vector3& v)\n\t{\n\t\treturn G3D::Vector3(f.rotation[0][0]*v[0] + f.rotation[0][1]*v[1] + f.rotation[0][2]*v[2] + f.translation[0],\n\t\t\tf.rotation[1][0]*v[0] + f.rotation[1][1]*v[1] + f.rotation[1][2]*v[2] + f.translation[1],\n\t\t\tf.rotation[2][0]*v[0] + f.rotation[2][1]*v[1] + f.rotation[2][2]*v[2] + f.translation[2]);\n\t}\n\n\tvoid GlueJoint::putInKernel(Kernel* _kernel)\n\t{\n\t\tMultiJoint::putInKernel(_kernel);\n"
+  ],
+  [
+   "#include \"v8world/GlueJoint.h\"\n#include \"v8world/Primitive.h\"\n#include \"v8kernel/Kernel.h\"\n",
+   "#pragma float_control(precise, off)\n#include \"v8world/GlueJoint.h\"\n#include \"v8world/Primitive.h\"\n#include \"v8kernel/Kernel.h\"\n"
+  ]
+ ],
+ "App/include/tool/NullTool.h": [
+  [
+   "\t\tG3D::Vector3 waypoint;\n\n\tprivate:\n\t\tvirtual void onMouseIdle(const UIEvent& uiEvent);\n\t\tvirtual void onMouseHover(const UIEvent& uiEvent);\n\t\tvirtual MouseCommand* onMouseDown(const UIEvent& uiEvent);\n",
+   "\t\tG3D::Vector3 waypoint;\n\n\tprivate:\n\t\tbool localHeadHidden() const;\n\t\tvirtual void onMouseIdle(const UIEvent& uiEvent);\n\t\tvirtual void onMouseHover(const UIEvent& uiEvent);\n\t\tvirtual MouseCommand* onMouseDown(const UIEvent& uiEvent);\n"
+  ]
+ ],
+ "App/util/Name.cpp": [
+  [
+   "\n\tconst Name& Name::getNullName()\n\t{\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\t\tstatic const Name& nullName = declare(\"\", 0);\n\t\treturn nullName;\n\t}\n\n\tconst Name& Name::declare(const char* sName, int dictionaryIndex)\n\t{\n\t\tif (!sName)\n\t\t{\n\t\t\tRBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);\n\t\t\treturn getNullName();\n\t\t}\n\n",
+   "\n\tconst Name& Name::getNullName()\n\t{\n\t\tboost::call_once(initNull, nullFlag);\n\t\treturn *nullName;\n\t}\n\n\tconst Name& Name::declare(const char* sName, int dictionaryIndex)\n\t{\n\t\tif (!sName)\n\t\t{\n\t\t\treturn getNullName();\n\t\t}\n\n"
+  ],
+  [
+   "void initMoo()\n{\n\tmoo2();\n}\n\nnamespace RBX\n",
+   "void initMoo()\n{\n\tmoo2();\n}\n\nstatic const RBX::Name* nullName;\nstatic boost::once_flag nullFlag = BOOST_ONCE_INIT;\n\nstatic void initNull()\n{\n\tnullName = &RBX::Name::declare(\"\", 0);\n}\n\nnamespace RBX\n"
+  ],
+  [
+   "\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(sName);\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\tRBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n",
+   "\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(std::string(sName));\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\titer->second->dictionaryIndex = dictionaryIndex;\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n"
+  ]
+ ],
+ "App/include/util/Math.h": [
+  [
+   "\t\t\t\treturn 0.0f;\n\t\t\t}\n\t\t\tstatic bool isDenormal(float f);\n\t\t\tstatic bool isNanInfDenorm(float f);\n\t\t\tstatic bool isNanInfDenormVector3(const G3D::Vector3& v);\n\t\t\tstatic bool isNanInfDenormMatrix3(const G3D::Matrix3&);\n",
+   "\t\t\t\treturn 0.0f;\n\t\t\t}\n\t\t\tstatic bool isDenormal(float f);\n\t\t\tstatic bool isNanInf(float f);\n\t\t\tstatic bool isNanInfVector3(const G3D::Vector3& v);\n\t\t\tstatic bool isNanInfDenorm(float f);\n\t\t\tstatic bool isNanInfDenormVector3(const G3D::Vector3& v);\n\t\t\tstatic bool isNanInfDenormMatrix3(const G3D::Matrix3&);\n"
+  ]
+ ],
+ "App/util/FileSystem.cpp": [
+  [
+   "\t\treturn S_OK;\n\t}\n}\n",
+   "\t\treturn S_OK;\n\t}\n}\n\nnamespace RBX {\nVistaAPIs::VistaAPIs() : getKnownFolderPath(NULL) {\n gShell32DLLInst = LoadLibraryA(\"Shell32.dll\");\n if(gShell32DLLInst) getKnownFolderPath = (GetKnownFolderPathPtr)GetProcAddress(gShell32DLLInst,\"SHGetKnownFolderPath\");\n}\nHRESULT VistaAPIs::SHGetKnownFolderPath(REFKNOWNFOLDERID folder, DWORD flags, HANDLE token, PWSTR* path) {\n if(getKnownFolderPath==NULL) return E_NOTIMPL;\n return getKnownFolderPath(folder,flags,token,path);\n}\nstd::string FileSystem::getCacheDirectory(bool create) {\n VistaAPIs apis;\n UCHAR integrity;\n apis.GetIntegrity(&integrity);\n if(integrity == 1) {\n  GUID internetCache;\n  CLSIDFromString(L\"{352481E8-33BE-4251-BA85-6007CAEDCF9D\",&internetCache);\n  PWSTR knownPath = NULL;\n  if(apis.SHGetKnownFolderPath(internetCache,0x8000,NULL,&knownPath)!=E_NOTIMPL) {\n   ATL::CStringA path(knownPath);\n   CoTaskMemFree(knownPath);\n   path += \"\\\\Roblox\\\\\";\n   if(create && !CreateDirectoryA(path,NULL) && GetLastError()!=ERROR_ALREADY_EXISTS) return \"\";\n   ATL::CPath cache(path);\n   cache.AddBackslash();\n   return (LPCSTR)cache;\n  }\n }\n char path[MAX_PATH];\n HRESULT result=SHGetFolderPathAndSubDirA(NULL,CSIDL_COMMON_APPDATA | (create ? CSIDL_FLAG_CREATE : 0),NULL,SHGFP_TYPE_CURRENT,\"Roblox\\\\Cache\",path);\n if(result==S_OK) return path;\n else return \"\";\n}\n}\n\nnamespace RBX {\nstd::string FileSystem::getUserAppDataDirectory(bool create, const char* subDirectory) {\n VistaAPIs apis;\n UCHAR integrity;\n apis.GetIntegrity(&integrity);\n if(integrity>0) {\n  GUID folder;\n  if(integrity==1) CLSIDFromString(L\"{A520A1A4-1780-4FF6-BD18-167343C5AF16}\",&folder);\n  else CLSIDFromString(L\"{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}\",&folder);\n  PWSTR knownPath=NULL;\n  if(apis.SHGetKnownFolderPath(folder,create?0x8000:0,NULL,&knownPath)!=E_NOTIMPL) {\n   ATL::CStringA path(knownPath);\n   CoTaskMemFree(knownPath);\n   path += \"\\\\Roblox\\\\\";\n   if(create) { if(!CreateDirectoryA(path,NULL)) { if(GetLastError()!=ERROR_ALREADY_EXISTS) return \"\"; } }\n   if(subDirectory) {\n    path += subDirectory;\n    if(create) { if(!CreateDirectoryA(path,NULL)) { if(GetLastError()!=ERROR_ALREADY_EXISTS) return \"\"; } }\n   }\n   ATL::CPath directory(path);\n   directory.AddBackslash();\n   return (LPCSTR)directory;\n  }\n }\n int flags=create?CSIDL_FLAG_CREATE:0;\n std::string subPath(\"Roblox\\\\\");\n if(subDirectory) subPath += subDirectory;\n ATL::CPath path;\n HRESULT result=SHGetFolderPathAndSubDirA(NULL,CSIDL_APPDATA|flags,NULL,SHGFP_TYPE_CURRENT,subPath.c_str(),path.m_strPath.GetBuffer(MAX_PATH));\n if(result!=S_OK) result=SHGetFolderPathAndSubDirA(NULL,CSIDL_COMMON_APPDATA|flags,NULL,SHGFP_TYPE_CURRENT,subPath.c_str(),path.m_strPath.GetBuffer(MAX_PATH));\n if(result==S_OK) {\n  path.m_strPath.ReleaseBuffer();\n  path.AddBackslash();\n  return (LPCSTR)path;\n }\n else return \"\";\n}\n}\n"
+  ],
+  [
+   "#include \"util/FileSystem.h\"\n\nnamespace RBX\n",
+   "#include <atlpath.h>\n#include \"util/FileSystem.h\"\n\nnamespace RBX\n"
+  ]
+ ],
+ "App/v8datamodel/Flag.cpp": [
+  [
+   "\t\t{\n\t\t\tif (PartInstance* handle = getHandle())\n\t\t\t{\n\t\t\t\tflagTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Flag::onEvent_flagTouched, this, _1));\n\t\t\t}\n\t\t}\n\t}\n",
+   "\t\t{\n\t\t\tif (PartInstance* handle = getHandle())\n\t\t\t{\n\t\t\t\tflagTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Flag::onEvent_flagTouched, this, _1), 10);\n\t\t\t}\n\t\t}\n\t}\n\n\tbool Flag::canBePickedUpByPlayer(Network::Player* p)\n\t{\n\t\tif (p->getNeutral())\n\t\t\treturn false;\n\n\t\tBrickColor current = teamColor;\n\t\tif (p->getTeamColor() != current)\n\t\t\treturn true;\n\t\telse\n\t\t\treturn false;\n\t}\n\n\tvoid Flag::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (!oldProvider)\n\t\t{\n\t\t\ttimer = ServiceProvider::create<TimerService>(newProvider);\n\t\t\ttimer->delay(boost::bind(&Flag::doUglyPeriodicCloneHack, shared_from(this)), 2.0f);\n\t\t}\n\n\t\tif (!newProvider)\n\t\t{\n\t\t\tflagTouched.disconnect();\n\t\t\tRunService* runService = ServiceProvider::create<RunService>(oldProvider);\n\n\t\t\tif (runService->getRunState() == RS_RUNNING)\n\t\t\t{\n\t\t\t\tif (Instance* evilC = evilClone.get())\n\t\t\t\t{\n\t\t\t\t\tFlag* flag = dynamic_cast<Flag*>(evilC);\n\t\t\t\t\tflag->getHandle();\n\n\t\t\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(this);\n\t\t\t\t\tif (!flagStandService->FindStandWithFlag(flag))\n\t\t\t\t\t{\n\t\t\t\t\t\tif (FlagStand* flagStand = flagStandService->FindClosestEmptyStandForFlag(flag))\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tflagStand->AffixFlag(flag);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Flag::onEvent_flagTouched(boost::shared_ptr<Instance> other)\n\t{\n\t\tInstance* parent = other->getParent();\n\n\t\tif (!Humanoid::modelIsCharacter(parent))\n\t\t\treturn;\n\n\t\tNetwork::Player* player = Network::Players::getPlayerFromCharacter(parent);\n\t\tif (!player)\n\t\t\treturn;\n\n\t\tif (player->getNeutral())\n\t\t\treturn;\n\n\t\tBrickColor current = teamColor;\n\t\tif (player->getTeamColor() != current)\n\t\t\treturn;\n\n\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(this);\n\t\tif (!flagStandService->FindStandWithFlag(this))\n\t\t{\n\t\t\tif (FlagStand* flagStand = flagStandService->FindClosestEmptyStandForFlag(this))\n\t\t\t{\n\t\t\t\tflagStand->AffixFlag(this);\n\t\t\t}\n\t\t}\n\t}\n"
+  ]
+ ],
+ "App/include/v8datamodel/FlagStand.h": [
+  [
+   "\t\tvirtual ~FlagStandService();\n\t\tFlagStand* FindClosestEmptyStandForFlag(Flag*);\n\t\tFlagStand* FindStandWithFlag(Flag* f);\n\t\tvoid RegisterFlagStand(FlagStand* s);\n\t\tvoid UnregisterFlagStand(FlagStand* s);\n\t};\n}\n",
+   "\t\tvirtual ~FlagStandService();\n\t\tFlagStand* FindClosestEmptyStandForFlag(Flag*);\n\t\tFlagStand* FindStandWithFlag(Flag* f);\n\t\tvoid RegisterFlagStand(FlagStand* s) { flagStands.push_back(s); }\n\t\tvoid UnregisterFlagStand(FlagStand* s) { flagStands.remove(s); }\n\t};\n}\n"
+  ]
+ ],
+ "App/v8datamodel/FlagStand.cpp": [
+  [
+   "\t\treturn NULL;\n\t}\n\n\tvoid FlagStandService::RegisterFlagStand(FlagStand* s)\n\t{\n\t\tflagStands.push_back(s);\n\t}\n\n\tvoid FlagStandService::UnregisterFlagStand(FlagStand* s)\n\t{\n\t\tflagStands.remove(s);\n\t}\n}\n",
+   "\t\treturn NULL;\n\t}\n\n}\n"
+  ],
+  [
+   "\n\tvoid FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tInstance::onServiceProvider(oldProvider, newProvider);\n\n\t\tif (!oldProvider)\n\t\t{\n\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);\n\t\t\tRBXASSERT(flagStandService);\n\n\t\t\tflagStandService->RegisterFlagStand(this);\n\n\t\t\tstandTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));\n\t\t}\n\n\t\tif (!newProvider)\n\t\t{\n\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);\n\t\t\tRBXASSERT(flagStandService);\n\n\t\t\tflagStandService->UnregisterFlagStand(this);\n\n",
+   "\n\tvoid FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (!oldProvider)\n\t\t{\n\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);\n\n\t\t\tflagStandService->RegisterFlagStand(this);\n\n\t\t\tstandTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1), 10);\n\t\t}\n\n\t\tif (!newProvider)\n\t\t{\n\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);\n\n\t\t\tflagStandService->UnregisterFlagStand(this);\n\n"
   ]
  ]
 }

@@ -1,0 +1,9 @@
+import sys,json,struct,hashlib
+from pathlib import Path
+import pefile
+root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
+out=root/'rebuild/2008-06/out/native-layouts/workspace-classnames-integrated';out.mkdir(parents=True,exist_ok=True);src=root/'rebuild/2008-06/native-classes/NativeWorkspaceClassNames.cpp';obj=out/'NativeWorkspaceClassNames.obj';code,log=rebuild.run(rebuild.toolchain(21022),'cl',['/nologo','/c','/O2','/GS-','/EHsc','/MD','/Fo'+str(obj),str(src)],out);assert code==0,log
+raw=obj.read_bytes();sections,_,defs,_=match._coff_data_index(raw);pe=pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe'));base=pe.OPTIONAL_HEADER.ImageBase;rows=[]
+for name,value,addr,fn in [('sWorkspace','Workspace',0x94b680,0x5a3b70),('sRootInstance','RootInstance',0x9495e4,0x591510),('sModel','Model',0x9481e8,0x585100),('sPVInstance','PVInstance',0x842860,0x585090)]:
+ sym='?'+name+'@RBX@@3PADA';o,i=defs[sym];s=sections[i];data=value.encode()+b'\0';assert raw[s[4]+o:s[4]+o+len(data)]==pe.get_data(addr-base,len(data))==data;body,_,_=match.target('2008-06','%08x'%fn);assert b'\x68'+struct.pack('<I',addr) in body;rows.append({'symbol':sym,'value':value,'original_string':hex(addr),'original_descriptor':hex(fn)})
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();result={'scope':'Candidate array symbols and original descriptor string references verified. Integrated native source; verify duplicate providers and ABI before linking. Link/runtime untested; check duplicate providers before promotion.','symbols':rows,'source_sha256':sha(src),'object_sha256':sha(obj),'recorder_sha256':sha(Path(__file__))};(root/'work/2008-06/shared-layouts/workspace-classnames-integrated.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS four data definitions and original descriptor refs')

@@ -199,6 +199,13 @@ namespace RBX
 				
 				return boost::signals::connection();
 			}
+			boost::signals::connection connect(SignalSource* source, const boost::slot<boost::function<CallbackSignature>>& slot, int group)
+			{
+				if (source)
+					return sig(*source).connect(group, slot);
+
+				return boost::signals::connection();
+			}
 			bool empty(const SignalSource* source)
 			{
 				TSignalInstance* instance = findSig(source);

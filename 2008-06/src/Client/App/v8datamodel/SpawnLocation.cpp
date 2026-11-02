@@ -26,14 +26,11 @@ namespace RBX
 
 	void SpawnLocation::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-		
 		if (!oldProvider)
 		{
-			spawnerTouched = PartInstance::event_Touched.connect(this, boost::bind(&SpawnLocation::onEvent_spawnerTouched, this, _1));
+			spawnerTouched = PartInstance::event_Touched.connect(this, boost::bind(&SpawnLocation::onEvent_spawnerTouched, this, _1), 10);
 
 			SpawnerService* spawnerService = ServiceProvider::create<SpawnerService>(newProvider);
-			RBXASSERT(spawnerService != NULL);
 
 			spawnerService->RegisterSpawner(this);
 		}
@@ -42,8 +39,7 @@ namespace RBX
 		{
 			spawnerTouched.disconnect();
 
-			SpawnerService* spawnerService = ServiceProvider::create<SpawnerService>(oldProvider);
-			RBXASSERT(spawnerService != NULL);
+			SpawnerService* spawnerService = ServiceProvider::find<SpawnerService>(oldProvider);
 
 			spawnerService->UnregisterSpawner(this);
 		}
@@ -56,16 +52,6 @@ namespace RBX
 	}
 
 	SpawnerService::~SpawnerService() {}
-
-	void SpawnerService::RegisterSpawner(SpawnLocation* spawner)
-	{
-		spawners.push_back(spawner);
-	}
-
-	void SpawnerService::UnregisterSpawner(SpawnLocation* spawner)
-	{
-		spawners.remove(spawner);
-	}
 
 	G3D::Vector3 SpawnerService::FindSpawnPositionForPlayer(Network::Player* p)
 	{

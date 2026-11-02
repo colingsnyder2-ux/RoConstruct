@@ -82,7 +82,7 @@ namespace RBX
 	protected:
 		bool hasListeners() const
 		{
-			return !listeners.empty();
+			return listeners.size() > 0;
 		}
 
 		void raise(Event event, Listener<Class, Event>* listener) const

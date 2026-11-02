@@ -71,6 +71,11 @@ namespace RBX
 		{
 			return boost::shared_ptr<Class>(new Class(p1, p2), Deleter());
 		}
+		template<typename Class, typename Parameter1, typename Parameter2, typename Parameter3>
+		static boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3)
+		{
+			return boost::shared_ptr<Class>(new Class(p1, p2, p3), Deleter());
+		}
 	private:
 		static void* operator new(size_t size)
 		{

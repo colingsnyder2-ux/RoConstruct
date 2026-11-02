@@ -5,8 +5,6 @@ namespace RBX
 {
 	IStage* IPipelined::getStage(IStage::StageType stageType) const
 	{
-		RBXASSERT(currentStage);
-
 		IStage* stage = currentStage;
 		while (stage->getStageType() != stageType)
 		{

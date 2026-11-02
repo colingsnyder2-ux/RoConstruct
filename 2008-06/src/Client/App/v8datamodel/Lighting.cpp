@@ -18,6 +18,10 @@ namespace RBX
 	static Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetSunPosition(&Lighting::getSunPosition, "GetSunDirection", Reflection::FunctionDescriptor::AnyCaller);
 	static Reflection::BoundFuncDesc<Lighting, double(void), 0> prop_GetMinutesAfterMidnight(&Lighting::getMinutesAfterMidnight, "GetMinutesAfterMidnight", Reflection::FunctionDescriptor::AnyCaller);
 	static Reflection::BoundFuncDesc<Lighting, void(double), 1> prop_SetMinutesAfterMidnight(&Lighting::setMinutesAfterMidnight, "SetMinutesAfterMidnight", "minutes", Reflection::FunctionDescriptor::AnyCaller);
+	static Reflection::PropDescriptor<Lighting, float> prop_Brightness("Brightness", "Appearance", &Lighting::getBrightness, &Lighting::setBrightness, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> prop_ColorShift_Top("ColorShift_Top", "Appearance", &Lighting::getColorShift_Top, &Lighting::setColorShift_Top, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> prop_ColorShift_Bottom("ColorShift_Bottom", "Appearance", &Lighting::getColorShift_Bottom, &Lighting::setColorShift_Bottom, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<Lighting, G3D::Color3> prop_Ambient("Ambient", "Appearance", &Lighting::getAmbient, &Lighting::setAmbient, Reflection::PropertyDescriptor::STANDARD);
 
 	Lighting::Lighting()
 		: Base(),
@@ -121,6 +125,62 @@ namespace RBX
 			ambientTop = value;
 
 			raisePropertyChanged(desc_AmbientTop);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+
+	void Lighting::setColorShift_Top(G3D::Color3 value)
+	{
+		if (value != v0)
+		{
+			v0 = value;
+
+			raisePropertyChanged(prop_ColorShift_Top);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+
+	void Lighting::setColorShift_Bottom(G3D::Color3 value)
+	{
+		if (value != v1)
+		{
+			v1 = value;
+
+			raisePropertyChanged(prop_ColorShift_Bottom);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+
+	void Lighting::setBrightness(float value)
+	{
+		if (value != f0)
+		{
+			f0 = value;
+
+			raisePropertyChanged(prop_Brightness);
+			fireLightingChanged(false);
+			RunService* runService = ServiceProvider::find<RunService>(this);
+			if (runService)
+				runService->invalidateRunViews();
+		}
+	}
+
+	void Lighting::setAmbient(G3D::Color3 value)
+	{
+		if (value != c0)
+		{
+			c0 = value;
+
+			raisePropertyChanged(prop_Ambient);
 			fireLightingChanged(false);
 			RunService* runService = ServiceProvider::find<RunService>(this);
 			if (runService)

@@ -283,7 +283,7 @@ namespace RBX
 	{
 		if (PartInstance* handle = getHandle())
 		{
-			handleTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Tool::onEvent_HandleTouched, this, _1));
+			handleTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Tool::onEvent_HandleTouched, this, _1), 10);
 		}
 		else
 		{
@@ -293,22 +293,17 @@ namespace RBX
 
 	void Tool::upTo_InCharacter()
 	{
-		RBXASSERT(Humanoid::modelIsCharacter(getParent()));
-
-		characterChildAdded = Instance::event_childAdded.connect(getParent(), boost::bind(&Tool::onEvent_AddedBackend, this, _1));
-		characterChildRemoved = Instance::event_childRemoved.connect(getParent(), boost::bind(&Tool::onEvent_RemovedBackend, this, _1));
+		characterChildAdded = Instance::event_childAdded.connect(getParent(), boost::bind(&Tool::onEvent_AddedBackend, this, _1), 10);
+		characterChildRemoved = Instance::event_childRemoved.connect(getParent(), boost::bind(&Tool::onEvent_RemovedBackend, this, _1), 10);
 	}
 
 	void Tool::upTo_HasTorso()
 	{
 		Humanoid* humanoid = Humanoid::modelIsCharacter(getParent());
-		RBXASSERT(humanoid);
-		
 		PartInstance* torso = humanoid->getTorso();
-		RBXASSERT(torso);
 
-		torsoChildAdded = Instance::event_childAdded.connect(torso, boost::bind(&Tool::onEvent_AddedBackend, this, _1));
-		torsoChildRemoved = Instance::event_childRemoved.connect(torso, boost::bind(&Tool::onEvent_RemovedBackend, this, _1));
+		torsoChildAdded = Instance::event_childAdded.connect(torso, boost::bind(&Tool::onEvent_AddedBackend, this, _1), 10);
+		torsoChildRemoved = Instance::event_childRemoved.connect(torso, boost::bind(&Tool::onEvent_RemovedBackend, this, _1), 10);
 	}
 
 	void Tool::onEquipping()
@@ -410,6 +405,85 @@ namespace RBX
 		c.rotation.setColumn(2, z);
 
 		setGrip(c);
+	}
+
+	void Tool::setGripUp(const G3D::Vector3& v)
+	{
+		G3D::CoordinateFrame c = grip;
+		G3D::Vector3 col0 = c.rotation.getColumn(0);
+		G3D::Vector3 oldZ = c.rotation.getColumn(2);
+
+		G3D::Vector3 y = v.direction();
+		G3D::Vector3 yc = y;
+		G3D::Vector3 oldX = col0;
+
+		G3D::Vector3 z = oldX.cross(yc);
+		z.unitize();
+
+		
+		G3D::Vector3 yy = y;
+		G3D::Vector3 zc = z;
+		G3D::Vector3 x = yy.cross(zc);
+		x.unitize();
+		
+		c.rotation.setColumn(0, x);
+		c.rotation.setColumn(1, y);
+		c.rotation.setColumn(2, z);
+
+		setGrip(c);
+	}
+
+	void Tool::setGripRight(const G3D::Vector3& v)
+	{
+		G3D::CoordinateFrame c = grip;
+		G3D::Vector3 col1 = c.rotation.getColumn(1);
+		G3D::Vector3 oldZ = c.rotation.getColumn(2);
+
+		G3D::Vector3 x = v.direction();
+		G3D::Vector3 xc = x;
+		G3D::Vector3 oldY = col1;
+
+		G3D::Vector3 z = xc.cross(oldY);
+		z.unitize();
+
+		G3D::Vector3 xx = x;
+		G3D::Vector3 zc = z;
+		G3D::Vector3 y = zc.cross(xx);
+		y.unitize();
+		
+		c.rotation.setColumn(0, x);
+		c.rotation.setColumn(1, y);
+		c.rotation.setColumn(2, z);
+
+		setGrip(c);
+	}
+
+	void Tool::downFrom_Equipped()
+	{
+		ModelInstance* character = NULL;
+		if (weld)
+		{
+			if (PartInstance* part0 = weld->getPart0())
+				character = dynamic_cast<ModelInstance*>(part0->getParent());
+			weld->setParent(NULL);
+			weld.reset();
+		}
+
+		if (PartInstance* handle = getHandle())
+		{
+			handle->setCanCollide(true);
+			if (Humanoid::modelIsCharacter(character))
+			{
+				G3D::CoordinateFrame location = character->getLocation();
+				G3D::Vector3 pos = location.translation;
+				pos.y += 4;
+				G3D::Vector3 dest = location.lookVector() * 8 + pos;
+				handle->moveToPoint(dest);
+				handle->setRotationalVelocity(G3D::Vector3(1, 1, 1));
+			}
+		}
+
+		connectTouchEvent();
 	}
 
 	const PartInstance* Tool::getHandleConst() const

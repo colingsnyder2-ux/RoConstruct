@@ -35,17 +35,46 @@ namespace RBX
 		return tiltNegativeZ;
 	}
 
+	const G3D::Matrix3 Math::matrixTiltQuadrant(int quadrant)
+	{
+		switch (quadrant)
+		{
+		case 0:
+			return G3D::Matrix3(1, 0, 0, 0, 0, -1, 0, 1, 0);
+		case 1:
+			return Math::matrixTiltZ();
+		case 2:
+			return G3D::Matrix3(1, 0, 0, 0, 0, 1, 0, -1, 0);
+		case 3:
+			return Math::matrixTiltNegativeZ();
+		default:
+			return G3D::Matrix3::identity();
+		}
+	}
+
 	bool Math::isDenormal(float f)
 	{
 		return (LODWORD(f) & 0x7F800000) == 0 && (LODWORD(f) & 0x7FFFFF) != 0;
 	}
 
-	bool Math::isNanInfDenorm(float f)
+	bool Math::isNanInf(float f)
 	{
 		return f == std::numeric_limits<float>::infinity()
 			|| f == -std::numeric_limits<float>::infinity()
 			|| f == std::numeric_limits<float>::quiet_NaN()
 			|| f == std::numeric_limits<float>::signaling_NaN();
+	}
+
+	bool Math::isNanInfVector3(const G3D::Vector3& v)
+	{
+		return Math::isNanInf(v.x)
+			|| Math::isNanInf(v.y)
+			|| Math::isNanInf(v.z);
+	}
+
+	bool Math::isNanInfDenorm(float f)
+	{
+		return Math::isNanInf(f) || Math::isDenormal(f);
 	}
 
 	bool Math::isNanInfDenormVector3(const G3D::Vector3& v)
@@ -182,6 +211,16 @@ namespace RBX
 		return atan2(-look.x, -look.z);
 	}
 
+	int Math::radiansToQuadrant(float radians)
+	{
+		return G3D::iFloor((radians + (2 * pi() + pi() / 4)) * 4 / G3D::twoPi()) % 4;
+	}
+
+	int Math::toYAxisQuadrant(const G3D::CoordinateFrame& c)
+	{
+		return Math::radiansToQuadrant(Math::getHeading(c.lookVector()));
+	}
+
 	float Math::getElevation(const G3D::Vector3& look)
 	{
 		return asin(look.y);
@@ -306,30 +345,20 @@ namespace RBX
 
 	const float& segSizeRadians()
 	{
-		// - 0.00001f is necessary to get the same value as the compiled binary
-		static float ssr = (Math::pi() - 0.00001f) / 128;
+		// 2008 binary stores twoPi()/256 (0x3cc90fda)
+		static float ssr = Math::twoPi() / 256;
 		return ssr;
 	}
 
 	G3D::uint8 rotationToByteBase(float angle)
 	{
-		RBXASSERT(angle <= Math::pi());
-		RBXASSERT(angle >= -Math::pi());
-
 		float result = (angle + Math::pi()) / segSizeRadians();
 		int resInt = G3D::iRound(result);
-		
-		RBXASSERT(resInt >= -1);
-		RBXASSERT(resInt <= 256);
 
 		resInt = std::max(0, resInt);
 		resInt = std::min(255, resInt);
 
-		G3D::uint8 byte = (G3D::uint8)resInt;
-
-		RBXASSERT(byte <= 255);
-
-		return byte;
+		return (G3D::uint8)resInt;
 	}
 
 	G3D::uint8 Math::rotationToByte(float angle)
@@ -396,6 +425,44 @@ namespace RBX
 		G3D::Line myLine = G3D::Line::fromPointAndDirection(ray.origin, ray.direction);
 		hit = myLine.intersection(plane);
 		return true;
+	}
+
+	G3D::Vector3 Math::closestPointOnRay(const G3D::Ray& pointOnRay, const G3D::Ray& otherRay)
+	{
+		G3D::Vector3 pa = pointOnRay.origin;
+		G3D::Vector3 pPlane = otherRay.origin;
+		G3D::Vector3 ua = pointOnRay.direction;
+		G3D::Vector3 ub = otherRay.direction;
+		G3D::Vector3 p = pPlane - pa;
+		float uaub = ua.dot(ub);
+		float q1 = ua.dot(p);
+		float q2 = -ub.dot(p);
+		float d = 1 - uaub * uaub;
+		if (d > 1e-5)
+		{
+			float alpha = (q1 + uaub * q2) / d;
+			return pa + alpha * ua;
+		}
+		else
+		{
+			return pa;
+		}
+	}
+
+	float Math::computeLaunchAngle(float speed, float distance, float height, float gravity)
+	{
+		double g = fabs(gravity);
+		double disc = speed * speed * speed * speed
+			- (distance * distance * g + 2.0 * (speed * speed) * height) * g;
+
+		if (disc <= 0.0)
+			return Math::pi() / 4;
+
+		double root = sqrt(disc);
+		double v2 = speed * speed;
+		float upper = (float)atan((root + v2) / (distance * g));
+		float lower = (float)atan((v2 - root) / (g * distance));
+		return std::min(upper, lower);
 	}
 
 	int Math::getOrientId(const G3D::Matrix3& matrix)

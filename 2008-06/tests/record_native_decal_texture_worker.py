@@ -1,7 +1,7 @@
 import hashlib,json,struct,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
-out=root/'rebuild/2008-06/out/native-layouts';work=out/'insertdecal-texture-worker';overlay=work/'v8tree';overlay.mkdir(parents=True,exist_ok=True);header=root/'rebuild/2008-06/native-headers/v8tree/Instance.h';data=header.read_text();assert data.count('void raisePropertyChanged(const Reflection::PropertyDescriptor&);')==1;(overlay/'Instance.h').write_text(data)
+out=root/'rebuild/2008-06/out/native-layouts';work=out/'insertdecal-texture-worker';overlay=work/'v8tree';overlay.mkdir(parents=True,exist_ok=True);header=root/'rebuild/2008-06/native-headers/v8tree/Instance.h';data=header.read_text();assert data.count('void raisePropertyChanged(const Reflection::PropertyDescriptor&')==1;(overlay/'Instance.h').write_text(data)
 src=root/'rebuild/2008-06/tests/NativeDecalTextureWorker.cpp';obj=work/'DecalTextureWorker.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(work));code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],work);assert code==0,log
 raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);name,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?setTexture@Decal@'));target,targetrefs,_=match.target('2008-06','00598610');assert match.exact_match(target,targetrefs,body,refs);start,index=defs[name];table=sections[index];bindings={}
 for i in range(table[7]):

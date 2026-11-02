@@ -51,6 +51,7 @@ class Instance : public boost::enable_shared_from_this<Instance>,
 public:
     static Reflection::BoundProp<bool, 1> propArchivable;
     static const Reflection::RefPropDescriptor<Instance, Instance> propParent;
+    static const Reflection::PropDescriptor<Instance, std::string> desc_Name;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentAdded;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_ancestryChanged;
@@ -89,8 +90,9 @@ public:
     template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
     void setParent(Instance*);
     bool contains(const Instance*) const;
-    void raisePropertyChanged(const Reflection::PropertyDescriptor&);
     void removeAllChildren();
+    bool canSetParent(const Instance*) const; // 0041f390
+    void raisePropertyChanged(const Reflection::PropertyDescriptor& descriptor); // 0040db00
     std::string getClassNameStr() const;
     Instance* findFirstChildByClassName(std::string) const; // 0046ae30; name provisional.
     void writeChildren(::XmlElement*);

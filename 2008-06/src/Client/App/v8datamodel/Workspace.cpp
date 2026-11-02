@@ -454,25 +454,30 @@ namespace RBX
 
 	void Workspace::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
-		Notifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
-
-		if (statsItem)
+		if (oldProvider)
 		{
-			statsItem->setParent(NULL);
-			statsItem.reset();
+			Notifier<RunService, Heartbeat>::disconnect(oldProvider->find<RunService>(), this);
+
+			if (statsItem)
+			{
+				statsItem->setParent(NULL);
+				statsItem.reset();
+			}
 		}
 
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		scriptContext = ServiceProvider::create<ScriptContext>(newProvider);
-
-		if (Stats::Item* item = ServiceProvider::create<Stats::Item>(newProvider))
+		if (newProvider)
 		{
-			statsItem = Creatable::create<WorkspaceStatsItem>(this, world.get());
-			statsItem->setParent(item);
-		}
+			scriptContext = newProvider->create<ScriptContext>();
 
-		Notifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);
+			RunService* runService = newProvider->find<RunService>();
+			Notifier<RunService, Heartbeat>::connect(runService, this);
+
+			if (Stats::Item* item = newProvider->create<Stats::Item>())
+			{
+				statsItem = Creatable::create<WorkspaceStatsItem>(this, world.get(), runService);
+				statsItem->setParent(item);
+			}
+		}
 	}
 
 	static void DrawAdorn(boost::shared_ptr<Instance> wsi, Adorn* adorn, SelectState selectState, Workspace* workspace)

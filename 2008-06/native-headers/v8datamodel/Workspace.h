@@ -42,16 +42,20 @@ namespace RBX
 		std::auto_ptr<MouseCommand> currentCommand;
 		std::auto_ptr<MouseCommand> stickyCommand;
 		UIEvent idleMouseEvent;
-		mutable boost::shared_ptr<Camera> currentCamera;
+		void* unknown0x3cc;
 		bool isSimulating;
 		std::set<Script*> pendingScripts;
 		ScriptContext* scriptContext;
 		bool inMouselookMode;
+		mutable boost::shared_ptr<Camera> currentCamera;
+		boost::shared_ptr<Camera> cameraTemplate;
+		double unknown0x410, unknown0x418, unknown0x420;
 	public:
 		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStep;
+		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceStepInner;
+		boost::scoped_ptr<Profiling::CodeProfiler> profileWorkspaceAssemble;
 		boost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceStepped;
 		boost::scoped_ptr<Profiling::CodeProfiler> profileRunServiceHeartbeat;
-		boost::scoped_ptr<Profiling::ThreadProfiler> profileRun;
 		int imageServerViewHack;
 
 	public:

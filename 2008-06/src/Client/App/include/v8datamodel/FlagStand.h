@@ -39,7 +39,7 @@ namespace RBX
 		virtual ~FlagStandService();
 		FlagStand* FindClosestEmptyStandForFlag(Flag*);
 		FlagStand* FindStandWithFlag(Flag* f);
-		void RegisterFlagStand(FlagStand* s);
-		void UnregisterFlagStand(FlagStand* s);
+		void RegisterFlagStand(FlagStand* s) { flagStands.push_back(s); }
+		void UnregisterFlagStand(FlagStand* s) { flagStands.remove(s); }
 	};
 }

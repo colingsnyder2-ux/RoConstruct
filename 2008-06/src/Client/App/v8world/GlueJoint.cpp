@@ -1,3 +1,4 @@
+#pragma float_control(precise, off)
 #include "v8world/GlueJoint.h"
 #include "v8world/Primitive.h"
 #include "v8kernel/Kernel.h"
@@ -44,6 +45,13 @@ namespace RBX
 		return Units::kmsForceToRbx(Constants::getKmsMaxJointForce(size.x, size.y));
 	}
 
+	__forceinline G3D::Vector3 gluePointWorld(const G3D::CoordinateFrame& f, const G3D::Vector3& v)
+	{
+		return G3D::Vector3(f.rotation[0][0]*v[0] + f.rotation[0][1]*v[1] + f.rotation[0][2]*v[2] + f.translation[0],
+			f.rotation[1][0]*v[0] + f.rotation[1][1]*v[1] + f.rotation[1][2]*v[2] + f.translation[1],
+			f.rotation[2][0]*v[0] + f.rotation[2][1]*v[1] + f.rotation[2][2]*v[2] + f.translation[2]);
+	}
+
 	void GlueJoint::putInKernel(Kernel* _kernel)
 	{
 		MultiJoint::putInKernel(_kernel);
@@ -55,7 +63,7 @@ namespace RBX
 
 		for (int i = 0; i < 4; ++i)
 		{
-			G3D::Vector3 p0World = b0->getPV().position.pointToWorldSpace(overlapInP0[i]);
+			G3D::Vector3 p0World = gluePointWorld(b0->getPV().position, overlapInP0[i]);
 			G3D::Vector3 p1World = b1->getPV().position.pointToWorldSpace(overlapInP1[i]);
 
 			Point* p0 = getKernel()->newPoint(b0, p0World);

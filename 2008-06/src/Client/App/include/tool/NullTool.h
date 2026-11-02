@@ -14,6 +14,7 @@ namespace RBX
 		G3D::Vector3 waypoint;
 
 	private:
+		bool localHeadHidden() const;
 		virtual void onMouseIdle(const UIEvent& uiEvent);
 		virtual void onMouseHover(const UIEvent& uiEvent);
 		virtual MouseCommand* onMouseDown(const UIEvent& uiEvent);
