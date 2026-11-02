@@ -106,12 +106,22 @@ def accept(additions, receipt, model=None, files=()):
     promotions.append(entry)
     job = hashlib.sha256(json.dumps([current["revision"], entry], sort_keys=True).encode()).hexdigest()[:16]
     _write(PATCHES / "native-promotions.json", promotions)
+    regenerate()
     book = ledger()
     book["jobs"].append({"id": "offline-" + job, "state": "accepted", "source": "offline", "files": sorted(files),
                          "model": model, "ts": int(time.time()),
                          "receipt": {"gains": sorted(receipt.get("gains", [])), "losses": receipt.get("losses", [])}})
     _write(LEDGER, book)
     return "offline-" + job
+
+
+def regenerate():
+    """rbxgs-client.json is the generator's output and replays native-promotions.json: refresh it after every
+    accept, or the next linked preflight starts its candidate from an overlay without the accepted promotions."""
+    import subprocess
+    import sys
+    subprocess.run([sys.executable, str(PATCHES / "make_rbxgs_client.py")], cwd=ROOT, check=True,
+                   capture_output=True, stdin=subprocess.DEVNULL, timeout=120)
 
 
 def _write(path, data):

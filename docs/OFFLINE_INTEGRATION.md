@@ -26,7 +26,9 @@ roc native-try evidence App/x/File.cpp       # target asm, mined proof, current 
 roc native-try edit App/x/File.cpp           # editable copy under work/native-try/edit
 roc native-try check App/x/File.cpp          # compile, prove gains, save the proposal
 roc native-try accept --model MODEL          # linked preflight; on success append to native-promotions.json
-git add rebuild/2008-06/patches/native-promotions.json && git add -f rebuild/2008-06/offline/ledger.json
+                                             # and regenerate rbxgs-client.json (the generator replays promotions)
+git add -f rebuild/2008-06/patches/native-promotions.json rebuild/2008-06/patches/rbxgs-client.json \
+           rebuild/2008-06/offline/ledger.json
 ```
 
 With `ROC_INTEGRATION_OFFLINE=1`, `worker.Api` answers the read-only integration
@@ -42,3 +44,11 @@ anything is credited.
 
 `roc native-try snapshot` (online, without the variable) refreshes
 `evidence.json` and the server part of `ledger.json`.
+
+## Glue stand-ins
+
+`rebuild/2008-06/glue/` defines behavioural stand-ins for methods rbxgs declares but never defines. A promotion
+that adds such a method natively (or changes a signature glue implements) fails the link with LNK2005/C2511.
+Put the glue changes in a JSON list of `[path, old, new]` edits and point `ROC_PREFLIGHT_SOURCE_EDITS` at it
+for `accept`: the preflight applies them to the candidate snapshot only (the baseline stays the committed
+tree). After an accepted receipt, apply the same edits to the tree and commit them with the promotion.
