@@ -1,7 +1,7 @@
 #pragma once
 #include "CReflectionTreeView.h"
 #include "CMemberTreeView.h"
-#include <afxhtml.h>
+#include "CDeclarationView.h"
 
 namespace RBX {
 namespace Reflection {
@@ -10,8 +10,6 @@ class ClassDescriptor;
 class EnumDescriptor;
 }
 }
-
-class CDeclarationView;
 
 // Inactive layout recovery from CRuntimeClass 00812504 (size 0xb0, CreateObject 00433fc0, base
 // getter 00433650 -> CXTTreeView), RTTI vtables 008125ec (offset 0; CClassTreeView :
@@ -39,14 +37,4 @@ public:
     CImageList images;                                      // +0xa0, bitmap resource 0xc4
     CMemberTreeView* memberView;                            // +0xa8
     CDeclarationView* declarationView;                      // +0xac
-};
-
-// Declaration only: the third pane of the same object browser. It is not thin, so only the method
-// this class calls is declared (no layout is claimed here).
-// CDeclarationView: RTTI 00812bc4 (CDeclarationView : CHtmlView), CRuntimeClass 008124e8 (size 0x114);
-// constructor 00434500, destructor 00434570, 004346b0 (2074 bytes) and 00435860 (1048 bytes, null-tests
-// its argument) remain for a separate recovery.
-class CDeclarationView : public CHtmlView {
-public:
-    void showDescriptor(const RBX::Reflection::Descriptor* descriptor);  // 00435860; name provisional
 };
