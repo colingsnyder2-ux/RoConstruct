@@ -1283,6 +1283,22 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-1c92526b885ec903",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8world/RotateJoint.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793618181,
+   "receipt": {
+    "gains": [
+     "00645f60"
+    ],
+    "losses": []
+   }
   }
  ]
 }
