@@ -83,7 +83,7 @@ code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/fp:fast', '/F
 down_raw = down_obj.read_bytes(); sections, symbols, definitions, _ = match._coff_data_index(down_raw)
 for prefix, address, expected in [
  ('?hitHandle@AxisMoveTool', 0x640d50, [('?inf@Vector3@', 0x510960), ('?bounds@AxisMoveTool@', 0x640b40), ('?getUnitMouseRay@MouseCommand@', 0x615d00), ('?hitMoveHandles@', 0x665880)]),
- ('?onMouseDown@AxisMoveTool', 0x640e20, [('?hitHandle@AxisMoveTool@', 0x640d50), ('?toGrid@Math@', 0x5dee10), ('?normalIdToVector3@', 0x5ec570), ('?fromOriginAndDirection@Ray@', 0x518830), ('?onMouseDown@ArrowToolBase@', 0x617780)]),
+ ('?onMouseDown@AxisMoveTool', 0x640e20, [('?hitHandle@AxisMoveTool@', 0x640d50), ('__real@3ecccccd', 0x832a18), ('?toGrid@Math@', 0x5dee10), ('?normalIdToVector3@', 0x5ec570), ('?fromOriginAndDirection@Ray@', 0x518830), ('?onMouseDown@ArrowToolBase@', 0x617780)]),
 ]:
     name, body, refs = next(x for x in match.coff_functions(down_raw) if x[0].startswith(prefix))
     target, targetrefs, _ = match.target('2008-06', '%08x' % address)
@@ -117,9 +117,84 @@ for symbol, value in [('?identity@Matrix3@', 0x513e20), ('??0Matrix3@', 0x513220
     assert any(k.startswith(symbol) and v == value for k, v in bindings.items()), (symbol, bindings)
 rows.append({'symbol': name, 'address': hex(address), 'size': len(body), 'exact': True,
              'bindings': {k: hex(v) for k, v in bindings.items()}})
+extra_objects = []
+for stem, extra, checks in [
+ ('NativeMovePartTrial', ['/fp:fast'], [
+  ('?movePart@RBX@@', 0x60e840, [('?getCoordinateFrame@PartInstance@', 0x598cb0), ('?aligned@PartInstance@', 0x5994c0), ('__real@3dcccccd', 0x81e704), ('?snapToGrid@Math@', 0x5deed0), ('?setCoordinateFrame@PartInstance@', 0x59d8a0)])]),
+ ('NativeApplyMoveTrial', ['/fp:fast'], [
+  ('?applyMove@RBX@@', 0x60fef0, [('?fromPrimitive@PartInstance@', 0x599f80), ('?movePart@RBX@@', 0x60e840)])]),
+ ('NativeTransformMoveTrial', ['/fp:fast'], [
+  ('?transformMove@RBX@@', 0x610180, [('__real@3dcccccd', 0x81e704), ('?toGrid@Math@', 0x5dee10), ('?applyMove@RBX@@', 0x60fef0)])]),
+ ('NativeSubdivideMoveTrial', ['/fp:fast'], [
+  ('?subdivideMove@RBX@@', 0x610580, [('?transformMove@RBX@@', 0x610180), ('?testMove@RBX@@', 0x610130), ('__real@3f028f5c', 0x843768), ('__real@3dcccccd', 0x81e704), ('?toGrid@Math@', 0x5dee10), ('?subdivideMove@RBX@@', 0x610580)])]),
+ ('NativeDraggerMoveTrial', ['/fp:fast'], [
+  ('?safeMoveAlongLine@Dragger', 0x6106c0, [('?subdivideMove@RBX@@', 0x610580)])]),
+ ('NativeDraggerExtentsTrial', ['/fp:fast'], [
+  ('?computeExtents@Dragger', 0x60ff80, [('?negativeInfiniteExtents@Extents@', 0x583920), ('?getCoordinateFrame@Primitive@', 0x5e82c0), ('?toWorldSpace@Extents@', 0x60fc20), ('?unionWith@Extents@', 0x57dee0)])]),
+ ('NativeCollectPrimitivesTrial', [], [
+  ('?collectPrimitives@RBX@@', 0x60f340, [('??_R0?AVPartInstance@', 0x92dd50), ('??_R0?AVInstance@', 0x92907c), ('___RTDynamicCast', 0x6a17c6), ('?push_back@?$vector@PAVPrimitive@', 0x4213a0), ('?numChildren@Instance@', 0x48ae20), ('?collectPrimitives@RBX@@', 0x60f340)]),
+  ('?getPrimitives@DragUtilities', 0x60f3d0, [('?collectPrimitives@RBX@@', 0x60f340)])]),
+ ('NativeMegaSafeMoveTrial', [], [
+  ('?safeMoveAlongLine@MegaDragger', 0x60e200, [('?partsToPrimitives@DragUtilities@', 0x60eb30), ('?safeMoveAlongLine@Dragger@', 0x6106c0), ('?alignedFree@System@G3D@@', 0x507d20)])]),
+ ('NativeMegaAliveTrial', [], [
+  ('?anyDragPartAlive@MegaDragger', 0x60dd70, [('?anyPartAlive@DragUtilities@', 0x60ead0)])]),
+ ('NativeAxisBoundsTrial', [], [
+  ('?bounds@AxisMoveTool', 0x640b40, [('?createService@?$ServiceClient@VSelection', 0x581cc0), ('?collectPart@RBX@@', 0x6404c0), ('??$for_each@', 0x6407a0), ('?computeExtents@Dragger@', 0x60ff80)]),
+  ('?collectPart@RBX@@', 0x6404c0, [('?getPrimitives@DragUtilities@', 0x60f3d0)]),
+  ('??$for_each@', 0x6407a0, [])]),
+ ('NativeAxisMoveTrial', ['/fp:fast'], [
+  ('?onMouseMove@AxisMoveTool', 0x640800, [('?createService@?$ServiceClient@V?$FilteredSelection', 0x581d80),
+    ('??0MegaDragger@', 0x60e540), ('?startDragging@MegaDragger@', 0x60de00),
+    ('?alignAndCleanParts@MegaDragger@', 0x60df80), ('?anyDragPartAlive@MegaDragger@', 0x60dd70),
+    ('?getUnitMouseRay@MouseCommand@', 0x615d00), ('?closestPointOnRay@Math@', 0x5df270),
+    ('__real@3ecccccd', 0x832a18), ('?toGrid@Math@', 0x5dee10),
+    ('?continueDragging@MegaDragger@', 0x60dd60), ('?safeMoveAlongLine@MegaDragger@', 0x60e200)])]),
+ ('NativeAxisRenderTrial', ['/fp:fast'], [
+  ('?render2d@AxisMoveTool', 0x640f30, [('?bounds@AxisMoveTool@', 0x640b40), ('?orange@Color3@', 0x5149b0), ('?handles2d@DrawAdorn@', 0x677b20)]),
+  ('?render3dAdorn@AxisMoveTool', 0x641040, [('?bounds@AxisMoveTool@', 0x640b40), ('?getCoordinateFrame@GCamera@', 0x5107b0), ('?handles3d@DrawAdorn@', 0x6776a0)])])]:
+    src = root / ('rebuild/2008-06/tests/' + stem + '.cpp'); output = out / (stem + '.obj')
+    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + extra + ['/Fo' + str(output), str(src)], out); assert code == 0, log
+    compiled = output.read_bytes(); sections, symbols, definitions, _ = match._coff_data_index(compiled)
+    for prefix, address, expected in checks:
+        name, body, refs = next(x for x in match.coff_functions(compiled) if x[0].startswith(prefix))
+        target, targetrefs, _ = match.target('2008-06', '%08x' % address); assert match.exact_match(target, targetrefs, body, refs), name
+        start, section = definitions[name]; table = sections[section]; bindings = {}
+        for i in range(table[7]):
+            offset, symbol, kind = struct.unpack_from('<IIH', compiled, table[5] + 10*i); offset -= start
+            if not 0 <= offset < len(body) - 3: continue
+            value = struct.unpack_from('<I', target, offset)[0]
+            if kind == 20: value = (address + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+            bindings.setdefault(symbols[symbol][0], value)
+        for symbol, value in expected:
+            assert any(k.startswith(symbol) and v == value for k, v in bindings.items()), (symbol, bindings)
+        rows.append({'symbol': name, 'address': hex(address), 'size': len(body), 'exact': True,
+                     'bindings': {k: hex(v) for k, v in bindings.items()}})
+    extra_objects.append((stem, src, output, extra))
+donor = root / 'rebuild/2008-06/out/RbxgsApp/linked/DragUtilities.obj'
+donor_raw = donor.read_bytes(); sections, symbols, definitions, _ = match._coff_data_index(donor_raw)
+name, body, refs = next(x for x in match.coff_functions(donor_raw) if x[0].startswith('?anyPartAlive@DragUtilities'))
+address = 0x60ead0; target, targetrefs, _ = match.target('2008-06', '%08x' % address)
+assert match.exact_match(target, targetrefs, body, refs)
+start, section = definitions[name]; table = sections[section]; bindings = {}
+for i in range(table[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', donor_raw, table[5] + 10*i); offset -= start
+    if not 0 <= offset < len(body) - 3: continue
+    value = struct.unpack_from('<I', target, offset)[0]
+    if kind == 20: value = (address + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+    bindings.setdefault(symbols[symbol][0], value)
+for symbol, value in [('?lock@?$weak_ptr@VPartInstance@', 0x5cab00), ('?nonNullInWorkspace@PartInstance@', 0x5995f0)]:
+    assert any(k.startswith(symbol) and v == value for k, v in bindings.items()), (symbol, bindings)
+rows.append({'symbol': name, 'address': hex(address), 'size': len(body), 'exact': True, 'source': 'donor',
+             'bindings': {k: hex(v) for k, v in bindings.items()}})
+move_grid = [{k for k, defined in rebuild.coff_externals((out / (stem + '.obj')).read_bytes()).items() if defined and 'nativeMoveGrid@RBX@@' in k} for stem in ('NativeSubdivideMoveTrial', 'NativeTransformMoveTrial')]
+assert move_grid[0] == move_grid[1] and len(move_grid[0]) >= 3, move_grid
+down_symbols = {k for k, defined in rebuild.coff_externals(down_obj.read_bytes()).items() if defined and 'axisMoveGrid@RBX@@' in k}
+move_symbols = {k for k, defined in rebuild.coff_externals((out / 'NativeAxisMoveTrial.obj').read_bytes()).items() if defined and 'axisMoveGrid@RBX@@' in k}
+assert down_symbols == move_symbols and len(down_symbols) >= 3, (down_symbols, move_symbols)
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {'scope': 'Inactive lifetime and vtable structure only. Full methods, shared ABI and runtime unproven.',
-           'size': '0x74', 'source_sha256': sha(source), 'header_sha256': sha(header), 'object_sha256': sha(obj), 'methods_source_sha256': sha(methods_source), 'methods_object_sha256': sha(methods_obj), 'down_source_sha256': sha(down_source), 'down_object_sha256': sha(down_obj), 'hit_source_sha256': sha(hit_source), 'hit_object_sha256': sha(hit_obj),
+           'size': '0x74', 'move_grid_header_sha256': hashlib.sha256((root / 'rebuild/2008-06/tests/NativeMoveGridTrial.h').read_bytes()).hexdigest(), 'move_grid_symbols': sorted(move_grid[0]), 'donor_drag_utilities_sha256': sha(donor), 'shared_grid_symbols': sorted(down_symbols), 'source_sha256': sha(source), 'header_sha256': sha(header), 'object_sha256': sha(obj), 'methods_source_sha256': sha(methods_source), 'methods_object_sha256': sha(methods_obj), 'down_source_sha256': sha(down_source), 'down_object_sha256': sha(down_obj), 'hit_source_sha256': sha(hit_source), 'hit_object_sha256': sha(hit_obj),
+           'extra_objects': [{'stem': name, 'source_sha256': sha(src), 'object_sha256': sha(obj), 'extra_flags': extra} for name, src, obj, extra in extra_objects],
            'observer_sha256': sha(Path(__file__)), 'methods': rows, 'vtables': vtables, 'flags': flags}
 (root / 'work/2008-06/shared-layouts/axis-move-tool-lifetime-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS AxisMoveTool lifetime, six methods, bindings and vtable structure')
+print('PASS AxisMoveTool lifetime, methods, helper bindings and vtable structure')

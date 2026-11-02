@@ -83,6 +83,14 @@ static __declspec(noinline) void checkRunPermissions(Instance* instance) {
         throw std::runtime_error(message);
     }
 }
+void AllCanSelectCommand::doIt(IDataState* state) {
+    checkRunPermissions(dataModel);
+    Workspace* workspace = dataModel->getWorkspace();
+    PartInstance::setLocked(workspace, false);
+    recordCameraHistory(getName().c_str(), workspace);
+    state->setDirty(true);
+}
+void SelectAllCommand::doIt(IDataState*) { checkRunPermissions(dataModel); dataModel->getWorkspace()->selectAll(); }
 void DeleteBase::doIt(IDataState* state) {
  checkRunPermissions(dataModel);
  Selection* current=ServiceProvider::create<Selection>(static_cast<const ServiceProvider*>(dataModel));

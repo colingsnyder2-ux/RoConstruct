@@ -134,7 +134,7 @@ if provider_trial:
                  'NativeWorkspaceGetWorkspaceTrial.obj', 'NativeVerbConstructor.obj',
                  'NativeStandardVerbsConstructorTrial.obj', 'NativeRunStateVerbConstructorTrial.obj',
                  'NativeEditSelectionVerbConstructorTrial.obj', 'NativeWorkspaceSharedFromTrial.obj',
-                 'NativeSelectionCommandsTrial.obj', 'NativeSurfaceVisitorsTrial.obj', 'NativeAxisCommandsTrial.obj', 'NativeAxisBaseTrial.obj',
+                 'NativeSelectionCommandsTrial.obj', 'NativeWorkspaceSelectAllTrial.obj', 'NativeSurfaceVisitorsTrial.obj', 'NativeAxisCommandsTrial.obj', 'NativeAxisBaseTrial.obj',
                  'NativeBasicVerbConstructorsTrial.obj', 'NativeToolVerbActionTrial.obj',
                  'NativeMouseCommandLifetimeTrial.obj', 'NativeArrowFactoryTrial.obj',
                  'NativeNullToolFactoryTrial.obj', 'NativeGameToolFactoryTrial.obj',

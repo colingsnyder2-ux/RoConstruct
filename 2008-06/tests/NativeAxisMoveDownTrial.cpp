@@ -17,7 +17,7 @@ MouseCommand* AxisMoveTool::onMouseDown(const UIEvent& event) {
     if (hitHandle(event, point, face)) {
         mouseDownView = event.mousePosition;
         axis = face % 3;
-        dragPoint = Math::toGrid(point, Dragger::dragSnap());
+        dragPoint = Math::toGrid(point, axisMoveGrid());
         dragRay = G3D::Ray::fromOriginAndDirection(dragPoint, normalIdToVector3(face));
         capture();
         return this;

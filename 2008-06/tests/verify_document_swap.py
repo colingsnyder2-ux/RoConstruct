@@ -21,6 +21,7 @@ steps = [
     'record_native_sound_service_play.py',
     'record_native_exit_command.py',
     'record_native_selection_commands.py',
+    'record_native_workspace_select_all.py',
     'record_native_surface_visitors.py',
     'record_native_tool_checked_multi_trial.py',
     'record_native_tool_lifetime_evidence.py',
@@ -71,5 +72,9 @@ with log_path.open('w', encoding='utf-8') as log:
                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors='replace')
     log.write(f'\n=== resize diagnostic (exit {probe.returncode}) ===\n{probe.stdout}')
     print(probe.stdout.strip(), flush=True)
-    if probe.returncode or receipt['link_exit']:
+    axis_probe = subprocess.run([sys.executable, str(tests / 'record_native_resize_document_probe.py'), '--axis'], cwd=root,
+                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors='replace')
+    log.write(f'\n=== axis diagnostic (exit {axis_probe.returncode}) ===\n{axis_probe.stdout}')
+    print(axis_probe.stdout.strip(), flush=True)
+    if axis_probe.returncode or probe.returncode or receipt['link_exit']:
         sys.exit(1)

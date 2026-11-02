@@ -5,8 +5,19 @@
 namespace RBX {
 class Service {};
 class Closing;
-struct ServiceAdded;
-struct ServiceRemoving;
+// Event payloads, copied from the SDK declarations (the copy constructors are defined elsewhere).
+struct ServiceAdded {
+    const boost::shared_ptr<Instance> service;
+    ServiceAdded(const ServiceAdded&);
+private:
+    ServiceAdded& operator=(const ServiceAdded&);
+};
+struct ServiceRemoving {
+    const boost::shared_ptr<Instance> service;
+    ServiceRemoving(const ServiceRemoving&);
+private:
+    ServiceRemoving& operator=(const ServiceRemoving&);
+};
 extern const char* sServiceProvider;
 
 // Original RTTI and 00568bf0 establish the three notifier bases. Existing
@@ -26,6 +37,7 @@ public:
     template<class Class> static size_t getClassIndex();
     template<class Class> Class* find() const;
     template<class Class> static Class* find(const Instance* context);
+    template<class Class> static Class* find(const ServiceProvider* serviceProvider) { return serviceProvider ? serviceProvider->find<Class>() : 0; }
     template<class Class> Class* create() const;
     template<class Class> static Class* create(const Instance* context);
     template<class Class> static Class* create(const ServiceProvider* provider) {

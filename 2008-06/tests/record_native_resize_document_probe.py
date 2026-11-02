@@ -10,7 +10,9 @@ basepath = root / 'work/2008-06/shared-layouts/document-swap-provider-trial.json
 base = json.loads(basepath.read_text())
 assert base['link_exit'] != 0 and base['provider_trial']
 axis = '--axis' in sys.argv
-prefix = 'NativeDocResizeAxisProbe' if axis else 'NativeDocResizeProbe'
+test_alias = '--test-alias' in sys.argv
+assert not test_alias or axis
+prefix = 'NativeDocResizeAxisTestProbe' if test_alias else 'NativeDocResizeAxisProbe' if axis else 'NativeDocResizeProbe'
 args = [('/OUT:' + prefix + '.exe' if x.upper().startswith('/OUT:') else
          '/MAP:NativeDocResizeProbe.map' if x.upper().startswith('/MAP:') else x)
         for x in base['link_flags']]
@@ -36,18 +38,32 @@ for path, expected_hash in base['objects'].items():
     assert sha(root / path) == expected_hash, ('stale baseline object', path)
 if axis:
     axis_proof = json.loads((proof / 'axis-move-tool-lifetime-trial.json').read_text())
+    for extra in axis_proof['extra_objects']:
+        obj = out / (extra['stem'] + '.obj'); assert sha(obj) == extra['object_sha256'], ('stale axis object', obj)
+        objects.append(obj)
     for stem, key in [('NativeAxisMoveToolTrial', 'object_sha256'), ('NativeAxisMoveToolMethodsTrial', 'methods_object_sha256'), ('NativeAxisMoveDownTrial', 'down_object_sha256'), ('NativeHitMoveHandlesTrial', 'hit_object_sha256')]:
         obj = out / (stem + '.obj'); assert sha(obj) == axis_proof[key], ('stale axis object', obj)
         objects.append(obj)
+if test_alias:
+    trial = json.loads((proof / 'test-move-trial.json').read_text())
+    obj = out / 'NativeTestMoveTrial.obj'
+    assert sha(obj) == trial['object_sha256'] and trial['exact']
+    caller = rebuild.coff_externals((out / 'NativeSubdivideMoveTrial.obj').read_bytes())
+    callee = rebuild.coff_externals(obj.read_bytes())
+    missing = next(k for k,v in caller.items() if k.startswith('?testMove@RBX@@') and not v)
+    present = next(k for k,v in callee.items() if k.startswith('?testMove@RBX@@') and v)
+    assert missing.replace('YA_N','YAH',1) == present
+    args.append('/alternatename:' + missing + '=' + present)
+    objects.append(obj)
 args += list(map(str, objects))
 code, log = rebuild.run(rebuild.toolchain(21022), 'link', args, work)
 (work / (prefix + '.log')).write_text(log)
 errors = [line for line in log.splitlines() if re.search(r'\berror LNK(?:2001|2019|2005)\b', line)]
 receipt = {'scope': 'Isolated incompatible ABI diagnostic; do not run. No live swap or gate claims.',
-           'axis_profile': axis, 'baseline_receipt_sha256': sha(basepath), 'baseline_errors': len(base['errors']),
+           'axis_profile': axis, 'provisional_test_return_alias': test_alias, 'baseline_receipt_sha256': sha(basepath), 'baseline_errors': len(base['errors']),
            'link_exit': code, 'errors': errors, 'objects': {str(p.relative_to(root)): sha(p) for p in objects},
            'lifetime_receipt_sha256': sha(proof / 'resize-tool-lifetime-trial.json'),
            'methods_receipt_sha256': sha(proof / 'resize-tool-methods-trial.json'),
            'part_receipt_sha256': sha(proof / 'part-resize-trial.json'), 'observer_sha256': sha(Path(__file__))}
-(proof / ('resize-axis-document-probe.json' if axis else 'resize-document-probe.json')).write_text(json.dumps(receipt, indent=2) + '\n')
+(proof / ('resize-axis-test-alias-probe.json' if test_alias else 'resize-axis-document-probe.json' if axis else 'resize-document-probe.json')).write_text(json.dumps(receipt, indent=2) + '\n')
 print('Resize probe: exit', code, 'errors', len(errors), 'baseline', len(base['errors']))
