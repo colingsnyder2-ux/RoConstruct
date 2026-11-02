@@ -1190,6 +1190,23 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-2c62f9ba4897446e",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8world/GlueJoint.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793605434,
+   "receipt": {
+    "gains": [
+     "00646c10",
+     "00647190"
+    ],
+    "losses": []
+   }
   }
  ]
 }

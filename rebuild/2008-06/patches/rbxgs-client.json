@@ -2928,5 +2928,19 @@
    "#include \"AppDraw/AdornG3D.h\"",
    "// 2008 rbxgs-appdraw was compiled with /fp:fast\n#pragma float_control(precise, off)\n#include \"AppDraw/AdornG3D.h\""
   ]
+ ],
+ "App/v8world/GlueJoint.cpp": [
+  [
+   "\n\t\tfor (int i = 0; i < 4; ++i)\n\t\t{\n\t\t\tG3D::Vector3 p0World = b0->getPV().position.pointToWorldSpace(overlapInP0[i]);\n\t\t\tG3D::Vector3 p1World = b1->getPV().position.pointToWorldSpace(overlapInP1[i]);\n\n\t\t\tPoint* p0 = getKernel()->newPoint(b0, p0World);\n",
+   "\n\t\tfor (int i = 0; i < 4; ++i)\n\t\t{\n\t\t\tG3D::Vector3 p0World = gluePointWorld(b0->getPV().position, overlapInP0[i]);\n\t\t\tG3D::Vector3 p1World = b1->getPV().position.pointToWorldSpace(overlapInP1[i]);\n\n\t\t\tPoint* p0 = getKernel()->newPoint(b0, p0World);\n"
+  ],
+  [
+   "\t\treturn Units::kmsForceToRbx(Constants::getKmsMaxJointForce(size.x, size.y));\n\t}\n\n\tvoid GlueJoint::putInKernel(Kernel* _kernel)\n\t{\n\t\tMultiJoint::putInKernel(_kernel);\n",
+   "\t\treturn Units::kmsForceToRbx(Constants::getKmsMaxJointForce(size.x, size.y));\n\t}\n\n\t__forceinline G3D::Vector3 gluePointWorld(const G3D::CoordinateFrame& f, const G3D::Vector3& v)\n\t{\n\t\treturn G3D::Vector3(f.rotation[0][0]*v[0] + f.rotation[0][1]*v[1] + f.rotation[0][2]*v[2] + f.translation[0],\n\t\t\tf.rotation[1][0]*v[0] + f.rotation[1][1]*v[1] + f.rotation[1][2]*v[2] + f.translation[1],\n\t\t\tf.rotation[2][0]*v[0] + f.rotation[2][1]*v[1] + f.rotation[2][2]*v[2] + f.translation[2]);\n\t}\n\n\tvoid GlueJoint::putInKernel(Kernel* _kernel)\n\t{\n\t\tMultiJoint::putInKernel(_kernel);\n"
+  ],
+  [
+   "#include \"v8world/GlueJoint.h\"\n#include \"v8world/Primitive.h\"\n#include \"v8kernel/Kernel.h\"\n",
+   "#pragma float_control(precise, off)\n#include \"v8world/GlueJoint.h\"\n#include \"v8world/Primitive.h\"\n#include \"v8kernel/Kernel.h\"\n"
+  ]
  ]
 }
