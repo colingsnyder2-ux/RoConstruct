@@ -1568,6 +1568,13 @@
     "user": "coldek"
   },
   {
+    "addr": "005d5d60",
+    "client": "2008-06",
+    "job": "ca5c014d978f4d14b0b5fedbeb2e7ac6",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
     "addr": "005d5ea0",
     "client": "2008-06",
     "job": "555bc6a61c11460b89091abb484c76f9",

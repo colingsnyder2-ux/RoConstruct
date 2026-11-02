@@ -1,4 +1,4 @@
-"""Compare donor Workspace base conversions to original RTTI offsets."""
+"""Compare candidate Workspace base conversions to original RTTI offsets."""
 import hashlib
 import json
 import sys
@@ -30,7 +30,9 @@ for function, typename, original in expected:
     ins = list(decoder.disasm(body, 0))
     assert len(ins) == 2 and ins[0].mnemonic == 'mov' and ins[0].op_str.startswith('eax, ') and ins[1].mnemonic == 'ret', (name, body.hex())
     actual = int(ins[0].op_str.split(', ')[1], 0)
-    rows.append({'base': function, 'donor_offset': hex(actual), 'original_offset': hex(original), 'delta': original - actual})
-receipt = {'scope': 'Inactive donor C++ base conversions compared to original RTTI; no layout substituted or live ABI claimed.', 'observer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'rtti_sha256': hashlib.sha256(rtti_path.read_bytes()).hexdigest(), 'object_sha256': hashlib.sha256(obj.read_bytes()).hexdigest(), 'rows': rows, 'flags': flags}
-(root / 'work/2008-06/shared-layouts/workspace-donor-base-offsets.json').write_text(json.dumps(receipt, indent=2) + '\n')
+    assert actual == original, (function, hex(actual), hex(original))
+    rows.append({'base': function, 'candidate_offset': hex(actual), 'original_offset': hex(original), 'delta': original - actual})
+header = root / 'rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h'
+receipt = {'scope': 'Inactive candidate base conversions match original RTTI; full Workspace lifetime and live ABI remain unproven.', 'observer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'model_header_sha256': hashlib.sha256(header.read_bytes()).hexdigest(), 'rtti_sha256': hashlib.sha256(rtti_path.read_bytes()).hexdigest(), 'object_sha256': hashlib.sha256(obj.read_bytes()).hexdigest(), 'rows': rows, 'flags': flags}
+(root / 'work/2008-06/shared-layouts/workspace-native-base-offsets.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(rows)

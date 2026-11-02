@@ -2979,6 +2979,24 @@
         ]
       },
       "timestamp": 1793598644.9809208
+    },
+    {
+      "job": "ca5c014d978f4d14b0b5fedbeb2e7ac6",
+      "patches": {
+        "App/include/v8datamodel/Teams.h": [
+          [
+            "\tprotected:\n\t\tvirtual void onChildAdded(Instance* child);",
+            "\tprotected:\n\t\tvirtual bool askAddChild(const Instance* instance) const;\n\t\tvirtual void onChildAdded(Instance* child);"
+          ]
+        ],
+        "App/v8datamodel/Teams.cpp": [
+          [
+            "ic_cast<Team*>(child))\n\t\t{\n\t\t\tboost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myTeams = teams.write();\n\t\t\tmyTeams->erase(std::find(myTeams->begin(), myTeams->end(), shared_from(child)));\n\t\t}\n\t}\n\n\tvoid Teams::rebalanceTeams()\n\t{\n\t\treturn;\n\t}\n}\n",
+            "ic_cast<Team*>(child))\n\t\t{\n\t\t\tboost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myTeams = teams.write();\n\t\t\tmyTeams->erase(std::find(myTeams->begin(), myTeams->end(), shared_from(child)));\n\t\t}\n\t}\n\n\tvoid Teams::rebalanceTeams()\n\t{\n\t\treturn;\n\t}\n}\n\nnamespace RBX { bool Teams::askAddChild(const Instance* instance) const { return dynamic_cast<const Team*>(instance)!=0; } }\n"
+          ]
+        ]
+      },
+      "timestamp": 1793604099.5462303
     }
   ],
   "initial_patches": {}

@@ -65,10 +65,28 @@ libs += [rebuild.dll_import_lib('2008-06', dll) for dll in spec['import_dlls']]
 objects = [out/'NativeDocShell.obj'] + [p6/name for name in ['MyXTPCommandBars.obj','appmodul.obj','P6Engine.obj','P6Data.obj','roblox.res','mfc90.lib']]
 objects += [snap/'native-layouts'/name for name in ['NativeFrameIconsFresh.obj','NativeFrameIconWidth.obj','NativeDHtmlDialog.obj','NativeAboutDialog.obj','NativeAboutDialogData.obj','NativeFileVersionInfo.obj','NativeGLCaps.obj','NativeSaveDialogProfile.obj','NativeApplicationBaseUrl.obj','NativeDocumentHistoryProfile.obj','NativeDocumentException.obj','NativeWorkspaceLayout.obj','NativeWorkspaceLoad.obj','WorkspaceInsertNativeProfile.obj','NativeParserDestructor.obj','SelectionFront.obj','InstanceClassLookup.obj','NativeDataModelTiming.obj','NativeDataModelDutyCycle.obj','NativePlayersAbuse.obj','NativeLuaAllocatorStats.obj']]
 objects += [snap/'native-layouts'/name for name in ['NativeVerbLifetime.obj','NativeVerbBaseLifetime.obj','NativeVerbQueries.obj']]
+objects.append(snap/'native-layouts'/'NativeExitCommand.obj')
+objects += [snap/'native-layouts'/'NativeCameraUnits.obj', snap/'native-layouts'/'NativeCameraConstants.obj']
+objects.append(snap/'native-layouts'/'NativeSoundServicePlay.obj')
+objects.append(snap/'native-layouts'/'NativeCameraHistory.obj')
+objects.append(snap/'native-layouts'/'NativeFilteredSelectionService.obj')
+objects.append(snap/'native-layouts'/'NativeFilteredSelectionFactory.obj')
+objects.append(snap/'native-layouts'/'NativeCameraCenterAction.obj')
+objects.append(snap/'native-layouts/zoom-extents-preprocess/NativeCameraZoomExtentsProfile.obj')
 objects.append(snap/'native-layouts'/'NativeRotateAxisTrial.obj')
 objects.append(snap/'native-layouts/execscript-probe/NativeExecScriptProfile.obj')
 objects.append(snap/'native-layouts/execscript-helper-probe/CWorkspaceExecScriptHelperProfile.obj')
 objects.append(snap/'native-layouts/execurl-probe/NativeWorkspaceExecUrlProfile.obj')
+objects.append(snap/'native-layouts/save-probe/CWorkspaceSaveProfile.obj')
+objects.append(snap/'native-layouts/CWorkspaceSelectionTrial.obj')
+objects.append(snap/'native-layouts/content-insert-probe/NativeWorkspaceInsertUrlProfile.obj')
+objects.append(snap/'native-layouts/NativeContentFactoryTrial.obj')
+objects.append(snap/'native-layouts/content-upload-probe/CContentUploadProfile.obj')
+objects.append(snap/'native-layouts/content-upload-probe/CContentError.obj')
+objects.append(snap/'native-layouts/content-upload-probe/CContentGuids.obj')
+objects.append(snap/'native-layouts/NativeWorkspaceWriteTrial.obj')
+objects.append(snap/'native-layouts/hresult-report-probe/WorkspaceHResultProfile.obj')
+objects.append(snap/'native-layouts/NativeWorkspaceRaiseError.obj')
 objects.append(snap/'native-layouts/lua-args-probe/LuaArgsProfile.obj')
 objects += [snap/'native-layouts'/name for name in ['NativeWorkspaceObjectSafety.obj','NativeWorkspaceSiteUrl.obj']]
 objects += [snap/'native-layouts'/name for name in ['ServiceSelectionProfile.obj','NativeServiceLookup.obj']]

@@ -1,4 +1,4 @@
-// from server: 54% by atomic.potato
+// from server: 57% by Intel
 struct S
 {
     int f();
@@ -13,9 +13,8 @@ extern "C" int __cdecl sub_686620(S*, int);
 
 int S::f()
 {
-    S* p = *(S**)((char*)this + 12);
-    T* q = *(T**)((char*)p + 336);
-    int (__cdecl *fn)(T*) = (int (__cdecl *)(T*))(*(int**)((char*)q + 8));
+    T* p = *(T**)((char*)this + 12);
+    int (__cdecl *fn)(T*) = (int (__cdecl *)(T*))(*(int**)((char*)p + 336));
     int r = fn((T*)((char*)p + 336));
     return sub_686620((S*)r, 1);
 }

@@ -28,6 +28,7 @@ public:
 class XmlElement;
 
 namespace RBX {
+    class ContentId;
     class DataModel;
     class RunService;
     class Selection;
@@ -73,6 +74,9 @@ public:
     RBX::Workspace* getWorkspace();
     void cleanup();
     std::auto_ptr<XmlElement> writeXmlModel();
+    std::auto_ptr<XmlElement> writeXmlSelection();
+    HRESULT write(XmlElement*, std::ostream&);
     void load(std::istream&); // 0046aa70; original symbol linkage pending.
+    void insert(RBX::ContentId, bool);
     void insert(std::istream&, bool); // 0046b9d0; implementation pending.
 };

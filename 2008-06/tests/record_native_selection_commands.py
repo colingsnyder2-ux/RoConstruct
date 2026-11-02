@@ -45,7 +45,14 @@ for cls, address, label in [('GroupSelectionVerb',0x57e7e0,'Group'), ('WeldSelec
     type_descriptor = readptr(readptr(vtable-4)+12)
     assert pe.get_string_at_rva(type_descriptor+8-image) == ('.?AV'+cls+'@RBX@@').encode('ascii')
     rows.append({'class':cls,'address':hex(address),'size':len(body),'label':label,'literal':hex(literal),'vtable':hex(vtable),'type_descriptor':hex(type_descriptor)})
+camera_checks = []
+for cls, address, vtable in [('AttachCameraCommand', 0x57dcb0, 0x830830), ('TrackCameraCommand', 0x57dce0, 0x830848), ('FollowCameraCommand', 0x57dd10, 0x830860), ('WatchCameraCommand', 0x57dd40, 0x830878)]:
+    name, body, refs = next(x for x in functions if x[0].startswith('?isChecked@'+cls+'@RBX@@'))
+    target, targetrefs, _ = match.target('2008-06', f'{address:08x}')
+    assert match.exact_match(target, targetrefs, body, refs)
+    assert readptr(vtable + 12) == address
+    camera_checks.append({'class': cls, 'address': hex(address), 'size': len(body), 'vtable_slot': hex(vtable + 12), 'exact': True})
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-receipt = {'source_sha256':sha(source),'header_sha256':sha(header),'observer_sha256':sha(Path(__file__)),'object_sha256':sha(obj),'flags':flags,'methods':rows,'scope':'Inactive trials. Original RTTI names checked; vtable slots, lifetime and runtime ABI remain unproven.'}
+receipt = {'source_sha256':sha(source),'header_sha256':sha(header),'observer_sha256':sha(Path(__file__)),'object_sha256':sha(obj),'flags':flags,'methods':rows,'camera_checks':camera_checks,'scope':'Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven.'}
 (root / 'work/2008-06/shared-layouts/selection-command-constructors-trial.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print('PASS ten selection-command constructors, labels and RTTI')

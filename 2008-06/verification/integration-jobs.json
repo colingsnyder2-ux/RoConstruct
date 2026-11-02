@@ -8621,5 +8621,49 @@
     "unit": "RBX::AIController",
     "updated": 1793598645.170819,
     "user": "colin"
+  },
+  {
+    "created": 1793603182.3828218,
+    "id": "ca5c014d978f4d14b0b5fedbeb2e7ac6",
+    "model": "gpt-6.1-sol",
+    "patches": {
+      "App/include/v8datamodel/Teams.h": [
+        [
+          "\tprotected:\n\t\tvirtual void onChildAdded(Instance* child);",
+          "\tprotected:\n\t\tvirtual bool askAddChild(const Instance* instance) const;\n\t\tvirtual void onChildAdded(Instance* child);"
+        ]
+      ],
+      "App/v8datamodel/Teams.cpp": [
+        [
+          "ic_cast<Team*>(child))\n\t\t{\n\t\t\tboost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myTeams = teams.write();\n\t\t\tmyTeams->erase(std::find(myTeams->begin(), myTeams->end(), shared_from(child)));\n\t\t}\n\t}\n\n\tvoid Teams::rebalanceTeams()\n\t{\n\t\treturn;\n\t}\n}\n",
+          "ic_cast<Team*>(child))\n\t\t{\n\t\t\tboost::shared_ptr<std::vector<boost::shared_ptr<Instance>>>& myTeams = teams.write();\n\t\t\tmyTeams->erase(std::find(myTeams->begin(), myTeams->end(), shared_from(child)));\n\t\t}\n\t}\n\n\tvoid Teams::rebalanceTeams()\n\t{\n\t\treturn;\n\t}\n}\n\nnamespace RBX { bool Teams::askAddChild(const Instance* instance) const { return dynamic_cast<const Team*>(instance)!=0; } }\n"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "36ebbc5d13684ab42719b9f7256cfb1a2b35300f0fdd4197085cc1e73a3c0b67",
+      "credits": 1,
+      "distinct_after": 10267,
+      "distinct_before": 10266,
+      "gains": [
+        "005d5d60"
+      ],
+      "input_hash": "e75aafe960c586705f83adb63b6ae5c2353ca5473f0e11a3c3907e19737bd45f",
+      "losses": [],
+      "new_distinct": [
+        "005d5d60"
+      ],
+      "overlay_hash": "8bdac07d03ef43e984b179798a3a173b2b42e816830b42753258499c8b8e4861",
+      "owned_after": 3775,
+      "owned_before": 3774,
+      "rebased": false,
+      "submitted_revision": "36ebbc5d13684ab42719b9f7256cfb1a2b35300f0fdd4197085cc1e73a3c0b67"
+    },
+    "state": "accepted",
+    "unit": "RBX::Teams",
+    "updated": 1793604099.873419,
+    "user": "colin"
   }
 ]
