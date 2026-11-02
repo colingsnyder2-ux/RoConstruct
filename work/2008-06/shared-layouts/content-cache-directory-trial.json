@@ -1,0 +1,82 @@
+{
+  "source_sha256": "db5670332ac5ae6284141b25c6f06adc6e163a2b2b51cc4858e47b26a075ffba",
+  "layout_sha256": "bac1b447620f2dc8110ccfaac3a1d81db7507b559fd32a1a377ba4e00c995ded",
+  "observer_sha256": "dc896fc372a8536bf0f62d20bac0d74f60913b63e49f9f84a8935de5f0154a13",
+  "object_sha256": "6354759e0d122f562bffc3f95436e9bf5f979e01c2a63a36e9f1bb1d723729ac",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeCacheDirectoryTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeCacheDirectoryTrial.cpp"
+  ],
+  "address": "005a7ea0",
+  "size": 548,
+  "targets": {
+    "__imp__LoadLibraryA@4": [
+      "0x8021cc"
+    ],
+    "__imp__GetProcAddress@8": [
+      "0x8021c0"
+    ],
+    "?GetIntegrity@VistaAPIs@RBX@@": [
+      "0x5a7780"
+    ],
+    "__imp__CLSIDFromString@8": [
+      "0x804134"
+    ],
+    "__imp__CreateDirectoryA@8": [
+      "0x8022b4"
+    ],
+    "__imp__SHGetFolderPathAndSubDirA@24": [
+      "0x802af4"
+    ],
+    "__imp__FreeLibrary@4": [
+      "0x8021a0"
+    ]
+  },
+  "related_bodies": [
+    {
+      "address": "005a7ac0",
+      "symbol": "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+      "size": 992
+    },
+    {
+      "address": "005a7780",
+      "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+      "size": 263
+    }
+  ],
+  "scope": "Inactive trial. Vista API layout, exact integrity helper, imports, exception metadata and runtime ownership remain unproven."
+}

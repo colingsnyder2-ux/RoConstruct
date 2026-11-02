@@ -294,7 +294,7 @@ public:
         : ParentClass(NativeToolName<MouseCommandClass>::get().toString()+"Tool",dm) {}
     virtual void doIt(IDataState*);
     virtual bool isChecked() const;
-    virtual boost::shared_ptr<MouseCommand> newMouseCommand();
+    virtual MouseCommand* newMouseCommand();
 };
 class ArrowTool;
 template<> struct NativeToolText<ArrowTool> {static const char* get() {return "Arrow";}};

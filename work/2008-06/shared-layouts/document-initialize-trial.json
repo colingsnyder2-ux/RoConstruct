@@ -1,0 +1,137 @@
+{
+  "source_sha256": "ab5d75c19e2eb018179c04dc5d4abc704c7fdd839995134a32033ee259dbefd5",
+  "layout_sha256": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
+  "observer_sha256": "d6970605fd62e4d53843e4d74a33c1a6b2090d4beb049626d8248d559673c55e",
+  "object_sha256": "316ef0ab767998aa38328d0c94026399eda9b3ef76cc7fe7a97bf42ba9492f77",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentInitializeTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDocumentInitializeTrial.cpp"
+  ],
+  "address": "00451b60",
+  "size": 3108,
+  "targets": {
+    "?createNativeWorkspace@@": [
+      "0x450370"
+    ],
+    "?getDataModel@CWorkspace@@": [
+      "0x46a940"
+    ],
+    "??0Lock@DataModel@RBX@@": [
+      "0x411b40"
+    ],
+    "??0StandardVerbs@RBX@@": [
+      "0x5c7ea0"
+    ],
+    "??1StandardVerbs@RBX@@": [
+      "0x450450"
+    ],
+    "??_7ReportAbuseVerb@@": [
+      "0x8172e0"
+    ],
+    "?getWorkspace@CWorkspace@@": [
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970"
+    ],
+    "??_7FixedCameraCommand@RBX@@": [
+      "0x817c00"
+    ],
+    "?bindExisting@CRobloxDoc@@": [
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10"
+    ],
+    "?lookup@Name@RBX@@": [
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290"
+    ],
+    "?bindOwned@CRobloxDoc@@": [
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60"
+    ],
+    "??_7InsertTexture@@": [
+      "0x817324"
+    ],
+    "??1Lock@DataModel@RBX@@": [
+      "0x5773c0"
+    ]
+  },
+  "scope": "Inactive trial. Inactive trial. Referenced command vtables, constructors, class layouts, workspace factory, exception handling and ownership remain unproven."
+}

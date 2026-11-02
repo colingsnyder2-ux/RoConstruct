@@ -18,8 +18,9 @@ HRESULT IObjectSafetyRobloxImpl<T, Supported>::checkSite()
         result = validateWorkspaceSiteZone(url, zone);
         if (result) {
             CString message;
-            message.Format("Untrusted Site: %s", CString(url).GetString());
-            return reportWorkspaceSiteError(workspaceSiteErrorContext, message, result);
+            { message.Format("Untrusted Site: %s", CString(url)); }
+            const char* (CString::*convert)() const = &CString::operator const char*;
+            return reportWorkspaceSiteError(workspaceSiteErrorContext, (message.*convert)(), result);
         }
     }
     return S_OK;

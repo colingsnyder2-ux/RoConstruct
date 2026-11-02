@@ -16,6 +16,7 @@ typedef boost::function<void(RequestResult, std::istream&)> RequestCallback;
 struct ContentRequest {
     ContentId id;
     std::vector<RequestCallback> callbacks;
+    bool operator==(const ContentId& other) const { return id.toString() == other.toString(); }
 };
 class ContentProvider : public DescribedNonCreatable<ContentProvider, Instance, &sContentProvider> {
 public:
@@ -39,6 +40,7 @@ public:
     worker_thread::work_result processRequests();
     std::auto_ptr<std::istream> getContent(ContentId);
     CachedContent* loadContent(ContentId, int, const RequestCallback*);
+    bool isUrlBad(const char*);
     static bool isUrl(const std::string&);
 };
 typedef char ProviderSize[sizeof(ContentProvider) == 0x19c ? 1 : -1];

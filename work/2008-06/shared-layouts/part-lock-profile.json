@@ -1,0 +1,72 @@
+{
+  "observer_sha256": "a9f6fa301a99393c6443b8f7c3ec793e650b2a4176cb0868c214990427510bbc",
+  "body_sha256": "bb29521216dab4d61ccf029805c3cdeb71f57d5c06c5981dc5e26b05846d0d75",
+  "recipe": "rbxgs-dll",
+  "unit": "roc_part_grouped_tail_constructor_9b19d0716f31ff52.cpp",
+  "preprocessed_sha256": "b558ea6385821f409354d3350d0300753c740510bc8301f5e20fc028b19a6b0c",
+  "objects": [
+    "1335e0ba256e961754f877bb7071ceb05bd0260172485174d65969c80330f4ba",
+    "58a892a50e58f68d180d6fd0789b82cc3c6d02ef185ef546013e3d12704cb081"
+  ],
+  "flags": [
+    [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePartLockBaseline.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePartLockBaseline.cpp"
+    ],
+    [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePartLockProfile.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePartLockProfile.cpp"
+    ]
+  ],
+  "methods": [
+    {
+      "address": "0059d4d0",
+      "size": 785,
+      "targets": {}
+    },
+    {
+      "address": "00599530",
+      "size": 191,
+      "targets": {
+        "?getFirstJoint@Primitive@RBX@@": "0x5e7b90",
+        "?Matrix3ToNormalId@RBX@@": "0x5ec310",
+        "?normalIdOpposite@RBX@@": "0x5ec180",
+        "?getNextJoint@Primitive@RBX@@": "0x5e7ba0"
+      }
+    }
+  ],
+  "donor_primitive_sha256": "68708dd07ca599011f744865b10d893a9a00bb9b23e5e1e3329f3a105657fbf2",
+  "donor_edge_methods": [
+    {
+      "address": "005e7b90",
+      "donor_size": 15,
+      "original_size": 15,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "005e7ba0",
+      "donor_size": 40,
+      "original_size": 37,
+      "relocation_normalized_exact": false
+    }
+  ],
+  "scope": "Inactive typed 2008 profile. Constructor and lock body match; source recipe uses provisional Guid declarations. Destructor, complete Part/Primitive/Joint layouts, virtual bindings and runtime remain unproven. Donor next-joint method differs."
+}

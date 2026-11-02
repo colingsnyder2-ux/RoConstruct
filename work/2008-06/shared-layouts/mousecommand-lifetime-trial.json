@@ -1,0 +1,132 @@
+{
+  "observer_sha256": "31ac71f63d5d225a3bb6b05a0bde5a997295e7b2e5d058e05a84866df407dbba",
+  "headers": {
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\MouseCommand.h": "1f64b1ad3f0fe3597c7c9739bc9716e0f58a5b1220a05c381e61fe44a0e8ee09",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "0a333d9d37be9acf557aa0a3afb10193ee2306a5288b0a9fb9e303740aa65f9d",
+    "tools\\rbxgs\\Client\\App\\include\\tool\\ToolsArrow.h": "abd288c3e88ba5b89d21c35f9b73c5fd99724e22e3bbbb245bd602257256e12f"
+  },
+  "objects": {
+    "NativeMouseCommandLifetimeTrial": {
+      "source_sha256": "5ab708ee103877be4486418f8e6c954f2739535c00b6922c618d133bfebbd5fb",
+      "object_sha256": "3c4479eaee036162b04eb132753d4155ee3d9da20353e9f22b991d32a3b0e1bc",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeMouseCommandLifetimeTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeMouseCommandLifetimeTrial.cpp"
+      ]
+    },
+    "NativeArrowFactoryTrial": {
+      "source_sha256": "2d380b60d95c71246698397063ff7d161d6ad283a8cc85e520ee70541e9fe245",
+      "object_sha256": "200ef0b957ea6379aa7ee4f5b576b8b5e87d7bba066f04df95959e9dfbf2b6c8",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeArrowFactoryTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeArrowFactoryTrial.cpp"
+      ]
+    }
+  },
+  "methods": [
+    {
+      "address": "006159f0",
+      "size": 42,
+      "targets": {
+        "??_7MouseCommand@RBX@@6BINamed@": "0x8439fc",
+        "??_7MouseCommand@RBX@@6BIRenderable@": "0x8439e0"
+      }
+    },
+    {
+      "address": "00615780",
+      "size": 20,
+      "targets": {
+        "??_7MouseCommand@RBX@@6BINamed@": "0x8439fc",
+        "??_7MouseCommand@RBX@@6BIRenderable@": "0x8439e0",
+        "??1IRenderable@RBX@@": "0x47d410"
+      }
+    },
+    {
+      "address": "00615a20",
+      "size": 45,
+      "targets": {
+        "??_7MouseCommand@RBX@@6BINamed@": "0x8439fc",
+        "??_7MouseCommand@RBX@@6BIRenderable@": "0x8439e0",
+        "??1IRenderable@RBX@@": "0x47d410"
+      }
+    },
+    {
+      "address": "005c6270",
+      "size": 126,
+      "targets": {
+        "??0MouseCommand@RBX@@": "0x6159f0",
+        "??_7ArrowTool@RBX@@6BINamed@": "0x8336a4",
+        "??_7ArrowTool@RBX@@6BIRenderable@": "0x833688"
+      }
+    }
+  ],
+  "scope": "Inactive layout candidate. MouseCommand constructor and scalar-deleting destructor match, Arrow factory matches. Full virtual slots, Arrow lifetime, linked callees and runtime ABI remain unproven."
+}

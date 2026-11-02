@@ -1,0 +1,54 @@
+{
+  "observer_sha256": "54b35aa6c5c07f6dadb1b0125ee0b9a76a68136685b3d9c4e874e11d4c077233",
+  "interface_sha256": "5888744b74e2d510402f8450c3071f8112eb8cad0bc175d1e1611a3b209f6707",
+  "body_sha256": "4e74166acc860c86fe34016c7713756a1c4e0c084e650ba6b20394bec436cfa4",
+  "recipe": "roc_espclaude_164c05053810c4f5.cpp",
+  "profile_sha256": "e6e94ed261054df44b0334fc3350e0298355d481ecf7faaffe7e5138651ac6e2",
+  "objects": [
+    "3319137f8ccf659cc0178b02e86efc1666becd44d8f64ba9e2adf7268ce1db67",
+    "fe49791a619d13bb3f6067fe71fc4666fd82d20e9cbda228a5cf5095de322b93"
+  ],
+  "flags": [
+    [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceDefaultCtorProfile.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceDefaultCtorProfile.cpp"
+    ],
+    [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceDefaultProfile.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceDefaultProfile.cpp"
+    ]
+  ],
+  "methods": [
+    {
+      "address": "005a4d90",
+      "size": 1124,
+      "targets": {}
+    },
+    {
+      "address": "005a0610",
+      "size": 76,
+      "targets": {
+        "?createDefaultMouseCommand@RBX@@": "0x5a0280"
+      }
+    }
+  ],
+  "scope": "Inactive profile. Workspace constructor and default command match, but profile has partial MouseCommand declaration and provisional Workspace bases; native destructor, full vtable, linked ownership and runtime ABI remain unproven."
+}

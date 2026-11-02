@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02 04:19 UTC",
+ "updated": "2026-11-02 04:53 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -761,14 +761,14 @@
    "started": true,
    "functions": 39655,
    "matched": 17368,
-   "partial": 10730,
+   "partial": 10732,
    "source_matched": 9796,
    "mined_matched": 7572,
    "bytes": 6736062,
    "matched_bytes": 1635994,
    "source_bytes": 1429871,
    "mined_bytes": 206123,
-   "partial_bytes": 1863026,
+   "partial_bytes": 1863388,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -801,11 +801,11 @@
     {
      "user": "Intel",
      "matched": 111,
-     "mining_points": 28946,
-     "points": 28946,
+     "mining_points": 29049,
+     "points": 29049,
      "native_integrated": 0,
-     "submissions": 684,
-     "last": 1793587096.695617
+     "submissions": 687,
+     "last": 1793594957.8388696
     },
     {
      "user": "intel",
@@ -961,11 +961,11 @@
   {
    "user": "Intel",
    "matched": 118,
-   "mining_points": 29387,
-   "points": 29387,
+   "mining_points": 29490,
+   "points": 29490,
    "native_integrated": 0,
-   "submissions": 701,
-   "last": 1793587096.695617
+   "submissions": 704,
+   "last": 1793594957.8388696
   },
   {
    "user": "intel",

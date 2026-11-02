@@ -1,10 +1,10 @@
 {
-  "scope": "Inactive original URL and zone checks. Site-check candidate is not yet exact; error reporter/data and existing linked Http::trustCheck remain unproven.",
+  "scope": "Inactive original site/URL/zone checks match; linked error reporter/data, CWorkspace layout and existing Http::trustCheck remain unproven.",
   "inputs": {
-    "rebuild\\2008-06\\tests\\record_native_workspace_site_trust.py": "82012ead7a3cfe0d21aca6ba91060b191ed7b46c8c42227481754fdb61f3465c",
+    "rebuild\\2008-06\\tests\\record_native_workspace_site_trust.py": "f5099fe6f10f31600d64121f4425c920d85533ae76820e45760a6a6b4c814ac1",
     "rebuild\\2008-06\\native-classes\\WorkspaceSiteTrust.cpp": "372604126c308a1e46ef32c7f0159a17f65d30bf7b488e9080638d2fbe0894ba",
-    "rebuild\\2008-06\\native-classes\\CWorkspaceSiteCheck.cpp": "9c4922b46a7976981e7f0ceecb411bb98ef05fae61dffcecdb53343495adba14",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
+    "rebuild\\2008-06\\native-classes\\CWorkspaceSiteCheck.cpp": "2356ca3cd1ccb5cf1945611147e0edf609a8a24e1bd310b66d9b6b999699f4b6",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "86e8508936eb1f96d30ae34baad3b598ac554a22e7770d539c523fc11c9417eb",
     "tools\\rbxgs\\Client\\App\\include\\util\\Http.h": "ce6d4cb81236f2247ec6e3ecd6b235cfb96f399b37110f6a76b519e91ab86cf8"
   },
   "preprocess_flags": [
@@ -57,7 +57,7 @@
     "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceSiteTrustProfile.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceSiteTrustProfile.cpp"
   ],
-  "object_sha256": "686bd226bbfa003776add6bc4717447876792a9a577fc3202c0e9d1f639f2a0e",
+  "object_sha256": "6ff1c4b3edb3e55c3203265a48ee1769769b07e89d6ba3de80d7a32dac600ec2",
   "methods": [
     {
       "address": "0041dcd0",
@@ -78,9 +78,25 @@
   ],
   "site_check_candidate": {
     "symbol": "?checkSite@?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@QAEJXZ",
-    "candidate_size": 393,
+    "candidate_size": 399,
     "original_size": 399,
-    "relocation_normalized_exact": false,
+    "relocation_normalized_exact": true,
+    "bindings": {
+      "__ehhandler$?checkSite@?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@QAEJXZ": "0x7bcc82",
+      "_IID_IUnknown": "0x8501cc",
+      "?getSiteUrl@?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@QAEJAAVCComBSTR@ATL@@AAK@Z": "0x403210",
+      "??_C@_0BG@NIIBBDPD@Failed?5to?5get?5SiteUrl?$AA@": "0x80b214",
+      "?workspaceSiteErrorContext@@3U_GUID@@B": "0x8164f8",
+      "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": "0x429330",
+      "__imp__SysFreeString@4": "0x802944",
+      "?validateWorkspaceSiteZone@@YAJPB_WK@Z": "0x41dd40",
+      "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f04",
+      "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PB_W@Z": "0x803ed8",
+      "??_C@_0BD@IHMANNBL@Untrusted?5Site?3?5?$CFs?$AA@": "0x80b200",
+      "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXPBDZZ": "0x803edc",
+      "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14",
+      "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "0x803ee0"
+    },
     "flags": [
       "/nologo",
       "/c",
@@ -119,7 +135,7 @@
       "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceSiteCheck.obj",
       "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceSiteCheck.cpp"
     ],
-    "object_sha256": "b47e6e56228fc6d203e989094de3676fdc401cf547737c7fe6e7494ce0565d03"
+    "object_sha256": "3564a48c5d0c390bffa79b1808c36d974200c9dc78e1a1582f1ddd15533e6707"
   },
   "linked_http": {
     "object": "rebuild\\2008-06\\out\\RbxgsApp\\linked\\Http.obj",

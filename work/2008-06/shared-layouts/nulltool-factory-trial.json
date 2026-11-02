@@ -1,0 +1,78 @@
+{
+  "source_sha256": "0c49f852a1305eef7be035616250a7fe16ae1a4a78265a212bd5f0067c35f326",
+  "observer_sha256": "8cd55ff383fc80affb7494514cabc354f6107d01aff6cdba658805c6cb4cbb37",
+  "headers": {
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\MouseCommand.h": "1f64b1ad3f0fe3597c7c9739bc9716e0f58a5b1220a05c381e61fe44a0e8ee09",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "0a333d9d37be9acf557aa0a3afb10193ee2306a5288b0a9fb9e303740aa65f9d",
+    "tools\\rbxgs\\Client\\App\\include\\tool\\NullTool.h": "df67edd8a415e2d8370d98f69a9c148492d8bad0fb9e69b50ca68fb957124ea4"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeNullToolFactoryTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeNullToolFactoryTrial.cpp"
+  ],
+  "methods": [
+    {
+      "address": "005c7610",
+      "size": 102,
+      "object_sha256": "ae694348b25d5572e062e452fd6a79a7a73c79463a8c267b6b4e5297e6d82f13",
+      "targets": {
+        "??0NullTool@RBX@@": "0x618110"
+      }
+    },
+    {
+      "address": "00618110",
+      "size": 32,
+      "object_sha256": "38ddf9c1d241611a98d0bf7850f655313a52fb9c86e8b14192934dc8d18a6800",
+      "targets": {
+        "??0MouseCommand@RBX@@": "0x6159f0",
+        "??_7NullTool@RBX@@6BINamed@": "0x843bd4",
+        "??_7NullTool@RBX@@6BIRenderable@": "0x843bbc"
+      }
+    },
+    {
+      "address": "00618130",
+      "size": 43,
+      "object_sha256": "38ddf9c1d241611a98d0bf7850f655313a52fb9c86e8b14192934dc8d18a6800",
+      "targets": {
+        "??_7NullTool@RBX@@6BINamed@": "0x843bd4",
+        "??_7NullTool@RBX@@6BIRenderable@": "0x843bbc",
+        "??1MouseCommand@RBX@@": "0x615780"
+      }
+    }
+  ],
+  "scope": "Inactive trial. Existing object ctor/dtor direct targets verified; all vtable methods, object identity, EH and runtime ABI remain unproven."
+}

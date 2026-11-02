@@ -504,3 +504,11 @@ affected by anything on the P6 branch.
 - 2026-11-01 Codex: add original nonvirtual ContentProvider getContent(ContentId), isUrl(std::string) declarations to inactive trial class for Doc command handler 00453c30. No fields or virtual slots changed; service ABI remains under test.
 
 - 2026-11-01 Codex: add inactive ContentProvider::loadContent(ContentId, int, RequestCallback const*) candidate declaration for original 00561f20 getContent dependency. No field or virtual layout changes; mode/type and lifetime remain under verification.
+
+- 2026-11-01 Codex: add nonvirtual isUrlBad declaration and ContentRequest equality to inactive ContentProvider trial for 00561980 cache dependency. No field or vtable changes; ABI and runtime remain unproven.
+
+- 2026-11-01 Codex: declare nonvirtual CWorkspace::getWorkspace for Doc initializer 00451b60, following original 0046a970. No fields/vtable changes; trial ABI remains under verification.
+
+- 2026-11-01 Codex: correct inactive TToolVerb::newMouseCommand return from boost::shared_ptr<MouseCommand> to MouseCommand*. Original factory 005c6270 returns raw allocation in EAX with plain ret; caller 005c6f00 passes EAX directly. No fields or virtual slots changed. Rerun StandardVerbs/Doc layout and initializer probes; runtime still unproven.
+
+- 2026-11-01 Codex: add inactive native v8datamodel/MouseCommand.h based on donor declaration without 2007 undoState field. Original 006159f0 constructor, 00615a20 deleting destructor and 005c6270 Arrow factory match this layout; methods/virtual slots and live runtime ABI remain unproven. No active build selection.

@@ -1,0 +1,175 @@
+{
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "rtti_receipt_sha256": "62e62c283fd71927a1d679c1acbc2f4c4fd60614d33dcf8b9962fd4d0cdcc224",
+  "observer_sha256": "8b0ce324a720af38a2204f830787fac493e468878accc84995198120cb00cc6b",
+  "camera_base": {
+    "type": ".?AVICameraOwner@RBX@@",
+    "descriptor": "0x898af4",
+    "contained_bases": 0,
+    "member_displacement": 648,
+    "vbtable_displacement": -1,
+    "virtual_displacement": 0,
+    "attributes": 64
+  },
+  "methods": [
+    {
+      "address": "005a4d90",
+      "size": 1124,
+      "sha256": "14de72392a594eb567992b0d7a73704f060e01c2d63f0b811ba5c49a73cdeb3f",
+      "writes": {
+        "0x0": {
+          "address": "0x5a4e50",
+          "vtable": "0x833a54"
+        },
+        "0x10": {
+          "address": "0x5a4e56",
+          "vtable": "0x833a44"
+        },
+        "0x14": {
+          "address": "0x5a4e5d",
+          "vtable": "0x833a3c"
+        },
+        "0x20": {
+          "address": "0x5a4e64",
+          "vtable": "0x833a34"
+        },
+        "0x24": {
+          "address": "0x5a4e6b",
+          "vtable": "0x833a24"
+        },
+        "0x44": {
+          "address": "0x5a4e72",
+          "vtable": "0x833a14"
+        },
+        "0x64": {
+          "address": "0x5a4e79",
+          "vtable": "0x833a04"
+        },
+        "0x84": {
+          "address": "0x5a4e80",
+          "vtable": "0x8339f4"
+        },
+        "0xa4": {
+          "address": "0x5a4e8a",
+          "vtable": "0x8339e4"
+        },
+        "0xc4": {
+          "address": "0x5a4e94",
+          "vtable": "0x8339d4"
+        },
+        "0x130": {
+          "address": "0x5a4e9e",
+          "vtable": "0x8339c8"
+        },
+        "0x1a0": {
+          "address": "0x5a4ea8",
+          "vtable": "0x8339b0"
+        },
+        "0x288": {
+          "address": "0x5a4eb2",
+          "vtable": "0x833998"
+        },
+        "0x2e8": {
+          "address": "0x5a4ebc",
+          "vtable": "0x833990"
+        },
+        "0x340": {
+          "address": "0x5a4ed3",
+          "vtable": "0x833970"
+        },
+        "0x344": {
+          "address": "0x5a4edd",
+          "vtable": "0x833960"
+        },
+        "0x364": {
+          "address": "0x5a4ee7",
+          "vtable": "0x833950"
+        },
+        "0x384": {
+          "address": "0x5a4ef1",
+          "vtable": "0x833944"
+        }
+      }
+    },
+    {
+      "address": "005a28c0",
+      "size": 878,
+      "sha256": "4c9e6b79ce878347fe4f3d49044f6727d97227e14d1b847c1d9bd6989841ff8f",
+      "writes": {
+        "0x0": {
+          "address": "0x5a28e5",
+          "vtable": "0x833a54"
+        },
+        "0x10": {
+          "address": "0x5a28eb",
+          "vtable": "0x833a44"
+        },
+        "0x14": {
+          "address": "0x5a28f2",
+          "vtable": "0x833a3c"
+        },
+        "0x20": {
+          "address": "0x5a28f9",
+          "vtable": "0x833a34"
+        },
+        "0x24": {
+          "address": "0x5a2900",
+          "vtable": "0x833a24"
+        },
+        "0x44": {
+          "address": "0x5a2907",
+          "vtable": "0x833a14"
+        },
+        "0x64": {
+          "address": "0x5a290e",
+          "vtable": "0x833a04"
+        },
+        "0x84": {
+          "address": "0x5a2915",
+          "vtable": "0x8339f4"
+        },
+        "0xa4": {
+          "address": "0x5a291f",
+          "vtable": "0x8339e4"
+        },
+        "0xc4": {
+          "address": "0x5a2929",
+          "vtable": "0x8339d4"
+        },
+        "0x130": {
+          "address": "0x5a2933",
+          "vtable": "0x8339c8"
+        },
+        "0x1a0": {
+          "address": "0x5a293d",
+          "vtable": "0x8339b0"
+        },
+        "0x288": {
+          "address": "0x5a2947",
+          "vtable": "0x833998"
+        },
+        "0x2e8": {
+          "address": "0x5a2951",
+          "vtable": "0x833990"
+        },
+        "0x340": {
+          "address": "0x5a296f",
+          "vtable": "0x833970"
+        },
+        "0x344": {
+          "address": "0x5a2979",
+          "vtable": "0x833960"
+        },
+        "0x364": {
+          "address": "0x5a2983",
+          "vtable": "0x833950"
+        },
+        "0x384": {
+          "address": "0x5a298d",
+          "vtable": "0x833944"
+        }
+      }
+    }
+  ],
+  "scope": "Original Workspace RTTI offsets confirmed by both original constructor and destructor vtable stores; full native C++ hierarchy and member lifetime remain unproven."
+}

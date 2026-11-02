@@ -2,7 +2,7 @@
   "scope": "Inactive native destructor and query bodies; referenced class constructors, complete virtual tables and runtime swap remain unverified.",
   "inputs": {
     "rebuild\\2008-06\\tests\\record_native_verb_lifetime.py": "94bebc45735dbddfae9cc3bb5828913d929a6fb43adb3a494a89b5ae64569321",
-    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "7a48e0178f955854b8a4c16c06476388e4ffcbc1f171a97886379fadaaa3d0cd",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "0a333d9d37be9acf557aa0a3afb10193ee2306a5288b0a9fb9e303740aa65f9d",
     "rebuild\\2008-06\\native-headers\\v8tree\\Verb.h": "aa94b9409b10392ebee9d81c40b6d594a08a773922321533004d5432af47fcbc",
     "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "2a41b0f5a9d305b824c415892c14562fdfd79008f5b42d865ed6cd145b5f4737",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
@@ -11,9 +11,9 @@
     "rebuild\\2008-06\\native-classes\\VerbQueries.cpp": "d05983f88e9fe93cd78f939980b5f94de23e6d35d74deb1c35004d3a3c3125e1"
   },
   "objects": {
-    "VerbLifetime": "0a3f3d493c3eeccf59870c1f38f2ceb51ee184ae551bcff974a64e853ef4b454",
-    "VerbBaseLifetime": "8fcb2bc865cc618ae923491dd0300fc61b87ea8f54d2cb97ae52bc13c0ea45b9",
-    "VerbQueries": "6dfceaa84fc43c5353b46ddfa3375cc397557999a25955217f0ace443bfff7da"
+    "VerbLifetime": "229698d63d44462d8a3206a9bc369533464c45ecdbb749ea141e6dd206c9fa07",
+    "VerbBaseLifetime": "5629229b256b5a1d66b5e571b49d050ca004c3b7393e958d9b7b9bd0d6386ee2",
+    "VerbQueries": "ea0e2ebfbb5e676a559930e677769259138cb2e067e980f105d65cb7f618a95e"
   },
   "flags": {
     "VerbLifetime": [
