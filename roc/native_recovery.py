@@ -531,6 +531,8 @@ def stage_submission(record, context, base, output, log, recheck=True):
         if '::' not in body.split('(',1)[0]:body=method.rsplit('::',1)[0]+'::'+body
         edits = native_methods.canonical_edits(text, body, method)
         proposal = dict(mode='native-source-recovery', file=rel, edits=edits, witnesses=[dict(addr=record['task']['addr'])], base_revision=base['revision'])
+        if record.get('proof',{}).get('symbol'):
+            proposal['expected_symbols']={record['task']['addr']:record['proof']['symbol']}
         if Path(rel).suffix!='.cpp':
             include=rel.removeprefix('App/include/')
             consumers=[]
@@ -561,6 +563,7 @@ def submit_batch(records, context, base, output, server, model, log):
         for proposal in json.loads(Path(record['submission']['proposals']).read_text()):
             row = grouped.setdefault(proposal['file'],dict(proposal,edits=[],witnesses=[]))
             row.setdefault('mode','native-source-recovery')
+            row.setdefault('expected_symbols',{}).update(proposal.get('expected_symbols',{}))
             for edit in proposal['edits']:
                 if edit not in row['edits']: row['edits'].append(edit)
             for hit in proposal['witnesses']:

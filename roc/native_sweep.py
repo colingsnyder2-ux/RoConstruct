@@ -84,6 +84,21 @@ def rebase_saved_edits(text, edits):
     return kept
 
 
+def proposal_hits(obj, matcher, expected_symbols):
+    """Explicit assigned symbols may be shorter than the bulk discovery cutoff."""
+    hits=matcher.scan(obj);found={h['addr'] for h in hits}
+    if not expected_symbols:return hits
+    functions=list(match.coff_functions(obj))
+    for addr,symbol in expected_symbols.items():
+        if addr in found:continue
+        choices=[(code,relocs) for name,code,relocs in functions if name==symbol]
+        if len(choices)!=1:continue
+        target=matcher.target.same(addr,*choices[0])
+        if target is not None and not match.data_check(matcher.client,addr,target,match.coff_data_refs(obj,symbol))[1]:
+            hits.append(dict(addr=addr,symbol=symbol))
+    return hits
+
+
 def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False):
     rel = proposal['file']
     if rel not in texts:
@@ -100,7 +115,8 @@ def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False)
         raise ValueError('Saved proposal baseline compile failed: ' + rel)
     wanted = {h['addr'] for h in proposal['witnesses']}
     matcher = ctx.matcher.with_targets(wanted)
-    keep = {h['addr'] for h in matcher.scan(Path(baseline['object']).read_bytes())}
+    expected=proposal.get('expected_symbols',{})
+    keep = {h['addr'] for h in proposal_hits(Path(baseline['object']).read_bytes(),matcher,expected)}
     if recover:
         wanted -= keep | ctx.integrated
         if not wanted:
@@ -122,7 +138,7 @@ def recheck_proposal(proposal, ctx, texts, output, revision, log, recover=False)
     missing = set(proposal.get('proof', {}).get('defined_symbols', ())).intersection(final.get('undefined_symbols', ()))
     if missing:
         raise SavedProposalError('Saved proposal lost required definitions: ' + ', '.join(sorted(missing)))
-    hits = matcher.scan(Path(final['object']).read_bytes())
+    hits = proposal_hits(Path(final['object']).read_bytes(),matcher,expected)
     found = {h['addr'] for h in hits}
     if not wanted <= found or keep - found:
         raise SavedProposalError('Saved proposal lost exact matches; missing targets: ' + ','.join(sorted(wanted-found)) + '; regressions: ' + ','.join(sorted(keep-found)) + '; rerun roc native-try check ' + rel)

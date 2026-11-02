@@ -8,6 +8,20 @@ import pytest
 from roc import native_sweep as sweep
 
 
+@pytest.mark.parametrize('wrong_symbol,bad_data',[(False,False),(True,False),(False,True)])
+@pytest.mark.parametrize('targets',[1,2])
+def test_explicit_five_byte_target_requires_assigned_symbol_and_referenced_data(monkeypatch,wrong_symbol,bad_data,targets):
+    symbol='?capture@MouseCommand@RBX@@QAEXXZ'
+    expected={'%08x'%(0x615820+n*16):symbol+str(n) for n in range(targets)}
+    matcher=SimpleNamespace(client='2008-06',scan=lambda _:[],target=SimpleNamespace(same=lambda addr,code,relocs:b'original' if code==b'short' else None))
+    monkeypatch.setattr(sweep.match,'coff_functions',lambda _:iter([('other'+name if wrong_symbol else name,b'short',[]) for name in expected.values()]))
+    monkeypatch.setattr(sweep.match,'coff_data_refs',lambda *a:[])
+    monkeypatch.setattr(sweep.match,'data_check',lambda *a:(0,['wrong data'] if bad_data else []))
+    hits=sweep.proposal_hits(b'object',matcher,expected)
+    assert hits==([] if wrong_symbol or bad_data else [dict(addr=addr,symbol=name) for addr,name in expected.items()])
+    assert sweep.proposal_hits(b'object',matcher,{})==[]
+
+
 def test_provider_family_keeps_real_instantiation_and_scopes_base_omission():
     source = '''namespace RBX {
 void A::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider) {
