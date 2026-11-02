@@ -1,0 +1,1542 @@
+{
+  "class": "CRenderSettings",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/fp:fast"
+  ],
+  "sources": {
+    "rebuild/2008-06/tests/record_native_render_settings.py": "3a60fe6f1c9b0da85e3cc12a74fb5fc0f9fa54d7a901c064b0fffad14d75d30c",
+    "rebuild/2008-06/tests/record_native_render_settings.json": "6b08d56d86cf7926d2c1c6c5eae2a7aa70e8474ee6d9a1f32763c71b30bba9a5",
+    "rebuild/2008-06/native-classes/CRenderSettings.cpp": "935dd006ff3e09fc267df2640ce6e197c08ac9301d7ad180f508f4d02a54eacf",
+    "rebuild/2008-06/tests/NativeRenderSettingsLayout.cpp": "2f219ebb0c995dd6d1cbd9ea09c6459e2139f0c05e64433011e3d98e0bcc0c03",
+    "rebuild/2008-06/native-headers/CRenderSettings.h": "093642b966ad890cd49ace6fd7659abeb0bbf5f418dca5f06c395fad4e595757"
+  },
+  "object_sha256": "e5b8564a2c7c39b589da630d1c57edcd8ea275af8dedeefe8b3e21332b4a055f",
+  "layout": {
+    "size": "0x17c",
+    "evidence": "Creatable<Instance>::create<CRenderSettings> 00408ed0 malloc(0x17c); constructor 00448c60, destructor 00448e60, getters/setters; compile-time sizeof/offsetof test"
+  },
+  "methods": [
+    {
+      "address": "00408e20",
+      "symbol": "??$?0VCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VCRenderSettings@@@boost@@QAE@PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z",
+      "size": 171,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??$?0PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@shared_count@detail@boost@@QAE@PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z": "0x408d90 (call site; body uses vtable 0x80b67c RTTI .?AV?$sp_counted_impl_pd@PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@detail@boost@@)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VCRenderSettings@@@boost@@QAE@PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00408ed0",
+      "symbol": "??$create@VCRenderSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VCRenderSettings@@@boost@@XZ",
+      "size": 120,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "__imp__malloc": "msvcr90.dll!malloc",
+        "??0CRenderSettings@@QAE@XZ": "0x448c60",
+        "??$?0VCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VCRenderSettings@@@boost@@QAE@PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z": "0x408e20"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VCRenderSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VCRenderSettings@@@boost@@XZ"
+      ]
+    },
+    {
+      "address": "00412d50",
+      "symbol": "?singleton@?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@SAAAVCRenderSettings@@XZ",
+      "size": 266,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A": "0x974aa0",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090",
+        "?sing@?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@0PAV12@A": "0x96cbec",
+        "??$create@VCRenderSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VCRenderSettings@@@boost@@XZ": "0x408ed0",
+        "?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ": "0x5690f0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0"
+      },
+      "local_eh": [
+        "__ehhandler$?singleton@?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@SAAAVCRenderSettings@@XZ"
+      ]
+    },
+    {
+      "address": "004451e0",
+      "symbol": "?getMinShadingQuality@CRenderSettings@@QBEMXZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004451f0",
+      "symbol": "?getMaxShadingQuality@CRenderSettings@@QBEMXZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445200",
+      "symbol": "?getMinMeshDetail@CRenderSettings@@QBEMXZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445210",
+      "symbol": "?getMaxMeshDetail@CRenderSettings@@QBEMXZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445220",
+      "symbol": "?getBevelMode@CRenderSettings@@QBE?AW4BevelMode@1@XZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445230",
+      "symbol": "?getShadowMode@CRenderSettings@@QBE?AW4ShadowMode@1@XZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445240",
+      "symbol": "?getAASamples@CRenderSettings@@QBE?AW4AASamples@1@XZ",
+      "size": 6,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?aaSamples@CRenderSettings@@2W4AASamples@1@A": "0x930668"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445250",
+      "symbol": "?getFullscreenSize@CRenderSettings@@QBE?AVVector2int16@G3D@@XZ",
+      "size": 15,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445260",
+      "symbol": "?getWindowSize@CRenderSettings@@QBE?AVVector2int16@G3D@@XZ",
+      "size": 15,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445270",
+      "symbol": "?getAggregateSize@CRenderSettings@@QBEHXZ",
+      "size": 6,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?aggregateSize@CRenderSettings@@2HA": "0x942df8"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004452f0",
+      "symbol": "??$min@M@std@@YAABMABM0@Z",
+      "size": 24,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445370",
+      "symbol": "?getValue@?$GetSetImpl@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP81@AEXV23@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@UBE?AVVector2int16@G3D@@PBVDescribedBase@34@@Z",
+      "size": 43,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004453a0",
+      "symbol": "?getValue@?$GetSetImpl@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@UBEMPBVDescribedBase@34@@Z",
+      "size": 57,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004453e0",
+      "symbol": "?setValue@?$GetSetImpl@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@UBEXPAVDescribedBase@34@ABM@Z",
+      "size": 46,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "__ftol2_sse": "0x6a17f0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445410",
+      "symbol": "??1?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAE@XZ",
+      "size": 83,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x815d4c (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x815d3c (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x815d34 (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6BDebugable@1@@": "0x815d2c (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x815d1c (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x815d0c (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x815cfc (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x815cec (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x815cdc (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x815ccc (RTTI .?AV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445470",
+      "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x4454b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445480",
+      "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x4454b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445490",
+      "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x4454b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004454a0",
+      "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x4454b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004454b0",
+      "symbol": "??_G?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??1?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAE@XZ": "0x445410",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445560",
+      "symbol": "??0?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "size": 98,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??$singleton@VVector2int16@G3D@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56ced0 (call site; body pushes literal b'Vector2int16')",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650",
+        "??_7?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@6B@": "0x815d90 (RTTI .?AV?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00445610",
+      "symbol": "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "size": 98,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??$singleton@M@Type@Reflection@RBX@@SAABV012@XZ": "0x56cca0",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650",
+        "??_7?$TypedPropertyDescriptor@M@Reflection@RBX@@6B@": "0x815dd4 (RTTI .?AV?$TypedPropertyDescriptor@M@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00445680",
+      "symbol": "??$getset@P8CRenderSettings@@BE?AW4GraphicsMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4GraphicsMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4GraphicsMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4GraphicsMode@5@XZP85@AEXW465@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BE?AW4GraphicsMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4GraphicsMode@1@@Reflection@RBX@@6B@": "0x815c18 (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BE?AW4GraphicsMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4GraphicsMode@1@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004456d0",
+      "symbol": "??$getset@P8CRenderSettings@@BE?AW4FrameRateManagerMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4FrameRateManagerMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4FrameRateManagerMode@5@XZP85@AEXW465@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BE?AW4FrameRateManagerMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4FrameRateManagerMode@1@@Reflection@RBX@@6B@": "0x815c2c (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BE?AW4FrameRateManagerMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4FrameRateManagerMode@1@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445720",
+      "symbol": "??$getset@P8CRenderSettings@@BE?AW4BevelMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4BevelMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4BevelMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4BevelMode@5@XZP85@AEXW465@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BE?AW4BevelMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4BevelMode@1@@Reflection@RBX@@6B@": "0x815c40 (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BE?AW4BevelMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4BevelMode@1@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445770",
+      "symbol": "??$getset@P8CRenderSettings@@BE?AW4ShadowMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4ShadowMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4ShadowMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4ShadowMode@5@XZP85@AEXW465@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BE?AW4ShadowMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4ShadowMode@1@@Reflection@RBX@@6B@": "0x815c54 (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BE?AW4ShadowMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4ShadowMode@1@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004457c0",
+      "symbol": "??$getset@P8CRenderSettings@@BE?AW4AntialiasingMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4AntialiasingMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4AntialiasingMode@5@XZP85@AEXW465@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BE?AW4AntialiasingMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4AntialiasingMode@1@@Reflection@RBX@@6B@": "0x815c68 (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BE?AW4AntialiasingMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4AntialiasingMode@1@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445810",
+      "symbol": "??$getset@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP81@AEXV23@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP85@AEXV67@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP81@AEXV23@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@6B@": "0x815c7c (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP81@AEXV23@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445860",
+      "symbol": "??$getset@P8CRenderSettings@@BEMXZP81@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8CRenderSettings@@BEMXZP85@AEXM@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BEMXZP81@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@6B@": "0x815c90 (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BEMXZP81@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004458b0",
+      "symbol": "??$getset@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8CRenderSettings@@BEHXZP85@AEXH@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@6B@": "0x815ca4 (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445900",
+      "symbol": "??$getset@P8CRenderSettings@@BE?AW4AASamples@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4AASamples@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4AASamples@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4AASamples@5@XZP85@AEXW465@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8CRenderSettings@@BE?AW4AASamples@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4AASamples@1@@Reflection@RBX@@6B@": "0x815cb8 (RTTI .?AV?$GetSetImpl@P8CRenderSettings@@BE?AW4AASamples@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4AASamples@1@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445c10",
+      "symbol": "??1?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAE@XZ",
+      "size": 93,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x815e84 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x815e78 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x815e70 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6BDebugable@1@@": "0x815e68 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x815e58 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x815e48 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x815e38 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x815e28 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x815e18 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x815e08 (RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@, offset 0xc4)",
+        "?sing@?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@0PAV12@A": "0x96cbec",
+        "??1?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAE@XZ": "0x445410"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445c70",
+      "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x445da0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445c80",
+      "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x445da0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445c90",
+      "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x445da0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445ca0",
+      "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x445da0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445cb0",
+      "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x445da0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445cc0",
+      "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x445da0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445cd0",
+      "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x445da0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445ce0",
+      "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x445da0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00445da0",
+      "symbol": "??_G?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??1?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAE@XZ": "0x445c10",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004479f0",
+      "symbol": "??$?0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP80@AEXV12@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP83@AEXV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??$getset@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP81@AEXV23@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP85@AEXV67@@Z@Z": "0x445810",
+        "?classDescriptor@?$Described@VCRenderSettings@@$1?sRenderSettings@@3PBDBV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x447980 (call site; body pushes literal b'RenderSettings')",
+        "??0?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445560",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@6B@": "0x815fcc (RTTI .?AV?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP80@AEXV12@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP83@AEXV45@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00447aa0",
+      "symbol": "??$?0P8CRenderSettings@@BEMXZP80@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEMXZP83@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??$getset@P8CRenderSettings@@BEMXZP81@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8CRenderSettings@@BEMXZP85@AEXM@Z@Z": "0x445860",
+        "?classDescriptor@?$Described@VCRenderSettings@@$1?sRenderSettings@@3PBDBV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x447980 (call site; body pushes literal b'RenderSettings')",
+        "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@6B@": "0x816000 (RTTI .?AV?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8CRenderSettings@@BEMXZP80@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEMXZP83@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00447b50",
+      "symbol": "??$?0P8CRenderSettings@@BEHXZP80@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEHXZP83@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??$getset@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8CRenderSettings@@BEHXZP85@AEXH@Z@Z": "0x4458b0",
+        "?classDescriptor@?$Described@VCRenderSettings@@$1?sRenderSettings@@3PBDBV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x447980 (call site; body pushes literal b'RenderSettings')",
+        "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@6B@": "0x816000 (RTTI .?AV?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8CRenderSettings@@BEHXZP80@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEHXZP83@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00447c00",
+      "symbol": "??$?0VCRenderSettings@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQCRenderSettings@@_NW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 200,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VCRenderSettings@@$1?sRenderSettings@@3PBDBV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x447980 (call site; body pushes literal b'RenderSettings')",
+        "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x40a290",
+        "??_7?$BoundProp@_N$00@Reflection@RBX@@6B@": "0x80bc18 (RTTI .?AV?$BoundProp@_N$00@Reflection@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$BoundPropGetSet@VCRenderSettings@@@?$BoundProp@_N$00@Reflection@RBX@@6B@": "0x815bf0 (RTTI .?AV?$BoundPropGetSet@VCRenderSettings@@@?$BoundProp@_N$00@Reflection@RBX@@, offset 0x0)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VCRenderSettings@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQCRenderSettings@@_NW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00447cd0",
+      "symbol": "??$?0VCRenderSettings@@@?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@QAE@PBD0PQCRenderSettings@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "size": 200,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VCRenderSettings@@$1?sRenderSettings@@3PBDBV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x447980 (call site; body pushes literal b'RenderSettings')",
+        "??0?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x443230",
+        "??_7?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@6B@": "0x815954 (RTTI .?AV?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$BoundPropGetSet@VCRenderSettings@@@?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@6B@": "0x815c04 (RTTI .?AV?$BoundPropGetSet@VCRenderSettings@@@?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@, offset 0x0)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VCRenderSettings@@@?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@QAE@PBD0PQCRenderSettings@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "004480e0",
+      "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x4454b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004480f0",
+      "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x4454b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448100",
+      "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x4454b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448110",
+      "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z": "0x4454b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448320",
+      "symbol": "??A?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@I@Z",
+      "size": 63,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448420",
+      "symbol": "??$_Find_if@PBQBVItem@EnumDescriptor@Reflection@RBX@@V?$bind_t@_NP6A_NPBVItem@EnumDescriptor@Reflection@RBX@@H@ZV?$list2@V?$arg@$00@boost@@V?$value@H@_bi@2@@_bi@boost@@@_bi@boost@@@std@@YAPBQBVItem@EnumDescriptor@Reflection@RBX@@PBQBV1234@0V?$bind_t@_NP6A_NPBVItem@EnumDescriptor@Reflection@RBX@@H@ZV?$list2@V?$arg@$00@boost@@V?$value@H@_bi@2@@_bi@boost@@@_bi@boost@@@Z",
+      "size": 47,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00448c60",
+      "symbol": "??0CRenderSettings@@QAE@XZ",
+      "size": 375,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??0?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@IAE@XZ": "0x448120 (call site; body uses vtable 0x815e84 RTTI .?AV?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3QBDB@RBX@@)",
+        "?defaultShadingQuality@CRenderSettings@@2MB": "0x815bc0",
+        "?defaultMeshDetail@CRenderSettings@@2MB": "0x815bc8",
+        "??_7CRenderSettings@@6B?$GuidItem@VInstance@RBX@@@RBX@@@": "0x816364 (RTTI .?AVCRenderSettings@@, offset 0x0)",
+        "??_7CRenderSettings@@6B?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@@": "0x816354 (RTTI .?AVCRenderSettings@@, offset 0x10)",
+        "??_7CRenderSettings@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@RBX@@@": "0x81634c (RTTI .?AVCRenderSettings@@, offset 0x14)",
+        "??_7CRenderSettings@@6BDebugable@RBX@@@": "0x816344 (RTTI .?AVCRenderSettings@@, offset 0x20)",
+        "??_7CRenderSettings@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@@": "0x816334 (RTTI .?AVCRenderSettings@@, offset 0x24)",
+        "??_7CRenderSettings@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@@": "0x816324 (RTTI .?AVCRenderSettings@@, offset 0x44)",
+        "??_7CRenderSettings@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@@": "0x816314 (RTTI .?AVCRenderSettings@@, offset 0x64)",
+        "??_7CRenderSettings@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@": "0x816304 (RTTI .?AVCRenderSettings@@, offset 0x84)",
+        "??_7CRenderSettings@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@@": "0x8162f4 (RTTI .?AVCRenderSettings@@, offset 0xa4)",
+        "??_7CRenderSettings@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@@": "0x8162e4 (RTTI .?AVCRenderSettings@@, offset 0xc4)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "?videoMemorySize@DXCaps@G3D@@SA_KXZ": "0x476470",
+        "?defaultWindowSize@CRenderSettings@@2VVector2int16@G3D@@A": "0x93066c",
+        "??_C@_09PIAIFBON@Rendering?$AA@": "0x8162d4",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "?aggregateSize@CRenderSettings@@2HA": "0x942df8"
+      },
+      "local_eh": [
+        "__ehhandler$??0CRenderSettings@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00448de0",
+      "symbol": "??_ECRenderSettings@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_ECRenderSettings@@UAEPAXI@Z": "0x448eb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448df0",
+      "symbol": "??_ECRenderSettings@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_ECRenderSettings@@UAEPAXI@Z": "0x448eb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448e00",
+      "symbol": "??_ECRenderSettings@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_ECRenderSettings@@UAEPAXI@Z": "0x448eb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448e10",
+      "symbol": "??_ECRenderSettings@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_ECRenderSettings@@UAEPAXI@Z": "0x448eb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448e20",
+      "symbol": "??_ECRenderSettings@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_ECRenderSettings@@UAEPAXI@Z": "0x448eb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448e30",
+      "symbol": "??_ECRenderSettings@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_ECRenderSettings@@UAEPAXI@Z": "0x448eb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448e40",
+      "symbol": "??_ECRenderSettings@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_ECRenderSettings@@UAEPAXI@Z": "0x448eb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448e50",
+      "symbol": "??_ECRenderSettings@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_ECRenderSettings@@UAEPAXI@Z": "0x448eb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448e60",
+      "symbol": "??1CRenderSettings@@UAE@XZ",
+      "size": 80,
+      "exact": true,
+      "raw_range": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??1?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAE@XZ": "0x445c10"
+      },
+      "local_eh": [
+        "__ehhandler$??1CRenderSettings@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00448eb0",
+      "symbol": "??_GCRenderSettings@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "raw_range": true,
+      "verified_targets": {
+        "??1CRenderSettings@@UAE@XZ": "0x448e60",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448ed0",
+      "symbol": "?setAASamples@CRenderSettings@@QAEXW4AASamples@1@@Z",
+      "size": 33,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?aaSamples@CRenderSettings@@2W4AASamples@1@A": "0x930668",
+        "_prop_aaSamples": "0x96d4d4",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448f00",
+      "symbol": "?setFullscreenSize@CRenderSettings@@QAEXVVector2int16@G3D@@@Z",
+      "size": 31,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_fullscreenSize": "0x96d42c",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448f20",
+      "symbol": "?setWindowSize@CRenderSettings@@QAEXVVector2int16@G3D@@@Z",
+      "size": 31,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_windowSize": "0x96d410",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448f40",
+      "symbol": "?setMinShadingQuality@CRenderSettings@@QAEXM@Z",
+      "size": 136,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setMaxShadingQuality@CRenderSettings@@QAEXM@Z": "0x448fd0",
+        "_prop_minShadingQuality": "0x96d448",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00448fd0",
+      "symbol": "?setMaxShadingQuality@CRenderSettings@@QAEXM@Z",
+      "size": 140,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setMinShadingQuality@CRenderSettings@@QAEXM@Z": "0x448f40",
+        "__real@42c80000": "0x8163a4 (__real@42c80000)",
+        "_prop_maxShadingQuality": "0x96d464",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00449060",
+      "symbol": "?setMinMeshDetail@CRenderSettings@@QAEXM@Z",
+      "size": 96,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_minMeshDetail": "0x96d480",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004490c0",
+      "symbol": "?setMaxMeshDetail@CRenderSettings@@QAEXM@Z",
+      "size": 90,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "__real@42c80000": "0x8163a4 (__real@42c80000)",
+        "_prop_maxMeshDetail": "0x96d49c",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00449120",
+      "symbol": "?setAggregateSize@CRenderSettings@@QAEXH@Z",
+      "size": 90,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?aggregateSize@CRenderSettings@@2HA": "0x942df8",
+        "_prop_aggregateSize": "0x96d4b8",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00449180",
+      "symbol": "?setGraphicsMode@CRenderSettings@@QAEXW4GraphicsMode@1@@Z",
+      "size": 34,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_graphicsMode": "0x96d35c",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004491b0",
+      "symbol": "?setFrameRateManagerMode@CRenderSettings@@QAEXW4FrameRateManagerMode@1@@Z",
+      "size": 34,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_frameRateManager": "0x96d380",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004491e0",
+      "symbol": "?setBevelMode@CRenderSettings@@QAEXW4BevelMode@1@@Z",
+      "size": 34,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_bevels": "0x96d3a4",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00449210",
+      "symbol": "?setAntialiasingMode@CRenderSettings@@QAEXW4AntialiasingMode@1@@Z",
+      "size": 34,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_antialiasing": "0x96d3ec",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00449240",
+      "symbol": "?setShadowMode@CRenderSettings@@QAEXW4ShadowMode@1@@Z",
+      "size": 34,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_shadow": "0x96d3c8",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00449270",
+      "symbol": "?setValue@?$BoundPropGetSet@VCRenderSettings@@@?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@UBEXPAVDescribedBase@34@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 91,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565e30",
+      "symbol": "?getGraphicsMode@CRenderSettings@@QBE?AW4GraphicsMode@1@XZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00609a30",
+      "symbol": "?getFrameRateManagerMode@CRenderSettings@@QBE?AW4FrameRateManagerMode@1@XZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "006a6ee0",
+      "symbol": "?getAntialiasingMode@CRenderSettings@@QBE?AW4AntialiasingMode@1@XZ",
+      "size": 7,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "007ef430",
+      "symbol": "??__Eprop_graphicsMode@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setGraphicsMode@CRenderSettings@@QAEXW4GraphicsMode@1@@Z": "0x449180",
+        "?getGraphicsMode@CRenderSettings@@QBE?AW4GraphicsMode@1@XZ": "0x565e30",
+        "??_C@_07ECEMPDJM@General?$AA@": "0x8163c4",
+        "??_C@_0N@KHOMIAPI@graphicsMode?$AA@": "0x8163b4",
+        "_prop_graphicsMode": "0x96d35c",
+        "??$?0P8CRenderSettings@@BE?AW4GraphicsMode@0@XZP80@AEXW410@@Z@?$EnumPropDescriptor@VCRenderSettings@@W4GraphicsMode@1@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AW4GraphicsMode@3@XZP83@AEXW443@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x448220 (call site; body uses vtable 0x8160fc RTTI .?AV?$EnumPropDescriptor@VCRenderSettings@@W4GraphicsMode@1@@Reflection@RBX@@)",
+        "??__Fprop_graphicsMode@@YAXXZ": "0x7fac10",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef470",
+      "symbol": "??__Eprop_frameRateManager@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setFrameRateManagerMode@CRenderSettings@@QAEXW4FrameRateManagerMode@1@@Z": "0x4491b0",
+        "?getFrameRateManagerMode@CRenderSettings@@QBE?AW4FrameRateManagerMode@1@XZ": "0x609a30",
+        "??_C@_07ECEMPDJM@General?$AA@": "0x8163c4",
+        "??_C@_0BB@DNGEGBNH@frameRateManager?$AA@": "0x8163cc",
+        "_prop_frameRateManager": "0x96d380",
+        "??$?0P8CRenderSettings@@BE?AW4FrameRateManagerMode@0@XZP80@AEXW410@@Z@?$EnumPropDescriptor@VCRenderSettings@@W4FrameRateManagerMode@1@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AW4FrameRateManagerMode@3@XZP83@AEXW443@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x4484d0 (call site; body uses vtable 0x81614c RTTI .?AV?$EnumPropDescriptor@VCRenderSettings@@W4FrameRateManagerMode@1@@Reflection@RBX@@)",
+        "??__Fprop_frameRateManager@@YAXXZ": "0x7fabf0",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef4b0",
+      "symbol": "??__Eprop_bevels@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setBevelMode@CRenderSettings@@QAEXW4BevelMode@1@@Z": "0x4491e0",
+        "?getBevelMode@CRenderSettings@@QBE?AW4BevelMode@1@XZ": "0x445220",
+        "??_C@_07ECEMPDJM@General?$AA@": "0x8163c4",
+        "??_C@_06NGILNABH@Bevels?$AA@": "0x815fb8",
+        "_prop_bevels": "0x96d3a4",
+        "??$?0P8CRenderSettings@@BE?AW4BevelMode@0@XZP80@AEXW410@@Z@?$EnumPropDescriptor@VCRenderSettings@@W4BevelMode@1@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AW4BevelMode@3@XZP83@AEXW443@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x448660 (call site; body uses vtable 0x81619c RTTI .?AV?$EnumPropDescriptor@VCRenderSettings@@W4BevelMode@1@@Reflection@RBX@@)",
+        "??__Fprop_bevels@@YAXXZ": "0x7fabd0",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef4f0",
+      "symbol": "??__Eprop_shadow@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setShadowMode@CRenderSettings@@QAEXW4ShadowMode@1@@Z": "0x449240",
+        "?getShadowMode@CRenderSettings@@QBE?AW4ShadowMode@1@XZ": "0x445230",
+        "??_C@_07ECEMPDJM@General?$AA@": "0x8163c4",
+        "??_C@_06KHOKADBJ@Shadow?$AA@": "0x815fc0",
+        "_prop_shadow": "0x96d3c8",
+        "??$?0P8CRenderSettings@@BE?AW4ShadowMode@0@XZP80@AEXW410@@Z@?$EnumPropDescriptor@VCRenderSettings@@W4ShadowMode@1@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AW4ShadowMode@3@XZP83@AEXW443@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x448950 (call site; body uses vtable 0x8161ec RTTI .?AV?$EnumPropDescriptor@VCRenderSettings@@W4ShadowMode@1@@Reflection@RBX@@)",
+        "??__Fprop_shadow@@YAXXZ": "0x7fabb0",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef530",
+      "symbol": "??__Eprop_antialiasing@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setAntialiasingMode@CRenderSettings@@QAEXW4AntialiasingMode@1@@Z": "0x449210",
+        "?getAntialiasingMode@CRenderSettings@@QBE?AW4AntialiasingMode@1@XZ": "0x6a6ee0",
+        "??_C@_07ECEMPDJM@General?$AA@": "0x8163c4",
+        "??_C@_0N@LDIJIMII@Antialiasing?$AA@": "0x815fa8",
+        "_prop_antialiasing": "0x96d3ec",
+        "??$?0P8CRenderSettings@@BE?AW4AntialiasingMode@0@XZP80@AEXW410@@Z@?$EnumPropDescriptor@VCRenderSettings@@W4AntialiasingMode@1@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AW4AntialiasingMode@3@XZP83@AEXW443@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x448a30 (call site; body uses vtable 0x81623c RTTI .?AV?$EnumPropDescriptor@VCRenderSettings@@W4AntialiasingMode@1@@Reflection@RBX@@)",
+        "??__Fprop_antialiasing@@YAXXZ": "0x7fab90",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef570",
+      "symbol": "??__Eprop_windowSize@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setWindowSize@CRenderSettings@@QAEXVVector2int16@G3D@@@Z": "0x448f20",
+        "?getWindowSize@CRenderSettings@@QBE?AVVector2int16@G3D@@XZ": "0x445260",
+        "??_C@_06MEEGFFCD@Screen?$AA@": "0x8163ec",
+        "??_C@_0L@DLKHCDPK@WindowSize?$AA@": "0x8163e0",
+        "_prop_windowSize": "0x96d410",
+        "??$?0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP80@AEXV12@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP83@AEXV45@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x4479f0",
+        "??__Fprop_windowSize@@YAXXZ": "0x7facd0",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef5b0",
+      "symbol": "??__Eprop_fullscreenSize@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setFullscreenSize@CRenderSettings@@QAEXVVector2int16@G3D@@@Z": "0x448f00",
+        "?getFullscreenSize@CRenderSettings@@QBE?AVVector2int16@G3D@@XZ": "0x445250",
+        "??_C@_06MEEGFFCD@Screen?$AA@": "0x8163ec",
+        "??_C@_0P@JPLPHAAA@FullscreenSize?$AA@": "0x8163f4",
+        "_prop_fullscreenSize": "0x96d42c",
+        "??$?0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP80@AEXV12@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP83@AEXV45@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x4479f0",
+        "??__Fprop_fullscreenSize@@YAXXZ": "0x7facb0",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef5f0",
+      "symbol": "??__Eprop_minShadingQuality@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setMinShadingQuality@CRenderSettings@@QAEXM@Z": "0x448f40",
+        "?getMinShadingQuality@CRenderSettings@@QBEMXZ": "0x4451e0",
+        "??_C@_07MCJGCIBL@Qaulity?$AA@": "0x816418",
+        "??_C@_0BC@NAGNFEMA@minShadingQuality?$AA@": "0x816404",
+        "_prop_minShadingQuality": "0x96d448",
+        "??$?0P8CRenderSettings@@BEMXZP80@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEMXZP83@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z": "0x447aa0",
+        "??__Fprop_minShadingQuality@@YAXXZ": "0x7fad10",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef630",
+      "symbol": "??__Eprop_maxShadingQuality@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setMaxShadingQuality@CRenderSettings@@QAEXM@Z": "0x448fd0",
+        "?getMaxShadingQuality@CRenderSettings@@QBEMXZ": "0x4451f0",
+        "??_C@_07MCJGCIBL@Qaulity?$AA@": "0x816418",
+        "??_C@_0BC@IDMLEMCE@maxShadingQuality?$AA@": "0x816420",
+        "_prop_maxShadingQuality": "0x96d464",
+        "??$?0P8CRenderSettings@@BEMXZP80@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEMXZP83@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z": "0x447aa0",
+        "??__Fprop_maxShadingQuality@@YAXXZ": "0x7facf0",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef670",
+      "symbol": "??__Eprop_minMeshDetail@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setMinMeshDetail@CRenderSettings@@QAEXM@Z": "0x449060",
+        "?getMinMeshDetail@CRenderSettings@@QBEMXZ": "0x445200",
+        "??_C@_07MCJGCIBL@Qaulity?$AA@": "0x816418",
+        "??_C@_0O@FEKPAEMG@minMeshDetail?$AA@": "0x816434",
+        "_prop_minMeshDetail": "0x96d480",
+        "??$?0P8CRenderSettings@@BEMXZP80@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEMXZP83@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z": "0x447aa0",
+        "??__Fprop_minMeshDetail@@YAXXZ": "0x7fac30",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef6b0",
+      "symbol": "??__Eprop_maxMeshDetail@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setMaxMeshDetail@CRenderSettings@@QAEXM@Z": "0x4490c0",
+        "?getMaxMeshDetail@CRenderSettings@@QBEMXZ": "0x445210",
+        "??_C@_07MCJGCIBL@Qaulity?$AA@": "0x816418",
+        "??_C@_0O@ONIJJPLH@maxMeshDetail?$AA@": "0x816444",
+        "_prop_maxMeshDetail": "0x96d49c",
+        "??$?0P8CRenderSettings@@BEMXZP80@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEMXZP83@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z": "0x447aa0",
+        "??__Fprop_maxMeshDetail@@YAXXZ": "0x7fac50",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef6f0",
+      "symbol": "??__Eprop_aggregateSize@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setAggregateSize@CRenderSettings@@QAEXH@Z": "0x449120",
+        "?getAggregateSize@CRenderSettings@@QBEHXZ": "0x445270",
+        "??_C@_0M@KPPBKPKK@Performance?$AA@": "0x816464",
+        "??_C@_0P@IMGNOJNI@_AggregateSize?$AA@": "0x816454",
+        "_prop_aggregateSize": "0x96d4b8",
+        "??$?0P8CRenderSettings@@BEHXZP80@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEHXZP83@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z": "0x447b50",
+        "??__Fprop_aggregateSize@@YAXXZ": "0x7fac90",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef730",
+      "symbol": "??__Eprop_aaSamples@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "?setAASamples@CRenderSettings@@QAEXW4AASamples@1@@Z": "0x448ed0",
+        "?getAASamples@CRenderSettings@@QBE?AW4AASamples@1@XZ": "0x445240",
+        "??_C@_07MCJGCIBL@Qaulity?$AA@": "0x816418",
+        "??_C@_09CEMKMICJ@AASamples?$AA@": "0x815f1c",
+        "_prop_aaSamples": "0x96d4d4",
+        "??$?0P8CRenderSettings@@BE?AW4AASamples@0@XZP80@AEXW410@@Z@?$EnumPropDescriptor@VCRenderSettings@@W4AASamples@1@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AW4AASamples@3@XZP83@AEXW443@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x448b40 (call site; body uses vtable 0x81628c RTTI .?AV?$EnumPropDescriptor@VCRenderSettings@@W4AASamples@1@@Reflection@RBX@@)",
+        "??__Fprop_aaSamples@@YAXXZ": "0x7fac70",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef770",
+      "symbol": "??__Eprop_delaySwapBuffer@@YAXXZ",
+      "size": 39,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_C@_0M@KPPBKPKK@Performance?$AA@": "0x816464",
+        "??_C@_0BA@ICPDMJGE@delaySwapBuffer?$AA@": "0x816470",
+        "_prop_delaySwapBuffer": "0x96d4f8",
+        "??$?0VCRenderSettings@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQCRenderSettings@@_NW4Functionality@PropertyDescriptor@12@@Z": "0x447c00",
+        "??__Fprop_delaySwapBuffer@@YAXXZ": "0x7fad50",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef7a0",
+      "symbol": "??__Eprop_profileName@@YAXXZ",
+      "size": 39,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "??_C@_07MCJGCIBL@Qaulity?$AA@": "0x816418",
+        "??_C@_0M@OOOMEGLC@profileName?$AA@": "0x816480",
+        "_prop_profileName": "0x96d514",
+        "??$?0VCRenderSettings@@@?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@QAE@PBD0PQCRenderSettings@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x447cd0",
+        "??__Fprop_profileName@@YAXXZ": "0x7fad30",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fab90",
+      "symbol": "??__Fprop_antialiasing@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_antialiasing": "0x96d3ec",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fabb0",
+      "symbol": "??__Fprop_shadow@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_shadow": "0x96d3c8",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fabd0",
+      "symbol": "??__Fprop_bevels@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_bevels": "0x96d3a4",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fabf0",
+      "symbol": "??__Fprop_frameRateManager@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_frameRateManager": "0x96d380",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fac10",
+      "symbol": "??__Fprop_graphicsMode@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_graphicsMode": "0x96d35c",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fac30",
+      "symbol": "??__Fprop_minMeshDetail@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_minMeshDetail": "0x96d480",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fac50",
+      "symbol": "??__Fprop_maxMeshDetail@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_maxMeshDetail": "0x96d49c",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fac70",
+      "symbol": "??__Fprop_aaSamples@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_aaSamples": "0x96d4d4",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fac90",
+      "symbol": "??__Fprop_aggregateSize@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_aggregateSize": "0x96d4b8",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007facb0",
+      "symbol": "??__Fprop_fullscreenSize@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_fullscreenSize": "0x96d42c",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007facd0",
+      "symbol": "??__Fprop_windowSize@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_windowSize": "0x96d410",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007facf0",
+      "symbol": "??__Fprop_maxShadingQuality@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_maxShadingQuality": "0x96d464",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fad10",
+      "symbol": "??__Fprop_minShadingQuality@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_minShadingQuality": "0x96d448",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fad30",
+      "symbol": "??__Fprop_profileName@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_profileName": "0x96d514",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fad50",
+      "symbol": "??__Fprop_delaySwapBuffer@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "raw_range": false,
+      "verified_targets": {
+        "_prop_delaySwapBuffer": "0x96d4f8",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    }
+  ],
+  "bounds": [
+    "00448e60 (80 bytes) and 00448eb0 (31 bytes) are exact as raw ranges; the current analysis has one 111-byte function at 00448e60 covering both (BOUNDS evidence for the server host)"
+  ],
+  "open": [
+    "GlobalSettingsItem<CRenderSettings> constructor 00448120 and Described classDescriptor 00447980: original folds the literal \"RenderSettings\" (const char* const ClassName in shared templates)",
+    "EnumPropDescriptor constructors/virtuals and EnumDesc containers: 2008 reflection layout differs from the donor reflection.h/enumconverter.h",
+    "boost shared_count<CRenderSettings*> constructor 00408d90: boost 1.34.1 try/catch tail absent in the 2008 build",
+    "FactoryProduct base constructor 00448040 and Creator create slot 00408f50 not matched"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
