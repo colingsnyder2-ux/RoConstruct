@@ -20,6 +20,7 @@ def test_initial_native_evidence_keeps_complete_proof_and_defers_mined_analogs(t
     evidence = dict(addr='0060a490', method='Feature::getRenderCoord', source_excerpt=BEFORE,
         baseline={'target_exact': False, 'diff': 'register mismatch'}, target_asm=['instruction']*80,
         target_calls=[{'addr':'00609da0'}], target_function_pointers=[{'addr':'00553f90'}],
+        virtual_dispatch=[{'class_name':'Derived','vtable':'00800000','slot_index':2}],
         assigned_header_files=['Feature.h'], reference_source='genuine reference body',
         read_only_header_roots=['accepted', 'sdk'], genuine_include_paths=['sdk', 'mfc'],
         mined_source='untrusted codegen analog', standins=['invented layout'])
@@ -31,8 +32,19 @@ def test_initial_native_evidence_keeps_complete_proof_and_defers_mined_analogs(t
     assert packet['deferred_sections'] == ['mined_source', 'standins', 'genuine_include_paths']
     assert all(key not in packet for key in packet['deferred_sections'])
     for key in ('addr','method','source_excerpt','baseline','target_asm','target_calls',
-                'target_function_pointers','assigned_header_files','reference_source'):
+                'target_function_pointers','assigned_header_files','reference_source','virtual_dispatch'):
         assert packet[key] == evidence[key]
+
+
+def test_virtual_dispatch_preserves_shared_inherited_entries_and_slot_indices(tmp_path):
+    path=tmp_path/'work/2008-06/vtables.json';path.parent.mkdir(parents=True)
+    path.write_text(json.dumps([
+        {'class':'Base','vtable':'00800000','slots':[['00401000',0],['00402000',0]]},
+        {'class':'Derived','vtable':'00800100','slots':[['00401000',0],['00403000',0]]}]))
+    result=recovery.virtual_dispatch(tmp_path)
+    assert [r['class_name'] for r in result['00401000']]==['Base','Derived']
+    assert result['00403000']==[dict(class_name='Derived',vtable='00800100',slot_index=1)]
+    assert recovery.virtual_dispatch(tmp_path/'missing')=={}
 
 
 @pytest.mark.parametrize('exact,error,status',[(0,'Compiler blocked','blocked'),(0,'','no local gain'),(1,'','awaiting verification')])

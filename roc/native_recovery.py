@@ -30,6 +30,7 @@ Full evidence remains in full_evidence_file. Read its deferred sections only for
 For include_profile=accepted, use read_only_header_roots instead of native-headers: this separate source lane uses accepted canonical declarations. Do not change any declarations or layouts.
 Start from source_excerpt and baseline diff. Read only relevant source/header ranges; avoid whole-file dumps and broad searches unless a specific missing fact requires them.
 When initialization or callbacks differ, inspect target_function_pointers: these are original function-pointer targets, not guessed names. Trace their assembly before trusting a mined symbol label. Missing helper definitions outside your allowed edits must be recorded as blockers.
+virtual_dispatch lists original RTTI vtables referring to the target, including inherited entries; it does not establish the declaring class or layout. Compare these classes and their bases with the assigned declaration before trusting a mined method label. Record incompatible ownership as a blocker.
 Edit only the assigned method BODY in the assigned file. If task.json explicitly sets add_method, append only that complete qualified method using its existing genuine header declaration; do not add declarations or fields. Keep signatures, fields, layouts, other methods,
 headers and compiler/check infrastructure unchanged. Do not invent padding, offsets, fields or stubs.
 Use shell tools to inspect the supplied genuine source/header paths and original evidence. State one
@@ -53,6 +54,17 @@ def initial_evidence(evidence, full_path):
     result['read_only_header_roots'] = list(dict.fromkeys([
         *evidence.get('read_only_header_roots', []), *evidence.get('genuine_include_paths', [])]))
     result.update(full_evidence_file=str(full_path), deferred_sections=[key for key in deferred if key in evidence])
+    return result
+
+
+def virtual_dispatch(root):
+    """Index original vtable references, without guessing which class declared a method."""
+    path = Path(root)/'work/2008-06/vtables.json'
+    result = {}
+    for table in json.loads(path.read_text()) if path.exists() else []:
+        for index, (address, _) in enumerate(table['slots']):
+            result.setdefault(address, []).append(dict(class_name=table['class'],
+                vtable=table['vtable'], slot_index=index))
     return result
 
 
@@ -713,6 +725,7 @@ def run(config, control, emit):
     else:
         log('Server lacks cross-PC recovery leases; this pass is coordinated on this PC only')
     context = sweep.native_context({}, api)
+    dispatch = virtual_dispatch(ROOT)
     if published and published.get('probe_context'):
         context.probe_includes=[Path(published['probe_context'])]
     if published and published.get('canonical_context'):
@@ -1068,6 +1081,8 @@ def run(config, control, emit):
                 evidence.update(task, source_excerpt=current_source[span[0]:span[1]], resumed_private_body=record.get('resumed_private_body',False), check_command='python check.py', original_source_root=str(root),
                                 genuine_include_paths=list(map(str, [libs.LIBS/'mfc-9.0-rtm/atlmfc/include',libs.LIBS/'xtp-11.2.2/Source',*context.includes])), minutes=config['native_agent_minutes'], checks=config['native_agent_checks'])
                 evidence['baseline'] = {k:baseline[k] for k in ('ok','target_exact','diff','data_mismatches') if k in baseline}
+                evidence['virtual_dispatch'] = dispatch.get(task['addr'], [])[:8]
+                evidence['virtual_dispatch_count'] = len(dispatch.get(task['addr'], []))
                 evidence['assigned_header_files'] = assigned_headers(folder,task,current_source)
                 evidence['read_only_header_roots'] = [str(p) for p in getattr(context,'probe_includes',[])]
                 if task.get('include_profile')=='accepted':

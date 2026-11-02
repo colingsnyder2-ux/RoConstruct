@@ -1,5 +1,13 @@
 # Native integration with an agent (Codex, Claude)
 
+## Original virtual dispatch clues (Worker 47)
+
+Native task packets include bounded `virtual_dispatch` entries from the original
+RTTI vtable index, with class names, table addresses and slot indices. A table can
+inherit a method; these entries do not establish the declaring class or layout.
+Compare them with genuine declarations before trusting a mined name. Report an
+ownership/layout blocker when the evidence conflicts; do not invent fields.
+
 ## Smaller recovery packets (Worker 46)
 
 Native agents start with `task.json`: complete target assembly, genuine reference
