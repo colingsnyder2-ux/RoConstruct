@@ -1207,6 +1207,25 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-3369a22f28a9f44e",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/Accoutrement.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793607999,
+   "receipt": {
+    "gains": [
+     "005b10a0",
+     "005b1190",
+     "005b15e0",
+     "005b2a40"
+    ],
+    "losses": []
+   }
   }
  ]
 }

@@ -2628,5 +2628,29 @@
     "#pragma float_control(precise, off)\n#include \"v8world/GlueJoint.h\"\n#include \"v8world/Primitive.h\"\n#include \"v8kernel/Kernel.h\"\n"
    ]
   ]
+ },
+ {
+  "App/v8datamodel/Accoutrement.cpp": [
+   [
+    "\t{\n\t\tif (child.get() != this)\n\t\t{\n\t\t\tRBXASSERT(ServiceProvider::findServiceProvider(this));\n\t\t\tRBXASSERT(Network::Players::backendProcessing(this, true));\n\n\t\t\tif (child.get() == (Instance*)this->weld.get())\n\t\t\t{\n\t\t\t\tRBXASSERT(Accoutrement::drawSelected());\n\t\t\t\tsetDesiredState(NOTHING, ServiceProvider::findServiceProvider(this));\n\t\t\t}\n\n\t\t\tAccoutrementState state = computeDesiredState();\n\t\t\tconst ServiceProvider* serviceProvider = ServiceProvider::findServiceProvider(this);\n\n\t\t\tRBXASSERT(serviceProvider);\n\n\t\t\tsetDesiredState(state, serviceProvider);\n\t\t}\n\t}\n\n",
+    "\t{\n\t\tif (child.get() != this)\n\t\t{\n\t\t\tif (child.get() == (Instance*)this->weld.get())\n\t\t\t{\n\t\t\t\tsetDesiredState(NOTHING, ServiceProvider::findServiceProvider(this));\n\t\t\t}\n\n\t\t\trebuildBackendState();\n\t\t}\n\t}\n\n"
+   ],
+   [
+    "\t\t}\n\t}\n\n\tvoid Accoutrement::onEvent_AddedBackend(boost::shared_ptr<Instance> child)\n\t{\n\t\tif (child.get() != this)\n\t\t{\n\t\t\tRBXASSERT(ServiceProvider::findServiceProvider(this));\n\t\t\tRBXASSERT(Network::Players::backendProcessing(this, true));\n\n\t\t\tAccoutrementState state = computeDesiredState();\n\t\t\tconst ServiceProvider* serviceProvider = ServiceProvider::findServiceProvider(this);\n\n\t\t\tRBXASSERT(serviceProvider);\n\n\t\t\tsetDesiredState(state, serviceProvider);\n\t\t}\n\t}\n\n",
+    "\t\t}\n\t}\n\n\tvoid Accoutrement::rebuildBackendState()\n\t{\n\t\tAccoutrementState state = computeDesiredState();\n\t\tsetDesiredState(state, ServiceProvider::findServiceProvider(this));\n\t}\n\n\tvoid Accoutrement::onEvent_AddedBackend(boost::shared_ptr<Instance> child)\n\t{\n\t\tif (child.get() != this)\n\t\t{\n\t\t\trebuildBackendState();\n\t\t}\n\t}\n\n"
+   ],
+   [
+    "\n\tAccoutrement::AccoutrementState Accoutrement::computeDesiredState()\n\t{\n\t\tRBXASSERT(Network::Players::backendProcessing(this, true));\n\n\t\tif (!getHandleConst())\n\t\t\treturn NOTHING;\n\n",
+    "\n\tAccoutrement::AccoutrementState Accoutrement::computeDesiredState()\n\t{\n\t\tif (!getHandleConst())\n\t\t\treturn NOTHING;\n\n"
+   ],
+   [
+    "\t\tsetAttachmentPoint(c);\n\t}\n\n\tconst PartInstance* Accoutrement::getHandleConst() const\n\t{\n\t\treturn dynamic_cast<PartInstance*>(findFirstChildByName(\"Handle\"));\n",
+    "\t\tsetAttachmentPoint(c);\n\t}\n\n\tvoid Accoutrement::setAttachmentUp(const G3D::Vector3& v)\n\t{\n\t\tG3D::CoordinateFrame c = attachmentPoint;\n\t\tG3D::Vector3 oldX = c.rotation.getColumn(0);\n\t\tG3D::Vector3 oldZ = c.rotation.getColumn(2);\n\n\t\tG3D::Vector3 y = v.direction();\n\n\t\tG3D::Vector3 z = oldX.cross(y);\n\t\tz.unitize();\n\n\t\tG3D::Vector3 x = y.cross(z);\n\t\tx.unitize();\n\n\t\tc.rotation.setColumn(0, x);\n\t\tc.rotation.setColumn(1, y);\n\t\tc.rotation.setColumn(2, z);\n\n\t\tsetAttachmentPoint(c);\n\t}\n\n\tvoid Accoutrement::setAttachmentRight(const G3D::Vector3& v)\n\t{\n\t\tG3D::CoordinateFrame c = attachmentPoint;\n\t\tG3D::Vector3 col1 = c.rotation.getColumn(1);\n\t\tG3D::Vector3 oldZ = c.rotation.getColumn(2);\n\n\t\tG3D::Vector3 x = v.direction();\n\t\tG3D::Vector3 xc = x;\n\t\tG3D::Vector3 oldY = col1;\n\n\t\tG3D::Vector3 z = xc.cross(oldY);\n\t\tz.unitize();\n\n\t\tG3D::Vector3 xx = x;\n\t\tG3D::Vector3 zc = z;\n\t\tG3D::Vector3 y = zc.cross(xx);\n\t\ty.unitize();\n\n\t\tc.rotation.setColumn(0, x);\n\t\tc.rotation.setColumn(1, y);\n\t\tc.rotation.setColumn(2, z);\n\n\t\tsetAttachmentPoint(c);\n\t}\n\n\tconst PartInstance* Accoutrement::getHandleConst() const\n\t{\n\t\treturn dynamic_cast<PartInstance*>(findFirstChildByName(\"Handle\"));\n"
+   ],
+   [
+    "\t\t}\n\t}\n\n\tXmlElement* Accoutrement::write()\n\t{\n\t\tif (!writeUnlocked)\n",
+    "\t\t}\n\t}\n\n\tvoid Accoutrement::dropAllOthers(ModelInstance* character, Accoutrement* exclude)\n\t{\n\t\tif (Workspace* workspace = Workspace::findWorkspace(character))\n\t\t{\n\t\t\twhile (Accoutrement* accoutrement = character->findFirstChildOfType<Accoutrement>())\n\t\t\t{\n\t\t\t\tif (accoutrement != exclude)\n\t\t\t\t\taccoutrement->setParent(workspace);\n\t\t\t}\n\t\t}\n\t}\n\n\tXmlElement* Accoutrement::write()\n\t{\n\t\tif (!writeUnlocked)\n"
+   ]
+  ]
  }
 ]

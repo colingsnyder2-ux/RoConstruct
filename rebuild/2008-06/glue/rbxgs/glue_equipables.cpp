@@ -52,8 +52,7 @@ namespace RBX
 
 	bool Accoutrement::writeUnlocked = false;
 
-	void Accoutrement::setAttachmentUp(const G3D::Vector3& v) { setAttachmentPoint(withUp(attachmentPoint, v)); }
-	void Accoutrement::setAttachmentRight(const G3D::Vector3& v) { setAttachmentPoint(withRight(attachmentPoint, v)); }
+	// Accoutrement::setAttachmentUp/setAttachmentRight: native (Accoutrement.cpp)
 
 	// undo upTo_Equipped: drop the head weld, listen for pickups again
 	void Accoutrement::downFrom_Equipped()
