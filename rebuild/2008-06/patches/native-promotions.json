@@ -2510,5 +2510,35 @@
     "// 2008 rbxgs-appdraw was compiled with /fp:fast\n#pragma float_control(precise, off)\n#include \"AppDraw/Draw.h\"\n#include \"util/Math.h\""
    ]
   ]
+ },
+ {
+  "Rendering/AppDraw/AdornG3D.cpp": [
+   [
+    "#include \"AppDraw/AdornG3D.h\"",
+    "// 2008 rbxgs-appdraw was compiled with /fp:fast\n#pragma float_control(precise, off)\n#include \"AppDraw/AdornG3D.h\""
+   ]
+  ],
+  "App/util/Math.cpp": [
+   [
+    "\t\tG3D::Line myLine = G3D::Line::fromPointAndDirection(ray.origin, ray.direction);\n\t\thit = myLine.intersection(plane);\n\t\treturn true;\n\t}",
+    "\t\tG3D::Line myLine = G3D::Line::fromPointAndDirection(ray.origin, ray.direction);\n\t\thit = myLine.intersection(plane);\n\t\treturn true;\n\t}\n\n\tG3D::Vector3 Math::closestPointOnRay(const G3D::Ray& pointOnRay, const G3D::Ray& otherRay)\n\t{\n\t\tG3D::Vector3 pa = pointOnRay.origin;\n\t\tG3D::Vector3 pPlane = otherRay.origin;\n\t\tG3D::Vector3 ua = pointOnRay.direction;\n\t\tG3D::Vector3 ub = otherRay.direction;\n\t\tG3D::Vector3 p = pPlane - pa;\n\t\tfloat uaub = ua.dot(ub);\n\t\tfloat q1 = ua.dot(p);\n\t\tfloat q2 = -ub.dot(p);\n\t\tfloat d = 1 - uaub * uaub;\n\t\tif (d > 1e-5)\n\t\t{\n\t\t\tfloat alpha = (q1 + uaub * q2) / d;\n\t\t\treturn pa + alpha * ua;\n\t\t}\n\t\telse\n\t\t{\n\t\t\treturn pa;\n\t\t}\n\t}\n\n\tfloat Math::computeLaunchAngle(float speed, float distance, float height, float gravity)\n\t{\n\t\tdouble g = fabs(gravity);\n\t\tdouble disc = speed * speed * speed * speed\n\t\t\t- (distance * distance * g + 2.0 * (speed * speed) * height) * g;\n\n\t\tif (disc <= 0.0)\n\t\t\treturn Math::pi() / 4;\n\n\t\tdouble root = sqrt(disc);\n\t\tdouble v2 = speed * speed;\n\t\tfloat upper = (float)atan((root + v2) / (distance * g));\n\t\tfloat lower = (float)atan((v2 - root) / (g * distance));\n\t\treturn std::min(upper, lower);\n\t}"
+   ],
+   [
+    "\t\t// - 0.00001f is necessary to get the same value as the compiled binary\n\t\tstatic float ssr = (Math::pi() - 0.00001f) / 128;\n\t\treturn ssr;\n\t}\n\n\tG3D::uint8 rotationToByteBase(float angle)\n\t{\n\t\tRBXASSERT(angle <= Math::pi());\n\t\tRBXASSERT(angle >= -Math::pi());\n\n\t\tfloat result = (angle + Math::pi()) / segSizeRadians();\n\t\tint resInt = G3D::iRound(result);\n\t\t\n\t\tRBXASSERT(resInt >= -1);\n\t\tRBXASSERT(resInt <= 256);\n\n\t\tresInt = std::max(0, resInt);\n\t\tresInt = std::min(255, resInt);\n\n\t\tG3D::uint8 byte = (G3D::uint8)resInt;\n\n\t\tRBXASSERT(byte <= 255);\n\n\t\treturn byte;\n\t}",
+    "\t\t// 2008 binary stores twoPi()/256 (0x3cc90fda)\n\t\tstatic float ssr = Math::twoPi() / 256;\n\t\treturn ssr;\n\t}\n\n\tG3D::uint8 rotationToByteBase(float angle)\n\t{\n\t\tfloat result = (angle + Math::pi()) / segSizeRadians();\n\t\tint resInt = G3D::iRound(result);\n\n\t\tresInt = std::max(0, resInt);\n\t\tresInt = std::min(255, resInt);\n\n\t\treturn (G3D::uint8)resInt;\n\t}"
+   ]
+  ],
+  "App/v8datamodel/PartInstance.cpp": [
+   [
+    "\t\tif (value != getCoordinateFrame())\n\t\t{\n\t\t\tRBXASSERT(Math::isOrthonormal(value.rotation));\n\t\t\tprimitive.setCoordinateFrame(value);",
+    "\t\tif (value != getCoordinateFrame())\n\t\t{\n\t\t\tprimitive.setCoordinateFrame(value);"
+   ]
+  ],
+  "App/script/ScriptContext.cpp": [
+   [
+    "void ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)\n{",
+    "void ScriptContext::call(const Lua::FunctionRef& f, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)\n{\n    if (f.empty())\n        throw std::runtime_error(\"Cannot call a nil function\");\n    Lua::lua_pushfunction(f.thread(), f);\n    resume(f.thread(), pushArguments, readResults);\n}\n\nvoid ScriptContext::resume(lua_State* thread, PushArgumentsClosure pushArguments, ReadResultsClosure readResults)\n{"
+   ]
+  ]
  }
 ]

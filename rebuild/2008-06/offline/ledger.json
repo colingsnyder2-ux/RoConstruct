@@ -1095,6 +1095,31 @@
      "0056c590"
     ]
    }
+  },
+  {
+   "id": "offline-9d31e3b200fc6861",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/script/ScriptContext.cpp",
+    "App/util/Math.cpp",
+    "App/v8datamodel/PartInstance.cpp",
+    "Rendering/AppDraw/AdornG3D.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793579616,
+   "receipt": {
+    "gains": [
+     "005997f0",
+     "005aed40",
+     "005dece0",
+     "005ded80",
+     "005df270",
+     "006764c0",
+     "00676500"
+    ],
+    "losses": []
+   }
   }
  ]
 }
