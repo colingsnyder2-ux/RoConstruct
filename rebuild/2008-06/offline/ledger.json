@@ -1242,6 +1242,29 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-71d4e08f3e3e5941",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/Lighting.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793613224,
+   "receipt": {
+    "gains": [
+     "004d6f80",
+     "004d6fb0",
+     "004d6fe0",
+     "004d6ff0",
+     "005e22c0",
+     "005e2370",
+     "005e2420",
+     "005e2490"
+    ],
+    "losses": []
+   }
   }
  ]
 }
