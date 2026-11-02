@@ -2694,5 +2694,21 @@
     "\tstatic Reflection::BoundFuncDesc<Lighting, G3D::Vector3(void), 0> prop_GetSunPosition(&Lighting::getSunPosition, \"GetSunDirection\", Reflection::FunctionDescriptor::AnyCaller);\n\tstatic Reflection::BoundFuncDesc<Lighting, double(void), 0> prop_GetMinutesAfterMidnight(&Lighting::getMinutesAfterMidnight, \"GetMinutesAfterMidnight\", Reflection::FunctionDescriptor::AnyCaller);\n\tstatic Reflection::BoundFuncDesc<Lighting, void(double), 1> prop_SetMinutesAfterMidnight(&Lighting::setMinutesAfterMidnight, \"SetMinutesAfterMidnight\", \"minutes\", Reflection::FunctionDescriptor::AnyCaller);\n\tstatic Reflection::PropDescriptor<Lighting, float> prop_Brightness(\"Brightness\", \"Appearance\", &Lighting::getBrightness, &Lighting::setBrightness, Reflection::PropertyDescriptor::STANDARD);\n\tstatic Reflection::PropDescriptor<Lighting, G3D::Color3> prop_ColorShift_Top(\"ColorShift_Top\", \"Appearance\", &Lighting::getColorShift_Top, &Lighting::setColorShift_Top, Reflection::PropertyDescriptor::STANDARD);\n\tstatic Reflection::PropDescriptor<Lighting, G3D::Color3> prop_ColorShift_Bottom(\"ColorShift_Bottom\", \"Appearance\", &Lighting::getColorShift_Bottom, &Lighting::setColorShift_Bottom, Reflection::PropertyDescriptor::STANDARD);\n\tstatic Reflection::PropDescriptor<Lighting, G3D::Color3> prop_Ambient(\"Ambient\", \"Appearance\", &Lighting::getAmbient, &Lighting::setAmbient, Reflection::PropertyDescriptor::STANDARD);\n\n\tLighting::Lighting()\n\t\t: Base(),\n"
    ]
   ]
+ },
+ {
+  "App/util/Name.cpp": [
+   [
+    "\n\tconst Name& Name::getNullName()\n\t{\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\t\tstatic const Name& nullName = declare(\"\", 0);\n\t\treturn nullName;\n\t}\n\n\tconst Name& Name::declare(const char* sName, int dictionaryIndex)\n\t{\n\t\tif (!sName)\n\t\t{\n\t\t\tRBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);\n\t\t\treturn getNullName();\n\t\t}\n\n",
+    "\n\tconst Name& Name::getNullName()\n\t{\n\t\tboost::call_once(initNull, nullFlag);\n\t\treturn *nullName;\n\t}\n\n\tconst Name& Name::declare(const char* sName, int dictionaryIndex)\n\t{\n\t\tif (!sName)\n\t\t{\n\t\t\treturn getNullName();\n\t\t}\n\n"
+   ],
+   [
+    "void initMoo()\n{\n\tmoo2();\n}\n\nnamespace RBX\n",
+    "void initMoo()\n{\n\tmoo2();\n}\n\nstatic const RBX::Name* nullName;\nstatic boost::once_flag nullFlag = BOOST_ONCE_INIT;\n\nstatic void initNull()\n{\n\tnullName = &RBX::Name::declare(\"\", 0);\n}\n\nnamespace RBX\n"
+   ],
+   [
+    "\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(sName);\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\tRBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n",
+    "\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(std::string(sName));\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\titer->second->dictionaryIndex = dictionaryIndex;\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n"
+   ]
+  ]
  }
 ]

@@ -2992,5 +2992,19 @@
    "\t\tG3D::Vector3 waypoint;\n\n\tprivate:\n\t\tvirtual void onMouseIdle(const UIEvent& uiEvent);\n\t\tvirtual void onMouseHover(const UIEvent& uiEvent);\n\t\tvirtual MouseCommand* onMouseDown(const UIEvent& uiEvent);\n",
    "\t\tG3D::Vector3 waypoint;\n\n\tprivate:\n\t\tbool localHeadHidden() const;\n\t\tvirtual void onMouseIdle(const UIEvent& uiEvent);\n\t\tvirtual void onMouseHover(const UIEvent& uiEvent);\n\t\tvirtual MouseCommand* onMouseDown(const UIEvent& uiEvent);\n"
   ]
+ ],
+ "App/util/Name.cpp": [
+  [
+   "\n\tconst Name& Name::getNullName()\n\t{\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\t\tstatic const Name& nullName = declare(\"\", 0);\n\t\treturn nullName;\n\t}\n\n\tconst Name& Name::declare(const char* sName, int dictionaryIndex)\n\t{\n\t\tif (!sName)\n\t\t{\n\t\t\tRBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);\n\t\t\treturn getNullName();\n\t\t}\n\n",
+   "\n\tconst Name& Name::getNullName()\n\t{\n\t\tboost::call_once(initNull, nullFlag);\n\t\treturn *nullName;\n\t}\n\n\tconst Name& Name::declare(const char* sName, int dictionaryIndex)\n\t{\n\t\tif (!sName)\n\t\t{\n\t\t\treturn getNullName();\n\t\t}\n\n"
+  ],
+  [
+   "void initMoo()\n{\n\tmoo2();\n}\n\nnamespace RBX\n",
+   "void initMoo()\n{\n\tmoo2();\n}\n\nstatic const RBX::Name* nullName;\nstatic boost::once_flag nullFlag = BOOST_ONCE_INIT;\n\nstatic void initNull()\n{\n\tnullName = &RBX::Name::declare(\"\", 0);\n}\n\nnamespace RBX\n"
+  ],
+  [
+   "\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(sName);\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\tRBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n",
+   "\n\t\tboost::mutex::scoped_lock scoped_lock(mutex());\n\n\t\tNamMap::iterator iter = namMap().find(std::string(sName));\n\t\tif (iter != namMap().end())\n\t\t{\n\t\t\tif (dictionaryIndex != -1)\n\t\t\t{\n\t\t\t\titer->second->dictionaryIndex = dictionaryIndex;\n\t\t\t\tdictionary()[dictionaryIndex] = iter->second;\n\t\t\t}\n\t\t\treturn *iter->second;\n"
+  ]
  ]
 }
