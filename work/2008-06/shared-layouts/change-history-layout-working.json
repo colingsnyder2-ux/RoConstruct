@@ -1,21 +1,23 @@
 {
-  "scope": "Inactive layout and eight matched bodies; context identity, record behavior, data/vtable linkage and runtime remain unverified.",
+  "scope": "Inactive layout and nine matched bodies; descriptor ABI, context identity, record behavior, data/vtable linkage and runtime remain unverified.",
   "inputs": {
-    "rebuild\\2008-06\\tests\\record_native_change_history.py": "a4e73d9a281dd4a2ad5178574cb8fa346be2a3cb54519108b0c6e4cee598f5c1",
+    "rebuild\\2008-06\\tests\\record_native_change_history.py": "b3fb4f22f0b7d38869f96ac605c5af765e6a6063dfe05a2251a63ed537d1fc9b",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryLifetime.cpp": "196e6c20556a91f5689a7f517d01cdac189da56a98521b5b40ec848a01a92e41",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryQueries.cpp": "4c7ff0f056c177d6646ac921b403dfa9609c9c0eca6b026c00c41db55df00bc0",
     "rebuild\\2008-06\\tests\\NativeChangeHistoryLayout.cpp": "a2a33d8545ae463b186587fbdf6a42028a6b12e4ddcb0a01c0dfcb52107bfb28",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "88c977161dee24562d0a9512894f43ba35fad2427a3c10b8b7bed9e404b94d3a",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\HistoryRecord.h": "5a3279d594c77cd7e262c8c864d76f784f3759c8ba57d8bb9e2063ae46893a0a",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\HistoryRecord.h": "2f391c58647babaae5ff6d3059bee520a3414eb852cb1fe3778b630aba6901be",
     "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "74b952f551c822bf600e465fbd975d3767f4be8e2a67d30e06edfd2e103a10ac",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryPlayback.cpp": "8130590e03b93e5ba8ba247a86a542c15d612bf3a91305cf87755b64bda8042b",
-    "rebuild\\2008-06\\native-classes\\HistoryRecordPlayback.cpp": "19b6e5124354a7dd6b86797b29df320802f550bbbd2e052df87fb6652391cb16"
+    "rebuild\\2008-06\\native-classes\\HistoryRecordPlayback.cpp": "19b6e5124354a7dd6b86797b29df320802f550bbbd2e052df87fb6652391cb16",
+    "rebuild\\2008-06\\native-classes\\HistoryItemPlayback.cpp": "29f40428ee3b882619fc31e9dc2de66494bc66e5e27cc3fb9e307c8ac632e23a"
   },
   "objects": {
-    "lifetime": "864bafd0d89c90167c86ccccf845cee546f3b4ed9f02a1bcabeb20a19ae25d02",
-    "queries": "3382fa3940a393b2e917cc82dd98eb875299521f7fdfbf3acb4334a59cc2b578",
-    "playback": "0e4c72b21945d82358d1be876492db0c0074a61039d1882dbed03c16f4add2dd",
-    "record": "6a3df60ebe08731d78e8e33936683901c828a4545eaa3b2860b7140d28d4b3f3"
+    "lifetime": "7ba8fc0916b3222845d6f76ea92126f499329494b3bd6f1d3b27e0c0213cd9ce",
+    "queries": "d48c4d0de8ea188ea483a0f9ce86342d1c0f03b641f16e5509f17ccdc0c92b39",
+    "playback": "d1d282f6d171241f8fc1f83d64c3406edcf15ab55c9d124c38cdb9865b7519cc",
+    "record": "ba6726b6f129b20080a949aac046c221c56af63ba651079770e6d138abad6169",
+    "item": "3fe9bee4178ca1754c923d47f5a2242779bf0c60f16108aef76a8e473ef35df3"
   },
   "flags": {
     "lifetime": [
@@ -169,6 +171,44 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeHistoryRecordPlayback.obj",
       "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HistoryRecordPlayback.cpp"
+    ],
+    "item": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeHistoryItemPlayback.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HistoryItemPlayback.cpp"
     ]
   },
   "methods": [
@@ -247,6 +287,15 @@
         "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x6510f0",
         "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@0@0V123@@Z": "0x588240",
         "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+      }
+    },
+    {
+      "address": "00588440",
+      "symbol": "?play@HistoryItem@RBX@@QAEXXZ",
+      "size": 140,
+      "direct_calls": {
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0",
+        "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@0@0V123@@Z": "0x588240"
       }
     }
   ],
