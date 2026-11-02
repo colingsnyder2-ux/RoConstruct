@@ -1,0 +1,44 @@
+{
+  "scope": "Inactive FlatTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5c6b10",
+      "size": 34,
+      "symbol": "?getCursorName@InletTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "??_C@_0M@FEGBGOJC@InletCursor?$AA@": "0x839420",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458"
+      }
+    },
+    {
+      "address": "0x5c6b40",
+      "size": 95,
+      "symbol": "?isSticky@InletTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?isSticky@InletTool@RBX@@UBEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7InletTool@RBX@@6BINamed@1@@": "0x8393dc",
+        "??_7InletTool@RBX@@6BIRenderable@1@@": "0x8393c4"
+      }
+    },
+    {
+      "address": "0x61a030",
+      "size": 64,
+      "symbol": "?applyToSurface@InletTool@RBX@@EAEXPAVSurface@2@@Z",
+      "bindings": {
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ": "0x598c70",
+        "?flat@Surface@RBX@@QAEXXZ": "0x5f1690",
+        "?setSurfaceType@Surface@RBX@@QAEXW4SurfaceType@2@@Z": "0x5f13e0",
+        "?join@PartInstance@RBX@@QAEXXZ": "0x598c90",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      }
+    }
+  ],
+  "source_sha256": "656255a33c2d932e98ef352cb878a07712f53e19328db03228416b6d1d4c7ef8",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "226c63039600d0916d9f2c4984cddb3a289736a84db31586661c3e1f50ab002d",
+  "observer_sha256": "3d1b311ebd4631a8423911b95b1549f2be8ede7f678b8a50f19c47d8653d3103"
+}

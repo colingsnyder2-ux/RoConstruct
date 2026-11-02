@@ -1,0 +1,57 @@
+{
+  "scope": "Inactive Stats command methods match original; GuiRoot and TopMenuBar layout, vtable and runtime ABI remain unproven.",
+  "methods": [
+    {
+      "address": "0x57db00",
+      "size": 135,
+      "symbol": "?isEnabled@StatsCommand@RBX@@UBE_NXZ",
+      "bindings": {
+        "__ehhandler$?isEnabled@StatsCommand@RBX@@UBE_NXZ": "0x7ce709",
+        "??_C@_09NHCIDEAB@StatsHud1?$AA@": "0x83073c",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??_R0?AVTopMenuBar@RBX@@@8": "0x94672c",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x557950",
+        "___RTDynamicCast": "0x6a17c6",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468"
+      }
+    },
+    {
+      "address": "0x57db90",
+      "size": 168,
+      "symbol": "?isChecked@StatsCommand@RBX@@UBE_NXZ",
+      "bindings": {
+        "__ehhandler$?isChecked@StatsCommand@RBX@@UBE_NXZ": "0x7ce709",
+        "??_C@_09NHCIDEAB@StatsHud1?$AA@": "0x83073c",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??_R0?AVTopMenuBar@RBX@@@8": "0x94672c",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x557950",
+        "___RTDynamicCast": "0x6a17c6",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468"
+      }
+    },
+    {
+      "address": "0x57d9f0",
+      "size": 258,
+      "symbol": "?doIt@StatsCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "bindings": {
+        "__ehhandler$?doIt@StatsCommand@RBX@@UAEXPAVIDataState@2@@Z": "0x7d0f62",
+        "??_C@_09NHCIDEAB@StatsHud1?$AA@": "0x83073c",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??_R0?AVTopMenuBar@RBX@@@8": "0x94672c",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x557950",
+        "___RTDynamicCast": "0x6a17c6",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468",
+        "??_C@_09PMAFGHMC@StatsHud2?$AA@": "0x830730"
+      }
+    }
+  ],
+  "source_sha256": "c561abefb66293b870eb09099c4e34bc1c3885a3c7896b962760222adfde4f0a",
+  "object_sha256": "adb543c46b19028f49c7125312fb6b9d9866ed0604ec6605a7d5e76e9250fcd9",
+  "instance_overlay_sha256": "1087b394f796eea90d15eedb11367692adea85ba4673cc0abc6ec990a24895c7",
+  "datamodel_overlay_sha256": "707f6d28b489dad4e92582d4f372b2be89ca8c4213c3c3fbcb96fa37e343ec2a",
+  "gui_overlay_sha256": "01cf017ae63a94fd2d7540d432dd1c7cae08250e10330e8365a39978412e1693",
+  "observer_sha256": "3be8d62902707ad34df7619d46c36411f9a0846670d53d05ffb1945668c79fe2"
+}

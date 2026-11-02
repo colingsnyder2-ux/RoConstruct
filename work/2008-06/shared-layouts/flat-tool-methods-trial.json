@@ -1,0 +1,41 @@
+{
+  "scope": "Inactive FlatTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5c65b0",
+      "size": 34,
+      "symbol": "?getCursorName@FlatTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "??_C@_0L@IIEKKLOO@FlatCursor?$AA@": "0x839200",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458"
+      }
+    },
+    {
+      "address": "0x5c65e0",
+      "size": 95,
+      "symbol": "?isSticky@FlatTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?isSticky@FlatTool@RBX@@UBEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7FlatTool@RBX@@6BINamed@1@@": "0x8391bc",
+        "??_7FlatTool@RBX@@6BIRenderable@1@@": "0x8391a0"
+      }
+    },
+    {
+      "address": "0x619ad0",
+      "size": 30,
+      "symbol": "?applyToSurface@FlatTool@RBX@@EAEXPAVSurface@2@@Z",
+      "bindings": {
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ": "0x598c70",
+        "?flat@Surface@RBX@@QAEXXZ": "0x5f1690",
+        "?join@PartInstance@RBX@@QAEXXZ": "0x598c90"
+      }
+    }
+  ],
+  "source_sha256": "8678a2233909bb7183f7675bc4fbd12b58c62119161355b74a077fcc81377943",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "66aa56bce55b09d1d2f3b56611f560fed79e4dc52bb1d76717426c2d5900b2b1",
+  "observer_sha256": "2c600b66278c215a6522c259e68099901460e6ebdcf2c3792574ce65bdf62578"
+}

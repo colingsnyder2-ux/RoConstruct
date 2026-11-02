@@ -1,0 +1,23 @@
+{
+  "scope": "Inactive factory/lifetime and RTTI checks; derived methods and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5b6530",
+      "size": 81,
+      "symbol": "?onMouseDown@DropperTool@RBX@@MAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "bindings": {
+        "?ignoreVector3@MouseCommand@RBX@@0VVector3@G3D@@A": "0x97bee0",
+        "?getPart@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@PBVHitTestFilter@2@AAVVector3@G3D@@@Z": "0x615d90",
+        "?color@FillTool@RBX@@2VFillToolColor@2@A": "0x976fc0",
+        "?raise@?$Notifier@VFillToolColor@RBX@@VBrickColor@2@@RBX@@IBEXVBrickColor@2@@Z": "0x430e10",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      }
+    }
+  ],
+  "source_sha256": "57eafca016a3d414fa4095f76e73766ac21cec3c747e4218f0e3d53887113dc4",
+  "header_sha256": "8459f4d7e8982bc562a9cf5fb2a22cd86eefa49bc5fe0796beb97a4b8fe06291",
+  "base_header_sha256": "e6a1ca3275f54c8656d41ef1452743b4d2c962bbe58b0deb67ab28cd258dac6b",
+  "object_sha256": "3da41b1081bf505dda5e71c61107d97f53296925567ca1bc40d0349afa6b3d2a",
+  "observer_sha256": "673cab9f54ce6ebb944c34d0aed2ed3fee50754c23f09ecfdfefb1e998fbc13a"
+}

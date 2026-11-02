@@ -321,6 +321,43 @@ assert any('clientIsPresent' in k and v == 0x495e60 for k,v in helper_edges.item
 assert any('serverIsPresent' in k and v == 0x495e70 for k,v in helper_edges.items()), helper_edges
 assert pe.get_string_at_rva(0x8305e0-image) == b'Insufficinet permissions'
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-receipt = {'source_sha256':sha(source),'header_sha256':sha(header),'observer_sha256':sha(Path(__file__)),'object_sha256':sha(obj),'flags':flags,'methods':rows,'property_ctors':property_ctors,'property_base_ctor':{'address':'0x57f530','size':113,'vtable':hex(property_vtable),'edges':property_base_edges},'attach_enabled':{'address':'00582d70','size':221,'vtable':'0x830830','calls':attach_edges},'follow_enabled':follow_enabled,'track_enabled':{'address':'00582e50','size':77,'vtable':'0x830848','calls':track_edges},'selection_camera_actions':selection_camera_actions,'selection_enabled':selection_enabled,'ungroup_checks':ungroup_rows,'controller_checks':controller_rows,'controller_actions':controller_actions,'delete_action':{'address':'00581090','size':len(delete_body),'bindings':delete_edges},'weld_actions':weld_actions,'camera_checks':camera_checks,'first_person_enabled':{'address':'0x57d9c0','size':33,'vtable':'0x830600','calls':first_calls},'run_actions':actions,'permission_helper':{'address':'0x57d250','size':len(helper),'edges':helper_edges},'reset_enabled':{'address':'0x5827c0','size':56,'exact':True,'vtable':'0x83908c','calls':reset_calls},'run_enabled':{'address':'0x582700','size':56,'exact':True,'vtable':'0x83905c','calls':run_calls},'stop_enabled':{'address':'0x582770','size':len(body),'exact':True,'vtable':'0x839074','calls':stop_calls},'scope':'Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven.'}
+select_name, select_body, select_refs = next(x for x in functions if x[0].startswith('?doIt@SelectAllCommand@RBX@@'))
+select_target, select_targetrefs, _ = match.target('2008-06', '0057d8c0')
+assert match.exact_match(select_target, select_targetrefs, select_body, select_refs)
+assert readptr(0x838f50 + 16) == 0x57d8c0
+start, index = definitions[select_name]; section = sections[index]; select_edges = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i); offset -= start
+    if kind == 20 and 0 <= offset < len(select_body)-3:
+        select_edges[symbols[symbol][0]] = (0x57d8c0 + offset + 4 + struct.unpack_from('<i', select_target, offset)[0]) & 0xffffffff
+for token, address in [('checkRunPermissions', 0x57d250), ('?selectAll@Workspace@', 0x5a3e10)]:
+    assert any(token in k and v == address for k,v in select_edges.items()), (token, select_edges)
+all_name, all_body, all_refs = next(x for x in functions if x[0].startswith('?doIt@AllCanSelectCommand@RBX@@'))
+all_target, all_targetrefs, _ = match.target('2008-06', '0057d8e0')
+assert match.exact_match(all_target, all_targetrefs, all_body, all_refs)
+assert readptr(0x838fc4 + 16) == 0x57d8e0
+start, index = definitions[all_name]; section = sections[index]; all_edges = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i); offset -= start
+    if kind == 20 and 0 <= offset < len(all_body)-3:
+        all_edges[symbols[symbol][0]] = (0x57d8e0 + offset + 4 + struct.unpack_from('<i', all_target, offset)[0]) & 0xffffffff
+for token, address in [('checkRunPermissions', 0x57d250), ('?setLocked@PartInstance@', 0x59de20), ('recordCameraHistory', 0x58c5c0)]:
+    assert any(token in k and v == address for k,v in all_edges.items()), (token, all_edges)
+cannot_rows = []
+for prefix,address,expected in [
+    ('?doIt@CanNotSelectCommand@RBX@@',0x582630,[('checkRunPermissions',0x57d250),('??$create@V?$FilteredSelection@VPVInstance@',0x5805d0),('createService',0x581cc0),('cannotSelect',0x57d940),('??$for_each@',0x57e470),('clearSelection',0x5675d0),('recordCameraHistory',0x58c5c0)]),
+    ('?cannotSelect@RBX@@',0x57d940,[('?setLocked@PartInstance@',0x59de20)])]:
+    name,body,refs=next(x for x in functions if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06','%08x'%address);assert match.exact_match(target,targetrefs,body,refs)
+    start,index=definitions[name];section=sections[index];edges={}
+    for i in range(section[7]):
+        offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+10*i);offset-=start
+        if not 0<=offset<len(body)-3:continue
+        value=struct.unpack_from('<I',target,offset)[0]
+        if kind==20:value=(address+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+        edges.setdefault(symbols[symbol][0],value)
+    for token,value in expected:assert any(token in k and v==value for k,v in edges.items()),(token,edges)
+    cannot_rows.append({'address':hex(address),'size':len(body),'symbol':name,'bindings':{k:hex(v) for k,v in edges.items()}})
+assert readptr(0x838fec+16)==0x582630
+receipt = {'cannot_select': cannot_rows, 'all_can_select': {'address': '0x57d8e0', 'size': len(all_body), 'vtable': '0x838fc4', 'bindings': {k: hex(v) for k,v in all_edges.items()}}, 'select_all': {'address': '0x57d8c0', 'size': len(select_body), 'vtable': '0x838f50', 'bindings': {k: hex(v) for k,v in select_edges.items()}}, 'source_sha256':sha(source),'header_sha256':sha(header),'observer_sha256':sha(Path(__file__)),'object_sha256':sha(obj),'flags':flags,'methods':rows,'property_ctors':property_ctors,'property_base_ctor':{'address':'0x57f530','size':113,'vtable':hex(property_vtable),'edges':property_base_edges},'attach_enabled':{'address':'00582d70','size':221,'vtable':'0x830830','calls':attach_edges},'follow_enabled':follow_enabled,'track_enabled':{'address':'00582e50','size':77,'vtable':'0x830848','calls':track_edges},'selection_camera_actions':selection_camera_actions,'selection_enabled':selection_enabled,'ungroup_checks':ungroup_rows,'controller_checks':controller_rows,'controller_actions':controller_actions,'delete_action':{'address':'00581090','size':len(delete_body),'bindings':delete_edges},'weld_actions':weld_actions,'camera_checks':camera_checks,'first_person_enabled':{'address':'0x57d9c0','size':33,'vtable':'0x830600','calls':first_calls},'run_actions':actions,'permission_helper':{'address':'0x57d250','size':len(helper),'edges':helper_edges},'reset_enabled':{'address':'0x5827c0','size':56,'exact':True,'vtable':'0x83908c','calls':reset_calls},'run_enabled':{'address':'0x582700','size':56,'exact':True,'vtable':'0x83905c','calls':run_calls},'stop_enabled':{'address':'0x582770','size':len(body),'exact':True,'vtable':'0x839074','calls':stop_calls},'scope':'Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven.'}
 (root / 'work/2008-06/shared-layouts/selection-command-constructors-trial.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print('PASS ten selection-command constructors, labels and RTTI')

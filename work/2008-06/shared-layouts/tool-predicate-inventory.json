@@ -1,0 +1,165 @@
+{
+  "methods": [
+    {
+      "tool": "ArrowTool",
+      "vtable": "0x8390c8",
+      "predicate": "0x5c6240",
+      "type_descriptor": "0x94bc74"
+    },
+    {
+      "tool": "ResizeTool",
+      "vtable": "0x8390ec",
+      "predicate": "0x5c6420",
+      "type_descriptor": "0x94fd50"
+    },
+    {
+      "tool": "AxisMoveTool",
+      "vtable": "0x839168",
+      "predicate": "0x5c64e0",
+      "type_descriptor": "0x94fdfc"
+    },
+    {
+      "tool": "FlatTool",
+      "vtable": "0x839184",
+      "predicate": "0x5c6580",
+      "type_descriptor": "0x94fe5c"
+    },
+    {
+      "tool": "GlueTool",
+      "vtable": "0x839210",
+      "predicate": "0x5c66d0",
+      "type_descriptor": "0x94fefc"
+    },
+    {
+      "tool": "WeldTool",
+      "vtable": "0x839298",
+      "predicate": "0x5c6840",
+      "type_descriptor": "0x94ff9c"
+    },
+    {
+      "tool": "StudsTool",
+      "vtable": "0x839320",
+      "predicate": "0x5c6990",
+      "type_descriptor": "0x95003c"
+    },
+    {
+      "tool": "InletTool",
+      "vtable": "0x8393a8",
+      "predicate": "0x5c6ae0",
+      "type_descriptor": "0x9500dc"
+    },
+    {
+      "tool": "HingeTool",
+      "vtable": "0x839430",
+      "predicate": "0x5c6c30",
+      "type_descriptor": "0x95017c"
+    },
+    {
+      "tool": "RightMotorTool",
+      "vtable": "0x8394b8",
+      "predicate": "0x5c6d80",
+      "type_descriptor": "0x950224"
+    },
+    {
+      "tool": "LeftMotorTool",
+      "vtable": "0x839540",
+      "predicate": "0x5c6e40",
+      "type_descriptor": "0x9502d4"
+    },
+    {
+      "tool": "OscillateMotorTool",
+      "vtable": "0x8395bc",
+      "predicate": "0x5c6f40",
+      "type_descriptor": "0x950388"
+    },
+    {
+      "tool": "ModelSetFrontTool",
+      "vtable": "0x83963c",
+      "predicate": "0x5c7030",
+      "type_descriptor": "0x950448"
+    },
+    {
+      "tool": "ModelSetPrimaryPartTool",
+      "vtable": "0x8396cc",
+      "predicate": "0x5c7120",
+      "type_descriptor": "0x950510"
+    },
+    {
+      "tool": "AnchorTool",
+      "vtable": "0x839748",
+      "predicate": "0x5c71e0",
+      "type_descriptor": "0x9505d0"
+    },
+    {
+      "tool": "LockTool",
+      "vtable": "0x8397c0",
+      "predicate": "0x5c72b0",
+      "type_descriptor": "0x950690"
+    },
+    {
+      "tool": "FillTool",
+      "vtable": "0x839838",
+      "predicate": "0x5c7380",
+      "type_descriptor": "0x95072c"
+    },
+    {
+      "tool": "DropperTool",
+      "vtable": "0x8398bc",
+      "predicate": "0x5c74d0",
+      "type_descriptor": "0x9507cc"
+    },
+    {
+      "tool": "NullTool",
+      "vtable": "0x839948",
+      "predicate": "0x5c75e0",
+      "type_descriptor": "0x950874"
+    },
+    {
+      "tool": "GameTool",
+      "vtable": "0x839964",
+      "predicate": "0x5c7680",
+      "type_descriptor": "0x9508d0"
+    },
+    {
+      "tool": "GrabTool",
+      "vtable": "0x839980",
+      "predicate": "0x5c7720",
+      "type_descriptor": "0x95092c"
+    },
+    {
+      "tool": "CloneTool",
+      "vtable": "0x83999c",
+      "predicate": "0x5c77c0",
+      "type_descriptor": "0x950988"
+    },
+    {
+      "tool": "HammerTool",
+      "vtable": "0x8399b8",
+      "predicate": "0x5c7860",
+      "type_descriptor": "0x9509e8"
+    },
+    {
+      "tool": "SlingshotTool",
+      "vtable": "0x839a30",
+      "predicate": "0x5c7a50",
+      "type_descriptor": "0x950a94"
+    },
+    {
+      "tool": "RocketTool",
+      "vtable": "0x839ab4",
+      "predicate": "0x5c7ba0",
+      "type_descriptor": "0x950b58"
+    },
+    {
+      "tool": "LaserTool",
+      "vtable": "0x839b3c",
+      "predicate": "0x5c7db0",
+      "type_descriptor": "0x950bfc"
+    }
+  ],
+  "normalized_sha256": "0106192839b8d0aedd9e666b6ba895f1acbd6d0c337bbbe678f9037130eac60f",
+  "source_object_sha256": "1c19625079a55b2eef39257a32ef0c94c496956faf2c29ff5e1bd89de9180406",
+  "constructor_receipt_sha256": "f3ca50728b973bb0b0f1ae1ace5222b674c9f06e8e96a9db9f41e356f5f54d16",
+  "observer_sha256": "ed5fab72b2d24f6288f998cdcb70fc3b118a1a41a0dd7c56a8f5d98439a27dcf",
+  "scope": "Original binary inventory only; concrete tool layouts, type identity in rebuilt executable, constructors/destructors and runtime remain unproven."
+}

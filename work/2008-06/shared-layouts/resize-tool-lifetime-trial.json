@@ -1,0 +1,189 @@
+{
+  "scope": "Inactive ResizeTool lifetime only; complete vtable, other methods and runtime unproven.",
+  "size": "0x48",
+  "vtables": [
+    {
+      "base": "IRenderable",
+      "address": "0x839108",
+      "slots": [
+        {
+          "symbol": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ",
+          "original_address": "0x60a2f0"
+        },
+        {
+          "symbol": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ",
+          "original_address": "0x60a2f0"
+        },
+        {
+          "symbol": "?render2d@ResizeTool@RBX@@EAEXPAVAdorn@2@@Z",
+          "original_address": "0x63f470"
+        },
+        {
+          "symbol": "?render3dAdorn@ResizeTool@RBX@@EAEXPAVAdorn@2@@Z",
+          "original_address": "0x63f2d0"
+        },
+        {
+          "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+          "original_address": "0x458e90"
+        }
+      ]
+    },
+    {
+      "base": "INamed",
+      "address": "0x839124",
+      "slots": [
+        {
+          "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sResizeTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+          "original_address": "0x5c64c0"
+        },
+        {
+          "symbol": "?onMouseDown@ResizeTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+          "original_address": "0x63f670"
+        },
+        {
+          "symbol": "?onMouseIdle@ArrowToolBase@RBX@@MAEXABVUIEvent@2@@Z",
+          "original_address": "0x616180"
+        },
+        {
+          "symbol": "?onMouseHover@ResizeTool@RBX@@EAEXABVUIEvent@2@@Z",
+          "original_address": "0x63f630"
+        },
+        {
+          "symbol": "?onKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+          "original_address": "0x5c72e0"
+        },
+        {
+          "symbol": "?onPeekKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+          "original_address": "0x5f2310"
+        },
+        {
+          "symbol": "?onMouseMove@ResizeTool@RBX@@EAEXABVUIEvent@2@@Z",
+          "original_address": "0x63ee20"
+        },
+        {
+          "symbol": "?onMouseDelta@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+          "original_address": "0x70bdf0"
+        },
+        {
+          "symbol": "?onMouseUp@ResizeTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+          "original_address": "0x63ed20"
+        },
+        {
+          "symbol": "?capture@MouseCommand@RBX@@MAEXXZ",
+          "original_address": "0x615820"
+        },
+        {
+          "symbol": "?releaseCapture@MouseCommand@RBX@@MAEXXZ",
+          "original_address": "0x5a0150"
+        },
+        {
+          "symbol": "?cancel@MouseCommand@RBX@@MAEXXZ",
+          "original_address": "0x5a04a0"
+        },
+        {
+          "symbol": "??_EResizeTool@RBX@@UAEPAXI@Z",
+          "original_address": "0x5c6400"
+        },
+        {
+          "symbol": "?isSticky@ResizeTool@RBX@@UBEPAVMouseCommand@2@XZ",
+          "original_address": "0x5c63a0"
+        },
+        {
+          "symbol": "?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ",
+          "original_address": "0x615a50"
+        },
+        {
+          "symbol": "?getCursorName@ResizeTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original_address": "0x63ec60"
+        }
+      ]
+    }
+  ],
+  "source_sha256": "0a69c938ee238e2719efe56aa7b1bed83acde08981312dfed91859dfaeefc481",
+  "header_sha256": "7fc6763676924437cb51d267e84b5032bb9a6c24f748f4fdfd66c4ca4cc7acd4",
+  "object_sha256": "3f5836d9352bf9960df17c625e7f0a02e95a7a37a48ee8e01a9bc65228fc8722",
+  "factory_source_sha256": "6d88f6de5cd7cb826238663a2fbd562a0bd751f07f4d6fda8d220b35eb58cc7d",
+  "factory_object_sha256": "0b24778082f7c7b5ea71f4a88c8a32f833ac75d50b4793405a3f0793804f5880",
+  "observer_sha256": "df5734710e48ef7da9696ed7b3aed1e440790aad91efa5630c81ea2628364633",
+  "methods": [
+    {
+      "symbol": "??0ResizeTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "address": "0x5c62f0",
+      "size": 75,
+      "exact": true,
+      "bindings": {
+        "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+        "??_7ResizeTool@RBX@@6BINamed@1@@": "0x839124",
+        "??_7ResizeTool@RBX@@6BIRenderable@1@@": "0x839108"
+      }
+    },
+    {
+      "symbol": "??1ResizeTool@RBX@@UAE@XZ",
+      "address": "0x5c6340",
+      "size": 94,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??1ResizeTool@RBX@@UAE@XZ": "0x7da9f8",
+        "??1MouseCommand@RBX@@UAE@XZ": "0x615780"
+      }
+    },
+    {
+      "symbol": "??_GResizeTool@RBX@@UAEPAXI@Z",
+      "address": "0x5c6400",
+      "size": 30,
+      "exact": true,
+      "bindings": {
+        "??1ResizeTool@RBX@@UAE@XZ": "0x5c6340",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "symbol": "?newMouseCommand@?$TToolVerb@VResizeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "address": "0x5c6450",
+      "size": 102,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VResizeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0ResizeTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x5c62f0"
+      }
+    }
+  ],
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\workspace-model-vector-include",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ]
+}

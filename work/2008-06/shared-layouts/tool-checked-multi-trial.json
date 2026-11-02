@@ -1,11 +1,148 @@
 {
   "scope": "Inactive native predicates match with provisional ModelInstance/Workspace overlay. Full layout, type identity and runtime ABI remain unproven.",
-  "observer_sha256": "f5af1e04425173a2af25b6ac1b0e40861e2159211dd58e2a89dd3b3cf3369691",
-  "source_sha256": "fef20656e2e48d7937e34ab3dc590e4b0cc91909c301f349484b3167b1ae7d25",
-  "object_sha256": "f42bba0e2b6607b6884d9c191577798e2097d33b2dcaf521dac9e1389e83030a",
+  "observer_sha256": "eaeaa2ec857d326b005d42ddd7601d93d08c6f4c4a55938696939a905301bd02",
+  "source_sha256": "09474ba1e98e0c19444f2f26dae3b7bff194710a6d1f0a0ed161fe09f5834aa1",
+  "resize_header_sha256": "7fc6763676924437cb51d267e84b5032bb9a6c24f748f4fdfd66c4ca4cc7acd4",
+  "axis_header_sha256": "9f744666f17d1485b92e4a58c65b5e23920de9e0df28ed43e2a9d836cfe3fb69",
+  "flat_header_sha256": "96fe417393629f01ab8870e0223db7bbeeebdcc897a91ca2fa9704046e124bfc",
+  "surface_header_sha256": "a9b681ce97b1ac3ecfb88c43fe2de296e90b4ebc7b02e5bc23c9ec9f98b0080a",
+  "sibling_header_sha256": "b689daf95c0b4d427a5b48e4578d11a16eb655833ae142d0f2d4df82b50e8c2b",
+  "model_tools_header_sha256": "ac08f5d3b016f09dc6158847d86849b836a0ca03c200e6f6a903bd43593584cd",
+  "model_tool_header_sha256": "13320b0d23a62af60655aefe20b0a93ec6cffdfda398e70ff107019c69076b9b",
+  "clone_header_sha256": "ffa4fbad96486d4b15b33a9997576d8f7228508b57bad5f1ba2874c4b8b748c1",
+  "grab_header_sha256": "150ab9d9ea16c3bb0d8380ef694432afbad8230c1c0f93cc6c5cf96d1759ecaf",
+  "object_sha256": "5cd7958f6acad55d0a58b5b8a717f8507336b62282e1e9b20a5490d6bdb3a255",
   "model_overlay_sha256": "4f09a2312c23d2da4ac8754df699f21e4e165701b6b88993ea282549bf99b00c",
   "workspace_overlay_sha256": "f3c793e2414bd45a26ecc899a552d0c9b85ac491b321a6225b9347c58090f653",
   "methods": [
+    {
+      "tool": "GlueTool",
+      "address": "0x5c66d0",
+      "symbol": "?isChecked@?$TToolVerb@VGlueTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94fefc"
+    },
+    {
+      "tool": "WeldTool",
+      "address": "0x5c6840",
+      "symbol": "?isChecked@?$TToolVerb@VWeldTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94ff9c"
+    },
+    {
+      "tool": "StudsTool",
+      "address": "0x5c6990",
+      "symbol": "?isChecked@?$TToolVerb@VStudsTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x95003c"
+    },
+    {
+      "tool": "InletTool",
+      "address": "0x5c6ae0",
+      "symbol": "?isChecked@?$TToolVerb@VInletTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x9500dc"
+    },
+    {
+      "tool": "HingeTool",
+      "address": "0x5c6c30",
+      "symbol": "?isChecked@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x95017c"
+    },
+    {
+      "tool": "RightMotorTool",
+      "address": "0x5c6d80",
+      "symbol": "?isChecked@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950224"
+    },
+    {
+      "tool": "LeftMotorTool",
+      "address": "0x5c6e40",
+      "symbol": "?isChecked@?$TToolVerb@VLeftMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x9502d4"
+    },
+    {
+      "tool": "OscillateMotorTool",
+      "address": "0x5c6f40",
+      "symbol": "?isChecked@?$TToolVerb@VOscillateMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950388"
+    },
+    {
+      "tool": "ModelSetFrontTool",
+      "address": "0x5c7030",
+      "symbol": "?isChecked@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950448"
+    },
+    {
+      "tool": "AnchorTool",
+      "address": "0x5c71e0",
+      "symbol": "?isChecked@?$TToolVerb@VAnchorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x9505d0"
+    },
+    {
+      "tool": "LockTool",
+      "address": "0x5c72b0",
+      "symbol": "?isChecked@?$TToolVerb@VLockTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950690"
+    },
+    {
+      "tool": "CloneTool",
+      "address": "0x5c77c0",
+      "symbol": "?isChecked@?$TToolVerb@VCloneTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950988"
+    },
+    {
+      "tool": "GrabTool",
+      "address": "0x5c7720",
+      "symbol": "?isChecked@?$TToolVerb@VGrabTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x95092c"
+    },
+    {
+      "tool": "FlatTool",
+      "address": "0x5c6580",
+      "symbol": "?isChecked@?$TToolVerb@VFlatTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94fe5c"
+    },
+    {
+      "tool": "AxisMoveTool",
+      "address": "0x5c64e0",
+      "symbol": "?isChecked@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94fdfc"
+    },
+    {
+      "tool": "ResizeTool",
+      "address": "0x5c6420",
+      "symbol": "?isChecked@?$TToolVerb@VResizeTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94fd50"
+    },
     {
       "tool": "ArrowTool",
       "address": "0x5c6240",

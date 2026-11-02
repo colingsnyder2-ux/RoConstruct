@@ -1,0 +1,29 @@
+{
+  "scope": "Inactive PartTool lifetime; shared ABI and runtime unproven.",
+  "size": "0x24",
+  "methods": [
+    {
+      "address": "0x5b6390",
+      "size": 40,
+      "symbol": "??0PartTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "bindings": {
+        "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+        "??_7PartTool@RBX@@6BINamed@1@@": "0x83584c",
+        "??_7PartTool@RBX@@6BIRenderable@1@@": "0x835834"
+      }
+    },
+    {
+      "address": "0x5c79d0",
+      "size": 119,
+      "symbol": "??1PartTool@RBX@@UAE@XZ",
+      "bindings": {
+        "__ehhandler$??1PartTool@RBX@@UAE@XZ": "0x7d4db8",
+        "??1MouseCommand@RBX@@UAE@XZ": "0x615780"
+      }
+    }
+  ],
+  "source_sha256": "e6a1ca3275f54c8656d41ef1452743b4d2c962bbe58b0deb67ab28cd258dac6b",
+  "header_sha256": "8459f4d7e8982bc562a9cf5fb2a22cd86eefa49bc5fe0796beb97a4b8fe06291",
+  "object_sha256": "edc73f065f754371ef2c3a6697c26f94a02b27707182fa5edfb49a7ed3aa73a7",
+  "observer_sha256": "05d858132eca2a601135e376126e2ff85f3dcb9e414ce5d4eae7888b4f2b540c"
+}

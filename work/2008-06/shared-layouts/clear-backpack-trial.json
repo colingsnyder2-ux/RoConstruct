@@ -1,0 +1,46 @@
+{
+  "scope": "ClearBackpack methods match; Player and Backpack declarations are incomplete diagnostic overlays, runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x57df80",
+      "size": 69,
+      "symbol": "?isEnabled@ClearBackpack@RBX@@UBE_NXZ",
+      "bindings": {
+        "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z": "0x49ac80",
+        "?getPlayerBackpack@Player@Network@RBX@@QBEPAVBackpack@3@XZ": "0x48c470"
+      }
+    },
+    {
+      "address": "0x57d4f0",
+      "size": 47,
+      "symbol": "?doIt@ClearBackpack@RBX@@UAEXPAVIDataState@2@@Z",
+      "bindings": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": "0x57d250",
+        "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z": "0x49ac80",
+        "?getPlayerBackpack@Player@Network@RBX@@QBEPAVBackpack@3@XZ": "0x48c470",
+        "?removeAllChildren@Instance@RBX@@QAEXXZ": "0x55afd0"
+      }
+    },
+    {
+      "address": "0x57d250",
+      "size": 120,
+      "symbol": "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z",
+      "bindings": {
+        "__ehhandler$?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": "0x7cfeb9",
+        "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x495e60",
+        "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x495e70",
+        "??_C@_0BJ@IGGCCLGC@Insufficinet?5permissions?$AA@": "0x8305e0",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8",
+        "__CxxThrowException@8": "0x6a158c"
+      }
+    }
+  ],
+  "source_sha256": "759a5eb55b25917bf58ee9c53038917d926a60c9cf5cb45921125294ca94894a",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "0f744f47287dbdeb362add02822dddd78b4209bb0af9657a1f510ffcb1e71b16",
+  "instance_header_sha256": "d222c9dc5dfa7cfccfa115597fa72ea02bbfa90965480e9e7c1295c40634a147",
+  "observer_sha256": "ef745d7d5b3755a5f57c81b2e8a9b1329a87193b9ef84d63f1283615ce6d345a"
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "Inactive model-front method; getTopLevelPVParent binds original 0x608e20, full ABI and runtime unproven.",
+  "methods": [
+    {
+      "address": "0x5c7060",
+      "size": 34,
+      "symbol": "?getCursorName@ModelSetFrontTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "??_C@_0BA@DFPCNGBD@DirectionCursor?$AA@": "0x8396b8",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458"
+      }
+    },
+    {
+      "address": "0x416690",
+      "size": 3,
+      "symbol": "?isSticky@ModelSetFrontTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "bindings": {}
+    },
+    {
+      "address": "0x619d40",
+      "size": 154,
+      "symbol": "?applyToSurface@ModelSetFrontTool@RBX@@EAEXPAVSurface@2@@Z",
+      "bindings": {
+        "??_R0?AVModelInstance@RBX@@@8": "0x932a40",
+        "??_R0?AVPVInstance@RBX@@@8": "0x947f1c",
+        "?getTopLevelPVParent@PVInstance@RBX@@QAEPAV12@XZ": "0x608e20",
+        "___RTDynamicCast": "0x6a17c6",
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0",
+        "?setFrontAndTop@ModelInstance@RBX@@QAEXABVVector3@G3D@@@Z": "0x583ba0"
+      }
+    }
+  ],
+  "source_sha256": "de9edae59fba874db91cbd256073862d14198e1e5ee16b0bd89944bbb40c6d22",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "ef3480fc233d0e824d8ac24ca56926830716170008286cd0f71d14337b246e85",
+  "object_sha256": "a985e6fc1a5e34cbc65830b2ff8c619884564fff5c9ad413ca7bdd918e70120f",
+  "observer_sha256": "ec4ce00af1a91962f24f63d283b584a8a2538104ba22a891466007eddc96503d"
+}

@@ -11,7 +11,7 @@
   "source_sha256": "8d6fb31d0ca7f0adc509074b1b5370859d6606e41486c73f03977ff54575d435",
   "header_sha256": "37064d725b9be184868948064c120827458cb4d1e65f9a9728cbc9d38decb1e9",
   "overlay_sha256": "cc4c07c2d6ed489301f5b18e0e9f3fb6f802d43466eca6f544ac0df6ae09720c",
-  "object_sha256": "a7ee4cd7ed5f605bb732d2df17e42664b374c540475beb62f50b78e10ec673c6",
-  "observer_sha256": "c5089ea466d15c343784cba8a4e141eeab8e6de0706774526113558ac545963b",
-  "scope": "Inactive isolated profile; getter inlined provisionally. Character constructor/destructor, field semantics, whole layout, data identity and runtime remain unproven. Not selected for diagnostic link."
+  "object_sha256": "8ba20e7b4a44d2414a0aa8af73acce73393482e8b2fb6bd21ef45ecebf7608cb",
+  "observer_sha256": "e83f91e95c998566c3b22c1decd0a6b481bd63eda806377736b8bab36b30a092",
+  "scope": "Inactive isolated profile; getter inlined provisionally. Character constructor/destructor, field semantics, whole layout, data identity and runtime remain unproven. Selected for isolated diagnostic link only."
 }

@@ -1,0 +1,103 @@
+{
+  "scope": "Inactive FlatTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5c7440",
+      "size": 23,
+      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sFillTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "bindings": {
+        "?flag@?1??get@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979640",
+        "?callDoDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAXXZ": "0x5c60b0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?doDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5520"
+      }
+    },
+    {
+      "address": "0x5c5520",
+      "size": 101,
+      "symbol": "?doDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@2@XZ",
+      "bindings": {
+        "__ehhandler$?doDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@2@XZ": "0x7d4a9e",
+        "??_B?1??doDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x97957c",
+        "??_C@_04CAMFALGN@Fill?$AA@": "0x94d24c",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90",
+        "?name@?1??doDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x979578"
+      }
+    },
+    {
+      "address": "0x5c60b0",
+      "size": 5,
+      "symbol": "?callDoDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAXXZ",
+      "bindings": {
+        "?doDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5520"
+      }
+    },
+    {
+      "address": "0x5c75a0",
+      "size": 23,
+      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sDropperTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "bindings": {
+        "?flag@?1??get@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979644",
+        "?callDoDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAXXZ": "0x5c60c0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?doDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5590"
+      }
+    },
+    {
+      "address": "0x5c5590",
+      "size": 101,
+      "symbol": "?doDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@2@XZ",
+      "bindings": {
+        "__ehhandler$?doDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@2@XZ": "0x7d4abe",
+        "??_B?1??doDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x979584",
+        "??_C@_07HEKHMCOA@Dropper?$AA@": "0x94d254",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90",
+        "?name@?1??doDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x979580"
+      }
+    },
+    {
+      "address": "0x5c60c0",
+      "size": 5,
+      "symbol": "?callDoDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAXXZ",
+      "bindings": {
+        "?doDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5590"
+      }
+    },
+    {
+      "address": "0x5c71c0",
+      "size": 23,
+      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sModelSetPrimaryPartTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "bindings": {
+        "?flag@?1??get@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979648",
+        "?callDoDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAXXZ": "0x5c60d0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?doDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5600"
+      }
+    },
+    {
+      "address": "0x5c5600",
+      "size": 101,
+      "symbol": "?doDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@2@XZ",
+      "bindings": {
+        "__ehhandler$?doDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@2@XZ": "0x7d4ade",
+        "??_B?1??doDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x97958c",
+        "??_C@_0BE@LFNDNHIF@ModelSetPrimaryPart?$AA@": "0x94d25c",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90",
+        "?name@?1??doDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x979588"
+      }
+    },
+    {
+      "address": "0x5c60d0",
+      "size": 5,
+      "symbol": "?callDoDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAXXZ",
+      "bindings": {
+        "?doDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5600"
+      }
+    }
+  ],
+  "source_sha256": "6a32d82257fd58b77787a4be1f9a5b2ffe2e1d3dd00cf13e17d941f63d93022d",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "47efe14ad3d354c522e4a0aba3f51236ac0e820ab7f904f93a6161f70ca46c21",
+  "observer_sha256": "389a66d3e08164311cb83ab4344f220e33c78d5f02da480d1bf4bf247c7b63da"
+}

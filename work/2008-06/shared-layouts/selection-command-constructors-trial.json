@@ -1,8 +1,53 @@
 {
-  "source_sha256": "06ae92a6c7ef775a2cb5dc37436017a175b7074ef4eaf0e41b4930d8a7dc4fc1",
+  "cannot_select": [
+    {
+      "address": "0x582630",
+      "size": 203,
+      "symbol": "?doIt@CanNotSelectCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "bindings": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": "0x57d250",
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": "0x5805d0",
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0",
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "?cannotSelect@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x57d940",
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@P6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@std@@YAP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@1P6AX0@Z@Z": "0x57e470",
+        "?clearSelection@Selection@RBX@@QAEXXZ": "0x5675d0",
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0"
+      }
+    },
+    {
+      "address": "0x57d940",
+      "size": 119,
+      "symbol": "?cannotSelect@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "bindings": {
+        "__ehhandler$?cannotSelect@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x7c6168",
+        "?setLocked@PartInstance@RBX@@SAXPAVInstance@2@_N@Z": "0x59de20"
+      }
+    }
+  ],
+  "all_can_select": {
+    "address": "0x57d8e0",
+    "size": 82,
+    "vtable": "0x838fc4",
+    "bindings": {
+      "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": "0x57d250",
+      "?setLocked@PartInstance@RBX@@SAXPAVInstance@2@_N@Z": "0x59de20",
+      "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0"
+    }
+  },
+  "select_all": {
+    "address": "0x57d8c0",
+    "size": 31,
+    "vtable": "0x838f50",
+    "bindings": {
+      "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": "0x57d250",
+      "?selectAll@Workspace@RBX@@QAEXXZ": "0x5a3e10"
+    }
+  },
+  "source_sha256": "a1b4d22dc11a7b214718a494d03747d1f699c06b78adb6a44ded57aebe0a1bd8",
   "header_sha256": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
-  "observer_sha256": "a9150e6684d86a29c893de64b14d6739f1ed5e8f035af0c0de7572318038cdfc",
-  "object_sha256": "280cba3e16ce945406b27a7930cd86a3e181078aa1663698d0218f78ea502230",
+  "observer_sha256": "ac5dd0781d4d38c10e671eb64ede57c18f94a95db64ef7f6bea7c00acf350d9b",
+  "object_sha256": "422287a8d1bc320e16c8247bcec1286bc53d39231eb9bc895244d860c4b7657d",
   "flags": [
     "/nologo",
     "/c",
@@ -575,7 +620,7 @@
   },
   "stop_enabled": {
     "address": "0x582770",
-    "size": 33,
+    "size": 119,
     "exact": true,
     "vtable": "0x839074",
     "calls": {

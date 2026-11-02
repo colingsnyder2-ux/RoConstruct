@@ -1,0 +1,22 @@
+{
+  "scope": "Diagnostic method; full ABI/runtime unproven.",
+  "address": "0x581750",
+  "size": 310,
+  "edges": {
+    "__ehhandler$?doIt@MoveDownSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z": 8196344,
+    "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+    "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+    "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z": 6350144,
+    "?startDragging@MegaDragger@RBX@@QAEXXZ": 6348288,
+    "__real@bf99999a": 8588140,
+    "?safeMoveNoDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z": 6349184,
+    "?finishDragging@MegaDragger@RBX@@QAEXXZ": 6350720,
+    "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": 4534752,
+    "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": 6019104,
+    "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z": 5728576,
+    "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792,
+    "??1MegaDragger@RBX@@QAE@XZ": 6350592
+  },
+  "eh_contents_verified": true,
+  "eh_runtime_target_verified": false
+}

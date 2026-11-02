@@ -1,5 +1,7 @@
 # RoConstruct
 
+Work in the existing checkout. Do not create worktrees unless the user explicitly asks.
+
 Matching decompilation of old Roblox clients: write C++ that the client's original
 MSVC compiles to the exact target bytes. A function counts only when the group
 server re-verifies it byte-identical.

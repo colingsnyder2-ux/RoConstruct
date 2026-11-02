@@ -1,0 +1,13 @@
+{
+  "scope": "Inactive incompatible document diagnostic; not runtime P5/P6. Remaining objects not all rebuilt.",
+  "revision": "3842a91c631dcc18a77c357f02071e787792f75d",
+  "checks_passed": 79,
+  "diagnostic_link_exit": 1120,
+  "diagnostic_error_lines": 43,
+  "verifier_exit": 1,
+  "resize_probe_errors": 42,
+  "axis_probe_errors": 42,
+  "log_sha256": "4083bebd72c6d9ee6e698d2e76962baf32357f99b3b21b807961ab7afe3b7153",
+  "link_receipt_sha256": "0c1185d50bcd5564e0b6cb275e204074dd796b698361cb41ae987f99b5adf5cd",
+  "verifier_sha256": "8a86f4167ad8160887757874a9ec3639d05a32f3f34ddba8c25c4597e4ac051c"
+}

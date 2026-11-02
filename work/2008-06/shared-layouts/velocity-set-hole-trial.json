@@ -1,0 +1,27 @@
+{
+  "scope": "Exact inactive candidate; diagnostic VelocityMotor/Hole layouts and signal declarations are incomplete. Provider symbols and runtime ABI remain unproven.",
+  "address": "0x60c400",
+  "size": 369,
+  "symbol": "?setHole@VelocityMotor@RBX@@QAEXPAVHole@2@@Z",
+  "bindings": {
+    "__ehhandler$?setHole@VelocityMotor@RBX@@QAEXPAVHole@2@@Z": "0x7c7da8",
+    "??$shared_from@VHole@RBX@@@RBX@@YA?AV?$shared_ptr@VHole@RBX@@@boost@@PAVHole@0@@Z": "0x618a40",
+    "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+    "_prop_Hole": "0x97bdfc",
+    "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00",
+    "?setPart@VelocityMotor@RBX@@AAEXHPAVFeature@2@@Z": "0x60a020",
+    "?onEvent_HoleAncestorChanged@VelocityMotor@RBX@@AAEXXZ": "0x60a230",
+    "??$?0V?$bind_t@XV?$mf0@XVVelocityMotor@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVVelocityMotor@RBX@@@_bi@boost@@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf0@XVVelocityMotor@RBX@@@_mfi@boost@@V?$list1@V?$value@PAVVelocityMotor@RBX@@@_bi@boost@@@_bi@3@@_bi@1@@Z": "0x60b650",
+    "?event_ancestryChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x973c38",
+    "?connect@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@6@H@Z": "0x4a3340",
+    "??4scoped_connection@signals@boost@@QAEAAV012@ABVconnection@12@@Z": "0x595540",
+    "??1connection@signals@boost@@QAE@XZ": "0x595370",
+    "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0x49f710",
+    "?disconnect@connection@signals@boost@@QBEXXZ": "0x595230"
+  },
+  "source_sha256": "8a97e471278437aa93d7b0fa64ba7697af32a6f75828a9d17552d39b61493052",
+  "signal_overlay_sha256": "d979a74433d8c18378d6f80e01bd0215a1681d4b2b0294eb8c0560c4724dfd13",
+  "instance_overlay_sha256": "7afd8926c324efb2f2add17aa97913811fb6f78b8da81f148b8885e58a8125fe",
+  "object_sha256": "0952ac5497146fd39703dd13c949d33d1cdfae549b151854095f74078e2b880a",
+  "observer_sha256": "b266964af2c9107b2623ea3888dc94d1395aed507dc66f37a97ae80d707540c0"
+}

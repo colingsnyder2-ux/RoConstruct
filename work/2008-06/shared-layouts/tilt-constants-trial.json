@@ -1,0 +1,23 @@
+{
+  "scope": "Diagnostic constants reproduce original bytes; original pooling, ownership and cross-object identity unproven.",
+  "constants": [
+    {
+      "symbol": "?nativeTiltOffset@RBX@@3MB",
+      "original_address": "0x83db50",
+      "bytes": "d631e240"
+    },
+    {
+      "symbol": "?nativeTiltScale@RBX@@3MB",
+      "original_address": "0x826e6c",
+      "bytes": "00008040"
+    },
+    {
+      "symbol": "?nativeTiltSectorScale@RBX@@3NB",
+      "original_address": "0x83db48",
+      "bytes": "e7677f7e305fc43f"
+    }
+  ],
+  "source_sha256": "852673d6e5f8888672d47e5a2e06abeab0cd1c59d3c67464e161c8394138666a",
+  "object_sha256": "818a5d9c2441090cdeb52184e5399768180dbd57fab4c208e08453eadfd0e391",
+  "observer_sha256": "906b900d3db32eb0d24648965e0a33af02496b87c2692aa70b78e40bd68b09d9"
+}

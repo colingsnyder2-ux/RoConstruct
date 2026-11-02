@@ -1,0 +1,30 @@
+{
+  "scope": "canJoin matches. Hole and MotorFeature inheritance in this isolated diagnostic is incomplete and cannot be used at runtime.",
+  "address": "0x609a60",
+  "size": 131,
+  "symbol": "?canJoin@MotorFeature@RBX@@SA_NPAVInstance@2@0@Z",
+  "bindings": {
+    "??_R0?AVHole@RBX@@@8": "0x959a28",
+    "??_R0?AVInstance@RBX@@@8": "0x92907c",
+    "___RTDynamicCast": "0x6a17c6",
+    "??_R0?AVMotorFeature@RBX@@@8": "0x959a08"
+  },
+  "join": {
+    "address": "0x60ca00",
+    "size": 209,
+    "symbol": "?join@MotorFeature@RBX@@SAXPAVInstance@2@0@Z",
+    "bindings": {
+      "__ehhandler$?join@MotorFeature@RBX@@SAXPAVInstance@2@0@Z": "0x7d9168",
+      "?canJoin@MotorFeature@RBX@@SA_NPAVInstance@2@0@Z": "0x609a60",
+      "??_R0?AVHole@RBX@@@8": "0x959a28",
+      "??_R0?AVInstance@RBX@@@8": "0x92907c",
+      "___RTDynamicCast": "0x6a17c6",
+      "??$create@VVelocityMotor@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VVelocityMotor@RBX@@@boost@@XZ": "0x5804a0",
+      "?setHole@VelocityMotor@RBX@@QAEXPAVHole@2@@Z": "0x60c400",
+      "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+    }
+  },
+  "source_sha256": "cc31efcbfb235576e23c269ff0bb6a83cc1b3c70f4f67b3671b3e8707b17a7d9",
+  "object_sha256": "a61edf481130402c59d7a670b56073397fe668b6bfe459681548945ad2e1ff9a",
+  "observer_sha256": "a2961cd57e1f6a75b88f631f62d32c2c06f7293b32204e04aefc403079aaa401"
+}

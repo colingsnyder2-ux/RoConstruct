@@ -1,0 +1,79 @@
+{
+  "scope": "Inactive factory/lifetime and RTTI checks; derived methods and runtime ABI unproven.",
+  "methods": [
+    {
+      "tool": "FillTool",
+      "address": "0x5c7460",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VFillTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VFillTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0PartTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x5b6390",
+        "??_7FillTool@RBX@@6BINamed@1@@": "0x83986c",
+        "??_7FillTool@RBX@@6BIRenderable@1@@": "0x839854"
+      }
+    },
+    {
+      "tool": "FillTool",
+      "address": "0x5c7af0",
+      "size": 30,
+      "symbol": "??_GFillTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1PartTool@RBX@@UAE@XZ": "0x5c79d0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "DropperTool",
+      "address": "0x5c7530",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VDropperTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VDropperTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0PartTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x5b6390",
+        "??_7DropperTool@RBX@@6BINamed@1@@": "0x8398f4",
+        "??_7DropperTool@RBX@@6BIRenderable@1@@": "0x8398d8"
+      }
+    },
+    {
+      "tool": "DropperTool",
+      "address": "0x5c7af0",
+      "size": 30,
+      "symbol": "??_GDropperTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1PartTool@RBX@@UAE@XZ": "0x5c79d0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "ModelSetPrimaryPartTool",
+      "address": "0x5c7150",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VModelSetPrimaryPartTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VModelSetPrimaryPartTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0PartTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x5b6390",
+        "??_7ModelSetPrimaryPartTool@RBX@@6BINamed@1@@": "0x839704",
+        "??_7ModelSetPrimaryPartTool@RBX@@6BIRenderable@1@@": "0x8396e8"
+      }
+    },
+    {
+      "tool": "ModelSetPrimaryPartTool",
+      "address": "0x5c7af0",
+      "size": 30,
+      "symbol": "??_GModelSetPrimaryPartTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1PartTool@RBX@@UAE@XZ": "0x5c79d0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    }
+  ],
+  "source_sha256": "0a50819e5ed8a3506077e48598677c343d72ec60db1cb3294be262bd6fe556c5",
+  "header_sha256": "8459f4d7e8982bc562a9cf5fb2a22cd86eefa49bc5fe0796beb97a4b8fe06291",
+  "base_header_sha256": "e6a1ca3275f54c8656d41ef1452743b4d2c962bbe58b0deb67ab28cd258dac6b",
+  "object_sha256": "4d8369999ce73c46acace1b3e31ad3192078b1f698aaddb7fe45905fcb08c4e0",
+  "observer_sha256": "df2ad42ba1017f86fafca54652df0b0b4eff167cffed0e7bd1958a0ea0c84711"
+}

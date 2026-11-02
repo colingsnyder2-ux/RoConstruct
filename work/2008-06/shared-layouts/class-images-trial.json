@@ -1,0 +1,42 @@
+{
+  "scope": "Exact inactive CClassImages constructor/destructor; deleting destructor, vtable selection, image-resource and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x413230",
+      "size": 455,
+      "symbol": "??0CClassImages@@QAE@XZ",
+      "bindings": {
+        "__ehhandler$??0CClassImages@@QAE@XZ": "0x7bd824",
+        "??0CImageList@@QAE@XZ": "0x6a0e48",
+        "??_7CClassImages@@6B@": "0x80e864",
+        "?LoadBitmapFromResource@CXTPImageManagerIcon@@SAPAUHBITMAP__@@PBDPAH@Z": "0x6bc520",
+        "??_7CBitmap@@6B@": "0x80e8a0",
+        "?Attach@CGdiObject@@QAEHPAX@Z": "0x6a0c62",
+        "?Create@CImageList@@QAEHHHIHH@Z": "0x6a0e42",
+        "??_C@_0BO@OFPGPFBL@Unable?5to?5create?5CClassImages?$AA@": "0x80e8d4",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8",
+        "__CxxThrowException@8": "0x6a158c",
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0926",
+        "?_ImageList_Add@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@1@Z": "0x412fc0",
+        "??_C@_0BO@GHKGJGAN@Unable?5to?5add?5IDB_CLASSIMAGES?$AA@": "0x80e8b4",
+        "?_ImageList_AddMasked@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@K@Z": "0x4130d0",
+        "??1CGdiObject@@UAE@XZ": "0x4111a0"
+      }
+    },
+    {
+      "address": "0x412f30",
+      "size": 11,
+      "symbol": "??1CClassImages@@UAE@XZ",
+      "bindings": {
+        "??_7CClassImages@@6B@": "0x80e864",
+        "??1CImageList@@UAE@XZ": "0x6a0e2a"
+      }
+    }
+  ],
+  "source_sha256": "b300104f826038d3f8466b8098ef5e3963961a758ba2cc9e42dd068cc8ae0605",
+  "object_sha256": "c65748c64140e3ba4169ce06f97c75aad3af8b5ebf3a14c5e15d4734217ad92f",
+  "link_object_sha256": "7b5ff162cd8b723c55f90f13944464814656d86ae78b90d3e4977747d51a0ab6",
+  "observer_sha256": "336f77823195d96fc8fe105615163b263e20a9f115d771d26e2e4e04f50ef78e"
+}

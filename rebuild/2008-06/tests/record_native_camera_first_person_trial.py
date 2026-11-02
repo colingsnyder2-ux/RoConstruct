@@ -42,6 +42,6 @@ for label, address in [('Instance',0x92907c), ('ICameraSubject',0x948304), ('ICh
     assert any(label in k and v == address for k,v in edges.items()), (label, edges)
 assert any('RTDynamicCast' in k and v == 0x6a17c6 for k,v in edges.items()), edges
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-receipt = {'address':'005ccb00','size':len(body),'exact':True,'edges':edges,'source_sha256':sha(source),'header_sha256':sha(header),'overlay_sha256':sha(patched),'object_sha256':sha(obj),'observer_sha256':sha(Path(__file__)),'scope':'Inactive isolated profile; getter inlined provisionally. Character constructor/destructor, field semantics, whole layout, data identity and runtime remain unproven. Not selected for diagnostic link.'}
+receipt = {'address':'005ccb00','size':len(body),'exact':True,'edges':edges,'source_sha256':sha(source),'header_sha256':sha(header),'overlay_sha256':sha(patched),'object_sha256':sha(obj),'observer_sha256':sha(Path(__file__)),'scope':'Inactive isolated profile; getter inlined provisionally. Character constructor/destructor, field semantics, whole layout, data identity and runtime remain unproven. Selected for isolated diagnostic link only.'}
 (root / 'work/2008-06/shared-layouts/camera-first-person-trial.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print('PASS camera predicate: 71 bytes, three RTTI types, dynamic cast')

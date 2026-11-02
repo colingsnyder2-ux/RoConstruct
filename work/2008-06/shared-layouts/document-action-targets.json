@@ -1,0 +1,58 @@
+{
+  "scope": "Original vtable and source inventory only; action ABI, callee bindings, live integration and runtime unproven.",
+  "constructor_receipt_sha256": "33b1be91fb1d06d050e1aaa7edd218af883f02048d64a16b16c152b3e32a10b1",
+  "object_sha256": "77783265003e7df25cd1b0896e842e745a3eafd114344980e46614fe7e6967b4",
+  "observer_sha256": "6f485e56eb7199c3360b647dd89c46aa63f0b4ecbf7b8b488e19cc9d25f333f2",
+  "actions": [
+    {
+      "class": "CopyVerb",
+      "vtable": "0x80e960",
+      "slot": 16,
+      "address": "0x415800",
+      "size": 479,
+      "source": "src\\2008-06\\00415800.cpp",
+      "source_sha256": "eb842f4f4153841f848395158f20bfbc8d7ddc39d9f311f7f2c84afc15037656",
+      "roc_lib": "// roc-lib: rbxgs-dll roc_espeon_clipboarddirectrange9f920a6de726796c.cpp"
+    },
+    {
+      "class": "PasteVerb",
+      "vtable": "0x80e934",
+      "slot": 16,
+      "address": "0x415510",
+      "size": 745,
+      "source": "src\\2008-06\\00415510.cpp",
+      "source_sha256": "e482d822115c08a1d625c9a83eb3b5d36bd0774f1207be0a061a9595f8a29f1d",
+      "roc_lib": null
+    },
+    {
+      "class": "InsertObject",
+      "vtable": "0x80f204",
+      "slot": 16,
+      "address": "0x41f680",
+      "size": 791,
+      "source": "src\\2008-06\\0041f680.cpp",
+      "source_sha256": "248662526bb673bc4d600921ae82833a5bbfd5d3d3887c6a7694141a350f459b",
+      "roc_lib": "// roc-lib: rbxgs-dll roc_espeon_insertobjectfirstthrowdfdd4ad660b8bbf6.cpp"
+    },
+    {
+      "class": "InsertService",
+      "vtable": "0x80f22c",
+      "slot": 16,
+      "address": "0x41f3c0",
+      "size": 560,
+      "source": "src\\2008-06\\0041f3c0.cpp",
+      "source_sha256": "24caf13bd5f21091957a29d886053ed1ff13250b92a4a5d0323f1eed7e0b2fdd",
+      "roc_lib": "// roc-lib: rbxgs-dll roc_espeon_insertservicenamedmessagee12f41fda0da5bfe.cpp"
+    },
+    {
+      "class": "InsertDecal",
+      "vtable": "0x80f15c",
+      "slot": 16,
+      "address": "0x41f040",
+      "size": 565,
+      "source": "src\\2008-06\\0041f040.cpp",
+      "source_sha256": "198ef35f1ca3ec83025be2377303fa252bdfa6924e54b1e2bd7901974d8dfcaf",
+      "roc_lib": "// roc-lib: rbxgs-dll roc_espeon_insertdecalportable4b9c62f7fa450f59.cpp"
+    }
+  ]
+}

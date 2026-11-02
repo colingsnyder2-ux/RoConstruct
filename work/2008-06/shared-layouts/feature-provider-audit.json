@@ -1,0 +1,37 @@
+{
+  "scope": "Audit of available filtered donor archive member, not proof of runtime selection, callee binding, or complete ABI. Factory and property destructor match; setHole and property initializer differ.",
+  "archive_sha256": "8d3709edd4a36fca0f61fb6c5d41551fb7353f6b82f4c29738256a29cd7f18c1",
+  "member": "Feature.obj",
+  "member_sha256": "d663c75660822e043631fd0e7fbea52247f44ee7222da1f561d8332632df2cd3",
+  "methods": [
+    {
+      "symbol": "??$create@VVelocityMotor@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VVelocityMotor@RBX@@@boost@@XZ",
+      "address": "0x5804a0",
+      "target_size": 120,
+      "candidate_size": 120,
+      "relocations_masked_exact": true
+    },
+    {
+      "symbol": "?setHole@VelocityMotor@RBX@@QAEXPAVHole@2@@Z",
+      "address": "0x60c400",
+      "target_size": 369,
+      "candidate_size": 367,
+      "relocations_masked_exact": false
+    },
+    {
+      "symbol": "??__Eprop_Hole@RBX@@YAXXZ",
+      "address": "0x7f7ac0",
+      "target_size": 56,
+      "candidate_size": 55,
+      "relocations_masked_exact": false
+    },
+    {
+      "symbol": "??__Fprop_Hole@RBX@@YAXXZ",
+      "address": "0x8001d0",
+      "target_size": 29,
+      "candidate_size": 29,
+      "relocations_masked_exact": true
+    }
+  ],
+  "observer_sha256": "ea6ffead274279553da890a22fa530af614964b9ab11ed32aa19a06304f6e279"
+}

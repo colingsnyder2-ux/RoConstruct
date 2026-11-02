@@ -1,0 +1,33 @@
+{
+  "scope": "Inactive constructor-matched Part profile; descriptor identity, destructor, shared ABI and runtime unproven.",
+  "address": "0x59de20",
+  "size": 142,
+  "exact": true,
+  "symbol": "?setLocked@PartInstance@RBX@@SAXPAVInstance@2@_N@Z",
+  "bindings": {
+    "??_R0?AVPartInstance@RBX@@@8": "0x92dd50",
+    "??_R0?AVInstance@RBX@@@8": "0x92907c",
+    "___RTDynamicCast": "0x6a17c6",
+    "?prop_Locked@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@_N@Reflection@2@B": "0x9760cc",
+    "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00",
+    "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20",
+    "__imp___invalid_parameter_noinfo": "0x802890",
+    "?setLocked@PartInstance@RBX@@SAXPAVInstance@2@_N@Z": "0x59de20"
+  },
+  "source_sha256": "b9f6d34c705614953026951f9fbe7d8a9a169cc71030027d0ba0fb2173cbdc2f",
+  "part_profile_sha256": "f57a90365ea97b377e6a2976b26f50bc3c5dd40dd57df24b71203ded95cf16c2",
+  "object_sha256": "92a783596f53a8f57254ad21be38caca2772ac87e828100270e5089730515ea3",
+  "link_object_sha256": "cabec490d6d932a78661b1efa6d09f333c8b93c0d73b23fd8015638a5fabe338",
+  "observer_sha256": "f3c5efb70e950cdb29a2fef7d22d20524c4749fd0919200fd9da7a53690a1a0f",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Gy",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePartSetLockedTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePartSetLockedTrial.cpp"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "scope": "Dialog constructor and destructor exact with candidate members and layout assertions. Complete vtable, child control lifetime and runtime ABI remain unproven.",
+  "size": "0xfc",
+  "member_offsets": {
+    "selected": "0x74",
+    "objects": "0x7c",
+    "title": "0x94",
+    "result": "0x98",
+    "images": "0xa0",
+    "list": "0xa8"
+  },
+  "deleting_destructor": {
+    "address": "0x4200f0",
+    "size": 30,
+    "symbol": "??_GCInsertObjectDialog@@UAEPAXI@Z"
+  },
+  "methods": [
+    {
+      "address": "0x41fe00",
+      "size": 307,
+      "symbol": "??0CInsertObjectDialog@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@PAVCWnd@@@Z",
+      "bindings": {
+        "__ehhandler$??0CInsertObjectDialog@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@PAVCWnd@@@Z": "0x7be709",
+        "??0CDialog@@QAE@IPAVCWnd@@@Z": "0x6a0ed8",
+        "??_7CInsertObjectDialog@@6B@": "0x80f48c",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??_C@_0L@OBAAPEAG@?$DOAuthoring?$AA@": "0x80b716",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "0x803f10",
+        "??0CClassImages@@QAE@XZ": "0x413230",
+        "??0CWnd@@QAE@XZ": "0x6a0e90",
+        "??_7CListCtrl@@6B@": "0x80f304"
+      }
+    },
+    {
+      "address": "0x41ff40",
+      "size": 239,
+      "symbol": "??1CInsertObjectDialog@@UAE@XZ",
+      "bindings": {
+        "__ehhandler$??1CInsertObjectDialog@@UAE@XZ": "0x7be769",
+        "??_7CInsertObjectDialog@@6B@": "0x80f48c",
+        "??1CListCtrl@@UAE@XZ": "0x6a0eb4",
+        "??1CClassImages@@UAE@XZ": "0x412f30",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0",
+        "??1CDialog@@UAE@XZ": "0x6a0ed2"
+      }
+    }
+  ],
+  "source_sha256": "87d167ffa70e1a7f7f7a98597652fd643764bf9c6c16d885aef81ccbf049274d",
+  "service_source_sha256": "7076b49934108ce7275b4f6e8b09042b71bd7bfe2a4cc4c045dd5f9651b88c32",
+  "object_sha256": "67941ca02264caa54ecffe9032921d919bd551b112b8762e2547e90f2e88075b",
+  "link_object_sha256": "d93b469b8907af0044d9e9ef193c66c6433dc7b927c100806c03cf045050a6c9",
+  "observer_sha256": "889a689adc3cda509cf0992b5b45f35d93cb446786a191af45ca3b70431f31a7"
+}

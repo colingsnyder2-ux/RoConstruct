@@ -8,6 +8,7 @@
 #include "Network/Players.h"
 #include "util/Sound.h"
 #include <stdexcept>
+#include "tool/MegaDragger.h"
 #include <boost/bind.hpp>
 namespace RBX {
 inline const Name& Verb::getName() const { return name; }
@@ -83,6 +84,23 @@ static __declspec(noinline) void checkRunPermissions(Instance* instance) {
         throw std::runtime_error(message);
     }
 }
+void __cdecl cannotSelect(boost::shared_ptr<Instance> instance) { PartInstance::setLocked(instance.get(), true); }
+void CanNotSelectCommand::doIt(IDataState* state) {
+    checkRunPermissions(dataModel);
+    FilteredSelection<PVInstance>* current = ServiceProvider::create<FilteredSelection<PVInstance> >(static_cast<const ServiceProvider*>(dataModel));
+    std::for_each(selection->selection->begin(), selection->selection->end(), cannotSelect);
+    current->rootSelection->clearSelection();
+    recordCameraHistory(getName().c_str(), workspace.get());
+    state->setDirty(true);
+}
+void AllCanSelectCommand::doIt(IDataState* state) {
+    checkRunPermissions(dataModel);
+    Workspace* workspace = dataModel->getWorkspace();
+    PartInstance::setLocked(workspace, false);
+    recordCameraHistory(getName().c_str(), workspace);
+    state->setDirty(true);
+}
+void SelectAllCommand::doIt(IDataState*) { checkRunPermissions(dataModel); dataModel->getWorkspace()->selectAll(); }
 void DeleteBase::doIt(IDataState* state) {
  checkRunPermissions(dataModel);
  Selection* current=ServiceProvider::create<Selection>(static_cast<const ServiceProvider*>(dataModel));
@@ -183,5 +201,19 @@ bool FollowCameraCommand::isChecked() const {
 bool WatchCameraCommand::isChecked() const {
     Camera* camera = workspace->getCamera();
     return camera->getCameraType() == Camera::WATCH_CAMERA;
+}
+void MoveDownSelectionVerb::doIt(IDataState* state) {
+ checkRunPermissions(dataModel);
+ FilteredSelection<PVInstance>* selected = ServiceProvider::create<FilteredSelection<PVInstance> >(static_cast<const ServiceProvider*>(dataModel));
+ if (selected->size() > 0) {
+  MegaDragger dragger(NULL, selected->items(), workspace.get());
+  dragger.startDragging();
+  G3D::Vector3 moved = dragger.safeMoveNoDrop(G3D::Vector3(0.0f, -1.2f, 0.0f));
+  dragger.finishDragging();
+  ServiceProvider::create<Soundscape::SoundService>(static_cast<const ServiceProvider*>(dataModel))->playSound(moved.y != 0 ? CLICK_SOUND : BOING_SOUND);
+  workspace->raiseDrawChanged();
+  recordCameraHistory(getName().c_str(), workspace.get());
+  state->setDirty(true);
+ }
 }
 }

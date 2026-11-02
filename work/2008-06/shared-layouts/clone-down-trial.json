@@ -1,0 +1,34 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x63ff50",
+      "size": 497,
+      "symbol": "?onMouseDown@CloneTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "bindings": {
+        "__ehhandler$?onMouseDown@CloneTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z": "0x7da9db",
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0",
+        "?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": "0x559350",
+        "??$static_pointer_cast@VPartInstance@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VPartInstance@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z": "0x5a1680",
+        "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x4293d0",
+        "?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x420110",
+        "?insertInstances@RootInstance@RBX@@QAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@W4InsertMode@2@W4PromptMode@2@@Z": "0x5911d0",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0PartDragTool@RBX@@QAE@PAVPartInstance@1@ABVVector3@G3D@@PAVWorkspace@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x665f20",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0"
+      }
+    }
+  ],
+  "source_sha256": "7b31ab81abd04d5d14fe7492d71915d389306dd87f061473b55f0a825c281bcf",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "99644e7a9da0110dbac9f6c257fc5faafe6c1fc77eaf7c48d2a024346d08a623",
+  "instance_header_sha256": "64d889bae886676a4704255ae912fe0a7ec459b418815fd9d3e68a603f1a5faf",
+  "instance_overlay_sha256": "68c850527a4bf8fcc075abf7dd45eef09a081a4980da2215d5818a021cf4dd68",
+  "drag_header_sha256": "0622e1b7f2a9336868dc7f93c9279d7e9071e577110b8021516bed6741a514ca",
+  "model_header_sha256": "ffa4fbad96486d4b15b33a9997576d8f7228508b57bad5f1ba2874c4b8b748c1",
+  "workspace_header_sha256": "f3c793e2414bd45a26ecc899a552d0c9b85ac491b321a6225b9347c58090f653",
+  "observer_sha256": "ac1b420ad2f81bddf605841b89eff624f76fa1353792d20972d2ae9dcc9104af"
+}

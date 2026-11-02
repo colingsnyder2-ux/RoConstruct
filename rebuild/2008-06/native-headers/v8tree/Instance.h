@@ -82,6 +82,7 @@ public:
     template<class T> const T* queryTypedParent() const { return dynamic_cast<T*>(parent); }
     template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
     void setParent(Instance*);
+    void removeAllChildren();
     std::string getClassNameStr() const;
     Instance* findFirstChildByClassName(std::string) const; // 0046ae30; name provisional.
     void writeChildren(::XmlElement*);

@@ -1,0 +1,53 @@
+{
+  "scope": "Inactive ModelSetFrontTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5c7090",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7ModelSetFrontTool@RBX@@6BINamed@1@@": "0x839674",
+        "??_7ModelSetFrontTool@RBX@@6BIRenderable@1@@": "0x839658"
+      }
+    },
+    {
+      "address": "0x5c7100",
+      "size": 23,
+      "symbol": "?getName@?$Named@VSurfaceTool@RBX@@$1?sModelSetFrontTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "bindings": {
+        "?flag@?1??get@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979670",
+        "?callDoDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAXXZ": "0x5c6170",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?doDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5a60"
+      }
+    },
+    {
+      "address": "0x5c5a60",
+      "size": 101,
+      "symbol": "?doDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAABVName@2@XZ",
+      "bindings": {
+        "__ehhandler$?doDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAABVName@2@XZ": "0x7d4c1e",
+        "??_B?1??doDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x9795dc",
+        "??_C@_0O@MLDHEHAN@ModelSetFront?$AA@": "0x95af4c",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90",
+        "?name@?1??doDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x9795d8"
+      }
+    },
+    {
+      "address": "0x5c6170",
+      "size": 5,
+      "symbol": "?callDoDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAXXZ",
+      "bindings": {
+        "?doDeclare@?$NativeToolName@VModelSetFrontTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5a60"
+      }
+    }
+  ],
+  "source_sha256": "ecac3d72fc512a2ec4c2d28b7fb4c0206af45306375caee486e0157f7b27e6f1",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "d38ea03e2a29d493f84e39a1ce2bfc48afff7305bb7bd014014a5b7a3acda058",
+  "observer_sha256": "38066df0aa795b9683f79c0769aef11435c1f44eb2f08bf638f3dab32d927fb4"
+}

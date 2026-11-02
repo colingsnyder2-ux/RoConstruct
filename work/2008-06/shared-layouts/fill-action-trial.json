@@ -1,0 +1,24 @@
+{
+  "scope": "Inactive factory/lifetime and RTTI checks; derived methods and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5b64b0",
+      "size": 120,
+      "symbol": "?onMouseDown@FillTool@RBX@@MAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "bindings": {
+        "?ignoreVector3@MouseCommand@RBX@@0VVector3@G3D@@A": "0x97bee0",
+        "?getPart@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@PBVHitTestFilter@2@AAVVector3@G3D@@@Z": "0x615d90",
+        "?color@FillTool@RBX@@2VFillToolColor@2@A": "0x976fc0",
+        "?setColor@PartInstance@RBX@@QAEXVBrickColor@2@@Z": "0x59df40",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820",
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0"
+      }
+    }
+  ],
+  "source_sha256": "ae8f29636f64b1c937113c3f5b3413e2a1c78b322bbef1f30000c35f00431960",
+  "header_sha256": "8459f4d7e8982bc562a9cf5fb2a22cd86eefa49bc5fe0796beb97a4b8fe06291",
+  "base_header_sha256": "e6a1ca3275f54c8656d41ef1452743b4d2c962bbe58b0deb67ab28cd258dac6b",
+  "object_sha256": "d863c756997596c619b5b8ceaa3868b92a05031ccc008e71a8dcdf5b4f51417c",
+  "observer_sha256": "f52a54c0a230643061983ae71d6cb9b6a77413fba24dcb0d1d1dc51ac2eefee4"
+}

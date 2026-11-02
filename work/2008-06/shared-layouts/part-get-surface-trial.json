@@ -1,0 +1,25 @@
+{
+  "scope": "PartInstance offset overlay is diagnostic only; whole layout, object lifetimes and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x599890",
+      "size": 356,
+      "symbol": "?getSurface@PartInstance@RBX@@QAEPAVSurface@2@ABVRay@G3D@@AAH@Z",
+      "bindings": {
+        "__ehhandler$?getSurface@PartInstance@RBX@@QAEPAVSurface@2@ABVRay@G3D@@AAH@Z": "0x7dae28",
+        "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0",
+        "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVRay@2@ABV32@@Z": "0x518970",
+        "__real@3f000000": "0x819bac",
+        "?ignore@CollisionDetection@G3D@@0VVector3@2@A": "0x97f6d8",
+        "?ignoreBool@CollisionDetection@G3D@@0_NA": "0x97f6d4",
+        "?collisionLocationForMovingPointFixedAABox@CollisionDetection@G3D@@SA_NABVVector3@2@0ABVAABox@2@AAV32@AA_N2@Z": "0x7bb770",
+        "??ASurfaces@RBX@@QAEAAVSurface@1@W4NormalId@1@@Z": "0x5ecc00"
+      }
+    }
+  ],
+  "source_sha256": "aeb69d29f114272f26dd9deef4b912a556b570dd1d2e8389b40ea52492aa3e65",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "f18cd5f0ff928efadfca7334e61cc92dc5943e9ac9d26a7e4623079b3fee8064",
+  "observer_sha256": "5139c3a55504a31788f8d6bf70285c57aa8c7c5e92078c5f0f026224ea78d678"
+}

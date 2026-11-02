@@ -1,0 +1,48 @@
+{
+  "scope": "CloneTool constructor, destructor, factory and RTTI verified; full virtuals, ABI and runtime unproven.",
+  "size": "0x24",
+  "methods": [
+    {
+      "address": "0x63fdd0",
+      "size": 40,
+      "symbol": "??0CloneTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "bindings": {
+        "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+        "??_7CloneTool@RBX@@6BINamed@1@@": "0x84a4dc",
+        "??_7CloneTool@RBX@@6BIRenderable@1@@": "0x84a4c0"
+      }
+    },
+    {
+      "address": "0x63fe00",
+      "size": 119,
+      "symbol": "??1CloneTool@RBX@@UAE@XZ",
+      "bindings": {
+        "__ehhandler$??1CloneTool@RBX@@UAE@XZ": "0x7da9f8",
+        "??1MouseCommand@RBX@@UAE@XZ": "0x615780"
+      }
+    },
+    {
+      "address": "0x63fe80",
+      "size": 30,
+      "symbol": "??_GCloneTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1CloneTool@RBX@@UAE@XZ": "0x63fe00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "address": "0x5c77f0",
+      "size": 102,
+      "symbol": "?newMouseCommand@?$TToolVerb@VCloneTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VCloneTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0CloneTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x63fdd0"
+      }
+    }
+  ],
+  "source_sha256": "4dec9a7e509e4bab5f1fadb27f3e61d41e3a367250010871b9797bdb1914c402",
+  "header_sha256": "ffa4fbad96486d4b15b33a9997576d8f7228508b57bad5f1ba2874c4b8b748c1",
+  "object_sha256": "9ec1db0b8c7f2a187a7df44310e967d934c36473a2ef6db53e5c3e3e42776358",
+  "observer_sha256": "91c0d42b37c295dc2534f9afdb66fdb06e22471420e75077bab55ff0ecbbcae1"
+}

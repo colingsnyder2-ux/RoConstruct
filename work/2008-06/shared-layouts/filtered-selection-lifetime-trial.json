@@ -1,9 +1,14 @@
 {
   "scope": "Inactive FilteredSelection<PVInstance> constructor, destructor, context lookup and provider factory match; singleton identity, virtual behavior, ownership and runtime remain unproven.",
   "source_sha256": "0f9c36b67162a04d9ac4067eebfa38a41fe72c5602030787e56233a7bdc31846",
-  "header_sha256": "bbedd74ca269b973180bf15f138e7cb37259a8203f1ab2cbef4a5f72712814c6",
-  "observer_sha256": "522c00e8047e08fa59b0cc249620e6552de441dd0cd790b1c15a1b28cfeff469",
-  "object_sha256": "d18ecd7f0072728030010e50c2f822250ea7b77a68c76eea5da8c44fd8c15900",
+  "header_sha256": "f351a88ecde30b3f000c66b116fec565f6022f768e6572654f5a3a1a327b1051",
+  "observer_sha256": "19e6a066d07bb46f79e8419057772b8caab44acbf967d0467941355523f7a548",
+  "object_sha256": "72adcf5763d29c060244d4e5e422e78de309ebc4fd7bd799d0c104f19f0ff65d",
+  "root_selection_offset": "0x134",
+  "root_selection_lifetime": [
+    "constructor 0x57ef30",
+    "destructor 0x57f0b9"
+  ],
   "methods": [
     {
       "address": "0x57eeb0",
@@ -70,7 +75,7 @@
     }
   ],
   "service_source_sha256": "14d696a98d16a585621a1bd6a45681f93766449b6012118db7a73f4fb55a19c3",
-  "service_object_sha256": "92577db530b3c6020542e1a381ce3088b1111bd62da8bacd2d7044e4c13223b4",
+  "service_object_sha256": "dae7e11e8e1356795405818919c1b6e268ea81e346edb9d01298d9aea52dad92",
   "service_lookup": {
     "address": "00580800",
     "size": 65,
@@ -82,8 +87,8 @@
       "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": "0x5805d0"
     }
   },
-  "factory_source_sha256": "7516dcff742af114453e53ec60dbd99c4bea01d0533960cb4c93e673090e4147",
-  "factory_object_sha256": "e5f75b34056394cff12216021c990520c07d8b07c9ad8308ba6b9b717b374a7c",
+  "factory_source_sha256": "3160a77d913d791f0cb48f75344a86700e2efcc382c50e8a6d232431adf2147f",
+  "factory_object_sha256": "ad9c213109c85fd4ff1bdab06796ed051554a48679558b92de2e932f7c298da5",
   "model_provider_factory": {
     "address": "005806c0",
     "size": 228,
@@ -101,6 +106,38 @@
       "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
     }
   },
+  "provider_lookups": [
+    {
+      "tool": "PVInstance",
+      "address": "0x57fd20",
+      "size": 174,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??$find@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": "0x7d5eb0",
+        "?flag@?1???$getClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x9753c4",
+        "??$callDoGetClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x57dda0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x57d800",
+        "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x4124c0",
+        "__imp___invalid_parameter_noinfo": "0x802890"
+      }
+    },
+    {
+      "tool": "ModelInstance",
+      "address": "0x57fdd0",
+      "size": 174,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??$find@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VModelInstance@RBX@@@1@XZ": "0x7d5eb0",
+        "?flag@?1???$getClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x9753c8",
+        "??$callDoGetClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x57ddb0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x57d860",
+        "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x4124c0",
+        "__imp___invalid_parameter_noinfo": "0x802890"
+      }
+    }
+  ],
   "provider_factory": {
     "address": "005805d0",
     "size": 228,

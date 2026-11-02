@@ -1,0 +1,53 @@
+{
+  "scope": "Inactive HingeTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5c6cf0",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7HingeTool@RBX@@6BINamed@1@@": "0x839464",
+        "??_7HingeTool@RBX@@6BIRenderable@1@@": "0x83944c"
+      }
+    },
+    {
+      "address": "0x5c6d60",
+      "size": 23,
+      "symbol": "?getName@?$Named@VSurfaceTool@RBX@@$1?sHingeTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "bindings": {
+        "?flag@?1??get@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979660",
+        "?callDoDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAXXZ": "0x5c6130",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?doDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c58a0"
+      }
+    },
+    {
+      "address": "0x5c58a0",
+      "size": 101,
+      "symbol": "?doDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAABVName@2@XZ",
+      "bindings": {
+        "__ehhandler$?doDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAABVName@2@XZ": "0x7d4b9e",
+        "??_B?1??doDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x9795bc",
+        "??_C@_05LHPPABBG@Hinge?$AA@": "0x95af1c",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90",
+        "?name@?1??doDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x9795b8"
+      }
+    },
+    {
+      "address": "0x5c6130",
+      "size": 5,
+      "symbol": "?callDoDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAXXZ",
+      "bindings": {
+        "?doDeclare@?$NativeToolName@VHingeTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c58a0"
+      }
+    }
+  ],
+  "source_sha256": "91ab8feeb3249437bf726949a9fc3cd27ff4069e0298db8864056fdc7a168e13",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "d660d859eb885d7b37dc476c42c223549ba501a967f48b15fb9c06533b5bbaad",
+  "observer_sha256": "a4149b60f1a63d48dc2551d3f16019a3c2d0a21908768400fb1e1b59f1146cc9"
+}

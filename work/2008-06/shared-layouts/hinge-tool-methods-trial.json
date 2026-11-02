@@ -1,0 +1,44 @@
+{
+  "scope": "Inactive FlatTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5c6c60",
+      "size": 34,
+      "symbol": "?getCursorName@HingeTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "??_C@_0M@HMONPOHA@HingeCursor?$AA@": "0x8394a8",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458"
+      }
+    },
+    {
+      "address": "0x5c6c90",
+      "size": 95,
+      "symbol": "?isSticky@HingeTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?isSticky@HingeTool@RBX@@UBEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7HingeTool@RBX@@6BINamed@1@@": "0x839464",
+        "??_7HingeTool@RBX@@6BIRenderable@1@@": "0x83944c"
+      }
+    },
+    {
+      "address": "0x619af0",
+      "size": 67,
+      "symbol": "?applyToSurface@HingeTool@RBX@@EAEXPAVSurface@2@@Z",
+      "bindings": {
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ": "0x598c70",
+        "?setSurfaceType@Surface@RBX@@QAEXW4SurfaceType@2@@Z": "0x5f13e0",
+        "?setSurfaceInput@Surface@RBX@@QAEXW4InputType@Controller@2@@Z": "0x5f1430",
+        "?setParamA@Surface@RBX@@QAEXM@Z": "0x5f14f0",
+        "?setParamB@Surface@RBX@@QAEXM@Z": "0x5f15c0",
+        "?join@PartInstance@RBX@@QAEXXZ": "0x598c90"
+      }
+    }
+  ],
+  "source_sha256": "ddcd440fdd6b7afc3c7b9bc6eae69fc53bda2353fb01eca6c7671a176f82a710",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "8d7df415f5b24ac17d0788af8cf15cf443a3f18922fe7d8c4a249abbe2afb21f",
+  "observer_sha256": "710932bdee838b911d71cdeeae21459d870e4b1533ffefdbe6baa1c5710c2bd2"
+}

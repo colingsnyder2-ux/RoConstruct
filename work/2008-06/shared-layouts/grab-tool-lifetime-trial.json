@@ -1,0 +1,62 @@
+{
+  "scope": "GrabTool constructor, destructor, factory and RTTI verified; full virtuals, ABI and runtime unproven.",
+  "size": "0x38",
+  "methods": [
+    {
+      "address": "0x63fba0",
+      "size": 94,
+      "symbol": "??0GrabTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "bindings": {
+        "__ehhandler$??0GrabTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x7da9f8",
+        "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+        "??_C@_0M@NEEHHCEG@ArrowCursor?$AA@": "0x833850",
+        "??_7GrabTool@RBX@@6BINamed@1@@": "0x84a454",
+        "??_7GrabTool@RBX@@6BIRenderable@1@@": "0x84a43c",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458"
+      }
+    },
+    {
+      "address": "0x63fb40",
+      "size": 90,
+      "symbol": "??1GrabTool@RBX@@UAE@XZ",
+      "bindings": {
+        "__ehhandler$??1GrabTool@RBX@@UAE@XZ": "0x7da9f8",
+        "??_7GrabTool@RBX@@6BINamed@1@@": "0x84a454",
+        "??_7GrabTool@RBX@@6BIRenderable@1@@": "0x84a43c",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468",
+        "??1MouseCommand@RBX@@UAE@XZ": "0x615780"
+      }
+    },
+    {
+      "address": "0x63fc00",
+      "size": 30,
+      "symbol": "??_GGrabTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1GrabTool@RBX@@UAE@XZ": "0x63fb40",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "address": "0x617e40",
+      "size": 33,
+      "symbol": "?getCursorName@GrabTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c"
+      }
+    },
+    {
+      "address": "0x5c7750",
+      "size": 102,
+      "symbol": "?newMouseCommand@?$TToolVerb@VGrabTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VGrabTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0GrabTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x63fba0"
+      }
+    }
+  ],
+  "source_sha256": "4b36e9489c9b3d7f422297fa61106f932b16da1a224a0554ee5cf80ac4c2891a",
+  "header_sha256": "150ab9d9ea16c3bb0d8380ef694432afbad8230c1c0f93cc6c5cf96d1759ecaf",
+  "object_sha256": "d4a0219974a673d8a35e9d38d549fc64e1f08cd1abe78c6786fbf3ffe3f54243",
+  "observer_sha256": "15d688d960d2d687828808d37f5ea569a25c996e051faa14cc216fa3f71f1a12"
+}

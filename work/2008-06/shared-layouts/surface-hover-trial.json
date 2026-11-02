@@ -1,0 +1,21 @@
+{
+  "scope": "Inactive FlatTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x619e50",
+      "size": 176,
+      "symbol": "?onMouseHover@SurfaceTool@RBX@@MAEXABVUIEvent@2@@Z",
+      "bindings": {
+        "__ehhandler$?onMouseHover@SurfaceTool@RBX@@MAEXABVUIEvent@2@@Z": "0x7d9168",
+        "?getSurface@MouseCommand@RBX@@QAEPAVSurface@2@ABVUIEvent@2@AAPAVPartInstance@2@AAH@Z": "0x615f10",
+        "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
+      }
+    }
+  ],
+  "source_sha256": "3995f1083d05592c468d3b0fdf010fd476195bb279abe1b318115abcae5d3962",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "4d8a6198f17f583172780ce5e1dcaa6886017d50607795423ac872cbce992091",
+  "observer_sha256": "921b2d83c77cdd85a147d7a82fafcc9f5acdcfacb8b3700bcee952814e18b9c7"
+}
