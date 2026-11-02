@@ -645,6 +645,24 @@ def read_agent_blocker(folder):
         return ''
 
 
+def reference_variant(text,task,evidence):
+    """Try an installed SDK's existing method body; never transfer declarations."""
+    if task.get('include_profile')!='accepted' or not evidence.get('mined_library_root') or not task.get('canonical_file'):return None
+    library=Path(evidence['mined_library_root']).resolve()
+    path=(library/task['canonical_file']).resolve()
+    if not path.is_relative_to(library) or path.suffix!='.cpp' or not path.is_file() or path.stat().st_size>2*1024*1024:return None
+    try:
+        source=path.read_text(encoding='utf-8-sig')
+        span=native_methods.methods(source).get(task['method'])
+        if not span:return None
+        edits=native_methods.canonical_edits(text,source[slice(*span)],task['method'])
+        integration.validate_patches({task['canonical_file']:native_methods.validation_edits(edits)})
+        changed=sweep.apply_edits(text,edits)
+        method_change(text,changed,task['method'])
+        return changed if changed!=text else None
+    except (OSError,ValueError):return None
+
+
 def run(config, control, emit):
     """One bounded recovery pass. All persistent metadata/proofs stay outside agent workspaces."""
     root = Path(os.environ.get('ROC_NATIVE_EVIDENCE_ROOT', ROOT)).resolve()
@@ -982,11 +1000,21 @@ def run(config, control, emit):
                     emit('native_progress', slot=slot, file=task['file'], message='Probe: '+json.dumps({k:result[k] for k in ('ok','target_exact','losses','error')}))
                     return result
                 current=native_path(folder,task['file']);before=current.read_bytes();text=before.decode('utf-8')
+                try:
+                    evidence = sweep.model_evidence(task['addr'], context.names, context.by_addr)
+                except ValueError:
+                    code, relocations, row = match.target('2008-06',task['addr'])
+                    evidence = dict(addr=task['addr'],target_asm=match.disasm(code,int(task['addr'],16)),
+                                    size=len(code),target_relocations=relocations,mined_source_origin='unavailable; recover from original assembly and genuine declarations')
                 span=native_methods.methods(text).get(task['method'])
                 if span:
                     a,b=span;body=sweep.without_assertions(text[a:b])
-                    if body!=text[a:b]:
-                        current.write_bytes((text[:a]+body+text[b:]).encode('utf-8'))
+                    trials=[('roc native-assertions',text[:a]+body+text[b:])]
+                    reference=reference_variant(text,task,evidence)
+                    if reference:trials.append(('roc native-reference',reference))
+                    for label,changed in trials:
+                        if changed==text:continue
+                        current.write_bytes(changed.encode('utf-8'))
                         proved=False
                         try:
                             with broker.slots:proof=check()
@@ -996,21 +1024,17 @@ def run(config, control, emit):
                         if proved:
                             candidate=output/'candidates'/(owner+'.cpp');candidate.parent.mkdir(parents=True,exist_ok=True)
                             candidate.write_bytes(current.read_bytes())
-                            record.update(candidate=str(candidate),proof=proof,model='roc native-assertions',
-                                          source_provenance='Assigned-body assertion removal; compiler-proven without model invocation')
+                            record.update(candidate=str(candidate),proof=proof,model=label,
+                                          source_provenance='Assigned-body automatic pass; compiler-proven without model invocation')
+                            if label=='roc native-reference':
+                                record['reference_file']=str(Path(evidence['mined_library_root'])/task['canonical_file'])
                             claims.update(key,owner,'recovered',record)
                             totals['recovered']+=1;totals['automatic_recovered']+=1
-                            emit('log',slot=slot,message=task['method']+': focused assertion pass exact with no losses; no AI request')
+                            emit('log',slot=slot,message=task['method']+': '+label+' exact with no losses; no AI request')
                             emit('native_result',slot=slot,file=task['file'],local_exact=1,seconds=round(time.monotonic()-started,1),error='')
                             return
                 directory = broker.add(folder, check, config['native_agent_checks'])
                 (folder/'check.py').write_text(PROBE_CLIENT,encoding='utf-8')
-                try:
-                    evidence = sweep.model_evidence(task['addr'], context.names, context.by_addr)
-                except ValueError:
-                    code, relocations, row = match.target('2008-06',task['addr'])
-                    evidence = dict(addr=task['addr'],target_asm=match.disasm(code,int(task['addr'],16)),
-                                    size=len(code),target_relocations=relocations,mined_source_origin='unavailable; recover from original assembly and genuine declarations')
                 current_source = native_path(folder,task['file']).read_text(encoding='utf-8')
                 span = native_methods.methods(current_source).get(task['method'],(len(current_source),len(current_source)))
                 evidence.update(task, source_excerpt=current_source[span[0]:span[1]], resumed_private_body=record.get('resumed_private_body',False), check_command='python check.py', original_source_root=str(root),

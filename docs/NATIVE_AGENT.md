@@ -1165,3 +1165,11 @@ now fail before compilation. Deterministic linked-gate failures retain candidate
 without repeating unchanged full builds; changed baselines/tooling permit rechecks,
 while network and file-access failures remain retryable. Lost addresses and receipt
 paths appear in diagnostics. Ownership, ABI and runtime gates remain mandatory.
+
+Worker 40 tries an installed reference implementation before paying an agent for
+an accepted-source target. Only the assigned method body can transfer: canonical
+signatures, other methods, headers and layouts remain protected. Every trial must
+compile, match target code/data and preserve existing matches; failed trials restore
+the original private bytes. Successful copies report `roc native-reference` with
+zero agent invocations and retain their reference path. Host checks, canonical linked
+preflight and independent server acceptance still decide integration credit.
