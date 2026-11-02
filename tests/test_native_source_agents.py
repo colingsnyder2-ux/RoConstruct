@@ -571,6 +571,52 @@ def test_class_probe_keeps_owner_profile_without_world_fallback_headers(tmp_path
     assert context.includes==[canonical] and context.probe_includes==[published]
 
 
+def test_mfc_profile_reuses_genuine_sdk_without_mutating_it(tmp_path,monkeypatch):
+    monkeypatch.setattr(recovery,'ROOT',tmp_path)
+    monkeypatch.setattr(recovery.libs,'LIBS',tmp_path/'libs')
+    sdk=tmp_path/'libs/mfc-9.0-rtm/atlmfc/include';sdk.mkdir(parents=True)
+    original=recovery.libs.MFC_STRING_CALLS[1]
+    (sdk/'atlsimpstr.h').write_text(original,encoding='utf-8')
+    (sdk/'atlbase.h').write_text('genuine declarations',encoding='utf-8')
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        paths=list(pool.map(lambda _:recovery.mfc_conversion_headers(),range(3)))
+    assert len(set(paths))==1
+    assert (sdk/'atlsimpstr.h').read_text()==original
+    assert (paths[0]/'atlsimpstr.h').read_text()=='__declspec(noinline) '+original
+    assert (paths[0]/'atlbase.h').read_bytes()==(sdk/'atlbase.h').read_bytes()
+    (paths[0]/'atlbase.h').write_text('tampered')
+    with pytest.raises(ValueError,match='SDK was modified'):recovery.mfc_conversion_headers()
+
+
+def test_mfc_profile_uses_private_sdk_before_original_headers(tmp_path,monkeypatch):
+    source(tmp_path);managed=tmp_path/'managed';seen=[]
+    monkeypatch.setattr(recovery,'mfc_conversion_headers',lambda:managed)
+    def compile(client,sources,out,includes,*args):
+        seen.extend(includes);return {str(sources[0]):(False,'test stop')}
+    monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
+    recovery.compile_probe(tmp_path,REL,SimpleNamespace(defines='',flags='/O2'),None,set(),'A::f',include_profile='owner-mfc-conversion',baseline=[])
+    assert seen[0]==managed
+    assert tmp_path/'rebuild/2008-06/native-headers' in seen
+
+
+def test_mfc_profile_rejects_loss_of_owner_baseline_matches(tmp_path,monkeypatch):
+    source(tmp_path);probe=recovery.compile_probe
+    def dispatch(*args,**kw):
+        if kw.get('include_profile','owner')=='owner':return dict(ok=True,hits=[dict(addr='00400000')])
+        return probe(*args,**kw)
+    monkeypatch.setattr(recovery,'compile_probe',dispatch)
+    monkeypatch.setattr(recovery,'mfc_conversion_headers',lambda:tmp_path/'managed')
+    def compile(client,sources,out,*args):
+        out.mkdir(parents=True,exist_ok=True);obj=out/(sources[0].stem+'.obj');obj.write_bytes(b'object')
+        obj.with_suffix('.command.json').write_text(json.dumps(dict(source_sha256=recovery.digest(sources[0].read_bytes()))))
+        return {str(sources[0]):(True,'')}
+    monkeypatch.setattr(recovery.rebuild,'compile_direct',compile)
+    result=dispatch(tmp_path,REL,SimpleNamespace(defines='',flags='/O2'),SimpleNamespace(scan=lambda _:[]),set(),'',include_profile='owner-mfc-conversion')
+    assert not result['ok'] and result['losses']==['00400000']
+    assert result['error']=='MFC profile loses existing owner matches'
+
+
 def test_accepted_probe_uses_pinned_headers_and_original_profile_without_owner_overlays(tmp_path,monkeypatch):
     root=tmp_path/'shared';rel='rebuild/2008-06/native-classes/accepted/App/test/B.cpp'
     path=root/rel;path.parent.mkdir(parents=True);path.write_text('int B::f(){return 1;}')

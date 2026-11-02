@@ -97,6 +97,9 @@ class Host:
             seen=set();clean=[]
             for task in tasks:
                 task=dict(task)
+                if task.get('include_profile','owner')=='owner' and task['file'] in {
+                        (recovery.NATIVE/'native-classes'/name).as_posix() for name in recovery.MFC_CONVERSION_UNITS}:
+                    task['include_profile']='owner-mfc-conversion'
                 path=recovery.native_path(self.root,task['file'])
                 text=files.get(task['file'])
                 method=task.get('method')
@@ -127,7 +130,7 @@ class Host:
                 if target in seen:continue
                 seen.add(target)
                 context=[canonical_revision] if task.get('include_profile')=='accepted' else [headers,probe_revision]
-                task.update(target=target,signature=integration.digest([text,context,files.get(task.get('translation_unit'))]),scope='method-body-only',class_name=method.rsplit('::',1)[0])
+                task.update(target=target,signature=integration.digest([text,context,task.get('include_profile','owner'),files.get(task.get('translation_unit'))]),scope='method-body-only',class_name=method.rsplit('::',1)[0])
                 clean.append(task)
             # Prefer bodies that can use the existing independent integration route.
             mappings={}
@@ -150,12 +153,13 @@ class Host:
                 classes=sorted({t['class_name'] for t in clean}),layout_policy='owner-only; no invented fields',lease_seconds=TTL)
             self.cache_key=key
         with self.store.lock:
-            busy={r[0] for r in self.store.db.execute("SELECT target FROM native_method_leases WHERE (state='claimed' AND expires>?) OR state='submitted'",(time.time(),))}
+            busy=list(self.store.db.execute("SELECT target,json_extract(packet,'$.task.addr') FROM native_method_leases WHERE (state='claimed' AND expires>?) OR state='submitted'",(time.time(),)))
+            busy_targets={r[0] for r in busy};busy_addresses={r[1] for r in busy}
             verified=dict(self.store.db.execute('SELECT target,signature FROM native_recovery_verified'))
             integrated={r[0] for r in self.store.db.execute('SELECT addr FROM integration_credit WHERE client=?',(integration.CLIENT,))}
         progress=self.promotions.directory/'progress-native.json'
         if progress.exists():integrated.update(json.loads(progress.read_text(encoding='utf-8'))['addresses'])
-        tasks=[dict(t,available=t['target'] not in busy and verified.get(t['target'])!=t['signature'],
+        tasks=[dict(t,available=t['target'] not in busy_targets and t['addr'] not in busy_addresses and verified.get(t['target'])!=t['signature'],
                     integration_state='integrated' if t['addr'] in integrated else 'unintegrated') for t in self.cached['tasks']]
         tasks.sort(key=lambda t:(t['integration_state']=='integrated',not bool(t['integration_mapping']),t.get('include_profile')!='accepted'))
         return dict(self.cached,tasks=tasks)
@@ -166,11 +170,13 @@ class Host:
         catalog=self.catalog()
         task=next((t for t in catalog['tasks'] if t['target']==body.get('target') and t['signature']==body.get('signature')),None)
         if task is None:raise ValueError('Unknown or changed target; refresh catalog')
-        if task.get('include_profile')=='accepted' and 'accepted' not in body.get('include_profiles',[]):
+        if task.get('include_profile','owner')!='owner' and task['include_profile'] not in body.get('include_profiles',[]):
             return dict(claimed=False,reason='worker-update-required')
         packet=dict(task=task,original=catalog['files'][task['file']])
         now=time.time()
         with self.store.lock,self.store.db as db:
+            busy=db.execute("SELECT 1 FROM native_method_leases WHERE ((state='claimed' AND expires>?) OR state='submitted') AND json_extract(packet,'$.task.addr')=? LIMIT 1",(now,task['addr'])).fetchone()
+            if busy:return dict(claimed=False,reason='address-busy')
             old=db.execute('SELECT expires,state FROM native_method_leases WHERE target=?',(task['target'],)).fetchone()
             done=db.execute('SELECT signature FROM native_recovery_verified WHERE target=?',(task['target'],)).fetchone()
             if old and (old[1]=='submitted' or old[0]>now and old[1]=='claimed') or done and done[0]==task['signature']:

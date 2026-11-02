@@ -1,9 +1,35 @@
 """Native-only reference checks. Unknown symbols remain unresolved, never guessed."""
 import struct
 import json
+import re
+import hashlib
+from functools import lru_cache
 from pathlib import Path
 
 from roc import match
+
+
+@lru_cache(maxsize=8)
+def _mfc_exports(path,stamp,size):
+    data=Path(path).read_bytes()
+    text=data.decode('latin-1')
+    if not re.search(r'^\s*LIBRARY\s+mfc90\.dll\s*$',text,re.M|re.I):return {},None
+    exports={}
+    for name,ordinal in re.findall(r'^\s*(\S+)\s+@\s*(\d+)\s+NONAME\s*$',text,re.M):
+        if ordinal in exports and exports[ordinal]!=name:raise ValueError('Ambiguous MFC RTM export ordinal')
+        exports[ordinal]=name
+    return exports,hashlib.sha256(data).hexdigest()
+
+
+def ordinal_import(expected,client):
+    """Resolve only this client's genuine x86 RTM export definition, never host DLLs."""
+    if client!='2008-06' or not expected or not expected.lower().startswith('mfc90.dll!#'):return expected,None
+    from roc import libs
+    path=libs.LIBS/'mfc-9.0-rtm/atlmfc/src/mfc/intel/mfc90.def'
+    if not path.is_file():return expected,None
+    stat=path.stat();exports,sha=_mfc_exports(str(path),stat.st_mtime_ns,stat.st_size)
+    name=exports.get(expected.rsplit('#',1)[-1])
+    return ('mfc90.dll!'+name,dict(ordinal=expected,definition_sha256=sha)) if name else (expected,None)
 
 
 def import_checks(obj, symbol, addr, client='2008-06', target=None):
@@ -31,6 +57,8 @@ def import_checks(obj, symbol, addr, client='2008-06', target=None):
             if image[at:at+2]==b'\xff\x25':
                 expected = imports.get(int.from_bytes(image[at+2:at+6],'little'))
         row = dict(offset=offset,symbol=actual,target='%08x'%destination,relocation=kind,status='unresolved')
+        expected,ordinal=ordinal_import(expected,client)
+        if ordinal:row.update(ordinal)
         if expected and not expected.split('!',1)[-1].startswith('#'):
             name = actual[len('__imp_'):] if actual.startswith('__imp_') else actual
             aliases = {name}

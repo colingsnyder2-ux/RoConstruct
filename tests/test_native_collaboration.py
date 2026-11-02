@@ -46,6 +46,33 @@ def test_ten_pcs_claim_one_method_only_once(service):
     assert not service.catalog()['tasks'][0]['available']
 
 
+def test_mfc_profile_is_host_selected_and_old_workers_are_fenced(service,monkeypatch):
+    rel=REL.replace('A.cpp','CMainFrameCommands.cpp');(service.root/rel).write_text(BEFORE)
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=rel,method='A::f',addr='00400000')])
+    task=service.catalog()['tasks'][0]
+    assert task['include_profile']=='owner-mfc-conversion'
+    request=dict(target=task['target'],signature=task['signature'],worker='other-pc',include_profiles=['owner','accepted'])
+    assert service.claim('Colin',request)==dict(claimed=False,reason='worker-update-required')
+    assert service.claim('Colin',dict(request,include_profiles=list(recovery.INCLUDE_PROFILES)))['claimed']
+
+
+def test_two_pcs_cannot_lease_same_address_through_different_source_contexts(service,monkeypatch):
+    alternative=REL.replace('A.cpp','Alternative.cpp');(service.root/alternative).write_text(BEFORE)
+    monkeypatch.setattr(recovery,'nominations',lambda *a:[dict(file=p,method='A::f',addr='00400000') for p in [REL,alternative]])
+    tasks=service.catalog()['tasks'];barrier=threading.Barrier(2)
+    def take(pair):
+        n,task=pair;barrier.wait();return service.claim('Colin',dict(target=task['target'],signature=task['signature'],worker='pc'+str(n)))
+    with ThreadPoolExecutor(max_workers=2) as pool:leases=list(pool.map(take,enumerate(tasks)))
+    assert not any(t['available'] for t in service.catalog()['tasks'])
+    assert sum(x['claimed'] for x in leases)==1
+    winner=next(n for n,x in enumerate(leases) if x['claimed']);lease=leases[winner];other=tasks[1-winner]
+    service.submit('Colin',body(lease,model='terra',candidate=AFTER))
+    request=dict(target=other['target'],signature=other['signature'],worker='other-pc')
+    assert service.claim('Colin',request)==dict(claimed=False,reason='address-busy')
+    with service.store.lock,service.store.db as db:db.execute("UPDATE native_method_leases SET state='complete',expires=0")
+    assert service.claim('Colin',request)['claimed']
+
+
 def accepted_task(service):
     name='App/test/B.cpp'
     path=service.root/'tools/rbxgs/Client'/name;path.parent.mkdir(parents=True)
@@ -83,9 +110,15 @@ def test_accepted_recovery_rejects_noncanonical_units_before_seeding(service,nam
     assert not (service.root/task['file']).exists()
 
 
-def test_accepted_profile_cross_pc_upload_gets_independent_same_context_proof(service,tmp_path,monkeypatch):
+@pytest.mark.parametrize('profile',['accepted','owner-mfc-conversion'])
+def test_profile_cross_pc_upload_gets_independent_same_context_proof(service,tmp_path,monkeypatch,profile):
     from roc import native_sweep as sweep,worker,match,native_refs
-    task=accepted_task(service);service.promotions.recovery=service
+    if profile=='accepted':task=accepted_task(service)
+    else:
+        rel=REL.replace('A.cpp','CMainFrameCommands.cpp');(service.root/rel).write_text(BEFORE)
+        task=dict(file=rel,method='A::f',addr='00400000')
+        monkeypatch.setattr(recovery,'nominations',lambda *a:[task])
+    service.promotions.recovery=service
     service.promotions.baseline=lambda:dict(revision='base')
     class Api:
         def __init__(self,*a):pass
@@ -98,21 +131,22 @@ def test_accepted_profile_cross_pc_upload_gets_independent_same_context_proof(se
     monkeypatch.setattr(recovery,'stage_submission',lambda *a,**kw:dict(state='pending-mapping'))
     contexts=[]
     def compile(root,rel,context,*a,**kw):
-        assert kw['include_profile']=='accepted'
-        assert (context.accepted_headers/'App/include/test/B.h').read_text()=='struct B { int f(); };'
+        assert kw['include_profile']==profile
+        if profile=='accepted':assert (context.accepted_headers/'App/include/test/B.h').read_text()=='struct B { int f(); };'
         contexts.append(True);text=(root/rel).read_text();obj=root/'proof.obj';obj.write_bytes(b'independent object')
         return dict(ok=True,target_exact='return 3;' in text,hits=[],losses=[],object=str(obj),symbol='?f@B@@QAEHXZ')
     monkeypatch.setattr(recovery,'compile_probe',compile)
-    catalog=service.catalog();published=next(t for t in catalog['tasks'] if t['method']=='B::f')
+    catalog=service.catalog();published=next(t for t in catalog['tasks'] if t['method']==task['method'])
     request=dict(target=published['target'],signature=published['signature'],worker='pc2')
     assert service.claim('Colin',request)==dict(claimed=False,reason='worker-update-required')
-    lease=service.claim('Colin',dict(request,include_profiles=['owner','accepted']))
+    lease=service.claim('Colin',dict(request,include_profiles=list(recovery.INCLUDE_PROFILES)))
     before=(service.root/task['file']).read_text()
     service.submit('Colin',body(lease,model='terra',candidate=before.replace('return 1;','return 3;')))
     result=service.process(service.take())
     assert result['receipt']['state']=='merged' and len(contexts)==2
     assert 'return 3;' in (service.root/task['file']).read_text()
     assert (service.root/REL).read_text()==BEFORE
+    if profile!='accepted':return
     context=client.materialize_canonical_headers(catalog,tmp_path/'pc2')
     assert (context/'App/include/test/B.h').read_text()=='struct B { int f(); };'
     with pytest.raises(ValueError,match='Invalid native probe header revision'):
@@ -311,6 +345,8 @@ def test_controller_two_pcs_host_recheck_and_restart_without_extra_ai(service,tm
             retried=run('pc1');assert retried['host_merged']==0 and retried['submitted']==1 and retried['remote_pending']==0 and retried['integration_pending']==1
             assert len(batches)==2 and controls['pc1'].budget.requests==int(not existing_source) and calls==expected_calls
         else:
+            unrelated=tmp_path/'pc1/rebuild/2008-06/native-headers/Unrelated.h'
+            unrelated.write_text('struct Unrelated { int ownerChanged; };')
             repeated=run('pc1');assert repeated['pending']==0 and not batches
     finally:http.shutdown();http.server_close();thread.join()
 

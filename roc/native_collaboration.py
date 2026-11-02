@@ -47,7 +47,8 @@ class Remote:
         return payload
 
     def claim(self, task):
-        return self.call('claim', dict(target=task['target'], signature=task['signature'],include_profiles=['owner','accepted']))
+        from roc.native_recovery import INCLUDE_PROFILES
+        return self.call('claim', dict(target=task['target'], signature=task['signature'],include_profiles=list(INCLUDE_PROFILES)))
 
     def renew(self, lease):
         return self.call('renew',dict(lease=lease['lease'],worker=lease.get('worker',self.worker)))
