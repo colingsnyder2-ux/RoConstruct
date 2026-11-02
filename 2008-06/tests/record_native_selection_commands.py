@@ -191,6 +191,32 @@ for prefix,address in [('?doIt@PrimaryControllerCommand',0x581920),('?doIt@Secon
     if address==0x57d540:expected=[('setControllerType',0x6099c0)]
     for token,want in expected:assert any(token in k and v==want for k,v in edges.items()),(token,edges)
     controller_actions.append({'address':hex(address),'size':len(body),'edges':edges})
+delete_name,delete_body,delete_refs=next(x for x in functions if x[0].startswith('?doIt@DeleteBase@RBX@@'))
+delete_target,delete_targetrefs,_=match.target('2008-06','00581090');assert match.exact_match(delete_target,delete_targetrefs,delete_body,delete_refs)
+assert readptr(0x830818+16)==0x581090
+start,index=definitions[delete_name];section=sections[index];delete_edges={}
+for i in range(section[7]):
+    offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+    if not 0<=offset<len(delete_body)-3:continue
+    value=struct.unpack_from('<I',delete_target,offset)[0]
+    if kind==20:value=(0x581090+offset+4+struct.unpack_from('<i',delete_target,offset)[0])&0xffffffff
+    delete_edges[symbols[symbol][0]]=value
+for token,want in [('checkRunPermissions',0x57d250),('create@VSelection',0x4153b0),('setParent@Instance',0x55a8f0),('create@VSoundService',0x4531e0),('playSound@SoundService',0x5bd820),('recordCameraHistory',0x58c5c0)]:assert any(token in k and v==want for k,v in delete_edges.items()),(token,delete_edges)
+for typename in ('Workspace','Players','Instance'):
+    assert any(('??_R0?AV'+typename+'@') in k for k in delete_edges),delete_edges
+weld_actions=[]
+for cls,address,vt,callback in [('WeldSelectionVerb',0x582990,0x8307ac,0x57eb80),('SnapSelectionVerb',0x582a70,0x8307c4,0x57e530)]:
+    name,body,refs=next(x for x in functions if x[0].startswith('?doIt@'+cls+'@RBX@@'));target,targetrefs,_=match.target('2008-06',f'{address:08x}');assert match.exact_match(target,targetrefs,body,refs),cls
+    assert readptr(vt+16)==address
+    start,index=definitions[name];section=sections[index];edges={}
+    for i in range(section[7]):
+        offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+        if not 0<=offset<len(body)-3:continue
+        value=struct.unpack_from('<I',target,offset)[0]
+        if kind==20:value=(address+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+        edges[symbols[symbol][0]]=value
+    for token,want in [('checkRunPermissions',0x57d250),('create@VSelection',0x4153b0),('createService',0x581cc0),('for_each',0x57e4d0),('weldInstance' if cls=='WeldSelectionVerb' else 'snapInstance',callback),('playSound@SoundService',0x5bd820),('recordCameraHistory',0x58c5c0)]:assert any(token in k and v==want for k,v in edges.items()),(token,edges)
+    weld_actions.append({'class':cls,'address':hex(address),'size':len(body),'vtable':hex(vt),'bindings':edges})
 camera_checks = []
 for cls, address, vtable in [('AttachCameraCommand', 0x57dcb0, 0x830830), ('TrackCameraCommand', 0x57dce0, 0x830848), ('FollowCameraCommand', 0x57dd10, 0x830860), ('WatchCameraCommand', 0x57dd40, 0x830878)]:
     name, body, refs = next(x for x in functions if x[0].startswith('?isChecked@'+cls+'@RBX@@'))
@@ -295,6 +321,6 @@ assert any('clientIsPresent' in k and v == 0x495e60 for k,v in helper_edges.item
 assert any('serverIsPresent' in k and v == 0x495e70 for k,v in helper_edges.items()), helper_edges
 assert pe.get_string_at_rva(0x8305e0-image) == b'Insufficinet permissions'
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-receipt = {'source_sha256':sha(source),'header_sha256':sha(header),'observer_sha256':sha(Path(__file__)),'object_sha256':sha(obj),'flags':flags,'methods':rows,'property_ctors':property_ctors,'property_base_ctor':{'address':'0x57f530','size':113,'vtable':hex(property_vtable),'edges':property_base_edges},'attach_enabled':{'address':'00582d70','size':221,'vtable':'0x830830','calls':attach_edges},'follow_enabled':follow_enabled,'track_enabled':{'address':'00582e50','size':77,'vtable':'0x830848','calls':track_edges},'selection_camera_actions':selection_camera_actions,'selection_enabled':selection_enabled,'ungroup_checks':ungroup_rows,'controller_checks':controller_rows,'controller_actions':controller_actions,'camera_checks':camera_checks,'first_person_enabled':{'address':'0x57d9c0','size':33,'vtable':'0x830600','calls':first_calls},'run_actions':actions,'permission_helper':{'address':'0x57d250','size':len(helper),'edges':helper_edges},'reset_enabled':{'address':'0x5827c0','size':56,'exact':True,'vtable':'0x83908c','calls':reset_calls},'run_enabled':{'address':'0x582700','size':56,'exact':True,'vtable':'0x83905c','calls':run_calls},'stop_enabled':{'address':'0x582770','size':len(body),'exact':True,'vtable':'0x839074','calls':stop_calls},'scope':'Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven.'}
+receipt = {'source_sha256':sha(source),'header_sha256':sha(header),'observer_sha256':sha(Path(__file__)),'object_sha256':sha(obj),'flags':flags,'methods':rows,'property_ctors':property_ctors,'property_base_ctor':{'address':'0x57f530','size':113,'vtable':hex(property_vtable),'edges':property_base_edges},'attach_enabled':{'address':'00582d70','size':221,'vtable':'0x830830','calls':attach_edges},'follow_enabled':follow_enabled,'track_enabled':{'address':'00582e50','size':77,'vtable':'0x830848','calls':track_edges},'selection_camera_actions':selection_camera_actions,'selection_enabled':selection_enabled,'ungroup_checks':ungroup_rows,'controller_checks':controller_rows,'controller_actions':controller_actions,'delete_action':{'address':'00581090','size':len(delete_body),'bindings':delete_edges},'weld_actions':weld_actions,'camera_checks':camera_checks,'first_person_enabled':{'address':'0x57d9c0','size':33,'vtable':'0x830600','calls':first_calls},'run_actions':actions,'permission_helper':{'address':'0x57d250','size':len(helper),'edges':helper_edges},'reset_enabled':{'address':'0x5827c0','size':56,'exact':True,'vtable':'0x83908c','calls':reset_calls},'run_enabled':{'address':'0x582700','size':56,'exact':True,'vtable':'0x83905c','calls':run_calls},'stop_enabled':{'address':'0x582770','size':len(body),'exact':True,'vtable':'0x839074','calls':stop_calls},'scope':'Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven.'}
 (root / 'work/2008-06/shared-layouts/selection-command-constructors-trial.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print('PASS ten selection-command constructors, labels and RTTI')

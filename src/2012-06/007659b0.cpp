@@ -1,81 +1,42 @@
-// from server: 54% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/DebrisService.cpp
+// from server: 100% by tajop
 
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/DebrisService.h"
-#include "v8datamodel/TimerService.h"
-#include "util/standardout.h"
+void* __stdcall make_007659b0(int a, int b, int c, int d, int e, int f, int g);
 
-static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
-static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
+struct Pair_007659b0 {
+    int a;
+    int b;
+    Pair_007659b0() : a(0), b(0) {}
+};
 
-static void cleanup(boost::weak_ptr<RBX::Instance> item)
+struct Desc_007659b0 {
+    virtual void v();
+};
+
+struct DescImpl_007659b0 : Desc_007659b0 {
+    int m4;
+    Pair_007659b0 m8;
+    DescImpl_007659b0(int x, const Pair_007659b0& p) : m4(x), m8(p) {}
+    virtual void v();
+};
+
+struct Base_007659b0 {
+    char pad[0x28];
+    Desc_007659b0* m2c;
+    Base_007659b0(void* p);
+    ~Base_007659b0();
+    virtual void v();
+};
+
+struct Derived_007659b0 : Base_007659b0 {
+    Derived_007659b0(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);
+    virtual void v();
+};
+
+Derived_007659b0::Derived_007659b0(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8)
+    : Base_007659b0(make_007659b0(a1, a3, a4, a5, a7, a8, a6))
 {
-	try
-	{
-		boost::shared_ptr<RBX::Instance> i = item.lock();
-		if (i)
-			i->setParent(NULL);
-	}
-	catch (std::exception& e)
-	{
-		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
-	}
-}
-
-namespace RBX
-{
-	DebrisService::DebrisService()
-		: Base("Debris"),
-		  maxItems(300),
-		  timer(NULL)
-	{
-	}
-
-	void DebrisService::setMaxItems(int value)
-	{
-		if (value != maxItems)
-		{
-			if (value < 0)
-				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
-
-			maxItems = value;
-			raisePropertyChanged(prop_MaxItems);
-			DebrisService::cleanup();
-		}
-	}
-
-	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
-	{
-		if (timer)
-			timer->delay(boost::bind(&::cleanup, item), lifetime);
-
-		queue.push(item);
-		DebrisService::cleanup();
-	}
-
-	void DebrisService::cleanup()
-	{
-		while ((int)queue.size() > maxItems)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-	}
-
-	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		while ((int)queue.size() > 0)
-		{
-			::cleanup(queue.front());
-			queue.pop();
-		}
-
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		timer = ServiceProvider::create<TimerService>(newProvider);
-	}
+    Desc_007659b0* p = new DescImpl_007659b0(a2, Pair_007659b0());
+    Desc_007659b0* old = m2c;
+    m2c = p;
+    delete old;
 }

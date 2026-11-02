@@ -8665,5 +8665,90 @@
     "unit": "RBX::Teams",
     "updated": 1793604099.873419,
     "user": "colin"
+  },
+  {
+    "created": 1793612212.1545944,
+    "id": "6b59472c7f4849e9ba1dd49c86b1c2f1",
+    "model": "gpt-6.1-sol",
+    "patches": {
+      "App/include/v8datamodel/Team.h": [
+        [
+          "askSetParent(const Instance* instance) const\n\t\t{\n\t\t\treturn true;\n\t\t}",
+          "askSetParent(const Instance* instance) const;"
+        ]
+      ],
+      "App/v8datamodel/Team.cpp": [
+        [
+          "#include \"v8datamodel/Team.h\"",
+          "#include \"v8datamodel/Team.h\"\n#include \"v8datamodel/Teams.h\""
+        ],
+        [
+          ")\n\t{\n\t\tcolor = newColor;\n\t\traisePropertyChanged(prop_Color);\n\t}\n\n\tbool Team::getAutoAssignable() const\n\t{\n\t\treturn autoAssignable;\n\t}\n\n\tvoid Team::setAutoAssignable(bool value)\n\t{\n\t\tautoAssignable = value;\n\t\traisePropertyChanged(prop_AutoAssignable);\n\t}\n}\n",
+          ")\n\t{\n\t\tcolor = newColor;\n\t\traisePropertyChanged(prop_Color);\n\t}\n\n\tbool Team::getAutoAssignable() const\n\t{\n\t\treturn autoAssignable;\n\t}\n\n\tvoid Team::setAutoAssignable(bool value)\n\t{\n\t\tautoAssignable = value;\n\t\traisePropertyChanged(prop_AutoAssignable);\n\t}\n}\n\nnamespace RBX { bool Team::askSetParent(const Instance* instance) const { return dynamic_cast<const Teams*>(instance)!=0; } }\n"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "963baf87f0ab9acd101223d4fae2c600cb334c3d03b8c983119561742f7a1931",
+      "credits": 1,
+      "distinct_after": 10268,
+      "distinct_before": 10267,
+      "gains": [
+        "00565e00"
+      ],
+      "input_hash": "2747173506fb6f5a3a88fdd6215d5e2676a13cd39a5ca02c9a8bf63f5ae60e21",
+      "losses": [],
+      "new_distinct": [
+        "00565e00"
+      ],
+      "overlay_hash": "63212d3dd39f789dc77128c656ff468f49afe13fcb6d8728648586344cb3eebf",
+      "owned_after": 3776,
+      "owned_before": 3775,
+      "rebased": false,
+      "submitted_revision": "963baf87f0ab9acd101223d4fae2c600cb334c3d03b8c983119561742f7a1931"
+    },
+    "state": "accepted",
+    "unit": "RBX::Team",
+    "updated": 1793613275.0899308,
+    "user": "colin"
+  },
+  {
+    "created": 1793616219.2469,
+    "id": "c15e6f85c0274c18916c28b38adbe750",
+    "model": "gpt-6.1-sol",
+    "patches": {
+      "App/v8kernel/Link.cpp": [
+        [
+          "#include \"v8kernel/Link.h\"",
+          "#pragma float_control(precise, off, push)\n#include \"v8kernel/Link.h\""
+        ],
+        [
+          "using namespace RBX;",
+          "void G3D::Matrix3::_mul(const Matrix3& A, const Matrix3& B, Matrix3& out) {\n    const float* ARowPtr = A.elt[0];\n    float* outRowPtr     = out.elt[0];\n        outRowPtr[0] =\n            ARowPtr[0] * B.elt[0][0] +\n            ARowPtr[1] * B.elt[1][0] +\n            ARowPtr[2] * B.elt[2][0];\n        outRowPtr[1] =\n            ARowPtr[0] * B.elt[0][1] +\n            ARowPtr[1] * B.elt[1][1] +\n            ARowPtr[2] * B.elt[2][1];\n        outRowPtr[2] =\n            ARowPtr[0] * B.elt[0][2] +\n            ARowPtr[1] * B.elt[1][2] +\n            ARowPtr[2] * B.elt[2][2];\n\n    ARowPtr       = A.elt[1];\n    outRowPtr     = out.elt[1];\n\n        outRowPtr[0] =\n            ARowPtr[0] * B.elt[0][0] +\n            ARowPtr[1] * B.elt[1][0] +\n            ARowPtr[2] * B.elt[2][0];\n        outRowPtr[1] =\n            ARowPtr[0] * B.elt[0][1] +\n            ARowPtr[1] * B.elt[1][1] +\n            ARowPtr[2] * B.elt[2][1];\n        outRowPtr[2] =\n            ARowPtr[0] * B.elt[0][2] +\n            ARowPtr[1] * B.elt[1][2] +\n            ARowPtr[2] * B.elt[2][2];\n\n    ARowPtr       = A.elt[2];\n    outRowPtr     = out.elt[2];\n\n        outRowPtr[0] =\n            ARowPtr[0] * B.elt[0][0] +\n            ARowPtr[1] * B.elt[1][0] +\n            ARowPtr[2] * B.elt[2][0];\n        outRowPtr[1] =\n            ARowPtr[0] * B.elt[0][1] +\n            ARowPtr[1] * B.elt[1][1] +\n            ARowPtr[2] * B.elt[2][1];\n        outRowPtr[2] =\n            ARowPtr[0] * B.elt[0][2] +\n            ARowPtr[1] * B.elt[1][2] +\n            ARowPtr[2] * B.elt[2][2];\n}\n\nnamespace RBX {\n#pragma float_control(precise, off, push)\nvoid recoveredFrameMultiply(const G3D::CoordinateFrame& A, const G3D::CoordinateFrame& B, G3D::CoordinateFrame& out) {\n G3D::Matrix3::_mul(A.rotation,B.rotation,out.rotation);\n out.translation = A.pointToWorldSpace(B.translation);\n}\n#pragma float_control(pop)\n}\nusing namespace RBX;"
+        ],
+        [
+          "answer = rotatedParentCoord * childCoordInverse;",
+          "recoveredFrameMultiply(rotatedParentCoord, childCoordInverse, answer);"
+        ],
+        [
+          "omputeChildInParent(G3D::CoordinateFrame& answer) const\n{\n    G3D::CoordinateFrame rotatedParentCoord(\n        Math::rotateAboutZ(parentCoord.rotation, jointAngle), \n        parentCoord.translation);\n\n    recoveredFrameMultiply(rotatedParentCoord, childCoordInverse, answer);\n}\n",
+          "omputeChildInParent(G3D::CoordinateFrame& answer) const\n{\n    G3D::CoordinateFrame rotatedParentCoord(\n        Math::rotateAboutZ(parentCoord.rotation, jointAngle), \n        parentCoord.translation);\n\n    recoveredFrameMultiply(rotatedParentCoord, childCoordInverse, answer);\n}\n\n#pragma float_control(pop)\n"
+        ]
+      ],
+      "Rendering/g3d/include/G3D/Matrix3.h": [
+        [
+          "private:\n    /** Multiplication where out != A and out != B */",
+          "public:\n    /** Multiplication where out != A and out != B */"
+        ]
+      ]
+    },
+    "phase": "building",
+    "receipt": {},
+    "state": "verifying",
+    "unit": "RBX::RevoluteLink",
+    "updated": 1793616260.5051587,
+    "user": "colin"
   }
 ]

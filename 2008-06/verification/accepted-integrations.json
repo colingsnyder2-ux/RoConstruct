@@ -2997,6 +2997,28 @@
         ]
       },
       "timestamp": 1793604099.5462303
+    },
+    {
+      "job": "6b59472c7f4849e9ba1dd49c86b1c2f1",
+      "patches": {
+        "App/include/v8datamodel/Team.h": [
+          [
+            "askSetParent(const Instance* instance) const\n\t\t{\n\t\t\treturn true;\n\t\t}",
+            "askSetParent(const Instance* instance) const;"
+          ]
+        ],
+        "App/v8datamodel/Team.cpp": [
+          [
+            "#include \"v8datamodel/Team.h\"",
+            "#include \"v8datamodel/Team.h\"\n#include \"v8datamodel/Teams.h\""
+          ],
+          [
+            ")\n\t{\n\t\tcolor = newColor;\n\t\traisePropertyChanged(prop_Color);\n\t}\n\n\tbool Team::getAutoAssignable() const\n\t{\n\t\treturn autoAssignable;\n\t}\n\n\tvoid Team::setAutoAssignable(bool value)\n\t{\n\t\tautoAssignable = value;\n\t\traisePropertyChanged(prop_AutoAssignable);\n\t}\n}\n",
+            ")\n\t{\n\t\tcolor = newColor;\n\t\traisePropertyChanged(prop_Color);\n\t}\n\n\tbool Team::getAutoAssignable() const\n\t{\n\t\treturn autoAssignable;\n\t}\n\n\tvoid Team::setAutoAssignable(bool value)\n\t{\n\t\tautoAssignable = value;\n\t\traisePropertyChanged(prop_AutoAssignable);\n\t}\n}\n\nnamespace RBX { bool Team::askSetParent(const Instance* instance) const { return dynamic_cast<const Teams*>(instance)!=0; } }\n"
+          ]
+        ]
+      },
+      "timestamp": 1793613274.896252
     }
   ],
   "initial_patches": {}

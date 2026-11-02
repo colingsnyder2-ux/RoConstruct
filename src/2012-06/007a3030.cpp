@@ -1,85 +1,100 @@
-// from server: 43% by Intel
-struct Controller {
-    void* f_38;
-    char pad_3c[124];
-    float f_b8;
-    int f_b4;
-    char pad_b8[200];
-    int f_148;
-    char pad_14c[16];
-    void* f_15c;
-    Controller* base();
-    int func(int a1, int a2);
+// from server: 93% by tajop
+extern "C" void* __cdecl __RTDynamicCast(void*, long, void*, void*, int);
+extern "C" char g_d601e8[];
+extern "C" char g_d65108[];
+extern "C" const float g_b5ef80;
+
+struct Instance {
+    char pad0[0x38];
+    Instance* parent;
+    Instance* getRootAncestor();
 };
 
-extern "C" void __stdcall sub_4a01e0(void* ecx);
-extern "C" int __stdcall sub_983448(int a1, int a2, int a3, int a4, int a5);
-extern "C" void __stdcall sub_4be3e0(void* ecx);
-extern "C" int __stdcall sub_443530();
-extern "C" void __stdcall sub_68bbd0(void* ecx, float val);
+struct Camera {
+    char pad0[0x148];
+    int cameraType;
+    void apply(float value);
+};
 
-int Controller::func(int a1, int a2) {
-    if (!this)
-        return 0;
+struct CameraHolder {
+    virtual void slot0();
+    virtual Camera* get();
+};
 
-    void* eax = f_38;
-    if (eax) {
-        void* ecx = *reinterpret_cast<void**>(reinterpret_cast<char*>(eax) + 0x38);
-        if (ecx)
-            sub_4a01e0(ecx);
-    } else {
-        eax = this;
-    }
+struct Workspace {
+    char pad0[0x150];
+};
 
-    if (!eax)
-        return 0;
+struct DataModel {
+    Workspace* getWorkspace();
+};
 
-    int result = sub_983448(reinterpret_cast<int>(eax), 0, 0xd65108, 0xd601e8, 0);
-    if (!result)
-        return 0;
+struct Settings {
+    char pad0[0x8c];
+    int mode;
+    char pad1[6];
+    char flag;
+};
 
-    sub_4be3e0(reinterpret_cast<void*>(result));
+extern "C" Settings* __cdecl sub_443530();
 
-    int esi;
+struct StepEvent {
+    char pad0[8];
+    double dt;
+};
+
+struct InputState {
+    char pad0[2];
+    bool a;
+    bool b;
+    char pad1[2];
+    bool c;
+    bool d;
+};
+
+struct Controller : Instance {
+    char pad1[0xb4 - 0x3c];
+    int count;
+    float speed;
+    void method(const StepEvent* e, const InputState* in);
+};
+
+void Controller::method(const StepEvent* e, const InputState* in)
+{
+    Workspace* ws;
+    Instance* root;
+    DataModel* dm;
+    if (!this) goto none;
     {
-        void* vtable = *reinterpret_cast<void**>(reinterpret_cast<char*>(this) + 0x150);
-        int (__stdcall *fn)(void*) = *reinterpret_cast<int (__stdcall**)(void*)>(reinterpret_cast<char*>(vtable) + 4);
-        esi = fn(this);
+        Instance* p = parent;
+        if (p) {
+            Instance* q = p->parent;
+            if (q) p = q->getRootAncestor();
+            root = p;
+        } else {
+            root = this;
+        }
     }
-
-    int eax2 = sub_443530();
-    int eax3 = 0;
-
-    if (*reinterpret_cast<int*>(eax2 + 0x8c) == 3 && *reinterpret_cast<char*>(eax2 + 0x96) == 0) {
-        int arg = a1;
-        if (*reinterpret_cast<char*>(arg + 6) == 0)
-            eax3 = *reinterpret_cast<unsigned char*>(arg + 7);
-        else
-            eax3 = 1;
+    if (!root) goto none;
+    dm = (DataModel*)__RTDynamicCast(root, 0, g_d601e8, g_d65108, 0);
+    if (dm) {
+        ws = dm->getWorkspace();
     } else {
-        int arg = a1;
-        if (*reinterpret_cast<char*>(arg + 2) == 0)
-            eax3 = *reinterpret_cast<unsigned char*>(arg + 3);
-        else
-            eax3 = 1;
+none:
+        ws = 0;
     }
-
-    eax3 = -eax3;
-    eax3 = (eax3 >> 31) & 1;
-    *reinterpret_cast<int*>(&a2) = eax3;
-
-    if (f_148 != 6) {
-        *reinterpret_cast<int*>(&a2) = 0;
-    } else if (!eax3) {
-        *reinterpret_cast<int*>(&a2) = 0;
+    Camera* cam = ((CameraHolder*)((char*)ws + 0x150))->get();
+    Settings* s = sub_443530();
+    int v;
+    if (s->mode == 3 && s->flag == 0) {
+        v = in->c ? 1 : (in->d ? -1 : 0);
     } else {
-        float val = *reinterpret_cast<float*>(a2 + 8);
-        val *= f_b8;
-        val *= *reinterpret_cast<int*>(&a2);
-        val *= *reinterpret_cast<float*>(0xb5ef80);
-        sub_68bbd0(reinterpret_cast<void*>(esi), val);
-        f_b4++;
+        v = in->a ? 1 : (in->b ? -1 : 0);
     }
-
-    return 0;
+    if (cam->cameraType != 6 && v != 0) {
+        cam->apply((float)e->dt * speed * v * g_b5ef80);
+        count++;
+        return;
+    }
+    count = 0;
 }

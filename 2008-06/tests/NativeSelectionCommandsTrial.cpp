@@ -6,7 +6,9 @@
 #include "v8datamodel/PVInstance.h"
 #include "v8datamodel/ModelInstance.h"
 #include "Network/Players.h"
+#include "util/Sound.h"
 #include <stdexcept>
+#include <boost/bind.hpp>
 namespace RBX {
 inline const Name& Verb::getName() const { return name; }
 void recordCameraHistory(const char*, const Instance*);
@@ -80,6 +82,35 @@ static __declspec(noinline) void checkRunPermissions(Instance* instance) {
         std::string message("Insufficinet permissions");
         throw std::runtime_error(message);
     }
+}
+void DeleteBase::doIt(IDataState* state) {
+ checkRunPermissions(dataModel);
+ Selection* current=ServiceProvider::create<Selection>(static_cast<const ServiceProvider*>(dataModel));
+ if (current->size()>0) {
+  typedef std::vector<boost::shared_ptr<Instance> > Instances;
+  boost::shared_ptr<const Instances> list=current->selection.read();
+  if (list) for (Instances::const_iterator i=list->begin();i!=list->end();++i) { boost::shared_ptr<Instance> child=*i; if (!dynamic_cast<Workspace*>(child.get()) && !dynamic_cast<Network::Players*>(child.get())) child->setParent(NULL); }
+  Soundscape::SoundService* sound=ServiceProvider::create<Soundscape::SoundService>(static_cast<const ServiceProvider*>(dataModel));
+  sound->playSound(PAGE_SOUND);
+  recordCameraHistory(getName().c_str(),workspace.get());
+  state->setDirty(true);
+ }
+}
+void weldInstance(boost::shared_ptr<Instance>);
+void snapInstance(boost::shared_ptr<Instance>);
+void WeldSelectionVerb::doIt(IDataState* state) {
+ checkRunPermissions(dataModel);
+ ServiceProvider::create<Selection>(static_cast<const ServiceProvider*>(dataModel));
+ std::for_each(selection->selection->begin(), selection->selection->end(), boost::bind(weldInstance,_1));
+ Soundscape::SoundService* sound=ServiceProvider::create<Soundscape::SoundService>(static_cast<const ServiceProvider*>(dataModel)); sound->playSound(PING_SOUND);
+ recordCameraHistory(getName().c_str(),workspace.get()); state->setDirty(true);
+}
+void SnapSelectionVerb::doIt(IDataState* state) {
+ checkRunPermissions(dataModel);
+ ServiceProvider::create<Selection>(static_cast<const ServiceProvider*>(dataModel));
+ std::for_each(selection->selection->begin(), selection->selection->end(), boost::bind(snapInstance,_1));
+ Soundscape::SoundService* sound=ServiceProvider::create<Soundscape::SoundService>(static_cast<const ServiceProvider*>(dataModel)); sound->playSound(PING_SOUND);
+ recordCameraHistory(getName().c_str(),workspace.get()); state->setDirty(true);
 }
 void RunCommand::doIt(IDataState*) { checkRunPermissions(dataModel); RunService* service = runService.operator->(); service->setRunState(RS_RUNNING); }
 void StopCommand::doIt(IDataState*) { checkRunPermissions(dataModel); RunService* service = runService.operator->(); service->setRunState(RS_PAUSED); }
