@@ -1,9 +1,9 @@
 {
-  "scope": "Inactive ModelInstance constructor/destructor match; vector element type, full base layout and runtime ownership remain unproven.",
-  "observer_sha256": "f7a84642ee09950e4eed0325914b7b4b31ecf18d392937cea195c523cb2d4073",
+  "scope": "Inactive ModelInstance constructor/destructor match; vector RTTI and pointer stride corroborated by removeIModelModifier. Full base layout and runtime ownership remain unproven.",
+  "observer_sha256": "3b04d8213b9caa7dae9c78fb3ea1aced73f9e6a91fb5832b75b203f01626c4e7",
   "source_sha256": "6e7c8810ad17dbcbaf2597e54bb3c5454a1fe21fcc043293f63b111e4e89e426",
-  "overlay_sha256": "4f09a2312c23d2da4ac8754df699f21e4e165701b6b88993ea282549bf99b00c",
-  "object_sha256": "702fa7ffeabbae3ce6f197fbfe5faf0cf59fe2849d884af9b3236fdd43567866",
+  "header_sha256": "251179898656bc9ac383dc3004d49b46b7dd7931f7c4266e95746b015ccc7365",
+  "object_sha256": "61681ebf87f0e01c15973df370e13bfbf9cad308a280c7ea98bbc0ab88fce2f4",
   "methods": [
     {
       "symbol": "??0ModelInstance@RBX@@QAE@XZ",
@@ -55,7 +55,6 @@
     }
   ],
   "flags": [
-    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\workspace-model-vector-include",
     "/nologo",
     "/c",
     "/O2",
@@ -93,5 +92,13 @@
     "/fp:fast",
     "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeModelLifetimeTrial.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeModelLifetimeTrial.cpp"
-  ]
+  ],
+  "modifiers": {
+    "offset": "0x1ec",
+    "element": "RBX::IModelModifier*",
+    "remove_address": "00584fc0",
+    "instance_type_descriptor": "0x92907c",
+    "modifier_type_descriptor": "0x936908",
+    "pointer_stride": 4
+  }
 }

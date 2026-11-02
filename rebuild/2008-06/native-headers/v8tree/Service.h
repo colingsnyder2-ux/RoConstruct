@@ -25,6 +25,7 @@ public:
     template<class Class> static void callDoGetClassIndex();
     template<class Class> static size_t getClassIndex();
     template<class Class> Class* find() const;
+    template<class Class> static Class* find(const Instance* context);
     template<class Class> Class* create() const;
     template<class Class> static Class* create(const Instance* context);
     template<class Class> static Class* create(const ServiceProvider* provider) {
@@ -39,7 +40,7 @@ class ServiceClient {
     Instance* context;
     mutable boost::shared_ptr<T> service;
 public:
-    explicit ServiceClient(Instance*);
+    explicit ServiceClient(Instance* value) : context(value) {}
     bool isNull() const;
     operator T*();
     operator const T*() const;

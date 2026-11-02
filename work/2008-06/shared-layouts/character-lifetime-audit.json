@@ -1,0 +1,129 @@
+{
+  "original_humanoid_rtti_bases": [
+    ".?AVHumanoid@RBX@@",
+    ".?AV?$DescribedCreatable@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@",
+    ".?AV?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@",
+    ".?AV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@",
+    ".?AVInstance@RBX@@",
+    ".?AV?$enable_shared_from_this@VInstance@RBX@@@boost@@",
+    ".?AV?$GuidItem@VInstance@RBX@@@RBX@@",
+    ".?AV?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@",
+    ".?AV?$Creatable@VInstance@RBX@@@RBX@@",
+    ".?AVObject@RBX@@",
+    ".?AV?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@",
+    ".?AVDescribedBase@Reflection@RBX@@",
+    ".?AVSignalSource@Reflection@RBX@@",
+    ".?AVDebugable@RBX@@",
+    ".?AV?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@",
+    ".?AV?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@",
+    ".?AV?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@",
+    ".?AV?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@",
+    ".?AV?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@",
+    ".?AV?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@",
+    ".?AVnoncopyable@noncopyable_@boost@@",
+    ".?AVConnector@RBX@@",
+    ".?AVKernelIndex@RBX@@",
+    ".?AVIControllable@RBX@@",
+    ".?AVIRenderable@RBX@@",
+    ".?AVICharacterSubject@RBX@@",
+    ".?AVICameraSubject@RBX@@",
+    ".?AVILocation@RBX@@",
+    ".?AVIModelModifier@RBX@@",
+    ".?AV?$Listener@VRunService@RBX@@VStepped@2@@RBX@@"
+  ],
+  "shared_header_dtor": {
+    "size": 698,
+    "exact": true,
+    "source_sha256": "e346b299bcebb59334133f9eb0346fee58f5bcf66957deb29957ca352bdae0cf",
+    "object_sha256": "6c331c6f1b3747894a821e90ea49f0bf18d3d2692bde576d83cd8cc9d75b65b2",
+    "slots": {
+      "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
+      "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
+      "3": "?askSetParent@Humanoid@RBX@@EBE_NPBVInstance@2@@Z",
+      "4": "?onAncestorChanged@Humanoid@RBX@@EAEXABUAncestorChanged@2@@Z",
+      "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+      "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z",
+      "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z",
+      "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z",
+      "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ",
+      "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+      "12": "?onServiceProvider@Humanoid@RBX@@EAEXPBVServiceProvider@2@0@Z"
+    },
+    "bindings": {
+      "__ehhandler$??1Humanoid@RBX@@UAE@XZ": 8215958,
+      "??_7Humanoid@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": 8639612,
+      "??_7Humanoid@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": 8639596,
+      "??_7Humanoid@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": 8639588,
+      "??_7Humanoid@RBX@@6BDebugable@1@@": 8639580,
+      "??_7Humanoid@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": 8639564,
+      "??_7Humanoid@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": 8639548,
+      "??_7Humanoid@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": 8639532,
+      "??_7Humanoid@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": 8639516,
+      "??_7Humanoid@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": 8639500,
+      "??_7Humanoid@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": 8639484,
+      "??_7Humanoid@RBX@@6BConnector@1@@": 8639456,
+      "??_7Humanoid@RBX@@6BIControllable@1@@": 8639444,
+      "??_7Humanoid@RBX@@6BIRenderable@1@@": 8639420,
+      "??_7Humanoid@RBX@@6BICameraSubject@1@@": 8639368,
+      "??_7Humanoid@RBX@@6BIModelModifier@1@@": 8639360,
+      "??_7Humanoid@RBX@@6B?$Listener@VRunService@RBX@@VStepped@2@@1@@": 8639348,
+      "??_7Humanoid@RBX@@6BILocation@1@@": 8639340,
+      "??1IRenderable@RBX@@QAE@XZ": 4707344,
+      "??_7Connector@RBX@@6B@": 8638964,
+      "??1?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PBDB@RBX@@MAE@XZ": 6125520
+    }
+  },
+  "exact_dtor_object_sha256": "0fac59c69049372ac9330bbb6b25271be684886efb1d03bcd192e1816d0fa581",
+  "exact_dtor_size": 698,
+  "exact_dtor_body": true,
+  "exact_object_vtable_slots": {
+    "0": "??_EHumanoid@RBX@@UAEPAXI@Z",
+    "1": "?onGuidChanged@Instance@RBX@@MAEXXZ",
+    "2": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "3": "?askAddChild@Instance@RBX@@MBE_NPBV12@@Z",
+    "4": "?askSetParent@Humanoid@RBX@@EBE_NPBVInstance@2@@Z",
+    "5": "?onAncestorChanged@Humanoid@RBX@@EAEXABUAncestorChanged@2@@Z",
+    "6": "?onDescendentAdded@Instance@RBX@@MAEXPAV12@@Z",
+    "7": "?onDescendentRemoving@Instance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+    "8": "?onChildAdded@Instance@RBX@@MAEXPAV12@@Z",
+    "9": "?onChildRemoving@Instance@RBX@@MAEXPAV12@@Z",
+    "10": "?onChildRemoved@Instance@RBX@@MAEXPAV12@@Z",
+    "11": "?onLastChildRemoved@Instance@RBX@@EAEXXZ",
+    "12": "?readProperty@Instance@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+    "13": "?onServiceProvider@Humanoid@RBX@@EAEXPBVServiceProvider@2@0@Z"
+  },
+  "original_slot11": "0x559170",
+  "constructors": [
+    {
+      "address": "0x641320",
+      "size": 109,
+      "object_sha256": "e1a04f696c6c0b1a1bddfaf57621dcfe081da0a211c1353416c964dcee62f786",
+      "bindings": {
+        "??_8ICharacterSubject@RBX@@": "0x84a5fc",
+        "?reset@Vector3ERA@RBX@@": "0x666280",
+        "?reset@floatERA@RBX@@": "0x666240"
+      }
+    },
+    {
+      "address": "0x5db280",
+      "size": 565,
+      "object_sha256": "a1f76042efaeb87549be18d55adcd06152b048dc6b879bf18fb5c3eaafe6a667",
+      "bindings": {
+        "??0ICharacterSubject@RBX@@": "0x641320",
+        "??_7Humanoid@RBX@@6BICameraSubject": "0x83d388"
+      }
+    }
+  ],
+  "destructor_path": [
+    "0x83d388",
+    "0x5d8090",
+    "0x5d8400",
+    "0x5d7d20"
+  ],
+  "destructor_candidate_size": 726,
+  "destructor_original_size": 698,
+  "destructor_exact": false,
+  "scope": "Shared-header destructor body and readProperty slot match; remaining vtables, call targets, RTTI/data identity, other objects and runtime unproven. Recovered prior object has unsafe extra slot; donor destructor differs. No runtime swap or promotion."
+}

@@ -1,8 +1,8 @@
 {
-  "source_sha256": "7a1d37b92f04bf2d2fd0a6dead09fc124f7346895ecb2e09e1cf86a3bd1a7532",
-  "header_sha256": "7a48e0178f955854b8a4c16c06476388e4ffcbc1f171a97886379fadaaa3d0cd",
-  "observer_sha256": "e296d405cc3128792200a9e3d6d05bd0fcd881dca63a10b416d0dd8a3dd2d23e",
-  "object_sha256": "f2ded66ce864e05b6ad6d5ac8dcbbb1061c22f2d8129f989160c6cf9d39eea8c",
+  "source_sha256": "1e59b5eac62c9fc2dfd404a44609e01a09957c5e5123e436fc07310c77a66d20",
+  "header_sha256": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
+  "observer_sha256": "2a8b5fb406a18949f6b72841e9929f31ec840e34a61ba9086a519daf7be5684e",
+  "object_sha256": "3e591815492622a3f84ec2786ee86247bc65566aaa5c63be215ae3e14b31e666",
   "flags": [
     "/nologo",
     "/c",
@@ -133,5 +133,399 @@
       "type_descriptor": "0x947d48"
     }
   ],
-  "scope": "Inactive trials. Original RTTI names checked; vtable slots, lifetime and runtime ABI remain unproven."
+  "property_ctors": [
+    {
+      "class": "AnchorVerb",
+      "address": "0x5c6010",
+      "size": 117,
+      "vtable": "0x8390a4",
+      "base": "0x57f530",
+      "labels": [
+        "AnchorVerb",
+        "Anchored"
+      ]
+    },
+    {
+      "class": "TranslucentVerb",
+      "address": "0x5c5300",
+      "size": 117,
+      "vtable": "0x838f74",
+      "base": "0x57f530",
+      "labels": [
+        "TranslucentVerb",
+        "Transparent"
+      ]
+    },
+    {
+      "class": "CanCollideVerb",
+      "address": "0x5c5380",
+      "size": 117,
+      "vtable": "0x838f9c",
+      "base": "0x57f530",
+      "labels": [
+        "CanCollideVerb",
+        "CanCollide"
+      ]
+    }
+  ],
+  "property_base_ctor": {
+    "address": "0x57f530",
+    "size": 113,
+    "vtable": "0x830a84",
+    "edges": {
+      "__ehhandler$??0BoolPropertyVerb@RBX@@IAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@PBD@Z": 8196136,
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": 8397916,
+      "??0EditSelectionVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z": 5760816,
+      "??_7BoolPropertyVerb@RBX@@6B@": 8587908,
+      "?declare@Name@RBX@@SAABV12@PBDH@Z": 5586832
+    }
+  },
+  "attach_enabled": {
+    "address": "00582d70",
+    "size": 221,
+    "vtable": "0x830830",
+    "calls": {
+      "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+      "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z": 5774720
+    }
+  },
+  "follow_enabled": [
+    {
+      "class": "FollowCameraCommand",
+      "vtable": "0x830860",
+      "size": 75,
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656
+      }
+    },
+    {
+      "class": "WatchCameraCommand",
+      "vtable": "0x830878",
+      "size": 75,
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656
+      }
+    }
+  ],
+  "track_enabled": {
+    "address": "00582e50",
+    "size": 77,
+    "vtable": "0x830848",
+    "calls": {
+      "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+      "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+    }
+  },
+  "selection_camera_actions": [
+    {
+      "class": "AttachCameraCommand",
+      "address": "0x581360",
+      "size": 131,
+      "vtable": "0x830830",
+      "calls": {
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?front@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@XZ": 5761600,
+        "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": 6086096,
+        "?setCameraSubject@Camera@RBX@@QAEXPAVInstance@2@@Z": 6086160,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "WatchCameraCommand",
+      "address": "0x5815a0",
+      "size": 131,
+      "vtable": "0x830878",
+      "calls": {
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?front@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@XZ": 5761600,
+        "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": 6086096,
+        "?setCameraSubject@Camera@RBX@@QAEXPAVInstance@2@@Z": 6086160,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "TrackCameraCommand",
+      "address": "0x5813f0",
+      "size": 278,
+      "vtable": "0x830848",
+      "calls": {
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264,
+        "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": 4275232,
+        "___RTDynamicCast": 6952902,
+        "?setCameraSubject@Camera@RBX@@QAEXPAVInstance@2@@Z": 6086160,
+        "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": 6086096,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "FollowCameraCommand",
+      "address": "0x581510",
+      "size": 131,
+      "vtable": "0x830860",
+      "calls": {
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?front@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@XZ": 5761600,
+        "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": 6086096,
+        "?setCameraSubject@Camera@RBX@@QAEXPAVInstance@2@@Z": 6086160,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    }
+  ],
+  "selection_enabled": [
+    {
+      "class": "WeldSelectionVerb",
+      "address": "0x582940",
+      "size": 77,
+      "vtable": "0x8307ac",
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+      }
+    },
+    {
+      "class": "SnapSelectionVerb",
+      "address": "0x582940",
+      "size": 77,
+      "vtable": "0x8307c4",
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+      }
+    },
+    {
+      "class": "DuplicateSelectionVerb",
+      "address": "0x580fe0",
+      "size": 40,
+      "vtable": "0x8307f4",
+      "calls": {
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+      }
+    },
+    {
+      "class": "GroupSelectionVerb",
+      "address": "0x582860",
+      "size": 215,
+      "vtable": "0x830794",
+      "calls": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528
+      }
+    }
+  ],
+  "ungroup_checks": [
+    {
+      "address": "0x582b50",
+      "size": 90,
+      "edges": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VModelInstance@RBX@@@1@XZ": 5768896,
+        "?hasChildren@RBX@@YA_NPAVModelInstance@1@@Z": 5759248,
+        "?findFirst@?$FilteredSelection@VModelInstance@RBX@@@RBX@@QAEPAVModelInstance@2@P6A_NPAV32@@Z@Z": 5762480
+      }
+    },
+    {
+      "address": "0x57e110",
+      "size": 43,
+      "edges": {}
+    },
+    {
+      "address": "0x57edb0",
+      "size": 172,
+      "edges": {
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "??$_Find_if@PAPAVPVInstance@RBX@@P6A_NPAV12@@Z@std@@YAPAPAVPVInstance@RBX@@PAPAV12@0P6A_NPAV12@@Z@Z": 5756864
+      }
+    }
+  ],
+  "controller_checks": [
+    {
+      "address": "0x582ef0",
+      "size": 90,
+      "edges": {
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?controllable@RBX@@YA_NPAVPVInstance@1@@Z": 5756240,
+        "?findFirst@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@P6A_NPAV32@@Z@Z": 5762480
+      }
+    },
+    {
+      "address": "0x57d550",
+      "size": 21,
+      "edges": {}
+    },
+    {
+      "address": "0x57edb0",
+      "size": 172,
+      "edges": {
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "??$_Find_if@PAPAVPVInstance@RBX@@P6A_NPAV12@@Z@std@@YAPAPAVPVInstance@RBX@@PAPAV12@0P6A_NPAV12@@Z@Z": 5756864
+      }
+    }
+  ],
+  "controller_actions": [
+    {
+      "address": "0x581920",
+      "size": 62,
+      "edges": {
+        "?applyController@ControllerCommand@RBX@@IAEXH@Z": 5773456,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "address": "0x581960",
+      "size": 62,
+      "edges": {
+        "?applyController@ControllerCommand@RBX@@IAEXH@Z": 5773456,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "address": "0x581890",
+      "size": 139,
+      "edges": {
+        "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": 5768656,
+        "?findDifferent@?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAEPAVPVInstance@2@W4ControllerType@Controller@2@@Z": 5762224,
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "?setController@RBX@@YAXW4ControllerType@Controller@1@PAVPVInstance@1@@Z": 5756224,
+        "??$for_each@V?$_Vector_const_iterator@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@UApplyController@RBX@@@std@@YA?AUApplyController@RBX@@V?$_Vector_const_iterator@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@0@0U12@@Z": 5762416
+      }
+    },
+    {
+      "address": "0x57ecb0",
+      "size": 180,
+      "edges": {
+        "__imp___invalid_parameter_noinfo": 8398992
+      }
+    },
+    {
+      "address": "0x57d540",
+      "size": 15,
+      "edges": {
+        "?setControllerType@PVInstance@RBX@@QAEXW4ControllerType@Controller@2@@Z": 6330816
+      }
+    },
+    {
+      "address": "0x57ed70",
+      "size": 58,
+      "edges": {}
+    }
+  ],
+  "camera_checks": [
+    {
+      "class": "AttachCameraCommand",
+      "address": "0x57dcb0",
+      "size": 35,
+      "vtable_slot": "0x83083c",
+      "exact": true
+    },
+    {
+      "class": "TrackCameraCommand",
+      "address": "0x57dce0",
+      "size": 35,
+      "vtable_slot": "0x830854",
+      "exact": true
+    },
+    {
+      "class": "FollowCameraCommand",
+      "address": "0x57dd10",
+      "size": 35,
+      "vtable_slot": "0x83086c",
+      "exact": true
+    },
+    {
+      "class": "WatchCameraCommand",
+      "address": "0x57dd40",
+      "size": 35,
+      "vtable_slot": "0x830884",
+      "exact": true
+    }
+  ],
+  "first_person_enabled": {
+    "address": "0x57d9c0",
+    "size": 33,
+    "vtable": "0x830600",
+    "calls": {
+      "?isFirstPersonCamera@Camera@RBX@@QBE_NXZ": 6081280
+    }
+  },
+  "run_actions": [
+    {
+      "class": "RunCommand",
+      "address": "0x582740",
+      "size": 39,
+      "vtable": "0x83905c",
+      "calls": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+        "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": 5590432
+      }
+    },
+    {
+      "class": "StopCommand",
+      "address": "0x582790",
+      "size": 39,
+      "vtable": "0x839074",
+      "calls": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+        "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": 5590432
+      }
+    },
+    {
+      "class": "ResetCommand",
+      "address": "0x582800",
+      "size": 39,
+      "vtable": "0x83908c",
+      "calls": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+        "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": 5590432
+      }
+    }
+  ],
+  "permission_helper": {
+    "address": "0x57d250",
+    "size": 120,
+    "edges": {
+      "__ehhandler$?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 8191673,
+      "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": 4808288,
+      "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z": 4808304,
+      "??_C@_0BJ@IGGCCLGC@Insufficinet?5permissions?$AA@": 8586720,
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": 8397912,
+      "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": 4234576,
+      "__TI2?AVruntime_error@std@@": 9247688,
+      "__CxxThrowException@8": 6952332
+    }
+  },
+  "reset_enabled": {
+    "address": "0x5827c0",
+    "size": 56,
+    "exact": true,
+    "vtable": "0x83908c",
+    "calls": {
+      "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+      "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z": 4828288
+    }
+  },
+  "run_enabled": {
+    "address": "0x582700",
+    "size": 56,
+    "exact": true,
+    "vtable": "0x83905c",
+    "calls": {
+      "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336,
+      "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": 4808288
+    }
+  },
+  "stop_enabled": {
+    "address": "0x582770",
+    "size": 33,
+    "exact": true,
+    "vtable": "0x839074",
+    "calls": {
+      "?createService@?$ServiceClient@VRunService@RBX@@@RBX@@ABEPAVRunService@2@_N@Z": 5774336
+    }
+  },
+  "scope": "Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven."
 }

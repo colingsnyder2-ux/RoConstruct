@@ -1,0 +1,68 @@
+{
+  "scope": "Inactive exact profile adds a noalias compiler annotation; original declaration, singleton identity, class lifetime and runtime remain unproven.",
+  "source_sha256": "23f8753650eea7312376ec6f8446b1285b6c08f08d94dd7ace0ad2b108ee52b8",
+  "observer_sha256": "bfaf94840e556bf342b2520dfd6f5f0ed51fbd6806b83227e32adf2bdfd19fd3",
+  "profile_sha256": "256555d992599cf79342c9b0c76dbcb03d0a401f3d4a1b98a667487ec5e52746",
+  "object_sha256": "2b060afcbd8e544b5b0689f67b7648b4b04c851fc52d3dbe0cf24ca248acdd35",
+  "address": "00582f50",
+  "size": 691,
+  "exact": true,
+  "vtable_slot": "0x817b94",
+  "bindings": {
+    "__ehhandler$?doIt@CameraZoomExtentsCommand@RBX@@UAEXPAVIDataState@2@@Z": [
+      "0x7d1168"
+    ],
+    "?inf@Vector3@G3D@@SAABV12@XZ": [
+      "0x510960"
+    ],
+    "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z": [
+      "0x581d80"
+    ],
+    "__imp___invalid_parameter_noinfo": [
+      "0x802890"
+    ],
+    "?unionWith@Extents@RBX@@QAEXABV12@@Z": [
+      "0x57dee0"
+    ],
+    "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": [
+      "0x5cddd0"
+    ],
+    "?zoomExtents@Camera@RBX@@QAEXVExtents@2@ABVRect2D@G3D@@W4ZoomType@12@@Z": [
+      "0x5ce0d0"
+    ],
+    "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": [
+      "0x5807b0"
+    ],
+    "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": [
+      "0x5bd820"
+    ],
+    "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": [
+      "0x58c5c0"
+    ],
+    "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": [
+      "0x96f050"
+    ],
+    "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": [
+      "0x96f044",
+      "0x96f048",
+      "0x96f04c"
+    ],
+    "?zoomExtents@Camera@RBX@@QAE_NABVRect2D@G3D@@@Z": [
+      "0x5ce400"
+    ]
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/fp:fast",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\zoom-extents-preprocess\\NativeCameraZoomExtentsProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\zoom-extents-preprocess\\NativeCameraZoomExtentsProfile.cpp"
+  ]
+}

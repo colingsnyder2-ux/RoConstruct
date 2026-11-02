@@ -1,0 +1,66 @@
+{
+  "scope": "Inactive lookup and history dispatch match; history ownership, class lifetimes and runtime remain unproven.",
+  "source_sha256": "80007491b9fddf0130f1e6843a9e2633d25cff201ed92a805079932aeeb58305",
+  "observer_sha256": "9d28b4f065066984df6e2c5fc1e2794963ba6aa034e9766d3a8e4501da3b8080",
+  "object_sha256": "28ac3d126d8ff81c197e72cb617316a9edd640483a100d7dd9772b25c0db8f02",
+  "methods": [
+    {
+      "address": "0x58a9e0",
+      "symbol": "??$find@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAPAVChangeHistoryService@1@PBVInstance@1@@Z",
+      "size": 65,
+      "exact": true,
+      "bindings": {
+        "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "___RTDynamicCast": "0x6a17c6",
+        "??$find@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x452a00"
+      }
+    },
+    {
+      "address": "0x58c5c0",
+      "symbol": "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z",
+      "size": 30,
+      "exact": true,
+      "bindings": {
+        "??$find@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAPAVChangeHistoryService@1@PBVInstance@1@@Z": "0x58a9e0",
+        "?commit@ChangeHistoryService@RBX@@QAEXPBD@Z": "0x58c2c0"
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ]
+}

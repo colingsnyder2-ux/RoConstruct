@@ -4,6 +4,8 @@ import json
 import struct
 import sys
 from pathlib import Path
+import pefile
+from capstone import Cs, CS_ARCH_X86, CS_MODE_32
 
 root = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(root))
@@ -11,11 +13,9 @@ from roc import match, rebuild
 
 out = root / 'rebuild/2008-06/out/native-layouts'
 source = root / 'rebuild/2008-06/tests/NativeModelLifetimeTrial.cpp'
-overlay = out / 'workspace-model-vector-include'
-assert (overlay / 'v8datamodel/ModelInstance.h').exists()
+header = root / 'rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h'
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
-flags.insert(0, '/I' + str(overlay))
 obj = out / 'NativeModelLifetimeTrial.obj'
 flags += ['/fp:fast', '/Fo' + str(obj), str(source)]
 code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags, out)
@@ -39,6 +39,15 @@ for prefix, address in [('??0ModelInstance@RBX@@', '00585630'), ('??1ModelInstan
     for key, value in expected:
         assert any(k.startswith(key) and v == {value} for k, v in calls.items()), (key, calls)
     rows.append({'symbol': name, 'address': address, 'size': len(body), 'original_size': len(target), 'exact': True, 'calls': {k: [hex(v) for v in sorted(values)] for k, values in calls.items()}})
-receipt = {'scope': 'Inactive ModelInstance constructor/destructor match; vector element type, full base layout and runtime ownership remain unproven.', 'observer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'overlay_sha256': hashlib.sha256((overlay / 'v8datamodel/ModelInstance.h').read_bytes()).hexdigest(), 'object_sha256': hashlib.sha256(raw).hexdigest(), 'methods': rows, 'flags': flags}
+pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
+base_address = pe.OPTIONAL_HEADER.ImageBase
+assert pe.get_string_at_rva(0x936908 - base_address + 8) == b'.?AVIModelModifier@RBX@@'
+assert pe.get_string_at_rva(0x92907c - base_address + 8) == b'.?AVInstance@RBX@@'
+remove, _, _ = match.target('2008-06', '00584fc0')
+instructions = {(i.mnemonic, i.op_str) for i in Cs(CS_ARCH_X86, CS_MODE_32).disasm(remove, 0x584fc0)}
+assert {('push', '0x936908'), ('push', '0x92907c'), ('lea', 'edi, [esi + 0x1ec]'),
+        ('cmp', 'dword ptr [eax], edx'), ('add', 'eax, 4')} <= instructions
+receipt = {'scope': 'Inactive ModelInstance constructor/destructor match; vector RTTI and pointer stride corroborated by removeIModelModifier. Full base layout and runtime ownership remain unproven.', 'observer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'header_sha256': hashlib.sha256(header.read_bytes()).hexdigest(), 'object_sha256': hashlib.sha256(raw).hexdigest(), 'methods': rows, 'flags': flags,
+           'modifiers': {'offset': '0x1ec', 'element': 'RBX::IModelModifier*', 'remove_address': '00584fc0', 'instance_type_descriptor': '0x92907c', 'modifier_type_descriptor': '0x936908', 'pointer_stride': 4}}
 (root / 'work/2008-06/shared-layouts/model-vector-lifetime-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(rows)

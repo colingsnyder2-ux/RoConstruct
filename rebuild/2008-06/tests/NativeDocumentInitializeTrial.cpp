@@ -5,6 +5,12 @@
 #include "CWorkspace.h"
 #include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
+#include "Network/Players.h"
+#include "v8datamodel/Decal.h"
+#include "v8datamodel/custommesh.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/Selection.h"
+#include "util/Sound.h"
 using namespace RBX;
 extern HRESULT __stdcall createNativeWorkspace(CWorkspace**) throw();
 class ReportAbuseVerb : public Verb {
@@ -15,135 +21,159 @@ public:
     virtual bool isEnabled() const;
     virtual void doIt(IDataState*);
 };
-class ExitCommand : public Verb {
-    CRobloxDoc* doc;
-public:
-    __forceinline ExitCommand(CRobloxDoc* doc,VerbContainer* container)
-        : Verb(container,"Exit"),doc(doc) {}
-    virtual bool isEnabled() const {return true;}
-    virtual void doIt(IDataState*);
-};
+void ReportAbuseVerb::doIt(IDataState*) {
+    ::PostMessage(AfxGetApp()->m_pMainWnd->m_hWnd, WM_COMMAND, 0x8100, 0);
+}
+bool ReportAbuseVerb::isEnabled() const {
+    DataModel::Lock lock(doc->getDataModel());
+    return doc->getDataModel()->create<Network::Players>()->canReportAbuse();
+}
+#include "NativeExitCommand.h"
 namespace RBX {
-class Camera;
-class CameraVerb : public Verb {
-protected:
-    Workspace* workspace;
-    Camera* getCamera();
-    const Camera* getCamera() const;
-    ServiceClient<Selection> selection;
-public:
-    CameraVerb(std::string,Workspace*);
-    virtual bool isEnabled() const {return true;}
-    virtual void doIt(IDataState*);
-};
-class FixedCameraCommand : public CameraVerb {
-public:
-    FixedCameraCommand(Workspace* ws) : CameraVerb("FixedCamera",ws) {}
-    virtual bool isChecked() const;
-    virtual void doIt(IDataState*);
-};
-class CameraPanLeftCommand : public CameraVerb {
-public:
-    CameraPanLeftCommand(Workspace* ws) : CameraVerb("CameraPanLeft",ws) {}
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-class CameraPanRightCommand : public CameraVerb {
-public:
-    CameraPanRightCommand(Workspace* ws) : CameraVerb("CameraPanRight",ws) {}
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-class CameraTiltUpCommand : public CameraVerb {
-public:
-    CameraTiltUpCommand(Workspace* ws) : CameraVerb("CameraTiltUp",ws) {}
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-class CameraTiltDownCommand : public CameraVerb {
-public:
-    CameraTiltDownCommand(Workspace* ws) : CameraVerb("CameraTiltDown",ws) {}
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-class CameraZoomInCommand : public CameraVerb {
-public:
-    CameraZoomInCommand(Workspace* ws) : CameraVerb("CameraZoomIn",ws) {}
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-class CameraZoomOutCommand : public CameraVerb {
-public:
-    CameraZoomOutCommand(Workspace* ws) : CameraVerb("CameraZoomOut",ws) {}
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-class CameraCenterCommand : public CameraVerb {
-public:
-    CameraCenterCommand(Workspace* ws) : CameraVerb("CameraCenter",ws) {}
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-class CameraZoomExtentsCommand : public CameraVerb {
-public:
-    CameraZoomExtentsCommand(Workspace* ws) : CameraVerb("CameraZoomExtents",ws) {}
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-class CameraModelViewCommand : public CameraVerb {
-public:
-    CameraModelViewCommand(Workspace* ws) : CameraVerb("CameraModelView",ws) {}
-    virtual void doIt(IDataState*);
-};
+inline const Name& Verb::getName() const { return name; }
+inline VerbContainer* Verb::getContainer() const { return container; }
+inline const G3D::Rect2D& RootInstance::getViewPort() { return viewPort; }
+void recordCameraHistory(const char*, const Instance*);
+}
+#include "NativeCameraCommands.h"
+namespace RBX {
+CameraVerb::CameraVerb(std::string name, Workspace* ws)
+    : Verb(ws, name), workspace(ws), selection(ws) {}
+void CameraVerb::doIt(IDataState* state) {
+    ServiceProvider::create<Soundscape::SoundService>(static_cast<Instance*>(workspace))->playSound(STEP_SOUND);
+    state->setDirty(true);
+}
+void CameraPanLeftCommand::doIt(IDataState* state) {
+    workspace->getCamera()->panUnits(-1);
+    CameraVerb::doIt(state);
+}
+void CameraPanRightCommand::doIt(IDataState* state) {
+    workspace->getCamera()->panUnits(1);
+    CameraVerb::doIt(state);
+}
+void CameraTiltUpCommand::doIt(IDataState* state) {
+    Camera* camera = workspace->getCamera();
+    if (camera->tiltUnits(-1)) CameraVerb::doIt(state);
+}
+void CameraTiltDownCommand::doIt(IDataState* state) {
+    Camera* camera = workspace->getCamera();
+    if (camera->tiltUnits(1)) CameraVerb::doIt(state);
+}
+void CameraZoomInCommand::doIt(IDataState* state) {
+    Camera* camera = workspace->getCamera();
+    if (camera->zoom(1.0f)) CameraVerb::doIt(state);
+}
+void CameraZoomOutCommand::doIt(IDataState* state) {
+    Camera* camera = workspace->getCamera();
+    if (camera->zoom(-1.0f)) CameraVerb::doIt(state);
+}
+void CameraModelViewCommand::doIt(IDataState* state) {
+    workspace->setImageServerView(workspace->getViewPort());
+    CameraVerb::doIt(state);
+}
+bool FixedCameraCommand::isChecked() const {
+    Camera* camera = workspace->getCamera();
+    return camera->getCameraType() == Camera::FIXED_CAMERA;
+}
+void FixedCameraCommand::doIt(IDataState* state) {
+    workspace->getCamera()->setCameraType(Camera::FIXED_CAMERA);
+    recordCameraHistory(getName().c_str(), workspace);
+    state->setDirty(true);
+}
+bool CameraPanLeftCommand::isEnabled() const { return true; }
+bool CameraPanRightCommand::isEnabled() const { return true; }
+bool CameraZoomExtentsCommand::isEnabled() const { return true; }
+bool CameraCenterCommand::isEnabled() const {
+    bool hasSelection = ServiceClient<FilteredSelection<PVInstance> >(workspace)->size() >= 1;
+    if (hasSelection) {
+        Camera* camera = workspace->getCamera();
+        if (camera && camera->getCameraType() == Camera::FIXED_CAMERA) return true;
+    }
+    return false;
+}
+bool CameraTiltUpCommand::isEnabled() const {
+    Camera* camera = workspace->getCamera();
+    return camera->canTilt(-1);
+}
+bool CameraTiltDownCommand::isEnabled() const {
+    Camera* camera = workspace->getCamera();
+    return camera->canTilt(1);
+}
+bool CameraZoomInCommand::isEnabled() const {
+    Camera* camera = workspace->getCamera();
+    return camera->canZoom(1);
+}
+bool CameraZoomOutCommand::isEnabled() const {
+    Camera* camera = workspace->getCamera();
+    return camera->canZoom(-1);
+}
 }
 // ClipboardObject is an empty nonvirtual native base: RTTI offset is exactly
 //40(Cut)/36(Copy), without increasing those allocation sizes; Paste base12.
 class ClipboardObject {};
 class CutVerb : public DeleteSelectionVerb,public ClipboardObject {
 public:
-    CutVerb(DataModel*);
+    __declspec(noinline) CutVerb(DataModel*);
     virtual void doIt(IDataState*);
 };
+namespace RBX { template<> boost::shared_ptr<Workspace> shared_from<Workspace>(Workspace*);
+EditSelectionVerb::EditSelectionVerb(VerbContainer* container,std::string name,DataModel* dm)
+    : Verb(container,name), workspace(shared_from(dm ? dm->create<Workspace>() : NULL)), selection(dm), dataModel(dm) {}
+DeleteBase::DeleteBase(VerbContainer* container,DataModel* dm,std::string name) : EditSelectionVerb(container,name,dm), rewardHopper(false) {}
+DeleteSelectionVerb::DeleteSelectionVerb(VerbContainer* container,DataModel* dm,std::string name) : DeleteBase(container,dm,name) {} }
+CutVerb::CutVerb(DataModel* dm) : DeleteSelectionVerb(dm,dm,"Cut") {}
+void CutVerb::doIt(IDataState* state) { getContainer()->getVerb("Copy")->doIt(state); DeleteBase::doIt(state); }
 class CopyVerb : public EditSelectionVerb,public ClipboardObject {
 public:
-    CopyVerb(DataModel*);
+    __declspec(noinline) CopyVerb(DataModel*);
     virtual void doIt(IDataState*);
 };
+CopyVerb::CopyVerb(DataModel* dm) : EditSelectionVerb("Copy", dm) {}
 class PasteVerb : public Verb,public ClipboardObject {
     DataModel* dataModel;
     const bool pasteInto;
 public:
-    PasteVerb(DataModel*,bool);
+    __declspec(noinline) PasteVerb(DataModel*,bool);
     virtual bool isEnabled() const;
     virtual void doIt(IDataState*);
 };
+static UINT getClipboardFormat() { static UINT format = ::RegisterClipboardFormatA("Roblox"); return format; }
+bool PasteVerb::isEnabled() const {
+    if (::IsClipboardFormatAvailable(getClipboardFormat()) != 1) return false;
+    if (!pasteInto) return true;
+    Selection* selected = ServiceProvider::create<Selection>(static_cast<const ServiceProvider*>(dataModel));
+    return selected->size() == 1;
+}
+PasteVerb::PasteVerb(DataModel* dm, bool into) : Verb(dm, into ? "PasteInto" : "Paste"), dataModel(dm), pasteInto(into) {}
+namespace RBX { class Decal; }
 class InsertDecal : public EditSelectionVerb {
+    Instance* getTarget() const;
 public:
-    InsertDecal(DataModel*,const char*);
+    __declspec(noinline) InsertDecal(DataModel*,const char*);
     virtual bool isEnabled() const;
     virtual void doIt(IDataState*);
 protected:
-    // Native slot14 creates a Texture/Decal via genuine shared_ptr factory;
-    // 0041e670 returns two words through hidden result, ret4, primary Instance0.
-    // Expose that actual value ABI through the genuine common Instance base.
-    virtual boost::shared_ptr<Instance> createInstance();
+    // 0041f143 calls Decal::setTexture on this factory result.
+    virtual boost::shared_ptr<Decal> createInstance();
 };
 class InsertTexture : public InsertDecal {
 public:
     InsertTexture(DataModel* dm) : InsertDecal(dm,"InsertTexture") {}
 protected:
-    virtual boost::shared_ptr<Instance> createInstance();
+    virtual boost::shared_ptr<Decal> createInstance();
 };
 class InsertObject : public RunStateVerb {
 public:
-    InsertObject(DataModel*);
+    __declspec(noinline) InsertObject(DataModel*);
     virtual void doIt(IDataState*);
 };
+InsertObject::InsertObject(DataModel* dm) : RunStateVerb("Insert Object", dm) {}
 class InsertService : public RunStateVerb {
 public:
-    InsertService(DataModel*);
+    __declspec(noinline) InsertService(DataModel*);
     virtual void doIt(IDataState*);
 };
+InsertService::InsertService(DataModel* dm) : RunStateVerb("Insert Service", dm) {}
 typedef char native_doc_DataModel_Lock_size[(sizeof(DataModel::Lock)==12)?1:-1];
 typedef char native_doc_CameraVerb_size[(sizeof(CameraVerb)==28)?1:-1];
 typedef char native_doc_ReportAbuseVerb_size[(sizeof(ReportAbuseVerb)==16)?1:-1];
@@ -219,4 +249,25 @@ void CRobloxDoc::initializeCommands() {
     bindExisting(0x80a8,&reinterpret_cast<boost::scoped_ptr<StandardVerbs>&>(standardVerbs)->toolInlet);
     bindExisting(0x807b,&reinterpret_cast<boost::scoped_ptr<StandardVerbs>&>(standardVerbs)->toolRightMotor);
     bindExisting(0x807c,&reinterpret_cast<boost::scoped_ptr<StandardVerbs>&>(standardVerbs)->toolHinge);
+}
+
+InsertDecal::InsertDecal(DataModel* dm, const char* name)
+    : EditSelectionVerb(std::string(name), dm) {}
+boost::shared_ptr<Decal> InsertDecal::createInstance() {
+    return Creatable<Instance>::create<Decal>();
+}
+boost::shared_ptr<Decal> InsertTexture::createInstance() {
+    return Creatable<Instance>::create<Texture>();
+}
+Instance* InsertDecal::getTarget() const {
+    Selection* selected = ServiceProvider::create<Selection>(dataModel);
+    if (selected->size() == 1) {
+        Instance* item = selected->front().get();
+        if (dynamic_cast<PartInstance*>(item)) return item;
+        if (dynamic_cast<SpecialShape*>(item)) return item;
+    }
+    return NULL;
+}
+bool InsertDecal::isEnabled() const {
+    return EditSelectionVerb::isEnabled() && getTarget() != NULL;
 }

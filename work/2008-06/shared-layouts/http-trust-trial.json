@@ -1,0 +1,190 @@
+{
+  "scope": "Inactive trust body matches; initialization and site predicate differ; static data identity and runtime unproven. Do not run.",
+  "source_sha256": "314f8a930660ccaa5dd0832632d06ba15f971ad51396367b32eaea626628e97b",
+  "observer_sha256": "70eccebf331a7e6c053611942280c3ebb6c8532449f30d373b0545c759c5afff",
+  "object_sha256": "75cde1e64639f744355df8fc8c840e420734c8d930366b1864025f7b32282b2f",
+  "donor_object_sha256": "8ef5b252374dba637556a44cb32ee3b9b774a6d7abac973fa77de83931f0fded",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\http-trust-probe\\trial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeHttpTrustTrial.cpp"
+  ],
+  "trust": {
+    "address": "0x56a2e0",
+    "symbol": "?trustCheck@Http@RBX@@SA_NPBD@Z",
+    "candidate_size": 638,
+    "original_size": 638,
+    "exact": true,
+    "bindings": {
+      "__ehhandler$?trustCheck@Http@RBX@@SA_NPBD@Z": [
+        "0x7cf9b6"
+      ],
+      "__chkstk": [
+        "0x6a1520"
+      ],
+      "_trustCheckOnce": [
+        "0x974abc"
+      ],
+      "?initializeTrustCheck@RBX@@YAXXZ": [
+        "0x569bf0"
+      ],
+      "?call_once@boost@@YAXP6AXXZAAJ@Z": [
+        "0x557330"
+      ],
+      "_skipTrustCheck": [
+        "0x974ab9"
+      ],
+      "??_C@_0M@NPJAHKCC@about?3blank?$AA@": [
+        "0x80f090"
+      ],
+      "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z": [
+        "0x55ee20"
+      ],
+      "?AtlThrowImpl@ATL@@YGXJ@Z": [
+        "0x401000"
+      ],
+      "__imp___mbscmp": [
+        "0x80283c"
+      ],
+      "?isRobloxSite@Http@RBX@@SA_NPBD@Z": [
+        "0x56a160"
+      ],
+      "?isScript@Http@RBX@@SA_NPBD@Z": [
+        "0x56a040"
+      ],
+      "??0CUrl@ATL@@QAE@XZ": [
+        "0x407380"
+      ],
+      "?CrackUrl@CUrl@ATL@@QAEHPBDK@Z": [
+        "0x408960"
+      ],
+      "??_C@_01CLKCMJKC@?5?$AA@": [
+        "0x812e58"
+      ],
+      "??_C@_03LBPOHIOC@?$CF20?$AA@": [
+        "0x82f5ec"
+      ],
+      "?Replace@?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEHPBD0@Z": [
+        "0x569de0"
+      ],
+      "__imp___mbsstr": [
+        "0x8028b4"
+      ],
+      "??_C@_06EBLEMEAA@res?3?1?1?$AA@": [
+        "0x82f5e4"
+      ],
+      "??_C@_0BB@MLBDKIHM@res?3?1?1mshtml?4dll?$AA@": [
+        "0x82f5d0"
+      ],
+      "??_C@_0BC@PLBGPKIJ@res?3?1?1ieframe?4dll?$AA@": [
+        "0x82f5bc"
+      ],
+      "??_C@_0BC@LNNMCINM@res?3?1?1shdoclc?4dll?$AA@": [
+        "0x82f5a8"
+      ],
+      "__imp__GetModuleFileNameA@12": [
+        "0x8021a4"
+      ],
+      "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ": [
+        "0x4073e0"
+      ],
+      "??_C@_08KGJNOJCD@res?3?1?1?$CFs?$AA@": [
+        "0x82f59c"
+      ],
+      "?Format@?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAAXPBDZZ": [
+        "0x55e250"
+      ],
+      "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ": [
+        "0x55d760"
+      ]
+    }
+  },
+  "initialize": {
+    "address": "0x569bf0",
+    "symbol": "?initializeTrustCheck@RBX@@YAXXZ",
+    "candidate_size": 216,
+    "original_size": 180,
+    "exact": false,
+    "bindings": {}
+  },
+  "donor_site": {
+    "address": "0x56a160",
+    "symbol": "?isRobloxSite@Http@RBX@@SA_NPBD@Z",
+    "candidate_size": 550,
+    "original_size": 381,
+    "exact": false,
+    "bindings": {}
+  },
+  "donor_script": {
+    "address": "0x56a040",
+    "symbol": "?isScript@Http@RBX@@SA_NPBD@Z",
+    "candidate_size": 288,
+    "original_size": 288,
+    "exact": true,
+    "bindings": {
+      "__chkstk": [
+        "0x6a1520"
+      ],
+      "?InitFields@CUrl@ATL@@AAEXXZ": [
+        "0x406650"
+      ],
+      "?s_schemes@?1??GetSchemes@CUrl@ATL@@AAEPBU_schemeinfo@23@XZ@4QBU423@B": [
+        "0x80b370"
+      ],
+      "__imp__strncpy_s": [
+        "0x8028b8"
+      ],
+      "?AtlCrtErrorCheck@ATL@@YAHH@Z": [
+        "0x569870"
+      ],
+      "?CrackUrl@CUrl@ATL@@QAEHPBDK@Z": [
+        "0x408960"
+      ],
+      "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z": [
+        "0x55ee20"
+      ],
+      "__imp___mbsstr": [
+        "0x8028b4"
+      ],
+      "??_C@_0M@DAHNFDKN@javascript?3?$AA@": [
+        "0x82f584"
+      ],
+      "??_C@_08IHJMCHPP@jscript?3?$AA@": [
+        "0x82f578"
+      ]
+    }
+  }
+}

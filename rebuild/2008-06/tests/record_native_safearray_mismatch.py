@@ -26,6 +26,12 @@ functions = match.coff_functions(raw)
 builder_name, body, refs = next(x for x in functions if x[0].startswith('?makeSafeArray@@'))
 target, targetrefs, _ = match.target('2008-06', '004165e0')
 assert len(body) == 189 and len(target) == 168 and not match.exact_match(target, targetrefs, body, refs)
+config_obj = out / 'NativeSafeArrayUncheckedTrial.obj'
+config_flags = [x for x in flags if not x.startswith('/Fo')] + ['/D_SECURE_SCL=0', '/Fo' + str(config_obj)]
+code, log = rebuild.run(rebuild.toolchain(21022), 'cl', config_flags, out)
+assert code == 0, log
+_, config_body, config_refs = next(x for x in match.coff_functions(config_obj.read_bytes()) if x[0].startswith('?makeSafeArray@@'))
+assert len(config_body) == 166 and not match.exact_match(target, targetrefs, config_body, config_refs)
 access_name, access_body, access_refs = next(x for x in functions if 'GetAt@?$CComSafeArray' in x[0])
 access_target, access_targetrefs, _ = match.target('2008-06', '00415b00')
 assert match.exact_match(access_target, access_targetrefs, access_body, access_refs)
@@ -60,5 +66,6 @@ assert {0x415d10, 0x415d30, 0x415d50, 0x4165e0} <= calls
 sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
 receipt = {'scope': 'Inactive builder mismatch; do not link or run. Original ATL GetAt matches; builder and Reflection::Value conversion remain unproven.', 'observer_sha256': sha(Path(__file__)), 'source_sha256': sha(source), 'object_sha256': sha(obj), 'builder': {'address': '004165e0', 'symbol': builder_name, 'candidate_size': len(body), 'original_size': len(target), 'exact': False}, 'accessor': {'address': '00415b00', 'symbol': access_name, 'size': len(access_body), 'exact': True, 'bindings': {k: hex(v) for k, v in bindings.items()}}, 'flags': flags}
 receipt['value_converter'] = {'address': '00416370', 'type_checks': type_checks, 'nested_array_target': '0x4165e0', 'note': 'Original nested type is vector<Reflection::Value>, not vector<Instance> from mined stub.'}
+receipt['unchecked_vector_trial'] = {'flags': config_flags, 'object_sha256': sha(config_obj), 'candidate_size': len(config_body), 'original_size': len(target), 'exact': False, 'note': 'Unchecked profile uses vector storage at +4/+8; original accesses +0xc/+0x10. This ABI change is not a valid integration.'}
 (root / 'work/2008-06/shared-layouts/safearray-builder-mismatch.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS ATL SAFEARRAY accessor; builder mismatch recorded')

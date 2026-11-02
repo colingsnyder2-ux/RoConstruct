@@ -1,0 +1,29 @@
+{
+  "methods": [
+    {
+      "class": "PrimaryControllerCommand",
+      "address": "0x581920",
+      "size": 62,
+      "vtable": "0x830ad4",
+      "calls": {
+        "?applyController@ControllerCommand@RBX@@IAEXH@Z": 5773456,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "SecondaryControllerCommand",
+      "address": "0x581960",
+      "size": 62,
+      "vtable": "0x830af8",
+      "calls": {
+        "?applyController@ControllerCommand@RBX@@IAEXH@Z": 5773456,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    }
+  ],
+  "source_sha256": "51879c242bbd8d7d21048c023f0aa28db1d21ef847db0b4e18aa96f8d9ae00a1",
+  "header_sha256": "2d0427a943a7ab28668289be2f1e08e1f23b44e14e5a018198238dcf6ee008aa",
+  "object_sha256": "55aa4f5a639cabb94e4e3573a92bf49cfe856c39ba08ad6c874c295023257256",
+  "observer_sha256": "f207148401557c72abc1777640f5c042593e17e213f904e63e2e2135de19a2c2",
+  "scope": "Inactive trial; helper signature/name provisional, implementation, class lifetime and runtime unproven."
+}

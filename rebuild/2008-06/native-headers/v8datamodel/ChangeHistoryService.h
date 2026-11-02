@@ -29,6 +29,7 @@ public:
     virtual void onHistoryChanged(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*);
     void setEnabled(bool);
     void start();
+    void commit(const char*);
     void reset();
     void unplay();
     void play();
