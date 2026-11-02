@@ -24,6 +24,8 @@ public:
     void hideEditorChrome();
     void exchangeLayout(CXTPPropExchange*, int);
     bool initializeToolbars(bool);
+    virtual BOOL PreCreateWindow(CREATESTRUCT&);                    // 0042e500
+    virtual void OnSetPreviewMode(BOOL, CPrintPreviewState*);       // 00430ae0
     afx_msg void OnActivate(UINT, CWnd*, BOOL);
     afx_msg void OnGetMinMaxInfo(MINMAXINFO*);
     afx_msg void OnActivateApp(BOOL, DWORD);

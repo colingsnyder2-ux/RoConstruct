@@ -47,6 +47,7 @@ public:
     unsigned unaccessed_bc;    // same evidence as unaccessed_8c
     explicit CRobloxWnd(int);
     void finishAttach();       // 0045ead0
+    void windowCommand();      // 0045bf90
     void setDataModel(void*); // 0045f7b0, argument is compared with +0x6c
     __declspec(noinline) void setActive(bool); // 0070bdf0, shared empty stub (ret 4); called from 004591e0/004593b0
     virtual ~CRobloxWnd(); // 0045fbe0, called out of line from 00459ba0
@@ -109,6 +110,11 @@ public:
     virtual void OnActivateFrame(UINT, CFrameWnd*); // 004591e0
     void OnUpdateToolboxCheck(CCmdUI*);            // 00459250, checked while the toolbox pane exists
     __declspec(noinline) boost::shared_ptr<const RBX::DataModel> getDataModel() const; // 00459270, called out of line
+    // Standard view overrides (vtable slots 95-99 of 0081933c): the shared empty bodies at 0070bdf0 and 00458e90.
+    virtual void OnDraw(CDC*);                                            // slot 95
+    virtual BOOL OnPreparePrinting(CPrintInfo*);                          // 00458e80
+    virtual void OnBeginPrinting(CDC*, CPrintInfo*);                      // slot 97
+    virtual void OnEndPrinting(CDC*, CPrintInfo*);                        // slot 99
     // Window messages and listener events. Names are descriptive; message-map entries are not recovered yet.
     virtual void OnActivateView(BOOL, CView*, CView*);                  // 004593b0
     afx_msg void OnSetFocus(CWnd*);                                       // 00459210
@@ -119,7 +125,16 @@ public:
     void toggleToolbox();                                                 // 004597f0
     void openToolboxPage();                                               // 00459810
     afx_msg void OnDestroy();                                             // 0045ac20
+    afx_msg int OnCreate(LPCREATESTRUCT);                                 // 00459170
+    afx_msg BOOL OnEraseBkgnd(CDC*);                                      // 006e8870, shared stub
+    afx_msg void OnContextMenu(CWnd*, CPoint);                            // 006ad2a0, shared empty stub
+    void OnWindowCommand();                                               // 00459240
+    void OnUpdateAlwaysEnable(CCmdUI*);                                   // 0042e550, shared with the other views
     // 0045ac20-style update: reflector visibility follows Players super-safe mode.
+    void showHelp();                                                      // 00459570
+    void insertFromFile(int);                                             // 00459420
+    void OnInsertFromFile();                                              // 00459560
+    void OnInsertFromFileAt();                                            // 00459550
     LRESULT updateReflector(WPARAM, LPARAM);                              // 0045a140
     virtual void onEvent(const RBX::Network::Players*, RBX::SuperSafeChanged);        // 00458ea0
     virtual void onEvent(const RBX::ServiceProvider*, RBX::ServiceAdded);                       // 0045a030

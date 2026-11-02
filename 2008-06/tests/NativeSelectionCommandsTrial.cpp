@@ -83,6 +83,15 @@ static __declspec(noinline) void checkRunPermissions(Instance* instance) {
         throw std::runtime_error(message);
     }
 }
+void __cdecl cannotSelect(boost::shared_ptr<Instance> instance) { PartInstance::setLocked(instance.get(), true); }
+void CanNotSelectCommand::doIt(IDataState* state) {
+    checkRunPermissions(dataModel);
+    FilteredSelection<PVInstance>* current = ServiceProvider::create<FilteredSelection<PVInstance> >(static_cast<const ServiceProvider*>(dataModel));
+    std::for_each(selection->selection->begin(), selection->selection->end(), cannotSelect);
+    current->rootSelection->clearSelection();
+    recordCameraHistory(getName().c_str(), workspace.get());
+    state->setDirty(true);
+}
 void AllCanSelectCommand::doIt(IDataState* state) {
     checkRunPermissions(dataModel);
     Workspace* workspace = dataModel->getWorkspace();

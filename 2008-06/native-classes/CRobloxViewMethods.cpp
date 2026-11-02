@@ -4,8 +4,15 @@
 #include "../native-headers/v8datamodel/DataModel.h"
 #include "Network/Players.h"
 #include <algorithm>
+#include <fstream>
+#include <afxdlgs.h>
 
 void fn_00405aa0(bool, CDocument*); // activation bookkeeping, unrecovered
+
+// The target calls std::string::compare(const char*) through the MSVCP import; taking the member's
+// address keeps the call out of line.
+typedef int (std::string::*CompareCString)(const char*) const;
+static const CompareCString compareName = &std::string::compare;
 
 // 00458ea0
 void CRobloxView::onEvent(const RBX::Network::Players*, RBX::SuperSafeChanged) {
@@ -14,24 +21,28 @@ void CRobloxView::onEvent(const RBX::Network::Players*, RBX::SuperSafeChanged) {
 
 // 0045a030
 void CRobloxView::onEvent(const RBX::ServiceProvider*, RBX::ServiceAdded event) {
-    RBX::Instance* service = event.service.get();
-    if (service->getClassName().toString().compare("NetworkClient") == 0 || service->getClassName().toString().compare("Players") == 0)
+    if ((event.service->getClassName().toString().*compareName)("NetworkClient") == 0 || (event.service->getClassName().toString().*compareName)("Players") == 0)
         ::PostMessage(m_hWnd, 0x46b, 0, 0);
-    if (service->getClassName().toString().compare("Players") == 0)
-        static_cast<RBX::Network::Players*>(service)->RBX::Notifier<RBX::Network::Players, RBX::SuperSafeChanged>::addListener(
-            static_cast<RBX::Listener<RBX::Network::Players, RBX::SuperSafeChanged>*>(this));
+    if ((event.service->getClassName().toString().*compareName)("Players") == 0)
+    {
+        RBX::Network::Players* players = static_cast<RBX::Network::Players*>(event.service.get());
+        RBX::Listener<RBX::Network::Players, RBX::SuperSafeChanged>* listener = this;
+        if (players) players->RBX::Notifier<RBX::Network::Players, RBX::SuperSafeChanged>::addListener(listener);
+    }
 }
 
 // 00459d60
 void CRobloxView::onEvent(const RBX::ServiceProvider*, RBX::ServiceRemoving event) {
-    RBX::Instance* service = event.service.get();
-    if (service->getClassName().toString().compare("NetworkClient") == 0)
+    if ((event.service->getClassName().toString().*compareName)("NetworkClient") == 0)
         ::PostMessage(m_hWnd, 0x46c, 0, 0);
-    if (service->getClassName().toString().compare("NetworkClient") == 0 || service->getClassName().toString().compare("Players") == 0)
+    if ((event.service->getClassName().toString().*compareName)("NetworkClient") == 0 || (event.service->getClassName().toString().*compareName)("Players") == 0)
         ::PostMessage(m_hWnd, 0x46b, 0, 0);
-    if (service->getClassName().toString().compare("Players") == 0)
-        static_cast<RBX::Network::Players*>(service)->RBX::Notifier<RBX::Network::Players, RBX::SuperSafeChanged>::removeListener(
-            static_cast<RBX::Listener<RBX::Network::Players, RBX::SuperSafeChanged>*>(this));
+    if ((event.service->getClassName().toString().*compareName)("Players") == 0)
+    {
+        RBX::Network::Players* players = static_cast<RBX::Network::Players*>(event.service.get());
+        RBX::Listener<RBX::Network::Players, RBX::SuperSafeChanged>* listener = this;
+        if (players) players->RBX::Notifier<RBX::Network::Players, RBX::SuperSafeChanged>::removeListener(listener);
+    }
 }
 
 // 00459210
@@ -170,3 +181,89 @@ void CRobloxView::OnDestroy() {
     detachDataModel();
     CView::OnDestroy();
 }
+
+// Helpers in the browser-view unit: 004060d0 builds the site address, 0040e160 appends a path,
+// 0040f050 opens the popup window for it.
+CString fn_004060d0();
+CString fn_0040e160(const CString&, const char*);
+void fn_0040f050(RECT, CWnd*, CString, int);
+
+// 00459570: help popup, centred in the client area with a 12 pixel margin.
+// 0040f050 takes a trailing int (0); 004060d0 takes none.
+void CRobloxView::showHelp() {
+    RECT client;
+    ::GetClientRect(window.m_hWnd, &client);
+    ::InflateRect(&client, -12, -12);
+    client.right = (client.right - client.left) / 2;
+    int height = client.bottom - client.top;
+    client.bottom = std::min(480, height) - client.top;
+    fn_0040f050(client, &window, fn_0040e160(fn_004060d0(), "/Game/Help.aspx"), 0);
+}
+
+// The target calls CString::operator PCXSTR through the MFC import, so nothing is expanded here.
+#pragma inline_depth(0)
+// 00459420: choose a model file and insert it into the workspace.
+void CRobloxView::insertFromFile(int) {
+    CString filter;
+    filter.LoadString(0xb8);
+    CFileDialog dialog(TRUE, "rbxm", NULL, 6, filter, this);
+    if (dialog.DoModal() == IDOK) {
+        std::ifstream file(dialog.GetPathName(), std::ios::in | std::ios::binary);
+        CRobloxDoc* doc = reinterpret_cast<CRobloxDoc*>(m_pDocument);
+        doc->workspace->insert(file, false);
+    }
+}
+
+#pragma inline_depth()
+
+// 00459560 and 00459550
+void CRobloxView::OnInsertFromFile() { insertFromFile(0); }
+void CRobloxView::OnInsertFromFileAt() { insertFromFile(2); }
+
+IMPLEMENT_DYNCREATE(CRobloxView, CView)
+
+// 0070bdf0, 00458e80, 00458e90
+void CRobloxView::OnDraw(CDC*) {}
+BOOL CRobloxView::OnPreparePrinting(CPrintInfo* info) { return DoPreparePrinting(info); }
+void CRobloxView::OnBeginPrinting(CDC*, CPrintInfo*) {}
+void CRobloxView::OnEndPrinting(CDC*, CPrintInfo*) {}
+
+// 00459170
+int CRobloxView::OnCreate(LPCREATESTRUCT create) {
+    if (CView::OnCreate(create) == -1) return -1;
+    RECT client;
+    ::GetClientRect(m_hWnd, &client);
+    return window.Create(NULL, "Roblox", 0x50000000, client, this, 1, NULL) ? 0 : -1;
+}
+
+// 006e8870 and 006ad2a0 are empty bodies shared with other views.
+BOOL CRobloxView::OnEraseBkgnd(CDC*) { return TRUE; }
+void CRobloxView::OnContextMenu(CWnd*, CPoint) {}
+
+// 00459240
+void CRobloxView::OnWindowCommand() { window.windowCommand(); }
+
+// 0042e550
+void CRobloxView::OnUpdateAlwaysEnable(CCmdUI* ui) { ui->Enable(TRUE); }
+
+BEGIN_MESSAGE_MAP(CRobloxView, CView)
+    ON_COMMAND(0xe107, CView::OnFilePrint)
+    ON_COMMAND(0xe108, CView::OnFilePrint)
+    ON_COMMAND(0xe109, CView::OnFilePrintPreview)
+    ON_WM_SIZE()
+    ON_WM_CREATE()
+    ON_WM_ERASEBKGND()
+    ON_WM_DESTROY()
+    ON_MESSAGE(0x46b, updateReflector)
+    ON_MESSAGE(0x46c, closeToolbox)
+    ON_COMMAND(0x8020, OnInsertFromFileAt)
+    ON_COMMAND(0x80d6, OnInsertFromFile)
+    ON_WM_CONTEXTMENU()
+    ON_WM_SETFOCUS()
+    ON_COMMAND(0x80fc, OnWindowCommand)
+    ON_UPDATE_COMMAND_UI(0x80fe, OnUpdateToolboxCheck)
+    ON_COMMAND(0x80fe, toggleToolbox)
+    ON_COMMAND(0x80fd, showHelp)
+    ON_COMMAND(0x800c, openToolboxPage)
+    ON_UPDATE_COMMAND_UI(0x800c, OnUpdateAlwaysEnable)
+END_MESSAGE_MAP()

@@ -75,11 +75,12 @@ void CRobloxView::OnInitialUpdate() {
     owner_170 = DOC()->workspace->getDataModel();                  // 0046a940, 004025b0
     RBX::DataModel::Lock lock(owner_170); // 00411b40
     if (slot_1d8) {
+        IWorkspace** site = &slot_1d8->site;
         IWorkspace* workspace = DOC()->workspace;
-        if (slot_1d8->site != workspace) {
+        if (*site != workspace) {
             if (workspace) workspace->AddRef();
-            if (slot_1d8->site) slot_1d8->site->Release();
-            slot_1d8->site = workspace;
+            if (*site) (*site)->Release();
+            *site = workspace;
         }
     }
     RBX::Notifier<RBX::ServiceProvider, RBX::ServiceAdded>::connect(owner_170.get(), this);
