@@ -83,7 +83,13 @@ def inactive_code(root):
                 walk(value, name, stamp)
     for path in (root / "work" / CLIENT / "shared-layouts").glob("*.json"):
         try:
-            walk(json.loads(path.read_text(encoding="utf-8")), path.name, path.stat().st_mtime)
+            data = json.loads(path.read_text(encoding="utf-8"))
+            walk(data, path.name, path.stat().st_mtime)
+            # single-function trial receipt with no exact verdict: native code exists, unproven
+            if isinstance(data, dict) and isinstance(data.get("address"), str) and (
+                    "inputs" in data or "source_sha256" in data):
+                found.setdefault(data["address"].lower().removeprefix("0x").zfill(8),
+                                 [path.stem, False, path.name, 0])
         except (ValueError, OSError):
             continue
     # native source with an address-named method but no receipt yet (e.g. CRobloxDoc::handle_453c30)
