@@ -10,7 +10,7 @@
 #include <map>
 
 namespace RBX {
-extern const char* sContentProvider;
+extern char sContentProvider[];
 enum RequestResult { Waiting, Succeeded, Failed };
 typedef boost::function<void(RequestResult, std::istream&)> RequestCallback;
 struct ContentRequest {
@@ -18,7 +18,7 @@ struct ContentRequest {
     std::vector<RequestCallback> callbacks;
     bool operator==(const ContentId& other) const { return id.toString() == other.toString(); }
 };
-class ContentProvider : public DescribedNonCreatable<ContentProvider, Instance, &sContentProvider> {
+class ContentProvider : public DescribedNonCreatable<ContentProvider, Instance, sContentProvider> {
 public:
     struct FailedUrl {
         std::string url;
@@ -60,8 +60,8 @@ template<> template<> function0<RBX::worker_thread::work_result, std::allocator<
 }
 namespace RBX {
 #ifndef NATIVE_CONTENT_PROVIDER_TYPES_ONLY
-template<> Reflection::ClassDescriptor& Reflection::Described<ContentProvider, &sContentProvider,
-    NonFactoryProduct<Instance, &sContentProvider> >::classDescriptor() {
+template<> Reflection::ClassDescriptor& Reflection::Described<ContentProvider, sContentProvider,
+    NonFactoryProduct<Instance, sContentProvider> >::classDescriptor() {
     static Reflection::ClassDescriptor descriptor(Instance::classDescriptor(), "ContentProvider");
     return descriptor;
 }

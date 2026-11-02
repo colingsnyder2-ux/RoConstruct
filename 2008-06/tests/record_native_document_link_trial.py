@@ -67,6 +67,11 @@ objects += [snap/'native-layouts'/name for name in ['NativeFrameIconsFresh.obj',
 objects += [snap/'native-layouts'/name for name in ['NativeVerbLifetime.obj','NativeVerbBaseLifetime.obj','NativeVerbQueries.obj']]
 objects.append(snap/'native-layouts'/'NativeExitCommand.obj')
 objects += [snap/'native-layouts'/'NativeCameraUnits.obj', snap/'native-layouts'/'NativeCameraConstants.obj']
+objects += [snap/'native-layouts'/'NativeClassNames.obj']
+objects += [snap/'insert-service'/'NativeInsertServiceLink.obj', snap/'insert-service'/'NativeInsertDialogLink.obj']
+objects += [snap/'insert-service'/'NativeClassImagesLink.obj']
+objects += [snap/'native-layouts'/(name+'.obj') for name in ('NativeResizeToolFactoryTrial','NativeResizeToolTrial','NativeResizeToolMethodsTrial','NativeResizeToolNameTrial','NativeResizeToolRenderTrial','NativeResizeToolFindTrial','NativeResizeToolMoveTrial','NativeResizeToolDragTrial','NativeClosestRayTrial','NativeHandleHitTestTrial','NativeHandleRadiusTrial','NativePartResizeLink')]
+objects += [snap/'native-layouts'/(name+'.obj') for name in ('NativeMovePartTrial','NativeApplyMoveTrial','NativeTransformMoveTrial','NativeSubdivideMoveTrial','NativeDraggerMoveTrial','NativeDraggerExtentsTrial','NativeCollectPrimitivesTrial','NativeMegaSafeMoveTrial','NativeMegaAliveTrial','NativeAxisBoundsTrial','NativeAxisMoveTrial','NativeAxisRenderTrial','NativeAxisMoveToolTrial','NativeAxisMoveToolMethodsTrial','NativeAxisMoveDownTrial','NativeHitMoveHandlesTrial','NativeTestMoveBoolTrial')]
 objects.append(snap/'native-layouts'/'NativeSoundServicePlay.obj')
 objects.append(snap/'native-layouts'/'NativeCameraHistory.obj')
 objects.append(snap/'native-layouts'/'NativeFilteredSelectionService.obj')
@@ -130,7 +135,7 @@ if provider_trial:
                  'NativeLDrawParseProfile.obj', 'NativeLDrawEntitiesTrial.obj', 'NativeLDrawWriteProfile.obj',
                  'NativeLDrawPartWriteTrial.obj', 'NativeLDrawPartParentProfile.obj', 'NativeLDrawPartColorTrial.obj',
                  'NativeLDrawPartShapeProfile.obj', 'NativeLDrawPartTransformProfile.obj',
-                 'NativeDocumentExecuteProfile.obj', 'NativeDocumentInitializeTrial.obj',
+                 'NativeDocumentExecuteProfile.obj', 'NativeDocumentInitializeTrial.obj', 'NativeClipboardCopyLink.obj', 'NativeClipboardPasteLink.obj',
                  'NativeWorkspaceGetWorkspaceTrial.obj', 'NativeVerbConstructor.obj',
                  'NativeStandardVerbsConstructorTrial.obj', 'NativeRunStateVerbConstructorTrial.obj',
                  'NativeEditSelectionVerbConstructorTrial.obj', 'NativeWorkspaceSharedFromTrial.obj',

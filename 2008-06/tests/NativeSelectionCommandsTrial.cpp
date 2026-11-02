@@ -8,6 +8,7 @@
 #include "Network/Players.h"
 #include "util/Sound.h"
 #include <stdexcept>
+#include "tool/MegaDragger.h"
 #include <boost/bind.hpp>
 namespace RBX {
 inline const Name& Verb::getName() const { return name; }
@@ -200,5 +201,19 @@ bool FollowCameraCommand::isChecked() const {
 bool WatchCameraCommand::isChecked() const {
     Camera* camera = workspace->getCamera();
     return camera->getCameraType() == Camera::WATCH_CAMERA;
+}
+void MoveDownSelectionVerb::doIt(IDataState* state) {
+ checkRunPermissions(dataModel);
+ FilteredSelection<PVInstance>* selected = ServiceProvider::create<FilteredSelection<PVInstance> >(static_cast<const ServiceProvider*>(dataModel));
+ if (selected->size() > 0) {
+  MegaDragger dragger(NULL, selected->items(), workspace.get());
+  dragger.startDragging();
+  G3D::Vector3 moved = dragger.safeMoveNoDrop(G3D::Vector3(0.0f, -1.2f, 0.0f));
+  dragger.finishDragging();
+  ServiceProvider::create<Soundscape::SoundService>(static_cast<const ServiceProvider*>(dataModel))->playSound(moved.y != 0 ? CLICK_SOUND : BOING_SOUND);
+  workspace->raiseDrawChanged();
+  recordCameraHistory(getName().c_str(), workspace.get());
+  state->setDirty(true);
+ }
 }
 }

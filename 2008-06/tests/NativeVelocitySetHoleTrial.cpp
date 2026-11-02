@@ -5,7 +5,7 @@ namespace RBX {
 class Feature : public Instance {};
 class Hole : public Feature {};
 class VelocityMotor;
-extern Reflection::RefPropDescriptor<VelocityMotor, Hole> prop_Hole;
+extern "C" Reflection::RefPropDescriptor<VelocityMotor, Hole> prop_Hole;
 class VelocityMotor : public Instance {
     char diagnosticPrefix[0x24];
     boost::shared_ptr<Hole> hole;

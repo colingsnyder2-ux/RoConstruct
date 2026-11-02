@@ -5,10 +5,10 @@
 #include <string>
 namespace RBX {
 class HistoryRecord;
-extern const char* sChangeHistoryService;
+extern char sChangeHistoryService[];
 // Original 004150d0 allocates 0x1a4; 0058ab90 and RTTI establish bases and fields.
 // Candidate remains inactive until its constructor and destructor are both verified.
-class ChangeHistoryService : public DescribedCreatable<ChangeHistoryService, Instance, &sChangeHistoryService>,
+class ChangeHistoryService : public DescribedCreatable<ChangeHistoryService, Instance, sChangeHistoryService>,
                              public Service {
 public:
     Instance* context; // 0058c620: recorded event source; ownership unverified.

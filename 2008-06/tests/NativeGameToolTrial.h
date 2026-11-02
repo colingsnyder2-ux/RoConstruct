@@ -1,8 +1,8 @@
 #pragma once
 #include "v8datamodel/MouseCommand.h"
 namespace RBX {
-extern const char* sGameTool;
-class GameTool : public Named<MouseCommand, &sGameTool> {
+extern char sGameTool[];
+class GameTool : public Named<MouseCommand, sGameTool> {
     std::string cursor;
     bool canDrag(PartInstance*, const G3D::Vector3&);
     virtual MouseCommand* onMouseDown(const UIEvent&);

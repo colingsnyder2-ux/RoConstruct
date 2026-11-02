@@ -3,8 +3,8 @@
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/MouseCommand.h"
 namespace RBX {
-extern const char* sGrabTool;
-class GrabTool : public Named<MouseCommand, &sGrabTool> {
+extern char sGrabTool[];
+class GrabTool : public Named<MouseCommand, sGrabTool> {
     std::string cursor;
     virtual MouseCommand* onMouseDown(const UIEvent&);
     virtual void onMouseIdle(const UIEvent&);

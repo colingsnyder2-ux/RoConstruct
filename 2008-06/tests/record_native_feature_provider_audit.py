@@ -9,7 +9,7 @@ while pos+60<=len(raw):
  pos+=60+size+(size&1)
 assert member is not None
 rows=[]
-for prefix,address in [('??$create@VVelocityMotor@',0x5804a0),('?setHole@VelocityMotor@',0x60c400)]:
+for prefix,address in [('??$create@VVelocityMotor@',0x5804a0),('?setHole@VelocityMotor@',0x60c400),('??__Eprop_Hole@',0x7f7ac0),('??__Fprop_Hole@',0x8001d0)]:
  name,body,refs=next(x for x in match.coff_functions(member) if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06','%08x'%address);rows.append({'symbol':name,'address':hex(address),'target_size':len(target),'candidate_size':len(body),'relocations_masked_exact':match.exact_match(target,targetrefs,body,refs)})
-assert rows[0]['relocations_masked_exact'] and not rows[1]['relocations_masked_exact']
-sha=lambda data:hashlib.sha256(data).hexdigest();receipt={'scope':'Audit of available filtered donor archive member, not proof of runtime selection, callee binding, or complete ABI. Factory bytes match; setHole differs.','archive_sha256':sha(raw),'member':'Feature.obj','member_sha256':sha(member),'methods':rows,'observer_sha256':sha(Path(__file__).read_bytes())};(root/'work/2008-06/shared-layouts/feature-provider-audit.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS archive audit: factory exact, setHole nonmatching')
+assert [r['relocations_masked_exact'] for r in rows]==[True,False,False,True]
+sha=lambda data:hashlib.sha256(data).hexdigest();receipt={'scope':'Audit of available filtered donor archive member, not proof of runtime selection, callee binding, or complete ABI. Factory and property destructor match; setHole and property initializer differ.','archive_sha256':sha(raw),'member':'Feature.obj','member_sha256':sha(member),'methods':rows,'observer_sha256':sha(Path(__file__).read_bytes())};(root/'work/2008-06/shared-layouts/feature-provider-audit.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS archive audit: factory/destructor exact, setter/initializer differ')

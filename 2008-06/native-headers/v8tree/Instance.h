@@ -26,14 +26,14 @@ struct DescendantAdded;
 struct DescendantRemoving;
 struct AncestorChanged;
 class PropertyChanged;
-extern const char* sInstance;
+extern char sInstance[];
 
 // Native hierarchy from RTTI and the existing 004b9bd0 recovered source.
 // Inactive until every virtual body, member lifetime and dependent ABI is proven.
 class Instance : public boost::enable_shared_from_this<Instance>,
                  public GuidItem<Instance>,
                  public AbstractFactoryProduct<Instance>,
-                 public Reflection::Described<Instance, &sInstance, Reflection::DescribedBase>,
+                 public Reflection::Described<Instance, sInstance, Reflection::DescribedBase>,
                  public Debugable,
                  public Notifier<Instance, ChildAdded>,
                  public Notifier<Instance, ChildRemoved>,

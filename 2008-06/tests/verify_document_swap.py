@@ -12,6 +12,12 @@ out = root / 'rebuild/2008-06/out/native-layouts/document-swap-link-trial'
 out.mkdir(parents=True, exist_ok=True)
 steps = [
     'record_native_face_lifetime.py',
+    'record_native_class_names_trial.py',
+    'record_native_gametool_lifetime.py',
+    'record_native_change_history_factory.py',
+    'record_native_instance_link_profile.py',
+    'record_native_content_provider_layout.py',
+    'record_native_instance_signal_archive.py',
     'record_native_decal_lifetime.py',
     'record_native_filtered_selection.py',
     'record_native_workspace_base_offsets.py',
@@ -21,6 +27,11 @@ steps = [
     'record_native_sound_service_play.py',
     'record_native_exit_command.py',
     'record_native_selection_commands.py',
+    'record_native_move_down_trial.py',
+    'record_native_insert_service_trial.py',
+    'record_native_insert_dialog_trial.py',
+    'record_native_class_images_trial.py',
+    'record_native_clipboard_trial.py',
     'record_native_workspace_select_all.py',
     'record_native_part_set_locked_compact.py',
     'record_native_surface_visitors.py',
@@ -130,6 +141,12 @@ with log_path.open('w', encoding='utf-8') as log:
                 print(f'PASS {name}', flush=True)
     if failures:
         sys.exit(1)
+    name, result = run_check('record_native_test_move_bool_trial.py')
+    log.write(f'\n=== {name} (exit {result.returncode}) ===\n{result.stdout}')
+    if result.returncode:
+        print(f'FAIL {name}: {result.stdout[-3000:]}', flush=True)
+        sys.exit(result.returncode)
+    print(f'PASS {name}', flush=True)
     result = subprocess.run([sys.executable, str(tests / 'record_native_document_link_trial.py'),
                              '--filtered-donor', '--provider-trial'], cwd=root,
                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT,

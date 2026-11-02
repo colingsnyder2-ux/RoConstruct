@@ -10,7 +10,7 @@
 #include <set>
 
 namespace RBX {
-extern const char* sPhysicsService;
+extern char sPhysicsService[];
 class World;
 class PartInstance;
 class Primitive;
@@ -21,7 +21,7 @@ struct AssemblyPhysicsOff { Primitive* primitive; };
 struct AssemblyPhysicsOn;
 struct AssemblyPhysicsOff;
 #endif
-class PhysicsService : public DescribedNonCreatable<PhysicsService, Instance, &sPhysicsService>,
+class PhysicsService : public DescribedNonCreatable<PhysicsService, Instance, sPhysicsService>,
     public Service, public Listener<World, AssemblyPhysicsOn>, public Listener<World, AssemblyPhysicsOff> {
     std::set<PartInstance*> parts;
     virtual void onEvent(const World*, AssemblyPhysicsOn);
@@ -89,7 +89,7 @@ template<> JointsService* ServiceProvider::find<JointsService>() const {
 }
 #endif
 #if defined(WORLD_FIND_PROFILE) || defined(WORLD_PHYSICS_FIND_PROFILE)
-template<class Derived, const char** ClassName>
+template<class Derived, const char* ClassName>
 const Name& NonFactoryProduct<Derived, ClassName>::className() {
     return Name::declare<ClassName>();
 }

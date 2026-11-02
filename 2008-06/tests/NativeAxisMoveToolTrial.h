@@ -6,9 +6,9 @@
 #include "util/NormalId.h"
 #include "G3D/Ray.h"
 namespace RBX {
-extern const char* sAxisMoveTool;
+extern char sAxisMoveTool[];
 inline const G3D::Vector3& axisMoveGrid() { static G3D::Vector3 v(1.0f, 0.4f, 1.0f); return v; }
-class AxisMoveTool : public Named<ArrowToolBase, &sAxisMoveTool> {
+class AxisMoveTool : public Named<ArrowToolBase, sAxisMoveTool> {
     std::auto_ptr<MegaDragger> megaDragger;
     std::string cursor;
     bool dragging;

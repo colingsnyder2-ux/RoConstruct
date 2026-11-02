@@ -33,7 +33,7 @@ namespace RBX
     }
 
     extern const char *sScriptContext;
-    class ScriptContext : public DescribedCreatable<ScriptContext, Instance, &sScriptContext>,
+    class ScriptContext : public DescribedCreatable<ScriptContext, Instance, sScriptContext>,
                           public Service,
                           public Listener<RunService, RunTransition>,
                           public Listener<RunService, Heartbeat>

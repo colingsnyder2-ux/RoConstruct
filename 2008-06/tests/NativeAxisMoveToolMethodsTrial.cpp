@@ -5,7 +5,7 @@ void recordCameraHistory(const char*, const Instance*);
 template<> MouseCommand* TToolVerb<AxisMoveTool, RunStateVerb>::newMouseCommand() {
     return new AxisMoveTool(dataModel->getWorkspace());
 }
-template<> const Name& Named<ArrowToolBase, &sAxisMoveTool>::getName() const {
+template<> const Name& Named<ArrowToolBase, sAxisMoveTool>::getName() const {
     return NativeToolName<AxisMoveTool>::get();
 }
 MouseCommand* AxisMoveTool::isSticky() const { return new AxisMoveTool(workspace); }

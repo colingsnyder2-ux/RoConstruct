@@ -3,9 +3,9 @@ import hashlib,json,struct,sys
 from pathlib import Path
 import pefile
 root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
-out=root/'rebuild/2008-06/out/native-layouts';src=root/'rebuild/2008-06/tests/NativeFillDropperMethodsTrial.cpp';header=root/'tools/rbxgs/Client/App/include/v8datamodel/ToolsPart.h';obj=out/'NativeFillDropperMethodsTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(out/'workspace-model-vector-include'));overlay=out/'fill-dropper-methods-include/v8datamodel';overlay.mkdir(parents=True,exist_ok=True);h=header.read_text()
+out=root/'rebuild/2008-06/out/native-layouts';src=root/'rebuild/2008-06/tests/NativeFillDropperMethodsTrial.cpp';header=root/'rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h';obj=out/'NativeFillDropperMethodsTrial.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags.insert(0,'/I'+str(out/'workspace-model-vector-include'));overlay=out/'fill-dropper-methods-include/v8datamodel';overlay.mkdir(parents=True,exist_ok=True);h=header.read_text()
 for typ in ('FillTool','DropperTool','ModelSetPrimaryPartTool'):
- old=typ+'(Workspace*);';assert h.count(old)==1;h=h.replace(old,typ+'(Workspace* workspace) : Named<PartTool, &s'+typ+'>(workspace) {}')
+ old=typ+'(Workspace*);';assert h.count(old)==1;h=h.replace(old,typ+'(Workspace* workspace) : Named<PartTool, s'+typ+'>(workspace) {}')
 (overlay/'ToolsPart.h').write_text(h);flags.insert(0,'/I'+str(overlay.parent))
 code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);assert code==0,log
 raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);pe=pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe'));image=pe.OPTIONAL_HEADER.ImageBase;rd=lambda a:struct.unpack('<I',pe.get_data(a-image,4))[0];rows=[]
