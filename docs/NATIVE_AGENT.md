@@ -1,5 +1,15 @@
 # Native integration with an agent (Codex, Claude)
 
+## Smaller recovery packets (Worker 46)
+
+Native agents start with `task.json`: complete target assembly, genuine reference
+source, assigned declarations and baseline diff. Duplicate include paths are
+consolidated. Mined source analogs and stand-ins remain in `task-full.json`,
+available through `full_evidence_file` when a specific hypothesis needs them.
+These are untrusted reference data; stand-ins do not establish native layouts.
+The initial packet estimate uses the compact packet. Measured multi-turn usage
+still settles after the agent exits; token limits remain soft for signed-in CLI.
+
 ## Accepted preflight reuse and clear status (Worker 45)
 
 After the server accepts an overlay, a matching local candidate can become the

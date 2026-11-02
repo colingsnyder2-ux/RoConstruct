@@ -16,6 +16,25 @@ BEFORE = 'int A::f(){return 1;}\nint A::g(){return 2;}\n'
 AFTER = BEFORE.replace('return 1;', 'return 3;')
 
 
+def test_initial_native_evidence_keeps_complete_proof_and_defers_mined_analogs(tmp_path):
+    evidence = dict(addr='0060a490', method='Feature::getRenderCoord', source_excerpt=BEFORE,
+        baseline={'target_exact': False, 'diff': 'register mismatch'}, target_asm=['instruction']*80,
+        target_calls=[{'addr':'00609da0'}], target_function_pointers=[{'addr':'00553f90'}],
+        assigned_header_files=['Feature.h'], reference_source='genuine reference body',
+        read_only_header_roots=['accepted', 'sdk'], genuine_include_paths=['sdk', 'mfc'],
+        mined_source='untrusted codegen analog', standins=['invented layout'])
+    original = json.loads(json.dumps(evidence))
+    packet = recovery.initial_evidence(evidence, tmp_path/'task-full.json')
+    assert evidence == original
+    assert packet['read_only_header_roots'] == ['accepted', 'sdk', 'mfc']
+    assert packet['full_evidence_file'] == str(tmp_path/'task-full.json')
+    assert packet['deferred_sections'] == ['mined_source', 'standins', 'genuine_include_paths']
+    assert all(key not in packet for key in packet['deferred_sections'])
+    for key in ('addr','method','source_excerpt','baseline','target_asm','target_calls',
+                'target_function_pointers','assigned_header_files','reference_source'):
+        assert packet[key] == evidence[key]
+
+
 @pytest.mark.parametrize('exact,error,status',[(0,'Compiler blocked','blocked'),(0,'','no local gain'),(1,'','awaiting verification')])
 def test_console_native_results_only_await_verification_for_real_local_proofs(monkeypatch,capsys,exact,error,status):
     monkeypatch.setenv('ROC_INTEGRATOR_PRIVATE','1')
@@ -247,6 +266,8 @@ def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbor
     barrier=threading.Barrier(cap);seen=[]
     def codex(folder,model,seconds,stopping,log):
         task=json.loads((folder/'task.json').read_text());n=int(task['addr'],16)
+        full=json.loads(Path(task['full_evidence_file']).read_text())
+        assert full['addr']==task['addr'] and full['source_excerpt']==task['source_excerpt']
         seen.append(n);barrier.wait(timeout=10)
         time.sleep(.1)
         assert not stopping(), "Denied budget reservations must not cancel an admitted agent"
