@@ -1156,3 +1156,12 @@ pointers are excluded. Trace these helpers before trusting mined symbol labels:
 unrelated functions can share identical relocation-masked bodies. Missing helper
 definitions remain explicit blockers; body-only workers do not gain header/layout
 ownership or permission to change other methods.
+
+Worker 39 places linked preflight builds in short physical cache directories under
+LOCALAPPDATA (the system temporary directory on other platforms). MSVC 2008 can
+silently skip a 261-character overlay header and use the raw header instead; this
+produced inconsistent layouts between baseline and candidate. Overlong overlays
+now fail before compilation. Deterministic linked-gate failures retain candidates
+without repeating unchanged full builds; changed baselines/tooling permit rechecks,
+while network and file-access failures remain retryable. Lost addresses and receipt
+paths appear in diagnostics. Ownership, ABI and runtime gates remain mandatory.
