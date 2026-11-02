@@ -1,4 +1,4 @@
-// from server: 3% by atomic.potato
+// from server: 4% by tajop
 struct Slot {
     char pad[0xc];
     void sub_842960(int);

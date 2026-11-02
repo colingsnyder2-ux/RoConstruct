@@ -7,13 +7,13 @@
 namespace RBX {
 extern const char* sResizeTool;
 class ResizeTool : public Named<ArrowToolBase, &sResizeTool> {
-    boost::weak_ptr<PVInstance> target;
+    boost::weak_ptr<PVInstance> targetPV;
     bool overHandle;
-    NormalId face;
-    G3D::Vector3 handlePosition;
-    G3D::Vector2int16 mouseDownView;
-    int accumulatedResize;
-    unsigned int resetState;
+    NormalId localNormalId;
+    G3D::Vector3 hitPointGrid;
+    G3D::Vector2int16 down;
+    int moveAxis;
+    int movePerp;
     virtual MouseCommand* onMouseDown(const UIEvent&);
     virtual void onMouseMove(const UIEvent&);
     virtual MouseCommand* onMouseUp(const UIEvent&);
@@ -21,7 +21,8 @@ class ResizeTool : public Named<ArrowToolBase, &sResizeTool> {
     virtual void render2d(Adorn*);
     virtual void render3dAdorn(Adorn*);
     virtual const std::string getCursorName() const;
-    virtual void writeSize(XmlState*);
+    void findTargetPV(const UIEvent&);
+    void capturedDrag(int);
 public:
     ResizeTool(Workspace*);
     virtual MouseCommand* isSticky() const;

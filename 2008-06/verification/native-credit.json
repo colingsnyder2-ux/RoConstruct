@@ -1015,6 +1015,13 @@
     "user": "colin"
   },
   {
+    "addr": "005991c0",
+    "client": "2008-06",
+    "job": "1c6aca884b564a71be43a6ce2996adf2",
+    "model": "codex:gpt-6.1-terra",
+    "user": "colin"
+  },
+  {
     "addr": "005993e0",
     "client": "2008-06",
     "job": "6c4c6e4f955944b8b0397c68491501e2",

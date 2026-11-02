@@ -25,6 +25,9 @@ steps = [
     'record_native_tool_checked_multi_trial.py',
     'record_native_tool_lifetime_evidence.py',
     'record_native_resize_tool_trial.py',
+    'record_native_axis_move_tool_trial.py',
+    'record_native_resize_tool_methods.py',
+    'record_native_part_resize_trial.py',
     'record_native_document_initialize_trial.py',
     'record_native_camera_center_action.py',
     'record_native_camera_zoom_extents_profile.py',
@@ -64,5 +67,9 @@ with log_path.open('w', encoding='utf-8') as log:
     print(f"Diagnostic link: exit={receipt['link_exit']}, errors={len(receipt['errors'])}; "
           f'{len(steps)} checks passed; {time.monotonic() - started:.1f}s.', flush=True)
     print('Recent dependencies rebuilt; remaining trial objects were not rebuilt. Do not run diagnostic.', flush=True)
-    if receipt['link_exit']:
+    probe = subprocess.run([sys.executable, str(tests / 'record_native_resize_document_probe.py')], cwd=root,
+                           stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors='replace')
+    log.write(f'\n=== resize diagnostic (exit {probe.returncode}) ===\n{probe.stdout}')
+    print(probe.stdout.strip(), flush=True)
+    if probe.returncode or receipt['link_exit']:
         sys.exit(1)

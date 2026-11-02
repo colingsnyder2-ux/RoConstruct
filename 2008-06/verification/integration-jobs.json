@@ -8772,5 +8772,51 @@
     "unit": "RBX::RevoluteLink",
     "updated": 1793616994.5472035,
     "user": "colin"
+  },
+  {
+    "created": 1793621194.3417056,
+    "id": "1c6aca884b564a71be43a6ce2996adf2",
+    "model": "codex:gpt-6.1-terra",
+    "patches": {
+      "App/util/PV.cpp": [
+        [
+          "#include \"util/PV.h\"",
+          "#pragma float_control(precise, off, push)\n#include \"util/PV.h\"\nnamespace RBX {\nvoid recoveredFrameMultiply(const G3D::CoordinateFrame&, const G3D::CoordinateFrame&, G3D::CoordinateFrame&);\nvoid recoveredPVLocalFrame(const PV&, const G3D::CoordinateFrame&, PV&);\n}"
+        ],
+        [
+          "Velocity PV::velocityAtPoint",
+          "__declspec(noinline) Velocity PV::velocityAtPoint"
+        ],
+        [
+          "\tPV result;\n\t\tcomputePVAtLocalCoord(*this, localCoord, result);\n\t\treturn result;\n\t}\n\n\tPV PV::pvAtLocalOffset(const G3D::Vector3& localOffset) const\n\t{\n\t\tG3D::CoordinateFrame cf(G3D::Matrix3::identity(), localOffset);\n\t\treturn this->pvAtLocalCoord(cf);\n\t}\n}",
+          "\tPV result;\n\t\tcomputePVAtLocalCoord(*this, localCoord, result);\n\t\treturn result;\n\t}\n\n\tPV PV::pvAtLocalOffset(const G3D::Vector3& localOffset) const\n\t{\n\t\tG3D::CoordinateFrame cf(G3D::Matrix3::identity(), localOffset);\n\t\treturn this->pvAtLocalCoord(cf);\n\t}\n}\n\nvoid RBX::recoveredPVLocalFrame(const PV& source, const G3D::CoordinateFrame& local, PV& result)\n{\n    recoveredFrameMultiply(source.position, local, result.position);\n    result.velocity = source.velocityAtPoint(result.position.translation);\n}\n\n#pragma float_control(pop)\n"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "e54989b015b2560990b3736a5e0488111cedb18934390195f4889cc07cdcb2ba",
+      "credits": 1,
+      "distinct_after": 10271,
+      "distinct_before": 10270,
+      "gains": [
+        "005991c0"
+      ],
+      "input_hash": "797eee37bcf43d9804bcbeb7d45609b536dccb0271cc22bdf20b3bd4589f9143",
+      "losses": [],
+      "new_distinct": [
+        "005991c0"
+      ],
+      "overlay_hash": "ed6570548401cdd295ff09ee0f49a43e734356ef017f2bd499cbb67c1a8c7f24",
+      "owned_after": 3780,
+      "owned_before": 3779,
+      "rebased": false,
+      "submitted_revision": "e54989b015b2560990b3736a5e0488111cedb18934390195f4889cc07cdcb2ba"
+    },
+    "state": "accepted",
+    "unit": "RBX::AIChaseController",
+    "updated": 1793621812.642969,
+    "user": "colin"
   }
 ]

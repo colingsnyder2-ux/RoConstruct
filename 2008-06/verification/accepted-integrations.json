@@ -3049,6 +3049,26 @@
         ]
       },
       "timestamp": 1793616994.2385333
+    },
+    {
+      "job": "1c6aca884b564a71be43a6ce2996adf2",
+      "patches": {
+        "App/util/PV.cpp": [
+          [
+            "#include \"util/PV.h\"",
+            "#pragma float_control(precise, off, push)\n#include \"util/PV.h\"\nnamespace RBX {\nvoid recoveredFrameMultiply(const G3D::CoordinateFrame&, const G3D::CoordinateFrame&, G3D::CoordinateFrame&);\nvoid recoveredPVLocalFrame(const PV&, const G3D::CoordinateFrame&, PV&);\n}"
+          ],
+          [
+            "Velocity PV::velocityAtPoint",
+            "__declspec(noinline) Velocity PV::velocityAtPoint"
+          ],
+          [
+            "\tPV result;\n\t\tcomputePVAtLocalCoord(*this, localCoord, result);\n\t\treturn result;\n\t}\n\n\tPV PV::pvAtLocalOffset(const G3D::Vector3& localOffset) const\n\t{\n\t\tG3D::CoordinateFrame cf(G3D::Matrix3::identity(), localOffset);\n\t\treturn this->pvAtLocalCoord(cf);\n\t}\n}",
+            "\tPV result;\n\t\tcomputePVAtLocalCoord(*this, localCoord, result);\n\t\treturn result;\n\t}\n\n\tPV PV::pvAtLocalOffset(const G3D::Vector3& localOffset) const\n\t{\n\t\tG3D::CoordinateFrame cf(G3D::Matrix3::identity(), localOffset);\n\t\treturn this->pvAtLocalCoord(cf);\n\t}\n}\n\nvoid RBX::recoveredPVLocalFrame(const PV& source, const G3D::CoordinateFrame& local, PV& result)\n{\n    recoveredFrameMultiply(source.position, local, result.position);\n    result.velocity = source.velocityAtPoint(result.position.translation);\n}\n\n#pragma float_control(pop)\n"
+          ]
+        ]
+      },
+      "timestamp": 1793621812.014254
     }
   ],
   "initial_patches": {}

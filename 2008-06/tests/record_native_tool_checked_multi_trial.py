@@ -26,7 +26,7 @@ sections, symbols, definitions, _ = match._coff_data_index(raw)
 pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
 image = pe.OPTIONAL_HEADER.ImageBase
 rows = []
-for tool, address in [('ResizeTool', 0x5c6420), ('ArrowTool', 0x5c6240), ('NullTool', 0x5c75e0), ('GameTool', 0x5c7680), ('FillTool', 0x5c7380), ('DropperTool', 0x5c74d0), ('ModelSetPrimaryPartTool', 0x5c7120)]:
+for tool, address in [('AxisMoveTool', 0x5c64e0), ('ResizeTool', 0x5c6420), ('ArrowTool', 0x5c6240), ('NullTool', 0x5c75e0), ('GameTool', 0x5c7680), ('FillTool', 0x5c7380), ('DropperTool', 0x5c74d0), ('ModelSetPrimaryPartTool', 0x5c7120)]:
     name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith('?isChecked@?$TToolVerb@V' + tool + '@'))
     target, targetrefs, _ = match.target('2008-06', '%08x' % address)
     assert match.exact_match(target, targetrefs, body, refs), tool
@@ -46,6 +46,6 @@ for tool, address in [('ResizeTool', 0x5c6420), ('ArrowTool', 0x5c6240), ('NullT
     assert any(tool in k and v == descriptor for k, v in bindings.items()), (tool, bindings)
     assert any('RTtypeid' in k and v == 0x6a1de2 for k, v in bindings.items()), bindings
     rows.append({'tool': tool, 'address': hex(address), 'symbol': name, 'size': len(body), 'exact': True, 'type_descriptor': hex(descriptor)})
-receipt = {'scope': 'Inactive native predicates match with provisional ModelInstance/Workspace overlay. Full layout, type identity and runtime ABI remain unproven.', 'observer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'resize_header_sha256': hashlib.sha256((source.parent / 'NativeResizeToolTrial.h').read_bytes()).hexdigest(), 'object_sha256': hashlib.sha256(raw).hexdigest(), 'model_overlay_sha256': hashlib.sha256((overlay / 'v8datamodel/ModelInstance.h').read_bytes()).hexdigest(), 'workspace_overlay_sha256': hashlib.sha256((overlay / 'v8datamodel/Workspace.h').read_bytes()).hexdigest(), 'methods': rows, 'flags': flags}
+receipt = {'scope': 'Inactive native predicates match with provisional ModelInstance/Workspace overlay. Full layout, type identity and runtime ABI remain unproven.', 'observer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'resize_header_sha256': hashlib.sha256((source.parent / 'NativeResizeToolTrial.h').read_bytes()).hexdigest(), 'axis_header_sha256': hashlib.sha256((source.parent / 'NativeAxisMoveToolTrial.h').read_bytes()).hexdigest(), 'object_sha256': hashlib.sha256(raw).hexdigest(), 'model_overlay_sha256': hashlib.sha256((overlay / 'v8datamodel/ModelInstance.h').read_bytes()).hexdigest(), 'workspace_overlay_sha256': hashlib.sha256((overlay / 'v8datamodel/Workspace.h').read_bytes()).hexdigest(), 'methods': rows, 'flags': flags}
 (root / 'work/2008-06/shared-layouts/tool-checked-multi-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS', len(rows), 'native tool predicates')
