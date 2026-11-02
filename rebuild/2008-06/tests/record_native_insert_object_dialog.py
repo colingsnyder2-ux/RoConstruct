@@ -29,8 +29,13 @@ flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith(
 source = root / 'rebuild/2008-06/native-classes/CInsertObjectDialog.cpp'
 fixture = root / 'rebuild/2008-06/tests/NativeInsertObjectDialogLayout.cpp'
 obj = out / 'NativeInsertObjectDialog.obj'
-for path, target in [(source, obj), (fixture, out / 'NativeInsertObjectDialogLayout.obj')]:
-    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Fo' + str(target), str(path)], out)
+images_source = root / 'rebuild/2008-06/native-classes/CClassImages.cpp'
+images_obj = out / 'NativeClassImages.obj'
+# CClassImages calls the statically linked XTP 11.2.2 bitmap loader: XTP headers need min/max.
+xtp_flags = ['/UNOMINMAX', '/I' + str(root / 'tools/libs/xtp-11.2.2/Source'), '/D_XTP_STATICLINK']
+for path, target, extra in [(source, obj, []), (fixture, out / 'NativeInsertObjectDialogLayout.obj', []),
+                            (images_source, images_obj, xtp_flags)]:
+    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + extra + ['/Fo' + str(target), str(path)], out)
     assert code == 0, log
 
 pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
@@ -79,12 +84,23 @@ INTERNAL = {
     '?compare@Name@RBX@@SAHAAV12@0@Z': 0x41faa0,
     '??1CInsertObjectDialog@@UAE@XZ': 0x41ff40,
     '?classCInsertObjectDialog@CInsertObjectDialog@@2UCRuntimeClass@@B': 0x80f2e0,
+    '?LoadBitmapFromResource@CXTPImageManagerIcon@@SAPAUHBITMAP__@@PBDPAH@Z': 0x6bc520,
+    '??_7CClassImages@@6B@': 0x80e864,
+    '??_7CBitmap@@6B@': 0x80e8a0,
+    '??1CGdiObject@@UAE@XZ': 0x4111a0,
+    '?_ImageList_Add@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@1@Z': 0x412fc0,
+    '?_ImageList_AddMasked@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@K@Z': 0x4130d0,
+    '??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z': 0x409d50,
+    '__TI2?AVruntime_error@std@@': 0x8d1bc8,
     '?messageMap@?1??GetThisMessageMap@CInsertObjectDialog@@KGPBUAFX_MSGMAP@@XZ@4U3@B': 0x80f44c,
 }
 LOCAL_EH = re.compile(r'^(__ehhandler\$|__unwindfunclet\$|__catch\$|__tryblocktable\$|__unwindtable\$|__ehfuncinfo\$|\$LN\d)')
 
-raw = obj.read_bytes()
-sections, symbols, definitions, _ = match._coff_data_index(raw)
+def load(path):
+    global raw, sections, symbols, definitions
+    raw = path.read_bytes()
+    sections, symbols, definitions, _ = match._coff_data_index(raw)
+load(obj)
 def relocations(section):
     table = sections[section]
     return [struct.unpack_from('<IIH', raw, table[5] + 10 * i) for i in range(table[7])]
@@ -146,6 +162,23 @@ for name, address in METHODS:
     rows.append({'address': '%08x' % address, 'symbol': name, 'size': len(body), 'exact': True,
                  'verified_targets': verified, 'local_eh': local})
 
+IMAGES = [
+    ('??0CClassImages@@QAE@XZ', 0x413230),
+    ('??1CClassImages@@UAE@XZ', 0x412f30),
+    ('??_GCClassImages@@UAEPAXI@Z', 0x413400),
+    ('??_GCBitmap@@UAEPAXI@Z', 0x413430),
+]
+load(images_obj)
+image_bodies = {n: (b, r) for n, b, r in match.coff_functions(raw)}
+for name, address in IMAGES:
+    body, refs = image_bodies[name]
+    target, target_refs, _ = match.target('2008-06', '%08x' % address)
+    assert match.exact_match(target, target_refs, body, refs), (name, hex(address), len(body), len(target))
+    verified, local = bind(name, address)
+    rows.append({'address': '%08x' % address, 'symbol': name, 'size': len(body), 'exact': True,
+                 'verified_targets': verified, 'local_eh': local, 'profile': 'XTP headers (/UNOMINMAX /D_XTP_STATICLINK)'})
+load(obj)
+
 # Primary vtable: same slot count, and every slot this object defines binds to the original slot value
 # (imports by name, own methods by the exact rows above). Inherited MFC slots resolve through imports.
 own = {name: address for name, address in METHODS}
@@ -180,7 +213,7 @@ assert imported(base_getter)[1] == '?GetThisMessageMap@CDialog@@KGPBUAFX_MSGMAP@
 assert struct.unpack('<6I', data(entries, 24)) == (0x4e, 0xfffd, 1000, 1000, 0x3d, 0x41f9f0)
 assert struct.unpack('<6I', data(entries + 24, 24)) == (0, 0, 0, 0, 0, 0)
 
-paths = [Path(__file__), source, fixture, root / 'rebuild/2008-06/native-headers/CInsertObjectDialog.h',
+paths = [Path(__file__), source, fixture, images_source, root / 'rebuild/2008-06/native-headers/CInsertObjectDialog.h',
          root / 'rebuild/2008-06/native-headers/CClassImages.h']
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {
@@ -189,7 +222,7 @@ receipt = {
     'flags': flags,
     'original_sha256': sha(root / 'work/2008-06/original-p4-reference/Roblox.exe'),
     'sources': {str(p.relative_to(root)).replace('\\', '/'): sha(p) for p in paths},
-    'object_sha256': sha(obj),
+    'object_sha256': sha(obj), 'images_object_sha256': sha(images_obj),
     'layout': {'size': '0xfc', 'parent': '0x74', 'instances': '0x7c', 'className': '0x94', 'selected': '0x98',
                'images': '0xa0 (CClassImages, 8 bytes)', 'list': '0xa8 (CListCtrl)',
                'evidence': 'CRuntimeClass 0080f2e0 size; constructor 0041fe00 and destructor 0041ff40 member order; compile-time sizeof/offsetof test'},
@@ -198,7 +231,7 @@ receipt = {
     'runtime_class': {'address': '0080f2e0', 'size': '0xfc', 'base_getter': '0041f9b0'},
     'message_map': {'address': '0080f44c', 'entries': [{'message': 'WM_NOTIFY', 'code': 'NM_DBLCLK', 'id': 1000, 'handler': '0041f9f0'}]},
     'open': ['addClasses 004202b0: needs Reflection::Metadata::Class (+0x104 base, +0x130..0x132 flags) and the 0041fcf0 settings singleton (+0x130/+0x131) layouts',
-             'CClassImages constructor 00413230 / destructor 00412f30 bodies',
+             'Bodies of call targets owned by other units (CComCtlWrapper COMDATs 00412fc0/004130d0, CGdiObject destructor 004111a0, XTP LoadBitmapFromResource 006bc520): bound by call site and name only',
              'Name::compare 0041faa0 body (shared util/Name.h)'],
     'scope': 'Inactive. Exact bodies with verified call/data targets; addClasses and dependent class bodies remain open. No active build, swap or credit.',
 }

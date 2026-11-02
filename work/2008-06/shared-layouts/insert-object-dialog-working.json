@@ -39,13 +39,15 @@
   ],
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
-    "rebuild/2008-06/tests/record_native_insert_object_dialog.py": "ab2758ac56dd22b2db9292053310ce1eb94fbe0202cab4e67084423174836862",
+    "rebuild/2008-06/tests/record_native_insert_object_dialog.py": "f434c49f7efb3a85ba95324c3ae648b32b90a0ef2a8bf9bde783bd09a398dac9",
     "rebuild/2008-06/native-classes/CInsertObjectDialog.cpp": "cbf925481cf5a7cfab599e6069f9deb4271178ec80affa6f84ca0756a4e95c97",
     "rebuild/2008-06/tests/NativeInsertObjectDialogLayout.cpp": "922691178e346a91ed6a7fd3b321e7777a491ae7bc3651e03818a0cd4d1ea0f3",
+    "rebuild/2008-06/native-classes/CClassImages.cpp": "d699077e651939b779874f945f86f8e024b2e88618af537a60de488fde87ce86",
     "rebuild/2008-06/native-headers/CInsertObjectDialog.h": "deb184be6b2e95dd0cd4c0bbf57839d63a32bee65d8785ab7306b6ebe20ae79a",
-    "rebuild/2008-06/native-headers/CClassImages.h": "1bf66ca00a6d084a1ff5645d53a7f53d151cae0ad4139667a88803a9e7b0d89b"
+    "rebuild/2008-06/native-headers/CClassImages.h": "6e745f384762545234b801f6669af380dbd4c5dbe849c8faa8bb17d393419ed0"
   },
-  "object_sha256": "fc2d7df3b13ca48c92c2bab059eac85c4d498ed634e4b04b5884d13e9dfa60f3",
+  "object_sha256": "996dde43dc0944d8e5444f360748d8a120f7a134e7bef5652799f502ff13e9d6",
+  "images_object_sha256": "a44b6cdf7703dbc670979c559ab8e1a34b3fe5f6038ddca6947ba782bc2b8c67",
   "layout": {
     "size": "0xfc",
     "parent": "0x74",
@@ -197,6 +199,72 @@
         "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
       },
       "local_eh": []
+    },
+    {
+      "address": "00413230",
+      "symbol": "??0CClassImages@@QAE@XZ",
+      "size": 455,
+      "exact": true,
+      "verified_targets": {
+        "??0CImageList@@QAE@XZ": "mfc90.dll!??0CImageList@@QAE@XZ",
+        "??_7CClassImages@@6B@": "0x80e864",
+        "?LoadBitmapFromResource@CXTPImageManagerIcon@@SAPAUHBITMAP__@@PBDPAH@Z": "0x6bc520",
+        "??_7CBitmap@@6B@": "0x80e8a0",
+        "?Attach@CGdiObject@@QAEHPAX@Z": "mfc90.dll!?Attach@CGdiObject@@QAEHPAX@Z",
+        "?Create@CImageList@@QAEHHHIHH@Z": "mfc90.dll!?Create@CImageList@@QAEHHHIHH@Z",
+        "??_C@_0BO@OFPGPFBL@Unable?5to?5create?5CClassImages?$AA@": "0x80e8d4",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8",
+        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException",
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+        "?_ImageList_Add@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@1@Z": "0x412fc0",
+        "??_C@_0BO@GHKGJGAN@Unable?5to?5add?5IDB_CLASSIMAGES?$AA@": "0x80e8b4",
+        "?_ImageList_AddMasked@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@K@Z": "0x4130d0",
+        "??1CGdiObject@@UAE@XZ": "0x4111a0"
+      },
+      "local_eh": [
+        "__ehhandler$??0CClassImages@@QAE@XZ"
+      ],
+      "profile": "XTP headers (/UNOMINMAX /D_XTP_STATICLINK)"
+    },
+    {
+      "address": "00412f30",
+      "symbol": "??1CClassImages@@UAE@XZ",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_7CClassImages@@6B@": "0x80e864",
+        "??1CImageList@@UAE@XZ": "mfc90.dll!??1CImageList@@UAE@XZ"
+      },
+      "local_eh": [],
+      "profile": "XTP headers (/UNOMINMAX /D_XTP_STATICLINK)"
+    },
+    {
+      "address": "00413400",
+      "symbol": "??_GCClassImages@@UAEPAXI@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_7CClassImages@@6B@": "0x80e864",
+        "??1CImageList@@UAE@XZ": "mfc90.dll!??1CImageList@@UAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [],
+      "profile": "XTP headers (/UNOMINMAX /D_XTP_STATICLINK)"
+    },
+    {
+      "address": "00413430",
+      "symbol": "??_GCBitmap@@UAEPAXI@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_7CBitmap@@6B@": "0x80e8a0",
+        "??1CGdiObject@@UAE@XZ": "0x4111a0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [],
+      "profile": "XTP headers (/UNOMINMAX /D_XTP_STATICLINK)"
     }
   ],
   "vtable": {
@@ -252,7 +320,7 @@
   },
   "open": [
     "addClasses 004202b0: needs Reflection::Metadata::Class (+0x104 base, +0x130..0x132 flags) and the 0041fcf0 settings singleton (+0x130/+0x131) layouts",
-    "CClassImages constructor 00413230 / destructor 00412f30 bodies",
+    "Bodies of call targets owned by other units (CComCtlWrapper COMDATs 00412fc0/004130d0, CGdiObject destructor 004111a0, XTP LoadBitmapFromResource 006bc520): bound by call site and name only",
     "Name::compare 0041faa0 body (shared util/Name.h)"
   ],
   "scope": "Inactive. Exact bodies with verified call/data targets; addClasses and dependent class bodies remain open. No active build, swap or credit."
