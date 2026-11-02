@@ -74,8 +74,8 @@ void CRobloxView::OnInitialUpdate() {
     window.setDataModel(DOC()->workspace);
     owner_170 = DOC()->workspace->getDataModel();                  // 0046a940, 004025b0
     RBX::DataModel::Lock lock(owner_170); // 00411b40
-    if (slot_1d8) { // object at +0x1d8 keeps a counted workspace pointer at its +0xfc
-        IWorkspace** site = reinterpret_cast<IWorkspace**>(static_cast<char*>(slot_1d8) + 0xfc);
+    if (slot_1d8) {
+        IWorkspace** site = &slot_1d8->site;
         IWorkspace* workspace = DOC()->workspace;
         if (*site != workspace) {
             if (workspace) workspace->AddRef();

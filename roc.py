@@ -1100,6 +1100,30 @@ def cmd_classify(a):
                       "symbol": symbol, "diagnosis": diagnosis}, sort_keys=True))
 
 
+def cmd_native_asm(a):
+    """Target disassembly with named calls; with --obj, diff a candidate symbol against it."""
+    from roc import match, native_asm as na
+    lo, hi = (int(x, 16) if x else None for x in (a.lo, a.hi))
+    only = set(a.only.split(",")) if a.only else None
+    for addr in a.addrs:
+        code, relocs, row = match.target(a.client, addr)
+        base = int(addr, 16)
+        t = na.lines(code, base, relocs, a.client)
+        print("== %s %d bytes unit=%s%s" % (addr, len(code), row.get("unit"),
+              "  " + na.names(a.client)[base] if base in na.names(a.client) else ""))
+        if not a.obj:
+            for r in na.window(t, lo, hi, only, a.head, a.tail):
+                print("%08x  %s" % r[:2])
+            continue
+        sym, body, crel = na.candidate(a.obj, a.sym, a.client, addr)
+        c = na.lines(body, base, crel)
+        i = na.first_divergence(t, c)
+        print("candidate %s %d bytes: %s" % (sym, len(body), "IDENTICAL (relocs masked)" if i is None
+              else "first divergence at insn %d (%08x)" % (i, t[i][0] if i < len(t) else base + len(code))))
+        if i is not None:
+            print(na.diff(t, c, a.context))
+
+
 def cmd_auto(a):
     from roc import matchers, setup
     names = sorted(clients.load()) if a.name == "all" else [a.name]
@@ -2920,6 +2944,15 @@ def main(argv=None):
                             "help": "do not append to work/agent-memory/attempts.jsonl"}))
     cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
         (["client"], {}), (["addr"], {}), (["source"], {}))
+    cmd("native-asm", cmd_native_asm, "target disassembly with named calls/imports; --obj diffs a candidate .obj symbol",
+        (["client"], {}), (["addrs"], {"nargs": "+"}),
+        (["--obj"], {"help": "candidate COFF .obj to diff against each ADDR"}),
+        (["--sym"], {"help": "decorated-name prefix in --obj (default: rebuilt name of ADDR)"}),
+        (["--from"], {"dest": "lo", "help": "first address to list (hex)"}),
+        (["--to"], {"dest": "hi", "help": "stop before this address (hex)"}),
+        (["--only"], {"help": "comma list of mnemonics, e.g. call,push"}),
+        (["--head"], {"type": int}), (["--tail"], {"type": int}),
+        (["--context"], {"type": int, "default": 3, "help": "diff context lines"}))
     cmd("auto", cmd_auto, "auto-match trivial functions (getters, setters, empty...) ('all' for every client)",
         (["name"], {}), (["--max-size"], {"type": int, "default": 48}))
     cmd("xcopy", cmd_xcopy, "copy stored matches to the other clients that share the function",
