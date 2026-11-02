@@ -1,0 +1,72 @@
+{
+  "source_sha256": "c1066bdb668e3bf42128bb619f89aed3a1e822bf9558711464f2d03015fe703b",
+  "observer_sha256": "faec8f00b80b289d26142030688e26fb31c11d745aa1050e1d86286bed44c11e",
+  "archive_sha256": "46dc539323633e78ffd2a4f15708002ba20ce83007a3728ceec39748f3660e68",
+  "object_sha256": "03617020bd678a0a2da826f590ee39c22d51f64a9927e10a7bfa3006576a99f6",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/DNATIVE_INSTANCE_EXTERNAL_CREATE_CHILD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeInstanceLifetimeLink.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceLifetime.cpp"
+  ],
+  "lifetime": [
+    {
+      "address": "0055b7e0",
+      "symbol": "??0Instance@RBX@@QAE@XZ",
+      "size": 375
+    },
+    {
+      "address": "0055a540",
+      "symbol": "??1Instance@RBX@@UAE@XZ",
+      "size": 572
+    }
+  ],
+  "createChild_providers": [
+    {
+      "provider": "native",
+      "object_sha256": "93603079e52bf10030b5af736ca31d24b7bd456675816ba6efa039a9e72dd0bf",
+      "size": 35,
+      "target": "0x420190"
+    },
+    {
+      "provider": "archive",
+      "object_sha256": "f41959efdd601b24faf9a841d656f5e52b99e1963a400678ff0e697c72c19dd1",
+      "size": 35,
+      "target": "0x420190"
+    }
+  ],
+  "scope": "Diagnostic only. Existing archive createChild matches original body and direct target; full Instance ABI and runtime binding remain unverified."
+}

@@ -13,7 +13,9 @@ Instance::~Instance()
 }
 }
 
+#ifndef NATIVE_INSTANCE_EXTERNAL_CREATE_CHILD
 boost::shared_ptr<RBX::Instance> RBX::Instance::createChild(const Name& className)
 {
     return AbstractFactoryProduct::create(className);
 }
+#endif

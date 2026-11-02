@@ -1,0 +1,88 @@
+{
+  "source_sha256": "022629cca6a426cafccbb229a341dce1255a2e1c66cb3179843a9c36b37013f6",
+  "observer_sha256": "bbf719d2e6e5d6a3d663f8dd4e6bf3e0569d9814f104ef83785a794ef05c39a7",
+  "object_sha256": "f02b8104e9564ada995b50c3d065db4d9dd404e3e611827586e9fd42580873b9",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeInstanceBaseCallbacks.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceBaseCallbacks.cpp"
+  ],
+  "callbacks": [
+    {
+      "slot": 2,
+      "address": "0068e880",
+      "symbol": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
+      "size": 5
+    },
+    {
+      "slot": 3,
+      "address": "0068e880",
+      "symbol": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z",
+      "size": 5
+    },
+    {
+      "slot": 7,
+      "address": "0070bdf0",
+      "symbol": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z",
+      "size": 3
+    },
+    {
+      "slot": 8,
+      "address": "0070bdf0",
+      "symbol": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z",
+      "size": 3
+    },
+    {
+      "slot": 9,
+      "address": "0070bdf0",
+      "symbol": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z",
+      "size": 3
+    },
+    {
+      "slot": 10,
+      "address": "0047d410",
+      "symbol": "?onLastChildRemoved@Instance@RBX@@UAEXXZ",
+      "size": 1
+    },
+    {
+      "slot": 15,
+      "address": "00557490",
+      "symbol": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z",
+      "size": 20
+    }
+  ],
+  "scope": "Inactive source. Original base callbacks are explicitly empty/false where specified; class ABI, remaining virtuals and runtime remain unproven."
+}
