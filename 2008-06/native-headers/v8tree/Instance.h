@@ -43,6 +43,7 @@ class Instance : public boost::enable_shared_from_this<Instance>,
                  public Notifier<Instance, PropertyChanged>,
                  public boost::noncopyable {
 public:
+    static const Reflection::RefPropDescriptor<Instance, Instance> propParent;
     Instance();
     virtual ~Instance();
     virtual void setName(const std::string&);
@@ -59,6 +60,7 @@ public:
     virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);
     virtual boost::shared_ptr<Instance> createChild(const Name&);
     const std::string& getName() const { return name; }
+    Instance* getParent() const { return parent; }
     size_t numChildren() const
     {
         if (children) return children->size();
