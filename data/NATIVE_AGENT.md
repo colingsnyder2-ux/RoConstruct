@@ -1131,3 +1131,14 @@ Worker 35 directly rechecks assigned tiny symbols that bulk discovery intentiona
 skips, preserving byte/data checks and whole-binary ownership gates. Scheduling
 prefers linkable accepted-source targets; agents start with focused excerpts and
 read only relevant ranges to reduce prompt and tool-output tokens.
+
+Worker 36 adds a host-selected MFC conversion profile for four verified GUI source
+units. It copies genuine RTM SDK headers privately and marks only the known imported
+CString conversion accessor noinline; shared headers and installed tools stay intact.
+Each fresh profile baseline must preserve existing owner matches. Imported ordinals
+are checked against the genuine x86 RTM export definition, with its hash in the proof;
+unknown imports still block host acceptance. Older Workers cannot claim these tasks.
+Leases also fence duplicate original addresses across different source contexts.
+Unrelated owner edits no longer trigger repeated failed canonical preflights.
+Local profile matches still need mapping, linking and independent integration before
+credit; player swaps still require P5/P6.
