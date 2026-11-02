@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02 10:56 UTC",
+ "updated": "2026-11-02 11:43 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -300,10 +300,10 @@
      "user": "colin",
      "matched": 3108,
      "mining_points": 685188,
-     "points": 685540,
-     "native_integrated": 352,
+     "points": 685542,
+     "native_integrated": 354,
      "submissions": 23217,
-     "last": 1793613274.895252
+     "last": 1793616994.2385333
     },
     {
      "user": "king_originala",
@@ -760,15 +760,15 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39655,
-   "matched": 17374,
-   "partial": 10755,
-   "source_matched": 9796,
-   "mined_matched": 7578,
+   "matched": 17387,
+   "partial": 10752,
+   "source_matched": 9797,
+   "mined_matched": 7590,
    "bytes": 6736062,
-   "matched_bytes": 1636861,
-   "source_bytes": 1429871,
-   "mined_bytes": 206990,
-   "partial_bytes": 1867374,
+   "matched_bytes": 1638323,
+   "source_bytes": 1429950,
+   "mined_bytes": 208373,
+   "partial_bytes": 1867802,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -818,12 +818,12 @@
     },
     {
      "user": "tajop",
-     "matched": 230,
-     "mining_points": 10235,
-     "points": 10235,
+     "matched": 243,
+     "mining_points": 11564,
+     "points": 11564,
      "native_integrated": 0,
-     "submissions": 316,
-     "last": 1793616557.641402
+     "submissions": 339,
+     "last": 1793619364.926589
     },
     {
      "user": "Yeetserama",
@@ -890,10 +890,10 @@
    "user": "colin",
    "matched": 29774,
    "mining_points": 6613926,
-   "points": 6614278,
-   "native_integrated": 352,
+   "points": 6614280,
+   "native_integrated": 354,
    "submissions": 201566,
-   "last": 1793613274.895252
+   "last": 1793616994.2385333
   },
   {
    "user": "atomic.potato",
@@ -978,12 +978,12 @@
   },
   {
    "user": "tajop",
-   "matched": 316,
-   "mining_points": 11185,
-   "points": 11185,
+   "matched": 329,
+   "mining_points": 12514,
+   "points": 12514,
    "native_integrated": 0,
-   "submissions": 405,
-   "last": 1793616557.641402
+   "submissions": 428,
+   "last": 1793619364.926589
   },
   {
    "user": "coldek",
