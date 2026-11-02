@@ -29,6 +29,7 @@ network_checks = (
     'record_native_remote_system_integrated.py',
 )
 sound_checks = (
+    'record_native_name_whole.py',
     'record_native_sound_classnames_integrated.py',
     'record_native_sound_name_providers_integrated.py',
     'record_native_sound_constructors_integrated.py',
@@ -80,9 +81,20 @@ with ThreadPoolExecutor(max_workers=3) as pool:
             print(f'FAIL {name} ({elapsed:.1f}s)\n{result.stdout[-2500:]}', flush=True)
         else:
             print(f'PASS {name} ({elapsed:.1f}s)', flush=True)
-print(f'{len(checks)-len(failures)}/{len(checks)} checks passed in {time.monotonic()-start:.1f}s. '
-      'Source checks only; no executable, ABI, P5/P6 or server claim.', flush=True)
-summary = {'scope': 'Independent source checks only; no executable, ABI, P5/P6 or server claim.',
+total = len(checks)
+if group in ('all', 'sound') and 'record_native_name_whole.py' not in failures:
+    name, result, elapsed, digest = run('record_native_name_cross_abi.py')
+    total += 1
+    results.append({'check': name, 'exit': result.returncode, 'seconds': round(elapsed, 3),
+                    'script_sha256': digest, 'error_tail': result.stdout[-2500:] if result.returncode else ''})
+    if result.returncode:
+        failures.append(name)
+        print(f'FAIL {name} ({elapsed:.1f}s)\n{result.stdout[-2500:]}', flush=True)
+    else:
+        print(f'PASS {name} ({elapsed:.1f}s)', flush=True)
+print(f'{total-len(failures)}/{total} checks passed in {time.monotonic()-start:.1f}s. '
+      'No client ABI, P5/P6 or server claim.', flush=True)
+summary = {'scope': 'Source checks and scoped standalone tests only; no client ABI, P5/P6 or server claim.',
            'group': group, 'finished_utc': datetime.now(timezone.utc).isoformat(),
            'seconds': round(time.monotonic()-start, 3), 'results': sorted(results, key=lambda x: x['check'])}
 receipt = root / 'work/2008-06/shared-layouts/native-checkpoint-summary.json'

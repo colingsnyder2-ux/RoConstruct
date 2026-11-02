@@ -1,7 +1,0 @@
-from pathlib import Path
-import json,sys
-root=Path.cwd();sys.path.insert(0,str(root));from roc import match,rebuild
-out=root/'rebuild/2008-06/out/native-layouts/instance-listener-override-trial';src=out/'InstanceListenerTrial.cpp';src.write_text('''#include "v8tree/Instance.h"\nnamespace RBX { struct ChildAdded { boost::shared_ptr<Instance> child; ChildAdded(Instance* value):child(shared_from(value)) {} ChildAdded(const ChildAdded&); }; void Instance::onAddListener(Listener<Instance,ChildAdded>* listener) const { if(children) { boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > c=children.read(); std::vector<boost::shared_ptr<Instance> >::const_iterator end=c->end(); std::vector<boost::shared_ptr<Instance> >::const_iterator it=c->begin(); for(;it!=end;++it) Notifier<Instance,ChildAdded>::raise(ChildAdded(it->get()),listener); } } }\n''');r=json.loads((root/'work/2008-06/shared-layouts/runservice-fresh-current.json').read_text());flags=['/I'+str(out)]+[x for x in r['flags'] if not x.startswith('/Fo') and not x.endswith('RunService.cpp')];obj=out/'listener.obj';c,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);assert c==0,log
-for n,b,refs in match.coff_functions(obj.read_bytes()):
- if 'onAddListener@Instance' in n:
-  t,tr,_=match.target('2008-06','00558d90');print(n,len(b),'original',len(t),'exact',match.exact_match(t,tr,b,refs))

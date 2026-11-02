@@ -38,6 +38,13 @@ void RunService::drainTasks() {
     }
 }
 
+void RunService::onAncestorChanged(const AncestorChanged&) {
+    if (!getParent()) {
+        stopRequested = true;
+        stateChangedCondition.notify_all();
+    }
+}
+
 // 00554da0: enforce native state transitions and notify listeners.
 void RunService::setRunState(RunState next) {
     if (next == RS_RUNNING) {

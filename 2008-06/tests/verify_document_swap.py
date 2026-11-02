@@ -12,6 +12,8 @@ out = root / 'rebuild/2008-06/out/native-layouts/document-swap-link-trial'
 out.mkdir(parents=True, exist_ok=True)
 steps = [
     'record_native_instance_child_listener.py',
+    'record_native_instance_callbacks.py',
+    'record_native_instance_serialization.py',
     'record_native_face_lifetime.py',
     'record_native_class_names_trial.py',
     'record_native_group_action_trial.py',
@@ -137,7 +139,10 @@ log_path = out / 'verification-batch.log'
 started = time.monotonic()
 def run_check(name):
     check_started = time.monotonic()
-    result = subprocess.run([sys.executable, str(tests / name)], cwd=root,
+    args = [sys.executable, str(tests / name)]
+    if name == 'record_native_instance_serialization.py':
+        args.append('shared-layouts/instance-serialization-current.json')
+    result = subprocess.run(args, cwd=root,
                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                             text=True, errors='replace')
     result.elapsed_seconds = time.monotonic() - check_started

@@ -70,7 +70,7 @@ END_MESSAGE_MAP()
 void reportDocumentException(const std::exception&);
 CString applicationBaseUrl();
 extern CRobloxDoc* currentDocument;
-void setCurrentDocument(int, CRobloxDoc*);
+void setCurrentDocument(bool, CRobloxDoc*);
 // Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
 namespace RBX { namespace Network {
 class Client { public: static bool clientIsPresent(const Instance*, bool); };

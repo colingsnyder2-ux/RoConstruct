@@ -27,6 +27,15 @@ for file,name in [(run,names[0]),(service,names[1])]:
  selected.append(p)
 donor=next(data for name,data in libs.archive_members(archive) if str(name)=='RunStateOwner.obj');assert rebuild.coff_externals(donor).get(names[0]);patched=out/'RunStateOwner.obj';patched.write_bytes(rebuild.strip_symbols(donor,drop={names[0]}));clean=out/'filtered.lib';c,log=rebuild.run(rebuild.toolchain(21022),'lib',['/nologo','/REMOVE:RunStateOwner.obj','/OUT:'+str(clean),str(archive)],out);assert c==0,log
 c,log=rebuild.run(rebuild.toolchain(21022),'lib',['/nologo','/OUT:'+str(clean),str(clean),str(patched)],out);assert c==0,log
+if '--name-null' in sys.argv or '--name-whole' in sys.argv:
+ assert '--exact-find' in sys.argv and '--full-service' in sys.argv
+ name_receipt=json.loads((proof/('name-whole-integrated.json' if '--name-whole' in sys.argv else 'name-null-integrated.json')).read_text());name_obj=out.parent/('name-whole-integrated/NameNative.obj' if '--name-whole' in sys.argv else 'name-null-integrated/NameNull.obj');assert sha(name_obj)==name_receipt['object_sha256'];name_symbol=name_receipt['methods'][0]['symbol']
+ donor_name=next(data for name,data in libs.archive_members(clean) if str(name)=='Name.obj');assert rebuild.coff_externals(donor_name).get(name_symbol)
+ patched_name=out/'Name.obj';patched_name.write_bytes(rebuild.strip_symbols(donor_name,drop={name_symbol}));next_archive=out/'filtered-name.lib'
+ c,log=rebuild.run(rebuild.toolchain(21022),'lib',['/nologo','/REMOVE:Name.obj','/OUT:'+str(next_archive),str(clean)],out);assert c==0,log
+ if '--name-whole' not in sys.argv:
+  c,log=rebuild.run(rebuild.toolchain(21022),'lib',['/nologo','/OUT:'+str(next_archive),str(next_archive),str(patched_name)],out);assert c==0,log
+ clean=next_archive;selected.append(name_obj)
 args=[]
 for line in (root/'rebuild/2008-06/out/native-layouts/worker-writer-near/full-probe/candidate.rsp').read_text().splitlines():
  arg=line.strip().strip(chr(34))
@@ -50,6 +59,20 @@ if c==0:
    if kind==20 and symbols[si][0]==find_name:
     operand=create_address+offset;disp=pe.get_data(operand-pe.OPTIONAL_HEADER.ImageBase,4);edges.append((operand+4+struct.unpack('<i',disp)[0])&0xffffffff)
   assert edges==[find_address],edges;receipt['create_to_find_pe_target']=hex(find_address)
+ if '--name-null' in sys.argv or '--name-whole' in sys.argv:
+  for method in name_receipt['methods']:
+   line=next(line for line in maptext.splitlines() if method['symbol'] in line and name_obj.name in line and '__unwind' not in line);m=re.search(r'\s([0-9a-fA-F]{8})\s+f',line);assert m,line;address=int(m[1],16);symbol,body,relocs=next(x for x in match.coff_functions(name_obj.read_bytes()) if x[0]==method['symbol']);target,target_relocs,_=match.target('2008-06',method['address']);final=pe.get_data(address-pe.OPTIONAL_HEADER.ImageBase,len(body));assert match.exact_match(target,target_relocs,body,relocs) and match.exact_match(body,relocs,final,relocs);verified.append({'symbol':symbol,'original_address':method['address'],'pe_address':hex(address),'size':len(body)})
+  null_address=int(next(x['pe_address'] for x in verified if x['symbol']==name_symbol),16);doc=root/'rebuild/2008-06/out/native-layouts/NativeDocumentHistoryProfile.obj';assert sha(doc)==next(v for k,v in frozen['snapshot_objects'].items() if Path(k).name==doc.name);raw=doc.read_bytes();sections,symbols,definitions,_=match._coff_data_index(raw);doc_edges=[]
+  for symbol,body,_ in match.coff_functions(raw):
+   if '@CRobloxDoc@@' not in symbol:continue
+   lines=[line for line in maptext.splitlines() if symbol in line and 'NativeDocumentHistoryProfile.obj' in line and '__unwind' not in line]
+   if not lines:continue
+   m=re.search(r'\s([0-9a-fA-F]{8})\s+f',lines[0]);assert m,lines[0];function_address=int(m[1],16);start,idx=definitions[symbol];table=sections[idx]
+   for i in range(table[7]):
+    offset,si,kind=struct.unpack_from('<IIH',raw,table[5]+10*i);offset-=start
+    if kind==20 and 0<=offset<len(body)-3 and symbols[si][0]==name_symbol:
+     operand=function_address+offset;disp=pe.get_data(operand-pe.OPTIONAL_HEADER.ImageBase,4);destination=(operand+4+struct.unpack('<i',disp)[0])&0xffffffff;assert destination==null_address,(symbol,hex(destination));doc_edges.append(symbol)
+  assert len(doc_edges)==2,doc_edges;receipt['document_null_name_callers']=doc_edges
  receipt.update(exe_sha256=sha(out/'candidate.exe'),map_sha256=sha(out/'candidate.map'),selected_masked_matches=verified)
-(proof/('doc-runstate-only-probe.json' if '--state-only' in sys.argv else ('doc-runservice-exact-find-probe.json' if '--exact-find' in sys.argv else ('doc-runservice-full-provider-probe.json' if '--full-service' in sys.argv else 'doc-runservice-provider-probe.json')))).write_text(json.dumps(receipt,indent=2)+'\n');print('link',c,'errors',len(errors));print('\n'.join(errors[:12]));print(selection)
+(proof/('doc-name-whole-provider-probe.json' if '--name-whole' in sys.argv else ('doc-name-null-provider-probe.json' if '--name-null' in sys.argv else ('doc-runstate-only-probe.json' if '--state-only' in sys.argv else ('doc-runservice-exact-find-probe.json' if '--exact-find' in sys.argv else ('doc-runservice-full-provider-probe.json' if '--full-service' in sys.argv else 'doc-runservice-provider-probe.json')))))).write_text(json.dumps(receipt,indent=2)+'\n');print('link',c,'errors',len(errors));print('\n'.join(errors[:12]));print(selection)
 

@@ -1,5 +1,16 @@
-// from server: 95% by colin
+// from server: 100% by Yeetserama
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+//
+// CAboutRobloxDialog::construct: base ctor, eight vtable stores, then a
+// virtual call on the global dialog pointer. The call is a normal virtual
+// dispatch, so the object lands in ecx and the slot in edx; declaring vfunc
+// as the second slot reproduces the target's [eax + 4].
+
 struct CAboutRobloxDialog {
+    virtual void slot0();
+    virtual void vfunc();
     CAboutRobloxDialog* construct(int);
 };
 
@@ -18,9 +29,6 @@ CAboutRobloxDialog* CAboutRobloxDialog::construct(int)
     *(int*)((char*)this + 0x20) = 0x784ac4;
     *(int*)((char*)this + 0x28) = 0x784ab8;
     *(int*)((char*)this + 0x2c) = 0x784aac;
-    int* p = (int*)g_8bae44;
-    int* vt = (int*)*p;
-    void (__stdcall *fn)() = (void (__stdcall *)())vt[1];
-    fn();
+    g_8bae44->vfunc();
     return this;
 }

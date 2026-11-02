@@ -1,9 +1,8 @@
-// from server: 81% by colin
+// from server: 84% by Yeetserama
 struct S_func_0043a080 {
-    void f(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
 };
 
-void S_func_0043a080::f(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6)
+void __cdecl f(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6)
 {
     int* begin = (int*)a3;
     int* end = (int*)a4;

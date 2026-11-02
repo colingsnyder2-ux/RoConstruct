@@ -1,4 +1,4 @@
-// from server: 98% by atomic.potato
+// from server: 100% by Yeetserama
 struct VRunServiceListener {
     char pad[0x184];
     int field184;
@@ -7,7 +7,7 @@ struct VRunServiceListener {
     void func();
 };
 
-extern "C" void __stdcall sub_401000(int hr);
+extern "C" __declspec(noreturn) void __stdcall sub_401000(int hr);
 
 void VRunServiceListener::func()
 {

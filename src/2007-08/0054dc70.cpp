@@ -1,33 +1,28 @@
-// from server: 75% by colin
-struct S
+// from server: 100% by Yeetserama
+// hypothesis: 0054dc70 is boost::iostreams::detail::indirect_streambuf
+// init_put_area for a stream buffer whose cached buffer begins at 0x50 and whose
+// flags live at 0x5c. boost::iostreams::detail::buffer stores a begin pointer
+// and a size, so end() is begin + size; that arithmetic reproduces the target's
+// add/sub sequence inside std::streambuf::setp.
+#include <streambuf>
+#include <cstddef>
+
+struct S_func_0054dc70 : std::streambuf
 {
-    char pad0[0x14];
-    int* p14;
-    char pad18[0x0c];
-    int* p24;
-    char pad28[0x0c];
-    int* p34;
-    char pad38[0x18];
-    int v50;
-    int v54;
-    int v5c;
+    char pad_to_50[0x50 - sizeof(std::streambuf)];
+    char* buf_;
+    int size_;
+    char pad58[4];
+    int flags_;
+
+    bool output_buffered() const { return (flags_ & 8) != 0; }
     void f();
 };
 
-void S::f()
+void S_func_0054dc70::f()
 {
-    if ((v5c >> 3) & 1)
-    {
-        int a = v50;
-        int b = v54;
-        *p14 = a;
-        *p24 = a;
-        *p34 = b + a - a;
-    }
+    if (output_buffered())
+        setp(buf_, buf_ + size_);
     else
-    {
-        *p14 = 0;
-        *p24 = 0;
-        *p34 = 0;
-    }
+        setp(0, 0);
 }

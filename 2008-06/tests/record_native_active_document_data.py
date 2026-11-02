@@ -49,13 +49,19 @@ for prefix, (address, edges) in expected.items():
                 found[key] = hex(value)
     assert set(found) == set(edges), (address, found)
     rows.append({'address': address, 'symbol': name, 'size': len(body), 'targets': found})
+transition_target, transition_refs, _ = match.target('2008-06', '00405aa0')
+transition_name, transition_body, transition_candidate_refs = next(
+    row for row in match.coff_functions(raw) if row[0].startswith('?setCurrentDocument@@'))
+assert match.exact_match(transition_target, transition_refs, transition_body, transition_candidate_refs)
+transition = {'address': '00405aa0', 'symbol': transition_name, 'size': len(transition_body),
+              'relocation_normalized_exact': True}
 pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
 base = pe.OPTIONAL_HEADER.ImageBase
 assert pe.get_data(0x96c238-base, 4) == bytes(4)
 assert pe.get_data(0x96c25c-base, 8) == bytes(8)
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {'source_sha256': sha(source), 'observer_sha256': sha(Path(__file__)),
-           'object_sha256': sha(obj), 'flags': flags, 'methods': rows,
+           'object_sha256': sha(obj), 'flags': flags, 'methods': rows, 'transition': transition,
            'zero_globals': ['0096c238', '0096c25c', '0096c260'],
            'scope': 'Inactive diagnostic. Global storage initializers and cleanup match; cross-module ownership and startup order remain unproven.'}
 (root / 'work/2008-06/shared-layouts/active-document-data-working.json').write_text(json.dumps(receipt, indent=2) + '\n')

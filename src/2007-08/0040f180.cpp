@@ -1,4 +1,4 @@
-// from server: 53% by colin
+// from server: 58% by Yeetserama
 struct CChildFrame {
     int field0;
     int field4;
@@ -16,8 +16,8 @@ struct CChildFrame {
 extern "C" int __stdcall IsZoomed(void* hWnd);
 extern void func_0063023e();
 extern void* func_0062ff50();
-extern void func_0040f060();
-extern void func_00444dc0();
+extern int __cdecl func_0040f060(int* out);
+extern int __cdecl func_00444dc0(int* out);
 
 void CChildFrame::method_40f180(int* param)
 {
@@ -30,19 +30,19 @@ void CChildFrame::method_40f180(int* param)
         param[2] = 0x7918;
         param[3] = 0x7918;
     }
-    if (IsZoomed((void*)this->field20) == 0)
+    if (IsZoomed((void*)field20) == 0)
     {
         int local1 = 0;
         int local2 = 0;
-        func_0040f060();
-        func_00444dc0();
+        func_0040f060(&local1);
+        func_00444dc0(&local2);
         int v1 = local1;
         int v2 = local2;
         int local3 = 0;
         int local4 = 0;
-        void (*fn)(CChildFrame*, int*, int) = *(void(**)(CChildFrame*, int*, int))((*(int*)this) + 0x70);
+        void (__thiscall *fn)(CChildFrame*, int*, int) = *(void(__thiscall**)(CChildFrame*, int*, int))(*(int*)this + 0x70);
         fn(this, &local3, 0);
-        param[8] = local3 - local1;
-        param[9] = local4 - local2;
+        param[8] = local3 - v1;
+        param[9] = local4 - v2;
     }
 }

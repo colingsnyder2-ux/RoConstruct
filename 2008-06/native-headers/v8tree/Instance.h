@@ -107,6 +107,9 @@ public:
     void raisePropertyChanged(const Reflection::PropertyDescriptor& descriptor); // 0040db00
     std::string getClassNameStr() const;
     Instance* findFirstChildByClassName(std::string) const; // 0046ae30; name provisional.
+private:
+    void writeProperties(::XmlElement*) const;
+public:
     void writeChildren(::XmlElement*);
     virtual XmlElement* write();
     virtual void onChildChanged(Instance*, const PropertyChanged&);

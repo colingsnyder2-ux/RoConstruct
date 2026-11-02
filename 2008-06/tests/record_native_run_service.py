@@ -32,6 +32,7 @@ for address, prefix in (("00556b00", "??0RunService@RBX@@"),
                         ("00555c00", "??1RunService@RBX@@"),
                         ("00555900", "?enqueueTask@RunService@RBX@@"),
                         ("005559a0", "?drainTasks@RunService@RBX@@"),
+                        ("00554440", "?onAncestorChanged@RunService@RBX@@"),
                         ("00554da0", "?setRunState@RunService@RBX@@"),
                         ("00554ae0", "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z"),
                         ("00554750", "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV"),
@@ -42,7 +43,8 @@ for address, prefix in (("00556b00", "??0RunService@RBX@@"),
     assert match.exact_match(target, target_relocations, body, relocations), name
     results.append(dict(address=address, symbol=name, size=len(body), relocation_normalized_exact=True))
 sections, symbols, definitions, _ = match._coff_data_index(obj)
-for method, expected in (("005559a0", [("?do_lock@mutex@boost@@", 0x594ce0),
+for method, expected in (("00554440", [("?notify_all@condition_impl@detail@boost@@", 0x5f1d30)]),
+                         ("005559a0", [("?do_lock@mutex@boost@@", 0x594ce0),
                                          ("?do_unlock@mutex@boost@@", 0x594d00),
                                          ("??D?$_Deque_const_iterator", 0x496020),
                                          ("??4?$function@", 0x554f90),
@@ -181,7 +183,7 @@ for index in range(constructor_table[7]):
 assert len(deleting_thunks) == 12, deleting_thunks
 deleting_body, _, _ = match.target('2008-06', '00556410')
 assert any(i.mnemonic == 'call' and i.op_str == '0x555c00' for i in Cs(CS_ARCH_X86, CS_MODE_32).disasm(deleting_body, 0x556410))
-paths = [source, ROOT / "rebuild/2008-06/native-headers/util/RunStateOwner.h", ROOT / "rebuild/2008-06/native-headers/util/Events.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", ROOT / "rebuild/2008-06/tests/NativeRunServiceLayout.cpp", Path(__file__)]
+paths = [source, ROOT / "rebuild/2008-06/native-headers/util/RunStateOwner.h", ROOT / "rebuild/2008-06/native-headers/util/Events.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/tests/NativeRunServiceLayout.cpp", Path(__file__)]
 receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
                compiler_build=21022, flags=flags, compile_exit=code, object_sha256=hashlib.sha256(obj).hexdigest(), size=0x2d8, offsets=list(offsets), primary_vtable=primary_vtable, notifier_bases=dict(notifiers), deleting_destructor_thunks=deleting_thunks, original_sha256=hashlib.sha256(original.read_bytes()).hexdigest(), methods=results,

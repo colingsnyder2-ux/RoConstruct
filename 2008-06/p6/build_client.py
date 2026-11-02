@@ -13,7 +13,9 @@ subprocess.run([sys.executable, str(HERE / "build_native_icons.py")], cwd=ROOT, 
 subprocess.run([sys.executable, str(HERE / "build_native_about.py")], cwd=ROOT, check=True)
 
 client = "2008-06"
-SNAPSHOT = Path(sys.argv[1]) if len(sys.argv) > 1 else rebuild.workspace(client) / "out"
+NATIVE_DOC = '--native-doc' in sys.argv
+inputs = [arg for arg in sys.argv[1:] if arg != '--native-doc']
+SNAPSHOT = Path(inputs[0]) if inputs else rebuild.workspace(client) / "out"
 out = rebuild.workspace(client) / "out" / "p6"
 out.mkdir(parents=True, exist_ok=True)
 runtime = SNAPSHOT / "tests" / "P2RecoveredPlayer"
@@ -29,7 +31,12 @@ shutil.copyfile(ROOT / "clients" / client / "SciLexer.dll", out / "SciLexer.dll"
                           or path.name in ("rgmain.dll", "rgdx.dll", "fmodex.dll"))
 }, indent=2) + "\n")
 tc = rebuild.toolchain()
-shutil.copyfile(ROOT / "clients" / client / "ReflectionMetadata.xml", out / "ReflectionMetadata.xml")
+metadata = ROOT / "clients" / client / "ReflectionMetadata.xml"
+if not metadata.exists():
+    metadata = out / "ReflectionMetadata.xml"
+assert metadata.exists(), metadata
+if metadata.resolve() != (out / "ReflectionMetadata.xml").resolve():
+    shutil.copyfile(metadata, out / "ReflectionMetadata.xml")
 gen_res.generate(str(ROOT / "clients" / client / "Roblox.exe"), str(out / "roblox.res"))
 shutil.copyfile(rebuild.mfc_import_lib(client), out / "mfc90.lib")
 mfc = ROOT / "tools" / "libs" / "mfc-9.0-rtm" / "atlmfc" / "include"
@@ -58,7 +65,18 @@ for item in spec["test_includes"]:
 xtp = ROOT / "tools" / "libs" / "xtp-11.2.2" / "Source"
 mfc_flags = ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD", "/DWIN32", "/DNDEBUG", "/D_MBCS", "/D_AFXDLL", "/D_XTP_STATICLINK", "/D_XTPLIB_NOAUTOLINK",
              "/I" + str(mfc), "/I" + str(xtp)]
-units = [("RobloxShell.obj", HERE / "RobloxShell.cpp", mfc_flags + ["/I" + str(HERE)]),
+shell_source = HERE / "RobloxShell.cpp"
+shell_object = "RobloxShell.obj"
+shell_flags = mfc_flags + ["/I" + str(HERE)]
+if NATIVE_DOC:
+    shell_text = shell_source.read_text()
+    start = shell_text.index('class CRobloxDoc : public CDocument {')
+    end = shell_text.index('IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)', start) + len('IMPLEMENT_DYNCREATE(CRobloxDoc, CDocument)')
+    shell_source = out / 'RobloxShellNativeDoc.cpp'
+    shell_source.write_text(shell_text[:start] + '#include "CRobloxDoc.h"' + shell_text[end:])
+    shell_object = 'RobloxShellNativeDoc.obj'
+    shell_flags = mfc_flags + ["/I" + str(ROOT / 'rebuild/2008-06/native-headers'), "/I" + str(HERE)] + ["/I" + str(i) for i in includes]
+units = [(shell_object, shell_source, shell_flags),
          ("MyXTPCommandBars.obj", ROOT / "rebuild/2008-06/native-classes/MyXTPCommandBars.cpp", mfc_flags + ["/I" + str(ROOT / "rebuild/2008-06/native-headers")]),
          ("appmodul.obj", mfc.parent / "src" / "mfc" / "appmodul.cpp", mfc_flags + ["/I" + str(mfc.parent / "src" / "mfc")]),  # WinMain, AfxInitialize
          ("P6Engine.obj", HERE / "P6Engine.cpp", ["/nologo", "/c", "/O2", "/GS-", "/EHsc", "/MD"] + ["/D" + d for d in spec["test_defines"].split()]
@@ -82,11 +100,72 @@ for obj, source, flags in units:
     print(text[-2500:])
     if code:
         sys.exit(code)
+if NATIVE_DOC:
+    doc_flags = mfc_flags + ["/D" + d for d in data_defines.split()] + ["/I" + str(ROOT / 'rebuild/2008-06/native-headers'), "/I" + str(HERE)] + ["/I" + str(i) for i in includes]
+    for obj, source in [('NativeCRobloxDoc.obj', ROOT / 'rebuild/2008-06/native-classes/CRobloxDoc.cpp'),
+                        ('NativeActiveDocumentDataFull.obj', ROOT / 'rebuild/2008-06/native-classes/ActiveDocumentData.cpp'),
+                        ('NativeStandardVerbs.obj', ROOT / 'rebuild/2008-06/native-classes/StandardVerbs.cpp'),
+                        ('NativeDocumentExceptionFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentException.cpp'),
+                        ('NativeDocumentLoadFileFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLoadFile.cpp'),
+                        ('NativeDocumentLoadFromStringFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLoadFromString.cpp'),
+                        ('NativeDocumentInsertModelFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentInsertModel.cpp'),
+                        ('NativeDocumentLaunchFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLaunch.cpp'),
+                        ('NativeVerbFull.obj', ROOT / 'rebuild/2008-06/native-classes/Verb.cpp'),
+                        ('NativeVerbLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/VerbLifetime.cpp'),
+                        ('NativeVerbBaseLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/VerbBaseLifetime.cpp'),
+                        ('NativeVerbQueriesFull.obj', ROOT / 'rebuild/2008-06/native-classes/VerbQueries.cpp'),
+                        ('NativeContentProviderUrlFull.obj', ROOT / 'rebuild/2008-06/native-classes/ContentProviderUrl.cpp'),
+                        ('NativeServiceLookupFull.obj', ROOT / 'rebuild/2008-06/native-classes/ServiceLookup.cpp'),
+                        ('NativeHistoryRecordPlaybackFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp'),
+                        ('NativeChangeHistoryResetFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryReset.cpp'),
+                        ('NativeSelectionFrontFull.obj', ROOT / 'rebuild/2008-06/native-classes/SelectionFront.cpp'),
+                        ('NativeInstanceClassLookupFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceClassLookup.cpp'),
+                        ('NativeHistoryRecordLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp'),
+                        ('NativeHistoryItemPlaybackFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryItemPlayback.cpp'),
+                        ('NativeHistoryItemPropertyFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp')]:
+        code, text = rebuild.run(tc, 'cl', doc_flags + ['/Fo' + obj, str(source)], out)
+        print(text[-2500:])
+        if code:
+            sys.exit(code)
 system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
-code, text = rebuild.run(tc, "link", ["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:Roblox.map", "/OUT:Roblox.exe",
-                                      "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + [u[0] for u in units] + [str(ROOT / "rebuild/2008-06/out/native-layouts" / name) for name in ("NativeFrameIconsFresh.obj", "NativeFrameIconWidth.obj", "NativeDHtmlDialog.obj", "NativeAboutDialog.obj", "NativeAboutDialogData.obj", "NativeFileVersionInfo.obj", "NativeGLCaps.obj")] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
+output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
+native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj',
+                      'NativeDocumentExceptionFull.obj', 'NativeDocumentLoadFileFull.obj', 'NativeDocumentLoadFromStringFull.obj',
+                      'NativeDocumentInsertModelFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeVerbFull.obj',
+                      'NativeVerbLifetimeFull.obj', 'NativeVerbBaseLifetimeFull.obj', 'NativeVerbQueriesFull.obj',
+                      'NativeContentProviderUrlFull.obj', 'NativeServiceLookupFull.obj', 'NativeHistoryRecordPlaybackFull.obj',
+                      'NativeChangeHistoryResetFull.obj', 'NativeSelectionFrontFull.obj', 'NativeInstanceClassLookupFull.obj',
+                      'NativeHistoryRecordLifetimeFull.obj', 'NativeHistoryItemPlaybackFull.obj',
+                      'NativeHistoryItemPropertyFull.obj'] if NATIVE_DOC else []
+if NATIVE_DOC:
+    native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
+        'NativeSaveDialogProfile.obj', 'NativeApplicationBaseUrl.obj',
+        'NativeWorkspaceLayout.obj', 'NativeChangeHistoryPlayback.obj', 'ServiceChangeHistoryCreate.obj',
+        'NativeChangeHistoryQueries.obj', 'NativeDataModelTiming.obj', 'NativeDataModelDutyCycle.obj',
+        'NativeLuaAllocatorStats.obj', 'NativePlayersAbuse.obj', 'WorkspaceInsertNativeProfile.obj',
+        'NativeWorkspaceLoad.obj', 'NativeChangeHistoryEnable.obj', 'NativeDocumentInitializeTrial.obj',
+        'NativeDocumentExecuteProfile.obj', 'NativeDocumentLDrawProfile.obj',
+        'NativeDocumentLaunchTrial.obj', 'NativeDocumentSaveModifiedProfile.obj')]
+    native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
+        'NativeProviderCreateTrial.obj', 'NativeWorkspaceObjectSafety.obj', 'NativeWorkspaceSiteUrl.obj',
+        'NativeWorkspaceSiteCheck.obj', 'ServiceSelectionProfile.obj', 'NativeChangeHistoryLayout.obj',
+        'NativeChangeHistoryFactory.obj', 'NativeExitCommand.obj', 'NativeSoundServicePlay.obj',
+        'NativeCameraUnits.obj', 'NativeCameraHistory.obj', 'NativeSelectionCommandsTrial.obj',
+        'NativeEditSelectionVerbConstructorTrial.obj', 'NativeClipboardCopyLink.obj', 'NativeClipboardPasteLink.obj',
+        'NativeRunStateVerbConstructorTrial.obj',
+        'NativeWorkspaceSharedFromTrial.obj', 'NativeCameraCenterAction.obj', 'NativeCameraZoomExtentsAction.obj',
+        'NativeFilteredSelectionService.obj', 'NativeFilteredSelectionFactory.obj', 'NativeWorkspaceGetWorkspaceTrial.obj',
+        'NativeDocumentUrlProfile.obj',
+        'NativeVisitFindProfile.obj')]
+    native_doc_objects.append(str(ROOT / 'rebuild/2008-06/out/history-start-trial/NativeChangeHistoryStartTrial.obj'))
+native_doc_aliases = ['/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z'] if NATIVE_DOC else []
+code, text = rebuild.run(tc, "link", ["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:" + output_name + ".map", "/OUT:" + output_name + ".exe",
+                                      "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + native_doc_aliases + [u[0] for u in units] + [str(ROOT / "rebuild/2008-06/out/native-layouts" / name) for name in ("NativeFrameIconsFresh.obj", "NativeFrameIconWidth.obj", "NativeDHtmlDialog.obj", "NativeAboutDialog.obj", "NativeAboutDialogData.obj", "NativeFileVersionInfo.obj", "NativeGLCaps.obj")] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
+                         + native_doc_objects
                          + [str(l) for l in libs] + [s + ".lib" for s in system]
                          + ["/NODEFAULTLIB:" + l for l in rebuild.VENDOR_AUTOLINK], out)
+if NATIVE_DOC:
+    (out/'native-doc-link.log').write_text(text)
 print(text[-3500:])
 sys.exit(code)

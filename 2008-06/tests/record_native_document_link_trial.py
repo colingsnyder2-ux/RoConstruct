@@ -38,12 +38,15 @@ libs = [snap/spec['name']/'linked/linked.lib']
 native_instance = '--native-instance' in sys.argv
 filtered_donor = '--filtered-donor' in sys.argv
 provider_trial = '--provider-trial' in sys.argv
+full_source = '--full-source' in sys.argv
 assert not (native_instance and filtered_donor)
 assert not provider_trial or filtered_donor
 if native_instance or filtered_donor:
     archive = snap/'RbxgsApp/linked/linked.lib'
     filtered = out/'RbxgsAppWithoutInstance.lib'
     remove = ['/REMOVE:Instance.obj']
+    if full_source:
+        remove += ['/REMOVE:Name.obj']
     if provider_trial:
         remove += ['/REMOVE:glue_content_provider.obj', '/REMOVE:MouseCommand.obj', '/REMOVE:Primitive.obj', '/REMOVE:Workspace.obj', '/REMOVE:FaceInstance.obj', '/REMOVE:Decal.obj']
     filter_code, filter_log = rebuild.run(rebuild.toolchain(), 'lib',
@@ -123,6 +126,11 @@ objects.append(snap/'native-layouts/content-upload-probe/CContentUploadProfile.o
 objects.append(snap/'native-layouts/content-upload-probe/CContentError.obj')
 objects.append(snap/'native-layouts/content-upload-probe/CContentGuids.obj')
 objects.append(snap/'native-layouts/NativeWorkspaceWriteTrial.obj')
+if provider_trial:
+    writer = snap/'native-layouts/worker-writer-near/full-probe'
+    proof = json.loads((root/'work/2008-06/shared-layouts/workspace-writer-near-full-worker-probe.json').read_text())
+    assert proof['candidate_exit'] == 0 and not proof['candidate_errors']
+    objects += [writer/'near-caller.obj', writer/'exact-lifetime.obj']
 objects.append(snap/'native-layouts/hresult-report-probe/WorkspaceHResultProfile.obj')
 objects.append(snap/'native-layouts/NativeWorkspaceRaiseError.obj')
 objects.append(snap/'native-layouts/lua-args-probe/LuaArgsProfile.obj')
@@ -134,7 +142,16 @@ objects += [snap/'native-layouts'/'NativeChangeHistoryLayout.obj']
 objects += [snap/'native-layouts'/'NativeChangeHistoryFactory.obj']
 objects += [snap/'native-layouts'/('NativeInstanceLifetime.obj' if native_instance else 'NativeInstanceLifetimeLink.obj')]
 if filtered_donor:
-    objects += [snap/'native-layouts'/'instance-source-probe/InstanceWithoutSignals.obj']
+    instance_donor = snap/'native-layouts'/'instance-source-probe/InstanceWithoutSignals.obj'
+    if provider_trial:
+        donor_raw = instance_donor.read_bytes()
+        callbacks = {name for name, defined in rebuild.coff_externals(donor_raw).items()
+                     if defined and any(name.startswith(prefix) for prefix in ('?setName@Instance@RBX@@', '?onServiceProvider@Instance@RBX@@', '?write@Instance@RBX@@', '?writeChildren@Instance@RBX@@'))}
+        assert len(callbacks) == 4, callbacks
+        instance_donor = out/'InstanceWithoutNativeCallbacks.obj'
+        instance_donor.write_bytes(rebuild.strip_symbols(donor_raw, drop=callbacks))
+        assert all(not rebuild.coff_externals(instance_donor.read_bytes()).get(name) for name in callbacks)
+    objects += [instance_donor]
 objects += [snap/'native-layouts'/'NativeGuidItem.obj']
 objects += [snap/'native-layouts'/'NativeGuidRegistryMutex.obj']
 objects += [snap/'native-layouts'/'NativeGuidRegistryInitialize.obj']
@@ -227,6 +244,46 @@ if provider_trial:
     listener_receipt = json.loads((root/'work/2008-06/shared-layouts/instance-child-listener-integrated.json').read_text())
     assert hashlib.sha256(listener.read_bytes()).hexdigest() == listener_receipt['object_sha256']
     objects.append(listener)
+    serialization = snap/'native-layouts/NativeInstanceSerialization.obj'
+    serialization_receipt = json.loads((root/'work/2008-06/shared-layouts/instance-serialization-current.json').read_text())
+    assert hashlib.sha256(serialization.read_bytes()).hexdigest() == serialization_receipt['object_sha256']
+    objects.append(serialization)
+if full_source:
+    native_source = root/'rebuild/2008-06/native-classes/CRobloxDoc.cpp'
+    native_obj = out/'NativeCRobloxDoc.obj'
+    active_source = root/'rebuild/2008-06/native-classes/ActiveDocumentData.cpp'
+    active_obj = out/'NativeActiveDocumentDataFull.obj'
+    native_flags = [x for x in flags if not x.startswith('/Fo') and x != str(trial)]
+    native_flags += ['/Fo'+str(native_obj), str(native_source)]
+    native_code, native_log = rebuild.run(rebuild.toolchain(21022), 'cl', native_flags, out)
+    (out/'native-doc-compile.log').write_text(native_log)
+    assert native_code == 0, native_log
+    active_flags = [x for x in flags if not x.startswith('/Fo') and x != str(trial)]
+    active_flags += ['/Fo'+str(active_obj), str(active_source)]
+    active_code, active_log = rebuild.run(rebuild.toolchain(21022), 'cl', active_flags, out)
+    (out/'native-active-document-compile.log').write_text(active_log)
+    assert active_code == 0, active_log
+    native_symbols = {name for name, defined in rebuild.coff_externals(native_obj.read_bytes()).items()
+                      if defined and ('CRobloxDoc@@' in name or 'VerbBinder@VCRobloxDoc@@' in name)}
+    assert native_symbols
+    filtered_objects = []
+    for index, item in enumerate(objects):
+        if item.name == 'NativeActiveDocumentData.obj':
+            continue
+        if not str(item).endswith('.obj'):
+            filtered_objects.append(item)
+            continue
+        raw = item.read_bytes()
+        duplicates = {name for name, defined in rebuild.coff_externals(raw).items()
+                      if defined and name in native_symbols}
+        if duplicates:
+            item = out/('full-source-%03d-' % index + item.name)
+            item.write_bytes(rebuild.strip_symbols(raw, drop=duplicates))
+        filtered_objects.append(item)
+    name_obj = snap/'native-layouts/name-whole-integrated/NameNative.obj'
+    name_receipt = json.loads((root/'work/2008-06/shared-layouts/name-whole-integrated.json').read_text())
+    assert hashlib.sha256(name_obj.read_bytes()).hexdigest() == name_receipt['object_sha256']
+    objects = filtered_objects + [native_obj, active_obj, name_obj]
 system = ['gdiplus','kernel32','user32','gdi32','advapi32','shell32','ole32','oleaut32','comdlg32','comctl32','ws2_32','winmm','opengl32','glu32','imagehlp','version','wininet','dbghelp','psapi']
 args = ['/nologo','/SUBSYSTEM:WINDOWS','/MACHINE:X86','/MAP:NativeDoc.map','/OUT:NativeDoc.exe','/NODEFAULTLIB:mfcs90.lib','/MANIFEST:NO']
 if provider_trial:
@@ -241,6 +298,7 @@ sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(), 'shell_sha256':sha(shell), 'generated_shell_sha256':sha(trial), 'script_sha256':sha(pathlib.Path(__file__)), 'compile_flags':flags,'link_exit':code,'link_flags':args,'errors':errors,'objects':{str(path.relative_to(root)):sha(path) for path in objects}, 'native_instance_profile':native_instance, 'scope':'Isolated diagnostic native Doc shell with descriptor and signal ABI trial objects; incompatible ABI, never run. No runtime swap, no stubs, no P5/P6 gates.'}
 receipt['filtered_donor_profile'] = filtered_donor
 receipt['provider_trial'] = provider_trial
+receipt['full_source'] = full_source
 if native_instance or filtered_donor:
     receipt['archive_sha256'] = sha(archive)
     receipt['filtered_archive_sha256'] = sha(filtered)
