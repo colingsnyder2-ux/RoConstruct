@@ -1063,6 +1063,20 @@ def test_failed_source_module_cannot_cover_ownership_loss(tmp_path):
     assert integration_verify.other_module_owned(tmp_path) == set()
 
 
+def test_other_module_ownership_rechecks_objects_instead_of_legacy_report(tmp_path,monkeypatch):
+    out=tmp_path/'rebuild/2008-06/out/Dependency';(out/'linked').mkdir(parents=True)
+    report=out/'report.json';report.write_text(json.dumps(dict(linked=True,test_exit=0,owned_addrs=['stale-address'])))
+    (out/'linked/a.obj').write_bytes(b'actual-linked-object')
+    seen=[]
+    def pair(client,obj):
+        seen.append((client,obj));return [('typed',36,['00500000']),('unresolved',36,['00500001','00500002'])]
+    monkeypatch.setattr(integration_verify.rebuild,'pair_object',pair)
+    assert integration_verify.other_module_owned(tmp_path)=={'00500000'}
+    assert seen==[('2008-06',b'actual-linked-object')]
+    report.write_text(json.dumps(dict(linked=True,test_exit=1,owned_addrs=['stale-address'])))
+    assert integration_verify.other_module_owned(tmp_path)==set()
+
+
 def test_two_pcs_use_http_without_shared_client_files(promotions):
     httpd = ThreadingHTTPServer(("127.0.0.1", 0), server.make_handler(
         promotions.store, "test-password", {"2008-06"}, integration=promotions))

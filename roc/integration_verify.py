@@ -338,13 +338,14 @@ def collect(root):
 
 
 def other_module_owned(root):
-    """Addresses owned by linked modules other than RbxgsApp (their reports are fixed inputs of a native job)."""
+    """Recount other linked, source-clean, smoke-tested modules with current code/data checks."""
     owned = set()
     for report in (root / "rebuild" / CLIENT / "out").glob("*/report.json"):
         if report.parent.name != "RbxgsApp":
             data = json.loads(report.read_text())
-            if data.get("linked") and not rebuild.source_errors(report.parent, report=data):
-                owned.update(data.get("owned_addrs", []))
+            if data.get("linked") and data.get('test_exit')==0 and not rebuild.source_errors(report.parent, report=data):
+                for obj in (report.parent/'linked').glob('*.obj'):
+                    owned.update(addresses[0] for _,_,addresses in rebuild.pair_object(CLIENT,obj.read_bytes()) if len(addresses)==1)
     return owned
 
 

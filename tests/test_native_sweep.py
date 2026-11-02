@@ -421,6 +421,7 @@ def test_linked_preflight_heartbeat_propagates_gate_failure_and_stops(monkeypatc
 
 
 def test_ownership_checks_twins_outside_discovery_targets(monkeypatch):
+    monkeypatch.setattr(sweep.match,'coff_data_refs',lambda *a:[])
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda obj: [('f', b'body', []), ('unrelated', b'other', [])])
     def pair(client, functions):
         assert [f[0] for f in functions] == ['f']
@@ -818,4 +819,18 @@ def test_body_diff_handles_zero_displacement_symbol_with_scaled_index(monkeypatc
     monkeypatch.setattr(sweep.match, 'coff_functions', lambda obj: [('symbol', bytes.fromhex('8b048500000000c3'), [3])])
     monkeypatch.setattr(sweep.match, 'target', lambda *args: (bytes.fromhex('8b0485aabbccddc3'), [3], None))
     assert sweep.body_diff(b'obj', 'symbol', '00500000') == 'identical after masking'
+
+def test_ownership_pairing_checks_referenced_data_and_preserves_unknown_ambiguity(monkeypatch):
+    from roc import native_sweep as sweep
+    symbol='?f@A@@QAEXXZ';hits=[dict(addr='00400000',symbol=symbol)]
+    monkeypatch.setattr(sweep.match,'coff_functions',lambda obj:[(symbol,b'code',[])])
+    monkeypatch.setattr(sweep.rebuild,'pair',lambda *a:[(symbol,b'code',['00400000','00400010'])])
+    monkeypatch.setattr(sweep.match,'coff_data_refs',lambda *a:[('rtti',b'Team',[])])
+    monkeypatch.setattr(sweep.match,'target',lambda client,addr:(addr.encode(),[],{}))
+    monkeypatch.setattr(sweep.match,'data_check',lambda client,addr,code,refs:([],[] if addr=='00400000' else ['wrong RTTI descriptor']))
+    assert sweep.ownership_candidates(b'obj',hits)=={'00400000':['00400000']}
+    monkeypatch.setattr(sweep.match,'data_check',lambda *a:([],[]))
+    assert sweep.ownership_candidates(b'obj',hits)=={'00400000':['00400000','00400010']}
+    monkeypatch.setattr(sweep.match,'coff_data_refs',lambda *a:[])
+    assert sweep.ownership_candidates(b'obj',hits)=={'00400000':['00400000','00400010']}
 
