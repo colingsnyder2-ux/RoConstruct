@@ -2078,6 +2078,8 @@ def run(spec, name, server=None, jobs=4, limit=None, output=None, log=print):
         renewed = api.call("/v1/integration/renew", {"user": settings["user"], "claims": [units[u]["id"] for u in sorted(used)]})
         if not renewed.get("ok"):
             raise ValueError("Claims changed before linked preflight; saved proposals retained")
+        from roc.integration_verify import cache_client_accepted
+        cache_client_accepted(ROOT,base,log)
         linked = linked_preflight_progress(ROOT, additions, output, log)
         if api.call("/v1/integration/base")["revision"] != base["revision"]:
             hold_proposals(output, proposals, base['revision'], ticket=recovery_ticket, model=config.get('model'))

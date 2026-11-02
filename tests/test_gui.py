@@ -411,6 +411,22 @@ class DashboardTests(unittest.TestCase):
         self.assertEqual(self.app.jobs[identifier]["matched"], 0)
         self.assertEqual(self.app.jobs[identifier]["attempted"], 1)
 
+    def test_failed_native_trial_is_blocked_without_pending_proof(self):
+        observed=[];event=self.app.event
+        def capture(identifier,kind,**fields):
+            if kind=='native_result':observed.append(dict(self.app.jobs[identifier]['slots']['0']))
+            return event(identifier,kind,**fields)
+        with patch.object(self.app,'schedule'),patch.object(gui_worker.providers,'provider_ready',return_value=True):
+            identifier=self.app.start({'kind':'worker','config':config(lease_mode='native',client='2008-06',source_only=False,model='codex:default',cloud_allowed=True)})
+            rows=[dict(event='native_started',slot=0,file='App/A.cpp'),dict(event='native_result',slot=0,file='App/A.cpp',local_exact=0,seconds=1,error='full compiler error',error_summary='Missing genuine declaration')]
+            process=Mock(stdout=io.StringIO(''.join('ROC_EVENT '+json.dumps(row)+'\n' for row in rows)),stdin=None);process.wait.return_value=0
+            with patch.object(self.app,'event',side_effect=capture):self.app.consume(identifier,process)
+        slot=observed[0]
+        self.assertFalse(slot['busy']);self.assertEqual(slot['error'],'full compiler error')
+        self.assertEqual(slot['phase'],'Blocked: Missing genuine declaration')
+        self.assertEqual(self.app.jobs[identifier].get('local_exact',0),0)
+        self.assertEqual(self.app.jobs[identifier]['matched'],0)
+
     def test_remove_finished_run_persists_and_rejects_active(self):
         with patch.object(self.app, "schedule"):
             job_id = self.app.start({"command": "doctor"})

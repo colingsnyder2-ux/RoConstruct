@@ -746,6 +746,15 @@ def test_live_hash_ignores_snapshotted_code_but_sees_vendor_trees(promotions):
     assert integration_verify.input_hash(root, live_only=True) != live
 
 
+def test_diagnostic_last_successful_reports_do_not_change_native_inputs(promotions):
+    root=promotions.root;before=integration_verify.input_hash(root)
+    for module in ('RbxgsApp','G3D'):
+        integration.atomic_json(root/'rebuild/2008-06/out'/module/'last-successful-report.json',{'diagnostic':'old result'})
+    assert integration_verify.input_hash(root)==before
+    integration.atomic_json(root/'rebuild/2008-06/out/G3D/report.json',{'linked':True})
+    assert integration_verify.input_hash(root)!=before
+
+
 def test_content_hash_invalidates_same_size_same_mtime_header(promotions):
     path = promotions.root / "tools/rbxgs/Client/App/include/Classes.h"
     before = integration_verify.input_hash(promotions.root)
@@ -963,6 +972,50 @@ def gate_result():
             "distinct": 5, "milestones": {m: {"passed": True, "exit": 0} for m in ("M2", "M4a", "M5")},
             "size": {"rows": [{"class": "First", "delta": 0}], "probe_errors": {}},
             "base": {"checked": 4, "mismatch": [], "probe_errors": {}}}
+
+
+@pytest.mark.parametrize('mismatch',[None,'code','source','unaccepted','overlay','generator'])
+def test_local_cache_requires_accepted_overlay_current_code_and_all_inputs(promotions,monkeypatch,mismatch):
+    root=promotions.root;monkeypatch.setenv('LOCALAPPDATA',str(root.parent/'short-cache'))
+    integration.atomic_json(root/'rebuild/2008-06/patches/rbxgs-client.json',{})
+    (root/'roc').mkdir(exist_ok=True);(root/'roc/rebuild.py').write_text('# compiler and gate implementation')
+    integration.atomic_json(root/'rebuild/2008-06/patches/native-promotions.json',[{'accepted':'ledger'}])
+    work=root.parent/'short-cache/RoConstruct/verify'/integration.digest(str(root.resolve()))[:12]
+    candidate=work/'c/0123456789ab';shutil.copytree(root,candidate)
+    ledger=candidate/'rebuild/2008-06/patches/native-promotions.json';integration.atomic_json(ledger,[])
+    base=dict(overlay={},accepted=[{'accepted':'ledger'}])
+    integration.atomic_json(candidate/'preflight-receipt.json',dict(accepted=mismatch!='unaccepted',overlay_hash='wrong' if mismatch=='overlay' else integration.digest({})))
+    integration.atomic_json(candidate/'integration-result.json',gate_result())
+    integration.atomic_json(candidate/'integration-linked.json',['00500000'])
+    if mismatch=='code':(candidate/'roc/rebuild.py').write_text('# changed gate')
+    if mismatch=='source':(candidate/'tools/rbxgs/Client/App/include/Classes.h').write_text('changed declaration')
+    if mismatch=='generator':(candidate/'rebuild/2008-06/patches/make_rbxgs_client.py').write_text('# changed generator')
+    calls=[]
+    def generate(folder,args,log):
+        calls.append(folder)
+        assert json.loads(ledger.read_text())==base['accepted']
+        integration.atomic_json(folder/'rebuild/2008-06/patches/rbxgs-client.json',base['overlay'])
+    monkeypatch.setattr(integration_verify,'run',generate)
+    messages=[]
+    integration_verify.cache_client_accepted(root,base,messages.append)
+    index=work/'accepted-baselines.json'
+    if mismatch:
+        assert not index.exists()
+        assert bool(calls)==(mismatch=='source')
+    else:
+        key=integration_verify.input_hash(root)
+        assert index.exists(),messages
+        assert json.loads(index.read_text())=={key:candidate.name}
+        after=copy.deepcopy(gate_result());after['report']['owned_addrs'].append('00500001');after['distinct']+=1
+        monkeypatch.setattr(integration_verify.subprocess,'run',lambda *a,**kw:None)
+        monkeypatch.setattr(integration_verify,'prepare_baseline',lambda *a:pytest.fail('Accepted baseline was unnecessarily rebuilt'))
+        def snapshot(source,destination,**kw):assert source==candidate;destination.mkdir(parents=True)
+        monkeypatch.setattr(integration_verify,'snapshot',snapshot)
+        built=[]
+        monkeypatch.setattr(integration_verify,'verify_build',lambda folder,*a:(built.append(folder) or after))
+        receipt=integration_verify.linked_preflight(root,{'App/include/Classes.h':[['class First {};','class First {}; // candidate']]},root/'proof',lambda _:None)
+        assert receipt['accepted'] and len(built)==1 and receipt['baseline_artifacts']==str(candidate)
+        assert receipt['gains']==['00500001']
 
 
 @pytest.mark.parametrize('lost', [False, True])

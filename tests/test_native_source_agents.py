@@ -16,6 +16,22 @@ BEFORE = 'int A::f(){return 1;}\nint A::g(){return 2;}\n'
 AFTER = BEFORE.replace('return 1;', 'return 3;')
 
 
+@pytest.mark.parametrize('exact,error,status',[(0,'Compiler blocked','blocked'),(0,'','no local gain'),(1,'','awaiting verification')])
+def test_console_native_results_only_await_verification_for_real_local_proofs(monkeypatch,capsys,exact,error,status):
+    monkeypatch.setenv('ROC_INTEGRATOR_PRIVATE','1')
+    monkeypatch.setattr(gui_worker.providers,'available',lambda *a:True)
+    monkeypatch.setattr(gui_worker.worker,'keep_awake',lambda:None)
+    def loop(config,control,emit):
+        emit('native_started',slot=0,file='App/A.cpp')
+        emit('native_result',slot=0,file='App/A.cpp',local_exact=exact,seconds=1,error=error)
+    monkeypatch.setattr(gui_worker,'native_loop',loop)
+    config=dict(gui_worker.DEFAULTS,lease_mode='native',native_generation='agent',model='codex:gpt-6-luna',user='tester',server='localhost:8765',cloud_allowed=True)
+    gui_worker.main(dict(config=config),receive_commands=False)
+    output=capsys.readouterr().out
+    assert '('+status+')' in output and 'recovery started' in output
+    if not exact:assert 'awaiting verification' not in output
+
+
 def source(root, text=BEFORE):
     path = root/REL
     path.parent.mkdir(parents=True,exist_ok=True)
