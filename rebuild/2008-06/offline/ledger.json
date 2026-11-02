@@ -1318,6 +1318,22 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-24bdbcef83fc7039",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8world/IPipelined.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793624661,
+   "receipt": {
+    "gains": [
+     "006457e0"
+    ],
+    "losses": []
+   }
   }
  ]
 }

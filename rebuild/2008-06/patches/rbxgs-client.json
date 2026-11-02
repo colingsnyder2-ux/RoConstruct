@@ -1787,6 +1787,10 @@
   [
    "IPipelined::removeFromKernel()\n\t{\n\t\tRBXASSERT(currentStage);\n\t\tRBXASSERT(currentStage->getStageType() == IStage::KERNEL_STAGE);\n\n\t\tthis->removeFromStage(currentStage);\n\t}",
    "IPipelined::removeFromKernel()\n\t{\n\tthis->removeFromStage(currentStage);\n}"
+  ],
+  [
+   "{\n\tIStage* IPipelined::getStage(IStage::StageType stageType) const\n\t{\n\t\tRBXASSERT(currentStage);\n\n\t\tIStage* stage = currentStage;\n\t\twhile (stage->getStageType() != stageType)\n\t\t{\n",
+   "{\n\tIStage* IPipelined::getStage(IStage::StageType stageType) const\n\t{\n\t\tIStage* stage = currentStage;\n\t\twhile (stage->getStageType() != stageType)\n\t\t{\n"
   ]
  ],
  "App/v8datamodel/UserController.cpp": [

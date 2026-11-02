@@ -2736,5 +2736,13 @@
     "\t\treturn tiltNegativeZ;\n\t}\n\n\tconst G3D::Matrix3 Math::matrixTiltQuadrant(int quadrant)\n\t{\n\t\tswitch (quadrant)\n\t\t{\n\t\tcase 0:\n\t\t\treturn G3D::Matrix3(1, 0, 0, 0, 0, -1, 0, 1, 0);\n\t\tcase 1:\n\t\t\treturn Math::matrixTiltZ();\n\t\tcase 2:\n\t\t\treturn G3D::Matrix3(1, 0, 0, 0, 0, 1, 0, -1, 0);\n\t\tcase 3:\n\t\t\treturn Math::matrixTiltNegativeZ();\n\t\tdefault:\n\t\t\treturn G3D::Matrix3::identity();\n\t\t}\n\t}\n\n\tbool Math::isDenormal(float f)\n\t{\n\t\treturn (LODWORD(f) & 0x7F800000) == 0 && (LODWORD(f) & 0x7FFFFF) != 0;\n\t}\n\n\tbool Math::isNanInf(float f)\n\t{\n\t\treturn f == std::numeric_limits<float>::infinity()\n\t\t\t|| f == -std::numeric_limits<float>::infinity()\n\t\t\t|| f == std::numeric_limits<float>::quiet_NaN()\n\t\t\t|| f == std::numeric_limits<float>::signaling_NaN();\n\t}\n\n\tbool Math::isNanInfVector3(const G3D::Vector3& v)\n\t{\n\t\treturn Math::isNanInf(v.x)\n\t\t\t|| Math::isNanInf(v.y)\n\t\t\t|| Math::isNanInf(v.z);\n\t}\n\n\tbool Math::isNanInfDenorm(float f)\n\t{\n\t\treturn Math::isNanInf(f) || Math::isDenormal(f);\n\t}\n\n\tbool Math::isNanInfDenormVector3(const G3D::Vector3& v)\n"
    ]
   ]
+ },
+ {
+  "App/v8world/IPipelined.cpp": [
+   [
+    "{\n\tIStage* IPipelined::getStage(IStage::StageType stageType) const\n\t{\n\t\tRBXASSERT(currentStage);\n\n\t\tIStage* stage = currentStage;\n\t\twhile (stage->getStageType() != stageType)\n\t\t{\n",
+    "{\n\tIStage* IPipelined::getStage(IStage::StageType stageType) const\n\t{\n\t\tIStage* stage = currentStage;\n\t\twhile (stage->getStageType() != stageType)\n\t\t{\n"
+   ]
+  ]
  }
 ]
