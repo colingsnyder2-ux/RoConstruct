@@ -185,18 +185,48 @@ td.user { font: 600 15px Inter, sans-serif; color: var(--cyan); }
 .medal.m3 { background: radial-gradient(circle at 35% 30%, #f3b37c, #b5652a); color: #2e1606; }
 
 /* class tree */
-.tree { font: 13px/1.6 var(--mono); }
-.tree details { margin-left: 16px; }
-.tree > details { margin-left: 0; }
-.tree summary { cursor: pointer; }
-.tree summary small, .tree .fn small { color: var(--dim); }
-.tree .fn { margin-left: 32px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.tree .st { display: inline-block; width: 92px; font-weight: 600; }
-.st.integrated, .st-n.integrated { color: #58a6ff; } .st.working, .st-n.working, .agent.live { color: #f0883e; }
-.st.error, .st-n.error { color: #f85149; }
-.tree .link-err { white-space: normal; margin-left: 16px; }
-.tree .agent { color: var(--dim); font-size: 12px; margin-left: 6px; } .st.inactive, .st-n.inactive { color: #a371f7; } .st.draft, .st-n.draft { color: #db61a2; }
-.st.exact, .st-n.exact { color: #3fb950; } .st.partial, .st-n.partial { color: #d29922; } .st.unmined, .st-n.unmined { color: var(--dim); }
+.tree-legend { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 12px; }
+.tree-legend button { display: inline-flex; align-items: center; gap: 6px; background: var(--panel); color: var(--text); border: 1px solid var(--line2); border-radius: 999px; padding: 4px 10px; font: 12px var(--mono); cursor: pointer; }
+.tree-legend button[aria-pressed="true"] { border-color: var(--text); }
+.tree-legend button b { font-weight: 600; }
+.tree-legend .hint { flex-basis: 100%; color: var(--dim); font-size: 12px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; background: var(--c); flex: none; }
+.tree { display: grid; gap: 8px; }
+.tree-ns { background: var(--panel); border: 1px solid var(--line2); border-radius: 10px; overflow: hidden; }
+.tree-ns > summary, .tree-cls > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) 140px minmax(0, auto); gap: 12px; align-items: center; padding: 10px 14px; }
+.tree-ns > summary::-webkit-details-marker, .tree-cls > summary::-webkit-details-marker { display: none; }
+.tree-ns > summary { font-weight: 600; }
+.tree-cls { border-top: 1px solid var(--line2); }
+.tree-cls > summary { padding: 8px 14px 8px 30px; font: 13px var(--mono); }
+.tree-ns > summary:hover, .tree-cls > summary:hover { background: rgba(255,255,255,.03); }
+.tree .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tree .name::before { content: "▸"; color: var(--dim); display: inline-block; width: 16px; }
+.tree details[open] > summary .name::before { content: "▾"; }
+.tree .name small { color: var(--dim); font-weight: 400; margin-left: 6px; }
+.sbar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: var(--grey); }
+.sbar i { background: var(--c); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px 10px; justify-content: flex-end; font: 12px var(--mono); color: var(--dim); }
+.chips span { display: inline-flex; align-items: center; gap: 4px; }
+.chip-err { color: #f85149; } .chip-live { color: #f0883e; }
+.tree-body { padding: 4px 14px 14px 46px; }
+.tree-group { margin-top: 10px; }
+.tree-group h4 { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--dim); }
+.tree-fn { display: grid; grid-template-columns: 76px minmax(0, 1fr) 64px minmax(0, 220px); gap: 12px; font: 12px/1.9 var(--mono); border-bottom: 1px solid rgba(255,255,255,.04); }
+.tree-fn > * { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tree-fn .addr, .tree-fn .size, .tree-fn .src { color: var(--dim); } .tree-fn .size { text-align: right; }
+.tree-fn .anon { color: var(--dim); font-style: italic; }
+.tree-note { color: var(--dim); font-size: 12px; margin: 8px 0 0; }
+.tree-err { border: 1px solid rgba(248,81,73,.35); background: rgba(248,81,73,.06); border-radius: 8px; padding: 8px 12px; margin-top: 8px; font: 12px var(--mono); }
+.tree-err summary { cursor: pointer; color: #f85149; }
+.tree-err .tree-err { background: none; }
+.tree-err ul { margin: 6px 0 0; padding-left: 18px; color: var(--dim); }
+.tree-agent { margin-top: 8px; font: 12px var(--mono); color: var(--dim); }
+@media (max-width: 640px) {
+  .tree-ns > summary, .tree-cls > summary { grid-template-columns: minmax(0, 1fr) 80px; }
+  .tree .chips { grid-column: 1 / -1; justify-content: flex-start; }
+  .tree-body { padding-left: 14px; }
+  .tree-fn { grid-template-columns: 70px minmax(0, 1fr) 56px; } .tree-fn .src { display: none; }
+}
 /* client page bits */
 .back { font: 14px var(--mono); display: inline-block; margin-top: 28px; }
 .sub { font: 14px var(--mono); color: var(--dim); text-align: center; margin: 6px 0 16px; }
@@ -891,53 +921,76 @@ function wireLibraries(onMap) {
   for (const b of document.querySelectorAll("#libs .mapbtn")) b.onclick = () => onMap(b.dataset.g);
 }
 
-// Class tree: namespace > unit > function, status per function. Methods render lazily on open.
-const TREE_STATES = ["integrated", "working", "inactive", "draft", "exact", "partial", "unmined"];
+// Class tree: namespace > unit > function, grouped by status. Methods render lazily on open.
+const TREE_STATES = [
+  ["integrated", "Integrated", "#58a6ff", "in the linked rebuild"],
+  ["working", "Working", "#f0883e", "an agent (Codex, Claude, …) holds a live claim"],
+  ["inactive", "Inactive", "#a371f7", "native code exists, receipt-proven exact, not integrated"],
+  ["draft", "Draft", "#db61a2", "native code exists, not yet proven exact"],
+  ["exact", "Exact", "#3fb950", "mined exact only, no native code"],
+  ["partial", "Partial", "#d29922", "mined, not exact"],
+  ["unmined", "Unmined", "#6e7681", "no source yet"]];
+const TREE_COLOR = Object.fromEntries(TREE_STATES.map(([k, , c]) => [k, c]));
 function treeStatus(f, nativeSet, inactive, working) {
   const a = hex(f[0]);
   return nativeSet.has(a) ? "integrated" : working[a] ? "working" : inactive[a] ? (inactive[a][1] ? "inactive" : "draft")
     : f[2] === 100 ? "exact" : f[2] ? "partial" : "unmined";
 }
 function renderTree(data, byUnit, nativeSet, native) {
-  const box = document.getElementById("tree"), input = document.getElementById("tree-filter");
+  const box = document.getElementById("tree"), input = document.getElementById("tree-filter"), legend = document.getElementById("tree-legend");
   const names = native?.names || {}, inactive = native?.inactive || {}, working = native?.working || {}, activity = native?.activity || {};
-  const fname = f => names[hex(f[0])]?.[0] || inactive[hex(f[0])]?.[0] || f[5]?.[2] || "sub_" + hex(f[0]);
+  const fname = f => names[hex(f[0])]?.[0] || inactive[hex(f[0])]?.[0] || f[5]?.[2] || "";
   const status = f => treeStatus(f, nativeSet, inactive, working);
   const linkFam = native?.link_errors?.families || {};
   // family "RBX::Foo" or "TToolVerb::isChecked" -> unit whose name matches its class part
   const linkFor = unit => Object.entries(linkFam).filter(([fam]) => { const cls = fam.split("::").slice(0, fam.startsWith("RBX::") ? 2 : 1).join("::"); return cls === unit || unit.endsWith("::" + cls) || unit.startsWith(cls + "<"); });
-  const linkHtml = rows => rows.length ? `<div class="fn link-err">${rows.map(([fam, e]) => `<details><summary><span class="st error">link</span>${esc(fam)} <small>${e.symbols.length} unresolved · ${esc(e.objects.join(", "))}</small></summary>${e.symbols.map(x => `<div class="fn"><small>${esc(x)}</small></div>`).join("")}</details>`).join("")}</div>` : "";
-  const agent = unit => { const a = activity[unit]; return a ? ` <span class="agent ${a[0] === "working" ? "live" : ""}" title="${esc(a[0])}">${esc(a[0] === "working" ? "● " + a[1] + " working" : a[0].startsWith("parked") ? "parked" : a[0])}${a[0].startsWith("parked") ? ": " + esc(a[0].slice(8)) : ""}</span>` : ""; };
-  const ns = new Map();
+  const linkHtml = rows => rows.map(([fam, e]) => `<details class="tree-err"><summary>${e.symbols.length} unresolved · ${esc(fam)} <span style="color:var(--dim)">· ${esc(e.objects.join(", "))}</span></summary><ul>${e.symbols.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>`).join("");
+  const dot = k => `<i class="dot" style="--c:${TREE_COLOR[k]}"></i>`;
+  const ns = new Map(), statusOf = new Map();
   for (const [u, fs] of byUnit) {
-    const unit = data.units[u], i = unit.lastIndexOf("::"), key = i < 0 ? "(global)" : unit.slice(0, i);
+    const unit = data.units[u], i = unit.lastIndexOf("::"), key = i < 0 ? "Global" : unit.slice(0, i);
     if (!ns.has(key)) ns.set(key, []);
     ns.get(key).push([u, unit, fs]);
+    for (const f of fs) statusOf.set(f, status(f));
   }
-  const counts = fs => { const c = Object.fromEntries(TREE_STATES.map(k => [k, 0])); for (const f of fs) c[status(f)]++; return c; };
-  const summary = c => `<small>${TREE_STATES.filter(k => c[k]).map(k => `<span class="st-n ${k}">${fmt(c[k])} ${k}</span>`).join(" · ")}</small>`;
+  const counts = fs => { const c = Object.fromEntries(TREE_STATES.map(([k]) => [k, 0])); for (const f of fs) c[statusOf.get(f)]++; return c; };
+  const sbar = c => { const n = Object.values(c).reduce((a, b) => a + b, 0) || 1; return `<div class="sbar" title="${TREE_STATES.filter(([k]) => c[k]).map(([k, l]) => `${c[k]} ${l.toLowerCase()}`).join(", ")}">${TREE_STATES.filter(([k]) => c[k]).map(([k]) => `<i style="--c:${TREE_COLOR[k]};width:${100 * c[k] / n}%"></i>`).join("")}</div>`; };
+  // chips show native progress only; the bar already shows mining states
+  const chips = (c, extra = "") => `<div class="chips">${["integrated", "working", "inactive", "draft"].filter(k => c[k]).map(k => `<span>${dot(k)}${fmt(c[k])}</span>`).join("")}${extra}</div>`;
+  const total = counts(data.funcs);
+  let only = "";
+  const drawLegend = () => legend.innerHTML = TREE_STATES.map(([k, l, , d]) => `<button type="button" data-state="${k}" aria-pressed="${only === k}" title="${esc(d)}">${dot(k)}${l} <b>${fmt(total[k])}</b></button>`).join("") +
+    `<span class="hint">Hover a status for its meaning; click to show only classes that have it.${native?.commit ? ` Data from commit <code>${esc(native.commit)}</code> · ${esc(native.updated)}.` : ""}</span>`;
+  legend.onclick = e => { const b = e.target.closest("button[data-state]"); if (!b) return; only = only === b.dataset.state ? "" : b.dataset.state; drawLegend(); draw(); };
   const draw = () => {
     const q = input.value.trim().toLowerCase();
-    box.innerHTML = [...ns.keys()].sort().map(key => {
-      const units = ns.get(key).filter(([, unit]) => !q || unit.toLowerCase().includes(q));
+    box.innerHTML = [...ns.keys()].sort((a, b) => (a === "Global") - (b === "Global") || a.localeCompare(b)).map(key => {
+      const units = ns.get(key).filter(([, unit, fs]) => (!q || unit.toLowerCase().includes(q)) && (!only || fs.some(f => statusOf.get(f) === only)));
       if (!units.length) return "";
-      return `<details ${q ? "open" : ""}><summary>${esc(key)} ${summary(counts(units.flatMap(x => x[2])))}</summary>${units
-        .sort((a, b) => a[1].localeCompare(b[1])).map(([u, unit, fs]) =>
-          `<details data-unit="${u}"><summary>${esc(unit)} ${summary(counts(fs))}${agent(unit)}${linkFor(unit).length ? ` <span class="st-n error">${linkFor(unit).reduce((n, [, e]) => n + e.symbols.length, 0)} link errors</span>` : ""}</summary></details>`).join("")}</details>`;
-    }).join("") || "<p>No classes match.</p>";
+      const c = counts(units.flatMap(x => x[2]));
+      return `<details class="tree-ns" ${q || only ? "open" : ""}><summary><span class="name">${esc(key)}<small>${fmt(units.length)} ${units.length === 1 ? "class" : "classes"}</small></span>${sbar(c)}${chips(c)}</summary>${units
+        .sort((a, b) => a[1].localeCompare(b[1])).map(([u, unit, fs]) => {
+          const cc = counts(fs), errs = linkFor(unit).reduce((n, [, e]) => n + e.symbols.length, 0), a = activity[unit];
+          const extra = (errs ? `<span class="chip-err">${errs} link err</span>` : "") + (a?.[0] === "working" ? `<span class="chip-live">● ${esc(a[1])}</span>` : "");
+          return `<details class="tree-cls" data-unit="${u}"><summary><span class="name">${esc(key === "Global" ? unit : unit.slice(key.length + 2))}<small>${fs.length}</small></span>${sbar(cc)}${chips(cc, extra)}</summary></details>`;
+        }).join("")}</details>`;
+    }).join("") || `<p class="tree-note">No classes match.</p>`;
   };
   box.addEventListener("toggle", e => {
     const d = e.target;
     if (!d.open || !d.dataset.unit || d.dataset.drawn) return;
     d.dataset.drawn = 1;
-    d.insertAdjacentHTML("beforeend", linkHtml(linkFor(data.units[+d.dataset.unit])) + [...byUnit.get(+d.dataset.unit)].sort((a, b) => a[0] - b[0]).map(f => {
-      const st = status(f), w = working[hex(f[0])], receipt = w ? w[0] + " · " + w[1] : inactive[hex(f[0])]?.[2];
-      return `<div class="fn" title="${esc(fname(f))}"><span class="st ${st}">${st}</span>${hex(f[0])} ${esc(fname(f))} <small>${f[1]} B · mined ${f[2]}%${receipt ? " · " + esc(receipt) : ""}</small></div>`;
-    }).join(""));
+    const unit = data.units[+d.dataset.unit], fs = [...byUnit.get(+d.dataset.unit)].sort((a, b) => a[0] - b[0]), a = activity[unit];
+    const groups = TREE_STATES.map(([k, l]) => [k, l, fs.filter(f => statusOf.get(f) === k)]).filter(g => g[2].length);
+    d.insertAdjacentHTML("beforeend", `<div class="tree-body">${linkHtml(linkFor(unit))}${a ? `<div class="tree-agent">Latest agent claim: ${esc(a[1])} · ${esc(a[0])}</div>` : ""}${groups.map(([k, l, g]) => `<div class="tree-group"><h4>${dot(k)}${l} · ${g.length}</h4>${g.map(f => {
+      const w = working[hex(f[0])], src = w ? w[0] + " · " + w[1] : inactive[hex(f[0])]?.[2] || "", n = fname(f);
+      return `<div class="tree-fn"><span class="addr">${hex(f[0])}</span><span title="${esc(n)}"${n ? "" : ' class="anon"'}>${n ? esc(n) : "unnamed"}</span><span class="size">${fmt(f[1])} B</span><span class="src" title="${esc(src)}">${esc(src.split("/").pop())}</span></div>`;
+    }).join("")}</div>`).join("")}</div>`);
   }, true);
-  const trials = native?.link_errors?.trials || [];
-  document.getElementById("link-summary").innerHTML = trials.length ? `<p class="note">${trials.map(t => `Link trial <code>${esc(t.receipt)}</code>: exit ${esc(t.link_exit)} · ${esc(t.error_lines)} error lines${t.revision ? " · rev " + esc(t.revision) : ""}`).join("<br>")}</p>` + linkHtml(Object.entries(linkFam).filter(([fam]) => !data.units.some(u => linkFor(u).some(([f]) => f === fam)))).replace('class="fn link-err"', 'class="tree link-err"') : "";
+  const trials = native?.link_errors?.trials || [], loose = Object.entries(linkFam).filter(([fam]) => !data.units.some(u => linkFor(u).some(([f]) => f === fam)));
+  document.getElementById("link-summary").innerHTML = trials.length ? `<details class="tree-err"><summary>Link trial: ${trials.map(t => `exit ${esc(t.link_exit)} · ${esc(t.error_lines)} error lines${t.revision ? " · rev " + esc(t.revision) : ""}`).join("; ")} · ${loose.length} families not tied to a class</summary>${linkHtml(loose)}</details>` : "";
   input.oninput = draw;
+  drawLegend();
   draw();
 }
 
@@ -1023,8 +1076,9 @@ async function client(name) {
     <div id="live-mining">${native && views.daily==="integration" ? integrationDaily(native, true) : miningGraph({...latest,
       source_matched: latest.source_matched ?? data.funcs.filter(f => f[2] === 100 && f[5]).length,
       mined_matched: latest.mined_matched ?? data.funcs.filter(f => f[2] === 100 && !f[5]).length}, !!native)}</div>
-    <div class="head"><h2><small>Tree</small>Classes</h2><p>Every unit and every function. <b>integrated</b>: in the linked rebuild · <b>working</b>: an agent (Codex, Claude, …) holds a live claim · <b>inactive</b>: native code exists, receipt-proven exact, not integrated · <b>draft</b>: native code exists, not yet exact · <b>exact</b>/<b>partial</b>/<b>unmined</b>: mining only.${native?.commit ? ` Built from commit <code>${esc(native.commit)}</code> · ${esc(native.updated)}.` : ""}</p></div>
+    <div class="head"><h2><small>Tree</small>Classes</h2><p>Every class and function in this client, by native rebuild status.</p></div>
     <div class="controls"><input id="tree-filter" placeholder="Filter classes, e.g. CRobloxDoc"></div>
+    <div class="tree-legend" id="tree-legend"></div>
     <div id="link-summary"></div>
     <div class="tree" id="tree"></div>
     ${leaderboard(latest.leaderboard, "", name)}
