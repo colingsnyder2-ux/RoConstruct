@@ -113,6 +113,7 @@ def wine_env(extra=None):
     env = dict(os.environ)
     env["WINEPREFIX"] = str(WINE_PREFIX)
     env["WINEDEBUG"] = "-all"
+    env.setdefault("DISPLAY", os.environ.get("ROC_DISPLAY", ":98"))  # headless Linux: runtime gates open windows (Xvfb)
     env.setdefault("WINEDLLOVERRIDES", "mscoree,mshtml=")
     if extra:
         env.update(extra)

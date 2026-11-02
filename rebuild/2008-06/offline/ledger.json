@@ -1,0 +1,1400 @@
+{
+ "jobs": [
+  {
+   "id": "bc06e52f7970494682e9ab8e6e95486b",
+   "state": "accepted",
+   "unit": "RBX::AdornG3D",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005a05a0",
+     "005a0d90",
+     "00676b20",
+     "00676e00",
+     "006770f0"
+    ]
+   }
+  },
+  {
+   "id": "7774bf722f9848e2971c2116a6956d78",
+   "state": "accepted",
+   "unit": "RBX::Render::RenderScene, RBX::Humanoid",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005026d0",
+     "005058f0",
+     "00505940",
+     "00505a20",
+     "00505ad0",
+     "00505b90",
+     "00505c70",
+     "00505d20",
+     "00505e30",
+     "00505ee0",
+     "00505f40",
+     "00505ff0",
+     "00506890",
+     "00506a60",
+     "00506ae0",
+     "00506c00",
+     "00506c80",
+     "005d9340",
+     "005d9bb0",
+     "005d9db0"
+    ]
+   }
+  },
+  {
+   "id": "d2b2a3e541984a338c5bed81ad7406dc",
+   "state": "accepted",
+   "unit": "RBX::JointInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005a0220"
+    ]
+   }
+  },
+  {
+   "id": "3ff280eb25544ffeb23346a506763f1d",
+   "state": "accepted",
+   "unit": "RBX::AdornG3D",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00677190",
+     "00677260",
+     "00677300"
+    ]
+   }
+  },
+  {
+   "id": "1eabb1cc173b4fb68233b518ce22a78b",
+   "state": "accepted",
+   "unit": "RBX::Network::Players",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00497600"
+    ]
+   }
+  },
+  {
+   "id": "3520e34f5e82483fa2b22e6d460c67bd",
+   "state": "accepted",
+   "unit": "RBX::JointStage",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00668a20"
+    ]
+   }
+  },
+  {
+   "id": "0137b9f994044e48b9744b3c24e78cc0",
+   "state": "accepted",
+   "unit": "RBX::Point",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0064dc90"
+    ]
+   }
+  },
+  {
+   "id": "79f1e1c7e9014b6f8f437df3a921ee20",
+   "state": "accepted",
+   "unit": "RBX::DebrisService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0063c070",
+     "007f8ba0"
+    ]
+   }
+  },
+  {
+   "id": "58cca36a66e54cc79b7791c853c8d7c2",
+   "state": "accepted",
+   "unit": "RBX::Primitive, RBX::Ball",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005e75b0",
+     "005e75e0",
+     "005e8770"
+    ]
+   }
+  },
+  {
+   "id": "e7bf453a40ed41edb8aaae021bfb6e0e",
+   "state": "accepted",
+   "unit": "RBX::Sky",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0060f480",
+     "0060fc20"
+    ]
+   }
+  },
+  {
+   "id": "5d7a0e8e4b1f498f937c36372b0fc438",
+   "state": "accepted",
+   "unit": "RBX::JointStage",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "006683f0",
+     "00668850"
+    ]
+   }
+  },
+  {
+   "id": "00e49e6686714f1c936a833f527f0353",
+   "state": "accepted",
+   "unit": "RBX::ImageWidget",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0064f070"
+    ]
+   }
+  },
+  {
+   "id": "498fcc2e7e1c45869facb62f677ff5eb",
+   "state": "accepted",
+   "unit": "RBX::VerbWidget",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00642270",
+     "006423e0"
+    ]
+   }
+  },
+  {
+   "id": "43efaa2fbda944079018684c1d090546",
+   "state": "accepted",
+   "unit": "RBX::UnlockedPartByLocalCharacter",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "006602b0"
+    ]
+   }
+  },
+  {
+   "id": "aacbc5f44eab4703b5d124edd51c655d",
+   "state": "accepted",
+   "unit": "RBX::PartDragTool, RBX::Primitive, RBX::Camera, RBX::JointsService, RBX::ModelInstance, RBX::NullTool",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00583ba0",
+     "005cbf90",
+     "005cc040",
+     "005e5860",
+     "005e5b50",
+     "005e8d30",
+     "00618200",
+     "006663f0"
+    ]
+   }
+  },
+  {
+   "id": "2b73a7058da44834952848ffd5d4ee68",
+   "state": "accepted",
+   "unit": "RBX::Ball",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005e7450"
+    ]
+   }
+  },
+  {
+   "id": "423b06fc038948b4be208435827038c4",
+   "state": "accepted",
+   "unit": "RBX::Block, RBX::Tool, RBX::Ball, RBX::Primitive",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005e8000",
+     "005e8140",
+     "005e8470",
+     "005e85b0",
+     "005fdb70",
+     "005fdc40",
+     "005fe6d0"
+    ]
+   }
+  },
+  {
+   "id": "05a9c896175b44238c694313cf62cb19",
+   "state": "accepted",
+   "unit": "RBX::VelocityMotor",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00583860",
+     "00583920",
+     "0060a0f0",
+     "0060f3e0",
+     "0064a3d0",
+     "00669cf0",
+     "00669d10"
+    ]
+   }
+  },
+  {
+   "id": "310c52c1a5334eec93e6ab971d0506ae",
+   "state": "accepted",
+   "unit": "RBX::MotorJoint",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0060e840",
+     "0060ed40",
+     "0060f0a0",
+     "00669780"
+    ]
+   }
+  },
+  {
+   "id": "fcd175f566cc44fc9f3bb09a2c2cbd24",
+   "state": "accepted",
+   "unit": "RBX::Block, RBX::GroupDragTool, RBX::Ball",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00649130",
+     "00649170",
+     "00649190",
+     "006498b0",
+     "0066a630"
+    ]
+   }
+  },
+  {
+   "id": "b3c4cb191d88467e9c762f01bf43f48a",
+   "state": "accepted",
+   "unit": "RBX::ToolMouseCommand",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005ea5e0"
+    ]
+   }
+  },
+  {
+   "id": "8fb3a8e3f3f34e989423ec4c1f01ecdf",
+   "state": "accepted",
+   "unit": "RBX::RotatePJoint",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00645ae0"
+    ]
+   }
+  },
+  {
+   "id": "72e0cc406874442e92ccf2226772409b",
+   "state": "accepted",
+   "unit": "RBX::BodyMover",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "006308f0"
+    ]
+   }
+  },
+  {
+   "id": "3b1c84505df04ad0ab701d726bc59ff6",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005de910"
+    ]
+   }
+  },
+  {
+   "id": "90f39970ace4420c8682e0e1a27e1b10",
+   "state": "accepted",
+   "unit": "RBX::Message",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005de190"
+    ]
+   }
+  },
+  {
+   "id": "c56c7dbe1b29497fab60da63ed13ef16",
+   "state": "accepted",
+   "unit": "RBX::RigidJoint, RBX::MotorJoint",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005e5da0",
+     "006456e0"
+    ]
+   }
+  },
+  {
+   "id": "c13640743d614ab99833830c9b3f3078",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005a5200",
+     "005a5710",
+     "005a59e0"
+    ]
+   }
+  },
+  {
+   "id": "a0224c58673843b18971d87dbf98c9fe",
+   "state": "accepted",
+   "unit": "RBX::ModelInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00584fc0"
+    ]
+   }
+  },
+  {
+   "id": "4db6a147fbf34d138821a4c26d8340c7",
+   "state": "accepted",
+   "unit": "RBX::ModelInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00585050"
+    ]
+   }
+  },
+  {
+   "id": "801453a2e5a344d2965b9bcdf73282a0",
+   "state": "accepted",
+   "unit": "RBX::Block, RBX::Primitive",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "006456a0",
+     "00645860",
+     "00647900",
+     "00647990"
+    ]
+   }
+  },
+  {
+   "id": "5786ceb57ace420ba860c55d28d15255",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "004f0a20",
+     "00676750",
+     "00676890",
+     "00676aa0",
+     "007ad160",
+     "007b8450",
+     "007b85e0",
+     "007b8eb0",
+     "007b8f40",
+     "007b8fb0"
+    ]
+   }
+  },
+  {
+   "id": "2fc8f46effa54677a28ecf9ec8c29d17",
+   "state": "accepted",
+   "unit": "RBX::Block, RBX::ServiceProvider, RBX::SimJobStage, RBX::Log, RBX::Message",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00572ca0",
+     "0057d050",
+     "005a8440",
+     "005a86e0",
+     "005dd400",
+     "005dd4c0",
+     "005dd4d0",
+     "006089a0",
+     "00647f40",
+     "0064d090"
+    ]
+   }
+  },
+  {
+   "id": "0897bf6465ef47c1ba1083ec61297cc7",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0049fe50"
+    ]
+   }
+  },
+  {
+   "id": "7f6f4dec77444adfb6f91cea48c37326",
+   "state": "accepted",
+   "unit": "RBX::Clump",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "004ac830",
+     "005a28c0"
+    ]
+   }
+  },
+  {
+   "id": "cf23b29245014497a847c9a372c004fb",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005d3a30"
+    ]
+   }
+  },
+  {
+   "id": "da71a08695894d518629d489946b28e2",
+   "state": "accepted",
+   "unit": "RBX::Network::Players",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0049dc70"
+    ]
+   }
+  },
+  {
+   "id": "51c79aca31bd4f86809bef975b7a3169",
+   "state": "accepted",
+   "unit": "RBX::Network::Player",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "004937c0",
+     "0049c7b0",
+     "0049df50"
+    ]
+   }
+  },
+  {
+   "id": "0c63d688847841ecaca456a4e9a46490",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0055ae90"
+    ]
+   }
+  },
+  {
+   "id": "a23908b5d21749ca9d4a9cd5a17e1711",
+   "state": "accepted",
+   "unit": "RBX::StandardOut",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00569a40",
+     "00569ae0"
+    ]
+   }
+  },
+  {
+   "id": "7defe8d7595148459e4686995a58c17c",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0060e970"
+    ]
+   }
+  },
+  {
+   "id": "81da315095914cd8a24d0ab3d963c763",
+   "state": "accepted",
+   "unit": "RBX::MergeBinder",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00443d60"
+    ]
+   }
+  },
+  {
+   "id": "957f8ed5ec114d20943bae0f124beb02",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0055b960"
+    ]
+   }
+  },
+  {
+   "id": "852cd908e7b947eb870f807b48d17d8f",
+   "state": "accepted",
+   "unit": "RBX::Clump",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005cdf70",
+     "00642210"
+    ]
+   }
+  },
+  {
+   "id": "3bbb9ca5c79f46ab866f505209421a8b",
+   "state": "accepted",
+   "unit": "RBX::Camera",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005cdf70",
+     "00642210"
+    ]
+   }
+  },
+  {
+   "id": "601b0317223443b7af6f041ed29941d7",
+   "state": "accepted",
+   "unit": "RBX::BackpackItem",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005d11e0"
+    ]
+   }
+  },
+  {
+   "id": "8b56d5e04a834b98b91b949ac79b3c48",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0055a540",
+     "0055b7e0"
+    ]
+   }
+  },
+  {
+   "id": "a442dca5cbb547d3951f2e3413fff6b6",
+   "state": "accepted",
+   "unit": "RBX::ScriptContext, RBX::Feature",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005ad000"
+    ]
+   }
+  },
+  {
+   "id": "19c4875bdfe24187b25b9043b0146448",
+   "state": "accepted",
+   "unit": "RBX::Lighting",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005e1a40"
+    ]
+   }
+  },
+  {
+   "id": "de7b9eae5623429791a439bbab6a29c6",
+   "state": "accepted",
+   "unit": "RBX::ArrowButton",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00658a00"
+    ]
+   }
+  },
+  {
+   "id": "6fe1e88b9ac947f1b2cb7752944c43ab",
+   "state": "accepted",
+   "unit": "RBX::SpecialShape, RBX::PartInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00599730",
+     "00599f80",
+     "0059aae0",
+     "0059b4d0",
+     "0059b4f0",
+     "0059b810",
+     "0059ebe0",
+     "0059eca0",
+     "0059ff10",
+     "0059ff70"
+    ]
+   }
+  },
+  {
+   "id": "0e9e29d062944c2195b02e71d3218e3f",
+   "state": "accepted",
+   "unit": "RBX::BodyMover, RBX::RotatePJoint, RBX::LocalBackpack, RBX::Explosion, RBX::RevoluteLink, RBX::Teams, RBX::RunService, RBX::GroupDragTool, RBX::ArrowButton",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00556520",
+     "005bd680",
+     "005d6180",
+     "005fbd80",
+     "005fc940",
+     "005fd0b0",
+     "00608160",
+     "00610930",
+     "006147f0",
+     "0062b5c0",
+     "0062b610",
+     "0062e910",
+     "006300d0",
+     "00630610",
+     "00632370",
+     "00632720",
+     "00633090",
+     "00645af0",
+     "00646550",
+     "00658ca0",
+     "0066c970",
+     "0066daf0"
+    ]
+   }
+  },
+  {
+   "id": "a7480fdea7e547a99dac0c2f27fdf944",
+   "state": "accepted",
+   "unit": "RBX::Log, RBX::JointStage",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005a80d0",
+     "005a8140",
+     "006683b0"
+    ]
+   }
+  },
+  {
+   "id": "d9a614b346a44a82abc8fd6923ab5d98",
+   "state": "accepted",
+   "unit": "RBX::JointInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005e3a80"
+    ]
+   }
+  },
+  {
+   "id": "555bc6a61c11460b89091abb484c76f9",
+   "state": "accepted",
+   "unit": "RBX::Teams",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005d5ea0"
+    ]
+   }
+  },
+  {
+   "id": "30c9e718fbfa419b99fa07995f7cc2e8",
+   "state": "accepted",
+   "unit": "RBX::Humanoid",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005d80c0"
+    ]
+   }
+  },
+  {
+   "id": "344b2aa8b19b45ab815b96f201154276",
+   "state": "accepted",
+   "unit": "RBX::World",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005ea8b0"
+    ]
+   }
+  },
+  {
+   "id": "1bef0f0fe4be4bb3bdae0375ace125c4",
+   "state": "accepted",
+   "unit": "RBX::Humanoid",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005d77b0"
+    ]
+   }
+  },
+  {
+   "id": "6126a57c3afd4038b5ea48c67f94c72c",
+   "state": "accepted",
+   "unit": "RBX::PartInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00645750"
+    ]
+   }
+  },
+  {
+   "id": "5d8b450e40ca4373a01d31fdef4cb523",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005d6e10",
+     "005defa0"
+    ]
+   }
+  },
+  {
+   "id": "2c2b7a578d4e4b01be3aaaec1626d88e",
+   "state": "accepted",
+   "unit": "RBX::TimerService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005d6e10",
+     "005defa0"
+    ]
+   }
+  },
+  {
+   "id": "fc859807d9b04218b0d0797463b776a9",
+   "state": "accepted",
+   "unit": "RBX::PartInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005995f0"
+    ]
+   }
+  },
+  {
+   "id": "9ab6b2bc8b6a447981ac7962117d2e09",
+   "state": "accepted",
+   "unit": "RBX::PartInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00449410",
+     "004a6de0",
+     "004a83e0",
+     "004a8b90",
+     "00559170",
+     "0056be00",
+     "0056bee0"
+    ]
+   }
+  },
+  {
+   "id": "29c85cb76c6d49faa66d060a542d4de5",
+   "state": "accepted",
+   "unit": "RBX::World, RBX::RootInstance",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00574fa0",
+     "00574fc0",
+     "00591580",
+     "005e9150",
+     "005e9160",
+     "005e9260",
+     "005e9280",
+     "005e93e0",
+     "005e98c0",
+     "005ea880",
+     "0060e540",
+     "0060e630",
+     "00615d90",
+     "0066d0d0",
+     "007110c0"
+    ]
+   }
+  },
+  {
+   "id": "cd58b3d59e0f4bc7992d798b31e85a05",
+   "state": "accepted",
+   "unit": "RBX::Soundscape::SoundService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00599fa0"
+    ]
+   }
+  },
+  {
+   "id": "17aa606f8bf541a0a3ec6c47ae387959",
+   "state": "accepted",
+   "unit": "RBX::Clump",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00574b10",
+     "00616f60",
+     "0062b030",
+     "0063c280",
+     "00641390",
+     "0064e050"
+    ]
+   }
+  },
+  {
+   "id": "088aa112a6184269b496e29ebaf36004",
+   "state": "accepted",
+   "unit": "RBX::Tool",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005b0840",
+     "005fd3e0"
+    ]
+   }
+  },
+  {
+   "id": "23ba88f68b6f4336a4e355013c7f394c",
+   "state": "accepted",
+   "unit": "RBX::Camera, RBX::Selection, RBX::MotorJoint, RBX::JointInstance, RBX::ControllerService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00567770",
+     "005cbe70",
+     "005cc690",
+     "005ce480",
+     "005e2af0",
+     "005e5e70",
+     "00608aa0",
+     "00612fb0",
+     "0064dd40",
+     "006773f0"
+    ]
+   }
+  },
+  {
+   "id": "a76582d4868d40cfb32c15461b097791",
+   "state": "accepted",
+   "unit": "RBX::LocalBackpack, RBX::BodyMover, RBX::Block, RBX::Primitive",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005e8050",
+     "005e80d0",
+     "005fcfb0",
+     "00610070",
+     "00632db0",
+     "006477b0",
+     "00649f20",
+     "0064a200"
+    ]
+   }
+  },
+  {
+   "id": "16375cb373ee4a6094ff390c19e17bce",
+   "state": "accepted",
+   "unit": "RBX::RunService, RBX::SimJobStage",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00556b00",
+     "0064d060"
+    ]
+   }
+  },
+  {
+   "id": "d40b4bf9edb44cafb3778c3259f157e7",
+   "state": "accepted",
+   "unit": "RBX::LegacyHopperService, RBX::BodyColors, RBX::Script, RBX::Skin",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00586bf0",
+     "005d0910",
+     "005d3aa0",
+     "005d4b60",
+     "005e7b90",
+     "005e7bd0",
+     "005e7be0",
+     "005e7c80"
+    ]
+   }
+  },
+  {
+   "id": "0ab7277b8f01404faef09a809a3eabb2",
+   "state": "accepted",
+   "unit": "RBX::Primitive",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00586bf0",
+     "005d0910",
+     "005d3aa0",
+     "005d4b60",
+     "005e7b90",
+     "005e7bd0",
+     "005e7be0",
+     "005e7c80"
+    ]
+   }
+  },
+  {
+   "id": "db00257f2e0241cebb9473d7ab93c527",
+   "state": "accepted",
+   "unit": "RBX::TopMenuBar, RBX::Teams",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00574bf0",
+     "005ca430",
+     "005cadc0",
+     "005cfcd0",
+     "005d60f0",
+     "005dd7d0",
+     "005dde50",
+     "00606d10",
+     "0060e780",
+     "0060eb30"
+    ]
+   }
+  },
+  {
+   "id": "6a7eb2d7653645a7aed3a1a0ed748c35",
+   "state": "accepted",
+   "unit": "RBX::DataModel",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00574bf0",
+     "005ca430",
+     "005cadc0",
+     "005cfcd0",
+     "005d60f0",
+     "005dd7d0",
+     "005dde50",
+     "00606d10",
+     "0060e780",
+     "0060eb30"
+    ]
+   }
+  },
+  {
+   "id": "668ce3252f364e7091f6e48cf166e027",
+   "state": "accepted",
+   "unit": "RBX::Seat",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0055ae20",
+     "005693a0",
+     "0057bc00",
+     "0057be10",
+     "00596400",
+     "005964f0",
+     "00596700",
+     "005968d0",
+     "00596a50",
+     "00596cd0",
+     "00597110",
+     "005971d0",
+     "0063d390",
+     "0063d640"
+    ]
+   }
+  },
+  {
+   "id": "121908dd57144d04b7f75064dd77cd02",
+   "state": "accepted",
+   "unit": "RBX::Clump",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0055ae20",
+     "005693a0",
+     "0057bc00",
+     "0057be10",
+     "00596400",
+     "005964f0",
+     "00596700",
+     "005968d0",
+     "00596a50",
+     "00596cd0",
+     "00597110",
+     "005971d0",
+     "0063d390",
+     "0063d640"
+    ]
+   }
+  },
+  {
+   "id": "568ab9a4016d49f38a7d8c192a7974c5",
+   "state": "accepted",
+   "unit": "RBX::ServiceProvider",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "00572a90",
+     "00572e40"
+    ]
+   }
+  },
+  {
+   "id": "0dbe70db3a824afea9ed84c0e6b9ecaf",
+   "state": "accepted",
+   "unit": "RBX::TimerService",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005b6270",
+     "005d73a0"
+    ]
+   }
+  },
+  {
+   "id": "3197941ed3a144c79447206de5581e18",
+   "state": "accepted",
+   "unit": "RBX::Humanoid",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "005d7540",
+     "005db280",
+     "005dc230"
+    ]
+   }
+  },
+  {
+   "id": "bd03af8358b141a283088e4640735c98",
+   "state": "accepted",
+   "unit": "RBX::Reflection::EnumDescriptor",
+   "source": "server",
+   "receipt": {
+    "gains": [
+     "0056c590"
+    ]
+   }
+  },
+  {
+   "id": "offline-9d31e3b200fc6861",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/script/ScriptContext.cpp",
+    "App/util/Math.cpp",
+    "App/v8datamodel/PartInstance.cpp",
+    "Rendering/AppDraw/AdornG3D.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793579616,
+   "receipt": {
+    "gains": [
+     "005997f0",
+     "005aed40",
+     "005dece0",
+     "005ded80",
+     "005df270",
+     "006764c0",
+     "00676500"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-0db6be4e720cf851",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/Workspace.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793594297,
+   "receipt": {
+    "gains": [
+     "005a6620",
+     "005a66b0"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-ad438808ec95874d",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/humanoid/Humanoid.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793597739,
+   "receipt": {
+    "gains": [
+     "005db9e0"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-68e4b2bfe1c83468",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/Tool.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793600387,
+   "receipt": {
+    "gains": [
+     "005fec80",
+     "005fed60",
+     "005feed0",
+     "005ff050",
+     "005ffdd0",
+     "005fff40"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-9aae1d1d061d5f09",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/ModelInstance.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793603060,
+   "receipt": {
+    "gains": [
+     "005836d0"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-2c62f9ba4897446e",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8world/GlueJoint.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793605434,
+   "receipt": {
+    "gains": [
+     "00646c10",
+     "00647190"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-3369a22f28a9f44e",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/Accoutrement.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793607999,
+   "receipt": {
+    "gains": [
+     "005b10a0",
+     "005b1190",
+     "005b15e0",
+     "005b2a40"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-c2c9baa73fa68b80",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/tool/NullTool.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793610590,
+   "receipt": {
+    "gains": [
+     "00617e80"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-71d4e08f3e3e5941",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/Lighting.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793613224,
+   "receipt": {
+    "gains": [
+     "004d6f80",
+     "004d6fb0",
+     "004d6fe0",
+     "004d6ff0",
+     "005e22c0",
+     "005e2370",
+     "005e2420",
+     "005e2490"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-d402459f42439fb9",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/util/Name.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793615575,
+   "receipt": {
+    "gains": [
+     "00553f90",
+     "00554160",
+     "00554290"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-1c92526b885ec903",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8world/RotateJoint.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793618181,
+   "receipt": {
+    "gains": [
+     "00645f60"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-19f4ee92cac8e00b",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/util/Math.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793621535,
+   "receipt": {
+    "gains": [
+     "005dd820",
+     "005dd8b0",
+     "005de990",
+     "005dea60"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-24bdbcef83fc7039",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8world/IPipelined.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793624661,
+   "receipt": {
+    "gains": [
+     "006457e0"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-0c98eca3ca9c64a9",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8world/Clump.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793627342,
+   "receipt": {
+    "gains": [
+     "00647430",
+     "006475a0"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-b158b96630b8aa25",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/util/FileSystem.cpp",
+    "App/util/Guid.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793629892,
+   "receipt": {
+    "gains": [
+     "005a7890",
+     "005a79e0",
+     "005a7ac0",
+     "005a7ea0",
+     "005a8330"
+    ],
+    "losses": []
+   }
+  },
+  {
+   "id": "offline-b52dfa5740fdb596",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/Flag.cpp",
+    "App/v8datamodel/FlagStand.cpp",
+    "App/v8datamodel/SpawnLocation.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793634286,
+   "receipt": {
+    "gains": [
+     "005d37d0",
+     "00618390",
+     "006194a0",
+     "006195b0",
+     "00619970",
+     "0062cf40"
+    ],
+    "losses": []
+   }
+  }
+ ]
+}

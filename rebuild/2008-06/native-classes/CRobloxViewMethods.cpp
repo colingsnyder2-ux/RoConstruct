@@ -93,10 +93,10 @@ void CRobloxView::showToolbox(bool show, bool notify) {
             CWebToolbox* toolbox = static_cast<CWebToolbox*>(RUNTIME_CLASS(CWebToolbox)->CreateObject());
             slot_1d8 = toolbox;
             IWorkspace* workspace = RobloxDocument()->workspace;
-            if (toolbox->site != workspace) {
+            if (toolbox->external.p != workspace) {
                 if (workspace) workspace->AddRef();
-                if (toolbox->site) toolbox->site->Release();
-                toolbox->site = workspace;
+                if (toolbox->external.p) toolbox->external.p->Release();
+                toolbox->external.p = workspace;
             }
             slot_1d8->owner = &window;
             CRect none(0, 0, 0, 0);

@@ -1,0 +1,212 @@
+{
+  "class": "CSettingsDialog",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/I/home/user/roconstruct/tools/libs/xtp-11.2.2/Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_settings_dialog.py": "86d526eb671b52f030f11bf141d67077f2978beb987d512744a8522983bc67c5",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/native-classes/CSettingsDialog.cpp": "a96855161f4f8f1b14b379170a8f95ff84d956cb0ad8759f4e47710782cbd2e4",
+    "rebuild/2008-06/tests/NativeSettingsDialogLayout.cpp": "9e61801cf0e15b9c6f6670cde5bf76adbd9f5a79449b65bfbd50ba614de58621",
+    "rebuild/2008-06/native-headers/CSettingsDialog.h": "9910e88e0308298a44e350c142e1486d29bbe79f4454ff8550a1dcb9eafebc1e",
+    "rebuild/2008-06/native-headers/CSettingsExplorer.h": "ee68cbcf1480a3aec7a4811fb09d0157eebe4aa9733ac8500d60584feb810bf8",
+    "rebuild/2008-06/native-headers/CInstanceExplorer.h": "e6a583b07fb992bb08dd6bda7a41b3c96b873b69f5f51b22623d971a11e872d0",
+    "rebuild/2008-06/native-headers/CSettingsPropGrid.h": "b48a74305fd58efb144651e77a2550124f293d4be35b8ba7175c55555f49a081"
+  },
+  "object_sha256": "f9ec94b0b96879f2ca0b1656c08d3bbbd237bf7bf7ebf2be91b1b6c706cf5a79",
+  "layout": {
+    "size": "0x3d4",
+    "splitter": "0x74 (CXTSplitterWnd, 0x118)",
+    "explorer": "0x18c (CSettingsExplorer*)",
+    "propGrid": "0x190 (CSettingsPropGrid == CSelectionPropGrid, 0x244)",
+    "evidence": "CRuntimeClass 0081bd90 and CreateObject operator new(0x3d4); constructor 00466e10 and destructor 00466ca0; OnInitDialog store at +0x18c; compile-time sizeof/offsetof test"
+  },
+  "methods": [
+    {
+      "address": "00466e10",
+      "symbol": "??0CSettingsDialog@@QAE@PAVCWnd@@@Z",
+      "size": 147,
+      "exact": true,
+      "verified_targets": {
+        "??0CDialog@@QAE@IPAVCWnd@@@Z": "mfc90.dll!??0CDialog@@QAE@IPAVCWnd@@@Z",
+        "??_7CSettingsDialog@@6B@": "0x81bfb4",
+        "??0CXTSplitterWnd@@QAE@XZ": "0x708c50",
+        "??0CPropGrid@@QAE@XZ": "0x442b20",
+        "??_7CSettingsPropGrid@@6BCXTPPropertyGrid@@@": "0x81c174 (RTTI .?AVCSettingsPropGrid@@, offset 0x0)",
+        "??_7CSettingsPropGrid@@6B?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@": "0x81c168 (RTTI .?AVCSettingsPropGrid@@, offset 0x188)",
+        "??_7CSettingsPropGrid@@6B@": "0x81c15c (RTTI .?AVCSettingsPropGrid@@, offset 0x238)"
+      },
+      "local_eh": [
+        "__ehhandler$??0CSettingsDialog@@QAE@PAVCWnd@@@Z"
+      ]
+    },
+    {
+      "address": "00466ca0",
+      "symbol": "??1CSettingsDialog@@UAE@XZ",
+      "size": 98,
+      "exact": true,
+      "verified_targets": {
+        "??_7CSettingsDialog@@6B@": "0x81bfb4",
+        "??1CSelectionPropGrid@@UAE@XZ": "0x430700",
+        "??1CXTSplitterWnd@@UAE@XZ": "0x708280",
+        "??1CDialog@@UAE@XZ": "mfc90.dll!??1CDialog@@UAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??1CSettingsDialog@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00466d10",
+      "symbol": "??_GCSettingsDialog@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CSettingsDialog@@UAE@XZ": "0x466ca0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00466b60",
+      "symbol": "?GetRuntimeClass@CSettingsDialog@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCSettingsDialog@CSettingsDialog@@2UCRuntimeClass@@B": "0x81bd90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041f9b0",
+      "symbol": "?_GetBaseClass@CSettingsDialog@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CDialog@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CDialog@@SGPAUCRuntimeClass@@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00466e00",
+      "symbol": "?GetMessageMap@CSettingsDialog@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CSettingsDialog@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x81c120"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00466fa0",
+      "symbol": "?CreateObject@CSettingsDialog@@SGPAVCObject@@XZ",
+      "size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CSettingsDialog@@QAE@PAVCWnd@@@Z": "0x466e10"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CSettingsDialog@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00466c00",
+      "symbol": "?OnResetSettings@CSettingsDialog@@QAEXXZ",
+      "size": 156,
+      "exact": true,
+      "verified_targets": {
+        "?AfxMessageBox@@YGHIII@Z": "mfc90.dll!?AfxMessageBox@@YGHIII@Z",
+        "?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ": "0x5690f0",
+        "?eraseSettingsStore@GlobalSettings@RBX@@QAEXXZ": "0x5684d0",
+        "?EndDialog@CDialog@@QAEXH@Z": "mfc90.dll!?EndDialog@CDialog@@QAEXH@Z"
+      },
+      "local_eh": [
+        "__ehhandler$?OnResetSettings@CSettingsDialog@@QAEXXZ"
+      ]
+    },
+    {
+      "address": "00467030",
+      "symbol": "?OnInitDialog@CSettingsDialog@@UAEHXZ",
+      "size": 442,
+      "exact": true,
+      "verified_targets": {
+        "?OnInitDialog@CDialog@@UAEHXZ": "mfc90.dll!?OnInitDialog@CDialog@@UAEHXZ",
+        "?classCSettingsExplorer@CSettingsExplorer@@2UCRuntimeClass@@B": "0x81bdac",
+        "?GetPane@CSplitterWnd@@QBEPAVCWnd@@HH@Z": "mfc90.dll!?GetPane@CSplitterWnd@@QBEPAVCWnd@@HH@Z",
+        "?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ": "0x5690f0",
+        "?setRoot@CInstanceExplorer@@QAEXPAVInstance@RBX@@@Z": "0x421a50",
+        "??1?$shared_ptr@VGlobalSettings@RBX@@@boost@@QAE@XZ": "0x600660",
+        "?IdFromRowCol@CSplitterWnd@@QBEHHH@Z": "mfc90.dll!?IdFromRowCol@CSplitterWnd@@QBEHHH@Z",
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": "0x4153b0",
+        "?setSelection@CSelectionPropGrid@@QAEXPAVSelection@RBX@@@Z": "0x442650",
+        "?GetDlgItem@CWnd@@QBEPAV1@H@Z": "mfc90.dll!?GetDlgItem@CWnd@@QBEPAV1@H@Z",
+        "__imp__GetWindowRect@8": "user32.dll!GetWindowRect",
+        "?ScreenToClient@CWnd@@QBEXPAUtagRECT@@@Z": "mfc90.dll!?ScreenToClient@CWnd@@QBEXPAUtagRECT@@@Z",
+        "?MoveWindow@CWnd@@QAEXHHHHH@Z": "mfc90.dll!?MoveWindow@CWnd@@QAEXHHHHH@Z"
+      },
+      "local_eh": [
+        "__ehhandler$?OnInitDialog@CSettingsDialog@@UAEHXZ"
+      ]
+    }
+  ],
+  "runtime_class": {
+    "address": "0081bd90",
+    "size": "0x3d4",
+    "create": "00466fa0",
+    "base_getter": "0041f9b0"
+  },
+  "message_map": {
+    "address": "0081c120",
+    "entries": [
+      {
+        "message": "WM_COMMAND",
+        "code": "BN_CLICKED",
+        "id": 1002,
+        "handler": "00466c00"
+      }
+    ]
+  },
+  "open": [
+    "CInstanceExplorer::setRoot 00421a50 and the CInstanceExplorer layout (0x3cc)",
+    "CSettingsExplorer runtime class functions 00466b70/00466b80/00466b90"
+  ],
+  "scope": "Inactive. 9 exact bodies with verified call/data targets. Names OnResetSettings, setRoot, splitter, explorer and propGrid are chosen names. No active build, swap or credit."
+}

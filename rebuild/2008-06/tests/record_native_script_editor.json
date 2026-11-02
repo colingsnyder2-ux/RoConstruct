@@ -1,0 +1,291 @@
+{
+ "methods": [
+  [
+   "??0CScriptEditor@@QAE@XZ",
+   "00465010"
+  ],
+  [
+   "??1CScriptEditor@@UAE@XZ",
+   "00465830"
+  ],
+  [
+   "??_GCScriptEditor@@UAEPAXI@Z",
+   "00465a20"
+  ],
+  [
+   "??_ECScriptEditor@@WPA@AEPAXI@Z",
+   "004650e0"
+  ],
+  [
+   "??_ECScriptEditor@@WBBE@AEPAXI@Z",
+   "004650f0"
+  ],
+  [
+   "??_ECScriptEditor@@WOM@AEPAXI@Z",
+   "00465100"
+  ],
+  [
+   "?CreateObject@CScriptEditor@@SGPAVCObject@@XZ",
+   "00465160"
+  ],
+  [
+   "?_GetBaseClass@CScriptEditor@@KGPAUCRuntimeClass@@XZ",
+   "004638b0"
+  ],
+  [
+   "?GetRuntimeClass@CScriptEditor@@UBEPAUCRuntimeClass@@XZ",
+   "004638c0"
+  ],
+  [
+   "?GetMessageMap@CScriptEditor@@MBEPBUAFX_MSGMAP@@XZ",
+   "00465a40"
+  ],
+  [
+   "?setScript@CScriptEditor@@QAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z",
+   "00465260"
+  ],
+  [
+   "?OnUpdate@CScriptEditor@@MAEXPAVCView@@JPAVCObject@@@Z",
+   "004657f0"
+  ],
+  [
+   "?onEvent@CScriptEditor@@MAEXPBVInstance@RBX@@UAncestorChanged@3@@Z",
+   "00465500"
+  ],
+  [
+   "?onMarshaledEvent@CScriptEditor@@MAEXPBVRunService@RBX@@W4RunState@3@@Z",
+   "004638d0"
+  ],
+  [
+   "?onMarshaledEvent@CScriptEditor@@MAEXPBVInstance@RBX@@VPropertyChanged@3@@Z",
+   "004659f0"
+  ],
+  [
+   "?PreCreateWindow@CScriptEditor@@MAEHAAUtagCREATESTRUCTA@@@Z",
+   "00463910"
+  ],
+  [
+   "?PostNcDestroy@CScriptEditor@@MAEXXZ",
+   "00463980"
+  ],
+  [
+   "?OnCreate@CScriptEditor@@IAEHPAUtagCREATESTRUCTA@@@Z",
+   "00463930"
+  ],
+  [
+   "?OnActivate@CScriptEditor@@IAEXIPAVCWnd@@H@Z",
+   "00463ed0"
+  ],
+  [
+   "?OnInitialUpdate@CScriptEditor@@MAEXXZ",
+   "004639a0"
+  ],
+  [
+   "?OnCharAdded@CScriptEditor@@MAEXPAUSCNotification@@@Z",
+   "00464460"
+  ],
+  [
+   "?OnDwellStart@CScriptEditor@@MAEXPAUSCNotification@@@Z",
+   "00464590"
+  ],
+  [
+   "?OnDwellEnd@CScriptEditor@@MAEXPAUSCNotification@@@Z",
+   "004644e0"
+  ],
+  [
+   "?OnKillFocus@CScriptEditor@@MAEXXZ",
+   "00464960"
+  ],
+  [
+   "?saveScript@CScriptEditor@@IAEXXZ",
+   "00464830"
+  ],
+  [
+   "?updateTitle@CScriptEditor@@IAEXXZ",
+   "00464540"
+  ],
+  [
+   "?OnReload@CScriptEditor@@IAEJIJ@Z",
+   "004659a0"
+  ],
+  [
+   "?OnAddBookmark@CScriptEditor@@IAEXXZ",
+   "00463f10"
+  ],
+  [
+   "?OnUpdateAddBookmark@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "00463f40"
+  ],
+  [
+   "?OnRemoveBookmark@CScriptEditor@@IAEXXZ",
+   "00463f80"
+  ],
+  [
+   "?OnUpdateRemoveBookmark@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "00463fb0"
+  ],
+  [
+   "?OnNextBookmark@CScriptEditor@@IAEXXZ",
+   "00463ff0"
+  ],
+  [
+   "?OnPreviousBookmark@CScriptEditor@@IAEXXZ",
+   "00464040"
+  ],
+  [
+   "?OnToggleFoldMargin@CScriptEditor@@IAEXXZ",
+   "00464090"
+  ],
+  [
+   "?OnUpdateToggleFoldMargin@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "004640d0"
+  ],
+  [
+   "?OnToggleSelectionMargin@CScriptEditor@@IAEXXZ",
+   "00464100"
+  ],
+  [
+   "?OnUpdateToggleSelectionMargin@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "00464140"
+  ],
+  [
+   "?OnToggleLineNumbers@CScriptEditor@@IAEXXZ",
+   "00464170"
+  ],
+  [
+   "?OnUpdateToggleLineNumbers@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "004641b0"
+  ],
+  [
+   "?OnUpdateInsert@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "004641e0"
+  ],
+  [
+   "?OnUpdateLine@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "004643b0"
+  ],
+  [
+   "?OnUpdateStyle@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "00464270"
+  ],
+  [
+   "?OnUpdateFold@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+   "00464300"
+  ],
+  [
+   "??0?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAE@XZ",
+   "00464970"
+  ],
+  [
+   "??0?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAE@XZ",
+   "00464a40"
+  ],
+  [
+   "??1?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAE@XZ",
+   "00464e20"
+  ],
+  [
+   "??1?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAE@XZ",
+   "00464f00"
+  ],
+  [
+   "?onEvent@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEXPBVRunService@2@W4RunState@2@@Z",
+   "00464ac0"
+  ],
+  [
+   "?marshal@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEXPBVRunService@2@W4RunState@2@@Z",
+   "00464f80"
+  ],
+  [
+   "??_G?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAEPAXI@Z",
+   "00464fd0"
+  ],
+  [
+   "??_G?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEPAXI@Z",
+   "00464ff0"
+  ]
+ ],
+ "internal": {
+  "??0CScintillaView@Scintilla@@QAE@XZ": "00461f00",
+  "??1CGdiObject@@UAE@XZ": "004111a0",
+  "??1CScintillaView@Scintilla@@UAE@XZ": "00461fd0",
+  "??_ECScriptEditor@@UAEPAXI@Z": "00465a20",
+  "?GetThisClass@CScintillaView@Scintilla@@SGPAUCRuntimeClass@@XZ": "004613c0",
+  "?classCScriptEditor@CScriptEditor@@2UCRuntimeClass@@B": "0081b208",
+  "?messageMap@?1??GetThisMessageMap@CScriptEditor@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0081b63c",
+  "?do_lock@recursive_mutex@boost@@AAEXXZ": "00563090",
+  "?removeListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": "005e5a80",
+  "?removeListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "005e5a80",
+  "?removeListener@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z": "005e5a80",
+  "?reset@?$shared_ptr@VScript@RBX@@@boost@@QAEXXZ": "00456e80",
+  "?reset@?$shared_ptr@VRunService@RBX@@@boost@@QAEXXZ": "00456e80",
+  "?reset@?$shared_ptr@Vrecursive_mutex@boost@@@boost@@QAEXXZ": "00456e80",
+  "?do_unlock@recursive_mutex@boost@@AAEXXZ": "005630e0",
+  "?getMutex@DataModel@RBX@@SA?AV?$shared_ptr@Vrecursive_mutex@boost@@@boost@@PAVInstance@2@@Z": "00464750",
+  "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "004025b0",
+  "??$create@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "004651c0",
+  "??$shared_from@VRunService@RBX@@@RBX@@YA?AV?$shared_ptr@VRunService@RBX@@@boost@@PAVRunService@0@@Z": "00618a40",
+  "?addListener@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z": "004218a0",
+  "?addListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "004218a0",
+  "?addListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": "004218a0",
+  "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "004613d0",
+  "?SetReadOnly@CScintillaCtrl@Scintilla@@QAEXHH@Z": "00460c90",
+  "?prop_EmbeddedSourceCode@Script@RBX@@2V?$PropDescriptor@VScript@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "00975770",
+  "?reload@CScriptEditor@@IAEXXZ": "00465550",
+  "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "00973d54",
+  "?instanceCount@CScriptEditor@@1HA": "0096df94",
+  "?sciLexer@CScriptEditor@@1PAUHINSTANCE__@@A": "0096df90",
+  "?OnCreate@CScintillaView@Scintilla@@IAEHPAUtagCREATESTRUCTA@@@Z": "00462c60",
+  "?CallTipActive@CScintillaCtrl@Scintilla@@QAEHH@Z": "004610b0",
+  "?CallTipCancel@CScintillaCtrl@Scintilla@@QAEXH@Z": "00461080",
+  "?SetLexer@CScintillaCtrl@Scintilla@@QAEXHH@Z": "00461200",
+  "?SetKeyWords@CScintillaCtrl@Scintilla@@QAEXHPBDH@Z": "00461290",
+  "?StyleSetFore@CScintillaCtrl@Scintilla@@QAEXHKH@Z": "00460730",
+  "?StyleSetBack@CScintillaCtrl@Scintilla@@QAEXHKH@Z": "00460780",
+  "?StyleSetSize@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "00460820",
+  "?StyleSetFont@CScintillaCtrl@Scintilla@@QAEXHPBDH@Z": "00460870",
+  "?StyleClearAll@CScintillaCtrl@Scintilla@@QAEXH@Z": "00460700",
+  "?StyleSetBold@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "004607d0",
+  "?SetMarginWidthN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "004605d0",
+  "?SetMarginSensitiveN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "004606b0",
+  "?SetMarginTypeN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "00460580",
+  "?SetMarginMaskN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "00460660",
+  "?SetProperty@CScintillaCtrl@Scintilla@@QAEXPBD0H@Z": "00461240",
+  "?MarkerDefine@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "00460310",
+  "?MarkerSetFore@CScintillaCtrl@Scintilla@@QAEXHKH@Z": "00460360",
+  "?MarkerSetBack@CScintillaCtrl@Scintilla@@QAEXHKH@Z": "004603b0",
+  "?AutoCSetSeparator@CScintillaCtrl@Scintilla@@QAEXHH@Z": "00460910",
+  "?SetMouseDwellTime@CScintillaCtrl@Scintilla@@QAEXHH@Z": "00461160",
+  "?GetSelectionStart@CScintillaCtrl@Scintilla@@QAEJH@Z": "00460990",
+  "?GetSelectionEnd@CScintillaCtrl@Scintilla@@QAEJH@Z": "004609c0",
+  "?GetTextRange@CScintillaCtrl@Scintilla@@QAEHPAUTextRange@@H@Z": "00460b10",
+  "?AutoCShow@CScintillaCtrl@Scintilla@@QAEXHPBDH@Z": "004608c0",
+  "?GetLength@CScintillaCtrl@Scintilla@@QAEHH@Z": "004600f0",
+  "?CallTipShow@CScintillaCtrl@Scintilla@@QAEXJPBDH@Z": "00461030",
+  "?GetModify@CScintillaCtrl@Scintilla@@QAEHH@Z": "00460a90",
+  "?GetTextLength@CScintillaCtrl@Scintilla@@QAEHH@Z": "00460ee0",
+  "?GetText@CScintillaCtrl@Scintilla@@QAEHHPADH@Z": "00460e90",
+  "?setEmbeddedCode@Script@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "00586f30",
+  "?SetSavePoint@CScintillaCtrl@Scintilla@@QAEXH@Z": "00460230",
+  "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "00460120",
+  "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "00460c10",
+  "?MarkerAdd@CScintillaCtrl@Scintilla@@QAEHHHH@Z": "00460400",
+  "?MarkerGet@CScintillaCtrl@Scintilla@@QAEHHH@Z": "004604a0",
+  "?MarkerDelete@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "00460450",
+  "?MarkerNext@CScintillaCtrl@Scintilla@@QAEHHHH@Z": "004604e0",
+  "?GotoLine@CScintillaCtrl@Scintilla@@QAEXHH@Z": "00460290",
+  "?MarkerPrevious@CScintillaCtrl@Scintilla@@QAEHHHH@Z": "00460530",
+  "?GetMarginWidthN@CScintillaCtrl@Scintilla@@QAEHHH@Z": "00460620",
+  "?GetOvertype@CScintillaCtrl@Scintilla@@QAEHH@Z": "00460f10",
+  "?GetColumn@CScintillaCtrl@Scintilla@@QAEHJH@Z": "00460950",
+  "?GetStyleAt@CScintillaCtrl@Scintilla@@QAEHJH@Z": "00460150",
+  "?GetFoldLevel@CScintillaCtrl@Scintilla@@QAEHHH@Z": "004610e0",
+  "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ": "00432ce0",
+  "?detach@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAEXXZ": "00457710",
+  "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z": "00432bd0",
+  "?detach@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAEXXZ": "00457710",
+  "??0EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAE@PAV12@PBVRunService@2@W4RunState@2@@Z": "00464b60",
+  "?push_back@?$vector@PAVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@@Z": "004213a0",
+  "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z": "00432950"
+ }
+}

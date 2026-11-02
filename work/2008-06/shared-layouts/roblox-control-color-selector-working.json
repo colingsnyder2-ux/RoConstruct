@@ -1,0 +1,619 @@
+{
+  "class": "CRobloxControlColorSelector",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/I/home/user/roconstruct/tools/libs/xtp-11.2.2/Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "sources": {
+    "rebuild/2008-06/tests/record_native_roblox_control_color_selector.py": "ce1a8a76196311b3020fd2023e096d9cf6de9cbb2c0dcd809556cbe7428600ec",
+    "rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp": "16c763983e7fa46ab743043d245cc9d36046c88ff1b7e611a8878aadffdf6e99",
+    "rebuild/2008-06/tests/NativeRobloxControlColorSelectorLayout.cpp": "62bde1cc34b3f88747ec932ac74f3eb6f8e5f23d387419c838234b3db1e93d9d",
+    "rebuild/2008-06/native-headers/CRobloxControlColorSelector.h": "c7b05cec96cceadb06b854beb06c81350b0327306da6b76f46a71091dc73cf86",
+    "rebuild/2008-06/tests/record_native_roblox_control_color_selector.json": "ba29d7da7ec20c10e911d5ac848b1882f27f9d6cf9d592beb7e7b927db2d9a3b"
+  },
+  "object_sha256": "9aea9342dc03fe5de16fbe20b1ad6195389ba2ba2346369b0e43a18eee6c2e25",
+  "noinline_object_sha256": "e9eb9e06304715f4e6a65a4d881541a9e38aca427557bff25f80738c029785ca",
+  "layout": {
+    "size": "0x184",
+    "base": "CXTPControl (0x174, XTP 11.2.2)",
+    "m_nSelected": "0x174",
+    "m_nPressed": "0x178",
+    "m_bColorPicked": "0x17c (bool)",
+    "m_clr": "0x180"
+  },
+  "methods": [
+    {
+      "address": "0044ddd0",
+      "symbol": "?GetRuntimeClass@CRobloxControlColorSelector@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?classCRobloxControlColorSelector@CRobloxControlColorSelector@@2UCRuntimeClass@@A": "0x931c34 (CRuntimeClass: name string CRobloxControlColorSelector, size 0x184, CreateObject 0044edf0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044dde0",
+      "symbol": "?OnSetSelected@CRobloxControlColorSelector@@MAEHH@Z",
+      "size": 27,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?OnSetSelected@CXTPControl@@MAEHH@Z": "0x6ad2f0 (XTPControl.cpp recipe build: body exact; CXTPControl vtable slot 65)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044de00",
+      "symbol": "?GetColor@CRobloxControlColorSelector@@QBEKXZ",
+      "size": 7,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0044de10",
+      "symbol": "?SetColor@CRobloxControlColorSelector@@QAEXK@Z",
+      "size": 148,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?closest@BrickColor@RBX@@SA?AV12@VColor3uint8@G3D@@@Z": "0x5b62a0 (call site only: body widens Color3uint8 to Color4uint8 (a=0) and calls 005b5d80; shape of BrickColor::closest(Color3uint8))",
+        "?color3uint8@BrickColor@RBX@@QBE?AVColor3uint8@G3D@@XZ": "0x5b6180 (call site only: body calls 005b6120 and truncates 4 bytes to 3; shape of BrickColor::color3uint8 over color4uint8)",
+        "?RedrawParent@CXTPControl@@QAEXH@Z": "0x6ab8d0 (XTPControl.cpp recipe build: body exact)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044deb0",
+      "symbol": "??0CColorInfo@CRobloxControlColorSelector@@QAE@ABU01@@Z",
+      "size": 36,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044dee0",
+      "symbol": "??$_Copy_backward_opt@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@Uforward_iterator_tag@std@@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 66,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z": "mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044dfa0",
+      "symbol": "?GetSize@CRobloxControlColorSelector@@MAE?AVCSize@@PAVCDC@@@Z",
+      "size": 20,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0044dfc0",
+      "symbol": "?HitTest@CRobloxControlColorSelector@@ABEHVCPoint@@@Z",
+      "size": 208,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A": "0x96dd24 (static palette vector: dynamic initializer 007ef8c0 and atexit destructor 007faeb0 (exact) use it)",
+        "__imp__PtInRect@12": "user32.dll!PtInRect"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e090",
+      "symbol": "?Draw@CRobloxControlColorSelector@@MAEXPAVCDC@@@Z",
+      "size": 585,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A": "0x96dd24 (static palette vector: dynamic initializer 007ef8c0 and atexit destructor 007faeb0 (exact) use it)",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?GetPaintManager@CXTPControl@@QBEPAVCXTPPaintManager@@XZ": "0x6ab240 (XTPControl.cpp recipe build: body exact)",
+        "?GetEnabled@CXTPControlAction@@QBEHXZ": "0x6ab7c0 (XTPControl.cpp recipe build: body exact)",
+        "__imp__InflateRect@12": "user32.dll!InflateRect",
+        "?FillSolidRect@CDC@@QAEXPBUtagRECT@@K@Z": "mfc90.dll!?FillSolidRect@CDC@@QAEXPBUtagRECT@@K@Z",
+        "?Instance@CXTPColorManager@@CAAAV1@XZ": "0x6dfd40 (XTPColorManager.cpp recipe build /O2 /MD /GS /EHsc /Ob1: body exact)",
+        "?GetColor@CXTPColorManager@@QBEKH@Z": "0x6df520 (XTP Common/XTPColorManager.cpp recipe build: body exact)",
+        "?Draw3dRect@CDC@@QAEXPBUtagRECT@@KK@Z": "mfc90.dll!?Draw3dRect@CDC@@QAEXPBUtagRECT@@KK@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e2e0",
+      "symbol": "?OnMouseMove@CRobloxControlColorSelector@@MAEXVCPoint@@@Z",
+      "size": 44,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?HitTest@CRobloxControlColorSelector@@ABEHVCPoint@@@Z": "0x44dfc0 (exact here)",
+        "?RedrawParent@CXTPControl@@QAEXH@Z": "0x6ab8d0 (XTPControl.cpp recipe build: body exact)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e310",
+      "symbol": "?OnExecute@CRobloxControlColorSelector@@MAEXXZ",
+      "size": 87,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A": "0x96dd24 (static palette vector: dynamic initializer 007ef8c0 and atexit destructor 007faeb0 (exact) use it)",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?OnExecute@CXTPControl@@UAEXXZ": "0x6ad7b0 (XTPControl.cpp recipe build: body exact; CXTPControl vtable 0085181c slot 38)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e370",
+      "symbol": "?OnClick@CRobloxControlColorSelector@@MAEXHVCPoint@@@Z",
+      "size": 145,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?GetEnabled@CXTPControlAction@@QBEHXZ": "0x6ab7c0 (XTPControl.cpp recipe build: body exact)",
+        "?HitTest@CRobloxControlColorSelector@@ABEHVCPoint@@@Z": "0x44dfc0 (exact here)",
+        "?ClickToolBarButton@CXTPControl@@IAEXVCRect@@@Z": "0x6ad450 (XTPControl.cpp recipe build: body exact)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e410",
+      "symbol": "?OnLButtonUp@CRobloxControlColorSelector@@MAEXVCPoint@@@Z",
+      "size": 76,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?GetEnabled@CXTPControlAction@@QBEHXZ": "0x6ab7c0 (XTPControl.cpp recipe build: body exact)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e460",
+      "symbol": "??$_Fill@PAUCColorInfo@CRobloxControlColorSelector@@U12@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@0ABU12@@Z",
+      "size": 55,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z": "mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e4a0",
+      "symbol": "??$_Copy_backward_opt@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 92,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??$_Copy_backward_opt@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@Uforward_iterator_tag@std@@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x44dee0 (exact here)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e500",
+      "symbol": "??$_Uninit_copy@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 158,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@ABV01@@Z",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException"
+      },
+      "local_eh": [
+        "__ehhandler$??$_Uninit_copy@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+      ]
+    },
+    {
+      "address": "0044e5a0",
+      "symbol": "??$_Unchecked_move_backward@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@@stdext@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00@Z",
+      "size": 43,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??$_Copy_backward_opt@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x44e4a0 (exact here)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e638",
+      "symbol": "__catch$??$_Uninit_fill_n@PAUCColorInfo@CRobloxControlColorSelector@@IU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@IABU12@AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
+      "size": 52,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e670",
+      "symbol": "?_Ufill@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEPAUCColorInfo@CRobloxControlColorSelector@@PAU34@IABU34@@Z",
+      "size": 57,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAUCColorInfo@CRobloxControlColorSelector@@IU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@IABU12@AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x44e5d0 (this unit: 104-byte body prefix exact, catch funclet exact at 0044e638)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e6b0",
+      "symbol": "?_Destroy@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEXPAUCColorInfo@CRobloxControlColorSelector@@0@Z",
+      "size": 37,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e6e0",
+      "symbol": "?_Tidy@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEXXZ",
+      "size": 72,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e730",
+      "symbol": "??$_Umove@PAUCColorInfo@CRobloxControlColorSelector@@@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEPAUCColorInfo@CRobloxControlColorSelector@@PAU23@00@Z",
+      "size": 44,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??$_Uninit_copy@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x44e500 (exact here)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044e760",
+      "symbol": "?_Insert_n@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEXV?$_Vector_const_iterator@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@2@IABUCColorInfo@CRobloxControlColorSelector@@@Z",
+      "size": 696,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?_Xlen@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@KAXXZ": "0x4c6d40 (identical-COMDAT fold: this unit's body is exact at 004c6d40 (named vector<weak_ptr<PartInstance>>::_Xlen in evidence))",
+        "??$_Allocate@UCColorInfo@CRobloxControlColorSelector@@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@IPAU12@@Z": "0x68d4b0 (identical-COMDAT fold (12-byte element): this unit's body is exact at 0068d4b0)",
+        "??$_Uninit_copy@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x44e500 (exact here)",
+        "?_Ufill@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEPAUCColorInfo@CRobloxControlColorSelector@@PAU34@IABU34@@Z": "0x44e670 (exact here)",
+        "?_Destroy@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEXPAUCColorInfo@CRobloxControlColorSelector@@0@Z": "0x44e6b0 (exact here)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException",
+        "??0CColorInfo@CRobloxControlColorSelector@@QAE@ABU01@@Z": "0x44deb0 (exact here)",
+        "??$_Umove@PAUCColorInfo@CRobloxControlColorSelector@@@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEPAUCColorInfo@CRobloxControlColorSelector@@PAU23@00@Z": "0x44e730 (exact here)",
+        "??$_Fill@PAUCColorInfo@CRobloxControlColorSelector@@U12@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@0ABU12@@Z": "0x44e460 (exact here)",
+        "??$_Unchecked_move_backward@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@@stdext@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00@Z": "0x44e5a0 (exact here)",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert_n@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEXV?$_Vector_const_iterator@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@2@IABUCColorInfo@CRobloxControlColorSelector@@@Z"
+      ]
+    },
+    {
+      "address": "0044ea20",
+      "symbol": "?insert@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@QAE?AV?$_Vector_iterator@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@2@V?$_Vector_const_iterator@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@2@ABUCColorInfo@CRobloxControlColorSelector@@@Z",
+      "size": 206,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?_Insert_n@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEXV?$_Vector_const_iterator@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@2@IABUCColorInfo@CRobloxControlColorSelector@@@Z": "0x44e760 (exact here)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044eaf0",
+      "symbol": "?push_back@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@QAEXABUCColorInfo@CRobloxControlColorSelector@@@Z",
+      "size": 157,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAUCColorInfo@CRobloxControlColorSelector@@IU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@IABU12@AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x44e5d0 (this unit: 104-byte body prefix exact, catch funclet exact at 0044e638)",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@QAE?AV?$_Vector_iterator@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@2@V?$_Vector_const_iterator@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@2@ABUCColorInfo@CRobloxControlColorSelector@@@Z": "0x44ea20 (exact here)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044ec60",
+      "symbol": "??0CRobloxControlColorSelector@@QAE@XZ",
+      "size": 201,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??0CXTPControl@@IAE@XZ": "0x6adad0 (XTP 11.2.2 XTPControl.cpp recipe xtp-11.2.2-shared-mfc /O2 /MD /GS /EHsc /Ob1: body exact here)",
+        "??_7CRobloxControlColorSelector@@6BCCmdTarget@@@": "0x816e74 (RTTI .?AVCRobloxControlColorSelector@@, offset 0x0)",
+        "??_7CRobloxControlColorSelector@@6BCXTPAccessible@@@": "0x816e14 (RTTI .?AVCRobloxControlColorSelector@@, offset 0x20)",
+        "?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A": "0x96dd24 (static palette vector: dynamic initializer 007ef8c0 and atexit destructor 007faeb0 (exact) use it)",
+        "?colorPalette@BrickColor@RBX@@SAABV?$vector@VBrickColor@RBX@@V?$allocator@VBrickColor@RBX@@@std@@@std@@XZ": "0x5b5c80 (offline evidence name (score 100))",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?addColor@CRobloxControlColorSelector@@CAXVBrickColor@RBX@@@Z": "0x44eb90 (exact here)",
+        "?SetFlags@CXTPControl@@QAEXK@Z": "0x6ab360 (XTPControl.cpp recipe build: body exact)"
+      },
+      "local_eh": [
+        "__ehhandler$??0CRobloxControlColorSelector@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0044ed30",
+      "symbol": "??_ECRobloxControlColorSelector@@WCA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??_ECRobloxControlColorSelector@@UAEPAXI@Z": "0x44edd0 (vector deleting destructor folded with the scalar deleting destructor (exact at 0044edd0, identical code); the +0x20 adjustor thunk 0044ed30 jumps there)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044edd0",
+      "symbol": "??_GCRobloxControlColorSelector@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??1CXTPControl@@MAE@XZ": "0x6ad180 (XTPControl.cpp recipe build: body exact)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044edf0",
+      "symbol": "?CreateObject@CRobloxControlColorSelector@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CRobloxControlColorSelector@@QAE@XZ": "0x44ec60 (exact here)"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CRobloxControlColorSelector@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "0044ee50",
+      "symbol": "?Clone@CRobloxControlColorSelector@@UAEPAVCXTPControl@@H@Z",
+      "size": 36,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?CreateObject@CRobloxControlColorSelector@@SGPAVCObject@@XZ": "0x44edf0 (exact here)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00745620",
+      "symbol": "?_GetBaseClass@CRobloxControlColorSelector@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?GetThisClass@CXTPControl@@SGPAUCRuntimeClass@@XZ": "0x6ab1b0 (XTPControl.cpp recipe build: body exact (also CXTPControl vtable slot 0 body))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ef8c0",
+      "symbol": "??__E?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A@@YAXXZ",
+      "size": 95,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A": "0x96dd24 (static palette vector: dynamic initializer 007ef8c0 and atexit destructor 007faeb0 (exact) use it)",
+        "??__F?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A@@YAXXZ": "0x7faeb0 (exact here)",
+        "_atexit": "0x6a17af (CRT atexit body (mov edi,edi; _onexit; neg/sbb), call site in 007ef8c0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__E?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A@@YAXXZ"
+      ]
+    },
+    {
+      "address": "007ef920",
+      "symbol": "??__E_init_CRobloxControlColorSelector@@YAXXZ",
+      "size": 11,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?classCRobloxControlColorSelector@CRobloxControlColorSelector@@2UCRuntimeClass@@A": "0x931c34 (CRuntimeClass: name string CRobloxControlColorSelector, size 0x184, CreateObject 0044edf0)",
+        "?AfxClassInit@@YGXPAUCRuntimeClass@@@Z": "mfc90.dll!?AfxClassInit@@YGXPAUCRuntimeClass@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007faeb0",
+      "symbol": "??__F?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A@@YAXXZ",
+      "size": 23,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A": "0x96dd24 (static palette vector: dynamic initializer 007ef8c0 and atexit destructor 007faeb0 (exact) use it)",
+        "?_Tidy@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@IAEXXZ": "0x44e6e0 (exact here)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007c15b0",
+      "symbol": "__unwindfunclet$??__E?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A@@YAXXZ$0",
+      "size": 10,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": false,
+      "verified_targets": {
+        "?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A": "0x96dd24 (static palette vector: dynamic initializer 007ef8c0 and atexit destructor 007faeb0 (exact) use it)",
+        "??1?$_Vector_val@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@QAE@XZ": "0x5b3d20 (identical-COMDAT fold: this unit's body is exact at 005b3d20)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044df30",
+      "symbol": "??0CRect@@QAE@UtagPOINT@@UtagSIZE@@@Z",
+      "size": 36,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0044df60",
+      "symbol": "?PtInRect@CRect@@QBEHUtagPOINT@@@Z",
+      "size": 20,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": true,
+      "verified_targets": {
+        "__imp__PtInRect@12": "user32.dll!PtInRect"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044df80",
+      "symbol": "?GetEnabled@CXTPControl@@QBEHXZ",
+      "size": 27,
+      "exact": true,
+      "profile": "XTP headers",
+      "inline_owner": true,
+      "verified_targets": {
+        "?GetEnabled@CXTPControlAction@@QBEHXZ": "0x6ab7c0 (XTPControl.cpp recipe build: body exact)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044eb90",
+      "symbol": "?addColor@CRobloxControlColorSelector@@CAXVBrickColor@RBX@@@Z",
+      "size": 208,
+      "exact": true,
+      "profile": "XTP headers + c_str noinline",
+      "inline_owner": false,
+      "verified_targets": {
+        "?nextColorId@CRobloxControlColorSelector@@0HA": "0x96dd20 (static tooltip id counter read and incremented by addColor 0044eb90; adjacent to the vector and _init_ (0096dd3c) of this unit)",
+        "?color3uint8@BrickColor@RBX@@QBE?AVColor3uint8@G3D@@XZ": "0x5b6180 (call site only: body calls 005b6120 and truncates 4 bytes to 3; shape of BrickColor::color3uint8 over color4uint8)",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "?name@BrickColor@RBX@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x5b61b0 (offline evidence name (score 100))",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z": "mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z",
+        "?colors@CRobloxControlColorSelector@@0V?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@A": "0x96dd24 (static palette vector: dynamic initializer 007ef8c0 and atexit destructor 007faeb0 (exact) use it)",
+        "?push_back@?$vector@UCColorInfo@CRobloxControlColorSelector@@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@QAEXABUCColorInfo@CRobloxControlColorSelector@@@Z": "0x44eaf0 (exact here)",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?addColor@CRobloxControlColorSelector@@CAXVBrickColor@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "0044e5d0",
+      "symbol": "??$_Uninit_fill_n@PAUCColorInfo@CRobloxControlColorSelector@@IU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@IABU12@AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 104,
+      "exact": "prefix (catch funclet split at 0044e638)",
+      "profile": "XTP headers"
+    }
+  ],
+  "vtables": {
+    "00816e74": {
+      "verified": 82,
+      "open": {}
+    },
+    "00816e14": {
+      "verified": 23,
+      "open": {}
+    }
+  },
+  "runtime_class": {
+    "address": "00931c34",
+    "size": "0x184",
+    "schema": "0x80000020",
+    "create": "0044edf0",
+    "base_getter": "00745620",
+    "class_init": "0096dd3c"
+  }
+}

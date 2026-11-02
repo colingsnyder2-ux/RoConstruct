@@ -54,7 +54,7 @@ namespace RBX
 	{
 	}
 
-	WorkspaceStatsItem::WorkspaceStatsItem(const Workspace* workspace, const World* world)
+	WorkspaceStatsItem::WorkspaceStatsItem(const Workspace* workspace, const World* world, const RunService* runService)
 	{
 		setName("Workspace");
 	}

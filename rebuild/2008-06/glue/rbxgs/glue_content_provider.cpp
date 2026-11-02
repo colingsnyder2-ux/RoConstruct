@@ -12,13 +12,7 @@
 
 namespace RBX
 {
-	std::string FileSystem::getCacheDirectory(bool create)
-	{
-		char path[MAX_PATH];
-		HRESULT result = SHGetFolderPathAndSubDirA(NULL, CSIDL_COMMON_APPDATA | (create ? CSIDL_FLAG_CREATE : 0), NULL,
-												   SHGFP_TYPE_CURRENT, "Roblox\\Cache", path);
-		return result == S_OK ? path : "";
-	}
+	// FileSystem::getCacheDirectory: native (FileSystem.cpp)
 
 	// Cached content, else load it: local files and assets synchronously; http on request type
 	// (none: miss, async: queue for the worker thread, sync: fetch now). Failed urls are remembered.

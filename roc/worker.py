@@ -604,6 +604,10 @@ class Api:
         Api._pushed.update((self.server, src, rel) for src, files in fresh.items() for rel in files)
 
     def call(self, path, payload=None, timeout=60, request_id=None):
+        if path.startswith("/v1/integration"):
+            from roc import integration_offline
+            if integration_offline.enabled():
+                return integration_offline.call(path, payload)
         if path in ("/v1/submit", "/v1/submit-batch"):
             self._check_recipes(payload)
             self._push_units(payload)

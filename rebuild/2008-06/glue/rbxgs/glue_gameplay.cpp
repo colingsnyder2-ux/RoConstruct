@@ -63,29 +63,11 @@ namespace RBX
 		}
 	}
 
-	bool Flag::canBePickedUpByPlayer(Network::Player* player)
-	{
-		return player && !player->getNeutral() && player->getTeamColor() != teamColor;
-	}
+	// Flag::canBePickedUpByPlayer: native (Flag.cpp)
 
-	void Flag::onEvent_flagTouched(boost::shared_ptr<Instance> other)
-	{
-		Humanoid* humanoid = characterOf(other);
-		if (!humanoid || getParent() == humanoid->getParent())
-			return;
-		Network::Player* player = Network::Players::getPlayerFromCharacter(humanoid->getParent());
-		if (player && !player->getNeutral() && player->getTeamColor() == teamColor)
-			returnHome(this, ServiceProvider::findServiceProvider(this));
-	}
+	// Flag::onEvent_flagTouched: native (Flag.cpp)
 
-	void Flag::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Tool::onServiceProvider(oldProvider, newProvider);
-		flagTouched.disconnect();
-		if (newProvider)
-			if (PartInstance* handle = getHandle())
-				flagTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Flag::onEvent_flagTouched, this, _1));
-	}
+	// Flag::onServiceProvider: native (Flag.cpp)
 
 	// an enemy flag carried onto a team's stand is captured and sent back to its own stand
 	void FlagStand::onEvent_standTouched(boost::shared_ptr<Instance> other)
