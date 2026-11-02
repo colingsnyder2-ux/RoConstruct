@@ -8,11 +8,45 @@ from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
 from roc.integration import CLIENT, ROOT, atomic_json
-from roc.native_adapt import readable
 
-def coverage(root, scores, native):
+def readable(symbol):
+    """MSVC decorated name -> Namespace::Class::method (enough for labels; full name stays in 'symbol')."""
+    m = re.match(r"\?\?([01])([A-Za-z_]\w*)@((?:[A-Za-z_]\w*@)*)@", symbol)
+    if m:
+        scope = [m[2]] + [p for p in m[3].split("@") if p]
+        cls = "::".join(reversed(scope))
+        return "%s::%s%s" % (cls, "~" if m[1] == "1" else "", m[2])
+    m = re.match(r"\?([A-Za-z_]\w*)@((?:[A-Za-z_]\w*@)+)@", symbol)
+    if m:
+        return "::".join(list(reversed([p for p in m[2].split("@") if p])) + [m[1]])
+    return symbol
+
+
+def owned_inventory(root, extra_reports=()):
+    """Unique compiled owners, including explicitly published unaccepted candidates."""
+    rows = {}
+    paths = sorted((root / 'rebuild' / CLIENT / 'out').glob('*/report.json'))
+    paths += [root / 'work/integration/owned-candidates.json',
+              root / 'local/findings/2008-06/verification/owned-candidates.json']
+    paths += list(extra_reports)
+    for path in paths:
+        if not path.exists():
+            continue
+        data = json.loads(path.read_text(encoding='utf-8'))
+        for report in data.get('reports', [data]):
+            module = report.get('module', path.parent.name)
+            if module.casefold() == 'codegenanalogs':
+                continue
+            for address in report.get('owned_addrs', []):
+                if re.fullmatch('[0-9a-f]{8}', address):
+                    rows.setdefault(address, {'module': module})
+    return rows
+
+
+def coverage(root, scores, native, owned=None):
     """Website and webhook share the same code-only function/byte denominator."""
-    groups = {key: {"functions": 0, "bytes": 0} for key in ("integrated", "exact_waiting", "partial", "unmined")}
+    owned = owned_inventory(root) if owned is None else owned
+    groups = {key: {"functions": 0, "bytes": 0} for key in ("integrated", "owned_waiting", "exact_waiting", "partial", "unmined")}
     functions = {}
     for line in (root / "work" / CLIENT / "functions.jsonl").read_text().splitlines():
         if not line.strip():
@@ -22,7 +56,7 @@ def coverage(root, scores, native):
             continue
         functions[f["addr"]] = f
         score = scores.get(f["addr"], 0)
-        key = "integrated" if f["addr"] in native else "exact_waiting" if score == 100 else "partial" if score else "unmined"
+        key = "integrated" if f["addr"] in native else "owned_waiting" if f["addr"] in owned else "exact_waiting" if score == 100 else "partial" if score else "unmined"
         groups[key]["functions"] += 1
         groups[key]["bytes"] += f["size"]
     return groups, functions
@@ -110,7 +144,7 @@ def announce_inactive(before, after, log=print):
     log("Integration digest: %d newly inactive/draft" % len(rows))
 
 
-def build(root=ROOT, log=print):
+def build(root=ROOT, log=print, output=None, extra_reports=()):
     out = root / "rebuild" / CLIENT / "out"
     native_path = root / "work/integration/progress-native.json"
     native = set(json.loads(native_path.read_text())["addresses"]) if native_path.exists() else set()
@@ -136,7 +170,9 @@ def build(root=ROOT, log=print):
                     working[str(addr).lower().removeprefix("0x").zfill(8)] = [user, worker, unit]
     finally:
         db.close()
-    groups, functions = coverage(root, scores, native)
+    # site's middle bucket: inactive (receipt-exact) or draft native code, not yet integrated
+    owned = set(inactive_code(root))
+    groups, functions = coverage(root, scores, native, owned)
     units = {job: unit for job, _, _, unit, _, _ in jobs}
     receipts = []
     daily = {}
@@ -171,6 +207,9 @@ def build(root=ROOT, log=print):
             # addr -> [user, worker, unit] for unexpired agent claims
             "working": working,
             "native": sorted(native),
+            "owned": sorted(set(owned) & functions.keys()),
+            "owned_waiting": sorted((set(owned) & functions.keys()) - native),
+            "ownership_note": "Inactive / draft: native code exists (receipt-exact or draft) but is not integrated; link, runtime and server acceptance still pending.",
             # inactive native code: addr -> [decorated symbol, receipt-proven exact, receipt file]
             "inactive": {a: v for a, v in inactive_code(root).items() if a not in native},
             "sources": {a: value for a, value in sources.items() if a in native},
@@ -183,14 +222,14 @@ def build(root=ROOT, log=print):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site
         data.setdefault("native_code", {})[key[7:]] = {"functions": len(hits), "bytes": sum(f["size"] for f in hits)}
-    path = root / "docs/integration.json"
+    path = output or root / "docs/integration.json"
     previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     history = {row["day"]: row for row in previous.get("history", [])} if previous.get("client") == CLIENT else {}
     day = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
     history[day] = {"day": day, "groups": data["groups"], "native_code": data.get("native_code", {})}
     data["history"] = [history[day] for day in sorted(history)]
-    atomic_json(root / "docs/integration.json", data)
-    if "inactive" in previous:  # first build has no baseline: don't announce everything
+    atomic_json(path, data)
+    if output is None and "inactive" in previous:  # first build has no baseline: don't announce everything
         announce_inactive(previous["inactive"], data["inactive"], log)
     log("Integration site data: %d integrated, %d named" % (len(native), len(data["names"])))
     return data

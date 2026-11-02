@@ -93,7 +93,7 @@ code { color: var(--accent2); font-family: var(--mono); font-size: .92em; }
 @media (prefers-reduced-motion: reduce) { .bar.code .p { animation: none; } }
 .bar.native i { border-radius: 0; }
 .bar.native .n { background: #a855f7; } .bar.native .e { background: #58a6ff; }
-.bar.native .y { background: #d29922; } .bar.native .u { background: #3a3d45; }
+.bar.native .y { background: linear-gradient(90deg, #f0883e, #db61a2); } .bar.native .u { background: #3a3d45; }
 .integration-summary { margin-top: 12px; }
 .integration-summary .label { color: #c084fc; font-size: 12px; margin: 0 0 6px; }
 .integration-summary .bar { height: 8px; }
@@ -207,7 +207,7 @@ td.user { font: 600 15px Inter, sans-serif; color: var(--cyan); }
 .sbar i { background: var(--c); }
 .chips { display: flex; flex-wrap: wrap; gap: 4px 10px; justify-content: flex-end; font: 12px var(--mono); color: var(--dim); }
 .chips span { display: inline-flex; align-items: center; gap: 4px; }
-.chip-err { color: #f85149; } .chip-live { color: #f0883e; }
+.chip-err { color: #f85149; } .chip-live { color: #3fb950; }
 .tree-body { padding: 4px 14px 14px 46px; }
 .tree-group { margin-top: 10px; }
 .tree-group h4 { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--dim); }
@@ -215,6 +215,8 @@ td.user { font: 600 15px Inter, sans-serif; color: var(--cyan); }
 .tree-fn > * { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tree-fn .addr, .tree-fn .size, .tree-fn .src { color: var(--dim); } .tree-fn .size { text-align: right; }
 .tree-fn .anon { color: var(--dim); font-style: italic; }
+.tree-more { display: block; width: calc(100% - 28px); margin: 8px 14px 12px 30px; padding: 6px; background: none; border: 1px dashed var(--line2); border-radius: 8px; color: var(--dim); font: 12px var(--mono); cursor: pointer; }
+.tree-more:hover { color: var(--text); }
 .tree-note { color: var(--dim); font-size: 12px; margin: 8px 0 0; }
 .tree-err { border: 1px solid rgba(248,81,73,.35); background: rgba(248,81,73,.06); border-radius: 8px; padding: 8px 12px; margin-top: 8px; font: 12px var(--mono); }
 .tree-err summary { cursor: pointer; color: #f85149; }
@@ -318,7 +320,7 @@ footer img { height: 30px; }
       <a href="#contributors" data-nav="contributors">Contributors</a>
       <a href="sources.html" data-nav="sources">Sources</a>
       <a href="findings.html" data-nav="findings">Findings</a>
-    <a href="graph.html">Dependency Graph</a>
+      <a href="graph.html">Dependency Graph</a>
     </nav>
     <a class="btn discord" href="https://discord.gg/Tayg763nrG"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37A19.8 19.8 0 0015.4 2.85a.07.07 0 00-.08.04c-.21.38-.45.87-.61 1.26a18.3 18.3 0 00-5.48 0 12.6 12.6 0 00-.62-1.26.08.08 0 00-.08-.04 19.7 19.7 0 00-4.92 1.52.07.07 0 00-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 00.03.06 19.9 19.9 0 005.99 3.03.08.08 0 00.08-.03c.46-.63.87-1.29 1.23-1.99a.08.08 0 00-.04-.11 13.1 13.1 0 01-1.87-.89.08.08 0 01-.01-.13l.37-.29a.07.07 0 01.08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 01.08.01l.37.29a.08.08 0 01-.01.13c-.6.35-1.22.65-1.87.89a.08.08 0 00-.04.11c.36.7.77 1.36 1.22 1.99a.08.08 0 00.08.03 19.8 19.8 0 006-3.03.08.08 0 00.03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 00-.03-.03zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42z"/></svg>
       Discord</a>
@@ -337,6 +339,7 @@ footer img { height: 30px; }
     </div>
   </div>
 </footer>
+<script src="library-coverage.js" defer></script>
 <script>
 const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
 const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct-findings";
@@ -473,15 +476,15 @@ function dailyGraph(days, integration = false, switcher = false) {
   const y = percent => 284 - percent * 2.4;
   const last = days.at(-1);
   const gain = d => d.gain === null ? "—" : `${d.gain > 0 ? "+" : ""}${fmt(d.gain)}`;
-  const remaining = d => Math.max(0, d.functions - d.matched - (d.partial || 0) - (integration ? d.waiting : 0));
-  const series = integration ? [["integrated", "Integrated", "#a855f7"], ["waiting", "Exact waiting", "#58a6ff"]] : [["source", "Original source", "#58a6ff"],
+  const remaining = d => Math.max(0, d.functions - d.matched - (d.partial || 0) - (integration ? d.waiting + (d.nearly || 0) : 0));
+  const series = integration ? [["integrated", "Integrated", "#a855f7"], ["nearly", "Inactive / draft native", "#f0883e"], ["waiting", "Other exact", "#58a6ff"]] : [["source", "Original source", "#58a6ff"],
     ["mined", "Mined", "#3fb950"], ["partial", "Partial", "#b6a04c"]];
   const count = n => n == null ? "—" : fmt(n);
   return `<div class="head"><h2><small>Daily progress</small>${integration ? "Integration" : "Mining"}</h2>
     <p>${fmt(last.matched)} / ${fmt(last.functions)} functions ${integration ? "integrated" : "matched"} · ${last.percent.toFixed(2)}% ${integration ? "of target bytes" : "complete"}.
     One stack per day (US Eastern), toward 100%. Full history since ${days[0].day}.</p></div>
     ${switcher ? sectionMode("daily", "Daily progress view") : ""}
-    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, days.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, exact waiting and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
+    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, days.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, inactive / draft native, other exact and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
       ${[0, 20, 40, 60, 80, 100].map(p => `<line x1="56" x2="${width - 32}" y1="${y(p)}" y2="${y(p)}" stroke="var(--line2)"/>
         <text x="46" y="${y(p) + 4}" text-anchor="end">${p}%</text>`).join("")}
       ${days.map((d, i) => {
@@ -489,7 +492,7 @@ function dailyGraph(days, integration = false, switcher = false) {
         const segments = split ? series : [["matched", "Matched (source/mined split unavailable)", "#8a97a8"], series[2]];
         let bottom = 0;
         return `<g class="mining-stack" tabindex="0" role="img" aria-label="${d.day}: ${d.percent.toFixed(2)}% ${integration ? "of target bytes integrated" : "matched"}">
-          <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Exact waiting: ${count(d.waiting)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
+          <title>${d.day}: ${fmt(d.matched)} ${integration ? "integrated" : "matched"} total / ${fmt(d.functions)} (${d.percent.toFixed(2)}%); daily change ${gain(d)}. ${integration ? `Inactive / draft native: ${count(d.nearly)}; other exact: ${count(d.waiting)};` : `Original source: ${count(d.source)}; mined: ${count(d.mined)}${d.estimated ? " (source/mined split estimated)" : ""}; partial: ${count(d.partial)};`} remaining: ${fmt(remaining(d))}</title>
           <rect x="${x(i)}" y="${y(100)}" width="${barWidth}" height="240" rx="3" fill="var(--panel2)"/>
           ${segments.map(([key, label, color]) => {
             const value = d[key] || 0, fraction = integration ? 100 * (d.byteGroups[key] || 0) / (d.bytes || 1) : 100 * value / d.functions, height = Math.min(100 - bottom, fraction);
@@ -527,28 +530,30 @@ function codeBar(source, mined, partial, total) {
    linked rebuild (docs/integration.json, published hourly). Same groups as the Discord integration digest. */
 function integrationBar(i, name) {
   if (!i || i.client !== name) return "";
-  const g = i.groups, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;
+  const g = i.groups, nearly = g.owned_waiting || {functions:0,bytes:0}, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;
+  const inactiveB = Math.min(nearly.bytes, i.native_code?.inactive?.bytes || 0);
   const w = n => (100 * n / total).toFixed(3) + "%";
   return `
     <div class="label">Integrated code <small>(${mb(g.integrated.bytes)} of ${mb(total)}) — ${pct(g.integrated.bytes, total)}</small></div>
-    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * g.integrated.bytes / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(100 * g.integrated.bytes / total).toFixed(2)}"><i class="n" style="width:${w(g.integrated.bytes)}"></i><i style="background:#f0883e;width:${w(inactiveB)}"></i><i style="background:#db61a2;width:${w(Math.max(0, nearly.bytes - inactiveB))}"></i><i class="e" style="width:${w(g.exact_waiting.bytes)}"></i>
       <i class="u" style="width:${w(g.partial.bytes + g.unmined.bytes)}"></i></div>
     <div class="legend"><span><i style="background:#a855f7"></i>Integrated</span>
-      <span><i style="background:#58a6ff"></i>Exact waiting</span>
+      <span><i style="background:#f0883e"></i>Inactive native</span><span><i style="background:#db61a2"></i>Draft native</span><span><i style="background:#58a6ff"></i>Other exact</span>
       <span><i style="background:#3a3d45"></i>Not exact</span></div>
+    <p class="note">Estimate only: inactive and draft come from local trial receipts and native sources; only integrated code is server-verified in the linked rebuild.</p>
 `;
 }
 
 function integrationSection(i, name) {
   if (!i || i.client !== name) return "";
-  const g = i.groups;
+  const g = i.groups, nearly = g.owned_waiting || {functions:0,bytes:0};
   const funcs = Object.values(g).reduce((a, x) => a + x.functions, 0);
   return `
     <div class="stats">
       <div class="stat"><div class="ico">${ICON.code}</div><div><b>${fmt(g.integrated.functions)}</b><span>Integrated</span></div></div>
-      <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${fmt(g.exact_waiting.functions)}</b><span>Exact waiting</span></div></div>
-      <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - g.integrated.functions)}</b><span>Not integrated</span></div></div>
-    </div>`;
+      <div class="stat"><div class="ico">${ICON.chart}</div><div><b>${fmt(nearly.functions)}</b><span>Inactive / draft native</span></div></div>
+      <div class="stat red"><div class="ico">${ICON.file}</div><div><b>${fmt(funcs - g.integrated.functions - nearly.functions)}</b><span>Other remaining</span></div></div>
+    </div><p class="note">Inactive / draft: native code exists (receipt-exact or draft) but is not integrated yet.</p>`;
 }
 
 function integrationSummary(i, name, compact = false) {
@@ -556,8 +561,9 @@ function integrationSummary(i, name, compact = false) {
   const total = Object.values(i.groups).reduce((sum, g) => sum + g.bytes, 0);
   const percent = total ? 100 * i.groups.integrated.bytes / total : 0;
   const waiting = total ? 100 * (i.groups.exact_waiting?.bytes || 0) / total : 0;
+  const nearly = total ? 100 * (i.groups.owned_waiting?.bytes || 0) / total : 0;
   return `<div class="integration-summary">${compact ? "" : `<div class="label">Integrated · ${percent.toFixed(2)}%</div>`}
-    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${percent}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
+    <div class="bar native" role="progressbar" aria-label="Integrated code bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${percent}%"></i><i class="y" style="width:${nearly}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
 }
 
 function integrationDays(i) {
@@ -598,8 +604,8 @@ function integrationDaily(i, switcher = false) {
     const functions = Object.values(row.groups).reduce((sum,g) => sum + g.functions, 0);
     const integrated = row.groups.integrated.functions, waiting = row.groups.exact_waiting.functions;
     const bytes = Object.values(row.groups).reduce((sum,g) => sum + g.bytes, 0);
-    return {day:row.day,functions,integrated,waiting,matched:integrated,bytes,
-      byteGroups:{integrated:row.groups.integrated.bytes,waiting:row.groups.exact_waiting.bytes},
+    return {day:row.day,functions,integrated,waiting,nearly:row.groups.owned_waiting?.functions,matched:integrated,bytes,
+      byteGroups:{integrated:row.groups.integrated.bytes,nearly:row.groups.owned_waiting?.bytes || 0,waiting:row.groups.exact_waiting.bytes},
       percent:bytes ? 100 * row.groups.integrated.bytes / bytes : 0,
       gain:index ? integrated - rows[index-1].groups.integrated.functions : null};
   });
@@ -612,8 +618,9 @@ function sectionMode(key, label) {
 
 function integrationCoverageBar(row) {
   const w = bytes => row.bytes ? 100 * bytes / row.bytes : 0;
-  return `<div class="bar native" aria-label="${pct(row.integratedBytes, row.bytes)} integrated, ${pct(row.waitingBytes, row.bytes)} exact waiting">
-    <i class="n" style="width:${w(row.integratedBytes)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - row.waitingBytes)}%"></i></div>`;
+  const nearly = row.nearlyBytes || 0;
+  return `<div class="bar native" aria-label="${pct(row.integratedBytes, row.bytes)} integrated, ${pct(nearly, row.bytes)} inactive / draft native, ${pct(row.waitingBytes, row.bytes)} other exact">
+    <i class="n" style="width:${w(row.integratedBytes)}%"></i><i class="y" style="width:${w(nearly)}%"></i><i class="e" style="width:${w(row.waitingBytes)}%"></i><i class="u" style="width:${w(row.bytes - row.integratedBytes - nearly - row.waitingBytes)}%"></i></div>`;
 }
 
 /* One click opens the console, which then asks the two things that matter:
@@ -766,8 +773,7 @@ function parseFilter(text, units) {
 
 const MINING_LEGEND = `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined match</span>
       <span><i style="background:#216841"></i>partial source</span><span><i style="background:#3a3d45"></i>source pending</span>`;
-const NATIVE_LEGEND = `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:#58a6ff"></i>exact, waiting</span>
-      <span><i style="background:#d29922"></i>partial</span><span><i style="background:#3a3d45"></i>unmined</span>`;
+const NATIVE_LEGEND = `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:#f0883e"></i>inactive native</span><span><i style="background:#db61a2"></i>draft native</span><span><i style="background:#58a6ff"></i>other exact</span><span><i style="background:#d29922"></i>partial</span><span><i style="background:#3a3d45"></i>unmined</span>`;
 
 function color(score, original, harness) {
   if (score === 100 && !original && !harness) return "#3a3d45";
@@ -883,10 +889,11 @@ function classify(data) {
 
 function libraryTable(data, integration = false, switcher = false) {
   const integrated = new Set(integrationData?.native || []);
-  const blank = () => ({n: 0, m: 0, b: 0, mb: 0, sb: 0, pb: 0, parts: new Map(), fs: new Set()});
+  const nearly = new Set(integrationData?.owned_waiting || []);
+  const blank = () => ({n: 0, m: 0, b: 0, mb: 0, sb: 0, pb: 0, nb: 0, nf: 0, parts: new Map(), fs: new Set()});
   const add = (r, f) => {
     r.n++; r.b += f[1];
-    if (integration) { if (integrated.has(hex(f[0]))) {r.m++;r.mb+=f[1];} else if(f[2]===100) r.pb+=f[1]; }
+    if (integration) { if (integrated.has(hex(f[0]))) {r.m++;r.mb+=f[1];} else if(nearly.has(hex(f[0]))) {r.nf++;r.nb+=f[1];} else if(f[2]===100) r.pb+=f[1]; }
     else if (f[2] === 100) { r.m++; r.mb += f[1]; if (f[5]) r.sb += f[1]; } else if (f[2] > 0) r.pb += f[1];
   };
   const rows = new Map(), kinds = classify(data);
@@ -901,7 +908,7 @@ function libraryTable(data, integration = false, switcher = false) {
   data.groups = new Map();  // "lib.part" -> [title, Set of funcs], for the map button
   const bySize = m => [...m].sort((a, b) => b[1].b - a[1].b);
   const cells = r => `<td>${fmt(r.m)} / ${fmt(r.n)}</td><td>${pct(r.m, r.n)}</td>
-      <td>${pct(r.mb, r.b)} <small>of ${mb(r.b)}</small></td><td>${integration ? integrationCoverageBar({bytes:r.b,integratedBytes:r.mb,waitingBytes:r.pb}) : codeBar(r.sb, r.mb-r.sb,r.pb,r.b)}</td>`;
+      <td>${pct(r.mb, r.b)} <small>of ${mb(r.b)}</small></td><td>${integration ? integrationCoverageBar({bytes:r.b,integratedBytes:r.mb,nearlyBytes:r.nb,waitingBytes:r.pb}) : codeBar(r.sb, r.mb-r.sb,r.pb,r.b)}</td>`;
   return `<div class="head"><h2><small>Breakdown</small>Libraries</h2><p>Code rebuilt from source is labelled by that source; the rest by unit label (nearest RTTI class) or matched neighbours, so membership is approximate. Click a library to break it down; <b>Map</b> shows a subsection's functions on the unit map.</p></div>
     ${switcher ? sectionMode("libraries", "Library coverage view") : ""}
     <div class="table"><table id="libs"><thead><tr><th>Library</th><th>Functions</th><th>${integration ? "Integrated" : "Matched"}</th><th>Code</th><th style="width:30%">Bytes ${integration ? "integrated" : "matched"}</th></tr></thead><tbody>
@@ -909,7 +916,7 @@ function libraryTable(data, integration = false, switcher = false) {
       bySize(r.parts).map(([part, p], j) => (data.groups.set(`${i}.${j}`, [`${lib} › ${part}`, p.fs]),
         `<tr class="part" data-of="${i}" hidden><td>${esc(part)} <button class="mapbtn" data-g="${i}.${j}">Map</button></td>${cells(p)}</tr>`)).join("")).join("")}
     </tbody></table></div>
-    <div class="legend">${integration ? `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:#58a6ff"></i>exact, waiting</span><span><i style="background:#263244"></i>not exact</span>` : `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span>`}</div>`;
+    <div class="legend">${integration ? `<span><i style="background:#a855f7"></i>integrated</span><span><i style="background:linear-gradient(90deg,#f0883e,#db61a2)"></i>inactive / draft native</span><span><i style="background:#58a6ff"></i>other exact</span><span><i style="background:#263244"></i>not exact</span>` : `<span><i style="background:#58a6ff"></i>original source</span><span><i style="background:#3fb950"></i>mined</span><span><i style="background:repeating-linear-gradient(135deg,#216841 0 5px,#193d2a 5px 10px)"></i>partial source</span>`}</div>`;
 }
 
 function wireLibraries(onMap) {
@@ -923,13 +930,13 @@ function wireLibraries(onMap) {
 
 // Class tree: namespace > unit > function, grouped by status. Methods render lazily on open.
 const TREE_STATES = [
-  ["integrated", "Integrated", "#58a6ff", "in the linked rebuild"],
-  ["working", "Working", "#f0883e", "an agent (Codex, Claude, …) holds a live claim"],
-  ["inactive", "Inactive", "#a371f7", "native code exists, receipt-proven exact, not integrated"],
+  ["integrated", "Integrated", "#a855f7", "in the linked rebuild"],
+  ["working", "Working", "#3fb950", "an agent (Codex, Claude, …) holds a live claim"],
+  ["inactive", "Inactive", "#f0883e", "native code exists, receipt-proven exact, not integrated"],
   ["draft", "Draft", "#db61a2", "native code exists, not yet proven exact"],
-  ["exact", "Exact", "#3fb950", "mined exact only, no native code"],
+  ["exact", "Exact", "#58a6ff", "mined exact only, no native code"],
   ["partial", "Partial", "#d29922", "mined, not exact"],
-  ["unmined", "Unmined", "#6e7681", "no source yet"]];
+  ["unmined", "Unmined", "#3a3d45", "no source yet"]];
 const TREE_COLOR = Object.fromEntries(TREE_STATES.map(([k, , c]) => [k, c]));
 function treeStatus(f, nativeSet, inactive, working) {
   const a = hex(f[0]);
@@ -946,13 +953,41 @@ function renderTree(data, byUnit, nativeSet, native) {
   const linkFor = unit => Object.entries(linkFam).filter(([fam]) => { const cls = fam.split("::").slice(0, fam.startsWith("RBX::") ? 2 : 1).join("::"); return cls === unit || unit.endsWith("::" + cls) || unit.startsWith(cls + "<"); });
   const linkHtml = rows => rows.map(([fam, e]) => `<details class="tree-err"><summary>${e.symbols.length} unresolved · ${esc(fam)} <span style="color:var(--dim)">· ${esc(e.objects.join(", "))}</span></summary><ul>${e.symbols.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>`).join("");
   const dot = k => `<i class="dot" style="--c:${TREE_COLOR[k]}"></i>`;
-  const ns = new Map(), statusOf = new Map();
+  // RTTI unit names keep mangling residue (VCRobloxDoc, RBX::VHat::?$FactoryProduct, PAVCXTPToolBar, W4Enum):
+  // strip it, merge units that clean to the same class, and group by library.
+  const cleanSeg = s => s.replace(/^\?\$/, "").replace(/^(?:P8|PAV|PAU|PBV|PAX|W4|V|U)(?=[A-Z_])/, "");
+  const junk = s => !s || s.length < 3 || /^[$?@]|^_N$|^H_N$|^\d/.test(s);
+  // MSVC RTTI lists template args before the template: "VCRobloxDoc::?$VerbBinder" is VerbBinder<CRobloxDoc>.
+  const TEMPLATES = /^(CComObject|CComAggObject|CComContainedObject|CComEnum|CXTMaskEditT|CXTPArrayT|CXTPSmartPtrInternalT|CProxy_\w+)$/;
+  const cleanUnit = unit => {
+    let parts = [], tmpl = null;
+    for (const raw of unit.split("::")) {
+      const seg = cleanSeg(raw);
+      if (junk(seg)) continue;
+      if (raw.startsWith("?$") || TEMPLATES.test(seg)) { tmpl = seg; continue; }
+      if (tmpl) { parts = [`${tmpl}<${parts.join("::")}>`]; tmpl = null; }
+      parts.push(seg);
+    }
+    if (tmpl) parts = parts.length ? [`${tmpl}<${parts.join("::")}>`] : [tmpl];
+    return parts.join("::") || "(unnamed)";
+  };
+  // library and sort key come from the innermost argument: FactoryProduct<RBX::Hat> sits with RBX::Hat
+  const argOf = name => { const m = name.match(/^[\w$]+<(.+)>/); return m ? argOf(m[1]) : name; };
+  const libOf = name => { const top = name.split("::")[0];
+    return /^(RBX|G3D|boost|std|Ogre|ATL|Scintilla)$/.test(top) ? top : /^C?XTP|^XT/.test(top) ? "XTP (Codejock)" : /^(seg_|\(unnamed\))/.test(top) ? "Unattributed" : "App"; };
+  const classes = new Map(), statusOf = new Map();
   for (const [u, fs] of byUnit) {
-    const unit = data.units[u], i = unit.lastIndexOf("::"), key = i < 0 ? "Global" : unit.slice(0, i);
-    if (!ns.has(key)) ns.set(key, []);
-    ns.get(key).push([u, unit, fs]);
+    const name = cleanUnit(data.units[u]);
+    if (!classes.has(name)) classes.set(name, {name, key: argOf(name) + (name === argOf(name) ? "" : " " + name), lib: libOf(argOf(name)), units: [], fs: []});
+    const c = classes.get(name);
+    c.units.push(data.units[u]); c.fs.push(...fs);
     for (const f of fs) statusOf.set(f, status(f));
   }
+  const classList = [...classes.values()];
+  const ns = new Map();
+  for (const c of classList) { if (!ns.has(c.lib)) ns.set(c.lib, []); ns.get(c.lib).push(c); }
+  const active = c => c.fs.some(f => ["integrated", "working", "inactive", "draft"].includes(statusOf.get(f)));
+  const expanded = new Set();
   const counts = fs => { const c = Object.fromEntries(TREE_STATES.map(([k]) => [k, 0])); for (const f of fs) c[statusOf.get(f)]++; return c; };
   const sbar = c => { const n = Object.values(c).reduce((a, b) => a + b, 0) || 1; return `<div class="sbar" title="${TREE_STATES.filter(([k]) => c[k]).map(([k, l]) => `${c[k]} ${l.toLowerCase()}`).join(", ")}">${TREE_STATES.filter(([k]) => c[k]).map(([k]) => `<i style="--c:${TREE_COLOR[k]};width:${100 * c[k] / n}%"></i>`).join("")}</div>`; };
   // chips show native progress only; the bar already shows mining states
@@ -962,27 +997,31 @@ function renderTree(data, byUnit, nativeSet, native) {
   const drawLegend = () => legend.innerHTML = TREE_STATES.map(([k, l, , d]) => `<button type="button" data-state="${k}" aria-pressed="${only === k}" title="${esc(d)}">${dot(k)}${l} <b>${fmt(total[k])}</b></button>`).join("") +
     `<span class="hint">Hover a status for its meaning; click to show only classes that have it.${native?.commit ? ` Data from commit <code>${esc(native.commit)}</code> · ${esc(native.updated)}.` : ""}</span>`;
   legend.onclick = e => { const b = e.target.closest("button[data-state]"); if (!b) return; only = only === b.dataset.state ? "" : b.dataset.state; drawLegend(); draw(); };
+  const libOrder = ["App", "RBX", "G3D", "Ogre", "XTP (Codejock)", "boost", "std", "ATL", "Scintilla", "Unattributed"];
+  const classRow = c => {
+    const cc = counts(c.fs), errs = c.units.reduce((n, u) => n + linkFor(u).reduce((m, [, e]) => m + e.symbols.length, 0), 0), a = c.units.map(u => activity[u]).find(Boolean);
+    const extra = (errs ? `<span class="chip-err">${errs} link err</span>` : "") + (a?.[0] === "working" ? `<span class="chip-live">● ${esc(a[1])}</span>` : "");
+    const short = c.name.split(c.lib + "::").join("");
+    return `<details class="tree-cls" data-cls="${classList.indexOf(c)}"><summary><span class="name" title="${esc(c.units.join(", "))}">${esc(short)}<small>${c.fs.length}</small></span>${sbar(cc)}${chips(cc, extra)}</summary></details>`;
+  };
   const draw = () => {
     const q = input.value.trim().toLowerCase();
-    box.innerHTML = [...ns.keys()].sort((a, b) => (a === "Global") - (b === "Global") || a.localeCompare(b)).map(key => {
-      const units = ns.get(key).filter(([, unit, fs]) => (!q || unit.toLowerCase().includes(q)) && (!only || fs.some(f => statusOf.get(f) === only)));
-      if (!units.length) return "";
-      const c = counts(units.flatMap(x => x[2]));
-      return `<details class="tree-ns" ${q || only ? "open" : ""}><summary><span class="name">${esc(key)}<small>${fmt(units.length)} ${units.length === 1 ? "class" : "classes"}</small></span>${sbar(c)}${chips(c)}</summary>${units
-        .sort((a, b) => a[1].localeCompare(b[1])).map(([u, unit, fs]) => {
-          const cc = counts(fs), errs = linkFor(unit).reduce((n, [, e]) => n + e.symbols.length, 0), a = activity[unit];
-          const extra = (errs ? `<span class="chip-err">${errs} link err</span>` : "") + (a?.[0] === "working" ? `<span class="chip-live">● ${esc(a[1])}</span>` : "");
-          return `<details class="tree-cls" data-unit="${u}"><summary><span class="name">${esc(key === "Global" ? unit : unit.slice(key.length + 2))}<small>${fs.length}</small></span>${sbar(cc)}${chips(cc, extra)}</summary></details>`;
-        }).join("")}</details>`;
+    box.innerHTML = [...ns.keys()].sort((a, b) => (libOrder.indexOf(a) + 1 || 99) - (libOrder.indexOf(b) + 1 || 99) || a.localeCompare(b)).map(key => {
+      const list = ns.get(key).filter(c => (!q || c.name.toLowerCase().includes(q) || c.units.some(u => u.toLowerCase().includes(q))) && (!only || c.fs.some(f => statusOf.get(f) === only)))
+        .sort((a, b) => active(b) - active(a) || a.key.localeCompare(b.key));
+      if (!list.length) return "";
+      const c = counts(list.flatMap(x => x.fs)), all = q || only || expanded.has(key), shown = all ? list : list.filter(active).slice(0, 25), rest = list.length - shown.length;
+      return `<details class="tree-ns" data-lib="${esc(key)}" ${q || only || expanded.has(key) ? "open" : ""}><summary><span class="name">${esc(key)}<small>${fmt(list.length)} ${list.length === 1 ? "class" : "classes"}</small></span>${sbar(c)}${chips(c)}</summary>${shown.map(classRow).join("")}${rest ? `<button type="button" class="tree-more" data-more="${esc(key)}">Show all ${fmt(list.length)} classes</button>` : ""}</details>`;
     }).join("") || `<p class="tree-note">No classes match.</p>`;
   };
+  box.addEventListener("click", e => { const b = e.target.closest("[data-more]"); if (!b) return; expanded.add(b.dataset.more); draw(); });
   box.addEventListener("toggle", e => {
     const d = e.target;
-    if (!d.open || !d.dataset.unit || d.dataset.drawn) return;
+    if (!d.open || !d.dataset.cls || d.dataset.drawn) return;
     d.dataset.drawn = 1;
-    const unit = data.units[+d.dataset.unit], fs = [...byUnit.get(+d.dataset.unit)].sort((a, b) => a[0] - b[0]), a = activity[unit];
+    const cls = classList[+d.dataset.cls], fs = [...cls.fs].sort((a, b) => a[0] - b[0]), a = cls.units.map(u => activity[u]).find(Boolean);
     const groups = TREE_STATES.map(([k, l]) => [k, l, fs.filter(f => statusOf.get(f) === k)]).filter(g => g[2].length);
-    d.insertAdjacentHTML("beforeend", `<div class="tree-body">${linkHtml(linkFor(unit))}${a ? `<div class="tree-agent">Latest agent claim: ${esc(a[1])} · ${esc(a[0])}</div>` : ""}${groups.map(([k, l, g]) => `<div class="tree-group"><h4>${dot(k)}${l} · ${g.length}</h4>${g.map(f => {
+    d.insertAdjacentHTML("beforeend", `<div class="tree-body">${linkHtml(cls.units.flatMap(linkFor))}${cls.units.length > 1 || cls.units[0] !== cls.name ? `<div class="tree-agent">RTTI units: ${cls.units.map(esc).join(" · ")}</div>` : ""}${a ? `<div class="tree-agent">Latest agent claim: ${esc(a[1])} · ${esc(a[0])}</div>` : ""}${groups.map(([k, l, g]) => `<div class="tree-group"><h4>${dot(k)}${l} · ${g.length}</h4>${g.map(f => {
       const w = working[hex(f[0])], src = w ? w[0] + " · " + w[1] : inactive[hex(f[0])]?.[2] || "", n = fname(f);
       return `<div class="tree-fn"><span class="addr">${hex(f[0])}</span><span title="${esc(n)}"${n ? "" : ' class="anon"'}>${n ? esc(n) : "unnamed"}</span><span class="size">${fmt(f[1])} B</span><span class="src" title="${esc(src)}">${esc(src.split("/").pop())}</span></div>`;
     }).join("")}</div>`).join("")}</div>`);
@@ -1158,8 +1197,7 @@ async function client(name) {
     if (!b) { tip.style.display = "none"; return; }
     const named = native && native.names[hex(b.f[0])];
     tip.textContent = mapMode === "native"
-      ? `${named ? named[0] : units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${nativeSet.has(hex(b.f[0])) ? "integrated" :
-         b.f[2] === 100 ? "exact, waiting" : b.f[2] ? b.f[2] + "% mined" : "unmined"}`
+      ? `${named ? named[0] : units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${({integrated: "integrated", inactive: "inactive native (exact)", draft: "draft native", exact: "exact, waiting"})[nativeKind(b.f)] || (b.f[2] ? b.f[2] + "% mined" : "unmined")}`
       : `${units[b.f[3]]} • ${hex(b.f[0])} • ${fmt(b.f[1])} B • ${b.f[2]}%` + (b.f[6] ? ` • family ${b.f[6]}` : "");
     tip.style.display = "block";
     tip.style.left = Math.max(0, Math.min(x + 12, cv.clientWidth - tip.offsetWidth)) + "px";
@@ -1174,7 +1212,7 @@ async function client(name) {
     const named=native?.names[hex(f[0])], integrated=nativeSet.has(hex(f[0]));
     const readable=named && !named[0].startsWith("?") ? named[0] : "";
     document.getElementById("detail").innerHTML=`<div class="function-card"><strong>${esc(readable || units[f[3]])}</strong><br>
-      <span class="function-status">${integrated ? "Integrated in linked rebuild" : f[2]===100 ? "Exact · awaiting integration" : "Not exact"}</span>
+      <span class="function-status">${integrated ? "Integrated in linked rebuild" : native?.inactive?.[hex(f[0])] ? (native.inactive[hex(f[0])][1] ? "Inactive native code · receipt-exact, not integrated" : "Draft native code · not yet exact") + " · " + esc(native.inactive[hex(f[0])][2]) : f[2]===100 ? "Exact · awaiting integration" : "Not exact"}</span>
       <div class="function-meta">${hex(f[0])} · ${fmt(f[1])} bytes · ${f[2]}% matched</div>${sourceLinks(name,f)}
       ${integrated && !native?.sources?.[hex(f[0])] ? '<p class="note">Integrated source location not indexed yet.</p>' : ""}
       ${named || f[6] ? `<details><summary>Technical details</summary>${named ? `<p>Symbol <code>${esc(named[1])}</code></p>` : ""}${f[6] ? `<p>Family <code>${esc(f[6])}</code></p>` : ""}</details>` : ""}
@@ -1190,7 +1228,8 @@ async function client(name) {
     document.getElementById("maplegend").innerHTML = mapMode === "native" ? NATIVE_LEGEND : MINING_LEGEND;
     draw();
   };
-  const nativeColor = f => nativeSet.has(hex(f[0])) ? "#a855f7" : f[2] === 100 ? "#58a6ff" : f[2] ? "#d29922" : "#3a3d45";
+  const nativeKind = f => { const a = hex(f[0]), x = native?.inactive?.[a]; return nativeSet.has(a) ? "integrated" : x ? (x[1] ? "inactive" : "draft") : f[2] === 100 ? "exact" : f[2] ? "partial" : "unmined"; };
+  const nativeColor = f => ({integrated: "#a855f7", inactive: "#f0883e", draft: "#db61a2", exact: "#58a6ff", partial: "#d29922", unmined: "#3a3d45"})[nativeKind(f)];
   onresize = layout;
   layout();
 
