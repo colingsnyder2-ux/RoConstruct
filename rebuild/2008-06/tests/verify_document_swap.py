@@ -21,6 +21,7 @@ steps = [
     'record_native_sound_service_play.py',
     'record_native_exit_command.py',
     'record_native_selection_commands.py',
+    'record_native_surface_visitors.py',
     'record_native_document_initialize_trial.py',
     'record_native_camera_center_action.py',
     'record_native_camera_zoom_extents_profile.py',

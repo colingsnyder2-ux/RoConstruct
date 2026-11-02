@@ -1,8 +1,8 @@
 {
-  "source_sha256": "1e59b5eac62c9fc2dfd404a44609e01a09957c5e5123e436fc07310c77a66d20",
+  "source_sha256": "06ae92a6c7ef775a2cb5dc37436017a175b7074ef4eaf0e41b4930d8a7dc4fc1",
   "header_sha256": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
-  "observer_sha256": "2a8b5fb406a18949f6b72841e9929f31ec840e34a61ba9086a519daf7be5684e",
-  "object_sha256": "3e591815492622a3f84ec2786ee86247bc65566aaa5c63be215ae3e14b31e666",
+  "observer_sha256": "a9150e6684d86a29c893de64b14d6739f1ed5e8f035af0c0de7572318038cdfc",
+  "object_sha256": "280cba3e16ce945406b27a7930cd86a3e181078aa1663698d0218f78ea502230",
   "flags": [
     "/nologo",
     "/c",
@@ -409,6 +409,61 @@
       "address": "0x57ed70",
       "size": 58,
       "edges": {}
+    }
+  ],
+  "delete_action": {
+    "address": "00581090",
+    "size": 540,
+    "bindings": {
+      "__ehhandler$?doIt@DeleteBase@RBX@@UAEXPAVIDataState@2@@Z": 8229792,
+      "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+      "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264,
+      "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": 4789680,
+      "__imp___invalid_parameter_noinfo": 8398992,
+      "??_R0?AVWorkspace@RBX@@@8": 9732536,
+      "??_R0?AVInstance@RBX@@@8": 9605244,
+      "___RTDynamicCast": 6952902,
+      "??_R0?AVPlayers@Network@RBX@@@8": 9665560,
+      "?setParent@Instance@RBX@@QAEXPAV12@@Z": 5613808,
+      "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": 4534752,
+      "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": 6019104,
+      "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+    }
+  },
+  "weld_actions": [
+    {
+      "class": "WeldSelectionVerb",
+      "address": "0x582990",
+      "size": 213,
+      "vtable": "0x8307ac",
+      "bindings": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264,
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "?weldInstance@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": 5761920,
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": 5760208,
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": 4534752,
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": 6019104,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
+    },
+    {
+      "class": "SnapSelectionVerb",
+      "address": "0x582a70",
+      "size": 213,
+      "vtable": "0x8307c4",
+      "bindings": {
+        "?checkRunPermissions@RBX@@YAXPAVInstance@1@@Z": 5755472,
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264,
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": 5774528,
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "?snapInstance@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": 5760304,
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": 5760208,
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": 4534752,
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": 6019104,
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": 5817792
+      }
     }
   ],
   "camera_checks": [

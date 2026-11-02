@@ -1,8 +1,8 @@
 {
-  "revision": "076c6440ad56940aae594cca9641281054d92474",
+  "revision": "bb6aacd16d264458b17150be975cb4bd2f2c00ab",
   "shell_sha256": "d4cc50a3411f816682a3e1f9a70afb621dad0eb62b1003dea5b528103f1d0a7f",
   "generated_shell_sha256": "d178299349904177b2234ea824b242b169684b9b4b681230c4a4b51aec8f37c5",
-  "script_sha256": "2b08b95bda4d6ac85f8d7d5028ba6e52fccc6ae68c867747a746f3a9233aca7c",
+  "script_sha256": "6e59977b79d41e4d4c55a0e843d417f5a7561330081ec4e7bac581e01d21992a",
   "compile_flags": [
     "/nologo",
     "/c",
@@ -182,6 +182,7 @@
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEditSelectionVerbConstructorTrial.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceSharedFromTrial.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeSelectionCommandsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeSurfaceVisitorsTrial.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeAxisCommandsTrial.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeAxisBaseTrial.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeBasicVerbConstructorsTrial.obj",
@@ -282,9 +283,6 @@
     "CWorkspaceExecScriptHelperProfile.obj : error LNK2019: unresolved external symbol \"struct tagSAFEARRAY * __cdecl makeSafeArray(class std::vector<class RBX::Reflection::Value,class std::allocator<class RBX::Reflection::Value> > *)\" (?makeSafeArray@@YAPAUtagSAFEARRAY@@PAV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@Z) referenced in function \"public: long __thiscall CWorkspace::execScript(char const *,struct tagVARIANT,struct tagVARIANT,struct tagVARIANT,struct tagVARIANT,struct tagSAFEARRAY * *)\" (?execScript@CWorkspace@@QAEJPBDUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z)",
     "CWorkspaceSaveProfile.obj : error LNK2019: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z) referenced in function \"public: virtual long __stdcall CWorkspace::SaveToFile(wchar_t *)\" (?SaveToFile@CWorkspace@@UAGJPA_W@Z)",
     "NativeWorkspaceWriteTrial.obj : error LNK2001: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z)",
-    "NativeDocumentInitializeTrial.obj : error LNK2019: unresolved external symbol \"public: virtual void __thiscall RBX::DeleteBase::doIt(class RBX::IDataState *)\" (?doIt@DeleteBase@RBX@@UAEXPAVIDataState@2@@Z) referenced in function \"public: virtual void __thiscall CutVerb::doIt(class RBX::IDataState *)\" (?doIt@CutVerb@@UAEXPAVIDataState@RBX@@@Z)",
-    "NativeStandardVerbsConstructorTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::DeleteBase::doIt(class RBX::IDataState *)\" (?doIt@DeleteBase@RBX@@UAEXPAVIDataState@2@@Z)",
-    "NativeBasicVerbConstructorsTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::DeleteBase::doIt(class RBX::IDataState *)\" (?doIt@DeleteBase@RBX@@UAEXPAVIDataState@2@@Z)",
     "NativeDocumentInitializeTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall CopyVerb::doIt(class RBX::IDataState *)\" (?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z)",
     "NativeDocumentInitializeTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall PasteVerb::doIt(class RBX::IDataState *)\" (?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z)",
     "NativeDocumentInitializeTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall InsertObject::doIt(class RBX::IDataState *)\" (?doIt@InsertObject@@UAEXPAVIDataState@RBX@@@Z)",
@@ -341,8 +339,6 @@
     "NativeSelectionCommandsTrial.obj : error LNK2001: unresolved external symbol \"protected: virtual bool __thiscall RBX::BoolPropertyVerb::isChecked(void)const \" (?isChecked@BoolPropertyVerb@RBX@@MBE_NXZ)",
     "NativeSelectionCommandsTrial.obj : error LNK2001: unresolved external symbol \"protected: virtual void __thiscall RBX::BoolPropertyVerb::doIt(class RBX::IDataState *)\" (?doIt@BoolPropertyVerb@RBX@@MAEXPAVIDataState@2@@Z)",
     "NativeSelectionCommandsTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::GroupSelectionVerb::doIt(class RBX::IDataState *)\" (?doIt@GroupSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z)",
-    "NativeSelectionCommandsTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::WeldSelectionVerb::doIt(class RBX::IDataState *)\" (?doIt@WeldSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z)",
-    "NativeSelectionCommandsTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::SnapSelectionVerb::doIt(class RBX::IDataState *)\" (?doIt@SnapSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z)",
     "NativeSelectionCommandsTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::UngroupSelectionVerb::doIt(class RBX::IDataState *)\" (?doIt@UngroupSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z)",
     "NativeSelectionCommandsTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::DuplicateSelectionVerb::doIt(class RBX::IDataState *)\" (?doIt@DuplicateSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z)",
     "NativeSelectionCommandsTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::MoveDownSelectionVerb::doIt(class RBX::IDataState *)\" (?doIt@MoveDownSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z)",
@@ -362,7 +358,7 @@
     "NativeBasicVerbConstructorsTrial.obj : error LNK2001: unresolved external symbol \"public: virtual void __thiscall RBX::ClearBackpack::doIt(class RBX::IDataState *)\" (?doIt@ClearBackpack@RBX@@UAEXPAVIDataState@2@@Z)"
   ],
   "objects": {
-    "rebuild\\2008-06\\out\\native-layouts\\document-swap-link-trial\\NativeDocShell.obj": "ce0652567af1303b55c647ae1aca280f38b2e6d38ccff817527574539d2f112e",
+    "rebuild\\2008-06\\out\\native-layouts\\document-swap-link-trial\\NativeDocShell.obj": "7a5228131d6c1302ae70ff2340a573920c2177cf9f525ee80118ea22911a5150",
     "rebuild\\2008-06\\out\\p6\\MyXTPCommandBars.obj": "443645ceb461f7a06a7c27ccd5c1fb723ebd04a477ae654ab4cd57aa9e924726",
     "rebuild\\2008-06\\out\\p6\\appmodul.obj": "f3162dbc2f56ede8a080e490b0dfd4917a765fed94c5f6c2e5b092d645f8f155",
     "rebuild\\2008-06\\out\\p6\\P6Engine.obj": "462f1d02077fa93161ab7852793f9576708aa7afa85abe4d72e26d7e12de8b99",
@@ -491,7 +487,8 @@
     "rebuild\\2008-06\\out\\native-layouts\\NativeRunStateVerbConstructorTrial.obj": "6e3dee30504494126931663618c74f118606ce605dd0aa259ab34b7abe9a1aff",
     "rebuild\\2008-06\\out\\native-layouts\\NativeEditSelectionVerbConstructorTrial.obj": "263130377a7a3ab4215141040e9781f7f060f8f0e9bcb2b900560a39c885ddaf",
     "rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceSharedFromTrial.obj": "b89cdb937f350bb81a186a7172b187606793fc45eb5df9beb987579c18c251fd",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeSelectionCommandsTrial.obj": "3e591815492622a3f84ec2786ee86247bc65566aaa5c63be215ae3e14b31e666",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeSelectionCommandsTrial.obj": "280cba3e16ce945406b27a7930cd86a3e181078aa1663698d0218f78ea502230",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeSurfaceVisitorsTrial.obj": "0625e618ea07bdb2e1b997bc6df5b2bbe068fe23dfdaf400e717da53a7681934",
     "rebuild\\2008-06\\out\\native-layouts\\NativeAxisCommandsTrial.obj": "c8331074cee2db996e8b3dc2f6949a4df66d083b5ebce5645a8051dc8f59a9a2",
     "rebuild\\2008-06\\out\\native-layouts\\NativeAxisBaseTrial.obj": "3c563ad08484a0e9374caddb5a1db2bbd66b12ddfc868d170e1a728c5e0c6856",
     "rebuild\\2008-06\\out\\native-layouts\\NativeBasicVerbConstructorsTrial.obj": "5a2a5b0a094d5f10d3f44d6259fdeb9b32e64d748a6d9f1b53d68a3e3abda0ba",
@@ -545,5 +542,5 @@
   "filtered_donor_profile": true,
   "provider_trial": true,
   "archive_sha256": "46dc539323633e78ffd2a4f15708002ba20ce83007a3728ceec39748f3660e68",
-  "filtered_archive_sha256": "da5cc16cf9c545d206df83d5fbb7995857f17eb980e98375628c042079726ec7"
+  "filtered_archive_sha256": "1e8487eff73cdb319b2a4cdbd23f9fe72c82b6713439f0d995b815dafa60b9ca"
 }
