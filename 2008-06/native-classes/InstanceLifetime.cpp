@@ -7,6 +7,10 @@ Instance::Instance() : parent(0), name("Instance"), archivable(true)
 {
     InterlockedIncrement(&instanceCount);
 }
+Instance::Instance(const char* value) : parent(0), name(value), archivable(true)
+{
+    InterlockedIncrement(&instanceCount);
+}
 Instance::~Instance()
 {
     InterlockedDecrement(&instanceCount);

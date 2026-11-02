@@ -1,26 +1,25 @@
-// from server: 63% by atomic.potato
-typedef int (__cdecl *CompareFn)(const char *, const char *);
+// from server: 65% by Intel
 
-extern "C" int __cdecl compare_strings(const char *, const char *);
-
-CompareFn g_compare = compare_strings;
-
-struct WeakThreadRef
-{
-    int find(const char *);
+struct WeakThreadRef {
+    WeakThreadRef* next;
 };
 
-int WeakThreadRef::find(const char *value)
+extern "C" int __stdcall string_compare(const char*, const char*);
+
+int __stdcall find_weak_thread_ref(WeakThreadRef* head, const char* key)
 {
-    int current = *(int *)this;
+    WeakThreadRef* current = head;
+    if (!current)
+        return 0;
 
-    while (current != 0)
-    {
-        if ((char)g_compare(value, (const char *)(current - 0x60)))
+    int (__stdcall *compare)(const char*, const char*) = string_compare;
+
+    do {
+        char* node_key = reinterpret_cast<char*>(current) - 0x60;
+        if (compare(node_key, key))
             break;
+        current = current->next;
+    } while (current);
 
-        current = *(int *)current;
-    }
-
-    return current;
+    return reinterpret_cast<int>(current);
 }

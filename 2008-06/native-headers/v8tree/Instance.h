@@ -44,7 +44,11 @@ class Instance : public boost::enable_shared_from_this<Instance>,
                  public boost::noncopyable {
 public:
     static const Reflection::RefPropDescriptor<Instance, Instance> propParent;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentAdded;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_ancestryChanged;
     Instance();
+    explicit Instance(const char*);
     virtual ~Instance();
     virtual void setName(const std::string&);
     virtual bool askAddChild(const Instance*) const;

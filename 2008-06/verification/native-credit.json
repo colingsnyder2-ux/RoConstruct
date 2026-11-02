@@ -2555,6 +2555,13 @@
     "user": "colin"
   },
   {
+    "addr": "00615820",
+    "client": "2008-06",
+    "job": "f9a64bca67c64f3bb99ec49e3ec6da21",
+    "model": "roc native-assertions",
+    "user": "colin"
+  },
+  {
     "addr": "006158f0",
     "client": "2008-06",
     "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",

@@ -2927,6 +2927,18 @@
         ]
       },
       "timestamp": 1793576321.3478677
+    },
+    {
+      "job": "f9a64bca67c64f3bb99ec49e3ec6da21",
+      "patches": {
+        "App/v8datamodel/MouseCommand.cpp": [
+          [
+            "MouseCommand::capture()\n\t{\n\t\tRBXASSERT(!workspace->getCurrentMouseCommand()->captured());\n\t\tcapturedMouse = true;\n\t}",
+            "MouseCommand::capture()\n\t{\n\t\t                                                           ;\n\t\tcapturedMouse = true;\n\t}"
+          ]
+        ]
+      },
+      "timestamp": 1793584715.0180705
     }
   ],
   "initial_patches": {}

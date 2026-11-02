@@ -120,7 +120,7 @@ namespace RBX
 
 	void MouseCommand::capture()
 	{
-		RBXASSERT(!workspace->getCurrentMouseCommand()->captured());
+		                                                           ;
 		capturedMouse = true;
 	}
 

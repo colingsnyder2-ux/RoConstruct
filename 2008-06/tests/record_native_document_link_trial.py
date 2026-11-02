@@ -35,6 +35,14 @@ if code:
     sys.exit(code)
 spec = rebuild.load_module('2008-06','player')
 libs = [snap/spec['name']/'linked/linked.lib']
+native_instance = '--native-instance' in sys.argv
+if native_instance:
+    archive = snap/'RbxgsApp/linked/linked.lib'
+    filtered = out/'RbxgsAppWithoutInstance.lib'
+    filter_code, filter_log = rebuild.run(rebuild.toolchain(), 'lib',
+        ['/nologo', '/REMOVE:Instance.obj', '/OUT:' + str(filtered), str(archive)], out)
+    (out/'filter.log').write_text(filter_log)
+    assert filter_code == 0, filter_log
 pending = list(spec['depends'])
 while pending:
     dep = rebuild.load_module('2008-06', pending.pop(0))
@@ -43,6 +51,9 @@ while pending:
         libs.append(lib)
         pending += dep.get('depends', [])
 libs += [snap/'XTP/linked/linked.lib']
+if native_instance:
+    assert archive in libs
+    libs[libs.index(archive)] = filtered
 libs += [rebuild.dll_import_lib('2008-06', dll) for dll in spec['import_dlls']]
 objects = [out/'NativeDocShell.obj'] + [p6/name for name in ['MyXTPCommandBars.obj','appmodul.obj','P6Engine.obj','P6Data.obj','roblox.res','mfc90.lib']]
 objects += [snap/'native-layouts'/name for name in ['NativeFrameIconsFresh.obj','NativeFrameIconWidth.obj','NativeDHtmlDialog.obj','NativeAboutDialog.obj','NativeAboutDialogData.obj','NativeFileVersionInfo.obj','NativeGLCaps.obj','NativeSaveDialogProfile.obj','NativeApplicationBaseUrl.obj','NativeDocumentHistoryProfile.obj','NativeDocumentException.obj','NativeWorkspaceLayout.obj','NativeWorkspaceLoad.obj','WorkspaceInsertNativeProfile.obj','NativeParserDestructor.obj','SelectionFront.obj','InstanceClassLookup.obj','NativeDataModelTiming.obj','NativeDataModelDutyCycle.obj','NativePlayersAbuse.obj','NativeLuaAllocatorStats.obj']]
@@ -52,7 +63,22 @@ objects += [snap/'native-layouts'/name for name in ['ServiceSelectionProfile.obj
 objects += [snap/'native-layouts'/name for name in ['ServiceChangeHistoryProfile.obj','ServiceChangeHistoryCreate.obj']]
 objects += [snap/'native-layouts'/name for name in ['NativeChangeHistoryQueries.obj','NativeChangeHistoryPlayback.obj','NativeHistoryRecordPlayback.obj','NativeHistoryItemPlayback.obj','NativeChangeHistoryEnable.obj','NativeChangeHistoryReset.obj','NativeHistoryRecordLifetime.obj']]
 objects += [snap/'native-layouts'/'NativeChangeHistoryLayout.obj']
-objects += [snap/'native-layouts'/'NativeInstanceLifetimeLink.obj']
+objects += [snap/'native-layouts'/'NativeChangeHistoryFactory.obj']
+objects += [snap/'native-layouts'/('NativeInstanceLifetime.obj' if native_instance else 'NativeInstanceLifetimeLink.obj')]
+objects += [snap/'native-layouts'/'NativeGuidItem.obj']
+objects += [snap/'native-layouts'/'NativeGuidRegistryMutex.obj']
+objects += [snap/'native-layouts'/'NativeGuidRegistryInitialize.obj']
+objects += [snap/'native-layouts'/'NativeGuidRegistryConstructor.obj']
+objects += [snap/'native-layouts'/'NativeGuidRegistryCriticalSection.obj']
+objects += [snap/'native-layouts'/'NativeActiveDocument.obj']
+objects += [snap/'native-layouts'/'NativeActiveDocumentData.obj']
+objects += [snap/'native-layouts'/'NativeInstanceBaseCallbacks.obj']
+objects += [snap/'native-layouts'/'NativeInstanceReadPropertyTrial.obj']
+objects += [snap/'native-layouts'/'NativeDescendantHelpersTrial.obj']
+objects += [snap/'native-layouts'/'NativeInstanceAncestorTrial.obj']
+objects += [snap/'native-layouts'/'NativeInstanceDescendantThrow.obj']
+objects += [snap/'native-layouts'/'NativeInstanceDescendantAddTrial.obj']
+objects += [snap/'native-layouts'/'NativeInstanceSignalDescriptors.obj']
 objects += [snap/'native-layouts'/name for name in ['NativeChangeHistoryEvents.obj','NativeHistoryRecordLookup.obj','NativeHistoryItemState.obj']]
 objects += [snap/'property-abi-trial'/'HistoryItemPropertyTrial.obj']
 objects += [snap/'history-start-trial'/'NativeChangeHistoryStartTrial.obj']
@@ -63,9 +89,12 @@ code, log = rebuild.run(rebuild.toolchain(), 'link', args, out)
 (out/'link.log').write_text(log)
 errors = [line.strip() for line in log.splitlines() if 'unresolved external symbol' in line or 'already defined' in line]
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-receipt = {'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(), 'shell_sha256':sha(shell), 'generated_shell_sha256':sha(trial), 'script_sha256':sha(pathlib.Path(__file__)), 'compile_flags':flags,'link_exit':code,'link_flags':args,'errors':errors,'objects':{str(path.relative_to(root)):sha(path) for path in objects}, 'scope':'Isolated diagnostic native Doc shell with descriptor and signal ABI trial objects; incompatible ABI, never run. No runtime swap, no stubs, no P5/P6 gates.'}
+receipt = {'revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(), 'shell_sha256':sha(shell), 'generated_shell_sha256':sha(trial), 'script_sha256':sha(pathlib.Path(__file__)), 'compile_flags':flags,'link_exit':code,'link_flags':args,'errors':errors,'objects':{str(path.relative_to(root)):sha(path) for path in objects}, 'native_instance_profile':native_instance, 'scope':'Isolated diagnostic native Doc shell with descriptor and signal ABI trial objects; incompatible ABI, never run. No runtime swap, no stubs, no P5/P6 gates.'}
+if native_instance:
+    receipt['archive_sha256'] = sha(archive)
+    receipt['filtered_archive_sha256'] = sha(filtered)
 if code == 0:
     receipt['exe_sha256'] = sha(out/'NativeDoc.exe')
-(root/'work/2008-06/shared-layouts/document-swap-link-trial.json').write_text(json.dumps(receipt,indent=2)+'\n')
+(root/('work/2008-06/shared-layouts/document-swap-native-instance-trial.json' if native_instance else 'work/2008-06/shared-layouts/document-swap-link-trial.json')).write_text(json.dumps(receipt,indent=2)+'\n')
 print('link_exit:',code,'errors:',len(errors))
 for line in errors[:45]: print(line)

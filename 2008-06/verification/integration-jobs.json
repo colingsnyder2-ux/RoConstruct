@@ -8463,5 +8463,43 @@
     "unit": "RBX::RunService",
     "updated": 1793576322.0106995,
     "user": "colin"
+  },
+  {
+    "created": 1793584009.0841138,
+    "id": "f9a64bca67c64f3bb99ec49e3ec6da21",
+    "model": "roc native-assertions",
+    "patches": {
+      "App/v8datamodel/MouseCommand.cpp": [
+        [
+          "MouseCommand::capture()\n\t{\n\t\tRBXASSERT(!workspace->getCurrentMouseCommand()->captured());\n\t\tcapturedMouse = true;\n\t}",
+          "MouseCommand::capture()\n\t{\n\t\t                                                           ;\n\t\tcapturedMouse = true;\n\t}"
+        ]
+      ]
+    },
+    "phase": "complete",
+    "receipt": {
+      "accepted": true,
+      "baseline_revision": "d52c70ffa3d70e4b62f458dc62357976c36cfaffa2637edd9813520d6f04ea73",
+      "credits": 1,
+      "distinct_after": 9838,
+      "distinct_before": 9837,
+      "gains": [
+        "00615820"
+      ],
+      "input_hash": "2a6a61878abb8aa4cd34fa66a4282a5f69f80e4bf69a87859f291dceed4b18ef",
+      "losses": [],
+      "new_distinct": [
+        "00615820"
+      ],
+      "overlay_hash": "28bd1668909100fbaccdd7db7b86eaaa6d6b8a24a685f5ce4d4ff2c36dc07081",
+      "owned_after": 3366,
+      "owned_before": 3365,
+      "rebased": false,
+      "submitted_revision": "d52c70ffa3d70e4b62f458dc62357976c36cfaffa2637edd9813520d6f04ea73"
+    },
+    "state": "accepted",
+    "unit": "RBX::ArrowTool",
+    "updated": 1793584715.7077765,
+    "user": "colin"
   }
 ]

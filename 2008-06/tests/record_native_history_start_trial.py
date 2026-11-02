@@ -28,8 +28,6 @@ instance = instance_path.read_text()
 needle = '    static const Reflection::RefPropDescriptor<Instance, Instance> propParent;'
 assert instance.count(needle) == 1
 instance = instance.replace(needle, needle + '''
-    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentAdded;
-    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*)> event_itemChanged;
     template<class Function> void visitDescendents(Function func) const {
         if (children) {
