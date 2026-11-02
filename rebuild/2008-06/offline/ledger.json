@@ -1372,6 +1372,29 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-b52dfa5740fdb596",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/v8datamodel/Flag.cpp",
+    "App/v8datamodel/FlagStand.cpp",
+    "App/v8datamodel/SpawnLocation.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793634286,
+   "receipt": {
+    "gains": [
+     "005d37d0",
+     "00618390",
+     "006194a0",
+     "006195b0",
+     "00619970",
+     "0062cf40"
+    ],
+    "losses": []
+   }
   }
  ]
 }

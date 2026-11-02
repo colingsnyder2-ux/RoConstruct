@@ -2774,5 +2774,55 @@
     "#include <atlpath.h>\n#include \"util/FileSystem.h\"\n\nnamespace RBX\n"
    ]
   ]
+ },
+ {
+  "App/include/util/RunStateOwner.h": [
+   [
+    "\t\tvoid endRunThread(bool join);\n\t\tvoid raiseHeartbeat(float time, float step);\n\t\tvoid raiseStepped(float time, float step);\n\t\tRunState getRunState() const;\n\t\tbool isEditState() const;\n\t\tbool isRunState() const;\n\t\tbool isPauseState() const;\n",
+    "\t\tvoid endRunThread(bool join);\n\t\tvoid raiseHeartbeat(float time, float step);\n\t\tvoid raiseStepped(float time, float step);\n\t\tRunState getRunState() const\n\t\t{\n\t\t\treturn runState;\n\t\t}\n\t\tbool isEditState() const;\n\t\tbool isRunState() const;\n\t\tbool isPauseState() const;\n"
+   ]
+  ],
+  "App/v8datamodel/Flag.cpp": [
+   [
+    "\t\t{\n\t\t\tif (PartInstance* handle = getHandle())\n\t\t\t{\n\t\t\t\tflagTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Flag::onEvent_flagTouched, this, _1));\n\t\t\t}\n\t\t}\n\t}\n",
+    "\t\t{\n\t\t\tif (PartInstance* handle = getHandle())\n\t\t\t{\n\t\t\t\tflagTouched = PartInstance::event_Touched.connect(handle, boost::bind(&Flag::onEvent_flagTouched, this, _1), 10);\n\t\t\t}\n\t\t}\n\t}\n\n\tbool Flag::canBePickedUpByPlayer(Network::Player* p)\n\t{\n\t\tif (p->getNeutral())\n\t\t\treturn false;\n\n\t\tBrickColor current = teamColor;\n\t\tif (p->getTeamColor() != current)\n\t\t\treturn true;\n\t\telse\n\t\t\treturn false;\n\t}\n\n\tvoid Flag::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (!oldProvider)\n\t\t{\n\t\t\ttimer = ServiceProvider::create<TimerService>(newProvider);\n\t\t\ttimer->delay(boost::bind(&Flag::doUglyPeriodicCloneHack, shared_from(this)), 2.0f);\n\t\t}\n\n\t\tif (!newProvider)\n\t\t{\n\t\t\tflagTouched.disconnect();\n\t\t\tRunService* runService = ServiceProvider::create<RunService>(oldProvider);\n\n\t\t\tif (runService->getRunState() == RS_RUNNING)\n\t\t\t{\n\t\t\t\tif (Instance* evilC = evilClone.get())\n\t\t\t\t{\n\t\t\t\t\tFlag* flag = dynamic_cast<Flag*>(evilC);\n\t\t\t\t\tflag->getHandle();\n\n\t\t\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(this);\n\t\t\t\t\tif (!flagStandService->FindStandWithFlag(flag))\n\t\t\t\t\t{\n\t\t\t\t\t\tif (FlagStand* flagStand = flagStandService->FindClosestEmptyStandForFlag(flag))\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tflagStand->AffixFlag(flag);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tvoid Flag::onEvent_flagTouched(boost::shared_ptr<Instance> other)\n\t{\n\t\tInstance* parent = other->getParent();\n\n\t\tif (!Humanoid::modelIsCharacter(parent))\n\t\t\treturn;\n\n\t\tNetwork::Player* player = Network::Players::getPlayerFromCharacter(parent);\n\t\tif (!player)\n\t\t\treturn;\n\n\t\tif (player->getNeutral())\n\t\t\treturn;\n\n\t\tBrickColor current = teamColor;\n\t\tif (player->getTeamColor() != current)\n\t\t\treturn;\n\n\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(this);\n\t\tif (!flagStandService->FindStandWithFlag(this))\n\t\t{\n\t\t\tif (FlagStand* flagStand = flagStandService->FindClosestEmptyStandForFlag(this))\n\t\t\t{\n\t\t\t\tflagStand->AffixFlag(this);\n\t\t\t}\n\t\t}\n\t}\n"
+   ]
+  ],
+  "App/include/v8datamodel/FlagStand.h": [
+   [
+    "\t\tvirtual ~FlagStandService();\n\t\tFlagStand* FindClosestEmptyStandForFlag(Flag*);\n\t\tFlagStand* FindStandWithFlag(Flag* f);\n\t\tvoid RegisterFlagStand(FlagStand* s);\n\t\tvoid UnregisterFlagStand(FlagStand* s);\n\t};\n}\n",
+    "\t\tvirtual ~FlagStandService();\n\t\tFlagStand* FindClosestEmptyStandForFlag(Flag*);\n\t\tFlagStand* FindStandWithFlag(Flag* f);\n\t\tvoid RegisterFlagStand(FlagStand* s) { flagStands.push_back(s); }\n\t\tvoid UnregisterFlagStand(FlagStand* s) { flagStands.remove(s); }\n\t};\n}\n"
+   ]
+  ],
+  "App/v8datamodel/FlagStand.cpp": [
+   [
+    "\t\treturn NULL;\n\t}\n\n\tvoid FlagStandService::RegisterFlagStand(FlagStand* s)\n\t{\n\t\tflagStands.push_back(s);\n\t}\n\n\tvoid FlagStandService::UnregisterFlagStand(FlagStand* s)\n\t{\n\t\tflagStands.remove(s);\n\t}\n}\n",
+    "\t\treturn NULL;\n\t}\n\n}\n"
+   ],
+   [
+    "\n\tvoid FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tInstance::onServiceProvider(oldProvider, newProvider);\n\n\t\tif (!oldProvider)\n\t\t{\n\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);\n\t\t\tRBXASSERT(flagStandService);\n\n\t\t\tflagStandService->RegisterFlagStand(this);\n\n\t\t\tstandTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));\n\t\t}\n\n\t\tif (!newProvider)\n\t\t{\n\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);\n\t\t\tRBXASSERT(flagStandService);\n\n\t\t\tflagStandService->UnregisterFlagStand(this);\n\n",
+    "\n\tvoid FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (!oldProvider)\n\t\t{\n\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);\n\n\t\t\tflagStandService->RegisterFlagStand(this);\n\n\t\t\tstandTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1), 10);\n\t\t}\n\n\t\tif (!newProvider)\n\t\t{\n\t\t\tFlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);\n\n\t\t\tflagStandService->UnregisterFlagStand(this);\n\n"
+   ]
+  ],
+  "App/include/v8datamodel/SpawnLocation.h": [
+   [
+    "\t\tSpawnerService();\n\t\tvirtual ~SpawnerService();\n\t\tG3D::Vector3 FindSpawnPositionForPlayer(Network::Player* p);\n\t\tvoid RegisterSpawner(SpawnLocation* spawner);\n\t\tvoid UnregisterSpawner(SpawnLocation* spawner);\n\t};\n}\n",
+    "\t\tSpawnerService();\n\t\tvirtual ~SpawnerService();\n\t\tG3D::Vector3 FindSpawnPositionForPlayer(Network::Player* p);\n\t\tvoid RegisterSpawner(SpawnLocation* spawner) { spawners.push_back(spawner); }\n\t\tvoid UnregisterSpawner(SpawnLocation* spawner) { spawners.remove(spawner); }\n\t};\n}\n"
+   ]
+  ],
+  "App/v8datamodel/SpawnLocation.cpp": [
+   [
+    "\t}\n\n\tSpawnerService::~SpawnerService() {}\n\n\tvoid SpawnerService::RegisterSpawner(SpawnLocation* spawner)\n\t{\n\t\tspawners.push_back(spawner);\n\t}\n\n\tvoid SpawnerService::UnregisterSpawner(SpawnLocation* spawner)\n\t{\n\t\tspawners.remove(spawner);\n\t}\n\n\tG3D::Vector3 SpawnerService::FindSpawnPositionForPlayer(Network::Player* p)\n\t{\n",
+    "\t}\n\n\tSpawnerService::~SpawnerService() {}\n\n\tG3D::Vector3 SpawnerService::FindSpawnPositionForPlayer(Network::Player* p)\n\t{\n"
+   ],
+   [
+    "\t\t{\n\t\t\tspawnerTouched.disconnect();\n\n\t\t\tSpawnerService* spawnerService = ServiceProvider::create<SpawnerService>(oldProvider);\n\t\t\tRBXASSERT(spawnerService != NULL);\n\n\t\t\tspawnerService->UnregisterSpawner(this);\n\t\t}\n",
+    "\t\t{\n\t\t\tspawnerTouched.disconnect();\n\n\t\t\tSpawnerService* spawnerService = ServiceProvider::find<SpawnerService>(oldProvider);\n\n\t\t\tspawnerService->UnregisterSpawner(this);\n\t\t}\n"
+   ],
+   [
+    "\n\tvoid SpawnLocation::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tInstance::onServiceProvider(oldProvider, newProvider);\n\t\t\n\t\tif (!oldProvider)\n\t\t{\n\t\t\tspawnerTouched = PartInstance::event_Touched.connect(this, boost::bind(&SpawnLocation::onEvent_spawnerTouched, this, _1));\n\n\t\t\tSpawnerService* spawnerService = ServiceProvider::create<SpawnerService>(newProvider);\n\t\t\tRBXASSERT(spawnerService != NULL);\n\n\t\t\tspawnerService->RegisterSpawner(this);\n\t\t}\n",
+    "\n\tvoid SpawnLocation::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)\n\t{\n\t\tif (!oldProvider)\n\t\t{\n\t\t\tspawnerTouched = PartInstance::event_Touched.connect(this, boost::bind(&SpawnLocation::onEvent_spawnerTouched, this, _1), 10);\n\n\t\t\tSpawnerService* spawnerService = ServiceProvider::create<SpawnerService>(newProvider);\n\n\t\t\tspawnerService->RegisterSpawner(this);\n\t\t}\n"
+   ]
+  ]
  }
 ]
