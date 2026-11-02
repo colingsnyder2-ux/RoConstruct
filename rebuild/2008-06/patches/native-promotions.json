@@ -2652,5 +2652,25 @@
     "\t\t}\n\t}\n\n\tvoid Accoutrement::dropAllOthers(ModelInstance* character, Accoutrement* exclude)\n\t{\n\t\tif (Workspace* workspace = Workspace::findWorkspace(character))\n\t\t{\n\t\t\twhile (Accoutrement* accoutrement = character->findFirstChildOfType<Accoutrement>())\n\t\t\t{\n\t\t\t\tif (accoutrement != exclude)\n\t\t\t\t\taccoutrement->setParent(workspace);\n\t\t\t}\n\t\t}\n\t}\n\n\tXmlElement* Accoutrement::write()\n\t{\n\t\tif (!writeUnlocked)\n"
    ]
   ]
+ },
+ {
+  "App/include/tool/NullTool.h": [
+   [
+    "\t\tG3D::Vector3 waypoint;\n\n\tprivate:\n\t\tvirtual void onMouseIdle(const UIEvent& uiEvent);\n\t\tvirtual void onMouseHover(const UIEvent& uiEvent);\n\t\tvirtual MouseCommand* onMouseDown(const UIEvent& uiEvent);\n",
+    "\t\tG3D::Vector3 waypoint;\n\n\tprivate:\n\t\tbool localHeadHidden() const;\n\t\tvirtual void onMouseIdle(const UIEvent& uiEvent);\n\t\tvirtual void onMouseHover(const UIEvent& uiEvent);\n\t\tvirtual MouseCommand* onMouseDown(const UIEvent& uiEvent);\n"
+   ]
+  ],
+  "App/include/v8datamodel/PartInstance.h": [
+   [
+    "\t\t\treturn getTransparencyUi() > 0.1f;\n\t\t}\n\t\tvoid setTransparency(float value);\n\t\tvoid setAlphaModifier(float value);\n\t\tfloat getReflectance() const\n\t\t{\n",
+    "\t\t\treturn getTransparencyUi() > 0.1f;\n\t\t}\n\t\tvoid setTransparency(float value);\n\t\tfloat getAlphaModifier() const\n\t\t{\n\t\t\treturn alphaModifier;\n\t\t}\n\t\tvoid setAlphaModifier(float value);\n\t\tfloat getReflectance() const\n\t\t{\n"
+   ]
+  ],
+  "App/tool/NullTool.cpp": [
+   [
+    "\t}\n\n\tNewNullTool::~NewNullTool() {}\n\n\tvoid NewNullTool::onMouseIdle(const UIEvent& uiEvent)\n\t{\n",
+    "\t}\n\n\tNewNullTool::~NewNullTool() {}\n\n\tbool NewNullTool::localHeadHidden() const\n\t{\n\t\tif (ModelInstance* character = Network::Players::findLocalCharacter(workspace))\n\t\t{\n\t\t\tif (Humanoid* humanoid = Humanoid::modelIsCharacter(character))\n\t\t\t{\n\t\t\t\tPartInstance* head = humanoid->getHead();\n\t\t\t\tif (head && head->getAlphaModifier() == 0.0f)\n\t\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t\treturn false;\n\t}\n\n\tvoid NewNullTool::onMouseIdle(const UIEvent& uiEvent)\n\t{\n"
+   ]
+  ]
  }
 ]

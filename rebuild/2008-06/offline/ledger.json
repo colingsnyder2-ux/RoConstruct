@@ -1226,6 +1226,22 @@
     ],
     "losses": []
    }
+  },
+  {
+   "id": "offline-c2c9baa73fa68b80",
+   "state": "accepted",
+   "source": "offline",
+   "files": [
+    "App/tool/NullTool.cpp"
+   ],
+   "model": "claude-opus-5-5",
+   "ts": 1793610590,
+   "receipt": {
+    "gains": [
+     "00617e80"
+    ],
+    "losses": []
+   }
   }
  ]
 }
