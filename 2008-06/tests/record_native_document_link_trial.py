@@ -50,6 +50,19 @@ if native_instance or filtered_donor:
         ['/nologo'] + remove + ['/OUT:' + str(filtered), str(archive)], out)
     (out/'filter.log').write_text(filter_log)
     assert filter_code == 0, filter_log
+    if provider_trial:
+        member = next(data for name, data in recipes.archive_members(filtered) if str(name) == 'glue_link_stubs.obj')
+        symbol = '?onMouseMove@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z'
+        assert rebuild.coff_externals(member).get(symbol) is True
+        patched = out/'glue_link_stubs_without_part_drag.obj'
+        patched.write_bytes(rebuild.strip_symbols(member, drop={symbol}))
+        assert rebuild.coff_externals(patched.read_bytes()).get(symbol) is False
+        cleaned = out/'RbxgsAppWithoutInstanceOrPartDragStub.lib'
+        code, log = rebuild.run(rebuild.toolchain(), 'lib', ['/nologo', '/REMOVE:glue_link_stubs.obj', '/OUT:' + str(cleaned), str(filtered)], out)
+        assert code == 0, log
+        code, log = rebuild.run(rebuild.toolchain(), 'lib', ['/nologo', '/OUT:' + str(cleaned), str(cleaned), str(patched)], out)
+        assert code == 0, log
+        filtered = cleaned
 pending = list(spec['depends'])
 while pending:
     dep = rebuild.load_module('2008-06', pending.pop(0))
@@ -81,6 +94,22 @@ objects.append(snap/'native-layouts/zoom-extents-preprocess/NativeCameraZoomExte
 objects += [snap/'native-layouts'/'NativeFaceInstanceLifetime.obj', snap/'native-layouts'/'NativeDecalLifetime.obj']
 objects.append(snap/'native-layouts'/'NativeDecalBases.obj')
 objects.append(snap/'native-layouts'/'NativeRotateAxisTrial.obj')
+objects += [snap/'native-layouts'/name for name in ['NativeGroupActionTrial.obj', 'NativeGroupHelperTrial.obj', 'NativeModelFactoryTrial.obj']]
+objects += [snap/'native-layouts'/name for name in ['NativeMoveUpConstructorsTrial.obj', 'NativeMoveUpActionTrial.obj']]
+objects.append(snap/'native-layouts'/'NativeRotateActionTrial.obj')
+objects += [snap/'native-layouts'/name for name in ['NativeBoolPropertyActionsTrial.obj', 'NativeBoolPropertyPredicateTrial.obj', 'NativeBoolPropertySetterTrial.obj']]
+objects += [snap/'native-layouts'/name for name in ['NativeUngroupActionTrial.obj', 'NativeUngroupOperationTrial.obj']]
+objects.append(snap/'native-layouts'/'NativeDuplicateActionTrial.obj')
+objects += [snap/'native-layouts'/'NativeSafeArrayTrial.obj', snap/'native-layouts/value-worker/NativeValueConverterWorkerTrial.obj']
+objects += [snap/'native-layouts/insertdecal-action-worker/NativeInsertDecalActionWorker.obj', snap/'native-layouts/insertdecal-texture-worker/DecalTextureWorker.obj', snap/'native-layouts/insertdecal-mime-worker/MimeWorker.obj']
+objects.append(snap/'native-layouts/value-worker/NativeRegisterImageWorker.obj')
+objects += [snap/'native-layouts/insertdecal-property-probe/DecalPropertyWorker.obj', snap/'native-layouts/worker-hammer/NativeHammerWorkerTrial.obj', snap/'native-layouts/worker-hammer/NativeHammerMethodsWorkerTrial.obj', snap/'native-layouts/worker-hammer/NativeHammerClickWorkerTrial.obj']
+objects += [snap/'native-layouts/laser-trial'/name for name in ['NativeLaserTrial.obj', 'NativeLaserMethodsTrial.obj', 'NativeLaserRenderTrial.obj']]
+objects.append(snap/'native-layouts/laser-click-trial/NativeLaserClickTrial.obj')
+objects.append(snap/'native-layouts/insert-object-worker2/NativeInsertObjectActionWorker.obj')
+if provider_trial:
+    objects += [snap/'native-layouts'/(name+'.obj') for name in ('NativeGrabToolTrial','NativeGrabMethodsTrial','NativeGrabNameTrial','NativeGroupDragLifetimeTrial','NativeGroupDragMethodsTrial','NativeGroupDragNameTrial','NativePartDragLifetimeTrial','NativePartDragMethodsTrial','NativePartDragNameTrial','NativeCollectDragPartsTrial')]
+    objects.append(snap/'native-layouts/worker-grab-factory/verified/NativeDragFactoryWorkerTrial.obj')
 objects.append(snap/'native-layouts/execscript-probe/NativeExecScriptProfile.obj')
 objects.append(snap/'native-layouts/execscript-helper-probe/CWorkspaceExecScriptHelperProfile.obj')
 objects.append(snap/'native-layouts/execurl-probe/NativeWorkspaceExecUrlProfile.obj')
@@ -139,7 +168,7 @@ if provider_trial:
                  'NativeWorkspaceGetWorkspaceTrial.obj', 'NativeVerbConstructor.obj',
                  'NativeStandardVerbsConstructorTrial.obj', 'NativeRunStateVerbConstructorTrial.obj',
                  'NativeEditSelectionVerbConstructorTrial.obj', 'NativeWorkspaceSharedFromTrial.obj',
-                 'NativeSelectionCommandsTrial.obj', 'NativeCameraFirstPersonTrial.obj', 'NativePartSetLockedCompactTrial.obj', 'NativeWorkspaceSelectAllTrial.obj', 'NativeSurfaceVisitorsTrial.obj', 'NativeAxisCommandsTrial.obj', 'NativeAxisBaseTrial.obj', 'NativeTiltAxisTrial.obj', 'NativeTiltMatrixLink.obj',
+                 'NativeSelectionCommandsTrial.obj', 'NativeCameraFirstPersonTrial.obj', 'NativePartSetLockedCompactTrial.obj', 'NativeWorkspaceSelectAllTrial.obj', 'NativeSurfaceVisitorsTrial.obj', 'NativeAxisCommandsTrial.obj', 'NativeAxisBaseTrial.obj', 'NativeTiltAxisTrial.obj', 'NativeTiltMatrixLink.obj', 'NativeTiltQuadrantTrial.obj', 'NativeTiltConstantsTrial.obj',
                  'NativeBasicVerbConstructorsTrial.obj', 'NativeStatsCommandsTrial.obj', 'NativeJoinCommandTrial.obj', 'NativeSelectionBackTrial.obj', 'NativeMotorFeatureTrial.obj', 'NativeEngineStatsTrial.obj', 'NativeSpatialStatsTrial.obj', 'NativeToolVerbActionTrial.obj', 'NativeClearStarterTrial.obj', 'NativeClearBackpackTrial.obj',
                  'NativeMouseCommandLifetimeTrial.obj', 'NativeArrowFactoryTrial.obj',
                  'NativeNullToolFactoryTrial.obj', 'NativeGameToolFactoryTrial.obj',

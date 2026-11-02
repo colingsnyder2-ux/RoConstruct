@@ -13,6 +13,20 @@ out.mkdir(parents=True, exist_ok=True)
 steps = [
     'record_native_face_lifetime.py',
     'record_native_class_names_trial.py',
+    'record_native_group_action_trial.py',
+    'record_native_group_helper_trial.py',
+    'record_native_model_factory_trial.py',
+    'record_native_move_up_constructors_trial.py',
+    'record_native_move_up_action_trial.py',
+    'record_native_rotate_action_trial.py',
+    'record_native_bool_property_actions_trial.py',
+    'record_native_bool_property_access_trial.py',
+    'record_native_ungroup_action_trial.py',
+    'record_native_ungroup_operation_trial.py',
+    'record_native_duplicate_action_trial.py',
+    'record_native_safearray_trial.py',
+    'record_native_value_converter_worker_trial.py',
+    'record_native_register_image_worker.py',
     'record_native_gametool_lifetime.py',
     'record_native_change_history_factory.py',
     'record_native_instance_link_profile.py',
@@ -141,6 +155,22 @@ with log_path.open('w', encoding='utf-8') as log:
                 print(f'PASS {name}', flush=True)
     if failures:
         sys.exit(1)
+    # Drag trials share generated headers, so rebuild them sequentially.
+    for name in ['record_native_group_drag_lifetime_trial.py', 'record_native_group_drag_methods_trial.py',
+                 'record_native_group_drag_name_trial.py', 'record_native_part_drag_lifetime_trial.py',
+                 'record_native_part_drag_methods_trial.py', 'record_native_part_drag_name_trial.py',
+                 'record_native_collect_drag_parts_trial.py', 'record_native_drag_factory_worker_trial.py',
+                 'record_native_insert_decal_action_worker.py', 'record_native_decal_texture_worker.py',
+                 'record_native_mime_type_worker.py', 'record_native_decal_property_barrier_worker.py',
+                 'record_native_getset_slots_worker_trial.py', 'record_native_hammer_worker_trial.py',
+                 'record_native_hammer_methods_worker_trial.py', 'record_native_laser_trial.py',
+                 'record_native_laser_click_trial.py', 'record_native_insert_object_action_worker.py']:
+        name, result = run_check(name)
+        log.write(f'\n=== {name} (exit {result.returncode}) ===\n{result.stdout}')
+        if result.returncode:
+            print(f'FAIL {name}: {result.stdout[-3000:]}', flush=True)
+            sys.exit(result.returncode)
+        print(f'PASS {name}', flush=True)
     name, result = run_check('record_native_test_move_bool_trial.py')
     log.write(f'\n=== {name} (exit {result.returncode}) ===\n{result.stdout}')
     if result.returncode:

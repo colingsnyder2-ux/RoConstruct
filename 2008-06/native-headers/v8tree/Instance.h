@@ -67,8 +67,7 @@ public:
     Instance* getParent() const { return parent; }
     size_t numChildren() const
     {
-        if (children) return children->size();
-        return 0;
+        return children ? children->size() : 0;
     }
     const Instance* getChild(size_t i) const { return (*children)[i].get(); }
     Instance* getChild(size_t i) { return (*children)[i].get(); }

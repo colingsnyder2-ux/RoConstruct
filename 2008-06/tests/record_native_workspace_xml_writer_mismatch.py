@@ -78,12 +78,20 @@ for prefix, address in [('??1?$_Tree@V?$_Tset_traits@VContentId@RBX@@', 0x46b070
 pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
 image = pe.OPTIONAL_HEADER.ImageBase
 readptr = lambda address: struct.unpack('<I', pe.get_data(address - image, 4))[0]
+handler = 0x7c39e8
+assert pe.get_data(handler - image, 1) == b'\xb8'
+funcinfo = readptr(handler + 1)
+magic, state_count, unwind_map = struct.unpack('<3I', pe.get_data(funcinfo - image, 12))
+assert (magic, state_count) == (0x19930522, 2)
+unwind_states = [struct.unpack('<II', pe.get_data(unwind_map - image + 8*i, 8)) for i in range(state_count)]
+assert unwind_states == [(0xffffffff, 0), (0xffffffff, 0x7c39e0)]
 locator = readptr(0x81c844)
 type_descriptor = readptr(locator + 12)
 assert pe.get_string_at_rva(type_descriptor + 8 - image) == b'.?AVTextXmlWriterWithEmbeddedContent@@'
 assert readptr(0x81c848) == 0x58e810
 sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
 receipt = {'scope': 'Inactive explicit-destructor profile: constructor matches, destructor and caller differ. Implicit-destructor results are recorded separately; no runtime promotion.', 'observer_sha256': sha(Path(__file__)), 'source_sha256': sha(source), 'header_sha256': sha(header), 'overlay_sha256': sha(overlay / 'XmlSerializer.h'), 'object_sha256': sha(obj), 'original_vtable': '0x81c848', 'original_type_descriptor': hex(type_descriptor), 'methods': rows, 'flags': flags}
+receipt['original_caller_unwind'] = {'handler': hex(handler), 'funcinfo': hex(funcinfo), 'unwind_map': hex(unwind_map), 'states': [{'to': hex(state), 'action': hex(action)} for state, action in unwind_states], 'finding': 'State 0 has no cleanup action; state 1 invokes writer cleanup.'}
 receipt['implicit_destructor_profile'] = {'scope': 'Constructor and implicit destructor match; caller still differs. Complete layout and runtime ABI remain unproven.', 'object_sha256': sha(implicit_obj), 'source_sha256': sha(implicit_source), 'overlay_sha256': hashlib.sha256(implicit_header.encode()).hexdigest(), 'methods': implicit_rows, 'destructor_calls': {k: hex(v) for k, v in destructor_calls.items()}, 'flags': implicit_flags}
 (root / 'work/2008-06/shared-layouts/workspace-xml-writer-mismatch.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS XML writer constructor and implicit destructor; caller mismatch recorded')
