@@ -458,3 +458,27 @@ affected by anything on the P6 branch.
 - 2026-11-01 Codex: declare original HistoryItem play/unplay/property operations to recover Doc undo/redo path. No field or vtable changes; behavior remains inactive.
 
 - 2026-11-01 Codex: declare HistoryItem applyProperty nonvirtual 005872a0; original parent-property RTTI confirms descriptor slot5 applies a Reflection::Value. Donor PropertyDescriptor slot5 is setStringValue, so descriptor ABI is not adopted pending correction; no vtable changes now.
+
+- 2026-11-01 Codex: declare ChangeHistoryService start/reset nonvirtual from original 0058c8b0 calls and recovered history sources; no layout or vtable change. Diagnostic only.
+
+- 2026-11-01 Codex: declare HistoryRecord(ChangeHistoryService*) used by original reset 0058c3c0; nonvirtual declaration only. No live integration.
+
+- 2026-11-01 Codex: test implicit HistoryRecord destructor against original reset and service lifetime; no storage or vtable change. Revert unless both match.
+
+- 2026-11-01 Codex: test implicit HistoryItem destructor against original tree item destructor 00589720 and record/service lifetimes; no field or virtual changes.
+
+- 2026-11-01 Codex: add three ChangeHistoryService virtual callback declarations, original vtable slots 16-18 and thunks verified by history-start-abi.json. Inactive; retest ctor/dtor and vtable slots.
+
+- 2026-11-01 Codex: declare history record lookup and item capture/reset/update methods from original callbacks 0058b870/0058b970/0058ba70; nonvirtual only, no storage changes. Inactive pending exact verification.
+
+- 2026-11-01 Codex: declare HistoryItem(ChangeHistoryService*, shared_ptr<Instance>) for original record lookup 0058b6c0. No layout or virtual changes; validate ctor and dtor.
+
+- 2026-11-01 Codex: restore Instance::propParent declaration from donor and original 00973d34 RTTI; pointer identity only, donor property vtable remains incompatible. Declare HistoryItem captureProperty nonvirtual from 00589650 -> 00589410.
+
+- 2026-11-01 Codex: restore donor Instance::getParent inline accessor; same proven +104 member, no layout or vtable change. Comparing history update codegen.
+
+- 2026-11-01 Codex: declare HistoryItem capture(Reflection::Property const&) based on 00589530 source and target; nonvirtual only. Property vtable still unverified; no activation.
+
+- 2026-11-01 GUI recovery: capped three GPT-6.1 Terra agents. Host independently merged Doc handle_454f30 boolean normalization (`!= 0`), no lost TU matches or unrelated source edits. Upload81ffdb19a75c46e7b336ae0d0590b9f6; receipt work/gui-live-validation/terra33-doc-host-receipt.json. Canonical GUI-class mapping absent: zero integration credits, no player swap. Worker33 probe profile correction restores owner include order without shared header edits.
+
+- 2026-11-01 Codex: recover ChangeHistoryService override onServiceProvider in original primary vtable slot 12 -> 0058c4f0; overrides existing virtual, no extra slot/field. Context pointer still provisional.

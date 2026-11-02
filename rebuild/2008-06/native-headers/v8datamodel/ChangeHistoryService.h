@@ -23,7 +23,13 @@ public:
     boost::signals::scoped_connection connectionChanged;
     ChangeHistoryService();
     virtual ~ChangeHistoryService();
+    virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);
+    virtual void onHistoryAdded(boost::shared_ptr<Instance>);
+    virtual void onHistoryRemoving(boost::shared_ptr<Instance>);
+    virtual void onHistoryChanged(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*);
     void setEnabled(bool);
+    void start();
+    void reset();
     void unplay();
     void play();
     bool queryUnplay(std::string&, int);

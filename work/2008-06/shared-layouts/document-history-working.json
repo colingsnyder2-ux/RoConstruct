@@ -6,7 +6,7 @@
     "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
     "rebuild\\2008-06\\native-headers\\RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4",
     "rebuild\\2008-06\\native-headers\\CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "88c977161dee24562d0a9512894f43ba35fad2427a3c10b8b7bed9e404b94d3a",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "3753635c8a09929c38a4f08d3ec671b019b7532115fab56b4f61ecb4733f8057",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
     "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "6b5e8766c0a695e297cb999b80c64c5e93b0180e8f43b26c121a9a25f289bb42",
@@ -16,7 +16,7 @@
     "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c",
     "rebuild\\2008-06\\native-classes\\LuaAllocatorStats.cpp": "a174770c08f446c59161f7073387754b6e6f1beb58fa85707f63aa96aa8290f4"
   },
-  "object_sha256": "ff390f802f6c530def13e56190fcd834c2d7e771b89be442a878d8d9c2922bce",
+  "object_sha256": "7bff220161a9dfb587c0727c863e9e1e160faaa1c6d6b0adf10f9031e2cbc574",
   "profile": [
     "const _Elem * c_str() const",
     "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );"
@@ -330,7 +330,7 @@
       "address": "005c8940",
       "symbol": "?getHeapStats@LuaAllocator@@QBEXAAI0@Z",
       "size": 20,
-      "object_sha256": "5b03c62772032199487851eb37df0a252e21067ef85c7c135adf55047ad7454f",
+      "object_sha256": "621407af92e8a43647fa6ca2b1d2df007b05b925d87935a738999f737d605260",
       "flags": [
         "/nologo",
         "/c",

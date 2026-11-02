@@ -1,23 +1,35 @@
 {
-  "scope": "Inactive layout and nine matched bodies; descriptor ABI, context identity, record behavior, data/vtable linkage and runtime remain unverified.",
+  "scope": "Inactive layout and twenty-seven matched bodies; descriptor ABI, context identity, record behavior, data/vtable linkage and runtime remain unverified.",
   "inputs": {
-    "rebuild\\2008-06\\tests\\record_native_change_history.py": "b3fb4f22f0b7d38869f96ac605c5af765e6a6063dfe05a2251a63ed537d1fc9b",
+    "rebuild\\2008-06\\tests\\record_native_change_history.py": "e603d80fdbc86fbdba2c2d6b301d7ba971227965850b71128ca09f9b36a6a05c",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryLifetime.cpp": "196e6c20556a91f5689a7f517d01cdac189da56a98521b5b40ec848a01a92e41",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryQueries.cpp": "4c7ff0f056c177d6646ac921b403dfa9609c9c0eca6b026c00c41db55df00bc0",
     "rebuild\\2008-06\\tests\\NativeChangeHistoryLayout.cpp": "a2a33d8545ae463b186587fbdf6a42028a6b12e4ddcb0a01c0dfcb52107bfb28",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "88c977161dee24562d0a9512894f43ba35fad2427a3c10b8b7bed9e404b94d3a",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\HistoryRecord.h": "2f391c58647babaae5ff6d3059bee520a3414eb852cb1fe3778b630aba6901be",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "74b952f551c822bf600e465fbd975d3767f4be8e2a67d30e06edfd2e103a10ac",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "283bcfc47ad4b6e890aba7c0c09ae3eb51c2f2f6a0f0630080d045bbd8d63bb2",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\HistoryRecord.h": "b2dc12bd4ae98b1538a6c45cc6851c4f99b2ebffdf2b7be47b2438e8c92e7e1f",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "1761155f9c9e24e66f46616a62e0abbf3ad36d25af6c74a9afc396c5d68b03ef",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryPlayback.cpp": "8130590e03b93e5ba8ba247a86a542c15d612bf3a91305cf87755b64bda8042b",
     "rebuild\\2008-06\\native-classes\\HistoryRecordPlayback.cpp": "19b6e5124354a7dd6b86797b29df320802f550bbbd2e052df87fb6652391cb16",
-    "rebuild\\2008-06\\native-classes\\HistoryItemPlayback.cpp": "29f40428ee3b882619fc31e9dc2de66494bc66e5e27cc3fb9e307c8ac632e23a"
+    "rebuild\\2008-06\\native-classes\\HistoryItemPlayback.cpp": "f0e52b047bfa2da5d8c6b6097d0686e214133b4042f41ba872cafd1e3e1a4d01",
+    "rebuild\\2008-06\\native-classes\\ChangeHistoryEnable.cpp": "e0857f888161db20800020c28e0ba2d03fe1094d33a269668fe9ddcff3580d23",
+    "rebuild\\2008-06\\native-classes\\ChangeHistoryReset.cpp": "b00441499b5fd90eb87303007686eed1db737c8457a6462a105d87578ec5a68f",
+    "rebuild\\2008-06\\native-classes\\HistoryRecordLifetime.cpp": "5a8a8105aecdf678220b85875177bb40bb48d23b073cf3f986496aef6faaa983",
+    "rebuild\\2008-06\\native-classes\\ChangeHistoryEvents.cpp": "3bdf952fbe099b071fa0945e6c24e0f6fc8d241cb09db1be965d93e53c05cbc9",
+    "rebuild\\2008-06\\native-classes\\HistoryRecordLookup.cpp": "40e6cade31d365f22b1f51dff3d4d546725099f987c792286ab43cad12576b2d",
+    "rebuild\\2008-06\\native-classes\\HistoryItemState.cpp": "e45bae7fcf3483ebd5a16786537fe738c708e209486092f1eefcb1ff0b6b9327"
   },
   "objects": {
-    "lifetime": "7ba8fc0916b3222845d6f76ea92126f499329494b3bd6f1d3b27e0c0213cd9ce",
-    "queries": "d48c4d0de8ea188ea483a0f9ce86342d1c0f03b641f16e5509f17ccdc0c92b39",
-    "playback": "d1d282f6d171241f8fc1f83d64c3406edcf15ab55c9d124c38cdb9865b7519cc",
-    "record": "ba6726b6f129b20080a949aac046c221c56af63ba651079770e6d138abad6169",
-    "item": "3fe9bee4178ca1754c923d47f5a2242779bf0c60f16108aef76a8e473ef35df3"
+    "lifetime": "f67e9c92f09c4709ed7144cc073f6e29b84716433094073b8e6b4d62e02a5599",
+    "queries": "c6afe5ea256dd18837b6aca64cdc579e86977585bd90453453ba60c8f9fab156",
+    "playback": "3130479b7c7c50b1b5c6cac3b6df6a61f8742ce200013637d6fc9eb4c7e3e719",
+    "record": "ef06d5e013da7eb5a498568163e640650f772ff2cfb1ddd7294ab2e21d26364e",
+    "item": "0203ad74b0d869cc5518e64c0b85ceb3a50da7df8325d39e21d22b78c3eca6c5",
+    "enable": "7c49883635b0d8b696d9b8325b44db4d2728b1cd07bced0beb707d2b7d0338fd",
+    "reset": "f80fc51f639971e79930c380b48b4c631a80510fe1c8cafc0ffeb0e88333f6ee",
+    "record_lifetime": "a76a41f3b2fb6ef74f9b3c6934403656983951647fcfe78f12fd5f2b99c33634",
+    "events": "c9f8784a3237174240f3490fe31bb41d346a27c7a889be461a19175d1e74f0a1",
+    "lookup": "9d06f578c6e940dcae02697df4753b3e2dcdddf3284623437576fa938f7bca7a",
+    "state": "3abed64d7dc81d92260e1f0524dc397df423fc74a833690bc53838b9a400033f"
   },
   "flags": {
     "lifetime": [
@@ -209,6 +221,233 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeHistoryItemPlayback.obj",
       "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HistoryItemPlayback.cpp"
+    ],
+    "enable": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeChangeHistoryEnable.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ChangeHistoryEnable.cpp"
+    ],
+    "reset": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeChangeHistoryReset.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ChangeHistoryReset.cpp"
+    ],
+    "record_lifetime": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeHistoryRecordLifetime.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HistoryRecordLifetime.cpp"
+    ],
+    "events": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeChangeHistoryEvents.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ChangeHistoryEvents.cpp"
+    ],
+    "lookup": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeHistoryRecordLookup.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HistoryRecordLookup.cpp"
+    ],
+    "state": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeHistoryItemState.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HistoryItemState.cpp"
     ]
   },
   "methods": [
@@ -297,6 +536,181 @@
         "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0",
         "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@0@0V123@@Z": "0x588240"
       }
+    },
+    {
+      "address": "00589a20",
+      "symbol": "?unplay@HistoryItem@RBX@@QAEXXZ",
+      "size": 541,
+      "direct_calls": {
+        "??2@YAPAXI@Z": "0x6a0920",
+        "?find@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQAVInstance@RBX@@@Z": "0x587ce0",
+        "?push_back@?$deque@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@@std@@QAEXABQAUHistoryItem@RBX@@@Z": "0x589330",
+        "?play@HistoryItem@RBX@@QAEXXZ": "0x588440",
+        "??D?$_Deque_const_iterator@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@$00@std@@QBEABQAUHistoryItem@RBX@@XZ": "0x436420",
+        "?_Tidy@?$deque@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@@std@@IAEXXZ": "0x64fa10",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "address": "0058c8b0",
+      "symbol": "?setEnabled@ChangeHistoryService@RBX@@QAEX_N@Z",
+      "size": 97,
+      "direct_calls": {
+        "?current@Context@Security@RBX@@SAAAV123@XZ": "0x493760",
+        "?requirePermission@Context@Security@RBX@@QBEXW4Permissions@23@PBD@Z": "0x489810",
+        "?start@ChangeHistoryService@RBX@@QAEXXZ": "0x58c620",
+        "?reset@ChangeHistoryService@RBX@@QAEXXZ": "0x58c3c0",
+        "?disconnect@connection@signals@boost@@QBEXXZ": "0x595230"
+      }
+    },
+    {
+      "address": "0058c4f0",
+      "symbol": "?onServiceProvider@ChangeHistoryService@RBX@@UAEXPBVServiceProvider@2@0@Z",
+      "size": 76,
+      "direct_calls": {
+        "?reset@ChangeHistoryService@RBX@@QAEXXZ": "0x58c3c0",
+        "?disconnect@connection@signals@boost@@QBEXXZ": "0x595230"
+      }
+    },
+    {
+      "address": "0058c3c0",
+      "symbol": "?reset@ChangeHistoryService@RBX@@QAEXXZ",
+      "size": 300,
+      "direct_calls": {
+        "??1HistoryRecord@RBX@@QAE@XZ": "0x58bed0",
+        "??3@YAXPAX@Z": "0x6a067a",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0HistoryRecord@RBX@@QAE@PAVChangeHistoryService@1@@Z": "0x58bf20",
+        "??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x58be50"
+      }
+    },
+    {
+      "address": "0058bf20",
+      "symbol": "??0HistoryRecord@RBX@@QAE@PAVChangeHistoryService@1@@Z",
+      "size": 90,
+      "direct_calls": {
+        "??0?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@1@@Z": "0x5892b0"
+      }
+    },
+    {
+      "address": "0058bed0",
+      "symbol": "??1HistoryRecord@RBX@@QAE@XZ",
+      "size": 77,
+      "direct_calls": {
+        "??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x58be50"
+      }
+    },
+    {
+      "address": "00589720",
+      "symbol": "??1HistoryItem@RBX@@QAE@XZ",
+      "size": 174,
+      "direct_calls": {
+        "??1?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x589120"
+      }
+    },
+    {
+      "address": "0058b870",
+      "symbol": "?onHistoryAdded@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 241,
+      "direct_calls": {
+        "___RTDynamicCast": "0x6a17c6",
+        "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "0x4116f0",
+        "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x58b6c0",
+        "?captureAll@HistoryItem@RBX@@QAEXXZ": "0x589530",
+        "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660"
+      }
+    },
+    {
+      "address": "0058b970",
+      "symbol": "?onHistoryRemoving@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 241,
+      "direct_calls": {
+        "___RTDynamicCast": "0x6a17c6",
+        "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "0x4116f0",
+        "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x58b6c0",
+        "?reset@HistoryItem@RBX@@QAEXXZ": "0x588f60",
+        "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660"
+      }
+    },
+    {
+      "address": "0058ba70",
+      "symbol": "?onHistoryChanged@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z",
+      "size": 193,
+      "direct_calls": {
+        "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x58b6c0",
+        "?update@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z": "0x589650"
+      }
+    },
+    {
+      "address": "0058b6c0",
+      "symbol": "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 431,
+      "direct_calls": {
+        "?find@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQAVInstance@RBX@@@Z": "0x587ce0",
+        "??0HistoryItem@RBX@@QAE@PAVChangeHistoryService@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x589890",
+        "??0HistoryItem@RBX@@QAE@ABU01@@Z": "0x589cd0",
+        "?insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z": "0x58b280",
+        "??1HistoryItem@RBX@@QAE@XZ": "0x589720"
+      }
+    },
+    {
+      "address": "00589890",
+      "symbol": "??0HistoryItem@RBX@@QAE@PAVChangeHistoryService@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 185,
+      "direct_calls": {
+        "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVPropertyDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@1@@Z": "0x589190"
+      }
+    },
+    {
+      "address": "00589cd0",
+      "symbol": "??0HistoryItem@RBX@@QAE@ABU01@@Z",
+      "size": 144,
+      "direct_calls": {
+        "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABV01@@Z": "0x589210"
+      }
+    },
+    {
+      "address": "00588f60",
+      "symbol": "?reset@HistoryItem@RBX@@QAEXXZ",
+      "size": 70,
+      "direct_calls": {
+        "?reset@?$shared_ptr@VInstance@RBX@@@boost@@QAEXXZ": "0x456e80",
+        "?_Erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@@Z": "0x587d70"
+      }
+    },
+    {
+      "address": "00589650",
+      "symbol": "?update@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z",
+      "size": 205,
+      "direct_calls": {
+        "?captureProperty@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z": "0x589410",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
+      }
+    },
+    {
+      "address": "00589530",
+      "symbol": "?captureAll@HistoryItem@RBX@@QAEXXZ",
+      "size": 283,
+      "direct_calls": {
+        "??$for_each@VIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABVProperty@Reflection@2@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABVProperty@Reflection@2@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@VIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@0V123@@Z": "0x5882f0",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
+      }
+    },
+    {
+      "address": "005894c0",
+      "symbol": "?capture@HistoryItem@RBX@@QAEXABVProperty@Reflection@2@@Z",
+      "size": 25,
+      "direct_calls": {
+        "?captureProperty@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z": "0x589410"
+      }
+    },
+    {
+      "address": "005882f0",
+      "symbol": "??$for_each@VIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABVProperty@Reflection@2@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABVProperty@Reflection@2@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@VIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@0V123@@Z",
+      "size": 158,
+      "direct_calls": {}
     }
   ],
   "factory": "004150d0",
