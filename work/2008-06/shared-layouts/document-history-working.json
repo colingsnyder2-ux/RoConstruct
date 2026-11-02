@@ -1,12 +1,12 @@
 {
   "sources": {
-    "rebuild\\2008-06\\tests\\record_native_document_history.py": "000c920b10a9f13a1db906df7386e16e1411fcc6bb1dd56a7e2d4538c01c1500",
-    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "8e9fe9ca0b3eb2c5ce65c28da6338077fb4286fb7e70e045d4c8d845e74d631b",
+    "rebuild\\2008-06\\tests\\record_native_document_history.py": "45745cac87cd4b22ab874a3cc4ae7718822bcdbdbe96562447a696d3f1a5f8da",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "2c9f427744edd1ce9ef4725cf4e08de4f3fcea5997b0cdb1862bf7f8c0b04424",
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "bd63e71b42041c61756532b71353f57096361d17372c8093813bda7a3830fceb",
     "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
     "rebuild\\2008-06\\native-headers\\RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4",
     "rebuild\\2008-06\\native-headers\\CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "3753635c8a09929c38a4f08d3ec671b019b7532115fab56b4f61ecb4733f8057",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "283bcfc47ad4b6e890aba7c0c09ae3eb51c2f2f6a0f0630080d045bbd8d63bb2",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
     "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "6b5e8766c0a695e297cb999b80c64c5e93b0180e8f43b26c121a9a25f289bb42",
@@ -16,7 +16,7 @@
     "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c",
     "rebuild\\2008-06\\native-classes\\LuaAllocatorStats.cpp": "a174770c08f446c59161f7073387754b6e6f1beb58fa85707f63aa96aa8290f4"
   },
-  "object_sha256": "7bff220161a9dfb587c0727c863e9e1e160faaa1c6d6b0adf10f9031e2cbc574",
+  "object_sha256": "00b738ab53a8e7781be6e4c444c32ac0aded426a707485957f19b16f9be44120",
   "profile": [
     "const _Elem * c_str() const",
     "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );"
@@ -320,6 +320,10 @@
       }
     }
   ],
+  "delete_contents_binding": {
+    "active_document": "0x96c238",
+    "activation": "0x405aa0"
+  },
   "heap_dependencies": {
     "gc": {
       "address": "005a86c0",
@@ -330,7 +334,7 @@
       "address": "005c8940",
       "symbol": "?getHeapStats@LuaAllocator@@QBEXAAI0@Z",
       "size": 20,
-      "object_sha256": "621407af92e8a43647fa6ca2b1d2df007b05b925d87935a738999f737d605260",
+      "object_sha256": "41a499c695a518003f63e19e74ee30905ca6883b9443328a1502c1525536c38b",
       "flags": [
         "/nologo",
         "/c",
@@ -371,5 +375,5 @@
       ]
     }
   },
-  "scope": "Inactive compiler proof, direct history targets verified; no runtime integration credit."
+  "scope": "Inactive compiler proof with provisional Doc names normalized to existing ActiveDocument symbols; no runtime integration credit."
 }

@@ -5,6 +5,8 @@ import struct
 import sys
 from pathlib import Path
 
+import pefile
+
 root = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(root))
 from roc import match, rebuild
@@ -56,6 +58,78 @@ for object_path, address, prefix, required in [
     for symbol, dest in required:
         assert any(k.startswith(symbol) and v == hex(dest) for k, v in edges.items()), (address, symbol, edges)
     rows.append({'address': address, 'symbol': name, 'size': len(body), 'direct_calls': edges})
+
+raw = obj.read_bytes()
+sections, symbols, definitions, _ = match._coff_data_index(raw)
+name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith('??$doDeclare@$1?sChangeHistoryService'))
+target, targetrefs, _ = match.target('2008-06', '004137a0')
+assert match.exact_match(target, targetrefs, body, refs)
+start, index = definitions[name]
+section = sections[index]
+expected = {'??_C@': 0x948df8, '?declare@Name@RBX@@': 0x553f90,
+            '?$S2@': 0x96cc14, '?name@': 0x96cc10}
+found = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    offset -= start
+    if not 0 <= offset < len(body)-3:
+        continue
+    symbol = symbols[symbol][0]
+    for prefix, wanted in expected.items():
+        if symbol.startswith(prefix):
+            value = struct.unpack_from('<I', target, offset)[0]
+            if kind == 20:
+                value = (0x4137a0 + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+            assert value == wanted, (symbol, hex(value), hex(wanted))
+            found[prefix] = hex(value)
+assert set(found) == set(expected), found
+pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
+assert pe.get_data(0x948df8 - pe.OPTIONAL_HEADER.ImageBase, 21) == b'ChangeHistoryService\0'
+rows.append({'address': '004137a0', 'symbol': name, 'size': len(body), 'data_and_call_targets': found})
+name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith('?getClassName@?$FactoryProduct@VChangeHistoryService'))
+target, targetrefs, _ = match.target('2008-06', '00587c80')
+assert match.exact_match(target, targetrefs, body, refs)
+assert struct.unpack('<I', pe.get_data(0x8318b4-pe.OPTIONAL_HEADER.ImageBase, 4))[0] == 0x587c80
+start, index = definitions[name]
+section = sections[index]
+expected = {'?flag@': 0x96cc2c, '??$callDoDeclare@': 0x413a50,
+            '?call_once@boost@@': 0x557330, '??$doDeclare@': 0x4137a0}
+found = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    offset -= start
+    if not 0 <= offset < len(body)-3:
+        continue
+    symbol = symbols[symbol][0]
+    for prefix, wanted in expected.items():
+        if symbol.startswith(prefix):
+            value = struct.unpack_from('<I', target, offset)[0]
+            if kind == 20:
+                value = (0x587c80 + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+            assert value == wanted, (symbol, hex(value), hex(wanted))
+            found[prefix] = hex(value)
+assert set(found) == set(expected), found
+rows.append({'address': '00587c80', 'symbol': name, 'size': len(body),
+             'original_vtable_slot': '0x8318b4', 'data_and_call_targets': found})
+callback_name, callback_body, callback_refs = next(x for x in match.coff_functions(raw)
+    if x[0].startswith('??$callDoDeclare@$1?sChangeHistoryService'))
+callback_target, callback_targetrefs, _ = match.target('2008-06', '00413a50')
+assert match.exact_match(callback_target, callback_targetrefs, callback_body, callback_refs)
+callback_start, callback_index = definitions[callback_name]
+callback_section = sections[callback_index]
+callback_edges = []
+for i in range(callback_section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, callback_section[5] + 10*i)
+    offset -= callback_start
+    if kind == 20 and 0 <= offset < len(callback_body)-3:
+        dest = (0x413a50 + offset + 4 + struct.unpack_from('<i', callback_target, offset)[0]) & 0xffffffff
+        callback_edges.append((symbols[symbol][0], dest))
+assert len(callback_edges) == 1 and callback_edges[0][0].startswith('??$doDeclare@') and callback_edges[0][1] == 0x4137a0
+declare_name, declare_body, declare_refs = next(x for x in match.coff_functions(raw)
+    if x[0].startswith('??$declare@$1?sChangeHistoryService'))
+assert match.exact_match(target, targetrefs, declare_body, declare_refs)
+rows.append({'address': '00413a50', 'symbol': callback_name, 'size': len(callback_body),
+             'direct_target': '0x4137a0', 'inline_declare_symbol': declare_name})
 
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {'source_sha256': sha(source), 'observer_sha256': sha(Path(__file__)), 'find_object_sha256': sha(obj), 'create_object_sha256': sha(create_obj),

@@ -1,0 +1,63 @@
+{
+  "source_sha256": "3ce3835a5d5cc28732b663de53e6579351175e151f86d49838e491cf04e4b39d",
+  "layout_sha256": "2d84686707419685f2e00f4a93e81c668aa4dcfc8343897825515bf7cb8a4af5",
+  "observer_sha256": "7e68f6db0a97141697c733e2aad455ad39f13299813719c960d5ad48fdef691f",
+  "object_sha256": "5000ed9049003f5a0c189b73ee2d7d034e9a6cd5ed223115866b0a0cb86924ae",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeContentReadTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeContentReadTrial.cpp"
+  ],
+  "address": "0055dc80",
+  "size": 224,
+  "direct_calls": {
+    "??R?$function2@XW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@V?$allocator@X@4@@boost@@QBEXW4RequestResult@RBX@@AAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z": "0x5aae30"
+  },
+  "catch": {
+    "address": "0x55dd60",
+    "size": 70,
+    "exception_type": "0x928588",
+    "original_handler": "0x7ce8d4",
+    "targets": {
+      "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620",
+      "??_C@_0CH@BFJELPAK@ContentProvider?5callback?5excepti@": "0x82dd04",
+      "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0",
+      "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660",
+      "$LN11": "0x55dcf1"
+    }
+  },
+  "scope": "Inactive trial. Main body, catch and original EH metadata checked; linked EH metadata and runtime ABI remain unproven."
+}

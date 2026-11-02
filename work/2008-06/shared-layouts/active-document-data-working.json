@@ -1,0 +1,81 @@
+{
+  "source_sha256": "00a5eabe64709eb0b09a0f01e689961cabc9632ba5f0001262b03d7b16d2caea",
+  "observer_sha256": "3028d41bd2632b5b697500a0546bcad7624f73b7c281c65eb0b1035fa20efec6",
+  "object_sha256": "8f2c10ad94ecec68a368a23973a25bf7cbcc0d9091876e5c64335bf09196c75c",
+  "flags": [
+    "/nologo",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/c",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeActiveDocumentData.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ActiveDocumentData.cpp"
+  ],
+  "methods": [
+    {
+      "address": "007ee720",
+      "symbol": "??__EactiveDocViews@@YAXXZ",
+      "size": 35,
+      "targets": {
+        "?activeDocViews@@": "0x96c23c",
+        "??0?$_Tree@": "0x64b2a0",
+        "??__FactiveDocViews": "0x7fa090",
+        "_atexit": "0x6a17af"
+      }
+    },
+    {
+      "address": "007ee750",
+      "symbol": "??__EactiveDocDataModel@@YAXXZ",
+      "size": 12,
+      "targets": {
+        "??__FactiveDocDataModel": "0x7fa050",
+        "_atexit": "0x6a17af"
+      }
+    },
+    {
+      "address": "007fa090",
+      "symbol": "??__FactiveDocViews@@YAXXZ",
+      "size": 10,
+      "targets": {
+        "?activeDocViews@@": "0x96c23c",
+        "??1?$_Tree@": "0x64b230"
+      }
+    },
+    {
+      "address": "007fa050",
+      "symbol": "??__FactiveDocDataModel@@YAXXZ",
+      "size": 56,
+      "targets": {
+        "?activeDocDataModel@@": "0x96c260"
+      }
+    }
+  ],
+  "zero_globals": [
+    "0096c238",
+    "0096c25c",
+    "0096c260"
+  ],
+  "scope": "Inactive diagnostic. Global storage initializers and cleanup match; cross-module ownership and startup order remain unproven."
+}

@@ -1,8 +1,8 @@
 {
-  "source_sha256": "2f8c567e5cc3ef15ad263da33703d5ebbfc6573f39579ff6a321b195548a2cd4",
-  "observer_sha256": "4805283b0e68f0476a4bb1a0539eac17eb227ba1423d7d30108a120e762335b1",
-  "find_object_sha256": "1dd03e55cc95ed215917adfe6fd9860ba194d049c6f519096ae41087426a3222",
-  "create_object_sha256": "38d018a65efdffffd5311775c8fd1aad7e9e480ad39312407d7ae729be1a69da",
+  "source_sha256": "09285d763cd9e640eb1f0b1404d543323b3103680e9c2ab565c9076eb872cfda",
+  "observer_sha256": "d461e2a6e6b3b1d677993968caf1847a304ab8829751111dd53b1288e8fbd862",
+  "find_object_sha256": "e27375d9024f9866a7b9c157776ac1ee49c436293b72603740a417e8322d0689",
+  "create_object_sha256": "3d076f493aadd1f72eba24717dc60aa548db16eeb32ebd349c6c9bd3404d6361",
   "preprocess_flags": [
     "/nologo",
     "/O2",
@@ -137,6 +137,36 @@
       "direct_calls": {
         "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690"
       }
+    },
+    {
+      "address": "004137a0",
+      "symbol": "??$doDeclare@$1?sChangeHistoryService@RBX@@3PBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "data_and_call_targets": {
+        "?$S2@": "0x96cc14",
+        "??_C@": "0x948df8",
+        "?declare@Name@RBX@@": "0x553f90",
+        "?name@": "0x96cc10"
+      }
+    },
+    {
+      "address": "00587c80",
+      "symbol": "?getClassName@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "original_vtable_slot": "0x8318b4",
+      "data_and_call_targets": {
+        "?flag@": "0x96cc2c",
+        "??$callDoDeclare@": "0x413a50",
+        "?call_once@boost@@": "0x557330",
+        "??$doDeclare@": "0x4137a0"
+      }
+    },
+    {
+      "address": "00413a50",
+      "symbol": "??$callDoDeclare@$1?sChangeHistoryService@RBX@@3PBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_target": "0x4137a0",
+      "inline_declare_symbol": "??$declare@$1?sChangeHistoryService@RBX@@3PBDB@Name@RBX@@SAABV01@XZ"
     }
   ],
   "scope": "Inactive compiler-profile trial. Find and create require separate profiles; COMDAT selection, factory, service-cache globals, live ownership and ABI remain unverified."

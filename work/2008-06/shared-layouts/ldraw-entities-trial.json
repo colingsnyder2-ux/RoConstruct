@@ -1,0 +1,166 @@
+{
+  "source_sha256": "fc41cb883e7da04798c3e90a0bafd737e6fa9e046a9180f3f859f7893e391934",
+  "header_sha256": "3a777e161ad5d84b023a9de529811886a82c29672a67cd869534b33e05ca54e9",
+  "observer_sha256": "e27d270308b3e8e1b16294e9d7ab5f9c84f143cb6aef94b5d4131ae4bd304709",
+  "object_sha256": "f1f8fa55e8855142c772540a320eca96cc08aee57a974e0a57e0bf92b8145ddb",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawEntitiesTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawEntitiesTrial.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0x46f630",
+      "symbol": "??0LDrawModel@LDraw2Lua@RBX@@QAE@PBD@Z",
+      "size": 115,
+      "bindings": {
+        "__ehhandler$??0LDrawModel@LDraw2Lua@RBX@@QAE@PBD@Z": [
+          "0x7c4024"
+        ],
+        "??_7LDrawModel@LDraw2Lua@RBX@@6B@": [
+          "0x81cbd4"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+          "0x802458"
+        ],
+        "??2@YAPAXI@Z": [
+          "0x6a0920"
+        ]
+      }
+    },
+    {
+      "address": "0x46f820",
+      "symbol": "??1LDrawModel@LDraw2Lua@RBX@@UAE@XZ",
+      "size": 217,
+      "bindings": {
+        "__ehhandler$??1LDrawModel@LDraw2Lua@RBX@@UAE@XZ": [
+          "0x7c4047"
+        ],
+        "??_7LDrawModel@LDraw2Lua@RBX@@6B@": [
+          "0x81cbd4"
+        ],
+        "?at@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAEAAPAVLDrawItem@LDraw2Lua@RBX@@I@Z": [
+          "0x46f5a0"
+        ],
+        "__imp___invalid_parameter_noinfo": [
+          "0x802890",
+          "0x802890"
+        ],
+        "?erase@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@2@0@Z": [
+          "0x445dc0"
+        ],
+        "??3@YAXPAX@Z": [
+          "0x6a067a",
+          "0x6a067a"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "address": "0x46f900",
+      "symbol": "??_GLDrawModel@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "bindings": {
+        "??1LDrawModel@LDraw2Lua@RBX@@UAE@XZ": [
+          "0x46f820"
+        ],
+        "??3@YAXPAX@Z": [
+          "0x6a067a"
+        ]
+      }
+    },
+    {
+      "address": "0x46f920",
+      "symbol": "?add@LDrawModel@LDraw2Lua@RBX@@QAEXPAVLDrawItem@23@@Z",
+      "size": 24,
+      "bindings": {
+        "?push_back@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAEXABQAVLDrawItem@LDraw2Lua@RBX@@@Z": [
+          "0x4213a0"
+        ]
+      }
+    },
+    {
+      "address": "0x46ea30",
+      "symbol": "??0LDrawPart@LDraw2Lua@RBX@@QAE@PAVLDraw2RobloxMapRoot@12@@Z",
+      "size": 163,
+      "bindings": {
+        "__ehhandler$??0LDrawPart@LDraw2Lua@RBX@@QAE@PAVLDraw2RobloxMapRoot@12@@Z": [
+          "0x7c3f44"
+        ],
+        "??_7LDrawPart@LDraw2Lua@RBX@@6B@": [
+          "0x81ca0c"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802460"
+        ],
+        "??_C@_00CNPNBAHC@?$AA@": [
+          "0x80b716"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+          "0x802458"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "address": "0x46eae0",
+      "symbol": "??_GLDrawPart@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "size": 94,
+      "bindings": {
+        "__ehhandler$??_GLDrawPart@LDraw2Lua@RBX@@UAEPAXI@Z": [
+          "0x7c3f58"
+        ],
+        "??_7LDrawPart@LDraw2Lua@RBX@@6B@": [
+          "0x81ca0c"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468"
+        ],
+        "??_7LDrawItem@LDraw2Lua@RBX@@6B@": [
+          "0x81ca00"
+        ],
+        "??3@YAXPAX@Z": [
+          "0x6a067a"
+        ]
+      }
+    }
+  ],
+  "scope": "Inactive trial; container ABI, base identity, RTTI, exception metadata and runtime remain unproven."
+}

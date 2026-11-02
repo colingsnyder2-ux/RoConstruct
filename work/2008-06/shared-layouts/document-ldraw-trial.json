@@ -1,0 +1,217 @@
+{
+  "inputs": {
+    "rebuild\\2008-06\\tests\\NativeDocumentLDrawTrial.cpp": "93eec2752eecb1cc0f48ef38d6529e5a6e579ab1d67e8bf582f56ed464d233de",
+    "rebuild\\2008-06\\tests\\record_native_document_ldraw_trial.py": "43369a0b09aa71373e12114ea1cb2f3c4454d99f92613f3d1f22f0c1e397d500",
+    "rebuild\\2008-06\\tests\\NativeLDrawParserLifetimeTrial.cpp": "a3e772600890fa3e93aec2998b898a457d4cc24396aca099ad7ff50ac529209e",
+    "rebuild\\2008-06\\tests\\NativeLDrawParserConstructorTrial.cpp": "0546aa5104e6fa7b3f2af8ed35fa4ae53a4d8d6313a2834c077ab99430340426",
+    "rebuild\\2008-06\\tests\\NativeLDrawParserTrial.h": "4cd76ccc37f61dbeb6a3d4926fa1320ec55f45c22742568686d14aca8ee84646",
+    "rebuild\\2008-06\\tests\\NativeLDrawMapRootTrial.h": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
+    "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
+    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "6b5e8766c0a695e297cb999b80c64c5e93b0180e8f43b26c121a9a25f289bb42"
+  },
+  "object_sha256": "0e57ca062f1a37a72ef1f7300e5785cbab8c88e5e9c7f5ed4dddba7da3dda351",
+  "preprocess_flags": [
+    "/nologo",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/P",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDocumentLDrawTrial.cpp"
+  ],
+  "compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentLDrawProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentLDrawProfile.cpp"
+  ],
+  "address": "00454c90",
+  "size": 664,
+  "calls": {
+    "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z": [
+      "0x6a0e72"
+    ],
+    "?DoModal@CFileDialog@@UAEHXZ": [
+      "0x6a0e6c"
+    ],
+    "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": [
+      "0x6a0e66"
+    ],
+    "??0LDrawParser@LDraw2Lua@RBX@@QAE@PBD@Z": [
+      "0x46f110"
+    ],
+    "?parse@LDrawParser@LDraw2Lua@RBX@@QAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": [
+      "0x46f200"
+    ],
+    "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": [
+      "0x46a940"
+    ],
+    "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": [
+      "0x411b40"
+    ],
+    "??0?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@XZ": [
+      "0x4293d0"
+    ],
+    "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": [
+      "0x403040"
+    ],
+    "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": [
+      "0x42dfd0"
+    ],
+    "?executeInNewThread@ScriptContext@RBX@@QAE?AV?$auto_ptr@V?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@std@@W4Identities@Security@2@PBD1ABV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@4@@Z": [
+      "0x5b0480"
+    ],
+    "??1?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@XZ": [
+      "0x42d630",
+      "0x42d630"
+    ],
+    "??3@YAXPAX@Z": [
+      "0x6a067a"
+    ],
+    "??1Lock@DataModel@RBX@@QAE@XZ": [
+      "0x5773c0"
+    ],
+    "??1LDrawParser@LDraw2Lua@RBX@@UAE@XZ": [
+      "0x46f100"
+    ],
+    "??1CFileDialog@@UAE@XZ": [
+      "0x6a0e5a"
+    ],
+    "?AfxMessageBox@@YGHPBDII@Z": [
+      "0x6a0c50"
+    ]
+  },
+  "parser_destructor": {
+    "address": "0046f100",
+    "size": 15,
+    "object_sha256": "8775869fdcca839510dcf6185774d86f0b88bd43f103f905766a288772aea456",
+    "flags": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawParserLifetimeTrial.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawParserLifetimeTrial.cpp"
+    ]
+  },
+  "parser_constructor": {
+    "address": "0046f110",
+    "size": 184,
+    "object_sha256": "de60464e7645615ac69f1395bace5d67b36b2476224b346e38f43c90ed40a6a2",
+    "flags": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawParserConstructorTrial.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawParserConstructorTrial.cpp"
+    ],
+    "bindings": {
+      "__ehhandler$??0LDrawParser@LDraw2Lua@RBX@@QAE@PBD@Z": "0x7c3fa7",
+      "??_7LDrawParser@LDraw2Lua@RBX@@6B@": "0x81cb74",
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+      "?currentMap@LDraw2Lua@RBX@@3V?$auto_ptr@VLDraw2RobloxMapRoot@LDraw2Lua@RBX@@@std@@A": "0x96ee60",
+      "??2@YAPAXI@Z": "0x6a0920",
+      "??_C@_0BK@MAIONJKL@fonts?2LDraw2RobloxMap?4xml?$AA@": "0x81cb78",
+      "?resolveMapPath@LDraw2Lua@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBD@Z": "0x55d0b0",
+      "??0LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x46d710"
+    }
+  },
+  "scope": "Inactive trial. Parser lifetime bodies and selected bindings match. Global ownership, map lifecycle, RTTI, service ownership, exception tables and runtime remain unproven."
+}

@@ -7,7 +7,7 @@
     "rebuild\\2008-06\\tests\\NativeChangeHistoryLayout.cpp": "a2a33d8545ae463b186587fbdf6a42028a6b12e4ddcb0a01c0dfcb52107bfb28",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "283bcfc47ad4b6e890aba7c0c09ae3eb51c2f2f6a0f0630080d045bbd8d63bb2",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\HistoryRecord.h": "b2dc12bd4ae98b1538a6c45cc6851c4f99b2ebffdf2b7be47b2438e8c92e7e1f",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "1761155f9c9e24e66f46616a62e0abbf3ad36d25af6c74a9afc396c5d68b03ef",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "64d889bae886676a4704255ae912fe0a7ec459b418815fd9d3e68a603f1a5faf",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryPlayback.cpp": "8130590e03b93e5ba8ba247a86a542c15d612bf3a91305cf87755b64bda8042b",
     "rebuild\\2008-06\\native-classes\\HistoryRecordPlayback.cpp": "19b6e5124354a7dd6b86797b29df320802f550bbbd2e052df87fb6652391cb16",
     "rebuild\\2008-06\\native-classes\\HistoryItemPlayback.cpp": "f0e52b047bfa2da5d8c6b6097d0686e214133b4042f41ba872cafd1e3e1a4d01",
@@ -19,17 +19,17 @@
     "rebuild\\2008-06\\native-classes\\HistoryItemState.cpp": "e45bae7fcf3483ebd5a16786537fe738c708e209486092f1eefcb1ff0b6b9327"
   },
   "objects": {
-    "lifetime": "f67e9c92f09c4709ed7144cc073f6e29b84716433094073b8e6b4d62e02a5599",
-    "queries": "c6afe5ea256dd18837b6aca64cdc579e86977585bd90453453ba60c8f9fab156",
-    "playback": "3130479b7c7c50b1b5c6cac3b6df6a61f8742ce200013637d6fc9eb4c7e3e719",
-    "record": "ef06d5e013da7eb5a498568163e640650f772ff2cfb1ddd7294ab2e21d26364e",
-    "item": "0203ad74b0d869cc5518e64c0b85ceb3a50da7df8325d39e21d22b78c3eca6c5",
-    "enable": "7c49883635b0d8b696d9b8325b44db4d2728b1cd07bced0beb707d2b7d0338fd",
-    "reset": "f80fc51f639971e79930c380b48b4c631a80510fe1c8cafc0ffeb0e88333f6ee",
-    "record_lifetime": "a76a41f3b2fb6ef74f9b3c6934403656983951647fcfe78f12fd5f2b99c33634",
-    "events": "c9f8784a3237174240f3490fe31bb41d346a27c7a889be461a19175d1e74f0a1",
-    "lookup": "9d06f578c6e940dcae02697df4753b3e2dcdddf3284623437576fa938f7bca7a",
-    "state": "3abed64d7dc81d92260e1f0524dc397df423fc74a833690bc53838b9a400033f"
+    "lifetime": "9d05371de2c6c31a1ab0a456c7a0e8fc6d159ced97c409802fe4d28f006f5085",
+    "queries": "5f8d1ec44e0b2b40d32317905f9a6d092e173c6a490f4baa00127d332049125b",
+    "playback": "25679c3d27292903b533fc7a955ab1c04085d1bfc357357c80343b0035a161a7",
+    "record": "71c69e463b5b934508d8c945f0a0554223c55a33f27e30dec232e2021d1eadd8",
+    "item": "0bf43a1ceb7b38983050773d9b48c32759e03a02286183b73667568a7267624d",
+    "enable": "63d09371ab74af7115f9ffc535ae6a06f605f153906072e86d3e331a723f3617",
+    "reset": "ec326123ffd8d92fb9eb4a03a7e032dc1c475745503215fd4d6bdd5bf67e2c01",
+    "record_lifetime": "1aba2af1ad0530002e286210f3c0117ef06681c305cc4c341c0644c0ffd12270",
+    "events": "cfb471bcb78115c4de8e13670af7b79bea28e1276a4e10c0ad70b88522ac2637",
+    "lookup": "da41bdd8e8b5d9a09d8ae10adde7165dbf66647f1f5c45a4612103d13f59d536",
+    "state": "90ead1013dde0128a4178644d159f77533d171fdf33b9e58d9f198ff6f62e3a7"
   },
   "flags": {
     "lifetime": [

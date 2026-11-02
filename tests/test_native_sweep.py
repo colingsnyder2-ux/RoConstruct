@@ -458,6 +458,22 @@ def test_evidence_embeds_local_generated_proof_without_changing_compiled_referen
     assert [call['addr'] for call in result['target_calls']] == ['00600000', '00600100']
 
 
+def test_evidence_exposes_initializer_pointer_but_not_bss_data(tmp_path,monkeypatch):
+    from roc import packet,standins
+    caller=bytes.fromhex('682c3a97006860415500e8b1300000a1d039970083c408c3')
+    initializer=bytes.fromhex('6a006816b78000e824feffff83c408a3d0399700c3')
+    monkeypatch.setattr(sweep,'ROOT',tmp_path)
+    monkeypatch.setattr(packet,'_source',lambda *a:('// reference data','local',100))
+    monkeypatch.setattr(sweep.match,'target',lambda client,addr:(caller,[1,6,16],{}) if addr=='00554270' else (initializer,[],{}))
+    monkeypatch.setattr(sweep.match,'_functions',lambda *a:{'00554160':{'kind':'code'},'00973a2c':{'kind':'data'},'009739d0':{'kind':'data'}})
+    monkeypatch.setattr(standins,'mapping',lambda *a:[])
+    evidence=sweep.model_evidence('00554270',{}, {})
+    helper,=evidence['target_function_pointers']
+    assert helper['addr']=='00554160' and helper['size']==21 and not helper['truncated']
+    assert any('0x553f90' in line for line in helper['target_asm'])
+    assert Path(helper['target_asm_file']).read_text()=='\n'.join(helper['target_asm'])
+
+
 @pytest.mark.parametrize('configured', [False, True])
 def test_missing_mined_source_reports_error_and_closes_remote_api(monkeypatch, configured):
     from roc import packet

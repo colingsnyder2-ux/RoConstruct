@@ -1,0 +1,174 @@
+{
+  "inputs": {
+    "rebuild\\2008-06\\tests\\NativeLDrawParseTrial.cpp": "1ab7e6d96f7eb77aaad0d0a20699b399d109b284316bf6b15d6013c95bf50540",
+    "rebuild\\2008-06\\tests\\record_native_ldraw_parse_trial.py": "45819d9abf76dd74171259485a188d8dde4dad9107e145c55d8a8d9e1152192b",
+    "rebuild\\2008-06\\tests\\NativeLDrawParserTrial.h": "4cd76ccc37f61dbeb6a3d4926fa1320ec55f45c22742568686d14aca8ee84646",
+    "rebuild\\2008-06\\tests\\NativeLDrawMapRootTrial.h": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
+    "rebuild\\2008-06\\tests\\NativeLDrawEntitiesTrial.h": "3a777e161ad5d84b023a9de529811886a82c29672a67cd869534b33e05ca54e9"
+  },
+  "object_sha256": "d6182620c6b5d501b7db1cac8fe801a48ae32f5b584f562dc69d4bcd888c3b76",
+  "preprocess_flags": [
+    "/nologo",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/P",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawParseTrial.cpp"
+  ],
+  "compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawParseProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawParseProfile.cpp"
+  ],
+  "address": "0046f200",
+  "candidate_size": 922,
+  "original_size": 922,
+  "exact": true,
+  "bindings": {
+    "__ehhandler$?parse@LDrawParser@LDraw2Lua@RBX@@QAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": [
+      "0x7c3ffd"
+    ],
+    "??_C@_01EEMJAFIK@?6?$AA@": [
+      "0x81cbcc",
+      "0x81cbcc",
+      "0x81cbcc"
+    ],
+    "??_C@_0BM@NJEMEGKL@Roblox?5LDraw2Lua?5Conversion?$AA@": [
+      "0x81cbac"
+    ],
+    "??_C@_03CJPCKGBB@?9?9?5?$AA@": [
+      "0x81cbc8",
+      "0x81cbc8"
+    ],
+    "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": [
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450"
+    ],
+    "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": [
+      "0x802464",
+      "0x802464"
+    ],
+    "??_C@_0L@KDJFEMJI@FileName?3?5?$AA@": [
+      "0x81cba0"
+    ],
+    "??_C@_0L@KPBEHDCI@LDrawModel?$AA@": [
+      "0x81cb94"
+    ],
+    "??0LDrawModel@LDraw2Lua@RBX@@QAE@PBD@Z": [
+      "0x46f630"
+    ],
+    "__imp_??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": [
+      "0x802404"
+    ],
+    "__imp_?eof@ios_base@std@@QBE_NXZ": [
+      "0x80248c",
+      "0x80248c"
+    ],
+    "__imp_??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAH@Z": [
+      "0x802488",
+      "0x802488"
+    ],
+    "??2@YAPAXI@Z": [
+      "0x6a0920"
+    ],
+    "?currentMap@LDraw2Lua@RBX@@3V?$auto_ptr@VLDraw2RobloxMapRoot@LDraw2Lua@RBX@@@std@@A": [
+      "0x96ee60"
+    ],
+    "??0LDrawPart@LDraw2Lua@RBX@@QAE@PAVLDraw2RobloxMapRoot@12@@Z": [
+      "0x46ea30"
+    ],
+    "__imp_??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAN@Z": [
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484",
+      "0x802484"
+    ],
+    "__imp_?getline@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@PADH@Z": [
+      "0x802480",
+      "0x802480"
+    ],
+    "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+      "0x802458"
+    ],
+    "??_C@_01CLKCMJKC@?5?$AA@": [
+      "0x812e58"
+    ],
+    "__imp_?find_first_not_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z": [
+      "0x80247c"
+    ],
+    "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": [
+      "0x8023e0"
+    ],
+    "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": [
+      "0x80240c"
+    ],
+    "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+      "0x802468",
+      "0x802468"
+    ],
+    "?add@LDrawModel@LDraw2Lua@RBX@@QAEXPAVLDrawItem@23@@Z": [
+      "0x46f920"
+    ],
+    "__imp_??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ": [
+      "0x802408"
+    ],
+    "?writeLua@LDrawModel@LDraw2Lua@RBX@@QBEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": [
+      "0x46f6b0"
+    ],
+    "??1LDrawModel@LDraw2Lua@RBX@@UAE@XZ": [
+      "0x46f820"
+    ]
+  },
+  "scope": "Inactive trial. Part/model constructors, destructors, allocation layout, resource ownership and runtime unproven."
+}

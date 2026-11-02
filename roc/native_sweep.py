@@ -919,7 +919,7 @@ def model_evidence(addr, names, by_addr):
             api.close()
         if not source:
             raise ValueError("No mined source available for " + addr + "; check the group server or run roc pull 2008-06")
-    code = match.target("2008-06", addr)[0]
+    code, absolute_relocs, _ = match.target("2008-06", addr)
     rebuilt = names.get(addr) or {}
     displayed = strip_asm(source)
     reference = match.directives(source).get("lib", "")
@@ -956,6 +956,23 @@ def model_evidence(addr, names, by_addr):
     item["target_calls"] = [{"addr": a, "native_symbol_hint": names.get(a, {}).get("symbol"),
                              "native_score": names.get(a, {}).get("score"),
                              "inventory_unit_hint": by_addr.get(a, {}).get("unit")} for a in calls]
+    # once-only initializers are passed by pointer, so a call-only list hides them.
+    functions = match._functions('2008-06') if absolute_relocs else {}
+    pointers = {}
+    for offset in absolute_relocs:
+        if not 0 <= offset <= len(code)-4:continue
+        destination = '%08x' % int.from_bytes(code[offset:offset+4], 'little')
+        row = functions.get(destination)
+        if not row or row.get('kind','code')!='code' or destination==addr or destination in pointers:continue
+        helper = match.target('2008-06',destination)[0]
+        lines = match.disasm(helper,int(destination,16))
+        path = evidence_dir/(destination+'.asm')
+        text = '\n'.join(lines)
+        if not path.exists() or path.read_text(encoding='utf-8')!=text:path.write_text(text,encoding='utf-8')
+        pointers[destination] = dict(addr=destination,size=len(helper),native_symbol_hint=names.get(destination,{}).get('symbol'),
+            target_asm=lines[:24],target_asm_file=str(path.resolve()),truncated=len(lines)>24)
+        if len(pointers)==3:break
+    if pointers:item['target_function_pointers']=list(pointers.values())
     try:
         item["standins"] = standins.mapping("2008-06", addr, source)
     except Exception as error:  # noqa: BLE001 - the map is optional evidence

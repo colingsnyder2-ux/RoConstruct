@@ -482,3 +482,25 @@ affected by anything on the P6 branch.
 - 2026-11-01 GUI recovery: capped three GPT-6.1 Terra agents. Host independently merged Doc handle_454f30 boolean normalization (`!= 0`), no lost TU matches or unrelated source edits. Upload81ffdb19a75c46e7b336ae0d0590b9f6; receipt work/gui-live-validation/terra33-doc-host-receipt.json. Canonical GUI-class mapping absent: zero integration credits, no player swap. Worker33 probe profile correction restores owner include order without shared header edits.
 
 - 2026-11-01 Codex: recover ChangeHistoryService override onServiceProvider in original primary vtable slot 12 -> 0058c4f0; overrides existing virtual, no extra slot/field. Context pointer still provisional.
+
+- 2026-11-01 Codex: introduce inactive shared GuidRegistry.h candidate: GUID-keyed map and mutex layout inferred from original registry ctor, GuidItem dtor and map methods; runtime ABI and registry destruction remain unproven. No live swap.
+
+- 2026-11-01 Codex request to GUI Doc owner: CRobloxDoc provisional currentDocument/setCurrentDocument(int, ...) bind original 0096c238/00405aa0. Existing ActiveDocument.cpp names are activeRobloxDoc/setActiveDocument(bool, ...); please coordinate before editing Doc. Isolated profile verifies replacement and original DeleteContents bytes/call targets; no direct Doc edit made.
+
+- 2026-11-01 Codex: testing recovered Instance(const char*) declaration for ChangeHistoryService factory base 005871d0 -> 0055b960. No field or virtual-slot change; validate both Instance constructors and destructor before any use.
+
+- 2026-11-01 Codex: introduce native util/Object.h overlay from existing donor with forwarding FactoryProduct constructor; isolated 005871d0 and 0058a8d0 match original and calls. No field/virtual-slot changes; rerun Instance and ChangeHistory ctor/dtor proofs.
+
+- 2026-11-01 Codex: declare original Instance ancestry/descendant signal statics in shared Instance.h. Existing archive Instance.obj defines them; original PE storage and initializer/cleanup bytes checked. Rebind isolated callbacks to these same statics; no field or vtable changes, runtime signal ABI still unproven.
+
+- 2026-11-01 GUI recovery: accepted canonical MouseCommand::capture 00615820 via free assigned-body assertion pass, host merge and full linked/server gates. Job f9a64bca67c64f3bb99ec49e3ec6da21: +1 credit, no losses, zero unresolved references. Source stays in native-classes/accepted/App/v8datamodel/MouseCommand.cpp; owner headers untouched; no player swap. Worker35 fixes tiny-symbol submission and reduces agent context.
+
+- 2026-11-01 Codex: declare nonvirtual CRobloxDoc::loadFile(std::string), original 00455a20, for recovered insert-model handler 00455c30. No storage or vtable change; implementation remains independently unresolved.
+
+- 2026-11-01 Codex: declare nonvirtual CRobloxDoc::loadFromString(std::string) and DataModel::getContentProvider() for original loadFile 00455a20 call chain. No fields or virtual slots change; provider identity and ABI under test.
+
+- 2026-11-01 Codex: correct provisional DataModel::getContentProvider declaration: original 0041eea0 is service create path, allocation 0041e5d0 -> 00562c30 RTTI ContentProvider. Remove invented method; use ServiceProvider::create<ContentProvider>. No field or vtable changes; native provider class ABI remains open.
+
+- 2026-11-01 Codex: add original nonvirtual ContentProvider getContent(ContentId), isUrl(std::string) declarations to inactive trial class for Doc command handler 00453c30. No fields or virtual slots changed; service ABI remains under test.
+
+- 2026-11-01 Codex: add inactive ContentProvider::loadContent(ContentId, int, RequestCallback const*) candidate declaration for original 00561f20 getContent dependency. No field or virtual layout changes; mode/type and lifetime remain under verification.

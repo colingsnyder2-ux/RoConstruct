@@ -1,0 +1,118 @@
+{
+  "source_sha256": "ec556884803b4d7ad5d1421f05b7d53c4d735783ee55db6d4b15e28b06cacd55",
+  "observer_sha256": "3ccfd04a5b545ef8bbdd9aec7ce83a17205352485f58a5b817ae5f931af31ecf",
+  "object_sha256": "0057cdbd6e201da33b21de4a4c79b5f3351b88a916b6d0ef878a57b41780953c",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeGuidRegistryConstructorTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeGuidRegistryConstructorTrial.cpp"
+  ],
+  "address": "00499d60",
+  "size": 82,
+  "class_size": 44,
+  "targets": {
+    "??0?$_Tree@": "0x589190",
+    "??0GuidRegistryMutex@": "0x563070"
+  },
+  "container_methods": [
+    {
+      "address": "004ad940",
+      "size": 171,
+      "symbol": "?_Eqrange@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@V123@@2@ABUData@Guid@RBX@@@Z",
+      "calls": [
+        {
+          "symbol": "??MData@Guid@RBX@@QBE_NABU012@@Z",
+          "target": "0x5a8210"
+        },
+        {
+          "symbol": "??MData@Guid@RBX@@QBE_NABU012@@Z",
+          "target": "0x5a8210"
+        },
+        {
+          "symbol": "??MData@Guid@RBX@@QBE_NABU012@@Z",
+          "target": "0x5a8210"
+        }
+      ]
+    },
+    {
+      "address": "004af4c0",
+      "size": 106,
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAEIABUData@Guid@RBX@@@Z",
+      "calls": [
+        {
+          "symbol": "?_Eqrange@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@V123@@2@ABUData@Guid@RBX@@@Z",
+          "target": "0x4ad940"
+        },
+        {
+          "symbol": "??$_Distance2@Viterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@I@std@@YAXViterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@0@0AAIUbidirectional_iterator_tag@0@@Z",
+          "target": "0x4ad520"
+        },
+        {
+          "symbol": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+          "target": "0x4983f0"
+        }
+      ]
+    },
+    {
+      "address": "004983f0",
+      "size": 220,
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+      "calls": [
+        {
+          "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@2@@Z",
+          "target": "0x4970e0"
+        },
+        {
+          "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAEXXZ",
+          "target": "0x5b7250"
+        },
+        {
+          "symbol": "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@PAVInstance@3@U?$less@UData@Guid@RBX@@@std@@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@PAVInstance@3@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+          "target": "0x497b00"
+        }
+      ]
+    }
+  ],
+  "shared_source_sha256": "546bbd48b93c84623bd1b79f299ec8c4357f0a2ce44dd37cfe1b4e8bc1aac3da",
+  "shared_object_sha256": "fad39b15bfa211fcd23cd3696ecdb333fbcaa9bf7db30f69ac880bb54514b4d2",
+  "shared_header_sha256": "70cb57f82f847c8b4f2a16e7ec35a109aaa0d1234ffa7cee588398340eb64893",
+  "register_store": {
+    "address": "0049bc12",
+    "value": "original GuidItem this pointer",
+    "registry_global": "009705e8"
+  },
+  "scope": "Inactive conflicting layout trial; mapped value stores the GuidItem this pointer, but destructor and runtime ownership remain unproven. Never link or run."
+}

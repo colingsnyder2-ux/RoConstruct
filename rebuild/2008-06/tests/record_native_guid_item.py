@@ -33,7 +33,7 @@ for address, prefix in (("004b3760", "??1?$GuidItem@VInstance@RBX@@"),):
     assert match.exact_match(target, target_relocations, body, relocations), name
     results.append(dict(address=address, symbol=name, size=len(body), relocation_normalized_exact=True))
 sections, symbols, definitions, _ = match._coff_data_index(obj)
-for address, expected in (("004b3760", [("?call_once@boost@@", 0x557330), ("?lock@GuidRegistryMutex@RBX@@", 0x563090), ("?remove@GuidRegistry@RBX@@", 0x4af4c0), ("?unlock@GuidRegistryMutex@RBX@@", 0x5630e0)]),):
+for address, expected in (("004b3760", [("?call_once@boost@@", 0x557330), ("?lock@GuidRegistryMutex@RBX@@", 0x563090), ("?erase@?$_Tree", 0x4af4c0), ("?unlock@GuidRegistryMutex@RBX@@", 0x5630e0)]),):
     result = next(row for row in results if row["address"] == address)
     start, section = definitions[result["symbol"]]
     table = sections[section]
@@ -51,7 +51,7 @@ for address, expected in (("004b3760", [("?call_once@boost@@", 0x557330), ("?loc
         offset, symbol = next((offset, symbol) for offset, symbol in relocs.items() if symbol.startswith(prefix))
         assert calls[offset] == target, (address, symbol, calls.get(offset), target)
         result["verified_direct_calls"].append(dict(offset=offset, symbol=symbol, target=hex(target)))
-paths = [source, ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", Path(__file__)]
+paths = [source, ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", ROOT / "rebuild/2008-06/native-headers/util/GuidRegistry.h", Path(__file__)]
 receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
                compiler_build=21022, flags=flags, compile_exit=code, methods=results,

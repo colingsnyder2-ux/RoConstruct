@@ -1,7 +1,7 @@
 {
   "scope": "Inactive original URL and zone checks. Site-check candidate is not yet exact; error reporter/data and existing linked Http::trustCheck remain unproven.",
   "inputs": {
-    "rebuild\\2008-06\\tests\\record_native_workspace_site_trust.py": "bc2f8fa1aa3ebb629314275e47c3d431e59310294932ca131aab5ed0485dfadd",
+    "rebuild\\2008-06\\tests\\record_native_workspace_site_trust.py": "82012ead7a3cfe0d21aca6ba91060b191ed7b46c8c42227481754fdb61f3465c",
     "rebuild\\2008-06\\native-classes\\WorkspaceSiteTrust.cpp": "372604126c308a1e46ef32c7f0159a17f65d30bf7b488e9080638d2fbe0894ba",
     "rebuild\\2008-06\\native-classes\\CWorkspaceSiteCheck.cpp": "9c4922b46a7976981e7f0ceecb411bb98ef05fae61dffcecdb53343495adba14",
     "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
@@ -57,7 +57,7 @@
     "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceSiteTrustProfile.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceSiteTrustProfile.cpp"
   ],
-  "object_sha256": "9fb14cbafffd1f8acb45043574ba1163b0a8f9b0b4818545f9c31eeb2ba1b4e8",
+  "object_sha256": "686bd226bbfa003776add6bc4717447876792a9a577fc3202c0e9d1f639f2a0e",
   "methods": [
     {
       "address": "0041dcd0",
@@ -119,7 +119,7 @@
       "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceSiteCheck.obj",
       "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceSiteCheck.cpp"
     ],
-    "object_sha256": "578a459f73fd4714ff77cc79807c7f14cb2d876c4cce718227587c328d6c7709"
+    "object_sha256": "b47e6e56228fc6d203e989094de3676fdc401cf547737c7fe6e7494ce0565d03"
   },
   "linked_http": {
     "object": "rebuild\\2008-06\\out\\RbxgsApp\\linked\\Http.obj",
