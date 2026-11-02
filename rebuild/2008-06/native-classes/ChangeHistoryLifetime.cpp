@@ -2,7 +2,7 @@
 #include "v8datamodel/HistoryRecord.h"
 
 RBX::ChangeHistoryService::ChangeHistoryService()
-    : DescribedCreatable<ChangeHistoryService, Instance, &sChangeHistoryService>("ChangeHistoryService"),
+    : DescribedCreatable<ChangeHistoryService, Instance, sChangeHistoryService>("ChangeHistoryService"),
       current(NULL), playing(false), enabled(false)
 {
 }

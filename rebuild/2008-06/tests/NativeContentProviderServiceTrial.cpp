@@ -4,17 +4,17 @@
 
 namespace RBX {
 #ifndef SERVICE_CONTENT_CREATE_ONLY
-template<> const Name& Name::doDeclare<&sContentProvider>() {
+template<> const Name& Name::doDeclare<sContentProvider>() {
     static const Name& name = declare("ContentProvider", -1);
     return name;
 }
 #endif
-template<class DerivedClass, const char** ClassName>
+template<class DerivedClass, const char* ClassName>
 const Name& NonFactoryProduct<DerivedClass, ClassName>::className() {
     return Name::declare<ClassName>();
 }
 #ifndef SERVICE_CONTENT_CREATE_ONLY
-template<> const Name& NonFactoryProduct<Instance, &sContentProvider>::getClassName() const {
+template<> const Name& NonFactoryProduct<Instance, sContentProvider>::getClassName() const {
     return className();
 }
 #endif

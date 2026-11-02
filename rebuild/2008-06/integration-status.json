@@ -50,7 +50,7 @@
     },
     {
       "name": "CFileVersionInfo",
-      "status": "linked typed recovery; four of five bodies match; GetVersionInfo register allocation differs (no exact credit); native About version display verified",
+      "status": "linked typed recovery; five of five bodies match; native About version display verified",
       "source": "native-classes/CFileVersionInfo.cpp"
     },
     {
@@ -70,6 +70,12 @@
       "status": "Inactive: six constructor bodies cover five of 12 factory paths; six value-operation bodies match. Float equality and two numeric parsers remain nonexact. Update, write and apply operations and runtime integration remain open.",
       "source": "native-headers/PropertyGridItems.h",
       "evidence": "work/2008-06/shared-layouts/editor-values-working-probe.json"
+    },
+    {
+      "name": "CBrowserView / CIDEBrowserView / CPlayBrowserView",
+      "status": "Inactive: 31 bodies (incl. CIDEBrowserView and CPlayBrowserView constructors and runtime classes; (constructor, destructor, runtime class, HTML view overrides, toolbar/address-box handlers, OnSize, OnCreate, XTP create-control) and the 17-entry message map match. OnInitialUpdate 0040ed50 needs the document class owning +0x54; OnGetExternal slot 0040fff0 needs CBrowserViewExternal. Not linked; no runtime integration.",
+      "source": "native-headers/CBrowserView.h and native-classes/CBrowserView.cpp",
+      "evidence": "tests/record_native_browser_view.py"
     }
   ],
   "gates": {

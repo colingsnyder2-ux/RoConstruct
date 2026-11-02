@@ -5,7 +5,7 @@
 
 // Existing recovered ServiceProvider template, instantiated for Selection.
 namespace RBX {
-template<class Class, class Derived, const char** Name>
+template<class Class, class Derived, const char* Name>
 const RBX::Name& FactoryProduct<Class, Derived, Name>::className() { return RBX::Name::declare<Name>(); }
 template<class Class> size_t ServiceProvider::doGetClassIndex() { static size_t index = newIndex(); return index; }
 template<class Class> void ServiceProvider::callDoGetClassIndex() { doGetClassIndex<Class>(); }

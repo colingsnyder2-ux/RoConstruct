@@ -56,7 +56,7 @@ CString CFileVersionInfo::GetVersionInfo(const CString& name)
 {
     CString result;
     CString path;
-    path.Format("\\StringFileInfo\\%04x%04x\\%s", m_wLang, m_wCodePage, name.GetString());
+    path.Format("\\StringFileInfo\\%04x%04x\\%s", m_wLang, m_wCodePage, *(const char* const*)&name);
     LPVOID value = NULL;
     UINT length = 0;
     if (VerQueryValue(m_lpVersionData, path.GetBuffer(), &value, &length))

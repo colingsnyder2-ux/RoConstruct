@@ -72,8 +72,7 @@ for obj_name, targets in (
         name, data, refs = next((n,b,r) for n,b,r in functions if n.startswith(prefix))
         target, target_refs, _ = match.target('2008-06', address)
         exact = match.exact_match(target, target_refs, data, refs)
-        # Park the typed query's register-allocation mismatch; grant no exact credit.
-        assert exact or address == '0046a370', (address, name)
+        assert exact, (address, name)
         methods.append(dict(address=address, symbol=name, size=len(data), target_size=len(target),
                             object=obj_name, relocation_masked_match=exact))
 paths = [Path(__file__), version_source, data_source, gl_source,
@@ -83,7 +82,7 @@ sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = dict(revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
                sources={str(p.relative_to(ROOT)):sha(p) for p in paths}, compiler_build=21022,
                version_flags=version_flags, data_flags=data_compile_flags, gl_flags=gl_flags,
-               methods=methods, scope='Source/object evidence. Version query is nonexact; full linkage/runtime evidence recorded separately.')
+               methods=methods, scope='Source/object evidence. Full linkage/runtime evidence recorded separately.')
 (ROOT / 'work/2008-06/shared-layouts/about-dependencies-working-probe.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf8')
-print('About dependencies: %d/%d relocation-masked matches; query mismatch parked' %
+print('About dependencies: %d/%d relocation-masked matches' %
       (sum(m['relocation_masked_match'] for m in methods), len(methods)))

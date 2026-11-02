@@ -2,22 +2,22 @@
 #include "v8tree/Service.h"
 
 namespace RBX {
-template<class Class, class DerivedClass, const char** ClassName>
+template<class Class, class DerivedClass, const char* ClassName>
 const Name& FactoryProduct<Class, DerivedClass, ClassName>::className() {
     return Name::declare<ClassName>();
 }
 #ifndef SERVICE_CONTENT_CREATE_ONLY
-template<> const Name& Name::doDeclare<&sVisit>() {
+template<> const Name& Name::doDeclare<sVisit>() {
     static const Name& name = declare("Visit", -1);
     return name;
 }
 #endif
-template<class DerivedClass, const char** ClassName>
+template<class DerivedClass, const char* ClassName>
 const Name& NonFactoryProduct<DerivedClass, ClassName>::className() {
     return Name::declare<ClassName>();
 }
 #ifndef SERVICE_CONTENT_CREATE_ONLY
-template<> const Name& NonFactoryProduct<Instance, &sVisit>::getClassName() const {
+template<> const Name& NonFactoryProduct<Instance, sVisit>::getClassName() const {
     return className();
 }
 #endif

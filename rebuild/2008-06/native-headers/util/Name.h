@@ -79,20 +79,20 @@ namespace RBX
 	private:
 		// NOTE: these have not been checked
 		// TODO: these also need to support const char* inputs
-		template<const char** sName>
+		template<const char* sName>
 		static const Name& doDeclare()
 		{
-			static const Name& n = declare(*sName, -1);
+			static const Name& n = declare(sName, -1);
 			return n;
 		}
 
-		template<const char** sName>
+		template<const char* sName>
 		static void callDoDeclare()
 		{
 			doDeclare<sName>();
 		}
  public:
- template<const char** sName> static const Name& declare() {
+ template<const char* sName> static const Name& declare() {
   static boost::once_flag flag=BOOST_ONCE_INIT;
   boost::call_once(&callDoDeclare<sName>,flag);
   return doDeclare<sName>();
@@ -106,7 +106,7 @@ namespace RBX
 		virtual const Name& getName() const = 0;
 	};
 
-	template<typename DerivedClass, const char** ClassName>
+	template<typename DerivedClass, const char* ClassName>
 	class Named : public DerivedClass
 	{
 	public:

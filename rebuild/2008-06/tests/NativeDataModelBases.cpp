@@ -7,9 +7,9 @@ namespace RBX {
 class RunService;
 class RunTransition;
 class DataModel;
-extern const char* sDataModel;
+extern char sDataModel[];
 // Layout probe only: DataModel's own members are intentionally not declared.
-class DataModel : public DescribedNonCreatable<DataModel, ServiceProvider, &sDataModel>,
+class DataModel : public DescribedNonCreatable<DataModel, ServiceProvider, sDataModel>,
                   public VerbContainer, public IDataState, public Evaluator,
                   public Listener<RunService, RunTransition> {};
 }

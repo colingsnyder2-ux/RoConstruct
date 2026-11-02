@@ -5,8 +5,8 @@
 #include "tool/ToolsArrow.h"
 #include "util/NormalId.h"
 namespace RBX {
-extern const char* sResizeTool;
-class ResizeTool : public Named<ArrowToolBase, &sResizeTool> {
+extern char sResizeTool[];
+class ResizeTool : public Named<ArrowToolBase, sResizeTool> {
     boost::weak_ptr<PVInstance> targetPV;
     bool overHandle;
     NormalId localNormalId;

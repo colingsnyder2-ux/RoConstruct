@@ -13,7 +13,7 @@
 
 namespace RBX
 {
-	extern const char* sRunService;
+	extern char sRunService[];
 
 	class DataModel;
 
@@ -73,7 +73,7 @@ namespace RBX
 		virtual void AdjustThrottle(double) = 0;
 	};
 
-	class RunService : public DescribedCreatable<RunService, Instance, &sRunService>,
+	class RunService : public DescribedCreatable<RunService, Instance, sRunService>,
 					   public Service,
 					   public Notifier<RunService, Heartbeat>,
 					   public Notifier<RunService, Stepped>,

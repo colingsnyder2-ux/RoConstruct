@@ -7,9 +7,9 @@
 
 namespace RBX 
 {
-	extern const char* sFaceInstance;
+	extern char sFaceInstance[];
 
-	class FaceInstance : public Reflection::Described<FaceInstance, &sFaceInstance, Instance>, public IRenderable 
+	class FaceInstance : public Reflection::Described<FaceInstance, sFaceInstance, Instance>, public IRenderable 
 	{
 	private:
 		NormalId face;

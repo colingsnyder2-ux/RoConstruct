@@ -6,8 +6,8 @@ namespace RBX {
 class Instance;
 class RunDragger;
 class MegaDragger;
-extern const char* sPartDragTool;
-class PartDragTool : public Named<MouseCommand, &sPartDragTool> {
+extern char sPartDragTool[];
+class PartDragTool : public Named<MouseCommand, sPartDragTool> {
     std::auto_ptr<RunDragger> runDragger;
     std::auto_ptr<MegaDragger> megaDragger;
     boost::shared_ptr<Instance> exeShared;

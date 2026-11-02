@@ -3,21 +3,21 @@
 
 namespace RBX {
 #ifndef SERVICE_HISTORY_CREATE_ONLY
-template<> const Name& Name::doDeclare<&sChangeHistoryService>() {
+template<> const Name& Name::doDeclare<sChangeHistoryService>() {
     static const Name& name = declare("ChangeHistoryService", -1);
     return name;
 }
 #endif
-template<class Class, class DerivedClass, const char** ClassName>
+template<class Class, class DerivedClass, const char* ClassName>
 const Name& FactoryProduct<Class, DerivedClass, ClassName>::className() {
     return Name::declare<ClassName>();
 }
 #ifndef SERVICE_HISTORY_CREATE_ONLY
-template<> const Name& FactoryProduct<ChangeHistoryService, Instance, &sChangeHistoryService>::getClassName() const {
+template<> const Name& FactoryProduct<ChangeHistoryService, Instance, sChangeHistoryService>::getClassName() const {
     return className();
 }
 #endif
-template<class DerivedClass, const char** ClassName>
+template<class DerivedClass, const char* ClassName>
 const Name& NonFactoryProduct<DerivedClass, ClassName>::className() {
     return Name::declare<ClassName>();
 }

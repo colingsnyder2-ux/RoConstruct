@@ -12,8 +12,8 @@ namespace RBX
 	class Primitive;
 	class PartInstance;
 
-	extern const char* sModel;
-	class ModelInstance : public DescribedCreatable<ModelInstance, PVInstance, &sModel>,
+	extern char sModel[];
+	class ModelInstance : public DescribedCreatable<ModelInstance, PVInstance, sModel>,
 						  public IRenderable,
 						  public virtual IPrimaryPart,
 						  public virtual ICameraSubject,

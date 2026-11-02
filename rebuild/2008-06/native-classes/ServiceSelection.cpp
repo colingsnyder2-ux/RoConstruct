@@ -2,11 +2,11 @@
 #include "v8datamodel/Selection.h"
 
 namespace RBX {
-template<class Class, class DerivedClass, const char** ClassName>
+template<class Class, class DerivedClass, const char* ClassName>
 const Name& FactoryProduct<Class, DerivedClass, ClassName>::className() {
     return Name::declare<ClassName>();
 }
-template<class DerivedClass, const char** ClassName>
+template<class DerivedClass, const char* ClassName>
 const Name& NonFactoryProduct<DerivedClass, ClassName>::className() {
     return Name::declare<ClassName>();
 }

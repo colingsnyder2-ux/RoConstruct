@@ -113,7 +113,7 @@ namespace RBX
 		}
 	};
 
-	template<typename Class, typename DerivedClass, const char** ClassName>
+	template<typename Class, typename DerivedClass, const char* ClassName>
 	class FactoryProduct : public DerivedClass
 	{
 	private:
@@ -149,7 +149,7 @@ namespace RBX
 		static const Name& className();
 	};
 
-	template<typename DerivedClass, const char** ClassName>
+	template<typename DerivedClass, const char* ClassName>
 	class NonFactoryProduct : public DerivedClass
 	{
 	public:
