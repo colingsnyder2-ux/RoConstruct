@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-02 18:21 UTC",
+  "updated": "2026-11-02 19:42 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.1395,
+      "overall": 0.1385,
       "bars": {
         "compiled": {
           "value": 35,
@@ -12,12 +12,12 @@
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 31,
+          "value": 30,
           "total": 35,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 5746,
+          "value": 5706,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -258,11 +258,11 @@
         },
         {
           "name": "P4SoundAsset",
-          "linked": true,
-          "test": 0,
-          "exact": 202,
-          "compileErrors": 0,
-          "objectFunctions": 2376,
+          "linked": false,
+          "test": null,
+          "exact": 0,
+          "compileErrors": 1,
+          "objectFunctions": 0,
           "unresolved": 0
         },
         {
