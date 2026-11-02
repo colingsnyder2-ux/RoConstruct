@@ -1,7 +1,7 @@
 {
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "rtti_receipt_sha256": "62e62c283fd71927a1d679c1acbc2f4c4fd60614d33dcf8b9962fd4d0cdcc224",
-  "observer_sha256": "8b0ce324a720af38a2204f830787fac493e468878accc84995198120cb00cc6b",
+  "observer_sha256": "8f6df4dc7ea5e7780d2adac9176f04e094d2d0658a46b38aef06dc4f3ed80497",
   "camera_base": {
     "type": ".?AVICameraOwner@RBX@@",
     "descriptor": "0x898af4",
@@ -171,5 +171,56 @@
       }
     }
   ],
-  "scope": "Original Workspace RTTI offsets confirmed by both original constructor and destructor vtable stores; full native C++ hierarchy and member lifetime remain unproven."
+  "scope": "Original Workspace RTTI offsets confirmed by both original constructor and destructor vtable stores; full native C++ hierarchy and member lifetime remain unproven.",
+  "camera_vtable": {
+    "address": "0x833998",
+    "slot4": "0x5a05a0",
+    "slot8": "0x5a0210",
+    "slot4_workspace_pointer_offsets": [
+      "0x3fc",
+      "0x404"
+    ],
+    "donor_object_sha256": "c615be71e230919d07a60ba090024f588cb84357032846b61417b66dd8a8baf1",
+    "getters": [
+      {
+        "symbol": "?getCamera@Workspace@RBX@@UBEPAVCamera@2@XZ",
+        "address": "005a05a0",
+        "candidate_size": 262,
+        "original_size": 17,
+        "exact": false
+      },
+      {
+        "symbol": "?getGCamera@Workspace@RBX@@UBEABVGCamera@G3D@@XZ",
+        "address": "005a0210",
+        "candidate_size": 13,
+        "original_size": 13,
+        "exact": true
+      }
+    ]
+  },
+  "camera_member_lifetime": {
+    "constructor": "005a4d90",
+    "null_pair_offsets": [
+      "0x3fc",
+      "0x400"
+    ],
+    "factory_output_offset": "0x404",
+    "factory_target": "0x45db40",
+    "destructor": "005a28c0",
+    "released_control_offsets": [
+      "0x408",
+      "0x400"
+    ],
+    "scope": "Two reference-counted storage pairs supported by construction and destruction; first pointee type and complete Workspace layout remain unproven."
+  },
+  "camera_factory": {
+    "address": "0045db40",
+    "allocation_size": "0x1e8",
+    "constructor": "005cd9a0",
+    "vtable": "0x83a654",
+    "rtti_locator": "0x8a41dc",
+    "type_descriptor": "0x93ab54",
+    "type": ".?AVCamera@RBX@@",
+    "gcamera_offset": "0x130"
+  }
 }

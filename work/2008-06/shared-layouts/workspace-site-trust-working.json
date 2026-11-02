@@ -4,7 +4,7 @@
     "rebuild\\2008-06\\tests\\record_native_workspace_site_trust.py": "f5099fe6f10f31600d64121f4425c920d85533ae76820e45760a6a6b4c814ac1",
     "rebuild\\2008-06\\native-classes\\WorkspaceSiteTrust.cpp": "372604126c308a1e46ef32c7f0159a17f65d30bf7b488e9080638d2fbe0894ba",
     "rebuild\\2008-06\\native-classes\\CWorkspaceSiteCheck.cpp": "2356ca3cd1ccb5cf1945611147e0edf609a8a24e1bd310b66d9b6b999699f4b6",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "86e8508936eb1f96d30ae34baad3b598ac554a22e7770d539c523fc11c9417eb",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "7c5747b7f367e7a4cccf4f27e379a3ad016f812987468fa0483f8e82a92da386",
     "tools\\rbxgs\\Client\\App\\include\\util\\Http.h": "ce6d4cb81236f2247ec6e3ecd6b235cfb96f399b37110f6a76b519e91ab86cf8"
   },
   "preprocess_flags": [
@@ -57,7 +57,7 @@
     "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceSiteTrustProfile.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceSiteTrustProfile.cpp"
   ],
-  "object_sha256": "6ff1c4b3edb3e55c3203265a48ee1769769b07e89d6ba3de80d7a32dac600ec2",
+  "object_sha256": "cee1b06d0a4a15f3751835f73d681c8552c1459db185b08d0c63c6976cf8bf86",
   "methods": [
     {
       "address": "0041dcd0",
@@ -135,7 +135,7 @@
       "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceSiteCheck.obj",
       "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceSiteCheck.cpp"
     ],
-    "object_sha256": "3564a48c5d0c390bffa79b1808c36d974200c9dc78e1a1582f1ddd15533e6707"
+    "object_sha256": "d0322c8d32768a67591199ac74cd68e5353ed10a75cb196cdcf4f662e7b28342"
   },
   "linked_http": {
     "object": "rebuild\\2008-06\\out\\RbxgsApp\\linked\\Http.obj",

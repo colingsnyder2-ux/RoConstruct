@@ -1,0 +1,172 @@
+{
+  "scope": "Inactive exact COM Write methods. XML writer, COM map identity, error helpers and live lifetime remain unproven. Do not run.",
+  "source_sha256": "c1deb6c341489d48baaaaad7d2a622960c805e79457ab3537405e1cabe5a1058",
+  "observer_sha256": "0968ca8d9a539cd6f3105ad6c14137fd3644851d43ceb56c9fcf57b5d238f076",
+  "workspace_header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+  "content_header_sha256": "e5ca7b6560ce7d078bbf3905ad64d77fcd6534607534b7fabfc454c3b0f05e62",
+  "object_sha256": "f681c252510ba1d4d7b2588494be25d51c34debd25448c3c201b50eec1f3e9d6",
+  "methods": [
+    {
+      "address": "0x46bd70",
+      "symbol": "?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "size": 600,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z": [
+          "0x7c3abb"
+        ],
+        "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": [
+          "0x6a0968"
+        ],
+        "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": [
+          "0x6a0962"
+        ],
+        "?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z": [
+          "0x46ac90"
+        ],
+        "??_C@_0BA@DFJFP@?4?2Workspace?4cpp?$AA@": [
+          "0x81c850"
+        ],
+        "?reportWorkspaceHResult@@YAXHJPBDH@Z": [
+          "0x427d80"
+        ],
+        "?workspaceSiteErrorContext@@3U_GUID@@B": [
+          "0x8164f8"
+        ],
+        "?raiseWorkspaceError@@YAXJABU_GUID@@@Z": [
+          "0x46ad70"
+        ],
+        "?writeXmlModel@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": [
+          "0x46ab90"
+        ],
+        "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": [
+          "0x46b860"
+        ],
+        "??1XmlElement@@QAE@XZ": [
+          "0x413a70"
+        ],
+        "??3@YAXPAX@Z": [
+          "0x6a067a"
+        ],
+        "?AfxDeactivateActCtx@@YGHKK@Z": [
+          "0x6a095c"
+        ],
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": [
+          "0x429330"
+        ],
+        "$LN36": [
+          "0x46bfa3"
+        ],
+        "?Process@COleException@@SGJPBVCException@@@Z": [
+          "0x6a14b4"
+        ],
+        "?Delete@CException@@QAEXXZ": [
+          "0x6a0950"
+        ],
+        "??1AFX_MAINTAIN_STATE2@@QAE@XZ": [
+          "0x4060f0"
+        ]
+      }
+    },
+    {
+      "address": "0x46bfd0",
+      "symbol": "?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "size": 600,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z": [
+          "0x7c3b2b"
+        ],
+        "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": [
+          "0x6a0968"
+        ],
+        "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": [
+          "0x6a0962"
+        ],
+        "?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z": [
+          "0x46ac90"
+        ],
+        "??_C@_0BA@DFJFP@?4?2Workspace?4cpp?$AA@": [
+          "0x81c850"
+        ],
+        "?reportWorkspaceHResult@@YAXHJPBDH@Z": [
+          "0x427d80"
+        ],
+        "?workspaceSiteErrorContext@@3U_GUID@@B": [
+          "0x8164f8"
+        ],
+        "?raiseWorkspaceError@@YAXJABU_GUID@@@Z": [
+          "0x46ad70"
+        ],
+        "?writeXmlSelection@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": [
+          "0x46b750"
+        ],
+        "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": [
+          "0x46b860"
+        ],
+        "??1XmlElement@@QAE@XZ": [
+          "0x413a70"
+        ],
+        "??3@YAXPAX@Z": [
+          "0x6a067a"
+        ],
+        "?AfxDeactivateActCtx@@YGHKK@Z": [
+          "0x6a095c"
+        ],
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": [
+          "0x429330"
+        ],
+        "$LN36": [
+          "0x46c203"
+        ],
+        "?Process@COleException@@SGJPBVCException@@@Z": [
+          "0x6a14b4"
+        ],
+        "?Delete@CException@@QAEXXZ": [
+          "0x6a0950"
+        ],
+        "??1AFX_MAINTAIN_STATE2@@QAE@XZ": [
+          "0x4060f0"
+        ]
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceWriteTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorkspaceWriteTrial.cpp"
+  ]
+}

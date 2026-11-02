@@ -1,0 +1,36 @@
+{
+  "scope": "Inactive exact HRESULT reporter; MFC data identity and runtime ownership remain unproven.",
+  "source_sha256": "0b8cccb7f54abdf0c18ba63d2576f6aebb853c3863dc098838f8e72fc5a7a98d",
+  "observer_sha256": "3e41d76678fd16181ab6d02d3df0d58afb68e2b2a3057a593cc522d58b29dc80",
+  "profile_sha256": "33db9e89f0ae86ede08ce46d10eb0df53077c833540c547fec764c17c0d6d095",
+  "object_sha256": "25d4315e3e8a81fa9e75da631a6a62d65e6307ada3d1d3ff9986ce4f2749e31b",
+  "address": "00427d80",
+  "symbol": "?reportWorkspaceHResult@@YAXHJPBDH@Z",
+  "size": 206,
+  "exact": true,
+  "bindings": {
+    "__ehhandler$?reportWorkspaceHResult@@YAXHJPBDH@Z": "0x7bf0b7",
+    "??0CException@@QAE@XZ": "0x6a0f62",
+    "??_7COleException@@6B@": "0x810384",
+    "?GetErrorMessage@COleException@@UBEHPADIPAI@Z": "0x6a0f74",
+    "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f04",
+    "??_C@_0BI@OFLJBDHC@HRESULT?5?$DN?5?$CFd?3?5?$CFs?6?$CFs?$CI?$CFd?$CJ?$AA@": "0x8103b0",
+    "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXPBDZZ": "0x803edc",
+    "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "0x803ee0",
+    "?reportWorkspaceStatus@@YAXGPBD@Z": "0x427c20",
+    "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\hresult-report-probe\\WorkspaceHResultProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\hresult-report-probe\\WorkspaceHResultProfile.cpp"
+  ]
+}

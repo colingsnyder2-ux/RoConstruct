@@ -1,0 +1,97 @@
+{
+  "scope": "Inactive ModelInstance constructor/destructor match; vector element type, full base layout and runtime ownership remain unproven.",
+  "observer_sha256": "f7a84642ee09950e4eed0325914b7b4b31ecf18d392937cea195c523cb2d4073",
+  "source_sha256": "6e7c8810ad17dbcbaf2597e54bb3c5454a1fe21fcc043293f63b111e4e89e426",
+  "overlay_sha256": "4f09a2312c23d2da4ac8754df699f21e4e165701b6b88993ea282549bf99b00c",
+  "object_sha256": "702fa7ffeabbae3ce6f197fbfe5faf0cf59fe2849d884af9b3236fdd43567866",
+  "methods": [
+    {
+      "symbol": "??0ModelInstance@RBX@@QAE@XZ",
+      "address": "00585630",
+      "size": 594,
+      "original_size": 594,
+      "exact": true,
+      "calls": {
+        "??$?0PBD@?$DescribedCreatable@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PBDB@RBX@@IAE@PBD@Z": [
+          "0x585520"
+        ],
+        "??0CoordinateFrame@G3D@@QAE@XZ": [
+          "0x4782d0"
+        ],
+        "??2@YAPAXI@Z": [
+          "0x6a0920"
+        ],
+        "??0?$ComputeProp@VExtents@RBX@@VModelInstance@2@@RBX@@QAE@PAVModelInstance@1@P821@BE?AVExtents@1@XZ@Z": [
+          "0x583ee0"
+        ],
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": [
+          "0x553f90"
+        ],
+        "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ": [
+          "0x405da0"
+        ],
+        "??A?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@QAEAAPBVICreator@RBX@@ABQBVName@3@@Z": [
+          "0x5644a0"
+        ]
+      }
+    },
+    {
+      "symbol": "??1ModelInstance@RBX@@UAE@XZ",
+      "address": "00584790",
+      "size": 421,
+      "original_size": 421,
+      "exact": true,
+      "calls": {
+        "??3@YAXPAX@Z": [
+          "0x6a067a"
+        ],
+        "??1IRenderable@RBX@@QAE@XZ": [
+          "0x47d410"
+        ],
+        "??1?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PBDB@RBX@@MAE@XZ": [
+          "0x5835b0"
+        ]
+      }
+    }
+  ],
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\workspace-model-vector-include",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/fp:fast",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeModelLifetimeTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeModelLifetimeTrial.cpp"
+  ]
+}

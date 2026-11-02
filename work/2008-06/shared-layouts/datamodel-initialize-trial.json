@@ -1,0 +1,71 @@
+{
+  "scope": "Inactive original initialization matches including null-command setter. Overlay class layout, service identities, ownership and runtime remain unproven.",
+  "observer_sha256": "2f5581b907ce9696fd1d672c687cc001197d91ddeebdaacd7c222bb8fe24233b",
+  "source_sha256": "852daa71022fc5e53a36a5ffc1b593934b839f36045738eb856b9ade8a5fed99",
+  "profile_sha256": "112263d098ca2149a11c0c39f84f941e8ae9c888c8c589c84aeb90210e194265",
+  "object_sha256": "2d7f0ef1b9d33b3b5c72c59169deb6a12e98a011832bc1f91c8ee8cc65244632",
+  "address": "0057a9f0",
+  "symbol": "?initializeContents@DataModel@RBX@@QAEX_N@Z",
+  "size": 502,
+  "exact": true,
+  "calls": {
+    "?setParent@Instance@RBX@@QAEXPAV12@@Z": [
+      "0x55a8f0"
+    ],
+    "??$create@VLocalBackpack@RBX@@@ServiceProvider@RBX@@QBEPAVLocalBackpack@1@XZ": [
+      "0x578930"
+    ],
+    "??$shared_from@VLocalBackpack@RBX@@@RBX@@YA?AV?$shared_ptr@VLocalBackpack@RBX@@@boost@@PAVLocalBackpack@0@@Z": [
+      "0x618a40"
+    ],
+    "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": [
+      "0x4025b0"
+    ],
+    "??$create@VStarterPackService@RBX@@@ServiceProvider@RBX@@QBEPAVStarterPackService@1@XZ": [
+      "0x4b3960"
+    ],
+    "??$shared_from@VStarterPackService@RBX@@@RBX@@YA?AV?$shared_ptr@VStarterPackService@RBX@@@boost@@PAVStarterPackService@0@@Z": [
+      "0x618a40"
+    ],
+    "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": [
+      "0x4530f0"
+    ],
+    "??$shared_from@VRunService@RBX@@@RBX@@YA?AV?$shared_ptr@VRunService@RBX@@@boost@@PAVRunService@0@@Z": [
+      "0x618a40"
+    ],
+    "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": [
+      "0x4531e0"
+    ],
+    "?setNullMouseCommand@Workspace@RBX@@QAEXXZ": [
+      "0x5a2730"
+    ],
+    "?setVerbParent@VerbContainer@RBX@@QAEXPAV12@@Z": [
+      "0x583210"
+    ],
+    "?start@RunService@RBX@@AAEXXZ": [
+      "0x556520"
+    ],
+    "?addListener@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z": [
+      "0x4218a0"
+    ],
+    "??$create@VJointsService@RBX@@@ServiceProvider@RBX@@QBEPAVJointsService@1@XZ": [
+      "0x4b3a50"
+    ],
+    "??$create@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ": [
+      "0x4cd7e0"
+    ]
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDataModelInitializeTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDataModelInitializeProfile.cpp"
+  ]
+}

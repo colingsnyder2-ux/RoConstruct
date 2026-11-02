@@ -28,6 +28,7 @@ public:
 class XmlElement;
 
 namespace RBX {
+    class ContentId;
     class DataModel;
     class RunService;
     class Selection;
@@ -48,6 +49,24 @@ class ATL_NO_VTABLE CWorkspace :
     public RBX::Listener<RBX::Selection, RBX::SelectionChanged>,
     public RBX::Listener<RBX::Workspace, RBX::DrawChanged> {
 public:
+    BEGIN_COM_MAP(CWorkspace)
+        COM_INTERFACE_ENTRY(IWorkspace)
+        COM_INTERFACE_ENTRY(IDispatch)
+        COM_INTERFACE_ENTRY(ISupportErrorInfo)
+    END_COM_MAP()
+    DECLARE_PROTECT_FINAL_CONSTRUCT()
+    HRESULT FinalConstruct();
+    STDMETHOD(SaveToFile)(BSTR);
+    STDMETHOD(SaveSelectionToFile)(BSTR);
+    STDMETHOD(Insert)(BSTR);
+    STDMETHOD(Write)(IContent**);
+    STDMETHOD(WriteSelection)(IContent**);
+    HRESULT execScript(const char*, VARIANT, VARIANT, VARIANT, VARIANT, SAFEARRAY**);
+    STDMETHOD(ExecScript)(BSTR, VARIANT, VARIANT, VARIANT, VARIANT, SAFEARRAY**);
+    STDMETHOD(ExecUrlScript)(BSTR, VARIANT, VARIANT, VARIANT, VARIANT, SAFEARRAY**);
+    STDMETHOD(Close)();
+    virtual void onEvent(const RBX::Selection*, RBX::SelectionChanged);
+    virtual void onEvent(const RBX::Workspace*, RBX::DrawChanged);
     boost::shared_ptr<RBX::DataModel> dataModel;
     boost::shared_ptr<RBX::RunService> runService;
     CWorkspace();
@@ -55,6 +74,9 @@ public:
     RBX::Workspace* getWorkspace();
     void cleanup();
     std::auto_ptr<XmlElement> writeXmlModel();
+    std::auto_ptr<XmlElement> writeXmlSelection();
+    HRESULT write(XmlElement*, std::ostream&);
     void load(std::istream&); // 0046aa70; original symbol linkage pending.
+    void insert(RBX::ContentId, bool);
     void insert(std::istream&, bool); // 0046b9d0; implementation pending.
 };

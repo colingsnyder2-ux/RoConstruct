@@ -15,7 +15,7 @@ out.mkdir(parents=True, exist_ok=True)
 original = root / 'rebuild/2008-06/out/RbxgsApp/overlay/App/v8datamodel/Workspace.cpp'
 archive_obj = root / 'rebuild/2008-06/out/RbxgsApp/linked/Workspace.obj'
 text = original.read_text()
-renames={'setDefaultMouseCommand':'setDefaultMouseCommandDonorProfile'}
+renames={'setDefaultMouseCommand':'setDefaultMouseCommandDonorProfile', 'setNullMouseCommand':'setNullMouseCommandDonorProfile'}
 patched=text
 for old,new in renames.items(): patched=patched.replace(old,new)
 header=root/'rebuild/2008-06/out/RbxgsApp/overlay/App/include/v8datamodel/Workspace.h'
@@ -77,6 +77,6 @@ receipt = {'source_sha256': sha(original), 'observer_sha256': sha(Path(__file__)
            'filtered_source_sha256': sha(filtered_source), 'filtered_object_sha256': sha(objects[1]),
            'flags': common, 'baseline_functions': len(baseline_f), 'retained_functions': len(filtered_f),
            'removed_functions': sorted(removed),
-           'scope': 'Inactive donor ABI diagnostic. Default-command function renamed in local donor profile. All unchanged function bytes and relocation symbols match rebuilt baseline; untouched data, linker selection and runtime compatibility remain unproven.'}
+           'scope': 'Inactive donor ABI diagnostic. Default and null command functions renamed in local donor profile. All unchanged function bytes and relocation symbols match rebuilt baseline; untouched data, linker selection and runtime compatibility remain unproven.'}
 (root / 'work/2008-06/shared-layouts/workspace-filtered-donor-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS donor Workspace rebuild with default-command renamed profile')
+print('PASS donor Workspace rebuild with default and null command renamed profile')

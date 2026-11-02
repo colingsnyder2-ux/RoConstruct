@@ -1,17 +1,17 @@
 {
   "scope": "Inactive workspace ctor/dtor, safety slots and site URL/zone lookup match. Domain validation and runtime linking remain open.",
   "inputs": {
-    "rebuild\\2008-06\\tests\\record_native_workspace_safety.py": "fc0c9ab4dc84ac1bad5a4d2674a041d96ec4b45b940dd912af1567524486e598",
+    "rebuild\\2008-06\\tests\\record_native_workspace_safety.py": "94364c53b0759cdb75aebe398fc82d7fdac6a72feb2152cbb64a1f36a7e3d644",
     "rebuild\\2008-06\\native-classes\\CWorkspaceObjectSafety.cpp": "0bc50e71bf184249530f8bdbcebadd420fdf050b35986854123dba286b832816",
     "rebuild\\2008-06\\native-classes\\CWorkspaceSiteUrl.cpp": "c46033266ae0f0ceb8484146e37a3638baffee808d1a0cdf68b38119228d6547",
     "rebuild\\2008-06\\tests\\NativeWorkspaceDestructor.cpp": "29b5e9765935b4e70a5da24e1a9fe8465a02c729078c719515bdedc9abaff974",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
-    "work\\2008-06\\shared-layouts\\workspace-after-safety.json": "53d7c30465d1f1bef50518927bee03e9bed3bad7810016c5cd40fd222b6901ba"
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "7c5747b7f367e7a4cccf4f27e379a3ad016f812987468fa0483f8e82a92da386",
+    "work\\2008-06\\shared-layouts\\workspace-revalidated.json": "76c2f75f6f8880f8899dd58c2072d8f476507a19f0962d7205551ef264c7c568"
   },
   "objects": {
-    "safety": "59dae5f5b183295f9cacb16274b7681fcfdad979b0ada963990b67259889295e",
-    "destructor": "0dba877b7795fc1ed7e53f3a83ba3adab66e9ad37e62c13e2af30753d0385d57",
-    "siteurl": "6f40de9d160ebfbd402c6f23fbd8912d14c098328c75815865a2c379eb196cbe"
+    "safety": "7db5951f9f8a4d1c40130e7b5fac4471468c60589c28978864fa7d51160f7e92",
+    "destructor": "a203090a125c1a5e9aab8d25109f0bd6d478215cb69e4daff92d935b814a0cb2",
+    "siteurl": "643ae698d31481429d8fc594b396795a4b8fa07d9b34f2e15a54c121fc26b147"
   },
   "flags": {
     "safety": [

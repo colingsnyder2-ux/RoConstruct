@@ -1,0 +1,101 @@
+{
+  "scope": "Inactive action candidates: onRemoved and set insertion match; onAdded differs and is excluded from diagnostic. Signal/data identity, class layouts and runtime remain unproven.",
+  "observer_sha256": "d265de3fc0cb59ce7ec30685ef5dea9f37cd2ca61c6889c730313de0d6f2b8f5",
+  "source_sha256": "02870d5b71aeae680c113bc76ac6cc03ae6db7ca4ed1b0716d1e0d23d71c67b2",
+  "object_sha256": "f26395e90fb5a925be0a86220bc46f3bae04e442a0a49c7aff4bb5c72d4b9b34",
+  "methods": [
+    {
+      "class": "JointsService",
+      "address": "004b3a50",
+      "symbol": "??$create@VJointsService@RBX@@@ServiceProvider@RBX@@QBEPAVJointsService@1@XZ",
+      "size": 228,
+      "exact": true,
+      "calls": {
+        "??$find@VJointsService@RBX@@@ServiceProvider@RBX@@QBEPAVJointsService@1@XZ": "0x4b34c0",
+        "??$create@VJointsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VJointsService@RBX@@@boost@@XZ": "0x4b0df0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@VJointsService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x4ab4d0",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+      }
+    },
+    {
+      "class": "PhysicsService",
+      "address": "004cd7e0",
+      "symbol": "??$create@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ",
+      "size": 228,
+      "exact": true,
+      "calls": {
+        "??$find@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ": "0x4ccca0",
+        "??$create@VPhysicsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPhysicsService@RBX@@@boost@@XZ": "0x4cd760",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x4c9be0",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/DWORLD_ACTION_PROFILE",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldServiceActionsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorldServiceFactoriesTrial.cpp"
+  ],
+  "actions": [
+    {
+      "method": "onAdded",
+      "address": "005e8f70",
+      "symbol": "?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+      "size": 203,
+      "original_size": 203,
+      "exact": false
+    },
+    {
+      "method": "onRemoved",
+      "address": "005e9040",
+      "symbol": "?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+      "size": 196,
+      "original_size": 196,
+      "exact": true
+    }
+  ],
+  "set_insert": {
+    "address": "005e8c40",
+    "symbol": "?insert@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVPartInstance@RBX@@U?$less@PAVPartInstance@RBX@@@std@@V?$allocator@PAVPartInstance@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVPartInstance@RBX@@@Z",
+    "size": 239,
+    "exact": true
+  }
+}

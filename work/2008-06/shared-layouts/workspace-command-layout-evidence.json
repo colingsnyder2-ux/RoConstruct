@@ -1,0 +1,73 @@
+{
+  "scope": "Original constructor, destructor, default-command setter and RTTI predicate corroborate two command-pointer offsets. Complete Workspace ABI remains unproven.",
+  "observer_sha256": "344d8c3ab77ae568c5034611fbbde754f9e921afa641991b838e840e682a869c",
+  "lifetime_profile_sha256": "3c1e56aeb8e725647514ea6a3aa29dbdecec435318248ab5b9c0640dc191d81e",
+  "current_command_offset": "0x3b0",
+  "sticky_command_offset": "0x3b4",
+  "methods": [
+    {
+      "address": "005a4d90",
+      "sha256": "14de72392a594eb567992b0d7a73704f060e01c2d63f0b811ba5c49a73cdeb3f",
+      "instructions": [
+        [
+          "0x5a4f8f",
+          "mov",
+          "dword ptr [esi + 0x3b0], ebx"
+        ],
+        [
+          "0x5a4f95",
+          "mov",
+          "dword ptr [esi + 0x3b4], ebx"
+        ]
+      ]
+    },
+    {
+      "address": "005a28c0",
+      "sha256": "4c9e6b79ce878347fe4f3d49044f6727d97227e14d1b847c1d9bd6989841ff8f",
+      "instructions": [
+        [
+          "0x5a2b10",
+          "mov",
+          "ecx, dword ptr [esi + 0x3b4]"
+        ],
+        [
+          "0x5a2b28",
+          "mov",
+          "ecx, dword ptr [esi + 0x3b0]"
+        ]
+      ]
+    },
+    {
+      "address": "005a0610",
+      "sha256": "a9d90bcc20e12535c5938e2983f783a8383564c029de7b7e2628e22873771f78",
+      "instructions": [
+        [
+          "0x5a0613",
+          "mov",
+          "ecx, dword ptr [esi + 0x3b4]"
+        ],
+        [
+          "0x5a0637",
+          "mov",
+          "ecx, dword ptr [esi + 0x3b0]"
+        ],
+        [
+          "0x5a0653",
+          "mov",
+          "dword ptr [esi + 0x3b0], edi"
+        ]
+      ]
+    },
+    {
+      "address": "005c6240",
+      "sha256": "88ec5a46d30acc00f8cd6c3324eef7aa80f148c9a318cb0088ef4e8383e606ea",
+      "instructions": [
+        [
+          "0x5c6249",
+          "mov",
+          "eax, dword ptr [ecx + 0x3b0]"
+        ]
+      ]
+    }
+  ]
+}

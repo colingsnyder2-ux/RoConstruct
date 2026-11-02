@@ -1,12 +1,12 @@
 {
   "source_sha256": "b951e2ae8a2860f79f578fc3d03b47500ca97ad2f7c7c824612957864edb14f5",
-  "observer_sha256": "2e44a03a36dbf2791e4becf400af3d384fe8497468363090f3c5aefc9cb05fb9",
+  "observer_sha256": "96ffef57108e090b3819c389310030d348ef29740217d1f36e16049f401de46b",
   "donor_header_sha256": "f9954edc80c6a56104c0bebaedcec34f177bc0768ce1c05b7ed98932731a2520",
-  "renamed_header_sha256": "560eb157b3d025089c99cf790215bc52c790ffee099b73c6368a3e0a8f4b4c51",
+  "renamed_header_sha256": "ca186cef41f0e8624f3ba1b828cefffcc8a44cb26db981edd9d5c24febef6c51",
   "archive_object_sha256": "32ff7121b1e34154567a24c4940f8e17f1f64199ae3add3972a2a0e1506f8de5",
-  "baseline_object_sha256": "4e8bdf6940ea12014112329a2d62e3910e07fc2efc9fc582304fa1dbd329639b",
-  "filtered_source_sha256": "fb7d11decd80da0f6c460b3e55cd059d4227d344efef2f398f81677c54735bd5",
-  "filtered_object_sha256": "02a393db82418bbafcbf61b4e2186485cdf27a909eaec9cf03de14272c1161ae",
+  "baseline_object_sha256": "2a76dfe2f7c03691fb2279acbadd440674730835e1ee10f13b8df6437acfb57d",
+  "filtered_source_sha256": "f214e1c5984e1269dd222707ef0c8ce484bd50729e3fb220e54d02a110a64426",
+  "filtered_object_sha256": "c615be71e230919d07a60ba090024f588cb84357032846b61417b66dd8a8baf1",
   "flags": [
     "/nologo",
     "/c",
@@ -52,7 +52,8 @@
   "baseline_functions": 1591,
   "retained_functions": 1591,
   "removed_functions": [
-    "?setDefaultMouseCommand@Workspace@RBX@@QAEXXZ"
+    "?setDefaultMouseCommand@Workspace@RBX@@QAEXXZ",
+    "?setNullMouseCommand@Workspace@RBX@@QAEXXZ"
   ],
-  "scope": "Inactive donor ABI diagnostic. Default-command function renamed in local donor profile. All unchanged function bytes and relocation symbols match rebuilt baseline; untouched data, linker selection and runtime compatibility remain unproven."
+  "scope": "Inactive donor ABI diagnostic. Default and null command functions renamed in local donor profile. All unchanged function bytes and relocation symbols match rebuilt baseline; untouched data, linker selection and runtime compatibility remain unproven."
 }

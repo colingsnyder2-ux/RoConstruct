@@ -1,0 +1,112 @@
+{
+  "scope": "Inactive exact method; ContentProvider shared layout, class lifetimes and live ownership remain unproven. Do not run.",
+  "source_sha256": "2efd58bb27151c4d809ca61e75f22d53a72988f75f1439075fa8ed6c1e3dbb13",
+  "observer_sha256": "a3bc27b977e98abe1ed8b38ab6cb9bfcdc23c8b36f5dfbc1ffad582b25ff631a",
+  "provider_trial_sha256": "bac1b447620f2dc8110ccfaac3a1d81db7507b559fd32a1a377ba4e00c995ded",
+  "header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+  "profile_sha256": "72312cff1bb3864103756e147233132a8651bd41dfa876a54444f90794bbdba7",
+  "object_sha256": "43585f688c24be756678a4c8d324680fb5b240d173cbd46e3a9275221ca5b50c",
+  "symbol": "?ExecUrlScript@CWorkspace@@UAGJPA_WUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z",
+  "address": "0046c430",
+  "size": 841,
+  "exact": true,
+  "bindings": {
+    "__ehhandler$?ExecUrlScript@CWorkspace@@UAGJPA_WUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z": [
+      "0x7c3b9a"
+    ],
+    "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": [
+      "0x6a0968"
+    ],
+    "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": [
+      "0x6a0962"
+    ],
+    "__imp_??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z": [
+      "0x802430"
+    ],
+    "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PB_W@Z": [
+      "0x803ed8"
+    ],
+    "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": [
+      "0x803ee0"
+    ],
+    "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+      "0x802458"
+    ],
+    "?getNullName@Name@RBX@@SAABV12@XZ": [
+      "0x554270"
+    ],
+    "??$create@VContentProvider@RBX@@@ServiceProvider@RBX@@QBEPAVContentProvider@1@XZ": [
+      "0x41eea0"
+    ],
+    "?getContent@ContentProvider@RBX@@QAE?AV?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@VContentId@2@@Z": [
+      "0x561f20"
+    ],
+    "??$copy_impl@V?$reference_wrapper@V?$basic_istream@DU?$char_traits@D@std@@@std@@@boost@@V?$reference_wrapper@V?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@detail@iostreams@boost@@YAHV?$reference_wrapper@V?$basic_istream@DU?$char_traits@D@std@@@std@@@2@V?$reference_wrapper@V?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@H@Z": [
+      "0x451300"
+    ],
+    "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": [
+      "0x803f14"
+    ],
+    "__imp_?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": [
+      "0x802434"
+    ],
+    "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": [
+      "0x802464"
+    ],
+    "?execScript@CWorkspace@@QAEJPBDUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z": [
+      "0x46b230"
+    ],
+    "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+      "0x802468"
+    ],
+    "__imp_??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": [
+      "0x802438"
+    ],
+    "?AfxDeactivateActCtx@@YGHKK@Z": [
+      "0x6a095c"
+    ],
+    "??_C@_0BG@PBAIDCCB@Failed?5to?5get?5URL?0?5?$CFs?$AA@": [
+      "0x81c89c"
+    ],
+    "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": [
+      "0x509b10"
+    ],
+    "?workspaceSiteErrorContext@@3U_GUID@@B": [
+      "0x8164f8"
+    ],
+    "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": [
+      "0x429330"
+    ],
+    "$LN22": [
+      "0x46c67c"
+    ],
+    "??1AFX_MAINTAIN_STATE2@@QAE@XZ": [
+      "0x4060f0"
+    ],
+    "??_C@_0O@OMBBJOIH@CException?5?$CFs?$AA@": [
+      "0x81c88c"
+    ],
+    "$LN28": [
+      "0x46c698"
+    ],
+    "??_C@_0BB@GINMLIJB@CAtlException?5?$CFd?$AA@": [
+      "0x81c878"
+    ],
+    "??_C@_0BF@KNCBLKP@Unexpected?5exception?$AA@": [
+      "0x81c860"
+    ]
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\execurl-probe\\NativeWorkspaceExecUrlProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\execurl-probe\\NativeWorkspaceExecUrlProfile.cpp"
+  ]
+}

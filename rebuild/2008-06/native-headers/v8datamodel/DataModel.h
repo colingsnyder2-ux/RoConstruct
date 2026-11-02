@@ -58,6 +58,8 @@ public:
     double getFrameRate() const;
     double getDutyCycle() const;
     void clearContents();
+    void initializeContents(bool);
+    static boost::shared_ptr<DataModel> createDataModel(bool);
     static void closeDataModel(boost::shared_ptr<DataModel>, bool);
 };
 }

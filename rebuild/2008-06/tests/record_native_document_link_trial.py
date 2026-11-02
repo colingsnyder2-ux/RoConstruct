@@ -65,6 +65,21 @@ libs += [rebuild.dll_import_lib('2008-06', dll) for dll in spec['import_dlls']]
 objects = [out/'NativeDocShell.obj'] + [p6/name for name in ['MyXTPCommandBars.obj','appmodul.obj','P6Engine.obj','P6Data.obj','roblox.res','mfc90.lib']]
 objects += [snap/'native-layouts'/name for name in ['NativeFrameIconsFresh.obj','NativeFrameIconWidth.obj','NativeDHtmlDialog.obj','NativeAboutDialog.obj','NativeAboutDialogData.obj','NativeFileVersionInfo.obj','NativeGLCaps.obj','NativeSaveDialogProfile.obj','NativeApplicationBaseUrl.obj','NativeDocumentHistoryProfile.obj','NativeDocumentException.obj','NativeWorkspaceLayout.obj','NativeWorkspaceLoad.obj','WorkspaceInsertNativeProfile.obj','NativeParserDestructor.obj','SelectionFront.obj','InstanceClassLookup.obj','NativeDataModelTiming.obj','NativeDataModelDutyCycle.obj','NativePlayersAbuse.obj','NativeLuaAllocatorStats.obj']]
 objects += [snap/'native-layouts'/name for name in ['NativeVerbLifetime.obj','NativeVerbBaseLifetime.obj','NativeVerbQueries.obj']]
+objects.append(snap/'native-layouts'/'NativeRotateAxisTrial.obj')
+objects.append(snap/'native-layouts/execscript-probe/NativeExecScriptProfile.obj')
+objects.append(snap/'native-layouts/execscript-helper-probe/CWorkspaceExecScriptHelperProfile.obj')
+objects.append(snap/'native-layouts/execurl-probe/NativeWorkspaceExecUrlProfile.obj')
+objects.append(snap/'native-layouts/save-probe/CWorkspaceSaveProfile.obj')
+objects.append(snap/'native-layouts/CWorkspaceSelectionTrial.obj')
+objects.append(snap/'native-layouts/content-insert-probe/NativeWorkspaceInsertUrlProfile.obj')
+objects.append(snap/'native-layouts/NativeContentFactoryTrial.obj')
+objects.append(snap/'native-layouts/content-upload-probe/CContentUploadProfile.obj')
+objects.append(snap/'native-layouts/content-upload-probe/CContentError.obj')
+objects.append(snap/'native-layouts/content-upload-probe/CContentGuids.obj')
+objects.append(snap/'native-layouts/NativeWorkspaceWriteTrial.obj')
+objects.append(snap/'native-layouts/hresult-report-probe/WorkspaceHResultProfile.obj')
+objects.append(snap/'native-layouts/NativeWorkspaceRaiseError.obj')
+objects.append(snap/'native-layouts/lua-args-probe/LuaArgsProfile.obj')
 objects += [snap/'native-layouts'/name for name in ['NativeWorkspaceObjectSafety.obj','NativeWorkspaceSiteUrl.obj']]
 objects += [snap/'native-layouts'/name for name in ['ServiceSelectionProfile.obj','NativeServiceLookup.obj']]
 objects += [snap/'native-layouts'/name for name in ['ServiceChangeHistoryProfile.obj','ServiceChangeHistoryCreate.obj']]
@@ -118,7 +133,15 @@ if provider_trial:
                  'NativeMouseUnlockedTrial.obj', 'NativeGameToolMouseDownTrial.obj',
                  'NativePartLockProfile.obj', 'NativeJointIterationProfile.obj',
                  'NativeWorkspaceDefaultProfile.obj', 'NativeDefaultMouseCommandTrial.obj',
-                 'NativeWorkspaceSiteCheck.obj', 'WorkspaceSiteTrustProfile.obj']]
+                 'NativeWorkspaceSiteCheck.obj', 'WorkspaceSiteTrustProfile.obj',
+                 'NativeWorkspaceErrorTrial.obj', 'NativeWorkspaceStatusTrial.obj',
+                 'NativeAtlErrorCoreTrial.obj', 'NativeWorkspaceComMapTrial.obj',
+                 'NativeWorkspaceEventsTrial.obj', 'NativeWorkspaceCloseTrial.obj',
+                 'NativeWorkspaceGuidsTrial.obj', 'NativeWorkspaceFinalConstructVectorTrial.obj',
+                 'NativeDataModelCreateTrial.obj', 'NativeToolCheckedMultiTrial.obj',
+                 'NativeDataModelInitializeTrial.obj', 'NativeWorkspaceNullProfile.obj',
+                 'NativeWorldServiceJointFindTrial.obj', 'NativePhysicsArrayLifetimeTrial.obj',
+                 'NativePhysicsArrayFindTrial.obj']]
 objects += [snap/'native-layouts'/'NativeInstanceBaseCallbacks.obj']
 objects += [snap/'native-layouts'/'NativeInstanceReadPropertyTrial.obj']
 objects += [snap/'native-layouts'/'NativeDescendantHelpersTrial.obj']
@@ -131,6 +154,8 @@ objects += [snap/'property-abi-trial'/'HistoryItemPropertyTrial.obj']
 objects += [snap/'history-start-trial'/'NativeChangeHistoryStartTrial.obj']
 system = ['gdiplus','kernel32','user32','gdi32','advapi32','shell32','ole32','oleaut32','comdlg32','comctl32','ws2_32','winmm','opengl32','glu32','imagehlp','version','wininet','dbghelp','psapi']
 args = ['/nologo','/SUBSYSTEM:WINDOWS','/MACHINE:X86','/MAP:NativeDoc.map','/OUT:NativeDoc.exe','/NODEFAULTLIB:mfcs90.lib','/MANIFEST:NO']
+if provider_trial:
+    args.append('/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z')
 args += [str(path) for path in objects+libs] + [name+'.lib' for name in system] + ['/NODEFAULTLIB:'+name for name in rebuild.VENDOR_AUTOLINK]
 code, log = rebuild.run(rebuild.toolchain(), 'link', args, out)
 (out/'link.log').write_text(log)

@@ -512,3 +512,7 @@ affected by anything on the P6 branch.
 - 2026-11-01 Codex: correct inactive TToolVerb::newMouseCommand return from boost::shared_ptr<MouseCommand> to MouseCommand*. Original factory 005c6270 returns raw allocation in EAX with plain ret; caller 005c6f00 passes EAX directly. No fields or virtual slots changed. Rerun StandardVerbs/Doc layout and initializer probes; runtime still unproven.
 
 - 2026-11-01 Codex: add inactive native v8datamodel/MouseCommand.h based on donor declaration without 2007 undoState field. Original 006159f0 constructor, 00615a20 deleting destructor and 005c6270 Arrow factory match this layout; methods/virtual slots and live runtime ABI remain unproven. No active build selection.
+
+- 2026-11-02 Codex: promote evidenced CWorkspace COM map, protected FinalConstruct, IWorkspace and listener method declarations into inactive shared header. Original 00402730, 00450370, 00401910 and COM map entries matched in trial; full vtable, implementation and runtime ABI remain under verification.
+
+- 2026-11-02 Codex: add nonvirtual DataModel::initializeContents(bool) and static createDataModel(bool) declarations from original 0057a9f0/0057c100. No storage or vtable change; bodies and full DataModel ABI remain under verification.
