@@ -1,6 +1,7 @@
 #include <boost/thread/once.hpp>
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/PVInstance.h"
+#include "v8datamodel/ModelInstance.h"
 
 namespace RBX {
 template<class Class> size_t ServiceProvider::doGetClassIndex() {
@@ -24,5 +25,6 @@ template<class Class> Class* ServiceProvider::create() const {
     }
     return service;
 }
+template FilteredSelection<ModelInstance>* ServiceProvider::create<FilteredSelection<ModelInstance> >() const;
 template FilteredSelection<PVInstance>* ServiceProvider::create<FilteredSelection<PVInstance> >() const;
 }

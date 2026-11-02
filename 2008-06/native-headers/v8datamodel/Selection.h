@@ -1,5 +1,6 @@
 #pragma once
 #include "v8tree/Service.h"
+#include "v8world/Controller.h"
 #include "v8datamodel/SelectionChanged.h"
 #include <algorithm>
 
@@ -39,6 +40,8 @@ public:
     virtual ~FilteredSelection() {
         if (rootSelection) rootSelection->removeFilteredSelection(this);
     }
+    T* findFirst(bool (*predicate)(T*));
+    T* findDifferent(Controller::ControllerType);
     size_t size() const { return filteredSelection.size(); }
     const std::vector<T*>& items() const { return filteredSelection; }
     T* front() { return filteredSelection.empty() ? NULL : filteredSelection.front(); }

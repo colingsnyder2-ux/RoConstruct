@@ -225,6 +225,112 @@ for prefix, address, required in [
         assert any(k.startswith(key) and v == value for k, v in lifetime_bindings.items()), (key, lifetime_bindings)
     insert_lifetime.append({'symbol': lifetime_name, 'address': hex(address), 'size': len(lifetime_body), 'exact': True, 'bindings': {k: hex(v) for k, v in lifetime_bindings.items()}})
 assert struct.unpack('<I', pe.get_data(0x80f15c + 4 - pe.OPTIONAL_HEADER.ImageBase, 4))[0] == 0x5c6090
+insert_checks = []
+for prefix, address, expected in [
+        ('?getTarget@InsertDecal@@', 0x41ef90, [('??$create@VSelection@RBX@@', 0x4153b0), ('?front@Selection@RBX@@', 0x413c20), ('??_R0?AVPartInstance@RBX@@', 0x92dd50), ('??_R0?AVSpecialShape@RBX@@', 0x92dd30)]),
+        ('?isEnabled@InsertDecal@@', 0x41f280, [('?isEnabled@EditSelectionVerb@RBX@@', 0x582830), ('?getTarget@InsertDecal@@', 0x41ef90)])]:
+    check_name, check_body, check_refs = next(x for x in match.coff_functions(raw) if x[0].startswith(prefix))
+    check_target, check_targetrefs, _ = match.target('2008-06', '%08x' % address)
+    assert match.exact_match(check_target, check_targetrefs, check_body, check_refs)
+    check_start, check_index = definitions[check_name]
+    check_section = sections[check_index]
+    check_bindings = {}
+    for i in range(check_section[7]):
+        offset, symbol_index, kind = struct.unpack_from('<IIH', raw, check_section[5] + 10*i)
+        offset -= check_start
+        if 0 <= offset < len(check_body) - 3:
+            value = struct.unpack_from('<I', check_target, offset)[0]
+            if kind == 20:
+                value = (address + offset + 4 + struct.unpack_from('<i', check_target, offset)[0]) & 0xffffffff
+            check_bindings[symbols[symbol_index][0]] = value
+    for key, value in expected:
+        assert any(k.startswith(key) and v == value for k, v in check_bindings.items()), (key, check_bindings)
+    insert_checks.append({'symbol': check_name, 'address': hex(address), 'size': len(check_body), 'exact': True, 'bindings': {k: hex(v) for k, v in check_bindings.items()}})
+assert struct.unpack('<I', pe.get_data(0x80f15c + 8 - pe.OPTIONAL_HEADER.ImageBase, 4))[0] == 0x41f280
+assert pe.get_string_at_rva(0x92dd30 + 8 - pe.OPTIONAL_HEADER.ImageBase) == b'.?AVSpecialShape@RBX@@'
+insert_factories = []
+for cls, wrapper, vtable, factory in [('Decal', 0x41e650, 0x80f15c, 0x41e4d0), ('Texture', 0x41e670, 0x817324, 0x41e550)]:
+    for prefix, address in [('?createInstance@Insert' + cls + '@@', wrapper),
+                            ('??$create@V' + cls + '@RBX@@@?$Creatable@VInstance@RBX@@', factory)]:
+        factory_name, factory_body, factory_refs = next(x for x in match.coff_functions(raw) if x[0].startswith(prefix))
+        factory_target, factory_targetrefs, _ = match.target('2008-06', '%08x' % address)
+        assert match.exact_match(factory_target, factory_targetrefs, factory_body, factory_refs), (cls, prefix, len(factory_body), len(factory_target))
+        insert_factories.append({'class': cls, 'symbol': factory_name, 'address': hex(address), 'size': len(factory_body), 'exact': True})
+    assert struct.unpack('<I', pe.get_data(vtable + 20 - pe.OPTIONAL_HEADER.ImageBase, 4))[0] == wrapper
+paste_name,paste_body,paste_refs=next(x for x in match.coff_functions(raw) if x[0].startswith('??0PasteVerb@@'))
+paste_target,paste_targetrefs,_=match.target('2008-06','004134d0');assert match.exact_match(paste_target,paste_targetrefs,paste_body,paste_refs)
+start,index=definitions[paste_name];section=sections[index];paste_edges={}
+for i in range(section[7]):
+    off,sym,kind=struct.unpack_from('<IIH',raw,section[5]+10*i);off-=start
+    if not 0<=off<len(paste_body)-3:continue
+    value=struct.unpack_from('<I',paste_target,off)[0]
+    if kind==20:value=(0x4134d0+off+4+struct.unpack_from('<i',paste_target,off)[0])&0xffffffff
+    paste_edges[symbols[sym][0]]=value
+assert any(k.startswith('??0Verb@RBX@@') and v==0x5833e0 for k,v in paste_edges.items()),paste_edges
+literal_values=[pe.get_string_at_rva(v-pe.OPTIONAL_HEADER.ImageBase) for k,v in paste_edges.items() if k.startswith('??_C@')]
+assert b'Paste' in literal_values and b'PasteInto' in literal_values,literal_values
+paste_enabled_name,paste_enabled_body,paste_enabled_refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?isEnabled@PasteVerb@@'))
+paste_enabled_target,paste_enabled_targetrefs,_=match.target('2008-06','004154a0');assert match.exact_match(paste_enabled_target,paste_enabled_targetrefs,paste_enabled_body,paste_enabled_refs)
+assert struct.unpack('<I',pe.get_data(0x80e934+8-pe.OPTIONAL_HEADER.ImageBase,4))[0]==0x4154a0
+start,index=definitions[paste_enabled_name];section=sections[index];paste_enabled_edges={}
+for i in range(section[7]):
+    off,sym,kind=struct.unpack_from('<IIH',raw,section[5]+10*i);off-=start
+    if not 0<=off<len(paste_enabled_body)-3:continue
+    value=struct.unpack_from('<I',paste_enabled_target,off)[0]
+    if kind==20:value=(0x4154a0+off+4+struct.unpack_from('<i',paste_enabled_target,off)[0])&0xffffffff
+    paste_enabled_edges[symbols[sym][0]]=value
+for token,want in [('RegisterClipboardFormatA',0x802df0),('IsClipboardFormatAvailable',0x802dec),('create@VSelection',0x4153b0),('format',0x96cbf0)]:assert any(token in k and v==want for k,v in paste_enabled_edges.items()),(token,paste_enabled_edges)
+assert pe.get_string_at_rva(0x80e920-pe.OPTIONAL_HEADER.ImageBase)==b'Roblox'
+cut_constructors=[]
+for prefix,address,baseprefix,baseaddr in [('??0CutVerb@@',0x413920,'??0DeleteSelectionVerb@RBX@@',0x413870),('??0DeleteSelectionVerb@RBX@@',0x413870,'??0DeleteBase@RBX@@',0x581010),('??0DeleteBase@RBX@@IAE@PAVVerbContainer',0x581010,'??0EditSelectionVerb@RBX@@',0x580b50)]:
+    name,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06',f'{address:08x}');assert match.exact_match(target,targetrefs,body,refs)
+    start,index=definitions[name];section=sections[index];edges={}
+    for i in range(section[7]):
+        off,sym,kind=struct.unpack_from('<IIH',raw,section[5]+10*i);off-=start
+        if not 0<=off<len(body)-3:continue
+        value=struct.unpack_from('<I',target,off)[0]
+        if kind==20:value=(address+off+4+struct.unpack_from('<i',target,off)[0])&0xffffffff
+        edges[symbols[sym][0]]=value
+    assert any(k.startswith(baseprefix) and v==baseaddr for k,v in edges.items()),edges
+    cut_constructors.append({'address':hex(address),'size':len(body),'bindings':edges})
+edit_name,edit_body,edit_refs=next(x for x in match.coff_functions(raw) if x[0].startswith('??0EditSelectionVerb@RBX@@IAE@PAVVerbContainer'))
+edit_target,edit_targetrefs,_=match.target('2008-06','00580b50');assert match.exact_match(edit_target,edit_targetrefs,edit_body,edit_refs)
+start,index=definitions[edit_name];section=sections[index];edit_edges={}
+for i in range(section[7]):
+    off,sym,kind=struct.unpack_from('<IIH',raw,section[5]+10*i);off-=start
+    if not 0<=off<len(edit_body)-3:continue
+    value=struct.unpack_from('<I',edit_target,off)[0]
+    if kind==20:value=(0x580b50+off+4+struct.unpack_from('<i',edit_target,off)[0])&0xffffffff
+    edit_edges[symbols[sym][0]]=value
+for token,want in [('??0Verb@RBX@@',0x5833e0),('create@VWorkspace',0x490af0),('shared_from@VWorkspace',0x618a40)]:assert any(token in k and v==want for k,v in edit_edges.items()),(token,edit_edges)
+cut_action_name,cut_action_body,cut_action_refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?doIt@CutVerb@@'))
+cut_action_target,cut_action_targetrefs,_=match.target('2008-06','00413490');assert match.exact_match(cut_action_target,cut_action_targetrefs,cut_action_body,cut_action_refs)
+assert struct.unpack('<I',pe.get_data(0x80e990+16-pe.OPTIONAL_HEADER.ImageBase,4))[0]==0x413490
+start,index=definitions[cut_action_name];section=sections[index];cut_action_edges={}
+for i in range(section[7]):
+    off,sym,kind=struct.unpack_from('<IIH',raw,section[5]+10*i);off-=start
+    if not 0<=off<len(cut_action_body)-3:continue
+    value=struct.unpack_from('<I',cut_action_target,off)[0]
+    if kind==20:value=(0x413490+off+4+struct.unpack_from('<i',cut_action_target,off)[0])&0xffffffff
+    cut_action_edges[symbols[sym][0]]=value
+for token,want in [('getVerb@VerbContainer',0x583380),('doIt@DeleteBase',0x581090)]:assert any(token in k and v==want for k,v in cut_action_edges.items()),(token,cut_action_edges)
+assert pe.get_string_at_rva(0x80e928-pe.OPTIONAL_HEADER.ImageBase)==b'Copy'
+simple_constructors=[]
+for cls,address,label,base_target in [('InsertObject',0x41f2e0,'Insert Object',0x57e330),('InsertService',0x41f310,'Insert Service',0x57e330),('CopyVerb',0x413530,'Copy',0x57e730)]:
+    ctor,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith('??0'+cls+'@@'))
+    target,targetrefs,_=match.target('2008-06',f'{address:08x}');assert match.exact_match(target,targetrefs,body,refs),cls
+    start,index=definitions[ctor];section=sections[index];edges={}
+    for i in range(section[7]):
+        off,sym,kind=struct.unpack_from('<IIH',raw,section[5]+10*i);off-=start
+        if not 0<=off<len(body)-3:continue
+        value=struct.unpack_from('<I',target,off)[0]
+        if kind==20:value=(address+off+4+struct.unpack_from('<i',target,off)[0])&0xffffffff
+        edges[symbols[sym][0]]=value
+    assert any(k.startswith('??0'+('EditSelectionVerb' if cls=='CopyVerb' else 'RunStateVerb')) and v==base_target for k,v in edges.items()),edges
+    literal=next(v for k,v in edges.items() if k.startswith('??_C@'));assert pe.get_string_at_rva(literal-pe.OPTIONAL_HEADER.ImageBase)==label.encode()
+    vt=next(v for k,v in edges.items() if k.startswith('??_7'+cls+'@@'));readptr=lambda a:struct.unpack('<I',pe.get_data(a-pe.OPTIONAL_HEADER.ImageBase,4))[0]
+    assert pe.get_string_at_rva(readptr(readptr(vt-4)+12)+8-pe.OPTIONAL_HEADER.ImageBase)==('.?AV'+cls+'@@').encode()
+    simple_constructors.append({'class':cls,'address':hex(address),'size':len(body),'vtable':hex(vt),'base':hex(base_target),'label':label})
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {'source_sha256': sha(source), 'layout_sha256': sha(layout), 'observer_sha256': sha(Path(__file__)),
            'object_sha256': sha(obj), 'flags': flags, 'address': '00451b60', 'size': len(body), 'targets': found,
@@ -238,7 +344,11 @@ receipt = {'source_sha256': sha(source), 'layout_sha256': sha(layout), 'observer
            'camera_selection': {'type': 'RBX::FilteredSelection<RBX::PVInstance>', 'factory': '0x57f710', 'constructor': '0x57eeb0', 'vtable': '0x830944', 'service_client': '0x581d80', 'type_descriptor': hex(selection_type)},
            'camera_center_enabled': {'symbol': center_name, 'address': '00582300', 'size': len(center_body), 'exact': True, 'vtable_slot': '0x817bb8', 'calls': {k: hex(v) for k, v in center_calls.items()}},
            'camera_selection_client': {'symbol': client_name, 'address': '00581d80', 'size': len(client_body), 'exact': True},
+           'edit_container_ctor':{'address':'00580b50','size':len(edit_body),'bindings':edit_edges},'cut_action':{'address':'00413490','size':len(cut_action_body),'bindings':cut_action_edges},'cut_constructors':cut_constructors,'paste_enabled':{'address':'004154a0','size':len(paste_enabled_body),'bindings':paste_enabled_edges},'paste_constructor':{'address':'004134d0','size':len(paste_body),'bindings':paste_edges},'simple_constructors':simple_constructors,
            'insert_decal_lifetime': insert_lifetime,
+           'insert_decal_checks': insert_checks,
+           'insert_decal_factories': insert_factories,
            'scope': 'Inactive trial. Referenced command vtables, constructors, class layouts, workspace factory, exception handling and ownership remain unproven.'}
 (root / 'work/2008-06/shared-layouts/document-initialize-trial.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS ContentProvider initializeCommands and selected targets')
+

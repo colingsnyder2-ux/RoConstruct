@@ -1,6 +1,6 @@
-// from server: 34% by atomic.potato
+// from server: 36% by Intel
 struct WedgeBuilder {
-    void sub_622530(int, int, int, int);
+    void build(int, int, int, int);
     void sub_621FE0(int, int, int, int);
     void sub_622010(int, int, int, int);
     void sub_622040(int, int, int, int);
@@ -13,26 +13,38 @@ struct WedgeBuilder {
 extern float g_b5abb8;
 extern float g_b4c440;
 
-void WedgeBuilder::sub_622530(int a, int b, int c, int d)
+void WedgeBuilder::build(int a, int b, int c, int d)
 {
     switch (a) {
-    case 0:
-        sub_621FE0(*(int*)&g_b5abb8, *(int*)&g_b5abb8, 1, 1);
+    case 0: {
+        float val = g_b5abb8;
+        sub_621FE0(c, *(int*)&val, 1, 1);
         break;
-    case 1:
-        sub_622010(*(int*)&g_b5abb8, 1, 1, 1);
+    }
+    case 1: {
+        float val = *(float*)d;
+        sub_622010(c, 1, *(int*)&val, 1);
         break;
-    case 2:
-        sub_622040(1, 1, 1, 1);
+    }
+    case 2: {
+        sub_61F290(c, 1, 1, 0);
+        sub_622040(0, 0, 0, 0);
         break;
-    case 3:
-        sub_622080(*(int*)&g_b4c440, 1, 1, 1);
+    }
+    case 3: {
+        float val = g_b4c440;
+        sub_622080(c, *(int*)&val, 1, 1);
         break;
-    case 4:
-        sub_6220B0(1, 1, 1, 1);
+    }
+    case 4: {
+        sub_61F290(c, 1, 1, 0);
+        sub_6220B0(0, 0, 0, 0);
         break;
-    case 5:
-        sub_622500(*(int*)&g_b5abb8, 1, 1, 1);
+    }
+    case 5: {
+        float val = *(float*)d;
+        sub_622500(c, 1, *(int*)&val, 1);
         break;
+    }
     }
 }

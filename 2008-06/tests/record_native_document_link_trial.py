@@ -45,7 +45,7 @@ if native_instance or filtered_donor:
     filtered = out/'RbxgsAppWithoutInstance.lib'
     remove = ['/REMOVE:Instance.obj']
     if provider_trial:
-        remove += ['/REMOVE:glue_content_provider.obj', '/REMOVE:MouseCommand.obj', '/REMOVE:Primitive.obj', '/REMOVE:Workspace.obj']
+        remove += ['/REMOVE:glue_content_provider.obj', '/REMOVE:MouseCommand.obj', '/REMOVE:Primitive.obj', '/REMOVE:Workspace.obj', '/REMOVE:FaceInstance.obj', '/REMOVE:Decal.obj']
     filter_code, filter_log = rebuild.run(rebuild.toolchain(), 'lib',
         ['/nologo'] + remove + ['/OUT:' + str(filtered), str(archive)], out)
     (out/'filter.log').write_text(filter_log)
@@ -73,6 +73,8 @@ objects.append(snap/'native-layouts'/'NativeFilteredSelectionService.obj')
 objects.append(snap/'native-layouts'/'NativeFilteredSelectionFactory.obj')
 objects.append(snap/'native-layouts'/'NativeCameraCenterAction.obj')
 objects.append(snap/'native-layouts/zoom-extents-preprocess/NativeCameraZoomExtentsProfile.obj')
+objects += [snap/'native-layouts'/'NativeFaceInstanceLifetime.obj', snap/'native-layouts'/'NativeDecalLifetime.obj']
+objects.append(snap/'native-layouts'/'NativeDecalBases.obj')
 objects.append(snap/'native-layouts'/'NativeRotateAxisTrial.obj')
 objects.append(snap/'native-layouts/execscript-probe/NativeExecScriptProfile.obj')
 objects.append(snap/'native-layouts/execscript-helper-probe/CWorkspaceExecScriptHelperProfile.obj')

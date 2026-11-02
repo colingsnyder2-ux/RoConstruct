@@ -6,6 +6,8 @@
 #include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
 #include "Network/Players.h"
+#include "v8datamodel/Decal.h"
+#include "v8datamodel/custommesh.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Selection.h"
 #include "util/Sound.h"
@@ -29,6 +31,7 @@ bool ReportAbuseVerb::isEnabled() const {
 #include "NativeExitCommand.h"
 namespace RBX {
 inline const Name& Verb::getName() const { return name; }
+inline VerbContainer* Verb::getContainer() const { return container; }
 inline const G3D::Rect2D& RootInstance::getViewPort() { return viewPort; }
 void recordCameraHistory(const char*, const Instance*);
 }
@@ -110,49 +113,67 @@ bool CameraZoomOutCommand::isEnabled() const {
 class ClipboardObject {};
 class CutVerb : public DeleteSelectionVerb,public ClipboardObject {
 public:
-    CutVerb(DataModel*);
+    __declspec(noinline) CutVerb(DataModel*);
     virtual void doIt(IDataState*);
 };
+namespace RBX { template<> boost::shared_ptr<Workspace> shared_from<Workspace>(Workspace*);
+EditSelectionVerb::EditSelectionVerb(VerbContainer* container,std::string name,DataModel* dm)
+    : Verb(container,name), workspace(shared_from(dm ? dm->create<Workspace>() : NULL)), selection(dm), dataModel(dm) {}
+DeleteBase::DeleteBase(VerbContainer* container,DataModel* dm,std::string name) : EditSelectionVerb(container,name,dm), rewardHopper(false) {}
+DeleteSelectionVerb::DeleteSelectionVerb(VerbContainer* container,DataModel* dm,std::string name) : DeleteBase(container,dm,name) {} }
+CutVerb::CutVerb(DataModel* dm) : DeleteSelectionVerb(dm,dm,"Cut") {}
+void CutVerb::doIt(IDataState* state) { getContainer()->getVerb("Copy")->doIt(state); DeleteBase::doIt(state); }
 class CopyVerb : public EditSelectionVerb,public ClipboardObject {
 public:
-    CopyVerb(DataModel*);
+    __declspec(noinline) CopyVerb(DataModel*);
     virtual void doIt(IDataState*);
 };
+CopyVerb::CopyVerb(DataModel* dm) : EditSelectionVerb("Copy", dm) {}
 class PasteVerb : public Verb,public ClipboardObject {
     DataModel* dataModel;
     const bool pasteInto;
 public:
-    PasteVerb(DataModel*,bool);
+    __declspec(noinline) PasteVerb(DataModel*,bool);
     virtual bool isEnabled() const;
     virtual void doIt(IDataState*);
 };
+static UINT getClipboardFormat() { static UINT format = ::RegisterClipboardFormatA("Roblox"); return format; }
+bool PasteVerb::isEnabled() const {
+    if (::IsClipboardFormatAvailable(getClipboardFormat()) != 1) return false;
+    if (!pasteInto) return true;
+    Selection* selected = ServiceProvider::create<Selection>(static_cast<const ServiceProvider*>(dataModel));
+    return selected->size() == 1;
+}
+PasteVerb::PasteVerb(DataModel* dm, bool into) : Verb(dm, into ? "PasteInto" : "Paste"), dataModel(dm), pasteInto(into) {}
+namespace RBX { class Decal; }
 class InsertDecal : public EditSelectionVerb {
+    Instance* getTarget() const;
 public:
     __declspec(noinline) InsertDecal(DataModel*,const char*);
     virtual bool isEnabled() const;
     virtual void doIt(IDataState*);
 protected:
-    // Native slot14 creates a Texture/Decal via genuine shared_ptr factory;
-    // 0041e670 returns two words through hidden result, ret4, primary Instance0.
-    // Expose that actual value ABI through the genuine common Instance base.
-    virtual boost::shared_ptr<Instance> createInstance();
+    // 0041f143 calls Decal::setTexture on this factory result.
+    virtual boost::shared_ptr<Decal> createInstance();
 };
 class InsertTexture : public InsertDecal {
 public:
     InsertTexture(DataModel* dm) : InsertDecal(dm,"InsertTexture") {}
 protected:
-    virtual boost::shared_ptr<Instance> createInstance();
+    virtual boost::shared_ptr<Decal> createInstance();
 };
 class InsertObject : public RunStateVerb {
 public:
-    InsertObject(DataModel*);
+    __declspec(noinline) InsertObject(DataModel*);
     virtual void doIt(IDataState*);
 };
+InsertObject::InsertObject(DataModel* dm) : RunStateVerb("Insert Object", dm) {}
 class InsertService : public RunStateVerb {
 public:
-    InsertService(DataModel*);
+    __declspec(noinline) InsertService(DataModel*);
     virtual void doIt(IDataState*);
 };
+InsertService::InsertService(DataModel* dm) : RunStateVerb("Insert Service", dm) {}
 typedef char native_doc_DataModel_Lock_size[(sizeof(DataModel::Lock)==12)?1:-1];
 typedef char native_doc_CameraVerb_size[(sizeof(CameraVerb)==28)?1:-1];
 typedef char native_doc_ReportAbuseVerb_size[(sizeof(ReportAbuseVerb)==16)?1:-1];
@@ -232,3 +253,21 @@ void CRobloxDoc::initializeCommands() {
 
 InsertDecal::InsertDecal(DataModel* dm, const char* name)
     : EditSelectionVerb(std::string(name), dm) {}
+boost::shared_ptr<Decal> InsertDecal::createInstance() {
+    return Creatable<Instance>::create<Decal>();
+}
+boost::shared_ptr<Decal> InsertTexture::createInstance() {
+    return Creatable<Instance>::create<Texture>();
+}
+Instance* InsertDecal::getTarget() const {
+    Selection* selected = ServiceProvider::create<Selection>(dataModel);
+    if (selected->size() == 1) {
+        Instance* item = selected->front().get();
+        if (dynamic_cast<PartInstance*>(item)) return item;
+        if (dynamic_cast<SpecialShape*>(item)) return item;
+    }
+    return NULL;
+}
+bool InsertDecal::isEnabled() const {
+    return EditSelectionVerb::isEnabled() && getTarget() != NULL;
+}

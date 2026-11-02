@@ -45,6 +45,152 @@ for cls, address, label in [('GroupSelectionVerb',0x57e7e0,'Group'), ('WeldSelec
     type_descriptor = readptr(readptr(vtable-4)+12)
     assert pe.get_string_at_rva(type_descriptor+8-image) == ('.?AV'+cls+'@RBX@@').encode('ascii')
     rows.append({'class':cls,'address':hex(address),'size':len(body),'label':label,'literal':hex(literal),'vtable':hex(vtable),'type_descriptor':hex(type_descriptor)})
+property_ctors = []
+for cls, address, label, prop in [('AnchorVerb',0x5c6010,'AnchorVerb','Anchored'), ('TranslucentVerb',0x5c5300,'TranslucentVerb','Transparent'), ('CanCollideVerb',0x5c5380,'CanCollideVerb','CanCollide')]:
+    name, body, refs = next(x for x in functions if x[0].startswith('??0'+cls+'@RBX@@'))
+    target, targetrefs, _ = match.target('2008-06', f'{address:08x}')
+    assert match.exact_match(target, targetrefs, body, refs), cls
+    start, index = definitions[name]
+    section = sections[index]
+    edges = {}
+    for i in range(section[7]):
+        offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+        offset -= start
+        if not 0 <= offset < len(body)-3: continue
+        value = struct.unpack_from('<I', target, offset)[0]
+        if kind == 20: value = (address + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+        edges[symbols[symbol][0]] = value
+    vtable = next(v for k,v in edges.items() if k.startswith('??_7'+cls+'@RBX@@'))
+    desc = readptr(readptr(vtable-4)+12)
+    assert pe.get_string_at_rva(desc+8-image) == ('.?AV'+cls+'@RBX@@').encode()
+    literals = [pe.get_string_at_rva(v-image) for k,v in edges.items() if k.startswith('??_C@')]
+    assert label.encode() in literals and prop.encode() in literals, (cls, literals)
+    base = [v for k,v in edges.items() if k.startswith('??0BoolPropertyVerb@RBX@@')]
+    assert len(base) == 1, (cls, edges)
+    property_ctors.append({'class':cls,'address':hex(address),'size':len(body),'vtable':hex(vtable),'base':hex(base[0]),'labels':[label,prop]})
+assert len({x['base'] for x in property_ctors}) == 1
+name, body, refs = next(x for x in functions if x[0].startswith('??0BoolPropertyVerb@RBX@@'))
+target, targetrefs, _ = match.target('2008-06', '0057f530')
+assert match.exact_match(target, targetrefs, body, refs)
+start, index = definitions[name]
+section = sections[index]
+property_base_edges = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    offset -= start
+    if not 0 <= offset < len(body)-3: continue
+    value = struct.unpack_from('<I', target, offset)[0]
+    if kind == 20: value = (0x57f530 + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+    property_base_edges[symbols[symbol][0]] = value
+assert any(k.startswith('??0EditSelectionVerb@RBX@@') and v == 0x57e730 for k,v in property_base_edges.items()), property_base_edges
+assert any('declare@Name@RBX@@' in k for k in property_base_edges), property_base_edges
+property_vtable = next(v for k,v in property_base_edges.items() if k.startswith('??_7BoolPropertyVerb@RBX@@'))
+property_desc = readptr(readptr(property_vtable-4)+12)
+assert pe.get_string_at_rva(property_desc+8-image) == b'.?AVBoolPropertyVerb@RBX@@'
+name, body, refs = next(x for x in functions if x[0].startswith('?isEnabled@TrackCameraCommand@RBX@@'))
+target, targetrefs, _ = match.target('2008-06', '00582e50')
+assert match.exact_match(target, targetrefs, body, refs)
+assert readptr(0x830848 + 8) == 0x582e50
+start, index = definitions[name]; section = sections[index]; track_edges = {}
+for i in range(section[7]):
+    offset,symbol,kind = struct.unpack_from('<IIH',raw,section[5]+i*10); offset-=start
+    if kind == 20 and 0 <= offset < len(body)-3:
+        track_edges[symbols[symbol][0]] = (0x582e50+offset+4+struct.unpack_from('<i',target,offset)[0]) & 0xffffffff
+assert any('createService' in k and v == 0x581cc0 for k,v in track_edges.items()), track_edges
+assert any('create@VSelection' in k and v == 0x4153b0 for k,v in track_edges.items()), track_edges
+name,body,refs=next(x for x in functions if x[0].startswith('?isEnabled@AttachCameraCommand@RBX@@'))
+target,targetrefs,_=match.target('2008-06','00582d70');assert match.exact_match(target,targetrefs,body,refs)
+assert readptr(0x830830+8)==0x582d70
+start,index=definitions[name];section=sections[index];attach_edges={}
+for i in range(section[7]):
+    offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+    if kind==20 and 0<=offset<len(body)-3:attach_edges[symbols[symbol][0]]=(0x582d70+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+assert any('createService' in k and v==0x581cc0 for k,v in attach_edges.items()),attach_edges
+assert any('createService' in k and v==0x581d80 for k,v in attach_edges.items()),attach_edges
+follow_enabled = []
+for cls,vt in [('FollowCameraCommand',0x830860),('WatchCameraCommand',0x830878)]:
+    name, body, refs = next(x for x in functions if x[0].startswith('?isEnabled@'+cls+'@RBX@@'))
+    target, targetrefs, _ = match.target('2008-06', '00582ea0')
+    assert match.exact_match(target,targetrefs,body,refs), cls
+    assert readptr(vt+8) == 0x582ea0
+    start,index=definitions[name];section=sections[index];edges={}
+    for i in range(section[7]):
+        offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+        if kind==20 and 0<=offset<len(body)-3:edges[symbols[symbol][0]]=(0x582ea0+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+    assert any('createService' in k and v==0x581cc0 for k,v in edges.items()),edges
+    assert any('create@V?$FilteredSelection' in k and v==0x5805d0 for k,v in edges.items()),edges
+    follow_enabled.append({'class':cls,'vtable':hex(vt),'size':len(body),'calls':edges})
+selection_camera_actions=[]
+for cls,address,vt in [('AttachCameraCommand',0x581360,0x830830),('WatchCameraCommand',0x5815a0,0x830878),('TrackCameraCommand',0x5813f0,0x830848),('FollowCameraCommand',0x581510,0x830860)]:
+    name,body,refs=next(x for x in functions if x[0].startswith('?doIt@'+cls+'@RBX@@'))
+    target,targetrefs,_=match.target('2008-06',f'{address:08x}');assert match.exact_match(target,targetrefs,body,refs)
+    assert readptr(vt+16)==address
+    start,index=definitions[name];section=sections[index];calls={}
+    for i in range(section[7]):
+        offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+        if kind==20 and 0<=offset<len(body)-3:calls[symbols[symbol][0]]=(address+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+    assert any(('create@VSelection' in k and v==0x4153b0) if cls=='TrackCameraCommand' else ('create@V?$FilteredSelection' in k and v==0x5805d0) for k,v in calls.items()),calls
+    assert any('recordCameraHistory' in k and v==0x58c5c0 for k,v in calls.items()),calls
+    selection_camera_actions.append({'class':cls,'address':hex(address),'size':len(body),'vtable':hex(vt),'calls':calls})
+selection_enabled=[]
+for cls,address,vt in [('WeldSelectionVerb',0x582940,0x8307ac),('SnapSelectionVerb',0x582940,0x8307c4),('DuplicateSelectionVerb',0x580fe0,0x8307f4),('GroupSelectionVerb',0x582860,0x830794)]:
+    name,body,refs=next(x for x in functions if x[0].startswith('?isEnabled@'+cls+'@RBX@@'))
+    target,targetrefs,_=match.target('2008-06',f'{address:08x}');assert match.exact_match(target,targetrefs,body,refs),cls
+    assert readptr(vt+8)==address
+    start,index=definitions[name];section=sections[index];calls={}
+    for i in range(section[7]):
+        offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+        if kind==20 and 0<=offset<len(body)-3:calls[symbols[symbol][0]]=(address+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+    if cls != 'DuplicateSelectionVerb': assert any('createService' in k and v==0x581cc0 for k,v in calls.items()),calls
+    expected=0x581cc0 if cls=='GroupSelectionVerb' else 0x4153b0
+    assert any(('createService' in k if cls=='GroupSelectionVerb' else 'create@VSelection' in k) and v==expected for k,v in calls.items()),calls
+    selection_enabled.append({'class':cls,'address':hex(address),'size':len(body),'vtable':hex(vt),'calls':calls})
+ungroup_rows=[]
+for prefix,address in [('?isEnabled@UngroupSelectionVerb',0x582b50),('?hasChildren@RBX@@',0x57e110),('?findFirst@?$FilteredSelection',0x57edb0)]:
+    name,body,refs=next(x for x in functions if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06',f'{address:08x}')
+    assert match.exact_match(target,targetrefs,body,refs),prefix
+    start,index=definitions[name];section=sections[index];edges={}
+    for i in range(section[7]):
+        offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+        if not 0<=offset<len(body)-3:continue
+        value=struct.unpack_from('<I',target,offset)[0]
+        if kind==20:value=(address+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+        edges[symbols[symbol][0]]=value
+    if address==0x582b50:
+        assert readptr(0x8307dc+8)==address
+        for token,expected in [('createService',0x581cc0),('create@V?$FilteredSelection',0x5806c0),('findFirst',0x57edb0),('hasChildren',0x57e110)]:
+            assert any(token in k and v==expected for k,v in edges.items()),(token,edges)
+    ungroup_rows.append({'address':hex(address),'size':len(body),'edges':edges})
+controller_rows=[]
+for prefix,address in [('?isEnabled@ControllerCommand',0x582ef0),('?controllable@RBX@@',0x57d550),('?findFirst@?$FilteredSelection@VPVInstance',0x57edb0)]:
+    name,body,refs=next(x for x in functions if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06',f'{address:08x}');assert match.exact_match(target,targetrefs,body,refs),prefix
+    start,index=definitions[name];section=sections[index];edges={}
+    for i in range(section[7]):
+        offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+        if not 0<=offset<len(body)-3:continue
+        value=struct.unpack_from('<I',target,offset)[0]
+        if kind==20:value=(address+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+        edges[symbols[symbol][0]]=value
+    if address==0x582ef0:
+        assert readptr(0x830ad4+8)==address and readptr(0x830af8+8)==address
+        for token,expected in [('createService',0x581cc0),('create@V?$FilteredSelection',0x5805d0),('findFirst',0x57edb0),('controllable',0x57d550)]:assert any(token in k and v==expected for k,v in edges.items()),(token,edges)
+    controller_rows.append({'address':hex(address),'size':len(body),'edges':edges})
+controller_actions=[]
+for prefix,address in [('?doIt@PrimaryControllerCommand',0x581920),('?doIt@SecondaryControllerCommand',0x581960),('?applyController@ControllerCommand',0x581890),('?findDifferent@?$FilteredSelection@VPVInstance',0x57ecb0),('?setController@RBX@@',0x57d540),('??$for_each@V?$_Vector_const_iterator@PAVPVInstance',0x57ed70)]:
+    name,body,refs=next(x for x in functions if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06',f'{address:08x}');assert match.exact_match(target,targetrefs,body,refs),prefix
+    start,index=definitions[name];section=sections[index];edges={}
+    for i in range(section[7]):
+        offset,symbol,kind=struct.unpack_from('<IIH',raw,section[5]+i*10);offset-=start
+        if not 0<=offset<len(body)-3:continue
+        value=struct.unpack_from('<I',target,offset)[0]
+        if kind==20:value=(address+offset+4+struct.unpack_from('<i',target,offset)[0])&0xffffffff
+        edges[symbols[symbol][0]]=value
+    expected=[]
+    if address in (0x581920,0x581960): expected=[('applyController',0x581890),('recordCameraHistory',0x58c5c0)];assert readptr((0x830ad4 if address==0x581920 else 0x830af8)+16)==address
+    if address==0x581890:expected=[('create@V?$FilteredSelection',0x5805d0),('findDifferent',0x57ecb0),('for_each',0x57ed70),('setController',0x57d540)]
+    if address==0x57d540:expected=[('setControllerType',0x6099c0)]
+    for token,want in expected:assert any(token in k and v==want for k,v in edges.items()),(token,edges)
+    controller_actions.append({'address':hex(address),'size':len(body),'edges':edges})
 camera_checks = []
 for cls, address, vtable in [('AttachCameraCommand', 0x57dcb0, 0x830830), ('TrackCameraCommand', 0x57dce0, 0x830848), ('FollowCameraCommand', 0x57dd10, 0x830860), ('WatchCameraCommand', 0x57dd40, 0x830878)]:
     name, body, refs = next(x for x in functions if x[0].startswith('?isChecked@'+cls+'@RBX@@'))
@@ -52,7 +198,103 @@ for cls, address, vtable in [('AttachCameraCommand', 0x57dcb0, 0x830830), ('Trac
     assert match.exact_match(target, targetrefs, body, refs)
     assert readptr(vtable + 12) == address
     camera_checks.append({'class': cls, 'address': hex(address), 'size': len(body), 'vtable_slot': hex(vtable + 12), 'exact': True})
+name, body, refs = next(x for x in functions if x[0].startswith('?isEnabled@RunCommand@RBX@@'))
+target, targetrefs, _ = match.target('2008-06', '00582700')
+assert match.exact_match(target, targetrefs, body, refs), ('RunCommand::isEnabled', len(body))
+assert readptr(0x83905c + 8) == 0x582700
+run_type = readptr(readptr(0x83905c - 4) + 12)
+assert pe.get_string_at_rva(run_type + 8 - image) == b'.?AVRunCommand@RBX@@'
+start, index = definitions[name]
+section = sections[index]
+run_calls = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    offset -= start
+    if kind == 20 and 0 <= offset < len(body)-3:
+        run_calls[symbols[symbol][0]] = (0x582700 + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+assert any('createService' in k and v == 0x581c00 for k, v in run_calls.items()), run_calls
+assert any('clientIsPresent' in k and v == 0x495e60 for k, v in run_calls.items()), run_calls
+name, body, refs = next(x for x in functions if x[0].startswith('?isEnabled@ResetCommand@RBX@@'))
+target, targetrefs, _ = match.target('2008-06', '005827c0')
+assert match.exact_match(target, targetrefs, body, refs), ('ResetCommand::isEnabled', len(body))
+assert readptr(0x83908c + 8) == 0x5827c0
+reset_type = readptr(readptr(0x83908c - 4) + 12)
+assert pe.get_string_at_rva(reset_type + 8 - image) == b'.?AVResetCommand@RBX@@'
+start, index = definitions[name]
+section = sections[index]
+reset_calls = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    offset -= start
+    if kind == 20 and 0 <= offset < len(body)-3:
+        reset_calls[symbols[symbol][0]] = (0x5827c0 + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+assert any('createService' in k and v == 0x581c00 for k, v in reset_calls.items()), reset_calls
+assert any('findLocalPlayer' in k and v == 0x49ac80 for k, v in reset_calls.items()), reset_calls
+name, body, refs = next(x for x in functions if x[0].startswith('?isEnabled@StopCommand@RBX@@'))
+target, targetrefs, _ = match.target('2008-06', '00582770')
+assert match.exact_match(target, targetrefs, body, refs), ('StopCommand::isEnabled', len(body))
+assert readptr(0x839074 + 8) == 0x582770
+stop_type = readptr(readptr(0x839074 - 4) + 12)
+assert pe.get_string_at_rva(stop_type + 8 - image) == b'.?AVStopCommand@RBX@@'
+start, index = definitions[name]
+section = sections[index]
+stop_calls = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    offset -= start
+    if kind == 20 and 0 <= offset < len(body)-3:
+        stop_calls[symbols[symbol][0]] = (0x582770 + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+assert any('createService' in k and v == 0x581c00 for k, v in stop_calls.items()), stop_calls
+name, body, refs = next(x for x in functions if x[0].startswith('?isEnabled@FirstPersonCommand@RBX@@'))
+target, targetrefs, _ = match.target('2008-06', '0057d9c0')
+assert match.exact_match(target, targetrefs, body, refs)
+assert readptr(0x830600 + 8) == 0x57d9c0
+first_type = readptr(readptr(0x830600 - 4) + 12)
+assert pe.get_string_at_rva(first_type+8-image) == b'.?AVFirstPersonCommand@RBX@@'
+start, index = definitions[name]
+section = sections[index]
+first_calls = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    offset -= start
+    if kind == 20 and 0 <= offset < len(body)-3:
+        first_calls[symbols[symbol][0]] = (0x57d9c0 + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+assert any('isFirstPersonCamera' in k and v == 0x5ccb00 for k,v in first_calls.items()), first_calls
+actions = []
+for cls, address, vtable in [('RunCommand', 0x582740, 0x83905c), ('StopCommand', 0x582790, 0x839074), ('ResetCommand', 0x582800, 0x83908c)]:
+    name, action, refs = next(x for x in functions if x[0].startswith('?doIt@'+cls+'@RBX@@'))
+    target, targetrefs, _ = match.target('2008-06', f'{address:08x}')
+    assert match.exact_match(target, targetrefs, action, refs), (cls, len(action))
+    assert readptr(vtable + 16) == address
+    start, index = definitions[name]
+    section = sections[index]
+    calls = {}
+    for i in range(section[7]):
+        offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+        offset -= start
+        if kind == 20 and 0 <= offset < len(action)-3:
+            calls[symbols[symbol][0]] = (address + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+    assert any('checkRunPermissions' in k and v == 0x57d250 for k,v in calls.items()), calls
+    assert any('createService' in k and v == 0x581c00 for k,v in calls.items()), calls
+    assert any('setRunState' in k and v == 0x554da0 for k,v in calls.items()), calls
+    actions.append({'class':cls,'address':hex(address),'size':len(action),'vtable':hex(vtable),'calls':calls})
+name, helper, refs = next(x for x in functions if x[0].startswith('?checkRunPermissions@RBX@@'))
+target, targetrefs, _ = match.target('2008-06', '0057d250')
+assert match.exact_match(target, targetrefs, helper, refs), ('checkRunPermissions', len(helper))
+start, index = definitions[name]
+section = sections[index]
+helper_edges = {}
+for i in range(section[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', raw, section[5] + 10*i)
+    offset -= start
+    if not 0 <= offset < len(helper)-3: continue
+    value = struct.unpack_from('<I', target, offset)[0]
+    if kind == 20: value = (0x57d250 + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+    helper_edges[symbols[symbol][0]] = value
+assert any('clientIsPresent' in k and v == 0x495e60 for k,v in helper_edges.items()), helper_edges
+assert any('serverIsPresent' in k and v == 0x495e70 for k,v in helper_edges.items()), helper_edges
+assert pe.get_string_at_rva(0x8305e0-image) == b'Insufficinet permissions'
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-receipt = {'source_sha256':sha(source),'header_sha256':sha(header),'observer_sha256':sha(Path(__file__)),'object_sha256':sha(obj),'flags':flags,'methods':rows,'camera_checks':camera_checks,'scope':'Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven.'}
+receipt = {'source_sha256':sha(source),'header_sha256':sha(header),'observer_sha256':sha(Path(__file__)),'object_sha256':sha(obj),'flags':flags,'methods':rows,'property_ctors':property_ctors,'property_base_ctor':{'address':'0x57f530','size':113,'vtable':hex(property_vtable),'edges':property_base_edges},'attach_enabled':{'address':'00582d70','size':221,'vtable':'0x830830','calls':attach_edges},'follow_enabled':follow_enabled,'track_enabled':{'address':'00582e50','size':77,'vtable':'0x830848','calls':track_edges},'selection_camera_actions':selection_camera_actions,'selection_enabled':selection_enabled,'ungroup_checks':ungroup_rows,'controller_checks':controller_rows,'controller_actions':controller_actions,'camera_checks':camera_checks,'first_person_enabled':{'address':'0x57d9c0','size':33,'vtable':'0x830600','calls':first_calls},'run_actions':actions,'permission_helper':{'address':'0x57d250','size':len(helper),'edges':helper_edges},'reset_enabled':{'address':'0x5827c0','size':56,'exact':True,'vtable':'0x83908c','calls':reset_calls},'run_enabled':{'address':'0x582700','size':56,'exact':True,'vtable':'0x83905c','calls':run_calls},'stop_enabled':{'address':'0x582770','size':len(body),'exact':True,'vtable':'0x839074','calls':stop_calls},'scope':'Inactive trials. Original RTTI names and camera check slots verified; full class lifetime and runtime ABI remain unproven.'}
 (root / 'work/2008-06/shared-layouts/selection-command-constructors-trial.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print('PASS ten selection-command constructors, labels and RTTI')
