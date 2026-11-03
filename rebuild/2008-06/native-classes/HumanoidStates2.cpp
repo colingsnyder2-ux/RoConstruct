@@ -1,7 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // Inactive native Freefall/Flying/Jumping/GettingUp methods (2008-06). Not in any build list.
-// Bodies that read the stored humanoid through the out-of-line getter 00793d50 need the
-// proposed HumanoidState::getHumanoid() declaration (NATIVE_HUMANOID_STATE_PENDING).
+// Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid).
 #include "humanoid/HumanoidStates2.h"
 #include "humanoid/Humanoid.h"
 #include "v8datamodel/PartInstance.h"
@@ -29,7 +28,6 @@ Freefall::Freefall(Humanoid* humanoid)
     }
 }
 
-#ifdef NATIVE_HUMANOID_STATE_PENDING
 Freefall::~Freefall()
 {
     Humanoid::event_FreeFalling.fire(getHumanoid(), false);
@@ -42,7 +40,6 @@ Freefall::~Freefall()
         owner->getTorso()->setFriction(torsoFriction);
     }
 }
-#endif
 
 void Freefall::onStep(float dt, Controller* controller)
 {
@@ -68,7 +65,6 @@ Jumping::Jumping(Humanoid* humanoid)
     Humanoid::event_Jumping.fire(humanoid, true);
 }
 
-#ifdef NATIVE_HUMANOID_STATE_PENDING
 Jumping::~Jumping()
 {
     Humanoid::event_Jumping.fire(getHumanoid(), false);
@@ -84,7 +80,6 @@ GettingUp::~GettingUp()
 {
     Humanoid::event_GettingUp.fire(getHumanoid(), false);
 }
-#endif
 
 }
 template<> const Name& Named<HUMAN::Balancing, HUMAN::sFreefall>::getName() const { return Name::declare<HUMAN::sFreefall>(); }

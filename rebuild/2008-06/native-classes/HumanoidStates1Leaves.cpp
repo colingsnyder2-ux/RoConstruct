@@ -5,6 +5,7 @@
 // so RunningBase's destructor body is not visible here (it is in HumanoidStates1.cpp, where the
 // RunningBase deleting destructor 00666520 inlines it).
 #include "humanoid/HumanoidStates1.h"
+#include "humanoid/Humanoid.h"
 
 namespace RBX {
 namespace HUMAN {
@@ -41,11 +42,8 @@ template<> const Name& Named<HUMAN::RunningBase, HUMAN::sLanded>::getName() cons
 template<> const Name& Named<HUMAN::RunningBase, HUMAN::sClimbing>::getName() const { return Name::declare<HUMAN::sClimbing>(); }
 }
 
-#ifdef NATIVE_HUMANOID_STATE_PENDING
-// Needs the proposed HumanoidState additions: out-of-line Humanoid* getHumanoid() const
-// (folded getter 00793d50), bool speedSettled() const (callers test al), and the bool
-// floor/stair query 006444f0 (named onFloorStep here). Not compiled by the recorder.
-#include "humanoid/Humanoid.h"
+// onStep bodies use the base getHumanoid() (folded getter 00793d50), bool speedSettled() and the
+// bool floor query 006444f0 (onFloorStep) declared in HumanoidState.h.
 namespace RBX {
 namespace HUMAN {
 void Running::onStep(float dt, Controller* controller)
@@ -65,4 +63,3 @@ void Climbing::onStep(float dt, Controller* controller)
 }
 }
 }
-#endif

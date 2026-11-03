@@ -1,9 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // Inactive native Seated/Dead/FallingDown and MovingNoPhysicsBase/RunningNoPhysics/StrafingNoPhysics
 // methods (2008-06). Not in any build list.
-// Bodies that read the stored humanoid through the out-of-line getter 00793d50 need the proposed
-// HumanoidState::getHumanoid() declaration (NATIVE_HUMANOID_STATE_PENDING); the MovingNoPhysicsBase
-// family needs the proposed SimJob declaration (NATIVE_SIMJOB_PENDING).
+// Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid);
+// the MovingNoPhysicsBase family needs the proposed SimJob declaration (NATIVE_SIMJOB_PENDING).
 #include "humanoid/HumanoidStates3.h"
 #include "humanoid/Humanoid.h"
 
@@ -28,7 +27,6 @@ Dead::Dead(Humanoid* humanoid)
         character->breakJoints();
 }
 
-#ifdef NATIVE_HUMANOID_STATE_PENDING
 Seated::~Seated()
 {
     Humanoid::event_Seated.fire(getHumanoid(), false);
@@ -45,7 +43,6 @@ FallingDown::~FallingDown()
 {
     Humanoid::event_FallingDown.fire(getHumanoid(), false);
 }
-#endif
 
 #ifdef NATIVE_SIMJOB_PENDING
 const char sMovingNoPhysicsBase[] = "MovingNoPhysicsBase";
@@ -58,7 +55,6 @@ MovingNoPhysicsBase::~MovingNoPhysicsBase()
         release();
 }
 
-#ifdef NATIVE_HUMANOID_STATE_PENDING
 // The SimJob overrides 00667160 tail-call 0066eaa0 out of line ('add ecx,-0xa0; jmp'), so the
 // helper was not inlined in the original; noinline keeps that boundary here.
 __declspec(noinline) Assembly* MovingNoPhysicsBase::getTorsoAssembly()
@@ -76,7 +72,6 @@ Assembly* MovingNoPhysicsBase::getAssembly2()
 {
     return getTorsoAssembly();
 }
-#endif
 
 RunningNoPhysics::RunningNoPhysics(Humanoid* humanoid)
     : Base(humanoid)

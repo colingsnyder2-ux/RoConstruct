@@ -20,17 +20,6 @@ for name, src, objname in units:
     obj = out/objname; f = ['/I'+str(overlay)] + common + ['/Fo'+str(obj), str(src)]
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', f, out); assert code == 0, log
     objects[name] = obj; flags[name] = f
-# Proposal check (not counted): compile the leaves unit again with NATIVE_HUMANOID_STATE_PENDING against a copy of
-# HumanoidState.h in out/ carrying the proposed additions (getHumanoid, bool speedSettled, onFloorStep).
-pending_overlay = out/'humanoid-states1-pending-overlay'; (pending_overlay/'humanoid').mkdir(parents=True, exist_ok=True)
-shutil.copyfile(calls, pending_overlay/'humanoid'/'Humanoid.h')
-text = base_header.read_text(); assert text.count('    int speedSettled() const;') == 1
-(pending_overlay/'humanoid'/'HumanoidState.h').write_text(text.replace('    int speedSettled() const;',
-    '    bool speedSettled() const;\n    Humanoid* getHumanoid() const;\n    bool onFloorStep();'))
-obj = out/'NativeHumanoidStates1Pending.obj'
-f = ['/I'+str(pending_overlay)] + common + ['/DNATIVE_HUMANOID_STATE_PENDING', '/Fo'+str(obj), str(units[2][1])]
-code, log = rebuild.run(rebuild.toolchain(21022), 'cl', f, out); assert code == 0, log
-objects['pending'] = obj; flags['pending'] = f
 raw = objects['layout'].read_bytes()
 name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith('?runningFilter@@'))
 assert body == bytes.fromhex('8b44240485c0740483c004c333c0c3') and not refs
@@ -76,7 +65,7 @@ expected_data = {'??_7Balancing'+H+'6BINamed@2@@': 0x84d0dc, '??_7Balancing'+H+'
                  '?sRunning'+H+'3QBDB': 0x84cc68, '?sLanded'+H+'3QBDB': 0x84cc70, '?sClimbing'+H+'3QBDB': 0x84cc78}
 statics = {}  # function-local statics (once flags, doDeclare results and guards) must map consistently
 rows = []; folded_rows = []; index = {}
-for unit in ('states', 'leaves', 'pending'):
+for unit in ('states', 'leaves'):
     raw = objects[unit].read_bytes(); index[unit] = (raw, match.coff_functions(raw), match._coff_data_index(raw))
 def check(unit, address, prefix, expected):
     raw, functions, (sections, symbols, definitions, _) = index[unit]
@@ -108,13 +97,12 @@ for row in rows:
     for k, v in row['direct_calls'].items():
         if k.startswith('??$callDoDeclare@$1?s'):
             assert any(r['symbol'] == k and int(r['address'], 16) == int(v, 16) for r in rows), (row['address'], k, v)
-proposal_rows = []
+expected_data['?event_Climbing@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A'] = 0x97a58c
 for address, prefix, signal in (('00666b20', '?onStep@Running'+H, 0x97a504), ('00666bc0', '?onStep@Climbing'+H, 0x97a58c)):
-    expected_data['?event_Climbing@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A'] = 0x97a58c
-    name, body, edges, data = check('pending', address, prefix, [('?onStep@RunningBase'+H, 0x666410), ('?speedSettled@HumanoidState'+H, 0x643330),
+    name, body, edges, data = check('leaves', address, prefix, [('?onStep@RunningBase'+H, 0x666410), ('?speedSettled@HumanoidState'+H, 0x643330),
         ('?getHumanoid@HumanoidState'+H, 0x793d50), (FIND, 0x56b620), (SIG, 0x4937f0)] + ([('?onFloorStep@HumanoidState'+H, 0x6444f0)] if 'Running' in prefix else []))
     assert hex(signal) in data.values(), (address, data)
-    proposal_rows.append({'address': address, 'symbol': name, 'size': len(body), 'direct_calls': edges, 'data_targets': data})
+    rows.append({'address': address, 'symbol': name, 'size': len(body), 'direct_calls': edges, 'data_targets': data})
 for unit, address, prefix in folded:
     name, body, edges, data = check(unit, address, prefix, [])
     folded_rows.append({'address': address, 'symbol': name, 'size': len(body)})
@@ -153,11 +141,10 @@ paths = [Path(__file__).resolve(), header, base_header, calls] + [src for _, src
 receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(),
                sources={str(p.relative_to(root)): sha(p) for p in paths}, objects={k: sha(v) for k, v in objects.items()},
                compiler_build=21022, flags=flags, sizes={'Balancing': 0xa8, 'RunningBase': 0xcc, 'Running': 0xcc, 'Landed': 0xcc, 'Climbing': 0xcc},
-               vtables=vtable_rows, methods=rows, folded=folded_rows, proposal_gated=proposal_rows,
+               vtables=vtable_rows, methods=rows, folded=folded_rows,
                pending=['0066e6a0 Balancing::onComputeForce (Body/Cofm/SimBody layouts)',
-                        '00666410 RunningBase::onStep (base helpers 00643360/00643a70/006662f0, getHumanoid 00793d50 not in HumanoidState.h)',
-                        '00666550 RunningBase::onComputeForce (Body/Primitive/Cofm layouts, getHumanoid)',
-                        '00666b20 Running::onStep, 00666bc0 Climbing::onStep: byte-exact only with the proposed HumanoidState additions (proposal_gated)'],
+                        '00666410 RunningBase::onStep (helper 006662f0 and Humanoid/Vector3 calls 005de650/005d91a0/005cbec0 undeclared)',
+                        '00666550 RunningBase::onComputeForce (Body/Primitive/Cofm layouts)'],
                scope='Inactive Balancing/RunningBase/Running/Landed/Climbing layouts, constructors, destructors, getName and vtable/RTTI linkage; Humanoid signal declarations come from the declaration-only overlay tests/NativeHumanoidStates1Calls.h (proposal). Field names are analog names. No runtime swap.')
 (root/'work/2008-06/shared-layouts/humanoid-states1-working.json').write_text(json.dumps(receipt, indent=2)+'\n')
-print('PASS: Balancing/RunningBase/Running/Landed/Climbing layout, %d exact bodies, %d folded bodies, 10 vtables and RTTI; %d onStep bodies exact under the proposed HumanoidState additions' % (len(rows), len(folded_rows), len(proposal_rows)))
+print('PASS: Balancing/RunningBase/Running/Landed/Climbing layout, %d exact bodies, %d folded bodies, 10 vtables and RTTI' % (len(rows), len(folded_rows)))

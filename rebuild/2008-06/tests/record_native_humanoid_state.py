@@ -34,7 +34,8 @@ methods = [
 ]
 # Inline virtual defaults: identical-code-folded in the original, so their slot targets are shared bodies.
 folded = [('00458e90', '?onStep'+S), ('00565950', '?query3'+S), ('00565950', '?query4'+S), ('00565950', '?query5'+S),
-          ('005e72c0', '?getIntendedRotationAboutYAxis'+S), ('0070bdf0', '?onComputeForce'+S)]
+          ('005e72c0', '?getIntendedRotationAboutYAxis'+S), ('0070bdf0', '?onComputeForce'+S),
+          ('00793d50', '?getHumanoid'+S)]   # out-of-line getter, identical-code-folded (mov eax,[ecx+8]; ret)
 pe = pefile.PE(str(root/'clients/2008-06/Roblox.exe'), fast_load=True); imagebase = pe.OPTIONAL_HEADER.ImageBase
 original_data = lambda va, n: pe.get_data(va-imagebase, n)
 expected_data = {'??_7HitTestFilter@RBX@@6B@': '0x843a40', '??_7'+S[1:]+'6BINamed@2@@': '0x84ad00', '??_7'+S[1:]+'6BHitTestFilter@2@@': '0x84acf8'}
@@ -98,8 +99,8 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                methods=rows, folded_virtual_defaults=folded_rows,
                pending=['006432e0 filterResult (Primitive +0xa8/+0xab layout)', '006431b0 setLimbFlag (PartInstance+0x228 Primitive, Primitive+0xa0 Body, Body+0x30)',
                         '00643d30 floor primitive (PartInstance embeds Primitive at +0x228; native PartInstance.h declares scoped_ptr)',
-                        '00643360/00643a70/006439b0/00643a30/00643a50 (Body/Primitive/World layouts)', '00643d40/00643eb0 (BodyMover type)',
+                        '00643360/00643a70/006444f0 bodies (declared; Body/Primitive/World/ContactManager layouts)', '006439b0/00643a30/00643a50 (Body/Primitive/World layouts)', '00643d40/00643eb0 (BodyMover type)',
                         '00643660 factory (subclass layouts)', '006451c0/006453a0/00645450/00645060/00644000-00644c80 state machine bodies'],
                scope='Inactive HumanoidState layout and eight matched base bodies plus vtable/RTTI linkage; Humanoid and Primitive declarations come from the declaration-only overlay tests/NativeHumanoidStateCalls.h (proposal). Field names after flag11 and method names are analog names. No runtime swap.')
 (root/'work/2008-06/shared-layouts/humanoid-state-working.json').write_text(json.dumps(receipt, indent=2)+'\n')
-print('PASS: HumanoidState layout, %d exact base bodies, %d folded virtual defaults, vtables and RTTI' % (len(rows), len(folded_rows)))
+print('PASS: HumanoidState layout, %d exact base bodies, %d folded bodies (virtual defaults, getHumanoid), vtables and RTTI' % (len(rows), len(folded_rows)))

@@ -1,19 +1,18 @@
 {
-  "revision": "636eb8ca252938c075c907c0ce6800565fa0f49f",
+  "revision": "5d5784bbe8af17787097c0d8b945e70ff8bcfcd4",
   "sources": {
-    "rebuild/2008-06/tests/record_native_humanoid_states1.py": "f44352ae4675eab0ccfa473423f89a15765b5739efd8268d1b8fb7685b4d0f26",
-    "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h": "f2b1cbe93b780fa7a15fffc0fbb3353ac8ff3f72decb62448bcc2c513dfc44fd",
-    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "81f8b70582a3a097fa297b7f9ee64d8b14285cb9ce60120b4a137dbdcbd8eaa1",
+    "rebuild/2008-06/tests/record_native_humanoid_states1.py": "6c62acc0f5b584a39e36c4db4378a84b5f36830d2f6ac170a61f0c3c8d567a4e",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h": "7dbcf46702473823c828e02921a56a77ef35e61c8420e72d49c43a9d339e6586",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3",
     "rebuild/2008-06/tests/NativeHumanoidStates1Calls.h": "f52d6e1e87e76c6a06647ec1413a8af7f99fb527886e5e022d7d1c356b7147d3",
     "rebuild/2008-06/tests/NativeHumanoidStates1Layout.cpp": "b9a207488db42a36166e52cd02e73e6bb50070d4813f0a8d2c70127349dad019",
     "rebuild/2008-06/native-classes/HumanoidStates1.cpp": "a1b60095fb9da376b55557d15b854143c74778bab974d51d822f6ef59678f478",
-    "rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp": "2faeb0092f1c623dcb471c75cf65934d46a65d57adb31b66a83edd793bc57139"
+    "rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp": "42576653b3517219115fbcefb70003009667d016d12c67e41e28a4b58ae1ca1f"
   },
   "objects": {
-    "layout": "ee9248c114d9dd740ce478a75028bf749b56ff44a50f212648c607301cd65590",
-    "states": "969a0479cd50f7d8df71baa862a1c54ca4ab06d5aea7b6c81fb9f4fd8d09f118",
-    "leaves": "bf4371ec6f47764f7d6b26418444477e46f7a82627cf09b16e45260bddfe6beb",
-    "pending": "97f4e889f1f080a7e1e77f354e7a659b991611cac782848bbb290978f05f48bb"
+    "layout": "4e098d4dc754ff34ca2f66ac11f46986cfc2aba9efce5136bdd2cebcbab762ec",
+    "states": "ba5786113f5d032272ece3cb426656d3d73dac7a712292107d3f27a349c2536f",
+    "leaves": "9d377a156a62b1dd88d8bd2950c0780ff17e43964145130c9136515919b742d7"
   },
   "compiler_build": 21022,
   "flags": {
@@ -135,47 +134,6 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidStates1Leaves.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp"
-    ],
-    "pending": [
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/humanoid-states1-pending-overlay",
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/fp:fast",
-      "/DNATIVE_HUMANOID_STATE_PENDING",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidStates1Pending.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp"
     ]
   },
@@ -479,6 +437,38 @@
         "??$doDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x643480"
       },
       "data_targets": {}
+    },
+    {
+      "address": "00666b20",
+      "symbol": "?onStep@Running@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "size": 148,
+      "direct_calls": {
+        "?onStep@RunningBase@HUMAN@RBX@@UAEXMPAVController@3@@Z": "0x666410",
+        "?onFloorStep@HumanoidState@HUMAN@RBX@@QAE_NXZ": "0x6444f0",
+        "?speedSettled@HumanoidState@HUMAN@RBX@@QBE_NXZ": "0x643330",
+        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@M@Z": "0x4937f0"
+      },
+      "data_targets": {
+        "__real@3e800000": "0x84cc84",
+        "?event_Running@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A": "0x97a504"
+      }
+    },
+    {
+      "address": "00666bc0",
+      "symbol": "?onStep@Climbing@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "size": 128,
+      "direct_calls": {
+        "?onStep@RunningBase@HUMAN@RBX@@UAEXMPAVController@3@@Z": "0x666410",
+        "?speedSettled@HumanoidState@HUMAN@RBX@@QBE_NXZ": "0x643330",
+        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@M@Z": "0x4937f0"
+      },
+      "data_targets": {
+        "?event_Climbing@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A": "0x97a58c"
+      }
     }
   ],
   "folded": [
@@ -523,45 +513,10 @@
       "size": 3
     }
   ],
-  "proposal_gated": [
-    {
-      "address": "00666b20",
-      "symbol": "?onStep@Running@HUMAN@RBX@@UAEXMPAVController@3@@Z",
-      "size": 148,
-      "direct_calls": {
-        "?onStep@RunningBase@HUMAN@RBX@@UAEXMPAVController@3@@Z": "0x666410",
-        "?onFloorStep@HumanoidState@HUMAN@RBX@@QAE_NXZ": "0x6444f0",
-        "?speedSettled@HumanoidState@HUMAN@RBX@@QBE_NXZ": "0x643330",
-        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
-        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
-        "??R?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@M@Z": "0x4937f0"
-      },
-      "data_targets": {
-        "__real@3e800000": "0x84cc84",
-        "?event_Running@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A": "0x97a504"
-      }
-    },
-    {
-      "address": "00666bc0",
-      "symbol": "?onStep@Climbing@HUMAN@RBX@@UAEXMPAVController@3@@Z",
-      "size": 128,
-      "direct_calls": {
-        "?onStep@RunningBase@HUMAN@RBX@@UAEXMPAVController@3@@Z": "0x666410",
-        "?speedSettled@HumanoidState@HUMAN@RBX@@QBE_NXZ": "0x643330",
-        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
-        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
-        "??R?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@M@Z": "0x4937f0"
-      },
-      "data_targets": {
-        "?event_Climbing@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A": "0x97a58c"
-      }
-    }
-  ],
   "pending": [
     "0066e6a0 Balancing::onComputeForce (Body/Cofm/SimBody layouts)",
-    "00666410 RunningBase::onStep (base helpers 00643360/00643a70/006662f0, getHumanoid 00793d50 not in HumanoidState.h)",
-    "00666550 RunningBase::onComputeForce (Body/Primitive/Cofm layouts, getHumanoid)",
-    "00666b20 Running::onStep, 00666bc0 Climbing::onStep: byte-exact only with the proposed HumanoidState additions (proposal_gated)"
+    "00666410 RunningBase::onStep (helper 006662f0 and Humanoid/Vector3 calls 005de650/005d91a0/005cbec0 undeclared)",
+    "00666550 RunningBase::onComputeForce (Body/Primitive/Cofm layouts)"
   ],
   "scope": "Inactive Balancing/RunningBase/Running/Landed/Climbing layouts, constructors, destructors, getName and vtable/RTTI linkage; Humanoid signal declarations come from the declaration-only overlay tests/NativeHumanoidStates1Calls.h (proposal). Field names are analog names. No runtime swap."
 }

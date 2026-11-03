@@ -30,8 +30,8 @@ public:
 // - constructor 00666980 calls Balancing(humanoid, 300.0f [0084cc5c], 50.0f [00819ba4]),
 //   zeroes the nine floats +0xa8..+0xc8 and fires Humanoid::event_Running (0097a504) with 0.
 // - destructor 006663f0 (vptr stores, then ~HumanoidState); deleting destructor 00666520.
-// - onStep 00666410 stores +0xc8 (00643360 result), Vector3 +0xa8 and float +0xb4 (00643a70
-//   out-parameters), Vector3 +0xb8 (computeWalkVelocity) and +0xc4 = 0.
+// - onStep 00666410 stores +0xc8 (00643360 result), Vector3 +0xa8 and float +0xb4 (linear and
+//   rotational.y of the Velocity returned by 00643a70), Vector3 +0xb8 (computeWalkVelocity) and +0xc4 = 0.
 // - slots 3/4 return false (0060a2f0); slot 7 00643400 returns +0xc4. Allocation size of the leaves is 0xcc (factory 00643660).
 class RunningBase : public Balancing {
 public:
@@ -60,7 +60,7 @@ extern const char sClimbing[];                           // 0084cc78 "Climbing"
 class Running : public Named<RunningBase, sRunning> {
 public:
     Running(Humanoid* humanoid);                         // 00666ac0
-    virtual void onStep(float dt, Controller* controller); // slot 1, 00666b20 (pending)
+    virtual void onStep(float dt, Controller* controller); // slot 1, 00666b20
     virtual int getStateType() const { return 6; }       // slot 2, 005cb9d0 (folded)
 };
 
@@ -78,7 +78,7 @@ public:
 class Climbing : public Named<RunningBase, sClimbing> {
 public:
     Climbing(Humanoid* humanoid);                        // 006435a0
-    virtual void onStep(float dt, Controller* controller); // slot 1, 00666bc0 (pending)
+    virtual void onStep(float dt, Controller* controller); // slot 1, 00666bc0
     virtual int getStateType() const { return 9; }       // slot 2, 0064cac0 (folded)
 };
 }

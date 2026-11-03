@@ -17,13 +17,8 @@ overlay = out/'humanoid-states3-overlay'
 for d in ('humanoid', 'v8world'): (overlay/d).mkdir(parents=True, exist_ok=True)
 shutil.copyfile(calls, overlay/'humanoid'/'Humanoid.h')
 shutil.copyfile(simjob, overlay/'v8world'/'SimJob.h')
-# Proposed base declaration (not in the shared header yet): HumanoidState::getHumanoid(), the
-# out-of-line getter 00793d50 (mov eax,[ecx+8]; ret) called from 006670b0, 00666e30, 00666ec0, 0066eaa0.
-text = state_header.read_text(); anchor = '    void setLimbFlag(bool value);'
-assert text.count(anchor) == 1
-proposal = '    Humanoid* getHumanoid() const;                                    // 00793d50 (proposed)\n'
-(overlay/'humanoid'/'HumanoidState.h').write_text(text.replace(anchor, proposal + anchor))
-PENDING = ['/DNATIVE_HUMANOID_STATE_PENDING', '/DNATIVE_SIMJOB_PENDING']
+(overlay/'humanoid'/'HumanoidState.h').unlink(missing_ok=True)   # stale proposal copy from older runs must not shadow the real header
+PENDING = ['/DNATIVE_SIMJOB_PENDING']
 units = [('layout', R/'tests/NativeHumanoidStates3Layout.cpp', 'NativeHumanoidStates3Layout.obj', ['/DNATIVE_SIMJOB_PENDING']),
          ('states', R/'native-classes/HumanoidStates3.cpp', 'NativeHumanoidStates3.obj', PENDING)]
 objects = {}; flags = {}
@@ -203,8 +198,7 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                compiler_build=21022, flags=flags,
                sizes={'Seated': 0xa0, 'Dead': 0xa0, 'FallingDown': 0xa0, 'SimJob': 0x24, 'MovingNoPhysicsBase': 0x114, 'RunningNoPhysics': 0x114, 'StrafingNoPhysics': 0x114},
                vtables=vtable_rows, methods=rows, folded_virtual_defaults=folded_rows, adjustor_thunks=thunk_rows,
-               proposed_declarations=['HumanoidState::getHumanoid() const, out-of-line 00793d50 (006670b0, 00666e30, 00666ec0, 0066eaa0 compile only with NATIVE_HUMANOID_STATE_PENDING and the recorder overlay)',
-                                      'RBX::SimJob (tests/NativeHumanoidStates3SimJob.h, sizeof 0x24): MovingNoPhysicsBase family compiles only with NATIVE_SIMJOB_PENDING',
+               proposed_declarations=['RBX::SimJob (tests/NativeHumanoidStates3SimJob.h, sizeof 0x24): MovingNoPhysicsBase family compiles only with NATIVE_SIMJOB_PENDING',
                                       'Humanoid/Primitive/ModelInstance call declarations in tests/NativeHumanoidStates3Calls.h'],
                pending=['0066f070 MovingNoPhysicsBase constructor (PhysicsService, World/SimJobStage, connection to 0x973c38 via 004a3340, boost::bind of 0066edc0)',
                         '0066f2c0 MovingNoPhysicsBase::onStep (Body/Primitive/World layouts, 00643a70/00643360)',
