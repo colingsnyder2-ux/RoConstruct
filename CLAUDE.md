@@ -27,6 +27,8 @@ overlaps someone else's, so forks and parallel workers never touch the same file
   another user holds. `roc.cmd lease check [PATH...]` runs the same test by hand. The hook fails open when the server is
   unreachable and no cached list exists (`work/leases-cache.json`).
 - Private-index commits (`commit-tree`) skip hooks: run `roc.cmd lease check PATH...` on your paths first.
+- Commit coherent batches, not each method: one class or family when it is done, or at most about once an hour.
+  Keep work in progress uncommitted, and push at the end of a session.
 
 ## Assigned single-function recovery
 
