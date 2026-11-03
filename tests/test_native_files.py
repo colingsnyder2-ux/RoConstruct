@@ -29,12 +29,31 @@ def commit(cwd, files, msg, deletes=()):
 
 
 def test_payload_links():
-    new = [('o/r', 'b', 'abc123', N + 'A.cpp'), ('o/r', 'b', 'abc123', 'rebuild/2008-06/native-headers/A.h')]
+    new = [('o/r', 'b', 'abc123', N + 'A.cpp', 'new'), ('o/r', 'b', 'abc123', 'rebuild/2008-06/native-headers/A.h', 'new'),
+           ('o/r', 'b', 'abc123', N + 'B.cpp', 'changed')]
     body = nf.build_payloads(new)[0]['embeds'][0]
     assert body['title'].endswith('RoConstruct Integration Digest')
-    value = body['fields'][0]['value']
-    assert '[native-classes/A.cpp](https://github.com/o/r/blob/abc123/' + N + 'A.cpp)' in value
+    names = [f['name'] for f in body['fields']]
+    assert 'New native files' in names[0] and 'Changed native files' in names[1], names
+    assert '[native-classes/A.cpp](https://github.com/o/r/blob/abc123/' + N + 'A.cpp)' in body['fields'][0]['value']
+    assert '[native-classes/B.cpp](' in body['fields'][1]['value']
     assert nf.is_native(N + 'x.cpp') and not nf.is_native(N + 'x.txt') and not nf.is_native('src/x.cpp')
+
+
+def test_changed_files():
+    with tempfile.TemporaryDirectory() as tmp:
+        repo = Path(tmp)
+        git(repo, 'init', '-q', '-b', 'work')
+        git(repo, 'config', 'user.name', 't'); git(repo, 'config', 'user.email', 't@t')
+        a = commit(repo, {N + 'A.cpp': 'int a;\n', 'README.md': 'x\n'}, 'a')
+        b = commit(repo, {N + 'A.cpp': 'int a2;\n', N + 'B.cpp': 'int b;\n', 'README.md': 'y\n'}, 'b')
+        old = nf.ROOT
+        nf.ROOT = repo
+        try:
+            got = sorted(nf.changed_files(a, b))
+        finally:
+            nf.ROOT = old
+        assert got == [('changed', N + 'A.cpp'), ('new', N + 'B.cpp')], got
 
 
 def test_fork_merge():
@@ -82,5 +101,6 @@ def test_fork_merge():
 
 if __name__ == '__main__':
     test_payload_links()
+    test_changed_files()
     test_fork_merge()
     print('native files tests ok')
