@@ -36,6 +36,15 @@ def partial_payload(user, model, rows):
         'timestamp': datetime.now(timezone.utc).isoformat()}]}
 
 
+def extra_rows_enabled():
+    """Partial / recovery / header / site rows on the Integration Digest webhook; opt-in via roconstruct-settings.json."""
+    from roc import setup
+    try:
+        return bool(json.loads(setup.config("roconstruct-settings.json").read_text()).get("integration_digest_extra_rows"))
+    except (OSError, ValueError):
+        return False
+
+
 def record_partials(promotions, user, body):
     """Bounded contributor observations. Separate telemetry table; no scoring/credit writes."""
     revision, model, rows = body.get('base_revision'), body.get('model'), body.get('partials')
@@ -122,7 +131,7 @@ def record_header(promotions, user, body):
     if not isinstance(note, str) or len(note) > 1000:
         raise ValueError('Note must be under 1000 characters')
     record('header', user, model, addr=name, exact=exact, total=total, note=note)
-    url = server_mines_webhook()
+    url = server_mines_webhook() if extra_rows_enabled() else None
     if url:
         from roc.reports import _post
         import threading

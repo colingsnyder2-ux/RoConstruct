@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03 14:30 UTC",
+ "updated": "2026-11-03 15:52 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -101,15 +101,15 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19819,
-   "matched": 17774,
-   "partial": 1941,
-   "source_matched": 12598,
-   "mined_matched": 5176,
+   "matched": 17840,
+   "partial": 1875,
+   "source_matched": 12608,
+   "mined_matched": 5232,
    "bytes": 3196410,
-   "matched_bytes": 2458709,
-   "source_bytes": 2184296,
-   "mined_bytes": 274413,
-   "partial_bytes": 652292,
+   "matched_bytes": 2466106,
+   "source_bytes": 2185755,
+   "mined_bytes": 280351,
+   "partial_bytes": 644895,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -140,6 +140,15 @@
      "last": 1793563960.9135227
     },
     {
+     "user": "EspClaude",
+     "matched": 273,
+     "mining_points": 24803,
+     "points": 24803,
+     "native_integrated": 0,
+     "submissions": 640,
+     "last": 1793719197.434406
+    },
+    {
      "user": "Yeetserama",
      "matched": 505,
      "mining_points": 23981,
@@ -147,15 +156,6 @@
      "native_integrated": 0,
      "submissions": 592,
      "last": 1793660200.68677
-    },
-    {
-     "user": "EspClaude",
-     "matched": 207,
-     "mining_points": 22852,
-     "points": 22852,
-     "native_integrated": 0,
-     "submissions": 570,
-     "last": 1793715966.5044234
     },
     {
      "user": "tajop",
@@ -924,12 +924,12 @@
   },
   {
    "user": "EspClaude",
-   "matched": 4861,
-   "mining_points": 260419,
-   "points": 260471,
+   "matched": 4927,
+   "mining_points": 262370,
+   "points": 262422,
    "native_integrated": 52,
-   "submissions": 6726,
-   "last": 1793715966.5044234
+   "submissions": 6796,
+   "last": 1793719197.434406
   },
   {
    "user": "nuck16",

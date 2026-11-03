@@ -3,6 +3,6 @@
 namespace RBX {
 GrabTool::GrabTool(Workspace* workspace) : Named<MouseCommand, sGrabTool>(workspace), cursor("ArrowCursor") {}
 GrabTool::~GrabTool() {}
-template<> MouseCommand* TToolVerb<GrabTool, RunStateVerb>::newMouseCommand() { return new GrabTool(dataModel->getWorkspace()); }
+// moved to native-classes/ToolVerbFactories.cpp
 void forceDestroy(GrabTool* p) { delete p; }
 }

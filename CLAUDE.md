@@ -9,6 +9,43 @@ server re-verifies it byte-identical.
 Run commands as `roc.cmd <cmd>` (Windows) or `./roc.sh <cmd>` (Linux); `roc --help`
 lists them all.
 
+## File leases: never edit the same files as another worker
+
+Before editing native classes, headers or shared build scripts, lease them on the group server.
+A lease is a name (the class or family) plus repo-relative globs. The server refuses a lease that
+overlaps someone else's, so forks and parallel workers never touch the same files.
+
+- `roc.cmd lease ls` - who holds what, until when, on which branch.
+- `roc.cmd lease take RBX::Humanoid "rebuild/2008-06/native-classes/Humanoid*.cpp" "rebuild/2008-06/native-headers/humanoid/*" --hours 4`
+  - Lease a whole family together, for example Joint, Weld, Snap, Motor and JointInstance, because they share files.
+  - Lease shared single files on their own: `p6/build_client.py`, `patches/*.json`, and core headers such as
+    `v8tree/Instance.h`, `v8datamodel/DataModel.h`, `util/Events.h` and `reflection/*.h`. Each core header has one owner;
+    everyone else sends that owner a header proposal.
+- `roc.cmd lease renew NAME --hours 4` while working. Leases expire, so a crashed worker never blocks a class for long.
+- `roc.cmd lease release NAME` when done or parked.
+- `roc.cmd lease hook` installs a pre-commit hook that runs `roc lease check --staged`. It refuses commits touching files
+  another user holds. `roc.cmd lease check [PATH...]` runs the same test by hand. The hook fails open when the server is
+  unreachable and no cached list exists (`work/leases-cache.json`).
+- Private-index commits (`commit-tree`) skip hooks: run `roc.cmd lease check PATH...` on your paths first.
+- Commit coherent batches, not each method: one class or family when it is done, or at most about once an hour.
+  Keep work in progress uncommitted, and push at the end of a session.
+
+## New native files on the Integration Digest webhook
+
+When `server_mines_webhook` is set, the server checks every 5 minutes for files added under
+`native-classes`, `native-headers` and `native-world` on this repo's branches **and on every fork**, and posts
+them to the Integration Digest as GitHub permalinks (once per file content). Forks are fetched by URL, so no
+remote setup is needed. A branch seen for the first time is only recorded, so nothing floods.
+
+- `roc.cmd native-files scan --dry-run` previews what would be posted (nothing sent, nothing saved);
+  `--backfill` also lists what first-seen branches already have beyond `main`; `--no-forks` skips forks.
+- Fork work is merged automatically onto the bot branch `auto-merge/native` (never your working branch):
+  clean merges become merge commits; conflicts, unrelated histories or merges that would delete native files
+  are copied to `merge/<fork>/<branch>/` there, with a `MERGE_NEEDED.md`. Fast-forward or cherry-pick from it
+  when you want the work. `roc.cmd native-files merge --dry-run` runs it without pushing.
+- The partial / recovery / header / site rows on that webhook are off by default; set
+  `"integration_digest_extra_rows": true` in `roconstruct-settings.json` to bring them back.
+
 ## Assigned single-function recovery
 
 When the wrapper supplies an assigned source, evidence packet, check command and

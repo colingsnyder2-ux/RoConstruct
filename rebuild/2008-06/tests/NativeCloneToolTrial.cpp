@@ -2,6 +2,6 @@
 #include "StandardVerbs.h"
 namespace RBX {
 CloneTool::CloneTool(Workspace* workspace) : Named<MouseCommand, sCloneTool>(workspace) {}
-template<> MouseCommand* TToolVerb<CloneTool, RunStateVerb>::newMouseCommand() { return new CloneTool(dataModel->getWorkspace()); }
+// moved to native-classes/ToolVerbFactories.cpp
 void forceDestroy(CloneTool* p) { delete p; }
 }

@@ -22,6 +22,7 @@ public:
     std::vector<ISelectionBase*> filteredSelections;
     size_t size() const { return selection->size(); }
     boost::shared_ptr<Instance> front() const;
+    boost::shared_ptr<Instance> back() const;
     void clearSelection();
     void addToSelection(Instance*);
     bool isSelected(const Instance*) const;                     // 00424eb0
@@ -41,6 +42,7 @@ template<class T>
 class FilteredSelection : public NonFactoryProduct<Instance, static_cast<const char*>(0)>,
                           public Service, public ISelectionBase {
     friend class CanNotSelectCommand;
+    friend class UngroupSelectionVerb;
     boost::shared_ptr<Selection> rootSelection;
     std::vector<T*> filteredSelection;
 public:

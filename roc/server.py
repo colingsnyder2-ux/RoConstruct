@@ -717,6 +717,14 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 integration.recovery=Host(integration,start=True,server='http://127.0.0.1:'+str(port))
             return integration.recovery
 
+    leases_lock = threading.Lock()
+    def file_leases():
+        with leases_lock:
+            if not hasattr(store, 'file_leases'):
+                from roc.leases import Leases
+                store.file_leases = Leases(store.db)
+            return store.file_leases
+
     lease_slots = threading.BoundedSemaphore(8)
     verification_slots = threading.BoundedSemaphore(3)
     class Handler(BaseHTTPRequestHandler):
@@ -761,6 +769,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     if url.path.endswith('/status'):return self.send(200,host.status(q.get('id')))
                     return self.send(404,{'error':'Unknown native recovery action'})
                 except (ValueError,TypeError,OSError) as error:return self.send(503 if str(error).startswith('Native inputs changed') else 400,{'error':str(error)})
+            if url.path == '/v1/leases':
+                return self.send(200, {'leases': file_leases().active()})
             if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence", "/v1/integration/context", "/v1/integration/metrics"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
@@ -875,6 +885,23 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
             except (ValueError, json.JSONDecodeError):
                 return self.send(400, {"error": "bad json"})
             user = str(body.get("user", ""))
+            if path.startswith('/v1/leases/'):
+                if not USER_RE.fullmatch(user):
+                    return self.send(400, {"error": "Need a valid contributor username"})
+                action = path.rsplit('/', 1)[-1]
+                try:
+                    if action == 'take':
+                        result = file_leases().take(user, body.get('name'), body.get('patterns'), body.get('hours', 4),
+                                                    body.get('worker'), body.get('branch'), body.get('note'))
+                    elif action in ('renew', 'release'):
+                        result = file_leases().renew(user, body.get('name'), body.get('hours', 4), release=action == 'release')
+                    else:
+                        return self.send(404, {"error": "Unknown lease action"})
+                except PermissionError as error:
+                    return self.send(409, {"error": str(error)})
+                except (ValueError, TypeError, LookupError) as error:
+                    return self.send(400, {"error": str(error)})
+                return self.send(200, result)
             if path.startswith("/v1/integration/"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
@@ -1203,6 +1230,11 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                                                        integration=integration))
     httpd.store = store
     threading.Thread(target=integration_loop, args=(integration, log), daemon=True).start()
+    from roc.reports import server_mines_webhook
+    if server_mines_webhook():  # new native files (this repo + forks) on the Integration Digest, and fork auto-merge
+        from roc import native_files_notify
+        native_files_notify.start_watch(300, log)
+        log("Native files watcher: enabled (every 5 min, forks + auto-merge branch)")
     def daily_reports():
         from roc.reports import archive_days, save
         archived = False
