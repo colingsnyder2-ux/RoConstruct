@@ -65,6 +65,7 @@
   "url": "https://www.lua.org/ftp/lua-5.1.tar.gz",
   "kind": "archive",
   "files": [
+   "roc_espclaude_31babb5722ab7207.cpp",
    "roc_espclaude_52519d5cdba2c8f9.cpp",
    "roc_espclaude_8fce38ea29d82ea4.cpp",
    "roc_espclaude_92abe1daa4d618bf.cpp",
@@ -75,7 +76,32 @@
  "lua-5.1.1": {
   "url": "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "lapi.c",
+   "lauxlib.c",
+   "lbaselib.c",
+   "lcode.c",
+   "ldebug.c",
+   "ldo.c",
+   "ldump.c",
+   "lfunc.c",
+   "lgc.c",
+   "liolib.c",
+   "llex.c",
+   "lmathlib.c",
+   "lmem.c",
+   "lobject.c",
+   "lparser.c",
+   "lstate.c",
+   "lstring.c",
+   "lstrlib.c",
+   "ltable.c",
+   "ltablib.c",
+   "ltm.c",
+   "lundump.c",
+   "lvm.c",
+   "lzio.c"
+  ]
  },
  "lua-5.1.2": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
@@ -90,7 +116,12 @@
  "lua-5.1.3": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "lbaselib.c",
+   "lstrlib.c",
+   "ltablib.c",
+   "lundump.c"
+  ]
  },
  "lua-5.1.4": {
   "url": "https://www.lua.org/ftp/lua-5.1.4.tar.gz",
@@ -141,7 +172,9 @@
  "lua-5.1.3-rbx": {
   "url": "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "lstate.c"
+  ]
  },
  "lua-5.0": {
   "url": "https://www.lua.org/ftp/lua-5.0.tar.gz",
@@ -1095,7 +1128,10 @@
  "lua-5.1.1-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "liolib.c",
+   "lvm.c"
+  ]
  },
  "lua-5.1.2-dll": {
   "url": "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
