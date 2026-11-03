@@ -11,5 +11,10 @@ protected:
     CWrapperView();                 // 0042eb40
     virtual void OnDraw(CDC*);
 public:
+    virtual BOOL OnCmdMsg(UINT, int, void*, AFX_CMDHANDLERINFO*);    // 0042ebc0 (slot 5)
+    virtual BOOL PreCreateWindow(CREATESTRUCT&);                     // 0042eb90 (slot 27)
+protected:
+    virtual BOOL OnWndMsg(UINT, WPARAM, LPARAM, LRESULT*);           // 0042ec10 (slot 71)
+public:
     CSelectionTreeCtrl tree;        // +0x58
 };

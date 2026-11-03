@@ -17,6 +17,46 @@ CWrapperView::CWrapperView()
 {
 }
 
+BOOL CWrapperView::PreCreateWindow(CREATESTRUCT& cs)
+{
+    if (!CView::PreCreateWindow(cs))
+        return FALSE;
+    cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
+    return TRUE;
+}
+
+// Commands the view does not handle go to the tree.
+BOOL CWrapperView::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
+{
+    if (CView::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo))
+        return TRUE;
+    return tree.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
+}
+
+// The tree fills the view: created on WM_CREATE, resized on WM_SIZE.
+BOOL CWrapperView::OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+{
+    BOOL handled = CView::OnWndMsg(message, wParam, lParam, pResult);
+    if (handled && *pResult)
+        return TRUE;
+    switch (message) {
+    case WM_CREATE: {
+        CRect rect(0, 0, 100, 100);
+        if (!tree.Create(WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN, rect, this, 0)) {
+            *pResult = -1;
+            return TRUE;
+        }
+        tree.ModifyStyleEx(0, WS_EX_CLIENTEDGE, SWP_FRAMECHANGED);
+        return TRUE;
+    }
+    case WM_SIZE:
+        if (tree.m_hWnd)
+            tree.MoveWindow(0, 0, LOWORD(lParam), HIWORD(lParam), TRUE);
+        return TRUE;
+    }
+    return handled;
+}
+
 // XTPWM_DOCKINGPANE_NOTIFY (0x2aad, 004314e0): create pane contents the first time they are shown.
 LRESULT CMainFrame::handle_4314e0(WPARAM wParam, LPARAM lParam)
 {
