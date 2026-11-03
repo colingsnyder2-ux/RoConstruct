@@ -1,13 +1,10 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 #include "CMainFrame.h"
 #include "v8datamodel/BrickColor.h"
+#include "v8datamodel/ToolsPart.h"
 #include "util/FileSystem.h"
 #include <atlbase.h>
 
-namespace RBX {
-class FillToolColor : public Notifier<FillToolColor, BrickColor> {};
-class FillTool { public: static FillToolColor color; };
-}
 extern bool nativeLockA, nativeLockB, nativeLockC;
 
 CMainFrame::CMainFrame()
