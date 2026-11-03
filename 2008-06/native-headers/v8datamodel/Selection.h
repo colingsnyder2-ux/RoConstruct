@@ -42,6 +42,7 @@ template<class T>
 class FilteredSelection : public NonFactoryProduct<Instance, static_cast<const char*>(0)>,
                           public Service, public ISelectionBase {
     friend class CanNotSelectCommand;
+    friend class UngroupSelectionVerb;
     boost::shared_ptr<Selection> rootSelection;
     std::vector<T*> filteredSelection;
 public:

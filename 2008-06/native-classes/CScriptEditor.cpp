@@ -8,13 +8,6 @@
 #include <sstream>
 
 namespace RBX {
-// Same event layout as native-classes/InstanceAncestorChanged.cpp; onEvent 00465500 reads
-// newParent from the third word of the by-value argument (ret 0x10).
-struct AncestorChanged {
-    Instance* child;
-    Instance* oldParent;
-    Instance* newParent;
-};
 }
 
 // Posted by setScript 00465260 and dispatched by the message map entry at 0081b648+0x1b0.
