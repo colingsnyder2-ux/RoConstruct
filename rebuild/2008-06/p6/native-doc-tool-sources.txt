@@ -1,6 +1,6 @@
 # Native-doc tool-family sources for ROC_NATIVE_DOC_EXTRA (semicolon-separated absolute paths).
-# Isolated probe: build_client.py --native-doc --native-doc-cache --native-doc-out DIR gives 96 unresolved (baseline 115), only the 5 Instance LNK2005.
-# Left out on purpose: Laser/Shoot/Hammer/Slingshot/Rocket worker trials (need overlay headers), CloneSticky (second CloneTool ctor), CloneDown (PartInstance::clone missing), ChangeHistoryLifetime (pulls the whole ChangeHistoryService vtable), MegaDragger trials (leased by another worker).
+# Isolated probes against the working-tree build_client.py of 2026-11-03 14:23: 110 unresolved without these sources, 94 with them; only the 5 Instance LNK2005 remain.
+# Left out on purpose: Laser/Shoot/Hammer/Slingshot/Rocket worker trials (need overlay headers), CloneSticky (second CloneTool ctor), CloneDown (PartInstance::clone missing), ChangeHistoryLifetime (pulls the whole ChangeHistoryService vtable), MegaDragger trials (leased by another worker), BasicVerbConstructors (already in build_client.py).
 rebuild/2008-06/native-classes/ToolVerbFactories.cpp
 rebuild/2008-06/tests/NativeAnchorActionsTrial.cpp
 rebuild/2008-06/tests/NativeAnchorCursorTrial.cpp
@@ -63,3 +63,5 @@ rebuild/2008-06/tests/NativeDraggerExtentsTrial.cpp
 rebuild/2008-06/tests/NativeCollectPrimitivesTrial.cpp
 rebuild/2008-06/tests/NativeGrabMethodsTrial.cpp
 rebuild/2008-06/tests/NativeCloneMethodsTrial.cpp
+rebuild/2008-06/tests/NativeDragToolFactoryTrial.cpp
+rebuild/2008-06/tests/NativeHitMoveHandlesTrial.cpp
