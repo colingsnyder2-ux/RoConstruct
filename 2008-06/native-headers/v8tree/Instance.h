@@ -114,6 +114,7 @@ public:
     bool canSetParent(const Instance*) const; // 0041f390
     void raisePropertyChanged(const Reflection::PropertyDescriptor& descriptor); // 0040db00
     std::string getClassNameStr() const;
+    Instance* findFirstChildByName(const std::string&) const;
     Instance* findFirstChildByClassName(std::string) const; // 0046ae30; name provisional.
 private:
     void writeProperties(::XmlElement*) const;
