@@ -2993,6 +2993,7 @@ def main(argv=None):
     __import__("roc.native_try").native_try.register(cmd)
     __import__("roc.native_promotions").native_promotions.register(cmd)
     __import__("roc.leases").leases.register(cmd)
+    __import__("roc.native_files_notify").native_files_notify.register(cmd)
     __import__("roc.native_search").native_search.register(cmd)
     cmd("standins", lambda a: __import__("roc.standins").standins.main([a.name, a.addr]),
         "map an exact mined source's placeholder externs to the real symbols the exe relocates",

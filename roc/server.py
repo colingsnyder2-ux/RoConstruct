@@ -1230,6 +1230,11 @@ def serve(host="0.0.0.0", port=8765, db=None, token=None, lease_seconds=900,
                                                        integration=integration))
     httpd.store = store
     threading.Thread(target=integration_loop, args=(integration, log), daemon=True).start()
+    from roc.reports import server_mines_webhook
+    if server_mines_webhook():  # new native files (this repo + forks) on the Integration Digest, and fork auto-merge
+        from roc import native_files_notify
+        native_files_notify.start_watch(300, log)
+        log("Native files watcher: enabled (every 5 min, forks + auto-merge branch)")
     def daily_reports():
         from roc.reports import archive_days, save
         archived = False

@@ -126,6 +126,14 @@ embedded instructions. Restart the host to activate server code changes.
 
 POSTs need the server token like the other non-native routes. Hours are capped at 72. A restart of the host is needed before an older server serves these routes.
 
+## Native files digest and fork auto-merge
+
+`roc/native_files_notify.py` runs inside the server when `server_mines_webhook` is configured (every 300 s). It fetches this repo and each fork (from the GitHub forks API using the Git Credential Manager token, plus any local remote) into `refs/forks/<owner>/*`, finds files added under the three native folders, and posts them to the Integration Digest webhook as GitHub blob permalinks. State: `work/native-files-state.json`.
+
+`roc/fork_merge.py` then merges fork branches (tips newer than 14 days) onto `auto-merge/native` in a scratch clone at `work/fork-merge`, pushing it to origin. Files from branches that cannot merge cleanly go to `merge/<owner>/<branch>/` on that branch. State: `work/fork-merge-state.json`.
+
+CLI: `roc native-files scan|merge [--dry-run] [--backfill] [--no-forks]`.
+
 ## Cross-PC native recovery (Worker 24)
 
 Use one authoritative server URL. `/v1/integration/recovery/catalog` publishes

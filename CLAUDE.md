@@ -30,6 +30,22 @@ overlaps someone else's, so forks and parallel workers never touch the same file
 - Commit coherent batches, not each method: one class or family when it is done, or at most about once an hour.
   Keep work in progress uncommitted, and push at the end of a session.
 
+## New native files on the Integration Digest webhook
+
+When `server_mines_webhook` is set, the server checks every 5 minutes for files added under
+`native-classes`, `native-headers` and `native-world` on this repo's branches **and on every fork**, and posts
+them to the Integration Digest as GitHub permalinks (once per file content). Forks are fetched by URL, so no
+remote setup is needed. A branch seen for the first time is only recorded, so nothing floods.
+
+- `roc.cmd native-files scan --dry-run` previews what would be posted (nothing sent, nothing saved);
+  `--backfill` also lists what first-seen branches already have beyond `main`; `--no-forks` skips forks.
+- Fork work is merged automatically onto the bot branch `auto-merge/native` (never your working branch):
+  clean merges become merge commits; conflicts, unrelated histories or merges that would delete native files
+  are copied to `merge/<fork>/<branch>/` there, with a `MERGE_NEEDED.md`. Fast-forward or cherry-pick from it
+  when you want the work. `roc.cmd native-files merge --dry-run` runs it without pushing.
+- The partial / recovery / header / site rows on that webhook are off by default; set
+  `"integration_digest_extra_rows": true` in `roconstruct-settings.json` to bring them back.
+
 ## Assigned single-function recovery
 
 When the wrapper supplies an assigned source, evidence packet, check command and
