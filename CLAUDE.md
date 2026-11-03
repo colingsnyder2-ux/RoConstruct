@@ -9,6 +9,25 @@ server re-verifies it byte-identical.
 Run commands as `roc.cmd <cmd>` (Windows) or `./roc.sh <cmd>` (Linux); `roc --help`
 lists them all.
 
+## File leases: never edit the same files as another worker
+
+Before editing native classes, headers or shared build scripts, lease them on the group server.
+A lease is a name (the class or family) plus repo-relative globs. The server refuses a lease that
+overlaps someone else's, so forks and parallel workers never touch the same files.
+
+- `roc.cmd lease ls` - who holds what, until when, on which branch.
+- `roc.cmd lease take RBX::Humanoid "rebuild/2008-06/native-classes/Humanoid*.cpp" "rebuild/2008-06/native-headers/humanoid/*" --hours 4`
+  - Lease a whole family together, for example Joint, Weld, Snap, Motor and JointInstance, because they share files.
+  - Lease shared single files on their own: `p6/build_client.py`, `patches/*.json`, and core headers such as
+    `v8tree/Instance.h`, `v8datamodel/DataModel.h`, `util/Events.h` and `reflection/*.h`. Each core header has one owner;
+    everyone else sends that owner a header proposal.
+- `roc.cmd lease renew NAME --hours 4` while working. Leases expire, so a crashed worker never blocks a class for long.
+- `roc.cmd lease release NAME` when done or parked.
+- `roc.cmd lease hook` installs a pre-commit hook that runs `roc lease check --staged`. It refuses commits touching files
+  another user holds. `roc.cmd lease check [PATH...]` runs the same test by hand. The hook fails open when the server is
+  unreachable and no cached list exists (`work/leases-cache.json`).
+- Private-index commits (`commit-tree`) skip hooks: run `roc.cmd lease check PATH...` on your paths first.
+
 ## Assigned single-function recovery
 
 When the wrapper supplies an assigned source, evidence packet, check command and
