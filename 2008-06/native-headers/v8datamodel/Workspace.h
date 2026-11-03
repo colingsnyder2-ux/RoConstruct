@@ -14,6 +14,7 @@ namespace RBX
 {
 	class MouseCommand;
 	class Camera;
+	class ModelInstance;
 
 	class DrawChanged
 	{
@@ -128,6 +129,8 @@ namespace RBX
 		void onWrapMouse(const G3D::Vector2&);
 		virtual GuiResponse process(const GuiEvent&);
 		void selectAll();
+		boost::shared_ptr<ModelInstance> group(std::vector<boost::shared_ptr<Instance> >::const_iterator,
+		                                      std::vector<boost::shared_ptr<Instance> >::const_iterator);
 	private:
 		void handleFallenParts(const G3D::Array<boost::shared_ptr<PartInstance>>& fallenParts);
 	public:

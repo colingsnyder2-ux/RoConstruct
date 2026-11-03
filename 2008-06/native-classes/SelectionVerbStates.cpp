@@ -3,11 +3,27 @@
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/PVInstance.h"
+#include "v8datamodel/PartInstance.h"
+#include "Network/Players.h"
+#include "util/Sound.h"
+#include <stdexcept>
 
 namespace RBX {
 
 inline const Name& Verb::getName() const { return name; }
 void recordCameraHistory(const char*, const Instance*);
+
+namespace Network {
+class Client { public: static bool clientIsPresent(const Instance*, bool); };
+class Server { public: static bool serverIsPresent(const Instance*, bool); };
+}
+
+static __declspec(noinline) void checkRunPermissions(Instance* instance) {
+    if (Network::Client::clientIsPresent(instance, true) && !Network::Server::serverIsPresent(instance, true)) {
+        std::string message("Insufficinet permissions");
+        throw std::runtime_error(message);
+    }
+}
 
 void AttachCameraCommand::doIt(IDataState* state) {
     PVInstance* subject = ServiceProvider::create<FilteredSelection<PVInstance> >(static_cast<const ServiceProvider*>(dataModel))->front();
@@ -79,5 +95,35 @@ bool AttachCameraCommand::isChecked() const { Camera* camera = workspace->getCam
 bool TrackCameraCommand::isChecked() const { Camera* camera = workspace->getCamera(); return camera->getCameraType() == Camera::TRACK_CAMERA; }
 bool FollowCameraCommand::isChecked() const { Camera* camera = workspace->getCamera(); return camera->getCameraType() == Camera::FOLLOW_CAMERA; }
 bool WatchCameraCommand::isChecked() const { Camera* camera = workspace->getCamera(); return camera->getCameraType() == Camera::WATCH_CAMERA; }
+
+void DeleteBase::doIt(IDataState* state) {
+    checkRunPermissions(dataModel);
+    Selection* current = ServiceProvider::create<Selection>(static_cast<const ServiceProvider*>(dataModel));
+    if (current->size() > 0) {
+        typedef std::vector<boost::shared_ptr<Instance> > Instances;
+        boost::shared_ptr<const Instances> list = current->selection.read();
+        if (list) for (Instances::const_iterator i = list->begin(); i != list->end(); ++i) {
+            boost::shared_ptr<Instance> child = *i;
+            if (!dynamic_cast<Workspace*>(child.get()) && !dynamic_cast<Network::Players*>(child.get())) child->setParent(NULL);
+        }
+        Soundscape::SoundService* sound = ServiceProvider::create<Soundscape::SoundService>(static_cast<const ServiceProvider*>(dataModel));
+        sound->playSound(PAGE_SOUND);
+        recordCameraHistory(getName().c_str(), workspace.get());
+        state->setDirty(true);
+    }
+}
+
+void __cdecl cannotSelect(boost::shared_ptr<Instance> instance) {
+    PartInstance::setLocked(instance.get(), true);
+}
+
+void CanNotSelectCommand::doIt(IDataState* state) {
+    checkRunPermissions(dataModel);
+    FilteredSelection<PVInstance>* current = ServiceProvider::create<FilteredSelection<PVInstance> >(static_cast<const ServiceProvider*>(dataModel));
+    std::for_each(selection->selection->begin(), selection->selection->end(), cannotSelect);
+    current->rootSelection->clearSelection();
+    recordCameraHistory(getName().c_str(), workspace.get());
+    state->setDirty(true);
+}
 
 }

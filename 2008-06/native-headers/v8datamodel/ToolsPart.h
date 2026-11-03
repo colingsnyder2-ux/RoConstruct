@@ -40,7 +40,7 @@ namespace RBX
 		virtual MouseCommand* onMouseDown(const UIEvent&);
 		virtual const std::string getCursorName() const;
 	public:
-		FillTool(Workspace*);
+		FillTool(Workspace* workspace) : Named<PartTool, sFillTool>(workspace) {}
 		virtual MouseCommand* isSticky() const;
 	};
 
@@ -52,7 +52,7 @@ namespace RBX
 		virtual MouseCommand* onMouseDown(const UIEvent&);
 		virtual const std::string getCursorName() const;
 	public:
-		DropperTool(Workspace*);
+		DropperTool(Workspace* workspace) : Named<PartTool, sDropperTool>(workspace) {}
 	};
 
 	extern char sModelSetPrimaryPartTool[];
@@ -62,6 +62,6 @@ namespace RBX
 	protected:
 		virtual MouseCommand* onMouseDown(const UIEvent&);
 	public:
-		ModelSetPrimaryPartTool(Workspace*);
+		ModelSetPrimaryPartTool(Workspace* workspace) : Named<PartTool, sModelSetPrimaryPartTool>(workspace) {}
 	};
 };
