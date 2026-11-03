@@ -2,7 +2,7 @@
 #include "../native-classes/CRobloxViewInit.cpp"
 #include "../native-classes/CRobloxView.cpp"
 #include "../native-classes/CRobloxViewMethods.cpp"
-#include "../native-classes/ToggleToolboxVerb.cpp"
+#include "../native-classes/InsertModelFromRobloxVerb.cpp"
 
 // 0045ac40 is G3D::Vector3::operator-, emitted out of line in the original.
 #include <G3D/Vector3.h>

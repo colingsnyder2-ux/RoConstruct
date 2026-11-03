@@ -1,7 +1,7 @@
 #include "../native-headers/CRobloxView.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/CWorkspace.h"
-#include "../native-headers/ToggleToolboxVerb.h"
+#include "../native-headers/InsertModelFromRobloxVerb.h"
 #include "../native-headers/v8datamodel/DataModel.h"
 #include "../native-headers/v8datamodel/ChangeHistoryService.h"
 
@@ -15,29 +15,8 @@ inline RBX::VerbContainer* cameraVerbs(RBX::DataModel* model) {
 
 void reportViewException(const std::exception&);
 
-// Inline derived verbs from 0045a4a0. Sizes come from operator new in the original.
-class HelpVerb : public RBX::Verb {            // 0x10, vtable 00819140
-    CRobloxView* view;
-public:
-    HelpVerb(CRobloxView* view, RBX::VerbContainer* c) : RBX::Verb(c, "Help"), view(view) {}
-    virtual void doIt(RBX::IDataState*);
-};
-class ToggleFullScreenVerb : public RBX::Verb { // 0xc, vtable 00819114
-public:
-    explicit ToggleFullScreenVerb(RBX::VerbContainer* c) : RBX::Verb(c, "ToggleFullScreen") {}
-    virtual void doIt(RBX::IDataState*);
-};
-class LockPlayModeVerb : public RBX::Verb {     // 0xc, vtable 008190ec
-public:
-    explicit LockPlayModeVerb(RBX::VerbContainer* c) : RBX::Verb(c, "LockPlayMode") {}
-    virtual void doIt(RBX::IDataState*);
-};
-class Verb458fd0 : public RBX::Verb {           // 0x18, constructor 00458fd0 unrecovered
-    void* fields_0c[3];
-public:
-    explicit Verb458fd0(RBX::VerbContainer*);
-    virtual void doIt(RBX::IDataState*);
-};
+// Verbs created below (0045a4a0); declared with their bodies in ViewVerbs.h.
+#include "../native-headers/ViewVerbs.h"
 
 // Inline in the original; same shape as CRobloxDoc::bindExisting.
 inline void CRobloxView::bindName(UINT id, const RBX::Name& source) {
@@ -86,10 +65,10 @@ void CRobloxView::OnInitialUpdate() {
     RBX::Notifier<RBX::ServiceProvider, RBX::ServiceAdded>::connect(owner_170.get(), this);
     RBX::Notifier<RBX::ServiceProvider, RBX::ServiceRemoving>::connect(owner_170.get(), this);
     setVerbParent(workspaceVerbs(DM()->getWorkspace()));                    // 00583210
-    slot_1e0.assign(new ToggleToolboxVerb(this, DM()));              // 00458ec0
-    slot_1dc.assign(new HelpVerb(this, DM()));
-    slot_1e4.assign(new ToggleFullScreenVerb(DM()));
-    slot_1e8.assign(new Verb458fd0(DM()));
+    slot_1e0.assign(new InsertModelFromRobloxVerb(this, DM()));              // 00458ec0
+    slot_1dc.assign(new HelpCommand(this, DM()));
+    slot_1e4.assign(new ToggleFullscreenVerb(DM()));
+    slot_1e8.assign(new ToggleIDEModeVerb(DM()));
     slot_1ec.assign(new LockPlayModeVerb(DM()));
     bindExisting(0x8027, cameraVerbs(DM())->getVerb(std::string("CameraPanLeft")));
     bindExisting(0x8028, cameraVerbs(DM())->getVerb(std::string("CameraPanRight")));
