@@ -18,6 +18,9 @@ out.mkdir(parents=True, exist_ok=True)
 recipe = libs.RECIPES['rbxgs']
 import re
 pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig', errors='replace'), re.M)
+import os
+if os.environ.get('NATIVE_FLAGS'):  # trial override; pin a winner in the source afterwards
+    pinned = re.match(r'(.*)', os.environ['NATIVE_FLAGS'])
 headers = str(ROOT / 'rebuild/2008-06/native-headers')
 flags = ['/nologo', '/c'] + (pinned.group(1).replace('{headers}', headers).split() if pinned else
                              ['/O2', '/Ob2', '/Oy', '/GF', '/GS-', '/EHsc', '/MD', '/D_AFXDLL', '/DNDEBUG', '/D_MBCS'])
@@ -31,6 +34,19 @@ code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Fo' + str(obj
 if code:
     sys.exit(log[-3000:])
 bodies = match.coff_functions(obj.read_bytes())
+if len(sys.argv) > 2 and sys.argv[2].startswith('range='):  # auto: every body against a TU range
+    import json
+    lo, hi = (int(x, 16) for x in sys.argv[2][6:].split('-'))
+    rows = [json.loads(l) for l in open(ROOT / 'work/2008-06/functions.jsonl')]
+    cands = [r['addr'] for r in rows if lo <= int(r['addr'], 16) < hi and r.get('kind', 'code') == 'code']
+    targets = {a: match.target('2008-06', a) for a in cands}
+    hits = set()
+    for n, b, r in bodies:
+        for a, (t, tr, _) in targets.items():
+            if len(t) == len(b) and set(tr) <= set(r) and match.exact_match(t, tr, b, r):
+                print('%s %s' % (a, n[:90])); hits.add(a)
+    print('%d range functions exact from this source' % len(hits))
+    sys.exit(0)
 exact = 0
 for arg in sys.argv[2:]:
     addr, prefix = arg.split('=', 1)

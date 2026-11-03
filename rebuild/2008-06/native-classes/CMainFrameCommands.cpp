@@ -1,3 +1,5 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
+// (OnClose 00431f10 needs CString::operator PCXSTR out of line; hideEditorChrome 004309f0, showEditorChrome 00430f50)
 #include "CMainFrame.h"
 #include "util/standardout.h"
 #include "util/boost.hpp"
