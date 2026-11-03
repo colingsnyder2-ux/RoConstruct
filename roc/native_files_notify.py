@@ -173,11 +173,16 @@ def scan(include_forks=True, backfill=False, post=True, save=True, log=print):
 
 
 def link(slug, sha, path):
-    return 'https://github.com/%s/blob/%s/%s' % (slug, sha, path)
+    return 'https://github.com/%s/blob/%s/%s' % (slug, sha[:10], path)
+
+
+FIELD_LIMIT = 1024     # Discord: characters per field value
+EMBED_LIMIT = 5800     # Discord: 6000 characters per embed, with headroom for title/footer
 
 
 def build_payloads(new, cap=150):
-    """Integration Digest embeds, one field group per (repo, branch); capped so a bulk import is not a flood."""
+    """Integration Digest embeds, one field group per (repo, branch). Whole links only: a field or message
+    is closed before a line would cross Discord's limits, never cut mid-link."""
     shown, extra = new[:cap], max(0, len(new) - cap)
     groups = {}
     for slug, branch, sha, path, kind in shown:
@@ -185,16 +190,30 @@ def build_payloads(new, cap=150):
     fields = []
     for (changed, slug, branch, sha), paths in sorted(groups.items()):
         title = '✏️ Changed native files' if changed else '\U0001F4C4 New native files'
-        for i in range(0, len(paths), MAX_LINES):
-            lines = ['[%s](%s)' % (p.replace('rebuild/2008-06/', ''), link(slug, sha, p)) for p in paths[i:i + MAX_LINES]]
-            fields.append({'name': ('%s · %s · %s' % (title, slug, branch))[:256],
-                           'value': '\n'.join(lines)[:1024], 'inline': False})
+        name = ('%s · %s · %s' % (title, slug, branch))[:256]
+        value = ''
+        for p in paths:
+            line = '[%s](%s)' % (p.replace('rebuild/2008-06/', ''), link(slug, sha, p))
+            if value and len(value) + 1 + len(line) > FIELD_LIMIT:
+                fields.append({'name': name, 'value': value, 'inline': False})
+                value = ''
+            value = value + '\n' + line if value else line[:FIELD_LIMIT]
+        if value:
+            fields.append({'name': name, 'value': value, 'inline': False})
     if extra:
         fields.append({'name': '➕ More', 'value': '+%d more new or changed native files (see the branches)' % extra, 'inline': False})
+    messages, current, size = [], [], 0
+    for field in fields:
+        cost = len(field['name']) + len(field['value'])
+        if current and (size + cost > EMBED_LIMIT or len(current) >= MAX_FIELDS):
+            messages.append(current); current, size = [], 0
+        current.append(field); size += cost
+    if current:
+        messages.append(current)
     return [{'allowed_mentions': {'parse': []}, 'embeds': [{
         'title': '⛏️ RoConstruct Integration Digest', 'color': 0xA855F7, 'description': '**2008-06 Client**',
-        'footer': {'text': 'RoConstruct Integration'}, 'fields': fields[i:i + MAX_FIELDS],
-        'timestamp': datetime.now(timezone.utc).isoformat()}]} for i in range(0, len(fields), MAX_FIELDS)]
+        'footer': {'text': 'RoConstruct Integration'}, 'fields': group,
+        'timestamp': datetime.now(timezone.utc).isoformat()}]} for group in messages]
 
 
 def post_files(new, log=print):

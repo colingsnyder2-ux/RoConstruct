@@ -38,6 +38,20 @@ def test_payload_links():
     assert '[native-classes/A.cpp](https://github.com/o/r/blob/abc123/' + N + 'A.cpp)' in body['fields'][0]['value']
     assert '[native-classes/B.cpp](' in body['fields'][1]['value']
     assert nf.is_native(N + 'x.cpp') and not nf.is_native(N + 'x.txt') and not nf.is_native('src/x.cpp')
+    # many long links: every field under 1024, every embed under 6000, no link cut in half
+    sha = 'f' * 40
+    many = [('someone/RoConstruct', 'claude/a-long-branch-name', sha, N + 'HumanoidStatesLeaves%03d.cpp' % i, 'new') for i in range(60)]
+    payloads = nf.build_payloads(many)
+    seen = 0
+    for p in payloads:
+        embed = p['embeds'][0]
+        assert sum(len(f['name']) + len(f['value']) for f in embed['fields']) + len(embed['title']) < 6000
+        for f in embed['fields']:
+            assert len(f['value']) <= 1024
+            for line in f['value'].split('\n'):
+                assert line.startswith('[') and line.endswith('.cpp)'), line
+                seen += 1
+    assert seen == 60, seen
 
 
 def test_changed_files():
