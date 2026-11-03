@@ -1,0 +1,514 @@
+{
+  "class": "COutputView + CStandardOutputView",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "profile": "std::string c_str noinline (target imports it)",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_output_view.py": "29321441b3ed0c9fc11f93ee7f6f5a936c9a357d0f77509f6722bada0478707d",
+    "rebuild/2008-06/native-classes/COutputView.cpp": "3fefa8675d7f647db3e513f94d02f58756f21111cf64a1e8eec51775e619710d",
+    "rebuild/2008-06/tests/NativeOutputViewLayout.cpp": "518ad3ef752b6c17d77674bcc6dd92bce4042d8121539bab3fc654d44f367551",
+    "rebuild/2008-06/native-headers/COutputView.h": "df91f2688662b94707d7cdbe956fc18588ce6112bbe0d139deec4b4b41bd9914",
+    "rebuild/2008-06/native-headers/CSecureHtmlView.h": "ed3f334b678e156e8191481f8a99298b57c8327167ba5eb46bb363e348f3b9a6",
+    "tools/rbxgs/Client/App/include/util/standardout.h": "ab99bef7076b1ff288601a3c1a95fc9790ba26107fd553af0be965b6d855be8f",
+    "rebuild/2008-06/native-headers/util/Events.h": "f800b225028797f6b75faeedaedee26567cc67b41cb30879c265faed4146ca3b"
+  },
+  "object_sha256": "3ebba0a7140265afd45fe23b65763c2e43fe07b7e73a626cbb0d6807e99c2999",
+  "layout": {
+    "COutputView": "0x120: CSecureHtmlView 0xf8, deque<CComPtr<IHTMLDOMNode>> +0xf8, CComQIPtr<IHTMLDocument2> +0x118, CComQIPtr<IHTMLDOMNode> +0x11c",
+    "CStandardOutputView": "0x14c: COutputView, Listener<StandardOut,StandardOutMessage> +0x120, deque<StandardOutMessage> +0x124, boost::mutex +0x144"
+  },
+  "methods": [
+    {
+      "address": "00436060",
+      "symbol": "?_GetBaseClass@COutputView@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CSecureHtmlView@@SGPAUCRuntimeClass@@XZ": "0x465a50"
+      },
+      "local": []
+    },
+    {
+      "address": "00436070",
+      "symbol": "?GetRuntimeClass@COutputView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCOutputView@COutputView@@2UCRuntimeClass@@B": "0x812f60"
+      },
+      "local": []
+    },
+    {
+      "address": "00436080",
+      "symbol": "?GetRuntimeClass@CStandardOutputView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCStandardOutputView@CStandardOutputView@@2UCRuntimeClass@@B": "0x812f7c"
+      },
+      "local": []
+    },
+    {
+      "address": "00436090",
+      "symbol": "?OnInitialUpdate@COutputView@@UAEXXZ",
+      "size": 22,
+      "exact": true,
+      "verified_targets": {
+        "?OnInitialUpdate@CFormView@@UAEXXZ": "mfc90.dll!?OnInitialUpdate@CFormView@@UAEXXZ",
+        "?LoadFromResource@CHtmlView@@QAEHI@Z": "mfc90.dll!?LoadFromResource@CHtmlView@@QAEHI@Z"
+      },
+      "local": []
+    },
+    {
+      "address": "004360b0",
+      "symbol": "?_AtlCopyNCR@ATL@@YAH_WPA_W@Z",
+      "size": 66,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_1BC@CAONAJG@?$AA?$CG?$AA?$CD?$AAx?$AA?$CF?$AA0?$AA4?$AAX?$AA?$DL?$AA?$AA@": "0x812fa8",
+        "__imp__swprintf_s": "msvcr90.dll!swprintf_s",
+        "__imp__memcpy_s": "msvcr90.dll!memcpy_s",
+        "?AfxCrtErrorCheck@@YAHH@Z": "0x401680"
+      },
+      "local": []
+    },
+    {
+      "address": "00436100",
+      "symbol": "?_AtlCopyNCRPair@ATL@@YAHKPA_W@Z",
+      "size": 65,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_1BC@EACLNHOL@?$AA?$CG?$AA?$CD?$AAx?$AA?$CF?$AA0?$AA6?$AAX?$AA?$DL?$AA?$AA@": "0x812fbc",
+        "__imp__swprintf_s": "msvcr90.dll!swprintf_s",
+        "__imp__memcpy_s": "msvcr90.dll!memcpy_s",
+        "?AfxCrtErrorCheck@@YAHH@Z": "0x401680"
+      },
+      "local": []
+    },
+    {
+      "address": "00436150",
+      "symbol": "?EscapeXML@ATL@@YAHPB_WHPA_WHK@Z",
+      "size": 713,
+      "exact": true,
+      "verified_targets": {
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000",
+        "??_C@_1M@CKOFOPMN@?$AA?$CG?$AAa?$AAm?$AAp?$AA?$DL?$AA?$AA@": "0x812ff0",
+        "__imp__memcpy_s": "msvcr90.dll!memcpy_s",
+        "?AfxCrtErrorCheck@@YAHH@Z": "0x401680",
+        "??_C@_1O@PNALKCHB@?$AA?$CG?$AAa?$AAp?$AAo?$AAs?$AA?$DL?$AA?$AA@": "0x812fe0",
+        "??_C@_1O@KDPLEHB@?$AA?$CG?$AAq?$AAu?$AAo?$AAt?$AA?$DL?$AA?$AA@": "0x812fd0",
+        "?_AtlCopyNCR@ATL@@YAH_WPA_W@Z": "0x4360b0",
+        "?_AtlCopyNCRPair@ATL@@YAHKPA_W@Z": "0x436100"
+      },
+      "local": [
+        "$LN24",
+        "$LN25",
+        "$LN27",
+        "$LN29",
+        "$LN51",
+        "$LN60"
+      ]
+    },
+    {
+      "address": "00436420",
+      "symbol": "??D?$_Deque_const_iterator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@$00@std@@QBEABV?$CComPtr@UIHTMLDOMNode@@@ATL@@XZ",
+      "size": 134,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo"
+      },
+      "local": []
+    },
+    {
+      "address": "004364b0",
+      "symbol": "?OnDocumentComplete@COutputView@@UAEXPBD@Z",
+      "size": 442,
+      "exact": true,
+      "verified_targets": {
+        "?GetHtmlDocument@CHtmlView@@QBEPAUIDispatch@@XZ": "mfc90.dll!?GetHtmlDocument@CHtmlView@@QBEPAUIDispatch@@XZ",
+        "__GUID_332c4425_26cb_11d0_b483_00c04fd90119": "0x81056c",
+        "__imp__VariantInit@4": "oleaut32.dll!VariantInit",
+        "??_C@_06DKIGHACF@output?$AA@": "0x812ffc",
+        "??4CComVariant@ATL@@QAEAAV01@PBD@Z": "0x415d70",
+        "__imp__VariantClear@4": "oleaut32.dll!VariantClear",
+        "__GUID_3050f5da_98b5_11cf_bb82_00aa00bdce0b": "0x812f98"
+      },
+      "local": [
+        "__ehhandler$?OnDocumentComplete@COutputView@@UAEXPBD@Z"
+      ]
+    },
+    {
+      "address": "00436670",
+      "symbol": "?pop_front@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@QAEXXZ",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {},
+      "local": []
+    },
+    {
+      "address": "004366d0",
+      "symbol": "?_Tidy@?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@IAEXXZ",
+      "size": 133,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local": []
+    },
+    {
+      "address": "00436760",
+      "symbol": "?_Tidy@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@IAEXXZ",
+      "size": 149,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local": []
+    },
+    {
+      "address": "00436800",
+      "symbol": "?_Growmap@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@IAEXI@Z",
+      "size": 350,
+      "exact": true,
+      "verified_targets": {
+        "?_Xlen@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@KAXXZ": "0x516a10",
+        "??$_Allocate@PAV?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@YAPAPAV?$CComPtr@UIHTMLDOMNode@@@ATL@@IPAPAV12@@Z": "0x420b50",
+        "__imp__memmove_s": "msvcr90.dll!memmove_s",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local": []
+    },
+    {
+      "address": "00436960",
+      "symbol": "??1?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@QAE@XZ",
+      "size": 69,
+      "exact": true,
+      "verified_targets": {
+        "?_Tidy@?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@IAEXXZ": "0x4366d0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local": [
+        "__ehhandler$??1?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004369b0",
+      "symbol": "?push_back@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@QAEXABV?$CComPtr@UIHTMLDOMNode@@@ATL@@@Z",
+      "size": 128,
+      "exact": true,
+      "verified_targets": {
+        "?_Growmap@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@IAEXI@Z": "0x436800",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z"
+      },
+      "local": []
+    },
+    {
+      "address": "00436a30",
+      "symbol": "??0COutputView@@QAE@XZ",
+      "size": 120,
+      "exact": true,
+      "verified_targets": {
+        "??0CSecureHtmlView@@QAE@XZ": "0x465a60",
+        "??_7COutputView@@6B@": "0x81300c",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z"
+      },
+      "local": [
+        "__ehhandler$??0COutputView@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00436ab0",
+      "symbol": "??1COutputView@@UAE@XZ",
+      "size": 141,
+      "exact": true,
+      "verified_targets": {
+        "?_Tidy@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@IAEXXZ": "0x436760",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1CSecureHtmlView@@UAE@XZ": "0x465a80"
+      },
+      "local": [
+        "__ehhandler$??1COutputView@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00436b40",
+      "symbol": "??_GCOutputView@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1COutputView@@UAE@XZ": "0x436ab0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local": []
+    },
+    {
+      "address": "00436b60",
+      "symbol": "?appendElement@COutputView@@IAEXPAUIHTMLElement@@@Z",
+      "size": 378,
+      "exact": true,
+      "verified_targets": {
+        "__GUID_3050f5da_98b5_11cf_bb82_00aa00bdce0b": "0x812f98",
+        "__imp__VariantClear@4": "oleaut32.dll!VariantClear",
+        "?push_back@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@QAEXABV?$CComPtr@UIHTMLDOMNode@@@ATL@@@Z": "0x4369b0",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??D?$_Deque_const_iterator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@$00@std@@QBEABV?$CComPtr@UIHTMLDOMNode@@@ATL@@XZ": "0x436420",
+        "?pop_front@?$deque@V?$CComPtr@UIHTMLDOMNode@@@ATL@@V?$allocator@V?$CComPtr@UIHTMLDOMNode@@@ATL@@@std@@@std@@QAEXXZ": "0x436670"
+      },
+      "local": [
+        "__ehhandler$?appendElement@COutputView@@IAEXPAUIHTMLElement@@@Z"
+      ]
+    },
+    {
+      "address": "00436ce0",
+      "symbol": "??1CStandardOutputView@@UAE@XZ",
+      "size": 336,
+      "exact": true,
+      "verified_targets": {
+        "??_7CStandardOutputView@@6BCOutputView@@@": "0x81324c",
+        "??_7CStandardOutputView@@6B?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@@": "0x813240",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620",
+        "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0",
+        "?removeListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@QBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z": "0x5e5a80",
+        "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00",
+        "??1mutex@boost@@QAE@XZ": "0x594cb0",
+        "?_Tidy@?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@IAEXXZ": "0x4366d0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1COutputView@@UAE@XZ": "0x436ab0"
+      },
+      "local": [
+        "__ehhandler$??1CStandardOutputView@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00436e30",
+      "symbol": "??_ECStandardOutputView@@WBCA@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECStandardOutputView@@UAEPAXI@Z": "0x437500"
+      },
+      "local": []
+    },
+    {
+      "address": "00436e40",
+      "symbol": "??$_Construct@UStandardOutMessage@RBX@@U12@@std@@YAXPAUStandardOutMessage@RBX@@ABU12@@Z",
+      "size": 98,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+      },
+      "local": [
+        "__ehhandler$??$_Construct@UStandardOutMessage@RBX@@U12@@std@@YAXPAUStandardOutMessage@RBX@@ABU12@@Z"
+      ]
+    },
+    {
+      "address": "00436eb0",
+      "symbol": "?_Growmap@?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@IAEXI@Z",
+      "size": 352,
+      "exact": true,
+      "verified_targets": {
+        "?_Xlen@?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@KAXXZ": "0x516a10",
+        "??$_Allocate@PAUStandardOutMessage@RBX@@@std@@YAPAPAUStandardOutMessage@RBX@@IPAPAU12@@Z": "0x420b50",
+        "__imp__memmove_s": "msvcr90.dll!memmove_s",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local": []
+    },
+    {
+      "address": "00437010",
+      "symbol": "?push_back@?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@QAEXABUStandardOutMessage@RBX@@@Z",
+      "size": 88,
+      "exact": true,
+      "verified_targets": {
+        "?_Growmap@?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@IAEXI@Z": "0x436eb0",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??$_Construct@UStandardOutMessage@RBX@@U12@@std@@YAXPAUStandardOutMessage@RBX@@ABU12@@Z": "0x436e40"
+      },
+      "local": []
+    },
+    {
+      "address": "00437070",
+      "symbol": "?onEvent@CStandardOutputView@@MAEXPBVStandardOut@RBX@@UStandardOutMessage@3@@Z",
+      "size": 213,
+      "exact": true,
+      "verified_targets": {
+        "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0",
+        "__imp__PostMessageA@16": "user32.dll!PostMessageA",
+        "?push_back@?$deque@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@@std@@QAEXABUStandardOutMessage@RBX@@@Z": "0x437010",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00"
+      },
+      "local": [
+        "__ehhandler$?onEvent@CStandardOutputView@@MAEXPBVStandardOut@RBX@@UStandardOutMessage@3@@Z"
+      ]
+    },
+    {
+      "address": "00437150",
+      "symbol": "?appendMessage@CStandardOutputView@@IAEXW4MessageType@RBX@@PBD_J@Z",
+      "size": 588,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAE@PBD@Z",
+        "__imp_??0?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAE@XZ",
+        "?EscapeXML@ATL@@YAHPB_WHPA_WHK@Z": "0x436150",
+        "__imp_?GetBufferSetLength@?$CSimpleStringT@_W$00@ATL@@QAEPA_WH@Z": "mfc90.dll!?GetBufferSetLength@?$CSimpleStringT@_W$00@ATL@@QAEPA_WH@Z",
+        "__imp_?ReleaseBuffer@?$CSimpleStringT@_W$00@ATL@@QAEXH@Z": "mfc90.dll!?ReleaseBuffer@?$CSimpleStringT@_W$00@ATL@@QAEXH@Z",
+        "__imp___ctime64_s": "msvcr90.dll!_ctime64_s",
+        "__imp_??4?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAEAAV01@PBD@Z": "mfc90.dll!??4?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAEAAV01@PBD@Z",
+        "??_C@_03NLJIHOMM@?5?9?5?$AA@": "0x8134d8",
+        "__imp_??Y?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAEAAV01@PBD@Z": "mfc90.dll!??Y?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAEAAV01@PBD@Z",
+        "??_C@_0BE@EIMMDEOO@?$DMFONT?5color?$DN?$CCblue?$CC?$DO?$AA@": "0x8134c4",
+        "__imp_??Y?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAEAAV01@ABV?$CSimpleStringT@_W$00@1@@Z": "mfc90.dll!??Y?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAEAAV01@ABV?$CSimpleStringT@_W$00@1@@Z",
+        "??_C@_07CDFDLLCH@?$DM?1FONT?$DO?$AA@": "0x8134bc",
+        "??_C@_0BO@MODKMOND@?$DMSTRONG?$DO?$DMFONT?5color?$DN?$CCorange?$CC?$DO?$AA@": "0x81349c",
+        "??_C@_0BL@EDKIHNLP@?$DMSTRONG?$DO?$DMFONT?5color?$DN?$CCred?$CC?$DO?$AA@": "0x813480",
+        "??_C@_03FJGHKDBE@DIV?$AA@": "0x81347c",
+        "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180",
+        "__imp__SysFreeString@4": "oleaut32.dll!SysFreeString",
+        "?appendElement@COutputView@@IAEXPAUIHTMLElement@@@Z": "0x436b60",
+        "__imp_??1?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@QAE@XZ",
+        "__imp__SysAllocString@4": "oleaut32.dll!SysAllocString",
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
+      },
+      "local": [
+        "$LN2",
+        "$LN3",
+        "$LN4",
+        "$LN5",
+        "$LN69",
+        "__ehhandler$?appendMessage@CStandardOutputView@@IAEXW4MessageType@RBX@@PBD_J@Z"
+      ]
+    },
+    {
+      "address": "004373a0",
+      "symbol": "??0CStandardOutputView@@QAE@XZ",
+      "size": 348,
+      "exact": true,
+      "verified_targets": {
+        "??0COutputView@@QAE@XZ": "0x436a30",
+        "??_7CStandardOutputView@@6BCOutputView@@@": "0x81324c",
+        "??_7CStandardOutputView@@6B?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@@": "0x813240",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0mutex@boost@@QAE@XZ": "0x594c90",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620",
+        "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0",
+        "?addListener@?$Notifier@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@QBEXPAV?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@2@@Z": "0x4218a0",
+        "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00"
+      },
+      "local": [
+        "__ehhandler$??0CStandardOutputView@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00437500",
+      "symbol": "??_GCStandardOutputView@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CStandardOutputView@@UAE@XZ": "0x436ce0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local": []
+    },
+    {
+      "address": "00437520",
+      "symbol": "?OnStandardOutMessage@CStandardOutputView@@IAEJIJ@Z",
+      "size": 534,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??D?$_Deque_const_iterator@UStandardOutMessage@RBX@@V?$allocator@UStandardOutMessage@RBX@@@std@@$00@std@@QBEABUStandardOutMessage@RBX@@XZ": "0x496020",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "?appendMessage@CStandardOutputView@@IAEXW4MessageType@RBX@@PBD_J@Z": "0x437150"
+      },
+      "local": [
+        "__ehhandler$?OnStandardOutMessage@CStandardOutputView@@IAEJIJ@Z"
+      ]
+    },
+    {
+      "address": "00437740",
+      "symbol": "?CreateObject@CStandardOutputView@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CStandardOutputView@@QAE@XZ": "0x4373a0"
+      },
+      "local": [
+        "__ehhandler$?CreateObject@CStandardOutputView@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "004377a0",
+      "symbol": "?GetMessageMap@CStandardOutputView@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CStandardOutputView@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x8134dc"
+      },
+      "local": []
+    }
+  ],
+  "vtables": {
+    "0081300c": {
+      "symbol": "??_7COutputView@@6B@",
+      "slots": 140,
+      "inline_folds_verified_by_body": 11
+    },
+    "0081324c": {
+      "symbol": "??_7CStandardOutputView@@6BCOutputView@@@",
+      "slots": 140,
+      "inline_folds_verified_by_body": 11
+    },
+    "00813240": {
+      "symbol": "??_7CStandardOutputView@@6B?$Listener@VStandardOut@RBX@@UStandardOutMessage@2@@RBX@@@",
+      "slots": 2,
+      "inline_folds_verified_by_body": 0
+    }
+  },
+  "open": [
+    "00437810 (jmp 006fa3e0, not part of this unit)"
+  ],
+  "scope": "Inactive. All bodies exact with verified targets. No active build, swap or credit."
+}
