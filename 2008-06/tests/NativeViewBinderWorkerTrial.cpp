@@ -7,13 +7,14 @@ template<>
 BOOL VerbBinder<CRobloxView, CView>::OnCmdMsg(UINT id, int code, void* extra, AFX_CMDHANDLERINFO* info)
 {
     if (code == 0 || code == -1) {
-        std::map<DWORD, const RBX::Name*>::iterator it = commandNames.find(id);
+        std::map<UINT, const RBX::Name*>::iterator it = commandNames.find(id);
         if (it != commandNames.end() && it->second) {
             CRobloxView* view = static_cast<CRobloxView*>(this);
-            boost::shared_ptr<const RBX::DataModel> model = view->getDataModel();
+            const boost::shared_ptr<const RBX::DataModel> model = view->getDataModel();
             RBX::DataModel::Lock lock(model);
             const RBX::Name* name = it->second;
-            RBX::Verb* verb = view->getVerb(*name);
+            RBX::VerbContainer* verbs = static_cast<RBX::VerbContainer*>(view);
+            RBX::Verb* verb = verbs ? verbs->getVerb(*name) : 0;
             if (verb) {
                 if (code == 0) {
                     try { verb->doIt(model ? const_cast<RBX::DataModel*>(model.get()) : 0); }

@@ -81,6 +81,7 @@ namespace RBX
 					   public Notifier<RunService, RunTransition>,
 					   public Notifier<RunService, RunState>
 	{
+		friend class DataModel;
 	private:
 		RunState runState;
 		double unknown0x1b8;

@@ -8,7 +8,6 @@
 // Inline in the original, as in CRobloxDoc.cpp.
 inline const RBX::Name& RBX::Verb::getName() const { return name; }
 
-// Workspace+0x2ec holds the camera and selection verbs; member not declared yet.
 inline RBX::VerbContainer* cameraVerbs(RBX::DataModel* model) {
     return reinterpret_cast<RBX::VerbContainer*>(reinterpret_cast<char*>(model->getWorkspace()) + 0x2ec);
 }
@@ -34,7 +33,6 @@ inline void CRobloxView::bindExisting(UINT id, RBX::Verb* verb) {
     }
 }
 
-// Null-safe base conversion; Workspace's VerbContainer base sits at +0x2ec.
 inline RBX::VerbContainer* workspaceVerbs(RBX::Workspace* workspace) {
     return workspace ? reinterpret_cast<RBX::VerbContainer*>(reinterpret_cast<char*>(workspace) + 0x2ec) : 0;
 }
