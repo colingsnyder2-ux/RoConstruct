@@ -22,6 +22,7 @@ public:
     std::vector<ISelectionBase*> filteredSelections;
     size_t size() const { return selection->size(); }
     boost::shared_ptr<Instance> front() const;
+    boost::shared_ptr<Instance> back() const;
     void clearSelection();
     void addToSelection(Instance*);
     bool isSelected(const Instance*) const;                     // 00424eb0

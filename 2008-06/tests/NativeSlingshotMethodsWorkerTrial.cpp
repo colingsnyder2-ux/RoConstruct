@@ -7,5 +7,5 @@ void ShootTool::onMouseMove(const UIEvent& input) { if (enabled && !remaining) s
 MouseCommand* ShootTool::onMouseUp(const UIEvent&) { releaseCapture(); return this; }
 const std::string ShootTool::getCursorName() const { if (remaining && delay>10) return "GunWaitCursor"; return "GunCursor"; }
 MouseCommand* SlingshotTool::isSticky() const { return new SlingshotTool(workspace); }
-template<> const Name& Named<ShootTool,sSlingshotTool>::getName() const { return NativeToolName<SlingshotTool>::get(); }
+// moved to native-classes/ToolVerbFactories.cpp
 }

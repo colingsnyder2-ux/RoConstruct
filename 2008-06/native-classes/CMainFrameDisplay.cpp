@@ -10,7 +10,7 @@ FrameSizeSettings* frameSizeSettings();
 
 // 00430bf0 (96%: the original loads the return-slot pointer into ebx at entry): the display mode closest to the requested pixel count with the current mode's
 // aspect ratio (within 10%), colour depth and refresh rate.
-DEVMODEA findDisplayMode(LPCSTR deviceName, int pixels)
+volatile DEVMODEA findDisplayMode(LPCSTR deviceName, int pixels)
 {
     DEVMODEA best;
     DEVMODEA mode;
