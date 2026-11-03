@@ -1,187 +1,235 @@
-// from server: 12% by intel
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Face.cpp
+// from server: 13% by Intel
+struct MegaClusterPoly {
+    float m_data[12];
+    void compute(float* out, const MegaClusterPoly* other);
+};
 
-// Candidate translation unit (score above; library headers required).
-#include "util/Face.h"
-#include "util/Math.h"
+extern "C" void __stdcall sub_916A80(const MegaClusterPoly* a, const MegaClusterPoly* b, float* out, const MegaClusterPoly* thisptr);
 
-namespace RBX
-{
-	const G3D::Vector3& Face::operator[](int i) const
-	{
-		return ((G3D::Vector3*)this)[i];
-	}
+float sqrtf(float);
 
-	G3D::Vector3& Face::operator[](int i)
-	{
-		return ((G3D::Vector3*)this)[i];
-	}
+void MegaClusterPoly::compute(float* out, const MegaClusterPoly* other) {
+    float xmm0, xmm1, xmm2, xmm3, xmm4, xmm5, xmm6, xmm7;
+    float stack[128];
 
-	void Face::snapToGrid(float grid)
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			G3D::Vector3& v = (*this)[i];
-			v = Math::toGrid(v, grid);
-		}
-	}
+    xmm5 = m_data[1];
+    xmm0 = m_data[4];
+    xmm4 = m_data[2];
+    xmm1 = m_data[5];
+    xmm3 = m_data[0];
+    xmm2 = m_data[3];
 
-	bool Face::overlapWithinPlanes(const Face& f0, const Face& f1, float tolerance)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			const Face& face = i == 0 ? f0 : f1;
-			const Face& otherFace = i == 0 ? f1 : f0;
+    xmm0 -= xmm5;
+    stack[12] = xmm0;
+    xmm1 -= xmm4;
+    stack[13] = xmm1;
+    xmm2 -= xmm3;
+    stack[11] = xmm2;
 
-			G3D::Plane p0(face.c0, face.c1, face.c3);
-			
-			G3D::Vector3 normal;
-			double distance;
-			p0.getEquation(normal, distance);
+    float* ebx = stack + 21;
+    unsigned int edi = 0;
 
-			Face overlapOn1 = otherFace.projectOverlapOnMe(face);
+    float f0 = xmm0 * xmm0;
+    float f1 = xmm1 * xmm1;
+    float f2 = f0 + f1;
+    float f3 = xmm2 * xmm2;
+    float f4 = f2 + f3;
+    float f5 = sqrtf(f4);
+    float f6 = 1.0f / f5;
 
-			for (int j = 0; j < 4; ++j)
-			{
-				if (overlapOn1[j].dot(normal) > tolerance)
-					return false;
-			}
-		}
+    xmm7 = f6;
+    xmm0 *= xmm7;
+    xmm4 = xmm7;
+    xmm4 *= xmm2;
+    xmm1 *= xmm7;
+    xmm7 = xmm1;
+    xmm2 = m_data[9] - xmm3;
+    xmm3 = m_data[2];
+    xmm6 = xmm0;
+    xmm0 = m_data[10] - xmm5;
+    xmm1 = m_data[11] - xmm3;
+    xmm0 -= xmm5;
 
-		return true;
-	}
+    stack[14] = xmm1;
+    float f7 = xmm1 * xmm1;
+    stack[13] = xmm0;
+    float f8 = xmm0 * xmm0;
+    stack[12] = xmm2;
+    float f9 = xmm2 * xmm2;
+    stack[28] = xmm6;
+    stack[29] = xmm7;
+    stack[21] = xmm4;
+    stack[22] = xmm7;
+    f8 += f7;
+    f9 += f8;
+    float f10 = sqrtf(f9);
+    float f11 = f6 / f10;
 
-	bool Face::fuzzyContainsInExtrusion(const G3D::Vector3& point, float tolerance) const
-	{
-		RBXASSERT(tolerance >= 0.0);
+    xmm3 = f11;
+    xmm5 = xmm3;
+    xmm0 *= xmm3;
+    xmm1 *= xmm3;
+    xmm5 *= xmm2;
+    stack[16] = xmm0;
+    stack[17] = xmm1;
+    stack[24] = xmm5;
+    stack[25] = xmm0;
+    stack[26] = xmm1;
 
-		for (int i = 0; i < 4; ++i)
-		{
-			const G3D::Vector3& v1 = (*this)[i];
-			const G3D::Vector3& v2 = (*this)[(i + 1) % 4];
+    do {
+        float* eax1 = stack + 6;
+        float* ecx1 = stack + 5;
+        sub_916A80(this, other, eax1, (const MegaClusterPoly*)ecx1);
+        float* edx1 = stack + 5;
+        float* eax2 = stack + 33;
+        sub_916A80(other, this, edx1, (const MegaClusterPoly*)eax2);
 
-			if ((v2 - v1).dot(point - v1) < -tolerance)
-				return false;
-		}
+        float xmm0_cmp = stack[32];
+        float* eax3 = (xmm0_cmp > stack[4]) ? stack + 32 : stack + 4;
+        float f12 = *eax3;
+        float xmm0_cmp2 = stack[6];
+        float* eax4 = (xmm0_cmp2 > stack[5]) ? stack + 6 : stack + 5;
+        float f13 = *eax4;
 
-		return true;
-	}
+        stack[12 + edi] = f12;
+        edi += 4;
+        stack[7 + edi] = f13;
+        ebx += 3;
+    } while (edi < 8);
 
-	void Face::minMax(const G3D::Vector3& point, const G3D::Vector3& normal, float& min, float& max) const
-	{
-		min = 1.0e10;
-		max = -1.0e10;
-
-		for (int i = 0; i < 4; ++i)
-		{
-			const G3D::Vector3& v = (*this)[i];
-			float temp = (v - point).dot(normal);
-			min = G3D::min(min, temp);
-			max = G3D::max(max, temp);
-		}
-	}
-
-	bool Face::hasOverlap(const Face& f0, const Face& f1, float byAtLeast)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			G3D::Vector3 axis = f0.getAxis(i);
-
-			float f0min, f0max;
-			f0.minMax(f0.c0, axis, f0min, f0max);
-
-			float f1min, f1max;
-			f1.minMax(f0.c0, axis, f1min, f1max);
-
-			if ((f0min - byAtLeast) < f1min || (f0max + byAtLeast) > f1max)
-				return false;
-		}
-		
-		return true;
-	}
-
-	bool Face::cornersAligned(const Face& f0, const Face& f1, float tolerance)
-	{
-		RBXASSERT(tolerance > 0.0);
-
-		float toleranceSquared = tolerance*tolerance;
-
-		for (int i = 0; i < 4; ++i)
-		{
-			bool aligned = false;
-
-			for (int j = 0; j < 4; ++j)
-			{
-				const G3D::Vector3& v1 = f0[i];
-				const G3D::Vector3& v2 = f1[j];
-
-				if ((v1 - v2).squaredMagnitude() < toleranceSquared)
-				{
-					aligned = true;
-					break;
-				}
-			}
-
-			if (!aligned)
-				return false;
-		}
-
-		return true;
-	}
-
-	Face Face::projectOverlapOnMe(const Face& other) const
-	{
-		G3D::Vector3 normal = getU();
-		G3D::Vector3 v2 = getV();
-
-		float minL[2];
-		float maxL[2];
-		for (int i = 0; i < 2; ++i)
-		{
-			float f0min, f0max;
-			this->minMax(this->c0, normal, f0min, f0max);
-
-			float f1min, f1max;
-			other.minMax(this->c0, normal, f1min, f1max);
-
-			minL[i] = G3D::min(f0min, f1min);
-			maxL[i] = G3D::max(f0max, f1max);
-		}
-
-		return Face(
-			(normal * minL[1]) + (v2 * minL[1]) + this->c0,
-			(normal * minL[1]) + (v2 * minL[0]) + this->c0,
-			(normal * maxL[1]) + (v2 * minL[0]) + this->c0,
-			(normal * maxL[1]) + (v2 * minL[1]) + this->c0);
-	}
-
-	Face Face::fromExtentsSide(const Extents& e, NormalId faceId)
-	{
-		Face face;
-		e.getFaceCorners(faceId, face.c0, face.c1, face.c2, face.c3);
-		return face;
-	}
-
-	Face Face::toWorldSpace(const G3D::CoordinateFrame& objectCoord) const
-	{
-		Face face;
-		for (int i = 0; i < 4; ++i)
-		{
-			face[i] = objectCoord.pointToWorldSpace((*this)[i]);
-		}
-		return face;
-	}
-
-	Face Face::toObjectSpace(const G3D::CoordinateFrame& objectCoord) const
-	{
-		Face face;
-		for (int i = 0; i < 4; ++i)
-		{
-			face[i] = objectCoord.pointToObjectSpace((*this)[i]);
-		}
-		return face;
-	}
+    xmm2 = stack[13];
+    xmm1 = stack[17];
+    xmm0 = stack[16];
+    xmm3 = xmm5;
+    xmm1 *= xmm2;
+    xmm0 *= xmm2;
+    stack[23] = xmm1;
+    stack[11] = xmm1;
+    xmm3 *= xmm2;
+    xmm1 = stack[8];
+    xmm6 *= xmm1;
+    stack[4] = xmm6;
+    xmm7 *= xmm1;
+    xmm6 += xmm0;
+    xmm2 = xmm4;
+    xmm2 *= xmm1;
+    stack[5] = xmm2;
+    stack[22] = xmm0;
+    xmm2 += xmm3;
+    stack[10] = xmm0;
+    xmm0 = m_data[0];
+    stack[7] = xmm7;
+    xmm7 += stack[23];
+    xmm1 = xmm0;
+    xmm1 += xmm2;
+    stack[21] = xmm1;
+    xmm1 = m_data[1];
+    xmm2 = xmm1;
+    xmm2 += xmm6;
+    stack[22] = xmm2;
+    xmm2 = m_data[2];
+    xmm6 = xmm2;
+    xmm6 += xmm7;
+    stack[23] = xmm6;
+    xmm7 = stack[4];
+    xmm5 *= stack[9];
+    stack[6] = xmm5;
+    xmm5 = stack[16];
+    xmm5 *= stack[9];
+    stack[8] = xmm5;
+    xmm5 = stack[17];
+    xmm5 *= stack[9];
+    xmm6 = stack[5];
+    stack[32] = xmm5;
+    xmm5 = stack[7];
+    stack[20] = xmm5;
+    xmm5 = stack[6];
+    xmm6 += xmm5;
+    xmm5 = stack[20];
+    stack[15] = xmm6;
+    xmm6 = stack[8];
+    xmm7 += xmm6;
+    xmm5 += xmm7;
+    stack[33] = xmm5;
+    xmm5 = stack[32];
+    xmm6 = stack[12];
+    xmm7 = stack[16];
+    xmm4 *= xmm7;
+    stack[32] = xmm4;
+    xmm5 = xmm4;
+    xmm4 = stack[28];
+    xmm4 *= xmm7;
+    stack[16] = xmm6;
+    stack[8] = xmm4;
+    xmm6 = xmm4;
+    xmm4 = stack[29];
+    xmm4 *= xmm7;
+    xmm7 = stack[6];
+    stack[7] = xmm4;
+    xmm6 += stack[16];
+    xmm0 = xmm0;
+    xmm7 = xmm0;
+    xmm7 += xmm5;
+    xmm5 = xmm1;
+    xmm5 += xmm6;
+    xmm5 = xmm2;
+    xmm5 += xmm4;
+    stack[13] = xmm5;
+    xmm5 = xmm7;
+    stack[12] = xmm7;
+    xmm5 = xmm1;
+    xmm5 += xmm6;
+    stack[14] = xmm5;
+    xmm5 = xmm2;
+    xmm5 += xmm4;
+    stack[15] = xmm5;
+    xmm5 = xmm7;
+    xmm7 = stack[12];
+    xmm4 *= xmm7;
+    stack[32] = xmm4;
+    xmm5 = xmm4;
+    xmm4 = stack[28];
+    xmm4 *= xmm7;
+    stack[16] = xmm6;
+    stack[8] = xmm4;
+    xmm6 = xmm4;
+    xmm4 = stack[29];
+    xmm4 *= xmm7;
+    xmm7 = stack[6];
+    stack[7] = xmm4;
+    xmm6 += stack[16];
+    xmm4 = stack[32];
+    xmm4 += xmm3;
+    xmm5 = stack[8];
+    xmm5 += xmm7;
+    xmm0 += xmm4;
+    stack[15] = xmm0;
+    int ecx_val = stack[15];
+    *out = ecx_val;
+    xmm1 += xmm5;
+    xmm6 += stack[11];
+    stack[16] = xmm1;
+    int edx_val = stack[16];
+    out[1] = edx_val;
+    edx_val = stack[12];
+    out[3] = edx_val;
+    stack[17] = xmm2;
+    int ecx_val2 = stack[17];
+    out[2] = ecx_val2;
+    ecx_val2 = stack[14];
+    out[4] = ecx_val2;
+    ecx_val2 = stack[18];
+    out[6] = ecx_val2;
+    edx_val = stack[19];
+    out[7] = edx_val;
+    edx_val = stack[21];
+    out[5] = edx_val;
+    ecx_val2 = stack[20];
+    out[8] = ecx_val2;
+    edx_val = stack[22];
+    out[9] = edx_val;
+    edx_val = stack[23];
+    out[10] = edx_val;
+    ecx_val2 = stack[20];
+    out[8] = ecx_val2;
 }

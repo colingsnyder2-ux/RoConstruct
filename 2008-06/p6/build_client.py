@@ -155,7 +155,10 @@ if NATIVE_DOC:
                         ('NativeStandardVerbs.obj', ROOT / 'rebuild/2008-06/native-classes/StandardVerbs.cpp'),
                         ('NativeStatsCommandsFull.obj', ROOT / 'rebuild/2008-06/native-classes/StatsCommands.cpp'),
                         ('NativeToolVerbCoreFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCore.cpp'),
-                        ('NativeToolVerbCheckedFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbChecked.cpp'),
+                        ('NativeToolVerbCheckedSurfaceFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedSurface.cpp'),
+                        ('NativeToolVerbCheckedModelFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp'),
+                        ('NativeToolVerbCheckedExistingFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedExisting.cpp'),
+                        ('NativeToolVerbCheckedBasicFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedBasic.cpp'),
                         ('NativeCameraFirstPersonFull.obj', ROOT / 'rebuild/2008-06/native-classes/CameraFirstPerson.cpp'),
                         ('NativeBasicVerbConstructorsFull.obj', ROOT / 'rebuild/2008-06/native-classes/BasicVerbConstructors.cpp'),
                         ('NativeClearBackpackFull.obj', ROOT / 'rebuild/2008-06/native-classes/ClearBackpack.cpp'),
@@ -293,7 +296,7 @@ if NATIVE_DOC:
 system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
-native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj', 'NativeStatsCommandsFull.obj', 'NativeToolVerbCoreFull.obj', 'NativeToolVerbCheckedFull.obj', 'NativeCameraFirstPersonFull.obj', 'NativeBasicVerbConstructorsFull.obj', 'NativeClearBackpackFull.obj', 'NativeClearStarterpackFull.obj', 'NativeSelectionBackFull.obj', 'NativeJoinCommandFull.obj', 'NativeSelectionVerbConstructorsFull.obj', 'NativeSelectionVerbStatesFull.obj', 'NativeBoolPropertyVerbFull.obj', 'NativeDuplicateSelectionVerbFull.obj', 'NativeWeldSnapActionsFull.obj', 'NativeSurfaceVisitorsFull.obj', 'NativeMoveUpSelectionVerbFull.obj', 'NativeMoveDownSelectionVerbFull.obj', 'NativeUngroupOperationFull.obj', 'NativeUngroupSelectionVerbFull.obj', 'NativePartInstanceLockedFull.obj', 'NativeRunStateCommandsFull.obj', 'NativeGroupSelectionVerbFull.obj',
+native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj', 'NativeStatsCommandsFull.obj', 'NativeToolVerbCoreFull.obj', 'NativeToolVerbCheckedSurfaceFull.obj', 'NativeToolVerbCheckedModelFull.obj', 'NativeToolVerbCheckedExistingFull.obj', 'NativeToolVerbCheckedBasicFull.obj', 'NativeCameraFirstPersonFull.obj', 'NativeBasicVerbConstructorsFull.obj', 'NativeClearBackpackFull.obj', 'NativeClearStarterpackFull.obj', 'NativeSelectionBackFull.obj', 'NativeJoinCommandFull.obj', 'NativeSelectionVerbConstructorsFull.obj', 'NativeSelectionVerbStatesFull.obj', 'NativeBoolPropertyVerbFull.obj', 'NativeDuplicateSelectionVerbFull.obj', 'NativeWeldSnapActionsFull.obj', 'NativeSurfaceVisitorsFull.obj', 'NativeMoveUpSelectionVerbFull.obj', 'NativeMoveDownSelectionVerbFull.obj', 'NativeUngroupOperationFull.obj', 'NativeUngroupSelectionVerbFull.obj', 'NativePartInstanceLockedFull.obj', 'NativeRunStateCommandsFull.obj', 'NativeGroupSelectionVerbFull.obj',
                       'NativeDocumentExceptionFull.obj', 'NativeSaveDialogFull.obj', 'NativeDocumentLoadFileFull.obj', 'NativeDocumentLoadFromStringFull.obj',
                       'NativeDocumentInsertModelFull.obj', 'NativeDocumentExecuteFull.obj', 'NativeDocumentLDrawFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeFileSystemFull.obj', 'NativeContentProviderFull.obj',
                       'NativeLDrawParserLifetimeFull.obj',

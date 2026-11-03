@@ -1,3 +1,5 @@
+#pragma once
+
 #include "v8tree/Instance.h"
 #include "util/TextureId.h"
 #include "util/MeshId.h"

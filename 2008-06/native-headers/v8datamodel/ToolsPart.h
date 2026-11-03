@@ -1,3 +1,5 @@
+#pragma once
+
 // 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/ToolsPart.h: class names are .data
 // char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #include "v8datamodel/MouseCommand.h"
