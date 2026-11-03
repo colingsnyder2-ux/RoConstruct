@@ -1,5 +1,5 @@
 # Native-doc tool-family sources for ROC_NATIVE_DOC_EXTRA (semicolon-separated absolute paths).
-# Isolated probes against the working-tree build_client.py of 2026-11-03 14:23: 110 unresolved without these sources, 40 with them; only the 5 Instance LNK2005 remain.
+# Isolated probes against the working-tree build_client.py of 2026-11-03 14:23: 110 unresolved without these sources, 35 with them; only the 5 Instance LNK2005 remain.
 # Left out on purpose: HammerMethods/Shoot/LaserClick/Slingshot Content,Pellet,Provider/RocketPrototype worker trials (do not compile: PartInstance::clone/remove, one-argument getUnlockedPartByLocalCharacter), RocketLaunchMismatch and MouseCaptureRocket (conflict with the real definitions), CloneSticky, ChangeHistoryLifetime, MegaDragger trials, BasicVerbConstructors (already in build_client.py).
 rebuild/2008-06/native-classes/ToolVerbFactories.cpp
 rebuild/2008-06/tests/NativeAnchorActionsTrial.cpp
@@ -86,3 +86,5 @@ rebuild/2008-06/tests/NativeContentReadTrial.cpp
 rebuild/2008-06/tests/NativeAnchorChildrenTrial.cpp
 rebuild/2008-06/tests/NativeApplyAnchoredTrial.cpp
 rebuild/2008-06/tests/NativeCameraFirstPersonTrial.cpp
+rebuild/2008-06/tests/NativeMegaAliveTrial.cpp
+rebuild/2008-06/tests/NativeMegaSafeMoveTrial.cpp
