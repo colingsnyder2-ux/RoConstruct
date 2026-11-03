@@ -204,12 +204,38 @@
  "libpng-1.2.6": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.6.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "png.c",
+   "pngerror.c",
+   "pngget.c",
+   "pngread.c",
+   "pngrtran.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngwrite.c",
+   "pngwtran.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.7": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.7.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "png.c",
+   "pngerror.c",
+   "pngget.c",
+   "pngmem.c",
+   "pngread.c",
+   "pngrio.c",
+   "pngrtran.c",
+   "pngrutil.c",
+   "pngset.c",
+   "pngtrans.c",
+   "pngwio.c",
+   "pngwrite.c",
+   "pngwtran.c",
+   "pngwutil.c"
+  ]
  },
  "libpng-1.2.8": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.8.tar.gz",
@@ -279,7 +305,9 @@
  "libpng-1.2.6-winapi": {
   "url": "https://github.com/pnggroup/libpng/archive/refs/tags/v1.2.6.tar.gz",
   "kind": "archive",
-  "files": []
+  "files": [
+   "pngwutil.c"
+  ]
  },
  "g3d-6.09": {
   "url": "https://archive.org/download/g3d-src-6_09/g3d-src-6_09.zip",
@@ -930,15 +958,87 @@
    "?enableAlphaWrite@RenderDevice@G3D@@QAEXXZ": "https://github.com/RBLXDecomp/g3d/blob/2a2fc86c37d46e3c9b2b571795d09a6f667154c0/include/GLG3D/RenderDevice.h#L1794"
   }
  },
+ "rccservice": {
+  "url": "https://github.com/verify-stack/rccservice-decompile/blob/35dc07d25ef89e2fbcba7d484828c3bd0c060321/RBXGS/",
+  "kind": "file",
+  "files": [
+   "gSOAP/generated/stdsoap2.cpp"
+  ]
+ },
  "ogre-1.7.0": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0.zip",
   "kind": "archive",
-  "files": []
+  "files": [
+   "OgreAnimationState.cpp",
+   "OgreAnimationTrack.cpp",
+   "OgreCompositionPass.cpp",
+   "OgreCompositorInstance.cpp",
+   "OgreConfigFile.cpp",
+   "OgreDataStream.cpp",
+   "OgreEdgeListBuilder.cpp",
+   "OgreGpuProgramUsage.cpp",
+   "OgreInstancedGeometry.cpp",
+   "OgreMaterialSerializer.cpp",
+   "OgreMesh.cpp",
+   "OgreMeshSerializerImpl.cpp",
+   "OgreOptimisedUtilGeneral.cpp",
+   "OgrePixelFormat.cpp",
+   "OgreProgressiveMesh.cpp",
+   "OgreRenderSystem.cpp",
+   "OgreRenderTarget.cpp",
+   "OgreResource.cpp",
+   "OgreResourceManager.cpp",
+   "OgreRotationSpline.cpp",
+   "OgreScriptLexer.cpp",
+   "OgreScriptTranslator.cpp",
+   "OgreShadowCameraSetupPlaneOptimal.cpp",
+   "OgreShadowCaster.cpp",
+   "OgreSkeleton.cpp",
+   "OgreSubMesh.cpp",
+   "OgreTangentSpaceCalc.cpp",
+   "OgreTechnique.cpp",
+   "OgreUTFString.cpp"
+  ]
  },
  "ogre-1.6.4": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.6.4/ogre-v1-6-4.tar.bz2",
   "kind": "archive",
-  "files": []
+  "files": [
+   "OgreAlignedAllocator.cpp",
+   "OgreAnimation.cpp",
+   "OgreAutoParamDataSource.cpp",
+   "OgreBillboard.cpp",
+   "OgreBillboardChain.cpp",
+   "OgreBillboardSet.cpp",
+   "OgreBorderPanelOverlayElement.cpp",
+   "OgreCompiler2Pass.cpp",
+   "OgreCompositorScriptCompiler.cpp",
+   "OgreCompositorSerializer.cpp",
+   "OgreConvexBody.cpp",
+   "OgreDataStream.cpp",
+   "OgreDefaultSceneQueries.cpp",
+   "OgreEdgeListBuilder.cpp",
+   "OgreFileSystem.cpp",
+   "OgreFontManager.cpp",
+   "OgreMesh.cpp",
+   "OgreMovableObject.cpp",
+   "OgreParticle.cpp",
+   "OgreParticleEmitter.cpp",
+   "OgreParticleSystem.cpp",
+   "OgrePass.cpp",
+   "OgrePredefinedControllers.cpp",
+   "OgreRenderQueueSortingGrouping.cpp",
+   "OgreRenderSystem.cpp",
+   "OgreRenderTarget.cpp",
+   "OgreResourceBackgroundQueue.cpp",
+   "OgreResourceGroupManager.cpp",
+   "OgreSceneManager.cpp",
+   "OgreSceneManagerEnumerator.cpp",
+   "OgreScriptCompiler.cpp",
+   "OgreSubEntity.cpp",
+   "OgreTextureUnitState.cpp",
+   "OgreWindowEventUtilities.cpp"
+  ]
  },
  "ogre-1.4.9": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.4.9/ogre-v1-4-9.tar.bz2",
@@ -1421,6 +1521,11 @@
    "GLG3Dcpp/Draw.cpp",
    "GLG3Dcpp/ToneMap.cpp"
   ]
+ },
+ "rccservice-dll": {
+  "url": "https://github.com/verify-stack/rccservice-decompile/blob/35dc07d25ef89e2fbcba7d484828c3bd0c060321/RBXGS/",
+  "kind": "file",
+  "files": []
  },
  "ogre-1.7.0-dll": {
   "url": "https://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0.zip",
