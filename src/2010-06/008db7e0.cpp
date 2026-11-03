@@ -1,64 +1,175 @@
 // from server: 100% by auto
-// roc 2010-06 008db7e0  unit: Ogre::VGpuProgramParameters::?$SharedPtr  size: 118 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 008db7e0
-//
-// 008db7e0  53                   push ebx
-// 008db7e1  8b1df0b89e00         mov ebx, dword ptr [0x9eb8f0]
-// 008db7e7  56                   push esi
-// 008db7e8  8bf1                 mov esi, ecx
-// 008db7ea  8b460c               mov eax, dword ptr [esi + 0xc]
-// 008db7ed  83e800               sub eax, 0
-// 008db7f0  7441                 je 0x8db833
-// 008db7f2  83e801               sub eax, 1
-// 008db7f5  741a                 je 0x8db811
-// 008db7f7  83e801               sub eax, 1
-// 008db7fa  754e                 jne 0x8db84a
-// 008db7fc  8b4604               mov eax, dword ptr [esi + 4]
-// 008db7ff  50                   push eax
-// 008db800  ffd3                 call ebx
-// 008db802  8b5608               mov edx, dword ptr [esi + 8]
-// 008db805  83c404               add esp, 4
-// 008db808  52                   push edx
-// 008db809  ffd3                 call ebx
-// 008db80b  83c404               add esp, 4
-// 008db80e  5e                   pop esi
-// 008db80f  5b                   pop ebx
-// 008db810  c3                   ret 
-// 008db811  8b4e04               mov ecx, dword ptr [esi + 4]
-// 008db814  85c9                 test ecx, ecx
-// 008db816  7432                 je 0x8db84a
-// 008db818  ff1568b49e00         call dword ptr [0x9eb468]
-// 008db81e  8b4e04               mov ecx, dword ptr [esi + 4]
-// 008db821  51                   push ecx
-// 008db822  ffd3                 call ebx
-// 008db824  8b5608               mov edx, dword ptr [esi + 8]
-// 008db827  83c404               add esp, 4
-// 008db82a  52                   push edx
-// 008db82b  ffd3                 call ebx
-// 008db82d  83c404               add esp, 4
-// 008db830  5e                   pop esi
-// 008db831  5b                   pop ebx
-// 008db832  c3                   ret 
-// 008db833  57                   push edi
-// 008db834  8b7e04               mov edi, dword ptr [esi + 4]
-// 008db837  85ff                 test edi, edi
-// 008db839  740e                 je 0x8db849
-// 008db83b  8bcf                 mov ecx, edi
-// 008db83d  ff1568b49e00         call dword ptr [0x9eb468]
-// 008db843  57                   push edi
-// 008db844  ffd3                 call ebx
-// 008db846  83c404               add esp, 4
-// 008db849  5f                   pop edi
-// 008db84a  8b5608               mov edx, dword ptr [esi + 8]
-// 008db84d  52                   push edx
-// 008db84e  ffd3                 call ebx
-// 008db850  83c404               add esp, 4
-// 008db853  5e                   pop esi
-// 008db854  5b                   pop ebx
-// 008db855  c3                   ret 
-// library ogre-1.7.0/OgreGpuProgramUsage.cpp (function ?destroy@?$SharedPtr@VGpuProgramParameters@Ogre@@@Ogre@@MAEXXZ)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: ogre-1.7.0 OgreGpuProgramUsage.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+(Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2009 Torus Knot Software Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+#include "OgreGpuProgramUsage.h"
+#include "OgreGpuProgramManager.h"
+#include "OgreException.h"
+
+namespace Ogre
+{
+    //-----------------------------------------------------------------------------
+    GpuProgramUsage::GpuProgramUsage(GpuProgramType gptype, Pass* parent) :
+        mType(gptype), mParent(parent), mProgram(), mRecreateParams(false)
+    {
+    }
+	//-----------------------------------------------------------------------------
+	GpuProgramUsage::GpuProgramUsage(const GpuProgramUsage& oth, Pass* parent)
+        : mType(oth.mType)
+		, mParent(parent)
+        , mProgram(oth.mProgram)
+        // nfz: parameters should be copied not just use a shared ptr to the original
+		, mParameters(OGRE_NEW GpuProgramParameters(*oth.mParameters))
+		, mRecreateParams(false)
+	{
+	}
+	//---------------------------------------------------------------------
+	GpuProgramUsage::~GpuProgramUsage()
+	{
+		if (!mProgram.isNull())
+			mProgram->removeListener(this);
+	}
+	//-----------------------------------------------------------------------------
+	void GpuProgramUsage::setProgramName(const String& name, bool resetParams)
+	{
+		if (!mProgram.isNull())
+		{
+			mProgram->removeListener(this);
+			mRecreateParams = true;
+		}
+
+		mProgram = GpuProgramManager::getSingleton().getByName(name);
+
+        if (mProgram.isNull())
+        {
+			String progType = (mType == GPT_VERTEX_PROGRAM ? "vertex" : 
+				(mType == GPT_GEOMETRY_PROGRAM ? "geometry" : "fragment"));
+            OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, 
+                "Unable to locate " + progType + " program called " + name + ".",
+                "GpuProgramUsage::setProgramName");
+        }
+
+        // Reset parameters 
+        if (resetParams || mParameters.isNull() || mRecreateParams)
+		{
+			recreateParameters();
+		}
+
+		// Listen in on reload events so we can regenerate params
+		mProgram->addListener(this);
+
+	}
+    //-----------------------------------------------------------------------------
+    void GpuProgramUsage::setParameters(GpuProgramParametersSharedPtr params)
+    {
+        mParameters = params;
+    }
+    //-----------------------------------------------------------------------------
+    GpuProgramParametersSharedPtr GpuProgramUsage::getParameters(void)
+    {
+        if (mParameters.isNull())
+        {
+            OGRE_EXCEPT(Exception::ERR_INVALIDPARAMS, "You must specify a program before "
+                "you can retrieve parameters.", "GpuProgramUsage::getParameters");
+        }
+
+        return mParameters;
+    }
+    //-----------------------------------------------------------------------------
+	void GpuProgramUsage::setProgram(GpuProgramPtr& prog) 
+	{
+        mProgram = prog;
+        // Reset parameters 
+        mParameters = mProgram->createParameters();
+    }
+    //-----------------------------------------------------------------------------
+    void GpuProgramUsage::_load(void)
+    {
+        if (!mProgram->isLoaded())
+            mProgram->load();
+
+		// check type
+		if (mProgram->isLoaded() && mProgram->getType() != mType)
+		{
+			String myType = (mType == GPT_VERTEX_PROGRAM ? "vertex" : 
+				(mType == GPT_GEOMETRY_PROGRAM ? "geometry" : "fragment"));
+			String yourType = (mProgram->getType() == GPT_VERTEX_PROGRAM ? "vertex" : 
+				(mProgram->getType() == GPT_GEOMETRY_PROGRAM ? "geometry" : "fragment"));
+			OGRE_EXCEPT(Exception::ERR_INVALIDPARAMS, 
+				mProgram->getName() + "is a " + yourType + " program, but you are assigning it to a " 
+				+ myType + " program slot. This is invalid.",
+				"GpuProgramUsage::setProgramName");
+
+		}
+    }
+    //-----------------------------------------------------------------------------
+    void GpuProgramUsage::_unload(void)
+    {
+        // TODO?
+    }
+	//---------------------------------------------------------------------
+	void GpuProgramUsage::unloadingComplete(Resource* prog)
+	{
+		mRecreateParams = true;
+
+	}
+	//---------------------------------------------------------------------
+	void GpuProgramUsage::loadingComplete(Resource* prog)
+	{
+		// Need to re-create parameters
+		if (mRecreateParams)
+			recreateParameters();
+
+	}
+	//---------------------------------------------------------------------
+	void GpuProgramUsage::recreateParameters()
+	{
+		// Keep a reference to old ones to copy
+		GpuProgramParametersSharedPtr savedParams = mParameters;
+
+		// Create new params
+		mParameters = mProgram->createParameters();
+
+		// Copy old (matching) values across
+		// Don't use copyConstantsFrom since program may be different
+		if (!savedParams.isNull())
+			mParameters->copyMatchingNamedConstantsFrom(*savedParams.get());
+
+		mRecreateParams = false;
+
+	}
+
+
+
+}

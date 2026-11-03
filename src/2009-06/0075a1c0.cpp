@@ -1,18 +1,58 @@
 // from server: 100% by auto
-// roc 2009-06 0075a1c0  unit: CXTPMDIFrameWnd  size: 28 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 0075a1c0
-//
-// 0075a1c0  56                   push esi
-// 0075a1c1  8bf1                 mov esi, ecx
-// 0075a1c3  e816eefbff           call 0x718fde
-// 0075a1c8  c786e800000000000000 mov dword ptr [esi + 0xe8], 0
-// 0075a1d2  c70684708f00         mov dword ptr [esi], 0x8f7084
-// 0075a1d8  8bc6                 mov eax, esi
-// 0075a1da  5e                   pop esi
-// 0075a1db  c3                   ret 
-// library xtp-15.2.1/Source\CommandBars\XTPFrameWnd.cpp (function ??0?$CXTPFrameWndBase@VCFrameWnd@@@@QAE@XZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/CommandBars/XTPFrameWnd.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPFrameWnd.cpp : implementation for the CXTPFrameWnd and CXTPMDIFrameWnd classes.
+//
+// This file is a part of the XTREME COMMANDBARS MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "Resource.h"
+
+#include "Common/XTPSystemHelpers.h"
+#include "Common/XTPHookManager.h"
+#include "Common/XTPDrawHelpers.h"
+
+#include "XTPCommandBarsDefines.h"
+#include "XTPCommandBar.h"
+#include "XTPToolBar.h"
+#include "XTPCommandBars.h"
+#include "XTPShortcutManager.h"
+#include "XTPControl.h"
+#include "XTPControlEdit.h"
+#include "XTPFrameWnd.h"
+
+
+IMPLEMENT_DYNCREATE(CXTPFrameWnd, CFrameWnd)
+
+CXTPFrameWnd::CXTPFrameWnd()
+{
+
+}
+
+
+IMPLEMENT_DYNCREATE(CXTPMDIFrameWnd, CMDIFrameWnd)
+
+CXTPMDIFrameWnd::CXTPMDIFrameWnd()
+{
+
+}

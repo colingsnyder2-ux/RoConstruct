@@ -1,54 +1,195 @@
-// roc 2012-06 00a30590  unit: CXTPReportHyperlinks  size: 99 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00a30590
-//
-// 00a30590  55                   push ebp
-// 00a30591  57                   push edi
-// 00a30592  8b7c240c             mov edi, dword ptr [esp + 0xc]
-// 00a30596  8be9                 mov ebp, ecx
-// 00a30598  3bfd                 cmp edi, ebp
-// 00a3059a  7452                 je 0xa305ee
-// 00a3059c  8b4500               mov eax, dword ptr [ebp]
-// 00a3059f  8b9090000000         mov edx, dword ptr [eax + 0x90]
-// 00a305a5  ffd2                 call edx
-// 00a305a7  85ff                 test edi, edi
-// 00a305a9  7443                 je 0xa305ee
-// 00a305ab  8b07                 mov eax, dword ptr [edi]
-// 00a305ad  8b5058               mov edx, dword ptr [eax + 0x58]
-// 00a305b0  53                   push ebx
-// 00a305b1  8bcf                 mov ecx, edi
-// 00a305b3  ffd2                 call edx
-// 00a305b5  33db                 xor ebx, ebx
-// 00a305b7  89442410             mov dword ptr [esp + 0x10], eax
-// 00a305bb  85c0                 test eax, eax
-// 00a305bd  7e2e                 jle 0xa305ed
-// 00a305bf  56                   push esi
-// 00a305c0  8b07                 mov eax, dword ptr [edi]
-// 00a305c2  8b5060               mov edx, dword ptr [eax + 0x60]
-// 00a305c5  53                   push ebx
-// 00a305c6  8bcf                 mov ecx, edi
-// 00a305c8  ffd2                 call edx
-// 00a305ca  8bf0                 mov esi, eax
-// 00a305cc  85f6                 test esi, esi
-// 00a305ce  7415                 je 0xa305e5
-// 00a305d0  8d4604               lea eax, [esi + 4]
-// 00a305d3  50                   push eax
-// 00a305d4  ff159821b200         call dword ptr [0xb22198]
-// 00a305da  8b5500               mov edx, dword ptr [ebp]
-// 00a305dd  8b4278               mov eax, dword ptr [edx + 0x78]
-// 00a305e0  56                   push esi
-// 00a305e1  8bcd                 mov ecx, ebp
-// 00a305e3  ffd0                 call eax
-// 00a305e5  43                   inc ebx
-// 00a305e6  3b5c2414             cmp ebx, dword ptr [esp + 0x14]
-// 00a305ea  7cd4                 jl 0xa305c0
-// 00a305ec  5e                   pop esi
-// 00a305ed  5b                   pop ebx
-// 00a305ee  5f                   pop edi
-// 00a305ef  5d                   pop ebp
-// 00a305f0  c20400               ret 4
-// library xtp-15.2.1-shared-mfc/Source\ReportControl\XTPReportHyperlink.cpp (function ?CopyFrom@CXTPReportHyperlinks@@UAEXPAV1@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1-shared-mfc Source/ReportControl/XTPReportHyperlink.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPReportHyperlink.cpp : implementation of the CXTPReportHyperlink class.
+//
+// This file is a part of the XTREME REPORTCONTROL MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "StdAfx.h"
+
+#include "Common/XTPPropExchange.h"
+#include "Common/XTPSmartPtrInternalT.h"
+#include "Common/XTPCustomHeap.h"
+
+#include "XTPReportDefines.h"
+#include "XTPReportHyperlink.h"
+
+#pragma warning(disable: 4097) // TBase' used as synonym for class-name
+
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#define new DEBUG_NEW
+#endif
+
+CXTPReportHyperlinkStyle::CXTPReportHyperlinkStyle(COLORREF color, XTPReportTextDecoration textDecoration)
+	: m_color(color)
+	, m_textDecoration(textDecoration)
+{
+}
+
+COLORREF CXTPReportHyperlinkStyle::GetColor() const
+{
+	return m_color;
+}
+
+void CXTPReportHyperlinkStyle::SetColor(COLORREF color)
+{
+	m_color = color;
+}
+
+XTPReportTextDecoration CXTPReportHyperlinkStyle::GetTextDecoration() const
+{
+	return m_textDecoration;
+}
+
+void CXTPReportHyperlinkStyle::SetTextDecoration(XTPReportTextDecoration textDecoration)
+{
+	m_textDecoration = textDecoration;
+}
+
+
+IMPLEMENT_DYNAMIC(CXTPReportHyperlink, CCmdTarget)
+IMPLEMENT_DYNAMIC(CXTPReportHyperlinks, CCmdTarget)
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CXTPReportHyperlink::CXTPReportHyperlink(int nHyperTextBegin, int nHyperTextLen)
+	: m_nHyperTextBegin(nHyperTextBegin),
+	m_nHyperTextLen(nHyperTextLen),
+	m_rcHyperSpot(0, 0, 0, 0)
+{
+
+}
+
+CXTPReportHyperlink::~CXTPReportHyperlink()
+{
+
+}
+
+void CXTPReportHyperlink::DoPropExchange(CXTPPropExchange* pPX)
+{
+	PX_Int(pPX, _T("HyperTextBegin"), m_nHyperTextBegin);
+	PX_Int(pPX, _T("HyperTextLen"), m_nHyperTextLen);
+}
+
+CXTPReportHyperlinks::CXTPReportHyperlinks()
+{
+
+}
+
+CXTPReportHyperlinks::~CXTPReportHyperlinks()
+{
+	RemoveAll();
+}
+
+void CXTPReportHyperlinks::RemoveAt(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= (int)GetSize())
+	{
+		ASSERT(FALSE);
+		return;
+	}
+
+	CXTPReportHyperlink* pItem = GetAt(nIndex);
+	if (pItem)
+		pItem->InternalRelease();
+
+	TBase::RemoveAt(nIndex);
+}
+
+void CXTPReportHyperlinks::RemoveAll()
+{
+	for (int nItem = (int)GetSize() - 1; nItem >= 0; nItem--)
+	{
+		CXTPReportHyperlink* pItem = GetAt(nItem);
+		if (pItem)
+			pItem->InternalRelease();
+	}
+	TBase::RemoveAll();
+}
+
+void CXTPReportHyperlinks::DoPropExchange(CXTPPropExchange* pPX)
+{
+	int nCount = (int)GetSize();
+
+	CXTPPropExchangeEnumeratorPtr pEnumItems(pPX->GetEnumerator(_T("Hyperlink")));
+
+	if (pPX->IsStoring())
+	{
+		POSITION posItem = pEnumItems->GetPosition((DWORD)nCount);
+
+		for (int i = 0; i < nCount; i++)
+		{
+			CXTPReportHyperlink* pItem = GetAt(i);
+			ASSERT(pItem);
+			if (pItem)
+			{
+				CXTPPropExchangeSection secItem(pEnumItems->GetNext(posItem));
+				pItem->DoPropExchange(&secItem);
+			}
+		}
+	}
+	else
+	{
+		POSITION posItem = pEnumItems->GetPosition();
+		while (posItem)
+		{
+			CXTPReportHyperlink* pItem = new CXTPReportHyperlink();
+			if (!pItem)
+			{
+				return;
+			}
+			CXTPPropExchangeSection secItem(pEnumItems->GetNext(posItem));
+			pItem->DoPropExchange(&secItem);
+
+			Add(pItem);
+		}
+	}
+
+}
+
+void CXTPReportHyperlinks::CopyFrom(CXTPReportHyperlinks* pSrc)
+{
+	if (pSrc == this)
+		return;
+
+	RemoveAll();
+
+	if (!pSrc)
+		return;
+
+	int nCount = pSrc->GetSize();
+	for (int i = 0; i < nCount; i++)
+	{
+		CXTPReportHyperlink* pHlnk = pSrc->GetAt(i);
+		if (pHlnk)
+		{
+			pHlnk->InternalAddRef();
+			Add(pHlnk);
+		}
+	}
+}
+

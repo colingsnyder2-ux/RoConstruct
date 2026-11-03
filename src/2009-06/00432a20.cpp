@@ -1,58 +1,89 @@
 // from server: 100% by tester
-// roc 2009-06 00619e60  unit: RBX::VChangeHistoryService::?$FactoryProduct  size: 117 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00619e60
-//
-// 00619e60  53                   push ebx
-// 00619e61  8b5c2408             mov ebx, dword ptr [esp + 8]
-// 00619e65  8b4318               mov eax, dword ptr [ebx + 0x18]
-// 00619e68  56                   push esi
-// 00619e69  57                   push edi
-// 00619e6a  8bf1                 mov esi, ecx
-// 00619e6c  8b7e18               mov edi, dword ptr [esi + 0x18]
-// 00619e6f  83c004               add eax, 4
-// 00619e72  8b00                 mov eax, dword ptr [eax]
-// 00619e74  57                   push edi
-// 00619e75  50                   push eax
-// 00619e76  e8c5f3ffff           call 0x619240
-// 00619e7b  894704               mov dword ptr [edi + 4], eax
-// 00619e7e  8b4b1c               mov ecx, dword ptr [ebx + 0x1c]
-// 00619e81  8b5618               mov edx, dword ptr [esi + 0x18]
-// 00619e84  894e1c               mov dword ptr [esi + 0x1c], ecx
-// 00619e87  8b4204               mov eax, dword ptr [edx + 4]
-// 00619e8a  80781900             cmp byte ptr [eax + 0x19], 0
-// 00619e8e  7537                 jne 0x619ec7
-// 00619e90  8b08                 mov ecx, dword ptr [eax]
-// 00619e92  80791900             cmp byte ptr [ecx + 0x19], 0
-// 00619e96  750a                 jne 0x619ea2
-// 00619e98  8bc1                 mov eax, ecx
-// 00619e9a  8b08                 mov ecx, dword ptr [eax]
-// 00619e9c  80791900             cmp byte ptr [ecx + 0x19], 0
-// 00619ea0  74f6                 je 0x619e98
-// 00619ea2  8902                 mov dword ptr [edx], eax
-// 00619ea4  8b7618               mov esi, dword ptr [esi + 0x18]
-// 00619ea7  8b4e04               mov ecx, dword ptr [esi + 4]
-// 00619eaa  8b4108               mov eax, dword ptr [ecx + 8]
-// 00619ead  80781900             cmp byte ptr [eax + 0x19], 0
-// 00619eb1  750b                 jne 0x619ebe
-// 00619eb3  8bc8                 mov ecx, eax
-// 00619eb5  8b4108               mov eax, dword ptr [ecx + 8]
-// 00619eb8  80781900             cmp byte ptr [eax + 0x19], 0
-// 00619ebc  74f5                 je 0x619eb3
-// 00619ebe  5f                   pop edi
-// 00619ebf  894e08               mov dword ptr [esi + 8], ecx
-// 00619ec2  5e                   pop esi
-// 00619ec3  5b                   pop ebx
-// 00619ec4  c20400               ret 4
-// 00619ec7  8912                 mov dword ptr [edx], edx
-// 00619ec9  8b7618               mov esi, dword ptr [esi + 0x18]
-// 00619ecc  5f                   pop edi
-// 00619ecd  897608               mov dword ptr [esi + 8], esi
-// 00619ed0  5e                   pop esi
-// 00619ed1  5b                   pop ebx
-// 00619ed2  c20400               ret 4
-// library ogre-1.6.4/OgreAlignedAllocator.cpp (function ?_Copy@?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXABV12@@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.6.4 OgreAlignedAllocator.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+
+#include "OgrePrerequisites.h"
+#include "OgreAlignedAllocator.h"
+
+#include "OgrePlatformInformation.h"
+#include "OgreBitwise.h"
+
+/**
+*
+* |___2___|3|_________5__________|__6__|
+* ^         ^
+* 1         4
+*
+* 1 -> Pointer to start of the block allocated by new.
+* 2 -> Gap used to get 4 aligned on given alignment
+* 3 -> Byte offset between 1 and 4
+* 4 -> Pointer to the start of data block.
+* 5 -> Data block.
+* 6 -> Wasted memory at rear of data block.
+*/
+
+namespace Ogre {
+
+    //---------------------------------------------------------------------
+    void* AlignedMemory::allocate(size_t size, size_t alignment)
+    {
+        assert(0 < alignment && alignment <= 128 && Bitwise::isPO2(alignment));
+
+        unsigned char* p = new unsigned char[size + alignment];
+        size_t offset = alignment - (size_t(p) & (alignment-1));
+
+        unsigned char* result = p + offset;
+        result[-1] = (unsigned char)offset;
+
+        return result;
+    }
+    //---------------------------------------------------------------------
+    void* AlignedMemory::allocate(size_t size)
+    {
+        return allocate(size, OGRE_SIMD_ALIGNMENT);
+    }
+    //---------------------------------------------------------------------
+    void AlignedMemory::deallocate(void* p)
+    {
+        if (p)
+        {
+            unsigned char* mem = (unsigned char*)p;
+            mem = mem - mem[-1];
+            delete [] mem;
+        }
+    }
+
+}

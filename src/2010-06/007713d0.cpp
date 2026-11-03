@@ -1,177 +1,1624 @@
 // from server: 100% by auto
-// roc 2010-06 007713d0  unit: RBX::ScoreHud  size: 458 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 007713d0
-//
-// 007713d0  55                   push ebp
-// 007713d1  8bec                 mov ebp, esp
-// 007713d3  6aff                 push -1
-// 007713d5  6880c49a00           push 0x9ac480
-// 007713da  64a100000000         mov eax, dword ptr fs:[0]
-// 007713e0  50                   push eax
-// 007713e1  64892500000000       mov dword ptr fs:[0], esp
-// 007713e8  83ec48               sub esp, 0x48
-// 007713eb  53                   push ebx
-// 007713ec  56                   push esi
-// 007713ed  8bf1                 mov esi, ecx
-// 007713ef  8b460c               mov eax, dword ptr [esi + 0xc]
-// 007713f2  57                   push edi
-// 007713f3  8965f0               mov dword ptr [ebp - 0x10], esp
-// 007713f6  8975e0               mov dword ptr [ebp - 0x20], esi
-// 007713f9  85c0                 test eax, eax
-// 007713fb  7505                 jne 0x771402
-// 007713fd  8945ec               mov dword ptr [ebp - 0x14], eax
-// 00771400  eb19                 jmp 0x77141b
-// 00771402  8b4e14               mov ecx, dword ptr [esi + 0x14]
-// 00771405  2bc8                 sub ecx, eax
-// 00771407  b8abaaaa2a           mov eax, 0x2aaaaaab
-// 0077140c  f7e9                 imul ecx
-// 0077140e  c1fa02               sar edx, 2
-// 00771411  8bc2                 mov eax, edx
-// 00771413  c1e81f               shr eax, 0x1f
-// 00771416  03c2                 add eax, edx
-// 00771418  8945ec               mov dword ptr [ebp - 0x14], eax
-// 0077141b  8b7d10               mov edi, dword ptr [ebp + 0x10]
-// 0077141e  85ff                 test edi, edi
-// 00771420  0f84ef020000         je 0x771715
-// 00771426  8b5e10               mov ebx, dword ptr [esi + 0x10]
-// 00771429  8bcb                 mov ecx, ebx
-// 0077142b  2b4e0c               sub ecx, dword ptr [esi + 0xc]
-// 0077142e  b8abaaaa2a           mov eax, 0x2aaaaaab
-// 00771433  f7e9                 imul ecx
-// 00771435  c1fa02               sar edx, 2
-// 00771438  8bc2                 mov eax, edx
-// 0077143a  c1e81f               shr eax, 0x1f
-// 0077143d  03c2                 add eax, edx
-// 0077143f  b9aaaaaa0a           mov ecx, 0xaaaaaaa
-// 00771444  2bc8                 sub ecx, eax
-// 00771446  3bcf                 cmp ecx, edi
-// 00771448  7305                 jae 0x77144f
-// 0077144a  e8a129cbff           call 0x423df0
-// 0077144f  8b4dec               mov ecx, dword ptr [ebp - 0x14]
-// 00771452  03c7                 add eax, edi
-// 00771454  3bc8                 cmp ecx, eax
-// 00771456  0f838e010000         jae 0x7715ea
-// 0077145c  8bd1                 mov edx, ecx
-// 0077145e  d1ea                 shr edx, 1
-// 00771460  bbaaaaaa0a           mov ebx, 0xaaaaaaa
-// 00771465  2bda                 sub ebx, edx
-// 00771467  3bd9                 cmp ebx, ecx
-// 00771469  730c                 jae 0x771477
-// 0077146b  c745ec00000000       mov dword ptr [ebp - 0x14], 0
-// 00771472  8b4dec               mov ecx, dword ptr [ebp - 0x14]
-// 00771475  eb05                 jmp 0x77147c
-// 00771477  03ca                 add ecx, edx
-// 00771479  894dec               mov dword ptr [ebp - 0x14], ecx
-// 0077147c  3bc8                 cmp ecx, eax
-// 0077147e  7305                 jae 0x771485
-// 00771480  8945ec               mov dword ptr [ebp - 0x14], eax
-// 00771483  8bc8                 mov ecx, eax
-// 00771485  6a00                 push 0
-// 00771487  51                   push ecx
-// 00771488  e853f2fbff           call 0x7306e0
-// 0077148d  8b550c               mov edx, dword ptr [ebp + 0xc]
-// 00771490  2b560c               sub edx, dword ptr [esi + 0xc]
-// 00771493  8bc8                 mov ecx, eax
-// 00771495  b8abaaaa2a           mov eax, 0x2aaaaaab
-// 0077149a  f7ea                 imul edx
-// 0077149c  c1fa02               sar edx, 2
-// 0077149f  8bda                 mov ebx, edx
-// 007714a1  33c0                 xor eax, eax
-// 007714a3  83c408               add esp, 8
-// 007714a6  c1eb1f               shr ebx, 0x1f
-// 007714a9  03da                 add ebx, edx
-// 007714ab  8b5514               mov edx, dword ptr [ebp + 0x14]
-// 007714ae  8945e4               mov dword ptr [ebp - 0x1c], eax
-// 007714b1  8945fc               mov dword ptr [ebp - 4], eax
-// 007714b4  52                   push edx
-// 007714b5  894de8               mov dword ptr [ebp - 0x18], ecx
-// 007714b8  8d045b               lea eax, [ebx + ebx*2]
-// 007714bb  8d0cc1               lea ecx, [ecx + eax*8]
-// 007714be  57                   push edi
-// 007714bf  51                   push ecx
-// 007714c0  8bce                 mov ecx, esi
-// 007714c2  895ddc               mov dword ptr [ebp - 0x24], ebx
-// 007714c5  e836fbffff           call 0x771000
-// 007714ca  8b460c               mov eax, dword ptr [esi + 0xc]
-// 007714cd  c6451400             mov byte ptr [ebp + 0x14], 0
-// 007714d1  8b5514               mov edx, dword ptr [ebp + 0x14]
-// 007714d4  52                   push edx
-// 007714d5  8b5510               mov edx, dword ptr [ebp + 0x10]
-// 007714d8  52                   push edx
-// 007714d9  8b550c               mov edx, dword ptr [ebp + 0xc]
-// 007714dc  8d4e08               lea ecx, [esi + 8]
-// 007714df  51                   push ecx
-// 007714e0  8b4de8               mov ecx, dword ptr [ebp - 0x18]
-// 007714e3  51                   push ecx
-// 007714e4  52                   push edx
-// 007714e5  50                   push eax
-// 007714e6  c745e401000000       mov dword ptr [ebp - 0x1c], 1
-// 007714ed  e8beecffff           call 0x7701b0
-// 007714f2  8b55e8               mov edx, dword ptr [ebp - 0x18]
-// 007714f5  8b4610               mov eax, dword ptr [esi + 0x10]
-// 007714f8  83c418               add esp, 0x18
-// 007714fb  03df                 add ebx, edi
-// 007714fd  8d0c5b               lea ecx, [ebx + ebx*2]
-// 00771500  8d0cca               lea ecx, [edx + ecx*8]
-// 00771503  c6451400             mov byte ptr [ebp + 0x14], 0
-// 00771507  8b5514               mov edx, dword ptr [ebp + 0x14]
-// 0077150a  52                   push edx
-// 0077150b  8b5510               mov edx, dword ptr [ebp + 0x10]
-// 0077150e  52                   push edx
-// 0077150f  8d5608               lea edx, [esi + 8]
-// 00771512  52                   push edx
-// 00771513  51                   push ecx
-// 00771514  50                   push eax
-// 00771515  8b450c               mov eax, dword ptr [ebp + 0xc]
-// 00771518  50                   push eax
-// 00771519  c745e402000000       mov dword ptr [ebp - 0x1c], 2
-// 00771520  e88becffff           call 0x7701b0
-// 00771525  8b5e0c               mov ebx, dword ptr [esi + 0xc]
-// 00771528  8b4e10               mov ecx, dword ptr [esi + 0x10]
-// 0077152b  2bcb                 sub ecx, ebx
-// 0077152d  b8abaaaa2a           mov eax, 0x2aaaaaab
-// 00771532  f7e9                 imul ecx
-// 00771534  c1fa02               sar edx, 2
-// 00771537  8bca                 mov ecx, edx
-// 00771539  c1e91f               shr ecx, 0x1f
-// 0077153c  03ca                 add ecx, edx
-// 0077153e  83c418               add esp, 0x18
-// 00771541  03f9                 add edi, ecx
-// 00771543  c745fcffffffff       mov dword ptr [ebp - 4], 0xffffffff
-// 0077154a  85db                 test ebx, ebx
-// 0077154c  741e                 je 0x77156c
-// 0077154e  8b5510               mov edx, dword ptr [ebp + 0x10]
-// 00771551  52                   push edx
-// 00771552  8d4608               lea eax, [esi + 8]
-// 00771555  50                   push eax
-// 00771556  8b4610               mov eax, dword ptr [esi + 0x10]
-// 00771559  50                   push eax
-// 0077155a  53                   push ebx
-// 0077155b  e830ebffff           call 0x770090
-// 00771560  8b4e0c               mov ecx, dword ptr [esi + 0xc]
-// 00771563  51                   push ecx
-// 00771564  e831640300           call 0x7a799a
-// 00771569  83c414               add esp, 0x14
-// 0077156c  8b45ec               mov eax, dword ptr [ebp - 0x14]
-// 0077156f  8d1440               lea edx, [eax + eax*2]
-// 00771572  8b45e8               mov eax, dword ptr [ebp - 0x18]
-// 00771575  8d0cd0               lea ecx, [eax + edx*8]
-// 00771578  8d147f               lea edx, [edi + edi*2]
-// 0077157b  894e14               mov dword ptr [esi + 0x14], ecx
-// 0077157e  8d0cd0               lea ecx, [eax + edx*8]
-// 00771581  894e10               mov dword ptr [esi + 0x10], ecx
-// 00771584  89460c               mov dword ptr [esi + 0xc], eax
-// 00771587  8b4df4               mov ecx, dword ptr [ebp - 0xc]
-// 0077158a  64890d00000000       mov dword ptr fs:[0], ecx
-// 00771591  5f                   pop edi
-// 00771592  5e                   pop esi
-// 00771593  5b                   pop ebx
-// 00771594  8be5                 mov esp, ebp
-// 00771596  5d                   pop ebp
-// 00771597  c21000               ret 0x10
-// library ogre-1.6.4/OgreScriptCompiler.cpp (function ?_Insert_n@?$vector@U?$pair@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$_Iterator@$00@?$list@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$allocator@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@@std@@@std@@@std@@V?$allocator@U?$pair@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$_Iterator@$00@?$list@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$allocator@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@@std@@@std@@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@U?$pair@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$_Iterator@$00@?$list@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$allocator@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@@std@@@std@@@std@@V?$allocator@U?$pair@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$_Iterator@$00@?$list@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$allocator@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@@std@@@std@@@std@@@2@@2@IABU?$pair@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$_Iterator@$00@?$list@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@V?$allocator@V?$SharedPtr@VAbstractNode@Ogre@@@Ogre@@@std@@@std@@@2@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.6.4 OgreScriptCompiler.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+
+#include "OgreStableHeaders.h"
+#include "OgreScriptCompiler.h"
+#include "OgreScriptLexer.h"
+#include "OgreScriptParser.h"
+#include "OgreScriptTranslator.h"
+
+namespace Ogre
+{
+	// AbstractNode
+	AbstractNode::AbstractNode(AbstractNode *ptr)
+		:parent(ptr), type(ANT_UNKNOWN), line(0)
+	{}
+
+	// AtomAbstractNode
+	AtomAbstractNode::AtomAbstractNode(AbstractNode *ptr)
+		:AbstractNode(ptr), id(0)
+	{
+		type = ANT_ATOM;
+	}
+
+	AbstractNode *AtomAbstractNode::clone() const
+	{
+		AtomAbstractNode *node = OGRE_NEW AtomAbstractNode(parent);
+		node->file = file;
+		node->line = line;
+		node->id = id;
+		node->type = type;
+		node->value = value;
+		return node;
+	}
+
+	String AtomAbstractNode::getValue() const
+	{
+		return value;
+	}
+
+	// ObjectAbstractNode
+	ObjectAbstractNode::ObjectAbstractNode(AbstractNode *ptr)
+		:AbstractNode(ptr), abstract(false), id(0)
+	{
+		type = ANT_OBJECT;
+	}
+
+	AbstractNode *ObjectAbstractNode::clone() const
+	{
+		ObjectAbstractNode *node = OGRE_NEW ObjectAbstractNode(parent);
+		node->file = file;
+		node->line = line;
+		node->type = type;
+		node->name = name;
+		node->cls = cls;
+		node->id = id;
+		node->abstract = abstract;
+		for(AbstractNodeList::const_iterator i = children.begin(); i != children.end(); ++i)
+		{
+			AbstractNodePtr newNode = AbstractNodePtr((*i)->clone());
+			newNode->parent = node;
+			node->children.push_back(newNode);
+		}
+		for(AbstractNodeList::const_iterator i = values.begin(); i != values.end(); ++i)
+		{
+			AbstractNodePtr newNode = AbstractNodePtr((*i)->clone());
+			newNode->parent = node;
+			node->values.push_back(newNode);
+		}
+		node->mEnv = mEnv;
+		return node;
+	}
+
+	String ObjectAbstractNode::getValue() const
+	{
+		return cls;
+	}
+
+	void ObjectAbstractNode::addVariable(const Ogre::String &name)
+	{
+		mEnv.insert(std::make_pair(name, ""));
+	}
+
+	void ObjectAbstractNode::setVariable(const Ogre::String &name, const Ogre::String &value)
+	{
+		mEnv[name] = value;
+	}
+
+	std::pair<bool,String> ObjectAbstractNode::getVariable(const String &name) const
+	{
+		std::map<String,String>::const_iterator i = mEnv.find(name);
+		if(i != mEnv.end())
+			return std::make_pair(true, i->second);
+
+		ObjectAbstractNode *parent = (ObjectAbstractNode*)this->parent;
+		while(parent)
+		{
+			i = parent->mEnv.find(name);
+			if(i != parent->mEnv.end())
+				return std::make_pair(true, i->second);
+			parent = (ObjectAbstractNode*)parent->parent;
+		}
+		return std::make_pair(false, "");
+	}
+
+	const std::map<String,String> &ObjectAbstractNode::getVariables() const
+	{
+		return mEnv;
+	}
+
+	// PropertyAbstractNode
+	PropertyAbstractNode::PropertyAbstractNode(AbstractNode *ptr)
+		:AbstractNode(ptr), id(0)
+	{
+		type = ANT_PROPERTY;
+	}
+
+	AbstractNode *PropertyAbstractNode::clone() const
+	{
+		PropertyAbstractNode *node = OGRE_NEW PropertyAbstractNode(parent);
+		node->file = file;
+		node->line = line;
+		node->type = type;
+		node->name = name;
+		node->id = id;
+		for(AbstractNodeList::const_iterator i = values.begin(); i != values.end(); ++i)
+		{
+			AbstractNodePtr newNode = AbstractNodePtr((*i)->clone());
+			newNode->parent = node;
+			node->values.push_back(newNode);
+		}
+		return node;
+	}
+
+	String PropertyAbstractNode::getValue() const
+	{
+		return name;
+	}
+
+	// ImportAbstractNode
+	ImportAbstractNode::ImportAbstractNode()
+		:AbstractNode(0)
+	{
+		type = ANT_IMPORT;
+	}
+
+	AbstractNode *ImportAbstractNode::clone() const
+	{
+		ImportAbstractNode *node = OGRE_NEW ImportAbstractNode();
+		node->file = file;
+		node->line = line;
+		node->type = type;
+		node->target = target;
+		node->source = source;
+		return node;
+	}
+
+	String ImportAbstractNode::getValue() const
+	{
+		return target;
+	}
+
+	// VariableAccessAbstractNode
+	VariableAccessAbstractNode::VariableAccessAbstractNode(AbstractNode *ptr)
+		:AbstractNode(ptr)
+	{
+		type = ANT_VARIABLE_ACCESS;
+	}
+
+	AbstractNode *VariableAccessAbstractNode::clone() const
+	{
+		VariableAccessAbstractNode *node = OGRE_NEW VariableAccessAbstractNode(parent);
+		node->file = file;
+		node->line = line;
+		node->type = type;
+		node->name = name;
+		return node;
+	}
+
+	String VariableAccessAbstractNode::getValue() const
+	{
+		return name;
+	}
+
+	// ScriptCompilerListener
+	ScriptCompilerListener::ScriptCompilerListener()
+	{
+	}
+
+	ConcreteNodeListPtr ScriptCompilerListener::importFile(ScriptCompiler *compiler, const String &name)
+	{
+		return ConcreteNodeListPtr();
+	}
+
+	void ScriptCompilerListener::preConversion(ScriptCompiler *compiler, ConcreteNodeListPtr nodes)
+	{
+		
+	}
+
+	bool ScriptCompilerListener::postConversion(ScriptCompiler *compiler, const AbstractNodeListPtr &nodes)
+	{
+		return true;
+	}
+
+	void ScriptCompilerListener::handleError(ScriptCompiler *compiler, uint32 code, const String &file, int line, const String &msg)
+	{
+		Ogre::String str = "Compiler error: ";
+		str = str + ScriptCompiler::formatErrorCode(code) + " in " + file + "(" +
+			Ogre::StringConverter::toString(line) + ")";
+		if(!msg.empty())
+			str = str + ": " + msg;
+		Ogre::LogManager::getSingleton().logMessage(str);
+	}
+
+	bool ScriptCompilerListener::handleEvent(ScriptCompiler *compiler, const String &name, const std::vector<Ogre::Any> &args, Ogre::Any *retval)
+	{
+		return false;
+	}
+
+	Ogre::Any ScriptCompilerListener::createObject(ScriptCompiler *compiler, const String &type, const std::vector<Ogre::Any> &args)
+	{
+		return Ogre::Any();
+	}
+
+	// ScriptCompiler
+	String ScriptCompiler::formatErrorCode(uint32 code)
+	{
+		switch(code)
+		{
+		case ScriptCompiler::CE_STRINGEXPECTED:
+			return "string expected";
+		case ScriptCompiler::CE_NUMBEREXPECTED:
+			return "number expected";
+		case ScriptCompiler::CE_FEWERPARAMETERSEXPECTED:
+			return "fewer parameters expected";
+		case ScriptCompiler::CE_VARIABLEEXPECTED:
+			return "variable expected";
+		case ScriptCompiler::CE_UNDEFINEDVARIABLE:
+			return "undefined variable";
+		case ScriptCompiler::CE_OBJECTNAMEEXPECTED:
+			return "object name expected";
+		case ScriptCompiler::CE_OBJECTALLOCATIONERROR:
+			return "object allocation error";
+		case ScriptCompiler::CE_INVALIDPARAMETERS:
+			return "invalid parameters";
+		case ScriptCompiler::CE_DUPLICATEOVERRIDE:
+			return "duplicate object override";
+		case ScriptCompiler::CE_UNSUPPORTEDBYRENDERSYSTEM:
+			return "object unsupported by render system";
+		case ScriptCompiler::CE_REFERENCETOANONEXISTINGOBJECT:
+			return "reference to a non existing object";
+		default:
+			return "unknown error";
+		}
+	}
+
+	ScriptCompiler::ScriptCompiler()
+		:mListener(0)
+	{
+		initWordMap();
+	}
+
+	bool ScriptCompiler::compile(const String &str, const String &source, const String &group)
+	{
+		ScriptLexer lexer;
+		ScriptParser parser;
+		ConcreteNodeListPtr nodes = parser.parse(lexer.tokenize(str, source));
+		return compile(nodes, group);
+	}
+
+	static void logAST(int tabs, const AbstractNodePtr &node)
+	{
+		String msg = "";
+		for(int i = 0; i < tabs; ++i)
+			msg += "\t";
+
+		switch(node->type)
+		{
+		case ANT_ATOM:
+			{
+				AtomAbstractNode *atom = reinterpret_cast<AtomAbstractNode*>(node.get());
+				msg = msg + atom->value;
+			}
+			break;
+		case ANT_PROPERTY:
+			{
+				PropertyAbstractNode *prop = reinterpret_cast<PropertyAbstractNode*>(node.get());
+				msg = msg + prop->name + " =";
+				for(AbstractNodeList::iterator i = prop->values.begin(); i != prop->values.end(); ++i)
+				{
+					if((*i)->type == ANT_ATOM)
+						msg = msg + " " + reinterpret_cast<AtomAbstractNode*>((*i).get())->value;
+				}
+			}
+			break;
+		case ANT_OBJECT:
+			{
+				ObjectAbstractNode *obj = reinterpret_cast<ObjectAbstractNode*>(node.get());
+				msg = msg + node->file + " - " + StringConverter::toString(node->line) + " - " + obj->cls + " \"" + obj->name + "\" =";
+				for(AbstractNodeList::iterator i = obj->values.begin(); i != obj->values.end(); ++i)
+				{
+					if((*i)->type == ANT_ATOM)
+						msg = msg + " " + reinterpret_cast<AtomAbstractNode*>((*i).get())->value;
+				}
+			}
+			break;
+		default:
+			msg = msg + "Unacceptable node type: " + StringConverter::toString(node->type);
+		}
+
+		LogManager::getSingleton().logMessage(msg);
+
+		if(node->type == ANT_OBJECT)
+		{
+			ObjectAbstractNode *obj = reinterpret_cast<ObjectAbstractNode*>(node.get());
+			for(AbstractNodeList::iterator i = obj->children.begin(); i != obj->children.end(); ++i)
+			{
+				logAST(tabs + 1, *i);
+			}
+		}
+	}
+
+	bool ScriptCompiler::compile(const ConcreteNodeListPtr &nodes, const String &group)
+	{
+		// Set up the compilation context
+		mGroup = group;
+
+		// Clear the past errors
+		mErrors.clear();
+
+		// Clear the environment
+		mEnv.clear();
+
+		if(mListener)
+			mListener->preConversion(this, nodes);
+
+		// Convert our nodes to an AST
+		AbstractNodeListPtr ast = convertToAST(nodes);
+		// Processes the imports for this script
+		processImports(ast);
+		// Process object inheritance
+		processObjects(ast.get(), ast);
+		// Process variable expansion
+		processVariables(ast.get());
+
+		// Allows early bail-out through the listener
+		if(mListener && !mListener->postConversion(this, ast))
+			return mErrors.empty();
+
+		// Translate the nodes
+		for(AbstractNodeList::iterator i = ast->begin(); i != ast->end(); ++i)
+		{
+			//logAST(0, *i);
+			if((*i)->type == ANT_OBJECT && reinterpret_cast<ObjectAbstractNode*>((*i).get())->abstract)
+				continue;
+			ScriptTranslator *translator = ScriptCompilerManager::getSingleton().getTranslator(*i);
+			if(translator)
+				translator->translate(this, *i);
+		}
+
+		mImports.clear();
+		mImportRequests.clear();
+		mImportTable.clear();
+
+		return mErrors.empty();
+	}
+
+	bool ScriptCompiler::_compile(AbstractNodeListPtr nodes, const String &group)
+	{
+		// Set up the compilation context
+		mGroup = group;
+
+		// Clear the past errors
+		mErrors.clear();
+
+		// Clear the environment
+		mEnv.clear();
+
+		// Processes the imports for this script
+		processImports(nodes);
+		// Process object inheritance
+		processObjects(nodes.get(), nodes);
+		// Process variable expansion
+		processVariables(nodes.get());
+
+		// Translate the nodes
+		for(AbstractNodeList::iterator i = nodes->begin(); i != nodes->end(); ++i)
+		{
+			//logAST(0, *i);
+			if((*i)->type == ANT_OBJECT && reinterpret_cast<ObjectAbstractNode*>((*i).get())->abstract)
+				continue;
+			ScriptTranslator *translator = ScriptCompilerManager::getSingleton().getTranslator(*i);
+			if(translator)
+				translator->translate(this, *i);
+		}
+
+		return mErrors.empty();
+	}
+
+	void ScriptCompiler::addError(uint32 code, const Ogre::String &file, int line, const String &msg)
+	{
+		ErrorPtr err(OGRE_NEW Error());
+		err->code = code;
+		err->file = file;
+		err->line = line;
+		err->message = msg;
+
+		if(mListener)
+		{
+			mListener->handleError(this, code, file, line, msg);
+		}
+		else
+		{
+			Ogre::String str = "Compiler error: ";
+			str = str + formatErrorCode(code) + " in " + file + "(" +
+				Ogre::StringConverter::toString(line) + ")";
+			if(!msg.empty())
+				str = str + ": " + msg;
+			Ogre::LogManager::getSingleton().logMessage(str);
+		}
+
+		mErrors.push_back(err);
+	}
+
+	void ScriptCompiler::setListener(ScriptCompilerListener *listener)
+	{
+		mListener = listener;
+	}
+
+	ScriptCompilerListener *ScriptCompiler::getListener()
+	{
+		return mListener;
+	}
+
+	const String &ScriptCompiler::getResourceGroup() const
+	{
+		return mGroup;
+	}
+
+	bool ScriptCompiler::_fireEvent(const Ogre::String &name, const std::vector<Any> &args, Ogre::Any *retval)
+	{
+		if(mListener)
+			return mListener->handleEvent(this, name, args, retval);
+		return false;
+	}
+
+	Any ScriptCompiler::_fireCreateObject(const Ogre::String &type, const std::vector<Any> &args)
+	{
+		if(mListener)
+			return mListener->createObject(this, type, args);
+		return Any();
+	}
+
+	AbstractNodeListPtr ScriptCompiler::convertToAST(const Ogre::ConcreteNodeListPtr &nodes)
+	{
+		AbstractTreeBuilder builder(this);
+		AbstractTreeBuilder::visit(&builder, *nodes.get());
+		return builder.getResult();
+	}
+
+	void ScriptCompiler::processImports(Ogre::AbstractNodeListPtr &nodes)
+	{
+		// We only need to iterate over the top-level of nodes
+		AbstractNodeList::iterator i = nodes->begin(), last = nodes->end();
+		while(i != nodes->end())
+		{
+			// We move to the next node here and save the current one.
+			// If any replacement happens, then we are still assured that
+			// i points to the node *after* the replaced nodes, no matter
+			// how many insertions and deletions may happen
+			AbstractNodeList::iterator cur = i++;
+			if((*cur)->type == ANT_IMPORT)
+			{
+				ImportAbstractNode *import = (ImportAbstractNode*)(*cur).get();
+				// Only process if the file's contents haven't been loaded
+				if(mImports.find(import->source) == mImports.end())
+				{
+					// Load the script
+					AbstractNodeListPtr importedNodes = loadImportPath(import->source);
+					if(!importedNodes.isNull() && !importedNodes->empty())
+					{
+						processImports(importedNodes);
+						processObjects(importedNodes.get(), importedNodes);
+					}
+					if(!importedNodes.isNull() && !importedNodes->empty())
+						mImports.insert(std::make_pair(import->source, importedNodes));
+				}
+
+				// Handle the target request now
+				// If it is a '*' import we remove all previous requests and just use the '*'
+				// Otherwise, ensure '*' isn't already registered and register our request
+				if(import->target == "*")
+				{
+					mImportRequests.erase(mImportRequests.lower_bound(import->source),
+						mImportRequests.upper_bound(import->source));
+					mImportRequests.insert(std::make_pair(import->source, "*"));
+				}
+				else
+				{
+					ImportRequestMap::iterator iter = mImportRequests.lower_bound(import->source),
+						end = mImportRequests.upper_bound(import->source);
+					if(iter == end || iter->second != "*")
+					{
+						mImportRequests.insert(std::make_pair(import->source, import->target));
+					}
+				}
+
+				nodes->erase(cur);
+			}
+		}
+
+		// All import nodes are removed
+		// We have cached the code blocks from all the imported scripts
+		// We can process all import requests now
+		for(ImportCacheMap::iterator i = mImports.begin(); i != mImports.end(); ++i)
+		{
+			ImportRequestMap::iterator j = mImportRequests.lower_bound(i->first),
+				end = mImportRequests.upper_bound(i->first);
+			if(j != end)
+			{
+				if(j->second == "*")
+				{
+					// Insert the entire AST into the import table
+					mImportTable.insert(mImportTable.begin(), i->second->begin(), i->second->end());
+					continue; // Skip ahead to the next file
+				}
+				else
+				{
+					for(; j != end; ++j)
+					{
+						// Locate this target and insert it into the import table
+						AbstractNodeListPtr newNodes = locateTarget(i->second.get(), j->second);
+						if(!newNodes.isNull() && !newNodes->empty())
+							mImportTable.insert(mImportTable.begin(), newNodes->begin(), newNodes->end());
+					}
+				}
+			}
+		}
+	}
+
+	AbstractNodeListPtr ScriptCompiler::loadImportPath(const Ogre::String &name)
+	{
+		AbstractNodeListPtr retval;
+		ConcreteNodeListPtr nodes;
+
+		if(mListener)
+			nodes = mListener->importFile(this, name);
+
+		if(nodes.isNull() && ResourceGroupManager::getSingletonPtr())
+		{
+			DataStreamPtr stream = ResourceGroupManager::getSingleton().openResource(name, mGroup);
+			if(!stream.isNull())
+			{
+				ScriptLexer lexer;
+				ScriptTokenListPtr tokens = lexer.tokenize(stream->getAsString(), name);
+				ScriptParser parser;
+				nodes = parser.parse(tokens);
+			}
+		}
+
+		if(!nodes.isNull())
+			retval = convertToAST(nodes);
+
+		return retval;
+	}
+
+	AbstractNodeListPtr ScriptCompiler::locateTarget(AbstractNodeList *nodes, const Ogre::String &target)
+	{
+		AbstractNodeList::iterator iter = nodes->end();
+	
+		// Search for a top-level object node
+		for(AbstractNodeList::iterator i = nodes->begin(); i != nodes->end(); ++i)
+		{
+			if((*i)->type == ANT_OBJECT)
+			{
+				ObjectAbstractNode *impl = (ObjectAbstractNode*)(*i).get();
+				if(impl->name == target)
+					iter = i;
+			}
+		}
+
+		// MEMCATEGORY_GENERAL is the only category supported for SharedPtr
+		AbstractNodeListPtr newNodes(OGRE_NEW_T(AbstractNodeList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+		if(iter != nodes->end())
+		{
+			newNodes->push_back(*iter);
+		}
+		return newNodes;
+	}
+
+	void ScriptCompiler::processObjects(Ogre::AbstractNodeList *nodes, const Ogre::AbstractNodeListPtr &top)
+	{
+		for(AbstractNodeList::iterator i = nodes->begin(); i != nodes->end(); ++i)
+		{
+			if((*i)->type == ANT_OBJECT)
+			{
+				ObjectAbstractNode *obj = (ObjectAbstractNode*)(*i).get();
+
+				// Check if it is inheriting anything
+				if(!obj->base.empty())
+				{
+					// Check the top level first, then check the import table
+					AbstractNodeListPtr newNodes = locateTarget(top.get(), obj->base);
+					if(newNodes->empty())
+						newNodes = locateTarget(&mImportTable, obj->base);
+
+					if(!newNodes->empty())
+					{
+						for(AbstractNodeList::iterator j = newNodes->begin(); j != newNodes->end(); ++j)
+							overlayObject(*j, obj);
+					}
+					else
+					{
+						addError(CE_OBJECTBASENOTFOUND, obj->file, obj->line,
+							"base object named \"" + obj->base + "\" not found in script definition");
+					}
+				}
+
+				// Recurse into children
+				processObjects(&obj->children, top);
+
+				// Overrides now exist in obj's overrides list. These are non-object nodes which must now
+				// Be placed in the children section of the object node such that overriding from parents
+				// into children works properly.
+				obj->children.insert(obj->children.begin(), obj->overrides.begin(), obj->overrides.end());
+			}
+		}
+	}
+
+	void ScriptCompiler::overlayObject(const AbstractNodePtr &source, ObjectAbstractNode *dest)
+	{
+		if(source->type == ANT_OBJECT)
+		{
+			ObjectAbstractNode *src = reinterpret_cast<ObjectAbstractNode*>(source.get());
+
+			// Overlay the environment of one on top the other first
+			for(std::map<String,String>::const_iterator i = src->getVariables().begin(); i != src->getVariables().end(); ++i)
+			{
+				std::pair<bool,String> var = dest->getVariable(i->first);
+				if(!var.first)
+					dest->setVariable(i->first, i->second);
+			}
+			
+			// Create a vector storing each pairing of override between source and destination
+			std::vector<std::pair<AbstractNodePtr,AbstractNodeList::iterator> > overrides; 
+			// A list of indices for each destination node tracks the minimum
+			// source node they can index-match against
+			std::map<ObjectAbstractNode*,size_t> indices;
+			// A map storing which nodes have overridden from the destination node
+			std::map<ObjectAbstractNode*,bool> overridden;
+
+			// Fill the vector with objects from the source node (base)
+			// And insert non-objects into the overrides list of the destination
+			AbstractNodeList::iterator insertPos = dest->children.begin();
+			for(AbstractNodeList::const_iterator i = src->children.begin(); i != src->children.end(); ++i)
+			{
+				if((*i)->type == ANT_OBJECT)
+				{
+					overrides.push_back(std::make_pair(*i, dest->children.end()));
+				}
+				else
+				{
+					AbstractNodePtr newNode((*i)->clone());
+					newNode->parent = dest;
+					dest->overrides.push_back(newNode);
+				}
+			}
+
+			// Track the running maximum override index in the name-matching phase
+			size_t maxOverrideIndex = 0;
+
+			// Loop through destination children searching for name-matching overrides
+			for(AbstractNodeList::iterator i = dest->children.begin(); i != dest->children.end(); )
+			{
+				if((*i)->type == ANT_OBJECT)
+				{
+					// Start tracking the override index position for this object
+					size_t overrideIndex = 0;
+
+					ObjectAbstractNode *node = reinterpret_cast<ObjectAbstractNode*>((*i).get());
+					indices[node] = maxOverrideIndex;
+					overridden[node] = false;
+
+					// special treatment for materials with * in their name
+					bool nodeHasWildcard=node->name.find('*') != String::npos;
+
+					// Find the matching name node
+					for(size_t j = 0; j < overrides.size(); ++j)
+					{
+						ObjectAbstractNode *temp = reinterpret_cast<ObjectAbstractNode*>(overrides[j].first.get());
+						// Consider a match a node that has a wildcard and matches an input name
+						bool wildcardMatch = nodeHasWildcard && 
+							(StringUtil::match(temp->name,node->name,true) || 
+								(node->name.size() == 1 && temp->name.empty()));
+						if(temp->cls == node->cls && !node->name.empty() && (temp->name == node->name || wildcardMatch))
+						{
+							// Pair these two together unless it's already paired
+							if(overrides[j].second == dest->children.end())
+							{
+								AbstractNodeList::iterator currentIterator = i;
+								ObjectAbstractNode *currentNode = node;
+								if (wildcardMatch)
+								{
+									//If wildcard is matched, make a copy of current material and put it before the iterator, matching its name to the parent. Use same reinterpret cast as above when node is set
+									AbstractNodePtr newNode((*i)->clone());
+									currentIterator = dest->children.insert(currentIterator, newNode);
+									currentNode = reinterpret_cast<ObjectAbstractNode*>((*currentIterator).get());
+									currentNode->name = temp->name;//make the regex match its matcher
+								}
+								overrides[j] = std::make_pair(overrides[j].first, currentIterator);
+								// Store the max override index for this matched pair
+								overrideIndex = j;
+								overrideIndex = maxOverrideIndex = std::max(overrideIndex, maxOverrideIndex);
+								indices[currentNode] = overrideIndex;
+								overridden[currentNode] = true;
+							}
+							else
+							{
+								addError(CE_DUPLICATEOVERRIDE, node->file, node->line);
+							}
+
+							if(!wildcardMatch)
+								break;
+						}
+					}
+
+					if (nodeHasWildcard)
+					{
+						//if the node has a wildcard it will be deleted since it was duplicated for every match
+						AbstractNodeList::iterator deletable=i++;
+						dest->children.erase(deletable);
+					}
+					else
+					{
+						++i; //Behavior in absence of regex, just increment iterator
+					}
+				}
+				else 
+				{
+					++i; //Behavior in absence of replaceable object, just increment iterator to find another
+				}
+			}
+
+			// Now make matches based on index
+			// Loop through destination children searching for name-matching overrides
+			for(AbstractNodeList::iterator i = dest->children.begin(); i != dest->children.end(); ++i)
+			{
+				if((*i)->type == ANT_OBJECT)
+				{
+					ObjectAbstractNode *node = reinterpret_cast<ObjectAbstractNode*>((*i).get());
+					if(!overridden[node])
+					{
+						// Retrieve the minimum override index from the map
+						size_t overrideIndex = indices[node];
+
+						if(overrideIndex < overrides.size())
+						{
+							// Search for minimum matching override
+							for(size_t j = overrideIndex; j < overrides.size(); ++j)
+							{
+								ObjectAbstractNode *temp = reinterpret_cast<ObjectAbstractNode*>(overrides[j].first.get());
+								if(temp->cls == node->cls && overrides[j].second == dest->children.end())
+								{
+									overrides[j] = std::make_pair(overrides[j].first, i);
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// Loop through overrides, either inserting source nodes or overriding
+			insertPos = dest->children.begin();
+			for(size_t i = 0; i < overrides.size(); ++i)
+			{
+				if(overrides[i].second != dest->children.end())
+				{
+					// Override the destination with the source (base) object
+					overlayObject(overrides[i].first, 
+						reinterpret_cast<ObjectAbstractNode*>((*overrides[i].second).get()));
+					insertPos = overrides[i].second;
+					insertPos++;
+				}
+				else
+				{
+					// No override was possible, so insert this node at the insert position
+					// into the destination (child) object
+					AbstractNodePtr newNode(overrides[i].first->clone());
+					newNode->parent = dest;
+					if(insertPos != dest->children.end())
+					{
+						dest->children.insert(insertPos, newNode);
+					}
+					else
+					{
+						dest->children.push_back(newNode);
+					}
+				}
+			}
+		}
+	}
+
+	bool ScriptCompiler::isNameExcluded(const String &cls, AbstractNode *parent)
+	{
+		// Run past the listener
+		Any retval;
+		std::vector<Any> args;
+		args.push_back(Any(cls));
+		args.push_back(Any(parent));
+		_fireEvent("processNameExclusion", args, &retval);
+
+		if(retval.isEmpty())
+		{
+			// Process the built-in name exclusions
+			if(cls == "emitter" || cls == "affector")
+			{
+				// emitters or affectors inside a particle_system are excluded
+				while(parent && parent->type == ANT_OBJECT)
+				{
+					ObjectAbstractNode *obj = reinterpret_cast<ObjectAbstractNode*>(parent);
+					if(obj->cls == "particle_system")
+						return true;
+					parent = obj->parent;
+				}
+				return false;
+			}
+			else if(cls == "pass")
+			{
+				// passes inside compositors are excluded
+				while(parent && parent->type == ANT_OBJECT)
+				{
+					ObjectAbstractNode *obj = reinterpret_cast<ObjectAbstractNode*>(parent);
+					if(obj->cls == "compositor")
+						return true;
+					parent = obj->parent;
+				}
+				return false;
+			}
+			else if(cls == "texture_source")
+			{
+				// Parent must be texture_unit
+				while(parent && parent->type == ANT_OBJECT)
+				{
+					ObjectAbstractNode *obj = reinterpret_cast<ObjectAbstractNode*>(parent);
+					if(obj->cls == "texture_unit")
+						return true;
+					parent = obj->parent;
+				}
+				return false;
+			}
+		}
+		else
+		{
+			return any_cast<bool>(retval);
+		}
+		return false;
+	}
+
+	void ScriptCompiler::processVariables(Ogre::AbstractNodeList *nodes)
+	{
+		AbstractNodeList::iterator i = nodes->begin();
+		while(i != nodes->end())
+		{
+			AbstractNodeList::iterator cur = i;
+			++i;
+
+			if((*cur)->type == ANT_OBJECT)
+			{
+				// Only process if this object is not abstract
+				ObjectAbstractNode *obj = (ObjectAbstractNode*)(*cur).get();
+				if(!obj->abstract)
+				{
+					processVariables(&obj->children);
+					processVariables(&obj->values);
+				}
+			}
+			else if((*cur)->type == ANT_PROPERTY)
+			{
+				PropertyAbstractNode *prop = (PropertyAbstractNode*)(*cur).get();
+				processVariables(&prop->values);
+			}
+			else if((*cur)->type == ANT_VARIABLE_ACCESS)
+			{
+				VariableAccessAbstractNode *var = (VariableAccessAbstractNode*)(*cur).get();
+
+				// Look up the enclosing scope
+				ObjectAbstractNode *scope = 0;
+				AbstractNode *temp = var->parent;
+				while(temp)
+				{
+					if(temp->type == ANT_OBJECT)
+					{
+						scope = (ObjectAbstractNode*)temp;
+						break;
+					}
+					temp = temp->parent;
+				}
+
+				// Look up the variable in the environment
+				std::pair<bool,String> varAccess;
+				if(scope)
+					varAccess = scope->getVariable(var->name);
+				if(!scope || !varAccess.first)
+				{
+					std::map<String,String>::iterator k = mEnv.find(var->name);
+					varAccess.first = k != mEnv.end();
+					if(varAccess.first)
+						varAccess.second = k->second;
+				}
+
+				if(varAccess.first)
+				{
+					// Found the variable, so process it and insert it into the tree
+					ScriptLexer lexer;
+					ScriptTokenListPtr tokens = lexer.tokenize(varAccess.second, var->file);
+					ScriptParser parser;
+					ConcreteNodeListPtr cst = parser.parseChunk(tokens);
+					AbstractNodeListPtr ast = convertToAST(cst);
+
+					// Set up ownership for these nodes
+					for(AbstractNodeList::iterator j = ast->begin(); j != ast->end(); ++j)
+						(*j)->parent = var->parent;
+
+					// Recursively handle variable accesses within the variable expansion
+					processVariables(ast.get());
+
+					// Insert the nodes in place of the variable
+					nodes->insert(cur, ast->begin(), ast->end());
+				}
+				else
+				{
+					// Error
+					addError(CE_UNDEFINEDVARIABLE, var->file, var->line);
+				}
+
+				// Remove the variable node
+				nodes->erase(cur);
+			}
+		}
+	}
+
+	void ScriptCompiler::initWordMap()
+	{
+		mIds["on"] = ID_ON;
+		mIds["off"] = ID_OFF;
+		mIds["true"] = ID_TRUE;
+		mIds["false"] = ID_FALSE;
+		mIds["yes"] = ID_YES;
+		mIds["no"] = ID_NO;
+
+		// Material ids
+		mIds["material"] = ID_MATERIAL;
+		mIds["vertex_program"] = ID_VERTEX_PROGRAM;
+		mIds["geometry_program"] = ID_GEOMETRY_PROGRAM;
+		mIds["fragment_program"] = ID_FRAGMENT_PROGRAM;
+		mIds["technique"] = ID_TECHNIQUE;
+		mIds["pass"] = ID_PASS;
+		mIds["texture_unit"] = ID_TEXTURE_UNIT;
+		mIds["vertex_program_ref"] = ID_VERTEX_PROGRAM_REF;
+		mIds["geometry_program_ref"] = ID_GEOMETRY_PROGRAM_REF;
+		mIds["fragment_program_ref"] = ID_FRAGMENT_PROGRAM_REF;
+		mIds["shadow_caster_vertex_program_ref"] = ID_SHADOW_CASTER_VERTEX_PROGRAM_REF;
+		mIds["shadow_receiver_vertex_program_ref"] = ID_SHADOW_RECEIVER_VERTEX_PROGRAM_REF;
+		mIds["shadow_receiver_fragment_program_ref"] = ID_SHADOW_RECEIVER_FRAGMENT_PROGRAM_REF;
+
+		mIds["lod_distances"] = ID_LOD_DISTANCES;
+		mIds["receive_shadows"] = ID_RECEIVE_SHADOWS;
+		mIds["transparency_casts_shadows"] = ID_TRANSPARENCY_CASTS_SHADOWS;
+		mIds["set_texture_alias"] = ID_SET_TEXTURE_ALIAS;
+
+		mIds["source"] = ID_SOURCE;
+		mIds["syntax"] = ID_SYNTAX;
+		mIds["default_params"] = ID_DEFAULT_PARAMS;
+		mIds["param_indexed"] = ID_PARAM_INDEXED;
+		mIds["param_named"] = ID_PARAM_NAMED;
+		mIds["param_indexed_auto"] = ID_PARAM_INDEXED_AUTO;
+		mIds["param_named_auto"] = ID_PARAM_NAMED_AUTO;
+
+		mIds["scheme"] = ID_SCHEME;
+		mIds["lod_index"] = ID_LOD_INDEX;
+		mIds["shadow_caster_material"] = ID_SHADOW_CASTER_MATERIAL;
+		mIds["shadow_receiver_material"] = ID_SHADOW_RECEIVER_MATERIAL;
+		mIds["gpu_vendor_rule"] = ID_GPU_VENDOR_RULE;
+		mIds["gpu_device_rule"] = ID_GPU_DEVICE_RULE;
+		mIds["include"] = ID_INCLUDE;
+		mIds["exclude"] = ID_EXCLUDE;
+
+
+
+		mIds["ambient"] = ID_AMBIENT;
+		mIds["diffuse"] = ID_DIFFUSE;
+		mIds["specular"] = ID_SPECULAR;
+		mIds["emissive"] = ID_EMISSIVE;
+			mIds["vertexcolour"] = ID_VERTEXCOLOUR;
+		mIds["scene_blend"] = ID_SCENE_BLEND;
+		mIds["colour_blend"] = ID_COLOUR_BLEND;
+			mIds["one"] = ID_ONE;
+			mIds["zero"] = ID_ZERO;
+			mIds["dest_colour"] = ID_DEST_COLOUR;
+			mIds["src_colour"] = ID_SRC_COLOUR;
+			mIds["one_minus_src_colour"] = ID_ONE_MINUS_SRC_COLOUR;
+			mIds["one_minus_dest_colour"] = ID_ONE_MINUS_DEST_COLOUR;
+			mIds["dest_alpha"] = ID_DEST_ALPHA;
+			mIds["src_alpha"] = ID_SRC_ALPHA;
+			mIds["one_minus_dest_alpha"] = ID_ONE_MINUS_DEST_ALPHA;
+			mIds["one_minus_src_alpha"] = ID_ONE_MINUS_SRC_ALPHA;
+		mIds["separate_scene_blend"] = ID_SEPARATE_SCENE_BLEND;
+		mIds["depth_check"] = ID_DEPTH_CHECK;
+		mIds["depth_write"] = ID_DEPTH_WRITE;
+		mIds["depth_func"] = ID_DEPTH_FUNC;
+		mIds["depth_bias"] = ID_DEPTH_BIAS;
+		mIds["iteration_depth_bias"] = ID_ITERATION_DEPTH_BIAS;
+			mIds["always_fail"] = ID_ALWAYS_FAIL;
+			mIds["always_pass"] = ID_ALWAYS_PASS;
+			mIds["less_equal"] = ID_LESS_EQUAL;
+			mIds["less"] = ID_LESS;
+			mIds["equal"] = ID_EQUAL;
+			mIds["not_equal"] = ID_NOT_EQUAL;
+			mIds["greater_equal"] = ID_GREATER_EQUAL;
+			mIds["greater"] = ID_GREATER;
+		mIds["alpha_rejection"] = ID_ALPHA_REJECTION;
+		mIds["alpha_to_coverage"] = ID_ALPHA_TO_COVERAGE;
+		mIds["light_scissor"] = ID_LIGHT_SCISSOR;
+		mIds["light_clip_planes"] = ID_LIGHT_CLIP_PLANES;
+		mIds["transparent_sorting"] = ID_TRANSPARENT_SORTING;
+		mIds["illumination_stage"] = ID_ILLUMINATION_STAGE;
+			mIds["decal"] = ID_DECAL;
+		mIds["cull_hardware"] = ID_CULL_HARDWARE;
+			mIds["clockwise"] = ID_CLOCKWISE;
+			mIds["anticlockwise"] = ID_ANTICLOCKWISE;
+		mIds["cull_software"] = ID_CULL_SOFTWARE;
+			mIds["back"] = ID_BACK;
+			mIds["front"] = ID_FRONT;
+		mIds["normalise_normals"] = ID_NORMALISE_NORMALS;
+		mIds["lighting"] = ID_LIGHTING;
+		mIds["shading"] = ID_SHADING;
+			mIds["flat"] = ID_FLAT;
+			mIds["gouraud"] = ID_GOURAUD;
+			mIds["phong"] = ID_PHONG;
+		mIds["polygon_mode"] = ID_POLYGON_MODE;
+			mIds["solid"] = ID_SOLID;
+			mIds["wireframe"] = ID_WIREFRAME;
+			mIds["points"] = ID_POINTS;
+		mIds["polygon_mode_overrideable"] = ID_POLYGON_MODE_OVERRIDEABLE;
+		mIds["fog_override"] = ID_FOG_OVERRIDE;
+			mIds["none"] = ID_NONE;
+			mIds["linear"] = ID_LINEAR;
+			mIds["exp"] = ID_EXP;
+			mIds["exp2"] = ID_EXP2;
+		mIds["colour_write"] = ID_COLOUR_WRITE;
+		mIds["max_lights"] = ID_MAX_LIGHTS;
+		mIds["start_light"] = ID_START_LIGHT;
+		mIds["iteration"] = ID_ITERATION;
+			mIds["once"] = ID_ONCE;
+			mIds["once_per_light"] = ID_ONCE_PER_LIGHT;
+			mIds["per_n_lights"] = ID_PER_N_LIGHTS;
+			mIds["per_light"] = ID_PER_LIGHT;
+			mIds["point"] = ID_POINT;
+			mIds["spot"] = ID_SPOT;
+			mIds["directional"] = ID_DIRECTIONAL;
+		mIds["point_size"] = ID_POINT_SIZE;
+		mIds["point_sprites"] = ID_POINT_SPRITES;
+		mIds["point_size_min"] = ID_POINT_SIZE_MIN;
+		mIds["point_size_max"] = ID_POINT_SIZE_MAX;
+		mIds["point_size_attenuation"] = ID_POINT_SIZE_ATTENUATION;
+
+		mIds["texture_alias"] = ID_TEXTURE_ALIAS;
+		mIds["texture"] = ID_TEXTURE;
+			mIds["1d"] = ID_1D;
+			mIds["2d"] = ID_2D;
+			mIds["3d"] = ID_3D;
+			mIds["cubic"] = ID_CUBIC;
+			mIds["unlimited"] = ID_UNLIMITED;
+			mIds["alpha"] = ID_ALPHA;
+			mIds["gamma"] = ID_GAMMA;
+		mIds["anim_texture"] = ID_ANIM_TEXTURE;
+		mIds["cubic_texture"] = ID_CUBIC_TEXTURE;
+			mIds["separateUV"] = ID_SEPARATE_UV;
+			mIds["combinedUVW"] = ID_COMBINED_UVW;
+		mIds["tex_coord_set"] = ID_TEX_COORD_SET;
+		mIds["tex_address_mode"] = ID_TEX_ADDRESS_MODE;
+			mIds["wrap"] = ID_WRAP;
+			mIds["clamp"] = ID_CLAMP;
+			mIds["mirror"] = ID_MIRROR;
+			mIds["border"] = ID_BORDER;
+		mIds["tex_border_colour"] = ID_TEX_BORDER_COLOUR;
+		mIds["filtering"] = ID_FILTERING;
+			mIds["bilinear"] = ID_BILINEAR;
+			mIds["trilinear"] = ID_TRILINEAR;
+			mIds["anisotropic"] = ID_ANISOTROPIC;
+		mIds["max_anisotropy"] = ID_MAX_ANISOTROPY;
+		mIds["mipmap_bias"] = ID_MIPMAP_BIAS;
+		mIds["colour_op"] = ID_COLOUR_OP;
+			mIds["replace"] = ID_REPLACE;
+			mIds["add"] = ID_ADD;
+			mIds["modulate"] = ID_MODULATE;
+			mIds["alpha_blend"] = ID_ALPHA_BLEND;
+		mIds["colour_op_ex"] = ID_COLOUR_OP_EX;
+			mIds["source1"] = ID_SOURCE1;
+			mIds["source2"] = ID_SOURCE2;
+			mIds["modulate"] = ID_MODULATE;
+			mIds["modulate_x2"] = ID_MODULATE_X2;
+			mIds["modulate_x4"] = ID_MODULATE_X4;
+			mIds["add"] = ID_ADD;
+			mIds["add_signed"] = ID_ADD_SIGNED;
+			mIds["add_smooth"] = ID_ADD_SMOOTH;
+			mIds["subtract"] = ID_SUBTRACT;
+			mIds["blend_diffuse_alpha"] = ID_BLEND_DIFFUSE_ALPHA;
+			mIds["blend_texture_alpha"] = ID_BLEND_TEXTURE_ALPHA;
+			mIds["blend_current_alpha"] = ID_BLEND_CURRENT_ALPHA;
+			mIds["blend_manual"] = ID_BLEND_MANUAL;
+			mIds["dotproduct"] = ID_DOT_PRODUCT;
+			mIds["blend_diffuse_colour"] = ID_BLEND_DIFFUSE_COLOUR;
+			mIds["src_current"] = ID_SRC_CURRENT;
+			mIds["src_texture"] = ID_SRC_TEXTURE;
+			mIds["src_diffuse"] = ID_SRC_DIFFUSE;
+			mIds["src_specular"] = ID_SRC_SPECULAR;
+			mIds["src_manual"] = ID_SRC_MANUAL;
+		mIds["colour_op_multipass_fallback"] = ID_COLOUR_OP_MULTIPASS_FALLBACK;
+		mIds["alpha_op_ex"] = ID_ALPHA_OP_EX;
+		mIds["env_map"] = ID_ENV_MAP;
+			mIds["spherical"] = ID_SPHERICAL;
+			mIds["planar"] = ID_PLANAR;
+			mIds["cubic_reflection"] = ID_CUBIC_REFLECTION;
+			mIds["cubic_normal"] = ID_CUBIC_NORMAL;
+		mIds["scroll"] = ID_SCROLL;
+		mIds["scroll_anim"] = ID_SCROLL_ANIM;
+		mIds["rotate"] = ID_ROTATE;
+		mIds["rotate_anim"] = ID_ROTATE_ANIM;
+		mIds["scale"] = ID_SCALE;
+		mIds["wave_xform"] = ID_WAVE_XFORM;
+			mIds["scroll_x"] = ID_SCROLL_X;
+			mIds["scroll_y"] = ID_SCROLL_Y;
+			mIds["scale_x"] = ID_SCALE_X;
+			mIds["scale_y"] = ID_SCALE_Y;
+			mIds["sine"] = ID_SINE;
+			mIds["triangle"] = ID_TRIANGLE;
+			mIds["sawtooth"] = ID_SAWTOOTH;
+			mIds["square"] = ID_SQUARE;
+			mIds["inverse_sawtooth"] = ID_INVERSE_SAWTOOTH;
+		mIds["transform"] = ID_TRANSFORM;
+		mIds["binding_type"] = ID_BINDING_TYPE;
+			mIds["vertex"] = ID_VERTEX;
+			mIds["fragment"] = ID_FRAGMENT;
+		mIds["content_type"] = ID_CONTENT_TYPE;
+			mIds["named"] = ID_NAMED;
+			mIds["shadow"] = ID_SHADOW;
+		mIds["texture_source"] = ID_TEXTURE_SOURCE;
+
+		// Particle system
+		mIds["particle_system"] = ID_PARTICLE_SYSTEM;
+		mIds["emitter"] = ID_EMITTER;
+		mIds["affector"] = ID_AFFECTOR;
+
+		// Compositor
+		mIds["compositor"] = ID_COMPOSITOR;
+		mIds["target"] = ID_TARGET;
+		mIds["target_output"] = ID_TARGET_OUTPUT;
+
+		mIds["input"] = ID_INPUT;
+			mIds["none"] = ID_NONE;
+			mIds["previous"] = ID_PREVIOUS;
+			mIds["target_width"] = ID_TARGET_WIDTH;
+			mIds["target_height"] = ID_TARGET_HEIGHT;
+			mIds["target_width_scaled"] = ID_TARGET_WIDTH_SCALED;
+			mIds["target_height_scaled"] = ID_TARGET_HEIGHT_SCALED;
+		mIds["only_initial"] = ID_ONLY_INITIAL;
+		mIds["visibility_mask"] = ID_VISIBILITY_MASK;
+		mIds["lod_bias"] = ID_LOD_BIAS;
+		mIds["material_scheme"] = ID_MATERIAL_SCHEME;
+		mIds["shadows"] = ID_SHADOWS_ENABLED;
+
+		mIds["clear"] = ID_CLEAR;
+		mIds["stencil"] = ID_STENCIL;
+		mIds["render_scene"] = ID_RENDER_SCENE;
+		mIds["render_quad"] = ID_RENDER_QUAD;
+		mIds["identifier"] = ID_IDENTIFIER;
+		mIds["first_render_queue"] = ID_FIRST_RENDER_QUEUE;
+		mIds["last_render_queue"] = ID_LAST_RENDER_QUEUE;
+
+		mIds["buffers"] = ID_BUFFERS;
+			mIds["colour"] = ID_COLOUR;
+			mIds["depth"] = ID_DEPTH;
+		mIds["colour_value"] = ID_COLOUR_VALUE;
+		mIds["depth_value"] = ID_DEPTH_VALUE;
+		mIds["stencil_value"] = ID_STENCIL_VALUE;
+
+		mIds["check"] = ID_CHECK;
+		mIds["comp_func"] = ID_COMP_FUNC;
+		mIds["ref_value"] = ID_REF_VALUE;
+		mIds["mask"] = ID_MASK;
+		mIds["fail_op"] = ID_FAIL_OP;
+			mIds["keep"] = ID_KEEP;
+			mIds["increment"] = ID_INCREMENT;
+			mIds["decrement"] = ID_DECREMENT;
+			mIds["increment_wrap"] = ID_INCREMENT_WRAP;
+			mIds["decrement_wrap"] = ID_DECREMENT_WRAP;
+			mIds["invert"] = ID_INVERT;
+		mIds["depth_fail_op"] = ID_DEPTH_FAIL_OP;
+		mIds["pass_op"] = ID_PASS_OP;
+		mIds["two_sided"] = ID_TWO_SIDED;
+	}
+
+	// AbstractTreeeBuilder
+	ScriptCompiler::AbstractTreeBuilder::AbstractTreeBuilder(ScriptCompiler *compiler)
+		:mCurrent(0), mNodes(OGRE_NEW_T(AbstractNodeList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T), mCompiler(compiler)
+	{
+	}
+
+	const AbstractNodeListPtr &ScriptCompiler::AbstractTreeBuilder::getResult() const
+	{
+		return mNodes;
+	}
+
+	void ScriptCompiler::AbstractTreeBuilder::visit(ConcreteNode *node)
+	{
+		AbstractNodePtr asn;
+
+		// Import = "import" >> 2 children, mCurrent == null
+		if(node->type == CNT_IMPORT && mCurrent == 0)
+		{
+			if(node->children.size() > 2)
+			{
+				mCompiler->addError(CE_FEWERPARAMETERSEXPECTED, node->file, node->line);
+				return;
+			}
+			if(node->children.size() < 2)
+			{
+				mCompiler->addError(CE_STRINGEXPECTED, node->file, node->line);
+				return;
+			}
+
+			ImportAbstractNode *impl = OGRE_NEW ImportAbstractNode();
+			impl->line = node->line;
+			impl->file = node->file;
+			
+			ConcreteNodeList::iterator iter = node->children.begin();
+			impl->target = (*iter)->token;
+
+			iter++;
+			impl->source = (*iter)->token;
+
+			asn = AbstractNodePtr(impl);
+		}
+		// variable set = "set" >> 2 children, children[0] == variable
+		else if(node->type == CNT_VARIABLE_ASSIGN)
+		{
+			if(node->children.size() > 2)
+			{
+				mCompiler->addError(CE_FEWERPARAMETERSEXPECTED, node->file, node->line);
+				return;
+			}
+			if(node->children.size() < 2)
+			{
+				mCompiler->addError(CE_STRINGEXPECTED, node->file, node->line);
+				return;
+			}
+			if(node->children.front()->type != CNT_VARIABLE)
+			{
+				mCompiler->addError(CE_VARIABLEEXPECTED, node->children.front()->file, node->children.front()->line);
+				return;
+			}
+
+			ConcreteNodeList::iterator i = node->children.begin();
+			String name = (*i)->token;
+
+			++i;
+			String value = (*i)->token;
+
+			if(mCurrent && mCurrent->type == ANT_OBJECT)
+			{
+				ObjectAbstractNode *ptr = (ObjectAbstractNode*)mCurrent;
+				ptr->setVariable(name, value);
+			}
+			else
+			{
+				mCompiler->mEnv.insert(std::make_pair(name, value));
+			}
+		}
+		// variable = $*, no children
+		else if(node->type == CNT_VARIABLE)
+		{
+			if(!node->children.empty())
+			{
+				mCompiler->addError(CE_FEWERPARAMETERSEXPECTED, node->file, node->line);
+				return;
+			}
+
+			VariableAccessAbstractNode *impl = OGRE_NEW VariableAccessAbstractNode(mCurrent);
+			impl->line = node->line;
+			impl->file = node->file;
+			impl->name = node->token;
+
+			asn = AbstractNodePtr(impl);
+		}
+		// Handle properties and objects here
+		else if(!node->children.empty())
+		{
+			// Grab the last two nodes
+			ConcreteNodePtr temp1, temp2;
+			ConcreteNodeList::reverse_iterator riter = node->children.rbegin();
+			if(riter != node->children.rend())
+			{
+				temp1 = *riter;
+				riter++;
+			}
+			if(riter != node->children.rend())
+				temp2 = *riter;
+
+			// object = last 2 children == { and }
+			if(!temp1.isNull() && !temp2.isNull() &&
+				temp1->type == CNT_RBRACE && temp2->type == CNT_LBRACE)
+			{
+				if(node->children.size() < 2)
+				{
+					mCompiler->addError(CE_STRINGEXPECTED, node->file, node->line);
+					return;
+				}
+
+				ObjectAbstractNode *impl = OGRE_NEW ObjectAbstractNode(mCurrent);
+				impl->line = node->line;
+				impl->file = node->file;
+				impl->abstract = false;
+
+				// Create a temporary detail list
+				std::list<ConcreteNode*> temp;
+				if(node->token == "abstract")
+				{
+					impl->abstract = true;
+					for(ConcreteNodeList::const_iterator i = node->children.begin(); i != node->children.end(); ++i)
+						temp.push_back((*i).get());
+				}
+				else
+				{
+					temp.push_back(node);
+					for(ConcreteNodeList::const_iterator i = node->children.begin(); i != node->children.end(); ++i)
+						temp.push_back((*i).get());
+				}
+
+				// Get the type of object
+				std::list<ConcreteNode*>::const_iterator iter = temp.begin();
+				impl->cls = (*iter)->token;
+				++iter;
+
+				// Get the name
+				// Unless the type is in the exclusion list
+				if(iter != temp.end() && ((*iter)->type == CNT_WORD || (*iter)->type == CNT_QUOTE) &&
+					!mCompiler->isNameExcluded(impl->cls, mCurrent))
+				{
+					impl->name = (*iter)->token;
+					++iter;
+				}
+
+				// Everything up until the colon is a "value" of this object
+				while(iter != temp.end() && (*iter)->type != CNT_COLON && (*iter)->type != CNT_LBRACE)
+				{
+					if((*iter)->type == CNT_VARIABLE)
+					{
+						VariableAccessAbstractNode *var = OGRE_NEW VariableAccessAbstractNode(impl);
+						var->file = (*iter)->file;
+						var->line = (*iter)->line;
+						var->type = ANT_VARIABLE_ACCESS;
+						var->name = (*iter)->token;
+						impl->values.push_back(AbstractNodePtr(var));
+					}
+					else
+					{
+						AtomAbstractNode *atom = OGRE_NEW AtomAbstractNode(impl);
+						atom->file = (*iter)->file;
+						atom->line = (*iter)->line;
+						atom->type = ANT_ATOM;
+						atom->value = (*iter)->token;
+						impl->values.push_back(AbstractNodePtr(atom));
+					}
+					++iter;
+				}
+
+				// Find the base
+				if(iter != temp.end() && (*iter)->type == CNT_COLON)
+				{
+					if((*iter)->children.empty())
+					{
+						mCompiler->addError(CE_STRINGEXPECTED, (*iter)->file, (*iter)->line);
+						return;
+					}
+					impl->base = (*iter)->children.front()->token;
+				}
+
+				// Finally try to map the cls to an id
+				ScriptCompiler::IdMap::const_iterator iter2 = mCompiler->mIds.find(impl->cls);
+				if(iter2 != mCompiler->mIds.end())
+					impl->id = iter2->second;
+
+				asn = AbstractNodePtr(impl);
+				mCurrent = impl;
+
+				// Visit the children of the {
+				AbstractTreeBuilder::visit(this, temp2->children);
+
+				// Go back up the stack
+				mCurrent = impl->parent;
+			}
+			// Otherwise, it is a property
+			else
+			{
+				PropertyAbstractNode *impl = OGRE_NEW PropertyAbstractNode(mCurrent);
+				impl->line = node->line;
+				impl->file = node->file;
+				impl->name = node->token;
+
+				ScriptCompiler::IdMap::const_iterator iter2 = mCompiler->mIds.find(impl->name);
+				if(iter2 != mCompiler->mIds.end())
+					impl->id = iter2->second;
+
+				asn = AbstractNodePtr(impl);
+				mCurrent = impl;
+
+				// Visit the children of the {
+				AbstractTreeBuilder::visit(this, node->children);
+
+				// Go back up the stack
+				mCurrent = impl->parent;
+			}
+		}
+		// Otherwise, it is a standard atom
+		else
+		{
+			AtomAbstractNode *impl = OGRE_NEW AtomAbstractNode(mCurrent);
+			impl->line = node->line;
+			impl->file = node->file;
+			impl->value = node->token;
+
+			ScriptCompiler::IdMap::const_iterator iter2 = mCompiler->mIds.find(impl->value);
+			if(iter2 != mCompiler->mIds.end())
+				impl->id = iter2->second;
+
+			asn = AbstractNodePtr(impl);
+		}
+
+		// Here, we must insert the node into the tree
+		if(!asn.isNull())
+		{
+			if(mCurrent)
+			{
+				if(mCurrent->type == ANT_PROPERTY)
+				{
+					PropertyAbstractNode *impl = reinterpret_cast<PropertyAbstractNode*>(mCurrent);
+					impl->values.push_back(asn);
+				}
+				else
+				{
+					ObjectAbstractNode *impl = reinterpret_cast<ObjectAbstractNode*>(mCurrent);
+					impl->children.push_back(asn);
+				}
+			}
+			else
+			{
+				mNodes->push_back(asn);
+			}
+		}
+	}
+
+	void ScriptCompiler::AbstractTreeBuilder::visit(AbstractTreeBuilder *visitor, const ConcreteNodeList &nodes)
+	{
+		for(ConcreteNodeList::const_iterator i = nodes.begin(); i != nodes.end(); ++i)
+			visitor->visit((*i).get());
+	}
+	
+
+	// ScriptCompilerManager
+	template<> ScriptCompilerManager *Singleton<ScriptCompilerManager>::ms_Singleton = 0;
+	
+	ScriptCompilerManager* ScriptCompilerManager::getSingletonPtr(void)
+    {
+        return ms_Singleton;
+    }
+	//-----------------------------------------------------------------------
+    ScriptCompilerManager& ScriptCompilerManager::getSingleton(void)
+    {  
+        assert( ms_Singleton );  return ( *ms_Singleton );  
+    }
+	//-----------------------------------------------------------------------
+	ScriptCompilerManager::ScriptCompilerManager()
+		:mListener(0)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+#if OGRE_USE_NEW_COMPILERS == 1
+		mScriptPatterns.push_back("*.program");
+		mScriptPatterns.push_back("*.material");
+		mScriptPatterns.push_back("*.particle");
+		mScriptPatterns.push_back("*.compositor");
+#endif
+        mScriptPatterns.push_back("*.os");
+		ResourceGroupManager::getSingleton()._registerScriptLoader(this);
+
+		OGRE_THREAD_POINTER_SET(mScriptCompiler, OGRE_NEW ScriptCompiler());
+
+		mBuiltinTranslatorManager = OGRE_NEW BuiltinScriptTranslatorManager();
+		mManagers.push_back(mBuiltinTranslatorManager);
+	}
+	//-----------------------------------------------------------------------
+	ScriptCompilerManager::~ScriptCompilerManager()
+	{
+		OGRE_THREAD_POINTER_DELETE(mScriptCompiler);
+		OGRE_DELETE mBuiltinTranslatorManager;
+	}
+	//-----------------------------------------------------------------------
+	void ScriptCompilerManager::setListener(ScriptCompilerListener *listener)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		mListener = listener;
+	}
+	//-----------------------------------------------------------------------
+	ScriptCompilerListener *ScriptCompilerManager::getListener()
+	{
+		return mListener;
+	}
+	//-----------------------------------------------------------------------
+	void ScriptCompilerManager::addTranslatorManager(Ogre::ScriptTranslatorManager *man)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		mManagers.push_back(man);
+	}
+	//-----------------------------------------------------------------------
+	void ScriptCompilerManager::removeTranslatorManager(Ogre::ScriptTranslatorManager *man)
+	{
+		OGRE_LOCK_AUTO_MUTEX
+		
+		for(std::vector<ScriptTranslatorManager*>::iterator i = mManagers.begin(); i != mManagers.end(); ++i)
+		{
+			if(*i == man)
+			{
+				mManagers.erase(i);
+				break;
+			}
+		}
+	}
+	//-------------------------------------------------------------------------
+	void ScriptCompilerManager::clearTranslatorManagers()
+	{
+		mManagers.clear();
+	}
+	//-----------------------------------------------------------------------
+	ScriptTranslator *ScriptCompilerManager::getTranslator(const AbstractNodePtr &node)
+	{
+		ScriptTranslator *translator = 0;
+		{
+			OGRE_LOCK_AUTO_MUTEX
+			
+			// Start looking from the back
+			for(std::vector<ScriptTranslatorManager*>::reverse_iterator i = mManagers.rbegin(); i != mManagers.rend(); ++i)
+			{
+				translator = (*i)->getTranslator(node);
+				if(translator != 0)
+					break;
+			}
+		}
+		return translator;
+	}
+	//-----------------------------------------------------------------------
+    const StringVector& ScriptCompilerManager::getScriptPatterns(void) const
+    {
+        return mScriptPatterns;
+    }
+    //-----------------------------------------------------------------------
+    Real ScriptCompilerManager::getLoadingOrder(void) const
+    {
+        /// Load relatively early, before most script loaders run
+        return 90.0f;
+    }
+    //-----------------------------------------------------------------------
+    void ScriptCompilerManager::parseScript(DataStreamPtr& stream, const String& groupName)
+    {
+#if OGRE_THREAD_SUPPORT
+		// check we have an instance for this thread (should always have one for main thread)
+		if (!mScriptCompiler.get())
+		{
+			// create a new instance for this thread - will get deleted when
+			// the thread dies
+			mScriptCompiler.reset(OGRE_NEW ScriptCompiler());
+		}
+#endif
+		// Set the listener on the compiler before we continue
+		{
+			OGRE_LOCK_AUTO_MUTEX
+			mScriptCompiler->setListener(mListener);
+		}
+        mScriptCompiler->compile(stream->getAsString(), stream->getName(), groupName);
+    }
+}
+

@@ -1,83 +1,361 @@
 // from server: 100% by auto
-// roc 2009-12 00822810  unit: VCXTPReportRow::?$CXTPInternalCollectionT  size: 213 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 00822810
-//
-// 00822810  56                   push esi
-// 00822811  8b359caeb900         mov esi, dword ptr [0xb9ae9c]
-// 00822817  85f6                 test esi, esi
-// 00822819  0f84c4000000         je 0x8228e3
-// 0082281f  90                   nop 
-// 00822820  8b4608               mov eax, dword ptr [esi + 8]
-// 00822823  85c0                 test eax, eax
-// 00822825  7408                 je 0x82282f
-// 00822827  8bf0                 mov esi, eax
-// 00822829  85f6                 test esi, esi
-// 0082282b  75f3                 jne 0x822820
-// 0082282d  5e                   pop esi
-// 0082282e  c3                   ret 
-// 0082282f  53                   push ebx
-// 00822830  55                   push ebp
-// 00822831  8b2d0cb39800         mov ebp, dword ptr [0x98b30c]
-// 00822837  57                   push edi
-// 00822838  eb06                 jmp 0x822840
-// 0082283a  8d9b00000000         lea ebx, [ebx]
-// 00822840  833e00               cmp dword ptr [esi], 0
-// 00822843  0f858c000000         jne 0x8228d5
-// 00822849  8b4608               mov eax, dword ptr [esi + 8]
-// 0082284c  8bde                 mov ebx, esi
-// 0082284e  85c0                 test eax, eax
-// 00822850  7406                 je 0x822858
-// 00822852  8b4e0c               mov ecx, dword ptr [esi + 0xc]
-// 00822855  89480c               mov dword ptr [eax + 0xc], ecx
-// 00822858  8b460c               mov eax, dword ptr [esi + 0xc]
-// 0082285b  85c0                 test eax, eax
-// 0082285d  7406                 je 0x822865
-// 0082285f  8b5608               mov edx, dword ptr [esi + 8]
-// 00822862  895008               mov dword ptr [eax + 8], edx
-// 00822865  39359caeb900         cmp dword ptr [0xb9ae9c], esi
-// 0082286b  750f                 jne 0x82287c
-// 0082286d  8b4608               mov eax, dword ptr [esi + 8]
-// 00822870  85c0                 test eax, eax
-// 00822872  7503                 jne 0x822877
-// 00822874  8b460c               mov eax, dword ptr [esi + 0xc]
-// 00822877  a39caeb900           mov dword ptr [0xb9ae9c], eax
-// 0082287c  8b760c               mov esi, dword ptr [esi + 0xc]
-// 0082287f  33ff                 xor edi, edi
-// 00822881  393d70aeb900         cmp dword ptr [0xb9ae70], edi
-// 00822887  740d                 je 0x822896
-// 00822889  6870aeb900           push 0xb9ae70
-// 0082288e  ff1508b29800         call dword ptr [0x98b208]
-// 00822894  8bf8                 mov edi, eax
-// 00822896  833d78aeb90000       cmp dword ptr [0xb9ae78], 0
-// 0082289d  53                   push ebx
-// 0082289e  742b                 je 0x8228cb
-// 008228a0  8b0d6caeb900         mov ecx, dword ptr [0xb9ae6c]
-// 008228a6  6a00                 push 0
-// 008228a8  51                   push ecx
-// 008228a9  ffd5                 call ebp
-// 008228ab  85ff                 test edi, edi
-// 008228ad  7529                 jne 0x8228d8
-// 008228af  a16caeb900           mov eax, dword ptr [0xb9ae6c]
-// 008228b4  85c0                 test eax, eax
-// 008228b6  7407                 je 0x8228bf
-// 008228b8  50                   push eax
-// 008228b9  ff1504b39800         call dword ptr [0x98b304]
-// 008228bf  c7056caeb90000000000 mov dword ptr [0xb9ae6c], 0
-// 008228c9  eb0d                 jmp 0x8228d8
-// 008228cb  e88a0ffdff           call 0x7f385a
-// 008228d0  83c404               add esp, 4
-// 008228d3  eb03                 jmp 0x8228d8
-// 008228d5  8b760c               mov esi, dword ptr [esi + 0xc]
-// 008228d8  85f6                 test esi, esi
-// 008228da  0f8560ffffff         jne 0x822840
-// 008228e0  5f                   pop edi
-// 008228e1  5d                   pop ebp
-// 008228e2  5b                   pop ebx
-// 008228e3  5e                   pop esi
-// 008228e4  c3                   ret 
-// library xtp-15.2.1/Source\Chart\XTPChartSeriesPoint.cpp (function ?FreeExtraData@?$CXTPBatchAllocManagerT@VCXTPChartSeriesPointAllocator@@UCXTPChartSeriesBatchPointData@@@@SAXXZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/Chart/XTPChartSeriesPoint.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPChartSeriesPoint.cpp
+//
+// This file is a part of the XTREME TOOLKIT PRO MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "Common/XTPResourceManager.h"
+#include "Common/XTPPropExchange.h"
+#include "Common/XTPCustomHeap.h"
+
+#include "Types/XTPChartTypes.h"
+
+#include "XTPChartDefines.h"
+#include "XTPChartElement.h"
+#include "XTPChartSeriesPoint.h"
+#include "XTPChartSeries.h"
+
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPChartSeries
+
+IMPLEMENT_DYNAMIC(CXTPChartSeriesPoint, CXTPChartElement);
+
+CXTPChartSeriesPoint::CXTPChartSeriesPoint()
+{
+	ZeroMemory(m_dValues, sizeof(m_dValues));
+	m_nLength = 1;
+
+	CommonConstruct();
+}
+
+CXTPChartSeriesPoint::~CXTPChartSeriesPoint()
+{
+}
+
+
+CXTPChartSeriesPoint::CXTPChartSeriesPoint(const CXTPChartString& strArgument, double dValue)
+{
+	m_strArgument = strArgument;
+
+	ZeroMemory(m_dValues, sizeof(m_dValues));
+	m_dValues[0] = dValue;
+	m_nLength = 1;
+
+	CommonConstruct();
+}
+
+CXTPChartSeriesPoint::CXTPChartSeriesPoint(double dArgument, double dValue)
+{
+	m_dArgument = dArgument;
+
+	ZeroMemory(m_dValues, sizeof(m_dValues));
+	m_dValues[0] = dValue;
+	m_nLength = 1;
+	m_dInternalArgument = dArgument;
+
+	CommonConstruct();
+}
+
+CXTPChartSeriesPoint::CXTPChartSeriesPoint(double dArgument, double dValue1, double dValue2)
+{
+	m_dArgument = dArgument;
+
+	ZeroMemory(m_dValues, sizeof(m_dValues));
+	m_dValues[0] = dValue1;
+	m_dValues[1] = dValue2;
+	m_nLength = 2;
+	m_dInternalArgument = dArgument;
+
+	CommonConstruct();
+}
+
+CXTPChartSeriesPoint::CXTPChartSeriesPoint(const CXTPChartString& strArgument, double dValue1, double dValue2)
+{
+	m_strArgument = strArgument;
+
+	ZeroMemory(m_dValues, sizeof(m_dValues));
+	m_dValues[0] = dValue1;
+	m_dValues[1] = dValue2;
+	m_nLength = 2;
+
+	CommonConstruct();
+}
+
+CXTPChartSeriesPoint::CXTPChartSeriesPoint(const CXTPChartString& strArgument, double dValue1, double dValue2, double dValue3, double dValue4)
+{
+	m_strArgument = strArgument;
+
+	ZeroMemory(m_dValues, sizeof(m_dValues));
+	m_dValues[0] = dValue1;
+	m_dValues[1] = dValue2;
+	m_dValues[2] = dValue3;
+	m_dValues[3] = dValue4;
+	m_nLength = 4;
+
+	CommonConstruct();
+}
+
+CXTPChartSeriesPoint::CXTPChartSeriesPoint(double dArgument, double dValue1, double dValue2, double dValue3, double dValue4)
+{
+	m_dArgument = dArgument;
+
+	ZeroMemory(m_dValues, sizeof(m_dValues));
+	m_dValues[0] = dValue1;
+	m_dValues[1] = dValue2;
+	m_dValues[2] = dValue3;
+	m_dValues[3] = dValue4;
+	m_nLength = 4;
+
+	CommonConstruct();
+}
+
+void CXTPChartSeriesPoint::CommonConstruct()
+{
+	m_nPaletteIndex = 0;
+	m_bSpecial= 0;
+
+	if (m_strArgument.IsEmpty())
+	{
+		CString str;
+		str.Format(_T("%g"), m_dArgument);
+		m_strArgument = str;
+	}
+	else
+	{
+		m_dArgument = atof(XTP_CT2CA(m_strArgument));
+		m_dInternalArgument = m_dArgument;
+
+	}
+	m_nIndex = -1;
+
+	m_clrPoint = CXTPChartColor::Empty;
+
+
+}
+
+double CXTPChartSeriesPoint::GetValue(int nIndex) const
+{
+	if (nIndex >= m_nLength)
+		return 0;
+
+	return m_dValues[nIndex];
+}
+
+void CXTPChartSeriesPoint::SetValue(int nIndex, double dValue)
+{
+	if (nIndex >= m_nLength)
+		return;
+
+	m_dValues[nIndex] = dValue;
+}
+
+CXTPChartSeriesPoint* CXTPChartSeriesPoint::GetPreviousPoint() const
+{
+	if (!m_pOwner)
+		return NULL;
+
+	CXTPChartSeriesPointCollection* pOwner = (CXTPChartSeriesPointCollection*)m_pOwner;
+
+	return pOwner->GetAt(m_nIndex - 1);
+}
+
+CXTPChartSeriesPoint* CXTPChartSeriesPoint::GetNextPoint() const
+{
+	if (!m_pOwner)
+		return NULL;
+
+	CXTPChartSeriesPointCollection* pOwner = (CXTPChartSeriesPointCollection*)m_pOwner;
+
+	return pOwner->GetAt(m_nIndex + 1);
+}
+
+void CXTPChartSeriesPoint::DoPropExchange(CXTPPropExchange* pPX)
+{
+	PX_String(pPX, _T("Argument"), m_strArgument, _T(""));
+	PX_Double(pPX, _T("ArgumentValue"), m_dArgument, 0);
+
+	PX_Int(pPX, _T("Length"), m_nLength, 1);
+	PX_Bool(pPX, _T("Special"), m_bSpecial, FALSE);
+
+	for (int i = 0; i < m_nLength; i++)
+	{
+		CString strValue;
+		strValue.Format(_T("Value%d"), i);
+		PX_Double(pPX, strValue, m_dValues[i]);
+	}
+
+	if (pPX->IsLoading())
+	{
+		m_dInternalArgument = m_dArgument;
+	}
+}
+
+CXTPChartSeries* CXTPChartSeriesPoint::GetSeries() const
+{
+	CXTPChartSeriesPointCollection* pCollection = DYNAMIC_DOWNCAST(CXTPChartSeriesPointCollection, m_pOwner);
+	if (!pCollection)
+		return NULL;
+
+	CXTPChartSeries* pSeries = DYNAMIC_DOWNCAST(CXTPChartSeries, pCollection->GetOwner());
+
+	return pSeries;
+}
+
+void CXTPChartSeriesPoint::SetInternalArgument(double dInternalArgument)
+{
+	m_dInternalArgument = dInternalArgument;
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPChartSeriesPointCollection
+
+IMPLEMENT_DYNAMIC(CXTPChartSeriesPointCollection, CXTPChartElementCollection)
+
+CXTPChartSeriesPointCollection::CXTPChartSeriesPointCollection()
+{
+}
+
+CXTPChartSeriesPointCollection::~CXTPChartSeriesPointCollection()
+{
+}
+
+
+CXTPChartSeriesPoint* CXTPChartSeriesPointCollection::Add(CXTPChartSeriesPoint* pPoint)
+{
+	pPoint->m_nIndex = GetCount();
+
+	InsertAt(GetCount(), pPoint);
+
+	return pPoint;
+}
+
+void CXTPChartSeriesPointCollection::DoPropExchange(CXTPPropExchange* pPX)
+{
+	if (pPX->IsLoading())
+	{
+		RemoveAll();
+
+		CXTPPropExchangeEnumeratorPtr pEnumerator(pPX->GetEnumerator(_T("Point")));
+		POSITION pos = pEnumerator->GetPosition(0);
+
+		while (pos)
+		{
+			CXTPPropExchangeSection pxItem(pEnumerator->GetNext(pos));
+
+
+			CXTPChartSeriesPoint* pPoint = new CXTPChartSeriesPoint();
+			Add(pPoint);
+
+			pPoint->DoPropExchange(&pxItem);
+		}
+	}
+	else
+	{
+		CXTPPropExchangeEnumeratorPtr pEnumerator(pPX->GetEnumerator(_T("Point")));
+		POSITION pos = pEnumerator->GetPosition((int)m_arrElements.GetSize());
+
+		for (int i = 0; i < GetCount(); i++)
+		{
+			CXTPPropExchangeSection pxItem(pEnumerator->GetNext(pos));
+
+			m_arrElements[i]->DoPropExchange(&pxItem);
+		}
+
+	}
+}
+
+
+XTP_DECLARE_HEAP_ALLOCATOR_(CXTPChartSeriesPointAllocator, XTP_EXPORT_PARAMS_NO)
+XTP_IMPLEMENT_HEAP_ALLOCATOR(CXTPChartSeriesPointAllocator, FALSE)
+
+
+XTP_DECLARE_BATCH_ALLOC_OBJ_DATA_(CXTPChartSeriesBatchPointData, XTP_EXPORT_PARAMS_NO);
+
+class CXTPChartSeriesBatchPoint : public CXTPBatchAllocObjT<CXTPHeapObjectT<CXTPChartSeriesPoint, CXTPChartSeriesPointAllocator>,
+	 CXTPChartSeriesBatchPointData>
+{
+
+};
+
+XTP_IMPLEMENT_BATCH_ALLOC_OBJ_DATA(CXTPChartSeriesBatchPointData, CXTPChartSeriesBatchPoint, TRUE)
+
+
+void CXTPChartSeriesPointCollection::AddPoints(int nCount)
+{
+
+	CXTPChartSeriesBatchPointData::m_nBlockSize = nCount;
+
+	for (int i = 0; i < nCount; i++)
+	{
+		CXTPChartSeriesBatchPoint* pPoint = new CXTPChartSeriesBatchPoint();
+
+		Add(pPoint);
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPChartSeriesVirtualPointCollection
+
+CXTPChartSeriesVirtualPointCollection::CXTPChartSeriesVirtualPointCollection(double dMinRange, double dMaxRange, double dStep, GETPOINTVALUEPTR pCallbackPtr)
+{
+	m_dMinRange = dMinRange;
+	m_dMaxRange = dMaxRange;
+	m_dStep = dStep;
+
+	if (dStep == 0)
+		dStep = 1;
+
+	m_nCount = int((m_dMaxRange - m_dMinRange) / dStep);
+
+	m_pVirtualPoint = new CXTPChartSeriesPoint();
+	m_pVirtualPoint->m_pOwner = this;
+	m_pCallbackPtr = pCallbackPtr;
+}
+
+CXTPChartSeriesVirtualPointCollection::~CXTPChartSeriesVirtualPointCollection()
+{
+	SAFE_RELEASE(m_pVirtualPoint);
+}
+
+int CXTPChartSeriesVirtualPointCollection::GetCount() const
+{
+	return m_nCount;
+}
+
+CXTPChartSeriesPoint* CXTPChartSeriesVirtualPointCollection::GetAt(int nIndex) const
+{
+	double x = m_dMinRange + nIndex * m_dStep;
+
+	m_pVirtualPoint->m_dArgument = m_pVirtualPoint->m_dInternalArgument = x;
+	m_pVirtualPoint->m_nLength = 1;
+	m_pVirtualPoint->m_dValues[0] = m_pCallbackPtr((CXTPChartSeries*)m_pOwner, x);
+
+	return m_pVirtualPoint;
+}
+

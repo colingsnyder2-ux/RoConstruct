@@ -1,113 +1,406 @@
 // from server: 100% by auto
-// roc 2011-06 008a0e20  unit: CXTPShortcutManager  size: 288 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 008a0e20
-//
-// 008a0e20  83ec44               sub esp, 0x44
-// 008a0e23  56                   push esi
-// 008a0e24  6a2c                 push 0x2c
-// 008a0e26  33f6                 xor esi, esi
-// 008a0e28  8d442420             lea eax, [esp + 0x20]
-// 008a0e2c  56                   push esi
-// 008a0e2d  50                   push eax
-// 008a0e2e  e8b1a4f6ff           call 0x80b2e4
-// 008a0e33  8b542460             mov edx, dword ptr [esp + 0x60]
-// 008a0e37  8b4c245c             mov ecx, dword ptr [esp + 0x5c]
-// 008a0e3b  83c40c               add esp, 0xc
-// 008a0e3e  56                   push esi
-// 008a0e3f  f7da                 neg edx
-// 008a0e41  56                   push esi
-// 008a0e42  8954242c             mov dword ptr [esp + 0x2c], edx
-// 008a0e46  8d542410             lea edx, [esp + 0x10]
-// 008a0e4a  52                   push edx
-// 008a0e4b  b801000000           mov eax, 1
-// 008a0e50  6689442434           mov word ptr [esp + 0x34], ax
-// 008a0e55  56                   push esi
-// 008a0e56  8d44242c             lea eax, [esp + 0x2c]
-// 008a0e5a  894c2430             mov dword ptr [esp + 0x30], ecx
-// 008a0e5e  50                   push eax
-// 008a0e5f  b920000000           mov ecx, 0x20
-// 008a0e64  56                   push esi
-// 008a0e65  c744243428000000     mov dword ptr [esp + 0x34], 0x28
-// 008a0e6d  66894c2442           mov word ptr [esp + 0x42], cx
-// 008a0e72  89742444             mov dword ptr [esp + 0x44], esi
-// 008a0e76  ff157801a400         call dword ptr [0xa40178]
-// 008a0e7c  8bc8                 mov ecx, eax
-// 008a0e7e  894c2418             mov dword ptr [esp + 0x18], ecx
-// 008a0e82  3bce                 cmp ecx, esi
-// 008a0e84  0f84ad000000         je 0x8a0f37
-// 008a0e8a  39742408             cmp dword ptr [esp + 8], esi
-// 008a0e8e  0f84a3000000         je 0x8a0f37
-// 008a0e94  8b442450             mov eax, dword ptr [esp + 0x50]
-// 008a0e98  53                   push ebx
-// 008a0e99  57                   push edi
-// 008a0e9a  8b7c2460             mov edi, dword ptr [esp + 0x60]
-// 008a0e9e  8bd8                 mov ebx, eax
-// 008a0ea0  0fafdf               imul ebx, edi
-// 008a0ea3  3974245c             cmp dword ptr [esp + 0x5c], esi
-// 008a0ea7  8d148500000000       lea edx, [eax*4]
-// 008a0eae  895c2418             mov dword ptr [esp + 0x18], ebx
-// 008a0eb2  8954241c             mov dword ptr [esp + 0x1c], edx
-// 008a0eb6  89742414             mov dword ptr [esp + 0x14], esi
-// 008a0eba  7e70                 jle 0x8a0f2c
-// 008a0ebc  55                   push ebp
-// 008a0ebd  8b6c2458             mov ebp, dword ptr [esp + 0x58]
-// 008a0ec1  89742410             mov dword ptr [esp + 0x10], esi
-// 008a0ec5  8b742410             mov esi, dword ptr [esp + 0x10]
-// 008a0ec9  8b4c2414             mov ecx, dword ptr [esp + 0x14]
-// 008a0ecd  03ce                 add ecx, esi
-// 008a0ecf  33f6                 xor esi, esi
-// 008a0ed1  8bd5                 mov edx, ebp
-// 008a0ed3  85c0                 test eax, eax
-// 008a0ed5  7e37                 jle 0x8a0f0e
-// 008a0ed7  8a02                 mov al, byte ptr [edx]
-// 008a0ed9  0fb65a01             movzx ebx, byte ptr [edx + 1]
-// 008a0edd  42                   inc edx
-// 008a0ede  42                   inc edx
-// 008a0edf  885c2464             mov byte ptr [esp + 0x64], bl
-// 008a0ee3  8a1a                 mov bl, byte ptr [edx]
-// 008a0ee5  8819                 mov byte ptr [ecx], bl
-// 008a0ee7  0fb65c2464           movzx ebx, byte ptr [esp + 0x64]
-// 008a0eec  41                   inc ecx
-// 008a0eed  8819                 mov byte ptr [ecx], bl
-// 008a0eef  41                   inc ecx
-// 008a0ef0  8801                 mov byte ptr [ecx], al
-// 008a0ef2  42                   inc edx
-// 008a0ef3  41                   inc ecx
-// 008a0ef4  32c0                 xor al, al
-// 008a0ef6  83ff04               cmp edi, 4
-// 008a0ef9  7503                 jne 0x8a0efe
-// 008a0efb  8a02                 mov al, byte ptr [edx]
-// 008a0efd  42                   inc edx
-// 008a0efe  8801                 mov byte ptr [ecx], al
-// 008a0f00  8b44245c             mov eax, dword ptr [esp + 0x5c]
-// 008a0f04  46                   inc esi
-// 008a0f05  41                   inc ecx
-// 008a0f06  3bf0                 cmp esi, eax
-// 008a0f08  7ccd                 jl 0x8a0ed7
-// 008a0f0a  8b5c241c             mov ebx, dword ptr [esp + 0x1c]
-// 008a0f0e  8b4c2418             mov ecx, dword ptr [esp + 0x18]
-// 008a0f12  8b542420             mov edx, dword ptr [esp + 0x20]
-// 008a0f16  01542410             add dword ptr [esp + 0x10], edx
-// 008a0f1a  41                   inc ecx
-// 008a0f1b  03eb                 add ebp, ebx
-// 008a0f1d  3b4c2460             cmp ecx, dword ptr [esp + 0x60]
-// 008a0f21  894c2418             mov dword ptr [esp + 0x18], ecx
-// 008a0f25  7c9e                 jl 0x8a0ec5
-// 008a0f27  8b4c2424             mov ecx, dword ptr [esp + 0x24]
-// 008a0f2b  5d                   pop ebp
-// 008a0f2c  5f                   pop edi
-// 008a0f2d  5b                   pop ebx
-// 008a0f2e  8bc1                 mov eax, ecx
-// 008a0f30  5e                   pop esi
-// 008a0f31  83c444               add esp, 0x44
-// 008a0f34  c21000               ret 0x10
-// 008a0f37  33c0                 xor eax, eax
-// 008a0f39  5e                   pop esi
-// 008a0f3a  83c444               add esp, 0x44
-// 008a0f3d  c21000               ret 0x10
-// library xtp-15.2.1/Source\GraphicLibrary\XTPGraphicBitmapPng.cpp (function ?ConvertToBitmap@CXTPGraphicBitmapPng@@ABEPAUHBITMAP__@@PAEVCSize@@H@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/GraphicLibrary/XTPGraphicBitmapPng.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPGraphicBitmapPng.cpp : implementation of the CXTPGraphicBitmapPng class.
+//
+// This file is a part of the XTREME TOOLKITPRO MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "libpng\png.h"
+
+#include "XTPGraphicBitmapPng.h"
+
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPGraphicBitmapPng
+
+CXTPGraphicBitmapPng::CXTPGraphicBitmapPng()
+{
+	m_bAlpha = FALSE;
+}
+
+struct CXTPGraphicBitmapPng::CCallback
+{
+	static void PNGAPI png_read_data(png_structp png_ptr, png_bytep data, png_size_t length)
+	{
+		CFile* pFile = (CFile*)png_ptr->io_ptr;
+
+		png_size_t sizeRead = (png_size_t)pFile->Read(data, (UINT)length);
+
+		if (sizeRead != length)
+		{
+			AfxThrowFileException(CFileException::endOfFile);
+		}
+	}
+
+	static void PNGAPI png_write_data(png_structp png_ptr, png_bytep data, png_size_t length)
+	{
+		CFile* pFile = (CFile*)png_ptr->io_ptr;
+
+		pFile->Write(data, (UINT)length);
+
+	}
+
+	static void PNGAPI png_flush(png_structp png_ptr)
+	{
+		CFile* pFile = (CFile*)png_ptr->io_ptr;
+		pFile->Flush();
+	}
+
+	static void PNGAPI png_cexcept_error(png_structp /*png_ptr*/, png_const_charp /*msg*/)
+	{
+		AfxThrowFileException(CFileException::badSeek);
+	}
+
+	static BOOL PNGAPI PngLoadImage(CFile* pFile, png_byte **ppbImageData,
+		png_uint_32 *piWidth, png_uint_32 *piHeight, int *piChannels, png_color *pBkgColor);
+};
+
+BOOL CXTPGraphicBitmapPng::CCallback::PngLoadImage(CFile* pFile, png_byte **ppbImageData,
+	png_uint_32 *piWidth, png_uint_32 *piHeight, int *piChannels, png_color *pBkgColor)
+{
+	png_byte            pbSig[8];
+	int                 iBitDepth;
+	int                 iColorType;
+	double              dGamma;
+	png_color_16       *pBackground;
+	png_uint_32         ulChannels;
+	png_uint_32         ulRowBytes;
+	png_byte           *pbImageData = *ppbImageData;
+	png_byte          **ppbRowPointers = NULL;
+	png_uint_32         i;
+	png_structp         png_ptr = NULL;
+	png_infop           info_ptr = NULL;
+
+	// open the PNG input file
+
+	if (!pFile)
+	{
+		*ppbImageData = pbImageData = NULL;
+		return FALSE;
+	}
+
+	pFile->Read(pbSig, 8);
+
+	if (!png_check_sig(pbSig, 8))
+	{
+		*ppbImageData = pbImageData = NULL;
+		return FALSE;
+	}
+
+	// create the two png(-info) structures
+
+	png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL,
+		(png_error_ptr)png_cexcept_error, (png_error_ptr)NULL);
+	if (!png_ptr)
+	{
+		*ppbImageData = pbImageData = NULL;
+		return FALSE;
+	}
+
+	info_ptr = png_create_info_struct(png_ptr);
+	if (!info_ptr)
+	{
+		png_destroy_read_struct(&png_ptr, NULL, NULL);
+		*ppbImageData = pbImageData = NULL;
+		return FALSE;
+	}
+
+	TRY
+	{
+
+		// initialize the png structure
+
+		png_set_read_fn(png_ptr, (png_voidp)pFile, png_read_data);
+
+		png_set_sig_bytes(png_ptr, 8);
+
+		// read all PNG info up to image data
+
+		png_read_info(png_ptr, info_ptr);
+
+		// get width, height, bit-depth and color-type
+
+		png_get_IHDR(png_ptr, info_ptr, piWidth, piHeight, &iBitDepth,
+			&iColorType, NULL, NULL, NULL);
+
+		// expand images of all color-type and bit-depth to 3x8 bit RGB images
+		// let the library process things like alpha, transparency, background
+
+		if (iBitDepth == 16)
+			png_set_strip_16(png_ptr);
+		if (iColorType == PNG_COLOR_TYPE_PALETTE)
+			png_set_expand(png_ptr);
+		if (iBitDepth < 8)
+			png_set_expand(png_ptr);
+		if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
+			png_set_expand(png_ptr);
+		if (iColorType == PNG_COLOR_TYPE_GRAY ||
+			iColorType == PNG_COLOR_TYPE_GRAY_ALPHA)
+			png_set_gray_to_rgb(png_ptr);
+
+		// set the background color to draw transparent and alpha images over.
+		if (png_get_bKGD(png_ptr, info_ptr, &pBackground))
+		{
+			png_set_background(png_ptr, pBackground, PNG_BACKGROUND_GAMMA_FILE, 1, 1.0);
+			pBkgColor->red   = (byte) pBackground->red;
+			pBkgColor->green = (byte) pBackground->green;
+			pBkgColor->blue  = (byte) pBackground->blue;
+		}
+		else
+		{
+			pBkgColor = NULL;
+		}
+
+		// if required set gamma conversion
+		if (png_get_gAMA(png_ptr, info_ptr, &dGamma))
+			png_set_gamma(png_ptr, (double) 2.2, dGamma);
+
+		// after the transformations have been registered update info_ptr data
+
+		png_read_update_info(png_ptr, info_ptr);
+
+		// get again width, height and the new bit-depth and color-type
+
+		png_get_IHDR(png_ptr, info_ptr, piWidth, piHeight, &iBitDepth,
+			&iColorType, NULL, NULL, NULL);
+
+
+		// row_bytes is the width x number of channels
+
+		ulRowBytes = png_get_rowbytes(png_ptr, info_ptr);
+		ulChannels = png_get_channels(png_ptr, info_ptr);
+
+		*piChannels = ulChannels;
+
+		// now we can allocate memory to store the image
+
+		if (pbImageData)
+		{
+			free (pbImageData);
+			pbImageData = NULL;
+		}
+
+		pbImageData = (png_byte*)malloc(ulRowBytes * (*piHeight) * sizeof(png_byte));
+
+		if (pbImageData == NULL)
+		{
+			AfxThrowFileException(CFileException::badSeek);
+		}
+		*ppbImageData = pbImageData;
+
+		// and allocate memory for an array of row-pointers
+		ppbRowPointers = (png_bytepp)malloc((*piHeight) * sizeof(png_bytep));
+
+		if (ppbRowPointers == NULL)
+		{
+			AfxThrowFileException(CFileException::badSeek);
+		}
+
+		// set the individual row-pointers to point at the correct offsets
+
+		for (i = 0; i < (*piHeight); i++)
+			ppbRowPointers[i] = pbImageData + i * ulRowBytes;
+
+		// now we can go ahead and just read the whole image
+
+		png_read_image(png_ptr, ppbRowPointers);
+
+		// read the additional chunks in the PNG file (not really needed)
+
+		png_read_end(png_ptr, NULL);
+
+		// and we're done
+
+		free (ppbRowPointers);
+		ppbRowPointers = NULL;
+
+		// yepp, done
+	}
+	CATCH (CFileException, e)
+	{
+		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+
+		*ppbImageData = pbImageData = NULL;
+
+		if (ppbRowPointers)
+			free (ppbRowPointers);
+
+		return FALSE;
+	}
+	END_CATCH
+
+	png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+
+	return TRUE;
+}
+
+HBITMAP CXTPGraphicBitmapPng::ConvertToBitmap(BYTE* pbImage, CSize szImage,  int cImgChannels) const
+{
+	LONG xImg, yImg;
+	BYTE *src, *dst;
+	BYTE r, g, b, a;
+	BITMAPINFO bmi;
+	LPBYTE pBits;
+	HBITMAP hbm;
+	const int cDIChannels = 4;
+	UINT wImgRowBytes;
+	UINT wDIRowBytes;
+
+	// Initialize header to 0s.
+	ZeroMemory(&bmi, sizeof(bmi));
+
+	// Fill out the fields you care about.
+	bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+	bmi.bmiHeader.biWidth = szImage.cx;
+	bmi.bmiHeader.biHeight = -szImage.cy;
+	bmi.bmiHeader.biPlanes = 1;
+	bmi.bmiHeader.biBitCount = 32;
+	bmi.bmiHeader.biCompression = BI_RGB;
+
+	hbm = CreateDIBSection(NULL, &bmi, DIB_RGB_COLORS, (LPVOID*)&pBits, NULL, 0);
+
+	if (!hbm || !pBits)
+	{
+		return NULL;
+	}
+	wImgRowBytes = cImgChannels * szImage.cx;
+	wDIRowBytes = cDIChannels * szImage.cx;
+
+	// copy image to screen
+
+	for (yImg = 0; yImg < szImage.cy; yImg++)
+	{
+		src = pbImage + yImg * wImgRowBytes;
+		dst = pBits + yImg * wDIRowBytes;
+
+		for (xImg = 0; xImg < szImage.cx; xImg++)
+		{
+			r = *src++;
+			g = *src++;
+			b = *src++;
+			*dst++ = b;
+			*dst++ = g;
+			*dst++ = r;
+			a = 0;
+
+			if (cImgChannels == 4)
+			{
+				a = *src++;
+			}
+			*dst++ = a;
+		}
+	}
+
+	return hbm;
+}
+
+BOOL CXTPGraphicBitmapPng::LoadFromFile(LPCTSTR lpszFileName)
+{
+	m_bAlpha = FALSE;
+	DeleteObject();
+
+	CFile file;
+	if (!file.Open(lpszFileName, CFile::modeRead))
+	{
+		return FALSE;
+	}
+
+	return LoadFromFile(&file);
+}
+
+BOOL CXTPGraphicBitmapPng::LoadFromResource(HMODULE hModule, HRSRC hRes)
+{
+	m_bAlpha = FALSE;
+	DeleteObject();
+
+	if (!hRes)
+		return FALSE;
+
+	DWORD nBufferSize = ::SizeofResource(hModule, hRes);
+	HGLOBAL hMem= ::LoadResource(hModule, hRes);
+	if (!hMem)
+		return FALSE;
+
+	LPBYTE lpBuffer = (LPBYTE)LockResource(hMem);
+	if (!lpBuffer || nBufferSize < 10)
+		return FALSE;
+
+	CMemFile file(lpBuffer, nBufferSize);
+
+	return LoadFromFile(&file);
+}
+
+BOOL CXTPGraphicBitmapPng::LoadFromFile(CFile* pFile)
+{
+	m_bAlpha = FALSE;
+	DeleteObject();
+
+	BYTE* pbImage = NULL;
+	png_uint_32 cxImgSize, cyImgSize;
+	int cImgChannels;
+	png_color bkgColor =  {127, 127, 127};
+
+	if (!pFile)
+		return FALSE;
+
+	if (!CCallback::PngLoadImage(pFile, &pbImage, &cxImgSize, &cyImgSize, &cImgChannels, &bkgColor))
+	{
+		if (pbImage)
+		{
+			free(pbImage);
+			return FALSE;
+		}
+	}
+
+	if (!pbImage)
+		return FALSE;
+
+	HBITMAP hBitmap = ConvertToBitmap(pbImage, CSize(cxImgSize, cyImgSize), cImgChannels);
+
+	free(pbImage);
+
+	if (!hBitmap)
+		return FALSE;
+
+	m_bAlpha = (cImgChannels == 4);
+	Attach(hBitmap);
+
+	return TRUE;
+}
+
+_XTP_EXT_CLASS int ZLibCompress( BYTE* dest, ULONG* destLen, const BYTE *source, ULONG sourceLen)
+{
+	return compress( dest, destLen, source, sourceLen);
+}
+
+_XTP_EXT_CLASS ULONG ZLibCompressBound(ULONG sourceLen)
+{
+	return compressBound ( sourceLen );
+}
+
+_XTP_EXT_CLASS int ZLibUncompress (BYTE* dest, ULONG* destLen, const BYTE* source, ULONG sourceLen)
+{
+	return uncompress ( dest, destLen, source, sourceLen );
+}

@@ -1,37 +1,202 @@
 // from server: 100% by auto
-// roc 2012-06 00a16860  unit: CXTPHookManager::CHookSink  size: 79 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00a16860
-//
-// 00a16860  837c240400           cmp dword ptr [esp + 4], 0
-// 00a16865  56                   push esi
-// 00a16866  8bf1                 mov esi, ecx
-// 00a16868  742c                 je 0xa16896
-// 00a1686a  837e0800             cmp dword ptr [esi + 8], 0
-// 00a1686e  753b                 jne 0xa168ab
-// 00a16870  57                   push edi
-// 00a16871  e85cbbf6ff           call 0x9823d2
-// 00a16876  8b7808               mov edi, dword ptr [eax + 8]
-// 00a16879  ff15a021b200         call dword ptr [0xb221a0]
-// 00a1687f  50                   push eax
-// 00a16880  57                   push edi
-// 00a16881  68d063a100           push 0xa163d0
-// 00a16886  6a04                 push 4
-// 00a16888  ff15f43cb200         call dword ptr [0xb23cf4]
-// 00a1688e  5f                   pop edi
-// 00a1688f  894608               mov dword ptr [esi + 8], eax
-// 00a16892  5e                   pop esi
-// 00a16893  c20400               ret 4
-// 00a16896  8b4608               mov eax, dword ptr [esi + 8]
-// 00a16899  85c0                 test eax, eax
-// 00a1689b  740e                 je 0xa168ab
-// 00a1689d  50                   push eax
-// 00a1689e  ff15f03cb200         call dword ptr [0xb23cf0]
-// 00a168a4  c7460800000000       mov dword ptr [esi + 8], 0
-// 00a168ab  5e                   pop esi
-// 00a168ac  c20400               ret 4
-// library xtp-15.2.1/Source\CommandBars\XTPKeyboardManager.cpp (function ?SetupCallWndProcHook@CXTPKeyboardManager@@QAEXH@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/CommandBars/XTPKeyboardManager.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPHookManager.cpp : implementation of the CXTPHookManager class.
+//
+// This file is a part of the XTREME COMMANDBARS MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "Common/XTPHookManager.h"
+
+#include "XTPCommandBarsDefines.h"
+#include "XTPKeyboardManager.h"
+#include "XTPMouseManager.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPKeyboardManager
+
+CThreadLocal<CXTPKeyboardManager> CXTPKeyboardManager::_xtpKeyboardThreadState;
+
+
+CXTPKeyboardManager::CXTPKeyboardManager()
+{
+	m_hHookKeyboard = 0;
+	m_hHookCallWndProc = 0;
+	m_hHookGetMessage = 0;
+
+#ifdef _AFXDLL
+	m_pModuleState = 0;
+#endif
+}
+
+void CXTPKeyboardManager::SetupKeyboardHook(BOOL bSetup)
+{
+	if (bSetup && m_hHookKeyboard == 0)
+	{
+		m_hHookKeyboard = SetWindowsHookEx(WH_KEYBOARD, KeyboardProc, AfxGetInstanceHandle(), GetCurrentThreadId());
+	}
+	if (!bSetup && m_hHookKeyboard)
+	{
+		UnhookWindowsHookEx(m_hHookKeyboard);
+		m_hHookKeyboard = 0;
+	}
+}
+
+
+void CXTPKeyboardManager::SetupCallWndProcHook(BOOL bSetup)
+{
+	if (bSetup && m_hHookCallWndProc == 0)
+	{
+		m_hHookCallWndProc = SetWindowsHookEx(WH_CALLWNDPROC, CallWndProc, AfxGetInstanceHandle(), GetCurrentThreadId());
+	}
+	if (!bSetup && m_hHookCallWndProc)
+	{
+		UnhookWindowsHookEx(m_hHookCallWndProc);
+		m_hHookCallWndProc = 0;
+	}
+}
+
+CXTPKeyboardManager::~CXTPKeyboardManager()
+{
+	SetupKeyboardHook(FALSE);
+	SetupCallWndProcHook(FALSE);
+}
+
+void CXTPKeyboardManager::HookKeyboard(CXTPHookManagerHookAble* pHook)
+{
+	SetupKeyboardHook(TRUE);
+	SetupCallWndProcHook(TRUE);
+
+#ifdef _AFXDLL
+	m_pModuleState = AfxGetModuleState();
+#endif
+
+	if (m_lstKeyboardHooks.Find(pHook) == NULL)
+	{
+		m_lstKeyboardHooks.AddTail(pHook);
+	}
+
+}
+void CXTPKeyboardManager::UnhookKeyboard(CXTPHookManagerHookAble* pHook)
+{
+	POSITION pos = m_lstKeyboardHooks.Find(pHook);
+
+	if (pos != NULL)
+	{
+		m_lstKeyboardHooks.RemoveAt(pos);
+	}
+
+	if (m_lstKeyboardHooks.IsEmpty())
+	{
+		SetupCallWndProcHook(FALSE);
+		SetupKeyboardHook(FALSE);
+	}
+
+}
+BOOL CXTPKeyboardManager::ProcessKeyboardHooks(UINT nMessage, WPARAM wParam, LPARAM lParam)
+{
+	POSITION pos = m_lstKeyboardHooks.GetTailPosition();
+	while (pos)
+	{
+		CXTPHookManagerHookAble* pHook = m_lstKeyboardHooks.GetPrev(pos);
+		LRESULT lResult = 0;
+		BOOL bResult = pHook->OnHookMessage(0, nMessage, wParam, lParam, lResult);
+		if (bResult)
+		{
+			return bResult != FALSE_EXIT;
+		}
+	}
+	return TRUE;
+}
+
+
+LRESULT CALLBACK CXTPKeyboardManager::CallWndProc(int code, WPARAM wParam, LPARAM lParam)
+{
+	CXTPKeyboardManager* pKeyboardManager = XTPKeyboardManager();
+
+	CWPSTRUCT* pMSG = (CWPSTRUCT*)lParam;
+
+	if (pMSG && pMSG->message == WM_ACTIVATEAPP && !pMSG->wParam)
+	{
+#ifdef _AFXDLL
+		AFX_MANAGE_STATE(pKeyboardManager->m_pModuleState);
+#endif
+
+		XTPMouseManager()->SendTrackLost();
+	}
+
+	return CallNextHookEx(pKeyboardManager->m_hHookCallWndProc, code, wParam, lParam);
+}
+
+
+LRESULT CALLBACK CXTPKeyboardManager::KeyboardProc(int code, WPARAM wParam, LPARAM lParam)
+{
+	CXTPKeyboardManager* pKeyboardManager = XTPKeyboardManager();
+
+	if (code != HC_ACTION)
+		return CallNextHookEx(pKeyboardManager->m_hHookKeyboard, code, wParam, lParam);
+
+	if (pKeyboardManager->IsKeyboardHooked() && (!(HIWORD(lParam) & KF_UP)))
+	{
+		SAFE_MANAGE_STATE(pKeyboardManager->m_pModuleState);
+
+		if (!(HIWORD(lParam) & KF_ALTDOWN))
+		{
+			if (pKeyboardManager->ProcessKeyboardHooks(WM_KEYDOWN, wParam, lParam))
+			{
+				return TRUE;
+			}
+		}
+		else
+		{
+			if (wParam == VK_MENU && !XTPMouseManager()->IsMouseLocked())
+			{
+				if (!(HIWORD(lParam) & KF_REPEAT))
+				{
+					XTPMouseManager()->SendTrackLost();
+					return TRUE;
+				}
+			}
+			else
+			{
+				if (pKeyboardManager->ProcessKeyboardHooks(WM_KEYDOWN, wParam, lParam))
+				{
+					return TRUE;
+				}
+			}
+		}
+	}
+
+
+	return CallNextHookEx(pKeyboardManager->m_hHookKeyboard, code, wParam, lParam);
+
+}
+

@@ -1,19 +1,56 @@
 // from server: 100% by auto
-// roc 2007-03 0067c700  unit: seg_00670000  size: 25 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0067c700
-//
-// 0067c700  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0067c704  8b542408             mov edx, dword ptr [esp + 8]
-// 0067c708  50                   push eax
-// 0067c709  8b442408             mov eax, dword ptr [esp + 8]
-// 0067c70d  52                   push edx
-// 0067c70e  6a00                 push 0
-// 0067c710  50                   push eax
-// 0067c711  e8dafaffff           call 0x67c1f0
-// 0067c716  c20c00               ret 0xc
-// library ogre-1.6.4/OgreCompositorSerializer.cpp (function ?addLexemeAction@CompositorScriptCompiler@Ogre@@IAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Q812@AEXXZ@Z)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.6.4 OgreCompositorSerializer.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+#include "OgreCompositorSerializer.h"
+#include "OgreCompositorScriptCompiler.h"
+
+namespace Ogre {
+//-----------------------------------------------------------------------
+	CompositorSerializer::CompositorSerializer()
+	{
+        mScriptCompiler = OGRE_NEW CompositorScriptCompiler();
+	}
+//-----------------------------------------------------------------------
+	CompositorSerializer::~CompositorSerializer()
+	{
+	    OGRE_DELETE mScriptCompiler;
+	}
+//-----------------------------------------------------------------------
+    void CompositorSerializer::parseScript(DataStreamPtr& stream, const String& groupName)
+    {
+        mScriptCompiler->parseScript(stream,  groupName);
+    }
+}

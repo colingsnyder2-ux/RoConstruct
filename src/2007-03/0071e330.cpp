@@ -1,23 +1,90 @@
 // from server: 100% by auto
-// roc 2007-03 0071e330  unit: seg_00710000  size: 38 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0071e330
-//
-// 0071e330  56                   push esi
-// 0071e331  8bf1                 mov esi, ecx
-// 0071e333  e882c90100           call 0x73acba
-// 0071e338  85c0                 test eax, eax
-// 0071e33a  7413                 je 0x71e34f
-// 0071e33c  8bce                 mov ecx, esi
-// 0071e33e  e881c80100           call 0x73abc4
-// 0071e343  a900080000           test eax, 0x800
-// 0071e348  b833010000           mov eax, 0x133
-// 0071e34d  7405                 je 0x71e354
-// 0071e34f  b838010000           mov eax, 0x138
-// 0071e354  5e                   pop esi
-// 0071e355  c3                   ret 
-// library xtp-15.2.1/Source\SkinFramework\XTPSkinObjectEdit.cpp (function ?GetClientBrushMessage@CXTPSkinObjectEdit@@MAEHXZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/SkinFramework/XTPSkinObjectEdit.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPSkinObjectEdit.cpp: implementation of the CXTPSkinObjectEdit class.
+//
+// This file is a part of the XTREME SKINFRAMEWORK MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "Common/XTPDrawHelpers.h"
+
+
+#include "XTPSkinObject.h"
+#include "XTPSkinObjectFrame.h"
+#include "XTPSkinObjectEdit.h"
+#include "XTPSkinManager.h"
+
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+IMPLEMENT_DYNCREATE(CXTPSkinObjectEdit, CXTPSkinObjectFrame)
+
+CXTPSkinObjectEdit::CXTPSkinObjectEdit()
+{
+	m_strClassName = _T("EDIT");
+	m_nCtlColorMessage = WM_CTLCOLOREDIT;
+}
+
+CXTPSkinObjectEdit::~CXTPSkinObjectEdit()
+{
+
+}
+
+BEGIN_MESSAGE_MAP(CXTPSkinObjectEdit, CXTPSkinObjectUser32Control)
+	//{{AFX_MSG_MAP(CXTPSkinObjectButton)
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+void CXTPSkinObjectEdit::DrawFrame(CDC* pDC)
+{
+	CXTPWindowRect rcWindow(this);
+
+	// Spin Button Check
+	HWND hWndNext = ::GetWindow(m_hWnd, GW_HWNDNEXT);
+	if (hWndNext && hWndNext != m_hWnd)
+	{
+		CXTPWindowRect rcWindowNext(hWndNext);
+		CRect rcIntersect;
+		if (rcIntersect.IntersectRect(rcWindow, rcWindowNext) && rcIntersect.Width() == 2)
+		{
+			rcIntersect.OffsetRect(-rcWindow.TopLeft());
+			pDC->ExcludeClipRect(rcIntersect);
+		}
+	}
+
+	CXTPSkinObjectFrame::DrawFrame(pDC);
+}
+
+int CXTPSkinObjectEdit::GetClientBrushMessage()
+{
+	return (!IsWindowEnabled()) || (GetStyle() & ES_READONLY) ?
+		WM_CTLCOLORSTATIC : WM_CTLCOLOREDIT;
+}

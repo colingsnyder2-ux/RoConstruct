@@ -1,30 +1,371 @@
 // from server: 100% by auto
-// roc 2012-06 00a564a0  unit: CXTPPropertyGridInplaceButton  size: 58 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00a564a0
-//
-// 00a564a0  8bc1                 mov eax, ecx
-// 00a564a2  83782c00             cmp dword ptr [eax + 0x2c], 0
-// 00a564a6  742f                 je 0xa564d7
-// 00a564a8  83785000             cmp dword ptr [eax + 0x50], 0
-// 00a564ac  7429                 je 0xa564d7
-// 00a564ae  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 00a564b2  83f920               cmp ecx, 0x20
-// 00a564b5  740f                 je 0xa564c6
-// 00a564b7  83f928               cmp ecx, 0x28
-// 00a564ba  740a                 je 0xa564c6
-// 00a564bc  83f90d               cmp ecx, 0xd
-// 00a564bf  7405                 je 0xa564c6
-// 00a564c1  83f973               cmp ecx, 0x73
-// 00a564c4  7511                 jne 0xa564d7
-// 00a564c6  8b482c               mov ecx, dword ptr [eax + 0x2c]
-// 00a564c9  8b11                 mov edx, dword ptr [ecx]
-// 00a564cb  89442404             mov dword ptr [esp + 4], eax
-// 00a564cf  8b82d0000000         mov eax, dword ptr [edx + 0xd0]
-// 00a564d5  ffe0                 jmp eax
-// 00a564d7  c20400               ret 4
-// library xtp-15.2.1/Source\PropertyGrid\XTPPropertyGridInplaceButton.cpp (function ?OnKeyDown@CXTPPropertyGridInplaceButton@@UAEXI@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/PropertyGrid/XTPPropertyGridInplaceButton.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPPropertyGridInplaceButton.cpp : implementation of the CXTPPropertyGridInplaceButton class.
+//
+// This file is a part of the XTREME PROPERTYGRID MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "Common/XTPDrawHelpers.h"
+#include "Common/XTPImageManager.h"
+#include "Common/XTPSystemHelpers.h"
+#include "Common/XTPColorManager.h"
+
+#include "XTPPropertyGridDefines.h"
+#include "XTPPropertyGridPaintManager.h"
+#include "XTPPropertyGridItem.h"
+#include "XTPPropertyGridInplaceButton.h"
+#include "XTPPropertyGridView.h"
+#include "XTPPropertyGrid.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPColorPicker
+
+CXTPPropertyGridInplaceButton::CXTPPropertyGridInplaceButton(UINT nID)
+{
+	m_pItem = NULL;
+	m_nID = nID;
+	m_pGrid = NULL;
+	m_rcButton.SetRectEmpty();
+	m_nIndex = -1;
+	m_bPressed = FALSE;
+	m_nWidth = GetSystemMetrics(SM_CXHTHUMB);
+	m_nIconIndex = -1;
+	m_bEnabled = TRUE;
+	m_bHyperlink = FALSE;
+	m_bShowAlways = FALSE;
+	m_nAlignment = DT_RIGHT;
+	m_bTabStop = TRUE;
+
+
+}
+
+CXTPPropertyGridInplaceButton::~CXTPPropertyGridInplaceButton()
+{
+
+}
+
+CXTPImageManagerIcon* CXTPPropertyGridInplaceButton::GetImage() const
+{
+	ASSERT(m_pItem);
+
+	if (!m_pItem)
+		return NULL;
+
+	if (m_nIconIndex == -1)
+		return NULL;
+
+	return m_pGrid->GetImageManager()->GetImage(m_nIconIndex, 0);
+}
+
+void CXTPPropertyGridInplaceButton::SetCaption(LPCTSTR lpszCaption)
+{
+	m_strCaption = lpszCaption;
+
+	CWindowDC dc(NULL);
+	CXTPFontDC font(&dc, m_pGrid->GetPaintManager()->GetItemFont(m_pItem, TRUE));
+	m_nWidth = dc.GetTextExtent(m_strCaption).cx + 6;
+}
+
+int CXTPPropertyGridInplaceButton::GetIndex() const
+{
+	return m_nIndex;
+}
+
+
+BOOL CXTPPropertyGridInplaceButton::IsFocused() const
+{
+	return m_pGrid->m_pFocusedButton == this;
+}
+
+BOOL CXTPPropertyGridInplaceButton::IsHot() const
+{
+	return m_pGrid->m_pHotButton == this && m_bEnabled;
+}
+
+BOOL CXTPPropertyGridInplaceButton::IsPressed() const
+{
+	return m_bPressed;
+}
+
+BOOL CXTPPropertyGridInplaceButton::GetEnabled() const
+{
+	return m_bEnabled;
+}
+
+void CXTPPropertyGridInplaceButton::SetEnabled(BOOL bEnabled)
+{
+	m_bEnabled = bEnabled;
+	SAFE_INVALIDATE(m_pGrid);
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPPropertyGridInplaceButton message handlers
+
+void CXTPPropertyGridInplaceButton::OnDraw(CDC* pDC, CRect rc)
+{
+	m_rcButton = rc;
+
+	m_pGrid->GetPaintManager()->FillInplaceButton(pDC, this);
+}
+
+void CXTPPropertyGridInplaceButton::OnLButtonDown(UINT, CPoint)
+{
+	if (!m_bEnabled)
+		return;
+
+	m_bPressed = TRUE;
+	m_pGrid->SetFocus();
+
+	m_pGrid->Invalidate(FALSE);
+
+	m_pGrid->SetCapture();
+	BOOL bClick = TRUE;
+
+	while (::GetCapture() == m_pGrid->GetSafeHwnd())
+	{
+		MSG msg;
+		VERIFY(::GetMessage(&msg, NULL, 0, 0));
+
+		if (::GetCapture() != m_pGrid->GetSafeHwnd())
+		{
+			DispatchMessage (&msg);
+			break;
+		}
+
+		if (msg.message == WM_LBUTTONUP)
+		{
+			bClick = IsHot();
+			break;
+		}
+
+		if (msg.message == WM_MOUSEMOVE)
+		{
+			CPoint pt = CPoint(LOWORD(msg.lParam), HIWORD(msg.lParam));
+
+			CXTPPropertyGridInplaceButton* pHotButton = m_rcButton.PtInRect(pt) ? this : NULL;
+
+			if (m_pGrid->m_pHotButton != pHotButton)
+			{
+				m_pGrid->m_pHotButton = pHotButton;
+				m_pGrid->Invalidate(FALSE);
+			}
+			continue;
+		}
+
+		DispatchMessage (&msg);
+	}
+
+	m_bPressed = FALSE;
+
+	ReleaseCapture();
+	m_pGrid->Invalidate(FALSE);
+
+	if (bClick)
+	{
+		m_pItem->OnInplaceButtonDown(this);
+	}
+}
+
+int CXTPPropertyGridInplaceButton::GetWidth()
+{
+	BOOL bItemText = FALSE;
+	if (m_pGrid->GetPropertyGrid()->IsHighlightChangedButtonItems() && m_pGrid->GetPropertyGrid()->IsHighlightChangedItems()
+		&& GetItem()->IsValueChanged()
+		&& !GetCaption().IsEmpty() && GetID() != XTP_ID_PROPERTYGRID_COMBOBUTTON
+		&& !GetImage())
+		bItemText = TRUE;
+
+	if ((m_nWidth <= 0 && !m_strCaption.IsEmpty()) || bItemText)
+	{
+		CWindowDC dc(NULL);
+		CXTPFontDC font(&dc, m_pGrid->GetPaintManager()->GetItemFont(m_pItem, TRUE));
+		return dc.GetTextExtent(m_strCaption).cx + 6;
+	}
+
+	return m_nWidth;
+}
+
+void CXTPPropertyGridInplaceButton::SetWidth(int nWidth)
+{
+	m_nWidth = nWidth;
+}
+
+
+void CXTPPropertyGridInplaceButton::OnKeyDown(UINT nChar)
+{
+	if (m_pItem && m_bEnabled && (nChar == VK_SPACE || nChar == VK_DOWN || nChar == VK_RETURN || nChar == VK_F4))
+	{
+		m_pItem->OnInplaceButtonDown(this);
+		return;
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPPropertyGridInplaceButtons
+
+CXTPPropertyGridInplaceButtons::CXTPPropertyGridInplaceButtons(CXTPPropertyGridItem* pItem)
+{
+	m_pItem = pItem;
+
+
+}
+
+CXTPPropertyGridInplaceButtons::~CXTPPropertyGridInplaceButtons()
+{
+	RemoveAll();
+}
+
+void CXTPPropertyGridInplaceButtons::OnButtonRemoved(CXTPPropertyGridInplaceButton* pButton)
+{
+	CXTPPropertyGridView* pGrid = m_pItem ? m_pItem->GetGrid() : NULL;
+	if (!pGrid)
+		return;
+
+	if (pGrid->m_pFocusedButton == pButton)
+	{
+		pGrid->m_pFocusedButton = NULL;
+	}
+
+	if (pGrid->m_pHotButton == pButton)
+	{
+		pGrid->m_pHotButton = NULL;
+	}
+}
+
+void CXTPPropertyGridInplaceButtons::RemoveAll()
+{
+	for (int i = 0; i < GetCount(); i++)
+	{
+		CXTPPropertyGridInplaceButton* pButton = m_arrButtons[i];
+
+		OnButtonRemoved(pButton);
+		pButton->InternalRelease();
+	}
+	m_arrButtons.RemoveAll();
+}
+
+void CXTPPropertyGridInplaceButtons::UpdateIndexes()
+{
+	for (int i = 0; i < GetCount(); i++)
+	{
+		m_arrButtons[i]->m_nIndex = i;
+	}
+}
+
+void CXTPPropertyGridInplaceButtons::Remove(CXTPPropertyGridInplaceButton* pButton)
+{
+	if (!pButton)
+		return;
+
+	for (int i = 0; i < GetCount(); i++)
+	{
+		if (m_arrButtons[i] == pButton)
+		{
+			RemoveAt(i);
+
+			OnButtonRemoved(pButton);
+			return;
+		}
+	}
+}
+
+void CXTPPropertyGridInplaceButtons::Remove(UINT nID)
+{
+	Remove(Find(nID));
+}
+
+void CXTPPropertyGridInplaceButtons::RemoveAt(long nIndex)
+{
+	if (nIndex >= 0 && nIndex < GetCount())
+	{
+		CXTPPropertyGridInplaceButton* pButton = m_arrButtons[nIndex];
+		m_arrButtons.RemoveAt(nIndex);
+
+		OnButtonRemoved(pButton);
+		pButton->InternalRelease();
+
+		UpdateIndexes();
+	}
+}
+
+
+CXTPPropertyGridInplaceButton* CXTPPropertyGridInplaceButtons::AddButton(CXTPPropertyGridInplaceButton* pButton)
+{
+	pButton->m_pItem = m_pItem;
+	pButton->m_pGrid = m_pItem->GetGrid();
+	m_arrButtons.Add(pButton);
+	UpdateIndexes();
+
+	return pButton;
+}
+
+void CXTPPropertyGridInplaceButtons::AddComboButton()
+{
+	if (Find(XTP_ID_PROPERTYGRID_COMBOBUTTON) == NULL)
+	{
+		AddButton(new CXTPPropertyGridInplaceButton(XTP_ID_PROPERTYGRID_COMBOBUTTON));
+	}
+}
+
+void CXTPPropertyGridInplaceButtons::AddExpandButton()
+{
+	if (Find(XTP_ID_PROPERTYGRID_EXPANDBUTTON) == NULL)
+	{
+		AddButton(new CXTPPropertyGridInplaceButton(XTP_ID_PROPERTYGRID_EXPANDBUTTON));
+	}
+}
+
+CXTPPropertyGridInplaceButton* CXTPPropertyGridInplaceButtons::Find(UINT nID) const
+{
+	for (int i = 0; i < GetCount(); i++)
+	{
+		if (m_arrButtons[i]->GetID() == nID)
+			return m_arrButtons[i];
+	}
+	return NULL;
+}
+
+CXTPPropertyGridInplaceButton* CXTPPropertyGridInplaceButtons::HitTest(CPoint point) const
+{
+	for (int i = 0; i < GetCount(); i++)
+	{
+		CXTPPropertyGridInplaceButton* pButton = m_arrButtons[i];
+
+		if (pButton->GetRect().PtInRect(point) && m_pItem->IsInplaceButtonVisible(pButton))
+			return pButton;
+	}
+	return NULL;
+}
+
+

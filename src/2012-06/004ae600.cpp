@@ -1,58 +1,89 @@
 // from server: 100% by auto
-// roc 2012-06 004ae600  unit: VerbBinderJob  size: 117 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 004ae600
-//
-// 004ae600  53                   push ebx
-// 004ae601  8b5c2408             mov ebx, dword ptr [esp + 8]
-// 004ae605  8b4304               mov eax, dword ptr [ebx + 4]
-// 004ae608  56                   push esi
-// 004ae609  57                   push edi
-// 004ae60a  8bf1                 mov esi, ecx
-// 004ae60c  8b7e04               mov edi, dword ptr [esi + 4]
-// 004ae60f  83c004               add eax, 4
-// 004ae612  8b00                 mov eax, dword ptr [eax]
-// 004ae614  57                   push edi
-// 004ae615  50                   push eax
-// 004ae616  e835ffffff           call 0x4ae550
-// 004ae61b  894704               mov dword ptr [edi + 4], eax
-// 004ae61e  8b4b08               mov ecx, dword ptr [ebx + 8]
-// 004ae621  8b5604               mov edx, dword ptr [esi + 4]
-// 004ae624  894e08               mov dword ptr [esi + 8], ecx
-// 004ae627  8b4204               mov eax, dword ptr [edx + 4]
-// 004ae62a  80781900             cmp byte ptr [eax + 0x19], 0
-// 004ae62e  7537                 jne 0x4ae667
-// 004ae630  8b08                 mov ecx, dword ptr [eax]
-// 004ae632  80791900             cmp byte ptr [ecx + 0x19], 0
-// 004ae636  750a                 jne 0x4ae642
-// 004ae638  8bc1                 mov eax, ecx
-// 004ae63a  8b08                 mov ecx, dword ptr [eax]
-// 004ae63c  80791900             cmp byte ptr [ecx + 0x19], 0
-// 004ae640  74f6                 je 0x4ae638
-// 004ae642  8902                 mov dword ptr [edx], eax
-// 004ae644  8b7604               mov esi, dword ptr [esi + 4]
-// 004ae647  8b4e04               mov ecx, dword ptr [esi + 4]
-// 004ae64a  8b4108               mov eax, dword ptr [ecx + 8]
-// 004ae64d  80781900             cmp byte ptr [eax + 0x19], 0
-// 004ae651  750b                 jne 0x4ae65e
-// 004ae653  8bc8                 mov ecx, eax
-// 004ae655  8b4108               mov eax, dword ptr [ecx + 8]
-// 004ae658  80781900             cmp byte ptr [eax + 0x19], 0
-// 004ae65c  74f5                 je 0x4ae653
-// 004ae65e  5f                   pop edi
-// 004ae65f  894e08               mov dword ptr [esi + 8], ecx
-// 004ae662  5e                   pop esi
-// 004ae663  5b                   pop ebx
-// 004ae664  c20400               ret 4
-// 004ae667  8912                 mov dword ptr [edx], edx
-// 004ae669  8b7604               mov esi, dword ptr [esi + 4]
-// 004ae66c  5f                   pop edi
-// 004ae66d  897608               mov dword ptr [esi + 8], esi
-// 004ae670  5e                   pop esi
-// 004ae671  5b                   pop ebx
-// 004ae672  c20400               ret 4
-// library ogre-1.6.4/OgreAlignedAllocator.cpp (function ?_Copy@?$_Tree@V?$_Tmap_traits@IUGpuLogicalIndexUse@Ogre@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIUGpuLogicalIndexUse@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXABV12@@Z)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.6.4 OgreAlignedAllocator.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+
+#include "OgrePrerequisites.h"
+#include "OgreAlignedAllocator.h"
+
+#include "OgrePlatformInformation.h"
+#include "OgreBitwise.h"
+
+/**
+*
+* |___2___|3|_________5__________|__6__|
+* ^         ^
+* 1         4
+*
+* 1 -> Pointer to start of the block allocated by new.
+* 2 -> Gap used to get 4 aligned on given alignment
+* 3 -> Byte offset between 1 and 4
+* 4 -> Pointer to the start of data block.
+* 5 -> Data block.
+* 6 -> Wasted memory at rear of data block.
+*/
+
+namespace Ogre {
+
+    //---------------------------------------------------------------------
+    void* AlignedMemory::allocate(size_t size, size_t alignment)
+    {
+        assert(0 < alignment && alignment <= 128 && Bitwise::isPO2(alignment));
+
+        unsigned char* p = new unsigned char[size + alignment];
+        size_t offset = alignment - (size_t(p) & (alignment-1));
+
+        unsigned char* result = p + offset;
+        result[-1] = (unsigned char)offset;
+
+        return result;
+    }
+    //---------------------------------------------------------------------
+    void* AlignedMemory::allocate(size_t size)
+    {
+        return allocate(size, OGRE_SIMD_ALIGNMENT);
+    }
+    //---------------------------------------------------------------------
+    void AlignedMemory::deallocate(void* p)
+    {
+        if (p)
+        {
+            unsigned char* mem = (unsigned char*)p;
+            mem = mem - mem[-1];
+            delete [] mem;
+        }
+    }
+
+}

@@ -1,64 +1,337 @@
 // from server: 100% by auto
-// roc 2009-12 0047e530  unit: Ogre::VResource::?$SharedPtr  size: 114 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0047e530
-//
-// 0047e530  56                   push esi
-// 0047e531  8bf1                 mov esi, ecx
-// 0047e533  8b460c               mov eax, dword ptr [esi + 0xc]
-// 0047e536  83e800               sub eax, 0
-// 0047e539  57                   push edi
-// 0047e53a  8b3df0bc9800         mov edi, dword ptr [0x98bcf0]
-// 0047e540  7445                 je 0x47e587
-// 0047e542  83e801               sub eax, 1
-// 0047e545  741a                 je 0x47e561
-// 0047e547  83e801               sub eax, 1
-// 0047e54a  754a                 jne 0x47e596
-// 0047e54c  8b4604               mov eax, dword ptr [esi + 4]
-// 0047e54f  50                   push eax
-// 0047e550  ffd7                 call edi
-// 0047e552  8b4e08               mov ecx, dword ptr [esi + 8]
-// 0047e555  83c404               add esp, 4
-// 0047e558  51                   push ecx
-// 0047e559  ffd7                 call edi
-// 0047e55b  83c404               add esp, 4
-// 0047e55e  5f                   pop edi
-// 0047e55f  5e                   pop esi
-// 0047e560  c3                   ret 
-// 0047e561  837e0400             cmp dword ptr [esi + 4], 0
-// 0047e565  742f                 je 0x47e596
-// 0047e567  8b4e04               mov ecx, dword ptr [esi + 4]
-// 0047e56a  8b11                 mov edx, dword ptr [ecx]
-// 0047e56c  8b02                 mov eax, dword ptr [edx]
-// 0047e56e  6a00                 push 0
-// 0047e570  ffd0                 call eax
-// 0047e572  8b4e04               mov ecx, dword ptr [esi + 4]
-// 0047e575  51                   push ecx
-// 0047e576  ffd7                 call edi
-// 0047e578  8b4e08               mov ecx, dword ptr [esi + 8]
-// 0047e57b  83c404               add esp, 4
-// 0047e57e  51                   push ecx
-// 0047e57f  ffd7                 call edi
-// 0047e581  83c404               add esp, 4
-// 0047e584  5f                   pop edi
-// 0047e585  5e                   pop esi
-// 0047e586  c3                   ret 
-// 0047e587  8b4e04               mov ecx, dword ptr [esi + 4]
-// 0047e58a  85c9                 test ecx, ecx
-// 0047e58c  7408                 je 0x47e596
-// 0047e58e  8b11                 mov edx, dword ptr [ecx]
-// 0047e590  8b02                 mov eax, dword ptr [edx]
-// 0047e592  6a01                 push 1
-// 0047e594  ffd0                 call eax
-// 0047e596  8b4e08               mov ecx, dword ptr [esi + 8]
-// 0047e599  51                   push ecx
-// 0047e59a  ffd7                 call edi
-// 0047e59c  83c404               add esp, 4
-// 0047e59f  5f                   pop edi
-// 0047e5a0  5e                   pop esi
-// 0047e5a1  c3                   ret 
-// library ogre-1.7.0/OgreCompositionPass.cpp (function ?destroy@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXXZ)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: ogre-1.7.0 OgreCompositionPass.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2009 Torus Knot Software Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+#include "OgreCompositionPass.h"
+#include "OgreMaterialManager.h"
+
+namespace Ogre {
+
+CompositionPass::CompositionPass(CompositionTargetPass *parent):
+    mParent(parent),
+    mType(PT_RENDERQUAD),
+	mIdentifier(0),
+	mFirstRenderQueue(RENDER_QUEUE_BACKGROUND),
+	mLastRenderQueue(RENDER_QUEUE_SKIES_LATE),
+	mMaterialScheme(StringUtil::BLANK),
+    mClearBuffers(FBT_COLOUR|FBT_DEPTH),
+    mClearColour(0.0,0.0,0.0,0.0),
+	mClearDepth(1.0f),
+	mClearStencil(0),
+    mStencilCheck(false),
+    mStencilFunc(CMPF_ALWAYS_PASS),
+    mStencilRefValue(0),
+    mStencilMask(0xFFFFFFFF),
+    mStencilFailOp(SOP_KEEP),
+    mStencilDepthFailOp(SOP_KEEP),
+    mStencilPassOp(SOP_KEEP),
+    mStencilTwoSidedOperation(false),
+    mQuadCornerModified(false),
+    mQuadLeft(-1),
+    mQuadTop(1),
+    mQuadRight(1),
+    mQuadBottom(-1),
+	mQuadFarCorners(false),
+	mQuadFarCornersViewSpace(false)
+{
+}
+//-----------------------------------------------------------------------
+CompositionPass::~CompositionPass()
+{
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setType(CompositionPass::PassType type)
+{
+    mType = type;
+}
+//-----------------------------------------------------------------------
+CompositionPass::PassType CompositionPass::getType() const
+{
+    return mType;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setIdentifier(uint32 id)
+{
+    mIdentifier = id;
+}
+//-----------------------------------------------------------------------
+uint32 CompositionPass::getIdentifier() const
+{
+    return mIdentifier;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setMaterial(const MaterialPtr& mat)
+{
+    mMaterial = mat;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setMaterialName(const String &name)
+{
+    mMaterial = MaterialManager::getSingleton().getByName(name);
+}
+//-----------------------------------------------------------------------
+const MaterialPtr& CompositionPass::getMaterial() const
+{
+    return mMaterial;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setClearBuffers(uint32 val)
+{
+    mClearBuffers = val;
+}
+//-----------------------------------------------------------------------
+uint32 CompositionPass::getClearBuffers() const
+{
+    return mClearBuffers;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setClearColour(ColourValue val)
+{
+    mClearColour = val;
+}
+//-----------------------------------------------------------------------
+const ColourValue &CompositionPass::getClearColour() const
+{
+    return mClearColour;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setInput(size_t id, const String &input, size_t mrtIndex)
+{
+    assert(id<OGRE_MAX_TEXTURE_LAYERS);
+    mInputs[id] = InputTex(input, mrtIndex);
+}
+//-----------------------------------------------------------------------
+const CompositionPass::InputTex &CompositionPass::getInput(size_t id) const
+{
+    assert(id<OGRE_MAX_TEXTURE_LAYERS);
+    return mInputs[id];
+}
+//-----------------------------------------------------------------------
+size_t CompositionPass::getNumInputs() const
+{
+    size_t count = 0;
+    for(size_t x=0; x<OGRE_MAX_TEXTURE_LAYERS; ++x)
+    {
+        if(!mInputs[x].name.empty())
+            count = x+1;
+    }
+    return count;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::clearAllInputs()
+{
+    for(size_t x=0; x<OGRE_MAX_TEXTURE_LAYERS; ++x)
+    {
+        mInputs[x].name.clear();
+    }
+}
+//-----------------------------------------------------------------------
+CompositionTargetPass *CompositionPass::getParent()
+{
+    return mParent;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setFirstRenderQueue(uint8 id)
+{
+	mFirstRenderQueue = id;
+}
+//-----------------------------------------------------------------------
+uint8 CompositionPass::getFirstRenderQueue() const
+{
+	return mFirstRenderQueue;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setLastRenderQueue(uint8 id)
+{
+	mLastRenderQueue = id;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setMaterialScheme(const String& schemeName)
+{
+	mMaterialScheme = schemeName;
+}
+//-----------------------------------------------------------------------
+const String& CompositionPass::getMaterialScheme(void) const
+{
+	return mMaterialScheme;
+}
+//-----------------------------------------------------------------------
+uint8 CompositionPass::getLastRenderQueue() const
+{
+	return mLastRenderQueue;
+}
+//-----------------------------------------------------------------------
+void CompositionPass::setClearDepth(Real depth)
+{
+	mClearDepth = depth;
+}
+Real CompositionPass::getClearDepth() const
+{
+	return mClearDepth;
+}
+void CompositionPass::setClearStencil(uint32 value)
+{
+	mClearStencil = value;
+}
+uint32 CompositionPass::getClearStencil() const
+{
+	return mClearStencil;
+}
+
+void CompositionPass::setStencilCheck(bool value)
+{
+	mStencilCheck = value;
+}
+bool CompositionPass::getStencilCheck() const
+{
+	return mStencilCheck;
+}
+void CompositionPass::setStencilFunc(CompareFunction value)
+{
+	mStencilFunc = value;
+}
+CompareFunction CompositionPass::getStencilFunc() const
+{
+	return mStencilFunc;
+} 
+void CompositionPass::setStencilRefValue(uint32 value)
+{
+	mStencilRefValue = value;
+}
+uint32 CompositionPass::getStencilRefValue() const
+{
+	return mStencilRefValue;
+}
+void CompositionPass::setStencilMask(uint32 value)
+{
+	mStencilMask = value;
+}
+uint32 CompositionPass::getStencilMask() const
+{
+	return mStencilMask;
+}
+void CompositionPass::setStencilFailOp(StencilOperation value)
+{
+	mStencilFailOp = value;
+}
+StencilOperation CompositionPass::getStencilFailOp() const
+{
+	return mStencilFailOp;
+}
+void CompositionPass::setStencilDepthFailOp(StencilOperation value)
+{
+	mStencilDepthFailOp = value;
+}
+StencilOperation CompositionPass::getStencilDepthFailOp() const
+{
+	return mStencilDepthFailOp;
+}
+void CompositionPass::setStencilPassOp(StencilOperation value)
+{
+	mStencilPassOp = value;
+}
+StencilOperation CompositionPass::getStencilPassOp() const
+{
+	return mStencilPassOp;
+}
+void CompositionPass::setStencilTwoSidedOperation(bool value)
+{
+	mStencilTwoSidedOperation = value;
+}
+bool CompositionPass::getStencilTwoSidedOperation() const
+{
+	return mStencilTwoSidedOperation;
+}
+void CompositionPass::setQuadCorners(Real left,Real top,Real right,Real bottom)
+{
+    mQuadCornerModified=true;
+    mQuadLeft = left;
+    mQuadTop = top;
+    mQuadRight = right;
+    mQuadBottom = bottom;
+}
+bool CompositionPass::getQuadCorners(Real & left,Real & top,Real & right,Real & bottom) const
+{
+    left = mQuadLeft;
+    top = mQuadTop;
+    right = mQuadRight;
+    bottom = mQuadBottom;
+    return mQuadCornerModified;
+}
+void CompositionPass::setQuadFarCorners(bool farCorners, bool farCornersViewSpace)
+{
+	mQuadFarCorners = farCorners;
+	mQuadFarCornersViewSpace = farCornersViewSpace;
+}
+bool CompositionPass::getQuadFarCorners() const
+{
+	return mQuadFarCorners;
+}
+bool CompositionPass::getQuadFarCornersViewSpace() const
+{
+	return mQuadFarCornersViewSpace;
+}
+		
+void CompositionPass::setCustomType(const String& customType)
+{
+	mCustomType = customType;
+}
+
+const String& CompositionPass::getCustomType() const
+{
+	return mCustomType;
+}
+//-----------------------------------------------------------------------
+bool CompositionPass::_isSupported(void)
+{
+    // A pass is supported if material referenced have a supported technique
+
+    if (mType == PT_RENDERQUAD)
+    {
+        if (mMaterial.isNull())
+        {
+            return false;
+        }
+
+        mMaterial->compile();
+        if (mMaterial->getNumSupportedTechniques() == 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+}

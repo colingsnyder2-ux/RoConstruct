@@ -1,44 +1,327 @@
 // from server: 100% by auto
-// roc 2009-06 00498be0  unit: Ogre::RbxArchiveFactory  size: 89 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00498be0
-//
-// 00498be0  55                   push ebp
-// 00498be1  8bec                 mov ebp, esp
-// 00498be3  6aff                 push -1
-// 00498be5  6841698500           push 0x856941
-// 00498bea  64a100000000         mov eax, dword ptr fs:[0]
-// 00498bf0  50                   push eax
-// 00498bf1  64892500000000       mov dword ptr fs:[0], esp
-// 00498bf8  83ec0c               sub esp, 0xc
-// 00498bfb  53                   push ebx
-// 00498bfc  56                   push esi
-// 00498bfd  8b7508               mov esi, dword ptr [ebp + 8]
-// 00498c00  57                   push edi
-// 00498c01  8b7d0c               mov edi, dword ptr [ebp + 0xc]
-// 00498c04  33db                 xor ebx, ebx
-// 00498c06  8965f0               mov dword ptr [ebp - 0x10], esp
-// 00498c09  8975ec               mov dword ptr [ebp - 0x14], esi
-// 00498c0c  895dfc               mov dword ptr [ebp - 4], ebx
-// 00498c0f  90                   nop 
-// 00498c10  3bfb                 cmp edi, ebx
-// 00498c12  7646                 jbe 0x498c5a
-// 00498c14  89750c               mov dword ptr [ebp + 0xc], esi
-// 00498c17  8975e8               mov dword ptr [ebp - 0x18], esi
-// 00498c1a  c645fc01             mov byte ptr [ebp - 4], 1
-// 00498c1e  3bf3                 cmp esi, ebx
-// 00498c20  740b                 je 0x498c2d
-// 00498c22  8b4510               mov eax, dword ptr [ebp + 0x10]
-// 00498c25  50                   push eax
-// 00498c26  8bce                 mov ecx, esi
-// 00498c28  e843f6ffff           call 0x498270
-// 00498c2d  4f                   dec edi
-// 00498c2e  83c660               add esi, 0x60
-// 00498c31  885dfc               mov byte ptr [ebp - 4], bl
-// 00498c34  897508               mov dword ptr [ebp + 8], esi
-// 00498c37  ebd7                 jmp 0x498c10
-// library ogre-1.6.4/OgreFileSystem.cpp (function ??$_Uninit_fill_n@PAUFileInfo@Ogre@@IU12@V?$allocator@UFileInfo@Ogre@@@std@@@std@@YAXPAUFileInfo@Ogre@@IABU12@AAV?$allocator@UFileInfo@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.6.4 OgreFileSystem.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+(Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+#include "OgreFileSystem.h"
+#include "OgreLogManager.h"
+#include "OgreException.h"
+#include "OgreStringVector.h"
+#include "OgreRoot.h"
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX || OGRE_PLATFORM == OGRE_PLATFORM_APPLE
+#   include "OgreSearchOps.h"
+#   include <sys/param.h>
+#   define MAX_PATH MAXPATHLEN
+#endif
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+#  define WIN32_LEAN_AND_MEAN
+#  define NOMINMAX // required to stop windows.h messing up std::min
+#  include <windows.h>
+#  include <direct.h>
+#  include <io.h>
+#endif
+
+namespace Ogre {
+
+	bool FileSystemArchive::ms_IgnoreHidden = true;
+
+    //-----------------------------------------------------------------------
+    FileSystemArchive::FileSystemArchive(const String& name, const String& archType )
+        : Archive(name, archType)
+    {
+    }
+    //-----------------------------------------------------------------------
+    bool FileSystemArchive::isCaseSensitive(void) const
+    {
+        #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+            return false;
+        #else
+            return true;
+        #endif
+
+    }
+    //-----------------------------------------------------------------------
+    static bool is_reserved_dir (const char *fn)
+    {
+        return (fn [0] == '.' && (fn [1] == 0 || (fn [1] == '.' && fn [2] == 0)));
+    }
+    //-----------------------------------------------------------------------
+    static bool is_absolute_path(const char* path)
+    {
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+        if (isalpha(uchar(path[0])) && path[1] == ':')
+            return true;
+#endif
+        return path[0] == '/' || path[0] == '\\';
+    }
+    //-----------------------------------------------------------------------
+    static String concatenate_path(const String& base, const String& name)
+    {
+        if (base.empty() || is_absolute_path(name.c_str()))
+            return name;
+        else
+            return base + '/' + name;
+    }
+    //-----------------------------------------------------------------------
+    void FileSystemArchive::findFiles(const String& pattern, bool recursive, 
+        bool dirs, StringVector* simpleList, FileInfoList* detailList)
+    {
+        long lHandle, res;
+        struct _finddata_t tagData;
+
+        // pattern can contain a directory name, separate it from mask
+        size_t pos1 = pattern.rfind ('/');
+        size_t pos2 = pattern.rfind ('\\');
+        if (pos1 == pattern.npos || ((pos2 != pattern.npos) && (pos1 < pos2)))
+            pos1 = pos2;
+        String directory;
+        if (pos1 != pattern.npos)
+            directory = pattern.substr (0, pos1 + 1);
+
+        String full_pattern = concatenate_path(mName, pattern);
+
+        lHandle = _findfirst(full_pattern.c_str(), &tagData);
+        res = 0;
+        while (lHandle != -1 && res != -1)
+        {
+            if ((dirs == ((tagData.attrib & _A_SUBDIR) != 0)) &&
+				( !ms_IgnoreHidden || (tagData.attrib & _A_HIDDEN) == 0 ) &&
+                (!dirs || !is_reserved_dir (tagData.name)))
+            {
+                if (simpleList)
+                {
+                    simpleList->push_back(directory + tagData.name);
+                }
+                else if (detailList)
+                {
+                    FileInfo fi;
+                    fi.archive = this;
+                    fi.filename = directory + tagData.name;
+                    fi.basename = tagData.name;
+                    fi.path = directory;
+                    fi.compressedSize = tagData.size;
+                    fi.uncompressedSize = tagData.size;
+                    detailList->push_back(fi);
+                }
+            }
+            res = _findnext( lHandle, &tagData );
+        }
+        // Close if we found any files
+        if(lHandle != -1)
+            _findclose(lHandle);
+
+        // Now find directories
+        if (recursive)
+        {
+            String base_dir = mName;
+            if (!directory.empty ())
+            {
+                base_dir = concatenate_path(mName, directory);
+                // Remove the last '/'
+                base_dir.erase (base_dir.length () - 1);
+            }
+            base_dir.append ("/*");
+
+            // Remove directory name from pattern
+            String mask ("/");
+            if (pos1 != pattern.npos)
+                mask.append (pattern.substr (pos1 + 1));
+            else
+                mask.append (pattern);
+
+            lHandle = _findfirst(base_dir.c_str (), &tagData);
+            res = 0;
+            while (lHandle != -1 && res != -1)
+            {
+                if ((tagData.attrib & _A_SUBDIR) &&
+					( !ms_IgnoreHidden || (tagData.attrib & _A_HIDDEN) == 0 ) &&
+                    !is_reserved_dir (tagData.name))
+                {
+                    // recurse
+                    base_dir = directory;
+                    base_dir.append (tagData.name).append (mask);
+                    findFiles(base_dir, recursive, dirs, simpleList, detailList);
+                }
+                res = _findnext( lHandle, &tagData );
+            }
+            // Close if we found any files
+            if(lHandle != -1)
+                _findclose(lHandle);
+        }
+    }
+    //-----------------------------------------------------------------------
+    FileSystemArchive::~FileSystemArchive()
+    {
+        unload();
+    }
+    //-----------------------------------------------------------------------
+    void FileSystemArchive::load()
+    {
+        // do nothing here, what has to be said will be said later
+    }
+    //-----------------------------------------------------------------------
+    void FileSystemArchive::unload()
+    {
+        // nothing to see here, move along
+    }
+    //-----------------------------------------------------------------------
+    DataStreamPtr FileSystemArchive::open(const String& filename) const
+    {
+        String full_path = concatenate_path(mName, filename);
+
+        // Use filesystem to determine size 
+        // (quicker than streaming to the end and back)
+        struct stat tagStat;
+	int ret = stat(full_path.c_str(), &tagStat);
+        assert(ret == 0 && "Problem getting file size" );
+
+        // Always open in binary mode
+        std::ifstream *origStream = OGRE_NEW_T(std::ifstream, MEMCATEGORY_GENERAL)();
+        origStream->open(full_path.c_str(), std::ios::in | std::ios::binary);
+
+        // Should check ensure open succeeded, in case fail for some reason.
+        if (origStream->fail())
+        {
+            OGRE_DELETE_T(origStream, basic_ifstream, MEMCATEGORY_GENERAL);
+            OGRE_EXCEPT(Exception::ERR_FILE_NOT_FOUND,
+                "Cannot open file: " + filename,
+                "FileSystemArchive::open");
+        }
+
+        /// Construct return stream, tell it to delete on destroy
+        FileStreamDataStream* stream = OGRE_NEW FileStreamDataStream(filename,
+            origStream, tagStat.st_size, true);
+        return DataStreamPtr(stream);
+    }
+    //-----------------------------------------------------------------------
+    StringVectorPtr FileSystemArchive::list(bool recursive, bool dirs)
+    {
+		// directory change requires locking due to saved returns
+		// Note that we have to tell the SharedPtr to use OGRE_DELETE_T not OGRE_DELETE by passing category
+		StringVectorPtr ret(OGRE_NEW_T(StringVector, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+        findFiles("*", recursive, dirs, ret.getPointer(), 0);
+
+        return ret;
+    }
+    //-----------------------------------------------------------------------
+    FileInfoListPtr FileSystemArchive::listFileInfo(bool recursive, bool dirs)
+    {
+		// Note that we have to tell the SharedPtr to use OGRE_DELETE_T not OGRE_DELETE by passing category
+        FileInfoListPtr ret(OGRE_NEW_T(FileInfoList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+        findFiles("*", recursive, dirs, 0, ret.getPointer());
+
+        return ret;
+    }
+    //-----------------------------------------------------------------------
+    StringVectorPtr FileSystemArchive::find(const String& pattern,
+                                            bool recursive, bool dirs)
+    {
+		// Note that we have to tell the SharedPtr to use OGRE_DELETE_T not OGRE_DELETE by passing category
+		StringVectorPtr ret(OGRE_NEW_T(StringVector, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+        findFiles(pattern, recursive, dirs, ret.getPointer(), 0);
+
+        return ret;
+
+    }
+    //-----------------------------------------------------------------------
+    FileInfoListPtr FileSystemArchive::findFileInfo(const String& pattern, 
+        bool recursive, bool dirs)
+    {
+		// Note that we have to tell the SharedPtr to use OGRE_DELETE_T not OGRE_DELETE by passing category
+		FileInfoListPtr ret(OGRE_NEW_T(FileInfoList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+        findFiles(pattern, recursive, dirs, 0, ret.getPointer());
+
+        return ret;
+    }
+    //-----------------------------------------------------------------------
+	bool FileSystemArchive::exists(const String& filename)
+	{
+        String full_path = concatenate_path(mName, filename);
+
+        struct stat tagStat;
+        bool ret = (stat(full_path.c_str(), &tagStat) == 0);
+
+		// stat will return true if the filename is absolute, but we need to check
+		// the file is actually in this archive
+        if (ret && is_absolute_path(filename.c_str()))
+		{
+			// only valid if full path starts with our base
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+			// case insensitive on windows
+			String lowerCaseName = mName;
+			StringUtil::toLowerCase(lowerCaseName);
+			ret = Ogre::StringUtil::startsWith(full_path, lowerCaseName, true);
+#else
+			// case sensitive
+			ret = Ogre::StringUtil::startsWith(full_path, mName, false);
+#endif
+		}
+
+		return ret;
+	}
+	//---------------------------------------------------------------------
+	time_t FileSystemArchive::getModifiedTime(const String& filename)
+	{
+		String full_path = concatenate_path(mName, filename);
+
+		struct stat tagStat;
+		bool ret = (stat(full_path.c_str(), &tagStat) == 0);
+
+		if (ret)
+		{
+			return tagStat.st_mtime;
+		}
+		else
+		{
+			return 0;
+		}
+
+	}
+    //-----------------------------------------------------------------------
+    const String& FileSystemArchiveFactory::getType(void) const
+    {
+        static String name = "FileSystem";
+        return name;
+    }
+
+}

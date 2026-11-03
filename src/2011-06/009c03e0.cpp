@@ -1,30 +1,154 @@
 // from server: 100% by auto
-// roc 2011-06 009c03e0  unit: RBX::WedgeBuilder  size: 53 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 009c03e0
-//
-// 009c03e0  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 009c03e4  8b542408             mov edx, dword ptr [esp + 8]
-// 009c03e8  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 009c03ec  3bca                 cmp ecx, edx
-// 009c03ee  7424                 je 0x9c0414
-// 009c03f0  85c0                 test eax, eax
-// 009c03f2  7416                 je 0x9c040a
-// 009c03f4  d901                 fld dword ptr [ecx]
-// 009c03f6  d918                 fstp dword ptr [eax]
-// 009c03f8  d94104               fld dword ptr [ecx + 4]
-// 009c03fb  d95804               fstp dword ptr [eax + 4]
-// 009c03fe  d94108               fld dword ptr [ecx + 8]
-// 009c0401  d95808               fstp dword ptr [eax + 8]
-// 009c0404  d9410c               fld dword ptr [ecx + 0xc]
-// 009c0407  d9580c               fstp dword ptr [eax + 0xc]
-// 009c040a  83c110               add ecx, 0x10
-// 009c040d  83c010               add eax, 0x10
-// 009c0410  3bca                 cmp ecx, edx
-// 009c0412  75dc                 jne 0x9c03f0
-// 009c0414  c3                   ret 
-// library ogre-1.6.4/OgreBillboard.cpp (function ??$_Uninit_copy@PBU?$TRect@M@Ogre@@PAU12@V?$allocator@U?$TRect@M@Ogre@@@std@@@std@@YAPAU?$TRect@M@Ogre@@PBU12@0PAU12@AAV?$allocator@U?$TRect@M@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.6.4 OgreBillboard.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+
+#include "OgreBillboard.h"
+
+#include "OgreBillboardSet.h"
+
+namespace Ogre {
+
+    //-----------------------------------------------------------------------
+    Billboard::Billboard():
+        mOwnDimensions(false),
+        mUseTexcoordRect(false),
+        mTexcoordIndex(0),
+		mPosition(Vector3::ZERO),
+        mDirection(Vector3::ZERO),        
+        mParentSet(0),
+        mColour(ColourValue::White),
+		mRotation(0)
+    {
+    }
+    //-----------------------------------------------------------------------
+    Billboard::~Billboard()
+    {
+    }
+    //-----------------------------------------------------------------------
+    Billboard::Billboard(const Vector3& position, BillboardSet* owner, const ColourValue& colour)
+        : mOwnDimensions(false)
+        , mUseTexcoordRect(false)
+        , mTexcoordIndex(0)
+        , mPosition(position)
+        , mDirection(Vector3::ZERO)
+        , mParentSet(owner)
+        , mColour(colour)
+        , mRotation(0)
+    {
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::setRotation(const Radian& rotation)
+    {
+        mRotation = rotation;
+        if (mRotation != Radian(0))
+            mParentSet->_notifyBillboardRotated();
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::setPosition(const Vector3& position)
+    {
+        mPosition = position;
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::setPosition(Real x, Real y, Real z)
+    {
+        mPosition.x = x;
+        mPosition.y = y;
+        mPosition.z = z;
+    }
+    //-----------------------------------------------------------------------
+    const Vector3& Billboard::getPosition(void) const
+    {
+        return mPosition;
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::setDimensions(Real width, Real height)
+    {
+        mOwnDimensions = true;
+        mWidth = width;
+        mHeight = height;
+        mParentSet->_notifyBillboardResized();
+    }
+    //-----------------------------------------------------------------------
+    bool Billboard::hasOwnDimensions(void) const
+    {
+        return mOwnDimensions;
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::_notifyOwner(BillboardSet* owner)
+    {
+        mParentSet = owner;
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::setColour(const ColourValue& colour)
+    {
+        mColour = colour;
+    }
+    //-----------------------------------------------------------------------
+    const ColourValue& Billboard::getColour(void) const
+    {
+        return mColour;
+    }
+    //-----------------------------------------------------------------------
+    Real Billboard::getOwnWidth(void) const
+    {
+        return mWidth;
+    }
+    //-----------------------------------------------------------------------
+    Real Billboard::getOwnHeight(void) const
+    {
+        return mHeight;
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::setTexcoordIndex(uint16 texcoordIndex)
+    {
+        mTexcoordIndex = texcoordIndex;
+        mUseTexcoordRect = false;
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::setTexcoordRect(const FloatRect& texcoordRect)
+    {
+        mTexcoordRect = texcoordRect;
+        mUseTexcoordRect = true;
+    }
+    //-----------------------------------------------------------------------
+    void Billboard::setTexcoordRect(Real u0, Real v0, Real u1, Real v1)
+    {
+        setTexcoordRect(FloatRect(u0, v0, u1, v1));
+    }
+
+
+}
+

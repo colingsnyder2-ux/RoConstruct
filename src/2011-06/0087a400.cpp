@@ -1,20 +1,188 @@
 // from server: 100% by auto
-// roc 2011-06 0087a400  unit: CPropertyGridItemBrickColor  size: 27 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 0087a400
-//
-// 0087a400  8b442404             mov eax, dword ptr [esp + 4]
-// 0087a404  85c0                 test eax, eax
-// 0087a406  7c0e                 jl 0x87a416
-// 0087a408  3b4128               cmp eax, dword ptr [ecx + 0x28]
-// 0087a40b  7d09                 jge 0x87a416
-// 0087a40d  8b4924               mov ecx, dword ptr [ecx + 0x24]
-// 0087a410  8b0481               mov eax, dword ptr [ecx + eax*4]
-// 0087a413  c20400               ret 4
-// 0087a416  33c0                 xor eax, eax
-// 0087a418  c20400               ret 4
-// library xtp-15.2.1/Source\FlowGraph\XTPFlowGraphConnectionPoint.cpp (function ?GetAt@CXTPFlowGraphImages@@QBEPAVCXTPFlowGraphImage@@H@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/FlowGraph/XTPFlowGraphConnectionPoint.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPFlowGraphConnectionPoint.cpp : implementation of the CXTPFlowGraphConnectionPoint class.
+//
+// This file is a part of the XTREME TOOLKIT PRO MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "Common/XTPPropExchange.h"
+#include "Common/XTPMarkupRender.h"
+
+#include "XTPFlowGraphElement.h"
+#include "XTPFlowGraphNode.h"
+#include "XTPFlowGraphControl.h"
+#include "XTPFlowGraphPaintManager.h"
+#include "XTPFlowGraphConnectionPoint.h"
+#include "XTPFlowGraphImage.h"
+#include "XTPFlowGraphUndoManager.h"
+#include "XTPFlowGraphConnection.h"
+#include "XTPFlowGraphConnectionPoints.h"
+
+IMPLEMENT_SERIAL(CXTPFlowGraphConnectionPoint, CCmdTarget, VERSIONABLE_SCHEMA | _XTP_SCHEMA_CURRENT)
+
+
+CXTPFlowGraphConnectionPoint::CXTPFlowGraphConnectionPoint()
+{
+	m_nStyle = -1;
+	m_clrPoint = (COLORREF)-1;
+
+	m_nId = (int)(INT_PTR)this;
+
+	m_nType = xtpFlowGraphPointInput;
+
+	m_bLocked = FALSE;
+
+	m_nImageIndex = -1;
+
+	m_pNode = NULL;
+
+	m_nMaxConnections = -1;
+
+	m_pMarkupUIElement = NULL;
+
+	m_rcPoint.SetRectEmpty();
+
+	m_nConnectionPointIndex = -1;
+
+}
+
+CXTPFlowGraphConnectionPoint::~CXTPFlowGraphConnectionPoint()
+{
+	XTPMarkupReleaseElement(m_pMarkupUIElement);
+}
+
+void CXTPFlowGraphConnectionPoint::DoPropExchange(CXTPPropExchange* pPX)
+{
+	PX_String(pPX, _T("Caption"), m_strCaption, _T(""));
+	PX_String(pPX, _T("Tooltip"), m_strTooltip, _T(""));
+	PX_DWord(pPX, _T("Color"), (DWORD)m_clrPoint, (COLORREF)-1);
+	PX_Int(pPX, _T("Style"), m_nStyle, (int)-1);
+	PX_Enum(pPX, _T("Type"), m_nType, xtpFlowGraphPointInput);
+
+	PX_Int(pPX, _T("Id"), m_nId, 0);
+
+	PX_Bool(pPX, _T("Locked"), m_bLocked, FALSE);
+
+	PX_Int(pPX, _T("MaxConnections"), m_nMaxConnections, -1);
+
+	PX_Int(pPX, _T("ImageIndex"), m_nImageIndex, -1);
+
+	if (pPX->IsLoading())
+	{
+		CXTPFlowGraphControl* pControl = GetControl();
+		if (pControl)
+		{
+			m_pMarkupUIElement = XTPMarkupParseText(pControl->GetMarkupContext(), m_strCaption);
+		}
+	}
+}
+
+CXTPFlowGraphControl* CXTPFlowGraphConnectionPoint::GetControl() const
+{
+	if (m_pNode)
+		return m_pNode->GetControl();
+	return NULL;
+}
+
+CXTPFlowGraphPage* CXTPFlowGraphConnectionPoint::GetPage() const
+{
+	if (m_pNode)
+		return m_pNode->GetPage();
+	return NULL;
+}
+
+void CXTPFlowGraphConnectionPoint::Remove()
+{
+	if (!m_pNode)
+		return;
+
+	m_pNode->GetConnectionPoints()->Remove(this);
+}
+
+BOOL CXTPFlowGraphConnectionPoint::HitTestConnectionArea(CPoint point) const
+{
+	CXTPFlowGraphPaintManager* pPaintManager = GetControl()->GetPaintManager();
+
+	return pPaintManager->HitTestConnectionArea(this, point);
+}
+
+CXTPFlowGraphImage* CXTPFlowGraphConnectionPoint::GetImage() const
+{
+	CXTPFlowGraphControl* pControl = GetControl();
+	if (!pControl)
+		return NULL;
+
+	return pControl->GetImages()->GetAt(m_nImageIndex);
+}
+
+void CXTPFlowGraphConnectionPoint::OnGraphChanged()
+{
+	if (m_pNode) m_pNode->OnGraphChanged();
+}
+
+void CXTPFlowGraphConnectionPoint::SetCaption(LPCTSTR lpszCaption)
+{
+	CXTPFlowGraphControl* pControl = GetControl();
+	if (pControl)
+	{
+		pControl->GetUndoManager()->AddUndoCommand(new CXTPFlowGraphUndoSetNodeCaptionCommand(this, m_strCaption));
+	}
+
+	m_strCaption = lpszCaption;
+
+	XTPMarkupReleaseElement(m_pMarkupUIElement);
+
+	if (pControl)
+	{
+		m_pMarkupUIElement = XTPMarkupParseText(pControl->GetMarkupContext(), lpszCaption);
+	}
+
+	OnGraphChanged();
+}
+
+
+void CXTPFlowGraphConnectionPoint::OnRemoved()
+{
+	int i;
+
+	for (i = (int)m_arrInputConnections.GetSize() - 1; i >= 0; i--)
+	{
+		m_arrInputConnections[i]->Remove();
+	}
+
+	for (i = (int)m_arrOutputConnections.GetSize() - 1; i >= 0; i--)
+	{
+		m_arrOutputConnections[i]->Remove();
+	}
+
+	// Removed Connections should update them
+	ASSERT(m_arrInputConnections.GetSize() == 0);
+	ASSERT(m_arrOutputConnections.GetSize() == 0);
+
+	CXTPFlowGraphElement::OnRemoved();
+}
+
+
+

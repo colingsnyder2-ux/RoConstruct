@@ -1,36 +1,309 @@
 // from server: 100% by auto
-// roc 2010-06 0076fb00  unit: RBX::ScoreHud  size: 89 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0076fb00
-//
-// 0076fb00  6aff                 push -1
-// 0076fb02  6858a29900           push 0x99a258
-// 0076fb07  64a100000000         mov eax, dword ptr fs:[0]
-// 0076fb0d  50                   push eax
-// 0076fb0e  64892500000000       mov dword ptr fs:[0], esp
-// 0076fb15  51                   push ecx
-// 0076fb16  56                   push esi
-// 0076fb17  8bf1                 mov esi, ecx
-// 0076fb19  89742404             mov dword ptr [esp + 4], esi
-// 0076fb1d  c744241000000000     mov dword ptr [esp + 0x10], 0
-// 0076fb25  e8868acaff           call 0x4185b0
-// 0076fb2a  8b06                 mov eax, dword ptr [esi]
-// 0076fb2c  50                   push eax
-// 0076fb2d  e8687e0300           call 0x7a799a
-// 0076fb32  83c404               add esp, 4
-// 0076fb35  f644241801           test byte ptr [esp + 0x18], 1
-// 0076fb3a  7409                 je 0x76fb45
-// 0076fb3c  56                   push esi
-// 0076fb3d  e8587e0300           call 0x7a799a
-// 0076fb42  83c404               add esp, 4
-// 0076fb45  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 0076fb49  8bc6                 mov eax, esi
-// 0076fb4b  5e                   pop esi
-// 0076fb4c  64890d00000000       mov dword ptr fs:[0], ecx
-// 0076fb53  83c410               add esp, 0x10
-// 0076fb56  c20400               ret 4
-// library ogre-1.7.0/OgreScriptLexer.cpp (function ??_G?$vector@V?$SharedPtr@UScriptToken@Ogre@@@Ogre@@V?$allocator@V?$SharedPtr@UScriptToken@Ogre@@@Ogre@@@std@@@std@@QAEPAXI@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: ogre-1.7.0 OgreScriptLexer.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+(Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org
+
+Copyright (c) 2000-2009 Torus Knot Software Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+#include "OgreException.h"
+#include "OgreScriptLexer.h"
+
+namespace Ogre{
+
+	ScriptLexer::ScriptLexer()
+	{
+	}
+
+	ScriptTokenListPtr ScriptLexer::tokenize(const String &str, const String &source)
+	{
+		// State enums
+		enum{ READY = 0, COMMENT, MULTICOMMENT, WORD, QUOTE, VAR, POSSIBLECOMMENT };
+
+		// Set up some constant characters of interest
+#if OGRE_WCHAR_T_STRINGS
+		const wchar_t varopener = L'$', quote = L'\"', slash = L'/', backslash = L'\\', openbrace = L'{', closebrace = L'}', colon = L':', star = L'*';
+		wchar_t c = 0, lastc = 0;
+#else
+		const wchar_t varopener = '$', quote = '\"', slash = '/', backslash = '\\', openbrace = '{', closebrace = '}', colon = ':', star = '*';
+		char c = 0, lastc = 0;
+#endif
+
+		String lexeme;
+		uint32 line = 1, state = READY, lastQuote = 0;
+		ScriptTokenListPtr tokens(OGRE_NEW_T(ScriptTokenList, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+
+		// Iterate over the input
+		String::const_iterator i = str.begin(), end = str.end();
+		while(i != end)
+		{
+			lastc = c;
+			c = *i;
+
+			if(c == quote)
+				lastQuote = line;
+
+			switch(state)
+			{
+			case READY:
+				if(c == slash && lastc == slash)
+				{
+					// Comment start, clear out the lexeme
+					lexeme = "";
+					state = COMMENT;
+				}
+				else if(c == star && lastc == slash)
+				{
+					lexeme = "";
+					state = MULTICOMMENT;
+				}
+				else if(c == quote)
+				{
+					// Clear out the lexeme ready to be filled with quotes!
+					lexeme = c;
+					state = QUOTE;
+				}
+				else if(c == varopener)
+				{
+					// Set up to read in a variable
+					lexeme = c;
+					state = VAR;
+				}
+				else if(isNewline(c))
+				{
+					lexeme = c;
+					setToken(lexeme, line, source, tokens.get());
+				}
+				else if(!isWhitespace(c))
+				{
+					lexeme = c;
+					if(c == slash)
+						state = POSSIBLECOMMENT;
+					else
+						state = WORD;
+				}
+				break;
+			case COMMENT:
+				// This newline happens to be ignored automatically
+				if(isNewline(c))
+					state = READY;
+				break;
+			case MULTICOMMENT:
+				if(c == slash && lastc == star)
+					state = READY;
+				break;
+			case POSSIBLECOMMENT:
+				if(c == slash && lastc == slash)
+				{
+					lexeme = "";
+					state = COMMENT;
+					break;	
+				}
+				else if(c == star && lastc == slash)
+				{
+					lexeme = "";
+					state = MULTICOMMENT;
+					break;
+				}
+				else
+				{
+					state = WORD;
+				}
+			case WORD:
+				if(isNewline(c))
+				{
+					setToken(lexeme, line, source, tokens.get());
+					lexeme = c;
+					setToken(lexeme, line, source, tokens.get());
+					state = READY;
+				}
+				else if(isWhitespace(c))
+				{
+					setToken(lexeme, line, source, tokens.get());
+					state = READY;
+				}
+				else if(c == openbrace || c == closebrace || c == colon)
+				{
+					setToken(lexeme, line, source, tokens.get());
+					lexeme = c;
+					setToken(lexeme, line, source, tokens.get());
+					state = READY;
+				}
+				else
+				{
+					lexeme += c;
+				}
+				break;
+			case QUOTE:
+				if(c != backslash)
+				{
+					// Allow embedded quotes with escaping
+					if(c == quote && lastc == backslash)
+					{
+						lexeme += c;
+					}
+					else if(c == quote)
+					{
+						lexeme += c;
+						setToken(lexeme, line, source, tokens.get());
+						state = READY;
+					}
+					else
+					{
+						// Backtrack here and allow a backslash normally within the quote
+						if(lastc == backslash)
+							lexeme = lexeme + "\\" + c;
+						else
+							lexeme += c;
+					}
+				}
+				break;
+			case VAR:
+				if(isNewline(c))
+				{
+					setToken(lexeme, line, source, tokens.get());
+					lexeme = c;
+					setToken(lexeme, line, source, tokens.get());
+					state = READY;
+				}
+				else if(isWhitespace(c))
+				{
+					setToken(lexeme, line, source, tokens.get());
+					state = READY;
+				}
+				else if(c == openbrace || c == closebrace || c == colon)
+				{
+					setToken(lexeme, line, source, tokens.get());
+					lexeme = c;
+					setToken(lexeme, line, source, tokens.get());
+					state = READY;
+				}
+				else
+				{
+					lexeme += c;
+				}
+				break;
+			}
+
+			// Separate check for newlines just to track line numbers
+			if(isNewline(c))
+				line++;
+			
+			i++;
+		}
+
+		// Check for valid exit states
+		if(state == WORD || state == VAR)
+		{
+			if(!lexeme.empty())
+				setToken(lexeme, line, source, tokens.get());
+		}
+		else
+		{
+			if(state == QUOTE)
+			{
+				OGRE_EXCEPT(Exception::ERR_INVALID_STATE, 
+					Ogre::String("no matching \" found for \" at line ") + 
+						Ogre::StringConverter::toString(lastQuote),
+					"ScriptLexer::tokenize");
+			}
+		}
+
+		return tokens;
+	}
+
+	void ScriptLexer::setToken(const Ogre::String &lexeme, Ogre::uint32 line, const String &source, Ogre::ScriptTokenList *tokens)
+	{
+#if OGRE_WCHAR_T_STRINGS
+		const wchar_t newline = L'\n', openBracket = L'{', closeBracket = L'}', colon = L':', 
+			quote = L'\"', var = L'$';
+#else
+		const char newline = '\n', openBracket = '{', closeBracket = '}', colon = ':', 
+			quote = '\"', var = '$';
+#endif
+
+		ScriptTokenPtr token(OGRE_NEW_T(ScriptToken, MEMCATEGORY_GENERAL)(), SPFM_DELETE_T);
+		token->lexeme = lexeme;
+		token->line = line;
+		token->file = source;
+		bool ignore = false;
+
+		// Check the user token map first
+		if(lexeme.size() == 1 && lexeme[0] == newline)
+		{
+			token->type = TID_NEWLINE;
+			if(!tokens->empty() && tokens->back()->type == TID_NEWLINE)
+				ignore = true;
+		}
+		else if(lexeme.size() == 1 && lexeme[0] == openBracket)
+			token->type = TID_LBRACKET;
+		else if(lexeme.size() == 1 && lexeme[0] == closeBracket)
+			token->type = TID_RBRACKET;
+		else if(lexeme.size() == 1 && lexeme[0] == colon)
+			token->type = TID_COLON;
+		else if(lexeme[0] == var)
+			token->type = TID_VARIABLE;
+		else
+		{
+			// This is either a non-zero length phrase or quoted phrase
+			if(lexeme.size() >= 2 && lexeme[0] == quote && lexeme[lexeme.size() - 1] == quote)
+			{
+				token->type = TID_QUOTE;
+			}
+			else
+			{
+				token->type = TID_WORD;
+			}
+		}
+
+		if(!ignore)
+			tokens->push_back(token);
+	}
+
+	bool ScriptLexer::isWhitespace(Ogre::String::value_type c) const
+	{
+#ifdef OGRE_WCHAR_T_STRINGS
+		return c == L' ' || c == L'\r' || c == L'\t';
+#else
+		return c == ' ' || c == '\r' || c == '\t';
+#endif
+	}
+
+	bool ScriptLexer::isNewline(Ogre::String::value_type c) const
+	{
+#ifdef OGRE_WCHAR_T_STRINGS
+		return c == L'\n';
+#else
+		return c == '\n';
+#endif
+	}
+
+}
+

@@ -1,125 +1,772 @@
 // from server: 100% by auto
 // from server: 100% by auto
-// roc 2008-06 0067d600  unit: Ogre::RbxEntity  size: 296 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0067d600
-//
-// 0067d600  55                   push ebp
-// 0067d601  8bec                 mov ebp, esp
-// 0067d603  6aff                 push -1
-// 0067d605  6830d87d00           push 0x7dd830
-// 0067d60a  64a100000000         mov eax, dword ptr fs:[0]
-// 0067d610  50                   push eax
-// 0067d611  64892500000000       mov dword ptr fs:[0], esp
-// 0067d618  83ec28               sub esp, 0x28
-// 0067d61b  53                   push ebx
-// 0067d61c  56                   push esi
-// 0067d61d  8bf1                 mov esi, ecx
-// 0067d61f  8b560c               mov edx, dword ptr [esi + 0xc]
-// 0067d622  57                   push edi
-// 0067d623  8965f0               mov dword ptr [ebp - 0x10], esp
-// 0067d626  85d2                 test edx, edx
-// 0067d628  7504                 jne 0x67d62e
-// 0067d62a  33db                 xor ebx, ebx
-// 0067d62c  eb08                 jmp 0x67d636
-// 0067d62e  8b5e14               mov ebx, dword ptr [esi + 0x14]
-// 0067d631  2bda                 sub ebx, edx
-// 0067d633  c1fb04               sar ebx, 4
-// 0067d636  8b7d10               mov edi, dword ptr [ebp + 0x10]
-// 0067d639  85ff                 test edi, edi
-// 0067d63b  0f84c2010000         je 0x67d803
-// 0067d641  8b4e10               mov ecx, dword ptr [esi + 0x10]
-// 0067d644  8bc1                 mov eax, ecx
-// 0067d646  2bc2                 sub eax, edx
-// 0067d648  c1f804               sar eax, 4
-// 0067d64b  baffffff0f           mov edx, 0xfffffff
-// 0067d650  2bd0                 sub edx, eax
-// 0067d652  3bd7                 cmp edx, edi
-// 0067d654  7305                 jae 0x67d65b
-// 0067d656  e8e596e4ff           call 0x4c6d40
-// 0067d65b  8d1438               lea edx, [eax + edi]
-// 0067d65e  3bda                 cmp ebx, edx
-// 0067d660  0f83d7000000         jae 0x67d73d
-// 0067d666  8bc3                 mov eax, ebx
-// 0067d668  d1e8                 shr eax, 1
-// 0067d66a  b9ffffff0f           mov ecx, 0xfffffff
-// 0067d66f  2bc8                 sub ecx, eax
-// 0067d671  3bcb                 cmp ecx, ebx
-// 0067d673  7304                 jae 0x67d679
-// 0067d675  33db                 xor ebx, ebx
-// 0067d677  eb02                 jmp 0x67d67b
-// 0067d679  03d8                 add ebx, eax
-// 0067d67b  3bda                 cmp ebx, edx
-// 0067d67d  7302                 jae 0x67d681
-// 0067d67f  8bda                 mov ebx, edx
-// 0067d681  6a00                 push 0
-// 0067d683  53                   push ebx
-// 0067d684  e857efffff           call 0x67c5e0
-// 0067d689  8b4e0c               mov ecx, dword ptr [esi + 0xc]
-// 0067d68c  894510               mov dword ptr [ebp + 0x10], eax
-// 0067d68f  c645ec00             mov byte ptr [ebp - 0x14], 0
-// 0067d693  8b45ec               mov eax, dword ptr [ebp - 0x14]
-// 0067d696  50                   push eax
-// 0067d697  8b4514               mov eax, dword ptr [ebp + 0x14]
-// 0067d69a  50                   push eax
-// 0067d69b  8b450c               mov eax, dword ptr [ebp + 0xc]
-// 0067d69e  8d5608               lea edx, [esi + 8]
-// 0067d6a1  52                   push edx
-// 0067d6a2  8b5510               mov edx, dword ptr [ebp + 0x10]
-// 0067d6a5  52                   push edx
-// 0067d6a6  50                   push eax
-// 0067d6a7  51                   push ecx
-// 0067d6a8  c745fc00000000       mov dword ptr [ebp - 4], 0
-// 0067d6af  e8dcf1ffff           call 0x67c890
-// 0067d6b4  8b4d14               mov ecx, dword ptr [ebp + 0x14]
-// 0067d6b7  83c420               add esp, 0x20
-// 0067d6ba  51                   push ecx
-// 0067d6bb  57                   push edi
-// 0067d6bc  50                   push eax
-// 0067d6bd  8bce                 mov ecx, esi
-// 0067d6bf  e89cfaffff           call 0x67d160
-// 0067d6c4  8b4e10               mov ecx, dword ptr [esi + 0x10]
-// 0067d6c7  c6451400             mov byte ptr [ebp + 0x14], 0
-// 0067d6cb  8b5514               mov edx, dword ptr [ebp + 0x14]
-// 0067d6ce  52                   push edx
-// 0067d6cf  8b5514               mov edx, dword ptr [ebp + 0x14]
-// 0067d6d2  52                   push edx
-// 0067d6d3  8d5608               lea edx, [esi + 8]
-// 0067d6d6  52                   push edx
-// 0067d6d7  50                   push eax
-// 0067d6d8  8b450c               mov eax, dword ptr [ebp + 0xc]
-// 0067d6db  51                   push ecx
-// 0067d6dc  50                   push eax
-// 0067d6dd  e8aef1ffff           call 0x67c890
-// 0067d6e2  8b460c               mov eax, dword ptr [esi + 0xc]
-// 0067d6e5  8b4e10               mov ecx, dword ptr [esi + 0x10]
-// 0067d6e8  2bc8                 sub ecx, eax
-// 0067d6ea  c1f904               sar ecx, 4
-// 0067d6ed  83c418               add esp, 0x18
-// 0067d6f0  03f9                 add edi, ecx
-// 0067d6f2  85c0                 test eax, eax
-// 0067d6f4  7409                 je 0x67d6ff
-// 0067d6f6  50                   push eax
-// 0067d6f7  e87e2f0200           call 0x6a067a
-// 0067d6fc  83c404               add esp, 4
-// 0067d6ff  8b4510               mov eax, dword ptr [ebp + 0x10]
-// 0067d702  c1e304               shl ebx, 4
-// 0067d705  03d8                 add ebx, eax
-// 0067d707  c1e704               shl edi, 4
-// 0067d70a  03f8                 add edi, eax
-// 0067d70c  895e14               mov dword ptr [esi + 0x14], ebx
-// 0067d70f  897e10               mov dword ptr [esi + 0x10], edi
-// 0067d712  89460c               mov dword ptr [esi + 0xc], eax
-// 0067d715  8b4df4               mov ecx, dword ptr [ebp - 0xc]
-// 0067d718  64890d00000000       mov dword ptr fs:[0], ecx
-// 0067d71f  5f                   pop edi
-// 0067d720  5e                   pop esi
-// 0067d721  5b                   pop ebx
-// 0067d722  8be5                 mov esp, ebp
-// 0067d724  5d                   pop ebp
-// 0067d725  c21000               ret 0x10
-// library ogre-1.7.0/OgreRenderSystem.cpp (function ?_Insert_n@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@IABVPlane@Ogre@@@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: ogre-1.7.0 OgreRenderSystem.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2009 Torus Knot Software Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+// RenderSystem implementation
+// Note that most of this class is abstract since
+//  we cannot know how to implement the behaviour without
+//  being aware of the 3D API. However there are a few
+//  simple functions which can have a base implementation
+
+#include "OgreRenderSystem.h"
+
+#include "OgreRoot.h"
+#include "OgreViewport.h"
+#include "OgreException.h"
+#include "OgreRenderTarget.h"
+#include "OgreRenderWindow.h"
+#include "OgreMeshManager.h"
+#include "OgreMaterial.h"
+#include "OgreTimer.h"
+#include "OgreHardwarePixelBuffer.h"
+#include "OgreHardwareOcclusionQuery.h"
+
+namespace Ogre {
+
+    static const TexturePtr sNullTexPtr;
+
+    //-----------------------------------------------------------------------
+    RenderSystem::RenderSystem()
+        : mActiveRenderTarget(0)
+        , mTextureManager(0)
+        , mActiveViewport(0)
+        // This means CULL clockwise vertices, i.e. front of poly is counter-clockwise
+        // This makes it the same as OpenGL and other right-handed systems
+        , mCullingMode(CULL_CLOCKWISE)
+        , mVSync(true)
+		, mVSyncInterval(1)
+		, mWBuffer(false)
+        , mInvertVertexWinding(false)
+        , mDisabledTexUnitsFrom(0)
+        , mCurrentPassIterationCount(0)
+		, mDerivedDepthBias(false)
+        , mVertexProgramBound(false)
+		, mGeometryProgramBound(false)
+        , mFragmentProgramBound(false)
+		, mClipPlanesDirty(true)
+		, mRealCapabilities(0)
+		, mCurrentCapabilities(0)
+		, mUseCustomCapabilities(false)
+		, mTexProjRelative(false)
+		, mTexProjRelativeOrigin(Vector3::ZERO)
+    {
+    }
+
+    //-----------------------------------------------------------------------
+    RenderSystem::~RenderSystem()
+    {
+        shutdown();
+		OGRE_DELETE mRealCapabilities;
+		mRealCapabilities = 0;
+		// Current capabilities managed externally
+		mCurrentCapabilities = 0;
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::_initRenderTargets(void)
+    {
+
+        // Init stats
+        for(
+            RenderTargetMap::iterator it = mRenderTargets.begin();
+            it != mRenderTargets.end();
+            ++it )
+        {
+            it->second->resetStatistics();
+        }
+
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::_updateAllRenderTargets(bool swapBuffers)
+    {
+        // Update all in order of priority
+        // This ensures render-to-texture targets get updated before render windows
+		RenderTargetPriorityMap::iterator itarg, itargend;
+		itargend = mPrioritisedRenderTargets.end();
+		for( itarg = mPrioritisedRenderTargets.begin(); itarg != itargend; ++itarg )
+		{
+			if( itarg->second->isActive() && itarg->second->isAutoUpdated())
+				itarg->second->update(swapBuffers);
+		}
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::_swapAllRenderTargetBuffers(bool waitForVSync)
+    {
+        // Update all in order of priority
+        // This ensures render-to-texture targets get updated before render windows
+		RenderTargetPriorityMap::iterator itarg, itargend;
+		itargend = mPrioritisedRenderTargets.end();
+		for( itarg = mPrioritisedRenderTargets.begin(); itarg != itargend; ++itarg )
+		{
+			if( itarg->second->isActive() && itarg->second->isAutoUpdated())
+				itarg->second->swapBuffers(waitForVSync);
+		}
+    }
+    //-----------------------------------------------------------------------
+    RenderWindow* RenderSystem::_initialise(bool autoCreateWindow, const String& windowTitle)
+    {
+        // Have I been registered by call to Root::setRenderSystem?
+		/** Don't do this anymore, just allow via Root
+        RenderSystem* regPtr = Root::getSingleton().getRenderSystem();
+        if (!regPtr || regPtr != this)
+            // Register self - library user has come to me direct
+            Root::getSingleton().setRenderSystem(this);
+		*/
+
+
+        // Subclasses should take it from here
+        // They should ALL call this superclass method from
+        //   their own initialise() implementations.
+        
+        mVertexProgramBound = false;
+		mGeometryProgramBound = false;
+        mFragmentProgramBound = false;
+
+        return 0;
+    }
+
+	//---------------------------------------------------------------------------------------------
+	void RenderSystem::useCustomRenderSystemCapabilities(RenderSystemCapabilities* capabilities)
+	{
+		mCurrentCapabilities = capabilities;
+		mUseCustomCapabilities = true;
+	}
+
+	//---------------------------------------------------------------------------------------------
+	bool RenderSystem::_createRenderWindows(const RenderWindowDescriptionList& renderWindowDescriptions, 
+		RenderWindowList& createdWindows)
+	{
+		unsigned int fullscreenWindowsCount = 0;
+
+		// Grab some information and avoid duplicate render windows.
+		for (unsigned int nWindow=0; nWindow < renderWindowDescriptions.size(); ++nWindow)
+		{
+			const RenderWindowDescription* curDesc = &renderWindowDescriptions[nWindow];
+
+			// Count full screen windows.
+			if (curDesc->useFullScreen)			
+				fullscreenWindowsCount++;	
+
+			bool renderWindowFound = false;
+
+			if (mRenderTargets.find(curDesc->name) != mRenderTargets.end())
+				renderWindowFound = true;
+			else
+			{
+				for (unsigned int nSecWindow = nWindow + 1 ; nSecWindow < renderWindowDescriptions.size(); ++nSecWindow)
+				{
+					if (curDesc->name == renderWindowDescriptions[nSecWindow].name)
+					{
+						renderWindowFound = true;
+						break;
+					}					
+				}
+			}
+
+			// Make sure we don't already have a render target of the 
+			// same name as the one supplied
+			if(renderWindowFound)
+			{
+				String msg;
+
+				msg = "A render target of the same name '" + String(curDesc->name) + "' already "
+					"exists.  You cannot create a new window with this name.";
+				OGRE_EXCEPT( Exception::ERR_INTERNAL_ERROR, msg, "RenderSystem::createRenderWindow" );
+			}
+		}
+		
+		// Case we have to create some full screen rendering windows.
+		if (fullscreenWindowsCount > 0)
+		{
+			// Can not mix full screen and windowed rendering windows.
+			if (fullscreenWindowsCount != renderWindowDescriptions.size())
+			{
+				OGRE_EXCEPT(Exception::ERR_INVALIDPARAMS, 
+					"Can not create mix of full screen and windowed rendering windows",
+					"RenderSystem::createRenderWindows");
+			}					
+		}
+
+		return true;
+	}
+
+    //---------------------------------------------------------------------------------------------
+    void RenderSystem::destroyRenderWindow(const String& name)
+    {
+        destroyRenderTarget(name);
+    }
+    //---------------------------------------------------------------------------------------------
+    void RenderSystem::destroyRenderTexture(const String& name)
+    {
+        destroyRenderTarget(name);
+    }
+    //---------------------------------------------------------------------------------------------
+    void RenderSystem::destroyRenderTarget(const String& name)
+    {
+        RenderTarget* rt = detachRenderTarget(name);
+        OGRE_DELETE rt;
+    }
+    //---------------------------------------------------------------------------------------------
+    void RenderSystem::attachRenderTarget( RenderTarget &target )
+    {
+		assert( target.getPriority() < OGRE_NUM_RENDERTARGET_GROUPS );
+
+        mRenderTargets.insert( RenderTargetMap::value_type( target.getName(), &target ) );
+        mPrioritisedRenderTargets.insert(
+            RenderTargetPriorityMap::value_type(target.getPriority(), &target ));
+    }
+
+    //---------------------------------------------------------------------------------------------
+    RenderTarget * RenderSystem::getRenderTarget( const String &name )
+    {
+        RenderTargetMap::iterator it = mRenderTargets.find( name );
+        RenderTarget *ret = NULL;
+
+        if( it != mRenderTargets.end() )
+        {
+            ret = it->second;
+        }
+
+        return ret;
+    }
+
+    //---------------------------------------------------------------------------------------------
+    RenderTarget * RenderSystem::detachRenderTarget( const String &name )
+    {
+        RenderTargetMap::iterator it = mRenderTargets.find( name );
+        RenderTarget *ret = NULL;
+
+        if( it != mRenderTargets.end() )
+        {
+            ret = it->second;
+			
+			/* Remove the render target from the priority groups. */
+            RenderTargetPriorityMap::iterator itarg, itargend;
+            itargend = mPrioritisedRenderTargets.end();
+			for( itarg = mPrioritisedRenderTargets.begin(); itarg != itargend; ++itarg )
+            {
+				if( itarg->second == ret ) {
+					mPrioritisedRenderTargets.erase( itarg );
+					break;
+				}
+            }
+
+            mRenderTargets.erase( it );
+        }
+        /// If detached render target is the active render target, reset active render target
+        if(ret == mActiveRenderTarget)
+            mActiveRenderTarget = 0;
+
+        return ret;
+    }
+    //-----------------------------------------------------------------------
+    Viewport* RenderSystem::_getViewport(void)
+    {
+        return mActiveViewport;
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::_setTextureUnitSettings(size_t texUnit, TextureUnitState& tl)
+    {
+        // This method is only ever called to set a texture unit to valid details
+        // The method _disableTextureUnit is called to turn a unit off
+
+        const TexturePtr& tex = tl._getTexturePtr();
+		// Vertex texture binding?
+		if (mCurrentCapabilities->hasCapability(RSC_VERTEX_TEXTURE_FETCH) &&
+			!mCurrentCapabilities->getVertexTextureUnitsShared())
+		{
+			if (tl.getBindingType() == TextureUnitState::BT_VERTEX)
+			{
+				// Bind vertex texture
+				_setVertexTexture(texUnit, tex);
+				// bind nothing to fragment unit (hardware isn't shared but fragment
+				// unit can't be using the same index
+				_setTexture(texUnit, true, sNullTexPtr);
+			}
+			else
+			{
+				// vice versa
+				_setVertexTexture(texUnit, sNullTexPtr);
+				_setTexture(texUnit, true, tex);
+			}
+		}
+		else
+		{
+			// Shared vertex / fragment textures or no vertex texture support
+			// Bind texture (may be blank)
+			_setTexture(texUnit, true, tex);
+		}
+
+        // Set texture coordinate set
+        _setTextureCoordSet(texUnit, tl.getTextureCoordSet());
+
+        // Set texture layer filtering
+        _setTextureUnitFiltering(texUnit, 
+            tl.getTextureFiltering(FT_MIN), 
+            tl.getTextureFiltering(FT_MAG), 
+            tl.getTextureFiltering(FT_MIP));
+
+        // Set texture layer filtering
+        _setTextureLayerAnisotropy(texUnit, tl.getTextureAnisotropy());
+
+		// Set mipmap biasing
+		_setTextureMipmapBias(texUnit, tl.getTextureMipmapBias());
+
+		// Set blend modes
+		// Note, colour before alpha is important
+        _setTextureBlendMode(texUnit, tl.getColourBlendMode());
+        _setTextureBlendMode(texUnit, tl.getAlphaBlendMode());
+
+        // Texture addressing mode
+        const TextureUnitState::UVWAddressingMode& uvw = tl.getTextureAddressingMode();
+        _setTextureAddressingMode(texUnit, uvw);
+        // Set texture border colour only if required
+        if (uvw.u == TextureUnitState::TAM_BORDER ||
+            uvw.v == TextureUnitState::TAM_BORDER ||
+            uvw.w == TextureUnitState::TAM_BORDER)
+        {
+            _setTextureBorderColour(texUnit, tl.getTextureBorderColour());
+        }
+
+        // Set texture effects
+        TextureUnitState::EffectMap::iterator effi;
+        // Iterate over new effects
+        bool anyCalcs = false;
+        for (effi = tl.mEffects.begin(); effi != tl.mEffects.end(); ++effi)
+        {
+            switch (effi->second.type)
+            {
+            case TextureUnitState::ET_ENVIRONMENT_MAP:
+                if (effi->second.subtype == TextureUnitState::ENV_CURVED)
+                {
+                    _setTextureCoordCalculation(texUnit, TEXCALC_ENVIRONMENT_MAP);
+                    anyCalcs = true;
+                }
+                else if (effi->second.subtype == TextureUnitState::ENV_PLANAR)
+                {
+                    _setTextureCoordCalculation(texUnit, TEXCALC_ENVIRONMENT_MAP_PLANAR);
+                    anyCalcs = true;
+                }
+                else if (effi->second.subtype == TextureUnitState::ENV_REFLECTION)
+                {
+                    _setTextureCoordCalculation(texUnit, TEXCALC_ENVIRONMENT_MAP_REFLECTION);
+                    anyCalcs = true;
+                }
+                else if (effi->second.subtype == TextureUnitState::ENV_NORMAL)
+                {
+                    _setTextureCoordCalculation(texUnit, TEXCALC_ENVIRONMENT_MAP_NORMAL);
+                    anyCalcs = true;
+                }
+                break;
+            case TextureUnitState::ET_UVSCROLL:
+			case TextureUnitState::ET_USCROLL:
+			case TextureUnitState::ET_VSCROLL:
+            case TextureUnitState::ET_ROTATE:
+            case TextureUnitState::ET_TRANSFORM:
+                break;
+            case TextureUnitState::ET_PROJECTIVE_TEXTURE:
+                _setTextureCoordCalculation(texUnit, TEXCALC_PROJECTIVE_TEXTURE, 
+                    effi->second.frustum);
+                anyCalcs = true;
+                break;
+            }
+        }
+        // Ensure any previous texcoord calc settings are reset if there are now none
+        if (!anyCalcs)
+        {
+            _setTextureCoordCalculation(texUnit, TEXCALC_NONE);
+        }
+
+        // Change tetxure matrix 
+        _setTextureMatrix(texUnit, tl.getTextureTransform());
+
+
+    }
+    //-----------------------------------------------------------------------
+	void RenderSystem::_setTexture(size_t unit, bool enabled, 
+		const String &texname)
+	{
+		TexturePtr t = TextureManager::getSingleton().getByName(texname);
+		_setTexture(unit, enabled, t);
+	}
+	//-----------------------------------------------------------------------
+	void RenderSystem::_setVertexTexture(size_t unit, const TexturePtr& tex)
+	{
+		OGRE_EXCEPT(Exception::ERR_NOT_IMPLEMENTED, 
+			"This rendersystem does not support separate vertex texture samplers, "
+			"you should use the regular texture samplers which are shared between "
+			"the vertex and fragment units.", 
+			"RenderSystem::_setVertexTexture");
+	}
+    //-----------------------------------------------------------------------
+    void RenderSystem::_disableTextureUnit(size_t texUnit)
+    {
+        _setTexture(texUnit, false, sNullTexPtr);
+    }
+    //---------------------------------------------------------------------
+    void RenderSystem::_disableTextureUnitsFrom(size_t texUnit)
+    {
+        size_t disableTo = OGRE_MAX_TEXTURE_LAYERS;
+        if (disableTo > mDisabledTexUnitsFrom)
+            disableTo = mDisabledTexUnitsFrom;
+        mDisabledTexUnitsFrom = texUnit;
+        for (size_t i = texUnit; i < disableTo; ++i)
+        {
+            _disableTextureUnit(i);
+        }
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::_setTextureUnitFiltering(size_t unit, FilterOptions minFilter,
+            FilterOptions magFilter, FilterOptions mipFilter)
+    {
+        _setTextureUnitFiltering(unit, FT_MIN, minFilter);
+        _setTextureUnitFiltering(unit, FT_MAG, magFilter);
+        _setTextureUnitFiltering(unit, FT_MIP, mipFilter);
+    }
+    //-----------------------------------------------------------------------
+    CullingMode RenderSystem::_getCullingMode(void) const
+    {
+        return mCullingMode;
+    }
+    //-----------------------------------------------------------------------
+    bool RenderSystem::getWaitForVerticalBlank(void) const
+    {
+        return mVSync;
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::setWaitForVerticalBlank(bool enabled)
+    {
+        mVSync = enabled;
+    }
+    bool RenderSystem::getWBufferEnabled(void) const
+    {
+        return mWBuffer;
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::setWBufferEnabled(bool enabled)
+    {
+        mWBuffer = enabled;
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::shutdown(void)
+    {
+		// Remove occlusion queries
+		for (HardwareOcclusionQueryList::iterator i = mHwOcclusionQueries.begin();
+			i != mHwOcclusionQueries.end(); ++i)
+		{
+			OGRE_DELETE *i;
+		}
+		mHwOcclusionQueries.clear();
+
+        // Remove all the render targets.
+		// (destroy primary target last since others may depend on it)
+		RenderTarget* primary = 0;
+		for (RenderTargetMap::iterator it = mRenderTargets.begin(); it != mRenderTargets.end(); ++it)
+		{
+			if (!primary && it->second->isPrimary())
+				primary = it->second;
+			else
+				OGRE_DELETE it->second;
+		}
+		OGRE_DELETE primary;
+		mRenderTargets.clear();
+
+		mPrioritisedRenderTargets.clear();
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::_beginGeometryCount(void)
+    {
+        mBatchCount = mFaceCount = mVertexCount = 0;
+
+    }
+    //-----------------------------------------------------------------------
+    unsigned int RenderSystem::_getFaceCount(void) const
+    {
+        return static_cast< unsigned int >( mFaceCount );
+    }
+    //-----------------------------------------------------------------------
+    unsigned int RenderSystem::_getBatchCount(void) const
+    {
+        return static_cast< unsigned int >( mBatchCount );
+    }
+    //-----------------------------------------------------------------------
+    unsigned int RenderSystem::_getVertexCount(void) const
+    {
+        return static_cast< unsigned int >( mVertexCount );
+    }
+    //-----------------------------------------------------------------------
+	void RenderSystem::convertColourValue(const ColourValue& colour, uint32* pDest)
+	{
+		*pDest = VertexElement::convertColourValue(colour, getColourVertexElementType());
+
+	}
+    //-----------------------------------------------------------------------
+    void RenderSystem::_setWorldMatrices(const Matrix4* m, unsigned short count)
+    {
+        // Do nothing with these matrices here, it never used for now,
+		// derived class should take care with them if required.
+
+        // Set hardware matrix to nothing
+        _setWorldMatrix(Matrix4::IDENTITY);
+    }
+    //-----------------------------------------------------------------------
+    void RenderSystem::_render(const RenderOperation& op)
+    {
+        // Update stats
+        size_t val;
+
+        if (op.useIndexes)
+            val = op.indexData->indexCount;
+        else
+            val = op.vertexData->vertexCount;
+
+        // account for a pass having multiple iterations
+        if (mCurrentPassIterationCount > 1)
+            val *= mCurrentPassIterationCount;
+		mCurrentPassIterationNum = 0;
+
+        switch(op.operationType)
+        {
+		case RenderOperation::OT_TRIANGLE_LIST:
+            mFaceCount += val / 3;
+            break;
+        case RenderOperation::OT_TRIANGLE_STRIP:
+        case RenderOperation::OT_TRIANGLE_FAN:
+            mFaceCount += val - 2;
+            break;
+	    case RenderOperation::OT_POINT_LIST:
+	    case RenderOperation::OT_LINE_LIST:
+	    case RenderOperation::OT_LINE_STRIP:
+	        break;
+	    }
+
+        mVertexCount += op.vertexData->vertexCount;
+        mBatchCount += mCurrentPassIterationCount;
+
+		// sort out clip planes
+		// have to do it here in case of matrix issues
+		if (mClipPlanesDirty)
+		{
+			setClipPlanesImpl(mClipPlanes);
+			mClipPlanesDirty = false;
+		}
+    }
+    //-----------------------------------------------------------------------
+	bool RenderSystem::getInvertVertexWinding(void)
+	{
+		return mInvertVertexWinding;
+	}
+    //-----------------------------------------------------------------------
+    void RenderSystem::setInvertVertexWinding(bool invert)
+    {
+        mInvertVertexWinding = invert;
+    }
+	//-----------------------------------------------------------------------
+	bool RenderSystem::getVertexWindingInverted(void) const
+	{
+		return mInvertVertexWinding;
+	}
+	//---------------------------------------------------------------------
+	void RenderSystem::addClipPlane (const Plane &p)
+	{
+		mClipPlanes.push_back(p);
+		mClipPlanesDirty = true;
+	}
+	//---------------------------------------------------------------------
+	void RenderSystem::addClipPlane (Real A, Real B, Real C, Real D)
+	{
+		addClipPlane(Plane(A, B, C, D));
+	}
+	//---------------------------------------------------------------------
+	void RenderSystem::setClipPlanes(const PlaneList& clipPlanes)
+	{
+		if (clipPlanes != mClipPlanes)
+		{
+			mClipPlanes = clipPlanes;
+			mClipPlanesDirty = true;
+		}
+	}
+	//---------------------------------------------------------------------
+	void RenderSystem::resetClipPlanes()
+	{
+		if (!mClipPlanes.empty())
+		{
+			mClipPlanes.clear();
+			mClipPlanesDirty = true;
+		}
+	}
+    //-----------------------------------------------------------------------
+    void RenderSystem::_notifyCameraRemoved(const Camera* cam)
+    {
+        RenderTargetMap::iterator i, iend;
+        iend = mRenderTargets.end();
+        for (i = mRenderTargets.begin(); i != iend; ++i)
+        {
+            RenderTarget* target = i->second;
+            target->_notifyCameraRemoved(cam);
+        }
+    }
+
+	//---------------------------------------------------------------------
+    bool RenderSystem::updatePassIterationRenderState(void)
+    {
+        if (mCurrentPassIterationCount <= 1)
+            return false;
+
+        --mCurrentPassIterationCount;
+		++mCurrentPassIterationNum;
+        if (!mActiveVertexGpuProgramParameters.isNull())
+        {
+            mActiveVertexGpuProgramParameters->incPassIterationNumber();
+            bindGpuProgramPassIterationParameters(GPT_VERTEX_PROGRAM);
+        }
+        if (!mActiveGeometryGpuProgramParameters.isNull())
+        {
+            mActiveGeometryGpuProgramParameters->incPassIterationNumber();
+            bindGpuProgramPassIterationParameters(GPT_GEOMETRY_PROGRAM);
+        }
+        if (!mActiveFragmentGpuProgramParameters.isNull())
+        {
+            mActiveFragmentGpuProgramParameters->incPassIterationNumber();
+            bindGpuProgramPassIterationParameters(GPT_FRAGMENT_PROGRAM);
+        }
+        return true;
+    }
+
+	//-----------------------------------------------------------------------
+	void RenderSystem::addListener(Listener* l)
+	{
+		mEventListeners.push_back(l);
+	}
+	//-----------------------------------------------------------------------
+	void RenderSystem::removeListener(Listener* l)
+	{
+		mEventListeners.remove(l);
+	}
+	//-----------------------------------------------------------------------
+	void RenderSystem::fireEvent(const String& name, const NameValuePairList* params)
+	{
+		for(ListenerList::iterator i = mEventListeners.begin(); 
+			i != mEventListeners.end(); ++i)
+		{
+			(*i)->eventOccurred(name, params);
+		}
+	}
+	//-----------------------------------------------------------------------
+	void RenderSystem::destroyHardwareOcclusionQuery( HardwareOcclusionQuery *hq)
+	{
+		HardwareOcclusionQueryList::iterator i =
+			std::find(mHwOcclusionQueries.begin(), mHwOcclusionQueries.end(), hq);
+		if (i != mHwOcclusionQueries.end())
+		{
+			mHwOcclusionQueries.erase(i);
+			OGRE_DELETE hq;
+		}
+	}
+	//-----------------------------------------------------------------------
+	void RenderSystem::bindGpuProgram(GpuProgram* prg)
+	{
+	    switch(prg->getType())
+	    {
+        case GPT_VERTEX_PROGRAM:
+			// mark clip planes dirty if changed (programmable can change space)
+			if (!mVertexProgramBound && !mClipPlanes.empty())
+				mClipPlanesDirty = true;
+
+            mVertexProgramBound = true;
+	        break;
+        case GPT_GEOMETRY_PROGRAM:
+			mGeometryProgramBound = true;
+			break;
+        case GPT_FRAGMENT_PROGRAM:
+            mFragmentProgramBound = true;
+	        break;
+	    }
+	}
+	//-----------------------------------------------------------------------
+	void RenderSystem::unbindGpuProgram(GpuProgramType gptype)
+	{
+	    switch(gptype)
+	    {
+        case GPT_VERTEX_PROGRAM:
+			// mark clip planes dirty if changed (programmable can change space)
+			if (mVertexProgramBound && !mClipPlanes.empty())
+				mClipPlanesDirty = true;
+            mVertexProgramBound = false;
+	        break;
+        case GPT_GEOMETRY_PROGRAM:
+			mGeometryProgramBound = false;
+			break;
+        case GPT_FRAGMENT_PROGRAM:
+            mFragmentProgramBound = false;
+	        break;
+	    }
+	}
+	//-----------------------------------------------------------------------
+	bool RenderSystem::isGpuProgramBound(GpuProgramType gptype)
+	{
+	    switch(gptype)
+	    {
+        case GPT_VERTEX_PROGRAM:
+            return mVertexProgramBound;
+        case GPT_GEOMETRY_PROGRAM:
+            return mGeometryProgramBound;
+        case GPT_FRAGMENT_PROGRAM:
+            return mFragmentProgramBound;
+	    }
+        // Make compiler happy
+        return false;
+	}
+	//---------------------------------------------------------------------
+	void RenderSystem::_setTextureProjectionRelativeTo(bool enabled, const Vector3& pos)
+	{
+		mTexProjRelative = enabled;
+		mTexProjRelativeOrigin = pos;
+
+	}
+	//---------------------------------------------------------------------
+	RenderSystem::RenderSystemContext* RenderSystem::_pauseFrame(void)
+	{
+		_endFrame();
+		return new RenderSystem::RenderSystemContext;
+	}
+	//---------------------------------------------------------------------
+	void RenderSystem::_resumeFrame(RenderSystemContext* context)
+	{
+		_beginFrame();
+		delete context;
+	}
+
+}
+

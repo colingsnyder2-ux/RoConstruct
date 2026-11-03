@@ -1,27 +1,82 @@
 // from server: 100% by auto
-// roc 2007-03 0071b090  unit: seg_00710000  size: 41 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0071b090
-//
-// 0071b090  56                   push esi
-// 0071b091  8bf1                 mov esi, ecx
-// 0071b093  e83a36f0ff           call 0x61e6d2
-// 0071b098  83f8ff               cmp eax, -1
-// 0071b09b  7506                 jne 0x71b0a3
-// 0071b09d  0bc0                 or eax, eax
-// 0071b09f  5e                   pop esi
-// 0071b0a0  c20400               ret 4
-// 0071b0a3  8b4620               mov eax, dword ptr [esi + 0x20]
-// 0071b0a6  6a00                 push 0
-// 0071b0a8  6a00                 push 0
-// 0071b0aa  6a1a                 push 0x1a
-// 0071b0ac  50                   push eax
-// 0071b0ad  ff1550ee7700         call dword ptr [0x77ee50]
-// 0071b0b3  33c0                 xor eax, eax
-// 0071b0b5  5e                   pop esi
-// 0071b0b6  c20400               ret 4
-// library xtp-15.2.1/Source\SkinFramework\XTPSkinObjectStatusBar.cpp (function ?OnCreate@CXTPSkinObjectStatusBar@@IAEHPAUtagCREATESTRUCTA@@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/SkinFramework/XTPSkinObjectStatusBar.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPSkinObjectStatusBar.cpp: implementation of the CXTPSkinObjectStatusBar class.
+//
+// This file is a part of the XTREME SKINFRAMEWORK MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "Common/XTPDrawHelpers.h"
+
+#include "XTPSkinObject.h"
+#include "XTPSkinObjectFrame.h"
+#include "XTPSkinObjectStatusBar.h"
+#include "XTPSkinDrawTools.h"
+#include "XTPSkinManager.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+IMPLEMENT_DYNCREATE(CXTPSkinObjectStatusBar, CXTPSkinObjectFrame)
+
+CXTPSkinObjectStatusBar::CXTPSkinObjectStatusBar()
+{
+	m_strClassName = _T("STATUSBAR");
+}
+
+CXTPSkinObjectStatusBar::~CXTPSkinObjectStatusBar()
+{
+
+}
+
+
+BEGIN_MESSAGE_MAP(CXTPSkinObjectStatusBar, CXTPSkinObjectFrame)
+	ON_WM_CREATE()
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPSkinObjectStatusBar message handlers
+
+void CXTPSkinObjectStatusBar::RefreshMetrics()
+{
+	CXTPSkinObjectFrame::RefreshMetrics();
+
+	PostMessage(WM_SETTINGCHANGE);
+}
+
+int CXTPSkinObjectStatusBar::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CXTPSkinObject::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	SendMessage(WM_SETTINGCHANGE);
+
+	return 0;
+}

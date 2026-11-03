@@ -1,27 +1,208 @@
 // from server: 100% by auto
-// roc 2011-06 00903190  unit: CXTButtonThemeOffice2003  size: 43 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00903190
-//
-// 00903190  56                   push esi
-// 00903191  8bf1                 mov esi, ecx
-// 00903193  8b4604               mov eax, dword ptr [esi + 4]
-// 00903196  85c0                 test eax, eax
-// 00903198  7414                 je 0x9031ae
-// 0090319a  50                   push eax
-// 0090319b  ff15c81aa400         call dword ptr [0xa41ac8]
-// 009031a1  8b442408             mov eax, dword ptr [esp + 8]
-// 009031a5  894604               mov dword ptr [esi + 4], eax
-// 009031a8  8bc6                 mov eax, esi
-// 009031aa  5e                   pop esi
-// 009031ab  c20400               ret 4
-// 009031ae  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 009031b2  894e04               mov dword ptr [esi + 4], ecx
-// 009031b5  8bc6                 mov eax, esi
-// 009031b7  5e                   pop esi
-// 009031b8  c20400               ret 4
-// library xtp-15.2.1/Source\Controls\Util\XTPUtil.cpp (function ??4CXTPIconHandle@@QAEAAV0@PAUHICON__@@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/Controls/Util/XTPUtil.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPUtil.cpp: implementation for utility classes.
+//
+// This file is a part of the XTREME CONTROLS MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "Common/XTPVC80Helpers.h"  // Visual Studio 2005 helper functions
+
+#include "XTPUtil.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#define new DEBUG_NEW
+#endif
+
+//===========================================================================
+// CXTPIconHandle class
+//===========================================================================
+
+CXTPIconHandle::CXTPIconHandle()
+	: m_hIcon(NULL)
+{
+}
+
+CXTPIconHandle::CXTPIconHandle(HICON hIcon)
+	: m_hIcon(hIcon)
+{
+}
+
+CXTPIconHandle::~CXTPIconHandle()
+{
+	if (m_hIcon != NULL)
+	{
+		::DestroyIcon(m_hIcon);
+	}
+}
+
+CXTPIconHandle& CXTPIconHandle::operator=(HICON hIcon)
+{
+	if (m_hIcon != NULL)
+	{
+		::DestroyIcon(m_hIcon);
+	}
+
+	m_hIcon = hIcon;
+
+	return *this;
+}
+
+CSize CXTPIconHandle::GetExtent(HICON hIcon)
+{
+	CSize extent(0);
+	if (hIcon)
+	{
+		ICONINFO iconinfo;
+		if (::GetIconInfo(hIcon, &iconinfo))
+		{
+			BITMAP bmpinfo;
+			ZeroMemory(&bmpinfo, sizeof(BITMAP));
+
+			if (::GetObject(iconinfo.hbmMask, sizeof(bmpinfo), &bmpinfo))
+			{
+				extent.cx = (int)bmpinfo.bmWidth;
+				extent.cy = (int)bmpinfo.bmHeight;
+				if (!iconinfo.hbmColor)
+				{
+					// b/w icons have double size for XOR and AND masks
+					extent.cy /= 2;
+				}
+			}
+			// cleanup GDI
+			if (iconinfo.hbmMask)
+			{
+				::DeleteObject(iconinfo.hbmMask);
+			}
+			if (iconinfo.hbmColor)
+			{
+				::DeleteObject(iconinfo.hbmColor);
+			}
+		}
+	}
+	return extent;
+}
+
+CSize CXTPIconHandle::GetExtent() const
+{
+	return GetExtent(m_hIcon);
+}
+
+HICON CXTPIconHandle::ScaleToFit(HICON hIcon, CSize desiredExtent)
+{
+	if (desiredExtent == CSize(0))
+	{
+		// invalid arg
+		return NULL;
+	}
+
+	CSize realExtent = GetExtent(hIcon);
+	if (realExtent == CSize(0))
+	{
+		// icon destroyed or not created yet
+		return NULL;
+	}
+
+
+	// ensure icon retains aspect after scaling
+	int delta = desiredExtent.cx * realExtent.cy - desiredExtent.cy * realExtent.cx;
+	if (delta < 0)
+	{
+		desiredExtent.cy = MulDiv(realExtent.cy, desiredExtent.cx, realExtent.cx);
+	}
+	else
+	if (delta > 0)
+	{
+		desiredExtent.cx = MulDiv(realExtent.cx, desiredExtent.cy, realExtent.cy);
+	}
+
+	// scale the icon
+	CImageList images;
+	VERIFY(images.Create(desiredExtent.cx, desiredExtent.cy, ILC_COLOR32 | ILC_MASK, 1, 1));
+	images.Add(hIcon);
+	return images.ExtractIcon(0);
+}
+
+HICON CXTPIconHandle::ScaleToFit(CSize desiredExtent) const
+{
+	return ScaleToFit(m_hIcon, desiredExtent);
+}
+
+//===========================================================================
+// CXTPSplitPath class
+//===========================================================================
+
+CXTPSplitPath::CXTPSplitPath(LPCTSTR lpszPathBuffer/*= NULL*/)
+{
+	m_szDrive[0] = 0;
+	m_szDir[0] = 0;
+	m_szFName[0] = 0;
+	m_szExt[0] = 0;
+
+	if (lpszPathBuffer != NULL)
+	{
+		SplitPath(lpszPathBuffer);
+	}
+}
+
+CXTPSplitPath::~CXTPSplitPath()
+{
+
+}
+
+void CXTPSplitPath::SplitPath(LPCTSTR lpszPathBuffer)
+{
+	SPLITPATH_S(lpszPathBuffer, m_szDrive, m_szDir, m_szFName, m_szExt);
+}
+
+CString CXTPSplitPath::GetDrive() const
+{
+	return CString(m_szDrive);
+}
+
+CString CXTPSplitPath::GetDir() const
+{
+	return CString(m_szDir);
+}
+
+CString CXTPSplitPath::GetFName() const
+{
+	return CString(m_szFName);
+}
+
+CString CXTPSplitPath::GetExt() const
+{
+	return CString(m_szExt);
+}
+
+CString CXTPSplitPath::GetFullPath() const
+{
+	return GetDrive() + GetDir();
+}
+
+CString CXTPSplitPath::GetFullName() const
+{
+	return GetFName() + GetExt();
+}

@@ -1,87 +1,441 @@
 // from server: 100% by auto
-// roc 2009-06 00793d00  unit: CXTPKeyboardManager  size: 235 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00793d00
-//
-// 00793d00  83ec18               sub esp, 0x18
-// 00793d03  56                   push esi
-// 00793d04  8b742420             mov esi, dword ptr [esp + 0x20]
-// 00793d08  56                   push esi
-// 00793d09  ff15e0ed8900         call dword ptr [0x89ede0]
-// 00793d0f  85c0                 test eax, eax
-// 00793d11  7532                 jne 0x793d45
-// 00793d13  8b442428             mov eax, dword ptr [esp + 0x28]
-// 00793d17  50                   push eax
-// 00793d18  56                   push esi
-// 00793d19  ff1584ee8900         call dword ptr [0x89ee84]
-// 00793d1f  68f0b87100           push 0x71b8f0
-// 00793d24  b99426a500           mov ecx, 0xa52694
-// 00793d29  e8d2810b00           call 0x84bf00
-// 00793d2e  85c0                 test eax, eax
-// 00793d30  7505                 jne 0x793d37
-// 00793d32  e8ad4ff8ff           call 0x718ce4
-// 00793d37  c7402400000000       mov dword ptr [eax + 0x24], 0
-// 00793d3e  5e                   pop esi
-// 00793d3f  83c418               add esp, 0x18
-// 00793d42  c21000               ret 0x10
-// 00793d45  57                   push edi
-// 00793d46  8d4c2410             lea ecx, [esp + 0x10]
-// 00793d4a  51                   push ecx
-// 00793d4b  56                   push esi
-// 00793d4c  ff15f4ed8900         call dword ptr [0x89edf4]
-// 00793d52  8d542408             lea edx, [esp + 8]
-// 00793d56  52                   push edx
-// 00793d57  ff152cee8900         call dword ptr [0x89ee2c]
-// 00793d5d  56                   push esi
-// 00793d5e  ff1598ee8900         call dword ptr [0x89ee98]
-// 00793d64  85c0                 test eax, eax
-// 00793d66  741e                 je 0x793d86
-// 00793d68  6af0                 push -0x10
-// 00793d6a  56                   push esi
-// 00793d6b  ff1558ed8900         call dword ptr [0x89ed58]
-// 00793d71  85c0                 test eax, eax
-// 00793d73  7811                 js 0x793d86
-// 00793d75  56                   push esi
-// 00793d76  e845ffffff           call 0x793cc0
-// 00793d7b  83c404               add esp, 4
-// 00793d7e  85c0                 test eax, eax
-// 00793d80  7504                 jne 0x793d86
-// 00793d82  33ff                 xor edi, edi
-// 00793d84  eb05                 jmp 0x793d8b
-// 00793d86  bf01000000           mov edi, 1
-// 00793d8b  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00793d8f  8b4c2408             mov ecx, dword ptr [esp + 8]
-// 00793d93  50                   push eax
-// 00793d94  51                   push ecx
-// 00793d95  8d542418             lea edx, [esp + 0x18]
-// 00793d99  52                   push edx
-// 00793d9a  ff15c0ed8900         call dword ptr [0x89edc0]
-// 00793da0  85c0                 test eax, eax
-// 00793da2  7404                 je 0x793da8
-// 00793da4  85ff                 test edi, edi
-// 00793da6  753b                 jne 0x793de3
-// 00793da8  8b44242c             mov eax, dword ptr [esp + 0x2c]
-// 00793dac  50                   push eax
-// 00793dad  56                   push esi
-// 00793dae  ff1584ee8900         call dword ptr [0x89ee84]
-// 00793db4  68f0b87100           push 0x71b8f0
-// 00793db9  b99426a500           mov ecx, 0xa52694
-// 00793dbe  e83d810b00           call 0x84bf00
-// 00793dc3  85c0                 test eax, eax
-// 00793dc5  7505                 jne 0x793dcc
-// 00793dc7  e8184ff8ff           call 0x718ce4
-// 00793dcc  6a00                 push 0
-// 00793dce  6a00                 push 0
-// 00793dd0  68a3020000           push 0x2a3
-// 00793dd5  56                   push esi
-// 00793dd6  c7402400000000       mov dword ptr [eax + 0x24], 0
-// 00793ddd  ff159cee8900         call dword ptr [0x89ee9c]
-// 00793de3  5f                   pop edi
-// 00793de4  5e                   pop esi
-// 00793de5  83c418               add esp, 0x18
-// 00793de8  c21000               ret 0x10
-// library xtp-15.2.1/Source\CommandBars\XTPMouseManager.cpp (function ?TrackMouseTimerProc@CXTPMouseManager@@CGXPAUHWND__@@IIK@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/CommandBars/XTPMouseManager.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPMouseManager.cpp : implementation of the CXTPMouseManager class.
+//
+// This file is a part of the XTREME COMMANDBARS MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "Common/XTPDrawHelpers.h"
+#include "Common/XTPSystemHelpers.h"
+#include "Common/XTPHookManager.h"
+
+#include "XTPCommandBarsDefines.h"
+#include "XTPMouseManager.h"
+#include "XTPCommandBar.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+CThreadLocal<CXTPMouseManager> CXTPMouseManager::_xtpMouseThreadState;
+static CPoint ptMouse;
+
+
+#define TID_MOUSELEAVE 113341
+
+CXTPMouseManager::CXTPMouseManager()
+{
+	m_hHookMouse = 0;
+	m_nLock = 0;
+	m_hwndLeave = 0;
+	m_bForceExpanded = FALSE;
+	m_pSelected = 0;
+	m_bIgnoreLButtonUp = FALSE;
+
+#ifdef _AFXDLL
+	m_pModuleState = 0;
+#endif
+	SetupHook(TRUE);
+}
+
+CXTPMouseManager::~CXTPMouseManager()
+{
+	SetupHook(FALSE);
+}
+
+void CXTPMouseManager::DeliverMessage(CXTPCommandBar* pCapture, WPARAM wParam, POINT pt)
+{
+	if (!pCapture->GetSafeHwnd())
+		return;
+
+	switch (wParam)
+	{
+		case WM_MOUSEMOVE:
+		case WM_NCMOUSEMOVE:
+			if (pCapture->m_nLockRecurse <= 0)
+			{
+				pCapture->ScreenToClient(&pt);
+				pCapture->OnMouseMove(0, pt);
+			}
+			break;
+
+		case WM_LBUTTONDOWN:
+		case WM_NCLBUTTONDOWN:
+		case WM_RBUTTONDOWN:
+		case WM_NCRBUTTONDOWN:
+		case WM_MBUTTONDOWN:
+		case WM_NCMBUTTONDOWN:
+			SendTrackLost();
+			break;
+
+		case WM_LBUTTONUP:
+		case WM_NCLBUTTONUP:
+			if (!IsMouseLocked())
+				SendTrackLost();
+			break;
+	}
+}
+
+
+CXTPCommandBar* CXTPMouseManager::HitTest(POINT point) const
+{
+	HWND hWndMouse = ::WindowFromPoint(point);
+	const CTrackArray& arrTracked = m_arrTracked;
+	int i;
+
+	for (i = (int)arrTracked.GetSize() - 1; i >= 0; i--)
+	{
+		CXTPCommandBar* pCommandBar = arrTracked[i];
+
+		if (!pCommandBar->GetSafeHwnd())
+			continue;
+
+		int nHtCode = pCommandBar->OnMouseHitTest(point);
+
+		if ((nHtCode != HTERROR) && ((nHtCode == HTCLIENT) || ::IsChild(pCommandBar->GetSafeHwnd(), hWndMouse)))
+		{
+			return pCommandBar;
+		}
+	}
+
+	return NULL;
+}
+
+BOOL CXTPMouseManager::PreviewTackLost(CXTPCommandBar* pContextMenu, MSG* msg) const
+{
+	if (!(msg->message == WM_LBUTTONDOWN || msg->message == WM_RBUTTONDOWN || msg->message == WM_MBUTTONDOWN ||
+		msg->message == WM_NCLBUTTONDOWN || msg->message == WM_NCRBUTTONDOWN))
+	{
+		return FALSE;
+	}
+
+	CPoint point;
+	GetCursorPos(&point);
+
+	CXTPCommandBar* pCommandBar = HitTest(point);
+	if (pCommandBar)
+	{
+		if (pCommandBar->m_nLockRecurse == 0 || pContextMenu->m_nLockRecurse != 0)
+			return FALSE;
+	}
+
+	HWND hWndMouse = ::WindowFromPoint(point);
+
+	if (m_arrTracked.GetSize() > 0)
+	{
+		const CTrustedArray& arrTrusted = m_arrTrusted;
+		for (int i = 0; i < arrTrusted.GetSize(); i++)
+		{
+			HWND hWnd = arrTrusted[i];
+			if (IsWindow(hWnd) && IsWindowVisible(hWnd) && CXTPWindowRect(hWnd).PtInRect(point))
+			{
+				return FALSE;
+			}
+		}
+
+		if (hWndMouse)
+		{
+			if (GetClassLong(hWndMouse, GCL_STYLE) & CS_IME)
+				return FALSE;
+		}
+	}
+
+	return TRUE;
+}
+
+BOOL CXTPMouseManager::IsRelated(HWND hWndParent, HWND hWnd) const
+{
+	hWnd = ::GetParent(hWnd);
+
+	while (hWnd)
+	{
+		if (hWnd == hWndParent)
+			return TRUE;
+
+		hWnd = ::GetParent(hWnd);
+	}
+
+	return FALSE;
+}
+
+BOOL CXTPMouseManager::PreTranslateMouseEvents(WPARAM wParam, POINT point)
+{
+	HWND hWndMouse = ::WindowFromPoint(point);
+	CTrackArray& arrTracked = m_arrTracked;
+	int i;
+
+	for (i = (int)arrTracked.GetSize() - 1; i >= 0; i--)
+	{
+		CXTPCommandBar* pCommandBar = arrTracked[i];
+
+		if (!pCommandBar->GetSafeHwnd())
+			continue;
+
+		int nHtCode = pCommandBar->OnMouseHitTest(point);
+
+		if ((nHtCode != HTERROR) && ((nHtCode == HTCLIENT) || ::IsChild(pCommandBar->GetSafeHwnd(), hWndMouse) || IsRelated(pCommandBar->GetSafeHwnd(), hWndMouse)))
+		{
+			if (pCommandBar->m_nLockRecurse > 0 && wParam != WM_MOUSEMOVE && wParam != WM_NCMOUSEMOVE && !m_bIgnoreLButtonUp)
+			{
+				SendTrackLostRecurse();
+				ptMouse = 0;
+			}
+			return FALSE;
+		}
+	}
+
+	if (arrTracked.GetSize() > 0)
+	{
+		CTrustedArray& arrTrusted = m_arrTrusted;
+		for (i = 0; i < arrTrusted.GetSize(); i++)
+		{
+			HWND hWnd = arrTrusted[i];
+			if (IsWindow(hWnd) && IsWindowVisible(hWnd) && CXTPWindowRect(hWnd).PtInRect(point))
+			{
+				return FALSE;
+			}
+		}
+
+	}
+
+	if (hWndMouse && arrTracked.GetSize() > 0)
+	{
+		if (GetClassLong(hWndMouse, GCL_STYLE) & CS_IME)
+			return FALSE;
+	}
+
+	for (i = 0; i < arrTracked.GetSize(); i++)
+	{
+		DeliverMessage(arrTracked.GetAt(i), wParam, point);
+	}
+
+	return FALSE;
+
+}
+
+
+
+
+LRESULT CALLBACK CXTPMouseManager::MouseProc(int nCode, WPARAM wParam, LPARAM lParam)
+{
+	CXTPMouseManager* pMouseManager = XTPMouseManager();
+
+	if (nCode != HC_ACTION)
+		return CallNextHookEx(pMouseManager->m_hHookMouse, nCode, wParam, lParam);
+
+	PMOUSEHOOKSTRUCT pHook = (PMOUSEHOOKSTRUCT)lParam;
+	CPoint point = pHook->pt;
+
+	CTrackArray& arrTracked = pMouseManager->m_arrTracked;
+
+	if (wParam == WM_LBUTTONDOWN || wParam == WM_RBUTTONDOWN)
+		pMouseManager->m_bIgnoreLButtonUp = FALSE;
+
+	if ((wParam == WM_LBUTTONUP || wParam == WM_NCLBUTTONUP) && pMouseManager->m_bIgnoreLButtonUp)
+	{
+		pMouseManager->m_bIgnoreLButtonUp = FALSE;
+		return TRUE;
+	}
+
+	if (arrTracked.GetSize() != 0 && (wParam == WM_MOUSEMOVE || wParam == WM_NCMOUSEMOVE) && ptMouse == point)
+		return TRUE;
+
+	ptMouse = point;
+
+	if (pMouseManager->m_arrTracked.GetSize() == 0)
+		return CallNextHookEx(pMouseManager->m_hHookMouse, nCode, wParam, lParam);
+
+	SAFE_MANAGE_STATE(pMouseManager->m_pModuleState);
+
+	if (pMouseManager->PreTranslateMouseEvents(wParam, point))
+	{
+		return 1;
+	}
+
+	return CallNextHookEx(pMouseManager->m_hHookMouse, nCode, wParam, lParam);
+
+}
+
+void CXTPMouseManager::SetupHook(BOOL bHook)
+{
+	if (bHook && m_hHookMouse == 0)
+	{
+		m_hHookMouse = SetWindowsHookEx(WH_MOUSE, MouseProc, 0, GetCurrentThreadId ());
+	}
+	if (!bHook && m_hHookMouse)
+	{
+		UnhookWindowsHookEx(m_hHookMouse);
+		m_hHookMouse = 0;
+	}
+}
+
+void CXTPMouseManager::SetTrack(CXTPCommandBar* pTrack, BOOL /*bCaptureMouse*/)
+{
+#ifdef _AFXDLL
+	m_pModuleState = AfxGetModuleState();
+#endif
+
+	if (m_arrTracked.GetSize() == 0 && m_pSelected && m_pSelected != pTrack)
+		m_pSelected->OnTrackEnter();
+
+	if (m_arrTracked.Find(pTrack) == -1)
+		m_arrTracked.Add(pTrack);
+}
+void CXTPMouseManager::RemoveTrack(CXTPCommandBar* pTrack)
+{
+	int nIndex = m_arrTracked.Find(pTrack);
+	if (nIndex != -1)
+	{
+		m_arrTracked.RemoveAt(nIndex);
+	}
+	if (m_arrTracked.GetSize() == 0)
+	{
+		RefreshCursor();
+	}
+	m_bIgnoreLButtonUp = FALSE;
+}
+
+void AFX_CDECL CXTPMouseManager::RefreshCursor()
+{
+	ptMouse = CPoint(-1, -1);
+
+	CPoint pt;
+	GetCursorPos(&pt);
+	SetCursorPos(pt.x, pt.y);
+}
+
+
+void CXTPMouseManager::SendTrackLost()
+{
+	while (m_arrTracked.GetSize() > 0)
+	{
+		m_arrTracked[0]->OnTrackLost();
+	}
+}
+
+BOOL CXTPMouseManager::IsTopParentActive(HWND hWnd)
+{
+	return CXTPDrawHelpers::IsTopParentActive(hWnd);
+}
+
+void CALLBACK CXTPMouseManager::TrackMouseTimerProc (HWND hWnd, UINT /*uMsg*/, UINT idEvent, DWORD /*dwTime*/)
+{
+	RECT    rect;
+	POINT   pt;
+
+	if (!IsWindow(hWnd))
+	{
+		KillTimer (hWnd, idEvent);
+		XTPMouseManager()->m_hwndLeave = 0;
+		return;
+	}
+	GetWindowRect(hWnd, &rect);
+	::GetCursorPos (&pt);
+
+	BOOL bTopParentActive = GetParent(hWnd) == 0 || (GetWindowLong(hWnd, GWL_STYLE) & WS_POPUP) || IsTopParentActive(hWnd);
+	if (!::PtInRect (&rect, pt) || !bTopParentActive)
+	{
+		KillTimer (hWnd, idEvent);
+		XTPMouseManager()->m_hwndLeave = 0;
+
+		::PostMessage (hWnd, WM_MOUSELEAVE, 0, 0);
+	}
+
+
+}
+
+void CXTPMouseManager::TrackMouseLeave(HWND hwnd)
+{
+	if (m_hwndLeave == hwnd) return;
+	if (m_hwndLeave && hwnd != m_hwndLeave && IsWindow(m_hwndLeave))
+		SendMessage(m_hwndLeave, WM_MOUSELEAVE, 0, 0);
+	m_hwndLeave = hwnd;
+	::SetTimer (hwnd, TID_MOUSELEAVE, 50,
+			(TIMERPROC) TrackMouseTimerProc);
+}
+
+
+void CXTPMouseManager::AddTrustedWindow(HWND hWnd)
+{
+	m_arrTrusted.Add(hWnd);
+}
+void CXTPMouseManager::RemoveTrustedWindow(HWND hWnd)
+{
+	m_arrTrusted.Remove(hWnd);
+}
+
+void CXTPMouseManager::LockTrackRecurse(BOOL bLockTrack)
+{
+	for (int i = 0; i < (int)m_arrTracked.GetSize(); i++)
+	{
+		m_arrTracked[i]->m_nLockRecurse += bLockTrack ? +1 : -1;
+	}
+}
+
+CXTPCommandBar* CXTPMouseManager::GetTopTracked() const
+{
+	if (m_arrTracked.GetSize() == NULL)
+		return NULL;
+
+	return m_arrTracked.GetAt(m_arrTracked.GetSize() - 1);
+}
+
+BOOL CXTPMouseManager::IsTrackedLock(const CXTPCommandBar* pItem /*= NULL*/)
+{
+	if (m_arrTracked.GetSize() == NULL)
+		return FALSE;
+
+	if (pItem == NULL)
+		return TRUE;
+
+	if (pItem->m_nLockRecurse > 0)
+		return TRUE;
+
+	return m_arrTracked.Find(pItem) == -1;
+}
+
+BOOL CXTPMouseManager::IsTrackedLockRecurse() const
+{
+	if (m_arrTracked.GetSize() == 0)
+		return FALSE;
+
+	return m_arrTracked[0]->m_nLockRecurse > 0;
+}
+
+void CXTPMouseManager::SendTrackLostRecurse()
+{
+	if (m_arrTracked.GetSize() == 0)
+		return;
+
+	BOOL bLocked = m_arrTracked[0]->m_nLockRecurse > 0;
+
+	if (bLocked)
+	for (int i = 0; i < (int)m_arrTracked.GetSize(); i++)
+	{
+		if (m_arrTracked[i]->m_nLockRecurse == 0)
+			m_arrTracked[i]->OnTrackLost();
+	}
+}

@@ -1,21 +1,82 @@
 // from server: 100% by auto
-// roc 2007-03 0071b070  unit: seg_00710000  size: 26 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 0071b070
-//
-// 0071b070  56                   push esi
-// 0071b071  8bf1                 mov esi, ecx
-// 0071b073  e888440000           call 0x71f500
-// 0071b078  8b4620               mov eax, dword ptr [esi + 0x20]
-// 0071b07b  6a00                 push 0
-// 0071b07d  6a00                 push 0
-// 0071b07f  6a1a                 push 0x1a
-// 0071b081  50                   push eax
-// 0071b082  ff1548ee7700         call dword ptr [0x77ee48]
-// 0071b088  5e                   pop esi
-// 0071b089  c3                   ret 
-// library xtp-15.2.1/Source\SkinFramework\XTPSkinObjectStatusBar.cpp (function ?RefreshMetrics@CXTPSkinObjectStatusBar@@MAEXXZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/SkinFramework/XTPSkinObjectStatusBar.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPSkinObjectStatusBar.cpp: implementation of the CXTPSkinObjectStatusBar class.
+//
+// This file is a part of the XTREME SKINFRAMEWORK MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "Common/XTPDrawHelpers.h"
+
+#include "XTPSkinObject.h"
+#include "XTPSkinObjectFrame.h"
+#include "XTPSkinObjectStatusBar.h"
+#include "XTPSkinDrawTools.h"
+#include "XTPSkinManager.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+IMPLEMENT_DYNCREATE(CXTPSkinObjectStatusBar, CXTPSkinObjectFrame)
+
+CXTPSkinObjectStatusBar::CXTPSkinObjectStatusBar()
+{
+	m_strClassName = _T("STATUSBAR");
+}
+
+CXTPSkinObjectStatusBar::~CXTPSkinObjectStatusBar()
+{
+
+}
+
+
+BEGIN_MESSAGE_MAP(CXTPSkinObjectStatusBar, CXTPSkinObjectFrame)
+	ON_WM_CREATE()
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPSkinObjectStatusBar message handlers
+
+void CXTPSkinObjectStatusBar::RefreshMetrics()
+{
+	CXTPSkinObjectFrame::RefreshMetrics();
+
+	PostMessage(WM_SETTINGCHANGE);
+}
+
+int CXTPSkinObjectStatusBar::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CXTPSkinObject::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	SendMessage(WM_SETTINGCHANGE);
+
+	return 0;
+}

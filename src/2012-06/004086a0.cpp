@@ -1,14 +1,113 @@
 // from server: 100% by auto
-// roc 2012-06 004086a0  unit: VCApp::?$CComAggObject  size: 13 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 004086a0
-//
-// 004086a0  8b442404             mov eax, dword ptr [esp + 4]
-// 004086a4  ff4004               inc dword ptr [eax + 4]
-// 004086a7  8b4004               mov eax, dword ptr [eax + 4]
-// 004086aa  c20400               ret 4
-// library xtp-15.2.1/Source\Controls\Shell\XTPDropSource.cpp (function ?AddRef@CXTPDropSource@@UAGKXZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/Controls/Shell/XTPDropSource.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPDropSource.cpp : implementation file
+//
+// This file is a part of the XTREME CONTROLS MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "XTPDropSource.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPDropSource
+
+CXTPDropSource::CXTPDropSource()
+{
+	m_uiRefCount = 1;
+}
+
+CXTPDropSource::~CXTPDropSource()
+{
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// IUnknown Methods
+
+STDMETHODIMP CXTPDropSource::QueryInterface(REFIID riid, LPVOID* ppReturn)
+{
+	*ppReturn = NULL;
+
+	//IUnknown
+	if (IsEqualIID(riid, IID_IUnknown))
+	{
+		*ppReturn = this;
+	}
+	//IDropTarget
+	else if (IsEqualIID(riid, IID_IDropSource))
+	{
+		*ppReturn = (IDropSource*)this;
+	}
+	if (*ppReturn)
+	{
+		(*(LPUNKNOWN*)ppReturn)->AddRef();
+		return S_OK;
+	}
+	return E_NOINTERFACE;
+}
+
+
+STDMETHODIMP_(ULONG) CXTPDropSource::AddRef()
+{
+	return ++m_uiRefCount;
+}
+
+
+STDMETHODIMP_(ULONG) CXTPDropSource::Release()
+{
+	if (--m_uiRefCount == 0)
+	{
+		delete this;
+		return 0;
+	}
+	return m_uiRefCount;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// IDropSource Methods
+
+STDMETHODIMP CXTPDropSource::QueryContinueDrag(BOOL bEsc, DWORD dwKeyState)
+{
+	if (bEsc)
+	{
+		return DRAGDROP_S_CANCEL;
+	}
+
+	if ((dwKeyState & MK_LBUTTON) == 0x0000)
+	{
+		return DRAGDROP_S_DROP;
+	}
+	return S_OK;
+}
+
+STDMETHODIMP CXTPDropSource::GiveFeedback(DWORD)
+{
+	return DRAGDROP_S_USEDEFAULTCURSORS;
+}

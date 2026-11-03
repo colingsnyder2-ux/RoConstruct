@@ -1,43 +1,232 @@
 // from server: 100% by tester
-// roc 2010-06 0052f4b0  unit: RBX::VAggregateChunk::?$WeakReferenceCountedPointer  size: 83 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0052f4b0
-//
-// 0052f4b0  56                   push esi
-// 0052f4b1  8bf1                 mov esi, ecx
-// 0052f4b3  8b4628               mov eax, dword ptr [esi + 0x28]
-// 0052f4b6  57                   push edi
-// 0052f4b7  33ff                 xor edi, edi
-// 0052f4b9  3bc7                 cmp eax, edi
-// 0052f4bb  7409                 je 0x52f4c6
-// 0052f4bd  50                   push eax
-// 0052f4be  e8d7842700           call 0x7a799a
-// 0052f4c3  83c404               add esp, 4
-// 0052f4c6  8b461c               mov eax, dword ptr [esi + 0x1c]
-// 0052f4c9  50                   push eax
-// 0052f4ca  897e28               mov dword ptr [esi + 0x28], edi
-// 0052f4cd  897e2c               mov dword ptr [esi + 0x2c], edi
-// 0052f4d0  897e30               mov dword ptr [esi + 0x30], edi
-// 0052f4d3  e8c2842700           call 0x7a799a
-// 0052f4d8  8b4610               mov eax, dword ptr [esi + 0x10]
-// 0052f4db  83c404               add esp, 4
-// 0052f4de  3bc7                 cmp eax, edi
-// 0052f4e0  7409                 je 0x52f4eb
-// 0052f4e2  50                   push eax
-// 0052f4e3  e8b2842700           call 0x7a799a
-// 0052f4e8  83c404               add esp, 4
-// 0052f4eb  8b4e04               mov ecx, dword ptr [esi + 4]
-// 0052f4ee  51                   push ecx
-// 0052f4ef  897e10               mov dword ptr [esi + 0x10], edi
-// 0052f4f2  897e14               mov dword ptr [esi + 0x14], edi
-// 0052f4f5  897e18               mov dword ptr [esi + 0x18], edi
-// 0052f4f8  e89d842700           call 0x7a799a
-// 0052f4fd  83c404               add esp, 4
-// 0052f500  5f                   pop edi
-// 0052f501  5e                   pop esi
-// 0052f502  c3                   ret 
-// library ogre-1.7.0/OgreRotationSpline.cpp (function ??1RotationalSpline@Ogre@@QAE@XZ)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: ogre-1.7.0 OgreRotationSpline.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2009 Torus Knot Software Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+#include "OgreRotationalSpline.h"
+
+
+
+namespace Ogre {
+
+    //---------------------------------------------------------------------
+    RotationalSpline::RotationalSpline()
+        : mAutoCalc(true)
+    {
+    }
+    //---------------------------------------------------------------------
+    RotationalSpline::~RotationalSpline()
+    {
+    }
+    //---------------------------------------------------------------------
+    void RotationalSpline::addPoint(const Quaternion& p)
+    {
+        mPoints.push_back(p);
+        if (mAutoCalc)
+        {
+            recalcTangents();
+        }
+    }
+    //---------------------------------------------------------------------
+    Quaternion RotationalSpline::interpolate(Real t, bool useShortestPath)
+    {
+        // Work out which segment this is in
+        Real fSeg = t * (mPoints.size() - 1);
+        unsigned int segIdx = (unsigned int)fSeg;
+        // Apportion t 
+        t = fSeg - segIdx;
+
+        return interpolate(segIdx, t, useShortestPath);
+
+    }
+    //---------------------------------------------------------------------
+    Quaternion RotationalSpline::interpolate(unsigned int fromIndex, Real t,
+		bool useShortestPath)
+    {
+        // Bounds check
+        assert (fromIndex >= 0 && fromIndex < mPoints.size() &&
+            "fromIndex out of bounds");
+
+        if ((fromIndex + 1) == mPoints.size())
+        {
+            // Duff request, cannot blend to nothing
+            // Just return source
+            return mPoints[fromIndex];
+
+        }
+        // Fast special cases
+        if (t == 0.0f)
+        {
+            return mPoints[fromIndex];
+        }
+        else if(t == 1.0f)
+        {
+            return mPoints[fromIndex + 1];
+        }
+
+        // Real interpolation
+        // Use squad using tangents we've already set up
+        Quaternion &p = mPoints[fromIndex];
+        Quaternion &q = mPoints[fromIndex+1];
+        Quaternion &a = mTangents[fromIndex];
+        Quaternion &b = mTangents[fromIndex+1];
+
+        // NB interpolate to nearest rotation
+        return Quaternion::Squad(t, p, a, b, q, useShortestPath);
+
+    }
+    //---------------------------------------------------------------------
+    void RotationalSpline::recalcTangents(void)
+    {
+        // ShoeMake (1987) approach
+        // Just like Catmull-Rom really, just more gnarly
+        // And no, I don't understand how to derive this!
+        //
+        // let p = point[i], pInv = p.Inverse
+        // tangent[i] = p * exp( -0.25 * ( log(pInv * point[i+1]) + log(pInv * point[i-1]) ) )
+        //
+        // Assume endpoint tangents are parallel with line with neighbour
+
+        unsigned int i, numPoints;
+        bool isClosed;
+
+        numPoints = (unsigned int)mPoints.size();
+
+        if (numPoints < 2)
+        {
+            // Can't do anything yet
+            return;
+        }
+
+        mTangents.resize(numPoints);
+
+        if (mPoints[0] == mPoints[numPoints-1])
+        {
+            isClosed = true;
+        }
+        else
+        {
+            isClosed = false;
+        }
+
+        Quaternion invp, part1, part2, preExp;
+        for(i = 0; i < numPoints; ++i)
+        {
+            Quaternion &p = mPoints[i];
+            invp = p.Inverse();
+
+            if (i ==0)
+            {
+                // special case start
+                part1 = (invp * mPoints[i+1]).Log();
+                if (isClosed)
+                {
+                    // Use numPoints-2 since numPoints-1 == end == start == this one
+                    part2 = (invp * mPoints[numPoints-2]).Log();
+                }
+                else
+                {
+                    part2 = (invp * p).Log();
+                }
+            }
+            else if (i == numPoints-1)
+            {
+                // special case end
+                if (isClosed)
+                {
+                    // Wrap to [1] (not [0], this is the same as end == this one)
+                    part1 = (invp * mPoints[1]).Log();
+                }
+                else
+                {
+                    part1 = (invp * p).Log();
+                }
+                part2 = (invp * mPoints[i-1]).Log();
+            }
+            else
+            {
+                part1 = (invp * mPoints[i+1]).Log();
+                part2 = (invp * mPoints[i-1]).Log();
+            }
+
+            preExp = -0.25 * (part1 + part2);
+            mTangents[i] = p * preExp.Exp();
+            
+        }
+
+
+
+    }
+    //---------------------------------------------------------------------
+    const Quaternion& RotationalSpline::getPoint(unsigned short index) const
+    {
+        assert (index < mPoints.size() && "Point index is out of bounds!!");
+
+        return mPoints[index];
+    }
+    //---------------------------------------------------------------------
+    unsigned short RotationalSpline::getNumPoints(void) const
+    {
+        return (unsigned short)mPoints.size();
+    }
+    //---------------------------------------------------------------------
+    void RotationalSpline::clear(void)
+    {
+        mPoints.clear();
+        mTangents.clear();
+    }
+    //---------------------------------------------------------------------
+    void RotationalSpline::updatePoint(unsigned short index, const Quaternion& value)
+    {
+        assert (index < mPoints.size() && "Point index is out of bounds!!");
+
+        mPoints[index] = value;
+        if (mAutoCalc)
+        {
+            recalcTangents();
+        }
+    }
+    //---------------------------------------------------------------------
+    void RotationalSpline::setAutoCalculate(bool autoCalc)
+    {
+        mAutoCalc = autoCalc;
+    }
+    //---------------------------------------------------------------------
+
+
+
+}
+
+
+
+

@@ -1,27 +1,58 @@
 // from server: 100% by auto
-// roc 2009-12 0042a330  unit: VCMDIFrameWnd::?$CXTPFrameWndBase  size: 42 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0042a330
-//
-// 0042a330  56                   push esi
-// 0042a331  8bf1                 mov esi, ecx
-// 0042a333  8b8eec000000         mov ecx, dword ptr [esi + 0xec]
-// 0042a339  57                   push edi
-// 0042a33a  8b7c240c             mov edi, dword ptr [esp + 0xc]
-// 0042a33e  85c9                 test ecx, ecx
-// 0042a340  7406                 je 0x42a348
-// 0042a342  57                   push edi
-// 0042a343  e878ac3e00           call 0x814fc0
-// 0042a348  8b442410             mov eax, dword ptr [esp + 0x10]
-// 0042a34c  50                   push eax
-// 0042a34d  57                   push edi
-// 0042a34e  8bce                 mov ecx, esi
-// 0042a350  e82b9c3c00           call 0x7f3f80
-// 0042a355  5f                   pop edi
-// 0042a356  5e                   pop esi
-// 0042a357  c20800               ret 8
-// library xtp-15.2.1/Source\CommandBars\XTPFrameWnd.cpp (function ?OnSetPreviewMode@?$CXTPFrameWndBase@VCMDIFrameWnd@@@@UAEXHPAUCPrintPreviewState@@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/CommandBars/XTPFrameWnd.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPFrameWnd.cpp : implementation for the CXTPFrameWnd and CXTPMDIFrameWnd classes.
+//
+// This file is a part of the XTREME COMMANDBARS MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "Resource.h"
+
+#include "Common/XTPSystemHelpers.h"
+#include "Common/XTPHookManager.h"
+#include "Common/XTPDrawHelpers.h"
+
+#include "XTPCommandBarsDefines.h"
+#include "XTPCommandBar.h"
+#include "XTPToolBar.h"
+#include "XTPCommandBars.h"
+#include "XTPShortcutManager.h"
+#include "XTPControl.h"
+#include "XTPControlEdit.h"
+#include "XTPFrameWnd.h"
+
+
+IMPLEMENT_DYNCREATE(CXTPFrameWnd, CFrameWnd)
+
+CXTPFrameWnd::CXTPFrameWnd()
+{
+
+}
+
+
+IMPLEMENT_DYNCREATE(CXTPMDIFrameWnd, CMDIFrameWnd)
+
+CXTPMDIFrameWnd::CXTPMDIFrameWnd()
+{
+
+}

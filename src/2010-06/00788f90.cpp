@@ -1,176 +1,609 @@
 // from server: 100% by auto
-// roc 2010-06 00788f90  unit: RBX::HUMAN::GettingUp  size: 451 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00788f90
-//
-// 00788f90  55                   push ebp
-// 00788f91  8bec                 mov ebp, esp
-// 00788f93  6aff                 push -1
-// 00788f95  6800d09a00           push 0x9ad000
-// 00788f9a  64a100000000         mov eax, dword ptr fs:[0]
-// 00788fa0  50                   push eax
-// 00788fa1  64892500000000       mov dword ptr fs:[0], esp
-// 00788fa8  83ec68               sub esp, 0x68
-// 00788fab  53                   push ebx
-// 00788fac  56                   push esi
-// 00788fad  8bf1                 mov esi, ecx
-// 00788faf  8b460c               mov eax, dword ptr [esi + 0xc]
-// 00788fb2  57                   push edi
-// 00788fb3  8965f0               mov dword ptr [ebp - 0x10], esp
-// 00788fb6  8975e0               mov dword ptr [ebp - 0x20], esi
-// 00788fb9  85c0                 test eax, eax
-// 00788fbb  7505                 jne 0x788fc2
-// 00788fbd  8945ec               mov dword ptr [ebp - 0x14], eax
-// 00788fc0  eb19                 jmp 0x788fdb
-// 00788fc2  8b4e14               mov ecx, dword ptr [esi + 0x14]
-// 00788fc5  2bc8                 sub ecx, eax
-// 00788fc7  b867666666           mov eax, 0x66666667
-// 00788fcc  f7e9                 imul ecx
-// 00788fce  c1fa04               sar edx, 4
-// 00788fd1  8bc2                 mov eax, edx
-// 00788fd3  c1e81f               shr eax, 0x1f
-// 00788fd6  03c2                 add eax, edx
-// 00788fd8  8945ec               mov dword ptr [ebp - 0x14], eax
-// 00788fdb  8b7d10               mov edi, dword ptr [ebp + 0x10]
-// 00788fde  85ff                 test edi, edi
-// 00788fe0  0f84e1020000         je 0x7892c7
-// 00788fe6  8b5e10               mov ebx, dword ptr [esi + 0x10]
-// 00788fe9  8bcb                 mov ecx, ebx
-// 00788feb  2b4e0c               sub ecx, dword ptr [esi + 0xc]
-// 00788fee  b867666666           mov eax, 0x66666667
-// 00788ff3  f7e9                 imul ecx
-// 00788ff5  c1fa04               sar edx, 4
-// 00788ff8  8bc2                 mov eax, edx
-// 00788ffa  c1e81f               shr eax, 0x1f
-// 00788ffd  03c2                 add eax, edx
-// 00788fff  b966666606           mov ecx, 0x6666666
-// 00789004  2bc8                 sub ecx, eax
-// 00789006  3bcf                 cmp ecx, edi
-// 00789008  7305                 jae 0x78900f
-// 0078900a  e8e1adc9ff           call 0x423df0
-// 0078900f  8b4dec               mov ecx, dword ptr [ebp - 0x14]
-// 00789012  03c7                 add eax, edi
-// 00789014  3bc8                 cmp ecx, eax
-// 00789016  0f8387010000         jae 0x7891a3
-// 0078901c  8bd1                 mov edx, ecx
-// 0078901e  d1ea                 shr edx, 1
-// 00789020  bb66666606           mov ebx, 0x6666666
-// 00789025  2bda                 sub ebx, edx
-// 00789027  3bd9                 cmp ebx, ecx
-// 00789029  730c                 jae 0x789037
-// 0078902b  c745ec00000000       mov dword ptr [ebp - 0x14], 0
-// 00789032  8b4dec               mov ecx, dword ptr [ebp - 0x14]
-// 00789035  eb05                 jmp 0x78903c
-// 00789037  03ca                 add ecx, edx
-// 00789039  894dec               mov dword ptr [ebp - 0x14], ecx
-// 0078903c  3bc8                 cmp ecx, eax
-// 0078903e  7305                 jae 0x789045
-// 00789040  8945ec               mov dword ptr [ebp - 0x14], eax
-// 00789043  8bc8                 mov ecx, eax
-// 00789045  6a00                 push 0
-// 00789047  51                   push ecx
-// 00789048  e87312f2ff           call 0x6aa2c0
-// 0078904d  8b550c               mov edx, dword ptr [ebp + 0xc]
-// 00789050  2b560c               sub edx, dword ptr [esi + 0xc]
-// 00789053  8bc8                 mov ecx, eax
-// 00789055  b867666666           mov eax, 0x66666667
-// 0078905a  f7ea                 imul edx
-// 0078905c  c1fa04               sar edx, 4
-// 0078905f  8bda                 mov ebx, edx
-// 00789061  33c0                 xor eax, eax
-// 00789063  83c408               add esp, 8
-// 00789066  c1eb1f               shr ebx, 0x1f
-// 00789069  03da                 add ebx, edx
-// 0078906b  8b5514               mov edx, dword ptr [ebp + 0x14]
-// 0078906e  8945e4               mov dword ptr [ebp - 0x1c], eax
-// 00789071  8945fc               mov dword ptr [ebp - 4], eax
-// 00789074  52                   push edx
-// 00789075  894de8               mov dword ptr [ebp - 0x18], ecx
-// 00789078  8d049b               lea eax, [ebx + ebx*4]
-// 0078907b  8d0cc1               lea ecx, [ecx + eax*8]
-// 0078907e  57                   push edi
-// 0078907f  51                   push ecx
-// 00789080  8bce                 mov ecx, esi
-// 00789082  895ddc               mov dword ptr [ebp - 0x24], ebx
-// 00789085  e826faffff           call 0x788ab0
-// 0078908a  8b460c               mov eax, dword ptr [esi + 0xc]
-// 0078908d  c6451400             mov byte ptr [ebp + 0x14], 0
-// 00789091  8b5514               mov edx, dword ptr [ebp + 0x14]
-// 00789094  52                   push edx
-// 00789095  8b5510               mov edx, dword ptr [ebp + 0x10]
-// 00789098  52                   push edx
-// 00789099  8b550c               mov edx, dword ptr [ebp + 0xc]
-// 0078909c  8d4e08               lea ecx, [esi + 8]
-// 0078909f  51                   push ecx
-// 007890a0  8b4de8               mov ecx, dword ptr [ebp - 0x18]
-// 007890a3  51                   push ecx
-// 007890a4  52                   push edx
-// 007890a5  50                   push eax
-// 007890a6  c745e401000000       mov dword ptr [ebp - 0x1c], 1
-// 007890ad  e80ef0ffff           call 0x7880c0
-// 007890b2  8b55e8               mov edx, dword ptr [ebp - 0x18]
-// 007890b5  8b4610               mov eax, dword ptr [esi + 0x10]
-// 007890b8  83c418               add esp, 0x18
-// 007890bb  03df                 add ebx, edi
-// 007890bd  8d0c9b               lea ecx, [ebx + ebx*4]
-// 007890c0  8d0cca               lea ecx, [edx + ecx*8]
-// 007890c3  c6451400             mov byte ptr [ebp + 0x14], 0
-// 007890c7  8b5514               mov edx, dword ptr [ebp + 0x14]
-// 007890ca  52                   push edx
-// 007890cb  8b5510               mov edx, dword ptr [ebp + 0x10]
-// 007890ce  52                   push edx
-// 007890cf  8d5608               lea edx, [esi + 8]
-// 007890d2  52                   push edx
-// 007890d3  51                   push ecx
-// 007890d4  50                   push eax
-// 007890d5  8b450c               mov eax, dword ptr [ebp + 0xc]
-// 007890d8  50                   push eax
-// 007890d9  c745e402000000       mov dword ptr [ebp - 0x1c], 2
-// 007890e0  e8dbefffff           call 0x7880c0
-// 007890e5  8b5e0c               mov ebx, dword ptr [esi + 0xc]
-// 007890e8  8b4e10               mov ecx, dword ptr [esi + 0x10]
-// 007890eb  2bcb                 sub ecx, ebx
-// 007890ed  b867666666           mov eax, 0x66666667
-// 007890f2  f7e9                 imul ecx
-// 007890f4  c1fa04               sar edx, 4
-// 007890f7  8bca                 mov ecx, edx
-// 007890f9  c1e91f               shr ecx, 0x1f
-// 007890fc  03ca                 add ecx, edx
-// 007890fe  83c418               add esp, 0x18
-// 00789101  03f9                 add edi, ecx
-// 00789103  85db                 test ebx, ebx
-// 00789105  741e                 je 0x789125
-// 00789107  8b5510               mov edx, dword ptr [ebp + 0x10]
-// 0078910a  52                   push edx
-// 0078910b  8d4608               lea eax, [esi + 8]
-// 0078910e  50                   push eax
-// 0078910f  8b4610               mov eax, dword ptr [esi + 0x10]
-// 00789112  50                   push eax
-// 00789113  53                   push ebx
-// 00789114  e8d7cefcff           call 0x755ff0
-// 00789119  8b4e0c               mov ecx, dword ptr [esi + 0xc]
-// 0078911c  51                   push ecx
-// 0078911d  e878e80100           call 0x7a799a
-// 00789122  83c414               add esp, 0x14
-// 00789125  8b45ec               mov eax, dword ptr [ebp - 0x14]
-// 00789128  8d1480               lea edx, [eax + eax*4]
-// 0078912b  8b45e8               mov eax, dword ptr [ebp - 0x18]
-// 0078912e  8d0cd0               lea ecx, [eax + edx*8]
-// 00789131  8d14bf               lea edx, [edi + edi*4]
-// 00789134  894e14               mov dword ptr [esi + 0x14], ecx
-// 00789137  8d0cd0               lea ecx, [eax + edx*8]
-// 0078913a  894e10               mov dword ptr [esi + 0x10], ecx
-// 0078913d  89460c               mov dword ptr [esi + 0xc], eax
-// 00789140  8b4df4               mov ecx, dword ptr [ebp - 0xc]
-// 00789143  64890d00000000       mov dword ptr fs:[0], ecx
-// 0078914a  5f                   pop edi
-// 0078914b  5e                   pop esi
-// 0078914c  5b                   pop ebx
-// 0078914d  8be5                 mov esp, ebp
-// 0078914f  5d                   pop ebp
-// 00789150  c21000               ret 0x10
-// library ogre-1.7.0/OgreEdgeListBuilder.cpp (function ?_Insert_n@?$vector@UEdgeGroup@EdgeData@Ogre@@V?$allocator@UEdgeGroup@EdgeData@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@UEdgeGroup@EdgeData@Ogre@@V?$allocator@UEdgeGroup@EdgeData@Ogre@@@std@@@2@IABUEdgeGroup@EdgeData@Ogre@@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: ogre-1.7.0 OgreEdgeListBuilder.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2009 Torus Knot Software Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+#include "OgreEdgeListBuilder.h"
+#include "OgreLogManager.h"
+#include "OgreStringConverter.h"
+#include "OgreVertexIndexData.h"
+#include "OgreException.h"
+#include "OgreOptimisedUtil.h"
+
+namespace Ogre {
+
+    void EdgeData::log(Log* l)
+    {
+        EdgeGroupList::iterator i, iend;
+        EdgeList::iterator ei, eiend;
+        TriangleList::iterator ti, tiend;
+        tiend = triangles.end();
+        l->logMessage("Edge Data");
+        l->logMessage("---------");
+        size_t num = 0;
+        for (ti = triangles.begin(); ti != tiend; ++ti, ++num)
+        {
+            Triangle& t = *ti;
+            l->logMessage("Triangle " + StringConverter::toString(num) + " = {" +
+                "indexSet=" + StringConverter::toString(t.indexSet) + ", " + 
+                "vertexSet=" + StringConverter::toString(t.vertexSet) + ", " + 
+                "v0=" + StringConverter::toString(t.vertIndex[0]) + ", " + 
+                "v1=" + StringConverter::toString(t.vertIndex[1]) + ", " + 
+                "v2=" + StringConverter::toString(t.vertIndex[2]) + "}"); 
+        }
+        iend = edgeGroups.end();
+        for (i = edgeGroups.begin(); i != iend; ++i)
+        {
+            num = 0;
+            eiend = i->edges.end();
+            l->logMessage("Edge Group vertexSet=" + StringConverter::toString(i->vertexSet));
+            for (ei = i->edges.begin(); ei != eiend; ++ei, ++num)
+            {
+                Edge& e = *ei;
+                l->logMessage(
+                    "Edge " + StringConverter::toString(num) + " = {\n" + 
+                    "  tri0=" + StringConverter::toString(e.triIndex[0]) + ", \n" + 
+                    "  tri1=" + StringConverter::toString(e.triIndex[1]) + ", \n" + 
+                    "  v0=" + StringConverter::toString(e.vertIndex[0]) + ", \n" + 
+                    "  v1=" + StringConverter::toString(e.vertIndex[1]) + ", \n"
+                    "  degenerate=" + StringConverter::toString(e.degenerate) + " \n"
+                    "}"); 
+            }
+        }
+    }
+    //---------------------------------------------------------------------
+    EdgeListBuilder::EdgeListBuilder()
+        : mEdgeData(0)
+    {
+    }
+    //---------------------------------------------------------------------
+    EdgeListBuilder::~EdgeListBuilder()
+    {
+    }
+    //---------------------------------------------------------------------
+    void EdgeListBuilder::addVertexData(const VertexData* vertexData)
+    {
+        if (vertexData->vertexStart != 0)
+        {
+            OGRE_EXCEPT(Exception::ERR_INVALIDPARAMS,
+                "The base vertex index of the vertex data must be zero for build edge list.",
+                "EdgeListBuilder::addVertexData");
+        }
+
+        mVertexDataList.push_back(vertexData);
+    }
+    //---------------------------------------------------------------------
+    void EdgeListBuilder::addIndexData(const IndexData* indexData, 
+        size_t vertexSet, RenderOperation::OperationType opType)
+    {
+        if (opType != RenderOperation::OT_TRIANGLE_LIST &&
+            opType != RenderOperation::OT_TRIANGLE_FAN &&
+            opType != RenderOperation::OT_TRIANGLE_STRIP)
+        {
+            OGRE_EXCEPT(Exception::ERR_INVALIDPARAMS,
+                "Only triangle list, fan and strip are supported to build edge list.",
+                "EdgeListBuilder::addIndexData");
+        }
+
+        Geometry geometry;
+        geometry.indexData = indexData;
+        geometry.vertexSet = vertexSet;
+        geometry.opType = opType;
+        geometry.indexSet = mGeometryList.size();
+        mGeometryList.push_back(geometry);
+    }
+    //---------------------------------------------------------------------
+    EdgeData* EdgeListBuilder::build(void)
+    {
+        /* Ok, here's the algorithm:
+        For each set of indices in turn
+          For each set of 3 indexes
+            Create a new Triangle entry in the list
+            For each vertex referenced by the tri indexes
+              Get the position of the vertex as a Vector3 from the correct vertex buffer
+              Attempt to locate this position in the existing common vertex set
+              If not found
+                Create a new common vertex entry in the list
+              End If
+              Populate the original vertex index and common vertex index 
+            Next vertex
+            Connect to existing edge(v1, v0) or create a new edge(v0, v1)
+            Connect to existing edge(v2, v1) or create a new edge(v1, v2)
+            Connect to existing edge(v0, v2) or create a new edge(v2, v0)
+          Next set of 3 indexes
+        Next index set
+
+        Note that all edges 'belong' to the index set which originally caused them
+        to be created, which also means that the 2 vertices on the edge are both referencing the 
+        vertex buffer which this index set uses.
+        */
+
+
+        /* 
+        There is a major consideration: 'What is a common vertex'? This is a
+        crucial decision, since to form a completely close hull, you need to treat
+        vertices which are not physically the same as equivalent. This is because
+        there will be 'seams' in the model, where discrepancies in vertex components
+        other than position (such as normals or texture coordinates) will mean
+        that there are 2 vertices in the same place, and we MUST 'weld' them
+        into a single common vertex in order to have a closed hull. Just looking
+        at the unique vertex indices is not enough, since these seams would render
+        the hull invalid.
+
+        So, we look for positions which are the same across vertices, and treat 
+        those as as single vertex for our edge calculation. However, this has
+        it's own problems. There are OTHER vertices which may have a common 
+        position that should not be welded. Imagine 2 cubes touching along one
+        single edge. The common vertices on that edge, if welded, will cause 
+        an ambiguous hull, since the edge will have 4 triangles attached to it,
+        whilst a manifold mesh should only have 2 triangles attached to each edge.
+        This is a problem.
+
+        We deal with this with allow welded multiple pairs of edges. Using this
+        techniques, we can build a individual hull even if the model which has a
+        potentially ambiguous hull. This is feasible, because in the case of
+        multiple hulls existing, each hull can cast same shadow in any situation.
+        Notice: For stencil shadow, we intent to build a valid shadow volume for
+        the mesh, not the valid hull for the mesh.
+        */
+
+        // Sort the geometries in the order of vertex set, so we can grouping
+        // triangles by vertex set easy.
+        std::sort(mGeometryList.begin(), mGeometryList.end(), geometryLess());
+        // Initialize edge data
+        mEdgeData = OGRE_NEW EdgeData();
+        // resize the edge group list to equal the number of vertex sets
+        mEdgeData->edgeGroups.resize(mVertexDataList.size());
+        // Initialise edge group data
+        for (unsigned short vSet = 0; vSet < mVertexDataList.size(); ++vSet)
+        {
+            mEdgeData->edgeGroups[vSet].vertexSet = vSet;
+            mEdgeData->edgeGroups[vSet].vertexData = mVertexDataList[vSet];
+            mEdgeData->edgeGroups[vSet].triStart = 0;
+            mEdgeData->edgeGroups[vSet].triCount = 0;
+        }
+
+        // Build triangles and edge list
+        GeometryList::const_iterator i, iend;
+        iend = mGeometryList.end();
+        for (i = mGeometryList.begin(); i != iend; ++i)
+        {
+            buildTrianglesEdges(*i);
+        }
+
+        // Allocate memory for light facing calculate
+        mEdgeData->triangleLightFacings.resize(mEdgeData->triangles.size());
+
+        // Record closed, ie the mesh is manifold
+        mEdgeData->isClosed = mEdgeMap.empty();
+
+        return mEdgeData;
+    }
+    //---------------------------------------------------------------------
+    void EdgeListBuilder::buildTrianglesEdges(const Geometry &geometry)
+    {
+        size_t indexSet = geometry.indexSet;
+        size_t vertexSet = geometry.vertexSet;
+        const IndexData* indexData = geometry.indexData;
+        RenderOperation::OperationType opType = geometry.opType;
+
+        size_t iterations;
+        
+        switch (opType)
+        {
+        case RenderOperation::OT_TRIANGLE_LIST:
+            iterations = indexData->indexCount / 3;
+            break;
+        case RenderOperation::OT_TRIANGLE_FAN:
+        case RenderOperation::OT_TRIANGLE_STRIP:
+            iterations = indexData->indexCount - 2;
+            break;
+        default:
+            return; // Just in case
+        };
+
+        // The edge group now we are dealing with.
+        EdgeData::EdgeGroup& eg = mEdgeData->edgeGroups[vertexSet];
+
+		// locate position element & the buffer to go with it
+        const VertexData* vertexData = mVertexDataList[vertexSet];
+		const VertexElement* posElem = vertexData->vertexDeclaration->findElementBySemantic(VES_POSITION);
+		HardwareVertexBufferSharedPtr vbuf = 
+			vertexData->vertexBufferBinding->getBuffer(posElem->getSource());
+		// lock the buffer for reading
+		unsigned char* pBaseVertex = static_cast<unsigned char*>(
+			vbuf->lock(HardwareBuffer::HBL_READ_ONLY));
+
+        // Get the indexes ready for reading
+		bool idx32bit = (indexData->indexBuffer->getType() == HardwareIndexBuffer::IT_32BIT);
+		size_t indexSize = idx32bit ? sizeof(uint32) : sizeof(uint16);
+#if defined(_MSC_VER) && _MSC_VER <= 1300
+        // NB: Can't use un-named union with VS.NET 2002 when /RTC1 compile flag enabled.
+        void* pIndex = indexData->indexBuffer->lock(HardwareBuffer::HBL_READ_ONLY);
+		pIndex = static_cast<void*>(
+			static_cast<char*>(pIndex) + indexData->indexStart * indexSize);
+        unsigned short* p16Idx = static_cast<unsigned short*>(pIndex);
+        unsigned int* p32Idx = static_cast<unsigned int*>(pIndex);
+#else
+        union {
+            void* pIndex;
+            unsigned short* p16Idx;
+            unsigned int* p32Idx;
+        };
+        pIndex = indexData->indexBuffer->lock(HardwareBuffer::HBL_READ_ONLY);
+		pIndex = static_cast<void*>(
+			static_cast<char*>(pIndex) + indexData->indexStart * indexSize);
+#endif
+
+        // Iterate over all the groups of 3 indexes
+        unsigned int index[3];
+        // Get the triangle start, if we have more than one index set then this
+        // will not be zero
+        size_t triangleIndex = mEdgeData->triangles.size();
+        // If it's first time dealing with the edge group, setup triStart for it.
+        // Note that we are assume geometries sorted by vertex set.
+        if (!eg.triCount)
+        {
+            eg.triStart = triangleIndex;
+        }
+        // Pre-reserve memory for less thrashing
+        mEdgeData->triangles.reserve(triangleIndex + iterations);
+        mEdgeData->triangleFaceNormals.reserve(triangleIndex + iterations);
+        for (size_t t = 0; t < iterations; ++t)
+        {
+            EdgeData::Triangle tri;
+            tri.indexSet = indexSet;
+            tri.vertexSet = vertexSet;
+
+            if (opType == RenderOperation::OT_TRIANGLE_LIST || t == 0)
+            {
+                // Standard 3-index read for tri list or first tri in strip / fan
+                if (idx32bit)
+                {
+                    index[0] = p32Idx[0];
+                    index[1] = p32Idx[1];
+                    index[2] = p32Idx[2];
+                    p32Idx += 3;
+                }
+                else
+                {
+                    index[0] = p16Idx[0];
+                    index[1] = p16Idx[1];
+                    index[2] = p16Idx[2];
+                    p16Idx += 3;
+                }
+            }
+            else
+            {
+                // Strips are formed from last 2 indexes plus the current one for
+                // triangles after the first.
+                // For fans, all the triangles share the first vertex, plus last
+                // one index and the current one for triangles after the first.
+                // We also make sure that all the triangles are process in the
+                // _anti_ clockwise orientation
+                index[(opType == RenderOperation::OT_TRIANGLE_STRIP) && (t & 1) ? 0 : 1] = index[2];
+                // Read for the last tri index
+                if (idx32bit)
+                    index[2] = *p32Idx++;
+                else
+                    index[2] = *p16Idx++;
+            }
+
+            Vector3 v[3];
+            for (size_t i = 0; i < 3; ++i)
+            {
+                // Populate tri original vertex index
+                tri.vertIndex[i] = index[i];
+
+                // Retrieve the vertex position
+                unsigned char* pVertex = pBaseVertex + (index[i] * vbuf->getVertexSize());
+                float* pFloat;
+                posElem->baseVertexPointerToElement(pVertex, &pFloat);
+                v[i].x = *pFloat++;
+                v[i].y = *pFloat++;
+                v[i].z = *pFloat++;
+                // find this vertex in the existing vertex map, or create it
+                tri.sharedVertIndex[i] = 
+                    findOrCreateCommonVertex(v[i], vertexSet, indexSet, index[i]);
+            }
+
+            // Ignore degenerate triangle
+            if (tri.sharedVertIndex[0] != tri.sharedVertIndex[1] &&
+                tri.sharedVertIndex[1] != tri.sharedVertIndex[2] &&
+                tri.sharedVertIndex[2] != tri.sharedVertIndex[0])
+            {
+                // Calculate triangle normal (NB will require recalculation for 
+                // skeletally animated meshes)
+                mEdgeData->triangleFaceNormals.push_back(
+                    Math::calculateFaceNormalWithoutNormalize(v[0], v[1], v[2]));
+                // Add triangle to list
+                mEdgeData->triangles.push_back(tri);
+                // Connect or create edges from common list
+                connectOrCreateEdge(vertexSet, triangleIndex, 
+                    tri.vertIndex[0], tri.vertIndex[1], 
+                    tri.sharedVertIndex[0], tri.sharedVertIndex[1]);
+                connectOrCreateEdge(vertexSet, triangleIndex, 
+                    tri.vertIndex[1], tri.vertIndex[2], 
+                    tri.sharedVertIndex[1], tri.sharedVertIndex[2]);
+                connectOrCreateEdge(vertexSet, triangleIndex, 
+                    tri.vertIndex[2], tri.vertIndex[0], 
+                    tri.sharedVertIndex[2], tri.sharedVertIndex[0]);
+                ++triangleIndex;
+            }
+        }
+
+        // Update triCount for the edge group. Note that we are assume
+        // geometries sorted by vertex set.
+        eg.triCount = triangleIndex - eg.triStart;
+
+        indexData->indexBuffer->unlock();
+        vbuf->unlock();
+    }
+    //---------------------------------------------------------------------
+    void EdgeListBuilder::connectOrCreateEdge(size_t vertexSet, size_t triangleIndex, 
+        size_t vertIndex0, size_t vertIndex1, size_t sharedVertIndex0, 
+        size_t sharedVertIndex1)
+    {
+        // Find the existing edge (should be reversed order) on shared vertices
+        EdgeMap::iterator emi = mEdgeMap.find(std::pair<size_t, size_t>(sharedVertIndex1, sharedVertIndex0));
+        if (emi != mEdgeMap.end())
+        {
+            // The edge already exist, connect it
+            EdgeData::Edge& e = mEdgeData->edgeGroups[emi->second.first].edges[emi->second.second];
+            // update with second side
+            e.triIndex[1] = triangleIndex;
+            e.degenerate = false;
+
+            // Remove from the edge map, so we never supplied to connect edge again
+            mEdgeMap.erase(emi);
+        }
+        else
+        {
+            // Not found, create new edge
+            mEdgeMap.insert(EdgeMap::value_type(
+                std::pair<size_t, size_t>(sharedVertIndex0, sharedVertIndex1),
+                std::pair<size_t, size_t>(vertexSet, mEdgeData->edgeGroups[vertexSet].edges.size())));
+            EdgeData::Edge e;
+            e.degenerate = true; // initialise as degenerate
+
+            // Set only first tri, the other will be completed in connect existing edge
+            e.triIndex[0] = triangleIndex;
+            e.triIndex[1] = static_cast<size_t>(~0);
+            e.sharedVertIndex[0] = sharedVertIndex0;
+            e.sharedVertIndex[1] = sharedVertIndex1;
+            e.vertIndex[0] = vertIndex0;
+            e.vertIndex[1] = vertIndex1;
+            mEdgeData->edgeGroups[vertexSet].edges.push_back(e);
+        }
+    }
+    //---------------------------------------------------------------------
+    size_t EdgeListBuilder::findOrCreateCommonVertex(const Vector3& vec, 
+        size_t vertexSet, size_t indexSet, size_t originalIndex)
+    {
+        // Because the algorithm doesn't care about manifold or not, we just identifying
+        // the common vertex by EXACT same position.
+        // Hint: We can use quantize method for welding almost same position vertex fastest.
+        std::pair<CommonVertexMap::iterator, bool> inserted =
+            mCommonVertexMap.insert(CommonVertexMap::value_type(vec, mVertices.size()));
+        if (!inserted.second)
+        {
+            // Already existing, return old one
+            return inserted.first->second;
+        }
+        // Not found, insert
+        CommonVertex newCommon;
+        newCommon.index = mVertices.size();
+        newCommon.position = vec;
+        newCommon.vertexSet = vertexSet;
+        newCommon.indexSet = indexSet;
+        newCommon.originalIndex = originalIndex;
+        mVertices.push_back(newCommon);
+        return newCommon.index;
+    }
+    //---------------------------------------------------------------------
+    //---------------------------------------------------------------------
+    void EdgeData::updateTriangleLightFacing(const Vector4& lightPos)
+    {
+        // Triangle face normals should be 1:1 with light facing flags
+        assert(triangleFaceNormals.size() == triangleLightFacings.size());
+
+        // Use optimised util to determine if triangle's face normal are light facing
+		if(!triangleFaceNormals.empty())
+		{
+			OptimisedUtil::getImplementation()->calculateLightFacing(
+				lightPos,
+				&triangleFaceNormals.front(),
+				&triangleLightFacings.front(),
+				triangleLightFacings.size());
+		}
+    }
+    //---------------------------------------------------------------------
+    void EdgeData::updateFaceNormals(size_t vertexSet, 
+        const HardwareVertexBufferSharedPtr& positionBuffer)
+    {
+        assert (positionBuffer->getVertexSize() == sizeof(float) * 3
+            && "Position buffer should contain only positions!");
+
+        // Triangle face normals should be 1:1 with triangles
+        assert(triangleFaceNormals.size() == triangles.size());
+
+        // Lock buffer for reading
+        float* pVert = static_cast<float*>(
+            positionBuffer->lock(HardwareBuffer::HBL_READ_ONLY));
+
+        // Calculate triangles which are using this vertex set
+        const EdgeData::EdgeGroup& eg = edgeGroups[vertexSet];
+		if (eg.triCount != 0) 
+		{
+			OptimisedUtil::getImplementation()->calculateFaceNormals(
+				pVert,
+				&triangles[eg.triStart],
+				&triangleFaceNormals[eg.triStart],
+				eg.triCount);
+		}
+
+        // unlock the buffer
+        positionBuffer->unlock();
+    }
+    //---------------------------------------------------------------------
+    void EdgeListBuilder::log(Log* l)
+    {
+        l->logMessage("EdgeListBuilder Log");
+        l->logMessage("-------------------");
+        l->logMessage("Number of vertex sets: " + StringConverter::toString(mVertexDataList.size()));
+        l->logMessage("Number of index sets: " + StringConverter::toString(mGeometryList.size()));
+        
+        size_t i, j;
+        // Log original vertex data
+        for(i = 0; i < mVertexDataList.size(); ++i)
+        {
+            const VertexData* vData = mVertexDataList[i];
+            l->logMessage(".");
+            l->logMessage("Original vertex set " + 
+                StringConverter::toString(i) + " - vertex count " + 
+                StringConverter::toString(vData->vertexCount));
+            const VertexElement* posElem = vData->vertexDeclaration->findElementBySemantic(VES_POSITION);
+            HardwareVertexBufferSharedPtr vbuf = 
+                vData->vertexBufferBinding->getBuffer(posElem->getSource());
+            // lock the buffer for reading
+            unsigned char* pBaseVertex = static_cast<unsigned char*>(
+                vbuf->lock(HardwareBuffer::HBL_READ_ONLY));
+            float* pFloat;
+            for (j = 0; j < vData->vertexCount; ++j)
+            {
+                posElem->baseVertexPointerToElement(pBaseVertex, &pFloat);
+                l->logMessage("Vertex " + StringConverter::toString(j) + 
+                    ": (" + StringConverter::toString(pFloat[0]) + 
+                    ", " + StringConverter::toString(pFloat[1]) + 
+                    ", " + StringConverter::toString(pFloat[2]) + ")");
+                pBaseVertex += vbuf->getVertexSize();
+            }
+            vbuf->unlock();
+        }
+
+        // Log original index data
+        for(i = 0; i < mGeometryList.size(); i++)
+        {
+            const IndexData* iData = mGeometryList[i].indexData;
+            l->logMessage(".");
+            l->logMessage("Original triangle set " + 
+                StringConverter::toString(mGeometryList[i].indexSet) + " - index count " + 
+                StringConverter::toString(iData->indexCount) + " - " + 
+            "vertex set " + StringConverter::toString(mGeometryList[i].vertexSet) + " - " + 
+            "operationType " + StringConverter::toString(mGeometryList[i].opType));
+            // Get the indexes ready for reading
+            unsigned short* p16Idx = 0;
+            unsigned int* p32Idx = 0;
+
+            if (iData->indexBuffer->getType() == HardwareIndexBuffer::IT_32BIT)
+            {
+                p32Idx = static_cast<unsigned int*>(
+                    iData->indexBuffer->lock(HardwareBuffer::HBL_READ_ONLY));
+            }
+            else
+            {
+                p16Idx = static_cast<unsigned short*>(
+                    iData->indexBuffer->lock(HardwareBuffer::HBL_READ_ONLY));
+            }
+
+            for (j = 0; j < iData->indexCount;  )
+            {
+                if (iData->indexBuffer->getType() == HardwareIndexBuffer::IT_32BIT)
+                {
+                    if (mGeometryList[i].opType == RenderOperation::OT_TRIANGLE_LIST
+                        || j == 0)
+                    {
+		    	unsigned int n1 = *p32Idx++;
+		    	unsigned int n2 = *p32Idx++;
+		    	unsigned int n3 = *p32Idx++;
+                        l->logMessage("Triangle " + StringConverter::toString(j) + 
+                            ": (" + StringConverter::toString(n1) + 
+                            ", " + StringConverter::toString(n2) + 
+                            ", " + StringConverter::toString(n3) + ")");
+                        j += 3;
+                    }
+                    else
+                    {
+                        l->logMessage("Triangle " + StringConverter::toString(j) + 
+                            ": (" + StringConverter::toString(*p32Idx++) + ")");
+                        j++;
+                    }
+                }
+                else
+                {
+                    if (mGeometryList[i].opType == RenderOperation::OT_TRIANGLE_LIST
+                        || j == 0)
+                    {
+		    	unsigned short n1 = *p16Idx++;
+		    	unsigned short n2 = *p16Idx++;
+		    	unsigned short n3 = *p16Idx++;
+                        l->logMessage("Index " + StringConverter::toString(j) + 
+                            ": (" + StringConverter::toString(n1) + 
+                            ", " + StringConverter::toString(n2) + 
+                            ", " + StringConverter::toString(n3) + ")");
+                        j += 3;
+                    }
+                    else
+                    {
+                        l->logMessage("Triangle " + StringConverter::toString(j) + 
+                            ": (" + StringConverter::toString(*p16Idx++) + ")");
+                        j++;
+                    }
+                }
+
+
+            }
+
+            iData->indexBuffer->unlock();
+
+
+            // Log common vertex list
+            l->logMessage(".");
+            l->logMessage("Common vertex list - vertex count " + 
+                StringConverter::toString(mVertices.size()));
+            for (i = 0; i < mVertices.size(); ++i)
+            {
+                CommonVertex& c = mVertices[i];
+                l->logMessage("Common vertex " + StringConverter::toString(i) + 
+                    ": (vertexSet=" + StringConverter::toString(c.vertexSet) + 
+                    ", originalIndex=" + StringConverter::toString(c.originalIndex) + 
+                    ", position=" + StringConverter::toString(c.position));
+            }
+        }
+
+    }
+
+
+
+}
+

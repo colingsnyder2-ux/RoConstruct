@@ -1,204 +1,1901 @@
 // from server: 100% by auto
-// roc 2011-06 00a2f710  unit: seg_00a20000  size: 625 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00a2f710
-//
-// 00a2f710  56                   push esi
-// 00a2f711  8b35c81ba400         mov esi, dword ptr [0xa41bc8]
-// 00a2f717  6a3b                 push 0x3b
-// 00a2f719  6a5a                 push 0x5a
-// 00a2f71b  6a1d                 push 0x1d
-// 00a2f71d  6a3d                 push 0x3d
-// 00a2f71f  b81e000000           mov eax, 0x1e
-// 00a2f724  33c9                 xor ecx, ecx
-// 00a2f726  685090d100           push 0xd19050
-// 00a2f72b  a34890d100           mov dword ptr [0xd19048], eax
-// 00a2f730  890d4c90d100         mov dword ptr [0xd1904c], ecx
-// 00a2f736  ffd6                 call esi
-// 00a2f738  6a3b                 push 0x3b
-// 00a2f73a  6a78                 push 0x78
-// 00a2f73c  b91e000000           mov ecx, 0x1e
-// 00a2f741  51                   push ecx
-// 00a2f742  6a5a                 push 0x5a
-// 00a2f744  33c0                 xor eax, eax
-// 00a2f746  686890d100           push 0xd19068
-// 00a2f74b  a36090d100           mov dword ptr [0xd19060], eax
-// 00a2f750  890d6490d100         mov dword ptr [0xd19064], ecx
-// 00a2f756  ffd6                 call esi
-// 00a2f758  b81e000000           mov eax, 0x1e
-// 00a2f75d  50                   push eax
-// 00a2f75e  6a78                 push 0x78
-// 00a2f760  6a00                 push 0
-// 00a2f762  6a5b                 push 0x5b
-// 00a2f764  b93b000000           mov ecx, 0x3b
-// 00a2f769  688090d100           push 0xd19080
-// 00a2f76e  a37890d100           mov dword ptr [0xd19078], eax
-// 00a2f773  890d7c90d100         mov dword ptr [0xd1907c], ecx
-// 00a2f779  ffd6                 call esi
-// 00a2f77b  6a1d                 push 0x1d
-// 00a2f77d  6a5c                 push 0x5c
-// 00a2f77f  6a00                 push 0
-// 00a2f781  6a3e                 push 0x3e
-// 00a2f783  b83c000000           mov eax, 0x3c
-// 00a2f788  b91e000000           mov ecx, 0x1e
-// 00a2f78d  689890d100           push 0xd19098
-// 00a2f792  a39090d100           mov dword ptr [0xd19090], eax
-// 00a2f797  890d9490d100         mov dword ptr [0xd19094], ecx
-// 00a2f79d  ffd6                 call esi
-// 00a2f79f  6a78                 push 0x78
-// 00a2f7a1  6a5a                 push 0x5a
-// 00a2f7a3  6a5a                 push 0x5a
-// 00a2f7a5  6a3d                 push 0x3d
-// 00a2f7a7  b81e000000           mov eax, 0x1e
-// 00a2f7ac  33c9                 xor ecx, ecx
-// 00a2f7ae  68b090d100           push 0xd190b0
-// 00a2f7b3  a3a890d100           mov dword ptr [0xd190a8], eax
-// 00a2f7b8  890dac90d100         mov dword ptr [0xd190ac], ecx
-// 00a2f7be  ffd6                 call esi
-// 00a2f7c0  6a78                 push 0x78
-// 00a2f7c2  6a78                 push 0x78
-// 00a2f7c4  6a5b                 push 0x5b
-// 00a2f7c6  6a5a                 push 0x5a
-// 00a2f7c8  33c0                 xor eax, eax
-// 00a2f7ca  b91e000000           mov ecx, 0x1e
-// 00a2f7cf  68c890d100           push 0xd190c8
-// 00a2f7d4  a3c090d100           mov dword ptr [0xd190c0], eax
-// 00a2f7d9  890dc490d100         mov dword ptr [0xd190c4], ecx
-// 00a2f7df  ffd6                 call esi
-// 00a2f7e1  6a5b                 push 0x5b
-// 00a2f7e3  6a78                 push 0x78
-// 00a2f7e5  6a3d                 push 0x3d
-// 00a2f7e7  6a5b                 push 0x5b
-// 00a2f7e9  b81e000000           mov eax, 0x1e
-// 00a2f7ee  b93b000000           mov ecx, 0x3b
-// 00a2f7f3  68e090d100           push 0xd190e0
-// 00a2f7f8  a3d890d100           mov dword ptr [0xd190d8], eax
-// 00a2f7fd  890ddc90d100         mov dword ptr [0xd190dc], ecx
-// 00a2f803  ffd6                 call esi
-// 00a2f805  6a5a                 push 0x5a
-// 00a2f807  6a5c                 push 0x5c
-// 00a2f809  6a3d                 push 0x3d
-// 00a2f80b  b83c000000           mov eax, 0x3c
-// 00a2f810  b91e000000           mov ecx, 0x1e
-// 00a2f815  6a3e                 push 0x3e
-// 00a2f817  a3f090d100           mov dword ptr [0xd190f0], eax
-// 00a2f81c  890df490d100         mov dword ptr [0xd190f4], ecx
-// 00a2f822  68f890d100           push 0xd190f8
-// 00a2f827  ffd6                 call esi
-// 00a2f829  6a6f                 push 0x6f
-// 00a2f82b  6894000000           push 0x94
-// 00a2f830  6a52                 push 0x52
-// 00a2f832  b81e000000           mov eax, 0x1e
-// 00a2f837  6a78                 push 0x78
-// 00a2f839  8bc8                 mov ecx, eax
-// 00a2f83b  681091d100           push 0xd19110
-// 00a2f840  a30891d100           mov dword ptr [0xd19108], eax
-// 00a2f845  890d0c91d100         mov dword ptr [0xd1910c], ecx
-// 00a2f84b  ffd6                 call esi
-// 00a2f84d  6a52                 push 0x52
-// 00a2f84f  68a1000000           push 0xa1
-// 00a2f854  6a29                 push 0x29
-// 00a2f856  b818000000           mov eax, 0x18
-// 00a2f85b  6a78                 push 0x78
-// 00a2f85d  8bc8                 mov ecx, eax
-// 00a2f85f  682891d100           push 0xd19128
-// 00a2f864  a32091d100           mov dword ptr [0xd19120], eax
-// 00a2f869  890d2491d100         mov dword ptr [0xd19124], ecx
-// 00a2f86f  ffd6                 call esi
-// 00a2f871  6a29                 push 0x29
-// 00a2f873  68a1000000           push 0xa1
-// 00a2f878  6a00                 push 0
-// 00a2f87a  b818000000           mov eax, 0x18
-// 00a2f87f  6a78                 push 0x78
-// 00a2f881  8bc8                 mov ecx, eax
-// 00a2f883  684091d100           push 0xd19140
-// 00a2f888  a33891d100           mov dword ptr [0xd19138], eax
-// 00a2f88d  890d3c91d100         mov dword ptr [0xd1913c], ecx
-// 00a2f893  ffd6                 call esi
-// 00a2f895  6a3d                 push 0x3d
-// 00a2f897  6a1d                 push 0x1d
-// 00a2f899  33c9                 xor ecx, ecx
-// 00a2f89b  6a1d                 push 0x1d
-// 00a2f89d  51                   push ecx
-// 00a2f89e  33c0                 xor eax, eax
-// 00a2f8a0  685891d100           push 0xd19158
-// 00a2f8a5  a35091d100           mov dword ptr [0xd19150], eax
-// 00a2f8aa  890d5491d100         mov dword ptr [0xd19154], ecx
-// 00a2f8b0  ffd6                 call esi
-// 00a2f8b2  6a3d                 push 0x3d
-// 00a2f8b4  6a3d                 push 0x3d
-// 00a2f8b6  6a20                 push 0x20
-// 00a2f8b8  6a1d                 push 0x1d
-// 00a2f8ba  33c0                 xor eax, eax
-// 00a2f8bc  33c9                 xor ecx, ecx
-// 00a2f8be  687091d100           push 0xd19170
-// 00a2f8c3  a36891d100           mov dword ptr [0xd19168], eax
-// 00a2f8c8  890d6c91d100         mov dword ptr [0xd1916c], ecx
-// 00a2f8ce  ffd6                 call esi
-// 00a2f8d0  6a20                 push 0x20
-// 00a2f8d2  6a3d                 push 0x3d
-// 00a2f8d4  33c9                 xor ecx, ecx
-// 00a2f8d6  51                   push ecx
-// 00a2f8d7  6a20                 push 0x20
-// 00a2f8d9  33c0                 xor eax, eax
-// 00a2f8db  688891d100           push 0xd19188
-// 00a2f8e0  a38091d100           mov dword ptr [0xd19180], eax
-// 00a2f8e5  890d8491d100         mov dword ptr [0xd19184], ecx
-// 00a2f8eb  ffd6                 call esi
-// 00a2f8ed  6a1d                 push 0x1d
-// 00a2f8ef  33c9                 xor ecx, ecx
-// 00a2f8f1  6a20                 push 0x20
-// 00a2f8f3  51                   push ecx
-// 00a2f8f4  51                   push ecx
-// 00a2f8f5  33c0                 xor eax, eax
-// 00a2f8f7  68a091d100           push 0xd191a0
-// 00a2f8fc  a39891d100           mov dword ptr [0xd19198], eax
-// 00a2f901  890d9c91d100         mov dword ptr [0xd1919c], ecx
-// 00a2f907  ffd6                 call esi
-// 00a2f909  6a7a                 push 0x7a
-// 00a2f90b  6a1d                 push 0x1d
-// 00a2f90d  33c9                 xor ecx, ecx
-// 00a2f90f  6a5a                 push 0x5a
-// 00a2f911  51                   push ecx
-// 00a2f912  33c0                 xor eax, eax
-// 00a2f914  68b891d100           push 0xd191b8
-// 00a2f919  a3b091d100           mov dword ptr [0xd191b0], eax
-// 00a2f91e  890db491d100         mov dword ptr [0xd191b4], ecx
-// 00a2f924  ffd6                 call esi
-// 00a2f926  6a7a                 push 0x7a
-// 00a2f928  6a3d                 push 0x3d
-// 00a2f92a  6a5d                 push 0x5d
-// 00a2f92c  6a1d                 push 0x1d
-// 00a2f92e  33c0                 xor eax, eax
-// 00a2f930  33c9                 xor ecx, ecx
-// 00a2f932  68d091d100           push 0xd191d0
-// 00a2f937  a3c891d100           mov dword ptr [0xd191c8], eax
-// 00a2f93c  890dcc91d100         mov dword ptr [0xd191cc], ecx
-// 00a2f942  ffd6                 call esi
-// 00a2f944  6a5d                 push 0x5d
-// 00a2f946  6a3d                 push 0x3d
-// 00a2f948  6a3d                 push 0x3d
-// 00a2f94a  6a20                 push 0x20
-// 00a2f94c  33c0                 xor eax, eax
-// 00a2f94e  33c9                 xor ecx, ecx
-// 00a2f950  68e891d100           push 0xd191e8
-// 00a2f955  a3e091d100           mov dword ptr [0xd191e0], eax
-// 00a2f95a  890de491d100         mov dword ptr [0xd191e4], ecx
-// 00a2f960  ffd6                 call esi
-// 00a2f962  6a5a                 push 0x5a
-// 00a2f964  6a20                 push 0x20
-// 00a2f966  33c9                 xor ecx, ecx
-// 00a2f968  6a3d                 push 0x3d
-// 00a2f96a  51                   push ecx
-// 00a2f96b  33c0                 xor eax, eax
-// 00a2f96d  680092d100           push 0xd19200
-// 00a2f972  a3f891d100           mov dword ptr [0xd191f8], eax
-// 00a2f977  890dfc91d100         mov dword ptr [0xd191fc], ecx
-// 00a2f97d  ffd6                 call esi
-// 00a2f97f  5e                   pop esi
-// 00a2f980  c3                   ret 
-// library xtp-15.2.1/Source\DockingPane\XTPDockingPaneContext.cpp (function ??__EarrSpritesStyckerVisualStudio2005@@YAXXZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/DockingPane/XTPDockingPaneContext.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPDockingPaneContext.cpp : implementation of the CXTPDockingPaneContext class.
+//
+// This file is a part of the XTREME DOCKINGPANE MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "Resource.h"
+
+#include "Common/XTPColorManager.h"
+#include "Common/XTPDrawHelpers.h"
+#include "Common/XTPResourceManager.h"
+#include "Common/XTPSystemHelpers.h"
+#include "Common/XTPImageManager.h"
+
+#include "TabManager/XTPTabManager.h"
+#include "TabManager/XTPTabPaintManager.h"
+
+#include "XTPDockingPaneDefines.h"
+#include "XTPDockingPaneBase.h"
+#include "XTPDockingPaneBaseContainer.h"
+#include "XTPDockingPaneContext.h"
+#include "XTPDockingPane.h"
+#include "XTPDockingPaneManager.h"
+#include "XTPDockingPaneTabbedContainer.h"
+#include "XTPDockingPaneSplitterContainer.h"
+#include "XTPDockingPaneMiniWnd.h"
+#include "XTPDockingPaneSidePanel.h"
+#include "XTPDockingPanePaintManager.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+
+
+void AFX_CDECL CXTPDockingPaneContext::AdjustRectangle(CRect& rect, CPoint pt)
+{
+	int nXOffset = (pt.x < rect.left) ? (pt.x - rect.left - 6) :
+					(pt.x > rect.right) ? (pt.x - rect.right + 6) : 0;
+	int nYOffset = (pt.y < rect.top) ? (pt.y - rect.top - 6) :
+					(pt.y > rect.bottom) ? (pt.y - rect.bottom + 6) : 0;
+	rect.OffsetRect(nXOffset, nYOffset);
+}
+
+void AFX_CDECL CXTPDockingPaneContext::AdjustCursor(CPoint& pt)
+{
+	CRect rc = XTPMultiMonitor()->GetWorkArea(pt);
+	if (pt.x < rc.left) pt.x = rc.left;
+	if (pt.x > rc.right) pt.x = rc.right;
+	if (pt.y < rc.top) pt.y = rc.top;
+	if (pt.y > rc.bottom) pt.y = rc.bottom;
+}
+
+typedef BOOL (WINAPI *PFNSETLAYEREDWINDOWATTRIBUTES) (HWND hwnd, COLORREF crKey, BYTE bAlpha, DWORD dwFlags);
+
+#ifndef LWA_ALPHA
+#define LWA_ALPHA               0x00000002
+#endif
+
+#ifndef WS_EX_LAYERED
+#define WS_EX_LAYERED           0x00080000
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPDockingPaneContextAlphaWnd
+
+CXTPDockingPaneContextAlphaWnd::CXTPDockingPaneContextAlphaWnd()
+{
+}
+
+CXTPDockingPaneContextAlphaWnd::~CXTPDockingPaneContextAlphaWnd()
+{
+}
+
+
+BEGIN_MESSAGE_MAP(CXTPDockingPaneContextAlphaWnd, CWnd)
+	//{{AFX_MSG_MAP(CXTPDockingPaneContextAlphaWnd)
+	ON_WM_ERASEBKGND()
+	ON_WM_PAINT()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPDockingPaneContextAlphaWnd message handlers
+
+BOOL CXTPDockingPaneContextAlphaWnd::OnEraseBkgnd(CDC* /*pDC*/)
+{
+	return TRUE;
+}
+
+void CXTPDockingPaneContextAlphaWnd::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+
+	CRect rc;
+	GetClientRect(&rc);
+
+	dc.FillSolidRect(rc, GetSysColor(COLOR_HIGHLIGHT));
+}
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPDockingPaneContextStickerWnd
+
+CXTPDockingPaneContextStickerWnd::CXTPDockingPaneContextStickerWnd(CXTPDockingPaneContext* pContext)
+	: m_pContext(pContext)
+{
+	m_typeSticker = m_selectedSticker = xtpPaneStickerNone;
+}
+
+CXTPDockingPaneContextStickerWnd::~CXTPDockingPaneContextStickerWnd()
+{
+}
+
+
+BEGIN_MESSAGE_MAP(CXTPDockingPaneContextStickerWnd, CWnd)
+	//{{AFX_MSG_MAP(CXTPDockingPaneContextStickerWnd)
+	ON_WM_ERASEBKGND()
+	ON_WM_PAINT()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPDockingPaneContextAlphaWnd message handlers
+
+BOOL CXTPDockingPaneContextStickerWnd::OnEraseBkgnd(CDC* /*pDC*/)
+{
+	return TRUE;
+}
+
+struct CXTPDockingPaneContextStickerWnd::SPRITEINFO
+{
+	SPRITEINFO(int x, int y, int left, int top, int cx, int cy)
+	{
+		ptDest = CPoint(x, y);
+		rcSrc.SetRect(left, top, left + cx, top + cy);
+	}
+	CPoint ptDest;
+	CRect rcSrc;
+};
+
+#define SPRITE_STICKER_TOP              0
+#define SPRITE_STICKER_LEFT             1
+#define SPRITE_STICKER_BOTTOM           2
+#define SPRITE_STICKER_RIGHT            3
+#define SPRITE_STICKER_TOP_SELECTED     4
+#define SPRITE_STICKER_LEFT_SELECTED    5
+#define SPRITE_STICKER_BOTTOM_SELECTED  6
+#define SPRITE_STICKER_RIGHT_SELECTED   7
+
+#define SPRITE_STICKER_CENTER           8
+#define SPRITE_STICKER_CENTER_SELECTED  9
+#define SPRITE_STICKER_CLIENT           10
+
+static CXTPDockingPaneContextStickerWnd::SPRITEINFO arrSpritesStyckerWidbey[] =
+{
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(25, 0, 0, 0, 43, 30),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 25, 30, 33, 30, 43),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(25, 63, 43, 0, 43, 30),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(63, 25, 0, 33, 30, 43),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(25, 0, 0, 76, 43, 30),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 25, 90, 33, 30, 43),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(25, 63, 43, 76, 43, 30),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(63, 25, 60, 33, 30, 43),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(30, 30, 86, 0, 33, 33),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(30, 30, 86, 76, 33, 33),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(25, 25, 0, 0, 43, 43),
+};
+
+static CXTPDockingPaneContextStickerWnd::SPRITEINFO arrSpritesStyckerVisualStudio2005[] =
+{
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(30, 0, 61, 29, 29, 30),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 30, 90, 30, 30, 29),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(30, 59, 91, 0, 29, 30),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(60, 30, 62, 0, 30, 29),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(30, 0, 61, 29 + 61, 29, 30),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 30, 90, 30 + 61, 30, 29),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(30, 59, 91, 0 + 61, 29, 30),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(60, 30, 62, 0 + 61, 30, 29),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(30, 30, 120, 82, 28, 29),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(24, 24, 120, 41, 41, 41),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(24, 24, 120, 0, 41, 41),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 29, 29, 32),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 29, 32, 32, 29),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 32, 0, 29, 32),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 0, 32, 29),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 29 + 61, 29, 32),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 29, 32 + 61, 32, 29),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 32, 0 + 61, 29, 32),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 0 + 61, 32, 29),
+
+};
+
+static CXTPDockingPaneContextStickerWnd::SPRITEINFO arrSpritesStyckerVisualStudio2008[] =
+{
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(36, 0, 142, 35, 35, 35),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 35, 142 + 35, 35, 35, 35),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(36, 70, 142 + 35, 0, 35, 35),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(72, 35, 142, 0, 35, 35),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(36, 0, 212, 35, 35, 35),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 35, 212 + 35, 35, 35, 35),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(36, 70, 212 + 35, 0, 35, 35),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(72, 35, 212, 0, 35, 35),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(37, 38, 359, 0, 32, 31),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(37, 38, 359, 31, 32, 31),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(15, 15, 282, 0, 77, 75),   // Client
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 35, 35, 36),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 35, 36, 36, 35),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 36, 0, 35, 36),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 0, 36, 35),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0 + 71, 35, 35, 36),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 35 + 71, 36, 36, 35),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 36 + 71, 0, 35, 36),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0 + 71, 0, 36, 35),
+
+};
+
+
+static CXTPDockingPaneContextStickerWnd::SPRITEINFO arrSpritesStyckerVisualStudio2010[] =
+{
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(36, 0, 80, 40, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 36, 80 + 40, 40, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(36, 72, 80 + 40, 0, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(72, 36, 80, 0, 40, 40),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(36, 0, 80, 40 + 80, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 36, 80 + 40, 40 + 80, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(36, 72, 80 + 40, 0 + 80, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(72, 36, 80, 0 + 80, 40, 40),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(40, 40, 160, 120, 32, 32),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(40, 40, 192, 120, 32, 32),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 160, 0, 112, 112),   // Client
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 40, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 40, 40, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 40, 0, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 0, 40, 40),
+
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 40 + 80, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 40, 40 + 80, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 40, 0 + 80, 40, 40),
+	CXTPDockingPaneContextStickerWnd::SPRITEINFO(0, 0, 0, 0 + 80, 40, 40),
+
+};
+
+
+void CXTPDockingPaneContextStickerWnd::DrawTransparent(CDC* pDC , const CPoint& ptDest, const CSize& sz, CBitmap* pBitmap)
+{
+	CImageList il;
+	il.Create(sz.cx, sz.cy, ILC_COLOR24 | ILC_MASK, 0, 1);
+	il.Add(pBitmap, RGB(0, 0xFF, 0));
+
+	il.Draw(pDC, 0, ptDest, ILD_NORMAL);
+}
+
+void CXTPDockingPaneContextStickerWnd::DrawSprite(CDC* pDC, UINT nID, SPRITEINFO* pSpriteInfo, BOOL bClientBitmap)
+{
+	CBitmap bmp;
+
+	{
+		CXTPResourceManager::CManageState state;
+		bmp.Attach(CXTPImageManagerIcon::LoadBitmapFromResource(MAKEINTRESOURCE(nID), NULL));
+	}
+
+	CSize sz(pSpriteInfo->rcSrc.Width(), pSpriteInfo->rcSrc.Height());
+
+	CBitmap bmpSprite;
+	bmpSprite.CreateCompatibleBitmap(pDC, sz.cx, sz.cy);
+
+	if (bmpSprite.GetSafeHandle())
+	{
+		CXTPCompatibleDC dcSprite(pDC, &bmpSprite);
+		CXTPCompatibleDC dc(pDC, &bmp);
+		dcSprite.BitBlt(0, 0, sz.cx, sz.cy, &dc, pSpriteInfo->rcSrc.left, pSpriteInfo->rcSrc.top, SRCCOPY);
+	}
+
+	CPoint ptDest = bClientBitmap ? pSpriteInfo->ptDest : CPoint(0, 0);
+
+	DrawTransparent(pDC, ptDest, sz, &bmpSprite);
+}
+
+
+void CXTPDockingPaneContextStickerWnd::OnDraw(CDC* pDC)
+{
+	BOOL bClient = (m_typeSticker & xtpPaneStickerClient) == xtpPaneStickerClient;
+	XTPDockingContextStickerStyle style = m_pContext->GetStickerStyle();
+
+	if (style == xtpPaneStickerStyleVisualStudio2005Beta)
+	{
+		XTPCurrentSystemTheme theme = XTPColorManager()->GetCurrentSystemTheme();
+
+		UINT nIDBitmap = theme == xtpSystemThemeOlive ? XTP_IDB_DOCKINGPANE_STICKERS_OLIVE :
+			theme == xtpSystemThemeSilver ? XTP_IDB_DOCKINGPANE_STICKERS_SILVER : XTP_IDB_DOCKINGPANE_STICKERS_BLUE;
+
+		SPRITEINFO* sprites = arrSpritesStyckerWidbey;
+
+		if (bClient)
+			DrawSprite(pDC, XTP_IDB_DOCKINGPANE_STICKER_CLIENT, &sprites[SPRITE_STICKER_CLIENT]);
+		if (m_typeSticker & xtpPaneStickerTop)
+			DrawSprite(pDC, nIDBitmap, &sprites[m_selectedSticker == xtpPaneStickerTop ? SPRITE_STICKER_TOP_SELECTED : SPRITE_STICKER_TOP], bClient);
+		if (m_typeSticker & xtpPaneStickerLeft)
+			DrawSprite(pDC, nIDBitmap, &sprites[m_selectedSticker == xtpPaneStickerLeft ? SPRITE_STICKER_LEFT_SELECTED : SPRITE_STICKER_LEFT], bClient);
+		if (m_typeSticker & xtpPaneStickerBottom)
+			DrawSprite(pDC, nIDBitmap, &sprites[m_selectedSticker == xtpPaneStickerBottom ? SPRITE_STICKER_BOTTOM_SELECTED : SPRITE_STICKER_BOTTOM], bClient);
+		if (m_typeSticker & xtpPaneStickerRight)
+			DrawSprite(pDC, nIDBitmap, &sprites[m_selectedSticker == xtpPaneStickerRight ? SPRITE_STICKER_RIGHT_SELECTED : SPRITE_STICKER_RIGHT], bClient);
+		if (m_typeSticker & xtpPaneStickerCenter)
+			DrawSprite(pDC, nIDBitmap, &sprites[m_selectedSticker == xtpPaneStickerCenter ? SPRITE_STICKER_CENTER_SELECTED : SPRITE_STICKER_CENTER]);
+	}
+	else if (style == xtpPaneStickerStyleVisualStudio2008 || style == xtpPaneStickerStyleVisualStudio2010)
+	{
+		UINT nIDBitmap = style == xtpPaneStickerStyleVisualStudio2008 ? XTP_IDB_DOCKINGPANE_STICKERS_2008 : XTP_IDB_DOCKINGPANE_STICKERS_2010;
+		SPRITEINFO* sprites = style == xtpPaneStickerStyleVisualStudio2008 ? arrSpritesStyckerVisualStudio2008 : arrSpritesStyckerVisualStudio2010;
+		int nClientSprite = bClient ? 0 : 11;
+
+		if (bClient)
+		{
+			DrawSprite(pDC, nIDBitmap, &sprites[SPRITE_STICKER_CLIENT]);
+
+			if (m_typeSticker & xtpPaneStickerCenter)
+				DrawSprite(pDC, nIDBitmap, &sprites[m_selectedSticker == xtpPaneStickerCenter ? SPRITE_STICKER_CENTER_SELECTED : SPRITE_STICKER_CENTER]);
+		}
+
+		if (m_typeSticker & xtpPaneStickerTop)
+			DrawSprite(pDC, nIDBitmap, &sprites[nClientSprite + (m_selectedSticker == xtpPaneStickerTop ? SPRITE_STICKER_TOP_SELECTED : SPRITE_STICKER_TOP)], bClient);
+		if (m_typeSticker & xtpPaneStickerLeft)
+			DrawSprite(pDC, nIDBitmap, &sprites[nClientSprite + (m_selectedSticker == xtpPaneStickerLeft ? SPRITE_STICKER_LEFT_SELECTED : SPRITE_STICKER_LEFT)], bClient);
+		if (m_typeSticker & xtpPaneStickerBottom)
+			DrawSprite(pDC, nIDBitmap, &sprites[nClientSprite + (m_selectedSticker == xtpPaneStickerBottom ? SPRITE_STICKER_BOTTOM_SELECTED : SPRITE_STICKER_BOTTOM)], bClient);
+		if (m_typeSticker & xtpPaneStickerRight)
+			DrawSprite(pDC, nIDBitmap, &sprites[nClientSprite + (m_selectedSticker == xtpPaneStickerRight ? SPRITE_STICKER_RIGHT_SELECTED : SPRITE_STICKER_RIGHT)], bClient);
+
+	}
+	else
+	{
+		SPRITEINFO* sprites = arrSpritesStyckerVisualStudio2005;
+		int nClientSprite = bClient ? 0 : 11;
+
+		if (bClient)
+			DrawSprite(pDC, XTP_IDB_DOCKINGPANE_STICKERS_2005, &sprites[m_selectedSticker == xtpPaneStickerCenter ? SPRITE_STICKER_CENTER_SELECTED : SPRITE_STICKER_CLIENT]);
+		if (m_typeSticker & xtpPaneStickerTop)
+			DrawSprite(pDC, XTP_IDB_DOCKINGPANE_STICKERS_2005, &sprites[nClientSprite + (m_selectedSticker == xtpPaneStickerTop ? SPRITE_STICKER_TOP_SELECTED : SPRITE_STICKER_TOP)], bClient);
+		if (m_typeSticker & xtpPaneStickerLeft)
+			DrawSprite(pDC, XTP_IDB_DOCKINGPANE_STICKERS_2005, &sprites[nClientSprite + (m_selectedSticker == xtpPaneStickerLeft ? SPRITE_STICKER_LEFT_SELECTED : SPRITE_STICKER_LEFT)], bClient);
+		if (m_typeSticker & xtpPaneStickerBottom)
+			DrawSprite(pDC, XTP_IDB_DOCKINGPANE_STICKERS_2005, &sprites[nClientSprite + (m_selectedSticker == xtpPaneStickerBottom ? SPRITE_STICKER_BOTTOM_SELECTED : SPRITE_STICKER_BOTTOM)], bClient);
+		if (m_typeSticker & xtpPaneStickerRight)
+			DrawSprite(pDC, XTP_IDB_DOCKINGPANE_STICKERS_2005, &sprites[nClientSprite + (m_selectedSticker == xtpPaneStickerRight ? SPRITE_STICKER_RIGHT_SELECTED : SPRITE_STICKER_RIGHT)], bClient);
+		if (m_typeSticker & xtpPaneStickerCenter)
+			DrawSprite(pDC, XTP_IDB_DOCKINGPANE_STICKERS_2005, &sprites[SPRITE_STICKER_CENTER]);
+	}
+}
+
+
+void CXTPDockingPaneContextStickerWnd::OnPaint()
+{
+	CPaintDC dcPaint(this); // device context for painting
+	CXTPBufferDC dc(dcPaint, CXTPClientRect(this));
+
+	OnDraw(&dc);
+}
+
+XTPDockingPaneStickerType CXTPDockingPaneContextStickerWnd::HitTest(CPoint pt)
+{
+	CXTPClientRect rc(this);
+	ScreenToClient(&pt);
+
+	if (!rc.PtInRect(pt))
+		return xtpPaneStickerNone;
+
+	CClientDC dcClient(this);
+
+	CBitmap bmp;
+	bmp.CreateCompatibleBitmap(&dcClient, rc.Width(), rc.Height());
+
+	CXTPCompatibleDC dc(&dcClient, &bmp);
+	dc.FillSolidRect(rc, 0);
+
+	XTPDockingContextStickerStyle style = m_pContext->GetStickerStyle();
+
+	UINT nIDBitmap = style == xtpPaneStickerStyleVisualStudio2005 ? XTP_IDB_DOCKINGPANE_STICKERS_2005 :
+		style == xtpPaneStickerStyleVisualStudio2008 ? XTP_IDB_DOCKINGPANE_STICKERS_2008 :
+		style == xtpPaneStickerStyleVisualStudio2010 ? XTP_IDB_DOCKINGPANE_STICKERS_2010 : XTP_IDB_DOCKINGPANE_STICKERS_BLUE;
+
+	UINT nIDBitmapClient = style == xtpPaneStickerStyleVisualStudio2005Beta ? XTP_IDB_DOCKINGPANE_STICKER_CLIENT : nIDBitmap;
+
+	BOOL bClient = (m_typeSticker & xtpPaneStickerClient) == xtpPaneStickerClient;
+
+	SPRITEINFO* sprites = style == xtpPaneStickerStyleVisualStudio2005Beta ? arrSpritesStyckerWidbey :
+		style == xtpPaneStickerStyleVisualStudio2008 ? arrSpritesStyckerVisualStudio2008 :
+		style == xtpPaneStickerStyleVisualStudio2010 ? arrSpritesStyckerVisualStudio2010 : arrSpritesStyckerVisualStudio2005;
+
+	if (m_typeSticker & xtpPaneStickerTop)
+	{
+		DrawSprite(&dc, nIDBitmap, &sprites[SPRITE_STICKER_TOP], bClient);
+		if (dc.GetPixel(pt) != 0)
+			return xtpPaneStickerTop;
+	}
+	if (m_typeSticker & xtpPaneStickerLeft)
+	{
+		DrawSprite(&dc, nIDBitmap, &sprites[SPRITE_STICKER_LEFT], bClient);
+		if (dc.GetPixel(pt) != 0)
+			return xtpPaneStickerLeft;
+	}
+	if (m_typeSticker & xtpPaneStickerBottom)
+	{
+		DrawSprite(&dc, nIDBitmap, &sprites[SPRITE_STICKER_BOTTOM], bClient);
+		if (dc.GetPixel(pt) != 0)
+			return xtpPaneStickerBottom;
+	}
+	if (m_typeSticker & xtpPaneStickerRight)
+	{
+		DrawSprite(&dc, nIDBitmap, &sprites[SPRITE_STICKER_RIGHT], bClient);
+		if (dc.GetPixel(pt) != 0)
+			return xtpPaneStickerRight;
+	}
+	if (m_typeSticker & xtpPaneStickerCenter)
+	{
+		DrawSprite(&dc, nIDBitmapClient, &sprites[SPRITE_STICKER_CLIENT]);
+		if (dc.GetPixel(pt) != 0)
+			return xtpPaneStickerCenter;
+	}
+
+	return xtpPaneStickerNone;
+}
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPDockingPaneContext
+
+CXTPDockingPaneContext::CXTPDockingPaneContext()
+{
+	m_bUseAlphaContext = FALSE;
+	m_bUseDockingStickers = FALSE;
+	m_bDragKeyboard = FALSE;
+
+	m_pStickerPane = NULL;
+	m_pLastStickerPane = NULL;
+	m_pManager = NULL;
+	m_pPane = NULL;
+	m_pContainer = NULL;
+	m_bAttachLast = FALSE;
+	m_bSideDock = FALSE;
+	m_bAttach = FALSE;
+	m_bFloatable = TRUE;
+	m_bDockable = TRUE;
+	m_bDitherLast = FALSE;
+	m_containDirection = (XTPDockingPaneDirection)-1;
+	m_pDC = NULL;
+
+	m_pfnSetLayeredWindowAttributes = NULL;
+
+	HMODULE hLib = GetModuleHandle(_T("USER32"));
+	if (hLib)
+	{
+		m_pfnSetLayeredWindowAttributes = (PVOID) ::GetProcAddress(hLib, "SetLayeredWindowAttributes");
+	}
+
+	m_bResetDC = FALSE;
+}
+
+CXTPDockingPaneContext::~CXTPDockingPaneContext()
+{
+
+}
+
+void CXTPDockingPaneContext::Drag(CXTPDockingPaneBase* pPane, CPoint point)
+{
+	CRect rcPane = pPane->GetPaneWindowRect();
+
+	CWnd* pSite = pPane->GetDockingSite();
+	if (pSite && (pPane->GetType() == xtpPaneTypeDockingPane || pPane->GetType() == xtpPaneTypeTabbedContainer)
+		&& !pSite->IsKindOf(RUNTIME_CLASS(CXTPDockingPaneMiniWnd)))
+	{
+		CXTPDockingPane* pActivePane = pPane->GetType() == xtpPaneTypeTabbedContainer ?
+			((CXTPDockingPaneTabbedContainer*)pPane)->GetSelected() : (CXTPDockingPane*)pPane;
+
+		if (pActivePane)
+		{
+			CXTPDockingPaneTabbedContainer* pHolder = (CXTPDockingPaneTabbedContainer*)m_pManager->_GetHolder(pActivePane, TRUE);
+			pSite = pHolder ? pHolder->GetDockingSite() : NULL;
+
+			if (pSite && pSite->IsKindOf(RUNTIME_CLASS(CXTPDockingPaneMiniWnd)))
+			{
+				CRect rcFloating = ((CXTPDockingPaneMiniWnd*)pSite)->GetPaneWindowRect();
+
+				rcPane.right = rcPane.left + rcFloating.Width();
+				rcPane.bottom = rcPane.top + rcFloating.Height();
+			}
+			else if (!pHolder)
+			{
+				rcPane.right = rcPane.left + pActivePane->m_szDocking.cx;
+				rcPane.bottom = rcPane.top + pActivePane->m_szDocking.cy;
+			}
+		}
+	}
+
+	Drag(pPane, point, rcPane);
+}
+
+void CXTPDockingPaneContext::Drag(CXTPDockingPaneBase* pPane, CPoint pt, CRect rect)
+{
+	m_bDragKeyboard = (pt == CPoint(-1, -1));
+
+	if (m_bDragKeyboard)
+	{
+		pt.x = rect.CenterPoint().x;
+		pt.y = rect.top + 15;
+		SetCursorPos(pt.x, pt.y);
+	}
+
+	m_ptSticky = m_ptLast = pt;
+
+	AdjustRectangle(rect, pt);
+
+	m_pPane = pPane;
+	m_rectDragFrameScreen = m_rectDragFrame = rect;
+	m_pDC = 0;
+	m_pContainer = 0;
+	m_bAttach = m_bAttachLast = FALSE;
+	m_bFloatable = TRUE;
+	m_bDockable = TRUE;
+	m_bSideDock = FALSE;
+
+	m_bUseAlphaContext = m_pManager->IsAlphaDockingContext() && (m_pfnSetLayeredWindowAttributes != NULL);
+	m_bUseDockingStickers = m_pManager->IsShowDockingContextStickers() && m_bUseAlphaContext;
+
+
+	CXTPDockingPaneBaseList lst;
+	pPane->FindPane(xtpPaneTypeDockingPane, &lst);
+	POSITION pos = lst.GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPane* pListPane = (CXTPDockingPane*)lst.GetNext(pos);
+
+		if (m_pManager->NotifyAction(xtpPaneActionFloating, pListPane))
+			m_bFloatable = FALSE;
+
+		if (pListPane->GetOptions() & xtpPaneNoFloatable)
+			m_bFloatable = FALSE;
+
+		if (pListPane->GetOptions() & xtpPaneNoDockable)
+			m_bDockable = FALSE;
+	}
+
+	if (m_pManager->m_bShowSizeCursorWhileDragging)
+	{
+		SetCursor(AfxGetApp()->LoadStandardCursor(IDC_SIZEALL));
+	}
+
+
+	InitLoop();
+
+	Track();
+}
+
+
+void CXTPDockingPaneContext::InitLoop()
+{
+	m_rectLast.SetRectEmpty();
+	m_sizeLast.cx = m_sizeLast.cy = 0;
+	m_bDitherLast = FALSE;
+	m_rectStickerPane.SetRectEmpty();
+	m_pStickerPane = NULL;
+	m_pLastStickerPane = NULL;
+	m_bResetDC = FALSE;
+
+	if (!m_bUseAlphaContext)
+	{
+		// handle pending WM_PAINT messages
+		MSG msg;
+		while (::PeekMessage(&msg, NULL, WM_PAINT, WM_PAINT, PM_NOREMOVE))
+		{
+			if (!GetMessage(&msg, NULL, WM_PAINT, WM_PAINT))
+				return;
+			DispatchMessage(&msg);
+		}
+
+		// lock window update while dragging
+		ASSERT(m_pDC == NULL);
+		CWnd* pWnd = CWnd::GetDesktopWindow();
+		if (pWnd->LockWindowUpdate())
+			m_pDC = pWnd->GetDCEx(NULL, DCX_WINDOW | DCX_CACHE | DCX_LOCKWINDOWUPDATE);
+		else
+			m_pDC = pWnd->GetDCEx(NULL, DCX_WINDOW | DCX_CACHE);
+		ASSERT(m_pDC != NULL);
+	}
+}
+void CXTPDockingPaneContext::CancelLoop()
+{
+	ReleaseCapture();
+
+	if (m_bUseAlphaContext)
+	{
+		m_wndContext.DestroyWindow();
+		m_wndAttachedTab.DestroyWindow();
+
+		DestroyDockingStickers();
+
+		POSITION pos = m_rgnStickers.GetStartPosition();
+		while (pos)
+		{
+			UINT nKey;
+			CRgn* pRgn;
+			m_rgnStickers.GetNextAssoc(pos, nKey, pRgn);
+			delete pRgn;
+		}
+		m_rgnStickers.RemoveAll();
+
+	}
+	else
+	{
+		DrawFocusRect(TRUE);    // gets rid of focus rect
+
+		CWnd* pWnd = CWnd::GetDesktopWindow();
+		pWnd->UnlockWindowUpdate();
+		if (m_pDC != NULL)
+		{
+			pWnd->ReleaseDC(m_pDC);
+			m_pDC = NULL;
+		}
+	}
+}
+
+void CXTPDockingPaneContext::_CreateRectangleRgn(CRgn& rgnResult, CRect rc)
+{
+	CRgn rgnOutside, rgnInside;
+	rgnOutside.CreateRectRgnIndirect(&rc);
+	CRect rect = rc;
+	rect.DeflateRect(4, 4);
+	rect.IntersectRect(rect, rc);
+	rgnInside.CreateRectRgnIndirect(rect);
+	rgnResult.CreateRectRgn(0, 0, 0, 0);
+	rgnResult.CombineRgn(&rgnOutside, &rgnInside, RGN_XOR);
+}
+
+void CXTPDockingPaneContext::_CreateRgn(CRgn& rgnResult, CRect rc, BOOL bTabbedRgn, BOOL bRemove)
+{
+	if (bRemove)
+	{
+		rgnResult.CreateRectRgn(0, 0, 0, 0);
+		return;
+	}
+
+	if (bTabbedRgn)
+	{
+		CSize szTab(min(50, rc.Width() - 5), min(20, rc.Height() / 2));
+		CRect rcIntersect, rcTop(rc.left, rc.top, rc.right, rc.bottom - szTab.cy),
+			rcBottom(rc.left + 5, rc.bottom - szTab.cy - 4, rc.left + 5 + szTab.cx, rc.bottom);
+
+		CRgn rgnTop, rgnBottom, rgnIntersect;
+
+		rcIntersect.IntersectRect(rcTop, rcBottom);
+		rcIntersect.DeflateRect(4, 0);
+
+		_CreateRectangleRgn(rgnTop, rcTop);
+		_CreateRectangleRgn(rgnBottom, rcBottom);
+		_CreateRectangleRgn(rgnIntersect, rcIntersect);
+
+		rgnResult.CreateRectRgn(0, 0, 0, 0);
+		rgnResult.CombineRgn(&rgnBottom, &rgnTop, RGN_OR);
+		rgnResult.CombineRgn(&rgnResult, &rgnIntersect, RGN_XOR);
+	}
+	else
+	{
+		_CreateRectangleRgn(rgnResult, rc);
+	}
+}
+
+void CXTPDockingPaneContext::DrawFocusRect(BOOL bRemoveRect)
+{
+	if (m_pManager->m_bShowContentsWhileDragging && m_pContainer == NULL &&
+		m_bFloatable && !m_bAttach && !m_rectDragFrame.IsRectEmpty())
+	{
+		CRect rect = m_rectDragFrame;
+
+		m_wndAttachedTab.DestroyWindow();
+		m_wndContext.DestroyWindow();
+
+		if (!m_bUseAlphaContext && !m_bResetDC)
+		{
+			ASSERT(m_pDC != NULL);
+			// determine new rect and size
+
+			rect.SetRectEmpty();
+
+			// first, determine the update region and select it
+			CRgn rgnNew, rgnLast, rgnUpdate;
+
+			_CreateRgn(rgnNew, rect, m_bAttach, TRUE);
+			_CreateRgn(rgnLast, m_rectLast, m_bAttachLast);
+
+			rgnUpdate.CreateRectRgn(0, 0, 0, 0);
+			rgnUpdate.CombineRgn(&rgnLast, &rgnNew, RGN_XOR);
+
+			// draw into the update/new region
+			m_pDC->SelectClipRgn(&rgnUpdate);
+			m_pDC->GetClipBox(&rect);
+			CBrush* pBrushOld = m_pDC->SelectObject(CDC::GetHalftoneBrush());
+			m_pDC->PatBlt(rect.left, rect.top, rect.Width(), rect.Height(), PATINVERT);
+			// cleanup DC
+
+			if (pBrushOld != NULL)
+				m_pDC->SelectObject(pBrushOld);
+
+			m_pDC->SelectClipRgn(NULL);
+
+			CWnd* pWnd = CWnd::GetDesktopWindow();
+			pWnd->UnlockWindowUpdate();
+			if (m_pDC != NULL)
+			{
+				pWnd->ReleaseDC(m_pDC);
+				m_pDC = NULL;
+			}
+			m_bResetDC = TRUE;
+		}
+
+		if (m_pPane->GetType() == xtpPaneTypeSplitterContainer)
+		{
+			if (m_rectDragFrame != m_rectLast)
+			{
+				m_pPane->GetDockingSite()->MoveWindow(m_rectDragFrame);
+			}
+		}
+		else if (!bRemoveRect)
+		{
+			XTPDockingPaneAction actionNotify = xtpPaneActionFloated;
+
+			CXTPDockingPaneBaseList lst;
+			m_pPane->FindPane(xtpPaneTypeDockingPane, &lst);
+
+			if (m_rectDragFrame.top < 0)
+				m_rectDragFrame.OffsetRect(0, -m_rectDragFrame.top);
+
+			CXTPDockingPaneMiniWnd* pMiniWnd = m_pManager->FloatPane(m_pPane, m_rectDragFrame);
+
+			m_pManager->RecalcFrameLayout(m_pPane);
+			SAFE_CALLPTR(pMiniWnd, RecalcLayout());
+
+			m_pPane = pMiniWnd->GetTopPane();
+
+			POSITION pos = lst.GetHeadPosition();
+			while (pos)
+			{
+				CXTPDockingPane* pPane = (CXTPDockingPane*)lst.GetNext(pos);
+				m_pManager->NotifyAction(actionNotify, pPane);
+			}
+
+			XTPGetThread()->PumpMessage();
+			XTPGetThread()->OnIdle(0);
+		}
+
+		m_rectLast = rect;
+		m_bAttachLast = FALSE;
+
+		return;
+	}
+
+	if (m_bResetDC)
+	{
+		ASSERT(m_pDC == NULL);
+		ASSERT(m_bUseAlphaContext == FALSE);
+
+		// handle pending WM_PAINT messages
+		MSG msg;
+		while (::PeekMessage(&msg, NULL, WM_PAINT, WM_PAINT, PM_NOREMOVE))
+		{
+			if (!GetMessage(&msg, NULL, WM_PAINT, WM_PAINT))
+				return;
+			DispatchMessage(&msg);
+		}
+
+		// lock window update while dragging
+		CWnd* pWnd = CWnd::GetDesktopWindow();
+		if (pWnd->LockWindowUpdate())
+			m_pDC = pWnd->GetDCEx(NULL, DCX_WINDOW | DCX_CACHE | DCX_LOCKWINDOWUPDATE);
+		else
+			m_pDC = pWnd->GetDCEx(NULL, DCX_WINDOW | DCX_CACHE);
+		ASSERT(m_pDC != NULL);
+		m_bResetDC = FALSE;
+
+		m_sizeLast.cx = m_sizeLast.cy = 0;
+		m_bDitherLast = FALSE;
+		m_rectLast.SetRectEmpty();
+	}
+
+	if (m_bUseAlphaContext)
+	{
+		ASSERT(bRemoveRect == FALSE);
+
+		CRect rect = (m_pContainer == 0) ? m_rectDragFrame : m_rectContainer;
+
+		m_rectLast = rect;
+
+		if (!m_bFloatable && m_pContainer == 0)
+		{
+			rect.SetRectEmpty();
+		}
+
+		if (m_bAttach != m_bAttachLast)
+		{
+			m_bAttachLast = m_bAttach;
+			if (m_bAttach)
+				CreateContextWindow(&m_wndAttachedTab);
+			else
+				m_wndAttachedTab.DestroyWindow();
+		}
+
+		if (m_bAttach)
+		{
+			CSize szTab(min(50, rect.Width() - 5), min(20, rect.Height() / 2));
+			CRect rcTab;
+
+			if (m_pManager->GetPaintManager()->GetTabPaintManager()->GetPosition() == xtpTabPositionTop
+				&& m_pContainer && m_pContainer->GetType() == xtpPaneTypeTabbedContainer)
+			{
+				if (((CXTPDockingPaneTabbedContainer*)m_pContainer)->IsTitleVisible())
+				{
+					rect.top += m_pManager->GetPaintManager()->GetCaptionHeight() + 3;
+				}
+
+				rect.top += szTab.cy;
+				rcTab = CRect(rect.left + 5, rect.top - szTab.cy, rect.left + 5 + szTab.cx, rect.top);
+			}
+			else
+			{
+				rect.bottom -= szTab.cy;
+				rcTab = CRect(rect.left + 5, rect.bottom, rect.left + 5 + szTab.cx, rect.bottom + szTab.cy);
+			}
+
+			m_wndAttachedTab.SetWindowPos(0, rcTab.left, rcTab.top, rcTab.Width(), rcTab.Height(), SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+		}
+
+		if (m_wndContext.GetSafeHwnd() == 0 || CXTPWindowRect(&m_wndContext).Size() != rect.Size())
+		{
+			m_wndContext.DestroyWindow();
+			CreateContextWindow(&m_wndContext);
+		}
+
+		m_wndContext.SetWindowPos(0, rect.left, rect.top, rect.Width(), rect.Height(), SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+	}
+	else
+	{
+		ASSERT(m_pDC != NULL);
+		// determine new rect and size
+		CRect rect = (m_pContainer == 0) ? m_rectDragFrame : m_rectContainer;
+
+		if (!m_bFloatable && m_pContainer == 0)
+			rect.SetRectEmpty();
+
+		// first, determine the update region and select it
+		CRgn rgnNew, rgnLast, rgnUpdate;
+
+		_CreateRgn(rgnNew, rect, m_bAttach, bRemoveRect);
+		_CreateRgn(rgnLast, m_rectLast, m_bAttachLast);
+
+		rgnUpdate.CreateRectRgn(0, 0, 0, 0);
+		rgnUpdate.CombineRgn(&rgnLast, &rgnNew, RGN_XOR);
+
+		m_rectLast = rect;
+		m_bAttachLast = m_bAttach;
+
+		// draw into the update/new region
+		m_pDC->SelectClipRgn(&rgnUpdate);
+		m_pDC->GetClipBox(&rect);
+		CBrush* pBrushOld = m_pDC->SelectObject(CDC::GetHalftoneBrush());
+		m_pDC->PatBlt(rect.left, rect.top, rect.Width(), rect.Height(), PATINVERT);
+		// cleanup DC
+
+		if (pBrushOld != NULL)
+			m_pDC->SelectObject(pBrushOld);
+
+		m_pDC->SelectClipRgn(NULL);
+	}
+}
+
+BOOL CXTPDockingPaneContext::CanSideDock(CXTPDockingPaneBase* pPane, CRect rcFrame)
+{
+	CRect rc = pPane->GetPaneWindowRect();
+	rc.DeflateRect(m_pManager->GetSideDockingMargin());
+
+	int dSize = 10;
+
+	if (rc.Height() == 0 || rc.Width() == 0 || rcFrame.Height() == 0 || rcFrame.Width() == 0)
+		return FALSE;
+
+	if (!CRect().IntersectRect(rc, rcFrame))
+		return FALSE;
+
+	m_rectContainer.SetRectEmpty();
+
+	if (abs(rcFrame.top - rc.top) < dSize)
+	{
+		m_containDirection = xtpPaneDockTop;
+		m_rectContainer = CRect(rcFrame.left, rc.top, rcFrame.right, rc.top + rcFrame.Height());
+
+		dSize = abs(rcFrame.top - rc.top);
+	}
+
+	if (abs(rc.bottom - rcFrame.bottom) < dSize)
+	{
+		m_containDirection = xtpPaneDockBottom;
+		m_rectContainer = CRect(rcFrame.left, rc.bottom - rcFrame.Height(), rcFrame.right, rc.bottom);
+
+		dSize = abs(rc.bottom - rcFrame.bottom);
+	}
+
+	if (abs(rcFrame.left - rc.left) < dSize)
+	{
+		m_containDirection = xtpPaneDockLeft;
+		m_rectContainer = CRect(rc.left, rcFrame.top, rc.left + rcFrame.Width(), rcFrame.bottom);
+
+		dSize = abs(rcFrame.left - rc.left);
+	}
+
+	if (abs(rc.right - rcFrame.right) < dSize)
+	{
+		m_containDirection = xtpPaneDockRight;
+		m_rectContainer = CRect(rc.right - rcFrame.Width(), rcFrame.top, rc.right, rcFrame.bottom);
+	}
+
+	if (!m_rectContainer.IsRectEmpty())
+	{
+		if (!IsAllowDockingTo(pPane, m_containDirection))
+			return FALSE;
+
+		m_pContainer = pPane;
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+BOOL CXTPDockingPaneContext::CanDock(CRect rc, CPoint pt, CXTPDockingPaneBase* pPane, BOOL bInside)
+{
+	double dSize = 20.0;
+
+	double dRatio = 1.0;
+
+	if (bInside && !m_bFloatable)
+	{
+		if (rc.Width() > 1 && rc.Height() > 1) dRatio = (double)rc.Height() / (double)rc.Width();
+		dSize = 32000.0;
+	}
+
+	if (rc.Height() == 0 || rc.Width() == 0)
+		return FALSE;
+
+	if (bInside && !rc.PtInRect(pt))
+		return FALSE;
+
+	if (!bInside && !CRect(rc.left - 20, rc.top - 20, rc.right + 20, rc.bottom + 20).PtInRect(pt))
+		return FALSE;
+
+	int nInside = bInside ? 1 : -1;
+	BOOL bFound = FALSE;
+
+
+	if ((double)abs(pt.y - rc.top) < dSize && nInside * (pt.y - rc.top) >= 0)
+	{
+		m_containDirection = xtpPaneDockTop;
+		dSize = (double)abs(pt.y - rc.top);
+		bFound = TRUE;
+	}
+
+	if ((double)abs(rc.bottom - pt.y) < dSize && nInside * (rc.bottom - pt.y) >= 0)
+	{
+		m_containDirection = xtpPaneDockBottom;
+		dSize = (double)abs(rc.bottom - pt.y);
+		bFound = TRUE;
+	}
+
+	if ((double)abs(pt.x - rc.left) * dRatio < dSize && nInside * (pt.x - rc.left) >= 0)
+	{
+		m_containDirection = xtpPaneDockLeft;
+		dSize = (double)abs(pt.x - rc.left) * dRatio;
+		bFound = TRUE;
+	}
+
+	if ((double)abs(rc.right - pt.x) * dRatio < dSize && nInside * (rc.right- pt.x) >= 0)
+	{
+		m_containDirection = xtpPaneDockRight;
+		bFound = TRUE;
+	}
+
+	if (bFound)
+	{
+		if (!IsAllowDockingTo(pPane, m_containDirection))
+			return FALSE;
+
+		m_rectContainer = m_pManager->_CalculateResultDockingRect(m_pPane, m_containDirection, pPane);
+		m_pContainer = pPane;
+	}
+	return bFound;
+}
+
+BOOL CXTPDockingPaneContext::IsAllowDockingTo(CXTPDockingPaneBase* pPane, XTPDockingPaneDirection direction)
+{
+	CXTPDockingPaneBaseList lst;
+	m_pPane->FindPane(xtpPaneTypeDockingPane, &lst);
+	POSITION pos = lst.GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPane* p = (CXTPDockingPane*)lst.GetNext(pos);
+
+		if (m_pManager->NotifyAction(xtpPaneActionDocking, p, pPane, direction))
+		{
+			return FALSE;
+		}
+	}
+	return TRUE;
+}
+
+BOOL CXTPDockingPaneContext::IsAllowAttachTo(CXTPDockingPaneBase* pPane)
+{
+
+	CXTPDockingPaneBaseList lst;
+	m_pPane->FindPane(xtpPaneTypeDockingPane, &lst);
+	POSITION pos = lst.GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPane* p = (CXTPDockingPane*)lst.GetNext(pos);
+
+		if (m_pManager->NotifyAction(xtpPaneActionAttaching, p, pPane))
+		{
+			return FALSE;
+		}
+	}
+	return TRUE;
+}
+
+BOOL CXTPDockingPaneContext::IsBehind(CXTPDockingPaneBase* pPaneBase, CXTPDockingPaneBase* pPaneTest)
+{
+	CWnd* pFrameBase = pPaneBase->GetDockingSite();
+	if (!pFrameBase || !pFrameBase->IsKindOf(RUNTIME_CLASS(CXTPDockingPaneMiniWnd)))
+		return TRUE;
+
+	CWnd* pFrameTest = pPaneTest->GetDockingSite();
+	if (!pFrameTest || !pFrameTest->IsKindOf(RUNTIME_CLASS(CXTPDockingPaneMiniWnd)))
+		return FALSE;
+
+	HWND hWndNext = ::GetWindow(pFrameBase->GetSafeHwnd(), GW_HWNDNEXT);
+
+	while (hWndNext)
+	{
+		if (hWndNext == pFrameTest->GetSafeHwnd())
+			return FALSE;
+
+		hWndNext = ::GetWindow(hWndNext, GW_HWNDNEXT);
+	}
+
+	return TRUE;
+}
+
+void CXTPDockingPaneContext::FindContainer(CPoint pt)
+{
+	CXTPDockingPaneInfoList* pList = &m_pManager->GetPaneList();
+
+	CXTPDockingPaneBase* pFloatingPane = NULL;
+
+	POSITION pos = pList->GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPane* pNextPane = pList->GetNext(pos);
+
+		CXTPDockingPaneBase* pPane = pNextPane->GetContainer();
+		if (pPane == NULL)
+			continue;
+
+		ASSERT(pPane->GetType() == xtpPaneTypeTabbedContainer);
+
+		if (pPane->GetContainer() == 0 || pPane->GetContainer()->GetType() != xtpPaneTypeSplitterContainer)
+			continue;
+
+		if (! (::GetWindowLong(((CXTPDockingPaneTabbedContainer*)pPane)->GetSafeHwnd(), GWL_STYLE) & WS_VISIBLE))
+			continue;
+
+		if (m_pPane->ContainPane(pPane))
+			continue;
+
+		CRect rcClient = pPane->GetPaneWindowRect();
+
+		if (rcClient.PtInRect(pt) && pNextPane->IsFloating())
+		{
+			if (pFloatingPane == NULL || IsBehind(pFloatingPane, pPane))
+			{
+				pFloatingPane = pPane;
+			}
+		}
+	}
+
+	pos = pList->GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPane* pNextPane = pList->GetNext(pos);
+		if (pNextPane->GetOptions() & xtpPaneNoDockable)
+			continue;
+
+		CXTPDockingPaneBase* pPane = pNextPane->GetContainer();
+		if (pPane == NULL)
+			continue;
+
+		if (pFloatingPane != NULL && pFloatingPane != pPane)
+			continue;
+
+		ASSERT(pPane->GetType() == xtpPaneTypeTabbedContainer);
+
+		if (pPane->GetContainer() == 0 || (pPane->GetContainer()->GetType() != xtpPaneTypeSplitterContainer && pPane->GetContainer()->GetType() != xtpPaneTypeSidePanel))
+			continue;
+
+		if (! (::GetWindowLong(((CXTPDockingPaneTabbedContainer*)pPane)->GetSafeHwnd(), GWL_STYLE) & WS_VISIBLE))
+			continue;
+
+		CRect rcClient = m_rectContainer = pPane->GetPaneWindowRect();
+
+		if (m_pPane->ContainPane(pPane))
+			continue;
+
+		if (((CXTPDockingPaneTabbedContainer*)pPane)->CanAttach(rcClient, pt))
+		{
+			if (IsAllowAttachTo(pPane))
+			{
+				m_pContainer = pPane;
+				m_bAttach = TRUE;
+				m_pStickerPane = 0;
+				m_rectStickerPane.SetRectEmpty();
+				return;
+			}
+			else
+			{
+				rcClient = m_rectContainer;
+			}
+		}
+		if (pPane->GetContainer()->GetType() == xtpPaneTypeSidePanel)
+			continue;
+
+		if (m_bUseDockingStickers)
+		{
+			if (rcClient.PtInRect(pt))
+			{
+				if (m_pStickerPane == NULL || IsBehind(m_pStickerPane, pPane))
+				{
+					m_rectStickerPane = m_rectContainer;
+					m_pStickerPane = pPane;
+				}
+			}
+		}
+		else
+		{
+			if (CanDock(rcClient, pt, pPane))
+				return;
+		}
+	}
+
+
+	if (pFloatingPane && m_bUseDockingStickers && m_pStickerPane == NULL && m_rectStickerPane.IsRectEmpty())
+	{
+		CXTPDockingPaneBase* pPane = m_pManager->GetTopPane();
+		if (pPane->GetPaneWindowRect().PtInRect(pt))
+		{
+			m_rectStickerPane = pPane->GetPaneWindowRect();
+		}
+	}
+
+	if (pFloatingPane)
+		return;
+
+	if (m_pManager->IsSideDockingEnabled())
+	{
+		if (CanSideDock(m_pManager->GetClientPane(), m_rectDragFrame))
+		{
+			m_bSideDock = TRUE;
+			return;
+		}
+	}
+
+	if (m_bUseDockingStickers)
+	{
+		if (m_pStickerPane)
+		{
+			return;
+		}
+
+		if (m_rectStickerPane.IsRectEmpty())
+		{
+			CXTPDockingPaneBase* pPane = m_pManager->GetClientPane();
+			if (pPane->GetPaneWindowRect().PtInRect(pt))
+			{
+				m_rectStickerPane = pPane->GetPaneWindowRect();
+				m_pStickerPane = pPane;
+				return;
+			}
+
+			pPane = m_pManager->GetTopPane();
+			if (pPane->GetPaneWindowRect().PtInRect(pt))
+			{
+				m_rectStickerPane = pPane->GetPaneWindowRect();
+			}
+		}
+	}
+	else
+	{
+		CXTPDockingPaneBase* pPane;
+
+		pPane = m_pManager->GetClientPane();
+		m_rectContainer = pPane->GetPaneWindowRect();
+		if (CanDock(pPane->GetPaneWindowRect(), pt, pPane))
+			return;
+
+		pPane = m_pManager->GetTopPane();
+		m_rectContainer = pPane->GetPaneWindowRect();
+		if (CanDock(pPane->GetPaneWindowRect(), pt, pPane, FALSE))
+			return;
+	}
+}
+
+void CXTPDockingPaneContext::EnsureVisible(CRect& rectDragFrame)
+{
+	CRect rcWork = XTPMultiMonitor()->GetWorkArea(rectDragFrame);
+	int nGap = 10;
+
+	if (rcWork.bottom - rectDragFrame.top < nGap)
+	{
+		rectDragFrame.OffsetRect(0, rcWork.bottom - rectDragFrame.top - nGap);
+	}
+	if (rectDragFrame.bottom - rcWork.top < nGap)
+	{
+		rectDragFrame.OffsetRect(0, rcWork.top - rectDragFrame.bottom + nGap);
+	}
+	if (rcWork.right - rectDragFrame.left < nGap)
+	{
+		rectDragFrame.OffsetRect(rcWork.right - rectDragFrame.left - nGap, 0);
+	}
+	if (rectDragFrame.right - rcWork.left < nGap)
+	{
+		rectDragFrame.OffsetRect(rcWork.left - rectDragFrame.right + nGap, 0);
+	}
+}
+
+void CXTPDockingPaneContext::UpdateStickyFrame(CRect& rectDragFrame, CWnd* pHost)
+{
+	int nGap = m_pManager->m_nStickyGap;
+	CXTPWindowRect rcWork(pHost);
+
+	if (rectDragFrame.bottom < rcWork.top - nGap || rectDragFrame.top > rcWork.bottom + nGap)
+		return;
+
+	if (rectDragFrame.right < rcWork.left - nGap || rectDragFrame.left > rcWork.right + nGap)
+		return;
+
+	if (abs(rcWork.bottom - rectDragFrame.top) < nGap)
+	{
+		rectDragFrame.OffsetRect(0, rcWork.bottom - rectDragFrame.top);
+	}
+	if (abs(rectDragFrame.bottom - rcWork.top) < nGap)
+	{
+		rectDragFrame.OffsetRect(0, rcWork.top - rectDragFrame.bottom);
+	}
+	if (abs(rcWork.left - rectDragFrame.right) < nGap)
+	{
+		rectDragFrame.OffsetRect(rcWork.left - rectDragFrame.right, 0);
+	}
+	if (abs(rectDragFrame.left - rcWork.right) < nGap)
+	{
+		rectDragFrame.OffsetRect(rcWork.right - rectDragFrame.left, 0);
+	}
+	if (abs(rectDragFrame.left - rcWork.left) < nGap)
+	{
+		rectDragFrame.OffsetRect(rcWork.left - rectDragFrame.left, 0);
+	}
+	if (abs(rectDragFrame.right - rcWork.right) < nGap)
+	{
+		rectDragFrame.OffsetRect(rcWork.right - rectDragFrame.right, 0);
+	}
+	if (abs(rectDragFrame.bottom - rcWork.bottom) < nGap)
+	{
+		rectDragFrame.OffsetRect(0, rcWork.bottom - rectDragFrame.bottom);
+	}
+	if (abs(rectDragFrame.top - rcWork.top) < nGap)
+	{
+		rectDragFrame.OffsetRect(0, rcWork.top - rectDragFrame.top);
+	}
+}
+
+void CXTPDockingPaneContext::UpdateStickyFrame(CRect& rectDragFrame)
+{
+	CRect rcWork = XTPMultiMonitor()->GetWorkArea(rectDragFrame);
+	int nGap = m_pManager->m_nStickyGap;
+
+	if (abs(rcWork.top - rectDragFrame.top) < nGap)
+	{
+		rectDragFrame.OffsetRect(0, rcWork.top - rectDragFrame.top);
+	}
+	if (abs(rectDragFrame.bottom - rcWork.bottom) < nGap)
+	{
+		rectDragFrame.OffsetRect(0, rcWork.bottom - rectDragFrame.bottom);
+	}
+	if (abs(rcWork.right - rectDragFrame.right) < nGap)
+	{
+		rectDragFrame.OffsetRect(rcWork.right - rectDragFrame.right, 0);
+	}
+	if (abs(rectDragFrame.left - rcWork.left) < nGap)
+	{
+		rectDragFrame.OffsetRect(rcWork.left - rectDragFrame.left, 0);
+	}
+
+	if ((m_pManager->GetSite()->GetStyle() & (WS_MAXIMIZE | WS_MINIMIZE)) == 0)
+		UpdateStickyFrame(rectDragFrame, m_pManager->GetSite());
+
+	CXTPDockingPaneBaseList* pList = &m_pManager->GetPaneStack();
+	POSITION pos = pList->GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPaneBase* pNextPane = pList->GetNext(pos);
+		if (pNextPane->GetType() != xtpPaneTypeMiniWnd)
+			continue;
+
+		CXTPDockingPaneMiniWnd* pWnd = (CXTPDockingPaneMiniWnd*)pNextPane;
+		if (pWnd->GetSafeHwnd() && pWnd->IsWindowVisible() && m_pPane->GetDockingSite() != pWnd)
+		{
+			UpdateStickyFrame(rectDragFrame, pWnd);
+		}
+	}
+}
+
+void CXTPDockingPaneContext::UpdateSizingStickyFrame(UINT nSide, CRect& rectDragFrame, CWnd* pHost)
+{
+	int nGap = m_pManager->m_nStickyGap;
+	CXTPWindowRect rcWork(pHost);
+
+	if (rectDragFrame.bottom < rcWork.top - nGap || rectDragFrame.top > rcWork.bottom + nGap)
+		return;
+
+	if (rectDragFrame.right < rcWork.left - nGap || rectDragFrame.left > rcWork.right + nGap)
+		return;
+
+	if (abs(rectDragFrame.top - rcWork.bottom) < nGap && (nSide == WMSZ_TOP || nSide == WMSZ_TOPLEFT || nSide == WMSZ_TOPRIGHT))
+	{
+		rectDragFrame.top = rcWork.bottom;
+	}
+	if (abs(rectDragFrame.bottom - rcWork.top) < nGap && (nSide == WMSZ_BOTTOM || nSide == WMSZ_BOTTOMLEFT || nSide == WMSZ_BOTTOMRIGHT))
+	{
+		rectDragFrame.bottom = rcWork.top;
+	}
+	if (abs(rectDragFrame.left - rcWork.left) < nGap && (nSide == WMSZ_LEFT || nSide == WMSZ_TOPLEFT || nSide == WMSZ_BOTTOMLEFT))
+	{
+		rectDragFrame.left = rcWork.left;
+	}
+	if (abs(rectDragFrame.left - rcWork.right) < nGap && (nSide == WMSZ_LEFT || nSide == WMSZ_TOPLEFT || nSide == WMSZ_BOTTOMLEFT))
+	{
+		rectDragFrame.left = rcWork.right;
+	}
+	if (abs(rectDragFrame.right - rcWork.left) < nGap  && (nSide == WMSZ_RIGHT || nSide == WMSZ_TOPRIGHT|| nSide == WMSZ_BOTTOMRIGHT))
+	{
+		rectDragFrame.right = rcWork.left;
+	}
+	if (abs(rectDragFrame.right - rcWork.right) < nGap  && (nSide == WMSZ_RIGHT || nSide == WMSZ_TOPRIGHT|| nSide == WMSZ_BOTTOMRIGHT))
+	{
+		rectDragFrame.right = rcWork.right;
+	}
+}
+
+void CXTPDockingPaneContext::OnSizingFloatingFrame(CXTPDockingPaneMiniWnd* pMiniWnd, UINT nSide, LPRECT lpRect)
+{
+	if (!m_pManager->IsStickyFloatingFrames())
+		return;
+
+	CRect rectDragFrame(lpRect);
+
+	if ((m_pManager->GetSite()->GetStyle() & (WS_MAXIMIZE | WS_MINIMIZE)) == 0)
+		UpdateSizingStickyFrame(nSide, rectDragFrame, m_pManager->GetSite());
+
+	CXTPDockingPaneBaseList* pList = &m_pManager->GetPaneStack();
+	POSITION pos = pList->GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPaneBase* pNextPane = pList->GetNext(pos);
+		if (pNextPane->GetType() != xtpPaneTypeMiniWnd)
+			continue;
+
+		CXTPDockingPaneMiniWnd* pWnd = (CXTPDockingPaneMiniWnd*)pNextPane;
+		if (pWnd->GetSafeHwnd() && pWnd->IsWindowVisible() && pMiniWnd != pWnd)
+		{
+			UpdateSizingStickyFrame(nSide, rectDragFrame, pWnd);
+		}
+	}
+
+	*lpRect = rectDragFrame;
+}
+
+void CXTPDockingPaneContext::Move(CPoint pt)
+{
+	CPoint ptOffset = pt - m_ptLast;
+
+	m_rectDragFrameScreen.OffsetRect(ptOffset);
+
+	if (CRect().IntersectRect(m_rectDragFrameScreen, XTPMultiMonitor()->GetWorkArea(m_rectDragFrame)))
+	{
+		m_rectDragFrame = m_rectDragFrameScreen;
+	}
+
+	EnsureVisible(m_rectDragFrame);
+
+	if (!m_rectDragFrame.IsRectEmpty() && m_pManager->m_bStickyFloatingFrames)
+	{
+		UpdateStickyFrame(m_rectDragFrame);
+	}
+
+
+	m_pContainer = 0;
+	m_bAttach = FALSE;
+	m_rectStickerPane.SetRectEmpty();
+	m_pStickerPane = NULL;
+	m_bSideDock = FALSE;
+
+	if (GetKeyState(VK_CONTROL) >= 0 && m_bDockable)
+	{
+		FindContainer(pt);
+	}
+
+	m_ptLast = pt;
+
+	if (m_bUseDockingStickers)
+	{
+		UpdateDockingStickers();
+
+		BOOL bFound = FALSE;
+		POSITION pos = m_lstStickers.GetTailPosition();
+		while (pos)
+		{
+
+			CXTPDockingPaneContextStickerWnd* pSticker = m_lstStickers.GetPrev(pos);
+			XTPDockingPaneStickerType selectedSticker = xtpPaneStickerNone;
+
+			if (!bFound)
+			{
+				XTPDockingPaneStickerType ht = pSticker->HitTest(pt);
+				if (ht != xtpPaneStickerNone)
+				{
+					if ((pSticker->m_typeSticker & xtpPaneStickerClient) == xtpPaneStickerClient)
+					{
+						m_pContainer = m_pStickerPane;
+						m_rectContainer = m_rectStickerPane;
+					}
+					else
+					{
+						m_pContainer = m_pManager->GetTopPane();
+						m_rectContainer = m_pContainer->GetPaneWindowRect();
+					}
+
+					switch (ht)
+					{
+					case xtpPaneStickerTop:
+						m_rectContainer.bottom = m_rectContainer.CenterPoint().y;
+						m_containDirection = xtpPaneDockTop;
+						break;
+					case xtpPaneStickerBottom:
+						m_rectContainer.top = m_rectContainer.CenterPoint().y;
+						m_containDirection = xtpPaneDockBottom;
+						break;
+					case xtpPaneStickerLeft:
+						m_rectContainer.right = m_rectContainer.CenterPoint().x;
+						m_containDirection = xtpPaneDockLeft;
+						break;
+					case xtpPaneStickerRight:
+						m_rectContainer.left = m_rectContainer.CenterPoint().x;
+						m_containDirection = xtpPaneDockRight;
+						break;
+					case xtpPaneStickerCenter:
+						m_bAttach = TRUE;
+						break;
+					}
+
+					BOOL bAllow = TRUE;
+
+					if ((ht != xtpPaneStickerCenter) && !IsAllowDockingTo(m_pContainer, m_containDirection))
+					{
+						m_pContainer = NULL;
+						bAllow = FALSE;
+					}
+
+					if ((ht == xtpPaneStickerCenter) && !IsAllowAttachTo(m_pContainer))
+					{
+						m_pContainer = NULL;
+						m_bAttach = FALSE;
+						bAllow = FALSE;
+					}
+
+					if (bAllow)
+					{
+						if (ht != xtpPaneStickerCenter)
+							m_rectContainer = m_pManager->_CalculateResultDockingRect(m_pPane, m_containDirection, m_pContainer);
+
+						selectedSticker = ht;
+					}
+
+					bFound = TRUE;
+				}
+			}
+			if (pSticker->m_selectedSticker != selectedSticker)
+			{
+				pSticker->m_selectedSticker = selectedSticker;
+				pSticker->Invalidate(FALSE);
+			}
+		}
+	}
+
+
+	DrawFocusRect();
+}
+
+void CXTPDockingPaneContext::Track()
+{
+	// don't handle if capture already set
+	if (::GetCapture() != NULL)
+		return;
+
+	HWND hwndCapture = m_pManager->GetSite()->GetSafeHwnd();
+	ASSERT(hwndCapture);
+	if (!hwndCapture)
+		return;
+	// set capture to the window which received this message
+	::SetCapture(hwndCapture);
+	ASSERT(hwndCapture == ::GetCapture());
+
+	BOOL bAccept = FALSE;
+	// get messages until capture lost or cancelled/accepted
+	while (::GetCapture() == hwndCapture)
+	{
+		MSG msg;
+
+		// handle pending WM_PAINT messages
+		while (::PeekMessage(&msg, NULL, WM_PAINT, WM_PAINT, PM_REMOVE | PM_NOYIELD))
+		{
+			DispatchMessage(&msg);
+		}
+
+		if (!::GetMessage(&msg, NULL, 0, 0))
+		{
+			AfxPostQuitMessage((int)msg.wParam);
+			break;
+		}
+
+		if (msg.message == WM_LBUTTONUP)
+		{
+			bAccept = TRUE;
+			break;
+		}
+		else if (msg.message == WM_MOUSEMOVE)
+		{
+			CSize sz = m_ptSticky - CPoint(msg.pt);
+			if (abs(sz.cx) > 4 || abs(sz.cy) > 4)
+			{
+				Move(msg.pt);
+				m_ptSticky = CPoint(0, 0);
+			}
+		}
+		else if (msg.message == WM_KEYDOWN || msg.message == WM_KEYUP)
+		{
+			if (m_bDragKeyboard && msg.message == WM_KEYDOWN)
+			{
+				if (msg.wParam == VK_RETURN)
+				{
+					bAccept = TRUE;
+					break;
+				}
+				if (msg.wParam >= VK_LEFT && msg.wParam <= VK_DOWN)
+				{
+					CPoint pt(m_ptLast);
+					if (msg.wParam == VK_LEFT)
+						pt.x -= 10;
+					else if (msg.wParam == VK_RIGHT)
+						pt.x += 10;
+					else if (msg.wParam == VK_UP)
+						pt.y -= 10;
+					else if (msg.wParam == VK_DOWN)
+						pt.y += 10;
+
+					AdjustCursor(pt);
+					SetCursorPos(pt.x, pt.y);
+					Move(pt);
+					m_ptSticky = CPoint(0, 0);
+				}
+			}
+			if (msg.wParam == VK_CONTROL)
+			{
+				Move(m_ptLast);
+				m_ptSticky = CPoint(0, 0);
+			}
+			if (msg.wParam == VK_ESCAPE)
+			{
+				break;
+			}
+		}
+		else
+			DispatchMessage(&msg);
+	}
+
+	CancelLoop();
+
+	if (bAccept && m_ptSticky == CPoint(0, 0))
+	{
+		XTPDockingPaneAction actionNotify = xtpPaneActionFloated;
+
+		CXTPDockingPaneBaseList lst;
+		m_pPane->FindPane(xtpPaneTypeDockingPane, &lst);
+
+		if (m_bAttach)
+		{
+			ASSERT(m_pContainer->GetType() == xtpPaneTypeTabbedContainer);
+			m_pManager->AttachPane(m_pPane, m_pContainer);
+			actionNotify = xtpPaneActionAttached;
+		}
+		else if (m_bSideDock && m_pContainer && m_pContainer == m_pManager->GetClientPane())
+		{
+			CRect rectSide(m_rectContainer);
+			rectSide.OffsetRect(-m_pContainer->GetPaneWindowRect().TopLeft());
+
+			if (m_pPane->GetContainer() && m_pPane->GetContainer()->GetType() == xtpPaneTypeSidePanel)
+				((CXTPDockingPaneSidePanel*)m_pPane->GetContainer())->MovePanel(m_containDirection, rectSide);
+			else
+				m_pManager->DockSidePane(m_pPane, m_containDirection, rectSide);
+
+			actionNotify = xtpPaneActionDocked;
+		}
+		else if (m_pContainer)
+		{
+			m_pManager->DockPane(m_pPane, m_pManager->GetRTLDirection(m_containDirection), m_pContainer);
+			m_pManager->EnsureVisible(m_pContainer);
+			actionNotify = xtpPaneActionDocked;
+		}
+		else if (m_bFloatable)
+		{
+			CRect rcWork = XTPMultiMonitor()->GetWorkArea(m_rectDragFrame);
+
+			if (m_rectDragFrame.top < rcWork.top)
+				m_rectDragFrame.OffsetRect(0, rcWork.top - m_rectDragFrame.top);
+
+			if (m_pPane->GetType() == xtpPaneTypeSplitterContainer)
+				m_pPane->GetDockingSite()->MoveWindow(m_rectDragFrame);
+			else
+				m_pManager->FloatPane(m_pPane, m_rectDragFrame);
+		}
+		else
+		{
+			bAccept = FALSE;
+		}
+
+		if (bAccept)
+		{
+			POSITION pos = lst.GetHeadPosition();
+			while (pos)
+			{
+				CXTPDockingPane* pPane = (CXTPDockingPane*)lst.GetNext(pos);
+				m_pManager->NotifyAction(actionNotify, pPane, m_pContainer, m_containDirection);
+			}
+		}
+	}
+}
+
+
+void CXTPDockingPaneContext::DestroyDockingStickers()
+{
+	while (!m_lstStickers.IsEmpty())
+	{
+		CWnd* pWnd = m_lstStickers.RemoveHead();
+		pWnd->DestroyWindow();
+		delete pWnd;
+	}
+}
+
+void CXTPDockingPaneContext::IncludeRgnPart(CRgn* pRgn, int x1, int y, int x2)
+{
+	if (x1 < x2)
+	{
+		CRgn rgnExclude;
+		rgnExclude.CreateRectRgn(x1, y, x2, y + 1);
+		pRgn->CombineRgn(pRgn, &rgnExclude, RGN_OR);
+	}
+}
+
+void CXTPDockingPaneContext::RegionFromBitmap(CRgn* pRgn, CDC* pDC, CRect rc)
+{
+	CSize sz = rc.Size();
+
+	pRgn->CreateRectRgn(0, 0, 0, 0);
+
+	for (int y = 0; y < sz.cy; y++)
+	{
+		int nStart = 0, x = 0;
+		BOOL bTransparent = TRUE;
+
+		while (x < sz.cx)
+		{
+			BOOL bTransparentPixel = pDC->GetPixel(x, y) == 0;
+
+			if (bTransparent && !bTransparentPixel)
+			{
+				nStart = x;
+				bTransparent = FALSE;
+			}
+			else if (!bTransparent && bTransparentPixel)
+			{
+				IncludeRgnPart(pRgn, nStart, y, x);
+				bTransparent = TRUE;
+			}
+			x++;
+		}
+		if (!bTransparent)
+		{
+			IncludeRgnPart(pRgn, nStart, y, x);
+		}
+	}
+}
+
+CXTPDockingPaneContextStickerWnd* CXTPDockingPaneContext::CreateNewSticker(CRect rc, XTPDockingPaneStickerType typeSticker)
+{
+	if (typeSticker == xtpPaneStickerNone || typeSticker == xtpPaneStickerClient)
+		return NULL;
+
+	CXTPDockingPaneContextStickerWnd* pWnd = new CXTPDockingPaneContextStickerWnd(this);
+	m_lstStickers.AddTail(pWnd);
+
+	pWnd->CreateEx(WS_EX_TOOLWINDOW, AfxRegisterWndClass(NULL, AfxGetApp()->LoadStandardCursor(IDC_ARROW)),
+		0, WS_POPUP, CRect(0, 0, 0, 0), m_pManager->GetSite(), 0);
+
+	pWnd->m_typeSticker = typeSticker;
+
+
+	CRgn* pRgn = NULL;
+	if (!m_rgnStickers.Lookup(typeSticker, pRgn))
+	{
+		pRgn = new CRgn;
+		m_rgnStickers.SetAt(typeSticker, pRgn);
+	}
+	ASSERT(pRgn != NULL);
+	if (!pRgn)
+		return NULL;
+
+	if (!pRgn->GetSafeHandle())
+	{
+		CClientDC dcClient(pWnd);
+		CBitmap bmp;
+		bmp.CreateCompatibleBitmap(&dcClient, rc.Width(), rc.Height());
+
+		if (bmp.GetSafeHandle())
+		{
+			CXTPCompatibleDC dc(&dcClient, &bmp);
+			dc.FillSolidRect(rc, RGB(0, 0, 0));
+			pWnd->OnDraw(&dc);
+
+			RegionFromBitmap(pRgn, &dc, rc);
+		}
+	}
+
+	HRGN hRgn = ::CreateRectRgn(0, 0, 0, 0);
+	::CombineRgn(hRgn, (HRGN)pRgn->GetSafeHandle(), NULL, RGN_COPY);
+
+	pWnd->SetWindowRgn(hRgn, FALSE);
+	pWnd->SetWindowPos(0, rc.left, rc.top, rc.Width(), rc.Height(), SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+
+	return pWnd;
+}
+
+CSize CXTPDockingPaneContext::GetStickerSize(XTPDockingPaneStickerType type) const
+{
+	int cx, cy, sz;
+	if (GetStickerStyle() == xtpPaneStickerStyleVisualStudio2005)
+	{
+		cx = 32;
+		cy = 29;
+		sz = 89;
+	}
+	else if (GetStickerStyle() == xtpPaneStickerStyleVisualStudio2008)
+	{
+		cx = 36;
+		cy = 35;
+		sz = 109;
+	}
+	else if (GetStickerStyle() == xtpPaneStickerStyleVisualStudio2010)
+	{
+		cx = 40;
+		cy = 40;
+		sz = 112;
+	}
+	else
+	{
+		cx = 30;
+		cy = 43;
+		sz = 93;
+	}
+
+	if (type == xtpPaneStickerTop) return CSize(cy, cx);
+	if (type == xtpPaneStickerLeft) return CSize(cx, cy);
+	if (type == xtpPaneStickerBottom) return CSize(cy, cx);
+	if (type == xtpPaneStickerRight) return CSize(cx, cy);
+	return CSize(sz, sz);
+}
+
+XTPDockingContextStickerStyle CXTPDockingPaneContext::GetStickerStyle() const
+{
+	return m_pManager->GetDockingContextStickerStyle();
+
+}
+
+void CXTPDockingPaneContext::UpdateDockingStickers()
+{
+	if (m_rectStickerPane.IsRectEmpty())
+	{
+		m_pLastStickerPane = NULL;
+		DestroyDockingStickers();
+		return;
+	}
+
+	CSize sz(GetStickerSize(xtpPaneStickerClient));
+	CRect rc(m_rectStickerPane.CenterPoint(), sz);
+	rc.OffsetRect(- sz.cx / 2, - sz.cy / 2);
+
+	if (m_pLastStickerPane != m_pStickerPane || m_lstStickers.IsEmpty())
+	{
+		DestroyDockingStickers();
+
+		if (m_pStickerPane)
+		{
+			UINT allowStickers = xtpPaneStickerNone;
+			if (IsAllowDockingTo(m_pStickerPane, xtpPaneDockLeft)) allowStickers = allowStickers + xtpPaneStickerLeft;
+			if (IsAllowDockingTo(m_pStickerPane, xtpPaneDockRight)) allowStickers = allowStickers + xtpPaneStickerRight;
+			if (IsAllowDockingTo(m_pStickerPane, xtpPaneDockBottom)) allowStickers = allowStickers + xtpPaneStickerBottom;
+			if (IsAllowDockingTo(m_pStickerPane, xtpPaneDockTop)) allowStickers = allowStickers + xtpPaneStickerTop;
+
+			CreateNewSticker(rc, m_pStickerPane == m_pManager->GetClientPane() || !IsAllowAttachTo(m_pStickerPane) ? XTPDockingPaneStickerType(xtpPaneStickerClient + allowStickers) : XTPDockingPaneStickerType(xtpPaneStickerClient + allowStickers + xtpPaneStickerCenter));
+		}
+
+		CXTPDockingPaneBase* pTopPane = m_pManager->GetTopPane();
+		CRect rcWindow = pTopPane->GetPaneWindowRect();
+
+		if (IsAllowDockingTo(pTopPane, xtpPaneDockTop))
+			CreateNewSticker(CRect(CPoint(rcWindow.CenterPoint().x - GetStickerSize(xtpPaneStickerTop).cx / 2, rcWindow.top + 16), GetStickerSize(xtpPaneStickerTop)), xtpPaneStickerTop);
+		if (IsAllowDockingTo(pTopPane, xtpPaneDockLeft))
+			CreateNewSticker(CRect(CPoint(rcWindow.left + 16, rcWindow.CenterPoint().y - GetStickerSize(xtpPaneStickerLeft).cy/ 2), GetStickerSize(xtpPaneStickerLeft)), xtpPaneStickerLeft);
+		if (IsAllowDockingTo(pTopPane, xtpPaneDockBottom))
+			CreateNewSticker(CRect(CPoint(rcWindow.CenterPoint().x - GetStickerSize(xtpPaneStickerBottom).cx / 2, rcWindow.bottom - 16 - GetStickerSize(xtpPaneStickerBottom).cy), GetStickerSize(xtpPaneStickerBottom)), xtpPaneStickerBottom);
+		if (IsAllowDockingTo(pTopPane, xtpPaneDockRight))
+			CreateNewSticker(CRect(CPoint(rcWindow.right - GetStickerSize(xtpPaneStickerRight).cx - 16, rcWindow.CenterPoint().y - GetStickerSize(xtpPaneStickerRight).cy/ 2), GetStickerSize(xtpPaneStickerRight)), xtpPaneStickerRight);
+
+		m_pLastStickerPane = m_pStickerPane;
+	}
+
+	ASSERT(m_lstStickers.GetCount() < 6);
+}
+
+
+void CXTPDockingPaneContext::CreateContextWindow(CXTPDockingPaneContextAlphaWnd* pWnd)
+{
+	ASSERT(m_bUseAlphaContext);
+
+	if (pWnd->GetSafeHwnd())
+		return;
+
+	pWnd->CreateEx(WS_EX_LAYERED | WS_EX_TOPMOST | WS_EX_TOOLWINDOW, AfxRegisterWndClass(NULL, AfxGetApp()->LoadStandardCursor(IDC_ARROW)),
+		0, WS_POPUP, CRect(0, 0, 0, 0), m_pManager->GetSite(), 0);
+
+	if (m_pfnSetLayeredWindowAttributes)
+	{
+		((PFNSETLAYEREDWINDOWATTRIBUTES)m_pfnSetLayeredWindowAttributes)
+			(pWnd->m_hWnd, 0, 100, LWA_ALPHA);
+	}
+}

@@ -1,38 +1,126 @@
 // from server: 100% by auto
-// roc 2009-12 0047e6b0  unit: Ogre::VResource::?$SharedPtr  size: 58 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0047e6b0
-//
-// 0047e6b0  56                   push esi
-// 0047e6b1  8b742408             mov esi, dword ptr [esp + 8]
-// 0047e6b5  85f6                 test esi, esi
-// 0047e6b7  7516                 jne 0x47e6cf
-// 0047e6b9  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 0047e6bd  8b5104               mov edx, dword ptr [ecx + 4]
-// 0047e6c0  33c0                 xor eax, eax
-// 0047e6c2  52                   push edx
-// 0047e6c3  50                   push eax
-// 0047e6c4  8b01                 mov eax, dword ptr [ecx]
-// 0047e6c6  ffd0                 call eax
-// 0047e6c8  83c408               add esp, 8
-// 0047e6cb  8bc6                 mov eax, esi
-// 0047e6cd  5e                   pop esi
-// 0047e6ce  c3                   ret 
-// 0047e6cf  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 0047e6d3  8b06                 mov eax, dword ptr [esi]
-// 0047e6d5  8b4004               mov eax, dword ptr [eax + 4]
-// 0047e6d8  8b5104               mov edx, dword ptr [ecx + 4]
-// 0047e6db  03c6                 add eax, esi
-// 0047e6dd  52                   push edx
-// 0047e6de  50                   push eax
-// 0047e6df  8b01                 mov eax, dword ptr [ecx]
-// 0047e6e1  ffd0                 call eax
-// 0047e6e3  83c408               add esp, 8
-// 0047e6e6  8bc6                 mov eax, esi
-// 0047e6e8  5e                   pop esi
-// 0047e6e9  c3                   ret 
-// library ogre-1.6.4/OgreLog.cpp (function ??$?6DU?$char_traits@D@std@@H@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABU?$_Smanip@H@0@@Z)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.6.4 OgreLog.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+
+#include "OgreLog.h"
+#include "OgreLogManager.h"
+#include "OgreString.h"
+
+namespace Ogre
+{
+
+    //-----------------------------------------------------------------------
+    Log::Log( const String& name, bool debuggerOuput, bool suppressFile ) : 
+        mLogLevel(LL_NORMAL), mDebugOut(debuggerOuput),
+        mSuppressFile(suppressFile), mLogName(name)
+    {
+		if (!mSuppressFile)
+		{
+			mfpLog.open(name.c_str());
+		}
+    }
+    //-----------------------------------------------------------------------
+    Log::~Log()
+    {
+		OGRE_LOCK_AUTO_MUTEX
+		if (!mSuppressFile)
+		{
+	        mfpLog.close();
+		}
+    }
+    //-----------------------------------------------------------------------
+    void Log::logMessage( const String& message, LogMessageLevel lml, bool maskDebug )
+    {
+		OGRE_LOCK_AUTO_MUTEX
+        if ((mLogLevel + lml) >= OGRE_LOG_THRESHOLD)
+        {
+            for( mtLogListener::iterator i = mListeners.begin(); i != mListeners.end(); ++i )
+                (*i)->messageLogged( message, lml, maskDebug, mLogName );
+
+			if (mDebugOut && !maskDebug)
+                std::cerr << message << std::endl;
+
+            // Write time into log
+			if (!mSuppressFile)
+			{
+				struct tm *pTime;
+				time_t ctTime; time(&ctTime);
+				pTime = localtime( &ctTime );
+				mfpLog << std::setw(2) << std::setfill('0') << pTime->tm_hour
+					<< ":" << std::setw(2) << std::setfill('0') << pTime->tm_min
+					<< ":" << std::setw(2) << std::setfill('0') << pTime->tm_sec 
+					<< ": " << message << std::endl;
+
+				// Flush stcmdream to ensure it is written (incase of a crash, we need log to be up to date)
+				mfpLog.flush();
+			}
+        }
+    }
+
+    //-----------------------------------------------------------------------
+    void Log::setDebugOutputEnabled(bool debugOutput)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+        mDebugOut = debugOutput;
+    }
+
+	//-----------------------------------------------------------------------
+    void Log::setLogDetail(LoggingLevel ll)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+        mLogLevel = ll;
+    }
+
+    //-----------------------------------------------------------------------
+    void Log::addListener(LogListener* listener)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+        mListeners.push_back(listener);
+    }
+
+    //-----------------------------------------------------------------------
+    void Log::removeListener(LogListener* listener)
+    {
+		OGRE_LOCK_AUTO_MUTEX
+        mListeners.erase(std::find(mListeners.begin(), mListeners.end(), listener));
+    }
+	//---------------------------------------------------------------------
+	Log::Stream Log::stream(LogMessageLevel lml, bool maskDebug) 
+	{
+		return Stream(this, lml, maskDebug);
+
+	}
+}

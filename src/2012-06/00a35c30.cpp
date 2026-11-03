@@ -1,148 +1,302 @@
 // from server: 100% by auto
-// roc 2012-06 00a35c30  unit: CXTPDockingPaneWindowSelect  size: 339 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00a35c30
-//
-// 00a35c30  55                   push ebp
-// 00a35c31  56                   push esi
-// 00a35c32  57                   push edi
-// 00a35c33  8b7c2410             mov edi, dword ptr [esp + 0x10]
-// 00a35c37  33ed                 xor ebp, ebp
-// 00a35c39  3bfd                 cmp edi, ebp
-// 00a35c3b  8bf1                 mov esi, ecx
-// 00a35c3d  7d05                 jge 0xa35c44
-// 00a35c3f  e87cc7f4ff           call 0x9823c0
-// 00a35c44  8b442414             mov eax, dword ptr [esp + 0x14]
-// 00a35c48  3bc5                 cmp eax, ebp
-// 00a35c4a  7c03                 jl 0xa35c4f
-// 00a35c4c  894610               mov dword ptr [esi + 0x10], eax
-// 00a35c4f  3bfd                 cmp edi, ebp
-// 00a35c51  751f                 jne 0xa35c72
-// 00a35c53  8b4604               mov eax, dword ptr [esi + 4]
-// 00a35c56  3bc5                 cmp eax, ebp
-// 00a35c58  740c                 je 0xa35c66
-// 00a35c5a  50                   push eax
-// 00a35c5b  e85ac7f4ff           call 0x9823ba
-// 00a35c60  83c404               add esp, 4
-// 00a35c63  896e04               mov dword ptr [esi + 4], ebp
-// 00a35c66  5f                   pop edi
-// 00a35c67  896e0c               mov dword ptr [esi + 0xc], ebp
-// 00a35c6a  896e08               mov dword ptr [esi + 8], ebp
-// 00a35c6d  5e                   pop esi
-// 00a35c6e  5d                   pop ebp
-// 00a35c6f  c20800               ret 8
-// 00a35c72  8b4e04               mov ecx, dword ptr [esi + 4]
-// 00a35c75  53                   push ebx
-// 00a35c76  3bcd                 cmp ecx, ebp
-// 00a35c78  7532                 jne 0xa35cac
-// 00a35c7a  8b6e10               mov ebp, dword ptr [esi + 0x10]
-// 00a35c7d  3bfd                 cmp edi, ebp
-// 00a35c7f  7e02                 jle 0xa35c83
-// 00a35c81  8bef                 mov ebp, edi
-// 00a35c83  8d1ced00000000       lea ebx, [ebp*8]
-// 00a35c8a  53                   push ebx
-// 00a35c8b  e860c7f4ff           call 0x9823f0
-// 00a35c90  53                   push ebx
-// 00a35c91  6a00                 push 0
-// 00a35c93  50                   push eax
-// 00a35c94  894604               mov dword ptr [esi + 4], eax
-// 00a35c97  e8d8d6f4ff           call 0x983374
-// 00a35c9c  83c410               add esp, 0x10
-// 00a35c9f  5b                   pop ebx
-// 00a35ca0  897e08               mov dword ptr [esi + 8], edi
-// 00a35ca3  5f                   pop edi
-// 00a35ca4  896e0c               mov dword ptr [esi + 0xc], ebp
-// 00a35ca7  5e                   pop esi
-// 00a35ca8  5d                   pop ebp
-// 00a35ca9  c20800               ret 8
-// 00a35cac  8b5e0c               mov ebx, dword ptr [esi + 0xc]
-// 00a35caf  3bfb                 cmp edi, ebx
-// 00a35cb1  7f2d                 jg 0xa35ce0
-// 00a35cb3  8b4608               mov eax, dword ptr [esi + 8]
-// 00a35cb6  3bf8                 cmp edi, eax
-// 00a35cb8  0f8ebb000000         jle 0xa35d79
-// 00a35cbe  8bd7                 mov edx, edi
-// 00a35cc0  2bd0                 sub edx, eax
-// 00a35cc2  03d2                 add edx, edx
-// 00a35cc4  03d2                 add edx, edx
-// 00a35cc6  03d2                 add edx, edx
-// 00a35cc8  52                   push edx
-// 00a35cc9  8d04c1               lea eax, [ecx + eax*8]
-// 00a35ccc  55                   push ebp
-// 00a35ccd  50                   push eax
-// 00a35cce  e8a1d6f4ff           call 0x983374
-// 00a35cd3  83c40c               add esp, 0xc
-// 00a35cd6  5b                   pop ebx
-// 00a35cd7  897e08               mov dword ptr [esi + 8], edi
-// 00a35cda  5f                   pop edi
-// 00a35cdb  5e                   pop esi
-// 00a35cdc  5d                   pop ebp
-// 00a35cdd  c20800               ret 8
-// 00a35ce0  8b4610               mov eax, dword ptr [esi + 0x10]
-// 00a35ce3  3bc5                 cmp eax, ebp
-// 00a35ce5  7524                 jne 0xa35d0b
-// 00a35ce7  8b4608               mov eax, dword ptr [esi + 8]
-// 00a35cea  99                   cdq 
-// 00a35ceb  83e207               and edx, 7
-// 00a35cee  03c2                 add eax, edx
-// 00a35cf0  c1f803               sar eax, 3
-// 00a35cf3  83f804               cmp eax, 4
-// 00a35cf6  7d07                 jge 0xa35cff
-// 00a35cf8  b804000000           mov eax, 4
-// 00a35cfd  eb0c                 jmp 0xa35d0b
-// 00a35cff  3d00040000           cmp eax, 0x400
-// 00a35d04  7e05                 jle 0xa35d0b
-// 00a35d06  b800040000           mov eax, 0x400
-// 00a35d0b  03c3                 add eax, ebx
-// 00a35d0d  3bf8                 cmp edi, eax
-// 00a35d0f  7d06                 jge 0xa35d17
-// 00a35d11  89442414             mov dword ptr [esp + 0x14], eax
-// 00a35d15  eb06                 jmp 0xa35d1d
-// 00a35d17  897c2414             mov dword ptr [esp + 0x14], edi
-// 00a35d1b  8bc7                 mov eax, edi
-// 00a35d1d  3bc3                 cmp eax, ebx
-// 00a35d1f  7d05                 jge 0xa35d26
-// 00a35d21  e89ac6f4ff           call 0x9823c0
-// 00a35d26  8d2cc500000000       lea ebp, [eax*8]
-// 00a35d2d  55                   push ebp
-// 00a35d2e  e8bdc6f4ff           call 0x9823f0
-// 00a35d33  8b4e08               mov ecx, dword ptr [esi + 8]
-// 00a35d36  8b5604               mov edx, dword ptr [esi + 4]
-// 00a35d39  03c9                 add ecx, ecx
-// 00a35d3b  03c9                 add ecx, ecx
-// 00a35d3d  03c9                 add ecx, ecx
-// 00a35d3f  51                   push ecx
-// 00a35d40  52                   push edx
-// 00a35d41  8bd8                 mov ebx, eax
-// 00a35d43  55                   push ebp
-// 00a35d44  53                   push ebx
-// 00a35d45  e886e49cff           call 0x4041d0
-// 00a35d4a  8b4608               mov eax, dword ptr [esi + 8]
-// 00a35d4d  8bcf                 mov ecx, edi
-// 00a35d4f  2bc8                 sub ecx, eax
-// 00a35d51  03c9                 add ecx, ecx
-// 00a35d53  03c9                 add ecx, ecx
-// 00a35d55  03c9                 add ecx, ecx
-// 00a35d57  51                   push ecx
-// 00a35d58  8d14c3               lea edx, [ebx + eax*8]
-// 00a35d5b  6a00                 push 0
-// 00a35d5d  52                   push edx
-// 00a35d5e  e811d6f4ff           call 0x983374
-// 00a35d63  8b4604               mov eax, dword ptr [esi + 4]
-// 00a35d66  50                   push eax
-// 00a35d67  e84ec6f4ff           call 0x9823ba
-// 00a35d6c  8b4c2438             mov ecx, dword ptr [esp + 0x38]
-// 00a35d70  83c424               add esp, 0x24
-// 00a35d73  895e04               mov dword ptr [esi + 4], ebx
-// 00a35d76  894e0c               mov dword ptr [esi + 0xc], ecx
-// 00a35d79  5b                   pop ebx
-// 00a35d7a  897e08               mov dword ptr [esi + 8], edi
-// 00a35d7d  5f                   pop edi
-// 00a35d7e  5e                   pop esi
-// 00a35d7f  5d                   pop ebp
-// 00a35d80  c20800               ret 8
-// library xtp-15.2.1/Source\Calendar\XTPCalendarMsgNotifier.cpp (function ?SetSize@?$CArray@UCLIENT_INFO@CXTPCalendarMsgNotifier@@AAU12@@@QAEXHH@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/Calendar/XTPCalendarMsgNotifier.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPCalendarMsgNotifier.cpp: implementation of the CXTPCalendarMsgNotifier class.
+//
+// This file is a part of the XTREME CALENDAR MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "XTPCalendarMsgNotifier.h"
+#include "XTPCalendarUtils.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+#define XTP_TOPLEVELNOTIFIER_CHECKDATE_TIMEOUT 10 * 1000
+
+//===========================================================================
+// Summary:
+//     Define name for XTP_WM_TIME_ZONE_CHANGED windows message.
+//===========================================================================
+static LPCTSTR XTP_WM_TIME_ZONE_CHANGED_MSG = _T("XTP_WM_TIMEZONECHANGED");
+
+UINT XTP_WM_TIME_ZONE_CHANGED = RegisterWindowMessage(XTP_WM_TIME_ZONE_CHANGED_MSG);
+
+
+static LPCTSTR XTP_TOP_LEVEL_WND_NOTIFIER_NAME = _T("XTPCalendarMsgNotifier");
+
+CXTPCalendarMsgNotifier* XTPCalendarMsgNotifier()
+{
+	static CXTPCalendarMsgNotifier sMsgNotifier;
+	return &sMsgNotifier;
+}
+/////////////////////////////////////////////////////////////////////////////
+// CXTPCalendarMsgNotifier
+
+CXTPCalendarMsgNotifier::CXTPCalendarMsgNotifier()
+{
+	::ZeroMemory(&m_timeLastDate, sizeof(m_timeLastDate));
+	::ZeroMemory(&m_tziLast, sizeof(m_tziLast));
+}
+
+CXTPCalendarMsgNotifier::~CXTPCalendarMsgNotifier()
+{
+	DestroyWindow();
+}
+
+BOOL CXTPCalendarMsgNotifier::CreateWnd()
+{
+	LPCTSTR pcszSimpleWndClass = AfxRegisterWndClass(0);
+	CRect rcEmpty(0, 0, 0, 0);
+
+	BOOL bCreated = CreateEx(0, pcszSimpleWndClass,
+		XTP_TOP_LEVEL_WND_NOTIFIER_NAME, WS_POPUP, rcEmpty, NULL, 0);
+
+	CXTPCalendarUtils::GetCurrentTime().GetAsSystemTime(m_timeLastDate);
+
+	VERIFY (::GetTimeZoneInformation(&m_tziLast) != TIME_ZONE_ID_INVALID);
+
+	SetTimer(1, XTP_TOPLEVELNOTIFIER_CHECKDATE_TIMEOUT, NULL);
+	return bCreated;
+}
+
+void CXTPCalendarMsgNotifier::Advise(CWnd* pWnd, UINT uWndMsg)
+{
+	ASSERT(pWnd);
+
+	if (m_hWnd == NULL)
+	{
+		VERIFY(CreateWnd());
+	}
+
+	// WARNING! Already Advised.
+	ASSERT(-1 == m_arClients.FindExact(pWnd, uWndMsg));
+
+	m_arClients.Remove(pWnd, uWndMsg);
+
+	CLIENT_INFO clInf = {pWnd, msgAll};
+	m_arClients.Add(clInf);
+}
+
+void CXTPCalendarMsgNotifier::Unadvise(CWnd* pWnd, UINT uWndMsg)
+{
+	// WARNING! Already Unadvised.
+	ASSERT(m_arClients.FindExact(pWnd, uWndMsg) >= 0);
+
+	m_arClients.Remove(pWnd, uWndMsg);
+
+	if (m_arClients.GetSize() == 0 && m_hWnd)
+	{
+		VERIFY(DestroyWindow());
+	}
+}
+
+void CXTPCalendarMsgNotifier::SendToClients(UINT uWndMsg, WPARAM wParam, LPARAM lParam)
+{
+	CClientsArray arClients;
+
+	// prepare clients to local cache
+	int nCount = (int)m_arClients.GetSize(), i;
+	for (i = 0; i < nCount; i++)
+	{
+		CLIENT_INFO& rData = m_arClients.ElementAt(i);
+
+		if (rData.m_uWndMsg == uWndMsg || rData.m_uWndMsg == msgAll)
+		{
+			arClients.Add(rData);
+		}
+	}
+
+	// Send to clients from local cache
+	nCount = (int)arClients.GetSize();
+	for (i = 0; i < nCount; i++)
+	{
+		const CLIENT_INFO& rData = arClients.ElementAt(i);
+
+		if (-1 == m_arClients.FindClient(rData.m_pWnd, rData.m_uWndMsg))
+		{
+			continue;
+		}
+
+		try
+		{
+			if (::IsWindow(rData.m_pWnd->GetSafeHwnd()))
+			{
+				::SendMessage(rData.m_pWnd->GetSafeHwnd(), uWndMsg, wParam, lParam);
+			}
+		}
+		catch(...)
+		{
+			ASSERT(FALSE);
+			m_arClients.Remove(rData.m_pWnd, msgAll);
+		}
+	}
+
+	if (m_arClients.GetSize() == 0 && m_hWnd)
+	{
+		VERIFY(DestroyWindow());
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//class CClientsArray : public CArray<CLIENT_INFO, CLIENT_INFO&>
+
+CXTPCalendarMsgNotifier::CClientsArray::CClientsArray()
+{
+}
+
+CXTPCalendarMsgNotifier::CClientsArray::~CClientsArray()
+{
+}
+
+int CXTPCalendarMsgNotifier::CClientsArray::FindExact(CWnd* pWnd, UINT uWndMsg) const
+{
+	int nCount = (int)GetSize();
+	for (int i = 0; i < nCount; i++)
+	{
+		const CLIENT_INFO& rData = m_pData[i];
+
+		if (rData.m_pWnd == pWnd && rData.m_uWndMsg == uWndMsg)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int CXTPCalendarMsgNotifier::CClientsArray::FindClient(CWnd* pWnd, UINT uWndMsg) const
+{
+	int nCount = (int)GetSize();
+	for (int i = 0; i < nCount; i++)
+	{
+		const CLIENT_INFO& rData = m_pData[i];
+
+		if (rData.m_pWnd == pWnd)
+		{
+			if (rData.m_uWndMsg == uWndMsg || uWndMsg == CXTPCalendarMsgNotifier::msgAll)
+			{
+				return i;
+			}
+		}
+	}
+	return -1;
+}
+
+void CXTPCalendarMsgNotifier::CClientsArray::Remove(CWnd* pWnd, UINT uWndMsg)
+{
+	int nCount = (int)GetSize();
+	for (int i = nCount-1; i >= 0; i--)
+	{
+		const CLIENT_INFO& rData = ElementAt(i);
+
+		if (rData.m_pWnd == pWnd)
+		{
+			if (rData.m_uWndMsg == uWndMsg || uWndMsg == CXTPCalendarMsgNotifier::msgAll)
+			{
+				RemoveAt(i);
+			}
+		}
+	}
+}
+
+
+BEGIN_MESSAGE_MAP(CXTPCalendarMsgNotifier, CWnd)
+	ON_WM_TIMECHANGE()
+	ON_WM_SYSCOLORCHANGE()
+	ON_WM_TIMER()
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CXTPCalendarMsgNotifier message handlers
+
+void CXTPCalendarMsgNotifier::OnTimeChange()
+{
+	_ProcessTimeZone();
+
+	SendToClients(WM_TIMECHANGE, 0, 0);
+}
+
+void CXTPCalendarMsgNotifier::OnSysColorChange()
+{
+	SendToClients(WM_SYSCOLORCHANGE, 0, 0);
+}
+
+void CXTPCalendarMsgNotifier::OnTimer(UINT_PTR uTimerID)
+{
+	if (uTimerID == 1)
+	{
+		SYSTEMTIME timeCurrent;
+		::ZeroMemory(&timeCurrent, sizeof(timeCurrent));
+		CXTPCalendarUtils::GetCurrentTime().GetAsSystemTime(timeCurrent);
+
+		//Is date changed ?
+		if (timeCurrent.wDay    != m_timeLastDate.wDay ||
+			timeCurrent.wMonth  != m_timeLastDate.wMonth ||
+			timeCurrent.wYear   != m_timeLastDate.wYear)
+		{
+			m_timeLastDate = timeCurrent;
+			//OnTimeChange();
+			SendToClients(WM_TIMECHANGE, 0, 0);
+		}
+	}
+}
+
+void CXTPCalendarMsgNotifier::_ProcessTimeZone()
+{
+	TIME_ZONE_INFORMATION tziCurrent;
+	::ZeroMemory(&tziCurrent, sizeof(tziCurrent));
+
+	if (::GetTimeZoneInformation(&tziCurrent) == TIME_ZONE_ID_INVALID)
+	{
+		ASSERT(FALSE);
+		return;
+	}
+
+	if (!IsTimeZoneEqual(tziCurrent, m_tziLast))
+	{
+		m_tziLast = tziCurrent;
+
+		SendToClients(XTP_WM_TIME_ZONE_CHANGED, 0, 0);
+
+		//TRACE(_T("XTP_WM_TIME_ZONE_CHANGED is sent \n"));
+	}
+}
+
+BOOL CXTPCalendarMsgNotifier::IsTimeZoneEqual(const TIME_ZONE_INFORMATION& rTzi1, const TIME_ZONE_INFORMATION& rTzi2) const
+{
+	return  rTzi1.Bias == rTzi2.Bias &&
+
+			memcmp(&rTzi1.StandardDate, &rTzi2.StandardDate, sizeof(SYSTEMTIME)) == 0 &&
+
+			rTzi1.StandardBias == rTzi2.StandardBias &&
+
+			memcmp(&rTzi1.DaylightDate, &rTzi2.DaylightDate, sizeof(SYSTEMTIME)) == 0 &&
+
+			rTzi1.DaylightBias == rTzi2.DaylightBias;
+
+	//WCHAR StandardName[ 32 ];
+	//WCHAR DaylightName[ 32 ];
+}

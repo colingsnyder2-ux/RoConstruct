@@ -1,38 +1,125 @@
 // from server: 100% by auto
-// roc 2011-06 00901610  unit: CXTPDockingPaneAutoHidePanel  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00901610
-//
-// 00901610  8b4124               mov eax, dword ptr [ecx + 0x24]
-// 00901613  8b5120               mov edx, dword ptr [ecx + 0x20]
-// 00901616  53                   push ebx
-// 00901617  8b5918               mov ebx, dword ptr [ecx + 0x18]
-// 0090161a  56                   push esi
-// 0090161b  8b7110               mov esi, dword ptr [ecx + 0x10]
-// 0090161e  57                   push edi
-// 0090161f  8b791c               mov edi, dword ptr [ecx + 0x1c]
-// 00901622  2bc7                 sub eax, edi
-// 00901624  2bd3                 sub edx, ebx
-// 00901626  85f6                 test esi, esi
-// 00901628  7403                 je 0x90162d
-// 0090162a  8b7604               mov esi, dword ptr [esi + 4]
-// 0090162d  682000cc00           push 0xcc0020
-// 00901632  57                   push edi
-// 00901633  53                   push ebx
-// 00901634  56                   push esi
-// 00901635  50                   push eax
-// 00901636  8b4104               mov eax, dword ptr [ecx + 4]
-// 00901639  52                   push edx
-// 0090163a  6a00                 push 0
-// 0090163c  6a00                 push 0
-// 0090163e  50                   push eax
-// 0090163f  ff159001a400         call dword ptr [0xa40190]
-// 00901645  5f                   pop edi
-// 00901646  5e                   pop esi
-// 00901647  5b                   pop ebx
-// 00901648  c3                   ret 
-// library xtp-15.2.1/Source\Controls\Deprecated\XTMemDC.cpp (function ?FromDC@CXTMemDC@@QAEXXZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/Controls/Deprecated/XTMemDC.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTMemDC.cpp : implementation of the CXTMemDC class.
+//
+// This file is a part of the XTREME CONTROLS MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "Common/XTPColorManager.h"
+#include "Common/XTPDrawHelpers.h"
+#include "XTMemDC.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#define new DEBUG_NEW
+#endif
+
+IMPLEMENT_DYNAMIC(CXTMemDC, CDC)
+
+//===========================================================================
+// CXTMemDC class
+//===========================================================================
+
+CXTMemDC::CXTMemDC(CDC* pDC, const CRect& rect, CXTPPaintManagerColorGradient crBack/*=GetXtremeColor(COLOR_3DFACE)*/, BOOL bHorz/*=FALSE*/)
+{
+	ASSERT(pDC != NULL);
+	m_pDC = pDC;
+	if (!m_pDC)
+		return;
+
+	// If rect is NULL, use the device context's clip box.
+	if (rect.IsRectEmpty())
+		m_pDC->GetClipBox(&m_rc);
+	else
+		m_rc.CopyRect(&rect);
+
+	// Create the memory DC, set Map Mode
+	if (CreateCompatibleDC(m_pDC))
+	{
+		SetMapMode(m_pDC->GetMapMode());
+
+		// Create a bitmap big enough to hold the window's image
+		m_bitmap.CreateCompatibleBitmap(m_pDC, m_rc.Width(), m_rc.Height());
+
+		// Select the bitmap into the memory DC
+		m_hOldBitmap = (HBITMAP)SelectObject(&m_bitmap)->GetSafeHandle();
+
+		if (crBack != COLORREF_NULL)
+		{
+			// fill background
+			XTPDrawHelpers()->GradientFill(this, CRect(0, 0, m_rc.Width(), m_rc.Height()), crBack, bHorz);
+		}
+
+		m_bValid = TRUE;
+	}
+
+	// Something bad happened, could be GDI leak, didn't create device context.
+	else
+	{
+		m_bValid = FALSE;
+		m_hOldBitmap = NULL;
+	}
+}
+
+CXTMemDC::~CXTMemDC()
+{
+	if (IsValid())
+	{
+		// Blt it
+		m_pDC->BitBlt(m_rc.left, m_rc.top, m_rc.Width(), m_rc.Height(),
+			this, 0, 0, SRCCOPY);
+	}
+
+	// Select the original bitmap back in
+	if (m_hOldBitmap != NULL)
+	{
+		SelectObject(m_hOldBitmap);
+		m_bitmap.DeleteObject();
+	}
+
+	DeleteDC();
+}
+
+CBitmap& CXTMemDC::GetBitmap()
+{
+	return m_bitmap;
+}
+
+void CXTMemDC::Discard()
+{
+	m_bValid = FALSE;
+}
+
+BOOL CXTMemDC::IsValid() const
+{
+	return m_bValid;
+}
+
+void CXTMemDC::FromDC()
+{
+	BitBlt(0, 0, m_rc.Width(), m_rc.Height(), m_pDC,
+		m_rc.left, m_rc.top, SRCCOPY);
+}

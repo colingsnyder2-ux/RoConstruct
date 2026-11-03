@@ -1,46 +1,153 @@
 // from server: 100% by auto
-// roc 2012-06 00a788d0  unit: CXTPDockingPaneAutoHidePanel  size: 73 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00a788d0
-//
-// 00a788d0  53                   push ebx
-// 00a788d1  8b5c2408             mov ebx, dword ptr [esp + 8]
-// 00a788d5  3bd9                 cmp ebx, ecx
-// 00a788d7  7509                 jne 0xa788e2
-// 00a788d9  b801000000           mov eax, 1
-// 00a788de  5b                   pop ebx
-// 00a788df  c20400               ret 4
-// 00a788e2  56                   push esi
-// 00a788e3  8b713c               mov esi, dword ptr [ecx + 0x3c]
-// 00a788e6  57                   push edi
-// 00a788e7  85f6                 test esi, esi
-// 00a788e9  741e                 je 0xa78909
-// 00a788eb  eb03                 jmp 0xa788f0
-// 00a788ed  8d4900               lea ecx, [ecx]
-// 00a788f0  8bc6                 mov eax, esi
-// 00a788f2  8b4808               mov ecx, dword ptr [eax + 8]
-// 00a788f5  8b01                 mov eax, dword ptr [ecx]
-// 00a788f7  8b5008               mov edx, dword ptr [eax + 8]
-// 00a788fa  8bfe                 mov edi, esi
-// 00a788fc  8b36                 mov esi, dword ptr [esi]
-// 00a788fe  53                   push ebx
-// 00a788ff  ffd2                 call edx
-// 00a78901  85c0                 test eax, eax
-// 00a78903  750c                 jne 0xa78911
-// 00a78905  85f6                 test esi, esi
-// 00a78907  75e7                 jne 0xa788f0
-// 00a78909  5f                   pop edi
-// 00a7890a  5e                   pop esi
-// 00a7890b  33c0                 xor eax, eax
-// 00a7890d  5b                   pop ebx
-// 00a7890e  c20400               ret 4
-// 00a78911  8bc7                 mov eax, edi
-// 00a78913  5f                   pop edi
-// 00a78914  5e                   pop esi
-// 00a78915  5b                   pop ebx
-// 00a78916  c20400               ret 4
-// library xtp-15.2.1/Source\DockingPane\XTPDockingPaneBaseContainer.cpp (function ?ContainPane@CXTPDockingPaneBaseContainer@@UBEPAU__POSITION@@PAVCXTPDockingPaneBase@@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/DockingPane/XTPDockingPaneBaseContainer.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPDockingPaneBase.cpp : implementation of the CXTPDockingPaneBase class.
+//
+// This file is a part of the XTREME DOCKINGPANE MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+#include "Common/XTPSystemHelpers.h"
+
+#include "TabManager/XTPTabManager.h"
+
+#include "XTPDockingPaneDefines.h"
+#include "XTPDockingPaneBase.h"
+#include "XTPDockingPaneBaseContainer.h"
+#include "XTPDockingPaneManager.h"
+#include "XTPDockingPane.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+//////////////////////////////////////////////////////////////////////////
+// CXTPDockingPaneBaseContainer
+
+CXTPDockingPaneBaseContainer::CXTPDockingPaneBaseContainer(XTPDockingPaneType type, CXTPDockingPaneLayout* pLayout)
+	: CXTPDockingPaneBase(type, pLayout)
+{
+}
+
+CXTPDockingPaneBaseContainer::~CXTPDockingPaneBaseContainer()
+{
+}
+
+POSITION CXTPDockingPaneBaseContainer::ContainPane(CXTPDockingPaneBase* pPane) const
+{
+	if (pPane == (CXTPDockingPaneBase*)this)
+		return (POSITION)TRUE;
+
+	POSITION pos = m_lstPanes.GetHeadPosition();
+	while (pos)
+	{
+		POSITION posContain = pos;
+
+		if (m_lstPanes.GetNext(pos)->ContainPane(pPane))
+			return posContain;
+	}
+	return NULL;
+}
+
+void CXTPDockingPaneBaseContainer::FindPane(XTPDockingPaneType type, CXTPDockingPaneBaseList* pList) const
+{
+	if (GetType() == type)
+	{
+		if (IsEmpty())
+		{
+			return;
+		}
+
+		pList->AddTail((CXTPDockingPaneBase*)this);
+	}
+
+	POSITION pos = m_lstPanes.GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPaneBase* pPane = m_lstPanes.GetNext(pos);
+		pPane->FindPane(type, pList);
+	}
+}
+
+BOOL CXTPDockingPaneBaseContainer::IsEmpty() const
+{
+	POSITION pos = m_lstPanes.GetHeadPosition();
+	while (pos)
+	{
+		CXTPDockingPaneBase* pPane = m_lstPanes.GetNext(pos);
+
+		if (!pPane->IsEmpty())
+		{
+			return FALSE;
+		}
+	}
+	return TRUE;
+}
+
+POSITION CXTPDockingPaneBaseContainer::GetHeadPosition() const
+{
+	return m_lstPanes.GetHeadPosition();
+}
+
+CXTPDockingPaneBase* CXTPDockingPaneBaseContainer::GetNext(POSITION& pos) const
+{
+	return m_lstPanes.GetNext(pos);
+}
+
+CXTPDockingPaneBase* CXTPDockingPaneBaseContainer::GetFirstPane() const
+{
+	if (m_lstPanes.IsEmpty())
+		return NULL;
+
+	return m_lstPanes.GetHead();
+}
+
+CXTPDockingPaneBase* CXTPDockingPaneBaseContainer::GetLastPane() const
+{
+	if (m_lstPanes.IsEmpty())
+		return NULL;
+
+	return m_lstPanes.GetTail();
+}
+
+BOOL CXTPDockingPaneBaseContainer::OnAction(XTPDockingPaneAction action)
+{
+	CXTPDockingPaneManager* pManager = GetDockingPaneManager();
+	CXTPDockingPaneBaseList lstChilds;
+
+	FindPane(xtpPaneTypeDockingPane, &lstChilds);
+	POSITION pos = lstChilds.GetHeadPosition();
+
+	while (pos)
+	{
+
+		CXTPDockingPane* pPane = static_cast<CXTPDockingPane*>(lstChilds.GetNext(pos));
+
+		if (pManager->NotifyAction(action, pPane, this))
+			return TRUE;
+	}
+
+	return FALSE;
+}

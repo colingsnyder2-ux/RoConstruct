@@ -1,26 +1,196 @@
 // from server: 100% by auto
-// roc 2012-06 00a30560  unit: CXTPReportHyperlink  size: 48 bytes
-// Make this compile to the exact bytes below, then: roc check 2012-06 00a30560
-//
-// 00a30560  56                   push esi
-// 00a30561  8bf1                 mov esi, ecx
-// 00a30563  e81c900600           call 0xa99584
-// 00a30568  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 00a3056c  33c0                 xor eax, eax
-// 00a3056e  c7062404c200         mov dword ptr [esi], 0xc20424
-// 00a30574  894620               mov dword ptr [esi + 0x20], eax
-// 00a30577  894624               mov dword ptr [esi + 0x24], eax
-// 00a3057a  894628               mov dword ptr [esi + 0x28], eax
-// 00a3057d  89462c               mov dword ptr [esi + 0x2c], eax
-// 00a30580  8b442408             mov eax, dword ptr [esp + 8]
-// 00a30584  894630               mov dword ptr [esi + 0x30], eax
-// 00a30587  894e34               mov dword ptr [esi + 0x34], ecx
-// 00a3058a  8bc6                 mov eax, esi
-// 00a3058c  5e                   pop esi
-// 00a3058d  c20800               ret 8
-// library xtp-15.2.1/Source\ReportControl\XTPReportHyperlink.cpp (function ??0CXTPReportHyperlink@@QAE@HH@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: xtp-15.2.1 Source/ReportControl/XTPReportHyperlink.cpp
+
+// Candidate translation unit (score above; library headers required).
+// XTPReportHyperlink.cpp : implementation of the CXTPReportHyperlink class.
+//
+// This file is a part of the XTREME REPORTCONTROL MFC class library.
+// (c)1998-2011 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "StdAfx.h"
+
+#include "Common/XTPPropExchange.h"
+#include "Common/XTPSmartPtrInternalT.h"
+#include "Common/XTPCustomHeap.h"
+
+#include "XTPReportDefines.h"
+#include "XTPReportHyperlink.h"
+
+#pragma warning(disable: 4097) // TBase' used as synonym for class-name
+
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#define new DEBUG_NEW
+#endif
+
+CXTPReportHyperlinkStyle::CXTPReportHyperlinkStyle(COLORREF color, XTPReportTextDecoration textDecoration)
+	: m_color(color)
+	, m_textDecoration(textDecoration)
+{
+}
+
+COLORREF CXTPReportHyperlinkStyle::GetColor() const
+{
+	return m_color;
+}
+
+void CXTPReportHyperlinkStyle::SetColor(COLORREF color)
+{
+	m_color = color;
+}
+
+XTPReportTextDecoration CXTPReportHyperlinkStyle::GetTextDecoration() const
+{
+	return m_textDecoration;
+}
+
+void CXTPReportHyperlinkStyle::SetTextDecoration(XTPReportTextDecoration textDecoration)
+{
+	m_textDecoration = textDecoration;
+}
+
+
+IMPLEMENT_DYNAMIC(CXTPReportHyperlink, CCmdTarget)
+IMPLEMENT_DYNAMIC(CXTPReportHyperlinks, CCmdTarget)
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CXTPReportHyperlink::CXTPReportHyperlink(int nHyperTextBegin, int nHyperTextLen)
+	: m_nHyperTextBegin(nHyperTextBegin),
+	m_nHyperTextLen(nHyperTextLen),
+	m_rcHyperSpot(0, 0, 0, 0)
+{
+
+}
+
+CXTPReportHyperlink::~CXTPReportHyperlink()
+{
+
+}
+
+void CXTPReportHyperlink::DoPropExchange(CXTPPropExchange* pPX)
+{
+	PX_Int(pPX, _T("HyperTextBegin"), m_nHyperTextBegin);
+	PX_Int(pPX, _T("HyperTextLen"), m_nHyperTextLen);
+}
+
+CXTPReportHyperlinks::CXTPReportHyperlinks()
+{
+
+}
+
+CXTPReportHyperlinks::~CXTPReportHyperlinks()
+{
+	RemoveAll();
+}
+
+void CXTPReportHyperlinks::RemoveAt(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= (int)GetSize())
+	{
+		ASSERT(FALSE);
+		return;
+	}
+
+	CXTPReportHyperlink* pItem = GetAt(nIndex);
+	if (pItem)
+		pItem->InternalRelease();
+
+	TBase::RemoveAt(nIndex);
+}
+
+void CXTPReportHyperlinks::RemoveAll()
+{
+	for (int nItem = (int)GetSize() - 1; nItem >= 0; nItem--)
+	{
+		CXTPReportHyperlink* pItem = GetAt(nItem);
+		if (pItem)
+			pItem->InternalRelease();
+	}
+	TBase::RemoveAll();
+}
+
+void CXTPReportHyperlinks::DoPropExchange(CXTPPropExchange* pPX)
+{
+	int nCount = (int)GetSize();
+
+	CXTPPropExchangeEnumeratorPtr pEnumItems(pPX->GetEnumerator(_T("Hyperlink")));
+
+	if (pPX->IsStoring())
+	{
+		POSITION posItem = pEnumItems->GetPosition((DWORD)nCount);
+
+		for (int i = 0; i < nCount; i++)
+		{
+			CXTPReportHyperlink* pItem = GetAt(i);
+			ASSERT(pItem);
+			if (pItem)
+			{
+				CXTPPropExchangeSection secItem(pEnumItems->GetNext(posItem));
+				pItem->DoPropExchange(&secItem);
+			}
+		}
+	}
+	else
+	{
+		POSITION posItem = pEnumItems->GetPosition();
+		while (posItem)
+		{
+			CXTPReportHyperlink* pItem = new CXTPReportHyperlink();
+			if (!pItem)
+			{
+				return;
+			}
+			CXTPPropExchangeSection secItem(pEnumItems->GetNext(posItem));
+			pItem->DoPropExchange(&secItem);
+
+			Add(pItem);
+		}
+	}
+
+}
+
+void CXTPReportHyperlinks::CopyFrom(CXTPReportHyperlinks* pSrc)
+{
+	if (pSrc == this)
+		return;
+
+	RemoveAll();
+
+	if (!pSrc)
+		return;
+
+	int nCount = pSrc->GetSize();
+	for (int i = 0; i < nCount; i++)
+	{
+		CXTPReportHyperlink* pHlnk = pSrc->GetAt(i);
+		if (pHlnk)
+		{
+			pHlnk->InternalAddRef();
+			Add(pHlnk);
+		}
+	}
+}
+
