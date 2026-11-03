@@ -66,6 +66,10 @@ public:
     virtual boost::shared_ptr<Instance> createChild(const Name&);
     const std::string& getName() const { return name; }
     Instance* getParent() const { return parent; }
+    bool isDescendentOf(const Instance*) const; // 00422ae0
+    // 00423700; name provisional
+    bool canAcceptChildren(std::vector<boost::shared_ptr<Instance> >::const_iterator,
+                           std::vector<boost::shared_ptr<Instance> >::const_iterator);
     size_t numChildren() const
     {
         if (children) return children->size();

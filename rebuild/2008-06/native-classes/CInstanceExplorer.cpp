@@ -86,7 +86,6 @@ void CInstanceExplorer::onMarshaledEvent(const RBX::Instance*, RBX::DescendantRe
     populate();
 }
 
-#ifdef NATIVE_INSTANCE_EXPLORER_SELCHANGED
 // Original 00421d00 (exact, with Selection::setSelection<vector<Instance*>::iterator> 00420d20, once the shared
 // v8datamodel/Selection.h template reads addToSelection(boost::get_pointer(*first)); its current first->get()
 // cannot be instantiated for raw Instance* iterators). The vector holds raw pointers: push_back stores 4 bytes.
@@ -102,7 +101,6 @@ void CInstanceExplorer::OnReportSelChanged(NMHDR*, LRESULT*)
     }
     selection->setSelection(instances.begin(), instances.end());
 }
-#endif
 
 // Original 00420db0.
 CInstanceRecord::CInstanceRecord(boost::shared_ptr<RBX::Instance> instance)

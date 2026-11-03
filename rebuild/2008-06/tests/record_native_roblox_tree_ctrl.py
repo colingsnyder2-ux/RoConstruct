@@ -39,8 +39,7 @@ assert lb['?setExpanded@@YAXPAVCRobloxTreeCtrlNode@@@Z'] == bytes.fromhex('8b442
 assert lb['?instanceDescriptor@@YAPBXPAVInstance@RBX@@@Z'] == bytes.fromhex('8b4424048b401cc3')
 
 # 2. the unit through the noinline profile
-PENDING = [('    void addToSelection(Instance*);', '    void addToSelection(Instance*); bool isSelected(const Instance*) const;'),
-           ('int getImageIndex() const;', 'int getImageIndex() const; int explorerOrder() const;')]
+PENDING = []  # Selection::isSelected and Metadata::Class::explorerOrder are now declared in the shared headers
 
 
 def profile(name, defines=(), replace=()):

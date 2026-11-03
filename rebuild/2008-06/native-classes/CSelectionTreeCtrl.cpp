@@ -6,9 +6,7 @@
 #include "util/Object.h"
 #include <algorithm>
 #include <boost/bind.hpp>
-#ifdef NATIVE_TREE_PENDING_DROP
 #include "v8datamodel/Workspace.h"
-#endif
 
 extern CRobloxDoc* activeRobloxDoc;   // 0096c238 (ActiveDocumentData.cpp)
 
@@ -243,7 +241,6 @@ void CSelectionTreeCtrl::OnSelChanged(NMHDR* notify, LRESULT* result)
     }
 }
 
-#ifdef NATIVE_TREE_PENDING_SELECTION
 void CSelectionTreeCtrl::select(TVITEM* item, bool selected)
 {
     if (item->hItem && item->lParam) {
@@ -259,7 +256,6 @@ void CSelectionTreeCtrl::select(TVITEM* item, bool selected)
         }
     }
 }
-#endif
 
 void CSelectionTreeCtrl::showContextMenu(CPoint point)
 {
@@ -355,7 +351,6 @@ void CSelectionTreeCtrl::processSelectionQueue()
     }
 }
 
-#ifdef NATIVE_TREE_PENDING_NODE
 // Needs CRobloxTreeCtrlNode::refreshText 00422650 and CRobloxTreeCtrlNode::removeChildren 00425520 (pending
 // declarations in CRobloxTreeCtrl.h).
 void CSelectionTreeCtrl::OnTimer(UINT_PTR id)
@@ -382,9 +377,7 @@ void CSelectionTreeCtrl::OnTimer(UINT_PTR id)
     processSelectionQueue();
     CXTTreeCtrl::OnTimer(id);
 }
-#endif
 
-#ifdef NATIVE_TREE_PENDING_SELECTION
 void CSelectionTreeCtrl::SelectAllIgnore(BOOL select, HTREEITEM ignore)
 {
     if (!select) {
@@ -406,9 +399,7 @@ void CSelectionTreeCtrl::SelectAllIgnore(BOOL select, HTREEITEM ignore)
         CXTTreeBase::SelectAllIgnore(select, ignore);
     }
 }
-#endif
 
-#ifdef NATIVE_TREE_PENDING_DROP
 // 00426db0: drop handler applied to every selected instance (name provisional; external linkage is not observable).
 // Needs Instance::isDescendentOf 00422ae0 (pending declaration in v8tree/Instance.h).
 void dropInstance(RBX::Instance* parent, boost::shared_ptr<RBX::Instance> child)
@@ -461,4 +452,3 @@ void CSelectionTreeCtrl::OnLButtonUp(UINT flags, CPoint point)
         SelectDropTarget(NULL);
     }
 }
-#endif

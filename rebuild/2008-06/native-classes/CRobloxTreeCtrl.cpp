@@ -26,14 +26,12 @@ public:
 // 00423050: sort order of an instance's class in the tree (node +0x84; compared before names in insertItem).
 // Calls Metadata::Class 004225b0, which the committed reflection/Metadata.h does not declare (pending header).
 int explorerOrder(RBX::Instance* instance);
-#ifdef NATIVE_TREE_PENDING_SELECTION
 int explorerOrder(RBX::Instance* instance)
 {
     boost::shared_ptr<RBX::Metadata::Reflection> reflection = RBX::Metadata::Reflection::singleton();
     RBX::Reflection::Metadata::Class* metadata = reflection->lookup(instance->getDescriptor(), true);
     return metadata ? metadata->explorerOrder() : 0;
 }
-#endif
 
 // 00424b60: metadata image index of a class (0 without metadata). Name provisional.
 int classImage(const RBX::Reflection::ClassDescriptor* descriptor)
@@ -284,7 +282,6 @@ void CRobloxTreeCtrlNode::onGetDispInfo(NMTVDISPINFO* info)
     }
 }
 
-#ifdef NATIVE_TREE_PENDING_SELECTION
 void CRobloxTreeCtrlNode::updateSelection()
 {
     if (!item)
@@ -300,7 +297,6 @@ void CRobloxTreeCtrlNode::updateSelection()
         tree->SetItemState(item, 0, TVIS_SELECTED);
     }
 }
-#endif
 
 void CRobloxTreeCtrlNode::queueChild(const boost::shared_ptr<RBX::Instance>& child)
 {
@@ -370,7 +366,6 @@ HTREEITEM CRobloxTreeCtrlNode::insertItem()
     return tree->InsertItem(&insert);
 }
 
-#ifdef NATIVE_TREE_PENDING_SELECTION
 CRobloxTreeCtrlNode* CRobloxTreeCtrlNode::addChild(const boost::shared_ptr<RBX::Instance>& child)
 {
     boost::shared_ptr<RBX::Metadata::Reflection> reflection = RBX::Metadata::Reflection::singleton();
@@ -387,9 +382,7 @@ CRobloxTreeCtrlNode* CRobloxTreeCtrlNode::addChild(const boost::shared_ptr<RBX::
     node->initialize();
     return node;
 }
-#endif
 
-#ifdef NATIVE_TREE_PENDING_SELECTION
 bool CRobloxTreeCtrlNode::hasChildren()
 {
     RBX::DataModel::Lock lock(tree->getDataModel());
@@ -405,4 +398,3 @@ bool CRobloxTreeCtrlNode::hasChildren()
     }
     return false;
 }
-#endif

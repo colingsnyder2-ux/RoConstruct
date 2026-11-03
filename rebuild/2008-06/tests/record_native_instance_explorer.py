@@ -59,7 +59,7 @@ def profile(name, defines=(), replace=()):
 
 obj = profile('NativeInstanceExplorerProfile')
 selobj = profile('NativeInstanceExplorerSelChanged', ['/DNATIVE_INSTANCE_EXPLORER_SELCHANGED'],
-                 [('addToSelection(first->get())', 'addToSelection(boost::get_pointer(*first))')])
+                 [])  # Selection.h now uses boost::get_pointer(*first) itself
 
 # 3. XTP library bodies (recipe style of record_native_roblox_report_view.py)
 XTP_SRC = ROOT / 'tools/libs/xtp-11.2.2/Source'

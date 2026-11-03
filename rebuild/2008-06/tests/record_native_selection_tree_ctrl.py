@@ -44,7 +44,7 @@ INSTANCE = ('Instance* getParent() const { return parent; }',
             'bool canAcceptChildren(std::vector<boost::shared_ptr<Instance> >::const_iterator, '
             'std::vector<boost::shared_ptr<Instance> >::const_iterator);')
 NODE = ('bool hasChildren();', 'bool hasChildren(); void refreshText(); void removeChildren();')
-PENDING = [SELECTION, INSTANCE, NODE]
+PENDING = []  # SELECTION, INSTANCE and NODE declarations are now in the shared headers
 DEFINES = ['/DNATIVE_TREE_PENDING_SELECTION', '/DNATIVE_TREE_PENDING_NODE', '/DNATIVE_TREE_PENDING_DROP']
 
 

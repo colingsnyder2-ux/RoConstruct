@@ -118,7 +118,9 @@ public:
                                                          //   (draft in the .cpp, not exact)
     CRobloxTreeCtrlNode* addChild(const boost::shared_ptr<RBX::Instance>& child);  // 00426100 (pending Metadata.h)
     void queueChild(const boost::shared_ptr<RBX::Instance>& child);  // 00424580 (bound by populate)
-    bool hasChildren();                                  // 00425050 (TVIF_CHILDREN in 00425320; pending Metadata.h)
+    bool hasChildren();                                  // 00425050 (TVIF_CHILDREN in 00425320)
+    void refreshText();
+    void removeChildren();
 
     boost::shared_ptr<RBX::Instance> instance;                       // +0x0c
     std::map<const RBX::Instance*, CRobloxTreeCtrlNode*> children;   // +0x14 (find 00451600, erase 00405ce0)
