@@ -3,8 +3,9 @@
 #include "tool/DragTool.h"
 namespace RBX {
 void GrabTool::onMouseIdle(const UIEvent& input) { onMouseHover(input); }
+static G3D::Vector3 hoverPoint;
 void GrabTool::onMouseHover(const UIEvent& input) {
-    PartInstance* part = getUnlockedPartByLocalCharacter(input);
+    PartInstance* part = getUnlockedPartByLocalCharacter(input, hoverPoint);
     if (!part) cursor = "ArrowFarCursor";
     else if (part->getPartLocked()) cursor = "ArrowCursor";
     else cursor = "DragCursor";
