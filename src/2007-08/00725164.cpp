@@ -1,12 +1,5 @@
-// from server: 61% by colin
-struct CXTIconHandle {
-    void* m_p;
-    unsigned int GetSize(unsigned int flags);
-};
-
-extern "C" unsigned long __stdcall HeapSize(void* heap, unsigned long flags, const void* mem);
-
-unsigned int CXTIconHandle::GetSize(unsigned int flags)
-{
-    return HeapSize(0, flags, m_p);
-}
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O1 /Gy /GS- /MD
+// roc-lib: atl-8.0 atls/atlstr.cpp

@@ -1,24 +1,48 @@
-// from server: 45% by colin
-struct SignalDesc {
-    void init();
-};
+// from server: 100% by EspClaude
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client App/script/Script.cpp
 
-extern "C" void __cdecl sub_418690();
-extern "C" void __cdecl sub_630D23();
+// Candidate translation unit (score above; library headers required).
+#include "script/Script.h"
 
-struct SomeClass {
-    void method();
-};
+#include "network/Player.h"
+#include "util/ContentProvider.h"
+#include "util/Name.h"
+#include "v8datamodel/Team.h"
 
-extern SomeClass g_obj;
+namespace RBX {
 
-void SignalDesc::init()
+char sScript[] = "Script";
+
+char sLocalScript[] = "LocalScript";
+
+// FUNCTION: WEBSERVICE 0x10068d50
+boost::shared_ptr<const std::string> Script::requestCode()
 {
-    static int initialized = 0;
-    if (!(initialized & 1)) {
-        initialized |= 1;
-        sub_418690();
-        g_obj.method();
-        sub_630D23();
-    }
+	if (scriptId.isNull()) {
+		return embeddedSource;
+	}
+
+	return ContentProvider::singleton().requestContentString(scriptId);
 }
+
+} // namespace RBX
+
+template const RBX::Name& RBX::Name::doDeclare<RBX::sTeam>();
+template const RBX::Name& RBX::Name::doDeclare<RBX::Network::sPlayer>();
+template void RBX::Name::callDoDeclare<RBX::sTeam>();
+template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
+
+template class RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>;
+template class RBX::Reflection::
+	Described<RBX::Script, RBX::sScript, RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript> >;
+template class RBX::DescribedCreatable<RBX::Script, RBX::Instance, RBX::sScript>;
+
+template class RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
+template class RBX::Reflection::Described<
+	RBX::LocalScript,
+	RBX::sLocalScript,
+	RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript> >;
+template class RBX::DescribedCreatable<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;

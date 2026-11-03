@@ -1,60 +1,36 @@
-// from server: 63% by colin
-extern "C" {
-    __declspec(dllimport) void* __stdcall GetWindow(void*, unsigned int);
-    __declspec(dllimport) int __stdcall GetWindowRect(void*, void*);
-    __declspec(dllimport) int __stdcall IsWindowVisible(void*);
-    __declspec(dllimport) long __stdcall SendMessageA(void*, unsigned int, unsigned int, long);
-}
+// from server: 95% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS- /MD
+// roc-lib: xtp-11.2.2-vc8-shared-mfc roc_espclaude_76e8a05d1aa4f57f.cpp
 
-struct CXTPDockBar {
-    char pad[0x20];
-    void* m_hWnd;
-    char pad2[0x48];
-    void* m_pDockSite;
-    int Method(void*, unsigned int);
-};
-
-extern void* __stdcall func_007383be(void*);
-extern void* __stdcall func_006321d0();
-extern void* __stdcall func_006301c0(void*);
-extern void __stdcall func_006309f4(void*, void*);
-
-int CXTPDockBar::Method(void* param1, unsigned int param2)
+// Candidate translation unit (score above; library headers required).
+// 2007-08 CXTPDockBar::OnPrintClient: older XTP also prints visible children (PRF_CHILDREN).
+#include "stdafx.h"
+LRESULT CXTPDockBar::OnPrintClient(WPARAM wParam, LPARAM lParam)
 {
-    void* pWnd = func_007383be(param1);
-    if (pWnd != 0)
-        return 1;
+	CDC* pDC = CDC::FromHandle((HDC)wParam);
+	if (pDC)
+	{
+		m_pCommandBars->GetPaintManager()->FillDockBar(pDC, this);
 
-    void* pDock = func_006321d0();
-    void* pVtbl = *(void**)pDock;
-    void* pFunc = *(void**)((char*)pVtbl + 0xa0);
-    ((void (__thiscall*)(void*, void*, void*))pFunc)(pDock, pWnd, this);
+		if (lParam & PRF_CHILDREN)
+		{
+			CWnd* pWnd = GetWindow(GW_CHILD);
+			while (pWnd)
+			{
+				if (pWnd->IsWindowVisible())
+				{
+					CRect rc;
+					GetWindowRect(&rc);
+					pWnd->ScreenToClient(&rc);
+					pDC->SetViewportOrg(-rc.left, -rc.top);
+					pWnd->SendMessage(WM_PRINT, (WPARAM)pDC->m_hDC, lParam);
+				}
+				pWnd = pWnd->GetWindow(GW_HWNDNEXT);
+			}
+		}
+	}
 
-    if ((param2 & 0x10) == 0)
-        return 1;
-
-    void* hWnd = GetWindow(this->m_hWnd, 5);
-    void* pChild = func_006301c0(hWnd);
-    if (pChild == 0)
-        return 1;
-
-    while (1) {
-        void* hChild = *(void**)((char*)pChild + 0x20);
-        if (IsWindowVisible(hChild)) {
-            struct { int left, top, right, bottom; } rect;
-            GetWindowRect(this->m_hWnd, &rect);
-            func_006309f4(pChild, &rect);
-            int x = -rect.left;
-            int y = -rect.top;
-            void* pVtbl2 = *(void**)pWnd;
-            void* pFunc2 = *(void**)((char*)pVtbl2 + 0x40);
-            ((void (__thiscall*)(void*, void*, int, int))pFunc2)(pWnd, &rect, x, y);
-            SendMessageA(*(void**)((char*)pChild + 0x20), 0x317, *(unsigned int*)((char*)pWnd + 4), rect.left);
-        }
-        void* hNext = GetWindow(*(void**)((char*)pChild + 0x20), 2);
-        pChild = func_006301c0(hNext);
-        if (pChild == 0)
-            break;
-    }
-    return 1;
+	return TRUE;
 }

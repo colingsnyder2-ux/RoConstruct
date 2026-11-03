@@ -1,17 +1,27 @@
-// from server: 83% by colin
-struct CWebToolbox
-{
-    void sub_466910(int a, int b, int c);
+// from server: 100% by EspClaude
+// roc 2007-08 00466910  unit: CWebToolbox
+class CView;
+class CWnd {
+public:
+    CWnd* SetFocus();
+protected:
+    long Default();
 };
-
-extern "C" void __stdcall sub_63023E();
-extern "C" void __stdcall sub_630004();
-
-void CWebToolbox::sub_466910(int a, int b, int c)
+class CFormView : public CWnd {
+protected:
+    void OnActivateView(int bActivate, CView* pActivateView, CView* pDeactiveView);
+};
+class CWebToolbox : public CFormView {
+    char pad[0xf4];
+    CWnd* m_browser;
+public:
+    void OnActivateView(int bActivate, CView* pActivateView, CView* pDeactiveView);
+    void OnActivate(unsigned int nState, CWnd* pWndOther, int bMinimized);
+};
+void CWebToolbox::OnActivate(unsigned int, CWnd*, int)
 {
-    sub_63023E();
-    if (*(int*)((char*)this + 0xf4) != 0)
-    {
-        sub_630004();
-    }
+    Default();
+    if (m_browser)
+        m_browser->SetFocus();
 }
+

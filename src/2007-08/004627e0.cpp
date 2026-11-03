@@ -1,218 +1,115 @@
-// from server: 44% by colin
-// roc-lang: cpp
+// from server: 92% by EspClaude
 // roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs gui/GUI.cpp
+// from server: 100% by king_originala
+// roc 2008-06 00466880  unit: RBX::VSelection::?$FilteredListener  size: 150 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 00466880
+//
+// 00466880  6aff                 push -1
+// 00466882  6836357c00           push 0x7c3536
+// 00466887  64a100000000         mov eax, dword ptr fs:[0]
+// 0046688d  50                   push eax
+// 0046688e  64892500000000       mov dword ptr fs:[0], esp
+// 00466895  51                   push ecx
+// 00466896  53                   push ebx
+// 00466897  55                   push ebp
+// 00466898  56                   push esi
+// 00466899  8bf1                 mov esi, ecx
+// 0046689b  57                   push edi
+// 0046689c  89742410             mov dword ptr [esp + 0x10], esi
+// 004668a0  e81b252b00           call 0x718dc0
+// 004668a5  8d9e90010000         lea ebx, [esi + 0x190]
+// 004668ab  33ed                 xor ebp, ebp
+// 004668ad  8bcb                 mov ecx, ebx
+// 004668af  896c241c             mov dword ptr [esp + 0x1c], ebp
+// 004668b3  e898f4f9ff           call 0x405d50
+// 004668b8  8dbe94010000         lea edi, [esi + 0x194]
+// 004668be  8bcf                 mov ecx, edi
+// 004668c0  c644241c01           mov byte ptr [esp + 0x1c], 1
+// 004668c5  e816f9ffff           call 0x4661e0
+// 004668ca  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 004668ce  c70778bb8100         mov dword ptr [edi], 0x81bb78
+// 004668d4  c706c4bb8100         mov dword ptr [esi], 0x81bbc4
+// 004668da  c74654b0bb8100       mov dword ptr [esi + 0x54], 0x81bbb0
+// 004668e1  c703a8bb8100         mov dword ptr [ebx], 0x81bba8
+// 004668e7  c70790bb8100         mov dword ptr [edi], 0x81bb90
+// 004668ed  89aeb8010000         mov dword ptr [esi + 0x1b8], ebp
+// 004668f3  89aebc010000         mov dword ptr [esi + 0x1bc], ebp
+// 004668f9  89aec0010000         mov dword ptr [esi + 0x1c0], ebp
+// 004668ff  5f                   pop edi
+// 00466900  89aec4010000         mov dword ptr [esi + 0x1c4], ebp
+// 00466906  8bc6                 mov eax, esi
+// 00466908  5e                   pop esi
+// 00466909  5d                   pop ebp
+// 0046690a  5b                   pop ebx
+// 0046690b  64890d00000000       mov dword ptr fs:[0], ecx
+// 00466912  83c410               add esp, 0x10
+// 00466915  c3                   ret 
 
-// Candidate translation unit (score above; library headers required).
-#include "gui/Gui.h"
+extern unsigned long baseTable[];
+extern unsigned long secondaryTable[];
+extern unsigned long registryTable[];
+extern unsigned long listenerBaseTable[];
+extern unsigned long listenerTable[];
 
-namespace RBX
+struct Base {
+    unsigned long* volatile tablePointer;
+    char padding0[0x50];
+    unsigned long* volatile secondaryTable;
+    char padding1[0x138];
+
+    Base();
+    ~Base();
+};
+
+struct S {
+    unsigned long* volatile tablePointer;
+
+    S();
+    ~S();
+    S* initialize();
+};
+
+inline S::S()
 {
-	const G3D::Color4& GuiItem::disabledFill()
-	{
-		static G3D::Color4 c(0.7f, 0.7f, 0.7f, 0.5f);
-		return c;
-	}
+    initialize();
+}
 
-	const G3D::Color4& GuiItem::translucentBackdrop()
-	{
-		static G3D::Color4 c(0.6f, 0.6f, 0.6f, 0.6f);
-		return c;
-	}
+struct ListenerBase {
+    unsigned long* volatile tablePointer;
+    char padding[0x20];
 
-	G3D::Vector2 GuiRoot::canvasSize;
-	G3D::Matrix4 GuiRoot::oldProjectionMatrix;
-	G3D::CoordinateFrame GuiRoot::oldCameraWorld;
+    ListenerBase();
+    ~ListenerBase();
+};
 
-	GuiItem::GuiItem() 
-	{
-		setName("Unnamed GuiItem");
-	}
+struct Listener : ListenerBase {
+    Listener();
+};
 
-	const GuiItem* GuiItem::getGuiItem(int index) const
-	{
-		return dynamic_cast<const GuiItem*>(getChild(index));
-	}
+inline Listener::Listener()
+{
+    tablePointer = listenerBaseTable;
+}
 
-	GuiItem* GuiItem::getGuiItem(int index)
-	{
-		return dynamic_cast<GuiItem*>(getChild(index));
-	}
+struct FilteredListener : Base {
+    S registryEntry;
+    Listener listener;
+    volatile unsigned long first;
+    volatile unsigned long second;
+    volatile unsigned long third;
+    volatile unsigned long fourth;
 
-	GuiResponse GuiItem::processNonFocus(const GuiEvent& event)
-	{
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			GuiItem* current = getGuiItem((int)i);
+    FilteredListener();
+};
 
-			if (current && current != focus.get())
-			{
-				GuiResponse itemResponse = current->process(event);
-				if (itemResponse.wasUsed())
-				{
-					this->loseFocus();
-
-					focus = shared_from(current);
-					focus->loseFocus();
-
-					return itemResponse;
-				}
-			}
-		}
-
-		return GuiResponse::notUsed();
-	}
-
-	void GuiItem::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
-	{
-		if (instance == focus)
-			loseFocus();
-
-		Instance::onDescendentRemoving(instance);
-	}
-
-	Rect GuiItem::getMyRect() const
-	{
-		G3D::Vector2 pos = getPosition();
-		return Rect(pos, pos + getSize());
-	}
-
-	const GuiItem* GuiItem::getGuiParent() const
-	{
-		return dynamic_cast<const GuiItem*>(getParent());
-	}
-	
-	GuiResponse GuiItem::process(const GuiEvent& event)
-	{
-		if (event.isMouseEvent() && event.eventType == UIEvent::MOUSE_IDLE)
-			return GuiResponse::notUsed();
-
-		if (focus)
-		{
-			if (focus->canLoseFocus())
-			{
-				GuiResponse response = processNonFocus(event);
-				if (response.wasUsed())
-					return response;
-			}
-
-			GuiResponse focusResponse = focus->process(event);
-			if (focusResponse.wasUsed())
-				return focusResponse;
-
-			loseFocus();
-		}
-
-		RBXASSERT(!focus);
-		return processNonFocus(event);
-	}
-
-	void TopMenuBar::init()
-	{
-		layoutStyle = Layout::HORIZONTAL;
-		backdropColor = G3D::Color4::clear();
-		visible = true;
-	}
-
-	G3D::Vector2 TopMenuBar::getSize() const
-	{
-		G3D::Vector2 size(0.0f, 0.0f);
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			const GuiItem* current = getGuiItem((int)i);
-
-			if (current)
-			{
-				G3D::Vector2 childSize = current->getSize();
-				switch (layoutStyle)
-				{
-				case Layout::VERTICAL:
-					size.x = G3D::max(size.x, childSize.x);
-					size.y += childSize.y;
-					break;
-				case Layout::HORIZONTAL:
-					size.x += childSize.x;
-					size.y = G3D::max(size.y, childSize.y);
-					break;
-				}
-			}
-		}
-
-		return size;
-	}
-
-	void TopMenuBar::render2d(Adorn* adorn)
-	{
-		if (isVisible())
-		{
-			if (backdropColor != G3D::Color4::clear())
-			{
-				adorn->rect2d(getMyRect2D(), backdropColor);
-			}
-
-			for (size_t i = 0; i < numChildren(); i++)
-			{
-				GuiItem* current = getGuiItem((int)i);
-				if (current)
-					current->render2d(adorn);
-			}
-		}
-	}
-
-	GuiResponse TopMenuBar::process(const GuiEvent& event)
-	{
-		if (isVisible())
-		{
-			GuiResponse response = GuiItem::process(event);
-			if (response.wasUsed())
-			{
-				return response;
-			}
-
-			if (backdropColor.a > 0.0f && event.isMouseEvent() && getMyRect().pointInRect(event.mousePosition))
-			{
-				return GuiResponse::used();
-			}
-		}
-
-		return GuiResponse::notUsed();
-	}
-
-	void RelativePanel::init(const Layout& layout)
-	{
-		setName("RelativePanel");
-		layoutStyle = layout.layoutStyle;
-		backdropColor = layout.backdropColor;
-		xLocation = layout.xLocation;
-		yLocation = layout.yLocation;
-		offset = layout.offset;
-	}
-
-	GuiRoot::GuiRoot() 
-	{
-		setName("GuiRoot");
-	}
-
-	int GuiRoot::normalizedFontSize(int fontSize)
-	{
-		static G3D::Vector2 percentSize(100.0f, 75.0f);
-		return G3D::iRound(floorf(fontSize * toPixelSize(percentSize).x * 0.001f));
-	}
-
-	void GuiRoot::render2d(Adorn* adorn)
-	{
-		short height = static_cast<short>(adorn->getHeight());
-		short width = static_cast<short>(adorn->getWidth());
-
-		canvasSize = G3D::Vector2(width, height);
-
-		for (size_t i = 0; i < numChildren(); i++)
-		{
-			GuiItem* current = getGuiItem((int)i);
-			if (current)
-				current->render2d(adorn);
-		}
-	}
+FilteredListener::FilteredListener()
+{
+    tablePointer = baseTable;
+    Base::secondaryTable = ::secondaryTable;
+    registryEntry.tablePointer = registryTable;
+    listener.tablePointer = listenerTable;
+    first = 0;
+    second = 0;
+    third = 0;
+    fourth = 0;
 }

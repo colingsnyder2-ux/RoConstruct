@@ -1,65 +1,67 @@
-// from server: 37% by colin
-struct Descriptor {
-    void* vtable;
-    char pad[0x1c];
-    void* name;
+// from server: 98% by EspClaude
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 50727
+
+struct String {
+    const char* c_str() const;
 };
 
-struct EnumDescriptor;
+extern const char* (__thiscall* const string_c_str)(const String*);
 
-struct Item : Descriptor {
-    char pad0[0xcc];
-    int field_f0;
-    char pad1[0x24];
-    void* field_118;
-    const EnumDescriptor* owner;
-    const int value;
-    const unsigned int index;
-    Item(const char* name, unsigned int attributes, int value, unsigned int index, const EnumDescriptor* owner);
-};
-
-struct EnumDescriptor {
-    void* vtable;
-    char pad[0x1c];
-    void* name;
-    char pad2[0xcc];
-    int field_f0;
-    char pad3[0x0c];
-    void* field_100;
-    char pad4[0x14];
-    void* field_118;
-
-    EnumDescriptor(const char* typeName);
-    void convertToValue(unsigned int index, void* variant);
-    void convertToString(unsigned int index, void* str);
-};
-
-extern "C" {
-    const char* __stdcall c_str_std_string(void* str);
+inline const char* String::c_str() const
+{
+    return string_c_str(this);
 }
 
-void __stdcall sub_69a040(void* self, const char* s, void* a, void* b);
-void __stdcall sub_43b5d0(void* self, void* a, void* b);
-void __stdcall sub_698cc0(void* self, unsigned char a);
+struct Name {
+    int unused;
+    String text;
+};
 
-Item::Item(const char* name, unsigned int attributes, int value, unsigned int index, const EnumDescriptor* owner)
-    : Descriptor()
-    , owner(owner)
-    , value(value)
-    , index(index)
+inline const char* NameText(const Name* n, const Name*) { return n->text.c_str(); }
+
+struct Source {
+    virtual void reserved();
+    virtual unsigned char value();
+    Name* name;
+};
+
+struct First {
+    virtual ~First();
+    char padding[0x1c];
+};
+
+struct Second {
+    virtual ~Second();
+    char padding[0xd8];
+    int flag;
+    char tail[0xc];
+};
+
+struct Base : First, Second {
+    Base(const char*, int, int);
+    ~Base();
+    void OnValueChanged(int);
+};
+
+struct Link {
+    virtual ~Link();
+    char padding[0x1c];
+    Link(Source*, int);
+};
+
+struct Item : Base, Link {
+    Source* source;
+    Item(Source*, int);
+    virtual ~Item();
+};
+
+Item::Item(Source* input, int option)
+    : Base(NameText(input->name, input->name), 0, 0),
+      Link(input, option),
+      source(input)
 {
-    const char* s = c_str_std_string((char*)name + 4);
-    sub_69a040(this, s, 0, 0);
-
-    sub_43b5d0((char*)this + 0x100, (void*)owner, (void*)index);
-
-    this->field_f0 = 1;
-    *(void**)this = (void*)0x78dd04;
-    *(void**)((char*)this + 0x20) = (void*)0x78dca4;
-    *(void**)((char*)this + 0x100) = (void*)0x78dc9c;
-    this->field_118 = (void*)owner;
-
-    void** vt = *(void***)owner;
-    unsigned char r = ((unsigned char (__thiscall*)(void*))vt[1])((void*)owner);
-    sub_698cc0(this, r);
+    flag = 1;
+    OnValueChanged(input->value());
 }

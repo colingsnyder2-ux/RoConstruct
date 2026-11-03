@@ -1,47 +1,51 @@
-// from server: 87% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by EspClaude
+// roc 2007-08 00414b30  ctor of an object holding an RBX::Lua::FunctionRef at +0x14
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+namespace boost {
+struct sp_counted_base { void* vptr; volatile long use_count; long weak_count;
+    void add_ref_copy() { _InterlockedIncrement(&use_count); } };
+template<class T> class shared_ptr {
+    T* px; sp_counted_base* pn;
+public:
+    shared_ptr(const shared_ptr& r) : px(r.px), pn(r.pn) { if (pn) pn->add_ref_copy(); }
+};
+}
 
-struct DHTMLWindow {
-    char pad0[8];
-    int field8;
-    int fieldc;
-    int field10;
-    int field14;
-    int field18;
-    int field1c;
-    int field20;
-    int field24;
-    int field28;
-    int field2c;
-    int field30;
-    int field34;
-    DHTMLWindow* init();
+struct lua_State;
+namespace boost { class mutex; }
+
+namespace RBX { namespace Lua {
+class ThreadRef {
+    const boost::shared_ptr<boost::mutex> sync;
+    void* node;
+    ThreadRef* previous;
+    ThreadRef* next;
+    lua_State* L;
+    int threadId;
+    static boost::shared_ptr<boost::mutex> syncSingleton;
+protected:
+    virtual void removeRef();
+public:
+    ThreadRef() : sync(syncSingleton), node(0), previous(0), next(0), L(0), threadId(0) {}
+};
+class FunctionRef : public ThreadRef {
+public:
+    int functionId;
+    FunctionRef() : functionId(0) {}
+protected:
+    virtual void removeRef();
+};
+}}
+
+struct DHTMLWindowItem {
+    int a;
+    int b;
+    int c;
+    int d;
+    int e;
+    RBX::Lua::FunctionRef function;
+    DHTMLWindowItem();
 };
 
-extern int g_8c23f8;
-extern int g_8c23fc;
-
-DHTMLWindow* DHTMLWindow::init()
-{
-    DHTMLWindow* self = this;
-    int zero = 0;
-    self->field8 = zero;
-    self->fieldc = zero;
-    self->field10 = zero;
-    self->field14 = 0x787200;
-    self->field18 = g_8c23f8;
-    int v = g_8c23fc;
-    self->field1c = v;
-    if (v == zero) {
-        _InterlockedExchangeAdd((volatile long*)(v + 4), 1);
-    }
-    self->field20 = zero;
-    self->field24 = zero;
-    self->field28 = zero;
-    self->field2c = zero;
-    self->field30 = zero;
-    self->field14 = 0x787208;
-    self->field34 = zero;
-    return self;
-}
+DHTMLWindowItem::DHTMLWindowItem() : c(0), d(0), e(0) {}

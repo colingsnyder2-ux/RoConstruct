@@ -1,29 +1,27 @@
-// from server: 74% by tester
-struct CRobloxWnd {
-    void m();
-    char pad[0x74];
-    void* field_74;
-    void func_00458540(char arg);
+// from server: 100% by EspClaude
+// roc 2007-08 00456180  unit: CRobloxView
+class CFrameWnd;
+class CWnd {
 };
-
-void CRobloxWnd::func_00458540(char arg) {
-    if (arg == 0) {
-        void* p = this->field_74;
-        if (p != 0) {
-            ((CRobloxWnd*)p)->m();
-        }
-    }
-}
-
-struct CRobloxView {
+class CView : public CWnd {
+protected:
+    void OnActivateFrame(unsigned int nState, CFrameWnd* pFrameWnd);
+};
+class CRobloxWnd {
+public:
+    void OnActivate(bool active);
+};
+class CRobloxView : public CView {
     char pad[0x88];
-    CRobloxWnd wnd;
-    void func_00456180(void* arg1, int arg2);
+    CRobloxWnd m_wnd;
+public:
+    void OnActivateFrame(unsigned int nState, CFrameWnd* pFrameWnd);
 };
-
-extern "C" void __stdcall func_006302a4(CRobloxView* self, void* arg1, int arg2);
-
-void CRobloxView::func_00456180(void* arg1, int arg2) {
-    this->wnd.func_00458540(arg1 != 0 ? 1 : 0);
-    func_006302a4(this, arg1, arg2);
+void CRobloxView::OnActivateFrame(unsigned int nState, CFrameWnd* pFrameWnd)
+{
+    if (nState)
+        m_wnd.OnActivate(true);
+    else
+        m_wnd.OnActivate(false);
+    CView::OnActivateFrame(nState, pFrameWnd);
 }

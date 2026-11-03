@@ -1,27 +1,20 @@
-// from server: 71% by colin
-struct Inner {
-    virtual void f0();
-    virtual void f1();
-    virtual void f2();
-    virtual void f3();
-    virtual void f4();
-    virtual void f(void*, int);
+// from server: 100% by EspClaude
+// roc 2007-08 0042a5b0  unit: CLuaHtmlView
+struct IBase0 { virtual void f0(); };
+struct IBase1 { virtual void f1(); };
+struct CObj : IBase0, IBase1 { };
+struct IProvider {
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4();
+    virtual void Store(IBase1* key, const char* value);
 };
-
-struct S {
-    int m0;
-    char pad[4];
-    Inner* m8;
-    void method(int);
+class CLuaHtmlView {
+    CObj* m_obj;
+    int m_4;
+    IProvider* m_provider;
+public:
+    void Set(const char* value);
 };
-
-void S::method(int a)
+void CLuaHtmlView::Set(const char* value)
 {
-    if (m0 != 0) {
-        Inner* p = m8;
-        p->f((void*)(m0 + 4), a);
-    } else {
-        Inner* p = m8;
-        p->f(0, a);
-    }
+    m_provider->Store(m_obj, value);
 }

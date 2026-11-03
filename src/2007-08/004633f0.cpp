@@ -1,34 +1,32 @@
-// from server: 81% by colin
-struct CSettingsDialog
-{
+// from server: 100% by EspClaude
+// roc 2007-08 004633f0  unit: CSettingsDialog
+struct Vector2 {
+    float x, y;
+    Vector2() {}
+    Vector2(float _x, float _y) : x(_x), y(_y) {}
+    Vector2 operator+(const Vector2& v) const { return Vector2(x + v.x, y + v.y); }
+    Vector2 operator*(double s) const { return Vector2(x * s, y * s); }
+};
+class CSettingsDialog {
     char pad[0x58];
-    float f58;
-    float f5c;
-    float f60;
-    float f64;
-    char pad2[0x8];
-    float f70;
-    float f74;
-
+    Vector2 m_a;
+    Vector2 m_b;
+    char pad2[8];
+    Vector2 m_p;
+public:
     bool check();
 };
-
-extern double G_795b48;
-
 bool CSettingsDialog::check()
 {
-    float a = f58 + f60;
-    float b = f64 + f5c;
-    float c = (float)(a * G_795b48);
-    float d = (float)(b * G_795b48);
-
-    if (f70 < -c)
+    Vector2 size = m_a + m_b;
+    Vector2 half = size * 0.5;
+    if (m_p.x < -half.x)
         return false;
-    if (f70 > c)
+    if (m_p.x > half.x)
         return false;
-    if (f74 < -d)
+    if (m_p.y < -half.y)
         return false;
-    if (f74 > d)
+    if (m_p.y > half.y)
         return false;
     return true;
 }

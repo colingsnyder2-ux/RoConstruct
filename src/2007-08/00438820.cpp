@@ -1,24 +1,30 @@
-// from server: 86% by colin
-struct VColor3
-{
-    float r;
-    float g;
-    float b;
+// from server: 100% by EspClaude
+// roc 2007-08 00438820  G3D::VColor3 XItem: COLORREF (vslot 0xe8) -> Color3
+typedef unsigned char BYTE;
+typedef unsigned short WORD;
+typedef unsigned long DWORD;
+#define GetRValue(rgb) ((BYTE)(rgb))
+#define GetGValue(rgb) ((BYTE)(((WORD)(rgb)) >> 8))
+#define GetBValue(rgb) ((BYTE)((rgb)>>16))
+
+struct S;
+struct VTable {
+    char pad[0xe8];
+    DWORD (__thiscall *getColor)(S*);
+};
+struct Color3 { float r, g, b; };
+
+struct S {
+    VTable* vtable;
+    Color3 color();
 };
 
-struct XItem
+Color3 S::color()
 {
-    VColor3 *convert(VColor3 *out);
-};
-
-VColor3 *XItem::convert(VColor3 *out)
-{
-    unsigned int packed = (*(unsigned int (__thiscall **)(void))((char *)this + 0xE8))();
-    unsigned char r = (unsigned char)packed;
-    unsigned char g = (unsigned char)(packed >> 8);
-    unsigned char b = (unsigned char)(packed >> 16);
-    out->r = (float)r / 255.0;
-    out->g = (float)g / 255.0;
-    out->b = (float)b / 255.0;
-    return out;
+    DWORD value = vtable->getColor(this);
+    Color3 result;
+    result.r = GetRValue(value) / 255.0;
+    result.g = GetGValue(value) / 255.0;
+    result.b = GetBValue(value) / 255.0;
+    return result;
 }

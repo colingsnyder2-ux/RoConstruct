@@ -1,19 +1,5 @@
-// from server: 72% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct CSelectionTreeCtrl {
-    char pad[0xe4];
-    int m_fieldE4;
-    int m_fieldE8;
-    void getPair(int* out);
-};
-
-void CSelectionTreeCtrl::getPair(int* out) {
-    out[0] = m_fieldE4;
-    int* p = (int*)m_fieldE8;
-    out[1] = (int)p;
-    if (p == 0) {
-        _InterlockedExchangeAdd((volatile long*)((char*)p + 4), 1);
-    }
-}
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: templates-boost-1_34_1 roc_espclaude_bfca2b9c5500f09b.cpp

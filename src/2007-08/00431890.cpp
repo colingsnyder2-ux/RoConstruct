@@ -1,29 +1,48 @@
-// from server: 50% by colin
-struct VCMDIFrameWnd_CXTPFrameWndBase
-{
-    char pad_0000[0x17c];
-    void* vtbl_17c;
-    char pad_0180[0x50];
-    void* vtbl_1d0;
-    int field_1d4;
-    int field_1d8;
-    char sub_1dc[4];
+// from server: 76% by EspClaude
+// from server: 100% by EspClaude
+// roc 2008-06 00431040  unit: VCMDIFrameWnd::?$CXTPFrameWndBase  size: 143 bytes
+
+struct FrameA { virtual ~FrameA(); char pad[0x184]; };
+struct FrameB { virtual void b(); char pad[0xac]; };
+struct FrameC { virtual void c(); };
+
+class VCMDIFrameWnd : public FrameA, public FrameB, public FrameC {
+public:
+    VCMDIFrameWnd();
+    virtual ~VCMDIFrameWnd();
 };
 
-extern "C" void __stdcall sub_00442560();
-extern "C" void __stdcall sub_004073c0();
+class CXTPCommandBars;
 
-VCMDIFrameWnd_CXTPFrameWndBase* VCMDIFrameWnd_CXTPFrameWndBase_ctor(VCMDIFrameWnd_CXTPFrameWndBase* self)
+template<class TBase>
+class CXTPCommandBarsSiteBase : public TBase {
+public:
+    CXTPCommandBarsSiteBase() {}
+protected:
+    virtual int PreTranslateMessage(void* pMsg);
+};
+
+template<class TBase>
+class CXTPFrameWndBase : public CXTPCommandBarsSiteBase<TBase> {
+public:
+    CXTPFrameWndBase() : m_pCommandBars(0), m_nState(0) {}
+    CXTPCommandBars* m_pCommandBars;
+    int m_nState;
+};
+
+class Listener {
+public:
+    Listener();
+    virtual ~Listener();
+    char pad[0x20];
+};
+
+class CMainFrame : public CXTPFrameWndBase<VCMDIFrameWnd>, public Listener {
+public:
+    CMainFrame();
+    virtual ~CMainFrame();
+};
+
+CMainFrame::CMainFrame()
 {
-    sub_00442560();
-    self->vtbl_1d0 = (void*)0x788338;
-    self->vtbl_17c = (void*)0x78af60;
-    self->vtbl_1d0 = (void*)0x78af54;
-    self->field_1d4 = 0;
-    self->field_1d8 = 0;
-    sub_004073c0();
-    self->vtbl_17c = (void*)0x78b310;
-    self->vtbl_1d0 = (void*)0x78b304;
-    *(void**)self->sub_1dc = (void*)0x78b2fc;
-    return self;
 }

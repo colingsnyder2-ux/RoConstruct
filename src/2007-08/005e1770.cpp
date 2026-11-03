@@ -1,454 +1,169 @@
-// from server: 41% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8world/SpatialHash.cpp
+// from server: 99% by EspClaude
+// from server: 100% by EspClaude
+// roc 2008-06 006106c0  unit: RBX::BlockBlockContact  size: 356 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 006106c0
+//
+// 006106c0  83ec0c               sub esp, 0xc
+// 006106c3  56                   push esi
+// 006106c4  8b742418             mov esi, dword ptr [esp + 0x18]
+// 006106c8  837e0400             cmp dword ptr [esi + 4], 0
+// 006106cc  7547                 jne 0x610715
+// 006106ce  f60550f0960001       test byte ptr [0x96f050], 1
+// 006106d5  751b                 jne 0x6106f2
+// 006106d7  d9ee                 fldz 
+// 006106d9  830d50f0960001       or dword ptr [0x96f050], 1
+// 006106e0  d91544f09600         fst dword ptr [0x96f044]
+// 006106e6  d91548f09600         fst dword ptr [0x96f048]
+// 006106ec  d91d4cf09600         fstp dword ptr [0x96f04c]
+// 006106f2  8b442414             mov eax, dword ptr [esp + 0x14]
+// 006106f6  d90544f09600         fld dword ptr [0x96f044]
+// 006106fc  d918                 fstp dword ptr [eax]
+// 006106fe  5e                   pop esi
+// 006106ff  d90548f09600         fld dword ptr [0x96f048]
+// 00610705  d95804               fstp dword ptr [eax + 4]
+// 00610708  d9054cf09600         fld dword ptr [0x96f04c]
+// 0061070e  d95808               fstp dword ptr [eax + 8]
+// 00610711  83c40c               add esp, 0xc
+// 00610714  c3                   ret 
+// 00610715  8b0d50f09600         mov ecx, dword ptr [0x96f050]
+// 0061071b  d9ee                 fldz 
+// 0061071d  f6c101               test cl, 1
+// 00610720  7523                 jne 0x610745
+// 00610722  d9c0                 fld st(0)
+// 00610724  83c901               or ecx, 1
+// 00610727  d91544f09600         fst dword ptr [0x96f044]
+// 0061072d  890d50f09600         mov dword ptr [0x96f050], ecx
+// 00610733  d9c1                 fld st(1)
+// 00610735  d91548f09600         fst dword ptr [0x96f048]
+// 0061073b  d9c2                 fld st(2)
+// 0061073d  d9154cf09600         fst dword ptr [0x96f04c]
+// 00610743  eb14                 jmp 0x610759
+// 00610745  d9054cf09600         fld dword ptr [0x96f04c]
+// 0061074b  d90548f09600         fld dword ptr [0x96f048]
+// 00610751  d90544f09600         fld dword ptr [0x96f044]
+// 00610757  d9ca                 fxch st(2)
+// 00610759  d9ca                 fxch st(2)
+// 0061075b  d9542404             fst dword ptr [esp + 4]
+// 0061075f  d9c9                 fxch st(1)
+// 00610761  d9542408             fst dword ptr [esp + 8]
+// 00610765  d9ca                 fxch st(2)
+// 00610767  d954240c             fst dword ptr [esp + 0xc]
+// 0061076b  f6c101               test cl, 1
+// 0061076e  752d                 jne 0x61079d
+// 00610770  ddd9                 fstp st(1)
+// 00610772  83c901               or ecx, 1
+// 00610775  ddd9                 fstp st(1)
+// 00610777  890d50f09600         mov dword ptr [0x96f050], ecx
+// 0061077d  ddd8                 fstp st(0)
+// 0061077f  d9c0                 fld st(0)
+// 00610781  d91544f09600         fst dword ptr [0x96f044]
+// 00610787  d9c1                 fld st(1)
+// 00610789  d91548f09600         fst dword ptr [0x96f048]
+// 0061078f  d9c2                 fld st(2)
+// 00610791  d9154cf09600         fst dword ptr [0x96f04c]
+// 00610797  d9c9                 fxch st(1)
+// 00610799  d9ca                 fxch st(2)
+// 0061079b  d9c9                 fxch st(1)
+// 0061079d  8b54241c             mov edx, dword ptr [esp + 0x1c]
+// 006107a1  d9c9                 fxch st(1)
+// 006107a3  d81a                 fcomp dword ptr [edx]
+// 006107a5  dfe0                 fnstsw ax
+// 006107a7  f6c444               test ah, 0x44
+// 006107aa  7a35                 jp 0x6107e1
+// 006107ac  d9c9                 fxch st(1)
+// 006107ae  d85a04               fcomp dword ptr [edx + 4]
+// 006107b1  dfe0                 fnstsw ax
+// 006107b3  f6c444               test ah, 0x44
+// 006107b6  7a2b                 jp 0x6107e3
+// 006107b8  d85a08               fcomp dword ptr [edx + 8]
+// 006107bb  dfe0                 fnstsw ax
+// 006107bd  f6c444               test ah, 0x44
+// 006107c0  7a23                 jp 0x6107e5
+// 006107c2  ddd8                 fstp st(0)
+// 006107c4  8b442414             mov eax, dword ptr [esp + 0x14]
+// 006107c8  d9442404             fld dword ptr [esp + 4]
+// 006107cc  d918                 fstp dword ptr [eax]
+// 006107ce  5e                   pop esi
+// 006107cf  d9442404             fld dword ptr [esp + 4]
+// 006107d3  d95804               fstp dword ptr [eax + 4]
+// 006107d6  d9442408             fld dword ptr [esp + 8]
+// 006107da  d95808               fstp dword ptr [eax + 8]
+// 006107dd  83c40c               add esp, 0xc
+// 006107e0  c3                   ret 
+// 006107e1  ddd9                 fstp st(1)
+// 006107e3  ddd8                 fstp st(0)
+// 006107e5  f6c101               test cl, 1
+// 006107e8  751d                 jne 0x610807
+// 006107ea  d91544f09600         fst dword ptr [0x96f044]
+// 006107f0  83c901               or ecx, 1
+// 006107f3  d91548f09600         fst dword ptr [0x96f048]
+// 006107f9  890d50f09600         mov dword ptr [0x96f050], ecx
+// 006107ff  d91d4cf09600         fstp dword ptr [0x96f04c]
+// 00610805  eb02                 jmp 0x610809
+// 00610807  ddd8                 fstp st(0)
+// 00610809  8b442420             mov eax, dword ptr [esp + 0x20]
+// 0061080d  50                   push eax
+// 0061080e  8d4c2408             lea ecx, [esp + 8]
+// 00610812  51                   push ecx
+// 00610813  52                   push edx
+// 00610814  6844f09600           push 0x96f044
+// 00610819  56                   push esi
+// 0061081a  e861fdffff           call 0x610580
+// 0061081f  83c414               add esp, 0x14
+// 00610822  eba0                 jmp 0x6107c4
 
-// Candidate translation unit (score above; library headers required).
-#include "v8world/SpatialHash.h"
-
-#include "decomp.h"
-#include "v8world/Assembly2.h"
-#include "v8world/Primitive.h"
-#include "v8world/World.h"
-
-#include <G3D/AABox.h>
-#include <G3D/CollisionDetection.h>
-#include <G3D/Ray.h>
-#include <algorithm>
-#include <cstdlib>
-
-namespace RBX {
-
-// FUNCTION: WEBSERVICE 0x101233c0
-Vector3int32 SpatialHash::realToHashGrid(const Vector3& realPoint)
+// from server: 91% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+struct Vector
 {
-	Vector3 gridPoint = realPoint * hashGridRecip();
+    float x, y, z;
 
-	return Vector3int32::floor(gridPoint);
+    Vector(float, float, float);
+    Vector(const Vector&);
+    bool operator!=(const Vector&) const;
+    static const Vector& zero();
+};
+
+inline Vector::Vector(float a, float b, float c)
+    : x(a), y(b), z(c)
+{
 }
 
-// FUNCTION: WEBSERVICE 0x10123410
-Extents SpatialHash::hashGridToRealExtents(const Vector3& hashGrid)
+inline Vector::Vector(const Vector& v)
+    : x(v.x), y(v.y), z(v.z)
 {
-	return Extents(
-		hashGrid * hashGridSize(),
-		Vector3(hashGrid.x + 1.0f, hashGrid.y + 1.0f, hashGrid.z + 1.0f) * hashGridSize()
-	);
 }
 
-// FUNCTION: WEBSERVICE 0x10123460
-void SpatialHash::computeMinMax(const Extents& extents, Vector3int32& min, Vector3int32& max)
+inline bool Vector::operator!=(const Vector& v) const
 {
-	min = realToHashGrid(extents.min());
-	max = realToHashGrid(extents.max());
+    return x != v.x || y != v.y || z != v.z;
 }
 
-void SpatialHash::removeNodeFromPrimitive(SpatialNode* remove)
+inline const Vector& Vector::zero()
 {
-	SpatialNode* next = remove->nextPrimitiveLink;
-	SpatialNode* prev = remove->prevPrimitiveLink;
-
-	if (next != NULL) {
-		next->prevPrimitiveLink = prev;
-	}
-
-	if (prev != NULL) {
-		prev->nextPrimitiveLink = next;
-	}
-	else {
-		remove->primitive->spatialNodes = next;
-	}
+    static const Vector value(0.0f, 0.0f, 0.0f);
+    return value;
 }
 
-// FUNCTION: WEBSERVICE 0x10123500
-bool SpatialHash::getNextGrid(Vector3int32& grid, const G3D::Ray& unitRay, float maxDistance)
+struct Data
 {
-	Vector3int32 low;
-	Vector3int32 high;
+    unsigned int unused;
+    unsigned int count;
+};
 
-	for (int a = 0; a < 3; a++) {
-		low[a] = unitRay.direction[a] < 0.0f ? -1 : 0;
-		high[a] = unitRay.direction[a] > 0.0f ? 1 : 0;
-	}
+extern void __cdecl calculate(
+    Data*, const Vector*, const Vector*, Vector*, unsigned int);
 
-	Vector3 gridF = grid.toVector3();
-
-	float maxCheck = maxDistance + 2.0f * hashGridSize();
-
-	float maxDistanceSquared = maxCheck * maxCheck;
-
-	for (int nz = 1; nz <= 3; nz++) {
-		for (int i = low.x; i <= high.x; i++) {
-			for (int j = low.y; j <= high.y; j++) {
-				for (int k = low.z; k <= high.z; k++) {
-					if (abs(i) + abs(j) + abs(k) == nz) {
-						Vector3 offset((float) i, (float) j, (float) k);
-
-						Extents box = hashGridToRealExtents(gridF + offset);
-
-						G3D::AABox aaBox(box.min(), box.max());
-
-						Vector3 location;
-
-						if (G3D::CollisionDetection::collisionLocationForMovingPointFixedAABox(
-								unitRay.origin,
-								unitRay.direction,
-								aaBox,
-								location
-							)) {
-							if ((location - unitRay.origin).squaredLength() < maxDistanceSquared) {
-								grid = Vector3int32::floor(gridF + offset);
-
-								return true;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	return false;
-}
-
-// FUNCTION: WEBSERVICE 0x10123840
-void SpatialHash::removeNodeFromHash(SpatialNode* remove)
+Vector __cdecl reconstruct(
+    Data* data, const Vector& target, unsigned int parameter)
 {
-	SpatialNode** link = &nodes[remove->hashId];
+    if (data->count == 0)
+        return Vector::zero();
 
-	while (*link != remove) {
-		link = &(*link)->nextHashLink;
-	}
-	*link = remove->nextHashLink;
+    Vector result(Vector::zero());
+    if (target != Vector::zero())
+        calculate(data, &Vector::zero(), &target, &result, parameter);
+
+    return result;
 }
-
-int SpatialHash::getHash(const Vector3int32& grid)
-{
-	return (grid.x * -2979 ^ grid.y * 16543 ^ grid.z * -73) & (numBuckets() - 1);
-}
-
-// FUNCTION: WEBSERVICE 0x10123890
-SpatialNode* SpatialHash::findNode(Primitive* p, const Vector3int32& grid)
-{
-	int hash = getHash(grid);
-
-	SpatialNode* node = nodes[hash];
-
-	while (node->primitive != p || node->gridId != grid) {
-		node = node->nextHashLink;
-	}
-
-	return node;
-}
-
-// FUNCTION: WEBSERVICE 0x10123910
-bool SpatialHash::shareCommonGrid(Primitive* me, Primitive* other)
-{
-	for (SpatialNode* node = me->spatialNodes; node != NULL; node = node->nextPrimitiveLink) {
-		for (SpatialNode* hashNode = nodes[node->hashId]; hashNode != NULL; hashNode = hashNode->nextHashLink) {
-			if (hashNode->primitive == other && hashNode->gridId == node->gridId) {
-				return true;
-			}
-		}
-	}
-
-	return false;
-}
-
-void SpatialHash::returnNode(SpatialNode* node)
-{
-	node->nextHashLink = extraNodes;
-	nodesOut--;
-	extraNodes = node;
-}
-
-// FUNCTION: WEBSERVICE 0x10123990
-void SpatialHash::destroyNode(SpatialNode* destroy)
-{
-	removeNodeFromPrimitive(destroy);
-
-	removeNodeFromHash(destroy);
-
-	Vector3int32 destroyGrid = destroy->gridId;
-
-	SpatialNode* node = nodes[destroy->hashId];
-
-	while (node != NULL) {
-		if (node->gridId == destroyGrid) {
-			Primitive* me = destroy->primitive;
-			Primitive* other = node->primitive;
-
-			if (Primitive::getContact(me, other) != NULL) {
-				if (!shareCommonGrid(me, other)) {
-					contactManager->onReleasePair(me, other);
-				}
-			}
-		}
-
-		node = node->nextHashLink;
-	}
-
-	returnNode(destroy);
-}
-
-SpatialNode* SpatialHash::newNode()
-{
-	nodesOut++;
-
-	if (extraNodes != NULL) {
-		SpatialNode* node = extraNodes;
-
-		extraNodes = node->nextHashLink;
-
-		return node;
-	}
-
-	return new SpatialNode();
-}
-
-void SpatialHash::insertNodeToPrimitive(SpatialNode* node, Primitive* p, const Vector3int32& grid, int hash)
-{
-	node->primitive = p;
-	node->gridId = grid;
-	node->hashId = hash;
-
-	SpatialNode* first = p->spatialNodes;
-
-	p->spatialNodes = node;
-
-	node->nextPrimitiveLink = first;
-	node->prevPrimitiveLink = NULL;
-
-	if (first != NULL) {
-		first->prevPrimitiveLink = node;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10123a70
-void SpatialHash::addNode(Primitive* p, const Vector3int32& grid)
-{
-	int hash = getHash(grid);
-
-	SpatialNode* node = newNode();
-
-	insertNodeToPrimitive(node, p, grid, hash);
-
-	SpatialNode* other = nodes[hash];
-
-	node->nextHashLink = other;
-	nodes[hash] = node;
-
-	int numNodes = 1;
-
-	while (other != NULL) {
-		Primitive* otherPrimitive = other->primitive;
-
-		numNodes++;
-
-		if (otherPrimitive != p && other->gridId == grid) {
-			if (Primitive::getContact(p, otherPrimitive) == NULL) {
-				contactManager->onNewPair(p, otherPrimitive);
-			}
-		}
-
-		other = other->nextHashLink;
-	}
-
-	maxBucket = std::max(maxBucket, numNodes);
-}
-
-// FUNCTION: WEBSERVICE 0x10123bd0
-void SpatialHash::onPrimitiveAdded(Primitive* p)
-{
-	Vector3int32 newMin;
-	Vector3int32 newMax;
-
-	const Extents& extents = p->getFastFuzzyExtents();
-
-	computeMinMax(extents, newMin, newMax);
-
-	p->oldSpatialMin = newMin;
-	p->oldSpatialMax = newMax;
-
-	for (int i = newMin.x; i <= newMax.x; i++) {
-		for (int j = newMin.y; j <= newMax.y; j++) {
-			for (int k = newMin.z; k <= newMax.z; k++) {
-				addNode(p, Vector3int32(i, j, k));
-			}
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10123cc0
-void SpatialHash::changeMinMax(Primitive* p, const Extents& change, const Extents& oldBox, const Extents& newBox)
-{
-	Vector3int32 min = Vector3int32::floor(change.min());
-	Vector3int32 max = Vector3int32::floor(change.max());
-
-	for (int i = min.x; i <= max.x; i++) {
-		for (int j = min.y; j <= max.y; j++) {
-			for (int k = min.z; k <= max.z; k++) {
-				bool inNew = newBox.contains(Vector3((float) i, (float) j, (float) k));
-				bool inOld = oldBox.contains(Vector3((float) i, (float) j, (float) k));
-
-				if (inNew) {
-					if (!inOld) {
-						addNode(p, Vector3int32(i, j, k));
-					}
-				}
-				else if (inOld) {
-					SpatialNode* node = findNode(p, Vector3int32(i, j, k));
-
-					destroyNode(node);
-				}
-			}
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10123e20
-void SpatialHash::primitiveExtentsChanged(Primitive* p)
-{
-	Vector3int32 newMin;
-	Vector3int32 newMax;
-
-	const Extents& extents = p->getFastFuzzyExtents();
-
-	computeMinMax(extents, newMin, newMax);
-
-	if (newMin != p->oldSpatialMin || newMax != p->oldSpatialMax) {
-		Extents newBox(newMin, newMax);
-		Extents oldBox(p->oldSpatialMin, p->oldSpatialMax);
-
-		if (newBox.overlapsOrTouches(oldBox)) {
-			Extents unionBox = newBox;
-			unionBox.unionWith(oldBox);
-
-			changeMinMax(p, unionBox, oldBox, newBox);
-		}
-		else {
-			changeMinMax(p, oldBox, oldBox, newBox);
-			changeMinMax(p, newBox, oldBox, newBox);
-		}
-
-		p->oldSpatialMin = newMin;
-		p->oldSpatialMax = newMax;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10123fb0
-void SpatialHash::onPrimitiveRemoved(Primitive* p)
-{
-	while (p->spatialNodes != NULL) {
-		destroyNode(p->spatialNodes);
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10123fe0
-void SpatialHash::onPrimitiveExtentsChanged(Primitive* p)
-{
-	primitiveExtentsChanged(p);
-}
-
-// FUNCTION: WEBSERVICE 0x10123ff0
-void SpatialHash::onAllPrimitivesMoved()
-{
-	const G3D::Array<Primitive*>& primitives = world->getPrimitives();
-
-	for (int i = 0; i < primitives.size(); i++) {
-		Primitive* p = primitives[i];
-
-		Assembly* a = p->getAssembly();
-
-		if (a->getSleepStatus() == Sim::AWAKE) {
-			primitiveExtentsChanged(p);
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10124030
-void SpatialHash::getPrimitivesInGrid(const Vector3int32& grid, G3D::Array<Primitive*>& found)
-{
-	int hash = getHash(grid);
-
-	SpatialNode* node = nodes[hash];
-
-	while (node != NULL) {
-		if (node->gridId == grid) {
-			found.append(node->primitive);
-		}
-
-		node = node->nextHashLink;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10124100
-void SpatialHash::getPrimitivesTouchingExtents(
-	const Extents& extents,
-	const Primitive* ignore,
-	G3D::Array<Primitive*>& answer
-)
-{
-	Vector3int32 min;
-	Vector3int32 max;
-
-	computeMinMax(extents, min, max);
-
-	G3D::Array<Primitive*> foundThisGrid;
-
-	for (int i = min.x; i <= max.x; i++) {
-		for (int j = min.y; j <= max.y; j++) {
-			for (int k = min.z; k <= max.z; k++) {
-				foundThisGrid.resize(0, false);
-
-				getPrimitivesInGrid(Vector3int32(i, j, k), foundThisGrid);
-
-				for (int index = 0; index < foundThisGrid.size(); index++) {
-					Primitive* p = foundThisGrid[index];
-
-					if (p != ignore && !answer.contains(p) && extents.overlapsOrTouches(p->getFastFuzzyExtents())) {
-						answer.append(p);
-					}
-				}
-			}
-		}
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x101242e0
-SpatialHash::~SpatialHash()
-{
-	for (unsigned int i = 0; i < numBuckets(); i++) {
-		if (nodes[i] != NULL) {
-			while (nodes[i] != NULL) {
-				SpatialNode* temp = nodes[i];
-
-				nodes[i] = nodes[i]->nextHashLink;
-
-				delete temp;
-
-				nodesOut--;
-			}
-		}
-	}
-
-	while (extraNodes != NULL) {
-		SpatialNode* temp = extraNodes;
-
-		extraNodes = temp->nextHashLink;
-
-		delete temp;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10124480
-SpatialHash::SpatialHash(World* world, ContactManager* contactManager)
-	: world(world), contactManager(contactManager), extraNodes(NULL), nodesOut(0), maxBucket(0)
-{
-	std::vector<SpatialNode*> temp(numBuckets(), NULL);
-
-	nodes.swap(temp);
-}
-
-} // namespace RBX

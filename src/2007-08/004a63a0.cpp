@@ -1,28 +1,19 @@
-// from server: 86% by colin
-// roc 2007-08 004a63a0  unit: FilePacketLogger  size: 58 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004a63a0
+// from server: 100% by EspClaude
+// roc 2007-08 004a63a0  FilePacketLogger scalar deleting destructor
+#include <stdio.h>
 
-extern "C" int __cdecl fclose(void*);
-extern "C" void __cdecl operator_delete(void*);
-extern "C" void __cdecl sub_4B6CD0();
-
-struct FilePacketLogger {
-    void* vtable;
-    char pad[0x208];
-    void* file;
-    void* __thiscall destroy(unsigned int flags);
+class PluginInterface { public: virtual ~PluginInterface(); };
+class PacketLogger : public PluginInterface {
+public:
+    PacketLogger();
+    ~PacketLogger();
+    char data[0x208];
+};
+class FilePacketLogger : public PacketLogger {
+    FILE* file;
+public:
+    FilePacketLogger();
+    ~FilePacketLogger() { if (file) fclose(file); }
 };
 
-void* FilePacketLogger::destroy(unsigned int flags)
-{
-    void* p = this->file;
-    this->vtable = (void*)0x79d224;
-    if (p) {
-        fclose(p);
-    }
-    sub_4B6CD0();
-    if (flags & 1) {
-        operator_delete(this);
-    }
-    return this;
-}
+FilePacketLogger::FilePacketLogger() : file(0) {}

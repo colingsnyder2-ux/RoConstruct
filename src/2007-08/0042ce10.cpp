@@ -1,30 +1,40 @@
-// from server: 40% by colin
-struct CLuaHtmlViewBinder
-{
-    char pad0[4];
-    char field4[0x14];
-    char field18;
-    void Init();
+// from server: 93% by EspClaude
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espclaude_9613e5a148134ff1.cpp
+
+// Candidate translation unit (score above; library headers required).
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
+
+struct lua_State;
+class Service {
+public:
+    void setCallback(boost::function0<void> f);
+};
+extern Service* theService;
+
+class BinderBase {
+public:
+    virtual ~BinderBase();
 };
 
-extern "C" void __stdcall sub_42B150(void*, void*, int);
-extern "C" void __stdcall sub_41E0F0(void*, void*);
-extern "C" void __stdcall sub_42CD40(void*);
-extern "C" void __stdcall sub_417750(void*);
+class Binder : public BinderBase, public boost::enable_shared_from_this<Binder> {
+public:
+    char pad[0x28 - 0xc];
+    bool bound;
+    void unbind();
+    void bind();
+};
 
-void CLuaHtmlViewBinder::Init()
+void Binder::bind()
 {
-    if (field18 != 0)
-        return;
-
-    char buf1[0xc];
-    char buf2[0x10];
-    char buf3[8];
-
-    sub_41E0F0(&field4[0], buf3);
-    sub_42B150(buf2, (void*)0x42B8F0, 0);
-    sub_42CD40(buf1);
-    sub_417750(*(void**)0x8BAFCC);
-
-    field18 = 1;
+    if (!bound) {
+        theService->setCallback(boost::bind(&Binder::unbind, shared_from_this()));
+        bound = true;
+    }
 }

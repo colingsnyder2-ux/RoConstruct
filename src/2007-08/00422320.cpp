@@ -1,37 +1,47 @@
-// from server: 87% by colin
-struct CRobloxTreeCtrlNode {
-    char pad[0x2c];
-    unsigned char flags2c;
-    unsigned char flags2d;
-    char pad2[0x30 - 0x2e];
-    void* ptr30;
-    char pad3[0x44 - 0x34];
-    int val44;
-    void SetState(int);
+// from server: 100% by EspClaude
+// roc 2007-08 00422320  unit: CRobloxTreeCtrlNode
+class CTreeLike {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
+    virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
+    virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
+    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
+    virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
+    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34();
+    virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
+    virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44();
+    virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49();
+    virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54();
+    virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59();
+    virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64();
+    virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
+    virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73(); virtual void v74();
+    virtual void v75(); virtual void v76(); virtual void v77(); virtual void v78();
+    virtual unsigned int GetItemState(int hItem, unsigned int mask);
+    virtual void v80();
+    virtual int SetItemState(int hItem, unsigned int state, unsigned int mask);
 };
-
-void CRobloxTreeCtrlNode::SetState(int state)
+class CRobloxTreeCtrlNode {
+    char pad[0x2c];
+    unsigned char m_flags;
+    bool m_locked;
+    char pad2[2];
+    CTreeLike* m_tree;
+    char pad3[0x10];
+    int m_hItem;
+public:
+    void Select(int unused);
+};
+void CRobloxTreeCtrlNode::Select(int)
 {
-    if (flags2d != 0)
-    {
-        flags2c &= 0xfd;
+    if (m_locked) {
+        m_flags &= ~2;
         return;
     }
-
-    void** vtbl = *(void***)ptr30;
-    int (__stdcall *fn1)(int, int) = (int (__stdcall *)(int, int))vtbl[0x13c / 4];
-    int r1 = fn1(val44, 8);
-    if ((r1 | 0x20) != 0)
-    {
-        flags2c |= 2;
-        void** vtbl2 = *(void***)ptr30;
-        int (__stdcall *fn2)(int, int) = (int (__stdcall *)(int, int))vtbl2[0x13c / 4];
-        int r2 = fn2(val44, 8);
-        if ((r2 | 0x80) != 0)
-        {
-            void** vtbl3 = *(void***)ptr30;
-            int (__stdcall *fn3)(int, int, int) = (int (__stdcall *)(int, int, int))vtbl3[0x144 / 4];
-            fn3(val44, 0x20, 8);
-        }
+    if (m_tree->GetItemState(m_hItem, 8) | 0x20) {
+        m_flags |= 2;
+        if (m_tree->GetItemState(m_hItem, 8) | 0x80)
+            m_tree->SetItemState(m_hItem, 0x20, 8);
     }
 }

@@ -1,90 +1,126 @@
-// from server: 36% by colin
-struct Jumping {
-    char pad0[4];
-    int field4;
-    char pad8[0x14];
-    int field1c;
-    char pad20[0xc];
-    char field2c;
-    char pad2d[3];
-    float field30;
-    void onComputeForceImpl(float dt);
+// from server: 75% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espeon_jumpcomparison_6b4b2fffa050f82d.cpp
+
+// Candidate translation unit (score above; library headers required).
+#pragma float_control(precise, off, push)
+
+struct Vector3 {
+    float x, y, z;
 };
 
-extern float g_7c4ab8;
-extern float g_7c4abc;
-
-extern "C" void __stdcall sub_62d6c0();
-extern "C" int __stdcall sub_5a6270(int);
-extern "C" void __stdcall sub_530100();
-extern "C" float __stdcall sub_624d80();
-extern "C" void __stdcall sub_5eb4a0();
-extern "C" void __stdcall sub_5eb2e0();
-extern "C" void __stdcall sub_5cf030();
-
-void Jumping::onComputeForceImpl(float dt)
+__forceinline const float& minimum(const float& a, const float& b)
 {
-    sub_62d6c0();
-    field30 = field30 - dt;
-    if (field2c != 0)
+    return b < a ? b : a;
+}
+
+struct ForceReceiver {
+    void apply(const Vector3*, const Vector3*);
+};
+
+struct BodyLink {
+    char reserved[0x2c];
+    ForceReceiver* receiver;
+};
+
+struct MassSource {
+    float getMass();
+};
+
+struct Body {
+    char reserved0[0x10];
+    BodyLink* link;
+    char reserved1[0x14];
+    MassSource* massSource;
+    char reserved2[0x60];
+    float mass;
+    char reserved3[0x38];
+    float height;
+
+    const void* get();
+    const Vector3* getVelocity();
+    void apply(const Vector3*);
+};
+
+struct Owner {
+    Body* getBody();
+};
+
+struct BodyHolder {
+    char reserved[0x10];
+    Body* body;
+};
+
+struct Character {
+    char reserved[0xa0];
+    BodyHolder* holder;
+};
+
+extern const float jumpScale;
+extern const float jumpHeight;
+
+struct Jumping {
+    char reserved0[0x11];
+    unsigned char finished;
+    char reserved1[0x1a];
+    Vector3 position;
+
+    void baseUpdate(float);
+    Owner* getOwner();
+    Character* getCharacter();
+    void update(float);
+};
+
+void Jumping::update(float dt)
+{
+    baseUpdate(dt);
+    if (finished)
         return;
 
-    int esi = sub_5a6270(field4);
-    if (esi != 0)
-    {
-        sub_530100();
-        float f = (g_7c4abc - *(float*)(esi + 0xb8)) * g_7c4ab8;
-        if (f > 0.0f)
-        {
-            if (field1c != 0)
-            {
-                int eax = *(int*)(field1c + 0x1d8);
-                int ecx = *(int*)(eax + 0x64);
-                int edi = *(int*)(ecx + 4);
-                float f1;
-                int ecx2 = *(int*)(edi + 0x1c);
-                if (ecx2 != 0)
-                    f1 = sub_624d80();
-                else
-                    f1 = *(float*)(edi + 0x7c);
+    Body* body = getOwner()->getBody();
+    float amount;
+    if (!body)
+        goto finish;
 
-                float f2;
-                int ecx3 = *(int*)(esi + 0x1c);
-                if (ecx3 != 0)
-                    f2 = sub_624d80();
-                else
-                    f2 = *(float*)(esi + 0x7c);
-
-                float* p;
-                if (f2 == f1)
-                    p = &f1;
-                else
-                    p = &f2;
-
-                float f3 = *p * dt;
-                sub_5eb4a0();
-                int ecx4 = esi;
-                float f4 = *(float*)(ecx4 + 4);
-                if (f3 > f4)
-                {
-                    float f5 = f3 - f4;
-                    float v1 = 0.0f;
-                    float v2 = 0.0f;
-                    float v3 = f5;
-                    sub_5eb2e0();
-                    int eax2 = *(int*)(edi + 4);
-                    int ecx5 = *(int*)(eax2 + 0x20);
-                    if (ecx5 != 0)
-                    {
-                        float args[3];
-                        args[0] = 0.0f;
-                        args[1] = -f5;
-                        args[2] = 0.0f;
-                        sub_5cf030();
-                    }
-                }
-            }
-        }
+    body->get();
+    amount = (jumpHeight - body->height) * jumpScale;
+    if (amount <= 0.0f) {
+finish:
+        finished = 1;
+        return;
     }
-    field2c = 1;
+
+    if (!getCharacter())
+        return;
+
+    Body* other = getCharacter()->holder->body;
+    dt = other->massSource
+        ? other->massSource->getMass()
+        : other->mass;
+
+    float mass = body->massSource
+        ? body->massSource->getMass()
+        : body->mass;
+    dt = minimum(mass, dt) * amount;
+
+    const float& vertical = body->getVelocity()->y;
+    if (dt > vertical) {
+        dt -= vertical;
+        Vector3 force;
+        force.x = 0.0f;
+        force.y = dt;
+        force.z = 0.0f;
+        body->apply(&force);
+
+        ForceReceiver* receiver = other->link->receiver;
+        force.x = 0.0f;
+        force.y = -dt;
+        force.z = 0.0f;
+        if (receiver)
+            receiver->apply(&force, &position);
+    }
 }
+
+#pragma float_control(pop)

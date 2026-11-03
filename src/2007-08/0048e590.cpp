@@ -1,56 +1,13 @@
-// from server: 48% by colin
-struct DescribedBase;
+// from server: 78% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-dll roc_espeon_playercameraa3ca3ecaabfe7e3f.cpp
 
-struct GetSet {
-    virtual void unknown0();
-    virtual void* getValue(const DescribedBase* object);
-};
-
-struct S {
-    char pad[0x118];
-    int field_118;
-    char pad2[0x228 - 0x11c];
-    GetSet* getset;
-    void f();
-};
-
-extern "C" void* __stdcall sub_495820(void*);
-extern "C" void* __stdcall sub_48e0d0(void*);
-extern "C" void __stdcall sub_59b6c0(void*, float);
-extern "C" void __stdcall sub_599850(void*, float);
-extern "C" void __stdcall sub_59a360(void*, float);
-extern "C" void __stdcall sub_59b700(void*);
-extern "C" void __stdcall sub_57ce80(void*);
-
-extern float g_79646c;
-extern float g_79b248;
-
-void S::f()
-{
-    if (this != (S*)sub_495820(this)) {
-        return;
-    }
-
-    S* edi = (S*)sub_48e0d0(this);
-    int eax = this->field_118;
-    GetSet* esi = edi->getset;
-
-    if (eax != 0) {
-        void* p = esi->getValue(0);
-        sub_59b700(p);
-        void* p2 = esi->getValue(0);
-        sub_59b6c0(p2, 4.0f);
-        void* p3 = esi->getValue(0);
-        sub_599850(p3, g_79b248);
-        void* p4 = esi->getValue(0);
-        sub_59a360(p4, g_79646c);
-        sub_57ce80(edi);
-    } else {
-        void* p = esi->getValue(0);
-        sub_59b6c0(p, 0.0f);
-        void* p2 = esi->getValue(0);
-        sub_599850(p2, 0.0f);
-        void* p3 = esi->getValue(0);
-        sub_59a360(p3, g_79646c);
-    }
-}
+// Candidate translation unit (score above; library headers required).
+#include "v8datamodel/Camera.h"
+struct CameraOwner{virtual void unused();virtual RBX::Camera*getCamera()const;};
+struct Workspace{char prefix[0x288];CameraOwner owner;void setDefaultMouseCommand();};
+struct Player{char prefix[0x170];void*character;void onCharacterChanged();};
+extern Player*findLocalPlayer(Player*);extern Workspace*findWorkspace(Player*);extern RBX::Instance*modelIsCharacter(void*);
+void Player::onCharacterChanged(){if(this==findLocalPlayer(this)){Workspace*w=findWorkspace(this);if(!character){w->owner.getCamera()->setCameraType(RBX::Camera::FIXED_CAMERA);w->owner.getCamera()->setDistanceFromTarget(0.0f);w->owner.getCamera()->zoom(-1.0f);}else{w->owner.getCamera()->setCameraSubject(modelIsCharacter(character));w->owner.getCamera()->setCameraType(RBX::Camera::CUSTOM_CAMERA);w->owner.getCamera()->setDistanceFromTarget(13.0f);w->owner.getCamera()->zoom(-1.0f);w->setDefaultMouseCommand();}}}

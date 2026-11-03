@@ -1,43 +1,53 @@
-// from server: 38% by colin
-struct Log;
+// from server: 99% by EspClaude
+// from server: 100% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc 2008-06 005be790  (agentH rewrite)
 
-extern "C" int __stdcall sub_77E5F8(const char*, const char*);
-
-extern float* g_77E49C;
-extern float* g_77E4A0;
-
-extern const char str_7AC014[];
-extern const char str_7AC00C[];
-extern const char str_7AC008[];
-
-struct Log
+// from server: 84% by colin
+struct String
 {
-    char pad[0x14];
-    void* field14;
-    bool getValue(const char* name, float* out);
-    float computeValue();
+    char storage[20];
+    unsigned int length;
+    unsigned int capacity;
 };
 
-bool Log::getValue(const char* name, float* out)
+__declspec(dllimport) bool __cdecl equalString(const String&, const char*);
+extern const float* infinityValue;
+extern const float* nanValue;
+extern float __cdecl parseFloat(const String&);
+
+bool __cdecl stringToFloat(const String& text, float& result)
 {
-    if (field14 == 0)
+    unsigned n = text.length;
+    if (!n)
         return false;
 
-    if (sub_77E5F8((const char*)this, str_7AC014))
+    if (equalString(text, "INF"))
     {
-        *out = *g_77E49C;
+        result = *infinityValue;
         return true;
     }
-    if (sub_77E5F8((const char*)this, str_7AC00C))
+
+    if (equalString(text, "-INF"))
     {
-        *out = -*g_77E49C;
+        result = -*infinityValue;
         return true;
     }
-    if (sub_77E5F8((const char*)this, str_7AC008))
+
+    if (equalString(text, "NAN"))
     {
-        *out = *g_77E4A0;
+        result = *nanValue;
         return true;
     }
-    *out = computeValue();
-    return true;
+
+    try
+    {
+        result = parseFloat(text);
+        return true;
+    }
+    catch (...)
+    {
+        return false;
+    }
 }

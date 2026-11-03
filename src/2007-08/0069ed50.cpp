@@ -1,8 +1,7 @@
-// from server: 63% by colin
-// from server: 61% by colin
+// from server: 74% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
+// roc-flags: /O2 /GS /EHsc /MD
 // roc-lib: xtp-11.2.2-vc8 Source/Common/XTPWinThemeWrapper.cpp
 
 // Candidate translation unit (score above; library headers required).

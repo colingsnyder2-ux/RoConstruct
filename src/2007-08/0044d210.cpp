@@ -1,33 +1,60 @@
-// from server: 47% by colin
-struct DeleteSelectionVerb {
-    char pad[0x74];
-    void* vtable_74;
-    void* vtable_0;
-    DeleteSelectionVerb* ctor(void* dataModel, int);
+// from server: 100% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-dll roc_espeon_publishideliteral21970d0d89d3ee76.cpp
+
+// Candidate translation unit (score above; library headers required).
+
+
+
+struct Text;
+typedef void (__thiscall *TextDestructor)(Text *);
+typedef int (__thiscall *TextValue)(const Text *);
+
+extern TextDestructor destroy_text;
+extern TextValue text_value;
+
+struct Text
+{
+    void *data;
+    __declspec(dllimport) ~Text() throw();
+    int value() const;
 };
 
-extern "C" {
-    void* __stdcall sub_40A730(void*);
-    void* __stdcall sub_40AA00(void*, void*, void*);
-    void __stdcall sub_45BC90(void*, void*, void*);
-    void __stdcall sub_77DD98(void*);
-    void __stdcall sub_77DDBC(void*);
+inline int Text::value() const
+{
+    return text_value(this);
 }
 
-DeleteSelectionVerb* DeleteSelectionVerb::ctor(void* dataModel, int)
-{
-    void* local8 = 0;
-    void* localC = 0;
-    void* local10 = 0;
-    void* p;
+struct BaseText { void* data; __declspec(dllimport) ~BaseText() throw(); };
+extern BaseText __cdecl make_text();
+extern Text __cdecl append_text(const BaseText &, const char *);
 
-    p = sub_40A730(&localC);
-    p = sub_40AA00(&local10, (void*)0x791158, p);
-    sub_77DD98(p);
-    sub_45BC90(this, local10, p);
-    sub_77DDBC(&local8);
-    sub_77DDBC(&localC);
-    this->vtable_0 = (void*)0x790FA4;
-    this->vtable_74 = (void*)0x790F78;
-    return this;
+struct Primary
+{
+    virtual void primary();
+    char padding[112];
+};
+
+struct Secondary
+{
+    virtual void secondary();
+};
+
+struct Base : Primary, Secondary
+{
+    Base(int, int, int);
+};
+
+struct CPublishAsPlaceDialog : Base
+{
+    CPublishAsPlaceDialog(int, int);
+    virtual void primary();
+    virtual void secondary();
+};
+
+CPublishAsPlaceDialog::CPublishAsPlaceDialog(int first, int second)
+    : Base(first, append_text(make_text(), "/IDE/Upload.aspx").value(), second)
+{
 }

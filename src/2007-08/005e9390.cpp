@@ -1,64 +1,81 @@
-// from server: 51% by colin
-struct Explosion {
-    char pad[0x14];
-    float elapsed;
-    char pad2[0xc];
-    float blastRadius;
-    float blastPressure;
-    float destroyJointRadiusPercent;
-    char pad3[0xc0];
-    void onStepped(float dt);
+// from server: 88% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: openrbx-client-dll roc_espeon_explosionsteppedevent_63ada37d19f46ecd.cpp
+
+// Candidate translation unit (score above; library headers required).
+#pragma float_control(precise,off)
+#include <G3D/AABox.h>
+#include <G3D/Array.h>
+extern const float threshold;
+extern "C" void __cdecl alignedFree(void *);
+
+struct Array {
+    void *data;
+    int capacity;
+    int size;
+    Array();
+    ~Array();
 };
 
-extern float g_blastMax;
-
-extern "C" void __stdcall sub_57adb0(void*);
-extern "C" void __stdcall sub_5ff4b0(void*, void*);
-extern "C" void __stdcall sub_5e9290(void*, void*);
-extern "C" void __stdcall sub_5e7a80(void*, void*);
-extern "C" void __stdcall sub_4ff810(void*);
-extern "C" void __stdcall sub_541630(void*, int);
-
-void Explosion::onStepped(float dt)
+inline Array::Array()
 {
-    elapsed += dt;
-    if (elapsed >= g_blastMax)
-        return;
+    capacity = 0;
+    size = 0;
+    data = 0;
+}
 
-    if (blastPressure <= 0.0f)
-        return;
+inline Array::~Array()
+{
+    alignedFree(data);
+}
 
-    char local[0x30];
-    *(int*)(local + 0x00) = 0;
-    *(int*)(local + 0x04) = 0;
-    *(int*)(local + 0x08) = 0;
-    *(int*)(local + 0x30) = 0;
+typedef G3D::AABox Box;
+struct Query {
+    void collect(const Box &, int, Array &);
+};
 
-    Explosion* self = (Explosion*)((char*)this - 0xe8);
+struct Object {
+    void first(Array &);
+    void second(Array &);
+    void detach(int);
+};
 
-    sub_57adb0(self);
+struct World {
+    char padding[0x84];
+    Query *query;
+};
 
-    float r = blastRadius;
-    float px = *(float*)((char*)this + 0x18);
-    float py = *(float*)((char*)this + 0x1c);
-    float pz = *(float*)((char*)this + 0x20);
+extern World *__cdecl getWorld(Object *);
 
-    *(float*)(local + 0x18) = px + r;
-    *(float*)(local + 0x1c) = py + r;
-    *(float*)(local + 0x20) = pz + r;
-    *(float*)(local + 0x24) = px - r;
-    *(float*)(local + 0x28) = py - r;
-    *(float*)(local + 0x2c) = pz - r;
+struct Stepped{const float time;const float step;Stepped(float t,float s):time(t),step(s){}};
+struct Explosion {
+    char padding[0x14];
+    float elapsed;
+    float x, y, z;
+    float radius;
+    void update(void*, Stepped);
+};
 
-    void* p = *(void**)((char*)this + 0x30);
-    sub_5ff4b0(p, local + 0x18);
-
-    sub_5e9290(self, local + 0x18);
-    sub_5e7a80(self, local + 0x18);
-
-    void* q = *(void**)(local + 0x00);
-    *(int*)(local + 0x30) = -1;
-    sub_4ff810(q);
-
-    sub_541630(self, 0);
+void Explosion::update(void*, Stepped event)
+{
+    elapsed += event.step;
+    if (elapsed > threshold) {
+        if (radius > 0.0f) {
+            Array results;
+            Object *object = reinterpret_cast<Object *>(
+                reinterpret_cast<char *>(this) - 0x130);
+            World *world = getWorld(object);
+            const float r = radius;
+            Box box(G3D::Vector3(x-r,y-r,z-r),G3D::Vector3(x+r,y+r,z+r));
+            Query *q = world->query;
+            q->collect(box, 0, results);
+            object->first(results);
+            object->second(results);
+        }
+        reinterpret_cast<Object *>(
+            reinterpret_cast<char *>(this) - 0x130)->detach(0);
+    }
 }

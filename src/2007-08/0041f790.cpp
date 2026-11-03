@@ -1,33 +1,39 @@
-// from server: 72% by colin
-struct CSelectionTreeCtrl
-{
-    char pad0[0x2c];
-    unsigned char flags;
-    char pad1[0x17];
-    unsigned int item;
-    char pad2[0x10];
-    void* tree;
-    void Invalidate();
+// from server: 100% by EspClaude
+// roc 2007-08 0041f790  unit: CSelectionTreeCtrl
+struct RECT { long left, top, right, bottom; };
+struct HWND__ { int unused; };
+typedef HWND__* HWND;
+struct _TREEITEM;
+typedef _TREEITEM* HTREEITEM;
+#define TVI_ROOT ((HTREEITEM)(long)-0x10000)
+extern "C" __declspec(dllimport) int __stdcall InvalidateRect(HWND hWnd, const RECT* lpRect, int bErase);
+class CWnd {
+public:
+    char pad[0x20];
+    HWND m_hWnd;
 };
-
-extern "C" int __stdcall sub_63047e(unsigned int, void*, int);
-extern "C" void* __stdcall InvalidateRect(void*, const void*, int);
-
-void CSelectionTreeCtrl::Invalidate()
+class CTreeCtrl : public CWnd {
+public:
+    int GetItemRect(HTREEITEM hItem, RECT* lpRect, int bTextOnly) const;
+};
+class CRobloxTreeCtrlNode {
+    char pad[0x2c];
+    unsigned char m_flags;
+    char pad2[3];
+    CTreeCtrl* m_tree;
+    char pad3[0x10];
+    HTREEITEM m_hItem;
+public:
+    void Redraw();
+};
+void CRobloxTreeCtrlNode::Redraw()
 {
-    if (flags & 1)
-    {
-        unsigned int it = item;
-        if (it != 0 && it != 0xffff0000)
-        {
-            int local = 0;
-            if (sub_63047e(it, &local, 0))
-            {
-                void* t = tree;
-                void* h = *(void**)((char*)t + 0x20);
-                InvalidateRect(h, &local, 1);
-            }
+    if (m_flags & 1) {
+        if (m_hItem && m_hItem != TVI_ROOT) {
+            RECT rc;
+            if (m_tree->GetItemRect(m_hItem, &rc, 0))
+                ::InvalidateRect(m_tree->m_hWnd, &rc, 1);
         }
-        flags &= 0xfe;
+        m_flags &= ~1;
     }
 }

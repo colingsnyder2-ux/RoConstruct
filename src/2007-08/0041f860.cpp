@@ -1,73 +1,101 @@
-// from server: 49% by colin
-// roc 2007-08 0041f860  unit: CEnabledCmdUI  size: 400 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0041f860
+// from server: 93% by EspClaude
+// from server: 100% by king_originala
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: xtp-11.2.2-shared-mfc roc_mfc_settings_menu_shared_0b9f15a58de06ca9.cpp
 
-extern "C" {
-    __declspec(dllimport) int __stdcall GetMenuItemCount(void*);
-    __declspec(dllimport) unsigned int __stdcall GetMenuItemID(void*, int);
-    __declspec(dllimport) void* __stdcall GetSubMenu(void*, int);
-    __declspec(dllimport) int __stdcall EnableMenuItem(void*, unsigned int, unsigned int);
-    __declspec(dllimport) int __stdcall GetClientRect(void*, int*);
-    __declspec(dllimport) int __stdcall ClientToScreen(void*, int*);
-}
+// Candidate translation unit (score above; library headers required).
+// Application-side VC9 RTM reconstruction from the 00422720 body.
+// The layout facts used here are byte-proven: shared MFC puts CWnd::m_hWnd at
+// 0x20 and the target reads the menu handle at this+0xdc.
+#include "XTToolkitPro.h"
 
-extern "C" void* __cdecl sub_6302F8(void*);
-extern "C" void __cdecl sub_630484(void*);
-extern "C" void* __cdecl sub_6303D0();
-extern "C" void __cdecl sub_634430(void*, int, int, int, void*, int);
-extern "C" void* __cdecl sub_62FF50();
+class CEnabledCmdUI : public CCmdUI
+{
+public:
+    CEnabledCmdUI() : m_bEnabled(FALSE) {}
 
-struct CEnabledCmdUI {
-    char pad[0x20];
-    void* hwnd;      // +0x20
-    char pad2[0xa0];
-    void* hmenu;     // +0xc4
-    int method(int, int);
+    virtual void Enable(BOOL bOn)
+    {
+        m_bEnabled = bOn;
+        m_bEnableChanged = TRUE;
+    }
+
+    virtual void SetCheck(int) {}
+    virtual void SetRadio(BOOL) {}
+    virtual void SetText(LPCTSTR) {}
+
+    BOOL m_bEnabled;
 };
 
-int CEnabledCmdUI::method(int a, int b) {
-    void* menu = this->hmenu;
-    void* sub = sub_6302F8(GetSubMenu(menu, 0));
-    if (sub != 0) {
-        return 0;
-    }
-    int count = GetMenuItemCount(*(void**)((char*)sub + 4));
-    int i = 0;
-    if (count > 0) {
-        do {
-            int id;
-            sub_630484(&id);
-            id = 0x788368;
-            int mid = GetMenuItemID(*(void**)((char*)sub + 4), i);
-            if (mid != 0) {
-                if (mid == -1) {
-                    sub_6302F8(GetSubMenu(*(void**)((char*)sub + 4), i));
-                } else {
-                    void* p = sub_6303D0();
-                    void* q;
-                    if (p != 0) {
-                        q = (*(void*(**)(void*))(*(void***)p + 0x7c))(p);
-                    } else {
-                        q = 0;
-                    }
-                    (*(void(**)(void*, int, int*, int))(*(void***)q + 0x14))(q, -1, &id, 0);
-                    int flag = (id != 0) ? 2 : 0;
-                    flag |= 0x400;
-                    EnableMenuItem(*(void**)((char*)sub + 4), i, flag);
-                }
+struct MenuCommandTargetProbe;
+
+struct MenuCommandTargetTable
+{
+    void* unused[5];
+    BOOL (__thiscall* onCmdMsg)(MenuCommandTargetProbe*, UINT, int, void*,
+        AFX_CMDHANDLERINFO*);
+};
+
+struct MenuCommandTargetProbe
+{
+    MenuCommandTargetTable* table;
+};
+
+class CSettingsExplorerProbe : public CWnd
+{
+    BYTE m_layoutToMenu[0xdc - sizeof(CWnd)];
+    HMENU m_menu;
+
+public:
+    void ShowMenu(CPoint point);
+};
+
+void CSettingsExplorerProbe::ShowMenu(CPoint point)
+{
+    CMenu* menu = CMenu::FromHandle(::GetSubMenu(m_menu, 0));
+    if (menu == NULL)
+        return;
+
+    for (UINT index = 0; index < (UINT)::GetMenuItemCount(menu->m_hMenu); ++index)
+    {
+        CEnabledCmdUI state;
+        state.m_nID = ::GetMenuItemID(menu->m_hMenu, index);
+
+        if (state.m_nID != 0)
+        {
+            if (state.m_nID == (UINT)-1)
+            {
+                CMenu::FromHandle(::GetSubMenu(menu->m_hMenu, index));
             }
-            i++;
-        } while (i < GetMenuItemCount(*(void**)((char*)sub + 4)));
+            else
+            {
+                MenuCommandTargetProbe* target =
+                    (MenuCommandTargetProbe*)AfxGetMainWnd();
+
+                target->table->onCmdMsg(target, state.m_nID,
+                    CN_UPDATE_COMMAND_UI, &state, NULL);
+                ::EnableMenuItem(menu->m_hMenu, index,
+                    MF_BYPOSITION | (state.m_bEnabled ? MF_ENABLED : MF_DISABLED));
+            }
+        }
     }
-    if (a == -1 && b == -1) {
-        int rc[4];
-        GetClientRect(this->hwnd, rc);
-        int cx = (rc[0] + rc[2]) / 2;
-        int cy = (rc[1] + rc[3]) / 2;
-        ClientToScreen(this->hwnd, &cx);
-        sub_634430(sub, 0x14, cx, cy, sub_62FF50(), 0);
-    } else {
-        sub_634430(sub, 0, a, b, sub_62FF50(), 0);
+
+    if (point.x == -1 && point.y == -1)
+    {
+        CRect rect;
+        ::GetClientRect(m_hWnd, &rect);
+        point = CPoint((rect.left + rect.right) / 2,
+            (rect.bottom + rect.top) / 2);
+        ::ClientToScreen(m_hWnd, &point);
+
+        CXTPCommandBars::TrackPopupMenu(menu, 0x14, point.x, point.y,
+            GetParentFrame(), NULL, NULL, NULL);
     }
-    return 0;
+    else
+    {
+        CXTPCommandBars::TrackPopupMenu(menu, 0, point.x, point.y,
+            GetParentFrame(), NULL, NULL, NULL);
+    }
 }

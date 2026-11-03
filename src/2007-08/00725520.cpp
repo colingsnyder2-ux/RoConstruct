@@ -1,8 +1,9 @@
-// from server: 55% by colin
+// from server: 95% by EspClaude
+// from server: 100% by auto
+// from server: 100% by Espeon
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/thread/src/once.cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espeon_boostonce_f5f850e37b3e9380.cpp
 
 // Candidate translation unit (score above; library headers required).
 // Copyright (C) 2001-2003

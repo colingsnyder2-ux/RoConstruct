@@ -1,23 +1,25 @@
-// from server: 83% by colin
-struct CLuaHtmlView
-{
-    void* field_0;
-    int field_4;
-    void* field_8;
-    void* func_0042a5f0(void* arg);
+// from server: 100% by EspClaude
+// roc 2007-08 0042a5f0  unit: CLuaHtmlView
+struct Result {
+    Result(const Result&);
+    ~Result();
+    void* p;
 };
-
-void* CLuaHtmlView::func_0042a5f0(void* arg)
+struct IBase0 { virtual void f0(); };
+struct IBase1 { virtual void f1(); };
+struct CObj : IBase0, IBase1 { };
+struct IProvider {
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual Result Lookup(IBase1* key);
+};
+class CLuaHtmlView {
+    CObj* m_obj;
+    int m_4;
+    IProvider* m_provider;
+public:
+    Result Get();
+};
+Result CLuaHtmlView::Get()
 {
-    void* p = field_0;
-    void* q;
-    if (p != 0)
-        q = (char*)p + 4;
-    else
-        q = 0;
-    void** vtbl = *(void***)field_8;
-    typedef void* (__thiscall *Fn)(void*, void*, void*);
-    Fn fn = (Fn)vtbl[4];
-    fn(field_8, q, arg);
-    return arg;
+    return m_provider->Lookup(m_obj);
 }

@@ -1,56 +1,69 @@
-// from server: 85% by colin
-struct CBrowserView
-{
-    char pad[0x2b0];
-    void* field_2b0;
-    int method_40bcd0(void** out, int zero);
-    int method_40bd90(void** out);
+// from server: 93% by EspClaude
+// roc 2007-08 0040bd90  unit: CBrowserView
+typedef long HRESULT;
+typedef short VARIANT_BOOL;
+struct IDispatchLike {
+    virtual HRESULT __stdcall QueryInterface(const void* riid, void** ppv) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
 };
-
-extern "C" int __stdcall func_630d36(CBrowserView* self, int a, int b, int c, int d, int e);
-
-int CBrowserView::method_40bd90(void** out)
-{
-    if (this->field_2b0 == 0)
+template<class T> class CComPtrLike {
+public:
+    T* p;
+    T* operator=(T* lp)
     {
-        void* local;
-        int hr = this->method_40bcd0(&local, 0);
-        if (hr != 0)
-            return hr;
-
-        int r = func_630d36(this, 0, 0x881a80, 0x881d7c, 0, 0);
-        int neg = -r;
-        unsigned short s = (unsigned short)((neg >> 31) & 0xffff);
-        void* newobj = (char*)local + 0x14;
-        *(unsigned short*)((char*)local + 0x1c) = s;
-
-        if (this->field_2b0 != newobj)
-        {
-            if (newobj != 0)
-            {
-                void** vt = *(void***)newobj;
-                void (__stdcall *addref)(void*) = (void (__stdcall *)(void*))vt[1];
-                addref(newobj);
-            }
-            if (this->field_2b0 != 0)
-            {
-                void** vt2 = *(void***)this->field_2b0;
-                void (__stdcall *release)(void*) = (void (__stdcall *)(void*))vt2[2];
-                release(this->field_2b0);
-            }
-            this->field_2b0 = newobj;
+        if (p != lp) {
+            if (lp)
+                lp->AddRef();
+            if (p)
+                p->Release();
+            p = lp;
         }
+        return p;
     }
-
-    if (out == 0)
-        return (int)0x80004003;
-
-    *out = this->field_2b0;
-    if (this->field_2b0 != 0)
+    bool operator!() const { return p == 0; }
+    HRESULT CopyTo(T** ppT)
     {
-        void** vt3 = *(void***)this->field_2b0;
-        void (__stdcall *addref2)(void*) = (void (__stdcall *)(void*))vt3[1];
-        addref2(this->field_2b0);
+        if (ppT == 0)
+            return 0x80004003L;
+        *ppT = p;
+        if (p)
+            p->AddRef();
+        return 0;
     }
-    return 0;
+};
+class CBrowserViewExternal {
+public:
+    char pad[0x14];
+    IDispatchLike* dispPart() { return reinterpret_cast<IDispatchLike*>(pad + 0x14); }
+};
+struct CExternalObject {
+    char pad[0x14];
+    char disp[8];
+    VARIANT_BOOL m_isIDE;
+    IDispatchLike* getDispatch() { return reinterpret_cast<IDispatchLike*>(disp); }
+    static HRESULT __cdecl CreateInstance(CExternalObject** pp, void* outer);
+};
+class CBrowserView {
+public:
+    virtual ~CBrowserView();
+    char pad[0x2ac];
+    CComPtrLike<IDispatchLike> m_external;
+    HRESULT GetExternal(IDispatchLike** ppDispatch);
+};
+class CIDEBrowserView : public CBrowserView {
+};
+HRESULT CBrowserView::GetExternal(IDispatchLike** ppDispatch)
+{
+    if (!m_external) {
+        CExternalObject* pObj;
+        HRESULT hr = CExternalObject::CreateInstance(&pObj, 0);
+        if (hr)
+            return hr;
+        CIDEBrowserView* pIDE = dynamic_cast<CIDEBrowserView*>(this);
+        IDispatchLike* pDisp = pObj->getDispatch();
+        pObj->m_isIDE = pIDE ? -1 : 0;
+        m_external = pDisp;
+    }
+    return m_external.CopyTo(ppDispatch);
 }

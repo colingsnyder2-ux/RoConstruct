@@ -1,39 +1,53 @@
-// from server: 61% by Yeetserama
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/instances.cpp
-
-// Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        instances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex narrow character template instances.
-  */
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_NARROW_INSTANTIATE
-
-#ifdef __BORLANDC__
-#pragma hrdstop
-#endif
-
-#include <boost/regex.hpp>
-
-#endif
+// from server: 100% by EspClaude
+// roc 2007-08 004201a0  unit: CRobloxTreeCtrl
+struct HWND__ { int unused; };
+typedef HWND__* HWND;
+extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND, unsigned int, unsigned int, long);
+struct NMHDR { HWND hwndFrom; unsigned int idFrom; unsigned int code; };
+struct TVITEM { unsigned int mask; void* hItem; unsigned int state; unsigned int stateMask; char* pszText; int cchTextMax; int iImage; int iSelectedImage; int cChildren; long lParam; };
+struct NMTREEVIEW { NMHDR hdr; unsigned int action; TVITEM itemOld; TVITEM itemNew; };
+template<class T> class ScopedAssign {
+    T& m_ref;
+    T m_old;
+public:
+    ScopedAssign(T& ref, T value) : m_ref(ref), m_old(ref) { ref = value; }
+    ~ScopedAssign() { m_ref = m_old; }
+};
+class CRobloxTreeCtrlNode {
+public:
+    virtual void v0();
+    virtual ~CRobloxTreeCtrlNode();
+};
+class CWnd {
+public:
+    char pad[0x20];
+    HWND m_hWnd;
+};
+class CRobloxTreeCtrl : public CWnd {
+public:
+    char pad2[0x70];
+    CRobloxTreeCtrlNode* m_root;
+    char pad3[0xc];
+    bool m_deleting;
+    void DeleteAll();
+    void OnDeleteItem(NMHDR* pNMHDR, long* pResult);
+};
+void CRobloxTreeCtrl::DeleteAll()
+{
+    ScopedAssign<bool> guard(m_deleting, true);
+    if (m_hWnd) {
+        ::SendMessageA(m_hWnd, 0x1101, 0, (long)0xffff0000);
+        if (m_root) {
+            delete m_root;
+            m_root = 0;
+        }
+    }
+}
+void CRobloxTreeCtrl::OnDeleteItem(NMHDR* pNMHDR, long* pResult)
+{
+    ScopedAssign<bool> guard(m_deleting, true);
+    NMTREEVIEW* pNMTreeView = (NMTREEVIEW*)pNMHDR;
+    CRobloxTreeCtrlNode* node = (CRobloxTreeCtrlNode*)pNMTreeView->itemOld.lParam;
+    delete node;
+    *pResult = 0;
+}

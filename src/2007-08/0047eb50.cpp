@@ -1,10 +1,11 @@
-// from server: 58% by colin
+// from server: 99% by EspClaude
+// from server: 100% by tester
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD /arch:SSE2 /fp:fast
-// roc-lib: g3d-6.09 GLG3Dcpp/Win32Window.cpp
+// roc-cl: 50727
+// roc-lib: g3d-6.09 GLG3Dcpp/roc_line_5c11b1e85d2d772f.cpp
 
 // Candidate translation unit (score above; library headers required).
+#line 1 ".\\glg3dcpp\\Win32Window.cpp"
 /**
   @file Win32Window.cpp
 
@@ -862,7 +863,9 @@ void Win32Window::initWGL() {
     window_class.lpszClassName = "window"; 
     
     int ret = RegisterClass(&window_class);
+#line 906
 	alwaysAssertM(ret, "Registration Failed");
+#line 859
 
     // Create some dummy pixel format.
 	PIXELFORMATDESCRIPTOR pfd =	

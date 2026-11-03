@@ -1,58 +1,67 @@
-// from server: 38% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 93% by EspClaude
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-dll roc_espclaude_a5ea428152578063.cpp
 
-struct CSelectionTreeCtrl {
-    char pad[0xbc];
-    int m_field_bc;
-    char pad2[0x24];
-    void* m_ptr_e4;
-    void* m_ptr_e8;
-    void SetSelection(void* p);
+// Candidate translation unit (score above; library headers required).
+#include <boost/shared_ptr.hpp>
+
+namespace RBX {
+class DataModel;
+class Listener {};
+class ListenerList {
+public:
+    void add(Listener* l);
+    void remove(Listener* l);
+};
+class Workspace {
+public:
+    char pad[0x130];
+    ListenerList listeners;
+};
+class Selection {
+public:
+    char pad[0x130];
+    ListenerList listeners;
+};
+class DataModel {
+public:
+    class scoped_lock {
+    public:
+        scoped_lock(boost::shared_ptr<DataModel> dataModel);
+        ~scoped_lock();
+        void* p;
+        void* q;
+        void* r;
+    };
+    Workspace* getWorkspace();
+    Selection* getSelection();
+};
+}
+
+class ViewBase {
+public:
+    char pad[0xd4];
+};
+class CRobloxView : public ViewBase, public RBX::Listener {
+public:
+    char pad2[0x124 - 0xd4];
+    boost::shared_ptr<RBX::DataModel> dataModel;
+    void setDataModel(boost::shared_ptr<RBX::DataModel> dm);
 };
 
-extern void __stdcall sub_40d550(void* p);
-extern void* __fastcall sub_4109b0(void* p);
-extern void* __fastcall sub_410d40(void* p);
-extern void __fastcall sub_432530(void* p, void* q);
-extern void __fastcall sub_423240(void* p, void* q);
-extern void __fastcall sub_5595a0(void* p);
-extern void __fastcall sub_402a60(void* p, void* q);
-
-void CSelectionTreeCtrl::SetSelection(void* p)
+static inline void detach(RBX::Workspace* w, RBX::Listener* l) { if (w) w->listeners.remove(l); }
+static inline void attach(RBX::Selection* s, RBX::Listener* l) { if (s) s->listeners.add(l); }
+void CRobloxView::setDataModel(boost::shared_ptr<RBX::DataModel> dm)
 {
-    if (m_ptr_e4) {
-        void* a = m_ptr_e4;
-        void* b = m_ptr_e8;
-        if (b)
-            _InterlockedExchangeAdd((volatile long*)((char*)b + 4), 1);
-        sub_40d550(&a);
-        void* r = sub_4109b0(m_ptr_e4);
-        if (r)
-            sub_432530((char*)r + 0xe8, &m_field_bc);
-        sub_5595a0(&a);
+    if (dataModel) {
+        RBX::DataModel::scoped_lock lock(dataModel);
+        detach(dataModel->getWorkspace(), this);
     }
-    m_ptr_e4 = p;
-    sub_402a60(&m_ptr_e8, &p);
-    if (m_ptr_e4) {
-        void* a = m_ptr_e4;
-        void* b = m_ptr_e8;
-        if (b)
-            _InterlockedExchangeAdd((volatile long*)((char*)b + 4), 1);
-        sub_40d550(&a);
-        void* r = sub_410d40(m_ptr_e4);
-        if (r)
-            sub_423240((char*)r + 0xe8, &m_field_bc);
-        sub_5595a0(&a);
-    }
-    if (p) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)p + 4), -1) == 1) {
-            void** vt = *(void***)p;
-            ((void (__fastcall*)(void*))vt[1])(p);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)p + 8), -1) == 1) {
-                void** vt2 = *(void***)p;
-                ((void (__fastcall*)(void*))vt2[2])(p);
-            }
-        }
+    dataModel = dm;
+    if (dataModel) {
+        RBX::DataModel::scoped_lock lock(dataModel);
+        attach(dataModel->getSelection(), this);
     }
 }

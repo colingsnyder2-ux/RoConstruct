@@ -1,90 +1,139 @@
-// from server: 39% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 81% by EspClaude
+// from server: 100% by EspClaude
+// from server: 91% by king_originala_sol_resume_root
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espclaude_72d0f35278ad032c.cpp
 
-extern "C" void __stdcall ReleaseCapture();
-extern "C" long __stdcall SendMessageA(void*, unsigned int, unsigned int, long);
+// Candidate translation unit (score above; library headers required).
+#include <algorithm>
+#include <vector>
+#include <boost/shared_ptr.hpp>
+#include <boost/bind.hpp>
 
-struct CSelectionTreeCtrl {
-    void func_00426430(int, int, int);
+
+extern "C" __declspec(dllimport) int __stdcall ReleaseCapture();
+extern "C" __declspec(dllimport) long __stdcall SendMessageA(void*, unsigned int, unsigned int, long);
+
+struct Object;
+typedef boost::shared_ptr<Object> Shared;
+
+struct Event {
+    virtual void invoke(int);
 };
 
-extern void G1_func_0063023e();
-extern void* G1_func_0062ff02(void*);
-extern void G1_func_0041f320(void*);
-extern void G1_func_0041f110(void*);
-extern void* G1_func_006304ae(void*, void*);
-extern void G1_func_0040d550(void*);
-extern void* G1_func_0040fdb0(void*);
-extern void* G1_func_0040fd80(void*);
-extern void G1_func_004215e0(void*, void*, void*, void*, void*, void*);
-extern void G1_func_004108b0(void*, int);
-extern void G1_func_005595a0(void*);
-extern void G1_func_00492360(void*);
+struct Object {
+    char padding[0x1f0];
+    Event event;
+};
 
-void CSelectionTreeCtrl::func_00426430(int a, int b, int c)
-{
-    G1_func_0063023e();
-    if (*(int*)((char*)this + 0xec) != 0)
-    {
-        void* p = G1_func_0062ff02(*(void**)((char*)this + 0x20));
-        G1_func_0041f320(*(void**)((char*)p + 0x94));
-        void* q = G1_func_0062ff02(*(void**)((char*)this + 0x20));
-        G1_func_0041f110(*(void**)((char*)q + 0x94));
+struct DragSelection {
+    virtual void* GetRuntimeClass() const;
+    virtual ~DragSelection();
+};
+
+struct CDllIsolationWrapperBase { virtual ~CDllIsolationWrapperBase(); };
+struct CComCtlWrapper : CDllIsolationWrapperBase {
+    int _ImageList_DragLeave(void* hwndLock);
+    void _ImageList_EndDrag();
+};
+
+struct ModuleState {
+    char padding[0x94];
+    CDllIsolationWrapperBase** m_pDllIsolationWrappers;
+};
+
+ModuleState* __stdcall AfxGetModuleState();
+#define afxComCtlWrapper static_cast<CComCtlWrapper*>(AfxGetModuleState()->m_pDllIsolationWrappers[0])
+inline void __stdcall AfxImageList_EndDrag() { afxComCtlWrapper->_ImageList_EndDrag(); }
+inline int __stdcall AfxImageList_DragLeave(void* hwndLock) { return afxComCtlWrapper->_ImageList_DragLeave(hwndLock); }
+
+struct Item {
+    char padding[12];
+    Shared value;
+};
+
+struct Selection {
+ typedef std::vector<Shared>::const_iterator const_iterator;
+ const_iterator begin() const;
+ const_iterator end() const;
+};
+typedef char iterator_size_check[sizeof(Selection::const_iterator)==8?1:-1];
+typedef char shared_size_check[sizeof(Shared)==8?1:-1];
+
+template<class T> inline void SafeDelete(T*& p) { delete p; p = 0; }
+struct Guard {
+    unsigned int storage[3];
+    Guard(Shared);
+    ~Guard();
+};
+
+void __cdecl callback(Object*, Shared);
+
+void __cdecl notify(const char*, Object*);
+extern const char drop[];
+
+#define V(N) virtual void slot##N();
+#define V10(N) V(N##0) V(N##1) V(N##2) V(N##3) V(N##4) \
+               V(N##5) V(N##6) V(N##7) V(N##8) V(N##9)
+
+struct S {
+    V10(0)
+    V10(1)
+    V10(2)
+    V10(3)
+    V10(4)
+    V10(5)
+    V10(6)
+    V10(7)
+    V(80) V(81) V(82) V(83)
+    virtual Selection* range();
+
+    char padding0[0x1c];
+    void* window;
+    char padding1[0x100];
+    Shared owner;
+    DragSelection* selection;
+
+    void prepare();
+    unsigned long GetItemData(long) const;
+    void* GetSafeHwnd() const { return this == 0 ? 0 : window; }
+    long GetDropHilightItem() const { return SendMessageA(window, 0x110a, 8, 0); }
+    int SelectDropTarget(long h) { return (int)SendMessageA(window, 0x110b, 8, h); }
+    static int DragLeave(S* pWndLock) { return AfxImageList_DragLeave(pWndLock->GetSafeHwnd()); }
+    static void EndDrag() { AfxImageList_EndDrag(); }
+    void finish(unsigned int, unsigned int, long);
+};
+
+#undef V10
+#undef V
+
+void S::finish(unsigned int, unsigned int, long) {
+    prepare();
+    DragSelection* dragging = selection;
+    if (dragging) {
+        DragLeave(this);
+        EndDrag();
         ReleaseCapture();
-        int* obj = *(int**)((char*)this + 0xec);
-        if (obj != 0)
-        {
-            int* vt = *(int**)obj;
-            void (*fn)(void*, int) = *(void (**)(void*, int))(vt + 1);
-            fn(obj, 1);
-        }
-        *(int*)((char*)this + 0xec) = 0;
-        void* hwnd = *(void**)((char*)this + 0x20);
-        void* res = (void*)SendMessageA(hwnd, 0x110a, 8, 0);
-        if (res != 0)
-        {
-            void* r = G1_func_006304ae(this, res);
-            if (r != 0)
-            {
-                int ebx = *(int*)((char*)r + 0xc);
-                int eax = *(int*)((char*)r + 0x10);
-                if (eax != 0)
-                {
-                    _InterlockedExchangeAdd((volatile long*)(eax + 4), 1);
+        SafeDelete(selection);
+
+        long handle = GetDropHilightItem();
+        if (handle) {
+            Item* selected = (Item*)GetItemData(handle);
+            if (selected) {
+                Shared value(selected->value);
+                Object* object = value.get();
+                Guard guard(owner);
+
+                if (object) {
+                    std::for_each(range()->begin(), range()->end(), boost::bind(callback, object, _1));
                 }
-                int e4 = *(int*)((char*)this + 0xe4);
-                int e8 = *(int*)((char*)this + 0xe8);
-                if (e8 != 0)
-                {
-                    _InterlockedExchangeAdd((volatile long*)(e8 + 4), 1);
-                }
-                G1_func_0040d550((void*)0);
-                if (ebx != 0)
-                {
-                    int* vt = *(int**)this;
-                    int (*fn1)(void*, void*) = *(int (**)(void*, void*))(vt + 0x148/4);
-                    int r1 = fn1(this, (void*)0);
-                    int v1 = *(int*)G1_func_0040fdb0((void*)r1);
-                    int* vt2 = *(int**)this;
-                    int (*fn2)(void*, void*) = *(int (**)(void*, void*))(vt2 + 0x148/4);
-                    int r2 = fn2(this, (void*)0);
-                    int v2 = *(int*)G1_func_0040fd80((void*)r2);
-                    G1_func_004215e0((void*)0, (void*)0, (void*)0, (void*)0, (void*)0, (void*)0);
-                }
-                int e4b = *(int*)((char*)this + 0xe4);
-                int* edi = (int*)(e4b + 0x160);
-                G1_func_004108b0(edi, -1);
-                edi[1] = -1;
-                int e4c = *(int*)((char*)this + 0xe4);
-                int* vt3 = *(int**)(e4c + 0x160);
-                void (*fn3)(void*, int) = *(void (**)(void*, int))(vt3 + 1);
-                fn3((void*)(e4c + 0x160), 1);
-                G1_func_005595a0((void*)0);
-                G1_func_00492360((void*)0);
+
+                notify(drop, owner.get());
+                owner.get()->event.invoke(1);
             }
         }
-        void* hwnd2 = *(void**)((char*)this + 0x20);
-        SendMessageA(hwnd2, 0x110b, 8, 0);
+
+        SelectDropTarget(0);
     }
 }

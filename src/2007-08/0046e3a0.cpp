@@ -1,10 +1,11 @@
-// from server: 61% by colin
+// from server: 76% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/GLCaps.cpp
+// roc-lib: g3d-6.09-dll roc_large_glcaps_11e595a340f00f1c.cpp
 
 // Candidate translation unit (score above; library headers required).
+#line 1 ".\\glg3dcpp\\GLCaps.cpp"
 /**
   @file GLCaps.cpp
 
@@ -227,7 +228,7 @@ void GLCaps::loadExtensions(Log* debugLog) {
     alwaysAssertM(! _initialized, "Internal error.");
 
     // Require an OpenGL context to continue
-    alwaysAssertM(glGetCurrentContext(), "Unable to load OpenGL extensions without a current context.");
+
 
     // Initialize statically cached strings
 	vendor();
@@ -425,7 +426,7 @@ void GLCaps::loadExtensions(Log* debugLog) {
     LOAD_EXTENSION(glIsQueryARB);
 
     // Depth bounds
-    LOAD_EXTENSION(glDepthBoundsEXT);
+
 
     #undef LOAD_EXTENSION
 

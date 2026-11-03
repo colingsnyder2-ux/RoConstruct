@@ -1,10 +1,11 @@
-// from server: 75% by colin
+// from server: 99% by EspClaude
+// from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/Win32Window.cpp
+// roc-lib: g3d-6.09 GLG3Dcpp/roc_header_9b0b2c52f3f29871.cpp
 
 // Candidate translation unit (score above; library headers required).
+#line 1 ".\\glg3dcpp\\Win32Window.cpp"
 /**
   @file Win32Window.cpp
 
@@ -457,12 +458,16 @@ bool Win32Window::requiresMainLoop() const {
 
 
 void Win32Window::setIcon(const GImage& image) {
+#line 458
     alwaysAssertM((image.channels == 3) ||
                   (image.channels == 4), 
                   "Icon image must have at least 3 channels.");
+#line 456
 
+#line 462
     alwaysAssertM((image.width == 32) && (image.height == 32),
         "Icons must be 32x32 on windows.");
+#line 459
 
     uint8 bwMaskData[128];
     uint8 colorMaskData[1024*4];

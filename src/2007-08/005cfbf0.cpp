@@ -1,23 +1,24 @@
-// from server: 84% by colin
+// from server: 93% by EspClaude
+// roc 2007-08 005cfbf0  unit: RBX::LocalBackpackItem  size: 55 bytes
+// roc-flags: /O2 /GS /EHsc /MD /fp:fast
 struct Vector2 {
     float x;
     float y;
+    Vector2() {}
+    Vector2(float a, float b) : x(a), y(b) {}
 };
 
 struct S_func_005cfbf0 {
-    void f(Vector2* out);
+    Vector2 f();
 };
 
 extern float G_func_00796468;
 extern "C" Vector2* __cdecl func_00555990(Vector2* a, Vector2* b);
 
-void S_func_005cfbf0::f(Vector2* out)
+Vector2 S_func_005cfbf0::f()
 {
-    Vector2 a;
+    Vector2 a(G_func_00796468, G_func_00796468);
     Vector2 b;
-    a.x = G_func_00796468;
-    a.y = G_func_00796468;
-    Vector2* r = func_00555990(&b, &a);
-    out->x = r->x;
-    out->y = r->y;
+    float s = func_00555990(&b, &a)->x;
+    return Vector2(s, s);
 }

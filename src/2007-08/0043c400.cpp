@@ -1,50 +1,39 @@
-// from server: 72% by colin
-struct Descriptor {
-    void* vtable;
+// from server: 91% by EspClaude
+// roc 2007-08 0043c400  XItem: lock the data model, then forward to a virtual converter
+struct DataModel;
+struct Lock {
+    void* a; void* b; void* c;
+    explicit Lock(DataModel* dm);
+    ~Lock();
 };
-
-struct EnumDescriptor;
-
-struct Item : Descriptor {
-    const EnumDescriptor& owner;
-    const int value;
-    const unsigned int index;
+struct Result {
+    void* p;
+    void* q;
+    void* r;
+    Result(const Result&);
 };
+struct Base0 { void* v; };
+struct Base1 { int x; };
+struct Name : Base0, Base1 {};
+struct Converter {
+    virtual void slot0();
+    virtual Result convert(const Base1* value) = 0;
+};
+struct Holder { char pad[0x18]; Converter* converter; };
+struct View { char pad[0x188]; DataModel* dataModel; };
 
-struct EnumDescriptor {
+struct XItem {
     char pad[0x120];
-    void* field120;
-    void* field124;
-    bool convertToValue(unsigned int index, void* variant) const;
+    View* view;
+    Holder* holder;
+    Result get(const Name* name);
 };
 
-struct Variant {
-    void* data;
-    Variant();
-    ~Variant();
-};
-
-struct Name {
-    char pad[4];
-};
-
-struct EnumConverter {
-    char pad[0x120];
-    void* field120;
-    void* field124;
-    bool convertToValue(const Name* name, Variant& variant) const;
-};
-
-bool EnumConverter::convertToValue(const Name* name, Variant& variant) const
+Result XItem::get(const Name* name)
 {
-    void* p = *(void**)((char*)field120 + 0x188);
-    Variant local;
-    void* q = 0;
-    if (name != 0)
-        q = (char*)name + 4;
-    void* r = *(void**)((char*)field124 + 0x18);
-    void* s = *(void**)r;
-    void* fn = *(void**)((char*)s + 4);
-    bool result = ((bool (__thiscall*)(void*, void*, void*))fn)(r, q, &local);
-    return result;
+    Lock lock(view->dataModel);
+    const Base1* value = 0;
+    if (name)
+        value = name;
+    return holder->converter->convert(value);
 }

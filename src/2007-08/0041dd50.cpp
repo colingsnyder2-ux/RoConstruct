@@ -1,69 +1,87 @@
-// from server: 36% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 96% by EspClaude
+// from server: 100% by EspClaude
+// from server: 96% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espclaude_524751294c2dc6d0.cpp
 
-extern "C" void __cdecl func_00661d90();
-extern "C" void __cdecl func_00661e20();
-extern "C" void* __cdecl func_00654d90(unsigned int);
-extern "C" void __cdecl func_00653f40();
-extern "C" void __cdecl func_006622e0();
-extern "C" void* __cdecl func_0077e6a8();
-
-struct CInstanceExplorer
+// Candidate translation unit (score above; library headers required).
+#include <boost/shared_ptr.hpp>
+struct String
 {
-    void construct(unsigned int a, void* b);
+    char storage[28];
+    __declspec(dllimport) const char* c_str() const;
 };
 
-void CInstanceExplorer::construct(unsigned int a, void* b)
+extern const char* (__thiscall *stringData)(const String&);
+
+struct Name
 {
-    char* self = (char*)this;
-    *(void**)self = (void*)0x787eec;
-    *(unsigned int*)(self + 0x54) = a;
-    *(void**)(self + 0x58) = b;
-    if (b != 0)
-    {
-        _InterlockedExchangeAdd((volatile long*)((char*)b + 4), 1);
-    }
-    func_00661d90();
-    void* p1 = func_00654d90(0x80);
-    if (p1 != 0)
-    {
-        func_00653f40();
-        *(void**)p1 = (void*)0x787d54;
-        *(unsigned int*)((char*)p1 + 0x7c) = a;
-    }
-    else
-    {
-        p1 = 0;
-    }
-    func_00661e20();
-    void* p2 = func_00654d90(0x80);
-    if (p2 != 0)
-    {
-        void** vtbl = *(void***)a;
-        void* (*fn)(void*) = (void* (*)(void*))vtbl[1];
-        void* r = fn((void*)a);
-        void* s = func_0077e6a8();
-        func_006622e0();
-    }
-    else
-    {
-        p2 = 0;
-    }
-    func_00661e20();
-    if (b != 0)
-    {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)b + 4), -1) == 1)
-        {
-            void** vtbl = *(void***)b;
-            void (*fn1)(void*) = (void (*)(void*))vtbl[1];
-            fn1(b);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)b + 8), -1) == 1)
-            {
-                void** vtbl2 = *(void***)b;
-                void (*fn2)(void*) = (void (*)(void*))vtbl2[2];
-                fn2(b);
-            }
-        }
-    }
+    long reserved;
+    String text;
+    String& getText() { return text; }
+};
+
+struct Named
+{
+    virtual void reserved();
+    virtual Name& getName();
+};
+
+struct Instance
+{
+    char storage[16];
+    Named named;
+};
+
+typedef boost::shared_ptr<Instance> Shared;
+
+struct Item
+{
+    virtual ~Item();
+    char storage[0x78];
+    Item();
+    static void* __stdcall operator new(unsigned int);
+    static void __stdcall operator delete(void*);
+};
+
+struct NameItem : Item
+{
+    Instance* instance;
+    NameItem(Instance*);
+    virtual ~NameItem();
+};
+
+inline NameItem::NameItem(Instance* p)
+    : instance(p)
+{
 }
+
+struct TextItem : Item
+{
+    char storage[4];
+    TextItem(const char*);
+};
+
+struct Record
+{
+    virtual ~Record();
+    char storage[0x50];
+    Record();
+    Item* addItem(Item*);
+};
+
+struct InstanceRecord : Record
+{
+    Shared instance;
+    InstanceRecord(Shared);
+    virtual ~InstanceRecord();
+};
+
+InstanceRecord::InstanceRecord(Shared p)
+    : instance(p)
+{
+    addItem(new NameItem(p.get()));
+    addItem(new TextItem(p.get()->named.getName().getText().c_str()));
+}
+

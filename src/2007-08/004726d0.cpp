@@ -1,8 +1,8 @@
-// from server: 62% by colin
+// from server: 99% by EspClaude
+// from server: 100% by king_originala
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/VARArea.cpp
+// roc-cl: 50727
+// roc-lib: g3d-6.09-dll GLG3Dcpp/VARArea.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**

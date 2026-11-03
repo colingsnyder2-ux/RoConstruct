@@ -1,8 +1,9 @@
-// from server: 59% by colin
+// from server: 98% by EspClaude
+// from server: 100% by tester
 // roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-11.2.2-vc8 Source/Ribbon/XTPRibbonPopups.cpp
+// roc-cl: 30729
+// roc-flags: /O2 /MD /GS /EHsc
+// roc-lib: xtp-11.2.2-shared-mfc Source/Ribbon/XTPRibbonPopups.cpp
 
 // Candidate translation unit (score above; library headers required).
 // XTPRibbonPopups.cpp : implementation file

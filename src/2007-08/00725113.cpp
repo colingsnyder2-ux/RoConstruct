@@ -1,13 +1,5 @@
-// from server: 63% by colin
-extern "C" int __stdcall HeapFree(int, unsigned int, void*);
-
-struct CXTIconHandle {
-    void* field_4;
-    void destroy(void* p);
-};
-
-void CXTIconHandle::destroy(void* p)
-{
-    if (p != 0)
-        HeapFree(0, 0, field_4);
-}
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O1 /Gy /GS- /MD
+// roc-lib: atl-8.0 atls/atlstr.cpp

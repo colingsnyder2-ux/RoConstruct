@@ -1,7 +1,7 @@
-// from server: 47% by colin
+// from server: 93% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-cl: 50727
 // roc-lib: rbxgs-raknet SocketLayer.cpp
 
 // Candidate translation unit (score above; library headers required).

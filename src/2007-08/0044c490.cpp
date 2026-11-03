@@ -1,5 +1,18 @@
-// from server: 65% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob1 /GS- /MT
-// roc-lib: wildmagic-2-core Containment/WmlConvexHull2.cpp
+// from server: 75% by EspClaude
+// roc 2007-08 0044c490  unit: CRobloxControlColorSelector
+#include <vector>
+extern "C" void __cdecl free(void*);
+template<class T> class CStringStub {
+public:
+    __declspec(noinline) CStringStub(const CStringStub& s) throw() : m_pszData(s.m_pszData) {}
+    __declspec(noinline) ~CStringStub() throw() { free(m_pszData); }
+    __declspec(noinline) CStringStub& operator=(const CStringStub& s) throw() { m_pszData = s.m_pszData; return *this; }
+    T* m_pszData;
+};
+extern template class __declspec(dllimport) CStringStub<char>;
+struct ColorItem {
+    int a;
+    int b;
+    CStringStub<char> name;
+};
+template void std::vector<ColorItem>::_Insert_n(std::vector<ColorItem>::iterator, std::vector<ColorItem>::size_type, const ColorItem&);

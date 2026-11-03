@@ -1,37 +1,70 @@
-// from server: 36% by colin
-struct ExitCommand {
-    int execute(void* p);
+// from server: 85% by EspClaude
+// from server: 100% by coldek
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs roc_codex_com_pointercatch_25136762e631126d.cpp
+
+// Candidate translation unit (score above; library headers required).
+
+struct __RocException { long status; __RocException(const __RocException&); ~__RocException(); void Delete(); };
+
+typedef unsigned int size_t;
+
+void* __cdecl operator new(size_t);
+void __cdecl operator delete(void*);
+
+struct Interface
+{
+    virtual void f0();
+    virtual void f1();
+    virtual void f2();
+    virtual void f3();
+    virtual void f4();
+    virtual void destroy(unsigned int);
 };
 
-extern "C" void* __cdecl func_0062fef6(unsigned int size);
-extern "C" int __cdecl func_00401990(void* self, int zero);
-extern "C" int __cdecl func_00467d50(void* self);
-
-int ExitCommand::execute(void* p)
+struct Object
 {
-    if (p == 0)
-        return (int)0x80004003;
+    unsigned char padding0[16];
+    Interface interfacePart;
+    unsigned char padding1[12];
+    long references;
+    unsigned char padding2[16];
 
-    *(int*)p = 0;
+    Object(int) throw();
+    long initialize();
+};
 
-    void* mem = func_0062fef6(0x44);
-    void* obj;
-    if (mem != 0)
-        obj = (void*)func_00401990(mem, 0);
-    else
-        obj = 0;
+long __stdcall func_00450370(Object** result)
+{
+    if (!result)
+        return (long)0x80004003;
 
-    if (obj != 0) {
-        (*(int*)((char*)obj + 0x30))++;
-        int r = func_00467d50(obj);
-        if (r < 0)
-            r = 0;
-        (*(int*)((char*)obj + 0x30))--;
-        if (r != 0) {
-            void* vtable = *(void**)((char*)obj + 0x20);
-            void* fn = *(void**)((char*)vtable + 0x14);
-            ((void (__stdcall*)(void*, int))fn)((char*)obj + 0x20, 1);
+    *result = 0;
+    long status = (long)0x8007000e;
+    Object* object = 0;
+
+    try
+    {
+        object = new Object(0);
+    }
+    catch (__RocException* __rocException) { __rocException->Delete(); }
+
+    if (object)
+    {
+        ++object->references;
+        status = object->initialize();
+        if (status >= 0)
+            status = 0;
+        --object->references;
+
+        if (status != 0)
+        {
+            object->interfacePart.destroy(1);
+            object = 0;
         }
     }
-    return 0;
+
+    *result = object;
+    return status;
 }

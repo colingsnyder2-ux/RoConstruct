@@ -32,6 +32,7 @@ public:
     int unknown_150;
     int unknown_154;
     int getImageIndex() const; // 0041fb30; name provisional (result is the list/tree image index).
+    int explorerOrder() const; // 004225b0
 };
 
 // RTTI .?AVMember@Metadata@Reflection@RBX@@ (DescribedCreatable<Member, Item, sMember>). Declaration only:

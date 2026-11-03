@@ -1,17 +1,26 @@
-// from server: 85% by colin
-struct CWebToolbox {
-    char pad[0xf4];
-    void* field_f4;
-    void sub_4667E0(int, int, int);
+// from server: 100% by EspClaude
+// roc 2007-08 004667e0  unit: CWebToolbox
+class CView;
+class CWnd {
+public:
+    CWnd* SetFocus();
+protected:
+    long Default();
 };
-
-extern "C" void __stdcall sub_6300BE(int, int, int);
-extern "C" void __stdcall sub_630004(void*);
-
-void CWebToolbox::sub_4667E0(int a1, int a2, int a3) {
-    sub_6300BE(a1, a2, a3);
-    void* p = field_f4;
-    if (p != 0) {
-        sub_630004(p);
-    }
+class CFormView : public CWnd {
+protected:
+    void OnActivateView(int bActivate, CView* pActivateView, CView* pDeactiveView);
+};
+class CWebToolbox : public CFormView {
+    char pad[0xf4];
+    CWnd* m_browser;
+public:
+    void OnActivateView(int bActivate, CView* pActivateView, CView* pDeactiveView);
+    void OnActivate(unsigned int nState, CWnd* pWndOther, int bMinimized);
+};
+void CWebToolbox::OnActivateView(int bActivate, CView* pActivateView, CView* pDeactiveView)
+{
+    CFormView::OnActivateView(bActivate, pActivateView, pDeactiveView);
+    if (m_browser)
+        m_browser->SetFocus();
 }

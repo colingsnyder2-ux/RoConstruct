@@ -1,8 +1,8 @@
-// from server: 60% by colin
+// from server: 70% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/System.cpp
+// roc-lib: g3d-6.09 roc_system_dfabc2c48b48d3fb.cpp
 
 // Candidate translation unit (score above; library headers required).
 /** 
@@ -416,7 +416,7 @@ void System::init() {
     }
 
     #ifdef G3D_WIN32
-        bool success = RegistryUtil::readInt32("HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\~MHz", _CPUSpeed);
+        bool success;
 
         SYSTEM_INFO systemInfo;
         GetSystemInfo(&systemInfo);
@@ -443,11 +443,10 @@ void System::init() {
         }
 
         uint32 maxAddr = (uint32)systemInfo.lpMaximumApplicationAddress;
-        sprintf(_cpuArchCstr, "%d x %d-bit %s processor @ %4.1 GHz",
+        sprintf(_cpuArchCstr, "%d x %d-bit %s processor",
                     systemInfo.dwNumberOfProcessors,
                     (int)(::log((double)maxAddr) / ::log(2.0) + 2.0),
-                    arch,
-                    _CPUSpeed / (1024.0 * 1024));
+                    arch);
 
         OSVERSIONINFO osVersionInfo;
         osVersionInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);

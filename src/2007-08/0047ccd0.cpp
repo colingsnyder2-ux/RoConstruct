@@ -1,369 +1,711 @@
-// from server: 61% by colin
+// from server: 99% by EspClaude
+// from server: 100% by colin
+// roc-cl: 50727
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/TextureFormat.cpp
+// roc-lib: rbxgs-g3d roc_table_uint_remove_2008path_4adaf0ad51de3f5c.cpp
 
 // Candidate translation unit (score above; library headers required).
+#line 1 "d:\\Roblox\\Releases\\2008.06.17\\Client\\Rendering\\g3d\\include\\G3D/Table.h"
 /**
- @file TextureFormat.cpp
- 
- @maintainer Morgan McGuire, morgan@graphics3d.com
- 
- @created 2003-05-23
- @edited  2006-01-11
+  @file Table.h
+  Templated hash table class.
+
+  @maintainer Morgan McGuire, matrix@graphics3d.com
+  @cite Bug fix by Darius Jazayeri, jazayeri@MIT.EDU
+
+  @created 2001-04-22
+  @edited  2005-09-12
+  Copyright 2000-2005, Morgan McGuire.
+  All rights reserved.
  */
 
-#include "GLG3D/TextureFormat.h"
-#include "GLG3D/glheaders.h"
-#include "GLG3D/glcalls.h"
+#ifndef G3D_TABLE_H
+#define G3D_TABLE_H
+
+#include "G3D/platform.h"
+#include "G3D/Array.h"
+#include "G3D/debug.h"
+#include "G3D/System.h"
+#include "G3D/g3dmath.h"
+#include "G3D/Crypto.h"
+#include <assert.h>
+#include <string>
+#include <locale>
+
+#ifdef G3D_WIN32
+#   pragma warning (push)
+    // Debug name too long warning
+#   pragma warning (disable : 4786)
+#endif
 
 namespace G3D {
-static bool INT = false;
-static bool FLOAT = true;
-static bool OPAQUEx = true;
- 
-const TextureFormat* TextureFormat::L8        = new TextureFormat(1, false, GL_LUMINANCE8, GL_LUMINANCE, 8, 0, 0, 0, 0, 0, 0, 8, 8, OPAQUEx, INT, TextureFormat::CODE_L8, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::L16       = new TextureFormat(1, false, GL_LUMINANCE16, GL_LUMINANCE, 16, 0, 0, 0, 0, 0, 0, 16, 16, OPAQUEx, INT, TextureFormat::CODE_L16, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::L16F      = new TextureFormat(1, false, GL_LUMINANCE16F_ARB, GL_LUMINANCE, 16, 0, 0, 0, 0, 0, 0, 16, 16, OPAQUEx, FLOAT, TextureFormat::CODE_L16F, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::L32F      = new TextureFormat(1, false, GL_LUMINANCE32F_ARB, GL_LUMINANCE, 32, 0, 0, 0, 0, 0, 0, 32, 32, OPAQUEx, FLOAT, TextureFormat::CODE_L32F, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::A8        = new TextureFormat(1, false, GL_ALPHA8, GL_ALPHA, 0, 8, 0, 0, 0, 0, 0, 8, 8, !OPAQUEx, INT, TextureFormat::CODE_A8, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::A16       = new TextureFormat(1, false, GL_ALPHA16, GL_ALPHA, 0, 16, 0, 0, 0, 0, 0, 16, 16, !OPAQUEx, INT, TextureFormat::CODE_A16, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::A16F      = new TextureFormat(1, false, GL_ALPHA16F_ARB, GL_ALPHA, 0, 16, 0, 0, 0, 0, 0, 16, 16, !OPAQUEx, FLOAT, TextureFormat::CODE_A16F, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::A32F      = new TextureFormat(1, false, GL_ALPHA32F_ARB, GL_ALPHA, 0, 32, 0, 0, 0, 0, 0, 32, 32, !OPAQUEx, FLOAT, TextureFormat::CODE_A32F, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::LA4       = new TextureFormat(2, false, GL_LUMINANCE4_ALPHA4, GL_LUMINANCE_ALPHA, 4, 4, 0, 0, 0, 0, 0, 8, 8, !OPAQUEx, INT, TextureFormat::CODE_LA4, TextureFormat::COLOR_SPACE_NONE);
- 
-const TextureFormat* TextureFormat::LA8       = new TextureFormat(2, false, GL_LUMINANCE8_ALPHA8, GL_LUMINANCE_ALPHA, 8, 8, 0, 0, 0, 0, 0, 16, 16, !OPAQUEx, INT, TextureFormat::CODE_LA8, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::LA16      = new TextureFormat(2, false, GL_LUMINANCE16_ALPHA16, GL_LUMINANCE_ALPHA, 16, 16, 0, 0, 0, 0, 0, 16*2, 16*2, !OPAQUEx, INT, TextureFormat::CODE_LA16, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::LA16F     = new TextureFormat(2, false, GL_LUMINANCE_ALPHA16F_ARB, GL_LUMINANCE_ALPHA, 16, 16, 0, 0, 0, 0, 0, 16*2, 16*2, !OPAQUEx, FLOAT, TextureFormat::CODE_LA16F, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::LA32F     = new TextureFormat(2, false, GL_LUMINANCE_ALPHA32F_ARB, GL_LUMINANCE_ALPHA, 32, 32, 0, 0, 0, 0, 0, 32*2, 32*2, !OPAQUEx, FLOAT, TextureFormat::CODE_LA32F, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::RGB5      = new TextureFormat(3, false, GL_RGB5, GL_RGBA, 0, 0, 5, 5, 5, 0, 0, 16, 16, OPAQUEx, INT, TextureFormat::CODE_RGB5, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGB5A1    = new TextureFormat(4, false, GL_RGB5_A1, GL_RGBA, 0, 1, 5, 5, 5, 0, 0, 16, 16, OPAQUEx, INT, TextureFormat::CODE_RGB5A1, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGB8      = new TextureFormat(3, false, GL_RGB8, GL_RGB, 0, 0, 8, 8, 8, 0, 0, 24, 32, OPAQUEx, INT, TextureFormat::CODE_RGB8, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGB16     = new TextureFormat(3, false, GL_RGB16, GL_RGB, 0, 0, 16, 16, 16, 0, 0, 16*3, 16*3, OPAQUEx, INT, TextureFormat::CODE_RGB16, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGB16F    = new TextureFormat(3, false, GL_RGB16F_ARB, GL_RGB, 0, 0, 16, 16, 16, 0, 0, 16*3, 16*3, OPAQUEx, FLOAT, TextureFormat::CODE_RGB16F, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGB32F    = new TextureFormat(3, false, GL_RGB32F_ARB, GL_RGB, 0, 0, 32, 32, 32, 0, 0, 32*3, 32*3, OPAQUEx, FLOAT, TextureFormat::CODE_RGB32F, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGBA8     = new TextureFormat(4, false, GL_RGBA8, GL_RGBA, 0, 8, 8, 8, 8, 0, 0, 32, 32, false, INT, TextureFormat::CODE_RGBA8, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGBA16    = new TextureFormat(4, false, GL_RGBA16, GL_RGBA, 0, 16, 16, 16, 16, 0, 0, 16*4, 16*4, false, INT, TextureFormat::CODE_RGBA16, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGBA16F   = new TextureFormat(4, false, GL_RGBA16F_ARB, GL_RGBA, 0, 16, 16, 16, 16, 0, 0, 16*4, 16*4, false, FLOAT, TextureFormat::CODE_RGB16F, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGBA32F   = new TextureFormat(4, false, GL_RGBA32F_ARB, GL_RGBA, 0, 32, 32, 32, 32, 0, 0, 32*4, 32*4, false, FLOAT, TextureFormat::CODE_RGBA32F, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGB_DXT1  = new TextureFormat(3, true, GL_COMPRESSED_RGB_S3TC_DXT1_EXT, GL_RGB, 0, 0, 0, 0, 0, 0, 0, 64, 64, OPAQUEx, INT, TextureFormat::CODE_RGB_DXT1, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGBA_DXT1 = new TextureFormat(4, true, GL_COMPRESSED_RGBA_S3TC_DXT1_EXT, GL_RGBA, 0, 0, 0, 0, 0, 0, 0, 64, 64, !OPAQUEx, INT, TextureFormat::CODE_RGBA_DXT1, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGBA_DXT3 = new TextureFormat(4, true, GL_COMPRESSED_RGBA_S3TC_DXT3_EXT, GL_RGBA, 0, 0, 0, 0, 0, 0, 0, 128, 128, !OPAQUEx, INT, TextureFormat::CODE_RGBA_DXT3, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::RGBA_DXT5 = new TextureFormat(4, true, GL_COMPRESSED_RGBA_S3TC_DXT5_EXT, GL_RGBA, 0, 0, 0, 0, 0, 0, 0, 128, 128, !OPAQUEx, INT, TextureFormat::CODE_RGBA_DXT5, TextureFormat::COLOR_SPACE_RGB);
-
-const TextureFormat* TextureFormat::DEPTH16   = new TextureFormat(1, false, GL_DEPTH_COMPONENT16_ARB, GL_DEPTH_COMPONENT, 0, 0, 0, 0, 0, 0, 16, 16, 16, !OPAQUEx, INT, TextureFormat::CODE_DEPTH16, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::DEPTH24   = new TextureFormat(1, false, GL_DEPTH_COMPONENT24_ARB, GL_DEPTH_COMPONENT, 0, 0, 0, 0, 0, 0, 24, 32, 24, !OPAQUEx, INT, TextureFormat::CODE_DEPTH24, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::DEPTH32   = new TextureFormat(1, false, GL_DEPTH_COMPONENT32_ARB, GL_DEPTH_COMPONENT, 0, 0, 0, 0, 0, 0, 32, 32, 32, !OPAQUEx, INT, TextureFormat::CODE_DEPTH32, TextureFormat::COLOR_SPACE_NONE);
-
-// These formats are for use with Renderbuffers only!
-const TextureFormat* TextureFormat::STENCIL1 = new TextureFormat(1, false, GL_STENCIL_INDEX1_EXT, GL_STENCIL_INDEX_EXT, 0, 0, 0, 0, 0, 0, 1, 1, 1, !OPAQUEx, INT, TextureFormat::CODE_STENCIL1, TextureFormat::COLOR_SPACE_NONE);
-	
-const TextureFormat* TextureFormat::STENCIL4 = new TextureFormat(1, false, GL_STENCIL_INDEX4_EXT, GL_STENCIL_INDEX_EXT, 0, 0, 0, 0, 0, 0, 4, 4, 4, !OPAQUEx, INT, TextureFormat::CODE_STENCIL4, TextureFormat::COLOR_SPACE_NONE);
-	
-const TextureFormat* TextureFormat::STENCIL8 = new TextureFormat(1, false, GL_STENCIL_INDEX8_EXT, GL_STENCIL_INDEX_EXT, 0, 0, 0, 0, 0, 0, 8, 8, 8, !OPAQUEx, INT, TextureFormat::CODE_STENCIL8, TextureFormat::COLOR_SPACE_NONE);
-	
-const TextureFormat* TextureFormat::STENCIL16 = new TextureFormat(1, false, GL_STENCIL_INDEX16_EXT, GL_STENCIL_INDEX_EXT, 0, 0, 0, 0, 0, 0, 16, 16, 16, !OPAQUEx, INT, TextureFormat::CODE_STENCIL16, TextureFormat::COLOR_SPACE_NONE);
-
-const TextureFormat* TextureFormat::AUTO      = NULL;
-
-bool TextureFormat::valid = true;
-
-const TextureFormat* TextureFormat::depth(int depthBits) {
-
-    if (depthBits == SAME_AS_SCREEN) {
-        // Detect screen depth
-        depthBits = glGetInteger(GL_DEPTH_BITS);
-    }
-
-    switch (depthBits) {
-    case 16:
-        return DEPTH16;
-
-    case 24:
-        return DEPTH24;
-
-    case 32:
-        return DEPTH32;
-
-    default:
-        debugAssertM(false, "Depth must be 16, 24, or 32.");
-        return DEPTH32;
-    }
+class Hashable {
+public:
+    virtual unsigned int hashCode() const = 0;
+    
+    /**
+     An empty virtual destructor for virtual methods.
+    */
+    virtual ~Hashable() {}
+};
 }
 
-const TextureFormat* TextureFormat::stencil(int bits) {
-
-    if (bits == SAME_AS_SCREEN) {
-        // Detect screen depth
-        bits = glGetInteger(GL_STENCIL_BITS);
-    }
-
-    switch (bits) {
-    case 1:
-        return STENCIL1;
-
-    case 4:
-        return STENCIL4;
-
-    case 8:
-        return STENCIL8;
-
-    case 16:
-        return STENCIL16;
-
-    default:
-        debugAssertM(false, "Stencil must be 1, 4, 8 or 16.");
-        return STENCIL16;
-    }
+/**
+ Int hashing function for use with Table.
+ */
+inline unsigned int hashCode(const int a) {
+	return a;
 }
 
-const TextureFormat* fromCode(TextureFormat::Code code) {
-    switch (code) {
-    case TextureFormat::CODE_L8:
-        return TextureFormat::L8;
-        break;
-    case TextureFormat::CODE_L16:
-        return TextureFormat::L16;
-        break;
-    case TextureFormat::CODE_L16F:
-        return TextureFormat::L16F;
-        break;
-    case TextureFormat::CODE_L32F:
-        return TextureFormat::L32F;
-        break;
-
-    case TextureFormat::CODE_A8:
-        return TextureFormat::A8;
-        break;
-    case TextureFormat::CODE_A16:
-        return TextureFormat::A16;
-        break;
-    case TextureFormat::CODE_A16F:
-        return TextureFormat::A16F;
-        break;
-    case TextureFormat::CODE_A32F:
-        return TextureFormat::A32F;
-        break;
-
-    case TextureFormat::CODE_LA4:
-        return TextureFormat::LA4;
-        break;
-    case TextureFormat::CODE_LA8:
-        return TextureFormat::LA8;
-        break;
-    case TextureFormat::CODE_LA16:
-        return TextureFormat::LA16;
-        break;
-    case TextureFormat::CODE_LA16F:
-        return TextureFormat::LA16F;
-        break;
-    case TextureFormat::CODE_LA32F:
-        return TextureFormat::LA32F;
-        break;
-
-    case TextureFormat::CODE_RGB5:
-        return TextureFormat::RGB5;
-        break;
-    case TextureFormat::CODE_RGB5A1:
-        return TextureFormat::RGB5A1;
-        break;
-    case TextureFormat::CODE_RGB8:
-        return TextureFormat::RGB8;
-        break;
-    case TextureFormat::CODE_RGB16:
-        return TextureFormat::RGB16;
-        break;
-    case TextureFormat::CODE_RGB16F:
-        return TextureFormat::RGB16F;
-        break;
-    case TextureFormat::CODE_RGB32F:
-        return TextureFormat::RGB32F;
-        break;
-
-    case TextureFormat::CODE_ARGB8:
-        debugAssertM(TextureFormat::AUTO, "Unsupported TextureFormat at decoding.");
-        return TextureFormat::AUTO;
-        break;
-    case TextureFormat::CODE_BGR8:
-        debugAssertM(TextureFormat::AUTO, "Unsupported TextureFormat at decoding.");
-        return TextureFormat::AUTO;
-        break;
-
-    case TextureFormat::CODE_RGBA8:
-        return TextureFormat::RGBA8;
-        break;
-    case TextureFormat::CODE_RGBA16:
-        return TextureFormat::RGBA16;
-        break;
-    case TextureFormat::CODE_RGBA16F:
-        return TextureFormat::RGBA16F;
-        break;
-    case TextureFormat::CODE_RGBA32F:
-        return TextureFormat::RGBA32F;
-        break;
-
-    case TextureFormat::CODE_BAYER_RGGB8:
-    case TextureFormat::CODE_BAYER_GRBG8:
-    case TextureFormat::CODE_BAYER_GBRG8:
-    case TextureFormat::CODE_BAYER_BGGR8:
-    case TextureFormat::CODE_BAYER_RGGB32F:
-    case TextureFormat::CODE_BAYER_GRBG32F:
-    case TextureFormat::CODE_BAYER_GBRG32F:
-    case TextureFormat::CODE_BAYER_BGGR32F:
-
-    case TextureFormat::CODE_HSV8:
-    case TextureFormat::CODE_HSV32F:
-
-    case TextureFormat::CODE_YUV8:
-    case TextureFormat::CODE_YUV32F:
-        debugAssertM(TextureFormat::AUTO, "Unsupported TextureFormat at decoding.");
-        return TextureFormat::AUTO;
-        break;
-
-    case TextureFormat::CODE_RGB_DXT1:
-        return TextureFormat::RGB_DXT1;
-        break;
-    case TextureFormat::CODE_RGBA_DXT1:
-        return TextureFormat::RGBA_DXT1;
-        break;
-    case TextureFormat::CODE_RGBA_DXT3:
-        return TextureFormat::RGBA_DXT3;
-        break;
-    case TextureFormat::CODE_RGBA_DXT5:
-        return TextureFormat::RGBA_DXT5;
-        break;
-
-    case TextureFormat::CODE_DEPTH16:
-        return TextureFormat::DEPTH16;
-        break;
-    case TextureFormat::CODE_DEPTH24:
-        return TextureFormat::DEPTH24;
-        break;
-    case TextureFormat::CODE_DEPTH32:
-        return TextureFormat::DEPTH32;
-        break;
-
-    case TextureFormat::CODE_STENCIL1:
-        return TextureFormat::STENCIL1;
-        break;
-    case TextureFormat::CODE_STENCIL4:
-        return TextureFormat::STENCIL4;
-        break;
-    case TextureFormat::CODE_STENCIL8:
-        return TextureFormat::STENCIL8;
-        break;
-    case TextureFormat::CODE_STENCIL16:
-        return TextureFormat::STENCIL16;
-        break;
-
-    default:
-        return NULL;
-    }
+inline unsigned int hashCode(const G3D::uint32 a) {
+	return a;
 }
 
+inline unsigned int hashCode(const G3D::uint64 a) {
+	return (unsigned int)a;
+}
 
-static class TextureFormatCleanup {
+inline unsigned int hashCode(const void* a) {
+	// Avoid 64-bit pointer cast problems by turning
+	// the pointer itself into an array of integers.
+	int* intPtr = (int*)(((unsigned char*)&a) + (sizeof(void*) - sizeof(int)));
+	return *intPtr;
+}
+
+/**
+ Default class pointer hash.
+ */
+inline unsigned int hashCode(const G3D::Hashable* a) {
+    return a->hashCode();
+}
+
+/**
+ Default class hash.
+ */
+inline unsigned int hashCode(const G3D::Hashable& a) {
+    return a.hashCode();
+}
+
+/**
+ String hashing function for use with Table.
+ */
+inline unsigned int hashCode(const std::string& a) {
+    //static const std::collate<char>& col = std::use_facet< std::collate<char> > (std::locale::empty( ));
+    //return col.hash(a.c_str(), a.c_str() + a.size());
+    return G3D::Crypto::crc32(a.c_str(), a.size());
+}
+
+namespace G3D {
+
+
+/**
+ An unordered data structure mapping keys to values.
+
+ Key must be a pointer, an int, a std::string, a class with a hashCode() method,
+ or provide overloads for the following <B>two</B> functions: 
+
+  <PRE>
+   unsigned int hashCode(const Key&);
+   bool operator==(const Key&, const Key&);
+  </PRE>
+
+ G3D pre-defines hash functions for common types (like <CODE>int</CODE> and <CODE>std::string</CODE>).
+ If you use a Table with a different type you must write those functions yourself.  For example,
+ an enum would use:
+
+  <PRE>
+  unsigned int hashCode(const MyEnum& x) { return (unsigned int)x; };
+  </PRE>
+
+  And rely on the default enum operator==.
+
+
+  Periodically check that debugGetLoad() is low (> 0.1).  When it gets near
+  1.0 your hash function is badly designed and maps too many inputs to
+  the same output.
+ */
+template<class Key, class Value> 
+class Table {
 public:
 
-	~TextureFormatCleanup() {
-		TextureFormat::valid = false;
+    /**
+     The pairs returned by iterator.
+     */
+    class Entry {
+    public:
+        Key    key;
+        Value  value;
+    };
 
-        delete const_cast<TextureFormat*>(TextureFormat::L8);
+private:
+    /**
+     Linked list nodes used internally by HashTable.
+     */
+    class Node {
+    public:
+        unsigned int      hashCode;
+        Entry             entry;
+        Node*             next;
 
-        delete const_cast<TextureFormat*>(TextureFormat::L16);
+        
+        /** Provide pooled allocation for speed. */
+        inline void* operator new (size_t size) {
+            return System::malloc(size);
+        }
+        
+        inline void operator delete (void* p) {
+            System::free(p);
+        }
 
-        delete const_cast<TextureFormat*>(TextureFormat::L16F);
+
+        Node(Key key, Value value, unsigned int hashCode, Node* next) {
+            this->entry.key   = key;
+            this->entry.value = value;
+            this->hashCode    = hashCode;
+            this->next        = next;
+        }
+
+        /**
+        Clones a whole chain;
+        */
+        Node* clone() {
+           return new Node(this->entry.key, this->entry.value, hashCode, (next == NULL) ? NULL : next->clone());
+        }
+    };
+
+
+    /**
+     Number of elements in the table.
+     */
+    int     _size;
+
+    /**
+     Array of Node*. 
+     We don't use Array<Node*> because Table is lower level.
+     Some elements may be NULL.
+     */
+    Node**  bucket;
     
-        delete const_cast<TextureFormat*>(TextureFormat::L32F);
+    /**
+     Length of the bucket array.
+     */
+    int     numBuckets;
 
-        delete const_cast<TextureFormat*>(TextureFormat::A8);
+    /**
+     Re-hashes for a larger bucket size.
+     */
+    void resize(int numBuckets) {
 
-        delete const_cast<TextureFormat*>(TextureFormat::A16);
+        Node** oldBucket = bucket;
+        bucket = (Node**)System::alignedMalloc(sizeof(Node*) * numBuckets, 16);
+        System::memset(bucket, 0, sizeof(Node*) * numBuckets);
 
-        delete const_cast<TextureFormat*>(TextureFormat::A16F);
-    
-        delete const_cast<TextureFormat*>(TextureFormat::A32F);
+        for (int b = 0; b < this->numBuckets; b++) {
+            Node* node = oldBucket[b];
+         
+            while (node != NULL) {
+                Node* nextNode = node->next;
+        
+                // insert at the head of the list for bucket[i]
+                int i = node->hashCode % numBuckets;
+                node->next = bucket[i];
+                bucket[i] = node;
+        
+                node = nextNode;
+            }
+        }
 
-        delete const_cast<TextureFormat*>(TextureFormat::LA4);
+        System::alignedFree(oldBucket);
+        this->numBuckets = numBuckets;
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::LA8);
+    void copyFrom(const Table<Key, Value>& h) {
+        this->_size = h._size;
+        this->numBuckets = h.numBuckets;
+        this->bucket = (Node**)System::alignedMalloc(sizeof(Node*) * numBuckets, 16);
+        System::memset(this->bucket, 0, sizeof(Node*) * numBuckets);
+        for (int b = 0; b < this->numBuckets; b++) {
+            if (h.bucket[b] != NULL) {
+                bucket[b] = h.bucket[b]->clone();
+            }
+        }
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::LA16);
+    /**
+     Frees the heap structures for the nodes.
+     */
+    void freeMemory() {
+        for (int b = 0; b < numBuckets; b++) {
+           Node* node = bucket[b];
+           while (node != NULL) {
+                Node* next = node->next;
+                delete node;
+                node = next;
+           }
+        }
+        System::alignedFree(bucket);
+        bucket     = NULL;
+        numBuckets = 0;
+        _size     = 0;
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::LA16F);
-    
-        delete const_cast<TextureFormat*>(TextureFormat::LA32F);
+public:
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGB5);
+    /**
+     Creates an empty hash table.  This causes some heap allocation to occur.
+     */
+    Table() {
+        numBuckets = 10;
+        _size      = 0;
+        bucket     = (Node**)System::alignedMalloc(sizeof(Node*) * numBuckets, 16);
+        System::memset(bucket, 0, sizeof(Node*) * numBuckets);
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGB5A1);
+    /**
+    Destroys all of the memory allocated by the table, but does <B>not</B>
+    call delete on keys or values if they are pointers.  If you want to
+    deallocate things that the table points at, use getKeys() and Array::deleteAll()
+    to delete them.
+    */
+    virtual ~Table() {
+        freeMemory();
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGB8);
+    Table(const Table<Key, Value>& h) {
+        this->copyFrom(h);
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGB16);
+    Table& operator=(const Table<Key, Value>& h) {
+        // No need to copy if the argument is this
+        if (this != &h) {
+            // Free the existing nodes
+            freeMemory();
+            this->copyFrom(h);
+        }
+        return *this;
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGB16F);
+    /**
+     Returns the length of the deepest bucket.
+     */
+    int debugGetDeepestBucketSize() const {
+        int deepest = 0;
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGB32F);
+        for (int b = 0; b < numBuckets; b++) {
+            int     count = 0;
+            Node*   node = bucket[b];
+            while (node != NULL) {
+                node = node->next;
+                ++count;
+            }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGBA8);
+            if (count > deepest) {
+                deepest = count;
+            }
+        }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGBA16);
+        return deepest;
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGBA16F);
-    
-        delete const_cast<TextureFormat*>(TextureFormat::RGBA32F);
-    
-        delete const_cast<TextureFormat*>(TextureFormat::RGB_DXT1);
+    /**
+     A small load (close to zero) means the hash table is acting very
+     efficiently most of the time.  A large load (close to 1) means 
+     the hash table is acting poorly-- all operations will be very slow.
+     A large load will result from a bad hash function that maps too
+     many keys to the same code.
+     */
+    double debugGetLoad() const {
+        return debugGetDeepestBucketSize() / (double)size();
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGBA_DXT1);
+    /**
+     Returns the number of buckets.
+     */
+    int debugGetNumBuckets() const {
+        return numBuckets;
+    }
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGBA_DXT3);
+    /**
+     C++ STL style iterator variable.  See begin().
+     */
+    class Iterator {
+    private:
+        friend class Table<Key, Value>;
 
-        delete const_cast<TextureFormat*>(TextureFormat::RGBA_DXT5);
+        /**
+         Bucket index.
+         */
+        int                index;
 
-        delete const_cast<TextureFormat*>(TextureFormat::DEPTH16);
+        /**
+         Linked list node.
+         */
+        Node*              node;
+        Table<Key, Value>* table;
+        int                numBuckets;
+        Node**             bucket;
+        bool               isDone;
 
-        delete const_cast<TextureFormat*>(TextureFormat::DEPTH24);
+        /**
+         Creates the end iterator.
+         */
+        Iterator(const Table<Key, Value>* table) : table(const_cast<Table<Key, Value>*>(table)) {
+            isDone = true;
+        }
 
-        delete const_cast<TextureFormat*>(TextureFormat::DEPTH32);
+        Iterator(const Table<Key, Value>* table, int numBuckets, Node** bucket) :
+            table(const_cast<Table<Key, Value>*>(table)),
+            numBuckets(numBuckets),
+            bucket(bucket) {
+            
+            if (numBuckets == 0) {
+                // Empty table
+                isDone = true;
+                return;
+            }
 
-        delete const_cast<TextureFormat*>(TextureFormat::STENCIL1);
+            index = 0;
+            node = bucket[index];
+            isDone = false;
+            findNext();
+        }
 
-        delete const_cast<TextureFormat*>(TextureFormat::STENCIL4);
+        /**
+         Finds the next element, setting isDone if one can't be found.
+         Looks at the current element first.
+         */
+        void findNext() {
+            while (node == NULL) {
+                index++;
+                if (index >= numBuckets) {
+                    isDone = true;
+                    break;
+                } else {
+                    node = bucket[index];
+                }
+            }
+        }
 
-        delete const_cast<TextureFormat*>(TextureFormat::STENCIL8);
+    public:
+        inline bool operator!=(const Iterator& other) const {
+            return !(*this == other);
+        }
 
-        delete const_cast<TextureFormat*>(TextureFormat::STENCIL16);
-	}
-} _textureFormatCleanup;
+        bool operator==(const Iterator& other) const {
+            if (other.isDone || isDone) {
+                // Common case; check against isDone.
+                return (isDone == other.isDone) && (other.table == table);
+            } else {
+                return
+                    (table == other.table) &&
+                    (node == other.node) && 
+                    (index == other.index);
+            }
+        }
 
-}
+        /**
+         Pre increment.
+         */
+        Iterator& operator++() {
+            node = node->next;
+            findNext();
+            return *this;
+        }
+
+        /**
+         Post increment (slower than preincrement).
+         */
+        Iterator operator++(int) {
+            Iterator old = *this;
+            ++(*this);
+            return old;
+        }
+
+        const Entry& operator*() const {
+            return node->entry;
+        }
+
+        Entry* operator->() const {
+            return &(node->entry);
+        }
+
+        operator Entry*() const {
+            return &(node->entry);
+        }
+    };
+
+
+    /**
+     C++ STL style iterator method.  Returns the first Entry, which 
+     contains a key and value.  Use preincrement (++entry) to get to
+     the next element.  Do not modify the table while iterating.
+     */
+    Iterator begin() const {
+        return Iterator(this, numBuckets, bucket);
+    }
+
+    /**
+     C++ STL style iterator method.  Returns one after the last iterator
+     element.
+     */
+    const Iterator end() const {
+        return Iterator(this);
+    }
+
+    /**
+     Removes all elements
+     */
+    void clear() {
+         freeMemory();
+         numBuckets = 20;
+         _size = 0;
+         bucket = (Node**)System::alignedMalloc(sizeof(Node*) * numBuckets, 16);
+         System::memset(bucket, 0, sizeof(Node*) * numBuckets);
+    }
+
+   
+    /**
+     Returns the number of keys.
+     */
+    int size() const {
+        return _size;
+    }
+
+
+    /**
+     If you insert a pointer into the key or value of a table, you are
+     responsible for deallocating the object eventually.  Inserting 
+     key into a table is O(1), but may cause a potentially slow rehashing.
+     */
+    void set(const Key& key, const Value& value) {
+        unsigned int code = ::hashCode(key);
+        unsigned int b = code % numBuckets;
+        
+        // Go to the bucket
+        Node* n = bucket[b];
+
+        // No bucket, so this must be the first
+        if (n == NULL) {
+            bucket[b] = new Node(key, value, code, NULL);
+            ++_size;
+            return;
+        }
+
+        int bucketLength = 1;
+
+        // Sometimes a bad hash code will cause all elements
+        // to collide.  Detect this case and don't rehash when 
+        // it occurs; nothing good will come from the rehashing.
+        bool allSameCode = true;
+
+        // Try to find the node
+        do {
+            allSameCode = allSameCode && (code == n->hashCode);
+
+            if ((code == n->hashCode) && (n->entry.key == key)) {
+               // Replace the existing node.
+               n->entry.value = value;
+               return;
+            }
+
+            n = n->next;
+            ++bucketLength;
+        } while (n != NULL);
+
+        const int maxBucketLength = 5;
+        if ((bucketLength > maxBucketLength) & ! allSameCode && (numBuckets < _size * 20)) {
+            // This bucket was really large; rehash if all elements
+            // don't have the same hashcode the number of buckets is reasonable.
+            resize(numBuckets * 2 + 1);
+        }
+
+        // Not found; insert at the head.
+        b = code % numBuckets;
+        bucket[b] = new Node(key, value, code, bucket[b]);
+        ++_size;
+   }
+
+   /**
+    Removes an element from the table if it is present.  It is an error
+    to remove an element that isn't present.
+    */
+   void remove(const Key& key) {
+      
+      unsigned int code = ::hashCode(key);
+      unsigned int b = code % numBuckets;
+
+      // Go to the bucket
+      Node* n = bucket[b];
+
+      // Make sure it was found
+      alwaysAssertM(n != NULL, "Tried to remove a key that was not in the table.");
+
+      Node* previous = NULL;
+
+      // Try to find the node
+      do {
+          if ((code == n->hashCode) && (n->entry.key == key)) {
+              // This is the node; remove it
+              if (previous == NULL) {
+                  bucket[b] = n->next;
+              } else {
+                  previous->next = n->next;
+              }
+              // Delete the node
+              delete n;
+              --_size;
+              return;
+          }
+
+          previous = n;
+          n = n->next;
+       } while (n != NULL);
+
+
+      alwaysAssertM(false, "Tried to remove a key that was not in the table.");
+   }
+
+   /**
+    Returns the value associated with key.
+    @deprecated Use get(key, val) or 
+    */
+   Value& get(const Key& key) const {
+
+       unsigned int code = ::hashCode(key);
+      unsigned int b = code % numBuckets;
+
+      Node* node = bucket[b];
+
+      while (node != NULL) {
+         if ((node->hashCode == code) && (node->entry.key == key)) {
+            return node->entry.value;
+         }
+         node = node->next;
+      }
+
+      debugAssertM(false, "Key not found");
+      // The next line is here just to make
+      // a compiler warning go away.
+      return node->entry.value;
+   }
+
+   /**
+    If the key is present in the table, val is set to the associated value and returns true.
+    If the key is not present, returns false.
+    */
+   bool get(const Key& key, Value& val) const {
+	  unsigned int code = ::hashCode(key);
+      unsigned int b = code % numBuckets;
+
+      Node* node = bucket[b];
+
+      while (node != NULL) {
+          if ((node->hashCode == code) && (node->entry.key == key)) {
+             // found key
+             val = node->entry.value;
+             return true;
+          }
+          node = node->next;
+      }
+
+      // Failed to find key
+      return false;
+   }
+
+   /**
+    Returns true if key is in the table.
+    */
+   bool containsKey(const Key& key) const {
+       unsigned int code = ::hashCode(key);
+       unsigned int b = code % numBuckets;
+
+       Node* node = bucket[b];
+
+       while (node != NULL) {
+           if ((node->hashCode == code) && (node->entry.key == key)) {
+              return true;
+           }
+           node = node->next;
+       } while (node != NULL);
+
+       return false;
+   }
+
+
+   /**
+    Short syntax for get.
+    */
+   inline Value& operator[](const Key &key) const {
+      return get(key);
+   }
+
+
+   /**
+    Returns an array of all of the keys in the table.
+    You can iterate over the keys to get the values.
+    */
+   Array<Key> getKeys() const {
+       Array<Key> keyArray;
+       getKeys(keyArray);
+       return keyArray;
+   }
+
+   void getKeys(Array<Key>& keyArray) const {
+       keyArray.resize(0, DONT_SHRINK_UNDERLYING_ARRAY);
+       for (int i = 0; i < numBuckets; i++) {
+           Node* node = bucket[i];
+           while (node != NULL) {
+               keyArray.append(node->entry.key);
+               node = node->next;
+           }
+       }
+   }
+
+   /**
+    Calls delete on all of the keys.  Does not clear the table, 
+    however, so you are left with a table of dangling pointers.
+
+    Same as <CODE>getKeys().deleteAll();</CODE>
+
+    To delete all of the values, you may want something like
+    <PRE>
+        Array<Key> keys = table.getKeys();
+        Set<Value> value;
+        for (int k = 0; k < keys.length(); k++) {
+           value.insert(keys[k]);
+        }
+        value.getMembers().deleteAll();
+        keys.deleteAll();
+    </PRE>
+    */
+   void deleteKeys() {
+       getKeys().deleteAll();
+   }
+
+   /**
+    Calls delete on all of the values.  This is unsafe--
+    do not call unless you know that each value appears
+    at most once.
+
+    Does not clear the table, so you are left with a table
+    of dangling pointers.
+    */
+   void deleteValues() {
+       for (int i = 0; i < numBuckets; i++) {
+           Node* node = bucket[i];
+           while (node != NULL) {
+               delete node->entry.value;
+               node = node->next;
+           }
+       }
+   }
+};
+
+} // namespace
+
+#endif
+#ifdef G3D_WIN32
+#   pragma warning (pop)
+#endif
+
+template void G3D::Table<unsigned int, unsigned int>::remove(const unsigned int&);

@@ -1,35 +1,38 @@
-// from server: 89% by colin
-// roc 2007-08 0044bf50  unit: seg_00440000  size: 95 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0044bf50
-
-extern "C" void __stdcall _invalid_parameter_noinfo();
-
-struct CRobloxControlColorSelector {
-    char pad[0x16c];
-    int index;
-    unsigned char flag;
-    char pad2[0x3];
-    int value;
-    void sub_63c510();
-    void func();
+// from server: 100% by EspClaude
+// roc 2007-08 0044bf50  unit: CRobloxControlColorSelector
+#include <vector>
+extern "C" void __cdecl free(void*);
+template<class T> class CStringStub {
+public:
+    __declspec(noinline) CStringStub(const CStringStub& s) throw() : m_pszData(s.m_pszData) {}
+    __declspec(noinline) ~CStringStub() throw() { free(m_pszData); }
+    __declspec(noinline) CStringStub& operator=(const CStringStub& s) throw() { m_pszData = s.m_pszData; return *this; }
+    T* m_pszData;
 };
-
-void CRobloxControlColorSelector::func() {
-    int idx = this->index;
-    if (idx != -1) {
-        int* begin = *(int**)0x8bbebc;
-        if (begin != 0) {
-            int count = (*(int**)0x8bbec0 - begin) / 6;
-            if ((unsigned)idx >= (unsigned)count) {
-                _invalid_parameter_noinfo();
-                begin = *(int**)0x8bbebc;
-            }
-        } else {
-            _invalid_parameter_noinfo();
-            begin = *(int**)0x8bbebc;
-        }
-        this->value = begin[idx * 3];
-        this->flag = 1;
+extern template class __declspec(dllimport) CStringStub<char>;
+struct ColorItem {
+    unsigned long color;
+    int id;
+    CStringStub<char> name;
+};
+extern std::vector<ColorItem> g_colors;
+class CWndBase {
+public:
+    void Invalidate();
+};
+class CRobloxControlColorSelector : public CWndBase {
+    char pad[0x16c];
+    int m_index;
+    bool m_hasColor;
+    unsigned long m_color;
+public:
+    void Update();
+};
+void CRobloxControlColorSelector::Update()
+{
+    if (m_index != -1) {
+        m_color = g_colors[m_index].color;
+        m_hasColor = true;
     }
-    this->sub_63c510();
+    Invalidate();
 }

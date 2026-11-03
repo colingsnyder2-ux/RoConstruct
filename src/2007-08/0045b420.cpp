@@ -1,65 +1,95 @@
-// from server: 44% by colin
-struct Item {
-    void setValue(int);
-    void setValue(double);
-    void setValue(const char*);
-    void update();
+// from server: 74% by EspClaude
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 50727
+struct String;
+extern void (__thiscall *constructString)(String *, const char *);
+extern void (__thiscall *destroyString)(String *);
+extern String *(__thiscall *assignString)(String *, const String *);
+
+struct String {
+    char storage[28];
+    String(const char *);
+    ~String();
+    String &operator=(const String &);
 };
 
-struct RenderStatsItem : Item {
-    void update();
-};
-
-struct StatsService {
-    char pad[0x210];
-    int field210;
-    int field214;
-    int field218;
-    int field21c;
-};
-
-extern "C" {
-    void __stdcall sub_596AE0(Item* item, const char* fmt, double a, double b);
-    void __stdcall sub_596A60(Item* item, int value);
-    int __stdcall sub_472F80();
+__forceinline String::String(const char *s) {
+    constructString(this, s);
 }
 
-extern int dword_8BFBDC;
-extern int dword_8BFBE0;
-extern int dword_8BFBE4;
-extern int dword_8BD028;
-extern int dword_8BD0B4;
-extern double dbl_78FEE8;
-extern double dbl_793198;
+__forceinline String::~String() {
+    destroyString(this);
+}
 
-void RenderStatsItem::update()
-{
-    if (dword_8BFBDC == 0) {
-        Item* videoMemory = *(Item**)((char*)this + 0x110);
-        *(double*)((char*)videoMemory + 0xe8) = 0.0;
-        *(int*)((char*)videoMemory + 0xf0) = 0;
+__forceinline String &String::operator=(const String &s) {
+    return *assignString(this, &s);
+}
+
+struct Item {
+    char padding[0x130];
+    double value;
+    String text;
+    void setValue(unsigned int);
+};
+
+struct Statistics {
+    char padding[0x210];
+    int firstLimit;
+    int firstCount;
+    int secondLimit;
+    int secondCount;
+};
+
+extern int profileCount;
+extern int profileBegin;
+extern int profileEnd;
+extern unsigned int firstValue;
+extern unsigned int secondValue;
+extern unsigned int __cdecl getValue();
+extern void __cdecl formatItem(Item *, double, const char *, ...);
+
+struct S {
+    char padding[0x158];
+    Item *profile;
+    Item *first;
+    Item *second;
+    Item *third;
+    Item *firstStats;
+    Item *secondStats;
+    Statistics *stats;
+    void RenderStatsItem();
+};
+
+void S::RenderStatsItem() {
+    __declspec(align(64)) char workspace[64];
+    int count = profileCount;
+
+    if (!count) {
+        String text("n/a");
+        Item *item = profile;
+        item->value = 0.0;
+        item->text = text;
     } else {
-        Item* videoMemory = *(Item**)((char*)this + 0x110);
-        if (dword_8BFBE4 == 0) {
-            sub_596AE0(videoMemory, "%.0f%%, %.2g", 0.0, 1.0);
+        int total = profileEnd;
+        if (!total) {
+            formatItem(profile, 0.0, "%.0f%%, %.2g", 0.0, 1.0);
         } else {
-            int total = dword_8BFBE4 - dword_8BFBDC + dword_8BFBE0;
-            float fTotal = (float)total;
-            float fUsed = (float)dword_8BFBE4;
-            float ratio = (fUsed - fTotal) / (fUsed - (float)dbl_793198);
-            sub_596AE0(videoMemory, "%.0f%%, %.2g", (double)(ratio * (float)dbl_78FEE8), (double)fTotal);
+            total -= profileBegin;
+            float samples = float(count);
+            count = total + count;
+            float elapsed = float(count);
+            float ratio = (samples - elapsed) / (samples - 1.0f);
+            formatItem(profile, ratio, "%.0f%%, %.2g",
+                       100.0f * ratio, samples / elapsed);
         }
     }
 
-    StatsService* ss = *(StatsService**)((char*)this + 0x128);
-    Item* major = *(Item**)((char*)this + 0x120);
-    sub_596AE0(major, "%d/%d", (double)ss->field214, (double)ss->field210);
-
-    StatsService* ss2 = *(StatsService**)((char*)this + 0x128);
-    Item* minor = *(Item**)((char*)this + 0x124);
-    sub_596AE0(minor, "%d/%d", (double)ss2->field21c, (double)ss2->field218);
-
-    sub_596A60(*(Item**)((char*)this + 0x114), dword_8BD028);
-    sub_596A60(*(Item**)((char*)this + 0x118), dword_8BD0B4);
-    sub_596A60(*(Item**)((char*)this + 0x11c), sub_472F80());
+    formatItem(firstStats, double(stats->firstCount), "%d/%d",
+               stats->firstCount, stats->firstLimit);
+    formatItem(secondStats, double(stats->secondCount), "%d/%d",
+               stats->secondCount, stats->secondLimit);
+    first->setValue(firstValue);
+    second->setValue(secondValue);
+    third->setValue(getValue());
 }

@@ -1,35 +1,7 @@
-// from server: 77% by colin
-struct LDraw2RobloxColorMap
-{
-    int* data;
-    int size;
-    LDraw2RobloxColorMap& append(int count);
-};
-
-extern "C" int (__stdcall *g_77e6d8)();
-extern "C" int (__stdcall *g_77e5e8)(int*);
-
-LDraw2RobloxColorMap& LDraw2RobloxColorMap::append(int count)
-{
-    if (data != (int*)-2)
-    {
-        if (data == 0)
-            g_77e6d8();
-        int* p = data;
-        int cap = g_77e5e8(p) + *(int*)((char*)p + 0x14);
-        if ((unsigned)(size + count) > (unsigned)cap)
-        {
-            g_77e6d8();
-        }
-        else
-        {
-            int cap2 = g_77e5e8(p) + *(int*)((char*)p + 0x14);
-            if ((unsigned)(size + count) < (unsigned)cap2)
-            {
-                g_77e6d8();
-            }
-        }
-    }
-    size += count;
-    return *this;
-}
+// from server: 100% by EspClaude
+// roc 2007-08 00469480  unit: RBX::LDraw2Lua::LDraw2RobloxColorMap  size: 82 bytes
+// std::string::const_iterator::operator+= (VS2005 checked iterator), basic_string imported from MSVCP80.
+// roc-flags: /O2 /Ob0 /GS /EHsc /MD
+#include <string>
+typedef std::_String_const_iterator<char, std::char_traits<char>, std::allocator<char> > It;
+template It& It::operator+=(It::difference_type);

@@ -1,198 +1,219 @@
-// from server: 38% by atomic.potato
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 72% by EspClaude
+// from server: 100% by coldek
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: xtp-11.2.2-shared-mfc roc_codex_vischildren_snapshot_alias_82e230881187a9c2.cpp
 
-extern "C" void __stdcall _invalid_parameter_noinfo();
-
-struct RefCounted {
-    void* vptr;
-    long ref1;
-    long ref2;
+// Candidate translation unit (score above; library headers required).
+#ifndef _CPPUNWIND
+#define _CPPUNWIND 1
+#endif
+#define _AFXDLL 1
+#define _XTP_STATICLINK 1
+#include <afxwin.h>
+#include <afxext.h>
+#include <XTToolkitPro.h>
+#include <map>
+#include <set>
+#include <vector>
+#include <intrin.h>
+#include <typeinfo>
+#include <stdexcept>
+namespace boost {namespace detail {
+class sp_counted_base {
+ sp_counted_base(const sp_counted_base&);
+ sp_counted_base&operator=(const sp_counted_base&);
+ long use_count_,weak_count_;
+public:
+ sp_counted_base():use_count_(1),weak_count_(1){}
+ virtual ~sp_counted_base(){}
+ virtual void dispose()=0;
+ virtual void destroy(){delete this;}
+ virtual void*get_deleter(const std::type_info&)=0;
+ void add_ref_copy(){_InterlockedIncrement(&use_count_);}
+ void weak_release(){if(_InterlockedDecrement(&weak_count_)==0)destroy();}
+ void release(){if(_InterlockedDecrement(&use_count_)==0){dispose();weak_release();}}
 };
-
-struct Sub {
-    char pad[0xc0];
-    void* field_c0;
+class shared_count {
+ sp_counted_base*pi_;
+public:
+ shared_count():pi_(0){}
+ shared_count(const shared_count&r):pi_(r.pi_){if(pi_)pi_->add_ref_copy();}
+ ~shared_count(){if(pi_)pi_->release();}
+ friend inline bool operator<(shared_count const&a,shared_count const&b){return std::less<sp_counted_base*>()(a.pi_,b.pi_);}
 };
-
-struct Node {
-    char pad0[0xc];
-    Sub* sub;
+}
+template<class T>class shared_ptr {
+ T*px;detail::shared_count pn;
+public:
+ shared_ptr():px(0),pn(){}
+ template<class Y>shared_ptr(const shared_ptr<Y>&r):px(r.px),pn(r.pn){}
+ T*get()const{return px;}
+ bool operator!()const{return px==0;}
+ T*operator->()const{return px;}
+ template<class Y>bool _internal_less(shared_ptr<Y>const&r)const{return pn<r.pn;}
+ template<class Y>friend class shared_ptr;
 };
-
-struct S {
-    char pad0[0x30];
-    void* field_30;
-    bool method();
-};
-
-struct Iter {
-    void* first;
-    void* second;
-};
-
-struct Holder {
-    void* ptr;
-};
-
-extern "C" void __cdecl sub_40D550(void*);
-extern "C" void __cdecl sub_4178F0(void*, void*);
-extern "C" int __cdecl sub_41F6F0(void*);
-extern "C" void* __cdecl sub_442C60(void*, void*, int);
-extern "C" void __cdecl sub_444B70(void*);
-extern "C" void __cdecl sub_5595A0(void*);
-
-bool S::method()
+}
+namespace boost {template<class T,class U>inline bool operator<(shared_ptr<T>const&a,shared_ptr<U>const&b){return a._internal_less(b);}}
+namespace boost {namespace noncopyable_ {class noncopyable {protected:noncopyable(){}~noncopyable(){}private:noncopyable(const noncopyable&);const noncopyable&operator=(const noncopyable&);};}typedef noncopyable_::noncopyable noncopyable;
+class condition;struct xtime;
+class thread_exception:public std::exception {protected:thread_exception();thread_exception(int);public:~thread_exception()throw();int native_error()const;private:int m_sys_err;};
+class lock_error:public thread_exception {public:lock_error();lock_error(int);~lock_error()throw();virtual const char*what()const throw();};
+namespace detail {namespace thread {
+template <typename Mutex>
+class lock_ops : private noncopyable
 {
-    void* local24 = 0;
-    void* local28 = 0;
-    void* local2c = 0;
-    void* local30 = 0;
-    void* local34 = 0;
-    void* local38 = 0;
+private:
+    lock_ops() { }
 
-    void* vt = *(void**)this->field_30;
-    void* (__thiscall *fn)(void*, void*) = *(void* (__thiscall**)(void*, void*))((char*)vt + 0x14c);
-    void* result = fn(this->field_30, &local24);
+public:
+    typedef typename Mutex::cv_state lock_state;
 
-    void* obj = *(void**)result;
-    void* obj2 = *(void**)((char*)result + 4);
+    static void lock(Mutex& m)
+    {
+        m.do_lock();
+    }
+    static bool trylock(Mutex& m)
+    {
+        return m.do_trylock();
+    }
+    static bool timedlock(Mutex& m, const xtime& xt)
+    {
+        return m.do_timedlock(xt);
+    }
+    static void unlock(Mutex& m)
+    {
+        m.do_unlock();
+    }
+    static void lock(Mutex& m, lock_state& state)
+    {
+        m.do_lock(state);
+    }
+    static void unlock(Mutex& m, lock_state& state)
+    {
+        m.do_unlock(state);
+    }
+};
 
-    local38 = 0;
-    local34 = &local24;
+template <typename Mutex>
+class scoped_lock : private noncopyable
+{
+public:
+    typedef Mutex mutex_type;
 
-    if (obj2 != 0) {
-        _InterlockedExchangeAdd((volatile long*)((char*)obj2 + 4), 1);
+    explicit scoped_lock(Mutex& mx, bool initially_locked=true)
+        : m_mutex(mx), m_locked(false)
+    {
+        if (initially_locked) lock();
+    }
+    ~scoped_lock()
+    {
+        if (m_locked) unlock();
     }
 
-    sub_40D550(&local30);
-
-    void* p = local28;
-    if (p != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)p + 4), -1) == 1) {
-            void* v = *(void**)p;
-            void (__thiscall *f)(void*) = *(void (__thiscall**)(void*))((char*)v + 4);
-            f(p);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)p + 8), -1) == 1) {
-                void* v2 = *(void**)p;
-                void (__thiscall *f2)(void*) = *(void (__thiscall**)(void*))((char*)v2 + 8);
-                f2(p);
-            }
-        }
+    void lock()
+    {
+        if (m_locked) throw lock_error();
+        lock_ops<Mutex>::lock(m_mutex);
+        m_locked = true;
+    }
+    void unlock()
+    {
+        if (!m_locked) throw lock_error();
+        lock_ops<Mutex>::unlock(m_mutex);
+        m_locked = false;
     }
 
-    void* n = *(void**)((char*)this + 0xc);
-    Sub* s = *(Sub**)((char*)n + 0xc);
+    bool locked() const { return m_locked; }
+    operator const void*() const { return m_locked ? this : 0; }
 
-    Iter it;
-    sub_4178F0((char*)s + 0xc0, &it);
+private:
+    friend class boost::condition;
 
-    void* first = it.first;
-    if (first == 0) {
-        void* second = it.second;
-        if (second != 0) {
-            if (_InterlockedExchangeAdd((volatile long*)((char*)second + 4), -1) == 1) {
-                void* v = *(void**)second;
-                void (__thiscall *f)(void*) = *(void (__thiscall**)(void*))((char*)v + 4);
-                f(second);
-                if (_InterlockedExchangeAdd((volatile long*)((char*)second + 8), -1) == 1) {
-                    void* v2 = *(void**)second;
-                    void (__thiscall *f2)(void*) = *(void (__thiscall**)(void*))((char*)v2 + 8);
-                    f2(second);
-                }
-            }
-        }
-        sub_5595A0(&local2c);
-        return false;
-    }
+    Mutex& m_mutex;
+    bool m_locked;
+};
 
-    void* end = *(void**)((char*)first + 8);
-    if (*(unsigned*)((char*)first + 4) > (unsigned)end) {
-        _invalid_parameter_noinfo();
-    }
-    void* cur = *(void**)((char*)first + 4);
-    if ((unsigned)cur > *(unsigned*)((char*)first + 8)) {
-        _invalid_parameter_noinfo();
-    }
+}}class recursive_mutex:private noncopyable {public:friend class detail::thread::lock_ops<recursive_mutex>;typedef detail::thread::scoped_lock<recursive_mutex> scoped_lock;recursive_mutex();~recursive_mutex();private:typedef std::size_t cv_state;void do_lock();void do_unlock();void do_lock(cv_state&);void do_unlock(cv_state&);void*m_mutex;bool m_critical_section;unsigned long m_count;};}
 
-    while (cur != end) {
-        Holder h;
-        sub_444B70(&h);
+namespace RBX {class Instance;class PropertyChanged;struct ChildAdded;struct ChildRemoved;namespace Reflection {class ClassDescriptor;}
+template<class C,class E>class __declspec(novtable) Listener {protected:virtual void onEvent(const C*,E)=0;Listener&operator=(const Listener&);virtual~Listener(){}};
+}
 
-        if ((unsigned)cur >= *(unsigned*)((char*)first + 8)) {
-            _invalid_parameter_noinfo();
-        }
 
-        void* v = *(void**)cur;
-        void* vf = *(void**)((char*)v + 0xc);
-        void* r = sub_442C60(vf, h.ptr, 1);
-        if (r != 0) {
-            if (sub_41F6F0(r) >= 0) {
-                void* second = it.second;
-                if (second != 0) {
-                    if (_InterlockedExchangeAdd((volatile long*)((char*)second + 4), -1) == 1) {
-                        void* v2 = *(void**)second;
-                        void (__thiscall *f)(void*) = *(void (__thiscall**)(void*))((char*)v2 + 4);
-                        f(second);
-                        if (_InterlockedExchangeAdd((volatile long*)((char*)second + 8), -1) == 1) {
-                            void* v3 = *(void**)second;
-                            void (__thiscall *f2)(void*) = *(void (__thiscall**)(void*))((char*)v3 + 8);
-                            f2(second);
-                        }
-                    }
-                }
-                void* second2 = it.second;
-                if (second2 != 0) {
-                    if (_InterlockedExchangeAdd((volatile long*)((char*)second2 + 4), -1) == 1) {
-                        void* v2 = *(void**)second2;
-                        void (__thiscall *f)(void*) = *(void (__thiscall**)(void*))((char*)v2 + 4);
-                        f(second2);
-                        if (_InterlockedExchangeAdd((volatile long*)((char*)second2 + 8), -1) == 1) {
-                            void* v3 = *(void**)second2;
-                            void (__thiscall *f2)(void*) = *(void (__thiscall**)(void*))((char*)v3 + 8);
-                            f2(second2);
-                        }
-                    }
-                }
-                sub_5595A0(&local2c);
-                return true;
-            }
-        }
 
-        void* second = it.second;
-        if (second != 0) {
-            if (_InterlockedExchangeAdd((volatile long*)((char*)second + 4), -1) == 1) {
-                void* v2 = *(void**)second;
-                void (__thiscall *f)(void*) = *(void (__thiscall**)(void*))((char*)v2 + 4);
-                f(second);
-                if (_InterlockedExchangeAdd((volatile long*)((char*)second + 8), -1) == 1) {
-                    void* v3 = *(void**)second;
-                    void (__thiscall *f2)(void*) = *(void (__thiscall**)(void*))((char*)v3 + 8);
-                    f2(second);
-                }
-            }
-        }
+namespace RBX {class DataModel;class Selection;}
+class CRobloxTreeCtrlNode;
+class CRobloxTreeCtrl:public CXTTreeCtrl {
+public:
+ virtual RBX::Selection*getSelection()=0;
+ virtual boost::shared_ptr<RBX::DataModel>getDataModel()=0;
+ virtual void onNodeCreated(CRobloxTreeCtrlNode*)=0;
+ virtual void onNodeChanged(CRobloxTreeCtrlNode*)=0;
+ virtual void onNodeDeleted(CRobloxTreeCtrlNode*)=0;
+ virtual void refreshTree();
+ CRobloxTreeCtrlNode*root;
+ std::map<RBX::Instance*,CRobloxTreeCtrlNode*>nodes;
+ bool changing;
+ CImageList images;
+ boost::recursive_mutex mutex;
+};
+struct NativeTreeWriteGuard {
+ boost::shared_ptr<boost::recursive_mutex>mutex;
+ boost::recursive_mutex::scoped_lock*lock;
+ NativeTreeWriteGuard(boost::shared_ptr<const RBX::DataModel>);
+ ~NativeTreeWriteGuard();
+};
+extern int nativeTreeSortPriority(RBX::Instance*);
+class CRobloxTreeCtrlNode:
+ public RBX::Listener<RBX::Instance,RBX::PropertyChanged>,
+ public RBX::Listener<RBX::Instance,RBX::ChildAdded>,
+ public RBX::Listener<RBX::Instance,RBX::ChildRemoved> {
+public:
+ boost::shared_ptr<RBX::Instance>instance;
+ std::map<RBX::Instance*,CRobloxTreeCtrlNode*>children;
+ std::set<CRobloxTreeCtrlNode*>removedChildren;
+ bool expanded:1;
+ bool expandedOnce:1;
+ bool changing;
+ CRobloxTreeCtrl*tree;
+ CRobloxTreeCtrlNode*parent;
+ std::set<boost::shared_ptr<RBX::Instance> >pendingChildren;
+ HTREEITEM item;
+ int priority;
+ const RBX::Reflection::ClassDescriptor*descriptor;
+ CRobloxTreeCtrlNode(CRobloxTreeCtrlNode*,boost::shared_ptr<RBX::Instance>,CRobloxTreeCtrl*);
+ virtual~CRobloxTreeCtrlNode();
+ virtual void onEvent(const RBX::Instance*,RBX::PropertyChanged);
+ virtual void onEvent(const RBX::Instance*,RBX::ChildAdded);
+ virtual void onEvent(const RBX::Instance*,RBX::ChildRemoved);
+ virtual void updateSelection();
+ virtual void createItem();
+ virtual void updateExpansion(int);
+ virtual void getDisplayInfo(NMTVDISPINFOA*);
+ virtual HTREEITEM insertItem();
+ CRobloxTreeCtrlNode*findChild(const boost::shared_ptr<RBX::Instance>&);
+ bool hasVisibleChildren();
+};
 
-        if ((unsigned)cur >= *(unsigned*)((char*)first + 8)) {
-            _invalid_parameter_noinfo();
-        }
-        cur = (char*)cur + 8;
-    }
+class NativeTreeMetadata {public:int priority();};
+class NativeTreeRegistry {public:NativeTreeMetadata*lookup(const RBX::Reflection::ClassDescriptor*,bool);};
+extern boost::shared_ptr<NativeTreeRegistry>nativeTreeRegistry();
 
-    void* second = it.second;
-    if (second != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)second + 4), -1) == 1) {
-            void* v2 = *(void**)second;
-            void (__thiscall *f)(void*) = *(void (__thiscall**)(void*))((char*)v2 + 4);
-            f(second);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)second + 8), -1) == 1) {
-                void* v3 = *(void**)second;
-                void (__thiscall *f2)(void*) = *(void (__thiscall**)(void*))((char*)v3 + 8);
-                f2(second);
-            }
-        }
-    }
-
-    sub_5595A0(&local2c);
-    return false;
+typedef std::vector<boost::shared_ptr<RBX::Instance> > NativeChildren;
+struct NativeChildSnapshot {__declspec(noalias) boost::shared_ptr<const NativeChildren>snapshot()const;};
+bool CRobloxTreeCtrlNode::hasVisibleChildren(){
+ NativeTreeWriteGuard guard(tree->getDataModel());
+ boost::shared_ptr<const NativeChildren>children=reinterpret_cast<NativeChildSnapshot*>(reinterpret_cast<char*>(instance.get())+0x108)->snapshot();
+ if(!children)return false;
+ NativeChildren::const_iterator end=children->end();
+ for(NativeChildren::const_iterator it=children->begin();it!=end;++it){
+  boost::shared_ptr<NativeTreeRegistry>info=nativeTreeRegistry();
+  const RBX::Reflection::ClassDescriptor*descriptor=*reinterpret_cast<const RBX::Reflection::ClassDescriptor**>(reinterpret_cast<char*>(it->get())+0x1c);
+  NativeTreeMetadata*metadata=info->lookup(descriptor,true);
+  if(metadata&&metadata->priority()>=0)return true;
+ }
+ return false;
 }

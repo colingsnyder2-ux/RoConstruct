@@ -1,118 +1,109 @@
-// from server: 38% by colin
+// from server: 82% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espeon_bindernovtable_ef5c3c2d8ca22086.cpp
+
+// Candidate translation unit (score above; library headers required).
+#include <boost/shared_ptr.hpp>
+
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 
-struct RefCounted {
-    void* vptr;
-    long refCount;
-    long weakCount;
+struct Object {
+    virtual void first();
+    virtual ~Object();
 };
 
-struct SubObject {
-    void* vptr;
+struct Owner {
+    Object* pointer;
+    ~Owner();
 };
 
-struct VCRobloxViewVerbBinder {
-    void* vptr0;
-    char pad0[0x60];
-    SubObject sub64;
-    char pad1[0x10];
-    SubObject sub78;
-    SubObject sub7c;
-    SubObject sub80;
-    char pad2[0x04];
-    SubObject sub88;
-    char pad3[0x110];
-    SubObject sub19c;
-    SubObject sub1a0;
-    SubObject sub1a4;
-    SubObject sub1a8;
-    SubObject sub1ac;
-
-    void destroy();
-};
-
-void VCRobloxViewVerbBinder::destroy()
+inline Owner::~Owner()
 {
-    this->vptr0 = (void*)0x792d74;
-    this->sub64.vptr = (void*)0x792d68;
-    this->sub78.vptr = (void*)0x792d5c;
-    this->sub7c.vptr = (void*)0x792d50;
-    this->sub80.vptr = (void*)0x792d44;
+    delete pointer;
+}
 
-    if (this->sub1ac.vptr) {
-        void** vt = (void**)this->sub1ac.vptr;
-        void (*fn)(void*, int) = (void (*)(void*, int))vt[1];
-        fn(this->sub1ac.vptr, 1);
-    }
-    if (this->sub1a8.vptr) {
-        void** vt = (void**)this->sub1a8.vptr;
-        void (*fn)(void*, int) = (void (*)(void*, int))vt[1];
-        fn(this->sub1a8.vptr, 1);
-    }
-    if (this->sub1a4.vptr) {
-        void** vt = (void**)this->sub1a4.vptr;
-        void (*fn)(void*, int) = (void (*)(void*, int))vt[1];
-        fn(this->sub1a4.vptr, 1);
-    }
-    if (this->sub1a0.vptr) {
-        void** vt = (void**)this->sub1a0.vptr;
-        void (*fn)(void*, int) = (void (*)(void*, int))vt[1];
-        fn(this->sub1a0.vptr, 1);
-    }
-    if (this->sub19c.vptr) {
-        void** vt = (void**)this->sub19c.vptr;
-        void (*fn)(void*, int) = (void (*)(void*, int))vt[1];
-        fn(this->sub19c.vptr, 1);
-    }
+typedef boost::shared_ptr<void> Shared;
 
-    {
-        void* p = (char*)this + 0x140;
-        void (*fn)(void*) = (void (*)(void*))0x433bc0;
-        fn(p);
-    }
+struct Root {
+    virtual ~Root();
+    char data[0x54];
+};
 
-    {
-        void* p = (char*)this + 0x138;
-        *(void**)p = (void*)0x788318;
-        void (*fn)(void*) = (void (*)(void*))0x63046c;
-        fn(p);
-    }
+struct Chunk {
+    char data[0x20];
+    ~Chunk();
+};
 
-    {
-        RefCounted* rc = *(RefCounted**)((char*)this + 0x134);
-        if (rc) {
-            if (_InterlockedExchangeAdd(&rc->refCount, -1) == 1) {
-                void** vt = (void**)rc->vptr;
-                void (*fn)(void*) = (void (*)(void*))vt[1];
-                fn(rc);
-                if (_InterlockedExchangeAdd(&rc->weakCount, -1) == 1) {
-                    void** vt2 = (void**)rc->vptr;
-                    void (*fn2)(void*) = (void (*)(void*))vt2[2];
-                    fn2(rc);
-                }
-            }
-        }
-    }
+struct __declspec(novtable) Primary : Root {
+    Chunk chunk;
+    ~Primary();
+};
 
-    {
-        void* p = (char*)this + 0x88;
-        void (*fn)(void*) = (void (*)(void*))0x45ba60;
-        fn(p);
-    }
+__forceinline Primary::~Primary()
+{
+}
 
-    this->sub80.vptr = (void*)0x792ac8;
-    this->sub7c.vptr = (void*)0x792abc;
-    this->sub78.vptr = (void*)0x792ab0;
+struct Verb {
+    virtual ~Verb();
+    char data[0x24];
+};
 
-    {
-        void* p = (char*)this + 0x64;
-        void (*fn)(void*) = (void (*)(void*))0x564aa0;
-        fn(p);
-    }
+struct Interface1 {
+    virtual void method1() = 0;
+};
 
-    {
-        void (*fn)(void*) = (void (*)(void*))0x456bd0;
-        fn(this);
-    }
+struct Interface2 {
+    virtual void method2() = 0;
+};
+
+struct Interface3 {
+    virtual void method3() = 0;
+};
+
+struct Storage {
+    char data[0xc0];
+    ~Storage();
+};
+
+struct SmallBase {
+    virtual ~SmallBase();
+    char data[4];
+};
+
+struct Small : SmallBase {
+    ~Small() {}
+};
+
+struct B_func_00432e50 {
+    virtual ~B_func_00432e50();
+};
+
+struct S_func_00432e50 : B_func_00432e50 {
+    char data[0x58];
+    ~S_func_00432e50();
+};
+
+struct Binder : Primary, Verb, Interface1, Interface2, Interface3 {
+    char padding[4];
+    Storage storage;
+    Shared shared;
+    Small small;
+    S_func_00432e50 member;
+    Owner owner1;
+    Owner owner2;
+    Owner owner3;
+    Owner owner4;
+    Owner owner5;
+
+    virtual void method1();
+    virtual void method2();
+    virtual void method3();
+    ~Binder();
+};
+
+Binder::~Binder()
+{
 }

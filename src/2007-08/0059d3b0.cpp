@@ -1,53 +1,55 @@
-// from server: 55% by colin
-struct StarterPackService {
-    void method(int);
+// from server: 99% by EspClaude
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: openrbx-client-dll roc_try_sp_c1_d41adcc463e21ee1.cpp
+
+// Candidate translation unit (score above; library headers required).
+#include <string>
+#pragma float_control(precise, off)
+#include "G3D/Rect2D.h"
+#include "G3D/Color4.h"
+#include "G3D/Color3.h"
+
+struct Context {
+    enum XAlign { XALIGN_RIGHT, XALIGN_LEFT };
+    enum YAlign { YALIGN_TOP, YALIGN_BASELINE, YALIGN_CENTER, YALIGN_BOTTOM };
+    enum Spacing { PROPORTIONAL_SPACING, MONOSPACE };
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual G3D::Rect2D getViewport();
+    virtual void slot5();
+    virtual void slot6();
+    virtual void slot7();
+    virtual void slot8();
+    virtual void slot9();
+    virtual void slot10();
+    virtual void slot11();
+    virtual void slot12();
+    virtual G3D::Vector2 drawFont2D(const std::string&, const G3D::Vector2&, double,
+                      const G3D::Color4&, const G3D::Color4&, XAlign, YAlign, Spacing);
 };
 
-extern "C" void __stdcall sub_5562c0(int);
-extern "C" int __stdcall sub_59d210();
-extern "C" void* __stdcall sub_555a10(int);
-extern "C" void* __stdcall sub_50b200();
-extern "C" void* __stdcall sub_736ed0(int, int, int);
-extern "C" void __stdcall sub_77e698(void*);
-extern "C" void __stdcall sub_77e6ac(void*);
+extern int __cdecl normalizedFontSize(int);
 
-struct string_impl {
-    void construct(const char*);
-    void destroy();
+struct S {
+    void base(Context*);
+    void* check();
+    void draw(Context*);
 };
 
-void StarterPackService::method(int a) {
-    sub_5562c0(a);
-    if (sub_59d210() == 0) {
-        return;
+void S::draw(Context* adorn)
+{
+    Context* const c = adorn;
+    base(adorn);
+    if (check()) {
+        G3D::Rect2D viewPort = adorn->getViewport();
+        int fontSize = normalizedFontSize(12);
+        G3D::Vector2 pos2d = viewPort.x0y1() + G3D::Vector2(4.0f, -4.0f);
+        c->drawFont2D("StarterPack - these items will be given to each new player",
+            pos2d, fontSize, G3D::Color3::white(), G3D::Color4::clear(), Context::XALIGN_LEFT, Context::YALIGN_BOTTOM, Context::PROPORTIONAL_SPACING);
     }
-
-    char buf[0x20];
-    (*(void (__thiscall**)(int, char*))(*(int*)a + 0xc))(a, buf);
-
-    void* mem = sub_555a10(0xc);
-    float f1 = *(float*)(buf + 4);
-    float f2 = *(float*)0x79f2fc;
-    float f3 = *(float*)(buf + 0xc);
-    float r1 = f1 + f2;
-    float r2 = f3 - f2;
-    *(float*)((char*)mem + 0) = r1;
-    *(float*)((char*)mem + 4) = r2;
-
-    float* v = (float*)sub_50b200();
-    float vx = v[0];
-    float vy = v[1];
-    float vz = v[2];
-
-    string_impl s;
-    s.construct("StarterPack - these items will be given to each new player");
-
-    int flag = 0;
-    void* p = sub_736ed0(1, 3, 0);
-
-    double d = (double)flag;
-    (*(void (__thiscall**)(int, char*, float*, float*, double, void*, int))(*(int*)a + 0x30))(
-        a, buf, &vx, &vy, d, p, 1);
-
-    s.destroy();
 }

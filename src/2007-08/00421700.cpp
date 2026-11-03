@@ -1,11 +1,5 @@
-// from server: 82% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: templates-boost-1_34_1 set_sp.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
-struct T; typedef boost::shared_ptr<T> E;
-#include <set>
-template class std::set<E>;
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: templates-boost-1_34_1 roc_espclaude_e163b40bc49deb64.cpp

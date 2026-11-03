@@ -1,136 +1,160 @@
-// from server: 42% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 99% by EspClaude
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+#include <intrin.h>
 
-struct RefCounted {
-    void* vptr;
-    volatile long ref1;
-    volatile long ref2;
-    void Release();
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0)
+        {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+    long use_count_;
+    long weak_count_;
 };
 
-struct String {
-    char buf[0x1c];
-    String(const char*);
-    ~String();
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
 };
 
-struct Obj {
-    char pad[0x14c];
+template<class T> class shared_ptr {
+public:
+    typedef T* shared_ptr::*unspecified_bool_type;
+    T* px;
+    shared_count pn;
+    template<class Y> shared_ptr(shared_ptr<Y> const& r) : px(r.px), pn(r.pn) {}
+    T* operator->() const { return px; }
+    T* get() const { return px; }
+    operator unspecified_bool_type() const { return px == 0 ? 0 : &shared_ptr::px; }
 };
 
-struct Obj2 {
-    char pad[0x160];
+class String {
+public:
+    __declspec(dllimport) String(const char* s);
+    __declspec(dllimport) String(const String& s);
+    __declspec(dllimport) ~String();
+    char storage[0x1c];
 };
 
-struct PropGrid {
-    void* vptr;
-    char pad[0x14c];
-    void* GetObj();
-    void SetObj(void*);
-};
+struct NMHDR { void* hwndFrom; unsigned int idFrom; unsigned int code; };
+typedef long LRESULT;
 
-struct CDataModelPropGrid {
-    void* vptr;
-    char pad[0x14c];
-    void* GetObj();
-    void SetObj(void*);
+namespace G3D {
+class Color3uint8 {
+public:
+    unsigned char r, g, b;
 };
-
-extern "C" {
-    void __cdecl sub_40d550();
-    void* __cdecl sub_42f710(void*);
-    void __cdecl sub_4316a0(void*, void*);
-    unsigned char __cdecl sub_44b9a0(void*);
-    void __cdecl sub_5595a0(void*);
-    void* __cdecl sub_564b50(void*);
-    void* __cdecl sub_586bb0(void*, void*);
-    void* __cdecl sub_77e698();
 }
 
-extern void* g_8a2838;
-extern char g_8a2820;
-extern char g_78b484;
+class ColorPicker {
+public:
+    unsigned long GetColor() const;
+};
 
-void CDataModelPropGrid::SetObj(void* obj) {
-    void* p = obj;
-    unsigned char b0 = sub_44b9a0(p);
-    unsigned char b1 = sub_44b9a0(p);
-    unsigned char b2 = sub_44b9a0(p);
-    unsigned char bytes[3];
-    bytes[0] = b0;
-    bytes[1] = b1;
-    bytes[2] = b2;
-    void* s = sub_586bb0(bytes, 0);
-    void* v = *(void**)s;
-    if (g_8a2838 != v) {
-        g_8a2838 = v;
-        sub_4316a0(&g_8a2820, v);
-    }
-    void* r = sub_42f710(&obj);
-    bool flag = (*(int*)r != 0);
-    RefCounted* rc = (RefCounted*)obj;
-    if (rc) {
-        if (_InterlockedExchangeAdd(&rc->ref1, -1) == 1) {
-            rc->Release();
-            if (_InterlockedExchangeAdd(&rc->ref2, -1) == 1) {
-                rc->Release();
-            }
+struct NMCOLORPICKER {
+    NMHDR hdr;
+    ColorPicker* picker;
+};
+
+namespace RBX {
+class BrickColor {
+public:
+    int number;
+    BrickColor() {}
+    bool operator!=(const BrickColor& other) const { return number != other.number; }
+    static BrickColor closest(G3D::Color3uint8 color);
+};
+
+class ColorSetting {
+public:
+    char pad[0x20];
+    BrickColor color;
+    void raiseChanged(BrickColor value);
+    void setColor(BrickColor value)
+    {
+        if (color != value)
+        {
+            color = value;
+            raiseChanged(value);
         }
     }
-    if (!flag) {
-        return;
+};
+extern ColorSetting fillColor;
+
+class IDataState {
+public:
+    virtual void a();
+};
+
+class Verb {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void doIt(IDataState* dataState);
+};
+
+class VerbContainer {
+public:
+    virtual ~VerbContainer();
+    char vpad[0x24];
+    Verb* getVerb(String name);
+};
+
+class DataModelBase {
+public:
+    virtual ~DataModelBase();
+    char pad[0x1c4];
+};
+
+class DataModel : public DataModelBase, public VerbContainer, public IDataState {
+public:
+    class scoped_lock {
+    public:
+        scoped_lock(shared_ptr<const DataModel> dm);
+        ~scoped_lock();
+        int a, b, c;
+    };
+};
+}
+
+class CDataModelPropGrid {
+public:
+    static shared_ptr<RBX::DataModel> getDataModel() throw();
+    void OnFillColorChanged(NMHDR* pNMHDR, LRESULT* pResult);
+};
+
+void CDataModelPropGrid::OnFillColorChanged(NMHDR* pNMHDR, LRESULT* pResult)
+{
+    ColorPicker* picker = reinterpret_cast<NMCOLORPICKER*>(pNMHDR)->picker;
+    G3D::Color3uint8 color;
+    color.r = (unsigned char)(picker->GetColor());
+    color.g = (unsigned char)(((unsigned short)picker->GetColor()) >> 8);
+    color.b = (unsigned char)(picker->GetColor() >> 16);
+    RBX::fillColor.setColor(RBX::BrickColor::closest(color));
+    if (getDataModel())
+    {
+        RBX::DataModel::scoped_lock lock(getDataModel());
+        RBX::Verb* verb = getDataModel()->getVerb("FillTool");
+        verb->doIt(getDataModel().get());
     }
-    void* r2 = sub_42f710(&obj);
-    void* a = *(void**)r2;
-    void* b = *(void**)((char*)r2 + 4);
-    void* local = 0;
-    if (b) {
-        _InterlockedExchangeAdd((volatile long*)((char*)b + 4), 1);
-    }
-    sub_40d550();
-    RefCounted* rc2 = (RefCounted*)obj;
-    if (rc2) {
-        if (_InterlockedExchangeAdd(&rc2->ref1, -1) == 1) {
-            rc2->Release();
-            if (_InterlockedExchangeAdd(&rc2->ref2, -1) == 1) {
-                rc2->Release();
-            }
-        }
-    }
-    String str("FillTool");
-    void* r3 = sub_42f710(&obj);
-    void* o = *(void**)r3;
-    void* p2 = (void*)((char*)o + 0x14c);
-    void* res = sub_564b50(p2);
-    void* edi = res;
-    RefCounted* rc3 = (RefCounted*)obj;
-    if (rc3) {
-        if (_InterlockedExchangeAdd(&rc3->ref1, -1) == 1) {
-            rc3->Release();
-            if (_InterlockedExchangeAdd(&rc3->ref2, -1) == 1) {
-                rc3->Release();
-            }
-        }
-    }
-    void* r4 = sub_42f710(&obj);
-    void* o2 = *(void**)r4;
-    void* arg = 0;
-    if (o2) {
-        arg = (void*)((char*)o2 + 0x160);
-    }
-    void* vt = *(void**)edi;
-    void (*fn)(void*, void*) = *(void (**)(void*, void*))((char*)vt + 0x10);
-    fn(edi, arg);
-    RefCounted* rc4 = (RefCounted*)obj;
-    if (rc4) {
-        if (_InterlockedExchangeAdd(&rc4->ref1, -1) == 1) {
-            rc4->Release();
-            if (_InterlockedExchangeAdd(&rc4->ref2, -1) == 1) {
-                rc4->Release();
-            }
-        }
-    }
-    sub_5595a0(&obj);
-    *(int*)obj = 1;
+    *pResult = 1;
 }

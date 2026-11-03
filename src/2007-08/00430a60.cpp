@@ -1,35 +1,62 @@
-// from server: 70% by colin
-struct CWrapperView {
-    void Func(int, int);
+// from server: 98% by EspClaude
+// from server: 100% by colin
+// roc-flags: /O2 /MD /GS /EHsc /Ob1
+// roc-cl: 21022
+struct Bar;
+
+struct Rect
+{
+    int left;
+    int top;
+    int right;
+    int bottom;
+
+    Rect(Bar*);
 };
 
-extern "C" {
-    int __stdcall sub_630532(int, int, int, int, int, int, int);
-    void __stdcall sub_67ffa0(void *, int);
-    void __stdcall sub_631d50(int, int, int);
-    void __stdcall OffsetRect(void *, int, int);
-}
+extern "C" int (__stdcall *OffsetRect)(Rect*, int, int);
 
-void CWrapperView::Func(int a, int b) {
-    int local1;
-    int local2;
-    int local3;
-    int local4;
+struct CommandBars
+{
+    int func_006a2a00(void*, Rect*, void*);
+};
 
-    sub_630532(0xe800, 0xe8ff, 0xe900, 0, 0, 0, 1);
+struct Bar
+{
+    char reserved0[0x100];
+    int position;
+    char reserved1[0x7C];
+    void* menu;
+};
 
-    sub_67ffa0(&local1, a);
+struct CWrapperView
+{
+    char reserved[0xEC];
+    CommandBars* commandBars;
 
-    int v = *(int *)(a + 0xfc);
-    if (v == 2 || v == 3 || v == 5) {
-        int diff = local2 - local1;
-        OffsetRect(&local3, 0, diff);
-    } else {
-        int diff = local2 - local1;
-        OffsetRect(&local3, diff, 0);
-    }
+    void func_006a0fc8(int, int, int, int, Rect*, Rect*, int);
+    int func_004303a0(void*, Bar*);
+};
 
-    int arg = *(int *)(a + 0x180);
-    int ecx_val = *(int *)((char *)this + 0xd8);
-    sub_631d50(ecx_val, local4, arg);
+int CWrapperView::func_004303a0(void* context, Bar* bar)
+{
+    func_006a0fc8(0xE800, 0xE8FF, 0xE900, 0, 0, 0, 1);
+
+    Rect rect(bar);
+
+    int pos = bar->position;
+    if (pos == 2) goto L_case;
+    if (pos == 3) goto L_case;
+    if (pos == 5) goto L_case;
+    goto L_default;
+
+L_case:
+    OffsetRect(&rect, 0, rect.bottom - rect.top);
+    goto L_end;
+
+L_default:
+    OffsetRect(&rect, rect.right - rect.left, 0);
+
+L_end:
+    return commandBars->func_006a2a00(context, &rect, bar->menu);
 }

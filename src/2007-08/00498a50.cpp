@@ -1,8 +1,8 @@
-// from server: 64% by colin
+// from server: 76% by EspClaude
+// from server: 100% by tester
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-net CrashReporter.cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-net-dll CrashReporter.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "CrashReporter.h"

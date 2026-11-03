@@ -1,15 +1,22 @@
-// from server: 87% by colin
-struct CRobloxWnd {
-    void sub_458560(int);
+// from server: 100% by EspClaude
+// roc 2007-08 00458560  unit: CRobloxWnd
+class CWndBase {
+public:
+    void OnShowWindowBase(int);
 };
-
-extern "C" void __stdcall sub_630922(int);
-extern "C" void __stdcall sub_463af0(int);
-
-void CRobloxWnd::sub_458560(int a) {
-    sub_630922(a);
-    int* p = *(int**)((char*)this + 0x74);
-    if (p != 0) {
-        sub_463af0(1);
-    }
+class CRobloxView {
+public:
+    void Activate(int);
+};
+class CRobloxWnd : public CWndBase {
+    char pad[0x74];
+    CRobloxView* m_view;
+public:
+    void OnShow(int a);
+};
+void CRobloxWnd::OnShow(int a)
+{
+    OnShowWindowBase(a);
+    if (m_view)
+        m_view->Activate(1);
 }

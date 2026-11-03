@@ -1,65 +1,71 @@
-// from server: 36% by colin
+// from server: 72% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-dll roc_espeon_specdatastringreturns7002de86d90e7d94.cpp
+
+// Candidate translation unit (score above; library headers required).
+// from server: 98% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+
+extern bool enabled;
+extern const char emptyText[];
+
+extern double __cdecl queryFloat();
+extern unsigned __int64 __cdecl queryCounter();
+extern unsigned __cdecl queryFirst();
+extern unsigned __cdecl querySecond();
+extern const std::string &__cdecl queryFirstString();
+extern const std::string &__cdecl querySecondString();
+
+struct MemoryStatus {
+    unsigned length;
+    unsigned load;
+    int totalPhysical;
+    unsigned availablePhysical;
+    unsigned totalPageFile;
+    unsigned availablePageFile;
+    unsigned totalVirtual;
+    unsigned availableVirtual;
+};
+
+extern "C" __declspec(dllimport) void __stdcall GlobalMemoryStatus(MemoryStatus *);
+
+inline int queryPhysicalMegabytes()
+{
+    MemoryStatus status;
+    GlobalMemoryStatus(&status);
+    return status.totalPhysical / 1048576;
+}
+
+extern std::string __cdecl queryBlock();
+extern std::string __cdecl queryTail();
+
 struct S {
-    float f0;
-    int f4;
-    int f8;
-    char pad_c[0x1c];
-    char str28[0x1c];
-    char pad_44[0x1c];
-    int f60;
-    char pad_64[0x1c];
+    float value;
+    unsigned counter;
+    unsigned first;
+    unsigned second;
+    std::string firstString;
+    std::string secondString;
+    std::string block;
+    int physicalMegabytes;
+    std::string tail;
+
     S();
 };
 
-extern "C" void __stdcall GlobalMemoryStatus(void*);
-extern "C" void __stdcall sub_46D4D0();
-extern "C" void __stdcall sub_46D600();
-extern "C" void __stdcall sub_472F80();
-extern "C" float __stdcall sub_4F3110();
-extern "C" void __stdcall sub_4F34E0();
-extern "C" int __stdcall sub_4F35C0();
-extern "C" void __stdcall sub_4F3AB0();
-
-extern "C" void __stdcall sub_77E698(void*);
-extern "C" void __stdcall sub_77E69C(void*, void*);
-extern "C" void __stdcall sub_77E6AC(void*);
-extern "C" void __stdcall sub_77D21C(void*);
-
-extern unsigned char byte_8BFABC;
-extern unsigned char byte_8B5188;
-
 S::S()
+    : value(enabled ? queryFloat() : 0.0),
+      counter(static_cast<unsigned>(queryCounter() >> 20)),
+      first(queryFirst()),
+      second(querySecond()),
+      firstString(enabled ? queryFirstString() : std::string(emptyText)),
+      secondString(enabled ? querySecondString() : std::string(emptyText)),
+      block(queryBlock()),
+      physicalMegabytes(queryPhysicalMegabytes()),
+      tail(queryTail())
 {
-    float v;
-    if (byte_8BFABC != 0) {
-        v = sub_4F3110();
-    } else {
-        v = 0.0f;
-    }
-    f0 = v;
-
-    sub_472F80();
-    f4 = 0;
-    f8 = sub_4F35C0();
-
-    if (byte_8BFABC != 0) {
-        sub_46D4D0();
-    } else {
-        sub_77E698((void*)0x79DED8);
-        sub_77E69C(str28, (void*)0x79DED8);
-        sub_77E6AC((void*)0x79DED8);
-    }
-
-    if (byte_8BFABC != 0) {
-        sub_46D600();
-    } else {
-        sub_77E698((void*)0x79DED8);
-        sub_77E69C(pad_44, (void*)0x79DED8);
-        sub_77E6AC((void*)0x79DED8);
-    }
-
-    sub_4F34E0();
-    sub_77D21C((void*)0x79DED8);
-    f60 = 0;
-    sub_4F3AB0();
 }

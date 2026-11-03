@@ -1,27 +1,18 @@
-// from server: 93% by colin
-struct CRobloxControlColorSelector {
-    char pad[4];
-    int* begin;
-    int* end;
-    int* capacity;
-    void clear();
+// from server: 100% by EspClaude
+// roc 2007-08 0044c410  unit: CRobloxControlColorSelector
+#include <vector>
+extern "C" void __cdecl free(void*);
+template<class T> class CStringStub {
+public:
+    __declspec(noinline) CStringStub(const CStringStub& s) throw() : m_pszData(s.m_pszData) {}
+    __declspec(noinline) ~CStringStub() throw() { free(m_pszData); }
+    __declspec(noinline) CStringStub& operator=(const CStringStub& s) throw() { m_pszData = s.m_pszData; return *this; }
+    T* m_pszData;
 };
-
-extern "C" void __stdcall sub_77DDBC(int*);
-extern "C" void __cdecl sub_62FC62(void*);
-
-void CRobloxControlColorSelector::clear()
-{
-    if (begin != 0) {
-        int* p = begin;
-        int* e = end;
-        while (p != e) {
-            sub_77DDBC(p + 2);
-            p += 3;
-        }
-        sub_62FC62(begin);
-    }
-    begin = 0;
-    end = 0;
-    capacity = 0;
-}
+extern template class __declspec(dllimport) CStringStub<char>;
+struct ColorItem {
+    int a;
+    int b;
+    CStringStub<char> name;
+};
+template void std::vector<ColorItem>::_Tidy();

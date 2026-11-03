@@ -1,16 +1,22 @@
-// from server: 75% by colin
-struct CWebToolbox {
-    char pad[0xf4];
-    void* fieldF4;
-    void method(int arg);
+// from server: 100% by EspClaude
+// roc 2007-08 00466810  unit: CWebToolbox
+class CWnd {
+public:
+    CWnd* SetFocus();
 };
-
-extern void __cdecl sub_00630A06(int arg);
-extern void __cdecl sub_00630004(void* p);
-
-void CWebToolbox::method(int arg)
+class CFormView : public CWnd {
+protected:
+    void OnSetFocus(CWnd* pOldWnd);
+};
+class CWebToolbox : public CFormView {
+    char pad[0xf4];
+    CWnd* m_browser;
+public:
+    void OnSetFocus(CWnd* pOldWnd);
+};
+void CWebToolbox::OnSetFocus(CWnd* pOldWnd)
 {
-    sub_00630A06(arg);
-    if (fieldF4 != 0)
-        sub_00630004(fieldF4);
+    CFormView::OnSetFocus(pOldWnd);
+    if (m_browser)
+        m_browser->SetFocus();
 }

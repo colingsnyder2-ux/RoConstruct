@@ -1,18 +1,24 @@
-// from server: 71% by colin
-struct CRobloxWnd {
-    void sub_458C00();
-    void sub_63023E();
-    void sub_463AF0();
-    char pad[0x74];
-    void* field_74;
-    void func(int);
+// from server: 100% by EspClaude
+// roc 2007-08 00458d00  unit: CRobloxWnd
+class CWnd {
+protected:
+    long Default();
 };
-
-void CRobloxWnd::func(int) {
-    sub_458C00();
-    sub_63023E();
-    if (field_74 != 0) {
-        field_74 = 0;
-        sub_463AF0();
-    }
+class CRobloxView {
+public:
+    void Activate(int);
+};
+class CRobloxWnd : public CWnd {
+    char pad[0x74];
+    CRobloxView* m_view;
+    void ReleaseInput();
+public:
+    void OnKillFocus(CWnd* pNewWnd);
+};
+void CRobloxWnd::OnKillFocus(CWnd*)
+{
+    ReleaseInput();
+    Default();
+    if (m_view)
+        m_view->Activate(0);
 }

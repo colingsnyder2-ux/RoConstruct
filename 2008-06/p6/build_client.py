@@ -103,47 +103,48 @@ data_includes.append(HERE)
 data_defines = (recipes.RECIPES[engine["defines_from_recipe"]]["defines"] + " " + engine["extra_defines"]).strip()
 data_overlay = rebuild.build_overlay(client, spec["name"], spec["overlay"])
 cache_dir = rebuild.workspace(client) / 'out' / 'p6' / 'native-doc-cache'
-header_roots = [ROOT / 'rebuild/2008-06/native-headers', data_overlay, HERE]
+overlay_path = data_overlay[1] if data_overlay else None
+header_roots = [ROOT / 'rebuild/2008-06/native-headers', overlay_path, HERE]
 header_stamp = max((p.stat().st_mtime_ns for root in header_roots if root.exists()
                     for p in root.rglob('*') if p.is_file()), default=0)
 def cache_key(source, flags):
     return {'source': str(source.resolve()), 'source_mtime': source.stat().st_mtime_ns,
             'headers_mtime': header_stamp,
             'flags': hashlib.sha256('\0'.join(flags).encode()).hexdigest()}
-def restore_cached(name, key):
+def restore_cached(name, key, target=None):
     artifact, receipt = cache_dir / name, cache_dir / (name + '.json')
     if not (NATIVE_DOC and NATIVE_DOC_CACHE and artifact.exists() and receipt.exists()):
         return False
     if json.loads(receipt.read_text()) != key:
         return False
-    shutil.copyfile(artifact, out / name)
+    shutil.copyfile(artifact, out / (target or name))
     return True
-def store_cached(name, key):
+def store_cached(name, key, source=None):
     if NATIVE_DOC and NATIVE_DOC_CACHE:
         cache_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(out / name, cache_dir / name)
+        shutil.copyfile(out / (source or name), cache_dir / name)
         (cache_dir / (name + '.json')).write_text(json.dumps(key, sort_keys=True))
 data_flags = data_defines.split() + [engine["flags"]]
 data_key = cache_key(HERE / 'P6Data.cpp', data_flags)
-if not restore_cached('CoreP6Data.obj', data_key):
+if not restore_cached('CoreP6Data.obj', data_key, 'P6Data.obj'):
     built = rebuild.compile_direct(client, [HERE / "P6Data.cpp"], out, data_includes, data_defines, engine["flags"],
                                    overlay=data_overlay)
     for ok, message in built.values():
         print(message[-2500:] if message else "")
         if not ok:
             sys.exit(1)
-    store_cached('CoreP6Data.obj', data_key)
+    store_cached('CoreP6Data.obj', data_key, 'P6Data.obj')
 
 for obj, source, flags in units:
     key = cache_key(source, flags)
     cache_name = 'Core-' + obj
-    if restore_cached(cache_name, key):
+    if restore_cached(cache_name, key, obj):
         continue
     code, text = rebuild.run(tc, "cl", flags + ["/Fo" + obj, str(source)], out)
     print(text[-2500:])
     if code:
         sys.exit(code)
-    store_cached(cache_name, key)
+    store_cached(cache_name, key, obj)
 if NATIVE_DOC:
     doc_flags = mfc_flags + ["/D" + d for d in data_defines.split()] + ["/I" + str(ROOT / 'rebuild/2008-06/native-headers'), "/I" + str(HERE)] + ["/I" + str(i) for i in includes]
     doc_sources = [('NativeCRobloxDoc.obj', ROOT / 'rebuild/2008-06/native-classes/CRobloxDoc.cpp'),
@@ -214,13 +215,13 @@ if NATIVE_DOC:
         cache_name = obj
         if obj.startswith('NativeDocExtra'):
             cache_name += '-' + hashlib.sha256(str(source.resolve()).encode()).hexdigest()[:12]
-        if restore_cached(cache_name, key):
+        if restore_cached(cache_name, key, obj):
             continue
         code, text = rebuild.run(tc, 'cl', doc_flags + ['/Fo' + obj, str(source)], out)
         print(text[-2500:])
         if code:
             sys.exit(code)
-        store_cached(cache_name, key)
+        store_cached(cache_name, key, obj)
 system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
@@ -277,6 +278,7 @@ code, text = rebuild.run(tc, "link", ["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE
 if NATIVE_DOC:
     (out/'native-doc-link.log').write_text(text)
     unresolved = sorted(set(re.findall(r'unresolved external symbol "([^"]+)"', text)))
+    duplicates = sorted(set(re.findall(r'LNK2005: "([^"]+)" already defined', text)))
     families = {}
     for symbol in unresolved:
         family = next((name for name, token in (
@@ -289,6 +291,8 @@ if NATIVE_DOC:
         'link_exit': code,
         'lnk_error_lines': len(re.findall(r'error LNK', text)),
         'unique_unresolved': len(unresolved),
+        'duplicate_symbols': duplicates,
+        'clean_link': code == 0,
         'families': families,
         'symbols': unresolved,
         'selected_source_objects': native_doc_objects,

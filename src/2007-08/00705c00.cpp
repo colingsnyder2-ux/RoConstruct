@@ -1,8 +1,9 @@
-// from server: 96% by colin
+// from server: 98% by EspClaude
+// from server: 100% by auto
 // roc-lang: cpp
-// roc-cl: 50727
+// roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
-// roc-lib: xtp-11.2.2-vc8 Source/TabManager/XTPTabPaintManagerAppearance.cpp
+// roc-lib: xtp-11.2.2 Source/TabManager/XTPTabPaintManagerAppearance.cpp
 
 // Candidate translation unit (score above; library headers required).
 // XTPTabPaintManager.cpp: implementation of the CXTPTabPaintManager class.

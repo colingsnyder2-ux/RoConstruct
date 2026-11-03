@@ -1,46 +1,60 @@
-// from server: 44% by colin
-struct GuiTarget {
-    void render(float, float, int, int, int, int, int);
+// from server: 99% by EspClaude
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: openrbx-client roc_manual_gui_5169e2e566c140cf.cpp
+
+// Candidate translation unit (score above; library headers required).
+#include "util/Rect.h"
+typedef RBX::Rect Rect;
+typedef G3D::Vector2 Point;
+struct Text {
+    unsigned char padding[20];
+    int length;
 };
 
-extern "C" void __stdcall sub_5555B0(float*);
+struct GuiTarget;
+struct Renderer;
 
-float g_797e9c;
-float g_797eb0;
+typedef void (__thiscall* DrawFunction)(
+    Renderer*, Rect*, Text*, Point*, double,
+    void*, unsigned long, int, int, int);
 
-void GuiTarget::render(float a, float b, int c, int d, int e, int f, int g)
-{
-    if (*(int*)((char*)this + 0x14) == 0)
-        return;
+struct GuiTable {
+    void* preceding[20];
+    int (__thiscall* scale)(GuiTarget*);
+};
 
-    float v[4];
-    sub_5555B0(v);
+struct RenderTable {
+    void* preceding[13];
+    DrawFunction draw;
+};
 
-    float x0 = v[0];
-    float y0 = v[1];
-    float x1 = v[2];
-    float y1 = v[3];
+struct Renderer {
+    RenderTable* table;
+};
 
-    float w = x1 - x0;
-    float h = y1 - y0;
+extern float centerFactor;
+extern float alignmentFactor;
 
-    float f1 = w * g_797e9c;
-    float f2 = h * g_797e9c;
+struct GuiTarget {
+    GuiTable* table;
+    Rect bounds();
+    void render(Renderer*, Text*, void*, unsigned long, int);
+};
 
-    int mode = c;
-    if (mode == 0) {
-        f1 = f1 - f2 * g_797eb0;
-    } else if (mode == 2) {
-        // nothing
-    } else {
-        f1 = f1 + f2 * g_797eb0;
-    }
-
-    int (*fn)(void*, int, int, int, int, int, int) = *(int(**)(void*, int, int, int, int, int, int))(*(int*)this + 0x54);
-    int r = fn(this, d, e, f, g, 2, 0);
-
-    float fr = (float)r;
-
-    void (*fn2)(void*, float*, float*, float*) = *(void(**)(void*, float*, float*, float*))(*(int*)((char*)this + 0x30));
-    fn2((char*)this + 0x30, &f1, &f2, &fr);
+void GuiTarget::render(Renderer* renderer,Text* text,void* color,unsigned long size,int alignment) {
+ if(text->length) {
+  Rect rectangle=bounds();
+  Point dimensions=rectangle.size();
+  Point position=Point(rectangle.low.x+rectangle.high.x,rectangle.low.y+rectangle.high.y)*0.5f;
+  switch(alignment) {
+  case 0:position.x=rectangle.high.x-dimensions.x*0.1f;break;
+  case 2:break;
+  default:position.x=rectangle.low.x+dimensions.x*0.1f;break;
+  }
+  DrawFunction* draw=&renderer->table->draw;
+  (*draw)(renderer,&rectangle,text,&position,double(table->scale(this)),color,size,alignment,2,0);
+ }
 }

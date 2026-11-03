@@ -1,135 +1,87 @@
-// from server: 41% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 84% by EspClaude
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espclaude_37e59a7671edc08f.cpp
 
-struct RBXName {
-    void* rep;
-};
+// Candidate translation unit (score above; library headers required).
+#define _DLL
+#define private public
+#include "util/IRenderable.h"
+#undef private
+#include "util/Object.h"
+#define hasListeners() hasListeners() const { return listeners.size() > 0; } bool hasListenersEmpty()
+#include "util/Events.h"
+#undef hasListeners
+namespace RBX { template<class T> class GuidItem { public: virtual ~GuidItem() {} char guidPad[0xc]; }; }
+#define AbstractFactoryProduct GuidItem<Instance>, public AbstractFactoryProduct
+#include "util/Guid.h"
+namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(const Data&) {} operator const Guid&() const { return *(const Guid*)0; } }; }
+#define Guid GuidStub
+#include "v8tree/Instance.h"
+#undef Guid
+#undef AbstractFactoryProduct
+#define private public
+#include "util/RunStateOwner.h"
+#undef private
+#include "v8datamodel/PVInstance.h"
+#define candidatePrimaryPart candidatePrimaryPart; std::vector<boost::shared_ptr<PartInstance> > exeModelVector
+#include "v8datamodel/ModelInstance.h"
+#undef candidatePrimaryPart
+#include "util/StateStack.h"
+namespace RBX { template<class T> class __declspec(novtable) StateStackStub { public: virtual void setDirty(bool) = 0; virtual bool isDirty() const = 0; size_t getStackSize() const; }; }
+#define StateStack StateStackStub
+#include "v8tree/Verb.h"
+#undef StateStack
+#include <boost/scoped_ptr.hpp>
+namespace RBX { class TimeState; }
+namespace boost { template<> class scoped_ptr<RBX::TimeState> { public: RBX::TimeState* operator->() const; RBX::TimeState* get() const; }; }
+#define tempMetric tempMetric; bool exeFlag
+#include "v8datamodel/Lighting.h"
+#define initializeContents() initializeContents(bool start)
+#include "v8datamodel/DataModel.h"
+#undef initializeContents
+#undef tempMetric
+#include "v8datamodel/TimeState.h"
+#include "v8datamodel/Workspace.h"
+#include "v8datamodel/Hopper.h"
+#include "v8datamodel/Teams.h"
+#include "v8datamodel/JointsService.h"
+#include "v8datamodel/LocalBackpack.h"
+#include "v8datamodel/GuiBuilder.h"
+#include "script/ScriptContext.h"
+#include "gui/GUI.h"
+#include "util/Log.h"
+#include "util/IMetric.h"
+#include "util/standardout.h"
+#include "util/Http.h"
+#include "util/Sound.h"
 
-struct RefCounted {
-    void* vptr;
-    long refcount;
-    long weakcount;
-};
-
-struct CreatorBase {
-    void* vptr;
-};
-
-struct FactoryProduct {
-    char pad[0x180];
-    RBXName name180;
-    void* ptr184;
-    void* ptr188;
-    void* ptr18c;
-    void* ptr190;
-    void* ptr194;
-    void* ptr198;
-    void* ptr19c;
-    void* ptr1a0;
-    void* ptr1a4;
-    void* ptr1a8;
-    void* ptr1ac;
-
-    void sub_55a830();
-    void sub_55a920();
-    void sub_4b0720();
-    void sub_450ec0();
-    void sub_4b0820();
-    void sub_541630_helper();
-};
-
-extern "C" void __cdecl sub_541630(void* p, void* q);
-extern "C" void __cdecl sub_5e49e0(void* out, void* in);
-extern "C" void __cdecl sub_402a60(void* dst, void* src);
-extern "C" void __cdecl sub_49d670(void* out, void* in);
-extern "C" void __cdecl sub_57ce80(void* p);
-extern "C" void __cdecl sub_564800(void* p, void* q);
-extern "C" void __cdecl sub_52ef30(void* p);
-extern "C" void __cdecl sub_423240(void* p, void* q);
-
-void FactoryProduct::sub_55a830() {}
-void FactoryProduct::sub_55a920() {}
-void FactoryProduct::sub_4b0720() {}
-void FactoryProduct::sub_450ec0() {}
-void FactoryProduct::sub_4b0820() {}
-
-void FactoryProduct::sub_541630_helper()
+namespace RBX
 {
-    sub_541630(*(void**)((char*)this + 0x188), this);
-    sub_541630(*(void**)((char*)this + 0x1a0), this);
-    sub_541630(*(void**)((char*)this + 0x1a8), this);
+	class PhysicsService;
+	template<> PhysicsService* ServiceProvider::create<PhysicsService>() const;
 
-    sub_55a830();
+	void DataModel::initializeContents(bool start)
+	{
+		workspace->setParent(this);
+		guiRoot->setParent(this);
+		guiHooks->setParent(this);
 
-    {
-        char tmp[8];
-        sub_5e49e0(tmp, (void*)0);
-        *(void**)((char*)this + 0x180) = *(void**)tmp;
-        sub_402a60((char*)this + 0x184, tmp + 4);
-        RefCounted* rc = *(RefCounted**)tmp;
-        if (rc) {
-            if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-                void** vt = *(void***)rc;
-                ((void(__thiscall*)(void*))vt[1])(rc);
-                if (_InterlockedExchangeAdd(&rc->weakcount, -1) == 1) {
-                    void** vt2 = *(void***)rc;
-                    ((void(__thiscall*)(void*))vt2[2])(rc);
-                }
-            }
-        }
-    }
+		localBackpack = shared_from(ServiceProvider::create<LocalBackpack>());
+		starterPackService = shared_from(ServiceProvider::create<StarterPackService>());
+		runService = shared_from(ServiceProvider::create<RunService>());
+		ServiceProvider::create<Soundscape::SoundService>();
 
-    sub_4b0720();
+		workspace->setDefaultMouseCommand();
+		workspace->setVerbParent(this);
 
-    {
-        char tmp[8];
-        sub_5e49e0(tmp, (void*)0);
-        *(void**)((char*)this + 0x198) = *(void**)tmp;
-        sub_402a60((char*)this + 0x19c, tmp + 4);
-        RefCounted* rc = *(RefCounted**)tmp;
-        if (rc) {
-            if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-                void** vt = *(void***)rc;
-                ((void(__thiscall*)(void*))vt[1])(rc);
-                if (_InterlockedExchangeAdd(&rc->weakcount, -1) == 1) {
-                    void** vt2 = *(void***)rc;
-                    ((void(__thiscall*)(void*))vt2[2])(rc);
-                }
-            }
-        }
-    }
+		if (start)
+			runService->start();
+		Notifier<RunService, RunTransition>::connect(runService, this);
 
-    sub_450ec0();
-
-    {
-        char tmp[8];
-        sub_49d670(tmp, (void*)0);
-        *(void**)((char*)this + 0x190) = *(void**)tmp;
-        sub_402a60((char*)this + 0x194, tmp + 4);
-        RefCounted* rc = *(RefCounted**)tmp;
-        if (rc) {
-            if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-                void** vt = *(void***)rc;
-                ((void(__thiscall*)(void*))vt[1])(rc);
-                if (_InterlockedExchangeAdd(&rc->weakcount, -1) == 1) {
-                    void** vt2 = *(void***)rc;
-                    ((void(__thiscall*)(void*))vt2[2])(rc);
-                }
-            }
-        }
-    }
-
-    sub_55a920();
-
-    sub_57ce80(*(void**)((char*)this + 0x188));
-    sub_564800((char*)*(void**)((char*)this + 0x188) + 0x284, (char*)this + 0x14c);
-    sub_52ef30(*(void**)((char*)this + 0x190));
-
-    void* p = *(void**)((char*)this + 0x190);
-    if (p) {
-        sub_423240((char*)p + 0x118, (char*)this + 0x17c);
-    }
-
-    sub_4b0820();
+		ServiceProvider::create<JointsService>();
+		ServiceProvider::create<PhysicsService>();
+	}
 }

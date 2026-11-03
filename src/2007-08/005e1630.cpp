@@ -1,64 +1,68 @@
-// from server: 44% by colin
-struct Vec3 {
-    float x, y, z;
-};
+// from server: 94% by EspClaude
+// from server: 100% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc 2008-06 00610580  (agentH rewrite)
 
-struct S {
-    int f(Vec3* a, Vec3* b, Vec3* c, int d, int e);
-};
-
-extern "C" int __cdecl sub_5e12a0(int, Vec3*, Vec3*);
-extern "C" char __cdecl sub_5e1250(int, Vec3*);
-extern "C" void __cdecl sub_5abf60(Vec3*, Vec3*, float*);
-
-extern float dword_797EB0;
-extern float dword_7BCF18;
-extern float dword_8C2AF0;
-extern float dword_8C2AF4;
-extern float dword_8C2AF8;
-extern int dword_8C2AFC;
-
-int S::f(Vec3* a, Vec3* b, Vec3* c, int d, int e)
+struct Vector3
 {
-    int r = sub_5e12a0(d, a, b);
-    char ok = sub_5e1250(d, a);
-    if (!ok)
-        return r;
+    float x, y, z;
+    Vector3() {}
+    Vector3(float a, float b, float c) : x(a), y(b), z(c) {}
+    Vector3 operator+(const Vector3& o) const { return Vector3(x + o.x, y + o.y, z + o.z); }
+    Vector3 operator*(float s) const { return Vector3(x * s, y * s, z * s); }
+    bool operator==(const Vector3& o) const { return x == o.x && y == o.y && z == o.z; }
+};
 
-    Vec3 t;
-    t.x = c->x + b->x;
-    t.y = c->y + b->y;
-    t.z = c->z + b->z;
+extern const float half;
+extern const float scaleY;
+extern Vector3 adjustment;
+extern unsigned int adjustmentInitialized;
 
-    float s = dword_7BCF18;
-    t.x *= s;
-    t.y *= s;
-    t.z *= s;
+extern void __cdecl transformVector(
+    Vector3* result, const Vector3* value, const Vector3* scale);
+extern bool __cdecl testVector(Vector3* result, void* context);
+extern Vector3* __cdecl multiplyVector(
+    Vector3* result, const Vector3* value, const Vector3* scale);
 
-    if ((dword_8C2AFC & 1) == 0) {
-        dword_8C2AFC |= 1;
-        dword_8C2AF0 = 1.0f;
-        dword_8C2AF4 = dword_797EB0;
-        dword_8C2AF8 = 1.0f;
+void __cdecl subdivideVector(
+    Vector3* result,
+    const Vector3* start,
+    const Vector3* end,
+    const Vector3* scale,
+    void* context)
+{
+    transformVector(result, end, scale);
+    if (!testVector(result, context))
+        return;
+
+    Vector3 average = (*start + *end) * 0.51f;
+
+    if (!(adjustmentInitialized & 1))
+    {
+        adjustmentInitialized |= 1;
+        adjustment.x = 1.0f;
+        adjustment.y = scaleY;
+        adjustment.z = 1.0f;
     }
 
-    Vec3 u;
-    sub_5abf60(&u, &t, &dword_8C2AF0);
+    Vector3 midpoint;
+    multiplyVector(&midpoint, &average, &adjustment);
 
-    sub_5e12a0(d, &u, b);
-    char ok2 = sub_5e1250(d, a);
+    transformVector(result, &midpoint, scale);
+    bool accepted = testVector(result, context);
 
-    if (b->x == u.x && b->y == u.y && b->z == u.z) {
-        if (ok2) {
-            sub_5e12a0(d, c, b);
-            return r;
-        }
-    } else {
-        if (ok2) {
-            return this->f(a, c, &u, d, e);
-        } else {
-            return this->f(a, &u, b, d, e);
-        }
+    if (midpoint == *end)
+    {
+        if (accepted)
+            transformVector(result, start, scale);
     }
-    return r;
+    else if (accepted)
+    {
+        subdivideVector(result, start, &midpoint, scale, context);
+    }
+    else
+    {
+        subdivideVector(result, &midpoint, end, scale, context);
+    }
 }

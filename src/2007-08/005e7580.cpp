@@ -1,34 +1,45 @@
-// from server: 81% by colin
+// from server: 100% by EspClaude
+// roc 2007-08 005e7580  unit: RBX::Flag  size: 170 bytes
+// Most-derived constructor shape (virtual base at +0x168 via vbtable); vftable/vbtable
+// symbols are the exe's data addresses (relocated references).
+extern const void* const vbtable_7bb71c;
+extern const void* const vbase_vftable_7a4ccc;
+extern const void* const vft_7bd754, *const vft_7bd748, *const vft_7bd740, *const vft_7bd730;
+extern const void* const vft_7bd720, *const vft_7bd710, *const vft_7bd700, *const vft_7bd6f0;
+extern const void* const vft_7bd6e0, *const vft_7bd6d8, *const vft_7bd6c0, *const vft_7bd6b8;
+
 struct Flag {
     char pad[0x168];
-    void* field_168;
+    const void* vbptr;
     char pad2[0x220 - 0x16c];
-    void* field_220;
-    void construct(int);
+    const void* vbase_vfptr;
+    Flag* construct(int);
+    void baseConstruct(int);
 };
 
-void Flag::construct(int arg) {
-    if (arg != 0) {
-        *(void**)((char*)this + 0x168) = (void*)0x7bb71c;
-        *(void**)((char*)this + 0x220) = (void*)0x7a4ccc;
+Flag* Flag::construct(int most_derived) {
+    if (most_derived != 0) {
+        vbptr = &vbtable_7bb71c;
+        vbase_vfptr = &vbase_vftable_7a4ccc;
     }
-    ((void (__thiscall*)(Flag*, int))0x5e7350)(this, 0);
-    void* v = *(void**)((char*)this + 0x168);
-    *(void**)this = (void*)0x7bd754;
-    *(void**)((char*)this + 4) = (void*)0x7bd748;
-    *(void**)((char*)this + 0x10) = (void*)0x7bd740;
-    *(void**)((char*)this + 0x14) = (void*)0x7bd730;
-    *(void**)((char*)this + 0x2c) = (void*)0x7bd720;
-    *(void**)((char*)this + 0x44) = (void*)0x7bd710;
-    *(void**)((char*)this + 0x5c) = (void*)0x7bd700;
-    *(void**)((char*)this + 0x74) = (void*)0x7bd6f0;
-    *(void**)((char*)this + 0x8c) = (void*)0x7bd6e0;
-    *(void**)((char*)this + 0xe8) = (void*)0x7bd6d8;
-    *(void**)((char*)this + 0x158) = (void*)0x7bd6c0;
-    int* p = *(int**)((char*)v + 4);
-    *(void**)((char*)p + (int)this + 0x168) = (void*)0x7bd6b8;
-    void* v2 = *(void**)((char*)this + 0x168);
-    int* p2 = *(int**)((char*)v2 + 4);
-    int off = (int)p2 - 0xb8;
-    *(int*)((char*)p2 + (int)this + 0x164) = off;
+    baseConstruct(0);
+    const void* p = vbptr;
+    *(const void**)((char*)this + 0x00) = &vft_7bd754;
+    *(const void**)((char*)this + 0x04) = &vft_7bd748;
+    *(const void**)((char*)this + 0x10) = &vft_7bd740;
+    *(const void**)((char*)this + 0x14) = &vft_7bd730;
+    *(const void**)((char*)this + 0x2c) = &vft_7bd720;
+    *(const void**)((char*)this + 0x44) = &vft_7bd710;
+    *(const void**)((char*)this + 0x5c) = &vft_7bd700;
+    *(const void**)((char*)this + 0x74) = &vft_7bd6f0;
+    *(const void**)((char*)this + 0x8c) = &vft_7bd6e0;
+    *(const void**)((char*)this + 0xe8) = &vft_7bd6d8;
+    *(const void**)((char*)this + 0x158) = &vft_7bd6c0;
+    int* q = *(int**)((char*)p + 4);
+    *(const void**)((char*)q + (int)this + 0x168) = &vft_7bd6b8;
+    const void* r = vbptr;
+    int* s = *(int**)((char*)r + 4);
+    int t = (int)s - 0xb8;
+    *(int*)((char*)s + (int)this + 0x164) = t;
+    return this;
 }

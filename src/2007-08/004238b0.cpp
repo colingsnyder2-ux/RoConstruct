@@ -1,116 +1,150 @@
-// from server: 42% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 81% by EspClaude
+// from server: 100% by EspClaude
+// from server: 97% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espclaude_10c375aa95bbfab1.cpp
 
-struct RefCounted {
-    void* vptr;
-    long refcount;
-    long weakcount;
+// Candidate translation unit (score above; library headers required).
+#include <boost/shared_ptr.hpp>
+typedef boost::shared_ptr<void> Handle;
+inline const Handle& ref(const Handle& value) { return value; }
+struct Owner {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void slot4();
+    virtual void slot5();
+    virtual void slot6();
+    virtual void slot7();
+    virtual void slot8();
+    virtual void slot9();
+    virtual void slot10();
+    virtual void slot11();
+    virtual void slot12();
+    virtual void slot13();
+    virtual void slot14();
+    virtual void slot15();
+    virtual void slot16();
+    virtual void slot17();
+    virtual void slot18();
+    virtual void slot19();
+    virtual void slot20();
+    virtual void slot21();
+    virtual void slot22();
+    virtual void slot23();
+    virtual void slot24();
+    virtual void slot25();
+    virtual void slot26();
+    virtual void slot27();
+    virtual void slot28();
+    virtual void slot29();
+    virtual void slot30();
+    virtual void slot31();
+    virtual void slot32();
+    virtual void slot33();
+    virtual void slot34();
+    virtual void slot35();
+    virtual void slot36();
+    virtual void slot37();
+    virtual void slot38();
+    virtual void slot39();
+    virtual void slot40();
+    virtual void slot41();
+    virtual void slot42();
+    virtual void slot43();
+    virtual void slot44();
+    virtual void slot45();
+    virtual void slot46();
+    virtual void slot47();
+    virtual void slot48();
+    virtual void slot49();
+    virtual void slot50();
+    virtual void slot51();
+    virtual void slot52();
+    virtual void slot53();
+    virtual void slot54();
+    virtual void slot55();
+    virtual void slot56();
+    virtual void slot57();
+    virtual void slot58();
+    virtual void slot59();
+    virtual void slot60();
+    virtual void slot61();
+    virtual void slot62();
+    virtual void slot63();
+    virtual void slot64();
+    virtual void slot65();
+    virtual void slot66();
+    virtual void slot67();
+    virtual void slot68();
+    virtual void slot69();
+    virtual void slot70();
+    virtual void slot71();
+    virtual void slot72();
+    virtual void slot73();
+    virtual void slot74();
+    virtual void slot75();
+    virtual void slot76();
+    virtual void slot77();
+    virtual void slot78();
+    virtual void slot79();
+    virtual void slot80();
+    virtual void slot81();
+    virtual void slot82();
+    virtual void slot83();
+    virtual void slot84();
+    virtual Handle acquire();
 };
 
-struct Inner {
-    char pad[0x14];
+struct Guard {
+    char storage[12];
+    Guard(Handle);
+    ~Guard();
 };
 
-struct Holder {
-    char pad0[0xc];
-    Inner* inner;
+struct Link { void* p; };
+struct FirstLink : Link {};
+struct SecondLink : Link {};
+
+struct Listener {
+    char storage[0x20];
+    void remove(Link*);
 };
 
-struct Obj {
-    void* vptr;
-    char pad[4];
-    char pad2[0x30 - 8];
-    Holder* holder;
-    char pad3[0x44 - 0x34];
-    int field44;
+struct Parent {
+    char padding[0x24];
+    Listener first;
+    Listener second;
 };
 
-struct Vtbl1 {
-    void* pad0;
-    void* pad1;
-    void* pad2;
-    void* pad3;
-    void* pad4;
-    void* pad5;
-    void* pad6;
-    void* fn18;
+struct S : FirstLink, SecondLink {
+    virtual void reserved0();
+    virtual void reserved1();
+    virtual void refresh();
+    virtual void reserved3();
+    virtual void reserved4();
+    virtual void reserved5();
+    virtual int query();
+
+    Parent* parent;
+    char padding10[0x48];
+    Owner* owner;
+    char padding5C[0x24];
+    int value;
+
+    Parent* getParent() const { return parent; }
+    void f();
 };
 
-struct Vtbl3 {
-    char pad[0x14c];
-    void* fn14c;
-};
-
-struct Vtbl4 {
-    void* pad0;
-    void* fn4;
-    void* fn8;
-};
-
-extern "C" void __cdecl sub_40d550(void*);
-extern "C" void __cdecl sub_423240(void*, void*);
-extern "C" void __cdecl sub_5595a0(void*);
-
-void CRobloxTreeCtrlNode_ctor(Obj* self)
+void S::f()
 {
-    void* vt;
-    void* fn;
-    void* p;
-    void* q;
-    RefCounted* rc;
-    long old;
-
-    vt = self->vptr;
-    fn = *(void**)((char*)vt + 0x18);
-    typedef int (__thiscall *Fn18)(Obj*);
-    self->field44 = ((Fn18)fn)(self);
-
-    vt = self->vptr;
-    fn = *(void**)((char*)vt + 8);
-    typedef void (__thiscall *Fn8)(Obj*);
-    ((Fn8)fn)(self);
-
-    {
-        void* h = self->holder;
-        void* hv = *(void**)h;
-        void* hf = *(void**)((char*)hv + 0x14c);
-        char tmp[8];
-        typedef void (__thiscall *Fn14c)(void*, void*);
-        ((Fn14c)hf)(h, tmp);
-        p = *(void**)tmp;
-        q = *(void**)(tmp + 4);
-        rc = (RefCounted*)p;
-        if (q != 0) {
-            _InterlockedExchangeAdd((volatile long*)((char*)q + 4), 1);
-        }
-        sub_40d550(tmp);
-        if (rc != 0) {
-            old = _InterlockedExchangeAdd((volatile long*)((char*)rc + 4), -1);
-            if (old == 1) {
-                void* rvt = *(void**)rc;
-                void* rfn = *(void**)((char*)rvt + 4);
-                typedef void (__thiscall *RFn4)(RefCounted*);
-                ((RFn4)rfn)(rc);
-                old = _InterlockedExchangeAdd((volatile long*)((char*)rc + 8), -1);
-                if (old == 1) {
-                    void* rvt2 = *(void**)rc;
-                    void* rfn2 = *(void**)((char*)rvt2 + 8);
-                    typedef void (__thiscall *RFn8)(RefCounted*);
-                    ((RFn8)rfn2)(rc);
-                }
-            }
-        }
-    }
-
-    {
-        void* h = self->holder;
-        sub_423240((void*)((char*)h + 0x14), (void*)((char*)self + 4));
-    }
-    {
-        void* h = self->holder;
-        sub_423240((void*)((char*)h + 0x2c), (void*)((char*)self + 8));
-    }
-
-    sub_5595a0((void*)((char*)self + 0x18));
+    value = query();
+    refresh();
+    Owner* o = owner;
+    Guard guard(ref(o->acquire()));
+    getParent()->first.remove(static_cast<FirstLink*>(this));
+    getParent()->second.remove(static_cast<SecondLink*>(this));
 }
+

@@ -1,48 +1,102 @@
-// from server: 58% by Yeetserama
-struct CChildFrame {
-    int field0;
-    int field4;
-    int field8;
-    int fieldC;
-    int field10;
-    int field14;
-    int field18;
-    int field1C;
-    int field20;
-    int field24;
-    void method_40f180(int* param);
+// from server: 75% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-dll roc_espeon_framesizevirtual324b5686eef01153.cpp
+
+// Candidate translation unit (score above; library headers required).
+// from server: 90% by king_originala
+extern "C" {
+    extern int (__stdcall *IsZoomed)(void *);
+}
+
+struct SizeSource {
+    int get_19c(int *out);
 };
 
-extern "C" int __stdcall IsZoomed(void* hWnd);
-extern void func_0063023e();
-extern void* func_0062ff50();
-extern int __cdecl func_0040f060(int* out);
-extern int __cdecl func_00444dc0(int* out);
+SizeSource *func_00412d50();
 
-void CChildFrame::method_40f180(int* param)
+struct Rect {
+    int left;
+    int top;
+    int right;
+    int bottom;
+};
+
+struct CChildFrame;
+typedef void (__thiscall *RectFunction)(CChildFrame *, Rect *, int);
+
+struct FrameTable {
+    RectFunction entries[29];
+};
+
+struct CChildFrame {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void slot4();
+    virtual void slot5();
+    virtual void slot6();
+    virtual void slot7();
+    virtual void slot8();
+    virtual void slot9();
+    virtual void slot10();
+    virtual void slot11();
+    virtual void slot12();
+    virtual void slot13();
+    virtual void slot14();
+    virtual void slot15();
+    virtual void slot16();
+    virtual void slot17();
+    virtual void slot18();
+    virtual void slot19();
+    virtual void slot20();
+    virtual void slot21();
+    virtual void slot22();
+    virtual void slot23();
+    virtual void slot24();
+    virtual void slot25();
+    virtual void slot26();
+    virtual void slot27();
+    virtual void adjust(Rect*,int);
+    char padding[0x1c];
+    void *window;
+
+    void func_006a0c68();
+    int func_006a0974();
+    void func_00412e60(int *param);
+};
+
+void CChildFrame::func_00412e60(int *param)
 {
-    func_0063023e();
-    void* p = func_0062ff50();
-    if (p != 0 && *(unsigned char*)((char*)p + 0xe0) != 0)
+    func_006a0c68();
+    int value = func_006a0974();
+    int *p = param;
+
+    if (value != 0 &&
+        *(char *)(value + 0xf8) != 0 &&
+        *(int *)(*(int *)(value + 0xec) + 0x84) == 0)
     {
-        param[8] = 0x7918;
-        param[9] = 0x7918;
-        param[2] = 0x7918;
-        param[3] = 0x7918;
+        p[2] += 40;
+        p[3] += 40;
+        p[8] += 40;
+        p[9] += 40;
     }
-    if (IsZoomed((void*)field20) == 0)
+
+    if (IsZoomed(window) == 0)
     {
-        int local1 = 0;
-        int local2 = 0;
-        func_0040f060(&local1);
-        func_00444dc0(&local2);
-        int v1 = local1;
-        int v2 = local2;
-        int local3 = 0;
-        int local4 = 0;
-        void (__thiscall *fn)(CChildFrame*, int*, int) = *(void(__thiscall**)(CChildFrame*, int*, int))(*(int*)this + 0x70);
-        fn(this, &local3, 0);
-        param[8] = local3 - v1;
-        param[9] = local4 - v2;
+        func_00412d50()->get_19c((int *)&param);
+
+        Rect rect;
+        rect.right = ((short *)&param)[0];
+        rect.bottom = ((short *)&param)[1];
+        rect.left = 0;
+        rect.top = 0;
+
+        adjust(&rect, 0);
+
+        p[8] = rect.right - rect.left;
+        p[9] = rect.bottom - rect.top;
     }
 }

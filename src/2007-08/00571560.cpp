@@ -1,72 +1,28 @@
-// from server: 42% by colin
+// from server: 74% by EspClaude
+// from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs reflection/reflection_object.cpp
+// roc-lib: boost-1.34.1-dll roc_claudeS3_18320aa5e3e6405f.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "reflection/member.h"
-#include "reflection/object.h"
-
-namespace RBX
-{
-	namespace Reflection
-	{
-		bool ClassDescriptor::lockedDown = false;
-
-		ClassDescriptor::ClassDescriptor(ClassDescriptor& base, const char* name)
-			: Descriptor(name),
-			  PropertyContainer(&base),
-			  SignalContainer(&base),
-			  FunctionContainer(&base),
-			  derivedClasses(),
-			  base(&base)
-		{
-			RBXASSERT(!lockedDown);
-
-			{
-				boost::recursive_mutex::scoped_lock lock(sync());
-				base.derivedClasses.push_back(this);
-			}
-		}
-
-		ClassDescriptor::ClassDescriptor()
-			: Descriptor("<<<ROOT>>>"),
-			  PropertyContainer(NULL),
-			  SignalContainer(NULL),
-			  FunctionContainer(NULL),
-			  derivedClasses(),
-			  base(NULL)
-		{
-		}
-
-		bool ClassDescriptor::operator==(const ClassDescriptor& other) const
-		{
-			return this == &other;
-		}
-
-		bool ClassDescriptor::operator!=(const ClassDescriptor& other) const
-		{
-			return this != &other;
-		}
-
-		bool MemberDescriptor::isMemberOf(const ClassDescriptor& classDescriptor) const
-		{
-			const ClassDescriptor* p = &classDescriptor;
-			do
-			{
-				if (p == &owner)
-					return true;
-				p = p->getBase();
-			}
-			while (p != &ClassDescriptor::rootDescriptor());
-
-			return false;
-		}
-
-		bool MemberDescriptor::isMemberOf(const DescribedBase* instance) const
-		{
-			return isMemberOf(instance->getDescriptor());
-		}
-	}
+#define _CPPUNWIND 1
+#define NDEBUG 1
+#include <boost/shared_ptr.hpp>
+#include <boost/function.hpp>
+#include <boost/thread/mutex.hpp>
+#include <boost/thread/condition.hpp>
+struct State {
+ boost::mutex mutex;
+ boost::condition condition;
+ bool stopped;
+ bool running() const { if(stopped) return false; return true; }
+};
+void __cdecl worker(boost::shared_ptr<State> state, const boost::function0<int>& function) {
+ for(;;) {
+  if(!state->running()) break;
+  if(function()==1) continue;
+  boost::mutex::scoped_lock lock(state->mutex);
+  state->condition.wait(lock);
+ }
 }

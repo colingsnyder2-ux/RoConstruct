@@ -1,21 +1,51 @@
-// from server: 93% by colin
-struct CMainFrame {
-    char pad[0xd8];
-    int field_0xd8;
-    int sub_0042f140(int);
+// from server: 96% by EspClaude
+// from server: 100% by king_originala
+// roc 2008-06 0042ef40  unit: CMainFrame  size: 54 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 0042ef40
+//
+// 0042ef40  56                   push esi
+// 0042ef41  8bf1                 mov esi, ecx
+// 0042ef43  8b4c2408             mov ecx, dword ptr [esp + 8]
+// 0042ef47  e876202700           call 0x6a0fc2
+// 0042ef4c  8986ec000000         mov dword ptr [esi + 0xec], eax
+// 0042ef52  85c0                 test eax, eax
+// 0042ef54  7504                 jne 0x42ef5a
+// 0042ef56  5e                   pop esi
+// 0042ef57  c20400               ret 4
+// 0042ef5a  56                   push esi
+// 0042ef5b  8bc8                 mov ecx, eax
+// 0042ef5d  e80e492700           call 0x6a3870
+// 0042ef62  8b8eec000000         mov ecx, dword ptr [esi + 0xec]
+// 0042ef68  e8e3392700           call 0x6a2950
+// 0042ef6d  b801000000           mov eax, 1
+// 0042ef72  5e                   pop esi
+// 0042ef73  c20400               ret 4
+
+struct CMainFrame;
+struct CommandBars;
+
+struct Source {
+    CommandBars* Get();
 };
 
-extern "C" int __fastcall sub_0063052C(int);
-extern "C" void __fastcall sub_00632A60(int, CMainFrame*);
-extern "C" void __fastcall sub_00631CA0(int);
+struct CommandBars {
+    void SetFrame(CMainFrame* frame);
+    void Initialize();
+};
 
-int CMainFrame::sub_0042f140(int a)
+struct CMainFrame {
+    char padding[0xec];
+    CommandBars* bars;
+    int Setup(Source* source);
+};
+
+int CMainFrame::Setup(Source* source)
 {
-    int v = sub_0063052C(a);
-    field_0xd8 = v;
-    if (v == 0)
+    bars = source->Get();
+    if (!bars)
         return 0;
-    sub_00632A60(v, this);
-    sub_00631CA0(field_0xd8);
+
+    bars->SetFrame(this);
+    bars->Initialize();
     return 1;
 }

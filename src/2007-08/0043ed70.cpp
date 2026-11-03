@@ -1,27 +1,58 @@
-// from server: 42% by tester
-struct RefItem {
-    char pad0[0x20];
-    char pad1[0xE0];
-    char pad2[0x100];
-    void method(int a, int b);
+// from server: 99% by EspClaude
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+
+struct CStr {
+    __declspec(dllimport) CStr(const char*);
+    __declspec(dllimport) CStr(const CStr&);
+    __declspec(dllimport) ~CStr();
+    char* p;
 };
 
-extern "C" void* __stdcall sub_77ddb8(void*);
-extern "C" void __fastcall sub_43c9d0(void*, int, int);
-extern "C" int __fastcall sub_689740(void*);
-extern "C" void __fastcall sub_697a10(void*, int);
-extern "C" void __fastcall sub_698630(void*);
+struct Source;
 
-void RefItem::method(int a, int b) {
-    sub_43c9d0(this, a, b);
-    *(void**)this = (void*)0x78ebc4;
-    *(void**)((char*)this + 0x20) = (void*)0x78eb64;
-    *(void**)((char*)this + 0x100) = (void*)0x78eb5c;
-    int v = sub_689740(this);
-    sub_697a10(this, v | 2);
-    int w = sub_689740(this);
-    sub_697a10(this, w & ~1);
-    void* tmp;
-    sub_77ddb8(&tmp);
-    sub_698630(this);
+struct First {
+    virtual ~First();
+    char padding[0x1c];
+};
+
+struct Second {
+    virtual ~Second();
+    char padding[0xd8];
+    int flag;
+    char tail[0xc];
+};
+
+struct Base : First, Second {
+    Base(const char*, int, int);
+    ~Base();
+    int GetFlags();
+    void SetFlags(int);
+    void SetValue(CStr);
+};
+
+struct Link {
+    virtual ~Link();
+    char padding[0x1c];
+    Link(Source*, int);
+};
+
+struct Item : Base, Link {
+    Source* source;
+    Item(Source*, int);
+    virtual ~Item();
+};
+
+struct ScriptItem : Item {
+    ScriptItem(Source*, int);
+    virtual ~ScriptItem();
+};
+
+ScriptItem::ScriptItem(Source* input, int option)
+    : Item(input, option)
+{
+    SetFlags(GetFlags() | 2);
+    SetFlags(GetFlags() & ~1);
+    SetValue("(Script)");
 }

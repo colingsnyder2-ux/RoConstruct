@@ -1,91 +1,67 @@
-// from server: 39% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 86% by EspClaude
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-dll roc_espclaude_aa1722ad196cb510.cpp
 
-struct RefCounted {
-    void* vptr;
-    long refcount;
-    long weakcount;
+// Candidate translation unit (score above; library headers required).
+#define _DLL
+#include <boost/shared_ptr.hpp>
+
+struct Listener1 { char storage[36]; };
+struct Listener2 { char storage[36]; };
+struct Signal { char storage[32]; void disconnect(Listener1*); void connect(Listener1&); };
+struct Signal2 { char storage[32]; void disconnect(Listener2*); void connect(Listener2&); };
+struct Instance { char padding[100]; Signal first; Signal2 second; };
+
+boost::shared_ptr<Instance> __cdecl acquire(void*);
+
+struct Service { void reset(); };
+struct Window {
+    virtual void s0();virtual void s1();virtual void s2();virtual void s3();virtual void s4();virtual void s5();virtual void s6();virtual void s7();virtual void s8();virtual void s9();
+    virtual void s10();virtual void s11();virtual void s12();virtual void s13();virtual void s14();virtual void s15();virtual void s16();virtual void s17();virtual void s18();virtual void s19();
+    virtual void s20();virtual void s21();virtual void s22();virtual void s23();virtual void s24();virtual void s25();virtual void s26();virtual void s27();virtual void s28();virtual void s29();
+    virtual void s30();virtual void s31();virtual void s32();virtual void s33();virtual void s34();virtual void s35();virtual void s36();virtual void s37();virtual void s38();virtual void s39();
+    virtual void s40();virtual void s41();virtual void s42();virtual void s43();virtual void s44();virtual void s45();virtual void s46();virtual void s47();virtual void s48();virtual void s49();
+    virtual void s50();virtual void s51();virtual void s52();virtual void s53();virtual void s54();virtual void s55();virtual void s56();virtual void s57();virtual void s58();virtual void s59();
+    virtual void s60();virtual void s61();virtual void s62();virtual void s63();virtual void s64();virtual void s65();virtual void s66();virtual void s67();virtual void s68();virtual void s69();
+    virtual void s70();virtual void s71();virtual void s72();virtual void s73();virtual void s74();virtual void s75();virtual void s76();virtual void s77();virtual void s78();virtual void s79();
+    virtual void s80();virtual void s81();virtual void s82();virtual void s83();virtual void s84();virtual void s85();virtual void s86();virtual void s87();
+    virtual void refresh();
+    char padding[228];
+    Service* service;
 };
 
-struct Sub44 {
-    char pad[0x44];
+struct FlagGuard {
+    unsigned char* flag; unsigned char previous;
+    FlagGuard(unsigned char& v) : flag(&v), previous(v) { v = 1; }
+    ~FlagGuard() { *flag = previous; }
 };
 
-struct Sub5c {
-    char pad[0x5c];
+struct ExplorerTable { void* slots[101]; Window* (__thiscall* getWindow)(void*); };
+struct ExplorerBase { ExplorerTable* table; char padding[884]; };
+
+struct Explorer : ExplorerBase, Listener1, Listener2
+{
+    boost::shared_ptr<Instance> instance;
+    unsigned char changing;
+    Window* getWindow() { return table->getWindow(this); }
+    void setInstance(void*);
 };
 
-struct Inner304 {
-    char pad0[0x44];
-    char pad1[0x18];
-};
-
-struct Obj {
-    void* vptr;
-    char pad0[0x2cc - 4];
-    char field2cc[0x1c];
-    char field2e8[0x1c];
-    char field304[4];
-    char field308[4];
-    char field30c;
-
-    void method(int arg);
-};
-
-extern "C" {
-    void __stdcall sub_432530(void*);
-    void __stdcall sub_423240(void*);
-    void __stdcall sub_402a60(void*);
-    void* __stdcall sub_49d670(void*, void*);
-    void __stdcall sub_6617e0(void*);
-}
-
-struct Vtbl {
-    char pad[0x18c];
-    void* (__stdcall *fn18c)(Obj*);
-};
-
-void Obj::method(int arg) {
-    char saved = field30c;
-    field30c = 1;
-    void* p304 = *(void**)field304;
-    if (p304) {
-        sub_432530((char*)p304 + 0x44);
-    }
-    p304 = *(void**)field304;
-    if (p304) {
-        sub_432530((char*)p304 + 0x5c);
-    }
-    Vtbl* vt = *(Vtbl**)this;
-    void* r = vt->fn18c(this);
-    sub_6617e0(*(void**)((char*)r + 0xa8));
-    void* tmp = 0;
-    void* res = sub_49d670(&tmp, &arg);
-    *(void**)field304 = *(void**)res;
-    sub_402a60(field308);
-    if (tmp) {
-        RefCounted* rc = (RefCounted*)tmp;
-        if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-            void** v = *(void***)rc;
-            ((void(__stdcall*)(void*))v[1])(rc);
-            if (_InterlockedExchangeAdd(&rc->weakcount, -1) == 1) {
-                void** v2 = *(void***)rc;
-                ((void(__stdcall*)(void*))v2[2])(rc);
-            }
-        }
-    }
-    p304 = *(void**)field304;
-    if (p304) {
-        sub_423240((char*)p304 + 0x44);
-    }
-    p304 = *(void**)field304;
-    if (p304) {
-        sub_423240((char*)p304 + 0x5c);
-    }
-    Vtbl* vt2 = *(Vtbl**)this;
-    void* r2 = vt2->fn18c(this);
-    void** v3 = *(void***)r2;
-    ((void(__stdcall*)(void*))v3[0x150/4])(r2);
-    field30c = saved;
+inline void disconnect1(const boost::shared_ptr<Instance>& i, Listener1* l) { if (i) i->first.disconnect(l); }
+inline void disconnect2(const boost::shared_ptr<Instance>& i, Listener2* l) { if (i) i->second.disconnect(l); }
+inline void connect1(Instance* i, Listener1& l) { if (i) i->first.connect(l); }
+inline void connect2(Instance* i, Listener2& l) { if (i) i->second.connect(l); }
+void Explorer::setInstance(void* argument)
+{
+    FlagGuard guard(changing);
+    disconnect1(instance, this);
+    disconnect2(instance, this);
+    getWindow()->service->reset();
+    instance = acquire(argument);
+    connect1(instance.get(), *this);
+    connect2(instance.get(), *this);
+    Window* window = getWindow();
+    window->refresh();
 }

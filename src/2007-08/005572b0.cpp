@@ -1,11 +1,13 @@
-// from server: 63% by colin
+// from server: 100% by EspClaude
 // roc-lang: cpp
-// roc-cl: 21022
+// roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: templates-boost-1_34_1 vector_sp.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include <boost/shared_ptr.hpp>
-struct T; typedef boost::shared_ptr<T> E;
-#include <vector>
-template class std::vector<E>;
+// 2007-08: std::string-by-value wrapper around a cdecl (const std::string&, std::string&) converter.
+#include <string>
+void convertChatString(const std::string& in, std::string& out);
+std::string filterChatString(std::string text)
+{
+	std::string result;
+	convertChatString(text, result);
+	return result;
+}

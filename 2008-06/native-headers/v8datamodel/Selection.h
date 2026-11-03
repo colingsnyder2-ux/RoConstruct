@@ -3,6 +3,7 @@
 #include "v8world/Controller.h"
 #include "v8datamodel/SelectionChanged.h"
 #include <algorithm>
+#include <boost/get_pointer.hpp>
 
 namespace RBX {
 class __declspec(novtable) ISelectionBase {
@@ -23,10 +24,16 @@ public:
     boost::shared_ptr<Instance> front() const;
     void clearSelection();
     void addToSelection(Instance*);
+    bool isSelected(const Instance*) const;                     // 00424eb0
+    void removeFromSelection(const Instance*);                  // 00567c10
+    void setSelection(Instance*);                               // 00567770
+    std::vector<boost::shared_ptr<Instance> >::const_iterator begin() const; // 00413d10
+    std::vector<boost::shared_ptr<Instance> >::const_iterator end() const;   // 00413d40
     void removeFilteredSelection(ISelectionBase*);
+    // get_pointer: raw-pointer iterators (CInstanceExplorer 00420d20) and shared_ptr ones alike
     template<class Iterator> void setSelection(Iterator first, Iterator last) {
         clearSelection();
-        for (; first != last; first++) addToSelection(first->get());
+        for (; first != last; first++) addToSelection(boost::get_pointer(*first));
     }
 };
 
