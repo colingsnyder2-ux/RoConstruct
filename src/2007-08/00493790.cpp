@@ -1,25 +1,15 @@
-// from server: 66% by colin
-// roc 2007-08 00493790  unit: RBX::Network::VPlayers::?$Notifier  size: 59 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00493790
-
-struct Notifier {
-    void apply(void (*fn)(void*, void*), void* a, void* b, void* c);
+// from server: 100% by EspClaude
+// roc 2007-08 00493790  std::for_each(list::iterator, list::iterator, bind(fn, _1, b)) instantiation
+// 2007 boost bind_t list2<arg<1>, value<B>> keeps the placeholder as a padded member (12-byte functor).
+// roc-flags: /O2 /GS /EHsc /MD
+#include <list>
+#include <algorithm>
+namespace RBX { class Instance; }
+struct Slot;
+struct BoundCall {
+    void (*f)(Slot*&, RBX::Instance*);
+    int placeholder;
+    RBX::Instance* b;
+    void operator()(Slot*& x) { f(x, b); }
 };
-
-void Notifier::apply(void (*fn)(void*, void*), void* a, void* b, void* c) {
-    struct Node {
-        Node* next;
-        int pad;
-        void* data;
-    };
-    Node* cur = (Node*)a;
-    Node* end = (Node*)b;
-    while (cur != end) {
-        fn(&cur->data, c);
-        cur = cur->next;
-    }
-    void** out = (void**)c;
-    out[0] = (void*)fn;
-    out[1] = (void*)a;
-    out[2] = (void*)b;
-}
+template BoundCall std::for_each<std::list<Slot*>::iterator, BoundCall>(std::list<Slot*>::iterator, std::list<Slot*>::iterator, BoundCall);

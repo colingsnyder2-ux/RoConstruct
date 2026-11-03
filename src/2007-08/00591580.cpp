@@ -1,82 +1,75 @@
-// from server: 68% by colin
-// roc-lang: cpp
-// roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Seat.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Seat.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/JointInstance.h"
-#include "v8datamodel/Workspace.h"
-#include "humanoid/Humanoid.h"
-#include "Network/Players.h"
-
-namespace RBX
-{
-	Seat::Seat()
-		: sleepTime(0.0f)
-	{
-		setName("Seat");
-	}
-
-	void Seat::seatCharacter(Humanoid* h)
-	{
-		weld = Creatable::create<Weld>();
-
-		PartInstance* torso = h->getTorso();
-		RBXASSERT(torso);
-
-		const G3D::CoordinateFrame& unused = torso->getCoordinateFrame();
-
-		weld->setName("SeatWeld");
-		weld->setPart0(this);
-		weld->setPart1(torso);
-
-		G3D::CoordinateFrame C0;
-		C0.lookAt(G3D::Vector3(0.0f, -1.0f, 0.0f), G3D::Vector3(0.0f, 0.0f, -1.0f));
-
-		C0.translation = G3D::Vector3(0.0f, 3.0f, 0.0f);
-
-		G3D::CoordinateFrame C1;
-		C1.lookAt(G3D::Vector3(0.0f, -1.0f, 0.0f), G3D::Vector3(0.0f, 0.0f, -1.0f));
-
-		C1.translation = G3D::Vector3(0.0f, 0.6f, 0.0f);
-
-		weld->setC0(C0);
-		weld->setC1(C1);
-		weld->setParent(this);
-	}
-
-	void Seat::unseatCharacter()
-	{
-		sleepTime = G3D::System::getLocalTime();
-
-		if (weld)
-		{
-			weld->setParent(NULL);
-			weld.reset();
-		}
-	}
-
-	void Seat::onEvent_humanoidJumped(bool active)
-	{
-		unseatCharacter();
-		humanoidJumped.disconnect();
-	}
-
-	void Seat::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			seatTouched = PartInstance::event_Touched.connect(this, boost::bind(&Seat::onEvent_seatTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			seatTouched.disconnect();
-		}
-	}
+// from server: 100% by EspClaude
+// roc 2007-08 00591580  RBX::ObjectValue::~ObjectValue() (shared_ptr<Instance> value @0xe8; inlined FactoryProduct/Described dtors)
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <intrin.h>
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+    long use_count_;
+    long weak_count_;
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    shared_count() : pi_(0) {}
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+}
+template<class T> class shared_ptr {
+    T* px;
+    detail::shared_count pn;
+public:
+    shared_ptr() : px(0) {}
+};
+}
+namespace RBX {
+class V0 { public: virtual ~V0(); };
+namespace Reflection {
+class ClassDescriptor;
+class DescribedBase { public: virtual ~DescribedBase(); int a; protected: const ClassDescriptor* descriptor; };
+}
+class V2 { public: virtual ~V2(); };
+template<int N> class Notifier { public: virtual ~Notifier(); int pad[5]; };
+class V8 { public: virtual ~V8(); char pad[0xe8 - 0x90]; };
+class Instance : public V0, public Reflection::DescribedBase, public V2, public Notifier<1>, public Notifier<2>,
+                 public Notifier<3>, public Notifier<4>, public Notifier<5>, public V8 {
+public:
+    virtual ~Instance();
+};
+template<class Class, class Base, char** name>
+class FactoryProduct : public Base {
+public:
+    virtual ~FactoryProduct() {}
+};
+namespace Reflection {
+template<class Class, class Base, char** name>
+class Described : public Base {
+};
+}
+extern char* sObjectValue;
+class ObjectValue : public Reflection::Described<ObjectValue, FactoryProduct<ObjectValue, Instance, &sObjectValue>, &sObjectValue> {
+    boost::shared_ptr<Instance> value;  // exe +0xe8
+public:
+    ObjectValue();
+};
+ObjectValue::ObjectValue() {}
 }

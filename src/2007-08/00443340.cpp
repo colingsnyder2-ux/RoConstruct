@@ -1,47 +1,53 @@
-// from server: 67% by colin
-struct Prop;
-
-struct Arg
-{
-    char pad0[4];
-    void* ptr4;
-    char pad8[4];
-    void* ptrC;
+// from server: 83% by EspClaude
+// roc 2007-08 00443340  Reflection::Metadata lookup of a property's metadata instance
+// roc-flags: /O2 /GS /EHsc /MD
+#include <string>
+namespace RBX {
+class Name {
+    int id;
+    std::string name;
+public:
+    const std::string& toString() const { return name; }
 };
-
-struct Descriptor
-{
+class Instance {
+public:
+    virtual ~Instance();
+    Instance* findFirstChildByName(const std::string& name) const;
+    template<class T> T* findFirstChildOfType() const;
+};
+namespace Reflection {
+class Descriptor {
+public:
+    virtual ~Descriptor();
+    const Name& name;
+};
+class ClassDescriptor : public Descriptor {};
+class MemberDescriptor : public Descriptor {
+public:
+    const Name& category;
+    const ClassDescriptor& owner;
+};
+class PropertyDescriptor : public MemberDescriptor {};
+class EventDescriptor : public MemberDescriptor {};
+class FunctionDescriptor : public MemberDescriptor {};
+namespace Metadata {
+class Classes : public Instance {};
+class Properties : public Instance {};
+class Events : public Instance {};
+class Functions : public Instance {};
+class Reflection {
     char pad[0xe8];
-    Prop* prop;
-    void* method(Arg* arg);
+    Classes* classes;  // exe +0xe8
+public:
+    template<class Members, class Desc> Instance* findMember(const Desc& desc) const
+    {
+        Instance* c = classes ? classes->findFirstChildByName(desc.owner.name.toString()) : 0;
+        if (c)
+            if (Members* m = c->findFirstChildOfType<Members>())
+                return m->findFirstChildByName(desc.name.toString());
+        return 0;
+    }
+    Instance* get(const PropertyDescriptor& desc) const;
 };
-
-extern "C" void* __stdcall sub_53e7a0(void*);
-extern "C" void* __fastcall sub_4431c0(Prop*);
-
-void* Descriptor::method(Arg* arg)
-{
-    Prop* p = this->prop;
-    void* result;
-    if (p != 0)
-    {
-        void* v = arg->ptrC;
-        void* v2 = *(void**)((char*)v + 4);
-        result = sub_53e7a0((char*)v2 + 4);
-    }
-    else
-    {
-        result = 0;
-    }
-    if (result != 0)
-    {
-        void* r = sub_4431c0((Prop*)result);
-        if (r != 0)
-        {
-            void* v = arg->ptr4;
-            void* v2 = (char*)v + 4;
-            return sub_53e7a0(v2);
-        }
-    }
-    return 0;
-}
+}}}
+template RBX::Instance* RBX::Reflection::Metadata::Reflection::findMember<RBX::Reflection::Metadata::Properties, RBX::Reflection::PropertyDescriptor>(const RBX::Reflection::PropertyDescriptor&) const;

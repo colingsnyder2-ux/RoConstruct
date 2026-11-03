@@ -1,56 +1,88 @@
-// from server: 72% by colin
-struct MultiJoint {
-    char pad0[0x88];
+// from server: 100% by EspClaude
+// roc 2007-08 0060a560  unit: RBX::MultiJoint  size: 272 bytes
+// MultiJoint::removeFromKernel (rbxgs v8world/MutilJoint.cpp) with the 2007 Kernel::removeConnector
+// inlined: realTimeConnectors (G3D::Array @+0x10) resize(0,false) + IndexArray connectors @+0x34 fastRemove.
+// Offsets from the target.
+// roc-flags: /O2 /GS /EHsc /MD
+namespace G3D {
+template<class T> class Array {
+public:
+    T* data;
+    int num;
+    int numAllocated;
+    void resize(int n, bool shrinkIfNecessary = true);
+    int size() const { return num; }
+    T& operator[](int n) { return data[n]; }
+};
+}
+namespace RBX {
+class Point;
+class Connector {
+public:
+    virtual ~Connector();
+    int& getKernelIndex();
+};
+template <typename tInstance, int& (tInstance::*getIndex)()>
+class IndexArray {
+private:
+    G3D::Array<tInstance*> array;
+    int& indexOf(tInstance* instance) const { return (instance->*getIndex)(); }
+public:
+    int size() const { return array.size(); }
+    void fastRemove(tInstance* item)
+    {
+        int removeIndex = indexOf(item);
+        tInstance* movedItem = array[size() - 1];
+        array[removeIndex] = movedItem;
+        indexOf(movedItem) = removeIndex;
+        array.resize(array.size() - 1, false);
+        indexOf(item) = -1;
+    }
+};
+class Kernel {
+    char pad0[0x10];
+    G3D::Array<Connector*> realTimeConnectors;
+    char pad1[0x34 - 0x1c];
+    IndexArray<Connector, &Connector::getKernelIndex> connectors;
+public:
+    void deletePoint(Point* p);
+    void removeConnector(Connector* c)
+    {
+        realTimeConnectors.resize(0, false);
+        connectors.fastRemove(c);
+    }
+};
+class IPipelined {
+    char pad[0x88];
+public:
+    Kernel* getKernel();
+    void removeFromKernel();
+};
+class MultiJoint : public IPipelined {
     int numConnector;
-    char pad1[0x04];
-    void* point[8];
-    char pad2[0x04];
-
-    void clear();
+    Point* point[8];
+    Connector* connector[4];
+    int numBreakingConnectors;
+public:
+    void removeFromKernel();
 };
 
-extern "C" void* __stdcall sub_5A4760(void*);
-extern "C" void __stdcall sub_5A4BF0(void*, int, int);
-extern "C" void __stdcall sub_5CF9D0(void*);
-extern "C" void* __stdcall sub_609150(void*, void*);
-extern "C" void __stdcall sub_609160(void*);
-
-void MultiJoint::clear()
+void MultiJoint::removeFromKernel()
 {
-    int i = 0;
-    if (numConnector > 0) {
-        void** p = point;
-        void** q = (void**)((char*)this + 0xac);
-        do {
-            sub_5CF9D0(sub_609150(this, p[-1]));
-            sub_5CF9D0(sub_609150(this, p[0]));
-            p[-1] = 0;
-            p[0] = 0;
-            void* v = *q;
-            void* r = sub_609150(this, 0);
-            sub_5A4BF0((char*)r + 0x10, 0, 0);
-            {
-                void* a = sub_5A4760((char*)v + 0x34);
-                int idx = *(int*)a;
-                int* arr = (int*)sub_5A4760((char*)v + 0x34);
-                int cnt = arr[1];
-                int val = *(int*)(idx + cnt * 4 - 4);
-                *(int*)(idx + val * 4) = val;
-                *(int*)sub_5A4760((char*)v + 0x34) = idx;
-                int cnt2 = ((int*)sub_5A4760((char*)v + 0x34))[1];
-                sub_5A4BF0(sub_5A4760((char*)v + 0x34), cnt2 - 1, 0);
-                *(int*)sub_5A4760((char*)v + 0x34) = -1;
-            }
-            if (*q) {
-                void** vt = *(void***)*q;
-                ((void (__stdcall*)(int))vt[0])(1);
-            }
-            *q = 0;
-            i++;
-            q++;
-            p += 2;
-        } while (i < numConnector);
+    for (int i = 0; i < numConnector; i++)
+    {
+        getKernel()->deletePoint(point[(i*2)]);
+        getKernel()->deletePoint(point[(i*2)+1]);
+        point[(i*2)] = 0;
+        point[(i*2)+1] = 0;
+
+        getKernel()->removeConnector(connector[i]);
+        delete connector[i];
+        connector[i] = 0;
     }
+
     numConnector = 0;
-    sub_609160(this);
+
+    IPipelined::removeFromKernel();
+}
 }

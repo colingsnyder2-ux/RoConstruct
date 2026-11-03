@@ -1,25 +1,65 @@
-// from server: 64% by colin
-struct LuaArguments {
-    int m_L;
-    int m_offset;
-    void f(int a1);
-};
-
-extern "C" int __cdecl sub_630d36(int, int, int, int, int);
-extern "C" void __cdecl sub_630b9e(int, int);
-extern "C" void __stdcall sub_77e710(int);
-extern "C" void __stdcall sub_77e710_bad_cast(int);
-
-void LuaArguments::f(int a1)
+// from server: 100% by EspClaude
+// roc 2007-08 005bf990  template void Property::setValue<RBX::TextureId>(const RBX::TextureId&);
+namespace RBX { class TextureId { public: char s[0x1c]; }; }
+// RBX::Reflection ConstProperty::getValue<T> / Property::setValue<T> (reflection/property.h, boost::polymorphic_cast).
+// roc-flags: /O2 /GS /EHsc /MD
+#include <typeinfo>
+#include <memory>
+namespace boost {
+template <class Target, class Source>
+inline Target polymorphic_cast(Source* x)
 {
-    int v = sub_630d36(m_L, 0, 0x887174, 0x887c60, 0);
-    if (v == 0) {
-        sub_77e710(0x786e04);
-        sub_630b9e(0x841e0c, (int)&v);
-    }
-    int* p = (int*)(v + 0x18);
-    int* obj = (int*)*p;
-    int* vtbl = (int*)*obj;
-    int fn = vtbl[2];
-    ((void (__thiscall*)(int*, int, int))fn)(obj, m_offset, a1);
+    Target tmp = dynamic_cast<Target>(x);
+    if (tmp == 0) throw std::bad_cast();
+    return tmp;
 }
+}
+namespace G3D { class Vector3 { public: float x, y, z; }; }
+namespace RBX {
+namespace Reflection {
+class DescribedBase;
+class PropertyDescriptor {
+public:
+    virtual ~PropertyDescriptor();
+    char pad[0x14];
+};
+template<typename PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        virtual bool isReadOnly() const = 0;
+        virtual PropType getValue(const DescribedBase*) const = 0;
+        virtual void setValue(DescribedBase*, const PropType&) const = 0;
+    };
+protected:
+    std::auto_ptr<GetSet> getset;
+public:
+    virtual ~TypedPropertyDescriptor();
+    PropType getValue(const DescribedBase* object) const { return getset->getValue(object); }
+    void setValue(DescribedBase* object, const PropType& value) const { getset->setValue(object, value); }
+};
+class ConstProperty {
+protected:
+    const PropertyDescriptor* descriptor;
+    const DescribedBase* instance;
+public:
+    template<typename T>
+    T getValue() const
+    {
+        const TypedPropertyDescriptor<T>* value = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+        return value->getValue(instance);
+    }
+};
+class Property : public ConstProperty {
+public:
+    DescribedBase* getInstance() const { return const_cast<DescribedBase*>(instance); }
+    template<typename T>
+    void setValue(const T& value)
+    {
+        const TypedPropertyDescriptor<T>* typedProp = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+        typedProp->setValue(getInstance(), value);
+    }
+};
+template void Property::setValue<RBX::TextureId>(const RBX::TextureId&);
+}}

@@ -1,22 +1,23 @@
-// from server: 66% by colin
-struct RBX_DataModel {
-    int field_0x0;
-    int field_0x4;
-    int field_0x8;
-    int field_0xc;
-    int field_0x10;
-    int getValue();
+// from server: 100% by EspClaude
+// roc 2007-08 0055ce80  data-state history: more than 10 entries
+#include <string>
+#include <vector>
+
+struct HistoryEntry {
+    std::string text;
+    int a;
+    int b;
 };
 
-int RBX_DataModel::getValue()
+class History {
+    int reserved;
+    int current;
+    std::vector<HistoryEntry> entries;
+public:
+    bool isLong() const;
+};
+
+bool History::isLong() const
 {
-    int a = field_0xc;
-    if (a == 0) {
-        int c = 10;
-        return (c > a) ? 1 : 0;
-    }
-    int b = field_0x10 - a;
-    int q = b / 72;
-    int c = 10;
-    return (c > q) ? 1 : 0;
+    return entries.size() > 10;
 }

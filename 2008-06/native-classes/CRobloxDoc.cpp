@@ -1,5 +1,7 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 #include <afxwin.h>
 #include <afxdlgs.h>
+#include <afxpriv.h>
 #include "v8xml/XmlElement.h"
 #include "v8xml/SerializerV2.h"
 #include "v8tree/Verb.h"
@@ -7,12 +9,14 @@
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/ChangeHistoryService.h"
+#include "v8datamodel/Visit.h"
 #include "script/ScriptContext.h"
 #include "../native-headers/CRobloxDoc.h"
 #include "../native-headers/CSaveToRobloxDialog.h"
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/CWorkspace.h"
 #include "util/RunStateOwner.h"
+#include "util/FileSystem.h"
 #include "util/Log.h"
 #include "util/StandardOut.h"
 #include "Network/Players.h"
@@ -69,6 +73,36 @@ END_MESSAGE_MAP()
 // Original 00428850 logs std::exception::what(); recovery/linking remains open.
 void reportDocumentException(const std::exception&);
 CString applicationBaseUrl();
+static CString copyDocument(CRobloxDoc* doc, const char* suffix)
+{
+    CString result;
+    GetShortPathNameA(RBX::FileSystem::getUserAppDataDirectory(true, "Test").c_str(), result.GetBuffer(MAX_PATH), MAX_PATH);
+    result.ReleaseBuffer();
+    result += suffix;
+    result += ".rbxl";
+    if (doc->workspace->SaveToFile(ATL::CComBSTR(result)) != S_OK)
+        throw std::runtime_error("Failed to copy document");
+    return result;
+}
+void AFXAPI AfxGetModuleShortFileName(HINSTANCE, CString&);
+
+static __declspec(noinline) void launch(const char* first, const char* second)
+{
+    CString folder;
+    if (SHGetFolderPathA(NULL, CSIDL_COMMON_DOCUMENTS, NULL, 0, folder.GetBuffer(MAX_PATH)) != S_OK)
+        throw std::runtime_error("Unable to get common document folder");
+    folder.ReleaseBuffer();
+    CString executable;
+    CWinApp* app = afxCurrentWinApp;
+    AfxGetModuleShortFileName(app->m_hInstance, executable);
+    CString args;
+    if (first) args += first;
+    if (second) args += second;
+    CWinThread* thread = AfxGetThread();
+    CWnd* main = thread ? thread->GetMainWnd() : NULL;
+    if ((UINT_PTR)ShellExecuteA(main->m_hWnd, "open", executable, args, folder, SW_SHOW) <= 32)
+        throw std::runtime_error("ShellExecute failed");
+}
 extern CRobloxDoc* currentDocument;
 void setCurrentDocument(bool, CRobloxDoc*);
 // Native predicates 00495e60/00495e70 resolve to NetworkClient/NetworkServer lookups.
@@ -292,6 +326,24 @@ void CRobloxDoc::handle_44fd30() {
     dialog.DoModal();
 }
 
+void CRobloxDoc::handle_4500d0()
+{
+    try { launch(copyDocument(this, "Visit"), (" -script \"loadfile('" + applicationBaseUrl() + "/game/visit.ashx')()\"")); }
+    catch (const std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
+}
+
+void CRobloxDoc::handle_4501c0()
+{
+    try { launch(copyDocument(this, "Server"), (" -script \"loadfile('" + applicationBaseUrl() + "/game/gameserver.ashx')(0, 53640)\"")); }
+    catch (const std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
+}
+
+void CRobloxDoc::handle_4502b0()
+{
+    try { launch(NULL, (" -script \"loadfile('" + applicationBaseUrl() + "/game/join.ashx?UserID=0&serverPort=53640')()\"")); }
+    catch (const std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
+}
+
 // 00455580: stop simulation, restore the saved place and rebuild joints.
 void CRobloxDoc::handle_455580() {
     RBX::DataModel::Lock lock(workspace->getDataModel());
@@ -344,6 +396,27 @@ BOOL CRobloxDoc::OnSaveDocument(LPCTSTR path) {
     if (workspace->SaveToFile(ATL::CComBSTR(path)) != 0) return FALSE;
     SetModifiedFlag(FALSE);
     return TRUE;
+}
+
+BOOL CRobloxDoc::SaveModified()
+{
+    if (!workspace || !workspace->getDataModel()) return TRUE;
+    if (!IsModified()) return TRUE;
+    RBX::DataModel::Lock request(getDataModel());
+    bool wasRunning = RBX::ServiceProvider::find<RBX::RunService>(getDataModel().get())->getRunState() == RBX::RS_RUNNING;
+    RBX::ServiceProvider::find<RBX::RunService>(getDataModel().get())->setRunState(RBX::RS_PAUSED);
+    RBX::Visit* visit = RBX::ServiceProvider::find<RBX::Visit>(getDataModel().get());
+    if (!visit || visit->getUploadUrl() == "NoVisit") {
+        SetForegroundWindow(AfxGetMainWnd()->m_hWnd);
+        return CDocument::SaveModified();
+    }
+    if (visit->getUploadUrl().size() == 0) return TRUE;
+    FlashWindow(AfxGetMainWnd()->m_hWnd, FALSE);
+    CPublishAsPlaceDialog dlg(workspace, 0);
+    int result = dlg.DoModal() == IDOK;
+    if (!result && wasRunning)
+        RBX::ServiceProvider::find<RBX::RunService>(workspace->getDataModel().get())->setRunState(RBX::RS_RUNNING);
+    return result;
 }
 
 // 004533f0: reject cached paths, then load and enable history.

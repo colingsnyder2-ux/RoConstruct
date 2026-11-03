@@ -1,18 +1,27 @@
-// from server: 16% by Yeetserama
-// roc-lang: cpp
+// from server: 99% by EspClaude
+// from server: 100% by colin
 // roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// roc-lang: cpp
+// roc-lib: openrbx-client-dll App/v8datamodel/Teams.cpp
 
-struct VCAppIObjectSafetyRobloxImpl {
-    void assign(void* p);
-};
+// Candidate translation unit (score above; library headers required).
+#include "v8datamodel/Teams.h"
 
-extern "C" __declspec(dllimport) void* __stdcall sym_func_77e6d0();
-extern "C" void __stdcall sub_544ce0(void* p);
+namespace RBX {
 
-void VCAppIObjectSafetyRobloxImpl::assign(void* p)
+const char sTeams[] = "Teams";
+
+// STUB: WEBSERVICE 0x100dad30
+G3D::Color3 Teams::getTeamColorForHumanoid(Humanoid* humanoid)
 {
-    void* h = sym_func_77e6d0();
-    if (h != 0)
-        sub_544ce0(h);
+	STUB(0x100dad30);
+
+	return G3D::Color3();
 }
+
+} // namespace RBX
+
+template class RBX::FactoryProduct<RBX::Teams, RBX::Instance, RBX::sTeams>;
+template class RBX::Reflection::
+	Described<RBX::Teams, RBX::sTeams, RBX::FactoryProduct<RBX::Teams, RBX::Instance, RBX::sTeams> >;
+template class RBX::DescribedCreatable<RBX::Teams, RBX::Instance, RBX::sTeams>;

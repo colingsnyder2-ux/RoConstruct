@@ -1,59 +1,50 @@
-// from server: 61% by colin
-// roc 2007-08 00443240  unit: RBX::Reflection::H::?$TypedPropertyDescriptor  size: 127 bytes
-
-extern "C" void __stdcall _invalid_parameter_noinfo();
-
-struct PropDesc {
-    int field0;
-    int field4;
-    int field8;
+// from server: 100% by EspClaude
+// roc 2007-08 00443240  RBX::Instance::findFirstChildOfType<Reflection::Metadata::Functions>
+// roc-flags: /O2 /GS /EHsc /MD
+#include <vector>
+namespace boost {
+template<class T> class shared_ptr {
+    typedef shared_ptr<T> this_type;
+    T* px; void* pn;
+public:
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+    T& operator*() const { return *px; }
+    typedef T* this_type::*unspecified_bool_type;
+    operator unspecified_bool_type() const { return px == 0 ? 0 : &this_type::px; }
 };
-
-struct List {
-    int field0;
-    int field4;
-    int field8;
-};
-
-struct Holder {
-    char pad[0xc0];
-    List* list;
-};
-
-extern "C" int __cdecl sub_630d36(int, int, int, int, int);
-
-int Holder_lookup(Holder* self);
-
-int Holder_lookup(Holder* self)
-{
-    List* ebx = self->list;
-    if (ebx != 0)
-        return 0;
-
-    int ebp = ebx->field8;
-    if (ebx->field4 > ebp)
-        _invalid_parameter_noinfo();
-
-    List* edi = self->list;
-    int esi = edi->field4;
-    if (esi > edi->field8)
-        _invalid_parameter_noinfo();
-
-    if (edi != ebx)
-        _invalid_parameter_noinfo();
-
-    while (esi != ebp) {
-        if (esi >= edi->field8)
-            _invalid_parameter_noinfo();
-
-        int v = *(int*)esi;
-        int r = sub_630d36(v, 0, (int)0x881f4c, (int)0x886090, 0);
-        if (r != 0)
-            return r;
-
-        if (esi >= edi->field8)
-            _invalid_parameter_noinfo();
-        esi += 8;
-    }
-    return 0;
 }
+namespace RBX {
+template<class T> class CopyOnWrite {
+    boost::shared_ptr<T> object;
+public:
+    const T& operator*() const { return *object; }
+    const T* operator->() const { return object.get(); }
+    operator bool() const { return object; }
+};
+class Instance {
+public:
+    virtual ~Instance();
+    char pad[0xbc];
+    CopyOnWrite<std::vector<boost::shared_ptr<Instance> > > children;  // exe +0xc0
+    template<class T> T* findFirstChildOfType() const
+    {
+        if (children) {
+            std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
+            std::vector<boost::shared_ptr<Instance> >::const_iterator iter = children->begin();
+            for (; iter != end; iter++) {
+                if (T* result = dynamic_cast<T*>((*iter).get()))
+                    return result;
+            }
+        }
+        return 0;
+    }
+};
+namespace Reflection { namespace Metadata {
+class Classes : public Instance {};
+class Properties : public Instance {};
+class Events : public Instance {};
+class Functions : public Instance {};
+}}
+}
+template RBX::Reflection::Metadata::Functions* RBX::Instance::findFirstChildOfType<RBX::Reflection::Metadata::Functions>() const;

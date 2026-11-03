@@ -1,145 +1,214 @@
-// from server: 32% by colin
-// roc 2007-08 004f35c0  unit: boost::bad_lexical_cast  size: 270 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004f35c0
+// from server: 100% by EspClaude
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client Rendering/RenderLib/Profiler.cpp
 
-extern "C" {
-    int __stdcall RegOpenKeyExA(void*, const char*, int, int, void**);
-    int __stdcall RegQueryValueExA(void*, const char*, int*, int*, unsigned char*, int*);
-    int __stdcall RegCloseKey(void*);
-    unsigned int __stdcall GetTickCount();
-    __int64 __stdcall GetSomething();
-}
+// Candidate translation unit (score above; library headers required).
+#include "decomp.h"
 
-struct MyString {
-    void* data[8];
-    MyString(const char*);
-    ~MyString();
+#include <G3D/RegistryUtil.h>
+#include <GLG3D/DXCaps.h>
+#include <GLG3D/GLCaps.h>
+#include <boost/lexical_cast.hpp>
+#include <string>
+#include <windows.h>
+
+namespace RBX {
+namespace Render {
+
+typedef void (*DelayFunction)(unsigned int uiParameter);
+
+static float getShaderModel();
+static int getCPUSpeed();
+static std::string getCPUMake();
+static std::string getMaxRes();
+static int getRam();
+
+// SIZE 0x80
+struct SpecData
+{
+	static bool glLoaded;
+
+	float shaderModel;      // 0x00
+	int videoMemory;        // 0x04
+	int CPUSpeed;           // 0x08
+	std::string glVendor;   // 0x0c
+	std::string gfxcard;    // 0x28
+	std::string cpu;        // 0x44
+	int ram;                // 0x60
+	std::string resolution; // 0x64
+
+	SpecData();
 };
 
-int __stdcall sub_4f3340(int, int);
-int __stdcall sub_50a630(void*, void*);
-__int64 __stdcall sub_6311b0(__int64, int, int);
+DECOMP_SIZE_ASSERT(SpecData, 0x80)
 
-int __stdcall sub_4f35c0()
+bool SpecData::glLoaded;
+
+// FUNCTION: WEBSERVICE 0x10169a30
+static float getShaderModel()
 {
-    void* hKey = 0;
-    int result = 0;
-    int value = 0;
-    int size = 4;
-    int type = 0;
-    MyString keyName("HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\~MHz");
-    int opened = RegOpenKeyExA((void*)0x80000002, (const char*)&keyName, 0, 0x20019, &hKey);
-    if (opened == 0) {
-        int q = RegQueryValueExA(hKey, "~MHz", 0, (int*)&type, (unsigned char*)&value, &size);
-        RegCloseKey(hKey);
-        if (q == 0) {
-            if (value > 300) {
-                result = value;
-            }
-        }
-    }
-    if (result == 0) {
-        unsigned int t1 = GetTickCount();
-        unsigned int t2 = GetTickCount();
-        unsigned int t3 = GetTickCount();
-        unsigned int t4 = GetTickCount();
-        unsigned int t5 = GetTickCount();
-        unsigned int t6 = GetTickCount();
-        unsigned int t7 = GetTickCount();
-        unsigned int t8 = GetTickCount();
-        unsigned int t9 = GetTickCount();
-        unsigned int t10 = GetTickCount();
-        unsigned int t11 = GetTickCount();
-        unsigned int t12 = GetTickCount();
-        unsigned int t13 = GetTickCount();
-        unsigned int t14 = GetTickCount();
-        unsigned int t15 = GetTickCount();
-        unsigned int t16 = GetTickCount();
-        unsigned int t17 = GetTickCount();
-        unsigned int t18 = GetTickCount();
-        unsigned int t19 = GetTickCount();
-        unsigned int t20 = GetTickCount();
-        unsigned int t21 = GetTickCount();
-        unsigned int t22 = GetTickCount();
-        unsigned int t23 = GetTickCount();
-        unsigned int t24 = GetTickCount();
-        unsigned int t25 = GetTickCount();
-        unsigned int t26 = GetTickCount();
-        unsigned int t27 = GetTickCount();
-        unsigned int t28 = GetTickCount();
-        unsigned int t29 = GetTickCount();
-        unsigned int t30 = GetTickCount();
-        unsigned int t31 = GetTickCount();
-        unsigned int t32 = GetTickCount();
-        unsigned int t33 = GetTickCount();
-        unsigned int t34 = GetTickCount();
-        unsigned int t35 = GetTickCount();
-        unsigned int t36 = GetTickCount();
-        unsigned int t37 = GetTickCount();
-        unsigned int t38 = GetTickCount();
-        unsigned int t39 = GetTickCount();
-        unsigned int t40 = GetTickCount();
-        unsigned int t41 = GetTickCount();
-        unsigned int t42 = GetTickCount();
-        unsigned int t43 = GetTickCount();
-        unsigned int t44 = GetTickCount();
-        unsigned int t45 = GetTickCount();
-        unsigned int t46 = GetTickCount();
-        unsigned int t47 = GetTickCount();
-        unsigned int t48 = GetTickCount();
-        unsigned int t49 = GetTickCount();
-        unsigned int t50 = GetTickCount();
-        unsigned int t51 = GetTickCount();
-        unsigned int t52 = GetTickCount();
-        unsigned int t53 = GetTickCount();
-        unsigned int t54 = GetTickCount();
-        unsigned int t55 = GetTickCount();
-        unsigned int t56 = GetTickCount();
-        unsigned int t57 = GetTickCount();
-        unsigned int t58 = GetTickCount();
-        unsigned int t59 = GetTickCount();
-        unsigned int t60 = GetTickCount();
-        unsigned int t61 = GetTickCount();
-        unsigned int t62 = GetTickCount();
-        unsigned int t63 = GetTickCount();
-        unsigned int t64 = GetTickCount();
-        unsigned int t65 = GetTickCount();
-        unsigned int t66 = GetTickCount();
-        unsigned int t67 = GetTickCount();
-        unsigned int t68 = GetTickCount();
-        unsigned int t69 = GetTickCount();
-        unsigned int t70 = GetTickCount();
-        unsigned int t71 = GetTickCount();
-        unsigned int t72 = GetTickCount();
-        unsigned int t73 = GetTickCount();
-        unsigned int t74 = GetTickCount();
-        unsigned int t75 = GetTickCount();
-        unsigned int t76 = GetTickCount();
-        unsigned int t77 = GetTickCount();
-        unsigned int t78 = GetTickCount();
-        unsigned int t79 = GetTickCount();
-        unsigned int t80 = GetTickCount();
-        unsigned int t81 = GetTickCount();
-        unsigned int t82 = GetTickCount();
-        unsigned int t83 = GetTickCount();
-        unsigned int t84 = GetTickCount();
-        unsigned int t85 = GetTickCount();
-        unsigned int t86 = GetTickCount();
-        unsigned int t87 = GetTickCount();
-        unsigned int t88 = GetTickCount();
-        unsigned int t89 = GetTickCount();
-        unsigned int t90 = GetTickCount();
-        unsigned int t91 = GetTickCount();
-        unsigned int t92 = GetTickCount();
-        unsigned int t93 = GetTickCount();
-        unsigned int t94 = GetTickCount();
-        unsigned int t95 = GetTickCount();
-        unsigned int t96 = GetTickCount();
-        unsigned int t97 = GetTickCount();
-        unsigned int t98 = GetTickCount();
-        unsigned int t99 = GetTickCount();
-        unsigned int t100 = GetTickCount();
-        result = (int)(t100 - t1);
-    }
-    return result;
+	if ((G3D::GLCaps::supports_GL_ARB_fragment_shader() && G3D::GLCaps::supports_GL_ARB_vertex_shader()) ||
+		(G3D::GLCaps::supports_GL_ARB_shader_objects() && G3D::GLCaps::supports_GL_ARB_shading_language_100())) {
+		return 2.0f;
+	}
+
+	if (G3D::GLCaps::supports("GL_ATI_fragment_shader") || G3D::GLCaps::supports("GL_NV_fragement_program")) {
+		return 2.0f;
+	}
+
+	if (G3D::GLCaps::supports("GL_ATI_texture_env_combine3") || G3D::GLCaps::supports("GL_NV_texture_shader3")) {
+		return 1.4f;
+	}
+
+	if (G3D::GLCaps::supports("GL_NV_register_combiners")) {
+		return 1.2f;
+	}
+
+	return 1.0f;
 }
+
+// FUNCTION: WEBSERVICE 0x10169c60
+static __int64 GetCyclesDifference(DelayFunction DelayFunction, unsigned int uiParameter)
+{
+	unsigned int t0Lo, t0Hi;
+	unsigned int t1Lo, t1Hi;
+
+	__try {
+		__asm {
+			rdtsc
+			mov esi, eax
+			mov edi, edx
+
+			push uiParameter
+			call DelayFunction
+			pop ebx
+
+			rdtsc
+			mov t1Hi, edx
+			mov t1Lo, eax
+
+			mov t0Hi, edi
+			mov t0Lo, esi
+		}
+	}
+	__except (1) {
+		return 0;
+	}
+
+	return (__int64) t1Hi * 0x100000000 - ((__int64) t0Hi << 32) - t0Lo + t1Lo;
+}
+
+// FUNCTION: WEBSERVICE 0x10169d20
+static void Delay(unsigned int time)
+{
+	LARGE_INTEGER Frequency, StartCounter, EndCounter;
+
+	if (QueryPerformanceFrequency(&Frequency)) {
+		__int64 ticks = (Frequency.QuadPart / 1000) * time;
+
+		QueryPerformanceCounter(&StartCounter);
+
+		do {
+			QueryPerformanceCounter(&EndCounter);
+		} while ((EndCounter.QuadPart - StartCounter.QuadPart) < ticks);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x10169d90
+static void DelayOverhead(unsigned int time)
+{
+	LARGE_INTEGER Frequency, StartCounter, EndCounter;
+
+	if (QueryPerformanceFrequency(&Frequency)) {
+		__int64 ticks = (Frequency.QuadPart / 1000) * time;
+
+		QueryPerformanceCounter(&StartCounter);
+
+		do {
+			QueryPerformanceCounter(&EndCounter);
+		} while ((EndCounter.QuadPart - StartCounter.QuadPart) == ticks);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x10169e00
+static std::string getCPUMake()
+{
+	std::string cpu_name;
+
+	if (G3D::RegistryUtil::readString(
+			"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString",
+			cpu_name
+		)) {
+		return cpu_name;
+	}
+
+	return "Could not determine CPU name";
+}
+
+// FUNCTION: WEBSERVICE 0x10169ee0
+static int getCPUSpeed()
+{
+	int speed;
+
+	if (G3D::RegistryUtil::read32bitNumber(
+			"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\~MHz",
+			speed
+		)) {
+		if (speed > 300) {
+			return speed;
+		}
+	}
+
+	__int64 total = 0;
+	__int64 overhead = 0;
+
+	for (int i = 0; i < 2; i++) {
+		total += GetCyclesDifference(Delay, 50);
+		overhead += GetCyclesDifference(DelayOverhead, 50);
+	}
+
+	total = (total - overhead) / 2;
+	total = total / 50;
+	total = total / 1000;
+
+	if (total < 100 || total > 50000) {
+		total = 1400;
+	}
+
+	return (int) total;
+}
+
+// FUNCTION: WEBSERVICE 0x10169ff0
+static std::string getMaxRes()
+{
+	int width = GetSystemMetrics(SM_CXSCREEN);
+	int height = GetSystemMetrics(SM_CYSCREEN);
+
+	std::string w = boost::lexical_cast<std::string>(width);
+	std::string h = boost::lexical_cast<std::string>(height);
+
+	return w + "x" + h;
+}
+
+static int getRam()
+{
+	MEMORYSTATUS memoryStatus;
+
+	GlobalMemoryStatus(&memoryStatus);
+
+	return (int) memoryStatus.dwTotalPhys / (1024 * 1024);
+}
+
+// FUNCTION: WEBSERVICE 0x1016a100
+SpecData::SpecData()
+	: shaderModel(glLoaded ? getShaderModel() : 0.0f),
+	  videoMemory((int) (G3D::DXCaps::videoMemorySize() / (1024 * 1024))), CPUSpeed(getCPUSpeed()),
+	  glVendor(glLoaded ? G3D::GLCaps::vendor() : "?"), gfxcard(glLoaded ? G3D::GLCaps::renderer() : "?"),
+	  cpu(getCPUMake()), ram(getRam()), resolution(getMaxRes())
+{
+}
+
+} // namespace Render
+} // namespace RBX

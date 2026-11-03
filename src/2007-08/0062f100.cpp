@@ -1,27 +1,21 @@
-// from server: 84% by Viper
-struct Vector3 {
+// from server: 100% by EspClaude
+// roc 2007-08 0062f100  RBX::AdornG3D helper: scale from distance between two points (G3D Vector3 ops)
+#include <math.h>
+
+class Vector3 {
+public:
     float x, y, z;
+    Vector3() {}
+    Vector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
+    Vector3 operator-(const Vector3& v) const { return Vector3(x - v.x, y - v.y, z - v.z); }
+    float length() const { return sqrtf(x * x + y * y + z * z); }
 };
-
-struct AdornG3D {
-};
-
-extern "C" float __cdecl sqrtf_helper(float);
-
-extern float g_someFloat;
-extern double g_doubleA;
-extern double g_doubleB;
 
 float __cdecl distanceTo(const Vector3& a, const Vector3& b) {
-    Vector3 d;
-    d.x = a.x - b.x;
-    d.y = a.y - b.y;
-    d.z = a.z - b.z;
-    float lenSq = d.x * d.x + d.y * d.y + d.z * d.z;
-    float len = sqrtf_helper(lenSq);
-    float result = g_someFloat;
-    if (len > g_doubleB) {
-        result = (float)(len * g_doubleA);
+    float len = (a - b).length();
+    float result = 0.5f;
+    if (len > 28.66242027282715) {
+        result = (float)(len * 0.017444444820284843);
     }
     return result;
 }

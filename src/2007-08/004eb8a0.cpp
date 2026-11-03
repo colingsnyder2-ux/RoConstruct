@@ -1,135 +1,80 @@
-// from server: 30% by colin
-// roc 2007-08 004eb8a0  unit: CylinderBuilder  size: 821 bytes
-// library rbxgs-view/CylinderMesh.cpp
-
-struct Vec3 { float x, y, z; };
-
-struct CylinderBuilder {
-    char pad0[4];
-    Vec3 m_v1;
-    Vec3 m_v2;
-    char pad1[0x30 - 0x1c];
-    void buildSide(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, int l);
-};
-
-extern "C" void __cdecl sub_5b9990(Vec3* out, const Vec3* in);
-extern "C" void* __cdecl sub_62ff32(unsigned int n);
-extern "C" void __cdecl sub_62ff26(void* p);
-extern "C" void __cdecl sub_4f54e0(void* p);
-extern "C" void* __cdecl sub_4f5360(const Vec3* a, const Vec3* b, const Vec3* c, int d);
-extern "C" void __cdecl sub_4eee30(void* self, int a, int b, int c, int d);
-extern "C" void* __cdecl sub_501570();
-extern "C" void __cdecl sub_4eb780(void* self, const Vec3* a, const Vec3* b, const Vec3* c, const Vec3* d, float e);
-
-extern double g_795b48;
-
-void CylinderBuilder::buildSide(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, int l)
-{
-    Vec3 v1, v2, v3;
-    sub_5b9990(&v1, &m_v1);
-    float f0 = v1.x; if (f0 < 0) f0 = -f0;
-    float f1 = v1.y; if (f1 < 0) f1 = -f1;
-    float f2 = v1.z; if (f2 < 0) f2 = -f2;
-
-    int n1 = a;
-    int n2 = b;
-    int total = (n1 + 1) * (n2 + 1);
-
-    float dy = (float)(n1);
-    float spanY = (float)(c) - (float)(d);
-    float stepY = spanY / dy;
-
-    float dx = (float)(n2);
-    float spanX = (float)(e) - (float)(f);
-    float stepX = spanX / dx;
-
-    float r1 = (float)(g) / dy;
-    float r2 = (float)(h) / dx;
-
-    void* mem = sub_62ff32((unsigned int)total * 4);
-    void** arr = (void**)mem;
-
-    float baseZ = (float)(d);
-    float baseW = (float)(i);
-
-    if (n1 >= 0) {
-        float accZ = 0.0f;
-        int rowCount = n1 + 1;
-        void** rowPtr = arr;
-        float curW = (float)(f);
-        float curR = (float)(j);
-        if (n2 >= 0) {
-            int colCount = n2 + 1;
-            do {
-                float z0 = baseZ + accZ;
-                float w0 = curW;
-                float r0 = curR;
-                Vec3 p0, p1, p2, p3;
-                p0.x = w0; p0.y = z0; p0.z = (float)(k);
-                p1.x = w0; p1.y = z0; p1.z = (float)(k);
-                p2.x = w0; p2.y = z0; p2.z = (float)(k);
-                p3.x = w0; p3.y = z0; p3.z = (float)(k);
-                sub_4eb780(this, &p0, &p1, &p2, &p3, 1.0f);
-                void* q = sub_501570();
-                float* qf = (float*)q;
-                if (qf[0] == (float)(g) && qf[1] == (float)(h)) {
-                    p0.x = (float)(i);
-                    p0.y = (float)(j);
-                }
-                Vec3 t1, t2;
-                t1.x = p0.x * (float)g_795b48;
-                t1.y = p0.y * (float)g_795b48;
-                t1.z = p0.z;
-                sub_5b9990(&t1, &t1);
-                sub_5b9990(&t2, &t1);
-                void* tri = sub_4f5360(&t1, &t2, &t1, 1);
-                *rowPtr = tri;
-                rowPtr++;
-                accZ += stepY;
-                curW += stepX;
-                curR += r1;
-                colCount--;
-            } while (colCount != 0);
-        }
-        rowPtr += n2 + 1;
-        curW += r2;
-        rowCount--;
-        if (rowCount != 0) {
-            // loop continues
-        }
-    }
-
-    if (n1 > 0) {
-        void** p = arr;
-        int rows = n1;
-        do {
-            if (n2 > 0) {
-                int cols = n2;
-                void** q = p;
-                void** r = p + 1;
-                do {
-                    void* a0 = r[0];
-                    void* a1 = r[-1];
-                    void* b0 = q[0];
-                    void* b1 = q[1];
-                    sub_4eee30(this, (int)b0, (int)b1, (int)a1, (int)a0);
-                    r++;
-                    q++;
-                    cols--;
-                } while (cols != 0);
-            }
-            p += n2 + 1;
-            rows--;
-        } while (rows != 0);
-    }
-
-    unsigned int cnt = (unsigned int)n1;
-    unsigned int idx = 0;
-    if (cnt > 0) {
-        do {
-            sub_4f54e0(arr[idx]);
-            idx++;
-        } while (idx < cnt);
-    }
-    sub_62ff26(arr);
+// from server: 78% by EspClaude
+// from server: 100% by king_originala
+// roc-cl: 50727
+// Real SDK geometry/LevelBuilder contracts; native grid and coordinate transforms.
+#include <math.h>
+#include <new>
+#include <stddef.h>
+namespace G3D {
+class Vector2 {public:float x,y;Vector2():x(0),y(0){}Vector2(float a,float b):x(a),y(b){}Vector2(const Vector2&v):x(v.x),y(v.y){}float&operator[](int i){return ((float*)this)[i];}const float&operator[](int i)const{return ((const float*)this)[i];}bool operator==(const Vector2&v)const{return x==v.x&&y==v.y;}float length()const{return sqrtf(x*x+y*y);}static const Vector2&zero();};
+class Vector3 {public:float x,y,z;Vector3():x(0),y(0),z(0){}Vector3(float a,float b,float c):x(a),y(b),z(c){}Vector3(const Vector3&v):x(v.x),y(v.y),z(v.z){}Vector2 xy()const;};
+class Vector2int16 {public:short x,y;Vector2int16():x(0),y(0){}Vector2int16(short a,short b):x(a),y(b){}short&operator[](int i){return ((short*)this)[i];}const short&operator[](int i)const{return ((const short*)this)[i];}};
+class Rect2D {Vector2 min,max;public:Rect2D():min(0,0),max(0,0){}float x0()const{return min.x;}float x1()const{return max.x;}float y0()const{return min.y;}float y1()const{return max.y;}};
+// Only membership layout is consumed below: no pointer ownership operations,
+// owner construction, or by-value reference-pointer API is used by this function.
+template<class T>class ReferenceCountedPointer {T*m_pointer;public:ReferenceCountedPointer();ReferenceCountedPointer(const ReferenceCountedPointer&);~ReferenceCountedPointer();};
 }
+namespace RBX {
+enum NormalId {NORM_X=0,NORM_Y=1,NORM_Z=2,NORM_X_NEG=3,NORM_Y_NEG=4,NORM_Z_NEG=5,NORM_UNDEFINED=6};
+template<NormalId faceId>G3D::Vector3 uvwToObject(const G3D::Vector3&);
+namespace Render {class Mesh {public:class Level;static unsigned allocVertex(const G3D::Vector3&,const G3D::Vector3&,const G3D::Vector2&,bool);static void freeVertex(unsigned);};}
+namespace View {
+enum RenderSurfaceType {FLAT,STUDS,INLET,WELD,GLUE};
+class RenderSurfaceTypes {public:size_t data;RenderSurfaceTypes():data(0){}};
+class __declspec(novtable) LevelBuilder {
+protected:const G3D::Vector3 halfSize;const RenderSurfaceTypes surfaceTypes;const G3D::ReferenceCountedPointer<Render::Mesh::Level>level;
+public:G3D::Vector2 textureScale;enum Purpose {Surface,Decal,Shadow};
+protected:LevelBuilder(G3D::ReferenceCountedPointer<Render::Mesh::Level>&,G3D::Vector3,RenderSurfaceTypes);
+public:virtual void build(Purpose);void buildFace(NormalId,Purpose);virtual void buildTop(Purpose)=0;virtual void buildBottom(Purpose)=0;virtual void buildLeft(Purpose)=0;virtual void buildRight(Purpose)=0;virtual void buildFront(Purpose)=0;virtual void buildBack(Purpose)=0;
+protected:void appendQuadFromVertexIndices(unsigned,unsigned,unsigned,unsigned);
+template<NormalId id,class Function>void buildFace(Function,G3D::Rect2D,const float,G3D::Vector2,G3D::Vector2,const int,G3D::Vector2int16);
+};
+}}
+class EndcapTransform {const float bevel;public:EndcapTransform(float v):bevel(v){}void operator()(G3D::Vector3&,G3D::Vector3&,G3D::Vector2&,const G3D::Vector3&,const G3D::Vector2int16&);};
+void EndcapTransform::operator()(G3D::Vector3&v,G3D::Vector3&,G3D::Vector2&,const G3D::Vector3&size,const G3D::Vector2int16&){
+ float scale;
+ if(fabs(v.y)>=fabs(v.x)){
+  if(v.y==0.0f)scale=0.0f;else{float magnitude=(float)fabs(v.y);scale=(magnitude/v.xy().length())*(1.0f-bevel/size.y);}
+ }else{
+  if(v.x==0.0f)scale=0.0f;else{float magnitude=(float)fabs(v.x);scale=(magnitude/v.xy().length())*(1.0f-bevel/size.x);}
+ }
+ v.x*=scale;v.y*=scale;
+}
+namespace RBX {namespace View {
+template<NormalId id,class Function>
+void LevelBuilder::buildFace(Function callback,G3D::Rect2D rectangle,const float depth,G3D::Vector2 textureOrigin,G3D::Vector2 textureExtent,const int axis,G3D::Vector2int16 divisions){
+ float x=0,u=0,y=0,v=0;
+ G3D::Vector3 absoluteDimensions;{G3D::Vector3 mapped=uvwToObject<id>(halfSize);absoluteDimensions.x=(float)fabs(mapped.x);absoluteDimensions.y=(float)fabs(mapped.y);absoluteDimensions.z=(float)fabs(mapped.z);}
+ G3D::Vector2 positionStep;
+ positionStep.x=(rectangle.x1()-rectangle.x0())/divisions.x;
+ positionStep.y=(rectangle.y1()-rectangle.y0())/divisions.y;
+ G3D::Vector2 textureStep;
+ textureStep.x=textureExtent.x/divisions.x;textureStep.y=textureExtent.y/divisions.y;
+ unsigned count=(divisions.x+1)*(divisions.y+1);
+ unsigned*vertices=new unsigned[count];
+ x=rectangle.x0();u=textureOrigin.x;
+ for(int i=0;i<=divisions.x;++i){
+  y=rectangle.y0();v=textureOrigin.y;
+  for(int j=0;j<=divisions.y;++j){
+   G3D::Vector3 position(x,y,depth);
+   G3D::Vector2int16 index(i,j);
+   G3D::Vector2 texture;
+   texture[1-axis]=u;texture[axis]=v;
+   G3D::Vector3 normal(0.0f,0.0f,1.0f);
+   callback(position,normal,texture,absoluteDimensions,index);
+   float tx,ty;if(textureExtent==G3D::Vector2::zero()){tx=textureOrigin.x;ty=textureOrigin.y;}else{tx=texture.x;ty=texture.y;}
+   G3D::Vector2 scaledTexture(tx*0.5f,ty*0.5f);
+   G3D::Vector3 mappedNormal=uvwToObject<id>(normal);
+   G3D::Vector3 mappedPosition=uvwToObject<id>(position);
+   vertices[i*(divisions.y+1)+j]=Render::Mesh::allocVertex(mappedPosition,mappedNormal,scaledTexture,true);
+   y+=positionStep.y;v+=textureStep.y;
+  }
+  x+=positionStep.x;u+=textureStep.x;
+ }
+ for(int i=0;i<divisions.x;++i)for(int j=0;j<divisions.y;++j){int index=(divisions.y+1)*i+j;int next=index+divisions.y;appendQuadFromVertexIndices(vertices[index+1],vertices[index],vertices[next+1],vertices[next+2]);}
+ for(unsigned i=0;i<count;++i)Render::Mesh::freeVertex(vertices[i]);
+ delete[]vertices;
+}
+template void LevelBuilder::buildFace<NORM_Y,EndcapTransform>(EndcapTransform,G3D::Rect2D,const float,G3D::Vector2,G3D::Vector2,const int,G3D::Vector2int16);
+
+}}

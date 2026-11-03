@@ -1,29 +1,65 @@
-// from server: 60% by colin
-struct LuaArguments {
-    int offset;
-    void* L;
-    void construct(int a);
-};
-
-extern "C" int __cdecl sub_630d36(void*, int, void*, int, void*);
-extern "C" void __cdecl sub_630b9e(void*, void*);
-extern "C" void* __stdcall sub_77e710(void*);
-
-extern void* dword_8882a0;
-extern void* dword_887174;
-extern void* dword_786e04;
-extern void* dword_841e0c;
-
-void LuaArguments::construct(int a) {
-    void* p = (void*)sub_630d36(*(void**)this, 0, dword_887174, 0, dword_8882a0);
-    if (p == 0) {
-        void* local;
-        sub_77e710(&local);
-        sub_630b9e(&local, dword_841e0c);
-    }
-    void* v = *(void**)((char*)p + 0x18);
-    void* vt = *(void**)v;
-    void* fn = *(void**)((char*)vt + 8);
-    void* arg = *(void**)((char*)this + 4);
-    ((void (__thiscall*)(void*, void*, int))fn)(v, arg, a);
+// from server: 100% by EspClaude
+// roc 2007-08 005bf8d0  template void Property::setValue<std::string>(const std::string&);
+#include <string>
+// RBX::Reflection ConstProperty::getValue<T> / Property::setValue<T> (reflection/property.h, boost::polymorphic_cast).
+// roc-flags: /O2 /GS /EHsc /MD
+#include <typeinfo>
+#include <memory>
+namespace boost {
+template <class Target, class Source>
+inline Target polymorphic_cast(Source* x)
+{
+    Target tmp = dynamic_cast<Target>(x);
+    if (tmp == 0) throw std::bad_cast();
+    return tmp;
 }
+}
+namespace G3D { class Vector3 { public: float x, y, z; }; }
+namespace RBX {
+namespace Reflection {
+class DescribedBase;
+class PropertyDescriptor {
+public:
+    virtual ~PropertyDescriptor();
+    char pad[0x14];
+};
+template<typename PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        virtual bool isReadOnly() const = 0;
+        virtual PropType getValue(const DescribedBase*) const = 0;
+        virtual void setValue(DescribedBase*, const PropType&) const = 0;
+    };
+protected:
+    std::auto_ptr<GetSet> getset;
+public:
+    virtual ~TypedPropertyDescriptor();
+    PropType getValue(const DescribedBase* object) const { return getset->getValue(object); }
+    void setValue(DescribedBase* object, const PropType& value) const { getset->setValue(object, value); }
+};
+class ConstProperty {
+protected:
+    const PropertyDescriptor* descriptor;
+    const DescribedBase* instance;
+public:
+    template<typename T>
+    T getValue() const
+    {
+        const TypedPropertyDescriptor<T>* value = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+        return value->getValue(instance);
+    }
+};
+class Property : public ConstProperty {
+public:
+    DescribedBase* getInstance() const { return const_cast<DescribedBase*>(instance); }
+    template<typename T>
+    void setValue(const T& value)
+    {
+        const TypedPropertyDescriptor<T>* typedProp = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+        typedProp->setValue(getInstance(), value);
+    }
+};
+template void Property::setValue<std::string>(const std::string&);
+}}

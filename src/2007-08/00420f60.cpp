@@ -1,47 +1,76 @@
-// from server: 35% by colin
-struct CSelectionTreeCtrl {
-    void sub_420F60(int a, int b, int c);
+// from server: 73% by EspClaude
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: atl-9.0-dll-rtm roc_espclaude_da5a2b380f6d46c8.cpp
+
+// Candidate translation unit (score above; library headers required).
+#ifndef _CPPUNWIND
+#define _CPPUNWIND 1
+#endif
+#ifndef _AFXDLL
+#define _AFXDLL
+#endif
+#include <new>
+#include <afxwin.h>
+#include <afxcmn.h>
+
+namespace RBX { class Instance; }
+template<class T> class SharedPtr {
+	T* px;
+	void* pn;
+public:
+	SharedPtr(const SharedPtr& other);
+	template<class Y> SharedPtr(const SharedPtr<Y>& other);
+	~SharedPtr();
+	operator bool() const { return px != 0; }
 };
-
-extern "C" void __stdcall sub_63023E();
-extern "C" int __stdcall sub_6304B4(int, int, int);
-extern "C" int __stdcall sub_6304AE(int);
-extern "C" void __stdcall sub_420F30(int, int);
-extern "C" void __stdcall sub_4A6C60(int, int);
-extern "C" void __stdcall sub_40D550();
-extern "C" void __stdcall sub_492360();
-extern "C" int __stdcall sub_62FF02(int);
-extern "C" void __stdcall sub_448EA0();
-extern "C" void __stdcall sub_5595A0();
-
-void CSelectionTreeCtrl::sub_420F60(int a, int b, int c) {
-    sub_63023E();
-    if ((c & 0xc) != 0) return;
-    int r = sub_6304B4(a, b, (int)&c);
-    if (r == 0) return;
-    if ((c & 0x46) == 0) return;
-    int r2 = sub_6304AE(r);
-    if (r2 == 0) return;
-    int local8 = 0;
-    sub_420F30(r2 + 0xc, (int)&local8);
-    if (local8 == 0) {
-        sub_492360();
-        return;
-    }
-    int local10 = 0;
-    int local18 = 0;
-    int local20 = 0;
-    int local2c = 0;
-    void* vt = *(void**)this;
-    void (__stdcall *fn)(int*, int) = *(void (__stdcall**)(int*, int))((char*)vt + 0x14c);
-    fn(&local10, (int)this);
-    sub_4A6C60((int)&local10, (int)&local10);
-    sub_40D550();
-    sub_492360();
-    sub_4A6C60((int)&local10, (int)&local10);
-    int r3 = sub_62FF02(0);
-    int r4 = *(int*)(r3 + 4);
-    sub_448EA0();
-    sub_5595A0();
-    sub_492360();
+template<class T> class WeakPtr {
+	T* px;
+	void* pn;
+};
+template<class T> SharedPtr<T> make_shared(const WeakPtr<T>& r);
+class SelectionState;
+class SelectionLock {
+	unsigned char storage[12];
+public:
+	SelectionLock(SharedPtr<RBX::Instance> state);
+	~SelectionLock();
+};
+struct TreeItemData {
+	int reserved[3];
+	WeakPtr<RBX::Instance> instance;
+};
+class CRobloxApp : public CWinApp {
+public:
+	void selectInstance(SharedPtr<RBX::Instance> instance);
+};
+class CObjectTree : public CTreeCtrl {
+public:
+	virtual void reserved0();
+	virtual void reserved1();
+	virtual void reserved2();
+	virtual void reserved3();
+	virtual SharedPtr<SelectionState> getSelectionState();
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+};
+void CObjectTree::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	CTreeCtrl::OnLButtonDown(nFlags, point);
+	if (nFlags & (MK_SHIFT | MK_CONTROL))
+		return;
+	HTREEITEM hItem = HitTest(point, &nFlags);
+	if (hItem && (nFlags & TVHT_ONITEM))
+	{
+		if (TreeItemData* data = (TreeItemData*)GetItemData(hItem))
+		{
+			SharedPtr<RBX::Instance> instance = make_shared(data->instance);
+			if (instance)
+			{
+				SelectionLock lock(getSelectionState());
+				static_cast<CRobloxApp*>(AfxGetApp())->selectInstance(instance);
+			}
+		}
+	}
 }

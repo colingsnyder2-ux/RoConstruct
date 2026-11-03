@@ -1,161 +1,87 @@
-// from server: 27% by colin
-struct BodyMover {
-    void sub_005eb6f0(void*, void*, void*);
+// from server: 93% by EspClaude
+// from server: 100% by king_originala
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// Native Gyro.cpp Rocket::turn, with target-observed Body/SimBody/Rocket offsets.
+#include <math.h>
+#include <stddef.h>
+#include <intrin.h>
+namespace G3D {
+struct Vector3 {
+ float x,y,z;
+ Vector3():x(0),y(0),z(0){}
+ Vector3(float a,float b,float c):x(a),y(b),z(c){}
+ Vector3(const Vector3&v):x(v.x),y(v.y),z(v.z){}
+ Vector3&operator=(const Vector3&v){x=v.x;y=v.y;z=v.z;return *this;}
+ float&operator[](int i){return ((float*)this)[i];}
+ const float&operator[](int i)const{return ((const float*)this)[i];}
+ Vector3 operator-(const Vector3&v)const{return Vector3(x-v.x,y-v.y,z-v.z);}
+ Vector3&operator+=(const Vector3&v){float oldX=x;_ReadWriteBarrier();x=oldX+v.x;y+=v.y;z+=v.z;return *this;}
+ static const Vector3&zero(){static Vector3 v(0,0,0);return v;}
 };
-
-extern "C" void __stdcall sub_00530100(void*);
-extern "C" void __stdcall sub_005099a0(void*, void*, void*);
-extern "C" void __stdcall sub_00473080(void*);
-extern "C" void __stdcall sub_005095d0(void*, void*);
-extern "C" void __stdcall sub_005aad40(void*, void*);
-extern "C" void __stdcall sub_00625100(void*);
-extern "C" void __stdcall sub_0061a510(void*);
-
-extern "C" float __cdecl fabsf(float);
-
-void BodyMover::sub_005eb6f0(void* a, void* b, void* c)
-{
-    char* self = (char*)this;
-    char* p = (char*)a;
-    char* q = (char*)b;
-    char* r = (char*)c;
-
-    sub_00530100(p);
-
-    float v44[3];
-    sub_005099a0(p + 0x84, v44, q);
-    sub_00473080(v44);
-
-    char* ebx = *(char**)(p + 4);
-    char* eax = *(char**)(ebx + 4);
-    eax = *(char**)(eax + 0x20);
-    if (eax) {
-        eax += 0x8c;
-    } else {
-        if (!(*(unsigned char*)0x8bd138 & 1)) {
-            *(unsigned int*)0x8bd138 |= 1;
-            *(float*)0x8bd12c = 0.0f;
-            *(float*)0x8bd130 = 0.0f;
-            *(float*)0x8bd134 = 0.0f;
-        }
-        eax = (char*)0x8bd12c;
-    }
-
-    float f20 = *(float*)(eax);
-    float f24 = *(float*)(eax + 4);
-    float f28 = *(float*)(eax + 8);
-
-    char* ecx = *(char**)(ebx + 0x1c);
-    if (ecx) {
-        sub_00625100(ecx);
-    } else {
-        eax = ebx + 0x58;
-    }
-    sub_005095d0(v44, eax);
-    sub_005aad40(v44, &v44[0]);
-
-    float f70 = *(float*)(q + 4) * v44[1] * *(float*)(self + 0x12c);
-
-    ecx = *(char**)(ebx + 0x1c);
-    if (ecx) {
-        sub_00625100(ecx);
-    } else {
-        eax = ebx + 0x58;
-    }
-    sub_005095d0(v44, eax);
-    sub_005aad40(v44, &v44[0]);
-
-    float f74 = -(*(float*)(q) * v44[0] * *(float*)(self + 0x12c));
-
-    sub_00530100(p);
-
-    sub_005099a0(p + 0x84, v44, r);
-
-    float f14 = *(float*)(v44 + 4) * f24 + *(float*)(v44 + 8) * f28 + *(float*)(v44) * f20;
-    float f18 = *(float*)(v44 + 0x10) * f24 + *(float*)(v44 + 0x14) * f28 + *(float*)(v44 + 0xc) * f20;
-    float f1c = *(float*)(v44 + 0x1c) * f24 + *(float*)(v44 + 0x20) * f28 + *(float*)(v44 + 0x18) * f20;
-
-    float f10 = fabsf(f70 - f14);
-
-    ecx = *(char**)(ebx + 0x1c);
-    if (ecx) {
-        sub_00625100(ecx);
-    } else {
-        eax = ebx + 0x58;
-    }
-    sub_005095d0(v44, eax);
-    sub_005aad40(v44, &v44[0]);
-
-    if (*(float*)(self + 0x134) * v44[1] > f10) {
-        f14 = f70;
-    } else {
-        f14 = f14 + f70;
-    }
-
-    float f70b = fabsf(f74 - f18);
-
-    ecx = *(char**)(ebx + 0x1c);
-    if (ecx) {
-        sub_00625100(ecx);
-    } else {
-        eax = ebx + 0x58;
-    }
-    sub_005095d0(v44, eax);
-    sub_005aad40(v44, &v44[0]);
-
-    if (*(float*)(self + 0x138) * v44[2] > f70b) {
-        f18 = f74;
-    } else {
-        f18 = f18 + f74;
-    }
-
-    sub_00530100(p);
-    sub_00530100(p);
-
-    sub_005099a0(p + 0x84, v44, r);
-
-    float f2c = *(float*)(v44 + 8) * *(float*)(p + 0xc8) + *(float*)(v44 + 4) * *(float*)(p + 0xc4) + *(float*)(v44) * *(float*)(p + 0xc0);
-    float f30 = *(float*)(v44 + 0x14) * *(float*)(p + 0xc8) + *(float*)(v44 + 0x10) * *(float*)(p + 0xc4) + *(float*)(v44 + 0xc) * *(float*)(p + 0xc0);
-
-    ecx = *(char**)(ebx + 0x1c);
-    if (ecx) {
-        sub_00625100(ecx);
-    } else {
-        eax = ebx + 0x58;
-    }
-    sub_005095d0(v44, eax);
-    sub_005aad40(v44, &v44[0]);
-
-    f14 = f14 - *(float*)(v44 + 4) * v44[1] * *(float*)(self + 0x130);
-
-    ecx = *(char**)(ebx + 0x1c);
-    if (ecx) {
-        sub_00625100(ecx);
-    } else {
-        eax = ebx + 0x58;
-    }
-    sub_005095d0(v44, eax);
-    sub_005aad40(v44, &v44[0]);
-
-    f18 = f18 - *(float*)(v44) * v44[2] * *(float*)(self + 0x130);
-
-    sub_00530100(p);
-
-    float f14b = *(float*)(p + 0x84 + 8) * f1c + *(float*)(p + 0x84 + 4) * f18 + *(float*)(p + 0x84) * f14;
-    float f18b = *(float*)(p + 0x84 + 0x14) * f1c + *(float*)(p + 0x84 + 0x10) * f18 + *(float*)(p + 0x84 + 0xc) * f14;
-    float f1cb = *(float*)(p + 0x84 + 0x20) * f1c + *(float*)(p + 0x84 + 0x1c) * f18 + *(float*)(p + 0x84 + 0x18) * f14;
-
-    f14b = f14b - f20;
-    f18b = f18b - f24;
-    f1cb = f1cb - f28;
-
-    char* esi = *(char**)(ebx + 0x20);
-    if (esi) {
-        if (*(unsigned char*)(esi + 4)) {
-            sub_0061a510(esi);
-        }
-        *(float*)(esi + 0x8c) += f14b;
-        *(float*)(esi + 0x90) += f18b;
-        *(float*)(esi + 0x94) += f1cb;
-    }
+struct Matrix3 {
+ float elt[3][3];
+ Matrix3(){}Matrix3(const Matrix3&);
+ Matrix3 transpose()const;
+ Vector3 operator*(const Vector3&v)const{
+  Vector3 kProd;
+  for(int r=0;r<3;++r){double p0=elt[r][0]*v[0];double p1=elt[r][1]*v[1];double p2=elt[r][2]*v[2];kProd[r]=static_cast<float>((p2+p1)+p0);}
+  return kProd;
+ }
+};
+struct CoordinateFrame {
+ Matrix3 rotation;Vector3 translation;
+ Vector3 vectorToObjectSpace(const Vector3&v)const{return rotation.transpose()*v;}
+ Vector3 vectorToWorldSpace(const Vector3&v)const{return rotation*v;}
+};
 }
+namespace RBX {
+struct Velocity {G3D::Vector3 linear,rotational;};
+struct PV {G3D::CoordinateFrame position;Velocity velocity;};
+struct Math {static G3D::Vector3 toDiagonal(const G3D::Matrix3&);};
+struct Cofm {const G3D::Matrix3&getMoment()const;};
+struct Body;
+struct SimBody {
+ Body*body;float dt;bool dirty;char unused[0x90-9];G3D::Vector3 torque;
+ void update();
+ void accumulateTorque(const G3D::Vector3&v){if(dirty)update();torque+=v;}
+};
+struct Body {
+ char prefix[0x10];Body*root;
+ char unused[0x28-0x14];Cofm*cofm;SimBody*simBody;
+ char unused2[0x68-0x30];G3D::Matrix3 moment;float mass;int stateIndex;PV pv;
+ void updatePV()const;
+ Body*getRoot(){return root;}
+ const G3D::CoordinateFrame&getCoordinateFrame()const{updatePV();return pv.position;}
+ const Velocity&getVelocity()const{updatePV();return pv.velocity;}
+ const G3D::Vector3&getBranchTorque()const{return root->simBody?root->simBody->torque:G3D::Vector3::zero();}
+ G3D::Matrix3 getBranchIBody()const{return cofm?cofm->getMoment():moment;}
+ G3D::Vector3 getBranchIBodyV3()const{return Math::toDiagonal(getBranchIBody());}
+ void accumulateTorque(const G3D::Vector3&v){if(root->simBody)root->simBody->accumulateTorque(v);}
+};
+struct Rocket {
+ char unused[0x178];float kTurnP,kTurnD;G3D::Vector3 maxTorque;
+ G3D::Vector3 turn(Body*,const G3D::Vector3&);
+};
+G3D::Vector3 Rocket::turn(Body*body,const G3D::Vector3&targetDir){
+ G3D::Vector3 targetObjectSpace=body->getCoordinateFrame().vectorToObjectSpace(targetDir);
+ Body*root=body->getRoot();
+ G3D::Vector3 oldTorqueWorld=root->getBranchTorque();
+ float desiredTorqueX=targetObjectSpace.y*root->getBranchIBodyV3().x*kTurnP;
+ float desiredTorqueY=-(targetObjectSpace.x*root->getBranchIBodyV3().y*kTurnP);
+ G3D::Vector3 torqueBody=body->getCoordinateFrame().vectorToObjectSpace(oldTorqueWorld);
+ if(fabs(desiredTorqueX-torqueBody.x)<root->getBranchIBodyV3().x*maxTorque.x)torqueBody.x=desiredTorqueX;
+ else torqueBody.x+=desiredTorqueX;
+ if(fabs(desiredTorqueY-torqueBody.y)<root->getBranchIBodyV3().y*maxTorque.y)torqueBody.y=desiredTorqueY;
+ else torqueBody.y+=desiredTorqueY;
+ G3D::Vector3 angVelBody=body->getCoordinateFrame().vectorToObjectSpace(body->getVelocity().rotational);
+ torqueBody.x-=(root->getBranchIBodyV3().x*angVelBody.x)*kTurnD;
+ torqueBody.y-=(root->getBranchIBodyV3().y*angVelBody.y)*kTurnD;
+ G3D::Vector3 addedTorque=body->getCoordinateFrame().vectorToWorldSpace(torqueBody)-oldTorqueWorld;
+ root->accumulateTorque(addedTorque);
+ return targetObjectSpace;
+}
+}
+typedef char body_pv_offset[offsetof(RBX::Body,pv)==0x94?1:-1];
+typedef char simbody_torque_offset[offsetof(RBX::SimBody,torque)==0x90?1:-1];
+typedef char rocket_gain_offset[offsetof(RBX::Rocket,kTurnP)==0x178?1:-1];

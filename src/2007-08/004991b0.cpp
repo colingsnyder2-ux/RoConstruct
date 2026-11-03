@@ -1,36 +1,48 @@
-// from server: 25% by colin
-struct RBXName;
+// from server: 100% by EspClaude
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client App/script/Script.cpp
 
-struct ICreator {
-    virtual void dummy0();
-    virtual void dummy1();
-    virtual void dummy2();
-};
+// Candidate translation unit (score above; library headers required).
+#include "script/Script.h"
 
-struct Creator : ICreator {
-    static int isConstructed;
-    Creator();
-};
+#include "network/Player.h"
+#include "util/ContentProvider.h"
+#include "util/Name.h"
+#include "v8datamodel/Team.h"
 
-int Creator::isConstructed;
+namespace RBX {
 
-extern "C" {
-    int __cdecl sub_499080();
-    void __cdecl sub_570C00(int, int);
-    void __cdecl sub_630D23(int);
-}
+char sScript[] = "Script";
 
-extern int dword_8BE418;
-extern int dword_8BE390;
-extern int dword_88F6E0;
-extern int dword_7786B0;
+char sLocalScript[] = "LocalScript";
 
-Creator::Creator()
+// FUNCTION: WEBSERVICE 0x10068d50
+boost::shared_ptr<const std::string> Script::requestCode()
 {
-    if (!(dword_8BE418 & 1)) {
-        dword_8BE418 |= 1;
-        int v = sub_499080();
-        sub_570C00(v, 0x88F6E0);
-        sub_630D23(0x7786B0);
-    }
+	if (scriptId.isNull()) {
+		return embeddedSource;
+	}
+
+	return ContentProvider::singleton().requestContentString(scriptId);
 }
+
+} // namespace RBX
+
+template const RBX::Name& RBX::Name::doDeclare<RBX::sTeam>();
+template const RBX::Name& RBX::Name::doDeclare<RBX::Network::sPlayer>();
+template void RBX::Name::callDoDeclare<RBX::sTeam>();
+template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
+
+template class RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>;
+template class RBX::Reflection::
+	Described<RBX::Script, RBX::sScript, RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript> >;
+template class RBX::DescribedCreatable<RBX::Script, RBX::Instance, RBX::sScript>;
+
+template class RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
+template class RBX::Reflection::Described<
+	RBX::LocalScript,
+	RBX::sLocalScript,
+	RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript> >;
+template class RBX::DescribedCreatable<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;

@@ -1,138 +1,70 @@
-// from server: 33% by colin
-struct ExitCommand {
-    char pad[0x6f8];
-    void sub_55ef00();
-    void sub_55ef80();
-    void sub_564bb0();
-    void func_0044d9f0();
+// from server: 91% by EspClaude
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 50727
+
+template<int N, int I> struct Opaque { char data[N]; ~Opaque(); };
+struct CRobloxDoc {
+    ~CRobloxDoc();
+    Opaque<0x28, 0> m0; // 0x0
+    Opaque<0x28, 1> m1; // 0x28
+    Opaque<0x1c, 2> m2; // 0x50
+    Opaque<0x24, 3> m3; // 0x6c
+    Opaque<0x24, 4> m4; // 0x90
+    Opaque<0x24, 5> m5; // 0xb4
+    Opaque<0x24, 6> m6; // 0xd8
+    Opaque<0x24, 7> m7; // 0xfc
+    Opaque<0x24, 8> m8; // 0x120
+    Opaque<0x24, 9> m9; // 0x144
+    Opaque<0x24, 10> m10; // 0x168
+    Opaque<0x24, 11> m11; // 0x18c
+    Opaque<0x28, 12> m12; // 0x1b0
+    Opaque<0x28, 13> m13; // 0x1d8
+    Opaque<0x28, 14> m14; // 0x200
+    Opaque<0x24, 15> m15; // 0x228
+    Opaque<0x1c, 16> m16; // 0x24c
+    Opaque<0x28, 17> m17; // 0x268
+    Opaque<0x28, 18> m18; // 0x290
+    Opaque<0x24, 19> m19; // 0x2b8
+    Opaque<0x24, 20> m20; // 0x2dc
+    Opaque<0x24, 21> m21; // 0x300
+    Opaque<0x24, 22> m22; // 0x324
+    Opaque<0x24, 23> m23; // 0x348
+    Opaque<0x10, 24> m24; // 0x36c
+    Opaque<0x10, 25> m25; // 0x37c
+    Opaque<0x1c, 26> m26; // 0x38c
+    Opaque<0x1c, 27> m27; // 0x3a8
+    Opaque<0x1c, 28> m28; // 0x3c4
+    Opaque<0x10, 29> m29; // 0x3e0
+    Opaque<0x10, 30> m30; // 0x3f0
+    Opaque<0xc, 31> m31; // 0x400
+    Opaque<0x10, 32> m32; // 0x40c
+    Opaque<0x10, 33> m33; // 0x41c
+    Opaque<0x1c, 34> m34; // 0x42c
+    Opaque<0x1c, 35> m35; // 0x448
+    Opaque<0x1c, 36> m36; // 0x464
+    Opaque<0x1c, 37> m37; // 0x480
+    Opaque<0x1c, 38> m38; // 0x49c
+    Opaque<0x1c, 39> m39; // 0x4b8
+    Opaque<0x1c, 40> m40; // 0x4d4
+    Opaque<0x1c, 41> m41; // 0x4f0
+    Opaque<0x1c, 42> m42; // 0x50c
+    Opaque<0x1c, 43> m43; // 0x528
+    Opaque<0x1c, 44> m44; // 0x544
+    Opaque<0x1c, 45> m45; // 0x560
+    Opaque<0x1c, 46> m46; // 0x57c
+    Opaque<0x1c, 47> m47; // 0x598
+    Opaque<0x1c, 48> m48; // 0x5b4
+    Opaque<0x1c, 49> m49; // 0x5d0
+    Opaque<0x1c, 50> m50; // 0x5ec
+    Opaque<0x1c, 51> m51; // 0x608
+    Opaque<0x1c, 52> m52; // 0x624
+    Opaque<0x1c, 53> m53; // 0x640
+    Opaque<0x1c, 54> m54; // 0x65c
+    Opaque<0x1c, 55> m55; // 0x678
+    Opaque<0x1c, 56> m56; // 0x694
+    Opaque<0x1c, 57> m57; // 0x6b0
+    Opaque<0x1c, 58> m58; // 0x6cc
+    Opaque<0x1c, 59> m59; // 0x6e8
 };
-
-void ExitCommand::sub_55ef00() {}
-void ExitCommand::sub_55ef80() {}
-void ExitCommand::sub_564bb0() {}
-
-void ExitCommand::func_0044d9f0()
-{
-    char* base = (char*)this;
-    *(int*)(base + 0x6f8) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x6dc) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x6c0) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x6a4) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x688) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x66c) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x650) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x634) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x618) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x5fc) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x5e0) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x5c4) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x5a8) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x58c) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x570) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x554) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x538) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x51c) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x500) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x4e4) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x4c8) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x4ac) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x490) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x474) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x458) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x43c) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x42c) = 0;
-    sub_564bb0();
-    *(int*)(base + 0x41c) = 0;
-    sub_564bb0();
-    *(int*)(base + 0x410) = 0;
-    sub_564bb0();
-    *(int*)(base + 0x400) = 0;
-    sub_564bb0();
-    *(int*)(base + 0x3e4) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x3c8) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x3ac) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x39c) = 0;
-    sub_564bb0();
-    *(int*)(base + 0x38c) = 0;
-    sub_564bb0();
-    *(int*)(base + 0x368) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x344) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x320) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x2fc) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x2d8) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x2b0) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x288) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x26c) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x248) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x220) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x1f8) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x1d0) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x1ac) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x188) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x164) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x140) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x130) = 0;
-    sub_564bb0();
-    *(int*)(base + 0x120) = 0;
-    sub_564bb0();
-    *(int*)(base + 0xfc) = 0;
-    sub_55ef80();
-    *(int*)(base + 0xd8) = 0;
-    sub_55ef80();
-    *(int*)(base + 0xb4) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x90) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x6c) = 0;
-    sub_55ef80();
-    *(int*)(base + 0x50) = 0;
-    sub_55ef00();
-    *(int*)(base + 0x28) = 0;
-    sub_55ef80();
-    sub_55ef80();
-}
+CRobloxDoc::~CRobloxDoc() {}

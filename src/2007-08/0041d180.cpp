@@ -1,55 +1,49 @@
-// from server: 13% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 84% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espeon_insertget_0d7f4b9e0fa30ebc.cpp
 
-struct RefCounted {
-    void AddRef();
-    void Release();
+// Candidate translation unit (score above; library headers required).
+#include <boost/shared_ptr.hpp>
+typedef boost::shared_ptr<void> Shared;
+
+struct Entries {
+    char padding[12];
+    Shared* begin;
+    Shared* end;
 };
 
-struct Container {
-    char pad[0x104];
-    RefCounted** begin;
-    RefCounted** end;
+struct Context {
+    char padding[0x154];
+    Entries* entries;
+    Shared get();
 };
 
-struct Inner {
-    char pad[0x188];
-    int value;
+struct Parent {
+    char padding[0x204];
+    void* fallback;
+    Context* getContext();
 };
 
-struct Outer {
-    char pad[0xc];
-    Inner* inner;
+struct InsertService {
+    char padding[12];
+    Parent* parent;
+    void* get();
 };
 
-struct S {
-    int get();
-};
+void* InsertService::get()
+{
+    Context* context = parent ? parent->getContext() : 0;
+    int count = context->entries->end - context->entries->begin;
 
-int S::get() {
-    Outer* outer = (Outer*)this;
-    Inner* inner = outer->inner;
-    if (inner) {
-        inner = (Inner*)((char*)inner + 0);
-    } else {
-        inner = 0;
+    if (count == 1) {
+        void* result = context->get().get();
+        return result;
     }
-    Container* c = (Container*)((char*)inner + 0x104);
-    RefCounted** begin = c->begin;
-    if (begin == 0) {
-        return ((Inner*)outer->inner)->value;
-    }
-    RefCounted** end = c->end;
-    int count = (int)((char*)end - (char*)begin) >> 3;
-    if (count != 1) {
-        if (count == 0) {
-            return ((Inner*)outer->inner)->value;
-        }
-        return 0;
-    }
-    RefCounted* obj = 0;
-    RefCounted* result = *(RefCounted**)&obj;
-    (void)result;
+
+    if (count == 0)
+        return parent->fallback;
+
     return 0;
 }

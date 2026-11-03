@@ -1,23 +1,27 @@
-// from server: 61% by colin
-struct SceneManager {
-    float x;
-    float y;
-    float z;
-    bool isZeroVector() const;
+// from server: 100% by EspClaude
+// roc 2007-08 004ef1a0  TU-local static: vector is finite and every |component| <= 1e10 (custom esi convention from the caller)
+#include <math.h>
+namespace G3D {
+bool isFinite(double x);
+}
+
+struct Vector3 {
+    float x, y, z;
+    float operator[](int i) const { return (&x)[i]; }
 };
 
-extern "C" bool __cdecl isFiniteDouble(double value);
-
-bool SceneManager::isZeroVector() const {
-    if (!isFiniteDouble((double)x)) return false;
-    if (!isFiniteDouble((double)y)) return false;
-    if (!isFiniteDouble((double)z)) return false;
-
-    const double eps = 1e-20;
+static __declspec(noinline) bool isLegal(const Vector3& v)
+{
+    if (!G3D::isFinite(v.x) || !G3D::isFinite(v.y) || !G3D::isFinite(v.z))
+        return false;
     for (int i = 0; i < 3; ++i) {
-        float v = (&x)[i];
-        if (v < 0.0f) v = -v;
-        if (!(v <= eps)) return false;
+        if (fabs((double)v[i]) > 1e10)
+            return false;
     }
     return true;
+}
+
+bool checkPosition(const Vector3* p)
+{
+    return isLegal(*p);
 }

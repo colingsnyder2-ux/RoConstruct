@@ -106,7 +106,8 @@ cache_dir = rebuild.workspace(client) / 'out' / 'p6' / 'native-doc-cache'
 overlay_path = data_overlay[1] if data_overlay else None
 header_roots = [ROOT / 'rebuild/2008-06/native-headers', overlay_path, HERE]
 header_stamp = max((p.stat().st_mtime_ns for root in header_roots if root.exists()
-                    for p in root.rglob('*') if p.is_file()), default=0)
+                    for p in root.rglob('*') if p.is_file() and p.suffix.lower() in ('.c', '.cc', '.cpp', '.h', '.hpp')),
+                   default=0)
 def cache_key(source, flags):
     return {'source': str(source.resolve()), 'source_mtime': source.stat().st_mtime_ns,
             'headers_mtime': header_stamp,
@@ -154,10 +155,12 @@ if NATIVE_DOC:
                         ('NativeDocumentLoadFileFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLoadFile.cpp'),
                         ('NativeDocumentLoadFromStringFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLoadFromString.cpp'),
                         ('NativeDocumentInsertModelFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentInsertModel.cpp'),
+                        ('NativeDocumentExecuteFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentExecute.cpp'),
                         ('NativeDocumentLaunchFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLaunch.cpp'),
-                        ('NativeDocumentLaunchHandlersFull.obj', ROOT / 'rebuild/2008-06/tests/NativeDocumentLaunchTrial.cpp'),
+                        ('NativeFileSystemFull.obj', ROOT / 'rebuild/2008-06/native-classes/FileSystem.cpp'),
+                        ('NativeContentProviderFull.obj', ROOT / 'rebuild/2008-06/native-classes/ContentProvider.cpp'),
                         ('NativeLDrawParserLifetimeFull.obj', ROOT / 'rebuild/2008-06/tests/NativeLDrawParserLifetimeTrial.cpp'),
-                        ('NativeDocumentInitializeFull.obj', ROOT / 'rebuild/2008-06/tests/NativeDocumentInitializeTrial.cpp'),
+                        ('NativeDocumentInitializeFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentInitialize.cpp'),
                         ('NativeWorkspaceLoadFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceLoad.cpp'),
                         ('NativeWorkspaceObjectSafetyFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp'),
                         ('NativeWorkspaceSiteCheckFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceSiteCheck.cpp'),
@@ -211,13 +214,20 @@ if NATIVE_DOC:
     # Cache shared across isolated probe directories. Artifacts are immutable
     # once their source/header/flag stamp matches.
     for obj, source in doc_sources:
-        key = cache_key(source, doc_flags)
+        source_flags = doc_flags + (['/DNATIVE_FILE_SYSTEM_APPDATA_ONLY'] if obj == 'NativeFileSystemFull.obj' else [])
+        pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig', errors='replace'), re.M)
+        if pinned:
+            source_flags = ['/nologo', '/c'] + pinned.group(1).replace('{headers}', str(ROOT / 'rebuild/2008-06/native-headers')).split()
+            source_flags += ['/DBOOST_ALL_NO_LIB'] + ['/D' + d for d in data_defines.split()]
+            source_flags += ['/I' + str(ROOT / 'rebuild/2008-06/native-headers'), '/I' + str(mfc), '/I' + str(xtp)]
+            source_flags += ['/I' + str(i) for i in includes]
+        key = cache_key(source, source_flags)
         cache_name = obj
         if obj.startswith('NativeDocExtra'):
             cache_name += '-' + hashlib.sha256(str(source.resolve()).encode()).hexdigest()[:12]
         if restore_cached(cache_name, key, obj):
             continue
-        code, text = rebuild.run(tc, 'cl', doc_flags + ['/Fo' + obj, str(source)], out)
+        code, text = rebuild.run(tc, 'cl', source_flags + ['/Fo' + obj, str(source)], out)
         print(text[-2500:])
         if code:
             sys.exit(code)
@@ -227,7 +237,7 @@ system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole3
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
 native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj',
                       'NativeDocumentExceptionFull.obj', 'NativeDocumentLoadFileFull.obj', 'NativeDocumentLoadFromStringFull.obj',
-                      'NativeDocumentInsertModelFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeDocumentLaunchHandlersFull.obj',
+                      'NativeDocumentInsertModelFull.obj', 'NativeDocumentExecuteFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeFileSystemFull.obj', 'NativeContentProviderFull.obj',
                       'NativeLDrawParserLifetimeFull.obj',
                       'NativeDocumentInitializeFull.obj', 'NativeVerbFull.obj',
                       'NativeWorkspaceLoadFull.obj',
@@ -267,18 +277,18 @@ if NATIVE_DOC:
         'NativeDataModelTiming.obj', 'NativeDataModelDutyCycle.obj',
         'NativeLuaAllocatorStats.obj', 'NativePlayersAbuse.obj', 'WorkspaceInsertNativeProfile.obj',
         'WorkspaceSiteTrustProfile.obj',
-        'NativeDocumentExecuteProfile.obj', 'NativeDocumentLDrawProfile.obj',
-        'NativeDocumentSaveModifiedProfile.obj')]
+        'NativeDocumentLDrawProfile.obj')]
 native_doc_aliases = ['/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z'] if NATIVE_DOC else []
+native_doc_verbose = ['/VERBOSE:LIB'] if NATIVE_DOC and os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') else []
 code, text = rebuild.run(tc, "link", ["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:" + output_name + ".map", "/OUT:" + output_name + ".exe",
-                                      "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + native_doc_aliases + [u[0] for u in units] + [str(ROOT / "rebuild/2008-06/out/native-layouts" / name) for name in ("NativeFrameIconsFresh.obj", "NativeFrameIconWidth.obj", "NativeDHtmlDialog.obj", "NativeAboutDialog.obj", "NativeAboutDialogData.obj", "NativeFileVersionInfo.obj", "NativeGLCaps.obj")] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
+                                      "/NODEFAULTLIB:mfcs90.lib", "/MANIFEST:NO"] + native_doc_aliases + native_doc_verbose + [u[0] for u in units] + [str(ROOT / "rebuild/2008-06/out/native-layouts" / name) for name in ("NativeFrameIconsFresh.obj", "NativeFrameIconWidth.obj", "NativeDHtmlDialog.obj", "NativeAboutDialog.obj", "NativeAboutDialogData.obj", "NativeFileVersionInfo.obj", "NativeGLCaps.obj")] + ["P6Data.obj", "roblox.res", "mfc90.lib"]
                          + native_doc_objects
                          + [str(l) for l in libs] + [s + ".lib" for s in system]
                          + ["/NODEFAULTLIB:" + l for l in rebuild.VENDOR_AUTOLINK], out)
 if NATIVE_DOC:
     (out/'native-doc-link.log').write_text(text)
     unresolved = sorted(set(re.findall(r'unresolved external symbol "([^"]+)"', text)))
-    duplicates = sorted(set(re.findall(r'LNK2005: "([^"]+)" already defined', text)))
+    duplicates = sorted(set(re.findall(r'error LNK2005: "([^"]+)"', text)))
     families = {}
     for symbol in unresolved:
         family = next((name for name, token in (

@@ -1,32 +1,41 @@
-// from server: 67% by colin
-struct DataModel;
+// from server: 100% by EspClaude
+// roc 2007-08 005625f0  RBX::AllCanSelectCommand::doIt (2008-06 0057d8e0 shape, 2007 data-state handling)
+struct Context;
+extern bool __cdecl isLocked(Context*);
+extern void __cdecl unlock(Context*);
+static __declspec(noinline) void prepare(Context* c)
+{
+    if (isLocked(c))
+        unlock(c);
+}
+struct Selection;
+struct Context {
+    char padding[0x188];
+    Selection* selection;
+};
+extern void __cdecl setAllCanSelect(Selection*, bool);
 
-struct IDataState {
-    virtual void method0();
-    virtual void method1(int);
+class IDataState {
+public:
+    virtual void v0();
+    virtual void setDirty(bool);
+    int current;
+    void trimAfter(int index);
 };
 
-struct RunStateVerb {
-    char pad0[8];
-    DataModel* m_dataModel;
-    virtual void doIt(IDataState* dataState);
+struct AllCanSelectCommand {
+    void* vtbl;
+    void* a;
+    void* b;
+    Context* context;
+    void doIt(IDataState* dataState);
 };
-
-struct AllCanSelectCommand : RunStateVerb {
-    virtual void doIt(IDataState* dataState);
-};
-
-extern "C" void __cdecl sub_55E290();
-extern "C" void __cdecl sub_578380(int, int);
-extern "C" void __cdecl sub_4108B0();
 
 void AllCanSelectCommand::doIt(IDataState* dataState)
 {
-    DataModel* dm = m_dataModel;
-    sub_55E290();
-    int v = *(int*)((char*)m_dataModel + 0x188);
-    sub_578380(v, 0);
-    sub_4108B0();
-    dataState->method1(1);
-    *(int*)((char*)dataState + 4) = -1;
+    prepare(context);
+    setAllCanSelect(context->selection, false);
+    dataState->trimAfter(-1);
+    dataState->current = -1;
+    dataState->setDirty(true);
 }

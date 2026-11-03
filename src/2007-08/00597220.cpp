@@ -1,56 +1,62 @@
-// from server: 61% by colin
-struct Profiler;
+// from server: 100% by EspClaude
+// roc 2007-08 00597220  ProfilingItem::update (rbxgs v8datamodel/Stats.cpp), self-contained
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <stdio.h>
+#include <string>
 
-struct Bucket {
-    double getWallTime();
-    double getSampleTime();
-    double getNominalFramePeriod();
-    double getActualFPS();
-    double getNominalFPS();
+namespace RBX {
+namespace Log { std::string formatTime(double time); }
+namespace Profiling {
+class Bucket {
+public:
+    double sampleTimeSpan;
+    double totalTime;
+    double frameTime;
     int frames;
-    double sampleTimeElapsed;
+    double getTotalTime() const;
+    double getFrameTime() const;
+    double getNominalFPS() const;
 };
-
-struct Profiler {
-    Bucket getWindow(double window);
+class Profiler {
+public:
+    Bucket getData(double window) const;
 };
+}
+}
 
-struct String {
-    char data[16];
-    unsigned int size;
-    unsigned int capacity;
-    String();
-    ~String();
-    String& operator=(const char*);
-    const char* c_str() const;
-};
-
-extern "C" int __cdecl sprintf(char*, const char*, ...);
-
-struct ProfilingItem {
-    char pad[0xe8];
+class ProfilingItem {
+    char padding[0xe8];
     double val;
-    String sValue;
-    Profiler* p;
+    std::string sValue;
+    unsigned int reserved;
+    const RBX::Profiling::Profiler& p;
+public:
     void update();
 };
 
-void ProfilingItem::update() {
-    double window = *(double*)0x796460;
-    Bucket b = p->getWindow(window);
-    if (b.sampleTimeElapsed > 0.0) {
-        val = b.getWallTime() / b.sampleTimeElapsed;
-        char buffer[256];
-        if (b.frames > 0) {
-            String t;
-            t = "Replication: %s << %s-%d";
-            sprintf(buffer, "%s, %.3gfps (%.3g%%)", t.c_str(), b.getActualFPS(), b.getNominalFPS());
-            t.~String();
-        } else {
-            sprintf(buffer, "%.3g%%", 100.0 * val);
+void ProfilingItem::update()
+{
+    RBX::Profiling::Bucket b = p.getData(5.0);
+
+    if (b.sampleTimeSpan > 0.0)
+    {
+        val = b.getTotalTime() / b.sampleTimeSpan;
+
+        __declspec(align(64)) char buffer[256];
+        if (b.frames > 0)
+        {
+            std::string t = RBX::Log::formatTime(b.getFrameTime());
+            sprintf(buffer, "%s, %.3gfps (%.3g%%)", t.c_str(), b.getNominalFPS(), val * 100.0);
         }
+        else
+        {
+            sprintf(buffer, "%.3g%%", val * 100.0);
+        }
+
         sValue = buffer;
-    } else {
+    }
+    else
+    {
         val = 0.0;
         sValue = "?";
     }

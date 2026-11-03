@@ -1,78 +1,117 @@
-// from server: 18% by colin
-struct LDrawParser {
-    char pad0[4];
-    void parse(const char* filename);
+// from server: 100% by EspClaude
+// from server: 100% by EspClaude
+// roc-cl: 50727
+#include <string>
+#include <vector>
+#include <fstream>
+#include <ostream>
+
+template <class T> class bstr {
+public:
+    __declspec(noinline) bstr(const T* p) { _Mysize = 0; }
+    __declspec(noinline) bstr(const bstr& r) { _Mysize = r._Mysize; }
+    __declspec(noinline) ~bstr() { _Mysize = 0; }
+    __declspec(noinline) const T* c_str() const { return _Buf; }
+    __declspec(noinline) unsigned int find_first_not_of(const T*, unsigned int) const { return _Mysize; }
+    __declspec(noinline) bstr substr(unsigned int, unsigned int) const { return *this; }
+    __declspec(noinline) bstr& operator=(const bstr& r) { _Mysize = r._Mysize; return *this; }
+    unsigned int size() const { return _Mysize; }
+    void* _Myaux;
+    T _Buf[16];
+    unsigned int _Mysize;
+    unsigned int _Myres;
+};
+extern template class __declspec(dllimport) bstr<char>;
+typedef bstr<char> Str;
+
+template <class T> struct IosBaseT { __declspec(noinline) bool eof() const { return sizeof(T) == 1; } int x; };
+extern template struct __declspec(dllimport) IosBaseT<char>;
+inline bool isEof(std::ios_base& b) { return reinterpret_cast<IosBaseT<char>&>(b).eof(); }
+
+namespace RBX {
+namespace LDraw2Lua {
+
+class LDrawItem {
+public:
+    virtual ~LDrawItem();
 };
 
-struct String {
-    char data[28];
+class LDrawPart : public LDrawItem {
+public:
+    void* output;
+    int type;
+    int color;
+    double values[12];
+    Str name;
+
+    LDrawPart(void* output);
+    void setName(Str n) { name = n; }
 };
 
-struct Ifstream {
-    char data[0x90];
+class LDrawModel {
+public:
+    std::string name;
+    std::vector<LDrawItem*> items;
+
+    LDrawModel(const char* name);
+    virtual ~LDrawModel();
+    void add(LDrawItem* item);
+    void writeLua(std::ostream& out) const;
 };
 
-struct IosBase {
-    char data[4];
+extern void* luaOutput;
+
+class LDrawParser {
+public:
+    virtual ~LDrawParser();
+    Str fileName;
+
+    void parse(std::ostream& out);
 };
 
-struct IStreamIn {
-    char data[4];
-};
+void LDrawParser::parse(std::ostream& out)
+{
+    out << "-- " << "Roblox LDraw2Lua Conversion" << "\n";
+    out << "-- " << "FileName: " << fileName.c_str() << "\n";
+    out << "\n";
 
-extern "C" {
-    void __stdcall string_ctor(String* self, const char* s);
-    void __stdcall string_dtor(String* self);
-    unsigned int __stdcall string_find_first_not_of(const String* self, const char* s, unsigned int pos);
-    void __stdcall ifstream_ctor(Ifstream* self, const char* name, int mode, int prot);
-    void __stdcall ifstream_dtor(Ifstream* self);
-    bool __stdcall ios_eof(const IosBase* self);
-    void __stdcall istream_getline(IStreamIn* self, char* buf, int n);
+    LDrawModel model("LDrawModel");
+    {
+        std::ifstream file(fileName.c_str());
+        char buffer[2048];
+        if (!isEof(file)) do {
+            int type;
+            file >> type;
+            if (type == 1) {
+                LDrawPart* part = new LDrawPart(luaOutput);
+                part->type = 1;
+                int color = -1;
+                file >> color;
+                part->color = color;
+                double value = 0.0;
+                file >> value; part->values[0] = value;
+                file >> value; part->values[1] = value;
+                file >> value; part->values[2] = value;
+                file >> value; part->values[3] = value;
+                file >> value; part->values[4] = value;
+                file >> value; part->values[5] = value;
+                file >> value; part->values[6] = value;
+                file >> value; part->values[7] = value;
+                file >> value; part->values[8] = value;
+                file >> value; part->values[9] = value;
+                file >> value; part->values[10] = value;
+                file >> value; part->values[11] = value;
+                file.getline(buffer, 2000);
+                Str line(buffer);
+                part->setName(line.substr(line.find_first_not_of(" ", 0), line.size()));
+                model.add(part);
+            } else {
+                file.getline(buffer, 2000);
+            }
+        } while (!isEof(file));
+    }
+    model.writeLua(out);
 }
 
-void LDrawParser::parse(const char* filename)
-{
-    String s1;
-    string_ctor(&s1, "Roblox LDraw2Lua Conversion");
-    String s2;
-    string_ctor(&s2, "LDrawModel");
-    String s3;
-    string_ctor(&s3, "FileName: ");
-    String s4;
-    string_ctor(&s4, "m.Parent = w");
-    String s5;
-    string_ctor(&s5, "close");
-    String s6;
-    string_ctor(&s6, "hhcy");
-    String s7;
-    string_ctor(&s7, "t$Wh");
-    String s8;
-    string_ctor(&s8, "D$ V");
-    String s9;
-    string_ctor(&s9, "L$$Q");
-    String s10;
-    string_ctor(&s10, "SUVW");
-    String s11;
-    string_ctor(&s11, "Y_^[");
-
-    String line;
-    string_ctor(&line, "");
-
-    Ifstream file;
-    ifstream_ctor(&file, filename, 1, 0x40);
-
-    char buf[0x7d0];
-    while (!ios_eof((IosBase*)&file)) {
-        istream_getline((IStreamIn*)&file, buf, 0x7d0);
-        String tmp;
-        string_ctor(&tmp, buf);
-        if (string_find_first_not_of(&tmp, " \t\r\n", 0) == (unsigned int)-1) {
-            string_dtor(&tmp);
-            continue;
-        }
-        string_dtor(&tmp);
-    }
-
-    ifstream_dtor(&file);
-    string_dtor(&line);
+}
 }

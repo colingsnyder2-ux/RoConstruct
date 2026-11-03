@@ -1,45 +1,31 @@
-// from server: 65% by colin
+// from server: 100% by EspClaude
+// roc 2007-08 004d03d0  slow-moving test: part state == 1 and max |linear velocity| < 30
 struct Vector3 {
-    float x;
-    float y;
-    float z;
+    float x, y, z;
+    Vector3(const Vector3& o) : x(o.x), y(o.y), z(o.z) {}
 };
 
-struct Inner {
+struct PartInstance {
     char pad0[0x18c];
-    int flag;
+    int state;
+    const Vector3& getLinearVelocity() const;
 };
 
-struct Middle {
-    char pad0[0xb0];
-    Inner* inner;
-};
+float maxAbs(const Vector3& v);
 
 struct TextureProxyBase {
-    char pad0[0xc8];
-    int field_c8;
-    char pad1[0x100];
-    Middle* middle;
+    char pad0[0xb0];
+    PartInstance* part;
+    char pad1[0xc8 - 0xb4];
+    void* pending;
     bool check();
 };
 
-extern "C" Vector3* __cdecl getVector();
-extern "C" float __cdecl computeDistance(const Vector3* v);
-
 bool TextureProxyBase::check()
 {
-    if (field_c8 != 0)
-        return false;
-    Inner* in = middle->inner;
-    if (in->flag != 1)
-        return false;
-    Vector3* v = getVector();
-    Vector3 local;
-    local.x = v->x;
-    local.y = v->y;
-    local.z = v->z;
-    float d = computeDistance(&local);
-    if (d == 0.0)
-        return true;
+    if (pending == 0 && part->state == 1) {
+        Vector3 v = part->getLinearVelocity();
+        return maxAbs(v) < 30.0;
+    }
     return false;
 }

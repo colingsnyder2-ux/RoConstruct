@@ -1,93 +1,160 @@
-// from server: 30% by colin
-// roc 2007-08 0041eb90  unit: CSettingsExplorer  size: 320 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0041eb90
-
-extern "C" void __stdcall _invalid_parameter_noinfo();
-
+// from server: 97% by EspClaude
+// from server: 100% by king_originala
+// roc-cl: 50727
+#include <vector>
+namespace RBX {class Instance {};struct Selection {
+ void clearSelection();void addToSelection(Instance*);
+ template<class Iterator>void setSelection(Iterator first,Iterator last){clearSelection();for(;first!=last;first++)addToSelection(*first);}
+};}
+RBX::Selection* selectionFrom(RBX::Instance*);
+struct __POSITION;typedef __POSITION* POSITION;
+struct CXTPReportRecord {char prefix[0x54];RBX::Instance* instance;};
+struct CXTPReportRow {
+virtual void slot0();
+virtual void slot1();
+virtual void slot2();
+virtual void slot3();
+virtual void slot4();
+virtual void slot5();
+virtual void slot6();
+virtual void slot7();
+virtual void slot8();
+virtual void slot9();
+virtual void slot10();
+virtual void slot11();
+virtual void slot12();
+virtual void slot13();
+virtual void slot14();
+virtual void slot15();
+virtual void slot16();
+virtual void slot17();
+virtual void slot18();
+virtual void slot19();
+virtual void slot20();
+virtual void slot21();
+virtual void slot22();
+virtual void slot23();
+ virtual CXTPReportRecord* GetRecord()const;
+};
+struct CXTPReportSelectedRows {POSITION GetFirstSelectedRowPosition();CXTPReportRow* GetNextSelectedRow(POSITION&);};
+struct CXTPReportControl {char pad[0x128];CXTPReportSelectedRows* rows;CXTPReportSelectedRows* GetSelectedRows()const{return rows;}};
 struct CSettingsExplorer {
-    void method(int, int);
+virtual void slot0();
+virtual void slot1();
+virtual void slot2();
+virtual void slot3();
+virtual void slot4();
+virtual void slot5();
+virtual void slot6();
+virtual void slot7();
+virtual void slot8();
+virtual void slot9();
+virtual void slot10();
+virtual void slot11();
+virtual void slot12();
+virtual void slot13();
+virtual void slot14();
+virtual void slot15();
+virtual void slot16();
+virtual void slot17();
+virtual void slot18();
+virtual void slot19();
+virtual void slot20();
+virtual void slot21();
+virtual void slot22();
+virtual void slot23();
+virtual void slot24();
+virtual void slot25();
+virtual void slot26();
+virtual void slot27();
+virtual void slot28();
+virtual void slot29();
+virtual void slot30();
+virtual void slot31();
+virtual void slot32();
+virtual void slot33();
+virtual void slot34();
+virtual void slot35();
+virtual void slot36();
+virtual void slot37();
+virtual void slot38();
+virtual void slot39();
+virtual void slot40();
+virtual void slot41();
+virtual void slot42();
+virtual void slot43();
+virtual void slot44();
+virtual void slot45();
+virtual void slot46();
+virtual void slot47();
+virtual void slot48();
+virtual void slot49();
+virtual void slot50();
+virtual void slot51();
+virtual void slot52();
+virtual void slot53();
+virtual void slot54();
+virtual void slot55();
+virtual void slot56();
+virtual void slot57();
+virtual void slot58();
+virtual void slot59();
+virtual void slot60();
+virtual void slot61();
+virtual void slot62();
+virtual void slot63();
+virtual void slot64();
+virtual void slot65();
+virtual void slot66();
+virtual void slot67();
+virtual void slot68();
+virtual void slot69();
+virtual void slot70();
+virtual void slot71();
+virtual void slot72();
+virtual void slot73();
+virtual void slot74();
+virtual void slot75();
+virtual void slot76();
+virtual void slot77();
+virtual void slot78();
+virtual void slot79();
+virtual void slot80();
+virtual void slot81();
+virtual void slot82();
+virtual void slot83();
+virtual void slot84();
+virtual void slot85();
+virtual void slot86();
+virtual void slot87();
+virtual void slot88();
+virtual void slot89();
+virtual void slot90();
+virtual void slot91();
+virtual void slot92();
+virtual void slot93();
+virtual void slot94();
+virtual void slot95();
+virtual void slot96();
+virtual void slot97();
+virtual void slot98();
+virtual void slot99();
+virtual void slot100();
+ virtual CXTPReportControl* GetReportControl();
+ char prefix[0x3c0-4];RBX::Instance* context;
+ void OnSelectionChanged(void*,long*);
 };
-
-struct Inner {
-    void* field0;
-    char pad[0x50];
-    void* field54;
-};
-
-struct Outer {
-    char pad0[0xd0];
-    void* fieldD0;
-};
-
-struct Vtbl {
-    char pad0[0x18c];
-    void* (__thiscall* fn18c)(void*);
-};
-
-struct Obj {
-    Vtbl* vtbl;
-};
-
-struct Vec {
-    void* begin;
-    void* end;
-    void* cap;
-};
-
-extern "C" void* __stdcall sub_41eb40(void*);
-extern "C" void* __stdcall sub_664810(void*);
-extern "C" void* __stdcall sub_664840(void*, void*);
-extern "C" void __stdcall sub_4ee620(void*, void*, void*, void*);
-extern "C" void __stdcall sub_41dcf0(void*, void*, void*, void*);
-extern "C" void __stdcall sub_62fc62(void*);
-extern "C" void __stdcall sub_77e6d8();
-
-void CSettingsExplorer::method(int, int)
-{
-    void* p = sub_41eb40(*(void**)((char*)this + 0x304));
-    Vec v;
-    v.begin = 0;
-    v.end = 0;
-    v.cap = 0;
-    Vtbl* vt = ((Obj*)this)->vtbl;
-    void* r = vt->fn18c(this);
-    void* ebx = *(void**)((char*)r + 0xd0);
-    void* it = sub_664810(ebx);
-    void* cur = it;
-    while (cur != 0) {
-        void* tmp = cur;
-        void* e = sub_664840(ebx, &tmp);
-        Vtbl* vt2 = *(Vtbl**)e;
-        void* r2 = ((void* (__thiscall*)(void*))vt2->fn18c)(e);
-        void* edi = *(void**)((char*)r2 + 0x54);
-        void* endp = v.end;
-        if (v.begin != 0) {
-            unsigned int a = ((char*)endp - (char*)v.begin) >> 2;
-            unsigned int b = ((char*)v.cap - (char*)v.begin) >> 2;
-            if (a < b) {
-                *(void**)endp = edi;
-                v.end = (char*)endp + 4;
-                goto next;
-            }
-        }
-        if (v.begin > endp) {
-            sub_77e6d8();
-        }
-        sub_4ee620(&v, &v.end, &edi, &v.cap);
-    next:
-        cur = tmp;
-    }
-    void* b = v.end;
-    void* a = v.begin;
-    if (a > b) {
-        sub_77e6d8();
-        a = v.begin;
-    }
-    if (a > v.end) {
-        sub_77e6d8();
-    }
-    sub_41dcf0(p, a, b, &v);
-    if (v.begin != 0) {
-        sub_62fc62(v.begin);
-    }
+void CSettingsExplorer::OnSelectionChanged(void*,long*){
+ RBX::Selection* selection=selectionFrom(context);
+ std::vector<RBX::Instance*> instances;
+ CXTPReportSelectedRows* rows=GetReportControl()->GetSelectedRows();
+ POSITION position=rows->GetFirstSelectedRowPosition();
+ while(position){
+  CXTPReportRow* row=rows->GetNextSelectedRow(position);
+  CXTPReportRecord* record=row->GetRecord();
+  RBX::Instance* instance=record->instance;
+  instances.push_back(instance);
+ }
+ const std::vector<RBX::Instance*>& collected=instances;
+ selection->setSelection(collected.begin(),collected.end());
 }

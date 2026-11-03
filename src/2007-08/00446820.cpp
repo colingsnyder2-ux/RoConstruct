@@ -1,31 +1,48 @@
-// from server: 34% by colin
-struct EnumDescriptor
-{
-    void dummy();
-};
+// from server: 100% by EspClaude
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client App/script/Script.cpp
 
-struct EnumRegistrarBase
-{
-    void dummy();
-};
+// Candidate translation unit (score above; library headers required).
+#include "script/Script.h"
 
-extern "C" void __cdecl sub_418690();
-extern "C" void __stdcall sub_570C00(void*);
-extern "C" void __cdecl sub_630D23(void*);
+#include "network/Player.h"
+#include "util/ContentProvider.h"
+#include "util/Name.h"
+#include "v8datamodel/Team.h"
 
-struct EnumDesc
-{
-    void ctor();
-};
+namespace RBX {
 
-void EnumDesc::ctor()
+char sScript[] = "Script";
+
+char sLocalScript[] = "LocalScript";
+
+// FUNCTION: WEBSERVICE 0x10068d50
+boost::shared_ptr<const std::string> Script::requestCode()
 {
-    static bool initialized = false;
-    if (!initialized)
-    {
-        initialized = true;
-        sub_418690();
-        sub_570C00((void*)0x8bbb88);
-        sub_630D23((void*)0x777ce0);
-    }
+	if (scriptId.isNull()) {
+		return embeddedSource;
+	}
+
+	return ContentProvider::singleton().requestContentString(scriptId);
 }
+
+} // namespace RBX
+
+template const RBX::Name& RBX::Name::doDeclare<RBX::sTeam>();
+template const RBX::Name& RBX::Name::doDeclare<RBX::Network::sPlayer>();
+template void RBX::Name::callDoDeclare<RBX::sTeam>();
+template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
+
+template class RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>;
+template class RBX::Reflection::
+	Described<RBX::Script, RBX::sScript, RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript> >;
+template class RBX::DescribedCreatable<RBX::Script, RBX::Instance, RBX::sScript>;
+
+template class RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
+template class RBX::Reflection::Described<
+	RBX::LocalScript,
+	RBX::sLocalScript,
+	RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript> >;
+template class RBX::DescribedCreatable<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;

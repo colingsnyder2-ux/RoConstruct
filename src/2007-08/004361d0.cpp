@@ -1,73 +1,95 @@
-// from server: 30% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 75% by EspClaude
+// from server: 100% by user
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espeon_declarationaccess_98f9113324c95267.cpp
 
-struct QWidget;
-struct QTextBrowser {
-    QTextBrowser(QWidget*);
+// Candidate translation unit (score above; library headers required).
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <boost/shared_ptr.hpp>
+#include <boost/bind.hpp>
+struct Text {char storage[28];const char* c_str()const;};
+extern const char* (__thiscall* textAccess)(const Text*);
+inline const char* Text::c_str()const{return textAccess(this);}
+struct Name {
+    int unused;
+    Text text;
 };
 
-struct DeclarationView : QTextBrowser {
-    DeclarationView(QWidget* parent);
+struct Node {
+    int unused;
+    Name* name;
+    char padding[0x9c];
+    std::vector<Node*> children;
 };
 
-struct ObjectBrowserItem {
-    char pad[0xe8];
-    bool restricted;
+struct Target {
+    int invoke(int, int);
 };
 
-struct Descriptor;
-
-struct RefCounted {
-    long refs;
+struct Manager {
+    char padding[0x130];
+    Target* target;
+    int invoke(int, int);
 };
 
-struct StringRep {
-    void* vtable;
-    long refs;
+typedef boost::shared_ptr<Manager> Shared;
+
+Shared __cdecl getManager();
+
+struct Declaration {
+    char padding[0x130];
+    unsigned char visible;
+    unsigned char restricted;
+    unsigned char special;
 };
 
-struct String {
-    StringRep* rep;
+struct Settings {
+    char padding[0x130];
+    unsigned char allowRestricted;
+    unsigned char allowSpecial;
 };
 
-extern "C" void* __stdcall sub_444B70(String* out);
-extern "C" void* __stdcall sub_442C60(void* self, ObjectBrowserItem* item, int flag);
-extern "C" void* __stdcall sub_630634();
-extern "C" void* __stdcall sub_63063A();
-extern "C" void __stdcall sub_434C70();
-extern "C" void __stdcall sub_4360A0();
-extern "C" void __stdcall sub_77E6A8();
-extern "C" void __stdcall sub_77E6D8();
+Settings* __cdecl getSettings();
 
-DeclarationView::DeclarationView(QWidget* parent)
-    : QTextBrowser(parent)
-{
-    String decl;
-    void* desc = sub_444B70(&decl);
-    void* d = *(void**)desc;
-    ObjectBrowserItem* item = (ObjectBrowserItem*)parent;
-    void* member = sub_442C60(d, item, 0);
+struct ViewBase1 {};
+struct ViewBase2 {};
 
-    if (decl.rep) {
-        StringRep* r = decl.rep;
-        if (_InterlockedExchangeAdd(&r->refs, -1) == 1) {
-            void** vt = (void**)r->vtable;
-            ((void (__stdcall*)(StringRep*))vt[1])(r);
-            if (_InterlockedExchangeAdd(&r->refs, -1) == 1) {
-                void** vt2 = (void**)r->vtable;
-                ((void (__stdcall*)(StringRep*))vt2[2])(r);
-            }
-        }
+struct __multiple_inheritance CDeclarationView : ViewBase1, ViewBase2 {
+    void func(Node*);
+    void* insert(int, const char*, int, int, int, int, int, unsigned int, unsigned int);
+    void setItem(void*, int, int, int, int, int, int, Node*);
+    void configure(void*, Declaration*);
+};
+
+void CDeclarationView::func(Node* node) {
+    Declaration* declaration;
+    {
+        declaration = reinterpret_cast<Declaration*>(
+            getManager()->invoke(reinterpret_cast<int>(node), 0));
     }
 
-    if (member == 0 || ((char*)member)[0xe8] == 0) {
-        void* p = *(void**)((char*)item + 4);
-        sub_77E6A8();
-        void* a = sub_630634();
-        void* b = sub_63063A();
-        sub_434C70();
+    bool show = true;
+    if (declaration) {
+        Settings* settings = getSettings();
+        if (declaration->restricted && !settings->allowRestricted)
+            show = false;
+        else if (declaration->special && !settings->allowSpecial)
+            show = false;
+        else if (!declaration->visible)
+            show = false;
     }
 
-    sub_4360A0();
+    if (show) {
+        Name* n = node->name;
+        const char* label = n->text.c_str();
+        void* item = insert(0x23, label,
+                            3, 3, 0, 0, 0, 0xffff0000, 0xffff0002);
+        setItem(item, 4, 0, 0, 0, 0, 0, node);
+        configure(item, declaration);
+    }
+
+    std::for_each(node->children.begin(),node->children.end(),boost::bind(&CDeclarationView::func,this,_1));
 }

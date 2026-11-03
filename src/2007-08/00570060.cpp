@@ -1,15 +1,23 @@
-// from server: 74% by colin
-extern "C" int __cdecl string_less(const void* a, const void* b);
-
-struct StringRef
-{
-    char pad[4];
-    char* data;
+// from server: 100% by EspClaude
+// roc 2007-08 00570060  descriptor-name ordering predicate (std::operator< on the Name strings)
+// roc-flags: /O2 /GS /EHsc /MD
+#include <string>
+namespace RBX {
+class Name {
+    int id;
+public:
+    std::string name;
+    bool operator<(const Name& other) const { return name < other.name; }
 };
-
-int __cdecl compare_strings(const StringRef* a, const StringRef* b)
+namespace Reflection {
+class Descriptor {
+    void* vptr_pad;
+public:
+    const Name& name;
+};
+bool lessByName(const Descriptor* a, const Descriptor* b)
 {
-    const char* x = a->data + 4;
-    const char* y = b->data + 4;
-    return string_less(y, x);
+    return a->name < b->name;
+}
+}
 }

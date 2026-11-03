@@ -1,25 +1,6 @@
-// from server: 69% by colin
-struct LuaWriter {
-    void* stream;
-    unsigned int offset;
-    void* ensure();
-};
-
-extern "C" void* __stdcall sub_77E6D8();
-extern "C" char* __stdcall sub_77E5E8(void*);
-
-void* LuaWriter::ensure()
-{
-    if (stream == (void*)-2)
-        return (void*)offset;
-
-    if (stream == 0)
-        sub_77E6D8();
-
-    char* p = sub_77E5E8(stream);
-    unsigned int n = (unsigned int)(p + *(int*)((char*)stream + 0x14));
-    if (offset >= n)
-        sub_77E6D8();
-
-    return (void*)offset;
-}
+// from server: 100% by EspClaude
+// roc 2007-08 0046c4f0  std::string::const_iterator member (VS2005 checked iterator), basic_string imported from MSVCP80.
+// roc-flags: /O2 /Ob0 /GS /EHsc /MD
+#include <string>
+typedef std::_String_const_iterator<char, std::char_traits<char>, std::allocator<char> > It;
+template It::reference It::operator*() const;

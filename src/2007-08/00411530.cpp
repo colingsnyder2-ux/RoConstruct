@@ -1,35 +1,17 @@
-// from server: 72% by colin
-struct CopyVerb {
-    unsigned short flags;
-    unsigned short pad;
-    int field4;
-    int field8;
-    CopyVerb* copy(CopyVerb* other);
-};
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: atl-8.0 roc_espclaude_c6206da9d4aa0c3f.cpp
 
-extern "C" long __stdcall SafeArrayCopy(void*, void**);
-
-extern "C" void __cdecl sub_401000(unsigned int);
-
-extern "C" void __cdecl sub_4114F0(CopyVerb*, CopyVerb*);
-
-CopyVerb* CopyVerb::copy(CopyVerb* other) {
-    if (other == 0) {
-        flags = 0;
-        return this;
-    }
-
-    void* dest = 0;
-    long hr = SafeArrayCopy(other, &dest);
-    if (hr < 0 || dest == 0) {
-        flags = 0xa;
-        field8 = hr;
-        sub_401000(0x8007000e);
-        return this;
-    }
-
-    sub_4114F0(this, other);
-    flags |= 0x2000;
-    field8 = (int)dest;
-    return this;
+// Candidate translation unit (score above; library headers required).
+// 2007-08 00411530: ATL 8.0 CComVariant(const SAFEARRAY*) emitted out of line
+#define _CPPUNWIND 1
+#define _DLL
+#include <atlbase.h>
+#pragma inline_depth(0)
+void RocMakeVariant(const SAFEARRAY* psa, VARIANT* out)
+{
+    CComVariant v(psa);
+    v.Detach(out);
 }

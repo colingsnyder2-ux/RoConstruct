@@ -1,127 +1,62 @@
-// from server: 60% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/MotorJoint.cpp
+// from server: 100% by EspClaude
+// roc 2007-08 005b42f0  RBX::MotorJoint::isAligned (rbxgs v8world/MotorJoint.cpp body).
+// 2007 Joint layout from the target: primitives @+8/+0xc, jointCoord0 @+0x28, jointCoord1 @+0x58;
+// Primitive body @+0x64, Body cframe @+0x84 after out-of-line update (0x530100).
+// roc-flags: /O2 /GS- /EHsc /MD
+namespace G3D {
+class Vector3 { public: float x, y, z; };
+class Matrix3 {
+public:
+    float elt[3][3];
+    Vector3 getColumn(int iCol) const;
+};
+class CoordinateFrame {
+public:
+    Matrix3 rotation;
+    Vector3 translation;
+    CoordinateFrame operator*(const CoordinateFrame& other) const;
+};
+}
+namespace RBX {
+class Math { public: static bool fuzzyEq(const G3D::Vector3& v0, const G3D::Vector3& v1, float epsilon); };
+class Body {
+public:
+    char pad[0x84];
+    G3D::CoordinateFrame cframe;
+    void updatePV();
+    const G3D::CoordinateFrame& getCoordinateFrame() { updatePV(); return cframe; }
+};
+class Primitive {
+public:
+    char pad[0x64];
+    Body* body;
+    const G3D::CoordinateFrame& getCoordinateFrame() const { return body->getCoordinateFrame(); }
+};
+class Joint {
+protected:
+    char pad[8];
+    Primitive* primitives[2];
+    char pad2[0x28 - 0x10];
+    G3D::CoordinateFrame jointCoord0;
+    G3D::CoordinateFrame jointCoord1;
+    Primitive* getPrimitive(int i) const { return primitives[i]; }
+};
+class MotorJoint : public Joint {
+public:
+    bool isAligned();
+};
 
-// Candidate translation unit (score above; library headers required).
-#include "v8world/MotorJoint.h"
-#include "v8world/World.h"
-#include "v8world/Primitive.h"
-#include "v8world/Assembly.h"
-#include "util/Math.h"
-
-namespace RBX
+bool MotorJoint::isAligned()
 {
-	// TODO: check which of these belong in the header file
+    G3D::CoordinateFrame baseWorld = getPrimitive(0)->getCoordinateFrame() * jointCoord0;
+    G3D::CoordinateFrame otherBaseWorld = getPrimitive(1)->getCoordinateFrame() * jointCoord1;
 
-	MotorJoint::MotorJoint()
-		: currentAngle(0.0f),
-		  link(new RevoluteLink()),
-		  maxVelocity(0.0f),
-		  desiredAngle(0.0f),
-		  polarity(1.0f)
-	{
-	}
+    if (Math::fuzzyEq(baseWorld.translation, otherBaseWorld.translation, 0.00001f))
+    {
+        if (Math::fuzzyEq(baseWorld.rotation.getColumn(2), otherBaseWorld.rotation.getColumn(2), 0.00001f))
+            return true;
+    }
 
-	MotorJoint::~MotorJoint()
-	{
-		delete link;
-	}
-
-	G3D::CoordinateFrame MotorJoint::getMeInOther(Primitive* me)
-	{
-		G3D::CoordinateFrame rotatedCoord0 = G3D::CoordinateFrame(
-			Math::rotateAboutZ(jointCoord0.rotation, currentAngle),
-			jointCoord0.translation);
-
-		G3D::CoordinateFrame p1InP0 = rotatedCoord0 * jointCoord1.inverse();
-		if (me == getPrimitive(1))
-		{
-			return p1InP0;
-		}
-		else
-		{
-			RBXASSERT(me == getPrimitive(0));
-			return p1InP0.inverse();
-		}
-	}
-
-	size_t MotorJoint::hashCode() const
-	{
-		const int magic = 1640531527;
-		size_t h;
-
-		h = (Math::hash(jointCoord0.translation) - magic);
-		h = (Math::hash(jointCoord1.translation) - magic + (h >> 2) + (h << 6)) ^ h;
-		return h;
-	}
-
-	void MotorJoint::setCurrentAngle(float value)
-	{
-		if (currentAngle != value)
-		{
-			currentAngle = value;
-			World* world = getWorld();
-			if (world)
-				world->onMotorAngleChanged(this);
-			setJointAngle(value);
-		}
-	}
-
-	void MotorJoint::setJointAngle(float value)
-	{
-		RBXASSERT(link);
-		if (polarity == -1)
-		{
-			RBXASSERT(0);
-
-			Primitive* p0 = getPrimitive(0);
-
-			G3D::CoordinateFrame oldParentCoord = p0->getCoordinateFrame();
-			link->setJointAngle(-value);
-			Assembly* assembly = getPrimitive(1)->getAssembly();
-			if (!assembly->getAnchored())
-			{
-				Primitive* mainPrim = assembly->getMainPrimitive();
-				G3D::CoordinateFrame newParentCoord = p0->getCoordinateFrame();
-				G3D::CoordinateFrame parentInRoot = mainPrim->getCoordinateFrame().toObjectSpace(newParentCoord);
-				G3D::CoordinateFrame newRoot = oldParentCoord * parentInRoot.inverse();
-				mainPrim->getBody()->setCoordinateFrame(newRoot);
-			}
-		}
-		else
-		{
-			link->setJointAngle(value);
-		}
-	}
-
-	bool MotorJoint::isAligned()
-	{
-		G3D::CoordinateFrame baseWorld = getPrimitive(0)->getCoordinateFrame() * jointCoord0;
-		G3D::CoordinateFrame otherBaseWorld = getPrimitive(1)->getCoordinateFrame() * jointCoord1;
-
-		if (Math::fuzzyEq(baseWorld.translation, otherBaseWorld.translation, 0.00001f))
-		{
-			if (Math::fuzzyEq(baseWorld.rotation.getColumn(2), otherBaseWorld.rotation.getColumn(2), 0.00001f))
-				return true;
-		}
-
-		return false;
-	}
-
-	void MotorJoint::stepUi(int uiStepId)
-	{
-		if (fabs(desiredAngle - currentAngle) < fabs(maxVelocity))
-		{
-			setCurrentAngle(desiredAngle);
-		}
-		else
-		{
-			if (fabs(maxVelocity) > 0.0f)
-				setCurrentAngle(currentAngle + fabs(maxVelocity));
-			else
-				setCurrentAngle(currentAngle - fabs(maxVelocity));
-		}
-	}
+    return false;
+}
 }

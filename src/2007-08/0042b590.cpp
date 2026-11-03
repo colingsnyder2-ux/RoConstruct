@@ -1,25 +1,28 @@
-// from server: 76% by colin
-struct EventHandler {
-    char pad0[4];
-    void* m_callback;
-    void* m_context;
-    int m_fieldC;
-    int m_refCount;
-
-    int release(void*);
+// from server: 100% by EspClaude
+// roc 2007-08 0042b590  stdcall Release of a hand-rolled COM-style event sink
+typedef void* (__cdecl *SinkFn)(void* context, int release);
+struct SinkCallback {
+    SinkFn fn;
+    void* context;
+    int extra;
+    bool empty() const { return fn == 0; }
+    void release() { context = fn(context, 1); }
+};
+struct EventSink {
+    void* vtbl;
+    SinkCallback callback;
+    long refCount;
 };
 
-extern "C" void __cdecl sub_62FC62(void*);
-
-int EventHandler::release(void* arg) {
-    if (--m_refCount == 0) {
-        if (m_callback) {
-            m_context = ((void* (__cdecl*)(void*, int))m_callback)(m_context, 1);
-        }
-        m_callback = 0;
-        m_fieldC = 0;
-        sub_62FC62(this);
+unsigned long __stdcall EventSink_Release(EventSink* self)
+{
+    if (--self->refCount == 0) {
+        if (!self->callback.empty())
+            self->callback.release();
+        self->callback.fn = 0;
+        self->callback.extra = 0;
+        delete self;
         return 0;
     }
-    return m_refCount;
+    return self->refCount;
 }

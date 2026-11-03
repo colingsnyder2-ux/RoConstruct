@@ -1,46 +1,53 @@
-// from server: 67% by colin
-struct PropBase {
+// from server: 83% by EspClaude
+// roc 2007-08 004433e0  Reflection::Metadata lookup of an event's metadata instance
+// roc-flags: /O2 /GS /EHsc /MD
+#include <string>
+namespace RBX {
+class Name {
+    int id;
+    std::string name;
+public:
+    const std::string& toString() const { return name; }
+};
+class Instance {
+public:
+    virtual ~Instance();
+    Instance* findFirstChildByName(const std::string& name) const;
+    template<class T> T* findFirstChildOfType() const;
+};
+namespace Reflection {
+class Descriptor {
+public:
+    virtual ~Descriptor();
+    const Name& name;
+};
+class ClassDescriptor : public Descriptor {};
+class MemberDescriptor : public Descriptor {
+public:
+    const Name& category;
+    const ClassDescriptor& owner;
+};
+class PropertyDescriptor : public MemberDescriptor {};
+class EventDescriptor : public MemberDescriptor {};
+class FunctionDescriptor : public MemberDescriptor {};
+namespace Metadata {
+class Classes : public Instance {};
+class Properties : public Instance {};
+class Events : public Instance {};
+class Functions : public Instance {};
+class Reflection {
     char pad[0xe8];
-    void* field_e8;
-};
-
-struct ArgType {
-    char pad[0xc];
-    void* field_c;
-};
-
-struct ArgHolder {
-    char pad[4];
-    void* field_4;
-};
-
-extern "C" void* __stdcall sub_53e7a0(void*);
-extern "C" void* __fastcall sub_4432c0(void*);
-
-struct S {
-    void* f(void* arg);
-};
-
-void* S::f(void* arg)
-{
-    PropBase* self = (PropBase*)this;
-    void* p = self->field_e8;
-    void* r;
-    if (p != 0) {
-        ArgType* a = (ArgType*)arg;
-        void* q = a->field_c;
-        void* v = *(void**)((char*)q + 4);
-        r = sub_53e7a0((char*)v + 4);
-    } else {
-        r = 0;
+    Classes* classes;  // exe +0xe8
+public:
+    template<class Members, class Desc> Instance* findMember(const Desc& desc) const
+    {
+        Instance* c = classes ? classes->findFirstChildByName(desc.owner.name.toString()) : 0;
+        if (c)
+            if (Members* m = c->findFirstChildOfType<Members>())
+                return m->findFirstChildByName(desc.name.toString());
+        return 0;
     }
-    if (r != 0) {
-        void* s = sub_4432c0(r);
-        if (s != 0) {
-            ArgHolder* h = (ArgHolder*)arg;
-            void* t = (char*)h->field_4 + 4;
-            return sub_53e7a0(t);
-        }
-    }
-    return 0;
-}
+    Instance* get(const PropertyDescriptor& desc) const;
+};
+}}}
+template RBX::Instance* RBX::Reflection::Metadata::Reflection::findMember<RBX::Reflection::Metadata::Events, RBX::Reflection::EventDescriptor>(const RBX::Reflection::EventDescriptor&) const;

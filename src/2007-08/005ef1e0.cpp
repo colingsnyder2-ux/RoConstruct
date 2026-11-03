@@ -1,46 +1,55 @@
-// from server: 69% by colin
-struct DescribedBase {
-    void* vfptr;
-    int pad0[10];
-    int offset2c;
-    int offset28;
+// from server: 100% by EspClaude
+// roc 2007-08 005ef1e0  BoundFuncDesc<BodyVelocity, Vector3>::execute: polymorphic_cast + call bound const getter (MI member pointer), store result
+#include <typeinfo>
+
+namespace RBX {
+namespace Reflection {
+class DescribedBase { public:
+    virtual ~DescribedBase();
+};
+}
+class SecondBase { public:
+    virtual ~SecondBase();
+};
+}
+
+namespace boost {
+template <class Target, class Source>
+inline Target polymorphic_cast(Source* x)
+{
+    Target tmp = dynamic_cast<Target>(x);
+    if (tmp == 0) throw std::bad_cast();
+    return tmp;
+}
+}
+
+struct Vector3 {
+    float x, y, z;
+    Vector3() {}
 };
 
-struct FuncDesc {
-    void* vfptr;
-    int pad0[10];
-    int offset2c;
-    int offset28;
+namespace RBX {
+class BodyVelocity : public Reflection::DescribedBase, public SecondBase {
+};
+}
+
+struct ReturnValue {
+    ReturnValue& operator=(const Vector3&);
+};
+
+struct Arguments {
+    int header;
+    ReturnValue returnValue;
 };
 
 struct BoundFuncDesc {
-    char pad0[0x28];
-    int offset28;
-    int offset2c;
-    int method(int, int);
+    char padding[0x28];
+    Vector3 (RBX::BodyVelocity::*function)() const;
+
+    void execute(RBX::Reflection::DescribedBase*, Arguments&);
 };
 
-extern "C" int __cdecl sub_630d36(int, int, int, int, int);
-extern "C" int __cdecl sub_630b9e(int, int);
-extern "C" int __cdecl sub_537bd0(int, int);
-extern "C" void* __stdcall sub_77e710(int);
-extern "C" void __cdecl sub_841e0c();
-extern "C" void __cdecl sub_786e04();
-extern "C" void __cdecl sub_88209c();
-extern "C" void __cdecl sub_8b01f8();
-
-int BoundFuncDesc::method(int a, int b)
+void BoundFuncDesc::execute(RBX::Reflection::DescribedBase* source, Arguments& arguments)
 {
-    int result = sub_630d36(a, 0, (int)&sub_8b01f8, (int)&sub_88209c, 0);
-    if (result == 0) {
-        sub_77e710((int)&sub_786e04);
-        sub_630b9e((int)&sub_841e0c, 0);
-    }
-    int ecx = this->offset2c + result;
-    int eax = this->offset28;
-    int tmp;
-    int r = ((int (__thiscall*)(void*, int*))eax)((void*)ecx, &tmp);
-    int ecx2 = *(int*)((char*)&tmp + 0x14);
-    ecx2 += 4;
-    return sub_537bd0(ecx2, r);
+    arguments.returnValue = (boost::polymorphic_cast<RBX::BodyVelocity*>(source)->*function)();
 }

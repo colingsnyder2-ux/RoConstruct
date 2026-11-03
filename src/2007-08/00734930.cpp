@@ -1,606 +1,653 @@
-// from server: 17% by colin
+// from server: 100% by EspClaude
+// from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/GFont.cpp
+// roc-lib: rbxgs-g3d-dll roc_g3d_sky_native_minimal_face_remap_8f4bae03351de51d.cpp
 
 // Candidate translation unit (score above; library headers required).
-/**
- @file GFont.cpp
- 
- @maintainer Morgan McGuire, morgan@graphics3d.com
+/** 
+  @file Sky.cpp
 
- @created 2002-11-02
- @edited  2006-02-10
- */
+  @author Morgan McGuire, matrix@graphics3d.com
 
-#include "GLG3D/GFont.h"
-#include "GLG3D/RenderDevice.h"
-#include "GLG3D/TextureFormat.h"
-#include "G3D/Vector2.h"
-#include "G3D/System.h"
+  @created 2002-10-04
+  @edited  2006-02-11
+  */
+
 #include "G3D/fileutils.h"
+#include "GLG3D/glcalls.h"
+#include "GLG3D/Sky.h"
+#include "GLG3D/LightingParameters.h"
 #include "G3D/BinaryInput.h"
-#include "G3D/BinaryOutput.h"
+#include "G3D/g3dmath.h"
+#include "GLG3D/TextureFormat.h"
+#include "GLG3D/getOpenGLState.h"
 
 namespace G3D {
 
-GFontRef GFont::fromFile(const std::string& filename) {
-    if (! fileExists(filename)) {
-        debugAssertM(false, format("Could not load font: %s", filename.c_str()));
-        return NULL;
+#define SHORT_TO_FLOAT(x) ((2.0f*x+1.0f)*(1.0f/65535.0f))
+
+
+SkyRef Sky::fromCubeMap(
+    RenderDevice*                       rd,
+    TextureRef                          _cubeMap,
+    const std::string&                  directory,
+    bool                                _drawCelestialBodies,
+    double                              quality) {
+
+    debugAssertM(
+        (directory == "") || 
+        (directory[directory.size() - 1] == '/') || 
+        (directory[directory.size() - 1] == '\\'), 
+        "Directory must end in a slash");
+
+    debugAssert( _cubeMap.notNull() );
+    debugAssert( _cubeMap->getDimension() == Texture::DIM_CUBE_MAP );
+
+    TextureRef t[6];
+    t[0] = _cubeMap;
+    for (int i = 1; i < 6; ++i) {
+        t[i] = NULL;
+    }    
+
+    return new Sky(rd, t, directory, true, _drawCelestialBodies, quality);
+}
+    
+
+SkyRef Sky::fromFile(
+    RenderDevice*                       rd,
+    const std::string&                  directory,
+    const std::string&                  filename,
+    bool                                _drawCelestialBodies,
+    double                              quality,
+    int                                 scaleDownFactor) {
+
+    std::string f[6];
+    f[0] = filename;
+    for (int i = 1; i < 6; ++i) {
+        f[i] = "";
+    }
+    return Sky::fromFile(rd, directory, f, _drawCelestialBodies, quality, scaleDownFactor);
+}
+
+
+SkyRef Sky::fromFile(
+    RenderDevice*                       rd,
+    const std::string&                  directory,
+    const std::string                   _filename[6],
+    bool                                _drawCelestialBodies,
+    double                              quality,
+    int                                 scaleDownFactor) {
+
+    debugAssertM(
+        (directory == "") || 
+        (directory[directory.size() - 1] == '/') || 
+        (directory[directory.size() - 1] == '\\'), 
+        "Directory must end in a slash");
+
+    const TextureFormat* format;
+    const TextureFormat* alphaFormat;
+    std::string filename = _filename[0];
+
+    if (quality > .66) {
+        format      = TextureFormat::RGB8;
+        alphaFormat = TextureFormat::RGBA8;
+    } else if (quality > .33) {
+        format      = TextureFormat::RGB_DXT1;
+        alphaFormat = TextureFormat::RGBA_DXT1;
+    } else {
+        format      = TextureFormat::RGBA_DXT5;
+        alphaFormat = TextureFormat::RGBA_DXT5;
     }
 
-    BinaryInput b(filename, G3D_LITTLE_ENDIAN, true);
-    return new GFont(NULL, filename, b);
-}
+    // Look for the filename
+    // Parse the filename into a base name and extension
+    std::string filenameBase;
+    std::string filenameExt;
+    std::string fullFilename = filename;
 
-GFontRef GFont::fromFile(RenderDevice* _rd, const std::string& filename) {
-    if (! fileExists(filename)) {
-        debugAssertM(false, format("Could not load font: %s", filename.c_str()));
-        return NULL;
-    }
+    if (_filename[1] == "") {
+        // First look relative to the current directory
+        Texture::splitFilenameAtWildCard(fullFilename, filenameBase, filenameExt);
 
-    BinaryInput b(filename, G3D_LITTLE_ENDIAN, true);
-    return new GFont(_rd, filename, b);
-}
-
-GFontRef GFont::fromMemory(const std::string& name, const uint8* bytes, const int size) {
-    BinaryInput b(bytes, size, G3D_LITTLE_ENDIAN, true, false); 
-    return new GFont(NULL, name, b);
-} 
-
-GFont::GFont(RenderDevice* _rd, const std::string& filename, BinaryInput& b) : renderDevice(_rd) {
-
-    debugAssertM(GLCaps::supports(TextureFormat::A8),
-        "This graphics card does not support the GL_ALPHA8 texture format used by GFont.");
-    debugAssertGLOk();
-
-    int ver = b.readInt32();
-    debugAssertM(ver == 1, "Can't read font files other than version 1");
-    (void)ver;
-
-    // Read the widths
-    for (int c = 0; c < 128; ++c) {
-        subWidth[c] = b.readUInt16();
-    }
-
-    baseline = b.readUInt16();
-    int texWidth = b.readUInt16();
-    charWidth  = texWidth / 16;
-    charHeight = texWidth / 16;
-
-    // The input may not be a power of 2
-    int width  = ceilPow2(charWidth * 16);
-    int height = ceilPow2(charHeight * 8);
-  
-    // Create a texture
-    const uint8* ptr = ((uint8*)b.getCArray()) + b.getPosition();
-
-    texture = 
-        Texture::fromMemory(filename, &ptr,
-            TextureFormat::A8, width, height, 1, TextureFormat::A8, 
-            Texture::CLAMP, Texture::TRILINEAR_MIPMAP, Texture::DIM_2D,
-            Texture::DEPTH_NORMAL, 1.0);
-}
-
-
-Vector2 GFont::texelSize() const {
-    return Vector2(charWidth, charHeight);
-}
-
-
-Vector2 GFont::drawString(
-    RenderDevice*       renderDevice,
-    const std::string&  s,
-    double              x,
-    double              y,
-    double              w,
-    double              h,
-    Spacing             spacing) const {
-
-    debugAssert(renderDevice != NULL);
-    const double propW = w / charWidth;
-    const int n = s.length();
-
-    // Shrink the vertical texture coordinates by 1 texel to avoid
-    // bilinear interpolation interactions with mipmapping.
-    float sy = h / charHeight;
-
-    float x0 = 0;
-    for (int i = 0; i < n; ++i) {
-        char c = s[i] & 127; // s[i] % 128; avoid using illegal chars
-
-        if (c != ' ') {
-            int row   = c / 16;
-            int col   = c & 15; // c % 16
-
-            // Fixed width
-            float sx = 0;
-            
-            if (spacing == PROPORTIONAL_SPACING) {
-                sx = (charWidth - subWidth[(int)c]) * propW * 0.5f;
-            }
-
-            float xx = x - sx;
-            //renderDevice->setTexCoord(0, Vector2(col * charWidth, row * charHeight + 1));
-            //renderDevice->sendVertex(Vector2(x - sx,     y + sy));
-            glTexCoord2f(col * charWidth, row * charHeight + 1);
-            glVertex2f(xx,     y + sy);
-
-            //renderDevice->setTexCoord(0, Vector2(col * charWidth, (row + 1) * charHeight - 2));
-            //renderDevice->sendVertex(Vector2(x- sx,      y + h - sy)); 
-            glTexCoord2f(col * charWidth, (row + 1) * charHeight - 2);
-            glVertex2f(xx,     y + h - sy); 
-
-            xx += w;
-            //renderDevice->setTexCoord(0, Vector2((col + 1) * charWidth - 1, (row + 1) * charHeight - 2));
-            //renderDevice->sendVertex(Vector2(x + w - sx, y + h - sy)); 
-            glTexCoord2f((col + 1) * charWidth - 1, (row + 1) * charHeight - 2);
-            glVertex2f(xx, y + h - sy); 
-
-            //renderDevice->setTexCoord(0, Vector2((col + 1) * charWidth - 1, row * charHeight + 1));
-            //renderDevice->sendVertex(Vector2(x + w - sx, y + sy));            
-            glTexCoord2f((col + 1) * charWidth - 1, row * charHeight + 1);
-            glVertex2f(xx, y + sy);
-                        
+        if (! fileExists(filenameBase + "up" + filenameExt)) {
+            // Look relative to the specified directory
+            filenameBase = directory + filenameBase;
         }
+    }
 
-        if (spacing == PROPORTIONAL_SPACING) {
-            x += propW * subWidth[(int)c];
+    TextureRef faceTextures[6];
+    bool useCubeMap;
+
+    if (GLCaps::supports_GL_ARB_texture_cube_map() && ! GLCaps::hasBug_normalMapTexGen()) {
+   
+        if (_filename[1] == "") {
+            // Specified one cube map
+            faceTextures[0] = Texture::fromFile(filenameBase + "*" + filenameExt, format, Texture::CLAMP, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_CUBE_MAP, 1.0, Texture::DEPTH_NORMAL, 1.0, 1.0f / scaleDownFactor);
         } else {
-            x += propW * subWidth[(int)'M'] * 0.85f;
-        }
-    }
-
-    renderDevice->minGLStateChange(8 * n);
-    renderDevice->minGLStateChange(8 * n);
-
-    // TODO: update the RenderDevice state count
-    return Vector2(x - x0, h);
-}
-
-
-Vector2 GFont::computePackedArray(
-    const std::string&  s,
-    double              x,
-    double              y,
-    double              w,
-    double              h,
-    Spacing             spacing,
-    Vector2*            array) const {
-
-    const double propW = w / charWidth;
-    const int n = s.length();
-
-    // Shrink the vertical texture coordinates by 1 texel to avoid
-    // bilinear interpolation interactions with mipmapping.
-    float sy = h / charHeight;
-
-    float x0 = 0;
-
-    const float mwidth = subWidth[(int)'M'] * 0.85f * propW;
-
-    int count = -1;
-    for (int i = 0; i < n; ++i) {
-        char c = s[i] & 127; // s[i] % 128; avoid using illegal chars
-
-        if (c != ' ') {
-            int row   = c >> 4; // fast version of c / 16
-            int col   = c & 15; // fast version of c % 16
-
-            // Fixed width
-            float sx = (spacing == PROPORTIONAL_SPACING) ?
-                (charWidth - subWidth[(int)c]) * propW * 0.5f : 0.0f;
-
-            float xx = x - sx;
-            // Tex, Vert
-            ++count;
-            array[count].x = col * charWidth;
-            array[count].y = row * charHeight + 1;
-
-            ++count;
-            array[count].x = xx;
-            array[count].y = y + sy;
-
-            
-            ++count;
-            array[count].x = col * charWidth;
-            array[count].y = (row + 1) * charHeight - 2;
-            
-            ++count;
-            array[count].x = xx;
-            array[count].y = y + h - sy;
-
-
-            xx += w;
-            ++count;
-            array[count].x = (col + 1) * charWidth - 1;
-            array[count].y = (row + 1) * charHeight - 2;
-            
-            ++count;
-            array[count].x = xx;
-            array[count].y = y + h - sy;
-    
-
-            ++count;
-            array[count].x = (col + 1) * charWidth - 1;
-            array[count].y = row * charHeight + 1;
-
-            ++count;
-            array[count].x = xx;
-            array[count].y = y + sy;
+            // Specified six filenames
+            faceTextures[0] = Texture::fromFile(_filename, format, Texture::CLAMP, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_CUBE_MAP, 1.0, Texture::DEPTH_NORMAL, 1.0, 1.0f / scaleDownFactor);
         }
 
-        x += (spacing == PROPORTIONAL_SPACING) ?
-            propW * subWidth[(int)c] : mwidth;
-    }
-
-    return Vector2(x - x0, h);
-}
-
-
-Vector2 GFont::draw2D(
-    RenderDevice*               renderDevice,
-    const std::string&          s,
-    const Vector2&              pos2D,
-    double                      size,
-    const Color4&               color,
-    const Color4&               border,
-    XAlign                      xalign,
-    YAlign                      yalign,
-    Spacing                     spacing) const {
-
-	debugAssert(renderDevice != NULL);
-
-    float x = pos2D.x;
-    float y = pos2D.y;
-
-    float h = size * 1.5f;
-    float w = h * charWidth / charHeight;
-
-    switch (xalign) {
-    case XALIGN_RIGHT:
-        x -= get2DStringBounds(s, size, spacing).x;
-        break;
-
-    case XALIGN_CENTER:
-        x -= get2DStringBounds(s, size, spacing).x / 2;
-        break;
-    
-    default:
-        break;
-    }
-
-    switch (yalign) {
-    case YALIGN_CENTER:
-        y -= h / 2.0;
-        break;
-
-    case YALIGN_BASELINE:
-        y -= baseline * h / (double)charHeight;
-        break;
-
-    case YALIGN_BOTTOM:
-        y -= h;
-        break;
-
-    default:
-        break;
-    }
-
-    float m[] = 
-       {1.0f / texture->getTexelWidth(), 0, 0, 0,
-        0, 1.0f / texture->getTexelHeight(), 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1};
-
-    renderDevice->pushState();
-        renderDevice->disableLighting();
-        renderDevice->setTextureMatrix(0, m);
-        renderDevice->setTexture(0, texture);
-
-        renderDevice->setTextureCombineMode(0, RenderDevice::TEX_MODULATE);
-
-        // This is BLEND_SRC_ALPHA because the texture has no luminance, only alpha
-        renderDevice->setBlendFunc(RenderDevice::BLEND_SRC_ALPHA,
-				   RenderDevice::BLEND_ONE_MINUS_SRC_ALPHA);
-
-        renderDevice->setAlphaTest(RenderDevice::ALPHA_GEQUAL, 1/255.0);
-
-        const float b = renderDevice->getBrightScale();
-
-        if (GLCaps::supports_GL_ARB_multitexture()) {
-            glActiveTextureARB(GL_TEXTURE0_ARB);
+        // For the cube map case, we don't need the other five texture slots
+        for (int t = 1; t < 6; ++t) {
+            faceTextures[t] = NULL;
         }
 
+        useCubeMap = true;
 
-        int numChars = 0;
-        for (unsigned int i = 0; i < s.length(); ++i) {
-            numChars += ((s[i] % 128) != ' ') ? 1 : 0;
-        }
-        if (numChars == 0) {
-            renderDevice->popState();
-            return Vector2(0, h);
-        }
-
-        // Packed vertex array; tex coord and vertex are interlaced
-        // For each character we need 4 vertices.
-
-        // MSVC 6 cannot use static allocation with a variable size argument
-        // so we revert to the more compiler specific alloca call. Gcc does not
-        // implement array[variable] well, so we use this everywhere.
-        Vector2* array = (Vector2*)System::malloc(numChars * 4 * 2 * sizeof(Vector2));
-
-        const Vector2 bounds = computePackedArray(s, x, y, w, h, spacing, array);
-
-        int N = numChars * 4;
-
-        renderDevice->beforePrimitive();
-
-        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-        glEnableClientState(GL_VERTEX_ARRAY);
-
-        // 2 coordinates per element, float elements, stride (for interlacing), count, pointer
-        glTexCoordPointer(2, GL_FLOAT, sizeof(Vector2) * 2, &array[0]);
-        glVertexPointer(2, GL_FLOAT, sizeof(Vector2) * 2, &array[1]);
-
-        if (border.a > 0.05f) {
-            renderDevice->setColor(Color4(border.r * b, border.g * b, border.b * b, border.a));
-            glMatrixMode(GL_MODELVIEW);
-            float lastDx = 0, lastDy = 0;
-            for (int dy = -1; dy <= 1; dy += 2) {
-                for (int dx = -1; dx <= 1; dx += 2) {
-                    if ((dx != 0) || (dy != 0)) {
-                        // Shift modelview matrix by dx, dy, but also undo the 
-                        // shift from the previous outline
-                        glTranslatef(dx - lastDx, dy - lastDy, 0);
-                        glDrawArrays(GL_QUADS, 0, N);
-                        lastDx = dx; lastDy = dy;
-                    }
-                }
-            }
-            glTranslatef(-lastDx, -lastDy, 0);
-        }
-
-        // Draw foreground
-        renderDevice->setColor(Color4(color.r * b, color.g * b, color.b * b, color.a));
-        glDrawArrays(GL_QUADS, 0, N);
-
-        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-        glDisableClientState(GL_VERTEX_ARRAY);
-
-        renderDevice->afterPrimitive();
-    renderDevice->popState();
-
-    System::free(array);
-    debugAssertGLOk();
-
-    return bounds;
-}
-
-
-Vector2 GFont::draw3D(
-    RenderDevice*               renderDevice,
-    const std::string&          s,
-    const CoordinateFrame&      pos3D,
-    double                      size,
-    const Color4&               color,
-    const Color4&               border,
-    XAlign                      xalign,
-    YAlign                      yalign,
-    Spacing                     spacing) const {
-    
-	debugAssert(renderDevice != NULL);
-
-    double x = 0;
-    double y = 0;
-
-    double h = size * 1.5;
-    double w = h * charWidth / charHeight;
-
-    switch (xalign) {
-    case XALIGN_RIGHT:
-        x -= get2DStringBounds(s, size, spacing).x;
-        break;
-
-    case XALIGN_CENTER:
-        x -= get2DStringBounds(s, size, spacing).x / 2;
-        break;
-    
-    default:
-        break;
-    }
-
-    switch (yalign) {
-    case YALIGN_CENTER:
-        y -= h / 2.0;
-        break;
-
-    case YALIGN_BASELINE:
-        y -= baseline * h / (double)charHeight;
-        break;
-
-    case YALIGN_BOTTOM:
-        y -= h;
-        break;
-
-    default:
-        break;
-    }
-
-
-    double m[] = 
-       {1.0 / texture->getTexelWidth(), 0, 0, 0,
-        0, 1.0 / texture->getTexelHeight(), 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1};
-
-    renderDevice->pushState();
-        // We need to get out of Y=up coordinates.
-        CoordinateFrame flipY;
-        flipY.rotation[1][1] = -1;
-        renderDevice->setObjectToWorldMatrix(pos3D * flipY);
-
-        renderDevice->setCullFace(RenderDevice::CULL_NONE);
-        renderDevice->setTextureMatrix(0, m);
-        renderDevice->setTexture(0, texture);
-
-        renderDevice->setTextureCombineMode(0, RenderDevice::TEX_MODULATE);
-        renderDevice->setBlendFunc(RenderDevice::BLEND_SRC_ALPHA, 
-				   RenderDevice::BLEND_ONE_MINUS_SRC_ALPHA);
-        renderDevice->setAlphaTest(RenderDevice::ALPHA_GEQUAL, 0.05);
-
-        renderDevice->disableLighting();
-        renderDevice->beginPrimitive(RenderDevice::QUADS);
-
-            if (border.a > 0.05f) {
-
-	        // Make the equivalent of a 3D "1 pixel" offset (the
-	        // default 2D text size is 12-pt with a 1pix border)
-
- 	        const double borderOffset = size / 12.0;
-                renderDevice->setColor(border);
-                for (int dy = -1; dy <= 1; dy += 2) {
-                    for (int dx = -1; dx <= 1; dx += 2) {
-                        if ((dx != 0) || (dy != 0)) {
-                            drawString(renderDevice, s,
-				               x + dx * borderOffset, 
-				               y + dy * borderOffset,
-				               w, h, spacing);
-                        }
-                    }
-                }
-            }
-
-            renderDevice->setColor(
-		        Color4(color.r * renderDevice->getBrightScale(),
-			       color.g * renderDevice->getBrightScale(), 
-			       color.b * renderDevice->getBrightScale(), 
-			       color.a));
-            Vector2 bounds = drawString(renderDevice, s, x, y, w, h, spacing);
-
-        renderDevice->endPrimitive();
-
-    renderDevice->popState();
-
-    return bounds;
-}
-
-
-Vector2 GFont::get2DStringBounds(
-    const std::string&  s,
-    double              size,
-    Spacing             spacing) const {
-
-    int n = s.length();
-
-    double h = size * 1.5;
-    double w = h * charWidth / charHeight;
-    double propW = w / charWidth;
-    double x = 0;
-    double y = h;
-
-    if (spacing == PROPORTIONAL_SPACING) {
-        for (int i = 0; i < n; ++i) {
-            char c   = s[i] & 127;
-            x += propW * subWidth[(int)c];
-        }
     } else {
-        x = subWidth[(int)'M'] * n * 0.85 * propW;
-    }
 
-    return Vector2(x, y);
+        // This card doesn't support cube maps; it probably has low memory as well, so we
+        // switch to bilinear instead of trilinear to save space on the mipmaps.
+
+        static const char* ext[] = {"up", "lf", "rt", "bk", "ft", "dn"};
+
+        if (_filename[1] == "") {
+            // Specified one cube map
+            for (int t = 0; t < 6; ++t) {
+                faceTextures[t] = Texture::fromFile(filenameBase + ext[t] + filenameExt, 
+                    format, Texture::CLAMP, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D,
+                    1.0, Texture::DEPTH_NORMAL, 1.0, 1.0f / scaleDownFactor);
+            }
+        } else {
+            // Native875ac0 fallback face order.
+            static const int faceOrder[6] = {2, 5, 4, 1, 0, 3};
+            // Specified six textures
+            for (int t = 0; t < 6; ++t) {
+                faceTextures[t] = Texture::fromFile(_filename[faceOrder[t]], 
+                    format, Texture::CLAMP, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D,
+                    1.0, Texture::DEPTH_NORMAL, 1.0, 1.0f / scaleDownFactor);
+            }
+        }
+
+        useCubeMap = false;
+    }
+    
+    return new Sky(rd, faceTextures, directory, useCubeMap, _drawCelestialBodies, quality);
 }
 
 
-void GFont::convertRAWINItoPWF(const std::string& infileBase, std::string outfile) {
-    debugAssert(fileExists(infileBase + ".raw"));
-    debugAssert(fileExists(infileBase + ".ini"));
+Sky::Sky(
+    RenderDevice*                       rd,
+    TextureRef                          textures[6],
+    const std::string&                   directory,
+    bool                                useCubeMap,
+    bool                                _drawCelestialBodies,
+    double                              quality) :
+    drawCelestialBodies(_drawCelestialBodies),
+    renderDevice(rd) {
 
-    if (outfile == "") {
-        outfile = infileBase + ".fnt";
+    if (useCubeMap) {
+        cubeMap = textures[0];
+    } else {
+        for (int i = 0; i < 6; ++i) {
+            texture[i] = textures[i];
+        }
     }
 
-    BinaryInput  pixel(infileBase + ".raw", G3D_LITTLE_ENDIAN);
-    TextInput    ini(infileBase + ".ini");
-    BinaryOutput out(outfile, G3D_LITTLE_ENDIAN);
+    const TextureFormat* format;
+    const TextureFormat* alphaFormat;
 
-    ini.readSymbol("[");
-    ini.readSymbol("Char");
-    ini.readSymbol("Widths");
-    ini.readSymbol("]");
-
-    // Version
-    out.writeInt32(1);
-
-    // Character widths
-    for (int i = 0; i < 128; ++i) {
-        int n = (int)ini.readNumber();
-        (void)n;
-        debugAssert(n == i);
-        ini.readSymbol("=");
-        int cw = (int)ini.readNumber();
-        out.writeInt16(cw);
+    if (quality > .66) {
+        format      = TextureFormat::RGB8;
+        alphaFormat = TextureFormat::RGBA8;
+    } else if (quality > .33) {
+        format      = TextureFormat::RGB_DXT1;
+        alphaFormat = TextureFormat::RGBA_DXT1;
+    } else {
+        format      = TextureFormat::RGBA_DXT5;
+        alphaFormat = TextureFormat::RGBA_DXT5;
     }
 
-    int width = (int)sqrt((double)pixel.size());
+    if (drawCelestialBodies) {
+        moon     = Texture::fromTwoFiles(directory + "moon.jpg", directory + "moon-alpha.jpg",
+            alphaFormat, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D, 
+            Texture::DEPTH_NORMAL, 1.0);
+
+        sun      = Texture::fromFile(directory + "sun.jpg", format, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D, 1.0, Texture::DEPTH_NORMAL, 1.0);
+        disk     = Texture::fromFile(directory + "lensflare.jpg", format, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D, 1.0, Texture::DEPTH_NORMAL, 1.0);
+        sunRays  = Texture::fromFile(directory + "sun-rays.jpg", format, Texture::TRANSPARENT_BORDER, Texture::BILINEAR_NO_MIPMAP, Texture::DIM_2D, 1.0, Texture::DEPTH_NORMAL, 1.0);
     
-    // Autodetect baseline from capital E
-    {
-        // Size of a character, in texels
-        int          w        = width / 16;
+        int i = 0;
 
-        int          x0       = ('E' % 16) * w;
-        int          y0       = ('E' / 16) * w;
+	    // If file exists, load the real starfield
+        if (fileExists(directory + "real.str")) {
+            BinaryInput in(directory + "real.str", G3D_LITTLE_ENDIAN, true);
+            int16 numStars;
+		    float32 x, y, z;
+
+	        std::string header = in.readString(5);
+	        debugAssert(header == "STARS"); (void)header;
+
+	        numStars = in.readInt16();
+	        star.resize(numStars);
+	        starIntensity.resize(numStars);
+
+		    // Read X, Y, Z, and intensity
+		    for(i = 0; i < numStars; i++) {
+			    x = SHORT_TO_FLOAT(in.readInt16());
+			    y = SHORT_TO_FLOAT(in.readInt16());
+			    z = SHORT_TO_FLOAT(in.readInt16());
+
+			    star[i] = Vector4(x, y, z, 0);
+
+			    starIntensity[i] = square(SHORT_TO_FLOAT(in.readInt16())) + .3f;
+	        }
+        } else {
+		    // Create a random starfield
+   		    star.resize(3000);
+    	    starIntensity.resize(star.size());
+   		    for (i = star.size() - 1; i >= 0; --i) {
+   			    star[i] = Vector4(Vector3::random(), 0);
+   			    starIntensity[i] = square(uniformRandom()) + .3f;
+   		    }
+ 	    }
+    }
+}
+
+
+Sky::~Sky() {
+}
+
+
+/**
+ Used to draw the sky, moon, and lens flare
+
+ @param C center
+ @param X a unit axis
+ @param Y a unit axis perpendicular to X
+ @param r radius of the sphere
+ */
+static void drawCelestialSphere(
+    RenderDevice*                       renderDevice,
+    const Vector4&                      C,
+    const Vector4&                      X,
+    const Vector4&                      Y,
+    const double                        r,
+    const Color4                        color) {
+
+    renderDevice->setColor(color);
+    renderDevice->beginPrimitive(RenderDevice::QUADS);
+		renderDevice->setTexCoord(0, Vector2(0, 0));
+        renderDevice->sendVertex(C + ( X + Y) * r);
+        renderDevice->setTexCoord(0, Vector2(0, 1));
+        renderDevice->sendVertex(C + ( X - Y) * r);
+        renderDevice->setTexCoord(0, Vector2(1, 1));
+		renderDevice->sendVertex(C + (-X - Y) * r);
+        renderDevice->setTexCoord(0, Vector2(1, 0));
+		renderDevice->sendVertex(C + (-X + Y) * r);
+	renderDevice->endPrimitive();
+}
+
+
+static void hackProjectionMatrix(RenderDevice* renderDevice) {
+	
+    Matrix4 P = renderDevice->getProjectionMatrix();
+
+    // Set the 3rd row (2nd index) so the depth always is in the middle of the depth range.
+
+    P[2][0] = 0;
+    P[2][1] = 0;
+    P[2][2] = -0.5;
+    P[2][3] = 0;
+
+    renderDevice->setProjectionMatrix(P);
+}
+
+
+void Sky::vertex(RenderDevice* renderDevice, 
+                 float x, float y, float z, float s, float t) const {
+    const double w = 0;
+    const bool cube = (cubeMap.notNull());
+
+    if (cube) {
+        // Texcoord generation will move this normal to tex coord 0
+        renderDevice->setNormal(Vector3(x,y,z));
+    } else {
+        if (!GLCaps::supports_GL_EXT_texture_edge_clamp()) {
+            // Move the edge coordinates towards the center just
+            // enough that the black clamped border isn't sampled.
+            if (s == 0) {
+                s += (0.6f / (float)texture[0]->texelWidth());
+            } else if (s == 1) {
+                s -= (0.6f / (float)texture[0]->texelWidth());
+            }
+            if (t == 0) {
+                t += (0.6f / (float)texture[0]->texelHeight());
+            } else if (t == 1) {
+                t -= (0.6f / (float)texture[0]->texelHeight());
+            }
+        }
+        renderDevice->setTexCoord(0, Vector2(s, t));
+    }
+    
+    renderDevice->sendVertex(Vector4(x,y,z,w));
+}
+
+
+void Sky::renderBox(RenderDevice* renderDevice) const {
+    renderDevice->pushState();
+
+    bool cube = (cubeMap.notNull());
+
+    if (cube) {
+        renderDevice->setTexture(0, cubeMap);
+
+        // On Radeon Mobility, explicit cube map coordinates don't work right.
+        // We instead put cube map coords in the normals and use texgen to copy
+        // them over
+        glActiveTextureARB(GL_TEXTURE0_ARB + 0);
+        glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_NORMAL_MAP_ARB);
+        glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_NORMAL_MAP_ARB);
+        glTexGeni(GL_R, GL_TEXTURE_GEN_MODE, GL_NORMAL_MAP_ARB);
+        glEnable(GL_TEXTURE_GEN_S);
+        glEnable(GL_TEXTURE_GEN_T);
+        glEnable(GL_TEXTURE_GEN_R);
+
+        CoordinateFrame cframe = renderDevice->getCameraToWorldMatrix();
+        cframe.translation = Vector3::zero();
+        renderDevice->setTextureMatrix(0, cframe);
+
+    } else {
+        // In the 6-texture case, the sky box is rotated 90 degrees
+        // (this is because the textures are loaded incorrectly)
+        CoordinateFrame cframe;
+        cframe.rotation = Matrix3::fromAxisAngle(Vector3::unitY(), toRadians(-90));
+        renderDevice->setObjectToWorldMatrix(cframe);
+        renderDevice->setTexture(0, texture[BK]);
+    }
+
+    float s = 1;
+    renderDevice->beginPrimitive(RenderDevice::QUADS);
+        vertex(renderDevice, -s, +s, -s, 0, 0);
+        vertex(renderDevice, -s, -s, -s, 0, 1);
+        vertex(renderDevice, +s, -s, -s, 1, 1);
+        vertex(renderDevice, +s, +s, -s, 1, 0);
+	renderDevice->endPrimitive();
         
-        const uint8* p        = pixel.getCArray();
-        bool         done     = false;
-        int          baseline = w * 2 / 3;
+    if (! cube) {
+        renderDevice->setTexture(0, texture[LT]);
+    }
+
+    renderDevice->beginPrimitive(RenderDevice::QUADS);
+        vertex(renderDevice, -s, +s, +s, 0, 0);
+        vertex(renderDevice, -s, -s, +s, 0, 1);
+        vertex(renderDevice, -s, -s, -s, 1, 1);
+        vertex(renderDevice, -s, +s, -s, 1, 0);
+	renderDevice->endPrimitive();
+
     
-        // Search up from the bottom for the first pixel
-        for (int y = y0 + w - 1; (y >= y0) && ! done; --y) {
-            for (int x = x0; (x < x0 + w) && ! done; ++x) {
-                if (p[x + y * w * 16] != 0) {
-                    baseline = y - y0 + 1;
-                    done = true;
+    if (! cube) {
+        renderDevice->setTexture(0, texture[FT]);
+    }
+
+    renderDevice->beginPrimitive(RenderDevice::QUADS);
+        vertex(renderDevice, +s, +s, +s, 0, 0);
+        vertex(renderDevice, +s, -s, +s, 0, 1);
+        vertex(renderDevice, -s, -s, +s, 1, 1);
+        vertex(renderDevice, -s, +s, +s, 1, 0);
+	renderDevice->endPrimitive();
+
+    if (! cube) {
+        renderDevice->setTexture(0, texture[RT]);
+    }
+
+    renderDevice->beginPrimitive(RenderDevice::QUADS);
+        vertex(renderDevice, +s, +s, +s, 1, 0);
+        vertex(renderDevice, +s, +s, -s, 0, 0);
+        vertex(renderDevice, +s, -s, -s, 0, 1);
+        vertex(renderDevice, +s, -s, +s, 1, 1);
+	renderDevice->endPrimitive();
+
+    if (! cube) {
+        renderDevice->setTexture(0, texture[UP]);
+    }
+
+    renderDevice->beginPrimitive(RenderDevice::QUADS);
+        vertex(renderDevice, +s, +s, +s, 1, 1);
+        vertex(renderDevice, -s, +s, +s, 1, 0);
+        vertex(renderDevice, -s, +s, -s, 0, 0);
+        vertex(renderDevice, +s, +s, -s, 0, 1);
+	renderDevice->endPrimitive();
+
+    if (! cube) {
+        renderDevice->setTexture(0, texture[DN]);
+    }
+
+    renderDevice->beginPrimitive(RenderDevice::QUADS);
+        vertex(renderDevice, +s, -s, -s, 0, 0);
+        vertex(renderDevice, -s, -s, -s, 0, 1);
+        vertex(renderDevice, -s, -s, +s, 1, 1);
+        vertex(renderDevice, +s, -s, +s, 1, 0);
+	renderDevice->endPrimitive();
+
+    if (cube) {
+        glDisable(GL_TEXTURE_GEN_S);
+        glDisable(GL_TEXTURE_GEN_T);
+        glDisable(GL_TEXTURE_GEN_R);
+    }
+    renderDevice->popState();
+
+}
+
+
+void Sky::render(
+    RenderDevice* renderDevice,
+    const LightingParameters&           lighting) {
+    debugAssertGLOk();
+    debugAssert(renderDevice != NULL);
+
+    renderDevice->pushState();
+        // Ignore depth, make sure we're not clipped by the far plane
+        hackProjectionMatrix(renderDevice);
+
+        // Eliminate the translation of the camera
+        CoordinateFrame matrix(Vector3::zero());
+	    matrix.rotation = renderDevice->getCameraToWorldMatrix().rotation;
+        renderDevice->setCameraToWorldMatrix(matrix);
+        renderDevice->setObjectToWorldMatrix(CoordinateFrame());
+
+        renderDevice->setColor(lighting.skyAmbient * renderDevice->getBrightScale());
+        renderDevice->setCullFace(RenderDevice::CULL_BACK);
+        renderDevice->disableDepthWrite();
+        renderDevice->setDepthTest(RenderDevice::DEPTH_ALWAYS_PASS);
+
+
+	    // Draw the sky box
+        renderDevice->resetTextureUnit(0);
+        debugAssertGLOk();
+        renderBox(renderDevice);
+        debugAssertGLOk();
+
+        if (drawCelestialBodies) {   
+            drawMoonAndStars(renderDevice, lighting);
+
+            drawSun(renderDevice, lighting);
+        }
+
+    renderDevice->popState();
+}
+
+
+void Sky::drawMoonAndStars(
+    RenderDevice*               renderDevice, 
+    const LightingParameters&   lighting) {
+
+    Vector3 moonPosition = lighting.physicallyCorrect ? lighting.trueMoonPosition : lighting.moonPosition;
+
+    Vector4 L(moonPosition,0);
+    Vector3 LcrossZ = moonPosition.cross(Vector3::unitZ()).direction();
+	Vector4 X(LcrossZ, 0);
+    Vector4 Y(moonPosition.cross(LcrossZ), 0);
+
+    // Draw stars
+    if (lighting.moonPosition.y > -0.3f) {
+
+        float k = (3.001 - square(lighting.skyAmbient.length()));// * renderDevice->getBrightScale();
+		float s = k;
+		k *= renderDevice->getBrightScale();
+		renderDevice->pushState();
+            // Rotate stars
+			renderDevice->setObjectToWorldMatrix((lighting.physicallyCorrect ? lighting.trueStarFrame : lighting.starFrame));
+			renderDevice->setBlendFunc(RenderDevice::BLEND_SRC_ALPHA, RenderDevice::BLEND_ONE);
+
+            // We use raw GL calls here for performance since the changing point size
+            // precludes the use of a vertex array.
+            glPushAttrib(GL_POINT_BIT|GL_CURRENT_BIT);
+
+                for (int i = star.size() - 1; i >= 0; --i) {
+                    const float b = starIntensity[i] * k;
+					glPointSize(starIntensity[i] * s);
+					glBegin(GL_POINTS);
+						glColor3f(b * lighting.emissiveScale.r, b * lighting.emissiveScale.g, b * lighting.emissiveScale.b);
+						glVertex3fv(star[i]);
+                    glEnd();
+                }
+
+            glPopAttrib();
+
+        renderDevice->popState();
+    }
+
+    renderDevice->setTexture(0, moon);
+    renderDevice->setBlendFunc(RenderDevice::BLEND_SRC_ALPHA, RenderDevice::BLEND_ONE_MINUS_SRC_ALPHA);
+    renderDevice->setAlphaTest(RenderDevice::ALPHA_GEQUAL, 0.05);
+    drawCelestialSphere(renderDevice, L, X, Y, .06, Color4(lighting.emissiveScale, min(1.0f, max(0.0f, moonPosition.y * 4.0f))));
+}
+
+
+void Sky::drawSun(
+    RenderDevice*               renderDevice, 
+    const LightingParameters&   lighting) {
+
+    Vector3 sunPosition = lighting.physicallyCorrect ? lighting.trueSunPosition : lighting.sunPosition;
+	
+    // Sun vector
+    Vector4 L(sunPosition,0);
+    Vector3 LcrossZ = sunPosition.cross(Vector3::unitZ()).direction();
+    Vector4 X(LcrossZ, 0);
+    Vector4 Y(sunPosition.cross(LcrossZ), 0);
+    
+    renderDevice->setTexture(0, sun);
+    renderDevice->setBlendFunc(RenderDevice::BLEND_ONE, RenderDevice::BLEND_ONE);
+    Color3 c(lighting.emissiveScale * .8f);
+
+    if (sunPosition.y < 0) {
+        // Fade out the sun as it goes below the horizon
+        c *= max(0.0f, (sunPosition.y + 0.1f) * 10.0f);
+    }
+
+    drawCelestialSphere(renderDevice, L, X, Y, 0.12f, c);
+}
+
+
+void Sky::renderLensFlare(
+    RenderDevice* renderDevice, 
+    const LightingParameters&           lighting) {
+	
+    debugAssert(renderDevice != NULL);
+
+    if (! drawCelestialBodies) {
+        return;
+    }
+
+    Vector3 sunPosition = lighting.physicallyCorrect ? lighting.trueSunPosition : lighting.sunPosition;
+
+    if (sunPosition.y < -.1) {
+        return;
+    }
+
+    renderDevice->pushState();
+
+        CoordinateFrame camera = renderDevice->getCameraToWorldMatrix();
+	    CoordinateFrame matrix;
+    	matrix.rotation = camera.rotation;
+        renderDevice->setCameraToWorldMatrix(matrix);
+	    renderDevice->setObjectToWorldMatrix(CoordinateFrame());
+
+        renderDevice->setColor(lighting.skyAmbient);
+        renderDevice->setCullFace(RenderDevice::CULL_BACK);
+        renderDevice->disableDepthWrite();
+        renderDevice->setDepthTest(RenderDevice::DEPTH_ALWAYS_PASS);
+        renderDevice->resetTextureUnit(0);
+
+        // Compute the sun's position using the 3D transformation
+        Vector4 pos = renderDevice->project(Vector4(sunPosition, 0));
+
+        if (sunPosition.dot(camera.getLookVector()) > 0) {
+
+            // Number of visible points on the sun
+            int visible = 0;
+            for (int dx = -1; dx <= 1; ++dx) {
+                for (int dy = -1; dy <= 1; ++dy) {
+                    double distanceToSun = 
+                        renderDevice->getDepthBufferValue(
+                         iRound(pos.x + dx * 15.0),
+                         iRound(pos.y + dy * 15.0));
+                    visible += (distanceToSun >= .99999) ? 1 : 0;
+                }
+            }
+
+            double fractionOfSunVisible = visible / 9.0;
+
+            if (fractionOfSunVisible > 0.0) {
+
+                // We need to switch to an infinite projection matrix
+                // to draw the flares.  Note that we must make this
+                // change *after* the depth buffer values have been
+                // read back.
+                hackProjectionMatrix(renderDevice);
+
+                renderDevice->setBlendFunc(RenderDevice::BLEND_ONE,
+                                           RenderDevice::BLEND_ONE);
+
+                // Make flares fade out near sunset and sunrise
+                float flareBrightness = sqrtf(max(sunPosition.y * 4.0f, 0.0f));
+
+                // Sun position
+                Vector4 L(sunPosition,0);
+                Vector3 LcrossZ = sunPosition.cross(Vector3::unitZ()).direction();
+                Vector4 X(LcrossZ, 0);
+				Vector4 Y(sunPosition.cross(LcrossZ), 0);
+
+                // Sun rays at dawn
+                if ((sunPosition.x > 0) && 
+                    (sunPosition.y >= -.1)) {
+
+                    renderDevice->setTexture(0, sunRays);
+                    double occlusionAttenuation = 
+                        (1 - square(2*fractionOfSunVisible - 1));
+
+                    Color4 col =
+                        Color4(1,1,1,1) * (occlusionAttenuation *
+                            0.4f * max(0.0f, min(1.0f, 1.0f - sunPosition.y * 2.0f / sqrtf(2.0f))));
+                    drawCelestialSphere(renderDevice, L, X , Y, 0.6, col);
+                }
+
+                renderDevice->setTexture(0, sun);
+                drawCelestialSphere(renderDevice, L, X, Y, .13f,
+                                    lighting.emissiveScale * fractionOfSunVisible * .5f);
+
+                // Lens flare
+                Vector4 C(camera.getLookVector(), 0);
+                static const double position[] = { .5,                    .5,                    -.25,                     -.75,                .45,                      .6,                    -.5,                   -.1,                   .55,                     -1.5,                       -2,                         1};
+                static const double size[]     = { .12,                   .05,                    .02,                      .02,                .02,                      .02,                    .01,                  .01,                   .01,                     .01,                        .01,                        0.05}; 
+                static const Color3 color[]    = {Color3(6, 4, 0) / 255, Color3(6, 4, 0) / 255, Color3(0, 12, 0) / 255, Color3(0, 12, 0) / 255, Color3(0, 12, 0) / 255, Color3(0, 12, 0) / 255, Color3(10, 0, 0) /255,  Color3(0, 12, 0) / 255, Color3(10,0,0) / 255, Color3::fromARGB(0x192125)/10,   Color3::fromARGB(0x1F2B1D)/10, Color3::fromARGB(0x1F2B1D)/10};
+                int numFlares     = 12;
+
+                renderDevice->setTexture(0, disk);
+                for (int i = 0; i < numFlares; ++i) {
+                    drawCelestialSphere(renderDevice, 
+                         C + (C - L) * (float)position[i], X, Y, (float)size[i], 
+                         Color4(color[i] * lighting.emissiveScale * flareBrightness, 1));
                 }
             }
         }
-        out.writeUInt16(baseline);
-    }
 
-    // Texture width
-    out.writeUInt16(width);
-
-    // The input may not be a power of 2, so size it up
-    int width2  = ceilPow2(width);
-    int height2 = ceilPow2(width / 2);
-
-    if ((width2 == width) && (height2 == (width/2))) {
-        // Texture
-        int num = width * (width / 2);
-        out.writeBytes(pixel.getCArray(), num);
-    } else {
-        // Pad
-        const uint8* ptr = pixel.getCArray();
-    
-//        int num = width * (width / 2);
-        for (int y = 0; y < height2; ++y) {
-            // Write the row
-            out.writeBytes(ptr, width);
-            ptr += width;
-
-            // Write the horizontal padding
-            out.skip(width2 - width);
-        }
-
-        // Write the vertical padding
-        out.skip((height2 - (width / 2)) * width2);
-    }
- 
-    out.compress();
-    out.commit(false);
+    renderDevice->popState();
 }
 
-}
+} // namespace
+
+

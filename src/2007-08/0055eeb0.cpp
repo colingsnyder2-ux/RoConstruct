@@ -1,30 +1,41 @@
-// from server: 76% by colin
-struct RBX_ClearBackpack {
-    int field_0x0;
-    int field_0x4;
-    int field_0x8;
-    int field_0xc;
-    bool method();
+// from server: 100% by EspClaude
+// roc 2007-08 0055eeb0  RBX::ClearBackpack::isEnabled (2008-06 0057df80 with 2007 offsets)
+struct Entry {
+    void* value;
+    void* owner;
 };
 
-extern "C" void* __cdecl sub_495820(int);
-extern "C" void* __cdecl sub_4887E0(void*);
+#include <vector>
+typedef std::vector<Entry> Children;
 
-bool RBX_ClearBackpack::method()
+struct Backpack {
+    char padding[0xc0];
+    Children* children;
+};
+
+struct Service {
+    Backpack* getBackpack();
+};
+
+extern "C" Service* findService(void*);
+
+struct ClearBackpack {
+    char padding[12];
+    void* context;
+    bool enabled();
+};
+
+bool ClearBackpack::enabled()
 {
-    void* p = sub_495820(field_0xc);
-    if (!p)
-        return false;
-    void* q = sub_4887E0(p);
-    if (!q)
-        return false;
-    int* r = *(int**)((char*)q + 0xc0);
-    if (r) {
-        int start = r[1];
-        if (start) {
-            int end = r[2];
-            int count = (end - start) >> 3;
-            return count != 0;
+    Service* service = findService(context);
+    if (service) {
+        Backpack* backpack = service->getBackpack();
+        if (backpack) {
+            Children* children = backpack->children;
+            unsigned int count = children
+                ? children->size()
+                : 0;
+            return 0U < count;
         }
     }
     return false;

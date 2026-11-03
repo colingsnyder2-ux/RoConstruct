@@ -1,22 +1,24 @@
-// from server: 30% by colin
-// roc 2007-08 00631134  unit: std::bad_alloc  size: 81 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 00631134
-
-extern "C" void __stdcall sub_631620(int);
-extern "C" void __stdcall sub_631665();
-extern "C" void __stdcall sub_631185();
-
-void __stdcall sub_631134(int a, int b, int c, int d, int e, int f)
+// from server: 87% by EspClaude
+// from server: 100% by colin
+// roc-flags: /O2 /GS /MD
+typedef void (__thiscall *CopyFunction)(void *, const void *);
+typedef void (__thiscall *Destructor)(void *);
+extern "C" void __stdcall array_unwind(void *, unsigned int, int, Destructor);
+#pragma optimize("s", on)
+extern "C" void __stdcall vector_copy_constructor(void *ptr, const void *src, unsigned int size, int count, CopyFunction copy, Destructor destructor)
 {
-    sub_631620(0x10);
-    int i = 0;
-    while (i < e)
-    {
-        ((void (__stdcall *)(int))f)(b);
-        a += c;
-        b += c;
-        i++;
+    int success = 0;
+    int i;
+    __try {
+        for (i = 0; i < count; ++i) {
+            copy(ptr, src);
+            ptr = (char *)ptr + size;
+            src = (const char *)src + size;
+        }
+        success = 1;
     }
-    sub_631185();
-    sub_631665();
+    __finally {
+        if (!success)
+            array_unwind(ptr, size, i, destructor);
+    }
 }

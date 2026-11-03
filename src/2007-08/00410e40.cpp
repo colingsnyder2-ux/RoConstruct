@@ -1,51 +1,39 @@
-// from server: 62% by colin
-extern "C" {
-    unsigned int __stdcall RegisterClipboardFormatA(const char*);
-    int __stdcall IsClipboardFormatAvailable(unsigned int);
-}
+// from server: 100% by EspClaude
+// roc 2007-08 00410e40  PasteVerb::isEnabled: Roblox clipboard format available and (not selection-only or exactly one selected)
+#include <vector>
+extern "C" __declspec(dllimport) unsigned int __stdcall RegisterClipboardFormatA(const char* lpszFormat);
+extern "C" __declspec(dllimport) int __stdcall IsClipboardFormatAvailable(unsigned int format);
 
-struct PasteVerb {
-    char pad[0xc];
-    void* field_c;
-    char field_10;
+struct Entry {
+    void* value;
+    void* owner;
+};
+typedef std::vector<Entry> Instances;
+
+struct Selection {
+    char padding[0x104];
+    Instances* items;
+};
+
+struct DataModel {
+    Selection* getSelection();
+};
+
+class PasteVerb {
+    char padding[0xc];
+    DataModel* dataModel;
+    bool intoSelection;
+public:
     bool isEnabled() const;
 };
 
-struct Inner {
-    char pad[0x104];
-    void* field_104;
-};
-
-struct Inner2 {
-    void* field_0;
-    void* field_4;
-    void* field_8;
-};
-
-void* __fastcall sub_410d40(void*);
-
-bool PasteVerb::isEnabled() const {
-    static unsigned int g_format = 0;
-    static bool g_init = false;
-    if (!g_init) {
-        g_init = true;
-        g_format = RegisterClipboardFormatA("Roblox");
-    }
-    if (IsClipboardFormatAvailable(g_format) != 1)
+bool PasteVerb::isEnabled() const
+{
+    static unsigned int format = RegisterClipboardFormatA("Roblox");
+    if (IsClipboardFormatAvailable(format) != 1)
         return false;
-    if (field_10 == 0)
+    if (!intoSelection)
         return true;
-    void* p;
-    if (field_c != 0)
-        p = sub_410d40(field_c);
-    else
-        p = 0;
-    Inner* in = (Inner*)((char*)p + 0x104);
-    Inner2* in2 = (Inner2*)in->field_104;
-    if (in2->field_4 == 0) {
-        int v = 0;
-        return v == 1;
-    }
-    int count = ((char*)in2->field_8 - (char*)in2->field_4) >> 3;
-    return count == 1;
+    Selection* selection = dataModel ? dataModel->getSelection() : 0;
+    return selection->items->size() == 1;
 }

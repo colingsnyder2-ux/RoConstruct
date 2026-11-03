@@ -1,123 +1,65 @@
-// from server: 66% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/FlagStand.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "v8datamodel/FlagStand.h"
-#include "v8datamodel/Flag.h"
-
-namespace RBX
+// from server: 100% by EspClaude
+// roc 2007-08 004a8160  template void Property::setValue<G3D::Color3>(const G3D::Color3&);
+namespace G3D { class Color3 { public: float r, g, b; }; }
+// RBX::Reflection ConstProperty::getValue<T> / Property::setValue<T> (reflection/property.h, boost::polymorphic_cast).
+// roc-flags: /O2 /GS /EHsc /MD
+#include <typeinfo>
+#include <memory>
+namespace boost {
+template <class Target, class Source>
+inline Target polymorphic_cast(Source* x)
 {
-	static Reflection::PropDescriptor<FlagStand, BrickColor> prop_Color("TeamColor", "Data", &FlagStand::getTeamColor, &FlagStand::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
-	static Reflection::SignalDesc<FlagStand, void(boost::shared_ptr<Instance>)> event_FlagCaptured("FlagCaptured", "Player");
-
-	FlagStand::FlagStand()
-	{
-		setName("FlagStand");
-	}
-
-	BrickColor FlagStand::getTeamColor() const
-	{
-		return teamColor;
-	}
-
-	void FlagStand::setTeamColor(BrickColor color)
-	{
-		teamColor = color;
-		raisePropertyChanged(PartInstance::prop_Color);
-	}
-
-	void FlagStand::AffixFlag(Flag* flag)
-	{
-		if (!GetFlag())
-		{
-			flag->setParent(getParent());
-
-			PartInstance* handle = flag->getHandle();
-
-			handle->setCoordinateFrame(G3D::CoordinateFrame());
-
-			G3D::Vector3 location = getLocation().translation;
-			location.y += 0.5f;
-
-			handle->moveToPoint(location);
-			handle->join();
-		}
-	}
-
-	Flag* FlagStand::GetFlag()
-	{
-		Primitive* primitive = getPrimitive();
-
-		for (RigidJoint* current = primitive->getFirstRigid(); current != NULL; current = primitive->getNextRigid(current))
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				Flag* flag = dynamic_cast<Flag*>(PartInstance::fromPrimitive(current->getPrimitive(i))->getParent());
-				if (flag)
-					return flag;
-			}
-		}
-
-		return NULL;
-	}
-
-	void FlagStand::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(newProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->RegisterFlagStand(this);
-
-			standTouched = PartInstance::event_Touched.connect(this, boost::bind(&FlagStand::onEvent_standTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(oldProvider);
-			RBXASSERT(flagStandService);
-
-			flagStandService->UnregisterFlagStand(this);
-
-			standTouched.disconnect();
-		}
-	}
-
-	FlagStandService::FlagStandService()
-	{
-		setName("FlagStandService");
-		propArchivable.setValue(this, false);
-	}
-
-	FlagStandService::~FlagStandService() {}
-
-	FlagStand* FlagStandService::FindStandWithFlag(Flag* f)
-	{
-		if (flagStands.empty())
-			return NULL;
-
-		for (std::list<FlagStand*>::const_iterator iter = flagStands.begin(); iter != flagStands.end(); iter++)
-		{
-			if ((*iter)->GetFlag() == f)
-				return *iter;
-		}
-
-		return NULL;
-	}
-
-	void FlagStandService::RegisterFlagStand(FlagStand* s)
-	{
-		flagStands.push_back(s);
-	}
-
-	void FlagStandService::UnregisterFlagStand(FlagStand* s)
-	{
-		flagStands.remove(s);
-	}
+    Target tmp = dynamic_cast<Target>(x);
+    if (tmp == 0) throw std::bad_cast();
+    return tmp;
 }
+}
+namespace G3D { class Vector3 { public: float x, y, z; }; }
+namespace RBX {
+namespace Reflection {
+class DescribedBase;
+class PropertyDescriptor {
+public:
+    virtual ~PropertyDescriptor();
+    char pad[0x14];
+};
+template<typename PropType>
+class TypedPropertyDescriptor : public PropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        virtual bool isReadOnly() const = 0;
+        virtual PropType getValue(const DescribedBase*) const = 0;
+        virtual void setValue(DescribedBase*, const PropType&) const = 0;
+    };
+protected:
+    std::auto_ptr<GetSet> getset;
+public:
+    virtual ~TypedPropertyDescriptor();
+    PropType getValue(const DescribedBase* object) const { return getset->getValue(object); }
+    void setValue(DescribedBase* object, const PropType& value) const { getset->setValue(object, value); }
+};
+class ConstProperty {
+protected:
+    const PropertyDescriptor* descriptor;
+    const DescribedBase* instance;
+public:
+    template<typename T>
+    T getValue() const
+    {
+        const TypedPropertyDescriptor<T>* value = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+        return value->getValue(instance);
+    }
+};
+class Property : public ConstProperty {
+public:
+    DescribedBase* getInstance() const { return const_cast<DescribedBase*>(instance); }
+    template<typename T>
+    void setValue(const T& value)
+    {
+        const TypedPropertyDescriptor<T>* typedProp = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+        typedProp->setValue(getInstance(), value);
+    }
+};
+template void Property::setValue<G3D::Color3>(const G3D::Color3&);
+}}

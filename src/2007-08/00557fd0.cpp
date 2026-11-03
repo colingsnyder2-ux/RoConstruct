@@ -1,135 +1,92 @@
-// from server: 60% by colin
-struct DataModel;
+// from server: 100% by EspClaude
+// roc 2007-08 00557fd0  RBX::DataModel::processGui (2007 layout, self-contained stand-ins)
+// roc-flags: /O2 /GS /EHsc /MD /fp:fast
+namespace G3D {
+class Vector2int16 { public: short x, y; };
+class Vector2 { public: float x, y;
+  Vector2(const Vector2int16& v) : x(v.x), y(v.y) {}
+  Vector2& operator=(const Vector2& o) { x = o.x; y = o.y; return *this; } };
+}
 
-struct Arg {
-    int type;
+namespace RBX {
+class UIEvent {
+public:
+    int eventType;
     int a;
     int b;
-    short c;
-    short d;
+    G3D::Vector2int16 mousePosition;
+    bool isMouseEvent() const
+    {
+        return eventType == 1 || eventType == 2 || eventType == 3
+            || eventType == 4 || eventType == 5 || eventType == 6;
+    }
+};
+class GuiRoot;
+class GuiEvent : public UIEvent {
+public:
+    GuiRoot* root;
+    GuiEvent(const UIEvent& e, GuiRoot* r) : UIEvent(e), root(r) {}
+};
+class GuiTarget;
+class GuiResponse {
+public:
+    int used;
+    GuiTarget* target;
+    GuiResponse() : used(0), target(0) {}
+    bool wasUsed() const { return used != 0; }
+};
+class GuiTarget {
+public:
+    virtual GuiResponse process(const GuiEvent& event) = 0;
+};
+class GuiPad { public: virtual ~GuiPad(); char pad[0xe4]; };
+class GuiItem : public GuiPad, public GuiTarget {};
+class WorkspacePad { public: virtual ~WorkspacePad(); char pad[0x27c]; };
+class Workspace : public WorkspacePad, public GuiTarget {};
+class RootPad { public: virtual ~RootPad(); };
+class GuiRoot { public: int x; };
+class DataModelPad { public: char pad[0x160]; };
+
+extern G3D::Vector2 lastMousePosition;
+void updateMouse(class DataModel* dataModel);
+
+class DataModel : public DataModelPad, public GuiRoot {
+public:
+    char pad1[0x1c];
+    GuiItem* gui3;
+    char pad2[4];
+    Workspace* workspace;
+    char pad3[0x14];
+    GuiItem* gui2;
+    char pad4[4];
+    GuiItem* gui1;
+    char pad5[4];
+    GuiTarget* guiTarget;
+    bool guiTargetNotWorkspace;
+    GuiResponse processAccelerators(const GuiEvent& event);
+    void processGui(const UIEvent& event);
 };
 
-struct RetVal {
-    int lo;
-    int hi;
-};
-
-struct Vtbl {
-    void* pad[0x3a];
-    RetVal* (__stdcall *fn)(void* self, RetVal* out, Arg* in);
-};
-
-struct Obj {
-    Vtbl* vt;
-};
-
-struct DataModel {
-    char pad[0x160];
-    char field160[0x50];
-    void* field1b0;
-    char field1b4;
-    void method(Arg* arg);
-};
-
-extern float g_8c1e64;
-extern float g_8c1e68;
-
-extern "C" void __cdecl sub_48e550(DataModel* dm);
-extern "C" RetVal* __stdcall sub_557cc0(DataModel* dm, RetVal* out, Arg* in);
-
-void DataModel::method(Arg* arg) {
-    int t = arg->type;
-    if (t == 1 || t == 2 || t == 3 || t == 4 || t == 5 || t == 6) {
-        int cx = arg->c;
-        int dx = arg->d;
-        g_8c1e64 = (float)cx;
-        g_8c1e68 = (float)dx;
+void DataModel::processGui(const UIEvent& event)
+{
+    if (event.isMouseEvent()) {
+        lastMousePosition = G3D::Vector2(event.mousePosition);
     }
-
-    void* p160;
-    if (this) {
-        p160 = (char*)this + 0x160;
-    } else {
-        p160 = 0;
-    }
-
-    Arg local;
-    local.type = arg->type;
-    local.a = arg->a;
-    local.b = arg->b;
-    local.c = arg->c;
-    local.d = arg->d;
-
-    RetVal r;
-    r.lo = 0;
-    r.hi = 0;
-
-    void* p1b0 = this->field1b0;
-    RetVal* result;
-    if (p1b0) {
-        Obj* o = (Obj*)p1b0;
-        result = o->vt->fn(p1b0, &r, &local);
-    } else {
-        result = &r;
-    }
-
-    int lo = result->lo;
-    int hi = result->hi;
-
-    if (lo == 0) {
-        Obj* o1 = (Obj*)(*(char**)((char*)this + 0x1a8));
-        result = o1->vt->fn((char*)o1 + 0xe8, &r, &local);
-        lo = result->lo;
-        hi = result->hi;
-    }
-
-    if (lo == 0) {
-        Obj* o2 = (Obj*)(*(char**)((char*)this + 0x1a0));
-        result = o2->vt->fn((char*)o2 + 0xe8, &r, &local);
-        lo = result->lo;
-        hi = result->hi;
-    }
-
-    if (lo == 0) {
-        Obj* o3 = (Obj*)(*(char**)((char*)this + 0x180));
-        result = o3->vt->fn((char*)o3 + 0xe8, &r, &local);
-        lo = result->lo;
-        hi = result->hi;
-    }
-
-    if (lo == 0) {
-        result = sub_557cc0(this, &r, &local);
-        lo = result->lo;
-        hi = result->hi;
-    }
-
-    bool flag;
-    if (lo != 0) {
-        void* p188 = *(void**)((char*)this + 0x188);
-        void* cmp;
-        if (p188) {
-            cmp = (char*)p188 + 0x280;
-        } else {
-            cmp = 0;
-        }
-        flag = (this->field1b0 != cmp);
-    } else {
-        flag = false;
-    }
-
-    this->field1b4 = flag ? 1 : 0;
-
-    if (lo == 0) {
-        Obj* o4 = (Obj*)(*(char**)((char*)this + 0x188));
-        result = o4->vt->fn((char*)o4 + 0x280, &r, &local);
-        lo = result->lo;
-        hi = result->hi;
-    }
-
-    int t2 = arg->type;
-    if (t2 == 1 || t2 == 2 || t2 == 3 || t2 == 4 || t2 == 5 || t2 == 6 || t2 == 9) {
-        sub_48e550(this);
-    }
-
-    this->field1b0 = (void*)hi;
+    GuiEvent guiEvent(event, this);
+    GuiResponse response = guiTarget ? guiTarget->process(guiEvent) : GuiResponse();
+    if (!response.wasUsed())
+        response = gui1->process(guiEvent);
+    if (!response.wasUsed())
+        response = gui2->process(guiEvent);
+    if (!response.wasUsed())
+        response = gui3->process(guiEvent);
+    if (!response.wasUsed())
+        response = processAccelerators(guiEvent);
+    guiTargetNotWorkspace = response.wasUsed() && guiTarget != workspace;
+    if (!response.wasUsed())
+        response = workspace->process(guiEvent);
+    if (event.isMouseEvent() || event.eventType == 9)
+        updateMouse(this);
+    guiTarget = response.target;
+}
 }

@@ -1,30 +1,28 @@
-// from server: 71% by colin
-struct VerbContainer;
+// from server: 100% by EspClaude
+// roc 2007-08 00563c60  selection verb isEnabled: selection is non-empty
+#include <vector>
+struct Entry {
+    void* value;
+    void* owner;
+};
+typedef std::vector<Entry> Instances;
 
-struct Verb {
-    char pad[0x14];
-    VerbContainer* getContainer();
-
-    bool isEnabled();
+struct Selection {
+    char padding[0x104];
+    Instances* items;
 };
 
-struct VerbContainer {
-    char pad[0x104];
-    void* begin;
-    void* end;
+struct SelectionClient {
+    Selection* createService(bool) const;
 };
 
-bool Verb::isEnabled()
+struct SelectionVerb {
+    char padding[0x14];
+    SelectionClient selection;
+    bool isEnabled() const;
+};
+
+bool SelectionVerb::isEnabled() const
 {
-    VerbContainer* c = getContainer();
-    void* p = *(void**)((char*)c + 0x104);
-    void* b = *(void**)((char*)p + 4);
-    if (b == 0) {
-        int e = 0;
-        return (e - (int)b) != 0;
-    }
-    void* e = *(void**)((char*)p + 8);
-    int n = (int)((char*)e - (char*)b) >> 3;
-    int z = 0;
-    return (z - n) != 0;
+    return 0U < selection.createService(true)->items->size();
 }

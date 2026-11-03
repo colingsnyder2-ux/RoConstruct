@@ -1,29 +1,26 @@
-// from server: 67% by colin
-struct BoundFuncDesc {
-    void* function;
-    void* construct(void* out, int a, int b);
+// from server: 100% by EspClaude
+// roc 2007-08 004a1070  RBX::Network::operator>>(RakNet::BitStream&, BrickColor&) (Streaming.cpp; 2007 has no read-failure throw)
+// roc-flags: /O2 /GS /EHsc /MD
+#include <vector>
+namespace RakNet {
+class BitStream {
+public:
+    bool ReadBits(unsigned char* output, int numberOfBitsToRead, const bool alignBitsToRight = true);
 };
-
-struct ArgList {
-    void* begin;
-    void* end;
+}
+namespace RBX {
+class BrickColor {
+public:
+    int number;
+    static const std::vector<BrickColor>& colorPalette();
 };
-
-extern "C" void __cdecl _invalid_parameter_noinfo();
-
-void __stdcall sub_49F9A0(void* out, int a, int b);
-
-ArgList* __cdecl sub_586610();
-
-void* BoundFuncDesc::construct(void* out, int a, int b) {
-    int local = 0;
-    sub_49F9A0(&local, 5, 1);
-    ArgList* list = sub_586610();
-    unsigned int index = (unsigned int)out;
-    if (list->begin == 0 || index >= ((char*)list->end - (char*)list->begin) / 4) {
-        _invalid_parameter_noinfo();
-    }
-    *(int*)&local = ((int*)list->begin)[index];
-    *(int*)out = local;
-    return this;
+namespace Network {
+RakNet::BitStream& operator>>(RakNet::BitStream& stream, BrickColor& value)
+{
+    unsigned int index = 0;
+    stream.ReadBits((unsigned char*)&index, 5);
+    value = BrickColor::colorPalette()[index];
+    return stream;
+}
+}
 }

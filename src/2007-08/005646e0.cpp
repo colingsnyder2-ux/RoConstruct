@@ -1,35 +1,36 @@
-// from server: 77% by colin
-struct TrackCameraCommand {
-    char pad[0x14];
-    int field14;
-    char pad2[0x20 - 0x18];
-    void* field20;
-    bool method();
+// from server: 100% by EspClaude
+// roc 2007-08 005646e0  RBX::TrackCameraCommand::isEnabled: non-empty selection and exactly one selected item
+#include <vector>
+struct Entry {
+    void* value;
+    void* owner;
+};
+typedef std::vector<Entry> Instances;
+
+struct Selection {
+    char padding[0x104];
+    Instances* items;
+};
+struct SelectionClient {
+    Selection* createService(bool) const;
+};
+struct DataModel {
+    Selection* getSelection();
 };
 
-extern "C" void* __fastcall sub_562300(int* p, int a);
-extern "C" void* __fastcall sub_410d40(void* p);
+class TrackCameraCommand {
+    char padding[0x14];
+    SelectionClient selection;
+    char padding2[8];
+    DataModel* dataModel;
+public:
+    bool isEnabled() const;
+};
 
-bool TrackCameraCommand::method() {
-    void* r = sub_562300(&field14, 1);
-    int* p = *(int**)((char*)r + 0x104);
-    int count = 0;
-    if (p[1] != 0) {
-        count = (p[2] - p[1]) >> 3;
-    }
-    if (count == 0) {
+bool TrackCameraCommand::isEnabled() const
+{
+    if (selection.createService(true)->items->size() == 0)
         return false;
-    }
-    void* q;
-    if (field20 != 0) {
-        q = sub_410d40(field20);
-    } else {
-        q = 0;
-    }
-    int* p2 = *(int**)((char*)q + 0x104);
-    int count2 = 0;
-    if (p2[1] != 0) {
-        count2 = (p2[2] - p2[1]) >> 3;
-    }
-    return count2 == 1;
+    Selection* s = dataModel ? dataModel->getSelection() : 0;
+    return s->items->size() == 1;
 }

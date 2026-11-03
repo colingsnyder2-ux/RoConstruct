@@ -1,195 +1,202 @@
-// from server: 27% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 77% by EspClaude
+// from server: 100% by EspClaude
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+#include <intrin.h>
+#include <vector>
 
-extern "C" int __stdcall FlashWindow(void*, int);
-extern "C" int __stdcall SetForegroundWindow(void*);
-extern "C" int __stdcall CompareStringA(const char*, const char*);
+template <class T> class bstr {
+public:
+    __declspec(noinline) bstr() { _Mysize = 0; }
+    __declspec(noinline) ~bstr() { _Mysize = 0; }
+    __declspec(noinline) bstr& operator=(const bstr& r) { _Mysize = r._Mysize; return *this; }
+    __declspec(noinline) bstr& operator=(const T* r) { _Mysize = 0; return *this; }
+    __declspec(noinline) const T* c_str() const { return _Buf; }
+    __declspec(noinline) unsigned int size() const { return _Mysize; }
+    void* _Myaux;
+    T _Buf[16];
+    unsigned int _Mysize;
+    unsigned int _Myres;
+};
+extern template class __declspec(dllimport) bstr<char>;
+typedef bstr<char> string_;
+__declspec(dllimport) bool operator==(const string_&, const char*);
 
-struct RefCounted {
-    void* vptr;
-    long refcount;
-    long weakrefcount;
+namespace boost {
+struct lock_error { lock_error(); };
+namespace detail {
+struct sp_counted_base {
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
+struct shared_count {
+    sp_counted_base* pi_;
+    shared_count() : pi_(0) {}
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) _InterlockedIncrement(&pi_->use_count_); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+    shared_count& operator=(const shared_count& r);
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    shared_ptr() : px(0), pn() {}
+    template<class Y> shared_ptr(const shared_ptr<Y>& r) : px(r.px), pn(r.pn) {}
+    void reset();
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+    T& operator*() const { return *px; }
+    typedef T* shared_ptr::*unspecified_bool_type;
+    operator unspecified_bool_type() const { return px == 0 ? 0 : &shared_ptr::px; }
 };
 
-struct Doc {
-    char pad[0x78];
-    void* field78;
-    int method60();
-    int doWork();
+}
+
+namespace RBX {
+class RunService { public: char pad[0x1b4]; int runState; void setRunState(int s); };
+class Visit { public: string_ getUploadUrl() const; };
+class ServiceProvider {
+public:
+    virtual ~ServiceProvider();
+    template<class T> T* findServiceT() const;
+    template<class T> static T* find(const ServiceProvider* context)
+    {
+        return context ? context->findServiceT<T>() : 0;
+    }
 };
-
-struct Inner {
-    void* vptr;
-    int field4;
-    int field14c;
+class DataModel : public ServiceProvider {};
+class ReadRequest {
+public:
+    ReadRequest(boost::shared_ptr<const DataModel> dm);
+    ~ReadRequest();
+    void* a; void* b; void* c;
 };
+}
+extern "C" __declspec(dllimport) int __stdcall SetForegroundWindow(void* hWnd);
+extern "C" __declspec(dllimport) int __stdcall FlashWindow(void* hWnd, int bInvert);
 
-struct Str {
-    char data[0x20];
+class CWnd { public: virtual ~CWnd(); char pad[0x1c]; void* m_hWnd; };
+class CWinThread { public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual void v24();
+    virtual void v25();
+    virtual void v26();
+    virtual void v27();
+    virtual void v28();
+    virtual void v29();
+    virtual void v30();
+    virtual CWnd* GetMainWnd();
 };
-
-struct Holder {
-    void* ptr;
-};
-
-extern "C" void* __stdcall sub_403800(void*);
-extern "C" void* __stdcall sub_403830(void*);
-extern "C" void __stdcall sub_40d550(void*);
-extern "C" void __stdcall sub_44cf70(void*);
-extern "C" void* __stdcall sub_44cfd0(void*, void*);
-extern "C" void __stdcall sub_44d2b0(void*, void*, void*);
-extern "C" void* __stdcall sub_450b40(void*);
-extern "C" void* __stdcall sub_450ec0(void*);
-extern "C" void __stdcall sub_45bc30(void*);
-extern "C" void __stdcall sub_492360(void*);
-extern "C" void __stdcall sub_52d780(void*, int);
-extern "C" void __stdcall sub_5595a0(void*);
-extern "C" void* __stdcall sub_62fe2a(void*);
-extern "C" void* __stdcall sub_6303d0();
-extern "C" void* __stdcall sub_6308fe(void*);
-extern "C" void __stdcall sub_630a1e();
-
-extern void* g_791a08;
-
-int Doc::doWork()
+CWinThread* __stdcall AfxGetThread();
+inline CWnd* AfxGetMainWnd()
 {
-    RefCounted* rc;
-    void* tmp;
-    Inner* inner;
-    int result;
-    int flag;
-    int b;
-    Str str;
-    Holder h;
-    void* p;
+    CWinThread* pThread = AfxGetThread();
+    return pThread != 0 ? pThread->GetMainWnd() : 0;
+}
 
-    tmp = sub_403800(&rc);
-    flag = (*(int*)tmp == 0);
-    if (rc != 0) {
-        if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-            ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[1])(rc);
-            if (_InterlockedExchangeAdd(&rc->weakrefcount, -1) == 1) {
-                ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[2])(rc);
-            }
-        }
-    }
-    if (flag) {
+class CRobloxView { public: boost::shared_ptr<RBX::DataModel> getDataModel(); };
+class CPublishDialog {
+public:
+    CPublishDialog(CRobloxView* view, CWnd* parent = 0);
+    ~CPublishDialog();
+    int DoModal();
+    char data[0x130];
+};
+
+class CDocument {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual int IsModified();
+    int SaveModified();
+};
+
+class CRobloxDoc : public CDocument {
+public:
+    char pad[0x90];
+    CRobloxView* view;
+    boost::shared_ptr<RBX::DataModel> getDataModel();
+    int SaveModified();
+};
+
+int CRobloxDoc::SaveModified()
+{
+    if (!view || !view->getDataModel())
         return 1;
-    }
-    if (this->method60() == 0) {
+    if (!IsModified())
         return 1;
+    RBX::ReadRequest request(getDataModel());
+    bool wasRunning = RBX::ServiceProvider::find<RBX::RunService>(getDataModel().get())->runState == 1;
+    RBX::ServiceProvider::find<RBX::RunService>(getDataModel().get())->setRunState(2);
+    RBX::Visit* visit = RBX::ServiceProvider::find<RBX::Visit>(getDataModel().get());
+    if (!visit || visit->getUploadUrl() == "NoVisit") {
+        SetForegroundWindow(AfxGetMainWnd()->m_hWnd);
+        return CDocument::SaveModified();
     }
-
-    sub_403830(&rc);
-    sub_40d550(&rc);
-    if (rc != 0) {
-        if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-            ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[1])(rc);
-            if (_InterlockedExchangeAdd(&rc->weakrefcount, -1) == 1) {
-                ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[2])(rc);
-            }
-        }
-    }
-
-    sub_403830(&rc);
-    if (rc != 0) {
-        inner = (Inner*)sub_450ec0(rc);
-    } else {
-        inner = 0;
-    }
-    flag = (inner->field14c == 1);
-    if (rc != 0) {
-        if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-            ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[1])(rc);
-            if (_InterlockedExchangeAdd(&rc->weakrefcount, -1) == 1) {
-                ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[2])(rc);
-            }
-        }
-    }
-
-    sub_403830(&rc);
-    if (rc != 0) {
-        inner = (Inner*)sub_450ec0(rc);
-    } else {
-        inner = 0;
-    }
-    sub_52d780(inner, 2);
-    if (rc != 0) {
-        if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-            ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[1])(rc);
-            if (_InterlockedExchangeAdd(&rc->weakrefcount, -1) == 1) {
-                ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[2])(rc);
-            }
-        }
-    }
-
-    sub_403830(&rc);
-    if (rc != 0) {
-        p = sub_450b40(rc);
-    } else {
-        p = 0;
-    }
-    if (rc != 0) {
-        if (_InterlockedExchangeAdd(&rc->refcount, -1) == 1) {
-            ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[1])(rc);
-            if (_InterlockedExchangeAdd(&rc->weakrefcount, -1) == 1) {
-                ((void (__thiscall*)(RefCounted*))((void**)rc->vptr)[2])(rc);
-            }
-        }
-    }
-
-    if (p != 0) {
-        sub_44cfd0(p, &str);
-        b = 1;
-        if (CompareStringA((const char*)&str, (const char*)g_791a08) == 0) {
-            b = 0;
-        }
-    } else {
-        b = 1;
-    }
-
-    if (b) {
-        void* app = sub_6303d0();
-        if (app != 0) {
-            app = ((void* (__thiscall*)(void*))((void**)app)[0x7c/4])(app);
-        } else {
-            app = 0;
-        }
-        SetForegroundWindow(*(void**)((char*)app + 0x20));
-        result = (int)sub_6308fe(this);
-        sub_5595a0(&h);
-        return result;
-    }
-
-    sub_44cfd0(p, &str);
-    b = (FlashWindow(&str, 0) == 0);
-    if (b) {
-        sub_5595a0(&h);
+    if (visit->getUploadUrl().size() == 0)
         return 1;
-    }
-
-    void* app = sub_6303d0();
-    if (app != 0) {
-        app = ((void* (__thiscall*)(void*))((void**)app)[0x7c/4])(app);
-    } else {
-        app = 0;
-    }
-    FlashWindow(*(void**)((char*)app + 0x20), 0);
-
-    sub_44d2b0(&str, this->field78, 0);
-    result = (int)sub_62fe2a(&str);
-    if (result == 1 && flag) {
-        sub_403800(&rc);
-        if (rc != 0) {
-            inner = (Inner*)sub_450ec0(rc);
-        } else {
-            inner = 0;
-        }
-        sub_44cf70(inner);
-        sub_492360(&rc);
-    }
-    sub_45bc30(&str);
-    sub_5595a0(&h);
+    FlashWindow(AfxGetMainWnd()->m_hWnd, 0);
+    CPublishDialog dlg(view, 0);
+    int result = dlg.DoModal() == 1;
+    if (!result && wasRunning)
+        RBX::ServiceProvider::find<RBX::RunService>(view->getDataModel().get())->setRunState(1);
     return result;
 }

@@ -1,42 +1,65 @@
-// from server: 98% by EspClaude
-// from server: 100% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// from server: 100% by EspClaude
+// roc 2007-08 004a7f20  template G3D::Color3 ConstProperty::getValue<G3D::Color3>() const;
+namespace G3D { class Color3 { public: float r, g, b; }; }
+// RBX::Reflection ConstProperty::getValue<T> / Property::setValue<T> (reflection/property.h, boost::polymorphic_cast).
+// roc-flags: /O2 /GS /EHsc /MD
 #include <typeinfo>
+#include <memory>
 namespace boost {
-template<class Target, class Source>
+template <class Target, class Source>
 inline Target polymorphic_cast(Source* x)
 {
     Target tmp = dynamic_cast<Target>(x);
-    if (tmp == 0)
-        throw std::bad_cast("bad cast");
+    if (tmp == 0) throw std::bad_cast();
     return tmp;
 }
 }
-namespace boost { template<class T> class shared_ptr; }
-namespace RBX { class Instance; }
-namespace G3D { class Color3; class Vector3 { float x,y,z; }; }
-namespace RBX { class BrickColor; namespace Soundscape { class SoundId; } }
-struct AccessorT { virtual void s0() = 0; virtual void s1() = 0; virtual G3D::Vector3 get(void*) = 0; };
-namespace RBX { namespace Reflection {
-class PropertyDescriptor { public: virtual ~PropertyDescriptor(); };
-template<class T>
+namespace G3D { class Vector3 { public: float x, y, z; }; }
+namespace RBX {
+namespace Reflection {
+class DescribedBase;
+class PropertyDescriptor {
+public:
+    virtual ~PropertyDescriptor();
+    char pad[0x14];
+};
+template<typename PropType>
 class TypedPropertyDescriptor : public PropertyDescriptor {
 public:
-    unsigned char padding[20];
-    AccessorT* accessor;
+    class GetSet {
+    public:
+        virtual bool isReadOnly() const = 0;
+        virtual PropType getValue(const DescribedBase*) const = 0;
+        virtual void setValue(DescribedBase*, const PropType&) const = 0;
+    };
+protected:
+    std::auto_ptr<GetSet> getset;
+public:
+    virtual ~TypedPropertyDescriptor();
+    PropType getValue(const DescribedBase* object) const { return getset->getValue(object); }
+    void setValue(DescribedBase* object, const PropType& value) const { getset->setValue(object, value); }
 };
-} }
-struct ChangePropertyItem {
-    RBX::Reflection::PropertyDescriptor* descriptor;
-    void* instance;
-    G3D::Vector3 get();
+class ConstProperty {
+protected:
+    const PropertyDescriptor* descriptor;
+    const DescribedBase* instance;
+public:
+    template<typename T>
+    T getValue() const
+    {
+        const TypedPropertyDescriptor<T>* value = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+        return value->getValue(instance);
+    }
 };
-G3D::Vector3 ChangePropertyItem::get()
-{
-    RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>* typed = boost::polymorphic_cast<RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>*>(descriptor);
-    AccessorT* accessor = typed->accessor;
-    void* object = instance;
-    return accessor->get(object);
-}
+class Property : public ConstProperty {
+public:
+    DescribedBase* getInstance() const { return const_cast<DescribedBase*>(instance); }
+    template<typename T>
+    void setValue(const T& value)
+    {
+        const TypedPropertyDescriptor<T>* typedProp = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+        typedProp->setValue(getInstance(), value);
+    }
+};
+template G3D::Color3 ConstProperty::getValue<G3D::Color3>() const;
+}}

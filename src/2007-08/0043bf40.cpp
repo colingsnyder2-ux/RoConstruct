@@ -1,37 +1,35 @@
-// from server: 63% by colin
-struct MVCXTPPropertyGridItem
-{
+// from server: 91% by EspClaude
+// roc 2007-08 0043bf40  XItem setter: lock the data model, then forward to a virtual setter
+struct DataModel;
+struct Lock {
+    void* a; void* b; void* c;
+    explicit Lock(DataModel* dm);
+    ~Lock();
+};
+struct Value;
+struct Base0 { void* v; };
+struct Base1 { int x; };
+struct Name : Base0, Base1 {};
+struct Converter {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void set(const Base1* object, const Value& value) = 0;
+};
+struct Holder { char pad[0x18]; Converter* converter; };
+struct View { char pad[0x188]; DataModel* dataModel; };
+
+struct XItem {
     char pad[0x114];
-    void* field114;
-    void* field118;
-    void f(void* a, void* b);
+    View* view;
+    Holder* holder;
+    void set(const Name* name, const Value& value);
 };
 
-struct VariantTemp
+void XItem::set(const Name* name, const Value& value)
 {
-    void* storage;
-    VariantTemp();
-    ~VariantTemp();
-};
-
-extern "C" void __stdcall sub_439850(void* self, void* arg);
-extern "C" void __stdcall sub_5595A0(VariantTemp* self);
-
-void MVCXTPPropertyGridItem::f(void* a, void* b)
-{
-    VariantTemp v;
-    void* p = field114;
-    void* q = *(void**)((char*)p + 0x188);
-    sub_439850(&v, q);
-    void* r = 0;
-    if (a != 0)
-    {
-        r = (char*)a + 4;
-    }
-    void* s = field118;
-    void* t = *(void**)((char*)s + 0x18);
-    void* u = *(void**)t;
-    void (*fn)(void*, void*, void*) = *(void (**)(void*, void*, void*))((char*)u + 8);
-    fn(t, r, b);
-    sub_5595A0(&v);
+    Lock lock(view->dataModel);
+    const Base1* object = 0;
+    if (name)
+        object = name;
+    holder->converter->set(object, value);
 }

@@ -1,11 +1,12 @@
+// from server: 100% by EspClaude
 // from server: 75% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client Rendering/RenderLib/Clusterer.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS /EHsc /MD
+// roc-lib: openrbx-client roc_espclaude_7519e4ffcdcb137d.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "Clusterer.h"
+#include "Rendering/RenderLib/Clusterer.h"
 
 #include <algorithm>
 #include <cstdlib>
@@ -51,7 +52,13 @@ void Clusterer::Cluster::computeCentroid()
 // STUB: WEBSERVICE 0x101fa2c0
 unsigned int Clusterer::moveSample(Sample* sample, Cluster* cluster)
 {
-	while (cluster->visitIndex != cluster->samples.size()) {
+	for (;;) {
+		if (cluster->visitIndex == cluster->samples.size()) {
+			cluster->samples.push_back(sample);
+			cluster->visitIndex++;
+			return 1;
+		}
+
 		Sample* visited = cluster->samples[cluster->visitIndex];
 		Cluster* bestCluster = findClosestCluster(visited);
 
@@ -62,11 +69,6 @@ unsigned int Clusterer::moveSample(Sample* sample, Cluster* cluster)
 
 		cluster->visitIndex++;
 	}
-
-	cluster->samples.push_back(sample);
-	cluster->visitIndex++;
-
-	return 1;
 }
 
 // FUNCTION: WEBSERVICE 0x101fa380

@@ -1,32 +1,40 @@
-// from server: 77% by colin
-struct HelpCommand {
-    int execute(int);
+// from server: 100% by EspClaude
+// roc 2007-08 00456110  view OnCreate: CWnd::OnCreate, then create the child window "Roblox" over the client rect (MFC stand-ins)
+struct RECT { long left, top, right, bottom; };
+struct CREATESTRUCTA;
+extern "C" __declspec(dllimport) int __stdcall GetClientRect(void* hWnd, RECT* lpRect);
+struct CCreateContext;
+
+class CRect : public RECT { public: CRect() {} };
+
+class CWnd {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+    virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
+    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
+    virtual void v20(); virtual void v21(); virtual void v22();
+    virtual int Create(const char* lpszClassName, const char* lpszWindowName, unsigned long dwStyle,
+                       const RECT& rect, CWnd* pParentWnd, unsigned int nID, CCreateContext* pContext = 0);
+    char pad[0x1c];
+    void* m_hWnd;
+    void GetClientRect(RECT* lpRect) const { ::GetClientRect(m_hWnd, lpRect); }
+    int OnCreate(CREATESTRUCTA* lpCreateStruct);
 };
 
-extern "C" int __cdecl sub_630646(int);
-extern "C" int __stdcall GetClientRect(int, void*);
+class CHelpView : public CWnd {
+public:
+    char pad2[0x64];
+    CWnd m_wndChild;
+    int OnCreate(CREATESTRUCTA* lpCreateStruct);
+};
 
-int HelpCommand::execute(int a)
+int CHelpView::OnCreate(CREATESTRUCTA* lpCreateStruct)
 {
-    int rc;
-    int result;
-    int rect[4];
-
-    result = sub_630646(a);
-    if (result == -1)
-        return 0;
-
-    GetClientRect(*(int*)((char*)this + 0x20), rect);
-
-    result = (*(int (__stdcall**)(int, int, int, void*, int, int, int, int))(*(int*)((char*)this + 0x88) + 0x5c))(
-        (int)((char*)this + 0x88),
-        0x50000000,
-        (int)rect,
-        (void*)this,
-        1,
-        0,
-        0x78515c,
-        0);
-
-    return (result != 0) ? 0 : -1;
+    if (CWnd::OnCreate(lpCreateStruct) == -1)
+        return -1;
+    CRect rect;
+    GetClientRect(&rect);
+    return m_wndChild.Create(0, "Roblox", 0x50000000, rect, this, 1) ? 0 : -1;
 }

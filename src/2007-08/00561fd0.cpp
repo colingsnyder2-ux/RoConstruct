@@ -1,31 +1,38 @@
-// from server: 62% by colin
-struct T_func_00561fd0 {
-    char pad[0xc];
-    void* field_c;
-    bool m();
+// from server: 100% by EspClaude
+// roc 2007-08 00561fd0  RBX::ClearStarterpack::isEnabled (starter pack has children)
+#include <vector>
+struct Entry {
+    void* value;
+    void* owner;
+};
+typedef std::vector<Entry> Children;
+
+struct StarterPack {
+    char padding[0xc0];
+    Children* children;
 };
 
-extern "C" void* __fastcall func_0048cf60(void*);
+struct DataModel {
+    StarterPack* getStarterPack();
+};
 
-bool T_func_00561fd0::m()
+struct ClearStarterpack {
+    char padding[12];
+    DataModel* dataModel;
+    bool enabled();
+};
+
+bool ClearStarterpack::enabled()
 {
-    void* p = field_c;
-    if (p == 0) {
-        return false;
+    if (dataModel) {
+        StarterPack* pack = dataModel->getStarterPack();
+        if (pack) {
+            Children* children = pack->children;
+            unsigned int count = children
+                ? children->size()
+                : 0;
+            return 0U < count;
+        }
     }
-    void* q = func_0048cf60(p);
-    if (q == 0) {
-        return false;
-    }
-    void* r = *(void**)((char*)q + 0xc0);
-    if (r == 0) {
-        return false;
-    }
-    char* begin = *(char**)((char*)r + 4);
-    if (begin == 0) {
-        return false;
-    }
-    char* end = *(char**)((char*)r + 8);
-    int count = (int)((end - begin) >> 3);
-    return count != 0;
+    return false;
 }

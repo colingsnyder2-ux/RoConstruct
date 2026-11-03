@@ -1,8 +1,9 @@
+// from server: 99% by EspClaude
 // from server: 74% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/ScriptEvent.cpp
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-dll script/ScriptEvent.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "script/ScriptEvent.h"

@@ -1,20 +1,48 @@
-// from server: 32% by colin
-struct VDHTMLWindow_SignalDesc
-{
-    void construct();
-};
+// from server: 100% by EspClaude
+// from server: 100% by auto
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client App/script/Script.cpp
 
-extern "C" void __cdecl func_00418690();
-extern "C" void __cdecl func_00630d23();
-extern "C" void __cdecl func_00570c00();
+// Candidate translation unit (score above; library headers required).
+#include "script/Script.h"
 
-void VDHTMLWindow_SignalDesc::construct()
+#include "network/Player.h"
+#include "util/ContentProvider.h"
+#include "util/Name.h"
+#include "v8datamodel/Team.h"
+
+namespace RBX {
+
+char sScript[] = "Script";
+
+char sLocalScript[] = "LocalScript";
+
+// FUNCTION: WEBSERVICE 0x10068d50
+boost::shared_ptr<const std::string> Script::requestCode()
 {
-    if ((*(unsigned char*)0x8bb458 & 1) == 0)
-    {
-        *(unsigned int*)0x8bb458 |= 1;
-        func_00418690();
-        func_00570c00();
-        func_00630d23();
-    }
+	if (scriptId.isNull()) {
+		return embeddedSource;
+	}
+
+	return ContentProvider::singleton().requestContentString(scriptId);
 }
+
+} // namespace RBX
+
+template const RBX::Name& RBX::Name::doDeclare<RBX::sTeam>();
+template const RBX::Name& RBX::Name::doDeclare<RBX::Network::sPlayer>();
+template void RBX::Name::callDoDeclare<RBX::sTeam>();
+template void RBX::Name::callDoDeclare<RBX::Network::sPlayer>();
+
+template class RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>;
+template class RBX::Reflection::
+	Described<RBX::Script, RBX::sScript, RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript> >;
+template class RBX::DescribedCreatable<RBX::Script, RBX::Instance, RBX::sScript>;
+
+template class RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;
+template class RBX::Reflection::Described<
+	RBX::LocalScript,
+	RBX::sLocalScript,
+	RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript> >;
+template class RBX::DescribedCreatable<RBX::LocalScript, RBX::Script, RBX::sLocalScript>;

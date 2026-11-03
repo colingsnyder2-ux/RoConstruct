@@ -1,33 +1,53 @@
-// from server: 67% by colin
-struct PropBase {
-    int field0;
-    int field4;
-    int field8;
-    int fieldC;
+// from server: 83% by EspClaude
+// roc 2007-08 00443390  Reflection::Metadata lookup of a function's metadata instance
+// roc-flags: /O2 /GS /EHsc /MD
+#include <string>
+namespace RBX {
+class Name {
+    int id;
+    std::string name;
+public:
+    const std::string& toString() const { return name; }
 };
-
-struct Prop {
-    char pad[0xE8];
-    void* ptrE8;
-    int method(int arg);
+class Instance {
+public:
+    virtual ~Instance();
+    Instance* findFirstChildByName(const std::string& name) const;
+    template<class T> T* findFirstChildOfType() const;
 };
-
-extern "C" void* __stdcall sub_53E7A0(void*);
-extern "C" void* __fastcall sub_443240(void*);
-
-int Prop::method(int arg)
-{
-    void* p = this->ptrE8;
-    if (p != 0) {
-        PropBase* b = *(PropBase**)(arg + 0xC);
-        void* q = sub_53E7A0((char*)b->field4 + 4);
-        if (q != 0) {
-            void* r = sub_443240(q);
-            if (r != 0) {
-                void* s = (char*)(*(int*)(arg + 4)) + 4;
-                return (int)sub_53E7A0(s);
-            }
-        }
+namespace Reflection {
+class Descriptor {
+public:
+    virtual ~Descriptor();
+    const Name& name;
+};
+class ClassDescriptor : public Descriptor {};
+class MemberDescriptor : public Descriptor {
+public:
+    const Name& category;
+    const ClassDescriptor& owner;
+};
+class PropertyDescriptor : public MemberDescriptor {};
+class EventDescriptor : public MemberDescriptor {};
+class FunctionDescriptor : public MemberDescriptor {};
+namespace Metadata {
+class Classes : public Instance {};
+class Properties : public Instance {};
+class Events : public Instance {};
+class Functions : public Instance {};
+class Reflection {
+    char pad[0xe8];
+    Classes* classes;  // exe +0xe8
+public:
+    template<class Members, class Desc> Instance* findMember(const Desc& desc) const
+    {
+        Instance* c = classes ? classes->findFirstChildByName(desc.owner.name.toString()) : 0;
+        if (c)
+            if (Members* m = c->findFirstChildOfType<Members>())
+                return m->findFirstChildByName(desc.name.toString());
+        return 0;
     }
-    return 0;
-}
+    Instance* get(const PropertyDescriptor& desc) const;
+};
+}}}
+template RBX::Instance* RBX::Reflection::Metadata::Reflection::findMember<RBX::Reflection::Metadata::Functions, RBX::Reflection::FunctionDescriptor>(const RBX::Reflection::FunctionDescriptor&) const;

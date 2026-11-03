@@ -1,160 +1,67 @@
-// from server: 26% by colin
-// roc 2007-08 004e0220  unit: RBX::Render::Mesh::Level  size: 816 bytes
+// from server: 77% by EspClaude
+// from server: 100% by king_originala_sol_native
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-dll roc_sol_native_builder_004f3650_567fd999d9469714.cpp
 
-extern "C" double __stdcall ceil(double);
+// Candidate translation unit (score above; library headers required).
+#include <G3D/Vector2.h>
+#include <G3D/Vector3.h>
+#include <G3D/Rect2D.h>
 
-struct Level {
-    int field0;
-    int field4;
-    int field8;
-    int fieldC;
-    int field10;
-    void method(float a, float b, float c, int d, int e);
-};
-
-extern "C" void __cdecl sub_5b9990(void* out, void* in);
-extern "C" void* __cdecl sub_50b010(void* out, void* in);
-extern "C" float __cdecl sub_4de980(int n);
-extern "C" void __cdecl sub_4deae0(void* self, void* v);
-extern "C" void __cdecl sub_4e0180(void* self, void* a, void* b, void* c, void* d, int e, int f);
-
-extern float g_787050;
-extern float g_797e9c;
-extern double g_795b48;
-extern double g_79f340;
-extern double g_79f348;
-
-void Level::method(float a, float b, float c, int d, int e)
-{
-    float fabs_c = (c < 0.0f) ? -c : c;
-    float fabs_a = (a < 0.0f) ? -a : a;
-    float fabs_b = (b < 0.0f) ? -b : b;
-
-    int ebx = (this->field10 >> 3) & 7;
-
-    float v18 = fabs_c;
-    float v1c = fabs_a;
-    float v44 = fabs_b;
-
-    int esi;
-    if (e == 0 && v44 == v18) {
-        esi = 1;
-    } else {
-        esi = 0;
-    }
-
-    int ebp;
-    if (e == 0 && ebx != 0) {
-        float tmp = (esi == 0) ? v44 : v18;
-        float scaled = (float)((double)tmp * g_795b48);
-        double r = ceil((double)scaled);
-        ebp = (int)r;
-    } else {
-        ebp = 1;
-    }
-
-    short arr[2];
-    arr[0] = 0;
-    arr[1] = 0;
-
-    int idx = esi + esi;
-    short* p = (short*)((char*)arr + 2 - idx);
-    short val = *p;
-    int sval = (int)val;
-    int q = sval / ebp;
-    int one = 1;
-    unsigned short uq = (unsigned short)q;
-    int cmpval = (int)uq;
-    int* psel;
-    if (cmpval > 1) {
-        psel = &cmpval;
-    } else {
-        psel = &one;
-    }
-    short sel = *(short*)psel;
-    *(short*)((char*)arr + idx) = sel;
-    *(short*)((char*)arr + 2 - idx) = val;
-
-    float v18b = v1c;
-
-    float tmp1[3];
-    sub_50b010(tmp1, &v44);
-    float negx = -tmp1[0];
-    float negy = -tmp1[1];
-    float v60 = negx;
-    float v20 = negy;
-    float v3c = v60;
-    float v40 = v20;
-
-    float tmp2[3];
-    sub_50b010(tmp2, &v3c);
-
-    float v28 = 0.0f;
-    float v2c = 0.0f;
-    float v1c2 = 0.0f;
-    float v20b = 0.0f;
-
-    int sel2 = d;
-    if (sel2 == 0) {
-        if (ebx == 0) {
-            v28 = g_787050;
-            v2c = g_797e9c;
-            float* pd = (float*)((char*)&v20b - esi * 4);
-            v1c2 = *pd;
-        } else {
-            float* pe = (float*)((char*)&v2c - esi * 4);
-            *pe = 0.0f;
-            float r = sub_4de980(ebx);
-            *(float*)((char*)&v2c + esi * 4) = r;
-            float* pc = (float*)((char*)&v44 - esi * 4);
-            float f = *pc;
-            float f2 = f + f;
-            float* pd = (float*)((char*)&v20b - esi * 4);
-            *pd = f2;
-            *(float*)((char*)&v1c2 + esi * 4) = g_797e9c;
-            if (esi == 1) {
-                v1c2 = -v1c2;
-            }
-        }
-    } else if (sel2 == 1) {
-        v28 = 0.0f;
-        v2c = *(float*)((char*)this + 0x1c);
-        v1c2 = *(float*)((char*)this + 0x18);
-        v20b = -*(float*)((char*)this + 0x1c);
-    } else if (sel2 == 2) {
-        v28 = 0.0f;
-        v2c = 0.0f;
-        v1c2 = 0.0f;
-        v20b = 0.0f;
-    }
-
-    short bx = *(short*)((char*)arr + 0x4c);
-
-    for (int i = 0; i < ebp; i++) {
-        if (i == ebp - 1) {
-            float f = *(float*)((char*)&v44 + esi * 4);
-            float v60b = f;
-            *(float*)((char*)&v28 + esi * 4) = v60b;
-            if (d == 0 && *(int*)((char*)&v20b) != 0) {
-                float diff = v60b - *(float*)((char*)&v28 + esi * 4);
-                float m = (float)((double)diff * g_79f348);
-                *(float*)((char*)&v1c2 + esi * 4) = m * *(float*)((char*)&v1c2 + esi * 4);
-            }
-        } else {
-            *(float*)((char*)&v28 + esi * 4) = *(float*)((char*)&v28 + esi * 4) + (float)g_79f340;
-        }
-
-        float f1 = v1c2;
-        float f2 = *(float*)((char*)&v20b + esi * 4);
-        float f3 = *(float*)((char*)&v28 + esi * 4);
-        float f4 = *(float*)((char*)&v2c + esi * 4);
-
-        sub_4e0180(this, &f1, &f2, &f3, &f4, esi, *(int*)((char*)&arr[0]));
-
-        float f5 = *(float*)((char*)&v28 + esi * 4);
-        float f6 = *(float*)((char*)&v2c + esi * 4);
-        sub_4deae0(this, &f5);
-
-        *(float*)((char*)&v28 + esi * 4) = *(float*)((char*)&v28 + esi * 4);
-    }
+extern "C" __declspec(dllimport) double __cdecl fabs(double);
+namespace G3D {inline int iRound(float);}
+namespace MeshTypes {
+extern "C" __declspec(dllimport) double __cdecl ceil(double);
+typedef G3D::Vector2 Vector2;
+typedef G3D::Vector3 Vector3;
+struct Vector2int16 {short x,y;Vector2int16():x(0),y(0){}short&operator[](int i){return (&x)[i];}const short&operator[](int i)const{return (&x)[i];}};
+typedef G3D::Rect2D Rect2D;
+template<class T>const T& maximum(const T&a,const T&b){return a<b?b:a;}
 }
+namespace RBX {namespace View {
+using MeshTypes::Vector2;using MeshTypes::Vector3;using MeshTypes::Vector2int16;using MeshTypes::Rect2D;
+struct Function {Vector2 perturbation;bool bulge[2];};
+Vector3 __cdecl mapFace(const Vector3&);
+float __cdecl surfaceOffset(int);
+static __forceinline bool useFirstAxis(int purpose,const Vector3& size){if(purpose==0 && size.x<size.y)return true;return false;}
+static __forceinline Vector3 absoluteSize(const Vector3& v){Vector3 mapped=mapFace(v);float z=(float)fabs(mapped.z);float y=(float)fabs(mapped.y);float x=(float)fabs(mapped.x);return Vector3(x,y,z);}
+struct Builder {
+ enum Purpose{Surface,Decal,Shadow};
+ virtual void build(Purpose);virtual void buildTop(Purpose)=0;virtual void buildBottom(Purpose)=0;virtual void buildLeft(Purpose)=0;virtual void buildRight(Purpose)=0;virtual void buildFront(Purpose)=0;virtual void buildBack(Purpose)=0;
+ const Vector3 halfSize;unsigned surfaceTypes;void* level;Vector2 textureScale;
+ void build(Function,Vector2int16,int);
+ void emit(Function,Rect2D,float,Vector2,Vector2,int,Vector2int16);
+};
+void Builder::build(Function function,Vector2int16 grid,int purpose){
+ int surface=(surfaceTypes>>3)&7;
+ Vector3 size=absoluteSize(halfSize);
+ int axis=!useFirstAxis(purpose,size);
+ int steps=(purpose==0 && surface)?G3D::iRound((float)MeshTypes::ceil((double)(size[axis]*0.5f))):1;
+ Vector2int16 divisions;
+ short n=grid[1-axis];
+ divisions[axis]=MeshTypes::maximum<short>(1,(short)(n/steps));
+ divisions[1-axis]=n;
+ float depth=size.z;
+ Vector2 begin=-size.xy();
+ Vector2 end=size.xy();
+ Vector2 origin,extent;
+ switch(purpose){
+  case 0:
+   if(!surface){origin=Vector2(0.25f,0.5f);extent[1-axis]=0;extent[axis]=0;}
+   else {origin[1-axis]=0;origin[axis]=surfaceOffset(surface);extent[1-axis]=size[1-axis]*2.0f;extent[axis]=0.5f;if(axis==1)extent.x=-extent.x;}
+   break;
+  case 1:origin.x=0;origin.y=textureScale.y;extent.x=textureScale.x;extent.y=-textureScale.y;break;
+  case 2:origin=Vector2(0,0);extent=Vector2(0,0);break;
+ }
+ for(int i=0;i<steps;++i){
+  if(i==steps-1){end[axis]=size[axis];if(purpose==0 && surface)extent[axis]=(end[axis]-begin[axis])*extent[axis]*0.25f;}
+  else end[axis]=begin[axis]+4.0f;
+  emit(function,Rect2D::xyxy(begin,end),depth,origin,extent,axis,divisions);
+  begin[axis]=end[axis];
+ }
+}
+}}
+typedef char native_rect_size[sizeof(G3D::Rect2D)==16?1:-1];
+typedef char native_vec2_size[sizeof(G3D::Vector2)==8?1:-1];
+typedef char native_vec3_size[sizeof(G3D::Vector3)==12?1:-1];

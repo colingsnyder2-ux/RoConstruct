@@ -1,129 +1,74 @@
-// from server: 19% by colin
-struct S {
-    char pad[0x14];
-    int f(const void* a, const void* b);
+// from server: 98% by EspClaude
+// from server: 100% by EspClaude
+// roc 2008-06 0046f9f0  size: 543 bytes
+// roc-cl: 50727
+extern "C" __declspec(dllimport) void __cdecl _invalid_parameter_noinfo(void);
+extern "C" __declspec(dllimport) int __cdecl toupper(int c);
+
+namespace rs {
+template <class T> class basic_str;
+
+template <class T> class citer {
+public:
+    typedef basic_str<T> S;
+    const S* _Mycont;
+    const T* _Myptr;
+    citer() { _Myptr = 0; }
+    const T& operator*() const
+    {
+        if (_Mycont != (const S*)-4) {
+            if (!(_Mycont != 0)) _invalid_parameter_noinfo();
+            if (!(_Myptr < (((S*)_Mycont)->_Myptr() + _Mycont->_Mysize))) _invalid_parameter_noinfo();
+        }
+        return *_Myptr;
+    }
+    citer& operator++()
+    {
+        if (_Mycont != (const S*)-4) {
+            if (!(_Mycont != 0)) _invalid_parameter_noinfo();
+            if (!(_Myptr < (((S*)_Mycont)->_Myptr() + _Mycont->_Mysize))) _invalid_parameter_noinfo();
+        }
+        ++_Myptr;
+        return *this;
+    }
+    bool operator==(const citer& r) const
+    {
+        if (_Mycont != (const S*)-4) {
+            if (!(_Mycont != 0 && _Mycont == r._Mycont)) _invalid_parameter_noinfo();
+        }
+        return _Myptr == r._Myptr;
+    }
+    bool operator!=(const citer& r) const { return !(*this == r); }
 };
 
-extern "C" {
-    void __stdcall sub_77E580(void* out, const void* self);
-    void __stdcall sub_77E584(void* out, const void* self);
-    int __stdcall sub_77E5E8(const void* self);
-    int __stdcall sub_77E64C(const void* self);
-    int __stdcall sub_77E990(int c);
-    void __stdcall sub_77E6D8();
+template <class T> class basic_str {
+public:
+    typedef citer<T> const_iterator;
+    void* _Myaux;
+    union { T _Buf[16]; T* _Ptr; } _Bx;
+    unsigned int _Mysize;
+    unsigned int _Myres;
+    __declspec(noinline) const_iterator begin() const { const_iterator i; i._Mycont = this; i._Myptr = _Bx._Ptr; return i; }
+    __declspec(noinline) const_iterator end() const { const_iterator i; i._Mycont = this; i._Myptr = _Bx._Ptr + _Mysize; return i; }
+    __declspec(noinline) unsigned int size() const { return _Mysize; }
+    __declspec(noinline) T* _Myptr() { return _Bx._Ptr; }
+};
+extern template class __declspec(dllimport) basic_str<char>;
+typedef basic_str<char> string;
 }
 
-int S::f(const void* a, const void* b)
+int stringCompareNoCase(const rs::string& s1, const rs::string& s2)
 {
-    char buf1[8];
-    char buf2[8];
-    char it1[8];
-    char it2[8];
-    char it3[8];
-    char it4[8];
-
-    sub_77E580(buf1, a);
-    sub_77E580(buf2, b);
-
-    for (;;) {
-        sub_77E584(it1, a);
-        int* p1 = (int*)it1;
-        if (*p1 != -2 && *p1 != 0 && *p1 != *(int*)it1) {
-            sub_77E6D8();
-        }
-        if (*(int*)((char*)it1 + 4) != *(int*)((char*)it1 + 4)) {
-            break;
-        }
-
-        sub_77E584(it2, b);
-        int* p2 = (int*)it2;
-        if (*p2 != -2 && *p2 != 0 && *p2 != *(int*)it2) {
-            sub_77E6D8();
-        }
-        if (*(int*)((char*)it2 + 4) == *(int*)((char*)it2 + 4)) {
-            break;
-        }
-
-        int* q1 = (int*)it1;
-        if (*q1 != -2) {
-            if (*q1 == 0) {
-                sub_77E6D8();
-            }
-            int sz = sub_77E5E8(q1);
-            if (*(int*)((char*)it1 + 4) >= sz + q1[5]) {
-                sub_77E6D8();
-            }
-        }
-
-        int* q2 = (int*)it2;
-        if (*q2 != -2) {
-            if (*q2 == 0) {
-                sub_77E6D8();
-            }
-            int sz = sub_77E5E8(q2);
-            if (*(int*)((char*)it2 + 4) >= sz + q2[5]) {
-                sub_77E6D8();
-            }
-        }
-
-        int c1 = sub_77E990(*(signed char*)(*(int*)((char*)it2 + 4)));
-        int c2 = sub_77E990(*(signed char*)(*(int*)((char*)it1 + 4)));
-
-        if (c2 != c1) {
-            int* r1 = (int*)it1;
-            if (*r1 != -2) {
-                if (*r1 == 0) {
-                    sub_77E6D8();
-                }
-                int sz = sub_77E5E8(r1);
-                if (*(int*)((char*)it1 + 4) >= sz + r1[5]) {
-                    sub_77E6D8();
-                }
-            }
-            int* r2 = (int*)it2;
-            if (*r2 != -2) {
-                if (*r2 == 0) {
-                    sub_77E6D8();
-                }
-                int sz = sub_77E5E8(r2);
-                if (*(int*)((char*)it2 + 4) >= sz + r2[5]) {
-                    sub_77E6D8();
-                }
-            }
-            int x = sub_77E990(*(signed char*)(*(int*)((char*)it2 + 4)));
-            int y = sub_77E990(*(signed char*)(*(int*)((char*)it1 + 4)));
-            return (x >= y) ? 1 : -1;
-        }
-
-        int* s1 = (int*)it1;
-        if (*s1 != -2) {
-            if (*s1 == 0) {
-                sub_77E6D8();
-            }
-            int sz = sub_77E5E8(s1);
-            if (*(int*)((char*)it1 + 4) >= sz + s1[5]) {
-                sub_77E6D8();
-            }
-        }
-        *(int*)((char*)it1 + 4) += 1;
-
-        int* s2 = (int*)it2;
-        if (*s2 != -2) {
-            if (*s2 == 0) {
-                sub_77E6D8();
-            }
-            int sz = sub_77E5E8(s2);
-            if (*(int*)((char*)it2 + 4) >= sz + s2[5]) {
-                sub_77E6D8();
-            }
-        }
-        *(int*)((char*)it2 + 4) += 1;
+    rs::string::const_iterator it1 = s1.begin();
+    rs::string::const_iterator it2 = s2.begin();
+    while ((it1 != s1.end()) && (it2 != s2.end())) {
+        if (::toupper(*it1) != ::toupper(*it2))
+            return (::toupper(*it1) < ::toupper(*it2)) ? -1 : 1;
+        ++it1;
+        ++it2;
     }
-
-    int sa = sub_77E64C(a);
-    int sb = sub_77E64C(b);
-    if (sa == sb) {
+    unsigned int size1 = s1.size(), size2 = s2.size();
+    if (size1 == size2)
         return 0;
-    }
-    return (sa < sb) ? -1 : 1;
+    return (size1 < size2) ? -1 : 1;
 }

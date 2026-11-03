@@ -1,28 +1,36 @@
-// from server: 75% by colin
-struct ExitCommand {
-    char pad0[4];
-    int field4;
-    char pad8[4];
-    int fieldC;
-    int field10;
-    bool execute(int arg);
+// from server: 100% by EspClaude
+// roc 2007-08 0044d830  history list: copy the current entry's text (std::vector<{std::string,int,int}>)
+#include <string>
+#include <vector>
+
+struct HistoryEntry {
+    std::string text;
+    int a;
+    int b;
 };
 
-extern "C" void __stdcall invalid_parameter_noinfo();
-extern "C" void __stdcall string_assign();
+class History {
+    int reserved;
+    int current;
+    std::vector<HistoryEntry> entries;
+public:
+    bool getCurrent(std::string& text) const;
+    bool getNext(std::string& text) const;
+};
 
-bool ExitCommand::execute(int arg)
+bool History::getCurrent(std::string& text) const
 {
-    int count = 0;
-    if (fieldC != 0) {
-        count = (field10 - fieldC) / 36;
+    if (current >= 0) {
+        text = entries[current].text;
+        return true;
     }
-    int idx = field4 + 1;
-    if (idx < count) {
-        if (fieldC == 0 || idx >= (field10 - fieldC) / 36) {
-            invalid_parameter_noinfo();
-        }
-        string_assign();
+    return false;
+}
+
+bool History::getNext(std::string& text) const
+{
+    if (current + 1 < (int)entries.size()) {
+        text = entries[current + 1].text;
         return true;
     }
     return false;

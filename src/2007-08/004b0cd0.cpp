@@ -1,28 +1,57 @@
-// from server: 6% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 96% by EspClaude
+// from server: 100% by Espeon
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: openrbx-client-dll roc_espeon_erasedkey_fb80804e46c2095b.cpp
 
-struct ItemList {
-    void* head;
-    int count;
+// Candidate translation unit (score above; library headers required).
+#include <boost/shared_ptr.hpp>
+#include <map>
+#include <string>
+struct Key { int header; std::string text; };
+typedef boost::shared_ptr<void> Shared;
+typedef std::map<const void*,Shared> Map;
+struct Manager {
+    void* current();
+    void set(void*);
+    void release(void*);
 };
 
-struct Replicator {
-    char pad[0x1dec];
-    ItemList items;
+extern Manager* __cdecl getManager();
 
-    void* findItem(void* key);
+struct Guard {
+    void* saved;
+    Guard(int);
+    __forceinline ~Guard();
 };
 
-void __stdcall sub_570200(void* a, void* b, void* c);
-
-void* Replicator::findItem(void* key)
-{
-    ItemList* list = &this->items;
-    void* result = 0;
-    void* node = list->head;
-    if (node != 0) {
-        sub_570200(list, &result, key);
+__forceinline Guard::~Guard() {
+    Manager* manager = getManager();
+    void* previous = manager->current();
+    if (previous != saved) {
+        manager->set(saved);
+        if (previous)
+            manager->release(previous);
     }
-    return result;
+}
+
+
+Shared __cdecl createDefault(Key*);
+Shared __cdecl getLogger();
+void __cdecl logMessage(void*,int,const char*,...);
+struct S { char padding[0x2cfc]; Map objects; void* f(Key*); };
+void* S::f(Key* key) {
+ Guard guard(6);
+ Key* original=key;
+ key=original;
+ Map::iterator it=objects.find(key);
+ void* result;
+ if(it==objects.end()) {
+  Shared value=createDefault(original);
+  if(!value) logMessage(getLogger().get(),3,"Replication: Can't create default object of type %s",original->text.c_str());
+  key=original;
+  objects[key]=value;
+  result=value.get();
+ } else result=it->second.get();
+ return result;
 }

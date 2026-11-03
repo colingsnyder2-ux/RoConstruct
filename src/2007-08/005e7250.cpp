@@ -1,52 +1,71 @@
-// from server: 28% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 97% by EspClaude
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lib: rbxgs-dll roc_espclaude_b83817ce1c2ae7a8.cpp
 
-struct Instance {
-    void* vtable;
-    void addRef();
-    void release();
-};
-
-struct Flag {
-    char pad[0x240];
-    int field_240;
-    void onServiceProvider(Instance* oldProvider, Instance* newProvider);
-};
-
-extern "C" void* __stdcall sub_5a56b0(void*);
-extern "C" void* __stdcall sub_495870(void*);
-extern "C" void* __stdcall sub_5e70e0(void*);
-extern "C" int __stdcall sub_5e9f90(void*, void*);
-extern "C" void* __stdcall sub_5ea2b0(void*, void*);
-extern "C" int __stdcall sub_5e9ef0(void*, void*);
-extern "C" void __stdcall sub_492360(void*);
-
-void Flag::onServiceProvider(Instance* oldProvider, Instance* newProvider)
+// Candidate translation unit (score above; library headers required).
+#undef _RELEASEASSERT
+#undef _DEBUG
+#define _DLL
+#define private public
+#include "util/IRenderable.h"
+#undef private
+#include "util/Object.h"
+#define hasListeners() hasListeners() const { return listeners.size() > 0; } bool hasListenersEmpty()
+#include "util/Events.h"
+#undef hasListeners
+namespace RBX { template<class T> class GuidItem { public: virtual ~GuidItem() {} char guidPad[0xc]; }; }
+namespace RBX { template<class T> class GuidAFP : public AbstractFactoryProduct<T> { protected: virtual void onGuidChanged() {} }; }
+#define AbstractFactoryProduct GuidItem<Instance>, public GuidAFP
+#include "util/Guid.h"
+namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(const Data&) {} operator const Guid&() const { return *(const Guid*)0; } }; }
+#define Guid GuidStub
+#include "v8tree/Instance.h"
+#undef Guid
+#undef AbstractFactoryProduct
+#include "v8datamodel/Hopper.h"
+#include "util/IRenderable.h"
+#include "v8datamodel/IEquipable.h"
+namespace RBX { struct ExePad8 { virtual void exePadV(); char exePad[0x2c]; }; }
+#include "v8datamodel/Tool.h"
+#include "v8datamodel/Flag.h"
+#define SurfacesNeedAdorn SurfacesNeedAdorn; char exePartPad[0x118]
+#include "v8datamodel/PartInstance.h"
+#undef SurfacesNeedAdorn
+#include "v8datamodel/FlagStand.h"
+#include "humanoid/Humanoid.h"
+#include "Network/Player.h"
+#include "Network/Players.h"
+namespace RBX
 {
-    void* p = sub_5a56b0(*(void**)((char*)newProvider + 0xbc));
-    if (p != 0) {
-        void* q = sub_495870(*(void**)((char*)newProvider + 0xbc));
-        if (q != 0) {
-            if (*(char*)((char*)q + 0x124) == 0 &&
-                *(int*)((char*)q + 0x120) == this->field_240) {
-                void* r = sub_5e70e0(this);
-                if (sub_5e9f90(r, this) == 0) {
-                    void* s = sub_5ea2b0(r, this);
-                    if (s != 0) {
-                        sub_5e9ef0(s, this);
-                    }
-                }
-            }
-        }
-    }
-    if (newProvider != 0) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)newProvider + 4), -1) == 1) {
-            ((void (__thiscall*)(Instance*))((void**)newProvider)[1])(newProvider);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)newProvider + 8), -1) == 1) {
-                ((void (__thiscall*)(Instance*))((void**)newProvider)[2])(newProvider);
-            }
-        }
-    }
-    sub_492360((char*)this + 0x18);
+	void Flag::onEvent_flagTouched(boost::shared_ptr<Instance> other)
+	{
+		Instance* parent = other->getParent();
+
+		Humanoid* humanoid = Humanoid::modelIsCharacter(parent);
+		if (!humanoid)
+			return;
+
+		Network::Player* player = Network::Players::getPlayerFromCharacter(parent);
+		if (!player)
+			return;
+
+		if (player->getNeutral() != false)
+			return;
+
+		BrickColor current = teamColor;
+		if (player->getTeamColor() != current)
+			return;
+
+		FlagStandService* fss = ServiceProvider::create<FlagStandService>(this);
+		if (!fss->FindStandWithFlag(this))
+		{
+			if (FlagStand* fs = fss->FindClosestEmptyStandForFlag(this))
+			{
+				fs->AffixFlag(this);
+			}
+		}
+	}
 }

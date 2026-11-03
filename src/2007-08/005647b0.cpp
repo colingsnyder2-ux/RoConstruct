@@ -1,32 +1,41 @@
-// from server: 73% by colin
-struct ControllerCommand {
-    char pad[0x14];
-    int field14;
-    char pad2[0x8];
-    int field20;
-    bool method();
+// from server: 100% by EspClaude
+// roc 2007-08 005647b0  RBX::ControllerCommand::isEnabled: non-empty selection and the workspace has a matching instance
+#include <vector>
+struct Entry {
+    void* value;
+    void* owner;
+};
+typedef std::vector<Entry> Instances;
+
+struct Instance;
+struct Selection {
+    char padding[0x104];
+    Instances* items;
+};
+struct SelectionClient {
+    Selection* createService(bool) const;
+};
+struct Workspace {
+    Instance* findFirst(bool (*predicate)(Instance*));
+};
+struct DataModel {
+    Workspace* getWorkspace();
+};
+bool isControllable(Instance*);
+
+class ControllerCommand {
+    char padding[0x14];
+    SelectionClient selection;
+    char padding2[8];
+    DataModel* dataModel;
+public:
+    bool isEnabled() const;
 };
 
-extern "C" int __fastcall sub_562300(int, int);
-extern "C" int __fastcall sub_5618e0(int);
-extern "C" int __fastcall sub_55f610(int, int);
-
-bool ControllerCommand::method() {
-    int p = sub_562300((int)this + 0x14, 1);
-    int q = *(int*)(p + 0x104);
-    int begin = *(int*)(q + 4);
-    if (begin != 0) {
-        int end = *(int*)(q + 8);
-        if ((end - begin) >> 3 != 0) {
-            int r;
-            if (this->field20 != 0) {
-                r = sub_5618e0(this->field20);
-            } else {
-                r = 0;
-            }
-            int result = sub_55f610(r, 0x55e540);
-            return result != 0;
-        }
-    }
-    return false;
+bool ControllerCommand::isEnabled() const
+{
+    if (selection.createService(true)->items->size() == 0)
+        return false;
+    Workspace* workspace = dataModel ? dataModel->getWorkspace() : 0;
+    return workspace->findFirst(isControllable) != 0;
 }

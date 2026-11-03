@@ -1,21 +1,19 @@
-// from server: 61% by colin
-struct LDraw2RobloxMapRoot {
+// from server: 100% by EspClaude
+// roc 2007-08 0046a9d0  unit: RBX::LDraw2Lua::LDraw2RobloxMapRoot  size: 34 bytes
+// roc-flags: /O2 /GS /EHsc /MD
+#include <vector>
+struct E { int v[16]; };
+extern template class std::vector<E>;
+class LDraw2RobloxMapRoot {
+public:
     char pad[0x5c];
-    int* begin;
-    char pad2[4];
-    int* end;
-    int func_0046a970(int);
-    int method();
+    std::vector<E> items;
+    const E* first() const;
 };
 
-int LDraw2RobloxMapRoot::method()
+const E* LDraw2RobloxMapRoot::first() const
 {
-    int* b = begin;
-    if (b != 0) {
-        int* e = end;
-        if ((e - b) >> 6 != 0) {
-            return func_0046a970(0);
-        }
-    }
+    if (items.size() != 0)
+        return &items.at(0);
     return 0;
 }

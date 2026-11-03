@@ -1,145 +1,67 @@
-// from server: 22% by colin
-// roc 2007-08 004ecf80  unit: CylinderBuilder  size: 794 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004ecf80
+// from server: 89% by EspClaude
+// from server: 100% by king_originala_sol_native
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-lib: rbxgs-dll roc_sol_native_builder_004ff1e0_4aa9273edbde056b.cpp
 
-extern "C" double __stdcall ceil(double);
+// Candidate translation unit (score above; library headers required).
+#include <G3D/Vector2.h>
+#include <G3D/Vector3.h>
+#include <G3D/Rect2D.h>
 
-struct Vec3 {
-    float x, y, z;
-};
-
-struct CylinderBuilder {
-    char pad[0x10];
-    unsigned int flags;
-    char pad2[0x0c];
-    float f18;
-    float f1c;
-    int build(int a, int b, int c);
-};
-
-extern "C" void __cdecl sub_5b99f0(void*, void*);
-extern "C" void* __cdecl sub_50b010(void*, void*);
-extern "C" float __cdecl sub_4de980(int);
-extern "C" void __cdecl sub_4e0180(void*, void*, void*, void*, void*);
-extern "C" void __cdecl sub_4ebbe0(void*, void*);
-
-extern float g_787050;
-extern float g_797e9c;
-extern double g_795b48;
-extern double g_79f340;
-extern double g_79f348;
-
-int CylinderBuilder::build(int a, int b, int c)
-{
-    float v44[4];
-    float v38[4];
-    float v30[4];
-    float v1c[4];
-    float v10[4];
-    float v18, v1c_s, v10_s;
-    int ebx, ebp, esi, edi;
-    int i;
-    float f;
-    unsigned short w;
-    int n;
-    float tmp;
-
-    ebx = (this->flags >> 12) & 7;
-
-    sub_5b99f0(&this->pad[4], v44);
-
-    v18 = (float)ceil((double)(a < 0 ? -(float)a : (float)a));
-    v1c_s = v18;
-
-    v10_s = (float)ceil((double)(v44[0] < 0 ? -v44[0] : v44[0]));
-    v18 = v10_s;
-
-    v44[3] = (float)ceil((double)(v44[1] < 0 ? -v44[1] : v44[1]));
-
-    v44[2] = v18;
-    v44[1] = v1c_s;
-
-    if (b == 0 && v44[3] == v44[2]) {
-        esi = 0;
-    } else {
-        esi = 1;
-    }
-
-    if (b == 0 && ebx != 0) {
-        ebp = (int)ceil((double)(v44[esi] * g_795b48));
-    } else {
-        ebp = 1;
-    }
-
-    w = 0;
-    v10[0] = 0.0f;
-    v10[1] = 0.0f;
-
-    n = (int)(short)((short)v10[0] / ebp);
-    if (n > 1) {
-        v10[2] = (float)n;
-    } else {
-        v10[2] = 1.0f;
-    }
-
-    v10[esi] = v10[2];
-
-    v18 = v44[1];
-
-    sub_50b010(v44, v38);
-    v38[0] = -v38[0];
-    v38[1] = -v38[1];
-
-    sub_50b010(v44, v30);
-
-    f = 0.0f;
-    v30[0] = 0.0f;
-    v30[1] = 0.0f;
-    v30[2] = 0.0f;
-    v30[3] = 0.0f;
-
-    switch (c) {
-    case 0:
-        if (ebx == 0) {
-            v30[0] = g_787050;
-            v30[1] = g_797e9c;
-            v30[esi] = v30[1];
-            v30[1] = v30[0];
-        } else {
-            v30[1] = f;
-            v30[1] = sub_4de980(ebx);
-            v30[esi] = v30[1] * 2.0f;
-            v30[0] = g_797e9c;
-            if (esi == 1) {
-                v30[0] = -v30[0];
-            }
-        }
-        break;
-    case 1:
-        v30[0] = 0.0f;
-        v30[1] = this->f1c;
-        v30[2] = this->f18;
-        v30[3] = -this->f1c;
-        break;
-    case 2:
-        break;
-    }
-
-    for (i = 0; i < ebp; i++) {
-        if (i == ebp - 1) {
-            v44[2] = v44[esi];
-            v30[2] = v44[2];
-            if (c == 0 && v30[3] != 0.0f) {
-                v30[3] = (v44[2] - v30[2]) * g_79f348 * v30[3];
-            }
-        } else {
-            v30[2] = v44[2] + g_79f340;
-        }
-
-        sub_4e0180(v10, v30, v38, v44, &v10[esi]);
-        sub_4ebbe0(v10, &v10[esi]);
-        v30[3] = v30[2];
-    }
-
-    return 0;
+extern "C" __declspec(dllimport) double __cdecl fabs(double);
+namespace G3D {inline int iRound(float);}
+namespace MeshTypes {
+extern "C" __declspec(dllimport) double __cdecl ceil(double);
+typedef G3D::Vector2 Vector2;
+typedef G3D::Vector3 Vector3;
+struct Vector2int16 {short x,y;Vector2int16():x(0),y(0){}short&operator[](int i){return (&x)[i];}const short&operator[](int i)const{return (&x)[i];}};
+typedef G3D::Rect2D Rect2D;
+template<class T>const T& maximum(const T&a,const T&b){return a<b?b:a;}
 }
+namespace RBX {namespace View {
+using MeshTypes::Vector2;using MeshTypes::Vector3;using MeshTypes::Vector2int16;using MeshTypes::Rect2D;
+struct Function {char opaque[4];};
+Vector3 __cdecl mapFace(const Vector3&);
+float __cdecl surfaceOffset(int);
+static __forceinline bool useFirstAxis(int purpose,const Vector3& size){if(purpose==0 && size.x<size.y)return true;return false;}
+static __forceinline Vector3 absoluteSize(const Vector3& v){Vector3 mapped=mapFace(v);float z=(float)fabs(mapped.z);float y=(float)fabs(mapped.y);float x=(float)fabs(mapped.x);return Vector3(x,y,z);}
+struct Builder {
+ enum Purpose{Surface,Decal,Shadow};
+ virtual void build(Purpose);virtual void buildTop(Purpose)=0;virtual void buildBottom(Purpose)=0;virtual void buildLeft(Purpose)=0;virtual void buildRight(Purpose)=0;virtual void buildFront(Purpose)=0;virtual void buildBack(Purpose)=0;
+ const Vector3 halfSize;unsigned surfaceTypes;void* level;Vector2 textureScale;
+ void build(Function,Vector2int16,int);
+ void emit(Function,Rect2D,float,Vector2,Vector2,int,Vector2int16);
+};
+void Builder::build(Function function,Vector2int16 grid,int purpose){
+ int surface=(surfaceTypes>>12)&7;
+ Vector3 size=absoluteSize(halfSize);
+ int axis=!useFirstAxis(purpose,size);
+ int steps=(purpose==0 && surface)?G3D::iRound((float)MeshTypes::ceil((double)(size[axis]*0.5f))):1;
+ Vector2int16 divisions;
+ short n=grid[1-axis];
+ divisions[axis]=MeshTypes::maximum<short>(1,(short)(n/steps));
+ divisions[1-axis]=n;
+ float depth=size.z;
+ Vector2 begin=-size.xy();
+ Vector2 end=size.xy();
+ Vector2 origin,extent;
+ switch(purpose){
+  case 0:
+   if(!surface){origin=Vector2(0.25f,0.5f);extent[1-axis]=0;extent[axis]=0;}
+   else {origin[1-axis]=0;origin[axis]=surfaceOffset(surface);extent[1-axis]=size[1-axis]*2.0f;extent[axis]=0.5f;if(axis==1)extent.x=-extent.x;}
+   break;
+  case 1:origin.x=0;origin.y=textureScale.y;extent.x=textureScale.x;extent.y=-textureScale.y;break;
+  case 2:origin=Vector2(0,0);extent=Vector2(0,0);break;
+ }
+ for(int i=0;i<steps;++i){
+  if(i==steps-1){end[axis]=size[axis];if(purpose==0 && surface)extent[axis]=(end[axis]-begin[axis])*extent[axis]*0.25f;}
+  else end[axis]=begin[axis]+4.0f;
+  emit(function,Rect2D::xyxy(begin,end),depth,origin,extent,axis,divisions);
+  begin[axis]=end[axis];
+ }
+}
+}}
+typedef char native_rect_size[sizeof(G3D::Rect2D)==16?1:-1];
+typedef char native_vec2_size[sizeof(G3D::Vector2)==8?1:-1];
+typedef char native_vec3_size[sizeof(G3D::Vector3)==12?1:-1];

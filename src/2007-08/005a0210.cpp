@@ -1,54 +1,88 @@
-// from server: 60% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
-
-struct RefCounted {
-    void AddRef();
-    void Release();
-};
-
-struct ChatOutput {
-    char pad0[0x280];
-    int field280;
-    char pad284[0x14];
-    unsigned char field298;
-    unsigned char field299;
-    char pad29a[2];
-    void ProcessChat(int a, RefCounted* p);
-};
-
-void ChatOutput::ProcessChat(int a, RefCounted* p)
-{
-    if (field299 == 0) {
-        if (p) {
-            _InterlockedExchangeAdd((volatile long*)((char*)p + 4), -1);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)p + 4), -1) == 0) {
-                (*(void (__thiscall**)(RefCounted*))(*(int*)p + 4))(p);
-                if (_InterlockedExchangeAdd((volatile long*)((char*)p + 8), -1) == 0) {
-                    (*(void (__thiscall**)(RefCounted*))(*(int*)p + 8))(p);
-                }
-            }
-        }
-        return;
-    }
+// from server: 75% by EspClaude
+// roc 2007-08 005a0210  SpawnLocation::onEvent_spawnerTouched(shared_ptr<Instance>) (body absent from rbxgs .cpp; rebuilt from asm)
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <intrin.h>
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+    long use_count_;
+    long weak_count_;
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release()
     {
-        RefCounted* q = *(RefCounted**)((char*)a + 0xbc);
-        if (q) {
-            if (((int (__thiscall*)(RefCounted*))0x5a0120)(q)) {
-                RefCounted* r = ((RefCounted* (__cdecl*)(RefCounted*))0x495870)(q);
-                if (r) {
-                    ((void (__thiscall*)(RefCounted*, int))0x48f270)(r, field280);
-                    ((void (__thiscall*)(RefCounted*, unsigned char))0x48f2a0)(r, field298);
-                }
-            }
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
         }
     }
-    if (p) {
-        if (_InterlockedExchangeAdd((volatile long*)((char*)p + 4), -1) == 0) {
-            (*(void (__thiscall**)(RefCounted*))(*(int*)p + 4))(p);
-            if (_InterlockedExchangeAdd((volatile long*)((char*)p + 8), -1) == 0) {
-                (*(void (__thiscall**)(RefCounted*))(*(int*)p + 8))(p);
-            }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+}
+template<class T> class shared_ptr {
+    T* px;
+    detail::shared_count pn;
+public:
+    T* operator->() const { return px; }
+    T* get() const { return px; }
+};
+}
+namespace RBX {
+class Humanoid;
+class Instance {
+public:
+    virtual ~Instance();
+    char pad[0xb8];
+    Instance* parent;   // exe +0xbc
+    Instance* getParent() const { return parent; }
+    template<class T> T* findFirstChildOfType() const;
+};
+class BrickColor { public: int number; };
+namespace Network {
+class Player {
+public:
+    void setTeamColor(BrickColor color);
+    void setNeutral(bool value);
+};
+class Players {
+public:
+    static Player* getPlayerFromCharacter(Instance* character);
+};
+}
+class SpawnLocation {
+    char pad[0x280];
+    BrickColor teamColor;   // exe +0x280
+    char connection[0x14];
+public:
+    bool neutral;                 // +0x298
+    bool allowTeamChangeOnTouch;  // +0x299
+private:
+    void onEvent_spawnerTouched(boost::shared_ptr<Instance> other);
+};
+void SpawnLocation::onEvent_spawnerTouched(boost::shared_ptr<Instance> other)
+{
+    if (!allowTeamChangeOnTouch)
+        return;
+    Instance* parent = other->getParent();
+    if (parent && parent->findFirstChildOfType<Humanoid>()) {
+        if (Network::Player* player = Network::Players::getPlayerFromCharacter(parent)) {
+            player->setTeamColor(teamColor);
+            player->setNeutral(neutral);
         }
     }
+}
 }
