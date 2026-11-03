@@ -3,3 +3,9 @@
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lang: cpp
 // roc-lib: templates-boost-1_34_1-dll vector_sp.cpp
+
+// Candidate translation unit (score above; library headers required).
+#include <boost/shared_ptr.hpp>
+struct T; typedef boost::shared_ptr<T> E;
+#include <vector>
+template class std::vector<E>;

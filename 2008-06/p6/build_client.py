@@ -1,6 +1,6 @@
 """Link out/p6/Roblox.exe: MFC client, RTM appmodul.cpp, original resources, and
 the player's engine libraries from this worktree's own player build."""
-import hashlib, json, shutil, subprocess, sys
+import hashlib, json, os, re, shutil, subprocess, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).parent
@@ -14,9 +14,22 @@ subprocess.run([sys.executable, str(HERE / "build_native_about.py")], cwd=ROOT, 
 
 client = "2008-06"
 NATIVE_DOC = '--native-doc' in sys.argv
-inputs = [arg for arg in sys.argv[1:] if arg != '--native-doc']
+NATIVE_DOC_CACHE = '--native-doc-cache' in sys.argv
+args = sys.argv[1:]
+NATIVE_DOC_OUT = None
+if '--native-doc-out' in args:
+    out_index = args.index('--native-doc-out')
+    if out_index + 1 == len(args):
+        raise SystemExit('--native-doc-out needs a directory')
+    NATIVE_DOC_OUT = Path(args[out_index + 1])
+    del args[out_index:out_index + 2]
+inputs = [arg for arg in args if arg not in ('--native-doc', '--native-doc-cache')]
 SNAPSHOT = Path(inputs[0]) if inputs else rebuild.workspace(client) / "out"
-out = rebuild.workspace(client) / "out" / "p6"
+if NATIVE_DOC_OUT and not NATIVE_DOC:
+    raise SystemExit('--native-doc-out requires --native-doc')
+out = NATIVE_DOC_OUT or (rebuild.workspace(client) / "out" / "p6")
+if not out.is_absolute():
+    out = ROOT / out
 out.mkdir(parents=True, exist_ok=True)
 runtime = SNAPSHOT / "tests" / "P2RecoveredPlayer"
 for folder in ("Content", "Places"):
@@ -33,7 +46,7 @@ shutil.copyfile(ROOT / "clients" / client / "SciLexer.dll", out / "SciLexer.dll"
 tc = rebuild.toolchain()
 metadata = ROOT / "clients" / client / "ReflectionMetadata.xml"
 if not metadata.exists():
-    metadata = out / "ReflectionMetadata.xml"
+    metadata = rebuild.workspace(client) / "out" / "p6" / "ReflectionMetadata.xml"
 assert metadata.exists(), metadata
 if metadata.resolve() != (out / "ReflectionMetadata.xml").resolve():
     shutil.copyfile(metadata, out / "ReflectionMetadata.xml")
@@ -88,21 +101,52 @@ recipe = recipes.RECIPES[engine["includes_from_recipe"]]
 data_includes = [(recipes.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"] + [(ROOT / i).resolve() for i in engine["extra_includes"]]
 data_includes.append(HERE)
 data_defines = (recipes.RECIPES[engine["defines_from_recipe"]]["defines"] + " " + engine["extra_defines"]).strip()
-built = rebuild.compile_direct(client, [HERE / "P6Data.cpp"], out, data_includes, data_defines, engine["flags"],
-                               overlay=rebuild.build_overlay(client, spec["name"], spec["overlay"]))
-for ok, message in built.values():
-    print(message[-2500:] if message else "")
-    if not ok:
-        sys.exit(1)
+data_overlay = rebuild.build_overlay(client, spec["name"], spec["overlay"])
+cache_dir = rebuild.workspace(client) / 'out' / 'p6' / 'native-doc-cache'
+header_roots = [ROOT / 'rebuild/2008-06/native-headers', data_overlay, HERE]
+header_stamp = max((p.stat().st_mtime_ns for root in header_roots if root.exists()
+                    for p in root.rglob('*') if p.is_file()), default=0)
+def cache_key(source, flags):
+    return {'source': str(source.resolve()), 'source_mtime': source.stat().st_mtime_ns,
+            'headers_mtime': header_stamp,
+            'flags': hashlib.sha256('\0'.join(flags).encode()).hexdigest()}
+def restore_cached(name, key):
+    artifact, receipt = cache_dir / name, cache_dir / (name + '.json')
+    if not (NATIVE_DOC and NATIVE_DOC_CACHE and artifact.exists() and receipt.exists()):
+        return False
+    if json.loads(receipt.read_text()) != key:
+        return False
+    shutil.copyfile(artifact, out / name)
+    return True
+def store_cached(name, key):
+    if NATIVE_DOC and NATIVE_DOC_CACHE:
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(out / name, cache_dir / name)
+        (cache_dir / (name + '.json')).write_text(json.dumps(key, sort_keys=True))
+data_flags = data_defines.split() + [engine["flags"]]
+data_key = cache_key(HERE / 'P6Data.cpp', data_flags)
+if not restore_cached('CoreP6Data.obj', data_key):
+    built = rebuild.compile_direct(client, [HERE / "P6Data.cpp"], out, data_includes, data_defines, engine["flags"],
+                                   overlay=data_overlay)
+    for ok, message in built.values():
+        print(message[-2500:] if message else "")
+        if not ok:
+            sys.exit(1)
+    store_cached('CoreP6Data.obj', data_key)
 
 for obj, source, flags in units:
+    key = cache_key(source, flags)
+    cache_name = 'Core-' + obj
+    if restore_cached(cache_name, key):
+        continue
     code, text = rebuild.run(tc, "cl", flags + ["/Fo" + obj, str(source)], out)
     print(text[-2500:])
     if code:
         sys.exit(code)
+    store_cached(cache_name, key)
 if NATIVE_DOC:
     doc_flags = mfc_flags + ["/D" + d for d in data_defines.split()] + ["/I" + str(ROOT / 'rebuild/2008-06/native-headers'), "/I" + str(HERE)] + ["/I" + str(i) for i in includes]
-    for obj, source in [('NativeCRobloxDoc.obj', ROOT / 'rebuild/2008-06/native-classes/CRobloxDoc.cpp'),
+    doc_sources = [('NativeCRobloxDoc.obj', ROOT / 'rebuild/2008-06/native-classes/CRobloxDoc.cpp'),
                         ('NativeActiveDocumentDataFull.obj', ROOT / 'rebuild/2008-06/native-classes/ActiveDocumentData.cpp'),
                         ('NativeStandardVerbs.obj', ROOT / 'rebuild/2008-06/native-classes/StandardVerbs.cpp'),
                         ('NativeDocumentExceptionFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentException.cpp'),
@@ -126,6 +170,20 @@ if NATIVE_DOC:
                         ('NativeChangeHistoryCommitFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryCommit.cpp'),
                         ('NativeExitCommandFull.obj', ROOT / 'rebuild/2008-06/tests/NativeExitCommand.cpp'),
                         ('NativeClassNamesFull.obj', ROOT / 'rebuild/2008-06/native-classes/NativeClassNames.cpp'),
+                        ('NativeWorkspaceSharedFromFull.obj', ROOT / 'rebuild/2008-06/tests/NativeWorkspaceSharedFromTrial.cpp'),
+                        ('NativeEditSelectionVerbCtorFull.obj', ROOT / 'rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp'),
+                        ('NativeRunStateVerbCtorFull.obj', ROOT / 'rebuild/2008-06/native-classes/RunStateVerbConstructor.cpp'),
+                        ('NativeSoundServicePlayFull.obj', ROOT / 'rebuild/2008-06/native-classes/SoundServicePlay.cpp'),
+                        ('NativeCameraUnitsFull.obj', ROOT / 'rebuild/2008-06/native-classes/CameraUnits.cpp'),
+                        ('NativeCameraConstantsFull.obj', ROOT / 'rebuild/2008-06/native-classes/CameraConstants.cpp'),
+                        ('NativeFilteredSelectionServiceFull.obj', ROOT / 'rebuild/2008-06/native-classes/FilteredSelectionService.cpp'),
+                        ('NativeInstanceLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceLifetime.cpp'),
+                        ('NativeInstanceCallbacksFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceBaseCallbacks.cpp'),
+                        ('NativeInstanceDescendantsFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp'),
+                        ('NativeInstanceAncestorFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp'),
+                        ('NativeInstanceChildListenerFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceChildListener.cpp'),
+                        ('NativeInstanceReadPropertyFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceReadProperty.cpp'),
+                        ('NativeInstanceSerializationFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceSerialization.cpp'),
                         ('NativeVerbFull.obj', ROOT / 'rebuild/2008-06/native-classes/Verb.cpp'),
                         ('NativeVerbLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/VerbLifetime.cpp'),
                         ('NativeVerbBaseLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/VerbBaseLifetime.cpp'),
@@ -141,11 +199,28 @@ if NATIVE_DOC:
                         ('NativeInstanceClassLookupFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceClassLookup.cpp'),
                         ('NativeHistoryRecordLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp'),
                         ('NativeHistoryItemPlaybackFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryItemPlayback.cpp'),
-                        ('NativeHistoryItemPropertyFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp')]:
+                        ('NativeHistoryItemPropertyFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp')]
+    extra_sources = [Path(p) for p in os.environ.get('ROC_NATIVE_DOC_EXTRA', '').split(';') if p]
+    for index, source in enumerate(extra_sources):
+        assert source.is_file(), source
+        doc_sources.append(('NativeDocExtra%02d.obj' % index, source))
+    # Native-Doc closure probes change one source at a time. Cache only these
+    # objects; key covers source, common native headers, overlay and flags.
+    # Opt-in: normal diagnostic builds stay fully fresh.
+    # Cache shared across isolated probe directories. Artifacts are immutable
+    # once their source/header/flag stamp matches.
+    for obj, source in doc_sources:
+        key = cache_key(source, doc_flags)
+        cache_name = obj
+        if obj.startswith('NativeDocExtra'):
+            cache_name += '-' + hashlib.sha256(str(source.resolve()).encode()).hexdigest()[:12]
+        if restore_cached(cache_name, key):
+            continue
         code, text = rebuild.run(tc, 'cl', doc_flags + ['/Fo' + obj, str(source)], out)
         print(text[-2500:])
         if code:
             sys.exit(code)
+        store_cached(cache_name, key)
 system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
@@ -164,6 +239,16 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeChangeHistoryCommitFull.obj',
                       'NativeExitCommandFull.obj',
                       'NativeClassNamesFull.obj',
+                      'NativeWorkspaceSharedFromFull.obj',
+                      'NativeEditSelectionVerbCtorFull.obj',
+                      'NativeRunStateVerbCtorFull.obj',
+                      'NativeSoundServicePlayFull.obj',
+                      'NativeCameraUnitsFull.obj', 'NativeCameraConstantsFull.obj',
+                      'NativeFilteredSelectionServiceFull.obj',
+                      'NativeInstanceLifetimeFull.obj', 'NativeInstanceCallbacksFull.obj',
+                      'NativeInstanceDescendantsFull.obj', 'NativeInstanceAncestorFull.obj',
+                      'NativeInstanceChildListenerFull.obj', 'NativeInstanceReadPropertyFull.obj',
+                      'NativeInstanceSerializationFull.obj',
                       'NativeVerbLifetimeFull.obj', 'NativeVerbBaseLifetimeFull.obj', 'NativeVerbQueriesFull.obj',
                       'NativeContentProviderUrlFull.obj', 'NativeServiceLookupFull.obj', 'NativeHistoryRecordPlaybackFull.obj',
                       'NativeChangeHistoryPlaybackFull.obj', 'NativeChangeHistoryQueriesFull.obj',
@@ -171,6 +256,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeHistoryRecordLifetimeFull.obj', 'NativeHistoryItemPlaybackFull.obj',
                       'NativeHistoryItemPropertyFull.obj'] if NATIVE_DOC else []
 if NATIVE_DOC:
+    native_doc_objects += ['NativeDocExtra%02d.obj' % index for index, _ in enumerate(extra_sources)]
     native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
         'NativeSaveDialogProfile.obj', 'NativeApplicationBaseUrl.obj',
         'NativeWorkspaceLayout.obj', 'ServiceChangeHistoryCreate.obj',
@@ -190,5 +276,22 @@ code, text = rebuild.run(tc, "link", ["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE
                          + ["/NODEFAULTLIB:" + l for l in rebuild.VENDOR_AUTOLINK], out)
 if NATIVE_DOC:
     (out/'native-doc-link.log').write_text(text)
+    unresolved = sorted(set(re.findall(r'unresolved external symbol "([^"]+)"', text)))
+    families = {}
+    for symbol in unresolved:
+        family = next((name for name, token in (
+            ('standard_verbs', 'Verb'), ('instance_vtable', 'Instance::'),
+            ('change_history', 'ChangeHistory'), ('content_provider', 'ContentProvider'),
+            ('filtered_selection', 'FilteredSelection'), ('ldraw', 'LDraw'),
+            ('camera', 'Camera'), ('document', 'documentUrl'), ('workspace', 'Workspace')) if token in symbol), 'other')
+        families[family] = families.get(family, 0) + 1
+    (out/'native-doc-closure.json').write_text(json.dumps({
+        'link_exit': code,
+        'lnk_error_lines': len(re.findall(r'error LNK', text)),
+        'unique_unresolved': len(unresolved),
+        'families': families,
+        'symbols': unresolved,
+        'selected_source_objects': native_doc_objects,
+    }, indent=2) + '\n')
 print(text[-3500:])
 sys.exit(code)
