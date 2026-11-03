@@ -146,9 +146,11 @@ def run(push=True, log=print, repo=ROOT, clone=CLONE, mine=None, days=14, state_
         state['parked'][key] = sha
         parked += 1
         log('fork-merge: parked %s (%d files): %s' % (key, count, reason))
-    Path(state_file).parent.mkdir(parents=True, exist_ok=True)
-    Path(state_file).write_text(json.dumps(state, indent=1))
-    if push and (merged or parked):
+    if push:                                              # a dry run must not remember what it did
+        Path(state_file).parent.mkdir(parents=True, exist_ok=True)
+        Path(state_file).write_text(json.dumps(state, indent=1))
+    remote = sh('rev-parse', '-q', '--verify', 'refs/forks/origin/' + BRANCH, cwd=clone, check=False).stdout.strip()
+    if push and (merged or parked or sh('rev-parse', 'HEAD', cwd=clone).stdout.strip() != remote):
         url = subprocess.run(['git', 'remote', 'get-url', 'origin'], cwd=repo, capture_output=True, text=True).stdout.strip()
         r = sh('push', '--quiet', url, 'HEAD:refs/heads/' + BRANCH, cwd=clone, check=False)
         log('fork-merge: pushed %s (%d merged, %d parked)' % (BRANCH, merged, parked) if r.returncode == 0

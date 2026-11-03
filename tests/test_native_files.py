@@ -65,7 +65,7 @@ def test_fork_merge():
         git(repo, 'checkout', '-q', 'work')
 
         logs = []
-        fork_merge.run(push=False, log=logs.append, repo=repo, clone=clone, mine='work', days=36500, state_file=state)
+        fork_merge.run(push=True, log=logs.append, repo=repo, clone=clone, mine='work', days=36500, state_file=state)
         out = '\n'.join(logs)
         tree = git(clone, 'ls-tree', '-r', '--name-only', 'auto-merge/native').splitlines()
         assert N + 'FromClean.cpp' in tree, out                       # clean fork merged
@@ -76,7 +76,7 @@ def test_fork_merge():
         note = git(clone, 'show', 'auto-merge/native:merge/conflict/feat/MERGE_NEEDED.md')
         assert 'CONFLICT' in note, note
         again = []
-        fork_merge.run(push=False, log=again.append, repo=repo, clone=clone, mine='work', days=36500, state_file=state)
+        fork_merge.run(push=True, log=again.append, repo=repo, clone=clone, mine='work', days=36500, state_file=state)
         assert not any('merged' in l or 'parked' in l for l in again), again   # idempotent
 
 
