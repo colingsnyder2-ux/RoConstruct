@@ -90,6 +90,8 @@ public:
     void removeAllChildren();
     boost::shared_ptr<Instance> clone();  // ?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ
     void remove();  // ?remove@Instance@RBX@@QAEXXZ
+    struct AnchorAction { bool value; };  // provisional layout: nested struct passed by value below
+    void applyAnchoredToChildren(AnchorAction);  // ?applyAnchoredToChildren@Instance@RBX@@QAEXUAnchorAction@12@@Z
     bool canSetParent(const Instance*) const; // 0041f390
     void raisePropertyChanged(const Reflection::PropertyDescriptor& descriptor); // 0040db00
     std::string getClassNameStr() const;
