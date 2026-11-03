@@ -1,151 +1,718 @@
 // from server: 100% by auto
-// roc 2007-03 005f9530  unit: seg_005f0000  size: 378 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 005f9530
-//
-// 005f9530  51                   push ecx
-// 005f9531  53                   push ebx
-// 005f9532  55                   push ebp
-// 005f9533  56                   push esi
-// 005f9534  8b742414             mov esi, dword ptr [esp + 0x14]
-// 005f9538  57                   push edi
-// 005f9539  8b7e10               mov edi, dword ptr [esi + 0x10]
-// 005f953c  e8afffffff           call 0x5f94f0
-// 005f9541  33ed                 xor ebp, ebp
-// 005f9543  396f24               cmp dword ptr [edi + 0x24], ebp
-// 005f9546  740c                 je 0x5f9554
-// 005f9548  8bc7                 mov eax, edi
-// 005f954a  e821faffff           call 0x5f8f70
-// 005f954f  396f24               cmp dword ptr [edi + 0x24], ebp
-// 005f9552  75f4                 jne 0x5f9548
-// 005f9554  8b472c               mov eax, dword ptr [edi + 0x2c]
-// 005f9557  894724               mov dword ptr [edi + 0x24], eax
-// 005f955a  896f2c               mov dword ptr [edi + 0x2c], ebp
-// 005f955d  f6460503             test byte ptr [esi + 5], 3
-// 005f9561  740a                 je 0x5f956d
-// 005f9563  56                   push esi
-// 005f9564  57                   push edi
-// 005f9565  e856f4ffff           call 0x5f89c0
-// 005f956a  83c408               add esp, 8
-// 005f956d  57                   push edi
-// 005f956e  e8cdfeffff           call 0x5f9440
-// 005f9573  83c404               add esp, 4
-// 005f9576  396f24               cmp dword ptr [edi + 0x24], ebp
-// 005f9579  7411                 je 0x5f958c
-// 005f957b  eb03                 jmp 0x5f9580
-// 005f957d  8d4900               lea ecx, [ecx]
-// 005f9580  8bc7                 mov eax, edi
-// 005f9582  e8e9f9ffff           call 0x5f8f70
-// 005f9587  396f24               cmp dword ptr [edi + 0x24], ebp
-// 005f958a  75f4                 jne 0x5f9580
-// 005f958c  8b4f28               mov ecx, dword ptr [edi + 0x28]
-// 005f958f  3bcd                 cmp ecx, ebp
-// 005f9591  894f24               mov dword ptr [edi + 0x24], ecx
-// 005f9594  896f28               mov dword ptr [edi + 0x28], ebp
-// 005f9597  7413                 je 0x5f95ac
-// 005f9599  8da42400000000       lea esp, [esp]
-// 005f95a0  8bc7                 mov eax, edi
-// 005f95a2  e8c9f9ffff           call 0x5f8f70
-// 005f95a7  396f24               cmp dword ptr [edi + 0x24], ebp
-// 005f95aa  75f4                 jne 0x5f95a0
-// 005f95ac  8b5e10               mov ebx, dword ptr [esi + 0x10]
-// 005f95af  896c2410             mov dword ptr [esp + 0x10], ebp
-// 005f95b3  8b6b70               mov ebp, dword ptr [ebx + 0x70]
-// 005f95b6  8b7500               mov esi, dword ptr [ebp]
-// 005f95b9  85f6                 test esi, esi
-// 005f95bb  747a                 je 0x5f9637
-// 005f95bd  8d4900               lea ecx, [ecx]
-// 005f95c0  8a4605               mov al, byte ptr [esi + 5]
-// 005f95c3  a803                 test al, 3
-// 005f95c5  7404                 je 0x5f95cb
-// 005f95c7  a808                 test al, 8
-// 005f95c9  7404                 je 0x5f95cf
-// 005f95cb  8bee                 mov ebp, esi
-// 005f95cd  eb61                 jmp 0x5f9630
-// 005f95cf  8b4608               mov eax, dword ptr [esi + 8]
-// 005f95d2  85c0                 test eax, eax
-// 005f95d4  7423                 je 0x5f95f9
-// 005f95d6  f6400604             test byte ptr [eax + 6], 4
-// 005f95da  751d                 jne 0x5f95f9
-// 005f95dc  8b542418             mov edx, dword ptr [esp + 0x18]
-// 005f95e0  8b4a10               mov ecx, dword ptr [edx + 0x10]
-// 005f95e3  8b91c4000000         mov edx, dword ptr [ecx + 0xc4]
-// 005f95e9  52                   push edx
-// 005f95ea  6a02                 push 2
-// 005f95ec  50                   push eax
-// 005f95ed  e8fe030000           call 0x5f99f0
-// 005f95f2  83c40c               add esp, 0xc
-// 005f95f5  85c0                 test eax, eax
-// 005f95f7  7508                 jne 0x5f9601
-// 005f95f9  804e0508             or byte ptr [esi + 5], 8
-// 005f95fd  8bee                 mov ebp, esi
-// 005f95ff  eb2f                 jmp 0x5f9630
-// 005f9601  8b4610               mov eax, dword ptr [esi + 0x10]
-// 005f9604  8b4c2410             mov ecx, dword ptr [esp + 0x10]
-// 005f9608  804e0508             or byte ptr [esi + 5], 8
-// 005f960c  8d540118             lea edx, [ecx + eax + 0x18]
-// 005f9610  8b06                 mov eax, dword ptr [esi]
-// 005f9612  894500               mov dword ptr [ebp], eax
-// 005f9615  8b4330               mov eax, dword ptr [ebx + 0x30]
-// 005f9618  85c0                 test eax, eax
-// 005f961a  89542410             mov dword ptr [esp + 0x10], edx
-// 005f961e  7504                 jne 0x5f9624
-// 005f9620  8936                 mov dword ptr [esi], esi
-// 005f9622  eb09                 jmp 0x5f962d
-// 005f9624  8b08                 mov ecx, dword ptr [eax]
-// 005f9626  890e                 mov dword ptr [esi], ecx
-// 005f9628  8b5330               mov edx, dword ptr [ebx + 0x30]
-// 005f962b  8932                 mov dword ptr [edx], esi
-// 005f962d  897330               mov dword ptr [ebx + 0x30], esi
-// 005f9630  8b7500               mov esi, dword ptr [ebp]
-// 005f9633  85f6                 test esi, esi
-// 005f9635  7589                 jne 0x5f95c0
-// 005f9637  8b7730               mov esi, dword ptr [edi + 0x30]
-// 005f963a  85f6                 test esi, esi
-// 005f963c  7423                 je 0x5f9661
-// 005f963e  8bff                 mov edi, edi
-// 005f9640  8b36                 mov esi, dword ptr [esi]
-// 005f9642  8a4605               mov al, byte ptr [esi + 5]
-// 005f9645  8a4f14               mov cl, byte ptr [edi + 0x14]
-// 005f9648  24f8                 and al, 0xf8
-// 005f964a  80e103               and cl, 3
-// 005f964d  0ac1                 or al, cl
-// 005f964f  56                   push esi
-// 005f9650  57                   push edi
-// 005f9651  884605               mov byte ptr [esi + 5], al
-// 005f9654  e867f3ffff           call 0x5f89c0
-// 005f9659  83c408               add esp, 8
-// 005f965c  3b7730               cmp esi, dword ptr [edi + 0x30]
-// 005f965f  75df                 jne 0x5f9640
-// 005f9661  33f6                 xor esi, esi
-// 005f9663  397724               cmp dword ptr [edi + 0x24], esi
-// 005f9666  740f                 je 0x5f9677
-// 005f9668  8bc7                 mov eax, edi
-// 005f966a  e801f9ffff           call 0x5f8f70
-// 005f966f  03f0                 add esi, eax
-// 005f9671  837f2400             cmp dword ptr [edi + 0x24], 0
-// 005f9675  75f1                 jne 0x5f9668
-// 005f9677  8b572c               mov edx, dword ptr [edi + 0x2c]
-// 005f967a  52                   push edx
-// 005f967b  e8f0f9ffff           call 0x5f9070
-// 005f9680  8b4f44               mov ecx, dword ptr [edi + 0x44]
-// 005f9683  80771403             xor byte ptr [edi + 0x14], 3
-// 005f9687  83c404               add esp, 4
-// 005f968a  2bce                 sub ecx, esi
-// 005f968c  2b4c2410             sub ecx, dword ptr [esp + 0x10]
-// 005f9690  8d471c               lea eax, [edi + 0x1c]
-// 005f9693  c7471800000000       mov dword ptr [edi + 0x18], 0
-// 005f969a  894720               mov dword ptr [edi + 0x20], eax
-// 005f969d  c6471502             mov byte ptr [edi + 0x15], 2
-// 005f96a1  894f48               mov dword ptr [edi + 0x48], ecx
-// 005f96a4  5f                   pop edi
-// 005f96a5  5e                   pop esi
-// 005f96a6  5d                   pop ebp
-// 005f96a7  5b                   pop ebx
-// 005f96a8  59                   pop ecx
-// 005f96a9  c3                   ret 
-// library lua-5.1.1/lgc.c (function _atomic)
-
 // roc-lang: c
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /MD
 // roc-lib: lua-5.1.1 lgc.c
+
+// Candidate translation unit (score above; library headers required).
+/*
+** $Id: lgc.c,v 2.38 2006/05/24 14:34:06 roberto Exp $
+** Garbage Collector
+** See Copyright Notice in lua.h
+*/
+
+#include <string.h>
+
+#define lgc_c
+#define LUA_CORE
+
+#include "lua.h"
+
+#include "ldebug.h"
+#include "ldo.h"
+#include "lfunc.h"
+#include "lgc.h"
+#include "lmem.h"
+#include "lobject.h"
+#include "lstate.h"
+#include "lstring.h"
+#include "ltable.h"
+#include "ltm.h"
+
+
+#define GCSTEPSIZE	1024u
+#define GCSWEEPMAX	40
+#define GCSWEEPCOST	10
+#define GCFINALIZECOST	100
+
+
+#define maskmarks	cast_byte(~(bitmask(BLACKBIT)|WHITEBITS))
+
+#define makewhite(g,x)	\
+   ((x)->gch.marked = cast_byte(((x)->gch.marked & maskmarks) | luaC_white(g)))
+
+#define white2gray(x)	reset2bits((x)->gch.marked, WHITE0BIT, WHITE1BIT)
+#define black2gray(x)	resetbit((x)->gch.marked, BLACKBIT)
+
+#define stringmark(s)	reset2bits((s)->tsv.marked, WHITE0BIT, WHITE1BIT)
+
+
+#define isfinalized(u)		testbit((u)->marked, FINALIZEDBIT)
+#define markfinalized(u)	l_setbit((u)->marked, FINALIZEDBIT)
+
+
+#define KEYWEAK         bitmask(KEYWEAKBIT)
+#define VALUEWEAK       bitmask(VALUEWEAKBIT)
+
+
+
+#define markvalue(g,o) { checkconsistency(o); \
+  if (iscollectable(o) && iswhite(gcvalue(o))) reallymarkobject(g,gcvalue(o)); }
+
+#define markobject(g,t) { if (iswhite(obj2gco(t))) \
+		reallymarkobject(g, obj2gco(t)); }
+
+
+#define setthreshold(g)  (g->GCthreshold = (g->estimate/100) * g->gcpause)
+
+
+static void removeentry (Node *n) {
+  lua_assert(ttisnil(gval(n)));
+  if (iscollectable(gkey(n)))
+    setttype(gkey(n), LUA_TDEADKEY);  /* dead key; remove it */
+}
+
+
+static void reallymarkobject (global_State *g, GCObject *o) {
+  lua_assert(iswhite(o) && !isdead(g, o));
+  white2gray(o);
+  switch (o->gch.tt) {
+    case LUA_TSTRING: {
+      return;
+    }
+    case LUA_TUSERDATA: {
+      Table *mt = gco2u(o)->metatable;
+      gray2black(o);  /* udata are never gray */
+      if (mt) markobject(g, mt);
+      markobject(g, gco2u(o)->env);
+      return;
+    }
+    case LUA_TUPVAL: {
+      UpVal *uv = gco2uv(o);
+      markvalue(g, uv->v);
+      if (uv->v == &uv->u.value)  /* closed? */
+        gray2black(o);  /* open upvalues are never black */
+      return;
+    }
+    case LUA_TFUNCTION: {
+      gco2cl(o)->c.gclist = g->gray;
+      g->gray = o;
+      break;
+    }
+    case LUA_TTABLE: {
+      gco2h(o)->gclist = g->gray;
+      g->gray = o;
+      break;
+    }
+    case LUA_TTHREAD: {
+      gco2th(o)->gclist = g->gray;
+      g->gray = o;
+      break;
+    }
+    case LUA_TPROTO: {
+      gco2p(o)->gclist = g->gray;
+      g->gray = o;
+      break;
+    }
+    default: lua_assert(0);
+  }
+}
+
+
+static void marktmu (global_State *g) {
+  GCObject *u = g->tmudata;
+  if (u) {
+    do {
+      u = u->gch.next;
+      makewhite(g, u);  /* may be marked, if left from previous GC */
+      reallymarkobject(g, u);
+    } while (u != g->tmudata);
+  }
+}
+
+
+/* move `dead' udata that need finalization to list `tmudata' */
+size_t luaC_separateudata (lua_State *L, int all) {
+  global_State *g = G(L);
+  size_t deadmem = 0;
+  GCObject **p = &g->mainthread->next;
+  GCObject *curr;
+  while ((curr = *p) != NULL) {
+    if (!(iswhite(curr) || all) || isfinalized(gco2u(curr)))
+      p = &curr->gch.next;  /* don't bother with them */
+    else if (fasttm(L, gco2u(curr)->metatable, TM_GC) == NULL) {
+      markfinalized(gco2u(curr));  /* don't need finalization */
+      p = &curr->gch.next;
+    }
+    else {  /* must call its gc method */
+      deadmem += sizeudata(gco2u(curr));
+      markfinalized(gco2u(curr));
+      *p = curr->gch.next;
+      /* link `curr' at the end of `tmudata' list */
+      if (g->tmudata == NULL)  /* list is empty? */
+        g->tmudata = curr->gch.next = curr;  /* creates a circular list */
+      else {
+        curr->gch.next = g->tmudata->gch.next;
+        g->tmudata->gch.next = curr;
+        g->tmudata = curr;
+      }
+    }
+  }
+  return deadmem;
+}
+
+
+static int traversetable (global_State *g, Table *h) {
+  int i;
+  int weakkey = 0;
+  int weakvalue = 0;
+  const TValue *mode;
+  if (h->metatable)
+    markobject(g, h->metatable);
+  mode = gfasttm(g, h->metatable, TM_MODE);
+  if (mode && ttisstring(mode)) {  /* is there a weak mode? */
+    weakkey = (strchr(svalue(mode), 'k') != NULL);
+    weakvalue = (strchr(svalue(mode), 'v') != NULL);
+    if (weakkey || weakvalue) {  /* is really weak? */
+      h->marked &= ~(KEYWEAK | VALUEWEAK);  /* clear bits */
+      h->marked |= cast_byte((weakkey << KEYWEAKBIT) |
+                             (weakvalue << VALUEWEAKBIT));
+      h->gclist = g->weak;  /* must be cleared after GC, ... */
+      g->weak = obj2gco(h);  /* ... so put in the appropriate list */
+    }
+  }
+  if (weakkey && weakvalue) return 1;
+  if (!weakvalue) {
+    i = h->sizearray;
+    while (i--)
+      markvalue(g, &h->array[i]);
+  }
+  i = sizenode(h);
+  while (i--) {
+    Node *n = gnode(h, i);
+    lua_assert(ttype(gkey(n)) != LUA_TDEADKEY || ttisnil(gval(n)));
+    if (ttisnil(gval(n)))
+      removeentry(n);  /* remove empty entries */
+    else {
+      lua_assert(!ttisnil(gkey(n)));
+      if (!weakkey) markvalue(g, gkey(n));
+      if (!weakvalue) markvalue(g, gval(n));
+    }
+  }
+  return weakkey || weakvalue;
+}
+
+
+/*
+** All marks are conditional because a GC may happen while the
+** prototype is still being created
+*/
+static void traverseproto (global_State *g, Proto *f) {
+  int i;
+  if (f->source) stringmark(f->source);
+  for (i=0; i<f->sizek; i++)  /* mark literals */
+    markvalue(g, &f->k[i]);
+  for (i=0; i<f->sizeupvalues; i++) {  /* mark upvalue names */
+    if (f->upvalues[i])
+      stringmark(f->upvalues[i]);
+  }
+  for (i=0; i<f->sizep; i++) {  /* mark nested protos */
+    if (f->p[i])
+      markobject(g, f->p[i]);
+  }
+  for (i=0; i<f->sizelocvars; i++) {  /* mark local-variable names */
+    if (f->locvars[i].varname)
+      stringmark(f->locvars[i].varname);
+  }
+}
+
+
+
+static void traverseclosure (global_State *g, Closure *cl) {
+  markobject(g, cl->c.env);
+  if (cl->c.isC) {
+    int i;
+    for (i=0; i<cl->c.nupvalues; i++)  /* mark its upvalues */
+      markvalue(g, &cl->c.upvalue[i]);
+  }
+  else {
+    int i;
+    lua_assert(cl->l.nupvalues == cl->l.p->nups);
+    markobject(g, cl->l.p);
+    for (i=0; i<cl->l.nupvalues; i++)  /* mark its upvalues */
+      markobject(g, cl->l.upvals[i]);
+  }
+}
+
+
+static void checkstacksizes (lua_State *L, StkId max) {
+  int ci_used = cast_int(L->ci - L->base_ci);  /* number of `ci' in use */
+  int s_used = cast_int(max - L->stack);  /* part of stack in use */
+  if (L->size_ci > LUAI_MAXCALLS)  /* handling overflow? */
+    return;  /* do not touch the stacks */
+  if (4*ci_used < L->size_ci && 2*BASIC_CI_SIZE < L->size_ci)
+    luaD_reallocCI(L, L->size_ci/2);  /* still big enough... */
+  condhardstacktests(luaD_reallocCI(L, ci_used + 1));
+  if (4*s_used < L->stacksize &&
+      2*(BASIC_STACK_SIZE+EXTRA_STACK) < L->stacksize)
+    luaD_reallocstack(L, L->stacksize/2);  /* still big enough... */
+  condhardstacktests(luaD_reallocstack(L, s_used));
+}
+
+
+static void traversestack (global_State *g, lua_State *l) {
+  StkId o, lim;
+  CallInfo *ci;
+  markvalue(g, gt(l));
+  lim = l->top;
+  for (ci = l->base_ci; ci <= l->ci; ci++) {
+    lua_assert(ci->top <= l->stack_last);
+    if (lim < ci->top) lim = ci->top;
+  }
+  for (o = l->stack; o < l->top; o++)
+    markvalue(g, o);
+  for (; o <= lim; o++)
+    setnilvalue(o);
+  checkstacksizes(l, lim);
+}
+
+
+/*
+** traverse one gray object, turning it to black.
+** Returns `quantity' traversed.
+*/
+static l_mem propagatemark (global_State *g) {
+  GCObject *o = g->gray;
+  lua_assert(isgray(o));
+  gray2black(o);
+  switch (o->gch.tt) {
+    case LUA_TTABLE: {
+      Table *h = gco2h(o);
+      g->gray = h->gclist;
+      if (traversetable(g, h))  /* table is weak? */
+        black2gray(o);  /* keep it gray */
+      return sizeof(Table) + sizeof(TValue) * h->sizearray +
+                             sizeof(Node) * sizenode(h);
+    }
+    case LUA_TFUNCTION: {
+      Closure *cl = gco2cl(o);
+      g->gray = cl->c.gclist;
+      traverseclosure(g, cl);
+      return (cl->c.isC) ? sizeCclosure(cl->c.nupvalues) :
+                           sizeLclosure(cl->l.nupvalues);
+    }
+    case LUA_TTHREAD: {
+      lua_State *th = gco2th(o);
+      g->gray = th->gclist;
+      th->gclist = g->grayagain;
+      g->grayagain = o;
+      black2gray(o);
+      traversestack(g, th);
+      return sizeof(lua_State) + sizeof(TValue) * th->stacksize +
+                                 sizeof(CallInfo) * th->size_ci;
+    }
+    case LUA_TPROTO: {
+      Proto *p = gco2p(o);
+      g->gray = p->gclist;
+      traverseproto(g, p);
+      return sizeof(Proto) + sizeof(Instruction) * p->sizecode +
+                             sizeof(Proto *) * p->sizep +
+                             sizeof(TValue) * p->sizek + 
+                             sizeof(int) * p->sizelineinfo +
+                             sizeof(LocVar) * p->sizelocvars +
+                             sizeof(TString *) * p->sizeupvalues;
+    }
+    default: lua_assert(0); return 0;
+  }
+}
+
+
+static size_t propagateall (global_State *g) {
+  size_t m = 0;
+  while (g->gray) m += propagatemark(g);
+  return m;
+}
+
+
+/*
+** The next function tells whether a key or value can be cleared from
+** a weak table. Non-collectable objects are never removed from weak
+** tables. Strings behave as `values', so are never removed too. for
+** other objects: if really collected, cannot keep them; for userdata
+** being finalized, keep them in keys, but not in values
+*/
+static int iscleared (const TValue *o, int iskey) {
+  if (!iscollectable(o)) return 0;
+  if (ttisstring(o)) {
+    stringmark(rawtsvalue(o));  /* strings are `values', so are never weak */
+    return 0;
+  }
+  return iswhite(gcvalue(o)) ||
+    (ttisuserdata(o) && (!iskey && isfinalized(uvalue(o))));
+}
+
+
+/*
+** clear collected entries from weaktables
+*/
+static void cleartable (GCObject *l) {
+  while (l) {
+    Table *h = gco2h(l);
+    int i = h->sizearray;
+    lua_assert(testbit(h->marked, VALUEWEAKBIT) ||
+               testbit(h->marked, KEYWEAKBIT));
+    if (testbit(h->marked, VALUEWEAKBIT)) {
+      while (i--) {
+        TValue *o = &h->array[i];
+        if (iscleared(o, 0))  /* value was collected? */
+          setnilvalue(o);  /* remove value */
+      }
+    }
+    i = sizenode(h);
+    while (i--) {
+      Node *n = gnode(h, i);
+      if (!ttisnil(gval(n)) &&  /* non-empty entry? */
+          (iscleared(key2tval(n), 1) || iscleared(gval(n), 0))) {
+        setnilvalue(gval(n));  /* remove value ... */
+        removeentry(n);  /* remove entry from table */
+      }
+    }
+    l = h->gclist;
+  }
+}
+
+
+static void freeobj (lua_State *L, GCObject *o) {
+  switch (o->gch.tt) {
+    case LUA_TPROTO: luaF_freeproto(L, gco2p(o)); break;
+    case LUA_TFUNCTION: luaF_freeclosure(L, gco2cl(o)); break;
+    case LUA_TUPVAL: luaF_freeupval(L, gco2uv(o)); break;
+    case LUA_TTABLE: luaH_free(L, gco2h(o)); break;
+    case LUA_TTHREAD: {
+      lua_assert(gco2th(o) != L && gco2th(o) != G(L)->mainthread);
+      luaE_freethread(L, gco2th(o));
+      break;
+    }
+    case LUA_TSTRING: {
+      G(L)->strt.nuse--;
+      luaM_freemem(L, o, sizestring(gco2ts(o)));
+      break;
+    }
+    case LUA_TUSERDATA: {
+      luaM_freemem(L, o, sizeudata(gco2u(o)));
+      break;
+    }
+    default: lua_assert(0);
+  }
+}
+
+
+
+#define sweepwholelist(L,p)	sweeplist(L,p,MAX_LUMEM)
+
+
+static GCObject **sweeplist (lua_State *L, GCObject **p, lu_mem count) {
+  GCObject *curr;
+  global_State *g = G(L);
+  int deadmask = otherwhite(g);
+  while ((curr = *p) != NULL && count-- > 0) {
+    if (curr->gch.tt == LUA_TTHREAD)  /* sweep open upvalues of each thread */
+      sweepwholelist(L, &gco2th(curr)->openupval);
+    if ((curr->gch.marked ^ WHITEBITS) & deadmask) {  /* not dead? */
+      lua_assert(!isdead(g, curr) || testbit(curr->gch.marked, FIXEDBIT));
+      makewhite(g, curr);  /* make it white (for next cycle) */
+      p = &curr->gch.next;
+    }
+    else {  /* must erase `curr' */
+      lua_assert(isdead(g, curr) || deadmask == bitmask(SFIXEDBIT));
+      *p = curr->gch.next;
+      if (curr == g->rootgc)  /* is the first element of the list? */
+        g->rootgc = curr->gch.next;  /* adjust first */
+      freeobj(L, curr);
+    }
+  }
+  return p;
+}
+
+
+static void checkSizes (lua_State *L) {
+  global_State *g = G(L);
+  /* check size of string hash */
+  if (g->strt.nuse < cast(lu_int32, g->strt.size/4) &&
+      g->strt.size > MINSTRTABSIZE*2)
+    luaS_resize(L, g->strt.size/2);  /* table is too big */
+  /* check size of buffer */
+  if (luaZ_sizebuffer(&g->buff) > LUA_MINBUFFER*2) {  /* buffer too big? */
+    size_t newsize = luaZ_sizebuffer(&g->buff) / 2;
+    luaZ_resizebuffer(L, &g->buff, newsize);
+  }
+}
+
+
+static void GCTM (lua_State *L) {
+  global_State *g = G(L);
+  GCObject *o = g->tmudata->gch.next;  /* get first element */
+  Udata *udata = rawgco2u(o);
+  const TValue *tm;
+  /* remove udata from `tmudata' */
+  if (o == g->tmudata)  /* last element? */
+    g->tmudata = NULL;
+  else
+    g->tmudata->gch.next = udata->uv.next;
+  udata->uv.next = g->mainthread->next;  /* return it to `root' list */
+  g->mainthread->next = o;
+  makewhite(g, o);
+  tm = fasttm(L, udata->uv.metatable, TM_GC);
+  if (tm != NULL) {
+    lu_byte oldah = L->allowhook;
+    lu_mem oldt = g->GCthreshold;
+    L->allowhook = 0;  /* stop debug hooks during GC tag method */
+    g->GCthreshold = 2*g->totalbytes;  /* avoid GC steps */
+    setobj2s(L, L->top, tm);
+    setuvalue(L, L->top+1, udata);
+    L->top += 2;
+    luaD_call(L, L->top - 2, 0);
+    L->allowhook = oldah;  /* restore hooks */
+    g->GCthreshold = oldt;  /* restore threshold */
+  }
+}
+
+
+/*
+** Call all GC tag methods
+*/
+void luaC_callGCTM (lua_State *L) {
+  while (G(L)->tmudata)
+    GCTM(L);
+}
+
+
+void luaC_freeall (lua_State *L) {
+  global_State *g = G(L);
+  int i;
+  g->currentwhite = WHITEBITS | bitmask(SFIXEDBIT);  /* mask to collect all elements */
+  sweepwholelist(L, &g->rootgc);
+  for (i = 0; i < g->strt.size; i++)  /* free all string lists */
+    sweepwholelist(L, &g->strt.hash[i]);
+}
+
+
+static void markmt (global_State *g) {
+  int i;
+  for (i=0; i<NUM_TAGS; i++)
+    if (g->mt[i]) markobject(g, g->mt[i]);
+}
+
+
+/* mark root set */
+static void markroot (lua_State *L) {
+  global_State *g = G(L);
+  g->gray = NULL;
+  g->grayagain = NULL;
+  g->weak = NULL;
+  markobject(g, g->mainthread);
+  /* make global table be traversed before main stack */
+  markvalue(g, gt(g->mainthread));
+  markvalue(g, registry(L));
+  markmt(g);
+  g->gcstate = GCSpropagate;
+}
+
+
+static void remarkupvals (global_State *g) {
+  UpVal *uv;
+  for (uv = g->uvhead.u.l.next; uv != &g->uvhead; uv = uv->u.l.next) {
+    lua_assert(uv->u.l.next->u.l.prev == uv && uv->u.l.prev->u.l.next == uv);
+    if (isgray(obj2gco(uv)))
+      markvalue(g, uv->v);
+  }
+}
+
+
+static void atomic (lua_State *L) {
+  global_State *g = G(L);
+  size_t udsize;  /* total size of userdata to be finalized */
+  /* remark occasional upvalues of (maybe) dead threads */
+  remarkupvals(g);
+  /* traverse objects cautch by write barrier and by 'remarkupvals' */
+  propagateall(g);
+  /* remark weak tables */
+  g->gray = g->weak;
+  g->weak = NULL;
+  lua_assert(!iswhite(obj2gco(g->mainthread)));
+  markobject(g, L);  /* mark running thread */
+  markmt(g);  /* mark basic metatables (again) */
+  propagateall(g);
+  /* remark gray again */
+  g->gray = g->grayagain;
+  g->grayagain = NULL;
+  propagateall(g);
+  udsize = luaC_separateudata(L, 0);  /* separate userdata to be finalized */
+  marktmu(g);  /* mark `preserved' userdata */
+  udsize += propagateall(g);  /* remark, to propagate `preserveness' */
+  cleartable(g->weak);  /* remove collected objects from weak tables */
+  /* flip current white */
+  g->currentwhite = cast_byte(otherwhite(g));
+  g->sweepstrgc = 0;
+  g->sweepgc = &g->rootgc;
+  g->gcstate = GCSsweepstring;
+  g->estimate = g->totalbytes - udsize;  /* first estimate */
+}
+
+
+static l_mem singlestep (lua_State *L) {
+  global_State *g = G(L);
+  /*lua_checkmemory(L);*/
+  switch (g->gcstate) {
+    case GCSpause: {
+      markroot(L);  /* start a new collection */
+      return 0;
+    }
+    case GCSpropagate: {
+      if (g->gray)
+        return propagatemark(g);
+      else {  /* no more `gray' objects */
+        atomic(L);  /* finish mark phase */
+        return 0;
+      }
+    }
+    case GCSsweepstring: {
+      lu_mem old = g->totalbytes;
+      sweepwholelist(L, &g->strt.hash[g->sweepstrgc++]);
+      if (g->sweepstrgc >= g->strt.size)  /* nothing more to sweep? */
+        g->gcstate = GCSsweep;  /* end sweep-string phase */
+      lua_assert(old >= g->totalbytes);
+      g->estimate -= old - g->totalbytes;
+      return GCSWEEPCOST;
+    }
+    case GCSsweep: {
+      lu_mem old = g->totalbytes;
+      g->sweepgc = sweeplist(L, g->sweepgc, GCSWEEPMAX);
+      if (*g->sweepgc == NULL) {  /* nothing more to sweep? */
+        checkSizes(L);
+        g->gcstate = GCSfinalize;  /* end sweep phase */
+      }
+      lua_assert(old >= g->totalbytes);
+      g->estimate -= old - g->totalbytes;
+      return GCSWEEPMAX*GCSWEEPCOST;
+    }
+    case GCSfinalize: {
+      if (g->tmudata) {
+        GCTM(L);
+        if (g->estimate > GCFINALIZECOST)
+          g->estimate -= GCFINALIZECOST;
+        return GCFINALIZECOST;
+      }
+      else {
+        g->gcstate = GCSpause;  /* end collection */
+        g->gcdept = 0;
+        return 0;
+      }
+    }
+    default: lua_assert(0); return 0;
+  }
+}
+
+
+void luaC_step (lua_State *L) {
+  global_State *g = G(L);
+  l_mem lim = (GCSTEPSIZE/100) * g->gcstepmul;
+  if (lim == 0)
+    lim = (MAX_LUMEM-1)/2;  /* no limit */
+  g->gcdept += g->totalbytes - g->GCthreshold;
+  do {
+    lim -= singlestep(L);
+    if (g->gcstate == GCSpause)
+      break;
+  } while (lim > 0);
+  if (g->gcstate != GCSpause) {
+    if (g->gcdept < GCSTEPSIZE)
+      g->GCthreshold = g->totalbytes + GCSTEPSIZE;  /* - lim/g->gcstepmul;*/
+    else {
+      g->gcdept -= GCSTEPSIZE;
+      g->GCthreshold = g->totalbytes;
+    }
+  }
+  else {
+    lua_assert(g->totalbytes >= g->estimate);
+    setthreshold(g);
+  }
+}
+
+
+void luaC_fullgc (lua_State *L) {
+  global_State *g = G(L);
+  if (g->gcstate <= GCSpropagate) {
+    /* reset sweep marks to sweep all elements (returning them to white) */
+    g->sweepstrgc = 0;
+    g->sweepgc = &g->rootgc;
+    /* reset other collector lists */
+    g->gray = NULL;
+    g->grayagain = NULL;
+    g->weak = NULL;
+    g->gcstate = GCSsweepstring;
+  }
+  lua_assert(g->gcstate != GCSpause && g->gcstate != GCSpropagate);
+  /* finish any pending sweep phase */
+  while (g->gcstate != GCSfinalize) {
+    lua_assert(g->gcstate == GCSsweepstring || g->gcstate == GCSsweep);
+    singlestep(L);
+  }
+  markroot(L);
+  while (g->gcstate != GCSpause) {
+    singlestep(L);
+  }
+  setthreshold(g);
+}
+
+
+void luaC_barrierf (lua_State *L, GCObject *o, GCObject *v) {
+  global_State *g = G(L);
+  lua_assert(isblack(o) && iswhite(v) && !isdead(g, v) && !isdead(g, o));
+  lua_assert(g->gcstate != GCSfinalize && g->gcstate != GCSpause);
+  lua_assert(ttype(&o->gch) != LUA_TTABLE);
+  /* must keep invariant? */
+  if (g->gcstate == GCSpropagate)
+    reallymarkobject(g, v);  /* restore invariant */
+  else  /* don't mind */
+    makewhite(g, o);  /* mark as white just to avoid other barriers */
+}
+
+
+void luaC_barrierback (lua_State *L, Table *t) {
+  global_State *g = G(L);
+  GCObject *o = obj2gco(t);
+  lua_assert(isblack(o) && !isdead(g, o));
+  lua_assert(g->gcstate != GCSfinalize && g->gcstate != GCSpause);
+  black2gray(o);  /* make table gray (again) */
+  t->gclist = g->grayagain;
+  g->grayagain = o;
+}
+
+
+void luaC_link (lua_State *L, GCObject *o, lu_byte tt) {
+  global_State *g = G(L);
+  o->gch.next = g->rootgc;
+  g->rootgc = o;
+  o->gch.marked = luaC_white(g);
+  o->gch.tt = tt;
+}
+
+
+void luaC_linkupval (lua_State *L, UpVal *uv) {
+  global_State *g = G(L);
+  GCObject *o = obj2gco(uv);
+  o->gch.next = g->rootgc;  /* link upvalue into `rootgc' list */
+  g->rootgc = o;
+  if (isgray(o)) { 
+    if (g->gcstate == GCSpropagate) {
+      gray2black(o);  /* closed upvalues need barrier */
+      luaC_barrier(L, uv, uv->v);
+    }
+    else {  /* sweep phase: sweep it (turning it into white) */
+      makewhite(g, o);
+      lua_assert(g->gcstate != GCSfinalize && g->gcstate != GCSpause);
+    }
+  }
+}
+

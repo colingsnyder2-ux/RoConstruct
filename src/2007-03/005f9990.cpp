@@ -1,45 +1,82 @@
 // from server: 100% by auto
-// roc 2007-03 005f9990  unit: seg_005f0000  size: 86 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-03 005f9990
-//
-// 005f9990  53                   push ebx
-// 005f9991  55                   push ebp
-// 005f9992  56                   push esi
-// 005f9993  bebc000000           mov esi, 0xbc
-// 005f9998  bb30027c00           mov ebx, 0x7c0230
-// 005f999d  57                   push edi
-// 005f999e  8b7c2414             mov edi, dword ptr [esp + 0x14]
-// 005f99a2  2bde                 sub ebx, esi
-// 005f99a4  8b0c33               mov ecx, dword ptr [ebx + esi]
-// 005f99a7  8bc1                 mov eax, ecx
-// 005f99a9  8d6801               lea ebp, [eax + 1]
-// 005f99ac  8d642400             lea esp, [esp]
-// 005f99b0  8a10                 mov dl, byte ptr [eax]
-// 005f99b2  83c001               add eax, 1
-// 005f99b5  84d2                 test dl, dl
-// 005f99b7  75f7                 jne 0x5f99b0
-// 005f99b9  2bc5                 sub eax, ebp
-// 005f99bb  50                   push eax
-// 005f99bc  51                   push ecx
-// 005f99bd  57                   push edi
-// 005f99be  e85d2d0000           call 0x5fc720
-// 005f99c3  8b4f10               mov ecx, dword ptr [edi + 0x10]
-// 005f99c6  89040e               mov dword ptr [esi + ecx], eax
-// 005f99c9  8b5710               mov edx, dword ptr [edi + 0x10]
-// 005f99cc  8b0432               mov eax, dword ptr [edx + esi]
-// 005f99cf  80480520             or byte ptr [eax + 5], 0x20
-// 005f99d3  83c604               add esi, 4
-// 005f99d6  83c40c               add esp, 0xc
-// 005f99d9  81fe00010000         cmp esi, 0x100
-// 005f99df  7cc3                 jl 0x5f99a4
-// 005f99e1  5f                   pop edi
-// 005f99e2  5e                   pop esi
-// 005f99e3  5d                   pop ebp
-// 005f99e4  5b                   pop ebx
-// 005f99e5  c3                   ret 
-// library lua-5.1.1/ltm.c (function _luaT_init)
-
 // roc-lang: c
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /MD
 // roc-lib: lua-5.1.1 ltm.c
+
+// Candidate translation unit (score above; library headers required).
+/*
+** $Id: ltm.c,v 2.8 2006/01/10 12:50:00 roberto Exp $
+** Tag methods
+** See Copyright Notice in lua.h
+*/
+
+
+#include <string.h>
+
+#define ltm_c
+#define LUA_CORE
+
+#include "lua.h"
+
+#include "lobject.h"
+#include "lstate.h"
+#include "lstring.h"
+#include "ltable.h"
+#include "ltm.h"
+
+
+
+const char *const luaT_typenames[] = {
+  "nil", "boolean", "userdata", "number",
+  "string", "table", "function", "userdata", "thread",
+  "proto", "upval"
+};
+
+
+void luaT_init (lua_State *L) {
+  static const char *const luaT_eventname[] = {  /* ORDER TM */
+    "__index", "__newindex",
+    "__gc", "__mode", "__eq",
+    "__add", "__sub", "__mul", "__div", "__mod",
+    "__pow", "__unm", "__len", "__lt", "__le",
+    "__concat", "__call"
+  };
+  int i;
+  for (i=0; i<TM_N; i++) {
+    G(L)->tmname[i] = luaS_new(L, luaT_eventname[i]);
+    luaS_fix(G(L)->tmname[i]);  /* never collect these names */
+  }
+}
+
+
+/*
+** function to be used with macro "fasttm": optimized for absence of
+** tag methods
+*/
+const TValue *luaT_gettm (Table *events, TMS event, TString *ename) {
+  const TValue *tm = luaH_getstr(events, ename);
+  lua_assert(event <= TM_EQ);
+  if (ttisnil(tm)) {  /* no tag method? */
+    events->flags |= cast_byte(1u<<event);  /* cache this fact */
+    return NULL;
+  }
+  else return tm;
+}
+
+
+const TValue *luaT_gettmbyobj (lua_State *L, const TValue *o, TMS event) {
+  Table *mt;
+  switch (ttype(o)) {
+    case LUA_TTABLE:
+      mt = hvalue(o)->metatable;
+      break;
+    case LUA_TUSERDATA:
+      mt = uvalue(o)->metatable;
+      break;
+    default:
+      mt = G(L)->mt[ttype(o)];
+  }
+  return (mt ? luaH_getstr(mt, G(L)->tmname[event]) : luaO_nilobject);
+}
+
