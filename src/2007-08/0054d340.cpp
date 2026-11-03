@@ -1,45 +1,67 @@
-// from server: 70% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+extern "C" long __cdecl _InterlockedIncrement(long volatile*);
+extern "C" long __cdecl _InterlockedDecrement(long volatile*);
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
 
-struct UString_sink_stream_buffer
-{
-    void* field0;
-    void* field4;
-    char field8;
-    void assign(void* src);
+class sp_counted_base {
+    long use_count_;
+    long weak_count_;
+public:
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
 };
 
-void UString_sink_stream_buffer::assign(void* src)
-{
-    if (field8)
-    {
-        if (field4)
-        {
-            volatile long* p = (volatile long*)((char*)field4 + 4);
-            if (_InterlockedExchangeAdd(p, -1) == 1)
-            {
-                void** vtbl = *(void***)field4;
-                void (*fn)(void*) = (void (*)(void*))vtbl[1];
-                fn(field4);
-                volatile long* p2 = (volatile long*)((char*)field4 + 8);
-                if (_InterlockedExchangeAdd(p2, -1) == 1)
-                {
-                    void** vtbl2 = *(void***)field4;
-                    void (*fn2)(void*) = (void (*)(void*))vtbl2[2];
-                    fn2(field4);
-                }
-            }
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+
+struct Impl;
+struct Sink {
+    Impl* px;
+    shared_count pn;
+};
+
+template<typename T>
+class optional {
+public:
+    void reset(const T& t);
+    void reset() {
+        if (initialized_) {
+            T* t = static_cast<T*>(address());
+            t->~T();
+            initialized_ = false;
         }
-        field8 = 0;
     }
-    void** s = (void**)src;
-    field0 = s[0];
-    field4 = s[1];
-    if (field4)
-    {
-        volatile long* p3 = (volatile long*)((char*)field4 + 4);
-        _InterlockedExchangeAdd(p3, 1);
-    }
-    field8 = 1;
+private:
+    void* address() { return &storage_; }
+    union { char c[sizeof(T)]; void* a; } storage_;
+    bool initialized_;
+};
+
+template<typename T>
+void optional<T>::reset(const T& t)
+{
+    reset();
+    new (address()) T(t);
+    initialized_ = true;
 }
+
+inline void* operator new(unsigned int, void* p) { return p; }
+template class optional<Sink>;

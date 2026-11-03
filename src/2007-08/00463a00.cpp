@@ -1,69 +1,55 @@
-// from server: 74% by colin
-struct MediaQueryListListener;
-struct MediaQueryList;
+// from server: 97% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: atl-8.0 roc_espclaude_3984340d3efa32f8.cpp
 
-struct Listener {
-    char pad0[0x34];
-    char pad34[0x44];
-    char field78;
-    char field79;
-    char field7a;
-    char pad7b[0x184 - 0x7b];
-    void* field184;
-    char pad188[0x190 - 0x188];
-    void* field190;
-    void evaluate();
+// Candidate translation unit (score above; library headers required).
+#define _CPPUNWIND 1
+#define _DLL
+#include <atlbase.h>
+struct IDirectInputDevice8A : public IUnknown {
+    STDMETHOD(GetCapabilities)(void*) = 0;
+    STDMETHOD(EnumObjects)(void*, void*, DWORD) = 0;
+    STDMETHOD(GetProperty)(const GUID&, void*) = 0;
+    STDMETHOD(SetProperty)(const GUID&, const void*) = 0;
+    STDMETHOD(Acquire)() = 0;
+    STDMETHOD(Unacquire)() = 0;
+    STDMETHOD(GetDeviceState)(DWORD, void*) = 0;
+    STDMETHOD(GetDeviceData)(DWORD, void*, DWORD*, DWORD) = 0;
+    STDMETHOD(SetDataFormat)(const void*) = 0;
+    STDMETHOD(SetEventNotification)(HANDLE) = 0;
+    STDMETHOD(SetCooperativeLevel)(HWND, DWORD) = 0;
 };
-
-struct MediaQueryEvaluator {
-    void* vtable;
+class DirectInputDevice {
+    char pad[0x34];
+    CRITICAL_SECTION cs;
+    char pad2[0x78 - 0x34 - sizeof(CRITICAL_SECTION)];
+    bool wantAcquire;   // +0x78
+    bool acquired;      // +0x79
+    char cooperative;   // +0x7a
+    char pad3[0x184 - 0x7b];
+    HWND hwnd;          // +0x184
+    char pad4[0x190 - 0x188];
+    IDirectInputDevice8A* device; // +0x190
+public:
+    void updateAcquire();
 };
-
-struct ScriptState;
-
-extern "C" void __stdcall LeaveCriticalSection(void*);
-
-struct CritSectHolder {
-    void* cs;
-    char locked;
-    CritSectHolder(void* c) : cs(c), locked(0) {}
-    ~CritSectHolder() {
-        if (locked) {
-            LeaveCriticalSection(cs);
-        }
-    }
-};
-
-void Listener::evaluate() {
-    CritSectHolder holder((char*)this + 0x34);
-    if (field190) {
-        if (field79) {
-            void** vt = *(void***)field190;
-            typedef unsigned int (__thiscall *Fn1)(void*);
-            Fn1 f = (Fn1)vt[7];
-            if (f(field190) < 0) {
-                field79 = 0;
+void DirectInputDevice::updateAcquire()
+{
+    ATL::CCritSecLock lock(cs);
+    if (device) {
+        if (acquired && FAILED(device->Acquire()))
+            acquired = false;
+        if (wantAcquire != acquired || (acquired && cooperative != 1)) {
+            device->Unacquire();
+            if (wantAcquire) {
+                cooperative = 1;
+                if (device->SetCooperativeLevel(hwnd, 5) == 0)
+                    acquired = SUCCEEDED(device->Acquire());
             }
-        }
-        if (field78 != field79 || (field79 && field7a != 1)) {
-            void** vt = *(void***)field190;
-            typedef void (__thiscall *Fn2)(void*);
-            Fn2 f = (Fn2)vt[8];
-            f(field190);
-            if (field78) {
-                void** vt2 = *(void***)field190;
-                typedef int (__thiscall *Fn3)(void*, void*, int);
-                Fn3 f3 = (Fn3)vt2[13];
-                field7a = 1;
-                if (f3(field190, field184, 5) == 0) {
-                    void** vt3 = *(void***)field190;
-                    typedef int (__thiscall *Fn4)(void*);
-                    Fn4 f4 = (Fn4)vt3[7];
-                    field79 = (f4(field190) >= 0);
-                }
-            } else {
-                field79 = 0;
-            }
+            else
+                acquired = false;
         }
     }
 }

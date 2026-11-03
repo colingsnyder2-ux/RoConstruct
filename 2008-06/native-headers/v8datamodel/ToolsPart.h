@@ -25,7 +25,7 @@ namespace RBX
 
 	public:
 		FillToolColor();
-		BrickColor get() const;
+		BrickColor get() const { return color; }
 		void set(const BrickColor&);
 	};
 

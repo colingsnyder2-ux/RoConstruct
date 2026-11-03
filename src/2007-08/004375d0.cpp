@@ -1,28 +1,30 @@
-// from server: 42% by colin
-extern "C" unsigned long __stdcall GetCurrentThreadId();
-
-struct COutputView {
-    void* vtable;
-    int field_4;
-    int field_8;
-    int field_c;
-    int field_10;
-    unsigned long field_14;
-    int field_18;
-    COutputView();
+// from server: 100% by EspClaude
+// roc 2007-08 004375d0  RBX::MarshaledListener<StandardOut, StandardOutMessage, StandardOut, StandardOutMessage>::MarshaledListener() (RTTI from vtable; vector @+4, threadId @+0x14, marshal HWND @+0x18)
+// roc-flags: /O2 /GS /EHsc /MD
+#include <vector>
+typedef struct HWND__* HWND;
+extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId();
+namespace RBX {
+class StandardOut; struct StandardOutMessage { int type; const char* message; };
+class CMarshalWindow { public: static HWND getWindow(); };
+template<class Source, class Event> class __declspec(novtable) Listener {
+protected:
+    virtual void onEvent(const Source* source, Event event) = 0;
+public:
+    virtual ~Listener();
 };
-
-extern int g_78cdfc;
-extern int g_8b5188;
-
-int sub_433a50();
-
-COutputView::COutputView()
-{
-    vtable = &g_78cdfc;
-    field_8 = 0;
-    field_c = 0;
-    field_10 = 0;
-    field_14 = GetCurrentThreadId();
-    field_18 = sub_433a50();
+template<class Source, class Event, class MSource, class MEvent>
+class MarshaledListener : public Listener<Source, Event> {
+    std::vector<MEvent> queue;
+    unsigned long threadId;
+    HWND window;
+public:
+    MarshaledListener()
+    {
+        threadId = GetCurrentThreadId();
+        window = CMarshalWindow::getWindow();
+    }
+    virtual void onEvent(const Source* source, Event event);
+};
+template class MarshaledListener<StandardOut, StandardOutMessage, StandardOut, StandardOutMessage>;
 }

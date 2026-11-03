@@ -1,21 +1,47 @@
-// from server: 67% by colin
-struct BoundFuncDesc {
-    void construct(int a, int b);
-};
-
-extern "C" int __cdecl func_00630d36(int, int, int, int, int);
-extern "C" int __cdecl func_00630b9e(int, int);
-extern "C" void __stdcall func_0077e710(int);
-extern "C" void __cdecl func_00630d36_helper();
-
-void BoundFuncDesc::construct(int a, int b)
+// from server: 100% by EspClaude
+// roc 2007-08 0058b240  RBX::Reflection::BoundFuncDesc<SoundChannel, void(), 0>::execute (reflection/reflection.h: polymorphic_cast + 8-byte MI member-function pointer @+0x28)
+// roc-flags: /O2 /GS /EHsc /MD
+#include <typeinfo>
+namespace boost {
+template <class Target, class Source>
+inline Target polymorphic_cast(Source* x)
 {
-    int result = func_00630d36(a, 0, 0x88209c, 0x8a2eb0, 0);
-    if (result == 0) {
-        func_0077e710(0x786e04);
-        func_00630b9e(0x841e0c, 0);
+    Target tmp = dynamic_cast<Target>(x);
+    if (tmp == 0) throw std::bad_cast();
+    return tmp;
+}
+}
+namespace RBX {
+namespace Reflection {
+class DescribedBase { public: virtual ~DescribedBase(); int a; const void* descriptor; };
+class Value;
+class Arguments { public: Value* returnValue; };
+template<class Class> class FuncDesc {
+public:
+    virtual ~FuncDesc();
+    virtual void execute(DescribedBase* instance, Arguments& arguments) const = 0;
+    char pad[0x28 - 4];
+};
+template<typename Class, typename Function, int N> class BoundFuncDesc;
+template<typename Class>
+class BoundFuncDesc<Class, void(), 0> : public FuncDesc<Class> {
+public:
+    typedef void (Class::*FunctionSig)();
+private:
+    FunctionSig function;
+public:
+    virtual void execute(DescribedBase* instance, Arguments& arguments) const
+    {
+        call(boost::polymorphic_cast<Class*>(instance), *arguments.returnValue);
     }
-    int (*fn)(void) = *(int (**)(void))(*(int*)((char*)this + 0x28));
-    int offset = *(int*)((char*)this + 0x2c);
-    fn();
+private:
+    void call(Class* o, Value&) const { (o->*function)(); }
+};
+}
+class V0 { public: virtual ~V0(); };
+class SoundChannel : public V0, public Reflection::DescribedBase {
+public:
+    void play();
+};
+template class Reflection::BoundFuncDesc<SoundChannel, void(), 0>;
 }

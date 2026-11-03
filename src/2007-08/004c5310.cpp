@@ -1,42 +1,66 @@
-// from server: 60% by colin
-extern "C" void __stdcall free(void*);
-
-struct RakPeer {
-    void* field0;
-    void* field4;
-    int field8;
-    int fieldC;
-    void clear();
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+#include <stdlib.h>
+namespace DataStructures {
+template<class MemoryBlockType>
+class MemoryPool
+{
+public:
+    struct Page;
+    struct MemoryWithPage
+    {
+        MemoryBlockType userMemory;
+        Page* parentPage;
+    };
+    struct Page
+    {
+        MemoryWithPage** availableStack;
+        int availableStackSize;
+        MemoryWithPage* block;
+        Page *next, *prev;
+    };
+    void Clear(void);
+protected:
+    Page *availablePages, *unavailablePages;
+    int availablePagesSize, unavailablePagesSize;
+    int memoryPoolPageSize;
 };
 
-void RakPeer::clear()
+template<class MemoryBlockType>
+void MemoryPool<MemoryBlockType>::Clear(void)
 {
-    int i;
-    void* p;
-    void* next;
+    Page *cur, *freed;
 
-    if (field8 > 0) {
-        p = field0;
-        do {
-            free(*(void**)p);
-            free(*(void**)((char*)p + 8));
-            next = *(void**)((char*)p + 0xC);
-            free(p);
-            p = next;
-        } while (p != field0);
+    if (availablePagesSize > 0)
+    {
+        cur = availablePages;
+        do
+        {
+            free(cur->availableStack);
+            free(cur->block);
+            freed = cur;
+            cur = cur->next;
+            free(freed);
+        } while (cur != availablePages);
     }
 
-    if (fieldC > 0) {
-        p = field4;
-        do {
-            free(*(void**)p);
-            free(*(void**)((char*)p + 8));
-            next = *(void**)((char*)p + 0xC);
-            free(p);
-            p = next;
-        } while (p != field4);
+    if (unavailablePagesSize > 0)
+    {
+        cur = unavailablePages;
+        do
+        {
+            free(cur->availableStack);
+            free(cur->block);
+            freed = cur;
+            cur = cur->next;
+            free(freed);
+        } while (cur != unavailablePages);
     }
 
-    fieldC = 0;
-    field8 = 0;
+    availablePagesSize = 0;
+    unavailablePagesSize = 0;
 }
+}
+struct InternalPacket { char data[0x40]; };
+template class DataStructures::MemoryPool<InternalPacket>;

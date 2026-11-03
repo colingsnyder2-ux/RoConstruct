@@ -1,108 +1,69 @@
-// from server: 62% by Yeetserama
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/Name.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/Name.h"
-#include "util/Debug.h"
-#include <boost/thread/once.hpp>
-
-// intentionally outside of the RBX namespace
-boost::once_flag flag = BOOST_ONCE_INIT;
-
-boost::mutex& moo2()
-{
-	static boost::mutex mutex2;
-	return mutex2;
+// from server: 100% by EspClaude
+// roc 2007-08 00591450  RBX::ObjectValue::ObjectValue() : value() { setName("Value"); } (boost::shared_ptr<Instance> value @0xe8)
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <string>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+    long use_count_;
+    long weak_count_;
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    shared_count() : pi_(0) {}
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
 }
-
-void initMoo()
-{
-	moo2();
+template<class T> class shared_ptr {
+    T* px;
+    detail::shared_count pn;
+public:
+    shared_ptr() : px(0) {}
+    ~shared_ptr() {}
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+};
 }
-
-namespace RBX
+namespace RBX {
+class V0 { public: virtual ~V0(); };
+class V1 { public: virtual ~V1(); int a, b; };
+class V2 { public: virtual ~V2(); };
+template<int N> class Notifier { public: virtual ~Notifier(); int pad[5]; };
+class V8 { public: virtual ~V8(); char pad[0xe8 - 0x90]; };
+class Instance : public V0, public V1, public V2, public Notifier<1>, public Notifier<2>, public Notifier<3>,
+                 public Notifier<4>, public Notifier<5>, public V8 {
+public:
+    Instance();
+    void setName(const std::string& name);
+};
+class ObjectValue : public Instance {
+    boost::shared_ptr<Instance> value;
+public:
+    ObjectValue();
+};
+ObjectValue::ObjectValue()
 {
-	// seems to be inlined
-	boost::mutex& Name::mutex()
-	{
-		boost::call_once(initMoo, flag);
-		return moo2();
-	}
-
-	std::map<int, Name*>& Name::dictionary()
-	{
-		static std::map<int, Name*> d;
-		return d;
-	}
-
-	Name::NamMap& Name::namMap()
-	{
-		static NamMap n;
-		return n;
-	}
-
-	const Name& Name::getNullName()
-	{
-		boost::mutex::scoped_lock scoped_lock(mutex());
-		static const Name& nullName = declare("", 0);
-		return nullName;
-	}
-
-	const Name& Name::declare(const char* sName, int dictionaryIndex)
-	{
-		if (!sName)
-		{
-			RBXASSERT(dictionaryIndex == -1 || !dictionaryIndex);
-			return getNullName();
-		}
-
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			if (dictionaryIndex != -1)
-			{
-				RBXASSERT(iter->second->dictionaryIndex == dictionaryIndex || iter->second->dictionaryIndex == -1);
-				dictionary()[dictionaryIndex] = iter->second;
-			}
-			return *iter->second;
-		}
-		else
-		{
-			Name* name = new Name(sName, dictionaryIndex);
-			namMap()[sName] = name;
-			dictionary()[dictionaryIndex] = name;
-			return *name;
-		}
-	}
-
-	const Name& Name::lookup(const std::string& sName)
-	{
-		RBXASSERT(sName.size() < 50);
-		boost::mutex::scoped_lock scoped_lock(mutex());
-
-		NamMap::iterator iter = namMap().find(sName);
-		if (iter != namMap().end())
-		{
-			return *iter->second;
-		}
-		else
-		{
-			return getNullName();
-		}
-	}
-
-	const Name& Name::lookup(const char* sName)
-	{
-		if (!sName)
-		{
-			return getNullName();
-		}
-
-		return lookup(std::string(sName));
-	}
+    setName("Value");
+}
 }

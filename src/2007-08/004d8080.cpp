@@ -1,11 +1,12 @@
-// from server: 81% by colin
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 struct Texture {
     int x;
     float y;
     float z;
     bool lessThan(const Texture& other) const;
 };
-
 bool Texture::lessThan(const Texture& other) const
 {
     if (x < other.x)
@@ -16,7 +17,5 @@ bool Texture::lessThan(const Texture& other) const
         return true;
     if (y > other.y)
         return false;
-    if (z < other.z)
-        return true;
-    return false;
+    return z < other.z;
 }

@@ -1,31 +1,35 @@
-// from server: 92% by colin
-struct NonFactoryProduct {
-    int field0;
-    int field4;
-    int field8;
-    int fieldC;
-    int field10;
-    void method();
+// from server: 100% by EspClaude
+// roc 2007-08 00415db0  std::deque<boost::function0<void> >::pop_front (VS2005 deque, boost 1.33 function {manager, functor, invoker})
+// roc-flags: /O2 /GS /EHsc /MD
+#include <deque>
+namespace boost {
+namespace detail { namespace function {
+union any_pointer { void* obj_ptr; const void* const_obj_ptr; void (*func_ptr)(); };
+enum functor_manager_operation_type { clone_functor_tag, destroy_functor_tag };
+} }
+class function_base {
+public:
+    function_base() : manager(0) { functor.obj_ptr = 0; }
+    bool empty() const { return !manager; }
+    detail::function::any_pointer (*manager)(detail::function::any_pointer, detail::function::functor_manager_operation_type);
+    detail::function::any_pointer functor;
 };
-
-void NonFactoryProduct::method() {
-    if (field10 != 0) {
-        int* p = (int*)((char*)field4 + fieldC * 4);
-        int* obj = (int*)*p;
-        if (*obj != 0) {
-            int (*fn)(int, int) = (int (*)(int, int))obj[0];
-            int r = fn(obj[1], 1);
-            obj[1] = r;
-        }
-        *obj = 0;
-        obj[2] = 0;
-        fieldC++;
-        if ((unsigned int)field8 <= (unsigned int)fieldC) {
-            fieldC = 0;
-        }
-        field10--;
-        if (field10 == 0) {
-            fieldC = 0;
-        }
+template<typename R>
+class function0 : public function_base {
+public:
+    typedef R (*invoker_type)(detail::function::any_pointer);
+    function0() : function_base(), invoker(0) {}
+    function0(const function0& f);
+    ~function0() { clear(); }
+    void clear()
+    {
+        if (manager)
+            functor = manager(functor, detail::function::destroy_functor_tag);
+        manager = 0;
+        invoker = 0;
     }
+private:
+    invoker_type invoker;
+};
 }
+template void std::deque<boost::function0<void> >::pop_front();

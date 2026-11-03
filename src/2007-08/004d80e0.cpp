@@ -1,47 +1,23 @@
-// from server: 70% by colin
-struct Node {
-    Node* left;
-    Node* right;
-    int key;
-    float x;
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+#include <map>
+struct Texture {
+    int x;
     float y;
-    char pad[9];
-    char flag;
+    float z;
+    bool operator<(const Texture& other) const
+    {
+        if (x < other.x)
+            return true;
+        if (x > other.x)
+            return false;
+        if (y < other.y)
+            return true;
+        if (y > other.y)
+            return false;
+        return z < other.z;
+    }
 };
-
-struct Tree {
-    char pad0[4];
-    Node* root;
-    Node* find(int* key);
-};
-
-Node* Tree::find(int* key)
-{
-    Node* n = root;
-    Node* c = n->right;
-    Node* result = n;
-    if (c->flag != 0)
-        return result;
-    do {
-        int k = *key;
-        if (c->key < k)
-            goto next;
-        if (c->key > k)
-            goto take;
-        if (c->x == *(float*)((char*)key + 4))
-            goto take;
-        if (c->x != *(float*)((char*)key + 4))
-            goto next;
-        if (c->y == *(float*)((char*)key + 8))
-            goto next;
-    take:
-        result = c;
-        c = c->left;
-        goto check;
-    next:
-        c = c->right;
-    check:
-        ;
-    } while (c->flag == 0);
-    return result;
-}
+struct Value8 { void* a; void* b; };
+template class std::map<Texture, Value8>;

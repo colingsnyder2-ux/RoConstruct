@@ -1,167 +1,92 @@
-// from server: 63% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/util/RunStateOwner.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-
-#include "util/Timer.h"
-#include "v8datamodel/DataModel.h"
-
-#include <algorithm>
-#include <boost/thread/thread.hpp>
-#include <boost/thread/xtime.hpp>
-
+// from server: 100% by EspClaude
+// roc 2007-08 00495600  Reflection::RefPropDescriptor<Network::Player, ModelInstance>::assignIDREF (openrbx reflection.h), this = IIDREF subobject
+// roc-flags: /O2 /GS /EHsc /MD
+#include <memory>
+#include <intrin.h>
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
+namespace boost {
+namespace detail {
+class sp_counted_base {
+    long use_count_;
+    long weak_count_;
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+}
+template<class T> class shared_ptr {
+    T* px;
+    detail::shared_count pn;
+public:
+    T* get() const { return px; }
+};
+}
 namespace RBX {
-
-const char sRunService[] = "RunService";
-
-Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "step");
-
-// FUNCTION: WEBSERVICE 0x10054320
-void RunService::endRunThread(bool join)
+class Instance;
+class ModelInstance;
+namespace Network { class Player; }
+class InstanceHandle {
+public:
+    boost::shared_ptr<Instance> getTarget() const;
+private:
+    boost::shared_ptr<Instance> target;
+};
+namespace Reflection {
+class DescribedBase;
+class ClassDescriptor;
+class RefPropertyDescriptor {
+public:
+    virtual ~RefPropertyDescriptor();
+    char pad[0x14];
+};
+class __declspec(novtable) IIDREF {
+public:
+    virtual void assignIDREF(DescribedBase* propertyOwner, const InstanceHandle& value) const = 0;
+};
+template<typename PropType> class TypedPropertyDescriptor {
+public:
+    class GetSet {
+    public:
+        virtual bool isReadOnly() const = 0;
+        virtual PropType getValue(const DescribedBase* object) const = 0;
+        virtual void setValue(DescribedBase* object, const PropType& value) const = 0;
+    };
+};
+template <class Class, class T>
+class RefPropDescriptor : public RefPropertyDescriptor, public IIDREF
 {
-	stopRequested = true;
-	stateChangedCondition.notify_all();
-
-	if (join) {
-		runThread->join();
-	}
+public:
+    void setValue(DescribedBase* instance, T* value) const { getset->setValue(instance, value); }
+    virtual void assignIDREF(DescribedBase* propertyOwner, const InstanceHandle& handle) const
+    {
+        boost::shared_ptr<Instance> t = handle.getTarget();
+        setValue(propertyOwner, static_cast<T*>(t.get()));
+    }
+private:
+    std::auto_ptr<typename TypedPropertyDescriptor<T*>::GetSet> getset;
+};
 }
-
-// FUNCTION: WEBSERVICE 0x100543b0
-void RunService::onAncestorChanged(const AncestorChanged& event)
-{
-	if (getParent() == NULL) {
-		endRunThread(false);
-	}
+class Instance { public: virtual ~Instance(); };
+class ModelInstance : public Instance {};
+template class Reflection::RefPropDescriptor<Network::Player, ModelInstance>;
 }
-
-// FUNCTION: WEBSERVICE 0x10054cb0
-void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-{
-	double desiredTime = getRealTime();
-
-	while (true) {
-		const double timeLeft = desiredTime - getRealTime();
-
-		{
-			boost::mutex::scoped_lock lock(viewMutex);
-
-			for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-				iter->first->AdjustThrottle(timeLeft);
-			}
-		}
-
-		const double waitTime = std::max(0.0, timeLeft);
-
-		boost::xtime xt;
-
-		boost::xtime_get(&xt, boost::TIME_UTC);
-		xt.nsec += (int) (waitTime * 1000000000.0);
-
-		bool signalled;
-
-		{
-			boost::mutex::scoped_lock lock(runMutex);
-
-			signalled = stateChangedCondition.timed_wait(lock, xt);
-		}
-
-		if (!signalled) {
-			boost::xtime xt;
-
-			boost::xtime_get(&xt, boost::TIME_UTC);
-			xt.sec += 1;
-
-			boost::mutex::scoped_lock lock(runMutex);
-
-			if (invalidRunViewCount != 0) {
-				runViewsDoneCondition.timed_wait(lock, xt);
-			}
-		}
-
-		if (timeLeft <= 0.0) {
-			desiredTime = getRealTime();
-		}
-
-		{
-			DataModel::Lock lock(dataModel);
-
-			if (stopRequested) {
-				break;
-			}
-
-			dataModel->step(framePeriod);
-		}
-
-		desiredTime += framePeriod;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10054fd0
-void RunService::invalidateRunViews()
-{
-	boost::mutex::scoped_lock lock(viewMutex);
-
-	if (invalidRunViewCount != 0) {
-		return;
-	}
-
-	invalidRunViewCount = views.size();
-
-	if (invalidRunViewCount > 0) {
-		for (Views::iterator iter = views.begin(); iter != views.end(); ++iter) {
-			iter->first->InvalidateRunView();
-			iter->second = false;
-		}
-
-		runViewsDoneCondition.notify_all();
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x10055380
-RunService::~RunService()
-{
-}
-
-// FUNCTION: WEBSERVICE 0x10056950
-RunService::RunService()
-	: runState(RS_NORMAL), stopRequested(false), framePeriod(1.0f / 30.0f), runThread(NULL), invalidRunViewCount(0),
-	  runDisabled(false)
-{
-	setName("Run Service");
-}
-
-// STUB: WEBSERVICE 0x100573e0
-void RunService::start()
-{
-	STUB(0x100573e0);
-}
-
-// FUNCTION: WEBSERVICE 0x100577f0
-void RunService::raiseHeartbeat(float time, float step)
-{
-	Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-	event_Heartbeat.fire(this, step);
-}
-
-// FUNCTION: WEBSERVICE 0x10057860
-void RunService::raiseStepped(float time, float step)
-{
-	Notifier<RunService, Stepped>::raise(Stepped(time, step));
-	event_Stepped.fire(this, time, step);
-}
-
-} // namespace RBX
-
-template class RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService>;
-template class RBX::Reflection::Described<
-	RBX::RunService,
-	RBX::sRunService,
-	RBX::FactoryProduct<RBX::RunService, RBX::Instance, RBX::sRunService> >;
-template class RBX::DescribedCreatable<RBX::RunService, RBX::Instance, RBX::sRunService>;

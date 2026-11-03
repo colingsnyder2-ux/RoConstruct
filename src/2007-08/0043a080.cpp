@@ -1,19 +1,6 @@
-// from server: 84% by Yeetserama
-struct S_func_0043a080 {
-};
-
-void __cdecl f(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6)
-{
-    int* begin = (int*)a3;
-    int* end = (int*)a4;
-    void* ctx = a2;
-    void (__thiscall *fn)(void*, int) = (void (__thiscall *)(void*, int))a5;
-    while (begin != end) {
-        fn(ctx, *begin);
-        ++begin;
-    }
-    int* out = (int*)a1;
-    out[0] = (int)a5;
-    out[1] = (int)a2;
-    out[2] = (int)a6;
-}
+// from server: 100% by EspClaude
+// roc 2007-08 0043a080  std::for_each<vector<T*>::iterator, boost::bind(mf1, ...)> (2007 boost stores placeholder members)
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: templates-boost-1_34_1 roc_espclaude_980ffa40cd5995fc.cpp

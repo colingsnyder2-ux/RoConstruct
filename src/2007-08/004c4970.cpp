@@ -1,48 +1,37 @@
-// from server: 75% by colin
-struct RakPeer {
-    void DomainNameToIP(const char* domain, char* out);
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+struct hostent {
+    char* h_name;
+    char** h_aliases;
+    short h_addrtype;
+    short h_length;
+    char** h_addr_list;
 };
-
+struct in_addr { unsigned long s_addr; };
+#define SOCKET_ERROR (-1)
 extern "C" {
-    int __stdcall gethostname(char* name, int namelen);
-    struct hostent {
-        char* h_name;
-        char** h_aliases;
-        short h_addrtype;
-        short h_length;
-        char** h_addr_list;
-    };
-    struct hostent* __stdcall gethostbyname(const char* name);
-    char* __stdcall inet_ntoa(unsigned int in);
+__declspec(dllimport) int __stdcall gethostname(char* name, int namelen);
+__declspec(dllimport) struct hostent* __stdcall gethostbyname(const char* name);
+__declspec(dllimport) char* __stdcall inet_ntoa(struct in_addr in);
 }
-
-void RakPeer::DomainNameToIP(const char* domain, char* out)
+#include <string.h>
+class SocketLayer {
+public:
+    void GetMyIP(char ipList[10][16]);
+};
+void SocketLayer::GetMyIP(char ipList[10][16])
 {
-    char name[80];
-    if (gethostname(name, 80) == -1)
+    char ac[80];
+    if (gethostname(ac, sizeof(ac)) == SOCKET_ERROR)
         return;
-    hostent* he = gethostbyname(name);
-    if (he == 0)
+    struct hostent* phe = gethostbyname(ac);
+    if (phe == 0)
         return;
-    if (he->h_addr_list == 0)
-        return;
-    if (he->h_addr_list[0] == 0)
-        return;
-    int i = 0;
-    while (i < 0x28) {
-        unsigned int addr = *(unsigned int*)he->h_addr_list[i];
-        char* s = inet_ntoa(addr);
-        char* d = out;
-        char c;
-        do {
-            c = *s;
-            *d = c;
-            s++;
-            d++;
-        } while (c != 0);
-        i += 4;
-        out += 0x10;
-        if (he->h_addr_list[i] == 0)
-            break;
+    for (int i = 0; phe->h_addr_list[i] != 0 && i < 10; ++i)
+    {
+        struct in_addr addr;
+        memcpy(&addr, phe->h_addr_list[i], sizeof(struct in_addr));
+        strcpy(ipList[i], inet_ntoa(addr));
     }
 }

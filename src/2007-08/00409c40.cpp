@@ -1,27 +1,29 @@
-// from server: 94% by colin
-struct Inner {
-    virtual void v0();
-    virtual void v1();
-    virtual void v2();
-    virtual void v3();
-    virtual void v4();
-    virtual void f(int);
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+struct Interface
+{
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void slot4();
+    virtual void destroy(unsigned int);
+    unsigned char padding[8];
 };
 
-struct Obj {
-    char pad[0x1c];
-    Inner inner;
-    char pad2[0x28 - 0x20];
-    int refcount;
+struct Object
+{
+    unsigned char padding[0x1c];
+    Interface interfacePart;
+    unsigned long references;
 };
 
-int __stdcall sub_409c40(Obj* p) {
-    int result = --p->refcount;
-    if (result == 0) {
-        if (p != 0) {
-            Inner* inner = &p->inner;
-            inner->f(1);
-        }
-    }
+unsigned long __stdcall release(Object* object)
+{
+    unsigned long& count = object->references;
+    unsigned long result = --count;
+    if (result == 0 && object != 0)
+        object->interfacePart.destroy(1);
     return result;
 }

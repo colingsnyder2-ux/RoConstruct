@@ -1,26 +1,41 @@
-// from server: 73% by colin
-struct VCAppComObject {
-    long __stdcall QueryInterface(void* ppvObject, const void* riid, void** ppv);
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+
+struct Interface;
+
+struct InterfaceTable {
+    void *unused;
+    unsigned long (__stdcall *AddRef)(Interface *);
 };
 
-extern "C" void __stdcall sub_4055F0(void*);
+struct Interface {
+    InterfaceTable *table;
+};
 
-extern void* g_88175C;
-extern char g_881750;
+struct Cache {
+    unsigned char padding[12];
+    Interface *value;
+    long initialize(unsigned long locale);
+};
 
-long __stdcall VCAppComObject::QueryInterface(void* ppvObject, const void* riid, void** ppv)
+extern Cache cache;
+
+long __stdcall GetTypeInfo(void *object, unsigned int index,
+                           unsigned long locale, Interface **output)
 {
-    if (ppv == 0)
-        return (long)0x80004003;
 
-    if (g_88175C == 0)
-        sub_4055F0(&g_881750);
+    if (!output)
+        return 0x80004003L;
 
-    *(void**)ppv = g_88175C;
-    if (g_88175C != 0) {
-        void** vtbl = *(void***)g_88175C;
-        void (__stdcall *fn)(void*) = (void (__stdcall *)(void*))vtbl[1];
-        fn(g_88175C);
+    long result = 0;
+    if (!cache.value)
+        result = cache.initialize(locale);
+
+    *output = cache.value;
+    if (cache.value) {
+        cache.value->table->AddRef(cache.value);
+        result = 0;
     }
-    return 0;
+    return result;
 }

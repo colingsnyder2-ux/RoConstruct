@@ -1,24 +1,26 @@
-// from server: 64% by colin
-struct S_00460bb0 {
-    char pad[0x18];
-    int field_18;
-    void method(int, int);
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: atl-8.0 roc_espclaude_86391b04ef95b786.cpp
+
+// Candidate translation unit (score above; library headers required).
+#define _CPPUNWIND 1
+#define _DLL
+#include <atlbase.h>
+struct LockOwner { char pad[0x2c]; CRITICAL_SECTION cs; };
+class Marshaler {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void doEvent(int a, int b) throw();
+    void onEvent(int a, int b) throw();
+    int pad[5];
+    LockOwner* owner;
 };
-
-extern "C" void __stdcall sub_0041d870(void*);
-extern "C" void __stdcall sub_77d2f8(void*);
-
-void S_00460bb0::method(int arg1, int arg2)
+void Marshaler::onEvent(int a, int b) throw()
 {
-    int local;
-    char flag;
-    void* p = (void*)(field_18 + 0x2c);
-    local = (int)p;
-    flag = 0;
-    sub_0041d870(&local);
-    void (__thiscall *fn)(void*, int, int) = *(void (__thiscall **)(void*, int, int))((*(int*)this) + 0xc);
-    fn(this, local, arg1);
-    if (flag == 0) {
-        sub_77d2f8((void*)local);
-    }
+    ATL::CCritSecLock lock(owner->cs);
+    doEvent(a, b);
 }

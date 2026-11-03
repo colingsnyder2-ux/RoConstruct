@@ -1,17 +1,30 @@
-// from server: 35% by colin
-struct CScriptEditor {
-    void init();
+// from server: 100% by EspClaude
+// roc 2007-08 00460a70  RBX::MarshaledListener<Instance, PropertyChanged, Instance, PropertyChanged>::MarshaledListener() (RTTI from vtable; vector @+4, threadId @+0x14, marshal HWND @+0x18)
+// roc-flags: /O2 /GS /EHsc /MD
+#include <vector>
+typedef struct HWND__* HWND;
+extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId();
+namespace RBX {
+class Instance; class PropertyChanged { public: const void* d; };
+class CMarshalWindow { public: static HWND getWindow(); };
+template<class Source, class Event> class __declspec(novtable) Listener {
+protected:
+    virtual void onEvent(const Source* source, Event event) = 0;
+public:
+    virtual ~Listener();
 };
-
-extern "C" unsigned long __stdcall GetCurrentThreadId();
-extern "C" void* __cdecl sub_433A50();
-
-void CScriptEditor::init()
-{
-    *(void**)this = (void*)0x794b60;
-    *(int*)((char*)this + 8) = 0;
-    *(int*)((char*)this + 0xc) = 0;
-    *(int*)((char*)this + 0x10) = 0;
-    *(unsigned long*)((char*)this + 0x14) = GetCurrentThreadId();
-    *(void**)((char*)this + 0x18) = sub_433A50();
+template<class Source, class Event, class MSource, class MEvent>
+class MarshaledListener : public Listener<Source, Event> {
+    std::vector<MEvent> queue;
+    unsigned long threadId;
+    HWND window;
+public:
+    MarshaledListener()
+    {
+        threadId = GetCurrentThreadId();
+        window = CMarshalWindow::getWindow();
+    }
+    virtual void onEvent(const Source* source, Event event);
+};
+template class MarshaledListener<Instance, PropertyChanged, Instance, PropertyChanged>;
 }

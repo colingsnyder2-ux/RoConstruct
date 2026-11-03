@@ -1,26 +1,39 @@
-// from server: 77% by colin
-struct S_func_004615c0 {
-    char pad[0x134];
-    void* m_134;
-    int f(int a, int b);
+// from server: 100% by EspClaude
+// roc 2007-08 004615c0  MFC view message handler: parent frame title from document name (std::string @+0xc8 of object @+0x134), then refresh
+// roc-flags: /O2 /GS- /EHsc /MD
+typedef unsigned int WPARAM;
+typedef long LPARAM;
+typedef long LRESULT;
+namespace std {
+template<class E> class basic_string_stub {
+public:
+    __declspec(dllimport) const E* c_str() const;
+    char pad[0x1c];
 };
-
-extern "C" int __stdcall sub_62ff50();
-extern "C" void __stdcall sub_630016(void* p);
-extern "C" void __stdcall sub_461270();
-extern "C" void* __stdcall sub_77e6a8(void* p);
-
-int S_func_004615c0::f(int a, int b)
+typedef basic_string_stub<char> string;
+}
+class CObject { public: virtual ~CObject(); };
+class CCmdTarget : public CObject { public: char _c[0x1c]; };
+class CFrameWnd;
+class CWnd : public CCmdTarget { public: void* m_hWnd; CFrameWnd* GetParentFrame() const; void SetWindowText(const char*); };
+class CFrameWnd : public CWnd {};
+class CView : public CWnd {};
+struct NamedThing { char pad[0xc8]; std::string name; };
+class CEditorView : public CView {
+public:
+    char _v[0x134 - 0x24];
+    NamedThing* thing;
+    void refresh();
+    LRESULT OnUpdateTitle(WPARAM, LPARAM);
+};
+LRESULT CEditorView::OnUpdateTitle(WPARAM, LPARAM)
 {
-    if (sub_62ff50() != 0) {
-        void* p;
-        if (m_134 == 0) {
-            p = (void*)0x785954;
-        } else {
-            p = sub_77e6a8((char*)m_134 + 0xc8);
-        }
-        sub_630016((void*)sub_62ff50());
+    if (GetParentFrame()) {
+        if (thing == 0)
+            GetParentFrame()->SetWindowText("");
+        else
+            GetParentFrame()->SetWindowText(thing->name.c_str());
     }
-    sub_461270();
+    refresh();
     return 0;
 }

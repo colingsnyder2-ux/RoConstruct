@@ -1,91 +1,45 @@
-// from server: 57% by colin
-// roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-view MaterialFactory.cpp
+// from server: 100% by EspClaude
+// roc 2007-08 004d2650  std::map<MaterialFactory::Attributes (0x10-byte variant), WeakReferenceCountedPointer<Material>>::find
+// 2007 Attributes = 0x18 bytes: Color3 @0, int @0xc, 8-byte float pair @0x10; operator< compares the
+// float-array members through their const float* conversions (pointer comparison, as the exe does).
+#include <map>
 
-// Candidate translation unit (score above; library headers required).
-#include "MaterialFactory.h"
-#include "util/ContentProvider.h"
-
-static const float specular = 0.9f;
-static const float shiny = 50.0f;
-
-namespace RBX
-{
-	namespace View
-	{
-		MaterialFactory::MaterialFactory(G3D::TextureManager* textureManager)
-		{
-			surfacesTexture = new Render::TextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\surfaces.png"), true);
-			fileMeshTexture = new Render::TextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\JohnTex.png"), false);
-			megaTexture = new MegaTextureProxy(*textureManager, ContentProvider::singleton().getAssetFile("textures\\SurfacesStrip.png"));
-		}
-
-		G3D::ReferenceCountedPointer<Render::Material> MaterialFactory::getMaterial(Attributes attributes)
-		{
-			G3D::ReferenceCountedPointer<Render::Material> material;
-
-			std::map<Attributes, G3D::WeakReferenceCountedPointer<Render::Material>>::iterator iter = database.find(attributes);
-			if (iter != database.end())
-			{
-				material = iter->second.createStrongPtr();
-			}
-
-			if (material.isNull())
-			{
-				G3D::Color3 color3 = attributes.color.color3();
-				G3D::ReferenceCountedPointer<Render::TextureProxy> surfacesTexture = getSurfacesTexture(color3);
-
-				material = new Render::Material;
-				if (attributes.transparency == 1.0f)
-				{
-					material->appendEmptyLevel();
-				}
-				else
-				{
-					material->appendLevel(surfacesTexture, G3D::Color3::WHITE, specular, shiny, attributes.reflectance, attributes.transparency);
-				}
-
-				database[attributes] = material;
-			}
-
-			return material;
-		}
-
-		G3D::ReferenceCountedPointer<Render::Material> MaterialFactory::getMegaMaterial(Attributes attributes)
-		{
-			Attributes filteredAttributes = {BrickColor::defaultColor(), attributes.transparency, attributes.reflectance};
-
-			G3D::ReferenceCountedPointer<Render::Material> material;
-
-			std::map<Attributes, G3D::WeakReferenceCountedPointer<Render::Material>>::iterator iter = megaDatabase.find(filteredAttributes);
-			if (iter != megaDatabase.end())
-			{
-				material = iter->second.createStrongPtr();
-			}
-
-			if (material.isNull())
-			{
-				material = new Render::Material;
-				if (attributes.transparency == 1.0f)
-				{
-					material->appendEmptyLevel();
-				}
-				else
-				{
-					material->appendLevel(megaTexture, G3D::Color3::white(), specular, shiny, attributes.reflectance, attributes.transparency);
-				}
-
-				megaDatabase[filteredAttributes] = material;
-			}
-
-			return material;
-		}
-
-		G3D::ReferenceCountedPointer<Render::TextureProxy> MaterialFactory::getSurfacesTexture(G3D::Color3 tint)
-		{
-			return surfacesTexture->shade(tint, NULL);
-		}
-	}
+namespace G3D {
+class Color3 {
+public:
+    float r, g, b;
+    operator const float*() const { return &r; }
+};
+class Vector2 {
+public:
+    float x, y;
+    operator const float*() const { return &x; }
+};
+template<class T> class WeakReferenceCountedPointer {
+public:
+    T* pointer;
+};
 }
+
+namespace RBX {
+namespace Render { class Material; }
+namespace View {
+class MaterialFactory {
+public:
+    struct Attributes {
+        G3D::Color3 color;
+        int surface;
+        bool operator<(const Attributes& other) const
+        {
+            if (surface < other.surface) return true;
+            if (surface > other.surface) return false;
+            return color < other.color;
+        }
+    };
+};
+}
+}
+
+typedef std::map<RBX::View::MaterialFactory::Attributes, G3D::WeakReferenceCountedPointer<RBX::Render::Material> > Database;
+typedef Database::_Mybase Tree;
+template Tree::iterator Tree::find(const Tree::key_type&);

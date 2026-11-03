@@ -104,7 +104,9 @@ data_defines = (recipes.RECIPES[engine["defines_from_recipe"]]["defines"] + " " 
 data_overlay = rebuild.build_overlay(client, spec["name"], spec["overlay"])
 cache_dir = rebuild.workspace(client) / 'out' / 'p6' / 'native-doc-cache'
 overlay_path = data_overlay[1] if data_overlay else None
-header_roots = [ROOT / 'rebuild/2008-06/native-headers', overlay_path, HERE]
+# The generated overlay is recreated every run even when byte-identical; its
+# timestamp must not flush the native-doc object cache.
+header_roots = [ROOT / 'rebuild/2008-06/native-headers']
 header_stamp = max((p.stat().st_mtime_ns for root in header_roots if root.exists()
                     for p in root.rglob('*') if p.is_file() and p.suffix.lower() in ('.c', '.cc', '.cpp', '.h', '.hpp')),
                    default=0)
@@ -156,11 +158,30 @@ if NATIVE_DOC:
                         ('NativeDocumentLoadFromStringFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLoadFromString.cpp'),
                         ('NativeDocumentInsertModelFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentInsertModel.cpp'),
                         ('NativeDocumentExecuteFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentExecute.cpp'),
+                        ('NativeDocumentLDrawFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLDraw.cpp'),
                         ('NativeDocumentLaunchFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLaunch.cpp'),
                         ('NativeFileSystemFull.obj', ROOT / 'rebuild/2008-06/native-classes/FileSystem.cpp'),
                         ('NativeContentProviderFull.obj', ROOT / 'rebuild/2008-06/native-classes/ContentProvider.cpp'),
                         ('NativeLDrawParserLifetimeFull.obj', ROOT / 'rebuild/2008-06/tests/NativeLDrawParserLifetimeTrial.cpp'),
                         ('NativeDocumentInitializeFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentInitialize.cpp'),
+                        ('NativeWorkspaceFactoryFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceFactory.cpp'),
+                        ('NativeWorkspaceGuidsFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceGuids.cpp'),
+                        ('NativeWorkspaceFinalConstructFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceFinalConstruct.cpp'),
+                        ('NativeWorkspaceEventsFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceEvents.cpp'),
+                        ('NativeWorkspaceCloseFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceClose.cpp'),
+                        ('NativeWorkspaceInsertUrlFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceInsertUrl.cpp'),
+                        ('NativeWorkspaceSaveFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceSave.cpp'),
+                        ('NativeWorkspaceWriteFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceWrite.cpp'),
+                        ('NativeWorkspaceExecScriptHelperFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp'),
+                        ('NativeWorkspaceExecUrlFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceExecUrl.cpp'),
+                        ('NativeWorkspaceExecScriptFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp'),
+                        ('NativeWorkspaceSelectionFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceSelection.cpp'),
+                        ('NativeWorkspaceRaiseErrorFull.obj', ROOT / 'rebuild/2008-06/native-classes/WorkspaceRaiseError.cpp'),
+                        ('NativeContentGuidsFull.obj', ROOT / 'rebuild/2008-06/native-classes/CContentGuids.cpp'),
+                        ('NativeSafeArrayFull.obj', ROOT / 'rebuild/2008-06/native-classes/SafeArray.cpp'),
+                        ('NativeLuaArgsFull.obj', ROOT / 'rebuild/2008-06/native-classes/LuaArgs.cpp'),
+                        ('NativeContentUploadFull.obj', ROOT / 'rebuild/2008-06/native-classes/CContentUpload.cpp'),
+                        ('NativeContentErrorFull.obj', ROOT / 'rebuild/2008-06/native-classes/CContentError.cpp'),
                         ('NativeWorkspaceLoadFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceLoad.cpp'),
                         ('NativeWorkspaceObjectSafetyFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceObjectSafety.cpp'),
                         ('NativeWorkspaceSiteCheckFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspaceSiteCheck.cpp'),
@@ -172,7 +193,7 @@ if NATIVE_DOC:
                         ('NativeContentProviderServiceFull.obj', ROOT / 'rebuild/2008-06/tests/NativeContentProviderServiceTrial.cpp'),
                         ('NativeCameraHistoryFull.obj', ROOT / 'rebuild/2008-06/native-classes/CameraHistory.cpp'),
                         ('NativeChangeHistoryCommitFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryCommit.cpp'),
-                        ('NativeExitCommandFull.obj', ROOT / 'rebuild/2008-06/tests/NativeExitCommand.cpp'),
+                        ('NativeExitCommandFull.obj', ROOT / 'rebuild/2008-06/native-classes/ExitCommand.cpp'),
                         ('NativeClassNamesFull.obj', ROOT / 'rebuild/2008-06/native-classes/NativeClassNames.cpp'),
                         ('NativeWorkspaceSharedFromFull.obj', ROOT / 'rebuild/2008-06/tests/NativeWorkspaceSharedFromTrial.cpp'),
                         ('NativeEditSelectionVerbCtorFull.obj', ROOT / 'rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp'),
@@ -218,7 +239,7 @@ if NATIVE_DOC:
         pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig', errors='replace'), re.M)
         if pinned:
             source_flags = ['/nologo', '/c'] + pinned.group(1).replace('{headers}', str(ROOT / 'rebuild/2008-06/native-headers')).split()
-            source_flags += ['/DBOOST_ALL_NO_LIB'] + ['/D' + d for d in data_defines.split()]
+            source_flags += ['/DBOOST_ALL_NO_LIB', '/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK'] + ['/D' + d for d in data_defines.split()]
             source_flags += ['/I' + str(ROOT / 'rebuild/2008-06/native-headers'), '/I' + str(mfc), '/I' + str(xtp)]
             source_flags += ['/I' + str(i) for i in includes]
         key = cache_key(source, source_flags)
@@ -237,9 +258,24 @@ system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole3
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
 native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj',
                       'NativeDocumentExceptionFull.obj', 'NativeDocumentLoadFileFull.obj', 'NativeDocumentLoadFromStringFull.obj',
-                      'NativeDocumentInsertModelFull.obj', 'NativeDocumentExecuteFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeFileSystemFull.obj', 'NativeContentProviderFull.obj',
+                      'NativeDocumentInsertModelFull.obj', 'NativeDocumentExecuteFull.obj', 'NativeDocumentLDrawFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeFileSystemFull.obj', 'NativeContentProviderFull.obj',
                       'NativeLDrawParserLifetimeFull.obj',
                       'NativeDocumentInitializeFull.obj', 'NativeVerbFull.obj',
+                      'NativeWorkspaceFactoryFull.obj',
+                      'NativeWorkspaceGuidsFull.obj', 'NativeWorkspaceFinalConstructFull.obj',
+                      'NativeWorkspaceEventsFull.obj',
+                      'NativeWorkspaceCloseFull.obj',
+                      'NativeWorkspaceInsertUrlFull.obj',
+                      'NativeWorkspaceSaveFull.obj',
+                      'NativeWorkspaceWriteFull.obj',
+                      'NativeWorkspaceExecScriptHelperFull.obj',
+                      'NativeWorkspaceExecUrlFull.obj',
+                      'NativeWorkspaceExecScriptFull.obj',
+                      'NativeWorkspaceSelectionFull.obj', 'NativeWorkspaceRaiseErrorFull.obj',
+                      'NativeContentGuidsFull.obj', 'NativeSafeArrayFull.obj',
+                      'NativeLuaArgsFull.obj',
+                      'NativeContentUploadFull.obj',
+                      'NativeContentErrorFull.obj',
                       'NativeWorkspaceLoadFull.obj',
                       'NativeWorkspaceObjectSafetyFull.obj',
                       'NativeWorkspaceSiteCheckFull.obj', 'NativeWorkspaceSiteUrlFull.obj',
@@ -276,8 +312,7 @@ if NATIVE_DOC:
         'ServiceSelectionProfile.obj',
         'NativeDataModelTiming.obj', 'NativeDataModelDutyCycle.obj',
         'NativeLuaAllocatorStats.obj', 'NativePlayersAbuse.obj', 'WorkspaceInsertNativeProfile.obj',
-        'WorkspaceSiteTrustProfile.obj',
-        'NativeDocumentLDrawProfile.obj')]
+        'WorkspaceSiteTrustProfile.obj')]
 native_doc_aliases = ['/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z'] if NATIVE_DOC else []
 native_doc_verbose = ['/VERBOSE:LIB'] if NATIVE_DOC and os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') else []
 code, text = rebuild.run(tc, "link", ["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:" + output_name + ".map", "/OUT:" + output_name + ".exe",

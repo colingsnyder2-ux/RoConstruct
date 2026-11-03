@@ -1,25 +1,26 @@
-// from server: 78% by colin
-struct RakPeer {
-    char pad0[4];
-    char field4;
-    char field5;
-    char pad6[0x70a];
-    int field710;
-    void sub_4C2340();
-
-    void sub_4C37F0(RakPeer* peer);
+// from server: 100% by EspClaude
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+void RakSleep(unsigned int ms);
+class RakPeer {
+public:
+    virtual ~RakPeer();
+    volatile bool endThreads;
+    volatile bool isMainLoopThreadActive;
+    char pad[0x710 - 6];
+    int threadSleepTimer;
+    bool RunUpdateCycle();
 };
-
-extern "C" void __cdecl sub_4CA670(int);
-
-void RakPeer::sub_4C37F0(RakPeer* peer) {
-    peer->field5 = 1;
-    while (peer->field4 == 0) {
-        peer->sub_4C2340();
-        int v = peer->field710;
-        if (v >= 0) {
-            sub_4CA670(v);
-        }
+unsigned __stdcall UpdateNetworkLoop(void* arguments)
+{
+    RakPeer* rakPeer = (RakPeer*)arguments;
+    rakPeer->isMainLoopThreadActive = true;
+    while (rakPeer->endThreads == false)
+    {
+        rakPeer->RunUpdateCycle();
+        if (rakPeer->threadSleepTimer >= 0)
+            RakSleep(rakPeer->threadSleepTimer);
     }
-    peer->field5 = 0;
+    rakPeer->isMainLoopThreadActive = false;
+    return 0;
 }
