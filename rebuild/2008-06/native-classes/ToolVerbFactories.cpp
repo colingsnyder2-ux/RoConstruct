@@ -20,6 +20,9 @@
 #include "../tests/NativeResizeToolTrial.h"
 #include "../tests/NativeRocketWorkerTrial.h"
 #include "../tests/NativeSlingshotWorkerTrial.h"
+#include "tool/GroupDragTool.h"
+#include "v8datamodel/PartInstance.h"
+#include "tool/PartDragTool.h"
 namespace RBX {
 // from tests/NativeArrowFactoryTrial.cpp
 template<> MouseCommand* TToolVerb<ArrowTool,RunStateVerb>::newMouseCommand() {
@@ -81,6 +84,39 @@ template<> MouseCommand* TToolVerb<StudsTool, RunStateVerb>::newMouseCommand() {
 // from tests/NativeToolCheckedTrial.cpp
 // from tests/NativeWeldToolFactoryTrial.cpp
 template<> MouseCommand* TToolVerb<WeldTool, RunStateVerb>::newMouseCommand() { return new WeldTool(dataModel->getWorkspace()); }
+// Named<...>::getName for the tool classes (from the same trials).
+template<> const Name& Named<ArrowToolBase, sAxisMoveTool>::getName() const {
+    return NativeToolName<AxisMoveTool>::get();
+}
+template<> const Name& Named<MouseCommand, sCloneTool>::getName() const { return NativeToolName<CloneTool>::get(); }
+template<> const Name& Named<SurfaceTool, sFlatTool>::getName() const { return NativeToolName<FlatTool>::get(); }
+template<> const Name& Named<MouseCommand, sGameTool>::getName() const {
+    return NativeToolName<GameTool>::get();
+}
+template<> const Name& Named<SurfaceTool, sGlueTool>::getName() const { return NativeToolName<GlueTool>::get(); }
+template<> const Name& Named<MouseCommand, sGrabTool>::getName() const { return NativeToolName<GrabTool>::get(); }
+
+template<> const Name& Named<MouseCommand, sHammerTool>::getName() const { return NativeToolName<HammerTool>::get(); }
+template<> const Name& Named<SurfaceTool, sHingeTool>::getName() const { return NativeToolName<HingeTool>::get(); }
+template<> const Name& Named<SurfaceTool, sInletTool>::getName() const { return NativeToolName<InletTool>::get(); }
+template<> const Name& Named<MouseCommand, sLaserTool>::getName() const { return NativeToolName<LaserTool>::get(); }
+template<> const Name& Named<SurfaceTool, sLeftMotorTool>::getName() const { return NativeToolName<LeftMotorTool>::get(); }
+template<> const Name& Named<SurfaceTool, sModelSetFrontTool>::getName() const { return NativeToolName<ModelSetFrontTool>::get(); }
+template<> const Name& Named<ModelTool, sAnchorTool>::getName() const { return NativeToolName<AnchorTool>::get(); }
+template<> const Name& Named<ModelTool, sLockTool>::getName() const { return NativeToolName<LockTool>::get(); }
+template<> const Name& Named<SurfaceTool, sOscillateMotorTool>::getName() const { return NativeToolName<OscillateMotorTool>::get(); }
+
+template<> const Name& Named<PartTool, sFillTool>::getName() const { return NativeToolName<FillTool>::get(); }
+template<> const Name& Named<PartTool, sDropperTool>::getName() const { return NativeToolName<DropperTool>::get(); }
+template<> const Name& Named<PartTool, sModelSetPrimaryPartTool>::getName() const { return NativeToolName<ModelSetPrimaryPartTool>::get(); }
+template<> const Name& Named<ArrowToolBase, sResizeTool>::getName() const {
+    return NativeToolName<ResizeTool>::get();
+}
+template<> const Name& Named<SurfaceTool, sRightMotorTool>::getName() const { return NativeToolName<RightMotorTool>::get(); }
+template<> const Name& Named<ShootTool,sRocketTool>::getName() const { return NativeToolName<RocketTool>::get(); }
+template<> const Name& Named<ShootTool,sSlingshotTool>::getName() const { return NativeToolName<SlingshotTool>::get(); }
+template<> const Name& Named<SurfaceTool, sStudsTool>::getName() const { return NativeToolName<StudsTool>::get(); }
+template<> const Name& Named<SurfaceTool, sWeldTool>::getName() const { return NativeToolName<WeldTool>::get(); }
 // isChecked: one template body, instantiated per tool (tests/NativeToolCheckedMultiTrial.cpp).
 template<class Tool, class Base> bool TToolVerb<Tool, Base>::isChecked() const {
     MouseCommand* command = this->dataModel->getWorkspace()->getCurrentMouseCommand();
