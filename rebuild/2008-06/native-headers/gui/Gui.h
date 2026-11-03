@@ -213,7 +213,7 @@ namespace RBX
 		{
 			return visible;
 		}
-		void setVisible(bool);
+		void setVisible(bool value) { visible = value; }
 	};
 
 	class RelativePanel : public TopMenuBar
