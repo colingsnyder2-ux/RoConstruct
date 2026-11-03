@@ -11,6 +11,7 @@ class Humanoid;
 class PartInstance;
 class Primitive;
 class Controller;
+class Velocity;
 namespace HUMAN {
 // Inactive native layout of the 2008-06 HumanoidState base. Do not instantiate
 // or use in the running player.
@@ -62,8 +63,16 @@ public:
     virtual void onComputeForce(float dt) {}                          // slot 8, 0070bdf0 ret 4
     virtual HitTestFilter::Result filterResult(const Primitive* testMe) const; // 006432e0
 
+    // Out of line: callers call the identical-code-folded getter 00793d50 (mov eax,[ecx+8]; ret).
+    Humanoid* getHumanoid() const;                                    // 00793d50
     void setLimbFlag(bool value);                                     // 006431b0
-    int speedSettled() const;                                         // 00643330
+    bool speedSettled() const;                                        // 00643330 (callers 00666b20/00666bc0 test al)
+    // Base helpers called by RunningBase::onStep 00666410 / Running::onStep 00666b20 (bodies pending;
+    // analog names):
+    float getDesiredAltitude();                                       // 00643360: plain ret, float on st(0)
+    Velocity getFloorVelocity(float dt);                              // 00643a70: hidden return pointer + float, ret 8;
+                                                                      //   writes 6 floats (static Velocity::zero() 0097d568 fallback)
+    bool onFloorStep();                                               // 006444f0: plain ret, al
     G3D::Vector3 computeWalkVelocity();                               // 00643b60
     void setLegsFlag(bool value);                                     // 00643bc0
     void setArmsFlag(bool value);                                     // 00643c20

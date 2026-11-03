@@ -1,17 +1,17 @@
 {
-  "revision": "636eb8ca252938c075c907c0ce6800565fa0f49f",
+  "revision": "5d5784bbe8af17787097c0d8b945e70ff8bcfcd4",
   "sources": {
-    "rebuild/2008-06/tests/record_native_humanoid_states2.py": "5109c846341e0f25ee78e6ea40cfe4248515c1f7d154f37d0318b3ce2abba67d",
+    "rebuild/2008-06/tests/record_native_humanoid_states2.py": "ee57f35a4e0311487c1b633a6ae370ba271e0e6a41899b01cc335cc27497fa7d",
     "rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h": "ced977505c275c5334924da643620cc763152e6742da485198cdc90e65d762b2",
     "rebuild/2008-06/tests/NativeHumanoidStates2Calls.h": "3f6ccecff9ae4b65dbae6db211d2e040f15a350872da668cd81a4cd64e768279",
-    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "81f8b70582a3a097fa297b7f9ee64d8b14285cb9ce60120b4a137dbdcbd8eaa1",
-    "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h": "f2b1cbe93b780fa7a15fffc0fbb3353ac8ff3f72decb62448bcc2c513dfc44fd",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h": "7dbcf46702473823c828e02921a56a77ef35e61c8420e72d49c43a9d339e6586",
     "rebuild/2008-06/tests/NativeHumanoidStates2Layout.cpp": "aaf055376108cd9fadc1b10e3c67e5f6b8c6a3b12785c0843780d16f40fbe64b",
-    "rebuild/2008-06/native-classes/HumanoidStates2.cpp": "df9573f3f01310ffdd39c3a33d3cf1b130d56c51c2755f9294bec3dfe1501cf2"
+    "rebuild/2008-06/native-classes/HumanoidStates2.cpp": "55a5a81cd9b543eb4f11b294816edc64fc39ae186ea60bf17dc5c7383b935341"
   },
   "objects": {
-    "layout": "7a07cda31bd243a5e904c57355a6ae5c103b5c3483b99b631ffe9923193bb398",
-    "states": "5e38091d034c82ef7bebc6bd675989ce91d3a644a60975680f573ddf4508c6e1"
+    "layout": "c5bbaae27f88481c2b2e5ff9b7be891a7d2a738d304cf81882b7e8d7b57b2e99",
+    "states": "f6ba43d734a661faaa9049793de6420c3e82f133783c3ebbbd9a865b06442707"
   },
   "compiler_build": 21022,
   "flags": {
@@ -92,7 +92,6 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/DNATIVE_HUMANOID_STATE_PENDING",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidStates2.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/HumanoidStates2.cpp"
     ]
@@ -530,7 +529,6 @@
       "size": 30
     }
   ],
-  "proposed_base_declaration": "HumanoidState::getHumanoid() const, out-of-line 00793d50 (destructors 00667930/00667cd0/00667ec0 and ctor 00667e20 compile only with NATIVE_HUMANOID_STATE_PENDING and the recorder overlay)",
   "pending": [
     "006675d0 Freefall::onComputeForce (Body/Cofm/SimBody layouts, Velocity statics)",
     "00667a40 Jumping::onComputeForce (floor primitive getter 00643d30, Body/Cofm/SimBody layouts; calls Flying::onComputeForce out of line)"

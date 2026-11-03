@@ -20,7 +20,12 @@ HumanoidState::~HumanoidState()
     setLimbFlag(false);
 }
 
-int HumanoidState::speedSettled() const
+Humanoid* HumanoidState::getHumanoid() const
+{
+    return humanoid;
+}
+
+bool HumanoidState::speedSettled() const
 {
     return (speed38 < speed3c * 0.5f) || (speed38 > speed3c * 2.0f);
 }

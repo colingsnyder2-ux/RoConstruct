@@ -1,17 +1,17 @@
 {
-  "revision": "636eb8ca252938c075c907c0ce6800565fa0f49f",
+  "revision": "5d5784bbe8af17787097c0d8b945e70ff8bcfcd4",
   "sources": {
-    "rebuild/2008-06/tests/record_native_humanoid_states3.py": "f8d8344e686c7c9f6d8fac27e68f4d80db5d5a6742ffa48eecc58a3829241192",
+    "rebuild/2008-06/tests/record_native_humanoid_states3.py": "d575adcedc2533d604adbb6bd83f5ef7c5e37c0e7fb35e1ea58389bd5d71aaeb",
     "rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h": "8c98aa084a68f8ccbcafb924fcbe4fecdb1e6d3fe727be52fb325ed026c9a389",
     "rebuild/2008-06/tests/NativeHumanoidStates3Calls.h": "49725d7383d19f4c21b42535cf6c46e0ada876a301d12c8005014b57c69fc7aa",
     "rebuild/2008-06/tests/NativeHumanoidStates3SimJob.h": "1f889d2530d1479de23cacdb817469df23911dbf0f0035a8277c30910ca9712a",
-    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "81f8b70582a3a097fa297b7f9ee64d8b14285cb9ce60120b4a137dbdcbd8eaa1",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3",
     "rebuild/2008-06/tests/NativeHumanoidStates3Layout.cpp": "62f29d750da765f7ff7b8d158754f733cafc362135f02f31863aa89613cae420",
-    "rebuild/2008-06/native-classes/HumanoidStates3.cpp": "d4781a6f9bac2b781ac9d147ad5fd59b10e3664be7310bb62d9112e09051a493"
+    "rebuild/2008-06/native-classes/HumanoidStates3.cpp": "0e4ae3941b6d0e48c23c39cbfd782b9fa416d733134c3b5a47aaed228e9e78dc"
   },
   "objects": {
-    "layout": "cf6ff3e65603e0df5f620781ee937f7b9fe986eac25e8c79f532bf0c1f802efb",
-    "states": "2f60aa221768aeb2e96d3a872b584438c2929134bd1d896ccacdad68af7f7efc"
+    "layout": "94fb25a8b29193c1e7777ebf286d90abc12d219b81041c934fcd8ea1bab5b95f",
+    "states": "ac55867a277e7b6e3ce9cb160fbba104ac90c7c76c75d5350bce97074714dc19"
   },
   "compiler_build": 21022,
   "flags": {
@@ -93,7 +93,6 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
-      "/DNATIVE_HUMANOID_STATE_PENDING",
       "/DNATIVE_SIMJOB_PENDING",
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidStates3.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/HumanoidStates3.cpp"
@@ -696,7 +695,6 @@
     }
   ],
   "proposed_declarations": [
-    "HumanoidState::getHumanoid() const, out-of-line 00793d50 (006670b0, 00666e30, 00666ec0, 0066eaa0 compile only with NATIVE_HUMANOID_STATE_PENDING and the recorder overlay)",
     "RBX::SimJob (tests/NativeHumanoidStates3SimJob.h, sizeof 0x24): MovingNoPhysicsBase family compiles only with NATIVE_SIMJOB_PENDING",
     "Humanoid/Primitive/ModelInstance call declarations in tests/NativeHumanoidStates3Calls.h"
   ],

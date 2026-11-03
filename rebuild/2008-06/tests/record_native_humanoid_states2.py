@@ -13,22 +13,14 @@ calls = R/'tests/NativeHumanoidStates2Calls.h'
 state_header = R/'native-headers/humanoid/HumanoidState.h'
 overlay = out/'humanoid-states2-overlay'; (overlay/'humanoid').mkdir(parents=True, exist_ok=True)
 shutil.copyfile(calls, overlay/'humanoid'/'Humanoid.h')
-# Proposed base declaration (not in the shared header yet): HumanoidState::getHumanoid(), the
-# out-of-line getter 00793d50 (mov eax,[ecx+8]; ret) called from the destructors and 00667e20.
-text = state_header.read_text(); anchor = '    void setLimbFlag(bool value);'
-assert text.count(anchor) == 1
-proposal = '    Humanoid* getHumanoid() const;                                    // 00793d50 (proposed)\n'
-(overlay/'humanoid'/'HumanoidState.h').write_text(text.replace(anchor, proposal + anchor))
+(overlay/'humanoid'/'HumanoidState.h').unlink(missing_ok=True)   # stale proposal copy from older runs must not shadow the real header
 units = [('layout', R/'tests/NativeHumanoidStates2Layout.cpp', 'NativeHumanoidStates2Layout.obj', []),
-         ('states', R/'native-classes/HumanoidStates2.cpp', 'NativeHumanoidStates2.obj', ['/DNATIVE_HUMANOID_STATE_PENDING'])]
+         ('states', R/'native-classes/HumanoidStates2.cpp', 'NativeHumanoidStates2.obj', [])]
 objects = {}; flags = {}
 for name, src, objname, extra in units:
     obj = out/objname; f = ['/I'+str(overlay)] + common + extra + ['/Fo'+str(obj), str(src)]
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', f, out); assert code == 0, log
     objects[name] = obj; flags[name] = f
-# Without the pending define the unit must still compile (guarded bodies drop out).
-f = ['/I'+str(overlay)] + common + ['/Fo'+str(out/'NativeHumanoidStates2Guarded.obj'), str(R/'native-classes/HumanoidStates2.cpp')]
-code, log = rebuild.run(rebuild.toolchain(21022), 'cl', f, out); assert code == 0, log
 raw = objects['layout'].read_bytes()
 name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith('?jumpingFilter@@'))
 assert body == bytes.fromhex('8b44240485c0740483c004c333c0c3') and not refs
@@ -164,7 +156,6 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                sources={str(p.relative_to(root)): sha(p) for p in paths}, objects={k: sha(v) for k, v in objects.items()},
                compiler_build=21022, flags=flags, sizes={'Freefall': 0xc0, 'Flying': 0xa8, 'Jumping': 0xa8, 'GettingUp': 0xa8},
                vtables=vtable_rows, methods=rows, folded_virtual_defaults=folded_rows,
-               proposed_base_declaration='HumanoidState::getHumanoid() const, out-of-line 00793d50 (destructors 00667930/00667cd0/00667ec0 and ctor 00667e20 compile only with NATIVE_HUMANOID_STATE_PENDING and the recorder overlay)',
                pending=['006675d0 Freefall::onComputeForce (Body/Cofm/SimBody layouts, Velocity statics)',
                         '00667a40 Jumping::onComputeForce (floor primitive getter 00643d30, Body/Cofm/SimBody layouts; calls Flying::onComputeForce out of line)'],
                scope='Inactive Freefall/Flying/Jumping/GettingUp layouts, constructors, destructors, onStep, Named getName/doDeclare instantiations, vtables and RTTI. Humanoid declarations come from the declaration-only overlay tests/NativeHumanoidStates2Calls.h (proposal). Member names are analog names. No runtime swap.')
