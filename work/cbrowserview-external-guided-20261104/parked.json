@@ -1,0 +1,43 @@
+{
+  "address": "0040fff0",
+  "target_bytes": 171,
+  "trials": [
+    {
+      "trial": "base",
+      "bytes": 173,
+      "exact": false,
+      "similarity": 0.9302325581395349,
+      "object_sha256": "b6f978bc9edd39f8744f9d00575743dc116d45137a971f13c92b69b868876635"
+    },
+    {
+      "trial": "t1",
+      "bytes": 172,
+      "exact": false,
+      "similarity": 0.9271137026239067,
+      "object_sha256": "71a7f0d697b96d649c761f50f1f42a1956a9b2fbda561536de3d2dad11fb8892"
+    },
+    {
+      "trial": "t2",
+      "bytes": 169,
+      "exact": false,
+      "similarity": 0.9352941176470588,
+      "object_sha256": "c73efb5133d5a1026fa6947fba2fa73bf5ed152d0f6a48c29614e81bedf5cc2e"
+    },
+    {
+      "name": "t3 named int mode",
+      "hypothesis": "change only t1 mode width from VARIANT_BOOL to int; narrow at member store",
+      "candidate_bytes": 169,
+      "target_bytes": 171,
+      "exact": false,
+      "identical_to_t2_emitted_bytes": true,
+      "candidate_source": "work/cbrowserview-external-guided-20261104/t3/CBrowserView.cpp",
+      "candidate_source_sha256": "0869ab4c6fca655eea6fab0120cb7560d2b6e61c746c0711f7d8050b72427be0",
+      "candidate_bytes_sha256": "a7ff09673b47ada9cf485859f45af4bbc9310770ef25372d825eb6160fe2f0a5",
+      "cause": "cast result still EAX, object pointer ECX; target copies cast result to ECX and reloads pointer into EAX",
+      "promoted": false
+    }
+  ],
+  "tracked_source_changed": false,
+  "blocker": "Register/lifetime shape still differs: target copies cast result to ECX and loads object into EAX; both caching variants retain cast result EAX/object ECX.",
+  "next_proof": "ECX cast-result / EAX object-pointer scheduling remains unresolved. Named short, typed pointer and named int variants are rejected; t3 emits the same bytes as t2."
+}
