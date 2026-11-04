@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /I{headers}/std-noinline-string
 #include "util/NativeContentProvider.h"
 #include "v8xml/XmlSerializer.h"
 #include "v8xml/SerializerV2.h"

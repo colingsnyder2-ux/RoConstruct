@@ -224,6 +224,7 @@ if NATIVE_DOC:
                         ('NativeDocumentExceptionFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentException.cpp'),
                         ('NativeSaveDialogFull.obj', ROOT / 'rebuild/2008-06/native-classes/CSaveToRobloxDialog.cpp'),
                         ('NativeDocumentLoadFileFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLoadFile.cpp'),
+                        ('NativeScriptFileLoadFull.obj', ROOT / 'rebuild/2008-06/native-classes/ScriptFileLoad.cpp'),
                         ('NativeDocumentLoadFromStringFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentLoadFromString.cpp'),
                         ('NativeDocumentInsertModelFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentInsertModel.cpp'),
                         ('NativeDocumentExecuteFull.obj', ROOT / 'rebuild/2008-06/native-classes/DocumentExecute.cpp'),
@@ -493,7 +494,7 @@ system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole3
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
 native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj', 'NativeStatsCommandsFull.obj', 'NativeToolVerbCoreFull.obj', 'NativeToolVerbCheckedSurfaceFull.obj', 'NativeToolVerbCheckedModelFull.obj', 'NativeToolVerbCheckedExistingFull.obj', 'NativeToolVerbCheckedBasicFull.obj', 'NativeToolVerbCheckedShootFull.obj', 'NativeToolVerbCheckedResizeFull.obj', 'NativeToolVerbCheckedAxisFull.obj', 'NativeCameraFirstPersonFull.obj', 'NativeCameraZoomExtentsActionFull.obj', 'NativeBasicVerbConstructorsFull.obj', 'NativeClearBackpackFull.obj', 'NativeClearStarterpackFull.obj', 'NativeSelectionBackFull.obj', 'NativeJoinCommandFull.obj', 'NativeSelectionVerbConstructorsFull.obj', 'NativeSelectionVerbStatesFull.obj', 'NativeBoolPropertyVerbFull.obj', 'NativeDuplicateSelectionVerbFull.obj', 'NativeWeldSnapActionsFull.obj', 'NativeSurfaceVisitorsFull.obj', 'NativeMoveUpSelectionVerbFull.obj', 'NativeMoveDownSelectionVerbFull.obj', 'NativeUngroupOperationFull.obj', 'NativeUngroupSelectionVerbFull.obj', 'NativePartInstanceLockedFull.obj', 'NativeRunStateCommandsFull.obj', 'NativeGroupSelectionVerbFull.obj',
-                      'NativeDocumentExceptionFull.obj', 'NativeSaveDialogFull.obj', 'NativeDocumentLoadFileFull.obj', 'NativeDocumentLoadFromStringFull.obj',
+                      'NativeDocumentExceptionFull.obj', 'NativeSaveDialogFull.obj', 'NativeDocumentLoadFileFull.obj', 'NativeScriptFileLoadFull.obj', 'NativeDocumentLoadFromStringFull.obj',
                       'NativeDocumentInsertModelFull.obj', 'NativeDocumentExecuteFull.obj', 'NativeDocumentLDrawFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeFileSystemFull.obj', 'NativeContentProviderFull.obj',
                       'NativeLDrawParserFull.obj',
                       'NativeDocumentInitializeFull.obj', 'NativeVerbFull.obj',
@@ -595,6 +596,16 @@ if NATIVE_DOC:
     native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
         'WorkspaceInsertNativeProfile.obj',
         'WorkspaceSiteTrustProfile.obj')]
+if NATIVE_DOC:
+    import script_context_owner
+    script_context_owner.verify_native(out)
+    original_app_library = SNAPSHOT / 'RbxgsApp/linked/linked.lib'
+    if sum(path.resolve() == original_app_library.resolve() for path in libs) != 1:
+        raise RuntimeError('expected one RbxgsApp archive for native ScriptContext ownership')
+    script_app_library = script_context_owner.build(SNAPSHOT, out, tc)
+    import part_getter_owner
+    script_app_library = part_getter_owner.build(SNAPSHOT, out, tc, script_app_library)
+    libs = [script_app_library if path.resolve() == original_app_library.resolve() else path for path in libs]
 native_doc_aliases = ['/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z'] if NATIVE_DOC else []
 native_doc_verbose = (['/VERBOSE'] if os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') == 'full' else ['/VERBOSE:LIB']) if NATIVE_DOC and os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') else []
 link_args = (["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:" + output_name + ".map", "/OUT:" + output_name + ".exe",
@@ -603,6 +614,12 @@ link_args = (["/nologo", "/SUBSYSTEM:WINDOWS", "/MACHINE:X86", "/MAP:" + output_
                          + [str(l) for l in libs] + [s + ".lib" for s in system]
                          + ["/NODEFAULTLIB:" + l for l in rebuild.VENDOR_AUTOLINK])
 if NATIVE_DOC:
+    import null_tool_owner
+    null_app_library = null_tool_owner.build(SNAPSHOT, out, tc, script_app_library, link_args)
+    link_args = [str(null_app_library) if arg == str(script_app_library) else arg for arg in link_args]
+    import content_load_owner
+    content_app_library = content_load_owner.build(SNAPSHOT, out, tc, null_app_library, link_args)
+    link_args = [str(content_app_library) if arg == str(null_app_library) else arg for arg in link_args]
     (out / 'native-doc-link-command.json').write_text(json.dumps({
         'cwd': str(out), 'arguments': link_args,
         'scope': 'Diagnostic link replay only; never executes client.'
