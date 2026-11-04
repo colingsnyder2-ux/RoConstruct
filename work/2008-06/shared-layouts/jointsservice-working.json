@@ -2,7 +2,7 @@
   "class_name": "RBX::JointsService",
   "inactive": true,
   "compiler": 21022,
-  "source_sha256": "ab2c098a81858b494f9f8270ccaa0f9934e1411a46890f6565d9821d2e5d9f8f",
+  "source_sha256": "39d5e9a29004d4e43a5ccf6a0471cbb3303c86ff4fad3a470f5c9a30cecd79e1",
   "methods": [
     {
       "address": "004afb30",
@@ -13,6 +13,82 @@
         "??_R0?AVJointInstance@RBX@@@8": "0x93b2e4 (.?AVJointInstance@RBX@@)",
         "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
         "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004afa30",
+      "symbol": "??0JointsService@RBX@@QAE@XZ",
+      "size": 252,
+      "exact": true,
+      "verified_targets": {
+        "??0?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@QAE@XZ": "0x409960",
+        "??_C@_0O@DDPGOJLM@JointsService?$AA@": "0x824b0c",
+        "??_7JointsService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x824acc (RTTI .?AVJointsService@RBX@@, offset 0x0)",
+        "??_7JointsService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x824ac0 (RTTI .?AVJointsService@RBX@@, offset 0x10)",
+        "??_7JointsService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x824ab8 (RTTI .?AVJointsService@RBX@@, offset 0x14)",
+        "??_7JointsService@RBX@@6BDebugable@1@@": "0x824ab0 (RTTI .?AVJointsService@RBX@@, offset 0x20)",
+        "??_7JointsService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x824aa0 (RTTI .?AVJointsService@RBX@@, offset 0x24)",
+        "??_7JointsService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x824a90 (RTTI .?AVJointsService@RBX@@, offset 0x44)",
+        "??_7JointsService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x824a80 (RTTI .?AVJointsService@RBX@@, offset 0x64)",
+        "??_7JointsService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x824a70 (RTTI .?AVJointsService@RBX@@, offset 0x84)",
+        "??_7JointsService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x824a60 (RTTI .?AVJointsService@RBX@@, offset 0xa4)",
+        "??_7JointsService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x824a50 (RTTI .?AVJointsService@RBX@@, offset 0xc4)",
+        "??_7JointsService@RBX@@6B?$Listener@VWorld@RBX@@UAutoJoin@2@@1@@": "0x824a44 (RTTI .?AVJointsService@RBX@@, offset 0x130)",
+        "??_7JointsService@RBX@@6B?$Listener@VWorld@RBX@@UAutoDestroy@2@@1@@": "0x824a38 (RTTI .?AVJointsService@RBX@@, offset 0x134)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0JointsService@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "005e54c0",
+      "symbol": "?onDescendentAdded@JointsService@RBX@@EAEXPAVInstance@2@@Z",
+      "size": 58,
+      "exact": true,
+      "verified_targets": {
+        "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z": "0x55ae20",
+        "??_R0?AVIRenderable@RBX@@@8": "0x939f70 (.?AVIRenderable@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+        "?onAdded@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z": "0x5dd4c0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005e5520",
+      "symbol": "?onDescendentRemoving@JointsService@RBX@@EAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 62,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVIRenderable@RBX@@@8": "0x939f70 (.?AVIRenderable@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+        "?onRemoving@IRenderableBucket@RBX@@IAEXPAVIRenderable@2@@Z": "0x5dd4d0",
+        "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x55ae90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00409960",
+      "symbol": "??0?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@QAE@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x80b7b4 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0x0)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x80b7a8 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0x10)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x80b7a0 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0x14)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6BDebugable@1@@": "0x80b798 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0x20)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x80b788 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0x24)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x80b778 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0x44)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x80b768 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0x64)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x80b758 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0x84)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x80b748 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0xa4)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x80b738 (RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@, offset 0xc4)"
       },
       "local_eh": []
     }
