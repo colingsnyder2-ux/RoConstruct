@@ -12,11 +12,16 @@
 #include "v8tree/Service.h"
 #include <boost/shared_ptr.hpp>
 
+class CWorkspace;
+class DxUserInput;
+namespace G3D { class GWindow; }
+
 namespace RBX {
 class ServiceProvider;
 class Name;
 class Verb;
 class DataModel;
+class Adorn;
 namespace Network { class Players; }
 }
 
@@ -36,16 +41,24 @@ __declspec(align(8)) class CRobloxWnd : public CWnd, public RBX::IRunView, publi
 public:
     int mode_5c;          // 0045cbf0 selects renderer mode here (3 = RbxGfx)
     int retries_60;       // incremented once after a renderer failure
-    void* slots_64_7c[7]; // zeroed by the constructor (0x64 through 0x7c)
+    void* slots_64_68[2];
+    ATL::CComPtr<CWorkspace> workspace; // 0045f7b0 AddRef/Release, 0045fbe0 Release at +0x6c.
+    // 0045f7b0 copies CWorkspace::getDataModel (0046a940) here;
+    // 0045fbe0 releases its control block at +0x74.
+    boost::shared_ptr<RBX::DataModel> dataModel;
+    boost::shared_ptr<RBX::RunService> runService; // setter0045f7b0, detach00555830, dtor0045fbe0
     bool flag_80;         // set to 1
-    void* slot_84;
+    boost::scoped_ptr<DxUserInput> userInput; // ctor004690f0; owned reset/delete in 0045f7b0/0045fbe0.
     bool flags_88_8b[4];  // 0x88 depends on startup context, 0x8b set to 1
     unsigned unaccessed_8c[3]; // no constructor write and no read in 53 mined CRobloxWnd methods; size from CRuntimeClass 0xc0
     void* source_98;      // 005c43a0 result
     bool flag_9c;
-    void* slots_a0_a4[2];
+    void* slot_a0;
+    G3D::GWindow* gWindow; // original makeCurrent path 0045ead0/0045f7b0.
     bool flag_a8;
-    void* slots_ac_b8[4];
+    void* slots_ac_b0[2];
+    boost::scoped_ptr<RBX::Adorn> adorn; // owned deletion 0045fbe0; passed to UserInputBase::init.
+    void* slot_b8;
     unsigned unaccessed_bc;    // same evidence as unaccessed_8c
     explicit CRobloxWnd(int);
     void finishAttach();       // 0045ead0

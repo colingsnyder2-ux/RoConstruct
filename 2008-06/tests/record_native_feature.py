@@ -85,6 +85,10 @@ GENERATED = {
 }
 for path, (source, anchor, replacement, _) in GENERATED.items():
     text = Path(source).read_text()
+    if path == 'reflection/reflection.h' and replacement in text:
+        assert text.count(replacement) == 1 and anchor not in text
+        (pending / path).write_text(text)
+        continue
     assert text.count(anchor) == 1, (path, anchor)
     (pending / path).write_text(text.replace(anchor, replacement))
 PART_EMBEDDED = R / 'native-headers/part-embedded'   # existing opt-in PartInstance with the embedded Primitive

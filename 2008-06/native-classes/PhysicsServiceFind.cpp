@@ -2,7 +2,7 @@
 #include <boost/thread/once.hpp>
 #include "v8datamodel/PhysicsService.h"
 namespace RBX {
-char sPhysicsService[] = "PhysicsService";
+const char sPhysicsService[] = "PhysicsService";
 template<class Class> size_t ServiceProvider::doGetClassIndex() {
     static size_t index = newIndex();
     return index;

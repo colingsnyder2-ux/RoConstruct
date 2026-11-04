@@ -29,6 +29,13 @@ public:
 	virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet);
 };
 
+// PluginInterfaceAdapter<Players>::OnReceive 0049df50: forward to owner at +4, then map bool to RakNet result.
+template<class Class>
+PluginReceiveResult PluginInterfaceAdapter<Class>::OnReceive(RakPeerInterface* peer, Packet* packet)
+{
+	return c->OnReceive(peer, packet) ? RR_CONTINUE_PROCESSING : RR_STOP_PROCESSING_AND_DEALLOCATE;
+}
+
 namespace RBX
 {
 	namespace Network
@@ -88,6 +95,7 @@ namespace RBX
 {
 	namespace Network
 	{
+		// Players ctor 0049bdc0 allocates 8 bytes; owner pointer is at +4 and adapter OnReceive is vtable slot 5.
 		class Players::Plugin : public PluginInterfaceAdapter<Players>
 		{
 		public:

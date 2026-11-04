@@ -55,11 +55,12 @@ pending = OUT / 'spawn-pending'
 for sub in ('v8tree', 'reflection'):
     (pending / sub).mkdir(parents=True, exist_ok=True)
 text = (R / 'native-headers/v8tree/Instance.h').read_text()
-assert text.count(PROPOSAL_INSTANCE_ANCHOR) == 1
-(pending / 'v8tree/Instance.h').write_text(text.replace(PROPOSAL_INSTANCE_ANCHOR, PROPOSAL_INSTANCE_ANCHOR + PROPOSAL_INSTANCE))
-text = (ROOT / 'tools/rbxgs/Client/App/include/reflection/property.h').read_text()
-assert text.count(PROPOSAL_PROPERTY_ANCHOR) == 1
-(pending / 'reflection/property.h').write_text(text.replace(PROPOSAL_PROPERTY_ANCHOR, PROPOSAL_PROPERTY_ANCHOR + PROPOSAL_PROPERTY))
+assert text.count('static Reflection::BoundProp<bool, 1> propArchivable;') == 1
+(pending / 'v8tree/Instance.h').write_text(text)
+text = (R / 'native-headers/reflection/property.h').read_text()
+getset = text.split('class GetSet\n', 1)[1].split('};', 1)[0]
+assert getset.count('virtual bool isWriteOnly() const = 0;') == 1
+(pending / 'reflection/property.h').write_text(text)
 
 
 def build(name, src, extra=()):

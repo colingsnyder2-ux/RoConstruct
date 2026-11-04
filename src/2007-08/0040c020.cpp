@@ -1,24 +1,31 @@
-// from server: 74% by colin
-struct S_func_0040c020 {
-    int f(int a, int b, int c, int d);
+// from server: 87% by Intel
+struct IUnknown
+{
+    virtual long __stdcall QueryInterface(void*, void**) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
 };
 
-extern "C" int __stdcall sub_004055f0(int);
-extern int dword_00881da8;
-extern int dword_00881d9c;
+extern "C" long __stdcall sub_4055f0(void* pUnkOuter, IUnknown** ppUnkInner);
 
-int S_func_0040c020::f(int a, int b, int c, int d)
+IUnknown* g_pUnk = 0;
+
+long __stdcall sub_40C020(void* a1, void* a2, void* a3, IUnknown** ppOut)
 {
-    int *p = (int *)d;
-    if (p == 0)
-        return (int)0x80004003;
-    if (dword_00881da8 == 0)
-        sub_004055f0(c);
-    *p = dword_00881da8;
-    int v = dword_00881da8;
-    if (v != 0) {
-        int (*fn)(int) = *(int (**)(int))v;
-        fn(v);
+    if (!ppOut)
+        return 0x80004003;
+
+    if (!g_pUnk)
+    {
+        sub_4055f0(a3, &g_pUnk);
     }
+
+    *ppOut = g_pUnk;
+
+    if (g_pUnk)
+    {
+        g_pUnk->AddRef();
+    }
+
     return 0;
 }

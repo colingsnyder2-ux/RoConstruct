@@ -1,0 +1,123 @@
+{
+  "scope": "Original Physics dependency code/data guards; not full class/World ABI/runtime proof",
+  "jobs": [
+    {
+      "source": "native-classes/PhysicsServiceFind.cpp",
+      "checks": [
+        {
+          "addr": "004ccca0",
+          "symbol": "??$find@VPhysicsService@RBX@@@ServiceProvider@"
+        },
+        {
+          "addr": "00600660",
+          "symbol": "??1?$shared_ptr@VInstance@RBX@@"
+        },
+        {
+          "addr": "004c9b70",
+          "symbol": "??$doDeclare@$1?sPhysicsService@"
+        },
+        {
+          "addr": "004c9be0",
+          "symbol": "??$doGetClassIndex@VPhysicsService@"
+        },
+        {
+          "addr": "004cb520",
+          "symbol": "?getClassName@?$NonFactoryProduct@VInstance@RBX@@$1?sPhysicsService@"
+        }
+      ],
+      "object": "NativePhysicsServiceFindFull.obj"
+    },
+    {
+      "source": "native-classes/PhysicsServiceAllocation.cpp",
+      "checks": [
+        {
+          "addr": "004cd760",
+          "symbol": "??$create@VPhysicsService@RBX@@@?$Creatable@VInstance@RBX@@"
+        }
+      ],
+      "object": "NativePhysicsServiceAllocationFull.obj"
+    },
+    {
+      "source": "native-classes/PhysicsServiceLifetime.cpp",
+      "checks": [
+        {
+          "addr": "004cd5b0",
+          "symbol": "??0PhysicsService@"
+        },
+        {
+          "addr": "005e8d30",
+          "symbol": "??1PhysicsService@"
+        }
+      ],
+      "object": "NativePhysicsServiceLifetimeFull.obj"
+    },
+    {
+      "source": "native-classes/PhysicsServiceEvents.cpp",
+      "checks": [
+        {
+          "addr": "005e9110",
+          "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOn"
+        },
+        {
+          "addr": "005e9130",
+          "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOff"
+        },
+        {
+          "addr": "005e8f70",
+          "symbol": "?onAdded@PhysicsService@"
+        },
+        {
+          "addr": "005e9040",
+          "symbol": "?onRemoved@PhysicsService@"
+        }
+      ],
+      "object": "NativePhysicsServiceEventsFull.obj"
+    },
+    {
+      "source": "native-classes/PhysicsServiceSignals.cpp",
+      "checks": [
+        {
+          "addr": "005e8df0",
+          "symbol": "??0?$SignalDesc@VPhysicsService@"
+        },
+        {
+          "addr": "007f6e40",
+          "symbol": "??__E?eventAdded@PhysicsService@"
+        },
+        {
+          "addr": "007f6e60",
+          "symbol": "??__E?eventRemoved@PhysicsService@"
+        },
+        {
+          "addr": "004cd300",
+          "symbol": "?classDescriptor@?$Described@VPhysicsService@"
+        }
+      ],
+      "object": "NativePhysicsServiceSignalsFull.obj"
+    },
+    {
+      "source": "native-classes/PhysicsServiceProvider.cpp",
+      "checks": [
+        {
+          "addr": "005e8ec0",
+          "symbol": "?onServiceProvider@PhysicsService@"
+        }
+      ],
+      "object": "NativePhysicsServiceProviderFull.obj"
+    },
+    {
+      "source": "native-classes/WorldServiceFactories.cpp",
+      "checks": [
+        {
+          "addr": "004b3a50",
+          "symbol": "??$create@VJointsService@RBX@@@ServiceProvider@"
+        },
+        {
+          "addr": "004cd7e0",
+          "symbol": "??$create@VPhysicsService@RBX@@@ServiceProvider@"
+        }
+      ],
+      "object": "NativeWorldServiceFactoriesFull.obj"
+    }
+  ]
+}

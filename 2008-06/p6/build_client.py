@@ -416,6 +416,7 @@ if NATIVE_DOC:
                         ('NativePhysicsServiceLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceLifetime.cpp'),
                         ('NativePhysicsServiceEventsFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceEvents.cpp'),
                         ('NativePhysicsServiceSignalsFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp'),
+                        ('NativePhysicsServiceProviderFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp'),
                         ('NativeChangeHistoryLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryLifetime.cpp'),
                         ('NativeChangeHistoryEventsFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryEvents.cpp'),
                         ('NativeChangeHistoryFactoryFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryFactory.cpp'),
@@ -444,7 +445,20 @@ if NATIVE_DOC:
                         ('NativeLDrawPartTransformFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPartTransform.cpp'),
                         ('NativeLDrawPartParentFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPartParent.cpp'),
                         ('NativeLDrawPartColorFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPartColor.cpp'),
-                        ('NativeContentReadFull.obj', ROOT / 'rebuild/2008-06/native-classes/ContentRead.cpp')]
+                        ('NativeContentReadFull.obj', ROOT / 'rebuild/2008-06/native-classes/ContentRead.cpp'),
+                        ('AxisMoveToolCoreNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/AxisMoveToolCore.cpp'),
+                        ('AxisMoveToolMethodsNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/AxisMoveToolMethods.cpp'),
+                        ('AxisMoveToolDownNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/AxisMoveToolDown.cpp'),
+                        ('AxisMoveToolMoveNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/AxisMoveToolMove.cpp'),
+                        ('AxisMoveToolBoundsNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/AxisMoveToolBounds.cpp'),
+                        ('AxisMoveToolRenderNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/AxisMoveToolRender.cpp'),
+                        ('MoveHandleHitNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/MoveHandleHit.cpp'),
+                        ('MoveHandleRadiusNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/MoveHandleRadius.cpp'),
+                        ('MegaDraggerMovementNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/MegaDraggerMovement.cpp'),
+                        ('DragPrimitiveBoundsNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/DragPrimitiveBounds.cpp'),
+                        ('DraggerLineMoveNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/DraggerLineMove.cpp'),
+                        ('DraggerPlacementNativeFull.obj', ROOT / 'rebuild/2008-06/native-classes/DraggerPlacement.cpp'),
+                       ]
     extra_sources = [Path(p) for p in os.environ.get('ROC_NATIVE_DOC_EXTRA', '').split(';') if p]
     for index, source in enumerate(extra_sources):
         assert source.is_file(), source
@@ -484,12 +498,20 @@ if NATIVE_DOC:
     # Each job owns its object/cache path; no debug/PCH files are shared.
     assert len({obj for obj, _ in doc_sources}) == len(doc_sources)
     jobs = max(1, min(3, int(os.environ.get('ROC_NATIVE_DOC_JOBS', '3'))))
+    failures = []
     with ThreadPoolExecutor(max_workers=jobs) as pool:
-        for code, text in pool.map(compile_doc_source, doc_sources):
+        for (obj, source), (code, text) in zip(doc_sources, pool.map(compile_doc_source, doc_sources)):
             if text:
                 print(text[-2500:])
             if code:
-                sys.exit(code)
+                log = out / (Path(obj).stem + '.compile-error.log')
+                log.write_text(text, encoding='utf-8')
+                failures.append(dict(object=obj, source=str(source), exit_code=code, log=str(log)))
+    # All jobs are already scheduled; report every failure instead of hiding later ones.
+    (out / 'native-doc-compile-failures.json').write_text(json.dumps({'scope': 'Compiler outcomes only; no code/ABI/runtime acceptance.', 'sources': len(doc_sources), 'failures': failures}, indent=2) + '\n')
+    if failures:
+        print('Native Doc failed source units: ' + str(len(failures)))
+        sys.exit(failures[0]['exit_code'])
 system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
@@ -577,7 +599,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeSlingshotToolCoreFull.obj', 'NativeRocketToolCoreFull.obj', 'NativeRocketToolProjectileFull.obj', 'NativeRocketToolLaunchFull.obj', 'NativeEngineStatsFull.obj', 'NativeContactManagerStatsFull.obj', 'NativeSpatialHashStatsFull.obj', 'NativeShootToolMethodsFull.obj', 'NativeShootToolShootFull.obj', 'NativeSlingshotToolLaunchFull.obj', 'NativeSlingshotBallisticFull.obj', 'NativeSlingshotToolProjectileFull.obj', 'NativeContentProviderCreateContextFull.obj', 'NativeContentIdAssetsFull.obj', 'NativeContentProviderLoadFull.obj',
                       'NativeResizeToolCoreFull.obj', 'NativeResizeToolMethodsFull.obj', 'NativeResizeToolMoveFull.obj', 'NativeResizeToolDragFull.obj', 'NativeResizeToolFindFull.obj', 'NativeResizeToolRenderFull.obj', 'NativeMathClosestRayFull.obj', 'NativeHandleHitTestFull.obj', 'NativePartInstanceResizeFull.obj', 'NativeHandleRadiusFull.obj',
                       'NativeCInsertObjectDialogCoreFull.obj', 'NativeCInsertObjectDialogActionFull.obj', 'NativeMetadataClassFull.obj', 'NativeMetadataClassesLookupFull.obj', 'NativeMetadataReflectionLookupFull.obj', 'NativeMetadataReflectionSingletonFull.obj', 'NativeMetadataReflectionLifetimeFull.obj', 'NativeMetadataReflectionLoadFull.obj', 'NativeMetadataClassNamesFull.obj', 'NativeMetadataClassesRegisterFull.obj', 'NativeMetadataItemLifetimeFull.obj', 'NativeMotorFeatureCommandsFull.obj', 'NativeArrowToolFactoryFull.obj', 'NativeDataModelClassNameFull.obj', 'NativeAuthoringSettingsFull.obj', 'NativeCClassImagesFull.obj', 'NativeNameCompareFull.obj',
-                      'NativePhysicsServiceAllocationFull.obj', 'NativePhysicsServiceLifetimeFull.obj', 'NativePhysicsServiceEventsFull.obj', 'NativePhysicsServiceSignalsFull.obj',
+                      'NativePhysicsServiceAllocationFull.obj', 'NativePhysicsServiceLifetimeFull.obj', 'NativePhysicsServiceEventsFull.obj', 'NativePhysicsServiceSignalsFull.obj', 'NativePhysicsServiceProviderFull.obj',
                       'NativeChangeHistoryLifetimeFull.obj', 'NativeChangeHistoryEventsFull.obj', 'NativeChangeHistoryFactoryFull.obj', 'NativeHistoryRecordLookupFull.obj', 'NativeHistoryItemStateFull.obj',
                       'NativeSurfaceToolHoverRenderFull.obj', 'NativeSurfaceToolMouseDownFull.obj',
                       'NativeMouseGetSurfaceFull.obj', 'NativeInsertObjectActionFull.obj',
@@ -593,10 +615,32 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeLDrawPartColorFull.obj', 'NativeContentReadFull.obj'] if NATIVE_DOC else []
 if NATIVE_DOC:
     native_doc_objects += ['NativeDocExtra%02d.obj' % index for index, _ in enumerate(extra_sources)]
+    native_doc_objects += ['AxisMoveToolCoreNativeFull.obj', 'AxisMoveToolMethodsNativeFull.obj', 'AxisMoveToolDownNativeFull.obj', 'AxisMoveToolMoveNativeFull.obj', 'AxisMoveToolBoundsNativeFull.obj', 'AxisMoveToolRenderNativeFull.obj', 'MoveHandleHitNativeFull.obj', 'MoveHandleRadiusNativeFull.obj', 'MegaDraggerMovementNativeFull.obj', 'DragPrimitiveBoundsNativeFull.obj', 'DraggerLineMoveNativeFull.obj', 'DraggerPlacementNativeFull.obj']
     native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
         'WorkspaceInsertNativeProfile.obj',
         'WorkspaceSiteTrustProfile.obj')]
 if NATIVE_DOC:
+    from roc import match
+    for family in ('axis', 'physics'):
+        jobs = json.loads((HERE / (family + '_checks.json')).read_text())['jobs']
+        proof = []
+        for job in jobs:
+            obj = out / job.get('object', Path(job['source']).stem + 'NativeFull.obj')
+            raw = obj.read_bytes()
+            bodies = match.coff_functions(raw)
+            for check in job['checks']:
+                matches = [row for row in bodies if row[0].startswith(check['symbol'])]
+                if len(matches) != 1:
+                    raise RuntimeError(family + ' provider missing/ambiguous: ' + check['symbol'])
+                name, body, refs = matches[0]
+                target, mask, _ = match.target('2008-06', check['addr'])
+                if not set(mask) <= set(refs) or not match.exact_match(target, mask, body, refs):
+                    raise RuntimeError(family + ' provider changed: ' + check['addr'])
+                _, errors = match.data_check('2008-06', check['addr'], target, match.coff_data_refs(raw, name))
+                if errors:
+                    raise RuntimeError(family + ' provider data changed: ' + check['addr'])
+                proof.append(dict(address=check['addr'], symbol=name, object=obj.name))
+        (out / (family + '-native-proof.json')).write_text(json.dumps({'scope': 'Ordinary compiled object availability/code/data only; no final selection, ODR or runtime proof.', 'checks': proof}, indent=2) + '\n')
     import script_context_owner
     script_context_owner.verify_native(out)
     original_app_library = SNAPSHOT / 'RbxgsApp/linked/linked.lib'

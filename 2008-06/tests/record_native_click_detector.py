@@ -69,11 +69,11 @@ for sub in ('v8tree', 'v8datamodel'):
     (pending / sub).mkdir(parents=True, exist_ok=True)
 shutil.copyfile(WORKSPACE_OVERLAY, pending / 'v8datamodel/Workspace.h')
 text = (R / 'native-headers/v8tree/Instance.h').read_text()
-assert text.count(PROPOSAL_INSTANCE_ANCHOR) == 1
-(pending / 'v8tree/Instance.h').write_text(text.replace(PROPOSAL_INSTANCE_ANCHOR, PROPOSAL_INSTANCE + PROPOSAL_INSTANCE_ANCHOR))
+assert text.count('Type* findFirstChildOfType() const') == 1
+(pending / 'v8tree/Instance.h').write_text(text)
 text = (R / 'native-headers/v8tree/Service.h').read_text()
-assert text.count(PROPOSAL_SERVICE_ANCHOR) == 1
-(pending / 'v8tree/Service.h').write_text(text.replace(PROPOSAL_SERVICE_ANCHOR, PROPOSAL_SERVICE_ANCHOR + PROPOSAL_SERVICE))
+assert text.count('static const ServiceProvider* findServiceProvider(const Instance*);') == 1
+(pending / 'v8tree/Service.h').write_text(text)
 text = (ROOT / 'tools/rbxgs/Client/App/include/v8datamodel/Camera.h').read_text()
 for old, new in (('extern const char* sCamera;', 'extern char sCamera[];'),
                  ('DescribedCreatable<Camera, Instance, &sCamera>', 'DescribedCreatable<Camera, Instance, sCamera>')):

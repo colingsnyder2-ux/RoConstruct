@@ -118,8 +118,8 @@ def write_pending(root, pending):
     (pending / 'v8tree').mkdir(parents=True, exist_ok=True)
     (pending / 'v8datamodel').mkdir(parents=True, exist_ok=True)
     text = (root / 'rebuild/2008-06/native-headers/v8tree/Instance.h').read_text()
-    assert text.count(PROPOSAL_INSTANCE_ANCHOR) == 1
-    (pending / 'v8tree/Instance.h').write_text(text.replace(PROPOSAL_INSTANCE_ANCHOR, PROPOSAL_INSTANCE_ANCHOR + PROPOSAL_INSTANCE))
+    assert text.count('void visitDescendents(Function func) const') == 1
+    (pending / 'v8tree/Instance.h').write_text(text)
     (pending / 'v8datamodel/Workspace.h').write_text(
         (root / 'rebuild/2008-06/tests/NativeDebrisForceFieldPendingWorkspace.h').read_text())
 

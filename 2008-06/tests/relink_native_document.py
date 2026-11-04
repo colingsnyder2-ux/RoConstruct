@@ -54,6 +54,8 @@ def main():
     parser.add_argument('--add', action='append', type=Path, default=[], help='additional compiled object; no provider removal')
     parser.add_argument('--replace-library', nargs=2, action='append', type=Path, default=[],
                         metavar=('OLD', 'NEW'), help='source-rebuilt library replacement; requires separate ownership proof')
+    parser.add_argument('--replace-object', nargs=2, action='append', type=Path, default=[],
+                        metavar=('OLD', 'NEW'), help='ordinary compiled object replacement; no ABI/runtime acceptance implied')
     args = parser.parse_args()
     baseline = json.loads((args.run / 'result.json').read_text())
     if baseline.get('outcome') not in ('linked', 'link_failed'):
@@ -64,16 +66,19 @@ def main():
     destination = ROOT / 'work/2008-06/native-doc-relinks' / (time.strftime('%Y%m%d-%H%M%S') + '-' + uuid.uuid4().hex[:8])
     destination.mkdir(parents=True)
     arguments = list(command['arguments'])
-    replacements = []
-    for old, new in args.replace_library:
-        if old.suffix.lower() != '.lib' or new.suffix.lower() != '.lib' or not old.is_file() or not new.is_file():
-            raise ValueError('library replacement requires two existing .lib inputs')
-        indices = [i for i, value in enumerate(arguments) if not value.startswith('/')
-                   and (Path(command['cwd']) / value).resolve() == old.resolve()]
-        if len(indices) != 1:
-            raise ValueError('old library must occur exactly once: ' + str(old))
-        arguments[indices[0]] = str(new.resolve())
-        replacements.append({'old': str(old.resolve()), 'old_sha256': digest(old), 'new': str(new.resolve()), 'new_sha256': digest(new)})
+    replacements, object_replacements = [], []
+    for pairs, suffix, kind, records in ((args.replace_library, '.lib', 'library', replacements),
+                                          (args.replace_object, '.obj', 'object', object_replacements)):
+        for old, new in pairs:
+            if old.suffix.lower() != suffix or new.suffix.lower() != suffix or not old.is_file() or not new.is_file():
+                raise ValueError(kind + ' replacement requires two existing ' + suffix + ' inputs')
+            indices = [i for i, value in enumerate(arguments) if not value.startswith('/')
+                       and (Path(command['cwd']) / value).resolve() == old.resolve()]
+            if len(indices) != 1:
+                raise ValueError('old ' + kind + ' must occur exactly once: ' + str(old))
+            arguments[indices[0]] = str(new.resolve())
+            records.append({'old': str(old.resolve()), 'old_sha256': digest(old),
+                            'new': str(new.resolve()), 'new_sha256': digest(new)})
     for extra in args.add:
         if extra.suffix.lower() != '.obj' or not extra.is_file():
             raise ValueError('additional input must be existing .obj: ' + str(extra))
@@ -104,6 +109,7 @@ def main():
     result.update(scope=__doc__, source_run=str(args.run.resolve()), source_command_sha256=digest(command_path),
                   seconds=round(elapsed, 3), changed_inputs=changed, baseline_comparison=same,
                   library_replacements=replacements,
+                  object_replacements=object_replacements, tool_sha256=digest(Path(__file__)),
                   historical_input_identity_proven=False)
     if changed:
         result['outcome'] = 'input_drift'

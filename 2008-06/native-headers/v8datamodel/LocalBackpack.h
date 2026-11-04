@@ -3,6 +3,7 @@
 #include "Network/Player.h"
 
 namespace RBX {
+namespace Network { class Players; }
 extern char sLocalBackpackItem[];
 class LocalBackpackItem : public DescribedCreatable<LocalBackpackItem, Widget, sLocalBackpackItem> {
     boost::shared_ptr<BackpackItem> myItem;
