@@ -1,19 +1,26 @@
 # Needs a manual merge
 
-Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `76c718db96d44254cc2903f95353dab9c5d5e3da`.
-Reason: CONFLICT (add/add): Merge conflict in rebuild/2008-06/native-classes/Explosion.cpp (+12 more conflicts)
+Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `2f2654332d6c5b9ae6ca994bc0b4f5642eac717d`.
+Reason: CONFLICT (add/add): Merge conflict in rebuild/2008-06/native-classes/ClickDetector.cpp (+26 more conflicts)
 
 Files below are the fork's version; compare with the same path in the tree:
 
 - `rebuild/2008-06/native-classes/Accoutrement.cpp`
+- `rebuild/2008-06/native-classes/Backpack.cpp`
 - `rebuild/2008-06/native-classes/BodyColors.cpp`
 - `rebuild/2008-06/native-classes/BodyMovers.cpp`
+- `rebuild/2008-06/native-classes/ClickDetector.cpp`
 - `rebuild/2008-06/native-classes/Clothing.cpp`
 - `rebuild/2008-06/native-classes/DataModelDutyCycle.cpp`
+- `rebuild/2008-06/native-classes/DebrisService.cpp`
+- `rebuild/2008-06/native-classes/DebugSettings.cpp`
 - `rebuild/2008-06/native-classes/Explosion.cpp`
 - `rebuild/2008-06/native-classes/Feature.cpp`
 - `rebuild/2008-06/native-classes/Flag.cpp`
 - `rebuild/2008-06/native-classes/FlagStand.cpp`
+- `rebuild/2008-06/native-classes/ForceField.cpp`
+- `rebuild/2008-06/native-classes/GameSettings.cpp`
+- `rebuild/2008-06/native-classes/Hopper.cpp`
 - `rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp`
 - `rebuild/2008-06/native-classes/JointsService.cpp`
 - `rebuild/2008-06/native-classes/Message.cpp`
@@ -33,6 +40,8 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/StatsService.cpp`
 - `rebuild/2008-06/native-classes/Teams.cpp`
 - `rebuild/2008-06/native-classes/TimerService.cpp`
+- `rebuild/2008-06/native-classes/Tool.cpp`
+- `rebuild/2008-06/native-classes/UserController.cpp`
 - `rebuild/2008-06/native-classes/VisitFactory.cpp`
 - `rebuild/2008-06/native-classes/VisitServiceLookup.cpp`
 - `rebuild/2008-06/native-headers/Network/NetworkSettings.h`
@@ -44,11 +53,18 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/stats/Stats.h`
 - `rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Accoutrement.h`
+- `rebuild/2008-06/native-headers/v8datamodel/Backpack.h`
 - `rebuild/2008-06/native-headers/v8datamodel/BodyColors.h`
 - `rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h`
+- `rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h`
+- `rebuild/2008-06/native-headers/v8datamodel/DebrisService.h`
+- `rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Feature.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Flag.h`
 - `rebuild/2008-06/native-headers/v8datamodel/FlagStand.h`
+- `rebuild/2008-06/native-headers/v8datamodel/ForceField.h`
+- `rebuild/2008-06/native-headers/v8datamodel/GameSettings.h`
+- `rebuild/2008-06/native-headers/v8datamodel/Hopper.h`
 - `rebuild/2008-06/native-headers/v8datamodel/JointsService.h`
 - `rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h`
 - `rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h`
@@ -58,4 +74,6 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h`
 - `rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h`
 - `rebuild/2008-06/native-headers/v8datamodel/TimerService.h`
+- `rebuild/2008-06/native-headers/v8datamodel/Tool.h`
+- `rebuild/2008-06/native-headers/v8datamodel/UserController.h`
 - `rebuild/2008-06/native-headers/v8tree/Instance.h`

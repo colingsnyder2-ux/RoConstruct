@@ -20,10 +20,8 @@
 //   descriptors prop_Color 0097bf20 PropDescriptor<Flag, BrickColor> "TeamColor"/"Data" (getTeamColor 00618380,
 //              setTeamColor 00619a60; dynamic initializer 007f7cc0, atexit 00800310, ctor 006191c0).
 //   destructor ~Flag 00618670 is user-declared (it rewrites the Flag vtables before the member destructors).
-// Requires a native v8datamodel/Tool.h (Tool / BackpackItem with the 2008 const-char-array DescribedCreatable):
-// the donor Tool.h and Hopper.h pass &sTool / &sBackpackItem and do not compile against native reflection.h.
-// tests/record_native_flag_family.py builds Flag.cpp only against generated copies of those donor headers
-// (pending build, rows recorded exact=false).
+// Base classes come from the native v8datamodel/Tool.h and Hopper.h (Tool / BackpackItem with the 2008
+// const-char-array DescribedCreatable; Tool non-virtual size 0x268, recovered in tests/record_native_hopper.py).
 #include "v8datamodel/Tool.h"
 #include "v8datamodel/BrickColor.h"
 #include <boost/signals/connection.hpp>
