@@ -9,7 +9,12 @@ ViewNew/ directory):
   * native-classes/ViewNewSphereMesh.cpp SphereBuilder / SphereMesh (004fce90..004fd40f), the vertex function kept
                                          at 004fabb0, the header-inline Level constructor 004dd2e0, ??_G rows;
   * native-classes/ViewNewCylinderMesh.cpp CylinderBuilder / CylinderAlongXMesh (004fd430..004fdaef);
-  * native-classes/ViewNewHeadMesh.cpp   HeadBuilder / HeadMesh (004fdaf0..0050068f).
+  * native-classes/ViewNewHeadMesh.cpp   HeadBuilder / HeadMesh (004fdaf0..0050068f);
+  * native-classes/ViewNewWedgeMesh.cpp  WedgeBuilder / WedgeMesh (004f6e30..004f7d8f), with the BevelMesh::Builder
+                                         copy constructor 004f6e30 and the builder-as-functor buildFace instances;
+  * native-classes/ViewNewTorsoMesh.cpp  TorsoBuilder / TorsoMesh (004fa050..004fab2f) and the builder dtor 004fab30;
+  * native-classes/ViewNewPBBMesh.cpp    PBBBuilder / PBBMesh (004f1eb0, 004f2030, 004f4790..004f4caf; the surface
+                                         ctor 004f4cb0 needs the unnamed shadow helper 004e3570 and is not built).
 
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, constants by bytes, type descriptors and
@@ -43,6 +48,9 @@ UNITS = {
     'sphere': R / 'native-classes/ViewNewSphereMesh.cpp',
     'cylinder': R / 'native-classes/ViewNewCylinderMesh.cpp',
     'head': R / 'native-classes/ViewNewHeadMesh.cpp',
+    'wedge': R / 'native-classes/ViewNewWedgeMesh.cpp',
+    'torso': R / 'native-classes/ViewNewTorsoMesh.cpp',
+    'pbb': R / 'native-classes/ViewNewPBBMesh.cpp',
 }
 HEADERS = sorted((R / 'native-headers/ViewNew').glob('*.h'))
 DISCOVER = bool(os.environ.get('NATIVE_VIEWNEW_DISCOVER'))
@@ -80,6 +88,11 @@ SIZES = {
     'cylinderBuilderSize': 0x24, 'cylinderBuilderElements': 0x20, 'headBuilderSize': 0x28, 'headBuilderBevel': 0x20,
     'headBuilderElements': 0x24, 'sphereMeshSize': 0x8c, 'cylinderMeshSize': 0x8c, 'headMeshSize': 0x8c,
     'bevelMeshSize': 0x88,
+    # WedgeBuilder: the by-value copies in 004f7bd0 / 004f7c80 / 004f7d30 (sub esp, 0x24); TorsoBuilder: 004faa30 /
+    # 004faaf0 (sub esp, 0x28; +0x24 copied after the Builder copy ctor); PBBBuilder ctor 004f1eb0 (+0x20..+0x24);
+    # the factories 004ee030 / 004ee530 / 004edd50 push 0x8c before 004f7780 / 004fa590 / 004f49d0.
+    'wedgeBuilderSize': 0x24, 'torsoBuilderSize': 0x28, 'torsoBuilderShoulderInset': 0x24, 'pbbBuilderStrips': 0x20,
+    'wedgeMeshSize': 0x8c, 'torsoMeshSize': 0x8c, 'pbbMeshSize': 0x8c,
 }
 for fn, size in SIZES.items():
     name_, body_, _ = next(x for x in match.coff_functions(raw) if x[0].startswith('?native' + fn + '@@'))
@@ -126,7 +139,44 @@ BUILD_FACE = {
     '??$buildFace@$03' + ENDCAP: 0x4ff1e0,          # HeadBuilder::buildBottom 00500074
 }
 EXTERNAL.update(BUILD_FACE)
-DATA = {}
+# The same grid template for the Wedge / Torso / PBB deformers and builder functors: instances not recovered here, each
+# bound to the address its only call site uses (checked below: each starts a function of the original list inside
+# 004f2110..004fa18f of more than 600 bytes). V = the instance's functor class, N = the NormalId template argument.
+GRID = 'VVector2int16@G3D@@W4Purpose@012@@Z'
+
+
+def grid(n, functor):
+    return '??$buildFace@%sV%s@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXV%s@12@%s' % (n, functor, functor, GRID)
+
+
+GRID_FACE = {
+    grid('$0A@', 'DeformSide3'): 0x4f5b80,      # WedgeBuilder::buildRight 004f6ec8
+    grid('$00', 'DeformTop3'): 0x4f5e50,        # WedgeBuilder::buildTop 004f6f09
+    grid('$02', 'DeformSide3'): 0x4f6120,       # WedgeBuilder::buildLeft 004f6f54
+    grid('$04', 'DeformFront'): 0x4f6400,       # WedgeBuilder::buildFront 004f6f89
+    grid('$01', 'WedgeBuilder'): 0x4f6fa0,      # 004f7c2c
+    grid('$03', 'WedgeBuilder'): 0x4f7390,      # 004f7cdc
+    grid('$0A@', 'DeformSide'): 0x4f8e50,       # TorsoBuilder::buildRight 004fa085
+    grid('$00', 'DeformTop'): 0x4f9120,         # TorsoBuilder::buildTop 004fa0c5
+    grid('$01', 'DeformFrontBack'): 0x4f9400,   # TorsoBuilder::buildBack 004fa105
+    grid('$02', 'DeformSide'): 0x4f96e0,        # TorsoBuilder::buildLeft 004fa145
+    grid('$04', 'DeformFrontBack'): 0x4f99c0,   # TorsoBuilder::buildFront 004fa185
+    grid('$03', 'TorsoBuilder'): 0x4fa190,      # 004faa93
+    grid('$00', 'Face'): 0x4f3650,              # PBBBuilder::buildTop 004f47d7
+    grid('$03', 'Face'): 0x4f3930,              # PBBBuilder::buildBottom 004f4837
+    grid('$02', 'Side'): 0x4f3c10,              # PBBBuilder::buildLeft 004f4897
+    grid('$0A@', 'Side'): 0x4f3ef0,             # PBBBuilder::buildRight 004f48f7
+    grid('$04', 'Side'): 0x4f41d0,              # PBBBuilder::buildFront 004f4957
+    grid('$01', 'Side'): 0x4f44b0,              # PBBBuilder::buildBack 004f49b7
+}
+EXTERNAL.update(GRID_FACE)
+EXTERNAL['__ftol2_sse'] = 0x6a17f0                # PBBBuilder ctor 004f1f0a (CRT float-to-int helper, statically linked)
+# Unit-local data, bound per unit (the same internal symbol names a different object in each unit) and checked by bytes:
+# `static const float bevel = 0.065f` of the Wedge unit (00827080, read by 004f7985 / 004f7ae1) and of the Torso unit
+# (008270f8, read by 004fa7c2 / 004fa93e).
+UNIT_DATA = {('wedge', '_bevel'): 0x827080, ('torso', '_bevel'): 0x8270f8}
+# BrickMesh::normalPerturbation (0.05f, checked by bytes below): read by the BrickMesh unit 004de50e.. and by Face 004f2040.
+DATA = {'?normalPerturbation@BrickMesh@ViewNew@RBX@@2MB': 0x826e3c}
 FOLDED = {}
 LOCAL_EH = nb.LOCAL_EH
 UNBOUND = []
@@ -182,6 +232,51 @@ HEAD_ROWS = [
     (0x500180, '??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z'),
     (0x4e54c0, '??_GHeadMesh@ViewNew@RBX@@UAEPAXI@Z'),
 ]
+SLOT = 'MAEXW4Purpose@LevelBuilder@23@@Z'
+WEDGE_ROWS = [
+    (0x4f6e30, '??0Builder@BevelMesh@ViewNew@RBX@@QAE@ABV0123@@Z'),   # implicit copy ctor (callers 004f7bd0.. / 004faa30..)
+    (0x4f6e90, '?buildRight@WedgeBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f6ee0, '?buildTop@WedgeBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f6f20, '?buildLeft@WedgeBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f6f60, '?buildFront@WedgeBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f7780, '??0WedgeMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z'),
+    (0x4f78d0, '??0WedgeMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z'),
+    (0x4f7a30, '??0WedgeMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z'),
+    (0x4f7bd0, '??$buildFace@$01VWedgeBuilder@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVWedgeBuilder@12@IIW4Purpose@012@@Z'),
+    (0x4f7c80, '??$buildFace@$03VWedgeBuilder@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVWedgeBuilder@12@IIW4Purpose@012@@Z'),
+    (0x4f7d30, '?buildBack@WedgeBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f7d60, '?buildBottom@WedgeBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4e54c0, '??_GWedgeMesh@ViewNew@RBX@@UAEPAXI@Z'),
+]
+TORSO_ROWS = [
+    (0x4fa050, '?buildRight@TorsoBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4fa090, '?buildTop@TorsoBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4fa0d0, '?buildBack@TorsoBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4fa110, '?buildLeft@TorsoBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4fa150, '?buildFront@TorsoBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4fa590, '??0TorsoMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z'),
+    (0x4fa700, '??0TorsoMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z'),
+    (0x4fa880, '??0TorsoMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z'),
+    (0x4faa30, '??$buildFace@$03VTorsoBuilder@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVTorsoBuilder@12@IIW4Purpose@012@@Z'),
+    (0x4faaf0, '?buildBottom@TorsoBuilder@ViewNew@RBX@@' + SLOT),
+    # implicit builder dtor (level +0x14 released, then zeroed): the body the EH unwind funclets 007caede.. jump to;
+    # ~LevelBuilder / ~BevelMesh::Builder / ~TorsoBuilder compile to the same bytes (ICF), kept at the Torso unit's end.
+    (0x4fab30, '??1TorsoBuilder@ViewNew@RBX@@QAE@XZ'),
+    (0x4e54c0, '??_GTorsoMesh@ViewNew@RBX@@UAEPAXI@Z'),
+]
+PBB_ROWS = [
+    (0x4f1eb0, '??0PBBBuilder@ViewNew@RBX@@QAE@AAV' + LEVEL + 'VVector3@4@VRenderSurfaceTypes@12@@Z'),
+    (0x4f2030, '??0Face@ViewNew@RBX@@QAE@XZ'),
+    (0x4f4790, '?buildTop@PBBBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f47f0, '?buildBottom@PBBBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f4850, '?buildLeft@PBBBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f48b0, '?buildRight@PBBBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f4910, '?buildFront@PBBBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f4970, '?buildBack@PBBBuilder@ViewNew@RBX@@' + SLOT),
+    (0x4f49d0, '??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z'),
+    (0x4f4b20, '??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z'),
+    (0x4e54c0, '??_GPBBMesh@ViewNew@RBX@@UAEPAXI@Z'),
+]
 NON_EXACT_ROWS = [
     (0x4fd110, '??0SphereMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z',
      'EH state numbering only: the original FuncInfo 008e597c has seven states, 1->0 / 2->0 / 3->2 with no unwind '
@@ -204,7 +299,8 @@ UNPROVEN = {}
 # Vtable slots whose bodies are not built here (bound to the address the original vtable holds).
 SLOT_EXTERNAL = {}
 
-ROWS = {'quad': QUAD_ROWS, 'bevel': BEVEL_ROWS, 'sphere': SPHERE_ROWS, 'cylinder': CYLINDER_ROWS, 'head': HEAD_ROWS}
+ROWS = {'quad': QUAD_ROWS, 'bevel': BEVEL_ROWS, 'sphere': SPHERE_ROWS, 'cylinder': CYLINDER_ROWS, 'head': HEAD_ROWS,
+        'wedge': WEDGE_ROWS, 'torso': TORSO_ROWS, 'pbb': PBB_ROWS}
 
 
 def target_of(address):
@@ -225,7 +321,7 @@ def resolve(obj, rows):
     return out
 
 
-def verify(obj, rows, own, strict=True, record=True):
+def verify(obj, rows, own, strict=True, record=True, unit=None):
     raw = Path(obj).read_bytes()
     sections, symbols, definitions, _ = match._coff_data_index(raw)
     bodies = {n: (b, r) for n, b, r in match.coff_functions(raw)}
@@ -283,6 +379,12 @@ def verify(obj, rows, own, strict=True, record=True):
                 cls = symbol[4:symbol.index('@@6B') + 2]
                 assert rtti == '.?AV' + cls, (name, symbol, hex(value), rtti)
                 how = 'vtable RTTI %s offset %#x' % (rtti, at)
+            elif (unit, symbol) in UNIT_DATA:
+                assert UNIT_DATA[(unit, symbol)] == value, (name, symbol, hex(value))
+                pos, at = definitions[symbol]
+                compiled = raw[sections[at][4] + pos:sections[at][4] + pos + 4]
+                assert original.data(value, 4) == compiled, (name, symbol, hex(value), compiled.hex())
+                how = 'unit-local constant %s (bytes)' % compiled.hex()
             elif symbol in own:
                 assert own[symbol] == value, (name, symbol, hex(value), hex(own[symbol]))
                 how = 'own row'
@@ -302,7 +404,7 @@ def verify(obj, rows, own, strict=True, record=True):
                 UNBOUND.append("    %r: %#x,   # %s in %s" % (symbol, value, names.get(value, '')[:60], name[:60]))
                 continue
             if record:
-                prev = binding.setdefault(symbol, (value, name))
+                prev = binding.setdefault((unit, symbol) if (unit, symbol) in UNIT_DATA else symbol, (value, name))
                 assert prev[0] == value, ('inconsistent', symbol, hex(prev[0]), prev[1], hex(value), name)
             verified[symbol] = '%s (%s)' % (hex(value), how)
         entry.update({'verified_targets': verified, 'local': sorted(local)})
@@ -317,12 +419,12 @@ for rows in resolved.values():
     for address, name in rows:
         own.setdefault(name, address)
 strict = not DISCOVER
-groups = {k: verify(OBJ[k], rows, own, strict) for k, rows in resolved.items()}
+groups = {k: verify(OBJ[k], rows, own, strict, unit=k) for k, rows in resolved.items()}
 non_out = []
 for (rows, w), (_, _, why, _) in zip(non_rows, NON_EXACT_ROWS):
     if not rows:
         continue
-    row = verify(OBJ[w], rows, own, strict=False, record=False)[0]
+    row = verify(OBJ[w], rows, own, strict=False, record=False, unit=w)[0]
     if row['exact'] and not DISCOVER:
         raise AssertionError('non-exact row unexpectedly exact: %s' % row['address'])
     row['exact'], row['reason'] = False, why
@@ -356,6 +458,11 @@ for symbol, address in BUILD_FACE.items():
     assert 0x4fbdb0 <= address <= 0x4ffd40, symbol
     if FUNCTIONS is not None:
         assert address in FUNCTIONS and FUNCTIONS[address] > 600, (symbol, hex(address))
+for symbol, address in GRID_FACE.items():
+    assert 0x4f2110 <= address < 0x4fa190 or address == 0x4fa190, symbol
+    if FUNCTIONS is not None:
+        assert address in FUNCTIONS and FUNCTIONS[address] > 600, (symbol, hex(address))
+assert original.data(0x826e3c, 4) == struct.pack('<f', 0.05), 'normalPerturbation'
 assert original.vtable_class(0x82d028) == ('.?AVMesh@RenderBase@RBX@@', 0)
 assert original.vtable_class(0x826e4c) == ('.?AVLevel@Mesh@RenderBase@RBX@@', 0)
 
@@ -409,7 +516,13 @@ for key, cls, address, count in (
         ('cylinder', 'CylinderBuilder@ViewNew@RBX', 0x827164, 7),
         ('cylinder', 'CylinderAlongXMesh@ViewNew@RBX', 0x827184, 1),
         ('head', 'HeadBuilder@ViewNew@RBX', 0x827194, 7),
-        ('head', 'HeadMesh@ViewNew@RBX', 0x8271b8, 1)):
+        ('head', 'HeadMesh@ViewNew@RBX', 0x8271b8, 1),
+        ('wedge', 'WedgeBuilder@ViewNew@RBX', 0x8270a8, 7),
+        ('wedge', 'WedgeMesh@ViewNew@RBX', 0x8270e8, 1),
+        ('torso', 'TorsoBuilder@ViewNew@RBX', 0x827100, 7),
+        ('torso', 'TorsoMesh@ViewNew@RBX', 0x827124, 1),
+        ('pbb', 'PBBBuilder@ViewNew@RBX', 0x82704c, 7),
+        ('pbb', 'PBBMesh@ViewNew@RBX', 0x827070, 1)):
     assert original.vtable_class(address) == ('.?AV%s@@' % cls, 0), (cls, original.vtable_class(address))
     vt[cls] = check_vtable(OBJ[key], '??_7%s@@6B@' % cls, address)
     assert len(vt[cls]) == count, (cls, len(vt[cls]))
@@ -437,6 +550,20 @@ for vtable, cls in ((0x827154, 'SphereMesh'), (0x827184, 'CylinderAlongXMesh'), 
     raw = OBJ[{'SphereMesh': 'sphere', 'CylinderAlongXMesh': 'cylinder', 'HeadMesh': 'head'}[cls]].read_bytes()
     _, _, definitions, _ = match._coff_data_index(raw)
     assert '??_R1IJ@?0A@EA@?$MeshFactory@V%s@ViewNew@RBX@@$00@ViewNew@RBX@@8' % cls in definitions, cls
+for vtable, cls in ((0x8270a8, 'WedgeBuilder'), (0x827100, 'TorsoBuilder')):
+    assert bases(vtable) == {'.?AV%s@ViewNew@RBX@@' % cls: 0, '.?AVBuilder@BevelMesh@ViewNew@RBX@@': 0,
+                             '.?AVLevelBuilder@ViewNew@RBX@@': 0}, cls
+assert bases(0x82704c) == {'.?AVPBBBuilder@ViewNew@RBX@@': 0, '.?AVLevelBuilder@ViewNew@RBX@@': 0}
+for vtable, cls, key, n, extra in ((0x8270e8, 'WedgeMesh', 'wedge', '$00', {'.?AVBevelMesh@ViewNew@RBX@@': 0}),
+                                   (0x827124, 'TorsoMesh', 'torso', '$00', {'.?AVBevelMesh@ViewNew@RBX@@': 0}),
+                                   (0x827070, 'PBBMesh', 'pbb', '$03', {})):
+    expect = {'.?AV%s@ViewNew@RBX@@' % cls: 0, '.?AVMesh@RenderBase@RBX@@': 0, RCO: 0,
+              '.?AV?$MeshFactory@V%s@ViewNew@RBX@@%s@ViewNew@RBX@@' % (cls, n): 0x89}
+    expect.update(extra)
+    assert bases(vtable) == expect, cls
+    _, _, definitions, _ = match._coff_data_index(OBJ[key].read_bytes())
+    assert '??_R1IJ@?0A@EA@?$MeshFactory@V%s@ViewNew@RBX@@%s@ViewNew@RBX@@8' % (cls, n) in definitions, cls
+assert bases(0x826e7c) == {'.?AVBrickMesh@ViewNew@RBX@@': 0, '.?AVMesh@RenderBase@RBX@@': 0, RCO: 0}
 assert bases(0x82d028) == {'.?AVMesh@RenderBase@RBX@@': 0, RCO: 0}
 assert bases(0x826e4c) == {'.?AVLevel@Mesh@RenderBase@RBX@@': 0, RCO: 0}
 
@@ -456,6 +583,11 @@ alloc_before(0x4eea30, 0x8c, 0x4fcfb0)
 alloc_before(0x4eef30, 0x8c, 0x4fd6b0)
 alloc_before(0x4ef430, 0x8c, 0x500180)
 alloc_before(0x4fcfb0, 0x28, 0x4dd2e0)
+alloc_before(0x4ee030, 0x8c, 0x4f7780)    # WedgeMesh
+alloc_before(0x4ee530, 0x8c, 0x4fa590)    # TorsoMesh
+alloc_before(0x4edd50, 0x8c, 0x4f49d0)    # PBBMesh (decal)
+for ctor in (0x4f7780, 0x4f78d0, 0x4f7a30, 0x4fa590, 0x4fa700, 0x4fa880, 0x4f49d0, 0x4f4b20):
+    alloc_before(ctor, 0x28, 0x4dd2e0)   # new Level(QUADS)
 
 sha = nb.sha
 paths = [Path(__file__).resolve(), LAYOUT] + list(UNITS.values()) + HEADERS
@@ -469,7 +601,8 @@ PROPOSALS = {
 }
 receipt = {
     'class': 'RBX::ViewNew::LevelBuilder, BevelMesh::Builder, SphereBuilder/SphereMesh, CylinderBuilder/'
-             'CylinderAlongXMesh, HeadBuilder/HeadMesh; RBX::RenderBase::Mesh / Mesh::Level (base declarations)',
+             'CylinderAlongXMesh, HeadBuilder/HeadMesh, WedgeBuilder/WedgeMesh, TorsoBuilder/TorsoMesh, PBBBuilder/'
+             'PBBMesh (decal / texture ctors); RBX::RenderBase::Mesh / Mesh::Level (base declarations)',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
     'flags': FLAGS,
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
@@ -479,6 +612,16 @@ receipt = {
     'exact_function_rows': exact,
     'vtables': vt,
     'proposals': PROPOSALS,
+    'not_built': {
+        '004f4cb0': 'PBBMesh(size, surfaceTypes): after build it calls the unnamed shadow helper 004e3570 (cdecl: half '
+                    'size, Mesh +0x68, Mesh +0x50) when the unnamed byte flag 0096de64 is set; no declaration derivable',
+        '004e53c0': 'BrickMesh ctor (meshKind 1, ret 0x1c): unnamed helpers 004e2c80 / 004e3720 / 004e3570 and globals '
+                    '00942ec4 / 00972758',
+        '00500b90': 'FileMesh::create: needs the 2008 MeshId (0x24 bytes by value: dword, std::string, dword) from '
+                    'the util owner',
+        '00826ec4/00826f94/00826ef8/00826f2c': 'ViewNew::PartChunk / Part / Decal / Texture derive from '
+                    'RenderBase::Chunk and read PartInstance (+0x1c8, +0x224): other owners',
+    },
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/viewnew-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
