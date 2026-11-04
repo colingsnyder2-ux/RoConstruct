@@ -40,7 +40,7 @@
   ],
   "original": "clients/2008-06/Roblox.exe",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "c3984bda60b61a22e5a73890418227b4b1f356bbcad0b0734c5fd158f56627fe",
+  "object_sha256": "244419297bfb0f54920d27c353aee35f5bb33d826b49b198a7b2edec9c46b53c",
   "library_query_interface_proof": {
     "status": "PASS",
     "kind": "authentic vendor library replay, not a new application provider",
@@ -96,9 +96,9 @@
       }
     }
   },
-  "layout_object_sha256": "52c3b8c729ea9fc2ac196424e8e49a9a8410cf9753cf323e56802dade3d1d141",
-  "guid_object_sha256": "cdf37ad3fcbba7f1f769b7594de2b8d9f95f6ab3dac7cd8e5c2042b1521ecc1c",
-  "helper_object_sha256": "5c7e0933aaa7492bdecc7e0fa5c2b95ac6720c4c33abd3962c280b7acdd5f12e",
+  "layout_object_sha256": "c733daef5b9f24cc56ab12b80d181fd8c9d2c1dff2e5ee4b6ddc4def2802ab33",
+  "guid_object_sha256": "45a960ec286f10984b29cd69f596ae505696a61ee9285bfc936a660090806226",
+  "helper_object_sha256": "588fd1f6f69d26a309af79bdf93afa899c13c81b1a1fcb7b3a5867f910bcfc0e",
   "compile_profile": "class unit: document-swap flags + /D_ATL_APARTMENT_THREADED (ATL object model CComSingleThreadModel, globals Multi; original spelling not proven) /P, CString operator PCXSTR marked noinline (original imports mfc90 #910; header unchanged), recompiled with /nologo /c /O2 /Ob2 /Oy /GF /GS- /EHsc /MD; layout, GUID and helper units: plain document-swap flags",
   "typed_guid_data": {
     "_IID_IBrowserViewExternal": {
@@ -147,7 +147,7 @@
     }
   ],
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_view_external.py": "a94ccc913e7a44df62a0f93629cf15eeafca9a163800c4fec0c7006779549210",
+    "rebuild/2008-06/tests/record_native_browser_view_external.py": "2c75bce006be6f41e33e5484aca67682fcbd64ae505439adf344aa68ccc0c445",
     "rebuild/2008-06/native-classes/CBrowserViewExternal.cpp": "5e16cb7f18e6eba8d0419578a3c0e8e96b8b31eaf9d424b0d155573ae1ae5785",
     "rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp": "480f82db9a83e310c37fba6666815b7cd209569574ac3ae01bd336d3553b6ef1",
     "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp": "3576e9c32fb8dc284eb190cf9a3e1b348af8d68c5d30e58c8b0b512b68e010b3",
@@ -642,6 +642,202 @@
         "?AfxThrowOleException@@YGXJ@Z": "mfc90.dll!?AfxThrowOleException@@YGXJ@Z"
       },
       "local_eh": []
+    },
+    {
+      "address": "0040f940",
+      "symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+      "size": 28,
+      "exact": true,
+      "verified_targets": {
+        "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B": "0x80d7b0",
+        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040fce0",
+      "symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+      "size": 33,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040f870",
+      "symbol": "?Next@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJKPAPAUIConnectionPoint@@PAK@Z",
+      "size": 208,
+      "exact": true,
+      "verified_targets": {
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040f830",
+      "symbol": "?Skip@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJK@Z",
+      "size": 58,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040f820",
+      "symbol": "?Reset@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJXZ",
+      "size": 15,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00410670",
+      "symbol": "?Clone@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+      "size": 193,
+      "exact": true,
+      "verified_targets": {
+        "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z": "0x40fe50",
+        "?Init@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@QAEJPAPAUIConnectionPoint@@0PAUIUnknown@@W4CComEnumFlags@2@@Z": "0x40f570",
+        "__GUID_b196b285_bab4_101a_b69c_00aa00341d07": "0x80d7c8",
+        "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B": "0x80d7b0",
+        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040f960",
+      "symbol": "??_G?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+      "size": 58,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@6B@": "0x80d790 (RTTI .?AV?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@, offset 0x0)",
+        "??1?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAE@XZ": "0x40f440",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [],
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      },
+      "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
+    },
+    {
+      "address": "0040fdf0",
+      "symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+      "size": 28,
+      "exact": true,
+      "verified_targets": {
+        "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B": "0x80d3c8",
+        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040fd10",
+      "symbol": "?Next@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJKPAUtagCONNECTDATA@@PAK@Z",
+      "size": 216,
+      "exact": true,
+      "verified_targets": {
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040fca0",
+      "symbol": "?Skip@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJK@Z",
+      "size": 58,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00410740",
+      "symbol": "?Clone@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z",
+      "size": 193,
+      "exact": true,
+      "verified_targets": {
+        "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z": "0x40ff20",
+        "?Init@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@QAEJPAUtagCONNECTDATA@@0PAUIUnknown@@W4CComEnumFlags@2@@Z": "0x40ef00",
+        "__GUID_b196b287_bab4_101a_b69c_00aa00341d07": "0x80d3e0",
+        "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B": "0x80d3c8",
+        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040fe10",
+      "symbol": "??_G?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+      "size": 58,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@6B@": "0x80d7f0 (RTTI .?AV?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@, offset 0x0)",
+        "??1?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAE@XZ": "0x40ec90",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [],
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      },
+      "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
+    },
+    {
+      "address": "0040fe50",
+      "symbol": "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+      "size": 193,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@6B@": "0x80d790 (RTTI .?AV?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@, offset 0x0)",
+        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ"
+      },
+      "local_eh": [
+        "$LN50",
+        "__ehhandler$?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z"
+      ],
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      },
+      "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
+    },
+    {
+      "address": "0040ff20",
+      "symbol": "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+      "size": 193,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@6B@": "0x80d7f0 (RTTI .?AV?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@, offset 0x0)",
+        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ"
+      },
+      "local_eh": [
+        "$LN50",
+        "__ehhandler$?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z"
+      ],
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      },
+      "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
+    },
+    {
+      "address": "0040f440",
+      "symbol": "??1?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAE@XZ",
+      "size": 126,
+      "exact": true,
+      "verified_targets": {
+        "??_V@YAXPAX@Z": "mfc90.dll!??_V@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "0040ec90",
+      "symbol": "??1?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAE@XZ",
+      "size": 126,
+      "exact": true,
+      "verified_targets": {
+        "??_V@YAXPAX@Z": "mfc90.dll!??_V@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAE@XZ"
+      ]
     }
   ],
   "method_labels": {
@@ -688,7 +884,23 @@
     "00401150": "support body called by the bound bodies (not a vtable slot)",
     "0040f570": "support body called by the bound bodies (not a vtable slot)",
     "0040ef00": "support body called by the bound bodies (not a vtable slot)",
-    "00401000": "support body called by the bound bodies (not a vtable slot)"
+    "00401000": "support body called by the bound bodies (not a vtable slot)",
+    "0040f940": "new: enumerator template slot (CComObject<CComEnum> table 0080d790)",
+    "0040fce0": "new: enumerator template slot (CComObject<CComEnum> table 0080d790)",
+    "0040f870": "new: enumerator template slot (CComObject<CComEnum> table 0080d790)",
+    "0040f830": "new: enumerator template slot (CComObject<CComEnum> table 0080d790)",
+    "0040f820": "new: enumerator template slot (CComObject<CComEnum> table 0080d790)",
+    "00410670": "new: enumerator template slot (CComObject<CComEnum> table 0080d790)",
+    "0040f960": "new: enumerator template slot (CComObject<CComEnum> table 0080d790)",
+    "0040fdf0": "new: enumerator template slot (CComObject<CComEnum> table 0080d7f0)",
+    "0040fd10": "new: enumerator template slot (CComObject<CComEnum> table 0080d7f0)",
+    "0040fca0": "new: enumerator template slot (CComObject<CComEnum> table 0080d7f0)",
+    "00410740": "new: enumerator template slot (CComObject<CComEnum> table 0080d7f0)",
+    "0040fe10": "new: enumerator template slot (CComObject<CComEnum> table 0080d7f0)",
+    "0040fe50": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)",
+    "0040ff20": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)",
+    "0040f440": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)",
+    "0040ec90": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)"
   },
   "layout": {
     "sizeof_ATL_CComObjectNoLock": "0x20 (assert) = operator new(0x20) in creator 0040fbf0",
@@ -1094,6 +1306,7 @@
     "_IID_IBrowserViewExternal": "008164d8: e2ece10d-9997-414b-b40b-0928b8f3cadb (equals the header __declspec(uuid))",
     "_entries(COM map)": "0080d64c: IBrowserViewExternal+0x14, IDispatch+0x14, ISupportErrorInfo+0, IConnectionPointContainer+4, all simple entries, terminator",
     "CComEnum<IEnumConnections>::_entries": "0080d3c8: {&IID_IEnumConnections 0080d3e0 (bytes verified), offset 0, simple entry}, terminator",
+    "CComEnum<IEnumConnectionPoints>::_entries": "0080d7b0: {&IID_IEnumConnectionPoints 0080d7c8 (bytes verified), offset 0, simple entry}, terminator",
     "_tih": "0092b744: CComTypeInfoHolder{pguid=IID_IBrowserViewExternal, plibid=008164e8, 1.0}",
     "GetConnMap statics": "0096cbc8 entries (2 dwords) + 0096cbd0 init guard: both in the zero-initialised tail of .data"
   },
@@ -1134,6 +1347,269 @@
       "GetApp 00410fe0"
     ],
     "open": []
+  },
+  "enum_template_proof": {
+    "status": "PASS",
+    "kind": "authentic ATL9 CComObject<CComEnum<..., CComSingleThreadModel>> template instantiations (no wrapper fields, no vendor header edit)",
+    "tables": {
+      "0080d790": {
+        "interface": "IEnumConnectionPoints",
+        "coff_vtable_symbol": "??_7?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@6B@",
+        "rtti": ".?AV?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@",
+        "subobject_offset": 0,
+        "locator": "0x87b904",
+        "chain": [
+          ".?AV?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AUIEnumConnectionPoints@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AUIUnknown@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@ mdisp=24 pdisp=-1 vdisp=0",
+          ".?AVCComObjectRootBase@ATL@@ mdisp=24 pdisp=-1 vdisp=0"
+        ],
+        "slots": 8,
+        "slot_words_all_in_text": true,
+        "word_after_table": "0080d7c8",
+        "word_after_table_is_com_map": true,
+        "com_map": {
+          "address": "0080d7b0",
+          "emitted_symbol": "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B",
+          "iid_symbol": "__GUID_b196b285_bab4_101a_b69c_00aa00341d07",
+          "iid_address": "0080d7c8",
+          "result": "emitted {piid(relocated), 0, simple} + terminator equal the original records; IID bytes equal the GUID in the symbol name"
+        },
+        "slot_list": [
+          {
+            "slot": 0,
+            "original": "0040f940",
+            "emitted_symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z"
+          },
+          {
+            "slot": 1,
+            "original": "0040f720",
+            "emitted_symbol": "?AddRef@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ"
+          },
+          {
+            "slot": 2,
+            "original": "0040fce0",
+            "emitted_symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ"
+          },
+          {
+            "slot": 3,
+            "original": "0040f870",
+            "emitted_symbol": "?Next@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJKPAPAUIConnectionPoint@@PAK@Z"
+          },
+          {
+            "slot": 4,
+            "original": "0040f830",
+            "emitted_symbol": "?Skip@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJK@Z"
+          },
+          {
+            "slot": 5,
+            "original": "0040f820",
+            "emitted_symbol": "?Reset@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJXZ"
+          },
+          {
+            "slot": 6,
+            "original": "00410670",
+            "emitted_symbol": "?Clone@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z"
+          },
+          {
+            "slot": 7,
+            "original": "0040f960",
+            "emitted_symbol": "??_E?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z"
+          }
+        ]
+      },
+      "0080d7f0": {
+        "interface": "IEnumConnections",
+        "coff_vtable_symbol": "??_7?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@6B@",
+        "rtti": ".?AV?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@",
+        "subobject_offset": 0,
+        "locator": "0x87ba74",
+        "chain": [
+          ".?AV?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AUIEnumConnections@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AUIUnknown@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@ mdisp=24 pdisp=-1 vdisp=0",
+          ".?AVCComObjectRootBase@ATL@@ mdisp=24 pdisp=-1 vdisp=0"
+        ],
+        "slots": 8,
+        "slot_words_all_in_text": true,
+        "word_after_table": "0087bb90",
+        "word_after_table_is_com_map": false,
+        "com_map": {
+          "address": "0080d3c8",
+          "emitted_symbol": "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B",
+          "iid_symbol": "__GUID_b196b287_bab4_101a_b69c_00aa00341d07",
+          "iid_address": "0080d3e0",
+          "result": "emitted {piid(relocated), 0, simple} + terminator equal the original records; IID bytes equal the GUID in the symbol name"
+        },
+        "slot_list": [
+          {
+            "slot": 0,
+            "original": "0040fdf0",
+            "emitted_symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z"
+          },
+          {
+            "slot": 1,
+            "original": "0040f720",
+            "emitted_symbol": "?AddRef@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ"
+          },
+          {
+            "slot": 2,
+            "original": "0040fce0",
+            "emitted_symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ"
+          },
+          {
+            "slot": 3,
+            "original": "0040fd10",
+            "emitted_symbol": "?Next@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJKPAUtagCONNECTDATA@@PAK@Z"
+          },
+          {
+            "slot": 4,
+            "original": "0040fca0",
+            "emitted_symbol": "?Skip@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJK@Z"
+          },
+          {
+            "slot": 5,
+            "original": "0040f820",
+            "emitted_symbol": "?Reset@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJXZ"
+          },
+          {
+            "slot": 6,
+            "original": "00410740",
+            "emitted_symbol": "?Clone@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z"
+          },
+          {
+            "slot": 7,
+            "original": "0040fe10",
+            "emitted_symbol": "??_E?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z"
+          }
+        ]
+      }
+    },
+    "new_unique_address_rows": [
+      {
+        "symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+        "address": "0040f940"
+      },
+      {
+        "symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "address": "0040fce0"
+      },
+      {
+        "symbol": "?Next@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJKPAPAUIConnectionPoint@@PAK@Z",
+        "address": "0040f870"
+      },
+      {
+        "symbol": "?Skip@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJK@Z",
+        "address": "0040f830"
+      },
+      {
+        "symbol": "?Reset@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJXZ",
+        "address": "0040f820"
+      },
+      {
+        "symbol": "?Clone@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+        "address": "00410670"
+      },
+      {
+        "symbol": "??_G?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+        "address": "0040f960"
+      },
+      {
+        "symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+        "address": "0040fdf0"
+      },
+      {
+        "symbol": "?Next@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJKPAUtagCONNECTDATA@@PAK@Z",
+        "address": "0040fd10"
+      },
+      {
+        "symbol": "?Skip@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJK@Z",
+        "address": "0040fca0"
+      },
+      {
+        "symbol": "?Clone@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z",
+        "address": "00410740"
+      },
+      {
+        "symbol": "??_G?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+        "address": "0040fe10"
+      }
+    ],
+    "new_support_rows": [
+      {
+        "symbol": "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+        "address": "0040fe50"
+      },
+      {
+        "symbol": "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+        "address": "0040ff20"
+      },
+      {
+        "symbol": "??1?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAE@XZ",
+        "address": "0040f440"
+      },
+      {
+        "symbol": "??1?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAE@XZ",
+        "address": "0040ec90"
+      }
+    ],
+    "alias_rows_reused_address": [
+      {
+        "symbol": "?AddRef@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "address": "0040f720",
+        "size": 13,
+        "exact": true,
+        "reused_address_of": "?AddRef@?$CComObjectNoLock@VCBrowserViewExternal@@@ATL@@UAGKXZ",
+        "verified_targets": {},
+        "unproven_targets": {}
+      },
+      {
+        "symbol": "?AddRef@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "address": "0040f720",
+        "size": 13,
+        "exact": true,
+        "reused_address_of": "?AddRef@?$CComObjectNoLock@VCBrowserViewExternal@@@ATL@@UAGKXZ",
+        "verified_targets": {},
+        "unproven_targets": {}
+      },
+      {
+        "symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "address": "0040fce0",
+        "size": 33,
+        "exact": true,
+        "reused_address_of": "?Release@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "verified_targets": {},
+        "unproven_targets": {}
+      },
+      {
+        "symbol": "?Reset@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJXZ",
+        "address": "0040f820",
+        "size": 15,
+        "exact": true,
+        "reused_address_of": "?Reset@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJXZ",
+        "verified_targets": {},
+        "unproven_targets": {}
+      }
+    ],
+    "counts": {
+      "slots_total": 16,
+      "new_unique_slot_addresses": 12,
+      "alias_slots_at_reused_addresses": 4,
+      "new_support_addresses": 4,
+      "new_unique_addresses_total": 16
+    },
+    "reuse_hash_pins": {
+      "AtlInternalQueryInterface 00402280": "library_query_interface_proof (MFC wincore RTM 21022)",
+      "AtlThrowImpl 00401000": "atlexcept.h row in methods"
+    },
+    "unproven_targets": "ATL::_pAtlModule 0096c268 (CComObject deleting destructors and CreateInstance); no stack-verify or alloca target in these bodies; ATL module state, CRT and operator-delete bodies are import identities only",
+    "not_claimed": "class remains PARTIAL and inactive; library/static/linkage gaps retained; a byte-exact row with unproven targets is not full acceptance"
   },
   "open_vtable_slots": [],
   "undefined_symbols_needed_by_object": [
@@ -1191,8 +1667,8 @@
   "open": {
     "GetApp_00410fe0": "exact object row; ole32 CoCreateInstance, CString and AFX state-guard import identities verified; format string and typed GUID data verified; helper 00429330 body exact from WorkspaceSiteError.cpp. Its further callees and GUID_NULL remain open as recorded in helper_rows; import identity does not claim an imported implementation body was reconstructed",
     "guid_definitions": "IID_IBrowserViewExternal, LIBID_RobloxLib, CLSID_BrowserViewExternal now defined once in native-classes/CBrowserViewExternalGuids.cpp (separate unit: defined in the class unit they constant-fold InterfaceSupportsErrorInfo to 76 bytes vs 78). LIBID_RobloxLib is shared logically with CContent/CWorkspace headers (declared C++-linkage there): linkage identity not reconciled, owners not edited",
-    "Enum_bodies": "EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their slot bodies (Next/Skip/Clone/QI/deleting destructor of the two CComObject<CComEnum> templates) are NOT recovered rows; ATL helper targets AtlInternalQueryInterface 00402280, AtlThrowImpl 00401000, _AtlVerifyStackAvailable 00402610 (emitted 156 vs 93), __alloca_probe 006a1520 and _pAtlModule remain relocation operands only",
+    "Enum_bodies": "EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their 16 slot bodies (QI/AddRef/Release/Next/Skip/Reset/Clone/deleting destructor) and the four support bodies (CreateInstance x2, ~CComEnumImpl x2) are masked-exact rows: see enum_template_proof. Still open: _pAtlModule 0096c268 as a relocation operand (also in 004100a0/004104b0), _AtlVerifyStackAvailable 00402610 (emitted 156 vs 93) and __alloca_probe 006a1520 (004100a0, 00404a80)",
     "constructor_destructor": "standalone constructor/destructor bodies are inlined into the creator and the deleting destructor and are not rows",
-    "scope": "source/object proof only; partial class (ATL/library target proofs and the enumerator template slot bodies open); no server credit, no selection, no build/runtime claim"
+    "scope": "source/object proof only; partial class (ATL module/stack/alloca/static targets open); no server credit, no selection, no build/runtime claim"
   }
 }
