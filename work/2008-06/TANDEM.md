@@ -632,3 +632,10 @@ affected by anything on the P6 branch.
   - Proposal: reflection signal.h. The 2008 SignalDesc::connect takes a third `int group` argument (004a3340, 004d8390; callers pass 10). It is needed by Seat::onServiceProvider 0063d0d0, onEvent_seatTouched 0063cf30 and SpawnLocation::onServiceProvider 005d37d0.
   - Proposal: native humanoid/Humanoid.h. modelIsCharacter 005d9a20, getTorso 005d8b10, setSit 005dc2b0, and event_Seated (0097a558, initializer 007f6950).
 
+
+- 2026-11-04 Claude (fork, lease RBX::Flag FlagStand): native-headers/v8datamodel/Flag.h and FlagStand.h, native-classes/Flag.cpp and FlagStand.cpp. Inactive. FlagStandService.h/.cpp were reused unchanged. 46 distinct exact addresses (receipt flag-family-working.json). Not counted:
+  - 9 FlagStand rows blocked by the PartInstance size;
+  - 39 Flag rows that are exact only in a pending build against Tool.h/Hopper.h copies.
+  - Proposal: a native v8datamodel/Tool.h (and BackpackItem/Hopper) with the 2008 const-char-array DescribedCreatable (`extern const char sTool[]`, `sBackpackItem[]`). Tool is 0x268 non-virtual with a vbptr at +0x1c0. Ctor 00600240, dtor 005fe4b0. With it, NATIVE_FLAG_PENDING can be lifted (30 more Flag addresses).
+  - Proposal: native-headers/v8datamodel/PartInstance.h. (1) The non-virtual size is 0x3e8: FlagStand and Seat fields start at +0x3e8 (the same evidence as SpawnLocation). (2) Declare the `virtual void setName(const std::string&)` override 00598c20, which is in vtable slot 1. (3) prop_Color is at 0097610c.
+
