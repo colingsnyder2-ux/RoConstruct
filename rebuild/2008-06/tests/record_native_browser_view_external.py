@@ -1,15 +1,16 @@
-"""Partial proof for the inactive native CBrowserViewExternal (ATL COM class, declaration-only header): layout test
-(sizeof / offsetof compile assertions), the one exact body so far (IBrowserViewExternal::get_IsIDE 00410f90) with every
-call target, and the original RTTI of vtable 0080d778 (CComObjectNoLock<CBrowserViewExternal>).
+"""Partial proof for the inactive native CBrowserViewExternal (ATL COM class): layout test
+(sizeof / offsetof compile assertions), both declared COM methods, creator, ATL template/helper bodies,
+and the original RTTI of vtable 0080d778 (CComObjectNoLock<CBrowserViewExternal>).
 The creator 0040fbf0 (authentic ATL9 construction sequence) and the four vtables' emitted ATL bodies are bound slot by slot.
-Both declared COM methods and the creator are recovered. Enum bodies and several library/data targets remain open;
+Both declared COM methods, the creator and enum bodies are recovered. Several library/data targets remain open;
 the receipt separates masked-exact bodies from verified relocation identities and transitive body proofs.
-Writes work/2008-06/shared-layouts/browser-view-external-working.json (status PARTIAL when the getter and layout pass);
+Writes work/2008-06/shared-layouts/browser-view-external-working.json (status PARTIAL when all recorded checks pass);
 on any failure writes a FAIL receipt under work/cbrowserviewexternal-guided-20261104/ and exits non-zero.
 
 Profile: document-swap flags with this checkout's include roots; MSVC 15.00.21022 (VS2008 RTM). Original: the registered
 clients/2008-06/Roblox.exe checked against clients.json. Scope: source/object proof only.
 """
+import hashlib
 import json
 import re
 import uuid
@@ -193,7 +194,10 @@ IID_IBVE = 0x8164d8                     # _IID_IBrowserViewExternal (no definiti
 GUID_SYMBOLS = {'__GUID_dd754d30_321a_45a2_a40c_75783afabfab': 0x80d3a8,
                 '__GUID_b196b284_bab4_101a_b69c_00aa00341d07': 0x80d3b8,
                 '__GUID_b196b286_bab4_101a_b69c_00aa00341d07': 0x80d3f0,
-                '__GUID_b196b285_bab4_101a_b69c_00aa00341d07': 0x80d7c8, '__GUID_b196b287_bab4_101a_b69c_00aa00341d07': 0x80d3e0}
+                '__GUID_b196b285_bab4_101a_b69c_00aa00341d07': 0x80d7c8, '__GUID_b196b287_bab4_101a_b69c_00aa00341d07': 0x80d3e0,
+                # SDK __uuidof() copies read by the typeinfo helpers (bytes checked here; SDK declarations in prove_typeinfo_guids)
+                '__GUID_00020412_0000_0000_c000_000000000046': 0x80b130, '__GUID_00020401_0000_0000_c000_000000000046': 0x80b1f0,
+                '__GUID_00000000_0000_0000_c000_000000000046': 0x80b154}
 COM_MAP, TIH, CONN_ENTRIES, CONN_GUARD = 0x80d64c, 0x92b744, 0x96cbc8, 0x96cbd0
 INTERFACE_IIDS = {'IDispatch': uuid.UUID('00020400-0000-0000-c000-000000000046').bytes_le,
                   'ISupportErrorInfo': uuid.UUID('df0b3d60-548f-101b-8e65-08002b2bd119').bytes_le,
@@ -286,6 +290,29 @@ for prefix, tag, address in ENUM_SUPPORT:
         enum_support_pairs.append((hits[0], address))
     else:
         failures.append('enum support %08x: %d emitted symbols' % (address, len(hits)))
+# ATL typeinfo helper bodies that GetTI 00404a80 calls (and that the helpers call). They are already emitted, unchanged, by the
+# authentic ATL9 header templates in this object: no provider, source or flag is added. Each is bound by exact masked bytes;
+# every relocation operand must then resolve (import, row, GUID data, CRT member proof) or stay an explicit unproven target.
+TYPEINFO_HELPERS = [
+    ('?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z', 0x401760),
+    ('??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ', 0x420bb0),
+    ('??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z', 0x403af0),
+    ('?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z', 0x402f00),
+    ('?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z', 0x403da0),
+    ('?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z', 0x402d30),
+    # callees of the helpers above
+    ('??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ', 0x401020),
+    ('??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ', 0x402370),
+    ('?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z', 0x402fb0)]
+typeinfo_helper_pairs = []
+for symbol, address in TYPEINFO_HELPERS:
+    if symbol in present and address not in {a for s, a in METHODS}:
+        METHODS.append((symbol, address))
+        typeinfo_helper_pairs.append((symbol, address))
+    else:
+        failures.append('typeinfo helper %08x: not emitted or already a row' % address)
+# 004038f0 is emitted too (authentic atlbase.inl AtlModuleAddTermFunc) but its bytes are NOT exact: it is never a row.
+ATL_ADD_TERM = '?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z'
 # Reuse the authentic vendor replay, explicitly selecting RTM even though the stored mining winner uses SP1.
 # Both functions are in this object; verify the only call relocation against the separately exact helper body.
 LIBRARY_METHODS = [
@@ -336,6 +363,9 @@ ASSERTED['?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A'] = 0x97f2a8   # ATL global 
 ASSERTED['?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z'] = 0x402610   # full 156-byte span matches (masked); recorded extent 93 is stale and NOT applied: see full_stack_owner_pending_extent
 ASSERTED['__alloca_probe'] = 0x6a1520   # CRT helper: relocation operand in rows; archive member bytes proven separately (crt_stack_probe_proof)
 ASSERTED['__alloca_probe_16'] = 0x6a1560   # CRT helper: relocation operand in rows; archive member bytes proven separately (crt_stack_probe_proof)
+ASSERTED['??_L@YGXPAXIHP6EX0@Z1@Z'] = 0x6a1598   # CRT EH vector constructor iterator: archive member proven separately (crt_eh_vector_proof)
+ASSERTED['??_M@YGXPAXIHP6EX0@Z@Z'] = 0x6a165b    # CRT EH vector destructor iterator: archive member proven separately (crt_eh_vector_proof)
+ASSERTED[ATL_ADD_TERM] = 0x4038f0   # emitted authentic atlbase.inl body is NOT byte exact (typeinfo_helper_proof.atl_module_add_term_func): address is a relocation operand only
 
 
 def observed_targets(symbol, address):
@@ -769,18 +799,136 @@ lifetime = check('creator lifetime', creator_lifetime)
 stack_owner = check('full stack owner 00402610 (156 bytes)', prove_stack_owner)
 crt_stack_probes = check('CRT stack probe archive members', prove_crt_stack_probes)
 
+
+def prove_crt_eh_vector():
+    """??_L (006a1598) and ??_M (006a165b), called by the typeinfo helpers LoadNameCache / Cleanup: genuine RTM 21022 CRT archive members
+    ehvecctr.obj / ehvecdtr.obj (recipe msvc-crt), compared to the original bytes with the member's own relocations masked."""
+    import hashlib
+    from roc import libs, setup
+    compiler = setup.compilers()[21022]
+    folder = libs._archive_dir(libs.RECIPES['msvc-crt'], compiler)
+    wanted = {'ehvecctr.obj': ('??_L@YGXPAXIHP6EX0@Z1@Z', 0x6a1598), 'ehvecdtr.obj': ('??_M@YGXPAXIHP6EX0@Z@Z', 0x6a165b)}
+    result, archives = {}, {}
+    for library in libs.RECIPES['msvc-crt']['files']:
+        path = folder / library
+        archives[library] = {'path': str(path), 'sha256': sha(path)}
+        for member, data in libs.archive_members(path):
+            leaf = member.replace(chr(92), '/').split('/')[-1].lower()
+            if leaf not in wanted:
+                continue
+            symbol, address = wanted[leaf]
+            msections, msymbols, mdefinitions, _ = match._coff_data_index(data)
+            need(symbol in mdefinitions and mdefinitions[symbol][0] == 0, (library, leaf, 'symbol not at member offset 0'))
+            table = msections[mdefinitions[symbol][1]]
+            body = data[table[4]:table[4] + table[3]]
+            relocs = [struct.unpack_from('<IIH', data, table[5] + 10 * k) for k in range(table[7])]
+            unmasked = original.data(address, len(body))
+            mine, ref = bytearray(body), bytearray(unmasked)
+            for off, _index, _kind in relocs:
+                mine[off:off + 4] = ref[off:off + 4] = b'\0\0\0\0'
+            need(bytes(mine) == bytes(ref), (library, leaf, 'masked bytes differ'))
+            targets = {}
+            for off, index, kind in relocs:
+                name = msymbols[index][0]
+                if kind == 20:
+                    targets[name] = '%08x' % ((address + off + 4 + struct.unpack_from('<i', unmasked, off)[0]) & 0xffffffff)
+                else:
+                    targets[name] = '%08x (relocation operand, not verified here)' % struct.unpack_from('<I', unmasked, off)[0]
+            inventory = len(match.target('2008-06', '%08x' % address)[0])
+            result['%s!%s' % (library, leaf)] = {
+                'symbol': symbol, 'original': '%08x' % address, 'member_text_size': len(body), 'inventory_extent': inventory,
+                'inventory_extent_stale': inventory != len(body), 'masked_equal_over_full_member': True,
+                'relocation_operands_in_original': targets, 'member': member, 'member_sha256': hashlib.sha256(data).hexdigest(),
+                'text_sha256': hashlib.sha256(body).hexdigest(), 'archive_sha256': archives[library]['sha256']}
+    need(len(result) == 4, sorted(result))
+    return {'status': 'PASS', 'kind': 'genuine compiler runtime archive members (recipe msvc-crt); no source, no assembler, no byte blob provider',
+            'compiler': str(compiler), 'compiler_sha256': sha(compiler), 'archives': archives, 'members': result,
+            'scope': 'runtime/library byte identity only; not a native C++ row and not counted in methods. __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001 and '
+                     '__ArrayUnwind 006a15fd (jump targets of these members) and the members\' __sehtable$ scope tables are relocation operands here and are NOT proven',
+            'extent_note': 'inventory extents (77 / 75 bytes) are stale prefixes of the 101 / 99 byte members; metadata not changed'}
+
+
+crt_eh_vector = check('CRT EH vector archive members', prove_crt_eh_vector)
+
+
+def section_name(value):
+    return (value.decode() if isinstance(value, bytes) else str(value)).rstrip(chr(0))
+
+
+def prove_typeinfo_guids():
+    """SDK declarations (from the preprocessed class unit, genuine Windows SDK headers) for the GUID data the typeinfo helpers read,
+    plus the emitted COFF bytes against the original bytes. GUID_NULL: SDK declaration and the original read-only all-zero bytes."""
+    text = (OUT / 'CBrowserViewExternal.i').read_text(errors='replace')
+
+    def declaration(pattern):
+        m = re.search(pattern, text, re.I)
+        need(m, pattern)
+        mark = text.rfind(chr(10) + '#line ', 0, m.start())
+        path = re.search(r'"(.*)"', text[mark + 1:text.index(chr(10), mark + 1)]).group(1).replace(chr(92) * 2, chr(92))
+        return Path(path)
+
+    facts = {}
+    for iface, guid, symbol, address in (('ITypeInfo2', '00020412-0000-0000-C000-000000000046', '__GUID_00020412_0000_0000_c000_000000000046', 0x80b130),
+                                         ('ITypeInfo', '00020401-0000-0000-C000-000000000046', '__GUID_00020401_0000_0000_c000_000000000046', 0x80b1f0),
+                                         ('IUnknown', '00000000-0000-0000-C000-000000000046', '__GUID_00000000_0000_0000_c000_000000000046', 0x80b154)):
+        header = declaration(r'uuid\("%s"\)\)\s*__declspec\(novtable\)\s*%s\b' % (guid, iface))
+        start, section = definitions[symbol]
+        emitted = raw[sections[section][4] + start:][:16]
+        need(emitted == original.data(address, 16) == uuid.UUID(guid).bytes_le, (symbol, 'bytes'))
+        facts[symbol] = {'interface': iface, 'sdk_declaration': '__declspec(uuid("%s")) %s' % (guid, iface), 'sdk_header': str(header),
+                         'sdk_header_sha256': sha(header) if header.exists() else None, 'original_address': '%08x' % address,
+                         'emitted_coff_section': section_name(sections[section][0]), 'result': 'SDK __uuidof value, emitted 16 bytes and the original 16 bytes are equal'}
+    header = declaration(r'extern const IID GUID_NULL;')
+    section = next(s for s in original.pe.sections if original.image + s.VirtualAddress <= 0x8501ec < original.image + s.VirtualAddress + s.Misc_VirtualSize)
+    need(original.data(0x8501ec, 16) == bytes(16) and not section.Characteristics & 0x80000000, 'GUID_NULL original bytes / section')
+    null = {'symbol': '_GUID_NULL', 'original_address': '008501ec', 'sdk_declaration': 'extern const IID GUID_NULL;', 'sdk_header': str(header),
+            'sdk_header_sha256': sha(header) if header.exists() else None, 'original_bytes': '16 x 00',
+            'original_section': section.Name.rstrip(b'\0').decode(), 'original_section_readonly': True,
+            'result': 'typed SDK GUID_NULL declaration, original storage is 16 zero bytes in a read-only section',
+            'not_claimed': 'no runtime claim about zero-valued globals; helper callees 00427c20 and 004290b0 are NOT proven by this data check',
+            'unit_note': 'declaration read from the class unit preprocess; WorkspaceSiteError.cpp includes windows.h (cguid.h via ole2.h) from the same SDK tree'}
+    return {'status': 'PASS', 'guids': facts, 'guid_null': null}
+
+
+typeinfo_guids = check('typeinfo SDK GUID data', prove_typeinfo_guids)
+
+
+def describe_add_term_func():
+    """004038f0 AtlModuleAddTermFunc: emitted by this object from the authentic atlbase.inl, compared with the original; recorded either way."""
+    body, refs = dict((n, (b, r)) for n, b, r in match.coff_functions(raw))[ATL_ADD_TERM]
+    target, target_refs, _ = match.target('2008-06', '004038f0')
+    exact = bool(match.exact_match(target, target_refs, body, refs))
+    masked = set()
+    for off in set(refs) | set(target_refs):
+        masked.update(range(off, off + 4))
+    diff = [i for i in range(min(len(body), len(target))) if i not in masked and body[i] != target[i]]
+    first = diff[0] if diff else None
+    return {'address': '004038f0', 'symbol': ATL_ADD_TERM, 'exact': exact, 'emitted_size': len(body), 'original_size': len(target),
+            'emitted_relocation_offsets': sorted(refs), 'original_relocation_offsets': sorted(target_refs),
+            'non_relocation_difference_count': len(diff), 'first_non_relocation_difference': first,
+            'emitted_window': body[first:first + 8].hex() if first is not None else None, 'original_window': target[first:first + 8].hex() if first is not None else None,
+            'emitted_text_sha256': hashlib.sha256(body).hexdigest(), 'original_sha256': hashlib.sha256(target).hexdigest(),
+            'status': 'exact (unexpected)' if exact else 'NOT EXACT: authentic atlbase.inl body (CComCritSecLock local) differs from the original; open, not a row, no server credit',
+            'stored_analog': 'src/2008-06/004038f0.cpp (server cache 100%, library roc_unit_38a66487c88049f6.cpp, hand-written explicit Lock/Unlock, no CComCritSecLock): '
+                             'an analog of unverified freshness, NOT adopted, NOT recompiled here, not authentic header text'}
+
+
+add_term_func = check('AtlModuleAddTermFunc 004038f0 description', describe_add_term_func)
+
 # Runtime archive identity is proved separately from application C++ rows. A proved full owner whose inventory
 # extent is still stale remains pending; it is not bound as an accepted exact target.
-runtime_targets = {'__alloca_probe': 0x6a1520, '__alloca_probe_16': 0x6a1560}
+runtime_targets = {'__alloca_probe': (0x6a1520, crt_stack_probes, 'crt_stack_probe_proof: authentic archive bytes, entry aliases and jump targets verified'),
+                   '__alloca_probe_16': (0x6a1560, crt_stack_probes, 'crt_stack_probe_proof: authentic archive bytes, entry aliases and jump targets verified'),
+                   '??_L@YGXPAXIHP6EX0@Z1@Z': (0x6a1598, crt_eh_vector, 'crt_eh_vector_proof: authentic ehvecctr.obj member, full 101-byte masked equality (its SEH/ArrayUnwind targets not proven)'),
+                   '??_M@YGXPAXIHP6EX0@Z@Z': (0x6a165b, crt_eh_vector, 'crt_eh_vector_proof: authentic ehvecdtr.obj member, full 99-byte masked equality (its SEH/ArrayUnwind targets not proven)')}
 for row in rows + alias_rows:
     unresolved = row.get('unproven_targets', {})
-    if crt_stack_probes and crt_stack_probes['status'] == 'PASS':
-        for symbol, address in runtime_targets.items():
-            if symbol in unresolved:
-                value = unresolved.pop(symbol)
-                need(value == hex(address), (symbol, value, hex(address)))
-                row['verified_targets'][symbol] = value
-                row.setdefault('runtime_target_evidence', {})[symbol] = 'crt_stack_probe_proof: authentic archive bytes, entry aliases and jump targets verified'
+    for symbol, (address, proof, evidence) in runtime_targets.items():
+        if proof and proof['status'] == 'PASS' and symbol in unresolved:
+            value = unresolved.pop(symbol)
+            need(value == hex(address), (symbol, value, hex(address)))
+            row['verified_targets'][symbol] = value
+            row.setdefault('runtime_target_evidence', {})[symbol] = evidence
     if stack_owner and STACK in unresolved:
         row.setdefault('pending_extent_targets', {})[STACK] = {
             'address': unresolved.pop(STACK), 'recorded_size': STACK_RECORDED, 'proposed_size': STACK_FULL,
@@ -789,9 +937,36 @@ for row in rows + alias_rows:
     if not unresolved:
         row.pop('unproven_targets', None)
         row.pop('unproven_note', None)
-if crt_stack_probes and crt_stack_probes['status'] == 'PASS':
-    for symbol in runtime_targets:
+for symbol, (address, proof, evidence) in runtime_targets.items():
+    if proof and proof['status'] == 'PASS':
         ASSERTED.pop(symbol, None)
+
+# The vector-iterator archive symbols are identified, but their SEH scope/callees and larger logical extents
+# are not fully validated. Keep those implementation dependencies separate from a completed CRT target proof.
+vector_runtime_targets = {
+    '??_L@YGXPAXIHP6EX0@Z1@Z': (0x6a1598, 101),
+    '??_M@YGXPAXIHP6EX0@Z@Z': (0x6a165b, 99),
+}
+for row in rows + alias_rows:
+    for symbol, (address, archive_span) in vector_runtime_targets.items():
+        if symbol in row.get('runtime_target_evidence', {}):
+            value = row['verified_targets'].pop(symbol)
+            row.setdefault('pending_runtime_targets', {})[symbol] = {
+                'address': value, 'entry_symbol_identity_proven': True,
+                'recorded_size': len(match.target('2008-06', '%08x' % address)[0]),
+                'archive_masked_span_size': archive_span, 'proof': 'crt_eh_vector_proof',
+                'accepted_exact_function': False,
+                'remaining': 'full extent, SEH scope tables and __SEH_prolog4/__SEH_epilog4/__ArrayUnwind targets'}
+            row['runtime_target_evidence'][symbol] = 'authentic archive entry identity and masked span only; full implementation remains in pending_runtime_targets'
+# GUID_NULL (helper 00429330): typed SDK declaration + original read-only zero bytes. Only that one data target moves to verified.
+if typeinfo_guids and typeinfo_guids['status'] == 'PASS':
+    for row in helper_rows:
+        if '_GUID_NULL' in row.get('unproven_targets', {}):
+            value = row['unproven_targets'].pop('_GUID_NULL')
+            need(value == '0x8501ec', value)
+            row['verified_targets']['_GUID_NULL'] = value
+            row['data_target_evidence'] = {'_GUID_NULL': 'typeinfo_guid_proof.guid_null: typed SDK declaration; original 16 zero bytes in a read-only section'}
+            row['unproven_note'] = 'callee bodies (workspace status reporter 00427c20, ATL AtlReportError 004290b0) remain relocation operands only; GUID_NULL data is verified, which does not prove those callees'
 undefined_all = sorted(n for (n, value, secnum, typ) in symbols.values() if secnum == 0)
 passed = not failures
 sources = {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p)
@@ -809,6 +984,8 @@ for symbol, address in METHODS:
         reuse['%08x' % address] = 'vtable slot also shared by %d dword(s) outside these four tables (folded/shared body)' % elsewhere
     else:
         reuse['%08x' % address] = 'vtable slot used only by these four tables'
+for symbol, address in typeinfo_helper_pairs:
+    reuse['%08x' % address] = 'new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)'
 for symbol, address in enum_new_rows:
     reuse['%08x' % address] = 'new: enumerator template slot (CComObject<CComEnum> table %s)' % ('0080d790' if 'b196b285' in symbol else '0080d7f0')
 for symbol, address in enum_support_pairs:
@@ -835,6 +1012,23 @@ receipt = {
     'table_reference_counts': {'%08x' % k: v for k, v in references.items()},
     'vector_deleting_destructor': 'vtable slot 4 of 0080d778 names the weak external ??_E; the emitted body is ??_G and matches 0040f770',
     'data_facts': data_facts, 'asserted_body_not_exact': verify_stack,
+    'typeinfo_helper_proof': {
+        'status': 'PASS' if typeinfo_guids and crt_eh_vector and not failures else 'FAIL',
+        'kind': 'bodies emitted unchanged by the authentic ATL9 RTM headers of the existing class object; no new provider, source, flag or compile trial',
+        'new_exact_rows': [{'symbol': s, 'address': '%08x' % a} for s, a in typeinfo_helper_pairs],
+        'getti_direct_helpers': [m for m in ('00401760', '00420bb0', '00403af0', '00402f00', '00403da0', '00402d30')],
+        'helper_of_helper_rows': ['00401020', '00402370', '00402fb0'],
+        'aliases_or_library_reused_rows': [],
+        'reuse_note': 'nine additional helper rows for this class; all 56 prior pairs are preserved separately in the regression receipt; no server gain claimed',
+        'atl_module_add_term_func': add_term_func,
+        'remaining_unproven_getti_targets': ['?_pAtlModule@ATL@@3PAVCAtlModule@1@A 0096c268', '?m_libid@CAtlModule@ATL@@2U_GUID@@A 0096c26c', '?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A 0097f2a8'],
+        'remaining_unproven_helper_targets': ['AtlModuleAddTermFunc 004038f0 (AddTermFunc 00403da0 calls it twice; emitted body not exact)',
+                                              'CRT __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001, __ArrayUnwind 006a15fd, and the member __sehtable$ scope tables'],
+        'provenance': {'class_object': 'RTM header tree (tools/libs/mfc-9.0-rtm) with compiler 21022',
+                       'query_interface_library_replay': 'recipe mfc-9.0 source/header tree (tools/libs/mfc-9.0, hashes recorded as SP1-era input) with explicit RTM compiler 21022',
+                       'note': 'compiler build and vendor header revision are separate provenance facts; the library input hashes are the vendor-unit hashes and are never replaced by class RTM header hashes'},
+        'sdk_guid_proof': typeinfo_guids, 'not_claimed': 'unproven ATL module globals stay open; no always-zero/always-LoadRegTypeLib claim; status stays PARTIAL'},
+    'crt_eh_vector_proof': crt_eh_vector,
     'full_stack_owner_pending_extent': stack_owner, 'crt_stack_probe_proof': crt_stack_probes, 'asserted_targets': {k: '%08x' % v for k, v in ASSERTED.items()}, 'failures': failures, 'known_open_bodies': row_failures,
     'thread_model': {'macro': THREAD_MODEL, 'atlbase_h': '_ATL_APARTMENT_THREADED: CComObjectThreadModel=CComSingleThreadModel, CComGlobalsThreadModel=CComMultiThreadModel',
                      'original_proof': 'enumerator vtables 0080d790/0080d7f0 RTTI name CComSingleThreadModel; allocation 0x1c (default multi model emitted 0x38)',
@@ -858,9 +1052,10 @@ receipt = {
     'open_vtable_slots': open_slots,
     'undefined_symbols_needed_by_object': undefined_all,
     'open': {
-        'GetApp_00410fe0': 'exact object row; ole32 CoCreateInstance, CString and AFX state-guard import identities verified; format string and typed GUID data verified; helper 00429330 body exact from WorkspaceSiteError.cpp. Its further callees and GUID_NULL remain open as recorded in helper_rows; import identity does not claim an imported implementation body was reconstructed',
+        'GetApp_00410fe0': 'exact object row; ole32 CoCreateInstance, CString and AFX state-guard import identities verified; format string and typed GUID data verified; helper 00429330 body exact from WorkspaceSiteError.cpp. GUID_NULL data is verified; its further callees remain open as recorded in helper_rows; import identity does not claim an imported implementation body was reconstructed',
         'guid_definitions': 'IID_IBrowserViewExternal, LIBID_RobloxLib, CLSID_BrowserViewExternal now defined once in native-classes/CBrowserViewExternalGuids.cpp (separate unit: defined in the class unit they constant-fold InterfaceSupportsErrorInfo to 76 bytes vs 78). LIBID_RobloxLib is shared logically with CContent/CWorkspace headers (declared C++-linkage there): linkage identity not reconciled, owners not edited',
         'Enum_bodies': 'EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their 16 slot bodies (QI/AddRef/Release/Next/Skip/Reset/Clone/deleting destructor) and the four support bodies (CreateInstance x2, ~CComEnumImpl x2) are masked-exact rows: see enum_template_proof. Still open: _pAtlModule 0096c268 as a relocation operand (also in 004100a0/004104b0). _AtlVerifyStackAvailable 00402610: the full 156-byte owner matches (full_stack_owner_pending_extent) but the 93-byte extent is not accepted by the server, so it is NOT an accepted exact function and not a row. __alloca_probe 006a1520 (004100a0) and __alloca_probe_16 006a1560 (00402610, 00404a80) are proven as genuine CRT archive members (crt_stack_probe_proof), separate from native C++ rows',
+        'typeinfo_helpers': 'GetTI 00404a80 helper bodies 00401760, 00420bb0, 00403af0, 00402f00, 00403da0, 00402d30 (+ callees 00401020, 00402370, 00402fb0) are masked-exact rows from the existing object; SDK ITypeInfo2/ITypeInfo/IUnknown GUID data and CRT ??_L/??_M members verified. Still open: AtlModuleAddTermFunc 004038f0 (emitted body not exact), _pAtlModule, m_libid, _AtlBaseModule, CRT SEH/ArrayUnwind members (see typeinfo_helper_proof)',
         'constructor_destructor': 'standalone constructor/destructor bodies are inlined into the creator and the deleting destructor and are not rows',
         'stack_helper_extent': 'proposal only (local): shared-layouts/browser-view-external-stack-extent.json, server_extent_status not applied; inventory, bounds.json and scores untouched; callers of 00402610 remain pending-boundary (not wrong codegen)',
         'scope': 'source/object proof only; partial class (ATL module/stack/alloca/static targets open); no server credit, no selection, no build/runtime claim'}}
