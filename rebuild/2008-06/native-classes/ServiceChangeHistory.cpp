@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-noinline-shared-destructor /DSERVICE_HISTORY_FIND_ONLY
 #include <boost/thread/once.hpp>
 #include "v8datamodel/ChangeHistoryService.h"
 

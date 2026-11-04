@@ -11,6 +11,7 @@ namespace RBX
 	class ContactManager;
 	class ICameraOwner;
 	class Surface;
+	class Decal;
 	class HitTestFilter;
 	class Workspace;
 	class XmlState;
@@ -31,9 +32,10 @@ namespace RBX
 		PartInstance* getPart(const UIEvent& uiEvent, const HitTestFilter* filter, G3D::Vector3& hitWorld = ignoreVector3);
 		PartInstance* getUnlockedPart(const UIEvent& uiEvent, G3D::Vector3& hitWorld = ignoreVector3);
 		PartInstance* getPartByLocalCharacter(const UIEvent& uiEvent, G3D::Vector3& hitWorld = ignoreVector3);
-		PartInstance* getUnlockedPartByLocalCharacter(const UIEvent&, G3D::Vector3&);
+		PartInstance* getUnlockedPartByLocalCharacter(const UIEvent&, G3D::Vector3& = ignoreVector3);
 		Surface* getSurface(const UIEvent&, PartInstance*&, int&);
 		Surface* getSurface(const UIEvent&);
+		Decal* getDecal(PartInstance*, const UIEvent&);
 
 		virtual MouseCommand* onMouseDown(const UIEvent& uiEvent)
 		{
@@ -90,6 +92,8 @@ namespace RBX
 		}
 
 		void snapshotSelectionPosition(XmlState*);
+		// Recovered distance helper; original method name unproven.
+		float distanceFromCharacter(const G3D::Vector3&) const;
 		bool characterCanReach(const G3D::Vector3& hitPoint) const;
 		MouseCommand(Workspace* workspace);
 	public:
