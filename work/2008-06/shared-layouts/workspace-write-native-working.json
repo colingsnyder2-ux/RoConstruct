@@ -1,0 +1,272 @@
+{
+  "class": "CWorkspace",
+  "status": "PARTIAL",
+  "scope": "inactive native source/object evidence only",
+  "compiler": "MSVC 15.00.21022",
+  "coff_compiler_id": "0x84521e",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "original": "clients/2008-06/Roblox.exe",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_workspace_write_native.py": "4696538c8fe40cf978fccbc4143ee42fa6198d72a84e5d00a5a26eb04cea5e40",
+    "rebuild/2008-06/native-classes/CWorkspaceWrite.cpp": "3248d8830c71f8d107c46a9789cb1fc920a5f75783102197d77df79fb393a468",
+    "rebuild/2008-06/native-classes/CWorkspaceClose.cpp": "11afd6eb4ca6e2d2a2285f21c0e4f2837dba8a98f5ccc1b53a1925955baa1e13",
+    "rebuild/2008-06/native-headers/CWorkspace.h": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+    "rebuild/2008-06/native-headers/CContent.h": "6b87013a7eebdc41ef4a45fc76dede3478f27e6aaa34d1260f91acf1bd8efccb",
+    "rebuild/2008-06/tests/NativeWorkspaceWriteLayout.cpp": "eec67fb0347fb9ac13804a1fbcc6e0c4757a7da7e323a2025ee283944e57ffe1",
+    "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp": "3576e9c32fb8dc284eb190cf9a3e1b348af8d68c5d30e58c8b0b512b68e010b3",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "rebuild/2008-06/native-headers/RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4"
+  },
+  "object_sha256": "bc0b9a3bf564892803fbd937e2830339e748cd3a04db9dc0389d35e694025b4e",
+  "layout_object_sha256": "343f8693fe7440279c6310fe27decd78803109dffd9957d03b493c83e1e7aa43",
+  "helper_object_sha256": "29c4a1acda4ba0d8be76ab08a880981071a98100513e7ae7d02bfd4cfa22e044",
+  "close_object_sha256": "d724c3953662e70bebab3f921b86754888e2aaf0d2d71d4f4b16426349e4e259",
+  "close_profile_sha256": "880ca607c2af1e446e14d71b74e7171b09ad02b1b9f51517f636acf94716b6a6",
+  "close_compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHs-c-",
+    "/MD"
+  ],
+  "methods": [
+    {
+      "address": "0046bd70",
+      "symbol": "?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "size": 600,
+      "exact": true,
+      "verified_targets": {
+        "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "mfc90.dll!?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+        "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": "mfc90.dll!??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z",
+        "??_C@_0BA@DFJFP@?4?2Workspace?4cpp?$AA@": "0x81c850",
+        "?workspaceSiteErrorContext@@3U_GUID@@B": "0x8164f8",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "?AfxDeactivateActCtx@@YGHKK@Z": "mfc90.dll!?AfxDeactivateActCtx@@YGHKK@Z",
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": "0x429330",
+        "?Process@COleException@@SGJPBVCException@@@Z": "mfc90.dll!?Process@COleException@@SGJPBVCException@@@Z",
+        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ",
+        "??1AFX_MAINTAIN_STATE2@@QAE@XZ": "0x4060f0"
+      },
+      "local_eh": [
+        "$LN36",
+        "__ehhandler$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z"
+      ],
+      "unproven_targets": {
+        "?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z": "0x46ac90",
+        "?reportWorkspaceHResult@@YAXHJPBDH@Z": "0x427d80",
+        "?raiseWorkspaceError@@YAXJABU_GUID@@@Z": "0x46ad70",
+        "?writeXmlModel@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": "0x46ab90",
+        "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x46b860",
+        "??1XmlElement@@QAE@XZ": "0x413a70"
+      },
+      "target_evidence": {
+        "??1AFX_MAINTAIN_STATE2@@QAE@XZ": "fresh exact support row from this object",
+        "?workspaceSiteErrorContext@@3U_GUID@@B": "native WorkspaceSiteError.cpp definition: emitted 16 GUID bytes equal original",
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": "fresh exact helper body; its further dependencies remain open"
+      },
+      "local_continuations": [
+        {
+          "symbol": "$LN36",
+          "offset": 533,
+          "address": "0046bfa3"
+        },
+        {
+          "symbol": "$LN36",
+          "offset": 558,
+          "address": "0046bfa3"
+        }
+      ],
+      "pending_eh_metadata": [
+        {
+          "symbol": "__ehhandler$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "address": "007c3abb",
+          "status": "operand only; full funcinfo/catch/unwind graph not verified here"
+        }
+      ]
+    },
+    {
+      "address": "0046bfd0",
+      "symbol": "?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "size": 600,
+      "exact": true,
+      "verified_targets": {
+        "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "mfc90.dll!?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+        "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": "mfc90.dll!??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z",
+        "??_C@_0BA@DFJFP@?4?2Workspace?4cpp?$AA@": "0x81c850",
+        "?workspaceSiteErrorContext@@3U_GUID@@B": "0x8164f8",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "?AfxDeactivateActCtx@@YGHKK@Z": "mfc90.dll!?AfxDeactivateActCtx@@YGHKK@Z",
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": "0x429330",
+        "?Process@COleException@@SGJPBVCException@@@Z": "mfc90.dll!?Process@COleException@@SGJPBVCException@@@Z",
+        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ",
+        "??1AFX_MAINTAIN_STATE2@@QAE@XZ": "0x4060f0"
+      },
+      "local_eh": [
+        "$LN36",
+        "__ehhandler$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z"
+      ],
+      "unproven_targets": {
+        "?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z": "0x46ac90",
+        "?reportWorkspaceHResult@@YAXHJPBDH@Z": "0x427d80",
+        "?raiseWorkspaceError@@YAXJABU_GUID@@@Z": "0x46ad70",
+        "?writeXmlSelection@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": "0x46b750",
+        "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x46b860",
+        "??1XmlElement@@QAE@XZ": "0x413a70"
+      },
+      "target_evidence": {
+        "??1AFX_MAINTAIN_STATE2@@QAE@XZ": "fresh exact support row from this object",
+        "?workspaceSiteErrorContext@@3U_GUID@@B": "native WorkspaceSiteError.cpp definition: emitted 16 GUID bytes equal original",
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": "fresh exact helper body; its further dependencies remain open"
+      },
+      "local_continuations": [
+        {
+          "symbol": "$LN36",
+          "offset": 533,
+          "address": "0046c203"
+        },
+        {
+          "symbol": "$LN36",
+          "offset": 558,
+          "address": "0046c203"
+        }
+      ],
+      "pending_eh_metadata": [
+        {
+          "symbol": "__ehhandler$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "address": "007c3b2b",
+          "status": "operand only; full funcinfo/catch/unwind graph not verified here"
+        }
+      ]
+    },
+    {
+      "address": "0046b500",
+      "symbol": "?Close@CWorkspace@@UAGJXZ",
+      "size": 68,
+      "exact": true,
+      "verified_targets": {
+        "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "mfc90.dll!?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+        "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": "mfc90.dll!??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z",
+        "?AfxDeactivateActCtx@@YGHKK@Z": "mfc90.dll!?AfxDeactivateActCtx@@YGHKK@Z"
+      },
+      "local_eh": [],
+      "unproven_targets": {
+        "?cleanup@CWorkspace@@QAEXXZ": "0x46b0e0"
+      },
+      "target_evidence": {
+        "profile": "document-swap preprocessing with /EHsc, then /EHs-c- compilation; compatible profile, original flag spelling unproven"
+      }
+    }
+  ],
+  "support_rows_reused": [
+    {
+      "address": "004060f0",
+      "symbol": "??1AFX_MAINTAIN_STATE2@@QAE@XZ",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "?AfxDeactivateActCtx@@YGHKK@Z": "mfc90.dll!?AfxDeactivateActCtx@@YGHKK@Z"
+      },
+      "local_eh": []
+    }
+  ],
+  "helper_rows_reused": [
+    {
+      "address": "00429330",
+      "symbol": "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "unproven_targets": {
+        "?reportWorkspaceStatus@@YAXGPBD@Z": "0x427c20",
+        "?AtlReportError@ATL@@YGJABU_GUID@@PBDK10J@Z": "0x4290b0",
+        "_GUID_NULL": "0x8501ec"
+      }
+    }
+  ],
+  "layout": {
+    "workspace_size": "0x34",
+    "dataModel": "0x24",
+    "runService": "0x2c",
+    "content_allocation_size": "0x94",
+    "content_stream": "0xc",
+    "proof": "compile assertions; existing constructor/destructor/RTTI evidence, not a new complete-class claim"
+  },
+  "com_slots": {
+    "table": "0080ae6c",
+    "Write": 10,
+    "WriteSelection": 11,
+    "Close": 14,
+    "evidence": "original CComObject<CWorkspace> RTTI and interface slot words"
+  },
+  "factory_contract_evidence": {
+    "symbol": "?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z",
+    "address": "0046ac90",
+    "size": 209,
+    "masked_exact_body": true,
+    "allocation": "0x94",
+    "implementation": "genuine ATL9 CComObject::CreateInstance; S_OK implies a constructed non-null object",
+    "type_rtti_offsets": {
+      "ISupportErrorInfo": 0,
+      "IContent": 4
+    },
+    "acceptance": "partial: factory call/data operands are not upgraded by this body check"
+  },
+  "native_source_promotions": [
+    "0046bd70",
+    "0046bfd0",
+    "0046b500"
+  ],
+  "server_credit": 0,
+  "failures": [],
+  "open": [
+    "XML writer0046b860 remains a known mismatch requiring its native header owner",
+    "unproven_targets are relocation operands only, including factory/module/static and XML helpers",
+    "local EH owner metadata retained in pending_eh_metadata; continuations checked separately",
+    "workspace reporter further callees and GUID_NULL not upgraded by this observer",
+    "shared LIBID linkage, selected providers, full-class closure and runtime gates remain open",
+    "Close cleanup0046b0e0 remains unproven; exception-disabled compile profile is confined to Close",
+    "source uses existing native headers; no test header dependency or shared header edits",
+    "source promotion is not accepted-tree mapping, server credit or runtime verification"
+  ]
+}

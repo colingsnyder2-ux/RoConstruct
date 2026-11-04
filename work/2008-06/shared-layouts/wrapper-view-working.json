@@ -1,0 +1,971 @@
+{
+  "class": "CWrapperView",
+  "status": "PASS",
+  "scope": "inactive source/object proof only",
+  "compiler": "MSVC 15.00.21022",
+  "coff_compiler_id": "0x84521e",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "original": "clients/2008-06/Roblox.exe",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_wrapper_view.py": "aba56ee4314ad50ad88c29f0c2f8ac46ceccdcd77db56f64391fe65ad57f7b9e",
+    "rebuild/2008-06/native-classes/CWrapperView.cpp": "275554a167161bbed8ea904698d55f0b81ad4d544b7901fa4bb7f98d421c98cd",
+    "rebuild/2008-06/native-headers/CWrapperView.h": "e871a8875e5ac5afa4bfdab3a68b83d826616ff7a0bd2961c0df52ae2da941de",
+    "rebuild/2008-06/tests/NativeWrapperViewLayout.cpp": "3acffe96b0cdefcb4832fcf2cb176d0fbaa0b791c31893d841881bfd4d183447",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9"
+  },
+  "object_sha256": "6dd7ce89dfcd2859dbecdc0c142926fd9cfc2e247ba8b4f1d0a5bc0ed35a9689",
+  "layout_object_sha256": "56e85df511480eaafc04eb1bb6b2647699fe56b7d336f27150c2abf12096f5a3",
+  "methods": [
+    {
+      "address": "006c4cb0",
+      "symbol": "?_GetBaseClass@CWrapperView@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CView@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CView@@SGPAUCRuntimeClass@@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042ece0",
+      "symbol": "?GetThisClass@CWrapperView@@SGPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCWrapperView@CWrapperView@@2UCRuntimeClass@@B": "0x8107e0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042ece0",
+      "symbol": "?GetRuntimeClass@CWrapperView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCWrapperView@CWrapperView@@2UCRuntimeClass@@B": "0x8107e0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042eb40",
+      "symbol": "??0CWrapperView@@IAE@XZ",
+      "size": 74,
+      "exact": true,
+      "verified_targets": {
+        "??0CView@@IAE@XZ": "mfc90.dll!??0CView@@IAE@XZ",
+        "??_7CWrapperView@@6B@": "0x810a9c",
+        "??0CSelectionTreeCtrl@@QAE@XZ": "0x425c90"
+      },
+      "local_eh": [
+        "__ehhandler$??0CWrapperView@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "0070bdf0",
+      "symbol": "?OnDraw@CWrapperView@@MAEXPAVCDC@@@Z",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042eb90",
+      "symbol": "?PreCreateWindow@CWrapperView@@UAEHAAUtagCREATESTRUCTA@@@Z",
+      "size": 35,
+      "exact": true,
+      "verified_targets": {
+        "?PreCreateWindow@CView@@MAEHAAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?PreCreateWindow@CView@@MAEHAAUtagCREATESTRUCTA@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042ebc0",
+      "symbol": "?OnCmdMsg@CWrapperView@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+      "size": 73,
+      "exact": true,
+      "verified_targets": {
+        "?OnCmdMsg@CView@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z": "mfc90.dll!?OnCmdMsg@CView@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0042ec10",
+      "symbol": "?OnWndMsg@CWrapperView@@MAEHIIJPAJ@Z",
+      "size": 207,
+      "exact": true,
+      "verified_targets": {
+        "?OnWndMsg@CWnd@@MAEHIIJPAJ@Z": "mfc90.dll!?OnWndMsg@CWnd@@MAEHIIJPAJ@Z",
+        "?MoveWindow@CWnd@@QAEXHHHHH@Z": "mfc90.dll!?MoveWindow@CWnd@@QAEXHHHHH@Z",
+        "?Create@CTreeCtrl@@QAEHKABUtagRECT@@PAVCWnd@@I@Z": "mfc90.dll!?Create@CTreeCtrl@@QAEHKABUtagRECT@@PAVCWnd@@I@Z",
+        "?ModifyStyleEx@CWnd@@QAEHKKI@Z": "mfc90.dll!?ModifyStyleEx@CWnd@@QAEHKKI@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00430010",
+      "symbol": "?CreateObject@CWrapperView@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CWrapperView@@IAE@XZ": "0x42eb40"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CWrapperView@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00430070",
+      "symbol": "??_GCWrapperView@@UAEPAXI@Z",
+      "size": 96,
+      "exact": true,
+      "verified_targets": {
+        "??1CSelectionTreeCtrl@@UAE@XZ": "0x4270c0",
+        "??1CView@@UAE@XZ": "mfc90.dll!??1CView@@UAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??_GCWrapperView@@UAEPAXI@Z"
+      ]
+    }
+  ],
+  "inherited_inline_rows": [
+    {
+      "address": "0070bdf0",
+      "symbol": "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0047d410",
+      "symbol": "?AssertValid@CObject@@UBEXXZ",
+      "size": 1,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0070bdf0",
+      "symbol": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0070bdf0",
+      "symbol": "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00401120",
+      "symbol": "?BeginModalState@CWnd@@UAEXXZ",
+      "size": 13,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnableWindow@8": "user32.dll!EnableWindow"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00401130",
+      "symbol": "?EndModalState@CWnd@@UAEXXZ",
+      "size": 13,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnableWindow@8": "user32.dll!EnableWindow"
+      },
+      "local_eh": []
+    }
+  ],
+  "eh_owner_graphs": [
+    {
+      "function": "??0CWrapperView@@IAE@XZ",
+      "handler": "007c3128",
+      "funcinfo": "008daa14",
+      "unwind_table": "008daa0c",
+      "metadata_and_both_relocation_targets_checked": true,
+      "cleanup": {
+        "address": "007c3120",
+        "size": 8,
+        "masked_span_match": true,
+        "callee_evidence": "mfc90.dll!??1CView@@UAE@XZ"
+      },
+      "runtime": "msvcr90.dll!__CxxFrameHandler3 import identity; no runtime implementation claim",
+      "counted_as_native_methods": false
+    },
+    {
+      "function": "?CreateObject@CWrapperView@@SGPAVCObject@@XZ",
+      "handler": "007bfa1a",
+      "funcinfo": "008d5b9c",
+      "unwind_table": "008d5b94",
+      "metadata_and_both_relocation_targets_checked": true,
+      "cleanup": {
+        "address": "007bfa10",
+        "size": 10,
+        "masked_span_match": true,
+        "callee_evidence": [
+          {
+            "address": "00401110",
+            "symbol": "??3CObject@@SGXPAX@Z",
+            "size": 14,
+            "exact": true,
+            "verified_targets": {
+              "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+            },
+            "local_eh": []
+          }
+        ]
+      },
+      "runtime": "msvcr90.dll!__CxxFrameHandler3 import identity; no runtime implementation claim",
+      "counted_as_native_methods": false
+    },
+    {
+      "function": "??_GCWrapperView@@UAEPAXI@Z",
+      "handler": "007c3128",
+      "funcinfo": "008daa14",
+      "unwind_table": "008daa0c",
+      "metadata_and_both_relocation_targets_checked": true,
+      "cleanup": {
+        "address": "007c3120",
+        "size": 8,
+        "masked_span_match": true,
+        "callee_evidence": "mfc90.dll!??1CView@@UAE@XZ"
+      },
+      "runtime": "msvcr90.dll!__CxxFrameHandler3 import identity; no runtime implementation claim",
+      "counted_as_native_methods": false
+    }
+  ],
+  "new_native_addresses": [
+    "0042eb40",
+    "0042eb90",
+    "0042ebc0",
+    "0042ec10",
+    "0042ece0",
+    "00430010",
+    "00430070"
+  ],
+  "reused_addresses": {
+    "006c4cb0": "folded CView base-class getter",
+    "0070bdf0": "shared empty ret4 (OnDraw)"
+  },
+  "layout": {
+    "size": "0x188",
+    "base": "CView 0x58",
+    "tree_offset": "0x58",
+    "tree_size": "0x130",
+    "evidence": "CRuntimeClass size, CreateObject new(0x188), CView/tree ctor sequence, deleting destructor tree+0x58/CView teardown, RTTI and compile assertions"
+  },
+  "runtime_class": {
+    "address": "008107e0",
+    "size": 28,
+    "all_bytes_and_relocation_targets_checked": true
+  },
+  "rtti": {
+    "locator": "0087f538",
+    "chain": [
+      [
+        ".?AVCWrapperView@@",
+        0,
+        -1,
+        0
+      ],
+      [
+        ".?AVCView@@",
+        0,
+        -1,
+        0
+      ],
+      [
+        ".?AVCWnd@@",
+        0,
+        -1,
+        0
+      ],
+      [
+        ".?AVCCmdTarget@@",
+        0,
+        -1,
+        0
+      ],
+      [
+        ".?AVCObject@@",
+        0,
+        -1,
+        0
+      ]
+    ]
+  },
+  "vtable": [
+    {
+      "slot": 0,
+      "symbol": "?GetRuntimeClass@CWrapperView@@UBEPAUCRuntimeClass@@XZ",
+      "address": "0042ece0",
+      "proof": "own exact row"
+    },
+    {
+      "slot": 1,
+      "symbol": "??_ECWrapperView@@UAEPAXI@Z",
+      "address": "00430070",
+      "proof": "weak vector-deleting alias of exact scalar deleting destructor"
+    },
+    {
+      "slot": 2,
+      "symbol": "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+      "address": "0070bdf0",
+      "proof": "exact inherited inline body with targets checked"
+    },
+    {
+      "slot": 3,
+      "symbol": "?AssertValid@CObject@@UBEXXZ",
+      "address": "0047d410",
+      "proof": "exact inherited inline body with targets checked"
+    },
+    {
+      "slot": 4,
+      "symbol": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+      "address": "0070bdf0",
+      "proof": "exact inherited inline body with targets checked"
+    },
+    {
+      "slot": 5,
+      "symbol": "?OnCmdMsg@CWrapperView@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+      "address": "0042ebc0",
+      "proof": "own exact row"
+    },
+    {
+      "slot": 6,
+      "symbol": "?OnFinalRelease@CWnd@@UAEXXZ",
+      "address": "006a0698",
+      "proof": "mfc90.dll!?OnFinalRelease@CWnd@@UAEXXZ"
+    },
+    {
+      "slot": 7,
+      "symbol": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z",
+      "address": "006a069e",
+      "proof": "mfc90.dll!?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z"
+    },
+    {
+      "slot": 8,
+      "symbol": "?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z",
+      "address": "006a06a4",
+      "proof": "mfc90.dll!?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z"
+    },
+    {
+      "slot": 9,
+      "symbol": "?GetTypeInfoCount@CCmdTarget@@UAEIXZ",
+      "address": "006a06aa",
+      "proof": "mfc90.dll!?GetTypeInfoCount@CCmdTarget@@UAEIXZ"
+    },
+    {
+      "slot": 10,
+      "symbol": "?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ",
+      "address": "006a06b0",
+      "proof": "mfc90.dll!?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ"
+    },
+    {
+      "slot": 11,
+      "symbol": "?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z",
+      "address": "006a06b6",
+      "proof": "mfc90.dll!?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z"
+    },
+    {
+      "slot": 12,
+      "symbol": "?GetMessageMap@CView@@MBEPBUAFX_MSGMAP@@XZ",
+      "address": "006a0fa4",
+      "proof": "mfc90.dll!?GetMessageMap@CView@@MBEPBUAFX_MSGMAP@@XZ"
+    },
+    {
+      "slot": 13,
+      "symbol": "?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ",
+      "address": "006a06bc",
+      "proof": "mfc90.dll!?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ"
+    },
+    {
+      "slot": 14,
+      "symbol": "?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ",
+      "address": "006a06c2",
+      "proof": "mfc90.dll!?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ"
+    },
+    {
+      "slot": 15,
+      "symbol": "?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ",
+      "address": "006a06c8",
+      "proof": "mfc90.dll!?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ"
+    },
+    {
+      "slot": 16,
+      "symbol": "?GetInterfaceMap@CWnd@@MBEPBUAFX_INTERFACEMAP@@XZ",
+      "address": "006a06ce",
+      "proof": "mfc90.dll!?GetInterfaceMap@CWnd@@MBEPBUAFX_INTERFACEMAP@@XZ"
+    },
+    {
+      "slot": 17,
+      "symbol": "?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+      "address": "006a0998",
+      "proof": "mfc90.dll!?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ"
+    },
+    {
+      "slot": 18,
+      "symbol": "?OnCreateAggregates@CCmdTarget@@UAEHXZ",
+      "address": "006a06d4",
+      "proof": "mfc90.dll!?OnCreateAggregates@CCmdTarget@@UAEHXZ"
+    },
+    {
+      "slot": 19,
+      "symbol": "?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z",
+      "address": "006a06da",
+      "proof": "mfc90.dll!?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z"
+    },
+    {
+      "slot": 20,
+      "symbol": "?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z",
+      "address": "006a06e0",
+      "proof": "mfc90.dll!?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z"
+    },
+    {
+      "slot": 21,
+      "symbol": "?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z",
+      "address": "006a06e6",
+      "proof": "mfc90.dll!?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z"
+    },
+    {
+      "slot": 22,
+      "symbol": "?PreSubclassWindow@CWnd@@UAEXXZ",
+      "address": "006a06ec",
+      "proof": "mfc90.dll!?PreSubclassWindow@CWnd@@UAEXXZ"
+    },
+    {
+      "slot": 23,
+      "symbol": "?Create@CWnd@@UAEHPBD0KABUtagRECT@@PAV1@IPAUCCreateContext@@@Z",
+      "address": "006a06f2",
+      "proof": "mfc90.dll!?Create@CWnd@@UAEHPBD0KABUtagRECT@@PAV1@IPAUCCreateContext@@@Z"
+    },
+    {
+      "slot": 24,
+      "symbol": "?CreateEx@CWnd@@UAEHKPBD0KABUtagRECT@@PAV1@IPAX@Z",
+      "address": "006a06f8",
+      "proof": "mfc90.dll!?CreateEx@CWnd@@UAEHKPBD0KABUtagRECT@@PAV1@IPAX@Z"
+    },
+    {
+      "slot": 25,
+      "symbol": "?CreateEx@CWnd@@UAEHKPBD0KHHHHPAUHWND__@@PAUHMENU__@@PAX@Z",
+      "address": "006a06fe",
+      "proof": "mfc90.dll!?CreateEx@CWnd@@UAEHKPBD0KHHHHPAUHWND__@@PAUHMENU__@@PAX@Z"
+    },
+    {
+      "slot": 26,
+      "symbol": "?DestroyWindow@CWnd@@UAEHXZ",
+      "address": "006a0704",
+      "proof": "mfc90.dll!?DestroyWindow@CWnd@@UAEHXZ"
+    },
+    {
+      "slot": 27,
+      "symbol": "?PreCreateWindow@CWrapperView@@UAEHAAUtagCREATESTRUCTA@@@Z",
+      "address": "0042eb90",
+      "proof": "own exact row"
+    },
+    {
+      "slot": 28,
+      "symbol": "?CalcWindowRect@CView@@UAEXPAUtagRECT@@I@Z",
+      "address": "006a0f08",
+      "proof": "mfc90.dll!?CalcWindowRect@CView@@UAEXPAUtagRECT@@I@Z"
+    },
+    {
+      "slot": 29,
+      "symbol": "?GetMenu@CWnd@@UBEPAVCMenu@@XZ",
+      "address": "006a0716",
+      "proof": "mfc90.dll!?GetMenu@CWnd@@UBEPAVCMenu@@XZ"
+    },
+    {
+      "slot": 30,
+      "symbol": "?SetMenu@CWnd@@UAEHPAVCMenu@@@Z",
+      "address": "006a071c",
+      "proof": "mfc90.dll!?SetMenu@CWnd@@UAEHPAVCMenu@@@Z"
+    },
+    {
+      "slot": 31,
+      "symbol": "?OnToolHitTest@CWnd@@UBEHVCPoint@@PAUtagTOOLINFOA@@@Z",
+      "address": "006a0722",
+      "proof": "mfc90.dll!?OnToolHitTest@CWnd@@UBEHVCPoint@@PAUtagTOOLINFOA@@@Z"
+    },
+    {
+      "slot": 32,
+      "symbol": "?GetScrollBarCtrl@CView@@UBEPAVCScrollBar@@H@Z",
+      "address": "006a0a70",
+      "proof": "mfc90.dll!?GetScrollBarCtrl@CView@@UBEPAVCScrollBar@@H@Z"
+    },
+    {
+      "slot": 33,
+      "symbol": "?WinHelpA@CWnd@@UAEXKI@Z",
+      "address": "006a072e",
+      "proof": "mfc90.dll!?WinHelpA@CWnd@@UAEXKI@Z"
+    },
+    {
+      "slot": 34,
+      "symbol": "?HtmlHelpA@CWnd@@UAEXKI@Z",
+      "address": "006a0734",
+      "proof": "mfc90.dll!?HtmlHelpA@CWnd@@UAEXKI@Z"
+    },
+    {
+      "slot": 35,
+      "symbol": "?WinHelpInternal@CWnd@@UAEXKI@Z",
+      "address": "006a073a",
+      "proof": "mfc90.dll!?WinHelpInternal@CWnd@@UAEXKI@Z"
+    },
+    {
+      "slot": 36,
+      "symbol": "?ContinueModal@CWnd@@UAEHXZ",
+      "address": "006a0740",
+      "proof": "mfc90.dll!?ContinueModal@CWnd@@UAEHXZ"
+    },
+    {
+      "slot": 37,
+      "symbol": "?EndModalLoop@CWnd@@UAEXH@Z",
+      "address": "006a0746",
+      "proof": "mfc90.dll!?EndModalLoop@CWnd@@UAEXH@Z"
+    },
+    {
+      "slot": 38,
+      "symbol": "?EnsureStdObj@CWnd@@UAEJXZ",
+      "address": "006a074c",
+      "proof": "mfc90.dll!?EnsureStdObj@CWnd@@UAEJXZ"
+    },
+    {
+      "slot": 39,
+      "symbol": "?get_accParent@CWnd@@UAEJPAPAUIDispatch@@@Z",
+      "address": "006a0752",
+      "proof": "mfc90.dll!?get_accParent@CWnd@@UAEJPAPAUIDispatch@@@Z"
+    },
+    {
+      "slot": 40,
+      "symbol": "?get_accChildCount@CWnd@@UAEJPAJ@Z",
+      "address": "006a0758",
+      "proof": "mfc90.dll!?get_accChildCount@CWnd@@UAEJPAJ@Z"
+    },
+    {
+      "slot": 41,
+      "symbol": "?get_accChild@CWnd@@UAEJUtagVARIANT@@PAPAUIDispatch@@@Z",
+      "address": "006a075e",
+      "proof": "mfc90.dll!?get_accChild@CWnd@@UAEJUtagVARIANT@@PAPAUIDispatch@@@Z"
+    },
+    {
+      "slot": 42,
+      "symbol": "?get_accName@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+      "address": "006a0764",
+      "proof": "mfc90.dll!?get_accName@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z"
+    },
+    {
+      "slot": 43,
+      "symbol": "?get_accValue@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+      "address": "006a076a",
+      "proof": "mfc90.dll!?get_accValue@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z"
+    },
+    {
+      "slot": 44,
+      "symbol": "?get_accDescription@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+      "address": "006a0770",
+      "proof": "mfc90.dll!?get_accDescription@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z"
+    },
+    {
+      "slot": 45,
+      "symbol": "?get_accRole@CWnd@@UAEJUtagVARIANT@@PAU2@@Z",
+      "address": "006a0776",
+      "proof": "mfc90.dll!?get_accRole@CWnd@@UAEJUtagVARIANT@@PAU2@@Z"
+    },
+    {
+      "slot": 46,
+      "symbol": "?get_accState@CWnd@@UAEJUtagVARIANT@@PAU2@@Z",
+      "address": "006a077c",
+      "proof": "mfc90.dll!?get_accState@CWnd@@UAEJUtagVARIANT@@PAU2@@Z"
+    },
+    {
+      "slot": 47,
+      "symbol": "?get_accHelp@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+      "address": "006a0782",
+      "proof": "mfc90.dll!?get_accHelp@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z"
+    },
+    {
+      "slot": 48,
+      "symbol": "?get_accHelpTopic@CWnd@@UAEJPAPA_WUtagVARIANT@@PAJ@Z",
+      "address": "006a0788",
+      "proof": "mfc90.dll!?get_accHelpTopic@CWnd@@UAEJPAPA_WUtagVARIANT@@PAJ@Z"
+    },
+    {
+      "slot": 49,
+      "symbol": "?get_accKeyboardShortcut@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+      "address": "006a078e",
+      "proof": "mfc90.dll!?get_accKeyboardShortcut@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z"
+    },
+    {
+      "slot": 50,
+      "symbol": "?get_accFocus@CWnd@@UAEJPAUtagVARIANT@@@Z",
+      "address": "006a0794",
+      "proof": "mfc90.dll!?get_accFocus@CWnd@@UAEJPAUtagVARIANT@@@Z"
+    },
+    {
+      "slot": 51,
+      "symbol": "?get_accSelection@CWnd@@UAEJPAUtagVARIANT@@@Z",
+      "address": "006a079a",
+      "proof": "mfc90.dll!?get_accSelection@CWnd@@UAEJPAUtagVARIANT@@@Z"
+    },
+    {
+      "slot": 52,
+      "symbol": "?get_accDefaultAction@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+      "address": "006a07a0",
+      "proof": "mfc90.dll!?get_accDefaultAction@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z"
+    },
+    {
+      "slot": 53,
+      "symbol": "?accSelect@CWnd@@UAEJJUtagVARIANT@@@Z",
+      "address": "006a07a6",
+      "proof": "mfc90.dll!?accSelect@CWnd@@UAEJJUtagVARIANT@@@Z"
+    },
+    {
+      "slot": 54,
+      "symbol": "?accLocation@CWnd@@UAEJPAJ000UtagVARIANT@@@Z",
+      "address": "006a07ac",
+      "proof": "mfc90.dll!?accLocation@CWnd@@UAEJPAJ000UtagVARIANT@@@Z"
+    },
+    {
+      "slot": 55,
+      "symbol": "?accNavigate@CWnd@@UAEJJUtagVARIANT@@PAU2@@Z",
+      "address": "006a07b2",
+      "proof": "mfc90.dll!?accNavigate@CWnd@@UAEJJUtagVARIANT@@PAU2@@Z"
+    },
+    {
+      "slot": 56,
+      "symbol": "?accHitTest@CWnd@@UAEJJJPAUtagVARIANT@@@Z",
+      "address": "006a07b8",
+      "proof": "mfc90.dll!?accHitTest@CWnd@@UAEJJJPAUtagVARIANT@@@Z"
+    },
+    {
+      "slot": 57,
+      "symbol": "?accDoDefaultAction@CWnd@@UAEJUtagVARIANT@@@Z",
+      "address": "006a07be",
+      "proof": "mfc90.dll!?accDoDefaultAction@CWnd@@UAEJUtagVARIANT@@@Z"
+    },
+    {
+      "slot": 58,
+      "symbol": "?put_accName@CWnd@@UAEJUtagVARIANT@@PA_W@Z",
+      "address": "006a07c4",
+      "proof": "mfc90.dll!?put_accName@CWnd@@UAEJUtagVARIANT@@PA_W@Z"
+    },
+    {
+      "slot": 59,
+      "symbol": "?put_accValue@CWnd@@UAEJUtagVARIANT@@PA_W@Z",
+      "address": "006a07ca",
+      "proof": "mfc90.dll!?put_accValue@CWnd@@UAEJUtagVARIANT@@PA_W@Z"
+    },
+    {
+      "slot": 60,
+      "symbol": "?SetProxy@CWnd@@UAEJPAUIAccessibleProxy@@@Z",
+      "address": "006a07d0",
+      "proof": "mfc90.dll!?SetProxy@CWnd@@UAEJPAUIAccessibleProxy@@@Z"
+    },
+    {
+      "slot": 61,
+      "symbol": "?CreateAccessibleProxy@CWnd@@UAEJIJPAJ@Z",
+      "address": "006a07d6",
+      "proof": "mfc90.dll!?CreateAccessibleProxy@CWnd@@UAEJIJPAJ@Z"
+    },
+    {
+      "slot": 62,
+      "symbol": "?OnCommand@CWnd@@MAEHIJ@Z",
+      "address": "006a07dc",
+      "proof": "mfc90.dll!?OnCommand@CWnd@@MAEHIJ@Z"
+    },
+    {
+      "slot": 63,
+      "symbol": "?OnNotify@CWnd@@MAEHIJPAJ@Z",
+      "address": "006a07e2",
+      "proof": "mfc90.dll!?OnNotify@CWnd@@MAEHIJPAJ@Z"
+    },
+    {
+      "slot": 64,
+      "symbol": "?GetSuperWndProcAddr@CWnd@@MAEPAP6GJPAUHWND__@@IIJ@ZXZ",
+      "address": "006a07e8",
+      "proof": "mfc90.dll!?GetSuperWndProcAddr@CWnd@@MAEPAP6GJPAUHWND__@@IIJ@ZXZ"
+    },
+    {
+      "slot": 65,
+      "symbol": "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+      "address": "0070bdf0",
+      "proof": "exact inherited inline body with targets checked"
+    },
+    {
+      "slot": 66,
+      "symbol": "?BeginModalState@CWnd@@UAEXXZ",
+      "address": "00401120",
+      "proof": "exact inherited inline body with targets checked"
+    },
+    {
+      "slot": 67,
+      "symbol": "?EndModalState@CWnd@@UAEXXZ",
+      "address": "00401130",
+      "proof": "exact inherited inline body with targets checked"
+    },
+    {
+      "slot": 68,
+      "symbol": "?PreTranslateMessage@CWnd@@UAEHPAUtagMSG@@@Z",
+      "address": "006a0c98",
+      "proof": "mfc90.dll!?PreTranslateMessage@CWnd@@UAEHPAUtagMSG@@@Z"
+    },
+    {
+      "slot": 69,
+      "symbol": "?OnAmbientProperty@CWnd@@UAEHPAVCOleControlSite@@JPAUtagVARIANT@@@Z",
+      "address": "006a07f4",
+      "proof": "mfc90.dll!?OnAmbientProperty@CWnd@@UAEHPAVCOleControlSite@@JPAUtagVARIANT@@@Z"
+    },
+    {
+      "slot": 70,
+      "symbol": "?WindowProc@CWnd@@MAEJIIJ@Z",
+      "address": "006a07fa",
+      "proof": "mfc90.dll!?WindowProc@CWnd@@MAEJIIJ@Z"
+    },
+    {
+      "slot": 71,
+      "symbol": "?OnWndMsg@CWrapperView@@MAEHIIJPAJ@Z",
+      "address": "0042ec10",
+      "proof": "own exact row"
+    },
+    {
+      "slot": 72,
+      "symbol": "?DefWindowProcA@CWnd@@MAEJIIJ@Z",
+      "address": "006a0806",
+      "proof": "mfc90.dll!?DefWindowProcA@CWnd@@MAEJIIJ@Z"
+    },
+    {
+      "slot": 73,
+      "symbol": "?PostNcDestroy@CView@@MAEXXZ",
+      "address": "006a0a76",
+      "proof": "mfc90.dll!?PostNcDestroy@CView@@MAEXXZ"
+    },
+    {
+      "slot": 74,
+      "symbol": "?OnChildNotify@CWnd@@MAEHIIJPAJ@Z",
+      "address": "006a0812",
+      "proof": "mfc90.dll!?OnChildNotify@CWnd@@MAEHIIJPAJ@Z"
+    },
+    {
+      "slot": 75,
+      "symbol": "?CheckAutoCenter@CWnd@@UAEHXZ",
+      "address": "006a0a7c",
+      "proof": "mfc90.dll!?CheckAutoCenter@CWnd@@UAEHXZ"
+    },
+    {
+      "slot": 76,
+      "symbol": "?IsFrameWnd@CWnd@@UBEHXZ",
+      "address": "006a081e",
+      "proof": "mfc90.dll!?IsFrameWnd@CWnd@@UBEHXZ"
+    },
+    {
+      "slot": 77,
+      "symbol": "?CreateControlContainer@CWnd@@MAEHPAPAVCOleControlContainer@@@Z",
+      "address": "006a0824",
+      "proof": "mfc90.dll!?CreateControlContainer@CWnd@@MAEHPAPAVCOleControlContainer@@@Z"
+    },
+    {
+      "slot": 78,
+      "symbol": "?CreateControlSite@CWnd@@MAEHPAVCOleControlContainer@@PAPAVCOleControlSite@@IABU_GUID@@@Z",
+      "address": "006a0c9e",
+      "proof": "mfc90.dll!?CreateControlSite@CWnd@@MAEHPAVCOleControlContainer@@PAPAVCOleControlSite@@IABU_GUID@@@Z"
+    },
+    {
+      "slot": 79,
+      "symbol": "?SetOccDialogInfo@CWnd@@MAEHPAU_AFX_OCC_DIALOG_INFO@@@Z",
+      "address": "006a0ca4",
+      "proof": "mfc90.dll!?SetOccDialogInfo@CWnd@@MAEHPAU_AFX_OCC_DIALOG_INFO@@@Z"
+    },
+    {
+      "slot": 80,
+      "symbol": "?GetOccDialogInfo@CWnd@@MAEPAU_AFX_OCC_DIALOG_INFO@@XZ",
+      "address": "006a0caa",
+      "proof": "mfc90.dll!?GetOccDialogInfo@CWnd@@MAEPAU_AFX_OCC_DIALOG_INFO@@XZ"
+    },
+    {
+      "slot": 81,
+      "symbol": "?IsSelected@CView@@UBEHPBVCObject@@@Z",
+      "address": "006a0a94",
+      "proof": "mfc90.dll!?IsSelected@CView@@UBEHPBVCObject@@@Z"
+    },
+    {
+      "slot": 82,
+      "symbol": "?OnScroll@CView@@UAEHIIH@Z",
+      "address": "006a0cb0",
+      "proof": "mfc90.dll!?OnScroll@CView@@UAEHIIH@Z"
+    },
+    {
+      "slot": 83,
+      "symbol": "?OnScrollBy@CView@@UAEHVCSize@@H@Z",
+      "address": "006a0cb6",
+      "proof": "mfc90.dll!?OnScrollBy@CView@@UAEHVCSize@@H@Z"
+    },
+    {
+      "slot": 84,
+      "symbol": "?OnDragEnter@CView@@UAEKPAVCOleDataObject@@KVCPoint@@@Z",
+      "address": "006a0aa6",
+      "proof": "mfc90.dll!?OnDragEnter@CView@@UAEKPAVCOleDataObject@@KVCPoint@@@Z"
+    },
+    {
+      "slot": 85,
+      "symbol": "?OnDragOver@CView@@UAEKPAVCOleDataObject@@KVCPoint@@@Z",
+      "address": "006a0aac",
+      "proof": "mfc90.dll!?OnDragOver@CView@@UAEKPAVCOleDataObject@@KVCPoint@@@Z"
+    },
+    {
+      "slot": 86,
+      "symbol": "?OnDragLeave@CView@@UAEXXZ",
+      "address": "006a0ab2",
+      "proof": "mfc90.dll!?OnDragLeave@CView@@UAEXXZ"
+    },
+    {
+      "slot": 87,
+      "symbol": "?OnDrop@CView@@UAEHPAVCOleDataObject@@KVCPoint@@@Z",
+      "address": "006a0ab8",
+      "proof": "mfc90.dll!?OnDrop@CView@@UAEHPAVCOleDataObject@@KVCPoint@@@Z"
+    },
+    {
+      "slot": 88,
+      "symbol": "?OnDropEx@CView@@UAEKPAVCOleDataObject@@KKVCPoint@@@Z",
+      "address": "006a0abe",
+      "proof": "mfc90.dll!?OnDropEx@CView@@UAEKPAVCOleDataObject@@KKVCPoint@@@Z"
+    },
+    {
+      "slot": 89,
+      "symbol": "?OnDragScroll@CView@@UAEKKVCPoint@@@Z",
+      "address": "006a0ac4",
+      "proof": "mfc90.dll!?OnDragScroll@CView@@UAEKKVCPoint@@@Z"
+    },
+    {
+      "slot": 90,
+      "symbol": "?OnPrepareDC@CView@@UAEXPAVCDC@@PAUCPrintInfo@@@Z",
+      "address": "006a0faa",
+      "proof": "mfc90.dll!?OnPrepareDC@CView@@UAEXPAVCDC@@PAUCPrintInfo@@@Z"
+    },
+    {
+      "slot": 91,
+      "symbol": "?OnInitialUpdate@CView@@UAEXXZ",
+      "address": "006a0cc2",
+      "proof": "mfc90.dll!?OnInitialUpdate@CView@@UAEXXZ"
+    },
+    {
+      "slot": 92,
+      "symbol": "?OnActivateView@CView@@MAEXHPAV1@0@Z",
+      "address": "006a0cc8",
+      "proof": "mfc90.dll!?OnActivateView@CView@@MAEXHPAV1@0@Z"
+    },
+    {
+      "slot": 93,
+      "symbol": "?OnActivateFrame@CView@@MAEXIPAVCFrameWnd@@@Z",
+      "address": "006a0cce",
+      "proof": "mfc90.dll!?OnActivateFrame@CView@@MAEXIPAVCFrameWnd@@@Z"
+    },
+    {
+      "slot": 94,
+      "symbol": "?OnUpdate@CView@@MAEXPAV1@JPAVCObject@@@Z",
+      "address": "006a0ae2",
+      "proof": "mfc90.dll!?OnUpdate@CView@@MAEXPAV1@JPAVCObject@@@Z"
+    },
+    {
+      "slot": 95,
+      "symbol": "?OnDraw@CWrapperView@@MAEXPAVCDC@@@Z",
+      "address": "0070bdf0",
+      "proof": "own exact row"
+    },
+    {
+      "slot": 96,
+      "symbol": "?OnPreparePrinting@CView@@MAEHPAUCPrintInfo@@@Z",
+      "address": "006a0aee",
+      "proof": "mfc90.dll!?OnPreparePrinting@CView@@MAEHPAUCPrintInfo@@@Z"
+    },
+    {
+      "slot": 97,
+      "symbol": "?OnBeginPrinting@CView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+      "address": "006a0af4",
+      "proof": "mfc90.dll!?OnBeginPrinting@CView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z"
+    },
+    {
+      "slot": 98,
+      "symbol": "?OnPrint@CView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+      "address": "006a0afa",
+      "proof": "mfc90.dll!?OnPrint@CView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z"
+    },
+    {
+      "slot": 99,
+      "symbol": "?OnEndPrinting@CView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+      "address": "006a0b00",
+      "proof": "mfc90.dll!?OnEndPrinting@CView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z"
+    },
+    {
+      "slot": 100,
+      "symbol": "?OnEndPrintPreview@CView@@MAEXPAVCDC@@PAUCPrintInfo@@UtagPOINT@@PAVCPreviewView@@@Z",
+      "address": "006a0b06",
+      "proof": "mfc90.dll!?OnEndPrintPreview@CView@@MAEXPAVCDC@@PAUCPrintInfo@@UtagPOINT@@PAVCPreviewView@@@Z"
+    }
+  ],
+  "message_map": "inherits CView::GetMessageMap (slot12); no own message map declared or emitted",
+  "member_dependency": {
+    "receipt": "work/2008-06/shared-layouts/selection-tree-ctrl-working.json",
+    "receipt_sha256": "a3fac6abd7ffb09133c31251eb55f839986daa1109c4c9006902dd73dcdd7f4c",
+    "input_hashes_current": true,
+    "lifecycle_and_dispatch_targets": {
+      "??0CSelectionTreeCtrl@@QAE@XZ": "00425c90",
+      "??1CSelectionTreeCtrl@@UAE@XZ": "004270c0",
+      "?OnCmdMsg@CSelectionTreeCtrl@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z": "00422960"
+    },
+    "virtual_dispatch": "member table0080fed4 slot5 -> CSelectionTreeCtrl::OnCmdMsg00422960; its activeRobloxDoc binding is transitive evidence only",
+    "limit": "reuses exact lifecycle/dispatch bodies; dependency transitive call-site bindings/header-pending methods are not upgraded"
+  },
+  "open": [
+    "CSelectionTreeCtrl transitive proof and provider/link acceptance remain separate",
+    "no standalone destructor-address claim; its teardown is inlined into the deleting destructor",
+    "names and source shape are codegen analogs, not original declaration proof",
+    "no selection, P5/P6, runtime or server credit"
+  ],
+  "failures": []
+}

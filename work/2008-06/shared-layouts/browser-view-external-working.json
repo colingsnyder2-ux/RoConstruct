@@ -40,7 +40,7 @@
   ],
   "original": "clients/2008-06/Roblox.exe",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "3924282772d94c3aff365a77c3431c578ea61adaacea0868fa15dffddb666616",
+  "object_sha256": "617a449b2ae61460e5a821e9dff8ff90284c5a1b310f660b58aa7f5baa244a75",
   "library_query_interface_proof": {
     "status": "PASS",
     "kind": "authentic vendor library replay, not a new application provider",
@@ -96,9 +96,9 @@
       }
     }
   },
-  "layout_object_sha256": "9a446cb99d688d2dc6c475bbb1f0ebd4f7042f6682eabe3385fcfea8bd32e979",
-  "guid_object_sha256": "2025193378b90537a2971e8a9628e625ba74486d90037a7c5d0077b1c825512f",
-  "helper_object_sha256": "df4bbe319cc779c7c9b68cf4924bf97fab2a1f7daf6f4016d860232526b65674",
+  "layout_object_sha256": "e4a652c71dfcb635c14682a4514d661158bfd8ed3251194a262f33ac4b0377f5",
+  "guid_object_sha256": "043a83ea4bbcd1ca5b429f72e4234f4007c5be0ae53dbdba370502bde0ba577b",
+  "helper_object_sha256": "c6ba761dd58d2ceca5eae108f343db465bbbe9fe1ab55f6cd6a9b488a14d278c",
   "compile_profile": "class unit: document-swap flags + /D_ATL_APARTMENT_THREADED (ATL object model CComSingleThreadModel, globals Multi; original spelling not proven) /P, CString operator PCXSTR marked noinline (original imports mfc90 #910; header unchanged), recompiled with /nologo /c /O2 /Ob2 /Oy /GF /GS- /EHsc /MD; layout, GUID and helper units: plain document-swap flags",
   "typed_guid_data": {
     "_IID_IBrowserViewExternal": {
@@ -136,18 +136,22 @@
       "symbol": "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z",
       "size": 43,
       "exact": true,
-      "verified_targets": {},
+      "verified_targets": {
+        "_GUID_NULL": "0x8501ec"
+      },
       "local_eh": [],
       "unproven_targets": {
         "?reportWorkspaceStatus@@YAXGPBD@Z": "0x427c20",
-        "_GUID_NULL": "0x8501ec",
         "?AtlReportError@ATL@@YGJABU_GUID@@PBDK10J@Z": "0x4290b0"
       },
-      "unproven_note": "callee bodies (workspace status reporter 00427c20, ATL AtlReportError 004290b0) and GUID_NULL are relocation operands only here"
+      "unproven_note": "callee bodies (workspace status reporter 00427c20, ATL AtlReportError 004290b0) remain relocation operands only; GUID_NULL data is verified, which does not prove those callees",
+      "data_target_evidence": {
+        "_GUID_NULL": "typeinfo_guid_proof.guid_null: typed SDK declaration; original 16 zero bytes in a read-only section"
+      }
     }
   ],
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_view_external.py": "1d6832cd1075920f17b7a65b7da92ec0d9abef8804a4fc9fe673186eb95bee8b",
+    "rebuild/2008-06/tests/record_native_browser_view_external.py": "3d5c0818f643ed2c09d1157121b2ba068f33968b6403cf0da8c2be405f5a4707",
     "rebuild/2008-06/native-classes/CBrowserViewExternal.cpp": "5e16cb7f18e6eba8d0419578a3c0e8e96b8b31eaf9d424b0d155573ae1ae5785",
     "rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp": "480f82db9a83e310c37fba6666815b7cd209569574ac3ae01bd336d3553b6ef1",
     "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp": "3576e9c32fb8dc284eb190cf9a3e1b348af8d68c5d30e58c8b0b512b68e010b3",
@@ -542,9 +546,16 @@
         "__imp__lstrlenA@4": "kernel32.dll!lstrlenA",
         "??$AtlMultiply@H@ATL@@YAJPAHHH@Z": "0x401710",
         "?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z": "0x402f50",
+        "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z": "0x401760",
         "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": "0x401150",
+        "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ": "0x420bb0",
         "__imp__LoadTypeLib@8": "oleaut32.dll!LoadTypeLib",
         "__imp__LoadRegTypeLib@20": "oleaut32.dll!LoadRegTypeLib",
+        "__GUID_00020412_0000_0000_c000_000000000046": "0x80b130",
+        "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z": "0x403af0",
+        "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z": "0x402f00",
+        "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z": "0x403da0",
+        "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z": "0x402d30",
         "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection",
         "__alloca_probe_16": "0x6a1560"
       },
@@ -554,14 +565,7 @@
       "unproven_targets": {
         "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268",
         "?m_libid@CAtlModule@ATL@@2U_GUID@@A": "0x96c26c",
-        "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0x97f2a8",
-        "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z": "0x401760",
-        "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ": "0x420bb0",
-        "__GUID_00020412_0000_0000_c000_000000000046": "0x80b130",
-        "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z": "0x403af0",
-        "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z": "0x402f00",
-        "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z": "0x403da0",
-        "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z": "0x402d30"
+        "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0x97f2a8"
       },
       "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe",
       "runtime_target_evidence": {
@@ -870,6 +874,140 @@
       "local_eh": [
         "__ehhandler$??1?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAE@XZ"
       ]
+    },
+    {
+      "address": "00401760",
+      "symbol": "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z",
+      "size": 59,
+      "exact": true,
+      "verified_targets": {
+        "__imp__MultiByteToWideChar@24": "kernel32.dll!MultiByteToWideChar"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00420bb0",
+      "symbol": "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ",
+      "size": 24,
+      "exact": true,
+      "verified_targets": {
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00403af0",
+      "symbol": "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z": "0x402fb0",
+        "__GUID_00020401_0000_0000_c000_000000000046": "0x80b1f0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00402f00",
+      "symbol": "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z",
+      "size": 80,
+      "exact": true,
+      "verified_targets": {
+        "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ": "0x401020",
+        "??_V@YAXPAX@Z": "mfc90.dll!??_V@YAXPAX@Z"
+      },
+      "local_eh": [],
+      "runtime_target_evidence": {
+        "??_M@YGXPAXIHP6EX0@Z@Z": "authentic archive entry identity and masked span only; full implementation remains in pending_runtime_targets"
+      },
+      "pending_runtime_targets": {
+        "??_M@YGXPAXIHP6EX0@Z@Z": {
+          "address": "0x6a165b",
+          "entry_symbol_identity_proven": true,
+          "recorded_size": 75,
+          "archive_masked_span_size": 99,
+          "proof": "crt_eh_vector_proof",
+          "accepted_exact_function": false,
+          "remaining": "full extent, SEH scope tables and __SEH_prolog4/__SEH_epilog4/__ArrayUnwind targets"
+        }
+      }
+    },
+    {
+      "address": "00403da0",
+      "symbol": "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z",
+      "size": 47,
+      "exact": true,
+      "verified_targets": {
+        "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z": "0x4038f0"
+      },
+      "local_eh": [],
+      "target_evidence": {
+        "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z": {
+          "proof": "termination_helper_analog_proof",
+          "source_symbol": "?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+          "kind": "typed explicit-lock codegen analog; original declaration and upstream body spelling not proven",
+          "provider_or_link_acceptance": false
+        }
+      }
+    },
+    {
+      "address": "00402d30",
+      "symbol": "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z",
+      "size": 459,
+      "exact": true,
+      "verified_targets": {
+        "??_U@YAPAXI@Z": "mfc90.dll!??_U@YAPAXI@Z",
+        "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ": "0x401020",
+        "??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ": "0x402370",
+        "__imp__SysFreeString@4": "oleaut32.dll!SysFreeString",
+        "__imp__SysStringLen@4": "oleaut32.dll!SysStringLen",
+        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ"
+      },
+      "local_eh": [
+        "$LN37",
+        "__ehhandler$?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z"
+      ],
+      "runtime_target_evidence": {
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "authentic archive entry identity and masked span only; full implementation remains in pending_runtime_targets"
+      },
+      "pending_runtime_targets": {
+        "??_L@YGXPAXIHP6EX0@Z1@Z": {
+          "address": "0x6a1598",
+          "entry_symbol_identity_proven": true,
+          "recorded_size": 77,
+          "archive_masked_span_size": 101,
+          "proof": "crt_eh_vector_proof",
+          "accepted_exact_function": false,
+          "remaining": "full extent, SEH scope tables and __SEH_prolog4/__SEH_epilog4/__ArrayUnwind targets"
+        }
+      }
+    },
+    {
+      "address": "00401020",
+      "symbol": "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "__imp__SysFreeString@4": "oleaut32.dll!SysFreeString"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00402370",
+      "symbol": "??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00402fb0",
+      "symbol": "?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z",
+      "size": 136,
+      "exact": true,
+      "verified_targets": {
+        "__GUID_00000000_0000_0000_c000_000000000046": "0x80b154"
+      },
+      "local_eh": []
     }
   ],
   "method_labels": {
@@ -933,7 +1071,16 @@
     "0040fe50": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)",
     "0040ff20": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)",
     "0040f440": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)",
-    "0040ec90": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)"
+    "0040ec90": "new: enumerator template support body (called by the enumerator slots; not a vtable slot)",
+    "00401760": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)",
+    "00420bb0": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)",
+    "00403af0": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)",
+    "00402f00": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)",
+    "00403da0": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)",
+    "00402d30": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)",
+    "00401020": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)",
+    "00402370": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)",
+    "00402fb0": "new: ATL typeinfo helper body (emitted unchanged by the authentic headers; called by GetTI 00404a80 or by a helper; not a vtable slot)"
   },
   "layout": {
     "sizeof_ATL_CComObjectNoLock": "0x20 (assert) = operator new(0x20) in creator 0040fbf0",
@@ -1336,6 +1483,9 @@
     "__GUID_b196b286_bab4_101a_b69c_00aa00341d07": "0080d3f0: 16 bytes equal the GUID in the symbol name",
     "__GUID_b196b285_bab4_101a_b69c_00aa00341d07": "0080d7c8: 16 bytes equal the GUID in the symbol name",
     "__GUID_b196b287_bab4_101a_b69c_00aa00341d07": "0080d3e0: 16 bytes equal the GUID in the symbol name",
+    "__GUID_00020412_0000_0000_c000_000000000046": "0080b130: 16 bytes equal the GUID in the symbol name",
+    "__GUID_00020401_0000_0000_c000_000000000046": "0080b1f0: 16 bytes equal the GUID in the symbol name",
+    "__GUID_00000000_0000_0000_c000_000000000046": "0080b154: 16 bytes equal the GUID in the symbol name",
     "_IID_IBrowserViewExternal": "008164d8: e2ece10d-9997-414b-b40b-0928b8f3cadb (equals the header __declspec(uuid))",
     "_entries(COM map)": "0080d64c: IBrowserViewExternal+0x14, IDispatch+0x14, ISupportErrorInfo+0, IConnectionPointContainer+4, all simple entries, terminator",
     "CComEnum<IEnumConnections>::_entries": "0080d3c8: {&IID_IEnumConnections 0080d3e0 (bytes verified), offset 0, simple entry}, terminator",
@@ -1352,6 +1502,350 @@
     "reason": "the first raw difference (offset 6) is the __sehtable$ relocation operand, not a wrong body; the full 156 bytes match under 5 relocations (see full_stack_owner_pending_extent)",
     "recorded_original_size_is_stale": true,
     "superseded_by": "full_stack_owner_pending_extent"
+  },
+  "typeinfo_helper_proof": {
+    "status": "PASS",
+    "kind": "bodies emitted unchanged by the authentic ATL9 RTM headers of the existing class object; no new provider, source, flag or compile trial",
+    "new_exact_rows": [
+      {
+        "symbol": "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z",
+        "address": "00401760"
+      },
+      {
+        "symbol": "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ",
+        "address": "00420bb0"
+      },
+      {
+        "symbol": "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z",
+        "address": "00403af0"
+      },
+      {
+        "symbol": "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z",
+        "address": "00402f00"
+      },
+      {
+        "symbol": "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z",
+        "address": "00403da0"
+      },
+      {
+        "symbol": "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z",
+        "address": "00402d30"
+      },
+      {
+        "symbol": "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+        "address": "00401020"
+      },
+      {
+        "symbol": "??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+        "address": "00402370"
+      },
+      {
+        "symbol": "?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z",
+        "address": "00402fb0"
+      }
+    ],
+    "getti_direct_helpers": [
+      "00401760",
+      "00420bb0",
+      "00403af0",
+      "00402f00",
+      "00403da0",
+      "00402d30"
+    ],
+    "helper_of_helper_rows": [
+      "00401020",
+      "00402370",
+      "00402fb0"
+    ],
+    "aliases_or_library_reused_rows": [],
+    "reuse_note": "nine additional helper rows for this class; all 56 prior pairs are preserved separately in the regression receipt; no server gain claimed",
+    "atl_module_add_term_func": {
+      "address": "004038f0",
+      "symbol": "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z",
+      "exact": false,
+      "emitted_size": 191,
+      "original_size": 191,
+      "emitted_relocation_offsets": [
+        6,
+        74,
+        115,
+        120,
+        142,
+        165
+      ],
+      "original_relocation_offsets": [
+        6,
+        120,
+        142,
+        165
+      ],
+      "non_relocation_difference_count": 10,
+      "first_non_relocation_difference": 26,
+      "emitted_window": "10538b5d08565789",
+      "original_window": "08538b5d08565789",
+      "emitted_text_sha256": "0ab4c5425eda379cf6d4a0e33c8776b74e59f11f90cfc14c4840be72fb4a91f8",
+      "original_sha256": "0bbf2c6b5d0bfbfde22562696c9000531e55cab27b786f815c5f151da4a32f72",
+      "status": "NOT EXACT: authentic atlbase.inl body (CComCritSecLock local) differs from the original; open, not a row, no server credit",
+      "stored_analog": "src/2008-06/004038f0.cpp (server cache 100%, library roc_unit_38a66487c88049f6.cpp, hand-written explicit Lock/Unlock, no CComCritSecLock): an analog of unverified freshness, NOT adopted, NOT recompiled here, not authentic header text"
+    },
+    "remaining_unproven_getti_targets": [
+      "?_pAtlModule@ATL@@3PAVCAtlModule@1@A 0096c268",
+      "?m_libid@CAtlModule@ATL@@2U_GUID@@A 0096c26c",
+      "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A 0097f2a8"
+    ],
+    "remaining_unproven_helper_targets": [
+      "CRT __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001, __ArrayUnwind 006a15fd, and the member __sehtable$ scope tables"
+    ],
+    "provenance": {
+      "class_object": "RTM header tree (tools/libs/mfc-9.0-rtm) with compiler 21022",
+      "query_interface_library_replay": "recipe mfc-9.0 source/header tree (tools/libs/mfc-9.0, hashes recorded as SP1-era input) with explicit RTM compiler 21022",
+      "note": "compiler build and vendor header revision are separate provenance facts; the library input hashes are the vendor-unit hashes and are never replaced by class RTM header hashes"
+    },
+    "sdk_guid_proof": {
+      "status": "PASS",
+      "guids": {
+        "__GUID_00020412_0000_0000_c000_000000000046": {
+          "interface": "ITypeInfo2",
+          "sdk_declaration": "__declspec(uuid(\"00020412-0000-0000-C000-000000000046\")) ITypeInfo2",
+          "sdk_header": "g:\\projects\\roconstruct\\tools\\vc2008sp1\\microsoft\\visual c++ for python\\9.0\\winsdk\\include\\oaidl.h",
+          "sdk_header_sha256": "95e2d2c3eaea98325e09a65f32819728fe0a750a3f17c8d54061146ef304ce41",
+          "original_address": "0080b130",
+          "emitted_coff_section": ".rdata",
+          "result": "SDK __uuidof value, emitted 16 bytes and the original 16 bytes are equal"
+        },
+        "__GUID_00020401_0000_0000_c000_000000000046": {
+          "interface": "ITypeInfo",
+          "sdk_declaration": "__declspec(uuid(\"00020401-0000-0000-C000-000000000046\")) ITypeInfo",
+          "sdk_header": "g:\\projects\\roconstruct\\tools\\vc2008sp1\\microsoft\\visual c++ for python\\9.0\\winsdk\\include\\oaidl.h",
+          "sdk_header_sha256": "95e2d2c3eaea98325e09a65f32819728fe0a750a3f17c8d54061146ef304ce41",
+          "original_address": "0080b1f0",
+          "emitted_coff_section": ".rdata",
+          "result": "SDK __uuidof value, emitted 16 bytes and the original 16 bytes are equal"
+        },
+        "__GUID_00000000_0000_0000_c000_000000000046": {
+          "interface": "IUnknown",
+          "sdk_declaration": "__declspec(uuid(\"00000000-0000-0000-C000-000000000046\")) IUnknown",
+          "sdk_header": "G:\\Projects\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\unknwn.h",
+          "sdk_header_sha256": "ac8e4dab839feea8c93f26c7a38188b3cd28aec824bc0a423af20c89f9c5a32e",
+          "original_address": "0080b154",
+          "emitted_coff_section": ".rdata",
+          "result": "SDK __uuidof value, emitted 16 bytes and the original 16 bytes are equal"
+        }
+      },
+      "guid_null": {
+        "symbol": "_GUID_NULL",
+        "original_address": "008501ec",
+        "sdk_declaration": "extern const IID GUID_NULL;",
+        "sdk_header": "G:\\Projects\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\cguid.h",
+        "sdk_header_sha256": "7cc51e0b337fb3c0a899ca4443cc87766c268a251a8df873af8cef185f429c2d",
+        "original_bytes": "16 x 00",
+        "original_section": ".rdata",
+        "original_section_readonly": true,
+        "result": "typed SDK GUID_NULL declaration, original storage is 16 zero bytes in a read-only section",
+        "not_claimed": "no runtime claim about zero-valued globals; helper callees 00427c20 and 004290b0 are NOT proven by this data check",
+        "unit_note": "declaration read from the class unit preprocess; WorkspaceSiteError.cpp includes windows.h (cguid.h via ole2.h) from the same SDK tree"
+      }
+    },
+    "not_claimed": "unproven ATL module globals stay open; no always-zero/always-LoadRegTypeLib claim; status stays PARTIAL"
+  },
+  "crt_eh_vector_proof": {
+    "status": "PASS",
+    "kind": "genuine compiler runtime archive members (recipe msvc-crt); no source, no assembler, no byte blob provider",
+    "compiler": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "archives": {
+      "libcmt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcmt.lib",
+        "sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "libcpmt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcpmt.lib",
+        "sha256": "e310db1d24bbec63f3ff2c64408f425afc30acc506eb032672d54656e210f02a"
+      },
+      "msvcrt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib",
+        "sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      }
+    },
+    "members": {
+      "libcmt.lib!ehvecctr.obj": {
+        "symbol": "??_L@YGXPAXIHP6EX0@Z1@Z",
+        "original": "006a1598",
+        "member_text_size": 101,
+        "inventory_extent": 77,
+        "inventory_extent_stale": true,
+        "masked_equal_over_full_member": true,
+        "relocation_operands_in_original": {
+          "__sehtable$??_L@YGXPAXIHP6EX0@Z1@Z": "00900ac0 (relocation operand, not verified here)",
+          "__SEH_prolog4": "006a1fbc",
+          "__SEH_epilog4": "006a2001",
+          "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z": "006a15fd"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\prebuild\\build\\INTEL\\mt_obj\\ehvecctr.obj",
+        "member_sha256": "7ab6fd2a04bf7580f09c8583f8326a720873fa9808bd3b19abcd6c4977ccedbd",
+        "text_sha256": "f05b41477d5ce8be981afaeb16e2a615f7f6b2ef4702db20c0974c8fc0b2c729",
+        "archive_sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "libcmt.lib!ehvecdtr.obj": {
+        "symbol": "??_M@YGXPAXIHP6EX0@Z@Z",
+        "original": "006a165b",
+        "member_text_size": 99,
+        "inventory_extent": 75,
+        "inventory_extent_stale": true,
+        "masked_equal_over_full_member": true,
+        "relocation_operands_in_original": {
+          "__sehtable$??_M@YGXPAXIHP6EX0@Z@Z": "00900b00 (relocation operand, not verified here)",
+          "__SEH_prolog4": "006a1fbc",
+          "__SEH_epilog4": "006a2001",
+          "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z": "006a15fd"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\prebuild\\build\\INTEL\\mt_obj\\ehvecdtr.obj",
+        "member_sha256": "0f084449fbf5b5337d22ab55f27dcfc71c365f9303295211e2b9e88b181c1ea4",
+        "text_sha256": "37d5686904d28c51e55d61d0bb1e148e7a0a24e30721c92716a1de2f48a79705",
+        "archive_sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "msvcrt.lib!ehvecdtr.obj": {
+        "symbol": "??_M@YGXPAXIHP6EX0@Z@Z",
+        "original": "006a165b",
+        "member_text_size": 99,
+        "inventory_extent": 75,
+        "inventory_extent_stale": true,
+        "masked_equal_over_full_member": true,
+        "relocation_operands_in_original": {
+          "__sehtable$??_M@YGXPAXIHP6EX0@Z@Z": "00900b00 (relocation operand, not verified here)",
+          "__SEH_prolog4": "006a1fbc",
+          "__SEH_epilog4": "006a2001",
+          "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z": "006a15fd"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\INTEL\\dll_lib\\ehvecdtr.obj",
+        "member_sha256": "62517f035709376bf63eef099033f2b7a144e8329022cd2dcf72d5fe2931be1f",
+        "text_sha256": "37d5686904d28c51e55d61d0bb1e148e7a0a24e30721c92716a1de2f48a79705",
+        "archive_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      },
+      "msvcrt.lib!ehvecctr.obj": {
+        "symbol": "??_L@YGXPAXIHP6EX0@Z1@Z",
+        "original": "006a1598",
+        "member_text_size": 101,
+        "inventory_extent": 77,
+        "inventory_extent_stale": true,
+        "masked_equal_over_full_member": true,
+        "relocation_operands_in_original": {
+          "__sehtable$??_L@YGXPAXIHP6EX0@Z1@Z": "00900ac0 (relocation operand, not verified here)",
+          "__SEH_prolog4": "006a1fbc",
+          "__SEH_epilog4": "006a2001",
+          "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z": "006a15fd"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\INTEL\\dll_lib\\ehvecctr.obj",
+        "member_sha256": "e76484980673e9cd650bbb11b200bbd0fd9446a51535c59f95c9b9699f36e0c5",
+        "text_sha256": "f05b41477d5ce8be981afaeb16e2a615f7f6b2ef4702db20c0974c8fc0b2c729",
+        "archive_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      }
+    },
+    "scope": "runtime/library byte identity only; not a native C++ row and not counted in methods. __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001 and __ArrayUnwind 006a15fd (jump targets of these members) and the members' __sehtable$ scope tables are relocation operands here and are NOT proven",
+    "extent_note": "inventory extents (77 / 75 bytes) are stale prefixes of the 101 / 99 byte members; metadata not changed"
+  },
+  "termination_helper_analog_proof": {
+    "status": "PASS",
+    "kind": "typed explicit Lock/Unlock codegen analog replay (source function addTermDirect); NOT authentic upstream AtlModuleAddTermFunc text, NOT the original declaration",
+    "provider_or_link_acceptance": false,
+    "native_row": false,
+    "counts_toward_methods": false,
+    "wrapper": "src/2008-06/004038f0.cpp (existing stored wrapper, recipe mfc-9.0-shared-rtm, roc-cl 21022, /O2 /GS- /EHsc /MD)",
+    "compiler_build": 21022,
+    "compiler_path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "coff_compiler_id": "0x84521e",
+    "symbol": "?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+    "address": "004038f0",
+    "size": 191,
+    "stdcall_ret": 12,
+    "non_relocation_differences": 0,
+    "emitted_text_sha256": "a388902d76def3fc11a176dd707b2db1efd5231c2e3072eb52a8a4c0338592df",
+    "original_sha256": "0bbf2c6b5d0bfbfde22562696c9000531e55cab27b786f815c5f151da4a32f72",
+    "relocation_operands": {
+      "+6": {
+        "symbol": "__ehhandler$?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+        "original_operand": "0x7bcc50"
+      },
+      "+74": {
+        "symbol": "??2@YAPAXI@Z",
+        "original_operand": "0x6a0920"
+      },
+      "+115": {
+        "symbol": "?Delete@CException@@QAEXXZ",
+        "original_operand": "0x6a0950"
+      },
+      "+120": {
+        "symbol": "$LN18",
+        "original_operand": "0x403947"
+      },
+      "+142": {
+        "symbol": "__imp__EnterCriticalSection@4",
+        "original_operand": "0x8022d4"
+      },
+      "+165": {
+        "symbol": "__imp__LeaveCriticalSection@4",
+        "original_operand": "0x8021f4"
+      }
+    },
+    "operand_identity": {
+      "+6": "local EH handler stub 0x7bcc50 (identified, not a native row)",
+      "+74": "mfc90.dll !??2@YAPAXI@Z import thunk 0x6a0920 (import identity only)",
+      "+115": "mfc90.dll !CException::Delete import thunk 0x6a0950 (import identity only)",
+      "+120": "local continuation $LN offset 87 = 0x403947",
+      "+142": "kernel32!EnterCriticalSection IAT 0x8022d4",
+      "+165": "kernel32!LeaveCriticalSection IAT 0x8021f4"
+    },
+    "inventory_relocation_offsets_omit": [
+      74,
+      115
+    ],
+    "native_bind_rows": [
+      {
+        "address": "004038f0",
+        "symbol": "?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+        "size": 191,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+          "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ",
+          "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+          "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+        },
+        "local_eh": [
+          "$LN18",
+          "__ehhandler$?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z"
+        ]
+      }
+    ],
+    "eh": {
+      "xdata_masked_equal_except_5_reloc_slots": true,
+      "all_five_xdata_relocations_resolved": true,
+      "handler_stub_masked_match_and_both_relocations_resolved": true,
+      "xdata_original_start": "0x8d0988",
+      "funcinfo": "0x8d09bc magic 19930522 max_state 2 try_blocks 1",
+      "tables": "catch 0x8d0988 unwind 0x8d0998 try 0x8d09a8",
+      "catch_type": "0x928604 .PAVCException@@",
+      "catch_funclet": "0x40395f = start+111",
+      "handler_stub": "0x7bcc50 b8 funcinfo e9 -> 0x6a14c0 jmp [0x8028bc] msvcr90!__CxxFrameHandler3 (identified by import identity only; stub and runtime implementation are not native rows)",
+      "emitted_stub_relocations": [
+        1,
+        6
+      ]
+    },
+    "abi": "genuine RTM atlbase.h _ATL_MODULE70 (m_pTermFuncs +8, m_csStaticDataInitAndTypeInfo +0xC) and 12-byte _ATL_TERMFUNC_ELEM; stdcall ret 0xc",
+    "distinct_evidence": "the authentic CComCritSecLock body (add_term_func above) emits 191 bytes with ten non-relocation differences starting at 26 and stays unmatched; an addTermScoped variant (183 bytes) is also not exact",
+    "object": {
+      "path": "rebuild/2008-06/out/native-layouts/browser-view-external/AtlTermAnalog21022.obj",
+      "sha256": "bc70c9b9524b65e6abb8ccada2e30c857d89566641f5bbab4dd41172d2a4e5ed"
+    },
+    "input_hashes": {
+      "src/2008-06/004038f0.cpp": "1b5d7359e1cb68878aea90ee0c26e74705c7fb5597b4a3a4614d129772a4709f",
+      "tools/libs/mfc-9.0-rtm/roc_unit_38a66487c88049f6.cpp": "bb15ea4f3388ebcbc4527884c1a269d62e7b1b15dc2d20fba4900c0b35d7439a",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/atlbase.h": "dd7ad831c81fbce7bd4e7e6965a0512075d9be30cc27a1ccd2d620723229c8c5",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/atlbase.inl": "ff1a32e026bcfdf265a3d77c84b47047edf83e56191f4d6beb718df811d649ac",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/afxwin.h": "afb3f83fcfbb4d4a1f0ca7ff3c9a4b4a2d5f89f0c781da83ff33b4dd0ecbd909"
+    }
   },
   "full_stack_owner_pending_extent": {
     "status": "FULL-SPAN MASKED MATCH, EXTENT NOT APPLIED",
@@ -1387,7 +1881,7 @@
     "object": {
       "comdat_text_size": 156,
       "comdat_text_sha256": "dfaacf88ea9a597c19642624f84eec7d5ddd49e611cfaa5994c4f76dccf26900",
-      "object_sha256": "3924282772d94c3aff365a77c3431c578ea61adaacea0868fa15dffddb666616",
+      "object_sha256": "617a449b2ae61460e5a821e9dff8ff90284c5a1b310f660b58aa7f5baa244a75",
       "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
       "coff_compiler_id": 8671774,
       "flags": [
@@ -1639,13 +2133,7 @@
     "?m_libid@CAtlModule@ATL@@2U_GUID@@A": "0096c26c",
     "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0097f2a8",
     "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": "00402610",
-    "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z": "00401760",
-    "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ": "00420bb0",
-    "__GUID_00020412_0000_0000_c000_000000000046": "0080b130",
-    "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z": "00403af0",
-    "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z": "00402f00",
-    "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z": "00403da0",
-    "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z": "00402d30"
+    "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z": "004038f0"
   },
   "failures": [],
   "known_open_bodies": [],
@@ -1981,9 +2469,10 @@
     "_memset"
   ],
   "open": {
-    "GetApp_00410fe0": "exact object row; ole32 CoCreateInstance, CString and AFX state-guard import identities verified; format string and typed GUID data verified; helper 00429330 body exact from WorkspaceSiteError.cpp. Its further callees and GUID_NULL remain open as recorded in helper_rows; import identity does not claim an imported implementation body was reconstructed",
+    "GetApp_00410fe0": "exact object row; ole32 CoCreateInstance, CString and AFX state-guard import identities verified; format string and typed GUID data verified; helper 00429330 body exact from WorkspaceSiteError.cpp. GUID_NULL data is verified; its further callees remain open as recorded in helper_rows; import identity does not claim an imported implementation body was reconstructed",
     "guid_definitions": "IID_IBrowserViewExternal, LIBID_RobloxLib, CLSID_BrowserViewExternal now defined once in native-classes/CBrowserViewExternalGuids.cpp (separate unit: defined in the class unit they constant-fold InterfaceSupportsErrorInfo to 76 bytes vs 78). LIBID_RobloxLib is shared logically with CContent/CWorkspace headers (declared C++-linkage there): linkage identity not reconciled, owners not edited",
     "Enum_bodies": "EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their 16 slot bodies (QI/AddRef/Release/Next/Skip/Reset/Clone/deleting destructor) and the four support bodies (CreateInstance x2, ~CComEnumImpl x2) are masked-exact rows: see enum_template_proof. Still open: _pAtlModule 0096c268 as a relocation operand (also in 004100a0/004104b0). _AtlVerifyStackAvailable 00402610: the full 156-byte owner matches (full_stack_owner_pending_extent) but the 93-byte extent is not accepted by the server, so it is NOT an accepted exact function and not a row. __alloca_probe 006a1520 (004100a0) and __alloca_probe_16 006a1560 (00402610, 00404a80) are proven as genuine CRT archive members (crt_stack_probe_proof), separate from native C++ rows",
+    "typeinfo_helpers": "GetTI 00404a80 helper bodies 00401760, 00420bb0, 00403af0, 00402f00, 00403da0, 00402d30 (+ callees 00401020, 00402370, 00402fb0) are masked-exact rows from the existing object; SDK ITypeInfo2/ITypeInfo/IUnknown GUID data verified. CRT ??_L/??_M archive entry identities are proven, with full implementations pending. Callee004038f0 is body/target/EH-proven by the separate typed explicit-lock analog; the authentic RAII body remains non-exact. Still open: _pAtlModule, m_libid, _AtlBaseModule, CRT SEH/ArrayUnwind members (see typeinfo_helper_proof)",
     "constructor_destructor": "standalone constructor/destructor bodies are inlined into the creator and the deleting destructor and are not rows",
     "stack_helper_extent": "proposal only (local): shared-layouts/browser-view-external-stack-extent.json, server_extent_status not applied; inventory, bounds.json and scores untouched; callers of 00402610 remain pending-boundary (not wrong codegen)",
     "scope": "source/object proof only; partial class (ATL module/stack/alloca/static targets open); no server credit, no selection, no build/runtime claim"

@@ -1,0 +1,54 @@
+{
+  "class": "CWrapperView",
+  "scope": "inactive source/object proof only; no selected provider or runtime/server credit",
+  "status": "PASS",
+  "canonical_receipt": "work/2008-06/shared-layouts/wrapper-view-working.json",
+  "canonical_sha256": "fb02ba79e1080c8a0a6466f8e30b66a8639de0e88d6de6fb5296772d13729319",
+  "symbol_rows": 10,
+  "distinct_addresses": 9,
+  "new_native_addresses": [
+    "0042eb40",
+    "0042eb90",
+    "0042ebc0",
+    "0042ec10",
+    "0042ece0",
+    "00430010",
+    "00430070"
+  ],
+  "reused_addresses": {
+    "006c4cb0": "folded CView base-class getter",
+    "0070bdf0": "shared empty ret4 (OnDraw)"
+  },
+  "declared_bodies_tested": 5,
+  "declared_bodies_total": 5,
+  "layout_assertions": "PASS: CView58, tree130 at58, wrapper188, CWnd handle20",
+  "vtable_slots": 101,
+  "eh_graphs_checked": 3,
+  "header_changed": false,
+  "dependent_recompilation_required": false,
+  "member_dependency": {
+    "receipt": "work/2008-06/shared-layouts/selection-tree-ctrl-working.json",
+    "receipt_sha256": "a3fac6abd7ffb09133c31251eb55f839986daa1109c4c9006902dd73dcdd7f4c",
+    "input_hashes_current": true,
+    "lifecycle_and_dispatch_targets": {
+      "??0CSelectionTreeCtrl@@QAE@XZ": "00425c90",
+      "??1CSelectionTreeCtrl@@UAE@XZ": "004270c0",
+      "?OnCmdMsg@CSelectionTreeCtrl@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z": "00422960"
+    },
+    "virtual_dispatch": "member table0080fed4 slot5 -> CSelectionTreeCtrl::OnCmdMsg00422960; its activeRobloxDoc binding is transitive evidence only",
+    "limit": "reuses exact lifecycle/dispatch bodies; dependency transitive call-site bindings/header-pending methods are not upgraded"
+  },
+  "remaining": [
+    "CSelectionTreeCtrl transitive proof and provider/link acceptance remain separate",
+    "no standalone destructor-address claim; its teardown is inlined into the deleting destructor",
+    "names and source shape are codegen analogs, not original declaration proof",
+    "no selection, P5/P6, runtime or server credit"
+  ],
+  "rejected_trial": {
+    "source": "initial scratch hypothesis used tree.GetSafeHwnd()",
+    "size": 211,
+    "target_size": 207,
+    "cause": "extra null receiver check and earlier tree pointer materialization",
+    "adopted_change": "direct genuine public CWnd::m_hWnd read, matching target [wrapper+78]"
+  }
+}
