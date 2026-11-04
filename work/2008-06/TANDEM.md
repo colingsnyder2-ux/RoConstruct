@@ -655,3 +655,15 @@ affected by anything on the P6 branch.
   - Proposal: reflection/type.h, the Value::get<T>() body: `if (isType<T>()) return any_cast<const T&>(value); Value copy(*this); return copy.convert<T>();` (0059f310).
   - Proposal: reflection/property.h. Add the 2008 Value-based TypedPropertyDescriptor virtuals getValue(o, Value&) and setValue(o, const Value&) at vtable slots 4 and 5 (008333d8: 0059f280, 0059f400), plus GetSet isWriteOnly.
 
+
+- 2026-11-04 Claude (fork, lease RBX::Stats StatsService items): native-headers/stats/Stats.h and WorkspaceStatsItem.h, native-classes/StatsService.cpp. Inactive. 81 distinct exact addresses (receipt stats-service-working.json). Not counted: 10 pending-build-only rows and 2 COMDATs that are not exact. WorkspaceStatsItem ctor 005a5c90 and the ProfilingItem bodies were not attempted.
+  - Proposal: reflection/type.h. Add `struct Tuple { ValueCollection values; explicit Tuple(size_t count) : values(count) {} };`, size 0x18, the GetTimes return type. With it, 8 GetTimes/ProfilingItem rows are exact.
+  - Proposal: reflection/reflection.h, the 0-argument BoundFuncDesc::call. Use `returnValue = (o->*function)();` instead of `set<ReturnType>`. With it, call<double> 005e17f0 and execute 005c9820 are exact. Other BoundFuncDesc users should re-run their recorders.
+  - Proposal: a native util/Profiling.h with the 2008 Profiler. Fields:
+    - bucketTimeSpan +0x08;
+    - currentBucket +0x10;
+    - 2048 x 0x18 buckets from +0x18;
+    - name at +0xc020.
+    getData is 005c4120.
+  - Proposal: util/Object.h. Define Creatable<T>::Deleter::operator() (00405e30), which is inlined by sp_counted_impl_pd::dispose 0048ee50.
+
