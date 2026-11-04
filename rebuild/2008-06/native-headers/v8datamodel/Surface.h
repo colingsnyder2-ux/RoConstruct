@@ -17,8 +17,8 @@ namespace RBX
 	public:
 		void flat();
 		Surface(PartInstance* partInstance, NormalId surfId);
-		PartInstance* getPartInstance() const;
-		NormalId getNormalId() const;
+		PartInstance* getPartInstance() const { return partInstance; }  // inline in the target: no function bound anywhere; field at +0, as in getSurfaceType 005f1290
+		NormalId getNormalId() const { return surfId; }  // field at +4
 		bool isControllable() const;
 		SurfaceType getSurfaceType() const;
 		void setSurfaceType(SurfaceType type);

@@ -29,12 +29,45 @@ def commit(cwd, files, msg, deletes=()):
 
 
 def test_payload_links():
-    new = [('o/r', 'b', 'abc123', N + 'A.cpp'), ('o/r', 'b', 'abc123', 'rebuild/2008-06/native-headers/A.h')]
+    new = [('o/r', 'b', 'abc123', N + 'A.cpp', 'new'), ('o/r', 'b', 'abc123', 'rebuild/2008-06/native-headers/A.h', 'new'),
+           ('o/r', 'b', 'abc123', N + 'B.cpp', 'changed')]
     body = nf.build_payloads(new)[0]['embeds'][0]
     assert body['title'].endswith('RoConstruct Integration Digest')
-    value = body['fields'][0]['value']
-    assert '[native-classes/A.cpp](https://github.com/o/r/blob/abc123/' + N + 'A.cpp)' in value
+    names = [f['name'] for f in body['fields']]
+    assert 'New native files' in names[0] and 'Changed native files' in names[1], names
+    assert '[native-classes/A.cpp](https://github.com/o/r/blob/abc123/' + N + 'A.cpp)' in body['fields'][0]['value']
+    assert '[native-classes/B.cpp](' in body['fields'][1]['value']
     assert nf.is_native(N + 'x.cpp') and not nf.is_native(N + 'x.txt') and not nf.is_native('src/x.cpp')
+    # many long links: every field under 1024, every embed under 6000, no link cut in half
+    sha = 'f' * 40
+    many = [('someone/RoConstruct', 'claude/a-long-branch-name', sha, N + 'HumanoidStatesLeaves%03d.cpp' % i, 'new') for i in range(60)]
+    payloads = nf.build_payloads(many)
+    seen = 0
+    for p in payloads:
+        embed = p['embeds'][0]
+        assert sum(len(f['name']) + len(f['value']) for f in embed['fields']) + len(embed['title']) < 6000
+        for f in embed['fields']:
+            assert len(f['value']) <= 1024
+            for line in f['value'].split('\n'):
+                assert line.startswith('[') and line.endswith('.cpp)'), line
+                seen += 1
+    assert seen == 60, seen
+
+
+def test_changed_files():
+    with tempfile.TemporaryDirectory() as tmp:
+        repo = Path(tmp)
+        git(repo, 'init', '-q', '-b', 'work')
+        git(repo, 'config', 'user.name', 't'); git(repo, 'config', 'user.email', 't@t')
+        a = commit(repo, {N + 'A.cpp': 'int a;\n', 'README.md': 'x\n'}, 'a')
+        b = commit(repo, {N + 'A.cpp': 'int a2;\n', N + 'B.cpp': 'int b;\n', 'README.md': 'y\n'}, 'b')
+        old = nf.ROOT
+        nf.ROOT = repo
+        try:
+            got = sorted(nf.changed_files(a, b))
+        finally:
+            nf.ROOT = old
+        assert got == [('changed', N + 'A.cpp'), ('new', N + 'B.cpp')], got
 
 
 def test_fork_merge():
@@ -65,7 +98,7 @@ def test_fork_merge():
         git(repo, 'checkout', '-q', 'work')
 
         logs = []
-        fork_merge.run(push=False, log=logs.append, repo=repo, clone=clone, mine='work', days=36500, state_file=state)
+        fork_merge.run(push=True, log=logs.append, repo=repo, clone=clone, mine='work', days=36500, state_file=state)
         out = '\n'.join(logs)
         tree = git(clone, 'ls-tree', '-r', '--name-only', 'auto-merge/native').splitlines()
         assert N + 'FromClean.cpp' in tree, out                       # clean fork merged
@@ -76,11 +109,12 @@ def test_fork_merge():
         note = git(clone, 'show', 'auto-merge/native:merge/conflict/feat/MERGE_NEEDED.md')
         assert 'CONFLICT' in note, note
         again = []
-        fork_merge.run(push=False, log=again.append, repo=repo, clone=clone, mine='work', days=36500, state_file=state)
+        fork_merge.run(push=True, log=again.append, repo=repo, clone=clone, mine='work', days=36500, state_file=state)
         assert not any('merged' in l or 'parked' in l for l in again), again   # idempotent
 
 
 if __name__ == '__main__':
     test_payload_links()
+    test_changed_files()
     test_fork_merge()
     print('native files tests ok')

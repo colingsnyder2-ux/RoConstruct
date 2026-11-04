@@ -32,9 +32,9 @@ overlaps someone else's, so forks and parallel workers never touch the same file
 
 ## New native files on the Integration Digest webhook
 
-When `server_mines_webhook` is set, the server checks every 5 minutes for files added under
+When `server_mines_webhook` is set, the server checks every 5 minutes for files added or changed under
 `native-classes`, `native-headers` and `native-world` on this repo's branches **and on every fork**, and posts
-them to the Integration Digest as GitHub permalinks (once per file content). Forks are fetched by URL, so no
+them to the Integration Digest as GitHub permalinks, in New and Changed groups (once per file content). Forks are fetched by URL, so no
 remote setup is needed. A branch seen for the first time is only recorded, so nothing floods.
 
 - `roc.cmd native-files scan --dry-run` previews what would be posted (nothing sent, nothing saved);

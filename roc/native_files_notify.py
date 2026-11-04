@@ -24,8 +24,8 @@ MAX_FIELDS = 6          # fields per message
 BOT_BRANCH = 'auto-merge/native'   # written by fork_merge; never announced
 
 
-def git(*args, cwd=ROOT, check=True):
-    r = subprocess.run(['git', *args], cwd=cwd, capture_output=True, text=True, encoding='utf-8', errors='replace')
+def git(*args, cwd=None, check=True):
+    r = subprocess.run(["git", *args], cwd=cwd or ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace")
     if check and r.returncode:
         raise RuntimeError('git %s: %s' % (' '.join(args[:3]), r.stderr.strip()[:300]))
     return r.stdout.strip()
@@ -110,9 +110,11 @@ def fetch_refs(slug, label):
     return {line.split()[0][len(ns) + 1:]: line.split()[1] for line in out.splitlines() if line.strip()}
 
 
-def added_files(old, new):
-    out = git('diff', '--name-status', '--diff-filter=A', '--no-renames', old, new, check=False)
-    return [line.split('\t', 1)[1] for line in out.splitlines() if '\t' in line and is_native(line.split('\t', 1)[1])]
+def changed_files(old, new):
+    """[(kind, path)] native files added ('new') or modified ('changed') between two commits."""
+    out = git('diff', '--name-status', '--diff-filter=AM', '--no-renames', old, new, check=False)
+    rows = [line.split('\t', 1) for line in out.splitlines() if '\t' in line]
+    return [('new' if status == 'A' else 'changed', path) for status, path in rows if is_native(path)]
 
 
 def upstream_main_tip(repos):
@@ -137,11 +139,6 @@ def scan(include_forks=True, backfill=False, post=True, save=True, log=print):
         except RuntimeError as error:
             log('fetch failed for %s: %s' % (slug, error))
     main_tip = upstream_main_tip(repos)
-    up = upstream_slug()
-    known = set()                                               # native paths upstream already has
-    for tip in [main_tip] + [sha for b, sha in tips_by_repo.get(up, {}).items() if b == git('rev-parse', '--abbrev-ref', 'HEAD', check=False)]:
-        if tip:
-            known.update(p for p in git('ls-tree', '-r', '--name-only', tip, check=False).splitlines() if is_native(p))
     new = []
     for slug, tips in tips_by_repo.items():
         for branch, sha in tips.items():
@@ -156,20 +153,18 @@ def scan(include_forks=True, backfill=False, post=True, save=True, log=print):
                 if not backfill:
                     continue                                   # first sight: record only
                 base = git('merge-base', sha, main_tip, check=False) if main_tip else ''
-                files = added_files(base, sha) if base else [
-                    p for p in git('ls-tree', '-r', '--name-only', sha, check=False).splitlines() if is_native(p)]
+                files = changed_files(base, sha) if base else [
+                    ('new', p) for p in git('ls-tree', '-r', '--name-only', sha, check=False).splitlines() if is_native(p)]
             elif git('cat-file', '-t', old, check=False) != 'commit':
                 continue                                       # history rewritten; re-baselined
             else:
-                files = added_files(old, sha)
-            for path in files:
-                if slug != up and path in known:
-                    continue                                    # fork changed a path upstream already has
+                files = changed_files(old, sha)
+            for kind, path in files:
                 blob = git('rev-parse', '%s:%s' % (sha, path), check=False)
-                announce = '%s:%s' % (path, blob)               # content-based: a merge does not re-announce
+                announce = '%s:%s' % (path, blob)               # content-based: a merge of the same edit is not re-announced
                 if announce not in state['announced']:
                     state['announced'].append(announce)
-                    new.append((slug, branch, sha, path))
+                    new.append((slug, branch, sha, path, kind))
     if new and post and not post_files(new, log=log):
         return new                                              # leave state untouched so the next poll retries
     if save and (post or not new):
@@ -178,27 +173,47 @@ def scan(include_forks=True, backfill=False, post=True, save=True, log=print):
 
 
 def link(slug, sha, path):
-    return 'https://github.com/%s/blob/%s/%s' % (slug, sha, path)
+    return 'https://github.com/%s/blob/%s/%s' % (slug, sha[:10], path)
+
+
+FIELD_LIMIT = 1024     # Discord: characters per field value
+EMBED_LIMIT = 5800     # Discord: 6000 characters per embed, with headroom for title/footer
 
 
 def build_payloads(new, cap=150):
-    """Integration Digest embeds, one field group per (repo, branch); capped so a bulk import is not a flood."""
+    """Integration Digest embeds, one field group per (repo, branch). Whole links only: a field or message
+    is closed before a line would cross Discord's limits, never cut mid-link."""
     shown, extra = new[:cap], max(0, len(new) - cap)
     groups = {}
-    for slug, branch, sha, path in shown:
-        groups.setdefault((slug, branch, sha), []).append(path)
+    for slug, branch, sha, path, kind in shown:
+        groups.setdefault((kind != 'new', slug, branch, sha), []).append(path)
     fields = []
-    for (slug, branch, sha), paths in sorted(groups.items()):
-        for i in range(0, len(paths), MAX_LINES):
-            lines = ['[%s](%s)' % (p.replace('rebuild/2008-06/', ''), link(slug, sha, p)) for p in paths[i:i + MAX_LINES]]
-            fields.append({'name': ('\U0001F4C4 New native files · %s · %s' % (slug, branch))[:256],
-                           'value': '\n'.join(lines)[:1024], 'inline': False})
+    for (changed, slug, branch, sha), paths in sorted(groups.items()):
+        title = '✏️ Changed native files' if changed else '\U0001F4C4 New native files'
+        name = ('%s · %s · %s' % (title, slug, branch))[:256]
+        value = ''
+        for p in paths:
+            line = '[%s](%s)' % (p.replace('rebuild/2008-06/', ''), link(slug, sha, p))
+            if value and len(value) + 1 + len(line) > FIELD_LIMIT:
+                fields.append({'name': name, 'value': value, 'inline': False})
+                value = ''
+            value = value + '\n' + line if value else line[:FIELD_LIMIT]
+        if value:
+            fields.append({'name': name, 'value': value, 'inline': False})
     if extra:
-        fields.append({'name': '➕ More', 'value': '+%d more new native files (see the branches)' % extra, 'inline': False})
+        fields.append({'name': '➕ More', 'value': '+%d more new or changed native files (see the branches)' % extra, 'inline': False})
+    messages, current, size = [], [], 0
+    for field in fields:
+        cost = len(field['name']) + len(field['value'])
+        if current and (size + cost > EMBED_LIMIT or len(current) >= MAX_FIELDS):
+            messages.append(current); current, size = [], 0
+        current.append(field); size += cost
+    if current:
+        messages.append(current)
     return [{'allowed_mentions': {'parse': []}, 'embeds': [{
         'title': '⛏️ RoConstruct Integration Digest', 'color': 0xA855F7, 'description': '**2008-06 Client**',
-        'footer': {'text': 'RoConstruct Integration'}, 'fields': fields[i:i + MAX_FIELDS],
-        'timestamp': datetime.now(timezone.utc).isoformat()}]} for i in range(0, len(fields), MAX_FIELDS)]
+        'footer': {'text': 'RoConstruct Integration'}, 'fields': group,
+        'timestamp': datetime.now(timezone.utc).isoformat()}]} for group in messages]
 
 
 def post_files(new, log=print):
@@ -217,7 +232,7 @@ def post_files(new, log=print):
             log('webhook post failed: %s' % error)
             return False
         time.sleep(1)
-    log('posted %d new native file(s) in %d message(s)' % (len(new), len(payloads)))
+    log('posted %d new or changed native file(s) in %d message(s)' % (len(new), len(payloads)))
     return True
 
 
@@ -243,9 +258,9 @@ def start_watch(interval=300, log=print):
 def main(args):
     if args.action == 'scan':
         new = scan(include_forks=not args.no_forks, backfill=args.backfill, post=not args.dry_run, save=not args.dry_run)
-        for slug, branch, sha, path in new:
-            print('%s %s %s' % (slug, branch, link(slug, sha, path)))
-        print('%d new native file(s)%s' % (len(new), ' (dry run: nothing posted, state not saved)' if args.dry_run else ''))
+        for slug, branch, sha, path, kind in new:
+            print("%s %s %s %s" % (kind, slug, branch, link(slug, sha, path)))
+        print('%d new or changed native file(s)%s' % (len(new), ' (dry run: nothing posted, state not saved)' if args.dry_run else ''))
         if args.dry_run and new:
             print(json.dumps(build_payloads(new)[0], indent=1)[:1800])
     else:

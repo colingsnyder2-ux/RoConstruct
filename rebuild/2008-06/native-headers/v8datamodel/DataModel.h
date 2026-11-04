@@ -54,6 +54,7 @@ public:
     virtual void setDirty(bool value) { dirty = value; }
     virtual bool isDirty() const { return dirty; }
     Workspace* getWorkspace() const { return workspace.get(); }
+    GuiRoot* getGuiRoot() const { return guiRoot.get(); }
     double getGameTime() const;
     double getFrameRate() const;
     double getDutyCycle() const;

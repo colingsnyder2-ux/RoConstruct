@@ -1,6 +1,6 @@
 # Native-doc tool-family sources for ROC_NATIVE_DOC_EXTRA (semicolon-separated absolute paths).
-# Isolated probes against the working-tree build_client.py of 2026-11-03 14:23: 110 unresolved without these sources, 40 with them; only the 5 Instance LNK2005 remain.
-# Left out on purpose: HammerMethods/Shoot/LaserClick/Slingshot Content,Pellet,Provider/RocketPrototype worker trials (do not compile: PartInstance::clone/remove, one-argument getUnlockedPartByLocalCharacter), RocketLaunchMismatch and MouseCaptureRocket (conflict with the real definitions), CloneSticky, ChangeHistoryLifetime, MegaDragger trials, BasicVerbConstructors (already in build_client.py).
+# Isolated probes against the working-tree build_client.py of 2026-11-03 18:40: 28 unresolved with these sources; only the 5 Instance LNK2005 remain. Re-measure a no-extras baseline first: build_client.py changes often.
+# Left out on purpose: HammerMethods/Shoot/LaserClick/Slingshot Content,Pellet,Provider/RocketPrototype worker trials (do not compile: PartInstance::clone/remove, one-argument getUnlockedPartByLocalCharacter), RocketLaunchMismatch and MouseCaptureRocket (conflict with the real definitions), CloneSticky, ChangeHistoryLifetime, MegaDragger trials, BasicVerbConstructors (already in build_client.py), CloneSticky (exact 130/130 with the inline CloneTool ctor, but that ctor then clashes with NativeCloneToolTrial), CameraFirstPerson trial (now native-classes/CameraFirstPerson.cpp in build_client.py), Clipboard Copy/Paste trials (redefine DocumentInitialize verbs), AxisCommands and LDrawParserConstructor trials (pull in more than they resolve), GuidItem (now in build_client.py).
 rebuild/2008-06/native-classes/ToolVerbFactories.cpp
 rebuild/2008-06/tests/NativeAnchorActionsTrial.cpp
 rebuild/2008-06/tests/NativeAnchorCursorTrial.cpp
@@ -58,7 +58,6 @@ rebuild/2008-06/tests/NativeClosestRayTrial.cpp
 rebuild/2008-06/tests/NativeAxisBoundsTrial.cpp
 rebuild/2008-06/tests/NativeResizeToolDragTrial.cpp
 rebuild/2008-06/tests/NativeFillColorTrial.cpp
-rebuild/2008-06/native-classes/GuidItem.cpp
 rebuild/2008-06/tests/NativeDraggerExtentsTrial.cpp
 rebuild/2008-06/tests/NativeCollectPrimitivesTrial.cpp
 rebuild/2008-06/tests/NativeGrabMethodsTrial.cpp
@@ -85,4 +84,8 @@ rebuild/2008-06/tests/NativeCameraZoomExtentsAction.cpp
 rebuild/2008-06/tests/NativeContentReadTrial.cpp
 rebuild/2008-06/tests/NativeAnchorChildrenTrial.cpp
 rebuild/2008-06/tests/NativeApplyAnchoredTrial.cpp
-rebuild/2008-06/tests/NativeCameraFirstPersonTrial.cpp
+rebuild/2008-06/tests/NativeMegaAliveTrial.cpp
+rebuild/2008-06/tests/NativeMegaSafeMoveTrial.cpp
+rebuild/2008-06/tests/NativeDraggerMoveTrial.cpp
+rebuild/2008-06/tests/NativeEngineStatsTrial.cpp
+rebuild/2008-06/tests/NativeHammerMethodsWorkerTrial.cpp
