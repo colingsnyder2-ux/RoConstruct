@@ -28,7 +28,7 @@ def _publish_downloads(root, git_exe, log=print, guide_base=None):
             raise RuntimeError('Download publication failed: ' + result.stderr.strip()[-300:])
         return result.stdout.strip()
     try:
-        git('fetch', 'findings', 'refs/heads/main:refs/remotes/findings/main')
+        git('fetch', '--no-write-fetch-head', 'findings', 'refs/heads/main:refs/remotes/findings/main')
         parent = git('rev-parse', 'refs/remotes/findings/main')
         if guide_base:
             for name in ('NATIVE_AGENT.md', 'MATCHING_AGENT.md'):
@@ -64,7 +64,7 @@ def _publish_package(root, git_exe, log=print):
             raise RuntimeError('Package publication failed: ' + result.stderr.strip()[-300:])
         return result.stdout.strip()
     try:
-        git('fetch', 'findings', 'refs/heads/main:refs/remotes/findings/main')
+        git('fetch', '--no-write-fetch-head', 'findings', 'refs/heads/main:refs/remotes/findings/main')
         parent = git('rev-parse', 'refs/remotes/findings/main')
         previous = json.loads(git('show', parent + ':2008-06/package.json'))
         git('read-tree', parent)
@@ -114,10 +114,10 @@ def _publish(root, git_exe, log=print):
     env["GIT_INDEX_FILE"] = str(index)
     git = lambda *a: subprocess.run([git_exe, *a], cwd=root, env=env, capture_output=True, text=True)
     try:
-        fetched = git("fetch", "findings", "main")
+        fetched = git("fetch", "--no-write-fetch-head", "findings", "refs/heads/main:refs/remotes/findings/main")
         if fetched.returncode:
             return log("Findings fetch failed: %s" % fetched.stderr.strip()[-300:])
-        parent = git("rev-parse", "FETCH_HEAD")
+        parent = git("rev-parse", "refs/remotes/findings/main")
         if parent.returncode:
             return log("Findings revision unavailable: %s" % parent.stderr.strip()[-300:])
         parent = parent.stdout.strip()
@@ -279,8 +279,9 @@ def publish_files(root, files, message, remote='findings', guard=None):
                     raise RuntimeError(p.stderr.decode(errors='replace')[-1000:])
                 return p.stdout.decode().strip()
             for attempt in range(3):
-                git('fetch', remote, 'main')
-                parent = git('rev-parse', 'FETCH_HEAD')
+                ref = 'refs/remotes/' + remote + '/main'
+                git('fetch', '--no-write-fetch-head', remote, 'refs/heads/main:' + ref)
+                parent = git('rev-parse', ref)
                 git('read-tree', parent)
                 removals = guard(parent) or [] if guard else []
                 for name in removals:

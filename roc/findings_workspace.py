@@ -105,8 +105,10 @@ def publish(root, ref=BRANCH):
     root = Path(root)
     with lock(root / 'work/findings-workspace.lock'):
         if ref == BRANCH:
-            subprocess.run(['git','fetch','origin',BRANCH],cwd=root,capture_output=True,check=True,timeout=120)
-            ref = subprocess.check_output(['git','rev-parse','FETCH_HEAD'],cwd=root).decode().strip()
+            subprocess.run(['git','fetch','--no-write-fetch-head','origin',
+                            'refs/heads/'+BRANCH+':refs/remotes/origin/'+BRANCH],
+                           cwd=root,capture_output=True,check=True,timeout=120)
+            ref = subprocess.check_output(['git','rev-parse','refs/remotes/origin/'+BRANCH],cwd=root).decode().strip()
         revision, files = export(root, ref)
         files.update(Inbox(root).archive())
         def guard(parent):
