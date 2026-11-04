@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03 23:31 UTC",
+ "updated": "2026-11-04 00:54 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -769,15 +769,15 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39655,
-   "matched": 17387,
-   "partial": 10756,
+   "matched": 17390,
+   "partial": 10762,
    "source_matched": 9796,
-   "mined_matched": 7591,
+   "mined_matched": 7594,
    "bytes": 6736062,
-   "matched_bytes": 1638323,
+   "matched_bytes": 1638506,
    "source_bytes": 1429871,
-   "mined_bytes": 208452,
-   "partial_bytes": 1868671,
+   "mined_bytes": 208635,
+   "partial_bytes": 1869726,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -809,12 +809,12 @@
     },
     {
      "user": "Intel",
-     "matched": 111,
-     "mining_points": 30682,
-     "points": 30682,
+     "matched": 114,
+     "mining_points": 31227,
+     "points": 31227,
      "native_integrated": 0,
-     "submissions": 727,
-     "last": 1793748264.5185657
+     "submissions": 741,
+     "last": 1793753489.8356202
     },
     {
      "user": "intel",
@@ -969,12 +969,12 @@
   },
   {
    "user": "Intel",
-   "matched": 118,
-   "mining_points": 31123,
-   "points": 31123,
+   "matched": 121,
+   "mining_points": 31668,
+   "points": 31668,
    "native_integrated": 0,
-   "submissions": 744,
-   "last": 1793748264.5185657
+   "submissions": 758,
+   "last": 1793753489.8356202
   },
   {
    "user": "intel",
