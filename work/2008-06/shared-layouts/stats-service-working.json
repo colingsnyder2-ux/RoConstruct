@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeStatsServiceLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeStatsServiceLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\out\\NativeStatsServiceLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\rebuild\\2008-06\\tests\\NativeStatsServiceLayout.cpp"
     ],
     "main": [
       "/nologo",
@@ -61,7 +61,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeStatsService.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/StatsService.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\out\\NativeStatsService.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\rebuild\\2008-06\\native-classes\\StatsService.cpp"
     ],
     "pending": [
       "/nologo",
@@ -99,9 +99,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/stats-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\out\\stats-pending",
       "/DNATIVE_STATS_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -115,21 +115,21 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeStatsServicePending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/StatsService.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\out\\NativeStatsServicePending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\stats-candidate-20261104-1458\\rebuild\\2008-06\\native-classes\\StatsService.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_stats_service.py": "0c989e77189023dd7cb7868536b829684b28a7876efcd9de1fafcd508f42c82b",
+    "rebuild/2008-06/tests/record_native_stats_service.py": "7df6376d991c11846374c956c9ec9f78ad5e0ecf0115291e133ab55530c627b3",
     "rebuild/2008-06/native-headers/stats/Stats.h": "a9eb69da77017b5be20ca26df67560d29950c38a485fd303c8a97ef08f10e544",
     "rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h": "ff7a6fa91d61a339d35f78802ef452e1e47e44f09951d18a645a768ee7073722",
     "rebuild/2008-06/native-classes/StatsService.cpp": "a27e7f99f70856c9bc5f4ec545d84837cc8e3717cfb86bace241c44adab6a33d",
     "rebuild/2008-06/tests/NativeStatsServiceLayout.cpp": "f3fd2da728fbdf2cd712f7bcb230e6e4ae6a82f5dbc7838fb95eec4cf2522f7a"
   },
   "objects": {
-    "NativeStatsServiceLayout.obj": "8112a20b71f6e674700438d6690a87dd7ee1ee01467fc3bb74645645cffe6f1d",
-    "NativeStatsService.obj": "6c92dfceba811f5ace0e72d3b7a35610c4c981f8fc8d7e26be9a66894973f6e0",
-    "NativeStatsServicePending.obj": "e6874e9aa6efe7e81778a63fe32614c6fb9d0c94c3dd5c287c0b0e6ecb86f571"
+    "NativeStatsServiceLayout.obj": "fb0bd9169fd5391589ced60e73ff47a40d4e690937b334157a63d9d286549451",
+    "NativeStatsService.obj": "f83513316075af0cc518cf3d71a089ceaf832d9f51b805653b4a5612730d0dab",
+    "NativeStatsServicePending.obj": "bdfd465fce65220358e0a6c6d92c8cc6ef5922150d3dca6b1795d165cc90911c"
   },
   "layout": {
     "Item": "0x158 (004b4e50); val double +0x130, sValue std::string +0x138; new virtual update at slot 16",
@@ -255,7 +255,7 @@
         "local_eh": []
       },
       {
-        "address": "005c9240+005c92ae",
+        "address": "005c9240",
         "symbol": "??$?0PAVTypedMemItem@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@shared_count@detail@boost@@QAE@PAVTypedMemItem@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z",
         "size": 131,
         "target_size": 131,
@@ -848,7 +848,7 @@
         ]
       },
       {
-        "address": "004ac430+004ac49e",
+        "address": "004ac430",
         "symbol": "??$?0PAVItem@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@shared_count@detail@boost@@QAE@PAVItem@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z",
         "size": 131,
         "target_size": 131,
@@ -1591,7 +1591,6 @@
     "0045f720",
     "0047d410",
     "004ac430",
-    "004ac49e",
     "004ad3c0",
     "004b4e50",
     "004c9c40",
@@ -1610,7 +1609,6 @@
     "005c9140",
     "005c9170",
     "005c9240",
-    "005c92ae",
     "005c9390",
     "005c9650",
     "005c96c0",
@@ -2788,5 +2786,12 @@
     "with": "returnValue = (o->*function)(); // 2008: Value::operator= (call<double> 005e17f0)"
   },
   "proposal_type_h": "\t\tstruct Tuple // proposal (2008 RTTI .?AUTuple@Reflection@RBX@@, size 0x18)\n\t\t{\n\t\t\tValueCollection values;\n\t\t\texplicit Tuple(size_t count) : values(count) {}\n\t\t};\n\n",
-  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.",
+  "integration_validation": {
+    "parent": "a16a093b1379a80924691bb68fa530c4d944d299",
+    "headers": "Frozen committed HEAD native-headers plus only two reviewed incoming Stats headers. No shared header edits.",
+    "extent_fix": "005c9240 and 004ac430 now each include their catch body in current 131-byte extents; compare the complete extent once. 79 distinct addresses, not prior 81 split extents.",
+    "live_check": "Current checkout main rows passed; pending-only descriptor check failed at 005c9880 (164 vs193 bytes) with unrelated modified reflection headers. Frozen committed-header full recorder passes. Pending-only rows excluded; no runtime activation.",
+    "fork_tip": "76c718db96d44254cc2903f95353dab9c5d5e3da"
+  }
 }

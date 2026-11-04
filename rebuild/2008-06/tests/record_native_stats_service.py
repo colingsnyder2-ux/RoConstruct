@@ -183,7 +183,7 @@ ROWS = [
     (0x5c90b0, '??$formatValue@N@Item@Stats@RBX@@'), (0x5c90e0, '??$formatValue@M@Item@Stats@RBX@@'),
     (0x5c9110, '??$formatValue@H@Item@Stats@RBX@@'), (0x5c9140, '??$formatValue@I@Item@Stats@RBX@@'),
     (0x5c9170, '??$formatValue@_N@Item@Stats@RBX@@'),
-    ((0x5c9240, 0x5c92ae), '??$?0PAVTypedMemItem@Stats@RBX@@VDeleter@'),
+    (0x5c9240, '??$?0PAVTypedMemItem@Stats@RBX@@VDeleter@'),  # current extent includes catch at 005c92ae
     (0x5c9390, '??$?0VTypedMemItem@Stats@RBX@@VDeleter@'),
     (0x5c9650, '??0' + BFS), (0x5c96c0, '??$call@V' + STR + '@' + BFS), (0x5c9750, '?execute@' + BFS),
     (0x5c97b0, '??0' + BFD),
@@ -215,7 +215,7 @@ ROWS = [
     (0x45b1d0, '??$doDeclare@$1?sStatsItem@Stats@RBX@@3PADA@'), (0x45b6e0, '??$callDoDeclare@$1?sStatsItem@Stats@RBX@@3PADA@'),
     (0x4b4e50, '??$create@VItem@Stats@RBX@@@'),
     (0x4ad3c0, '??$?0VItem@Stats@RBX@@VDeleter@'),
-    ((0x4ac430, 0x4ac49e), '??$?0PAVItem@Stats@RBX@@VDeleter@'),
+    (0x4ac430, '??$?0PAVItem@Stats@RBX@@VDeleter@'),  # current extent includes catch at 004ac49e
     (0x415000, '??_G' + SPI), (0x5a0460, '?get_deleter@' + SPI),
     (0x415000, '??_G' + SPM), (0x5a0460, '?get_deleter@' + SPM),
     (0x45ee60, '??1' + TSI + 'UAE@XZ'), (0x45eed0, '??_G' + TSI + 'UAEPAXI@Z'),
