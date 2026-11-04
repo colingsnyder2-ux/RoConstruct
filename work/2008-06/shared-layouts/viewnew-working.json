@@ -1,0 +1,1218 @@
+{
+  "class": "RBX::ViewNew::LevelBuilder, BevelMesh::Builder, SphereBuilder/SphereMesh, CylinderBuilder/CylinderAlongXMesh, HeadBuilder/HeadMesh; RBX::RenderBase::Mesh / Mesh::Level (base declarations)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNewLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeViewNewLayout.cpp"
+    ],
+    "quad": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNew_quad.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp"
+    ],
+    "bevel": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNew_bevel.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp"
+    ],
+    "sphere": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNew_sphere.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp"
+    ],
+    "cylinder": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNew_cylinder.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp"
+    ],
+    "head": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeViewNew_head.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_viewnew.py": "3e6b775b56b49d344b136da8cb257d723ae62cc2c4a66628b44621da2ecb514d",
+    "rebuild/2008-06/tests/NativeViewNewLayout.cpp": "30e6c29a7721bbbfc0d1ee0bc1ff644c3e4ee04c52a5e8ce8d83121d6058f6b8",
+    "rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp": "1f25f6a05348c253debc32ad4eddfbfe5b4fcebfe8ce1d5c2317c94bd01ba0cc",
+    "rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp": "fa5b577cfbcc6fb8435877949eb908431c61a02d52243e033a7a9e880e46d3b1",
+    "rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp": "8d2274e7640d5b953ab7190db64f7da041ae1d03fc49de2c6f1be045d259b5ba",
+    "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp": "21552895c10d77a318788ceae89347ccdcdb1f2dffb6ce8d6a8b985b84f8365f",
+    "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp": "1894b6a11c50edd0353a35a4da269d4283838b83352dedcec2e76cac8dd1081d",
+    "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h": "2599de3822f8a4f1e0a133ddcbd42455925fd0188a429c1ee6bf6872b660a084",
+    "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h": "aea632b4c1f7ce23e6d9bd840e8f855d47fa306361dbde08594fffb76800c810",
+    "rebuild/2008-06/native-headers/ViewNew/HeadMesh.h": "e75efeea78670313b3a2fbb0f752a4246332b0fc620c8d41cb367ddd7f5f5483",
+    "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h": "fd0b8097658f18c43b3a1917cf4cb9c613f8d3da0e3f35cace02ecb0389ef91e",
+    "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h": "0e9fc31330088957014b2cdca92053224e553464be15e27e4d84f43ef8cb3164",
+    "rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h": "cd3617d01d442c99146dbaaafbb5f15605d4378463f3c5e55e9193feed97eb17",
+    "rebuild/2008-06/native-headers/ViewNew/SphereMesh.h": "bee2d269eee505543b4ac010f16e1daeb565158ae63b473846915f481e79ca9b"
+  },
+  "objects": {
+    "NativeViewNewLayout.obj": "55a9bfb964d9b6db52d5a7839840184a1208f08de7341c5abc8e349bf34a1f9e",
+    "NativeViewNew_quad.obj": "03e007e592c7f17394248916b4918b94351bddc388156d42bf184da28d7d7b75",
+    "NativeViewNew_bevel.obj": "deb5d4e05b82c8d20f479b7c957370531a37eca97a8d0f63bb8695906bbae0ae",
+    "NativeViewNew_sphere.obj": "28c920b628f8a0ca5f4b3aaec25f8c9ce75597daeaa2a8f50ef25f0ee6779e5a",
+    "NativeViewNew_cylinder.obj": "620aab75db74d4e0b3f942ad4c94eaad4c77162f8f3d09984f9b8e4392313099",
+    "NativeViewNew_head.obj": "6074442161a3d0290603c4a9cff979e9bbc2b1a212ed8f8b9dc68a8080e2b17b"
+  },
+  "layout": {
+    "meshSize": "0x88",
+    "meshLevels": "0xc",
+    "meshShadowSurface": "0x18",
+    "meshDebugBoundingRadius": "0x4c",
+    "meshShadowIndices": "0x50",
+    "meshShadowVertices": "0x68",
+    "meshSubMesh": "0x80",
+    "meshKind": "0x84",
+    "shadowSurfaceSize": "0x34",
+    "levelSize": "0x28",
+    "levelIndexArray": "0xc",
+    "levelPrimitive": "0x18",
+    "levelDirty": "0x1c",
+    "levelVertexStart": "0x20",
+    "levelSubMesh": "0x24",
+    "levelBuilderSize": "0x20",
+    "levelBuilderHalfSize": "0x4",
+    "levelBuilderSurfaceTypes": "0x10",
+    "levelBuilderLevel": "0x14",
+    "levelBuilderTextureScale": "0x18",
+    "bevelBuilderSize": "0x24",
+    "bevelBuilderBevel": "0x20",
+    "sphereBuilderSize": "0x24",
+    "sphereBuilderElements": "0x20",
+    "cylinderBuilderSize": "0x24",
+    "cylinderBuilderElements": "0x20",
+    "headBuilderSize": "0x28",
+    "headBuilderBevel": "0x20",
+    "headBuilderElements": "0x24",
+    "sphereMeshSize": "0x8c",
+    "cylinderMeshSize": "0x8c",
+    "headMeshSize": "0x8c",
+    "bevelMeshSize": "0x88"
+  },
+  "rows": {
+    "quad": [
+      {
+        "address": "00500ca0",
+        "symbol": "?buildFace@LevelBuilder@ViewNew@RBX@@QAEXW4NormalId@3@W4Purpose@123@@Z",
+        "size": 132,
+        "target_size": 132,
+        "exact": true,
+        "verified_targets": {},
+        "local": [
+          "$LN12: switch target +0x6c verified",
+          "$LN1: switch target +0x5b verified",
+          "$LN2: switch target +0x4c verified",
+          "$LN3: switch target +0x3d verified",
+          "$LN4: switch target +0x2e verified",
+          "$LN5: switch target +0x1f verified",
+          "$LN6: switch target +0x10 verified"
+        ]
+      },
+      {
+        "address": "00500d30",
+        "symbol": "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z",
+        "size": 71,
+        "target_size": 71,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00500d80",
+        "symbol": "??0LevelBuilder@ViewNew@RBX@@IAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@@Z",
+        "size": 88,
+        "target_size": 88,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "??_7LevelBuilder@ViewNew@RBX@@6B@": "0x8270c8 (vtable RTTI .?AVLevelBuilder@ViewNew@RBX@@ offset 0x0)",
+          "?setPointer@?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@AAEXPAVLevel@Mesh@RenderBase@RBX@@@Z": "0x598fa0 (external)",
+          "__real@40000000": "0x81c434 (constant 40000000)"
+        },
+        "local": []
+      },
+      {
+        "address": "00500de0",
+        "symbol": "?appendQuadFromVertexIndices@LevelBuilder@ViewNew@RBX@@IAEXIII@Z",
+        "size": 207,
+        "target_size": 207,
+        "exact": true,
+        "verified_targets": {
+          "?allocVertex@Mesh@RenderBase@RBX@@SAIII@Z": "0x547fc0 (external)",
+          "?append@?$Array@I@G3D@@QAEXABI000@Z": "0x4dc6a0 (external)",
+          "?append@?$Array@I@G3D@@QAEXABI00@Z": "0x500690 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00500eb0",
+        "symbol": "?appendQuadFromVertexIndices@LevelBuilder@ViewNew@RBX@@IAEXIIII@Z",
+        "size": 279,
+        "target_size": 279,
+        "exact": true,
+        "verified_targets": {
+          "?allocVertex@Mesh@RenderBase@RBX@@SAIII@Z": "0x547fc0 (external)",
+          "?append@?$Array@I@G3D@@QAEXABI000@Z": "0x4dc6a0 (external)",
+          "?append@?$Array@I@G3D@@QAEXABI00@Z": "0x500690 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00500fd0",
+        "symbol": "?appendQuadFromIndexArray@LevelBuilder@ViewNew@RBX@@IAEXHHH@Z",
+        "size": 44,
+        "target_size": 44,
+        "exact": true,
+        "verified_targets": {
+          "?appendQuadFromVertexIndices@LevelBuilder@ViewNew@RBX@@IAEXIII@Z": "0x500de0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00501000",
+        "symbol": "?appendQuadFromIndexArray@LevelBuilder@ViewNew@RBX@@IAEXHHHH@Z",
+        "size": 55,
+        "target_size": 55,
+        "exact": true,
+        "verified_targets": {
+          "?appendQuadFromVertexIndices@LevelBuilder@ViewNew@RBX@@IAEXIIII@Z": "0x500eb0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00500690",
+        "symbol": "?append@?$Array@I@G3D@@QAEXABI00@Z",
+        "size": 240,
+        "target_size": 240,
+        "exact": true,
+        "verified_targets": {
+          "?resize@?$Array@I@G3D@@QAEXH_N@Z": "0x4805b0 (external)",
+          "?append@?$Array@I@G3D@@QAEXABI00@Z": "0x500690 (own row)"
+        },
+        "local": []
+      }
+    ],
+    "bevel": [
+      {
+        "address": "00501040",
+        "symbol": "?build@Builder@BevelMesh@ViewNew@RBX@@UAEXW4Purpose@LevelBuilder@34@@Z",
+        "size": 317,
+        "target_size": 317,
+        "exact": true,
+        "verified_targets": {
+          "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z": "0x500d30 (own row)",
+          "?appendQuadFromIndexArray@LevelBuilder@ViewNew@RBX@@IAEXHHHH@Z": "0x501000 (own row)",
+          "?appendQuadFromIndexArray@LevelBuilder@ViewNew@RBX@@IAEXHHH@Z": "0x500fd0 (own row)"
+        },
+        "local": []
+      }
+    ],
+    "sphere": [
+      {
+        "address": "004fce90",
+        "symbol": "?buildRight@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?SphereTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fabb0 (own row)",
+          "??$buildFace@$0A@P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fbdb0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fcec0",
+        "symbol": "?buildTop@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?SphereTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fabb0 (own row)",
+          "??$buildFace@$00P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fc080 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fcef0",
+        "symbol": "?buildBack@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?SphereTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fabb0 (own row)",
+          "??$buildFace@$01P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fc350 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fcf20",
+        "symbol": "?buildLeft@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?SphereTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fabb0 (own row)",
+          "??$buildFace@$02P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fc620 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fcf50",
+        "symbol": "?buildBottom@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?SphereTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fabb0 (own row)",
+          "??$buildFace@$03P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fc8f0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fcf80",
+        "symbol": "?buildFront@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?SphereTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fabb0 (own row)",
+          "??$buildFace@$04P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fcbc0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fcfb0",
+        "symbol": "??0SphereMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+        "size": 342,
+        "target_size": 342,
+        "exact": true,
+        "verified_targets": {
+          "??0Mesh@RenderBase@RBX@@IAE@XZ": "0x548570 (external)",
+          "??_7SphereMesh@ViewNew@RBX@@6B@": "0x827154 (vtable RTTI .?AVSphereMesh@ViewNew@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z": "0x4dd2e0 (own row)",
+          "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+          "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z": "0x4dcbb0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+          "??0LevelBuilder@ViewNew@RBX@@IAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@@Z": "0x500d80 (own row)",
+          "??_7SphereBuilder@ViewNew@RBX@@6B@": "0x827134 (vtable RTTI .?AVSphereBuilder@ViewNew@RBX@@ offset 0x0)",
+          "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z": "0x500d30 (own row)"
+        },
+        "local": [
+          "__ehhandler$??0SphereMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z"
+        ]
+      },
+      {
+        "address": "004fd270",
+        "symbol": "??0SphereMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z",
+        "size": 407,
+        "target_size": 407,
+        "exact": true,
+        "verified_targets": {
+          "??0Mesh@RenderBase@RBX@@IAE@XZ": "0x548570 (external)",
+          "??_7SphereMesh@ViewNew@RBX@@6B@": "0x827154 (vtable RTTI .?AVSphereMesh@ViewNew@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z": "0x4dd2e0 (own row)",
+          "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+          "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z": "0x4dcbb0 (external)",
+          "??0LevelBuilder@ViewNew@RBX@@IAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@@Z": "0x500d80 (own row)",
+          "??_7SphereBuilder@ViewNew@RBX@@6B@": "0x827134 (vtable RTTI .?AVSphereBuilder@ViewNew@RBX@@ offset 0x0)",
+          "?mapToUvw_Legacy@RBX@@YA?AVVector3@G3D@@ABV23@W4NormalId@1@@Z": "0x5ec9d0 (external (evidence name))",
+          "?xy@Vector3@G3D@@QBE?AVVector2@2@XZ": "0x5185d0 (external)",
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "?buildFace@LevelBuilder@ViewNew@RBX@@QAEXW4NormalId@3@W4Purpose@123@@Z": "0x500ca0 (own row)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$??0SphereMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z"
+        ]
+      },
+      {
+        "address": "004fabb0",
+        "symbol": "?SphereTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "004dd2e0",
+        "symbol": "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {
+          "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 (vtable RTTI .?AVReferenceCountedObject@G3D@@ offset 0x0)",
+          "??_7Level@Mesh@RenderBase@RBX@@6B@": "0x826e4c (vtable RTTI .?AVLevel@Mesh@RenderBase@RBX@@ offset 0x0)"
+        },
+        "local": [
+          "__ehhandler$??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "004dd340",
+        "symbol": "??_GLevel@Mesh@RenderBase@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Level@Mesh@RenderBase@RBX@@UAE@XZ": "0x5489b0 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e54c0",
+        "symbol": "??_GSphereMesh@ViewNew@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Mesh@RenderBase@RBX@@UAE@XZ": "0x548a90 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      }
+    ],
+    "cylinder": [
+      {
+        "address": "004fd430",
+        "symbol": "??0CylinderBuilder@ViewNew@RBX@@QAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@I@Z",
+        "size": 100,
+        "target_size": 100,
+        "exact": true,
+        "verified_targets": {
+          "??0LevelBuilder@ViewNew@RBX@@IAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@@Z": "0x500d80 (own row)",
+          "??_7CylinderBuilder@ViewNew@RBX@@6B@": "0x827164 (vtable RTTI .?AVCylinderBuilder@ViewNew@RBX@@ offset 0x0)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd4a0",
+        "symbol": "?EndcapTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+        "size": 133,
+        "target_size": 133,
+        "exact": true,
+        "verified_targets": {
+          "?xy@Vector3@G3D@@QBE?AVVector2@2@XZ": "0x5185d0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd530",
+        "symbol": "?CylinderTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+        "size": 88,
+        "target_size": 88,
+        "exact": true,
+        "verified_targets": {
+          "?yz@Vector3@G3D@@QBE?AVVector2@2@XZ": "0x518610 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd590",
+        "symbol": "?buildRight@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?EndcapTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fd4a0 (own row)",
+          "??$buildFace@$0A@P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fbdb0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd5c0",
+        "symbol": "?buildTop@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 42,
+        "target_size": 42,
+        "exact": true,
+        "verified_targets": {
+          "?CylinderTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fd530 (own row)",
+          "??$buildFace@$00P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fc080 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd5f0",
+        "symbol": "?buildBack@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 42,
+        "target_size": 42,
+        "exact": true,
+        "verified_targets": {
+          "?CylinderTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fd530 (own row)",
+          "??$buildFace@$01P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fc350 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd620",
+        "symbol": "?buildLeft@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?EndcapTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fd4a0 (own row)",
+          "??$buildFace@$02P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fc620 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd650",
+        "symbol": "?buildBottom@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 42,
+        "target_size": 42,
+        "exact": true,
+        "verified_targets": {
+          "?CylinderTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fd530 (own row)",
+          "??$buildFace@$03P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fc8f0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd680",
+        "symbol": "?buildFront@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 42,
+        "target_size": 42,
+        "exact": true,
+        "verified_targets": {
+          "?CylinderTransform@ViewNew@RBX@@YAXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z": "0x4fd530 (own row)",
+          "??$buildFace@$04P6AXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z@LevelBuilder@ViewNew@RBX@@IAEXP6AXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@ZV64@W4Purpose@012@@Z": "0x4fcbc0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "004fd6b0",
+        "symbol": "??0CylinderAlongXMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+        "size": 330,
+        "target_size": 330,
+        "exact": true,
+        "verified_targets": {
+          "??0Mesh@RenderBase@RBX@@IAE@XZ": "0x548570 (external)",
+          "??_7CylinderAlongXMesh@ViewNew@RBX@@6B@": "0x827184 (vtable RTTI .?AVCylinderAlongXMesh@ViewNew@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z": "0x4dd2e0 (own row)",
+          "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+          "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z": "0x4dcbb0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+          "??0CylinderBuilder@ViewNew@RBX@@QAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@I@Z": "0x4fd430 (own row)",
+          "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z": "0x500d30 (own row)"
+        },
+        "local": [
+          "__ehhandler$??0CylinderAlongXMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z"
+        ]
+      },
+      {
+        "address": "004fd800",
+        "symbol": "??0CylinderAlongXMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z",
+        "size": 341,
+        "target_size": 341,
+        "exact": true,
+        "verified_targets": {
+          "??0Mesh@RenderBase@RBX@@IAE@XZ": "0x548570 (external)",
+          "??_7CylinderAlongXMesh@ViewNew@RBX@@6B@": "0x827184 (vtable RTTI .?AVCylinderAlongXMesh@ViewNew@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z": "0x4dd2e0 (own row)",
+          "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+          "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z": "0x4dcbb0 (external)",
+          "??0CylinderBuilder@ViewNew@RBX@@QAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@I@Z": "0x4fd430 (own row)",
+          "?buildFace@LevelBuilder@ViewNew@RBX@@QAEXW4NormalId@3@W4Purpose@123@@Z": "0x500ca0 (own row)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$??0CylinderAlongXMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z"
+        ]
+      },
+      {
+        "address": "004fd960",
+        "symbol": "??0CylinderAlongXMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z",
+        "size": 400,
+        "target_size": 400,
+        "exact": true,
+        "verified_targets": {
+          "??0Mesh@RenderBase@RBX@@IAE@XZ": "0x548570 (external)",
+          "??_7CylinderAlongXMesh@ViewNew@RBX@@6B@": "0x827184 (vtable RTTI .?AVCylinderAlongXMesh@ViewNew@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z": "0x4dd2e0 (own row)",
+          "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+          "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z": "0x4dcbb0 (external)",
+          "??0CylinderBuilder@ViewNew@RBX@@QAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@I@Z": "0x4fd430 (own row)",
+          "?mapToUvw_Legacy@RBX@@YA?AVVector3@G3D@@ABV23@W4NormalId@1@@Z": "0x5ec9d0 (external (evidence name))",
+          "?xy@Vector3@G3D@@QBE?AVVector2@2@XZ": "0x5185d0 (external)",
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "?buildFace@LevelBuilder@ViewNew@RBX@@QAEXW4NormalId@3@W4Purpose@123@@Z": "0x500ca0 (own row)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$??0CylinderAlongXMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z"
+        ]
+      },
+      {
+        "address": "004e54c0",
+        "symbol": "??_GCylinderAlongXMesh@ViewNew@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Mesh@RenderBase@RBX@@UAE@XZ": "0x548a90 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      }
+    ],
+    "head": [
+      {
+        "address": "004fdaf0",
+        "symbol": "??0HeadBuilder@ViewNew@RBX@@QAE@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@IM@Z",
+        "size": 212,
+        "target_size": 212,
+        "exact": true,
+        "verified_targets": {
+          "??0LevelBuilder@ViewNew@RBX@@IAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@@Z": "0x500d80 (own row)",
+          "??_7HeadBuilder@ViewNew@RBX@@6B@": "0x827194 (vtable RTTI .?AVHeadBuilder@ViewNew@RBX@@ offset 0x0)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$??0HeadBuilder@ViewNew@RBX@@QAE@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@IM@Z"
+        ]
+      },
+      {
+        "address": "004fdbd0",
+        "symbol": "??RCylinderTransform@ViewNew@RBX@@QAEXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+        "size": 235,
+        "target_size": 235,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f490fdb": "0x8271b0 (constant 3f490fdb)",
+          "__real@3fc90fdb": "0x81e374 (constant 3fc90fdb)",
+          "__real@3f800000": "0x827494 (constant 3f800000)"
+        },
+        "local": []
+      },
+      {
+        "address": "00500020",
+        "symbol": "?buildTop@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 47,
+        "target_size": 47,
+        "exact": true,
+        "verified_targets": {
+          "??$buildFace@$00VEndcapTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVEndcapTransform@12@VVector2int16@G3D@@W4Purpose@012@@Z": "0x4fef10 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00500050",
+        "symbol": "?buildBottom@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 47,
+        "target_size": 47,
+        "exact": true,
+        "verified_targets": {
+          "??$buildFace@$03VEndcapTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVEndcapTransform@12@VVector2int16@G3D@@W4Purpose@012@@Z": "0x4ff1e0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00500180",
+        "symbol": "??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+        "size": 464,
+        "target_size": 464,
+        "exact": true,
+        "verified_targets": {
+          "??0Mesh@RenderBase@RBX@@IAE@XZ": "0x548570 (external)",
+          "??_7HeadMesh@ViewNew@RBX@@6B@": "0x8271b8 (vtable RTTI .?AVHeadMesh@ViewNew@RBX@@ offset 0x0)",
+          "__real@3e800000": "0x83a3e4 (constant 3e800000)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Level@Mesh@RenderBase@RBX@@QAE@W4Primitive@RenderDevice@G3D@@@Z": "0x4dd2e0 (own row)",
+          "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+          "?append@?$Array@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@2@@Z": "0x4dcbb0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+          "?setPointer@?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@AAEXPAVLevel@Mesh@RenderBase@RBX@@@Z": "0x598fa0 (external)",
+          "??0HeadBuilder@ViewNew@RBX@@QAE@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@IM@Z": "0x4fdaf0 (own row)",
+          "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z": "0x500d30 (own row)"
+        },
+        "local": [
+          "__ehhandler$??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z"
+        ]
+      },
+      {
+        "address": "004e54c0",
+        "symbol": "??_GHeadMesh@ViewNew@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Mesh@RenderBase@RBX@@UAE@XZ": "0x548a90 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      }
+    ],
+    "not_exact": [
+      {
+        "address": "004fd110",
+        "symbol": "??0SphereMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z",
+        "size": 347,
+        "target_size": 347,
+        "exact": false,
+        "reason": "EH state numbering only: the original FuncInfo 008e597c has seven states, 1->0 / 2->0 / 3->2 with no unwind action before the live 4 (new Level) / 5 (level) / 6 (builder), i.e. three objects of an eliminated block; the source of that block is not derivable from the bytes"
+      },
+      {
+        "address": "004fdcc0",
+        "symbol": "??REndcapTransform@ViewNew@RBX@@QAEXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+        "size": 209,
+        "target_size": 197,
+        "exact": false,
+        "reason": "x87 register allocation: the original keeps fabs(y) / fabs(x) from the comparison and spills the chosen one across the xy() call; no tried spelling reproduces the shared tail"
+      },
+      {
+        "address": "00500080",
+        "symbol": "?buildLeft@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 55,
+        "target_size": 58,
+        "exact": false,
+        "reason": "the original reloads elements (+0x24) after storing the functor (no CSE); tried temp / named functor, int / size_t member, reference parameter"
+      },
+      {
+        "address": "005000c0",
+        "symbol": "?buildRight@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 55,
+        "target_size": 58,
+        "exact": false,
+        "reason": "same as 00500080"
+      },
+      {
+        "address": "00500100",
+        "symbol": "?buildFront@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 55,
+        "target_size": 58,
+        "exact": false,
+        "reason": "same as 00500080"
+      },
+      {
+        "address": "00500140",
+        "symbol": "?buildBack@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 55,
+        "target_size": 58,
+        "exact": false,
+        "reason": "same as 00500080"
+      },
+      {
+        "address": "00500350",
+        "symbol": "??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z",
+        "size": 382,
+        "target_size": 373,
+        "exact": false,
+        "reason": "register allocation around the null check of new Level (edi preset to 0 in the original)"
+      },
+      {
+        "address": "005004d0",
+        "symbol": "??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z",
+        "size": 444,
+        "target_size": 436,
+        "exact": false,
+        "reason": "same as 00500350"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "004dd2e0",
+    "004dd340",
+    "004e54c0",
+    "004fabb0",
+    "004fce90",
+    "004fcec0",
+    "004fcef0",
+    "004fcf20",
+    "004fcf50",
+    "004fcf80",
+    "004fcfb0",
+    "004fd270",
+    "004fd430",
+    "004fd4a0",
+    "004fd530",
+    "004fd590",
+    "004fd5c0",
+    "004fd5f0",
+    "004fd620",
+    "004fd650",
+    "004fd680",
+    "004fd6b0",
+    "004fd800",
+    "004fd960",
+    "004fdaf0",
+    "004fdbd0",
+    "00500020",
+    "00500050",
+    "00500180",
+    "00500690",
+    "00500ca0",
+    "00500d30",
+    "00500d80",
+    "00500de0",
+    "00500eb0",
+    "00500fd0",
+    "00501000",
+    "00501040"
+  ],
+  "vtables": {
+    "LevelBuilder@ViewNew@RBX": [
+      {
+        "slot": 0,
+        "symbol": "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z",
+        "original": "00500d30",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 2,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 3,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 4,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 5,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 6,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      }
+    ],
+    "SphereBuilder@ViewNew@RBX": [
+      {
+        "slot": 0,
+        "symbol": "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z",
+        "original": "00500d30",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?buildTop@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fcec0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?buildBottom@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fcf50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?buildLeft@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fcf20",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?buildRight@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fce90",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?buildFront@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fcf80",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?buildBack@SphereBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fcef0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "SphereMesh@ViewNew@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_ESphereMesh@ViewNew@RBX@@UAEPAXI@Z",
+        "original": "004e54c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      }
+    ],
+    "Level@Mesh@RenderBase@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_ELevel@Mesh@RenderBase@RBX@@UAEPAXI@Z",
+        "original": "004dd340",
+        "ok": true,
+        "how": "bound (??_G)"
+      }
+    ],
+    "CylinderBuilder@ViewNew@RBX": [
+      {
+        "slot": 0,
+        "symbol": "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z",
+        "original": "00500d30",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?buildTop@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fd5c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?buildBottom@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fd650",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?buildLeft@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fd620",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?buildRight@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fd590",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?buildFront@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fd680",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?buildBack@CylinderBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "004fd5f0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "CylinderAlongXMesh@ViewNew@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_ECylinderAlongXMesh@ViewNew@RBX@@UAEPAXI@Z",
+        "original": "004e54c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      }
+    ],
+    "HeadBuilder@ViewNew@RBX": [
+      {
+        "slot": 0,
+        "symbol": "?build@LevelBuilder@ViewNew@RBX@@UAEXW4Purpose@123@@Z",
+        "original": "00500d30",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?buildTop@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "00500020",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?buildBottom@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "00500050",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?buildLeft@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "00500080",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?buildRight@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "005000c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?buildFront@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "00500100",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?buildBack@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "original": "00500140",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "HeadMesh@ViewNew@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_EHeadMesh@ViewNew@RBX@@UAEPAXI@Z",
+        "original": "004e54c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      }
+    ]
+  },
+  "proposals": {
+    "RenderBase/Mesh.h (new native header, owner: RenderBase)": "promote ViewNew/RenderBaseMesh.h: Mesh 0x88 (levels +0xc, ShadowSurface +0x18, debugBoundingRadius +0x4c, std::vector<unsigned short> +0x50, std::vector<12-byte> +0x68, owned Ogre sub-mesh +0x80, meshKind +0x84), Level 0x28 (indexArray +0xc, primitive +0x18, dirty +0x1c, +0x20 = -1, sub-mesh +0x24) with the header-inline Level(Primitive) 004dd2e0"
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
