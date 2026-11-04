@@ -4,11 +4,11 @@ import json
 from pathlib import Path
 
 
-def freeze(command_path, module, snapshot, folder):
+def freeze(command_path, module, snapshot, folder, *, overlay_root=None):
     blob = command_path.read_bytes()
     command = json.loads(blob)
     source = Path(command['source'])
-    overlay = source.parents[2]
+    overlay = Path(overlay_root) if overlay_root is not None else source.parents[2]
     if not overlay.name.startswith('overlay'):
         raise RuntimeError('unsupported captured source layout: ' + str(source))
     roots = list(dict.fromkeys([overlay.parent, module]))
@@ -41,6 +41,17 @@ def freeze(command_path, module, snapshot, folder):
         inputs[str(destination)] = expected
         if found != path:
             recovered.append({'input': name, 'from': str(found), 'sha256': expected})
+    if source.is_relative_to(overlay):
+        captured_source = frozen / source.relative_to(overlay)
+    else:
+        # Direct module sources live outside their include overlay. Their bytes
+        # were verified above, just like external compiler/vendor inputs.
+        if overlay_root is None:
+            raise RuntimeError('direct source requires an explicit captured overlay')
+        captured_source = folder / 'captured-source' / source.name
+        captured_source.parent.mkdir(exist_ok=True)
+        captured_source.write_bytes(source.read_bytes())
+        inputs[str(captured_source)] = command['source_sha256']
     flags = []
     for arg in command['args']:
         if arg.lower().startswith('/fo') or arg.lower().endswith('.cpp'):
@@ -51,8 +62,10 @@ def freeze(command_path, module, snapshot, folder):
             except ValueError:
                 pass
         flags.append(arg)
+    if not source.is_relative_to(overlay):
+        flags.append('/I' + str(source.resolve().parent))
     saved = folder / 'captured-command.json'
     saved.write_bytes(blob)
     inputs[str(saved)] = hashlib.sha256(blob).hexdigest()
     (folder / 'captured-inputs.json').write_text(json.dumps({'scope': __doc__, 'inputs': inputs, 'recovered': recovered}, indent=2) + '\n')
-    return frozen / source.relative_to(overlay), flags, inputs, recovered
+    return captured_source, flags, inputs, recovered

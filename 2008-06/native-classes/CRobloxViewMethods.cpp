@@ -148,7 +148,7 @@ LRESULT CRobloxView::updateReflector(WPARAM, LPARAM) {
         }
         bool present = reflector.m_hWnd != 0;
         if (show != present) {
-            if (show) reflector.create(this, getDataModel().get());
+            if (show) reflector.initialize(this, const_cast<RBX::DataModel*>(getDataModel().get()));
             else reflector.DestroyWindow();
             layout();
         }

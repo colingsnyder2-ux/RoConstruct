@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNATIVE_VALUE_CTOR_NOINLINE /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 #include <afxwin.h>
 #include <atlbase.h>
 #include <stdexcept>

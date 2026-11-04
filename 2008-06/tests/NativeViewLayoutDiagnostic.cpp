@@ -3,7 +3,7 @@
 
 // Layout claims from RTTI base offsets and constructor 00459eb0.
 typedef char WindowSize[sizeof(CRobloxWnd) == 0xc0 ? 1 : -1];
-typedef char ReflectorSize[sizeof(CReflectorWnd) == 0x58 ? 1 : -1];
+typedef char ReflectorSize[sizeof(CMultiPlayerPane) == 0x58 ? 1 : -1];
 typedef char MenuSize[sizeof(CMenu) == 8 ? 1 : -1];
 typedef char ViewSize[sizeof(CRobloxView) == 0x1f0 ? 1 : -1];
 typedef char WindowOffset[offsetof(CRobloxView, window) == 0xb0 ? 1 : -1];
@@ -14,7 +14,7 @@ typedef char TailOffset[offsetof(CRobloxView, slots_1d8_1ec) == 0x1d8 ? 1 : -1];
 // Diagnostic: forces the real size/offset into the error text of this line.
 template<int N> struct Show { char bad[-N - 1]; };
 Show<sizeof(CRobloxWnd)> showWindow;
-Show<sizeof(CReflectorWnd)> showReflector;
+Show<sizeof(CMultiPlayerPane)> showReflector;
 Show<sizeof(CMenu)> showMenu;
 Show<sizeof(CRobloxView)> showView;
 Show<offsetof(CRobloxView, window)> showWindowOffset;

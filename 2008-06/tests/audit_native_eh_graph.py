@@ -2,7 +2,7 @@
 from pathlib import Path
 import argparse,hashlib,json,struct,sys
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
-from roc import match,native_asm
+from roc import match,native_asm,rebuild
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('object',type=Path);parser.add_argument('address',type=lambda x:int(x,16));parser.add_argument('symbol');parser.add_argument('--output',type=Path);parser.add_argument('--provider',nargs=2,action='append',default=[],metavar=('SYMBOL','OBJECT'));args=parser.parse_args();path=args.object;raw=path.read_bytes();secs,syms,defs,starts=match._coff_data_index(raw);funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};base,image=match._image('2008-06');address=args.address
 name=next(n for n in funcs if n.startswith(args.symbol));body,refs=funcs[name];fv,fs=defs[name];full=bytes(image[address-base:address-base+len(body)]);bindings={};events=[];seen=set();errors=[]
 # Resolve only COFF-declared weak fallbacks; availability is not final PE selection.
@@ -37,8 +37,9 @@ original_relocs=[x-address for x in match._base_relocs('2008-06') if address<=x<
 assert set(original_relocs)<=set(refs) and match.exact_match(full,original_relocs,body,refs),'primary body must already match before EH graph audit'
 handler=next(n for n in bindings if n=='__ehhandler$'+name)
 import_aliases={}
-for library in ('msvcrt.lib','msvcprt.lib'):
- archive=ROOT/'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'/library
+crt_library=ROOT/'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'
+# Resolve Win32 stdcall decoration through the real SDK import library too.
+for archive in (crt_library/'msvcrt.lib',crt_library/'msvcprt.lib',rebuild.toolchain(21022)['sdk_lib']/'kernel32.lib'):
  blob=archive.read_bytes();assert blob[:8]==b'!<arch>\n';offset=8
  while offset+60<=len(blob):
   size=int(blob[offset+48:offset+58]);member=blob[offset+60:offset+60+size];offset+=60+size+(size&1)

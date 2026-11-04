@@ -1,3 +1,7 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNATIVE_PHYSICSSERVICE_PENDING /I{headers}/engine-world
+#ifdef NATIVE_PHYSICSSERVICE_PENDING
+#include "v8world/World.h"
+#endif
 // 2008-06 native RBX::PhysicsService (inactive); evidence in native-headers/v8datamodel/PhysicsService.h.
 // Verified by tests/record_native_services.py. The onEvent bodies need the AssemblyPhysicsOn/Off definitions
 // (World.h proposal): they compile only under NATIVE_PHYSICSSERVICE_PENDING against a generated World.h copy.

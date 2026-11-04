@@ -1,5 +1,6 @@
-"""Native-source coverage of one original translation unit: which functions in an address range
-are exact from the listed native-classes files (each compiled with its pinned flags).
+"""Masked-code candidates in an original address range from native-class sources.
+Does not verify call/data identity, original class ownership, ABI, server or runtime.
+Shared folded methods can live outside the nominated range.
 usage: native_tu_coverage.py LO-HI native-classes/A.cpp [...]"""
 import argparse, json, re, subprocess, sys
 from pathlib import Path
@@ -27,5 +28,7 @@ for src in args.sources:
 rows = [json.loads(l) for l in open(ROOT / 'work/2008-06/functions.jsonl')]
 unit = [(r['addr'], r['size']) for r in rows if lo <= int(r['addr'], 16) < hi and r.get('kind', 'code') == 'code']
 done = sum(s for a, s in unit if a in covered)
-print('native exact: %d/%d functions, %d/%d bytes' % (sum(a in covered for a, _ in unit), len(unit), done, sum(s for _, s in unit)))
+print('masked-code candidates: %d/%d functions, %d/%d bytes' % (sum(a in covered for a, _ in unit), len(unit), done, sum(s for _, s in unit)))
 print('missing:', ' '.join('%s:%d' % (a, s) for a, s in unit if a not in covered))
+
+print('Scope: byte candidates only; relocation targets/class identity unverified; not class completion.')

@@ -1,15 +1,14 @@
-"""Compile and verify inactive CMainFrame color callback."""
+"""Verify inactive CMainFrame message records and the shared paint-handler binding."""
 import hashlib
 import json
 from pathlib import Path
 import subprocess
 import sys
 import struct
-from capstone import Cs, CS_ARCH_X86, CS_MODE_32
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
-from roc import libs, match, rebuild
+from roc import libs, match, rebuild, native_asm
 
 out = ROOT / "rebuild/2008-06/out/native-layouts"
 out.mkdir(parents=True, exist_ok=True)
@@ -73,8 +72,29 @@ for index in range(41):
 target, target_relocs, _ = match.target("2008-06", "004321c0")
 _, body, relocs = next((n,b,r) for n,b,r in match.coff_functions(obj) if n.startswith("?GetMessageMap@CMainFrame@@"))
 assert match.exact_match(target, target_relocs, body, relocs)
+# The original map targets a five-byte shared wrapper, not the MFC import itself.
+paint_name, paint_body, paint_relocs = next((n, b, r) for n, b, r in match.coff_functions(obj)
+                                          if n.startswith('?OnPaint@CMainFrame@@'))
+paint_target, paint_mask, _ = match.target('2008-06', '006c4ce0')
+assert set(paint_mask) <= set(paint_relocs) and match.exact_match(paint_target, paint_mask, paint_body, paint_relocs)
+assert len(paint_target) == 5 and paint_target[0] == 0xe9
+paint_callee = 0x6c4ce0 + 5 + struct.unpack_from('<i', paint_target, 1)[0]
+paint_import = '?Default@CWnd@@IAEJXZ'
+assert native_asm.thunk_label('2008-06', paint_callee) == 'MFC ' + paint_import
+paint_start, paint_section = definitions[paint_name]
+paint_table = sections[paint_section]
+paint_targets = []
+for i in range(paint_table[7]):
+    offset, symbol, kind = struct.unpack_from('<IIH', obj, paint_table[5] + 10 * i)
+    if offset == paint_start + 1:
+        assert kind == 20
+        paint_targets.append(symbols[symbol][0])
+assert paint_targets == [paint_import], paint_targets
+paint_proof = dict(original_handler='006c4ce0', native_symbol=paint_name, bytes=5,
+                   body_exact=True, import_symbol=paint_import, import_target=hex(paint_callee))
+
 paths = [source, ROOT / "rebuild/2008-06/native-headers/CMainFrame.h", ROOT / "rebuild/2008-06/native-headers/CMainFrameBases.h", Path(__file__)]
-receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(), sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}, compiler_build=21022, flags=flags, entries=entries, scope="40 message records and handler symbols match; handlers and runtime linkage remain open; parent map import ordinal verified.")
+receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(), sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}, compiler_build=21022, flags=flags, entries=entries, paint_handler=paint_proof, scope="40 message records and requested handler symbols match; paint wrapper body and MFC import identity verified. Other handler bodies and final runtime selection remain open; parent map import ordinal verified.")
 output = ROOT / "work/2008-06" / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + "\n")

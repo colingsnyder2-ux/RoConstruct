@@ -1,23 +1,27 @@
-// from server: 31% by colin
-struct VTableArgs {
-    void* vtable;
-    char pad[4];
-    void* field8;
-    void* fieldC;
+// from server: 47% by Intel
+struct VTextureArgs {
+    void ctor();
+    int pad0;
+    int field4;
+    int field8;
 };
 
-struct TextureManagerVTableArgs {
-    void* vtable;
-    char pad[4];
-    void* field8;
-    void* fieldC;
-    void init();
-};
+extern "C" void __cdecl func_00459700(void* thisptr);
 
-extern "C" void __cdecl sub_459700(void*);
+void VTextureArgs::ctor()
+{
+    int cookie = *(int*)0x8b5188 ^ (int)&cookie;
+    VTextureArgs* self = this;
+    int* sehFrame = (int*)(&cookie + 1);
+    *sehFrame = cookie;
+    *(int*)0 = (int)sehFrame;
 
-void TextureManagerVTableArgs::init() {
-    field8 = (void*)0x793624;
-    sub_459700((char*)this + 8);
-    vtable = (void*)0x7931b4;
+    self->field8 = 0;
+    int* vtablePtr = (int*)((char*)self + 8);
+    *vtablePtr = 0x793624;
+    func_00459700(vtablePtr);
+
+    *(int*)self = 0x7931b4;
+
+    *(int*)0 = *sehFrame;
 }

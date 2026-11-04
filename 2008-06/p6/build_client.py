@@ -254,6 +254,7 @@ if NATIVE_DOC:
                         ('NativeContentGuidsFull.obj', ROOT / 'rebuild/2008-06/native-classes/CContentGuids.cpp'),
                         ('NativeSafeArrayFull.obj', ROOT / 'rebuild/2008-06/native-classes/SafeArray.cpp'),
                         ('NativeValueConverterFull.obj', ROOT / 'rebuild/2008-06/native-classes/ValueConverter.cpp'),
+                        ('NativeUserInputBaseLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/UserInputBaseLifetime.cpp'),
                         ('NativeLuaArgsFull.obj', ROOT / 'rebuild/2008-06/native-classes/LuaArgs.cpp'),
                         ('NativeContentUploadFull.obj', ROOT / 'rebuild/2008-06/native-classes/CContentUpload.cpp'),
                         ('NativeContentErrorFull.obj', ROOT / 'rebuild/2008-06/native-classes/CContentError.cpp'),
@@ -413,9 +414,7 @@ if NATIVE_DOC:
                         ('NativeCClassImagesFull.obj', ROOT / 'rebuild/2008-06/native-classes/CClassImages.cpp'),
                         ('NativeNameCompareFull.obj', ROOT / 'rebuild/2008-06/native-classes/NameCompare.cpp'),
                         ('NativePhysicsServiceAllocationFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceAllocation.cpp'),
-                        ('NativePhysicsServiceLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceLifetime.cpp'),
-                        ('NativePhysicsServiceEventsFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceEvents.cpp'),
-                        ('NativePhysicsServiceSignalsFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceSignals.cpp'),
+                        ('NativePhysicsServiceCoreFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsService.cpp'),
                         ('NativePhysicsServiceProviderFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceProvider.cpp'),
                         ('NativeChangeHistoryLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryLifetime.cpp'),
                         ('NativeChangeHistoryEventsFull.obj', ROOT / 'rebuild/2008-06/native-classes/ChangeHistoryEvents.cpp'),
@@ -534,6 +533,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeWorkspaceExecScriptFull.obj',
                       'NativeWorkspaceSelectionFull.obj', 'NativeWorkspaceRaiseErrorFull.obj',
                       'NativeContentGuidsFull.obj', 'NativeSafeArrayFull.obj', 'NativeValueConverterFull.obj',
+                      'NativeUserInputBaseLifetimeFull.obj',
                       'NativeLuaArgsFull.obj',
                       'NativeContentUploadFull.obj',
                       'NativeContentErrorFull.obj',
@@ -599,7 +599,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeSlingshotToolCoreFull.obj', 'NativeRocketToolCoreFull.obj', 'NativeRocketToolProjectileFull.obj', 'NativeRocketToolLaunchFull.obj', 'NativeEngineStatsFull.obj', 'NativeContactManagerStatsFull.obj', 'NativeSpatialHashStatsFull.obj', 'NativeShootToolMethodsFull.obj', 'NativeShootToolShootFull.obj', 'NativeSlingshotToolLaunchFull.obj', 'NativeSlingshotBallisticFull.obj', 'NativeSlingshotToolProjectileFull.obj', 'NativeContentProviderCreateContextFull.obj', 'NativeContentIdAssetsFull.obj', 'NativeContentProviderLoadFull.obj',
                       'NativeResizeToolCoreFull.obj', 'NativeResizeToolMethodsFull.obj', 'NativeResizeToolMoveFull.obj', 'NativeResizeToolDragFull.obj', 'NativeResizeToolFindFull.obj', 'NativeResizeToolRenderFull.obj', 'NativeMathClosestRayFull.obj', 'NativeHandleHitTestFull.obj', 'NativePartInstanceResizeFull.obj', 'NativeHandleRadiusFull.obj',
                       'NativeCInsertObjectDialogCoreFull.obj', 'NativeCInsertObjectDialogActionFull.obj', 'NativeMetadataClassFull.obj', 'NativeMetadataClassesLookupFull.obj', 'NativeMetadataReflectionLookupFull.obj', 'NativeMetadataReflectionSingletonFull.obj', 'NativeMetadataReflectionLifetimeFull.obj', 'NativeMetadataReflectionLoadFull.obj', 'NativeMetadataClassNamesFull.obj', 'NativeMetadataClassesRegisterFull.obj', 'NativeMetadataItemLifetimeFull.obj', 'NativeMotorFeatureCommandsFull.obj', 'NativeArrowToolFactoryFull.obj', 'NativeDataModelClassNameFull.obj', 'NativeAuthoringSettingsFull.obj', 'NativeCClassImagesFull.obj', 'NativeNameCompareFull.obj',
-                      'NativePhysicsServiceAllocationFull.obj', 'NativePhysicsServiceLifetimeFull.obj', 'NativePhysicsServiceEventsFull.obj', 'NativePhysicsServiceSignalsFull.obj', 'NativePhysicsServiceProviderFull.obj',
+                      'NativePhysicsServiceAllocationFull.obj', 'NativePhysicsServiceCoreFull.obj',    'NativePhysicsServiceProviderFull.obj',
                       'NativeChangeHistoryLifetimeFull.obj', 'NativeChangeHistoryEventsFull.obj', 'NativeChangeHistoryFactoryFull.obj', 'NativeHistoryRecordLookupFull.obj', 'NativeHistoryItemStateFull.obj',
                       'NativeSurfaceToolHoverRenderFull.obj', 'NativeSurfaceToolMouseDownFull.obj',
                       'NativeMouseGetSurfaceFull.obj', 'NativeInsertObjectActionFull.obj',
@@ -621,7 +621,7 @@ if NATIVE_DOC:
         'WorkspaceSiteTrustProfile.obj')]
 if NATIVE_DOC:
     from roc import match
-    for family in ('axis', 'physics'):
+    for family in ('axis', 'physics', 'user_input'):
         jobs = json.loads((HERE / (family + '_checks.json')).read_text())['jobs']
         proof = []
         for job in jobs:
@@ -664,6 +664,10 @@ if NATIVE_DOC:
     import content_load_owner
     content_app_library = content_load_owner.build(SNAPSHOT, out, tc, null_app_library, link_args)
     link_args = [str(content_app_library) if arg == str(null_app_library) else arg for arg in link_args]
+    import user_input_owner
+    original_player_library = SNAPSHOT / 'P2RecoveredPlayer/linked/linked.lib'
+    native_player_library = user_input_owner.build(SNAPSHOT, out, tc, original_player_library)
+    link_args = [str(native_player_library) if arg == str(original_player_library) else arg for arg in link_args]
     (out / 'native-doc-link-command.json').write_text(json.dumps({
         'cwd': str(out), 'arguments': link_args,
         'scope': 'Diagnostic link replay only; never executes client.'

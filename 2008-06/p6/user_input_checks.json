@@ -1,0 +1,41 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/UserInputBaseLifetime.cpp",
+      "checks": [
+        {
+          "addr": "005ceaa0",
+          "symbol": "??0UserInputBase@RBX@@"
+        },
+        {
+          "addr": "00467770",
+          "symbol": "??1UserInputBase@RBX@@"
+        }
+      ],
+      "object": "NativeUserInputBaseLifetimeFull.obj"
+    }
+  ],
+  "retired_functions": [
+    "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@PAVTextureProxyBase@RBX@@@Z",
+    "??0ContentId@RBX@@QAE@XZ",
+    "??0UserInputBase@RBX@@QAE@XZ",
+    "??1UserInputBase@RBX@@QAE@XZ",
+    "__ehhandler$??0ContentId@RBX@@QAE@XZ",
+    "__ehhandler$??0UserInputBase@RBX@@QAE@XZ",
+    "__ehhandler$??1UserInputBase@RBX@@QAE@XZ",
+    "__unwindfunclet$??0ContentId@RBX@@QAE@XZ$0",
+    "__unwindfunclet$??0UserInputBase@RBX@@QAE@XZ$0",
+    "__unwindfunclet$??0UserInputBase@RBX@@QAE@XZ$2",
+    "__unwindfunclet$??1UserInputBase@RBX@@QAE@XZ$0"
+  ],
+  "retired_data": [
+    "??_7UserInputBase@RBX@@6B@",
+    "??_R4UserInputBase@RBX@@6B@",
+    "__ehfuncinfo$??0ContentId@RBX@@QAE@XZ",
+    "__ehfuncinfo$??0UserInputBase@RBX@@QAE@XZ",
+    "__ehfuncinfo$??1UserInputBase@RBX@@QAE@XZ",
+    "__unwindtable$??0ContentId@RBX@@QAE@XZ",
+    "__unwindtable$??0UserInputBase@RBX@@QAE@XZ",
+    "__unwindtable$??1UserInputBase@RBX@@QAE@XZ"
+  ]
+}

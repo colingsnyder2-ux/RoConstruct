@@ -1,6 +1,7 @@
 #pragma once
 #include "VerbBinder.h"
 #include "CWebToolbox.h"
+#include "CMultiPlayerPane.h"
 #include "v8tree/VerbContainer.h"
 #include "v8tree/Verb.h"
 #include <boost/scoped_ptr.hpp>
@@ -14,7 +15,8 @@
 
 class CWorkspace;
 class DxUserInput;
-namespace G3D { class GWindow; }
+namespace G3D { class GWindow; class RenderDevice; }
+namespace Ogre { class VisualEngine; }
 
 namespace RBX {
 class ServiceProvider;
@@ -22,6 +24,8 @@ class Name;
 class Verb;
 class DataModel;
 class Adorn;
+class ViewBase;
+namespace Profiling { class CodeProfiler; }
 namespace Network { class Players; }
 }
 
@@ -30,18 +34,18 @@ namespace Network { class Players; }
 // zeroes stay offset-based until their readers are recovered; no padding.
 // Inactive: not used by the shell. Native size 0x1f0. Size and offsets are checked by
 // tests/NativeViewLayout.cpp; see work/2008-06/shared-layouts/view-compile.json.
-// Unrecovered: CRobloxWnd bytes 0x8c-0x97 and 0xbc-0xbf are never written by the
-// constructor, and whether CRobloxWnd has 8-byte alignment (which would explain
-// the 4-byte gap before the window at View+0xb0). Fill from readers, not padding.
+// The double throttle member supplies natural 8-byte alignment and the unwritten
+// gaps at 0x8c-0x8f and 0xbc-0xbf; no explicit padding fields are needed.
 
 // 0045c730 constructs this at View+0xb0. RTTI: CWnd at 0, IRunView at +0x54,
 // IMetric at +0x58. Only offsets the constructor writes are named.
-// 8-byte aligned: the original places it at View+0xb0 with View+0xac never written.
-__declspec(align(8)) class CRobloxWnd : public CWnd, public RBX::IRunView, public RBX::IMetric {
+// Natural double alignment places it at View+0xb0.
+class CRobloxWnd : public CWnd, public RBX::IRunView, public RBX::IMetric {
 public:
     int mode_5c;          // 0045cbf0 selects renderer mode here (3 = RbxGfx)
     int retries_60;       // incremented once after a renderer failure
-    void* slots_64_68[2];
+    class RenderStatsItem; // original RTTI .?AVRenderStatsItem@CRobloxWnd@@
+    boost::shared_ptr<RenderStatsItem> renderStats; // attach0045f7b0, release0045fbe0.
     ATL::CComPtr<CWorkspace> workspace; // 0045f7b0 AddRef/Release, 0045fbe0 Release at +0x6c.
     // 0045f7b0 copies CWorkspace::getDataModel (0046a940) here;
     // 0045fbe0 releases its control block at +0x74.
@@ -50,16 +54,16 @@ public:
     bool flag_80;         // set to 1
     boost::scoped_ptr<DxUserInput> userInput; // ctor004690f0; owned reset/delete in 0045f7b0/0045fbe0.
     bool flags_88_8b[4];  // 0x88 depends on startup context, 0x8b set to 1
-    unsigned unaccessed_8c[3]; // no constructor write and no read in 53 mined CRobloxWnd methods; size from CRuntimeClass 0xc0
-    void* source_98;      // 005c43a0 result
+    double pendingThrottle; // ctor0045c730, IRunView::AdjustThrottle0045ba60, consume0045c890.
+    boost::scoped_ptr<RBX::Profiling::CodeProfiler> profiler; // ctor005c43a0, owned deletion0045fbe0.
     bool flag_9c;
-    void* slot_a0;
+    DWORD windowThreadId; // OnCreate0045d550 stores GetCurrentThreadId result.
     G3D::GWindow* gWindow; // original makeCurrent path 0045ead0/0045f7b0.
     bool flag_a8;
-    void* slots_ac_b0[2];
+    boost::scoped_ptr<G3D::RenderDevice> renderDevice; // allocation0045ba90, reset/delete0045bde0/0045fbe0.
+    boost::scoped_ptr<RBX::ViewBase> view; // ViewRbxGfx/ViewG3D assignments and virtual deletion0045f7b0/0045fbe0.
     boost::scoped_ptr<RBX::Adorn> adorn; // owned deletion 0045fbe0; passed to UserInputBase::init.
-    void* slot_b8;
-    unsigned unaccessed_bc;    // same evidence as unaccessed_8c
+    Ogre::VisualEngine* visualEngine; // ctor006786c0, RTTI0084df2c; lifetime not yet recovered.
     explicit CRobloxWnd(int);
     void finishAttach();       // 0045ead0
     void windowCommand();      // 0045bf90
@@ -72,14 +76,6 @@ public:
     virtual std::string getMetric(const std::string&) const;
 };
 
-// 00432e30 constructs this at View+0x180: one CWnd-derived member, field at +0x54.
-class CReflectorWnd : public CWnd {
-public:
-    void* target_54;
-    CReflectorWnd();
-    void create(CWnd* parent, const RBX::DataModel* model); // 00432e60
-};
-
 class CRobloxView : public VerbBinder<CRobloxView, CView>,
                     public RBX::VerbContainer,
                     public RBX::Listener<RBX::ServiceProvider, RBX::ServiceAdded>,
@@ -90,7 +86,7 @@ public:
     CRobloxWnd window;        // +0xb0
     boost::shared_ptr<const RBX::DataModel> owner_170;  // pointer and control block, zeroed by its constructor
     CMenu popupMenu;          // +0x178, menu resource 0x67 loaded at construction
-    CReflectorWnd reflector;  // +0x180
+    CMultiPlayerPane reflector; // +0x180, original RTTI and ctor00432e30.
     CWebToolbox* slot_1d8;    // toolbox pane (RTTI CWebToolbox); not destroyed by 00459ba0, so not owned
     boost::scoped_ptr<RBX::Verb> slot_1dc;       // states 5-9 in 00459ba0, destroyed in reverse order
     boost::scoped_ptr<RBX::Verb> slot_1e0;

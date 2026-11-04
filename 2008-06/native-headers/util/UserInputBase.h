@@ -8,7 +8,7 @@
 namespace RBX
 {
 	class Adorn;
-	class UserInputBase
+	class __declspec(novtable) UserInputBase
 	{
 	public:
 		enum WrapMode

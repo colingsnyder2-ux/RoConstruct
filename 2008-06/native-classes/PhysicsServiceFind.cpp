@@ -2,7 +2,6 @@
 #include <boost/thread/once.hpp>
 #include "v8datamodel/PhysicsService.h"
 namespace RBX {
-const char sPhysicsService[] = "PhysicsService";
 template<class Class> size_t ServiceProvider::doGetClassIndex() {
     static size_t index = newIndex();
     return index;
@@ -13,12 +12,8 @@ template<class Class> size_t ServiceProvider::getClassIndex() {
     boost::call_once(&callDoGetClassIndex<Class>, flag);
     return doGetClassIndex<Class>();
 }
-template<class Derived, const char* ClassName>
-const Name& NonFactoryProduct<Derived, ClassName>::className() { return Name::declare<ClassName>(); }
-
-template<> const Name& NonFactoryProduct<Instance, sPhysicsService>::getClassName() const {
-    return className();
-}
+template<class D, const char* N>
+const Name& NonFactoryProduct<D, N>::className() { return Name::declare<N>(); }
 
 template<> PhysicsService* ServiceProvider::find<PhysicsService>() const {
     size_t index = getClassIndex<PhysicsService>();

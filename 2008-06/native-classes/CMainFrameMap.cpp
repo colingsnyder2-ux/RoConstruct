@@ -44,5 +44,5 @@ BEGIN_MESSAGE_MAP(CMainFrame, CXTPMDIFrameWnd)
     ON_WM_WINDOWPOSCHANGING()
 END_MESSAGE_MAP()
 
-// Original 006c4ce0 is an import thunk to CWnd::Default.
+// Original 006c4ce0 is the shared five-byte jump wrapper to MFC CWnd::Default.
 void CMainFrame::OnPaint() { Default(); }
