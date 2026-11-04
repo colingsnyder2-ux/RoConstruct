@@ -9116,7 +9116,7 @@
     "tests/audit_native_archive.py": "2ef1ac3a05927ad2a54bfe6836f5bb938deb4d34f8560f98869f9df865a5b3c4",
     "tests/audit_native_archive_consumers.py": "af0d954a9db9194d2d3f32747b70819d93c1a2382c4db30415336165c8eefcf9",
     "tests/audit_native_document_entries.py": "dcc99b282c486bbd6b71d9e0240c6712452b961f42e6fc550478878b20a35854",
-    "tests/audit_native_eh_graph.py": "51ed810a37803d8f310362cece6fe6e794f22232a5ee183e078201be50ab03e4",
+    "tests/audit_native_eh_graph.py": "c054014c5711a19cc65dddb0c3af70bd7f3ffc5a9807a21cd1591673ad41b21e",
     "tests/audit_native_rakpeer_stale_profiler_worker.py": "4cc92d626b736e5b75f90867f5203520bb8ec0dbfb3d5a7fc1e36b29b51709c1",
     "tests/audit_native_runservice_vtables.py": "821f4b18c00544b4dc4eba4e5ae27ac8ecd421af996acfb37d31a1858d668e94",
     "tests/audit_native_source_hygiene.py": "6dd11baad812fde2048ac93ea562218e009d56314580bf28068a9803b6b0a508",

@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse,hashlib,json,struct,sys
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
 from roc import match,native_asm
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('object',type=Path);parser.add_argument('address',type=lambda x:int(x,16));parser.add_argument('symbol');parser.add_argument('--output',type=Path);args=parser.parse_args();path=args.object;raw=path.read_bytes();secs,syms,defs,starts=match._coff_data_index(raw);funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};base,image=match._image('2008-06');address=args.address
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('object',type=Path);parser.add_argument('address',type=lambda x:int(x,16));parser.add_argument('symbol');parser.add_argument('--output',type=Path);parser.add_argument('--provider',nargs=2,action='append',default=[],metavar=('SYMBOL','OBJECT'));args=parser.parse_args();path=args.object;raw=path.read_bytes();secs,syms,defs,starts=match._coff_data_index(raw);funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};base,image=match._image('2008-06');address=args.address
 name=next(n for n in funcs if n.startswith(args.symbol));body,refs=funcs[name];fv,fs=defs[name];full=bytes(image[address-base:address-base+len(body)]);bindings={};events=[];seen=set();errors=[]
 # Resolve only COFF-declared weak fallbacks; availability is not final PE selection.
 weak={};symbol_offset,symbol_count=struct.unpack_from('<II',raw,8);symbol_index=0
@@ -13,6 +13,14 @@ while symbol_index<symbol_count:
   tag,search=struct.unpack_from('<II',raw,offset+18)
   weak[syms[symbol_index][0]]={'fallback':syms[tag][0],'search_characteristic':search}
  symbol_index+=1+aux
+
+providers={}
+for prefix,filename in args.provider:
+ provider_path=Path(filename);provider_raw=provider_path.read_bytes()
+ matches=[n for n,_,_ in match.coff_functions(provider_raw) if n.startswith(prefix)]
+ if len(matches)!=1:raise ValueError('provider symbol missing/ambiguous: '+prefix)
+ if matches[0] in providers:raise ValueError('duplicate provider: '+matches[0])
+ providers[matches[0]]=(provider_path,provider_raw)
 
 def u(va):return struct.unpack_from('<I',image,va-base)[0]
 def relocs(sec):
@@ -69,6 +77,22 @@ def external(symbol,va):
   if import_aliases.get((dll,export))==symbol:return True
  return symbol in (export,'_'+export)
 def walk(symbol,va,addend=0):
+ global raw,secs,syms,defs,starts,funcs,weak,fs,fv,body
+ if symbol not in defs and symbol in providers:
+  provider_path,provider_raw=providers[symbol]
+  saved=(raw,secs,syms,defs,starts,funcs,weak,fs,fv,body)
+  raw=provider_raw;secs,syms,defs,starts=match._coff_data_index(raw)
+  funcs={n:(b,r) for n,b,r in match.coff_functions(raw)};weak={};fs=-1;fv=0;body=b''
+  offset,count=struct.unpack_from('<II',raw,8);index=0
+  while index<count:
+   pos=offset+index*18;storage,aux=struct.unpack_from('<BB',raw,pos+16)
+   if storage==105 and aux:
+    tag,search=struct.unpack_from('<II',raw,pos+18)
+    weak[syms[index][0]]={'fallback':syms[tag][0],'search_characteristic':search}
+   index+=1+aux
+  events.append({'kind':'explicit object provider','symbol':symbol,'object':str(provider_path),'object_sha256':hashlib.sha256(raw).hexdigest(),'scope':'Availability only; every traversed code/data/import binding is still checked; final PE selection unproven'})
+  try:return walk(symbol,va,addend)
+  finally:raw,secs,syms,defs,starts,funcs,weak,fs,fv,body=saved
  key=(symbol,va,addend)
  if key in seen:return
  seen.add(key)
@@ -84,13 +108,13 @@ def walk(symbol,va,addend=0):
  code=bool(s[9]&0x20)
  if code:
   assert addend==0 and symbol in funcs,(symbol,addend)
-  data,mask=funcs[symbol];other=bytes(image[va-base:va-base+len(data)]);ok=match.exact_match(other,[],data,mask);events.append({'symbol':symbol,'original':hex(va),'kind':'cleanup/handler code','size':len(data),'exact':ok});assert ok,events[-1]
+  data,mask=funcs[symbol];other=bytes(image[va-base:va-base+len(data)]);original_mask=[x-va for x in match._base_relocs('2008-06') if va<=x<va+len(data)];ok=set(original_mask)<=set(mask) and match.exact_match(other,original_mask,data,mask);events.append({'symbol':symbol,'original':hex(va),'kind':'cleanup/handler code','size':len(data),'exact':ok});assert ok,events[-1]
   for off,idx,kind in relocs(sec):
    if value<=off<value+len(data):
     delta=off-value;dest=syms[idx][0];original=u(va+delta)
     if kind==20:
      original=(va+delta+4+struct.unpack_from('<i',other,delta)[0])&0xffffffff
-     if dest in defs or dest in weak:walk(dest,original)
+     if dest in defs or dest in weak or dest in providers:walk(dest,original)
      else:assert external(dest,original),(symbol,dest,hex(original))
     elif kind==6:
      bias=struct.unpack_from('<i',data,delta)[0];walk(dest,original,bias)
