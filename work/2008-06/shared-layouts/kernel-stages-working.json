@@ -1,0 +1,1304 @@
+{
+  "class": "RBX::CleanStage, JointStage, SimJobStage, SimJob, AssemblySimJob, Kernel (+ IWorldStage::getMetric, IStage::stepWorld / getKernel COMDATs)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStagesLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeKernelStagesLayout.cpp"
+    ],
+    "clean": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_clean.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/CleanStage2008.cpp"
+    ],
+    "worldstage": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_worldstage.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/IWorldStage2008.cpp"
+    ],
+    "joint": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_joint.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/JointStage2008.cpp"
+    ],
+    "simjobstage": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_simjobstage.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SimJobStage2008.cpp"
+    ],
+    "simjobstage_ctor": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_simjobstage_ctor.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp"
+    ],
+    "simjob": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_simjob.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SimJob2008.cpp"
+    ],
+    "kernel": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_kernel.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Kernel2008.cpp"
+    ],
+    "clean_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/kernel-stages-pending",
+      "/DNATIVE_KERNEL_STAGES_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_clean_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/CleanStage2008.cpp"
+    ],
+    "joint_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/kernel-stages-pending",
+      "/DNATIVE_KERNEL_STAGES_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_joint_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/JointStage2008.cpp"
+    ],
+    "simjobstage_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/kernel-stages-pending",
+      "/DNATIVE_KERNEL_STAGES_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_simjobstage_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SimJobStage2008.cpp"
+    ],
+    "kernel_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/kernel-stages-pending",
+      "/DNATIVE_KERNEL_STAGES_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeKernelStages_kernel_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Kernel2008.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_kernel_stages.py": "6d717a5b2e05c6c95f7616af5c14b664f1816d53879e57f5b670697a6415ce27",
+    "rebuild/2008-06/tests/NativeKernelStagesLayout.cpp": "50c9c870279472e4c86cddfe61e1e45b5c2c5ef59d32ede907fe625176f8cbf3",
+    "rebuild/2008-06/native-classes/CleanStage2008.cpp": "67b9edf43b73110f13d6c41d592571fe3aabb54aa68f86a8eda9c577b74d80b4",
+    "rebuild/2008-06/native-classes/IWorldStage2008.cpp": "7f066b32a85f6b7f85d5c10aa6fa8083bd8c48a6d8a37390f35f91b128b6a53c",
+    "rebuild/2008-06/native-classes/JointStage2008.cpp": "dde7b28c0d33ddb74ca11beead5d089d56c7096c391ade8c87bab24ce1b6a354",
+    "rebuild/2008-06/native-classes/SimJobStage2008.cpp": "85b1689e890536b7ea4f3526d14d7379a940e82d12415c2c62d21cd28d82b537",
+    "rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp": "8dee7ece44da5cce94668118c09a17a496aad7a77bb1d01ceb857f5057712c83",
+    "rebuild/2008-06/native-classes/SimJob2008.cpp": "67053efb56144fd343bab15068993ac454ffba1bf71b2061517b8a9fa5e92263",
+    "rebuild/2008-06/native-classes/Kernel2008.cpp": "e8423b3a01fbd53ab2021e1f45289697b2ea9e712154e17f36ce3facbed59dab",
+    "rebuild/2008-06/native-headers/v8world/CleanStage2008.h": "b5aa269240f72f912b8c8c1637413de0273e7ff9fb016b8734c6cf5b65a64886",
+    "rebuild/2008-06/native-headers/v8world/JointStage2008.h": "a4c990171117e2c4f292f1e01497a8242c5bbc732c9c4737d3b4ca16f747ab8d",
+    "rebuild/2008-06/native-headers/v8world/SimJobStage2008.h": "8dab6772cb3f5c0a16f7f1a23017a814d8e8f5299fe0884e947c95d3b16371d9",
+    "rebuild/2008-06/native-headers/v8world/SimJob2008.h": "f5932ce855430038ebbe1b6f251cd1d785c3257101f8623e61679aff8f710381",
+    "rebuild/2008-06/native-headers/v8kernel/Kernel2008.h": "fb82da917a4e2fe556518a919f2f90434adef274e231fb42224b9288ebcf3862"
+  },
+  "objects": {
+    "NativeKernelStagesLayout.obj": "66015b82ddfa8b7bc8ac66c68da88edd1d9a1e321f0add7f1602638cb5b2217e",
+    "NativeKernelStages_clean.obj": "6b28c537fb4ee1427790df93367ff914c6123bb7a6392199d36a1d30089186a2",
+    "NativeKernelStages_worldstage.obj": "64439bac3d71e64d15e822b0f0a64300aec5176b085dc39fca41020c8f09683f",
+    "NativeKernelStages_joint.obj": "ecfa16bf04f1b332f7e42df2ebb7c64d276a5b8784915d0cbf8ee8b7d274b9ed",
+    "NativeKernelStages_simjobstage.obj": "d6be577f5b71a50845a7f7925262b6b3e06497f04722294688bf2984df100e00",
+    "NativeKernelStages_simjobstage_ctor.obj": "ade7f4d694f2b865efbf5d6fa5d62d615f3be26312e409a12d5fb4f1b20dbab8",
+    "NativeKernelStages_simjob.obj": "2a7c038e881271eecc30f552559fbadf29629942e91494c22467e4575251b5b3",
+    "NativeKernelStages_kernel.obj": "64127ce2d15fd951c08d56e15d44c5aa20bae02f23b896fb9c71f16628a92e46",
+    "NativeKernelStages_clean_pending.obj": "5550468882a9d71632efcb61180244d2b0b0021ee2ed903b90ec1f54b12e8cd9",
+    "NativeKernelStages_joint_pending.obj": "f1853ade64e9814ffde98bf2de2c6589a15947bca1abbf191b38e7389f7a1bf8",
+    "NativeKernelStages_simjobstage_pending.obj": "0fa3a2c9795809417f7893290be1a7c734583e59189f8ea8c9c51637476e3d08",
+    "NativeKernelStages_kernel_pending.obj": "adef8ebd790c08d468f267ae1743929757eace1e4da80ff088788096a92dca44"
+  },
+  "layout": {
+    "CleanStage": "0x10 (005ea920): IWorldStage only (upstream +0x4, downstream +0x8, world +0xc)",
+    "JointStage": "0x50 (0064a310): incompleteJoints +0x10 (std::set<Joint*>), jointMap +0x30 (std::multimap<Primitive*, Joint*>)",
+    "SimJobStage": "0x2c (0064b8e0): simJobs +0x10 (std::list<SimJob*>)",
+    "SimJob": "0x24 (005e51e0): vptr, mechanisms +0x4 (std::vector), stageIterator +0x1c (list iterator); boost::noncopyable at mdisp 4",
+    "AssemblySimJob": "0x28 (0064d200): assembly +0x24",
+    "Kernel": "0x24 (0064d300): IStage, inStepCode +0xc, kernelData +0x10, realTimeConnectors +0x14 (G3D::Array), profilingKernel +0x20; static numKernels 0097b5b8"
+  },
+  "rows": {
+    "clean": [
+      {
+        "address": "0064a310",
+        "symbol": "??0CleanStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
+        "size": 109,
+        "target_size": 109,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0JointStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z": "0x668470 (external)",
+          "??_7CleanStage@RBX@@6B@": "0x84b05c (vtable RTTI .?AVCleanStage@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??0CleanStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z"
+        ]
+      },
+      {
+        "address": "0064a380",
+        "symbol": "?stepWorld@IStage@RBX@@UAEXHH_N@Z",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0064a390",
+        "symbol": "?getKernel@IStage@RBX@@UAEPAVKernel@2@XZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0064a3a0",
+        "symbol": "??_GCleanStage@RBX@@UAEPAXI@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "??_7CleanStage@RBX@@6B@": "0x84b05c (vtable RTTI .?AVCleanStage@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0064a3e0",
+        "symbol": "?onPrimitiveAdded@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?putInPipeline@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645830 (external)",
+          "?onPrimitiveAdded@JointStage@RBX@@QAEXPAVPrimitive@2@@Z": "0x6685b0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0064a400",
+        "symbol": "?onPrimitiveRemoving@CleanStage@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?onPrimitiveRemoving@JointStage@RBX@@QAEXPAVPrimitive@2@@Z": "0x668850 (external)",
+          "?removeFromPipeline@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645820 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0064a420",
+        "symbol": "?onJointPrimitiveNulling@CleanStage@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z",
+        "size": 51,
+        "target_size": 51,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0064a460",
+        "symbol": "?onJointPrimitiveSet@CleanStage@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z",
+        "size": 111,
+        "target_size": 111,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0064a4d0",
+        "symbol": "?onEdgeAdded@CleanStage@RBX@@UAEXPAVEdge@2@@Z",
+        "size": 50,
+        "target_size": 50,
+        "exact": true,
+        "verified_targets": {
+          "?putInPipeline@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645830 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0064a510",
+        "symbol": "?onEdgeRemoving@CleanStage@RBX@@UAEXPAVEdge@2@@Z",
+        "size": 59,
+        "target_size": 59,
+        "exact": true,
+        "verified_targets": {
+          "?removeFromPipeline@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645820 (external)"
+        },
+        "local_eh": []
+      }
+    ],
+    "worldstage": [
+      {
+        "address": "0064a3d0",
+        "symbol": "?getMetric@IWorldStage@RBX@@UAEHW4MetricType@12@@Z",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "joint": [
+      {
+        "address": "00667f70",
+        "symbol": "?edgeHasPrimitivesDownstream@JointStage@RBX@@AAE_NPAVEdge@2@@Z",
+        "size": 94,
+        "target_size": 94,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00668340",
+        "symbol": "?insertToListAndMap@JointStage@RBX@@AAEXPAVEdge@2@@Z",
+        "size": 107,
+        "target_size": 107,
+        "exact": true,
+        "verified_targets": {
+          "?insert@?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVJoint@RBX@@@Z": "0x5e8c40 (external)",
+          "?insert@?$_Tree@V?$_Tmap_traits@PAVPrimitive@RBX@@PAVJoint@2@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@U?$pair@QAVPrimitive@RBX@@PAVJoint@2@@std@@@5@$00@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PAVPrimitive@RBX@@PAVJoint@2@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@U?$pair@QAVPrimitive@RBX@@PAVJoint@2@@std@@@5@$00@std@@@std@@_N@2@ABU?$pair@QAVPrimitive@RBX@@PAVJoint@2@@2@@Z": "0x668210 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006683b0",
+        "symbol": "?onEdgeAdded@JointStage@RBX@@UAEXPAVEdge@2@@Z",
+        "size": 56,
+        "target_size": 56,
+        "exact": true,
+        "verified_targets": {
+          "?putInStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645830 (external)",
+          "?edgeHasPrimitivesDownstream@JointStage@RBX@@AAE_NPAVEdge@2@@Z": "0x667f70 (own row)",
+          "?insertToListAndMap@JointStage@RBX@@AAEXPAVEdge@2@@Z": "0x668340 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006683f0",
+        "symbol": "?onEdgeRemoving@JointStage@RBX@@UAEXPAVEdge@2@@Z",
+        "size": 114,
+        "target_size": 114,
+        "exact": true,
+        "verified_targets": {
+          "?removeFromStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645840 (external)",
+          "?erase@?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAEIABQAVJoint@RBX@@@Z": "0x5e9f60 (external)",
+          "?removeFromMap@JointStage@RBX@@AAEXPAVJoint@2@PAVPrimitive@2@@Z": "0x668280 (call target of a non-exact row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00668520",
+        "symbol": "??1JointStage@RBX@@UAE@XZ",
+        "size": 103,
+        "target_size": 103,
+        "exact": true,
+        "verified_targets": {
+          "??_7JointStage@RBX@@6B@": "0x84cf64 (vtable RTTI .?AVJointStage@RBX@@ offset 0x0)",
+          "??1?$_Tree@V?$_Tmap_traits@PAVPrimitive@RBX@@PAVJoint@2@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@U?$pair@QAVPrimitive@RBX@@PAVJoint@2@@std@@@5@$00@std@@@std@@QAE@XZ": "0x553d80 (external)",
+          "??1?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??1JointStage@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00668590",
+        "symbol": "??_GJointStage@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1JointStage@RBX@@UAE@XZ": "0x668520 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "simjobstage": [
+      {
+        "address": "0064d060",
+        "symbol": "?onEdgeAdded@SimJobStage@RBX@@UAEXPAVEdge@2@@Z",
+        "size": 42,
+        "target_size": 42,
+        "exact": true,
+        "verified_targets": {
+          "?putInStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645830 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0064d090",
+        "symbol": "?onEdgeRemoving@SimJobStage@RBX@@UAEXPAVEdge@2@@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?removeFromStage@IPipelined@RBX@@QAEXPAVIStage@2@@Z": "0x645840 (external)"
+        },
+        "local_eh": []
+      }
+    ],
+    "simjobstage_ctor": [
+      {
+        "address": "0064d300",
+        "symbol": "??0SimJobStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z",
+        "size": 128,
+        "target_size": 128,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Kernel@RBX@@QAE@PAVIStage@1@@Z": "0x5fb650 (call target of a non-exact row)",
+          "??_7SimJobStage@RBX@@6B@": "0x84b174 (vtable RTTI .?AVSimJobStage@RBX@@ offset 0x0)",
+          "??0?$list@PAVSimJob@RBX@@V?$allocator@PAVSimJob@RBX@@@std@@@std@@QAE@XZ": "0x61a200 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$??0SimJobStage@RBX@@QAE@PAVIStage@1@PAVWorld@1@@Z"
+        ]
+      },
+      {
+        "address": "0064d380",
+        "symbol": "??_GSimJobStage@RBX@@UAEPAXI@Z",
+        "size": 69,
+        "target_size": 69,
+        "exact": true,
+        "verified_targets": {
+          "??_7SimJobStage@RBX@@6B@": "0x84b174 (vtable RTTI .?AVSimJobStage@RBX@@ offset 0x0)",
+          "?_Tidy@?$list@PAVSimJob@RBX@@V?$allocator@PAVSimJob@RBX@@@std@@@std@@IAEXXZ": "0x682b40 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "simjob": [
+      {
+        "address": "005e50f0",
+        "symbol": "??0SimJob@RBX@@QAE@XZ",
+        "size": 93,
+        "target_size": 93,
+        "exact": true,
+        "verified_targets": {
+          "??_7SimJob@RBX@@6B@": "0x83f72c (vtable RTTI .?AVSimJob@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0SimJob@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "005e5150",
+        "symbol": "??1SimJob@RBX@@UAE@XZ",
+        "size": 60,
+        "target_size": 60,
+        "exact": true,
+        "verified_targets": {
+          "??_7SimJob@RBX@@6B@": "0x83f72c (vtable RTTI .?AVSimJob@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e5190",
+        "symbol": "??_GSimJob@RBX@@UAEPAXI@Z",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "verified_targets": {
+          "??_7SimJob@RBX@@6B@": "0x83f72c (vtable RTTI .?AVSimJob@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e51e0",
+        "symbol": "??0AssemblySimJob@RBX@@QAE@PAVAssembly@1@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {
+          "??0SimJob@RBX@@QAE@XZ": "0x5e50f0 (own row)",
+          "??_7AssemblySimJob@RBX@@6B@": "0x83f73c (vtable RTTI .?AVAssemblySimJob@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      }
+    ],
+    "kernel": [
+      {
+        "address": "005fb0c0",
+        "symbol": "??_GKernel@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Kernel@RBX@@UAE@XZ": "0x5faca0 (call target of a non-exact row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005faa20",
+        "symbol": "?numBodies@Kernel@RBX@@QBEHXZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005faa30",
+        "symbol": "?numPoints@Kernel@RBX@@QBEHXZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005faa40",
+        "symbol": "?numConnectors@Kernel@RBX@@QBEHXZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "not_exact": [
+      {
+        "address": "00668280",
+        "symbol": "?removeFromMap@JointStage@RBX@@AAEXPAVJoint@2@PAVPrimitive@2@@Z",
+        "size": 188,
+        "target_size": 188,
+        "exact": false,
+        "reason": "same length and instructions; only the prologue push order of esi / edi differs (register allocation), no source form tried (lower_bound / upper_bound loop, break / return / while variants) reproduces it"
+      },
+      {
+        "address": "005fb650",
+        "symbol": "??0Kernel@RBX@@QAE@PAVIStage@1@@Z",
+        "size": 199,
+        "target_size": 178,
+        "exact": false,
+        "reason": "the 2008 KernelData is 0x3c (new 0x3c, constructor 005fb5f0) and CodeProfiler 0xc048 (new 0xc048, constructor 005c43a0); the donor KernelData.h / util/Profiling.h give 0x30 / 0x20040"
+      },
+      {
+        "address": "005faca0",
+        "symbol": "??1Kernel@RBX@@UAE@XZ",
+        "size": 175,
+        "target_size": 162,
+        "exact": false,
+        "reason": "the 2008 CodeProfiler has a virtual destructor (005fad00 deletes profilingKernel through slot 0); the donor Profiler has none; the rest (--numKernels, ~KernelData call, ~Array, ~IStage) is identical"
+      }
+    ]
+  },
+  "fold_proof": [
+    {
+      "symbol": "?getAssemblyConst@AssemblySimJob@RBX@@UAEPAVAssembly@2@XZ",
+      "folded_into": "0074eed0",
+      "body_equal": true,
+      "counted": false,
+      "build": "simjob",
+      "status": "current headers"
+    },
+    {
+      "symbol": "?getAssembly@AssemblySimJob@RBX@@UAEPAVAssembly@2@XZ",
+      "folded_into": "0074eed0",
+      "body_equal": true,
+      "counted": false,
+      "build": "simjob",
+      "status": "current headers"
+    },
+    {
+      "symbol": "??_GAssemblySimJob@RBX@@UAEPAXI@Z",
+      "folded_into": "005e5190",
+      "body_equal": true,
+      "counted": false,
+      "build": "simjob",
+      "status": "current headers"
+    },
+    {
+      "symbol": "?getKernel@Kernel@RBX@@UAEPAV12@XZ",
+      "folded_into": "007188c0",
+      "body_equal": true,
+      "counted": false,
+      "build": "kernel",
+      "status": "current headers"
+    }
+  ],
+  "pending_build_only": [
+    {
+      "symbol": "?getStageType@CleanStage@RBX@@UAE?AW4StageType@IStage@2@XZ",
+      "folded_into": "00416690",
+      "body_equal": true,
+      "counted": false,
+      "build": "clean_pending",
+      "status": "pending-build-only"
+    },
+    {
+      "symbol": "?getStageType@JointStage@RBX@@UAE?AW4StageType@IStage@2@XZ",
+      "folded_into": "007286a0",
+      "body_equal": true,
+      "counted": false,
+      "build": "joint_pending",
+      "status": "pending-build-only"
+    },
+    {
+      "symbol": "?getStageType@SimJobStage@RBX@@UAE?AW4StageType@IStage@2@XZ",
+      "folded_into": "005cb9d0",
+      "body_equal": true,
+      "counted": false,
+      "build": "simjobstage_pending",
+      "status": "pending-build-only"
+    },
+    {
+      "symbol": "?getStageType@Kernel@RBX@@UAE?AW4StageType@IStage@2@XZ",
+      "folded_into": "0077d800",
+      "body_equal": true,
+      "counted": false,
+      "build": "kernel_pending",
+      "status": "pending-build-only"
+    }
+  ],
+  "exact_function_rows": [
+    "005e50f0",
+    "005e5150",
+    "005e5190",
+    "005e51e0",
+    "005faa20",
+    "005faa30",
+    "005faa40",
+    "005fb0c0",
+    "0064a310",
+    "0064a380",
+    "0064a390",
+    "0064a3a0",
+    "0064a3d0",
+    "0064a3e0",
+    "0064a400",
+    "0064a420",
+    "0064a460",
+    "0064a4d0",
+    "0064a510",
+    "0064d060",
+    "0064d090",
+    "0064d300",
+    "0064d380",
+    "00667f70",
+    "00668340",
+    "006683b0",
+    "006683f0",
+    "00668520",
+    "00668590"
+  ],
+  "vtables": {
+    "CleanStage": [
+      {
+        "slot": 0,
+        "symbol": "??_ECleanStage@RBX@@UAEPAXI@Z",
+        "original": "0064a3a0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getStageType@CleanStage@RBX@@UAE?AW4StageType@IStage@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?stepWorld@IStage@RBX@@UAEXHH_N@Z",
+        "original": "0064a380",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getKernel@IStage@RBX@@UAEPAVKernel@2@XZ",
+        "original": "0064a390",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onEdgeAdded@CleanStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "0064a4d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onEdgeRemoving@CleanStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "0064a510",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMetric@IWorldStage@RBX@@UAEHW4MetricType@12@@Z",
+        "original": "0064a3d0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "JointStage": [
+      {
+        "slot": 0,
+        "symbol": "??_EJointStage@RBX@@UAEPAXI@Z",
+        "original": "00668590",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getStageType@JointStage@RBX@@UAE?AW4StageType@IStage@2@XZ",
+        "original": "007286a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?stepWorld@IStage@RBX@@UAEXHH_N@Z",
+        "original": "0064a380",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getKernel@IStage@RBX@@UAEPAVKernel@2@XZ",
+        "original": "0064a390",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onEdgeAdded@JointStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "006683b0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onEdgeRemoving@JointStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "006683f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMetric@IWorldStage@RBX@@UAEHW4MetricType@12@@Z",
+        "original": "0064a3d0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "SimJobStage": [
+      {
+        "slot": 0,
+        "symbol": "??_ESimJobStage@RBX@@UAEPAXI@Z",
+        "original": "0064d380",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getStageType@SimJobStage@RBX@@UAE?AW4StageType@IStage@2@XZ",
+        "original": "005cb9d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?stepWorld@IStage@RBX@@UAEXHH_N@Z",
+        "original": "0064a380",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getKernel@IStage@RBX@@UAEPAVKernel@2@XZ",
+        "original": "0064a390",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onEdgeAdded@SimJobStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "0064d060",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onEdgeRemoving@SimJobStage@RBX@@UAEXPAVEdge@2@@Z",
+        "original": "0064d090",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMetric@IWorldStage@RBX@@UAEHW4MetricType@12@@Z",
+        "original": "0064a3d0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "SimJob": [
+      {
+        "slot": 0,
+        "symbol": "??_ESimJob@RBX@@UAEPAXI@Z",
+        "original": "005e5190",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "AssemblySimJob": [
+      {
+        "slot": 0,
+        "symbol": "??_EAssemblySimJob@RBX@@UAEPAXI@Z",
+        "original": "005e5190",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getAssemblyConst@AssemblySimJob@RBX@@UAEPAVAssembly@2@XZ",
+        "original": "0074eed0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?getAssembly@AssemblySimJob@RBX@@UAEPAVAssembly@2@XZ",
+        "original": "0074eed0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "Kernel": [
+      {
+        "slot": 0,
+        "symbol": "??_EKernel@RBX@@UAEPAXI@Z",
+        "original": "005fb0c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getStageType@Kernel@RBX@@UAE?AW4StageType@IStage@2@XZ",
+        "original": "0077d800",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?stepWorld@Kernel@RBX@@UAEXHH_N@Z",
+        "original": "005fb3f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getKernel@Kernel@RBX@@UAEPAV12@XZ",
+        "original": "007188c0",
+        "ok": true,
+        "how": "bound"
+      }
+    ]
+  },
+  "allocations": [
+    {
+      "creator": "005ea920",
+      "size": "0x10",
+      "constructor": "0064a310",
+      "note": "World() -> CleanStage(NULL, world)",
+      "push": "6a10"
+    },
+    {
+      "creator": "0064a310",
+      "size": "0x50",
+      "constructor": "00668470",
+      "note": "CleanStage() -> JointStage(this, world)",
+      "push": "6a50"
+    },
+    {
+      "creator": "00668470",
+      "size": "0x30",
+      "constructor": "0064cfd0",
+      "note": "JointStage() -> ClumpStage(this, world) (row not built: ClumpStage 0x30)",
+      "push": "6a30"
+    },
+    {
+      "creator": "0064b8e0",
+      "size": "0x2c",
+      "constructor": "0064d300",
+      "note": "SleepStage() -> SimJobStage(this, world)",
+      "push": "6a2c"
+    },
+    {
+      "creator": "0064d300",
+      "size": "0x24",
+      "constructor": "005fb650",
+      "note": "SimJobStage() -> Kernel(this)",
+      "push": "6a24"
+    },
+    {
+      "creator": "0064d200",
+      "size": "0x28",
+      "constructor": "005e51e0",
+      "note": "SimJobStage (assembly added) -> AssemblySimJob(assembly)",
+      "push": "6a28"
+    },
+    {
+      "creator": "005fb650",
+      "size": "0x3c",
+      "constructor": "005fb5f0",
+      "note": "Kernel() -> KernelData()",
+      "push": "6a3c"
+    },
+    {
+      "creator": "005fb650",
+      "size": "0xc048",
+      "constructor": "005c43a0",
+      "note": "Kernel() -> CodeProfiler(\"Kernel\")",
+      "push": "6848c00000"
+    }
+  ],
+  "proposals": {
+    "v8kernel/IStage.h (engine owner; extends the KERNEL_STAGE = 7 proposal of record_native_world_joints.py)": "the 2008 StageType is CLEAN_STAGE 0, JOINT_STAGE 1, CLUMP_STAGE 2, TREE_STAGE 3, ASSEMBLY_STAGE 4, SLEEP_STAGE 5, SIMJOB_STAGE 6, KERNEL_STAGE 7 (getStageType bodies 00416690 / 007286a0 / 0077d810 / 005e2790 / 006fa3f0 / 007359e0 / 005cb9d0 / 0077d800; no COLLISION / SEPARATE stage vtable exists in 2008). With that enum the getStageType bodies here are exact fold proofs (pending-build-only).",
+    "v8world/IWorldStage.h (engine owner)": "IWorldStage::getMetric is header-inline in 2008: `return getDownstreamWS()->getMetric(metricType);` (0064a3d0 sits among the CleanStage COMDATs; built here out of line in native-classes/IWorldStage2008.cpp until the header carries it).",
+    "v8world/IPipelined.h (engine owner)": "the 2008 bodies: putInPipeline / putInStage / putInKernel share 00645830 (`currentStage = stage`), removeFromPipeline 00645820 (`currentStage = NULL`), removeFromStage 00645840 (`currentStage = currentStage->getUpstream()`, takes the stage argument), removeFromKernel 00645860, getKernel 00645850 (getStage(KERNEL_STAGE = 7) 006457e0). Declarations already match the donor.",
+    "v8world/ClumpStage.h (engine owner)": "the 2008 ClumpStage is 0x30 bytes (JointStage() 00668470 news 0x30 for ClumpStage(this, world) 0064cfd0); the donor declares 0x1cc. JointStage() 00668470 is not built until a 2008 ClumpStage declaration exists.",
+    "v8kernel/KernelData.h (kernel owner)": "the 2008 KernelData is 0x3c (Kernel() 005fb650 news 0x3c, constructor 005fb5f0; ~KernelData 005fa970 is out of line); the donor has four 0xc index arrays (0x30). numBodies / numPoints / numConnectors read +0x4 / +0x10 / +0x1c, so the first three arrays keep the donor offsets.",
+    "util/Profiling.h (util owner)": "the 2008 CodeProfiler is 0xc048 bytes (Kernel() 005fb650 news 0xc048 for CodeProfiler(\"Kernel\") 005c43a0) and has a virtual destructor (~Kernel 005fad00 deletes it through slot 0).",
+    "v8kernel/Kernel.h, v8world/JointStage.h, SimJobStage.h (original paths)": "promote Kernel2008.h / JointStage2008.h / SimJobStage2008.h once the owners of the units that include IPipelined.h / World.h have re-run their recorders: Kernel is 0x24 (no maxBodies / maxPoints / maxConnectors); SimJobStage holds a std::list<SimJob*>; CleanStage (new) precedes JointStage in the 2008 pipeline."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
