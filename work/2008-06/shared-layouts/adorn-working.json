@@ -1,0 +1,693 @@
+{
+  "class": "RBX::Adorn (interface), RBX::AdornG3D",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAdornLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeAdornLayout.cpp"
+    ],
+    "g3d": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAdorn_g3d.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AdornG3D.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/adorn-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_ADORN_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAdorn_g3d_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AdornG3D.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_adorn.py": "8c6a03895f9fa564627c195cc82c5a5288211fcfe82d5c2f3bc763b994eebec3",
+    "rebuild/2008-06/tests/NativeAdornLayout.cpp": "8d8f96cdb5744e4642777bed18f430e3cea596403c320cd7bb6e03fa5f03f82a",
+    "rebuild/2008-06/native-classes/AdornG3D.cpp": "3dac0cdf28537d5f926655f704caef7ef3e960592584b5d07de643e8d05ea2c2",
+    "rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h": "a745743cd557181bc35250700c2724933a7354b5844269c864361d4dc9539620",
+    "rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h": "66a9a7ee25ac3011598346a64d47b390584b8147c02842e586602ae0de9c7d3e"
+  },
+  "pending_headers": {
+    "RbxGraphics/TextureProxyBase.h": "29376f4ea017f16ff48c1d4088e02ba8b7b5ec972fae278f412ec71f3262efb7",
+    "RenderLib/TextureProxy.h": "add7ab2923eda027ad2feb3a2bd32321485b2034644aa3bb739a90451c16c271"
+  },
+  "objects": {
+    "NativeAdornLayout.obj": "195bebf7c8c953830827f9a9d1a7287c501b559ccf20362b7036a8697ad459bd",
+    "NativeAdorn_g3d.obj": "0a69e84335db0b4fe992783b944dd25248dbd18e51f8063651fd0c0359b06a14",
+    "NativeAdorn_g3d_pending.obj": "e603cda2468328ec455f25e8fc3637632699d8b37cd1261ecd9fb7ba4c0b9e23"
+  },
+  "layout": {
+    "adornSize": "0x4",
+    "adornG3DSize": "0x20",
+    "adornG3DRenderDevice": "0x4",
+    "adornG3DTextureManager": "0x8",
+    "textureManagerSize": "0x18"
+  },
+  "rows": {
+    "layout": [
+      {
+        "address": "0045d820",
+        "symbol": "??_GAdornG3D@RBX@@UAEPAXI@Z",
+        "size": 39,
+        "target_size": 39,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@6B@": "0x819cd8 (vtable RTTI .?AV?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@ offset 0x0)",
+          "?freeMemory@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@AAEXXZ": "0x45c680 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "0045c680",
+        "symbol": "?freeMemory@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@AAEXXZ",
+        "size": 92,
+        "target_size": 92,
+        "exact": true,
+        "verified_targets": {
+          "??1Entry@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@QAE@XZ": "0x45b640 (own row)",
+          "?free@System@G3D@@SAXPAX@Z": "0x507d00 (external)",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "0045b640",
+        "symbol": "??1Entry@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@QAE@XZ",
+        "size": 133,
+        "target_size": 133,
+        "exact": true,
+        "verified_targets": {
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+          "??_7TextureArgs@TextureManager@G3D@@6B@": "0x819770 (vtable RTTI .?AVTextureArgs@TextureManager@G3D@@ offset 0x0)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??_7Hashable@G3D@@6B@": "0x819750 (vtable RTTI .?AVHashable@G3D@@ offset 0x0)"
+        },
+        "local": [
+          "__ehhandler$??1Entry@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@QAE@XZ"
+        ]
+      }
+    ],
+    "g3d": [
+      {
+        "address": "00676480",
+        "symbol": "?getViewport@AdornG3D@RBX@@UBE?AVRect2D@G3D@@XZ",
+        "size": 20,
+        "target_size": 20,
+        "exact": true,
+        "verified_targets": {
+          "?getViewport@RenderDevice@G3D@@QBE?AVRect2D@2@XZ": "0x476d60 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "006764a0",
+        "symbol": "?getWidth@AdornG3D@RBX@@UBEHXZ",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "?getWidth@RenderDevice@G3D@@QBEHXZ": "0x478450 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "006764b0",
+        "symbol": "?getHeight@AdornG3D@RBX@@UBEHXZ",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "?getHeight@RenderDevice@G3D@@QBEHXZ": "0x478cd0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "006764c0",
+        "symbol": "?rect2d@AdornG3D@RBX@@UBEXABVRect2D@G3D@@ABVColor4@4@@Z",
+        "size": 63,
+        "target_size": 63,
+        "exact": true,
+        "verified_targets": {
+          "?rect2d@DrawPrimitives@RBX@@SAXABVRect@2@PAVRenderDevice@G3D@@ABVColor4@5@@Z": "0x678280 (external (evidence name))"
+        },
+        "local": []
+      },
+      {
+        "address": "00676500",
+        "symbol": "?outlineRect2d@AdornG3D@RBX@@UBEXABVRect2D@G3D@@MABVColor4@4@@Z",
+        "size": 71,
+        "target_size": 71,
+        "exact": true,
+        "verified_targets": {
+          "?outlineRect2d@DrawPrimitives@RBX@@SAXABVRect@2@MPAVRenderDevice@G3D@@ABVColor4@5@@Z": "0x678080 (external (evidence name))"
+        },
+        "local": []
+      },
+      {
+        "address": "00676550",
+        "symbol": "?line2d@AdornG3D@RBX@@UBEXABVVector2@G3D@@0ABVColor4@4@@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "?line2d@DrawPrimitives@RBX@@SAXABVVector2@G3D@@0PAVRenderDevice@4@ABVColor4@4@@Z": "0x6781f0 (external (evidence name))"
+        },
+        "local": []
+      },
+      {
+        "address": "00676570",
+        "symbol": "?setObjectToWorldMatrix@AdornG3D@RBX@@UAEXABVCoordinateFrame@G3D@@@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "?setObjectToWorldMatrix@RenderDevice@G3D@@QAEXABVCoordinateFrame@2@@Z": "0x4777e0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00676580",
+        "symbol": "?box@AdornG3D@RBX@@UAEXABVAABox@G3D@@ABVColor4@4@1@Z",
+        "size": 38,
+        "target_size": 38,
+        "exact": true,
+        "verified_targets": {
+          "?rawBox@DrawPrimitives@RBX@@SAXABVAABox@G3D@@PAVRenderDevice@4@@Z": "0x677f60 (external (evidence name))"
+        },
+        "local": []
+      },
+      {
+        "address": "006765b0",
+        "symbol": "?sphere@AdornG3D@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z",
+        "size": 44,
+        "target_size": 44,
+        "exact": true,
+        "verified_targets": {
+          "?rawSphere@DrawPrimitives@RBX@@SAXMPAVRenderDevice@G3D@@@Z": "0x677de0 (external (evidence name))"
+        },
+        "local": []
+      },
+      {
+        "address": "006765e0",
+        "symbol": "?explosion@AdornG3D@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "006765f0",
+        "symbol": "?cylinderAlongX@AdornG3D@RBX@@UAEXMMABVColor4@G3D@@0@Z",
+        "size": 51,
+        "target_size": 51,
+        "exact": true,
+        "verified_targets": {
+          "?rawCylinderAlongX@DrawPrimitives@RBX@@SAXMMPAVRenderDevice@G3D@@@Z": "0x677e20 (external (evidence name))"
+        },
+        "local": []
+      },
+      {
+        "address": "00676630",
+        "symbol": "?ray@AdornG3D@RBX@@UAEXABVRay@G3D@@ABVColor4@4@M@Z",
+        "size": 33,
+        "target_size": 33,
+        "exact": true,
+        "verified_targets": {
+          "?ray@Draw@G3D@@SAXABVRay@2@PAVRenderDevice@2@ABVColor4@2@M@Z": "0x7b05b0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00676660",
+        "symbol": "?lineSegment@AdornG3D@RBX@@UAEXABVLineSegment@G3D@@ABVColor4@4@M@Z",
+        "size": 33,
+        "target_size": 33,
+        "exact": true,
+        "verified_targets": {
+          "?lineSegment@Draw@G3D@@SAXABVLineSegment@2@PAVRenderDevice@2@ABVColor4@2@M@Z": "0x7b0250 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00676690",
+        "symbol": "?axes@AdornG3D@RBX@@UAEXABVColor4@G3D@@00M@Z",
+        "size": 38,
+        "target_size": 38,
+        "exact": true,
+        "verified_targets": {
+          "?axes@Draw@G3D@@SAXPAVRenderDevice@2@ABVColor4@2@11M@Z": "0x7b1490 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "006766c0",
+        "symbol": "?quad@AdornG3D@RBX@@UAEXABVVector3@G3D@@000ABVColor4@4@@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {
+          "?beginPrimitive@RenderDevice@G3D@@QAEXW4Primitive@12@@Z": "0x47b410 (external)",
+          "?sendVertex@RenderDevice@G3D@@QAEXABVVector3@2@@Z": "0x477ec0 (external)",
+          "?endPrimitive@RenderDevice@G3D@@QAEXXZ": "0x478990 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00676720",
+        "symbol": "?setColor@AdornG3D@RBX@@UAEXABVColor4@G3D@@@Z",
+        "size": 45,
+        "target_size": 45,
+        "exact": true,
+        "verified_targets": {
+          "__imp__glColor4fv@4": "0x8029f4 (opengl32.dll!glColor4fv)"
+        },
+        "local": []
+      },
+      {
+        "address": "00676940",
+        "symbol": "?get2DStringBounds@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@Adorn@2@@Z",
+        "size": 152,
+        "target_size": 152,
+        "exact": true,
+        "verified_targets": {
+          "?getFont@Fonts@RBX@@SA?AV?$ReferenceCountedPointer@VGFont@G3D@@@G3D@@XZ": "0x678310 (external (evidence name))",
+          "?get2DStringBounds@GFont@G3D@@QBE?AVVector2@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@12@@Z": "0x7b6b30 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?get2DStringBounds@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@Adorn@2@@Z"
+        ]
+      },
+      {
+        "address": "006769e0",
+        "symbol": "?drawFont2D@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z",
+        "size": 184,
+        "target_size": 184,
+        "exact": true,
+        "verified_targets": {
+          "?getFont@Fonts@RBX@@SA?AV?$ReferenceCountedPointer@VGFont@G3D@@@G3D@@XZ": "0x678310 (external (evidence name))",
+          "?draw2D@GFont@G3D@@QBE?AVVector2@2@PAVRenderDevice@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV32@NABVColor4@2@3W4XAlign@12@W4YAlign@12@W4Spacing@12@@Z": "0x7b6fc0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?drawFont2D@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z"
+        ]
+      }
+    ],
+    "not_exact": [
+      {
+        "address": "00676aa0",
+        "symbol": "?createTextureProxy@AdornG3D@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "size": 127,
+        "target_size": 127,
+        "exact": false,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0TextureProxy@Render@RBX@@QAE@AAVTextureManager@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z": "0x551b30 (external)",
+          "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z": "0x598fa0 (external)"
+        },
+        "local": [
+          "__ehhandler$?createTextureProxy@AdornG3D@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+        ],
+        "pending_build_exact": true,
+        "reason": "pending-build-only: needs the 2008 TextureProxyBase (resolve = virtual slot 6, +0x18) and the out-of-line Render::TextureProxy(TextureManager&, const std::string&, bool) 00551b30 (size 0x54); compiled only with /DNATIVE_ADORN_PENDING against generated proposal headers"
+      },
+      {
+        "address": "00676890",
+        "symbol": "?setTexture@AdornG3D@RBX@@UAEXHV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@@Z",
+        "size": 163,
+        "target_size": 163,
+        "exact": false,
+        "verified_targets": {
+          "?setTexture@RenderDevice@G3D@@QAEXIV?$ReferenceCountedPointer@VTexture@G3D@@@2@@Z": "0x479450 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?setTexture@AdornG3D@RBX@@UAEXHV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@@Z"
+        ],
+        "pending_build_exact": true,
+        "reason": "pending-build-only: needs the 2008 TextureProxyBase (resolve = virtual slot 6, +0x18) and the out-of-line Render::TextureProxy(TextureManager&, const std::string&, bool) 00551b30 (size 0x54); compiled only with /DNATIVE_ADORN_PENDING against generated proposal headers"
+      },
+      {
+        "address": "00676750",
+        "symbol": "?getTextureSize@AdornG3D@RBX@@UBE?AVRect2D@G3D@@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@4@@Z",
+        "size": 315,
+        "target_size": 315,
+        "exact": false,
+        "verified_targets": {
+          "?rect2DBounds@Texture@G3D@@QBE?AVRect2D@2@XZ": "0x473f90 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?getTextureSize@AdornG3D@RBX@@UBE?AVRect2D@G3D@@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@4@@Z"
+        ],
+        "pending_build_exact": true,
+        "reason": "pending-build-only: needs the 2008 TextureProxyBase (resolve = virtual slot 6, +0x18) and the out-of-line Render::TextureProxy(TextureManager&, const std::string&, bool) 00551b30 (size 0x54); compiled only with /DNATIVE_ADORN_PENDING against generated proposal headers"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "0045b640",
+    "0045c680",
+    "0045d820",
+    "00676480",
+    "006764a0",
+    "006764b0",
+    "006764c0",
+    "00676500",
+    "00676550",
+    "00676570",
+    "00676580",
+    "006765b0",
+    "006765e0",
+    "006765f0",
+    "00676630",
+    "00676660",
+    "00676690",
+    "006766c0",
+    "00676720",
+    "00676940",
+    "006769e0"
+  ],
+  "vtables": {
+    "AdornG3D@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_EAdornG3D@RBX@@UAEPAXI@Z",
+        "original": "0045d820",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?createTextureProxy@AdornG3D@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "00676aa0",
+        "ok": true,
+        "how": "pending-build-only row (identity only)"
+      },
+      {
+        "slot": 2,
+        "symbol": "?prepareRenderPass@Adorn@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?finishRenderPass@Adorn@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getViewport@AdornG3D@RBX@@UBE?AVRect2D@G3D@@XZ",
+        "original": "00676480",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getWidth@AdornG3D@RBX@@UBEHXZ",
+        "original": "006764a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getHeight@AdornG3D@RBX@@UBEHXZ",
+        "original": "006764b0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?setTexture@AdornG3D@RBX@@UAEXHV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@@Z",
+        "original": "00676890",
+        "ok": true,
+        "how": "pending-build-only row (identity only)"
+      },
+      {
+        "slot": 8,
+        "symbol": "?getTextureSize@AdornG3D@RBX@@UBE?AVRect2D@G3D@@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@4@@Z",
+        "original": "00676750",
+        "ok": true,
+        "how": "pending-build-only row (identity only)"
+      },
+      {
+        "slot": 9,
+        "symbol": "?line2d@AdornG3D@RBX@@UBEXABVVector2@G3D@@0ABVColor4@4@@Z",
+        "original": "00676550",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?outlineRect2d@AdornG3D@RBX@@UBEXABVRect2D@G3D@@MABVColor4@4@@Z",
+        "original": "00676500",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?rect2d@AdornG3D@RBX@@UBEXABVRect2D@G3D@@ABVColor4@4@@Z",
+        "original": "006764c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?get2DStringBounds@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@Adorn@2@@Z",
+        "original": "00676940",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?drawFont2D@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z",
+        "original": "006769e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?setObjectToWorldMatrix@AdornG3D@RBX@@UAEXABVCoordinateFrame@G3D@@@Z",
+        "original": "00676570",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 15,
+        "symbol": "?setColor@AdornG3D@RBX@@UAEXABVColor4@G3D@@@Z",
+        "original": "00676720",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 16,
+        "symbol": "?box@AdornG3D@RBX@@UAEXABVAABox@G3D@@ABVColor4@4@1@Z",
+        "original": "00676580",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 17,
+        "symbol": "?sphere@AdornG3D@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z",
+        "original": "006765b0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 18,
+        "symbol": "?explosion@AdornG3D@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z",
+        "original": "006765e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 19,
+        "symbol": "?sparkle@Adorn@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 20,
+        "symbol": "?cylinderAlongX@AdornG3D@RBX@@UAEXMMABVColor4@G3D@@0@Z",
+        "original": "006765f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 21,
+        "symbol": "?ray@AdornG3D@RBX@@UAEXABVRay@G3D@@ABVColor4@4@M@Z",
+        "original": "00676630",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 22,
+        "symbol": "?lineSegment@AdornG3D@RBX@@UAEXABVLineSegment@G3D@@ABVColor4@4@M@Z",
+        "original": "00676660",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 23,
+        "symbol": "?axes@AdornG3D@RBX@@UAEXABVColor4@G3D@@00M@Z",
+        "original": "00676690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 24,
+        "symbol": "?quad@AdornG3D@RBX@@UAEXABVVector3@G3D@@000ABVColor4@4@@Z",
+        "original": "006766c0",
+        "ok": true,
+        "how": "bound"
+      }
+    ]
+  },
+  "adorn_rbxgfx_vtable_0084d2a4": [
+    "006741f0",
+    "00670380",
+    "00670d50",
+    "00671f90",
+    "00670020",
+    "0066f900",
+    "0066f910",
+    "006700e0",
+    "00670210",
+    "0066fa50",
+    "0066f9c0",
+    "0066f920",
+    "0066fe30",
+    "0066fda0",
+    "0066fac0",
+    "0070bdf0",
+    "00671fd0",
+    "00672ba0",
+    "00675360",
+    "00674790",
+    "006726a0",
+    "006735a0",
+    "006ad2a0",
+    "004e83a0",
+    "00672f50"
+  ],
+  "adorn_rbxgfx_evidence": "not built (needs Ogre / RbxGfx context declarations): ctor 00674210 (only caller 0045b451) stores 0084d2a4, std::string +0x8, two Ogre SharedPtr +0x24 / +0x38, std::vectors +0x48 / +0x60 / +0xa0 / +0xdc, std::maps +0x78 / +0xb8 / +0xf4, pointers +0x9c / +0xd8 = 0, G3D::CoordinateFrame +0x114, ctor argument +0x4; dtor 00673a90 called from ??_G 006741f0; getWidth/getHeight 0066f900/0066f910 tail-call Ogre::Viewport::getActualWidth/Height (IAT 00804c80 / 00804c7c) on [[this+4]+0x10]; setColor 0070bdf0 and axes 004e83a0 are shared empty bodies (ret 4 / ret 0x10).",
+  "proposals": {
+    "RbxGraphics/TextureProxyBase.h + RenderLib/TextureProxy.h (owner: texture proxies)": "2008 TextureProxyBase: ReferenceCountedObject base, filename +0xc, int +0x28 (=1), float +0x2c (=1.0f); vtable 0082d168: ??_G, four accessors 00551c70/90/b0/d0, then three pure virtuals with resolve(RenderDevice*) at slot 6 (+0x18). Render::TextureProxy (vtable 0082d140, 9 slots) with an out-of-line ctor (TextureManager&, const std::string&, bool) 00551b30, size 0x54 (+0x30 texture, +0x34 loaded, +0x38 manager, +0x3c tiled, +0x40 root, +0x44 shadeTexture, +0x48 Color3). With these, AdornG3D createTextureProxy 00676aa0, setTexture 00676890 and getTextureSize 00676750 compile exact (see the pending rows); the generated text is PENDING_HEADERS in this recorder.",
+    "RbxGraphics/Adorn.h (donor path, owner: rendering)": "2008 Adorn is __declspec(novtable) with 25 slots: an extra no-argument virtual after explosion() (slot 19, AdornRbxGfx 00674790) and non-pure empty prepareRenderPass / finishRenderPass; see RbxGraphics/Adorn2008.h."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; pending-build-only rows not counted; no active build, swap or credit."
+}
