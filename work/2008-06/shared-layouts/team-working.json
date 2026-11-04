@@ -158,21 +158,22 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_team.py": "53c7b195c143ccfabe2c2ed366ef8f2b92dc9c8f49ebac7449a6ff7adb6cea25",
+    "rebuild/2008-06/tests/record_native_team.py": "434eccca3335d6cdacd65e7c46eba47834c59118340042f6e791f9d31c79a91f",
     "rebuild/2008-06/native-headers/v8datamodel/Team.h": "050be389d9d59a29fe52472eeee1a9db6a82a5f4a15998bbbe5b8e2e33ca11fa",
     "rebuild/2008-06/native-headers/v8datamodel/Teams.h": "81ffd764137cf1f91073121664f9232bb9abe0aa4405e5b1c8ac6a32f139de41",
     "rebuild/2008-06/native-classes/Team.cpp": "af83d765ea7533155e5af5ceb942cfa46b4f0150ddc17b6ad84d9dae90fb4dd8",
-    "rebuild/2008-06/native-classes/Teams.cpp": "af29e88272a2bc54c880a4d7b7edf01e801309352bc5f0b166c2e23ab0edf7df",
+    "rebuild/2008-06/native-classes/Teams.cpp": "68cf01f24cd09851f074a9e3fde220410a243a8f471f67b640a5eaa7398e96cf",
     "rebuild/2008-06/tests/NativeTeamLayout.cpp": "994f2df48f673c58296912d4e02e200c0da1bd6fa86785fcf1eb471c00bbce1d",
-    "rebuild/2008-06/tests/NativeTeamPendingPlayer.h": "0dae4571b6649ad4fb5725378a6f6d96bd350dc52ff5b1ddf742da52af4a91a3",
+    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+    "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
     "rebuild/2008-06/tests/NativeTeamPendingHumanoid.h": "a8c11ef1c01f1131066142a3efe24eef9b4242206921d9a3fcb24725ee22a60b",
     "rebuild/2008-06/tests/NativeTeamPendingModel.h": "20e08a74388f6d4dcf8fae1547f314f2ab3291a73a330ff9f3b9a7a3c498796c"
   },
   "objects": {
-    "NativeTeamLayout.obj": "594657adb0bf85309a286c85f23716fffe54b34810423641d5fa39e6a02bf2be",
-    "NativeTeam.obj": "21b4387ac8273e99f2b6e4bccd9a8c1c9497593f220786b85aa01981fab0fd8d",
-    "NativeTeams.obj": "346691bdf0259c27c915bddb20930a51f7e1048f206915c3e06cdc03be41225c",
-    "NativeTeamsPending.obj": "64a4390f8808891ceb6f518cf452187d3bee7771e110d62d6132f0b23cf83fd0"
+    "NativeTeamLayout.obj": "ae9405b7b6ac6c00ae341df2e4ddcb5695091e241b92c3636dddcd21605c7f8f",
+    "NativeTeam.obj": "df0970a91cabd51d05188d26a06439c8f4b7368c9f5e1bf5fc63bd6eac0ac4a2",
+    "NativeTeams.obj": "2438f4b7eec83a24d2838039dc95812015733bfa9e3629c92e27ff361ee98a42",
+    "NativeTeamsPending.obj": "4d74fc903adbc33219f9475881a9b74fd1ea3c5342e772fa72e61bd5bde2f937"
   },
   "layout": {
     "Team": "0x13c (Creatable<Instance>::create<Team> 00409140); score +0x130, color +0x134, autoAssignable +0x138, autoColorCharacters +0x139",
@@ -1524,20 +1525,68 @@
         "??$doDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x48a1e0 (own row)"
       },
       "local_eh": []
-    }
-  ],
-  "pending_methods": [
+    },
     {
       "address": "005d5ea0",
       "symbol": "?getTeamFromPlayer@Teams@RBX@@QAEPAVTeam@2@PAVPlayer@Network@2@@Z",
       "size": 33,
-      "exact": false,
+      "exact": true,
       "verified_targets": {
         "?getTeamFromTeamColor@Teams@RBX@@QAEPAVTeam@2@VBrickColor@2@@Z": "0x5d5e10 (own row)"
       },
-      "local_eh": [],
-      "exact_pending_build_only": true
+      "local_eh": []
     },
+    {
+      "address": "005d6070",
+      "symbol": "?isTeamGame@Teams@RBX@@QAE_NXZ",
+      "size": 123,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d60f0",
+      "symbol": "?getNumPlayersInTeam@Teams@RBX@@QAEHVBrickColor@2@@Z",
+      "size": 133,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d6250",
+      "symbol": "?assignNewPlayerToTeam@Teams@RBX@@QAEXPAVPlayer@Network@2@@Z",
+      "size": 234,
+      "exact": true,
+      "verified_targets": {
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVTeam@RBX@@@8": "0x9457ec (RTTI .?AVTeam@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?getAutoAssignable@Team@RBX@@QBE_NXZ": "0x565e50 (own row)",
+        "?getTeamColor@Team@RBX@@QBE?AVBrickColor@2@XZ": "0x565e40 (own row)",
+        "?getNumPlayersInTeam@Teams@RBX@@QAEHVBrickColor@2@@Z": "0x5d60f0 (own row)",
+        "?setTeamColor@Player@Network@RBX@@QAEXVBrickColor@3@@Z": "0x494600 (external (evidence name))",
+        "?setNeutral@Player@Network@RBX@@QAEX_N@Z": "0x494620 (external (evidence name))"
+      },
+      "local_eh": []
+    }
+  ],
+  "pending_methods": [
     {
       "address": "005d5f40",
       "symbol": "??$findFirstChildOfType@VHumanoid@RBX@@@Instance@RBX@@QBEPAVHumanoid@1@XZ",
@@ -1546,38 +1595,6 @@
       "verified_targets": {
         "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
         "??_R0?AVHumanoid@RBX@@@8": "0x9534e0 (RTTI .?AVHumanoid@RBX@@)",
-        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
-        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
-      },
-      "local_eh": [],
-      "exact_pending_build_only": true
-    },
-    {
-      "address": "005d6070",
-      "symbol": "?isTeamGame@Teams@RBX@@QAE_NXZ",
-      "size": 123,
-      "exact": false,
-      "verified_targets": {
-        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
-        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
-        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
-        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
-        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
-        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
-      },
-      "local_eh": [],
-      "exact_pending_build_only": true
-    },
-    {
-      "address": "005d60f0",
-      "symbol": "?getNumPlayersInTeam@Teams@RBX@@QAEHVBrickColor@2@@Z",
-      "size": 133,
-      "exact": false,
-      "verified_targets": {
-        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
-        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
-        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
-        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
         "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
         "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
       },
@@ -1602,29 +1619,9 @@
       },
       "local_eh": [],
       "exact_pending_build_only": true
-    },
-    {
-      "address": "005d6250",
-      "symbol": "?assignNewPlayerToTeam@Teams@RBX@@QAEXPAVPlayer@Network@2@@Z",
-      "size": 234,
-      "exact": false,
-      "verified_targets": {
-        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
-        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
-        "??_R0?AVTeam@RBX@@@8": "0x9457ec (RTTI .?AVTeam@RBX@@)",
-        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
-        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
-        "?getAutoAssignable@Team@RBX@@QBE_NXZ": "0x565e50 (own row)",
-        "?getTeamColor@Team@RBX@@QBE?AVBrickColor@2@XZ": "0x565e40 (own row)",
-        "?getNumPlayersInTeam@Teams@RBX@@QAEHVBrickColor@2@@Z": "0x5d60f0 (own row)",
-        "?setTeamColor@Player@Network@RBX@@QAEXVBrickColor@3@@Z": "0x494600 (external (evidence name))",
-        "?setNeutral@Player@Network@RBX@@QAEX_N@Z": "0x494620 (external (evidence name))"
-      },
-      "local_eh": [],
-      "exact_pending_build_only": true
     }
   ],
-  "pending_note": "NATIVE_TEAMS_PENDING bodies are exact only with the generated headers in out/native-team-pending: Instance::findFirstChildOfType<Type>() added to a copy of native-headers/v8tree/Instance.h (proposal), and declaration-only Network::Player/Players and Humanoid overlays (a native Network/Player.h would replace them).",
+  "pending_note": "NATIVE_TEAMS_PENDING bodies are exact only with the generated headers in out/native-team-pending: Instance::findFirstChildOfType<Type>() added to a copy of native-headers/v8tree/Instance.h (proposal), and declaration-only Humanoid/ModelInstance overlays; Network::Player/Players use the native headers.",
   "proposal_instance_h": "    template<class Type> Type* findFirstChildOfType() const // e.g. 005d5f40 (Humanoid)\n    {\n        if (children)\n        {\n            std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();\n            std::vector<boost::shared_ptr<Instance> >::const_iterator iter = children->begin();\n            for (; iter != end; iter++)\n            {\n                if (Type* result = dynamic_cast<Type*>((*iter).get()))\n                    return result;\n            }\n        }\n        return NULL;\n    }\n",
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
 }
