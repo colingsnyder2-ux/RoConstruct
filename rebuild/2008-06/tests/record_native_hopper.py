@@ -10,7 +10,9 @@ Pending builds (rows recorded exact=false, pending-build-only, never counted, vt
     out/native-layouts/hopper-pending: a generated copy of the donor script/Script.h with the 2008 const-char-array
     class names (`extern const char sScript[]` / `sLocalScript[]`), which Backpack.h needs for IScriptOwner;
   * Tool.cpp with NATIVE_TOOL_PENDING against a generated copy of the native v8tree/Service.h plus the one declaration
-    `static const ServiceProvider* findServiceProvider(const Instance* context);` (004898d0 in the original).
+    `static const ServiceProvider* findServiceProvider(const Instance* context);` (004898d0 in the original), and a
+    generated copy of the donor v8datamodel/ToolMouseCommand.h with `extern const char sToolMouseCommand[]` /
+    Named<ScriptMouseCommand, sToolMouseCommand> (Tool::getMouse 005ff680; no native ToolMouseCommand.h).
 
 Rows are found by closure from a few seeds (constructors named by the factories that allocate the objects, the dynamic
 initializers, and a handful of evidence-named leaves): every REL32/DIR32 relocation of an exact row is bound to the
@@ -58,6 +60,15 @@ anchor = '    boost::shared_ptr<Instance> findServiceByClassName(const Name&) co
 assert text.count(anchor) == 1
 (tool_pending / 'v8tree/Service.h').write_text(text.replace(
     anchor, anchor + '    static const ServiceProvider* findServiceProvider(const Instance* context);\n'))
+# Tool::getMouse 005ff680: the donor v8datamodel/ToolMouseCommand.h with the 2008 class-name array (evidence
+# ?getName@?$Named@VScriptMouseCommand@RBX@@$1?sToolMouseCommand@2@3PBDB@RBX@@UBEABVName@2@XZ); no native header.
+(tool_pending / 'v8datamodel').mkdir(parents=True, exist_ok=True)
+text = (ROOT / 'tools/rbxgs/Client/App/include/v8datamodel/ToolMouseCommand.h').read_text()
+for old, new in (('extern const char* sToolMouseCommand;', 'extern const char sToolMouseCommand[];'),
+                 ('Named<ScriptMouseCommand, &sToolMouseCommand>', 'Named<ScriptMouseCommand, sToolMouseCommand>')):
+    assert text.count(old) == 1, old
+    text = text.replace(old, new)
+(tool_pending / 'v8datamodel/ToolMouseCommand.h').write_text(text)
 
 
 def build(name, src, extra=(), post=()):
@@ -141,6 +152,7 @@ STR = '?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@'
 EXTERNAL = {
     '_atexit': 0x6a17af,                                                                     # initializers 007f5df0, 007f7640
     '??1Instance@RBX@@UAE@XZ': 0x55a540,                                                     # ~GuiItem 00411540
+    '??0Instance@RBX@@QAE@XZ': 0x55b7e0,                                                     # NonFactoryProduct<Instance, sMouse> 005fd5c3 (tool-pending getMouse closure)
     '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,                         # classDescriptor 005c3810
     '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,                                            # getClassName 005cfdf0, 005fe420
     '??1scoped_connection@signals@boost@@QAE@XZ': 0x5954b0,                                  # ~Tool 005fe4b0
@@ -173,7 +185,8 @@ UNPROVEN = {
     '?setLegacyCommand@HopperBin@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x5d1770,  # 007f5ec0
 }
 CLASS_NAMES = {'sBackpackItem': b'BackpackItem', 'sHopperBin': b'HopperBin', 'sStarterPackService': b'StarterPack',
-               'sLegacyHopperService': b'Hopper', 'sBackpack': b'Backpack', 'sTool': b'Tool', 'sInstance': b'Instance'}
+               'sLegacyHopperService': b'Hopper', 'sBackpack': b'Backpack', 'sTool': b'Tool', 'sInstance': b'Instance',
+               'sMouse': b'Mouse'}   # Tool::getMouse (pending build): Mouse class-template instances
 # External constants: address used by the original instruction, verified by value.
 DATA = {'?zLookDirection@CoordinateFrame@G3D@@2MB': (0x828b60, struct.pack('<f', -1.0))}   # getGripForward 005fd530
 # ICF folds the closure cannot reach by relocation (none expected).
@@ -214,7 +227,8 @@ TOOL_SEEDS = [
 ]
 HOPPER_PENDING_SEEDS = [(0x5cff30, '?isEnabled@BackpackItem@RBX@@MAE_NXZ')]
 BACKPACK_PENDING_SEEDS = [(0x5d1a80, '??0Backpack@RBX@@QAE@XZ')]
-TOOL_PENDING_SEEDS = [(0x600420, '?setFrontendActivationState@Tool@RBX@@QAEXH@Z')]
+TOOL_PENDING_SEEDS = [(0x600420, '?setFrontendActivationState@Tool@RBX@@QAEXH@Z'),
+                      (0x5ff680, '?getMouse@Tool@RBX@@AAE?AV?$shared_ptr@VMouse@RBX@@@boost@@XZ')]
 OWN_CLASSES = 'Hopper|StarterPackService|LegacyHopperService|BackpackItem|HopperBin|Backpack|Tool'
 # Classes whose rows count (template instances parameterized on them included).
 OWN = re.compile(r'(Hopper|StarterPackService|LegacyHopperService|BackpackItem|HopperBin|Backpack|Tool)@RBX@@'
@@ -231,9 +245,10 @@ NOT_ATTEMPTED = {
                          'targets of the exact initializers, compared below',
     '005d18e0': 'Backpack::scriptShouldRun (Workspace IScriptOwner +0x340, Players::backendProcessing)',
     '005fd460..005ffdd0': 'Tool state machine (computeDesiredState, upTo_/downFrom_ chains, onEvent_*, setGrip, '
-                          'setGripForward/Up/Right, getMouse, onAncestorChanged, onLocalClicked): needs native '
+                          'setGripForward/Up/Right, onAncestorChanged, onLocalClicked): needs native '
                           'Humanoid / Workspace / Players declarations; render3dSelect 005fdaf0',
-    '005fe7f0..005ff600': 'RBX::Mouse (same unit; another class)',
+    '005fe7f0..005ff600': 'RBX::Mouse class-template instances (same unit): verified by tests/record_native_mouse.py; '
+                          'here only reached from the pending getMouse 005ff680',
 }
 
 LOCAL_EH = nb.LOCAL_EH
