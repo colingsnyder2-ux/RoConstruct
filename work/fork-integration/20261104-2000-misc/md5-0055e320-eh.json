@@ -1,0 +1,73 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "0055e320",
+  "primary_body_size": 520,
+  "primary_body_exact": true,
+  "tool_sha256": "e4c27d8c88a67c0bc8267ec15e7dcbdd3db63f3502b547dc9c9e3796d454bbbb",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-misc-leaves\\NativeMD5Hasher.obj",
+  "object_sha256": "aeec1f4e8a962a440151a13091168d946bd4711248d63f7c98e2793445e147aa",
+  "events": [
+    {
+      "symbol": "__ehhandler$?c_str@MD5HasherImpl@RBX@@UAEPBDXZ",
+      "original": "0x7ce998",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$?c_str@MD5HasherImpl@RBX@@UAEPBDXZ",
+      "original": "0x8e9e14",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931903000000fc9d8e00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190300000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$?c_str@MD5HasherImpl@RBX@@UAEPBDXZ",
+      "original": "0x8e9dfc",
+      "kind": "EH data",
+      "size": 24,
+      "exact": true,
+      "original_bytes": "ffffffff80e97c00ffffffff88e97c00ffffffff90e97c00",
+      "native_bytes": "ffffffff00000000ffffffff00000000ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$?c_str@MD5HasherImpl@RBX@@UAEPBDXZ$0",
+      "original": "0x7ce980",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+      "original": "0x600660",
+      "kind": "cleanup/handler code",
+      "size": 53,
+      "exact": true
+    },
+    {
+      "symbol": "__unwindfunclet$?c_str@MD5HasherImpl@RBX@@UAEPBDXZ$1",
+      "original": "0x7ce988",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "__unwindfunclet$?c_str@MD5HasherImpl@RBX@@UAEPBDXZ$2",
+      "original": "0x7ce990",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ",
+      "original": "0x55d760",
+      "kind": "cleanup/handler code",
+      "size": 31,
+      "exact": true
+    }
+  ],
+  "errors": []
+}
