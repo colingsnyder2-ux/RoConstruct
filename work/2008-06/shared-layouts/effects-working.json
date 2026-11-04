@@ -79,47 +79,6 @@
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsMessage.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/Message.cpp"
     ],
-    "message_pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/native-effects-pending",
-      "/DNATIVE_MESSAGE_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsMessagePending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Message.cpp"
-    ],
     "sky": [
       "/nologo",
       "/c",
@@ -316,25 +275,25 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_effects.py": "f1d13b267fcc638e2d5047aa76dbb77c32c1f674aebdb2d4d8773f721214a7ea",
+    "rebuild/2008-06/tests/record_native_effects.py": "5671dabd3164cd65649a59bfdc5b3bae42fef2aec4d117ddc12160b5e8155d29",
     "rebuild/2008-06/native-headers/v8datamodel/Message.h": "39f15e0eacc36a300e1ce67f1846cf2f053e521138db8a4433e906f977c965c4",
+    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
     "rebuild/2008-06/native-headers/v8datamodel/Sky.h": "24bc81057458bb35df2a342e653a66096be9c0b3514476f2b5ff6a413f1ba943",
     "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h": "0d4164d128f4d1e075bed79ba47320bfa71d4790bf208d4462ffa6e7900145d9",
-    "rebuild/2008-06/native-classes/Message.cpp": "875f5f9da2d43b35763591ea9595df6f4a9cf510cf46699831ffa1ccc359f444",
+    "rebuild/2008-06/native-classes/Message.cpp": "842be823c8d7015c3a7377287b01c53f23755bb814a01a419a0c10fbcf7b5d6b",
     "rebuild/2008-06/native-classes/Sky.cpp": "281328ee1e68c22cbff4d1b89ce4fba6d09617216bcdca513355e2e5777eceb6",
     "rebuild/2008-06/native-classes/Sparkles.cpp": "d5c4ba55d8db3f50c5ce7f406eb796a7f1130cd4db4d1b05fdf2ebf0ccca0497",
     "rebuild/2008-06/native-classes/SparklesEffect.cpp": "a368f116016157de17981cea12b74025268f9828461bc1fb602ddda906c3e5d1",
     "rebuild/2008-06/tests/NativeEffectsLayout.cpp": "38042c221d502f142acc7d65a44fb943e0a6546661b06c900c53852ebe2d64e8"
   },
   "objects": {
-    "NativeEffectsLayout.obj": "620841f7b927abe1aa85cd2605ad0d802181ec43bf78e5f9ed4f817300cfd35f",
-    "NativeEffectsMessage.obj": "a8598f79d8f74513de64ced6906897c798928f4429eeaeac3f55b47c2e4c26ce",
-    "NativeEffectsMessagePending.obj": "f9aec66275373f739a358d568b9f2065a121b8987b00f89c1a25f9eba5230a86",
-    "NativeEffectsSky.obj": "d638000c2c218c06b2fc5284e9a98afc6f8a09ffcacffc1d312dcfa1bccfa3b9",
-    "NativeEffectsSkyPending.obj": "f2a80d1abc3ede1a00356e0e8e10262e94257c44db0ac33d1aaacf65957c3aae",
-    "NativeEffectsSparkles.obj": "e96d1d65d701ee3eb337e47805ee58246f776a7bbccc74496d8a1938ce166fc0",
-    "NativeEffectsSparklesPending.obj": "3d901e4ef578b9baa6eeaf6390c538fb91f0716d6232ad669da9b8d97edc7c71",
-    "NativeEffectsEffect.obj": "a81001eb1a6796992d2f74a0cdf31ed609aff22680702ab2852724001449969f"
+    "NativeEffectsLayout.obj": "cfdaa9e38db0b7c9ab5d91087a3804aa4b9167788bfa4afebd96357bacfa0beb",
+    "NativeEffectsMessage.obj": "94f50f7e78bb04f36ae236c42f15ce26368bd2b26569ea4a457c57f827d62f90",
+    "NativeEffectsSky.obj": "943000ab0abd0fa53f1cb6f7baca34c09889c54d925c21de8027c506be62a2b9",
+    "NativeEffectsSkyPending.obj": "11f8a269c1929f3c049952876a6c01f687a0579792d401363f95d120e5a25c7e",
+    "NativeEffectsSparkles.obj": "7fedf4a077a036d891073b9d860fe31d10d4dc70311abcc45ea04df323454694",
+    "NativeEffectsSparklesPending.obj": "0e2fd28c101af7e5f0491ad4e75dc49ae2d421736045093609356ff9bfbdd8b6",
+    "NativeEffectsEffect.obj": "90b2b2ceacf64eb372f7c6cf300c3bf2621e3ff490f7794fa06adc9bc468034a"
   },
   "layout": {
     "Message": "0x15c (004a3850); IRenderable +0x130, std::string text +0x140",
@@ -993,14 +952,12 @@
         "exact": true,
         "verified_targets": {},
         "local_eh": []
-      }
-    ],
-    "message_pending": [
+      },
       {
         "address": "005dcd90",
         "symbol": "?render2d@Message@RBX@@UAEXPAVAdorn@2@@Z",
         "size": 79,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
           "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
@@ -1008,8 +965,7 @@
           "?renderFullScreen@Message@RBX@@IAEXPAVAdorn@2@@Z": "0x5dcb50 (own row)",
           "?renderPersonalMsg@Message@RBX@@IAEXPAVAdorn@2@@Z": "0x5dcc60 (own row)"
         },
-        "local_eh": [],
-        "status": "exact-pending-header"
+        "local_eh": []
       }
     ],
     "sky_pending": [
@@ -2528,7 +2484,7 @@
       }
     ]
   },
-  "pending_note": "Rows with status exact-pending-header (Message::render2d 005dcd90, Sky::Sky 005eb640, Sparkles::render3dAdorn 0063d710) are NATIVE_*_PENDING bodies and are not counted as exact; rows tagged pending_build are unguarded code emitted only in the pending Sky build. message_pending rows are exact with a generated declaration-only Network/Player.h; sky_pending rows need ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy); sparkles_pending needs the 2008 Adorn slot 19 (generated RbxGraphics/Adorn.h copy, placeholder name sparkles()).",
+  "pending_note": "Rows with status exact-pending-header (Sky::Sky 005eb640, Sparkles::render3dAdorn 0063d710) are NATIVE_*_PENDING bodies and are not counted as exact; rows tagged pending_build are unguarded code emitted only in the pending Sky build. sky_pending rows need ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy); sparkles_pending needs the 2008 Adorn slot 19 (generated RbxGraphics/Adorn.h copy, placeholder name sparkles()).",
   "proposal_content_provider_h": "\t\tstatic ContentId fromAssets(const char* filePath); // 0055bd80: \"rbxasset://\" + filePath via operator+(const string&, const char*)\n",
   "proposal_adorn_h": "\t\tvirtual void sparkles() = 0; // 2008 slot 19 (+0x4c), no arguments (AdornRbxGfx 00674790 draws \"rbxsparkle\"); name is a placeholder\n",
   "not_attempted": "Sky::getG3DSky 005ebbb0 and its helpers (testImage 005eaef0, vector<string> helpers 005eb180/005eb210): need the 2008 ContentProvider/GImage/G3D::Sky APIs.",
