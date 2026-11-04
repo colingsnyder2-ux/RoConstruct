@@ -1,0 +1,244 @@
+{
+  "revision": "5d5784bbe8af17787097c0d8b945e70ff8bcfcd4",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_humanoid_state.py": "000d293886ea77ad9b5fce0272efbabd5d6c2887416d3c9cd003507b8fab9009",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3",
+    "rebuild/2008-06/tests/NativeHumanoidStateCalls.h": "7fb606a3db55c31d600dcf07ad07bcc67e40a5f278a3ab05b648a4efb21ab12f",
+    "rebuild/2008-06/tests/NativeHumanoidStateLayout.cpp": "6c11525dacacffc01e1453e9e60325e1bd23bae6f43842399d766eaf07513cb2",
+    "rebuild/2008-06/native-classes/HumanoidState.cpp": "ff82501703ac135f3571d669610bdc9e40719b0874cf184c2ad9fdeb41e9ece9"
+  },
+  "objects": {
+    "layout": "80b33b25abee2e197eb46544d0cebb6342463ee8d7772bf129eb6449683bb58e",
+    "state": "7fba86241805e25ade8b09e477eef88b19db39236afb8e4ca95990628013c9e5"
+  },
+  "compiler_build": 21022,
+  "flags": {
+    "layout": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/humanoid-state-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidStateLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeHumanoidStateLayout.cpp"
+    ],
+    "state": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/humanoid-state-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidState.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/HumanoidState.cpp"
+    ]
+  },
+  "size": 160,
+  "primary_vtable": "0x84ad00",
+  "filter_vtable": "0x84acf8",
+  "methods": [
+    {
+      "address": "00643e00",
+      "symbol": "??0HumanoidState@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 172,
+      "direct_calls": {
+        "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0",
+        "?setJump@Humanoid@RBX@@QAEX_N@Z": "0x5dc270",
+        "?setStrafe@Humanoid@RBX@@QAEX_N@Z": "0x5dc230",
+        "?setLimbFlag@HumanoidState@HUMAN@RBX@@QAEX_N@Z": "0x6431b0"
+      },
+      "data_targets": {
+        "__ehhandler$??0HumanoidState@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x7dac46",
+        "??_7HitTestFilter@RBX@@6B@": "0x843a40",
+        "??_7HumanoidState@HUMAN@RBX@@6BINamed@2@@": "0x84ad00",
+        "??_7HumanoidState@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84acf8"
+      }
+    },
+    {
+      "address": "006435c0",
+      "symbol": "??1HumanoidState@HUMAN@RBX@@UAE@XZ",
+      "size": 160,
+      "direct_calls": {
+        "?setLimbFlag@HumanoidState@HUMAN@RBX@@QAEX_N@Z": "0x6431b0",
+        "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20"
+      },
+      "data_targets": {
+        "__ehhandler$??1HumanoidState@HUMAN@RBX@@UAE@XZ": "0x7dac46",
+        "??_7HumanoidState@HUMAN@RBX@@6BINamed@2@@": "0x84ad00",
+        "??_7HumanoidState@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84acf8"
+      }
+    },
+    {
+      "address": "00643d10",
+      "symbol": "??_GHumanoidState@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "direct_calls": {
+        "??1HumanoidState@HUMAN@RBX@@UAE@XZ": "0x6435c0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00643330",
+      "symbol": "?speedSettled@HumanoidState@HUMAN@RBX@@QBE_NXZ",
+      "size": 43,
+      "direct_calls": {},
+      "data_targets": {
+        "__real@3f000000": "0x819bac"
+      }
+    },
+    {
+      "address": "00643b60",
+      "symbol": "?computeWalkVelocity@HumanoidState@HUMAN@RBX@@QAE?AVVector3@G3D@@XZ",
+      "size": 93,
+      "direct_calls": {
+        "?getIntendedMovementVector@Humanoid@RBX@@QAE?AVVector3@G3D@@XZ": "0x5d9c10"
+      },
+      "data_targets": {
+        "__real@41800000": "0x826918"
+      }
+    },
+    {
+      "address": "00643bc0",
+      "symbol": "?setLegsFlag@HumanoidState@HUMAN@RBX@@QAEX_N@Z",
+      "size": 85,
+      "direct_calls": {
+        "?getLeftLegPrimitive@Humanoid@RBX@@QBEPAVPrimitive@2@XZ": "0x5d90c0",
+        "?setFlagAB@Primitive@RBX@@QAEX_N@Z": "0x5e75e0",
+        "?getRightLegPrimitive@Humanoid@RBX@@QBEPAVPrimitive@2@XZ": "0x5d90e0"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00643c20",
+      "symbol": "?setArmsFlag@HumanoidState@HUMAN@RBX@@QAEX_N@Z",
+      "size": 85,
+      "direct_calls": {
+        "?getLeftArmPrimitive@Humanoid@RBX@@QBEPAVPrimitive@2@XZ": "0x5d9120",
+        "?setFlagAB@Primitive@RBX@@QAEX_N@Z": "0x5e75e0",
+        "?getRightArmPrimitive@Humanoid@RBX@@QBEPAVPrimitive@2@XZ": "0x5d9140"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00643c80",
+      "symbol": "?setTorsoHeadFlag@HumanoidState@HUMAN@RBX@@QAEX_N@Z",
+      "size": 85,
+      "direct_calls": {
+        "?getTorsoPrimitive@Humanoid@RBX@@QBEPAVPrimitive@2@XZ": "0x5d90a0",
+        "?setFlagAB@Primitive@RBX@@QAEX_N@Z": "0x5e75e0",
+        "?getHeadPrimitive@Humanoid@RBX@@QBEPAVPrimitive@2@XZ": "0x5d9100"
+      },
+      "data_targets": {}
+    }
+  ],
+  "folded_virtual_defaults": [
+    {
+      "address": "00458e90",
+      "symbol": "?onStep@HumanoidState@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "size": 3
+    },
+    {
+      "address": "00565950",
+      "symbol": "?query3@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "00565950",
+      "symbol": "?query4@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "00565950",
+      "symbol": "?query5@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "005e72c0",
+      "symbol": "?getIntendedRotationAboutYAxis@HumanoidState@HUMAN@RBX@@UBEMXZ",
+      "size": 3
+    },
+    {
+      "address": "0070bdf0",
+      "symbol": "?onComputeForce@HumanoidState@HUMAN@RBX@@UAEXM@Z",
+      "size": 3
+    },
+    {
+      "address": "00793d50",
+      "symbol": "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ",
+      "size": 4
+    }
+  ],
+  "pending": [
+    "006432e0 filterResult (Primitive +0xa8/+0xab layout)",
+    "006431b0 setLimbFlag (PartInstance+0x228 Primitive, Primitive+0xa0 Body, Body+0x30)",
+    "00643d30 floor primitive (PartInstance embeds Primitive at +0x228; native PartInstance.h declares scoped_ptr)",
+    "00643360/00643a70/006444f0 bodies (declared; Body/Primitive/World/ContactManager layouts)",
+    "006439b0/00643a30/00643a50 (Body/Primitive/World layouts)",
+    "00643d40/00643eb0 (BodyMover type)",
+    "00643660 factory (subclass layouts)",
+    "006451c0/006453a0/00645450/00645060/00644000-00644c80 state machine bodies"
+  ],
+  "scope": "Inactive HumanoidState layout and eight matched base bodies plus vtable/RTTI linkage; Humanoid and Primitive declarations come from the declaration-only overlay tests/NativeHumanoidStateCalls.h (proposal). Field names after flag11 and method names are analog names. No runtime swap."
+}
