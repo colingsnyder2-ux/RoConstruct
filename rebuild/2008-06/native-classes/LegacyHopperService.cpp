@@ -7,4 +7,12 @@ template<class C,class D,const char* N> DescribedCreatable<C,D,N>::DescribedCrea
 // 005d10a0 (allocated 0x168 by 0048ec70): vtables 0x83acfc.. carry RTTI .?AVLegacyHopperService@RBX@@; calls
 // DescribedCreatable ctor 005d0a80, then setName with literal 0x83a758 == "Hopper" (donor Hopper.cpp:217).
 LegacyHopperService::LegacyHopperService() { setName("Hopper"); }
+// 005d0910: calls create (00490d70), omits donor base callback and assertion.
+void LegacyHopperService::onServiceProvider(const ServiceProvider*, const ServiceProvider* newProvider) {
+    if (newProvider) {
+        StarterPackService* starterPack = newProvider->create<StarterPackService>();
+        while (numChildren() > 0) getChild(0)->setParent(starterPack);
+        setParent(NULL);
+    }
+}
 }

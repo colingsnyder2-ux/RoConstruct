@@ -74,6 +74,21 @@ internal2['?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3P
 internal2['??_B?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@51']=0x96c460
 internal2['?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A']=0x96c3a0
 internal2['??0ClassDescriptor@Reflection@RBX@@AAE@XZ']=0x570820
+# 005d0910 direct-call evidence: create 00490d70, numChildren 0048ae20, setParent 0055a8f0.
+methods2.append(('?onServiceProvider@LegacyHopperService@RBX@@EAEXPBVServiceProvider@2@0@Z',0x5d0910))
+internal2.update(dict(methods2))
+internal2['??$create@VStarterPackService@RBX@@@ServiceProvider@RBX@@QBEPAVStarterPackService@1@XZ']=0x490d70
+internal2['?numChildren@Instance@RBX@@QBEIXZ']=0x48ae20
+internal2['?setParent@Instance@RBX@@QAEXPAV12@@Z']=0x55a8f0
 rows2=nb.verify(Original(),obj2,methods2,internal2)
-receipt=dict(class_name='RBX::Hopper',inactive=True,compiler=21022,flags=flags,source_sha256=nb.sha(src),header_sha256=nb.sha(header),layout=dict(size=360,allocation='0048ec70 (LegacyHopperService, ctor 005d10a0)',constructor='005cf900'),methods=rows+rows2,blockers=['Native GUI base layout pending; StarterPackService forwarding template definitions pending'])
+# StarterPackService: RTTI 00952360, Creator 00936248 -> 0048ea80 -> 0048ea00 malloc(0x168).
+src3=R/'native-classes/StarterPackService.cpp'; obj3=nb.OUT/'CheckStarterPackService.obj'
+code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj3),str(src3)],nb.OUT)
+assert code==0,log
+methods3=[(n.replace('LegacyHopperService','StarterPackService'),{0x5d10a0:0x5d0fc0,0x5d0a80:0x5d0980,0x5cf9e0:0x5cf970,0x5c00f0:0x5c0080,0x7fe840:0x7fe850}.get(a,a)) for n,a in methods2 if 'onServiceProvider' not in n]
+# classDescriptor 005c0080 proves guard 009778f8, object 00977838, name 0083a74c.
+internal3={n.replace('LegacyHopperService','StarterPackService'):{0x9779c0:0x9778f8,0x977900:0x977838,0x83a758:0x83a74c}.get(a,a) for n,a in internal2.items() if 'onServiceProvider' not in n}
+internal3.update(dict(methods3))
+rows3=nb.verify(Original(),obj3,methods3,internal3)
+receipt=dict(class_name='RBX::Hopper',inactive=True,compiler=21022,flags=flags,source_sha256=nb.sha(src),header_sha256=nb.sha(header),layout=dict(size=360,allocation='0048ec70 (LegacyHopperService, ctor 005d10a0)',constructor='005cf900'),methods=rows+rows2+rows3,blockers=['Native GUI base layout pending; StarterPackService forwarding template definitions pending'])
 print(json.dumps(receipt,indent=2))
