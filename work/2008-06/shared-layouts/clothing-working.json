@@ -1,0 +1,1952 @@
+{
+  "revision": "5537946195fbc34dcdb6c10cd022b313cfd08966",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_clothing.py": "ce66051e77ff2c08f325a3ddef40c4ba1b31bb5a692b7d894bd04d53d72988f4",
+    "rebuild/2008-06/native-headers/v8datamodel/Clothing.h": "167ef86612e8d6493fd2c518ce50ba2b5e5b3738c5332264e2293109e0295a14",
+    "rebuild/2008-06/native-classes/Clothing.cpp": "451c0720c531128bc663bc820b5abe8891e059bc4116ab8bcdfe47faa75ca349",
+    "rebuild/2008-06/tests/NativeClothingLayout.cpp": "ce9dc0cee0d7053cc1686a3c647f30160a38b0287a5c9d8dfbc1f004177fab66",
+    "rebuild/2008-06/tests/NativeClothingHumanoid.h": "dfd4c33335e9da1e62da6737511f91d92690ac9d7fa1ee55add5043572c449c3",
+    "rebuild/2008-06/tests/NativeClothingPlayers.h": "ca5cb216ebfae96b835e744a80080e6b69ba6ce3f108312511ba3cf0ba5fff3c"
+  },
+  "objects": {
+    "layout": "06ee62283e85d09cee4eafe4f4521eb050535a2263ac5b1dfb5d546fc6d0cb58",
+    "base": "51d2f585306a6eabd275d4c1f4f11a7a1de52e1ba4c1a999725e2709b4a4dfde",
+    "pending": "1ab48503fc7209f1147945d86f8f3f1db92406732d2c55e294ea03177cab06c8"
+  },
+  "compiler_build": 21022,
+  "flags": {
+    "layout": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/clothing-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClothingLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeClothingLayout.cpp"
+    ],
+    "base": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/clothing-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClothing.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Clothing.cpp"
+    ],
+    "pending": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/clothing-pending-overlay",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/clothing-overlay",
+      "/DNATIVE_CLOTHING_PENDING",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClothingPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Clothing.cpp"
+    ]
+  },
+  "sizes": {
+    "Clothing": 372,
+    "Shirt": 372,
+    "Pants": 372,
+    "ShirtGraphic": 340,
+    "Skin": 312,
+    "CharacterAppearance": 308
+  },
+  "base_rows": [
+    {
+      "address": "005d3e50",
+      "symbol": "??0?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@IAE@XZ",
+      "size": 100,
+      "exact": true,
+      "targets": {
+        "??0Instance@RBX@@QAE@XZ": "known 0x55b7e0",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8218d4 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8218c8 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8218c0 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6BDebugable@1@@": "0x8218b8 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8218a8 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821898 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821888 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821878 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821868 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821858 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B@": "0x821850 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3de0",
+      "symbol": "??0?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@IAE@XZ",
+      "size": 100,
+      "exact": true,
+      "targets": {
+        "??0Instance@RBX@@QAE@XZ": "known 0x55b7e0",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c284 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c274 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c26c (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c264 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c254 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c244 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c234 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c224 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c214 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c204 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B@": "0x83c1fc (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3f30",
+      "symbol": "??0?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@IAE@XZ",
+      "size": 100,
+      "exact": true,
+      "targets": {
+        "??0Instance@RBX@@QAE@XZ": "known 0x55b7e0",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c424 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c414 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c40c (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c404 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c3f4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c3e4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c3d4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c3c4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c3b4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c3a4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B@": "0x83c39c (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048fd40",
+      "symbol": "??0?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@IAE@XZ",
+      "size": 100,
+      "exact": true,
+      "targets": {
+        "??0Clothing@RBX@@QAE@XZ": "bound 0x5d5700",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821a8c (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821a80 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821a78 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6BDebugable@1@@": "0x821a70 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821a60 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821a50 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821a40 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821a30 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821a20 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821a10 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B@": "0x821a08 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048fac0",
+      "symbol": "??0?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@IAE@XZ",
+      "size": 100,
+      "exact": true,
+      "targets": {
+        "??0Clothing@RBX@@QAE@XZ": "bound 0x5d5700",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8219a4 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821994 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82198c (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6BDebugable@1@@": "0x821984 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821974 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821964 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821954 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821944 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821934 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821924 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B@": "0x82191c (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5270",
+      "symbol": "??0?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@IAE@XZ",
+      "size": 156,
+      "exact": true,
+      "targets": {
+        "??0?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@IAE@XZ": "bound 0x5d3e50",
+        "?classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x4909f0",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c714 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c704 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c6fc (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c6f4 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c6e4 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c6d4 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c6c4 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c6b4 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c6a4 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c694 (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B@": "0x83c68c (RTTI .?AV?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "005d51c0",
+      "symbol": "??0?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@IAE@XZ",
+      "size": 156,
+      "exact": true,
+      "targets": {
+        "??0?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@IAE@XZ": "bound 0x5d3de0",
+        "?classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x5c01d0",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c644 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c634 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c62c (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c624 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c614 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c604 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c5f4 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c5e4 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c5d4 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c5c4 (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B@": "0x83c5bc (RTTI .?AV?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "005d5420",
+      "symbol": "??0?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@IAE@XZ",
+      "size": 156,
+      "exact": true,
+      "targets": {
+        "??0?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@IAE@XZ": "bound 0x5d3f30",
+        "?classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x5d4cb0",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c8b4 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c8a4 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c89c (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c894 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c884 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c874 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c864 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c854 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c844 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c834 (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B@": "0x83c82c (RTTI .?AV?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "004933c0",
+      "symbol": "??0?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@IAE@XZ",
+      "size": 156,
+      "exact": true,
+      "targets": {
+        "??0?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@IAE@XZ": "bound 0x48fd40",
+        "?classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x491fb0",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821f64 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821f54 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821f4c (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6BDebugable@1@@": "0x821f44 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821f34 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821f24 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821f14 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821f04 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821ef4 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821ee4 (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B@": "0x821edc (RTTI .?AV?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "004932c0",
+      "symbol": "??0?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@IAE@XZ",
+      "size": 156,
+      "exact": true,
+      "targets": {
+        "??0?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@IAE@XZ": "bound 0x48fac0",
+        "?classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x491f40",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821e94 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821e84 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821e7c (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6BDebugable@1@@": "0x821e74 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821e64 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821e54 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821e44 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821e34 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821e24 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821e14 (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B@": "0x821e0c (RTTI .?AV?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x130)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "005d5700",
+      "symbol": "??0Clothing@RBX@@QAE@XZ",
+      "size": 271,
+      "exact": true,
+      "targets": {
+        "??0?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@IAE@XZ": "bound 0x5d5270",
+        "??_7Clothing@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83ca6c (RTTI .?AVClothing@RBX@@, offset 0x0)",
+        "??_7Clothing@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83ca60 (RTTI .?AVClothing@RBX@@, offset 0x10)",
+        "??_7Clothing@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83ca58 (RTTI .?AVClothing@RBX@@, offset 0x14)",
+        "??_7Clothing@RBX@@6BDebugable@1@@": "0x83ca50 (RTTI .?AVClothing@RBX@@, offset 0x20)",
+        "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83ca40 (RTTI .?AVClothing@RBX@@, offset 0x24)",
+        "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83ca30 (RTTI .?AVClothing@RBX@@, offset 0x44)",
+        "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83ca20 (RTTI .?AVClothing@RBX@@, offset 0x64)",
+        "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83ca10 (RTTI .?AVClothing@RBX@@, offset 0x84)",
+        "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83ca00 (RTTI .?AVClothing@RBX@@, offset 0xa4)",
+        "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c9f0 (RTTI .?AVClothing@RBX@@, offset 0xc4)",
+        "??_7Clothing@RBX@@6B@": "0x83c9e8 (RTTI .?AVClothing@RBX@@, offset 0x130)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "known 0x554270",
+        "??_C@_08BDHJINPD@Clothing?$AA@": "0x83c9d8 'Clothing'",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "known 0x55af90",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0Clothing@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "005d5510",
+      "symbol": "??0ShirtGraphic@RBX@@QAE@XZ",
+      "size": 235,
+      "exact": true,
+      "targets": {
+        "??0?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@IAE@XZ": "bound 0x5d51c0",
+        "??_7ShirtGraphic@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c994 (RTTI .?AVShirtGraphic@RBX@@, offset 0x0)",
+        "??_7ShirtGraphic@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c984 (RTTI .?AVShirtGraphic@RBX@@, offset 0x10)",
+        "??_7ShirtGraphic@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c97c (RTTI .?AVShirtGraphic@RBX@@, offset 0x14)",
+        "??_7ShirtGraphic@RBX@@6BDebugable@1@@": "0x83c974 (RTTI .?AVShirtGraphic@RBX@@, offset 0x20)",
+        "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c964 (RTTI .?AVShirtGraphic@RBX@@, offset 0x24)",
+        "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c954 (RTTI .?AVShirtGraphic@RBX@@, offset 0x44)",
+        "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c944 (RTTI .?AVShirtGraphic@RBX@@, offset 0x64)",
+        "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c934 (RTTI .?AVShirtGraphic@RBX@@, offset 0x84)",
+        "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c924 (RTTI .?AVShirtGraphic@RBX@@, offset 0xa4)",
+        "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c914 (RTTI .?AVShirtGraphic@RBX@@, offset 0xc4)",
+        "??_7ShirtGraphic@RBX@@6B@": "0x83c90c (RTTI .?AVShirtGraphic@RBX@@, offset 0x130)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "known 0x554270",
+        "??_C@_0O@NKKJFKEG@Shirt?5Graphic?$AA@": "0x83c8f8 'Shirt Graphic'",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "known 0x55af90",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0ShirtGraphic@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "005d58c0",
+      "symbol": "??0Skin@RBX@@QAE@XZ",
+      "size": 207,
+      "exact": true,
+      "targets": {
+        "??0?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@IAE@XZ": "bound 0x5d5420",
+        "??_7Skin@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83cb44 (RTTI .?AVSkin@RBX@@, offset 0x0)",
+        "??_7Skin@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83cb34 (RTTI .?AVSkin@RBX@@, offset 0x10)",
+        "??_7Skin@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cb2c (RTTI .?AVSkin@RBX@@, offset 0x14)",
+        "??_7Skin@RBX@@6BDebugable@1@@": "0x83cb24 (RTTI .?AVSkin@RBX@@, offset 0x20)",
+        "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cb14 (RTTI .?AVSkin@RBX@@, offset 0x24)",
+        "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83cb04 (RTTI .?AVSkin@RBX@@, offset 0x44)",
+        "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83caf4 (RTTI .?AVSkin@RBX@@, offset 0x64)",
+        "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83cae4 (RTTI .?AVSkin@RBX@@, offset 0x84)",
+        "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83cad4 (RTTI .?AVSkin@RBX@@, offset 0xa4)",
+        "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83cac4 (RTTI .?AVSkin@RBX@@, offset 0xc4)",
+        "??_7Skin@RBX@@6B@": "0x83cabc (RTTI .?AVSkin@RBX@@, offset 0x130)",
+        "??_C@_04BGDBHLHN@Skin?$AA@": "0x83cab0 'Skin'",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "known 0x55af90",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0Skin@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004939b0",
+      "symbol": "??0Shirt@RBX@@QAE@XZ",
+      "size": 100,
+      "exact": true,
+      "targets": {
+        "??0?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@IAE@XZ": "bound 0x4933c0",
+        "??_7Shirt@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x822114 (RTTI .?AVShirt@RBX@@, offset 0x0)",
+        "??_7Shirt@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x822104 (RTTI .?AVShirt@RBX@@, offset 0x10)",
+        "??_7Shirt@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8220fc (RTTI .?AVShirt@RBX@@, offset 0x14)",
+        "??_7Shirt@RBX@@6BDebugable@1@@": "0x8220f4 (RTTI .?AVShirt@RBX@@, offset 0x20)",
+        "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8220e4 (RTTI .?AVShirt@RBX@@, offset 0x24)",
+        "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8220d4 (RTTI .?AVShirt@RBX@@, offset 0x44)",
+        "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8220c4 (RTTI .?AVShirt@RBX@@, offset 0x64)",
+        "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8220b4 (RTTI .?AVShirt@RBX@@, offset 0x84)",
+        "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8220a4 (RTTI .?AVShirt@RBX@@, offset 0xa4)",
+        "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x822094 (RTTI .?AVShirt@RBX@@, offset 0xc4)",
+        "??_7Shirt@RBX@@6B@": "0x82208c (RTTI .?AVShirt@RBX@@, offset 0x130)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00493920",
+      "symbol": "??0Pants@RBX@@QAE@XZ",
+      "size": 100,
+      "exact": true,
+      "targets": {
+        "??0?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@IAE@XZ": "bound 0x4932c0",
+        "??_7Pants@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x822044 (RTTI .?AVPants@RBX@@, offset 0x0)",
+        "??_7Pants@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x822038 (RTTI .?AVPants@RBX@@, offset 0x10)",
+        "??_7Pants@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x822030 (RTTI .?AVPants@RBX@@, offset 0x14)",
+        "??_7Pants@RBX@@6BDebugable@1@@": "0x822028 (RTTI .?AVPants@RBX@@, offset 0x20)",
+        "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x822018 (RTTI .?AVPants@RBX@@, offset 0x24)",
+        "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x822008 (RTTI .?AVPants@RBX@@, offset 0x44)",
+        "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821ff8 (RTTI .?AVPants@RBX@@, offset 0x64)",
+        "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821fe8 (RTTI .?AVPants@RBX@@, offset 0x84)",
+        "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821fd8 (RTTI .?AVPants@RBX@@, offset 0xa4)",
+        "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821fc8 (RTTI .?AVPants@RBX@@, offset 0xc4)",
+        "??_7Pants@RBX@@6B@": "0x821fc0 (RTTI .?AVPants@RBX@@, offset 0x130)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004909f0",
+      "symbol": "?classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1??classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "bound 0x970000",
+        "?sClothing@RBX@@3QBDB": "known 0x83c1b0",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x40ad80",
+        "?descriptor@?1??classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x96ff40",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "bound 0x5708f0",
+        "??__Fdescriptor@?1??classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "bound 0x7fb2f0",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "005c01d0",
+      "symbol": "?classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1??classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "bound 0x977b50",
+        "?sShirtGraphic@RBX@@3QBDB": "known 0x83c1a0",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x40ad80",
+        "?descriptor@?1??classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x977a90",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "bound 0x5708f0",
+        "??__Fdescriptor@?1??classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "bound 0x7fe820",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "005d4cb0",
+      "symbol": "?classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1??classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "bound 0x979fa0",
+        "?sSkin@RBX@@3QBDB": "known 0x83c1bc",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x40ad80",
+        "?descriptor@?1??classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x979ee0",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "bound 0x5708f0",
+        "??__Fdescriptor@?1??classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "bound 0x7ff200",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "00491fb0",
+      "symbol": "?classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1??classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "bound 0x970258",
+        "?sShirt@RBX@@3QBDB": "known 0x83c190",
+        "?classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x4909f0",
+        "?descriptor@?1??classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x970198",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "bound 0x5708f0",
+        "??__Fdescriptor@?1??classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "bound 0x7fb2d0",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "00491f40",
+      "symbol": "?classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1??classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "bound 0x970190",
+        "?sPants@RBX@@3QBDB": "known 0x83c198",
+        "?classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x4909f0",
+        "?descriptor@?1??classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x9700d0",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "bound 0x5708f0",
+        "??__Fdescriptor@?1??classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "bound 0x7fb2e0",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "0048fb60",
+      "symbol": "?getClassName@?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "targets": {
+        "?flag@?1???$declare@$1?sClothing@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "bound 0x96fbcc",
+        "??$callDoDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAXXZ": "bound 0x48aaf0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "bound 0x557330",
+        "??$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x489fb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048fe10",
+      "symbol": "?getClassName@?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "targets": {
+        "?flag@?1???$declare@$1?sShirt@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "bound 0x96fbd4",
+        "??$callDoDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAXXZ": "bound 0x48ab10",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "bound 0x557330",
+        "??$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x48a090"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048fbe0",
+      "symbol": "?getClassName@?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "targets": {
+        "?flag@?1???$declare@$1?sPants@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "bound 0x96fbd0",
+        "??$callDoDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAXXZ": "bound 0x48ab00",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "bound 0x557330",
+        "??$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x48a020"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d4290",
+      "symbol": "?getClassName@?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "targets": {
+        "?flag@?1???$declare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "bound 0x96fbc8",
+        "??$callDoDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAXXZ": "bound 0x48aae0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "bound 0x557330",
+        "??$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x489f40"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d42d0",
+      "symbol": "?getClassName@?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "targets": {
+        "?flag@?1???$declare@$1?sSkin@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "bound 0x96fbdc",
+        "??$callDoDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAXXZ": "bound 0x48ab30",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "bound 0x557330",
+        "??$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x48a170"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048f830",
+      "symbol": "??1?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@MAE@XZ",
+      "size": 93,
+      "exact": true,
+      "targets": {
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8218d4 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8218c8 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8218c0 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6BDebugable@1@@": "0x8218b8 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8218a8 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821898 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821888 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821878 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821868 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821858 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B@": "0x821850 (RTTI .?AV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@, offset 0x130)",
+        "??1Instance@RBX@@UAE@XZ": "known 0x55a540"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048fa50",
+      "symbol": "??1Clothing@RBX@@UAE@XZ",
+      "size": 97,
+      "exact": true,
+      "targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??1?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@MAE@XZ": "bound 0x48f830"
+      },
+      "local_eh": [
+        "__ehhandler$??1Clothing@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "0048fdb0",
+      "symbol": "??1?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@MAE@XZ",
+      "size": 93,
+      "exact": true,
+      "targets": {
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821a8c (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821a80 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821a78 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6BDebugable@1@@": "0x821a70 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821a60 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821a50 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821a40 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821a30 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821a20 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821a10 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B@": "0x821a08 (RTTI .?AV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@, offset 0x130)",
+        "??1Clothing@RBX@@UAE@XZ": "bound 0x48fa50"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048fb80",
+      "symbol": "??1?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@MAE@XZ",
+      "size": 93,
+      "exact": true,
+      "targets": {
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8219a4 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821994 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82198c (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6BDebugable@1@@": "0x821984 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821974 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821964 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821954 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821944 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821934 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821924 (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B@": "0x82191c (RTTI .?AV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@, offset 0x130)",
+        "??1Clothing@RBX@@UAE@XZ": "bound 0x48fa50"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3bc0",
+      "symbol": "??1?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@MAE@XZ",
+      "size": 93,
+      "exact": true,
+      "targets": {
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c284 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c274 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c26c (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c264 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c254 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c244 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c234 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c224 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c214 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c204 (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B@": "0x83c1fc (RTTI .?AV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@, offset 0x130)",
+        "??1Instance@RBX@@UAE@XZ": "known 0x55a540"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3d30",
+      "symbol": "??1?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@MAE@XZ",
+      "size": 93,
+      "exact": true,
+      "targets": {
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c424 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c414 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c40c (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c404 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c3f4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c3e4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c3d4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c3c4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c3b4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c3a4 (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0xc4)",
+        "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B@": "0x83c39c (RTTI .?AV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@, offset 0x130)",
+        "??1Instance@RBX@@UAE@XZ": "known 0x55a540"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048f8e0",
+      "symbol": "??_G?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "targets": {
+        "??1?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@MAE@XZ": "bound 0x48f830",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3dc0",
+      "symbol": "??_G?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "targets": {
+        "??1?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@MAE@XZ": "bound 0x5d3bc0",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d58a0",
+      "symbol": "??_GClothing@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "targets": {
+        "??1Clothing@RBX@@UAE@XZ": "bound 0x48fa50",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d54f0",
+      "symbol": "??_GSkin@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "targets": {
+        "??1?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@MAE@XZ": "bound 0x5d3d30",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00493a70",
+      "symbol": "??_GShirt@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "targets": {
+        "??1?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@MAE@XZ": "bound 0x48fdb0",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004933a0",
+      "symbol": "??_GPants@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "targets": {
+        "??1?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@MAE@XZ": "bound 0x48fb80",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d4d20",
+      "symbol": "??$?0VShirtGraphic@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQShirtGraphic@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z",
+      "size": 204,
+      "exact": true,
+      "targets": {
+        "?classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x5c01d0",
+        "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "bound 0x5978a0",
+        "??_7?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@6B@": "0x83c4ec (RTTI .?AV?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$BoundPropGetSet@VShirtGraphic@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@6B@": "0x83c46c (RTTI .?AV?$BoundPropGetSet@VShirtGraphic@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@, offset 0x0)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VShirtGraphic@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQShirtGraphic@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z"
+      ]
+    },
+    {
+      "address": "005d4df0",
+      "symbol": "??$?0VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQClothing@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z",
+      "size": 204,
+      "exact": true,
+      "targets": {
+        "?classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x4909f0",
+        "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "bound 0x5978a0",
+        "??_7?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@6B@": "0x83c4ec (RTTI .?AV?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$BoundPropGetSet@VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@6B@": "0x83c480 (RTTI .?AV?$BoundPropGetSet@VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@, offset 0x0)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQClothing@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z"
+      ]
+    },
+    {
+      "address": "005d4ec0",
+      "symbol": "??$?0VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@QAE@PBD0PQSkin@2@VBrickColor@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z",
+      "size": 204,
+      "exact": true,
+      "targets": {
+        "?classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x5d4cb0",
+        "??0?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "bound 0x48b180",
+        "??_7?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@6B@": "0x83c520 (RTTI .?AV?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$BoundPropGetSet@VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@6B@": "0x83c494 (RTTI .?AV?$BoundPropGetSet@VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@, offset 0x0)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@QAE@PBD0PQSkin@2@VBrickColor@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z"
+      ]
+    },
+    {
+      "address": "005d5060",
+      "symbol": "??$?0P8Shirt@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Shirt@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "targets": {
+        "??$getset@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Shirt@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z": "bound 0x5d3fe0",
+        "?classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x491fb0",
+        "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "bound 0x5978a0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83c554 (RTTI .?AV?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Shirt@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Shirt@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005d5110",
+      "symbol": "??$?0P8Pants@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Pants@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "targets": {
+        "??$getset@P8Pants@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Pants@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z": "bound 0x5d4030",
+        "?classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "bound 0x491f40",
+        "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "bound 0x5978a0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83c588 (RTTI .?AV?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Pants@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Pants@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005d3fe0",
+      "symbol": "??$getset@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Shirt@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83c1d4 (RTTI .?AV?$GetSetImpl@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d4030",
+      "symbol": "??$getset@P8Pants@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Pants@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$GetSetImpl@P8Pants@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83c1e8 (RTTI .?AV?$GetSetImpl@P8Pants@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f6010",
+      "symbol": "??__E?prop_Graphic@ShirtGraphic@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ",
+      "size": 48,
+      "exact": true,
+      "targets": {
+        "?dataChanged@CharacterAppearance@RBX@@IAEXABVPropertyDescriptor@Reflection@2@@Z": "bound 0x5d3b50",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac 'Appearance'",
+        "??_C@_07PEMABHH@Graphic?$AA@": "0x83cc60 'Graphic'",
+        "?prop_Graphic@ShirtGraphic@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x979fe0",
+        "??$?0VShirtGraphic@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQShirtGraphic@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z": "bound 0x5d4d20",
+        "??__F?prop_Graphic@ShirtGraphic@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ": "bound 0x7ff1c0",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f6040",
+      "symbol": "??__E?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ",
+      "size": 47,
+      "exact": true,
+      "targets": {
+        "?dataChanged@CharacterAppearance@RBX@@IAEXABVPropertyDescriptor@Reflection@2@@Z": "bound 0x5d3b50",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac 'Appearance'",
+        "??_C@_07IBHKLNNG@Outfit1?$AA@": "0x83cc68 'Outfit1'",
+        "?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x979ffc",
+        "??$?0VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQClothing@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z": "bound 0x5d4df0",
+        "??__F?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ": "bound 0x7ff1a0",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f6070",
+      "symbol": "??__E?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ",
+      "size": 47,
+      "exact": true,
+      "targets": {
+        "?dataChanged@CharacterAppearance@RBX@@IAEXABVPropertyDescriptor@Reflection@2@@Z": "bound 0x5d3b50",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac 'Appearance'",
+        "??_C@_07KKFHOOBF@Outfit2?$AA@": "0x83cc70 'Outfit2'",
+        "?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x97a034",
+        "??$?0VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQClothing@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z": "bound 0x5d4df0",
+        "??__F?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ": "bound 0x7ff180",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f60a0",
+      "symbol": "??__Eprop_ShirtTemplate@RBX@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "targets": {
+        "?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z": "bound 0x5d40c0",
+        "?getTemplate@Shirt@RBX@@QBE?AVTextureId@2@XZ": "bound 0x5d3a00",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac 'Appearance'",
+        "??_C@_0O@PBFDCAB@ShirtTemplate?$AA@": "0x83cc78 'ShirtTemplate'",
+        "_prop_ShirtTemplate": "bound 0x97a050",
+        "??$?0P8Shirt@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Shirt@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "bound 0x5d5060",
+        "??__Fprop_ShirtTemplate@RBX@@YAXXZ": "bound 0x7ff0a0",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f60e0",
+      "symbol": "??__Eprop_PantsTemplate@RBX@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "targets": {
+        "?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z": "bound 0x5d4120",
+        "?getTemplate@Pants@RBX@@QBE?AVTextureId@2@XZ": "bound 0x5d3b90",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac 'Appearance'",
+        "??_C@_0O@IKBACFIH@PantsTemplate?$AA@": "0x83cc88 'PantsTemplate'",
+        "_prop_PantsTemplate": "bound 0x97a018",
+        "??$?0P8Pants@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Pants@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "bound 0x5d5110",
+        "??__Fprop_PantsTemplate@RBX@@YAXXZ": "bound 0x7ff080",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f6120",
+      "symbol": "??__E?prop_SkinColor@Skin@RBX@@2V?$BoundProp@VBrickColor@RBX@@$00@Reflection@2@A@@YAXXZ",
+      "size": 48,
+      "exact": true,
+      "targets": {
+        "?dataChanged@CharacterAppearance@RBX@@IAEXABVPropertyDescriptor@Reflection@2@@Z": "bound 0x5d3b50",
+        "??_C@_0L@FLMELPGD@Appearance?$AA@": "0x8329ac 'Appearance'",
+        "??_C@_09DJJBHOBP@SkinColor?$AA@": "0x83cc98 'SkinColor'",
+        "?prop_SkinColor@Skin@RBX@@2V?$BoundProp@VBrickColor@RBX@@$00@Reflection@2@A": "known 0x97a0c0",
+        "??$?0VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@QAE@PBD0PQSkin@2@VBrickColor@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z": "bound 0x5d4ec0",
+        "??__F?prop_SkinColor@Skin@RBX@@2V?$BoundProp@VBrickColor@RBX@@$00@Reflection@2@A@@YAXXZ": "bound 0x7ff1e0",
+        "_atexit": "bound 0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3b50",
+      "symbol": "?dataChanged@CharacterAppearance@RBX@@IAEXABVPropertyDescriptor@Reflection@2@@Z",
+      "size": 51,
+      "exact": true,
+      "targets": {
+        "?backendProcessing@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z": "known 0x495eb0",
+        "?modelIsCharacter@Humanoid@RBX@@SAPAV12@PBVInstance@2@@Z": "known 0x5d9a20"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d4c40",
+      "symbol": "?onAncestorChanged@CharacterAppearance@RBX@@MAEXABUAncestorChanged@2@@Z",
+      "size": 106,
+      "exact": true,
+      "targets": {
+        "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z": "known 0x55acc0",
+        "??_R0?AVClothing@RBX@@@8": "0x936980 (.?AVClothing@RBX@@)",
+        "??_R0?AVCharacterAppearance@RBX@@@8": "0x934d68 (.?AVCharacterAppearance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+        "?resetLimbs@Clothing@RBX@@QAEXXZ": "known 0x5d4b00",
+        "?backendProcessing@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z": "known 0x495eb0",
+        "?modelIsCharacter@Humanoid@RBX@@SAPAV12@PBVInstance@2@@Z": "known 0x5d9a20"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3aa0",
+      "symbol": "?apply@Skin@RBX@@MAEXPAVHumanoid@2@@Z",
+      "size": 168,
+      "exact": true,
+      "targets": {
+        "?getHead@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8a10",
+        "?setColor@PartInstance@RBX@@QAEXVBrickColor@2@@Z": "known 0x59df40",
+        "?getLeftLeg@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8c10",
+        "?getRightLeg@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8d10",
+        "?getTorso@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8b10",
+        "?getLeftArm@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8e10",
+        "?getRightArm@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8f10"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3a00",
+      "symbol": "?getTemplate@Shirt@RBX@@QBE?AVTextureId@2@XZ",
+      "size": 44,
+      "exact": true,
+      "targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3b90",
+      "symbol": "?getTemplate@Pants@RBX@@QBE?AVTextureId@2@XZ",
+      "size": 44,
+      "exact": true,
+      "targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d3fa0",
+      "symbol": "?getValue@?$BoundPropGetSet@VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@UBE?AVTextureId@4@PBVDescribedBase@34@@Z",
+      "size": 57,
+      "exact": true,
+      "targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5b10",
+      "symbol": "?setValue@?$BoundPropGetSet@VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVTextureId@4@@Z",
+      "size": 100,
+      "exact": true,
+      "targets": {
+        "??9RBX@@YA_NABVContentId@0@0@Z": "0x55bd60 (jmp msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z)",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "bound 0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "006334f0",
+      "symbol": "?getValue@?$BoundPropGetSet@VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@UBE?AVBrickColor@4@PBVDescribedBase@34@@Z",
+      "size": 44,
+      "exact": true,
+      "targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0063b210",
+      "symbol": "?setValue@?$BoundPropGetSet@VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVBrickColor@4@@Z",
+      "size": 70,
+      "exact": true,
+      "targets": {
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "bound 0x40db00"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005cf5d0",
+      "symbol": "?getValue@?$GetSetImpl@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@UBE?AVTextureId@4@PBVDescribedBase@34@@Z",
+      "size": 138,
+      "exact": true,
+      "targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?getValue@?$GetSetImpl@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@UBE?AVTextureId@4@PBVDescribedBase@34@@Z"
+      ]
+    },
+    {
+      "address": "005b7400",
+      "symbol": "?setValue@?$GetSetImpl@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVTextureId@4@@Z",
+      "size": 66,
+      "exact": true,
+      "targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+      },
+      "local_eh": []
+    }
+  ],
+  "pending_rows": [
+    {
+      "address": "005d3a30",
+      "symbol": "?apply@Clothing@RBX@@MAEXPAVHumanoid@2@@Z",
+      "size": 99,
+      "exact": "pending-build-only",
+      "targets": {
+        "?getLeftLeg@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8c10",
+        "?outfitChanged@PartInstance@RBX@@QAEXXZ": "known 0x59e3a0",
+        "?getRightLeg@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8d10",
+        "?getTorso@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8b10",
+        "?getLeftArm@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8e10",
+        "?getRightArm@Humanoid@RBX@@QBEPAVPartInstance@2@XZ": "known 0x5d8f10"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d40c0",
+      "symbol": "?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z",
+      "size": 88,
+      "exact": "pending-build-only",
+      "targets": {
+        "?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x97a034",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z"
+      ]
+    },
+    {
+      "address": "005d4120",
+      "symbol": "?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z",
+      "size": 88,
+      "exact": "pending-build-only",
+      "targets": {
+        "?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x979ffc",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z"
+      ]
+    }
+  ],
+  "split_rows": [
+    {
+      "address": "005d5690",
+      "symbol": "??1ShirtGraphic@RBX@@UAE@XZ",
+      "size": 80,
+      "exact": true,
+      "targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??1?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@MAE@XZ": "bound 0x5d3bc0"
+      },
+      "local_eh": [
+        "__ehhandler$??1ShirtGraphic@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "005d56e0",
+      "symbol": "??_GShirtGraphic@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "targets": {
+        "??1ShirtGraphic@RBX@@UAE@XZ": "bound 0x5d5690",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    }
+  ],
+  "helper_rows": [
+    {
+      "address": "0048aaf0",
+      "symbol": "??$callDoDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "targets": {
+        "??$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x489fb0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048ab00",
+      "symbol": "??$callDoDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "targets": {
+        "??$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x48a020"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048ab10",
+      "symbol": "??$callDoDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "targets": {
+        "??$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x48a090"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048aae0",
+      "symbol": "??$callDoDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "targets": {
+        "??$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x489f40"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048ab30",
+      "symbol": "??$callDoDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "targets": {
+        "??$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "bound 0x48a170"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00489fb0",
+      "symbol": "??$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1???$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "bound 0x96fb34",
+        "?sClothing@RBX@@3QBDB": "known 0x83c1b0",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "known 0x553f90",
+        "?n@?1???$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "bound 0x96fb30"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "0048a020",
+      "symbol": "??$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1???$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "bound 0x96fb3c",
+        "?sPants@RBX@@3QBDB": "known 0x83c198",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "known 0x553f90",
+        "?n@?1???$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "bound 0x96fb38"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "0048a090",
+      "symbol": "??$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1???$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "bound 0x96fb44",
+        "?sShirt@RBX@@3QBDB": "known 0x83c190",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "known 0x553f90",
+        "?n@?1???$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "bound 0x96fb40"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "00489f40",
+      "symbol": "??$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1???$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "bound 0x96fb2c",
+        "?sShirtGraphic@RBX@@3QBDB": "known 0x83c1a0",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "known 0x553f90",
+        "?n@?1???$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "bound 0x96fb28"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "0048a170",
+      "symbol": "??$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "targets": {
+        "??_B?1???$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "bound 0x96fb54",
+        "?sSkin@RBX@@3QBDB": "known 0x83c1bc",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "known 0x553f90",
+        "?n@?1???$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "bound 0x96fb50"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "007ff1c0",
+      "symbol": "??__F?prop_Graphic@ShirtGraphic@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "targets": {
+        "?prop_Graphic@ShirtGraphic@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x979fe0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ff1a0",
+      "symbol": "??__F?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "targets": {
+        "?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x979ffc",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ff180",
+      "symbol": "??__F?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "targets": {
+        "?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A": "known 0x97a034",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ff1e0",
+      "symbol": "??__F?prop_SkinColor@Skin@RBX@@2V?$BoundProp@VBrickColor@RBX@@$00@Reflection@2@A@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "targets": {
+        "?prop_SkinColor@Skin@RBX@@2V?$BoundProp@VBrickColor@RBX@@$00@Reflection@2@A": "known 0x97a0c0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb2f0",
+      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "targets": {
+        "?descriptor@?1??classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x96ff40",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "bound 0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb2e0",
+      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "targets": {
+        "?descriptor@?1??classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x9700d0",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "bound 0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb2d0",
+      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "targets": {
+        "?descriptor@?1??classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x970198",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "bound 0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fe820",
+      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "targets": {
+        "?descriptor@?1??classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x977a90",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "bound 0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ff200",
+      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "targets": {
+        "?descriptor@?1??classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "bound 0x979ee0",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "bound 0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ff080",
+      "symbol": "??__Fprop_PantsTemplate@RBX@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "targets": {
+        "_prop_PantsTemplate": "bound 0x97a018",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ff0a0",
+      "symbol": "??__Fprop_ShirtTemplate@RBX@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "targets": {
+        "_prop_ShirtTemplate": "bound 0x97a050",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    }
+  ],
+  "vtables": [
+    {
+      "class": "Clothing",
+      "vtable": "0x83ca6c",
+      "rtti_offset": 0,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880",
+        "3": "?askSetParent@CharacterAppearance@RBX@@MBE_NPBVInstance@2@@Z -> 0x5d7640",
+        "4": "?onAncestorChanged@CharacterAppearance@RBX@@MAEXABUAncestorChanged@2@@Z -> 0x5d4c40",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z -> 0x557490",
+        "16": "?apply@Clothing@RBX@@MAEXPAVHumanoid@2@@Z -> 0x5d3a30"
+      }
+    },
+    {
+      "class": "Clothing",
+      "vtable": "0x83c9e8",
+      "rtti_offset": 304,
+      "slots": {
+        "0": "??_EClothing@RBX@@WBDA@AEPAXI@Z -> 0x5d5890"
+      }
+    },
+    {
+      "class": "ShirtGraphic",
+      "vtable": "0x83c994",
+      "rtti_offset": 0,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880",
+        "3": "?askSetParent@CharacterAppearance@RBX@@MBE_NPBVInstance@2@@Z -> 0x5d7640",
+        "4": "?onAncestorChanged@CharacterAppearance@RBX@@MAEXABUAncestorChanged@2@@Z -> 0x5d4c40",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z -> 0x557490",
+        "16": "?apply@ShirtGraphic@RBX@@MAEXPAVHumanoid@2@@Z -> 0x5d4240"
+      }
+    },
+    {
+      "class": "ShirtGraphic",
+      "vtable": "0x83c90c",
+      "rtti_offset": 304,
+      "slots": {
+        "0": "??_EShirtGraphic@RBX@@WBDA@AEPAXI@Z -> 0x5d5670"
+      }
+    },
+    {
+      "class": "Skin",
+      "vtable": "0x83cb44",
+      "rtti_offset": 0,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880",
+        "3": "?askSetParent@CharacterAppearance@RBX@@MBE_NPBVInstance@2@@Z -> 0x5d7640",
+        "4": "?onAncestorChanged@CharacterAppearance@RBX@@MAEXABUAncestorChanged@2@@Z -> 0x5d4c40",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z -> 0x557490",
+        "16": "?apply@Skin@RBX@@MAEXPAVHumanoid@2@@Z -> 0x5d3aa0"
+      }
+    },
+    {
+      "class": "Skin",
+      "vtable": "0x83cabc",
+      "rtti_offset": 304,
+      "slots": {
+        "0": "??_ESkin@RBX@@WBDA@AEPAXI@Z -> 0x5d59b0"
+      }
+    },
+    {
+      "class": "Shirt",
+      "vtable": "0x822114",
+      "rtti_offset": 0,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880",
+        "3": "?askSetParent@CharacterAppearance@RBX@@MBE_NPBVInstance@2@@Z -> 0x5d7640",
+        "4": "?onAncestorChanged@CharacterAppearance@RBX@@MAEXABUAncestorChanged@2@@Z -> 0x5d4c40",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z -> 0x557490",
+        "16": "?apply@Clothing@RBX@@MAEXPAVHumanoid@2@@Z -> 0x5d3a30"
+      }
+    },
+    {
+      "class": "Shirt",
+      "vtable": "0x82208c",
+      "rtti_offset": 304,
+      "slots": {
+        "0": "??_EShirt@RBX@@WBDA@AEPAXI@Z -> 0x493460"
+      }
+    },
+    {
+      "class": "Pants",
+      "vtable": "0x822044",
+      "rtti_offset": 0,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880",
+        "3": "?askSetParent@CharacterAppearance@RBX@@MBE_NPBVInstance@2@@Z -> 0x5d7640",
+        "4": "?onAncestorChanged@CharacterAppearance@RBX@@MAEXABUAncestorChanged@2@@Z -> 0x5d4c40",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z -> 0x557490",
+        "16": "?apply@Clothing@RBX@@MAEXPAVHumanoid@2@@Z -> 0x5d3a30"
+      }
+    },
+    {
+      "class": "Pants",
+      "vtable": "0x821fc0",
+      "rtti_offset": 304,
+      "slots": {
+        "0": "??_EPants@RBX@@WBDA@AEPAXI@Z -> 0x4939a0"
+      }
+    }
+  ],
+  "bindings": {
+    "??$?0P8Pants@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Pants@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5d5110",
+    "??$?0P8Shirt@RBX@@BE?AVTextureId@1@XZP801@AEXV21@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8Shirt@2@BE?AVTextureId@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5d5060",
+    "??$?0VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQClothing@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z": "0x5d4df0",
+    "??$?0VShirtGraphic@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@QAE@PBD0PQShirtGraphic@2@VTextureId@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z": "0x5d4d20",
+    "??$?0VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@QAE@PBD0PQSkin@2@VBrickColor@2@P832@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z": "0x5d4ec0",
+    "??$callDoDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x48aaf0",
+    "??$callDoDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x48ab00",
+    "??$callDoDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x48ab10",
+    "??$callDoDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x48aae0",
+    "??$callDoDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x48ab30",
+    "??$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x489fb0",
+    "??$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x48a020",
+    "??$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x48a090",
+    "??$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x489f40",
+    "??$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x48a170",
+    "??$getset@P8Pants@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Pants@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z": "0x5d4030",
+    "??$getset@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8Shirt@2@BE?AVTextureId@2@XZP852@AEXV62@@Z@Z": "0x5d3fe0",
+    "??0?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@IAE@XZ": "0x5d5270",
+    "??0?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@IAE@XZ": "0x4932c0",
+    "??0?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@IAE@XZ": "0x4933c0",
+    "??0?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@IAE@XZ": "0x5d51c0",
+    "??0?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@IAE@XZ": "0x5d5420",
+    "??0?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@IAE@XZ": "0x5d3e50",
+    "??0?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@IAE@XZ": "0x48fac0",
+    "??0?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@IAE@XZ": "0x48fd40",
+    "??0?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@IAE@XZ": "0x5d3de0",
+    "??0?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@IAE@XZ": "0x5d3f30",
+    "??0?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x48b180",
+    "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x5978a0",
+    "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0",
+    "??0Clothing@RBX@@QAE@XZ": "0x5d5700",
+    "??1?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@MAE@XZ": "0x48f830",
+    "??1?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@MAE@XZ": "0x48fb80",
+    "??1?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@MAE@XZ": "0x48fdb0",
+    "??1?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@MAE@XZ": "0x5d3bc0",
+    "??1?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@MAE@XZ": "0x5d3d30",
+    "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0",
+    "??1Clothing@RBX@@UAE@XZ": "0x48fa50",
+    "??1ShirtGraphic@RBX@@UAE@XZ": "0x5d5690",
+    "??9RBX@@YA_NABVContentId@0@0@Z": "0x55bd60",
+    "??_7?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@6B@": "0x83c520",
+    "??_7?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@6B@": "0x83c4ec",
+    "??_7?$BoundPropGetSet@VClothing@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@6B@": "0x83c480",
+    "??_7?$BoundPropGetSet@VShirtGraphic@RBX@@@?$BoundProp@VTextureId@RBX@@$00@Reflection@RBX@@6B@": "0x83c46c",
+    "??_7?$BoundPropGetSet@VSkin@RBX@@@?$BoundProp@VBrickColor@RBX@@$00@Reflection@RBX@@6B@": "0x83c494",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c704",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c6fc",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c714",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c6a4",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c6e4",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c6d4",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c6c4",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c6b4",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c694",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B@": "0x83c68c",
+    "??_7?$DescribedCreatable@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c6f4",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821e84",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821e7c",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821e94",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821e24",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821e64",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821e54",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821e44",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821e34",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821e14",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B@": "0x821e0c",
+    "??_7?$DescribedCreatable@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6BDebugable@1@@": "0x821e74",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821f54",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821f4c",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821f64",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821ef4",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821f34",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821f24",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821f14",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821f04",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821ee4",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B@": "0x821edc",
+    "??_7?$DescribedCreatable@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6BDebugable@1@@": "0x821f44",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c634",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c62c",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c644",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c5d4",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c614",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c604",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c5f4",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c5e4",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c5c4",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B@": "0x83c5bc",
+    "??_7?$DescribedCreatable@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c624",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c8a4",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c89c",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c8b4",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c844",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c884",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c874",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c864",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c854",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c834",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B@": "0x83c82c",
+    "??_7?$DescribedCreatable@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c894",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8218c8",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8218c0",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8218d4",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821868",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8218a8",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821898",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821888",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821878",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821858",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6B@": "0x821850",
+    "??_7?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@RBX@@6BDebugable@1@@": "0x8218b8",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821994",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82198c",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8219a4",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821934",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821974",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821964",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821954",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821944",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821924",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6B@": "0x82191c",
+    "??_7?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@RBX@@6BDebugable@1@@": "0x821984",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821a80",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821a78",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821a8c",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821a20",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821a60",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821a50",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821a40",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821a30",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821a10",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6B@": "0x821a08",
+    "??_7?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@RBX@@6BDebugable@1@@": "0x821a70",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c274",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c26c",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c284",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c214",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c254",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c244",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c234",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c224",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c204",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6B@": "0x83c1fc",
+    "??_7?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c264",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c414",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c40c",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c424",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c3b4",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c3f4",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c3e4",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c3d4",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c3c4",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c3a4",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6B@": "0x83c39c",
+    "??_7?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@RBX@@6BDebugable@1@@": "0x83c404",
+    "??_7?$GetSetImpl@P8Pants@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83c1e8",
+    "??_7?$GetSetImpl@P8Shirt@RBX@@BE?AVTextureId@2@XZP812@AEXV32@@Z@?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83c1d4",
+    "??_7?$PropDescriptor@VPants@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83c588",
+    "??_7?$PropDescriptor@VShirt@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83c554",
+    "??_7Clothing@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83ca60",
+    "??_7Clothing@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83ca58",
+    "??_7Clothing@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83ca6c",
+    "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83ca00",
+    "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83ca40",
+    "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83ca30",
+    "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83ca20",
+    "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83ca10",
+    "??_7Clothing@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c9f0",
+    "??_7Clothing@RBX@@6B@": "0x83c9e8",
+    "??_7Clothing@RBX@@6BDebugable@1@@": "0x83ca50",
+    "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730",
+    "??_7Pants@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x822038",
+    "??_7Pants@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x822030",
+    "??_7Pants@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x822044",
+    "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x821fd8",
+    "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x822018",
+    "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x822008",
+    "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x821ff8",
+    "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x821fe8",
+    "??_7Pants@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x821fc8",
+    "??_7Pants@RBX@@6B@": "0x821fc0",
+    "??_7Pants@RBX@@6BDebugable@1@@": "0x822028",
+    "??_7Shirt@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x822104",
+    "??_7Shirt@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8220fc",
+    "??_7Shirt@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x822114",
+    "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8220a4",
+    "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8220e4",
+    "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8220d4",
+    "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8220c4",
+    "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8220b4",
+    "??_7Shirt@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x822094",
+    "??_7Shirt@RBX@@6B@": "0x82208c",
+    "??_7Shirt@RBX@@6BDebugable@1@@": "0x8220f4",
+    "??_7ShirtGraphic@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83c984",
+    "??_7ShirtGraphic@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83c97c",
+    "??_7ShirtGraphic@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83c994",
+    "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83c924",
+    "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83c964",
+    "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83c954",
+    "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83c944",
+    "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83c934",
+    "??_7ShirtGraphic@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83c914",
+    "??_7ShirtGraphic@RBX@@6B@": "0x83c90c",
+    "??_7ShirtGraphic@RBX@@6BDebugable@1@@": "0x83c974",
+    "??_7Skin@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83cb34",
+    "??_7Skin@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cb2c",
+    "??_7Skin@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83cb44",
+    "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83cad4",
+    "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cb14",
+    "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83cb04",
+    "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83caf4",
+    "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83cae4",
+    "??_7Skin@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83cac4",
+    "??_7Skin@RBX@@6B@": "0x83cabc",
+    "??_7Skin@RBX@@6BDebugable@1@@": "0x83cb24",
+    "??_B?1???$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x96fb34",
+    "??_B?1???$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x96fb3c",
+    "??_B?1???$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x96fb44",
+    "??_B?1???$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x96fb2c",
+    "??_B?1???$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x96fb54",
+    "??_B?1??classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x970000",
+    "??_B?1??classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x970190",
+    "??_B?1??classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x970258",
+    "??_B?1??classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x977b50",
+    "??_B?1??classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x979fa0",
+    "??_EClothing@RBX@@WBDA@AEPAXI@Z": "0x5d5890",
+    "??_EPants@RBX@@WBDA@AEPAXI@Z": "0x4939a0",
+    "??_EShirt@RBX@@WBDA@AEPAXI@Z": "0x493460",
+    "??_EShirtGraphic@RBX@@WBDA@AEPAXI@Z": "0x5d5670",
+    "??_ESkin@RBX@@WBDA@AEPAXI@Z": "0x5d59b0",
+    "??__F?prop_Graphic@ShirtGraphic@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ": "0x7ff1c0",
+    "??__F?prop_Outfit1@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ": "0x7ff1a0",
+    "??__F?prop_Outfit2@Clothing@RBX@@2V?$BoundProp@VTextureId@RBX@@$00@Reflection@2@A@@YAXXZ": "0x7ff180",
+    "??__F?prop_SkinColor@Skin@RBX@@2V?$BoundProp@VBrickColor@RBX@@$00@Reflection@2@A@@YAXXZ": "0x7ff1e0",
+    "??__Fdescriptor@?1??classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fb2f0",
+    "??__Fdescriptor@?1??classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fb2e0",
+    "??__Fdescriptor@?1??classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fb2d0",
+    "??__Fdescriptor@?1??classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe820",
+    "??__Fdescriptor@?1??classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7ff200",
+    "??__Fprop_PantsTemplate@RBX@@YAXXZ": "0x7ff080",
+    "??__Fprop_ShirtTemplate@RBX@@YAXXZ": "0x7ff0a0",
+    "?apply@Clothing@RBX@@MAEXPAVHumanoid@2@@Z": "0x5d3a30",
+    "?apply@ShirtGraphic@RBX@@MAEXPAVHumanoid@2@@Z": "0x5d4240",
+    "?apply@Skin@RBX@@MAEXPAVHumanoid@2@@Z": "0x5d3aa0",
+    "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z": "0x68e880",
+    "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+    "?classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x4909f0",
+    "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80",
+    "?classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x491f40",
+    "?classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x491fb0",
+    "?classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c01d0",
+    "?classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5d4cb0",
+    "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": "0x55a470",
+    "?dataChanged@CharacterAppearance@RBX@@IAEXABVPropertyDescriptor@Reflection@2@@Z": "0x5d3b50",
+    "?descriptor@?1??classDescriptor@?$Described@VClothing@RBX@@$1?sClothing@2@3QBDBV?$FactoryProduct@VClothing@RBX@@VCharacterAppearance@2@$1?sClothing@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96ff40",
+    "?descriptor@?1??classDescriptor@?$Described@VPants@RBX@@$1?sPants@2@3QBDBV?$FactoryProduct@VPants@RBX@@VClothing@2@$1?sPants@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9700d0",
+    "?descriptor@?1??classDescriptor@?$Described@VShirt@RBX@@$1?sShirt@2@3QBDBV?$FactoryProduct@VShirt@RBX@@VClothing@2@$1?sShirt@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x970198",
+    "?descriptor@?1??classDescriptor@?$Described@VShirtGraphic@RBX@@$1?sShirtGraphic@2@3QBDBV?$FactoryProduct@VShirtGraphic@RBX@@VCharacterAppearance@2@$1?sShirtGraphic@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977a90",
+    "?descriptor@?1??classDescriptor@?$Described@VSkin@RBX@@$1?sSkin@2@3QBDBV?$FactoryProduct@VSkin@RBX@@VCharacterAppearance@2@$1?sSkin@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x979ee0",
+    "?flag@?1???$declare@$1?sClothing@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x96fbcc",
+    "?flag@?1???$declare@$1?sPants@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x96fbd0",
+    "?flag@?1???$declare@$1?sShirt@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x96fbd4",
+    "?flag@?1???$declare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x96fbc8",
+    "?flag@?1???$declare@$1?sSkin@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x96fbdc",
+    "?getTemplate@Pants@RBX@@QBE?AVTextureId@2@XZ": "0x5d3b90",
+    "?getTemplate@Shirt@RBX@@QBE?AVTextureId@2@XZ": "0x5d3a00",
+    "?n@?1???$doDeclare@$1?sClothing@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96fb30",
+    "?n@?1???$doDeclare@$1?sPants@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96fb38",
+    "?n@?1???$doDeclare@$1?sShirt@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96fb40",
+    "?n@?1???$doDeclare@$1?sShirtGraphic@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96fb28",
+    "?n@?1???$doDeclare@$1?sSkin@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96fb50",
+    "?onAncestorChanged@CharacterAppearance@RBX@@MAEXABUAncestorChanged@2@@Z": "0x5d4c40",
+    "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z": "0x70bdf0",
+    "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z": "0x557490",
+    "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z": "0x70bdf0",
+    "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z": "0x70bdf0",
+    "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z": "0x55ae20",
+    "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x55ae90",
+    "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ": "0x47d410",
+    "?onLastChildRemoved@Instance@RBX@@UAEXXZ": "0x47d410",
+    "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z": "0x458e90",
+    "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00",
+    "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "0x559170",
+    "?setTemplate@Pants@RBX@@QAEXVTextureId@2@@Z": "0x5d4120",
+    "?setTemplate@Shirt@RBX@@QAEXVTextureId@2@@Z": "0x5d40c0",
+    "?write@Instance@RBX@@UAEPAVXmlElement@@XZ": "0x558c50",
+    "_atexit": "0x6a17af",
+    "_prop_PantsTemplate": "0x97a018",
+    "_prop_ShirtTemplate": "0x97a050"
+  },
+  "pending": [
+    "005d3a30 Clothing::apply: PartInstance::outfitChanged() 0059e3a0 declaration (PartInstance.h)",
+    "005d40c0/005d4120 setters: 2008 TypedPropertyDescriptor::GetSet has a second bool virtual at slot 1",
+    "005d7640 askSetParent (ICF fold with ModelInstance::askSetParent): native ModelInstance.h does not compile standalone",
+    "005d4240 ShirtGraphic::apply / 005d41a0 findFirstChildOfType<Decal>: Instance.h template + native Decal.h",
+    "005d4b00 Clothing::resetLimbs and limb finders 005d4510/4640/4770/48a0/49d0: not attempted"
+  ],
+  "scope": "Inactive diagnostic: layout, constructors, destructors, factory/reflection chain, descriptors, static initializers and methods listed are exact with bound targets; pending rows use generated header copies under out/. Method and field names are analog names. No runtime swap."
+}
