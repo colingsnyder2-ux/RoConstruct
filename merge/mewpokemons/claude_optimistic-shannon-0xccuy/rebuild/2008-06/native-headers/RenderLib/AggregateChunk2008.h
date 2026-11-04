@@ -53,6 +53,12 @@ namespace RBX
 		class AggregateChunk;
 		class MaterialBase; // RTTI .?AVMaterialBase@RenderBase@RBX@@; declared by the material owner (RenderLib/Material2008.h)
 
+		// 00551730: new RenderNew::Material (0x18, ctor 007ad960) when the render-mode global 00942ec4 is 0, new
+		// Render::Material (0x18, ctor 007b80a0) when it is 1, else throws std::exception; returns the raw pointer in eax
+		// (cdecl, no arguments). Called by the AggregateChunk ctor 005520b5 and the ViewNew part chunks. The name is the
+		// donor's analog, not proven by the image; the body is not recovered (the global is unnamed).
+		MaterialBase* createMaterial();
+
 		class __declspec(novtable) Chunk : public G3D::ReferenceCountedObject
 		{
 			friend struct ::NativeRenderSceneLayout;
@@ -110,6 +116,7 @@ namespace RBX
 			G3D::Array<unsigned short> shadowIndexArray16;           // +0xe4
 		public:
 			std::vector<G3D::ReferenceCountedPointer<Chunk> > components; // +0xf0
+			static bool randomColors;                                // 009738a0 (read by the ctor 0055203b / 005520a6)
 
 		public:
 			virtual ~AggregateChunk();                               // 00552160

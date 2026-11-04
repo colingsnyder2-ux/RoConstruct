@@ -60,6 +60,7 @@ namespace RBX
 	class PartInstance;
 	class ModelInstance;
 	class ContactManager;
+	class JointInstance;
 
 	extern char sHumanoid[];
 
@@ -148,6 +149,8 @@ namespace RBX
 		PartInstance* getRightArm() const;                   // 005d8f10
 
 		World* getWorld() const { return world; }
+		G3D::CoordinateFrame getTopOfHead() const;                            // 005d76a0
+		JointInstance* findRightShoulder() const;                             // 005d9010
 
 	public:
 		// Dynamic initializers 007f6840 and 007f6870..007f6950 (in this order); names after the donor.
@@ -164,6 +167,9 @@ namespace RBX
 	public:
 		static ModelInstance* getCharacterFromHumanoid(Humanoid* humanoid);   // 005d7670
 		static PartInstance* getHeadFromCharacter(const ModelInstance* character); // 005d75a0
+		static Humanoid* modelIsCharacter(const Instance* testModel);         // 005d9a20
+		static Humanoid* getLocalHumanoidFromContext(const Instance* context); // 005d9bb0
+		static void renderWaypoint(Adorn* adorn, const G3D::Vector3& waypoint); // 005d7750
 
 	private:
 		// Instance
@@ -190,6 +196,7 @@ namespace RBX
 		virtual ContactManager* getContactManager();                          // 005d77b0
 		virtual void tellCameraNear(float distance);                          // 005d9df0
 		G3D::Vector3 getIntendedMovementVector(bool setWalkMode);             // 005d9a50
+		bool hasWalkToPoint(G3D::Vector3& worldPosition) const;               // 005d79b0
 		virtual G3D::Vector3 getIntendedMovementVector();                     // 005d9bf0
 		virtual float getIntendedRotationAboutYAxis();                        // 005d80c0
 		virtual void cameraSetWalkOrientation(float rad, bool noAdjust);      // 005dc7f0

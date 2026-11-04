@@ -1,12 +1,13 @@
 # Needs a manual merge
 
-Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `1c37b04ddce91332aa1df5818ff47da3020b484b`.
+Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `6e7c7a12ddddd6ba4cb51b231798113ef6db984e`.
 Reason: CONFLICT (add/add): Merge conflict in rebuild/2008-06/native-classes/ClickDetector.cpp (+27 more conflicts)
 
 Files below are the fork's version; compare with the same path in the tree:
 
 - `rebuild/2008-06/native-classes/Accoutrement.cpp`
 - `rebuild/2008-06/native-classes/AdornG3D.cpp`
+- `rebuild/2008-06/native-classes/AdornRbxGfx.cpp`
 - `rebuild/2008-06/native-classes/AggregateChunk2008.cpp`
 - `rebuild/2008-06/native-classes/ArrowPanel.cpp`
 - `rebuild/2008-06/native-classes/Backpack.cpp`
@@ -41,6 +42,11 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/JointsService.cpp`
 - `rebuild/2008-06/native-classes/Kernel2008.cpp`
 - `rebuild/2008-06/native-classes/KernelConnector.cpp`
+- `rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp`
+- `rebuild/2008-06/native-classes/Leaves2008Log.cpp`
+- `rebuild/2008-06/native-classes/Leaves2008Point.cpp`
+- `rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp`
+- `rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp`
 - `rebuild/2008-06/native-classes/MD5Hasher.cpp`
 - `rebuild/2008-06/native-classes/MergeBinder.cpp`
 - `rebuild/2008-06/native-classes/Message.cpp`
@@ -55,6 +61,9 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/PhysicsService.cpp`
 - `rebuild/2008-06/native-classes/RenderMaterial.cpp`
 - `rebuild/2008-06/native-classes/RenderMaterialNew.cpp`
+- `rebuild/2008-06/native-classes/RenderSceneBase2008.cpp`
+- `rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp`
+- `rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp`
 - `rebuild/2008-06/native-classes/ReplicatorBases.cpp`
 - `rebuild/2008-06/native-classes/ReplicatorMarker.cpp`
 - `rebuild/2008-06/native-classes/Rocket.cpp`
@@ -81,6 +90,8 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp`
 - `rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp`
 - `rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp`
+- `rebuild/2008-06/native-classes/ViewNewPart.cpp`
+- `rebuild/2008-06/native-classes/ViewNewPartChunk.cpp`
 - `rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp`
 - `rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp`
 - `rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp`
@@ -105,11 +116,15 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/Network/Players.h`
 - `rebuild/2008-06/native-headers/Network/ReplicatorMarker.h`
 - `rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h`
+- `rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h`
 - `rebuild/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h`
 - `rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h`
 - `rebuild/2008-06/native-headers/RenderLib/Material2008.h`
+- `rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h`
 - `rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h`
 - `rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h`
+- `rebuild/2008-06/native-headers/RenderLib/ViewBase2008.h`
+- `rebuild/2008-06/native-headers/RenderLib/ViewNew2008.h`
 - `rebuild/2008-06/native-headers/Replicator.h`
 - `rebuild/2008-06/native-headers/ViewNew/BevelMesh.h`
 - `rebuild/2008-06/native-headers/ViewNew/BrickMesh.h`
@@ -117,6 +132,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/ViewNew/HeadMesh.h`
 - `rebuild/2008-06/native-headers/ViewNew/MeshFactory.h`
 - `rebuild/2008-06/native-headers/ViewNew/PBBMesh.h`
+- `rebuild/2008-06/native-headers/ViewNew/PartChunk.h`
 - `rebuild/2008-06/native-headers/ViewNew/QuadVolume.h`
 - `rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h`
 - `rebuild/2008-06/native-headers/ViewNew/SphereMesh.h`
@@ -134,6 +150,13 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/gui/WidgetChat.h`
 - `rebuild/2008-06/native-headers/gui/WidgetMenuItem.h`
 - `rebuild/2008-06/native-headers/humanoid/Humanoid2008.h`
+- `rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h`
+- `rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h`
+- `rebuild/2008-06/native-headers/leaves2008/Log2008.h`
+- `rebuild/2008-06/native-headers/leaves2008/NullController2008.h`
+- `rebuild/2008-06/native-headers/leaves2008/Point2008.h`
+- `rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h`
+- `rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h`
 - `rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h`
 - `rebuild/2008-06/native-headers/stats/Stats.h`
 - `rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h`

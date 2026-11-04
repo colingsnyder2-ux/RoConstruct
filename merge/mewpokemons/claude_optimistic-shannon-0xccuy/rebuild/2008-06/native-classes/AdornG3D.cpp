@@ -2,18 +2,16 @@
 // Declarations: native-headers/AppDraw/AdornG3D2008.h, native-headers/RbxGraphics/Adorn2008.h.
 // Verified by tests/record_native_adorn.py (VS2008 RTM 21022, document-swap flags + /fp:fast).
 //
-// createTextureProxy / setTexture / getTextureSize need the 2008 TextureProxyBase / Render::TextureProxy declarations
-// (resolve(RenderDevice*) is virtual slot 6 of TextureProxyBase, +0x18; the TextureProxy(TextureManager&, const
-// std::string&, bool) constructor 00551b30 is out of line, object size 0x54). The donor RenderLib/TextureProxy.h has
-// neither, so those bodies are guarded by NATIVE_ADORN_PENDING until the texture proxy owner provides them.
+// createTextureProxy / setTexture / getTextureSize use the committed 2008 TextureProxyBase / Render::TextureProxy
+// declarations (RbxGraphics/TextureProxyBase2008.h: resolve(RenderDevice*) is virtual slot 6, +0x18;
+// RenderLib/TextureProxy2008.h: the TextureProxy(TextureManager&, const std::string&, bool) constructor 00551b30 is out
+// of line, object size 0x54). TextureProxy2008.h needs the Ogre 1.4.5 client headers on the include path.
 #include "AppDraw/AdornG3D2008.h"
 #include "AppDraw/DrawPrimitives.h"
 #include "AppDraw/Fonts.h"
 #include "GLG3D/Draw.h"
 #include "GLG3D/Texture.h"
-#ifdef NATIVE_ADORN_PENDING
-#include "RenderLib/TextureProxy.h"
-#endif
+#include "RenderLib/TextureProxy2008.h"
 
 namespace RBX
 {
@@ -32,7 +30,6 @@ namespace RBX
         return renderDevice->getHeight();
     }
 
-#ifdef NATIVE_ADORN_PENDING
     G3D::Rect2D AdornG3D::getTextureSize(TextureProxyBaseRef _texture) const
     {
         if (_texture.notNull())
@@ -57,7 +54,6 @@ namespace RBX
             renderDevice->setTexture(id, NULL);
         }
     }
-#endif
 
     void AdornG3D::rect2d(const G3D::Rect2D& rect, const G3D::Color4& color) const
     {
@@ -145,13 +141,11 @@ namespace RBX
         renderDevice->endPrimitive();
     }
 
-#ifdef NATIVE_ADORN_PENDING
     TextureProxyBaseRef AdornG3D::createTextureProxy(const std::string& filename)
     {
         Render::TextureProxy* proxy = new Render::TextureProxy(textureManager, filename, false);
         return TextureProxyBaseRef(proxy);
     }
-#endif
 
     void AdornG3D::setColor(const G3D::Color4& color)
     {
