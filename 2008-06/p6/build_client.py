@@ -120,10 +120,11 @@ def native_deps(source):
             child = local if local.exists() else native
             if child.exists() and (str(child).startswith(str(header_root)) or child.parent == path.parent):
                 pending.append(child)
-    return sorted([str(path.relative_to(ROOT)) if str(path).startswith(str(ROOT)) else str(path), path.stat().st_mtime_ns]
+    return sorted([str(path.relative_to(ROOT)) if str(path).startswith(str(ROOT)) else str(path), hashlib.sha256(path.read_bytes()).hexdigest()]
                   for path in seen)
 def cache_key(source, flags):
-    key = {'source': str(source.resolve()), 'source_mtime': source.stat().st_mtime_ns,
+    key = {'schema': 2, 'source': str(source.resolve()),
+           'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
            'native_deps': native_deps(source),
            'flags': hashlib.sha256('\0'.join(flags).encode()).hexdigest()}
     # Angle includes can select per-source STL/MFC overrides. Track those
@@ -135,22 +136,36 @@ def cache_key(source, flags):
             if folder != header_root and folder.is_relative_to(header_root) and folder.is_dir():
                 profile_headers.update(path for path in folder.rglob('*') if path.is_file())
     if profile_headers:
-        key['native_profile_headers'] = [[str(path.relative_to(ROOT)), path.stat().st_mtime_ns]
+        key['native_profile_headers'] = [[str(path.relative_to(ROOT)), hashlib.sha256(path.read_bytes()).hexdigest()]
                                          for path in sorted(profile_headers)]
     return key
+def cache_paths(name, key):
+    variant = hashlib.sha256(json.dumps(key, sort_keys=True).encode()).hexdigest()
+    folder = cache_dir / 'variants' / variant
+    return folder / name, folder / (name + '.json')
+
 def restore_cached(name, key, target=None):
-    artifact, receipt = cache_dir / name, cache_dir / (name + '.json')
+    artifact, receipt = cache_paths(name, key)
     if not (NATIVE_DOC and NATIVE_DOC_CACHE and artifact.exists() and receipt.exists()):
         return False
-    if json.loads(receipt.read_text()) != key:
+    try:
+        recorded = json.loads(receipt.read_text())
+    except (OSError, ValueError):
+        return False
+    if recorded != key:
         return False
     shutil.copyfile(artifact, out / (target or name))
     return True
 def store_cached(name, key, source=None):
     if NATIVE_DOC and NATIVE_DOC_CACHE:
-        cache_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(out / (source or name), cache_dir / name)
-        (cache_dir / (name + '.json')).write_text(json.dumps(key, sort_keys=True))
+        artifact, receipt = cache_paths(name, key)
+        artifact.parent.mkdir(parents=True, exist_ok=True)
+        pending = artifact.with_name(artifact.name + '.tmp-' + str(os.getpid()))
+        shutil.copyfile(out / (source or name), pending)
+        os.replace(pending, artifact)
+        pending = receipt.with_name(receipt.name + '.tmp-' + str(os.getpid()))
+        pending.write_text(json.dumps(key, sort_keys=True))
+        os.replace(pending, receipt)
 data_flags = data_defines.split() + [engine["flags"]]
 data_key = cache_key(HERE / 'P6Data.cpp', data_flags)
 if not restore_cached('CoreP6Data.obj', data_key, 'P6Data.obj'):
@@ -272,6 +287,13 @@ if NATIVE_DOC:
                         ('NativeGuidRegistryCriticalSectionFull.obj', ROOT / 'rebuild/2008-06/native-classes/GuidRegistryCriticalSection.cpp'),
                         ('NativeServiceSelectionFull.obj', ROOT / 'rebuild/2008-06/native-classes/ServiceSelection.cpp'),
                         ('NativeServiceChangeHistoryFull.obj', ROOT / 'rebuild/2008-06/native-classes/ServiceChangeHistory.cpp'),
+                        ('NativeApplicationBaseUrlFull.obj', ROOT / 'rebuild/2008-06/native-classes/ApplicationBaseUrl.cpp'),
+                        ('NativeDataModelTimingFull.obj', ROOT / 'rebuild/2008-06/native-classes/DataModelTiming.cpp'),
+                        ('NativeDataModelDutyCycleFull.obj', ROOT / 'rebuild/2008-06/native-classes/DataModelDutyCycle.cpp'),
+                        ('NativeLuaAllocatorStatsFull.obj', ROOT / 'rebuild/2008-06/native-classes/LuaAllocatorStats.cpp'),
+                        ('NativePlayersAbuseFull.obj', ROOT / 'rebuild/2008-06/native-classes/PlayersAbusePredicate.cpp'),
+                        ('ServiceChangeHistoryCreateFull.obj', ROOT / 'rebuild/2008-06/native-classes/ServiceChangeHistory.cpp'),
+                        ('NativeCWorkspaceFull.obj', ROOT / 'rebuild/2008-06/native-classes/CWorkspace.cpp'),
                         ('NativeVisitServiceLookupFull.obj', ROOT / 'rebuild/2008-06/native-classes/VisitServiceLookup.cpp'),
                         ('NativeInstanceLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceLifetime.cpp'),
                         ('NativeInstanceCallbacksFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceBaseCallbacks.cpp'),
@@ -435,6 +457,10 @@ if NATIVE_DOC:
         obj, source = job
         source_flags = doc_flags + (['/DNATIVE_FILE_SYSTEM_APPDATA_ONLY'] if obj == 'NativeFileSystemFull.obj' else [])
         pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig', errors='replace'), re.M)
+        if obj == 'ServiceChangeHistoryCreateFull.obj':
+            # This second translation unit instantiates creation, not the lookup profile.
+            source_flags += ['/Ob2', '/Oy', '/GF', '/DSERVICE_HISTORY_CREATE_ONLY']
+            pinned = None
         if pinned:
             source_flags = ['/nologo', '/c'] + pinned.group(1).replace('{headers}', str(ROOT / 'rebuild/2008-06/native-headers')).split()
             source_flags += ['/DBOOST_ALL_NO_LIB', '/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK'] + ['/D' + d for d in data_defines.split()]
@@ -509,6 +535,8 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeGuidItemFull.obj', 'NativeGuidRegistryMutexFull.obj', 'NativeGuidRegistryInitializeFull.obj',
                       'NativeGuidRegistryConstructorFull.obj', 'NativeGuidRegistryCriticalSectionFull.obj',
                       'NativeServiceSelectionFull.obj', 'NativeServiceChangeHistoryFull.obj',
+                      'NativeApplicationBaseUrlFull.obj', 'NativeDataModelTimingFull.obj', 'NativeDataModelDutyCycleFull.obj', 'NativeLuaAllocatorStatsFull.obj', 'NativePlayersAbuseFull.obj', 'ServiceChangeHistoryCreateFull.obj',
+                      'NativeCWorkspaceFull.obj',
                       'NativeVisitServiceLookupFull.obj',
                       'NativeInstanceLifetimeFull.obj', 'NativeInstanceCallbacksFull.obj',
                       'NativeInstanceDescendantsFull.obj', 'NativeInstanceAncestorFull.obj',
@@ -565,10 +593,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
 if NATIVE_DOC:
     native_doc_objects += ['NativeDocExtra%02d.obj' % index for index, _ in enumerate(extra_sources)]
     native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
-        'NativeApplicationBaseUrl.obj',
-        'NativeWorkspaceLayout.obj', 'ServiceChangeHistoryCreate.obj',
-        'NativeDataModelTiming.obj', 'NativeDataModelDutyCycle.obj',
-        'NativeLuaAllocatorStats.obj', 'NativePlayersAbuse.obj', 'WorkspaceInsertNativeProfile.obj',
+        'WorkspaceInsertNativeProfile.obj',
         'WorkspaceSiteTrustProfile.obj')]
 native_doc_aliases = ['/alternatename:?createNativeWorkspace@@YGJPAPAVCWorkspace@@@Z=?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z'] if NATIVE_DOC else []
 native_doc_verbose = ['/VERBOSE:LIB'] if NATIVE_DOC and os.environ.get('ROC_NATIVE_DOC_VERBOSE_LIB') else []

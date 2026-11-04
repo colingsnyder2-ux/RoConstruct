@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[3]
 BASE = ROOT / 'rebuild/2008-06'
 RUNS = ROOT / 'work/2008-06/native-check-runs'
 sys.path.insert(0, str(ROOT))
-from roc import libs, match, rebuild
+from roc import libs, match, rebuild, native_work
 
 
 def sha(path):
@@ -87,6 +87,7 @@ def analyze_object(job, obj):
     bodies = match.coff_functions(raw)
     checks, coverage, layouts = [], [], []
     for check in job['checks']:
+        check_started = time.monotonic()
         addr = f"{int(check['addr'], 16):08x}"
         target, refs, _ = match.target('2008-06', addr)
         found = [b for b in bodies if b[0] == check['symbol']] or [b for b in bodies if b[0].startswith(check['symbol'])]
@@ -101,6 +102,7 @@ def analyze_object(job, obj):
             if exact:
                 data_matches, data_errors = match.data_check('2008-06', addr, target, match.coff_data_refs(raw, name))
                 row.update(data_matches=data_matches, data_errors=data_errors)
+        row['check_seconds'] = round(time.monotonic() - check_started, 6)
         checks.append(row)
     if job['ranges']:
         functions = [json.loads(line) for line in (ROOT / 'work/2008-06/functions.jsonl').read_text().splitlines()]
@@ -139,12 +141,19 @@ def analyze_object(job, obj):
 def compile_job(job, folder, tc):
     folder.mkdir()
     started = time.time_ns()
+    clock = time.monotonic()
     source = Path(job['source'])
     result = {'source': str(source), 'status': 'failed', 'object': str(folder / 'candidate.obj')}
     try:
+        exhausted = native_work.over_budget(job.get('checks', []))
+        if exhausted:
+            result['error'] = 'function budget exhausted; park or finish session: ' + ', '.join(exhausted)
+            return result
         before = sha(source)
         flags = compiler_flags(source)
+        compile_started = time.monotonic()
         code, log = rebuild.run(tc, 'cl', flags + ['/showIncludes', '/Fo' + result['object'], '/Fd' + str(folder / 'compiler.pdb'), str(source)], folder)
+        result['compile_seconds'] = round(time.monotonic() - compile_started, 3)
         (folder / 'compile.log').write_text(log, encoding='utf-8')
         result.update(compiler_exit=code, source_sha256=before, flags=flags, log=str(folder / 'compile.log'))
         if code:
@@ -163,18 +172,20 @@ def compile_job(job, folder, tc):
             return result
         obj = Path(result['object'])
         result['object_sha256'] = sha(obj)
+        analysis_started = time.monotonic()
         result.update(analyze_object(job, obj), status='complete')
+        result['analysis_seconds'] = round(time.monotonic() - analysis_started, 3)
         return result
     except Exception as error:
         result['error'] = f'{type(error).__name__}: {error}'
         return result
     finally:
-        result['seconds'] = round((time.time_ns() - started) / 1e9, 3)
+        result['seconds'] = round(time.monotonic() - clock, 3)
         save(folder / 'receipt.json', result)
 
 
 def compact(results):
-    checks = [row for result in results for row in result.get('checks', [])]
+    checks = [row for result in results if result['status'] == 'complete' for row in result.get('checks', [])]
     ranges = {}
     for result in results:
         for coverage in result.get('coverage', []):
@@ -183,6 +194,8 @@ def compact(results):
                 group['functions'][row['addr']] = row['size']
             group['hits'].update(row['addr'] for row in coverage['hits'])
     return {'compiled_sources': len(results), 'failed_sources': sum(r['status'] != 'complete' for r in results),
+            'compile_seconds_sum': round(sum(r.get('compile_seconds', 0) for r in results), 3),
+            'analysis_seconds_sum': round(sum(r.get('analysis_seconds', 0) for r in results), 3),
             'exact_checks': sum(r['status'] == 'exact' for r in checks), 'checks': len(checks),
             'data_checked': sum('data_errors' in r for r in checks),
             'verified_checks': sum(r['status'] == 'exact' and 'data_errors' in r and not r['data_errors'] for r in checks),
@@ -200,8 +213,12 @@ def execute(run, workers):
         claim.write(str(os.getpid()))
     data = json.loads((run / 'manifest.json').read_text())
     jobs = data['jobs']
+    headers = native_work.headers()
+    save(run / 'shared-headers.json', headers)
     summary = {'state': 'running', 'pid': os.getpid(), 'run': str(run), 'total_sources': len(jobs), 'completed_sources': 0,
                'observer_sha256': sha(Path(__file__)), 'manifest_sha256': sha(run / 'manifest.json'),
+               'work_log_sha256': sha(native_work.__file__),
+               'timing_log': str(run / 'function-timings.jsonl'),
                'scope': 'local diagnostics only; fresh compile per source, no ABI/server/P5/P6 gate proof; complete means finished; inspect exact_checks and data_mismatches'}
     save(run / 'summary.json', summary)
     started, results = time.monotonic(), []
@@ -218,10 +235,20 @@ def execute(run, workers):
                 summary.update(completed_sources=len(results), **compact(results))
                 summary['updated_at_ns'] = time.time_ns()
                 save(run / 'summary.json', summary)
+        drift = native_work.changed(headers, native_work.headers())
+        for result in results:
+            dependencies = result.get('dependencies', {})
+            changed = [p for p, digest in dependencies.items() if not Path(p).exists() or sha(p) != digest]
+            if drift or changed:
+                result.update(status='failed', changed_inputs=sorted(set(drift + changed)),
+                              error='inputs changed across batch; do not accept mixed-header evidence')
+        summary.update(**compact(results), shared_headers_changed=drift)
         summary['state'] = 'failed' if any(r['status'] != 'complete' for r in results) else 'complete'
     except Exception as error:
         summary.update(state='failed', error=f'{type(error).__name__}: {error}')
     summary['seconds'] = round(time.monotonic() - started, 3)
+    for result in results:
+        native_work.log_checks(run, jobs[result['unit']], result)
     summary['results'] = str(run / 'results.json')
     save(run / 'results.json', sorted(results, key=lambda r: r['unit']))
     save(run / 'summary.json', summary)
@@ -308,6 +335,7 @@ def main():
             changed = [p for p, digest in receipt['dependencies'].items() if not Path(p).exists() or sha(p) != digest]
             results.append({'source': job['source'], 'object': str(obj), 'changed_inputs': changed,
                             'scope': 'recorded object analysis only; not a fresh build', **analyze_object(job, obj)})
+            native_work.log_checks(run, job, results[-1], mode='analyze')
         output = run / ('analysis-' + uuid.uuid4().hex[:8] + '.json')
         save(output, results)
         print(json.dumps({'state': 'analyzed', 'sources': len(results), 'changed_input_sources': sum(bool(r['changed_inputs']) for r in results), 'results': str(output)}))

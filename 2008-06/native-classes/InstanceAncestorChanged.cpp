@@ -1,11 +1,6 @@
 #include "v8tree/Instance.h"
 
 namespace RBX {
-struct AncestorChanged {
-    Instance* child;
-    Instance* oldParent;
-    Instance* newParent;
-};
 
 void Instance::onAncestorChanged(const AncestorChanged& event)
 {

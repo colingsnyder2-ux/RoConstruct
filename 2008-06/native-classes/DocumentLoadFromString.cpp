@@ -13,7 +13,7 @@ int CRobloxDoc::loadFromString(std::string text)
         getDataModel()->create<RBX::ScriptContext>()->executeInNewThread(
             RBX::Security::LocalGUI, text.c_str(), "Doc script", args);
         return 1;
-    } catch (...) {
+    } catch (std::exception&) {
         return 0;
     }
 }

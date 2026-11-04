@@ -26,6 +26,7 @@ RUNS = ROOT / 'work/2008-06/p6-probe-runs'
 BUILDER = BASE / 'p6/build_client.py'
 sys.path.insert(0, str(Path(__file__).parent))
 from native_check_runner import save, sha, alive, rebuild
+from roc import native_work
 
 
 def preflight(data):
@@ -69,7 +70,8 @@ def preflight(data):
     if missing:
         raise ValueError('missing prerequisites:\n' + '\n'.join(missing))
     return {'extras': extras, 'cache': data.get('cache', False), 'snapshot': str(snapshot),
-            'extra_hashes': {p: sha(p) for p in extras}, 'builder_sha256': sha(BUILDER)}
+            'extra_hashes': {p: sha(p) for p in extras}, 'builder_sha256': sha(BUILDER),
+            'shared_headers': native_work.headers()}
 
 
 @contextmanager
@@ -157,11 +159,17 @@ def run_probe(run, builder=None, lock_folder=None):
                'exit_code': None,
                'stdout': str(run / 'stdout.log'), 'stderr': str(run / 'stderr.log'),
                'observer_sha256': sha(Path(__file__)), 'builder_sha256': sha(builder),
+               'work_log_sha256': sha(native_work.__file__),
                'scope': 'native-doc diagnostic only; never runs client; link success is not ABI/runtime/P5/P6 proof'}
     save(run / 'summary.json', receipt)
     start = time.monotonic()
     try:
         with build_lock(lock_folder):
+            headers = plan.get('shared_headers', native_work.headers())
+            drift = native_work.changed(headers, native_work.headers())
+            if drift:
+                raise ValueError('shared headers changed since preflight: ' + ', '.join(drift))
+            save(run / 'shared-headers.json', headers)
             for source, digest in plan['extra_hashes'].items():
                 if sha(source) != digest:
                     raise ValueError('extra source changed since preflight: ' + source)
@@ -186,14 +194,16 @@ def run_probe(run, builder=None, lock_folder=None):
             detail = classify(exit_code, (run / 'stdout.log').read_text(errors='replace'),
                               (run / 'stderr.log').read_text(errors='replace'), link, (output / 'RobloxNativeDoc.exe').is_file())
             detail['extra_sources_changed_during_build'] = [p for p, digest in plan['extra_hashes'].items() if not Path(p).exists() or sha(p) != digest]
+            detail['shared_headers_changed_during_build'] = native_work.changed(headers, native_work.headers())
             save(run / 'result.json', detail)
             receipt.update(state='complete' if detail['outcome'] == 'linked' else 'failed', outcome=detail['outcome'], exit_code=exit_code,
                            link_log_present=detail['link_log_present'],
                            unique_unresolved=len(detail['blockers']) if link is not None or detail['link_errors'] else None,
                            unique_duplicates=len(detail['duplicates']), link_error_count=len(detail['link_errors']),
                            compiler_errors=detail['compiler_errors'][:8], link_errors=detail['link_errors'][:8], result=str(run / 'result.json'),
-                           changed_extra_sources=detail['extra_sources_changed_during_build'])
-            if detail['extra_sources_changed_during_build']:
+                           changed_extra_sources=detail['extra_sources_changed_during_build'],
+                           changed_shared_headers=detail['shared_headers_changed_during_build'])
+            if detail['extra_sources_changed_during_build'] or detail['shared_headers_changed_during_build']:
                 receipt.update(state='failed', outcome='inputs_changed', link_outcome=detail['outcome'])
     except Exception as error:
         receipt.update(state='failed', outcome='busy' if isinstance(error, BlockingIOError) else 'wrapper_failed', error=f'{type(error).__name__}: {error}')
@@ -257,6 +267,8 @@ def main(argv=None):
             detail = json.loads((args.input / 'result.json').read_text())
             for row in detail['blockers'][:12]:
                 print(row['symbol'] + ' <- ' + ', '.join(row['requesters']))
+            for row in detail['duplicates'][:12]:
+                print('DUPLICATE ' + row['symbol'] + ' <- ' + ', '.join(row['providers']))
     else:
         receipt = status(args.input.resolve())
     if receipt['state'] == 'failed':
