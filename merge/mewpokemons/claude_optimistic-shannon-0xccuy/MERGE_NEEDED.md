@@ -1,6 +1,6 @@
 # Needs a manual merge
 
-Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `89483fa30a96458fe8882c1f9c79ec8eb818ed7e`.
+Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `cd72c3729d8834f33aa89e45785ebacf5ce614b8`.
 Reason: CONFLICT (add/add): Merge conflict in rebuild/2008-06/native-classes/ClickDetector.cpp (+27 more conflicts)
 
 Files below are the fork's version; compare with the same path in the tree:
@@ -13,6 +13,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/BodyColors.cpp`
 - `rebuild/2008-06/native-classes/BodyMovers.cpp`
 - `rebuild/2008-06/native-classes/ChatOutput.cpp`
+- `rebuild/2008-06/native-classes/CleanStage2008.cpp`
 - `rebuild/2008-06/native-classes/ClickDetector.cpp`
 - `rebuild/2008-06/native-classes/Clothing.cpp`
 - `rebuild/2008-06/native-classes/Contact.cpp`
@@ -22,6 +23,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/EquationDisplay.cpp`
 - `rebuild/2008-06/native-classes/Explosion.cpp`
 - `rebuild/2008-06/native-classes/Feature.cpp`
+- `rebuild/2008-06/native-classes/Filters.cpp`
 - `rebuild/2008-06/native-classes/Flag.cpp`
 - `rebuild/2008-06/native-classes/FlagStand.cpp`
 - `rebuild/2008-06/native-classes/ForceField.cpp`
@@ -29,14 +31,20 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/GeometryService.cpp`
 - `rebuild/2008-06/native-classes/HealthHud.cpp`
 - `rebuild/2008-06/native-classes/Hopper.cpp`
+- `rebuild/2008-06/native-classes/IWorldStage2008.cpp`
 - `rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp`
+- `rebuild/2008-06/native-classes/JointStage2008.cpp`
 - `rebuild/2008-06/native-classes/JointsService.cpp`
+- `rebuild/2008-06/native-classes/Kernel2008.cpp`
 - `rebuild/2008-06/native-classes/KernelConnector.cpp`
+- `rebuild/2008-06/native-classes/MD5Hasher.cpp`
+- `rebuild/2008-06/native-classes/MergeBinder.cpp`
 - `rebuild/2008-06/native-classes/Message.cpp`
 - `rebuild/2008-06/native-classes/Mouse.cpp`
 - `rebuild/2008-06/native-classes/MouseCommand.cpp`
 - `rebuild/2008-06/native-classes/MouseCommandDistance.cpp`
 - `rebuild/2008-06/native-classes/NativeClassNames.cpp`
+- `rebuild/2008-06/native-classes/NetworkPhysics.cpp`
 - `rebuild/2008-06/native-classes/NetworkPlayer.cpp`
 - `rebuild/2008-06/native-classes/NetworkPlayers.cpp`
 - `rebuild/2008-06/native-classes/NetworkSettings.cpp`
@@ -48,6 +56,9 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/Seat.cpp`
 - `rebuild/2008-06/native-classes/ServiceChangeHistory.cpp`
 - `rebuild/2008-06/native-classes/ServiceSelection.cpp`
+- `rebuild/2008-06/native-classes/SimJob2008.cpp`
+- `rebuild/2008-06/native-classes/SimJobStage2008.cpp`
+- `rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp`
 - `rebuild/2008-06/native-classes/SpawnLocation.cpp`
 - `rebuild/2008-06/native-classes/SpecialShape.cpp`
 - `rebuild/2008-06/native-classes/StatsService.cpp`
@@ -55,6 +66,11 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/TimerService.cpp`
 - `rebuild/2008-06/native-classes/Tool.cpp`
 - `rebuild/2008-06/native-classes/UserController.cpp`
+- `rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp`
+- `rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp`
+- `rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp`
+- `rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp`
+- `rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp`
 - `rebuild/2008-06/native-classes/VisitFactory.cpp`
 - `rebuild/2008-06/native-classes/VisitServiceLookup.cpp`
 - `rebuild/2008-06/native-classes/Widget.cpp`
@@ -69,10 +85,18 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/WorldJointRotate.cpp`
 - `rebuild/2008-06/native-headers/Network/IdSerializer.h`
 - `rebuild/2008-06/native-headers/Network/NetworkSettings.h`
+- `rebuild/2008-06/native-headers/Network/PhysicsReplication.h`
 - `rebuild/2008-06/native-headers/Network/Player.h`
 - `rebuild/2008-06/native-headers/Network/Players.h`
 - `rebuild/2008-06/native-headers/Network/ReplicatorMarker.h`
 - `rebuild/2008-06/native-headers/Replicator.h`
+- `rebuild/2008-06/native-headers/ViewNew/BevelMesh.h`
+- `rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h`
+- `rebuild/2008-06/native-headers/ViewNew/HeadMesh.h`
+- `rebuild/2008-06/native-headers/ViewNew/MeshFactory.h`
+- `rebuild/2008-06/native-headers/ViewNew/QuadVolume.h`
+- `rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h`
+- `rebuild/2008-06/native-headers/ViewNew/SphereMesh.h`
 - `rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp`
 - `rebuild/2008-06/native-headers/engine-world/v8world/World.h`
 - `rebuild/2008-06/native-headers/gui/ArrowPanel.h`
@@ -87,6 +111,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h`
 - `rebuild/2008-06/native-headers/stats/Stats.h`
 - `rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h`
+- `rebuild/2008-06/native-headers/util/MD5Hasher2008.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Accoutrement.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Backpack.h`
 - `rebuild/2008-06/native-headers/v8datamodel/BodyColors.h`
@@ -96,6 +121,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/v8datamodel/DebrisService.h`
 - `rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Feature.h`
+- `rebuild/2008-06/native-headers/v8datamodel/Filters2008.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Flag.h`
 - `rebuild/2008-06/native-headers/v8datamodel/FlagStand.h`
 - `rebuild/2008-06/native-headers/v8datamodel/ForceField.h`
@@ -103,6 +129,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/v8datamodel/GeometryService.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Hopper.h`
 - `rebuild/2008-06/native-headers/v8datamodel/JointsService.h`
+- `rebuild/2008-06/native-headers/v8datamodel/MergeBinder2008.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Mouse.h`
 - `rebuild/2008-06/native-headers/v8datamodel/MouseCommand.h`
 - `rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h`
@@ -115,9 +142,14 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/v8datamodel/Tool.h`
 - `rebuild/2008-06/native-headers/v8datamodel/UserController.h`
 - `rebuild/2008-06/native-headers/v8kernel/Connector2008.h`
+- `rebuild/2008-06/native-headers/v8kernel/Kernel2008.h`
 - `rebuild/2008-06/native-headers/v8tree/Instance.h`
 - `rebuild/2008-06/native-headers/v8world/Ball2008.h`
 - `rebuild/2008-06/native-headers/v8world/Block2008.h`
+- `rebuild/2008-06/native-headers/v8world/CleanStage2008.h`
 - `rebuild/2008-06/native-headers/v8world/Contact2008.h`
 - `rebuild/2008-06/native-headers/v8world/Geometry2008.h`
+- `rebuild/2008-06/native-headers/v8world/JointStage2008.h`
 - `rebuild/2008-06/native-headers/v8world/Joints2008.h`
+- `rebuild/2008-06/native-headers/v8world/SimJob2008.h`
+- `rebuild/2008-06/native-headers/v8world/SimJobStage2008.h`

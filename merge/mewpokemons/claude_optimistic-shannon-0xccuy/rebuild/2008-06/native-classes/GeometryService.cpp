@@ -1,14 +1,14 @@
 // 2008-06 native RBX::GeometryService (inactive); evidence in native-headers/v8datamodel/GeometryService.h.
 // Verified by tests/record_native_geometry_service.py. Unit 0062d8f0..0062e070 plus class descriptor 005c0470 and
 // doDeclare 005bfa30 / callDoDeclare 005bffc0. getPartsTouchingExtents 0062db60 and getHitLocationFilterStairs
-// 0062dc10 read the Workspace world (+0x2e4), and 0062dc10 also constructs RBX::FilterStairs; no native header
-// declares either yet, so they compile only under NATIVE_GEOMETRYSERVICE_PENDING against the generated overlays of
-// tests/NativeGeometryServicePendingWorkspace.h and tests/NativeGeometryServicePendingFilterStairs.h (proposals in
-// the recorder).
+// 0062dc10 read the Workspace world (+0x2e4), which no native header declares yet, so they compile only under
+// NATIVE_GEOMETRYSERVICE_PENDING against the generated overlay of tests/NativeGeometryServicePendingWorkspace.h
+// (proposal in the recorder). 0062dc10 also constructs RBX::FilterStairs, declared by the native
+// v8datamodel/Filters2008.h (tests/record_native_hit_filters.py).
 #include "v8datamodel/GeometryService.h"
 #ifdef NATIVE_GEOMETRYSERVICE_PENDING
 #include "v8datamodel/Workspace.h"
-#include "v8datamodel/FilterStairs.h"
+#include "v8datamodel/Filters2008.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/World.h"
 #include "v8world/ContactManager.h"
