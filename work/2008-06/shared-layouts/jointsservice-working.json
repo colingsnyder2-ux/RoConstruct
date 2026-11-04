@@ -1,0 +1,24 @@
+{
+  "class_name": "RBX::JointsService",
+  "inactive": true,
+  "compiler": 21022,
+  "source_sha256": "ab2c098a81858b494f9f8270ccaa0f9934e1411a46890f6565d9821d2e5d9f8f",
+  "methods": [
+    {
+      "address": "004afb30",
+      "symbol": "?askAddChild@JointsService@RBX@@EBE_NPBVInstance@2@@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVJointInstance@RBX@@@8": "0x93b2e4 (.?AVJointInstance@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast"
+      },
+      "local_eh": []
+    }
+  ],
+  "blockers": [
+    "ctor/allocation size unproven",
+    "onDescendentAdded/Removing, onServiceProvider, onEvent pending"
+  ]
+}
