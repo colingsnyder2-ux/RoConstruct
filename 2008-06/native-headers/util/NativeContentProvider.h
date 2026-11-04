@@ -1,4 +1,5 @@
 #pragma once
+#include "util/ContentRequest.h"
 
 #define ContentProvider DonorContentProvider
 #include "util/ContentProvider.h"
@@ -12,8 +13,6 @@
 
 namespace RBX {
 extern char sContentProvider[];
-enum RequestResult { Waiting, Succeeded, Failed };
-typedef boost::function<void(RequestResult, std::istream&)> RequestCallback;
 struct ContentRequest {
     ContentId id;
     std::vector<RequestCallback> callbacks;

@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /I{headers}/std-noinline-ldraw-parse
 #include "util/LDrawParser.h"
 #include "util/LDrawMapRoot.h"
 #include "util/LDrawEntities.h"

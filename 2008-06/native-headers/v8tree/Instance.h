@@ -104,6 +104,7 @@ public:
     }
     template<class T> const T* queryTypedParent() const { return dynamic_cast<T*>(parent); }
     template<class T> T* queryTypedParent() { return dynamic_cast<T*>(parent); }
+    bool canAddChild(const Instance*) const;
     void setParent(Instance*);
     bool contains(const Instance*) const;
     void removeAllChildren();

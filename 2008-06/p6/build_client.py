@@ -119,12 +119,24 @@ def native_deps(source):
             child = local if local.exists() else native
             if child.exists() and (str(child).startswith(str(header_root)) or child.parent == path.parent):
                 pending.append(child)
-    return sorted((str(path.relative_to(ROOT)) if str(path).startswith(str(ROOT)) else str(path), path.stat().st_mtime_ns)
+    return sorted([str(path.relative_to(ROOT)) if str(path).startswith(str(ROOT)) else str(path), path.stat().st_mtime_ns]
                   for path in seen)
 def cache_key(source, flags):
-    return {'source': str(source.resolve()), 'source_mtime': source.stat().st_mtime_ns,
-            'native_deps': native_deps(source),
-            'flags': hashlib.sha256('\0'.join(flags).encode()).hexdigest()}
+    key = {'source': str(source.resolve()), 'source_mtime': source.stat().st_mtime_ns,
+           'native_deps': native_deps(source),
+           'flags': hashlib.sha256('\0'.join(flags).encode()).hexdigest()}
+    # Angle includes can select per-source STL/MFC overrides. Track those
+    # directories without invalidating every object for unrelated native headers.
+    profile_headers = set()
+    for flag in flags:
+        if flag.lower().startswith('/i'):
+            folder = Path(flag[2:].strip('"')).resolve()
+            if folder != header_root and folder.is_relative_to(header_root) and folder.is_dir():
+                profile_headers.update(path for path in folder.rglob('*') if path.is_file())
+    if profile_headers:
+        key['native_profile_headers'] = [[str(path.relative_to(ROOT)), path.stat().st_mtime_ns]
+                                         for path in sorted(profile_headers)]
+    return key
 def restore_cached(name, key, target=None):
     artifact, receipt = cache_dir / name, cache_dir / (name + '.json')
     if not (NATIVE_DOC and NATIVE_DOC_CACHE and artifact.exists() and receipt.exists()):
@@ -278,7 +290,45 @@ if NATIVE_DOC:
                         ('NativeInstanceClassLookupFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceClassLookup.cpp'),
                         ('NativeHistoryRecordLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp'),
                         ('NativeHistoryItemPlaybackFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryItemPlayback.cpp'),
-                        ('NativeHistoryItemPropertyFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp')]
+                        ('NativeHistoryItemPropertyFull.obj', ROOT / 'rebuild/2008-06/native-classes/HistoryItemPropertyTrial.cpp'),
+                        ('NativeAxisVerbConstructorsFull.obj', ROOT / 'rebuild/2008-06/native-classes/AxisVerbConstructors.cpp'),
+                        ('NativeControllerActionsFull.obj', ROOT / 'rebuild/2008-06/native-classes/ControllerActions.cpp'),
+                        ('NativeControllerEnabledFull.obj', ROOT / 'rebuild/2008-06/native-classes/ControllerEnabled.cpp'),
+                        ('NativeControllerApplyFull.obj', ROOT / 'rebuild/2008-06/native-classes/ControllerApply.cpp'),
+                        ('NativeTiltSelectionAxisFull.obj', ROOT / 'rebuild/2008-06/native-classes/TiltSelectionAxis.cpp'),
+                        ('NativeRotateAxisActionFull.obj', ROOT / 'rebuild/2008-06/native-classes/RotateAxisAction.cpp'),
+                        ('NativeMathTiltMatricesFull.obj', ROOT / 'rebuild/2008-06/native-classes/MathTiltMatrices.cpp'),
+                        ('NativeMathTiltQuadrantFull.obj', ROOT / 'rebuild/2008-06/native-classes/MathTiltQuadrant.cpp'),
+                        ('NativeSurfaceToolFull.obj', ROOT / 'rebuild/2008-06/native-classes/SurfaceTool.cpp'),
+                        ('NativeFlatToolFull.obj', ROOT / 'rebuild/2008-06/native-classes/FlatTool.cpp'),
+                        ('NativeFlatToolFactoryFull.obj', ROOT / 'rebuild/2008-06/native-classes/FlatToolFactory.cpp'),
+                        ('NativeSurfaceToolSiblingsFull.obj', ROOT / 'rebuild/2008-06/native-classes/SurfaceToolSiblings.cpp'),
+                        ('NativeSurfaceToolFactoriesFull.obj', ROOT / 'rebuild/2008-06/native-classes/SurfaceToolFactories.cpp'),
+                        ('NativeSurfaceToolHoverRenderFull.obj', ROOT / 'rebuild/2008-06/native-classes/SurfaceToolHoverRender.cpp'),
+                        ('NativeSurfaceToolMouseDownFull.obj', ROOT / 'rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp'),
+                        ('NativeMouseGetSurfaceFull.obj', ROOT / 'rebuild/2008-06/native-classes/MouseGetSurface.cpp'),
+                        ('NativeInsertObjectActionFull.obj', ROOT / 'rebuild/2008-06/native-classes/InsertObjectAction.cpp'),
+                        ('NativeInstanceChildPermissionFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceChildPermission.cpp'),
+                        ('NativeInsertDecalActionFull.obj', ROOT / 'rebuild/2008-06/native-classes/InsertDecalAction.cpp'),
+                        ('NativeImageMimeTypeFull.obj', ROOT / 'rebuild/2008-06/native-classes/ImageMimeType.cpp'),
+                        ('NativeImageContentRegistrationFull.obj', ROOT / 'rebuild/2008-06/native-classes/ImageContentRegistration.cpp'),
+                        ('NativeClipboardActionsFull.obj', ROOT / 'rebuild/2008-06/native-classes/ClipboardActions.cpp'),
+                        ('NativeLDrawPathFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPath.cpp'),
+                        ('NativeLDrawAssetStateFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawAssetState.cpp'),
+                        ('NativeLDrawMapRootConstructorFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp'),
+                        ('NativeLDrawMapRootLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp'),
+                        ('NativeLDrawMapOperationsFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawMapOperations.cpp'),
+                        ('NativeLDrawMapTagsFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawMapTags.cpp'),
+                        ('NativeLDrawStringCompareFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawStringCompare.cpp'),
+                        ('NativeLDrawParserParseFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawParserParse.cpp'),
+                        ('NativeLDrawEntityLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp'),
+                        ('NativeLDrawModelWriteFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawModelWrite.cpp'),
+                        ('NativeLDrawPartWriteFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPartWrite.cpp'),
+                        ('NativeLDrawPartShapeFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPartShape.cpp'),
+                        ('NativeLDrawPartTransformFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPartTransform.cpp'),
+                        ('NativeLDrawPartParentFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPartParent.cpp'),
+                        ('NativeLDrawPartColorFull.obj', ROOT / 'rebuild/2008-06/native-classes/LDrawPartColor.cpp'),
+                        ('NativeContentReadFull.obj', ROOT / 'rebuild/2008-06/native-classes/ContentRead.cpp')]
     extra_sources = [Path(p) for p in os.environ.get('ROC_NATIVE_DOC_EXTRA', '').split(';') if p]
     for index, source in enumerate(extra_sources):
         assert source.is_file(), source
@@ -361,7 +411,25 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeChangeHistoryPlaybackFull.obj', 'NativeChangeHistoryQueriesFull.obj',
                       'NativeChangeHistoryEnableFull.obj', 'NativeChangeHistoryResetFull.obj', 'NativeSelectionFrontFull.obj', 'NativeInstanceClassLookupFull.obj',
                       'NativeHistoryRecordLifetimeFull.obj', 'NativeHistoryItemPlaybackFull.obj',
-                      'NativeHistoryItemPropertyFull.obj'] if NATIVE_DOC else []
+                      'NativeHistoryItemPropertyFull.obj',
+                      'NativeAxisVerbConstructorsFull.obj', 'NativeControllerActionsFull.obj',
+                      'NativeControllerEnabledFull.obj', 'NativeControllerApplyFull.obj',
+                      'NativeTiltSelectionAxisFull.obj', 'NativeRotateAxisActionFull.obj',
+                      'NativeMathTiltMatricesFull.obj', 'NativeMathTiltQuadrantFull.obj',
+                      'NativeSurfaceToolFull.obj', 'NativeFlatToolFull.obj', 'NativeFlatToolFactoryFull.obj',
+                      'NativeSurfaceToolSiblingsFull.obj', 'NativeSurfaceToolFactoriesFull.obj',
+                      'NativeSurfaceToolHoverRenderFull.obj', 'NativeSurfaceToolMouseDownFull.obj',
+                      'NativeMouseGetSurfaceFull.obj', 'NativeInsertObjectActionFull.obj',
+                      'NativeInstanceChildPermissionFull.obj', 'NativeInsertDecalActionFull.obj',
+                      'NativeImageMimeTypeFull.obj', 'NativeImageContentRegistrationFull.obj',
+                      'NativeClipboardActionsFull.obj', 'NativeLDrawPathFull.obj', 'NativeLDrawAssetStateFull.obj',
+                      'NativeLDrawMapRootConstructorFull.obj', 'NativeLDrawMapRootLifetimeFull.obj',
+                      'NativeLDrawMapOperationsFull.obj', 'NativeLDrawMapTagsFull.obj',
+                      'NativeLDrawStringCompareFull.obj', 'NativeLDrawParserParseFull.obj',
+                      'NativeLDrawEntityLifetimeFull.obj', 'NativeLDrawModelWriteFull.obj',
+                      'NativeLDrawPartWriteFull.obj', 'NativeLDrawPartShapeFull.obj',
+                      'NativeLDrawPartTransformFull.obj', 'NativeLDrawPartParentFull.obj',
+                      'NativeLDrawPartColorFull.obj', 'NativeContentReadFull.obj'] if NATIVE_DOC else []
 if NATIVE_DOC:
     native_doc_objects += ['NativeDocExtra%02d.obj' % index for index, _ in enumerate(extra_sources)]
     native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
