@@ -1,0 +1,1415 @@
+{
+  "class": "RBX::Geometry, RBX::Block, RBX::Ball, RBX::Contact, RBX::BallBallContact, RBX::BallBlockContact",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeWorldShapesLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeWorldShapesLayout.cpp"
+    ],
+    "block": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeWorldShapesBlock.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Block.cpp"
+    ],
+    "ball": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeWorldShapesBall.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Ball.cpp"
+    ],
+    "contact": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeWorldShapesContact.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/Contact.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_world_shapes.py": "9254dba2f7a6d8618cde95b032870a1f85f8a4a8d9589d34ac4b72d6948e4b04",
+    "rebuild/2008-06/tests/NativeWorldShapesLayout.cpp": "6cf7efd637777466498f584c142d9f421918bb499c8415de94396f6dbf4ab3e2",
+    "rebuild/2008-06/native-classes/Block.cpp": "9a6ebc17fd86686cf910c0d3b126d567294445e0d6f35ade5bc13726a05e9962",
+    "rebuild/2008-06/native-classes/Ball.cpp": "bfdf6b9e648418e3870973fab07e93ad6c2b83a072d86da0d8af1707ae0a82df",
+    "rebuild/2008-06/native-classes/Contact.cpp": "4c385f9108e71d4157fd9230667d354153e16de55ec6add0910fedf2b334a7f8",
+    "rebuild/2008-06/native-headers/v8world/Geometry2008.h": "8cce7fd5dca0aa4d30ae7b487b61fadcd4e4bb266c66727a407f7c433faae1b5",
+    "rebuild/2008-06/native-headers/v8world/Block2008.h": "85c2c7b29c0d2092248e15e5d528303aefd0705a56beb89e23348600555f1fc0",
+    "rebuild/2008-06/native-headers/v8world/Ball2008.h": "d12fc9abb8468f97a4fa1bea676d2fae0197e8910a23ae8655a9095b8407ae2d",
+    "rebuild/2008-06/native-headers/v8world/Contact2008.h": "e83b7eceafa9fb8e296008e497c1eca30dc66ecb612788d57aa72581f1939c07"
+  },
+  "objects": {
+    "NativeWorldShapesLayout.obj": "58a0adc0c415e233c3733630f78705470bad7afe65bb9e6f6b585cb3cd624a07",
+    "NativeWorldShapesBlock.obj": "ad58c5b5f3d45b456c63941413a35aa3caa0119fa66abcdc98e7c270e403ee38",
+    "NativeWorldShapesBall.obj": "f13cf2dcb0393e2042fe4599b1d91aa8663c355a0c34296577c6bfc4144d586d",
+    "NativeWorldShapesContact.obj": "6f9f6e3b8ea235eb7f053ca0a386c3da48936ad183a3d2605ba3c99d10818170"
+  },
+  "layout": {
+    "Geometry": "0x10: vptr, gridSize +0x4 (nullGeometry static 0097abd4)",
+    "Block": "0x18 (005e7d80): vertices +0x10, cornerRadius +0x14",
+    "Ball": "0x14 (005e7d80): realRadius +0x10",
+    "Contact": "0x34: Edge (0x20), lastContactStep +0x20, steppingIndex +0x24, jointK +0x28, elasticJointK +0x2c, kFriction +0x30 (ctor 00606c20)",
+    "BallBallContact / BallBlockContact": "0x38 (0060d770): connector +0x34",
+    "BlockBlockContact": "0x7c (0060d770): not declared (fields beyond the arrays at +0x34 / +0x40 not derived)"
+  },
+  "rows": {
+    "layout": [
+      {
+        "address": "005e2790",
+        "symbol": "?getGeometryType@Geometry@RBX@@UBE?AW4GeometryType@12@XZ",
+        "size": 6,
+        "target_size": 6,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e72a0",
+        "symbol": "?setGridSize@Geometry@RBX@@UAEXABVVector3@G3D@@@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e72c0",
+        "symbol": "?getRadius@Geometry@RBX@@UBEMXZ",
+        "size": 3,
+        "target_size": 3,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e72d0",
+        "symbol": "?getMoment@Geometry@RBX@@UBE?AVMatrix3@G3D@@M@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?zero@Matrix3@G3D@@SAABV12@XZ": "0x513dc0 (external)",
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e72f0",
+        "symbol": "?hitTest@Geometry@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@AA_N@Z",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e73b0",
+        "symbol": "??_GGeometry@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??_7Geometry@RBX@@6B@": "0x83f7c4 (vtable RTTI .?AVGeometry@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e7870",
+        "symbol": "?nullGeometry@Geometry@RBX@@SAPAV12@XZ",
+        "size": 68,
+        "target_size": 68,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??nullGeometry@Geometry@RBX@@SAPAV12@XZ@51": "0x97abe4 (local static)",
+          "?g@?1??nullGeometry@Geometry@RBX@@SAPAV23@XZ@4V23@A": "0x97abd4 (data)",
+          "??__Fg@?1??nullGeometry@Geometry@RBX@@SAPAV12@XZ@YAXXZ": "0x7ff9e0 (own row)",
+          "??_7Geometry@RBX@@6B@": "0x83f7c4 (vtable RTTI .?AVGeometry@RBX@@ offset 0x0)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e78c0",
+        "symbol": "?getCenterToCorner@Geometry@RBX@@UBE?AVVector3@G3D@@ABVMatrix3@4@@Z",
+        "size": 72,
+        "target_size": 72,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007ff9e0",
+        "symbol": "??__Fg@?1??nullGeometry@Geometry@RBX@@SAPAV12@XZ@YAXXZ",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?g@?1??nullGeometry@Geometry@RBX@@SAPAV23@XZ@4V23@A": "0x97abd4 (data)",
+          "??_7Geometry@RBX@@6B@": "0x83f7c4 (vtable RTTI .?AVGeometry@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "004e5b70",
+        "symbol": "?getRadius@Block@RBX@@UBEMXZ",
+        "size": 4,
+        "target_size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e7390",
+        "symbol": "?getMoment@Block@RBX@@UBE?AVMatrix3@G3D@@M@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?getMomentHollow@Block@RBX@@ABE?AVMatrix3@G3D@@M@Z": "0x6477b0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e73d0",
+        "symbol": "?getRadius@Ball@RBX@@UBEMXZ",
+        "size": 4,
+        "target_size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e73e0",
+        "symbol": "?getCenterToCorner@Ball@RBX@@UBE?AVVector3@G3D@@ABVMatrix3@4@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e7400",
+        "symbol": "?getMoment@Ball@RBX@@UBE?AVMatrix3@G3D@@M@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?getMomentSolid@Ball@RBX@@ABE?AVMatrix3@G3D@@M@Z": "0x649130 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060cae0",
+        "symbol": "??0BallBallContact@RBX@@QAE@PAVPrimitive@1@0@Z",
+        "size": 39,
+        "target_size": 39,
+        "exact": true,
+        "verified_targets": {
+          "??0Contact@RBX@@QAE@PAVPrimitive@1@0@Z": "0x606c20 (own row)",
+          "??_7BallBallContact@RBX@@6B@": "0x8436bc (vtable RTTI .?AVBallBallContact@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060cb90",
+        "symbol": "??0BallBlockContact@RBX@@QAE@PAVPrimitive@1@0@Z",
+        "size": 39,
+        "target_size": 39,
+        "exact": true,
+        "verified_targets": {
+          "??0Contact@RBX@@QAE@PAVPrimitive@1@0@Z": "0x606c20 (own row)",
+          "??_7BallBlockContact@RBX@@6B@": "0x8436e8 (vtable RTTI .?AVBallBlockContact@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060cb10",
+        "symbol": "?putInKernel@Contact@RBX@@EAEXPAVKernel@2@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z": "0x645830 (external (evidence name))",
+          "?onPrimitiveContactParametersChanged@Contact@RBX@@QAEXXZ": "0x607ad0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060cb30",
+        "symbol": "?removeFromKernel@Contact@RBX@@EAEXXZ",
+        "size": 18,
+        "target_size": 18,
+        "exact": true,
+        "verified_targets": {
+          "?removeFromKernel@IPipelined@RBX@@UAEXXZ": "0x645860 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060cb50",
+        "symbol": "?deleteAllConnectors@BallBallContact@RBX@@EAEXXZ",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {
+          "?deleteConnector@Contact@RBX@@IAEXAAPAVContactConnector@2@@Z": "0x606d10 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060cb60",
+        "symbol": "?numConnectors@BallBallContact@RBX@@EBEHXZ",
+        "size": 9,
+        "target_size": 9,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0060cbc0",
+        "symbol": "?getConnector@BallBallContact@RBX@@EAEPAVContactConnector@2@H@Z",
+        "size": 6,
+        "target_size": 6,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "block": [
+      {
+        "address": "00647760",
+        "symbol": "??RmyLess@RBX@@QBE_NABVVector3@G3D@@0@Z",
+        "size": 79,
+        "target_size": 79,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006477b0",
+        "symbol": "?getMomentHollow@Block@RBX@@ABE?AVMatrix3@G3D@@M@Z",
+        "size": 320,
+        "target_size": 320,
+        "exact": true,
+        "verified_targets": {
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "__real@3eaaaaab": "0x826e68 (constant 3eaaaaab)",
+          "?fromDiagonal@Math@RBX@@SA?AVMatrix3@G3D@@ABVVector3@4@@Z": "0x5ddbd0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006478f0",
+        "symbol": "?getGridVolume@Block@RBX@@UBEMXZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00647900",
+        "symbol": "?getEdgePoint@Block@RBX@@ABEPBVVector3@G3D@@ABVVector3int16@4@AAW4NormalId@2@@Z",
+        "size": 136,
+        "target_size": 136,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00647990",
+        "symbol": "?getPlanePoint@Block@RBX@@ABEPBVVector3@G3D@@ABVVector3int16@4@AAW4NormalId@2@@Z",
+        "size": 140,
+        "target_size": 140,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00647a20",
+        "symbol": "?getBallBlockInfo@Block@RBX@@QAE?AW4GeoPairType@2@HVVector3int16@G3D@@AAPBVVector3@5@AAW4NormalId@2@@Z",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "?getPlanePoint@Block@RBX@@ABEPBVVector3@G3D@@ABVVector3int16@4@AAW4NormalId@2@@Z": "0x647990 (own row)",
+          "?getEdgePoint@Block@RBX@@ABEPBVVector3@G3D@@ABVVector3int16@4@AAW4NormalId@2@@Z": "0x647900 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00647ab0",
+        "symbol": "?getBallInsideInfo@Block@RBX@@QAE?AW4GeoPairType@2@ABVVector3@G3D@@AAPBV45@AAW4NormalId@2@@Z",
+        "size": 216,
+        "target_size": 216,
+        "exact": true,
+        "verified_targets": {
+          "__real@7149f2ca": "0x84af88 (constant 7149f2ca)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00647b90",
+        "symbol": "?projectToFace@Block@RBX@@QAEXAAVVector3@G3D@@AAVVector3int16@4@AAH@Z",
+        "size": 209,
+        "target_size": 209,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00647c70",
+        "symbol": "?getProjectedVertex@Block@RBX@@QAE?AVVector2@G3D@@ABVVector3@4@W4NormalId@2@@Z",
+        "size": 156,
+        "target_size": 156,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": [
+          "$LN1",
+          "$LN15",
+          "$LN2",
+          "$LN3",
+          "$LN4",
+          "$LN5",
+          "$LN6"
+        ]
+      },
+      {
+        "address": "00647d10",
+        "symbol": "?getClosestEdge@Block@RBX@@QAEHABVMatrix3@G3D@@W4NormalId@2@AAVVector3@4@@Z",
+        "size": 179,
+        "target_size": 179,
+        "exact": true,
+        "verified_targets": {
+          "?getProjectedVertex@Block@RBX@@QAE?AVVector2@G3D@@ABVVector3@4@W4NormalId@2@@Z": "0x647c70 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00647dd0",
+        "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@PAU342@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00647df0",
+        "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z",
+        "size": 82,
+        "target_size": 82,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00647e50",
+        "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@PAU342@@Z",
+        "size": 28,
+        "target_size": 28,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00647e70",
+        "symbol": "??0BlockTemplate@RBX@@AAE@ABVVector3@G3D@@@Z",
+        "size": 197,
+        "target_size": 197,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf800000": "0x81c3b8 (constant bf800000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00647f40",
+        "symbol": "?hitTest@Block@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@AA_N@Z",
+        "size": 364,
+        "target_size": 364,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?ignore@CollisionDetection@G3D@@0VVector3@2@A": "0x97f6d8 (data)",
+          "?collisionLocationForMovingPointFixedAABox@CollisionDetection@G3D@@SA_NABVVector3@2@0ABVAABox@2@AAV32@AA_N2@Z": "0x7bb770 (external)",
+          "__real@447a0000": "0x819dcc (constant 447a0000)",
+          "?fromOriginAndDirection@Ray@G3D@@SA?AV12@ABVVector3@2@0@Z": "0x518830 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?hitTest@Block@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@AA_N@Z"
+        ]
+      },
+      {
+        "address": "006480b0",
+        "symbol": "?_Lbound@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABVVector3@G3D@@@Z",
+        "size": 103,
+        "target_size": 103,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00648120",
+        "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAEXXZ",
+        "size": 108,
+        "target_size": 108,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648190",
+        "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006481e0",
+        "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAEXXZ",
+        "size": 132,
+        "target_size": 132,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648270",
+        "symbol": "?getCenterToCorner@Block@RBX@@UBE?AVVector3@G3D@@ABVMatrix3@4@@Z",
+        "size": 327,
+        "target_size": 327,
+        "exact": true,
+        "verified_targets": {
+          "__real@40400000": "0x81e380 (constant 40400000)",
+          "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z": "0x476580 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006483c0",
+        "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@XZ",
+        "size": 55,
+        "target_size": 55,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648400",
+        "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@D@Z",
+        "size": 75,
+        "target_size": 75,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648450",
+        "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z",
+        "size": 53,
+        "target_size": 53,
+        "exact": true,
+        "verified_targets": {
+          "?_Erase@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z": "0x648450 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648490",
+        "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@@Z",
+        "size": 510,
+        "target_size": 510,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (literal 'map/set<T> too long')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVlength_error@std@@": "0x8d0cc0 (data)",
+          "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?_Buynode@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@D@Z": "0x648400 (own row)",
+          "?_Lrotate@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z": "0x648190 (own row)",
+          "?_Rrotate@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z": "0x647df0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@@Z"
+        ]
+      },
+      {
+        "address": "00648690",
+        "symbol": "?erase@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+        "size": 712,
+        "target_size": 712,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@": "0x80b270 (literal 'invalid map/set<T> iterator')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVout_of_range@std@@": "0x8d0c3c (data)",
+          "??_7out_of_range@std@@6B@": "0x80b128 (vtable RTTI .?AVout_of_range@std@@ offset 0x0)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAEXXZ": "0x648120 (own row)",
+          "?_Min@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@PAU342@@Z": "0x647dd0 (own row)",
+          "?_Max@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@PAU342@@Z": "0x647e50 (own row)",
+          "?_Lrotate@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z": "0x648190 (own row)",
+          "?_Rrotate@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z": "0x647df0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+        ]
+      },
+      {
+        "address": "00648960",
+        "symbol": "?insert@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@@Z",
+        "size": 291,
+        "target_size": 291,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Insert@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@@Z": "0x648490 (own row)",
+          "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAEXXZ": "0x6481e0 (own row)",
+          "??RmyLess@RBX@@QBE_NABVVector3@G3D@@0@Z": "0x647760 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648a90",
+        "symbol": "?erase@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+        "size": 220,
+        "target_size": 220,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Erase@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@@Z": "0x648450 (own row)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAEXXZ": "0x648120 (own row)",
+          "?erase@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x648690 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648b70",
+        "symbol": "?find@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@ABVVector3@G3D@@@Z",
+        "size": 126,
+        "target_size": 126,
+        "exact": true,
+        "verified_targets": {
+          "?_Lbound@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABVVector3@G3D@@@Z": "0x6480b0 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??RmyLess@RBX@@QBE_NABVVector3@G3D@@0@Z": "0x647760 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648bf0",
+        "symbol": "?insert@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@@Z",
+        "size": 544,
+        "target_size": 544,
+        "exact": true,
+        "verified_targets": {
+          "?_Insert@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@@Z": "0x648490 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??RmyLess@RBX@@QBE_NABVVector3@G3D@@0@Z": "0x647760 (own row)",
+          "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAEXXZ": "0x6481e0 (own row)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAEXXZ": "0x648120 (own row)",
+          "??8const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (external (evidence name))",
+          "?insert@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@@Z": "0x648960 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648e10",
+        "symbol": "??A?$map@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@@std@@QAEAAPAVBlockTemplate@RBX@@ABVVector3@G3D@@@Z",
+        "size": 167,
+        "target_size": 167,
+        "exact": true,
+        "verified_targets": {
+          "?_Lbound@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABVVector3@G3D@@@Z": "0x6480b0 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??RmyLess@RBX@@QBE_NABVVector3@G3D@@0@Z": "0x647760 (own row)",
+          "?insert@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@2@@Z": "0x648bf0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648ec0",
+        "symbol": "??1?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE@XZ",
+        "size": 112,
+        "target_size": 112,
+        "exact": true,
+        "verified_targets": {
+          "?erase@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x648a90 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??1?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00648f30",
+        "symbol": "?getVertices@BlockTemplate@RBX@@SAPBVVector3@G3D@@ABV34@@Z",
+        "size": 150,
+        "target_size": 150,
+        "exact": true,
+        "verified_targets": {
+          "?blockTemplates@BlockTemplate@RBX@@0VBlockTemplates@12@A": "0x97d5ec (data)",
+          "?find@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE?AViterator@12@ABVVector3@G3D@@@Z": "0x648b70 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0BlockTemplate@RBX@@AAE@ABVVector3@G3D@@@Z": "0x647e70 (own row)",
+          "??A?$map@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@@std@@QAEAAPAVBlockTemplate@RBX@@ABVVector3@G3D@@@Z": "0x648e10 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00648fd0",
+        "symbol": "?onSetSize@Block@RBX@@EAEXXZ",
+        "size": 87,
+        "target_size": 87,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf000000": "0x8282dc (constant bf000000)",
+          "?getVertices@BlockTemplate@RBX@@SAPBVVector3@G3D@@ABV34@@Z": "0x648f30 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00649030",
+        "symbol": "??0?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE@ABUmyLess@RBX@@ABV?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@1@@Z",
+        "size": 117,
+        "target_size": 117,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?_Buynode@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@XZ": "0x6483c0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE@ABUmyLess@RBX@@ABV?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@1@@Z"
+        ]
+      },
+      {
+        "address": "006490b0",
+        "symbol": "??1BlockTemplates@BlockTemplate@RBX@@QAE@XZ",
+        "size": 117,
+        "target_size": 117,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAEXXZ": "0x648120 (own row)",
+          "??1?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE@XZ": "0x648ec0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007f8c10",
+        "symbol": "??__E?blockTemplates@BlockTemplate@RBX@@0VBlockTemplates@12@A@@YAXXZ",
+        "size": 35,
+        "target_size": 35,
+        "exact": true,
+        "verified_targets": {
+          "?blockTemplates@BlockTemplate@RBX@@0VBlockTemplates@12@A": "0x97d5ec (data)",
+          "??0?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@QAE@ABUmyLess@RBX@@ABV?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@1@@Z": "0x649030 (own row)",
+          "??__F?blockTemplates@BlockTemplate@RBX@@0VBlockTemplates@12@A@@YAXXZ": "0x8010b0 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "008010b0",
+        "symbol": "??__F?blockTemplates@BlockTemplate@RBX@@0VBlockTemplates@12@A@@YAXXZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {
+          "?blockTemplates@BlockTemplate@RBX@@0VBlockTemplates@12@A": "0x97d5ec (data)",
+          "??1BlockTemplates@BlockTemplate@RBX@@QAE@XZ": "0x6490b0 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "ball": [
+      {
+        "address": "00649130",
+        "symbol": "?getMomentSolid@Ball@RBX@@ABE?AVMatrix3@G3D@@M@Z",
+        "size": 58,
+        "target_size": 58,
+        "exact": true,
+        "verified_targets": {
+          "__real@3ecccccd": "0x832a18 (constant 3ecccccd)",
+          "?fromDiagonal@Math@RBX@@SA?AVMatrix3@G3D@@ABVVector3@4@@Z": "0x5ddbd0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00649170",
+        "symbol": "?getGridVolume@Ball@RBX@@UBEMXZ",
+        "size": 22,
+        "target_size": 22,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "__real@40860a92": "0x828b8c (constant 40860a92)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00649190",
+        "symbol": "?onSetSize@Ball@RBX@@EAEXXZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006491a0",
+        "symbol": "?hitTest@Ball@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@AA_N@Z",
+        "size": 284,
+        "target_size": 284,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)",
+          "??_7Sphere@G3D@@6B@": "0x827404 (vtable RTTI .?AVSphere@G3D@@ offset 0x0)",
+          "??_B?1??inf@G3D@@YAABNXZ@51": "0x96f020 (local static)",
+          "__imp___Inf": "0x8024ac (msvcp90.dll!_Inf)",
+          "?i@?1??inf@G3D@@YAABNXZ@4NB": "0x96f018 (data)",
+          "?ignore@CollisionDetection@G3D@@0VVector3@2@A": "0x97f6d8 (data)",
+          "?collisionTimeForMovingPointFixedSphere@CollisionDetection@G3D@@SAMABVVector3@2@0ABVSphere@2@AAV32@2@Z": "0x7bb5a0 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?hitTest@Ball@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@AA_N@Z"
+        ]
+      }
+    ],
+    "contact": [
+      {
+        "address": "00606c20",
+        "symbol": "??0Contact@RBX@@QAE@PAVPrimitive@1@0@Z",
+        "size": 46,
+        "target_size": 46,
+        "exact": true,
+        "verified_targets": {
+          "??0Edge@RBX@@QAE@PAVPrimitive@1@0@Z": "0x659260 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00606d10",
+        "symbol": "?deleteConnector@Contact@RBX@@IAEXAAPAVContactConnector@2@@Z",
+        "size": 44,
+        "target_size": 44,
+        "exact": true,
+        "verified_targets": {
+          "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ": "0x645850 (external)",
+          "?removeConnector@Kernel@RBX@@QAEXPAVConnector@2@@Z": "0x5fb1f0 (external)"
+        },
+        "local_eh": []
+      }
+    ],
+    "layout_proof": [
+      {
+        "address": "005e7d80",
+        "symbol": "?nativeWorldShapesNewGeometry@@YAPAVGeometry@RBX@@W4GeometryType@12@@Z",
+        "size": 99,
+        "target_size": 99,
+        "exact": true,
+        "verified_targets": {
+          "?nullGeometry@Geometry@RBX@@SAPAV12@XZ": "0x5e7870 (own row)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7Block@RBX@@6B@": "0x83f7ec (vtable RTTI .?AVBlock@RBX@@ offset 0x0)",
+          "??_7Ball@RBX@@6B@": "0x83f814 (vtable RTTI .?AVBall@RBX@@ offset 0x0)"
+        },
+        "local_eh": [],
+        "counted": false,
+        "reason": "analog-named copy of Primitive::newGeometry 005e7d80: proves the Block 0x18 / Ball 0x14 allocation sizes and the inline constructors; not a recovered row"
+      }
+    ],
+    "not_exact": [
+      {
+        "address": "0060cb70",
+        "symbol": "??_GBallBallContact@RBX@@UAEPAXI@Z",
+        "size": 45,
+        "target_size": 31,
+        "exact": false,
+        "reason": "the donor IPipelined destructor (v8world/IPipelined.h, no native header) carries RBXASSERT(currentStage == NULL), which the /D_RELEASEASSERT profile compiles in; the original 0060cb70 only restores the vtable"
+      },
+      {
+        "address": "0060cbd0",
+        "symbol": "??_GBallBlockContact@RBX@@UAEPAXI@Z",
+        "size": 45,
+        "target_size": 31,
+        "exact": false,
+        "reason": "same as 0060cb70 (donor ~IPipelined assertion)"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "004e5b70",
+    "005e2790",
+    "005e72a0",
+    "005e72c0",
+    "005e72d0",
+    "005e72f0",
+    "005e7390",
+    "005e73b0",
+    "005e73d0",
+    "005e73e0",
+    "005e7400",
+    "005e7870",
+    "005e78c0",
+    "00606c20",
+    "00606d10",
+    "0060cae0",
+    "0060cb10",
+    "0060cb30",
+    "0060cb50",
+    "0060cb60",
+    "0060cb90",
+    "0060cbc0",
+    "00647760",
+    "006477b0",
+    "006478f0",
+    "00647900",
+    "00647990",
+    "00647a20",
+    "00647ab0",
+    "00647b90",
+    "00647c70",
+    "00647d10",
+    "00647dd0",
+    "00647df0",
+    "00647e50",
+    "00647e70",
+    "00647f40",
+    "006480b0",
+    "00648120",
+    "00648190",
+    "006481e0",
+    "00648270",
+    "006483c0",
+    "00648400",
+    "00648450",
+    "00648490",
+    "00648690",
+    "00648960",
+    "00648a90",
+    "00648b70",
+    "00648bf0",
+    "00648e10",
+    "00648ec0",
+    "00648f30",
+    "00648fd0",
+    "00649030",
+    "006490b0",
+    "00649130",
+    "00649170",
+    "00649190",
+    "006491a0",
+    "007f8c10",
+    "007ff9e0",
+    "008010b0"
+  ],
+  "vtables": {
+    "Geometry": [
+      {
+        "slot": 0,
+        "symbol": "?onSetSize@Geometry@RBX@@MAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "??_EGeometry@RBX@@UAEPAXI@Z",
+        "original": "005e73b0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 2,
+        "symbol": "?getGeometryType@Geometry@RBX@@UBE?AW4GeometryType@12@XZ",
+        "original": "005e2790",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?setGridSize@Geometry@RBX@@UAEXABVVector3@G3D@@@Z",
+        "original": "005e72a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getRadius@Geometry@RBX@@UBEMXZ",
+        "original": "005e72c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getCenterToCorner@Geometry@RBX@@UBE?AVVector3@G3D@@ABVMatrix3@4@@Z",
+        "original": "005e78c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMoment@Geometry@RBX@@UBE?AVMatrix3@G3D@@M@Z",
+        "original": "005e72d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?getGridVolume@Geometry@RBX@@UBEMXZ",
+        "original": "005e72c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?hitTest@Geometry@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@AA_N@Z",
+        "original": "005e72f0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "Block": [
+      {
+        "slot": 0,
+        "symbol": "?onSetSize@Block@RBX@@EAEXXZ",
+        "original": "00648fd0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "??_EBlock@RBX@@UAEPAXI@Z",
+        "original": "005e73b0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 2,
+        "symbol": "?getGeometryType@Block@RBX@@UBE?AW4GeometryType@Geometry@2@XZ",
+        "original": "0077d810",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?setGridSize@Geometry@RBX@@UAEXABVVector3@G3D@@@Z",
+        "original": "005e72a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getRadius@Block@RBX@@UBEMXZ",
+        "original": "004e5b70",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getCenterToCorner@Block@RBX@@UBE?AVVector3@G3D@@ABVMatrix3@4@@Z",
+        "original": "00648270",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMoment@Block@RBX@@UBE?AVMatrix3@G3D@@M@Z",
+        "original": "005e7390",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?getGridVolume@Block@RBX@@UBEMXZ",
+        "original": "006478f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?hitTest@Block@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@AA_N@Z",
+        "original": "00647f40",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "Ball": [
+      {
+        "slot": 0,
+        "symbol": "?onSetSize@Ball@RBX@@EAEXXZ",
+        "original": "00649190",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "??_EBall@RBX@@UAEPAXI@Z",
+        "original": "005e73b0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 2,
+        "symbol": "?getGeometryType@Ball@RBX@@UBE?AW4GeometryType@Geometry@2@XZ",
+        "original": "007286a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?setGridSize@Geometry@RBX@@UAEXABVVector3@G3D@@@Z",
+        "original": "005e72a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getRadius@Ball@RBX@@UBEMXZ",
+        "original": "005e73d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getCenterToCorner@Ball@RBX@@UBE?AVVector3@G3D@@ABVMatrix3@4@@Z",
+        "original": "005e73e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMoment@Ball@RBX@@UBE?AVMatrix3@G3D@@M@Z",
+        "original": "005e7400",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?getGridVolume@Ball@RBX@@UBEMXZ",
+        "original": "00649170",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?hitTest@Ball@RBX@@UAE_NABVRay@G3D@@AAVVector3@4@AA_N@Z",
+        "original": "006491a0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "BallBallContact": [
+      {
+        "slot": 0,
+        "symbol": "??_EBallBallContact@RBX@@UAEPAXI@Z",
+        "original": "0060cb70",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@Contact@RBX@@EAEXPAVKernel@2@@Z",
+        "original": "0060cb10",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@Contact@RBX@@EAEXXZ",
+        "original": "0060cb30",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Contact@RBX@@EBE?AW4EdgeType@Edge@2@XZ",
+        "original": "007286a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Edge@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "00659290",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?deleteAllConnectors@BallBallContact@RBX@@EAEXXZ",
+        "original": "0060cb50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?stepContact@BallBallContact@RBX@@EAE_NXZ",
+        "original": "00606f80",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?computeIsColliding@BallBallContact@RBX@@EAE_NM@Z",
+        "original": "00606e90",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?numConnectors@BallBallContact@RBX@@EBEHXZ",
+        "original": "0060cb60",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getConnector@BallBallContact@RBX@@EAEPAVContactConnector@2@H@Z",
+        "original": "0060cbc0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "BallBlockContact": [
+      {
+        "slot": 0,
+        "symbol": "??_EBallBlockContact@RBX@@UAEPAXI@Z",
+        "original": "0060cbd0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@Contact@RBX@@EAEXPAVKernel@2@@Z",
+        "original": "0060cb10",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@Contact@RBX@@EAEXXZ",
+        "original": "0060cb30",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Contact@RBX@@EBE?AW4EdgeType@Edge@2@XZ",
+        "original": "007286a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Edge@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "00659290",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?deleteAllConnectors@BallBlockContact@RBX@@EAEXXZ",
+        "original": "0060cb50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?stepContact@BallBlockContact@RBX@@EAE_NXZ",
+        "original": "00607150",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?computeIsColliding@BallBlockContact@RBX@@EAE_NM@Z",
+        "original": "00607bd0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?numConnectors@BallBlockContact@RBX@@EBEHXZ",
+        "original": "0060cb60",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getConnector@BallBlockContact@RBX@@EAEPAVContactConnector@2@H@Z",
+        "original": "0060cbc0",
+        "ok": true,
+        "how": "bound"
+      }
+    ]
+  },
+  "proposals": {
+    "v8world/Geometry.h, Block.h, Ball.h (original paths)": "promote Geometry2008.h / Block2008.h / Ball2008.h to the original include paths once the owners of the units that include Primitive.h / PartInstance.h have re-run their recorders against them (the declarations are ABI-identical to the donor ones: same 9 slots, same fields)",
+    "v8world/Contact.h (original path)": "promote Contact2008.h together with a native Edge / IPipelined header",
+    "v8world/IPipelined.h (new native header, owner: v8world core)": "virtual ~IPipelined() {} without the RBXASSERT(currentStage == NULL): the 2008 deleting destructors 0060cb70 / 0060cbd0 contain no assertion; putInKernel 00645830 / removeFromKernel 00645860 / getKernel 00645850 out of line"
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
