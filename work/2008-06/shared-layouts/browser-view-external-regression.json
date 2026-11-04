@@ -40,7 +40,7 @@
   ],
   "profile": "class unit: document-swap flags + /D_ATL_APARTMENT_THREADED (ATL object model CComSingleThreadModel, globals Multi; original spelling not proven) /P, CString operator PCXSTR marked noinline (original imports mfc90 #910; header unchanged), recompiled with /nologo /c /O2 /Ob2 /Oy /GF /GS- /EHsc /MD; layout, GUID and helper units: plain document-swap flags",
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_view_external.py": "2c75bce006be6f41e33e5484aca67682fcbd64ae505439adf344aa68ccc0c445",
+    "rebuild/2008-06/tests/record_native_browser_view_external.py": "1d6832cd1075920f17b7a65b7da92ec0d9abef8804a4fc9fe673186eb95bee8b",
     "rebuild/2008-06/native-classes/CBrowserViewExternal.cpp": "5e16cb7f18e6eba8d0419578a3c0e8e96b8b31eaf9d424b0d155573ae1ae5785",
     "rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp": "480f82db9a83e310c37fba6666815b7cd209569574ac3ae01bd336d3553b6ef1",
     "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp": "3576e9c32fb8dc284eb190cf9a3e1b348af8d68c5d30e58c8b0b512b68e010b3",
@@ -50,8 +50,8 @@
     "tools/libs/mfc-9.0-rtm/atlmfc/include/atlexcept.h": "5c986f954361ad977fe10de9276b46f00ee823daf2f8beb8868d6c07c69b555b"
   },
   "methods": {
-    "masked_exact_rows": 55,
-    "unique_addresses": 55,
+    "masked_exact_rows": 56,
+    "unique_addresses": 56,
     "baseline_rows_preserved": 32,
     "lost_pairs": [],
     "new_pairs": [
@@ -161,6 +161,13 @@
         "?Skip@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJK@Z",
         "0040fca0"
       ]
+    ],
+    "stack_followup_baseline_preserved": 55,
+    "stack_followup_new_pairs": [
+      [
+        "??$AtlAdd@K@ATL@@YAJPAKKK@Z",
+        "00402520"
+      ]
     ]
   },
   "direct_target_gaps": [
@@ -168,9 +175,7 @@
       "address": "004100a0",
       "symbol": "?EnumConnectionPoints@?$IConnectionPointContainerImpl@VCBrowserViewExternal@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z",
       "unproven_targets": {
-        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268",
-        "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": "0x402610",
-        "__alloca_probe": "0x6a1520"
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
       }
     },
     {
@@ -187,8 +192,6 @@
         "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268",
         "?m_libid@CAtlModule@ATL@@2U_GUID@@A": "0x96c26c",
         "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0x97f2a8",
-        "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": "0x402610",
-        "__alloca_probe_16": "0x6a1560",
         "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z": "0x401760",
         "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ": "0x420bb0",
         "__GUID_00020412_0000_0000_c000_000000000046": "0x80b130",
@@ -244,7 +247,7 @@
     }
   ],
   "canonical_proof": "work/2008-06/shared-layouts/browser-view-external-working.json",
-  "canonical_proof_sha256": "73e9a56babf7d4e993f1aa0a36d79f86745c47168658c875fd463afb4de60a91",
+  "canonical_proof_sha256": "2b3b4494b8ebbe8ea9da7cef341cd6613c7833db40204426f49b88c6a7b6941a",
   "dependent_proof": {
     "receipt": "work/2008-06/shared-layouts/browser-view-working.json",
     "sha256": "effda41441de71ccdc909f345f8b902577551928e05282de627ee072e88cf930",
@@ -578,5 +581,319 @@
     },
     "unproven_targets": "ATL::_pAtlModule 0096c268 (CComObject deleting destructors and CreateInstance); no stack-verify or alloca target in these bodies; ATL module state, CRT and operator-delete bodies are import identities only",
     "not_claimed": "class remains PARTIAL and inactive; library/static/linkage gaps retained; a byte-exact row with unproven targets is not full acceptance"
+  },
+  "full_stack_owner_pending_extent": {
+    "status": "FULL-SPAN MASKED MATCH, EXTENT NOT APPLIED",
+    "accepted_exact_function": false,
+    "counted_in_methods": false,
+    "bound_in_verified_targets": false,
+    "bounds_status": "pending server extent acceptance: the inventory/server extent is still 93; this receipt records proof only",
+    "server_extent_status": "not applied",
+    "server_credit_asserted": false,
+    "symbol": "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z",
+    "address": "00402610",
+    "recorded_size": 93,
+    "proposed_size": 156,
+    "proposed_end": "004026ac",
+    "inventory_rows_absorbed": [
+      {
+        "address": "0040266d",
+        "size": 20,
+        "role": "SEH filter ($LN7, object offset 0x5d)"
+      },
+      {
+        "address": "00402681",
+        "size": 43,
+        "role": "SEH handler ($LN8, object offset 0x71); also contains the normal-exit label 0040268f"
+      }
+    ],
+    "adjacent": {
+      "previous": "004025b0 (89 bytes, ends 00402609, 0xcc padding to 00402610)",
+      "next": "004026b0 after 0xcc padding"
+    },
+    "original_156_sha256": "66c7d78f7864a7e212705d63744cec4877eb2164d6116575eefa59f2c2543db8",
+    "original_93_prefix_sha256": "fc3f360d2ed4338718a22c79c693c69deb6745420c0b3c965f036d5865f8aaa8",
+    "object": {
+      "comdat_text_size": 156,
+      "comdat_text_sha256": "dfaacf88ea9a597c19642624f84eec7d5ddd49e611cfaa5994c4f76dccf26900",
+      "object_sha256": "3924282772d94c3aff365a77c3431c578ea61adaacea0868fa15dffddb666616",
+      "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+      "coff_compiler_id": 8671774,
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+      ],
+      "profile_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD"
+      ],
+      "source": "ATL9 atlalloc.h _AtlVerifyStackAvailable (header-instantiated, no application source)",
+      "source_header": "tools/libs/mfc-9.0-rtm/atlmfc/include/atlalloc.h",
+      "source_header_sha256": "eef97dbf1ab2379218c4b2017e9c7ade97335fbb6d73d7e0fdb671784e0b77b4"
+    },
+    "masked_differences": [],
+    "raw_difference_offsets": [
+      6,
+      7,
+      8,
+      11,
+      12,
+      13,
+      62,
+      63,
+      64,
+      65,
+      84,
+      85,
+      86,
+      123,
+      124,
+      125
+    ],
+    "raw_difference_note": "all raw differences lie inside the 5 relocation windows (first at +6 = __sehtable$ operand); the 93-byte body is not wrong",
+    "relocations": {
+      "6": {
+        "symbol": "__sehtable$?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z",
+        "form": "dir32",
+        "original_value": "008d0748"
+      },
+      "11": {
+        "symbol": "__except_handler3",
+        "form": "dir32",
+        "original_value": "006a1512"
+      },
+      "62": {
+        "symbol": "??$AtlAdd@K@ATL@@YAJPAKKK@Z",
+        "form": "rel32",
+        "original_value": "00402520"
+      },
+      "84": {
+        "symbol": "__alloca_probe_16",
+        "form": "rel32",
+        "original_value": "006a1560"
+      },
+      "123": {
+        "symbol": "__imp___resetstkoflw",
+        "form": "dir32",
+        "original_value": "00802894"
+      }
+    },
+    "relocation_identities": {
+      "+6": "__sehtable$ scope table at 008d0748",
+      "+11": "__except_handler3 operand 006a1512 = jmp [008028a8] = msvcr90.dll!_except_handler3",
+      "+62": "AtlAdd<unsigned long> row 00402520 (exact masked row in methods)",
+      "+84": "__alloca_probe_16 at 006a1560 (CRT archive member proof: crt_stack_probe_proof)",
+      "+123": "__imp___resetstkoflw = IAT 00802894 = msvcr90.dll!_resetstkoflw"
+    },
+    "seh_scope_table": {
+      "address": "008d0748",
+      "original_words": [
+        "ffffffff",
+        "0040266d",
+        "00402681"
+      ],
+      "emitted_words_after_label_resolution": [
+        "ffffffff",
+        "0040266d",
+        "00402681"
+      ],
+      "object_labels": {
+        "$LN7": "0x5d",
+        "$LN8": "0x71"
+      },
+      "filter": "0040266d: [ebp-0x14] -> EXCEPTION_POINTERS, compares ExceptionCode with 0xc00000fd (STATUS_STACK_OVERFLOW)",
+      "handler": "00402681: restores esp from [ebp-0x18], clears result, calls _resetstkoflw, falls into the normal-exit label"
+    },
+    "control_flow": {
+      "normal_exit_label": "0040268f (inside the handler row 00402681)",
+      "jumps_to_normal_exit": [
+        "0x40265e",
+        "0x40266b"
+      ],
+      "alloca_site": "00402663 call 006a1560 with eax = [ebp-0x20] (probe size), esp saved to [ebp-0x18] afterwards"
+    },
+    "calling_convention": {
+      "return": "bare c3 (cdecl, caller cleans) - NOT ret 4",
+      "decoration": "YA_NK (cdecl)",
+      "caller_cleanup": "18/18 call sites followed by add esp,4 across 15 caller functions"
+    },
+    "data_checks": {
+      "scope_table": "compared word by word with the original after resolving object labels",
+      "iat": "00802894 import by name",
+      "except_handler3_thunk": "006a1512 jmp [IAT] import by name"
+    },
+    "bounds_proof": {
+      "old": 93,
+      "new": 156,
+      "absorbs": [
+        "0040266d",
+        "00402681"
+      ],
+      "clean": true,
+      "proof": "tail"
+    },
+    "bounds_proof_note": "bounds_proof.tail_proof called directly: nothing recorded, bounds.json/functions.jsonl untouched, roc extents --apply not run",
+    "caller_status": "pending-boundary: callers see the recorded 93-byte extent. This is an extent gap, not a wrong-codegen finding."
+  },
+  "crt_stack_probe_proof": {
+    "status": "PASS",
+    "kind": "genuine compiler runtime archive members (recipe msvc-crt); no source, no assembler, no byte blob provider",
+    "compiler": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_build": 21022,
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "archives": {
+      "libcmt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcmt.lib",
+        "sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "libcpmt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcpmt.lib",
+        "sha256": "e310db1d24bbec63f3ff2c64408f425afc30acc506eb032672d54656e210f02a"
+      },
+      "msvcrt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib",
+        "sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      }
+    },
+    "members": {
+      "libcmt.lib!alloca16.obj": {
+        "original": "006a1560 (22) + 006a1576 (22), masked equal; both rel32 jumps resolve to 006a1520 = __chkstk",
+        "symbols": {
+          "__alloca_probe_16": "006a1560",
+          "__alloca_probe_8": "006a1576"
+        },
+        "relocations": "2 x rel32 __chkstk at +18, +40",
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\mt_obj\\alloca16.obj",
+        "member_sha256": "c89032c5cdb8787372d4a9ce40c763add796df898fbf4f5aa69c9e8e0224018f",
+        "text_size": 44,
+        "text_sha256": "e65cc318753fcf0886a28d10db3294eb09c6be98b57865a6b061e125a8366b92",
+        "archive_sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "libcmt.lib!chkstk.obj": {
+        "original": "006a1520, 43 bytes (byte equal; no relocations)",
+        "symbols": {
+          "__alloca_probe": "006a1520",
+          "__chkstk": "006a1520 (alias, same member offset 0)"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\mt_obj\\chkstk.obj",
+        "member_sha256": "1100a55337b2f7966d95fdf61789c2fb4d1dd7650eb0a6b613a08db6304e5bfb",
+        "text_size": 43,
+        "text_sha256": "f8675b4976f7b8efc0bd917aebab734d11ca90222d20bcd2a166ce9914ed2b6e",
+        "archive_sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "msvcrt.lib!alloca16.obj": {
+        "original": "006a1560 (22) + 006a1576 (22), masked equal; both rel32 jumps resolve to 006a1520 = __chkstk",
+        "symbols": {
+          "__alloca_probe_16": "006a1560",
+          "__alloca_probe_8": "006a1576"
+        },
+        "relocations": "2 x rel32 __chkstk at +18, +40",
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\dll_obj\\alloca16.obj",
+        "member_sha256": "851e03b55412fea641b39dcb24455aa6a9348943ea0be1c667ec630da56b2422",
+        "text_size": 44,
+        "text_sha256": "e65cc318753fcf0886a28d10db3294eb09c6be98b57865a6b061e125a8366b92",
+        "archive_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      },
+      "msvcrt.lib!chkstk.obj": {
+        "original": "006a1520, 43 bytes (byte equal; no relocations)",
+        "symbols": {
+          "__alloca_probe": "006a1520",
+          "__chkstk": "006a1520 (alias, same member offset 0)"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\dll_obj\\chkstk.obj",
+        "member_sha256": "03bbfd9b67e5e286fb177514dcd6caf41ede46ffc74e22f62b2ad351ff65c774",
+        "text_size": 43,
+        "text_sha256": "f8675b4976f7b8efc0bd917aebab734d11ca90222d20bcd2a166ce9914ed2b6e",
+        "archive_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      }
+    },
+    "archive_choice_note": "libcmt.lib (mt_obj) and msvcrt.lib (dll_obj) .text bytes are identical, so the bytes do not choose between them; the client imports msvcr90.dll (/MD), whose import library is msvcrt.lib",
+    "original_layout": {
+      "006a1520": "__alloca_probe/__chkstk (43 bytes)",
+      "006a154c, 006a1552": "msvcr90 import thunks (unrelated), 0xcc padding to 006a1560",
+      "006a1560": "__alloca_probe_16 (22)",
+      "006a1576": "__alloca_probe_8 (22)"
+    },
+    "abi": {
+      "convention": "special register intrinsic, not a C++ function: size in EAX on entry; the helper subtracts it from ESP (probing pages) and returns with ESP lowered",
+      "call_sites": {
+        "00402663": "mov eax,[ebp-0x20]; call 006a1560; mov [ebp-0x18],esp (owner 00402610)",
+        "00410168": "mov eax,4; call 006a1520 (EnumConnectionPoints 004100a0)"
+      }
+    },
+    "caller_note": "00404a80 (GetTI) calls 006a1560, not 006a1520; 006a1520 is called by 004100a0",
+    "scope": "runtime/library byte identity only; not a native C++ body row and not counted in methods"
+  },
+  "pending_extent_callers": [
+    {
+      "address": "004100a0",
+      "pending_extent_targets": {
+        "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": {
+          "address": "0x402610",
+          "recorded_size": 93,
+          "proposed_size": 156,
+          "status": "FULL-SPAN MASKED MATCH, EXTENT NOT APPLIED",
+          "proof": "full_stack_owner_pending_extent",
+          "accepted_exact_function": false
+        }
+      }
+    },
+    {
+      "address": "00404a80",
+      "pending_extent_targets": {
+        "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": {
+          "address": "0x402610",
+          "recorded_size": 93,
+          "proposed_size": 156,
+          "status": "FULL-SPAN MASKED MATCH, EXTENT NOT APPLIED",
+          "proof": "full_stack_owner_pending_extent",
+          "accepted_exact_function": false
+        }
+      }
+    }
+  ],
+  "stack_extent_proposal": {
+    "path": "work/2008-06/shared-layouts/browser-view-external-stack-extent.json",
+    "server_extent_status": "not applied",
+    "proposal": "local"
   }
 }
