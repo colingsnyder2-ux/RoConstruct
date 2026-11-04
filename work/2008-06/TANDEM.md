@@ -667,3 +667,9 @@ affected by anything on the P6 branch.
     getData is 005c4120.
   - Proposal: util/Object.h. Define Creatable<T>::Deleter::operator() (00405e30), which is inlined by sp_counted_impl_pd::dispose 0048ee50.
 
+
+- 2026-11-04 Claude (fork, lease RBX::NetworkSettings PhysicsService JointsService): native-headers/Network/NetworkSettings.h, v8datamodel/PhysicsService.h, v8datamodel/JointsService.h, plus their native-classes. Inactive. 145 distinct exact addresses (layout 35, joints 10, physics 13, network 87; receipt services-working.json). Not counted: 2 pending-build-only rows (PhysicsService onEvent AssemblyPhysicsOn/Off). JointsService.h shadows the donor header for DataModelInitialize.cpp and 2 trial units. Their 4 recorders gave identical results before and after.
+  - Proposal: v8world/World.h. Add `struct AssemblyPhysicsOn { Primitive* primitive; }` and `AssemblyPhysicsOff` (Listener RTTI; vtables 00826a24/00826a18). With them, 005e9110/005e9130 are exact.
+  - Proposal: a native v8datamodel/Workspace.h with world at +0x2e4, plus find<Workspace> 00490af0. This is needed by JointsService::onServiceProvider 005e5b50 and PhysicsService::onServiceProvider 005e8ec0.
+  - Proposal: v8datamodel/GlobalSettings.h. Move the GlobalSettingsItem ctor (004aa8a0), dtor (004a9d00) and static sing out of NetworkSettings.cpp into the shared header. This may also help CRenderSettings' ctor 00448120.
+  - Note: the 2008 boost shared_count(T*, Deleter) form (110 bytes) differs from donor boost 1.34.1 (131 bytes): 004ca3c0, 0049e620, 004ac710.
