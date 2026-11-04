@@ -915,6 +915,168 @@ def describe_add_term_func():
 
 add_term_func = check('AtlModuleAddTermFunc 004038f0 description', describe_add_term_func)
 
+
+ADD_TERM_ANALOG = '?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z'
+ADD_TERM_WRAPPER = ROOT / 'src/2008-06/004038f0.cpp'
+ADD_TERM_UNIT = ROOT / 'tools/libs/mfc-9.0-rtm/roc_unit_38a66487c88049f6.cpp'
+ADD_TERM_RELOCS = (6, 74, 115, 120, 142, 165)
+
+
+def prove_add_term_analog():
+    """004038f0: replay the EXISTING stored wrapper (typed explicit Lock/Unlock analog addTermDirect) under the explicit RTM 21022 compiler.
+
+    This is a typed codegen analog, NOT the authentic upstream AtlModuleAddTermFunc text and NOT the original declaration; the authentic
+    CComCritSecLock body stays in add_term_func above (not exact). No provider, no link acceptance, no new native row. The EH stub and the
+    imported runtime functions are identified by address and import identity only."""
+    from roc import setup
+
+    build = 21022
+    text = ADD_TERM_WRAPPER.read_text()
+    need('// roc-cl: 21022' in text and 'mfc-9.0-shared-rtm roc_unit_38a66487c88049f6.cpp' in text, 'wrapper is not the RTM 21022 stored analog')
+    analog_raw = match.compile_text('2008-06', text, build=build)
+    analog_obj = OUT / 'AtlTermAnalog21022.obj'
+    analog_obj.write_bytes(analog_raw)
+    asec, asym, adef, _ = match._coff_data_index(analog_raw)
+    ids = [value for name, value, _s, _k in asym.values() if name == '@comp.id']
+    need(len(ids) == 1 and ids[0] & 0xffff == build, ('COFF compiler identity', ids))
+    bodies = {n: (b, r) for n, b, r in match.coff_functions(analog_raw)}
+    need(ADD_TERM_ANALOG in bodies, 'analog symbol not emitted')
+    body, refs = bodies[ADD_TERM_ANALOG]
+    target, target_refs, _ = match.target('2008-06', '004038f0')
+    masked = set()
+    for off in set(refs) | set(target_refs):
+        masked.update(range(off, off + 4))
+    diffs = [i for i in range(min(len(body), len(target))) if i not in masked and body[i] != target[i]]
+    need(len(body) == len(target) == 191 and not diffs, ('analog bytes', len(body), len(target), diffs[:4]))
+    need(bool(match.exact_match(target, target_refs, body, refs)), 'match.exact_match refused the analog')
+    need(body[-3:] == b'\xc2\x0c\x00', 'not stdcall ret 12')
+    rows = native_bind.verify(original, analog_obj, [(ADD_TERM_ANALOG, 0x4038f0)], {})
+
+    start, secno = adef[ADD_TERM_ANALOG]
+    table = asec[secno]
+    code = analog_raw[table[4] + start:]
+    operands = {}
+    for i in range(table[7]):
+        off, idx, kind = struct.unpack_from('<IIH', analog_raw, table[5] + 10 * i)
+        off -= start
+        if not 0 <= off < len(body):
+            continue
+        if kind == 20:
+            value = (0x4038f0 + off + 4 + struct.unpack_from('<i', target, off)[0]) & 0xffffffff
+        else:
+            value = (struct.unpack_from('<I', target, off)[0] - struct.unpack_from('<i', code, off)[0]) & 0xffffffff
+        operands[off] = (asym[idx][0], value, asym[idx][1])
+    need(tuple(sorted(operands)) == ADD_TERM_RELOCS, ('relocation windows', sorted(operands)))
+    need(operands[6][0].startswith('__ehhandler$') and operands[6][1] == 0x7bcc50, operands[6])
+    need(original.imported(operands[74][1]) == ('mfc90.dll', '??2@YAPAXI@Z') and operands[74][1] == 0x6a0920, ('new', operands[74]))
+    need(original.imported(operands[115][1]) == ('mfc90.dll', '?Delete@CException@@QAEXXZ') and operands[115][1] == 0x6a0950, ('delete', operands[115]))
+    need(operands[120][0].startswith('$LN') and operands[120][1] == 0x4038f0 + 87 and operands[120][2] == 87, ('local continuation', operands[120]))
+    need(original.imports.get(operands[142][1]) == ('kernel32.dll', None, 'EnterCriticalSection') and operands[142][1] == 0x8022d4, operands[142])
+    need(original.imports.get(operands[165][1]) == ('kernel32.dll', None, 'LeaveCriticalSection') and operands[165][1] == 0x8021f4, operands[165])
+
+    # exception data: emitted funcinfo/handler tables against the original's, then the type, funclet and handler stub
+    base, image = match._image('2008-06')
+    at = lambda a, n: bytes(image[a - base:a - base + n])
+    word = lambda a: struct.unpack('<I', at(a, 4))[0]
+    eh, hh = '__ehfuncinfo$' + ADD_TERM_ANALOG, '__ehhandler$' + ADD_TERM_ANALOG
+    need(eh in adef and hh in adef, 'EH symbols missing')
+    xoff, xsec = adef[eh]
+    xs = asec[xsec]
+    xdata = analog_raw[xs[4]:xs[4] + xs[3]]
+    xrelocs = [struct.unpack_from('<IIH', analog_raw, xs[5] + 10 * k) for k in range(xs[7])]
+    xmask = set()
+    for off, _i, _k in xrelocs:
+        xmask.update(range(off, off + 4))
+    ostart = 0x8d09bc - xoff
+    original_x = at(ostart, len(xdata))
+    xdiff = [i for i in range(len(xdata)) if i not in xmask and xdata[i] != original_x[i]]
+    need(not xdiff and len(xrelocs) == 5, ('xdata', xdiff, len(xrelocs)))
+    need((ostart, xoff, len(xdata)) == (0x8d0988, 52, 88), 'EH section layout')
+    xbindings = {
+        4: ('??_R0PAVCException@@@8', 0x928604),
+        12: ('__catch$' + ADD_TERM_ANALOG + '$0', 0x40395f),
+        48: ('__catchsym$' + ADD_TERM_ANALOG + '$2', ostart),
+        60: ('__unwindtable$' + ADD_TERM_ANALOG, ostart + 16),
+        68: ('__tryblocktable$' + ADD_TERM_ANALOG, ostart + 32)}
+    need({o for o, _i, _k in xrelocs} == set(xbindings), 'EH relocation offsets')
+    for off, index, kind in xrelocs:
+        symbol, expected = xbindings[off]
+        need(kind == 6 and asym[index][0] == symbol, ('EH relocation identity', off, asym[index], kind))
+        addend = struct.unpack_from('<I', xdata, off)[0]
+        need(word(ostart + off) == expected + addend, ('EH relocation target', off))
+        if off == 12:
+            need(adef[symbol] == (111, secno), 'catch funclet COFF position')
+        elif off in (48, 60, 68):
+            need(adef[symbol] == (expected - ostart, xsec), ('EH local table COFF position', off))
+    need((word(ostart + 52), word(ostart + 56), word(ostart + 64)) == (0x19930522, 2, 1), 'funcinfo magic/max state/try count')
+    need((word(ostart + 60), word(ostart + 68), word(ostart + 48)) == (ostart + 16, ostart + 32, ostart), 'unwind/try/catch table links')
+    descriptor = word(ostart + 4)
+    catch_name = b'.PAVCException@@\0'
+    need(descriptor == 0x928604 and at(descriptor + 8, len(catch_name)) == catch_name, 'catch type')
+    tdpos, tdsec = adef['??_R0PAVCException@@@8']
+    td = asec[tdsec]
+    need(analog_raw[td[4] + tdpos + 8:td[4] + tdpos + 8 + len(catch_name)] == catch_name, 'emitted catch type name')
+    need(word(ostart + 12) == 0x4038f0 + 111, 'catch funclet')
+    stub_sec = asec[adef[hh][1]]
+    stub_relocs = sorted(struct.unpack_from('<IIH', analog_raw, stub_sec[5] + 10 * k)[0] for k in range(stub_sec[7]))
+    ostub = at(0x7bcc50, 10)
+    stub_offset = adef[hh][0]
+    stub = analog_raw[stub_sec[4] + stub_offset:stub_sec[4] + stub_offset + 10]
+    stub_records = [struct.unpack_from('<IIH', analog_raw, stub_sec[5] + 10 * k) for k in range(stub_sec[7])]
+    need(stub_records == [(1, stub_records[0][1], 6), (6, stub_records[1][1], 20)], 'handler relocation kinds')
+    need(asym[stub_records[0][1]][0] == eh and asym[stub_records[1][1]][0] == '___CxxFrameHandler3', 'handler relocation symbols')
+    need(stub_offset == 0 and stub == b'\xb8\0\0\0\0\xe9\0\0\0\0', 'emitted handler stub')
+    need(ostub[0] == 0xb8 and struct.unpack_from('<I', ostub, 1)[0] == 0x8d09bc and ostub[5] == 0xe9, ('handler stub', ostub.hex()))
+    thunk = (0x7bcc50 + 10 + struct.unpack_from('<i', ostub, 6)[0]) & 0xffffffff
+    need(at(thunk, 2) == b'\xff\x25' and original.imports.get(struct.unpack_from('<I', at(thunk + 2, 4))[0])
+         == ('msvcr90.dll', None, '__CxxFrameHandler3'), ('frame handler thunk', hex(thunk)))
+
+    # genuine ATL ABI the analog was compiled against
+    atlbase = ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include/atlbase.h'
+    abi = atlbase.read_text(errors='ignore')
+    need('m_pTermFuncs' in abi and '_ATL_TERMFUNC_ELEM' in abi and 'm_csStaticDataInitAndTypeInfo' in abi, 'atlbase.h ABI names')
+    inputs = [ADD_TERM_WRAPPER, ADD_TERM_UNIT, atlbase,
+              ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include/atlbase.inl',
+              ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include/afxwin.h']
+    return {
+        'status': 'PASS', 'kind': 'typed explicit Lock/Unlock codegen analog replay (source function addTermDirect); NOT authentic upstream AtlModuleAddTermFunc text, NOT the original declaration',
+        'provider_or_link_acceptance': False, 'native_row': False, 'counts_toward_methods': False,
+        'wrapper': 'src/2008-06/004038f0.cpp (existing stored wrapper, recipe mfc-9.0-shared-rtm, roc-cl 21022, /O2 /GS- /EHsc /MD)',
+        'compiler_build': build, 'compiler_path': str(setup.compilers()[build]), 'compiler_sha256': sha(setup.compilers()[build]), 'coff_compiler_id': hex(ids[0]),
+        'symbol': ADD_TERM_ANALOG, 'address': '004038f0', 'size': len(body), 'stdcall_ret': 12, 'non_relocation_differences': 0,
+        'emitted_text_sha256': hashlib.sha256(body).hexdigest(), 'original_sha256': hashlib.sha256(target).hexdigest(),
+        'relocation_operands': {'+%d' % o: {'symbol': operands[o][0], 'original_operand': '0x%x' % operands[o][1]} for o in sorted(operands)},
+        'operand_identity': {'+6': 'local EH handler stub 0x7bcc50 (identified, not a native row)',
+                             '+74': 'mfc90.dll !??2@YAPAXI@Z import thunk 0x6a0920 (import identity only)',
+                             '+115': 'mfc90.dll !CException::Delete import thunk 0x6a0950 (import identity only)',
+                             '+120': 'local continuation $LN offset 87 = 0x403947',
+                             '+142': 'kernel32!EnterCriticalSection IAT 0x8022d4', '+165': 'kernel32!LeaveCriticalSection IAT 0x8021f4'},
+        'inventory_relocation_offsets_omit': [74, 115], 'native_bind_rows': rows,
+        'eh': {'xdata_masked_equal_except_5_reloc_slots': True, 'all_five_xdata_relocations_resolved': True,
+               'handler_stub_masked_match_and_both_relocations_resolved': True,
+               'xdata_original_start': '0x%x' % ostart, 'funcinfo': '0x8d09bc magic 19930522 max_state 2 try_blocks 1',
+               'tables': 'catch 0x%x unwind 0x%x try 0x%x' % (ostart, ostart + 16, ostart + 32), 'catch_type': '0x928604 .PAVCException@@',
+               'catch_funclet': '0x40395f = start+111', 'handler_stub': '0x7bcc50 b8 funcinfo e9 -> 0x%x jmp [0x8028bc] msvcr90!__CxxFrameHandler3 '
+               '(identified by import identity only; stub and runtime implementation are not native rows)' % thunk, 'emitted_stub_relocations': stub_relocs},
+        'abi': 'genuine RTM atlbase.h _ATL_MODULE70 (m_pTermFuncs +8, m_csStaticDataInitAndTypeInfo +0xC) and 12-byte _ATL_TERMFUNC_ELEM; stdcall ret 0xc',
+        'distinct_evidence': 'the authentic CComCritSecLock body (add_term_func above) emits 191 bytes with ten non-relocation differences starting at 26 and stays unmatched; an addTermScoped variant (183 bytes) is also not exact',
+        'object': {'path': 'rebuild/2008-06/out/native-layouts/browser-view-external/AtlTermAnalog21022.obj', 'sha256': sha(analog_obj)},
+        'input_hashes': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in inputs}}
+
+
+add_term_analog = check('AtlModuleAddTermFunc 004038f0 typed analog proof', prove_add_term_analog)
+if add_term_analog:
+    for row in rows:
+        if row['address'] == '00403da0':
+            value = row.get('unproven_targets', {}).pop(ATL_ADD_TERM)
+            need(value == '0x4038f0', ('AddTermFunc callee', value))
+            row['verified_targets'][ATL_ADD_TERM] = value
+            row.setdefault('target_evidence', {})[ATL_ADD_TERM] = {
+                'proof': 'termination_helper_analog_proof',
+                'source_symbol': ADD_TERM_ANALOG,
+                'kind': 'typed explicit-lock codegen analog; original declaration and upstream body spelling not proven',
+                'provider_or_link_acceptance': False}
+
 # Runtime archive identity is proved separately from application C++ rows. A proved full owner whose inventory
 # extent is still stale remains pending; it is not bound as an accepted exact target.
 runtime_targets = {'__alloca_probe': (0x6a1520, crt_stack_probes, 'crt_stack_probe_proof: authentic archive bytes, entry aliases and jump targets verified'),
@@ -1022,13 +1184,12 @@ receipt = {
         'reuse_note': 'nine additional helper rows for this class; all 56 prior pairs are preserved separately in the regression receipt; no server gain claimed',
         'atl_module_add_term_func': add_term_func,
         'remaining_unproven_getti_targets': ['?_pAtlModule@ATL@@3PAVCAtlModule@1@A 0096c268', '?m_libid@CAtlModule@ATL@@2U_GUID@@A 0096c26c', '?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A 0097f2a8'],
-        'remaining_unproven_helper_targets': ['AtlModuleAddTermFunc 004038f0 (AddTermFunc 00403da0 calls it twice; emitted body not exact)',
-                                              'CRT __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001, __ArrayUnwind 006a15fd, and the member __sehtable$ scope tables'],
+        'remaining_unproven_helper_targets': ['CRT __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001, __ArrayUnwind 006a15fd, and the member __sehtable$ scope tables'],
         'provenance': {'class_object': 'RTM header tree (tools/libs/mfc-9.0-rtm) with compiler 21022',
                        'query_interface_library_replay': 'recipe mfc-9.0 source/header tree (tools/libs/mfc-9.0, hashes recorded as SP1-era input) with explicit RTM compiler 21022',
                        'note': 'compiler build and vendor header revision are separate provenance facts; the library input hashes are the vendor-unit hashes and are never replaced by class RTM header hashes'},
         'sdk_guid_proof': typeinfo_guids, 'not_claimed': 'unproven ATL module globals stay open; no always-zero/always-LoadRegTypeLib claim; status stays PARTIAL'},
-    'crt_eh_vector_proof': crt_eh_vector,
+    'crt_eh_vector_proof': crt_eh_vector, 'termination_helper_analog_proof': add_term_analog,
     'full_stack_owner_pending_extent': stack_owner, 'crt_stack_probe_proof': crt_stack_probes, 'asserted_targets': {k: '%08x' % v for k, v in ASSERTED.items()}, 'failures': failures, 'known_open_bodies': row_failures,
     'thread_model': {'macro': THREAD_MODEL, 'atlbase_h': '_ATL_APARTMENT_THREADED: CComObjectThreadModel=CComSingleThreadModel, CComGlobalsThreadModel=CComMultiThreadModel',
                      'original_proof': 'enumerator vtables 0080d790/0080d7f0 RTTI name CComSingleThreadModel; allocation 0x1c (default multi model emitted 0x38)',
@@ -1055,7 +1216,7 @@ receipt = {
         'GetApp_00410fe0': 'exact object row; ole32 CoCreateInstance, CString and AFX state-guard import identities verified; format string and typed GUID data verified; helper 00429330 body exact from WorkspaceSiteError.cpp. GUID_NULL data is verified; its further callees remain open as recorded in helper_rows; import identity does not claim an imported implementation body was reconstructed',
         'guid_definitions': 'IID_IBrowserViewExternal, LIBID_RobloxLib, CLSID_BrowserViewExternal now defined once in native-classes/CBrowserViewExternalGuids.cpp (separate unit: defined in the class unit they constant-fold InterfaceSupportsErrorInfo to 76 bytes vs 78). LIBID_RobloxLib is shared logically with CContent/CWorkspace headers (declared C++-linkage there): linkage identity not reconciled, owners not edited',
         'Enum_bodies': 'EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their 16 slot bodies (QI/AddRef/Release/Next/Skip/Reset/Clone/deleting destructor) and the four support bodies (CreateInstance x2, ~CComEnumImpl x2) are masked-exact rows: see enum_template_proof. Still open: _pAtlModule 0096c268 as a relocation operand (also in 004100a0/004104b0). _AtlVerifyStackAvailable 00402610: the full 156-byte owner matches (full_stack_owner_pending_extent) but the 93-byte extent is not accepted by the server, so it is NOT an accepted exact function and not a row. __alloca_probe 006a1520 (004100a0) and __alloca_probe_16 006a1560 (00402610, 00404a80) are proven as genuine CRT archive members (crt_stack_probe_proof), separate from native C++ rows',
-        'typeinfo_helpers': 'GetTI 00404a80 helper bodies 00401760, 00420bb0, 00403af0, 00402f00, 00403da0, 00402d30 (+ callees 00401020, 00402370, 00402fb0) are masked-exact rows from the existing object; SDK ITypeInfo2/ITypeInfo/IUnknown GUID data and CRT ??_L/??_M members verified. Still open: AtlModuleAddTermFunc 004038f0 (emitted body not exact), _pAtlModule, m_libid, _AtlBaseModule, CRT SEH/ArrayUnwind members (see typeinfo_helper_proof)',
+        'typeinfo_helpers': 'GetTI 00404a80 helper bodies 00401760, 00420bb0, 00403af0, 00402f00, 00403da0, 00402d30 (+ callees 00401020, 00402370, 00402fb0) are masked-exact rows from the existing object; SDK ITypeInfo2/ITypeInfo/IUnknown GUID data verified. CRT ??_L/??_M archive entry identities are proven, with full implementations pending. Callee004038f0 is body/target/EH-proven by the separate typed explicit-lock analog; the authentic RAII body remains non-exact. Still open: _pAtlModule, m_libid, _AtlBaseModule, CRT SEH/ArrayUnwind members (see typeinfo_helper_proof)',
         'constructor_destructor': 'standalone constructor/destructor bodies are inlined into the creator and the deleting destructor and are not rows',
         'stack_helper_extent': 'proposal only (local): shared-layouts/browser-view-external-stack-extent.json, server_extent_status not applied; inventory, bounds.json and scores untouched; callers of 00402610 remain pending-boundary (not wrong codegen)',
         'scope': 'source/object proof only; partial class (ATL module/stack/alloca/static targets open); no server credit, no selection, no build/runtime claim'}}

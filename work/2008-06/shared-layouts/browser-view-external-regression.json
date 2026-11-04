@@ -40,7 +40,7 @@
   ],
   "profile": "class unit: document-swap flags + /D_ATL_APARTMENT_THREADED (ATL object model CComSingleThreadModel, globals Multi; original spelling not proven) /P, CString operator PCXSTR marked noinline (original imports mfc90 #910; header unchanged), recompiled with /nologo /c /O2 /Ob2 /Oy /GF /GS- /EHsc /MD; layout, GUID and helper units: plain document-swap flags",
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_view_external.py": "c5a7ebdea2b8b7cf26b97d15e8013d8ad592002389f3eddb72bbb4d1de075f26",
+    "rebuild/2008-06/tests/record_native_browser_view_external.py": "3d5c0818f643ed2c09d1157121b2ba068f33968b6403cf0da8c2be405f5a4707",
     "rebuild/2008-06/native-classes/CBrowserViewExternal.cpp": "5e16cb7f18e6eba8d0419578a3c0e8e96b8b31eaf9d424b0d155573ae1ae5785",
     "rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp": "480f82db9a83e310c37fba6666815b7cd209569574ac3ae01bd336d3553b6ef1",
     "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp": "3576e9c32fb8dc284eb190cf9a3e1b348af8d68c5d30e58c8b0b512b68e010b3",
@@ -260,13 +260,6 @@
       "unproven_targets": {
         "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
       }
-    },
-    {
-      "address": "00403da0",
-      "symbol": "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z",
-      "unproven_targets": {
-        "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z": "0x4038f0"
-      }
     }
   ],
   "helper_rows": [
@@ -290,7 +283,7 @@
     }
   ],
   "canonical_proof": "work/2008-06/shared-layouts/browser-view-external-working.json",
-  "canonical_proof_sha256": "0a51d39b58822daa5c4c130c7a7bb562c93a11c0b9a99c069489979ee6f1140f",
+  "canonical_proof_sha256": "a75ebaf57d35b069697019646b06b9c05a4105f15bd368ea6e64bca5167cabaa",
   "dependent_proof": {
     "receipt": "work/2008-06/shared-layouts/browser-view-working.json",
     "sha256": "effda41441de71ccdc909f345f8b902577551928e05282de627ee072e88cf930",
@@ -659,7 +652,7 @@
     "object": {
       "comdat_text_size": 156,
       "comdat_text_sha256": "dfaacf88ea9a597c19642624f84eec7d5ddd49e611cfaa5994c4f76dccf26900",
-      "object_sha256": "e62543747d3c889c79de8744e09101ea979b550a557b6ad7a25b22a6ccf0528b",
+      "object_sha256": "617a449b2ae61460e5a821e9dff8ff90284c5a1b310f660b58aa7f5baa244a75",
       "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
       "coff_compiler_id": 8671774,
       "flags": [
@@ -1060,7 +1053,6 @@
       "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A 0097f2a8"
     ],
     "remaining_unproven_helper_targets": [
-      "AtlModuleAddTermFunc 004038f0 (AddTermFunc 00403da0 calls it twice; emitted body not exact)",
       "CRT __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001, __ArrayUnwind 006a15fd, and the member __sehtable$ scope tables"
     ],
     "provenance": {
@@ -1210,5 +1202,118 @@
     },
     "scope": "runtime/library byte identity only; not a native C++ row and not counted in methods. __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001 and __ArrayUnwind 006a15fd (jump targets of these members) and the members' __sehtable$ scope tables are relocation operands here and are NOT proven",
     "extent_note": "inventory extents (77 / 75 bytes) are stale prefixes of the 101 / 99 byte members; metadata not changed"
+  },
+  "termination_helper_analog_proof": {
+    "status": "PASS",
+    "kind": "typed explicit Lock/Unlock codegen analog replay (source function addTermDirect); NOT authentic upstream AtlModuleAddTermFunc text, NOT the original declaration",
+    "provider_or_link_acceptance": false,
+    "native_row": false,
+    "counts_toward_methods": false,
+    "wrapper": "src/2008-06/004038f0.cpp (existing stored wrapper, recipe mfc-9.0-shared-rtm, roc-cl 21022, /O2 /GS- /EHsc /MD)",
+    "compiler_build": 21022,
+    "compiler_path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "coff_compiler_id": "0x84521e",
+    "symbol": "?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+    "address": "004038f0",
+    "size": 191,
+    "stdcall_ret": 12,
+    "non_relocation_differences": 0,
+    "emitted_text_sha256": "a388902d76def3fc11a176dd707b2db1efd5231c2e3072eb52a8a4c0338592df",
+    "original_sha256": "0bbf2c6b5d0bfbfde22562696c9000531e55cab27b786f815c5f151da4a32f72",
+    "relocation_operands": {
+      "+6": {
+        "symbol": "__ehhandler$?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+        "original_operand": "0x7bcc50"
+      },
+      "+74": {
+        "symbol": "??2@YAPAXI@Z",
+        "original_operand": "0x6a0920"
+      },
+      "+115": {
+        "symbol": "?Delete@CException@@QAEXXZ",
+        "original_operand": "0x6a0950"
+      },
+      "+120": {
+        "symbol": "$LN18",
+        "original_operand": "0x403947"
+      },
+      "+142": {
+        "symbol": "__imp__EnterCriticalSection@4",
+        "original_operand": "0x8022d4"
+      },
+      "+165": {
+        "symbol": "__imp__LeaveCriticalSection@4",
+        "original_operand": "0x8021f4"
+      }
+    },
+    "operand_identity": {
+      "+6": "local EH handler stub 0x7bcc50 (identified, not a native row)",
+      "+74": "mfc90.dll !??2@YAPAXI@Z import thunk 0x6a0920 (import identity only)",
+      "+115": "mfc90.dll !CException::Delete import thunk 0x6a0950 (import identity only)",
+      "+120": "local continuation $LN offset 87 = 0x403947",
+      "+142": "kernel32!EnterCriticalSection IAT 0x8022d4",
+      "+165": "kernel32!LeaveCriticalSection IAT 0x8021f4"
+    },
+    "inventory_relocation_offsets_omit": [
+      74,
+      115
+    ],
+    "native_bind_rows": [
+      {
+        "address": "004038f0",
+        "symbol": "?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+        "size": 191,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+          "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ",
+          "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+          "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+        },
+        "local_eh": [
+          "$LN18",
+          "__ehhandler$?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z"
+        ]
+      }
+    ],
+    "eh": {
+      "xdata_masked_equal_except_5_reloc_slots": true,
+      "all_five_xdata_relocations_resolved": true,
+      "handler_stub_masked_match_and_both_relocations_resolved": true,
+      "xdata_original_start": "0x8d0988",
+      "funcinfo": "0x8d09bc magic 19930522 max_state 2 try_blocks 1",
+      "tables": "catch 0x8d0988 unwind 0x8d0998 try 0x8d09a8",
+      "catch_type": "0x928604 .PAVCException@@",
+      "catch_funclet": "0x40395f = start+111",
+      "handler_stub": "0x7bcc50 b8 funcinfo e9 -> 0x6a14c0 jmp [0x8028bc] msvcr90!__CxxFrameHandler3 (identified by import identity only; stub and runtime implementation are not native rows)",
+      "emitted_stub_relocations": [
+        1,
+        6
+      ]
+    },
+    "abi": "genuine RTM atlbase.h _ATL_MODULE70 (m_pTermFuncs +8, m_csStaticDataInitAndTypeInfo +0xC) and 12-byte _ATL_TERMFUNC_ELEM; stdcall ret 0xc",
+    "distinct_evidence": "the authentic CComCritSecLock body (add_term_func above) emits 191 bytes with ten non-relocation differences starting at 26 and stays unmatched; an addTermScoped variant (183 bytes) is also not exact",
+    "object": {
+      "path": "rebuild/2008-06/out/native-layouts/browser-view-external/AtlTermAnalog21022.obj",
+      "sha256": "bc70c9b9524b65e6abb8ccada2e30c857d89566641f5bbab4dd41172d2a4e5ed"
+    },
+    "input_hashes": {
+      "src/2008-06/004038f0.cpp": "1b5d7359e1cb68878aea90ee0c26e74705c7fb5597b4a3a4614d129772a4709f",
+      "tools/libs/mfc-9.0-rtm/roc_unit_38a66487c88049f6.cpp": "bb15ea4f3388ebcbc4527884c1a269d62e7b1b15dc2d20fba4900c0b35d7439a",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/atlbase.h": "dd7ad831c81fbce7bd4e7e6965a0512075d9be30cc27a1ccd2d620723229c8c5",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/atlbase.inl": "ff1a32e026bcfdf265a3d77c84b47047edf83e56191f4d6beb718df811d649ac",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/afxwin.h": "afb3f83fcfbb4d4a1f0ca7ff3c9a4b4a2d5f89f0c781da83ff33b4dd0ecbd909"
+    }
+  },
+  "termination_helper_followup": {
+    "baseline_pairs_and_sizes_preserved": 65,
+    "new_main_rows": 0,
+    "binding_upgraded": {
+      "caller": "00403da0",
+      "callee": "004038f0",
+      "evidence": "termination_helper_analog_proof"
+    },
+    "provider_or_link_acceptance": false
   }
 }
