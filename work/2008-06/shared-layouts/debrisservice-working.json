@@ -40,7 +40,7 @@
     "/D_XTPLIB_NOAUTOLINK",
     "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
   ],
-  "source_sha256": "8f0fc8b359cfdf35bc17efac40413fa4dd3c22646d8d76b10090f490968000e0",
+  "source_sha256": "638ff26b8cc3a4f3a97303e8cf1503255bdabb388c94a3f74d7b74016a0d8554",
   "header_sha256": "23af074963b94e961771e4cba0809955dceaec468e0dc597c1a907a1f775bc14",
   "layout": {
     "size": 344,
@@ -87,6 +87,48 @@
       },
       "local_eh": [
         "__ehhandler$??1DebrisService@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "0063b9d0",
+      "symbol": "?cleanup@DebrisService@RBX@@AAEXXZ",
+      "size": 253,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??D?$_Deque_const_iterator@V?$weak_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VInstance@RBX@@@boost@@@std@@$00@std@@QBEABV?$weak_ptr@VInstance@RBX@@@boost@@XZ": "0x63b400",
+        "?cleanup@@YAXV?$weak_ptr@VInstance@RBX@@@boost@@@Z": "0x63b5c0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0063c280",
+      "symbol": "?onServiceProvider@DebrisService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+      "size": 285,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??D?$_Deque_const_iterator@V?$weak_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VInstance@RBX@@@boost@@@std@@$00@std@@QBEABV?$weak_ptr@VInstance@RBX@@@boost@@XZ": "0x63b400",
+        "?cleanup@@YAXV?$weak_ptr@VInstance@RBX@@@boost@@@Z": "0x63b5c0",
+        "??$create@VTimerService@RBX@@@ServiceProvider@RBX@@QBEPAVTimerService@1@XZ": "0x492020"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0063b5c0",
+      "symbol": "?cleanup@@YAXV?$weak_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 228,
+      "exact": true,
+      "verified_targets": {
+        "?lock@?$weak_ptr@VInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VInstance@RBX@@@2@XZ": "0x5cab00",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620",
+        "?print@StandardOut@RBX@@QAEXW4MessageType@2@ABVexception@std@@@Z": "0x416e10",
+        "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660"
+      },
+      "local_eh": [
+        "$LN11",
+        "__ehhandler$?cleanup@@YAXV?$weak_ptr@VInstance@RBX@@@boost@@@Z"
       ]
     },
     {
@@ -188,6 +230,73 @@
       "verified_targets": {
         "?descriptor@?1??classDescriptor@?$Described@VDebrisService@RBX@@$1?sDebrisService@2@3PADAV?$FactoryProduct@VDebrisService@RBX@@VInstance@2@$1?sDebrisService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x978328",
         "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0063b400",
+      "symbol": "??D?$_Deque_const_iterator@V?$weak_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VInstance@RBX@@@boost@@@std@@$00@std@@QBEABV?$weak_ptr@VInstance@RBX@@@boost@@XZ",
+      "size": 133,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005cab00",
+      "symbol": "?lock@?$weak_ptr@VInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VInstance@RBX@@@2@XZ",
+      "size": 160,
+      "exact": true,
+      "verified_targets": {
+        "??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z": "0x411ad0"
+      },
+      "local_eh": [
+        "$LN10",
+        "__ehhandler$?lock@?$weak_ptr@VInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VInstance@RBX@@@2@XZ"
+      ]
+    },
+    {
+      "address": "00600660",
+      "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+      "size": 53,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00411ad0",
+      "symbol": "??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z",
+      "size": 104,
+      "exact": true,
+      "verified_targets": {
+        "?add_ref_lock@sp_counted_base@detail@boost@@QAE_NXZ": "0x411120",
+        "__imp_??0exception@std@@QAE@XZ": "msvcr90.dll!??0exception@std@@QAE@XZ",
+        "??_7bad_weak_ptr@boost@@6B@": "0x80dfa8 (RTTI .?AVbad_weak_ptr@boost@@, offset 0x0)",
+        "??$throw_exception@Vbad_weak_ptr@boost@@@boost@@YAXABVbad_weak_ptr@0@@Z": "0x4116c0"
+      },
+      "local_eh": [
+        "__ehhandler$??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z"
+      ]
+    },
+    {
+      "address": "00411120",
+      "symbol": "?add_ref_lock@sp_counted_base@detail@boost@@QAE_NXZ",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004116c0",
+      "symbol": "??$throw_exception@Vbad_weak_ptr@boost@@@boost@@YAXABVbad_weak_ptr@0@@Z",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0exception@std@@QAE@ABV01@@Z": "msvcr90.dll!??0exception@std@@QAE@ABV01@@Z",
+        "__TI2?AVbad_weak_ptr@boost@@": "0x8d2354",
+        "??_7bad_weak_ptr@boost@@6B@": "0x80dfa8 (RTTI .?AVbad_weak_ptr@boost@@, offset 0x0)",
+        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException"
       },
       "local_eh": []
     }

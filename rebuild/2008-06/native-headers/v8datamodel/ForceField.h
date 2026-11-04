@@ -2,7 +2,7 @@
 #include "v8tree/Instance.h"
 #include "util/IRenderable.h"
 namespace RBX {
-extern const char sForceField[];
+extern char sForceField[];
 // Allocation 005c1520 = 0x148; constructor 0062d6b0 proves members.
 class ForceField : public DescribedCreatable<ForceField, Instance, sForceField>, public IRenderable {
 public:

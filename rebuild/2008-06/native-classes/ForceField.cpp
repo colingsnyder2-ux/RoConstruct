@@ -1,7 +1,7 @@
 #include "v8datamodel/ForceField.h"
 #include "v8datamodel/Workspace.h"
 namespace RBX {
-const char sForceField[] = "ForceField";
+char sForceField[] = "ForceField";
 template<class C,class D,const char* N> FactoryProduct<C,D,N>::FactoryProduct():D() {}
 template<class C,class D,const char* N> const Name& FactoryProduct<C,D,N>::className() { return Name::declare<N>(); }
 template<class C,class D,const char* N> const Name& FactoryProduct<C,D,N>::getClassName() const { return className(); }

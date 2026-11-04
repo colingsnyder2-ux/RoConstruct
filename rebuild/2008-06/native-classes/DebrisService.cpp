@@ -1,4 +1,17 @@
 #include "v8datamodel/DebrisService.h"
+#include "util/standardout.h"
+
+// Donor helper; target 0063b5c0 (native-asm inspection 2026-11-04).
+static void cleanup(boost::weak_ptr<RBX::Instance> item)
+{
+    try {
+        boost::shared_ptr<RBX::Instance> i = item.lock();
+        if (i) i->setParent(NULL);
+    }
+    catch (std::exception& e) {
+        RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
+    }
+}
 namespace RBX {
 char sDebrisService[] = "Debris";
 template<> Reflection::ClassDescriptor& Reflection::Described<DebrisService, sDebrisService,
@@ -20,4 +33,23 @@ DescribedCreatable<C,D,N>::DescribedCreatable(A value):Reflection::Described<C,N
 template DescribedCreatable<DebrisService,Instance,sDebrisService>::DescribedCreatable(const char*);
 
 DebrisService::DebrisService():DescribedCreatable<DebrisService,Instance,sDebrisService>("Debris"),maxItems(300),timer(0) {}
+}
+
+namespace RBX {
+void DebrisService::cleanup()
+{
+    while ((int)queue.size() > maxItems) {
+        ::cleanup(queue.front());
+        queue.pop();
+    }
+}
+void DebrisService::onServiceProvider(const ServiceProvider*, const ServiceProvider* newProvider)
+{
+    while ((int)queue.size() > 0) {
+        ::cleanup(queue.front());
+        queue.pop();
+    }
+    // 0063c280 has no Instance::onServiceProvider call.
+    timer = ServiceProvider::create<TimerService>(newProvider);
+}
 }
