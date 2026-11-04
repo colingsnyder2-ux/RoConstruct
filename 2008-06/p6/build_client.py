@@ -1,6 +1,7 @@
 """Link out/p6/Roblox.exe: MFC client, RTM appmodul.cpp, original resources, and
 the player's engine libraries from this worktree's own player build."""
 import hashlib, json, os, re, shutil, subprocess, sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).parent
@@ -186,6 +187,7 @@ if NATIVE_DOC:
                         ('NativeToolVerbCheckedResizeFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp'),
                         ('NativeToolVerbCheckedAxisFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedAxis.cpp'),
                         ('NativeCameraFirstPersonFull.obj', ROOT / 'rebuild/2008-06/native-classes/CameraFirstPerson.cpp'),
+                        ('NativeCameraZoomExtentsActionFull.obj', ROOT / 'rebuild/2008-06/native-classes/CameraZoomExtentsAction.cpp'),
                         ('NativeBasicVerbConstructorsFull.obj', ROOT / 'rebuild/2008-06/native-classes/BasicVerbConstructors.cpp'),
                         ('NativeClearBackpackFull.obj', ROOT / 'rebuild/2008-06/native-classes/ClearBackpack.cpp'),
                         ('NativeClearStarterpackFull.obj', ROOT / 'rebuild/2008-06/native-classes/ClearStarterpack.cpp'),
@@ -362,6 +364,16 @@ if NATIVE_DOC:
                         ('NativePartInstanceResizeFull.obj', ROOT / 'rebuild/2008-06/native-classes/PartInstanceResize.cpp'),
                         ('NativeHandleRadiusFull.obj', ROOT / 'rebuild/2008-06/native-classes/HandleRadius.cpp'),
                         ('NativeCInsertObjectDialogCoreFull.obj', ROOT / 'rebuild/2008-06/native-classes/CInsertObjectDialogCore.cpp'),
+                        ('NativeCInsertObjectDialogActionFull.obj', ROOT / 'rebuild/2008-06/native-classes/CInsertObjectDialogAction.cpp'),
+                        ('NativeMetadataClassFull.obj', ROOT / 'rebuild/2008-06/native-classes/MetadataClass.cpp'),
+                        ('NativeMetadataClassesLookupFull.obj', ROOT / 'rebuild/2008-06/native-classes/MetadataClassesLookup.cpp'),
+                        ('NativeMetadataReflectionLookupFull.obj', ROOT / 'rebuild/2008-06/native-classes/MetadataReflectionLookup.cpp'),
+                        ('NativeMetadataReflectionSingletonFull.obj', ROOT / 'rebuild/2008-06/native-classes/MetadataReflectionSingleton.cpp'),
+                        ('NativeMetadataReflectionLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/MetadataReflectionLifetime.cpp'),
+                        ('NativeMetadataReflectionLoadFull.obj', ROOT / 'rebuild/2008-06/native-classes/MetadataReflectionLoad.cpp'),
+                        ('NativeMetadataClassNamesFull.obj', ROOT / 'rebuild/2008-06/native-classes/MetadataClassNames.cpp'),
+                        ('NativeDataModelClassNameFull.obj', ROOT / 'rebuild/2008-06/native-classes/DataModelClassName.cpp'),
+                        ('NativeAuthoringSettingsFull.obj', ROOT / 'rebuild/2008-06/native-classes/AuthoringSettings.cpp'),
                         ('NativeCClassImagesFull.obj', ROOT / 'rebuild/2008-06/native-classes/CClassImages.cpp'),
                         ('NativeNameCompareFull.obj', ROOT / 'rebuild/2008-06/native-classes/NameCompare.cpp'),
                         ('NativePhysicsServiceAllocationFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceAllocation.cpp'),
@@ -407,7 +419,8 @@ if NATIVE_DOC:
     # Opt-in: normal diagnostic builds stay fully fresh.
     # Cache shared across isolated probe directories. Artifacts are immutable
     # once their source/header/flag stamp matches.
-    for obj, source in doc_sources:
+    def compile_doc_source(job):
+        obj, source = job
         source_flags = doc_flags + (['/DNATIVE_FILE_SYSTEM_APPDATA_ONLY'] if obj == 'NativeFileSystemFull.obj' else [])
         pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig', errors='replace'), re.M)
         if pinned:
@@ -420,16 +433,24 @@ if NATIVE_DOC:
         if obj.startswith('NativeDocExtra'):
             cache_name += '-' + hashlib.sha256(str(source.resolve()).encode()).hexdigest()[:12]
         if restore_cached(cache_name, key, obj):
-            continue
+            return 0, ''
         code, text = rebuild.run(tc, 'cl', source_flags + ['/Fo' + obj, str(source)], out)
-        print(text[-2500:])
-        if code:
-            sys.exit(code)
-        store_cached(cache_name, key, obj)
+        if not code:
+            store_cached(cache_name, key, obj)
+        return code, text
+    # Each job owns its object/cache path; no debug/PCH files are shared.
+    assert len({obj for obj, _ in doc_sources}) == len(doc_sources)
+    jobs = max(1, min(3, int(os.environ.get('ROC_NATIVE_DOC_JOBS', '3'))))
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
+        for code, text in pool.map(compile_doc_source, doc_sources):
+            if text:
+                print(text[-2500:])
+            if code:
+                sys.exit(code)
 system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
-native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj', 'NativeStatsCommandsFull.obj', 'NativeToolVerbCoreFull.obj', 'NativeToolVerbCheckedSurfaceFull.obj', 'NativeToolVerbCheckedModelFull.obj', 'NativeToolVerbCheckedExistingFull.obj', 'NativeToolVerbCheckedBasicFull.obj', 'NativeToolVerbCheckedShootFull.obj', 'NativeToolVerbCheckedResizeFull.obj', 'NativeToolVerbCheckedAxisFull.obj', 'NativeCameraFirstPersonFull.obj', 'NativeBasicVerbConstructorsFull.obj', 'NativeClearBackpackFull.obj', 'NativeClearStarterpackFull.obj', 'NativeSelectionBackFull.obj', 'NativeJoinCommandFull.obj', 'NativeSelectionVerbConstructorsFull.obj', 'NativeSelectionVerbStatesFull.obj', 'NativeBoolPropertyVerbFull.obj', 'NativeDuplicateSelectionVerbFull.obj', 'NativeWeldSnapActionsFull.obj', 'NativeSurfaceVisitorsFull.obj', 'NativeMoveUpSelectionVerbFull.obj', 'NativeMoveDownSelectionVerbFull.obj', 'NativeUngroupOperationFull.obj', 'NativeUngroupSelectionVerbFull.obj', 'NativePartInstanceLockedFull.obj', 'NativeRunStateCommandsFull.obj', 'NativeGroupSelectionVerbFull.obj',
+native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj', 'NativeStatsCommandsFull.obj', 'NativeToolVerbCoreFull.obj', 'NativeToolVerbCheckedSurfaceFull.obj', 'NativeToolVerbCheckedModelFull.obj', 'NativeToolVerbCheckedExistingFull.obj', 'NativeToolVerbCheckedBasicFull.obj', 'NativeToolVerbCheckedShootFull.obj', 'NativeToolVerbCheckedResizeFull.obj', 'NativeToolVerbCheckedAxisFull.obj', 'NativeCameraFirstPersonFull.obj', 'NativeCameraZoomExtentsActionFull.obj', 'NativeBasicVerbConstructorsFull.obj', 'NativeClearBackpackFull.obj', 'NativeClearStarterpackFull.obj', 'NativeSelectionBackFull.obj', 'NativeJoinCommandFull.obj', 'NativeSelectionVerbConstructorsFull.obj', 'NativeSelectionVerbStatesFull.obj', 'NativeBoolPropertyVerbFull.obj', 'NativeDuplicateSelectionVerbFull.obj', 'NativeWeldSnapActionsFull.obj', 'NativeSurfaceVisitorsFull.obj', 'NativeMoveUpSelectionVerbFull.obj', 'NativeMoveDownSelectionVerbFull.obj', 'NativeUngroupOperationFull.obj', 'NativeUngroupSelectionVerbFull.obj', 'NativePartInstanceLockedFull.obj', 'NativeRunStateCommandsFull.obj', 'NativeGroupSelectionVerbFull.obj',
                       'NativeDocumentExceptionFull.obj', 'NativeSaveDialogFull.obj', 'NativeDocumentLoadFileFull.obj', 'NativeDocumentLoadFromStringFull.obj',
                       'NativeDocumentInsertModelFull.obj', 'NativeDocumentExecuteFull.obj', 'NativeDocumentLDrawFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeFileSystemFull.obj', 'NativeContentProviderFull.obj',
                       'NativeLDrawParserFull.obj',
@@ -509,7 +530,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeJointsServiceFindFull.obj',
                       'NativeSlingshotToolCoreFull.obj', 'NativeShootToolMethodsFull.obj', 'NativeShootToolShootFull.obj', 'NativeSlingshotToolLaunchFull.obj', 'NativeSlingshotBallisticFull.obj', 'NativeSlingshotToolProjectileFull.obj', 'NativeContentProviderCreateContextFull.obj', 'NativeContentIdAssetsFull.obj', 'NativeContentProviderLoadFull.obj',
                       'NativeResizeToolCoreFull.obj', 'NativeResizeToolMethodsFull.obj', 'NativeResizeToolMoveFull.obj', 'NativeResizeToolDragFull.obj', 'NativeResizeToolFindFull.obj', 'NativeResizeToolRenderFull.obj', 'NativeMathClosestRayFull.obj', 'NativeHandleHitTestFull.obj', 'NativePartInstanceResizeFull.obj', 'NativeHandleRadiusFull.obj',
-                      'NativeCInsertObjectDialogCoreFull.obj', 'NativeCClassImagesFull.obj', 'NativeNameCompareFull.obj',
+                      'NativeCInsertObjectDialogCoreFull.obj', 'NativeCInsertObjectDialogActionFull.obj', 'NativeMetadataClassFull.obj', 'NativeMetadataClassesLookupFull.obj', 'NativeMetadataReflectionLookupFull.obj', 'NativeMetadataReflectionSingletonFull.obj', 'NativeMetadataReflectionLifetimeFull.obj', 'NativeMetadataReflectionLoadFull.obj', 'NativeMetadataClassNamesFull.obj', 'NativeDataModelClassNameFull.obj', 'NativeAuthoringSettingsFull.obj', 'NativeCClassImagesFull.obj', 'NativeNameCompareFull.obj',
                       'NativePhysicsServiceAllocationFull.obj', 'NativePhysicsServiceLifetimeFull.obj', 'NativePhysicsServiceEventsFull.obj', 'NativePhysicsServiceSignalsFull.obj',
                       'NativeChangeHistoryLifetimeFull.obj', 'NativeChangeHistoryEventsFull.obj', 'NativeChangeHistoryFactoryFull.obj', 'NativeHistoryRecordLookupFull.obj', 'NativeHistoryItemStateFull.obj',
                       'NativeSurfaceToolHoverRenderFull.obj', 'NativeSurfaceToolMouseDownFull.obj',

@@ -58,7 +58,7 @@ void CInsertObjectDialog::DoDataExchange(CDataExchange* exchange)
         list.SetView(LV_VIEW_LIST);
         list.ModifyStyle(0, LVS_ALIGNLEFT);
         list.SetImageList(&images, LVSIL_SMALL);
-        addClasses(RBX::Reflection::ClassDescriptor::rootDescriptor());
+        addClasses(&RBX::Reflection::ClassDescriptor::rootDescriptor());
         list.SortItems(&CInsertObjectDialog::compareItems, 0);
     }
 }

@@ -104,6 +104,16 @@ public:
 				}
 			}
 		}
+    template<class Type> Type* findFirstChildOfType() const {
+        if (children) {
+            std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();
+            std::vector<boost::shared_ptr<Instance> >::const_iterator it = children->begin();
+            for (; it != end; ++it) {
+                if (Type* result = dynamic_cast<Type*>(it->get())) return result;
+            }
+        }
+        return NULL;
+    }
     template<class Function> void for_eachChild(Function func) const {
         if (children) {
             boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > values = children.read();
@@ -135,8 +145,10 @@ public:
     Instance* findFirstChildByName(const std::string&) const;
     Instance* findFirstChildByClassName(std::string) const; // 0046ae30; name provisional.
 private:
+    void readChild(const ::XmlElement*, IReferenceBinder&);
     void writeProperties(::XmlElement*) const;
 public:
+    void readChildren(const ::XmlElement*, IReferenceBinder&);
     void writeChildren(::XmlElement*);
     virtual XmlElement* write();
     virtual void onChildChanged(Instance*, const PropertyChanged&);

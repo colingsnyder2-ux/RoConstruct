@@ -1,10 +1,9 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 #include "util/UserInputBase.h"
 namespace RBX {
-int MovementKeys::any() const
+bool MovementKeys::any() const
 {
-    if (up || down || left || right || w || s || a || d || space) return 1;
-    return 0;
+    return up || down || left || right || w || s || a || d || space;
 }
 void UserInputBase::getMovementKeys(MovementKeys& keys) const
 {

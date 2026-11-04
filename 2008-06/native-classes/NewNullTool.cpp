@@ -85,4 +85,13 @@ void NewNullTool::render3dAdorn(Adorn* adorn)
         }
     }
 }
+template<> const Name& Named<MouseCommand, sNewNullTool>::name()
+{
+    static const Name& value = Name::declare(sNewNullTool, -1);
+    return value;
+}
+template<> const Name& Named<MouseCommand, sNewNullTool>::getName() const
+{
+    return Name::declare<sNewNullTool>();
+}
 }
