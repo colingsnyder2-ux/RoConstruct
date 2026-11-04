@@ -470,7 +470,9 @@ function miningDays(c) {
 
 function dailyGraph(days, integration = false, switcher = false) {
   if (!days.length) return "";
-  const width = Math.max(900, days.length * 28 + 96), step = (width - 96) / days.length;
+  const chartDays = integration ? days : days.filter((d, i) =>
+    !i || d.percent < 100 || days[i - 1].percent < 100);
+  const width = Math.max(900, chartDays.length * 28 + 96), step = (width - 96) / chartDays.length;
   const barWidth = Math.min(40, step - Math.min(6, step * 0.15));
   const x = i => 60 + i * step + (step - barWidth) / 2;
   const y = percent => 284 - percent * 2.4;
@@ -482,12 +484,12 @@ function dailyGraph(days, integration = false, switcher = false) {
   const count = n => n == null ? "—" : fmt(n);
   return `<div class="head"><h2><small>Daily progress</small>${integration ? "Integration" : "Mining"}</h2>
     <p>${fmt(last.matched)} / ${fmt(last.functions)} functions ${integration ? "integrated" : "matched"} · ${last.percent.toFixed(2)}% ${integration ? "of target bytes" : "complete"}.
-    One stack per day (US Eastern), toward 100%. Full history since ${days[0].day}.</p></div>
+    One stack per day (US Eastern), toward 100%.${integration ? "" : " Repeated completed days hidden from chart."} Full history since ${days[0].day}.</p></div>
     ${switcher ? sectionMode("daily", "Daily progress view") : ""}
-    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, days.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, inactive / draft native, other exact and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
+    <div class="panel mining-chart"><svg viewBox="0 0 ${width} 364" style="min-width:${Math.max(560, chartDays.length * 28 + 96)}px" role="img" aria-label="Daily stacked function counts: ${integration ? "integrated, inactive / draft native, other exact and remaining" : "original source, mined, partial and remaining"}, zero to one hundred percent">
       ${[0, 20, 40, 60, 80, 100].map(p => `<line x1="56" x2="${width - 32}" y1="${y(p)}" y2="${y(p)}" stroke="var(--line2)"/>
         <text x="46" y="${y(p) + 4}" text-anchor="end">${p}%</text>`).join("")}
-      ${days.map((d, i) => {
+      ${chartDays.map((d, i) => {
         const split = integration || d.source != null && d.mined != null;
         const segments = split ? series : [["matched", "Matched (source/mined split unavailable)", "#8a97a8"], series[2]];
         let bottom = 0;
@@ -500,7 +502,7 @@ function dailyGraph(days, integration = false, switcher = false) {
             return `<rect data-series="${key}" x="${x(i)}" y="${y(bottom)}" width="${barWidth}" height="${height * 2.4}" fill="${color}"><title>${d.day}: ${fmt(value)} ${label.toLowerCase()} / ${fmt(d.functions)} (${fraction.toFixed(2)}%${integration ? " of target bytes" : ""})${d.estimated && key !== "partial" ? " (estimated)" : ""}</title></rect>`;
           }).join("")}</g>`;
       }).join("")}
-      ${days.map((d, i) => `<text x="${x(i) + barWidth / 2}" y="306" transform="rotate(-40 ${x(i) + barWidth / 2} 306)" text-anchor="end">${d.day.slice(5).replace("-", "/")}${d.estimated ? "*" : ""}</text>`).join("")}
+      ${chartDays.map((d, i) => `<text x="${x(i) + barWidth / 2}" y="306" transform="rotate(-40 ${x(i) + barWidth / 2} 306)" text-anchor="end">${d.day.slice(5).replace("-", "/")}${d.estimated ? "*" : ""}</text>`).join("")}
       <text x="${width - 32}" y="354" text-anchor="end">${days[0].day.slice(0, 4)} · US Eastern</text>
     </svg><div class="legend">${series.map(([key, label, color]) => `<span><i style="background:${color}"></i>${label} · ${count(last[key])}</span>`).join("")}<span><i style="background:var(--panel2);border:1px solid var(--line2)"></i>Remaining · ${fmt(remaining(last))}</span></div></div>
     ${days.some(d => d.estimated) ? '<p class="note">* Source/mined split estimated from nearby days. Recorded matched and partial totals unchanged.</p>' : ""}
