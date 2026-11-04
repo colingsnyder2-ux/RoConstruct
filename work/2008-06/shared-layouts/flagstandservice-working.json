@@ -1,0 +1,178 @@
+{
+  "class_name": "RBX::FlagStandService",
+  "inactive": true,
+  "compiler": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+  ],
+  "source_sha256": "47af4ac9d45576003b42d0ee142bbce6e4e691f7454a9955e01e721ebca4ca14",
+  "header_sha256": "c04f93d82607615da057ba2d1ab0164237be86b4d400e64f7785396ced80ce9c",
+  "methods": [
+    {
+      "address": "0062c1c0",
+      "symbol": "??1FlagStandService@RBX@@UAE@XZ",
+      "size": 115,
+      "exact": true,
+      "verified_targets": {
+        "??_7FlagStandService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8461ec (RTTI .?AVFlagStandService@RBX@@, offset 0x0)",
+        "??_7FlagStandService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8461dc (RTTI .?AVFlagStandService@RBX@@, offset 0x10)",
+        "??_7FlagStandService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8461d4 (RTTI .?AVFlagStandService@RBX@@, offset 0x14)",
+        "??_7FlagStandService@RBX@@6BDebugable@1@@": "0x8461cc (RTTI .?AVFlagStandService@RBX@@, offset 0x20)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8461bc (RTTI .?AVFlagStandService@RBX@@, offset 0x24)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8461ac (RTTI .?AVFlagStandService@RBX@@, offset 0x44)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x84619c (RTTI .?AVFlagStandService@RBX@@, offset 0x64)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x84618c (RTTI .?AVFlagStandService@RBX@@, offset 0x84)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x84617c (RTTI .?AVFlagStandService@RBX@@, offset 0xa4)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x84616c (RTTI .?AVFlagStandService@RBX@@, offset 0xc4)",
+        "?_Tidy@?$list@PAVFlagStand@RBX@@V?$allocator@PAVFlagStand@RBX@@@std@@@std@@IAEXXZ": "0x682b40",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ": "0x62ba70"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0062bfc0",
+      "symbol": "?FindStandWithFlag@FlagStandService@RBX@@QAEPAVFlagStand@2@PAVFlag@2@@Z",
+      "size": 177,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?GetFlag@FlagStand@RBX@@QAEPAVFlag@2@XZ": "0x62b900"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0062ba70",
+      "symbol": "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x846104",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8460f8",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8460f0",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6BDebugable@1@@": "0x8460e8",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8460d8",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8460c8",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8460b8",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8460a8",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x846098",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x846088",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00682b40",
+      "symbol": "?_Tidy@?$list@PAVFlagStand@RBX@@V?$allocator@PAVFlagStand@RBX@@@std@@@std@@IAEXXZ",
+      "size": 72,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    }
+  ],
+  "vtable_proofs": {
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x846104",
+      "offset": 0,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x8460f8",
+      "offset": 16,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x8460f0",
+      "offset": 20,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6BDebugable@1@@": {
+      "address": "0x8460e8",
+      "offset": 32,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x8460d8",
+      "offset": 36,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x8460c8",
+      "offset": 68,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x8460b8",
+      "offset": 100,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x8460a8",
+      "offset": 132,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x846098",
+      "offset": 164,
+      "exact_rtti": true
+    },
+    "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x846088",
+      "offset": 196,
+      "exact_rtti": true
+    }
+  },
+  "blockers": [
+    "constructor and remaining methods pending",
+    "FlagStand::GetFlag call-site identity only; stand-in declaration has no layout proof",
+    "local EH metadata and transitive callee proofs remain separate",
+    "no provider selection, runtime gates or server credit"
+  ],
+  "scope": "inactive partial class; code/relocation checks only, no runtime or server credit",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "recorder_sha256": "3a16d628236dd7713ebdf020541de45ab8d399ff7a046e33cdc65d81a5ed0349",
+  "layout_sha256": "e06491ea6c72dcfdae68415dda5efc7fd29ec6419f5ef5a69c3717aa65c42efa",
+  "committed_header_check": {
+    "parent": "79369012568b7900d2a05f82e63717c25708dc98",
+    "result": "PASS",
+    "method": "Export HEAD native headers, add candidate header, replace live native-header include root; no staged or untracked header fallback."
+  },
+  "provenance": "coldek/RoConstruct 1a59760cda54724ba89baee1899084e4b0020a2d"
+}
