@@ -176,44 +176,38 @@ def link(slug, sha, path):
     return 'https://github.com/%s/blob/%s/%s' % (slug, sha[:10], path)
 
 
-FIELD_LIMIT = 1024     # Discord: characters per field value
-EMBED_LIMIT = 5800     # Discord: 6000 characters per embed, with headroom for title/footer
+LINKS_PER_MESSAGE = 8   # small messages: 8 links stay far under Discord's 4096-character description limit
+DESCRIPTION_LIMIT = 3900
 
 
 def build_payloads(new, cap=150):
-    """Integration Digest embeds, one field group per (repo, branch). Whole links only: a field or message
-    is closed before a line would cross Discord's limits, never cut mid-link."""
+    """One small Integration Digest message per chunk of LINKS_PER_MESSAGE files of one (kind, repo, branch).
+    Links go in the embed description (4096 limit) as whole lines; nothing is ever cut mid-link."""
     shown, extra = new[:cap], max(0, len(new) - cap)
     groups = {}
     for slug, branch, sha, path, kind in shown:
         groups.setdefault((kind != 'new', slug, branch, sha), []).append(path)
-    fields = []
+    bodies = []
     for (changed, slug, branch, sha), paths in sorted(groups.items()):
         title = '✏️ Changed native files' if changed else '\U0001F4C4 New native files'
-        name = ('%s · %s · %s' % (title, slug, branch))[:256]
-        value = ''
+        header = '**2008-06 Client**\n%s · `%s` · `%s`' % (title, slug, branch)
+        chunk = []
         for p in paths:
             line = '[%s](%s)' % (p.replace('rebuild/2008-06/', ''), link(slug, sha, p))
-            if value and len(value) + 1 + len(line) > FIELD_LIMIT:
-                fields.append({'name': name, 'value': value, 'inline': False})
-                value = ''
-            value = value + '\n' + line if value else line[:FIELD_LIMIT]
-        if value:
-            fields.append({'name': name, 'value': value, 'inline': False})
+            text = '\n'.join([header] + chunk + [line])
+            if chunk and (len(chunk) >= LINKS_PER_MESSAGE or len(text) > DESCRIPTION_LIMIT):
+                bodies.append('\n'.join([header] + chunk))
+                chunk = []
+            chunk.append(line)
+        if chunk:
+            bodies.append('\n'.join([header] + chunk))
     if extra:
-        fields.append({'name': '➕ More', 'value': '+%d more new or changed native files (see the branches)' % extra, 'inline': False})
-    messages, current, size = [], [], 0
-    for field in fields:
-        cost = len(field['name']) + len(field['value'])
-        if current and (size + cost > EMBED_LIMIT or len(current) >= MAX_FIELDS):
-            messages.append(current); current, size = [], 0
-        current.append(field); size += cost
-    if current:
-        messages.append(current)
+        bodies.append('**2008-06 Client**\n➕ +%d more new or changed native files (see the branches)' % extra)
+    total = len(bodies)
     return [{'allowed_mentions': {'parse': []}, 'embeds': [{
-        'title': '⛏️ RoConstruct Integration Digest', 'color': 0xA855F7, 'description': '**2008-06 Client**',
-        'footer': {'text': 'RoConstruct Integration'}, 'fields': group,
-        'timestamp': datetime.now(timezone.utc).isoformat()}]} for group in messages]
+        'title': '⛏️ RoConstruct Integration Digest', 'color': 0xA855F7, 'description': body,
+        'footer': {'text': 'RoConstruct Integration' + (' · %d/%d' % (i + 1, total) if total > 1 else '')},
+        'timestamp': datetime.now(timezone.utc).isoformat()}]} for i, body in enumerate(bodies)]
 
 
 def post_files(new, log=print):
