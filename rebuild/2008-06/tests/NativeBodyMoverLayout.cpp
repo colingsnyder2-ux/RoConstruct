@@ -9,6 +9,10 @@
 #include "v8datamodel/BodyMovers.h"
 #include "v8datamodel/Rocket.h"
 
+typedef char AncestorSize[sizeof(RBX::AncestorChanged) == 12 ? 1 : -1];
+typedef char AncestorOldParent[offsetof(RBX::AncestorChanged, oldParent) == 4 ? 1 : -1];
+typedef char AncestorNewParent[offsetof(RBX::AncestorChanged, newParent) == 8 ? 1 : -1];
+
 #define NATIVE_BASE(D, B) ((size_t)static_cast<B*>((D*)0x1000) - 0x1000)
 
 struct NativeBodyMoverLayout

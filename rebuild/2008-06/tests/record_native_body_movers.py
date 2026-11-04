@@ -95,6 +95,7 @@ for key, value in LAYOUT_VALUES.items():
     assert body == b'\xb8' + struct.pack('<I', value) + b'\xc3', (key, body.hex())
 
 original = nb.Original()
+assert nb.sha(original.path) == json.loads((ROOT / "clients/clients.json").read_text())["2008-06"]["sha256"]
 names = {int(k, 16): v.get('symbol', '') for k, v in json.loads((R / 'offline/evidence.json').read_text())['names'].items()}
 
 
@@ -119,7 +120,7 @@ EXTERNAL = {
     '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,               # getClassName 00630780..00630840, registerBodyMovers
     '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,
     '??1ClassDescriptor@Reflection@RBX@@UAE@XZ': 0x40abc0,
-    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
+    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
     '??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z': 0x595790,
     '??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z': 0x56bab0,
     '??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z': 0x56c650,
@@ -429,6 +430,7 @@ NOT_RECOVERED = {
 receipt = {
     'class': 'RBX::BodyMover, BodyGyro, BodyPosition, BodyVelocity, BodyAngularVelocity, BodyForce, BodyThrust, Rocket',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'unit_profile': UNIT,
+    'original_sha256': nb.sha(original.path),
     'flags': {'layout': layout_flags, 'movers': mov_flags, 'movers_pending': movp_flags, 'rocket': rkt_flags,
               'rocket_pending': rktp_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
@@ -456,8 +458,7 @@ receipt = {
         'native v8datamodel/Workspace.h (findWorkspace 005a3380, getWorldIfInWorkspace 005a3390) and Network/Players.h '
         '(clientIsPresent 00495e60): the donor headers fail with C2440 (&sName). Declaration-only overlays: '
         'tests/NativeBodyMoverPendingWorkspace.h, tests/NativeBodyMoverPendingPlayers.h.',
-        'v8tree/Instance.h: define struct AncestorChanged {Instance* child, oldParent, newParent;} (fourth local copy, '
-        'BodyMovers.cpp).',
+        'v8tree/Instance.h now owns AncestorChanged (three pointers, 12 bytes); consumers share its definition.',
         'native v8datamodel/PartInstance.h: Primitive embedded at +0x228 (BodyMover::onEvent 0062fae0 passes part+0x228 to '
         'World::ticklePrimitive(Primitive*, bool) 005e9410), not boost::scoped_ptr; needed for onEvent, getBody and every '
         'computeForce.',

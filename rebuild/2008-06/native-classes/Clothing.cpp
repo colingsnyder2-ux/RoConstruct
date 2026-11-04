@@ -7,13 +7,6 @@
 
 namespace RBX
 {
-	// Same event layout as native-classes/InstanceAncestorChanged.cpp (Instance.h only forward-declares it);
-	// onAncestorChanged 005d4c40 compares the first word with this.
-	struct AncestorChanged {
-		Instance* child;
-		Instance* oldParent;
-		Instance* newParent;
-	};
 
 	const char sShirt[] = "Shirt";
 	const char sPants[] = "Pants";

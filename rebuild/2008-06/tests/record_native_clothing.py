@@ -249,19 +249,16 @@ pending_rows = rows_for(pend_obj, PENDING_ROWS)
 for row in pending_rows:   # NATIVE_CLOTHING_PENDING bodies: exact only with generated header copies
     row['exact'] = 'pending-build-only'
 
-# ShirtGraphic destructor 005d5690 (80 bytes) and its scalar deleting destructor 005d56e0 share one
-# function-list extent (111 bytes); compare each body against its slice of the original.
+# ShirtGraphic destructor and deleting destructor now have independent recorded extents (80 and 31 bytes).
 raw = base_obj.read_bytes()
 sections, symbols, definitions, _ = match._coff_data_index(raw)
 funcs = {n: (b, r) for n, b, r in match.coff_functions(raw)}
-target, target_refs, _ = match.target('2008-06', '005d5690')
 split_rows = []
-for name, lo in (('??1ShirtGraphic@RBX@@UAE@XZ', 0), ('??_GShirtGraphic@RBX@@UAEPAXI@Z', 0x50)):
+for name, address in (('??1ShirtGraphic@RBX@@UAE@XZ', 0x5d5690), ('??_GShirtGraphic@RBX@@UAEPAXI@Z', 0x5d56e0)):
     body, refs = funcs[name]
-    piece = target[lo:lo + len(body)]
-    assert len(piece) == len(body) and match.exact_match(piece, [o - lo for o in target_refs if lo <= o < lo + len(body)], body, refs), name
-    split_rows.append(check_relocs(raw, sections, symbols, definitions, name, body, 0x5d5690 + lo, piece))
-assert 0x50 + len(funcs['??_GShirtGraphic@RBX@@UAEPAXI@Z'][0]) <= len(target) + 0x10
+    target, target_refs, _ = match.target('2008-06', '%08x' % address)
+    assert match.exact_match(target, target_refs, body, refs), name
+    split_rows.append(check_relocs(raw, sections, symbols, definitions, name, body, address, target))
 
 # Template helpers reached only through bindings: callDoDeclare / doDeclare / static-descriptor atexit
 # destructors / BoundPropGetSet and GetSetImpl bodies. Verify each body whose address the binder learned.
