@@ -1,0 +1,102 @@
+{
+  "class": "CBrowserFrameWnd",
+  "status": "inactive source/object proof; no selection, server credit or runtime gate",
+  "frame_receipt": "work/2008-06/shared-layouts/browser-frame-wnd-working.json",
+  "frame_receipt_sha256": "6f23aaf54b4dddfb1e82f49217936e96d41bfd660402ef3446d42dd724a622d6",
+  "frame_rows": 15,
+  "frame_unique_addresses": 12,
+  "frame_xtp_body_proofs": 7,
+  "dependent_class": "CBrowserView (with CIDEBrowserView and CPlayBrowserView)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "dependent_baseline_receipt": "work/2008-06/shared-layouts/browser-view-working.json",
+  "dependent_baseline_receipt_sha256": "94f1d0b76f54ada1aac62b436520d0874ae542808faf77e96b9ccb08095ec262",
+  "baseline_rows": 49,
+  "baseline_unique_addresses": 47,
+  "reproduced_rows": 49,
+  "reproduced_unique_addresses": 47,
+  "lost_symbol_address_pairs": [],
+  "added_symbol_address_pairs": [],
+  "dependent_source_hashes": {
+    "rebuild/2008-06/tests/record_native_browser_view.py": "2fa2b19ddf59f71e22a57d9f8519ee7012303b0ab84da8703a651ee67f8084f9",
+    "rebuild/2008-06/native-classes/CBrowserView.cpp": "f79a80c12ca31a96af7831946a9fd3c57863ea682faacdac7f09415b2972d7d1",
+    "rebuild/2008-06/native-headers/CBrowserView.h": "8ecc31b7a473741b06cf28b2de29d52a68497774d17e23b0bd4db62afa15de35",
+    "rebuild/2008-06/native-headers/CBrowserDoc.h": "647b343b3c599380501bda728b8f2b8483ccff4b5b9399ee746c7c8be1028622",
+    "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "ec21aba2f77d1459288340b84ea36dd88fd37a719d8339da0fedae42a697bfbc",
+    "rebuild/2008-06/native-headers/CBrowserFrameWnd.h": "8dff816b682aa945c46f38407706e34abf49f556a33b6bf15a4274e8cafb330b",
+    "rebuild/2008-06/tests/NativeBrowserViewLayout.cpp": "b21a1278bf1d704edc13e9585f98a880233b0b80db492f57227dafa7fc467c53"
+  },
+  "dependent_object_sha256": "a292eb211bbdf6b9d9dd315ded3b4fee03d060277dc5c6de17c299c611c74e5e",
+  "dependent_effective_driver": "work/browser-medium-check-20261103/run_view_full_eh.py",
+  "dependent_effective_driver_sha256": "16519d245deaf0a136314c2d563f8a8f9b6efaa38428e4afe795f84236f51549",
+  "driver_adaptations": [
+    "Remap owner include roots to this checkout; preserve compiler flags.",
+    "Initialize Original from the registered client after asserting its clients.json hash; inherit all target verification methods.",
+    "Redirect build outputs and receipt to scratch.",
+    "Replace obsolete 124-byte Buynode prefix assertion with full 145-byte code match including catch handler at 0040f25c; independently verify every relocation target. No function bounds changed."
+  ],
+  "dependent_result_receipt": "work/browser-medium-check-20261103/view.json",
+  "dependent_result_receipt_sha256": "a98f9507eaae50431cc481342339d9fbc04d0070daa7a8a7e44827b7a88dde5c",
+  "buynode_full_eh": {
+    "extent": 145,
+    "catch_merge": "0040f25c",
+    "proof": [
+      {
+        "address": "0040f1e0",
+        "symbol": "?_Buynode@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@PAU342@0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+        "size": 145,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+          "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+          "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException"
+        },
+        "local_eh": [
+          "__ehhandler$?_Buynode@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@PAU342@0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z"
+        ]
+      }
+    ]
+  },
+  "class_header_changed_since_checks": false,
+  "object_hash_note": "Fresh COFF file hashes can differ; symbol/code/data proofs and current source hashes were rechecked, rather than asserting object-file identity."
+}

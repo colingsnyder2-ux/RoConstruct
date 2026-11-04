@@ -42,9 +42,9 @@
   ],
   "original": "clients/2008-06/Roblox.exe",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "7f15c9c9847b32900febc59a57d2bca2f16a4a5ea4a9cfae9e80124ff8ea7180",
+  "object_sha256": "3d8a01ec255c71715637908224105130070307d26c6b59da899993416d156a8c",
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_frame_wnd.py": "bc64aec4e54be63f4e6c52c15cfeb811f0a8865137f376e02b795d454eaa0079",
+    "rebuild/2008-06/tests/record_native_browser_frame_wnd.py": "1626b0f7f53941c9599c329715875c9bc98ecdb76d86a020824339c813c13906",
     "rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp": "f7dd62857da29dafdbe4d4a320de9794fcbd6071b8bc3fac0fd14b7021c4eecb",
     "rebuild/2008-06/native-headers/CBrowserFrameWnd.h": "8dff816b682aa945c46f38407706e34abf49f556a33b6bf15a4274e8cafb330b",
     "rebuild/2008-06/tests/NativeBrowserFrameWndLayout.cpp": "8b5f477c7dd85dac7073ccfd339de4ea59cbc39637e5680d4cd01198fd2ce80d"
@@ -57,10 +57,69 @@
     "006e1930": "?GetThisClass@CXTPFrameWnd@@SGPAUCRuntimeClass@@XZ: XTP recipe body exact",
     "006e1960": "??0CXTPFrameWnd@@QAE@XZ: XTP recipe body exact",
     "006a67c0": "?GetThisClass@CXTPEdit@@SGPAUCRuntimeClass@@XZ: XTP recipe body exact",
-    "006a4ae0": "?PreTranslateFrameMessage@CXTPCommandBars@@QAEHPAUtagMSG@@@Z: bound by call site only",
+    "006a4ae0": "?PreTranslateFrameMessage@CXTPCommandBars@@QAEHPAUtagMSG@@@Z: XTP recipe body exact",
     "006a4d30": "?OnFrameWndMsg@CXTPCommandBars@@QAEHIIJPAJ@Z: XTP recipe body exact",
     "006a2940": "?GetShortcutManager@CXTPCommandBars@@QBEPAVCXTPShortcutManager@@XZ: XTP recipe body exact",
     "006a3a10": "?OnSetPreviewMode@CXTPCommandBars@@QAEXH@Z: XTP recipe body exact"
+  },
+  "xtp_inputs": {
+    "CommandBars/XTPFrameWnd.cpp": {
+      "source_sha256": "8430fb21b48a7a387a4a18db85b0e3d57c86f88a1733bfde47eb224034c6756a",
+      "object_sha256": "5e56b6b574394f7c9334810f543889dd097f951aa67f9fb648cc7cce6e9d9720",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/MD",
+        "/GS",
+        "/EHsc",
+        "/Ob1",
+        "/D_AFXDLL",
+        "/D_XTP_STATICLINK",
+        "/D_DLL",
+        "/D_WIN32_WINNT=0x0500",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+      ]
+    },
+    "CommandBars/XTPCommandBars.cpp": {
+      "source_sha256": "60abf7bc57696e0e2d573d302ad25ec59e5d1098fd6b36ed532f8110ff36358a",
+      "object_sha256": "fa69363b63ca2fad199f0ff96408c25bb705ee3d81cf014a6a41230006c1b2b5",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/MD",
+        "/GS",
+        "/EHsc",
+        "/Ob1",
+        "/D_AFXDLL",
+        "/D_XTP_STATICLINK",
+        "/D_DLL",
+        "/D_WIN32_WINNT=0x0500",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+      ]
+    },
+    "CommandBars/XTPControlComboBox.cpp": {
+      "source_sha256": "19c01ab3d4b711bb4f9a17978b7fdcd31e6bfeec3a945506288a8d0236f13e16",
+      "object_sha256": "28297bcbecc43f109e4a7e994838400223bb3ad3d380210c21f3e6f3c6578661",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/MD",
+        "/GS",
+        "/EHsc",
+        "/Ob1",
+        "/D_AFXDLL",
+        "/D_XTP_STATICLINK",
+        "/D_DLL",
+        "/D_WIN32_WINNT=0x0500",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+      ]
+    }
   },
   "methods": [
     {

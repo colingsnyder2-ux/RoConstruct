@@ -6,7 +6,8 @@ C:\\Users\\colin paths, remapped here) plus the XTP 11.2.2 headers (/D_XTP_STATI
 The original is the registered client clients/2008-06/Roblox.exe, checked against clients/clients.json (the pinned
 work/2008-06/original-p4-reference/Roblox.exe copy is not present in every checkout).
 XTP call targets are proven by compiling the XTP 11.2.2 library units (recipe xtp-11.2.2-shared-mfc: /O2 /MD /GS /EHsc /Ob1)
-and matching their bodies at the bound address.
+with _WIN32_WINNT=0x0500 and matching their bodies at the bound address. The target's WM_KEYLAST is 0x108; the SDK
+changes it to 0x109 at _WIN32_WINNT >= 0x0501. This is a compatible profile, not proof of the original define.
 Writes work/2008-06/shared-layouts/browser-frame-wnd-working.json.
 """
 import hashlib
@@ -77,16 +78,20 @@ obj = compile_one(SOURCE, OUT / 'CBrowserFrameWnd.obj')
 
 # XTP library bodies for the out-of-line XTP calls.
 XTP_SRC = ROOT / 'tools/libs/xtp-11.2.2/Source'
+XTP_BODY_FLAGS = ['/nologo', '/c', '/O2', '/MD', '/GS', '/EHsc', '/Ob1', '/D_AFXDLL', '/D_XTP_STATICLINK',
+                  '/D_DLL', '/D_WIN32_WINNT=0x0500', '/I' + str(XTP_SRC),
+                  '/I' + str(ROOT / 'tools/libs/mfc-9.0/atlmfc/include')]
 xtp_bodies = {}
+xtp_inputs = {}
 for rel in ('CommandBars/XTPFrameWnd.cpp', 'CommandBars/XTPCommandBars.cpp', 'CommandBars/XTPControlComboBox.cpp'):
     o = OUT / ('xtp_' + Path(rel).stem + '.obj')
-    base = ['/nologo', '/c', '/O2', '/MD', '/GS', '/EHsc', '/Ob1', '/D_AFXDLL', '/D_XTP_STATICLINK', '/D_DLL',
-            '/I' + str(XTP_SRC), '/I' + str(ROOT / 'tools/libs/mfc-9.0/atlmfc/include')]
+    base = list(XTP_BODY_FLAGS)
     code, log = rebuild.run(tool, 'cl', base + ['/Fo' + str(o), str(XTP_SRC / rel)], OUT)
     if code:  # recipe xtp-11.2.2-shared-mfc-internals: MFC private declarations
-        code, log = rebuild.run(tool, 'cl', base + ['/I' + str(ROOT / 'tools/libs/mfc-9.0/atlmfc/src/mfc'),
-                                                    '/FIXTToolkitPro.h', '/FIafximpl.h', '/Fo' + str(o), str(XTP_SRC / rel)], OUT)
+        base += ['/I' + str(ROOT / 'tools/libs/mfc-9.0/atlmfc/src/mfc'), '/FIXTToolkitPro.h', '/FIafximpl.h']
+        code, log = rebuild.run(tool, 'cl', base + ['/Fo' + str(o), str(XTP_SRC / rel)], OUT)
     assert code == 0, (rel, log[-2000:])
+    xtp_inputs[rel] = {'source_sha256': sha(XTP_SRC / rel), 'object_sha256': sha(o), 'flags': base}
     for n, b, r in match.coff_functions(o.read_bytes()):
         xtp_bodies.setdefault(n, (b, r))
 
@@ -104,6 +109,7 @@ for symbol, address in XTP_TARGETS.items():
     t, tr, _ = match.target('2008-06', '%08x' % address)
     hit = xtp_bodies.get(symbol)
     xtp_proof[symbol] = 'XTP recipe body exact' if hit and match.exact_match(t, tr, hit[0], hit[1]) else 'bound by call site only'
+assert all(proof == 'XTP recipe body exact' for proof in xtp_proof.values()), xtp_proof
 
 C = 'CBrowserFrameWnd'
 SITE = '?$CXTPCommandBarsSiteBase@VCFrameWnd@@'
@@ -228,6 +234,7 @@ RECEIPT.write_text(json.dumps({
                          'releases the site-base pointer at +0xe8',
                'layout_test': 'tests/NativeBrowserFrameWndLayout.cpp compiled into ' + layout_obj.name},
     'xtp_targets': {'%08x' % XTP_TARGETS[s]: '%s: %s' % (s, xtp_proof[s]) for s in XTP_TARGETS},
+    'xtp_inputs': xtp_inputs,
     'methods': rows, 'vtable_00_81225c': vtable,
     'runtime_class': {'address': '00811e90', 'name': C, 'size': '0xec', 'create_object': '00433280', 'base_getter': '00432fb0'},
     'message_map': {'address': '008121f0', 'entries': 'WM_DESTROY -> CFrameWnd::OnDestroy, WM_CREATE -> 00433130, '
