@@ -2,7 +2,7 @@
 #include "v8tree/Instance.h"
 #include "util/IRenderable.h"
 namespace RBX {
-extern const char sClickDetector[];
+extern char sClickDetector[];
 // First draft: 005c0b7f allocation 0x14c; 006297e0 constructor.
 class ClickDetector : public DescribedCreatable<ClickDetector, Instance, sClickDetector>, public IRenderable {
 public:

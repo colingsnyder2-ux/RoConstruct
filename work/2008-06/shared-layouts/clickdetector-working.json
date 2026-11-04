@@ -40,8 +40,8 @@
     "/D_XTPLIB_NOAUTOLINK",
     "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
   ],
-  "source_sha256": "95887e96a60626c3c752fe7f8f1dba7a9780196a7864d05ac35b681a31b39e3a",
-  "header_sha256": "2dfa697deae81fe8853c6785dfe4644101d19ab1c5a0115edc9d7e45533e9f48",
+  "source_sha256": "b230436c721f063e5755e85bd3c989a7658c1611227dc785ab5c57338969cb8a",
+  "header_sha256": "6dbbbf5c6420fb6f785c16ad8802823be41b591b084639e6e872fbed3a8f071e",
   "layout": {
     "size": 332,
     "field_140": 320,
@@ -56,7 +56,7 @@
       "size": 239,
       "exact": true,
       "verified_targets": {
-        "??0?$DescribedCreatable@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3QBDB@RBX@@IAE@XZ": "0x6296e0",
+        "??0?$DescribedCreatable@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@IAE@XZ": "0x6296e0",
         "__real@42000000": "0x833eac",
         "??_C@_0O@ONDJFFKK@ClickDetector?$AA@": "0x845b3c",
         "??_7ClickDetector@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x845afc (RTTI .?AVClickDetector@RBX@@, offset 0x0)",
@@ -96,26 +96,43 @@
         "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x845a80 (RTTI .?AVClickDetector@RBX@@, offset 0xc4)",
         "??_7ClickDetector@RBX@@6B@": "0x845a68 (RTTI .?AVClickDetector@RBX@@, offset 0x130)",
         "??1IRenderable@RBX@@QAE@XZ": "0x47d410",
-        "??1?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3QBDB@RBX@@MAE@XZ": "0x629340"
+        "??1?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@RBX@@MAE@XZ": "0x629340"
       },
       "local_eh": [
         "__ehhandler$??1ClickDetector@RBX@@UAE@XZ"
       ]
+    },
+    {
+      "address": "006298d0",
+      "symbol": "?askSetParent@ClickDetector@RBX@@UBE_NPBVInstance@2@@Z",
+      "size": 70,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (.?AVPartInstance@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+        "??_R0?AVModelInstance@RBX@@@8": "0x932a40 (.?AVModelInstance@RBX@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?shouldRender2d@ClickDetector@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00565950",
+      "symbol": "?shouldRender3dAdorn@ClickDetector@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
     }
   ],
   "blockers": [
     "property accessors and render virtuals pending; untested first draft"
-  ],
-  "orchestrator_verification": {
-    "date": "2026-11-04",
-    "by": "claude-opus-5-5 (implementation gpt-6.1-sol)",
-    "recorder": "record_native_click_detector.py exit 0: ctor 006297e0 239B and dtor 006299a0 163B exact, all targets verified",
-    "internal_bindings_checked": {
-      "006296e0 ??0?$DescribedCreatable@VClickDetector...": "EXACT 146/146 via check_native_class.py",
-      "00629340 ??1?$FactoryProduct@VClickDetector...": "EXACT 83/83 via check_native_class.py"
-    },
-    "constant": "__real@42000000 -> 0x833eac verified original dword 0x42000000 (32.0f)",
-    "layout": "size 0x14c from creator 005c0b60 allocation; field_140/field_144 from ctor stores; field_148 is an unnamed 4-byte remainder (identity unproven)",
-    "not_claimed": "property accessors, render virtuals, selection, server, runtime"
-  }
+  ]
 }

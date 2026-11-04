@@ -25,7 +25,7 @@ obj=nb.OUT/'CheckClickDetector.obj'
 for source,output in [(src,obj),(R/'tests/NativeClickDetectorLayout.cpp',nb.OUT/'NativeClickDetectorLayout.obj')]:
  code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(output),str(source)],nb.OUT)
  assert code==0,log
-methods=[(n,a) for prefix,a in [('??0ClickDetector',0x6297e0),('??1ClickDetector',0x6299a0)] for n,b,r in match.coff_functions(obj.read_bytes()) if n.startswith(prefix)]
+methods=[(n,a) for prefix,a in [('??0ClickDetector',0x6297e0),('??1ClickDetector',0x6299a0),('?askSetParent@ClickDetector',0x6298d0),('?shouldRender2d@ClickDetector',0x60a2f0),('?shouldRender3dAdorn@ClickDetector',0x565950)] for n,b,r in match.coff_functions(obj.read_bytes()) if n.startswith(prefix)]
 bodies=match.coff_functions(obj.read_bytes())
 internal={}
 for n,b,r in bodies:
