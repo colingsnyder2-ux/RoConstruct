@@ -80,6 +80,9 @@ stored hashed on the host and grant no GitHub/main-server privileges. Usernames
 are contributor labels, not verified GitHub identity. The receiver never runs code.
 SQLite FULL synchronous commits precede durable acknowledgements; payload hashes
 deduplicate lost-response retries. Local outboxes retain acknowledged bundles too.
+Findings stores immutable JSON packets under `drafts/bundles/` and browsable actual
+candidate files under `drafts/files/BUNDLE_ID/`, retaining original relative paths.
+Deletion proposals stay in packet metadata; no published baseline file is removed.
 
 The same host periodically publishes committed origin-branch source and immutable
 draft archives. `work/findings-workspace-status.json` records success/failure and

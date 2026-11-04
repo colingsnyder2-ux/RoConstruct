@@ -66,7 +66,10 @@ def test_http_drafts_new_files_deletions_offline_and_restart(tmp_path, receiver)
     assert d.flush(root, session) == [second]
     assert inbox.packet(second)['files']['docs/Native.cpp']['text'] is None
     assert inbox.packet(second)['parent'] == identifier
-    assert len(inbox.archive()) == 3
+    archive=inbox.archive()
+    assert len(archive) == 6
+    assert archive['drafts/files/'+identifier+'/docs/Native.cpp'] == packet['files']['docs/Native.cpp']['text'].encode('utf-8')
+    assert 'drafts/files/'+second+'/docs/Native.cpp' not in archive
     events = [json.loads(line) for line in (inbox.root/'work/agent-inbox/events.jsonl').read_text().splitlines()]
     assert [row['bundle'] for row in events] == [identifier,second]
 
@@ -159,3 +162,8 @@ def test_generated_probe_outputs_skipped_but_existing_git_deletion_saved(tmp_pat
     packet=receiver[0].packet(identifier)
     assert set(packet['files']) == {'docs/Native.cpp'}
     assert packet['files']['docs/Native.cpp']['text'] is None
+
+
+@pytest.mark.parametrize('name',['rebuild/2008-06/native-world/owner.inc','packaging/setup.ps1','roc.py','roc.cmd','docs/native.toml'])
+def test_scoped_source_and_build_text_files_supported(name):
+    assert d.safe_path(name)==name

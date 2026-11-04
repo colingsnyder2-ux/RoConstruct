@@ -7,5 +7,5 @@ Validated 2026-11-04 using a fresh public Worker download.
 - Automatic watcher uploads this newly created documentation file over HTTPS.
 - Durable upload receipts and idempotent retry are checked before owner review.
 - Owner integration uses explicit paths, isolated index and exact-tree preservation checks.
-- Focused workflow regressions: 33 passing tests across transport, drafts and findings publication.
+- Focused workflow regressions: 38 passing tests across transport, drafts and findings publication.
 - Native source, active executable selection and server credit are unchanged by this validation.
