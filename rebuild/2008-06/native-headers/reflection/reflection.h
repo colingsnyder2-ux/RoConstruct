@@ -11,7 +11,9 @@ namespace RBX
 	class IReferenceBinder;
 
 	// NOTE: may not be intended for this file
-	class IIDREF
+	// Original RefPropDescriptor constructors (004913d0, 0064e390) write only
+	// the final interface vfptr; this abstract base supplies no constructor dispatch.
+	class __declspec(novtable) IIDREF
 	{
 		friend class MergeBinder;
 		friend class ::ArchiveBinder;

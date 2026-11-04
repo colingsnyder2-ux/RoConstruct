@@ -2,7 +2,7 @@
 
 Never touches the working branch. For each fork branch (refs/forks/<owner>/<branch>, fetched by
 native_files_notify.scan) in a scratch clone under work/fork-merge:
-  - clean merge that deletes no native files  -> merge commit on auto-merge/native
+  - clean merge that preserves native sources/proofs -> merge commit on auto-merge/native
   - conflict, unrelated history, or native deletions -> the fork's added/changed native files are copied to
     merge/<owner>/<branch>/<path> with a MERGE_NEEDED.md, so nothing is lost and a human or agent can reconcile.
 The branch is pushed to origin; fast-forward your working branch from it when you want the merged work.
@@ -62,9 +62,39 @@ def fork_refs(clone, mine_ref, days):
     return sorted(rows, key=lambda r: r[3])
 
 
+def preservation_losses(repo, before, candidate):
+    """Reject lost native sources and verification files in the final tree.
+
+    Disable rename detection: a provider move needs a deliberate review rather
+    than silently treating a removed verified source as harmless. NUL records
+    preserve Windows paths without relying on newline conversion.
+    """
+    result = subprocess.run(['git', 'diff', '--raw', '--no-abbrev', '--no-renames',
+                             '-z', before, candidate, '--'], cwd=repo,
+                            capture_output=True, check=True)
+    fields = result.stdout.split(b'\0')
+    losses = []
+    for meta, raw_path in zip(fields[0::2], fields[1::2]):
+        path = raw_path.decode('utf-8', errors='surrogateescape')
+        parts = path.split('/')
+        if len(parts) < 4 or parts[0] != 'rebuild' or parts[2] not in (
+                'native-classes', 'native-headers', 'native-world', 'tests'):
+            continue
+        _, mode, old, new, status = meta[1:].split()
+        reason = None
+        if status == b'D':
+            reason = 'deleted native source or verification file'
+        elif mode not in (b'100644', b'100755'):
+            reason = 'native source or verification file replaced by non-regular entry'
+        elif status != b'A' and old != new and new == b'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391':
+            reason = 'native source or verification file emptied'
+        if reason:
+            losses.append({'path': path, 'status': status.decode(), 'reason': reason})
+    return losses
+
+
 def native_deletions(clone, before):
-    out = sh('diff', '--name-only', '--diff-filter=D', before, 'HEAD', cwd=clone).stdout.splitlines()
-    return [p for p in out if is_native(p)]
+    return [row['path'] for row in preservation_losses(clone, before, 'HEAD')]
 
 
 def park(clone, owner, branch, ref, sha, reason):
@@ -110,12 +140,16 @@ def run(push=True, log=print, repo=ROOT, clone=CLONE, mine=None, days=14, state_
     existing = sh('rev-parse', '-q', '--verify', 'refs/forks/origin/' + BRANCH, cwd=clone, check=False).stdout.strip()
     sh('checkout', '--quiet', '-B', BRANCH, existing or mine_ref, cwd=clone)
     sh('reset', '--quiet', '--hard', cwd=clone)
+    preservation_base = sh('rev-parse', 'HEAD', cwd=clone).stdout.strip()
     merged = parked = 0
     # keep the bot branch current with the working branch first
     if sh('merge-base', '--is-ancestor', mine_ref, 'HEAD', cwd=clone, check=False).returncode:
         if sh('merge', '--no-edit', '-m', 'Track %s' % mine, mine_ref, cwd=clone, check=False).returncode:
             sh('merge', '--abort', cwd=clone, check=False)
             log('fork-merge: could not fold %s into %s' % (mine, BRANCH))
+        elif native_deletions(clone, preservation_base):
+            sh('reset', '--quiet', '--hard', preservation_base, cwd=clone)
+            log('fork-merge: refused tracking snapshot that removes native sources or proofs')
     for owner, branch, ref, sha in fork_refs(clone, mine_ref, days):
         if merged + parked >= MAX_MERGES:
             break
@@ -135,7 +169,7 @@ def run(push=True, log=print, repo=ROOT, clone=CLONE, mine=None, days=14, state_
                 log('fork-merge: merged %s' % key)
                 continue
             sh('reset', '--quiet', '--hard', before, cwd=clone)
-            reason = 'merge would delete %d native file(s), e.g. %s' % (len(lost), lost[0])
+            reason = 'merge would lose %d native/proof file(s), e.g. %s' % (len(lost), lost[0])
         else:
             conflicts = re.findall(r'CONFLICT[^\n]*', result.stdout)
             sh('merge', '--abort', cwd=clone, check=False)
@@ -146,6 +180,8 @@ def run(push=True, log=print, repo=ROOT, clone=CLONE, mine=None, days=14, state_
         state['parked'][key] = sha
         parked += 1
         log('fork-merge: parked %s (%d files): %s' % (key, count, reason))
+    if preservation_losses(clone, preservation_base, 'HEAD'):
+        raise RuntimeError('fork-merge: final tree loses native sources or proofs; refusing publication')
     if push:                                              # a dry run must not remember what it did
         Path(state_file).parent.mkdir(parents=True, exist_ok=True)
         Path(state_file).write_text(json.dumps(state, indent=1))

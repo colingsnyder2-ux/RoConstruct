@@ -1,0 +1,708 @@
+{
+  "revision": "e361aa9f0486c621db3cceab14a5d618ff87c56e",
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_humanoid_states3.py": "ec45d58c05c3427315419d4342a4a2fdfb05922360713c641f238a2d639f3e12",
+    "rebuild\\2008-06\\native-headers\\humanoid\\HumanoidStates3.h": "19a00b281f9ee7dadac8b40ed59873c113cf6db4184c0ef44656de2041f86e49",
+    "rebuild\\2008-06\\tests\\NativeHumanoidStates3Calls.h": "a8710f86acb6a829255ffb6ccf804aabd6f0152ba145e10ee123f7f13f9d9969",
+    "rebuild\\2008-06\\tests\\NativeHumanoidStates3SimJob.h": "6c7f38a62f6229e32bbe569c9bfd1525600f45cc010f0cf2bf465d07aaf83441",
+    "rebuild\\2008-06\\native-headers\\humanoid\\HumanoidState.h": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3",
+    "rebuild\\2008-06\\tests\\NativeHumanoidStates3Layout.cpp": "b38927e1fa7f8cd0cf52a3c959cdf84ab9e055ac8392a27c4dd30ae06f684ec3",
+    "rebuild\\2008-06\\native-classes\\HumanoidStates3.cpp": "5948da0a4333b037bf452122da0d0b78ada63b774459531d5e92f9e77b4f3778"
+  },
+  "objects": {
+    "layout": "e3947c7e430afdb09fb979ea4dc468cc2e17e7d2e08db7cab59f7e03f13eb8d4",
+    "states": "db574bd84f10ac57bf73769bf9a6a59153eddfd5f30330bbde91e5072d369ecd"
+  },
+  "compiler_build": 21022,
+  "flags": {
+    "layout": [
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\humanoid-states3-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_SIMJOB_PENDING",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeHumanoidStates3Layout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeHumanoidStates3Layout.cpp"
+    ],
+    "states": [
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\humanoid-states3-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_SIMJOB_PENDING",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeHumanoidStates3.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\HumanoidStates3.cpp"
+    ]
+  },
+  "sizes": {
+    "Seated": 160,
+    "Dead": 160,
+    "FallingDown": 160,
+    "SimJob": 36,
+    "MovingNoPhysicsBase": 276,
+    "RunningNoPhysics": 276,
+    "StrafingNoPhysics": 276
+  },
+  "vtables": {
+    "Seated@HUMAN@RBX@@": {
+      "primary": "0x84cd54",
+      "filter": "0x84cd4c",
+      "rtti_bases": [
+        ".?AVSeated@HUMAN@RBX@@",
+        ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sSeated@23@3QBDB@RBX@@",
+        ".?AVHumanoidState@HUMAN@RBX@@",
+        ".?AVINamed@RBX@@",
+        ".?AVHitTestFilter@RBX@@"
+      ]
+    },
+    "Dead@HUMAN@RBX@@": {
+      "primary": "0x84cce0",
+      "filter": "0x84ccd8",
+      "rtti_bases": [
+        ".?AVDead@HUMAN@RBX@@",
+        ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sDead@23@3QBDB@RBX@@",
+        ".?AVHumanoidState@HUMAN@RBX@@",
+        ".?AVINamed@RBX@@",
+        ".?AVHitTestFilter@RBX@@"
+      ]
+    },
+    "FallingDown@HUMAN@RBX@@": {
+      "primary": "0x84cd10",
+      "filter": "0x84cd08",
+      "rtti_bases": [
+        ".?AVFallingDown@HUMAN@RBX@@",
+        ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sFallingDown@23@3QBDB@RBX@@",
+        ".?AVHumanoidState@HUMAN@RBX@@",
+        ".?AVINamed@RBX@@",
+        ".?AVHitTestFilter@RBX@@"
+      ]
+    },
+    "MovingNoPhysicsBase@HUMAN@RBX@@": {
+      "primary": "0x84d168",
+      "filter": "0x84d160",
+      "simjob": "0x84d150",
+      "rtti_bases": [
+        ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+        ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+        ".?AVHumanoidState@HUMAN@RBX@@",
+        ".?AVINamed@RBX@@",
+        ".?AVHitTestFilter@RBX@@",
+        ".?AVSimJob@RBX@@",
+        ".?AVnoncopyable@noncopyable_@boost@@"
+      ]
+    },
+    "RunningNoPhysics@HUMAN@RBX@@": {
+      "primary": "0x84ce10",
+      "filter": "0x84ce08",
+      "simjob": "0x84cdf8",
+      "rtti_bases": [
+        ".?AVRunningNoPhysics@HUMAN@RBX@@",
+        ".?AV?$Named@VMovingNoPhysicsBase@HUMAN@RBX@@$1?sRunningNoPhysics@23@3QBDB@RBX@@",
+        ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+        ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+        ".?AVHumanoidState@HUMAN@RBX@@",
+        ".?AVINamed@RBX@@",
+        ".?AVHitTestFilter@RBX@@",
+        ".?AVSimJob@RBX@@",
+        ".?AVnoncopyable@noncopyable_@boost@@"
+      ]
+    },
+    "StrafingNoPhysics@HUMAN@RBX@@": {
+      "primary": "0x84cdb0",
+      "filter": "0x84cda8",
+      "simjob": "0x84cd98",
+      "rtti_bases": [
+        ".?AVStrafingNoPhysics@HUMAN@RBX@@",
+        ".?AV?$Named@VMovingNoPhysicsBase@HUMAN@RBX@@$1?sStrafingNoPhysics@23@3QBDB@RBX@@",
+        ".?AVMovingNoPhysicsBase@HUMAN@RBX@@",
+        ".?AV?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@",
+        ".?AVHumanoidState@HUMAN@RBX@@",
+        ".?AVINamed@RBX@@",
+        ".?AVHitTestFilter@RBX@@",
+        ".?AVSimJob@RBX@@",
+        ".?AVnoncopyable@noncopyable_@boost@@"
+      ]
+    }
+  },
+  "methods": [
+    {
+      "address": "00667010",
+      "symbol": "??0Seated@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 132,
+      "direct_calls": {
+        "??0HumanoidState@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x643e00",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00",
+        "?setLimbFlag@HumanoidState@HUMAN@RBX@@QAEX_N@Z": "0x6431b0"
+      },
+      "data_targets": {
+        "__ehhandler$??0Seated@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x7dc2b8",
+        "??_7Seated@HUMAN@RBX@@6BINamed@2@@": "0x84cd54",
+        "??_7Seated@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cd4c",
+        "?event_Seated@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a558"
+      }
+    },
+    {
+      "address": "006670b0",
+      "symbol": "??1Seated@HUMAN@RBX@@UAE@XZ",
+      "size": 129,
+      "direct_calls": {
+        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00",
+        "??1HumanoidState@HUMAN@RBX@@UAE@XZ": "0x6435c0"
+      },
+      "data_targets": {
+        "__ehhandler$??1Seated@HUMAN@RBX@@UAE@XZ": "0x7dc2b8",
+        "??_7Seated@HUMAN@RBX@@6BINamed@2@@": "0x84cd54",
+        "??_7Seated@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cd4c",
+        "?event_Seated@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a558"
+      }
+    },
+    {
+      "address": "00667140",
+      "symbol": "??_GSeated@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "direct_calls": {
+        "??1Seated@HUMAN@RBX@@UAE@XZ": "0x6670b0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00666d30",
+      "symbol": "??0Dead@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 102,
+      "direct_calls": {
+        "??0HumanoidState@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x643e00",
+        "?getCharacterFromHumanoid@Humanoid@RBX@@SAPAVModelInstance@2@PAV12@@Z": "0x5d7670",
+        "?breakJoints@ModelInstance@RBX@@QAEXXZ": "0x584c00"
+      },
+      "data_targets": {
+        "__ehhandler$??0Dead@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x7dc2b8",
+        "??_7Dead@HUMAN@RBX@@6BINamed@2@@": "0x84cce0",
+        "??_7Dead@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84ccd8"
+      }
+    },
+    {
+      "address": "00666da0",
+      "symbol": "??_GDead@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 43,
+      "direct_calls": {
+        "??1HumanoidState@HUMAN@RBX@@UAE@XZ": "0x6435c0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      },
+      "data_targets": {
+        "??_7Dead@HUMAN@RBX@@6BINamed@2@@": "0x84cce0",
+        "??_7Dead@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84ccd8"
+      }
+    },
+    {
+      "address": "00666e30",
+      "symbol": "??0FallingDown@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 137,
+      "direct_calls": {
+        "??0HumanoidState@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x643e00",
+        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00"
+      },
+      "data_targets": {
+        "__ehhandler$??0FallingDown@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x7dc2b8",
+        "??_7FallingDown@HUMAN@RBX@@6BINamed@2@@": "0x84cd10",
+        "??_7FallingDown@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cd08",
+        "?event_FallingDown@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a2f4",
+        "__real@40400000": "0x81e380"
+      }
+    },
+    {
+      "address": "00666ec0",
+      "symbol": "??1FallingDown@HUMAN@RBX@@UAE@XZ",
+      "size": 129,
+      "direct_calls": {
+        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00",
+        "??1HumanoidState@HUMAN@RBX@@UAE@XZ": "0x6435c0"
+      },
+      "data_targets": {
+        "__ehhandler$??1FallingDown@HUMAN@RBX@@UAE@XZ": "0x7dc2b8",
+        "??_7FallingDown@HUMAN@RBX@@6BINamed@2@@": "0x84cd10",
+        "??_7FallingDown@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cd08",
+        "?event_FallingDown@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a2f4"
+      }
+    },
+    {
+      "address": "00666f50",
+      "symbol": "??_GFallingDown@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "direct_calls": {
+        "??1FallingDown@HUMAN@RBX@@UAE@XZ": "0x666ec0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "0066ee10",
+      "symbol": "??1MovingNoPhysicsBase@HUMAN@RBX@@UAE@XZ",
+      "size": 255,
+      "direct_calls": {
+        "?release@MovingNoPhysicsBase@HUMAN@RBX@@QAEXXZ": "0x66ed50",
+        "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0",
+        "??3@YAXPAX@Z": "0x6a067a",
+        "??1HumanoidState@HUMAN@RBX@@UAE@XZ": "0x6435c0"
+      },
+      "data_targets": {
+        "__ehhandler$??1MovingNoPhysicsBase@HUMAN@RBX@@UAE@XZ": "0x7dc6c2",
+        "??_7MovingNoPhysicsBase@HUMAN@RBX@@6BINamed@2@@": "0x84d168",
+        "??_7MovingNoPhysicsBase@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84d160",
+        "??_7MovingNoPhysicsBase@HUMAN@RBX@@6B@": "0x84d150",
+        "??_7SimJob@RBX@@6B@": "0x83f72c"
+      }
+    },
+    {
+      "address": "00667410",
+      "symbol": "??_GMovingNoPhysicsBase@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "direct_calls": {
+        "??1MovingNoPhysicsBase@HUMAN@RBX@@UAE@XZ": "0x66ee10",
+        "??3@YAXPAX@Z": "0x6a067a"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "0066eaa0",
+      "symbol": "?getTorsoAssembly@MovingNoPhysicsBase@HUMAN@RBX@@QAEPAVAssembly@3@XZ",
+      "size": 26,
+      "direct_calls": {
+        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
+        "?getTorsoPrimitive@Humanoid@RBX@@QBEPAVPrimitive@2@XZ": "0x5d90a0",
+        "?getAssembly@Primitive@RBX@@QBEPAVAssembly@2@XZ": "0x5e7570"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00667160",
+      "symbol": "?getAssembly@MovingNoPhysicsBase@HUMAN@RBX@@UAEPAVAssembly@3@XZ",
+      "size": 11,
+      "direct_calls": {
+        "?getTorsoAssembly@MovingNoPhysicsBase@HUMAN@RBX@@QAEPAVAssembly@3@XZ": "0x66eaa0"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00667370",
+      "symbol": "??0RunningNoPhysics@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 137,
+      "direct_calls": {
+        "??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x66f070",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@M@Z": "0x4937f0"
+      },
+      "data_targets": {
+        "__ehhandler$??0RunningNoPhysics@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x7dc238",
+        "??_7RunningNoPhysics@HUMAN@RBX@@6BINamed@2@@": "0x84ce10",
+        "??_7RunningNoPhysics@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84ce08",
+        "??_7RunningNoPhysics@HUMAN@RBX@@6B@": "0x84cdf8",
+        "?event_Running@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A": "0x97a504"
+      }
+    },
+    {
+      "address": "006672b0",
+      "symbol": "?onStep@RunningNoPhysics@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "size": 21,
+      "direct_calls": {
+        "?onStep@MovingNoPhysicsBase@HUMAN@RBX@@UAEXMPAVController@3@@Z": "0x66f2c0"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00667210",
+      "symbol": "??0StrafingNoPhysics@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 133,
+      "direct_calls": {
+        "??0MovingNoPhysicsBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x66f070",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@_N@Z": "0x5e1f00"
+      },
+      "data_targets": {
+        "__ehhandler$??0StrafingNoPhysics@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x7dc238",
+        "??_7StrafingNoPhysics@HUMAN@RBX@@6BINamed@2@@": "0x84cdb0",
+        "??_7StrafingNoPhysics@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cda8",
+        "??_7StrafingNoPhysics@HUMAN@RBX@@6B@": "0x84cd98",
+        "?event_Strafing@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AX_N@Z@Reflection@2@A": "0x97a348"
+      }
+    },
+    {
+      "address": "00666ff0",
+      "symbol": "?getName@?$Named@VHumanoidState@HUMAN@RBX@@$1?sSeated@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x666f70"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97d9b4",
+        "??$callDoDeclare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x666fe0"
+      }
+    },
+    {
+      "address": "00666fe0",
+      "symbol": "??$callDoDeclare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x666f70"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00666f70",
+      "symbol": "??$doDeclare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dc1fe",
+        "??_B?1???$doDeclare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97d9b0",
+        "?sSeated@HUMAN@RBX@@3QBDB": "0x84cd40",
+        "?n@?1???$doDeclare@$1?sSeated@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97d9ac"
+      }
+    },
+    {
+      "address": "00666df0",
+      "symbol": "?getName@?$Named@VHumanoidState@HUMAN@RBX@@$1?sDead@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x666c50"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97d9a4",
+        "??$callDoDeclare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x666dd0"
+      }
+    },
+    {
+      "address": "00666dd0",
+      "symbol": "??$callDoDeclare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x666c50"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00666c50",
+      "symbol": "??$doDeclare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dc1be",
+        "??_B?1???$doDeclare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97d998",
+        "?sDead@HUMAN@RBX@@3QBDB": "0x84cccc",
+        "?n@?1???$doDeclare@$1?sDead@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97d994"
+      }
+    },
+    {
+      "address": "00666e10",
+      "symbol": "?getName@?$Named@VHumanoidState@HUMAN@RBX@@$1?sFallingDown@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x666cc0"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97d9a8",
+        "??$callDoDeclare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x666de0"
+      }
+    },
+    {
+      "address": "00666de0",
+      "symbol": "??$callDoDeclare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x666cc0"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00666cc0",
+      "symbol": "??$doDeclare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dc1de",
+        "??_B?1???$doDeclare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97d9a0",
+        "?sFallingDown@HUMAN@RBX@@3QBDB": "0x84ccc0",
+        "?n@?1???$doDeclare@$1?sFallingDown@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97d99c"
+      }
+    },
+    {
+      "address": "0066edf0",
+      "symbol": "?getName@?$Named@VHumanoidState@HUMAN@RBX@@$1?sMovingNoPhysicsBase@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x66eac0"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97da50",
+        "??$callDoDeclare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x66eca0"
+      }
+    },
+    {
+      "address": "0066eca0",
+      "symbol": "??$callDoDeclare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x66eac0"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "0066eac0",
+      "symbol": "??$doDeclare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dc67e",
+        "??_B?1???$doDeclare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97da4c",
+        "?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB": "0x84d108",
+        "?n@?1???$doDeclare@$1?sMovingNoPhysicsBase@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97da48"
+      }
+    },
+    {
+      "address": "00667350",
+      "symbol": "?getName@?$Named@VMovingNoPhysicsBase@HUMAN@RBX@@$1?sRunningNoPhysics@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x6672d0"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97d9cc",
+        "??$callDoDeclare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x667340"
+      }
+    },
+    {
+      "address": "00667340",
+      "symbol": "??$callDoDeclare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x6672d0"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "006672d0",
+      "symbol": "??$doDeclare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dc25e",
+        "??_B?1???$doDeclare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97d9c8",
+        "?sRunningNoPhysics@HUMAN@RBX@@3QBDB": "0x84cde0",
+        "?n@?1???$doDeclare@$1?sRunningNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97d9c4"
+      }
+    },
+    {
+      "address": "006671f0",
+      "symbol": "?getName@?$Named@VMovingNoPhysicsBase@HUMAN@RBX@@$1?sStrafingNoPhysics@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x667170"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97d9c0",
+        "??$callDoDeclare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x6671e0"
+      }
+    },
+    {
+      "address": "006671e0",
+      "symbol": "??$callDoDeclare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x667170"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00667170",
+      "symbol": "??$doDeclare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dc21e",
+        "??_B?1???$doDeclare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97d9bc",
+        "?sStrafingNoPhysics@HUMAN@RBX@@3QBDB": "0x84cd80",
+        "?n@?1???$doDeclare@$1?sStrafingNoPhysics@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97d9b8"
+      }
+    }
+  ],
+  "folded_virtual_defaults": [
+    {
+      "address": "006670a0",
+      "symbol": "?getStateType@Seated@HUMAN@RBX@@UBEHXZ",
+      "size": 6
+    },
+    {
+      "address": "00666c40",
+      "symbol": "?getStateType@Dead@HUMAN@RBX@@UBEHXZ",
+      "size": 6
+    },
+    {
+      "address": "00416690",
+      "symbol": "?getStateType@FallingDown@HUMAN@RBX@@UBEHXZ",
+      "size": 3
+    },
+    {
+      "address": "0077d800",
+      "symbol": "?getStateType@MovingNoPhysicsBase@HUMAN@RBX@@UBEHXZ",
+      "size": 6
+    },
+    {
+      "address": "0063e420",
+      "symbol": "?getStateType@StrafingNoPhysics@HUMAN@RBX@@UBEHXZ",
+      "size": 6
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?query3@Seated@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?query4@Seated@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?query3@MovingNoPhysicsBase@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?query4@MovingNoPhysicsBase@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?query5@MovingNoPhysicsBase@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "00667160",
+      "symbol": "?getAssembly2@MovingNoPhysicsBase@HUMAN@RBX@@UAEPAVAssembly@3@XZ",
+      "size": 11
+    },
+    {
+      "address": "006672b0",
+      "symbol": "?onStep@StrafingNoPhysics@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "size": 21
+    },
+    {
+      "address": "00667410",
+      "symbol": "??_GRunningNoPhysics@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30
+    },
+    {
+      "address": "00667410",
+      "symbol": "??_GStrafingNoPhysics@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30
+    }
+  ],
+  "adjustor_thunks": [
+    {
+      "address": "00667400",
+      "symbol": "??_EMovingNoPhysicsBase@HUMAN@RBX@@WKA@AEPAXI@Z",
+      "size": 11,
+      "jump": "0x667410"
+    }
+  ],
+  "proposed_declarations": [
+    "RBX::SimJob (tests/NativeHumanoidStates3SimJob.h, sizeof 0x24): MovingNoPhysicsBase family compiles only with NATIVE_SIMJOB_PENDING",
+    "Humanoid/Primitive/ModelInstance call declarations in tests/NativeHumanoidStates3Calls.h"
+  ],
+  "pending": [
+    "0066f070 MovingNoPhysicsBase constructor (PhysicsService, World/SimJobStage, connection to 0x973c38 via 004a3340, boost::bind of 0066edc0)",
+    "0066f2c0 MovingNoPhysicsBase::onStep (Body/Primitive/World layouts, 00643a70/00643360)",
+    "0066ed50 MovingNoPhysicsBase::release (Humanoid+0x21c World, SimJobStage, PhysicsService, Primitive 005e8140)",
+    "005e50f0/005e5150/005e5190 SimJob constructor/destructors (declaration proposal only)"
+  ],
+  "scope": "Inactive Seated/Dead/FallingDown/MovingNoPhysicsBase/RunningNoPhysics/StrafingNoPhysics layouts, constructors, destructors, onStep forwarder, SimJob slot overrides and their helper, Named getName/doDeclare instantiations, vtables, adjustor thunks and RTTI. Humanoid/Primitive/ModelInstance/SimJob declarations come from recorder overlays (proposals). Member names are analog names. No runtime swap."
+}

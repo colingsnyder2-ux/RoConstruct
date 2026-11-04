@@ -4,6 +4,10 @@
 #include "v8datamodel/PartInstance.h"
 #include "Network/Players.h"
 #include "v8xml/XmlElement.h"
+#ifdef NATIVE_TOOL_PENDING
+#include "v8datamodel/Mouse.h"
+#include "v8datamodel/ToolMouseCommand.h"
+#endif
 
 namespace RBX
 {
@@ -142,6 +146,20 @@ namespace RBX
 				setBackendToolState(value % 2 == 0 ? EQUIPPED : ACTIVATED);
 			}
 		}
+	}
+
+	// 005ff680. Needs a ToolMouseCommand declaration (Named<ScriptMouseCommand, sToolMouseCommand> with the 2008
+	// class-name array); there is no native v8datamodel/ToolMouseCommand.h. ScriptMouseCommand::getMouse 005cf8d0.
+	boost::shared_ptr<Mouse> Tool::getMouse()
+	{
+		boost::shared_ptr<Mouse> mouse;
+
+		if (toolMouseCommand)
+			mouse = toolMouseCommand->getMouse();
+		else
+			mouse = Creatable<Instance>::create<Mouse>();
+
+		return mouse;
 	}
 #endif
 

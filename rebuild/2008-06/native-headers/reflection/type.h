@@ -74,7 +74,7 @@ namespace RBX
 
 			// Value constructors 0042d200/0042d240/0042d280 take const references.
 			template<typename ValueType>
-			__declspec(noinline) Value(const ValueType& value)
+			Value(const ValueType& value)
 				: _type(&Type::singleton<typename ValueType>()),
 				  value(value)
 			{

@@ -164,7 +164,9 @@ namespace RBX
 		{
 		}
 
-		virtual const Name& getClassName() const;
+		// Override an inherited virtual without adding a slot to DescribedBase
+		// specializations (Marker's original vtable has only its destructor).
+		const Name& getClassName() const;
 
 	public:
 		static const Name& className();
