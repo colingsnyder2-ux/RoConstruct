@@ -20,7 +20,7 @@
 //                      dtor 00540440 (vector dtor 005405d0, ~noncopyable, ~ReferenceCountedObject 007accf0);
 //                      one slot: ??_G 00540410.
 //   RenderSceneBase    only used through a pointer here; its layout (vtable 00827424, chunk array +0x8, size 0x268)
-//                      is not declared because the 4-byte member at +0x4 is not derived yet (see RenderScene2008.h).
+//                      is declared in RenderScene2008.h (+0x4 is vfptr alignment padding, not a member).
 #include "RenderLib/AggregateChunk2008.h"
 #include <boost/noncopyable.hpp>
 #include <map>
