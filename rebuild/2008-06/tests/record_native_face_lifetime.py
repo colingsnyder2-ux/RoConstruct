@@ -59,7 +59,7 @@ assert types['.?AVIRenderable@RBX@@'] == 0x130
 assert read(0x84072c + 12) == 0x62e190
 assert pe.get_string_at_rva(0x92dd50 + 8 - image) == b'.?AVPartInstance@RBX@@'
 assert pe.get_string_at_rva(0x840670 - image) == b'FaceInstance'
-assert '?sFaceInstance@RBX@@3PBDB' in definitions
+assert '?sFaceInstance@RBX@@3PADA' in definitions
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 receipt = {'scope': 'Inactive FaceInstance constructor and destructor match; complete virtual methods, Decal/Texture lifetimes and runtime remain unproven.', 'source_sha256': sha(source), 'header_sha256': sha(header), 'observer_sha256': sha(Path(__file__)), 'object_sha256': sha(obj), 'renderable_base_offset': '0x130', 'methods': rows, 'flags': flags}
 (root / 'work/2008-06/shared-layouts/face-instance-lifetime.json').write_text(json.dumps(receipt, indent=2) + '\n')

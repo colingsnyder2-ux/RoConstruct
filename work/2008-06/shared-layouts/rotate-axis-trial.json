@@ -2,7 +2,7 @@
   "scope": "Inactive axis getter matches; class lifetime, dependencies and runtime ABI remain unproven.",
   "source_sha256": "9a25ef366135b2d44cd4c62dc56cfb680e372c6169188b449e275ff7ed3fa9f1",
   "observer_sha256": "9337442ccd9c574ffefe7d11c5be5ce018c40455135e921690568ca3fe576bc1",
-  "object_sha256": "7a3e3bc495d71b4c7382cbc2c3a6d7164a88cdfe4d7dd60ab9c111451a210c91",
+  "object_sha256": "a8c7ad7778cddccce1066767d4c264740bd81a18db89b9ebd1fe781f6aef87c1",
   "address": "0057d520",
   "symbol": "?getRotationAxis@RotateSelectionVerb@RBX@@MAE?AVMatrix3@G3D@@XZ",
   "size": 24,

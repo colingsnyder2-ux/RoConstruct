@@ -4,7 +4,7 @@
     {
       "address": "0x5c7440",
       "size": 23,
-      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sFillTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sFillTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "bindings": {
         "?flag@?1??get@?$NativeToolName@VFillTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979640",
         "?callDoDeclare@?$NativeToolName@VFillTool@RBX@@@RBX@@SAXXZ": "0x5c60b0",
@@ -35,7 +35,7 @@
     {
       "address": "0x5c75a0",
       "size": 23,
-      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sDropperTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sDropperTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "bindings": {
         "?flag@?1??get@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979644",
         "?callDoDeclare@?$NativeToolName@VDropperTool@RBX@@@RBX@@SAXXZ": "0x5c60c0",
@@ -66,7 +66,7 @@
     {
       "address": "0x5c71c0",
       "size": 23,
-      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sModelSetPrimaryPartTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VPartTool@RBX@@$1?sModelSetPrimaryPartTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "bindings": {
         "?flag@?1??get@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979648",
         "?callDoDeclare@?$NativeToolName@VModelSetPrimaryPartTool@RBX@@@RBX@@SAXXZ": "0x5c60d0",
@@ -95,9 +95,9 @@
       }
     }
   ],
-  "source_sha256": "6a32d82257fd58b77787a4be1f9a5b2ffe2e1d3dd00cf13e17d941f63d93022d",
+  "source_sha256": "0c6bdec5aec4f409c318f3b4802f212695f1e6010b1e9ee809fb2c1df2915f24",
   "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
   "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
-  "object_sha256": "47efe14ad3d354c522e4a0aba3f51236ac0e820ab7f904f93a6161f70ca46c21",
+  "object_sha256": "f171844553f7a0a9010b03150812a0e588e9955b4ea40731e2d924922de1e61d",
   "observer_sha256": "389a66d3e08164311cb83ab4344f220e33c78d5f02da480d1bf4bf247c7b63da"
 }

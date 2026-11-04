@@ -39,13 +39,13 @@
   ],
   "profile": "CString operator PCXSTR noinline (target imports it)",
   "sources": {
-    "rebuild/2008-06/tests/record_native_upload_place_dialog.py": "7af637c6d938fa603ae651c880a70904051d435d090674a6df07906febae2436",
-    "rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp": "9a1c5ad7dc5a46d84cade27c018360b10166bbfcc6affd405fda0d30ffeb1a94",
-    "rebuild/2008-06/tests/NativeUploadPlaceDialogLayout.cpp": "7933864d01052c26ae7cc5649986f2567b2de9d3ab42d83f937224fe58be375c",
-    "rebuild/2008-06/native-headers/CUploadPlaceDialog.h": "85d76acc708a03fefd2712edb70218cc1b72ca2669991a14602835fea8d7354d",
-    "rebuild/2008-06/native-headers/CSaveToRobloxDialog.h": "b2df25b8c64a5a0cdb842017bec5f63f17ab8c3664c053426638fde4565d1369"
+    "rebuild/2008-06/tests/record_native_upload_place_dialog.py": "608916789ca6ff3a24d9c1625ea30f6be2b27589c87acda6bd25ad1b126b87f4",
+    "rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp": "cd9a698d575926dcef938bf74a56c47c0c1aded5ea251c35fb4a522124c4476e",
+    "rebuild/2008-06/tests/NativeUploadPlaceDialogLayout.cpp": "bdaa50d818c5613fc6cc9e4f076b85b2ba21e5ae4201e8dbdff1023b9d90927b",
+    "rebuild/2008-06/native-headers/CUploadPlaceDialog.h": "21a2f94101dfcb1819187ad500825351ac7502a438a9700d34eb8b0336eced31",
+    "rebuild/2008-06/native-headers/CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838"
   },
-  "object_sha256": "8a955a2ab9c2acafe6f45aa3e670fc4768a5f4bdfd72e1fd89d92c5e35b0decd",
+  "object_sha256": "46a87c0f829c280923731327f962a049559cc6d90cb2939405c7f936b8ed6f8c",
   "layout": {
     "size": "0x130 (no own members)",
     "evidence": "constructor 0044f5c0 stores only vtables 0081757c/00817550; deleting destructor 0044f5a0 forwards to ~CSaveToRobloxDialog; RTTI base chain; stack-only construction at 004553b2, so the size rests on the CSaveToRobloxDialog layout"

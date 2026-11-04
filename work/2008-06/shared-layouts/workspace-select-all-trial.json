@@ -17,8 +17,8 @@
     "?addToSelection@Selection@RBX@@QAEXPAVInstance@2@@Z": "0x567420"
   },
   "source_sha256": "893ce788b9e11ae0656631456f9e9a8f34d4ab22b39f3e27676e4113001bd23c",
-  "object_sha256": "f94d541b096bc54b77dbe82a4e443d894659c1f1a03be2b86e58760f71463c56",
-  "workspace_overlay_sha256": "f3c793e2414bd45a26ecc899a552d0c9b85ac491b321a6225b9347c58090f653",
+  "object_sha256": "7b8dc47a6551ccb19e98292c25b8a27193d1b443795bfaa5902c90546699b3e1",
+  "workspace_overlay_sha256": "84682cd4a731b5f40990e3bb675259f3c80707b9e5837bb435076fa47f14a11c",
   "observer_sha256": "6449c7c361c96cf47f79475f1711fd93f52d04258418513793db709216dcadcf",
   "flags": [
     "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\workspace-model-vector-include",

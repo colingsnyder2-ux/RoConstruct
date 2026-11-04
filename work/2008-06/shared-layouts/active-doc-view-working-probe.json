@@ -1,8 +1,8 @@
 {
-  "revision": "32eb16a43f51ff37aed13f37d2fceed867e54f9f",
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
   "sources": {
     "rebuild\\2008-06\\native-classes\\ActiveDocView.cpp": "0192a313aea3139d32874119565d6deb84085dbac7754d87c75b6113a6e2f09e",
-    "rebuild\\2008-06\\native-headers\\ActiveDocView.h": "a2d12a8552e42a840a3108820f02d73e7322d330f42c88e5e693df39406b1d46",
+    "rebuild\\2008-06\\native-headers\\ActiveDocView.h": "e30143470935d4675ddd3f8dd64806618dc363502f1fe1d67714d6083eeed393",
     "rebuild\\2008-06\\tests\\record_native_active_doc_view.py": "20d40b8ab9a20a1bbaa550692684a8628471363e965aa6b2a4bc2592d80404d1"
   },
   "flags": [

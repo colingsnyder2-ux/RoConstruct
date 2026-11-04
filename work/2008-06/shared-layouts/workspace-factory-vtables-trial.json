@@ -1,7 +1,7 @@
 {
   "scope": "Inactive emitted vtable slot inventory. Target addresses recorded; matches do not verify data identity or runtime ABI.",
   "observer_sha256": "d2e5be546b96baeb224858c8c0807540e4d3f01bbc37c1d96e6f2ae4e8cd7ce1",
-  "object_sha256": "09648ec7c38d1090d519077e3b8ca179cae41eef1344b4ed31d5f69d28c40c7f",
+  "object_sha256": "c0ac5e0000b7a7a8c2799aa78ab7be472d6d12f04e3256e0be40c0b844fd2fbb",
   "tables": [
     {
       "symbol": "??_7?$CComObject@VCWorkspace@@@ATL@@6B?$Listener@VWorkspace@RBX@@VDrawChanged@2@@RBX@@@",
@@ -155,7 +155,7 @@
           "offset": "0x0",
           "symbol": "?QueryInterface@?$CComObject@VCWorkspace@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
           "original_target": "0x402730",
-          "local_body_matches": false
+          "local_body_matches": true
         },
         {
           "offset": "0x4",

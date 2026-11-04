@@ -4,7 +4,7 @@
     {
       "address": "0x5c7290",
       "size": 23,
-      "symbol": "?getName@?$Named@VModelTool@RBX@@$1?sAnchorTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VModelTool@RBX@@$1?sAnchorTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "bindings": {
         "?flag@?1??get@?$NativeToolName@VAnchorTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979674",
         "?callDoDeclare@?$NativeToolName@VAnchorTool@RBX@@@RBX@@SAXXZ": "0x5c6180",
@@ -35,7 +35,7 @@
     {
       "address": "0x5c7360",
       "size": 23,
-      "symbol": "?getName@?$Named@VModelTool@RBX@@$1?sLockTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VModelTool@RBX@@$1?sLockTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "bindings": {
         "?flag@?1??get@?$NativeToolName@VLockTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979678",
         "?callDoDeclare@?$NativeToolName@VLockTool@RBX@@@RBX@@SAXXZ": "0x5c6190",
@@ -64,9 +64,9 @@
       }
     }
   ],
-  "source_sha256": "c8cac12f61862ebad66dcaa6a36aa4446bd5912292f2abaf5e7f264a8b40e82e",
+  "source_sha256": "907e28131c589bcc162673f6fa3ea134d7f23fc0159083548dbdd0ec0cc90048",
   "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
   "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
-  "object_sha256": "2cc5e21e4e8ef6f1bb022e7a30d25ee8f706acdd1a0e3e6cc947fea468c5883f",
+  "object_sha256": "1e37eadc1953d9b460cc8ec1f2599c7ab3ce2f9b1b6945eae6c73d25b87868cf",
   "observer_sha256": "2242b280b14e68b4df53f9aeeab74fbcbde3fb1c2e842a7afbe976c228c34638"
 }

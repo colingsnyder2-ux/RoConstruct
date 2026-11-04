@@ -3,7 +3,7 @@
   "observer_sha256": "4a86682c2522f3fb2baa58fdfc4876c7e9dd203628920e82f4508de0c4f0d0f5",
   "source_sha256": "2ec63bbc85c593585c849c14b400dd74f9c63a55958bee4e138e774766224c2f",
   "header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
-  "object_sha256": "ab6a0eee17b42a2c671ca581c7e1f293ddeb06110e2b2841d2b58ac797ebc96a",
+  "object_sha256": "e8b296d5ee72ac85cc41248c69bacbbf936268b9486c4e1bcdc9aac05bc35b82",
   "address": "0046c230",
   "symbol": "?ExecScript@CWorkspace@@UAGJPA_WUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z",
   "candidate_size": 580,
@@ -49,8 +49,8 @@
   ],
   "profile": {
     "scope": "Exact body and selected call targets; SAFEARRAY result supported by original typelib and helper conversion path.",
-    "object_sha256": "f9e2819da3dc2c5bd7436dc056a9c3b89d7902b3b90f805d4488e0de96a86fa6",
-    "profile_sha256": "8bd0b836f857a0b5489eda21c5608cb4b9e70ef600ec2ca5c5823082afb59665",
+    "object_sha256": "d177957fb00c08d5572587336eb3bf3e2ed9d7c81b2f1e6aa113600fc7876b4d",
+    "profile_sha256": "1b81dbcef220309333bcdcc88cea58043ee376da46173e41834ca9a0e6c695d3",
     "size": 511,
     "exact": true,
     "bindings": {

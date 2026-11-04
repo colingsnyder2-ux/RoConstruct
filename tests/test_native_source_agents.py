@@ -235,7 +235,7 @@ def test_agent_config_requires_codex_and_no_dollar_budget():
         gui_worker.validate(dict(config,max_cloud_cost=1),check_model=False)
 
 
-@pytest.mark.parametrize('cap',[10,1])
+@pytest.mark.parametrize('cap',[10,5,1])
 def test_ten_tool_agents_probe_and_merge_distinct_bodies_without_losing_neighbors(tmp_path,monkeypatch,cap):
     import re
     from roc import native_sweep as sweep, match

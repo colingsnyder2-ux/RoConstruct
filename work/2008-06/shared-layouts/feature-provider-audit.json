@@ -1,6 +1,6 @@
 {
   "scope": "Audit of available filtered donor archive member, not proof of runtime selection, callee binding, or complete ABI. Factory and property destructor match; setHole and property initializer differ.",
-  "archive_sha256": "8d3709edd4a36fca0f61fb6c5d41551fb7353f6b82f4c29738256a29cd7f18c1",
+  "archive_sha256": "6df73d46dd0f6e017d9bdd9253f0e44974a22800be41152e13b2a7626cdbdeb2",
   "member": "Feature.obj",
   "member_sha256": "d663c75660822e043631fd0e7fbea52247f44ee7222da1f561d8332632df2cd3",
   "methods": [

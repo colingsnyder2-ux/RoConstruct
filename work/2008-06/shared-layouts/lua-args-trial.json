@@ -4,8 +4,8 @@
   "observer_sha256": "9ebb8ac241bf978b31a08ff65aecaf9dbb4c1a9569bb96bc905efd198ee66efa",
   "lua_args_header_sha256": "912a23a687552ac6955f8e355ba2a6fd7055cc9354416013e4057721b63cb7e5",
   "value_header_sha256": "45c53b5b025ca601e435c940fa70fa3bf560ada1f886d63bb6dab08553ebb070",
-  "profile_sha256": "b1cc25428bbcac42ba5b91d4b5108271d15fa0aca4d0071dda8354f4b12fcf86",
-  "object_sha256": "8d3dd8ecf2deae9d30523a6d7992204f70e30480435ea9d942b8668c98f00684",
+  "profile_sha256": "50fd2679eb0e95983ab086648ffc76cdf50f4daaa0069f1c691fa6d24a3fe528",
+  "object_sha256": "c3d268e28d6d857c6e2383ff17cf20427509af5ba142a615d945b4992d52c148",
   "methods": [
     {
       "symbol": "?push@LuaArgs@@QAEXVCComVariant@ATL@@@Z",

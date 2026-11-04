@@ -3,7 +3,7 @@
   "overlay_sha256": "b465ba5e4b2b2c27ab65ecf29c786e4c18cf8b6983570800e285059397ae3416",
   "source_sha256": "eec8f748fc34b75b2224a3b92960789f2ec37b8319b4e4d75ceee69b30273bf0",
   "observer_sha256": "f9a1941d1154dbf7b7ccb4c3cec243f85d8f7eac46b804ec4c032d1f4cb93822",
-  "object_sha256": "4ddc285cb0369b6dc3251acdd0c967f9fcd9b493811bb3237e2439b4e7fd9f1f",
+  "object_sha256": "36671203b2a72a4b53710a20dbb39b503be3955f6509bba8f2181d508b527776",
   "flags": [
     "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\property-abi-trial",
     "/nologo",
@@ -152,9 +152,9 @@
   ],
   "reflection_overlay_sha256": "0cbf5325ea6e28f129b6371e514f18d503cc2a42f71d3b4dde03ad8b168da669",
   "fixture_sha256": "b8882cc6900212f6dbe74149f7aee5c71fa45977d0f447c6dbe66e68d9b26206",
-  "fixture_object_sha256": "dba1d90f0a7b657c215d6e37943a8d3257c0aee7c857f02764db9a8a6266b127",
+  "fixture_object_sha256": "19459ee7f0ab7f0e0117df08bd1fee46f95befa3129da68d1e7f074717dfb7c8",
   "variant_fixture_sha256": "7ab937acd63a8c37b2823eedd0e2f882390c0e36deefd570e3795f3b5435201f",
-  "variant_object_sha256": "791448ce912c80866cd86cacc17f353ccad288c924d69aca8b6cbf2b6fb07e50",
+  "variant_object_sha256": "0873c8773688a17e491b4e0699557659a0910fee7585e4800ad4eb3dac720d45",
   "candidate_slots": {
     "0": "??_E?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UAEPAXI@Z",
     "1": "?isReadOnly@?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@RBX@@UBE_NXZ",

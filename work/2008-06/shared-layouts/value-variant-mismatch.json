@@ -4,7 +4,7 @@
   "observer_sha256": "2a05d44153ef7507b60d91b8a7a25042fb8c939dacb29ae8fa50ccb8811cac9d",
   "header_sha256": "45c53b5b025ca601e435c940fa70fa3bf560ada1f886d63bb6dab08553ebb070",
   "overlay_sha256": "f3cb0317be76d7754de0895c4756e1162a1e295f0db1802f17247d3aaaa38d0b",
-  "object_sha256": "ee4aa7dc802d8cddee6cec437e43b04019fda4c7ad93e61ce5fe6fafdb0ffa42",
+  "object_sha256": "9d12a925a4b85fda1dc0c01bef2ac00bd14505e852ecbf8f2b087b9d1baa0c4b",
   "symbol": "?valueToVariant@@YAXPAVValue@Reflection@RBX@@PAUtagVARIANT@@@Z",
   "address": "00416370",
   "candidate_size": 635,

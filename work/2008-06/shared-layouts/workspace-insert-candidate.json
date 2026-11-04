@@ -3,11 +3,11 @@
   "inputs": {
     "rebuild\\2008-06\\tests\\record_native_workspace_insert.py": "4fee95b3983c964a3f96ab37b39160200db7c2ba0901c4fbdc8b9a7f741913f6",
     "rebuild\\2008-06\\native-classes\\CWorkspaceInsert.cpp": "fec648b61f39ea96d03984b94b5d0b5f22883e7f3b06e66ecff83285242af55b",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "0afe97a9a03851a77495d43048b08ab42e515715ea7e6ab13ce8ced5557209c1",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "74b952f551c822bf600e465fbd975d3767f4be8e2a67d30e06edfd2e103a10ac",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "9ebdd337d8e9401e9cee68045beec31262b1b72402874e9da7cc4323a6efa5f0",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "d222c9dc5dfa7cfccfa115597fa72ea02bbfa90965480e9e7c1295c40634a147",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "64d5e38e5f4b23e475e8c9d838e844afd201de8d8c038c76bba5619ac1b6f643",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "f351a88ecde30b3f000c66b116fec565f6022f768e6572654f5a3a1a327b1051",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "1b8e7d9d3df6f06d549c3f1c25c5bf820b005411e1ddd547e9bac631900a0ace",
     "rebuild\\2008-06\\native-headers\\util\\RunStateOwner.h": "a7f28d3b844e55269b3bf457b25216c74ea8bfe019e1da5396f761154e7a974b",
     "rebuild\\2008-06\\native-headers\\v8xml\\XmlSerializer.h": "64605ae487e3015a62cb8367127abe6953f19824915d2d6fcd2d182dd4b3ac86",
     "rebuild\\2008-06\\native-classes\\SelectionFront.cpp": "2aa88ff08298e9ac2990091e30c1a90acd45e633682c1d2f78f74c4f4c5c1da1",
@@ -51,7 +51,7 @@
     "/FoWorkspaceInsert.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceInsert.cpp"
   ],
-  "object_sha256": "d1cdfbb139ad6f2268ca63337142f390c85e8e51ce23c7784f256f931fd2079f",
+  "object_sha256": "3ad7c561c33649c1d6dc549a034a8257f4995f5ecff05fcc08407b6b18a4f4d5",
   "symbol": "?insert@CWorkspace@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@_N@Z",
   "candidate_size": 693,
   "original_size": 606,
@@ -139,7 +139,7 @@
       "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertNativeProfile.obj",
       "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertNativeProfile.cpp"
     ],
-    "object_sha256": "a87d0514abc835a8ea8d017518eeac5dfeed3ba0ed3cc8162e81b8bc90e433e1",
+    "object_sha256": "5e59c865e6913b402d7650d938de9bd16cfbab7c80a611710cb59350903d4f75",
     "original_msvcp90_import": "?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ",
     "main_size": 606,
     "main_relocation_normalized_exact": true,
@@ -237,7 +237,7 @@
         "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertImplicitDtor.obj",
         "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertImplicitDtor.cpp"
       ],
-      "object_sha256": "1f4cd807afd678d4ab16d4457327697883512b4b89d8173cfb9ec359281b158f"
+      "object_sha256": "26714d98c13f55a65e2d7991ca74caf8003b9ff5f9c8e2464782ddcbadc9d5e0"
     },
     "exception_funclet": {
       "size": 91,

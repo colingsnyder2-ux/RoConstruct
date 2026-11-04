@@ -1,5 +1,10 @@
 {
-  "scope": "Exact inactive CClassImages constructor/destructor; deleting destructor, vtable selection, image-resource and runtime ABI unproven.",
+  "scope": "Exact inactive CClassImages constructor/destructor; vtable selection, image-resource and runtime ABI unproven.",
+  "deleting_destructor": {
+    "address": "0x413400",
+    "size": 36,
+    "symbol": "??_GCClassImages@@UAEPAXI@Z"
+  },
   "methods": [
     {
       "address": "0x413230",
@@ -36,7 +41,7 @@
     }
   ],
   "source_sha256": "b300104f826038d3f8466b8098ef5e3963961a758ba2cc9e42dd068cc8ae0605",
-  "object_sha256": "c65748c64140e3ba4169ce06f97c75aad3af8b5ebf3a14c5e15d4734217ad92f",
-  "link_object_sha256": "7b5ff162cd8b723c55f90f13944464814656d86ae78b90d3e4977747d51a0ab6",
-  "observer_sha256": "336f77823195d96fc8fe105615163b263e20a9f115d771d26e2e4e04f50ef78e"
+  "object_sha256": "2ad5c368a78ac41a4d3a867a4c39b4a4de4d6706af905ef0ba000c61bf5a624d",
+  "link_object_sha256": "ce8ae9caf487c2afa61214aa75da1c400ce39f2bfd151b32ac98c674459253da",
+  "observer_sha256": "53b78cd578839166d01424c31e7030ba2d01481f01f8a7654cbf0c72199e9bd2"
 }

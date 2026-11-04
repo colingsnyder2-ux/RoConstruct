@@ -1,5 +1,5 @@
 """Link isolated ResizeTool candidate into the diagnostic; never run the result."""
-import hashlib, json, re, sys
+import hashlib, json, re, subprocess, sys
 from pathlib import Path
 root = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(root))
@@ -55,8 +55,20 @@ if test_alias:
     assert missing.replace('YA_N','YAH',1) == present
     args.append('/alternatename:' + missing + '=' + present)
     objects.append(obj)
-args += list(map(str, objects))
-code, log = rebuild.run(rebuild.toolchain(21022), 'link', args, work)
+if '--bool-test' in sys.argv:
+    assert axis and not test_alias
+    trial = json.loads((proof / 'test-move-bool-trial.json').read_text())
+    obj = out / 'NativeTestMoveBoolTrial.obj'
+    assert sha(obj) == trial['object_sha256'] and trial['exact']
+    caller = rebuild.coff_externals((out / 'NativeSubdivideMoveTrial.obj').read_bytes())
+    callee = rebuild.coff_externals(obj.read_bytes())
+    assert caller.get(trial['symbol']) is False and callee.get(trial['symbol']) is True
+    objects.append(obj)
+selected = {str((root / path).resolve()).lower() for path in base['objects']}
+args += [str(obj) for obj in objects if str(obj.resolve()).lower() not in selected]
+response = work / (prefix + '.rsp')
+response.write_text('\n'.join(subprocess.list2cmdline([arg]) for arg in args) + '\n')
+code, log = rebuild.run(rebuild.toolchain(21022), 'link', ['@' + str(response)], work)
 (work / (prefix + '.log')).write_text(log)
 errors = [line for line in log.splitlines() if re.search(r'\berror LNK(?:2001|2019|2005)\b', line)]
 receipt = {'scope': 'Isolated incompatible ABI diagnostic; do not run. No live swap or gate claims.',
@@ -65,5 +77,5 @@ receipt = {'scope': 'Isolated incompatible ABI diagnostic; do not run. No live s
            'lifetime_receipt_sha256': sha(proof / 'resize-tool-lifetime-trial.json'),
            'methods_receipt_sha256': sha(proof / 'resize-tool-methods-trial.json'),
            'part_receipt_sha256': sha(proof / 'part-resize-trial.json'), 'observer_sha256': sha(Path(__file__))}
-(proof / ('resize-axis-test-alias-probe.json' if test_alias else 'resize-axis-document-probe.json' if axis else 'resize-document-probe.json')).write_text(json.dumps(receipt, indent=2) + '\n')
+(proof / ('resize-axis-bool-probe.json' if '--bool-test' in sys.argv else 'resize-axis-test-alias-probe.json' if test_alias else 'resize-axis-document-probe.json' if axis else 'resize-document-probe.json')).write_text(json.dumps(receipt, indent=2) + '\n')
 print('Resize probe: exit', code, 'errors', len(errors), 'baseline', len(base['errors']))

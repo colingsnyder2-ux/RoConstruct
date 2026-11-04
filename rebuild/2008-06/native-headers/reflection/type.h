@@ -74,7 +74,7 @@ namespace RBX
 
 			// Value constructors 0042d200/0042d240/0042d280 take const references.
 			template<typename ValueType>
-			Value(const ValueType& value)
+			__declspec(noinline) Value(const ValueType& value)
 				: _type(&Type::singleton<typename ValueType>()),
 				  value(value)
 			{
@@ -96,6 +96,12 @@ namespace RBX
 			T cast() const
 			{
 				return boost::any_cast<T>(value);
+			}
+
+			template<typename T>
+			const T& asRef() const
+			{
+				return boost::any_cast<const T&>(value);
 			}
 
 			// not in resym but it might exist

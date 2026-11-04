@@ -26,7 +26,7 @@ code, log = rebuild.run(rebuild.toolchain(21022), "cl", flags, out)
 assert code == 0, log
 obj = (out / "NativeInstanceLifetime.obj").read_bytes()
 results = []
-for address, prefix in (("0055b7e0", "??0Instance@RBX@@QAE@XZ"), ("0055b960", "??0Instance@RBX@@QAE@PBD@Z"), ("0055a540", "??1Instance@RBX@@")):
+for address, prefix in (("0055b7e0", "??0Instance@RBX@@QAE@XZ"), ("0055b960", "??0Instance@RBX@@QAE@PBD@Z"), ("0055a540", "??1Instance@RBX@@"), ("0055a470", "?createChild@Instance@RBX@@")):
     target, target_relocations, _ = match.target("2008-06", address)
     name, body, relocations = next((name, body, relocs) for name, body, relocs in match.coff_functions(obj)
                                    if name.startswith(prefix))
@@ -35,7 +35,8 @@ for address, prefix in (("0055b7e0", "??0Instance@RBX@@QAE@XZ"), ("0055b960", "?
 sections, symbols, definitions, _ = match._coff_data_index(obj)
 for address, expected in (("0055b7e0", [("??0Guid@RBX@@", 0x5a8300), ("??0?$Described@VInstance@RBX@@", 0x55b780), ("??0?$Notifier@VInstance@RBX@@UChildAdded@", 0x5e9ec0), ("??2@YAPAXI@Z", 0x6a0920)]),
                           ("0055b960", [("??0Guid@RBX@@", 0x5a8300), ("??0?$Described@VInstance@RBX@@", 0x55b780), ("??0?$Notifier@VInstance@RBX@@UChildAdded@", 0x5e9ec0), ("??2@YAPAXI@Z", 0x6a0920)]),
-                          ("0055a540", [("??1SignalSource@Reflection@RBX@@", 0x56bd40), ("??1?$GuidItem@VInstance@RBX@@", 0x4b3760)])):
+                          ("0055a540", [("??1SignalSource@Reflection@RBX@@", 0x56bd40), ("??1?$GuidItem@VInstance@RBX@@", 0x4b3760)]),
+                          ("0055a470", [("?create@?$AbstractFactoryProduct@VInstance@RBX@@", 0x420190)])):
     result = next(row for row in results if row["address"] == address)
     start, section = definitions[result["symbol"]]
     table = sections[section]
@@ -56,7 +57,7 @@ for address, expected in (("0055b7e0", [("??0Guid@RBX@@", 0x5a8300), ("??0?$Desc
 paths = [source, ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", Path(__file__)]
 receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
-               compiler_build=21022, flags=flags, compile_exit=code, methods=results,
+               compiler_build=21022, flags=flags, compile_exit=code, object_sha256=hashlib.sha256(obj).hexdigest(), methods=results,
                scope="Selected direct calls verified; GuidItem destructor, remaining virtuals and runtime linking remain unverified.")
 output = ROOT / "work/2008-06" / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)

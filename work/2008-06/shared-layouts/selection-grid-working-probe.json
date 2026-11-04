@@ -1,15 +1,15 @@
 {
-  "revision": "3238b08c7b1288996f09aaf57ab92f899ba8f234",
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
   "sources": {
     "rebuild\\2008-06\\tests\\record_native_selection_grid.py": "019f1c6e20a66c0b13535100bbb57e3c09e8eeaf327953d024627bc8fe3ec4ef",
     "rebuild\\2008-06\\native-headers\\SelectionGroup.h": "009c20d44a8a6c5caeb6677ca0825083f1bcffdf33dbe7f6f79de0459735b792",
     "rebuild\\2008-06\\native-headers\\CPropGrid.h": "f8c49281322309579f6916350ccb9a7da22d2d1092e8a70bd14576464d9d383e",
     "rebuild\\2008-06\\native-headers\\CSelectionPropGrid.h": "13fafeb53f903ffc62b81903ecdd8190eadcb09db62ba71e52130798b658e09a",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "8b2b081e02f7c3d78ab02293161263b4392cafcb62398135a948b82f02f296c6",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "b6a0cfa8124e4724bf6288321bb3a6bbe33f38abe174bad5b3a559cd86861a0f",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "0555a158c6dd92c37446a4c7157870812b4114ed96fe5028440aeb455b457200",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "837e080460a07c5f81177bcb3e7d420eb5cf74d403ad47fcf22e0734993969ea",
     "rebuild\\2008-06\\native-headers\\v8datamodel\\SelectionChanged.h": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
     "rebuild\\2008-06\\native-headers\\v8tree\\PropertyChanged.h": "c5fc5062ea7482f19ed3875f42d9823f54bfbecafc2dacaf09212bee33c715ca",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "1a162e664d337de190053f0f2f6fa696669366fe54d7d8e0218b8d4877d29667",
     "rebuild\\2008-06\\native-classes\\DataModelLock.cpp": "91b5b385524cf57fedd5dbbf7a5b4bcb6557ef969e105d11ace5416776a625f1",
     "rebuild\\2008-06\\native-classes\\CPropGridItem.cpp": "454a4adfb9c4cbaa2f843de7406167a8c4d1c648049416b687a3f23bd9fb0312",
     "rebuild\\2008-06\\native-classes\\CPropGridRebuild.cpp": "b47411145d6c7818adf0b4e861ab8279bd97ba88c81df848357a79e60d1a7055",
@@ -453,15 +453,15 @@
     "CPropGridRefresh": "DataModelLock.cpp definitions visible in same translation unit"
   },
   "objects": {
-    "NativeCPropGridItem.obj": "fc2f7a24fe18873e21bc2fd6dbbeba10ea48fce0ab1f903f4e30c6f3662db591",
-    "NativeCPropGridRebuild.obj": "fb2c70f9297c16e3e1d8cd81f1342b549c9915a904aaba61321bbfd1640dac2f",
-    "NativeCPropGridMap.obj": "1977433fbd8a53315f5460cab966cf1e4fc2b37285d6f9409c9debe92aa8b654",
-    "NativeCPropGridRefresh.obj": "9415e903b17e4c2d1e73515f173cf4b15b492ef9101b9adfd3e162d6a5b54081",
-    "NativeSelectionGroup.obj": "ad643b619a155a574966d1732b0d4520acd3777739ed7f3056ea7b9bc4c33349",
-    "NativeCPropGridInstances.obj": "09719e6f60adc358414ec4ba10778477c7509e5d54aa82645e97f67bedaa7ef9",
-    "NativeCPropGridEvents.obj": "8b89f4b0bf00327b7d5cb725df33ef485fbd5f570857c6fa30a1283a1b0c089b",
-    "NativeCSelectionPropGridEvents.obj": "88e4fcfc0524d04832ae9038cc48196b13100ade6d4b3c8411153bb25ee1d0d6",
-    "NativeCSelectionPropGridSelection.obj": "6e455acd8ac1c472e9881363021ab5a0b08405039cc967b21156cdd00de277d3"
+    "NativeCPropGridItem.obj": "1fa0ac6eb6312de50ff0eaabf52c1cee1d143da5483f8725cc873b2b2dca98f7",
+    "NativeCPropGridRebuild.obj": "8bf10aa96ac9bcac77a03f03a9f42ce9d667800b5c708699c7f7c83b78286aa8",
+    "NativeCPropGridMap.obj": "37dc30efbaf736d1481b0a24732be858c19e5c75e62e9cbeebee7fabf011352c",
+    "NativeCPropGridRefresh.obj": "322b3b2afda1a2cf5e334c0797f69525b6ec7be97be42a7c76900a47560c9beb",
+    "NativeSelectionGroup.obj": "5d1cc3c3406393ba05108d1bd0b79ea945ec09f9d64bd7a0e7e0807e3124466f",
+    "NativeCPropGridInstances.obj": "6d073d0c0a1d0c086a4e83925a8ee2c6d7008efa9b12ea4d4a74a72e66db3bea",
+    "NativeCPropGridEvents.obj": "6b3acc019828014efd598fc751aab1261981a1935bf53f82c08d54c7ee7af5e6",
+    "NativeCSelectionPropGridEvents.obj": "45e436fd7247246fdf2c19ed2578bd66605bf56640e3821e7be8fed87e3d898b",
+    "NativeCSelectionPropGridSelection.obj": "76b904676eafcd27f40d40fb731cf4305df59d8e35963fa8ccd4d6b5d2fd07c1"
   },
   "scope": "Inactive typed recovery. SelectionGroup is a recovery name. Descriptor-keyed map of shared Instance vectors replaces disproven set<string> at CPropGrid+0x218. Fourteen body matches, selected bindings, two-message map and original one-slot Item RTTI interface; full helper closure, other containers, property-grid behavior, linking and runtime remain open. No game integration credit."
 }

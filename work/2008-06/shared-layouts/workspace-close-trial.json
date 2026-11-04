@@ -2,8 +2,8 @@
   "scope": "Inactive native Close wrapper matches with exception handling disabled; cleanup body, MFC state linkage and runtime ABI remain unproven.",
   "observer_sha256": "729ebdb10a4261fe49801bfdf50bdf61db3597fd0b24e6be6d5df38e0e8027f5",
   "source_sha256": "7fd7e242a172f06db9b09de20347f5145d4f4c4c27c1b117c7dd2ec30f5ad60d",
-  "profile_sha256": "4d2f7870e21a6f9e918f41e8ad8cceb80e5a1792e4d44c58f580234b1d503018",
-  "object_sha256": "b14908124b928997cb03209e39e5fd6b1330adff060c539b34d961d247f6eb6f",
+  "profile_sha256": "b888a6ca53c7508f94e44f44c4200768d34f52dccdfe5bf4fc1b5332636bcc35",
+  "object_sha256": "3c0cb73487e53257a78df322651e2534a95d06186c78eaf5a70746068e222ae2",
   "address": "0046b500",
   "symbol": "?Close@CWorkspace@@UAGJXZ",
   "size": 68,
@@ -18,7 +18,7 @@
     "symbol": "?cleanup@CWorkspace@@QAEXXZ",
     "candidate_size": 242,
     "original_size": 242,
-    "exact": false
+    "exact": true
   },
   "flags": [
     "/nologo",

@@ -1,10 +1,5 @@
 #include "CMainFrame.h"
-#include "v8datamodel/BrickColor.h"
-
-namespace RBX {
-class FillToolColor : public Notifier<FillToolColor, BrickColor> {};
-class FillTool { public: static FillToolColor color; };
-}
+#include "v8datamodel/ToolsPart.h"
 
 CMainFrame::~CMainFrame()
 {

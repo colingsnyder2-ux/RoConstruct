@@ -11,5 +11,4 @@ void FlatTool::applyToSurface(Surface* surface) {
     surface->flat();
     surface->getPartInstance()->join();
 }
-void forceDestroy(FlatTool* value) { delete value; }
 }

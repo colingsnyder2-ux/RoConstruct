@@ -1,8 +1,8 @@
 {
-  "source_sha256": "94e47106e75482752a024102b269c2b634c237cf9aaed28ffd4fe9bf4bfbc294",
-  "header_sha256": "9dda3c77e2cbc83796c33e262b800644d2e04427fbcfa2f56d557c1863afb5d9",
+  "source_sha256": "a36f212c3086235424ddde503bc2dfc9836a173368f8e611a4469ca663562e54",
+  "header_sha256": "d8ae6f7123ac55478013ded3b8d641e1b1386168506f5dc09ce59ee9a25623eb",
   "observer_sha256": "72d8e0d136f6b1406f91c81031989ca05df902b273b974c718912f76e7b610e3",
-  "object_sha256": "002f06b7ffc8ccb6b7c1fb0b5071bbdf33cdeda88a7599db0b32c3730ba895ca",
+  "object_sha256": "12cf0a857bc4e4341c3f493785361aaf3091eb953dda084a714bffbdfdb12f0b",
   "flags": [
     "/nologo",
     "/c",
@@ -44,22 +44,22 @@
   "methods": [
     {
       "address": "0058a8d0",
-      "symbol": "??$?0PBD@?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@IAE@PBD@Z",
+      "symbol": "??$?0PBD@?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z",
       "size": 153,
       "calls": [
         {
-          "symbol": "??$?0PBD@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@IAE@PBD@Z",
+          "symbol": "??$?0PBD@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z",
           "target": "0x5871d0"
         },
         {
-          "symbol": "?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PBDBV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+          "symbol": "?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
           "target": "0x58a2a0"
         }
       ]
     },
     {
       "address": "005871d0",
-      "symbol": "??$?0PBD@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@IAE@PBD@Z",
+      "symbol": "??$?0PBD@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z",
       "size": 97,
       "calls": [
         {
@@ -70,7 +70,7 @@
     },
     {
       "address": "0058a2a0",
-      "symbol": "?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PBDBV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "symbol": "?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
       "size": 101,
       "targets": {
         "??_B?1??classDescriptor@": "0x9759e8",
@@ -84,7 +84,7 @@
     },
     {
       "address": "007fd930",
-      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PBDBV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "symbol": "??__Fdescriptor@?1??classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
       "size": 10
     }
   ],

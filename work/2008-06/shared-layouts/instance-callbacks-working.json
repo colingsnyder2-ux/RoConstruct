@@ -1,7 +1,7 @@
 {
-  "source_sha256": "022629cca6a426cafccbb229a341dce1255a2e1c66cb3179843a9c36b37013f6",
-  "observer_sha256": "bbf719d2e6e5d6a3d663f8dd4e6bf3e0569d9814f104ef83785a794ef05c39a7",
-  "object_sha256": "f02b8104e9564ada995b50c3d065db4d9dd404e3e611827586e9fd42580873b9",
+  "source_sha256": "875a0d2f8c8f56c4284ca4da2f3df809840a77dfb872d0c539de99208c94ac19",
+  "observer_sha256": "edf933266fe69c62e8a5184485273cd06603efa0b6f168c8d29edbd50c5e60e9",
+  "object_sha256": "d917505e7ecacc537692edf6b45159c5fd06c585f284e01dd22bdc1662250e82",
   "flags": [
     "/nologo",
     "/c",
@@ -42,6 +42,18 @@
   ],
   "callbacks": [
     {
+      "slot": 1,
+      "address": "0055af90",
+      "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 57,
+      "bindings": {
+        "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x8023d8",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c",
+        "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "0x973d54",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      }
+    },
+    {
       "slot": 2,
       "address": "0068e880",
       "symbol": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
@@ -76,6 +88,12 @@
       "address": "0047d410",
       "symbol": "?onLastChildRemoved@Instance@RBX@@UAEXXZ",
       "size": 1
+    },
+    {
+      "slot": 12,
+      "address": "00458e90",
+      "symbol": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z",
+      "size": 3
     },
     {
       "slot": 15,

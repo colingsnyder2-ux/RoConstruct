@@ -2,12 +2,12 @@
   "scope": "Inactive layout and twenty-seven matched bodies; descriptor ABI, context identity, record behavior, data/vtable linkage and runtime remain unverified.",
   "inputs": {
     "rebuild\\2008-06\\tests\\record_native_change_history.py": "e603d80fdbc86fbdba2c2d6b301d7ba971227965850b71128ca09f9b36a6a05c",
-    "rebuild\\2008-06\\native-classes\\ChangeHistoryLifetime.cpp": "196e6c20556a91f5689a7f517d01cdac189da56a98521b5b40ec848a01a92e41",
+    "rebuild\\2008-06\\native-classes\\ChangeHistoryLifetime.cpp": "5d891215bb4030937a7e84365e714d30a7310561fc5b98d597c289363a1c6f0b",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryQueries.cpp": "4c7ff0f056c177d6646ac921b403dfa9609c9c0eca6b026c00c41db55df00bc0",
     "rebuild\\2008-06\\tests\\NativeChangeHistoryLayout.cpp": "a2a33d8545ae463b186587fbdf6a42028a6b12e4ddcb0a01c0dfcb52107bfb28",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "283bcfc47ad4b6e890aba7c0c09ae3eb51c2f2f6a0f0630080d045bbd8d63bb2",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\HistoryRecord.h": "b2dc12bd4ae98b1538a6c45cc6851c4f99b2ebffdf2b7be47b2438e8c92e7e1f",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "64d889bae886676a4704255ae912fe0a7ec459b418815fd9d3e68a603f1a5faf",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "7e08651285f4d1b83454badc77beffe89e478ba2b0c9c2977ead4e1782e39941",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\HistoryRecord.h": "f36d0b4e4fc4dd69fc27275d9ea6874e98d5d3649180204f60f24571eea24b1d",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "631348e599ccf39503dd0348337d980858cc32afa8427d2bb1de33a414b0a5a2",
     "rebuild\\2008-06\\native-classes\\ChangeHistoryPlayback.cpp": "8130590e03b93e5ba8ba247a86a542c15d612bf3a91305cf87755b64bda8042b",
     "rebuild\\2008-06\\native-classes\\HistoryRecordPlayback.cpp": "19b6e5124354a7dd6b86797b29df320802f550bbbd2e052df87fb6652391cb16",
     "rebuild\\2008-06\\native-classes\\HistoryItemPlayback.cpp": "f0e52b047bfa2da5d8c6b6097d0686e214133b4042f41ba872cafd1e3e1a4d01",
@@ -19,17 +19,17 @@
     "rebuild\\2008-06\\native-classes\\HistoryItemState.cpp": "e45bae7fcf3483ebd5a16786537fe738c708e209486092f1eefcb1ff0b6b9327"
   },
   "objects": {
-    "lifetime": "9d05371de2c6c31a1ab0a456c7a0e8fc6d159ced97c409802fe4d28f006f5085",
-    "queries": "5f8d1ec44e0b2b40d32317905f9a6d092e173c6a490f4baa00127d332049125b",
-    "playback": "25679c3d27292903b533fc7a955ab1c04085d1bfc357357c80343b0035a161a7",
-    "record": "71c69e463b5b934508d8c945f0a0554223c55a33f27e30dec232e2021d1eadd8",
-    "item": "0bf43a1ceb7b38983050773d9b48c32759e03a02286183b73667568a7267624d",
-    "enable": "63d09371ab74af7115f9ffc535ae6a06f605f153906072e86d3e331a723f3617",
-    "reset": "ec326123ffd8d92fb9eb4a03a7e032dc1c475745503215fd4d6bdd5bf67e2c01",
-    "record_lifetime": "1aba2af1ad0530002e286210f3c0117ef06681c305cc4c341c0644c0ffd12270",
-    "events": "cfb471bcb78115c4de8e13670af7b79bea28e1276a4e10c0ad70b88522ac2637",
-    "lookup": "da41bdd8e8b5d9a09d8ae10adde7165dbf66647f1f5c45a4612103d13f59d536",
-    "state": "90ead1013dde0128a4178644d159f77533d171fdf33b9e58d9f198ff6f62e3a7"
+    "lifetime": "12061537bb05264ae606ca447b9a0bfb60023fd02ad716cc19edd4fdf9c53be9",
+    "queries": "fd73957c53cebcdb82751b939666365b000cdff5d1b51ca1eed180af5e9245cf",
+    "playback": "0b10dc1e63bd03547c0472509b97dac4b08bd16f48eaecb5f56fe2c87f43cdb3",
+    "record": "e2e84177bf1ab0d64c3a9b9d6e33b8274bcb359977406d0b06db91a4b8ea32a2",
+    "item": "8f90c6149aed67a68d3ba75e7b75898bcdd960ef116d7dce03565d176ef08813",
+    "enable": "c288a8394ca0d97959be72a2404e0dec538a74fb9c547532a8ed28898c368ab7",
+    "reset": "c99c351634a6d7203d8b02e9855f527945a168fbac360e81d84f1cba916584f5",
+    "record_lifetime": "72be3efa3f1a5966466ec9d123c63b29566eef43ce86142d3a1d83e352a01365",
+    "events": "6bbfabb3c151c4486ec13ae1d70d6c6c7485cb1a3d78960f97159546405cf83d",
+    "lookup": "c9477815f04065b13650b00268072200bd0b55b0836bf37c7db317a93c765936",
+    "state": "b48f53073705bbe9db654243fd2321e2e2fa5c3d4cbabae5797af2456a49eb49"
   },
   "flags": {
     "lifetime": [
@@ -456,7 +456,7 @@
       "symbol": "??0ChangeHistoryService@RBX@@QAE@XZ",
       "size": 268,
       "direct_calls": {
-        "??$?0PBD@?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@IAE@PBD@Z": "0x58a8d0",
+        "??$?0PBD@?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z": "0x58a8d0",
         "??0?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAE@XZ": "0x61a200"
       }
     },
@@ -469,7 +469,7 @@
         "??3@YAXPAX@Z": "0x6a067a",
         "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0",
         "?_Tidy@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@IAEXXZ": "0x682b40",
-        "??1?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@MAE@XZ": "0x587060"
+        "??1?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@MAE@XZ": "0x587060"
       }
     },
     {

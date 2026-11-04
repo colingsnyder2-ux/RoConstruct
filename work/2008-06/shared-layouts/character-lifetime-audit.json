@@ -35,7 +35,7 @@
     "size": 698,
     "exact": true,
     "source_sha256": "e346b299bcebb59334133f9eb0346fee58f5bcf66957deb29957ca352bdae0cf",
-    "object_sha256": "6c331c6f1b3747894a821e90ea49f0bf18d3d2692bde576d83cd8cc9d75b65b2",
+    "object_sha256": "9a1e659ea4d8eeea5df597a2a08067c53372e2d12887086aedd13cb7e95f4298",
     "slots": {
       "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
       "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",

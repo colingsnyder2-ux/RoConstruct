@@ -29,6 +29,7 @@ Read task.json first; it includes the assigned method, baseline diff, target ass
 Full evidence remains in full_evidence_file. Read its deferred sections only for a specific hypothesis; mined stand-ins are not genuine layouts or declarations.
 For include_profile=accepted, use read_only_header_roots instead of native-headers: this separate source lane uses accepted canonical declarations. Do not change any declarations or layouts.
 Start from source_excerpt and baseline diff. Read only relevant source/header ranges; avoid whole-file dumps and broad searches unless a specific missing fact requires them.
+When native_asm_argv is provided, use it for target listings and object diffs instead of ad-hoc disassembly scripts. Names inferred from units are hints. Check call targets and referenced data separately; masked disassembly is not a link proof.
 When initialization or callbacks differ, inspect target_function_pointers: these are original function-pointer targets, not guessed names. Trace their assembly before trusting a mined symbol label. Missing helper definitions outside your allowed edits must be recorded as blockers.
 virtual_dispatch lists original RTTI vtables referring to the target, including inherited entries; it does not establish the declaring class or layout. Compare these classes and their bases with the assigned declaration before trusting a mined method label. Record incompatible ownership as a blocker.
 Edit only the assigned method BODY in the assigned file. If task.json explicitly sets add_method, append only that complete qualified method using its existing genuine header declaration; do not add declarations or fields. Keep signatures, fields, layouts, other methods,
@@ -310,6 +311,68 @@ def nominations(root, texts, names):
     return result
 
 
+def task_class(task):
+    return task.get('class_name') or task['method'].split('(', 1)[0].rsplit('::', 1)[0]
+
+
+def prioritize_classes(tasks, blockers=()):
+    """Group by class; deprioritize host-reported blockers and favor mapped work."""
+    groups = {}
+    for task in tasks:
+        name = task_class(task)
+        groups.setdefault(name, []).append(task)
+    blocked = {item['class_name'].casefold() for item in blockers if isinstance(item, dict) and isinstance(item.get('class_name'),str) and item.get('status') in ('needs-layout-owner', 'needs-linkage', 'needs-codegen', 'needs-evidence')}
+    ordered = sorted(groups, key=lambda name: (name.casefold() in blocked or name.rsplit('::',1)[-1].casefold() in blocked, -sum(bool(t.get('integration_mapping')) for t in groups[name]),
+                                               -len(groups[name]), name))
+    return [(name, task) for name in ordered for task in groups[name]]
+
+
+def exclude_classes(tasks, names):
+    excluded = {part.strip().casefold() for part in names.split(',') if part.strip()}
+    return [task for task in tasks if task_class(task).casefold() not in excluded
+            and task_class(task).rsplit('::', 1)[-1].casefold() not in excluded]
+
+
+def accepted_credits(receipt):
+    """Count distinct server credits, never all module gains."""
+    if isinstance(receipt.get('credits'), int):
+        return max(0, receipt['credits'])
+    return len(set(receipt.get('new_distinct') or []))
+
+
+def split_preflight_loss(claims, group, error, state):
+    """Retain and bisect only a batch with a recorded uncovered exact loss."""
+    marker = '; receipt: '
+    message = str(error)
+    if len(group) < 2 or '; lost exact functions: ' not in message or marker not in message:
+        return False
+    try:
+        receipt_path = Path(message.rsplit(marker, 1)[1])
+        receipt = json.loads(receipt_path.read_text(encoding='utf-8'))
+        losses = receipt.get('uncovered_losses')
+        if receipt.get('accepted') is not False or not isinstance(losses, list) or not losses or not all(isinstance(x,str) and re.fullmatch(r'[0-9a-f]{8}', x) for x in losses):
+            return False
+    except (OSError, ValueError, TypeError):
+        return False
+    ordered = sorted(group, key=lambda row: row[0])
+    midpoint = len(ordered) // 2
+    for part in (ordered[:midpoint], ordered[midpoint:]):
+        partition = integration.digest([key for key, _, _ in part])
+        for key, owner, record in part:
+            record['batch_partition'] = partition
+            record['batch_loss_receipt'] = str(receipt_path)
+            record['batch_losses'] = losses
+            claims.update(key, owner, state, record)
+    return True
+
+
+def native_asm_argv(root, addr):
+    root = Path(root)
+    if (root/'roc.py').is_file() and (root/'roc/native_asm.py').is_file():
+        return [sys.executable, str(root/'roc.py'), 'native-asm', '2008-06', addr]
+    return None
+
+
 def toolkit_profile(root, unit):
     """Follow native includes only; match the existing XTP probe's macro environment."""
     pending, seen = [unit], set()
@@ -354,10 +417,13 @@ p=Path(__file__).parent/'checks'/(uuid.uuid4().hex+'.request')
 p.write_text('{}')
 r=p.with_suffix('.json')
 end=time.monotonic()+600
-while not r.exists():
- if time.monotonic()>end: raise SystemExit('Probe controller unavailable; source retained')
- time.sleep(.1)
-result=json.loads(r.read_text())
+while True:
+ try:
+  result=json.loads(r.read_text())
+  break
+ except (FileNotFoundError, PermissionError):
+  if time.monotonic()>end: raise SystemExit('Probe controller unavailable; source retained')
+  time.sleep(.1)
 summary={k:result[k] for k in ('ok','target_exact','losses','error','diff','data_mismatches') if k in result}
 summary['full_proof_file']=str(r)
 print(json.dumps(summary))
@@ -589,18 +655,35 @@ def canonical_methods(context, method):
 
 
 def stage_submission(record, context, base, output, log, recheck=True):
-    """Translate an existing complete method only; canonical preflight rechecks its ABI/context."""
+    """Translate a complete method or owner-mapped addition; canonical preflight rechecks both."""
     candidate = Path(record['candidate']).read_text(encoding='utf-8')
     method = record['task']['method']
     span = native_methods.methods(candidate)[method]
     matches = canonical_methods(context,method)
-    if len(matches) != 1:
+    append = record['task'].get('canonical_append')
+    if len(matches) != 1 and not (not matches and record['task'].get('add_method') and append):
         return dict(state='pending-mapping', reason='No unique accepted-module method; native source retained')
-    rel, text = matches[0]
     try:
-        body=candidate[span[0]:span[1]]
-        if '::' not in body.split('(',1)[0]:body=method.split('(',1)[0].rsplit('::',1)[0]+'::'+body
-        edits = native_methods.canonical_edits(text, body, method)
+        if matches:
+            rel, text = matches[0]
+            body=candidate[span[0]:span[1]]
+            if '::' not in body.split('(',1)[0]:body=method.split('(',1)[0].rsplit('::',1)[0]+'::'+body
+            edits = native_methods.canonical_edits(text, body, method)
+        else:
+            rel=record['task'].get('canonical_file','')
+            if not re.fullmatch(r'App/[\w-]+/[\w-]+\.cpp',rel):raise ValueError('Owner helper mapping requires an existing canonical C++ unit')
+            if not isinstance(append,dict) or set(append)-{'edits','suffix'} or not isinstance(append.get('edits',[]),list) or not isinstance(append.get('suffix',''),str):raise ValueError('Invalid owner helper mapping')
+            if any(not isinstance(pair,list) or len(pair)!=2 or not all(isinstance(value,str) for value in pair) for pair in append.get('edits',[])):raise ValueError('Invalid owner helper mapping edits')
+            if not isinstance(record.get('original'),str):raise ValueError('Owner helper mapping requires the original source snapshot')
+            path=context.overlay/rel if (context.overlay/rel).exists() else context.tree/rel
+            text=path.read_text(encoding='utf-8')
+            added=method_change(record['original'],candidate,method,allow_add=True)[0][1]
+            edits=[list(pair) for pair in append.get('edits',[])]
+            changed=sweep.apply_edits(text,edits) if edits else text
+            if not changed:raise ValueError('Owner helper mapping requires a nonempty canonical unit')
+            anchor=changed[-256:]
+            edits.append([anchor,anchor+'\n'+added+append.get('suffix','')])
+            integration.validate_patches({rel:edits})
         proposal = dict(mode='native-source-recovery', file=rel, edits=edits, witnesses=[dict(addr=record['task']['addr'])], base_revision=base['revision'])
         if record.get('proof',{}).get('symbol'):
             proposal['expected_symbols']={record['task']['addr']:record['proof']['symbol']}
@@ -733,18 +816,47 @@ def run(config, control, emit):
     matcher = sweep.Matcher(set(match._functions('2008-06')))
     slots = sweep.resolve_compile_workers(config['native_compile_workers'], control.workers)
     broker = ProbeServer(slots, lambda: control.stopping)
-    totals = dict(recovered=0, automatic_recovered=0, merged=0, conflicts=0, submitted=0, accepted=0, pending=0, attempted=0, already_exact=0, baseline_blocked=0, host_merged=0, remote_submitted=0)
+    totals = dict(recovered=0, automatic_recovered=0, merged=0, conflicts=0, submitted=0, accepted=0, accepted_credits=0, pending=0, attempted=0, already_exact=0, baseline_blocked=0, host_merged=0, remote_submitted=0)
     tasks = []
     try:
+        server_jobs = {}
+        pending_integration = False
+        for key, owner, record in claims.submitted():
+            identifier = record['submission']['job']
+            fresh = identifier not in server_jobs
+            if fresh:
+                server_jobs[identifier] = api.call('/v1/integration?id='+identifier).get('jobs',[])
+            jobs = server_jobs[identifier]
+            if not jobs:
+                pending_integration = True
+            for job in jobs:
+                if job['state'] in ('accepted','rejected','failed'):
+                    record['server_receipt'] = job.get('receipt')
+                    claims.update(key,owner,job['state'],record)
+                    if job['state']=='accepted' and fresh:
+                        totals['accepted'] += 1
+                        credits = accepted_credits(job.get('receipt') or {})
+                        totals['accepted_credits'] += credits
+                        control.matched += credits
+                else:
+                    pending_integration = True
         if remote:
             canonical_ready={}
             def canonical_signature():
-                return integration.digest([base['revision'],getattr(context,'defines',''),getattr(context,'flags',''),digest(Path(__file__).read_bytes()),digest(Path(sweep.__file__).read_bytes())])
+                owner_mappings = [(task.get('target'), task.get('signature')) for task in published['tasks'] if task.get('canonical_append')] if published.get('owner_append_mapping') == 1 else []
+                return integration.digest([base['revision'],getattr(context,'defines',''),getattr(context,'flags',''),digest(Path(__file__).read_bytes()),digest(Path(sweep.__file__).read_bytes()),owner_mappings])
             for key,owner,record in claims.remote_submitted(canonical_signature()):
+                target = record['task'].get('target')
+                current = next((t for t in published['tasks'] if target and t.get('target') == target), None)
+                if target:
+                    for field in ('canonical_file','canonical_append'):
+                        record['task'].pop(field, None)
+                        if current and field in current and (field != 'canonical_append' or published.get('owner_append_mapping') == 1):
+                            record['task'][field] = current[field]
                 state=remote.status(record['collaboration_submission']['job'])
                 record['host_receipt']=state
                 if state['state'] in ('merged','already-exact','retained'):
-                    if state['state']=='merged':
+                    if state['state']=='merged' and record.get('merge',{}).get('state') not in ('merged','already-present'):
                         task=record['task']
                         proof=lambda snapshot,rel:compile_probe(snapshot,rel,context,matcher,{task['addr']},task['method'],record['baseline'],translation_unit=task.get('translation_unit'),include_profile=task.get('include_profile','owner'),expected_symbol=task.get('expected_symbol'))
                         try:
@@ -763,7 +875,7 @@ def run(config, control, emit):
                         try:
                             record['submission']=stage_submission(record,context,base,output/'canonical'/owner,log,recheck=False)
                             if record['submission']['state']=='mapped':
-                                canonical_ready.setdefault(record['model'],[]).append((key,owner,record))
+                                canonical_ready.setdefault((record['model'], task_class(record['task']), record.get('batch_partition','')),[]).append((key,owner,record))
                                 continue
                             if record['submission']['state'].startswith('pending'):
                                 claims.block_canonical(key,owner,record,record['submission'].get('reason',record['submission']['state']),canonical_signature())
@@ -775,10 +887,13 @@ def run(config, control, emit):
                             continue
                     claims.update(key,owner,'host-'+state['state'],record)
                     if state['state']!='merged':log('Host recovery '+record['task']['method']+': '+state['state']+'; integration credits remain receipt-only')
-            for model,group in canonical_ready.items():
+            for (model, class_name, partition),group in canonical_ready.items():
+                if pending_integration:
+                    continue
                 try:
                     result=submit_batch([r for _,_,r in group],context,base,output/'batches'/uuid.uuid4().hex,config['server'],model,log)
                     totals['submitted']+=bool(result.get('job'))
+                    pending_integration |= bool(result.get('job'))
                     for key,owner,record in group:
                         if result.get('state')=='pending-linkage':
                             record['submission']=result
@@ -788,23 +903,14 @@ def run(config, control, emit):
                 except (worker.ApiFailure,OSError) as error:
                     log('Canonical submissions retained for next pass: '+str(error))
                 except (ValueError,RuntimeError,subprocess.SubprocessError) as error:
-                    for key,owner,record in group:
-                        claims.block_canonical(key,owner,record,error,canonical_signature())
-                    log('Canonical proof blocked until source/baseline changes; candidates retained: '+str(error))
-        server_jobs = {}
-        for key, owner, record in claims.submitted():
-            identifier = record['submission']['job']
-            fresh = identifier not in server_jobs
-            if fresh:
-                server_jobs[identifier] = api.call('/v1/integration?id='+identifier).get('jobs',[])
-            for job in server_jobs[identifier]:
-                if job['state'] in ('accepted','rejected'):
-                    record['server_receipt'] = job.get('receipt')
-                    claims.update(key,owner,job['state'],record)
-                    if job['state']=='accepted' and fresh:
-                        totals['accepted'] += 1
-                        control.matched += len((job.get('receipt') or {}).get('gains',[]))
+                    if split_preflight_loss(claims,group,error,'remote-submitted'):
+                        log('Linked preflight lost exacts; saved class batch split for recheck: '+str(error))
+                    else:
+                        for key,owner,record in group:
+                            claims.block_canonical(key,owner,record,error,canonical_signature())
+                        log('Canonical proof blocked until source/baseline changes; candidates retained: '+str(error))
         def merge_pending():
+            nonlocal pending_integration
             signature = integration.digest([inventory(root),base['revision'],digest(Path(__file__).read_bytes())])
             rows = claims.pending(include_drafts=config['native_agent_submit'],input_signature=signature)
             maintaining_stop = threading.Event()
@@ -863,7 +969,7 @@ def run(config, control, emit):
                         totals['merged'] += result['state'] == 'merged'
                         record['submission'] = stage_submission(record,context,base,output/'submissions'/owner,log,recheck=False) if config['native_agent_submit'] else dict(state='pending-submission',reason='Local-only recovery; draft retained')
                         if record['submission']['state'] in ('mapped','ready'):
-                            ready.setdefault(record['model'],[]).append((key,owner,record))
+                            ready.setdefault((record['model'], task_class(task), record.get('batch_partition','')),[]).append((key,owner,record))
                             claims.update(key,owner,'merging',record)
                         else:
                             totals['pending'] += record['submission']['state'].startswith('pending')
@@ -876,16 +982,20 @@ def run(config, control, emit):
                         claims.update(key,owner,'recovered' if transient else 'conflict',record)
                         totals['pending' if transient else 'conflicts'] += 1
                         log('Recovery retained: '+str(error))
-                for model, group in ready.items():
+                for (model, class_name, partition), group in ready.items():
                     try:
-                        if control.stopping:
+                        if control.stopping or pending_integration:
                             for key,owner,record in group: claims.update(key,owner,'recovered',record)
                             continue
                         result = submit_batch([r for _,_,r in group],context,base,output/'batches'/uuid.uuid4().hex,config['server'],model,log)
                         totals['submitted'] += bool(result.get('job'))
+                        pending_integration |= bool(result.get('job'))
                         for key,owner,record in group:
                             claims.update(key,owner,submission_state(result,record),record)
                     except (ValueError,OSError,worker.ApiFailure) as error:
+                        if isinstance(error,ValueError) and split_preflight_loss(claims,group,error,'recovered'):
+                            log('Linked preflight lost exacts; saved class batch split for recheck: '+str(error))
+                            continue
                         for key,owner,record in group:
                             record['submission'] = dict(state='pending-verification',reason=str(error))
                             record['blocked_signature'] = integration.digest([inventory(root),base['revision'],digest(Path(__file__).read_bytes())])
@@ -904,7 +1014,10 @@ def run(config, control, emit):
             return totals
         texts = {p.relative_to(snapshot).as_posix():p.read_text(encoding='utf-8') for scope in SCOPES
                  for p in (snapshot/NATIVE/scope).rglob('*.cpp')}
-        available = [t for t in published['tasks'] if t.get('available')] if published else nominations(root, texts, context.names)
+        available = [dict(t) for t in published['tasks'] if t.get('available')] if published else nominations(root, texts, context.names)
+        if published and published.get('owner_append_mapping') != 1:
+            for task in available:
+                task.pop('canonical_append', None)
         if published:
             for task in available:
                 if task['file'] not in texts:texts[task['file']]=native_path(snapshot,task['file']).read_text(encoding='utf-8')
@@ -926,13 +1039,30 @@ def run(config, control, emit):
                 if published:
                     hosted=next((t for t in published['tasks'] if all(t[k]==task[k] for k in ('file','method','addr'))),None)
                     if hosted is None:raise ValueError('Explicit recovery target must be published by the host before collaborative mining')
+                    for field in ('canonical_file','canonical_append'):
+                        task.pop(field,None)
                     task.update(hosted)
+                    if published.get('owner_append_mapping') != 1:
+                        task.pop('canonical_append',None)
+        eligible = exclude_classes(available, config.get('native_excluded_classes', 'CRobloxView,CMainFrame,HUMAN'))
+        if len(eligible) != len(available):
+            log('Native class exclusions: %d published methods skipped' % (len(available) - len(eligible)))
+        available = eligible
+        if not config.get('native_agent_tasks'):
+            eligible = [task for task in available if task.get('integration_state') != 'integrated']
+            if len(eligible) != len(available):
+                log('Native recovery: %d already integrated targets skipped' % (len(available) - len(eligible)))
+            available = eligible
         with control.budget._lock:
             if getattr(control,'native_budget_blocked',False) or any(limit is not None and used>=limit for used,limit in ((control.budget.requests,control.budget.max_requests),(control.budget.tokens,control.budget.max_tokens))):
                 available=[]
         headers = {k:v for k,v in before.items() if Path(k).suffix in ('.h','.hpp','.inl')}
         library_inputs = sorted((p.name,str(p.resolve())) for p in libs.LIBS.iterdir() if p.is_dir()) if libs.LIBS.is_dir() else []
-        for task in available:
+        selected_classes = []
+        selected_addresses = set()
+        for class_name, task in prioritize_classes(available, published.get('blockers', []) if published else ()):
+            if task['addr'] in selected_addresses:
+                continue
             key = integration.digest([os.path.normcase(str(native_path(shared_root,task['file']))), task['method']])
             signature = integration.digest([before[task['file']],task.get('signature'),task['addr'],task.get('expected_symbol'),{} if task.get('include_profile')=='accepted' else headers, config['model'], config['native_agent_checks'], config['native_agent_minutes'],library_inputs,digest(Path(__file__).read_bytes())])
             owner = claims.take(key, signature, dict(task=task))
@@ -950,9 +1080,14 @@ def run(config, control, emit):
                     record=claims.record(key,owner)
                     record['remote_lease']=lease
                     claims.update(key,owner,'running',record)
+                if class_name not in selected_classes:
+                    selected_classes.append(class_name)
                 tasks.append((key, owner, task))
+                selected_addresses.add(task['addr'])
             if len(tasks) >= min(control.workers, config['native_batch_files']):
                 break
+        if selected_classes:
+            log('Native class batches: %s; %d assigned methods. Matches require independent verification.' % (', '.join(selected_classes), len(tasks)))
 
         baseline_cache, baseline_locks, baseline_lock = {}, {}, threading.Lock()
         def baseline_for(task):
@@ -1080,6 +1215,9 @@ def run(config, control, emit):
                 span = native_methods.methods(current_source).get(task['method'],(len(current_source),len(current_source)))
                 evidence.update(task, source_excerpt=current_source[span[0]:span[1]], resumed_private_body=record.get('resumed_private_body',False), check_command='python check.py', original_source_root=str(root),
                                 genuine_include_paths=list(map(str, [libs.LIBS/'mfc-9.0-rtm/atlmfc/include',libs.LIBS/'xtp-11.2.2/Source',*context.includes])), minutes=config['native_agent_minutes'], checks=config['native_agent_checks'])
+                command = native_asm_argv(ROOT, task['addr'])
+                if command:
+                    evidence['native_asm_argv'] = command
                 evidence['baseline'] = {k:baseline[k] for k in ('ok','target_exact','diff','data_mismatches') if k in baseline}
                 evidence['virtual_dispatch'] = dispatch.get(task['addr'], [])[:8]
                 evidence['virtual_dispatch_count'] = len(dispatch.get(task['addr'], []))

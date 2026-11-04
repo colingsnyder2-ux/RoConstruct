@@ -91,7 +91,6 @@ METHODS = [
     ('??$_Copy_backward_opt@PA%sPAU12@@std@@YAPA%sPAU12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z' % (CI, CI), 0x44e4a0),
     ('??$_Uninit_copy@PA%sPAU12@V?$allocator@%s@std@@@std@@YAPA%sPAU12@00AAV?$allocator@%s@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z' % (CI, CI, CI, CI), 0x44e500),
     ('??$_Unchecked_move_backward@PA%sPAU12@@stdext@@YAPA%sPAU12@00@Z' % (CI, CI), 0x44e5a0),
-    ('__catch$??$_Uninit_fill_n@PA%sIU12@V?$allocator@%s@std@@@std@@YAXPA%sIABU12@AAV?$allocator@%s@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0' % (CI, CI, CI, CI), 0x44e638),
     ('?_Ufill@%sIAEPA%sPAU34@IABU34@@Z' % (V, CI), 0x44e670),
     ('?_Destroy@%sIAEXPA%s0@Z' % (V, CI), 0x44e6b0),
     ('?_Tidy@%sIAEXXZ' % V, 0x44e6e0),
@@ -190,13 +189,13 @@ for objraw, methods, profile in [(raw, METHODS + INLINES, 'XTP headers'), (nobj.
         verified, local = bind(objraw, name, address)
         rows.append({'address': '%08x' % address, 'symbol': name, 'size': len(b), 'exact': True, 'profile': profile,
                      'inline_owner': (name, address) in INLINES, 'verified_targets': verified, 'local_eh': local})
-# _Uninit_fill_n 0044e5d0: the compiled COMDAT holds the 104-byte body plus its catch block (0044e638, row above).
+# _Uninit_fill_n 0044e5d0 now owns its 52-byte catch continuation in current bounds.
 bodies = {n: (b, r) for n, b, r in match.coff_functions(raw)}
 fill_n = next(n for n in bodies if n.startswith('??$_Uninit_fill_n@PA' + CI))
 b, r = bodies[fill_n]
 target, target_refs, _ = match.target('2008-06', '0044e5d0')
-assert len(target) == 104 and match.exact_match(target, target_refs, b[:104], [x for x in r if x < 104])
-rows.append({'address': '0044e5d0', 'symbol': fill_n, 'size': 104, 'exact': 'prefix (catch funclet split at 0044e638)',
+assert len(target) == 156 and match.exact_match(target, target_refs, b, r)
+rows.append({'address': '0044e5d0', 'symbol': fill_n, 'size': 156, 'exact': True,
              'profile': 'XTP headers'})
 if DISCOVER:
     for k, v in sorted(discovered.items()):

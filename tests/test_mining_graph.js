@@ -40,7 +40,7 @@ context.history = [{date: "2026-10-19 20:00 UTC", clients: {"2008-06": stats(45)
 assert.equal(context.miningDays(client).at(-1).gain, -5); // corrections stay truthful
 context.history = [{date: "2026-10-07 02:53 UTC", clients: {"2008-06": stats(1)}}];
 assert.equal(context.miningDays(client)[0].day, "2026-10-06"); // full history, Eastern date
-assert.match(context.miningGraph(client), /Full history since 2026-10-06/);
+assert.match(context.miningGraph(client), /History since 2026-10-06/);
 context.history = [
   {date: "2026-10-18 20:00 UTC", clients: {"2008-06": {...stats(20), source_matched: 10, mined_matched: 10}}},
   {date: "2026-10-19 20:00 UTC", clients: {"2008-06": stats(30)}},
@@ -65,6 +65,19 @@ for (const name of new Set(context.history.flatMap(s => Object.keys(s.clients)))
     const bars = rendered.match(new RegExp(`fill="${color}"`, "g")) || [];
     assert.ok(bars.length > 1, `${name}: category missing from daily stacks`);
   }
+}
+const completedDays = [90, 100, 100, 99, 100, 100].map((percent, i) => ({
+  day: `2026-11-0${i + 1}`, percent, matched: percent, functions: 100,
+  source: 0, mined: percent, partial: 0, gain: 0, integrated: percent,
+  waiting: 0, nearly: 0, bytes: 100, byteGroups: {integrated: percent},
+}));
+for (const integration of [false, true]) {
+  const rendered = context.dailyGraph(completedDays, integration);
+  assert.equal((rendered.match(/class="mining-stack"/g) || []).length, 4);
+  assert.equal((rendered.match(/<tr><td>/g) || []).length, 4);
+  for (const day of ['01', '02', '04', '05']) assert.match(rendered, new RegExp(`<td>2026-11-${day}</td>`));
+  for (const day of ['03', '06']) assert.doesNotMatch(rendered, new RegExp(`<td>2026-11-${day}</td>`));
+  assert.equal((context.dailyGraph(completedDays.slice(1, 3), integration).match(/<tr><td>/g) || []).length, 1);
 }
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
 console.log("Mining graph tests passed.");

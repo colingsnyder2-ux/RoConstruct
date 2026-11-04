@@ -14,7 +14,7 @@ let agentAutoConfig = {cli:"claude",model:"",goal:"",workers:2,jobs:24,minutes:1
 let cpu = null, cpuCluster = "", cpuLoaded = 0, cpuLoading = false, serverSetupOpen = initialPage === "cpu";
 const isWorker = job => ["worker","agent_worker"].includes(job.kind) || !!job.args?.includes("--automatic");
 const active = job => ["running", "paused", "stopping"].includes(job.status);
-const liveKeys = new Set(["native_agent_submit","native_agent_minutes","native_agent_checks","native_agent_tasks","workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","use_remill","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost","native_batch_files","native_compile_workers","native_context","native_generation","native_compile_batch"]);
+const liveKeys = new Set(["native_agent_submit","native_agent_minutes","native_agent_checks","native_agent_tasks","native_excluded_classes","workers","model","rounds","max_size","max_tokens","strategy","order","thinking","reasoning_effort","use_revng","use_remill","min_score","max_score","diverse_candidates","guided_mutations","near_repair","max_cloud_requests","max_cloud_tokens","max_cloud_cost","native_batch_files","native_compile_workers","native_context","native_generation","native_compile_batch"]);
 const nullable = new Set(["min_score","max_score","max_cloud_requests","max_cloud_tokens","max_cloud_cost","reasoning_effort","unit_name","family_id"]);
 const numeric = new Set(["native_agent_minutes","native_agent_checks","native_batch_files","native_compile_workers","native_compile_batch","workers","rounds","max_size","max_tokens","min_score","max_score","diverse_candidates","cloud_concurrency","max_cloud_requests","max_cloud_tokens","max_cloud_cost"]);
 const automatic = {rounds:"auto",max_size:512,max_tokens:"auto",order:"random",strategy:"direct",thinking:"auto",reasoning_effort:"auto",use_revng:false,use_remill:true,cloud_concurrency:"auto",near_repair:false,diverse_candidates:1};
@@ -148,15 +148,15 @@ function modelChoices(config, choice="openai") {
 function nativeRecoveryConfig(config) {
   const fresh=config.native_generation!=="agent" || !String(config.model||"").startsWith("codex:");
   return {...config,lease_mode:"native",client:"2008-06",native_generation:"agent",native_escalation_model:"",source_only:false,max_cloud_cost:null,
-    model:String(config.model||"").startsWith("codex:") && config.model!=="codex:default" ? config.model : "codex:gpt-5.6-terra",
-    workers:fresh ? 10 : config.workers ?? 10,cloud_concurrency:fresh ? 10 : config.cloud_concurrency ?? 10,
+    model:String(config.model||"").startsWith("codex:") && config.model!=="codex:default" ? config.model : "codex:gpt-6.1-terra",
+    workers:fresh ? 5 : config.workers ?? 5,cloud_concurrency:fresh ? 5 : config.cloud_concurrency ?? 5,
     native_compile_workers:config.native_compile_workers && config.native_compile_workers!=="auto" ? config.native_compile_workers : 2,
     max_cloud_requests:fresh ? config.max_cloud_requests ?? 10 : Object.hasOwn(config,"max_cloud_requests") ? config.max_cloud_requests : 10};
 }
 function nativeRecoveryForm(input) {
   const config=nativeRecoveryConfig(input);
   return `<form id="worker-form" class="panel panel-pad"><h2>${editing ? "Tune native recovery" : "Native C++ recovery"}</h2>
-    <p class="help-note">Recover class, world and header method bodies with signed-in Codex. Server leases coordinate PCs; host checks protect shared edits.</p>
+    <p class="help-note">Recover published class, world and header methods with signed-in Codex. Each pass prioritizes classes with linkable methods, then fills available worker slots; server leases and host checks protect shared edits. Missing declarations, layouts or integration mappings remain blocked for owner review. Local matches earn no credit; acceptance requires server verification.</p>
     <input type="hidden" name="native_generation" value="agent"><input type="hidden" name="model_provider" value="codex">
     <div class="field-grid">`+
     field("Client","client","2008-06",{choices:[["2008-06","2008-06"]]})+field("Username","user",config.user)+
@@ -169,6 +169,7 @@ function nativeRecoveryForm(input) {
     `</div><div class="form-section">${check("Submit linkable recoveries after independent preflight","native_agent_submit",config.native_agent_submit ?? true)}</div>`+
     `<details class="form-section"><summary>Advanced limits</summary><div class="field-grid">`+
     field("Token cap","max_cloud_tokens",config.max_cloud_tokens,{type:"number",min:1,placeholder:"Optional"})+
+    field("Excluded classes","native_excluded_classes",config.native_excluded_classes ?? "CRobloxView,CMainFrame,HUMAN",{full:true})+
     field("Native task manifest (optional)","native_agent_tasks",config.native_agent_tasks||"",{full:true})+
     `</div><p class="help-note">Blank launch cap keeps watching for new eligible work. Caps stop new agents; running agents and queued checks finish. Token usage arrives after each run; time/probe limits bound work. Layouts remain owner-only.</p></details>`+
     `<div class="consent">${check("Allow cloud prompts for this session","cloud_allowed",config.cloud_allowed)}<p>Target assembly and source go to your selected Codex model.</p></div>`+
@@ -253,7 +254,7 @@ function terminalMessage(row, functions, compact=false) {
   else if(row.event==="native_partial") {marker="↑";kind+=" improved";text=`${row.file} ${row.addr} · partial ${row.previous}% → ${row.score}%${row.frame_ok&&!row.frame_before ? " · frame improved" : ""}${row.calls_ok&&!row.calls_before ? " · calls improved" : ""} · local search, no exact credit`;}
   else if(row.event==="native_result") {marker=row.local_exact ? "✓" : row.error ? "!" : "·";kind+=row.local_exact ? " exact" : row.error ? " error" : " no-gain";text=`${row.file} · +${row.local_exact} local exact · ${row.seconds}s${row.local_exact ? " · awaiting verification" : row.error ? " · "+(row.error_summary||row.error) : ""}`;if(row.error)extra=codeBlock(row.error,"Full error");}
   else if(row.event==="native_accepted") {marker="✓";kind+=" exact";text=row.message;}
-  else if(row.event==="native_recovery") {marker="≡";text=`Native recovery · ${row.recovered} recovered · ${row.already_exact||0} already locally exact · ${row.baseline_blocked||0} baseline blocked · ${row.canonical_blocked||0} canonical blocked · ${row.merged} local merged · ${row.remote_pending??row.remote_submitted??0} host pending · ${row.host_merged||0} host verified · ${row.conflicts} conflicts · ${row.submitted} submitted · ${row.accepted} accepted · ${row.pending} pending`; }
+  else if(row.event==="native_recovery") {marker="≡";text=`Native recovery · ${row.recovered} recovered · ${row.already_exact||0} already locally exact · ${row.baseline_blocked||0} baseline blocked · ${row.canonical_blocked||0} canonical blocked · ${row.merged} local merged · ${row.remote_pending??row.remote_submitted??0} host pending · ${row.host_merged||0} host verified · ${row.conflicts} conflicts · ${row.submitted} submitted · ${row.accepted} accepted jobs · ${row.accepted_credits||0} new credits · ${row.pending} pending${row.session_started ? ` · since ${new Date(row.session_started*1000).toLocaleTimeString()}: ${row.session_credits||0} credits, ${row.credits_per_hour||0}/h` : ""}`; }
   else if(row.event==="benchmark") {marker="≡";text=`${row.matched} exact · ${row.improved} improved${row.errors ? " · "+row.errors+" errors" : ""}`;if(row.matched>0)kind+=" matched-note";}
   else if(row.event==="compile") {
     marker="$";const runs=row.compile_runs || [row],failed=runs.filter(r=>r.exit_code!==0).length;

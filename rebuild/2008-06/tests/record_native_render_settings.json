@@ -12,7 +12,7 @@
   },
   {
    "address": "00412d50",
-   "symbol": "?singleton@?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@SAAAVCRenderSettings@@XZ",
+   "symbol": "?singleton@?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@SAAAVCRenderSettings@@XZ",
    "raw_range": false
   },
   {
@@ -87,32 +87,32 @@
   },
   {
    "address": "00445410",
-   "symbol": "??1?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAE@XZ",
+   "symbol": "??1?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@MAE@XZ",
    "raw_range": false
   },
   {
    "address": "00445470",
-   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OME@AEPAXI@Z",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OME@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445480",
-   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OBA@AEPAXI@Z",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OBA@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445490",
-   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OCE@AEPAXI@Z",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OCE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "004454a0",
-   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OGE@AEPAXI@Z",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OGE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "004454b0",
-   "symbol": "??_G?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z",
+   "symbol": "??_G?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@MAEPAXI@Z",
    "raw_range": false
   },
   {
@@ -172,52 +172,52 @@
   },
   {
    "address": "00445c10",
-   "symbol": "??1?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAE@XZ",
+   "symbol": "??1?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@MAE@XZ",
    "raw_range": false
   },
   {
    "address": "00445c70",
-   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OBA@AEPAXI@Z",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OBA@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445c80",
-   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OBE@AEPAXI@Z",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OBE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445c90",
-   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OCE@AEPAXI@Z",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OCE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445ca0",
-   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OEE@AEPAXI@Z",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OEE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445cb0",
-   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OGE@AEPAXI@Z",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OGE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445cc0",
-   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OIE@AEPAXI@Z",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OIE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445cd0",
-   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OKE@AEPAXI@Z",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OKE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445ce0",
-   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@OME@AEPAXI@Z",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OME@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00445da0",
-   "symbol": "??_G?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PBDB@RBX@@MAEPAXI@Z",
+   "symbol": "??_G?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@MAEPAXI@Z",
    "raw_range": false
   },
   {
@@ -247,22 +247,22 @@
   },
   {
    "address": "004480e0",
-   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OEE@AEPAXI@Z",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OEE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "004480f0",
-   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OIE@AEPAXI@Z",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OIE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00448100",
-   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OKE@AEPAXI@Z",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OKE@AEPAXI@Z",
    "raw_range": false
   },
   {
    "address": "00448110",
-   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@OBE@AEPAXI@Z",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OBE@AEPAXI@Z",
    "raw_range": false
   },
   {

@@ -3,7 +3,7 @@
   "inputs": {
     "rebuild\\2008-06\\tests\\record_native_document_exception.py": "034e4e7e931a4da1ae39540d6fa769cc82bbae3ca8b558e0a0735efd4e54ba38",
     "rebuild\\2008-06\\native-classes\\DocumentException.cpp": "68baf0f412651705688def4f00136e5e6cdf16adbe7156f032dbbb5fa92c3412",
-    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "3a4d0f10dcd06bfb5f5871381d78d80d0859cba33ea65d955f2f5fe3dd454dd0",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "2c9f427744edd1ce9ef4725cf4e08de4f3fcea5997b0cdb1862bf7f8c0b04424",
     "tools\\rbxgs\\Client\\App\\include\\util\\StandardOut.h": "441d3f838405f417c949a8efc164a2265bf1ecd360bab0cddfee94b037139a21"
   },
   "flags": [
@@ -44,7 +44,7 @@
     "/FoNativeDocumentException.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DocumentException.cpp"
   ],
-  "object_sha256": "11e00650077440a1bbf0e1eb945996c58e3f2405a9c6163fb1a11b927c0afb42",
+  "object_sha256": "f83432632b86864e2bc8f32c069eaf269baaf2283b9e2feea8b59d6724b0ac99",
   "address": "00428850",
   "size": 146,
   "relocation_normalized_exact": true,

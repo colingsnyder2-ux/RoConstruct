@@ -2,12 +2,12 @@
   "inputs": {
     "rebuild\\2008-06\\tests\\NativeDocumentExecuteTrial.cpp": "ca75466db5f342a549b0e277e0760db696297c14a2b035adddd0f29e0191cbec",
     "rebuild\\2008-06\\tests\\record_native_document_execute_trial.py": "ce9b2d812944b1d26b4094e9d3759c61b6bc8e59cb7100c4da15b937e5cf9083",
-    "rebuild\\2008-06\\tests\\NativeContentProviderTrial.cpp": "2d84686707419685f2e00f4a93e81c668aa4dcfc8343897825515bf7cb8a4af5",
+    "rebuild\\2008-06\\tests\\NativeContentProviderTrial.cpp": "be425a78881bfd97189746f1c53feb859c72c3a99af4659657350d655b83e5c5",
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
     "tools\\libs\\xtp-11.2.2\\Source\\CommandBars\\XTPControlComboBox.h": "45a689c45337acdbf3ed2b3a6e3e6fc7b99f0478614b0d6ebd707b9b97910441"
   },
-  "object_sha256": "025498cd9eed768db0b04e913f6ce9cada0a759ca2388afe340d11b6e6e94f6e",
+  "object_sha256": "1417ca14ba1271922821b3269f2696b6ae1db4f050ad7a69f7e05d6b954b8361",
   "preprocess_flags": [
     "/nologo",
     "/O2",

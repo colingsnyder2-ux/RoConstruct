@@ -2,7 +2,7 @@
   "scope": "Inactive playback body matches. SoundService construction/destruction, map ownership and runtime remain unproven.",
   "source_sha256": "e9898e9d2d8a30c54bef8ff6d1c8931d2c6f5d0da831206892bd388875c20e23",
   "observer_sha256": "72671178af85109f83590ea7f0e94a62fe8f0466e6a9214ab0bcb7914ddf3a1b",
-  "object_sha256": "c0ec4cb6e8b7bce22d5cbaf65e7545d8b5f2405d592fc8e1d1249e2b592a7798",
+  "object_sha256": "af7692d0fb1b9b2486ea1e6d4fe63a715902ddfd4ccee0eab38e4f83ac015708",
   "sound_header_sha256": "189636ce8ec279e85e1cc060a9a0bd8dbdcd0754cb440ce838572b7ea2312104",
   "address": "005bd820",
   "size": 98,

@@ -4,7 +4,7 @@
     {
       "address": "0x63fc80",
       "size": 23,
-      "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sGrabTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VMouseCommand@RBX@@$1?sGrabTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "bindings": {
         "?flag@?1??get@?$NativeToolName@VGrabTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979690",
         "?callDoDeclare@?$NativeToolName@VGrabTool@RBX@@@RBX@@SAXXZ": "0x5c61f0",
@@ -33,9 +33,9 @@
       }
     }
   ],
-  "source_sha256": "5dfd774610fbd8e548ab35884ebf14918d96fed945c8d0e0e52d24db4f10ec2b",
+  "source_sha256": "fbec64d875a1c2ea7f715099bfbb287d1b3d1827d8e301608d76b43e27d1e08a",
   "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
   "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
-  "object_sha256": "49b82540261295034c9a49d01787065f51c4da76200843022f35d91ef66350c1",
+  "object_sha256": "d598ddd5b78cb32540af7e2af7e885a746b73ddefd8f8ee466d6a677f197bf03",
   "observer_sha256": "38af87934a6fe4914924f039547e0cc3c0415cec6289c76a030f89d09bf012b6"
 }

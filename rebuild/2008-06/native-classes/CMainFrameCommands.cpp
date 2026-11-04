@@ -97,15 +97,13 @@ void CMainFrame::OnWindowPosChanging(WINDOWPOS* position)
     if (stateF8 && !stateFA) position->flags |= SWP_NOSIZE | SWP_NOMOVE;
 }
 
-// Original 00412d50 and 00445250; class identity remains unverified.
-class FrameSizeSettings { public: G3D::Vector2int16 getFrameSize() const; };
-FrameSizeSettings* frameSizeSettings();
+#include "CRenderSettings.h"
 void CMainFrame::OnGetMinMaxInfo(MINMAXINFO* info)
 {
     Default();
     if (stateF8) { info->ptMaxPosition.x = 0; info->ptMaxPosition.y = 0; }
     if (!stateFA && !stateF8 && state104) {
-        G3D::Vector2int16 size = frameSizeSettings()->getFrameSize();
+        G3D::Vector2int16 size = CRenderSettings::singleton().getFullscreenSize();
         RECT rect = {0, 0, size.x, size.y};
         CalcWindowRect(&rect, 0);
         info->ptMaxSize.x = info->ptMaxTrackSize.x = rect.right - rect.left;

@@ -180,7 +180,7 @@
       "0x3fc",
       "0x404"
     ],
-    "donor_object_sha256": "c615be71e230919d07a60ba090024f588cb84357032846b61417b66dd8a8baf1",
+    "donor_object_sha256": "567277744725c205ddc570f6855a250cc7bc717c67e0938eab75316193277cde",
     "getters": [
       {
         "symbol": "?getCamera@Workspace@RBX@@UBEPAVCamera@2@XZ",

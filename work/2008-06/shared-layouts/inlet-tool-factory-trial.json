@@ -16,7 +16,7 @@
     {
       "address": "0x5c6c10",
       "size": 23,
-      "symbol": "?getName@?$Named@VSurfaceTool@RBX@@$1?sInletTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VSurfaceTool@RBX@@$1?sInletTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "bindings": {
         "?flag@?1??get@?$NativeToolName@VInletTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x97965c",
         "?callDoDeclare@?$NativeToolName@VInletTool@RBX@@@RBX@@SAXXZ": "0x5c6120",
@@ -45,9 +45,9 @@
       }
     }
   ],
-  "source_sha256": "3e0a4f18403b2647f2e20586c82dbd3df8f513bc0a450c68a785023d52c65cb6",
+  "source_sha256": "67949f921a3ce4f07891b5f3e9c03e8caa79c9ec07d80192109578b2eb04643d",
   "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
   "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
-  "object_sha256": "c6b2a5dcbcec3eb3c8b066c460057e0a2d6615887068168a122f2ef96072cb57",
+  "object_sha256": "c295c26004b368ca9e250e763d19ff8bc0d8d6eff0b1e259bed0f1601de44b01",
   "observer_sha256": "07a6800bdd8b014357dfb83d609ceea4d656ff2f03e905560b44984000dc904d"
 }

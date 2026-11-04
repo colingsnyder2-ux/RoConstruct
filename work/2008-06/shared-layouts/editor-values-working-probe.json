@@ -1,5 +1,5 @@
 {
-  "revision": "3238b08c7b1288996f09aaf57ab92f899ba8f234",
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
   "sources": {
     "rebuild\\2008-06\\tests\\record_native_editor_values.py": "47592ef0e2a42f5dd1fa7a0eb875bf62552ca5b2fb9a7130103268494ae4ae7c",
     "tools\\libs\\mfc-9.0-rtm\\atlmfc\\src\\mfc\\intel\\mfc90.def": "aa2a4434e60113c7475e8e36edac5e2863a3f34ff89feeaa57d85ce68506ea15",
@@ -137,7 +137,7 @@
   },
   "compilations": {
     "Virtuals": {
-      "object_sha256": "54610a627ae6fc5ebb8ee8f8579f5658eafd880efabd27be809aba3548c223c7",
+      "object_sha256": "ca1a9d6e075dae2db64b2069500d96cac5ecbbe0acc7b5bb4755da5407b3057b",
       "preprocess_flags": [
         "/nologo",
         "/O2",
@@ -188,7 +188,7 @@
       ]
     },
     "Numbers": {
-      "object_sha256": "02e09545f46da34a20e4e219f5728fb427035ab40fd41396463250ce60b96161",
+      "object_sha256": "9cfd03afb3fc9c6df94671e209c455e29de7344c75c2a2c64c458b62f5f81c13",
       "preprocess_flags": [
         "/nologo",
         "/O2",

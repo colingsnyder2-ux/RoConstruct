@@ -1,10 +1,10 @@
 {
-  "revision": "9cf9f160fd4ff19f4d93b21f546ba0302b53b658",
+  "revision": "ed2bc544adf1f62d7e2a83520b2447b202162c2d",
   "sources": {
-    "rebuild\\2008-06\\tests\\..\\native-classes\\InstanceLifetime.cpp": "7d31819ca4db4f7d40c5bbc24493e03d4188ba479c778236e8bc847459b05882",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "3c071a220c63be248196b42d1ccae5e38c5bfdc082d5950b246d75a4ac28a7c4",
+    "rebuild\\2008-06\\tests\\..\\native-classes\\InstanceLifetime.cpp": "a40da355bb379f27893c0a1abf9a137a716702cf341fffa850328b9df77283b3",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "6282ec12220a898cf451b81466d545d868daa6da87d1a8a4cbf21cbd8f5aea89",
     "rebuild\\2008-06\\native-headers\\util\\GuidItem.h": "f76a772f00e2606e278066e8f4bd935a1b4fc69a2b56a07f4863ca6a8fd09b53",
-    "rebuild\\2008-06\\tests\\record_native_instance_lifetime.py": "df7095be934683a533d4850043083339b72c78767d4b6a8a8ae7e335d1d4f235"
+    "rebuild\\2008-06\\tests\\record_native_instance_lifetime.py": "dffe6992493d596e53fa2e386b539a88882ab99883ca5f17fb9fc007672a9e39"
   },
   "compiler_build": 21022,
   "flags": [
@@ -46,6 +46,7 @@
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\..\\native-classes\\InstanceLifetime.cpp"
   ],
   "compile_exit": 0,
+  "object_sha256": "a04921c4804ca231bc17fd4c61cd36bae88d0f5d89f86a8da015e7b98c17ebdb",
   "methods": [
     {
       "address": "0055b7e0",
@@ -60,7 +61,35 @@
         },
         {
           "offset": 81,
-          "symbol": "??0?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@RBX@@QAE@XZ",
+          "symbol": "??0?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@QAE@XZ",
+          "target": "0x55b780"
+        },
+        {
+          "offset": 96,
+          "symbol": "??0?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@IAE@XZ",
+          "target": "0x5e9ec0"
+        },
+        {
+          "offset": 266,
+          "symbol": "??2@YAPAXI@Z",
+          "target": "0x6a0920"
+        }
+      ]
+    },
+    {
+      "address": "0055b960",
+      "symbol": "??0Instance@RBX@@QAE@PBD@Z",
+      "size": 377,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 59,
+          "symbol": "??0Guid@RBX@@QAE@XZ",
+          "target": "0x5a8300"
+        },
+        {
+          "offset": 81,
+          "symbol": "??0?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@QAE@XZ",
           "target": "0x55b780"
         },
         {
@@ -90,6 +119,19 @@
           "offset": 512,
           "symbol": "??1?$GuidItem@VInstance@RBX@@@RBX@@QAE@XZ",
           "target": "0x4b3760"
+        }
+      ]
+    },
+    {
+      "address": "0055a470",
+      "symbol": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+      "size": 35,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 21,
+          "symbol": "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+          "target": "0x420190"
         }
       ]
     }

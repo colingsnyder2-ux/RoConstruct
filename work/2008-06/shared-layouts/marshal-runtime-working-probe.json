@@ -1,5 +1,5 @@
 {
-  "revision": "a58be749395415c9a3bcbc01844d8c35ddfbcad6",
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
   "sources": {
     "rebuild\\2008-06\\tests\\record_native_frame_marshalling.py": "7a28f388fd52f331941212fd46e2448dd031a967d79a19034c87374f34302c4e",
     "rebuild\\2008-06\\native-classes\\CMarshalWindow.cpp": "7bada83a8026fbbdda0afe84aebc5c6eea810302449c4c0400b171a493d72652",
@@ -15,7 +15,7 @@
     "rebuild\\2008-06\\tests\\NativeMarshaledListener.cpp": "9a4ed94202a0f89efeb74cf9b971aedd80cc2ec83b58b15412cdb1064a19e915",
     "rebuild\\2008-06\\tests\\NativeSelectionCaptionLayout.cpp": "f80a2a121c352b74d26f4dcd3a14fb9428e369e92e97a7be85e04d17fefb92cc",
     "rebuild\\2008-06\\tests\\NativeMarshalWindowRuntime.cpp": "26eb321f97e42096a00c1090c32b534f3782179007bf174cf01aa2587c8f5bdd",
-    "rebuild\\2008-06\\tests\\record_native_marshal_runtime.py": "0f3c3b044582cbfc8d4561643fa5de8911346174016271657173de82a4ebdd91"
+    "rebuild\\2008-06\\tests\\record_native_marshal_runtime.py": "1a285c01ced5f0cb8b229d5eb211c557deafbef26485ea7f3d40c72b570b19b7"
   },
   "compiler": 21022,
   "compile_flags": [
@@ -63,9 +63,9 @@
     "user32.lib",
     "advapi32.lib"
   ],
-  "exe_sha256": "077642b69a64dec35cc3dde9f98af93d597990ab7bf7c6479d9300e946e3ea22",
-  "map_sha256": "a0050d9e21e50fe9b6537cec8a60dcbb0ea1aef4e99f5b71d0d299ef230f8776",
-  "probe_sha256": "ec43ce8693a0a2ec3db995cdc5d7fda3c8878cdf7dea5e6d1d1ca6cab5c7c01f",
+  "exe_sha256": "e54c7ee0d74f05effba9c6d95f1644b20c8f1ad2e0432b0eafe5db9bb6536f82",
+  "map_sha256": "7d6d8b45cd3d78c0a698f70e3ea2db7b627e3bf6a2ea3245a0784a7a600e751f",
+  "probe_sha256": "cdb2817ec23dbafd5ee7334e67909a62489d651bd7f80968d8903ba93bffba48",
   "linked_methods": [
     {
       "symbol": "??0CMarshalWindow@RBX@@QAE@K@Z",
@@ -148,5 +148,5 @@
       "stdout": "executed=2 deleted=4 registry=0"
     }
   ],
-  "scope": "Isolated native CMarshalWindow and registry runtime: hidden windows, per-thread reuse, reference counts, dispatch, destruction of queued events, and empty registry. Fixture event is diagnostic. Does not prove Selection payload delivery, P5/P6, game integration, or original global initialization."
+  "scope": "Isolated native CMarshalWindow and registry runtime: hidden windows, per-thread reuse, reference counts, dispatch, destruction of queued events, and empty registry. Fixture event is diagnostic. OnDestroy remains nonexact. Does not prove Selection payload delivery, P5/P6, game integration, or original global initialization."
 }

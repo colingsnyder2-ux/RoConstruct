@@ -3,8 +3,8 @@
   "source_sha256": "9bb19220a32b92ae75f800b89c7a9bf252623cdbdd27f2936ec0bc77d4b225a7",
   "constant_source_sha256": "2b6a4b17f751bc6e977bdb3bc6edb51235d2dc5edbacc47ade443fa09e8839a7",
   "observer_sha256": "7622aa3ce7c299a4f86982a31e449d884716bd4ed1777dff464c7eef7cdbb64a",
-  "object_sha256": "a97c61ede690794d6eced28863326416068673d3a4ba0190ca432e7a8693d4e6",
-  "constant_object_sha256": "c2471572969644f17826ceac2ebadefae853d38a22efcc1228412d7ca9e6d72b",
+  "object_sha256": "ca3acd1c7cddd140bd36c061c138087c09a9d177f39d1c2a357698eb36269e29",
+  "constant_object_sha256": "7ea590035f8c8f6bcdc1e76a904c6464d79a0cb2b29fd5eca51f0c539be9c578",
   "methods": [
     {
       "address": "0x5cc930",

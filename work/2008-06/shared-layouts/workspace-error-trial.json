@@ -1,7 +1,7 @@
 {
   "scope": "Inactive wrapper and GUID match; helper implementations, identity and live ABI unproven.",
   "source_sha256": "5e4ac471b43b8e1a0c71c75e25066abab58e89d8047d764ff2a67f0284efc637",
-  "object_sha256": "57ab9a4c1976ee429a7383906ef2e83a2ac02a5eed4a23884854a222bfd8e0cd",
+  "object_sha256": "b24f653d84229e1f5e98afb23ae160a693b2844e4d031e3fe4fe3ab451135b35",
   "address": "00429330",
   "size": 43,
   "relocation_normalized_exact": true,

@@ -1,21 +1,21 @@
 {
   "scope": "Inactive methods only; full class, name identity and runtime remain unproven.",
-  "header_sha256": "7fc6763676924437cb51d267e84b5032bb9a6c24f748f4fdfd66c4ca4cc7acd4",
+  "header_sha256": "acccbf42cd94a4f6ed10fe90224ada3291e415bcabeb7e7b97bfad1b56c9934b",
   "observer_sha256": "c9ff330f1187598104d974e8485a391ace4d3cc77be39f7f16326f55389f657a",
   "rect_source_sha256": "18026be7740cfa8bf810487690330b09eb706d7da94d0f5c4d589ef0a0d0fcc1",
-  "workspace_overlay_sha256": "f3c793e2414bd45a26ecc899a552d0c9b85ac491b321a6225b9347c58090f653",
-  "model_overlay_sha256": "4f09a2312c23d2da4ac8754df699f21e4e165701b6b88993ea282549bf99b00c",
+  "workspace_overlay_sha256": "84682cd4a731b5f40990e3bb675259f3c80707b9e5837bb435076fa47f14a11c",
+  "model_overlay_sha256": "1606a7b85530c003e44ac975b09b1f40263445def89cbb38896840abe325919c",
   "objects": [
     {
       "source": "rebuild\\2008-06\\tests\\NativeResizeToolMethodsTrial.cpp",
       "source_sha256": "e537378b2829a55d65a6bc85bced0032606748e0eb1be23495ae8e373b409361",
-      "object_sha256": "90bba6162bfe9b64e149cd6e0aa1eea6d88eb85d2523a68958426d451bc10307",
+      "object_sha256": "aeb2b80cced39c8add2c5b5d53f22072cef83260b9a9bd738e957e7b5cacbe7d",
       "extra_flags": []
     },
     {
       "source": "rebuild\\2008-06\\tests\\NativeHandleRadiusTrial.cpp",
       "source_sha256": "b9665834e0cfe3d5d0f082bf4eac721db7ed7a532856efb34d7cfea89b244a25",
-      "object_sha256": "17b47645e3b3f82bf28d7a52a6debdd1aa7bb299da24ed1ad1518281750f4c27",
+      "object_sha256": "92e0d6aeb5d5a026d3f49b2a051c7896b3d86fca16c3fdb51d2cef3e5b6a4e37",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -23,7 +23,7 @@
     {
       "source": "rebuild\\2008-06\\tests\\NativeHandleHitTestTrial.cpp",
       "source_sha256": "0a3c3a7df7f7394d9492467012090c1e71d74902b928f2b5c2b98f72b77fbc2a",
-      "object_sha256": "58ed08ad6e988ac0bf3c683304b67fb3092c3cdef3f0cc7270362d52fe530cc5",
+      "object_sha256": "7343e8e1699350618c286c29236b5c0d3063f86047fe90ae0f32bc720dfedbb1",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -31,7 +31,7 @@
     {
       "source": "rebuild\\2008-06\\tests\\NativeClosestRayTrial.cpp",
       "source_sha256": "6f86f7d04029fbcee35a0277b484fa50a77c2c284d0ebb8a8b5a847943d4463d",
-      "object_sha256": "aa408768745a3c5c0b7612a6df4bb69f0650507325dd8826852d0ab7bc3e5132",
+      "object_sha256": "8c7f13787e2463ae4680edf8e6461069f22ec08d527f7474a27262e4915764ad",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -39,7 +39,7 @@
     {
       "source": "rebuild\\2008-06\\tests\\NativeResizeToolMoveTrial.cpp",
       "source_sha256": "7636be01786d2eddbddc81a6668e2613df8129eaab67ff8739b3896c31a08576",
-      "object_sha256": "c5347608395f07aabc2a39c98f7da81c2a4f9541762877082073cfdafea6c77f",
+      "object_sha256": "c3809429f2aaee656dd6cec768b65161647ee289ccd1ee8b08abf6b70c29de1d",
       "extra_flags": [
         "/fp:fast",
         "/QIfist"
@@ -48,27 +48,27 @@
     {
       "source": "rebuild\\2008-06\\tests\\NativeResizeToolDragTrial.cpp",
       "source_sha256": "6c31adfc2bad8f4025821a904bd91c82e347c77a84385df9a8ee4bce40c6f443",
-      "object_sha256": "af343ebe19b8644331407a55f96f020c4dddf890fdeb2f83ae0ba8f3b6e05c9c",
+      "object_sha256": "cd2bd8f86f76ea3d9260146c4751210564771e4b716c6f569ebb2d9fa20ff742",
       "extra_flags": []
     },
     {
       "source": "rebuild\\2008-06\\tests\\NativeResizeToolFindTrial.cpp",
       "source_sha256": "8fdb945adf2e453af769577293a21c09a6b708114af2e562fff7dc23a6d3f437",
-      "object_sha256": "2a02719189530cc1692e0d8d1a052e4790d2afb655bc36b668721840d2e8877f",
+      "object_sha256": "c018a96426b86a01b14f28a5c72e9993483d371a81fcef802cf11ba30b38c011",
       "extra_flags": []
     },
     {
       "source": "rebuild\\2008-06\\tests\\NativeResizeToolRenderTrial.cpp",
       "source_sha256": "22d1ce04528a5e5b23dfeb9d108d06e8734fdeae82156513340fc6c7c64e62e0",
-      "object_sha256": "9cfab6937e0dd7ea6c05195052447c691ae0cf78ea01881a1a4d42af57b0caf5",
+      "object_sha256": "631b260e8a658743641cd1e325b4e5c1c8278f7e207c955cae1c62e2f5780a6d",
       "extra_flags": [
         "/fp:fast"
       ]
     },
     {
       "source": "rebuild\\2008-06\\tests\\NativeResizeToolNameTrial.cpp",
-      "source_sha256": "1f2f8a57e2c2e381be43695aff2bb03af369439c3e850a704876b9c0bc32d802",
-      "object_sha256": "baaf5a6589a50f2ec68bcf4dcb9db52a7aa405d33ba8a51a074c41533002dd85",
+      "source_sha256": "c8ac5a7c0fd9860fe2e7b6c1828ff6bf0bee7d8c73a0f08f39dcd01c91c172bb",
+      "object_sha256": "9b87f29ad01ff891be406a56b6e0647067a7426f2169bb41ea7226f1b47661d1",
       "extra_flags": []
     }
   ],
@@ -296,7 +296,7 @@
       }
     },
     {
-      "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sResizeTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sResizeTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "address": "0x5c64c0",
       "size": 23,
       "exact": true,

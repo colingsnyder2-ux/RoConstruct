@@ -9,8 +9,6 @@
 #include "v8world/Assembly.h"
 #include "v8world/Mechanism.h"
 #include "util/Profiling.h"
-#include "stats/Stats.h"
-#include "util/RunStateOwner.h"
 #include "util/Events.h"
 #include <boost/scoped_ptr.hpp>
 

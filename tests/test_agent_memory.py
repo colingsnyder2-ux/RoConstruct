@@ -134,19 +134,18 @@ def test_reports_cannot_claim_server_verification(shared_server):
         store.remember("alice", [dict(report, client="unknown-client")])
 
 
-def test_findings_export_keeps_portable_evidence(shared_server, tmp_path, monkeypatch):
+def test_findings_export_only_reviewed_lessons(shared_server, tmp_path, monkeypatch):
     store, _ = shared_server
     monkeypatch.setattr(server, "ROOT", tmp_path)
     store.remember("alice", [dict(kind="trial", outcome="no_gain", addresses=["00401000"])])
-    stale = tmp_path / "local" / "findings" / "agent-memory" / "context" / "docs" / "retired.md"
-    stale.parent.mkdir(parents=True)
-    stale.write_text("old guide")
+    lessons = [{"id": "reviewed", "exacts_gained": 321}]
+    (tmp_path / "research").mkdir()
+    (tmp_path / "research" / "lessons.json").write_text(json.dumps(lessons))
     server.export_agent_findings(store)
-    folder = tmp_path / "local" / "findings" / "agent-memory"
-    assert not stale.exists()
-    assert json.loads((folder / "attempts.jsonl").read_text())["reported_by"] == "alice"
-    assert (folder / "context" / "docs" / "AGENT_GUIDE.md").is_file()
-    assert not (folder / "README.md").exists()
+    folder = tmp_path / "local" / "findings"
+    assert json.loads((folder / "data" / "lessons.json").read_text()) == lessons
+    assert not (folder / "agent-memory").exists()
+    assert store.agent_memory()["records"][0]["reported_by"] == "alice"
 
 
 def test_rejected_record_is_skipped_and_offline_keeps_queue(shared_server, tmp_path, monkeypatch):

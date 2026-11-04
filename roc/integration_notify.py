@@ -15,7 +15,17 @@ from roc.integration import CLIENT, atomic_json, digest
 from roc.reports import RATE_WINDOW, fmt_duration, inline_code, server_mines_webhook
 
 
-def partial_payload(user, model, rows):
+def extra_rows_enabled():
+    """Partial / recovery / header / site rows on the Integration Digest webhook; opt-in via roconstruct-settings.json."""
+    from roc import setup
+    try:
+        return bool(json.loads(setup.config("roconstruct-settings.json").read_text()).get("integration_digest_extra_rows"))
+    except (OSError, ValueError):
+        return False
+
+
+def partial_section(rows):
+    """Nearly matched local observations as one Integration Digest field."""
     lines = []
     for row in rows[:12]:
         detail = []
@@ -27,22 +37,40 @@ def partial_payload(user, model, rows):
             inline_code(row['file']), ' · ' + ', '.join(detail) if detail else ''))
     if len(rows) > 12:
         lines.append('+%d more partial improvements' % (len(rows) - 12))
-    return {'allowed_mentions': {'parse': []}, 'embeds': [{
-        'title': '🟡 RoConstruct Native Partial Improvements', 'color': 0xEAB308,
-        'description': ('**2008-06 Client**\nLocal compiler search observations · not server-verified exacts.\n\n' + '\n'.join(lines))[:4096],
-        'fields': [{'name': 'Worker', 'value': inline_code(user), 'inline': True},
-                   {'name': 'Model', 'value': inline_code(model), 'inline': True},
-                   {'name': 'Credit', 'value': '0 exact credits · verified coverage unchanged', 'inline': False}],
-        'timestamp': datetime.now(timezone.utc).isoformat()}]}
+    return {'name': '🟡 Nearly Matched · local, not server-verified', 'value': '\n'.join(lines)[:1024], 'inline': False}
 
 
-def extra_rows_enabled():
-    """Partial / recovery / header / site rows on the Integration Digest webhook; opt-in via roconstruct-settings.json."""
-    from roc import setup
+def recovery_section(rows):
+    """Host-rechecked native recovery merges (inactive until an accepted submission) as one digest field."""
+    lines = ['`%s` %s' % (row['addr'], inline_code(row['method'])) for row in rows[:12]]
+    if len(rows) > 12:
+        lines.append('+%d more recovered' % (len(rows) - 12))
+    return {'name': '🟦 Native Recovery · inactive, host-rechecked', 'value': '\n'.join(lines)[:1024], 'inline': False}
+
+
+def post_section(promotions, user, model, section, background=True):
+    """Report-only Integration Digest carrying one extra section; never changes credit.
+    Off by default (settings integration_digest_extra_rows): the digest now shows accepted integrations and new native files."""
+    url = server_mines_webhook() if extra_rows_enabled() else None
+    if not url:
+        return
+    from roc.reports import _post
+    import threading
     try:
-        return bool(json.loads(setup.config("roconstruct-settings.json").read_text()).get("integration_digest_extra_rows"))
-    except (OSError, ValueError):
-        return False
+        body = payload(promotions, {'user': user, 'model': model}, extra=section)
+    except (OSError, ValueError, KeyError, AttributeError, sqlite3.Error) as error:
+        # Optional reporting: without coverage/rate data, still post the section itself.
+        print('Integration digest summary unavailable: %s' % error)
+        body = {'allowed_mentions': {'parse': []}, 'embeds': [{
+            'title': '⛏️ RoConstruct Integration Digest', 'color': 0xA855F7,
+            'description': '**2008-06 Client**', 'footer': {'text': 'RoConstruct Integration'},
+            'fields': [section, {'name': '⚙️ Verification', 'value': 'report only · 0 integration credits', 'inline': True},
+                       {'name': '🔧 Models', 'value': inline_code(model), 'inline': True}],
+            'timestamp': datetime.now(timezone.utc).isoformat()}]}
+    if background:
+        threading.Thread(target=_post, args=(url, body), daemon=True).start()
+    else:
+        _post(url, body)
 
 
 def record_partials(promotions, user, body):
@@ -97,11 +125,8 @@ def record_partials(promotions, user, body):
             fresh.append(row)
     for row in fresh:
         record('partial', user, model, addr=row['addr'], file=row['file'], previous=row['previous'], score=row['score'])
-    url = server_mines_webhook()
-    if fresh and url:
-        from roc.reports import _post
-        import threading
-        threading.Thread(target=_post, args=(url, partial_payload(user, model, fresh)), daemon=True).start()
+    if fresh:
+        post_section(promotions, user, model, partial_section(fresh))
     return dict(recorded=len(fresh), local_only=True, exact_credits=0)
 
 
@@ -139,13 +164,13 @@ def record_header(promotions, user, body):
     return dict(recorded=True, exact_credits=0)
 
 
-def payload(promotions, job, receipt=None):
+def payload(promotions, job, receipt=None, extra=None):
     store, root = promotions.store, promotions.root
     with store.lock:
         credits = store.db.execute("SELECT COUNT(*) FROM integration_credit WHERE user=?", (job["user"],)).fetchone()[0]
         recent = store.db.execute("SELECT receipt FROM integration_jobs WHERE state='accepted' AND updated>=?",
                                   (time.time() - RATE_WINDOW,)).fetchall()
-        state = store.db.execute("SELECT phase FROM integration_jobs WHERE id=?", (job["id"],)).fetchone()[0]
+        state = store.db.execute("SELECT phase FROM integration_jobs WHERE id=?", (job["id"],)).fetchone()[0] if job.get("id") else None
         scores = dict(store.db.execute("SELECT addr,score FROM funcs WHERE client=?", (CLIENT,)).fetchall())
     proof = promotions.directory / "progress-native.json"
     functions = {}
@@ -193,6 +218,9 @@ def payload(promotions, job, receipt=None):
         {"name": "\u2699\ufe0f Verification", "value": "server-verified \u00b7 %d integrated" % len(gains) if accepted else "rejected \u00b7 no native credit" if rejected else state, "inline": True},
         {"name": "\U0001f527 Models", "value": inline_code(job["model"]), "inline": True},
     ]
+    if extra:  # report-only section (nearly matched, inactive native recovery) replaces the gains list
+        fields[0] = extra
+        fields[3]["value"] = "report only · 0 integration credits"
     if accepted:
         fields.append({"name": "\U0001f7ea Rebuild Ownership", "value": "**%s owned** (+%d) \u00b7 **%s distinct** (+%d)" % (
             format(receipt["owned_after"], ","), receipt["owned_after"] - receipt["owned_before"],

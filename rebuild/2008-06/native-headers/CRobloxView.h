@@ -2,6 +2,8 @@
 #include "VerbBinder.h"
 #include "CWebToolbox.h"
 #include "v8tree/VerbContainer.h"
+#include "v8tree/Verb.h"
+#include <boost/scoped_ptr.hpp>
 #include "util/Events.h"
 #include "util/IMetric.h"
 #include "util/RunStateOwner.h"
@@ -65,23 +67,6 @@ public:
     void create(CWnd* parent, const RBX::DataModel* model); // 00432e60
 };
 
-// Pointee of the five owning slots. 00459ba0 deletes each through vtable slot 1
-// (offset 4), so the pointee has one virtual before its destructor. Real type unrecovered.
-struct OwnedPolymorphic {
-    virtual void unrecovered_0();
-    virtual ~OwnedPolymorphic();
-};
-struct OwnedSlot {
-    OwnedPolymorphic* value;
-    OwnedSlot() : value(0) {}
-    template<class T> void assign(T* replacement) { // original stores first, then deletes the old value virtually
-        OwnedPolymorphic* old = value;
-        value = reinterpret_cast<OwnedPolymorphic*>(replacement);
-        delete old;
-    }
-    ~OwnedSlot() { delete value; }
-};
-
 class CRobloxView : public VerbBinder<CRobloxView, CView>,
                     public RBX::VerbContainer,
                     public RBX::Listener<RBX::ServiceProvider, RBX::ServiceAdded>,
@@ -94,11 +79,11 @@ public:
     CMenu popupMenu;          // +0x178, menu resource 0x67 loaded at construction
     CReflectorWnd reflector;  // +0x180
     CWebToolbox* slot_1d8;    // toolbox pane (RTTI CWebToolbox); not destroyed by 00459ba0, so not owned
-    OwnedSlot slot_1dc;       // states 5-9 in 00459ba0, destroyed in reverse order
-    OwnedSlot slot_1e0;
-    OwnedSlot slot_1e4;
-    OwnedSlot slot_1e8;
-    OwnedSlot slot_1ec;
+    boost::scoped_ptr<RBX::Verb> slot_1dc;       // states 5-9 in 00459ba0, destroyed in reverse order
+    boost::scoped_ptr<RBX::Verb> slot_1e0;
+    boost::scoped_ptr<RBX::Verb> slot_1e4;
+    boost::scoped_ptr<RBX::Verb> slot_1e8;
+    boost::scoped_ptr<RBX::Verb> slot_1ec;
 
     CRobloxView();
     virtual ~CRobloxView(); // 00459ba0, scalar deleting wrapper 00459fb0

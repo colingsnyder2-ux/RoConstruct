@@ -16,7 +16,7 @@
     {
       "address": "0x5c6970",
       "size": 23,
-      "symbol": "?getName@?$Named@VSurfaceTool@RBX@@$1?sWeldTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VSurfaceTool@RBX@@$1?sWeldTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "bindings": {
         "?flag@?1??get@?$NativeToolName@VWeldTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979654",
         "?callDoDeclare@?$NativeToolName@VWeldTool@RBX@@@RBX@@SAXXZ": "0x5c6100",
@@ -45,9 +45,9 @@
       }
     }
   ],
-  "source_sha256": "8d3e2f9657c4542109a5c2ef2a21df2a6fc2e622485267d32c04e6ff2f66b115",
+  "source_sha256": "79a9427a97f96864544cbfd80835da9c48e29a03f6641b9efc18c7887bbce86e",
   "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
   "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
-  "object_sha256": "96761cbfbf681d37fbb0c25a49e824169f2f5e093abd408fafa4096562b0c4b5",
+  "object_sha256": "74cea5003c2f7b33661b5d7e8e13af104eb1515fe441bea89ab93a57670899d2",
   "observer_sha256": "9a7da01bb83de6fb439fe000d552c4625e3224a3fd50fc609bb18f326739495a"
 }

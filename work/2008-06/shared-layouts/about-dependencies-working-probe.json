@@ -1,7 +1,7 @@
 {
-  "revision": "3842a91c631dcc18a77c357f02071e787792f75d",
+  "revision": "5f07015bca02900bd2615ce5a7eee6a0779acfa7",
   "sources": {
-    "rebuild\\2008-06\\p6\\build_native_about.py": "28a2d871d6faba29a1ae1a906f96270ae737803a5b9fd0aa2ef656241f04d8c3",
+    "rebuild\\2008-06\\p6\\build_native_about.py": "2c0bfdf0527c922a914bdc538bf5c58886bd23c7cc33f6b149b60172fdeeb503",
     "rebuild\\2008-06\\native-classes\\CFileVersionInfo.cpp": "5cfcb3eb6e1dd4eb7ddcc5fd2fbfaaf60f8e85fab9ce8989e01ba810bc6387a2",
     "rebuild\\2008-06\\native-classes\\CAboutRobloxDialogData.cpp": "adee76876896ebb5d6dff980a2d6e33df757cbdb341a22afd0d03387f7970a90",
     "tools\\libs\\g3d-6.09\\source\\roc_large_glcaps_11e595a340f00f1c.cpp": "d58a002bf16c97e75f54074afa881c17bfa65f8873b03ee74b28032612833578",
@@ -134,5 +134,5 @@
       "relocation_masked_match": true
     }
   ],
-  "scope": "Source/object evidence. Version query is nonexact; full linkage/runtime evidence recorded separately."
+  "scope": "Source/object evidence. Full linkage/runtime evidence recorded separately."
 }

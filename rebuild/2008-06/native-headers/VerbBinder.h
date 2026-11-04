@@ -8,10 +8,10 @@ namespace RBX { class Name; }
 // VerbBinder<CRobloxView, CView>. Native command routing 00451690 and
 // view initialization 0045a4a0 establish unsigned command-ID -> Name* entries.
 // Not active until the containing classes and routing definitions are recovered.
-// The view's 0045a4a0 only reproduces with an unsigned long key; the document keeps unsigned int.
+// Binder 004598f0 passes its UINT command parameter directly to map::find.
 template<class Derived> struct VerbCommandKey { typedef UINT type; };
 class CRobloxView;
-template<> struct VerbCommandKey<CRobloxView> { typedef DWORD type; };
+template<> struct VerbCommandKey<CRobloxView> { typedef UINT type; };
 
 template<class Derived, class Base>
 class VerbBinder : public Base {

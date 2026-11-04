@@ -1,7 +1,7 @@
 {
   "source_sha256": "ec556884803b4d7ad5d1421f05b7d53c4d735783ee55db6d4b15e28b06cacd55",
   "observer_sha256": "3ccfd04a5b545ef8bbdd9aec7ce83a17205352485f58a5b817ae5f931af31ecf",
-  "object_sha256": "0057cdbd6e201da33b21de4a4c79b5f3351b88a916b6d0ef878a57b41780953c",
+  "object_sha256": "372c948ceac07031e1d37554fbb831e0048ca42b7cc140c5a48938cdf1f45699",
   "flags": [
     "/nologo",
     "/c",
@@ -107,7 +107,7 @@
     }
   ],
   "shared_source_sha256": "546bbd48b93c84623bd1b79f299ec8c4357f0a2ce44dd37cfe1b4e8bc1aac3da",
-  "shared_object_sha256": "fad39b15bfa211fcd23cd3696ecdb333fbcaa9bf7db30f69ac880bb54514b4d2",
+  "shared_object_sha256": "eb925e546dcfad262964f11f259a29e18d2a0b0a84099e810fa295445900de66",
   "shared_header_sha256": "70cb57f82f847c8b4f2a16e7ec35a109aaa0d1234ffa7cee588398340eb64893",
   "register_store": {
     "address": "0049bc12",

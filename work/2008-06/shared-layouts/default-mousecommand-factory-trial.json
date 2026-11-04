@@ -3,7 +3,7 @@
   "observer_sha256": "8930a4cb7d2bda2112f09b7487c8b33de5c2653321474c5d956899d4d9337479",
   "headers": {
     "rebuild\\2008-06\\native-headers\\v8datamodel\\MouseCommand.h": "1f64b1ad3f0fe3597c7c9739bc9716e0f58a5b1220a05c381e61fe44a0e8ee09",
-    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "0a333d9d37be9acf557aa0a3afb10193ee2306a5288b0a9fb9e303740aa65f9d",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
     "tools\\rbxgs\\Client\\App\\include\\tool\\NullTool.h": "df67edd8a415e2d8370d98f69a9c148492d8bad0fb9e69b50ca68fb957124ea4"
   },
   "flags": [
@@ -48,7 +48,7 @@
     {
       "address": "005a0280",
       "size": 91,
-      "object_sha256": "8480908679b8431cfbc7f0e5b8c39b7137f19655f6b9b55e52a045cadf451e53",
+      "object_sha256": "c3202313f9d78e276374d4e3f31602c3c7c408987b2e17c61c8ce5269bc6898d",
       "targets": {
         "??0NewNullTool@RBX@@": "0x618160"
       }

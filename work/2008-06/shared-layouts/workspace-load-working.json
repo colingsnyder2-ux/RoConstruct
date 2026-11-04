@@ -3,8 +3,8 @@
   "inputs": {
     "rebuild\\2008-06\\tests\\record_native_workspace_load.py": "9ae035d1fb3239a81e81a582e124c5d1b4c591aecdf511796ab80e0d7971fd92",
     "rebuild\\2008-06\\native-classes\\CWorkspaceLoad.cpp": "5ed58aae19bb5d8e176e71e28bf3011ef14a3fb17c956c219d9705716b0e0a55",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "0afe97a9a03851a77495d43048b08ab42e515715ea7e6ab13ce8ced5557209c1",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "8e31ad6c32744475bdd85cfd7f476818aba7a9754e5827ce5b2e8b02c556f179",
     "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Workspace.h": "2ed391867e49e12497e567740dccb42655e413d90112d7f918a8b9d1fe2beb07",
     "tools\\rbxgs\\Client\\App\\include\\v8xml\\SerializerV2.h": "624c06919715364772dee0f0a63911e589d5282b659c5d8ff6684b311e091d08"
   },
@@ -46,7 +46,7 @@
     "/FoNativeWorkspaceLoad.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceLoad.cpp"
   ],
-  "object_sha256": "c2bb5e4366069c3c5391478147ea1faad74a54bd8af8f9f23f61a6fca7f3d796",
+  "object_sha256": "b999471dcd9a22353758d9131335f47932ce268783a947473a6bc796a6cade56",
   "address": "0046aa70",
   "size": 155,
   "relocation_normalized_exact": true,

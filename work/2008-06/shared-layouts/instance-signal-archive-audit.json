@@ -1,5 +1,5 @@
 {
-  "archive_sha256": "46dc539323633e78ffd2a4f15708002ba20ce83007a3728ceec39748f3660e68",
+  "archive_sha256": "21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519",
   "instance_object_sha256": "f41959efdd601b24faf9a841d656f5e52b99e1963a400678ff0e697c72c19dd1",
   "observer_sha256": "78acbdb7ca87fd9c87cc302947f0a06385024f8a3690f1a02aded0ccb67114c9",
   "events": [
@@ -56,7 +56,7 @@
     }
   ],
   "native_source_sha256": "c8200758cb0ea2084acd045fd93aab8d1bcaf7b3d4630c044ef06f3b4639eb10",
-  "native_object_sha256": "42356c3cd7ed4ad65ff944eaf4b149545e3b932172f7d9f0dcf3ad4e6c069eec",
+  "native_object_sha256": "90b877bb78c0342b22f24da33fa667d87324922717fda402d058d182f3941174",
   "native_methods": [
     {
       "symbol": "??__E?event_descendentAdded@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A@@YAXXZ",

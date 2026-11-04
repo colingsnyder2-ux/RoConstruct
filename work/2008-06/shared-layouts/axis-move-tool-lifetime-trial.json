@@ -13,20 +13,20 @@
     "?axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ",
     "?v@?1??axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ@4V34@A"
   ],
-  "source_sha256": "ec322e31e75bdc911886f2e48385f0b4c35c8221a31c30c18d20ffe370ffb48a",
-  "header_sha256": "9f744666f17d1485b92e4a58c65b5e23920de9e0df28ed43e2a9d836cfe3fb69",
-  "object_sha256": "37aea9ca23a14e06a31241b499a62fafd24b2160346d53f3ea3a430f928da3a3",
-  "methods_source_sha256": "adb63a3ecb994b20451771580a529a1b5e9b3e83ce8212e2c3775bcef9c71106",
-  "methods_object_sha256": "963eeb187b57d51b014fd0dcb2a86cf7f434e94accc9e5129bb162ad18b717d1",
+  "source_sha256": "e78a531c7734d6729257623467ba18b237ded713fb79d5427c8705d149199643",
+  "header_sha256": "683426776e90bf23f3e6a00b06b4f493bd08ec0856db245807ad9ed3db9c31f2",
+  "object_sha256": "eac3b4bbc3f8561cb5f9d12eb195ce230ed0b24b9033d52fa60aef7c50fd9a3b",
+  "methods_source_sha256": "0cb5befc71b02e9c685c9ed4e812abc1ca22f6892b15dd5ac681121bbd6198f3",
+  "methods_object_sha256": "a2d1440c981b15b7dea4d57a624501e9f336f4f4b87d36dcfb4368379caeb40e",
   "down_source_sha256": "96730498c6dcb88ed66eef37c7f0069f472dfca4f3f0931dba6c582531ac6ab2",
-  "down_object_sha256": "93d91ebb3671b265452b49bc872e94dbffa0a77894649d5c7a9d8152a18c770d",
+  "down_object_sha256": "55a7f95ab4264324b48e860d221c1b7e51a4bc9972939f86777bb744522c3778",
   "hit_source_sha256": "041ab86f202a78c7a2f1b22c777c19fc3ecebc190982c833fcaf8ab05a3a3aef",
-  "hit_object_sha256": "2756e212d3f308299a2645b919e09e7fd2dc66f0727414f30b60aed0e19fba44",
+  "hit_object_sha256": "4be32b86348ae76b3fb88824cb9ec5b4aef1af67e4e69cb356f5483a1952f9a0",
   "extra_objects": [
     {
       "stem": "NativeMovePartTrial",
       "source_sha256": "380067385c2a6a29b369456e840fcdf8888fd38d2437fce3cb5a49da22b4b20b",
-      "object_sha256": "3506ca7dd1a101448ca94097f01a16b2ed61a20ad25119899556f88321e3b3e8",
+      "object_sha256": "7b61909bb654a0a2b008cf76289f0f33d3b672a845335cd50ce65ef11e7e210e",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -34,7 +34,7 @@
     {
       "stem": "NativeApplyMoveTrial",
       "source_sha256": "eb80268a1babe907ae2067a273b22e2f91a30a5debc3ed958d13bee12216b272",
-      "object_sha256": "9d1fc6b82c110d49e58949a4ee311bc4cdf43dc5eb9ed41d98ad841c22ff42bf",
+      "object_sha256": "387f631e5197e5850d8d855fed50fd0562cb3238b9739d772d64f14d0eaff537",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -42,7 +42,7 @@
     {
       "stem": "NativeTransformMoveTrial",
       "source_sha256": "ccedc82f6cbaf61ecb18aad4e3990304aaa8f2130457ae4c8f7a747146cffaa0",
-      "object_sha256": "7c5e1d3f5bbddd14370d02bbad5e5ae0f90f6262ff9827cafb954145e8d3ea44",
+      "object_sha256": "7d26854e36151a9af2c42400f53fc479026e1627af1cef9446ed2867941edf95",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -50,7 +50,7 @@
     {
       "stem": "NativeSubdivideMoveTrial",
       "source_sha256": "0f615fcd1e56ce486a14b83a756e1433972be200edcb5aff7b63be730e0ddebe",
-      "object_sha256": "2890816771d128bb24ebd77790331c79db54d15d829219688756901177a2bf0f",
+      "object_sha256": "c938358394b3f5f21324c5d10b64bc27876695d9731370a5835200e0c9ace378",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -58,7 +58,7 @@
     {
       "stem": "NativeDraggerMoveTrial",
       "source_sha256": "ee771128edab86b6a6fba1215a63c01a2b5ce6c92613f4facbe5cfd2e4802261",
-      "object_sha256": "70940456785d97663959a9355c281e20b053ab6ce1e479a75f7bafb4fd032cfe",
+      "object_sha256": "08062e3f76666dbb56fb4b1b7f515f79f5c55e48bf1ce2c6a194ded3da9c6f57",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -66,7 +66,7 @@
     {
       "stem": "NativeDraggerExtentsTrial",
       "source_sha256": "bb7c1479abf2ebcc021d3a5089f0de4247c5f50c0577abcfd6025de7c7b2057b",
-      "object_sha256": "17262d4d7383d491dd9920b564de7a21739da63243ab192bf6bb74bdda5af04d",
+      "object_sha256": "293b2f9ada76a58e8135a488dfa9a0f178b7fa82a763624d6cfb55b826877bad",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -74,31 +74,31 @@
     {
       "stem": "NativeCollectPrimitivesTrial",
       "source_sha256": "572c4e4c0b8578240fd20d7139010729a765e713807cede8e8a58944d91b54c7",
-      "object_sha256": "38eabe24e6b4a498cef7e069ac86fd36c53bff2fb3b9d1bdfdc86da6dc4ba7cd",
+      "object_sha256": "9a0f71f166b0b68f9289f8aea6e104b6fc54a6df242eee1cd188b3c8feb99d10",
       "extra_flags": []
     },
     {
       "stem": "NativeMegaSafeMoveTrial",
       "source_sha256": "a8b3477d6c36dba7c7b23804c1fc06eb1dfa005e3bff1896c679332f2d394ec6",
-      "object_sha256": "889bf8368b557a909e79c9a05dd72cb6810341a37de809a752980dbc27694e1f",
+      "object_sha256": "fbb0eb2ba29431d41f00638b1a3637ab79b2c11ba98092422c106096cd7e7810",
       "extra_flags": []
     },
     {
       "stem": "NativeMegaAliveTrial",
       "source_sha256": "1250feb71c99eb7dd4ef7877b36c7db3bc4c8135e5a7c0cf018f760572ed33b1",
-      "object_sha256": "e16809b49b174cb800f5a86baf883e1aa3dcd738359ef297260500fb5bf921a3",
+      "object_sha256": "eaa3b5cc108ad2637bcd3cf2a8d384e3203ecee24eea7fdf285d989217e7698a",
       "extra_flags": []
     },
     {
       "stem": "NativeAxisBoundsTrial",
       "source_sha256": "571754e19cd7a66f26e781bc5fc192c2a17ec795683dbe69fcb71505f4dbf1cb",
-      "object_sha256": "e2349996279ffaafcc99951d9f44d19d5012805c37351b15e2f3b1d08ae814bc",
+      "object_sha256": "c414cf44253308afd8b20973897ff36bbc95133d7833adb92f5e2b0b5cc4a1b3",
       "extra_flags": []
     },
     {
       "stem": "NativeAxisMoveTrial",
       "source_sha256": "a0efb2443f220a4fdcb889662215122a55a25c8db9c8ac90747d14c83a82527a",
-      "object_sha256": "31d4c5230429473b2406e1095a95d15d853ba8af4e4c98c0e54c687dc509ade1",
+      "object_sha256": "08625e1c9edb4cb907fa6b6c701484e54296587040485cee8b9beded0d5c33b8",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -106,7 +106,7 @@
     {
       "stem": "NativeAxisRenderTrial",
       "source_sha256": "a33b30414fb9f17d4482d3fd3facfda62fedafcf9a322250da93c3d8136cf66d",
-      "object_sha256": "3975cb2539415c820aac5cf7559ba13bb87bee4f2c4ea6a1579d38dedc4f2ba6",
+      "object_sha256": "ad9bd15498037c2145884eb5e8c1d7970107c2e674f4cc52e60f9a8bb790d10a",
       "extra_flags": [
         "/fp:fast"
       ]
@@ -174,7 +174,7 @@
       }
     },
     {
-      "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UBEABVName@2@XZ",
       "address": "0x640780",
       "size": 23,
       "exact": true,
@@ -534,7 +534,7 @@
       "address": "0x84a5ac",
       "slots": [
         {
-          "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+          "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UBEABVName@2@XZ",
           "original_address": "0x640780"
         },
         {

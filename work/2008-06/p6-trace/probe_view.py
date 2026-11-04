@@ -12,3 +12,4 @@ flags+=['/I'+str((libs.LIBS/v).resolve()) for v in recipe['include'] if v!='WINS
 flags+=['/FoNativeViewLayout.obj',str(root/'rebuild/2008-06/tests/NativeViewLayout.cpp')]
 code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags,out)
 print(code); print(log)
+raise SystemExit(code)

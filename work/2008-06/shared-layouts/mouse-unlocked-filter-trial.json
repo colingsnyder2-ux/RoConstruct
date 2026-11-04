@@ -48,7 +48,7 @@
     {
       "address": "00616000",
       "size": 117,
-      "object_sha256": "6dd1ef09119567ab7230dc1405468ed54fffc464bc6ee112772fb71e5d08fbc4",
+      "object_sha256": "0b4022f089b8f410dfa6231cb07a9c13725484b2097c69d58780d99ba1d3a12d",
       "targets": {
         "??0PartByLocalCharacter@RBX@@": "0x660380",
         "??_7UnlockedPartByLocalCharacter@RBX@@": "0x843a50",
@@ -59,7 +59,7 @@
     {
       "address": "00615b80",
       "size": 161,
-      "object_sha256": "6dd1ef09119567ab7230dc1405468ed54fffc464bc6ee112772fb71e5d08fbc4",
+      "object_sha256": "0b4022f089b8f410dfa6231cb07a9c13725484b2097c69d58780d99ba1d3a12d",
       "targets": {}
     },
     {

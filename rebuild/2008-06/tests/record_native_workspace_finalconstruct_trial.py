@@ -16,11 +16,9 @@ base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.jso
 flags = [x for x in base['flags'] if x != '/c' and not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 vector_trial = '--model-vector-trial' in sys.argv
 if vector_trial:
-    model_header = root / 'tools/rbxgs/Client/App/include/v8datamodel/ModelInstance.h'
+    model_header = root / 'rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h'
     model = model_header.read_text()
-    before = 'boost::shared_ptr<PartInstance> candidatePrimaryPart;'
-    assert model.count(before) == 1
-    model = model.replace(before, before + '\n\t\tstd::vector<void*> recoveredItems;', 1)
+    assert model.count('std::vector<IModelModifier*> modifiers;') == 1
     overlay = out / 'workspace-model-vector-include' / 'v8datamodel'
     overlay.mkdir(parents=True, exist_ok=True)
     (overlay / 'ModelInstance.h').write_text(model)

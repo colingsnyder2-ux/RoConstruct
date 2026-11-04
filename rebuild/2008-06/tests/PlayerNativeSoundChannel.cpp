@@ -156,9 +156,9 @@ void SoundChannel::onAncestorChanged(const AncestorChanged& event){
         }
     }
     if(oldProvider){
-        Workspace* oldWorkspace=oldProvider->create<Workspace>();
+        Workspace* oldWorkspace=oldProvider->find<Workspace>();
         if(oldWorkspace && (event.oldParent==oldWorkspace || event.oldParent->contains(oldWorkspace))){
-            Workspace* newWorkspace=newProvider?newProvider->create<Workspace>():0;
+            Workspace* newWorkspace=newProvider?newProvider->find<Workspace>():0;
             if(newWorkspace && (event.newParent==newWorkspace || event.newParent->contains(newWorkspace)))return;
             if(playOnRemove)playSound(event.oldParent);releaseChannel();
         }

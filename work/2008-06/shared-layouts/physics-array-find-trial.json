@@ -3,8 +3,8 @@
   "observer_sha256": "7c0362705a9d9790a425a19e57dae5fd07a78203aae21abf8027be9e6b6c3f33",
   "source_sha256": "1d7e06400ef3ef5647ce35c61129f7ddf735d08f13b1b4ce2590209ebca6c065",
   "profile_sha256": "234a22cecbe37628099d6352c736ba0c571ffe87606567d305882a4009d00ac3",
-  "object_sha256": "655edea445c75f7679844cd551d4e27da7f71be2f626b2aa7da9606b25db65d0",
-  "name_receipt_sha256": "780ca9285bff81f203191a8d74528d1880ab3be337c1110fabe931f68d6e1cb9",
+  "object_sha256": "ecad20ba17e02502caf4847a01238b5e4e7b7af0974bb1b204d8edd8c245248d",
+  "name_receipt_sha256": "58735b7f2effdf254cacb3dc106372e63b0c3457a575615134b51b2d7fc13027",
   "methods": [
     {
       "address": "004ccca0",

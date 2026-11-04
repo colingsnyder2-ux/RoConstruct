@@ -2,12 +2,12 @@
   "inputs": {
     "rebuild\\2008-06\\native-classes\\DocumentLoadFile.cpp": "0d3f69cc5a1db86c56c5639c55127e772b3effb7d61f8a2047d203263b46b9f3",
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "1a162e664d337de190053f0f2f6fa696669366fe54d7d8e0218b8d4877d29667",
     "tools\\rbxgs\\Client\\App\\include\\util\\ContentProvider.h": "92e4028852aeb046a9f63255818c750f2cd464b46c2ba4c032083d1e20474429",
     "rebuild\\2008-06\\out\\p6\\mfc90.lib": "49e5238e6586ad148da8a68c082fe81dc1bf6bca26a3cc6a449a323f05a750de",
     "rebuild\\2008-06\\tests\\record_native_document_load_file.py": "b80e8b3bf373efabef146b9a3ae4b4764ae21e65604699017a32a4cfd126c42f"
   },
-  "object_sha256": "80b767ccd751029f085e5f52520aa310da7b2cce58ef78e4ff928b46d1af0de5",
+  "object_sha256": "cb9b152fa8a9f45a70a6aa0bcd45c6461fbebed371ff32fb782ac9e8225ce8ca",
   "preprocess_flags": [
     "/nologo",
     "/O2",

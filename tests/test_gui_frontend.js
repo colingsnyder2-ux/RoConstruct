@@ -341,8 +341,8 @@ assert.match(nativeStatesHTML,/Exact\.cpp · Proof saved/);
 
 const nativeOnly=formContext.workerForm({...automaticForm,lease_mode:"native",native_generation:"method",model:"opencode:legacy",workers:1});
 assert.match(nativeOnly,/name="native_generation" value="agent"/);
-assert.match(nativeOnly,/name="workers" value="10"/);
-assert.match(nativeOnly,/codex:gpt-5.6-terra/);
+assert.match(nativeOnly,/name="workers" value="5"/);
+assert.match(nativeOnly,/codex:gpt-6.1-terra/);
 assert.doesNotMatch(nativeOnly,/SEARCH\/REPLACE|Legacy auto|data-native-batch|data-preset=|Model connection/);
 assert.equal(formContext.nativeRecoveryConfig({native_generation:"agent",model:"codex:gpt-6-luna",workers:2,max_cloud_requests:1}).workers,2);
 

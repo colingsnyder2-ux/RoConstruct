@@ -1,5 +1,4 @@
 #include <boost/thread/once.hpp>
-#pragma include_alias("util/Name.h", "../roc_name_native_declare_header_cb8db0995b353ca7.cpp")
 #include "../native-headers/v8datamodel/Selection.h"
 #include "util/RunStateOwner.h"
 

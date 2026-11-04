@@ -13,7 +13,7 @@ out = root / 'rebuild/2008-06/out/native-layouts'
 overlay = out / 'workspace-model-vector-include'
 model = overlay / 'v8datamodel/ModelInstance.h'
 assert model.exists(), 'run record_native_workspace_finalconstruct_trial.py --model-vector-trial first'
-workspace = root / 'tools/rbxgs/Client/App/include/v8datamodel/Workspace.h'
+workspace = root / 'rebuild/2008-06/native-headers/v8datamodel/Workspace.h'
 text = workspace.read_text()
 before = 'RBXASSERT(currentCommand.get());'
 assert text.count(before) == 1

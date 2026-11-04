@@ -12,7 +12,7 @@ import time
 from record_p5_controller import INPUT,KEYBDINPUT
 
 ROOT=Path(__file__).resolve().parents[3]
-EXE=ROOT/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
+EXE=Path(sys.argv[2]) if len(sys.argv)>2 else ROOT/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe'
 FIXTURE=ROOT/'rebuild/2008-06/tests/fixtures/p5-playable.rbxl'
 STAGED=EXE.parent/'Places/p5-playable.rbxl'
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()

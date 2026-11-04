@@ -310,6 +310,7 @@ def test_snapshot_new_files_preserves_local_edits_and_rejects_escape(tmp_path):
 
 def test_recovery_webhook_reports_only_host_merges_zero_credit(service,monkeypatch):
     from roc import integration_notify,reports
+    monkeypatch.setattr(integration_notify,'extra_rows_enabled',lambda:True)
     calls=[]
     monkeypatch.setattr(integration_notify,'server_mines_webhook',lambda:'https://example.invalid/webhook')
     monkeypatch.setattr(reports,'_post',lambda url,payload:calls.append(payload))
@@ -317,7 +318,8 @@ def test_recovery_webhook_reports_only_host_merges_zero_credit(service,monkeypat
     row=dict(job='job',record=record,receipt=dict(state='already-exact'))
     service.notify([row]);assert not calls
     row['receipt']=dict(state='merged',merge=dict(state='merged'))
-    service.notify([row]);assert len(calls)==1 and '0 integration credits' in calls[0]['embeds'][0]['description']
+    service.notify([row]);embed=calls[0]['embeds'][0];text=str(embed)
+    assert len(calls)==1 and 'Integration Digest' in embed['title'] and 'Native Recovery' in text and '0 integration credits' in text and 'A::f' in text
 
 
 def test_http_two_pcs_share_real_server_lease_routes(service):

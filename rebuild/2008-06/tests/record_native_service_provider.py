@@ -57,10 +57,10 @@ lookup_name, lookup_body, lookup_refs = next((name, body, refs) for name, body, 
 lookup_result = dict(address="00452c80", symbol=lookup_name, target_size=len(lookup),
                      compiled_size=len(lookup_body),
                      relocation_normalized_exact=match.exact_match(lookup, lookup_relocations, lookup_body, lookup_refs))
-paths = [source, ROOT / "rebuild/2008-06/native-headers/v8tree/Service.h", ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/native-headers/v8datamodel/DataModel.h", Path(__file__)]
+paths = [source, ROOT / "rebuild/2008-06/native-headers/v8tree/Service.h", ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/native-headers/v8datamodel/DataModel.h", ROOT / "rebuild/2008-06/native-headers/util/Name.h", ROOT / "rebuild/2008-06/native-headers/util/RunStateOwner.h", Path(__file__)]
 receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
-               compiler_build=21022, flags=flags, compile_exit=code, methods=results, lookup=lookup_result,
+               compiler_build=21022, flags=flags, compile_exit=code, object_sha256=hashlib.sha256(obj).hexdigest(), methods=results, lookup=lookup_result,
                scope="Inactive compiler proof; create method and selected call targets verified; lookup body, remaining relocations and runtime linking unverified.")
 output = ROOT / "work/2008-06" / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)

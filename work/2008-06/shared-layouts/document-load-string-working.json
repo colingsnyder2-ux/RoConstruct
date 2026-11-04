@@ -2,11 +2,11 @@
   "inputs": {
     "rebuild\\2008-06\\native-classes\\DocumentLoadFromString.cpp": "66a713149847707e642c03ed17a9f0d752c8bad21a03c5815d909d4a989630ef",
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "4f79de03d7b6ba33d3b397787aac0b4700737169a4693b0d6763ae3675c3f24c",
-    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "6b5e8766c0a695e297cb999b80c64c5e93b0180e8f43b26c121a9a25f289bb42",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "8e31ad6c32744475bdd85cfd7f476818aba7a9754e5827ce5b2e8b02c556f179",
+    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "c3daab0c73f2fbe29ee647f6e8671ab73791d1df19c3ddc8baa6a3cf61755a7a",
     "rebuild\\2008-06\\tests\\record_native_document_load_string.py": "c6480bdb18aaebf5ef038b38cceb54674397943eca80bead946d97cf7969be39"
   },
-  "object_sha256": "0cf6d182de6317d69a5da08ad752666cafc91edf8b132a67333ef3c9fb2f3ab1",
+  "object_sha256": "84fee3d191bc7f16c757ba2334cee0efd359ae376ed4703c62b625880c7bf080",
   "preprocess_flags": [
     "/nologo",
     "/O2",

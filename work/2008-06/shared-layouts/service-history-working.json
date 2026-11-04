@@ -1,8 +1,8 @@
 {
-  "source_sha256": "09285d763cd9e640eb1f0b1404d543323b3103680e9c2ab565c9076eb872cfda",
+  "source_sha256": "b445a58ddce5dd9706bb4f701a85f63a83d7450618a960eb31b007cbb0a44b45",
   "observer_sha256": "d461e2a6e6b3b1d677993968caf1847a304ab8829751111dd53b1288e8fbd862",
-  "find_object_sha256": "e27375d9024f9866a7b9c157776ac1ee49c436293b72603740a417e8322d0689",
-  "create_object_sha256": "3d076f493aadd1f72eba24717dc60aa548db16eeb32ebd349c6c9bd3404d6361",
+  "find_object_sha256": "ea2b82bb92bf039c8a7b03b5b49b605810ef95578263b77ceea61ca8844491bc",
+  "create_object_sha256": "de675f681814af12c2ab10c06185d8ade86ee4427f1ab3aca42923412f058359",
   "preprocess_flags": [
     "/nologo",
     "/O2",
@@ -102,7 +102,7 @@
         "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
         "??$doGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x44f360",
         "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x4124c0",
-        "??$doDeclare@$1?sChangeHistoryService@RBX@@3PBDB@Name@RBX@@CAABV01@XZ": "0x4137a0",
+        "??$doDeclare@$1?sChangeHistoryService@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4137a0",
         "?findServiceByClassName@ServiceProvider@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": "0x572a90",
         "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660",
         "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
@@ -140,7 +140,7 @@
     },
     {
       "address": "004137a0",
-      "symbol": "??$doDeclare@$1?sChangeHistoryService@RBX@@3PBDB@Name@RBX@@CAABV01@XZ",
+      "symbol": "??$doDeclare@$1?sChangeHistoryService@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
       "size": 101,
       "data_and_call_targets": {
         "?$S2@": "0x96cc14",
@@ -151,7 +151,7 @@
     },
     {
       "address": "00587c80",
-      "symbol": "?getClassName@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getClassName@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@UBEABVName@2@XZ",
       "size": 23,
       "original_vtable_slot": "0x8318b4",
       "data_and_call_targets": {
@@ -163,10 +163,10 @@
     },
     {
       "address": "00413a50",
-      "symbol": "??$callDoDeclare@$1?sChangeHistoryService@RBX@@3PBDB@Name@RBX@@CAXXZ",
+      "symbol": "??$callDoDeclare@$1?sChangeHistoryService@RBX@@3PADA@Name@RBX@@CAXXZ",
       "size": 5,
       "direct_target": "0x4137a0",
-      "inline_declare_symbol": "??$declare@$1?sChangeHistoryService@RBX@@3PBDB@Name@RBX@@SAABV01@XZ"
+      "inline_declare_symbol": "??$declare@$1?sChangeHistoryService@RBX@@3PADA@Name@RBX@@SAABV01@XZ"
     }
   ],
   "scope": "Inactive compiler-profile trial. Find and create require separate profiles; COMDAT selection, factory, service-cache globals, live ownership and ABI remain unverified."

@@ -261,7 +261,7 @@
     }
   ],
   "helper_source_sha256": "0f20408f1b5d950cac2e25ddc55a6f496c3fd841e13ff24778d6586e8cbd7df6",
-  "helper_object_sha256": "cf9738254075437b753ea1278fb8037779a53df3ee292ea2eb713ea5fd52d458",
+  "helper_object_sha256": "0a1c4a1c1eb8a43ccfd99fdfb2ef1658fa0677dc0259b85d7fbd880ecc6042e0",
   "helper_flags": [
     "/nologo",
     "/c",
@@ -347,6 +347,6 @@
       ]
     }
   ],
-  "added_object_sha256": "a733f6e068f6db1ff8a2114da140cbe1efaaf19ffd47f879e4b29ae2863986f3",
+  "added_object_sha256": "837862a3a0362440a2f438c386a9f1a65df17221f5ddf9262f6942f030570c34",
   "scope": "Inactive mixed-profile trial: callback and separate helper bodies match, but COMDAT selection, target data and runtime ABI remain unproven."
 }
