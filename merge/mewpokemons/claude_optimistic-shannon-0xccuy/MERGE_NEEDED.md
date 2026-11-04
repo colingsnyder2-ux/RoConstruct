@@ -1,6 +1,6 @@
 # Needs a manual merge
 
-Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `2d490450dd11165beeaf4c158997be91af2b7d68`.
+Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `89483fa30a96458fe8882c1f9c79ec8eb818ed7e`.
 Reason: CONFLICT (add/add): Merge conflict in rebuild/2008-06/native-classes/ClickDetector.cpp (+27 more conflicts)
 
 Files below are the fork's version; compare with the same path in the tree:
@@ -8,10 +8,14 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/Accoutrement.cpp`
 - `rebuild/2008-06/native-classes/ArrowPanel.cpp`
 - `rebuild/2008-06/native-classes/Backpack.cpp`
+- `rebuild/2008-06/native-classes/Ball.cpp`
+- `rebuild/2008-06/native-classes/Block.cpp`
 - `rebuild/2008-06/native-classes/BodyColors.cpp`
 - `rebuild/2008-06/native-classes/BodyMovers.cpp`
+- `rebuild/2008-06/native-classes/ChatOutput.cpp`
 - `rebuild/2008-06/native-classes/ClickDetector.cpp`
 - `rebuild/2008-06/native-classes/Clothing.cpp`
+- `rebuild/2008-06/native-classes/Contact.cpp`
 - `rebuild/2008-06/native-classes/DataModelDutyCycle.cpp`
 - `rebuild/2008-06/native-classes/DebrisService.cpp`
 - `rebuild/2008-06/native-classes/DebugSettings.cpp`
@@ -27,6 +31,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/Hopper.cpp`
 - `rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp`
 - `rebuild/2008-06/native-classes/JointsService.cpp`
+- `rebuild/2008-06/native-classes/KernelConnector.cpp`
 - `rebuild/2008-06/native-classes/Message.cpp`
 - `rebuild/2008-06/native-classes/Mouse.cpp`
 - `rebuild/2008-06/native-classes/MouseCommand.cpp`
@@ -39,6 +44,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/ReplicatorBases.cpp`
 - `rebuild/2008-06/native-classes/ReplicatorMarker.cpp`
 - `rebuild/2008-06/native-classes/Rocket.cpp`
+- `rebuild/2008-06/native-classes/ScoreHud.cpp`
 - `rebuild/2008-06/native-classes/Seat.cpp`
 - `rebuild/2008-06/native-classes/ServiceChangeHistory.cpp`
 - `rebuild/2008-06/native-classes/ServiceSelection.cpp`
@@ -55,6 +61,12 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/WidgetButtons.cpp`
 - `rebuild/2008-06/native-classes/WidgetChat.cpp`
 - `rebuild/2008-06/native-classes/WidgetMenuItem.cpp`
+- `rebuild/2008-06/native-classes/WorldJoint.cpp`
+- `rebuild/2008-06/native-classes/WorldJointGlue.cpp`
+- `rebuild/2008-06/native-classes/WorldJointMotor.cpp`
+- `rebuild/2008-06/native-classes/WorldJointMulti.cpp`
+- `rebuild/2008-06/native-classes/WorldJointRigid.cpp`
+- `rebuild/2008-06/native-classes/WorldJointRotate.cpp`
 - `rebuild/2008-06/native-headers/Network/IdSerializer.h`
 - `rebuild/2008-06/native-headers/Network/NetworkSettings.h`
 - `rebuild/2008-06/native-headers/Network/Player.h`
@@ -64,8 +76,10 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp`
 - `rebuild/2008-06/native-headers/engine-world/v8world/World.h`
 - `rebuild/2008-06/native-headers/gui/ArrowPanel.h`
+- `rebuild/2008-06/native-headers/gui/ChatOutput.h`
 - `rebuild/2008-06/native-headers/gui/EquationDisplay.h`
 - `rebuild/2008-06/native-headers/gui/HealthHud.h`
+- `rebuild/2008-06/native-headers/gui/ScoreHud.h`
 - `rebuild/2008-06/native-headers/gui/Widget.h`
 - `rebuild/2008-06/native-headers/gui/WidgetButtons.h`
 - `rebuild/2008-06/native-headers/gui/WidgetChat.h`
@@ -100,4 +114,10 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/v8datamodel/TimerService.h`
 - `rebuild/2008-06/native-headers/v8datamodel/Tool.h`
 - `rebuild/2008-06/native-headers/v8datamodel/UserController.h`
+- `rebuild/2008-06/native-headers/v8kernel/Connector2008.h`
 - `rebuild/2008-06/native-headers/v8tree/Instance.h`
+- `rebuild/2008-06/native-headers/v8world/Ball2008.h`
+- `rebuild/2008-06/native-headers/v8world/Block2008.h`
+- `rebuild/2008-06/native-headers/v8world/Contact2008.h`
+- `rebuild/2008-06/native-headers/v8world/Geometry2008.h`
+- `rebuild/2008-06/native-headers/v8world/Joints2008.h`
