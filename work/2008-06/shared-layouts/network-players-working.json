@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayersLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeNetworkPlayersLayout.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeNetworkPlayersLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeNetworkPlayersLayout.cpp"
     ],
     "base": [
       "/nologo",
@@ -61,8 +61,8 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-network-players/overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,9 +76,9 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayers.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeNetworkPlayers.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/NetworkPlayers.cpp"
     ],
     "pending": [
       "/nologo",
@@ -101,9 +101,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\pending",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-network-players/pending",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-network-players/overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -117,26 +117,26 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
+      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
       "/DNATIVE_NETWORK_PLAYERS_PENDING",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayersPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeNetworkPlayersPending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/NetworkPlayers.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_network_players.py": "12d547eac142764a28eb8e6be64f98a045ecb8ffc21b8f163e4ecd962b76d829",
+    "rebuild/2008-06/tests/record_native_network_players.py": "dd79e9c27a9b2a55daf25a7f5e1d6b427b55832d46f7d785328caf2fd8dfdb26",
     "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
-    "rebuild/2008-06/native-classes/NetworkPlayers.cpp": "32d12fa3557c1976c6b2e9255866a8c1e20ba17fd36d171dcd95a8825709972c",
+    "rebuild/2008-06/native-classes/NetworkPlayers.cpp": "bde7d60859a272cefcef8dfe7a069833a104825f2cd37aea62b6bf3bec9e1566",
     "rebuild/2008-06/tests/NativeNetworkPlayersLayout.cpp": "c6a507cbe6d721e0948dc11fd99a4dfa84faaac2771e623fa3ec723919a7b121",
     "rebuild/2008-06/tests/NativeNetworkPlayersPeers.h": "92a7c176346f13f66e6dd2e5b320c31d1d8f861ccea0451e09dbe647bbd39e92",
-    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "88164ed8537f5812afbd86fd869aba9235ecc6527414066562d68069c3978993"
+    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "20e08a74388f6d4dcf8fae1547f314f2ab3291a73a330ff9f3b9a7a3c498796c"
   },
   "objects": {
-    "NativeNetworkPlayersLayout.obj": "26763d43e8ebf8c31de726ee157be78cdfcc1dbbb9927418528a137f3b54f72c",
-    "NativeNetworkPlayers.obj": "769934194c01f3749824867e5d14bdb80c98ae10578611da99a744e4618856d5",
-    "NativeNetworkPlayersPending.obj": "d3579d344457309747053599ec995c74de45975e6696f71f292339a3dc62a46a"
+    "NativeNetworkPlayersLayout.obj": "d83a0fef3fe8b216e21be0089558e5f9ea0c6b8211710061200b1453387f9bed",
+    "NativeNetworkPlayers.obj": "dce4fadaa881e82cb7360bb0a5a4e7d8dd1fe3b07348c77e7e3b85f599f7c1fc",
+    "NativeNetworkPlayersPending.obj": "313431ef0389cb1fe377b7ee1f6e6a6f5cfe28755ff8cac10e3c32a840eb1175"
   },
-  "layout": "Players 0x1b0 (ServiceProvider::create<Players> 00411fd0); Notifier<Players,ChatMessage> 0x130, Notifier<Players,SuperSafeChanged> 0x150, Listener<Player,CharacterAdded> 0x170, Service 0x174; abuseReporter +0x174, chatHistory +0x178, plugin +0x194, players +0x198, localPlayer +0x1a0, peer +0x1a8, maxPlayers +0x1ac; ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)",
+  "layout": "Players 0x1b0 (ServiceProvider::create<Players> 00411fd0); Notifier<Players,ChatMessage> 0x130, Notifier<Players,SuperSafeChanged> 0x150, Listener<Player,CharacterAdded> 0x170, Service 0x174; abuseReporter +0x174, chatHistory +0x178, plugin +0x194, players +0x198, localPlayer +0x1a0, peer +0x1a8, maxPlayers +0x1ac; Plugin 0x8 (vptr 00822688, PluginInterfaceAdapter::c +0x4); ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)",
   "methods": [
     {
       "address": "00495e50",
@@ -496,6 +496,16 @@
       "verified_targets": {
         "??1PluginInterface@@UAE@XZ": "0x49ed40 (external)",
         "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049df50",
+      "symbol": "?OnReceive@?$PluginInterfaceAdapter@VPlayers@Network@RBX@@@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "?OnReceive@Players@Network@RBX@@QAE_NPAVRakPeerInterface@@PAUPacket@@@Z": "0x49d770 (external (evidence name))"
       },
       "local_eh": []
     },
@@ -1851,6 +1861,24 @@
         "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50 (evidence name)",
         "15": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z -> 0x497ec0 (own row (pending-build-only))"
       }
+    },
+    {
+      "vtable": "0x822688",
+      "symbol": "??_7Plugin@Players@Network@RBX@@6B@",
+      "rtti_offset": 0,
+      "slots": {
+        "0": "??_EPlugin@Players@Network@RBX@@UAEPAXI@Z -> 0x496370 (own row (??_G))",
+        "1": "?OnAttach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z -> 0x70bdf0 (RakNet PluginInterface default)",
+        "2": "?OnDetach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z -> 0x70bdf0 (RakNet PluginInterface default)",
+        "3": "?OnStartup@PluginInterface@@UAEXPAVRakPeerInterface@@@Z -> 0x70bdf0 (RakNet PluginInterface default)",
+        "4": "?Update@PluginInterface@@UAEXPAVRakPeerInterface@@@Z -> 0x70bdf0 (RakNet PluginInterface default)",
+        "5": "?OnReceive@?$PluginInterfaceAdapter@VPlayers@Network@RBX@@@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z -> 0x49df50 (own row)",
+        "6": "?OnShutdown@PluginInterface@@UAEXPAVRakPeerInterface@@@Z -> 0x70bdf0 (RakNet PluginInterface default)",
+        "7": "?OnCloseConnection@PluginInterface@@UAEXPAVRakPeerInterface@@USystemAddress@@@Z -> 0x6ad2a0 (RakNet PluginInterface default)",
+        "8": "?OnDirectSocketSend@PluginInterface@@UAEXPBDIUSystemAddress@@@Z -> 0x4e83a0 (RakNet PluginInterface default)",
+        "9": "?OnDirectSocketReceive@PluginInterface@@UAEXPBDIUSystemAddress@@@Z -> 0x4e83a0 (RakNet PluginInterface default)",
+        "10": "?OnInternalPacket@PluginInterface@@UAEXPAUInternalPacket@@IUSystemAddress@@I_N@Z -> 0x762d50 (RakNet PluginInterface default)"
+      }
     }
   ],
   "exact_distinct_addresses": [
@@ -1921,6 +1949,7 @@
     "0049bdc0",
     "0049ca70",
     "0049d450",
+    "0049df50",
     "0049e1d0",
     "007f17c0",
     "007f17f0",

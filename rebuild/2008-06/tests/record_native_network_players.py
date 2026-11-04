@@ -164,6 +164,7 @@ EXTERNAL = {
     '??0AbuseReporter@Network@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x49e040,
     '??0PluginInterface@@QAE@XZ': 0x49ed30,
     '??1PluginInterface@@UAE@XZ': 0x49ed40,
+    '?OnReceive@Players@Network@RBX@@QAE_NPAVRakPeerInterface@@PAUPacket@@@Z': 0x49d770,
     '?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z': 0x49fe20,
     '??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@UAE@XZ': 0x4a34e0,
     '??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@UAE@XZ': 0x4a34e0,
@@ -263,6 +264,7 @@ ROWS = [
     (0x49d450, '?setMaxPlayers@' + P),
     (0x49e1d0, '?setAbuseReportUrl@' + P),
     (0x496370, '??_GPlugin@' + P),
+    (0x49df50, '?OnReceive@?$PluginInterfaceAdapter@V' + P + '@@'),
     (0x4971c0, '??1AbuseReporter@Network@RBX@@QAE@XZ'),
     (0x4963c0, '??1ChatMessage@Network@RBX@@QAE@XZ'),
     # base-class template instances of the unit
@@ -559,6 +561,54 @@ for address, text in ((0x8194d0, 'Players'), (0x822b70, 'NumPlayers'), (0x822490
                       (0x822c34, 'PlayerRemoving'), (0x822af4, 'Local player already exists'),
                       (0x821cac, 'rebuildBackpack can only be called by the backend server')):
     assert original.string(address) == text, (hex(address), text)
+# Players::Plugin vtable 00822688 (base-object layout): RTTI chain Plugin -> PluginInterfaceAdapter<Players> ->
+# PluginInterface, all at offset 0; 11 slots; slot 0 the deleting destructor row, slot 5 the adapter OnReceive row,
+# the rest RakNet PluginInterface defaults (ICF-folded `ret N` bodies at the addresses below).
+PLUGIN_VT = 0x822688
+PLUGIN_SYMBOL = '??_7Plugin@' + P + '6B@'
+assert binding[PLUGIN_SYMBOL][0] == PLUGIN_VT, hex(binding[PLUGIN_SYMBOL][0])
+assert original.vtable_class(PLUGIN_VT) == ('.?AVPlugin@Players@Network@RBX@@', 0)
+PLUGIN_DEFAULTS = {
+    '?OnAttach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
+    '?OnDetach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
+    '?OnStartup@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
+    '?Update@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
+    '?OnShutdown@PluginInterface@@UAEXPAVRakPeerInterface@@@Z': 0x70bdf0,
+    '?OnCloseConnection@PluginInterface@@UAEXPAVRakPeerInterface@@USystemAddress@@@Z': 0x6ad2a0,
+    '?OnDirectSocketSend@PluginInterface@@UAEXPBDIUSystemAddress@@@Z': 0x4e83a0,
+    '?OnDirectSocketReceive@PluginInterface@@UAEXPBDIUSystemAddress@@@Z': 0x4e83a0,
+    '?OnInternalPacket@PluginInterface@@UAEXPAUInternalPacket@@IUSystemAddress@@I_N@Z': 0x762d50,
+}
+# The default bodies are `ret 4` / `ret 0xc` / `ret 0x10` / `ret 0x18`, matching each declaration's stack size.
+for value, ret in ((0x70bdf0, 4), (0x6ad2a0, 0xc), (0x4e83a0, 0x10), (0x762d50, 0x18)):
+    assert original.data(value, 3) == b'\xc2' + struct.pack('<H', ret), hex(value)
+slots = vtable_slots(base_obj, PLUGIN_SYMBOL)
+assert sorted(slots) == list(range(11)), slots
+assert original.vtable_class(PLUGIN_VT + 4 * 12)[0].startswith('.?A')  # word after slot 10 is the next vtable's locator
+entries = {}
+for slot, name in sorted(slots.items()):
+    value = d(PLUGIN_VT + 4 * slot)
+    if name.startswith('??_E') and ('??_G' + name[4:]) in own:
+        assert own['??_G' + name[4:]] == value, (slot, name, hex(value))
+        how = 'own row (??_G)'
+    elif name in own:
+        assert own[name] == value, (slot, name, hex(value))
+        how = 'own row'
+    else:
+        assert PLUGIN_DEFAULTS.get(name) == value, (slot, name, hex(value))
+        how = 'RakNet PluginInterface default'
+    bind(name, value, PLUGIN_SYMBOL)
+    entries[slot] = '%s -> %s (%s)' % (name, hex(value), how)
+assert (d(PLUGIN_VT), d(PLUGIN_VT + 20)) == (0x496370, 0x49df50)
+plocator = d(PLUGIN_VT - 4)
+phierarchy = d(plocator + 16)
+pitems = [d(d(phierarchy + 12) + 4 * i) for i in range(d(phierarchy + 8))]
+assert [(original.string(d(item) + 8), struct.unpack('<i', original.data(item + 8, 4))[0]) for item in pitems] == [
+    ('.?AVPlugin@Players@Network@RBX@@', 0), ('.?AV?$PluginInterfaceAdapter@VPlayers@Network@RBX@@@@', 0),
+    ('.?AVPluginInterface@@', 0)], pitems
+vtables.append({'vtable': hex(PLUGIN_VT), 'symbol': PLUGIN_SYMBOL, 'rtti_offset': 0, 'slots': entries})
+assert b'\x6a\x08' in ctor  # new(8) for the Plugin in 0049bdc0
+
 for throw_info, cls in ((0x8d362c, '.?AVbad_cast@std@@'), (0x8d1bc8, '.?AVruntime_error@std@@')):
     cta = d(throw_info + 12)
     assert original.string(d(d(cta + 4) + 4) + 8) == cls, (hex(throw_info), cls)
@@ -575,7 +625,7 @@ receipt = {
     'layout': 'Players 0x1b0 (ServiceProvider::create<Players> 00411fd0); Notifier<Players,ChatMessage> 0x130, '
               'Notifier<Players,SuperSafeChanged> 0x150, Listener<Player,CharacterAdded> 0x170, Service 0x174; '
               'abuseReporter +0x174, chatHistory +0x178, plugin +0x194, players +0x198, localPlayer +0x1a0, peer +0x1a8, '
-              'maxPlayers +0x1ac; ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)',
+              'maxPlayers +0x1ac; Plugin 0x8 (vptr 00822688, PluginInterfaceAdapter::c +0x4); ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)',
     'methods': base_out, 'pending_methods': pend_out, 'not_exact': not_exact, 'vtables': vtables,
     'exact_distinct_addresses': exact_addresses, 'pending_only_addresses': pending_addresses,
     'pending_note': 'pending rows are exact only with generated copies of other owners\' headers (proposals); not counted.',

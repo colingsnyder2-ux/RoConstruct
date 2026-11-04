@@ -29,6 +29,14 @@ public:
 	virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet);
 };
 
+// PluginInterfaceAdapter<Players>::OnReceive 0049df50 (Plugin vtable 00822688 slot 5): forwards to the owner at +4 and
+// maps true to RR_CONTINUE_PROCESSING (1), false to RR_STOP_PROCESSING_AND_DEALLOCATE (0) (xor/test/setne).
+template<class Class>
+PluginReceiveResult PluginInterfaceAdapter<Class>::OnReceive(RakPeerInterface* peer, Packet* packet)
+{
+	return c->OnReceive(peer, packet) ? RR_CONTINUE_PROCESSING : RR_STOP_PROCESSING_AND_DEALLOCATE;
+}
+
 namespace RBX
 {
 	namespace Network
@@ -88,6 +96,12 @@ namespace RBX
 {
 	namespace Network
 	{
+		// Players::Plugin: RTTI of vtable 00822688 lists Plugin -> PluginInterfaceAdapter<Players> -> PluginInterface
+		// (single inheritance, all at offset 0). Size 8: the Players constructor 0049bdc0 calls new(8), runs
+		// PluginInterface::PluginInterface 0049ed30, stores the owner at +4 (PluginInterfaceAdapter::c, read by
+		// OnReceive 0049df50) and the vtable 00822688. No own fields or virtuals: the 11 slots are the deleting
+		// destructor 00496370 (calls ~PluginInterface 0049ed40 directly), the RakNet PluginInterface defaults and
+		// the adapter's OnReceive at slot 5.
 		class Players::Plugin : public PluginInterfaceAdapter<Players>
 		{
 		public:
