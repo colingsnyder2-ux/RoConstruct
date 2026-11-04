@@ -7,8 +7,12 @@ Register aliases/constant adjustments use conservative control-flow merges.
 Loaded-pointer paths, indexed bases and segmented memory are classified separately;
 their pointee types/index bounds are not inferred. Repeated direct calls group by
 expected destination, with COFF names attached only under equal code shape.
-Calls, indirect accesses and stack spills leave uncertainty. Differences may
-reflect optimization; equal observations do not prove layout/ABI/runtime.
+ESP/EBP coordinates and exact 32-bit spill slots propagate through CFG merges.
+Overlapping/unknown writes invalidate slots. Calls discard slots and ESP because
+callee stack cleanup/escaped-local writes are unproven; dynamic alignment loses
+the affected coordinate. Call-result bits get provenance, never a return type.
+Calls and indirect accesses still leave uncertainty. Differences may reflect
+optimization; equal observations do not prove layout/ABI/runtime.
 """
 import argparse
 from collections import Counter
@@ -45,7 +49,6 @@ def shifted(origin, displacement):
 def stack_location(operand, aliases):
     if operand.type != X86_OP_MEM or operand.mem.index or operand.mem.segment:
         return None
-    # x86 register IDs are mapped by the caller before consulting this helper.
     frame = aliases.get(('frame_id', operand.mem.base))
     return frame + operand.mem.disp if frame is not None else None
 
@@ -112,6 +115,10 @@ def extract_linear(code, base=0, relocs=(), entry=None):
             aliases.pop(('slot', sp), None)
         elif ins.mnemonic == 'leave' and ('frame_id', X86_REG_EBP) in aliases:
             stack_update = aliases[('frame_id', X86_REG_EBP)] + 4
+        if ins.mnemonic.startswith(('pop', 'push', 'enter', 'leave')) and ins.mnemonic not in ('push', 'pop', 'leave') or ins.mnemonic == 'pop' and ops[0].type != X86_OP_REG:
+            for key in list(aliases):
+                if isinstance(key, tuple) and key[0] == 'slot':
+                    aliases.pop(key)
         # Save/restore only exact 32-bit slots; overlapping/unknown writes kill evidence.
         for op in ops:
             if op.type != X86_OP_MEM or not op.access & CS_AC_WRITE:
