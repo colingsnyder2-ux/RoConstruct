@@ -1,22 +1,27 @@
-"""Verify the inactive native RBX::Adorn interface and RBX::AdornG3D (2008-06).
+"""Verify the inactive native RBX::Adorn interface, RBX::AdornG3D and RBX::AdornRbxGfx (2008-06).
 
-Builds (document-swap flags, VS2008 RTM 21022, /fp:fast), all from the current native headers
-(native-headers/RbxGraphics/Adorn2008.h, native-headers/AppDraw/AdornG3D2008.h; non-colliding names, so no donor header
-is shadowed for any other unit):
-  * tests/NativeAdornLayout.cpp   sizeof/offset probes (mov eax, imm32; ret) and nativeNewAdornG3D, which instantiates the
-                                  header-inline constructor so that the object carries the AdornG3D vtable, ??_G and
-                                  G3D::Table<TextureArgs, TextureRef>::freeMemory built from the current headers;
-  * native-classes/AdornG3D.cpp   AdornG3D method bodies 00676480..00676aff.
+Builds (document-swap flags plus the Ogre 1.4.5 client headers, VS2008 RTM 21022, /fp:fast), all from the current native
+headers (native-headers/RbxGraphics/Adorn2008.h, AppDraw/AdornG3D2008.h, RbxGraphics/AdornRbxGfx2008.h and the
+committed RbxGraphics/TextureProxyBase2008.h / RenderLib/TextureProxy2008.h; non-colliding names, so no donor header is
+shadowed for any other unit):
+  * tests/NativeAdornLayout.cpp        sizeof/offset probes (mov eax, imm32; ret) and nativeNewAdornG3D, which
+                                       instantiates the header-inline constructor so that the object carries the
+                                       AdornG3D vtable, ??_G and G3D::Table<TextureArgs, TextureRef>::freeMemory;
+  * native-classes/AdornG3D.cpp        AdornG3D method bodies 00676480..00676aff;
+  * tests/NativeAdornRbxGfxLayout.cpp  AdornRbxGfx sizeof/offset probes;
+  * native-classes/AdornRbxGfx.cpp     AdornRbxGfx bodies that need only its own layout, and the container COMDATs of
+                                       its image block (0066fc30..00671d5f).
 
-A second, pending-only build (/DNATIVE_ADORN_PENDING plus generated proposal headers under
-out/native-layouts/adorn-pending/, which replace the donor RbxGraphics/TextureProxyBase.h / RenderLib/TextureProxy.h for
-that build only) compiles createTextureProxy / setTexture / getTextureSize. Those rows are recorded exact=false
-(pending-build-only) and are not counted; the vtable check uses the current-header objects only.
+A second, pending-only build of AdornRbxGfx.cpp (/DNATIVE_ADORNRBXGFX_PENDING plus a generated copy of
+RenderLib/TextureProxy2008.h with the proposed RenderNew::TextureProxy(const std::string&) constructor, under
+out/native-layouts/adornrbxgfx-pending/, ahead of native-headers for that build only) compiles createTextureProxy. Its
+row is recorded exact=false (pending-build-only) and is not counted; vtable checks use current-header objects only.
 
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, constants by bytes, vtables by original RTTI
-names, own symbols by the row proven here, folded bodies by their bytes, and the remaining externals by the explicit
-EXTERNAL map (call sites read in the original disassembly, structure checked below). One address per symbol.
+names, own symbols by the row proven here, folded bodies by their bytes, data by address, and the remaining externals
+by the explicit EXTERNAL map (call sites read in the original disassembly, structure checked below). One address per
+symbol. Rows folded by the linker onto bodies outside the class block are compared and recorded, not counted.
 Writes work/2008-06/shared-layouts/adorn-working.json. Set NATIVE_ADORN_DISCOVER=1 to list unbound targets and
 non-exact rows instead of asserting.
 """
@@ -35,83 +40,28 @@ import native_bind as nb  # noqa: E402
 R = ROOT / 'rebuild/2008-06'
 OUT = nb.OUT
 OUT.mkdir(parents=True, exist_ok=True)
+OGRE = '/I' + str(ROOT / 'tools/libs/ogre-1.4.5/ogrenew/OgreMain/include')
 LAYOUT = R / 'tests/NativeAdornLayout.cpp'
 UNIT = R / 'native-classes/AdornG3D.cpp'
-HEADERS = [R / 'native-headers/RbxGraphics/Adorn2008.h', R / 'native-headers/AppDraw/AdornG3D2008.h']
+GFX_LAYOUT = R / 'tests/NativeAdornRbxGfxLayout.cpp'
+GFX_UNIT = R / 'native-classes/AdornRbxGfx.cpp'
+HEADERS = [R / 'native-headers/RbxGraphics/Adorn2008.h', R / 'native-headers/AppDraw/AdornG3D2008.h',
+           R / 'native-headers/RbxGraphics/AdornRbxGfx2008.h']
 DISCOVER = bool(os.environ.get('NATIVE_ADORN_DISCOVER'))
 
-# ---- pending proposal headers (generated, build-local; not part of the native tree) --------------------------------
-# Evidence: TextureProxyBase vtable 0082d168 (RTTI .?AVTextureProxyBase@RBX@@, 8 slots: ??_G 00551d50, four accessors
-# 00551c70 / 00551c90 (int at +0x28) and 00551cb0 / 00551cd0 (float at +0x2c), then three _purecall slots), base ctor
-# 00551bf0 (ReferenceCountedObject 00472990, string at +0xc, +0x28 = 1, +0x2c = 1.0f); Render::TextureProxy vtable
-# 0082d140 (9 slots), ctor 00551b30 (TextureManager&, const std::string&, bool; +0x30 texture, +0x34 loaded,
-# +0x38 manager, +0x3c tiled, +0x40 root, +0x44 shadeTexture, +0x48 shade colour), new(0x54) in 00676aa0;
-# AdornG3D 00676890 / 00676750 call slot 6 (+0x18) with (TextureRef* result, RenderDevice*): resolve.
-# The accessor names are unknown (no donor counterpart); they are named by what they touch.
-PENDING_DIR = OUT / 'adorn-pending'
-PENDING_HEADERS = {
-    'RbxGraphics/TextureProxyBase.h': '''#pragma once
-// GENERATED proposal (record_native_adorn.py): 2008 RBX::TextureProxyBase, owner: texture proxies.
-#include <string>
-#include <G3D/ReferenceCount.h>
-#include <G3D/Vector2.h>
-#include <GLG3D/Texture.h>
-namespace G3D { class RenderDevice; }
-namespace RBX
-{
-	typedef G3D::ReferenceCountedPointer<class TextureProxyBase> TextureProxyBaseRef;
-	class TextureProxyBase : public G3D::ReferenceCountedObject
-	{
-	public:
-		std::string filename;          // +0x0c
-	protected:
-		int intValue28;                // +0x28 (= 1 in 00551bf0; name unknown)
-		float floatValue2c;            // +0x2c (= 1.0f in 00551bf0; name unknown)
-	public:
-		TextureProxyBase();
-		virtual ~TextureProxyBase();
-		virtual void setIntValue28(int value);                                      // slot 1 00551c70
-		virtual int getIntValue28() const;                                          // slot 2 00551c90
-		virtual void setFloatValue2c(float value);                                  // slot 3 00551cb0
-		virtual float getFloatValue2c() const;                                      // slot 4 00551cd0
-		virtual G3D::ReferenceCountedPointer<G3D::Texture> getIfResolved() const = 0;     // slot 5
-		virtual G3D::ReferenceCountedPointer<G3D::Texture> resolve(G3D::RenderDevice* rd) = 0;   // slot 6 (+0x18)
-		virtual G3D::Vector2 getSize() = 0;                                         // slot 7
-	};
-}
-''',
-    'RenderLib/TextureProxy.h': '''#pragma once
-// GENERATED proposal (record_native_adorn.py): 2008 RBX::Render::TextureProxy, owner: texture proxies.
-#include "RbxGraphics/TextureProxyBase.h"
-#include <G3D/Color3.h>
-#include <GLG3D/RenderDevice.h>
-#include <GLG3D/Texture.h>
-#include <GLG3D/TextureManager.h>
-namespace RBX
-{
-	namespace Render
-	{
-		class TextureProxy : public TextureProxyBase
-		{
-		protected:
-			G3D::ReferenceCountedPointer<G3D::Texture> texture;          // +0x30
-			bool loaded;                                                 // +0x34
-			G3D::TextureManager* textureManager;                         // +0x38
-			bool tiled;                                                  // +0x3c
-			G3D::ReferenceCountedPointer<TextureProxy> root;             // +0x40
-			G3D::ReferenceCountedPointer<TextureProxy> shadeTexture;     // +0x44
-			G3D::Color3 shadeColor;                                      // +0x48 (size 0x54)
-		public:
-			TextureProxy(G3D::TextureManager& textureManager, const std::string& filename, bool tiled);   // 00551b30
-			virtual ~TextureProxy();
-			virtual G3D::ReferenceCountedPointer<G3D::Texture> getIfResolved() const;
-			virtual G3D::ReferenceCountedPointer<G3D::Texture> resolve(G3D::RenderDevice* rd);
-			virtual G3D::Vector2 getSize();
-		};
-	}
-}
-''',
-}
+# ---- pending proposal header (generated, build-local; not part of the native tree) ----------------------------------
+# A copy of the committed RenderLib/TextureProxy2008.h with one added declaration: the out-of-line
+# RenderNew::TextureProxy(const std::string&) constructor 0066ffb0 (TextureProxyBase() 00551bf0, vptr 0082d18c,
+# +0x30 / +0x40 / +0x44 = 0, +0x34 = false, TexturePtr() at +0x54, filename = name; +0x38 / +0x3c / +0x48 untouched),
+# which AdornRbxGfx::createTextureProxy 00670380 calls after new(0x60).
+PENDING_DIR = OUT / 'adornrbxgfx-pending'
+PENDING_ANCHOR = ('\t\t\tTextureProxy(G3D::TextureManager& textureManager, const std::string& filename, bool tiled);   '
+                  '// 00551e30')
+PENDING_LINE = ('\n\t\t\tTextureProxy(const std::string& filename);'
+                '                                                    // 0066ffb0 (PROPOSAL)')
+_proxy = (R / 'native-headers/RenderLib/TextureProxy2008.h').read_text()
+assert _proxy.count(PENDING_ANCHOR) == 1, 'TextureProxy2008.h anchor moved'
+PENDING_HEADERS = {'RenderLib/TextureProxy2008.h': _proxy.replace(PENDING_ANCHOR, PENDING_ANCHOR + PENDING_LINE)}
 for rel, text in PENDING_HEADERS.items():
     path = PENDING_DIR / rel
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -122,7 +72,8 @@ def build(name, src, extra=(), before_native=()):
     obj = OUT / (name + '.obj')
     flags = nb.flags()
     i = next(k for k, x in enumerate(flags) if x.replace('\\', '/').endswith('rebuild/2008-06/native-headers'))
-    flags = flags[:i] + list(before_native) + flags[i:] + list(extra) + ['/Fo' + str(obj), str(src)]
+    flags = flags[:i] + list(before_native) + flags[i:i + 1] + [OGRE] + flags[i + 1:] + list(extra) + \
+        ['/Fo' + str(obj), str(src)]
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags, OUT)
     assert code == 0, log
     return obj, flags
@@ -130,10 +81,14 @@ def build(name, src, extra=(), before_native=()):
 
 layout_obj, layout_flags = build('NativeAdornLayout', LAYOUT, ['/fp:fast'])
 unit_obj, unit_flags = build('NativeAdorn_g3d', UNIT, ['/fp:fast'])
-pending_obj, pending_flags = build('NativeAdorn_g3d_pending', UNIT, ['/fp:fast', '/DNATIVE_ADORN_PENDING'],
+gfx_layout_obj, gfx_layout_flags = build('NativeAdornRbxGfxLayout', GFX_LAYOUT, ['/fp:fast'])
+gfx_obj, gfx_flags = build('NativeAdorn_rbxgfx', GFX_UNIT, ['/fp:fast'])
+pending_obj, pending_flags = build('NativeAdorn_rbxgfx_pending', GFX_UNIT, ['/fp:fast', '/DNATIVE_ADORNRBXGFX_PENDING'],
                                    ['/I' + str(PENDING_DIR)])
-OBJ = {'layout': layout_obj, 'g3d': unit_obj, 'pending': pending_obj}
-FLAGS = {'layout': layout_flags, 'g3d': unit_flags, 'pending': pending_flags}
+OBJ = {'layout': layout_obj, 'g3d': unit_obj, 'rbxgfx_layout': gfx_layout_obj, 'rbxgfx': gfx_obj,
+       'pending': pending_obj}
+FLAGS = {'layout': layout_flags, 'g3d': unit_flags, 'rbxgfx_layout': gfx_layout_flags, 'rbxgfx': gfx_flags,
+         'pending': pending_flags}
 
 # ---- layout -------------------------------------------------------------------------------------------------------
 # Evidence: 0045d850 pushes 0x20 to operator new, stores the vtable 00819d24 at +0, the RenderDevice at +4 and calls the
@@ -145,11 +100,29 @@ for fn, size in SIZES.items():
     name_, body_, _ = next(x for x in match.coff_functions(raw) if x[0].startswith('?native' + fn + '@@'))
     assert body_ == b'\xb8' + struct.pack('<I', size) + b'\xc3', (fn, body_.hex())
 
+# AdornRbxGfx: operator new(0x144) in 0045b425; constructor stores 00674210 / 006743eb (see AdornRbxGfx2008.h).
+GFX_SIZES = {'size': 0x144, 'visualEngine': 0x4, 'texture2d': 0x8, 'textureMaterial': 0x24, 'rootNode': 0x30,
+             'renderNode': 0x34, 'solidMaterial': 0x38, 'particleCount': 0x44, 'freeSubEntities': 0x48,
+             'usedSubEntities': 0x60, 'meshes': 0x78, 'entity': 0x98, 'explosionRoot': 0x9c, 'explosionNodes': 0xa0,
+             'explosions': 0xb8, 'sparkleRoot': 0xd8, 'sparkleNodes': 0xdc, 'sparkles': 0xf4, 'objectToWorld': 0x114,
+             'materialPtrSize': 0xc, 'meshMapSize': 0x20, 'nodeVectorSize': 0x18}
+raw = gfx_layout_obj.read_bytes()
+for fn, size in GFX_SIZES.items():
+    name_, body_, _ = next(x for x in match.coff_functions(raw) if x[0].startswith('?nativeAdornRbxGfx_' + fn + '@@'))
+    assert body_ == b'\xb8' + struct.pack('<I', size) + b'\xc3', (fn, body_.hex())
+
 original = nb.Original()
 names = {int(k, 16): v.get('symbol', '') for k, v in json.loads((R / 'offline/evidence.json').read_text())['names'].items()}
 d = lambda a: struct.unpack('<I', original.data(a, 4))[0]
 
 TABLE = '?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@'
+def pick(obj, prefix, *contains, suffix=''):
+    names = [n for n, _, _ in match.coff_functions(Path(obj).read_bytes())
+             if n.startswith(prefix) and n.endswith(suffix) and all(c in n for c in contains)]
+    assert len(names) == 1, (prefix, contains, suffix, [x[:100] for x in names])
+    return names[0]
+
+
 EXTERNAL = {
     '??2@YAPAXI@Z': 0x6a0920, '??3@YAXPAX@Z': 0x6a067a,
     # G3D::RenderDevice (GLG3D, not recovered here); call sites in the AdornG3D bodies, structure checked below.
@@ -184,6 +157,17 @@ EXTERNAL = {
     # pending-build-only targets (rows not counted)
     '??0TextureProxy@Render@RBX@@QAE@AAVTextureManager@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z': 0x551b30,   # 00676ae8
     '?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z': 0x598fa0,   # ICF (evidence: Shader)
+    # AdornRbxGfx (rbxgfx unit).
+    '?convertToString@?$StringConverter@H@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABH@Z': 0x5bdef0,   # 0066fc21
+    # vector<RbxSubEntity*>::_Insert_n is folded with vector<const Primitive*>::_Insert_n 004c7890 (evidence name; the
+    # same code for any 4-byte pointer element); called by insert 004c7c60 (folded row below).
+    '?_Insert_n@?$vector@PAVRbxSubEntity@Ogre@@V?$allocator@PAVRbxSubEntity@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAVRbxSubEntity@Ogre@@V?$allocator@PAVRbxSubEntity@Ogre@@@std@@@2@IABQAVRbxSubEntity@Ogre@@@Z': 0x4c7890,
+    # map node allocators _Buynode(left, parent, right, value, color): their catch(...) funclet lies outside the
+    # recorded extents (target 126 / 135 bytes, compiled 147 / 156), so they are bound by call site, not compared.
+    pick(gfx_obj, '?_Buynode@?$_Tree@', 'VMeshPtr@Ogre@@U?$less', suffix='@D@Z'): 0x670780,          # _Insert 00670850
+    pick(gfx_obj, '?_Buynode@?$_Tree@', 'PAVSceneNode@Ogre@@U?$less', suffix='@D@Z'): 0x690030,      # _Insert 00691d90
+    # pending-build-only target: RenderNew::TextureProxy(const std::string&) 0066ffb0 (structure checked below)
+    '??0TextureProxy@RenderNew@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x66ffb0,   # 006703be
 }
 # Bodies folded by the linker with other identical bodies: verified by their bytes below.
 FOLDED = {
@@ -191,7 +175,13 @@ FOLDED = {
     '?finishRenderPass@Adorn@RBX@@UAEXXZ': 0x47d410,
     '?sparkle@Adorn@RBX@@UAEXXZ': 0x47d410,
 }
-DATA = {}
+DATA = {
+    '_nameCounter': 0x97da58,                                    # uniqueName 0066fc08 / 0066fc16; finishRenderPass 00671fb0
+    '??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@': 0x80b270,   # literal checked below
+    '??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@': 0x80b28c,               # literal checked below
+    '__TI3?AVout_of_range@std@@': 0x8d0c3c,                      # throw info checked below
+    '__TI3?AVlength_error@std@@': 0x8d0cc0,
+}
 LOCAL_EH = nb.LOCAL_EH
 UNBOUND = []
 binding = {}
@@ -223,16 +213,88 @@ G3D_ROWS = [
     (0x6769e0, '?drawFont2D@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@'
                'V?$allocator@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z'),
 ]
-PENDING_ROWS = [
+G3D_ROWS += [
+    # The texture rows use the committed RbxGraphics/TextureProxyBase2008.h (resolve = slot 6, +0x18) and
+    # RenderLib/TextureProxy2008.h (out-of-line Render::TextureProxy(TextureManager&, const std::string&, bool) 00551b30).
     (0x676aa0, '?createTextureProxy@AdornG3D@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@'
                'ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z'),
     (0x676890, '?setTexture@AdornG3D@RBX@@UAEXHV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@@Z'),
     (0x676750, '?getTextureSize@AdornG3D@RBX@@UBE?AVRect2D@G3D@@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@4@@Z'),
 ]
-PENDING_REASON = ('pending-build-only: needs the 2008 TextureProxyBase (resolve = virtual slot 6, +0x18) and the out-of-line '
-                  'Render::TextureProxy(TextureManager&, const std::string&, bool) 00551b30 (size 0x54); compiled only '
-                  'with /DNATIVE_ADORN_PENDING against generated proposal headers')
-ROWS = {'layout': LAYOUT_ROWS, 'g3d': G3D_ROWS}
+
+
+MESH = 'VMeshPtr@Ogre@@U?$less'          # std::map<std::string, Ogre::MeshPtr> (+0x78)
+NODE = 'PAVSceneNode@Ogre@@U?$less'      # std::map<std::string, Ogre::SceneNode*> (+0xb8 / +0xf4)
+SUB = '?$vector@PAVRbxSubEntity@Ogre@@'  # std::vector<Ogre::RbxSubEntity*> (+0x48 / +0x60)
+PAIR = '?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@'
+G = gfx_obj
+# AdornRbxGfx image block rows. Identical instantiations of the two maps are folded by the linker; the row symbol is
+# the MeshPtr map's unless the body only exists for the SceneNode map (00671910, 006713b0).
+RBXGFX_ROWS = [
+    (0x66fac0, '?setObjectToWorldMatrix@AdornRbxGfx@RBX@@UAEXABVCoordinateFrame@G3D@@@Z'),
+    (0x66faf0, '?getObjectToWorld@AdornRbxGfx@RBX@@AAEXAAVMatrix4@Ogre@@ABVVector3@4@1ABVQuaternion@4@@Z'),
+    (0x66fba0, '?getObjectToWorld@AdornRbxGfx@RBX@@AAEXAAVMatrix4@Ogre@@@Z'),
+    (0x66fc00, '?uniqueName@AdornRbxGfx@RBX@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ'),
+    (0x671e20, '?releaseSubEntities@AdornRbxGfx@RBX@@AAEXXZ'),
+    (0x66fc30, '??1' + PAIR + 'QAE@XZ'),
+    (0x66fc80, pick(G, '??0' + PAIR, 'QAE@ABV?$basic_string', suffix='ABVMeshPtr@Ogre@@@Z')),
+    (0x66fce0, '??0' + PAIR + 'QAE@ABU01@@Z'),
+    (0x66fed0, pick(G, '?_Lbound@?$_Tree@', MESH)),
+    (0x6710e0, pick(G, '?find@?$_Tree@', MESH, 'QAE?AViterator')),
+    (0x671160, pick(G, '?_Erase@?$_Tree@', MESH)),
+    (0x6711f0, pick(G, '?insert@?$_Tree@', MESH, 'QAE?AU?$pair@Viterator')),
+    (0x6713b0, pick(G, '?insert@?$_Tree@', NODE, 'QAE?AViterator@12@Vconst_iterator@12@ABU')),
+    (0x6715f0, pick(G, '?insert@?$_Tree@', MESH, 'QAE?AViterator@12@Vconst_iterator@12@ABU')),
+    (0x671830, pick(G, '?erase@?$_Tree@', MESH, 'Vconst_iterator@12@0@Z')),
+    (0x671910, pick(G, '??A?$map@', NODE)),
+    (0x6719f0, pick(G, '??A?$map@', MESH)),
+    (0x671ae0, pick(G, '??0?$_Tree@', MESH, 'QAE@ABU?$less')),
+    (0x671c20, pick(G, '??1?$_Tree@', MESH)),
+    (0x66ff20, pick(G, '?_Dec@const_iterator@?$_Tree@', MESH)),
+    (0x670740, pick(G, '?_Buynode@?$_Tree@', NODE, suffix='@XZ')),
+    (0x670850, pick(G, '?_Insert@?$_Tree@', MESH)),
+    (0x670a50, pick(G, '?erase@?$_Tree@', MESH, 'QAE?AViterator@12@Vconst_iterator@12@@Z')),
+]
+# Bodies of this unit that the linker folded onto identical bodies elsewhere (other classes' instantiations, shared empty
+# virtuals): compared exact and recorded, not counted.
+RBXGFX_FOLDED_ROWS = [
+    (0x693970, pick(G, '?_Erase@?$_Tree@', NODE)),
+    (0x553980, pick(G, '?_Lbound@?$_Tree@', NODE)),
+    (0x696f30, pick(G, '?find@?$_Tree@', NODE, 'QAE?AViterator')),
+    (0x696c50, pick(G, '?erase@?$_Tree@', NODE, 'QAE?AViterator@12@Vconst_iterator@12@@Z')),
+    (0x699b30, pick(G, '??0?$_Tree@', NODE, 'QAE@ABU?$less')),
+    (0x4213a0, pick(G, '?push_back@' + SUB)),
+    (0x445dc0, pick(G, '?erase@' + SUB, suffix='@2@0@Z')),
+    (0x4c7c60, pick(G, '?insert@' + SUB, suffix='@2@ABQAVRbxSubEntity@Ogre@@@Z')),
+    (0x409f60, pick(G, '?_Inc@const_iterator@?$_Tree@', MESH)),
+    (0x4dc620, pick(G, '?_Lrotate@?$_Tree@', MESH)),
+    (0x5b6aa0, pick(G, '?_Max@?$_Tree@', MESH)),
+    (0x5b6ac0, pick(G, '?_Min@?$_Tree@', MESH)),
+    (0x5b6ae0, pick(G, '?_Rrotate@?$_Tree@', MESH)),
+    (0x55c000, pick(G, '??R?$less@V?$basic_string@')),
+    (0x5b78a0, pick(G, '?_Buynode@?$_Tree@', MESH, suffix='@XZ')),
+    (0x5ecca0, pick(G, '??8const_iterator@?$_Tree@', MESH)),
+    (0x5ecca0, pick(G, '??8const_iterator@?$_Tree@', NODE)),
+    (0x68cfd0, pick(G, '?_Rrotate@?$_Tree@', NODE)),
+    (0x68d060, pick(G, '?_Max@?$_Tree@', NODE)),
+    (0x68d080, pick(G, '?_Min@?$_Tree@', NODE)),
+    (0x68d1a0, pick(G, '?_Inc@const_iterator@?$_Tree@', NODE)),
+    (0x68d350, pick(G, '?_Dec@const_iterator@?$_Tree@', NODE)),
+    (0x68df00, pick(G, '?_Lrotate@?$_Tree@', NODE)),
+    (0x691d90, pick(G, '?_Insert@?$_Tree@', NODE)),
+    (0x693cd0, pick(G, '?insert@?$_Tree@', NODE, 'QAE?AU?$pair@Viterator')),
+    (0x70bdf0, '?setColor@AdornRbxGfx@RBX@@UAEXABVColor4@G3D@@@Z'),
+    (0x6ad2a0, '?lineSegment@AdornRbxGfx@RBX@@UAEXABVLineSegment@G3D@@ABVColor4@4@M@Z'),
+    (0x4e83a0, '?axes@AdornRbxGfx@RBX@@UAEXABVColor4@G3D@@00M@Z'),
+]
+PENDING_ROWS = [
+    (0x670380, '?createTextureProxy@AdornRbxGfx@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@'
+               'ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z'),
+]
+PENDING_REASON = ('pending-build-only: needs the out-of-line RenderNew::TextureProxy(const std::string&) constructor 0066ffb0, '
+                  'which RenderLib/TextureProxy2008.h does not declare; compiled only with /DNATIVE_ADORNRBXGFX_PENDING '
+                  'against a generated copy of that header')
+ROWS = {'layout': LAYOUT_ROWS, 'g3d': G3D_ROWS, 'rbxgfx': RBXGFX_ROWS}
 
 
 def target_of(address):
@@ -321,12 +383,21 @@ def verify(obj, rows, own, strict=True, record=True):
 
 
 resolved = {k: resolve(OBJ[k], rows) for k, rows in ROWS.items()}
+folded_resolved = resolve(OBJ['rbxgfx'], RBXGFX_FOLDED_ROWS)
+for address, name in folded_resolved:
+    FOLDED.setdefault(name, address)
 own = {}
 for rows in resolved.values():
     for address, name in rows:
         own.setdefault(name, address)
 strict = not DISCOVER
 groups = {k: verify(OBJ[k], rows, own, strict) for k, rows in resolved.items()}
+# Folded rows: exact and target-verified like the counted rows, then recorded with exact=False (not counted).
+folded_out = []
+for row in verify(OBJ['rbxgfx'], folded_resolved, own, strict):
+    row['folded_exact'], row['exact'] = row['exact'], False
+    row['reason'] = 'folded by the linker onto an identical body outside the AdornRbxGfx block; not counted'
+    folded_out.append(row)
 
 # Pending-build-only rows: compared and their targets checked, but never counted (exact=False).
 pending_out = []
@@ -339,16 +410,17 @@ for row in verify(OBJ['pending'], resolve(OBJ['pending'], PENDING_ROWS), pending
     pending_out.append(row)
 # The pending build must not change any counted body.
 pending_bodies = {n: b for n, b, _ in match.coff_functions(Path(OBJ['pending']).read_bytes())}
-current_bodies = {n: b for n, b, _ in match.coff_functions(Path(OBJ['g3d']).read_bytes())}
-for _, name in resolved['g3d']:
+current_bodies = {n: b for n, b, _ in match.coff_functions(Path(OBJ['rbxgfx']).read_bytes())}
+for _, name in resolved['rbxgfx'] + folded_resolved:
     assert pending_bodies[name] == current_bodies[name], name
 
 if DISCOVER:
     print('\n'.join(sorted(set(UNBOUND))))
-    for g in list(groups.values()) + [pending_out]:
+    for g in list(groups.values()) + [pending_out, folded_out]:
         for r in g:
             if not r['exact']:
-                print('NOT EXACT', r['address'], r['symbol'][:110], r['size'], r['target_size'], r.get('pending_build_exact'))
+                print('NOT EXACT', r['address'], r['symbol'][:110], r['size'], r['target_size'],
+                      r.get('pending_build_exact'), r.get('folded_exact'))
     sys.exit(0)
 assert not UNBOUND, '\n'.join(UNBOUND)
 
@@ -381,6 +453,35 @@ at = ctor_site.index(b'\x6a\x20')                                        # push 
 assert ctor_site.index(b'\xc7\x07' + struct.pack('<I', 0x819d24)) > at  # mov [edi], 00819d24
 assert ctor_site.index(b'\x68' + struct.pack('<I', 0xa00000)) > at      # TextureManager(10 MiB)
 assert body(0x676aa0).startswith(bytes.fromhex('6aff')) and b'\x6a\x54' in body(0x676aa0)   # new(0x54) TextureProxy
+
+def calls(address, target):
+    code = body(address)
+    return any(code[i] == 0xe8 and address + i + 5 + struct.unpack_from('<i', code, i + 1)[0] == target
+               for i in range(len(code) - 4))
+
+
+# AdornRbxGfx externals and data.
+assert original.vtable_class(0x82d18c) == ('.?AVTextureProxy@RenderNew@RBX@@', 0)
+assert body(0x66ffb0).count(struct.pack('<I', 0x82d18c)) == 1          # RenderNew::TextureProxy(const string&) vptr
+assert calls(0x66ffb0, 0x551bf0) and b'\x6a\x60' in body(0x670380)    # TextureProxyBase(); new(0x60) in 00670380
+assert original.string(0x80b270) == 'invalid map/set<T> iterator'
+assert original.string(0x80b28c) == 'map/set<T> too long'
+
+
+def throw_info_type(ti):
+    array = d(ti + 12)                                                   # CatchableTypeArray
+    return original.string(d(d(array + 4) + 4) + 8)                     # first CatchableType -> TypeDescriptor name
+
+
+assert throw_info_type(0x8d0c3c) == '.?AVout_of_range@std@@'
+assert throw_info_type(0x8d0cc0) == '.?AVlength_error@std@@'
+# finishRenderPass 00671f90 resets the uniqueName counter (mov dword ptr [0097da58], 0) and tail-jumps to
+# releaseSubEntities 00671e20.
+assert bytes.fromhex('c705') + struct.pack('<I', 0x97da58) + b'\0\0\0\0' in body(0x671f90)
+assert body(0x671f90).endswith(b'\xe9' + struct.pack('<i', 0x671e20 - 0x671fcd))
+for address in (0x670780, 0x690030):                                     # _Buynode(l, p, r, value, color): new
+    assert calls(address, 0x6a0920), hex(address)
+assert calls(0x670850, 0x670780) and calls(0x691d90, 0x690030)          # called by _Insert (MeshPtr / SceneNode*)
 
 # ---- vtable from the object built with the current headers, slot by slot -------------------------------------------
 slot_names = {}
@@ -444,26 +545,49 @@ assert bases(0x84d2a4) == {'.?AVAdornRbxGfx@RBX@@': 0, '.?AVAdorn@RBX@@': 0}
 # AdornRbxGfx (not built here): same 25-slot interface; slots 2 / 3 / 19 are real bodies there.
 rbxgfx_slots = ['%08x' % d(0x84d2a4 + 4 * i) for i in range(25)]
 assert rbxgfx_slots[19] == '00674790' and body(0x674790)[-1:] == b'\xc3'   # sparkle(): no arguments (plain ret)
+# Slot identities of the AdornRbxGfx rows (no vtable is emitted here: the constructor / destructor are not built).
+assert rbxgfx_slots[0] == '006741f0' and rbxgfx_slots[14] == '0066fac0'   # ??_G, setObjectToWorldMatrix row
+assert (rbxgfx_slots[1], rbxgfx_slots[15], rbxgfx_slots[22], rbxgfx_slots[23]) == \
+    ('00670380', '0070bdf0', '006ad2a0', '004e83a0')                   # createTextureProxy (pending), folded empties
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), LAYOUT, UNIT] + HEADERS
+paths = [Path(__file__).resolve(), LAYOUT, UNIT, GFX_LAYOUT, GFX_UNIT] + HEADERS
 exact = sorted({r['address'] for g in groups.values() for r in g if r['exact']})
 groups['not_exact'] = pending_out
+groups['folded_not_counted'] = folded_out
 PROPOSALS = {
-    'RbxGraphics/TextureProxyBase.h + RenderLib/TextureProxy.h (owner: texture proxies)':
-        '2008 TextureProxyBase: ReferenceCountedObject base, filename +0xc, int +0x28 (=1), float +0x2c (=1.0f); '
-        'vtable 0082d168: ??_G, four accessors 00551c70/90/b0/d0, then three pure virtuals with resolve(RenderDevice*) '
-        'at slot 6 (+0x18). Render::TextureProxy (vtable 0082d140, 9 slots) with an out-of-line ctor '
-        '(TextureManager&, const std::string&, bool) 00551b30, size 0x54 (+0x30 texture, +0x34 loaded, +0x38 manager, '
-        '+0x3c tiled, +0x40 root, +0x44 shadeTexture, +0x48 Color3). With these, AdornG3D createTextureProxy 00676aa0, '
-        'setTexture 00676890 and getTextureSize 00676750 compile exact (see the pending rows); the generated text is '
-        'PENDING_HEADERS in this recorder.',
+    'RenderLib/TextureProxy2008.h (owner: texture proxies)':
+        'Add the out-of-line RenderNew::TextureProxy(const std::string& filename) constructor at 0066ffb0: '
+        'TextureProxyBase() 00551bf0, vptr 0082d18c, +0x30 texture = 0, +0x34 loaded = false, +0x40 root = 0, '
+        '+0x44 shadeTexture = 0, Ogre::TexturePtr() at +0x54, then filename = name (basic_string::operator= import); '
+        '+0x38 / +0x3c / +0x48 are left untouched. AdornRbxGfx::createTextureProxy 00670380 calls it after new(0x60) and '
+        'is exact against the generated copy (PENDING_HEADERS in this recorder).',
+    'Ogre::VisualEngine (exe-local, unowned; whoever recovers RbxSceneManagerFactory / VisualEngine)':
+        'AdornRbxGfx +0x4 is the window\'s Ogre::VisualEngine (new(0x808) in 0045cc9c, ctor 006786c0, vtable 0084df2c, '
+        'RTTI .?AVVisualEngine@Ogre@@; dtor 0067a130). Observed members: +0x4 Ogre::SceneManager* (destroySceneManager '
+        'in the dtor; createSceneNode slot +0xa8 / getRootSceneNode slot +0xb4 in 006743eb), +0xc Ogre::RenderTarget* '
+        '(detachRenderTarget), +0x10 Ogre::Viewport* (getActualLeft/Top/Width/Height in 00670020 / 0066f900 / 0066f910), '
+        '+0x14 an object deleted through slot 0 that AdornRbxGfx uses for 2D drawing (0066f920 / 0066f9c0 / 0066fa50 call '
+        '00682d60 / 00683000 / 006830b0 on it), +0x18 a sub-object (ctor 006785b0) passed to RbxEntity 0067c510, +0x7f8 = '
+        '-1. +0x8 is not yet derived. A declaration would unblock getViewport, getWidth, getHeight, the 2D draws, '
+        'finishRenderPass and the AdornRbxGfx constructor / destructor.',
+    'Ogre::RbxSceneNode / RbxEntity / RbxSubEntity / RbxFont (exe-local Ogre subclasses, unowned)':
+        'AdornRbxGfx holds RbxSceneNode* +0x34 (new(0x248), ctor 00674160, vtable 0084d30c), RbxEntity* +0x98 '
+        '(new(0x2bc), ctor 0067d1f0, vtable 0084e45c) and vectors of RbxSubEntity* (new(0x15c), ctor 00685660, vtable '
+        '0084e90c); the font is a SharedPtr<RbxFont> global at 00962da8 (loaded in the ctor from "Fonts\\comics.fnt" '
+        'through 00684eb0). Their methods (0067c510, 0067d3d0, 0067da50, 006850a0, 00685660, 0066fe70, 00670670) are needed '
+        'for allocateSubEntity 00671d60, addMesh 00671f00, box / sphere / quad / ray / cylinderAlongX / explosion / '
+        'sparkle and the constructor / destructor. AdornRbxGfx2008.h forward-declares them only.',
+    'TextureProxyBase::resolve argument (owner: texture proxies)':
+        'AdornRbxGfx::setTexture 006700e0 and getTextureSize 00670210 call resolve (slot 6, +0x18) with the '
+        'VisualEngine* at +0x4, not a G3D::RenderDevice*; the 2008 resolve parameter type (or a conversion) is unknown, '
+        'so these two rows are not attempted.',
     'RbxGraphics/Adorn.h (donor path, owner: rendering)':
         '2008 Adorn is __declspec(novtable) with 25 slots: an extra no-argument virtual after explosion() (slot 19, '
         'AdornRbxGfx 00674790) and non-pure empty prepareRenderPass / finishRenderPass; see RbxGraphics/Adorn2008.h.',
 }
 receipt = {
-    'class': 'RBX::Adorn (interface), RBX::AdornG3D',
+    'class': 'RBX::Adorn (interface), RBX::AdornG3D, RBX::AdornRbxGfx',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
     'flags': FLAGS,
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
@@ -474,18 +598,24 @@ receipt = {
     'exact_function_rows': exact,
     'vtables': vt,
     'adorn_rbxgfx_vtable_0084d2a4': rbxgfx_slots,
-    'adorn_rbxgfx_evidence': 'not built (needs Ogre / RbxGfx context declarations): ctor 00674210 (only caller '
-        '0045b451) stores 0084d2a4, std::string +0x8, two Ogre SharedPtr +0x24 / +0x38, std::vectors +0x48 / +0x60 / '
-        '+0xa0 / +0xdc, std::maps +0x78 / +0xb8 / +0xf4, pointers +0x9c / +0xd8 = 0, G3D::CoordinateFrame +0x114, ctor '
-        'argument +0x4; dtor 00673a90 called from ??_G 006741f0; getWidth/getHeight 0066f900/0066f910 tail-call '
-        'Ogre::Viewport::getActualWidth/Height (IAT 00804c80 / 00804c7c) on [[this+4]+0x10]; setColor 0070bdf0 and '
-        'axes 004e83a0 are shared empty bodies (ret 4 / ret 0x10).',
+    'adorn_rbxgfx_layout': {k: hex(v) for k, v in GFX_SIZES.items()},
+    'adorn_rbxgfx_open': 'Built: setObjectToWorldMatrix, the two getObjectToWorld transform helpers, uniqueName, '
+        'releaseSubEntities and the container COMDATs of the block; createTextureProxy is pending-build-only. Not built: '
+        'ctor 00674210 (+ try/catch continuation 006743eb), dtor 00673a90 / ??_G 006741f0, getViewport / getWidth / '
+        'getHeight / the 2D draws / get2DStringBounds / drawFont2D / prepareRenderPass / finishRenderPass (VisualEngine), '
+        'setTexture / getTextureSize (resolve argument), box / sphere / explosion / sparkle / cylinderAlongX / ray / quad '
+        '/ allocateSubEntity 00671d60 / addMesh 00671f00 (RbxEntity / RbxSubEntity / RbxSceneNode / RbxFont), the '
+        'map destructor tail jump 00671d50 (emitted with the AdornRbxGfx destructor), the _Buynode(value) bodies '
+        '00670780 / 00690030 (catch funclet outside the recorded extents) and 006740e0 / 0066fd40 (8-byte element '
+        'vector of an RbxEntity type).',
     'proposals': PROPOSALS,
     'scope': 'Inactive. Exact bodies with verified call/data targets; pending-build-only rows not counted; no active '
              'build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/adorn-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native Adorn: %d distinct function rows exact (%s); %d pending-build-only rows not counted (%d exact in '
-      'the pending build); targets and %d vtable verified'
-      % (len(exact), ', '.join('%s %d' % (k, sum(r['exact'] for r in g)) for k, g in groups.items() if k != 'not_exact'),
-         len(pending_out), sum(1 for r in pending_out if r['pending_build_exact']), len(vt)))
+      'the pending build); %d folded rows exact, not counted; targets and %d vtable verified'
+      % (len(exact), ', '.join('%s %d' % (k, sum(r['exact'] for r in g)) for k, g in groups.items()
+                               if k not in ('not_exact', 'folded_not_counted')),
+         len(pending_out), sum(1 for r in pending_out if r['pending_build_exact']),
+         sum(1 for r in folded_out if r['folded_exact']), len(vt)))

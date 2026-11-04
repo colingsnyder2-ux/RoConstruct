@@ -27,7 +27,7 @@
 #include <G3D/Sphere.h>
 #include <G3D/Ray.h>
 #include <G3D/LineSegment.h>
-#include "RbxGraphics/TextureProxyBase.h"
+#include "RbxGraphics/TextureProxyBase2008.h"   // 2008 TextureProxyBase (vtable 0082d168; resolve = slot 6)
 
 namespace RBX
 {
