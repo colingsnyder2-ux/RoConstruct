@@ -1,20 +1,20 @@
-// from server: 61% by atomic.potato
+// from server: 68% by Intel
 struct GuiObject
 {
-    char padding[0x34];
-    int field34;
-    float field20;
-
-    void setValue(int value);
+    int field_20;
+    int field_34;
+    void setField34(int value);
 };
 
-float g_value_00ba8508;
-
-void GuiObject::setValue(int value)
+void GuiObject::setField34(int value)
 {
-    int oldValue = field34;
-    field34 = value;
-    if (oldValue == value || value != 0)
-        return;
-    field20 = g_value_00ba8508;
+    if (value != field_34)
+    {
+        field_34 = value;
+        if (value == 0)
+        {
+            extern const float flt_BA8508;
+            field_20 = *reinterpret_cast<const int*>(&flt_BA8508);
+        }
+    }
 }

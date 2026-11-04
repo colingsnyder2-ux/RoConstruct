@@ -5,21 +5,16 @@
 #include "v8datamodel/Workspace.h"
 #include "tool/ToolsArrow.h"
 #include "StandardVerbs.h"
-#include "../tests/NativeAxisMoveToolTrial.h"
-#include "../tests/NativeCloneToolTrial.h"
-#include "../tests/NativeFlatToolTrial.h"
-#include "../tests/NativeGameToolTrial.h"
-#include "../tests/NativeSurfaceSiblingsTrial.h"
-#include "../tests/NativeGrabToolTrial.h"
-#include "../tests/NativeHammerWorkerTrial.h"
+#include "tool/AxisMoveTool.h"
+#include "tool/BasicMouseTools.h"
+#include "tool/FlatTool.h"
+#include "tool/SurfaceTools.h"
+#include "tool/ModelTools.h"
 #include <typeinfo>
-#include "../tests/NativeLaserTrial.h"
-#include "../tests/NativeModelToolsTrial.h"
 #include "tool/NullTool.h"
 #include "v8datamodel/ToolsPart.h"
-#include "../tests/NativeResizeToolTrial.h"
-#include "../tests/NativeRocketWorkerTrial.h"
-#include "../tests/NativeSlingshotWorkerTrial.h"
+#include "tool/ResizeTool.h"
+#include "tool/ShootTools.h"
 #include "tool/GroupDragTool.h"
 #include "v8datamodel/PartInstance.h"
 #include "tool/PartDragTool.h"
@@ -109,6 +104,7 @@ template<> const Name& Named<SurfaceTool, sOscillateMotorTool>::getName() const 
 template<> const Name& Named<PartTool, sFillTool>::getName() const { return NativeToolName<FillTool>::get(); }
 template<> const Name& Named<PartTool, sDropperTool>::getName() const { return NativeToolName<DropperTool>::get(); }
 template<> const Name& Named<PartTool, sModelSetPrimaryPartTool>::getName() const { return NativeToolName<ModelSetPrimaryPartTool>::get(); }
+template<> const Name& Named<ArrowToolBase, sArrowTool>::getName() const { return NativeToolName<ArrowTool>::get(); }  // 005a1830
 template<> const Name& Named<ArrowToolBase, sResizeTool>::getName() const {
     return NativeToolName<ResizeTool>::get();
 }

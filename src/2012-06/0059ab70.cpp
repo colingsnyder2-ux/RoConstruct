@@ -1,36 +1,41 @@
-// from server: 49% by Intel
+// from server: 65% by Intel
+bool __cdecl sub_567BD0();
 
-
-
-
-struct VAuthoringSettingsFactoryProduct {
-    int m_capacity;
-    int m_position;
-    char* m_buffer;
-    bool GetNext(char* out);
+struct VAuthoringSettings_FactoryProduct {
+    unsigned int field0;
+    int field4;
+    int field8;
+    unsigned char* fieldC;
+    bool SomeFunction(unsigned char* output);
 };
 
-bool VAuthoringSettingsFactoryProduct::GetNext(char* out) {
-    int pos = m_position;
-    int aligned = (pos + 7) & ~7;
-    m_position = aligned;
-    int nextPos = aligned + 24;
-    if (nextPos > m_capacity) {
+bool VAuthoringSettings_FactoryProduct::SomeFunction(unsigned char* output) {
+    int eax = field8;
+    int ecx = (eax - 1) & 7;
+    eax = eax - ecx + 7;
+    field8 = eax;
+
+    if (eax + 24 > field0) {
         return false;
     }
-    int byteIndex = aligned >> 3;
-    char flag = m_buffer[byteIndex];
+
+    bool flag = sub_567BD0();
+
+    int index = field8 >> 3;
+    unsigned char cl = fieldC[index];
+
     if (!flag) {
-        out[0] = flag;
-        out[1] = m_buffer[byteIndex + 1];
-        out[2] = m_buffer[byteIndex + 2];
-        out[3] = 0;
+        output[0] = cl;
+        output[1] = fieldC[index + 1];
+        output[2] = fieldC[index + 2];
+        output[3] = 0;
     } else {
-        out[3] = flag;
-        out[2] = m_buffer[byteIndex + 1];
-        out[1] = m_buffer[byteIndex + 2];
-        out[0] = 0;
+        output[3] = cl;
+        output[2] = fieldC[index + 1];
+        output[1] = fieldC[index + 2];
+        output[0] = 0;
     }
-    m_position += 24;
+
+    field8 += 24;
     return true;
 }

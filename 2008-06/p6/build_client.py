@@ -106,13 +106,24 @@ cache_dir = rebuild.workspace(client) / 'out' / 'p6' / 'native-doc-cache'
 overlay_path = data_overlay[1] if data_overlay else None
 # The generated overlay is recreated every run even when byte-identical; its
 # timestamp must not flush the native-doc object cache.
-header_roots = [ROOT / 'rebuild/2008-06/native-headers']
-header_stamp = max((p.stat().st_mtime_ns for root in header_roots if root.exists()
-                    for p in root.rglob('*') if p.is_file() and p.suffix.lower() in ('.c', '.cc', '.cpp', '.h', '.hpp')),
-                   default=0)
+header_root = (ROOT / 'rebuild/2008-06/native-headers').resolve()
+def native_deps(source):
+    pending, seen = [source.resolve()], set()
+    while pending:
+        path = pending.pop()
+        if path in seen or not path.exists():
+            continue
+        seen.add(path)
+        for name in re.findall(r'^\s*#include\s+"([^"]+)"', path.read_text(errors='replace'), re.M):
+            local, native = (path.parent / name).resolve(), (header_root / name).resolve()
+            child = local if local.exists() else native
+            if child.exists() and (str(child).startswith(str(header_root)) or child.parent == path.parent):
+                pending.append(child)
+    return sorted((str(path.relative_to(ROOT)) if str(path).startswith(str(ROOT)) else str(path), path.stat().st_mtime_ns)
+                  for path in seen)
 def cache_key(source, flags):
     return {'source': str(source.resolve()), 'source_mtime': source.stat().st_mtime_ns,
-            'headers_mtime': header_stamp,
+            'native_deps': native_deps(source),
             'flags': hashlib.sha256('\0'.join(flags).encode()).hexdigest()}
 def restore_cached(name, key, target=None):
     artifact, receipt = cache_dir / name, cache_dir / (name + '.json')
@@ -159,6 +170,9 @@ if NATIVE_DOC:
                         ('NativeToolVerbCheckedModelFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedModel.cpp'),
                         ('NativeToolVerbCheckedExistingFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedExisting.cpp'),
                         ('NativeToolVerbCheckedBasicFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedBasic.cpp'),
+                        ('NativeToolVerbCheckedShootFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedShoot.cpp'),
+                        ('NativeToolVerbCheckedResizeFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedResize.cpp'),
+                        ('NativeToolVerbCheckedAxisFull.obj', ROOT / 'rebuild/2008-06/native-classes/ToolVerbCheckedAxis.cpp'),
                         ('NativeCameraFirstPersonFull.obj', ROOT / 'rebuild/2008-06/native-classes/CameraFirstPerson.cpp'),
                         ('NativeBasicVerbConstructorsFull.obj', ROOT / 'rebuild/2008-06/native-classes/BasicVerbConstructors.cpp'),
                         ('NativeClearBackpackFull.obj', ROOT / 'rebuild/2008-06/native-classes/ClearBackpack.cpp'),
@@ -296,7 +310,7 @@ if NATIVE_DOC:
 system = ["gdiplus", "kernel32", "user32", "gdi32", "advapi32", "shell32", "ole32", "oleaut32", "comdlg32", "comctl32", "ws2_32", "winmm",
           "opengl32", "glu32", "imagehlp", "version", "wininet", "dbghelp", "psapi"]
 output_name = 'RobloxNativeDoc' if NATIVE_DOC else 'Roblox'
-native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj', 'NativeStatsCommandsFull.obj', 'NativeToolVerbCoreFull.obj', 'NativeToolVerbCheckedSurfaceFull.obj', 'NativeToolVerbCheckedModelFull.obj', 'NativeToolVerbCheckedExistingFull.obj', 'NativeToolVerbCheckedBasicFull.obj', 'NativeCameraFirstPersonFull.obj', 'NativeBasicVerbConstructorsFull.obj', 'NativeClearBackpackFull.obj', 'NativeClearStarterpackFull.obj', 'NativeSelectionBackFull.obj', 'NativeJoinCommandFull.obj', 'NativeSelectionVerbConstructorsFull.obj', 'NativeSelectionVerbStatesFull.obj', 'NativeBoolPropertyVerbFull.obj', 'NativeDuplicateSelectionVerbFull.obj', 'NativeWeldSnapActionsFull.obj', 'NativeSurfaceVisitorsFull.obj', 'NativeMoveUpSelectionVerbFull.obj', 'NativeMoveDownSelectionVerbFull.obj', 'NativeUngroupOperationFull.obj', 'NativeUngroupSelectionVerbFull.obj', 'NativePartInstanceLockedFull.obj', 'NativeRunStateCommandsFull.obj', 'NativeGroupSelectionVerbFull.obj',
+native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj', 'NativeStandardVerbs.obj', 'NativeStatsCommandsFull.obj', 'NativeToolVerbCoreFull.obj', 'NativeToolVerbCheckedSurfaceFull.obj', 'NativeToolVerbCheckedModelFull.obj', 'NativeToolVerbCheckedExistingFull.obj', 'NativeToolVerbCheckedBasicFull.obj', 'NativeToolVerbCheckedShootFull.obj', 'NativeToolVerbCheckedResizeFull.obj', 'NativeToolVerbCheckedAxisFull.obj', 'NativeCameraFirstPersonFull.obj', 'NativeBasicVerbConstructorsFull.obj', 'NativeClearBackpackFull.obj', 'NativeClearStarterpackFull.obj', 'NativeSelectionBackFull.obj', 'NativeJoinCommandFull.obj', 'NativeSelectionVerbConstructorsFull.obj', 'NativeSelectionVerbStatesFull.obj', 'NativeBoolPropertyVerbFull.obj', 'NativeDuplicateSelectionVerbFull.obj', 'NativeWeldSnapActionsFull.obj', 'NativeSurfaceVisitorsFull.obj', 'NativeMoveUpSelectionVerbFull.obj', 'NativeMoveDownSelectionVerbFull.obj', 'NativeUngroupOperationFull.obj', 'NativeUngroupSelectionVerbFull.obj', 'NativePartInstanceLockedFull.obj', 'NativeRunStateCommandsFull.obj', 'NativeGroupSelectionVerbFull.obj',
                       'NativeDocumentExceptionFull.obj', 'NativeSaveDialogFull.obj', 'NativeDocumentLoadFileFull.obj', 'NativeDocumentLoadFromStringFull.obj',
                       'NativeDocumentInsertModelFull.obj', 'NativeDocumentExecuteFull.obj', 'NativeDocumentLDrawFull.obj', 'NativeDocumentLaunchFull.obj', 'NativeFileSystemFull.obj', 'NativeContentProviderFull.obj',
                       'NativeLDrawParserLifetimeFull.obj',
