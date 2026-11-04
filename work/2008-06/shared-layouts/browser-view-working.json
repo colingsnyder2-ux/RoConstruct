@@ -46,13 +46,13 @@
   ],
   "profile": "CString operator PCXSTR and CSimpleStringT::IsEmpty noinline (original imports both)",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "5e089689306936e6a835ec3068b89a6445abb1db173192b0595bb7d067eec455",
+  "object_sha256": "d9322bbd773932f7d1bfce21636e45348ba47b76b2541089809a94c26cc55d49",
   "sources": {
     "rebuild/2008-06/tests/record_native_browser_view.py": "2fa2b19ddf59f71e22a57d9f8519ee7012303b0ab84da8703a651ee67f8084f9",
     "rebuild/2008-06/native-classes/CBrowserView.cpp": "f79a80c12ca31a96af7831946a9fd3c57863ea682faacdac7f09415b2972d7d1",
     "rebuild/2008-06/native-headers/CBrowserView.h": "8ecc31b7a473741b06cf28b2de29d52a68497774d17e23b0bd4db62afa15de35",
     "rebuild/2008-06/native-headers/CBrowserDoc.h": "20edc757aa696f357f7c3bf3a9974e59ca92c144f05cd9ec65e466ab4c3969d2",
-    "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "ec21aba2f77d1459288340b84ea36dd88fd37a719d8339da0fedae42a697bfbc",
+    "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "da68da0f0cf6d78d149af33ee11afdb1d5c8562d26fb832b6cd3150f45244b8f",
     "rebuild/2008-06/native-headers/CBrowserFrameWnd.h": "8dff816b682aa945c46f38407706e34abf49f556a33b6bf15a4274e8cafb330b",
     "rebuild/2008-06/tests/NativeBrowserViewLayout.cpp": "b21a1278bf1d704edc13e9585f98a880233b0b80db492f57227dafa7fc467c53"
   },
@@ -694,10 +694,10 @@
     "path": "work/cnulldoc-guided-20261104/run_view_regression.py",
     "sha256": "d3ba479218009fb83cc05310e390b756d7df51098d257ec3be071ca09e59a2d9",
     "adaptations": [
-      "Local include-root remap and hash-checked registered-client initialization.",
-      "Build outputs and initial receipt redirected to scratch.",
-      "Obsolete 124-byte Buynode prefix assertion replaced with the complete analysed 145-byte owner, including catch handler at 0040f25c; all relocation targets independently verified. No bounds changed."
-    ]
+      "Owner paths remapped to this checkout, hash-pinned registered original, outputs redirected to scratch.",
+      "Old 124-byte Buynode prefix check strengthened to full 145-byte EH owner and call/data checks; no bounds change."
+    ],
+    "reason": "Rerun after CBrowserViewExternal.h acquired protected-final-construction methods; all 49 rows at47 addresses preserved."
   },
   "buynode_full_eh": {
     "extent": 145,
