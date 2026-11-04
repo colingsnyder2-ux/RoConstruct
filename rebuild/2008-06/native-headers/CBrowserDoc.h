@@ -3,12 +3,21 @@
 
 class CBrowserView;
 
-// Declarations only. CNullDoc: CRuntimeClass 00812410 (size 0x54 == CDocument, CreateObject 00433310),
-// no members of its own.
+// Inactive CNullDoc recovery: CRuntimeClass 00812410 (size 0x54 == CDocument, CreateObject 00433310),
+// no added storage. The factory inlines the CDocument constructor; the deleting destructor 0040e4d0
+// calls only ~CDocument and operator delete. RTTI names CDocument as the zero-offset base.
 class CNullDoc : public CDocument {
     DECLARE_DYNCREATE(CNullDoc)
 public:
-    CNullDoc();
+    CNullDoc() {}
+    // Original vtable slots 24 (00416690) and 38 (007286a0); both are folded constant-return bodies.
+    virtual BOOL IsModified() { return FALSE; }
+    virtual BOOL SaveModified() { return TRUE; }
+protected:
+    // Neutral codegen-analog name: the original name is unknown. Message-map signature 0x41
+    // and handler 004332f0 prove void(CCmdUI*) and Enable(FALSE), shared by three command IDs.
+    afx_msg void OnUpdateDisabledCommand(CCmdUI* command);
+    DECLARE_MESSAGE_MAP()
 };
 
 // Declarations only. RTTI of vtable 0080d2c4: CBrowserDoc : CNullDoc : CDocument. CRuntimeClass 0080cfac
