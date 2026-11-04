@@ -239,13 +239,56 @@ for _, (name, *_rest) in ((i, v) for i, v in symbols.items() if v[0].startswith(
 SUPPORT = [('??1?$IConnectionPointImpl@VCBrowserViewExternal@', 0x40e990), ('?Add@CComDynamicUnkArray@ATL@@QAEKPAUIUnknown@@@Z', 0x40ea90),
            ('?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z', 0x404a80), ('??$AtlMultiply@H@ATL@@YAJPAHHH@Z', 0x401710), ('?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z', 0x402f50), ('?GetIDsOfNames@CComTypeInfoHolder@ATL@@QAEJABU_GUID@@PAPA_WIKPAJ@Z', 0x405190),
            ('?GetCookie@CComDynamicUnkArray@ATL@@QAGKPAPAUIUnknown@@@Z', 0x40ed10), ('??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ', 0x401150),
-           ('?Init@?$CComEnumImpl@UIEnumConnectionPoints@@', 0x40f570), ('?Init@?$CComEnumImpl@UIEnumConnections@@', 0x40ef00)]
+           ('?Init@?$CComEnumImpl@UIEnumConnectionPoints@@', 0x40f570), ('?Init@?$CComEnumImpl@UIEnumConnections@@', 0x40ef00),
+           ('?AtlThrowImpl@ATL@@YGXJ@Z', 0x401000)]
 for prefix, address in SUPPORT:
     hits = [n for n in present if n.startswith(prefix)]
     if len(hits) == 1:
         METHODS.append((hits[0], address))
-# Library function called by the exact QueryInterface; address is the relocation operand, identity NOT proven by a body here
-ASSERTED = {'?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z': 0x402280}
+# Reuse the authentic vendor replay, explicitly selecting RTM even though the stored mining winner uses SP1.
+# Both functions are in this object; verify the only call relocation against the separately exact helper body.
+LIBRARY_METHODS = [
+    ('?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z', 0x402280),
+    ('?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z', 0x401b60),
+]
+
+
+def prove_library_query_interface():
+    import hashlib
+    from roc import libs, setup
+
+    build = 21022
+    unit_path = 'atlmfc/src/mfc/wincore.cpp'
+    specification = libs.source_for('mfc-9.0', unit_path, build=build, flags='/O2 /GS- /MD')
+    expanded = libs.unit('mfc-9.0', unit_path, build)
+    library_raw = match.compile_text('2008-06', specification, build=build)
+    library_obj = OUT / 'MfcWincore21022.obj'
+    library_obj.write_bytes(library_raw)
+    _, library_symbols, _, _ = match._coff_data_index(library_raw)
+    compiler_ids = [value for name, value, _section, _kind in library_symbols.values() if name == '@comp.id']
+    need(len(compiler_ids) == 1 and compiler_ids[0] & 0xffff == build, ('COFF compiler identity', compiler_ids))
+    library_rows = native_bind.verify(original, library_obj, LIBRARY_METHODS, {})
+    data_checks = {}
+    for symbol, address in LIBRARY_METHODS:
+        score, selected, _diff, spans = match.check_text('2008-06', '%08x' % address, specification, obj=library_raw)
+        need(score == 100 and selected == symbol, (symbol, score, selected))
+        data_checks['%08x' % address] = {'exact_symbol_and_defined_data': True, 'referenced_data_spans': spans}
+    inputs = [ROOT / 'tools/libs/mfc-9.0' / unit_path,
+              ROOT / 'tools/libs/mfc-9.0/atlmfc/include/atlbase.h']
+    return {'status': 'PASS', 'kind': 'authentic vendor library replay, not a new application provider',
+            'recipe': 'mfc-9.0', 'unit': unit_path, 'specification': specification,
+            'compiler_build': build, 'compiler_path': str(setup.compilers()[build]),
+            'compiler_sha256': sha(setup.compilers()[build]), 'coff_compiler_id': compiler_ids[0],
+            'compiler_flags': ['/nologo', '/c', '/Gy', '/O2', '/GS-', '/MD'],
+            'expanded_cpp_sha256': hashlib.sha256(expanded.encode()).hexdigest(),
+            'input_hashes': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in inputs},
+            'object_sha256': sha(library_obj), 'rows': library_rows, 'data_checks': data_checks}
+
+
+library_query_interface = check('authentic ATL query-interface library proof', prove_library_query_interface)
+if library_query_interface:
+    internal.update(dict(LIBRARY_METHODS))
+ASSERTED = {} if library_query_interface else {LIBRARY_METHODS[0][0]: LIBRARY_METHODS[0][1]}
 ASSERTED['?_pAtlModule@ATL@@3PAVCAtlModule@1@A'] = 0x96c268   # ATL global module pointer: bss address only, name from the relocation
 ASSERTED['?m_libid@CAtlModule@ATL@@2U_GUID@@A'] = 0x96c26c   # ATL static GUID: .data address only
 ASSERTED['?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A'] = 0x97f2a8   # ATL global base module: data address only
@@ -446,7 +489,8 @@ lifetime = check('creator lifetime', creator_lifetime)
 undefined_all = sorted(n for (n, value, secnum, typ) in symbols.values() if secnum == 0)
 passed = not failures
 sources = {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p)
-           for p in (Path(__file__), SOURCE, GUIDS, HELPER, HEADER, LAYOUT, HERE / 'native_bind.py')}
+           for p in (Path(__file__), SOURCE, GUIDS, HELPER, HEADER, LAYOUT, HERE / 'native_bind.py',
+                     ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include/atlexcept.h')}
 reuse = {}
 slot_addresses = {w for (a, k), (w, b, r) in slot_table.items()}
 for symbol, address in METHODS:
@@ -463,6 +507,7 @@ receipt = {
     'class': C, 'status': 'PARTIAL' if passed else 'FAIL',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': FLAGS,
     'original': 'clients/2008-06/Roblox.exe', 'original_sha256': sha(CLIENT), 'object_sha256': sha(obj),
+    'library_query_interface_proof': library_query_interface,
     'layout_object_sha256': sha(layout_obj), 'guid_object_sha256': sha(guid_obj), 'helper_object_sha256': sha(helper_obj),
     'compile_profile': 'class unit: document-swap flags + ' + THREAD_MODEL + ' (ATL object model CComSingleThreadModel, globals Multi; original spelling not proven) /P, CString operator PCXSTR marked noinline (original imports mfc90 #910; header unchanged), recompiled with ' + ' '.join(PROFILE_FLAGS) + '; layout, GUID and helper units: plain document-swap flags',
     'typed_guid_data': guid_facts, 'helper_rows': helper_rows, 'sources': sources, 'methods': rows,

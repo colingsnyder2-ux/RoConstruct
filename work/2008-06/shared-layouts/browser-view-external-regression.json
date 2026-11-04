@@ -40,17 +40,18 @@
   ],
   "profile": "class unit: document-swap flags + /D_ATL_APARTMENT_THREADED (ATL object model CComSingleThreadModel, globals Multi; original spelling not proven) /P, CString operator PCXSTR marked noinline (original imports mfc90 #910; header unchanged), recompiled with /nologo /c /O2 /Ob2 /Oy /GF /GS- /EHsc /MD; layout, GUID and helper units: plain document-swap flags",
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_view_external.py": "97a9d40546b7245763a4d01a6cbf1484a9e577617d69ce7c9109f998432ab6c2",
+    "rebuild/2008-06/tests/record_native_browser_view_external.py": "a94ccc913e7a44df62a0f93629cf15eeafca9a163800c4fec0c7006779549210",
     "rebuild/2008-06/native-classes/CBrowserViewExternal.cpp": "5e16cb7f18e6eba8d0419578a3c0e8e96b8b31eaf9d424b0d155573ae1ae5785",
     "rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp": "480f82db9a83e310c37fba6666815b7cd209569574ac3ae01bd336d3553b6ef1",
     "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp": "3576e9c32fb8dc284eb190cf9a3e1b348af8d68c5d30e58c8b0b512b68e010b3",
     "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "da68da0f0cf6d78d149af33ee11afdb1d5c8562d26fb832b6cd3150f45244b8f",
     "rebuild/2008-06/tests/NativeBrowserViewExternalLayout.cpp": "b1228f98190562d539b9e7e43296e86e47716239eda1f3c3be61e8af43e7232d",
-    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9"
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "tools/libs/mfc-9.0-rtm/atlmfc/include/atlexcept.h": "5c986f954361ad977fe10de9276b46f00ee823daf2f8beb8868d6c07c69b555b"
   },
   "methods": {
-    "masked_exact_rows": 38,
-    "unique_addresses": 38,
+    "masked_exact_rows": 39,
+    "unique_addresses": 39,
     "baseline_rows_preserved": 32,
     "lost_pairs": [],
     "new_pairs": [
@@ -86,7 +87,14 @@
         "GetApp 00410fe0"
       ],
       "open": []
-    }
+    },
+    "library_followup_baseline_preserved": 38,
+    "library_followup_new_pairs": [
+      [
+        "?AtlThrowImpl@ATL@@YGXJ@Z",
+        "00401000"
+      ]
+    ]
   },
   "direct_target_gaps": [
     {
@@ -102,15 +110,7 @@
       "address": "004104b0",
       "symbol": "?EnumConnections@?$IConnectionPointImpl@VCBrowserViewExternal@@$1?_GUID_dd754d30_321a_45a2_a40c_75783afabfab@@3U__s_GUID@@BVCComDynamicUnkArray@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z",
       "unproven_targets": {
-        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268",
-        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
-      }
-    },
-    {
-      "address": "0040f730",
-      "symbol": "?QueryInterface@?$CComObjectNoLock@VCBrowserViewExternal@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
-      "unproven_targets": {
-        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
       }
     },
     {
@@ -129,27 +129,6 @@
         "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z": "0x402f00",
         "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z": "0x403da0",
         "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z": "0x402d30"
-      }
-    },
-    {
-      "address": "00402f50",
-      "symbol": "?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z",
-      "unproven_targets": {
-        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
-      }
-    },
-    {
-      "address": "0040f570",
-      "symbol": "?Init@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@QAEJPAPAUIConnectionPoint@@0PAUIUnknown@@W4CComEnumFlags@2@@Z",
-      "unproven_targets": {
-        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
-      }
-    },
-    {
-      "address": "0040ef00",
-      "symbol": "?Init@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@QAEJPAUtagCONNECTDATA@@0PAUIUnknown@@W4CComEnumFlags@2@@Z",
-      "unproven_targets": {
-        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
       }
     }
   ],
@@ -170,7 +149,7 @@
     }
   ],
   "canonical_proof": "work/2008-06/shared-layouts/browser-view-external-working.json",
-  "canonical_proof_sha256": "cfef8c9f1e5ead7ba2c3f80e82e84e4bfe2babef59e20f0a72338ac332ee1290",
+  "canonical_proof_sha256": "298b6e2592548da491f44280033e5cae1f3d0e9461dc5d9e897fc28e8b5f4ba3",
   "dependent_proof": {
     "receipt": "work/2008-06/shared-layouts/browser-view-working.json",
     "sha256": "effda41441de71ccdc909f345f8b902577551928e05282de627ee072e88cf930",
@@ -186,5 +165,60 @@
     "applies_to": "class unit preprocess only; header and sources unchanged"
   },
   "layout_status": "Original RTTI and exact creator/destructor plus compile-time size/offset checks; enum allocations use original 0x1c single-thread template model in their exact bodies.",
-  "linkage_proposal": "LIBID_RobloxLib sole new definition uses C linkage from CBrowserViewExternal.h; CContent.h/CWorkspace.h declare C++ linkage. Those header owners must reconcile declarations and rerun their proofs before any selection; no duplicate provider added."
+  "linkage_proposal": "LIBID_RobloxLib sole new definition uses C linkage from CBrowserViewExternal.h; CContent.h/CWorkspace.h declare C++ linkage. Those header owners must reconcile declarations and rerun their proofs before any selection; no duplicate provider added.",
+  "library_query_interface_proof": {
+    "status": "PASS",
+    "kind": "authentic vendor library replay, not a new application provider",
+    "recipe": "mfc-9.0",
+    "unit": "atlmfc/src/mfc/wincore.cpp",
+    "specification": "// roc-lang: cpp\n// roc-cl: 21022\n// roc-flags: /O2 /GS- /MD\n// roc-lib: mfc-9.0 atlmfc/src/mfc/wincore.cpp\n",
+    "compiler_build": 21022,
+    "compiler_path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "coff_compiler_id": 8671774,
+    "compiler_flags": [
+      "/nologo",
+      "/c",
+      "/Gy",
+      "/O2",
+      "/GS-",
+      "/MD"
+    ],
+    "expanded_cpp_sha256": "77cae28c3acc846c8d5614b13c431029d282bcef1bdfa09a51af8786cab7ebd8",
+    "input_hashes": {
+      "tools/libs/mfc-9.0/atlmfc/src/mfc/wincore.cpp": "653a3dd60d6488738fa65445913915b3e3162c1be0e5c0ccbca05809cb180116",
+      "tools/libs/mfc-9.0/atlmfc/include/atlbase.h": "ccd677464e4a09ca7fa19fa3c47dd9a0ac500399a68ce2ff5edced5ca4c1f5bb"
+    },
+    "object_sha256": "53f21b4644476e6969ec9b4244a20cb676605d37ff4d76d4a98abd7ff55babee",
+    "rows": [
+      {
+        "address": "00402280",
+        "symbol": "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z",
+        "size": 233,
+        "exact": true,
+        "verified_targets": {
+          "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z": "0x401b60"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00401b60",
+        "symbol": "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z",
+        "size": 46,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "data_checks": {
+      "00402280": {
+        "exact_symbol_and_defined_data": true,
+        "referenced_data_spans": []
+      },
+      "00401b60": {
+        "exact_symbol_and_defined_data": true,
+        "referenced_data_spans": []
+      }
+    }
+  }
 }

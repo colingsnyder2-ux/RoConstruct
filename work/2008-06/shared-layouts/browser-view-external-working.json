@@ -40,10 +40,65 @@
   ],
   "original": "clients/2008-06/Roblox.exe",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "466914d2f4b174f63d1893367d381633e83a4da90efbe25f9e1291a1b80b4210",
-  "layout_object_sha256": "b4bea0dad99dd09df769f915d4634c7c7fc884f616284d83eb8f215c7c4bd590",
-  "guid_object_sha256": "0350f9a54e86eebc3345caa93bc881903754b4e72a48c101f6377a553d1b33de",
-  "helper_object_sha256": "8bb4066dc01f1482d610375c730ced090a8afaa58f6e2d4e157fba1c7acc2ee8",
+  "object_sha256": "c3984bda60b61a22e5a73890418227b4b1f356bbcad0b0734c5fd158f56627fe",
+  "library_query_interface_proof": {
+    "status": "PASS",
+    "kind": "authentic vendor library replay, not a new application provider",
+    "recipe": "mfc-9.0",
+    "unit": "atlmfc/src/mfc/wincore.cpp",
+    "specification": "// roc-lang: cpp\n// roc-cl: 21022\n// roc-flags: /O2 /GS- /MD\n// roc-lib: mfc-9.0 atlmfc/src/mfc/wincore.cpp\n",
+    "compiler_build": 21022,
+    "compiler_path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "coff_compiler_id": 8671774,
+    "compiler_flags": [
+      "/nologo",
+      "/c",
+      "/Gy",
+      "/O2",
+      "/GS-",
+      "/MD"
+    ],
+    "expanded_cpp_sha256": "77cae28c3acc846c8d5614b13c431029d282bcef1bdfa09a51af8786cab7ebd8",
+    "input_hashes": {
+      "tools/libs/mfc-9.0/atlmfc/src/mfc/wincore.cpp": "653a3dd60d6488738fa65445913915b3e3162c1be0e5c0ccbca05809cb180116",
+      "tools/libs/mfc-9.0/atlmfc/include/atlbase.h": "ccd677464e4a09ca7fa19fa3c47dd9a0ac500399a68ce2ff5edced5ca4c1f5bb"
+    },
+    "object_sha256": "53f21b4644476e6969ec9b4244a20cb676605d37ff4d76d4a98abd7ff55babee",
+    "rows": [
+      {
+        "address": "00402280",
+        "symbol": "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z",
+        "size": 233,
+        "exact": true,
+        "verified_targets": {
+          "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z": "0x401b60"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00401b60",
+        "symbol": "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z",
+        "size": 46,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "data_checks": {
+      "00402280": {
+        "exact_symbol_and_defined_data": true,
+        "referenced_data_spans": []
+      },
+      "00401b60": {
+        "exact_symbol_and_defined_data": true,
+        "referenced_data_spans": []
+      }
+    }
+  },
+  "layout_object_sha256": "52c3b8c729ea9fc2ac196424e8e49a9a8410cf9753cf323e56802dade3d1d141",
+  "guid_object_sha256": "cdf37ad3fcbba7f1f769b7594de2b8d9f95f6ab3dac7cd8e5c2042b1521ecc1c",
+  "helper_object_sha256": "5c7e0933aaa7492bdecc7e0fa5c2b95ac6720c4c33abd3962c280b7acdd5f12e",
   "compile_profile": "class unit: document-swap flags + /D_ATL_APARTMENT_THREADED (ATL object model CComSingleThreadModel, globals Multi; original spelling not proven) /P, CString operator PCXSTR marked noinline (original imports mfc90 #910; header unchanged), recompiled with /nologo /c /O2 /Ob2 /Oy /GF /GS- /EHsc /MD; layout, GUID and helper units: plain document-swap flags",
   "typed_guid_data": {
     "_IID_IBrowserViewExternal": {
@@ -92,13 +147,14 @@
     }
   ],
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_view_external.py": "97a9d40546b7245763a4d01a6cbf1484a9e577617d69ce7c9109f998432ab6c2",
+    "rebuild/2008-06/tests/record_native_browser_view_external.py": "a94ccc913e7a44df62a0f93629cf15eeafca9a163800c4fec0c7006779549210",
     "rebuild/2008-06/native-classes/CBrowserViewExternal.cpp": "5e16cb7f18e6eba8d0419578a3c0e8e96b8b31eaf9d424b0d155573ae1ae5785",
     "rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp": "480f82db9a83e310c37fba6666815b7cd209569574ac3ae01bd336d3553b6ef1",
     "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp": "3576e9c32fb8dc284eb190cf9a3e1b348af8d68c5d30e58c8b0b512b68e010b3",
     "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "da68da0f0cf6d78d149af33ee11afdb1d5c8562d26fb832b6cd3150f45244b8f",
     "rebuild/2008-06/tests/NativeBrowserViewExternalLayout.cpp": "b1228f98190562d539b9e7e43296e86e47716239eda1f3c3be61e8af43e7232d",
-    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9"
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "tools/libs/mfc-9.0-rtm/atlmfc/include/atlexcept.h": "5c986f954361ad977fe10de9276b46f00ee823daf2f8beb8868d6c07c69b555b"
   },
   "methods": [
     {
@@ -257,6 +313,7 @@
         "?Init@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@QAEJPAUtagCONNECTDATA@@0PAUIUnknown@@W4CComEnumFlags@2@@Z": "0x40ef00",
         "__GUID_b196b287_bab4_101a_b69c_00aa00341d07": "0x80d3e0",
         "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B": "0x80d3c8",
+        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280",
         "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ"
       },
       "local_eh": [
@@ -265,8 +322,7 @@
         "__ehhandler$?EnumConnections@?$IConnectionPointImpl@VCBrowserViewExternal@@$1?_GUID_dd754d30_321a_45a2_a40c_75783afabfab@@3U__s_GUID@@BVCComDynamicUnkArray@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z"
       ],
       "unproven_targets": {
-        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268",
-        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
       },
       "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
     },
@@ -358,13 +414,10 @@
       "size": 28,
       "exact": true,
       "verified_targets": {
-        "?_entries@?1??_GetEntries@CBrowserViewExternal@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B": "0x80d64c"
-      },
-      "local_eh": [],
-      "unproven_targets": {
+        "?_entries@?1??_GetEntries@CBrowserViewExternal@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B": "0x80d64c",
         "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
       },
-      "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
+      "local_eh": []
     },
     {
       "address": "0040f760",
@@ -515,13 +568,10 @@
       "size": 61,
       "exact": true,
       "verified_targets": {
-        "__imp__malloc": "msvcr90.dll!malloc"
-      },
-      "local_eh": [],
-      "unproven_targets": {
+        "__imp__malloc": "msvcr90.dll!malloc",
         "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
       },
-      "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
+      "local_eh": []
     },
     {
       "address": "00405190",
@@ -559,16 +609,13 @@
       "exact": true,
       "verified_targets": {
         "??_U@YAPAXI@Z": "mfc90.dll!??_U@YAPAXI@Z",
-        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ"
+        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ",
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
       },
       "local_eh": [
         "$LN60",
         "__ehhandler$?Init@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@QAEJPAPAUIConnectionPoint@@0PAUIUnknown@@W4CComEnumFlags@2@@Z"
-      ],
-      "unproven_targets": {
-        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
-      },
-      "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
+      ]
     },
     {
       "address": "0040ef00",
@@ -577,16 +624,24 @@
       "exact": true,
       "verified_targets": {
         "??_U@YAPAXI@Z": "mfc90.dll!??_U@YAPAXI@Z",
-        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ"
+        "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ",
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
       },
       "local_eh": [
         "$LN60",
         "__ehhandler$?Init@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@QAEJPAUtagCONNECTDATA@@0PAUIUnknown@@W4CComEnumFlags@2@@Z"
-      ],
-      "unproven_targets": {
-        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
+      ]
+    },
+    {
+      "address": "00401000",
+      "symbol": "?AtlThrowImpl@ATL@@YGXJ@Z",
+      "size": 22,
+      "exact": true,
+      "verified_targets": {
+        "?AfxThrowMemoryException@@YGXXZ": "mfc90.dll!?AfxThrowMemoryException@@YGXXZ",
+        "?AfxThrowOleException@@YGXJ@Z": "mfc90.dll!?AfxThrowOleException@@YGXJ@Z"
       },
-      "unproven_note": "address is the relocation operand; the ATL library function body is not proven by this probe"
+      "local_eh": []
     }
   ],
   "method_labels": {
@@ -632,7 +687,8 @@
     "0040ed10": "support body called by the bound bodies (not a vtable slot)",
     "00401150": "support body called by the bound bodies (not a vtable slot)",
     "0040f570": "support body called by the bound bodies (not a vtable slot)",
-    "0040ef00": "support body called by the bound bodies (not a vtable slot)"
+    "0040ef00": "support body called by the bound bodies (not a vtable slot)",
+    "00401000": "support body called by the bound bodies (not a vtable slot)"
   },
   "layout": {
     "sizeof_ATL_CComObjectNoLock": "0x20 (assert) = operator new(0x20) in creator 0040fbf0",
@@ -1048,7 +1104,6 @@
     "first_byte_difference_offset": 6
   },
   "asserted_targets": {
-    "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "00402280",
     "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0096c268",
     "?m_libid@CAtlModule@ATL@@2U_GUID@@A": "0096c26c",
     "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0097f2a8",
@@ -1061,8 +1116,7 @@
     "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z": "00403af0",
     "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z": "00402f00",
     "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z": "00403da0",
-    "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z": "00402d30",
-    "?AtlThrowImpl@ATL@@YGXJ@Z": "00401000"
+    "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z": "00402d30"
   },
   "failures": [],
   "known_open_bodies": [],
