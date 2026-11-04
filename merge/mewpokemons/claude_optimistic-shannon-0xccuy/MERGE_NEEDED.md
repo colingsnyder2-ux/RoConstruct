@@ -1,7 +1,7 @@
 # Needs a manual merge
 
-Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `3eb85ca12b3b9fd47bf4bbc648b3a8e1c1b7daf0`.
-Reason: CONFLICT (content): Merge conflict in work/2008-06/TANDEM.md
+Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `96ddc80766be85d2a3861e51bbf1fedeaa4f725a`.
+Reason: CONFLICT (add/add): Merge conflict in rebuild/2008-06/tests/record_native_flag_stand_service.py (+2 more conflicts)
 
 Files below are the fork's version; compare with the same path in the tree:
 
@@ -9,6 +9,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/BodyColors.cpp`
 - `rebuild/2008-06/native-classes/BodyMovers.cpp`
 - `rebuild/2008-06/native-classes/Feature.cpp`
+- `rebuild/2008-06/native-classes/Message.cpp`
 - `rebuild/2008-06/native-classes/NetworkPlayer.cpp`
 - `rebuild/2008-06/native-classes/Rocket.cpp`
 - `rebuild/2008-06/native-classes/SpawnLocation.cpp`
