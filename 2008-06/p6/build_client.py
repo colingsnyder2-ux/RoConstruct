@@ -270,13 +270,15 @@ if NATIVE_DOC:
                         ('NativeGuidRegistryInitializeFull.obj', ROOT / 'rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp'),
                         ('NativeGuidRegistryConstructorFull.obj', ROOT / 'rebuild/2008-06/native-classes/GuidRegistryConstructor.cpp'),
                         ('NativeGuidRegistryCriticalSectionFull.obj', ROOT / 'rebuild/2008-06/native-classes/GuidRegistryCriticalSection.cpp'),
+                        ('NativeServiceSelectionFull.obj', ROOT / 'rebuild/2008-06/native-classes/ServiceSelection.cpp'),
+                        ('NativeServiceChangeHistoryFull.obj', ROOT / 'rebuild/2008-06/native-classes/ServiceChangeHistory.cpp'),
+                        ('NativeVisitServiceLookupFull.obj', ROOT / 'rebuild/2008-06/native-classes/VisitServiceLookup.cpp'),
                         ('NativeInstanceLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceLifetime.cpp'),
                         ('NativeInstanceCallbacksFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceBaseCallbacks.cpp'),
                         ('NativeInstanceDescendantsFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceDescendantEvents.cpp'),
                         ('NativeInstanceAncestorFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceAncestorChangedNative.cpp'),
                         ('NativeInstanceChildListenerFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceChildListener.cpp'),
                         ('NativeInstanceReadPropertyFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceReadProperty.cpp'),
-                        ('NativeInstanceSerializationFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceSerialization.cpp'),
                         ('NativeVerbFull.obj', ROOT / 'rebuild/2008-06/native-classes/Verb.cpp'),
                         ('NativeVerbLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/VerbLifetime.cpp'),
                         ('NativeVerbBaseLifetimeFull.obj', ROOT / 'rebuild/2008-06/native-classes/VerbBaseLifetime.cpp'),
@@ -308,7 +310,8 @@ if NATIVE_DOC:
                         ('NativeSurfaceToolFactoriesFull.obj', ROOT / 'rebuild/2008-06/native-classes/SurfaceToolFactories.cpp'),
                         ('NativeNullToolFull.obj', ROOT / 'rebuild/2008-06/native-classes/NullTool.cpp'),
                         ('NativeNullToolFactoryFull.obj', ROOT / 'rebuild/2008-06/native-classes/NullToolFactory.cpp'),
-                        ('NativeMouseCommandCaptureFull.obj', ROOT / 'rebuild/2008-06/native-classes/MouseCommandCapture.cpp'),
+                        ('NativeMouseCommandFull.obj', ROOT / 'rebuild/2008-06/native-classes/MouseCommand.cpp'),
+                        ('NativeMouseCommandDistanceFull.obj', ROOT / 'rebuild/2008-06/native-classes/MouseCommandDistance.cpp'),
                         ('NativeModelToolFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelTool.cpp'),
                         ('NativeModelToolFactoriesFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelToolFactories.cpp'),
                         ('NativeModelToolNamesFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelToolNames.cpp'),
@@ -345,6 +348,12 @@ if NATIVE_DOC:
                         ('NativePhysicsServiceFindFull.obj', ROOT / 'rebuild/2008-06/native-classes/PhysicsServiceFind.cpp'),
                         ('NativeJointsServiceFindFull.obj', ROOT / 'rebuild/2008-06/native-classes/JointsServiceFind.cpp'),
                         ('NativeSlingshotToolCoreFull.obj', ROOT / 'rebuild/2008-06/native-classes/SlingshotToolCore.cpp'),
+                        ('NativeRocketToolCoreFull.obj', ROOT / 'rebuild/2008-06/native-classes/RocketToolCore.cpp'),
+                        ('NativeRocketToolProjectileFull.obj', ROOT / 'rebuild/2008-06/native-classes/RocketToolProjectile.cpp'),
+                        ('NativeRocketToolLaunchFull.obj', ROOT / 'rebuild/2008-06/native-classes/RocketToolLaunch.cpp'),
+                        ('NativeEngineStatsFull.obj', ROOT / 'rebuild/2008-06/native-classes/EngineStats.cpp'),
+                        ('NativeContactManagerStatsFull.obj', ROOT / 'rebuild/2008-06/native-classes/ContactManagerStats.cpp'),
+                        ('NativeSpatialHashStatsFull.obj', ROOT / 'rebuild/2008-06/native-classes/SpatialHashStats.cpp'),
                         ('NativeShootToolMethodsFull.obj', ROOT / 'rebuild/2008-06/native-classes/ShootToolMethods.cpp'),
                         ('NativeShootToolShootFull.obj', ROOT / 'rebuild/2008-06/native-classes/ShootToolShoot.cpp'),
                         ('NativeSlingshotToolLaunchFull.obj', ROOT / 'rebuild/2008-06/native-classes/SlingshotToolLaunch.cpp'),
@@ -393,7 +402,6 @@ if NATIVE_DOC:
                         ('NativeSurfaceToolMouseDownFull.obj', ROOT / 'rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp'),
                         ('NativeMouseGetSurfaceFull.obj', ROOT / 'rebuild/2008-06/native-classes/MouseGetSurface.cpp'),
                         ('NativeInsertObjectActionFull.obj', ROOT / 'rebuild/2008-06/native-classes/InsertObjectAction.cpp'),
-                        ('NativeInstanceChildPermissionFull.obj', ROOT / 'rebuild/2008-06/native-classes/InstanceChildPermission.cpp'),
                         ('NativeInsertDecalActionFull.obj', ROOT / 'rebuild/2008-06/native-classes/InsertDecalAction.cpp'),
                         ('NativeImageMimeTypeFull.obj', ROOT / 'rebuild/2008-06/native-classes/ImageMimeType.cpp'),
                         ('NativeImageContentRegistrationFull.obj', ROOT / 'rebuild/2008-06/native-classes/ImageContentRegistration.cpp'),
@@ -432,6 +440,10 @@ if NATIVE_DOC:
             source_flags += ['/DBOOST_ALL_NO_LIB', '/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK'] + ['/D' + d for d in data_defines.split()]
             source_flags += ['/I' + str(ROOT / 'rebuild/2008-06/native-headers'), '/I' + str(mfc), '/I' + str(xtp)]
             source_flags += ['/I' + str(i) for i in includes]
+        if obj == 'NativeInstanceLifetimeFull.obj':
+            source_flags.append('/DNATIVE_INSTANCE_EXTERNAL_CREATE_CHILD')
+        if obj == 'NativeInstanceCallbacksFull.obj':
+            source_flags.append('/DNATIVE_INSTANCE_EXTERNAL_BASE_CALLBACKS')
         key = cache_key(source, source_flags)
         cache_name = obj
         if obj.startswith('NativeDocExtra'):
@@ -496,10 +508,11 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeFilteredSelectionMethodsFull.obj',
                       'NativeGuidItemFull.obj', 'NativeGuidRegistryMutexFull.obj', 'NativeGuidRegistryInitializeFull.obj',
                       'NativeGuidRegistryConstructorFull.obj', 'NativeGuidRegistryCriticalSectionFull.obj',
+                      'NativeServiceSelectionFull.obj', 'NativeServiceChangeHistoryFull.obj',
+                      'NativeVisitServiceLookupFull.obj',
                       'NativeInstanceLifetimeFull.obj', 'NativeInstanceCallbacksFull.obj',
                       'NativeInstanceDescendantsFull.obj', 'NativeInstanceAncestorFull.obj',
                       'NativeInstanceChildListenerFull.obj', 'NativeInstanceReadPropertyFull.obj',
-                      'NativeInstanceSerializationFull.obj',
                       'NativeVerbLifetimeFull.obj', 'NativeVerbBaseLifetimeFull.obj', 'NativeVerbQueriesFull.obj',
                       'NativeContentProviderUrlFull.obj', 'NativeServiceLookupFull.obj', 'NativeHistoryRecordPlaybackFull.obj',
                       'NativeChangeHistoryPlaybackFull.obj', 'NativeChangeHistoryQueriesFull.obj',
@@ -512,7 +525,7 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeMathTiltMatricesFull.obj', 'NativeMathTiltQuadrantFull.obj',
                       'NativeSurfaceToolFull.obj', 'NativeFlatToolFull.obj', 'NativeFlatToolFactoryFull.obj',
                       'NativeSurfaceToolSiblingsFull.obj', 'NativeSurfaceToolFactoriesFull.obj',
-                      'NativeNullToolFull.obj', 'NativeNullToolFactoryFull.obj', 'NativeMouseCommandCaptureFull.obj',
+                      'NativeNullToolFull.obj', 'NativeNullToolFactoryFull.obj', 'NativeMouseCommandFull.obj', 'NativeMouseCommandDistanceFull.obj',
                       'NativeModelToolFull.obj', 'NativeModelToolFactoriesFull.obj',
                       'NativeModelToolNamesFull.obj', 'NativeModelToolActionsFull.obj',
                       'NativeAnchorToolFull.obj', 'NativeInstanceAnchorChildrenFull.obj',
@@ -532,14 +545,14 @@ native_doc_objects = ['NativeCRobloxDoc.obj', 'NativeActiveDocumentDataFull.obj'
                       'NativeChangeHistoryStartFull.obj',
                       'NativeWorldServiceFactoriesFull.obj', 'NativePhysicsServiceFindFull.obj',
                       'NativeJointsServiceFindFull.obj',
-                      'NativeSlingshotToolCoreFull.obj', 'NativeShootToolMethodsFull.obj', 'NativeShootToolShootFull.obj', 'NativeSlingshotToolLaunchFull.obj', 'NativeSlingshotBallisticFull.obj', 'NativeSlingshotToolProjectileFull.obj', 'NativeContentProviderCreateContextFull.obj', 'NativeContentIdAssetsFull.obj', 'NativeContentProviderLoadFull.obj',
+                      'NativeSlingshotToolCoreFull.obj', 'NativeRocketToolCoreFull.obj', 'NativeRocketToolProjectileFull.obj', 'NativeRocketToolLaunchFull.obj', 'NativeEngineStatsFull.obj', 'NativeContactManagerStatsFull.obj', 'NativeSpatialHashStatsFull.obj', 'NativeShootToolMethodsFull.obj', 'NativeShootToolShootFull.obj', 'NativeSlingshotToolLaunchFull.obj', 'NativeSlingshotBallisticFull.obj', 'NativeSlingshotToolProjectileFull.obj', 'NativeContentProviderCreateContextFull.obj', 'NativeContentIdAssetsFull.obj', 'NativeContentProviderLoadFull.obj',
                       'NativeResizeToolCoreFull.obj', 'NativeResizeToolMethodsFull.obj', 'NativeResizeToolMoveFull.obj', 'NativeResizeToolDragFull.obj', 'NativeResizeToolFindFull.obj', 'NativeResizeToolRenderFull.obj', 'NativeMathClosestRayFull.obj', 'NativeHandleHitTestFull.obj', 'NativePartInstanceResizeFull.obj', 'NativeHandleRadiusFull.obj',
                       'NativeCInsertObjectDialogCoreFull.obj', 'NativeCInsertObjectDialogActionFull.obj', 'NativeMetadataClassFull.obj', 'NativeMetadataClassesLookupFull.obj', 'NativeMetadataReflectionLookupFull.obj', 'NativeMetadataReflectionSingletonFull.obj', 'NativeMetadataReflectionLifetimeFull.obj', 'NativeMetadataReflectionLoadFull.obj', 'NativeMetadataClassNamesFull.obj', 'NativeMetadataClassesRegisterFull.obj', 'NativeMetadataItemLifetimeFull.obj', 'NativeMotorFeatureCommandsFull.obj', 'NativeArrowToolFactoryFull.obj', 'NativeDataModelClassNameFull.obj', 'NativeAuthoringSettingsFull.obj', 'NativeCClassImagesFull.obj', 'NativeNameCompareFull.obj',
                       'NativePhysicsServiceAllocationFull.obj', 'NativePhysicsServiceLifetimeFull.obj', 'NativePhysicsServiceEventsFull.obj', 'NativePhysicsServiceSignalsFull.obj',
                       'NativeChangeHistoryLifetimeFull.obj', 'NativeChangeHistoryEventsFull.obj', 'NativeChangeHistoryFactoryFull.obj', 'NativeHistoryRecordLookupFull.obj', 'NativeHistoryItemStateFull.obj',
                       'NativeSurfaceToolHoverRenderFull.obj', 'NativeSurfaceToolMouseDownFull.obj',
                       'NativeMouseGetSurfaceFull.obj', 'NativeInsertObjectActionFull.obj',
-                      'NativeInstanceChildPermissionFull.obj', 'NativeInsertDecalActionFull.obj',
+                      'NativeInsertDecalActionFull.obj',
                       'NativeImageMimeTypeFull.obj', 'NativeImageContentRegistrationFull.obj',
                       'NativeClipboardActionsFull.obj', 'NativeLDrawPathFull.obj', 'NativeLDrawAssetStateFull.obj',
                       'NativeLDrawMapRootConstructorFull.obj', 'NativeLDrawMapRootLifetimeFull.obj',
@@ -554,9 +567,6 @@ if NATIVE_DOC:
     native_doc_objects += [str(ROOT / 'rebuild/2008-06/out/native-layouts' / name) for name in (
         'NativeApplicationBaseUrl.obj',
         'NativeWorkspaceLayout.obj', 'ServiceChangeHistoryCreate.obj',
-        'ServiceChangeHistoryProfile.obj',
-        'NativeVisitFindProfile.obj',
-        'ServiceSelectionProfile.obj',
         'NativeDataModelTiming.obj', 'NativeDataModelDutyCycle.obj',
         'NativeLuaAllocatorStats.obj', 'NativePlayersAbuse.obj', 'WorkspaceInsertNativeProfile.obj',
         'WorkspaceSiteTrustProfile.obj')]
