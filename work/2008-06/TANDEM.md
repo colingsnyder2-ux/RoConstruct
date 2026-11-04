@@ -627,3 +627,8 @@ affected by anything on the P6 branch.
   - Proposal: VelocityMotor (same unit, a future lease): MotorFeature::join needs `class VelocityMotor : public DescribedCreatable<VelocityMotor, JointInstance, sVelocityMotor>` (sVelocityMotor a const char array), with VelocityMotor() 0060bbb0, virtual ~VelocityMotor() 0060a650, setHole(Hole*) 0060c400, and Creatable<Instance>::create<VelocityMotor> 005804a0. The declaration-only overlay is tests/NativeFeaturePendingVelocityMotor.h. Once a native VelocityMotor header exists, join (0060ca00) can drop the NATIVE_FEATURE_PENDING guard.
 
 - 2026-11-04 Claude (fork, lease RBX::Message Hint followup): Message::render2d 005dcd90 is now exact unguarded against the native native-headers/Network/Player.h (RTTI 00937460 bound). NATIVE_MESSAGE_PENDING and the recorder's generated Player overlay are removed. Effects now count 141 distinct exact addresses.
+
+- 2026-11-04 Claude (fork, lease RBX::Seat): native-headers/v8datamodel/Seat.h, native-classes/Seat.cpp. Inactive. Allocation is 0x43c (create<Seat> 005c3080). 32 distinct exact addresses (receipt seat-working.json). Not counted: 8 rows blocked by the PartInstance size. Each already compiles to the target size and should turn exact with PartInstance at 0x3e8. seatCharacter, onEvent_seatTouched and onServiceProvider were not attempted.
+  - Proposal: reflection signal.h. The 2008 SignalDesc::connect takes a third `int group` argument (004a3340, 004d8390; callers pass 10). It is needed by Seat::onServiceProvider 0063d0d0, onEvent_seatTouched 0063cf30 and SpawnLocation::onServiceProvider 005d37d0.
+  - Proposal: native humanoid/Humanoid.h. modelIsCharacter 005d9a20, getTorso 005d8b10, setSit 005dc2b0, and event_Seated (0097a558, initializer 007f6950).
+
