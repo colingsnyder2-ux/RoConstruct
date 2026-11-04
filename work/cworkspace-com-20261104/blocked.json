@@ -1,0 +1,14 @@
+{
+  "class": "CWorkspace",
+  "status": "blocked before compilation",
+  "duplicate_provider_scan": "rg CWorkspace:: rebuild/2008-06/native-classes: Write, WriteSelection and Close each have one definition; no duplicate found",
+  "prior_inactive_exact_methods": 3,
+  "COM_method_total": 8,
+  "fresh_exact_methods": 0,
+  "layout": "prior receipt: size 0x34, dataModel 0x24, runService 0x2c; not revalidated",
+  "blocker": "Required rebuild/2008-06/tests/native_check_runner.py absent; direct prescribed invocation fails Errno 2. rg --files found no replacement. Inbox events.jsonl also absent.",
+  "changes": "No native sources, headers or shared scripts changed",
+  "next": "Restore owner-provided native_check_runner.py, then compile current Save/ExecScript sources before new hypotheses. XML target assembly preserved in evidence folder.",
+  "selected_provider_evidence": false,
+  "runtime_tested": false
+}
