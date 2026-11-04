@@ -1,6 +1,6 @@
 # Needs a manual merge
 
-Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `142f93d091b443c876bfe115fb953b500028269c`.
+Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `76c718db96d44254cc2903f95353dab9c5d5e3da`.
 Reason: CONFLICT (add/add): Merge conflict in rebuild/2008-06/native-classes/Explosion.cpp (+12 more conflicts)
 
 Files below are the fork's version; compare with the same path in the tree:
@@ -31,6 +31,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/SpawnLocation.cpp`
 - `rebuild/2008-06/native-classes/SpecialShape.cpp`
 - `rebuild/2008-06/native-classes/StatsService.cpp`
+- `rebuild/2008-06/native-classes/Teams.cpp`
 - `rebuild/2008-06/native-classes/TimerService.cpp`
 - `rebuild/2008-06/native-classes/VisitFactory.cpp`
 - `rebuild/2008-06/native-classes/VisitServiceLookup.cpp`
