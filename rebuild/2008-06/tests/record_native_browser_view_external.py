@@ -36,6 +36,7 @@ LAYOUT = HERE / 'NativeBrowserViewExternalLayout.cpp'
 GUIDS = ROOT / 'rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp'
 HELPER = ROOT / 'rebuild/2008-06/native-classes/WorkspaceSiteError.cpp'
 RECEIPT = ROOT / 'work/2008-06/shared-layouts/browser-view-external-working.json'
+PROPOSAL = ROOT / 'work/2008-06/shared-layouts/browser-view-external-stack-extent.json'
 FAIL = ROOT / 'work/cbrowserviewexternal-guided-20261104/browser-view-external-fail.json'
 C = 'CBrowserViewExternal'
 VTABLE = 0x80d778
@@ -245,7 +246,7 @@ SUPPORT = [('??1?$IConnectionPointImpl@VCBrowserViewExternal@', 0x40e990), ('?Ad
            ('?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z', 0x404a80), ('??$AtlMultiply@H@ATL@@YAJPAHHH@Z', 0x401710), ('?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z', 0x402f50), ('?GetIDsOfNames@CComTypeInfoHolder@ATL@@QAEJABU_GUID@@PAPA_WIKPAJ@Z', 0x405190),
            ('?GetCookie@CComDynamicUnkArray@ATL@@QAGKPAPAUIUnknown@@@Z', 0x40ed10), ('??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ', 0x401150),
            ('?Init@?$CComEnumImpl@UIEnumConnectionPoints@@', 0x40f570), ('?Init@?$CComEnumImpl@UIEnumConnections@@', 0x40ef00),
-           ('?AtlThrowImpl@ATL@@YGXJ@Z', 0x401000)]
+           ('?AtlThrowImpl@ATL@@YGXJ@Z', 0x401000), ('??$AtlAdd@K@ATL@@YAJPAKKK@Z', 0x402520)]
 for prefix, address in SUPPORT:
     hits = [n for n in present if n.startswith(prefix)]
     if len(hits) == 1:
@@ -332,9 +333,9 @@ ASSERTED = {} if library_query_interface else {LIBRARY_METHODS[0][0]: LIBRARY_ME
 ASSERTED['?_pAtlModule@ATL@@3PAVCAtlModule@1@A'] = 0x96c268   # ATL global module pointer: bss address only, name from the relocation
 ASSERTED['?m_libid@CAtlModule@ATL@@2U_GUID@@A'] = 0x96c26c   # ATL static GUID: .data address only
 ASSERTED['?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A'] = 0x97f2a8   # ATL global base module: data address only
-ASSERTED['?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z'] = 0x402610   # emitted body is NOT exact (156 vs 93): recorded below
-ASSERTED['__alloca_probe'] = 0x6a1520   # CRT helper: relocation operand only
-ASSERTED['__alloca_probe_16'] = 0x6a1560   # CRT helper: relocation operand only
+ASSERTED['?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z'] = 0x402610   # full 156-byte span matches (masked); recorded extent 93 is stale and NOT applied: see full_stack_owner_pending_extent
+ASSERTED['__alloca_probe'] = 0x6a1520   # CRT helper: relocation operand in rows; archive member bytes proven separately (crt_stack_probe_proof)
+ASSERTED['__alloca_probe_16'] = 0x6a1560   # CRT helper: relocation operand in rows; archive member bytes proven separately (crt_stack_probe_proof)
 
 
 def observed_targets(symbol, address):
@@ -446,7 +447,201 @@ for row in row_failures:
         row['reason'] = 'size/bytes differ: not exact, not claimed'
 
 
-verify_stack = first_difference('?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z', 0x402610) if '?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z' in present else None
+
+STACK = '?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z'
+STACK_ADDRESS, STACK_RECORDED, STACK_FULL = 0x402610, 93, 156
+ATLADD = '??$AtlAdd@K@ATL@@YAJPAKKK@Z'
+verify_stack = first_difference(STACK, STACK_ADDRESS) if STACK in present else None
+if verify_stack:
+    verify_stack.update({
+        'classification': 'recorded extent stale (pending server extent acceptance); not wrong codegen',
+        'reason': 'the first raw difference (offset 6) is the __sehtable$ relocation operand, not a wrong body; the full 156 bytes match under 5 relocations (see full_stack_owner_pending_extent)',
+        'recorded_original_size_is_stale': True, 'superseded_by': 'full_stack_owner_pending_extent'})
+
+
+def prove_stack_owner():
+    """Full 156-byte owner of 00402610 (recorded as 93): masked byte match, five relocation identities, SEH scope table,
+    control flow, calling convention and the pure (unrecorded) tail_proof. Nothing here changes bounds or inventory."""
+    import hashlib
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+    from roc import bounds_proof
+    need(STACK in definitions, 'owner symbol not emitted')
+    start, section = definitions[STACK]
+    sec = sections[section]
+    need(start == 0 and sec[3] == STACK_FULL and sec[9] & 0x20, ('owner COMDAT', start, sec[3]))
+    code = raw[sec[4]:sec[4] + STACK_FULL]
+    target = original.data(STACK_ADDRESS, STACK_FULL)
+    relocs = [struct.unpack_from('<IIH', raw, sec[5] + 10 * k) for k in range(sec[7])]
+    need([r[0] for r in relocs] == [6, 11, 62, 84, 123], relocs)
+    window = {i for off, _, _ in relocs for i in range(off, off + 4)}
+    raw_diff = [i for i in range(STACK_FULL) if code[i] != target[i]]
+    need(raw_diff and set(raw_diff) <= window, ('bytes differ outside relocation windows', raw_diff))
+    resolved = {}
+    for off, index, kind in relocs:
+        name = symbols[index][0]
+        if kind == 20:
+            value, form = (STACK_ADDRESS + off + 4 + struct.unpack_from('<i', target, off)[0]) & 0xffffffff, 'rel32'
+            need(struct.unpack_from('<i', code, off)[0] == 0, ('rel32 addend', name))
+        else:
+            need(kind == 6, (name, kind))
+            value, form = (struct.unpack_from('<I', target, off)[0] - struct.unpack_from('<i', code, off)[0]) & 0xffffffff, 'dir32'
+        resolved[off] = (name, form, value)
+    # identities, each against the original's own data
+    name, _, value = resolved[6]
+    need(name.startswith('__sehtable$' + STACK) and value == 0x8d0748, resolved[6])
+    sec_seh = sections[symbols[relocs[0][1]][2] - 1]
+    seh_relocs = [struct.unpack_from('<IIH', raw, sec_seh[5] + 10 * k) for k in range(sec_seh[7])]
+    seh_data = raw[sec_seh[4]:sec_seh[4] + 12]
+    need(sec_seh[3] == 12 and [r[0] for r in seh_relocs] == [4, 8] and all(r[2] == 6 for r in seh_relocs), seh_relocs)
+    labels = [symbols[r[1]] for r in seh_relocs]
+    need(all(l[2] == section + 1 for l in labels), labels)
+    emitted_scope = (struct.unpack_from('<I', seh_data, 0)[0],) + tuple(
+        (STACK_ADDRESS + l[1] + struct.unpack_from('<I', seh_data, r[0])[0]) & 0xffffffff for r, l in zip(seh_relocs, labels))
+    original_scope = struct.unpack('<3I', original.data(0x8d0748, 12))
+    need(emitted_scope == original_scope == (0xffffffff, 0x40266d, 0x402681), (emitted_scope, original_scope))
+    name, _, value = resolved[11]
+    thunk = original.imported(value)
+    need(name == '__except_handler3' and thunk == ('msvcr90.dll', '_except_handler3') and name == '_' + thunk[1], (resolved[11], thunk))
+    need(resolved[62][0] == ATLADD and resolved[62][2] == 0x402520 and dict(METHODS).get(ATLADD) == 0x402520, resolved[62])
+    need(resolved[84][0] == '__alloca_probe_16' and resolved[84][2] == 0x6a1560, resolved[84])
+    name, _, value = resolved[123]
+    iat = original.imports.get(value)
+    need(name == '__imp___resetstkoflw' and iat and (iat[0], iat[2]) == ('msvcr90.dll', '_resetstkoflw') and name == '__imp__' + iat[2], (resolved[123], iat))
+    # control flow, filter constant, calling convention (disassembly of the ORIGINAL bytes)
+    instructions = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(target, STACK_ADDRESS))
+    need(sum(i.size for i in instructions) == STACK_FULL, 'disassembly does not cover the span')
+    to_exit = [hex(i.address) for i in instructions if i.mnemonic.startswith('j') and i.op_str == '0x40268f']
+    need(len(to_exit) == 2, to_exit)
+    need(target[0x70:0x71] == b'\xc3' and target[-1:] == b'\xc3' and not any(i.mnemonic == 'ret' and i.op_str for i in instructions), 'owner is not bare-ret cdecl')
+    need(b'\x3d\xfd\x00\x00\xc0' in target, 'filter STATUS_STACK_OVERFLOW constant')
+    # inventory rows (read only) and the pure tail proof
+    rows = bounds_proof._rows('2008-06')[0]
+    own, filt, hand = rows['00402610'], rows['0040266d'], rows['00402681']
+    need((own['size'], filt['size'], hand['size'], filt['kind'], hand['kind']) == (93, 20, 43, 'eh', 'eh'), (own['size'], filt['size'], hand['size']))
+    need(STACK_ADDRESS + STACK_RECORDED == 0x40266d and 0x40266d + 20 == 0x402681 and 0x402681 + 43 == 0x4026ac, 'adjacent rows do not tile 156')
+    prev_end = 0x4025b0 + rows['004025b0']['size']
+    need(prev_end == 0x402609 and set(original.data(prev_end, STACK_ADDRESS - prev_end)) <= {0xcc}, 'previous function end/padding')
+    need(set(original.data(0x4026ac, 4)) == {0xcc} and '004026b0' in rows, 'next function after padding')
+    callers = own['callers']
+    call_sites = []
+    for caller in callers:
+        body = original.data(int(caller, 16), rows[caller]['size'])
+        for i in range(len(body) - 4):
+            if body[i] == 0xe8 and (int(caller, 16) + i + 5 + struct.unpack_from('<i', body, i + 1)[0]) & 0xffffffff == STACK_ADDRESS:
+                call_sites.append((caller, body[i + 5:i + 8] == b'\x83\xc4\x04'))
+    cleaned = sum(1 for _, ok in call_sites if ok)
+    need(call_sites and cleaned == len(call_sites), ('caller cleanup is not add esp,4', [c for c, ok in call_sites if not ok]))
+    tail = bounds_proof.tail_proof('2008-06', '%08x' % STACK_ADDRESS, [(STACK, code, [off for off, _, _ in relocs])])
+    need(tail and (tail['old'], tail['new'], tail['clean']) == (93, 156, True) and tail['absorbs'] == ['0040266d', '00402681'], tail)
+    comp = [v for n, v, _s, _k in symbols.values() if n == '@comp.id']
+    need(len(comp) == 1 and comp[0] & 0xffff == 21022, comp)
+    header = ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include/atlalloc.h'
+    return {
+        'status': 'FULL-SPAN MASKED MATCH, EXTENT NOT APPLIED',
+        'accepted_exact_function': False, 'counted_in_methods': False, 'bound_in_verified_targets': False,
+        'bounds_status': 'pending server extent acceptance: the inventory/server extent is still 93; this receipt records proof only',
+        'server_extent_status': 'not applied', 'server_credit_asserted': False,
+        'symbol': STACK, 'address': '%08x' % STACK_ADDRESS,
+        'recorded_size': STACK_RECORDED, 'proposed_size': STACK_FULL, 'proposed_end': '004026ac',
+        'inventory_rows_absorbed': [{'address': '0040266d', 'size': 20, 'role': 'SEH filter ($LN7, object offset 0x5d)'},
+                                    {'address': '00402681', 'size': 43, 'role': 'SEH handler ($LN8, object offset 0x71); also contains the normal-exit label 0040268f'}],
+        'adjacent': {'previous': '004025b0 (89 bytes, ends 00402609, 0xcc padding to 00402610)', 'next': '004026b0 after 0xcc padding'},
+        'original_156_sha256': hashlib.sha256(target).hexdigest(), 'original_93_prefix_sha256': hashlib.sha256(target[:STACK_RECORDED]).hexdigest(),
+        'object': {'comdat_text_size': len(code), 'comdat_text_sha256': hashlib.sha256(code).hexdigest(), 'object_sha256': sha(obj),
+                   'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'coff_compiler_id': comp[0], 'flags': FLAGS, 'profile_flags': PROFILE_FLAGS,
+                   'source': 'ATL9 atlalloc.h _AtlVerifyStackAvailable (header-instantiated, no application source)',
+                   'source_header': 'tools/libs/mfc-9.0-rtm/atlmfc/include/atlalloc.h', 'source_header_sha256': sha(header)},
+        'masked_differences': [], 'raw_difference_offsets': raw_diff,
+        'raw_difference_note': 'all raw differences lie inside the 5 relocation windows (first at +6 = __sehtable$ operand); the 93-byte body is not wrong',
+        'relocations': {str(off): {'symbol': n, 'form': f, 'original_value': '%08x' % v} for off, (n, f, v) in resolved.items()},
+        'relocation_identities': {
+            '+6': '__sehtable$ scope table at 008d0748',
+            '+11': '__except_handler3 operand 006a1512 = jmp [%08x] = %s!%s' % (struct.unpack_from('<I', original.data(0x6a1512, 6), 2)[0], thunk[0], thunk[1]),
+            '+62': 'AtlAdd<unsigned long> row 00402520 (exact masked row in methods)',
+            '+84': '__alloca_probe_16 at 006a1560 (CRT archive member proof: crt_stack_probe_proof)',
+            '+123': '__imp___resetstkoflw = IAT 00802894 = msvcr90.dll!_resetstkoflw'},
+        'seh_scope_table': {'address': '008d0748', 'original_words': ['%08x' % w for w in original_scope], 'emitted_words_after_label_resolution': ['%08x' % w for w in emitted_scope],
+                            'object_labels': {symbols[r[1]][0]: '0x%x' % symbols[r[1]][1] for r in seh_relocs},
+                            'filter': '0040266d: [ebp-0x14] -> EXCEPTION_POINTERS, compares ExceptionCode with 0xc00000fd (STATUS_STACK_OVERFLOW)',
+                            'handler': '00402681: restores esp from [ebp-0x18], clears result, calls _resetstkoflw, falls into the normal-exit label'},
+        'control_flow': {'normal_exit_label': '0040268f (inside the handler row 00402681)', 'jumps_to_normal_exit': to_exit,
+                         'alloca_site': '00402663 call 006a1560 with eax = [ebp-0x20] (probe size), esp saved to [ebp-0x18] afterwards'},
+        'calling_convention': {'return': 'bare c3 (cdecl, caller cleans) - NOT ret 4', 'decoration': 'YA_NK (cdecl)',
+                               'caller_cleanup': '%d/%d call sites followed by add esp,4 across %d caller functions' % (cleaned, len(call_sites), len(callers))},
+        'data_checks': {'scope_table': 'compared word by word with the original after resolving object labels', 'iat': '00802894 import by name', 'except_handler3_thunk': '006a1512 jmp [IAT] import by name'},
+        'bounds_proof': {k: tail[k] for k in ('old', 'new', 'absorbs', 'clean', 'proof')},
+        'bounds_proof_note': 'bounds_proof.tail_proof called directly: nothing recorded, bounds.json/functions.jsonl untouched, roc extents --apply not run',
+        'caller_status': 'pending-boundary: callers see the recorded 93-byte extent. This is an extent gap, not a wrong-codegen finding.'}
+
+
+def prove_crt_stack_probes():
+    """__alloca_probe/__chkstk (006a1520) and __alloca_probe_16 (006a1560), from the genuine RTM 21022 CRT archives (recipe msvc-crt)."""
+    import hashlib
+    from roc import libs, setup
+    build = 21022
+    compiler = setup.compilers()[build]
+    folder = libs._archive_dir(libs.RECIPES['msvc-crt'], compiler)
+    wanted = ('chkstk.obj', 'alloca16.obj')
+    members, archives = {}, {}
+    for library in libs.RECIPES['msvc-crt']['files']:
+        path = folder / library
+        archives[library] = {'path': str(path), 'sha256': sha(path)}
+        for member, data in libs.archive_members(path):
+            leaf = member.replace(chr(92), '/').split('/')[-1].lower()
+            if leaf in wanted:
+                members[(library, leaf)] = (member, data)
+
+    def text_section(data):
+        for i in range(struct.unpack_from('<H', data, 2)[0]):
+            header = struct.unpack_from('<8sIIIIIIHHI', data, 20 + 40 * i)
+            if header[0].startswith(b'.text'):
+                return header
+    chk_target = original.data(0x6a1520, 43)
+    a16_target = original.data(0x6a1560, 22) + original.data(0x6a1576, 22)
+    jumps = [(0x6a1560 + 17 + 5 + struct.unpack_from('<i', a16_target, 18)[0]) & 0xffffffff,
+             (0x6a1576 + 17 + 5 + struct.unpack_from('<i', a16_target, 40)[0]) & 0xffffffff]
+    need(jumps == [0x6a1520, 0x6a1520], jumps)
+    need(set(original.data(0x6a154b, 1)) == {0xcc}, 'padding after __chkstk')
+    result = {}
+    for (library, leaf), (member, data) in sorted(members.items()):
+        header = text_section(data)
+        body = data[header[4]:header[4] + header[3]]
+        _, member_symbols, _, _ = match._coff_data_index(data)
+        global_symbols = {n: v for n, v, sec, typ in member_symbols.values() if sec == 1 and typ in (0, 0x20)}
+        if leaf == 'chkstk.obj':
+            need(body == chk_target and header[7] == 0, (library, leaf, 'bytes differ'))
+            need(global_symbols.get('__alloca_probe') == 0 and global_symbols.get('__chkstk') == 0, global_symbols)
+            proof = {'original': '006a1520, 43 bytes (byte equal; no relocations)', 'symbols': {'__alloca_probe': '006a1520', '__chkstk': '006a1520 (alias, same member offset 0)'}}
+        else:
+            relocs = [struct.unpack_from('<IIH', data, header[5] + 10 * k) for k in range(header[7])]
+            need([(r[0], member_symbols[r[1]][0], r[2]) for r in relocs] == [(18, '__chkstk', 20), (40, '__chkstk', 20)], relocs)
+            mine, ref = bytearray(body), bytearray(a16_target)
+            for off in (18, 40):
+                mine[off:off + 4] = ref[off:off + 4] = b'\0\0\0\0'
+            need(bytes(mine) == bytes(ref) and len(body) == 44, (library, leaf, 'masked bytes differ'))
+            need(global_symbols.get('__alloca_probe_16') == 0 and global_symbols.get('__alloca_probe_8') == 0x16, global_symbols)
+            proof = {'original': '006a1560 (22) + 006a1576 (22), masked equal; both rel32 jumps resolve to 006a1520 = __chkstk',
+                     'symbols': {'__alloca_probe_16': '006a1560', '__alloca_probe_8': '006a1576'}, 'relocations': '2 x rel32 __chkstk at +18, +40'}
+        result['%s!%s' % (library, leaf)] = dict(proof, member=member, member_sha256=hashlib.sha256(data).hexdigest(),
+                                                  text_size=len(body), text_sha256=hashlib.sha256(body).hexdigest(), archive_sha256=archives[library]['sha256'])
+    need(len(result) == 4, sorted(result))
+    # calling convention evidence from the original call sites
+    code = original.data(0x4100a0, 440)
+    site = 0x410168 - 0x4100a0
+    need(code[site] == 0xe8 and (0x4100a0 + site + 5 + struct.unpack_from('<i', code, site + 1)[0]) & 0xffffffff == 0x6a1520
+         and code[site - 5:site] == b'\xb8\x04\x00\x00\x00', 'call site 00410168')
+    owner = original.data(STACK_ADDRESS, STACK_FULL)
+    need(owner[0x50:0x53] == b'\x8b\x45\xe0' and owner[0x53] == 0xe8 and (STACK_ADDRESS + 0x53 + 5 + struct.unpack_from('<i', owner, 0x54)[0]) & 0xffffffff == 0x6a1560, 'call site 00402663')
+    return {'status': 'PASS', 'kind': 'genuine compiler runtime archive members (recipe msvc-crt); no source, no assembler, no byte blob provider',
+            'compiler': str(compiler), 'compiler_build': build, 'compiler_sha256': sha(compiler), 'archives': archives, 'members': result,
+            'archive_choice_note': 'libcmt.lib (mt_obj) and msvcrt.lib (dll_obj) .text bytes are identical, so the bytes do not choose between them; the client imports msvcr90.dll (/MD), whose import library is msvcrt.lib',
+            'original_layout': {'006a1520': '__alloca_probe/__chkstk (43 bytes)', '006a154c, 006a1552': 'msvcr90 import thunks (unrelated), 0xcc padding to 006a1560',
+                                '006a1560': '__alloca_probe_16 (22)', '006a1576': '__alloca_probe_8 (22)'},
+            'abi': {'convention': 'special register intrinsic, not a C++ function: size in EAX on entry; the helper subtracts it from ESP (probing pages) and returns with ESP lowered',
+                    'call_sites': {'00402663': 'mov eax,[ebp-0x20]; call 006a1560; mov [ebp-0x18],esp (owner 00402610)', '00410168': 'mov eax,4; call 006a1520 (EnumConnectionPoints 004100a0)'}},
+            'caller_note': '00404a80 (GetTI) calls 006a1560, not 006a1520; 006a1520 is called by 004100a0',
+            'scope': 'runtime/library byte identity only; not a native C++ body row and not counted in methods'}
+
 
 
 def locator_chain(vtable):
@@ -571,6 +766,32 @@ words = check('table words', table_words)
 references = check('table references', reference_counts) or {}
 alloc = check('creator allocation', creator_alloc)
 lifetime = check('creator lifetime', creator_lifetime)
+stack_owner = check('full stack owner 00402610 (156 bytes)', prove_stack_owner)
+crt_stack_probes = check('CRT stack probe archive members', prove_crt_stack_probes)
+
+# Runtime archive identity is proved separately from application C++ rows. A proved full owner whose inventory
+# extent is still stale remains pending; it is not bound as an accepted exact target.
+runtime_targets = {'__alloca_probe': 0x6a1520, '__alloca_probe_16': 0x6a1560}
+for row in rows + alias_rows:
+    unresolved = row.get('unproven_targets', {})
+    if crt_stack_probes and crt_stack_probes['status'] == 'PASS':
+        for symbol, address in runtime_targets.items():
+            if symbol in unresolved:
+                value = unresolved.pop(symbol)
+                need(value == hex(address), (symbol, value, hex(address)))
+                row['verified_targets'][symbol] = value
+                row.setdefault('runtime_target_evidence', {})[symbol] = 'crt_stack_probe_proof: authentic archive bytes, entry aliases and jump targets verified'
+    if stack_owner and STACK in unresolved:
+        row.setdefault('pending_extent_targets', {})[STACK] = {
+            'address': unresolved.pop(STACK), 'recorded_size': STACK_RECORDED, 'proposed_size': STACK_FULL,
+            'status': stack_owner['status'], 'proof': 'full_stack_owner_pending_extent',
+            'accepted_exact_function': False}
+    if not unresolved:
+        row.pop('unproven_targets', None)
+        row.pop('unproven_note', None)
+if crt_stack_probes and crt_stack_probes['status'] == 'PASS':
+    for symbol in runtime_targets:
+        ASSERTED.pop(symbol, None)
 undefined_all = sorted(n for (n, value, secnum, typ) in symbols.values() if secnum == 0)
 passed = not failures
 sources = {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p)
@@ -613,7 +834,8 @@ receipt = {
     'rtti': rtti, 'tables': words,
     'table_reference_counts': {'%08x' % k: v for k, v in references.items()},
     'vector_deleting_destructor': 'vtable slot 4 of 0080d778 names the weak external ??_E; the emitted body is ??_G and matches 0040f770',
-    'data_facts': data_facts, 'asserted_body_not_exact': verify_stack, 'asserted_targets': {k: '%08x' % v for k, v in ASSERTED.items()}, 'failures': failures, 'known_open_bodies': row_failures,
+    'data_facts': data_facts, 'asserted_body_not_exact': verify_stack,
+    'full_stack_owner_pending_extent': stack_owner, 'crt_stack_probe_proof': crt_stack_probes, 'asserted_targets': {k: '%08x' % v for k, v in ASSERTED.items()}, 'failures': failures, 'known_open_bodies': row_failures,
     'thread_model': {'macro': THREAD_MODEL, 'atlbase_h': '_ATL_APARTMENT_THREADED: CComObjectThreadModel=CComSingleThreadModel, CComGlobalsThreadModel=CComMultiThreadModel',
                      'original_proof': 'enumerator vtables 0080d790/0080d7f0 RTTI name CComSingleThreadModel; allocation 0x1c (default multi model emitted 0x38)',
                      'original_macro_spelling': 'not proven', 'applies_to': 'class unit preprocess only; header and sources unchanged'},
@@ -638,10 +860,20 @@ receipt = {
     'open': {
         'GetApp_00410fe0': 'exact object row; ole32 CoCreateInstance, CString and AFX state-guard import identities verified; format string and typed GUID data verified; helper 00429330 body exact from WorkspaceSiteError.cpp. Its further callees and GUID_NULL remain open as recorded in helper_rows; import identity does not claim an imported implementation body was reconstructed',
         'guid_definitions': 'IID_IBrowserViewExternal, LIBID_RobloxLib, CLSID_BrowserViewExternal now defined once in native-classes/CBrowserViewExternalGuids.cpp (separate unit: defined in the class unit they constant-fold InterfaceSupportsErrorInfo to 76 bytes vs 78). LIBID_RobloxLib is shared logically with CContent/CWorkspace headers (declared C++-linkage there): linkage identity not reconciled, owners not edited',
-        'Enum_bodies': 'EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their 16 slot bodies (QI/AddRef/Release/Next/Skip/Reset/Clone/deleting destructor) and the four support bodies (CreateInstance x2, ~CComEnumImpl x2) are masked-exact rows: see enum_template_proof. Still open: _pAtlModule 0096c268 as a relocation operand (also in 004100a0/004104b0), _AtlVerifyStackAvailable 00402610 (emitted 156 vs 93) and __alloca_probe 006a1520 (004100a0, 00404a80)',
+        'Enum_bodies': 'EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their 16 slot bodies (QI/AddRef/Release/Next/Skip/Reset/Clone/deleting destructor) and the four support bodies (CreateInstance x2, ~CComEnumImpl x2) are masked-exact rows: see enum_template_proof. Still open: _pAtlModule 0096c268 as a relocation operand (also in 004100a0/004104b0). _AtlVerifyStackAvailable 00402610: the full 156-byte owner matches (full_stack_owner_pending_extent) but the 93-byte extent is not accepted by the server, so it is NOT an accepted exact function and not a row. __alloca_probe 006a1520 (004100a0) and __alloca_probe_16 006a1560 (00402610, 00404a80) are proven as genuine CRT archive members (crt_stack_probe_proof), separate from native C++ rows',
         'constructor_destructor': 'standalone constructor/destructor bodies are inlined into the creator and the deleting destructor and are not rows',
+        'stack_helper_extent': 'proposal only (local): shared-layouts/browser-view-external-stack-extent.json, server_extent_status not applied; inventory, bounds.json and scores untouched; callers of 00402610 remain pending-boundary (not wrong codegen)',
         'scope': 'source/object proof only; partial class (ATL module/stack/alloca/static targets open); no server credit, no selection, no build/runtime claim'}}
 RECEIPT.parent.mkdir(parents=True, exist_ok=True)
+if passed and stack_owner:
+    PROPOSAL.write_text(json.dumps({
+        'schema': 'local-bounds-proposal-1', 'client': '2008-06', 'address': stack_owner['address'], 'symbol': STACK,
+        'old_size': STACK_RECORDED, 'proposed_size': STACK_FULL, 'proposed_end': stack_owner['proposed_end'], 'absorbs': stack_owner['bounds_proof']['absorbs'],
+        'tail_proof': stack_owner['bounds_proof'], 'original_156_sha256': stack_owner['original_156_sha256'], 'object_comdat_text_sha256': stack_owner['object']['comdat_text_sha256'],
+        'compiler': stack_owner['object']['compiler'], 'relocation_count': 5, 'calling_convention': stack_owner['calling_convention']['return'],
+        'server_extent_status': 'not applied', 'proposal': 'local', 'applied': False,
+        'not_done': ['bounds.json', 'functions.jsonl', 'scores', 'client metadata', 'roc extents --apply', 'roc analyze', 'server restart'],
+        'receipt': 'work/2008-06/shared-layouts/browser-view-external-working.json#full_stack_owner_pending_extent'}, indent=2) + '\n')
 (RECEIPT if passed else FAIL).write_text(json.dumps(receipt, indent=2) + '\n')
 print('%s native %s: %d exact row(s)%s' % (receipt['status'], C, len(rows), '' if passed else '\n  ' + '\n  '.join(failures)))
 sys.exit(0 if passed else 1)
