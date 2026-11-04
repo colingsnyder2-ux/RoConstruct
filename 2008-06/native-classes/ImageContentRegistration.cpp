@@ -44,4 +44,24 @@ ContentId registerImageContent(std::istream& content, const Name& mimeType)
     }
     return id;
 }
+std::string findHashFile(ContentId contentId)
+{
+    ATL::CPath cachePath = getLocalCachePath(true);
+    ATL::CPath filePath = cachePath;
+    filePath.Append(contentId.c_str());
+    if (!filePath.FileExists()) return "";
+    return std::string(filePath);
+}
+namespace LDraw2Lua { std::string originalAssetFolder(); }
+
+std::string findAsset(ContentId contentId)
+{
+    const char* suffix = contentId.c_str();
+    suffix += 11;
+    typedef std::string (__cdecl *Append)(const std::string&, const char*);
+    Append append = &std::operator+<char, std::char_traits<char>, std::allocator<char> >;
+    ATL::CPath path(append(LDraw2Lua::originalAssetFolder(), suffix).c_str());
+    if (!path.FileExists()) return "";
+    return std::string(path);
+}
 }

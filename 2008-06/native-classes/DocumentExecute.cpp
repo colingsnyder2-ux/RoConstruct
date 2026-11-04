@@ -34,7 +34,7 @@ void CRobloxDoc::handle_453c30(NMHDR* header, LRESULT* result)
         }
         RBX::DataModel::Lock lock(getDataModel());
         workspace->getDataModel()->create<RBX::ScriptContext>()->executeInNewThread(RBX::Security::CmdLine, script.c_str(), "Cmd");
-    } catch (...) {}
+    } catch (std::exception&) {}
     combo->SetEnabled(TRUE);
     combo->GetEditCtrl()->SetSel(0, -1);
     combo->GetEditCtrl()->SetFocus();

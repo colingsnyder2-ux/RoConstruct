@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/content-cache-inline
 // Isolated layout/lifetime trial; donor ContentProvider is a different singleton class.
 #include "util/NativeContentProvider.h"
 #include "util/Http.h"

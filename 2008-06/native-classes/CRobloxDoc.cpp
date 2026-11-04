@@ -329,19 +329,19 @@ void CRobloxDoc::handle_44fd30() {
 void CRobloxDoc::handle_4500d0()
 {
     try { launch(copyDocument(this, "Visit"), (" -script \"loadfile('" + applicationBaseUrl() + "/game/visit.ashx')()\"")); }
-    catch (const std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
+    catch (std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
 }
 
 void CRobloxDoc::handle_4501c0()
 {
     try { launch(copyDocument(this, "Server"), (" -script \"loadfile('" + applicationBaseUrl() + "/game/gameserver.ashx')(0, 53640)\"")); }
-    catch (const std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
+    catch (std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
 }
 
 void CRobloxDoc::handle_4502b0()
 {
     try { launch(NULL, (" -script \"loadfile('" + applicationBaseUrl() + "/game/join.ashx?UserID=0&serverPort=53640')()\"")); }
-    catch (const std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
+    catch (std::exception& e) { AfxMessageBox(e.what(), 0, 0); }
 }
 
 // 00455580: stop simulation, restore the saved place and rebuild joints.

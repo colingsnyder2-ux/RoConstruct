@@ -40,8 +40,11 @@ public:
     worker_thread::work_result processRequests();
     std::auto_ptr<std::istream> getContent(ContentId);
     CachedContent* loadContent(ContentId, int, const RequestCallback*);
+    std::string getFile(ContentId);
     bool isUrlBad(const char*);
     static bool isUrl(const std::string&);
+private:
+    bool registerFile(CachedContent*);
 };
 typedef char ProviderSize[sizeof(ContentProvider) == 0x19c ? 1 : -1];
 typedef char ProviderRequestSize[sizeof(ContentRequest) == 0x38 ? 1 : -1];
