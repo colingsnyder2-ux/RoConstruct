@@ -1,0 +1,201 @@
+{
+ "class": "CObjectBrowser",
+ "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+ "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+ "profile": "document-swap flags + XTP 11.2.2 headers (/UNOMINMAX /D_XTP_STATICLINK)",
+ "sources": {
+  "rebuild/2008-06/tests/record_native_object_browser.py": "8529d8184dae08bedd637c1b265a080720a11374394976ffcf982423416aaa50",
+  "rebuild/2008-06/tests/object_browser_profile.py": "a96ce7b0eba1e607a17848b2bf5d60ef2654f782e746a6f529a6e3ac73f5e675",
+  "rebuild/2008-06/native-classes/CObjectBrowser.cpp": "c7f8d5b8d4c526c6d0305db32ac748c194949390e5ddc3b15c89e52a30ddbbe7",
+  "rebuild/2008-06/native-headers/CObjectBrowser.h": "c343b8fe82dd22c8fc7d370958ee66334a045e5e87d0b0d3ab7ca1faaf787a9e",
+  "rebuild/2008-06/tests/NativeObjectBrowserLayout.cpp": "ebfd9ba48c013fae3259511255370411153988dc73b4e15192767e8a0e94bd8b"
+ },
+ "layout_obj": "f38a262c0e03711c49308256c2afb559fc27bc60e42a3d29219c352935089daa",
+ "unit_obj": "89bc55a562ce993af66ce7ea1c2c508063a477c87906aa049d5aa64c84cf8d8b",
+ "methods": [
+  {
+   "address": "00433420",
+   "symbol": "??0CObjectBrowser@@QAE@XZ",
+   "size": 90,
+   "exact": true,
+   "verified_targets": {
+    "??0CView@@IAE@XZ": "mfc90.dll!??0CView@@IAE@XZ",
+    "??_7CObjectBrowser@@6B@": "0x812794",
+    "??0CXTSplitterWnd@@QAE@XZ": "0x708c50"
+   },
+   "local_eh": [
+    "__ehhandler$??0CObjectBrowser@@QAE@XZ"
+   ]
+  },
+  {
+   "address": "00433480",
+   "symbol": "??1CObjectBrowser@@UAE@XZ",
+   "size": 98,
+   "exact": true,
+   "verified_targets": {
+    "??_7CObjectBrowser@@6B@": "0x812794",
+    "??1CXTSplitterWnd@@UAE@XZ": "0x708280",
+    "??1CView@@UAE@XZ": "mfc90.dll!??1CView@@UAE@XZ"
+   },
+   "local_eh": [
+    "__ehhandler$??1CObjectBrowser@@UAE@XZ"
+   ]
+  },
+  {
+   "address": "004339b0",
+   "symbol": "??_GCObjectBrowser@@UAEPAXI@Z",
+   "size": 30,
+   "exact": true,
+   "verified_targets": {
+    "??1CObjectBrowser@@UAE@XZ": "0x433480",
+    "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "00433950",
+   "symbol": "?CreateObject@CObjectBrowser@@SGPAVCObject@@XZ",
+   "size": 89,
+   "exact": true,
+   "verified_targets": {
+    "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+    "??0CObjectBrowser@@QAE@XZ": "0x433420"
+   },
+   "local_eh": [
+    "__ehhandler$?CreateObject@CObjectBrowser@@SGPAVCObject@@XZ"
+   ]
+  },
+  {
+   "address": "00433410",
+   "symbol": "?GetRuntimeClass@CObjectBrowser@@UBEPAUCRuntimeClass@@XZ",
+   "size": 6,
+   "exact": true,
+   "verified_targets": {
+    "?classCObjectBrowser@CObjectBrowser@@2UCRuntimeClass@@B": "0x812520"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "004346a0",
+   "symbol": "?GetMessageMap@CObjectBrowser@@MBEPBUAFX_MSGMAP@@XZ",
+   "size": 6,
+   "exact": true,
+   "verified_targets": {
+    "?messageMap@?1??GetThisMessageMap@CObjectBrowser@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x812b64"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "00433b80",
+   "symbol": "?OnCreate@CObjectBrowser@@QAEHPAUtagCREATESTRUCTA@@@Z",
+   "size": 373,
+   "exact": true,
+   "verified_targets": {
+    "?OnCreate@CView@@IAEHPAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?OnCreate@CView@@IAEHPAUtagCREATESTRUCTA@@@Z",
+    "?classCClassTreeView@CClassTreeView@@2UCRuntimeClass@@B": "0x812504",
+    "?IdFromRowCol@CSplitterWnd@@QBEHHH@Z": "mfc90.dll!?IdFromRowCol@CSplitterWnd@@QBEHHH@Z",
+    "?classCMemberTreeView@CMemberTreeView@@2UCRuntimeClass@@B": "0x81253c",
+    "?classCDeclarationView@CDeclarationView@@2UCRuntimeClass@@B": "0x8124e8",
+    "?GetPane@CSplitterWnd@@QBEPAVCWnd@@HH@Z": "mfc90.dll!?GetPane@CSplitterWnd@@QBEPAVCWnd@@HH@Z"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "004334f0",
+   "symbol": "?OnInitialUpdate@CObjectBrowser@@UAEXXZ",
+   "size": 5,
+   "exact": true,
+   "verified_targets": {
+    "?OnInitialUpdate@CView@@UAEXXZ": "mfc90.dll!?OnInitialUpdate@CView@@UAEXXZ"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "006c4cb0",
+   "symbol": "?_GetBaseClass@CObjectBrowser@@KGPAUCRuntimeClass@@XZ",
+   "size": 5,
+   "exact": true,
+   "verified_targets": {
+    "?GetThisClass@CView@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CView@@SGPAUCRuntimeClass@@XZ"
+   },
+   "local_eh": [],
+   "role": "identical-COMDAT fold shared with other classes"
+  },
+  {
+   "address": "00463910",
+   "symbol": "?PreCreateWindow@CObjectBrowser@@UAEHAAUtagCREATESTRUCTA@@@Z",
+   "size": 19,
+   "exact": true,
+   "verified_targets": {
+    "?PreCreateWindow@CView@@MAEHAAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?PreCreateWindow@CView@@MAEHAAUtagCREATESTRUCTA@@@Z"
+   },
+   "local_eh": [],
+   "role": "identical-COMDAT fold shared with other classes"
+  },
+  {
+   "address": "0070bdf0",
+   "symbol": "?OnDraw@CObjectBrowser@@UAEXPAVCDC@@@Z",
+   "size": 3,
+   "exact": true,
+   "verified_targets": {},
+   "local_eh": [],
+   "role": "identical-COMDAT fold shared with other classes"
+  }
+ ],
+ "open": [
+  {
+   "address": "004339d0",
+   "symbol": "?OnSize@CObjectBrowser@@QAEXIHH@Z",
+   "exact": false,
+   "size": 210,
+   "target_size": 212,
+   "note": "delta = cy - rect.Height() reassociated (top - bottom + cy) vs original (cy - (bottom - top))"
+  }
+ ],
+ "xtp_targets": {
+  "??0CXTSplitterWnd@@QAE@XZ": "XTP recipe body exact",
+  "??1CXTSplitterWnd@@UAE@XZ": "XTP recipe body exact"
+ },
+ "vtable": {
+  "verified": 101,
+  "imported": 89,
+  "shared_bodies": {
+   "2": [
+    "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+    "0x70bdf0"
+   ],
+   "3": [
+    "?AssertValid@CObject@@UBEXXZ",
+    "0x47d410"
+   ],
+   "4": [
+    "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+    "0x70bdf0"
+   ],
+   "65": [
+    "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+    "0x70bdf0"
+   ],
+   "66": [
+    "?BeginModalState@CWnd@@UAEXXZ",
+    "0x401120"
+   ],
+   "67": [
+    "?EndModalState@CWnd@@UAEXXZ",
+    "0x401130"
+   ]
+  },
+  "unverified": {},
+  "address": "00812794",
+  "slots": 101
+ },
+ "runtime_class": "00812520",
+ "message_map": "00812b64",
+ "layout": {
+  "sizeof": "0x288",
+  "base": "CView (0x58)",
+  "classSplitter": "0x58 (CXTSplitterWnd, 0x118)",
+  "memberSplitter": "0x170 (CXTSplitterWnd)",
+  "evidence": "CRuntimeClass 00812520 size and CreateObject new(0x288); RTTI 00812794; constructor 00433420 and destructor 00433480 (CXTSplitterWnd ctor/dtor on +0x58/+0x170); OnSize m_hWnd reads +0x78/+0x190"
+ }
+}
