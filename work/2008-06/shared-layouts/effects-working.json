@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeEffectsLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeEffectsLayout.cpp"
     ],
     "message": [
       "/nologo",
@@ -62,7 +62,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,49 +76,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsMessage.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Message.cpp"
-    ],
-    "message_pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/native-effects-pending",
-      "/DNATIVE_MESSAGE_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsMessagePending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Message.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsMessage.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Message.cpp"
     ],
     "sky": [
       "/nologo",
@@ -141,7 +100,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -155,8 +114,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsSky.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Sky.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsSky.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Sky.cpp"
     ],
     "sky_pending": [
       "/nologo",
@@ -179,9 +138,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/native-effects-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\native-effects-pending",
       "/DNATIVE_SKY_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -195,8 +154,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsSkyPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Sky.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsSkyPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Sky.cpp"
     ],
     "sparkles": [
       "/nologo",
@@ -219,7 +178,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -233,8 +192,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsSparkles.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Sparkles.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsSparkles.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Sparkles.cpp"
     ],
     "sparkles_pending": [
       "/nologo",
@@ -257,9 +216,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/native-effects-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\native-effects-pending",
       "/DNATIVE_SPARKLES_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -273,8 +232,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsSparklesPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Sparkles.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsSparklesPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Sparkles.cpp"
     ],
     "effect": [
       "/nologo",
@@ -297,7 +256,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -311,30 +270,30 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeEffectsEffect.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/SparklesEffect.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsEffect.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\SparklesEffect.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_effects.py": "f1d13b267fcc638e2d5047aa76dbb77c32c1f674aebdb2d4d8773f721214a7ea",
-    "rebuild/2008-06/native-headers/v8datamodel/Message.h": "39f15e0eacc36a300e1ce67f1846cf2f053e521138db8a4433e906f977c965c4",
-    "rebuild/2008-06/native-headers/v8datamodel/Sky.h": "24bc81057458bb35df2a342e653a66096be9c0b3514476f2b5ff6a413f1ba943",
-    "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h": "0d4164d128f4d1e075bed79ba47320bfa71d4790bf208d4462ffa6e7900145d9",
-    "rebuild/2008-06/native-classes/Message.cpp": "875f5f9da2d43b35763591ea9595df6f4a9cf510cf46699831ffa1ccc359f444",
-    "rebuild/2008-06/native-classes/Sky.cpp": "281328ee1e68c22cbff4d1b89ce4fba6d09617216bcdca513355e2e5777eceb6",
-    "rebuild/2008-06/native-classes/Sparkles.cpp": "d5c4ba55d8db3f50c5ce7f406eb796a7f1130cd4db4d1b05fdf2ebf0ccca0497",
-    "rebuild/2008-06/native-classes/SparklesEffect.cpp": "a368f116016157de17981cea12b74025268f9828461bc1fb602ddda906c3e5d1",
-    "rebuild/2008-06/tests/NativeEffectsLayout.cpp": "38042c221d502f142acc7d65a44fb943e0a6546661b06c900c53852ebe2d64e8"
+    "rebuild/2008-06/tests/record_native_effects.py": "b3d05ca66d0198f6a0b2b88109cf5105274cdf99bd488501f088d08bb5e2b0ce",
+    "rebuild/2008-06/native-headers/v8datamodel/Message.h": "d1295bb05b6ea8da65e281e6ae31155fe92a50117e0004a65e0e30543578c4b6",
+    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+    "rebuild/2008-06/native-headers/v8datamodel/Sky.h": "1cd475462070a5b3571a25f060f0a0ecd562f893c5152ab0ef1b5fdbab2f6ef5",
+    "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h": "c5d84a0d956b6973ea955e7db7b145d844fc6b0d7a10f0f7b9819aec7ddc734c",
+    "rebuild/2008-06/native-classes/Message.cpp": "842be823c8d7015c3a7377287b01c53f23755bb814a01a419a0c10fbcf7b5d6b",
+    "rebuild/2008-06/native-classes/Sky.cpp": "7b0da9eaba56012c41127ef03db4b4c1a83e984b0773ba90044e608fa97fe59f",
+    "rebuild/2008-06/native-classes/Sparkles.cpp": "a29abb1ec9aea0a568b0cc891eb6405ed02373ef106722570fe41190f9fdfe69",
+    "rebuild/2008-06/native-classes/SparklesEffect.cpp": "5bf440f7eb8b3b376c61547b3e905f1896d6a42420ca11f10898e1d720ace4a1",
+    "rebuild/2008-06/tests/NativeEffectsLayout.cpp": "876f9269df614720bf9e322ea7a5d0e36c42361538af2148dd6749911d8f0e38"
   },
   "objects": {
-    "NativeEffectsLayout.obj": "620841f7b927abe1aa85cd2605ad0d802181ec43bf78e5f9ed4f817300cfd35f",
-    "NativeEffectsMessage.obj": "a8598f79d8f74513de64ced6906897c798928f4429eeaeac3f55b47c2e4c26ce",
-    "NativeEffectsMessagePending.obj": "f9aec66275373f739a358d568b9f2065a121b8987b00f89c1a25f9eba5230a86",
-    "NativeEffectsSky.obj": "d638000c2c218c06b2fc5284e9a98afc6f8a09ffcacffc1d312dcfa1bccfa3b9",
-    "NativeEffectsSkyPending.obj": "f2a80d1abc3ede1a00356e0e8e10262e94257c44db0ac33d1aaacf65957c3aae",
-    "NativeEffectsSparkles.obj": "e96d1d65d701ee3eb337e47805ee58246f776a7bbccc74496d8a1938ce166fc0",
-    "NativeEffectsSparklesPending.obj": "3d901e4ef578b9baa6eeaf6390c538fb91f0716d6232ad669da9b8d97edc7c71",
-    "NativeEffectsEffect.obj": "a81001eb1a6796992d2f74a0cdf31ed609aff22680702ab2852724001449969f"
+    "NativeEffectsLayout.obj": "421487945112a30623a3f6099cce69d94376874fc8ad2a68690686d1c678c476",
+    "NativeEffectsMessage.obj": "328ef31b8f94cf380c7201450962f2d7be49881a881c2cdc5c7dc47208d6851a",
+    "NativeEffectsSky.obj": "25bd63fd40cbff1e463535d6b9206207fe40482854df9e6e00707213c026a2c6",
+    "NativeEffectsSkyPending.obj": "c0ac769d5438446e571fef80ed48e43fb6566a9f8214de22329f3c21453f1b45",
+    "NativeEffectsSparkles.obj": "e01508350c970fe5a414d924893578a603c16751715b9c62aabe8cf0ab748f18",
+    "NativeEffectsSparklesPending.obj": "78e351956b987cb99d98b26d502054d8a229c18a0befe94ab83dbd0ff209dd59",
+    "NativeEffectsEffect.obj": "fce150ff40b309f82ea893783bf62210b3f9d0511075b87a2c0584435ed3cae8"
   },
   "layout": {
     "Message": "0x15c (004a3850); IRenderable +0x130, std::string text +0x140",
@@ -361,7 +320,7 @@
           "??0Instance@RBX@@QAE@PBD@Z": "0x55b960 (external)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x823764 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x823754 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82374c (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82374c (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6BDebugable@1@@": "0x823744 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x823734 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x823724 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x44)",
@@ -455,7 +414,7 @@
           "?classDescriptor@?$Described@VMessage@RBX@@$1?sMessage@2@3QBDBV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x4a3cd0 (own row)",
           "??_7?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83d9fc (vtable RTTI .?AV?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83d9f0 (vtable RTTI .?AV?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83d9e8 (vtable RTTI .?AV?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83d9e8 (vtable RTTI .?AV?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6BDebugable@1@@": "0x83d9e0 (vtable RTTI .?AV?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83d9d0 (vtable RTTI .?AV?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83d9c0 (vtable RTTI .?AV?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x44)",
@@ -559,7 +518,7 @@
           "??$?0PBD@?$DescribedCreatable@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@IAE@PBD@Z": "0x5dcff0 (own row)",
           "??_7Message@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83dad4 (vtable RTTI .?AVMessage@RBX@@ offset 0x0)",
           "??_7Message@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83dac8 (vtable RTTI .?AVMessage@RBX@@ offset 0x10)",
-          "??_7Message@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83dac0 (vtable RTTI .?AVMessage@RBX@@ offset 0x14)",
+          "??_7Message@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83dac0 (vtable RTTI .?AVMessage@RBX@@ offset 0x14)",
           "??_7Message@RBX@@6BDebugable@1@@": "0x83dab8 (vtable RTTI .?AVMessage@RBX@@ offset 0x20)",
           "??_7Message@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83daa8 (vtable RTTI .?AVMessage@RBX@@ offset 0x24)",
           "??_7Message@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83da98 (vtable RTTI .?AVMessage@RBX@@ offset 0x44)",
@@ -751,7 +710,7 @@
         "verified_targets": {
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x823764 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x823754 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82374c (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82374c (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6BDebugable@1@@": "0x823744 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x823734 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x823724 (vtable RTTI .?AV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3PADA@RBX@@ offset 0x44)",
@@ -784,7 +743,7 @@
         "verified_targets": {
           "??_B?1??classDescriptor@?$Described@VMessage@RBX@@$1?sMessage@2@3QBDBV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x970de8 (local static)",
           "?sMessage@RBX@@3QBDB": "0x9542a0 (data)",
-          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
           "?foo@?1??classDescriptor@?$Described@VMessage@RBX@@$1?sMessage@2@3QBDBV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x970d28 (local static)",
           "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
           "??__Ffoo@?1??classDescriptor@?$Described@VMessage@RBX@@$1?sMessage@2@3QBDBV?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fbbe0 (own row)",
@@ -828,7 +787,7 @@
           "??0Message@RBX@@QAE@XZ": "0x5dd120 (own row)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x823854 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x823844 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82383c (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82383c (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6BDebugable@1@@": "0x823834 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x823824 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x823814 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x44)",
@@ -848,7 +807,7 @@
         "verified_targets": {
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x823854 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x823844 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82383c (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82383c (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6BDebugable@1@@": "0x823834 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x823824 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x823814 (vtable RTTI .?AV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x44)",
@@ -871,7 +830,7 @@
           "?classDescriptor@?$Described@VHint@RBX@@$1?sHint@2@3QBDBV?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x4a3dd0 (own row)",
           "??_7?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x823a94 (vtable RTTI .?AV?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x823a84 (vtable RTTI .?AV?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x823a7c (vtable RTTI .?AV?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x823a7c (vtable RTTI .?AV?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6BDebugable@1@@": "0x823a74 (vtable RTTI .?AV?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x823a64 (vtable RTTI .?AV?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x823a54 (vtable RTTI .?AV?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3PADA@RBX@@ offset 0x44)",
@@ -993,14 +952,12 @@
         "exact": true,
         "verified_targets": {},
         "local_eh": []
-      }
-    ],
-    "message_pending": [
+      },
       {
         "address": "005dcd90",
         "symbol": "?render2d@Message@RBX@@UAEXPAVAdorn@2@@Z",
         "size": 79,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
           "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
@@ -1008,8 +965,7 @@
           "?renderFullScreen@Message@RBX@@IAEXPAVAdorn@2@@Z": "0x5dcb50 (own row)",
           "?renderPersonalMsg@Message@RBX@@IAEXPAVAdorn@2@@Z": "0x5dcc60 (own row)"
         },
-        "local_eh": [],
-        "status": "exact-pending-header"
+        "local_eh": []
       }
     ],
     "sky_pending": [
@@ -1021,7 +977,7 @@
         "verified_targets": {
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83fa44 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83fa34 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83fa2c (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83fa2c (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6BDebugable@1@@": "0x83fa24 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83fa14 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83fa04 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x44)",
@@ -1043,7 +999,7 @@
           "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83fa44 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83fa34 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83fa2c (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83fa2c (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6BDebugable@1@@": "0x83fa24 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83fa14 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83fa04 (vtable RTTI .?AV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x44)",
@@ -1155,7 +1111,7 @@
         "verified_targets": {
           "??_B?1??classDescriptor@?$Described@VSky@RBX@@$1?sSky@2@3QBDBV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x97ad18 (local static)",
           "?sSky@RBX@@3QBDB": "0x955bd4 (data)",
-          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
           "?foo@?1??classDescriptor@?$Described@VSky@RBX@@$1?sSky@2@3QBDBV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97ac58 (local static)",
           "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
           "??__Ffoo@?1??classDescriptor@?$Described@VSky@RBX@@$1?sSky@2@3QBDBV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7ffb70 (own row)",
@@ -1230,7 +1186,7 @@
           "?classDescriptor@?$Described@VSky@RBX@@$1?sSky@2@3QBDBV?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5eb290 (own row)",
           "??_7?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83fb44 (vtable RTTI .?AV?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83fb34 (vtable RTTI .?AV?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83fb2c (vtable RTTI .?AV?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83fb2c (vtable RTTI .?AV?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6BDebugable@1@@": "0x83fb24 (vtable RTTI .?AV?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83fb14 (vtable RTTI .?AV?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83fb04 (vtable RTTI .?AV?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3PADA@RBX@@ offset 0x44)",
@@ -1286,7 +1242,7 @@
           "??0?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@IAE@XZ": "0x5eb570 (own row)",
           "??_7Sky@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83fc0c (vtable RTTI .?AVSky@RBX@@ offset 0x0)",
           "??_7Sky@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83fbfc (vtable RTTI .?AVSky@RBX@@ offset 0x10)",
-          "??_7Sky@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83fbf4 (vtable RTTI .?AVSky@RBX@@ offset 0x14)",
+          "??_7Sky@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83fbf4 (vtable RTTI .?AVSky@RBX@@ offset 0x14)",
           "??_7Sky@RBX@@6BDebugable@1@@": "0x83fbec (vtable RTTI .?AVSky@RBX@@ offset 0x20)",
           "??_7Sky@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83fbdc (vtable RTTI .?AVSky@RBX@@ offset 0x24)",
           "??_7Sky@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83fbcc (vtable RTTI .?AVSky@RBX@@ offset 0x44)",
@@ -1780,7 +1736,7 @@
         "verified_targets": {
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84a07c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84a06c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a064 (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a064 (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6BDebugable@1@@": "0x84a05c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84a04c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84a03c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x44)",
@@ -1801,7 +1757,7 @@
           "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84a07c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84a06c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a064 (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a064 (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6BDebugable@1@@": "0x84a05c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84a04c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84a03c (vtable RTTI .?AV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x44)",
@@ -1922,7 +1878,7 @@
           "?classDescriptor@?$Described@VSparkles@RBX@@$1?sSparkles@2@3QBDBV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0780 (own row)",
           "??_7?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84a154 (vtable RTTI .?AV?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84a144 (vtable RTTI .?AV?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a13c (vtable RTTI .?AV?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a13c (vtable RTTI .?AV?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6BDebugable@1@@": "0x84a134 (vtable RTTI .?AV?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84a124 (vtable RTTI .?AV?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84a114 (vtable RTTI .?AV?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3PADA@RBX@@ offset 0x44)",
@@ -1977,7 +1933,7 @@
           "??_C@_08EAEOMBPA@Sparkles?$AA@": "0x84a274 (literal 'Sparkles')",
           "??_7Sparkles@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84a234 (vtable RTTI .?AVSparkles@RBX@@ offset 0x0)",
           "??_7Sparkles@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84a228 (vtable RTTI .?AVSparkles@RBX@@ offset 0x10)",
-          "??_7Sparkles@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a220 (vtable RTTI .?AVSparkles@RBX@@ offset 0x14)",
+          "??_7Sparkles@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a220 (vtable RTTI .?AVSparkles@RBX@@ offset 0x14)",
           "??_7Sparkles@RBX@@6BDebugable@1@@": "0x84a218 (vtable RTTI .?AVSparkles@RBX@@ offset 0x20)",
           "??_7Sparkles@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84a208 (vtable RTTI .?AVSparkles@RBX@@ offset 0x24)",
           "??_7Sparkles@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84a1f8 (vtable RTTI .?AVSparkles@RBX@@ offset 0x44)",
@@ -2093,7 +2049,7 @@
         "verified_targets": {
           "??_7Sparkles@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84a234 (vtable RTTI .?AVSparkles@RBX@@ offset 0x0)",
           "??_7Sparkles@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84a228 (vtable RTTI .?AVSparkles@RBX@@ offset 0x10)",
-          "??_7Sparkles@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a220 (vtable RTTI .?AVSparkles@RBX@@ offset 0x14)",
+          "??_7Sparkles@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x84a220 (vtable RTTI .?AVSparkles@RBX@@ offset 0x14)",
           "??_7Sparkles@RBX@@6BDebugable@1@@": "0x84a218 (vtable RTTI .?AVSparkles@RBX@@ offset 0x20)",
           "??_7Sparkles@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84a208 (vtable RTTI .?AVSparkles@RBX@@ offset 0x24)",
           "??_7Sparkles@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84a1f8 (vtable RTTI .?AVSparkles@RBX@@ offset 0x44)",
@@ -2196,7 +2152,7 @@
         "verified_targets": {
           "??_B?1??classDescriptor@?$Described@VSparkles@RBX@@$1?sSparkles@2@3QBDBV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x978578 (local static)",
           "?sSparkles@RBX@@3QBDB": "0x96181c (data)",
-          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
           "?foo@?1??classDescriptor@?$Described@VSparkles@RBX@@$1?sSparkles@2@3QBDBV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9784b8 (local static)",
           "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
           "??__Ffoo@?1??classDescriptor@?$Described@VSparkles@RBX@@$1?sSparkles@2@3QBDBV?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe690 (own row)",
@@ -2528,7 +2484,7 @@
       }
     ]
   },
-  "pending_note": "Rows with status exact-pending-header (Message::render2d 005dcd90, Sky::Sky 005eb640, Sparkles::render3dAdorn 0063d710) are NATIVE_*_PENDING bodies and are not counted as exact; rows tagged pending_build are unguarded code emitted only in the pending Sky build. message_pending rows are exact with a generated declaration-only Network/Player.h; sky_pending rows need ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy); sparkles_pending needs the 2008 Adorn slot 19 (generated RbxGraphics/Adorn.h copy, placeholder name sparkles()).",
+  "pending_note": "Rows with status exact-pending-header (Sky::Sky 005eb640, Sparkles::render3dAdorn 0063d710) are NATIVE_*_PENDING bodies and are not counted as exact; rows tagged pending_build are unguarded code emitted only in the pending Sky build. sky_pending rows need ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy); sparkles_pending needs the 2008 Adorn slot 19 (generated RbxGraphics/Adorn.h copy, placeholder name sparkles()).",
   "proposal_content_provider_h": "\t\tstatic ContentId fromAssets(const char* filePath); // 0055bd80: \"rbxasset://\" + filePath via operator+(const string&, const char*)\n",
   "proposal_adorn_h": "\t\tvirtual void sparkles() = 0; // 2008 slot 19 (+0x4c), no arguments (AdornRbxGfx 00674790 draws \"rbxsparkle\"); name is a placeholder\n",
   "not_attempted": "Sky::getG3DSky 005ebbb0 and its helpers (testImage 005eaef0, vector<string> helpers 005eb180/005eb210): need the 2008 ContentProvider/GImage/G3D::Sky APIs.",

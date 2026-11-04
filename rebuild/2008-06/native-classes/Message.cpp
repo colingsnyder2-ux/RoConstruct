@@ -2,9 +2,7 @@
 // Verified by tests/record_native_effects.py.
 #include "v8datamodel/Message.h"
 #include "util/Rect.h"
-#ifdef NATIVE_MESSAGE_PENDING
-#include "Network/Player.h" // a native Network::Player header (declaration-only overlay in the recorder)
-#endif
+#include "Network/Player.h" // native Network::Player (render2d dynamic_casts the parent to it)
 
 namespace RBX
 {
@@ -52,7 +50,6 @@ namespace RBX
 		}
 	}
 
-#ifdef NATIVE_MESSAGE_PENDING
 	void Message::render2d(Adorn* adorn)
 	{
 		if (text.size() > 0)
@@ -67,7 +64,6 @@ namespace RBX
 			}
 		}
 	}
-#endif
 
 	void Message::renderFullScreen(Adorn* adorn)
 	{
