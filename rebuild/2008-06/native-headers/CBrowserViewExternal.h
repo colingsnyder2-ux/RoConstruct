@@ -34,6 +34,8 @@ class ATL_NO_VTABLE CBrowserViewExternal
       public ATL::IDispatchImpl<IBrowserViewExternal, &IID_IBrowserViewExternal, &LIBID_RobloxLib, 1, 0> {
 public:
     CBrowserViewExternal() : isIDE(VARIANT_FALSE) {}
+    // Creator 0040fbf0 increments/decrements the root reference count at +0x18 around construction.
+    DECLARE_PROTECT_FINAL_CONSTRUCT()
     STDMETHOD(get_IsIDE)(VARIANT_BOOL* result);
     STDMETHOD(GetApp)(IDispatch** result);
 
