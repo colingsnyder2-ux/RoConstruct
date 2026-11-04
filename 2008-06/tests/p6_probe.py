@@ -119,6 +119,18 @@ def classify(exit_code, stdout, stderr, link_text=None, exe_exists=False):
         row = unresolved.setdefault(symbol, {'symbol': symbol, 'display': display.strip('"'), 'requesters': []})
         if requester not in row['requesters']:
             row['requesters'].append(requester)
+    duplicates = {}
+    for line in link_errors:
+        hit = re.search(r'^(.*?)\s*:\s*error LNK2005:\s*(.*?)\s+already defined in\s+(.*)$', line)
+        if not hit:
+            continue
+        owner, definition, previous = hit.groups()
+        decorated = re.search(r'\((\S+)\)\s*$', definition)
+        symbol = decorated[1] if decorated else definition.strip('"')
+        row = duplicates.setdefault(symbol, {'symbol': symbol, 'display': definition, 'providers': []})
+        for provider in (owner, previous):
+            if provider not in row['providers']:
+                row['providers'].append(provider)
     if exit_code == 0 and exe_exists and link_text is not None and not compiler_errors and not link_errors:
         outcome = 'linked'
     elif compiler_errors:
@@ -130,7 +142,7 @@ def classify(exit_code, stdout, stderr, link_text=None, exe_exists=False):
     else:
         outcome = 'build_failed_before_link' if link_text is None else 'build_failed'
     return {'outcome': outcome, 'exit_code': exit_code, 'link_log_present': link_text is not None,
-            'compiler_errors': compiler_errors, 'link_errors': link_errors, 'blockers': list(unresolved.values())}
+            'compiler_errors': compiler_errors, 'link_errors': link_errors, 'blockers': list(unresolved.values()), 'duplicates': list(duplicates.values())}
 
 
 def run_probe(run, builder=None, lock_folder=None):
@@ -178,6 +190,7 @@ def run_probe(run, builder=None, lock_folder=None):
             receipt.update(state='complete' if detail['outcome'] == 'linked' else 'failed', outcome=detail['outcome'], exit_code=exit_code,
                            link_log_present=detail['link_log_present'],
                            unique_unresolved=len(detail['blockers']) if link is not None or detail['link_errors'] else None,
+                           unique_duplicates=len(detail['duplicates']), link_error_count=len(detail['link_errors']),
                            compiler_errors=detail['compiler_errors'][:8], link_errors=detail['link_errors'][:8], result=str(run / 'result.json'),
                            changed_extra_sources=detail['extra_sources_changed_during_build'])
             if detail['extra_sources_changed_during_build']:

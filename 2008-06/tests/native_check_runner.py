@@ -98,6 +98,9 @@ def analyze_object(job, obj):
             exact = set(refs) <= set(relocs) and match.exact_match(target, refs, body, relocs)
             row.update(symbol=name, status='exact' if exact else 'different', score=match.score(target, refs, body, relocs),
                        target_size=len(target), object_size=len(body), target_sha256=hashlib.sha256(target).hexdigest())
+            if exact:
+                data_matches, data_errors = match.data_check('2008-06', addr, target, match.coff_data_refs(raw, name))
+                row.update(data_matches=data_matches, data_errors=data_errors)
         checks.append(row)
     if job['ranges']:
         functions = [json.loads(line) for line in (ROOT / 'work/2008-06/functions.jsonl').read_text().splitlines()]
@@ -181,6 +184,9 @@ def compact(results):
             group['hits'].update(row['addr'] for row in coverage['hits'])
     return {'compiled_sources': len(results), 'failed_sources': sum(r['status'] != 'complete' for r in results),
             'exact_checks': sum(r['status'] == 'exact' for r in checks), 'checks': len(checks),
+            'data_checked': sum('data_errors' in r for r in checks),
+            'verified_checks': sum(r['status'] == 'exact' and 'data_errors' in r and not r['data_errors'] for r in checks),
+            'data_mismatches': [r for r in checks if r.get('data_errors')][:8],
             'issues': [{'source': r['source'], 'error': r['error']} for r in results if r.get('error')][:8],
             'mismatches': [r for r in checks if r['status'] != 'exact'][:8],
             'coverage': [{'range': interval, 'matched_functions': len(group['hits']), 'functions': len(group['functions']),
@@ -196,7 +202,7 @@ def execute(run, workers):
     jobs = data['jobs']
     summary = {'state': 'running', 'pid': os.getpid(), 'run': str(run), 'total_sources': len(jobs), 'completed_sources': 0,
                'observer_sha256': sha(Path(__file__)), 'manifest_sha256': sha(run / 'manifest.json'),
-               'scope': 'local diagnostics only; fresh compile per source, no ABI/server/P5/P6 gate proof; complete means finished, inspect exact_checks'}
+               'scope': 'local diagnostics only; fresh compile per source, no ABI/server/P5/P6 gate proof; complete means finished; inspect exact_checks and data_mismatches'}
     save(run / 'summary.json', summary)
     started, results = time.monotonic(), []
     try:

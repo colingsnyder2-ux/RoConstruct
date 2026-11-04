@@ -167,6 +167,7 @@ namespace RBX
 			return getTransparencyUi() > 0.1f;
 		}
 		void setTransparency(float value);
+		float getAlphaModifier() const { return alphaModifier; }
 		void setAlphaModifier(float value);
 		float getReflectance() const
 		{
