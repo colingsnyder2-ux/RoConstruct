@@ -1,0 +1,416 @@
+{
+  "checked_at_utc": "2026-11-04T22:08:49.774084+00:00",
+  "fork_tip": "1c37b04ddce91332aa1df5818ff47da3020b484b",
+  "parent": "a28c1b3bfc1ae73f8af09fa84196cdca0443b8cf",
+  "reviewed_tips": {
+    "refs/remotes/coldek/HEAD": "c7e85ce1261f847f7d664ed55fb2eb7a1298fae7",
+    "refs/remotes/coldek/archive": "f742e9dba4907c52f9168d532cd19a8f5477d4ae",
+    "refs/remotes/coldek/auto-merge/native": "f7b91341284201f5d75916b95b5fd720de1f1ade",
+    "refs/remotes/coldek/claude/p6-startup-20261101": "6da8e40862d5e855f1161fc0e18cf67b9c34dd32",
+    "refs/remotes/coldek/codex/native-partial-search-20261029": "0698f03e6ac3846ebf558bc10dabcb03b8536c1c",
+    "refs/remotes/coldek/contrib-snapshot": "8298013e3c1661d5bfec473106d36c51ee2e1fc3",
+    "refs/remotes/coldek/gh-pages": "b5262a2979996e6b6bbec0718842d74db9f18c64",
+    "refs/remotes/coldek/main": "c7e85ce1261f847f7d664ed55fb2eb7a1298fae7",
+    "refs/remotes/mew/HEAD": "9b307332c4a37d6d0e10fef348099499fafb11bd",
+    "refs/remotes/mew/claude/optimistic-shannon-0xccuy": "1c37b04ddce91332aa1df5818ff47da3020b484b",
+    "refs/remotes/mew/main": "9b307332c4a37d6d0e10fef348099499fafb11bd"
+  },
+  "accepted": [
+    {
+      "path": "rebuild/2008-06/native-classes/TextureProxyBase2008.cpp",
+      "donor_blob": "abbae7928c3535d30031831aa74ac8d9da3a66e3",
+      "sha256": "036cd7117ba5d18fad5ce662021865b07737b24e40c31b1e81665d64198d62e9"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/TextureProxyRender.cpp",
+      "donor_blob": "5387f8b1a10463d1f0c0ae66c9d237449102a100",
+      "sha256": "58c15739ccbdcc204a6412fd82380f04825a8d4cd5431f7e0f1b427613e138a7"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp",
+      "donor_blob": "4a22da44add9f861233ff887fe1a43ecd2dde4aa",
+      "sha256": "bae98b0ba73cfcac2792ef4164a7831799bbc1d87ac394b119bdaf015c3ac5a0"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/RenderMaterial.cpp",
+      "donor_blob": "e1f1e74c0bad6c8293c3cb3b9eab3f2906b77215",
+      "sha256": "f583785a1083c46e2072f0f2af433cd5fbbca01040f4e138f5fbf5d7d9f2165b"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/RenderMaterialNew.cpp",
+      "donor_blob": "8fef811255a6a10710bccfa553a97e34337d3af8",
+      "sha256": "e7a06aec425960337acb876d94c4181f84cd137b4387ebf60216c6cb8cc2c3a8"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h",
+      "donor_blob": "ce13f769b899c1338dac7bc39ba252426ef6aa6a",
+      "sha256": "d2bbd67d1331a697c143b0e820a2a1c67f6377f3200ca087c9a6b6361c267002"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h",
+      "donor_blob": "deac1eb3ebe11cb4d8b07253a009aff3a60ac306",
+      "sha256": "32d428c14a594c8198d235f2cf67e3ec3af483de9330e14c45061d4c0a2b16b6"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/RenderLib/Material2008.h",
+      "donor_blob": "c61f2e3ab70a21e267b8a3b95ecbf1d0d51de2aa",
+      "sha256": "5c8afd630a0f9c62c45f9c4aae094cadef68d26f5bfca65401517f349d640a88"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeRenderMaterialLayout.cpp",
+      "donor_blob": "61f74cbd7ddfa821238115e75c0acb79ba85c25d",
+      "sha256": "b8060d087f6c1532f11b034ecbc4be686c389651401061a73d676c399d91d485"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_render_material.py",
+      "donor_blob": "b2bfb2f761c51471752712eed2ce609c6d86a8a8",
+      "sha256": "2511f5f3ac4535d4ec260045530e513abe821a604c0e5d4ee571b9077ef10a93"
+    }
+  ],
+  "queued": [
+    {
+      "path": "rebuild/2008-06/native-classes/AdornG3D.cpp",
+      "donor_blob": "da1f328b34fcc83dcc0b746645f2c357f50fe751",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::AdornRbxGfx",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:58.770662+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/AggregateChunk2008.cpp",
+      "donor_blob": "9fd0d4c97ffcc895424ed4b2ec9abfb21f7fbf8e",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::RenderScene views",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:59.540404+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Humanoid2008.cpp",
+      "donor_blob": "d9ad69c8e1a2d8dc5a8d0c4f7ef0f09f14fd4c41",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::Humanoid 2008 b",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:56.501258+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp",
+      "donor_blob": "40a61b0d84fa4dad15c48775dfa9953625434e3b",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::Humanoid 2008 b",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:56.501258+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/SceneManager2008.cpp",
+      "donor_blob": "117945779de6fbb661eb0afa71ae911bb316408e",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::RenderScene views",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:59.540404+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp",
+      "donor_blob": "e16adbe26abc0dbea15ba5a71fe86ed19b0f4c1b",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::RenderScene views",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:59.540404+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp",
+      "donor_blob": "17b342ac3745c118067505e65887192351e77084",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp",
+      "donor_blob": "0636e8df187df3a97f80ffc3194fd12e5167db0d",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp",
+      "donor_blob": "2452ee8169910cca404682f1bceb3f7f30e14c7d",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h",
+      "donor_blob": "f93a768ea32e6a91b5f20a0485abc16f48b1c803",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::AdornRbxGfx",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:58.770662+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h",
+      "donor_blob": "3611f82a1642c423b9195374eaa9ec846b030fe7",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::AdornRbxGfx",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:58.770662+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h",
+      "donor_blob": "abdeef3e8fadeed1250b040ee87dac8632f54ed6",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::RenderScene views",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:59.540404+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h",
+      "donor_blob": "829600841ca866b82e0586e74c62a635c7d54107",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::RenderScene views",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:59.540404+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/BrickMesh.h",
+      "donor_blob": "9b67b74d21cc167372fb308158242db87460a073",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/PBBMesh.h",
+      "donor_blob": "fe2e3ba242796c0a232fa385e39911c770c9bbb5",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h",
+      "donor_blob": "7206285f5b4a18d534ff0e3cfd901f07b41bb586",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/TorsoMesh.h",
+      "donor_blob": "e37a6f6c3fb9b5fcd4320c6e72a23d73e2799849",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/WedgeMesh.h",
+      "donor_blob": "01057d763830bcea4e324708e685a678017baa17",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/humanoid/Humanoid2008.h",
+      "donor_blob": "087bc3bdc1d47a559239812530a9e861561decb9",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::Humanoid 2008 b",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:56.501258+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeAdornLayout.cpp",
+      "donor_blob": "a00a4c3f47b8ba0350ac0fc9f6f7285a11217f29",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::AdornRbxGfx",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:58.770662+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoid2008Layout.cpp",
+      "donor_blob": "9764d9f0726d164889f11a132aa03107ae24c1e7",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::Humanoid 2008 b",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:56.501258+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeRenderSceneLayout.cpp",
+      "donor_blob": "d77a48481e5c303d66af7f364762ed69b752c7a6",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::RenderScene views",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:59.540404+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeViewNewLayout.cpp",
+      "donor_blob": "894d42bbd6cb286345bd4da9a280e540f39f094c",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_adorn.py",
+      "donor_blob": "8d307bb8c4afffcd1bdb9749a07f899d83544017",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::AdornRbxGfx",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:58.770662+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_humanoid2008.py",
+      "donor_blob": "809c72754e485705a63bedf4d40073cb64439cf6",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::Humanoid 2008 b",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:56.501258+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_render_scene.py",
+      "donor_blob": "4801d525a602e6976d70cf34a5aa3b2813e09edb",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::RenderScene views",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:59.540404+00:00"
+        }
+      ]
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_viewnew.py",
+      "donor_blob": "fce276d8bd00de082bd988494035fd7ee573bf9e",
+      "status": "queued; active contributor lease, no overwrite or execution",
+      "leases": [
+        {
+          "name": "RBX::ViewNew parts",
+          "user": "EspClaude",
+          "expires_utc": "2026-11-05T02:45:57.895201+00:00"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "exact_distinct_addresses": 78,
+    "folded_addresses_excluded": 2,
+    "vtables": 11,
+    "layout_probes": 37,
+    "wrong_callee_target_rejected": true,
+    "wrong_opcode_rejected": true,
+    "compile_seconds": 11.594
+  },
+  "dependency_isolation": "Frozen parent-header proof and fresh canonical-tree proof both pass. /showIncludes confirms only the three new native headers used. No shared native header edits, provider selection changes or donor object removal.",
+  "scope": "Inactive class/source proof only. No client executable selection, P5/P6/runtime activation or server credit.",
+  "digest": "Existing content-identity Integration Digest tracking retained; no manual or test posts.",
+  "excluded_snapshot": "138d3a09c8; preserve restored native sources and tests by final-tree guard.",
+  "recorder_change": "Dedicated out/native-render-material directory prevents collision with independent compiler batches; verification requirements unchanged.",
+  "original_pe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "compiler_sha256": {
+    "tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/bin/cl.exe": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/bin/c1xx.dll": "c3fead41f9013e5c1bd530d454a717c46480d76ca911e7a291e801165091d886",
+    "tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/bin/c2.dll": "215c21b66b7769e65fff3ca6a9af498c5a896695abdf69e2412f3c2cacd73c5b"
+  }
+}
