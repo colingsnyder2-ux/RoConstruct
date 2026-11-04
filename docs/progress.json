@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04 09:51 UTC",
+ "updated": "2026-11-04 11:08 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -810,11 +810,11 @@
     {
      "user": "Intel",
      "matched": 116,
-     "mining_points": 31538,
-     "points": 31538,
+     "mining_points": 31574,
+     "points": 31574,
      "native_integrated": 0,
-     "submissions": 751,
-     "last": 1793785373.2602048
+     "submissions": 755,
+     "last": 1793790050.9296272
     },
     {
      "user": "intel",
@@ -970,11 +970,11 @@
   {
    "user": "Intel",
    "matched": 123,
-   "mining_points": 31979,
-   "points": 31979,
+   "mining_points": 32015,
+   "points": 32015,
    "native_integrated": 0,
-   "submissions": 768,
-   "last": 1793785373.2602048
+   "submissions": 772,
+   "last": 1793790050.9296272
   },
   {
    "user": "intel",
