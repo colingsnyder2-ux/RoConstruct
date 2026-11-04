@@ -10,13 +10,6 @@
 
 namespace RBX
 {
-	// Same event layout as native-classes/InstanceAncestorChanged.cpp / Clothing.cpp (Instance.h only forward-declares
-	// it); onAncestorChanged 006308f0 compares the first word with this and reads newParent at +8.
-	struct AncestorChanged {
-		Instance* child;
-		Instance* oldParent;
-		Instance* newParent;
-	};
 
 	char sBodyPosition[] = "BodyPosition";               // 0095c6e8
 	char sBodyVelocity[] = "BodyVelocity";               // 0095c6f8
