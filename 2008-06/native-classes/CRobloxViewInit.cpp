@@ -3,14 +3,11 @@
 #include "../native-headers/CWorkspace.h"
 #include "../native-headers/InsertModelFromRobloxVerb.h"
 #include "../native-headers/v8datamodel/DataModel.h"
+#include "v8datamodel/Workspace.h"
 #include "../native-headers/v8datamodel/ChangeHistoryService.h"
 
 // Inline in the original, as in CRobloxDoc.cpp.
 inline const RBX::Name& RBX::Verb::getName() const { return name; }
-
-inline RBX::VerbContainer* cameraVerbs(RBX::DataModel* model) {
-    return reinterpret_cast<RBX::VerbContainer*>(reinterpret_cast<char*>(model->getWorkspace()) + 0x2ec);
-}
 
 void reportViewException(const std::exception&);
 
@@ -24,17 +21,12 @@ inline void CRobloxView::bindName(UINT id, const RBX::Name& source) {
 }
 
 inline void CRobloxView::bindExisting(UINT id, RBX::Verb* verb) {
-    if (verb) {
-        const RBX::Name* name = &verb->getName();
-        commandNames[id] = name;
-    } else {
-        const RBX::Name* name = &RBX::Name::getNullName();
-        commandNames[id] = name;
-    }
+    if (verb) bindName(id, verb->getName());
+    else bindName(id, RBX::Name::getNullName());
 }
 
 inline RBX::VerbContainer* workspaceVerbs(RBX::Workspace* workspace) {
-    return workspace ? reinterpret_cast<RBX::VerbContainer*>(reinterpret_cast<char*>(workspace) + 0x2ec) : 0;
+    return static_cast<RBX::VerbContainer*>(workspace);
 }
 
 // The original re-reads both on every use; caching them in locals changes the code.
@@ -63,20 +55,20 @@ void CRobloxView::OnInitialUpdate() {
     RBX::Notifier<RBX::ServiceProvider, RBX::ServiceAdded>::connect(owner_170.get(), this);
     RBX::Notifier<RBX::ServiceProvider, RBX::ServiceRemoving>::connect(owner_170.get(), this);
     setVerbParent(workspaceVerbs(DM()->getWorkspace()));                    // 00583210
-    slot_1e0.assign(new InsertModelFromRobloxVerb(this, DM()));              // 00458ec0
-    slot_1dc.assign(new HelpCommand(this, DM()));
-    slot_1e4.assign(new ToggleFullscreenVerb(DM()));
-    slot_1e8.assign(new ToggleIDEModeVerb(DM()));
-    slot_1ec.assign(new LockPlayModeVerb(DM()));
-    bindExisting(0x8027, cameraVerbs(DM())->getVerb(std::string("CameraPanLeft")));
-    bindExisting(0x8028, cameraVerbs(DM())->getVerb(std::string("CameraPanRight")));
-    bindExisting(0x8029, cameraVerbs(DM())->getVerb(std::string("CameraTiltUp")));
-    bindExisting(0x802a, cameraVerbs(DM())->getVerb(std::string("CameraTiltDown")));
-    bindExisting(0x802b, cameraVerbs(DM())->getVerb(std::string("CameraZoomIn")));
-    bindExisting(0x802c, cameraVerbs(DM())->getVerb(std::string("CameraZoomOut")));
-    bindExisting(0x80a6, cameraVerbs(DM())->getVerb(std::string("CameraCenter")));
-    bindExisting(0x802d, cameraVerbs(DM())->getVerb(std::string("CameraZoomExtents")));
-    bindExisting(0x80d7, cameraVerbs(DM())->getVerb(std::string("CameraModelView")));
+    slot_1e0.reset(new InsertModelFromRobloxVerb(this, DM()));              // 00458ec0
+    slot_1dc.reset(new HelpCommand(this, DM()));
+    slot_1e4.reset(new ToggleFullscreenVerb(DM()));
+    slot_1e8.reset(new ToggleIDEModeVerb(DM()));
+    slot_1ec.reset(new LockPlayModeVerb(DM()));
+    bindExisting(0x8027, DM()->getWorkspace()->getVerb(std::string("CameraPanLeft")));
+    bindExisting(0x8028, DM()->getWorkspace()->getVerb(std::string("CameraPanRight")));
+    bindExisting(0x8029, DM()->getWorkspace()->getVerb(std::string("CameraTiltUp")));
+    bindExisting(0x802a, DM()->getWorkspace()->getVerb(std::string("CameraTiltDown")));
+    bindExisting(0x802b, DM()->getWorkspace()->getVerb(std::string("CameraZoomIn")));
+    bindExisting(0x802c, DM()->getWorkspace()->getVerb(std::string("CameraZoomOut")));
+    bindExisting(0x80a6, DM()->getWorkspace()->getVerb(std::string("CameraCenter")));
+    bindExisting(0x802d, DM()->getWorkspace()->getVerb(std::string("CameraZoomExtents")));
+    bindExisting(0x80d7, DM()->getWorkspace()->getVerb(std::string("CameraModelView")));
     bindName(0x802f, RBX::Name::lookup("FixedCamera"));
     bindName(0x8030, RBX::Name::lookup("AttachCamera"));
     bindName(0x80a3, RBX::Name::lookup("TrackCamera"));

@@ -33,7 +33,7 @@ struct AncestorChanged {
         : child(child), oldParent(oldParent), newParent(newParent) {}
 };
 class PropertyChanged;
-extern char sInstance[];
+extern const char sInstance[];
 
 // Native hierarchy from RTTI and the existing 004b9bd0 recovered source.
 // Inactive until every virtual body, member lifetime and dependent ABI is proven.

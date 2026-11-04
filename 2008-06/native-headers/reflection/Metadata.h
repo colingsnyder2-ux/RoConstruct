@@ -30,7 +30,10 @@ public:
 
 // Constructor 0040dba0 stores +0x150=-1, +0x154=0; the factory 0040dc70 allocates 0x158.
 class Class : public DescribedCreatable<Class, Item, sClass> {
+protected:
+    virtual bool askAddChild(const Instance*) const;
 public:
+    Class();
     int unknown_150;
     int unknown_154;
     int getImageIndex() const; // 0041fb30; name provisional (result is the list/tree image index).
@@ -55,26 +58,27 @@ public:
     void addClass(const ClassDescriptor&); // Original 00444cf0; name provisional.
     Class* lookup(const ClassDescriptor&, bool) const;
 };
-extern char sProperties[];
-class Properties : public DescribedCreatable<Properties, Instance, sProperties> {
+// RTTI 00929e58: common abstract Instance base, no extra fields.
+class Members : public Instance {
 protected:
     virtual bool askAddChild(const Instance*) const;
+public:
+    Members();
+};
+extern char sProperties[];
+class Properties : public DescribedCreatable<Properties, Members, sProperties> {
 public:
     Properties();
     virtual ~Properties();
 };
 extern char sFunctions[];
-class Functions : public DescribedCreatable<Functions, Instance, sFunctions> {
-protected:
-    virtual bool askAddChild(const Instance*) const;
+class Functions : public DescribedCreatable<Functions, Members, sFunctions> {
 public:
     Functions();
     virtual ~Functions();
 };
 extern char sEvents[];
-class Events : public DescribedCreatable<Events, Instance, sEvents> {
-protected:
-    virtual bool askAddChild(const Instance*) const;
+class Events : public DescribedCreatable<Events, Members, sEvents> {
 public:
     Events();
     virtual ~Events();
