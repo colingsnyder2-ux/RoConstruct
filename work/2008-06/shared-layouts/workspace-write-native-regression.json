@@ -1,0 +1,101 @@
+{
+  "class": "CWorkspace",
+  "status": "PARTIAL inactive source/object proof",
+  "canonical_receipt": "work/2008-06/shared-layouts/workspace-write-native-working.json",
+  "canonical_sha256": "4c7daaf291ccdc3646e1014d6e6a769003d47933206acb01b3c5bb91a2d35444",
+  "methods": [
+    {
+      "address": "0046bd70",
+      "symbol": "?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "size": 600,
+      "exact": true,
+      "unproven_targets": {
+        "?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z": "0x46ac90",
+        "?reportWorkspaceHResult@@YAXHJPBDH@Z": "0x427d80",
+        "?raiseWorkspaceError@@YAXJABU_GUID@@@Z": "0x46ad70",
+        "?writeXmlModel@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": "0x46ab90",
+        "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x46b860",
+        "??1XmlElement@@QAE@XZ": "0x413a70"
+      },
+      "pending_eh_metadata": [
+        {
+          "symbol": "__ehhandler$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "address": "007c3abb",
+          "status": "operand only; full funcinfo/catch/unwind graph not verified here"
+        }
+      ]
+    },
+    {
+      "address": "0046bfd0",
+      "symbol": "?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+      "size": 600,
+      "exact": true,
+      "unproven_targets": {
+        "?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z": "0x46ac90",
+        "?reportWorkspaceHResult@@YAXHJPBDH@Z": "0x427d80",
+        "?raiseWorkspaceError@@YAXJABU_GUID@@@Z": "0x46ad70",
+        "?writeXmlSelection@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": "0x46b750",
+        "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x46b860",
+        "??1XmlElement@@QAE@XZ": "0x413a70"
+      },
+      "pending_eh_metadata": [
+        {
+          "symbol": "__ehhandler$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "address": "007c3b2b",
+          "status": "operand only; full funcinfo/catch/unwind graph not verified here"
+        }
+      ]
+    },
+    {
+      "address": "0046b500",
+      "symbol": "?Close@CWorkspace@@UAGJXZ",
+      "size": 68,
+      "exact": true,
+      "unproven_targets": {
+        "?cleanup@CWorkspace@@QAEXXZ": "0x46b0e0"
+      },
+      "pending_eh_metadata": []
+    }
+  ],
+  "new_native_source_bodies": 3,
+  "bytes": 1268,
+  "full_class_acceptance": false,
+  "shared_headers_changed": false,
+  "layout_compile": "PASS",
+  "class_COM_inventory": {
+    "total": 8,
+    "tested_this_packet": [
+      "Write",
+      "WriteSelection",
+      "Close"
+    ],
+    "other_native_bodies_not_rechecked": [
+      "SaveToFile",
+      "SaveSelectionToFile",
+      "ExecScript"
+    ],
+    "not_yet_native": [
+      "Insert",
+      "ExecUrlScript"
+    ]
+  },
+  "blocked_followup": {
+    "trial": "NativeWorkspaceEventsTrial.cpp, current headers, read-only scratch compile",
+    "exit_code": 2,
+    "cause": "C2440 const char** -> const char* in donor Camera/RootInstance/Stats/Script/Workspace name templates",
+    "evidence": "work/cworkspace-write-guided-20261104/events-current.log",
+    "action": "no event source added, no header/trial overlay changes"
+  },
+  "server_credit": 0,
+  "selection_or_runtime": false,
+  "remaining": [
+    "XML writer0046b860 remains a known mismatch requiring its native header owner",
+    "unproven_targets are relocation operands only, including factory/module/static and XML helpers",
+    "local EH owner metadata retained in pending_eh_metadata; continuations checked separately",
+    "workspace reporter further callees and GUID_NULL not upgraded by this observer",
+    "shared LIBID linkage, selected providers, full-class closure and runtime gates remain open",
+    "Close cleanup0046b0e0 remains unproven; exception-disabled compile profile is confined to Close",
+    "source uses existing native headers; no test header dependency or shared header edits",
+    "source promotion is not accepted-tree mapping, server credit or runtime verification"
+  ]
+}
