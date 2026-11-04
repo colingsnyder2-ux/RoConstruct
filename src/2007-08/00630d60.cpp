@@ -1,12 +1,16 @@
-// from server: 34% by colin
-extern int _fltused;
-extern int g_8c9bf8;
+// from server: 42% by Intel
 
-int __cdecl func_00630d60(double value)
+
+
+
+int sub_52C940(int, int);
+
+struct S {
+    int f();
+};
+
+int S::f()
 {
-    if (g_8c9bf8 != 0)
-    {
-        return (int)value;
-    }
-    return 0;
+    static int v = sub_52C940(0x7a5260, 0xffffffff);
+    return v;
 }
