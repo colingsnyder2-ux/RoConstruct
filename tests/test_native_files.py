@@ -31,26 +31,26 @@ def commit(cwd, files, msg, deletes=()):
 def test_payload_links():
     new = [('o/r', 'b', 'abc123', N + 'A.cpp', 'new'), ('o/r', 'b', 'abc123', 'rebuild/2008-06/native-headers/A.h', 'new'),
            ('o/r', 'b', 'abc123', N + 'B.cpp', 'changed')]
-    body = nf.build_payloads(new)[0]['embeds'][0]
-    assert body['title'].endswith('RoConstruct Integration Digest')
-    names = [f['name'] for f in body['fields']]
-    assert 'New native files' in names[0] and 'Changed native files' in names[1], names
-    assert '[native-classes/A.cpp](https://github.com/o/r/blob/abc123/' + N + 'A.cpp)' in body['fields'][0]['value']
-    assert '[native-classes/B.cpp](' in body['fields'][1]['value']
+    bodies = [p['embeds'][0] for p in nf.build_payloads(new)]
+    assert bodies[0]['title'].endswith('RoConstruct Integration Digest')
+    assert 'New native files' in bodies[0]['description'] and 'Changed native files' in bodies[1]['description']
+    assert '[native-classes/A.cpp](https://github.com/o/r/blob/abc123/' + N + 'A.cpp)' in bodies[0]['description']
+    assert '[native-classes/B.cpp](' in bodies[1]['description']
     assert nf.is_native(N + 'x.cpp') and not nf.is_native(N + 'x.txt') and not nf.is_native('src/x.cpp')
-    # many long links: every field under 1024, every embed under 6000, no link cut in half
+    # many long links: several small messages, every link whole, nothing lost
     sha = 'f' * 40
     many = [('someone/RoConstruct', 'claude/a-long-branch-name', sha, N + 'HumanoidStatesLeaves%03d.cpp' % i, 'new') for i in range(60)]
     payloads = nf.build_payloads(many)
+    assert len(payloads) == 8, len(payloads)                    # 60 links / 8 per message
     seen = 0
     for p in payloads:
         embed = p['embeds'][0]
-        assert sum(len(f['name']) + len(f['value']) for f in embed['fields']) + len(embed['title']) < 6000
-        for f in embed['fields']:
-            assert len(f['value']) <= 1024
-            for line in f['value'].split('\n'):
-                assert line.startswith('[') and line.endswith('.cpp)'), line
-                seen += 1
+        assert len(embed['description']) < 4096 and 'fields' not in embed
+        links = [l for l in embed['description'].split('\n') if l.startswith('[')]
+        assert len(links) <= nf.LINKS_PER_MESSAGE
+        for line in links:
+            assert line.endswith('.cpp)'), line
+        seen += len(links)
     assert seen == 60, seen
 
 
