@@ -22,32 +22,32 @@
     "/D_RELEASE",
     "/D_RELEASEASSERT",
     "/D_VC80_UPGRADE=0x0710",
-    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
   ],
   "profile": "document-swap flags, no noinline edits",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
-    "rebuild/2008-06/tests/record_native_script_doc.py": "9c20922cb0d9413afd85980d158d219fac2292c0627317ab9ebca964d2a93ca7",
-    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
-    "rebuild/2008-06/native-classes/CScriptDoc.cpp": "fc22c44d0afc3b1839fe2436200f6e382eae8121b67fd28e66ad3ff1b76ecc89",
-    "rebuild/2008-06/tests/NativeScriptDocLayout.cpp": "94bbd3c315104c6e13f2e96ad720c05d5f4b0f17e445558bbfc86ad4718f7042",
-    "rebuild/2008-06/native-headers/CScriptDoc.h": "126550eef8aa899d23ad2c5e92f4de50a41d7b41ddaac2aa7d1dc3102324c896",
-    "rebuild/2008-06/native-headers/CBrowserDoc.h": "68e31841e5340f7d37e01cfd3d0dedfcc7de2ee2fbb90636ef40634e07462a01"
+    "rebuild/2008-06/tests/record_native_script_doc.py": "0f991e378b111451955d639cd30666ab5fbfbd9888466de0172593a6c3c810be",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "rebuild/2008-06/native-classes/CScriptDoc.cpp": "9d6fe02975abb2e7339ce86651287a698e142af6719a15d8f6244ffef30b6e41",
+    "rebuild/2008-06/tests/NativeScriptDocLayout.cpp": "ecf8393a4f6f893e03868e3a9fb4b3ed7d7aae56a575299d935e91fe72d79160",
+    "rebuild/2008-06/native-headers/CScriptDoc.h": "be7872663ecfa91666d4192fd15d1cf00d4eae1dbd161b284ab78bc8274cee34",
+    "rebuild/2008-06/native-headers/CBrowserDoc.h": "20edc757aa696f357f7c3bf3a9974e59ca92c144f05cd9ec65e466ab4c3969d2"
   },
-  "object_sha256": "c86a0e7dacf51037346a636bbea48db781f636d46da37649052b620093d39546",
+  "object_sha256": "9905a94ee11864b0aa87763a2e1e2649a88a50f38eede4b49494becf96da0a43",
   "layout": {
     "size": "0x5c",
     "bases": "CNullDoc +0 (0x54 == CDocument)",
@@ -104,8 +104,16 @@
     }
   ],
   "notes": [
-    "CNullDoc::CNullDoc is inline in the original (CreateObject calls CDocument::CDocument directly); CBrowserDoc.h declares it without a body, so CScriptDoc.cpp supplies the empty inline body",
+    "CNullDoc constructor is now inline in shared CBrowserDoc.h; the duplicate local definition was removed from CScriptDoc.cpp. Original factories call CDocument::CDocument directly.",
     "_GetBaseClass is the shared jump thunk 0040df90 (also used by CBrowserDoc), not a compiled body"
   ],
-  "scope": "Inactive. 4 exact bodies with verified targets; all CScriptDoc-owned functions. No active build, swap or credit."
+  "scope": "Inactive. 4 exact bodies with verified targets; all CScriptDoc-owned functions. No active build, swap or credit.",
+  "verification_driver": {
+    "path": "work/cnulldoc-guided-20261104/run_script_doc_regression.py",
+    "sha256": "f535cbd6f7b87644393567f6caee3b5f42ae032c152ed562f3b4c2d51e38d25d",
+    "adaptations": [
+      "Local include-root remap and hash-checked registered-client initialization.",
+      "Build outputs and initial receipt redirected to scratch."
+    ]
+  }
 }
