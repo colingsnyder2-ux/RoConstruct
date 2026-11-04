@@ -216,6 +216,9 @@ def check_data():
     enum_map = [struct.unpack('<3I', original.data(0x80d3c8 + 12 * i, 12)) for i in range(2)]
     need(enum_map[0] == (0x80d3e0, 0, 1) and enum_map[1] == (0, 0, 0) and guid_at(0x80d3e0) == named_guid('GUID_b196b287_bab4_101a_b69c_00aa00341d07'), enum_map)
     data_facts['CComEnum<IEnumConnections>::_entries'] = '0080d3c8: {&IID_IEnumConnections 0080d3e0 (bytes verified), offset 0, simple entry}, terminator'
+    enum_map1 = [struct.unpack('<3I', original.data(0x80d7b0 + 12 * i, 12)) for i in range(2)]
+    need(enum_map1[0] == (0x80d7c8, 0, 1) and enum_map1[1] == (0, 0, 0) and guid_at(0x80d7c8) == named_guid('GUID_b196b285_bab4_101a_b69c_00aa00341d07'), enum_map1)
+    data_facts['CComEnum<IEnumConnectionPoints>::_entries'] = '0080d7b0: {&IID_IEnumConnectionPoints 0080d7c8 (bytes verified), offset 0, simple entry}, terminator'
     tih = struct.unpack('<2I2H', original.data(TIH, 12))
     need(tih[0] == IID_IBVE and tih[2:] == (1, 0), tih)
     data_facts['_tih'] = '%08x: CComTypeInfoHolder{pguid=IID_IBrowserViewExternal, plibid=%08x, 1.0}' % (TIH, tih[1])
@@ -228,7 +231,9 @@ def check_data():
 
 check('data facts', check_data)
 internal.update(GUID_SYMBOLS)
-for name, address in ((next(n for n in definitions if n.startswith('?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnections@')), 0x80d3c8), ('_IID_IBrowserViewExternal', IID_IBVE),
+ENUM_ENTRIES = {'b196b285': (0x80d7b0, 0x80d7c8), 'b196b287': (0x80d3c8, 0x80d3e0)}   # CComEnum<..>::_entries -> (map, its IID)
+for name, address in ((next(n for n in definitions if n.startswith('?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnections@')), 0x80d3c8),
+                      (next(n for n in definitions if n.startswith('?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnectionPoints@')), 0x80d7b0), ('_IID_IBrowserViewExternal', IID_IBVE),
                       ('?_entries@?1??_GetEntries@CBrowserViewExternal@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B', COM_MAP),
                       ('?_entries@?1??GetConnMap@CBrowserViewExternal@@SAPBU_ATL_CONNMAP_ENTRY@ATL@@PAH@Z@4QBU34@B', CONN_ENTRIES),
                       ('??_B?1??GetConnMap@CBrowserViewExternal@@SAPBU_ATL_CONNMAP_ENTRY@ATL@@PAH@Z@51', CONN_GUARD)):
@@ -245,6 +250,41 @@ for prefix, address in SUPPORT:
     hits = [n for n in present if n.startswith(prefix)]
     if len(hits) == 1:
         METHODS.append((hits[0], address))
+
+# The two CComObject<CComEnum<..., CComSingleThreadModel>> tables created by EnumConnectionPoints / EnumConnections.
+# Slot count and slot symbols come from the emitted COFF vtable; the original words are read at the bound address.
+# A slot whose original address is already a row is an ALIAS (folded body), not a new address.
+ENUM_TABLES = [('b196b285', 0x80d790, 'IEnumConnectionPoints'), ('b196b287', 0x80d7f0, 'IEnumConnections')]
+ENUM_SUPPORT = [('?CreateInstance@?$CComObject@V?$CComEnum@', 'b196b285', 0x40fe50), ('?CreateInstance@?$CComObject@V?$CComEnum@', 'b196b287', 0x40ff20),
+                ('??1?$CComEnumImpl@', 'b196b285', 0x40f440), ('??1?$CComEnumImpl@', 'b196b287', 0x40ec90)]
+enum_vtable_symbol, enum_slot_words, enum_new_rows, enum_alias_pairs, enum_support_pairs = {}, {}, [], [], []
+baseline_addresses = {a for s, a in METHODS}
+for tag, address, _name in ENUM_TABLES:
+    symbols_for_tag = [n for n in definitions if n.startswith('??_7?$CComObject@V?$CComEnum@') and tag in n and n.endswith('@@6B@')]
+    if len(symbols_for_tag) != 1:
+        failures.append('enum vtable %s: %d COFF definitions' % (tag, len(symbols_for_tag)))
+        continue
+    enum_vtable_symbol[address] = symbols_for_tag[0]
+    count, slots = vtable_slots(symbols_for_tag[0])
+    enum_slot_words[address] = (count, slots)
+    for slot in range(count):
+        word = struct.unpack('<I', original.data(address + 4 * slot, 4))[0]
+        body = alias(slots[slot])
+        if body not in present:
+            failures.append('enum slot %08x[%d] %s: emitted body missing' % (address, slot, body[:60]))
+        elif word in baseline_addresses:
+            enum_alias_pairs.append((body, word))
+        else:
+            METHODS.append((body, word))
+            baseline_addresses.add(word)
+            enum_new_rows.append((body, word))
+for prefix, tag, address in ENUM_SUPPORT:
+    hits = [n for n in present if n.startswith(prefix) and tag in n]
+    if len(hits) == 1:
+        METHODS.append((hits[0], address))
+        enum_support_pairs.append((hits[0], address))
+    else:
+        failures.append('enum support %08x: %d emitted symbols' % (address, len(hits)))
 # Reuse the authentic vendor replay, explicitly selecting RTM even though the stored mining winner uses SP1.
 # Both functions are in this object; verify the only call relocation against the separately exact helper body.
 LIBRARY_METHODS = [
@@ -380,7 +420,13 @@ for method in [m for m in METHODS if m[0] in present]:
             failures.append('%s %08x: %s' % (method[0][:60], method[1], str(error)[:200]))
 
 
-for row in rows:
+alias_rows = []
+for symbol, address in enum_alias_pairs:
+    try:
+        alias_rows += native_bind.verify(original, obj, [(symbol, address)], internal, own={s: a for s, a in METHODS})
+    except AssertionError as error:
+        failures.append('enum alias %s %08x: %s' % (symbol[:60], address, str(error)[:200]))
+for row in rows + alias_rows:
     for symbol in list(row['verified_targets']):
         if symbol in ASSERTED and str(row['verified_targets'][symbol]).startswith('0x'):
             row.setdefault('unproven_targets', {})[symbol] = row['verified_targets'].pop(symbol)
@@ -481,7 +527,46 @@ def creator_lifetime():
             'result_store': 'the only store of *result is the final output (no early clear, no null check)'}
 
 
+def check_enum_tables():
+    """RTTI, slot count and emitted-vs-original COM map of the two enumerator tables (read from the existing object)."""
+    text = original.pe.sections[0]
+    code_lo = original.image + text.VirtualAddress
+    code_hi = code_lo + text.Misc_VirtualSize
+    result = {}
+    for tag, address, name in ENUM_TABLES:
+        symbol = enum_vtable_symbol[address]
+        count, slots = enum_slot_words[address]
+        rtti_name, off = original.vtable_class(address)
+        need(rtti_name == '.?AV' + symbol[4:symbol.index('@@6B') + 2] and off == 0, (hex(address), rtti_name, off))
+        need('VCComSingleThreadModel@' in rtti_name, rtti_name)
+        locator, chain = locator_chain(address)
+        words = [struct.unpack('<I', original.data(address + 4 * k, 4))[0] for k in range(count)]
+        need(all(code_lo <= w < code_hi for w in words), 'a slot word is outside .text')
+        after = struct.unpack('<I', original.data(address + 4 * count, 4))[0]
+        need(not code_lo <= after < code_hi, 'word after the table is code: slot count not closed')
+        map_address, iid_address = ENUM_ENTRIES[tag]
+        after_is_map = map_address == address + 4 * count
+        need(iid_address == map_address + 24, 'COM map IID is not the record 24 bytes in')
+        entry_symbol = next(n for n in definitions if n.startswith('?_entries@?1??_GetEntries@?$CComEnum@') and tag in n)
+        start, section = definitions[entry_symbol]
+        table = sections[section]
+        emitted = raw[table[4] + start:table[4] + start + 24]
+        relocations = [(o, symbols[i][0]) for o, i, k in (struct.unpack_from('<IIH', raw, table[5] + 10 * j) for j in range(table[7])) if start <= o < start + 24]
+        need(len(relocations) == 1 and relocations[0][0] == start and tag in relocations[0][1], relocations)
+        need(struct.unpack('<6I', emitted) == (0, 0, 1, 0, 0, 0), emitted.hex())   # piid (relocated), dw=0, simple entry, terminator
+        original_map = struct.unpack('<6I', original.data(map_address, 24))
+        need(original_map == (iid_address, 0, 1, 0, 0, 0) and guid_at(iid_address) == named_guid(relocations[0][1]), original_map)
+        result['%08x' % address] = {
+            'interface': name, 'coff_vtable_symbol': symbol, 'rtti': rtti_name, 'subobject_offset': off, 'locator': locator, 'chain': chain,
+            'slots': count, 'slot_words_all_in_text': True, 'word_after_table': '%08x' % after, 'word_after_table_is_com_map': after_is_map,
+            'com_map': {'address': '%08x' % map_address, 'emitted_symbol': entry_symbol, 'iid_symbol': relocations[0][1], 'iid_address': '%08x' % iid_address,
+                        'result': 'emitted {piid(relocated), 0, simple} + terminator equal the original records; IID bytes equal the GUID in the symbol name'},
+            'slot_list': [{'slot': k, 'original': '%08x' % words[k], 'emitted_symbol': slots[k]} for k in range(count)]}
+    return result
+
+
 rtti = check('rtti', check_rtti)
+enum_tables = check('enumerator tables', check_enum_tables)
 words = check('table words', table_words)
 references = check('table references', reference_counts) or {}
 alloc = check('creator allocation', creator_alloc)
@@ -503,6 +588,10 @@ for symbol, address in METHODS:
         reuse['%08x' % address] = 'vtable slot also shared by %d dword(s) outside these four tables (folded/shared body)' % elsewhere
     else:
         reuse['%08x' % address] = 'vtable slot used only by these four tables'
+for symbol, address in enum_new_rows:
+    reuse['%08x' % address] = 'new: enumerator template slot (CComObject<CComEnum> table %s)' % ('0080d790' if 'b196b285' in symbol else '0080d7f0')
+for symbol, address in enum_support_pairs:
+    reuse['%08x' % address] = 'new: enumerator template support body (called by the enumerator slots; not a vtable slot)'
 receipt = {
     'class': C, 'status': 'PARTIAL' if passed else 'FAIL',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': FLAGS,
@@ -529,14 +618,29 @@ receipt = {
                      'original_proof': 'enumerator vtables 0080d790/0080d7f0 RTTI name CComSingleThreadModel; allocation 0x1c (default multi model emitted 0x38)',
                      'original_macro_spelling': 'not proven', 'applies_to': 'class unit preprocess only; header and sources unchanged'},
     'declared_methods': {'total': 2, 'tested': ['get_IsIDE 00410f90', 'GetApp 00410fe0'], 'open': []},
+    'enum_template_proof': {
+        'status': 'PASS' if enum_tables and not failures else 'FAIL',
+        'kind': 'authentic ATL9 CComObject<CComEnum<..., CComSingleThreadModel>> template instantiations (no wrapper fields, no vendor header edit)',
+        'tables': enum_tables,
+        'new_unique_address_rows': [{'symbol': s, 'address': '%08x' % a} for s, a in enum_new_rows],
+        'new_support_rows': [{'symbol': s, 'address': '%08x' % a} for s, a in enum_support_pairs],
+        'alias_rows_reused_address': [{'symbol': r['symbol'], 'address': r['address'], 'size': r['size'], 'exact': r['exact'],
+                                       'reused_address_of': next(m[0] for m in METHODS if '%08x' % m[1] == r['address']),
+                                       'verified_targets': r['verified_targets'], 'unproven_targets': r.get('unproven_targets', {})} for r in alias_rows],
+        'counts': {'slots_total': sum(c for c, _ in enum_slot_words.values()), 'new_unique_slot_addresses': len(enum_new_rows),
+                   'alias_slots_at_reused_addresses': len(enum_alias_pairs), 'new_support_addresses': len(enum_support_pairs),
+                   'new_unique_addresses_total': len(enum_new_rows) + len(enum_support_pairs)},
+        'reuse_hash_pins': {'AtlInternalQueryInterface 00402280': 'library_query_interface_proof (MFC wincore RTM 21022)', 'AtlThrowImpl 00401000': 'atlexcept.h row in methods'},
+        'unproven_targets': 'ATL::_pAtlModule 0096c268 (CComObject deleting destructors and CreateInstance); no stack-verify or alloca target in these bodies; ATL module state, CRT and operator-delete bodies are import identities only',
+        'not_claimed': 'class remains PARTIAL and inactive; library/static/linkage gaps retained; a byte-exact row with unproven targets is not full acceptance'},
     'open_vtable_slots': open_slots,
     'undefined_symbols_needed_by_object': undefined_all,
     'open': {
         'GetApp_00410fe0': 'exact object row; ole32 CoCreateInstance, CString and AFX state-guard import identities verified; format string and typed GUID data verified; helper 00429330 body exact from WorkspaceSiteError.cpp. Its further callees and GUID_NULL remain open as recorded in helper_rows; import identity does not claim an imported implementation body was reconstructed',
         'guid_definitions': 'IID_IBrowserViewExternal, LIBID_RobloxLib, CLSID_BrowserViewExternal now defined once in native-classes/CBrowserViewExternalGuids.cpp (separate unit: defined in the class unit they constant-fold InterfaceSupportsErrorInfo to 76 bytes vs 78). LIBID_RobloxLib is shared logically with CContent/CWorkspace headers (declared C++-linkage there): linkage identity not reconciled, owners not edited',
-        'Enum_bodies': 'EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their slot bodies (Next/Skip/Clone/QI/deleting destructor of the two CComObject<CComEnum> templates) are NOT recovered rows; ATL helper targets AtlInternalQueryInterface 00402280, AtlThrowImpl 00401000, _AtlVerifyStackAvailable 00402610 (emitted 156 vs 93), __alloca_probe 006a1520 and _pAtlModule remain relocation operands only',
+        'Enum_bodies': 'EnumConnectionPoints (004100a0, 440) and EnumConnections (004104b0, 436) are masked-exact rows with the single-thread enumerator profile; vtables 0080d790/0080d7f0 verified by RTTI. Their 16 slot bodies (QI/AddRef/Release/Next/Skip/Reset/Clone/deleting destructor) and the four support bodies (CreateInstance x2, ~CComEnumImpl x2) are masked-exact rows: see enum_template_proof. Still open: _pAtlModule 0096c268 as a relocation operand (also in 004100a0/004104b0), _AtlVerifyStackAvailable 00402610 (emitted 156 vs 93) and __alloca_probe 006a1520 (004100a0, 00404a80)',
         'constructor_destructor': 'standalone constructor/destructor bodies are inlined into the creator and the deleting destructor and are not rows',
-        'scope': 'source/object proof only; partial class (ATL/library target proofs and the enumerator template slot bodies open); no server credit, no selection, no build/runtime claim'}}
+        'scope': 'source/object proof only; partial class (ATL module/stack/alloca/static targets open); no server credit, no selection, no build/runtime claim'}}
 RECEIPT.parent.mkdir(parents=True, exist_ok=True)
 (RECEIPT if passed else FAIL).write_text(json.dumps(receipt, indent=2) + '\n')
 print('%s native %s: %d exact row(s)%s' % (receipt['status'], C, len(rows), '' if passed else '\n  ' + '\n  '.join(failures)))
