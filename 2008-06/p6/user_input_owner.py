@@ -11,15 +11,15 @@ def build(snapshot,output,tc,archive):
     source,flags,inputs,recovered=freeze(snapshot/'P2RecoveredPlayer/layer-engine/PlayerNativeInput.command.json',snapshot/'P2RecoveredPlayer',snapshot,folder,overlay_root=snapshot/'P2RecoveredPlayer/overlay')
     manifest=Path(__file__).with_name('user_input_checks.json')
     policy=json.loads(manifest.read_text())
-    native=output/'NativeUserInputBaseLifetimeFull.obj'
-    for path in [archive,native,Path(__file__),manifest,Path(__file__).with_name('captured_inputs.py'),Path(__file__).with_name('script_context_owner.py'),tc['cl'],tc['lib']]:inputs[str(path)]=sha(path)
+    native=[output/job['object'] for job in policy['jobs']]
+    for path in [archive]+native+[Path(__file__),manifest,Path(__file__).with_name('captured_inputs.py'),Path(__file__).with_name('script_context_owner.py'),tc['cl'],tc['lib']]:inputs[str(path)]=sha(path)
     signature=hashlib.sha256(json.dumps(inputs,sort_keys=True).encode()).hexdigest()
     target=folder/'linked.lib';receipt=folder/'receipt.json'
     if target.exists() and receipt.exists():
         saved=json.loads(receipt.read_text())
         if saved['signature']==signature and saved['archive_sha256']==sha(target):return target
     text=source.read_text()
-    for declaration in ['UserInputBase::UserInputBase():currentCursor(NULL){}','UserInputBase::~UserInputBase(){}']:
+    for declaration in policy['retired_source_definitions']:
         if text.count(declaration)!=1:raise RuntimeError('unexpected player lifetime source')
         text=text.replace(declaration,'')
     generated=folder/'PlayerNativeInput.cpp';generated.write_text(text)

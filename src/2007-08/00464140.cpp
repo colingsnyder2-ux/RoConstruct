@@ -1,18 +1,20 @@
-// from server: 46% by colin
+// from server: 68% by Intel
 struct DxUserInput {
-    char pad[0x68];
-    bool flag;
-    int method(int, int);
+    int func(int a1, int a2);
 };
 
-extern "C" int __stdcall sub_59c3f0(int, int);
+extern "C" int __stdcall sub_59C3F0(int a1, int a2);
 
-int DxUserInput::method(int a, int b)
+int DxUserInput::func(int a1, int a2)
 {
-    if (flag) {
-        int r = sub_59c3f0(a, b);
-        return r;
+    if (*(char *)((char *)this + 104))
+    {
+        sub_59C3F0(a2, a2);
+        return a2;
     }
-    *(int*)a = 0;
-    return 0;
+    else
+    {
+        *(int *)a1 = 0;
+        return 0;
+    }
 }
