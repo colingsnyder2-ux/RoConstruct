@@ -1,0 +1,216 @@
+{
+  "class": "CBrowserDoc",
+  "status": "PASS",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "original": "clients/2008-06/Roblox.exe",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object_sha256": "5583517ff0396700dc2493b59b425ea55dc4e69c44acc4a9c3f03ae028ce8a0a",
+  "layout_object_sha256": "bde7e7860d3858225e1b94b6f4fe2b84a4ce9ad91d653b4826aee364b1afbab0",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_browser_doc.py": "56e839d966fcc09e6eca6eb5093ac835669e0f172ae9332b7f3e4facd5f7256a",
+    "rebuild/2008-06/native-classes/CBrowserDoc.cpp": "e8b581dbd5a9046486fbe66fcf0015fa6bd232240390c6b5778a1302c6cff1ef",
+    "rebuild/2008-06/native-headers/CBrowserDoc.h": "20edc757aa696f357f7c3bf3a9974e59ca92c144f05cd9ec65e466ab4c3969d2",
+    "rebuild/2008-06/tests/NativeBrowserDocLayout.cpp": "136eb1151772dc1921826e83662d01d47e369f184c325e50d52cb660d88849ba",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9"
+  },
+  "canonical_null_doc_proof": {
+    "receipt": "work/2008-06/shared-layouts/null-doc-working.json",
+    "receipt_sha256": "d4340650ce20abbd80476cdee809eaf14cb53f1ba591d8019b06d0879163590b",
+    "input_hashes_current": true
+  },
+  "layout": {
+    "sizeof": "0x58 = sizeof(CNullDoc) 0x54 + view pointer: CRuntimeClass 0080cfac objectSize 0x58, CreateObject 0040e4f0 operator new(0x58), CDocument ctor, vptr, view=0",
+    "view_offset": "0x54 (offsetof assert); written by CBrowserView::OnInitialUpdate 0040ed50 (existing browser-view proof), raw non-owning pointer never released by the destructor",
+    "layout_test": "tests/NativeBrowserDocLayout.cpp compiled into NativeBrowserDocLayout.obj"
+  },
+  "methods": [
+    {
+      "address": "0040df90",
+      "symbol": "?_GetBaseClass@CBrowserDoc@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CNullDoc@@SGPAUCRuntimeClass@@XZ": "0x4332e0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040dfa0",
+      "symbol": "?GetRuntimeClass@CBrowserDoc@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCBrowserDoc@CBrowserDoc@@2UCRuntimeClass@@B": "0x80cfac"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040dfa0",
+      "symbol": "?GetThisClass@CBrowserDoc@@SGPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCBrowserDoc@CBrowserDoc@@2UCRuntimeClass@@B": "0x80cfac"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e4d0",
+      "symbol": "??_GCBrowserDoc@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CDocument@@UAE@XZ": "mfc90.dll!??1CDocument@@UAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e4f0",
+      "symbol": "?CreateObject@CBrowserDoc@@SGPAVCObject@@XZ",
+      "size": 107,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CDocument@@QAE@XZ": "mfc90.dll!??0CDocument@@QAE@XZ",
+        "??_7CBrowserDoc@@6B@": "0x80d2c4"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CBrowserDoc@@SGPAVCObject@@XZ"
+      ]
+    }
+  ],
+  "method_labels": {
+    "0040df90": "new recovery: CBrowserDoc::_GetBaseClass, jmp to reused CNullDoc 004332e0",
+    "0040dfa0": "new recovery: GetRuntimeClass (+ GetThisClass alias at the same address)",
+    "0040e4d0": "REUSED/FOLDED: scalar deleting destructor, also CNullDoc vtable slot 1; not a new gain",
+    "0040e4f0": "new recovery: CreateObject (constructor inlined; no standalone constructor-address claim)"
+  },
+  "vtable_00_80d2c4": {
+    "0": "0040dfa0 ?GetRuntimeClass@CBrowserDoc@@UBEPAUCRuntimeClass@@XZ: exact here",
+    "1": "0040e4d0 ??_ECBrowserDoc@@UAEPAXI@Z: exact here (weak external of ??_GCBrowserDoc@@UAEPAXI@Z)",
+    "2": "0070bdf0 ?Serialize@CObject@@UAEXAAVCArchive@@@Z: inherited inline COMDAT, body exact",
+    "3": "0047d410 ?AssertValid@CObject@@UBEXXZ: inherited inline COMDAT, body exact",
+    "4": "0070bdf0 ?Dump@CObject@@UBEXAAVCDumpContext@@@Z: inherited inline COMDAT, body exact",
+    "5": "006a0986 ?OnCmdMsg@CDocument@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z: mfc90.dll!?OnCmdMsg@CDocument@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+    "6": "006a098c ?OnFinalRelease@CDocument@@UAEXXZ: mfc90.dll!?OnFinalRelease@CDocument@@UAEXXZ",
+    "7": "006a069e ?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z: mfc90.dll!?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z",
+    "8": "006a06a4 ?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z: mfc90.dll!?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z",
+    "9": "006a06aa ?GetTypeInfoCount@CCmdTarget@@UAEIXZ: mfc90.dll!?GetTypeInfoCount@CCmdTarget@@UAEIXZ",
+    "10": "006a06b0 ?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ: mfc90.dll!?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ",
+    "11": "006a06b6 ?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z: mfc90.dll!?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z",
+    "12": "00433360 ?GetMessageMap@CNullDoc@@MBEPBUAFX_MSGMAP@@XZ: inherited CNullDoc::GetMessageMap; address proved by canonical null-doc-working.json (no own message map)",
+    "13": "006a06bc ?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ: mfc90.dll!?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ",
+    "14": "006a06c2 ?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ: mfc90.dll!?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ",
+    "15": "006a06c8 ?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ: mfc90.dll!?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ",
+    "16": "006a0992 ?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ: mfc90.dll!?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ",
+    "17": "006a0998 ?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ: mfc90.dll!?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+    "18": "006a06d4 ?OnCreateAggregates@CCmdTarget@@UAEHXZ: mfc90.dll!?OnCreateAggregates@CCmdTarget@@UAEHXZ",
+    "19": "006a06da ?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z: mfc90.dll!?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z",
+    "20": "006a06e0 ?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z: mfc90.dll!?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z",
+    "21": "006a06e6 ?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z: mfc90.dll!?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z",
+    "22": "006a099e ?SetTitle@CDocument@@UAEXPBD@Z: mfc90.dll!?SetTitle@CDocument@@UAEXPBD@Z",
+    "23": "006a09a4 ?SetPathName@CDocument@@UAEXPBDH@Z: mfc90.dll!?SetPathName@CDocument@@UAEXPBDH@Z",
+    "24": "00416690 ?IsModified@CNullDoc@@UAEHXZ: inherited inline COMDAT, body exact",
+    "25": "005f29d0 ?SetModifiedFlag@CDocument@@UAEXH@Z: inherited inline COMDAT, body exact",
+    "26": "006a09aa ?GetFirstViewPosition@CDocument@@UBEPAU__POSITION@@XZ: mfc90.dll!?GetFirstViewPosition@CDocument@@UBEPAU__POSITION@@XZ",
+    "27": "006a09b0 ?GetNextView@CDocument@@UBEPAVCView@@AAPAU__POSITION@@@Z: mfc90.dll!?GetNextView@CDocument@@UBEPAVCView@@AAPAU__POSITION@@@Z",
+    "28": "006a09b6 ?OnChangedViewList@CDocument@@UAEXXZ: mfc90.dll!?OnChangedViewList@CDocument@@UAEXXZ",
+    "29": "006a09bc ?DeleteContents@CDocument@@UAEXXZ: mfc90.dll!?DeleteContents@CDocument@@UAEXXZ",
+    "30": "006a09c2 ?OnNewDocument@CDocument@@UAEHXZ: mfc90.dll!?OnNewDocument@CDocument@@UAEHXZ",
+    "31": "006a09c8 ?OnOpenDocument@CDocument@@UAEHPBD@Z: mfc90.dll!?OnOpenDocument@CDocument@@UAEHPBD@Z",
+    "32": "006a09ce ?OnSaveDocument@CDocument@@UAEHPBD@Z: mfc90.dll!?OnSaveDocument@CDocument@@UAEHPBD@Z",
+    "33": "006a09d4 ?OnCloseDocument@CDocument@@UAEXXZ: mfc90.dll!?OnCloseDocument@CDocument@@UAEXXZ",
+    "34": "006a09da ?ReportSaveLoadException@CDocument@@UAEXPBDPAVCException@@HI@Z: mfc90.dll!?ReportSaveLoadException@CDocument@@UAEXPBDPAVCException@@HI@Z",
+    "35": "006a09e0 ?GetFile@CDocument@@UAEPAVCFile@@PBDIPAVCFileException@@@Z: mfc90.dll!?GetFile@CDocument@@UAEPAVCFile@@PBDIPAVCFileException@@@Z",
+    "36": "006a09e6 ?ReleaseFile@CDocument@@UAEXPAVCFile@@H@Z: mfc90.dll!?ReleaseFile@CDocument@@UAEXPAVCFile@@H@Z",
+    "37": "006a09ec ?CanCloseFrame@CDocument@@UAEHPAVCFrameWnd@@@Z: mfc90.dll!?CanCloseFrame@CDocument@@UAEHPAVCFrameWnd@@@Z",
+    "38": "007286a0 ?SaveModified@CNullDoc@@UAEHXZ: inherited inline COMDAT, body exact",
+    "39": "006a09f2 ?PreCloseFrame@CDocument@@UAEXPAVCFrameWnd@@@Z: mfc90.dll!?PreCloseFrame@CDocument@@UAEXPAVCFrameWnd@@@Z",
+    "40": "006a09f8 ?DoSave@CDocument@@UAEHPBDH@Z: mfc90.dll!?DoSave@CDocument@@UAEHPBDH@Z",
+    "41": "006a09fe ?DoFileSave@CDocument@@UAEHXZ: mfc90.dll!?DoFileSave@CDocument@@UAEHXZ",
+    "42": "006a0a04 ?UpdateFrameCounts@CDocument@@UAEXXZ: mfc90.dll!?UpdateFrameCounts@CDocument@@UAEXXZ",
+    "43": "006a0a0a ?GetDefaultMenu@CDocument@@UAEPAUHMENU__@@XZ: mfc90.dll!?GetDefaultMenu@CDocument@@UAEPAUHMENU__@@XZ",
+    "44": "006a0a10 ?GetDefaultAccelerator@CDocument@@UAEPAUHACCEL__@@XZ: mfc90.dll!?GetDefaultAccelerator@CDocument@@UAEPAUHACCEL__@@XZ",
+    "45": "006a0a16 ?OnIdle@CDocument@@UAEXXZ: mfc90.dll!?OnIdle@CDocument@@UAEXXZ"
+  },
+  "runtime_class_00_80cfac": {
+    "address": "0080cfac",
+    "size": 28,
+    "masked_bytes_equal": true,
+    "relocations": {
+      "+0x0": "??_C@_0M@IFIGODAE@CBrowserDoc?$AA@ -> string 'CBrowserDoc' at 0x80cee0",
+      "+0xc": "?CreateObject@CBrowserDoc@@SGPAVCObject@@XZ -> 0x40e4f0",
+      "+0x10": "?_GetBaseClass@CBrowserDoc@@KGPAUCRuntimeClass@@XZ -> 0x40df90"
+    }
+  },
+  "original_metadata": "name CBrowserDoc, size 0x58, schema 0xffff, create 0040e4f0, base getter 0040df90 (5-byte jmp to CNullDoc::GetRuntimeClass body 004332e0); no message-map record: class declares none",
+  "rtti": {
+    "locator": "0x87b2e0",
+    "chain": [
+      ".?AVCBrowserDoc@@ mdisp=0 pdisp=-1 vdisp=0",
+      ".?AVCNullDoc@@ mdisp=0 pdisp=-1 vdisp=0",
+      ".?AVCDocument@@ mdisp=0 pdisp=-1 vdisp=0",
+      ".?AVCCmdTarget@@ mdisp=0 pdisp=-1 vdisp=0",
+      ".?AVCObject@@ mdisp=0 pdisp=-1 vdisp=0"
+    ]
+  },
+  "failures": [],
+  "emitted_function_symbols": [
+    "??0CBrowserDoc@@QAE@XZ",
+    "??0CNullDoc@@QAE@XZ",
+    "??1CBrowserDoc@@UAE@XZ",
+    "??1CNullDoc@@UAE@XZ",
+    "??_GCBrowserDoc@@UAEPAXI@Z",
+    "??_GCNullDoc@@UAEPAXI@Z",
+    "?CreateObject@CBrowserDoc@@SGPAVCObject@@XZ",
+    "?GetRuntimeClass@CBrowserDoc@@UBEPAUCRuntimeClass@@XZ",
+    "?GetThisClass@CBrowserDoc@@SGPAUCRuntimeClass@@XZ",
+    "?IsModified@CNullDoc@@UAEHXZ",
+    "?SaveModified@CNullDoc@@UAEHXZ",
+    "?_GetBaseClass@CBrowserDoc@@KGPAUCRuntimeClass@@XZ",
+    "__ehhandler$?CreateObject@CBrowserDoc@@SGPAVCObject@@XZ",
+    "__unwindfunclet$?CreateObject@CBrowserDoc@@SGPAVCObject@@XZ$0"
+  ],
+  "open": {
+    "folded_destructor_0040e4d0": "identical scalar deleting destructor shared with the CNullDoc vtable; the translation unit that originally emitted it is unproven",
+    "constructor": "inline in the .cpp as a codegen analog; the original constructor is inlined into CreateObject",
+    "scope": "source/object proof only; no server credit, no selection, no build/runtime claim"
+  }
+}
