@@ -1,10 +1,7 @@
 // 2008-06 native RBX::Flag (inactive): part of the original Flag unit (00618380..00619a60, initializer 007f7cc0,
 // atexit 00800310). Evidence in native-headers/v8datamodel/Flag.h.
-// The whole unit needs a native v8datamodel/Tool.h (Tool / BackpackItem with the 2008 const-char-array
-// DescribedCreatable), which does not exist yet: it is compiled only with NATIVE_FLAG_PENDING, against generated
-// copies of the donor Tool.h / Hopper.h with that one change (tests/record_native_flag_family.py), and every row
-// is recorded exact=false (pending-build-only).
-#ifdef NATIVE_FLAG_PENDING
+// Built against the native v8datamodel/Tool.h and Hopper.h (Tool / BackpackItem with the 2008 const-char-array
+// DescribedCreatable); tests/record_native_flag_family.py verifies every row and the Flag vtables.
 #include "v8datamodel/Flag.h"
 #include "Network/Player.h"
 
@@ -55,4 +52,3 @@ namespace RBX
 		raisePropertyChanged(prop_Color);
 	}
 }
-#endif

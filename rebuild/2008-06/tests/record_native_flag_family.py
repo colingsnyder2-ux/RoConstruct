@@ -5,19 +5,19 @@ Builds (document-swap flags, VS2008 RTM 21022):
   * native-classes/FlagStand.cpp       the FlagStand half of the original FlagStand/FlagStandService unit
                                        (0062b8f0..0062cf40, initializers 007f7e90/007f7ef0, atexit 00800450/00800470)
                                        plus the template instances whose original bodies live elsewhere (COMDAT / ICF);
-  * native-classes/Flag.cpp with NATIVE_FLAG_PENDING against out/native-layouts/flag-family-pending/: generated copies
-    of the donor v8datamodel/Tool.h and Hopper.h with the one change the 2008 reflection.h needs (class-name template
-    arguments `sTool` / `sBackpackItem` declared `extern const char sX[]` instead of `&sX` on `const char*`). There is
-    no native Tool.h, so every Flag row is exact only in this build: recorded exact=false (pending-build-only), never
-    counted, and its vtables are not slot-checked (only the main-build object is).
+  * native-classes/Flag.cpp                 the Flag unit (00618380..00619a60, initializer 007f7cc0, atexit 00800310)
+                                       against the native v8datamodel/Tool.h / Hopper.h (Tool and BackpackItem are
+                                       recovered and verified by tests/record_native_hopper.py). Flag rows count as
+                                       exact, and the Flag vtables are compared slot by slot from this object.
 
 Every exact row is relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by DLL export name, string literals by bytes, type descriptors and
 vtables by original RTTI names, own symbols by the row proven here, ICF folds by the FOLDED map, and the remaining
 externals by the EXTERNAL / DATA maps (call sites read in the original disassembly). A symbol binds to one address
 across all rows. Adjustor thunk rows are derived from the original bytes (`sub ecx, imm; jmp target`): the mangled
-adjustment and the jump target must agree with the compiled thunk. FlagStand vtables are compared slot by slot from
-the main-build object.
+adjustment and the jump target must agree with the compiled thunk. FlagStand and Flag vtables are compared slot by
+slot from the main-build objects (an inherited slot must equal the Part / Tool vtable of the same subobject, read from
+the PartInstance constructor 0059d4d0 / Tool constructor 00600240 stores).
 
 FlagStand rows that depend on PartInstance's layout (constructor, destructor, field accessors, base constructors and
 destructor, vtordisp thunks through the FlagStand vbase displacement) are compiled and recorded with exact=false: the
@@ -46,17 +46,6 @@ FLAG_H = R / 'native-headers/v8datamodel/Flag.h'
 LAYOUT = R / 'tests/NativeFlagFamilyLayout.cpp'
 DONOR = ROOT / 'tools/rbxgs/Client/App/include/v8datamodel'
 
-# ---- pending overlay: donor Tool.h / Hopper.h with the 2008 const-char-array class names ----------------------
-pending = OUT / 'flag-family-pending'
-(pending / 'v8datamodel').mkdir(parents=True, exist_ok=True)
-for name in ('Tool.h', 'Hopper.h'):
-    text = (DONOR / name).read_text()
-    text, n1 = re.subn(r'extern const char\* (s\w+);', r'extern const char \1[];', text)
-    text, n2 = re.subn(r'&(s[A-Z]\w*)>', r'\1>', text)
-    assert n1 == n2 and n1 > 0, (name, n1, n2)
-    (pending / 'v8datamodel' / name).write_text(text)
-
-
 def build(name, src, extra=()):
     obj = OUT / (name + '.obj')
     flags = nb.flags()
@@ -69,7 +58,7 @@ def build(name, src, extra=()):
 
 layout_obj, layout_flags = build('NativeFlagFamilyLayout', LAYOUT)
 fs_obj, fs_flags = build('NativeFlagStand', FS_SRC)
-flag_obj, flag_flags = build('NativeFlagPending', FLAG_SRC, ['/I' + str(pending), '/DNATIVE_FLAG_PENDING'])
+flag_obj, flag_flags = build('NativeFlag', FLAG_SRC)
 
 # ---- layout ---------------------------------------------------------------------------------------------------
 raw = layout_obj.read_bytes()
@@ -151,7 +140,8 @@ EXTERNAL = {
     # FlagStand layout rows (bound only; these rows are not exact)
     '?setName@PartInstance@RBX@@UAEXABV' + STR + '@Z': 0x598c20,
     '??0PartInstance@RBX@@QAE@XZ': 0x59d4d0,
-    # Flag (pending build only): Instance::setName, Tool base constructor/destructor, Tool class descriptor
+    # Flag: Instance::setName, Tool base constructor/destructor, Tool class descriptor (rows proven exact by
+    # tests/record_native_hopper.py)
     '?setName@Instance@RBX@@UAEXABV' + STR + '@Z': 0x55af90,
     '??0Tool@RBX@@QAE@XZ': 0x600240, '??1Tool@RBX@@UAE@XZ': 0x5fe4b0,                               # 00618460 / 006183c0
     '?getLocation@Tool@RBX@@EBE?BVCoordinateFrame@G3D@@XZ': 0x5fd770,                                # thunk 006187f0
@@ -184,6 +174,7 @@ FOLDED = {
     '??1' + DCF + 'UAE@XZ': 0x618660, '??_G' + DCF + 'UAEPAXI@Z': 0x619800,
     '?className@' + FPF + 'SAABVName@2@XZ': 0x5a0320,
     '??$declare@$1?sFlag@RBX@@3QBDB@Name@RBX@@SAABV01@XZ': 0x5a0320,
+    '?canUnequip@Flag@RBX@@MAE_NXZ': 0x60a2f0,    # Flag vtable 00843eb4 slot 35: the ICF-shared `return false` body
 }
 # Call targets whose own rows are not exact yet (FlagStand layout rows): bound by the address the original uses.
 UNPROVEN = {
@@ -194,6 +185,8 @@ UNPROVEN = {
     '?getTeamColor@FlagStand@RBX@@QBE?AVBrickColor@2@XZ': 0x62b8f0,
     '?setTeamColor@FlagStand@RBX@@QAEXVBrickColor@2@@Z': 0x62cdc0,
     '?onServiceProvider@FlagStand@RBX@@UAEXPBVServiceProvider@2@0@Z': 0x62cf40,   # vtable slot 12; not attempted
+    '?onServiceProvider@Flag@RBX@@UAEXPBVServiceProvider@2@0@Z': 0x6194a0,        # Flag vtable 00843eb4 slot 12; not attempted
+    '?onChildAdded@Flag@RBX@@UAEXPAVInstance@2@@Z': 0x619970,                     # Flag vtable 00843eb4 slot 7; not attempted
 }
 
 FS_ROWS = [
@@ -239,6 +232,8 @@ FS_THUNKS = {
 FLAG_THUNKS = {
     ('??_E' + FPF + 'O', 0x619800): (0x6185e0, 0x6185f0, 0x618600, 0x6197a0, 0x6197b0, 0x6197c0, 0x6197d0, 0x6197e0,
                                      0x6197f0),
+    ('??_E' + DCF + 'W', 0x619800): (0x6185e0, 0x6185f0, 0x618600, 0x6197a0, 0x6197b0, 0x6197c0, 0x6197d0, 0x6197e0,
+                                     0x6197f0),
     ('??_EFlag@RBX@@W', 0x618980): (0x618790, 0x6187a0, 0x6187b0, 0x6187c0, 0x6187d0, 0x6187e0, 0x618800, 0x618810,
                                     0x618820),
 }
@@ -268,7 +263,7 @@ LAYOUT_ROWS = [
     (0x62bbe0, '??_E' + FPS + '$2PPPPPPPM@', 'vtordisp thunk: vbase offset 0x3fc'),
     (0x62cba0, '??_EFlagStand@RBX@@$4PPPPPPPM@', 'vtordisp thunk: vbase offset 0x414'),
 ]
-# Flag: exact only against the generated donor Tool.h / Hopper.h copies (pending build); never counted.
+# Flag rows (main build against the native Tool.h / Hopper.h).
 FLAG_ROWS = [
     (0x618380, '?getTeamColor@Flag@RBX@@QBE?AVBrickColor@2@XZ'),
     (0x618390, '?canBePickedUpByPlayer@Flag@RBX@@MAE_NPAVPlayer@Network@2@@Z'),
@@ -305,8 +300,7 @@ NOT_ATTEMPTED = {
     '00618520/00618650': 'Flag unit: a ClassDescriptor singleton getter (00572690) and its jmp wrapper',
     '00618580/00618830..00618ec0/00618f70/00619080/00619290/00619360/00619450/006194a0/006195b0/00619970':
         'Flag::doUglyPeriodicCloneHack, onServiceProvider, onChildAdded, onEvent_flagTouched and their boost::bind / '
-        'boost::function / ServiceProvider::create<FlagStandService/TimerService> plumbing: not attempted (Flag needs a '
-        'native Tool.h first)',
+        'boost::function / ServiceProvider::create<FlagStandService/TimerService> plumbing: not attempted',
 }
 
 LOCAL_EH = nb.LOCAL_EH
@@ -411,7 +405,7 @@ def verify(obj, rows, own, strict=True, group=''):
             if how is None:
                 UNBOUND.append('%s: %s in %s -> %s' % (group, symbol, name, hex(value)))
                 continue
-            key = (group == 'flag', symbol)   # the pending Flag build binds in its own namespace (same-named statics)
+            key = (group == 'flag', symbol)   # the Flag build binds in its own namespace (same-named statics)
             prev = binding.setdefault(key, (value, name))
             assert prev[0] == value, ('inconsistent', symbol, hex(prev[0]), prev[1], hex(value), name)
             verified[symbol] = '%s (%s)' % (hex(value), how)
@@ -436,9 +430,6 @@ for row, (_, _, why) in zip(layout_out, LAYOUT_ROWS):
     row['reason'] = 'needs the 2008 PartInstance layout: ' + why
 DATA[0] = DATA_FLAG
 flag_out = verify(flag_obj, flag_rows, own_flag, group='flag')
-for row in flag_out:   # exact only against the generated donor Tool.h / Hopper.h copies: not counted as exact
-    row['exact'] = False
-    row['exact_pending_build_only'] = True
 assert not UNBOUND, '\n'.join(UNBOUND)
 DATA[0] = DATA_FS
 
@@ -501,51 +492,80 @@ for disp, at in _stores(_cbody).items():
     value = struct.unpack_from('<I', _obody, _ost[disp])[0]
     assert original.vtable_class(value) == ('.?AVFlagStand@RBX@@', disp), (vsym, hex(disp), hex(value))
     binding.setdefault((False, vsym), (value, 'constructor 0062c9c0 store at +%#x' % disp))
-raw = fs_obj.read_bytes()
-sections, symbols, definitions, starts = match._coff_data_index(raw)
 vtables = {}
 HEADER_GAPS = []
-for (pend, symbol), (vt, _) in sorted(binding.items()):
-    if pend or not symbol.startswith('??_7') or not any(symbol[4:].startswith(c + '6B') for c in CLASSES):
-        continue
-    rtti, at = original.vtable_class(vt)
-    value, sec = definitions[symbol]
-    table = sections[sec]
-    end = min([x for x in starts[sec + 1] if x > value] + [table[3]])
-    slots = {}
-    for i in range(table[7]):
-        offset, index, kind = struct.unpack_from('<IIH', raw, table[5] + 10 * i)
-        if value <= offset < end:
-            slots[(offset - value) // 4] = symbols[index][0]
-    assert slots and max(slots) == len(slots) - 1, (symbol, sorted(slots))
-    checked = {}
-    for slot, sym in sorted(slots.items()):
-        value_orig = d(vt + 4 * slot)
-        gap = None
-        try:
-            how = classify(sym, value_orig, own_fs, raw, sections, definitions, symbol)
-        except AssertionError as e:   # compiled base symbol bound elsewhere: only an inherited Part slot may differ
-            how, gap = None, str(e.args[0][-1]) if e.args and isinstance(e.args[0], tuple) else str(e)
-        if gap is not None:
-            assert at in PART_VTABLES and d(PART_VTABLES[at] + 4 * slot) == value_orig and 'FlagStand@RBX@@' not in sym, \
-                (symbol, slot, sym, hex(value_orig), gap)
-            HEADER_GAPS.append('%s slot %d: compiled %s, original %s = Part vtable %#x slot %d (native PartInstance.h '
-                               'lacks the override)' % (symbol, slot, sym, hex(value_orig), PART_VTABLES[at], slot))
-            how = 'inherited (Part vtable %#x slot %d; header gap, see receipt)' % (PART_VTABLES[at], slot)
+
+
+def check_vtables(obj, pend, classes, own, base_vtables, base_label, own_class):
+    """Compare every bound vtable of `classes` from `obj` slot by slot with the original. An inherited slot may hold a
+    compiled base symbol bound elsewhere only when it equals the base class vtable of the same subobject."""
+    raw = obj.read_bytes()
+    sections, symbols, definitions, starts = match._coff_data_index(raw)
+    for (p, symbol), (vt, _) in sorted(binding.items()):
+        if p != pend or not symbol.startswith('??_7') or not any(symbol[4:].startswith(c + '6B') for c in classes):
+            continue
+        rtti, at = original.vtable_class(vt)
+        value, sec = definitions[symbol]
+        table = sections[sec]
+        end = min([x for x in starts[sec + 1] if x > value] + [table[3]])
+        slots = {}
+        for i in range(table[7]):
+            offset, index, kind = struct.unpack_from('<IIH', raw, table[5] + 10 * i)
+            if value <= offset < end:
+                slots[(offset - value) // 4] = symbols[index][0]
+        assert slots and max(slots) == len(slots) - 1, (symbol, sorted(slots))
+        checked = {}
+        for slot, sym in sorted(slots.items()):
+            value_orig = d(vt + 4 * slot)
+            inherited = at in base_vtables and d(base_vtables[at] + 4 * slot) == value_orig and own_class not in sym
+            gap = None
+            try:
+                how = classify(sym, value_orig, own, raw, sections, definitions, symbol)
+            except AssertionError as e:   # compiled base symbol bound elsewhere: only an inherited slot may differ
+                how, gap = None, str(e.args[0][-1]) if e.args and isinstance(e.args[0], tuple) else str(e)
+            if gap is not None:
+                assert inherited, (symbol, slot, sym, hex(value_orig), gap)
+                HEADER_GAPS.append('%s slot %d: compiled %s, original %s = %s vtable %#x slot %d (the native base header '
+                                   'lacks the override)' % (symbol, slot, sym, hex(value_orig), base_label,
+                                                            base_vtables[at], slot))
+                how = 'inherited (%s vtable %#x slot %d; header gap, see receipt)' % (base_label, base_vtables[at], slot)
+                checked[slot] = '%s = %s (%s)' % (sym, hex(value_orig), how)
+                continue
+            if how is None and inherited:
+                how = 'inherited (%s vtable %#x slot %d)' % (base_label, base_vtables[at], slot)
+            if how is None and norm(names.get(value_orig, '')) == norm(sym):
+                how = 'evidence name'
+            if how is None:
+                UNBOUND.append('vtable %s slot %d %s -> %s' % (symbol, slot, sym, hex(value_orig)))
+                continue
+            prev = binding.setdefault((pend, sym), (value_orig, symbol))
+            assert prev[0] == value_orig, ('inconsistent', sym, hex(prev[0]), prev[1], hex(value_orig), symbol)
             checked[slot] = '%s = %s (%s)' % (sym, hex(value_orig), how)
-            continue
-        if how is None and at in PART_VTABLES and d(PART_VTABLES[at] + 4 * slot) == value_orig and 'FlagStand@RBX@@' not in sym:
-            how = 'inherited (Part vtable %#x slot %d)' % (PART_VTABLES[at], slot)
-        if how is None and norm(names.get(value_orig, '')) == norm(sym):
-            how = 'evidence name'
-        if how is None:
-            UNBOUND.append('vtable %s slot %d %s -> %s' % (symbol, slot, sym, hex(value_orig)))
-            continue
-        prev = binding.setdefault((False, sym), (value_orig, symbol))
-        assert prev[0] == value_orig, ('inconsistent', sym, hex(prev[0]), prev[1], hex(value_orig), symbol)
-        checked[slot] = '%s = %s (%s)' % (sym, hex(value_orig), how)
-    vtables[symbol] = {'address': hex(vt), 'rtti': rtti, 'offset': hex(at), 'slots': checked}
+        vtables[symbol] = {'address': hex(vt), 'rtti': rtti, 'offset': hex(at), 'slots': checked}
+
+
+check_vtables(fs_obj, False, CLASSES, own_fs, PART_VTABLES, 'Part', 'FlagStand@RBX@@')
+# Flag: Tool's own vtables by subobject offset, read from the Tool constructor 00600240's stores (RTTI-checked).
+tool_body, _, _ = match.target('2008-06', '00600240')
+TOOL_VTABLES = {}
+for disp, at in _stores(tool_body).items():
+    imm = struct.unpack_from('<I', tool_body, at)[0]
+    try:
+        cls, sub = original.vtable_class(imm)
+    except Exception:
+        continue
+    if cls == '.?AVTool@RBX@@' and sub == disp:
+        TOOL_VTABLES[disp] = imm
+assert TOOL_VTABLES.get(0x1b0) == 0x8419a4, TOOL_VTABLES
+for _at, _vt in ((0, 0x841a4c), (0x1a0, 0x8419bc)):   # 006002a4 `mov [esi], imm` / 006002fc `mov [edi], imm` (edi = esi + 0x1a0)
+    assert original.vtable_class(_vt) == ('.?AVTool@RBX@@', _at), hex(_vt)
+    TOOL_VTABLES.setdefault(_at, _vt)
+DATA[0] = DATA_FLAG
+check_vtables(flag_obj, True, ('Flag@RBX@@', FPF, DCF), own_flag, TOOL_VTABLES, 'Tool', 'Flag@RBX@@')
+DATA[0] = DATA_FS
 assert not UNBOUND, '\n'.join(UNBOUND)
+flag_vt = [v for v in vtables.values() if v['address'] == hex(0x843eb4)]
+assert flag_vt and flag_vt[0]['rtti'] == '.?AVFlag@RBX@@', flag_vt
 main_vt = [v for v in vtables.values() if v['address'] == hex(0x84657c)]
 assert main_vt and len(main_vt[0]['slots']) == 26, main_vt
 assert main_vt[0]['slots'][12].startswith('?onServiceProvider@FlagStand@RBX@@') and '0x62cf40' in main_vt[0]['slots'][12]
@@ -580,10 +600,11 @@ assert gb['.?AVGuiTarget@RBX@@'] == 0x130 and gb['.?AVIEquipable@RBX@@'] == 0x1a
 
 sha = nb.sha
 paths = [Path(__file__).resolve(), FS_H, FLAG_H, FS_SRC, FLAG_SRC, LAYOUT]
-exact = sorted({r['address'] for r in fs_out if r['exact']})
+exact = sorted({r['address'] for r in fs_out + flag_out if r['exact']})
+flag_exact = sorted({r['address'] for r in flag_out if r['exact']})
 receipt = {
     'class': 'RBX::FlagStand, RBX::Flag', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
-    'flags': {'layout': layout_flags, 'flagstand': fs_flags, 'flag_pending': flag_flags},
+    'flags': {'layout': layout_flags, 'flagstand': fs_flags, 'flag': flag_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
     'objects': {p.name: sha(p) for p in (layout_obj, fs_obj, flag_obj)},
     'layout': {'FlagStand': '0x41c (005c1040); PartInstance non-virtual part to +0x3e8, scoped_connection standTouched '
@@ -591,12 +612,12 @@ receipt = {
                'Flag': '0x298 (005a31b0); Tool non-virtual part to +0x268, evilClone +0x268, (donor state +0x270), '
                        'scoped_connection flagTouched +0x274, timer +0x288, teamColor +0x28c, vtordisp +0x290, '
                        'virtual bases from +0x294'},
-    'rows': {'flagstand': fs_out, 'flagstand_layout_blocked': layout_out, 'flag_pending': flag_out},
+    'rows': {'flagstand': fs_out, 'flagstand_layout_blocked': layout_out, 'flag': flag_out},
     'exact_function_rows': exact,
     'vtables': vtables,
-    'pending_note': 'flag_pending rows are exact only against generated copies of the donor v8datamodel/Tool.h and '
-                    'Hopper.h (extern const char sTool[] / sBackpackItem[] class-name arguments) under '
-                    'out/native-layouts/flag-family-pending; not counted, vtables not slot-checked.',
+    'flag_note': 'Flag rows are built against the native v8datamodel/Tool.h / Hopper.h (no pending overlay); the Flag '
+                 'vtables are slot-checked from that object, inherited slots against the Tool constructor 00600240 '
+                 'vtables.',
     'layout_blocked_note': 'flagstand_layout_blocked rows compile to the original sizes but need native PartInstance.h '
                            'with the 2008 non-virtual size 0x3e8 (currently sizeof 0x2ec including virtual bases).',
     'not_attempted': NOT_ATTEMPTED,
@@ -604,6 +625,6 @@ receipt = {
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }
 (ROOT / 'work/2008-06/shared-layouts/flag-family-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS native FlagStand/Flag: %d FlagStand rows exact (%d distinct addresses); %d layout-blocked and %d Flag '
-      'pending-build-only rows not counted; %d vtables checked'
-      % (len(fs_out), len(exact), len(layout_out), len(flag_out), len(vtables)))
+print('PASS native FlagStand/Flag: %d FlagStand + %d Flag rows exact (%d distinct addresses, %d of them Flag); %d '
+      'layout-blocked rows not counted; %d vtables checked'
+      % (len(fs_out), len(flag_out), len(exact), len(flag_exact), len(layout_out), len(vtables)))

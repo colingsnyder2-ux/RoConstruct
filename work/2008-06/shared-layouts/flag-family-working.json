@@ -78,7 +78,7 @@
       "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeFlagStand.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/FlagStand.cpp"
     ],
-    "flag_pending": [
+    "flag": [
       "/nologo",
       "/c",
       "/O2",
@@ -99,8 +99,6 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/flag-family-pending",
-      "/DNATIVE_FLAG_PENDING",
       "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
@@ -115,22 +113,22 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeFlagPending.obj",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeFlag.obj",
       "/home/user/roconstruct/rebuild/2008-06/native-classes/Flag.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_flag_family.py": "5a1863c0682d1b831205f49da2f0cc69a95f4308f654f93f055da8804893729a",
+    "rebuild/2008-06/tests/record_native_flag_family.py": "1d3cf52db486d4f14495e93a592cbd305c5f535508a175f267f0ec0c320083bc",
     "rebuild/2008-06/native-headers/v8datamodel/FlagStand.h": "7fb96acfe62d95d2a4a0b014118d12682b08e3d2389c4009d4623edd6268c3e1",
-    "rebuild/2008-06/native-headers/v8datamodel/Flag.h": "5e883023c57abb42283ff9433ebfaa10c5cbbfedfdc5977cd2fdd2fa4ca309eb",
+    "rebuild/2008-06/native-headers/v8datamodel/Flag.h": "daf0cb3e156c04f05135ff5bb440451b3ee29699f99a1d9eb73b98a626930265",
     "rebuild/2008-06/native-classes/FlagStand.cpp": "7d2ca4f822beba4c501c8640995f3682b6c11d2003427aea5dfd71820e17e3ae",
-    "rebuild/2008-06/native-classes/Flag.cpp": "cb1fbfeb28f2364c8d8c853289e7e5144f1dedc9afb7d92d8abda1bb91c3e8ac",
+    "rebuild/2008-06/native-classes/Flag.cpp": "f4ad378aa03bb90e5f03779c465f9e3abb59013df887bf4ea9a5206fd2e61313",
     "rebuild/2008-06/tests/NativeFlagFamilyLayout.cpp": "d646d22e760ab8a056cfe1d560dcffda7a3dc9fa37b87d8c721e9afd9b89eb6b"
   },
   "objects": {
-    "NativeFlagFamilyLayout.obj": "eb32642f9c3be14e0863a23b925d9d80b1ede505ac5d44cb8e9a58fc75729e08",
-    "NativeFlagStand.obj": "fb19deb80a5f0733a10cd5e89a9d41e81c1e881d2fe222a4bb7d93ee44d3249d",
-    "NativeFlagPending.obj": "cd162b7f07a275a51d349c0b11e843e9574a771de47f54768d42ce6bc2d4a160"
+    "NativeFlagFamilyLayout.obj": "b9eb5a32bb7418b18472d3088ae93ebba598f271afea51d168bf9367d40d05e1",
+    "NativeFlagStand.obj": "e40204a75019255fc51e71e53c6f6272cc3ee92ffadf4a593aa3e60d107d9702",
+    "NativeFlag.obj": "35e3dd1c61c4d3825c8e08d714a461145535bcd151644b7b16e78c48f062456c"
   },
   "layout": {
     "FlagStand": "0x41c (005c1040); PartInstance non-virtual part to +0x3e8, scoped_connection standTouched +0x3e8, teamColor +0x3fc, virtual bases from +0x400",
@@ -908,46 +906,43 @@
         "reason": "needs the 2008 PartInstance layout: vtordisp thunk: vbase offset 0x414"
       }
     ],
-    "flag_pending": [
+    "flag": [
       {
         "address": "00618380",
         "symbol": "?getTeamColor@Flag@RBX@@QBE?AVBrickColor@2@XZ",
         "size": 15,
         "target_size": 15,
-        "exact": false,
+        "exact": true,
         "verified_targets": {},
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00618390",
         "symbol": "?canBePickedUpByPlayer@Flag@RBX@@MAE_NPAVPlayer@Network@2@@Z",
         "size": 36,
         "target_size": 36,
-        "exact": false,
+        "exact": true,
         "verified_targets": {},
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00619a60",
         "symbol": "?setTeamColor@Flag@RBX@@QAEXVBrickColor@2@@Z",
         "size": 23,
         "target_size": 23,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "_prop_Color": "0x97bf20 (data)",
           "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006183c0",
         "symbol": "??1?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAE@XZ",
         "size": 155,
         "target_size": 155,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x843d4c (vtable RTTI .?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x843d3c (vtable RTTI .?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@ offset 0x10)",
@@ -965,15 +960,14 @@
           "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BILocation@1@@": "0x843c9c (vtable RTTI .?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@ offset 0x26c)",
           "??1Tool@RBX@@UAE@XZ": "0x5fe4b0 (external (evidence name))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00618460",
         "symbol": "??0?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@IAE@XZ",
         "size": 183,
         "target_size": 183,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_8?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@7B@": "0x843de0 (vbtable (bound by consistency))",
           "??0Tool@RBX@@QAE@XZ": "0x600240 (external (evidence name))",
@@ -992,15 +986,14 @@
           "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BIRenderable@1@@": "0x843ca4 (vtable RTTI .?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@ offset 0x1b0)",
           "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BILocation@1@@": "0x843c9c (vtable RTTI .?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@ offset 0x26c)"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006196b0",
         "symbol": "??0?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@IAE@XZ",
         "size": 239,
         "target_size": 239,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_8?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@7B@": "0x843de0 (vbtable (bound by consistency))",
           "??0?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@IAE@XZ": "0x618460 (own row)",
@@ -1022,15 +1015,14 @@
         },
         "local_eh": [
           "__ehhandler$??0?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@IAE@XZ"
-        ],
-        "exact_pending_build_only": true
+        ]
       },
       {
         "address": "00619820",
         "symbol": "??0Flag@RBX@@QAE@XZ",
         "size": 335,
         "target_size": 335,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_8Flag@RBX@@7B@": "0x8440d0 (vbtable (bound by consistency))",
           "??0?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@IAE@XZ": "0x6196b0 (own row)",
@@ -1055,15 +1047,14 @@
         },
         "local_eh": [
           "__ehhandler$??0Flag@RBX@@QAE@XZ"
-        ],
-        "exact_pending_build_only": true
+        ]
       },
       {
         "address": "00618670",
         "symbol": "??1Flag@RBX@@UAE@XZ",
         "size": 288,
         "target_size": 288,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_7Flag@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x843eb4 (vtable RTTI .?AVFlag@RBX@@ offset 0x0)",
           "??_7Flag@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x843ea4 (vtable RTTI .?AVFlag@RBX@@ offset 0x10)",
@@ -1084,88 +1075,81 @@
         },
         "local_eh": [
           "__ehhandler$??1Flag@RBX@@UAE@XZ"
-        ],
-        "exact_pending_build_only": true
+        ]
       },
       {
         "address": "00618980",
         "symbol": "??_GFlag@RBX@@UAEPAXI@Z",
         "size": 31,
         "target_size": 31,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??1Flag@RBX@@UAE@XZ": "0x618670 (own row)",
           "__imp__free": "0x8028c0 (msvcr90.dll!free)"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00619800",
         "symbol": "??_G?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z",
         "size": 31,
         "target_size": 31,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??1?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAE@XZ": "0x6183c0 (own row)",
           "__imp__free": "0x8028c0 (msvcr90.dll!free)"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00618660",
         "symbol": "??1?$Described@VFlag@RBX@@$1?sFlag@2@3QBDBV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@2@@Reflection@RBX@@UAE@XZ",
         "size": 5,
         "target_size": 5,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??1?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAE@XZ": "0x6183c0 (own row)"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006187f0",
         "symbol": "?getLocation@Tool@RBX@@$0PPPPPPPM@CI@BE?BVCoordinateFrame@G3D@@XZ",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "?getLocation@Tool@RBX@@EBE?BVCoordinateFrame@G3D@@XZ": "0x5fd770 (external (evidence name))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00618610",
         "symbol": "?getValue@?$GetSetImpl@P8Flag@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VFlag@RBX@@VBrickColor@2@@Reflection@RBX@@UBE?AVBrickColor@4@PBVDescribedBase@34@@Z",
         "size": 62,
         "target_size": 62,
-        "exact": false,
+        "exact": true,
         "verified_targets": {},
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006188e0",
         "symbol": "??$getset@P8Flag@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VFlag@RBX@@VBrickColor@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@std@@P8Flag@2@BE?AVBrickColor@2@XZP852@AEXV62@@Z@Z",
         "size": 91,
         "target_size": 91,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
           "??_7?$GetSetImpl@P8Flag@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VFlag@RBX@@VBrickColor@2@@Reflection@RBX@@6B@": "0x843df0 (vtable RTTI .?AV?$GetSetImpl@P8Flag@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VFlag@RBX@@VBrickColor@2@@Reflection@RBX@@ offset 0x0)"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006191c0",
         "symbol": "??$?0P8Flag@RBX@@BE?AVBrickColor@1@XZP801@AEXV21@@Z@?$PropDescriptor@VFlag@RBX@@VBrickColor@2@@Reflection@RBX@@QAE@PBD0P8Flag@2@BE?AVBrickColor@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z",
         "size": 193,
         "target_size": 193,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??$getset@P8Flag@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VFlag@RBX@@VBrickColor@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@std@@P8Flag@2@BE?AVBrickColor@2@XZP852@AEXV62@@Z@Z": "0x6188e0 (own row)",
           "?classDescriptor@?$Described@VFlag@RBX@@$1?sFlag@2@3QBDBV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c3880 (own row)",
@@ -1175,30 +1159,28 @@
         },
         "local_eh": [
           "__ehhandler$??$?0P8Flag@RBX@@BE?AVBrickColor@1@XZP801@AEXV21@@Z@?$PropDescriptor@VFlag@RBX@@VBrickColor@2@@Reflection@RBX@@QAE@PBD0P8Flag@2@BE?AVBrickColor@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z"
-        ],
-        "exact_pending_build_only": true
+        ]
       },
       {
         "address": "00618a20",
         "symbol": "?getClassName@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UBEABVName@2@XZ",
         "size": 23,
         "target_size": 23,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "?flag@?1???$declare@$1?sFlag@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x976a74 (local static)",
           "??$callDoDeclare@$1?sFlag@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x5a09b0 (external)",
           "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
           "??$doDeclare@$1?sFlag@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x5a0320 (own row)"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "005c3880",
         "symbol": "?classDescriptor@?$Described@VFlag@RBX@@$1?sFlag@2@3QBDBV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
         "size": 101,
         "target_size": 101,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_B?1??classDescriptor@?$Described@VFlag@RBX@@$1?sFlag@2@3QBDBV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x979300 (local static)",
           "?sFlag@RBX@@3QBDB": "0x843c90 (data)",
@@ -1210,28 +1192,26 @@
         },
         "local_eh": [
           "__ehhandler$?classDescriptor@?$Described@VFlag@RBX@@$1?sFlag@2@3QBDBV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
-        ],
-        "exact_pending_build_only": true
+        ]
       },
       {
         "address": "007fe750",
         "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VFlag@RBX@@$1?sFlag@2@3QBDBV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
         "size": 10,
         "target_size": 10,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "?foo@?1??classDescriptor@?$Described@VFlag@RBX@@$1?sFlag@2@3QBDBV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x979240 (local static)",
           "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "005a0320",
         "symbol": "??$doDeclare@$1?sFlag@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
         "size": 101,
         "target_size": 101,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_B?1???$doDeclare@$1?sFlag@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x976a4c (local static)",
           "?sFlag@RBX@@3QBDB": "0x843c90 (data)",
@@ -1240,15 +1220,14 @@
         },
         "local_eh": [
           "__ehhandler$??$doDeclare@$1?sFlag@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
-        ],
-        "exact_pending_build_only": true
+        ]
       },
       {
         "address": "007f7cc0",
         "symbol": "??__Eprop_Color@RBX@@YAXXZ",
         "size": 88,
         "target_size": 88,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "?setTeamColor@Flag@RBX@@QAEXVBrickColor@2@@Z": "0x619a60 (own row)",
           "?getTeamColor@Flag@RBX@@QBE?AVBrickColor@2@XZ": "0x618380 (own row)",
@@ -1259,238 +1238,317 @@
           "??__Fprop_Color@RBX@@YAXXZ": "0x800310 (own row)",
           "_atexit": "0x6a17af (external)"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00800310",
         "symbol": "??__Fprop_Color@RBX@@YAXXZ",
         "size": 29,
         "target_size": 29,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "_prop_Color": "0x97bf20 (data)",
           "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
           "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006185e0",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OBKA@AEPAXI@Z",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006185f0",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OBE@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00618600",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OGE@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006197a0",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OCE@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006197b0",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OEE@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006197c0",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OIE@AEPAXI@Z",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006197d0",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OKE@AEPAXI@Z",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006197e0",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OME@AEPAXI@Z",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006197f0",
         "symbol": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OBA@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@MAEPAXI@Z": "0x619800 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
+      },
+      {
+        "address": "006185e0",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WBKA@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006185f0",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00618600",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006197a0",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006197b0",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006197c0",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006197d0",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006197e0",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006197f0",
+        "symbol": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UAEPAXI@Z": "0x619800 (folded (??_G))"
+        },
+        "local_eh": []
       },
       {
         "address": "00618790",
         "symbol": "??_EFlag@RBX@@WBA@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006187a0",
         "symbol": "??_EFlag@RBX@@WBE@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006187b0",
         "symbol": "??_EFlag@RBX@@WCE@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006187c0",
         "symbol": "??_EFlag@RBX@@WEE@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006187d0",
         "symbol": "??_EFlag@RBX@@WGE@AEPAXI@Z",
         "size": 8,
         "target_size": 8,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "006187e0",
         "symbol": "??_EFlag@RBX@@WIE@AEPAXI@Z",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00618800",
         "symbol": "??_EFlag@RBX@@WKE@AEPAXI@Z",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00618810",
         "symbol": "??_EFlag@RBX@@WME@AEPAXI@Z",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       },
       {
         "address": "00618820",
         "symbol": "??_EFlag@RBX@@WBKA@AEPAXI@Z",
         "size": 11,
         "target_size": 11,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_EFlag@RBX@@UAEPAXI@Z": "0x618980 (own row (??_G))"
         },
-        "local_eh": [],
-        "exact_pending_build_only": true
+        "local_eh": []
       }
     ]
   },
@@ -1499,12 +1557,48 @@
     "00499fd0",
     "00583a00",
     "00598310",
+    "005a0320",
     "005bf8e0",
     "005bff90",
+    "005c3880",
     "005c38f0",
     "005d2130",
     "00608cd0",
     "0060a2f0",
+    "00618380",
+    "00618390",
+    "006183c0",
+    "00618460",
+    "006185e0",
+    "006185f0",
+    "00618600",
+    "00618610",
+    "00618660",
+    "00618670",
+    "00618790",
+    "006187a0",
+    "006187b0",
+    "006187c0",
+    "006187d0",
+    "006187e0",
+    "006187f0",
+    "00618800",
+    "00618810",
+    "00618820",
+    "006188e0",
+    "00618980",
+    "00618a20",
+    "006191c0",
+    "006196b0",
+    "006197a0",
+    "006197b0",
+    "006197c0",
+    "006197d0",
+    "006197e0",
+    "006197f0",
+    "00619800",
+    "00619820",
+    "00619a60",
     "0062bb90",
     "0062bbd0",
     "0062bc00",
@@ -1536,9 +1630,12 @@
     "0062cc40",
     "0062cca0",
     "0062ccc0",
+    "007f7cc0",
     "007f7e90",
     "007f7ef0",
     "007fe740",
+    "007fe750",
+    "00800310",
     "00800450",
     "00800470"
   ],
@@ -1700,9 +1797,504 @@
         "3": "?render3dAdorn@PartInstance@RBX@@UAEXPAVAdorn@2@@Z = 0x59e4d0 (inherited (Part vtable 0x832c8c slot 3))",
         "4": "?render3dSelect@PartInstance@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z = 0x59abb0 (inherited (Part vtable 0x832c8c slot 4))"
       }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x844030",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WBA@AEPAXI@Z = 0x6197f0 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UBEABVName@2@XZ = 0x618a20 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x844028",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WBE@AEPAXI@Z = 0x6185f0 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$DescribedCreatable@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@1@@": {
+      "address": "0x843fb8",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?process@Widget@RBX@@MAE?AVGuiResponse@2@ABVGuiEvent@2@@Z = 0x642210 (inherited (Tool vtable 0x8419c4 slot 0))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x84403c",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Tool vtable 0x841a4c slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Tool@RBX@@EBE_NPBVInstance@2@@Z = 0x565ff0 (inherited (Tool vtable 0x841a4c slot 2))",
+        "3": "?askSetParent@Tool@RBX@@EBE_NPBVInstance@2@@Z = 0x565ff0 (inherited (Tool vtable 0x841a4c slot 3))",
+        "4": "?onAncestorChanged@Tool@RBX@@EAEXABUAncestorChanged@2@@Z = 0x5ffa10 (inherited (Tool vtable 0x841a4c slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Tool vtable 0x841a4c slot 5))",
+        "6": "?onDescendentRemoving@GuiItem@RBX@@EAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x5746a0 (inherited (Tool vtable 0x841a4c slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Tool vtable 0x841a4c slot 10))",
+        "11": "?readProperty@Tool@RBX@@EAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x5fd3e0 (inherited (Tool vtable 0x841a4c slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Tool vtable 0x841a4c slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Tool vtable 0x841a4c slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Tool vtable 0x841a4c slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Tool vtable 0x841a4c slot 15))",
+        "16": "?onLoseFocus@Widget@RBX@@MAEXXZ = 0x5cf4e0 (inherited (Tool vtable 0x841a4c slot 16))",
+        "17": "?canLoseFocus@GuiItem@RBX@@MAE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x841a4c slot 17))",
+        "18": "?getPosition@GuiItem@RBX@@MBE?AVVector2@G3D@@XZ = 0x4117f0 (inherited (Tool vtable 0x841a4c slot 18))",
+        "19": "?getChildPosition@GuiItem@RBX@@MBE?AVVector2@G3D@@PBV12@@Z = 0x411810 (inherited (Tool vtable 0x841a4c slot 19))",
+        "20": "?getFontSize@Widget@RBX@@MBEHXZ = 0x5cf4f0 (inherited (Tool vtable 0x841a4c slot 20))",
+        "21": "?isVisible@GuiItem@RBX@@MBE_NXZ = 0x565950 (inherited (Tool vtable 0x841a4c slot 21))",
+        "22": "?getTitle@GuiItem@RBX@@MAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ = 0x411840 (inherited (Tool vtable 0x841a4c slot 22))",
+        "23": "?getSize@BackpackItem@RBX@@MBE?AVVector2@G3D@@XZ = 0x5cf190 (inherited (Tool vtable 0x841a4c slot 23))",
+        "24": "?render2d@BackpackItem@RBX@@MAEXPAVAdorn@2@@Z = 0x5d05d0 (inherited (Tool vtable 0x841a4c slot 24))",
+        "25": "?onClick@Widget@RBX@@MAEXABVGuiEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 25))",
+        "26": "?onDrag@Widget@RBX@@MAE_NABVGuiEvent@2@@Z = 0x68e880 (inherited (Tool vtable 0x841a4c slot 26))",
+        "27": "?onDown@Widget@RBX@@MAEXABVUIEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 27))",
+        "28": "?onUp@Widget@RBX@@MAEXABVUIEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 28))",
+        "29": "?getFontColor@Widget@RBX@@MAE?AVColor4@G3D@@XZ = 0x5cf500 (inherited (Tool vtable 0x841a4c slot 29))",
+        "30": "?isEnabled@BackpackItem@RBX@@MAE_NXZ = 0x5cff30 (inherited (Tool vtable 0x841a4c slot 30))",
+        "31": "?drawEnabled@BackpackItem@RBX@@UBE_NXZ = 0x565950 (inherited (Tool vtable 0x841a4c slot 31))",
+        "32": "?drawSelected@Tool@RBX@@EBE_NXZ = 0x5fe600 (inherited (Tool vtable 0x841a4c slot 32))",
+        "33": "?onLocalClicked@Tool@RBX@@EAEXXZ = 0x5fe140 (inherited (Tool vtable 0x841a4c slot 33))",
+        "34": "?onLocalOtherClicked@Tool@RBX@@EAEXXZ = 0x5fe1d0 (inherited (Tool vtable 0x841a4c slot 34))",
+        "35": "?canUnequip@Tool@RBX@@UAE_NXZ = 0x565950 (inherited (Tool vtable 0x841a4c slot 35))",
+        "36": "?canBePickedUpByPlayer@Tool@RBX@@UAE_NPAVPlayer@Network@2@@Z = 0x565ff0 (inherited (Tool vtable 0x841a4c slot 36))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x843fd0",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WKE@AEPAXI@Z = 0x6197d0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419dc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419dc slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x844010",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WCE@AEPAXI@Z = 0x6197a0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a1c slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x844000",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WEE@AEPAXI@Z = 0x6197b0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a0c slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a0c slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x843ff0",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WGE@AEPAXI@Z = 0x618600 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419fc slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x843fe0",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WIE@AEPAXI@Z = 0x6197c0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419ec slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419ec slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x843fc0",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WME@AEPAXI@Z = 0x6197e0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419cc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419cc slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BDebugable@1@@": {
+      "address": "0x844020",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Tool vtable 0x841a2c slot 0))"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BIEquipable@1@@": {
+      "address": "0x843fb0",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x1a0",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@WBKA@AEPAXI@Z = 0x6185e0 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BILocation@1@@": {
+      "address": "0x843f90",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x26c",
+      "slots": {
+        "0": "?getLocation@Tool@RBX@@$0PPPPPPPM@A@BE?BVCoordinateFrame@G3D@@XZ = 0x5fe6a0 (evidence name)"
+      }
+    },
+    "??_7?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BIRenderable@1@@": {
+      "address": "0x843f98",
+      "rtti": ".?AV?$DescribedCreatable@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x1b0",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x8419a4 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x8419a4 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419a4 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419a4 slot 3))",
+        "4": "?render3dSelect@Tool@RBX@@EAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5fdaf0 (inherited (Tool vtable 0x8419a4 slot 4))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x843d3c",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OBA@AEPAXI@Z = 0x6197f0 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UBEABVName@2@XZ = 0x618a20 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x843d34",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OBE@AEPAXI@Z = 0x6185f0 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$DescribedCreatable@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@1@@": {
+      "address": "0x843cc4",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?process@Widget@RBX@@MAE?AVGuiResponse@2@ABVGuiEvent@2@@Z = 0x642210 (inherited (Tool vtable 0x8419c4 slot 0))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x843d4c",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Tool vtable 0x841a4c slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Tool@RBX@@EBE_NPBVInstance@2@@Z = 0x565ff0 (inherited (Tool vtable 0x841a4c slot 2))",
+        "3": "?askSetParent@Tool@RBX@@EBE_NPBVInstance@2@@Z = 0x565ff0 (inherited (Tool vtable 0x841a4c slot 3))",
+        "4": "?onAncestorChanged@Tool@RBX@@EAEXABUAncestorChanged@2@@Z = 0x5ffa10 (inherited (Tool vtable 0x841a4c slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Tool vtable 0x841a4c slot 5))",
+        "6": "?onDescendentRemoving@GuiItem@RBX@@EAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x5746a0 (inherited (Tool vtable 0x841a4c slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Tool vtable 0x841a4c slot 10))",
+        "11": "?readProperty@Tool@RBX@@EAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x5fd3e0 (inherited (Tool vtable 0x841a4c slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Tool vtable 0x841a4c slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Tool vtable 0x841a4c slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Tool vtable 0x841a4c slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Tool vtable 0x841a4c slot 15))",
+        "16": "?onLoseFocus@Widget@RBX@@MAEXXZ = 0x5cf4e0 (inherited (Tool vtable 0x841a4c slot 16))",
+        "17": "?canLoseFocus@GuiItem@RBX@@MAE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x841a4c slot 17))",
+        "18": "?getPosition@GuiItem@RBX@@MBE?AVVector2@G3D@@XZ = 0x4117f0 (inherited (Tool vtable 0x841a4c slot 18))",
+        "19": "?getChildPosition@GuiItem@RBX@@MBE?AVVector2@G3D@@PBV12@@Z = 0x411810 (inherited (Tool vtable 0x841a4c slot 19))",
+        "20": "?getFontSize@Widget@RBX@@MBEHXZ = 0x5cf4f0 (inherited (Tool vtable 0x841a4c slot 20))",
+        "21": "?isVisible@GuiItem@RBX@@MBE_NXZ = 0x565950 (inherited (Tool vtable 0x841a4c slot 21))",
+        "22": "?getTitle@GuiItem@RBX@@MAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ = 0x411840 (inherited (Tool vtable 0x841a4c slot 22))",
+        "23": "?getSize@BackpackItem@RBX@@MBE?AVVector2@G3D@@XZ = 0x5cf190 (inherited (Tool vtable 0x841a4c slot 23))",
+        "24": "?render2d@BackpackItem@RBX@@MAEXPAVAdorn@2@@Z = 0x5d05d0 (inherited (Tool vtable 0x841a4c slot 24))",
+        "25": "?onClick@Widget@RBX@@MAEXABVGuiEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 25))",
+        "26": "?onDrag@Widget@RBX@@MAE_NABVGuiEvent@2@@Z = 0x68e880 (inherited (Tool vtable 0x841a4c slot 26))",
+        "27": "?onDown@Widget@RBX@@MAEXABVUIEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 27))",
+        "28": "?onUp@Widget@RBX@@MAEXABVUIEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 28))",
+        "29": "?getFontColor@Widget@RBX@@MAE?AVColor4@G3D@@XZ = 0x5cf500 (inherited (Tool vtable 0x841a4c slot 29))",
+        "30": "?isEnabled@BackpackItem@RBX@@MAE_NXZ = 0x5cff30 (inherited (Tool vtable 0x841a4c slot 30))",
+        "31": "?drawEnabled@BackpackItem@RBX@@UBE_NXZ = 0x565950 (inherited (Tool vtable 0x841a4c slot 31))",
+        "32": "?drawSelected@Tool@RBX@@EBE_NXZ = 0x5fe600 (inherited (Tool vtable 0x841a4c slot 32))",
+        "33": "?onLocalClicked@Tool@RBX@@EAEXXZ = 0x5fe140 (inherited (Tool vtable 0x841a4c slot 33))",
+        "34": "?onLocalOtherClicked@Tool@RBX@@EAEXXZ = 0x5fe1d0 (inherited (Tool vtable 0x841a4c slot 34))",
+        "35": "?canUnequip@Tool@RBX@@UAE_NXZ = 0x565950 (inherited (Tool vtable 0x841a4c slot 35))",
+        "36": "?canBePickedUpByPlayer@Tool@RBX@@UAE_NPAVPlayer@Network@2@@Z = 0x565ff0 (inherited (Tool vtable 0x841a4c slot 36))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x843cdc",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OKE@AEPAXI@Z = 0x6197d0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419dc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419dc slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x843d1c",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OCE@AEPAXI@Z = 0x6197a0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a1c slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x843d0c",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OEE@AEPAXI@Z = 0x6197b0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a0c slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a0c slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x843cfc",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OGE@AEPAXI@Z = 0x618600 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419fc slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x843cec",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OIE@AEPAXI@Z = 0x6197c0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419ec slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419ec slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x843ccc",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OME@AEPAXI@Z = 0x6197e0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419cc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419cc slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BDebugable@1@@": {
+      "address": "0x843d2c",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Tool vtable 0x841a2c slot 0))"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BIEquipable@1@@": {
+      "address": "0x843cbc",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x1a0",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@OBKA@AEPAXI@Z = 0x6185e0 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BILocation@1@@": {
+      "address": "0x843c9c",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x26c",
+      "slots": {
+        "0": "?getLocation@Tool@RBX@@$0PPPPPPPM@A@BE?BVCoordinateFrame@G3D@@XZ = 0x5fe6a0 (evidence name)"
+      }
+    },
+    "??_7?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@6BIRenderable@1@@": {
+      "address": "0x843ca4",
+      "rtti": ".?AV?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@",
+      "offset": "0x1b0",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x8419a4 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x8419a4 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419a4 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419a4 slot 3))",
+        "4": "?render3dSelect@Tool@RBX@@EAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5fdaf0 (inherited (Tool vtable 0x8419a4 slot 4))"
+      }
+    },
+    "??_7Flag@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x843ea4",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_EFlag@RBX@@WBA@AEPAXI@Z = 0x618790 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VFlag@RBX@@VTool@2@$1?sFlag@2@3QBDB@RBX@@UBEABVName@2@XZ = 0x618a20 (own row)"
+      }
+    },
+    "??_7Flag@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x843e9c",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_EFlag@RBX@@WBE@AEPAXI@Z = 0x6187a0 (own row)"
+      }
+    },
+    "??_7Flag@RBX@@6B?$DescribedCreatable@VTool@RBX@@VBackpackItem@2@$1?sTool@2@3QBDB@1@@": {
+      "address": "0x843e2c",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x130",
+      "slots": {
+        "0": "?process@Widget@RBX@@MAE?AVGuiResponse@2@ABVGuiEvent@2@@Z = 0x642210 (inherited (Tool vtable 0x8419c4 slot 0))"
+      }
+    },
+    "??_7Flag@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x843eb4",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Tool vtable 0x841a4c slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Tool@RBX@@EBE_NPBVInstance@2@@Z = 0x565ff0 (inherited (Tool vtable 0x841a4c slot 2))",
+        "3": "?askSetParent@Tool@RBX@@EBE_NPBVInstance@2@@Z = 0x565ff0 (inherited (Tool vtable 0x841a4c slot 3))",
+        "4": "?onAncestorChanged@Tool@RBX@@EAEXABUAncestorChanged@2@@Z = 0x5ffa10 (inherited (Tool vtable 0x841a4c slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Tool vtable 0x841a4c slot 5))",
+        "6": "?onDescendentRemoving@GuiItem@RBX@@EAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x5746a0 (inherited (Tool vtable 0x841a4c slot 6))",
+        "7": "?onChildAdded@Flag@RBX@@UAEXPAVInstance@2@@Z = 0x619970 (call target of a non-exact row)",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Tool vtable 0x841a4c slot 10))",
+        "11": "?readProperty@Tool@RBX@@EAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x5fd3e0 (inherited (Tool vtable 0x841a4c slot 11))",
+        "12": "?onServiceProvider@Flag@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x6194a0 (call target of a non-exact row)",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Tool vtable 0x841a4c slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Tool vtable 0x841a4c slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Tool vtable 0x841a4c slot 15))",
+        "16": "?onLoseFocus@Widget@RBX@@MAEXXZ = 0x5cf4e0 (inherited (Tool vtable 0x841a4c slot 16))",
+        "17": "?canLoseFocus@GuiItem@RBX@@MAE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x841a4c slot 17))",
+        "18": "?getPosition@GuiItem@RBX@@MBE?AVVector2@G3D@@XZ = 0x4117f0 (inherited (Tool vtable 0x841a4c slot 18))",
+        "19": "?getChildPosition@GuiItem@RBX@@MBE?AVVector2@G3D@@PBV12@@Z = 0x411810 (inherited (Tool vtable 0x841a4c slot 19))",
+        "20": "?getFontSize@Widget@RBX@@MBEHXZ = 0x5cf4f0 (inherited (Tool vtable 0x841a4c slot 20))",
+        "21": "?isVisible@GuiItem@RBX@@MBE_NXZ = 0x565950 (inherited (Tool vtable 0x841a4c slot 21))",
+        "22": "?getTitle@GuiItem@RBX@@MAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ = 0x411840 (inherited (Tool vtable 0x841a4c slot 22))",
+        "23": "?getSize@BackpackItem@RBX@@MBE?AVVector2@G3D@@XZ = 0x5cf190 (inherited (Tool vtable 0x841a4c slot 23))",
+        "24": "?render2d@BackpackItem@RBX@@MAEXPAVAdorn@2@@Z = 0x5d05d0 (inherited (Tool vtable 0x841a4c slot 24))",
+        "25": "?onClick@Widget@RBX@@MAEXABVGuiEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 25))",
+        "26": "?onDrag@Widget@RBX@@MAE_NABVGuiEvent@2@@Z = 0x68e880 (inherited (Tool vtable 0x841a4c slot 26))",
+        "27": "?onDown@Widget@RBX@@MAEXABVUIEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 27))",
+        "28": "?onUp@Widget@RBX@@MAEXABVUIEvent@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a4c slot 28))",
+        "29": "?getFontColor@Widget@RBX@@MAE?AVColor4@G3D@@XZ = 0x5cf500 (inherited (Tool vtable 0x841a4c slot 29))",
+        "30": "?isEnabled@BackpackItem@RBX@@MAE_NXZ = 0x5cff30 (inherited (Tool vtable 0x841a4c slot 30))",
+        "31": "?drawEnabled@BackpackItem@RBX@@UBE_NXZ = 0x565950 (inherited (Tool vtable 0x841a4c slot 31))",
+        "32": "?drawSelected@Tool@RBX@@EBE_NXZ = 0x5fe600 (inherited (Tool vtable 0x841a4c slot 32))",
+        "33": "?onLocalClicked@Tool@RBX@@EAEXXZ = 0x5fe140 (inherited (Tool vtable 0x841a4c slot 33))",
+        "34": "?onLocalOtherClicked@Tool@RBX@@EAEXXZ = 0x5fe1d0 (inherited (Tool vtable 0x841a4c slot 34))",
+        "35": "?canUnequip@Flag@RBX@@MAE_NXZ = 0x60a2f0 (folded)",
+        "36": "?canBePickedUpByPlayer@Flag@RBX@@MAE_NPAVPlayer@Network@2@@Z = 0x618390 (own row)"
+      }
+    },
+    "??_7Flag@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x843e44",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_EFlag@RBX@@WKE@AEPAXI@Z = 0x618800 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419dc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419dc slot 2))"
+      }
+    },
+    "??_7Flag@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x843e84",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_EFlag@RBX@@WCE@AEPAXI@Z = 0x6187b0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Tool vtable 0x841a1c slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a1c slot 2))"
+      }
+    },
+    "??_7Flag@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x843e74",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_EFlag@RBX@@WEE@AEPAXI@Z = 0x6187c0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a0c slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x841a0c slot 2))"
+      }
+    },
+    "??_7Flag@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x843e64",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_EFlag@RBX@@WGE@AEPAXI@Z = 0x6187d0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Tool vtable 0x8419fc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419fc slot 2))"
+      }
+    },
+    "??_7Flag@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x843e54",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_EFlag@RBX@@WIE@AEPAXI@Z = 0x6187e0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419ec slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419ec slot 2))"
+      }
+    },
+    "??_7Flag@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x843e34",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_EFlag@RBX@@WME@AEPAXI@Z = 0x618810 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419cc slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419cc slot 2))"
+      }
+    },
+    "??_7Flag@RBX@@6BDebugable@1@@": {
+      "address": "0x843e94",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Tool vtable 0x841a2c slot 0))"
+      }
+    },
+    "??_7Flag@RBX@@6BIEquipable@1@@": {
+      "address": "0x843e24",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x1a0",
+      "slots": {
+        "0": "??_EFlag@RBX@@WBKA@AEPAXI@Z = 0x618820 (own row)"
+      }
+    },
+    "??_7Flag@RBX@@6BILocation@1@@": {
+      "address": "0x843e04",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x294",
+      "slots": {
+        "0": "?getLocation@Tool@RBX@@$0PPPPPPPM@CI@BE?BVCoordinateFrame@G3D@@XZ = 0x6187f0 (own row)"
+      }
+    },
+    "??_7Flag@RBX@@6BIRenderable@1@@": {
+      "address": "0x843e0c",
+      "rtti": ".?AVFlag@RBX@@",
+      "offset": "0x1b0",
+      "slots": {
+        "0": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x8419a4 slot 0))",
+        "1": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ = 0x60a2f0 (inherited (Tool vtable 0x8419a4 slot 1))",
+        "2": "?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419a4 slot 2))",
+        "3": "?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z = 0x70bdf0 (inherited (Tool vtable 0x8419a4 slot 3))",
+        "4": "?render3dSelect@Tool@RBX@@EAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5fdaf0 (inherited (Tool vtable 0x8419a4 slot 4))"
+      }
     }
   },
-  "pending_note": "flag_pending rows are exact only against generated copies of the donor v8datamodel/Tool.h and Hopper.h (extern const char sTool[] / sBackpackItem[] class-name arguments) under out/native-layouts/flag-family-pending; not counted, vtables not slot-checked.",
+  "flag_note": "Flag rows are built against the native v8datamodel/Tool.h / Hopper.h (no pending overlay); the Flag vtables are slot-checked from that object, inherited slots against the Tool constructor 00600240 vtables.",
   "layout_blocked_note": "flagstand_layout_blocked rows compile to the original sizes but need native PartInstance.h with the 2008 non-virtual size 0x3e8 (currently sizeof 0x2ec including virtual bases).",
   "not_attempted": {
     "0062b900": "FlagStand::GetFlag: Primitive embedded at PartInstance +0x228 (getFirstRigid 005e7c80 / getNextRigid 005e7ca0), PartInstance::fromPrimitive 00599f80, Instance parent +0x104, dynamic_cast<Flag*>; needs the 2008 PartInstance layout and a complete Flag (native Tool.h)",
@@ -1712,10 +2304,10 @@
     "0062bb30/0062bee0": "boost::function functor manager for the onEvent_standTouched bind (type_info 0095bf40)",
     "0062c590": "boost::signal1<void(shared_ptr<Instance>)> constructor instance (195 bytes; this unit emits 201)",
     "00618520/00618650": "Flag unit: a ClassDescriptor singleton getter (00572690) and its jmp wrapper",
-    "00618580/00618830..00618ec0/00618f70/00619080/00619290/00619360/00619450/006194a0/006195b0/00619970": "Flag::doUglyPeriodicCloneHack, onServiceProvider, onChildAdded, onEvent_flagTouched and their boost::bind / boost::function / ServiceProvider::create<FlagStandService/TimerService> plumbing: not attempted (Flag needs a native Tool.h first)"
+    "00618580/00618830..00618ec0/00618f70/00619080/00619290/00619360/00619450/006194a0/006195b0/00619970": "Flag::doUglyPeriodicCloneHack, onServiceProvider, onChildAdded, onEvent_flagTouched and their boost::bind / boost::function / ServiceProvider::create<FlagStandService/TimerService> plumbing: not attempted"
   },
   "vtable_header_gaps": [
-    "??_7FlagStand@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 1: compiled ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z, original 0x598c20 = Part vtable 0x832d4c slot 1 (native PartInstance.h lacks the override)"
+    "??_7FlagStand@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ slot 1: compiled ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z, original 0x598c20 = Part vtable 0x832d4c slot 1 (the native base header lacks the override)"
   ],
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
 }
