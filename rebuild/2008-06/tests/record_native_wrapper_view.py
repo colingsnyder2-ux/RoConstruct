@@ -1,4 +1,7 @@
-"""Check inactive CWrapperView source/object evidence; no provider selection or runtime gate.
+"""Check standalone inactive CWrapperView replay; no provider selection or runtime gate.
+
+CMainFrameXtp.cpp already defines this class. Keep the contributor replay under
+tests rather than introducing a duplicate native provider.
 
 Uses the registered, hash-pinned client, RTM 21022, document-swap flags remapped to
 this checkout, and XTP headers. Reuses CSelectionTreeCtrl lifecycle rows only when
@@ -19,7 +22,7 @@ import native_bind
 from native_bind import XTP_FLAGS, plain, rebuild, sha
 from roc import match
 
-SOURCE = ROOT / 'rebuild/2008-06/native-classes/CWrapperView.cpp'
+SOURCE = HERE / 'NativeWrapperViewTrial.cpp'
 HEADER = ROOT / 'rebuild/2008-06/native-headers/CWrapperView.h'
 LAYOUT = HERE / 'NativeWrapperViewLayout.cpp'
 CLIENT = ROOT / 'clients/2008-06/Roblox.exe'
@@ -245,7 +248,7 @@ receipt = {
     'original': 'clients/2008-06/Roblox.exe', 'original_sha256': sha(CLIENT),
     'sources': sources, 'object_sha256': sha(obj), 'layout_object_sha256': sha(layout_obj),
     'methods': rows, 'inherited_inline_rows': inherited, 'eh_owner_graphs': eh,
-    'new_native_addresses': ['0042eb40', '0042eb90', '0042ebc0', '0042ec10', '0042ece0', '00430010', '00430070'],
+    'replayed_class_addresses': ['0042eb40', '0042eb90', '0042ebc0', '0042ec10', '0042ece0', '00430010', '00430070'],
     'reused_addresses': {'006c4cb0': 'folded CView base-class getter', '0070bdf0': 'shared empty ret4 (OnDraw)'},
     'layout': {'size': '0x188', 'base': 'CView 0x58', 'tree_offset': '0x58', 'tree_size': '0x130',
                'evidence': 'CRuntimeClass size, CreateObject new(0x188), CView/tree ctor sequence, deleting destructor tree+0x58/CView teardown, RTTI and compile assertions'},
@@ -263,5 +266,5 @@ receipt = {
              'no selection, P5/P6, runtime or server credit'],
     'failures': []}
 RECEIPT.write_text(json.dumps(receipt, indent=2) + '\n')
-print('PASS inactive CWrapperView: %d rows / %d distinct addresses; 7 new native addresses; 101 vtable slots' %
+print('PASS inactive CWrapperView: %d rows / %d distinct addresses; 7 replayed class addresses; 101 vtable slots' %
       (len(rows), len({r['address'] for r in rows})))

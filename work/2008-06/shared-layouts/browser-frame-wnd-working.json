@@ -22,32 +22,32 @@
     "/D_RELEASE",
     "/D_RELEASEASSERT",
     "/D_VC80_UPGRADE=0x0710",
-    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
-    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
     "/UNOMINMAX",
-    "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
     "/D_XTP_STATICLINK"
   ],
   "original": "clients/2008-06/Roblox.exe",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
-  "object_sha256": "3d8a01ec255c71715637908224105130070307d26c6b59da899993416d156a8c",
+  "object_sha256": "4506488f2fb825b9ad9b6b5f9f97c8a3c98286b82389dd99d3a2166bba4730fb",
   "sources": {
-    "rebuild/2008-06/tests/record_native_browser_frame_wnd.py": "1626b0f7f53941c9599c329715875c9bc98ecdb76d86a020824339c813c13906",
+    "rebuild/2008-06/tests/record_native_browser_frame_wnd.py": "0ab8e40de98fe741ce769396c31f71bc09f38b3bd7652a3ea9b24ebbebf5a16b",
     "rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp": "f7dd62857da29dafdbe4d4a320de9794fcbd6071b8bc3fac0fd14b7021c4eecb",
     "rebuild/2008-06/native-headers/CBrowserFrameWnd.h": "8dff816b682aa945c46f38407706e34abf49f556a33b6bf15a4274e8cafb330b",
-    "rebuild/2008-06/tests/NativeBrowserFrameWndLayout.cpp": "8b5f477c7dd85dac7073ccfd339de4ea59cbc39637e5680d4cd01198fd2ce80d"
+    "rebuild/2008-06/tests/NativeBrowserFrameWndLayout.cpp": "2fd270e16f293930f69f483c0525a2948a0dc5d032b384d052e5dde0e52b7e77"
   },
   "layout": {
     "sizeof": "0xec = sizeof(CXTPFrameWnd) (CRuntimeClass 00811e90, operator new(0xec) in CreateObject 00433280); no own members: deleting destructor 00433240 stores only a vptr and calls 00432fd0, which releases the site-base pointer at +0xe8",
@@ -65,7 +65,7 @@
   "xtp_inputs": {
     "CommandBars/XTPFrameWnd.cpp": {
       "source_sha256": "8430fb21b48a7a387a4a18db85b0e3d57c86f88a1733bfde47eb224034c6756a",
-      "object_sha256": "5e56b6b574394f7c9334810f543889dd097f951aa67f9fb648cc7cce6e9d9720",
+      "object_sha256": "ebf59ff3348a36665d8d31dc71f4fa07c2f9bd81eb81b75c1e588a2802ab7f2e",
       "flags": [
         "/nologo",
         "/c",
@@ -78,13 +78,13 @@
         "/D_XTP_STATICLINK",
         "/D_DLL",
         "/D_WIN32_WINNT=0x0500",
-        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
-        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
       ]
     },
     "CommandBars/XTPCommandBars.cpp": {
       "source_sha256": "60abf7bc57696e0e2d573d302ad25ec59e5d1098fd6b36ed532f8110ff36358a",
-      "object_sha256": "fa69363b63ca2fad199f0ff96408c25bb705ee3d81cf014a6a41230006c1b2b5",
+      "object_sha256": "fc3b6f8be7385d2f4df9d1a278d30d641ce11075f232c9a9c597bbd22127d613",
       "flags": [
         "/nologo",
         "/c",
@@ -97,13 +97,13 @@
         "/D_XTP_STATICLINK",
         "/D_DLL",
         "/D_WIN32_WINNT=0x0500",
-        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
-        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
       ]
     },
     "CommandBars/XTPControlComboBox.cpp": {
       "source_sha256": "19c01ab3d4b711bb4f9a17978b7fdcd31e6bfeec3a945506288a8d0236f13e16",
-      "object_sha256": "28297bcbecc43f109e4a7e994838400223bb3ad3d380210c21f3e6f3c6578661",
+      "object_sha256": "708045c8c4a5ef4843a6f6b5168ad55fb5081b00b3e61999b9714136cd9c7b35",
       "flags": [
         "/nologo",
         "/c",
@@ -116,8 +116,8 @@
         "/D_XTP_STATICLINK",
         "/D_DLL",
         "/D_WIN32_WINNT=0x0500",
-        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
-        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
       ]
     }
   },

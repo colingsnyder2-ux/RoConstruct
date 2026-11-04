@@ -1,3 +1,5 @@
+// Standalone inactive verification replay from coldek/RoConstruct 95afaef4ec.
+// Existing native provider remains CMainFrameXtp.cpp; do not select both.
 #include "CWrapperView.h"
 
 IMPLEMENT_DYNCREATE(CWrapperView, CView)
