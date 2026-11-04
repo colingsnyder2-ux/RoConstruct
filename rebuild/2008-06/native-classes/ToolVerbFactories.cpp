@@ -109,6 +109,7 @@ template<> const Name& Named<SurfaceTool, sOscillateMotorTool>::getName() const 
 template<> const Name& Named<PartTool, sFillTool>::getName() const { return NativeToolName<FillTool>::get(); }
 template<> const Name& Named<PartTool, sDropperTool>::getName() const { return NativeToolName<DropperTool>::get(); }
 template<> const Name& Named<PartTool, sModelSetPrimaryPartTool>::getName() const { return NativeToolName<ModelSetPrimaryPartTool>::get(); }
+template<> const Name& Named<ArrowToolBase, sArrowTool>::getName() const { return NativeToolName<ArrowTool>::get(); }  // 005a1830
 template<> const Name& Named<ArrowToolBase, sResizeTool>::getName() const {
     return NativeToolName<ResizeTool>::get();
 }
