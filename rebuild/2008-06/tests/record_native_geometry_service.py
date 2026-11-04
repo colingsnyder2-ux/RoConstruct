@@ -10,8 +10,8 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current native head
                                            ::resize (bytes 00..100) and the folded ~Described jump (bytes 100..105);
                                            each is compared as a slice, not as the whole row;
   * GeometryService.cpp with NATIVE_GEOMETRYSERVICE_PENDING against out/native-layouts/geometry-service-pending/
-    (declaration-only Workspace of tests/NativeGeometryServicePendingWorkspace.h, FilterStairs of
-    tests/NativeGeometryServicePendingFilterStairs.h, native engine-world World.h): getPartsTouchingExtents 0062db60
+    (declaration-only Workspace of tests/NativeGeometryServicePendingWorkspace.h, native engine-world World.h; FilterStairs
+    from the native v8datamodel/Filters2008.h): getPartsTouchingExtents 0062db60
     and getHitLocationFilterStairs 0062dc10. Rows of this build are recorded exact=false (pending-build-only) and not
     counted; their symbols bind only as UNPROVEN.
 
@@ -42,11 +42,12 @@ LAYOUT = R / 'tests/NativeGeometryServiceLayout.cpp'
 SRC = R / 'native-classes/GeometryService.cpp'
 HDR = R / 'native-headers/v8datamodel/GeometryService.h'
 PENDING_WORKSPACE = R / 'tests/NativeGeometryServicePendingWorkspace.h'
-PENDING_FILTER = R / 'tests/NativeGeometryServicePendingFilterStairs.h'
+FILTERS_HDR = R / 'native-headers/v8datamodel/Filters2008.h'
 PENDING = OUT / 'geometry-service-pending'
 (PENDING / 'v8datamodel').mkdir(parents=True, exist_ok=True)
 (PENDING / 'v8datamodel/Workspace.h').write_text(PENDING_WORKSPACE.read_text())
-(PENDING / 'v8datamodel/FilterStairs.h').write_text(PENDING_FILTER.read_text())
+# FilterStairs comes from the native v8datamodel/Filters2008.h (tests/record_native_hit_filters.py); drop a stale overlay.
+(PENDING / 'v8datamodel/FilterStairs.h').unlink(missing_ok=True)
 DISCOVER = bool(os.environ.get('NATIVE_GEOMETRY_DISCOVER'))
 
 
@@ -162,8 +163,9 @@ PENDING_ROWS = [
 PENDING_REASONS = {
     '0062db60': 'needs the native Workspace layout: the original loads World* inline from Workspace +0x2e4 (0062db6d); '
                 'the pending overlay declares Workspace::getWorld() out of line (proposal), so this build calls it',
-    '0062dc10': 'needs the native Workspace layout (Workspace +0x2e4 at 0062dc81) and a native RBX::FilterStairs header '
-                '(constructor 006604a0); the pending overlay declares Workspace::getWorld() out of line',
+    '0062dc10': 'needs the native Workspace layout (Workspace +0x2e4 at 0062dc81); the pending overlay declares '
+                'Workspace::getWorld() out of line. RBX::FilterStairs (constructor 006604a0) now comes from the native '
+                'v8datamodel/Filters2008.h',
 }
 PENDING_EXTERNAL = {
     '?getPrimitivesTouchingExtents@ContactManager@RBX@@QAEXABVExtents@2@PBVPrimitive@2@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z': 0x60d140,  # 0062db99
@@ -423,7 +425,7 @@ while (factory + call + 5 + struct.unpack_from('<i', body, call + 1)[0]) & 0xfff
     call = body.index(b'\xe8', call + 1)
 
 sha = nb.sha
-paths = [Path(__file__).resolve(), LAYOUT, HDR, SRC, PENDING_WORKSPACE, PENDING_FILTER]
+paths = [Path(__file__).resolve(), LAYOUT, HDR, SRC, PENDING_WORKSPACE, FILTERS_HDR]
 objects = [layout_obj, unit_obj, pend_obj]
 groups = {'layout': layout_out, 'unit': unit_out}
 exact = sorted({r['address'] for g in groups.values() for r in g if r['exact']})
@@ -435,9 +437,6 @@ PROPOSALS = {
     'v8datamodel/Workspace.h': 'World* getWorld() const { return world; } with World* world at Workspace +0x2e4 '
                                '(GeometryService 0062db6d / 0062dc81, PhysicsService 005e8ec0, JointsService 005e5b50, '
                                'WorkspaceStatsItem 005a66b0)',
-    'v8datamodel/FilterStairs.h (new)': 'class FilterStairs : public HitTestFilter { boost::shared_ptr<Instance> model; '
-                                        'public: FilterStairs(Instance*); /*006604a0*/ virtual Result '
-                                        'filterResult(const Primitive*) const; /*00660320*/ }; vtable 0084c46c',
 }
 receipt = {
     'class': 'RBX::GeometryService', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
