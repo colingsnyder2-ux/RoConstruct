@@ -4,10 +4,12 @@
 #include "humanoid/Humanoid2008.h"
 #include "v8tree/Service.h"
 #include "util/Object.h"
-#include <G3D/g3dmath.h>
-#ifdef NATIVE_HUMANOID2008_PENDING
 #include "v8datamodel/ModelInstance.h"
+#include "AppDraw/DrawAdorn.h"
+#ifdef NATIVE_HUMANOID2008_PENDING
+#include "Network/Players.h"
 #endif
+#include <G3D/g3dmath.h>
 
 namespace RBX
 {
@@ -83,9 +85,6 @@ namespace RBX
 	{
 	}
 
-#ifdef NATIVE_HUMANOID2008_PENDING
-	// Need a complete ModelInstance: the native ModelInstance.h pulls the donor v8datamodel/Camera.h, which still
-	// passes &sCamera to the 2008 const-char-array DescribedCreatable.
 	bool Humanoid::askSetParent(const Instance* instance) const
 	{
 		return dynamic_cast<const ModelInstance*>(instance) != NULL;
@@ -101,7 +100,36 @@ namespace RBX
 
 		return NULL;
 	}
+
+#ifdef NATIVE_HUMANOID2008_PENDING
+	// ModelInstance::findModifierOfType<T> (005d8690 = <Humanoid>) is a proposal for the native ModelInstance.h owner;
+	// the pending build uses a generated copy with that member template.
+	Humanoid* Humanoid::modelIsCharacter(const Instance* testModel)
+	{
+		if (testModel)
+		{
+			if (const ModelInstance* model = dynamic_cast<const ModelInstance*>(testModel))
+				return model->findModifierOfType<Humanoid>();
+		}
+
+		return NULL;
+	}
+
+	Humanoid* Humanoid::getLocalHumanoidFromContext(const Instance* context)
+	{
+		return modelIsCharacter(Network::Players::findLocalCharacter(context));
+	}
 #endif
+
+	G3D::CoordinateFrame Humanoid::getTopOfHead() const
+	{
+		return G3D::CoordinateFrame(G3D::Vector3(0.0f, 0.5f, 0.0f));
+	}
+
+	void Humanoid::renderWaypoint(Adorn* adorn, const G3D::Vector3& waypoint)
+	{
+		DrawAdorn::cylinder(adorn, G3D::CoordinateFrame(waypoint), 1, 0.2f, 1.0f, G3D::Color3::green());
+	}
 
 	void Humanoid::computeForce(const float dt, bool throttling)
 	{

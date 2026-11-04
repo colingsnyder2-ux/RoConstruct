@@ -11,9 +11,11 @@ Builds (document-swap flags + /fp:fast /U_RELEASEASSERT, VS2008 RTM 21022):
                                          share a translation unit with v8kernel/Connector2008.h, so this unit selects
                                          the donor Connector (same Connector size; it defines no virtuals and no
                                          vtable of this unit is checked from it);
-  * both units again with NATIVE_HUMANOID2008_PENDING against out/native-layouts/humanoid2008-pending/ (a generated
-    copy of the donor v8datamodel/Camera.h with char sCamera[], so the native ModelInstance.h compiles). Rows exact
-    only in these builds are recorded exact=false (pending-build-only) and are not counted.
+  * both units again with NATIVE_HUMANOID2008_PENDING against out/native-layouts/humanoid2008-pending/: a generated
+    copy of the native v8datamodel/ModelInstance.h with the proposed member template findModifierOfType<T>, and
+    tests/NativeHumanoid2008PendingWorkspace.h copied as v8datamodel/Workspace.h (declaration-only overlay: the donor
+    Workspace.h fails with C2440 on &sWorkspace). Rows exact only in these builds are recorded exact=false
+    (pending-build-only) and are not counted.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export name, string literals by bytes, float
@@ -50,12 +52,30 @@ UNIT_FLAGS = ['/fp:fast', '/U_RELEASEASSERT']
 
 PENDING = OUT / 'humanoid2008-pending'
 (PENDING / 'v8datamodel').mkdir(parents=True, exist_ok=True)
-text = (ROOT / 'tools/rbxgs/Client/App/include/v8datamodel/Camera.h').read_text()
-for old, new in (('extern const char* sCamera;', 'extern char sCamera[];'),
-                 ('DescribedCreatable<Camera, Instance, &sCamera>', 'DescribedCreatable<Camera, Instance, sCamera>')):
-    assert text.count(old) == 1, old
-    text = text.replace(old, new)
-(PENDING / 'v8datamodel/Camera.h').write_text(text)
+# The native v8datamodel/Camera.h (char sCamera[]) now exists, so the Camera.h copy of the first pass is not needed;
+# remove the one an earlier run of this recorder generated.
+if (PENDING / 'v8datamodel/Camera.h').exists():
+    (PENDING / 'v8datamodel/Camera.h').unlink()
+# (1) native v8datamodel/ModelInstance.h (other owner): member template findModifierOfType<T>() walking the existing
+#     `modifiers` vector (005d8690 = <Humanoid>; same proposal as record_native_appearance.py, 005d4460 = <Skin>).
+MODEL_TEMPLATE = '''\t\ttemplate<class T> T* findModifierOfType() const   // proposal (005d4460 = <Skin>, 005d8690 = <Humanoid>)
+\t\t{
+\t\t\tstd::vector<IModelModifier*>::const_iterator end = modifiers.end();
+\t\t\tfor (std::vector<IModelModifier*>::const_iterator iter = modifiers.begin(); iter != end; ++iter)
+\t\t\t{
+\t\t\t\tif (T* result = dynamic_cast<T*>(*iter))
+\t\t\t\t\treturn result;
+\t\t\t}
+\t\t\treturn NULL;
+\t\t}
+'''
+text = (R / 'native-headers/v8datamodel/ModelInstance.h').read_text()
+anchor = '\t\tPartInstance* getPrimaryPartInternal() const;\n'
+assert text.count(anchor) == 1
+(PENDING / 'v8datamodel/ModelInstance.h').write_text(text.replace(anchor, MODEL_TEMPLATE + anchor))
+# (2) v8datamodel/Workspace.h: declaration-only overlay (findWorkspace 005a3380, contextInWorkspace 005a33d0).
+WORKSPACE_OVERLAY = R / 'tests/NativeHumanoid2008PendingWorkspace.h'
+(PENDING / 'v8datamodel/Workspace.h').write_text(WORKSPACE_OVERLAY.read_text())
 PENDING_FLAGS = ['/I' + str(PENDING), '/DNATIVE_HUMANOID2008_PENDING']
 
 
@@ -138,11 +158,25 @@ EXTERNAL = {
     '??0?$signal0@XU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z': 0x499c00,
     '??0?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z': 0x499c00,
     '??0?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z': 0x499c00,
+    # Second pass (getTopOfHead, renderWaypoint, getLocation, moveTo, setTargetPoint, newJoint, pending rows)
+    '?v@?1??unitX@Vector3@G3D@@SAABV23@XZ@4V23@A': 0x9737f4,   # G3D::Vector3::unitX() static, moveTo 005dc3d0
+    '?identity@Matrix3@G3D@@SAABV12@XZ': 0x513e20,             # getTopOfHead 005d76a0, renderWaypoint 005d7750
+    '??0Matrix3@G3D@@QAE@ABV01@@Z': 0x513220,                  # copy ctor (evidence: ICF operator=), same call sites
+    '?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ': 0x598cb0,   # getLocation 005d9210, moveTo
+    '?green@Color3@G3D@@SAABV12@XZ': 0x5148e0,                 # renderWaypoint 005d7750
+    '?cylinder@DrawAdorn@RBX@@SAXPAVAdorn@2@ABVCoordinateFrame@G3D@@HMMABVColor3@5@@Z': 0x6773f0,   # 005d779e
+    '?setMaxVelocity@Motor@RBX@@QAEXM@Z': 0x5e4fe0,            # newJoint 005d8469
+    '??0Motor@RBX@@QAE@XZ': 0x5e4ee0,                          # Creatable<Instance>::create<Motor> 004b3294
+    '??0Snap@RBX@@QAE@XZ': 0x5e4600,                           # Creatable<Instance>::create<Snap> 004b23f4
+    # boost::detail::shared_count(T*, Creatable<Instance>::Deleter) (not exact here), bound at 004b32b1 / 004b2411
+    '??$?0PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVMotor@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z': 0x4b3110,
+    '??$?0PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVSnap@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z': 0x4b2270,
+    # pending rows only
+    '?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z': 0x49aca0,   # 005d9bb5
+    '?findWorkspace@Workspace@RBX@@SAPAV12@PBVInstance@2@@Z': 0x5a3380,                          # 005d79c0
+    '?contextInWorkspace@Workspace@RBX@@SA_NPBVInstance@2@@Z': 0x5a33d0,                         # 005d79d3
     # Humanoid members declared here whose bodies are not recovered (bound at the listed call sites)
     '?getIntendedMovementVector@Humanoid@RBX@@AAE?AVVector3@G3D@@_N@Z': 0x5d9a50,   # 005d9bf0 / 005d9c10
-    '?getLocation@Humanoid@RBX@@EBE?BVCoordinateFrame@G3D@@XZ': 0x5d9210,          # vtordisp thunk 005d9300
-    '?moveTo@Humanoid@RBX@@QAEXABVVector3@G3D@@PAVPartInstance@2@@Z': 0x5dc3d0,     # moveTo2 005dca00
-    '?setTargetPoint@Humanoid@RBX@@QAEXABVVector3@G3D@@@Z': 0x5dc2f0,              # initializer 007f65d0
     # RefPropDescriptor<Humanoid, PartInstance> constructor (shared reflection.h template): not exact, the two
     # vtable stores are ordered differently (see PROPOSALS); bound at initializers 007f62d0..007f63f0.
     '??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z': 0x5da4e0,
@@ -207,6 +241,10 @@ SEEDS_MAIN = [
     (0x5d80c0, '?getIntendedRotationAboutYAxis@' + HU),
     (0x5d80e0, '?computeForce@' + HU),
     (0x5d7fe0, '?getCameraIgnorePrimitives@' + HU),
+    (0x5d7640, '?askSetParent@' + HU),
+    (0x5d7670, '?getCharacterFromHumanoid@' + HU),
+    (0x5d76a0, '?getTopOfHead@' + HU),
+    (0x5d7750, '?renderWaypoint@' + HU),
     (0x7f6450, '??__EpropWalkToPoint@RBX@@YAXXZ'),
     (0x7f64b0, '??__EpropWalkDirection@RBX@@YAXXZ'),
     (0x7f6510, '??__EpropWalkRotationalVelocity@RBX@@YAXXZ'),
@@ -243,29 +281,46 @@ SEEDS_PARTS = [
     (0x5dc600, '?setTorso@' + HU),
     (0x5dca00, '?moveTo2@' + HU),
     (0x5d77b0, '?getContactManager@' + HU),
+    (0x5d75a0, '?getHeadFromCharacter@' + HU),
+    (0x5d9210, '?getLocation@' + HU),
+    (0x5dc3d0, '?moveTo@' + HU),
+    (0x5dc2f0, '?setTargetPoint@' + HU),
+    (0x5d9010, '?findRightShoulder@' + HU),
+    (0x5d8420, '?newJoint@RBX@@'),
     (0x7f62d0, '??__EpropTorso@RBX@@YAXXZ'),
     (0x7f6330, '??__EpropLeftLeg@RBX@@YAXXZ'),
     (0x7f6390, '??__EpropRightLeg@RBX@@YAXXZ'),
     (0x7f63f0, '??__EpropWalkToPart@RBX@@YAXXZ'),
 ]
 PENDING_SEEDS_MAIN = [
-    (0x5d7640, '?askSetParent@' + HU),
-    (0x5d7670, '?getCharacterFromHumanoid@' + HU),
+    (0x5d9a20, '?modelIsCharacter@' + HU),
+    (0x5d9bb0, '?getLocalHumanoidFromContext@' + HU),
 ]
 PENDING_SEEDS_PARTS = [
-    (0x5d75a0, '?getHeadFromCharacter@' + HU),
+    (0x5d79b0, '?hasWalkToPoint@' + HU),
 ]
 PENDING_REASON = {
-    '005d7640': 'askSetParent (slot 3; ICF with CharacterAppearance/ModelInstance): dynamic_cast<const ModelInstance*> '
-                'needs a native ModelInstance.h that compiles (donor Camera.h passes &sCamera)',
-    '005d7670': 'getCharacterFromHumanoid: dynamic_cast<ModelInstance*> (same ModelInstance/Camera.h blocker)',
-    '005d75a0': 'getHeadFromCharacter: findFirstChildByName on a const ModelInstance* (same blocker)',
+    '005d9a20': 'modelIsCharacter: dynamic_cast<const ModelInstance*> then ModelInstance::findModifierOfType<Humanoid> '
+                '(member template proposed for the native ModelInstance.h owner)',
+    '005d9bb0': 'getLocalHumanoidFromContext: Network::Players::findLocalCharacter 0049aca0 + inlined modelIsCharacter '
+                '(same findModifierOfType proposal)',
+    '005d8690': 'ModelInstance::findModifierOfType<Humanoid> (proposed member template; callers 005d9a20, 005d9bb0, '
+                '005d9c30, 005db4c0, 005db960)',
+    '005d79b0': 'hasWalkToPoint: Workspace::findWorkspace 005a3380 / contextInWorkspace 005a33d0 (no native '
+                'Workspace.h; declaration-only overlay tests/NativeHumanoid2008PendingWorkspace.h)',
 }
 PROPOSALS = [
-    'v8datamodel/Camera.h (donor, reached through the native ModelInstance.h; other owner): declare `extern char '
-    'sCamera[];` and derive from DescribedCreatable<Camera, Instance, sCamera> (as in the ClickDetector and '
-    'appearance proposals); with it askSetParent 005d7640, getCharacterFromHumanoid 005d7670 and '
-    'getHeadFromCharacter 005d75a0 are exact (pending build here).',
+    'native v8datamodel/ModelInstance.h (other owner): add the member template `template<class T> T* '
+    'findModifierOfType() const` walking the existing `modifiers` vector (same text as the appearance proposal, '
+    '005d4460 = <Skin>). 005d8690 is the <Humanoid> instantiation; with it modelIsCharacter 005d9a20 and '
+    'getLocalHumanoidFromContext 005d9bb0 are exact (pending build), and render2d 005db960, render3dAdorn 005d9c30 '
+    'and onLocalHumanoidEnteringWorkspace 005db4c0 call it.',
+    'v8datamodel/Workspace.h (no native header; the donor fails with C2440 on &sWorkspace; other owner): a 2008 '
+    'Workspace declaring at least findWorkspace 005a3380, getWorldIfInWorkspace 005a3390 and contextInWorkspace '
+    '005a33d0. hasWalkToPoint 005d79b0 is exact against the declaration-only overlay '
+    'tests/NativeHumanoid2008PendingWorkspace.h. render2d / onLocalHumanoidEnteringWorkspace also need its '
+    'ICameraOwner subobject at Workspace+0x288 (getCamera slot 1, getGCamera slot 2) and Camera::getCameraType '
+    '(+0x1d4), getCameraSubject 005cc420, setCameraSubject 005cde10.',
     'v8kernel/Connector2008.h vs the donor v8kernel/Connector.h (Connector2008.h owner): a shared 2008 Connector '
     'reachable from v8world/Primitive.h would let the Humanoid limb/part bodies share one translation unit with the '
     'constructor (today Humanoid2008Parts.cpp selects the donor Connector, see the header comment).',
@@ -277,6 +332,16 @@ PROPOSALS = [
     'GetSetImpl<const Vector3& getter> 0083d308 = [0060a2f0, 0060a2f0, 005d7b60, 005d7bb0]; the donor class has '
     'three (no isWriteOnly). The getset factories here bind those vtables by RTTI only; the GetSetImpl '
     'getValue/setValue bodies 005d7b20/005d7b60/005d7bb0/005d7bf0/005d7c30 are not counted until the slot is added.',
+    'native v8datamodel/PartInstance.h (other owner): the 2008 Primitive is embedded at PartInstance+0x228 '
+    '(collectAllDescendantCharacterPrims 005d9d10 pushes part+0x228; onEvent 005dc740 calls Primitive 005e75b0 on '
+    'torso+0x228; cameraSetWalkOrientation 005dc7f0 reads the body at +0x2c8). Blocks getIgnorePrims 005db9e0, '
+    'tellCameraNear 005d9df0, onEvent 005dc740, cameraSetWalkOrientation 005dc7f0 and buildJoints 005d9340.',
+    'native v8tree/Instance.h (other owner): the template visitDescendents(F) const (instantiated at 005d8540 for '
+    'boost::bind(&collectAllDescendantCharacterPrims, _1, boost::ref(vector<Primitive*>)), used by getIgnorePrims '
+    'and tellCameraNear).',
+    'humanoid/HumanoidState.h (HumanoidState owner): onAncestorChanged 005db560 calls a cdecl static at 00643280 '
+    'that returns `new Running(humanoid)` (operator new 0xcc, Running ctor 00666ac0); it needs a declaration (name '
+    'unknown in the binary) before onAncestorChanged can be built.',
 ]
 
 LOCAL_EH = nb.LOCAL_EH
@@ -502,7 +567,6 @@ for at, vt in HUMANOID_VTABLES.items():
 # Slots whose body this recovery declares but does not define (or defines only in the pending build): bound by
 # position in the original vtable only, recorded as such.
 SLOT_ONLY = {
-    '?askSetParent@' + HU + 'EBE_NPBVInstance@2@@Z': 'askSetParent 005d7640 (pending build only)',
     '?onAncestorChanged@' + HU + 'EAEXABUAncestorChanged@2@@Z': 'onAncestorChanged 005db560 (not recovered)',
     '?getBody@' + HU + 'EAEPAVBody@2@H@Z': 'getBody 005d9310 (not recovered: Primitive/Body layout)',
     '?render2d@' + HU + 'EAEXPAVAdorn@2@@Z': 'render2d 005db960 (not recovered)',
@@ -512,8 +576,6 @@ SLOT_ONLY = {
     '?onEvent@' + HU + 'EAEXPBVRunService@2@VStepped@2@@Z': 'onEvent 005dc740 (not recovered)',
     '?getIgnorePrims@' + HU + 'UAEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z':
         'getIgnorePrims 005db9e0 (not recovered)',
-    '?getLocation@' + HU + 'EBE?BVCoordinateFrame@G3D@@XZ': 'getLocation 005d9210 (not recovered: PartInstance '
-                                                            'coordinate frame)',
 }
 # Inherited defaults at the same address in the original base vtables (IRenderable, ICameraSubject,
 # ICharacterSubject, Connector, Instance): read from the original vtable and checked to be the shared body.
@@ -641,7 +703,7 @@ for base, offset in (('.?AVConnector@RBX@@', 0x130), ('.?AVIControllable@RBX@@',
 
 exact = [r['address'] for r in main_out + parts_out]
 sha = nb.sha
-paths = [Path(__file__).resolve(), HDR, SRC, PARTS, LAYOUT]
+paths = [Path(__file__).resolve(), HDR, SRC, PARTS, LAYOUT, WORKSPACE_OVERLAY]
 receipt = {
     'class': 'RBX::Humanoid', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
     'flags': {'layout': layout_flags, 'main': main_flags, 'parts': parts_flags, 'pending': pend_flags,
@@ -655,8 +717,11 @@ receipt = {
     'methods': main_out + parts_out,
     'exact_count': len(main_out) + len(parts_out), 'exact_unique_addresses': len(set(exact)),
     'pending_methods': pend_out,
-    'pending_note': 'Pending rows are exact only with NATIVE_HUMANOID2008_PENDING against the generated '
-                    'out/native-layouts/humanoid2008-pending/v8datamodel/Camera.h (char sCamera[]); not counted.',
+    'pending_note': 'Pending rows are exact only with NATIVE_HUMANOID2008_PENDING against '
+                    'out/native-layouts/humanoid2008-pending/ (generated ModelInstance.h with findModifierOfType<T>, '
+                    'Workspace.h overlay from tests/NativeHumanoid2008PendingWorkspace.h); not counted.',
+    'near_miss': {'005d9a50': 'getIntendedMovementVector(bool): 337/337 bytes, only the x87 store order of the '
+                              'delta (x, z, then y = 0 around the (dy + 3) magnitude) differs; body not kept',},
     'slot_only': slot_only,
     'proposals': PROPOSALS,
     'vtables': vtables,
