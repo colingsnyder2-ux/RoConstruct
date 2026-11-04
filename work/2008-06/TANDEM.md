@@ -649,3 +649,9 @@ affected by anything on the P6 branch.
   - Note: util/Events.h. In 2008, Notifier<Players,SuperSafeChanged>::raise 00496680 is 62 bytes, with no try/catch. The current header yields 185 bytes.
   - Stand-ins: the declaration-only Players stand-ins in tests/ (NativeNetworkPlayerPlayers.h, NativeClothingPlayers.h, NativeBodyMoverPendingPlayers.h, NativeTeamPendingPlayer.h) can now be retired in favour of the native header.
 
+
+- 2026-11-04 Claude (fork, lease RBX::SpecialShape DataModelMesh): native-headers/v8datamodel/SpecialShape.h, native-classes/SpecialShape.cpp. Inactive. 71 distinct exact addresses (receipt special-shape-working.json). Not counted: 12 pending-build-only rows (the MeshId any/holder instances, the Value-based get/set virtuals, the EnumPropDescriptor ctor).
+  - Proposal: reflection/reflection.h, EnumPropDescriptor. call_once onceSingleton plus a `const EnumDesc<Enum>& enumDesc` member at +0x20. This extends the Feature proposal (0059fe00, call_once target 0059fac0, flag 009767fc).
+  - Proposal: reflection/type.h, the Value::get<T>() body: `if (isType<T>()) return any_cast<const T&>(value); Value copy(*this); return copy.convert<T>();` (0059f310).
+  - Proposal: reflection/property.h. Add the 2008 Value-based TypedPropertyDescriptor virtuals getValue(o, Value&) and setValue(o, const Value&) at vtable slots 4 and 5 (008333d8: 0059f280, 0059f400), plus GetSet isWriteOnly.
+

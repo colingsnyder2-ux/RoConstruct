@@ -1,0 +1,1697 @@
+{
+  "class": "RBX::SpecialShape (\"SpecialMesh\")",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpecialShapeLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeSpecialShapeLayout.cpp"
+    ],
+    "main": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpecialShape.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SpecialShape.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/special-shape-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpecialShapePending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SpecialShape.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_special_shape.py": "1a4175ea34673ae62d68d94b0ef6cecf1d492fbbbb61aedfdb4c9001dd3d24ec",
+    "rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h": "25ab90d503f39c08eba8907d31d5a7c63c746d691d86e151486eb4735c93abb7",
+    "rebuild/2008-06/native-classes/SpecialShape.cpp": "c206826e4faf5eede0dcfc67fe3ff8cecfda621fa4b98c0fa896fcc586ea87cf",
+    "rebuild/2008-06/tests/NativeSpecialShapeLayout.cpp": "4f2488260e936912f926a8e50fcde9d16d38a01464ddc4599be2829456abab8f"
+  },
+  "objects": {
+    "NativeSpecialShapeLayout.obj": "176d1dbee5186f4a9a240d1a019ce4144ff53387c35aca0d6c3c020c973d25b3",
+    "NativeSpecialShape.obj": "2e73609528306ffbb3e4537407a5405caee7b4451c44966c593232a7d42b26d1",
+    "NativeSpecialShapePending.obj": "53b13533851724f63d5f37f81312ae4c80243329e1108f6bc2a7e72d8483b63b"
+  },
+  "layout": {
+    "SpecialShape": "0x18c (create<SpecialShape> 0041ec30 allocates 0x18c); meshType +0x130, scale +0x134, textureId +0x140, meshId +0x160, vertColor +0x180; no mesh base class (RTTI 21 bases)"
+  },
+  "methods": [
+    {
+      "address": "0059ece0",
+      "symbol": "??1?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x833284 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x833274 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83326c (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6BDebugable@1@@": "0x833264 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x833254 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x833244 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x833234 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x833224 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x833214 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x833204 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059ed40",
+      "symbol": "??0?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@IAE@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x833284 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x833274 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83326c (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6BDebugable@1@@": "0x833264 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x833254 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x833244 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x833234 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x833224 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x833214 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x833204 (vtable RTTI .?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059edb0",
+      "symbol": "??_G?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAE@XZ": "0x59ece0 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059ee00",
+      "symbol": "?getValue@?$GetSetImpl@P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE?AVVector3@G3D@@PBVDescribedBase@34@@Z",
+      "size": 52,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0059ee40",
+      "symbol": "??1?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAE@XZ": "0x59ece0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059ee50",
+      "symbol": "??0?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "size": 98,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@VMeshId@RBX@@@Type@Reflection@RBX@@SAABV012@XZ": "0x615490 (external)",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@6B@": "0x833318 (vtable RTTI .?AV?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0059f050",
+      "symbol": "??$getset@P8SpecialShape@RBX@@BE?BW4MeshType@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@@std@@P8SpecialShape@2@BE?BW4MeshType@52@XZP852@AEXW4652@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SpecialShape@RBX@@BE?BW4MeshType@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@6B@": "0x8332c8 (vtable RTTI .?AV?$GetSetImpl@P8SpecialShape@RBX@@BE?BW4MeshType@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059f0a0",
+      "symbol": "??$getset@P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@P8SpecialShape@2@BEABVVector3@G3D@@XZP852@AEXABV67@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@6B@": "0x8332dc (vtable RTTI .?AV?$GetSetImpl@P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059f0f0",
+      "symbol": "??$getset@P8SpecialShape@RBX@@BE?BVMeshId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@@std@@P8SpecialShape@2@BE?BVMeshId@2@XZP852@AEXABV62@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SpecialShape@RBX@@BE?BVMeshId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@6B@": "0x8332f0 (vtable RTTI .?AV?$GetSetImpl@P8SpecialShape@RBX@@BE?BVMeshId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059f140",
+      "symbol": "??$getset@P8SpecialShape@RBX@@BE?BVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8SpecialShape@2@BE?BVTextureId@2@XZP852@AEXABV62@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SpecialShape@RBX@@BE?BVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x833304 (vtable RTTI .?AV?$GetSetImpl@P8SpecialShape@RBX@@BE?BVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059f260",
+      "symbol": "?getClassName@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d0c8 (local static)",
+        "??$callDoDeclare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@CAXXZ": "0x41e0e0 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41df70 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059f470",
+      "symbol": "??1?$map@PBVName@RBX@@W4MeshType@SpecialShape@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4MeshType@SpecialShape@2@@std@@@6@@std@@QAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4MeshType@SpecialShape@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4MeshType@SpecialShape@2@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x553d80 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059f480",
+      "symbol": "??1?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@EAE@XZ",
+      "size": 392,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@6B@": "0x83335c (vtable RTTI .?AV?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@ offset 0x0)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ": "0x4077d0 (external (evidence name))",
+        "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4MeshType@SpecialShape@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4MeshType@SpecialShape@2@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x553d80 (external)",
+        "??1EnumDescriptor@Reflection@RBX@@MAE@XZ": "0x56c080 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@EAE@XZ"
+      ]
+    },
+    {
+      "address": "0059f610",
+      "symbol": "??_G?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@EAE@XZ": "0x59f480 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059f630",
+      "symbol": "??0?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@AAE@XZ",
+      "size": 430,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AW4MeshType@SpecialShape@RBX@@@8": "0x94b400 (RTTI .?AW4MeshType@SpecialShape@RBX@@)",
+        "??_C@_08NIJHPA@MeshType?$AA@": "0x833394 (literal 'MeshType')",
+        "??0EnumDescriptor@Reflection@RBX@@IAE@PBDABVtype_info@@@Z": "0x56c590 (external (evidence name))",
+        "??_7?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@6B@": "0x83335c (vtable RTTI .?AV?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@ offset 0x0)",
+        "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4MeshType@SpecialShape@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4MeshType@SpecialShape@2@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4MeshType@SpecialShape@2@@std@@@1@@Z": "0x446110 (external)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_C@_04BFCCBDOP@Head?$AA@": "0x83338c (literal 'Head')",
+        "?addPair@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@AAEXW4MeshType@SpecialShape@3@PBD@Z": "0x64d530 (external)",
+        "??_C@_05LHKEDNFH@Torso?$AA@": "0x832a1c (literal 'Torso')",
+        "??_C@_05OPDCLMDN@Wedge?$AA@": "0x833384 (literal 'Wedge')",
+        "??_C@_05FAJDJAI@Brick?$AA@": "0x832ddc (literal 'Brick')",
+        "??_C@_06JBMJMGAL@Sphere?$AA@": "0x83337c (literal 'Sphere')",
+        "??_C@_08OPEIJNOM@Cylinder?$AA@": "0x833370 (literal 'Cylinder')",
+        "??_C@_08DIPNDOFL@FileMesh?$AA@": "0x833364 (literal 'FileMesh')"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@AAE@XZ"
+      ]
+    },
+    {
+      "address": "0059f7e0",
+      "symbol": "?classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x976708 (local static)",
+        "?sSpecialShape@RBX@@3PADA": "0x94afac (data)",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x976648 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe080 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "0059f850",
+      "symbol": "??$?0P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@P8SpecialShape@2@BEABVVector3@G3D@@XZP852@AEXABV67@@Z@Z": "0x59f0a0 (own row)",
+        "?classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x59f7e0 (own row)",
+        "??0?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x59a4b0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@6B@": "0x8333a4 (vtable RTTI .?AV?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0059f900",
+      "symbol": "??$?0P8SpecialShape@RBX@@BE?BVMeshId@1@XZP801@AEXABV21@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BVMeshId@2@XZP832@AEXABV42@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8SpecialShape@RBX@@BE?BVMeshId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@@std@@P8SpecialShape@2@BE?BVMeshId@2@XZP852@AEXABV62@@Z@Z": "0x59f0f0 (own row)",
+        "?classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x59f7e0 (own row)",
+        "??0?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x59ee50 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@6B@": "0x8333d8 (vtable RTTI .?AV?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SpecialShape@RBX@@BE?BVMeshId@1@XZP801@AEXABV21@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BVMeshId@2@XZP832@AEXABV42@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0059f9b0",
+      "symbol": "??$?0P8SpecialShape@RBX@@BE?BVTextureId@1@XZP801@AEXABV21@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BVTextureId@2@XZP832@AEXABV42@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8SpecialShape@RBX@@BE?BVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@P8SpecialShape@2@BE?BVTextureId@2@XZP852@AEXABV62@@Z@Z": "0x59f140 (own row)",
+        "?classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x59f7e0 (own row)",
+        "??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x5978a0 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@6B@": "0x83340c (vtable RTTI .?AV?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SpecialShape@RBX@@BE?BVTextureId@1@XZP801@AEXABV21@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BVTextureId@2@XZP832@AEXABV42@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0059fa60",
+      "symbol": "?singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV123@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV123@XZ@51": "0x9767f8 (local static)",
+        "?s@?1??singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV234@XZ@4V234@A": "0x976710 (local static)",
+        "??0?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@AAE@XZ": "0x59f630 (own row)",
+        "??__Fs@?1??singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV123@XZ@YAXXZ": "0x7fe090 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV123@XZ"
+      ]
+    },
+    {
+      "address": "0059fad0",
+      "symbol": "??0?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@IAE@XZ",
+      "size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??0?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@IAE@XZ": "0x59ed40 (own row)",
+        "?classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x59f7e0 (own row)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8334bc (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8334b0 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8334a8 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6BDebugable@1@@": "0x8334a0 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x833490 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x833480 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x833470 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x833460 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x833450 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x833440 (vtable RTTI .?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "0059fbb0",
+      "symbol": "??0SpecialShape@RBX@@QAE@XZ",
+      "size": 305,
+      "exact": true,
+      "verified_targets": {
+        "??0?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@IAE@XZ": "0x59fad0 (own row)",
+        "??_7SpecialShape@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x833584 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0x0)",
+        "??_7SpecialShape@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x833578 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0x10)",
+        "??_7SpecialShape@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x833570 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0x14)",
+        "??_7SpecialShape@RBX@@6BDebugable@1@@": "0x833568 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0x20)",
+        "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x833558 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0x24)",
+        "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x833548 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0x44)",
+        "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x833538 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0x64)",
+        "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x833528 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0x84)",
+        "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x833518 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0xa4)",
+        "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x833508 (vtable RTTI .?AVSpecialShape@RBX@@ offset 0xc4)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270 (external (evidence name))",
+        "??_C@_04GONFKEIN@Mesh?$AA@": "0x8334fc (literal 'Mesh')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0SpecialShape@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0059fd70",
+      "symbol": "??1SpecialShape@RBX@@UAE@XZ",
+      "size": 97,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??1?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAE@XZ": "0x59ece0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??1SpecialShape@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "0059fde0",
+      "symbol": "??_GSpecialShape@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1SpecialShape@RBX@@UAE@XZ": "0x59fd70 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fee0",
+      "symbol": "?setMeshType@SpecialShape@RBX@@QAEXW4MeshType@12@@Z",
+      "size": 34,
+      "exact": true,
+      "verified_targets": {
+        "_desc_meshType": "0x976858 (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059ff10",
+      "symbol": "?setScale@SpecialShape@RBX@@QAEXABVVector3@G3D@@@Z",
+      "size": 93,
+      "exact": true,
+      "verified_targets": {
+        "_desc_scale": "0x97683c (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059ff70",
+      "symbol": "?setVertColor@SpecialShape@RBX@@QAEXABVVector3@G3D@@@Z",
+      "size": 93,
+      "exact": true,
+      "verified_targets": {
+        "_desc_vertColor": "0x97687c (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059ffd0",
+      "symbol": "?setMeshId@SpecialShape@RBX@@QAEXABVMeshId@2@@Z",
+      "size": 93,
+      "exact": true,
+      "verified_targets": {
+        "??9RBX@@YA_NABVContentId@0@0@Z": "0x55bd60 (external 0x55bd60 (jmp msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z))",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "_desc_meshId": "0x976820 (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "_desc_meshType": "0x976858 (data)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005a0030",
+      "symbol": "?setTextureId@SpecialShape@RBX@@QAEXABVTextureId@2@@Z",
+      "size": 93,
+      "exact": true,
+      "verified_targets": {
+        "??9RBX@@YA_NABVContentId@0@0@Z": "0x55bd60 (external 0x55bd60 (jmp msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z))",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "_desc_textureId": "0x976804 (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "_desc_meshType": "0x976858 (data)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f4c20",
+      "symbol": "??__Edesc_meshType@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setMeshType@SpecialShape@RBX@@QAEXW4MeshType@12@@Z": "0x59fee0 (own row)",
+        "?getMeshType@SpecialShape@RBX@@QBE?BW4MeshType@12@XZ": "0x565e30 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_08NIJHPA@MeshType?$AA@": "0x833394 (literal 'MeshType')",
+        "_desc_meshType": "0x976858 (data)",
+        "??$?0P8SpecialShape@RBX@@BE?BW4MeshType@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BW4MeshType@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x59fe00 (own row)",
+        "??__Fdesc_meshType@@YAXXZ": "0x7fdfe0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f4c60",
+      "symbol": "??__Edesc_scale@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setScale@SpecialShape@RBX@@QAEXABVVector3@G3D@@@Z": "0x59ff10 (own row)",
+        "?getScale@SpecialShape@RBX@@QBEABVVector3@G3D@@XZ": "0x68e8b0 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_05MAGIBEFI@Scale?$AA@": "0x833614 (literal 'Scale')",
+        "_desc_scale": "0x97683c (data)",
+        "??$?0P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x59f850 (own row)",
+        "??__Fdesc_scale@@YAXXZ": "0x7fe060 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f4ca0",
+      "symbol": "??__Edesc_meshId@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setMeshId@SpecialShape@RBX@@QAEXABVMeshId@2@@Z": "0x59ffd0 (own row)",
+        "?getMeshId@SpecialShape@RBX@@QBE?BVMeshId@2@XZ": "0x4e5f20 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_06CBEMPHMO@MeshId?$AA@": "0x83361c (literal 'MeshId')",
+        "_desc_meshId": "0x976820 (data)",
+        "??$?0P8SpecialShape@RBX@@BE?BVMeshId@1@XZP801@AEXABV21@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BVMeshId@2@XZP832@AEXABV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x59f900 (own row)",
+        "??__Fdesc_meshId@@YAXXZ": "0x7fe040 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f4ce0",
+      "symbol": "??__Edesc_textureId@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setTextureId@SpecialShape@RBX@@QAEXABVTextureId@2@@Z": "0x5a0030 (own row)",
+        "?getTextureId@SpecialShape@RBX@@QBE?BVTextureId@2@XZ": "0x4e5f50 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_09HHDDDLEN@TextureId?$AA@": "0x833624 (literal 'TextureId')",
+        "_desc_textureId": "0x976804 (data)",
+        "??$?0P8SpecialShape@RBX@@BE?BVTextureId@1@XZP801@AEXABV21@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BVTextureId@2@XZP832@AEXABV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x59f9b0 (own row)",
+        "??__Fdesc_textureId@@YAXXZ": "0x7fe020 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f4d20",
+      "symbol": "??__Edesc_vertColor@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setVertColor@SpecialShape@RBX@@QAEXABVVector3@G3D@@@Z": "0x59ff70 (own row)",
+        "?getVertColor@SpecialShape@RBX@@QBEABVVector3@G3D@@XZ": "0x4e5ba0 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_0M@NDEMEMGF@VertexColor?$AA@": "0x833630 (literal 'VertexColor')",
+        "_desc_vertColor": "0x97687c (data)",
+        "??$?0P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP801@AEXABV23@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BEABVVector3@G3D@@XZP832@AEXABV45@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x59f850 (own row)",
+        "??__Fdesc_vertColor@@YAXXZ": "0x7fe000 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fdfe0",
+      "symbol": "??__Fdesc_meshType@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_desc_meshType": "0x976858 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fe000",
+      "symbol": "??__Fdesc_vertColor@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_desc_vertColor": "0x97687c (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fe020",
+      "symbol": "??__Fdesc_textureId@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_desc_textureId": "0x976804 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fe040",
+      "symbol": "??__Fdesc_meshId@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_desc_meshId": "0x976820 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fe060",
+      "symbol": "??__Fdesc_scale@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_desc_scale": "0x97683c (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fe080",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x976648 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fe090",
+      "symbol": "??__Fs@?1??singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV123@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?s@?1??singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV234@XZ@4V234@A": "0x976710 (local static)",
+        "??1?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@EAE@XZ": "0x59f480 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0041df70",
+      "symbol": "??$doDeclare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x96d0a8 (local static)",
+        "?sSpecialShape@RBX@@3PADA": "0x94afac (data)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?n@?1???$doDeclare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96d0a4 (local static)"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "0041e0e0",
+      "symbol": "??$callDoDeclare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doDeclare@$1?sSpecialShape@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41df70 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004e5f20",
+      "symbol": "?getMeshId@SpecialShape@RBX@@QBE?BVMeshId@2@XZ",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004e5f50",
+      "symbol": "?getTextureId@SpecialShape@RBX@@QBE?BVTextureId@2@XZ",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004e5ba0",
+      "symbol": "?getVertColor@SpecialShape@RBX@@QBEABVVector3@G3D@@XZ",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0068e8b0",
+      "symbol": "?getScale@SpecialShape@RBX@@QBEABVVector3@G3D@@XZ",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00565e30",
+      "symbol": "?getMeshType@SpecialShape@RBX@@QBE?BW4MeshType@12@XZ",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0062e190",
+      "symbol": "?askSetParent@SpecialShape@RBX@@MBE_NPBVInstance@2@@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (RTTI .?AVPartInstance@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059a4b0",
+      "symbol": "??0?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "size": 98,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@VVector3@G3D@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56ce60 (external (evidence name))",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@6B@": "0x832c28 (vtable RTTI .?AV?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$GetSetImpl@P8SpecialShape@RBX@@BE?BW4MeshType@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$GetSetImpl@P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$GetSetImpl@P8SpecialShape@RBX@@BE?BVMeshId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$GetSetImpl@P8SpecialShape@RBX@@BE?BVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005cf660",
+      "symbol": "?getValue@?$GetSetImpl@P8SpecialShape@RBX@@BE?BW4MeshType@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@UBE?AW4MeshType@SpecialShape@4@PBVDescribedBase@34@@Z",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00563b00",
+      "symbol": "?setValue@?$GetSetImpl@P8SpecialShape@RBX@@BE?BW4MeshType@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABW4MeshType@SpecialShape@4@@Z",
+      "size": 55,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b73c0",
+      "symbol": "?setValue@?$GetSetImpl@P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVVector3@G3D@@@Z",
+      "size": 51,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005cf5d0",
+      "symbol": "?getValue@?$GetSetImpl@P8SpecialShape@RBX@@BE?BVMeshId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@UBE?AVMeshId@4@PBVDescribedBase@34@@Z",
+      "size": 138,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?getValue@?$GetSetImpl@P8SpecialShape@RBX@@BE?BVMeshId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@UBE?AVMeshId@4@PBVDescribedBase@34@@Z"
+      ]
+    },
+    {
+      "address": "005b73c0",
+      "symbol": "?setValue@?$GetSetImpl@P8SpecialShape@RBX@@BE?BVMeshId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VMeshId@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVMeshId@4@@Z",
+      "size": 51,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005cf5d0",
+      "symbol": "?getValue@?$GetSetImpl@P8SpecialShape@RBX@@BE?BVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@UBE?AVTextureId@4@PBVDescribedBase@34@@Z",
+      "size": 138,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?getValue@?$GetSetImpl@P8SpecialShape@RBX@@BE?BVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@UBE?AVTextureId@4@PBVDescribedBase@34@@Z"
+      ]
+    },
+    {
+      "address": "005b73c0",
+      "symbol": "?setValue@?$GetSetImpl@P8SpecialShape@RBX@@BE?BVTextureId@2@XZP812@AEXABV32@@Z@?$PropDescriptor@VSpecialShape@RBX@@VTextureId@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVTextureId@4@@Z",
+      "size": 51,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0059edb0",
+      "symbol": "??_G?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAE@XZ": "0x59ece0 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fcf0",
+      "symbol": "??_ESpecialShape@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ESpecialShape@RBX@@UAEPAXI@Z": "0x59fde0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fd00",
+      "symbol": "??_ESpecialShape@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ESpecialShape@RBX@@UAEPAXI@Z": "0x59fde0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fd10",
+      "symbol": "??_ESpecialShape@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ESpecialShape@RBX@@UAEPAXI@Z": "0x59fde0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fd20",
+      "symbol": "??_ESpecialShape@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ESpecialShape@RBX@@UAEPAXI@Z": "0x59fde0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fd30",
+      "symbol": "??_ESpecialShape@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ESpecialShape@RBX@@UAEPAXI@Z": "0x59fde0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fd40",
+      "symbol": "??_ESpecialShape@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ESpecialShape@RBX@@UAEPAXI@Z": "0x59fde0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fd50",
+      "symbol": "??_ESpecialShape@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ESpecialShape@RBX@@UAEPAXI@Z": "0x59fde0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fd60",
+      "symbol": "??_ESpecialShape@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ESpecialShape@RBX@@UAEPAXI@Z": "0x59fde0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059eda0",
+      "symbol": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059eda0",
+      "symbol": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059edd0",
+      "symbol": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059edd0",
+      "symbol": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059ede0",
+      "symbol": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059ede0",
+      "symbol": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059edf0",
+      "symbol": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059edf0",
+      "symbol": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fb70",
+      "symbol": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fb70",
+      "symbol": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fb80",
+      "symbol": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fb80",
+      "symbol": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fb90",
+      "symbol": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fb90",
+      "symbol": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fba0",
+      "symbol": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@MAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0059fba0",
+      "symbol": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UAEPAXI@Z": "0x59edb0 (own row (??_G))"
+      },
+      "local_eh": []
+    }
+  ],
+  "exact_count": 86,
+  "exact_unique_addresses": 71,
+  "pending_methods": [
+    {
+      "address": "0059eec0",
+      "symbol": "??0?$holder@VMeshId@RBX@@@any@boost@@QAE@ABVMeshId@RBX@@@Z",
+      "size": 89,
+      "exact": false,
+      "verified_targets": {
+        "??_7?$holder@VMeshId@RBX@@@any@boost@@6B@": "0x83334c (vtable RTTI .?AV?$holder@VMeshId@RBX@@@any@boost@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@VMeshId@RBX@@@any@boost@@QAE@ABVMeshId@RBX@@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "what": "boost::any::holder<MeshId> constructor"
+    },
+    {
+      "address": "0059ef20",
+      "symbol": "?type@?$holder@VMeshId@RBX@@@any@boost@@UBEABVtype_info@@XZ",
+      "size": 6,
+      "exact": false,
+      "verified_targets": {
+        "??_R0?AVMeshId@RBX@@@8": "0x94b368 (RTTI .?AVMeshId@RBX@@)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true,
+      "what": "holder<MeshId>::type"
+    },
+    {
+      "address": "0059ef30",
+      "symbol": "?clone@?$holder@VMeshId@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ",
+      "size": 96,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@VMeshId@RBX@@@any@boost@@QAE@ABVMeshId@RBX@@@Z": "0x59eec0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?clone@?$holder@VMeshId@RBX@@@any@boost@@UBEPAVplaceholder@23@XZ"
+      ],
+      "exact_pending_build_only": true,
+      "what": "holder<MeshId>::clone"
+    },
+    {
+      "address": "0059ef90",
+      "symbol": "??$?0VMeshId@RBX@@@any@boost@@QAE@ABVMeshId@RBX@@@Z",
+      "size": 89,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$holder@VMeshId@RBX@@@any@boost@@QAE@ABVMeshId@RBX@@@Z": "0x59eec0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VMeshId@RBX@@@any@boost@@QAE@ABVMeshId@RBX@@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "what": "boost::any(const MeshId&)"
+    },
+    {
+      "address": "0059eff0",
+      "symbol": "??_G?$holder@VMeshId@RBX@@@any@boost@@UAEPAXI@Z",
+      "size": 88,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_7placeholder@any@boost@@6B@": "0x80ba1c (vtable RTTI .?AVplaceholder@any@boost@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??_G?$holder@VMeshId@RBX@@@any@boost@@UAEPAXI@Z"
+      ],
+      "exact_pending_build_only": true,
+      "what": "holder<MeshId> deleting destructor"
+    },
+    {
+      "address": "0059f190",
+      "symbol": "??$?4VMeshId@RBX@@@any@boost@@QAEAAV01@ABVMeshId@RBX@@@Z",
+      "size": 51,
+      "exact": false,
+      "verified_targets": {
+        "??$?0VMeshId@RBX@@@any@boost@@QAE@ABVMeshId@RBX@@@Z": "0x59ef90 (own row)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true,
+      "what": "boost::any::operator=(const MeshId&)"
+    },
+    {
+      "address": "0059f1d0",
+      "symbol": "??$any_cast@ABVMeshId@RBX@@@boost@@YAABVMeshId@RBX@@ABVany@0@@Z",
+      "size": 134,
+      "exact": false,
+      "verified_targets": {
+        "??_R0X@8": "0x929614 (RTTI .X)",
+        "??_R0?AVMeshId@RBX@@@8": "0x94b368 (RTTI .?AVMeshId@RBX@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "??_7bad_any_cast@boost@@6B@": "0x80ba2c (vtable RTTI .?AVbad_any_cast@boost@@ offset 0x0)",
+        "??$throw_exception@Vbad_any_cast@boost@@@boost@@YAXABVbad_any_cast@0@@Z": "0x40a3f0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$any_cast@ABVMeshId@RBX@@@boost@@YAABVMeshId@RBX@@ABVany@0@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "what": "any_cast<const MeshId&>"
+    },
+    {
+      "address": "0059f280",
+      "symbol": "?getValue@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z",
+      "size": 144,
+      "exact": false,
+      "verified_targets": {
+        "??$singleton@VMeshId@RBX@@@Type@Reflection@RBX@@SAABV012@XZ": "0x615490 (external)",
+        "??$?0VMeshId@RBX@@@any@boost@@QAE@ABVMeshId@RBX@@@Z": "0x59ef90 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?getValue@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "what": "TypedPropertyDescriptor<MeshId> Value-based getValue (2008 vtable 008333d8 slot 4)"
+    },
+    {
+      "address": "0059f310",
+      "symbol": "??$get@VMeshId@RBX@@@Value@Reflection@RBX@@QBE?AVMeshId@2@XZ",
+      "size": 227,
+      "exact": false,
+      "verified_targets": {
+        "??_R0?AVMeshId@RBX@@@8": "0x94b368 (RTTI .?AVMeshId@RBX@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)",
+        "??$any_cast@ABVMeshId@RBX@@@boost@@YAABVMeshId@RBX@@ABVany@0@@Z": "0x59f1d0 (own row)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??$convert@VMeshId@RBX@@@Value@Reflection@RBX@@QAEAAVMeshId@2@XZ": "0x6156c0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$get@VMeshId@RBX@@@Value@Reflection@RBX@@QBE?AVMeshId@2@XZ"
+      ],
+      "exact_pending_build_only": true,
+      "what": "Value::get<MeshId>"
+    },
+    {
+      "address": "0059f400",
+      "symbol": "?setValue@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z",
+      "size": 101,
+      "exact": false,
+      "verified_targets": {
+        "??$get@VMeshId@RBX@@@Value@Reflection@RBX@@QBE?AVMeshId@2@XZ": "0x59f310 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?setValue@?$TypedPropertyDescriptor@VMeshId@RBX@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "what": "TypedPropertyDescriptor<MeshId> Value-based setValue (slot 5)"
+    },
+    {
+      "address": "0059fac0",
+      "symbol": "?callSingleton@?$EnumPropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@CAXXZ",
+      "size": 5,
+      "exact": false,
+      "verified_targets": {
+        "?singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV123@XZ": "0x59fa60 (own row)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true,
+      "what": "EnumPropDescriptor call_once target (jmp EnumDesc<MeshType>::singleton)"
+    },
+    {
+      "address": "0059fe00",
+      "symbol": "??$?0P8SpecialShape@RBX@@BE?BW4MeshType@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BW4MeshType@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 214,
+      "exact": false,
+      "verified_targets": {
+        "?flag@?1??onceSingleton@?$EnumPropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@CAABV?$EnumDesc@W4MeshType@SpecialShape@RBX@@@34@XZ@4JA": "0x9767fc (local static)",
+        "?callSingleton@?$EnumPropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@CAXXZ": "0x59fac0 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "?singleton@?$EnumDesc@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@SAABV123@XZ": "0x59fa60 (own row)",
+        "?classDescriptor@?$Described@VSpecialShape@RBX@@$1?sSpecialShape@2@3PADAV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x59f7e0 (own row)",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$EnumPropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@6B@": "0x8335cc (vtable RTTI .?AV?$EnumPropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@ offset 0x0)",
+        "??$getset@P8SpecialShape@RBX@@BE?BW4MeshType@12@XZP812@AEXW4312@@Z@?$PropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4MeshType@SpecialShape@RBX@@@Reflection@RBX@@@std@@P8SpecialShape@2@BE?BW4MeshType@52@XZP852@AEXW4652@@Z@Z": "0x59f050 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SpecialShape@RBX@@BE?BW4MeshType@01@XZP801@AEXW4201@@Z@?$EnumPropDescriptor@VSpecialShape@RBX@@W4MeshType@12@@Reflection@RBX@@QAE@PBD0P8SpecialShape@2@BE?BW4MeshType@32@XZP832@AEXW4432@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ],
+      "exact_pending_build_only": true,
+      "what": "EnumPropDescriptor<SpecialShape, MeshType> constructor"
+    }
+  ],
+  "pending_note": "Pending rows are exact only against generated copies of reflection.h / type.h / property.h under out/native-layouts/special-shape-pending/; not counted as exact.",
+  "non_exact": {},
+  "proposals": [
+    "native-headers/reflection/reflection.h EnumPropDescriptor (shared, not edited; same as the 2026-11-04 Feature proposal): constructor = PropertyDescriptor via EnumPropertyDescriptor(Class::classDescriptor(), onceSingleton(), name, category, flags); getset(+0x1c); then a `const EnumDesc<Enum>& enumDesc` member at +0x20 = onceSingleton(), where onceSingleton() is boost::call_once(&callSingleton, flag) + EnumDesc<Enum>::singleton() and callSingleton is `jmp singleton` (0059fe00 / 0059fac0, flag 009767fc).",
+    "native-headers/reflection/type.h Value::get<T>() const body (declared only): if (isType<T>()) return boost::any_cast<const T&>(value); Value copy(*this); return copy.convert<T>(); (0059f310, MeshId).",
+    "reflection/property.h (donor include, no native override yet): TypedPropertyDescriptor<T>::GetSet gets `virtual bool isWriteOnly() const` at slot 1 (getset vtables 008332c8..00833304 hold 0060a2f0 twice; same as the Clothing proposal), and TypedPropertyDescriptor<T> gets the 2008 Value-based virtuals `void getValue(const DescribedBase*, Value&) const { value = getset->getValue(object); }` and `void setValue(DescribedBase*, const Value&) const { getset->setValue(object, value.get<T>()); }` (PropDescriptor<SpecialShape, MeshId> vtable 008333d8 slots 4/5 = 0059f280 / 0059f400). The full 2008 descriptor vtable has 12 slots; only these two bodies are proven here."
+  ],
+  "vtables": {
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x833204",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OME@AEPAXI@Z = 0x59fb80 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x833214",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OKE@AEPAXI@Z = 0x59edf0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x833224",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OIE@AEPAXI@Z = 0x59ede0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x833234",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OGE@AEPAXI@Z = 0x59fb70 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x833244",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OEE@AEPAXI@Z = 0x59fba0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x833254",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OCE@AEPAXI@Z = 0x59fb90 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x833264",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x83326c",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OBE@AEPAXI@Z = 0x59edd0 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x833274",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@OBA@AEPAXI@Z = 0x59eda0 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UBEABVName@2@XZ = 0x59f260 (own row)"
+      }
+    },
+    "??_7?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x833284",
+      "rtti": ".?AV?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x833440",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WME@AEPAXI@Z = 0x59fb80 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x833450",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WKE@AEPAXI@Z = 0x59edf0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x833460",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WIE@AEPAXI@Z = 0x59ede0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x833470",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WGE@AEPAXI@Z = 0x59fb70 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x833480",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WEE@AEPAXI@Z = 0x59fba0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x833490",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WCE@AEPAXI@Z = 0x59fb90 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x8334a0",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x8334a8",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WBE@AEPAXI@Z = 0x59edd0 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x8334b0",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_E?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@WBA@AEPAXI@Z = 0x59eda0 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UBEABVName@2@XZ = 0x59f260 (own row)"
+      }
+    },
+    "??_7?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x8334bc",
+      "rtti": ".?AV?$DescribedCreatable@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 3))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x833508",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0xc4",
+      "slots": {
+        "0": "??_ESpecialShape@RBX@@WME@AEPAXI@Z = 0x59fd60 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d808 slot 2))"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x833518",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0xa4",
+      "slots": {
+        "0": "??_ESpecialShape@RBX@@WKE@AEPAXI@Z = 0x59fd50 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d818 slot 2))"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x833528",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0x84",
+      "slots": {
+        "0": "??_ESpecialShape@RBX@@WIE@AEPAXI@Z = 0x59fd40 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d828 slot 2))"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x833538",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0x64",
+      "slots": {
+        "0": "??_ESpecialShape@RBX@@WGE@AEPAXI@Z = 0x59fd30 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d838 slot 2))"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x833548",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0x44",
+      "slots": {
+        "0": "??_ESpecialShape@RBX@@WEE@AEPAXI@Z = 0x59fd20 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d848 slot 2))"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x833558",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0x24",
+      "slots": {
+        "0": "??_ESpecialShape@RBX@@WCE@AEPAXI@Z = 0x59fd10 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d858 slot 2))"
+      }
+    },
+    "??_7SpecialShape@RBX@@6BDebugable@1@@": {
+      "address": "0x833568",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0x20",
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x833570",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0x14",
+      "slots": {
+        "0": "??_ESpecialShape@RBX@@WBE@AEPAXI@Z = 0x59fd00 (own row)"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x833578",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0x10",
+      "slots": {
+        "0": "??_ESpecialShape@RBX@@WBA@AEPAXI@Z = 0x59fcf0 (own row)",
+        "1": "?getClassName@?$FactoryProduct@VSpecialShape@RBX@@VInstance@2@$1?sSpecialShape@2@3PADA@RBX@@UBEABVName@2@XZ = 0x59f260 (own row)"
+      }
+    },
+    "??_7SpecialShape@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x833584",
+      "rtti": ".?AVSpecialShape@RBX@@",
+      "offset": "0x0",
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 0))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z = 0x55af90 (external (evidence name))",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z = 0x68e880 (inherited (Instance vtable 0x82d884 slot 2))",
+        "3": "?askSetParent@SpecialShape@RBX@@MBE_NPBVInstance@2@@Z = 0x62e190 (own row)",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z = 0x55acc0 (inherited (Instance vtable 0x82d884 slot 4))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z = 0x55ae20 (inherited (Instance vtable 0x82d884 slot 5))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x55ae90 (inherited (Instance vtable 0x82d884 slot 6))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 7))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 8))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z = 0x70bdf0 (inherited (Instance vtable 0x82d884 slot 9))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ = 0x47d410 (inherited (Instance vtable 0x82d884 slot 10))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z = 0x559170 (inherited (Instance vtable 0x82d884 slot 11))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x458e90 (inherited (Instance vtable 0x82d884 slot 12))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z = 0x55a470 (inherited (Instance vtable 0x82d884 slot 13))",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (inherited (Instance vtable 0x82d884 slot 14))",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z = 0x557490 (inherited (Instance vtable 0x82d884 slot 15))"
+      }
+    }
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
