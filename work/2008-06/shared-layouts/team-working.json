@@ -158,7 +158,7 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_team.py": "b86097d408ad3ba3a4a89b4b0d27876f606bd92f6b193888fa1921c7e2bbfbc0",
+    "rebuild/2008-06/tests/record_native_team.py": "53c7b195c143ccfabe2c2ed366ef8f2b92dc9c8f49ebac7449a6ff7adb6cea25",
     "rebuild/2008-06/native-headers/v8datamodel/Team.h": "050be389d9d59a29fe52472eeee1a9db6a82a5f4a15998bbbe5b8e2e33ca11fa",
     "rebuild/2008-06/native-headers/v8datamodel/Teams.h": "81ffd764137cf1f91073121664f9232bb9abe0aa4405e5b1c8ac6a32f139de41",
     "rebuild/2008-06/native-classes/Team.cpp": "af83d765ea7533155e5af5ceb942cfa46b4f0150ddc17b6ad84d9dae90fb4dd8",
@@ -169,10 +169,10 @@
     "rebuild/2008-06/tests/NativeTeamPendingModel.h": "20e08a74388f6d4dcf8fae1547f314f2ab3291a73a330ff9f3b9a7a3c498796c"
   },
   "objects": {
-    "NativeTeamLayout.obj": "7470395509e9e4e7ab96d10d617868cf7c27670d6216a4082c0fd2b8f3c2de62",
-    "NativeTeam.obj": "73c9b1a30cb2e4828ba41ca931915d35dffdac4bba559a5da056d5cffa89cb7f",
-    "NativeTeams.obj": "18aef6e7043516c9555dbae7a30f77673716e8d20bed23257c024ac90de63989",
-    "NativeTeamsPending.obj": "2a7eb3644c1cb1f4eb1a68b43931d23581e79fd290ee110db62546f649055636"
+    "NativeTeamLayout.obj": "594657adb0bf85309a286c85f23716fffe54b34810423641d5fa39e6a02bf2be",
+    "NativeTeam.obj": "21b4387ac8273e99f2b6e4bccd9a8c1c9497593f220786b85aa01981fab0fd8d",
+    "NativeTeams.obj": "346691bdf0259c27c915bddb20930a51f7e1048f206915c3e06cdc03be41225c",
+    "NativeTeamsPending.obj": "64a4390f8808891ceb6f518cf452187d3bee7771e110d62d6132f0b23cf83fd0"
   },
   "layout": {
     "Team": "0x13c (Creatable<Instance>::create<Team> 00409140); score +0x130, color +0x134, autoAssignable +0x138, autoColorCharacters +0x139",
@@ -223,7 +223,7 @@
       "verified_targets": {
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82e974 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82e964 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82e95c (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82e95c (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6BDebugable@1@@": "0x82e954 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82e944 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82e934 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x44)",
@@ -244,7 +244,7 @@
         "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82e974 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82e964 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82e95c (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82e95c (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6BDebugable@1@@": "0x82e954 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82e944 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82e934 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x44)",
@@ -324,7 +324,7 @@
       "verified_targets": {
         "??_7Team@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82ea84 (vtable RTTI .?AVTeam@RBX@@ offset 0x0)",
         "??_7Team@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82ea78 (vtable RTTI .?AVTeam@RBX@@ offset 0x10)",
-        "??_7Team@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ea70 (vtable RTTI .?AVTeam@RBX@@ offset 0x14)",
+        "??_7Team@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ea70 (vtable RTTI .?AVTeam@RBX@@ offset 0x14)",
         "??_7Team@RBX@@6BDebugable@1@@": "0x82ea68 (vtable RTTI .?AVTeam@RBX@@ offset 0x20)",
         "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82ea58 (vtable RTTI .?AVTeam@RBX@@ offset 0x24)",
         "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82ea48 (vtable RTTI .?AVTeam@RBX@@ offset 0x44)",
@@ -489,7 +489,7 @@
       "verified_targets": {
         "??_B?1??classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x9748a8 (local static)",
         "?sTeam@RBX@@3QBDB": "0x82e8e8 (data)",
-        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
         "?foo@?1??classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9747e8 (local static)",
         "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
         "??__Ffoo@?1??classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fd050 (own row)",
@@ -574,7 +574,7 @@
         "?classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5661b0 (own row)",
         "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82ebe4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82ebd4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ebcc (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ebcc (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6BDebugable@1@@": "0x82ebc4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82ebb4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82eba4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x44)",
@@ -636,7 +636,7 @@
         "??0?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@IAE@XZ": "0x566500 (own row)",
         "??_7Team@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82ea84 (vtable RTTI .?AVTeam@RBX@@ offset 0x0)",
         "??_7Team@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82ea78 (vtable RTTI .?AVTeam@RBX@@ offset 0x10)",
-        "??_7Team@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ea70 (vtable RTTI .?AVTeam@RBX@@ offset 0x14)",
+        "??_7Team@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ea70 (vtable RTTI .?AVTeam@RBX@@ offset 0x14)",
         "??_7Team@RBX@@6BDebugable@1@@": "0x82ea68 (vtable RTTI .?AVTeam@RBX@@ offset 0x20)",
         "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82ea58 (vtable RTTI .?AVTeam@RBX@@ offset 0x24)",
         "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82ea48 (vtable RTTI .?AVTeam@RBX@@ offset 0x44)",
@@ -944,7 +944,7 @@
       "verified_targets": {
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83cd94 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83cd84 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cd7c (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cd7c (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6BDebugable@1@@": "0x83cd74 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cd64 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83cd54 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x44)",
@@ -965,7 +965,7 @@
         "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83cd94 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83cd84 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cd7c (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cd7c (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6BDebugable@1@@": "0x83cd74 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cd64 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83cd54 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x44)",
@@ -1034,7 +1034,7 @@
       "verified_targets": {
         "??_7Teams@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83ce54 (vtable RTTI .?AVTeams@RBX@@ offset 0x0)",
         "??_7Teams@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83ce48 (vtable RTTI .?AVTeams@RBX@@ offset 0x10)",
-        "??_7Teams@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83ce40 (vtable RTTI .?AVTeams@RBX@@ offset 0x14)",
+        "??_7Teams@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83ce40 (vtable RTTI .?AVTeams@RBX@@ offset 0x14)",
         "??_7Teams@RBX@@6BDebugable@1@@": "0x83ce38 (vtable RTTI .?AVTeams@RBX@@ offset 0x20)",
         "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83ce28 (vtable RTTI .?AVTeams@RBX@@ offset 0x24)",
         "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83ce18 (vtable RTTI .?AVTeams@RBX@@ offset 0x44)",
@@ -1207,7 +1207,7 @@
       "verified_targets": {
         "??_B?1??classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x97a1b8 (local static)",
         "?sTeams@RBX@@3QBDB": "0x83cd08 (data)",
-        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
         "?foo@?1??classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97a0f8 (local static)",
         "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
         "??__Ffoo@?1??classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7ff210 (own row)",
@@ -1262,7 +1262,7 @@
         "?classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5d6000 (own row)",
         "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83cf14 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83cf08 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cf00 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cf00 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6BDebugable@1@@": "0x83cef8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cee8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83ced8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x44)",
@@ -1411,7 +1411,7 @@
         "??0?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@IAE@XZ": "0x5d6510 (own row)",
         "??_7Teams@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83ce54 (vtable RTTI .?AVTeams@RBX@@ offset 0x0)",
         "??_7Teams@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83ce48 (vtable RTTI .?AVTeams@RBX@@ offset 0x10)",
-        "??_7Teams@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83ce40 (vtable RTTI .?AVTeams@RBX@@ offset 0x14)",
+        "??_7Teams@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83ce40 (vtable RTTI .?AVTeams@RBX@@ offset 0x14)",
         "??_7Teams@RBX@@6BDebugable@1@@": "0x83ce38 (vtable RTTI .?AVTeams@RBX@@ offset 0x20)",
         "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83ce28 (vtable RTTI .?AVTeams@RBX@@ offset 0x24)",
         "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83ce18 (vtable RTTI .?AVTeams@RBX@@ offset 0x44)",

@@ -119,7 +119,7 @@ EXTERNAL = {
     '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,               # getClassName 004a3c90 / 005eb160 / 0063d8c0
     '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,
     '??1ClassDescriptor@Reflection@RBX@@UAE@XZ': 0x40abc0,
-    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
+    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
     '?getNullName@Name@RBX@@SAABV12@XZ': 0x554270,              # TextureId default ctors in Sky 005eb640
     '?fromAssets@ContentId@RBX@@SA?AV12@PBD@Z': 0x55bd80,       # Sky 005eb640 (evidence names the string overload)
     '?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ': 0x598cb0,   # Sparkles 0063d710

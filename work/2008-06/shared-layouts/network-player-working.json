@@ -123,7 +123,7 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_network_player.py": "7e8c6f64b82659aa953c6b71f2daa05cf8a88f2a0b7d78ce3a84dc18c164a12e",
+    "rebuild/2008-06/tests/record_native_network_player.py": "bde87e7cc8a6ed39fade919d0fe194a53e8fb6c68c5ee1740d149b91816a2eff",
     "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
     "rebuild/2008-06/native-classes/NetworkPlayer.cpp": "3ccdfe1faffa303e7a4c3abf88b4d8210c6d9b681ae5b1efe19f4fa06015d4bb",
     "rebuild/2008-06/tests/NativeNetworkPlayerLayout.cpp": "c4aa4320f139db39aa74dab6668f734c73012234abd69a384ee59cdcc76f9383",
@@ -131,9 +131,9 @@
     "rebuild/2008-06/tests/NativeTeamPendingModel.h": "20e08a74388f6d4dcf8fae1547f314f2ab3291a73a330ff9f3b9a7a3c498796c"
   },
   "objects": {
-    "NativeNetworkPlayerLayout.obj": "1c8ebf58a50d5763e0baacf7f9fc34f8cc0ab56fea9e4ff43e10dc9f1b59c805",
-    "NativeNetworkPlayer.obj": "f1ae6dfee34263b2f211a8f5c96d06cd25c03a12797d47c3b1d4171b1c490733",
-    "NativeNetworkPlayerPending.obj": "0415dd49af5ad6a16a4895c37f0872542a76003cfc3cb87c1b26e97ac5b58b62"
+    "NativeNetworkPlayerLayout.obj": "af4cb44c3aabf736c1c614b31a843571543c8b41681b5b1701926d451ddbcac8",
+    "NativeNetworkPlayer.obj": "b3fed4b77c9d45692530d240ce1a018450a9e923e156f61c01d2a846d96814b8",
+    "NativeNetworkPlayerPending.obj": "6b28e157573020d379f0c9c9cd6d0ee94779cac2322f43adfe0cf91bda215d26"
   },
   "layout": "Player 0x1d8 (Creatable<Instance>::create<Player> 004093b0); Notifiers 0x130/0x150; character +0x170, teamColor +0x178, neutral +0x17c, characterDiedConnection +0x180, characterAppearance +0x194, under13 +0x1b0, superSafeChat +0x1b1, userId +0x1b4, six Vector2int16 DPHYS regions +0x1b8..+0x1cc, lastActivityTime +0x1d0",
   "methods": [
@@ -145,7 +145,7 @@
       "verified_targets": {
         "??_7Player@Network@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@": "0x82220c (vtable RTTI .?AVPlayer@Network@RBX@@ offset 0x0)",
         "??_7Player@Network@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@": "0x8221fc (vtable RTTI .?AVPlayer@Network@RBX@@ offset 0x10)",
-        "??_7Player@Network@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@2@@": "0x8221f4 (vtable RTTI .?AVPlayer@Network@RBX@@ offset 0x14)",
+        "??_7Player@Network@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@": "0x8221f4 (vtable RTTI .?AVPlayer@Network@RBX@@ offset 0x14)",
         "??_7Player@Network@RBX@@6BDebugable@2@@": "0x8221ec (vtable RTTI .?AVPlayer@Network@RBX@@ offset 0x20)",
         "??_7Player@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@": "0x8221dc (vtable RTTI .?AVPlayer@Network@RBX@@ offset 0x24)",
         "??_7Player@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@": "0x8221cc (vtable RTTI .?AVPlayer@Network@RBX@@ offset 0x44)",
@@ -404,7 +404,7 @@
         "?classDescriptor@?$Described@VPlayer@Network@RBX@@$1?sPlayer@23@3PADAV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x491360 (own row)",
         "??_7?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821d6c (vtable RTTI .?AV?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x0)",
         "??_7?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821d5c (vtable RTTI .?AV?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x10)",
-        "??_7?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821d54 (vtable RTTI .?AV?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x821d54 (vtable RTTI .?AV?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x14)",
         "??_7?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6BDebugable@1@@": "0x821d4c (vtable RTTI .?AV?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x20)",
         "??_7?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821d3c (vtable RTTI .?AV?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x24)",
         "??_7?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821d2c (vtable RTTI .?AV?$DescribedCreatable@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x44)",
@@ -466,7 +466,7 @@
       "verified_targets": {
         "??_B?1??classDescriptor@?$Described@VPlayer@Network@RBX@@$1?sPlayer@23@3PADAV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x9700c8 (local static)",
         "?sPlayer@Network@RBX@@3PADA": "0x934d38 (data)",
-        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
         "?foo@?1??classDescriptor@?$Described@VPlayer@Network@RBX@@$1?sPlayer@23@3PADAV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x970008 (local static)",
         "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
         "??__Ffoo@?1??classDescriptor@?$Described@VPlayer@Network@RBX@@$1?sPlayer@23@3PADAV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fb2c0 (own row)",
@@ -1024,7 +1024,7 @@
         "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821544 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821538 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821530 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x821530 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6BDebugable@1@@": "0x821528 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821518 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821508 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x44)",
@@ -1043,7 +1043,7 @@
       "verified_targets": {
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x821544 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x821538 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x821530 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x821530 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6BDebugable@1@@": "0x821528 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x821518 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x821508 (vtable RTTI .?AV?$FactoryProduct@VPlayer@Network@RBX@@VInstance@3@$1?sPlayer@23@3PADA@RBX@@ offset 0x44)",

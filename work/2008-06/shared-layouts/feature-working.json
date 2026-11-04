@@ -120,16 +120,16 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_feature.py": "755cea93e86933cb2a9373bb0f6f4ba8540891a5fbb7c387c700adef03e11162",
+    "rebuild/2008-06/tests/record_native_feature.py": "a9fd9491287d0ec96d35dcf8b08a3b2878cb81c7850dfa0a39a073e593bb3281",
     "rebuild/2008-06/native-headers/v8datamodel/Feature.h": "595d94ab454b9ff4dd01b22de6ebd1d9ad8dcb5fe89eabc931f6582874e0156d",
     "rebuild/2008-06/native-classes/Feature.cpp": "5c2856ca8cd115f68eacc66cd4341d765de54ab376549cef638caf8336c59f6c",
     "rebuild/2008-06/tests/NativeFeatureLayout.cpp": "5207f880d1fa112c93ffabe8fee14f5b7c55c8fb73a62cebec731ff908632edd",
     "rebuild/2008-06/tests/NativeFeaturePendingVelocityMotor.h": "be5e58cfa7c6fa1484a5344a9836c01fa4ee338f2112fad2800c92aede471420"
   },
   "objects": {
-    "NativeFeatureLayout.obj": "4fcd5acd7bf3278cb7b4070fe37b0c935629cc97d95687c03ac963c4f70b0959",
-    "NativeFeature.obj": "a59d84824f6f960a183ae29b8fe0b292d33c6426ea839262ad8d9fd0f4d121c9",
-    "NativeFeaturePending.obj": "8dae4314d1b145dd9d904a80d2743bdfc580de91bfaa71673e6c6e4f54c45e3c"
+    "NativeFeatureLayout.obj": "c091141538c11df17861efb928b3e3d75b4d4b6ac1eb34cdf1af58878f58f63b",
+    "NativeFeature.obj": "a0630bcaa807538e58539cc52715903fc5af0d7a55d1b4e772ba9b8ca9050a72",
+    "NativeFeaturePending.obj": "63fea9a2d8246d944eb14db357bab824f366a6a7dfedd47848060fa12588891d"
   },
   "layout": {
     "Feature": "0x150 (Hole/MotorFeature factories 00580230/0057ffc0 allocate 0x150); IRenderable +0x130; faceId +0x140, topBottom +0x144, leftRight +0x148, inOut +0x14c",
@@ -191,7 +191,7 @@
         "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
         "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x842b24 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x842b18 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x842b10 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x842b10 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@6BDebugable@1@@": "0x842b08 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x842af8 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x842ae8 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@RBX@@ offset 0x44)",
@@ -243,7 +243,7 @@
       "verified_targets": {
         "??_7Feature@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x842c74 (vtable RTTI .?AVFeature@RBX@@ offset 0x0)",
         "??_7Feature@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x842c68 (vtable RTTI .?AVFeature@RBX@@ offset 0x10)",
-        "??_7Feature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x842c60 (vtable RTTI .?AVFeature@RBX@@ offset 0x14)",
+        "??_7Feature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x842c60 (vtable RTTI .?AVFeature@RBX@@ offset 0x14)",
         "??_7Feature@RBX@@6BDebugable@1@@": "0x842c58 (vtable RTTI .?AVFeature@RBX@@ offset 0x20)",
         "??_7Feature@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x842c48 (vtable RTTI .?AVFeature@RBX@@ offset 0x24)",
         "??_7Feature@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x842c38 (vtable RTTI .?AVFeature@RBX@@ offset 0x44)",
@@ -391,7 +391,7 @@
       "verified_targets": {
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x842e2c (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x842e20 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x842e18 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x842e18 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6BDebugable@1@@": "0x842e10 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x842e00 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x842df0 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x44)",
@@ -432,7 +432,7 @@
       "verified_targets": {
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x842f0c (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x842efc (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x842ef4 (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x842ef4 (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6BDebugable@1@@": "0x842eec (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x842edc (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x842ecc (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x44)",
@@ -804,7 +804,7 @@
         "?classDescriptor@?$Described@VFeature@RBX@@$1?sFeature@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0940 (own row)",
         "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x843194 (vtable RTTI .?AV?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x843188 (vtable RTTI .?AV?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x843180 (vtable RTTI .?AV?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x843180 (vtable RTTI .?AV?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6BDebugable@1@@": "0x843178 (vtable RTTI .?AV?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x843168 (vtable RTTI .?AV?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x843158 (vtable RTTI .?AV?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@ offset 0x44)",
@@ -827,7 +827,7 @@
         "??_C@_07HAEFGBDM@Feature?$AA@": "0x830598 (literal 'Feature')",
         "??_7Feature@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x842c74 (vtable RTTI .?AVFeature@RBX@@ offset 0x0)",
         "??_7Feature@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x842c68 (vtable RTTI .?AVFeature@RBX@@ offset 0x10)",
-        "??_7Feature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x842c60 (vtable RTTI .?AVFeature@RBX@@ offset 0x14)",
+        "??_7Feature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x842c60 (vtable RTTI .?AVFeature@RBX@@ offset 0x14)",
         "??_7Feature@RBX@@6BDebugable@1@@": "0x842c58 (vtable RTTI .?AVFeature@RBX@@ offset 0x20)",
         "??_7Feature@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x842c48 (vtable RTTI .?AVFeature@RBX@@ offset 0x24)",
         "??_7Feature@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x842c38 (vtable RTTI .?AVFeature@RBX@@ offset 0x44)",
@@ -853,7 +853,7 @@
         "??0Feature@RBX@@QAE@XZ": "0x60be60 (own row)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x842e2c (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x842e20 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x842e18 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x842e18 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6BDebugable@1@@": "0x842e10 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x842e00 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x842df0 (vtable RTTI .?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x44)",
@@ -874,7 +874,7 @@
         "??0Feature@RBX@@QAE@XZ": "0x60be60 (own row)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x842f0c (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x842efc (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x842ef4 (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x842ef4 (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6BDebugable@1@@": "0x842eec (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x842edc (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x842ecc (vtable RTTI .?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x44)",
@@ -940,7 +940,7 @@
         "?classDescriptor@?$Described@VMotorFeature@RBX@@$1?sMotorFeature@2@3QBDBV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c3730 (own row)",
         "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8433ac (vtable RTTI .?AV?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8433a0 (vtable RTTI .?AV?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x843398 (vtable RTTI .?AV?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x843398 (vtable RTTI .?AV?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6BDebugable@1@@": "0x843390 (vtable RTTI .?AV?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x843380 (vtable RTTI .?AV?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x843370 (vtable RTTI .?AV?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@ offset 0x44)",
@@ -1015,7 +1015,7 @@
         "?classDescriptor@?$Described@VHole@RBX@@$1?sHole@2@3QBDBV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c37a0 (own row)",
         "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84348c (vtable RTTI .?AV?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x0)",
         "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84347c (vtable RTTI .?AV?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x10)",
-        "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x843474 (vtable RTTI .?AV?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x843474 (vtable RTTI .?AV?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x14)",
         "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6BDebugable@1@@": "0x84346c (vtable RTTI .?AV?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x20)",
         "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84345c (vtable RTTI .?AV?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x24)",
         "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84344c (vtable RTTI .?AV?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@ offset 0x44)",
@@ -1090,7 +1090,7 @@
         "??_C@_04GLFMFBJJ@Hole?$AA@": "0x8435b0 (literal 'Hole')",
         "??_7Hole@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84356c (vtable RTTI .?AVHole@RBX@@ offset 0x0)",
         "??_7Hole@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x84355c (vtable RTTI .?AVHole@RBX@@ offset 0x10)",
-        "??_7Hole@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x843554 (vtable RTTI .?AVHole@RBX@@ offset 0x14)",
+        "??_7Hole@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x843554 (vtable RTTI .?AVHole@RBX@@ offset 0x14)",
         "??_7Hole@RBX@@6BDebugable@1@@": "0x84354c (vtable RTTI .?AVHole@RBX@@ offset 0x20)",
         "??_7Hole@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x84353c (vtable RTTI .?AVHole@RBX@@ offset 0x24)",
         "??_7Hole@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x84352c (vtable RTTI .?AVHole@RBX@@ offset 0x44)",
@@ -1117,7 +1117,7 @@
         "??_C@_0N@KDGGPKE@MotorFeature?$AA@": "0x843698 (literal 'MotorFeature')",
         "??_7MotorFeature@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x843654 (vtable RTTI .?AVMotorFeature@RBX@@ offset 0x0)",
         "??_7MotorFeature@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x843644 (vtable RTTI .?AVMotorFeature@RBX@@ offset 0x10)",
-        "??_7MotorFeature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x84363c (vtable RTTI .?AVMotorFeature@RBX@@ offset 0x14)",
+        "??_7MotorFeature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x84363c (vtable RTTI .?AVMotorFeature@RBX@@ offset 0x14)",
         "??_7MotorFeature@RBX@@6BDebugable@1@@": "0x843634 (vtable RTTI .?AVMotorFeature@RBX@@ offset 0x20)",
         "??_7MotorFeature@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x843624 (vtable RTTI .?AVMotorFeature@RBX@@ offset 0x24)",
         "??_7MotorFeature@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x843614 (vtable RTTI .?AVMotorFeature@RBX@@ offset 0x44)",
@@ -1311,7 +1311,7 @@
       "verified_targets": {
         "??_B?1??classDescriptor@?$Described@VFeature@RBX@@$1?sFeature@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x978898 (local static)",
         "?sFeature@RBX@@3QBDB": "0x842998 (data)",
-        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
         "?foo@?1??classDescriptor@?$Described@VFeature@RBX@@$1?sFeature@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9787d8 (local static)",
         "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
         "??__Ffoo@?1??classDescriptor@?$Described@VFeature@RBX@@$1?sFeature@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sFeature@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe870 (own row)",
@@ -2153,7 +2153,7 @@
         "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
       }
     },
-    "??_7Feature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+    "??_7Feature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
       "address": "0x842c60",
       "rtti": ".?AVFeature@RBX@@",
       "offset": "0x14",
@@ -2274,7 +2274,7 @@
         "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
       }
     },
-    "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+    "??_7?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
       "address": "0x842ef4",
       "rtti": ".?AV?$FactoryProduct@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@",
       "offset": "0x14",
@@ -2395,7 +2395,7 @@
         "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
       }
     },
-    "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+    "??_7?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
       "address": "0x842e18",
       "rtti": ".?AV?$FactoryProduct@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@",
       "offset": "0x14",
@@ -2504,7 +2504,7 @@
         "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
       }
     },
-    "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+    "??_7?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
       "address": "0x843180",
       "rtti": ".?AV?$DescribedNonCreatable@VFeature@RBX@@VInstance@2@$1?sFeature@2@3QBDB@RBX@@",
       "offset": "0x14",
@@ -2624,7 +2624,7 @@
         "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
       }
     },
-    "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+    "??_7?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
       "address": "0x843474",
       "rtti": ".?AV?$DescribedCreatable@VHole@RBX@@VFeature@2@$1?sHole@2@3QBDB@RBX@@",
       "offset": "0x14",
@@ -2745,7 +2745,7 @@
         "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
       }
     },
-    "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+    "??_7?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
       "address": "0x843398",
       "rtti": ".?AV?$DescribedCreatable@VMotorFeature@RBX@@VFeature@2@$1?sMotorFeature@2@3QBDB@RBX@@",
       "offset": "0x14",
@@ -2866,7 +2866,7 @@
         "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
       }
     },
-    "??_7Hole@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+    "??_7Hole@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
       "address": "0x843554",
       "rtti": ".?AVHole@RBX@@",
       "offset": "0x14",
@@ -2987,7 +2987,7 @@
         "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (inherited (Instance vtable 0x82d868 slot 0))"
       }
     },
-    "??_7MotorFeature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": {
+    "??_7MotorFeature@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
       "address": "0x84363c",
       "rtti": ".?AVMotorFeature@RBX@@",
       "offset": "0x14",

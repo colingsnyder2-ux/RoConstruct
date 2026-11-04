@@ -106,7 +106,7 @@ KNOWN = {
     '??0Instance@RBX@@IAE@XZ': 0x55b7e0, '??1Instance@RBX@@MAE@XZ': 0x55a540,
     '?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x55af90,
     '?declare@Name@RBX@@SAABV12@PBDH@Z': 0x553f90,
-    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
+    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
     '?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z': 0x40db00,
     '?dataChanged@CharacterAppearance@RBX@@IAEXABVPropertyDescriptor@Reflection@2@@Z': 0x5d3b50,
     '?askSetParent@CharacterAppearance@RBX@@MBE_NPBVInstance@2@@Z': 0x5d7640,

@@ -158,7 +158,7 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_spawn.py": "e6543c7050f760da6727abf8e9ec652bfaac32ee239015896be43871400b7929",
+    "rebuild/2008-06/tests/record_native_spawn.py": "b58de13328e06f65e1129e51588257887896f54d6929959c670a78fb34616bd0",
     "rebuild/2008-06/native-headers/v8datamodel/TimerService.h": "7640981dca3c803865379af03e18282faa98ba191080235bcc98283277715f93",
     "rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h": "00d1445a19fe74b5ca56ce75883fb5edc7fce458fee81ce7fe8508b96514af69",
     "rebuild/2008-06/native-headers/v8datamodel/SpawnLocation.h": "2410712f84b89fde96ffd18f0c127a7375d19204fa8d83607d730573056e0b7b",
@@ -167,10 +167,10 @@
     "rebuild/2008-06/tests/NativeSpawnLayout.cpp": "034af4aea6f48f6e7bd4b97eb2974c5b36a063be0b7f782785a8b16e9930259e"
   },
   "objects": {
-    "NativeSpawnLayout.obj": "f5d5ba6c6226cc70e2245a045ac498ce1018c30b6f2e1976d10eaaaf4f8e1937",
-    "NativeTimerService.obj": "f1ef698dc5f21b7c89c489e1d7eedaa53a8943b01cc6daf5f601290770f2421e",
-    "NativeSpawnLocation.obj": "df496095eedfcec67ffee77807828e473309010356b184fe27ee8fb34c1afcf5",
-    "NativeSpawnLocationPending.obj": "fb516c611bbbe9dc6bab389c253a351b6f72496a665fe3d29ce7e869dd883bc9"
+    "NativeSpawnLayout.obj": "8e991e07971beb4d9ae3d1bda03431324342b684ad8d7991aed11b3f47d7c6ad",
+    "NativeTimerService.obj": "742d0781fe90e208167e59140b663bd74b98db0143051af0b371de6af6da85e5",
+    "NativeSpawnLocation.obj": "d60ade4f2621edbc20d99eff43b831883a41a2bce2ce93de4a903d5fc18707fe",
+    "NativeSpawnLocationPending.obj": "f789b57c335b3412a865042f5d55a12de64cd6c3d2b6201f802b755cf1ee02b7"
   },
   "layout": {
     "TimerService": "0x158 (0048bcf0); Listener<RunService,Heartbeat> +0x130, Service +0x134, runService +0x134, std::list<Item> +0x13c; class name \"Timer\"",
@@ -188,7 +188,7 @@
         "verified_targets": {
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83d014 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83d004 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cffc (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cffc (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6BDebugable@1@@": "0x83cff4 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cfe4 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83cfd4 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x44)",
@@ -210,7 +210,7 @@
           "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83d014 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83d004 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cffc (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cffc (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6BDebugable@1@@": "0x83cff4 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cfe4 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83cfd4 (vtable RTTI .?AV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x44)",
@@ -471,7 +471,7 @@
           "?classDescriptor@?$Described@VTimerService@RBX@@$1?sTimerService@2@3PADAV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0710 (own row)",
           "??_7?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83d0d4 (vtable RTTI .?AV?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x0)",
           "??_7?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83d0c8 (vtable RTTI .?AV?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x10)",
-          "??_7?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83d0c0 (vtable RTTI .?AV?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83d0c0 (vtable RTTI .?AV?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x14)",
           "??_7?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6BDebugable@1@@": "0x83d0b8 (vtable RTTI .?AV?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x20)",
           "??_7?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83d0a8 (vtable RTTI .?AV?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x24)",
           "??_7?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83d098 (vtable RTTI .?AV?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@ offset 0x44)",
@@ -527,7 +527,7 @@
           "??0?$DescribedCreatable@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@RBX@@IAE@XZ": "0x5d70e0 (own row)",
           "??_7TimerService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83d1a4 (vtable RTTI .?AVTimerService@RBX@@ offset 0x0)",
           "??_7TimerService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83d194 (vtable RTTI .?AVTimerService@RBX@@ offset 0x10)",
-          "??_7TimerService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83d18c (vtable RTTI .?AVTimerService@RBX@@ offset 0x14)",
+          "??_7TimerService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83d18c (vtable RTTI .?AVTimerService@RBX@@ offset 0x14)",
           "??_7TimerService@RBX@@6BDebugable@1@@": "0x83d184 (vtable RTTI .?AVTimerService@RBX@@ offset 0x20)",
           "??_7TimerService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83d174 (vtable RTTI .?AVTimerService@RBX@@ offset 0x24)",
           "??_7TimerService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83d164 (vtable RTTI .?AVTimerService@RBX@@ offset 0x44)",
@@ -707,7 +707,7 @@
         "verified_targets": {
           "??_B?1??classDescriptor@?$Described@VTimerService@RBX@@$1?sTimerService@2@3PADAV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x9784b0 (local static)",
           "?sTimerService@RBX@@3PADA": "0x953654 (data)",
-          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
           "?foo@?1??classDescriptor@?$Described@VTimerService@RBX@@$1?sTimerService@2@3PADAV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9783f0 (local static)",
           "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
           "??__Ffoo@?1??classDescriptor@?$Described@VTimerService@RBX@@$1?sTimerService@2@3PADAV?$FactoryProduct@VTimerService@RBX@@VInstance@2@$1?sTimerService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe6b0 (own row)",
@@ -767,7 +767,7 @@
         "verified_targets": {
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83bc24 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83bc18 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83bc10 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83bc10 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6BDebugable@1@@": "0x83bc08 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83bbf8 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83bbe8 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x44)",
@@ -789,7 +789,7 @@
           "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83bc24 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x0)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83bc18 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x10)",
-          "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83bc10 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83bc10 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x14)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6BDebugable@1@@": "0x83bc08 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x20)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83bbf8 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x24)",
           "??_7?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83bbe8 (vtable RTTI .?AV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x44)",
@@ -997,7 +997,7 @@
         "verified_targets": {
           "??_7SpawnerService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83bd2c (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x0)",
           "??_7SpawnerService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83bd1c (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x10)",
-          "??_7SpawnerService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83bd14 (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x14)",
+          "??_7SpawnerService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83bd14 (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x14)",
           "??_7SpawnerService@RBX@@6BDebugable@1@@": "0x83bd0c (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x20)",
           "??_7SpawnerService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83bcfc (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x24)",
           "??_7SpawnerService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83bcec (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x44)",
@@ -1194,7 +1194,7 @@
           "?classDescriptor@?$Described@VSpawnerService@RBX@@$1?sSpawnerService@2@3QBDBV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c07f0 (own row)",
           "??_7?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83be4c (vtable RTTI .?AV?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x0)",
           "??_7?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83be3c (vtable RTTI .?AV?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x10)",
-          "??_7?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83be34 (vtable RTTI .?AV?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83be34 (vtable RTTI .?AV?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x14)",
           "??_7?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6BDebugable@1@@": "0x83be2c (vtable RTTI .?AV?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x20)",
           "??_7?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83be1c (vtable RTTI .?AV?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x24)",
           "??_7?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83be0c (vtable RTTI .?AV?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@ offset 0x44)",
@@ -1621,7 +1621,7 @@
         "verified_targets": {
           "??_B?1??classDescriptor@?$Described@VSpawnerService@RBX@@$1?sSpawnerService@2@3QBDBV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x978640 (local static)",
           "?sSpawnerService@RBX@@3QBDB": "0x83ba38 (data)",
-          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
           "?foo@?1??classDescriptor@?$Described@VSpawnerService@RBX@@$1?sSpawnerService@2@3QBDBV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x978580 (local static)",
           "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
           "??__Ffoo@?1??classDescriptor@?$Described@VSpawnerService@RBX@@$1?sSpawnerService@2@3QBDBV?$FactoryProduct@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe680 (own row)",
@@ -1757,7 +1757,7 @@
           "??0?$DescribedCreatable@VSpawnerService@RBX@@VInstance@2@$1?sSpawnerService@2@3QBDB@RBX@@IAE@XZ": "0x5d2fc0 (own row)",
           "??_7SpawnerService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83bd2c (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x0)",
           "??_7SpawnerService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83bd1c (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x10)",
-          "??_7SpawnerService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83bd14 (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x14)",
+          "??_7SpawnerService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83bd14 (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x14)",
           "??_7SpawnerService@RBX@@6BDebugable@1@@": "0x83bd0c (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x20)",
           "??_7SpawnerService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83bcfc (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x24)",
           "??_7SpawnerService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83bcec (vtable RTTI .?AVSpawnerService@RBX@@ offset 0x44)",

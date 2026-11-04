@@ -86,7 +86,7 @@ EXTERNAL = {
     '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,               # getClassName 0060ab60
     '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,
     '??1ClassDescriptor@Reflection@RBX@@UAE@XZ': 0x40abc0,
-    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
+    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
     '??0CoordinateFrame@G3D@@QAE@XZ': 0x4782d0,                # render3dSelect 0060a520
     '?selectColor@Draw@RBX@@SAABVColor3@G3D@@XZ': 0x676c50,
     '?black@Color3@G3D@@SAABV12@XZ': 0x5149f0,                 # Hole::render3dAdorn 0060a580

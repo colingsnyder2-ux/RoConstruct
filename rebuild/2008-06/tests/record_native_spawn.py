@@ -103,7 +103,7 @@ EXTERNAL = {
     '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,
     '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,
     '??1ClassDescriptor@Reflection@RBX@@UAE@XZ': 0x40abc0,
-    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
+    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
     '?classDescriptor@?$Described@VPartInstance@RBX@@$1?sPart@2@3PADAV?$FactoryProduct@VPartInstance@RBX@@VPVInstance@2@$1?sPart@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x59c7f0,
     # TypedPropertyDescriptor<T> constructors called by the BoundProp / PropDescriptor ctors 005d27d0 / 005d28b0 / 005d2990
     '??0?$TypedPropertyDescriptor@H@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z': 0x4432a0,
