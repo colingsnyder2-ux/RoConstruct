@@ -40,12 +40,12 @@
     "/D_XTPLIB_NOAUTOLINK",
     "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
   ],
-  "source_sha256": "b230436c721f063e5755e85bd3c989a7658c1611227dc785ab5c57338969cb8a",
-  "header_sha256": "6dbbbf5c6420fb6f785c16ad8802823be41b591b084639e6e872fbed3a8f071e",
+  "source_sha256": "475a86936acfebf7ef54c39da0cc61cdd6155e72e50cbff93473f2521d3e6c9b",
+  "header_sha256": "cc31f1d8cfe9907c529ff87b8f7105b009ead6aace08b8ffe4ba99c17cf2216d",
   "layout": {
     "size": 332,
     "field_140": 320,
-    "field_144": 324,
+    "maxActivationDistance": 324,
     "allocation": "005c0b60",
     "constructor": "006297e0"
   },
@@ -103,6 +103,50 @@
       ]
     },
     {
+      "address": "00629610",
+      "symbol": "??$?0VClickDetector@RBX@@@?$BoundProp@M$00@Reflection@RBX@@QAE@PBD0PQClickDetector@2@MW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 200,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VClickDetector@RBX@@$1?sClickDetector@2@3PADAV?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c02b0",
+        "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610",
+        "??_7?$BoundProp@M$00@Reflection@RBX@@6B@": "0x824134 (RTTI .?AV?$BoundProp@M$00@Reflection@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_7?$BoundPropGetSet@VClickDetector@RBX@@@?$BoundProp@M$00@Reflection@RBX@@6B@": "0x84593c (RTTI .?AV?$BoundPropGetSet@VClickDetector@RBX@@@?$BoundProp@M$00@Reflection@RBX@@, offset 0x0)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VClickDetector@RBX@@@?$BoundProp@M$00@Reflection@RBX@@QAE@PBD0PQClickDetector@2@MW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "007f7d90",
+      "symbol": "??__E?prop_MaxActivationDistance@ClickDetector@RBX@@2V?$BoundProp@M$00@Reflection@2@A@@YAXXZ",
+      "size": 39,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490",
+        "??_C@_0BG@HPAAOHJJ@MaxActivationDistance?$AA@": "0x845b6c",
+        "?prop_MaxActivationDistance@ClickDetector@RBX@@2V?$BoundProp@M$00@Reflection@2@A": "0x97bfb4",
+        "??$?0VClickDetector@RBX@@@?$BoundProp@M$00@Reflection@RBX@@QAE@PBD0PQClickDetector@2@MW4Functionality@PropertyDescriptor@12@@Z": "0x629610",
+        "??__F?prop_MaxActivationDistance@ClickDetector@RBX@@2V?$BoundProp@M$00@Reflection@2@A@@YAXXZ": "0x800330",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00800330",
+      "symbol": "??__F?prop_MaxActivationDistance@ClickDetector@RBX@@2V?$BoundProp@M$00@Reflection@2@A@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "?prop_MaxActivationDistance@ClickDetector@RBX@@2V?$BoundProp@M$00@Reflection@2@A": "0x97bfb4",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
       "address": "006298d0",
       "symbol": "?askSetParent@ClickDetector@RBX@@UBE_NPBVInstance@2@@Z",
       "size": 70,
@@ -129,6 +173,149 @@
       "size": 3,
       "exact": true,
       "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005c02b0",
+      "symbol": "?classDescriptor@?$Described@VClickDetector@RBX@@$1?sClickDetector@2@3PADAV?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VClickDetector@RBX@@$1?sClickDetector@2@3PADAV?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x977ce0",
+        "?sClickDetector@RBX@@3PADA": "0x95b3c8",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80",
+        "?foo@?1??classDescriptor@?$Described@VClickDetector@RBX@@$1?sClickDetector@2@3PADAV?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977c20",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0",
+        "??__Ffoo@?1??classDescriptor@?$Described@VClickDetector@RBX@@$1?sClickDetector@2@3PADAV?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe800",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VClickDetector@RBX@@$1?sClickDetector@2@3PADAV?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "00445610",
+      "symbol": "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+      "size": 98,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@M@Type@Reflection@RBX@@SAABV012@XZ": "0x56cca0",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650",
+        "??_7?$TypedPropertyDescriptor@M@Reflection@RBX@@6B@": "0x815dd4 (RTTI .?AV?$TypedPropertyDescriptor@M@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0040ad80",
+      "symbol": "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96c528",
+        "?sInstance@RBX@@3PADA": "0x82d6a0",
+        "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0x40ad20",
+        "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0",
+        "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fa2a0",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "007fe800",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VClickDetector@RBX@@$1?sClickDetector@2@3PADAV?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VClickDetector@RBX@@$1?sClickDetector@2@3PADAV?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977c20",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ad20",
+      "symbol": "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@51": "0x96c460",
+        "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0",
+        "??0ClassDescriptor@Reflection@RBX@@AAE@XZ": "0x570820",
+        "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ": "0x7fa300",
+        "_atexit": "0x6a17af"
+      },
+      "local_eh": [
+        "__ehhandler$?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ"
+      ]
+    },
+    {
+      "address": "007fa2a0",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040abc0",
+      "symbol": "??1ClassDescriptor@Reflection@RBX@@UAE@XZ",
+      "size": 99,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30",
+        "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30",
+        "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (RTTI .?AVDescriptor@Reflection@RBX@@, offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fa300",
+      "symbol": "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
       "local_eh": []
     }
   ],

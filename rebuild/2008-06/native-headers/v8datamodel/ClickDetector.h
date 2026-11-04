@@ -7,7 +7,8 @@ extern char sClickDetector[];
 class ClickDetector : public DescribedCreatable<ClickDetector, Instance, sClickDetector>, public IRenderable {
 public:
  int field_140;
- float field_144;
+ float maxActivationDistance;
+ static Reflection::BoundProp<float, 1> prop_MaxActivationDistance;
  // Allocation proves four remaining bytes; member identity/lifetime unresolved.
  unsigned char field_148[4];
  ClickDetector();

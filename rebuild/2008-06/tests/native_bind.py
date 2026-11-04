@@ -130,7 +130,7 @@ def verify(original, obj, methods, internal, own=None):
             elif symbol.startswith('??_7') and symbol not in internal:
                 rtti, offset_in_object = original.vtable_class(value)
                 cls = symbol[4:symbol.index('@@6B') + 2]
-                assert rtti.replace('3QBDB', '3PBDB') == '.?AV' + cls, (name, symbol, hex(value), rtti)
+                assert rtti == '.?AV' + cls or rtti.replace('3QBDB', '3PBDB') == '.?AV' + cls, (name, symbol, hex(value), rtti)
                 verified[symbol] = '%s (RTTI %s, offset %#x)' % (hex(value), rtti, offset_in_object)
             else:
                 assert internal.get(symbol, own.get(symbol)) == value, (name, symbol, hex(value))
