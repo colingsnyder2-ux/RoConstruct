@@ -56,7 +56,7 @@ def plain(symbol):
         return symbol
     return re.sub(r'@\d+$', '', symbol[1:] if symbol.startswith('_') else symbol)
 
-T = '$1?sRenderSettings@@3PBDB@RBX@@'
+T = '$1?sRenderSettings@@3PADA@RBX@@'
 # Internal targets, from the original call sites / data uses read in the disassembly (see header notes).
 INTERNAL = {
     # External code (named in evidence.json or proven by an existing committed recovery).
@@ -105,7 +105,7 @@ for prop, addr in [('graphicsMode', 0x96d35c), ('frameRateManager', 0x96d380), (
 # vtable (RTTI) or literal named here.
 CALLSITE = {
     '??0?$GlobalSettingsItem@VCRenderSettings@@' + T + 'IAE@XZ': (0x448120, 'vtable', 0x815e84, 'GlobalSettingsItem@VCRenderSettings'),
-    '?classDescriptor@?$Described@VCRenderSettings@@$1?sRenderSettings@@3PBDBV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PBDB@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': (0x447980, 'literal', 0x815bd4, b'RenderSettings'),
+    '?classDescriptor@?$Described@VCRenderSettings@@$1?sRenderSettings@@3PADAV?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': (0x447980, 'literal', 0x815bd4, b'RenderSettings'),
     '??$singleton@VVector2int16@G3D@@@Type@Reflection@RBX@@SAABV012@XZ': (0x56ced0, 'literal', 0x82f6c8, b'Vector2int16'),
     # boost 1.34.1 shared_count ctor has a try/catch the 2008 build lacks (as for AuthoringSettings 0040c620).
     '??$?0PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@shared_count@detail@boost@@QAE@PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z': (0x408d90, 'vtable', 0x80b67c, 'sp_counted_impl_pd@PAVCRenderSettings@@'),
@@ -266,10 +266,17 @@ while True:
         break
     alive = keep
 nonexact += pending
-assert not nonexact, nonexact
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 paths = [Path(__file__), Path(__file__).with_name('record_native_render_settings.json'), source, fixture,
          root / 'rebuild/2008-06/native-headers/CRenderSettings.h']
+if nonexact:
+    (root / 'work/2008-06/shared-layouts/render-settings-failed.json').write_text(json.dumps({
+        'scope': 'Failed native audit; no class-swap, ABI or runtime acceptance.',
+        'flags': flags, 'failures': nonexact, 'verified_methods': results,
+        'sources': {str(p.relative_to(root)): sha(p) for p in paths},
+        'object_sha256': sha(obj),
+    }, indent=2) + '\n')
+assert not nonexact, nonexact
 (root / 'work/2008-06/shared-layouts/render-settings-working.json').write_text(json.dumps({
     'class': 'CRenderSettings', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': flags,
     'sources': {str(p.relative_to(root)).replace('\\', '/'): sha(p) for p in paths}, 'object_sha256': sha(obj),

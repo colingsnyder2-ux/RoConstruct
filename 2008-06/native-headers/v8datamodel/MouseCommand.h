@@ -11,6 +11,7 @@ namespace RBX
 	class ContactManager;
 	class ICameraOwner;
 	class Surface;
+	class Decal;
 	class HitTestFilter;
 	class Workspace;
 	class XmlState;
@@ -34,6 +35,7 @@ namespace RBX
 		PartInstance* getUnlockedPartByLocalCharacter(const UIEvent&, G3D::Vector3& = ignoreVector3);
 		Surface* getSurface(const UIEvent&, PartInstance*&, int&);
 		Surface* getSurface(const UIEvent&);
+		Decal* getDecal(PartInstance*, const UIEvent&);
 
 		virtual MouseCommand* onMouseDown(const UIEvent& uiEvent)
 		{

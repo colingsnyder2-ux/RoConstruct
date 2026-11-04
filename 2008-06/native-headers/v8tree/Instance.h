@@ -57,6 +57,7 @@ public:
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentAdded;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_descendentRemoving;
     static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>)> event_ancestryChanged;
+    static Reflection::SignalDesc<Instance, void(boost::shared_ptr<Instance>, const Reflection::PropertyDescriptor*)> event_itemChanged;
     Instance();
     explicit Instance(const char*);
     virtual ~Instance();
@@ -87,6 +88,22 @@ public:
     }
     const Instance* getChild(size_t i) const { return (*children)[i].get(); }
     Instance* getChild(size_t i) { return (*children)[i].get(); }
+		template<typename Function>
+		void visitDescendents(Function func) const
+		{
+			if (children)
+			{
+				boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = children.read();
+				std::vector<boost::shared_ptr<Instance>>::const_iterator end = c->end();
+				std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin();
+
+				for (; iter != end; iter++)
+				{
+					func(*iter);
+					(*iter)->visitDescendents(func);
+				}
+			}
+		}
     template<class Function> void for_eachChild(Function func) const {
         if (children) {
             boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > values = children.read();
