@@ -18,7 +18,9 @@ static CString copyDocument(CRobloxDoc* doc, const char* suffix)
     return result;
 }
 
+// Linkage bridge only. The original static helper is emitted once authentic callers join it.
 CString documentUrl(CRobloxDoc* doc, const char* suffix)
 {
     return copyDocument(doc, suffix);
 }
+

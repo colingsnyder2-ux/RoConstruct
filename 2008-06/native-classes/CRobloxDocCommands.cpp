@@ -3,6 +3,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <stdexcept>
 #include "CRobloxDoc.h"
+#include "CInsertObjectDialog.h"
 #include "CWorkspace.h"
 #include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
@@ -175,6 +176,26 @@ public:
     virtual void doIt(IDataState*);
 };
 InsertService::InsertService(DataModel* dm) : RunStateVerb("Insert Service", dm) {}
+void InsertService::doIt(IDataState*) {
+    boost::shared_ptr<Instance> empty;
+    CInsertObjectDialog dialog(empty, NULL);
+    dialog.className = AfxGetApp()->GetProfileString("InsertService", "ClassName", NULL).GetBuffer();
+    if (dialog.DoModal() == IDOK) {
+        const char* (CString::*convert)() const = &CString::operator const char*;
+        AfxGetApp()->WriteProfileString("InsertService", "ClassName", (dialog.className.*convert)());
+        boost::shared_ptr<Instance> instance = dialog.selected;
+        if (!instance) {
+            CString error; error.Format(133, dialog.className);
+            std::string message((error.*convert)());
+            throw std::runtime_error(message);
+        }
+        if (!ServiceProvider::create(dataModel, instance->getClassName())) {
+            CString error; error.Format(137, dialog.className);
+            std::string message((error.*convert)());
+            throw std::runtime_error(message);
+        }
+    }
+}
 typedef char native_doc_DataModel_Lock_size[(sizeof(DataModel::Lock)==12)?1:-1];
 typedef char native_doc_CameraVerb_size[(sizeof(CameraVerb)==28)?1:-1];
 typedef char native_doc_ReportAbuseVerb_size[(sizeof(ReportAbuseVerb)==16)?1:-1];

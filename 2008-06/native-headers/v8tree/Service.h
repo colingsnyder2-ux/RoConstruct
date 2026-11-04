@@ -32,6 +32,7 @@ public:
     mutable std::vector<boost::shared_ptr<Instance> > serviceArray;
     std::map<const Name*, boost::shared_ptr<Instance> > serviceMap;
     boost::shared_ptr<Instance> findServiceByClassName(const Name&) const;
+    static Instance* create(Instance* context, const Name&);
     static size_t newIndex();
     template<class Class> static size_t doGetClassIndex();
     template<class Class> static void callDoGetClassIndex();
