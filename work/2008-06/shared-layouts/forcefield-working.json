@@ -40,7 +40,7 @@
     "/D_XTPLIB_NOAUTOLINK",
     "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
   ],
-  "source_sha256": "6d0f8b616324e7c875734d76af854c5d40c333dfba96b7529c9a189a16d80635",
+  "source_sha256": "b2bff9f6905deec749358b6011cae08392d77db18acac28bbea8fe3917fc786e",
   "header_sha256": "d5162b7e8430c1edaeecf8a339bc7d016458c175f507f22a60727827d9baf9f5",
   "layout": {
     "size": 328,
@@ -100,10 +100,21 @@
       "local_eh": [
         "__ehhandler$??1ForceField@RBX@@UAE@XZ"
       ]
+    },
+    {
+      "address": "0062d090",
+      "symbol": "?askSetParent@ForceField@RBX@@UBE_NPBVInstance@2@@Z",
+      "size": 35,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVWorkspace@RBX@@@8": "0x9481b8 (.?AVWorkspace@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast"
+      },
+      "local_eh": []
     }
   ],
   "blockers": [
-    "askSetParent requires corrected native Workspace hierarchy; donor headers fail compilation",
     "render3dAdorn 0062d570 pending"
   ]
 }

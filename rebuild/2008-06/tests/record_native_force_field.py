@@ -25,7 +25,7 @@ obj=nb.OUT/'CheckForceField.obj'
 for source,output in [(src,obj),(R/'tests/NativeForceFieldLayout.cpp',nb.OUT/'NativeForceFieldLayout.obj')]:
  code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(output),str(source)],nb.OUT)
  assert code==0,log
-methods=[(n,a) for prefix,a in [('??0ForceField',0x62d6b0),('??1ForceField',0x62d820)] for n,b,r in match.coff_functions(obj.read_bytes()) if n.startswith(prefix)]
+methods=[(n,a) for prefix,a in [('??0ForceField',0x62d6b0),('??1ForceField',0x62d820),('?askSetParent@ForceField@RBX@@',0x62d090)] for n,b,r in match.coff_functions(obj.read_bytes()) if n.startswith(prefix)]
 bodies=match.coff_functions(obj.read_bytes())
 internal={}
 for n,b,r in bodies:
@@ -34,7 +34,7 @@ for n,b,r in bodies:
 internal['??1IRenderable@RBX@@QAE@XZ']=0x47d410
 internal['?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z']=0x55af90
 rows=nb.verify(Original(),obj,methods,internal)
-receipt=dict(class_name='RBX::ForceField',inactive=True,compiler=21022,flags=flags,source_sha256=nb.sha(src),header_sha256=nb.sha(header),layout=dict(size=328,field_140=320,field_144=324,allocation='005c1520',constructor='0062d6b0'),methods=rows,blockers=['askSetParent requires corrected native Workspace hierarchy; donor headers fail compilation','render3dAdorn 0062d570 pending'])
+receipt=dict(class_name='RBX::ForceField',inactive=True,compiler=21022,flags=flags,source_sha256=nb.sha(src),header_sha256=nb.sha(header),layout=dict(size=328,field_140=320,field_144=324,allocation='005c1520',constructor='0062d6b0'),methods=rows,blockers=['render3dAdorn 0062d570 pending'])
 (ROOT/'work/2008-06/shared-layouts/forcefield-working.json').write_text(json.dumps(receipt,indent=2))
 print(json.dumps(receipt,indent=2))
 
