@@ -1,25 +1,25 @@
 {
-  "revision": "7d8c163c829a4d02247561b6fec288bc1a8225ce",
+  "revision": "7400d3b533cb76aa73e28d3c26c69c5330a4ce54",
   "sources": {
-    "rebuild/2008-06/tests/record_native_appearance.py": "01f2f596185c8218e5043084456f5b96ed8b5b930928abbe089d99c9b5055c98",
-    "rebuild/2008-06/native-headers/v8datamodel/BodyColors.h": "127682675030b36108f7c64ffc86e07553402157b2d8bdca123d8cff8ba299d3",
-    "rebuild/2008-06/native-classes/BodyColors.cpp": "8e5a42fcc8c74e6a9b39eb6ff340136b488a6a2d0839a5d5c6db91c7b55dbce4",
-    "rebuild/2008-06/native-headers/v8datamodel/Accoutrement.h": "5be50e8dcbc219a0e437bc067ca34c3a5bee63eb3d6667dfe8182ee026ac0e05",
-    "rebuild/2008-06/native-classes/Accoutrement.cpp": "04a5eadad7d264c3eb7c4de8b5347f5e5c458f098645c1ef2bda3b2c5164f45c",
-    "rebuild/2008-06/tests/NativeAppearanceLayout.cpp": "cd39c992cefcfcaf1830483b22d6bf1fc07b04e7900558457fd28c37ae93695a",
-    "rebuild/2008-06/tests/NativeClothingHumanoid.h": "dfd4c33335e9da1e62da6737511f91d92690ac9d7fa1ee55add5043572c449c3",
-    "rebuild/2008-06/native-headers/v8datamodel/Clothing.h": "167ef86612e8d6493fd2c518ce50ba2b5e5b3738c5332264e2293109e0295a14"
+    "rebuild\\2008-06\\tests\\record_native_appearance.py": "01f2f596185c8218e5043084456f5b96ed8b5b930928abbe089d99c9b5055c98",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\BodyColors.h": "127682675030b36108f7c64ffc86e07553402157b2d8bdca123d8cff8ba299d3",
+    "rebuild\\2008-06\\native-classes\\BodyColors.cpp": "8e5a42fcc8c74e6a9b39eb6ff340136b488a6a2d0839a5d5c6db91c7b55dbce4",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Accoutrement.h": "5be50e8dcbc219a0e437bc067ca34c3a5bee63eb3d6667dfe8182ee026ac0e05",
+    "rebuild\\2008-06\\native-classes\\Accoutrement.cpp": "04a5eadad7d264c3eb7c4de8b5347f5e5c458f098645c1ef2bda3b2c5164f45c",
+    "rebuild\\2008-06\\tests\\NativeAppearanceLayout.cpp": "cd39c992cefcfcaf1830483b22d6bf1fc07b04e7900558457fd28c37ae93695a",
+    "rebuild\\2008-06\\tests\\NativeClothingHumanoid.h": "ffd6dc14423f27f6a6ee9392cba0299230967351ae9b861d3abb2f7192d99956",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Clothing.h": "0f0ea1eb1b659fd868cdf43c45fbeb19fdff22e7031a6370206977bc0c70757a"
   },
   "objects": {
-    "layout": "452c87dcc715e35abbf938138afd063aae279dcde0863151fc276b8f58f7c3e5",
-    "bodycolors": "66380a766ef4ee67cc68a8d07c1eee8c302693b2a740be0dbe515aa5a1240602",
-    "bodycolors_pending": "236df2ff9f7af52cfd3d0a68618e6520d3ae06de8f33acd061a374cf858b5126",
-    "accoutrement": "c248e9b39b42e881f7e06ed2d298e1b6f6ae379790100b523d8b544357f32ba9"
+    "layout": "6b9d721eb4cce6bd87849507237995f361799003484b3057922f694f54e9a7df",
+    "bodycolors": "592d316ac23f0cb78cdb6d9feb6dcc8b5f67fd7c7a4205a55c04eeae383805e7",
+    "bodycolors_pending": "1abbd17e07de062ce98cb1a0c5178c2baeff5d0337635b8164bbfbcce950e962",
+    "accoutrement": "3188c32acb8ed44acadd969c6aa8cc22f5a8783b74169b241e20798b82bc1168"
   },
   "compiler_build": 21022,
   "flags": {
     "layout": [
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/appearance-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\appearance\\appearance-overlay",
       "/nologo",
       "/c",
       "/O2",
@@ -40,7 +40,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -54,11 +54,11 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAppearanceLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeAppearanceLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\appearance\\NativeAppearanceLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeAppearanceLayout.cpp"
     ],
     "bodycolors": [
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/appearance-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\appearance\\appearance-overlay",
       "/nologo",
       "/c",
       "/O2",
@@ -79,7 +79,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -93,12 +93,12 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyColors.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/BodyColors.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\appearance\\NativeBodyColors.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\BodyColors.cpp"
     ],
     "bodycolors_pending": [
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/appearance-pending-overlay",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/appearance-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\appearance\\appearance-pending-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\appearance\\appearance-overlay",
       "/DNATIVE_BODYCOLORS_PENDING",
       "/nologo",
       "/c",
@@ -120,7 +120,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -134,8 +134,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeBodyColorsPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/BodyColors.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\appearance\\NativeBodyColorsPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\BodyColors.cpp"
     ],
     "accoutrement": [
       "/fp:fast",
@@ -159,7 +159,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -173,8 +173,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeAccoutrement.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Accoutrement.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\appearance\\NativeAccoutrement.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Accoutrement.cpp"
     ]
   },
   "sizes": {
@@ -226,6 +226,7 @@
     "005b1370",
     "005b13d0",
     "005b1470",
+    "005b15c0",
     "005b16e0",
     "005b1700",
     "005b1950",
@@ -2341,6 +2342,17 @@
       "local_eh": []
     },
     {
+      "address": "005b15c0",
+      "symbol": "??_GAccoutrement@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "targets": {
+        "??1Accoutrement@RBX@@UAE@XZ": "bound 0x5b0da0",
+        "__imp__free": "msvcr90.dll!free"
+      },
+      "local_eh": []
+    },
+    {
       "address": "005b2ea0",
       "symbol": "??_GHat@RBX@@UAEPAXI@Z",
       "size": 31,
@@ -2353,20 +2365,7 @@
     }
   ],
   "helper_misses": [],
-  "bounds_rows": [
-    {
-      "address": "005b15c0",
-      "symbol": "??_GAccoutrement@RBX@@UAEPAXI@Z",
-      "size": 31,
-      "exact": false,
-      "targets": {
-        "??1Accoutrement@RBX@@UAE@XZ": "bound 0x5b0da0",
-        "__imp__free": "msvcr90.dll!free"
-      },
-      "local_eh": [],
-      "status": "bytes-exact-no-function-start"
-    }
-  ],
+  "bounds_rows": [],
   "bounds_note": [
     "005b15c0 ??_GAccoutrement: byte-identical with bound targets, but the analyzed function 005b1520 (size 191) runs over it; the original code of 005b1520 ends with ret at 005b15bf, so its extent is 0xa0 and 005b15c0 is a separate function (int3-free adjacency). Not counted."
   ],

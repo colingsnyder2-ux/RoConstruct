@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeDebrisForceFieldLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeDebrisForceFieldLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\NativeDebrisForceFieldLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeDebrisForceFieldLayout.cpp"
     ],
     "debris": [
       "/nologo",
@@ -61,7 +61,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeDebrisService.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/DebrisService.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\NativeDebrisService.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\DebrisService.cpp"
     ],
     "forcefield": [
       "/nologo",
@@ -100,7 +100,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -114,8 +114,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeForceField.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/ForceField.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\NativeForceField.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\ForceField.cpp"
     ],
     "forcefield_pending": [
       "/nologo",
@@ -139,9 +139,9 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/debris-forcefield-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\debris-forcefield-pending",
       "/DNATIVE_FORCEFIELD_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -155,25 +155,25 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeForceFieldPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/ForceField.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\debris_forcefield\\NativeForceFieldPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\ForceField.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_debris_forcefield.py": "a11353cdf14ed82c005b7f1aebb39c7802a9c4ec986e01323c444bd1482c8e22",
+    "rebuild/2008-06/tests/record_native_debris_forcefield.py": "77c1f5e11b223e10790d3de15e604e9f2946238aa18739905b30863da9595e16",
     "rebuild/2008-06/tests/NativeDebrisForceFieldLayout.cpp": "0789a36c27aa00c682418d2bbf8ef1bb5c398a2dc7946238fb82054a520da0f7",
     "rebuild/2008-06/native-headers/v8datamodel/DebrisService.h": "e0585a12bf51f8c3e059ae17bc40d0a4e39a26c805aefa4486f45bd1a8c1b2e8",
     "rebuild/2008-06/native-classes/DebrisService.cpp": "a7f2b116478f8a1e67831f2a45f483f62956001ebfc24179265a371b9ad9ded6",
-    "rebuild/2008-06/tests/record_native_debris_forcefield_rows.py": "9f173ffa0e3e75a9f3824be689fdbf286b0f3e1b65c7aaa0105ebfb04ed79af4",
+    "rebuild/2008-06/tests/record_native_debris_forcefield_rows.py": "310d2d28a9647a4fa07cd425eedb3acad043a736cfd3b337fa2efbe0ba0b7adb",
     "rebuild/2008-06/native-headers/v8datamodel/ForceField.h": "99bd9dd2cea96ab313e71617522943c0773b098c6427d46fc343d41db396d5e0",
     "rebuild/2008-06/native-classes/ForceField.cpp": "2968fa491391dc188ae19d3937e282f4c50fe15f6a5b9ea8323db86b5a950102",
     "rebuild/2008-06/tests/NativeDebrisForceFieldPendingWorkspace.h": "24b05a565f546ba2b85afa53d8ac3c3d6d245d55b6240c42b19feb2e6bdf18d0"
   },
   "objects": {
-    "NativeDebrisForceFieldLayout.obj": "78496339accf64122ba962ae3dc141d99f2eb22a0a5807cdd3c040d58e205c71",
-    "NativeDebrisService.obj": "adb9e1b85910d85577a21ebb5cf24bb70c6867d3235ba1dd02d9b2b7dc63f5ea",
-    "NativeForceField.obj": "1198b62e03e9dddce1f2ae9eeb9b89cf155e18ac4404eb96953c0158ea8c6785",
-    "NativeForceFieldPending.obj": "6fc49f917318971328acc6d1d9c252bf0c71dcbe14de4150e7b1acf5d7182a50"
+    "NativeDebrisForceFieldLayout.obj": "70abcc8e37363c97fd2e6f9d9566cf393643965a4af1e33a1fc891aa6a3af725",
+    "NativeDebrisService.obj": "bb5880049519b26b58a54270b09158bc5350907c2dc81347d2a43a209b6fcd75",
+    "NativeForceField.obj": "e6afb339078ca89fcefe788f24e597fdd755848a7c2bf0a3ab4847bf0c9fb7fc",
+    "NativeForceFieldPending.obj": "c6b70f1123e54227614d50733ee4ea88c66eb2967d23095938d1e52deb995476"
   },
   "layout": {
     "DebrisService": "0x158 (005c2e10); Service empty base and std::queue<weak_ptr<Instance>> queue +0x130, maxItems +0x150, timer +0x154; class name \"Debris\" (char[] 009611f0)",
@@ -181,6 +181,38 @@
   },
   "rows": {
     "layout": [
+      {
+        "address": "005c2cd0",
+        "symbol": "??$?0PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_pd@PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x838a7c (vtable RTTI .?AV?$sp_counted_impl_pd@PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+          "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+        ]
+      },
+      {
+        "address": "005c13e0",
+        "symbol": "??$?0PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_pd@PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x8388a4 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+          "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+        ]
+      },
       {
         "address": "005c2e10",
         "symbol": "??$create@VDebrisService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VDebrisService@RBX@@@boost@@XZ",
@@ -203,7 +235,7 @@
         "target_size": 171,
         "exact": true,
         "verified_targets": {
-          "??$?0PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5c2cd0 (call target of a non-exact row)"
+          "??$?0PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5c2cd0 (own row)"
         },
         "local_eh": [
           "__ehhandler$??$?0VDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VDebrisService@RBX@@@boost@@QAE@PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -231,7 +263,7 @@
         "target_size": 171,
         "exact": true,
         "verified_targets": {
-          "??$?0PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5c13e0 (call target of a non-exact row)"
+          "??$?0PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5c13e0 (own row)"
         },
         "local_eh": [
           "__ehhandler$??$?0VForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VForceField@RBX@@@boost@@QAE@PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
@@ -396,7 +428,7 @@
         "local_eh": []
       },
       {
-        "address": "0063b5c0+0063b63f+0063b673",
+        "address": "0063b5c0",
         "symbol": "?cleanup@@YAXV?$weak_ptr@VInstance@RBX@@@boost@@@Z",
         "size": 228,
         "target_size": 228,
@@ -1380,7 +1412,7 @@
         "local_eh": []
       },
       {
-        "address": "0062d310[00:70]",
+        "address": "0062d310",
         "symbol": "?hasForceField@ForceField@RBX@@CA_NPAVInstance@2@@Z",
         "size": 112,
         "target_size": 112,
@@ -1411,22 +1443,6 @@
         "target_size": 77,
         "exact": false,
         "reason": "boost::function0 constructor around the assign_to above (77 vs 175 bytes)"
-      },
-      {
-        "address": "005c2cd0",
-        "symbol": "??$?0PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
-        "size": 131,
-        "target_size": 110,
-        "exact": false,
-        "reason": "shared_count<DebrisService*, Deleter> constructor in the creating unit (110 bytes; this build 131), not investigated"
-      },
-      {
-        "address": "005c13e0",
-        "symbol": "??$?0PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
-        "size": 131,
-        "target_size": 110,
-        "exact": false,
-        "reason": "shared_count<ForceField*, Deleter> constructor in the creating unit, not investigated (same shape as the DebrisService one)"
       }
     ],
     "pending": [
@@ -1454,7 +1470,7 @@
         "reason": "not exact even in the pending build: reads the 2008 PartInstance float at +0x328 (the native PartInstance.h has its provisional transparency at +0x1e8; sizes match, field identity unproven)"
       },
       {
-        "address": "0062d310[70:bc]",
+        "address": "0062d380",
         "symbol": "?isProtectedRecursive@ForceField@RBX@@CA_NPAVInstance@2@@Z",
         "size": 76,
         "target_size": 76,
@@ -1562,8 +1578,10 @@
     "005c0050",
     "005c0400",
     "005c06a0",
+    "005c13e0",
     "005c1470",
     "005c1520",
+    "005c2cd0",
     "005c2d60",
     "005c2e10",
     "0062d0c0",
@@ -1576,6 +1594,7 @@
     "0062d1e0",
     "0062d1f0",
     "0062d300",
+    "0062d310",
     "0062d3e0",
     "0062d5f0",
     "0062d690",
@@ -1604,8 +1623,6 @@
     "0063b560",
     "0063b570",
     "0063b5c0",
-    "0063b63f",
-    "0063b673",
     "0063b6b0",
     "0063b6d0",
     "0063b770",
@@ -1643,9 +1660,7 @@
     "00801060",
     "00801080"
   ],
-  "exact_row_slices": [
-    "0062d310[00:70]"
-  ],
+  "exact_row_slices": [],
   "vtables": {
     "DebrisService": [
       {

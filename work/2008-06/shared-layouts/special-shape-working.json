@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpecialShapeLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeSpecialShapeLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\special_shape\\NativeSpecialShapeLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeSpecialShapeLayout.cpp"
     ],
     "main": [
       "/nologo",
@@ -62,7 +62,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,8 +76,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpecialShape.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/SpecialShape.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\special_shape\\NativeSpecialShape.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\SpecialShape.cpp"
     ],
     "pending": [
       "/nologo",
@@ -101,8 +101,8 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/special-shape-pending",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\special_shape\\special-shape-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -116,8 +116,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpecialShapePending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/SpecialShape.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\special_shape\\NativeSpecialShapePending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\SpecialShape.cpp"
     ]
   },
   "sources": {
@@ -127,9 +127,9 @@
     "rebuild/2008-06/tests/NativeSpecialShapeLayout.cpp": "4f2488260e936912f926a8e50fcde9d16d38a01464ddc4599be2829456abab8f"
   },
   "objects": {
-    "NativeSpecialShapeLayout.obj": "176d1dbee5186f4a9a240d1a019ce4144ff53387c35aca0d6c3c020c973d25b3",
-    "NativeSpecialShape.obj": "2e73609528306ffbb3e4537407a5405caee7b4451c44966c593232a7d42b26d1",
-    "NativeSpecialShapePending.obj": "53b13533851724f63d5f37f81312ae4c80243329e1108f6bc2a7e72d8483b63b"
+    "NativeSpecialShapeLayout.obj": "d1e009be1dd0c6c811d9b1357efba12cfa93ef6273b9e70d9d0b4b8698470a14",
+    "NativeSpecialShape.obj": "dba55746034904bb0249e23175baa79a94e3937ef1112d7e9924e2189ee0c443",
+    "NativeSpecialShapePending.obj": "54c543fe1096c928663b2407d08776b6722d710a71689770e1f3ce3d06a91543"
   },
   "layout": {
     "SpecialShape": "0x18c (create<SpecialShape> 0041ec30 allocates 0x18c); meshType +0x130, scale +0x134, textureId +0x140, meshId +0x160, vertColor +0x180; no mesh base class (RTTI 21 bases)"

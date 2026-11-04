@@ -39,8 +39,8 @@ FORCEFIELD_ROWS = [
     (0x5bf9c0, '??$doDeclare@$1?sForceField@RBX@@3PADA@Name@RBX@@CAABV01@XZ'),
     (0x5bffb0, '??$callDoDeclare@$1?sForceField@RBX@@3PADA@Name@RBX@@CAXXZ'),
     (0x7fe720, '??__Ffoo@?1??classDescriptor@' + DSF),
-    # first function of the 0062d310 function-list row (bytes 00..70; the rest is isProtectedRecursive)
-    (('slice', 0x62d310, 0x00, 0x70), '?hasForceField@ForceField@RBX@@CA_NPAVInstance@2@@Z'),
+    # current complete 112-byte extent; isProtectedRecursive has its own 0062d380 extent
+    (0x62d310, '?hasForceField@ForceField@RBX@@CA_NPAVInstance@2@@Z'),
 ]
 # Trivial inline virtual bodies that the original folds with identical bodies elsewhere (ICF). Compared and bound so
 # the vtable slots are proven, but recorded in their own group and not counted as recovered addresses.
@@ -50,11 +50,8 @@ FORCE_TRIVIAL_ROWS = [
     (0x70bdf0, '?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z'),                         # ret 4
     (0x458e90, '?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z'),   # ret 8
 ]
-FORCE_NON_EXACT_ROWS = [
-    (0x5c13e0, '??$?0PAVForceField@RBX@@' + DLR + '1@@shared_count@detail@boost@@',
-     'shared_count<ForceField*, Deleter> constructor in the creating unit, not investigated (same shape as the '
-     'DebrisService one)', 'layout'),
-]
+FORCE_NON_EXACT_ROWS = []  # shared_count now checked against its complete 131-byte extent
+
 FORCE_UNPROVEN = {
     '??$?0PAVForceField@RBX@@' + DLR + '1@@shared_count@detail@boost@@QAE@PAVForceField@RBX@@' + DLR + '4@@Z': 0x5c13e0,   # 005c14a1
 }
@@ -64,7 +61,7 @@ FORCE_UNPROVEN = {
 FORCE_PENDING_ROWS = [
     (0x62d090, '?askSetParent@ForceField@RBX@@MBE_NPBVInstance@2@@Z'),
     (0x62d200, '?renderPart@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAVAdorn@RBX@@H@Z'),
-    (('slice', 0x62d310, 0x70, 0xbc), '?isProtectedRecursive@ForceField@RBX@@CA_NPAVInstance@2@@Z'),
+    (0x62d380, '?isProtectedRecursive@ForceField@RBX@@CA_NPAVInstance@2@@Z'),
     (0x62d3d0, '?isProtected@ForceField@RBX@@SA_NPAVInstance@2@@Z'),
     (0x62d400, '??$visitDescendents@V?$bind_t@'),
     (0x62d570, '?render3dAdorn@ForceField@RBX@@MAEXPAVAdorn@2@@Z'),

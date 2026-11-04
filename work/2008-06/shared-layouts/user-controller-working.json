@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeUserControllerLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeUserControllerLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\user_controller\\NativeUserControllerLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeUserControllerLayout.cpp"
     ],
     "unit": [
       "/nologo",
@@ -62,7 +62,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,8 +76,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeUserController.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/UserController.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\user_controller\\NativeUserController.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\UserController.cpp"
     ],
     "pending": [
       "/nologo",
@@ -101,9 +101,9 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/user-controller-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\user_controller\\user-controller-pending",
       "/DNATIVE_USER_CONTROLLER_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -117,8 +117,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeUserControllerPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/UserController.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\user_controller\\NativeUserControllerPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\UserController.cpp"
     ]
   },
   "sources": {
@@ -128,9 +128,9 @@
     "rebuild/2008-06/native-classes/UserController.cpp": "48cf0cc647c09b647ef7b7083ecd122843b725c8742b4761e0df9cc0a6409eef"
   },
   "objects": {
-    "NativeUserControllerLayout.obj": "e65f3a365631a3e2faa8b17161bd42af2d40844cd4ce53231025b67e991d3208",
-    "NativeUserController.obj": "345672245b863f1793ea4ed30d1053f155d179585d9473fd334ebcfa14ca7844",
-    "NativeUserControllerPending.obj": "792f55388a650282844530c0ec76aa75a23681d6b6e2968abd649ccf9ac0a8f0"
+    "NativeUserControllerLayout.obj": "27133b3d04c66067483dd1fdd07972685deffe6b71d2e1075a9ede92ed455043",
+    "NativeUserController.obj": "9ad817b73a2c64c88338fbe2b831b591232b11e3f295179070575efd8e51b456",
+    "NativeUserControllerPending.obj": "b97e291d512deba18335d7aa7cd3a5db3e8e3339a772fad85873b55325b0b68c"
   },
   "layout": {
     "ControllerService": "0x144 (creator 0045c580); Service +0x130 (empty); hardwareDevice +0x130, playerController +0x134, keyboardPrimary +0x138, keyboardSecondary +0x13c, nullController +0x140; class name char[] \"ControllerService\" at 009510b4",

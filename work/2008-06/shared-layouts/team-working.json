@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeTeamLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeTeamLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\team\\NativeTeamLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeTeamLayout.cpp"
     ],
     "team": [
       "/nologo",
@@ -61,7 +61,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeTeam.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Team.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\team\\NativeTeam.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Team.cpp"
     ],
     "teams": [
       "/nologo",
@@ -99,7 +99,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -113,8 +113,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeTeams.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Teams.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\team\\NativeTeams.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Teams.cpp"
     ],
     "pending": [
       "/nologo",
@@ -137,9 +137,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/native-team-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\team\\native-team-pending",
       "/DNATIVE_TEAMS_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -153,27 +153,27 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeTeamsPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Teams.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\team\\NativeTeamsPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Teams.cpp"
     ]
   },
   "sources": {
     "rebuild/2008-06/tests/record_native_team.py": "434eccca3335d6cdacd65e7c46eba47834c59118340042f6e791f9d31c79a91f",
-    "rebuild/2008-06/native-headers/v8datamodel/Team.h": "050be389d9d59a29fe52472eeee1a9db6a82a5f4a15998bbbe5b8e2e33ca11fa",
-    "rebuild/2008-06/native-headers/v8datamodel/Teams.h": "81ffd764137cf1f91073121664f9232bb9abe0aa4405e5b1c8ac6a32f139de41",
-    "rebuild/2008-06/native-classes/Team.cpp": "af83d765ea7533155e5af5ceb942cfa46b4f0150ddc17b6ad84d9dae90fb4dd8",
+    "rebuild/2008-06/native-headers/v8datamodel/Team.h": "5b3dba04280874af77e032030d7db02179689531ec63f4c94fc9bb11dc61195d",
+    "rebuild/2008-06/native-headers/v8datamodel/Teams.h": "06ee51742b06c53999e5229bf2f4564e9f1526e2c92949ead77550971e6bf7ba",
+    "rebuild/2008-06/native-classes/Team.cpp": "a9b0e3b2ecfe85ab892aa13ff11a95708a032ebdedb6b9bd53f07f7b2f77adc8",
     "rebuild/2008-06/native-classes/Teams.cpp": "68cf01f24cd09851f074a9e3fde220410a243a8f471f67b640a5eaa7398e96cf",
-    "rebuild/2008-06/tests/NativeTeamLayout.cpp": "994f2df48f673c58296912d4e02e200c0da1bd6fa86785fcf1eb471c00bbce1d",
+    "rebuild/2008-06/tests/NativeTeamLayout.cpp": "4943aa127ae30937ab642a6830690c4b678d36bfc826f7dd22e24f38d63e8039",
     "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
     "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
-    "rebuild/2008-06/tests/NativeTeamPendingHumanoid.h": "a8c11ef1c01f1131066142a3efe24eef9b4242206921d9a3fcb24725ee22a60b",
-    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "20e08a74388f6d4dcf8fae1547f314f2ab3291a73a330ff9f3b9a7a3c498796c"
+    "rebuild/2008-06/tests/NativeTeamPendingHumanoid.h": "b0d015503c528096fefc72638fb84cfbbe679c1d585d2e037cddd4e86f0eca8e",
+    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "88164ed8537f5812afbd86fd869aba9235ecc6527414066562d68069c3978993"
   },
   "objects": {
-    "NativeTeamLayout.obj": "ae9405b7b6ac6c00ae341df2e4ddcb5695091e241b92c3636dddcd21605c7f8f",
-    "NativeTeam.obj": "df0970a91cabd51d05188d26a06439c8f4b7368c9f5e1bf5fc63bd6eac0ac4a2",
-    "NativeTeams.obj": "2438f4b7eec83a24d2838039dc95812015733bfa9e3629c92e27ff361ee98a42",
-    "NativeTeamsPending.obj": "4d74fc903adbc33219f9475881a9b74fd1ea3c5342e772fa72e61bd5bde2f937"
+    "NativeTeamLayout.obj": "30c864c03e8ed3e62b651d8eff8260bee469b427989026c8874580f4a47fae4a",
+    "NativeTeam.obj": "da7ebf9dc74a4df0c6ca7355a7c55f222e6ddeeb43cb919a2d5097b5d2958a94",
+    "NativeTeams.obj": "a25db5b05fa2e17b339b82f5e4d8d6889e1dcb443eeb40772c30d502cafaa29c",
+    "NativeTeamsPending.obj": "8f1e1d4c388893ea90f1d07a411fd8788b3a4459802e87fe50e9e4564fc7a028"
   },
   "layout": {
     "Team": "0x13c (Creatable<Instance>::create<Team> 00409140); score +0x130, color +0x134, autoAssignable +0x138, autoColorCharacters +0x139",

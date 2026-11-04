@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeNetworkPlayersLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeNetworkPlayersLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayersLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeNetworkPlayersLayout.cpp"
     ],
     "base": [
       "/nologo",
@@ -61,8 +61,8 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-network-players/overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,9 +76,9 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeNetworkPlayers.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/NetworkPlayers.cpp"
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayers.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
     ],
     "pending": [
       "/nologo",
@@ -101,9 +101,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-network-players/pending",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-network-players/overlay",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -117,10 +117,10 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/I/home/user/roconstruct/tools/rbxgs/Client/Network/raknet30/Source",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
       "/DNATIVE_NETWORK_PLAYERS_PENDING",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeNetworkPlayersPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/NetworkPlayers.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayersPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
     ]
   },
   "sources": {
@@ -129,12 +129,12 @@
     "rebuild/2008-06/native-classes/NetworkPlayers.cpp": "32d12fa3557c1976c6b2e9255866a8c1e20ba17fd36d171dcd95a8825709972c",
     "rebuild/2008-06/tests/NativeNetworkPlayersLayout.cpp": "c6a507cbe6d721e0948dc11fd99a4dfa84faaac2771e623fa3ec723919a7b121",
     "rebuild/2008-06/tests/NativeNetworkPlayersPeers.h": "92a7c176346f13f66e6dd2e5b320c31d1d8f861ccea0451e09dbe647bbd39e92",
-    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "20e08a74388f6d4dcf8fae1547f314f2ab3291a73a330ff9f3b9a7a3c498796c"
+    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "88164ed8537f5812afbd86fd869aba9235ecc6527414066562d68069c3978993"
   },
   "objects": {
-    "NativeNetworkPlayersLayout.obj": "136708db9bf17cdb1cd7cbec58f4af74992466896d73ec6e1275a0e7cf87af13",
-    "NativeNetworkPlayers.obj": "29134ad0fc1a993d3683103c9ce0102bd51a734ab3ed6c70510242a10ef7e12f",
-    "NativeNetworkPlayersPending.obj": "9aa2c3a6dcb259360784724852b9b6a05255d042f42fc6996a5b5cfa7670c045"
+    "NativeNetworkPlayersLayout.obj": "26763d43e8ebf8c31de726ee157be78cdfcc1dbbb9927418528a137f3b54f72c",
+    "NativeNetworkPlayers.obj": "769934194c01f3749824867e5d14bdb80c98ae10578611da99a744e4618856d5",
+    "NativeNetworkPlayersPending.obj": "d3579d344457309747053599ec995c74de45975e6696f71f292339a3dc62a46a"
   },
   "layout": "Players 0x1b0 (ServiceProvider::create<Players> 00411fd0); Notifier<Players,ChatMessage> 0x130, Notifier<Players,SuperSafeChanged> 0x150, Listener<Player,CharacterAdded> 0x170, Service 0x174; abuseReporter +0x174, chatHistory +0x178, plugin +0x194, players +0x198, localPlayer +0x1a0, peer +0x1a8, maxPlayers +0x1ac; ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)",
   "methods": [

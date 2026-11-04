@@ -1,0 +1,18 @@
+{
+  "scope": "Typed static storage symbol and loader zero initialization verified. Constructor assignment and runtime ownership not proven; link closure not yet checked.",
+  "symbol": "?sing@?$GlobalSettingsItem@VGameSettings@RBX@@$1?sGameSettings@2@3QBDB@RBX@@0PAV12@A",
+  "original_address": "0x96dd10",
+  "original_section": ".data",
+  "original_is_zero_filled_virtual_tail": true,
+  "object_section_raw_size": 0,
+  "object_offset": 0,
+  "singleton_refs": "0x44bee0 reads storage at 0x44bf10 and 0x44bfc0",
+  "native_header_sha256": {
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\GameSettings.h": "57423bda044b1f3904bd02c06b29362fb3a54f804599b2fb78210802e87ea83f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\GlobalSettings.h": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "e1a24b33e62e1e454d8a28202df94ba01819723812a3e88d9d1d4b1e75fa6b2e"
+  },
+  "source_sha256": "1a7bb98af73431087865183385346e665c1a1267067fbe34b046fa0618d031ad",
+  "object_sha256": "688296e4fb6bfa87175c245ebf14bfa58ff01535791ae2ca575274956b9619f9",
+  "recorder_sha256": "5f7d6c2f0ee5c032cb3b5cdf683fc2a65dac726df3cf8c2c373f703d8ec98d26"
+}

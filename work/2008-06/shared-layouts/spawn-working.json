@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpawnLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeSpawnLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\spawn\\NativeSpawnLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeSpawnLayout.cpp"
     ],
     "timer": [
       "/nologo",
@@ -61,7 +61,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeTimerService.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/TimerService.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\spawn\\NativeTimerService.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\TimerService.cpp"
     ],
     "spawn": [
       "/nologo",
@@ -99,7 +99,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -113,8 +113,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpawnLocation.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/SpawnLocation.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\spawn\\NativeSpawnLocation.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\SpawnLocation.cpp"
     ],
     "pending": [
       "/nologo",
@@ -137,9 +137,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/spawn-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\spawn\\spawn-pending",
       "/DNATIVE_SPAWN_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -153,12 +153,12 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSpawnLocationPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/SpawnLocation.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\spawn\\NativeSpawnLocationPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\SpawnLocation.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_spawn.py": "b58de13328e06f65e1129e51588257887896f54d6929959c670a78fb34616bd0",
+    "rebuild/2008-06/tests/record_native_spawn.py": "39634395d7f405b825a3508a018828628c7733eeb96e7c6012de5c998fb18251",
     "rebuild/2008-06/native-headers/v8datamodel/TimerService.h": "7640981dca3c803865379af03e18282faa98ba191080235bcc98283277715f93",
     "rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h": "00d1445a19fe74b5ca56ce75883fb5edc7fce458fee81ce7fe8508b96514af69",
     "rebuild/2008-06/native-headers/v8datamodel/SpawnLocation.h": "2410712f84b89fde96ffd18f0c127a7375d19204fa8d83607d730573056e0b7b",
@@ -167,10 +167,10 @@
     "rebuild/2008-06/tests/NativeSpawnLayout.cpp": "034af4aea6f48f6e7bd4b97eb2974c5b36a063be0b7f782785a8b16e9930259e"
   },
   "objects": {
-    "NativeSpawnLayout.obj": "8e991e07971beb4d9ae3d1bda03431324342b684ad8d7991aed11b3f47d7c6ad",
-    "NativeTimerService.obj": "742d0781fe90e208167e59140b663bd74b98db0143051af0b371de6af6da85e5",
-    "NativeSpawnLocation.obj": "d60ade4f2621edbc20d99eff43b831883a41a2bce2ce93de4a903d5fc18707fe",
-    "NativeSpawnLocationPending.obj": "f789b57c335b3412a865042f5d55a12de64cd6c3d2b6201f802b755cf1ee02b7"
+    "NativeSpawnLayout.obj": "6e967037d4a0155765dc1d24a738de2df63c1dec5cdb6a50fa3e3e29baad22d6",
+    "NativeTimerService.obj": "33463883502f3d41a0be3827f9429622fce159bd71d73ab5fc1f5244fade9537",
+    "NativeSpawnLocation.obj": "f00f9709cf86ffb680f3dfb1021ee1e94dbaf3208f33c3d32ec972e359954ca1",
+    "NativeSpawnLocationPending.obj": "2c7a4d447b28b01aa220500b691f91b02272347d57e5bf44ac1da593d43b7122"
   },
   "layout": {
     "TimerService": "0x158 (0048bcf0); Listener<RunService,Heartbeat> +0x130, Service +0x134, runService +0x134, std::list<Item> +0x13c; class name \"Timer\"",
@@ -356,7 +356,7 @@
         "local_eh": []
       },
       {
-        "address": "005d6bf0+005d6c61",
+        "address": "005d6bf0",
         "symbol": "?_Buynode@?$list@VItem@TimerService@RBX@@V?$allocator@VItem@TimerService@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@VItem@TimerService@RBX@@V?$allocator@VItem@TimerService@RBX@@@std@@@2@PAU342@0ABVItem@TimerService@RBX@@@Z",
         "size": 134,
         "target_size": 134,
@@ -426,7 +426,7 @@
         ]
       },
       {
-        "address": "005d6f70+005d700f",
+        "address": "005d6f70",
         "symbol": "?onEvent@TimerService@RBX@@MAEXPBVRunService@2@VHeartbeat@2@@Z",
         "size": 270,
         "target_size": 270,
@@ -1965,13 +1965,11 @@
     "005d6b60",
     "005d6bd0",
     "005d6bf0",
-    "005d6c61",
     "005d6c80",
     "005d6d10",
     "005d6db0",
     "005d6e10",
     "005d6f70",
-    "005d700f",
     "005d7080",
     "005d70e0",
     "005d7180",

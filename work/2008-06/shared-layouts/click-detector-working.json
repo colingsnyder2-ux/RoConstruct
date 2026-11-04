@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClickDetectorLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeClickDetectorLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\click_detector\\NativeClickDetectorLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeClickDetectorLayout.cpp"
     ],
     "main": [
       "/nologo",
@@ -62,7 +62,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,8 +76,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClickDetector.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/ClickDetector.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\click_detector\\NativeClickDetector.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\ClickDetector.cpp"
     ],
     "pending": [
       "/nologo",
@@ -101,9 +101,9 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/click-detector-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\click_detector\\click-detector-pending",
       "/DNATIVE_CLICKDETECTOR_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -117,8 +117,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeClickDetectorPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/ClickDetector.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\click_detector\\NativeClickDetectorPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\ClickDetector.cpp"
     ]
   },
   "sources": {
@@ -129,9 +129,9 @@
     "rebuild/2008-06/tests/NativeClickDetectorPendingWorkspace.h": "9895cf68b8a6b4423d80f2c803787b68c9c3f9eaa7408a6a1d1697dfffaa53ca"
   },
   "objects": {
-    "NativeClickDetectorLayout.obj": "f160cc1060c94444e953ee08326fb090c422fb18e67478d9abaea19356bee310",
-    "NativeClickDetector.obj": "fe6589d21c1c52cbc87e294d07c6130c37ab4dfcf8cab6c08942200b26378a0f",
-    "NativeClickDetectorPending.obj": "028c3561fc2782cfd2cdaeda2ff796851afa0edfa5b85b506518f67fccd5774b"
+    "NativeClickDetectorLayout.obj": "1bf069b76d8e005baee17a6da96f312be7daf5d598eb40aeeae08865bb202d88",
+    "NativeClickDetector.obj": "6dc2f8de7ca0c3fe014f3a4beb4baea91c258e23ede016edcfc42abaa4ca60a2",
+    "NativeClickDetectorPending.obj": "f65fb5665c69e661cf3bc90040e9bb18f2ae6bd2be3e72dc76f87c0c5576c89f"
   },
   "layout": {
     "ClickDetector": "0x14c (create<ClickDetector> 005c0b60 allocates 0x14c); IRenderable +0x130, int +0x140 (constructor stores 0; no other access found), maxActivationDistance +0x144, frontendMouseClick +0x148 (not initialized by the constructor); RTTI 22 bases"

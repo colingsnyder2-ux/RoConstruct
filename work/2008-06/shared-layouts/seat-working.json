@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSeatLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeSeatLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\seat\\NativeSeatLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeSeatLayout.cpp"
     ],
     "seat": [
       "/nologo",
@@ -61,7 +61,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeSeat.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Seat.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\seat\\NativeSeat.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Seat.cpp"
     ]
   },
   "sources": {
@@ -86,8 +86,8 @@
     "rebuild/2008-06/tests/NativeSeatLayout.cpp": "f080e18abb56706aaaf207954cc5bcfacf539632aa026bc5e86cbcc03b1e7ae5"
   },
   "objects": {
-    "NativeSeatLayout.obj": "92130dbb20326da0cc75fe48b4e127f375d721d9297f7ac4f8282a1352386db7",
-    "NativeSeat.obj": "c4b0d0af0abb31ea1bb553e7c4f8a514e2d5c5e897f0d3d8ce8a274c0ce3c489"
+    "NativeSeatLayout.obj": "f483da1eb6c2b7154d7a9e2f19dbc764a782b6d4b742014e013cff8597c0be45",
+    "NativeSeat.obj": "ee5dc8bb1be03e54508011047f005cce10cec64c9bff1fb74dc97fbf51db9e50"
   },
   "layout": {
     "Seat": "0x43c (005c3080); PartInstance non-virtual part to +0x3e8, scoped_connection seatTouched +0x3e8, scoped_connection humanoidSeated +0x3fc, double sleepTime +0x410, shared_ptr<Weld> +0x418, vtordisp +0x420, virtual bases from +0x424"

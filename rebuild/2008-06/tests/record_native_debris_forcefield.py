@@ -6,8 +6,8 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current native head
   * native-classes/DebrisService.cpp        the Debris unit 0063b330..0063c3a0 (+ class descriptor 005c06a0, doDeclare
                                             005bfe20 / callDoDeclare 005c0050, descriptor initializers 007f8b60 /
                                             007f8ba0 and their atexit functions). The static cleanup(weak_ptr) body
-                                            spans three rows of the function list (0063b5c0 + 0063b63f + catch funclet
-                                            0063b673): it is compared against their concatenation, which is contiguous;
+                                            includes its former split blocks 0063b63f and 0063b673 in the current 228-byte
+                                            extent at 0063b5c0, compared in full once;
   * native-classes/ForceField.cpp           (/fp:fast) the ForceField unit 0062d0c0..0062d8d0 plus class descriptor
                                             005c0400, doDeclare 005bf9c0 / callDoDeclare 005bffb0 and atexit 007fe720
                                             (rows in tests/record_native_debris_forcefield_rows.py). The 0062d310 row of
@@ -108,6 +108,7 @@ DLR = 'VDeleter@?$Creatable@VInstance@RBX@@@'
 
 # ---- externals: address the original instruction uses, read at the call sites listed ----------------
 EXTERNAL = {
+    '??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z': 0x405e30,  # catch funclets in complete shared_count extents
     '??1Instance@RBX@@UAE@XZ': 0x55a540,                                   # 0063b340 tail jump
     '??0Instance@RBX@@QAE@PBD@Z': 0x55b960,                                # 0063b490
     '?setParent@Instance@RBX@@QAEXPAV12@@Z': 0x55a8f0,                     # cleanup 0063b606
@@ -169,8 +170,6 @@ NON_EXACT_ROWS = [
      'boost::function0::assign_to: the original constant-initializes the static stored_vtable (00849970 written directly, 82 bytes); '
      'this build keeps basic_vtable0 init out of line and guards the static (273 bytes)', 'debris'),
     (0x63bb70, '??$?0' + BND + '@?$function0@', 'boost::function0 constructor around the assign_to above (77 vs 175 bytes)', 'debris'),
-    (0x5c2cd0, '??$?0PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@',
-     'shared_count<DebrisService*, Deleter> constructor in the creating unit (110 bytes; this build 131), not investigated', 'layout'),
 ]
 UNPROVEN = {
     '??$?0' + BND + '@?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAE@V?$bind_t@XP6AX' + WPI + '@ZV?$list1@V?$value@' + SPI + '@_bi@boost@@@_bi@2@@_bi@1@H@Z': 0x63bb70,   # addItem 0063bc40
@@ -181,6 +180,9 @@ UNPROVEN.update(FORCE_UNPROVEN)
 
 # Rows: (address or (contiguous addresses), symbol or unique symbol prefix)
 LAYOUT_ROWS = [
+    # Current extents include their catch funclets; verify every byte and relocation.
+    (0x5c2cd0, '??$?0PAVDebrisService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@'),
+    (0x5c13e0, '??$?0PAVForceField@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@'),
     (0x5c2e10, '??$create@VDebrisService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VDebrisService@RBX@@@boost@@XZ'),
     (0x5c2d60, '??$?0VDebrisService@RBX@@' + DLR + '1@@?$shared_ptr@VDebrisService@RBX@@@boost@@QAE@PAVDebrisService@RBX@@' + DLR + '3@@Z'),
 ]
@@ -195,7 +197,7 @@ DEBRIS_ROWS = [
     (0x63b510, '??_G' + FPD + 'MAEPAXI@Z'),
     (0x63b560, '??1' + DSD + 'UAE@XZ'),
     (0x63b570, '??$getset@P8DebrisService@RBX@@BEHXZP812@AEXH@Z@' + PDD),
-    ((0x63b5c0, 0x63b63f, 0x63b673), '?cleanup@@YAX' + WPI + '@Z'),
+    (0x63b5c0, '?cleanup@@YAX' + WPI + '@Z'),
     (0x63b6b0, '?getClassName@' + FPD + 'UBEABVName@2@XZ'),
     (0x63b6d0, '?_Tidy@' + DEQ),
     (0x63b770, '??$bind@X' + WPI + 'V?$shared_ptr@VInstance@RBX@@@2@@boost@@'),

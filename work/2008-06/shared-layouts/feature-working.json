@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -39,8 +39,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
       "/U_RELEASEASSERT",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeFeatureLayout.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeFeatureLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\feature\\NativeFeatureLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeFeatureLayout.cpp"
     ],
     "layout_pending": [
       "/nologo",
@@ -63,10 +63,10 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/native-feature-pending",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\feature\\native-feature-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers\\part-embedded",
       "/DNATIVE_FEATURE_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -82,8 +82,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
       "/U_RELEASEASSERT",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeFeatureLayoutPending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/tests/NativeFeatureLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\feature\\NativeFeatureLayoutPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeFeatureLayout.cpp"
     ],
     "main": [
       "/nologo",
@@ -106,7 +106,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -122,8 +122,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
       "/U_RELEASEASSERT",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeFeature.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Feature.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\feature\\NativeFeature.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Feature.cpp"
     ],
     "pending": [
       "/nologo",
@@ -146,10 +146,10 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/native-feature-pending",
-      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\feature\\native-feature-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers\\part-embedded",
       "/DNATIVE_FEATURE_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -165,8 +165,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
       "/fp:fast",
       "/U_RELEASEASSERT",
-      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeFeaturePending.obj",
-      "/home/user/roconstruct/rebuild/2008-06/native-classes/Feature.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\feature\\NativeFeaturePending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Feature.cpp"
     ]
   },
   "sources": {
@@ -180,30 +180,30 @@
   "generated_pending_headers": {
     "reflection/reflection.h": {
       "from": "rebuild/2008-06/native-headers/reflection/reflection.h",
-      "sha256": "d212e82daf014c11efc8262e641359893dae33e301ac7aa6a8cb7a31220906f2",
+      "sha256": "97c435454526d985d77ee8954311cedb47b06c79f0f6992131b06fb1c7a3be91",
       "proposal": "native-headers/reflection/reflection.h (reflection owner): declare IIDREF __declspec(novtable) (same proposal as record_native_body_movers.py / record_native_network_players.py): RefPropDescriptor<VelocityMotor, Hole> constructor 0060b8c0 stores only the derived IIDREF vptr 00842fb8."
     },
     "reflection/signal.h": {
       "from": "tools/rbxgs/Client/App/include/reflection/signal.h",
-      "sha256": "16ab421e71015377c7269311caa4e890cb411c8255873c9bb621f411ceac965c",
+      "sha256": "f009dde197787da9ec4561b31d08a7a16ba45d4c11d81a269ae97e2e18b1994d",
       "proposal": "reflection/signal.h (signal owner; same as the Seat/SpawnLocation proposals): the 2008 SignalDesc::connect takes a third `int group` argument (004a3340); VelocityMotor::setHole 0060c400 passes 10."
     },
     "v8world/MotorJoint.h": {
       "from": "tools/rbxgs/Client/App/include/v8world/MotorJoint.h",
-      "sha256": "4160ef4abb0c15996593e860b0a0a8068512885a5b14e2f57d1381fc6e485dbf",
+      "sha256": "2c5e0ef9d9a7806ff978b8de8245c8a55f40ec9bd2a84e54021cbdc4abfd32dd",
       "proposal": "v8world/MotorJoint.h (engine owner): the 2008 MotorJoint has no `polarity`: constructor 005e5bf0 stores link +0x88, currentAngle +0x8c, maxVelocity +0x90, desiredAngle +0x94, and VelocityMotor() 0060bbb0 allocates 0x98. The donor layout puts maxVelocity at +0x94."
     },
     "v8kernel/IStage.h": {
       "from": "tools/rbxgs/Client/App/include/v8kernel/IStage.h",
-      "sha256": "1ca1b106ba673e7976b7d50cc4683f10e509b5e2c6ff6c0707560d1302c15422",
+      "sha256": "7790775f43a949c1bb73f9fae26cd20bf20749445e615a3e2a44c9a2f9d00b18",
       "proposal": "v8kernel/IStage.h (engine owner): the 2008 KERNEL_STAGE is 7. IPipelined::getWorld, inlined in VelocityMotor::onAncestorChanged 0060a0f0 and JointInstance::onAncestorChanged 005e3a80, compares the stage type with 7. Which donor stage is absent in 2008 is not proven here, so only the value changes."
     }
   },
   "objects": {
-    "NativeFeatureLayout.obj": "bfc8042f488abd06608b74cbd8cc2ade5448999bd8772f5b9997f0b919203545",
-    "NativeFeatureLayoutPending.obj": "c91cd8808a3332de715f76c459ee40fa5c35a00330d8d5cd26484828a961d619",
-    "NativeFeature.obj": "2d90909dd19b9fca86c965b464b68b9866bcd9ef245012fccc77f6eae3fec441",
-    "NativeFeaturePending.obj": "8fb7e2db20d934955103e1ce2bf587cc7a921edd4218411fa4b867d340b3b9f8"
+    "NativeFeatureLayout.obj": "5686c51958fad31aff66c46faa6079b9dc6f0c965478335536b37167d871e3f8",
+    "NativeFeatureLayoutPending.obj": "6b6719b46ecbd754ac5f58b55eae5f3a5afceec649c42a84b3ca39e71a0ee626",
+    "NativeFeature.obj": "13b442bf293950ea2115e9a8120fed202a1b18b9509063870c03daf7ed7f7378",
+    "NativeFeaturePending.obj": "0d1d9c94a28d17f279f9f6cf9b0bbe0d5b4fde07a2748af3536198a5e98dadcc"
   },
   "layout": {
     "Feature": "0x150 (Hole/MotorFeature factories 00580230/0057ffc0 allocate 0x150); IRenderable +0x130; faceId +0x140, topBottom +0x144, leftRight +0x148, inOut +0x14c",
