@@ -1,0 +1,420 @@
+{
+  "class": "CBrowserFrameWnd",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "original": "clients/2008-06/Roblox.exe",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object_sha256": "3d8a01ec255c71715637908224105130070307d26c6b59da899993416d156a8c",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_browser_frame_wnd.py": "1626b0f7f53941c9599c329715875c9bc98ecdb76d86a020824339c813c13906",
+    "rebuild/2008-06/native-classes/CBrowserFrameWnd.cpp": "f7dd62857da29dafdbe4d4a320de9794fcbd6071b8bc3fac0fd14b7021c4eecb",
+    "rebuild/2008-06/native-headers/CBrowserFrameWnd.h": "8dff816b682aa945c46f38407706e34abf49f556a33b6bf15a4274e8cafb330b",
+    "rebuild/2008-06/tests/NativeBrowserFrameWndLayout.cpp": "8b5f477c7dd85dac7073ccfd339de4ea59cbc39637e5680d4cd01198fd2ce80d"
+  },
+  "layout": {
+    "sizeof": "0xec = sizeof(CXTPFrameWnd) (CRuntimeClass 00811e90, operator new(0xec) in CreateObject 00433280); no own members: deleting destructor 00433240 stores only a vptr and calls 00432fd0, which releases the site-base pointer at +0xe8",
+    "layout_test": "tests/NativeBrowserFrameWndLayout.cpp compiled into NativeBrowserFrameWndLayout.obj"
+  },
+  "xtp_targets": {
+    "006e1930": "?GetThisClass@CXTPFrameWnd@@SGPAUCRuntimeClass@@XZ: XTP recipe body exact",
+    "006e1960": "??0CXTPFrameWnd@@QAE@XZ: XTP recipe body exact",
+    "006a67c0": "?GetThisClass@CXTPEdit@@SGPAUCRuntimeClass@@XZ: XTP recipe body exact",
+    "006a4ae0": "?PreTranslateFrameMessage@CXTPCommandBars@@QAEHPAUtagMSG@@@Z: XTP recipe body exact",
+    "006a4d30": "?OnFrameWndMsg@CXTPCommandBars@@QAEHIIJPAJ@Z: XTP recipe body exact",
+    "006a2940": "?GetShortcutManager@CXTPCommandBars@@QBEPAVCXTPShortcutManager@@XZ: XTP recipe body exact",
+    "006a3a10": "?OnSetPreviewMode@CXTPCommandBars@@QAEXH@Z: XTP recipe body exact"
+  },
+  "xtp_inputs": {
+    "CommandBars/XTPFrameWnd.cpp": {
+      "source_sha256": "8430fb21b48a7a387a4a18db85b0e3d57c86f88a1733bfde47eb224034c6756a",
+      "object_sha256": "5e56b6b574394f7c9334810f543889dd097f951aa67f9fb648cc7cce6e9d9720",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/MD",
+        "/GS",
+        "/EHsc",
+        "/Ob1",
+        "/D_AFXDLL",
+        "/D_XTP_STATICLINK",
+        "/D_DLL",
+        "/D_WIN32_WINNT=0x0500",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+      ]
+    },
+    "CommandBars/XTPCommandBars.cpp": {
+      "source_sha256": "60abf7bc57696e0e2d573d302ad25ec59e5d1098fd6b36ed532f8110ff36358a",
+      "object_sha256": "fa69363b63ca2fad199f0ff96408c25bb705ee3d81cf014a6a41230006c1b2b5",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/MD",
+        "/GS",
+        "/EHsc",
+        "/Ob1",
+        "/D_AFXDLL",
+        "/D_XTP_STATICLINK",
+        "/D_DLL",
+        "/D_WIN32_WINNT=0x0500",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+      ]
+    },
+    "CommandBars/XTPControlComboBox.cpp": {
+      "source_sha256": "19c01ab3d4b711bb4f9a17978b7fdcd31e6bfeec3a945506288a8d0236f13e16",
+      "object_sha256": "28297bcbecc43f109e4a7e994838400223bb3ad3d380210c21f3e6f3c6578661",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/MD",
+        "/GS",
+        "/EHsc",
+        "/Ob1",
+        "/D_AFXDLL",
+        "/D_XTP_STATICLINK",
+        "/D_DLL",
+        "/D_WIN32_WINNT=0x0500",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0\\atlmfc\\include"
+      ]
+    }
+  },
+  "methods": [
+    {
+      "address": "00432fb0",
+      "symbol": "?_GetBaseClass@CBrowserFrameWnd@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CXTPFrameWnd@@SGPAUCRuntimeClass@@XZ": "0x6e1930"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00432fc0",
+      "symbol": "?GetRuntimeClass@CBrowserFrameWnd@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCBrowserFrameWnd@CBrowserFrameWnd@@2UCRuntimeClass@@B": "0x811e90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00432fc0",
+      "symbol": "?GetThisClass@CBrowserFrameWnd@@SGPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCBrowserFrameWnd@CBrowserFrameWnd@@2UCRuntimeClass@@B": "0x811e90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00432fd0",
+      "symbol": "??1?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@UAE@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@6B@": "0x811eb4",
+        "?InternalRelease@CCmdTarget@@QAEKXZ": "mfc90.dll!?InternalRelease@CCmdTarget@@QAEKXZ",
+        "??1CFrameWnd@@UAE@XZ": "mfc90.dll!??1CFrameWnd@@UAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00433030",
+      "symbol": "?PreTranslateMessage@?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@MAEHPAUtagMSG@@@Z",
+      "size": 130,
+      "exact": true,
+      "verified_targets": {
+        "__imp__GetFocus@0": "user32.dll!GetFocus",
+        "?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z": "mfc90.dll!?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z",
+        "?GetThisClass@CXTPEdit@@SGPAUCRuntimeClass@@XZ": "0x6a67c0",
+        "?IsKindOf@CObject@@QBEHPBUCRuntimeClass@@@Z": "mfc90.dll!?IsKindOf@CObject@@QBEHPBUCRuntimeClass@@@Z",
+        "?PreTranslateMessage@CFrameWnd@@UAEHPAUtagMSG@@@Z": "mfc90.dll!?PreTranslateMessage@CFrameWnd@@UAEHPAUtagMSG@@@Z",
+        "?PreTranslateFrameMessage@CXTPCommandBars@@QAEHPAUtagMSG@@@Z": "0x6a4ae0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004330c0",
+      "symbol": "?OnWndMsg@?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@MAEHIIJPAJ@Z",
+      "size": 79,
+      "exact": true,
+      "verified_targets": {
+        "?OnFrameWndMsg@CXTPCommandBars@@QAEHIIJPAJ@Z": "0x6a4d30",
+        "?OnWndMsg@CWnd@@MAEHIIJPAJ@Z": "mfc90.dll!?OnWndMsg@CWnd@@MAEHIIJPAJ@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433110",
+      "symbol": "??_G?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@UAE@XZ": "0x432fd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433130",
+      "symbol": "?OnCreate@CBrowserFrameWnd@@IAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 129,
+      "exact": true,
+      "verified_targets": {
+        "?OnCreate@CFrameWnd@@IAEHPAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?OnCreate@CFrameWnd@@IAEHPAUtagCREATESTRUCTA@@@Z",
+        "__imp__IsMenu@4": "user32.dll!IsMenu",
+        "?DestroyMenu@CMenu@@QAEHXZ": "mfc90.dll!?DestroyMenu@CMenu@@QAEHXZ",
+        "?GetDescendantWindow@CWnd@@SGPAV1@PAUHWND__@@HH@Z": "mfc90.dll!?GetDescendantWindow@CWnd@@SGPAV1@PAUHWND__@@HH@Z",
+        "?ModifyStyle@CWnd@@QAEHKKI@Z": "mfc90.dll!?ModifyStyle@CWnd@@QAEHKKI@Z",
+        "?ModifyStyleEx@CWnd@@QAEHKKI@Z": "mfc90.dll!?ModifyStyleEx@CWnd@@QAEHKKI@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004331c0",
+      "symbol": "?LoadFrame@?$CXTPFrameWndBase@VCFrameWnd@@@@UAEHIKPAVCWnd@@PAUCCreateContext@@@Z",
+      "size": 75,
+      "exact": true,
+      "verified_targets": {
+        "?LoadFrame@CFrameWnd@@UAEHIKPAVCWnd@@PAUCCreateContext@@@Z": "mfc90.dll!?LoadFrame@CFrameWnd@@UAEHIKPAVCWnd@@PAUCCreateContext@@@Z",
+        "?GetShortcutManager@CXTPCommandBars@@QBEPAVCXTPShortcutManager@@XZ": "0x6a2940"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433210",
+      "symbol": "?OnSetPreviewMode@?$CXTPFrameWndBase@VCFrameWnd@@@@UAEXHPAUCPrintPreviewState@@@Z",
+      "size": 42,
+      "exact": true,
+      "verified_targets": {
+        "?OnSetPreviewMode@CXTPCommandBars@@QAEXH@Z": "0x6a3a10",
+        "?OnSetPreviewMode@CFrameWnd@@UAEXHPAUCPrintPreviewState@@@Z": "mfc90.dll!?OnSetPreviewMode@CFrameWnd@@UAEXHPAUCPrintPreviewState@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433240",
+      "symbol": "??_GCBrowserFrameWnd@@UAEPAXI@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$CXTPFrameWndBase@VCFrameWnd@@@@6B@": "0x812054",
+        "??1?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@UAE@XZ": "0x432fd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433240",
+      "symbol": "??_G?$CXTPFrameWndBase@VCFrameWnd@@@@UAEPAXI@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$CXTPFrameWndBase@VCFrameWnd@@@@6B@": "0x812054",
+        "??1?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@UAE@XZ": "0x432fd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433270",
+      "symbol": "?GetMessageMap@CBrowserFrameWnd@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CBrowserFrameWnd@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x8121f0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433270",
+      "symbol": "?GetThisMessageMap@CBrowserFrameWnd@@KGPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CBrowserFrameWnd@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x8121f0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433280",
+      "symbol": "?CreateObject@CBrowserFrameWnd@@SGPAVCObject@@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CXTPFrameWnd@@QAE@XZ": "0x6e1960",
+        "??_7CBrowserFrameWnd@@6B@": "0x81225c"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CBrowserFrameWnd@@SGPAVCObject@@XZ"
+      ]
+    }
+  ],
+  "vtable_00_81225c": {
+    "0": "00432fc0 ?GetRuntimeClass@CBrowserFrameWnd@@UBEPAUCRuntimeClass@@XZ: exact here",
+    "1": "00433240 ??_ECBrowserFrameWnd@@UAEPAXI@Z: exact here (weak external of ??_GCBrowserFrameWnd@@UAEPAXI@Z)",
+    "2": "0070bdf0 ?Serialize@CObject@@UAEXAAVCArchive@@@Z: header COMDAT, body exact",
+    "3": "0047d410 ?AssertValid@CObject@@UBEXXZ: header COMDAT, body exact",
+    "4": "0070bdf0 ?Dump@CObject@@UBEXAAVCDumpContext@@@Z: header COMDAT, body exact",
+    "5": "006a0d3a ?OnCmdMsg@CFrameWnd@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z: mfc90.dll!?OnCmdMsg@CFrameWnd@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+    "6": "006a0698 ?OnFinalRelease@CWnd@@UAEXXZ: mfc90.dll!?OnFinalRelease@CWnd@@UAEXXZ",
+    "7": "006a069e ?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z: mfc90.dll!?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z",
+    "8": "006a06a4 ?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z: mfc90.dll!?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z",
+    "9": "006a06aa ?GetTypeInfoCount@CCmdTarget@@UAEIXZ: mfc90.dll!?GetTypeInfoCount@CCmdTarget@@UAEIXZ",
+    "10": "006a06b0 ?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ: mfc90.dll!?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ",
+    "11": "006a06b6 ?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z: mfc90.dll!?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z",
+    "12": "00433270 ?GetMessageMap@CBrowserFrameWnd@@MBEPBUAFX_MSGMAP@@XZ: exact here",
+    "13": "006a06bc ?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ: mfc90.dll!?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ",
+    "14": "006a06c2 ?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ: mfc90.dll!?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ",
+    "15": "006a06c8 ?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ: mfc90.dll!?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ",
+    "16": "006a06ce ?GetInterfaceMap@CWnd@@MBEPBUAFX_INTERFACEMAP@@XZ: mfc90.dll!?GetInterfaceMap@CWnd@@MBEPBUAFX_INTERFACEMAP@@XZ",
+    "17": "006a0998 ?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ: mfc90.dll!?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+    "18": "006a06d4 ?OnCreateAggregates@CCmdTarget@@UAEHXZ: mfc90.dll!?OnCreateAggregates@CCmdTarget@@UAEHXZ",
+    "19": "006a06da ?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z: mfc90.dll!?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z",
+    "20": "006a06e0 ?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z: mfc90.dll!?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z",
+    "21": "006a06e6 ?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z: mfc90.dll!?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z",
+    "22": "006a06ec ?PreSubclassWindow@CWnd@@UAEXXZ: mfc90.dll!?PreSubclassWindow@CWnd@@UAEXXZ",
+    "23": "006a06f2 ?Create@CWnd@@UAEHPBD0KABUtagRECT@@PAV1@IPAUCCreateContext@@@Z: mfc90.dll!?Create@CWnd@@UAEHPBD0KABUtagRECT@@PAV1@IPAUCCreateContext@@@Z",
+    "24": "006a06f8 ?CreateEx@CWnd@@UAEHKPBD0KABUtagRECT@@PAV1@IPAX@Z: mfc90.dll!?CreateEx@CWnd@@UAEHKPBD0KABUtagRECT@@PAV1@IPAX@Z",
+    "25": "006a06fe ?CreateEx@CWnd@@UAEHKPBD0KHHHHPAUHWND__@@PAUHMENU__@@PAX@Z: mfc90.dll!?CreateEx@CWnd@@UAEHKPBD0KHHHHPAUHWND__@@PAUHMENU__@@PAX@Z",
+    "26": "006a0704 ?DestroyWindow@CWnd@@UAEHXZ: mfc90.dll!?DestroyWindow@CWnd@@UAEHXZ",
+    "27": "006a1094 ?PreCreateWindow@CFrameWnd@@MAEHAAUtagCREATESTRUCTA@@@Z: mfc90.dll!?PreCreateWindow@CFrameWnd@@MAEHAAUtagCREATESTRUCTA@@@Z",
+    "28": "006a0710 ?CalcWindowRect@CWnd@@UAEXPAUtagRECT@@I@Z: mfc90.dll!?CalcWindowRect@CWnd@@UAEXPAUtagRECT@@I@Z",
+    "29": "006a0d46 ?GetMenu@CFrameWnd@@UBEPAVCMenu@@XZ: mfc90.dll!?GetMenu@CFrameWnd@@UBEPAVCMenu@@XZ",
+    "30": "006a0d4c ?SetMenu@CFrameWnd@@UAEHPAVCMenu@@@Z: mfc90.dll!?SetMenu@CFrameWnd@@UAEHPAVCMenu@@@Z",
+    "31": "006a0722 ?OnToolHitTest@CWnd@@UBEHVCPoint@@PAUtagTOOLINFOA@@@Z: mfc90.dll!?OnToolHitTest@CWnd@@UBEHVCPoint@@PAUtagTOOLINFOA@@@Z",
+    "32": "006a0728 ?GetScrollBarCtrl@CWnd@@UBEPAVCScrollBar@@H@Z: mfc90.dll!?GetScrollBarCtrl@CWnd@@UBEPAVCScrollBar@@H@Z",
+    "33": "006a072e ?WinHelpA@CWnd@@UAEXKI@Z: mfc90.dll!?WinHelpA@CWnd@@UAEXKI@Z",
+    "34": "006a0734 ?HtmlHelpA@CWnd@@UAEXKI@Z: mfc90.dll!?HtmlHelpA@CWnd@@UAEXKI@Z",
+    "35": "006a073a ?WinHelpInternal@CWnd@@UAEXKI@Z: mfc90.dll!?WinHelpInternal@CWnd@@UAEXKI@Z",
+    "36": "006a0740 ?ContinueModal@CWnd@@UAEHXZ: mfc90.dll!?ContinueModal@CWnd@@UAEHXZ",
+    "37": "006a0746 ?EndModalLoop@CWnd@@UAEXH@Z: mfc90.dll!?EndModalLoop@CWnd@@UAEXH@Z",
+    "38": "006a074c ?EnsureStdObj@CWnd@@UAEJXZ: mfc90.dll!?EnsureStdObj@CWnd@@UAEJXZ",
+    "39": "006a0752 ?get_accParent@CWnd@@UAEJPAPAUIDispatch@@@Z: mfc90.dll!?get_accParent@CWnd@@UAEJPAPAUIDispatch@@@Z",
+    "40": "006a0758 ?get_accChildCount@CWnd@@UAEJPAJ@Z: mfc90.dll!?get_accChildCount@CWnd@@UAEJPAJ@Z",
+    "41": "006a075e ?get_accChild@CWnd@@UAEJUtagVARIANT@@PAPAUIDispatch@@@Z: mfc90.dll!?get_accChild@CWnd@@UAEJUtagVARIANT@@PAPAUIDispatch@@@Z",
+    "42": "006a0764 ?get_accName@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z: mfc90.dll!?get_accName@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+    "43": "006a076a ?get_accValue@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z: mfc90.dll!?get_accValue@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+    "44": "006a0770 ?get_accDescription@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z: mfc90.dll!?get_accDescription@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+    "45": "006a0776 ?get_accRole@CWnd@@UAEJUtagVARIANT@@PAU2@@Z: mfc90.dll!?get_accRole@CWnd@@UAEJUtagVARIANT@@PAU2@@Z",
+    "46": "006a077c ?get_accState@CWnd@@UAEJUtagVARIANT@@PAU2@@Z: mfc90.dll!?get_accState@CWnd@@UAEJUtagVARIANT@@PAU2@@Z",
+    "47": "006a0782 ?get_accHelp@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z: mfc90.dll!?get_accHelp@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+    "48": "006a0788 ?get_accHelpTopic@CWnd@@UAEJPAPA_WUtagVARIANT@@PAJ@Z: mfc90.dll!?get_accHelpTopic@CWnd@@UAEJPAPA_WUtagVARIANT@@PAJ@Z",
+    "49": "006a078e ?get_accKeyboardShortcut@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z: mfc90.dll!?get_accKeyboardShortcut@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+    "50": "006a0794 ?get_accFocus@CWnd@@UAEJPAUtagVARIANT@@@Z: mfc90.dll!?get_accFocus@CWnd@@UAEJPAUtagVARIANT@@@Z",
+    "51": "006a079a ?get_accSelection@CWnd@@UAEJPAUtagVARIANT@@@Z: mfc90.dll!?get_accSelection@CWnd@@UAEJPAUtagVARIANT@@@Z",
+    "52": "006a07a0 ?get_accDefaultAction@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z: mfc90.dll!?get_accDefaultAction@CWnd@@UAEJUtagVARIANT@@PAPA_W@Z",
+    "53": "006a07a6 ?accSelect@CWnd@@UAEJJUtagVARIANT@@@Z: mfc90.dll!?accSelect@CWnd@@UAEJJUtagVARIANT@@@Z",
+    "54": "006a07ac ?accLocation@CWnd@@UAEJPAJ000UtagVARIANT@@@Z: mfc90.dll!?accLocation@CWnd@@UAEJPAJ000UtagVARIANT@@@Z",
+    "55": "006a07b2 ?accNavigate@CWnd@@UAEJJUtagVARIANT@@PAU2@@Z: mfc90.dll!?accNavigate@CWnd@@UAEJJUtagVARIANT@@PAU2@@Z",
+    "56": "006a07b8 ?accHitTest@CWnd@@UAEJJJPAUtagVARIANT@@@Z: mfc90.dll!?accHitTest@CWnd@@UAEJJJPAUtagVARIANT@@@Z",
+    "57": "006a07be ?accDoDefaultAction@CWnd@@UAEJUtagVARIANT@@@Z: mfc90.dll!?accDoDefaultAction@CWnd@@UAEJUtagVARIANT@@@Z",
+    "58": "006a07c4 ?put_accName@CWnd@@UAEJUtagVARIANT@@PA_W@Z: mfc90.dll!?put_accName@CWnd@@UAEJUtagVARIANT@@PA_W@Z",
+    "59": "006a07ca ?put_accValue@CWnd@@UAEJUtagVARIANT@@PA_W@Z: mfc90.dll!?put_accValue@CWnd@@UAEJUtagVARIANT@@PA_W@Z",
+    "60": "006a07d0 ?SetProxy@CWnd@@UAEJPAUIAccessibleProxy@@@Z: mfc90.dll!?SetProxy@CWnd@@UAEJPAUIAccessibleProxy@@@Z",
+    "61": "006a07d6 ?CreateAccessibleProxy@CWnd@@UAEJIJPAJ@Z: mfc90.dll!?CreateAccessibleProxy@CWnd@@UAEJIJPAJ@Z",
+    "62": "006a0d52 ?OnCommand@CFrameWnd@@MAEHIJ@Z: mfc90.dll!?OnCommand@CFrameWnd@@MAEHIJ@Z",
+    "63": "006a07e2 ?OnNotify@CWnd@@MAEHIJPAJ@Z: mfc90.dll!?OnNotify@CWnd@@MAEHIJPAJ@Z",
+    "64": "006a07e8 ?GetSuperWndProcAddr@CWnd@@MAEPAP6GJPAUHWND__@@IIJ@ZXZ: mfc90.dll!?GetSuperWndProcAddr@CWnd@@MAEPAP6GJPAUHWND__@@IIJ@ZXZ",
+    "65": "0070bdf0 ?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z: header COMDAT, body exact",
+    "66": "006a0d58 ?BeginModalState@CFrameWnd@@UAEXXZ: mfc90.dll!?BeginModalState@CFrameWnd@@UAEXXZ",
+    "67": "006a0d5e ?EndModalState@CFrameWnd@@UAEXXZ: mfc90.dll!?EndModalState@CFrameWnd@@UAEXXZ",
+    "68": "00433030 ?PreTranslateMessage@?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@MAEHPAUtagMSG@@@Z: exact here",
+    "69": "006a07f4 ?OnAmbientProperty@CWnd@@UAEHPAVCOleControlSite@@JPAUtagVARIANT@@@Z: mfc90.dll!?OnAmbientProperty@CWnd@@UAEHPAVCOleControlSite@@JPAUtagVARIANT@@@Z",
+    "70": "006a07fa ?WindowProc@CWnd@@MAEJIIJ@Z: mfc90.dll!?WindowProc@CWnd@@MAEJIIJ@Z",
+    "71": "004330c0 ?OnWndMsg@?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@MAEHIIJPAJ@Z: exact here",
+    "72": "006a0806 ?DefWindowProcA@CWnd@@MAEJIIJ@Z: mfc90.dll!?DefWindowProcA@CWnd@@MAEJIIJ@Z",
+    "73": "006a0d70 ?PostNcDestroy@CFrameWnd@@MAEXXZ: mfc90.dll!?PostNcDestroy@CFrameWnd@@MAEXXZ",
+    "74": "006a0812 ?OnChildNotify@CWnd@@MAEHIIJPAJ@Z: mfc90.dll!?OnChildNotify@CWnd@@MAEHIIJPAJ@Z",
+    "75": "006a0a7c ?CheckAutoCenter@CWnd@@UAEHXZ: mfc90.dll!?CheckAutoCenter@CWnd@@UAEHXZ",
+    "76": "006a0d76 ?IsFrameWnd@CFrameWnd@@UBEHXZ: mfc90.dll!?IsFrameWnd@CFrameWnd@@UBEHXZ",
+    "77": "006a0824 ?CreateControlContainer@CWnd@@MAEHPAPAVCOleControlContainer@@@Z: mfc90.dll!?CreateControlContainer@CWnd@@MAEHPAPAVCOleControlContainer@@@Z",
+    "78": "006a0c9e ?CreateControlSite@CWnd@@MAEHPAVCOleControlContainer@@PAPAVCOleControlSite@@IABU_GUID@@@Z: mfc90.dll!?CreateControlSite@CWnd@@MAEHPAVCOleControlContainer@@PAPAVCOleControlSite@@IABU_GUID@@@Z",
+    "79": "006a0ca4 ?SetOccDialogInfo@CWnd@@MAEHPAU_AFX_OCC_DIALOG_INFO@@@Z: mfc90.dll!?SetOccDialogInfo@CWnd@@MAEHPAU_AFX_OCC_DIALOG_INFO@@@Z",
+    "80": "006a0caa ?GetOccDialogInfo@CWnd@@MAEPAU_AFX_OCC_DIALOG_INFO@@XZ: mfc90.dll!?GetOccDialogInfo@CWnd@@MAEPAU_AFX_OCC_DIALOG_INFO@@XZ",
+    "81": "006a0d7c ?Create@CFrameWnd@@UAEHPBD0KABUtagRECT@@PAVCWnd@@0KPAUCCreateContext@@@Z: mfc90.dll!?Create@CFrameWnd@@UAEHPBD0KABUtagRECT@@PAVCWnd@@0KPAUCCreateContext@@@Z",
+    "82": "004331c0 ?LoadFrame@?$CXTPFrameWndBase@VCFrameWnd@@@@UAEHIKPAVCWnd@@PAUCCreateContext@@@Z: exact here",
+    "83": "006a0d88 ?GetActiveDocument@CFrameWnd@@UAEPAVCDocument@@XZ: mfc90.dll!?GetActiveDocument@CFrameWnd@@UAEPAVCDocument@@XZ",
+    "84": "006a0d8e ?GetActiveFrame@CFrameWnd@@UAEPAV1@XZ: mfc90.dll!?GetActiveFrame@CFrameWnd@@UAEPAV1@XZ",
+    "85": "006a0d94 ?GetMessageString@CFrameWnd@@UBEXIAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z: mfc90.dll!?GetMessageString@CFrameWnd@@UBEXIAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+    "86": "006a0d9a ?RecalcLayout@CFrameWnd@@UAEXH@Z: mfc90.dll!?RecalcLayout@CFrameWnd@@UAEXH@Z",
+    "87": "006a0fbc ?ActivateFrame@CFrameWnd@@UAEXH@Z: mfc90.dll!?ActivateFrame@CFrameWnd@@UAEXH@Z",
+    "88": "006a0da0 ?SetMenuBarVisibility@CFrameWnd@@UAEXK@Z: mfc90.dll!?SetMenuBarVisibility@CFrameWnd@@UAEXK@Z",
+    "89": "006a0da6 ?GetMenuBarVisibility@CFrameWnd@@UBEKXZ: mfc90.dll!?GetMenuBarVisibility@CFrameWnd@@UBEKXZ",
+    "90": "006a0dac ?SetMenuBarState@CFrameWnd@@UAEHK@Z: mfc90.dll!?SetMenuBarState@CFrameWnd@@UAEHK@Z",
+    "91": "006a0db2 ?GetMenuBarState@CFrameWnd@@UBEKXZ: mfc90.dll!?GetMenuBarState@CFrameWnd@@UBEKXZ",
+    "92": "00433210 ?OnSetPreviewMode@?$CXTPFrameWndBase@VCFrameWnd@@@@UAEXHPAUCPrintPreviewState@@@Z: exact here",
+    "93": "006a1004 ?GetMessageBar@CFrameWnd@@UAEPAVCWnd@@XZ: mfc90.dll!?GetMessageBar@CFrameWnd@@UAEPAVCWnd@@XZ",
+    "94": "006a0dc4 ?NegotiateBorderSpace@CFrameWnd@@UAEHIPAUtagRECT@@@Z: mfc90.dll!?NegotiateBorderSpace@CFrameWnd@@UAEHIPAUtagRECT@@@Z",
+    "95": "006a0dca ?OnCreateClient@CFrameWnd@@MAEHPAUtagCREATESTRUCTA@@PAUCCreateContext@@@Z: mfc90.dll!?OnCreateClient@CFrameWnd@@MAEHPAUtagCREATESTRUCTA@@PAUCCreateContext@@@Z",
+    "96": "006a10a0 ?OnUpdateFrameTitle@CFrameWnd@@UAEXH@Z: mfc90.dll!?OnUpdateFrameTitle@CFrameWnd@@UAEXH@Z",
+    "97": "006a0dd6 ?OnUpdateFrameMenu@CFrameWnd@@UAEXPAUHMENU__@@@Z: mfc90.dll!?OnUpdateFrameMenu@CFrameWnd@@UAEXPAUHMENU__@@@Z",
+    "98": "006a0ddc ?GetDefaultAccelerator@CFrameWnd@@UAEPAUHACCEL__@@XZ: mfc90.dll!?GetDefaultAccelerator@CFrameWnd@@UAEPAUHACCEL__@@XZ",
+    "99": "006a0de2 ?DelayUpdateFrameMenu@CFrameWnd@@UAEXPAUHMENU__@@@Z: mfc90.dll!?DelayUpdateFrameMenu@CFrameWnd@@UAEXPAUHMENU__@@@Z",
+    "100": "006a0de8 ?ExitHelpMode@CFrameWnd@@UAEXXZ: mfc90.dll!?ExitHelpMode@CFrameWnd@@UAEXXZ",
+    "101": "006a0dee ?OnShowMenuBar@CFrameWnd@@MAEXXZ: mfc90.dll!?OnShowMenuBar@CFrameWnd@@MAEXXZ",
+    "102": "006a0df4 ?OnHideMenuBar@CFrameWnd@@MAEXXZ: mfc90.dll!?OnHideMenuBar@CFrameWnd@@MAEXXZ"
+  },
+  "runtime_class": {
+    "address": "00811e90",
+    "name": "CBrowserFrameWnd",
+    "size": "0xec",
+    "create_object": "00433280",
+    "base_getter": "00432fb0"
+  },
+  "message_map": {
+    "address": "008121f0",
+    "entries": "WM_DESTROY -> CFrameWnd::OnDestroy, WM_CREATE -> 00433130, WM_NCDESTROY -> CWnd::OnNcDestroy",
+    "base": "CFrameWnd::GetThisMessageMap"
+  },
+  "open": {}
+}
