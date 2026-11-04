@@ -63,6 +63,15 @@ overlaps someone else's, so forks and parallel workers never touch the same file
 - Commit coherent batches, not each method: one class or family when it is done, or at most about once an hour.
   Keep work in progress uncommitted, and push at the end of a session.
 
+## Native draft collaboration
+
+Native source contributors follow `docs/NATIVE_AGENT.md`: verified findings workspace,
+explicit task-owned paths, automatic durable draft uploads (including incomplete work).
+No fork, branch or native integration submission is needed to share drafts. Ordinary
+function matching still uses `roc submit`. Owner integration follows
+`docs/DRAFT_INTEGRATION.md`; only independently verified server receipts grant credit.
+The owner's scheduled integration task is authorized to commit/push reviewed changes.
+
 ## New native files on the Integration Digest webhook
 
 When `server_mines_webhook` is set, the server checks every 5 minutes for files added or changed under

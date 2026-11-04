@@ -2990,6 +2990,9 @@ def main(argv=None):
     cmd("similar", cmd_similar, "list exact-matched functions with a similar instruction shape to ADDR",
         (["name"], {}), (["addr"], {}), (["--limit"], {"type": int, "default": 10}),
         (["--band"], {"type": float, "default": 0.25, "help": "max size difference as a fraction"}))
+    cmd("drafts", lambda a: __import__("roc.native_drafts").native_drafts.main(a.args),
+        "save and automatically upload incomplete native work without branches",
+        (["args"], {"nargs": argparse.REMAINDER}))
     __import__("roc.native_try").native_try.register(cmd)
     __import__("roc.native_promotions").native_promotions.register(cmd)
     __import__("roc.leases").leases.register(cmd)

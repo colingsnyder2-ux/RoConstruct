@@ -24,7 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DIST = ROOT / "local" / "packages"
-NATIVE_WORKFLOW_VERSION = 49
+NATIVE_WORKFLOW_VERSION = 50
 
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).
@@ -46,6 +46,7 @@ WORKER_MODULES += ["native_edit", "native_recovery", "input_reuse", "native_coll
 WORKER_MODULES += ["integration_local", "integration_context", "integration_policy", "integration_audit", "native_adapt", "native_refs"]
 WORKER_MODULES += ["rebuild_audit", "graph", "source"]
 WORKER_MODULES += ["leases", "native_asm", "native_files_notify", "fork_merge"]
+WORKER_MODULES += ["native_drafts"]
 SERVER_MODULES += ["integration_notify", "integration_site", "agent_inbox", "native_collaboration_host"]
 
 COMMON_FILES = [".gitattributes", "roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",

@@ -235,7 +235,7 @@ def watch(interval=300, log=print, merge=True):
     while True:
         try:
             scan(log=log)
-            if merge:
+            if merge and not (ROOT / "work/draft-workflow-enabled.json").exists():
                 from roc import fork_merge
                 fork_merge.run(log=log)
         except Exception as error:                          # a bad poll must not kill the server thread
