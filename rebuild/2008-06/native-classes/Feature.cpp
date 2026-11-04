@@ -1,14 +1,20 @@
-// 2008-06 native RBX::Feature, RBX::Hole, RBX::MotorFeature (inactive); evidence in
+// 2008-06 native RBX::Feature, RBX::Hole, RBX::MotorFeature and RBX::VelocityMotor (inactive); evidence in
 // native-headers/v8datamodel/Feature.h. Verified by tests/record_native_feature.py.
-// The VelocityMotor half of the original unit (00609af0, 0060a020..0060a260, 0060a650, 0060bbb0, 0060c400..,
-// initializers 007f7ac0..007f7b80) is not recovered here.
+// NATIVE_FEATURE_PENDING bodies need declarations the shared headers do not have yet (2008 SignalDesc::connect
+// with a group argument, JointInstance::onAncestorChanged, Workspace::getWorldIfInWorkspace); the recorder builds
+// them against generated copies under out/native-feature-pending/. The unguarded VelocityMotor bodies that read
+// JointInstance/MotorJoint fields are exact only against the 2008 layouts of those generated copies.
+// Unit profile: document-swap flags plus /fp:fast (float setters 0060c580..0060c600) and /U_RELEASEASSERT
+// (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0).
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"
+#include "v8world/MotorJoint.h"
 #include "reflection/enumconverter.h"
 #include "AppDraw/Draw.h"
 #include "AppDraw/DrawAdorn.h"
+#include <boost/bind.hpp>
 #ifdef NATIVE_FEATURE_PENDING
-#include "v8datamodel/VelocityMotor.h"
+#include "v8datamodel/Workspace.h"
 #endif
 
 namespace RBX
@@ -16,6 +22,7 @@ namespace RBX
 	const char sFeature[] = "Feature";           // 00842998 (doDeclare<sFeature> 00609c60)
 	const char sHole[] = "Hole";                 // 008429a0 (doDeclare<sHole> 0057d6e0)
 	const char sMotorFeature[] = "MotorFeature"; // 008429a8 (doDeclare<sMotorFeature> 0057d670)
+	const char sVelocityMotor[] = "VelocityMotor"; // 008429b8 (doDeclare<sVelocityMotor> 0057d750)
 
 	// Template members the shared headers only declare (same definitions as Team.cpp / ServiceChangeHistory.cpp).
 	template<class C, class D, const char* N>
@@ -36,6 +43,17 @@ namespace RBX
 	template<class C, class D, const char* N>
 	DescribedCreatable<C, D, N>::DescribedCreatable()
 		: Reflection::Described<C, N, FactoryProduct<C, D, N> >() {}
+
+	template<class C, class D, const char* N>
+	template<typename Arg0Type>
+	DescribedCreatable<C, D, N>::DescribedCreatable(Arg0Type arg0)   // VelocityMotor: 0060bab0
+		: Reflection::Described<C, N, FactoryProduct<C, D, N> >(arg0) {}
+
+	// Dynamic initializers 007f7ac0, 007f7b00, 007f7b40, 007f7b80 (before the Feature ones; Functionality 5).
+	static Reflection::RefPropDescriptor<VelocityMotor, Hole> prop_Hole("Hole", "Data", &VelocityMotor::getHole, &VelocityMotor::setHole, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<VelocityMotor, float> prop_MaxVelocity("MaxVelocity", "Data", &VelocityMotor::getMaxVelocity, &VelocityMotor::setMaxVelocity, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<VelocityMotor, float> prop_DesiredAngle("DesiredAngle", "Data", &VelocityMotor::getDesiredAngle, &VelocityMotor::setDesiredAngle, Reflection::PropertyDescriptor::STANDARD);
+	static Reflection::PropDescriptor<VelocityMotor, float> prop_CurrentAngle("CurrentAngle", "Data", &VelocityMotor::getCurrentAngle, &VelocityMotor::setCurrentAngle, Reflection::PropertyDescriptor::STANDARD);
 
 	Reflection::EnumDesc<Feature::TopBottom>::EnumDesc()   // 0060b1d0
 		: EnumDescriptor("TopBottom", typeid(Feature::TopBottom))
@@ -170,9 +188,6 @@ namespace RBX
 			|| (dynamic_cast<Hole*>(b) && dynamic_cast<MotorFeature*>(a));
 	}
 
-#ifdef NATIVE_FEATURE_PENDING
-	// Needs a VelocityMotor declaration (Creatable<Instance>::create<VelocityMotor> 005804a0,
-	// VelocityMotor::setHole 0060c400); the recorder supplies a declaration-only overlay.
 	void MotorFeature::join(Instance* a, Instance* b)
 	{
 		if (canJoin(a, b))
@@ -184,5 +199,141 @@ namespace RBX
 			motor->setParent(other);
 		}
 	}
+
+	inline const MotorJoint* VelocityMotor::motorJoint() const
+	{
+		return static_cast<MotorJoint*>(joint);
+	}
+
+	inline MotorJoint* VelocityMotor::motorJoint()
+	{
+		return static_cast<MotorJoint*>(joint);
+	}
+
+	VelocityMotor::VelocityMotor()
+		: DescribedCreatable(new MotorJoint())
+	{
+		setName("VelocityMotor");
+	}
+
+	VelocityMotor::~VelocityMotor()
+	{
+	}
+
+	static Primitive* getParentPrimitive(Instance* instance)
+	{
+		if (instance)
+		{
+			PartInstance* part = dynamic_cast<PartInstance*>(instance->getParent());
+			if (part)
+				return part->getPrimitive();
+		}
+		return NULL;
+	}
+
+	void VelocityMotor::setPart(int i, Feature* feature)
+	{
+		Primitive* prim = getParentPrimitive(feature);
+
+		G3D::CoordinateFrame c = feature ? feature->computeLocalCoordinateFrame() : G3D::CoordinateFrame();
+
+		if (motorJoint()->getPrimitive(i) != prim)
+		{
+			motorJoint()->setPrimitive(i, prim);
+			if (prim)
+				motorJoint()->setJointCoord(i, c);
+		}
+	}
+
+#ifdef NATIVE_FEATURE_PENDING
+	// Needs JointInstance::onAncestorChanged (005e3a80) and Workspace::getWorldIfInWorkspace (005a3390).
+	void VelocityMotor::onAncestorChanged(const AncestorChanged& event)
+	{
+		JointInstance::onAncestorChanged(event);
+
+		setPart(0, dynamic_cast<Feature*>(getParent()));
+
+		World* oldWorld = motorJoint()->getWorld();
+		World* wsWorld = Workspace::getWorldIfInWorkspace(this);
+
+		if (oldWorld != wsWorld)
+		{
+			if (oldWorld)
+			{
+				oldWorld->removeJoint(motorJoint());
+				setPart(0, NULL);
+				setPart(1, NULL);
+			}
+
+			if (wsWorld)
+				wsWorld->insertJoint(motorJoint());
+		}
+	}
 #endif
+
+	void VelocityMotor::onEvent_HoleAncestorChanged()
+	{
+		setPart(1, hole.get());
+	}
+
+#ifdef NATIVE_FEATURE_PENDING
+	// Needs the 2008 SignalDesc::connect(source, slot, int group) (004a3340, group 10).
+	void VelocityMotor::setHole(Hole* value)
+	{
+		if (value != getHole())
+		{
+			hole = shared_from(value);
+			raisePropertyChanged(prop_Hole);
+
+			setPart(1, getHole());
+
+			if (getHole())
+				holeAncestorChanged = event_ancestryChanged.connect(hole.get(), boost::bind(&VelocityMotor::onEvent_HoleAncestorChanged, this), 10);
+			else
+				holeAncestorChanged.disconnect();
+		}
+	}
+#endif
+
+	float VelocityMotor::getMaxVelocity() const
+	{
+		return motorJoint()->maxVelocity;
+	}
+
+	void VelocityMotor::setMaxVelocity(float value)
+	{
+		if (value != motorJoint()->maxVelocity)
+		{
+			motorJoint()->maxVelocity = value;
+			raisePropertyChanged(prop_MaxVelocity);
+		}
+	}
+
+	float VelocityMotor::getDesiredAngle() const
+	{
+		return motorJoint()->desiredAngle;
+	}
+
+	void VelocityMotor::setDesiredAngle(float value)
+	{
+		if (value != motorJoint()->desiredAngle)
+		{
+			motorJoint()->desiredAngle = value;
+			raisePropertyChanged(prop_DesiredAngle);
+		}
+	}
+
+	float VelocityMotor::getCurrentAngle() const
+	{
+		return motorJoint()->getCurrentAngle();
+	}
+
+	void VelocityMotor::setCurrentAngle(float value)
+	{
+		if (value != motorJoint()->getCurrentAngle())
+		{
+			motorJoint()->setCurrentAngle(value);
+			raisePropertyChanged(prop_CurrentAngle);
+		}
+	}
 }
