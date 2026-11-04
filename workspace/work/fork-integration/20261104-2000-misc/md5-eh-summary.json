@@ -1,0 +1,62 @@
+{
+  "tool_sha256": "e4c27d8c88a67c0bc8267ec15e7dcbdd3db63f3502b547dc9c9e3796d454bbbb",
+  "new_class_method_count": 7,
+  "methods_with_eh": 5,
+  "methods_without_eh": [
+    "0055c6a0",
+    "0055c710"
+  ],
+  "results": [
+    {
+      "address": "0055c540",
+      "exit": 0,
+      "nodes": 8,
+      "errors": [],
+      "stdout": "EH graph nodes 8 errors 0\n[]\n",
+      "stderr": "",
+      "receipt": "work\\fork-integration\\20261104-2000-misc\\md5-0055c540-eh.json",
+      "sha256": "ae9558bb0049030645d723d234f9173666a610d5e226d7a45914a0038565b299"
+    },
+    {
+      "address": "0055c800",
+      "exit": 0,
+      "nodes": 5,
+      "errors": [],
+      "stdout": "EH graph nodes 5 errors 0\n[]\n",
+      "stderr": "",
+      "receipt": "work\\fork-integration\\20261104-2000-misc\\md5-0055c800-eh.json",
+      "sha256": "cd805a97e585f46f999fe13f3e52f69432a4dce586c1669f1b4a82d4c296db4d"
+    },
+    {
+      "address": "0055c740",
+      "exit": 0,
+      "nodes": 5,
+      "errors": [],
+      "stdout": "EH graph nodes 5 errors 0\n[]\n",
+      "stderr": "",
+      "receipt": "work\\fork-integration\\20261104-2000-misc\\md5-0055c740-eh.json",
+      "sha256": "3c0322f1056d95e8dfbb09cbe56afbcdaec4a37be7ad282a2abbefebfbeebdba"
+    },
+    {
+      "address": "0055e320",
+      "exit": 0,
+      "nodes": 8,
+      "errors": [],
+      "stdout": "EH graph nodes 8 errors 0\n[]\n",
+      "stderr": "",
+      "receipt": "work\\fork-integration\\20261104-2000-misc\\md5-0055e320-eh.json",
+      "sha256": "b8f3eacdd69044abef23f8feeb1d155a8516b97210806242ccca25f24f2cf171"
+    },
+    {
+      "address": "0055c8b0",
+      "exit": 0,
+      "nodes": 4,
+      "errors": [],
+      "stdout": "EH graph nodes 4 errors 0\n[]\n",
+      "stderr": "",
+      "receipt": "work\\fork-integration\\20261104-2000-misc\\md5-0055c8b0-eh.json",
+      "sha256": "94c63324baad1d1a9e39da70ac0cde7acd44458d2baaa75a9713b7cb189a05db"
+    }
+  ],
+  "scope": "Original body/handler/cleanup/EH graph proof for new MD5 methods; no client runtime or server acceptance."
+}

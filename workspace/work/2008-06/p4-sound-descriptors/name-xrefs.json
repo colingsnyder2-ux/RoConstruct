@@ -1,0 +1,38 @@
+{
+  "DopplerScale": {
+    "string_va": "00838384",
+    "code_refs": [
+      {
+        "operand_va": "007f5236",
+        "owner_candidate": "007f5220"
+      }
+    ]
+  },
+  "DistanceFactor": {
+    "string_va": "00838394",
+    "code_refs": [
+      {
+        "operand_va": "007f5266",
+        "owner_candidate": "007f5250"
+      }
+    ]
+  },
+  "RolloffScale": {
+    "string_va": "008383a4",
+    "code_refs": [
+      {
+        "operand_va": "007f5296",
+        "owner_candidate": "007f5280"
+      }
+    ]
+  },
+  "AmbientReverb": {
+    "string_va": "008383b4",
+    "code_refs": [
+      {
+        "operand_va": "007f52cb",
+        "owner_candidate": "007f52b0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "revision": "b47729ee619447d29ed5974e25ec5a8afe8ac109",
+  "compiler_build": 21022,
+  "compile_exit": 0,
+  "sources": {
+    "rebuild/2008-06/native-classes/ServiceProvider.cpp": "bc6a6a209948527e3249b8bae357d4bb65f5ffaa9eb94a1c52842b60a67d0313",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "3b5db75fe3f81e8861d44ce6ee44026f41388b380c9a632fb2defb1c23df9d54",
+    "rebuild/2008-06/native-headers/v8datamodel/Selection.h": "4a6872e36c62ea9286644a362792b0cb6d1d8a9159c4ef158d4ef66768ca8631",
+    "tools/rbxgs/Client/App/roc_name_native_declare_header_cb8db0995b353ca7.cpp": "6972c9609faf91fbdc0b1e1433d595f67ee89ab916cb2da46238ecca739e67d7"
+  },
+  "address": "00415200",
+  "symbol": "??$find@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ",
+  "original_size": 320,
+  "candidate_size": 404,
+  "relocation_normalized_exact": false,
+  "scope": "Inactive candidate; name initialization call sequence now resembles target. Relocation targets, shared_ptr destructor and full ABI remain unverified."
+}

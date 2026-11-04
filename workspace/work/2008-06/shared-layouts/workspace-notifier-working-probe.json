@@ -1,0 +1,99 @@
+{
+  "revision": "f6ee81dd52a25a4f1a76133a5a0d76db5b94f1d5",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeWorkspaceLayout.cpp": "e8f6390622ce3e6ab4cc3a8c036bd34a2ae049cbb6098dac96dbad2830acb13e",
+    "rebuild\\2008-06\\native-classes\\CWorkspace.cpp": "cd9d1db835683baec7310fcf0a353b8d82bffa0a3b7e1591538cad2211c665f2",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9fb3222709d6181c786750ad15f2c76b34e50d87a949ec3f04d45daccca20f2a",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "296825c930a4706b4204dc626bc9f3d2998a8f35e87ce2d19e65cec348045c43",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild\\2008-06\\tests\\record_native_workspace.py": "4b1d2dfc960f6792544456ee3dab02be5e4eed4a9716a18f0e7526d8bd3d8008"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeWorkspaceLayout.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorkspaceLayout.cpp"
+  ],
+  "compile_exit": 0,
+  "methods": [
+    {
+      "address": "0046ab60",
+      "symbol": "??0CWorkspace@@QAE@XZ",
+      "size": 33,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0046a940",
+      "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+      "size": 43,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0046ab90",
+      "symbol": "?writeXmlModel@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+      "size": 245,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 45,
+          "symbol": "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ",
+          "target": "0x591a30"
+        },
+        {
+          "offset": 112,
+          "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+          "target": "0x411b40"
+        },
+        {
+          "offset": 132,
+          "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+          "target": "0x46a940"
+        },
+        {
+          "offset": 149,
+          "symbol": "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z",
+          "target": "0x558110"
+        },
+        {
+          "offset": 220,
+          "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+          "target": "0x5773c0"
+        }
+      ]
+    }
+  ],
+  "scope": "Inactive compiler proof; XML writer direct calls verified against original. Other relocations and runtime linking remain unverified."
+}

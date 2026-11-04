@@ -1,0 +1,52 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "0055c800",
+  "primary_body_size": 172,
+  "primary_body_exact": true,
+  "tool_sha256": "e4c27d8c88a67c0bc8267ec15e7dcbdd3db63f3502b547dc9c9e3796d454bbbb",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-misc-leaves\\NativeMD5Hasher.obj",
+  "object_sha256": "aeec1f4e8a962a440151a13091168d946bd4711248d63f7c98e2793445e147aa",
+  "events": [
+    {
+      "symbol": "__ehhandler$?addData@MD5HasherImpl@RBX@@UAEXPBDI@Z",
+      "original": "0x7d9168",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$?addData@MD5HasherImpl@RBX@@UAEXPBDI@Z",
+      "original": "0x8f93dc",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931901000000d4938f00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$?addData@MD5HasherImpl@RBX@@UAEXPBDI@Z",
+      "original": "0x8f93d4",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffff60917d00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$?addData@MD5HasherImpl@RBX@@UAEXPBDI@Z$0",
+      "original": "0x7d9160",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+      "original": "0x600660",
+      "kind": "cleanup/handler code",
+      "size": 53,
+      "exact": true
+    }
+  ],
+  "errors": []
+}

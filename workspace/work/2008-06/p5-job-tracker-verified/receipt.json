@@ -1,0 +1,10 @@
+{
+  "revision": "fc6d0dd4ceb0f2456fffcd0b0d2c9e6acd8b3278",
+  "exe_sha256": "1979ea16f5790739d73e3de0b214684e5118444d5844863fbd4e602a25f11676",
+  "observer_sha256": "db7fb4f4ef4b0f204621c8c9645c2a2969077a2f8c5a7ee4d725d2c9a7fe4f75",
+  "map_sha256": "0295b469b1017e95292cc9032c0fe03bde96b1d302a58f0bc85f4d8c3d5848fd",
+  "provider": "0001:000429f0       ?transferTrackers@MechanismTracker@RBX@@SAXPAVMechanism@2@0@Z 004439f0 f   linked:Mechanism.obj",
+  "exit": 0,
+  "scope": "Donor tracker lifetime behavior and selected provider. Native SimJob base/stage integration and byte identity remain open.",
+  "P5_complete": false
+}

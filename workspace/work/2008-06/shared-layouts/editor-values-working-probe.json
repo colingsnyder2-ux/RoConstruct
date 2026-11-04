@@ -1,0 +1,242 @@
+{
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_editor_values.py": "47592ef0e2a42f5dd1fa7a0eb875bf62552ca5b2fb9a7130103268494ae4ae7c",
+    "tools\\libs\\mfc-9.0-rtm\\atlmfc\\src\\mfc\\intel\\mfc90.def": "aa2a4434e60113c7475e8e36edac5e2863a3f34ff89feeaa57d85ce68506ea15",
+    "rebuild\\2008-06\\native-headers\\PropertyGridItems.h": "dfc9f3840eba524d188d16f2a47b54c743ff119263a642409099f892d692a63c",
+    "rebuild\\2008-06\\native-headers\\CPropGrid.h": "f8c49281322309579f6916350ccb9a7da22d2d1092e8a70bd14576464d9d383e",
+    "rebuild\\2008-06\\native-headers\\SelectionGroup.h": "009c20d44a8a6c5caeb6677ca0825083f1bcffdf33dbe7f6f79de0459735b792",
+    "rebuild\\2008-06\\tests\\NativePropertyEditorConstructors.cpp": "0401f1c6027fed75ffbdafdabc24d471848d3d8513db3961bc99c5fdc9ced836",
+    "rebuild\\2008-06\\native-classes\\PropertyGridNumericValues.cpp": "da939ddafb01cf0bb65cd6ae7986590228a753d65323e039ea5070f6415ce077"
+  },
+  "compiler": 21022,
+  "methods": [
+    {
+      "address": "0043b4c0",
+      "symbol": "?equalValues@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@UAE_NABH0@Z",
+      "object": "NativeEditorVirtuals.obj",
+      "size": 20,
+      "target_size": 20,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0043b4e0",
+      "symbol": "?emptyValue@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAE_NXZ",
+      "object": "NativeEditorVirtuals.obj",
+      "size": 37,
+      "target_size": 37,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004413e0",
+      "symbol": "?OnValueChanged@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "object": "NativeEditorVirtuals.obj",
+      "size": 114,
+      "target_size": 114,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00441460",
+      "symbol": "?OnValueChanged@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "object": "NativeEditorVirtuals.obj",
+      "size": 114,
+      "target_size": 114,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00437880",
+      "symbol": "?displayValue@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEXABM@Z",
+      "object": "NativeEditorNumbers.obj",
+      "size": 70,
+      "target_size": 70,
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004378d0",
+      "symbol": "?displayValue@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@UAEXABH@Z",
+      "object": "NativeEditorNumbers.obj",
+      "size": 65,
+      "target_size": 65,
+      "relocation_masked_match": true
+    }
+  ],
+  "unresolved": [
+    {
+      "address": "0043a700",
+      "symbol": "?equalValues@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAE_NABM0@Z",
+      "object": "NativeEditorVirtuals.obj",
+      "size": 34,
+      "target_size": 32,
+      "relocation_masked_match": false
+    },
+    {
+      "address": "004380c0",
+      "symbol": "?readValue@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEMXZ",
+      "object": "NativeEditorNumbers.obj",
+      "size": 155,
+      "target_size": 153,
+      "relocation_masked_match": false
+    },
+    {
+      "address": "00438160",
+      "symbol": "?readValue@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@UAEHXZ",
+      "object": "NativeEditorNumbers.obj",
+      "size": 141,
+      "target_size": 139,
+      "relocation_masked_match": false
+    }
+  ],
+  "verified_bindings": [
+    {
+      "caller": "0043b4e0",
+      "offset": 8,
+      "symbol": "?GetValue@CXTPPropertyGridItem@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+      "target": "0x437ed0"
+    },
+    {
+      "caller": "004413e0",
+      "offset": 54,
+      "symbol": "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "target": "0x711ac0"
+    },
+    {
+      "caller": "004413e0",
+      "offset": 82,
+      "symbol": "?applyValue@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@QAEXABM@Z",
+      "target": "0x43ee40"
+    },
+    {
+      "caller": "00441460",
+      "offset": 54,
+      "symbol": "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "target": "0x711ac0"
+    },
+    {
+      "caller": "00441460",
+      "offset": 82,
+      "symbol": "?applyValue@?$XItem@HVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@H@Reflection@RBX@@@@QAEXABH@Z",
+      "target": "0x43f1c0"
+    }
+  ],
+  "original_float_virtual_slots": {
+    "25": 4461536,
+    "57": 4423872,
+    "58": 4421760,
+    "59": 4433664,
+    "60": 4433872,
+    "61": 4437216
+  },
+  "primary_virtual_slots": 62,
+  "selected_virtuals": {
+    "25": "?OnValueChanged@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+    "57": "?readValue@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEMXZ",
+    "58": "?displayValue@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEXABM@Z",
+    "59": "?equalValues@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAE_NABM0@Z",
+    "60": "?writeValue@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEXPAVInstance@RBX@@ABM@Z",
+    "61": "?emptyValue@?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAE_NXZ"
+  },
+  "compilations": {
+    "Virtuals": {
+      "object_sha256": "ca1a9d6e075dae2db64b2069500d96cac5ecbbe0acc7b5bb4755da5407b3057b",
+      "preprocess_flags": [
+        "/nologo",
+        "/O2",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DBOOST_ALL_NO_LIB",
+        "/D_XTP_STATICLINK",
+        "/D_XTPLIB_NOAUTOLINK",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/P",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativePropertyEditorConstructors.cpp"
+      ],
+      "compile_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEditorVirtuals.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEditorVirtualsProfile.cpp"
+      ],
+      "profile": [
+        "const _Elem * c_str() const",
+        "CString CXTPPropertyGridItem::GetValue() const",
+        "bool IsEmpty() const throw()\n\t{\n\t\treturn( GetLength() == 0 );"
+      ]
+    },
+    "Numbers": {
+      "object_sha256": "9cfd03afb3fc9c6df94671e209c455e29de7344c75c2a2c64c458b62f5f81c13",
+      "preprocess_flags": [
+        "/nologo",
+        "/O2",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DBOOST_ALL_NO_LIB",
+        "/D_XTP_STATICLINK",
+        "/D_XTPLIB_NOAUTOLINK",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/P",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PropertyGridNumericValues.cpp"
+      ],
+      "compile_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEditorNumbers.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEditorNumbersProfile.cpp"
+      ],
+      "profile": [
+        "CString CXTPPropertyGridItem::GetValue() const",
+        "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );"
+      ]
+    }
+  },
+  "scope": "Inactive value-operation recovery. Exact source bodies only; float equality and numeric parsers retain zero credit when nonexact. Read/display/equality/write/empty slots57-61 and SDK OnValueChanged slot25 established. Full update/write/apply behavior, remaining virtual bindings, factory and runtime remain open; no game integration credit."
+}

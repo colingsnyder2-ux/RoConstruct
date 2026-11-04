@@ -1,0 +1,78 @@
+{
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_save_dialog.py": "04f560f9baa878cfec1e21e51561506cd1aa3c729ba2a6016653f6b6ec14d425",
+    "rebuild\\2008-06\\native-classes\\CSaveToRobloxDialog.cpp": "6af6db54ce27c669055eb150a6a939ca7e0213ce7fe809c74c716dc14b12555d",
+    "rebuild\\2008-06\\tests\\NativeSaveDialogLayout.cpp": "527855f4a7409c48676d961004f003c1cfdb49e6b2626faed946ade40994026c",
+    "rebuild\\2008-06\\native-headers\\CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838",
+    "rebuild\\2008-06\\native-headers\\CRobloxDHtmlDialog.h": "16357866b06bcd6d9ea55a60ae1097627e1c04dde8f2746cdaf34a981ac2bd55",
+    "rebuild\\2008-06\\native-classes\\CRobloxDHtmlDialog.cpp": "456bbabbde7838124745c3ba79ba71de69febc7a508f773d2e410a5c566058cf"
+  },
+  "object_sha256": "9e36952bdb5a6e59619a6b9fb1aae039ee3d8d3c97bba619bbf42cf98f458bd1",
+  "methods": [
+    {
+      "address": "0045fe80",
+      "size": 101,
+      "symbol": "??0CSaveToRobloxDialog@@QAE@PAUIDispatch@@PBDPAVCWnd@@@Z",
+      "direct_calls": {
+        "??0CRobloxDHtmlDialog@@QAE@IPBDPAVCWnd@@@Z": "0x44eeb0",
+        "?SetExternalDispatch@CDHtmlDialog@@QAEXPAUIDispatch@@@Z": "0x6a1394"
+      }
+    },
+    {
+      "address": "0045fe20",
+      "size": 18,
+      "symbol": "??1CSaveToRobloxDialog@@UAE@XZ",
+      "direct_calls": {
+        "??1CRobloxDHtmlDialog@@UAE@XZ": "0x401050"
+      }
+    },
+    {
+      "address": "0044eeb0",
+      "size": 140,
+      "symbol": "??0CRobloxDHtmlDialog@@QAE@IPBDPAVCWnd@@@Z",
+      "direct_calls": {
+        "??0CDHtmlDialog@@QAE@IIPAVCWnd@@@Z": "0x6a1370",
+        "?SetHostFlags@CDHtmlDialog@@QAEXK@Z": "0x6a092c"
+      }
+    },
+    {
+      "address": "0044f500",
+      "size": 148,
+      "symbol": "??0CPublishAsPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z",
+      "profile": "CString conversion noinline"
+    },
+    {
+      "address": "0044f660",
+      "size": 148,
+      "symbol": "??0CSaveModelToRobloxDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z",
+      "profile": "CString conversion noinline"
+    },
+    {
+      "address": "004012c0",
+      "size": 6,
+      "symbol": "?GetMessageMap@CSaveToRobloxDialog@@MBEPBUAFX_MSGMAP@@XZ",
+      "profile": "CString conversion noinline"
+    },
+    {
+      "address": "0045fe70",
+      "size": 6,
+      "symbol": "?GetEventSinkMap@CSaveToRobloxDialog@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+      "profile": "CString conversion noinline"
+    },
+    {
+      "address": "0045fe40",
+      "size": 40,
+      "symbol": "?GetDHtmlEventMap@CSaveToRobloxDialog@@MAEPBUDHtmlEventMapEntry@@XZ",
+      "profile": "CString conversion noinline"
+    },
+    {
+      "address": "0045ff20",
+      "size": 170,
+      "symbol": "?WindowClosing@CSaveToRobloxDialog@@QAEXHPAF@Z",
+      "profile": "CString conversion noinline"
+    }
+  ],
+  "layout_size": "0x130",
+  "mfc_set_external_dispatch_ordinal": 6275,
+  "scope": "Inactive lifecycle, event methods and derived vtable comparison; event sink entry data verified; remaining bindings and runtime integration remain open."
+}

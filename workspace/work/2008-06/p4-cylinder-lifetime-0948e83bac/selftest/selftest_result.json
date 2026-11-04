@@ -1,0 +1,8 @@
+{
+  "pixel_metric": "lit green: G>50, G>2R, 2G>3B",
+  "initial": {"models": 1, "greenA": 1879, "greenB": 0, "pass": true},
+  "moved": {"models": 1, "greenA": 0, "greenB": 2080, "pass": true},
+  "removed": {"models": 0, "green": 0, "pass": true},
+  "empty": {"models": 0, "green": 0, "pass": true},
+  "failures": 0
+}

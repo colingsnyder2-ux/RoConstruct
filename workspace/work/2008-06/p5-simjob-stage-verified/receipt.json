@@ -1,0 +1,11 @@
+{
+  "revision": "c241e32733ba1e8a39a782511b90364cd0274c7d",
+  "exe_sha256": "9aa64feb189d054d8ec7021b54c24b528ccac20e8cf8e3c31780d2aeaa798c38",
+  "observer_sha256": "3b4bbd1c20c794a37d1da0bc5a9d77844be6de3e875c2adf8efe7a7e4eb13174",
+  "map_sha256": "a19c457a513f254c82e2487eccb89deec52133cfa1a4569b92d902df50d4642b",
+  "provider": "0001:00043640       ?transferTrackers@MechanismTracker@RBX@@SAXPAVSimJob@2@0@Z 00444640 f   linked:Mechanism.obj",
+  "exit": 0,
+  "base_size": 36,
+  "scope": "Shared SimJob tracker lifetime, stage list insertion, middle removal, wraparound, final detach and selected provider. Native assembly binding and no-physics state integration remain open; no byte identity claim.",
+  "P5_complete": false
+}

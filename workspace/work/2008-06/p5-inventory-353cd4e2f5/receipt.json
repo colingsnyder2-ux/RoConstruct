@@ -1,0 +1,30 @@
+{
+  "revision": "353cd4e2f5a134da0cd78b76489ae0f808ab1cfe",
+  "exe_sha256": "1d857f0169cf22e99799c192bd7e9d7487e31eea06eb7068f895d3c645cf279e",
+  "input_sha256": "488a58983b0f65122a979aa50d0e11e225f8cb684a55abb0c785aaa11a89651c",
+  "decoded_sha256": "f06e50fbfd097e24178e279b721ad8c5a27d5839f3197ca555dfa9fbafe6be00",
+  "exit": 0,
+  "serialized_workspace_counts": {
+    "Model": 126,
+    "Part": 786,
+    "Script": 105,
+    "IntValue": 91,
+    "StringValue": 9,
+    "ObjectValue": 201,
+    "NumberValue": 8
+  },
+  "loaded_datamodel_counts": {
+    "Workspace": 1,
+    "Model": 126,
+    "Part": 786,
+    "Script": 104,
+    "Humanoid": 68,
+    "Sound": 0,
+    "IntValue": 0,
+    "StringValue": 0,
+    "ObjectValue": 0,
+    "FloatValue": 0,
+    "NumberValue": 0
+  },
+  "scope": "Class inventory only. Loaded counts cover DataModel; serialized counts cover Workspace. Missing creator cause not yet proven."
+}

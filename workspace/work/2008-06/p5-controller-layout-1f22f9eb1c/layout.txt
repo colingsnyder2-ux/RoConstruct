@@ -1,0 +1,61 @@
+probe.cpp
+class ICharacterSubject	size(88):
+	+---
+	| +--- (base class ICameraSubject)
+ 0	| | {vfptr}
+ 4	| | {vbptr}
+	| +---
+ 8	| Vector3ERA focusERA
+24	| Vector3ERA focusOffsetERA
+40	| Vector3 lastOffset
+52	| floatERA rotationERA
+60	| cursorLocked
+61	| wasOccluded
+  	| <alignment member> (size=2)
+64	| unoccludedDistance
+68	| hasGoalInFocus
+  	| <alignment member> (size=3)
+72	| Vector3 goalInFocus
+	+---
+	+--- (virtual base ILocation)
+84	| {vfptr}
+	+---
+
+ICharacterSubject::$vftable@ICameraSubject@:
+	| &ICharacterSubject_meta
+	|  0
+ 0	| &ICharacterSubject::{dtor}
+ 1	| &ICameraSubject::onCameraNear
+ 2	| &ICameraSubject::getCameraIgnorePrimitives
+ 3	| &ICameraSubject::getLerp
+ 4	| &ICharacterSubject::zoom
+ 5	| &ICharacterSubject::stepGoalAndFocus
+ 6	| &ICharacterSubject::getContactManager
+ 7	| &ICharacterSubject::getIgnorePrims
+ 8	| &ICharacterSubject::tellCameraNear
+ 9	| &ICharacterSubject::getIntendedMovementVector
+10	| &ICharacterSubject::getIntendedRotationAboutYAxis
+11	| &ICharacterSubject::cameraSetWalkOrientation
+
+ICharacterSubject::$vbtable@:
+ 0	| -4
+ 1	| 80 (ICharacterSubjectd(ICameraSubject+4)ILocation)
+
+ICharacterSubject::$vftable@ILocation@:
+	| -84
+ 0	| &ILocation::getLocation
+
+ICharacterSubject::zoom this adjustor: 0
+ICharacterSubject::stepGoalAndFocus this adjustor: 0
+ICharacterSubject::getContactManager this adjustor: 0
+ICharacterSubject::getIgnorePrims this adjustor: 0
+ICharacterSubject::tellCameraNear this adjustor: 0
+ICharacterSubject::getIntendedMovementVector this adjustor: 0
+ICharacterSubject::getIntendedRotationAboutYAxis this adjustor: 0
+ICharacterSubject::cameraSetWalkOrientation this adjustor: 0
+ICharacterSubject::{dtor} this adjustor: 0
+ICharacterSubject::__delDtor this adjustor: 0
+ICharacterSubject::__vecDelDtor this adjustor: 0
+
+vbi:	   class  offset o.vbptr  o.vbte fVtorDisp
+       ILocation      84       4       4 0

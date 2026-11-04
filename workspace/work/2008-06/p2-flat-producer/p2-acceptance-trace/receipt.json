@@ -1,0 +1,168 @@
+{
+  "revision": "3f89605232ea833b3b1038945b75e0608a8889f6",
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\hardware-trace-build\\trace_player.exe",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+    "0040de80",
+    "0040e9f0",
+    "00414dd0",
+    "00414c30",
+    "00414710"
+  ],
+  "exit": 0,
+  "ROC_BUILD": null,
+  "ROC_TRACE_STAGES": "1",
+  "target_exe_sha256_before_and_after": "4398c578985235e730f017de0993bee43c8027c7432b1d8c936e3666d7dde23f",
+  "map_sha256": "f9b3831b741c9d330a79e937ee399c4c303286f77d73198d6e87297cf8f6fde4",
+  "debugger_sha256": "0e70f66888a558beb7e7cdd5929739a0467c9ac8c44c44535ab4467f87efec68",
+  "debugger_source_sha256": "8c96ede7ef9044fcb7b1dd9d6054bc8b4e2bf5089635a645c07e972c186e4a0f",
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "asset_sha256": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4",
+  "selected_symbols": {
+    "?populate@BlockMesh@PlayerBlockMesh@@": {
+      "symbol": "?populate@BlockMesh@PlayerBlockMesh@@AAEXABVVector3@G3D@@VRenderSurfaceTypes@View@RBX@@VBrickColor@7@@Z",
+      "address": "0040de80"
+    },
+    "?upload@Level@PlayerBlockMesh@@": {
+      "symbol": "?upload@Level@PlayerBlockMesh@@QAEX_NAAVAxisAlignedBox@Ogre@@@Z",
+      "address": "0040e9f0"
+    },
+    "?createSubEntity@RbxEntity@Ogre@@": {
+      "symbol": "?createSubEntity@RbxEntity@Ogre@@QAEPAVSubEntity@2@PAVSubMesh@2@I@Z",
+      "address": "00414dd0"
+    },
+    "??1RbxEntity@Ogre@@": {
+      "symbol": "??1RbxEntity@Ogre@@UAE@XZ",
+      "address": "00414c30"
+    },
+    "?getRenderOperation@RbxSubEntity@Ogre@@": {
+      "symbol": "?getRenderOperation@RbxSubEntity@Ogre@@UAEXAAVRenderOperation@2@@Z",
+      "address": "00414710"
+    }
+  },
+  "events": [
+    {
+      "event": "TRACE_IMAGE",
+      "base": "00400000"
+    },
+    {
+      "event": "TRACE_EXCEPTION",
+      "code": "406d1388",
+      "address": "77",
+      "first": "1"
+    },
+    {
+      "event": "TRACE_STAGE",
+      "name": "P2_STAGE_LOADED"
+    },
+    {
+      "event": "TRACE_PRODUCER_ENTRY",
+      "receiver": "0272a1d0",
+      "return": "0040fb60"
+    },
+    {
+      "event": "TRACE_PRODUCER_RETURN",
+      "mesh": "0272a1d0",
+      "levels": "1",
+      "level0": "0272a020",
+      "level1": "00000000"
+    },
+    {
+      "event": "TRACE_PRODUCER_ENTRY",
+      "receiver": "0272a1d0",
+      "return": "0040ffdc"
+    },
+    {
+      "event": "TRACE_PRODUCER_RETURN",
+      "mesh": "0272a1d0",
+      "levels": "2",
+      "level0": "0272a020",
+      "level1": "0272c5b8"
+    },
+    {
+      "event": "TRACE_UPLOAD_ENTRY",
+      "receiver": "0272a020",
+      "return": "00401d95"
+    },
+    {
+      "event": "TRACE_UPLOAD_RETURN",
+      "level": "0272a020",
+      "backend": "0272e2b8"
+    },
+    {
+      "event": "TRACE_ENTITY_CREATE",
+      "entity": "0272d020",
+      "submesh": "0272e2b8",
+      "lod": "0"
+    },
+    {
+      "event": "TRACE_ENTITY_CREATED",
+      "entity": "0272d020",
+      "subentity": "0272d400"
+    },
+    {
+      "event": "TRACE_RENDER_OPERATION",
+      "subentity": "0272d400",
+      "submesh": "0272e2b8",
+      "lod": "0"
+    },
+    {
+      "event": "TRACE_STAGE",
+      "name": "P2_STAGE_BEFORE_MOVE"
+    },
+    {
+      "event": "TRACE_STAGE",
+      "name": "P2_STAGE_BEFORE_REMOVE"
+    },
+    {
+      "event": "TRACE_ENTITY_DESTROY",
+      "entity": "0272d020"
+    },
+    {
+      "event": "TRACE_STAGE",
+      "name": "P2_STAGE_AFTER_REMOVE"
+    },
+    {
+      "event": "TRACE_EXIT",
+      "code": "0",
+      "producer": "2",
+      "upload": "1",
+      "entity": "1",
+      "destroy": "1"
+    }
+  ],
+  "pixels": {
+    "pixel_metric": "lit green: G>50, G>2R, 2G>3B",
+    "initial": {
+      "models": 1,
+      "greenA": 1879,
+      "greenB": 0,
+      "pass": true
+    },
+    "moved": {
+      "models": 1,
+      "greenA": 0,
+      "greenB": 2080,
+      "pass": true
+    },
+    "removed": {
+      "models": 0,
+      "green": 0,
+      "pass": true
+    },
+    "empty": {
+      "models": 0,
+      "green": 0,
+      "pass": true
+    },
+    "failures": 0
+  },
+  "report_sha256": "fa7f3c892e129cb504d8950675e384c9fa7b1ffbc38cf33215b429e99aba9d0c",
+  "method": "DR0..DR3 execution breakpoints, retargeted to return sites; no target code bytes patched",
+  "proof": "Same Mesh produces level0; same Level uploads same SubMesh used by created child and actual render-op; same parent entity destroyed.",
+  "limits": [
+    "Rebuilt selftest trace, not original client execution.",
+    "406d1388 is forwarded first-chance MSVC thread-name exception.",
+    "Local report identifies00684fd0; no new server-verified exact credit."
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "mode": "air",
+  "measured_coordinate": "torso x",
+  "revision": "5d94151e0dd6ea95e66c39602278ae270f704947",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "2766c0c154c5a8ff98e5b43ab3f3eaaf208a0e36ea840b0d96f0bac072ac14b8",
+  "fixture_sha256": "5f37fee8dcf8eb4805395edc8084b5a0f9674f6677b278ef1218e3fbf208ab23",
+  "observer_sha256": "d9bd1849485ac85dd29be25fe04a48801382ec5c1943cd4d67bee4e3e4536efd",
+  "records": [
+    {
+      "sample": 0,
+      "original_time": 0.100006103515625,
+      "rebuilt_time": 0.10000600000000759,
+      "aligned": true,
+      "original_y": 137.25,
+      "rebuilt_y": 137.25,
+      "delta_y": 0.0,
+      "copies": 2
+    },
+    {
+      "sample": 1,
+      "original_time": 0.1999969482421875,
+      "rebuilt_time": 0.1999969999999962,
+      "aligned": true,
+      "original_y": 137.25,
+      "rebuilt_y": 137.25,
+      "delta_y": 0.0,
+      "copies": 2
+    },
+    {
+      "sample": 2,
+      "original_time": 0.26666259765625,
+      "rebuilt_time": 0.2666629999999941,
+      "aligned": true,
+      "original_y": 137.65689086914062,
+      "rebuilt_y": 137.656891,
+      "delta_y": -1.3085937666801328e-07,
+      "copies": 2
+    },
+    {
+      "sample": 3,
+      "original_time": 0.3000030517578125,
+      "rebuilt_time": 0.3000030000000038,
+      "aligned": true,
+      "original_y": 138.19033813476562,
+      "rebuilt_y": 138.190338,
+      "delta_y": 1.3476562799041858e-07,
+      "copies": 2
+    },
+    {
+      "sample": 4,
+      "original_time": 0.399993896484375,
+      "rebuilt_time": 0.3999939999999924,
+      "aligned": true,
+      "original_y": 139.79067993164062,
+      "rebuilt_y": 139.79068,
+      "delta_y": -6.835938393123797e-08,
+      "copies": 2
+    },
+    {
+      "sample": 5,
+      "original_time": 0.5,
+      "rebuilt_time": 0.5,
+      "aligned": true,
+      "original_y": 141.39102172851562,
+      "rebuilt_y": 141.391022,
+      "delta_y": -2.714843674311851e-07,
+      "copies": 2
+    },
+    {
+      "sample": 6,
+      "original_time": 0.600006103515625,
+      "rebuilt_time": 0.6000060000000076,
+      "aligned": true,
+      "original_y": 142.99136352539062,
+      "rebuilt_y": 142.991364,
+      "delta_y": -4.7460937935284164e-07,
+      "copies": 2
+    },
+    {
+      "sample": 7,
+      "original_time": 0.76666259765625,
+      "rebuilt_time": 0.7666629999999941,
+      "aligned": true,
+      "original_y": 145.65859985351562,
+      "rebuilt_y": 145.6586,
+      "delta_y": -1.4648438195763447e-07,
+      "copies": 2
+    },
+    {
+      "sample": 8,
+      "original_time": 1.0,
+      "rebuilt_time": 1.0,
+      "aligned": true,
+      "original_y": 149.39273071289062,
+      "rebuilt_y": 149.392731,
+      "delta_y": -2.871093727208063e-07,
+      "copies": 2
+    },
+    {
+      "sample": 9,
+      "original_time": 1.5,
+      "rebuilt_time": 1.5,
+      "aligned": true,
+      "original_y": 157.92681884765625,
+      "rebuilt_y": 157.39444,
+      "delta_y": 0.532378847656247,
+      "copies": 2
+    },
+    {
+      "sample": 10,
+      "original_time": 2.0,
+      "rebuilt_time": 2.0,
+      "aligned": true,
+      "original_y": 165.9269256591797,
+      "rebuilt_y": 165.396149,
+      "delta_y": 0.5307766591796792,
+      "copies": 2
+    },
+    {
+      "sample": 11,
+      "original_time": 3.0,
+      "rebuilt_time": 3.0,
+      "aligned": true,
+      "original_y": 181.39646911621094,
+      "rebuilt_y": 181.399567,
+      "delta_y": -0.0030978837890529576,
+      "copies": 2
+    },
+    {
+      "sample": 12,
+      "original_time": 4.0,
+      "rebuilt_time": 4.0,
+      "aligned": true,
+      "original_y": 197.39988708496094,
+      "rebuilt_y": 197.402985,
+      "delta_y": -0.003097915039063537,
+      "copies": 2
+    }
+  ],
+  "original_forced_termination": true,
+  "scope": "Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.",
+  "P5_complete": false
+}

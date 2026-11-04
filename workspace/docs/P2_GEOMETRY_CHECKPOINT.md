@@ -1,0 +1,221 @@
+# P2 flat producer checkpoint, 2026-10-31
+
+P2 ordinary-block gate passes at source3f89605232. See scoped requirement audit
+rebuild/2008-06/tests/p2-recovered/p2-acceptance-audit.md and exact-revision
+p2-acceptance-runtime/p2-acceptance-trace receipts. Recovered00684fd0 render-op
+removes fabricated SubMesh parent link; actual producer/upload/entity/render-op
+and removal identity proven by hardware breakpoints with ordered phase events.
+Four lit controls1879/2080/0/0, cache cycles and zero sphere/mesh cleanup pass.
+P0 clean-worktree/stability, full P3-P10 and native enclosing scene inventory are
+not claimed complete. Next user demo: default skybox/red studs/screenshot or video.
+Older entries below are retained history, superseded by this acceptance verdict.
+
+Sphere cache now integrated at sourcead921338f6. Four builds and three normal
+unit regressions pass; normal player pixels1879/2080/0/0, two cache cycles,
+levels/refs/backends/spheres0 pass. Receipts:sphere-unit-runtime/receipt.json and
+sphere-player-runtime/receipt.json under work/2008-06/p2-flat-producer/. Setter
+extent corrected locally to212-byte evidence; registry/server unchanged.
+Next audit remaining P2 acceptance against the ordinary-block/first-level scope,
+then resolve the actual scene/node/metadata/selector bridge questions. P2 open.
+After P2, user requests default skybox + red studded block and an actual rendered
+picture or spinning video. Green acceptance fixture stays separate.
+
+Material/light integration sourcee177bc4a9e builds and passes normal lit pixel
+controls1879/2080/0/0; cache two9->8->0 cycles and zero mesh cleanup pass.
+Receipt:work/2008-06/p2-flat-producer/native-material-player-runtime/receipt.json.
+Pixel metric changed explicitly for native-lit palette (G>50,G>2R,2G>3B), same
+fixture/area/noise gates; receipt retains old unlit metric failures8/9 on same
+captures. No diagnostic material remains. Original scene/Lighting bridge and
+metadata parent remain, so P2 stays open. Next: global sphere cache0097dbc4,
+set00682350/get00682040/remove00682150, Level cleanup005486e0. Node/cache evidence
+in node-sphere-next-edge.json; source for setter is empty/unmatched, do not reuse
+that empty body. Owner entity/debug edits preserved.
+
+Lighting prerequisite passes at source33b464e8f6. Native writer004dab50/default
+constructor005e1a40 traced. Typed007aacc0/007a9d30 extraction tests native light
+state in normal process, no GL/GPU pixels. Receipt at
+work/2008-06/p2-flat-producer/native-lighting-runtime/receipt.json. Original
+specular conditional compares addresses, not zero RGB; source analogy corrected.
+Next wire materials/lights into isolated player and rerun pixel/cache controls.
+P2 remains open; owner entity/debug files preserved.
+
+Renderer material setup prerequisite now passes at sourceb78e67f137, including
+normal process, five mesh-kind branches, two passes and real atlas binding.
+Receipt:work/2008-06/p2-flat-producer/native-material-backend-runtime/receipt.json.
+Source extraction007ab0a0 retains original material state; player integration
+and original light values/setup007a9d30 remain next. P2 remains open.
+
+Latest material prerequisite: source18624d7141, normal-process receipt at
+work/2008-06/p2-flat-producer/native-material-runtime/receipt.json. Real native
+Material/Level/TextureProxy layout/ownership tests and independent original/PE
+vtable audit pass. Thirty-two factory/backend lifetimes and texture GC pass.
+Clean GLG3D dependency avoids inherited verified_sinks. Generic legacy resolver
+branches remain runtime-unproven. Player remains unchanged; renderer material
+creation007ab0a0/light setup007a9d30 are next. P2 remains open.
+
+Imported OpenCode milestone claims were checked against current local files.
+Entity code was preserved. `--p3test` is absent from this revision's parser, and
+missing-place paths silently use the built-in fixture. These are acceptance gaps.
+
+Original BrickMesh constructor calls flat producer `004e2c80` at `004e5449`;
+its other branch calls `004e3720`. Factory sources `004e54e0` and `004e58b0`
+are available locally. Which original factory/branch the loaded fixture executes
+still requires runtime proof. The flat provider is the existing
+`rbxgs-view-dll roc_espclaude_f7a520dca9a7cb3a.cpp`, not the Ogre upload helper.
+
+Existing provider compiled under VS2008 RTM 21022 and its recorded flags.
+Object SHA-256: `e03c70ad2d1513572dd7624ae8ce9a3c18e6b7678740d69548f15d70a1162c53`.
+A link-only probe forced its actual decorated `populate` symbol against the
+player's transitive dependency libraries: 27 unresolved symbols and duplicate
+G3D providers. Narrowing its donor include from BrickMesh.cpp to BrickMesh.h
+compiled, removed cache/constructor pollution, and left 24 unresolved symbols.
+Core gaps include Level2008 construction, native vertex-bank ownership, and
+uvwToObject instances. No stub definitions or arbitrary global arrays were added.
+This is a failed integration probe, not P2 completion.
+
+The unchanged local player rebuilt with linked=True/test_exit=0, but a separate
+normal-environment selftest in a fresh capture directory exited 5: initial and
+moved pixel controls failed; removed and empty passed. The shorter build smoke
+result must not be substituted for those pixel controls.
+
+EXE SHA-256: `f67a53d7bd526b561d920940288859c97dcd1f60bb20954cd420c0dfb3c5b49e`.
+Observed tooling revision: `313bf5f7aad653f2af2df2904cdae2dc6a48b158` plus existing
+local player changes. Source hashes, captured images, full symbol inventories,
+compile/link receipts and logs are in `work/2008-06/p2-flat-producer/`.
+Actual loaded DLL paths were not traced. This was not a clean second-worktree
+reproduction. The prior checkpoint was retained there as `checkpoint-before.md`.
+
+Continue from `work/2008-06/player-roadmap.md`. Native Level/vertex-bank ABI
+resolution precedes a player wiring change. P2 remains open; no later milestone
+is advanced by these diagnostics. The separate source-view fix is documented in
+GRAPH.md (`roc source CLIENT ADDRESS`).
+
+## Follow-up: orientation providers and baseline isolation
+
+Six authentic NormalId template instances now have a reproducible module target:
+`roc rebuild 2008-06 module p2-mesh-orientation --no-notify`. Its linked asymmetric
+fixture passes. Producer link errors reduced from 24 to 18. The player module
+also compiles these providers; no byte-exact credit is claimed.
+
+Earlier failed pixel controls used local white-material/stock-Entity debugging
+changes. Those files remain untouched. An isolated snapshot using committed
+91903d1caf player sources plus the pre-existing local RbxEntityLocal.cpp passes
+all four normal-environment pixel controls. Hashes and captures are retained in
+`work/2008-06/p2-flat-producer/snapshot-runtime/`. The local entity provider is
+absent from the old commit, so this is not a clean-clone reproducibility claim.
+
+Native Level destructor evidence adds a real prerequisite: 004dd340 calls
+005489b0, which calls backend cleanup 005486e0. The Level +24 resource is deleted
+through 0054ac70 -> 006824e0 (Ogre::RbxSubMesh). Reusing the donor Level destructor
+alone would omit backend cleanup. Vertex-bank initialization 00547f60 reserves
+slot zero across the position, normal, tangent, UV and reference-count arrays.
+P2 remains open pending coherent native bank and backend-resource integration.
+
+## Backend upload group
+
+`roc rebuild 2008-06 module p2-mesh-backend --no-notify` now builds and passes a
+hidden D3D9 test. Existing 00679ae0/0067c130 upload bodies and 00678470/006824e0
+RbxSubMesh construction/destruction use genuine SDK and Boost declarations.
+Size/offset checks replace padded mining declarations. Tests cover both index
+widths, asymmetric bounds, normal/UV channels, 32 teardown cycles, registry return
+to zero and release of GPU buffer ownership. Optional colour upload is not yet
+exercised; the current recovered level upload passes null colours.
+
+This closes a backend prerequisite, not P2: the loaded Part still needs its
+recovered level-0 producer and reference-counted vertex-bank ownership connected.
+`work/2008-06/p2-flat-producer/backend-receipt.json` records this test image and
+source hashes. Geometry bounds-cache removal remains the Level owner's work.
+
+
+## Loaded block producer integration (P2 still open)
+
+`p2-block-mesh` now builds and passes 32 recovered-producer/upload/teardown cycles,
+including smooth/studded faces, alternating 16/32-bit uploads, asymmetric bounds,
+retained G3D references, repeated-upload reuse and zero live refs/levels/backends.
+Existing 004e2c80 body and face templates run against one typed bank using native
+00547f60/00548000/00547fc0/00548640 algorithms and measured Level offsets.
+
+`roc rebuild 2008-06 module p2-recovered-player --no-notify` provides an isolated,
+published source target preserving newer local player edits. Loaded Part now owns
+that recovered mesh; renderer retains it through RbxEntity lifetime. Handwritten
+box vertices/indices were removed from this target. Existing entity provider stays
+unchanged. SDK SubMesh animation lookup requires a non-owning metadata Mesh parent;
+leaving the native detached submesh parent null caused an access violation, resolved
+by setting its parent without transferring deletion ownership.
+
+Normal --selftest passes initial/moved/removed/empty pixel controls (1891/2152/0/0).
+Source hashes, executable/map hashes, logs and captures are recorded under
+work/2008-06/p2-flat-producer/recovered-runtime/. Recheck receipt for exact tested
+revision; build-only quick execution does not count as visual evidence.
+
+This is recovered geometry integration, not full P2 closure. Fixed-function colour
+material remains diagnostic; full native Mesh/factory ABI, shared indices and scene
+bounds-cache ownership are not integrated. Original modifier/humanoid selection,
+bevel policy, child signals, non-box and >=30-stud producer paths remain open.
+Read tests/p2-recovered/README.md for scope. No later milestone advanced.
+
+Next: prove/integrate full native Mesh factory/owner and material path, preserving
+this passing isolated target. Then P3 shape/lifecycle/resource baseline, followed
+by remaining roadmap. Do not overwrite local Player2008/PlayerEngine/RbxEntity.h.
+
+
+## Full Mesh owner and capture correction
+
+Native 00548570/00548a90 now have a typed 0x88-byte Mesh owner. Compile-time checks
+cover levels0c, ShadowSurface18, radius4c, index vector50, vertex vector68,
+shadow-backend80 and kind84. The 004e53c0 matched analog's AABox declarations are
+false semantic labels: member constructors prove vector stride2/12, and the
+004e3570 caller confirms index/vertex output roles. Tests exercise both Level
+backend destruction and the separate Mesh shadow backend branch. Shadow element
+types retain donor evidence; remaining native shadow behavior is not complete.
+
+Normal acceptance initially captured Codex desktop pixels. The original Ogre1.4
+screenshot API uses GetFrontBufferData; that receipt cannot establish a geometry
+regression. A harness-only D3D9 backbuffer read fixes occlusion deterministically
+for selftest and frame captures. Owner changes preserve all four controls with
+zero leaked levels/refs/backends; inspect native-owner-backbuffer-runtime receipt
+for the exact revision and output hashes.
+
+Next factory evidence: 004e58b0 uses boost::recursive_mutex (00563090 maintains a
+recursion count at+8), cache mutex offset20 and allocation30. Initial bevel flag
+009413c0 is1. Factory first builds with bevel0.065, then calls the same004e2c80
+again with bevel0/buildingShadowMesh=true. Current direct constructor bypasses
+factory cache and this paired-level policy, keeping P2 open. Integrate that
+existing source next, including its purge and shared resource ownership.
+
+
+## Original block factory/cache connected
+
+004e58b0 now drives the loaded small block. Existing source retains four random
+variants per measured key, native default bevel0.065 first level, flat second
+level, and004e5710 purge of cache-only references. 512-lookups/120-key fixture
+passes, including both index widths and recursive every100-creation purge.
+Renderer metadata/material now share geometry identity. A real cachetest caught
+an initial resource leak: Ogre has three system references, not one. Corrected
+last-user check uses the SDK constant; two loaded9->8->0 cycles now return all
+mesh/material counts and live geometry/backend references to baseline.
+
+Normal pixel controls with default bevels:1879/2080/0/0. Direct flat regression
+still passes. Final evidence goes under p2-flat-producer/factory-runtime/.
+Material remains diagnostic. Next proven handoff is vtable00826f94 slot5 ->
+004eb190 ->004f1a60 mega-material factory, using textures/SurfacesStrip.png.
+Original atlas absent from currently searched dependency roots; do not invent it.
+P2 and later gates remain open.
+
+
+## Original atlas prerequisite
+
+Source248136093f adds a standalone recovered007add10/007ae4e0 atlas module plus
+clean G3D image dependency. Both build and normal runs exit0. Actual64x256 strip
+expands to32 palette columns;2048x256 GPU RGB readback equals CPU bytes exactly
+in the same device FPU mode. Neutral/shading anchors, cache identity, missing-file
+failure and resource release pass. Source/exe/map/DLL/asset hashes and CPU/GPU PNGs
+are retained in p2-flat-producer/atlas-runtime/receipt.json.
+
+Two real corrections precede this result: old G3D archive PNG calls resolved into
+verified_sinks.obj traps, replaced only for this isolated target by clean vendor
+build; D3D9 changes x87 precision, so pre-device CPU shading is not the correct
+reference for post-device upload. No tolerance was introduced. Existing player
+EXE hash is unchanged. Real strip also occurs in May2008 RCCService installer;
+exact June2008 asset identity is unproven. Atlas helper is not yet wired through
+native Material/TextureProxy classes, so P2 remains open.

@@ -1,0 +1,49 @@
+{
+  "revision": "226e4308cc6318a36b32e3309bfeb70ab16e897f",
+  "exe_sha256": "61515aebb94c299ca85b5b4f32632e4f8c3871d9acc95bf5ba8419e9065be4a1",
+  "observer_sha256": "68de35e83395c9a879db417afef4bbd2fdb7221fd3481d91f960ad30003299e9",
+  "P5_complete": false,
+  "scope": "Diagnostic port of original candidate box and ray sweep using rebuilt contact manager.",
+  "remaining": [
+    "Original-client comparison",
+    "Filtering parity",
+    "Climb state and forces"
+  ],
+  "cases": {
+    "empty": {
+      "exit": 0,
+      "detected": 0,
+      "fixture_sha256": "28d1e28077672764de0f7356f692dca7844d9c9c54d35f123e6a430f7388d0ff"
+    },
+    "rung": {
+      "exit": 0,
+      "detected": 1,
+      "fixture_sha256": "a647e3326bcac075cab2ff4688b954b13b1be326c594ddd903da8ccae928e301"
+    },
+    "distant": {
+      "exit": 0,
+      "detected": 0,
+      "fixture_sha256": "b89ed870baaf1d16013985ccca75806b8c5ffefec6695c25cf4640a33c40662f"
+    },
+    "tall": {
+      "exit": 0,
+      "detected": 0,
+      "fixture_sha256": "6a20cd1e9bc9e7a71d468c445a8d4a0c6b9ed99533451909fe5cdcaaf65177e3"
+    },
+    "behind": {
+      "exit": 0,
+      "detected": 0,
+      "fixture_sha256": "07984700532e2392414d0e879bd88cc8e5466d43736d1d707246dc7a0e0e349e"
+    },
+    "self": {
+      "exit": 0,
+      "detected": 0,
+      "fixture_sha256": "1e10288011922678e6b2e95bc87529a33e2a72b484a8f831f39d6c9b371e1081"
+    },
+    "nocollide": {
+      "exit": 0,
+      "detected": 0,
+      "fixture_sha256": "51c42f2120bb3196a855ad92f0678fe621fe50018bc057c1caafffe16cc31191"
+    }
+  }
+}

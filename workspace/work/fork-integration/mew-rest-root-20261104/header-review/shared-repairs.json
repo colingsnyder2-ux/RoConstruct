@@ -1,0 +1,5 @@
+{
+  "Object.h": "NonFactoryProduct overrides inherited virtual without adding a slot for DescribedBase families; original Marker vtables have one destructor slot.",
+  "reflection.h": "IIDREF novtable matches original RefProp constructor vfptr writes; proven on Mouse/Player/Players/Feature without adding fields.",
+  "type.h": "Remove snapshot-only global noinline from typed Value ctor; retain const-reference signature and later asRef API. Original Player BoundFunc constructor becomes 193/193 exact; LuaArgs keeps existing isolated noinline compilation profile."
+}

@@ -1,0 +1,15 @@
+[ok  ] cl              C:\Users\colin\roc-p0\tools\vc2008rtm\Program Files\Microsoft Visual Studio 9.0\VC\bin\cl.exe
+[ok  ] link            C:\Users\colin\roc-p0\tools\vc2008rtm\Program Files\Microsoft Visual Studio 9.0\VC\bin\link.exe
+[ok  ] lib             C:\Users\colin\roc-p0\tools\vc2008rtm\Program Files\Microsoft Visual Studio 9.0\VC\bin\lib.exe
+[ok  ] mspdb           C:\Users\colin\roc-p0\tools\vc2008rtm\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\mspdb80.dll
+[ok  ] vc_include      C:\Users\colin\roc-p0\tools\vc2008rtm\Program Files\Microsoft Visual Studio 9.0\VC\include
+[ok  ] vc_lib          C:\Users\colin\roc-p0\tools\vc2008rtm\Program Files\Microsoft Visual Studio 9.0\VC\lib
+[ok  ] crt             C:\Users\colin\roc-p0\tools\vc2008rtm\Program Files\Microsoft Visual Studio 9.0\VC\lib\msvcrt.lib
+[ok  ] sdk_include     C:\Users\colin\roc-p0\tools\vc2008sp1\Microsoft\Visual C++ for Python\9.0\WinSDK\Include
+[ok  ] sdk_lib         C:\Users\colin\roc-p0\tools\vc2008sp1\Microsoft\Visual C++ for Python\9.0\WinSDK\Lib
+[ok  ] rc              C:\Users\colin\roc-p0\tools\vc2008sp1\Microsoft\Visual C++ for Python\9.0\WinSDK\Bin\RC.Exe
+[ok  ] atlmfc_include  C:\Users\colin\roc-p0\tools\libs\mfc-9.0-rtm\atlmfc\include
+[ok  ] atlmfc_lib      C:\Users\colin\roc-p0\tools\libs\mfc-9.0-rtm\atlmfc\lib
+[ok  ] atls            C:\Users\colin\roc-p0\tools\libs\mfc-9.0-rtm\atlmfc\lib\atls.lib
+[ok  ] mfcs90          C:\Users\colin\roc-p0\tools\libs\mfc-9.0-rtm\atlmfc\lib\mfcs90.lib
+[ok  ] smoke exe runs: rebuild-smoke 150021022

@@ -1,0 +1,1404 @@
+{
+  "receipt_revision": "131f3287fc322c8c26a49a466a2edc3ac5dcbd30",
+  "receipt_sha256": "411a9c006a41105f548413c68f3fca5007e399671f265bf80c47ceb53a77c1ae",
+  "link_exit": 1120,
+  "error_lines": 65,
+  "ranked": [
+    {
+      "family": "TToolVerb::newMouseCommand",
+      "unique_symbols": 23,
+      "error_lines": 23,
+      "objects": [
+        "NativeStandardVerbsConstructorTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::AnchorTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VAnchorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::AxisMoveTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::CloneTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VCloneTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::DropperTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VDropperTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::FillTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VFillTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::FlatTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VFlatTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::GlueTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VGlueTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::GrabTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VGrabTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::HammerTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VHammerTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::HingeTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::InletTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VInletTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::LaserTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VLaserTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::LeftMotorTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VLeftMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::LockTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VLockTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::ModelSetFrontTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::ModelSetPrimaryPartTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VModelSetPrimaryPartTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::OscillateMotorTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VOscillateMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::ResizeTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VResizeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::RightMotorTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::RocketTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VRocketTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::SlingshotTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VSlingshotTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::StudsTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VStudsTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::WeldTool,class RBX::RunStateVerb>::newMouseCommand(void)",
+          "symbol": "?newMouseCommand@?$TToolVerb@VWeldTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TToolVerb::isChecked",
+      "unique_symbols": 12,
+      "error_lines": 12,
+      "objects": [
+        "NativeStandardVerbsConstructorTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::AnchorTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VAnchorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::CloneTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VCloneTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::GrabTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VGrabTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::HammerTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VHammerTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::LaserTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VLaserTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::LeftMotorTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VLeftMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::LockTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VLockTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::ModelSetFrontTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::OscillateMotorTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VOscillateMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::RightMotorTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::RocketTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VRocketTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::TToolVerb<class RBX::SlingshotTool,class RBX::RunStateVerb>::isChecked(void)const ",
+          "symbol": "?isChecked@?$TToolVerb@VSlingshotTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::StatsCommand",
+      "unique_symbols": 3,
+      "error_lines": 3,
+      "objects": [
+        "NativeBasicVerbConstructorsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::StatsCommand::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@StatsCommand@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::StatsCommand::isChecked(void)const ",
+          "symbol": "?isChecked@StatsCommand@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::StatsCommand::isEnabled(void)const ",
+          "symbol": "?isEnabled@StatsCommand@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::BoolPropertyVerb",
+      "unique_symbols": 2,
+      "error_lines": 2,
+      "objects": [
+        "NativeSelectionCommandsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "protected: virtual void __thiscall RBX::BoolPropertyVerb::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@BoolPropertyVerb@RBX@@MAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeSelectionCommandsTrial.obj"
+          ]
+        },
+        {
+          "name": "protected: virtual bool __thiscall RBX::BoolPropertyVerb::isChecked(void)const ",
+          "symbol": "?isChecked@BoolPropertyVerb@RBX@@MBE_NXZ",
+          "objects": [
+            "NativeSelectionCommandsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::ClearBackpack",
+      "unique_symbols": 2,
+      "error_lines": 2,
+      "objects": [
+        "NativeBasicVerbConstructorsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::ClearBackpack::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@ClearBackpack@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::ClearBackpack::isEnabled(void)const ",
+          "symbol": "?isEnabled@ClearBackpack@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::ClearStarterpack",
+      "unique_symbols": 2,
+      "error_lines": 2,
+      "objects": [
+        "NativeBasicVerbConstructorsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::ClearStarterpack::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@ClearStarterpack@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::ClearStarterpack::isEnabled(void)const ",
+          "symbol": "?isEnabled@ClearStarterpack@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::JoinCommand",
+      "unique_symbols": 2,
+      "error_lines": 2,
+      "objects": [
+        "NativeBasicVerbConstructorsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::JoinCommand::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@JoinCommand@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        },
+        {
+          "name": "public: virtual bool __thiscall RBX::JoinCommand::isEnabled(void)const ",
+          "symbol": "?isEnabled@JoinCommand@RBX@@UBE_NXZ",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "CWorkspace",
+      "unique_symbols": 1,
+      "error_lines": 2,
+      "objects": [
+        "CWorkspaceSaveProfile.obj",
+        "NativeWorkspaceWriteTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)",
+          "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "objects": [
+            "CWorkspaceSaveProfile.obj",
+            "NativeWorkspaceWriteTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::RotateAxisCommand",
+      "unique_symbols": 1,
+      "error_lines": 2,
+      "objects": [
+        "NativeAxisBaseTrial.obj",
+        "NativeAxisCommandsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::RotateAxisCommand::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@RotateAxisCommand@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeAxisBaseTrial.obj",
+            "NativeAxisCommandsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "CopyVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeDocumentInitializeTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall CopyVerb::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z",
+          "objects": [
+            "NativeDocumentInitializeTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "InsertDecal",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeDocumentInitializeTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall InsertDecal::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@InsertDecal@@UAEXPAVIDataState@RBX@@@Z",
+          "objects": [
+            "NativeDocumentInitializeTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "InsertObject",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeDocumentInitializeTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall InsertObject::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@InsertObject@@UAEXPAVIDataState@RBX@@@Z",
+          "objects": [
+            "NativeDocumentInitializeTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "InsertService",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeDocumentInitializeTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall InsertService::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@InsertService@@UAEXPAVIDataState@RBX@@@Z",
+          "objects": [
+            "NativeDocumentInitializeTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "PasteVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeDocumentInitializeTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall PasteVerb::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z",
+          "objects": [
+            "NativeDocumentInitializeTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::Camera",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeSelectionCommandsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: bool __thiscall RBX::Camera::isFirstPersonCamera(void)const ",
+          "symbol": "?isFirstPersonCamera@Camera@RBX@@QBE_NXZ",
+          "objects": [
+            "NativeSelectionCommandsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::DuplicateSelectionVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeSelectionCommandsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::DuplicateSelectionVerb::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@DuplicateSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeSelectionCommandsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::EngineStatsCommand",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeBasicVerbConstructorsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::EngineStatsCommand::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@EngineStatsCommand@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeBasicVerbConstructorsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::GroupSelectionVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeSelectionCommandsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::GroupSelectionVerb::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@GroupSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeSelectionCommandsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::MoveDownSelectionVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeSelectionCommandsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::MoveDownSelectionVerb::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@MoveDownSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeSelectionCommandsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::MoveUpBrickVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeStandardVerbsConstructorTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: __thiscall RBX::MoveUpBrickVerb::MoveUpBrickVerb(class RBX::DataModel *)",
+          "symbol": "??0MoveUpBrickVerb@RBX@@QAE@PAVDataModel@1@@Z",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::MoveUpPlateVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeStandardVerbsConstructorTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: __thiscall RBX::MoveUpPlateVerb::MoveUpPlateVerb(class RBX::DataModel *)",
+          "symbol": "??0MoveUpPlateVerb@RBX@@QAE@PAVDataModel@1@@Z",
+          "objects": [
+            "NativeStandardVerbsConstructorTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::TiltSelectionVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeAxisCommandsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "protected: virtual class G3D::Matrix3 __thiscall RBX::TiltSelectionVerb::getRotationAxis(void)",
+          "symbol": "?getRotationAxis@TiltSelectionVerb@RBX@@MAE?AVMatrix3@G3D@@XZ",
+          "objects": [
+            "NativeAxisCommandsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "RBX::UngroupSelectionVerb",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "NativeSelectionCommandsTrial.obj"
+      ],
+      "symbols": [
+        {
+          "name": "public: virtual void __thiscall RBX::UngroupSelectionVerb::doIt(class RBX::IDataState *)",
+          "symbol": "?doIt@UngroupSelectionVerb@RBX@@UAEXPAVIDataState@2@@Z",
+          "objects": [
+            "NativeSelectionCommandsTrial.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "family": "struct tagSAFEARRAY * __cdecl makeSafeArray",
+      "unique_symbols": 1,
+      "error_lines": 1,
+      "objects": [
+        "CWorkspaceExecScriptHelperProfile.obj"
+      ],
+      "symbols": [
+        {
+          "name": "struct tagSAFEARRAY * __cdecl makeSafeArray(class std::vector<class RBX::Reflection::Value,class std::allocator<class RBX::Reflection::Value> > *)",
+          "symbol": "?makeSafeArray@@YAPAUtagSAFEARRAY@@PAV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@Z",
+          "objects": [
+            "CWorkspaceExecScriptHelperProfile.obj"
+          ]
+        }
+      ]
+    }
+  ],
+  "object_freshness": [],
+  "rebuild_audit": {
+    "objects": 180,
+    "checks": 24,
+    "explicitly_named_in_checks": 18,
+    "not_explicitly_named": [
+      "NativeDocShell.obj",
+      "MyXTPCommandBars.obj",
+      "appmodul.obj",
+      "P6Engine.obj",
+      "P6Data.obj",
+      "roblox.res",
+      "mfc90.lib",
+      "NativeFrameIconsFresh.obj",
+      "NativeFrameIconWidth.obj",
+      "NativeDHtmlDialog.obj",
+      "NativeAboutDialog.obj",
+      "NativeAboutDialogData.obj",
+      "NativeFileVersionInfo.obj",
+      "NativeGLCaps.obj",
+      "NativeSaveDialogProfile.obj",
+      "NativeApplicationBaseUrl.obj",
+      "NativeDocumentHistoryProfile.obj",
+      "NativeDocumentException.obj",
+      "NativeWorkspaceLayout.obj",
+      "NativeWorkspaceLoad.obj",
+      "WorkspaceInsertNativeProfile.obj",
+      "NativeParserDestructor.obj",
+      "SelectionFront.obj",
+      "InstanceClassLookup.obj",
+      "NativeDataModelTiming.obj",
+      "NativeDataModelDutyCycle.obj",
+      "NativePlayersAbuse.obj",
+      "NativeLuaAllocatorStats.obj",
+      "NativeVerbLifetime.obj",
+      "NativeVerbBaseLifetime.obj",
+      "NativeVerbQueries.obj",
+      "NativeRotateAxisTrial.obj",
+      "NativeExecScriptProfile.obj",
+      "CWorkspaceExecScriptHelperProfile.obj",
+      "NativeWorkspaceExecUrlProfile.obj",
+      "CWorkspaceSaveProfile.obj",
+      "CWorkspaceSelectionTrial.obj",
+      "NativeWorkspaceInsertUrlProfile.obj",
+      "NativeContentFactoryTrial.obj",
+      "CContentUploadProfile.obj",
+      "CContentError.obj",
+      "CContentGuids.obj",
+      "NativeWorkspaceWriteTrial.obj",
+      "WorkspaceHResultProfile.obj",
+      "NativeWorkspaceRaiseError.obj",
+      "LuaArgsProfile.obj",
+      "NativeWorkspaceObjectSafety.obj",
+      "NativeWorkspaceSiteUrl.obj",
+      "ServiceSelectionProfile.obj",
+      "NativeServiceLookup.obj",
+      "ServiceChangeHistoryProfile.obj",
+      "ServiceChangeHistoryCreate.obj",
+      "NativeChangeHistoryQueries.obj",
+      "NativeChangeHistoryPlayback.obj",
+      "NativeHistoryRecordPlayback.obj",
+      "NativeHistoryItemPlayback.obj",
+      "NativeChangeHistoryEnable.obj",
+      "NativeChangeHistoryReset.obj",
+      "NativeHistoryRecordLifetime.obj",
+      "NativeChangeHistoryLayout.obj",
+      "NativeChangeHistoryFactory.obj",
+      "NativeInstanceLifetimeLink.obj",
+      "InstanceWithoutSignals.obj",
+      "NativeGuidItem.obj",
+      "NativeGuidRegistryMutex.obj",
+      "NativeGuidRegistryInitialize.obj",
+      "NativeGuidRegistryConstructor.obj",
+      "NativeGuidRegistryCriticalSection.obj",
+      "NativeActiveDocument.obj",
+      "NativeActiveDocumentData.obj",
+      "NativeDocumentInsertModelProfile.obj",
+      "NativeDocumentLoadFileProfile.obj",
+      "NativeDocumentLoadFromStringProfile.obj",
+      "NativeContentProviderUrl.obj",
+      "glue_without_content_get.obj",
+      "MouseCommandWithoutLifetime.obj",
+      "PrimitiveWithoutJointIteration.obj",
+      "WorkspaceWithoutDefault.obj",
+      "NativeProviderFindProfile.obj",
+      "NativeProviderCreateTrial.obj",
+      "NativeContentProviderTrial.obj",
+      "NativeContentProviderWorkerTrial.obj",
+      "NativeContentReadTrial.obj",
+      "NativeContentGetTrial.obj",
+      "NativeContentLoadTrial.obj",
+      "NativeContentFindTrial.obj",
+      "NativeCacheDirectoryTrial.obj",
+      "NativeDocumentLaunchTrial.obj",
+      "NativeDocumentUrlProfile.obj",
+      "NativeDocumentSaveModifiedProfile.obj",
+      "NativeVisitFindProfile.obj",
+      "NativeDocumentLDrawProfile.obj",
+      "NativeLDrawParserLifetimeTrial.obj",
+      "NativeLDrawParserConstructorTrial.obj",
+      "NativeLDrawPathTrial.obj",
+      "NativeLDrawAssetStateTrial.obj",
+      "NativeLDrawMapRootLifetimeTrial.obj",
+      "NativeLDrawMapRootConstructorTrial.obj",
+      "NativeLDrawTagsTrial.obj",
+      "NativeLDrawMapOperationsTrial.obj",
+      "NativeLDrawCompareProfile.obj",
+      "NativeLDrawParseProfile.obj",
+      "NativeLDrawEntitiesTrial.obj",
+      "NativeLDrawWriteProfile.obj",
+      "NativeLDrawPartWriteTrial.obj",
+      "NativeLDrawPartParentProfile.obj",
+      "NativeLDrawPartColorTrial.obj",
+      "NativeLDrawPartShapeProfile.obj",
+      "NativeLDrawPartTransformProfile.obj",
+      "NativeDocumentExecuteProfile.obj",
+      "NativeWorkspaceGetWorkspaceTrial.obj",
+      "NativeVerbConstructor.obj",
+      "NativeStandardVerbsConstructorTrial.obj",
+      "NativeRunStateVerbConstructorTrial.obj",
+      "NativeEditSelectionVerbConstructorTrial.obj",
+      "NativeWorkspaceSharedFromTrial.obj",
+      "NativeAxisCommandsTrial.obj",
+      "NativeAxisBaseTrial.obj",
+      "NativeBasicVerbConstructorsTrial.obj",
+      "NativeToolVerbActionTrial.obj",
+      "NativeMouseCommandLifetimeTrial.obj",
+      "NativeArrowFactoryTrial.obj",
+      "NativeNullToolFactoryTrial.obj",
+      "NativeGameToolFactoryTrial.obj",
+      "NativeGameToolLifetimeTrial.obj",
+      "NativeGameToolEventsTrial.obj",
+      "NativeGameToolNameTrial.obj",
+      "NativeGameToolDragTrial.obj",
+      "NativeMouseUnlockedTrial.obj",
+      "NativeGameToolMouseDownTrial.obj",
+      "NativePartLockProfile.obj",
+      "NativeJointIterationProfile.obj",
+      "NativeWorkspaceDefaultProfile.obj",
+      "NativeDefaultMouseCommandTrial.obj",
+      "NativeWorkspaceSiteCheck.obj",
+      "WorkspaceSiteTrustProfile.obj",
+      "NativeWorkspaceErrorTrial.obj",
+      "NativeWorkspaceStatusTrial.obj",
+      "NativeAtlErrorCoreTrial.obj",
+      "NativeWorkspaceComMapTrial.obj",
+      "NativeWorkspaceEventsTrial.obj",
+      "NativeWorkspaceCloseTrial.obj",
+      "NativeWorkspaceGuidsTrial.obj",
+      "NativeWorkspaceFinalConstructVectorTrial.obj",
+      "NativeDataModelCreateTrial.obj",
+      "NativeDataModelInitializeTrial.obj",
+      "NativeWorkspaceNullProfile.obj",
+      "NativeWorldServiceJointFindTrial.obj",
+      "NativePhysicsArrayLifetimeTrial.obj",
+      "NativePhysicsArrayFindTrial.obj",
+      "NativeInstanceBaseCallbacks.obj",
+      "NativeInstanceReadPropertyTrial.obj",
+      "NativeDescendantHelpersTrial.obj",
+      "NativeInstanceAncestorTrial.obj",
+      "NativeInstanceDescendantThrow.obj",
+      "NativeInstanceDescendantAddTrial.obj",
+      "NativeInstanceSignalDescriptors.obj",
+      "NativeChangeHistoryEvents.obj",
+      "NativeHistoryRecordLookup.obj",
+      "NativeHistoryItemState.obj",
+      "HistoryItemPropertyTrial.obj",
+      "NativeChangeHistoryStartTrial.obj"
+    ],
+    "recorder_candidates": {
+      "NativeDocShell.obj": [],
+      "MyXTPCommandBars.obj": [
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py"
+      ],
+      "appmodul.obj": [
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py"
+      ],
+      "P6Engine.obj": [
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py"
+      ],
+      "P6Data.obj": [
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py"
+      ],
+      "roblox.res": [],
+      "mfc90.lib": [],
+      "NativeFrameIconsFresh.obj": [
+        "record_native_frame_icon_image_deps.py",
+        "record_native_frame_icons_fresh.py",
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py",
+        "record_selected_matches.py"
+      ],
+      "NativeFrameIconWidth.obj": [
+        "record_native_frame_icons_fresh.py",
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py",
+        "record_selected_matches.py"
+      ],
+      "NativeDHtmlDialog.obj": [
+        "record_native_dhtml_dialog.py",
+        "record_native_save_dialog.py",
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py",
+        "record_selected_matches.py"
+      ],
+      "NativeAboutDialog.obj": [
+        "record_native_dhtml_dialog.py",
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py",
+        "record_selected_matches.py"
+      ],
+      "NativeAboutDialogData.obj": [
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py",
+        "record_selected_matches.py"
+      ],
+      "NativeFileVersionInfo.obj": [
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py",
+        "record_selected_matches.py"
+      ],
+      "NativeGLCaps.obj": [
+        "record_native_save_dialog_link.py",
+        "record_native_workspace_insert_link.py",
+        "record_selected_matches.py"
+      ],
+      "NativeSaveDialogProfile.obj": [
+        "record_native_save_dialog.py",
+        "record_native_save_dialog_link.py"
+      ],
+      "NativeApplicationBaseUrl.obj": [
+        "record_native_base_url.py",
+        "record_native_save_dialog_link.py"
+      ],
+      "NativeDocumentHistoryProfile.obj": [
+        "record_native_document_history.py"
+      ],
+      "NativeDocumentException.obj": [
+        "record_native_document_exception.py"
+      ],
+      "NativeWorkspaceLayout.obj": [
+        "record_native_workspace.py",
+        "record_native_workspace_close_trial.py"
+      ],
+      "NativeWorkspaceLoad.obj": [
+        "record_native_workspace_load.py"
+      ],
+      "WorkspaceInsertNativeProfile.obj": [
+        "record_native_workspace_insert.py",
+        "record_native_workspace_insert_link.py"
+      ],
+      "NativeParserDestructor.obj": [
+        "record_native_workspace_insert_link.py"
+      ],
+      "SelectionFront.obj": [
+        "record_native_workspace_insert.py",
+        "record_native_workspace_insert_link.py"
+      ],
+      "InstanceClassLookup.obj": [
+        "record_native_workspace_insert.py",
+        "record_native_workspace_insert_link.py"
+      ],
+      "NativeDataModelTiming.obj": [
+        "record_native_datamodel_timing.py"
+      ],
+      "NativeDataModelDutyCycle.obj": [
+        "record_native_datamodel_timing.py"
+      ],
+      "NativePlayersAbuse.obj": [
+        "record_native_players_abuse.py"
+      ],
+      "NativeLuaAllocatorStats.obj": [
+        "record_native_document_history.py"
+      ],
+      "NativeVerbLifetime.obj": [],
+      "NativeVerbBaseLifetime.obj": [],
+      "NativeVerbQueries.obj": [],
+      "NativeExitCommand.obj": [
+        "record_native_exit_command.py"
+      ],
+      "NativeCameraUnits.obj": [
+        "record_native_camera_units.py"
+      ],
+      "NativeCameraConstants.obj": [
+        "record_native_camera_units.py"
+      ],
+      "NativeSoundServicePlay.obj": [
+        "record_native_sound_service_play.py"
+      ],
+      "NativeCameraHistory.obj": [
+        "record_native_camera_history.py"
+      ],
+      "NativeFilteredSelectionService.obj": [
+        "record_native_filtered_selection.py"
+      ],
+      "NativeFilteredSelectionFactory.obj": [
+        "record_native_filtered_selection.py"
+      ],
+      "NativeCameraCenterAction.obj": [
+        "record_native_camera_center_action.py"
+      ],
+      "NativeCameraZoomExtentsProfile.obj": [
+        "record_native_camera_zoom_extents_profile.py"
+      ],
+      "NativeFaceInstanceLifetime.obj": [
+        "record_native_face_lifetime.py"
+      ],
+      "NativeDecalLifetime.obj": [
+        "record_native_decal_lifetime.py"
+      ],
+      "NativeDecalBases.obj": [
+        "record_native_decal_lifetime.py"
+      ],
+      "NativeRotateAxisTrial.obj": [
+        "record_native_rotate_axis.py"
+      ],
+      "NativeExecScriptProfile.obj": [
+        "record_native_execscript_mismatch.py"
+      ],
+      "CWorkspaceExecScriptHelperProfile.obj": [
+        "record_native_execscript_helper.py"
+      ],
+      "NativeWorkspaceExecUrlProfile.obj": [
+        "record_native_workspace_execurl.py"
+      ],
+      "CWorkspaceSaveProfile.obj": [
+        "record_native_workspace_save.py"
+      ],
+      "CWorkspaceSelectionTrial.obj": [
+        "record_native_workspace_selection.py"
+      ],
+      "NativeWorkspaceInsertUrlProfile.obj": [
+        "record_native_workspace_insert_url.py"
+      ],
+      "NativeContentFactoryTrial.obj": [
+        "record_native_content_factory.py"
+      ],
+      "CContentUploadProfile.obj": [
+        "record_native_content_upload.py"
+      ],
+      "CContentError.obj": [
+        "record_native_content_upload.py"
+      ],
+      "CContentGuids.obj": [
+        "record_native_content_upload.py"
+      ],
+      "NativeWorkspaceWriteTrial.obj": [
+        "record_native_workspace_write.py"
+      ],
+      "WorkspaceHResultProfile.obj": [
+        "record_native_workspace_hresult.py"
+      ],
+      "NativeWorkspaceRaiseError.obj": [
+        "record_native_workspace_raise_error.py"
+      ],
+      "LuaArgsProfile.obj": [
+        "record_native_lua_args.py"
+      ],
+      "NativeWorkspaceObjectSafety.obj": [
+        "record_native_workspace_safety.py"
+      ],
+      "NativeWorkspaceSiteUrl.obj": [
+        "record_native_workspace_safety.py"
+      ],
+      "ServiceSelectionProfile.obj": [
+        "record_native_physics_find_trial.py",
+        "record_native_service_selection.py"
+      ],
+      "NativeServiceLookup.obj": [
+        "record_native_service_selection.py"
+      ],
+      "ServiceChangeHistoryProfile.obj": [
+        "record_native_service_history.py"
+      ],
+      "ServiceChangeHistoryCreate.obj": [
+        "record_native_service_history.py"
+      ],
+      "NativeChangeHistoryQueries.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeChangeHistoryPlayback.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeHistoryRecordPlayback.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeHistoryItemPlayback.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeChangeHistoryEnable.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeChangeHistoryReset.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeHistoryRecordLifetime.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeChangeHistoryLayout.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeChangeHistoryFactory.obj": [
+        "record_native_change_history_factory.py"
+      ],
+      "NativeInstanceLifetimeLink.obj": [
+        "record_native_instance_link_profile.py"
+      ],
+      "InstanceWithoutSignals.obj": [],
+      "NativeGuidItem.obj": [
+        "record_native_guid_item.py"
+      ],
+      "NativeGuidRegistryMutex.obj": [
+        "record_native_guid_registry_mutex.py"
+      ],
+      "NativeGuidRegistryInitialize.obj": [
+        "record_native_guid_registry_initialize.py"
+      ],
+      "NativeGuidRegistryConstructor.obj": [
+        "record_native_guid_registry_constructor.py"
+      ],
+      "NativeGuidRegistryCriticalSection.obj": [
+        "record_native_guid_critical_section.py"
+      ],
+      "NativeActiveDocument.obj": [],
+      "NativeActiveDocumentData.obj": [
+        "record_native_active_document_data.py"
+      ],
+      "NativeDocumentInsertModelProfile.obj": [
+        "record_native_document_insert_model.py"
+      ],
+      "NativeDocumentLoadFileProfile.obj": [
+        "record_native_document_load_file.py"
+      ],
+      "NativeDocumentLoadFromStringProfile.obj": [
+        "record_native_document_load_string.py"
+      ],
+      "NativeContentProviderUrl.obj": [
+        "record_native_content_provider_url.py"
+      ],
+      "glue_without_content_get.obj": [],
+      "MouseCommandWithoutLifetime.obj": [
+        "record_native_mouse_unlocked.py"
+      ],
+      "PrimitiveWithoutJointIteration.obj": [],
+      "WorkspaceWithoutDefault.obj": [
+        "record_native_workspace_camera_layout.py"
+      ],
+      "NativeProviderFindProfile.obj": [
+        "record_native_content_provider_service.py"
+      ],
+      "NativeProviderCreateTrial.obj": [
+        "record_native_content_provider_service.py"
+      ],
+      "NativeContentProviderTrial.obj": [
+        "record_native_content_provider_layout.py"
+      ],
+      "NativeContentProviderWorkerTrial.obj": [
+        "record_native_content_provider_worker.py"
+      ],
+      "NativeContentReadTrial.obj": [
+        "record_native_content_read.py"
+      ],
+      "NativeContentGetTrial.obj": [
+        "record_native_content_get_trial.py"
+      ],
+      "NativeContentLoadTrial.obj": [
+        "record_native_content_load_trial.py"
+      ],
+      "NativeContentFindTrial.obj": [
+        "record_native_content_cache_path.py",
+        "record_native_content_find_asset.py",
+        "record_native_content_find_hash.py"
+      ],
+      "NativeCacheDirectoryTrial.obj": [
+        "record_native_cache_directory.py"
+      ],
+      "NativeDocumentLaunchTrial.obj": [
+        "record_native_document_launch_trial.py"
+      ],
+      "NativeDocumentUrlProfile.obj": [
+        "record_native_document_url_trial.py"
+      ],
+      "NativeDocumentSaveModifiedProfile.obj": [
+        "record_native_document_save_modified_trial.py"
+      ],
+      "NativeVisitFindProfile.obj": [
+        "record_native_visit_service_trial.py"
+      ],
+      "NativeDocumentLDrawProfile.obj": [
+        "record_native_document_ldraw_trial.py"
+      ],
+      "NativeLDrawParserLifetimeTrial.obj": [
+        "record_native_document_ldraw_trial.py"
+      ],
+      "NativeLDrawParserConstructorTrial.obj": [
+        "record_native_document_ldraw_trial.py"
+      ],
+      "NativeLDrawPathTrial.obj": [
+        "record_native_ldraw_path_trial.py"
+      ],
+      "NativeLDrawAssetStateTrial.obj": [
+        "record_native_ldraw_path_trial.py"
+      ],
+      "NativeLDrawMapRootLifetimeTrial.obj": [
+        "record_native_ldraw_map_lifetime_trial.py"
+      ],
+      "NativeLDrawMapRootConstructorTrial.obj": [
+        "record_native_ldraw_map_lifetime_trial.py"
+      ],
+      "NativeLDrawTagsTrial.obj": [
+        "record_native_ldraw_tags_trial.py"
+      ],
+      "NativeLDrawMapOperationsTrial.obj": [
+        "record_native_ldraw_operations_trial.py"
+      ],
+      "NativeLDrawCompareProfile.obj": [
+        "record_native_ldraw_compare_trial.py"
+      ],
+      "NativeLDrawParseProfile.obj": [
+        "record_native_ldraw_parse_trial.py"
+      ],
+      "NativeLDrawEntitiesTrial.obj": [
+        "record_native_ldraw_entities_trial.py"
+      ],
+      "NativeLDrawWriteProfile.obj": [
+        "record_native_ldraw_write_trial.py"
+      ],
+      "NativeLDrawPartWriteTrial.obj": [
+        "record_native_ldraw_part_write_trial.py"
+      ],
+      "NativeLDrawPartParentProfile.obj": [
+        "record_native_ldraw_part_parent_trial.py"
+      ],
+      "NativeLDrawPartColorTrial.obj": [
+        "record_native_ldraw_part_color_trial.py"
+      ],
+      "NativeLDrawPartShapeProfile.obj": [
+        "record_native_ldraw_part_shape_trial.py"
+      ],
+      "NativeLDrawPartTransformProfile.obj": [
+        "record_native_ldraw_part_transform_trial.py"
+      ],
+      "NativeDocumentExecuteProfile.obj": [
+        "record_native_document_execute_trial.py"
+      ],
+      "NativeDocumentInitializeTrial.obj": [
+        "record_native_document_action_targets.py",
+        "record_native_document_initialize_trial.py"
+      ],
+      "NativeWorkspaceGetWorkspaceTrial.obj": [
+        "record_native_initializer_dependencies.py"
+      ],
+      "NativeVerbConstructor.obj": [
+        "record_native_initializer_dependencies.py"
+      ],
+      "NativeStandardVerbsConstructorTrial.obj": [
+        "record_native_standard_verbs_constructor.py",
+        "record_native_tool_predicate_inventory.py",
+        "record_native_tool_verb_actions.py"
+      ],
+      "NativeRunStateVerbConstructorTrial.obj": [
+        "record_native_initializer_dependencies.py"
+      ],
+      "NativeEditSelectionVerbConstructorTrial.obj": [
+        "record_native_initializer_dependencies.py"
+      ],
+      "NativeWorkspaceSharedFromTrial.obj": [
+        "record_native_initializer_dependencies.py"
+      ],
+      "NativeSelectionCommandsTrial.obj": [
+        "record_native_selection_commands.py"
+      ],
+      "NativePartSetLockedCompactTrial.obj": [
+        "record_native_part_set_locked_compact.py"
+      ],
+      "NativeWorkspaceSelectAllTrial.obj": [
+        "record_native_workspace_select_all.py"
+      ],
+      "NativeSurfaceVisitorsTrial.obj": [
+        "record_native_surface_visitors.py"
+      ],
+      "NativeAxisCommandsTrial.obj": [
+        "record_native_axis_commands.py"
+      ],
+      "NativeAxisBaseTrial.obj": [
+        "record_native_initializer_dependencies.py"
+      ],
+      "NativeBasicVerbConstructorsTrial.obj": [
+        "record_native_basic_verb_constructors.py"
+      ],
+      "NativeToolVerbActionTrial.obj": [
+        "record_native_tool_verb_actions.py"
+      ],
+      "NativeMouseCommandLifetimeTrial.obj": [],
+      "NativeArrowFactoryTrial.obj": [],
+      "NativeNullToolFactoryTrial.obj": [
+        "record_native_nulltool_factory.py"
+      ],
+      "NativeGameToolFactoryTrial.obj": [],
+      "NativeGameToolLifetimeTrial.obj": [],
+      "NativeGameToolEventsTrial.obj": [],
+      "NativeGameToolNameTrial.obj": [],
+      "NativeGameToolDragTrial.obj": [],
+      "NativeMouseUnlockedTrial.obj": [
+        "record_native_mouse_unlocked.py"
+      ],
+      "NativeGameToolMouseDownTrial.obj": [],
+      "NativePartLockProfile.obj": [],
+      "NativeJointIterationProfile.obj": [
+        "record_native_joint_iteration_trial.py"
+      ],
+      "NativeWorkspaceDefaultProfile.obj": [],
+      "NativeDefaultMouseCommandTrial.obj": [
+        "record_native_default_mousecommand_factory.py"
+      ],
+      "NativeWorkspaceSiteCheck.obj": [
+        "record_native_workspace_site_trust.py"
+      ],
+      "WorkspaceSiteTrustProfile.obj": [
+        "record_native_workspace_site_trust.py"
+      ],
+      "NativeWorkspaceErrorTrial.obj": [
+        "record_native_workspace_error_trial.py"
+      ],
+      "NativeWorkspaceStatusTrial.obj": [
+        "record_native_workspace_status_trial.py"
+      ],
+      "NativeAtlErrorCoreTrial.obj": [
+        "record_native_atl_error_core_trial.py"
+      ],
+      "NativeWorkspaceComMapTrial.obj": [
+        "record_native_workspace_com_map_trial.py"
+      ],
+      "NativeWorkspaceEventsTrial.obj": [
+        "record_native_workspace_events_trial.py"
+      ],
+      "NativeWorkspaceCloseTrial.obj": [
+        "record_native_workspace_close_trial.py"
+      ],
+      "NativeWorkspaceGuidsTrial.obj": [
+        "record_native_workspace_guids_trial.py"
+      ],
+      "NativeWorkspaceFinalConstructVectorTrial.obj": [
+        "record_native_workspace_finalconstruct_trial.py"
+      ],
+      "NativeDataModelCreateTrial.obj": [
+        "record_native_datamodel_create_trial.py"
+      ],
+      "NativeToolCheckedMultiTrial.obj": [
+        "record_native_tool_checked_multi_trial.py"
+      ],
+      "NativeDataModelInitializeTrial.obj": [
+        "record_native_datamodel_initialize_trial.py"
+      ],
+      "NativeWorkspaceNullProfile.obj": [
+        "record_native_workspace_null_trial.py"
+      ],
+      "NativeWorldServiceJointFindTrial.obj": [
+        "record_native_physics_find_trial.py",
+        "record_native_world_service_factories.py"
+      ],
+      "NativePhysicsArrayLifetimeTrial.obj": [
+        "record_native_physics_array_lifetime.py"
+      ],
+      "NativePhysicsArrayFindTrial.obj": [
+        "record_native_physics_array_find.py"
+      ],
+      "NativeInstanceBaseCallbacks.obj": [
+        "record_native_instance_callbacks.py"
+      ],
+      "NativeInstanceReadPropertyTrial.obj": [
+        "record_native_instance_read_property.py"
+      ],
+      "NativeDescendantHelpersTrial.obj": [
+        "record_native_instance_descendant_trial.py"
+      ],
+      "NativeInstanceAncestorTrial.obj": [
+        "record_native_instance_ancestor.py"
+      ],
+      "NativeInstanceDescendantThrow.obj": [
+        "record_native_instance_descendant_trial.py"
+      ],
+      "NativeInstanceDescendantAddTrial.obj": [
+        "record_native_instance_descendant_trial.py"
+      ],
+      "NativeInstanceSignalDescriptors.obj": [
+        "record_native_instance_signal_archive.py"
+      ],
+      "NativeChangeHistoryEvents.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeHistoryRecordLookup.obj": [
+        "record_native_change_history.py"
+      ],
+      "NativeHistoryItemState.obj": [
+        "record_native_change_history.py"
+      ],
+      "HistoryItemPropertyTrial.obj": [
+        "record_native_history_property_trial.py"
+      ],
+      "NativeChangeHistoryStartTrial.obj": [
+        "record_native_history_start_trial.py"
+      ]
+    },
+    "objects_with_recorder_candidates": 160,
+    "scope": "Text-only lower-bound audit: indirect outputs and generated objects may be missed. Mentions may be inputs, not outputs. It does not prove freshness or a full rebuild."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "revision": "1f22f9eb1c698b5a2c8336e4aa5e70f31fcb1eb8",
+  "compiler": 21022,
+  "cursorLocked_offset": 60,
+  "original_controller_getter": "005ccb00 reads ICharacterSubject +0x3c",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "layout_sha256": "8391f439559342bdc133cc9634f8d3669eb09b8ce9b807eea9e9f114cdd2050f",
+  "exit": 0
+}

@@ -1,0 +1,12 @@
+{
+ "name": "CodegenAnalogs",
+ "description": "Byte-exact codegen analogs from wildmagic-2-core and templates-* recipes. Not authentic Roblox or WildMagic sources; isolated from native modules. Each retained symbol is force-linked to verify its dependencies.",
+ "source_kind": "codegen analog",
+ "layers": [],
+ "test": "codegen_analogs_link",
+ "test_includes": [
+  "rebuild/2008-06/out/CodegenAnalogs/force"
+ ],
+ "verified": true,
+ "force_verified": true
+}

@@ -1,0 +1,162 @@
+Window: "Roblox - [local-panel.rbxl]", App: Roblox.exe.
+	0 window Roblox - [local-panel.rbxl] Secondary Actions: Raise
+		1 pane Workspace ID: 59648
+			2 window local-panel.rbxl Secondary Actions: Raise ID: 65280
+				3 pane ID: 59648
+					4 pane Roblox ID: 1
+				5 title bar (settable, string) Value: local-panel.rbxl
+					6 menu bar System ID: MenuBar
+						102 menu item System
+					8 button Minimize
+					9 button Restore
+					10 button Close
+		11 status bar ID: 59393
+			12 text Ready
+			13 text t 0
+			14 text 20fps
+			15 text 0.278%
+			16 text TEX 0B
+			17 text VAR 0B
+		18 pane xtpBarTop ID: 59419
+			19 tool bar Camera
+				3232 button Pan Left
+				3233 button Pan Right
+				3234 button Tilt Up
+				3235 button Tilt Down
+				3236 button Zoom In
+				3237 button Zoom Out
+				3238 button Look At Object
+				3239 button Zoom Extents
+				3240 menu item Toolbar Options
+			29 tool bar Test
+				3241 button Run
+				3242 button (disabled) Pause
+				3243 button (disabled) Reset
+				3244 menu item Toolbar Options
+			34 tool bar Mouse
+				3245 button Drag
+				3246 button Move on axis
+				3247 button Resize
+				3248 button (disabled) Velocity
+				3249 button Lock - prevent selection
+				3250 button Anchor - prevent moving
+				3251 menu item Fill With Color
+				3252 button Pick Color
+				3253 button Smooth Surface
+				3254 button Glue Surface
+				3255 button Weld Surface
+				3256 button Studs
+				3257 button Inlet
+				3258 menu item Toolbar Options
+			49 tool bar Standard
+				3259 button New
+				3260 button Open
+				3261 button Save
+				3262 button Cut
+				3263 button Copy
+				3264 button (disabled) Paste
+				3265 menu item (disabled) Undo Ctrl+Z
+				3266 menu item (disabled) Redo Ctrl+Y
+				3267 button (disabled) Group
+				3268 button (disabled) Ungroup
+				3269 button Rotate objects
+				3270 button Tilt Objects
+				3271 button Move up
+				3272 button Move down
+				3273 menu item Toolbar Options
+			65 menu bar Menu Bar
+				3274 menu item File
+				3275 menu item Edit
+				3276 menu item View
+				3277 menu item Insert
+				3278 menu item Format
+				3279 menu item Tools
+				3280 menu item Window
+				3281 menu item Help
+		74 tab XTPDockingPaneTabbedContainer
+			75 pane
+				76 pane ID: 59648
+					77 tree
+						78 tree item (selectable, settable, string) Workspace Value: Workspace
+							2776 tree item (selectable, settable, string) Camera Value: Camera
+							2777 tree item (selectable, settable, string) Brick Value: Brick
+						79 tree item (selectable, settable, string) Players Value: Players
+						80 tree item (selectable, settable, string) Lighting Value: Lighting
+						81 tree item (selectable, settable, string) StarterPack Value: StarterPack
+						82 tree item (selectable, settable, string) Soundscape Value: Soundscape
+			3282 tab item (selectable) Explorer
+		84 tab XTPDockingPaneTabbedContainer
+			85 pane ID: 59648
+				86 text ID: 59648
+				87 pane ID: 59664
+					88 table Properties Window
+						2079 scroll bar (settable, float) Vertical Value: 0 ID: NonClientVerticalScrollBar
+							2080 button Line up ID: UpButton
+							2081 thumb Position ID: ScrollbarThumb
+							2082 button Page down ID: DownPageButton
+							2083 button Line down ID: DownButton
+						3283 custom Appearance
+						3284 custom BrickColor
+						3285 custom ControllerFlagShown
+						3286 custom Reflectance
+						3287 custom Transparency
+						3288 custom Data
+						3289 custom Name
+						3290 custom Parent
+						3291 custom Position
+						3292 custom RotVelocity
+						3293 custom Velocity
+						3294 custom className
+						3295 custom Behavior
+						3296 custom Anchored
+						3297 custom CanCollide
+						3298 custom Controller
+						3299 custom Locked
+						3300 custom archivable
+						3301 custom Surface Inputs
+						3302 custom BackParamA
+						3303 custom BackParamB
+						3304 custom BackSurfaceInput
+						3305 custom BottomParamA
+						3306 custom BottomParamB
+						3307 custom BottomSurfaceInput
+						3308 custom FrontParamA
+						3309 custom FrontParamB
+						3310 custom FrontSurfaceInput
+						3311 custom LeftParamA
+						3312 custom LeftParamB
+						3313 custom LeftSurfaceInput
+						3314 custom RightParamA
+						3315 custom RightParamB
+						3316 custom RightSurfaceInput
+						3317 custom TopParamA
+						3318 custom TopParamB
+						3319 custom TopSurfaceInput
+						3320 custom Surface
+						3321 custom BackSurface
+						3322 custom BottomSurface
+						3323 custom FrontSurface
+						3324 custom LeftSurface
+						3325 custom RightSurface
+						3326 custom TopSurface
+						3327 custom Part
+						3328 custom Elasticity
+						3329 custom Friction
+						3330 custom Shape
+						3331 custom Size
+						3332 custom formFactor
+					89 tool bar ID: 59392
+						90 button
+						91 button
+			3333 tab item (selectable) Properties
+		93 pane
+		94 pane Splitter
+		95 pane Splitter
+		96 title bar (settable, string) Value: Roblox - [local-panel.rbxl]
+			97 menu bar System ID: MenuBar
+				155 menu item System
+			99 button Minimize
+			100 button Maximize
+			101 button Close
+
+The focused UI element is 77 tree.

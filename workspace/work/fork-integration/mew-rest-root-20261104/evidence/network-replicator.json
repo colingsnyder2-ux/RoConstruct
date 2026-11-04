@@ -1,0 +1,1178 @@
+{
+  "class": "RBX::Network::IdSerializer / Replicator base chain / Marker",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-network-20261104\\final-abi\\network\\out\\network-replicator\\NativeReplicatorLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeReplicatorLayout.cpp"
+    ],
+    "bases": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-network-20261104\\final-abi\\network\\out\\network-replicator\\NativeReplicatorBases.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ReplicatorBases.cpp"
+    ],
+    "marker": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-network-20261104\\final-abi\\network\\out\\network-replicator\\NativeReplicatorMarker.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ReplicatorMarker.cpp"
+    ]
+  },
+  "sources": {
+    "work/fork-integration/mew-rest-network-20261104/final-abi/network-final2/runner/record_native_replicator.py": "5c398b503a7bdf922f5df6616f6f35dcf9fbd1bbc347aeaab5cb9a9f08a5d8ef",
+    "rebuild/2008-06/native-classes/ReplicatorBases.cpp": "1d9e7735a056e2e52067867af7266f061b74dc15f8668d259dafec76aeebfa74",
+    "rebuild/2008-06/native-classes/ReplicatorMarker.cpp": "7077a44136dbdfc2dae10bd1996da9855346bd320ae3afa4b17041ef04fa6ce6",
+    "rebuild/2008-06/tests/NativeReplicatorLayout.cpp": "63ead261597ea6efc9faa7b8f0d043fad85fa1261fc92a369832a96adf7bb44f",
+    "rebuild/2008-06/native-headers/Network/IdSerializer.h": "b62f39fdb34649935076cab7daa419c50bae759ec3d252e8b5d81f3850f2a3ad",
+    "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h": "3fbb7a704f7a4c0643326c24f693c4d0dbe8e91b96ee018bbcf4df352307ee0c"
+  },
+  "objects": {
+    "NativeReplicatorLayout.obj": "a0bbce8823bbf86255902ad43fce683154c53e8fc4fc4d747cb1b87d1bd45944",
+    "NativeReplicatorBases.obj": "d5347a8478e0a49c8fd8c3106642d245a78f5c22f959ec77926456b38ff6174a",
+    "NativeReplicatorMarker.obj": "48a874a146a871388e76b1152838301cd490d11c631e8613fc093fbfe2698109"
+  },
+  "layout": "StringSender 0xe24 (dictionary +0x00 map 0x20, strings[128] +0x20, lastIndex +0xe20 = 1); StringReceiver strings[256] (0x1c00) at +0xe24 of SharedStringDictionary (0x2a24); IdSerializer 0x2b74 (Instance, scopeNames +0x130, waitItems +0x2b54); Replicator PluginInterface +0x2b74; Marker 0x10 (returned +0xc).",
+  "methods": [
+    {
+      "address": "004b3c90",
+      "symbol": "??0StringSender@Network@RBX@@QAE@XZ",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@1@@Z": "0x699b30 (external)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "0x6a1598 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0StringSender@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004b36f0",
+      "symbol": "??1StringSender@Network@RBX@@QAE@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)",
+        "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@QAE@XZ": "0x46b070 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1StringSender@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004b3d10",
+      "symbol": "??0SharedStringDictionary@Network@RBX@@QAE@XZ",
+      "size": 92,
+      "exact": true,
+      "verified_targets": {
+        "??0StringSender@Network@RBX@@QAE@XZ": "0x4b3c90 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_L@YGXPAXIHP6EX0@Z1@Z": "0x6a1598 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0SharedStringDictionary@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004b3d70",
+      "symbol": "??1SharedStringDictionary@Network@RBX@@QAE@XZ",
+      "size": 94,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_M@YGXPAXIHP6EX0@Z@Z": "0x6a165b (external)",
+        "??1StringSender@Network@RBX@@QAE@XZ": "0x4b36f0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??1SharedStringDictionary@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004b94a0",
+      "symbol": "??0IdSerializer@Network@RBX@@QAE@XZ",
+      "size": 177,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7IdSerializer@Network@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@": "0x82534c (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0x0)",
+        "??_7IdSerializer@Network@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@": "0x82533c (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0x10)",
+        "??_7IdSerializer@Network@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@": "0x825334 (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0x14)",
+        "??_7IdSerializer@Network@RBX@@6BDebugable@2@@": "0x82532c (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0x20)",
+        "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@": "0x82531c (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0x24)",
+        "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@": "0x82530c (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0x44)",
+        "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@2@@": "0x8252fc (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0x64)",
+        "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@2@@": "0x8252ec (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0x84)",
+        "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@": "0x8252dc (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0xa4)",
+        "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@2@@": "0x8252cc (vtable RTTI .?AVIdSerializer@Network@RBX@@ offset 0xc4)",
+        "??0SharedStringDictionary@Network@RBX@@QAE@XZ": "0x4b3d10 (own row)",
+        "??0?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@UData@Guid@RBX@@@1@ABV?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@1@@Z": "0x699b30 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0IdSerializer@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004b9440",
+      "symbol": "??1IdSerializer@Network@RBX@@UAE@XZ",
+      "size": 95,
+      "exact": true,
+      "verified_targets": {
+        "??1?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x4b93d0 (own row)",
+        "??1SharedStringDictionary@Network@RBX@@QAE@XZ": "0x4b3d70 (own row)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1IdSerializer@Network@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "004b9bb0",
+      "symbol": "??_GIdSerializer@Network@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1IdSerializer@Network@RBX@@UAE@XZ": "0x4b9440 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b93d0",
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE@XZ",
+      "size": 112,
+      "exact": true,
+      "verified_targets": {
+        "?erase@?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x4b8a80 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$_Tree@V?$_Tmap_traits@UData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@U?$less@UData@Guid@RBX@@@5@V?$allocator@U?$pair@$$CBUData@Guid@RBX@@V?$vector@UWaitItem@IdSerializer@Network@RBX@@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004b9570",
+      "symbol": "??0?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@QAE@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0IdSerializer@Network@RBX@@QAE@XZ": "0x4b94a0 (own row)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82540c (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0x0)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x825400 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0x10)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8253f8 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6BDebugable@1@@": "0x8253f0 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0x20)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8253e0 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0x24)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8253d0 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0x44)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8253c0 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0x64)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8253b0 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0x84)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8253a0 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0xa4)",
+        "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x825390 (vtable RTTI .?AV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b96a0",
+      "symbol": "??1?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1IdSerializer@Network@RBX@@UAE@XZ": "0x4b9440 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9bb0",
+      "symbol": "??_G?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1IdSerializer@Network@RBX@@UAE@XZ": "0x4b9440 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9ad0",
+      "symbol": "??0?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@IAE@XZ",
+      "size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??0?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@QAE@XZ": "0x4b9570 (own row)",
+        "?classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3QBDBV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x4b3800 (own row)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8255d4 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0x0)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8255c8 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0x10)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8255c0 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6BDebugable@1@@": "0x8255b8 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0x20)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8255a8 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0x24)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x825598 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0x44)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x825588 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0x64)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x825578 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0x84)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x825568 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0xa4)",
+        "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x825558 (vtable RTTI .?AV?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@ offset 0xc4)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "004b9bb0",
+      "symbol": "??_G?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1IdSerializer@Network@RBX@@UAE@XZ": "0x4b9440 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b3800",
+      "symbol": "?classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3QBDBV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3QBDBV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x971640 (local static)",
+        "?sReplicator@Network@RBX@@3QBDB": "0x8244e4 (class-name array 'NetworkReplicator')",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3QBDBV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x971580 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3QBDBV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fbfb0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3QBDBV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "004b95d0",
+      "symbol": "??$doDeclare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x971808 (local static)",
+        "?sReplicator@Network@RBX@@3QBDB": "0x8244e4 (class-name array 'NetworkReplicator')",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?n@?1???$doDeclare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x971804 (local static)"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "004b9670",
+      "symbol": "??$callDoDeclare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doDeclare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x4b95d0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9680",
+      "symbol": "?getClassName@?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97180c (local static)",
+        "??$callDoDeclare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x4b9670 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sReplicator@Network@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x4b95d0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9140",
+      "symbol": "??0Marker@Network@RBX@@AAE@XZ",
+      "size": 78,
+      "exact": true,
+      "verified_targets": {
+        "??0?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@RBX@@QAE@XZ": "0x4b85b0 (own row)",
+        "?classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x4b18d0 (own row)",
+        "??_7Marker@Network@RBX@@6B@": "0x82529c (vtable RTTI .?AVMarker@Network@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0Marker@Network@RBX@@AAE@XZ"
+      ]
+    },
+    {
+      "address": "004b85b0",
+      "symbol": "??0?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@RBX@@QAE@XZ",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "?lockedDown@ClassDescriptor@Reflection@RBX@@2_NA": "0x974c85 (external)",
+        "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0x40ad20 (external (evidence name))",
+        "??_7?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@RBX@@6B@": "0x8251e8 (vtable RTTI .?AV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004b8600",
+      "symbol": "??_GMarker@Network@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1SignalSource@Reflection@RBX@@UAE@XZ": "0x56bd40 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b8600",
+      "symbol": "??_G?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1SignalSource@Reflection@RBX@@UAE@XZ": "0x56bd40 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9190",
+      "symbol": "?newMarker@Marker@Network@RBX@@SA?AV?$shared_ptr@VMarker@Network@RBX@@@boost@@XZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0Marker@Network@RBX@@AAE@XZ": "0x4b9140 (own row)",
+        "??$?0VMarker@Network@RBX@@@shared_count@detail@boost@@QAE@PAVMarker@Network@RBX@@@Z": "0x4ac040 (external (evidence name))",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?newMarker@Marker@Network@RBX@@SA?AV?$shared_ptr@VMarker@Network@RBX@@@boost@@XZ"
+      ]
+    },
+    {
+      "address": "004b18d0",
+      "symbol": "?classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x971558 (local static)",
+        "?sMarker@Network@RBX@@3QBDB": "0x8244f8 (class-name array 'NetworkMarker')",
+        "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0x40ad20 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x971498 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fbfc0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "007f2290",
+      "symbol": "??__Eevent_Received@Network@RBX@@YAXXZ",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x4b18d0 (own row)",
+        "??_C@_08KKMFKJPL@Received?$AA@": "0x825710 (literal 'Received')",
+        "_event_Received": "0x971690 (data)",
+        "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (external (evidence name))",
+        "??__Fevent_Received@Network@RBX@@YAXXZ": "0x7fc2e0 (own row)",
+        "??_7?$SignalDesc@VMarker@Network@RBX@@$$A6AXXZ@Reflection@RBX@@6B@": "0x824c80 (vtable RTTI .?AV?$SignalDesc@VMarker@Network@RBX@@$$A6AXXZ@Reflection@RBX@@ offset 0x0)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b90",
+      "symbol": "??_EIdSerializer@Network@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EIdSerializer@Network@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b90",
+      "symbol": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b90",
+      "symbol": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9660",
+      "symbol": "??_EIdSerializer@Network@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EIdSerializer@Network@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9660",
+      "symbol": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9660",
+      "symbol": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9640",
+      "symbol": "??_EIdSerializer@Network@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EIdSerializer@Network@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9640",
+      "symbol": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9640",
+      "symbol": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9650",
+      "symbol": "??_EIdSerializer@Network@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EIdSerializer@Network@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9650",
+      "symbol": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9650",
+      "symbol": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9560",
+      "symbol": "??_EIdSerializer@Network@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EIdSerializer@Network@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9560",
+      "symbol": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9560",
+      "symbol": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9ba0",
+      "symbol": "??_EIdSerializer@Network@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EIdSerializer@Network@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9ba0",
+      "symbol": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9ba0",
+      "symbol": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b70",
+      "symbol": "??_EIdSerializer@Network@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EIdSerializer@Network@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b70",
+      "symbol": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b70",
+      "symbol": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b80",
+      "symbol": "??_EIdSerializer@Network@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EIdSerializer@Network@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b80",
+      "symbol": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004b9b80",
+      "symbol": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@UAEPAXI@Z": "0x4b9bb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fc2e0",
+      "symbol": "??__Fevent_Received@Network@RBX@@YAXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "_event_Received": "0x971690 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (external (evidence name))",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__Fevent_Received@Network@RBX@@YAXXZ"
+      ]
+    },
+    {
+      "address": "007fbfb0",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3QBDBV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VReplicator@Network@RBX@@$1?sReplicator@23@3QBDBV?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x971580 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fbfc0",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VMarker@Network@RBX@@$1?sMarker@23@3QBDBV?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x971498 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": []
+    }
+  ],
+  "not_exact": [
+    [
+      "004ac040",
+      "shared_count::shared_count<Marker> (110 bytes); this build emits a 131-byte body with a catch funclet; bound as an external (the address newMarker 004b9190 calls)."
+    ]
+  ],
+  "vtables": [
+    {
+      "vtable": "0x8251e8",
+      "symbol": "??_7?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@RBX@@6B@",
+      "rtti_offset": 0,
+      "original_slots": 1,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VDescribedBase@Reflection@RBX@@$1?sMarker@Network@3@3QBDB@RBX@@UAEPAXI@Z -> 0x4b8600 (own row (??_G))"
+      }
+    },
+    {
+      "vtable": "0x82529c",
+      "symbol": "??_7Marker@Network@RBX@@6B@",
+      "rtti_offset": 0,
+      "original_slots": 1,
+      "slots": {
+        "0": "??_EMarker@Network@RBX@@UAEPAXI@Z -> 0x4b8600 (own row (??_G))"
+      }
+    },
+    {
+      "vtable": "0x8252cc",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@2@@",
+      "rtti_offset": 196,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EIdSerializer@Network@RBX@@WME@AEPAXI@Z -> 0x4b9b80 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8252dc",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@",
+      "rtti_offset": 164,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EIdSerializer@Network@RBX@@WKE@AEPAXI@Z -> 0x4b9b70 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8252ec",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@2@@",
+      "rtti_offset": 132,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EIdSerializer@Network@RBX@@WIE@AEPAXI@Z -> 0x4b9ba0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8252fc",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@2@@",
+      "rtti_offset": 100,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EIdSerializer@Network@RBX@@WGE@AEPAXI@Z -> 0x4b9560 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x559230 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x82530c",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@",
+      "rtti_offset": 68,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EIdSerializer@Network@RBX@@WEE@AEPAXI@Z -> 0x4b9650 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x82531c",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@",
+      "rtti_offset": 36,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EIdSerializer@Network@RBX@@WCE@AEPAXI@Z -> 0x4b9640 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x558d90 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x82532c",
+      "symbol": "??_7IdSerializer@Network@RBX@@6BDebugable@2@@",
+      "rtti_offset": 32,
+      "original_slots": 1,
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z -> 0x56a560 (evidence name)"
+      }
+    },
+    {
+      "vtable": "0x825334",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@",
+      "rtti_offset": 20,
+      "original_slots": 1,
+      "slots": {
+        "0": "??_EIdSerializer@Network@RBX@@WBE@AEPAXI@Z -> 0x4b9660 (own row)"
+      }
+    },
+    {
+      "vtable": "0x82533c",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@",
+      "rtti_offset": 16,
+      "original_slots": 2,
+      "slots": {
+        "0": "??_EIdSerializer@Network@RBX@@WBA@AEPAXI@Z -> 0x4b9b90 (own row)",
+        "1": "__purecall -> 0x6a16be (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x82534c",
+      "symbol": "??_7IdSerializer@Network@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@",
+      "rtti_offset": 0,
+      "original_slots": 16,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410 (bound (consistent across rows/slots))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90 (evidence name)",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880 (bound (consistent across rows/slots))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880 (bound (consistent across rows/slots))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z -> 0x55acc0 (bound (consistent across rows/slots))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20 (bound (consistent across rows/slots))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90 (bound (consistent across rows/slots))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410 (bound (consistent across rows/slots))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170 (bound (consistent across rows/slots))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90 (bound (consistent across rows/slots))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470 (evidence name)",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50 (evidence name)",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z -> 0x557490 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x825390",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@",
+      "rtti_offset": 196,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WME@AEPAXI@Z -> 0x4b9b80 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8253a0",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+      "rtti_offset": 164,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WKE@AEPAXI@Z -> 0x4b9b70 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8253b0",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@",
+      "rtti_offset": 132,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WIE@AEPAXI@Z -> 0x4b9ba0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8253c0",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@",
+      "rtti_offset": 100,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WGE@AEPAXI@Z -> 0x4b9560 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x559230 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8253d0",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+      "rtti_offset": 68,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WEE@AEPAXI@Z -> 0x4b9650 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8253e0",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+      "rtti_offset": 36,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WCE@AEPAXI@Z -> 0x4b9640 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x558d90 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8253f0",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6BDebugable@1@@",
+      "rtti_offset": 32,
+      "original_slots": 1,
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z -> 0x56a560 (evidence name)"
+      }
+    },
+    {
+      "vtable": "0x8253f8",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@",
+      "rtti_offset": 20,
+      "original_slots": 1,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WBE@AEPAXI@Z -> 0x4b9660 (own row)"
+      }
+    },
+    {
+      "vtable": "0x825400",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+      "rtti_offset": 16,
+      "original_slots": 2,
+      "slots": {
+        "0": "??_E?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@WBA@AEPAXI@Z -> 0x4b9b90 (own row)",
+        "1": "?getClassName@?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UBEABVName@2@XZ -> 0x4b9680 (own row)"
+      }
+    },
+    {
+      "vtable": "0x82540c",
+      "symbol": "??_7?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+      "rtti_offset": 0,
+      "original_slots": 16,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410 (bound (consistent across rows/slots))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90 (evidence name)",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880 (bound (consistent across rows/slots))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880 (bound (consistent across rows/slots))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z -> 0x55acc0 (bound (consistent across rows/slots))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20 (bound (consistent across rows/slots))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90 (bound (consistent across rows/slots))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410 (bound (consistent across rows/slots))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170 (bound (consistent across rows/slots))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90 (bound (consistent across rows/slots))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470 (evidence name)",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50 (evidence name)",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z -> 0x557490 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x825558",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@",
+      "rtti_offset": 196,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WME@AEPAXI@Z -> 0x4b9b80 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x825568",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@",
+      "rtti_offset": 164,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WKE@AEPAXI@Z -> 0x4b9b70 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x825578",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@",
+      "rtti_offset": 132,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WIE@AEPAXI@Z -> 0x4b9ba0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x825588",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@",
+      "rtti_offset": 100,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WGE@AEPAXI@Z -> 0x4b9560 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x559230 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x825598",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@",
+      "rtti_offset": 68,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WEE@AEPAXI@Z -> 0x4b9650 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8255a8",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@",
+      "rtti_offset": 36,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WCE@AEPAXI@Z -> 0x4b9640 (own row)",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x558d90 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8255b8",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6BDebugable@1@@",
+      "rtti_offset": 32,
+      "original_slots": 1,
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z -> 0x56a560 (evidence name)"
+      }
+    },
+    {
+      "vtable": "0x8255c0",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@",
+      "rtti_offset": 20,
+      "original_slots": 1,
+      "slots": {
+        "0": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WBE@AEPAXI@Z -> 0x4b9660 (own row)"
+      }
+    },
+    {
+      "vtable": "0x8255c8",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@",
+      "rtti_offset": 16,
+      "original_slots": 2,
+      "slots": {
+        "0": "??_E?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@WBA@AEPAXI@Z -> 0x4b9b90 (own row)",
+        "1": "?getClassName@?$NonFactoryProduct@VIdSerializer@Network@RBX@@$1?sReplicator@23@3QBDB@RBX@@UBEABVName@2@XZ -> 0x4b9680 (own row)"
+      }
+    },
+    {
+      "vtable": "0x8255d4",
+      "symbol": "??_7?$DescribedNonCreatable@VReplicator@Network@RBX@@VIdSerializer@23@$1?sReplicator@23@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@",
+      "rtti_offset": 0,
+      "original_slots": 16,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410 (bound (consistent across rows/slots))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90 (evidence name)",
+        "2": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880 (bound (consistent across rows/slots))",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880 (bound (consistent across rows/slots))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z -> 0x55acc0 (bound (consistent across rows/slots))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20 (bound (consistent across rows/slots))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90 (bound (consistent across rows/slots))",
+        "7": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "8": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410 (bound (consistent across rows/slots))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170 (bound (consistent across rows/slots))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90 (bound (consistent across rows/slots))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470 (evidence name)",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50 (evidence name)",
+        "15": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z -> 0x557490 (bound (consistent across rows/slots))"
+      }
+    }
+  ],
+  "proposals": [],
+  "exact_distinct_addresses": [
+    "004b18d0",
+    "004b36f0",
+    "004b3800",
+    "004b3c90",
+    "004b3d10",
+    "004b3d70",
+    "004b85b0",
+    "004b8600",
+    "004b9140",
+    "004b9190",
+    "004b93d0",
+    "004b9440",
+    "004b94a0",
+    "004b9560",
+    "004b9570",
+    "004b95d0",
+    "004b9640",
+    "004b9650",
+    "004b9660",
+    "004b9670",
+    "004b9680",
+    "004b96a0",
+    "004b9ad0",
+    "004b9b70",
+    "004b9b80",
+    "004b9b90",
+    "004b9ba0",
+    "004b9bb0",
+    "007f2290",
+    "007fbfb0",
+    "007fbfc0",
+    "007fc2e0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. Replicator itself (layout past +0x2b74, constructor 004b9bd0, destructor 004b96b0) and its Item classes remain open."
+}

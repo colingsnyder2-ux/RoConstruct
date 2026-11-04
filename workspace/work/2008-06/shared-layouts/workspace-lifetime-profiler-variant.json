@@ -1,0 +1,91 @@
+{
+  "scope": "Inactive hypothesis only: provisional profiler and notifier declarations, not a proven full class layout; no runtime selection.",
+  "observer_sha256": "5d968e8aedbd88656193c6b36e089693095c02397031524edf52bae50615099d",
+  "base_sha256": "af69b9e0061445f6ed62fca424eefdbc666d26c4491390806f278b13a09422f0",
+  "source_sha256": "d59d8d7538f5492c20e527db0e7bc9a93586ad4e3277a4df42e99695a48553bf",
+  "object_sha256": "fc2465f634d700d6c092b0d176fbd94246ed69abd4467220279ccc54703907b3",
+  "methods": [
+    {
+      "symbol": "??0Workspace@RBX@@QAE@PAVIDataState@1@@Z",
+      "address": "005a4d90",
+      "size": 1124,
+      "original_size": 1124,
+      "exact": true,
+      "calls": {
+        "??0?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@@RBX@@IAE@XZ": [
+          "0x5a4280"
+        ],
+        "??0VerbContainer@RBX@@QAE@PAV01@@Z": [
+          "0x583460"
+        ],
+        "??0IMovingManager@RBX@@QAE@XZ": [
+          "0x614dc0"
+        ],
+        "??0?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@QAE@XZ": [
+          "0x5e9ec0"
+        ],
+        "??0?$Notifier@VWorkspace@RBX@@VToolChanged@2@@RBX@@QAE@XZ": [
+          "0x5e9ec0"
+        ],
+        "??0?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVScript@RBX@@@1@ABV?$allocator@PAVScript@RBX@@@1@@Z": [
+          "0x64b2a0"
+        ],
+        "?createHopper@RBX@@YA?AV?$shared_ptr@VHopper@RBX@@@boost@@XZ": [
+          "0x45db40"
+        ],
+        "??2@YAPAXI@Z": [
+          "0x6a0920"
+        ],
+        "??0CodeProfiler@Profiling@RBX@@QAE@PBD@Z": [
+          "0x5c43a0"
+        ],
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+          "0x55af90"
+        ]
+      }
+    },
+    {
+      "symbol": "??1Workspace@RBX@@UAE@XZ",
+      "address": "005a28c0",
+      "size": 807,
+      "original_size": 878,
+      "exact": false,
+      "calls": {
+        "??1?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAE@XZ": [
+          "0x40eb99f"
+        ],
+        "??1?$Notifier@VWorkspace@RBX@@VToolChanged@2@@RBX@@UAE@XZ": [
+          "0x51eae8d"
+        ],
+        "??1?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@UAE@XZ": [
+          "0x78f8b49d"
+        ],
+        "??1IMovingManager@RBX@@UAE@XZ": [
+          "0xdb2a13a9"
+        ],
+        "??1IRenderableBucket@RBX@@QAE@XZ": [
+          "0x5063a07c"
+        ],
+        "??1VerbContainer@RBX@@UAE@XZ": [
+          "0x3a2b250"
+        ],
+        "??1RootInstance@RBX@@UAE@XZ": [
+          "0x5a2f2c"
+        ]
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceLifetimeVariant.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceLifetimeVariant.cpp"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "source_revision": "3cd3585b2d303f6b10fe14df00196135c81adba7",
+  "exe_sha256": "f96177dde0e2373ec175c61716b04767f05188a37fed2726af61374b9f89d024",
+  "map_sha256": "bf40a3c5011da58bf18719d5dffb931a5d55f8efda9d02850c1845b3bb9d602c",
+  "new_vtable_map": "0002:0000ae1c       ??_7Humanoid@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@ 00588e1c     linked:Humanoid.obj",
+  "new_readProperty_map": "0001:00044a80       ?readProperty@Instance@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z 00445a80 f   linked:Instance.obj",
+  "new_slot_11": "00445a80",
+  "old_trace_evidence": "old-hardware-trace.txt",
+  "old_fault": "readProperties called bare ret at slot11; stack advanced incorrectly",
+  "verified_swap_explicitly_excluded": "??1Humanoid@RBX@@UAE@XZ",
+  "app_verified_swaps_before": 119,
+  "after": 111,
+  "additional_auto_exclusions": 7,
+  "P4_complete": false,
+  "remaining": [
+    "unsupported large-block/cylinder geometry",
+    "native audio playback",
+    "full original-client real-place comparison",
+    "P5-P10"
+  ]
+}

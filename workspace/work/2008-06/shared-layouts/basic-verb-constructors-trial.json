@@ -1,0 +1,119 @@
+{
+  "source_sha256": "ea97ede9f2791d1822d40cdd134f60189b60e4421ec817d094d062b719f1dfdd",
+  "header_sha256": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
+  "observer_sha256": "bff16b1076fb0ee13b8b6db44b9b61c3ee9057b598c8c3cff1e12a52835a0d9a",
+  "object_sha256": "80ebf4f7bf2563a9b417e66f73f9758d573abe48993254d6816258e542e1cbce",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeBasicVerbConstructorsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeBasicVerbConstructorsTrial.cpp"
+  ],
+  "methods": [
+    {
+      "class": "FirstPersonCommand",
+      "address": "0x57d2d0",
+      "size": 68,
+      "label": "FirstPersonIndicator",
+      "literal": "0x830614",
+      "vtable": "0x830600",
+      "type_descriptor": "0x9479d4"
+    },
+    {
+      "class": "StatsCommand",
+      "address": "0x57d320",
+      "size": 68,
+      "label": "Stats",
+      "literal": "0x818c5c",
+      "vtable": "0x830630",
+      "type_descriptor": "0x9479fc"
+    },
+    {
+      "class": "ForceAssertionCommand",
+      "address": "0x57d370",
+      "size": 63,
+      "label": "ForceAssertion",
+      "literal": "0x83065c",
+      "vtable": "0x830648",
+      "type_descriptor": "0x947a1c"
+    },
+    {
+      "class": "EngineStatsCommand",
+      "address": "0x57d3b0",
+      "size": 68,
+      "label": "EngineStats",
+      "literal": "0x830684",
+      "vtable": "0x830670",
+      "type_descriptor": "0x947a44"
+    },
+    {
+      "class": "JoinCommand",
+      "address": "0x57d400",
+      "size": 68,
+      "label": "JoinCommand",
+      "literal": "0x8306a8",
+      "vtable": "0x830694",
+      "type_descriptor": "0x947a6c"
+    },
+    {
+      "class": "ClearStarterpack",
+      "address": "0x57d450",
+      "size": 68,
+      "label": "ClearStarterpack",
+      "literal": "0x8306cc",
+      "vtable": "0x8306b8",
+      "type_descriptor": "0x947a8c"
+    },
+    {
+      "class": "ClearBackpack",
+      "address": "0x57d4a0",
+      "size": 68,
+      "label": "ClearBackpack",
+      "literal": "0x8306f8",
+      "vtable": "0x8306e4",
+      "type_descriptor": "0x947ab0"
+    },
+    {
+      "class": "DeleteBase",
+      "address": "0x57e8d0",
+      "size": 115,
+      "label": null,
+      "literal": null,
+      "vtable": "0x830818",
+      "type_descriptor": "0x92bad0"
+    }
+  ],
+  "scope": "Inactive trials. Original RTTI names checked; vtable slots, lifetime and runtime ABI remain unproven."
+}

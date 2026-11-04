@@ -1,0 +1,34 @@
+{
+  "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "tools": [
+    {
+      "tool": "ResizeTool",
+      "factory": "0x5c6450",
+      "size": "0x48",
+      "constructor": "0x5c62f0",
+      "vtable": "0x839124",
+      "deleting_destructor": "0x5c6400",
+      "destructor": "0x5c6340",
+      "lifetime_offsets": [
+        "0x24"
+      ],
+      "base_destructor": "0x615780"
+    },
+    {
+      "tool": "AxisMoveTool",
+      "factory": "0x5c6510",
+      "size": "0x74",
+      "constructor": "0x640560",
+      "vtable": "0x84a5ac",
+      "deleting_destructor": "0x640760",
+      "destructor": "0x640620",
+      "lifetime_offsets": [
+        "0x20",
+        "0x24",
+        "0x48"
+      ],
+      "base_destructor": "0x615780"
+    }
+  ],
+  "scope": "Original binary lifetime evidence only. Full member types, rebuilt ABI and runtime behavior remain unproven."
+}

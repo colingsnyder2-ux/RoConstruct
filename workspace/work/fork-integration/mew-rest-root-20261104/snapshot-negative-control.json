@@ -1,0 +1,340 @@
+{
+  "snapshot": "138d3a09c8",
+  "deleted_total": 77,
+  "protected_losses_detected": 66,
+  "rejected": true,
+  "all77_paths_restored": true,
+  "current_tree_passed": true,
+  "losses": [
+    {
+      "path": "rebuild/2008-06/native-classes/CChildFrame.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/CScriptDoc.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Clothing.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/HumanoidState.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/HumanoidStates2.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/HumanoidStates3.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Message.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Sky.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Sparkles.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/SparklesEffect.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Team.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Teams.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/CChildFrame.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/CObjectBrowser.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/CRobloxReportSubViews.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/CScriptDoc.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Clothing.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Message.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Sky.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Team.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Teams.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeChildFrameLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeClothingHumanoid.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeClothingLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeClothingPlayers.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeEffectsLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStateCalls.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStateLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStates1Calls.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStates1Layout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStates2Calls.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStates2Layout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStates3Calls.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStates3Layout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHumanoidStates3SimJob.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeObjectBrowserLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativePropertyGridItemBrickColorLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeRobloxReportSubViewsLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeScriptDocLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeTeamLayout.cpp",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeTeamPendingHumanoid.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeTeamPendingModel.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeTeamPendingPlayer.h",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/object_browser_profile.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_child_frame.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_clothing.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_effects.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_humanoid_state.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_humanoid_states1.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_humanoid_states2.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_humanoid_states3.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_object_browser.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_property_grid_item_brick_color.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_report_sub_views.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_script_doc.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_team.py",
+      "status": "D",
+      "reason": "deleted native source or verification file"
+    }
+  ]
+}

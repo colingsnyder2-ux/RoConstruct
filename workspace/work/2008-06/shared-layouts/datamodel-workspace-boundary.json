@@ -1,0 +1,12 @@
+{
+  "revision": "af319672bdcbeb0204a618344c182451bc49147f",
+  "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "probe_sha256": "76e9363dbb336659cc6ec866e8dd40971e46c5ad239a75d7292dfb0b732696af",
+  "compiler": 21022,
+  "compile_exit": 0,
+  "donor_workspace_offset": "0x218",
+  "original_workspace_offset": "0x204",
+  "original_getter": "0046a970",
+  "evidence": "Pinned compiler probe emits mov eax,[eax+0x218]; original 0046a970 emits mov eax,[eax+0x204].",
+  "scope": "Incompatible active donor versus native object layout; source-level accessor cannot be used interchangeably."
+}

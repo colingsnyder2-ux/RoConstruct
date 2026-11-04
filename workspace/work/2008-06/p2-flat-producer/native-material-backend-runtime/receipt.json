@@ -1,0 +1,464 @@
+{
+  "revision": "b78e67f13797a7a2878431b27c4e47f1451d35eb",
+  "ROC_BUILD": null,
+  "asset": "C:\\Users\\colin\\RoConstruct\\work\\client2007\\content\\textures\\SurfacesStrip.png",
+  "asset_sha256": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4",
+  "scope": "Standalone ownership/ABI prerequisite, not P2 player acceptance",
+  "runs": {
+    "P2TextureInteropTest": {
+      "exit": 0,
+      "exe": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2TextureInteropTest\\P2TextureInteropTest.exe",
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\native-material-backend-runtime\\P2TextureInteropTest",
+      "exe_sha256": "71fe1cac67b5769509aeab2a35b5b3bef6da24bc80df40d5c24d5c43a8f4e1aa",
+      "map_sha256": "c7c880d4eac40de0a0e18f9e5c7fb33a9019ba192e71d49cd1b7fc8d1a82e72f",
+      "library_sha256": "a1a48142605ba596cfc793ea40630894929d00df1945d2f3e62b52680047aae4",
+      "no_verified_sinks_in_map": true,
+      "report_sha256": "6afae759cf8262a25fc60ca0776993809cafd37fafa85d2bc60d4edb149a44d6",
+      "stdout_sha256": "85c52fd99cacb56ee1c72f6960aa6e9f40396721389577014dadf2506c19bd7c"
+    },
+    "P2NativeMaterialTest": {
+      "exit": 0,
+      "exe": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2NativeMaterialTest\\P2NativeMaterialTest.exe",
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\native-material-backend-runtime\\P2NativeMaterialTest",
+      "exe_sha256": "19eb4f0fc492af7ccad88728600a242b7ab48e17ea92242c91c4b42b7f697418",
+      "map_sha256": "b1301fd26cf623d5f3bc1b4195225172742d07da63453ab3744c0eff9d4e91ca",
+      "library_sha256": "ae57d3cd15437793d8a9da9b57a9a7f5a797b060c30a96ef2238080595f6dabf",
+      "no_verified_sinks_in_map": true,
+      "report_sha256": "6c09be35cf08e5f371de751b1e87d13f8799cc3143c6b128d91079bb85c7e146",
+      "stdout_sha256": "d470604864c5666b0e2154322ea4911de14c35e7a4b9b615d86f131d09a9c713"
+    }
+  },
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2NativeMaterialTest\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2NativeMaterialTest\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+  },
+  "source_sha256": {
+    "rebuild/2008-06/tests/PlayerNativeMaterial.h": "70e1b711d46b93380291f561bcf3e669e233d0cf2e6918a7b64c7db2f724c449",
+    "rebuild/2008-06/tests/PlayerNativeMaterial.cpp": "fb8aa01276d5b30b0e0839b0c4f3fd795511ebfeabe7142c05d4cf66916280bb",
+    "rebuild/2008-06/tests/PlayerNativeTexture.cpp": "e0a2dbe8e6d036350c8ffb6e0efa6cb9364ced3a3c7ed24e5b26227ef084c594",
+    "rebuild/2008-06/tests/P2NativeMaterialTest.cpp": "c71f0725f29a31cc8da0b13dcb5e1342babaf30177f35ac1354bc1d70ec2daad",
+    "rebuild/2008-06/tests/PlayerMaterialBackend.cpp": "ee6750bf4b4d0b55726828f88cdb88c5673163a56fb4c423a6b5d551880ea12c",
+    "rebuild/2008-06/tests/P2TextureInteropTest.cpp": "12c31083bed800f3762be7e1316a552991455506caa2a2c21240299f8c4d6de3",
+    "rebuild/2008-06/tests/PlayerTextureAtlas.cpp": "85ac4cd3d43e6f299a970d7c89d3933158c2a3051ad634ef641f46cfe1d6b17a",
+    "rebuild/2008-06/tests/PlayerTextureAtlas.h": "7b8a49272cadeb972ef1cb2900cb55fbe384f24daaaf719dc4581f0c31112d3a",
+    "rebuild/2008-06/modules/p2-native-material.json": "5d363b7da88589708074afb854d4f17575686de3cd315c9b7a2435d149559142",
+    "rebuild/2008-06/modules/p2-texture-interop.json": "e7d56ad5d2ee3849d10e229cd9e611ab462cf347e4b494aa91ce56cd38a3281b",
+    "rebuild/2008-06/modules/p2-image-core.json": "2cb5bd42abcfbdd56ecac3854dfac6aa3460d7c0f835f0a980883ee6e18141f3"
+  },
+  "vtable_audit": {
+    "Material": {
+      "original_table": "00874ac0",
+      "compiled_table": "0043c6c0",
+      "original_RTTI_bases": [
+        ".?AVMaterial@RenderNew@RBX@@",
+        ".?AVMaterialBase@RenderBase@RBX@@",
+        ".?AVReferenceCountedObject@G3D@@"
+      ],
+      "slots": [
+        {
+          "slot": 0,
+          "original": "007ad450",
+          "compiled": "00402a90",
+          "symbols": [
+            "??_GMaterial@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_EMaterial@PlayerNativeMaterial@@UAEPAXI@Z"
+          ]
+        },
+        {
+          "slot": 1,
+          "original": "007ad760",
+          "compiled": "00405be0",
+          "symbols": [
+            "?appendEmptyLevel@Material@PlayerNativeMaterial@@UAEABVLevel@MaterialBase@2@XZ"
+          ]
+        },
+        {
+          "slot": 2,
+          "original": "007ad8a0",
+          "compiled": "00405770",
+          "symbols": [
+            "?appendLevel@Material@PlayerNativeMaterial@@UAEABVLevel@MaterialBase@2@VColor3@G3D@@MMMM@Z"
+          ]
+        },
+        {
+          "slot": 3,
+          "original": "007ad790",
+          "compiled": "00405e90",
+          "symbols": [
+            "?appendLevel@Material@PlayerNativeMaterial@@UAEABVLevel@MaterialBase@2@V?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@VColor3@6@MMMM@Z"
+          ]
+        },
+        {
+          "slot": 4,
+          "original": "007acda0",
+          "compiled": "00404f60",
+          "symbols": [
+            "?levelCount@Material@PlayerNativeMaterial@@UBEHXZ"
+          ]
+        },
+        {
+          "slot": 5,
+          "original": "007acdb0",
+          "compiled": "00404f70",
+          "symbols": [
+            "?getLevel@Material@PlayerNativeMaterial@@UAEAAVLevel@MaterialBase@2@H@Z"
+          ]
+        },
+        {
+          "slot": 6,
+          "original": "007acdd0",
+          "compiled": "00404f90",
+          "symbols": [
+            "?detailLevel@Material@PlayerNativeMaterial@@UBEPBVLevel@MaterialBase@2@M@Z"
+          ]
+        },
+        {
+          "slot": 7,
+          "original": "007acd70",
+          "compiled": "00405020",
+          "symbols": [
+            "?veryTransparent@Material@PlayerNativeMaterial@@UBE_NXZ"
+          ]
+        }
+      ]
+    },
+    "Level@Material": {
+      "original_table": "00874ae4",
+      "compiled_table": "0043c648",
+      "original_RTTI_bases": [
+        ".?AVLevel@Material@RenderNew@RBX@@",
+        ".?AVLevel@MaterialBase@RenderBase@RBX@@"
+      ],
+      "slots": [
+        {
+          "slot": 0,
+          "original": "007acef0",
+          "compiled": "00404e50",
+          "symbols": [
+            "?isEmptyLevel@Level@Material@PlayerNativeMaterial@@UBE_NXZ"
+          ]
+        },
+        {
+          "slot": 1,
+          "original": "007ad640",
+          "compiled": "004019d0",
+          "symbols": [
+            "??_GLevel@Material@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_ELevel@Material@PlayerNativeMaterial@@UAEPAXI@Z"
+          ]
+        },
+        {
+          "slot": 2,
+          "original": "007ad0a0",
+          "compiled": "004054a0",
+          "symbols": [
+            "?baseTexture@Level@Material@PlayerNativeMaterial@@UBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z"
+          ]
+        },
+        {
+          "slot": 3,
+          "original": "007b7810",
+          "compiled": "004055b0",
+          "symbols": [
+            "?baseTexture@Level@Material@PlayerNativeMaterial@@UBE?AV?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@XZ"
+          ]
+        },
+        {
+          "slot": 4,
+          "original": "007ad0e0",
+          "compiled": "004055e0",
+          "symbols": [
+            "?setBaseTexture@Level@Material@PlayerNativeMaterial@@UAEXV?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@@Z"
+          ]
+        },
+        {
+          "slot": 5,
+          "original": "007ad160",
+          "compiled": "00405660",
+          "symbols": [
+            "?matte@Level@Material@PlayerNativeMaterial@@UBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z"
+          ]
+        },
+        {
+          "slot": 6,
+          "original": "007b76a0",
+          "compiled": "00404e60",
+          "symbols": [
+            "?color@Level@Material@PlayerNativeMaterial@@UBEABVColor3@G3D@@XZ"
+          ]
+        },
+        {
+          "slot": 7,
+          "original": "007b76b0",
+          "compiled": "00404e70",
+          "symbols": [
+            "?specular@Level@Material@PlayerNativeMaterial@@UBEMXZ"
+          ]
+        },
+        {
+          "slot": 8,
+          "original": "007b76c0",
+          "compiled": "00404e80",
+          "symbols": [
+            "?shiny@Level@Material@PlayerNativeMaterial@@UBEMXZ"
+          ]
+        },
+        {
+          "slot": 9,
+          "original": "00503cb0",
+          "compiled": "00404e90",
+          "symbols": [
+            "?reflect@Level@Material@PlayerNativeMaterial@@UBEMXZ"
+          ]
+        },
+        {
+          "slot": 10,
+          "original": "007b76d0",
+          "compiled": "00404ea0",
+          "symbols": [
+            "?transparent@Level@Material@PlayerNativeMaterial@@UBEMXZ"
+          ]
+        }
+      ]
+    },
+    "TextureProxyBase": {
+      "original_table": "0082d168",
+      "compiled_table": "0043c8ac",
+      "original_RTTI_bases": [
+        ".?AVTextureProxyBase@RBX@@",
+        ".?AVReferenceCountedObject@G3D@@"
+      ],
+      "slots": [
+        {
+          "slot": 0,
+          "original": "00551d50",
+          "compiled": "00407260",
+          "symbols": [
+            "??_GTextureProxyBase@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_ETextureProxyBase@PlayerNativeMaterial@@UAEPAXI@Z"
+          ]
+        },
+        {
+          "slot": 1,
+          "original": "00551c70",
+          "compiled": "00406f80",
+          "symbols": [
+            "?setValue28@TextureProxyBase@PlayerNativeMaterial@@UAEXH@Z"
+          ]
+        },
+        {
+          "slot": 2,
+          "original": "00551c90",
+          "compiled": "00406f90",
+          "symbols": [
+            "?getValue28@TextureProxyBase@PlayerNativeMaterial@@UBEHXZ"
+          ]
+        },
+        {
+          "slot": 3,
+          "original": "00551cb0",
+          "compiled": "00406fa0",
+          "symbols": [
+            "?setValue2c@TextureProxyBase@PlayerNativeMaterial@@UAEXM@Z"
+          ]
+        },
+        {
+          "slot": 4,
+          "original": "00551cd0",
+          "compiled": "00406fb0",
+          "symbols": [
+            "?getValue2c@TextureProxyBase@PlayerNativeMaterial@@UBEMXZ"
+          ]
+        },
+        {
+          "slot": 5,
+          "original": "006a16be",
+          "compiled": "00437e64",
+          "symbols": [
+            "__purecall"
+          ]
+        },
+        {
+          "slot": 6,
+          "original": "006a16be",
+          "compiled": "00437e64",
+          "symbols": [
+            "__purecall"
+          ]
+        },
+        {
+          "slot": 7,
+          "original": "006a16be",
+          "compiled": "00437e64",
+          "symbols": [
+            "__purecall"
+          ]
+        }
+      ]
+    },
+    "TextureProxy": {
+      "original_table": "0082d18c",
+      "compiled_table": "0043c8f8",
+      "original_RTTI_bases": [
+        ".?AVTextureProxy@RenderNew@RBX@@",
+        ".?AVTextureProxyBase@RBX@@",
+        ".?AVReferenceCountedObject@G3D@@"
+      ],
+      "slots": [
+        {
+          "slot": 0,
+          "original": "00551f00",
+          "compiled": "00407ec0",
+          "symbols": [
+            "??_GMegaTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_EMegaTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_ETextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_GTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z"
+          ]
+        },
+        {
+          "slot": 1,
+          "original": "00551c70",
+          "compiled": "00406f80",
+          "symbols": [
+            "?setValue28@TextureProxyBase@PlayerNativeMaterial@@UAEXH@Z"
+          ]
+        },
+        {
+          "slot": 2,
+          "original": "00551c90",
+          "compiled": "00406f90",
+          "symbols": [
+            "?getValue28@TextureProxyBase@PlayerNativeMaterial@@UBEHXZ"
+          ]
+        },
+        {
+          "slot": 3,
+          "original": "00551cb0",
+          "compiled": "00406fa0",
+          "symbols": [
+            "?setValue2c@TextureProxyBase@PlayerNativeMaterial@@UAEXM@Z"
+          ]
+        },
+        {
+          "slot": 4,
+          "original": "00551cd0",
+          "compiled": "00406fb0",
+          "symbols": [
+            "?getValue2c@TextureProxyBase@PlayerNativeMaterial@@UBEMXZ"
+          ]
+        },
+        {
+          "slot": 5,
+          "original": "007adb70",
+          "compiled": "00406fc0",
+          "symbols": [
+            "?getSize@TextureProxy@PlayerNativeMaterial@@UAE?AVVector2@G3D@@XZ"
+          ]
+        },
+        {
+          "slot": 6,
+          "original": "007aec70",
+          "compiled": "004090a0",
+          "symbols": [
+            "?resolve@TextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z"
+          ]
+        },
+        {
+          "slot": 7,
+          "original": "007aded0",
+          "compiled": "004076d0",
+          "symbols": [
+            "?shade@TextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@ABVColor3@4@ABV34@@Z"
+          ]
+        }
+      ]
+    },
+    "MegaTextureProxy": {
+      "original_table": "00874bd8",
+      "compiled_table": "0043c91c",
+      "original_RTTI_bases": [
+        ".?AVMegaTextureProxy@RenderNew@RBX@@",
+        ".?AVTextureProxy@RenderNew@RBX@@",
+        ".?AVTextureProxyBase@RBX@@",
+        ".?AVReferenceCountedObject@G3D@@"
+      ],
+      "slots": [
+        {
+          "slot": 0,
+          "original": "007aea40",
+          "compiled": "00407ec0",
+          "symbols": [
+            "??_GMegaTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_EMegaTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_ETextureProxy@PlayerNativeMaterial@@UAEPAXI@Z",
+            "??_GTextureProxy@PlayerNativeMaterial@@UAEPAXI@Z"
+          ]
+        },
+        {
+          "slot": 1,
+          "original": "00551c70",
+          "compiled": "00406f80",
+          "symbols": [
+            "?setValue28@TextureProxyBase@PlayerNativeMaterial@@UAEXH@Z"
+          ]
+        },
+        {
+          "slot": 2,
+          "original": "00551c90",
+          "compiled": "00406f90",
+          "symbols": [
+            "?getValue28@TextureProxyBase@PlayerNativeMaterial@@UBEHXZ"
+          ]
+        },
+        {
+          "slot": 3,
+          "original": "00551cb0",
+          "compiled": "00406fa0",
+          "symbols": [
+            "?setValue2c@TextureProxyBase@PlayerNativeMaterial@@UAEXM@Z"
+          ]
+        },
+        {
+          "slot": 4,
+          "original": "00551cd0",
+          "compiled": "00406fb0",
+          "symbols": [
+            "?getValue2c@TextureProxyBase@PlayerNativeMaterial@@UBEMXZ"
+          ]
+        },
+        {
+          "slot": 5,
+          "original": "007adb70",
+          "compiled": "00406fc0",
+          "symbols": [
+            "?getSize@TextureProxy@PlayerNativeMaterial@@UAE?AVVector2@G3D@@XZ"
+          ]
+        },
+        {
+          "slot": 6,
+          "original": "007ae4e0",
+          "compiled": "00407820",
+          "symbols": [
+            "?resolve@MegaTextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z"
+          ]
+        },
+        {
+          "slot": 7,
+          "original": "007b8fe0",
+          "compiled": "004076d0",
+          "symbols": [
+            "?shade@TextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@PlayerNativeMaterial@@@G3D@@ABVColor3@4@ABV34@@Z"
+          ]
+        }
+      ]
+    }
+  },
+  "unchanged_player_sha256": "547f328d6d0997c806b975925f6e29d2e03d62b203802a83d49b81dfaf745374",
+  "limits": [
+    "Generic GL file/shade resolver not runtime validated; mega Ogre side effect validated.",
+    "No new server-verified exact-function credit claimed.",
+    "Original renderer/light integration and final P2 acceptance remain open.",
+    "External strip matches August2007/May2008 sources, exact June distribution unproven."
+  ]
+}

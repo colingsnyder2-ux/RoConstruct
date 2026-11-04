@@ -1,0 +1,7 @@
+P4 SoundId reflection PASS text/XML roundtrip
+P4 Sound stats PASS four children/bound counters/lifetimes
+P4 Sound listener vector PASS denormal/clamp/infinity
+fmod loaded: C:\Users\colin\RoConstruct\rebuild\2008-06\out\tests\P4SoundAssetTest\fmodex.dll
+P4 Sound reverb PASS 24 presets/invalid/original room/FMOD
+P4 Sound cache cleanup PASS retained/in-use/evicted/reload
+P4 Sound loader PASS version=00041406 cycles=16 pcm_bytes=11024 samples=5512 2D/3D/cache/detach/missing

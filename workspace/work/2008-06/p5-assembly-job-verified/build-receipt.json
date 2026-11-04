@@ -1,0 +1,46 @@
+{
+  "revision": "e61d0b6cbbe533cc66d8fda5084d6b08544c7740",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "exe_sha256": "79cc2463a7986e61c353eab5da1d69a2db0d91a67b640788f3c756232a56d38b",
+  "map_sha256": "fa5b99192beabd999b9b232b10543727dde5d80d5da936158c76ef423f8cf340",
+  "build_reports": {
+    "RbxgsApp": {
+      "sha256": "ffc88ef16f4a79038f1479d3c69d75eef96d9037d659231b633027cdf9d4fc17",
+      "linked": true,
+      "test_exit": 0
+    },
+    "P2RecoveredPlayer": {
+      "sha256": "a8a14ee08c730e6e9a4dd4dcc6bb64610094a21455bb1ea07950d1a9d0a0bfe4",
+      "linked": true,
+      "test_exit": 0
+    }
+  },
+  "stage_providers": [
+    "0001:00083650       ?insertJob@SimJobStage@RBX@@QAEXPAVSimJob@2@@Z 00484650 f   linked:SimJobStage.obj",
+    "0001:000836e0       ?removeJob@SimJobStage@RBX@@QAEXPAVSimJob@2@@Z 004846e0 f   linked:SimJobStage.obj",
+    "0001:000837c0       ?onAssemblyRemoving@SimJobStage@RBX@@QAEXPAVAssembly@2@@Z 004847c0 f   linked:SimJobStage.obj",
+    "0001:00083970       ?onAssemblyAdded@SimJobStage@RBX@@QAEXPAVAssembly@2@@Z 00484970 f   linked:SimJobStage.obj"
+  ],
+  "original_rtti": {
+    "0x83f73c": [
+      ".?AVAssemblySimJob@RBX@@",
+      ".?AVSimJob@RBX@@",
+      ".?AVnoncopyable@noncopyable_@boost@@"
+    ],
+    "0x84b174": [
+      ".?AVSimJobStage@RBX@@",
+      ".?AVIWorldStage@RBX@@",
+      ".?AVIStage@RBX@@"
+    ]
+  },
+  "recovered_source_sha256": {
+    "005e51e0": "2ed05885599625ac0f1e6e291ee0e172ab22784937779a7c2242ac173ccaec8d",
+    "0064d0f0": "52350e3f6e392a7e1b3c3e428a5510e992062dece5844ae7e73598fe21a7fdac",
+    "0064d180": "647aec317834124025d80e29bd1d8b5f8cb2fa7e7901bd9dffbf92a62a245821",
+    "0064d200": "c24ebade0aa2830f101f667395daaf9179fa8330075deeaf7f05964c171359af",
+    "0064d2a0": "f0048f4372ce4a0295ed0debf504354741d85026faf2210ddaf46512cd9363d0",
+    "004cb480": "7279588d58dd75ff5a782acabe5476dac3b1c05d149451f32f07a184aa6e0ddb"
+  },
+  "scope": "Active generic stage ownership and single-assembly wrapper; source-aligned adaptation. Local AssemblyJob corresponds to RTTI AssemblySimJob. Native no-physics state and anchor-joint pipeline remain open.",
+  "P5_complete": false
+}

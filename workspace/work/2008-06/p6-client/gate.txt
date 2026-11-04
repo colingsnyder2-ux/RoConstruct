@@ -1,0 +1,17 @@
+618585c87925fa79
+commands exit 0
+5
+3
+save exit 0
+reopen exit 0
+p6: select Renamed found
+p6: part 3 4 5
+bad path exit 1
+run 1 exit 0
+run 2 exit 0
+focused True exit 0
+p6: actor 2.90292e-007 2.99909 18.989
+p6: moved -1 0 0
+selected True exit 0
+alive True windows 1
+title Roblox - [gate.rbxl]

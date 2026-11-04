@@ -1,0 +1,43 @@
+{
+  "revision": "9096bd8b7966249fcead0c9561773995135e51d3",
+  "dirty_worktree": true,
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_pane_callbacks.py": "38608d880b348898883deb3a97f8b75a54a7c935143f2e25bc43c6a3fb90b082",
+    "rebuild\\2008-06\\native-headers\\ActiveDocView.h": "e30143470935d4675ddd3f8dd64806618dc363502f1fe1d67714d6083eeed393",
+    "rebuild\\2008-06\\native-headers\\CSelectionCaption.h": "a7fc91f4d16af8a627caf1c62ed62109cd986a76e9c17a1c6031857e0c60d7d8",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "a5c154265d6ccfe2ec2d7cb28899f73e3f586790e0db3b839ad809d3d02761b5",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "b6a0cfa8124e4724bf6288321bb3a6bbe33f38abe174bad5b3a559cd86861a0f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\SelectionChanged.h": "908401136eca634a432cd37b4212cb24196c7a6adc3766d7246550ff56097281",
+    "rebuild\\2008-06\\native-classes\\ActiveDocument.cpp": "e21af7a8fd9e6d2417a904cd7286c727eda3277f303a5fa7e6c527db01f40185",
+    "rebuild\\2008-06\\native-classes\\ActiveDocViewRefresh.cpp": "48dbaa463ab212e449011efdad2980a22842cd20be03b5d55608dc300009f7a6",
+    "rebuild\\2008-06\\native-classes\\CDataModelPropGridUpdate.cpp": "416ba7095b6ec59f3925fc1fbb910b8f9732f673cd4480d954e318a98b8f10ea",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaptionUpdate.cpp": "ff23188a1dbc60cd913755bba1322afe9b56d8f87b52bc9bcf7cda684d4cda50",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaption.cpp": "f64d76469e124e42751d97a425afd92139b2cff7c8462f851f70a180955bef53",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaptionText.cpp": "c1c361e6d4e6cd27c9d0800a95135be14de383df2164aaa93ad3a6710ea343b5"
+  },
+  "receipts": {
+    "work\\2008-06\\shared-layouts\\pane-callbacks-working-probe.json": "7a65e7a227923dbf35d07aface722406d138eb4da99368a211ac233c7bc51336",
+    "work\\2008-06\\shared-layouts\\frame-marshalling-working-probe.json": "46dcca331fac5958447b735912060b87a56fa967db1d48a3625fa6ae9c0b07d5",
+    "work\\2008-06\\shared-layouts\\property-grid-working-probe.json": "f222368037e3b6235b9c11930e6d7c074c0c09fece7358b6fee284e3c95136c4",
+    "work\\2008-06\\shared-layouts\\main-frame-constructor-trial-working-probe.json": "a03ad01a3d6448310e4f0450639e844ec47efda4cf6a881c9feb97e627cc41b3"
+  },
+  "gates": {
+    "P5": {
+      "exe": "rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe",
+      "sha256": "fd47fd9ea171204351c4f56431f0b65d182ddc5e42c624fdfe64df83cee135e0",
+      "unchanged_since_gate": true,
+      "receipt": "work/2008-06/p5-native-about-swap-20261101/receipt.json"
+    },
+    "P6": {
+      "exe": "rebuild/2008-06/out/p6/Roblox.exe",
+      "sha256": "e74054a9506dac5e2f0058841a8111dc5c500ab5fc5179c017e296845238b721",
+      "unchanged_since_gate": true,
+      "receipt": "work/2008-06/p6-native-about-gate-20261101/receipt.json"
+    }
+  },
+  "recovered_bodies": 14,
+  "selected_running_matches": 3049,
+  "selected_running_functions": 14468,
+  "integration_gain": 0,
+  "scope": "Inactive exact-body recovery; corrected callback pointees and selected data/call bindings. Full class/runtime integration incomplete; findings export untouched to preserve concurrent writer."
+}

@@ -1,0 +1,305 @@
+{
+  "declared": [
+    "handle_44f7c0",
+    "handle_453af0",
+    "handle_453670",
+    "handle_453750",
+    "handle_4538b0",
+    "handle_453990",
+    "handle_44fc50",
+    "handle_44fcc0",
+    "handle_453c30",
+    "handle_455460",
+    "handle_454040",
+    "handle_455580",
+    "handle_454170",
+    "handle_455820",
+    "handle_454300",
+    "handle_450a70",
+    "handle_450c00",
+    "handle_450d90",
+    "handle_454490",
+    "handle_4545d0",
+    "handle_4547b0",
+    "handle_454920",
+    "handle_455c30",
+    "handle_454c90",
+    "handle_450f30",
+    "handle_44fd30",
+    "handle_454f30",
+    "handle_4500d0",
+    "handle_4501c0",
+    "handle_4502b0"
+  ],
+  "defined": [
+    "handle_455460",
+    "handle_455820"
+  ],
+  "missing": [
+    "handle_44f7c0",
+    "handle_453af0",
+    "handle_453670",
+    "handle_453750",
+    "handle_4538b0",
+    "handle_453990",
+    "handle_44fc50",
+    "handle_44fcc0",
+    "handle_453c30",
+    "handle_454040",
+    "handle_455580",
+    "handle_454170",
+    "handle_454300",
+    "handle_450a70",
+    "handle_450c00",
+    "handle_450d90",
+    "handle_454490",
+    "handle_4545d0",
+    "handle_4547b0",
+    "handle_454920",
+    "handle_455c30",
+    "handle_454c90",
+    "handle_450f30",
+    "handle_44fd30",
+    "handle_454f30",
+    "handle_4500d0",
+    "handle_4501c0",
+    "handle_4502b0"
+  ],
+  "scope": "Textual inventory, not link proof; message-map requires handlers.",
+  "definitions_across_native_classes": {
+    "handle_455460": [
+      "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp"
+    ],
+    "handle_455820": [
+      "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp"
+    ]
+  },
+  "missing_across_native_classes": [
+    "handle_44f7c0",
+    "handle_453af0",
+    "handle_453670",
+    "handle_453750",
+    "handle_4538b0",
+    "handle_453990",
+    "handle_44fc50",
+    "handle_44fcc0",
+    "handle_453c30",
+    "handle_454040",
+    "handle_455580",
+    "handle_454170",
+    "handle_454300",
+    "handle_450a70",
+    "handle_450c00",
+    "handle_450d90",
+    "handle_454490",
+    "handle_4545d0",
+    "handle_4547b0",
+    "handle_454920",
+    "handle_455c30",
+    "handle_454c90",
+    "handle_450f30",
+    "handle_44fd30",
+    "handle_454f30",
+    "handle_4500d0",
+    "handle_4501c0",
+    "handle_4502b0"
+  ],
+  "candidate_sources": [
+    {
+      "handler": "handle_44f7c0",
+      "address": "0044f7c0",
+      "source_exists": true,
+      "source_sha256": "b8ec5cb56dc3c63bb789e6d9de8df0c4c54f2a322cb5fba9a4c43366a0bd7bfe",
+      "library": "rbxgs-dll roc_espeon_savedialogcppunwinde251cea967c6abb0.cpp"
+    },
+    {
+      "handler": "handle_453af0",
+      "address": "00453af0",
+      "source_exists": true,
+      "source_sha256": "b822c82cf53e33aa7f1ccb307851500a2bc8bdfcb756b7970bd0977c9abb7879",
+      "library": null
+    },
+    {
+      "handler": "handle_453670",
+      "address": "00453670",
+      "source_exists": true,
+      "source_sha256": "af05a705a946353e186e1eebbba0f309931823cb13a1ccd92577939ff40a1da0",
+      "library": null
+    },
+    {
+      "handler": "handle_453750",
+      "address": "00453750",
+      "source_exists": true,
+      "source_sha256": "177ca1d9d23666d44f3fa9c3c06d465f47e84b4d2814556d5fc09bcfed5500fa",
+      "library": null
+    },
+    {
+      "handler": "handle_4538b0",
+      "address": "004538b0",
+      "source_exists": true,
+      "source_sha256": "32579acb940c6fc1734b0adcfc64b115785e9b51fca8e18293f57181f2f6ca9f",
+      "library": null
+    },
+    {
+      "handler": "handle_453990",
+      "address": "00453990",
+      "source_exists": true,
+      "source_sha256": "0c5dd6bb3da422fd47bc31274a238f331d0b4bf6075315c32de0beddb63d27dd",
+      "library": null
+    },
+    {
+      "handler": "handle_44fc50",
+      "address": "0044fc50",
+      "source_exists": true,
+      "source_sha256": "cfb0ec52e6f150818854df4910eb61aba3eb19eee019c5ddb360cd318afc6538",
+      "library": null
+    },
+    {
+      "handler": "handle_44fcc0",
+      "address": "0044fcc0",
+      "source_exists": true,
+      "source_sha256": "5c665e53b9a8aab1dca5407eeb1f2cc33d21bc50cd69239177a938452c33f24f",
+      "library": null
+    },
+    {
+      "handler": "handle_453c30",
+      "address": "00453c30",
+      "source_exists": true,
+      "source_sha256": "46e2ec07002c510a704f824313fa38be315d82849e03342b249669bf0ad0ae56",
+      "library": "atl-9.0-dll-rtm roc_unit_10b9dcc0d5db3c98.cpp"
+    },
+    {
+      "handler": "handle_454040",
+      "address": "00454040",
+      "source_exists": true,
+      "source_sha256": "1404e2a920d6279630a221d495b843fcc578015b2992888fc618db6218b7d6f5",
+      "library": "openrbx-client-dll roc_espeon_docguardorder_4d6dcd257a209b73.cpp"
+    },
+    {
+      "handler": "handle_455580",
+      "address": "00455580",
+      "source_exists": true,
+      "source_sha256": "16355730040ea3a3e00bcc4daa3464931c2c151f6aa69b161555df0b2fedf195",
+      "library": "rbxgs-dll roc_espeon_docstopnative499ae39ea92aba6c.cpp"
+    },
+    {
+      "handler": "handle_454170",
+      "address": "00454170",
+      "source_exists": true,
+      "source_sha256": "f836558430225988909f12e5e785a87fb27de005cd3cb8ac20e03e7825284179",
+      "library": null
+    },
+    {
+      "handler": "handle_454300",
+      "address": "00454300",
+      "source_exists": true,
+      "source_sha256": "01696dbf4386d6c03819ea18f35140865d7fe219ac1207de037a2e7a38e44fad",
+      "library": null
+    },
+    {
+      "handler": "handle_450a70",
+      "address": "00450a70",
+      "source_exists": true,
+      "source_sha256": "0fab3eb7fb0fb33529c1938f2cbbc7f5f4df39d25c8535f10f04ed7f5ab4c76b",
+      "library": null
+    },
+    {
+      "handler": "handle_450c00",
+      "address": "00450c00",
+      "source_exists": true,
+      "source_sha256": "13c099dc115930a871fdb4532e67d264c8ebb54677b67b344155e8f66e2ecce8",
+      "library": null
+    },
+    {
+      "handler": "handle_450d90",
+      "address": "00450d90",
+      "source_exists": true,
+      "source_sha256": "2ce0d00274b0ebd7a7d475aed0de93787c4dc515166ceb915a4c2e19c7abdad8",
+      "library": "rbxgs-dll roc_espclaude_c3c890fa834d4f27.cpp"
+    },
+    {
+      "handler": "handle_454490",
+      "address": "00454490",
+      "source_exists": true,
+      "source_sha256": "bc7ee5621a9bbdd0a01c65176660bb667ef8b1990580ef8b80c30955ac127f7e",
+      "library": "openrbx-client-dll roc_espeon_docguard_dfb32bd0207cbfab.cpp"
+    },
+    {
+      "handler": "handle_4545d0",
+      "address": "004545d0",
+      "source_exists": true,
+      "source_sha256": "1567014b1aa882fcd7d02ad26f01b4233fc65367c450911ce874d3d8428c359d",
+      "library": null
+    },
+    {
+      "handler": "handle_4547b0",
+      "address": "004547b0",
+      "source_exists": true,
+      "source_sha256": "9d7674dd23e6ac5f7d753512571d41ef36931a244bafc76143f0ef878690abf1",
+      "library": null
+    },
+    {
+      "handler": "handle_454920",
+      "address": "00454920",
+      "source_exists": true,
+      "source_sha256": "e6e4fbcb90c1559822ef4179ae6963371934194f240f5f04c7d72bc5b4257deb",
+      "library": "openrbx-client-dll roc_espeon_docauthoringempty_2d969e909e300645.cpp"
+    },
+    {
+      "handler": "handle_455c30",
+      "address": "00455c30",
+      "source_exists": true,
+      "source_sha256": "9d24d32cd39e7f9cef0fda0e4328501c24825c1af996bdd8009a4851665d29a2",
+      "library": "atl-9.0-dll-rtm roc_espclaude_8da179552268be3c.cpp"
+    },
+    {
+      "handler": "handle_454c90",
+      "address": "00454c90",
+      "source_exists": true,
+      "source_sha256": "bae9ac84ef721155e5d7a8fadabdfd2d436e9b3835e7fd10da70797ef4008841",
+      "library": null
+    },
+    {
+      "handler": "handle_450f30",
+      "address": "00450f30",
+      "source_exists": true,
+      "source_sha256": "5a83d404edc605da15e71834d16ca6febbc5c1d59f1f1c2cf401ba90a1cef55d",
+      "library": "xtp-11.2.2-lib-strlen roc_espeon_docopenatomicintrinsics38ca60489c8c1a70.cpp"
+    },
+    {
+      "handler": "handle_44fd30",
+      "address": "0044fd30",
+      "source_exists": true,
+      "source_sha256": "da6ede68455842555104461676c0b073c5983cef9b4ffd4430513b21ba898828",
+      "library": null
+    },
+    {
+      "handler": "handle_454f30",
+      "address": "00454f30",
+      "source_exists": true,
+      "source_sha256": "1a39430594c6461d888bd9ea856a530ea2c5443ff48008ed4102253b1aac0642",
+      "library": null
+    },
+    {
+      "handler": "handle_4500d0",
+      "address": "004500d0",
+      "source_exists": true,
+      "source_sha256": "cac5c9c0e20178a471c02f4cca3f8e8bb03f7d0c4c28de414fb53bba65d79b8a",
+      "library": "mfc-9.0-shared-rtm roc_espeon_nativedocumentfamilyad94f610efff160c.cpp"
+    },
+    {
+      "handler": "handle_4501c0",
+      "address": "004501c0",
+      "source_exists": true,
+      "source_sha256": "334e429f00df4a5f4b87a8311e9d27e6f1fa8ca00a8ac5a7348c099809c232de",
+      "library": "mfc-9.0-shared-rtm roc_espeon_nativedocumentfamilyad94f610efff160c.cpp"
+    },
+    {
+      "handler": "handle_4502b0",
+      "address": "004502b0",
+      "source_exists": true,
+      "source_sha256": "cac5c9c0e20178a471c02f4cca3f8e8bb03f7d0c4c28de414fb53bba65d79b8a",
+      "library": "mfc-9.0-shared-rtm roc_espeon_nativedocumentfamilyad94f610efff160c.cpp"
+    }
+  ]
+}

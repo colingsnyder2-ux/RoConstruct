@@ -1,0 +1,12 @@
+{
+  "revision": "730f3031382ea5fe391f3fa11bc0afc2460c7833",
+  "exe_sha256": "6c961826d69371da5f63758e4902a95076b00528fe366e57d146ca6eb28146cb",
+  "map_sha256": "1cb947298c529acb6160c857fbea0a2325108c35fd5aff4fc52e36966ac94460",
+  "build_log_sha256": "a7f0355d1b0e2e25f546f7550e145cf906a82c45543a1aad036889ec23a44175",
+  "source_manifest_sha256": "bc12c351ba3ba1d659eab5936c99430a36abf2cbd03aab12d0881f08f1251531",
+  "engine_linked": true,
+  "engine_test_exit": 0,
+  "player_linked": true,
+  "player_test_exit": 0,
+  "scope": "Source-derived world pipeline; bounded P5 gate build, no raw byte-identity claim."
+}

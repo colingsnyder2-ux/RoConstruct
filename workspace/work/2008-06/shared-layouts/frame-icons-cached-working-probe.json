@@ -1,0 +1,44 @@
+{
+  "revision": "363b8d813b1a8f5d1a8fde19e067f3c4a3edfb35",
+  "sources": {
+    "tools\\libs\\xtp-11.2.2\\roc_claudeM_55bb15a72a4fb4db.cpp": "e261d4097e8117acf77bc313ae3cad4132424a39252c2956daeda297a97197ed",
+    "work\\libcache\\xtp-11.2.2-lib-imports\\21022\\roc_claudeM_55bb15a72a4fb4db.cpp.i": "7ab2dec945ad496a4988b5051db0b6b66e0713a399e677c152e7e7c675298a2c",
+    "work\\libcache\\xtp-11.2.2-lib-imports\\21022\\roc_claudeM_55bb15a72a4fb4db.cpp.i.deps": "f4bccb90cc537ca432d20d50e7a387458059b94146ee7d59665ce22486e16df2",
+    "rebuild\\2008-06\\tests\\record_native_frame_icons_cached.py": "4572e39d4dd26ff6957aa5c90767505e89ccedab2919bca80367a981653f72fc"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/arch:SSE2",
+    "/FoNativeFrameIconsCached.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconsCached.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0042f490",
+      "symbol": "?InitializeAllIcons@@YAXPAVCXTPImageManager@@@Z",
+      "size": 1211
+    },
+    {
+      "address": "0042f380",
+      "symbol": "?InitializeIcons@@YAXPAVCXTPImageManager@@@Z",
+      "size": 271
+    },
+    {
+      "address": "0042f290",
+      "symbol": "?SetIcon@@YAXPAVCXTPImageManager@@IPBDH@Z",
+      "size": 237
+    },
+    {
+      "address": "0042f0a0",
+      "symbol": "?loadIcon@@YA_NPAVCXTPImageManager@@IPBDW4XTPImageState@@@Z",
+      "size": 485
+    }
+  ],
+  "scope": "Cached preprocessed unit only; original alias source is missing, so fresh regeneration and runtime linkage remain unverified."
+}

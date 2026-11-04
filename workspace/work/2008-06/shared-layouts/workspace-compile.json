@@ -1,0 +1,24 @@
+{
+  "revision": "215e73ed9bf2498b4cab1b5b64bdd7f21215b878",
+  "compiler": 21022,
+  "compile_exit": 0,
+  "sizes": {
+    "CWorkspace": 52,
+    "SafetyBase": 8
+  },
+  "offsets": {
+    "dataModel": 36,
+    "runService": 44
+  },
+  "sources": {
+    "rebuild/2008-06/native-headers/CWorkspace.h": "64bea999297c818422f45cd4007fa9a4b10032ce40d0aed8a99eb98bc33026d7",
+    "rebuild/2008-06/tests/NativeWorkspaceLayout.cpp": "e8f6390622ce3e6ab4cc3a8c036bd34a2ae049cbb6098dac96dbad2830acb13e",
+    "rebuild/2008-06/native-classes/CWorkspace.cpp": "44e4a9238aeb35e994196cfacb8e51d423a5d246e41af59ce6690666262a2c3e",
+    "rebuild/2008-06/native-headers/RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4"
+  },
+  "scope": "Inactive candidate; constructor and DataModel getter match with relocations masked. COM overrides/callbacks remain open.",
+  "exact_bodies": {
+    "0046ab60": 33,
+    "0046a940": 43
+  }
+}

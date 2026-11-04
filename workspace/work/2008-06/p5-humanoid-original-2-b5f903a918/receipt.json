@@ -1,0 +1,151 @@
+{
+  "revision": "b5f903a91817f6caf1b4915b735e8d9db02b4743",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "77f6e7d03d02f3aee188dd3974acf2f5263a0277743c463b07041a2bfa33db53",
+  "fixture_sha256": "c4f39fb7533db039a219b998786dc01a2a08631fa9430982a62fa36a38597b68",
+  "observer_sha256": "f07e0b16dad26c9e414bb9612e29202c98fc058a51f2b71831b7b45eb268061e",
+  "candidate_counts": [
+    4,
+    4
+  ],
+  "moving_copies": [
+    2,
+    2
+  ],
+  "rebuilt": {
+    "30": {
+      "torso": [
+        141.391022,
+        2.94296527,
+        71.75
+      ],
+      "head": [
+        141.391022,
+        4.44296551,
+        71.75
+      ],
+      "snapshot_sha256": "7b7fd02ac3e598b4130c6532a5fedb10941a89e3dbb23fd569b496a56626c4a8"
+    },
+    "60": {
+      "torso": [
+        149.392731,
+        2.99791121,
+        71.75
+      ],
+      "head": [
+        149.392731,
+        4.49791145,
+        71.75
+      ],
+      "snapshot_sha256": "9cb4443023671c538cc781b663df754c76e367dc0fa84f8cd4cb5c73883c11a4"
+    },
+    "90": {
+      "torso": [
+        157.39444,
+        2.99910879,
+        71.75
+      ],
+      "head": [
+        157.39444,
+        4.49910879,
+        71.75
+      ],
+      "snapshot_sha256": "85f20e2bc135a8b2bf0eeac255dca9620788621ec050393570aecdbb6dfad04e"
+    },
+    "120": {
+      "torso": [
+        165.396149,
+        2.99912405,
+        71.75
+      ],
+      "head": [
+        165.396149,
+        4.49912405,
+        71.75
+      ],
+      "snapshot_sha256": "4704d8e55cff03d895499dc2a1c5036a19dbca80d3a601dae860f15936e68338"
+    }
+  },
+  "comparisons": [
+    {
+      "frame": 30,
+      "original_time": 0.5,
+      "original_torso": [
+        141.39102172851562,
+        3.040398120880127,
+        71.75
+      ],
+      "original_head": [
+        141.39102172851562,
+        4.540398120880127,
+        71.75
+      ],
+      "delta": [
+        -2.714843674311851e-07,
+        0.09743285088012676,
+        0.0
+      ]
+    },
+    {
+      "frame": 60,
+      "original_time": 1.0,
+      "original_torso": [
+        149.92532348632812,
+        2.9047279357910156,
+        71.75
+      ],
+      "original_head": [
+        149.92532348632812,
+        4.404727935791016,
+        71.75
+      ],
+      "delta": [
+        0.5325924863281273,
+        -0.0931832742089842,
+        0.0
+      ]
+    },
+    {
+      "frame": 90,
+      "original_time": 1.5,
+      "original_torso": [
+        157.92543029785156,
+        2.9047279357910156,
+        71.75
+      ],
+      "original_head": [
+        157.92543029785156,
+        4.404727935791016,
+        71.75
+      ],
+      "delta": [
+        0.5309902978515595,
+        -0.09438085420898457,
+        0.0
+      ]
+    },
+    {
+      "frame": 120,
+      "original_time": 2.0,
+      "original_torso": [
+        165.925537109375,
+        2.9047279357910156,
+        71.75
+      ],
+      "original_head": [
+        165.925537109375,
+        4.404727935791016,
+        71.75
+      ],
+      "delta": [
+        0.5293881093749917,
+        -0.0943961142089842,
+        0.0
+      ]
+    }
+  ],
+  "original_exit": 1,
+  "original_forced_termination": true,
+  "scope": "One scripted authored walk and head offset; original wall-time vs rebuilt fixed steps, +/-35 ms sampling, x tolerance 0.8 and y tolerance 0.16 studs. Joint construction differs and native parity is unproven.",
+  "P5_complete": false
+}

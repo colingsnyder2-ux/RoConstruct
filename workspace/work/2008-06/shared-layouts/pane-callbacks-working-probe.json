@@ -1,0 +1,228 @@
+{
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_pane_callbacks.py": "100bb9831a6282ea6c6a10388e4b1a644cdb88f4fe39f1d2e9007190351ebe31",
+    "rebuild\\2008-06\\native-headers\\ActiveDocView.h": "e30143470935d4675ddd3f8dd64806618dc363502f1fe1d67714d6083eeed393",
+    "rebuild\\2008-06\\native-headers\\CSelectionCaption.h": "42dc72d083e2c180e2feda924479a6e28d63a84fe3e4f97cbe4cad41e15038e3",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "1081041d9c95ca3f971dce438282fa8aa89a03f7137fc46fd3ac0798c1b380a8",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "837e080460a07c5f81177bcb3e7d420eb5cf74d403ad47fcf22e0734993969ea",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\SelectionChanged.h": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
+    "rebuild\\2008-06\\native-headers\\CDataModelPropGrid.h": "2451573c8e1baf62d043e01be78d62987f89936fe8a128ff2c7745340ea840f3",
+    "rebuild\\2008-06\\native-headers\\util\\MarshaledListener.h": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
+    "rebuild\\2008-06\\native-headers\\util\\EventDataBase.h": "36ade94ab2c1c538faef3a0ba7ac0a4ad74eb8e48e0be59d9f58f64128a2893e",
+    "rebuild\\2008-06\\native-headers\\util\\MarshalWindow.h": "dc5a302f6eba7575374a7dc38691d4cea32d7298cdb9844eab00e271f43074d8",
+    "rebuild\\2008-06\\native-headers\\CPropGrid.h": "f8c49281322309579f6916350ccb9a7da22d2d1092e8a70bd14576464d9d383e",
+    "rebuild\\2008-06\\native-headers\\SelectionGroup.h": "009c20d44a8a6c5caeb6677ca0825083f1bcffdf33dbe7f6f79de0459735b792",
+    "rebuild\\2008-06\\native-classes\\ActiveDocument.cpp": "e21af7a8fd9e6d2417a904cd7286c727eda3277f303a5fa7e6c527db01f40185",
+    "rebuild\\2008-06\\native-classes\\ActiveDocViewRefresh.cpp": "48dbaa463ab212e449011efdad2980a22842cd20be03b5d55608dc300009f7a6",
+    "rebuild\\2008-06\\native-classes\\CDataModelPropGridUpdate.cpp": "416ba7095b6ec59f3925fc1fbb910b8f9732f673cd4480d954e318a98b8f10ea",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaptionUpdate.cpp": "ff23188a1dbc60cd913755bba1322afe9b56d8f87b52bc9bcf7cda684d4cda50",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaption.cpp": "cae44d0b3b2ad07459b7cec4bc05bcbf9eebac7e7be6c8b264e57c8fee509077",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaptionText.cpp": "c1c361e6d4e6cd27c9d0800a95135be14de383df2164aaa93ad3a6710ea343b5"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "methods": [
+    {
+      "address": "00405aa0",
+      "symbol": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+      "size": 571,
+      "object": "NativeActiveDocument.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00420bd0",
+      "symbol": "?refresh@ActiveDocView@@QAEXXZ",
+      "size": 75,
+      "object": "NativeActiveDocViewRefresh.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00442900",
+      "symbol": "?update@CDataModelPropGrid@@UAEXV?$shared_ptr@VDataModel@RBX@@@boost@@0@Z",
+      "size": 292,
+      "object": "NativeCDataModelPropGridUpdate.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466940",
+      "symbol": "?update@CSelectionCaption@@UAEXV?$shared_ptr@VDataModel@RBX@@@boost@@0@Z",
+      "size": 538,
+      "object": "NativeCSelectionCaptionUpdate.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466510",
+      "symbol": "??1CSelectionCaption@@UAE@XZ",
+      "size": 344,
+      "object": "NativeCSelectionCaptionUpdate.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466880",
+      "symbol": "??0CSelectionCaption@@QAE@XZ",
+      "size": 150,
+      "object": "NativeCSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00465de0",
+      "symbol": "?GetRuntimeClass@CSelectionCaption@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "object": "NativeCSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466670",
+      "symbol": "?filter@CSelectionCaption@@UAE_NPBVSelection@RBX@@ABVSelectionChanged@3@01@Z",
+      "size": 5,
+      "object": "NativeCSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00465df0",
+      "symbol": "?PreCreateWindow@CSelectionCaption@@UAEHAAUtagCREATESTRUCTA@@@Z",
+      "size": 5,
+      "object": "NativeCSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466680",
+      "symbol": "?Create@CSelectionCaption@@UAEHPBDKABUtagRECT@@PAVCWnd@@I@Z",
+      "size": 5,
+      "object": "NativeCSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00465e00",
+      "symbol": "?OnCreate@CSelectionCaption@@QAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 36,
+      "object": "NativeCSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004666b0",
+      "symbol": "?onMarshaledEvent@CSelectionCaption@@UAEXPBVSelection@RBX@@VSelectionChanged@3@@Z",
+      "size": 73,
+      "object": "NativeCSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00465e30",
+      "symbol": "?GetMessageMap@CSelectionCaption@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "object": "NativeCSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00465e40",
+      "symbol": "?updateCaption@CSelectionCaption@@QAEXXZ",
+      "size": 924,
+      "object": "NativeCSelectionCaptionText.obj",
+      "relocation_masked_match": true
+    }
+  ],
+  "bindings": {
+    "caption_message_map": "0081bb1c",
+    "parent": "CWnd::GetThisMessageMap (mfc90 ordinal 4030)",
+    "create_message": "WM_CREATE -> 00465e00",
+    "refresh_model_storage": "0096c25c/0096c260",
+    "callback_types": "00405aa0 gets both current/previous models through 00403040"
+  },
+  "verified_edges": [
+    {
+      "caller": "00405aa0",
+      "offset": 93,
+      "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+      "target": "0x403040"
+    },
+    {
+      "caller": "00405aa0",
+      "offset": 209,
+      "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+      "target": "0x403040"
+    },
+    {
+      "caller": "00405aa0",
+      "offset": 120,
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "target": "0x4025b0"
+    },
+    {
+      "caller": "00405aa0",
+      "offset": 284,
+      "symbol": "?reset@?$shared_ptr@VDataModel@RBX@@@boost@@QAEXXZ",
+      "target": "0x456e80"
+    },
+    {
+      "caller": "00405aa0",
+      "offset": 473,
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tset_traits@PAVActiveDocView@@U?$less@PAVActiveDocView@@@std@@V?$allocator@PAVActiveDocView@@@3@$0A@@std@@@std@@QAEXXZ",
+      "target": "0x5e9340"
+    },
+    {
+      "caller": "00465e00",
+      "offset": 4,
+      "symbol": "?Default@CWnd@@IAEJXZ",
+      "target": "0x6a0c68"
+    },
+    {
+      "caller": "00465e00",
+      "offset": 26,
+      "symbol": "?refresh@ActiveDocView@@QAEXXZ",
+      "target": "0x420bd0"
+    },
+    {
+      "caller": "00465df0",
+      "offset": 1,
+      "symbol": "?PreCreateWindow@CWnd@@UAEHAAUtagCREATESTRUCTA@@@Z",
+      "target": "0x6a070a"
+    },
+    {
+      "caller": "00466680",
+      "offset": 1,
+      "symbol": "?Create@CStatic@@UAEHPBDKABUtagRECT@@PAVCWnd@@I@Z",
+      "target": "0x6a1490"
+    },
+    {
+      "caller": "004666b0",
+      "offset": 36,
+      "symbol": "?updateCaption@CSelectionCaption@@QAEXXZ",
+      "target": "0x465e40"
+    },
+    {
+      "caller": "004666b0",
+      "offset": 53,
+      "symbol": "??1SelectionChanged@RBX@@QAE@XZ",
+      "target": "0x422c60"
+    }
+  ],
+  "scope": "Inactive typed recovery. Native caption uses AbstractFactoryProduct::getClassName/Name, not the mined fake reflection descriptor. Caption message map/parent ordinal and refresh global references verified. Global storage initialization, remaining bindings, marshal framework and runtime remain open."
+}

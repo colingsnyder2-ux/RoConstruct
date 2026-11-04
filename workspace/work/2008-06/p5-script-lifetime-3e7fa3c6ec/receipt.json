@@ -1,0 +1,34 @@
+{
+  "revision": "3e7fa3c6ecfb47c7975b53aa623e1030f9c6f6ba",
+  "exe_sha256": "66f4deb58b39a0a9ce672f2e0ce5af3e0f0908f05e014a0f205f7bbefa62f069",
+  "test_sha256": "b7afc17482cf2e2fc1c290e08aa8bdb28bd8a5cd2be1d8593278715d41dfd504",
+  "cases": {
+    "p5-script-removed.rbxl": {
+      "fixture_sha256": "811b468ab2e8197a75e3f6bd5a175a4451f00e8070305eb16fbd4e790431e913",
+      "exits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "p5-script-subtree-removed.rbxl": {
+      "fixture_sha256": "68db727062fa72c26b31ae96bf7ae900aea11587fa5a6da54bd718c305b31751",
+      "exits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "scope": "Repeated detached script shutdown cases; not proof of native parity."
+}

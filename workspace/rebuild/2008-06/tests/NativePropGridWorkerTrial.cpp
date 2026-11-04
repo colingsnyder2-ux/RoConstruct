@@ -1,0 +1,37 @@
+#include "CMainFrame.h"
+#include "v8datamodel/ToolsPart.h"
+#include <Controls/XTColorDialog.h>
+#include <G3D/Color3uint8.h>
+
+RBX::BrickColor RBX::FillToolColor::get() const
+{
+    return color;
+}
+
+void RBX::FillToolColor::set(const RBX::BrickColor& value)
+{
+    if (color != value)
+    {
+        color = value;
+        raise(value);
+    }
+}
+
+void CMainFrame::handle_431160(NMHDR*, LRESULT*)
+{
+    G3D::Color3uint8 rgb(RBX::FillTool::color.get().color3());
+    unsigned long color = (((unsigned long)rgb.b << 8) | rgb.g) << 8;
+    color |= rgb.r;
+
+    CXTColorDialog dialog(color, color, CPS_XT_SHOW3DSELECTION, this);
+    if (dialog.DoModal() == 1)
+    {
+        COLORREF selectedColor = dialog.GetColor();
+        G3D::Color3uint8 selected(GetRValue(selectedColor),
+                                  GetGValue(selectedColor),
+                                  GetBValue(selectedColor));
+        RBX::BrickColor value = RBX::BrickColor::closest(selected);
+        if (RBX::FillTool::color.get() != value)
+            RBX::FillTool::color.set(value);
+    }
+}

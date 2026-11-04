@@ -1,0 +1,125 @@
+{
+  "revision": "c301f9241ed946e16ce4c7a50108d5e63c276423",
+  "module": "p2-recovered-player",
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+    "--selftest"
+  ],
+  "ROC_BUILD": null,
+  "exit": 0,
+  "pixel_controls": {
+    "initial": {
+      "models": 1,
+      "greenA": 1891,
+      "greenB": 0,
+      "pass": true
+    },
+    "moved": {
+      "models": 1,
+      "greenA": 0,
+      "greenB": 2152,
+      "pass": true
+    },
+    "removed": {
+      "models": 0,
+      "green": 0,
+      "pass": true
+    },
+    "empty": {
+      "models": 0,
+      "green": 0,
+      "pass": true
+    },
+    "failures": 0
+  },
+  "cleanup": {
+    "levels": 0,
+    "references": 0,
+    "backends": 0
+  },
+  "source_sha256": {
+    "rebuild/2008-06/modules/p2-block-mesh.json": "d3c279f3bcd2dd4d87aae826538c7644aa26ba417ec13e2c044629fcc419969f",
+    "rebuild/2008-06/modules/p2-recovered-player.json": "92f28210fe56afe2cc534d7806d97aa343e02fef43d1d58d942d229e1d8dc356",
+    "rebuild/2008-06/tests/P2BlockMeshTest.cpp": "0aaf186f9bc3d046d2e7dcbfb2ea558e7bcd100c715eaccc5d40793754d2de33",
+    "rebuild/2008-06/tests/P2RecoveredPlayer.cpp": "f7ef24969b747c04e64843bbb13c8c55a1da9f70d80bfb79465a0f07984dc36f",
+    "rebuild/2008-06/tests/PlayerBlockMesh.cpp": "aa092755258434303761ad1e8981a5984d4c98f37bf7fa8273070cca5f2be5ac",
+    "rebuild/2008-06/tests/PlayerBlockMesh.h": "656514c37d3c6d6c9cb02e45fc0b78ddb4e3c0d5329f3a25848543d59e87c1aa",
+    "rebuild/2008-06/tests/p2-recovered/Player2008.cpp": "959682ab65ebd47c22c74d430c2849c24bb04cc6645d39dab37fc5abe21fffc7",
+    "rebuild/2008-06/tests/p2-recovered/PlayerEngine.cpp": "640a7526ce9d107408ecaa42066b882496f9228b99ea404040a3474c885e7bba",
+    "rebuild/2008-06/tests/p2-recovered/PlayerScene.cpp": "4480377427b6dd4d25538953026597cc0030206bf6eb09068da13692ef758210",
+    "rebuild/2008-06/tests/p2-recovered/PlayerScene.h": "64616220c2372d2520cbece8b80b7e8ee27e3e64487229195076d89f1eb9c5cd",
+    "rebuild/2008-06/tests/p2-recovered/README.md": "8eb6a33a28a3c09ca065942b71b42542426d95463f907f9cbc148116937dd60f",
+    "rebuild/2008-06/tests/p2-recovered/RbxEntity.h": "7224952552e8a159acba2615b2967c74e6718f804f796df3115d0291ce4660b1",
+    "rebuild/2008-06/tests/p2-recovered/RbxEntityLocal.cpp": "6afb2556194cca8dfb792d241db9fc59e24692a567669c28ebf46a08e051d4a0",
+    "rebuild/2008-06/tests/PlayerMeshBackend.cpp": "7c8c49eedc09e7d24deac31c9d0083b1173886b757918c0f6ee6feb3ea16b81e",
+    "rebuild/2008-06/tests/PlayerMeshBackend.h": "328b4c1912e5d97707f41f24269459f94491c622061809da7471dfd81f32b033",
+    "rebuild/2008-06/tests/PlayerMeshOrientation.cpp": "75ab777fbe203ead4436051b7fe5a25a46bc3c469b9074b850c8a9c9e63ef715",
+    "rebuild/2008-06/patches/rbxgs-client.json": "08925e828b2a0d393a47c2c6ea897e3b6c6894b3a8e8163bb82a56d92d498ba3"
+  },
+  "exe_sha256": "a17bbee50c9cf8df7830883d0e63160fb5fa014faaf91ece38f633efab4bbd54",
+  "map_sha256": "2df634f6b17533a40aa45fcdf9fe108e4df907f7c6f882b578cb5945e105fea7",
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c"
+  },
+  "module_reports": {
+    "P2BlockMesh": {
+      "linked": true,
+      "test_exit": 0,
+      "report_sha256": "a1bdd454fc2addc78781b05129743c86d9f9b0fdfab8a0fe401135e779b6d0eb"
+    },
+    "P2RecoveredPlayer": {
+      "linked": true,
+      "test_exit": 0,
+      "report_sha256": "1a7b8c128b0b9cd6e02bfd62fd66480ccdb47b5b3cb6003f85cbd873d741f85b"
+    }
+  },
+  "artifacts": {
+    "player.log": "eb7a1b490460b0458b0e129bf2166fa30ef025f3d5c10ada15d0ecb7a5716dd9",
+    "selftest_empty.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+    "selftest_initial.png": "25cfe257f6308e8ed23364886a381fdc5131c1e841a1db4881fc06c8410ddaf3",
+    "selftest_moved.png": "6d2fbf8bd1d244452ad47e205d52dd02f42e316fc8e1d803f32e41de28619427",
+    "selftest_removed.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+    "selftest_result.json": "846d40c9c7edf57b9b17888ddf14652dda8307eeac3cd73e069ebd2154c8481c",
+    "stdout.log": "d4a21c392a831b62677dc638ee5327d90639fff58044959ba3496522e5238071",
+    "falling/last.png": "282086fac24332d094792e2d9b9c3100ad6c4e74a7dc1bd4049e8302b4bf4b39",
+    "falling/player.log": "b090f14ac3a1f0b47545b9d3ed79100d45e0c18c740fd04fa3e1ae4e25fc9bae",
+    "falling/stdout.log": "72e3adb335ad3a3a6f8abd1bb252a88104cbada2a594016ec5e63a4640d4f213"
+  },
+  "limits": [
+    "Existing local dependency libraries; not a clean second-worktree rebuild.",
+    "P2 remains partial: see p2-recovered/README.md.",
+    "Mapped symbols identify adapted source execution, not original executable runtime branch."
+  ],
+  "linked_geometry_symbols": [
+    "0001:00006310       ??0Mesh@PlayerBlockMesh@@QAE@XZ 00407310 f   linked:PlayerBlockMesh.obj",
+    "0001:00006400       ??1Mesh@PlayerBlockMesh@@UAE@XZ 00407400 f   linked:PlayerBlockMesh.obj",
+    "0001:0000af90       ?populate@BlockMesh@PlayerBlockMesh@@AAEXABVVector3@G3D@@VRenderSurfaceTypes@View@RBX@@VBrickColor@7@@Z 0040bf90 f   linked:PlayerBlockMesh.obj",
+    "0001:0000bb00       ?upload@Level@PlayerBlockMesh@@QAEX_NAAVAxisAlignedBox@Ogre@@@Z 0040cb00 f   linked:PlayerBlockMesh.obj",
+    "0001:00011330       ?createIndexed@PlayerMeshBackend@@YAPAVRbxSubMesh@Ogre@@PBMI000PBGPBIIAAVVector3@3@3@Z 00412330 f   linked:PlayerMeshBackend.obj"
+  ],
+  "owner_layout": {
+    "Mesh": "0x88",
+    "levels": "0x0c",
+    "shadow": "0x18",
+    "radius": "0x4c",
+    "index_vector": "0x50",
+    "vertex_vector": "0x68",
+    "shadow_backend": "0x80",
+    "kind": "0x84",
+    "evidence_sha256": "396b046714118ecf6587a89ecb68749b30753f1532091fe6e37a48b2ed92b638"
+  },
+  "capture": "D3D9 window backbuffer before Present; no desktop/foreground dependency",
+  "falling": {
+    "command": [
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+      "--frames",
+      "240",
+      "C:\\Users\\colin\\RoConstruct\\falling.rbxl"
+    ],
+    "exit": 0,
+    "fixture_sha256": "07eb68599bafa3ccaf014a695451e7a0d66f6490fd19b2112966196096c7013e",
+    "fixture_versioned": false,
+    "scope": "Physics smoke and backbuffer frame capture; not a clean P0 gate."
+  }
+}

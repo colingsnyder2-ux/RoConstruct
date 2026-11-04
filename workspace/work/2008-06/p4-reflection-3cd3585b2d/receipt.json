@@ -1,0 +1,25 @@
+{
+  "revision": "3cd3585b2d303f6b10fe14df00196135c81adba7",
+  "exe_sha256": "f96177dde0e2373ec175c61716b04767f05188a37fed2726af61374b9f89d024",
+  "map_sha256": "bf40a3c5011da58bf18719d5dffb931a5d55f8efda9d02850c1845b3bb9d602c",
+  "fixture_sha256": "40c657df653bed1de5c68e0293d69ec1e962980f9ed731c76e8211c6aaa437ce",
+  "original_external_asset_sha256": "5603c747eebd4d0a5774826b481387af63d6013eef4eac10d1a5d0cc6d51b2e9",
+  "observer_sha256": "786b89d900df31c626146a963b3f4f7b592566cf0179ff48ab5a174b7c6f2ccd",
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+    "--frames",
+    "2",
+    "--inspect-place",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\reflective-sphere.rbxl"
+  ],
+  "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p4-reflection-3cd3585b2d",
+  "exit": 0,
+  "scope": "Default reflection texture on one authored sphere; not complete real-place rendering.",
+  "foreground_pixels": 10757,
+  "output_sha256": {
+    "last.png": "abee95e92c355ee589225b45378e1bce16914706c870ba880dffe191130a4ab7",
+    "place_snapshot.csv": "d3f18c19b203f262ffeceb106f75aa022beae5c81601ab5067eae3eae51de259",
+    "player.log": "7f9293ce5d62f747bdefd62ebd61367bb058f98f56e2c3992251634cd92430d9",
+    "stdout.txt": "b51080cef7a14fc031d0742575e6426b684370ddd5a529b8cb848b3880154b8c"
+  }
+}

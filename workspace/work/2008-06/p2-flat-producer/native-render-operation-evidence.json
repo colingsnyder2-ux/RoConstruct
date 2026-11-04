@@ -1,0 +1,16 @@
+{
+  "address": "00684fd0",
+  "sha256": "e85c7a55e9e25c48758c69fe986b13c34c4f7e1bf1d7ee54beb45bfd8eb95cf1",
+  "size": 50,
+  "native_subentity_vtable": "0084e90c",
+  "render_operation_slot": 3,
+  "native_destination": "00684fd0",
+  "source_provider": "tools/libs/ogre-1.4.5/ogrenew/OgreMain/src/roc_ogre_resume_252207500829304d.cpp",
+  "observed_fields": {
+    "mSubMesh": "0x54",
+    "lodIndex": "0x134",
+    "lodMeshes": "0x130"
+  },
+  "native_subentity_allocation": "0x15c",
+  "recovered_behavior": "Select mSubMesh for lod0, otherwise lodMeshes[lodIndex-1], then call original Ogre::SubMesh::_getRenderOperation(operation,0). No stock animation-data selection or parent Mesh link."
+}

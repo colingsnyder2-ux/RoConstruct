@@ -1,0 +1,559 @@
+{
+  "source_sha256": "ef19007dba04dd5621f2c46b4da0ee35ab3229d4ebea97a359feb7021b60eb80",
+  "layout_sha256": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
+  "observer_sha256": "bfd6582c12bd6a21fb5ebf718dd99cd9c3efe6c7d7b295010598cc0059348936",
+  "object_sha256": "d9532ce14e32e91f19903b423dd0f5a593460b173f6e1d6b3050ea20a96012fb",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentInitializeTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDocumentInitializeTrial.cpp"
+  ],
+  "address": "00451b60",
+  "size": 47,
+  "targets": {
+    "?createNativeWorkspace@@": [
+      "0x450370"
+    ],
+    "?getDataModel@CWorkspace@@": [
+      "0x46a940"
+    ],
+    "??0Lock@DataModel@RBX@@": [
+      "0x411b40"
+    ],
+    "??0StandardVerbs@RBX@@": [
+      "0x5c7ea0"
+    ],
+    "??1StandardVerbs@RBX@@": [
+      "0x450450"
+    ],
+    "??_7ReportAbuseVerb@@": [
+      "0x8172e0"
+    ],
+    "?getWorkspace@CWorkspace@@": [
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970",
+      "0x46a970"
+    ],
+    "??_7FixedCameraCommand@RBX@@": [
+      "0x817c00"
+    ],
+    "?bindExisting@CRobloxDoc@@": [
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10",
+      "0x451a10"
+    ],
+    "?lookup@Name@RBX@@": [
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290",
+      "0x554290"
+    ],
+    "?bindOwned@CRobloxDoc@@": [
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60",
+      "0x451a60"
+    ],
+    "??_7InsertTexture@@": [
+      "0x817324"
+    ],
+    "??1Lock@DataModel@RBX@@": [
+      "0x5773c0"
+    ]
+  },
+  "report_abuse_doIt": {
+    "address": "0044f700",
+    "size": 36,
+    "exact": true,
+    "vtable_slot": "0x8172f0",
+    "bindings": {
+      "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0926",
+      "__imp__PostMessageA@16": "0x802e0c"
+    }
+  },
+  "report_abuse_isEnabled": {
+    "address": "004532d0",
+    "size": 277,
+    "exact": true,
+    "vtable_slot": "0x8172e8",
+    "bindings": {
+      "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+      "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+      "??$create@VPlayers@Network@RBX@@@ServiceProvider@RBX@@QBEPAVPlayers@Network@1@XZ": "0x412710",
+      "?canReportAbuse@Players@Network@RBX@@QBE_NXZ": "0x496390",
+      "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+    }
+  },
+  "camera_enabled": [
+    {
+      "symbol": "?isEnabled@CameraPanLeftCommand@RBX@@UBE_NXZ",
+      "address": "00565950",
+      "vtable_slot": "0x817aec",
+      "size": 3,
+      "exact": true
+    },
+    {
+      "symbol": "?isEnabled@CameraPanRightCommand@RBX@@UBE_NXZ",
+      "address": "00565950",
+      "vtable_slot": "0x817b14",
+      "size": 3,
+      "exact": true
+    },
+    {
+      "symbol": "?isEnabled@CameraZoomExtentsCommand@RBX@@UBE_NXZ",
+      "address": "00565950",
+      "vtable_slot": "0x817b8c",
+      "size": 3,
+      "exact": true
+    },
+    {
+      "symbol": "?isEnabled@CameraTiltUpCommand@RBX@@UBE_NXZ",
+      "address": "0x57d570",
+      "vtable_slot": "0x817a9c",
+      "size": 30,
+      "exact": true,
+      "calls": {
+        "?canTilt@Camera@RBX@@QBE_NH@Z": "0x5cc040"
+      }
+    },
+    {
+      "symbol": "?isEnabled@CameraTiltDownCommand@RBX@@UBE_NXZ",
+      "address": "0x57d590",
+      "vtable_slot": "0x817ac4",
+      "size": 30,
+      "exact": true,
+      "calls": {
+        "?canTilt@Camera@RBX@@QBE_NH@Z": "0x5cc040"
+      }
+    },
+    {
+      "symbol": "?isEnabled@CameraZoomInCommand@RBX@@UBE_NXZ",
+      "address": "0x57d5b0",
+      "vtable_slot": "0x817b3c",
+      "size": 30,
+      "exact": true,
+      "calls": {
+        "?canZoom@Camera@RBX@@QBE_NH@Z": "0x5cbf90"
+      }
+    },
+    {
+      "symbol": "?isEnabled@CameraZoomOutCommand@RBX@@UBE_NXZ",
+      "address": "0x57d5d0",
+      "vtable_slot": "0x817b64",
+      "size": 30,
+      "exact": true,
+      "calls": {
+        "?canZoom@Camera@RBX@@QBE_NH@Z": "0x5cbf90"
+      }
+    }
+  ],
+  "camera_constructor": {
+    "address": "0057e3d0",
+    "size": 146,
+    "exact": true,
+    "bindings": {
+      "__ehhandler$??0CameraVerb@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVWorkspace@1@@Z": "0x7db709",
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c",
+      "??0Verb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x5833e0",
+      "??_7CameraVerb@RBX@@6B@": "0x83077c",
+      "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468"
+    }
+  },
+  "fixed_camera_checked": {
+    "symbol": "?isChecked@FixedCameraCommand@RBX@@UBE_NXZ",
+    "address": "0057d5f0",
+    "size": 34,
+    "exact": true,
+    "vtable_slot": "0x817c0c"
+  },
+  "fixed_camera_action": {
+    "symbol": "?doIt@FixedCameraCommand@RBX@@UAEXPAVIDataState@2@@Z",
+    "address": "0057d620",
+    "size": 80,
+    "exact": true,
+    "vtable_slot": "0x817c10",
+    "calls": {
+      "?setCameraType@Camera@RBX@@QAEXW4CameraType@12@@Z": "0x5cddd0",
+      "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0"
+    }
+  },
+  "camera_actions": [
+    {
+      "symbol": "?doIt@CameraVerb@RBX@@UAEXPAVIDataState@2@@Z",
+      "address": "0x5819a0",
+      "size": 39,
+      "vtable_slot": "0x83078c",
+      "calls": {
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      },
+      "exact": true
+    },
+    {
+      "symbol": "?doIt@CameraPanLeftCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "address": "0x5819d0",
+      "size": 68,
+      "vtable_slot": "0x817af4",
+      "calls": {
+        "?panUnits@Camera@RBX@@QAEXH@Z": "0x5cc930",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      },
+      "exact": true
+    },
+    {
+      "symbol": "?doIt@CameraPanRightCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "address": "0x581a20",
+      "size": 68,
+      "vtable_slot": "0x817b1c",
+      "calls": {
+        "?panUnits@Camera@RBX@@QAEXH@Z": "0x5cc930",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      },
+      "exact": true
+    },
+    {
+      "symbol": "?doIt@CameraTiltUpCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "address": "0x581a70",
+      "size": 76,
+      "vtable_slot": "0x817aa4",
+      "calls": {
+        "?tiltUnits@Camera@RBX@@QAE_NH@Z": "0x5cc890",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      },
+      "exact": true
+    },
+    {
+      "symbol": "?doIt@CameraTiltDownCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "address": "0x581ac0",
+      "size": 76,
+      "vtable_slot": "0x817acc",
+      "calls": {
+        "?tiltUnits@Camera@RBX@@QAE_NH@Z": "0x5cc890",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      },
+      "exact": true
+    },
+    {
+      "symbol": "?doIt@CameraZoomInCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "address": "0x581b10",
+      "size": 80,
+      "vtable_slot": "0x817b44",
+      "calls": {
+        "?zoom@Camera@RBX@@QAE_NM@Z": "0x5cce80",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      },
+      "exact": true
+    },
+    {
+      "symbol": "?doIt@CameraZoomOutCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "address": "0x581b60",
+      "size": 84,
+      "vtable_slot": "0x817b6c",
+      "calls": {
+        "?zoom@Camera@RBX@@QAE_NM@Z": "0x5cce80",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      },
+      "exact": true
+    },
+    {
+      "symbol": "?doIt@CameraModelViewCommand@RBX@@UAEXPAVIDataState@2@@Z",
+      "address": "0x581bc0",
+      "size": 58,
+      "vtable_slot": "0x817be8",
+      "calls": {
+        "?setImageServerView@Workspace@RBX@@QAEXABVRect2D@G3D@@@Z": "0x5a5890",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      },
+      "exact": true
+    }
+  ],
+  "camera_selection": {
+    "type": "RBX::FilteredSelection<RBX::PVInstance>",
+    "factory": "0x57f710",
+    "constructor": "0x57eeb0",
+    "vtable": "0x830944",
+    "service_client": "0x581d80",
+    "type_descriptor": "0x947d70"
+  },
+  "camera_center_enabled": {
+    "symbol": "?isEnabled@CameraCenterCommand@RBX@@UBE_NXZ",
+    "address": "00582300",
+    "size": 229,
+    "exact": true,
+    "vtable_slot": "0x817bb8",
+    "calls": {
+      "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z": "0x581d80"
+    }
+  },
+  "camera_selection_client": {
+    "symbol": "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z",
+    "address": "00581d80",
+    "size": 186,
+    "exact": true
+  },
+  "edit_container_ctor": {
+    "address": "00580b50",
+    "size": 174,
+    "bindings": {
+      "__ehhandler$??0EditSelectionVerb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z": 8196225,
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": 8397916,
+      "??0Verb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": 5780448,
+      "??_7EditSelectionVerb@RBX@@6B@": 8587108,
+      "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ": 4786928,
+      "??$shared_from@VWorkspace@RBX@@@RBX@@YA?AV?$shared_ptr@VWorkspace@RBX@@@boost@@PAVWorkspace@0@@Z": 6392384,
+      "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": 8397928
+    }
+  },
+  "cut_action": {
+    "address": "00413490",
+    "size": 61,
+    "bindings": {
+      "??_C@_04OPMHGHMB@Copy?$AA@": 8448296,
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": 8397912,
+      "?getVerb@VerbContainer@RBX@@QAEPAVVerb@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": 5780352,
+      "?doIt@DeleteBase@RBX@@UAEXPAVIDataState@2@@Z": 5771408
+    }
+  },
+  "cut_constructors": [
+    {
+      "address": "0x413920",
+      "size": 66,
+      "bindings": {
+        "??_C@_03EOHDMBHJ@Cut?$AA@": 8448420,
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": 8397912,
+        "??0DeleteSelectionVerb@RBX@@QAE@PAVVerbContainer@1@PAVDataModel@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": 4274288,
+        "??_7CutVerb@@6B@": 8448400
+      }
+    },
+    {
+      "address": "0x413870",
+      "size": 114,
+      "bindings": {
+        "__ehhandler$??0DeleteSelectionVerb@RBX@@QAE@PAVVerbContainer@1@PAVDataModel@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": 8196313,
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": 8397916,
+        "??0DeleteBase@RBX@@IAE@PAVVerbContainer@1@PAVDataModel@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": 5771280,
+        "??_7DeleteSelectionVerb@RBX@@6B@": 8448376,
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": 8397928
+      }
+    },
+    {
+      "address": "0x581010",
+      "size": 117,
+      "bindings": {
+        "__ehhandler$??0DeleteBase@RBX@@IAE@PAVVerbContainer@1@PAVDataModel@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": 8196313,
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": 8397916,
+        "??0EditSelectionVerb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z": 5770064,
+        "??_7DeleteBase@RBX@@6B@": 8587288,
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": 8397928
+      }
+    }
+  ],
+  "paste_enabled": {
+    "address": "004154a0",
+    "size": 107,
+    "bindings": {
+      "?$S2@?1??getClipboardFormat@@YAIXZ@4IA": 9882612,
+      "??_C@_06BJBEHGOF@Roblox?$AA@": 8448288,
+      "__imp__RegisterClipboardFormatA@4": 8400368,
+      "?format@?1??getClipboardFormat@@YAIXZ@4IA": 9882608,
+      "__imp__IsClipboardFormatAvailable@4": 8400364,
+      "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": 4281264
+    }
+  },
+  "paste_constructor": {
+    "address": "004134d0",
+    "size": 87,
+    "bindings": {
+      "??_C@_09LDDPHFGI@PasteInto?$AA@": 8448336,
+      "??_C@_05NEBJFIEK@Paste?$AA@": 8448328,
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": 8397912,
+      "??0Verb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": 5780448,
+      "??_7PasteVerb@@6B@": 8448308
+    }
+  },
+  "simple_constructors": [
+    {
+      "class": "InsertObject",
+      "address": "0x41f2e0",
+      "size": 47,
+      "vtable": "0x80f204",
+      "base": "0x57e330",
+      "label": "Insert Object"
+    },
+    {
+      "class": "InsertService",
+      "address": "0x41f310",
+      "size": 47,
+      "vtable": "0x80f22c",
+      "base": "0x57e330",
+      "label": "Insert Service"
+    },
+    {
+      "class": "CopyVerb",
+      "address": "0x413530",
+      "size": 47,
+      "vtable": "0x80e960",
+      "base": "0x57e730",
+      "label": "Copy"
+    }
+  ],
+  "insert_decal_lifetime": [
+    {
+      "symbol": "??0InsertDecal@@QAE@PAVDataModel@RBX@@PBD@Z",
+      "address": "0x41dd60",
+      "size": 47,
+      "exact": true,
+      "bindings": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??0EditSelectionVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z": "0x57e730",
+        "??_7InsertDecal@@6B@": "0x80f15c"
+      }
+    },
+    {
+      "symbol": "??_GInsertDecal@@UAEPAXI@Z",
+      "address": "0x5c6090",
+      "size": 30,
+      "exact": true,
+      "bindings": {
+        "??1EditSelectionVerb@RBX@@UAE@XZ": "0x57e050",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    }
+  ],
+  "insert_decal_checks": [
+    {
+      "symbol": "?getTarget@InsertDecal@@ABEPAVInstance@RBX@@XZ",
+      "address": "0x41ef90",
+      "size": 174,
+      "exact": true,
+      "bindings": {
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": "0x4153b0",
+        "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ": "0x413c20",
+        "??_R0?AVPartInstance@RBX@@@8": "0x92dd50",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "___RTDynamicCast": "0x6a17c6",
+        "??_R0?AVSpecialShape@RBX@@@8": "0x92dd30"
+      }
+    },
+    {
+      "symbol": "?isEnabled@InsertDecal@@UBE_NXZ",
+      "address": "0x41f280",
+      "size": 34,
+      "exact": true,
+      "bindings": {
+        "?isEnabled@EditSelectionVerb@RBX@@UBE_NXZ": "0x582830",
+        "?getTarget@InsertDecal@@ABEPAVInstance@RBX@@XZ": "0x41ef90"
+      }
+    }
+  ],
+  "insert_decal_factories": [
+    {
+      "class": "Decal",
+      "symbol": "?createInstance@InsertDecal@@MAE?AV?$shared_ptr@VDecal@RBX@@@boost@@XZ",
+      "address": "0x41e650",
+      "size": 30,
+      "exact": true
+    },
+    {
+      "class": "Decal",
+      "symbol": "??$create@VDecal@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VDecal@RBX@@@boost@@XZ",
+      "address": "0x41e4d0",
+      "size": 120,
+      "exact": true
+    },
+    {
+      "class": "Texture",
+      "symbol": "?createInstance@InsertTexture@@MAE?AV?$shared_ptr@VDecal@RBX@@@boost@@XZ",
+      "address": "0x41e670",
+      "size": 164,
+      "exact": true
+    },
+    {
+      "class": "Texture",
+      "symbol": "??$create@VTexture@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTexture@RBX@@@boost@@XZ",
+      "address": "0x41e550",
+      "size": 120,
+      "exact": true
+    }
+  ],
+  "scope": "Inactive trial. Referenced command vtables, constructors, class layouts, workspace factory, exception handling and ownership remain unproven."
+}

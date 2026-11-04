@@ -1,0 +1,348 @@
+{
+  "scope": "Inactive methods only; full class, name identity and runtime remain unproven.",
+  "header_sha256": "acccbf42cd94a4f6ed10fe90224ada3291e415bcabeb7e7b97bfad1b56c9934b",
+  "observer_sha256": "c9ff330f1187598104d974e8485a391ace4d3cc77be39f7f16326f55389f657a",
+  "rect_source_sha256": "18026be7740cfa8bf810487690330b09eb706d7da94d0f5c4d589ef0a0d0fcc1",
+  "workspace_overlay_sha256": "84682cd4a731b5f40990e3bb675259f3c80707b9e5837bb435076fa47f14a11c",
+  "model_overlay_sha256": "1606a7b85530c003e44ac975b09b1f40263445def89cbb38896840abe325919c",
+  "objects": [
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeResizeToolMethodsTrial.cpp",
+      "source_sha256": "e537378b2829a55d65a6bc85bced0032606748e0eb1be23495ae8e373b409361",
+      "object_sha256": "aeb2b80cced39c8add2c5b5d53f22072cef83260b9a9bd738e957e7b5cacbe7d",
+      "extra_flags": []
+    },
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeHandleRadiusTrial.cpp",
+      "source_sha256": "b9665834e0cfe3d5d0f082bf4eac721db7ed7a532856efb34d7cfea89b244a25",
+      "object_sha256": "92e0d6aeb5d5a026d3f49b2a051c7896b3d86fca16c3fdb51d2cef3e5b6a4e37",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeHandleHitTestTrial.cpp",
+      "source_sha256": "0a3c3a7df7f7394d9492467012090c1e71d74902b928f2b5c2b98f72b77fbc2a",
+      "object_sha256": "7343e8e1699350618c286c29236b5c0d3063f86047fe90ae0f32bc720dfedbb1",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeClosestRayTrial.cpp",
+      "source_sha256": "6f86f7d04029fbcee35a0277b484fa50a77c2c284d0ebb8a8b5a847943d4463d",
+      "object_sha256": "8c7f13787e2463ae4680edf8e6461069f22ec08d527f7474a27262e4915764ad",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeResizeToolMoveTrial.cpp",
+      "source_sha256": "7636be01786d2eddbddc81a6668e2613df8129eaab67ff8739b3896c31a08576",
+      "object_sha256": "c3809429f2aaee656dd6cec768b65161647ee289ccd1ee8b08abf6b70c29de1d",
+      "extra_flags": [
+        "/fp:fast",
+        "/QIfist"
+      ]
+    },
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeResizeToolDragTrial.cpp",
+      "source_sha256": "6c31adfc2bad8f4025821a904bd91c82e347c77a84385df9a8ee4bce40c6f443",
+      "object_sha256": "cd2bd8f86f76ea3d9260146c4751210564771e4b716c6f569ebb2d9fa20ff742",
+      "extra_flags": []
+    },
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeResizeToolFindTrial.cpp",
+      "source_sha256": "8fdb945adf2e453af769577293a21c09a6b708114af2e562fff7dc23a6d3f437",
+      "object_sha256": "c018a96426b86a01b14f28a5c72e9993483d371a81fcef802cf11ba30b38c011",
+      "extra_flags": []
+    },
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeResizeToolRenderTrial.cpp",
+      "source_sha256": "22d1ce04528a5e5b23dfeb9d108d06e8734fdeae82156513340fc6c7c64e62e0",
+      "object_sha256": "631b260e8a658743641cd1e325b4e5c1c8278f7e207c955cae1c62e2f5780a6d",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "source": "rebuild\\2008-06\\tests\\NativeResizeToolNameTrial.cpp",
+      "source_sha256": "c8ac5a7c0fd9860fe2e7b6c1828ff6bf0bee7d8c73a0f08f39dcd01c91c172bb",
+      "object_sha256": "9b87f29ad01ff891be406a56b6e0647067a7426f2169bb41ea7226f1b47661d1",
+      "extra_flags": []
+    }
+  ],
+  "methods": [
+    {
+      "symbol": "?isSticky@ResizeTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "address": "0x5c63a0",
+      "size": 96,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?isSticky@ResizeTool@RBX@@UBEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0ResizeTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x5c62f0"
+      }
+    },
+    {
+      "symbol": "?getCursorName@ResizeTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "address": "0x63ec60",
+      "size": 182,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?getCursorName@ResizeTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x7da8fe",
+        "??_C@_0N@BEAOAEKB@ResizeCursor?$AA@": "0x84a3e8",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "?getCursorName@ArrowToolBase@RBX@@MBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x6161a0",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468"
+      }
+    },
+    {
+      "symbol": "?onMouseHover@ResizeTool@RBX@@EAEXABVUIEvent@2@@Z",
+      "address": "0x63f630",
+      "size": 49,
+      "exact": true,
+      "bindings": {
+        "?findTargetPV@ResizeTool@RBX@@AAEXABVUIEvent@2@@Z": "0x63f040",
+        "?onMouseHover@ArrowToolBase@RBX@@MAEXABVUIEvent@2@@Z": "0x6404b0"
+      }
+    },
+    {
+      "symbol": "?onMouseDown@ResizeTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "address": "0x63f670",
+      "size": 73,
+      "exact": true,
+      "bindings": {
+        "?findTargetPV@ResizeTool@RBX@@AAEXABVUIEvent@2@@Z": "0x63f040",
+        "?onMouseDown@ArrowToolBase@RBX@@MAEPAVMouseCommand@2@ABVUIEvent@2@@Z": "0x617780"
+      }
+    },
+    {
+      "symbol": "?onMouseUp@ResizeTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "address": "0x63ed20",
+      "size": 90,
+      "exact": true,
+      "bindings": {
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0"
+      }
+    },
+    {
+      "symbol": "?distanceToHandleRadius@HitTest@RBX@@SAMABVVector3@G3D@@0@Z",
+      "address": "0x677140",
+      "size": 77,
+      "exact": true,
+      "bindings": {
+        "__real@3f000000": "0x819bac",
+        "__real@41e54ca3": "0x84dee4",
+        "__real@3c8ee7a7": "0x84dee0"
+      }
+    },
+    {
+      "symbol": "?hitTestHandleLocal@HandleHitTest@RBX@@SA_NABVExtents@2@ABVCoordinateFrame@G3D@@ABVRay@5@AAVVector3@5@AAW4NormalId@2@@Z",
+      "address": "0x6656b0",
+      "size": 462,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?hitTestHandleLocal@HandleHitTest@RBX@@SA_NABVExtents@2@ABVCoordinateFrame@G3D@@ABVRay@5@AAVVector3@5@AAW4NormalId@2@@Z": "0x7dc048",
+        "?faceCenter@Extents@RBX@@QBE?AVVector3@G3D@@W4NormalId@2@@Z": "0x60f7b0",
+        "?normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@1@@Z": "0x5ec570",
+        "__real@40400000": "0x81e380",
+        "?distanceToHandleRadius@HitTest@RBX@@SAMABVVector3@G3D@@0@Z": "0x677140",
+        "??_7Sphere@G3D@@6B@": "0x827404",
+        "??_B?1??inf@G3D@@YAABNXZ@51": "0x96f020",
+        "__imp___Inf": "0x8024ac",
+        "?i@?1??inf@G3D@@YAABNXZ@4NB": "0x96f018",
+        "?ignore@CollisionDetection@G3D@@0VVector3@2@A": "0x97f6d8",
+        "?collisionTimeForMovingPointFixedSphere@CollisionDetection@G3D@@SAMABVVector3@2@0ABVSphere@2@AAV32@2@Z": "0x7bb5a0"
+      }
+    },
+    {
+      "symbol": "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z",
+      "address": "0x5df270",
+      "size": 261,
+      "exact": true,
+      "bindings": {
+        "__real@3ee4f8b588e368f1": "0x828f80"
+      }
+    },
+    {
+      "symbol": "?onMouseMove@ResizeTool@RBX@@EAEXABVUIEvent@2@@Z",
+      "address": "0x63ee20",
+      "size": 542,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?onMouseMove@ResizeTool@RBX@@EAEXABVUIEvent@2@@Z": "0x7da92b",
+        "?lock@?$weak_ptr@VPVInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPVInstance@RBX@@@2@XZ": "0x5cab00",
+        "?fromOriginAndDirection@Ray@G3D@@SA?AV12@ABVVector3@2@0@Z": "0x518830",
+        "?getUnitMouseRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z": "0x615d00",
+        "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z": "0x5df270",
+        "_floor": "0x6a1bb0",
+        "?capturedDrag@ResizeTool@RBX@@AAEXH@Z": "0x63ed80",
+        "__real@bf800000": "0x81c3b8"
+      }
+    },
+    {
+      "symbol": "?capturedDrag@ResizeTool@RBX@@AAEXH@Z",
+      "address": "0x63ed80",
+      "size": 154,
+      "exact": true,
+      "bindings": {
+        "?lock@?$weak_ptr@VPVInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPVInstance@RBX@@@2@XZ": "0x5cab00",
+        "?destroyJoints@PartInstance@RBX@@QAEXXZ": "0x598c70",
+        "?resize@PartInstance@RBX@@QAE_NW4NormalId@2@H@Z": "0x59e150",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820",
+        "?join@PartInstance@RBX@@QAEXXZ": "0x598c90"
+      }
+    },
+    {
+      "symbol": "?findTargetPV@ResizeTool@RBX@@AAEXABVUIEvent@2@@Z",
+      "address": "0x63f040",
+      "size": 649,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?findTargetPV@ResizeTool@RBX@@AAEXABVUIEvent@2@@Z": "0x7da95b",
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0",
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "??_R0?AVPartInstance@RBX@@@8": "0x92dd50",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "___RTDynamicCast": "0x6a17c6",
+        "?getUnitMouseRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z": "0x615d00",
+        "?hitTestHandleLocal@HandleHitTest@RBX@@SA_NABVExtents@2@ABVCoordinateFrame@G3D@@ABVRay@5@AAVVector3@5@AAW4NormalId@2@@Z": "0x6656b0",
+        "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z": "0x618a40",
+        "??_7Ray@G3D@@6B@": "0x8282c4"
+      }
+    },
+    {
+      "symbol": "?handles2d@DrawAdorn@RBX@@SAXABVVector3@G3D@@ABVCoordinateFrame@4@ABVGCamera@4@PAVAdorn@2@ABVColor3@4@@Z",
+      "address": "0x677b20",
+      "size": 519,
+      "exact": true,
+      "bindings": {
+        "__real@3f000000": "0x819bac",
+        "__real@bf800000": "0x81c3b8",
+        "__real@40400000": "0x81e380",
+        "?project@GCamera@G3D@@QBE?AVVector3@2@ABV32@ABVRect2D@2@@Z": "0x510d00",
+        "?xy@Vector3@G3D@@QBE?AVVector2@2@XZ": "0x5185d0"
+      }
+    },
+    {
+      "symbol": "?handles3d@DrawAdorn@RBX@@SAXABVVector3@G3D@@ABVCoordinateFrame@4@PAVAdorn@2@W4HandleType@2@0@Z",
+      "address": "0x6776a0",
+      "size": 1142,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?handles3d@DrawAdorn@RBX@@SAXABVVector3@G3D@@ABVCoordinateFrame@4@PAVAdorn@2@W4HandleType@2@0@Z": "0x7dd066",
+        "__real@3f000000": "0x819bac",
+        "__real@bf800000": "0x81c3b8",
+        "__real@40800000": "0x826e6c",
+        "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20",
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220",
+        "?red@Color3@G3D@@SAABV12@XZ": "0x5148b0",
+        "?cylinder@DrawAdorn@RBX@@SAXPAVAdorn@2@ABVCoordinateFrame@G3D@@HMMABVColor3@5@@Z": "0x6773f0",
+        "??0Ray@G3D@@QAE@XZ": "0x510a30",
+        "__real@40600000": "0x8288c4",
+        "?distanceToHandleRadius@HitTest@RBX@@SAMABVVector3@G3D@@0@Z": "0x677140",
+        "?orange@Color3@G3D@@SAABV12@XZ": "0x5149b0",
+        "__real@40400000": "0x81e380",
+        "?$S2@?1??resizeColor@DrawAdorn@RBX@@SAABVColor3@G3D@@XZ@4IA": "0x97d5b4",
+        "__real@3dcccccd": "0x81e704",
+        "?c@?1??resizeColor@DrawAdorn@RBX@@SAABVColor3@G3D@@XZ@4V45@A": "0x97d5a8",
+        "__real@3f19999a": "0x82f838",
+        "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050",
+        "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044",
+        "??_7Sphere@G3D@@6B@": "0x827404",
+        "?clear@Color4@G3D@@SAABV12@XZ": "0x7baf10"
+      }
+    },
+    {
+      "symbol": "?render2d@ResizeTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "address": "0x63f470",
+      "size": 437,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?render2d@ResizeTool@RBX@@EAEXPAVAdorn@2@@Z": "0x7d1118",
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0",
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "??_R0?AVPartInstance@RBX@@@8": "0x92dd50",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "___RTDynamicCast": "0x6a17c6",
+        "?$S2@?1??resizeColor@DrawAdorn@RBX@@SAABVColor3@G3D@@XZ@4IA": "0x97d5b4",
+        "__real@3dcccccd": "0x81e704",
+        "?c@?1??resizeColor@DrawAdorn@RBX@@SAABVColor3@G3D@@XZ@4V45@A": "0x97d5a8",
+        "__real@3f19999a": "0x82f838",
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0",
+        "?getPartSizeXml@PartInstance@RBX@@QBEABVVector3@G3D@@XZ": "0x598cd0",
+        "?handles2d@DrawAdorn@RBX@@SAXABVVector3@G3D@@ABVCoordinateFrame@4@ABVGCamera@4@PAVAdorn@2@ABVColor3@4@@Z": "0x677b20"
+      }
+    },
+    {
+      "symbol": "?render3dAdorn@ResizeTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "address": "0x63f2d0",
+      "size": 401,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?render3dAdorn@ResizeTool@RBX@@EAEXPAVAdorn@2@@Z": "0x7d1168",
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0",
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "??_R0?AVPartInstance@RBX@@@8": "0x92dd50",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "___RTDynamicCast": "0x6a17c6",
+        "?getCoordinateFrame@GCamera@G3D@@QBE?AVCoordinateFrame@2@XZ": "0x5107b0",
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0",
+        "?getPartSizeXml@PartInstance@RBX@@QBEABVVector3@G3D@@XZ": "0x598cd0",
+        "?handles3d@DrawAdorn@RBX@@SAXABVVector3@G3D@@ABVCoordinateFrame@4@PAVAdorn@2@W4HandleType@2@0@Z": "0x6776a0"
+      }
+    },
+    {
+      "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sResizeTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+      "address": "0x5c64c0",
+      "size": 23,
+      "exact": true,
+      "bindings": {
+        "?flag@?1??get@?$NativeToolName@VResizeTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979684",
+        "?callDoDeclare@?$NativeToolName@VResizeTool@RBX@@@RBX@@SAXXZ": "0x5c61c0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?doDeclare@?$NativeToolName@VResizeTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5c90"
+      }
+    }
+  ],
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\workspace-model-vector-include",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "revision": "514ce3147925ab0ff8714772717e7d333d978eb1",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "source_sha256": {
+    "rebuild/2008-06/native-classes/CRobloxDoc.cpp": "e9211be6e836b8731392ce168529219e08b69e91676c212eaeebe05170f0bc10",
+    "tools/rbxgs/Client/Network/Client.cpp": "f77698165875cc111423ab7dee0b7ae4d0b7bf174c10888446323c939f9c2e15",
+    "tools/rbxgs/Client/Network/Server.cpp": "833e684e542405546057fcb8a3ced1f59468d52dfcb0f42ce5e0de0e0a9ff4fa"
+  },
+  "client_path": [
+    "0044f8d0",
+    "00495e60",
+    "0049fe20",
+    "0049fc50",
+    "004961d0",
+    "NetworkClient @ 00938c88"
+  ],
+  "server_path": [
+    "0044f8d0",
+    "00495e70",
+    "004a40d0",
+    "004a3e40",
+    "00496240",
+    "NetworkServer @ 00939724"
+  ],
+  "candidate_symbols": [
+    "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z",
+    "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z"
+  ],
+  "scope": "Address calls and service-name strings proven; original class-method names corroborated by recovered 2008 source. Actual linked provider bodies and complete network class declarations remain open; no active swap."
+}

@@ -1,0 +1,10 @@
+{
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "fixture_sha256": "a0b2987ed12eadf38633336f6d4b5034d6baf4b2be88b4e5868c3111e9ab3d4c",
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-p4-reference\\Roblox.exe",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\local-panel.rbxl"
+  ],
+  "pid": 33796,
+  "content_is_private_copy": true
+}

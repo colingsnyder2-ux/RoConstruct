@@ -1,0 +1,63 @@
+{
+  "revision": "033913505c5972023355eacd32dc66b1d664c4eb",
+  "exe_sha256": "77f6e7d03d02f3aee188dd3974acf2f5263a0277743c463b07041a2bfa33db53",
+  "observer_sha256": "fab122da510e26941fa875ac223b944bb9cedae9bf9721cc0b11e4923b8e5575",
+  "cases": {
+    "low": {
+      "exit": 0,
+      "torso": [
+        2.23312362e-17,
+        2.99912405,
+        -2.41138697
+      ],
+      "fixture_sha256": "95d64629e1c80f80aa426690b782a138b11e3664533550c3066ae845e0b37dfd",
+      "snapshot_sha256": "3294b1fc14f786b91fedea9f1de1036f175ba4a5d5de400762478d7f6db7c2fd"
+    },
+    "normal": {
+      "exit": 0,
+      "torso": [
+        2.84233476e-19,
+        2.99912405,
+        -15.9993362
+      ],
+      "fixture_sha256": "0f53aa3ee5d3b4ceab3df427fc4d450dce7ac48f06c9de418ca0cc1ba7c6756f",
+      "snapshot_sha256": "d760d0721c3c8deff2c703360e57f76ae64824a1ec8dc60c4abd632a4e91c1ab"
+    },
+    "rung_idle": {
+      "exit": 0,
+      "torso": [
+        7.94284803e-20,
+        2.99912167,
+        7.94278276e-20
+      ],
+      "fixture_sha256": "74d4cf0f7b55a9991416b0f4e3668b830ab917d3618110e598bac4513a7a5cff",
+      "snapshot_sha256": "6ed03bd22d9711599ab4202fec8ed26f7f99a064ed6b89ae619cee42e9d45e5b"
+    },
+    "control_idle": {
+      "exit": 0,
+      "torso": [
+        7.94284803e-20,
+        2.99912405,
+        7.94278276e-20
+      ],
+      "fixture_sha256": "93110e433b627c3da4da3dd0dc3aa6fdd6d1ca8a7339fcca1837084006ace260",
+      "snapshot_sha256": "9beec166a777c3fd80567a9f5245e432db6b2bc3e1e5dc43d6600c1e56aecb5f"
+    },
+    "moving": {
+      "exit": 0,
+      "floor_x": 3.99348307,
+      "torso_x": 3.31929708,
+      "fixture_sha256": "73482407e2bfe8dd36c7c6fc5241e392839cf6db9867ad80e63b618b09f4e0b6",
+      "snapshot_sha256": "da655f0afc88d44ceff1a61df5a52d4610191580347075f410d040c95ee30ee4"
+    },
+    "stationary": {
+      "exit": 0,
+      "floor_x": -3.00190509e-21,
+      "torso_x": 2.64180498e-19,
+      "fixture_sha256": "e6e63e948c16a9bf358c991d1d4068c9c29a380b70da9705887eeb40f644db71",
+      "snapshot_sha256": "aea52f3e9569308b3c2ebdeeae4cebcc3e025ac33b42d5610bfb5fc3ab6e4f0b"
+    }
+  },
+  "scope": "Adapted 00666550 force path on donor ABI; moving-floor scale, rotation, and full original humanoid parity remain unproven.",
+  "P5_complete": false
+}

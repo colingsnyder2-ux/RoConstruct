@@ -1,0 +1,29 @@
+{
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_players_lifetime.py": "2bb7afc55f20dc58891785277fe215370ec0df9e7427988e482d8232b4cd23e2",
+    "rebuild\\2008-06\\native-classes\\PlayersLifetime.cpp": "fba04d63c254b255aa780633f76279cb66ec97cfd3ee3d352427469c66372e66",
+    "rebuild\\2008-06\\tests\\NativePlayersLayout.cpp": "c4befcaa6c8e731010f2dcb74518d32f0f2e60cf503f626f7b7b8147a1864bd0",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "d222c9dc5dfa7cfccfa115597fa72ea02bbfa90965480e9e7c1295c40634a147",
+    "rebuild\\2008-06\\native-headers\\util\\IRenderable.h": "2cbc9cf0b1702eef547d1a9df1ea3b9dce43822cf7277cc5d93065354a721cd5",
+    "tools\\rbxgs\\Client\\Network\\include\\Network\\Players.h": "d9de8cc1f467a2df8217d4baa8c3c58c461fc90fb9ea3569aee62fc2a0880045",
+    "tools\\rbxgs\\Client\\Network\\Players.cpp": "0808f75460b3c27b36e545eb9e0f665c4ea8fd16d993ed9b46c456cc69d3378b"
+  },
+  "object_sha256": "a149d6bad2800be25dd782bb4d2f45aaf972a9a958e16f55c31e9704caf4fbed",
+  "methods": [
+    {
+      "address": "0049bdc0",
+      "size": 461,
+      "symbol": "??0Players@Network@RBX@@QAE@XZ"
+    },
+    {
+      "address": "00499630",
+      "size": 503,
+      "symbol": "??1Players@Network@RBX@@UAE@XZ"
+    }
+  ],
+  "original_allocation_size": "0x1b0",
+  "vtable": "0x8227b0",
+  "destructor_thunk": "0x499850",
+  "deleting_destructor": "0x499fb0",
+  "scope": "Inactive relocation-masked lifecycle proof; complete virtual bindings and runtime integration remain open."
+}

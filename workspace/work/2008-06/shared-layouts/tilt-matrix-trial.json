@@ -1,0 +1,54 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5de990",
+      "size": 200,
+      "symbol": "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+      "bindings": {
+        "$LN13": "0x5dea48",
+        "__real@bf800000": "0x81c3b8",
+        "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70",
+        "?matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ": "0x5de890",
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220",
+        "?matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ": "0x5de910",
+        "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20",
+        "$LN5": "0x5de9a5",
+        "$LN4": "0x5de9e6",
+        "$LN3": "0x5de9fb",
+        "$LN2": "0x5dea1c"
+      }
+    },
+    {
+      "address": "0x5de890",
+      "size": 127,
+      "symbol": "?matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ",
+      "bindings": {
+        "__ehhandler$?matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ": "0x7d61ae",
+        "?$S1@?1??matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4IA": "0x97a700",
+        "?value@?1??matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4V45@A": "0x97a6dc",
+        "__real@bf800000": "0x81c3b8",
+        "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70"
+      }
+    },
+    {
+      "address": "0x5de910",
+      "size": 127,
+      "symbol": "?matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ",
+      "bindings": {
+        "__ehhandler$?matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ": "0x7d61ce",
+        "?$S2@?1??matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4IA": "0x97a728",
+        "?value@?1??matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ@4V45@A": "0x97a704",
+        "__real@bf800000": "0x81c3b8",
+        "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z": "0x513b70"
+      }
+    }
+  ],
+  "source_sha256": "82317781794dbb9d4e9cddd11c8a4ef18b61dd733e01bf7f7bf22aea585b2080",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "e56367b939ec3c6491f8aea991de594568ef8bc042113bfe5714a18699aa5d90",
+  "link_object_sha256": "14d41c58fed11b05c0f3d49a2095a7ee14206f4d83dfc9491422ba98905a466e",
+  "workspace_header_sha256": "84682cd4a731b5f40990e3bb675259f3c80707b9e5837bb435076fa47f14a11c",
+  "observer_sha256": "9c62a556346fcb0f635d5e83218e0881e854c9adc511d6b515a7a63e4038a83e"
+}

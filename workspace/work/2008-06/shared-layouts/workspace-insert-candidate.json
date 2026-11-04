@@ -1,0 +1,381 @@
+{
+  "scope": "Inactive source candidate; layout, binding, exception path and runtime integration remain unproved.",
+  "inputs": {
+    "rebuild\\2008-06\\tests\\record_native_workspace_insert.py": "4fee95b3983c964a3f96ab37b39160200db7c2ba0901c4fbdc8b9a7f741913f6",
+    "rebuild\\2008-06\\native-classes\\CWorkspaceInsert.cpp": "fec648b61f39ea96d03984b94b5d0b5f22883e7f3b06e66ecff83285242af55b",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "d222c9dc5dfa7cfccfa115597fa72ea02bbfa90965480e9e7c1295c40634a147",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "64d5e38e5f4b23e475e8c9d838e844afd201de8d8c038c76bba5619ac1b6f643",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "f351a88ecde30b3f000c66b116fec565f6022f768e6572654f5a3a1a327b1051",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "1b8e7d9d3df6f06d549c3f1c25c5bf820b005411e1ddd547e9bac631900a0ace",
+    "rebuild\\2008-06\\native-headers\\util\\RunStateOwner.h": "a7f28d3b844e55269b3bf457b25216c74ea8bfe019e1da5396f761154e7a974b",
+    "rebuild\\2008-06\\native-headers\\v8xml\\XmlSerializer.h": "64605ae487e3015a62cb8367127abe6953f19824915d2d6fcd2d182dd4b3ac86",
+    "rebuild\\2008-06\\native-classes\\SelectionFront.cpp": "2aa88ff08298e9ac2990091e30c1a90acd45e633682c1d2f78f74c4f4c5c1da1",
+    "rebuild\\2008-06\\native-classes\\InstanceClassLookup.cpp": "391fa34cdf81d0a1b49573d1acb76cde61a9a4bfe288535b34586683ac082a34"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoWorkspaceInsert.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceInsert.cpp"
+  ],
+  "object_sha256": "3ad7c561c33649c1d6dc549a034a8257f4995f5ecff05fcc08407b6b18a4f4d5",
+  "symbol": "?insert@CWorkspace@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@_N@Z",
+  "candidate_size": 693,
+  "original_size": 606,
+  "relocation_normalized_exact": false,
+  "original_call_sites": {
+    "0x46ba16": "0x46ae30",
+    "0x46ba63": "0x421cb0",
+    "0x46ba8f": "0x413c20",
+    "0x46bb34": "0x58f6c0",
+    "0x46bb6a": "0x593250",
+    "0x46bbb3": "0x5911d0",
+    "0x46bbf5": "0x413b00"
+  },
+  "candidate_relocations": {
+    "71": "?findFirstChildByClassName@Instance@RBX@@QBEPAV12@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "122": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+    "148": "??$create@VSelection@RBX@@@ServiceProvider@RBX@@SAPAVSelection@1@PBVInstance@1@@Z",
+    "192": "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+    "311": "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "336": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+    "353": "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+    "382": "??1XmlElement@@QAE@XZ",
+    "388": "??3@YAXPAX@Z",
+    "407": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+    "421": "??1XmlElement@@QAE@XZ",
+    "427": "??3@YAXPAX@Z",
+    "442": "??1TextXmlParser@@QAE@XZ",
+    "480": "?insertInstances@RootInstance@RBX@@QAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@W4InsertMode@2@W4PromptMode@2@@Z",
+    "546": "??$setSelection@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0@Z",
+    "561": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+    "576": "??1Lock@DataModel@RBX@@QAE@XZ",
+    "621": "?end@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@XZ",
+    "635": "?begin@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@XZ",
+    "679": "??$for_each@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+    "689": "__CxxThrowException@8"
+  },
+  "native_crt_profile": {
+    "preprocess_flags": [
+      "/nologo",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CWorkspaceInsert.cpp",
+      "/P"
+    ],
+    "compile_flags": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertNativeProfile.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertNativeProfile.cpp"
+    ],
+    "object_sha256": "5e59c865e6913b402d7650d938de9bd16cfbab7c80a611710cb59350903d4f75",
+    "original_msvcp90_import": "?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ",
+    "main_size": 606,
+    "main_relocation_normalized_exact": true,
+    "verified_main_bindings": {
+      "0x47": {
+        "symbol": "?findFirstChildByClassName@Instance@RBX@@QBEPAV12@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "target": "0x46ae30"
+      },
+      "0x7a": {
+        "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+        "target": "0x411b40"
+      },
+      "0x94": {
+        "symbol": "??$create@VSelection@RBX@@@ServiceProvider@RBX@@SAPAVSelection@1@PBVInstance@1@@Z",
+        "target": "0x421cb0"
+      },
+      "0xc0": {
+        "symbol": "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+        "target": "0x413c20"
+      },
+      "0x137": {
+        "symbol": "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+        "target": "0x4293d0"
+      },
+      "0x154": {
+        "symbol": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+        "target": "0x415350"
+      },
+      "0x165": {
+        "symbol": "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+        "target": "0x58f6c0"
+      },
+      "0x182": {
+        "symbol": "??1XmlElement@@QAE@XZ",
+        "target": "0x413a70"
+      },
+      "0x188": {
+        "symbol": "??3@YAXPAX@Z",
+        "target": "0x6a067a"
+      },
+      "0x19b": {
+        "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "target": "0x593250"
+      },
+      "0x1a9": {
+        "symbol": "??1XmlElement@@QAE@XZ",
+        "target": "0x413a70"
+      },
+      "0x1af": {
+        "symbol": "??3@YAXPAX@Z",
+        "target": "0x6a067a"
+      },
+      "0x1be": {
+        "symbol": "??1TextXmlParser@@QAE@XZ",
+        "target": "0x4147c0"
+      },
+      "0x1e4": {
+        "symbol": "?insertInstances@RootInstance@RBX@@QAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@W4InsertMode@2@W4PromptMode@2@@Z",
+        "target": "0x5911d0"
+      },
+      "0x226": {
+        "symbol": "??$setSelection@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0@Z",
+        "target": "0x413b00"
+      },
+      "0x235": {
+        "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+        "target": "0x5a2fe0"
+      },
+      "0x244": {
+        "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+        "target": "0x5773c0"
+      }
+    },
+    "total_candidate_size_including_exception_funclet": 697,
+    "parser_constructor": {
+      "symbol": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+      "size": 91,
+      "relocation_normalized_exact": true
+    },
+    "parser_destructor": {
+      "symbol": "??1TextXmlParser@@QAE@XZ",
+      "candidate_size": 82,
+      "original_size": 82,
+      "relocation_normalized_exact": true,
+      "compile_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob1",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertImplicitDtor.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertImplicitDtor.cpp"
+      ],
+      "object_sha256": "26714d98c13f55a65e2d7991ca74caf8003b9ff5f9c8e2464782ddcbadc9d5e0"
+    },
+    "exception_funclet": {
+      "size": 91,
+      "relocation_normalized_exact": true,
+      "verified_targets": {
+        "612": {
+          "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z",
+          "target": "0x55a8f0"
+        },
+        "625": {
+          "symbol": "?end@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@XZ",
+          "target": "0x68ff20"
+        },
+        "639": {
+          "symbol": "?begin@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@XZ",
+          "target": "0x68fef0"
+        },
+        "683": {
+          "symbol": "??$for_each@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+          "target": "0x5903f0"
+        },
+        "693": {
+          "symbol": "__CxxThrowException@8",
+          "target": "0x6a158c"
+        }
+      }
+    },
+    "selection": {
+      "setSelection": {
+        "symbol": "??$setSelection@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0@Z",
+        "size": 141,
+        "relocation_normalized_exact": true
+      },
+      "front": {
+        "symbol": "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+        "size": 235,
+        "relocation_normalized_exact": true,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/FoSelectionFront.obj",
+          "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SelectionFront.cpp"
+        ]
+      }
+    },
+    "class_lookup": {
+      "methods": [
+        {
+          "address": "0041f2b0",
+          "symbol": "?getClassNameStr@Instance@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "size": 44,
+          "relocation_normalized_exact": true
+        },
+        {
+          "address": "0046ae30",
+          "symbol": "?findFirstChildByClassName@Instance@RBX@@QBEPAV12@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "size": 349,
+          "relocation_normalized_exact": true
+        }
+      ],
+      "existing_getter_object_sha256": "f41959efdd601b24faf9a841d656f5e52b99e1963a400678ff0e697c72c19dd1",
+      "verified_calls": [
+        {
+          "symbol": "?getClassNameStr@Instance@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "target": "0x41f2b0"
+        }
+      ],
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoInstanceClassLookup.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceClassLookup.cpp"
+      ]
+    },
+    "scope": "Original import profile matches insert main body and exception funclet with listed targets; parser ctor/dtor match separately. Remaining bindings, linking and runtime remain unverified."
+  }
+}

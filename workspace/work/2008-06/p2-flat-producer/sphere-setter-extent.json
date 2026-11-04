@@ -1,0 +1,9 @@
+{
+  "setter_address": "00682350",
+  "recorded_size": 211,
+  "proven_size": 212,
+  "end_exclusive": "00682424",
+  "full_function_sha256": "0cac96cc444866b961f4e2619df5f9871c44cf139055a945d15f3e8d2f5ecdf8",
+  "proof": "Cold block00682420 is targeted by006823e8. Final jmp00682422 ->006823f0 ends00682424, followed by int3 padding. Recorded extent truncates its displacement.",
+  "registry_or_server_modified": false
+}

@@ -1,0 +1,69 @@
+{
+  "revision": "0ad4f9deef5d9bc773470a73d7499f70573921ea",
+  "exe_sha256": "46c7be1227e92daf892695b556d56621bbcb24a480b7f7d371e2941358fa4136",
+  "observer_sha256": "55dcfdae46792505f75ad8a1b0a36a928cdeda7cead716c7394dcb60cef3090c",
+  "cases": {
+    "edit": {
+      "fixture_sha256": "c99b954c03b276eb6e324d936055fe4a89a5947b9e3b84720a5286270569c3a5",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "frames": 10,
+      "play": false,
+      "exit": 0
+    },
+    "play": {
+      "fixture_sha256": "c99b954c03b276eb6e324d936055fe4a89a5947b9e3b84720a5286270569c3a5",
+      "position": [
+        3,
+        4,
+        5
+      ],
+      "frames": 10,
+      "play": true,
+      "exit": 0
+    },
+    "wait-early": {
+      "fixture_sha256": "e354db89d4c5ed157aa8c26c1b58d187df80b76d0f77f169b19c9558e7824069",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "frames": 1,
+      "play": true,
+      "exit": 0
+    },
+    "wait-complete": {
+      "fixture_sha256": "e354db89d4c5ed157aa8c26c1b58d187df80b76d0f77f169b19c9558e7824069",
+      "position": [
+        3,
+        4,
+        5
+      ],
+      "frames": 10,
+      "play": true,
+      "exit": 0
+    },
+    "disabled": {
+      "fixture_sha256": "f9d3e23747c7200c2b51db53ff369f03da26a25d48b765cbb559da62925172f4",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "frames": 10,
+      "play": true,
+      "exit": 0
+    }
+  },
+  "P5_complete": false,
+  "scope": "Serialized Script, opt-in RunService transition and shimmed fixed-step heartbeat.",
+  "remaining": [
+    "Original frame-loop and scheduler parity",
+    "Normal-launch controls and character movement",
+    "Runtime anchor transitions and original fixed-step comparison"
+  ]
+}

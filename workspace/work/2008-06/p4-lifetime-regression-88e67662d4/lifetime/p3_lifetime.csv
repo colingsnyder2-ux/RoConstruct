@@ -1,0 +1,17 @@
+cycle,stage,models,drawn,red,green,stationary,pass
+0,loaded,2,2,2645,2647,1,1
+0,transformed,2,2,2644,3493,1,1
+0,reparented,2,2,2644,3493,1,1
+0,detached,1,1,2660,0,1,1
+0,reattached,2,2,2644,3493,1,1
+0,inserted,3,3,2633,3493,1,1
+0,insert_removed,2,2,2644,3493,1,1
+0,removed,1,1,2660,0,1,1
+1,loaded,2,2,2645,2647,1,1
+1,transformed,2,2,2644,3493,1,1
+1,reparented,2,2,2644,3493,1,1
+1,detached,1,1,2660,0,1,1
+1,reattached,2,2,2644,3493,1,1
+1,inserted,3,3,2633,3464,1,1
+1,insert_removed,2,2,2644,3493,1,1
+1,removed,1,1,2660,0,1,1

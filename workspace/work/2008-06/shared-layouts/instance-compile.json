@@ -1,0 +1,15 @@
+{
+  "revision": "5ac70398706bf5382a6109bb33834c63c1fc4f9d",
+  "compiler": 21022,
+  "compile_exit": 0,
+  "size": 304,
+  "parent_offset": 260,
+  "association_offset": 236,
+  "layout_log_sha256": "4c333bdc9bcae5b6e07862514c056ee88bcfbcb0c43bd6f13f6f5e8ed495e371",
+  "sources": {
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "a378024e49532e65e12b62cf70e7a25c2c520bfa51c33f004f8bd2bcbefebfdc",
+    "rebuild/2008-06/native-headers/util/GuidItem.h": "52b916f8ce58136d5e46f1a0c0e6aea57697ed918bca6f9febc757320fece1a6",
+    "rebuild/2008-06/tests/NativeInstanceLayout.cpp": "a405f2915f135583d7ae60512308b109e8fc569b7887dd1a0c1f2d3ee9c776c6"
+  },
+  "scope": "Inactive candidate reconstructed from original RTTI and existing recovered source. Size and two offsets checked; complete method ABI and member lifetimes remain unverified."
+}

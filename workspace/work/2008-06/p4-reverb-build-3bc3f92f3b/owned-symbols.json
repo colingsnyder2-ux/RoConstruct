@@ -1,0 +1,1724 @@
+{
+ "00401670": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??2@YAPAXIPAX@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??2@YAPAXIPAX@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??2@YAPAXIPAX@Z"
+  }
+ ],
+ "004019e0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$swap@D@std@@YAXAAD0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??$swap@D@std@@YAXAAD0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$swap@D@std@@YAXAAD0@Z"
+  }
+ ],
+ "00402390": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??0bad_alloc@std@@QAE@PBD@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0bad_alloc@std@@QAE@PBD@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0bad_alloc@std@@QAE@PBD@Z"
+  }
+ ],
+ "004023f0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Set_container@_Iterator_base_aux@std@@QAEXQBV_Container_base_aux@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Set_container@_Iterator_base_aux@std@@QAEXQBV_Container_base_aux@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Set_container@_Iterator_base_aux@std@@QAEXQBV_Container_base_aux@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Set_container@_Iterator_base_aux@std@@QAEXQBV_Container_base_aux@2@@Z"
+  }
+ ],
+ "00402400": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Getmycont@_Iterator_base_aux@std@@QBEPBV_Container_base_aux@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Getmycont@_Iterator_base_aux@std@@QBEPBV_Container_base_aux@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Getmycont@_Iterator_base_aux@std@@QBEPBV_Container_base_aux@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Getmycont@_Iterator_base_aux@std@@QBEPBV_Container_base_aux@2@XZ"
+  }
+ ],
+ "00402570": [
+  {
+   "object": "PlayerNativeReverb.obj",
+   "symbol": "??1shared_count@detail@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1shared_count@detail@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1shared_count@detail@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??1shared_count@detail@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1shared_count@detail@boost@@QAE@XZ"
+  }
+ ],
+ "004025b0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z"
+  }
+ ],
+ "00404fb0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Eqrange@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@V123@@2@ABQBVName@RBX@@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Eqrange@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@V123@@2@ABQBVName@RBX@@@Z"
+  }
+ ],
+ "00405e10": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?destroy@sp_counted_base@detail@boost@@UAEXXZ"
+  }
+ ],
+ "00406b80": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??0thread_exception@boost@@QAE@ABV01@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0thread_exception@boost@@QAE@ABV01@@Z"
+  }
+ ],
+ "00407130": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??0?$scoped_lock@Vrecursive_mutex@boost@@@thread@detail@boost@@QAE@AAVrecursive_mutex@3@_N@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$scoped_lock@Vrecursive_mutex@boost@@@thread@detail@boost@@QAE@AAVrecursive_mutex@3@_N@Z"
+  }
+ ],
+ "00409f60": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAEXXZ"
+  }
+ ],
+ "0040ab30": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  }
+ ],
+ "0040abc0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1ClassDescriptor@Reflection@RBX@@UAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1ClassDescriptor@Reflection@RBX@@UAE@XZ"
+  }
+ ],
+ "004116f0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??0?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QAE@ABV01@@Z"
+  }
+ ],
+ "0041d500": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@0@IPAU120@@Z"
+  }
+ ],
+ "00420b50": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Allocate@V_Aux_cont@std@@@std@@YAPAV_Aux_cont@0@IPAV10@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Allocate@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@YAPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@IPAPAV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$_Allocate@V_Aux_cont@std@@@std@@YAPAV_Aux_cont@0@IPAV10@@Z"
+  }
+ ],
+ "004213a0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?push_back@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@Z"
+  }
+ ],
+ "004218a0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?addListener@?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@2@@Z"
+  }
+ ],
+ "00423c00": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Umove@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV23@00@Z"
+  }
+ ],
+ "00432a30": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  }
+ ],
+ "004377b0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0Vector3@G3D@@QAE@XZ"
+  }
+ ],
+ "004389f0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Copy_opt@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@Urandom_access_iterator_tag@std@@@std@@YAPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@00Urandom_access_iterator_tag@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$unchecked_copy@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@@stdext@@YAPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@00@Z"
+  }
+ ],
+ "0043d050": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0ContentId@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0SoundId@Soundscape@RBX@@QAE@XZ"
+  }
+ ],
+ "00442cd0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@3@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@3@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Checked_iterator_base@?$_Vector_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QBEPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@3@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@3@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@3@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@3@XZ"
+  }
+ ],
+ "00445290": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?size@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QBEIXZ"
+  }
+ ],
+ "004452a0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  }
+ ],
+ "00445b60": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Tidy@?$vector@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Tidy@?$vector@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Tidy@?$vector@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Tidy@?$vector@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Tidy@?$vector@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Tidy@?$vector@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Tidy@?$vector@PAVClassDescriptor@Reflection@RBX@@V?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Tidy@?$vector@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Tidy@?$vector@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Tidy@?$vector@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Tidy@?$vector@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Tidy@?$vector@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Tidy@?$vector@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Tidy@?$vector@PAVClassDescriptor@Reflection@RBX@@V?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@@std@@IAEXXZ"
+  }
+ ],
+ "00445b90": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0?$_Container_base_aux_alloc_real@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@std@@@std@@IAE@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$_Container_base_aux_alloc_real@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@std@@@std@@IAE@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$_Container_base_aux_alloc_real@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@std@@@std@@IAE@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$_Container_base_aux_alloc_real@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@std@@@std@@IAE@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  }
+ ],
+ "00446110": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  }
+ ],
+ "0044f2b0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??R?$less@PBVName@RBX@@@std@@QBE_NABQBVName@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??R?$less@PBVName@RBX@@@std@@QBE_NABQBVName@RBX@@0@Z"
+  }
+ ],
+ "00456e80": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?reset@?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QAEXXZ"
+  }
+ ],
+ "00458e90": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Destroy@?$vector@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@IAEXPAPAVPropertyDescriptor@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Destroy@?$vector@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXPAPAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Destroy@?$vector@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@std@@IAEXPAPAVFunctionDescriptor@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Destroy@?$vector@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXPAPAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Destroy@?$vector@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@IAEXPAPAVSignalDescriptor@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Destroy@?$vector@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXPAPAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Destroy@?$vector@PAVClassDescriptor@Reflection@RBX@@V?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@@std@@IAEXPAPAVClassDescriptor@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Destroy@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@IAEXPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Destroy@?$vector@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@IAEXPAPAVPropertyDescriptor@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Destroy@?$vector@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXPAPAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Destroy@?$vector@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@std@@IAEXPAPAVFunctionDescriptor@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Destroy@?$vector@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXPAPAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Destroy@?$vector@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@IAEXPAPAVSignalDescriptor@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Destroy@?$vector@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@IAEXPAPAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Destroy@?$vector@PAVClassDescriptor@Reflection@RBX@@V?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@@std@@IAEXPAPAVClassDescriptor@Reflection@RBX@@0@Z"
+  }
+ ],
+ "00459670": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Copy_backward_opt@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@Urandom_access_iterator_tag@std@@@std@@YAPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@00Urandom_access_iterator_tag@0@U_Scalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Move_backward_opt@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@Urandom_access_iterator_tag@std@@U_Undefined_move_tag@4@@std@@YAPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@00Urandom_access_iterator_tag@0@U_Undefined_move_tag@0@U_Range_checked_iterator_tag@0@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Unchecked_move_backward@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@@stdext@@YAPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@00@Z"
+  }
+ ],
+ "00459830": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?erase@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@2@@Z"
+  }
+ ],
+ "0046cee0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z"
+  }
+ ],
+ "004898d0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?findServiceProvider@ServiceProvider@RBX@@SAPBV12@PBVInstance@2@@Z"
+  }
+ ],
+ "004969c0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??9const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??9?$_Vector_const_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QBE_NABV01@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??9const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??9const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??9const_iterator@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??9const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??9const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBE_NABV012@@Z"
+  }
+ ],
+ "004ab070": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@PAU342@@Z"
+  }
+ ],
+ "004abdf0": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@@Z"
+  }
+ ],
+ "004af530": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?erase@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+  }
+ ],
+ "004b0d80": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@@Z"
+  }
+ ],
+ "004c7890": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Insert_n@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@2@IABQAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@Z"
+  }
+ ],
+ "004d71d0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Same_container@_Iterator_base_aux@std@@QBE_NABV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Same_container@_Iterator_base_aux@std@@QBE_NABV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Same_container@_Iterator_base_aux@std@@QBE_NABV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Same_container@_Iterator_base_aux@std@@QBE_NABV12@@Z"
+  }
+ ],
+ "004dc3e0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@V_Aux_cont@std@@@std@@QAEXPAV_Aux_cont@2@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@QAEXPAPAVPropertyDescriptor@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@QAEXPAPAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@QAEXPAPAVFunctionDescriptor@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@QAEXPAPAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@QAEXPAPAVSignalDescriptor@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@QAEXPAPAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@QAEXPAPAVClassDescriptor@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@QAEXPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@V_Aux_cont@std@@@std@@QAEXPAV_Aux_cont@2@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@QAEXPAPAVPropertyDescriptor@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@QAEXPAPAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@QAEXPAPAVFunctionDescriptor@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@QAEXPAPAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@QAEXPAPAVSignalDescriptor@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@QAEXPAPAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@QAEXPAPAVClassDescriptor@Reflection@RBX@@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@I@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@I@Z"
+  }
+ ],
+ "004dc620": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z"
+  }
+ ],
+ "00514be0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??0Vector3@G3D@@QAE@ABV01@@Z"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??4Vector3@G3D@@QAEAAV01@ABV01@@Z"
+  }
+ ],
+ "005187a0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?equal_range@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@V123@@2@ABQBVName@RBX@@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?equal_range@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@V123@@2@ABQBVName@RBX@@@Z"
+  }
+ ],
+ "005539d0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+  }
+ ],
+ "0055cc20": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??4?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QAEAAV01@ABV01@@Z"
+  }
+ ],
+ "00563c40": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Fill@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAV12@@std@@YAXPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@0ABQAV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$fill@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAV12@@std@@YAXPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@0ABQAV12@@Z"
+  }
+ ],
+ "005642c0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@@Z"
+  }
+ ],
+ "005644a0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??A?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@QAEAAPBVICreator@RBX@@ABQBVName@3@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??A?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@QAEAAPBVICreator@RBX@@ABQBVName@3@@Z"
+  }
+ ],
+ "00565ff0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?askSetParent@SoundChannel@Soundscape@RBX@@MBE_NPBVInstance@3@@Z"
+  }
+ ],
+ "0056c050": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Ufill@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@IAEPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV34@IABQAV34@@Z"
+  }
+ ],
+ "0056d3d0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@XZ"
+  }
+ ],
+ "00587360": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@@Z"
+  }
+ ],
+ "00589190": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@W4SoundType@RBX@@@1@ABV?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  }
+ ],
+ "00591930": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@XZ"
+  }
+ ],
+ "005a0460": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVSoundChannel@Soundscape@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@UAEPAXABVtype_info@@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVSoundService@Soundscape@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@detail@boost@@UAEPAXABVtype_info@@@Z"
+  }
+ ],
+ "005b6aa0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  }
+ ],
+ "005b6ac0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  }
+ ],
+ "005b6ae0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z"
+  }
+ ],
+ "005b6c20": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@PAU342@@Z"
+  }
+ ],
+ "005b6c40": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  }
+ ],
+ "005b6f70": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??0Sound@Soundscape@RBX@@QAE@PAVSystem@FMOD@@VSoundId@12@_N@Z"
+  }
+ ],
+ "005b7190": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??1?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@QAE@XZ"
+  }
+ ],
+ "005b7210": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Lbound@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@ABVSoundId@Soundscape@RBX@@@Z"
+  }
+ ],
+ "005b7250": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QAEXXZ"
+  }
+ ],
+ "005b7680": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1SoundChannel@Soundscape@RBX@@UAE@XZ"
+  }
+ ],
+ "005b78a0": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@XZ"
+  }
+ ],
+ "005b78e0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@D@Z"
+  }
+ ],
+ "005b9a30": [
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?erase@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?erase@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+  }
+ ],
+ "005b9f30": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?insert@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@@Z"
+  }
+ ],
+ "005ba660": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?insert@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@@Z"
+  }
+ ],
+ "005bab80": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??A?$map@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@@std@@QAEAAV?$shared_ptr@VSound@Soundscape@RBX@@@boost@@ABVSoundId@Soundscape@RBX@@@Z"
+  }
+ ],
+ "005bb120": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1SoundService@Soundscape@RBX@@UAE@XZ"
+  }
+ ],
+ "005bb5f0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?loadSound@SoundService@Soundscape@RBX@@QAE?AV?$shared_ptr@VSound@Soundscape@RBX@@@boost@@VSoundId@23@_N@Z"
+  }
+ ],
+ "005bc160": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0SoundService@Soundscape@RBX@@QAE@XZ"
+  }
+ ],
+ "005bc480": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0SoundChannel@Soundscape@RBX@@QAE@XZ"
+  }
+ ],
+ "005c72e0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@std@@QAE@ABV01@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@std@@QAE@ABV01@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z"
+  }
+ ],
+ "005e5a80": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?removeListener@?$Notifier@VRunService@RBX@@VHeartbeat@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@2@@Z"
+  }
+ ],
+ "005ec170": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Kfn@?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@SAABVSoundId@Soundscape@RBX@@ABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Left@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Iter_cat@V?$_Vector_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@@std@@YA?AUrandom_access_iterator_tag@0@ABV?$_Vector_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@0@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Iter_random@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@PAPAV12@@std@@YA?AUrandom_access_iterator_tag@0@ABQAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@0@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Kfn@?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@SAABQBVName@RBX@@ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Left@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Iter_cat@PAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@YA?AUrandom_access_iterator_tag@0@ABQAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Iter_cat@Viterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@YA?AUbidirectional_iterator_tag@0@ABViterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@0@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Left@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Left@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Left@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Kfn@?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@SAABQBVName@RBX@@ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Left@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$_Iter_cat@Viterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@YA?AUbidirectional_iterator_tag@0@ABViterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@0@@Z"
+  }
+ ],
+ "005ecca0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??8?$_Vector_const_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QBE_NABV01@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QBE_NABV012@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z"
+  }
+ ],
+ "005f2310": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?get_deleter@?$sp_counted_impl_p@VSound@Soundscape@RBX@@@detail@boost@@UAEPAXABVtype_info@@@Z"
+  }
+ ],
+ "00600660": [
+  {
+   "object": "PlayerNativeReverb.obj",
+   "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1?$shared_ptr@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1?$shared_ptr@VGlobalSettings@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$shared_ptr@VObject@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??1?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$shared_ptr@VGlobalSettings@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$shared_ptr@VObject@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$shared_ptr@VSoundService@Soundscape@RBX@@@boost@@QAE@XZ"
+  }
+ ],
+ "00609bb0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z"
+  }
+ ],
+ "00609bd0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAEXXZ"
+  }
+ ],
+ "00614ff0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@D@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@D@Z"
+  }
+ ],
+ "006189e0": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QAE@XZ"
+  }
+ ],
+ "00620910": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@0@IPAU120@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@0@IPAU120@@Z"
+  }
+ ],
+ "00628f80": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@QAE@XZ"
+  }
+ ],
+ "00645830": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Checked_iterator_assign_from_base@?$_Vector_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QAEXPAPAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@Z"
+  }
+ ],
+ "0064a900": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??H?$_Vector_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QBE?AV01@H@Z"
+  }
+ ],
+ "00667fd0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?lower_bound@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?lower_bound@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z"
+  }
+ ],
+ "0066ff20": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAEXXZ"
+  }
+ ],
+ "00671ae0": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@ABU?$less@VSoundId@Soundscape@RBX@@@1@ABV?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@1@@Z"
+  }
+ ],
+ "006787f0": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??Dconst_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??Diterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEAAU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??Citerator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPAU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??Dconst_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEABU?$pair@QBVName@RBX@@PBVICreator@2@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??Diterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEAAU?$pair@QBVName@RBX@@PBVICreator@2@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??Dconst_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??Diterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEAAU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??Citerator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPAU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??Dconst_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEABU?$pair@QBVName@RBX@@PBVICreator@2@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??Dconst_iterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??Diterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEAAU?$pair@QBVName@RBX@@PBVICreator@2@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??Diterator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEAAU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??Citerator@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QBEPAU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@XZ"
+  }
+ ],
+ "0067fb10": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$vector@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$vector@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$vector@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$vector@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$vector@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$vector@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1?$vector@PAVClassDescriptor@Reflection@RBX@@V?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1Collection@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1Collection@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??1Collection@?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$vector@PAVPropertyDescriptor@Reflection@RBX@@V?$allocator@PAVPropertyDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$vector@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$vector@PAVFunctionDescriptor@Reflection@RBX@@V?$allocator@PAVFunctionDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$vector@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$vector@PAVSignalDescriptor@Reflection@RBX@@V?$allocator@PAVSignalDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$vector@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$allocator@PAV?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1?$vector@PAVClassDescriptor@Reflection@RBX@@V?$allocator@PAVClassDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1Collection@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1Collection@?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??1Collection@?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ"
+  }
+ ],
+ "00681a50": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@@Z"
+  }
+ ],
+ "0068dfa0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAEXXZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAEXXZ"
+  }
+ ],
+ "0068fef0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?begin@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@2@XZ"
+  }
+ ],
+ "0068ff20": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?end@?$vector@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VHeartbeat@2@@RBX@@@std@@@2@XZ"
+  }
+ ],
+ "006a8940": [
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?on3DSettingChanged@SoundService@Soundscape@RBX@@AAEXABVPropertyDescriptor@Reflection@3@@Z"
+  }
+ ],
+ "006f6a20": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??0_Aux_cont@std@@QAE@QBV_Container_base_aux@1@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??0_Aux_cont@std@@QAE@QBV_Container_base_aux@1@@Z"
+  }
+ ],
+ "0070bdf0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onChildAdded@Instance@RBX@@MAEXPAV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onChildRemoving@Instance@RBX@@MAEXPAV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onChildRemoved@Instance@RBX@@MAEXPAV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?destroy@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?destroy@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onChildAdded@Instance@RBX@@MAEXPAV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onChildRemoving@Instance@RBX@@MAEXPAV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onChildRemoved@Instance@RBX@@MAEXPAV12@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?destroy@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?destroy@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?destroy@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?destroy@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z"
+  }
+ ],
+ "0071f210": [
+  {
+   "object": "PlayerNativeReverb.obj",
+   "symbol": "??C?$shared_ptr@VStandardOut@RBX@@@boost@@QBEPAVStandardOut@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Getcont@_Aux_cont@std@@QBEPBV_Container_base_aux@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??C?$shared_ptr@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@QBEPBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??C?$shared_ptr@VStandardOut@RBX@@@boost@@QBEPAVStandardOut@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?get@?$shared_ptr@VGlobalSettings@RBX@@@boost@@QBEPAVGlobalSettings@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Getcont@_Aux_cont@std@@QBEPBV_Container_base_aux@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?get@?$shared_ptr@VInstance@RBX@@@boost@@QBEPAVInstance@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??C?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QBEPAVSound@Soundscape@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "??C?$shared_ptr@VStandardOut@RBX@@@boost@@QBEPAVStandardOut@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Getcont@_Aux_cont@std@@QBEPBV_Container_base_aux@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "??C?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QBEPAVSound@Soundscape@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Getcont@_Aux_cont@std@@QBEPBV_Container_base_aux@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??C?$shared_ptr@VSound@Soundscape@RBX@@@boost@@QBEPAVSound@Soundscape@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "??C?$shared_ptr@VStandardOut@RBX@@@boost@@QBEPAVStandardOut@RBX@@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?get@?$shared_ptr@VGlobalSettings@RBX@@@boost@@QBEPAVGlobalSettings@RBX@@XZ"
+  }
+ ],
+ "00757890": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "?_Lmost@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?_Lmost@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundGC.obj",
+   "symbol": "?_Lmost@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Lmost@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Lmost@?$_Tree@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@W4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@U?$less@W4SoundType@RBX@@@std@@V?$allocator@U?$pair@$$CBW4SoundType@RBX@@V?$shared_ptr@VSoundChannel@Soundscape@RBX@@@boost@@@std@@@6@$0A@@std@@@2@XZ"
+  },
+  {
+   "object": "PlayerNativeSoundService.obj",
+   "symbol": "?_Lmost@?$_Tree@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@2@XZ"
+  }
+ ],
+ "0077d6c0": [
+  {
+   "object": "PlayerNativeSoundChannel.obj",
+   "symbol": "?getParent@Instance@RBX@@QBEPAV12@XZ"
+  }
+ ]
+}

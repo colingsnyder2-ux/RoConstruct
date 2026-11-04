@@ -1,0 +1,40 @@
+{
+  "scope": "Inactive trial. Vector element type and semantics, full ModelInstance/Workspace layout, class lifetimes and linked target implementations remain unproven.",
+  "observer_sha256": "ddcbb554473d2bc15f4c3cb795b4ec86334f970b4840fad0ec879f8338ca46b6",
+  "source_sha256": "a01e1073413f2f171a4d61b213756bdf3e76034181f0057ea8c55f9bd23ea7d4",
+  "profile_sha256": "4427bb9a5fa1247f6a036b296b96c8447a1d796ff34d98bc8bdc2d8ed42e3601",
+  "object_sha256": "610022b01299f13e46193ea474b43eac80ed41fa15e76683d140357ee84383df",
+  "address": "0046b5c0",
+  "size": 373,
+  "original_size": 373,
+  "exact": true,
+  "normalized_offset_only_matches": false,
+  "donor_notifier_offset": "0x32c",
+  "original_notifier_offset": "0x344",
+  "calls": {
+    "?createDataModel@DataModel@RBX@@SA?AV?$shared_ptr@VDataModel@RBX@@@boost@@_N@Z": "0x57c100",
+    "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+    "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+    "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x4530f0",
+    "??$shared_from@VRunService@RBX@@@RBX@@YA?AV?$shared_ptr@VRunService@RBX@@@boost@@PAVRunService@0@@Z": "0x618a40",
+    "?addListener@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@QBEXPAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z": "0x4218a0",
+    "??$find@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": "0x4153b0",
+    "?addListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z": "0x4218a0",
+    "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceFinalConstructVectorTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceFinalConstructVectorProfile.cpp"
+  ],
+  "model_header_sha256": "1606a7b85530c003e44ac975b09b1f40263445def89cbb38896840abe325919c",
+  "overlay_header_sha256": "1606a7b85530c003e44ac975b09b1f40263445def89cbb38896840abe325919c"
+}

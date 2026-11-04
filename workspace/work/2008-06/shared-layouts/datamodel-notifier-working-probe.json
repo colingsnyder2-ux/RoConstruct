@@ -1,0 +1,62 @@
+{
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeDataModelNotifierLayout.cpp": "9cb47b724639b94d73237bae1cd03cd784e76c49ef2d3cf1ff8f2d290f1a8119",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "1a162e664d337de190053f0f2f6fa696669366fe54d7d8e0218b8d4877d29667",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "1081041d9c95ca3f971dce438282fa8aa89a03f7137fc46fd3ac0798c1b380a8",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "0555a158c6dd92c37446a4c7157870812b4114ed96fe5028440aeb455b457200",
+    "rebuild\\2008-06\\tests\\record_native_datamodel_notifiers.py": "31e55c472b3f7a61d018349770d890ae14a35152fee7eff5cabb066409cf66ab"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeDataModelNotifierLayout.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDataModelNotifierLayout.cpp"
+  ],
+  "typed_casts": [
+    {
+      "symbol": "?modelAdded@@YAPAV?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@PAVDataModel@2@@Z",
+      "offset": 336,
+      "body": "8b44240485c074060550010000c333c0c3"
+    },
+    {
+      "symbol": "?modelRemoving@@YAPAV?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@PAVDataModel@2@@Z",
+      "offset": 368,
+      "body": "8b44240485c074060570010000c333c0c3"
+    }
+  ],
+  "scope": "Shared candidate base adjustments only; original View listener usage and ServiceProvider RTTI are separate evidence. Runtime linkage unverified."
+}

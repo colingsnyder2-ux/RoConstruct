@@ -1,0 +1,45 @@
+{
+  "revision": "bf6f9875784d7c23eafae7e67b4b03bdf0d7ea39",
+  "exe_sha256": "a8856dc107a2d190305228ab2002a7912fdd4d0c4daccacda29ff2dcd0ad90bd",
+  "map_sha256": "6ad59822e24b344d13cf1d6a99d5aeb94bc6975854fd1e50a9996c18aef6606f",
+  "sources_sha256": {
+    "rebuild/2008-06/tests/PlayerNativeSound.cpp": "50f749740ba66fae84a787fcca387b8ba40512828ad8b6d989f054bf08ec7b7b",
+    "rebuild/2008-06/tests/PlayerNativeSoundService.cpp": "fd1bade7b04093cb8244fd4b0d8f6b4af00a2d04d4ee718529a1cd4d592f8d74",
+    "rebuild/2008-06/tests/PlayerNativeSoundGC.cpp": "4aa220a33992706ca9c6437d0659878e356a2d5c5a91d68d014ff5464b788c49",
+    "rebuild/2008-06/tests/PlayerNativeSoundChannel.cpp": "ff9c89d02f5dc2846ff813a2fe7d47001ce4b6b119a8d8cefbb3957bbaf89411",
+    "rebuild/2008-06/tests/PlayerNativeSoundStats.cpp": "b3b082835dfc08a04cda883391a8a2d5b724533e96ff7c9c2207a0245d865d80",
+    "rebuild/2008-06/tests/PlayerNativeReverb.cpp": "c02ae0211bfe5cd4a7b023b0d6847a4b776d0b12fb177283ee984689beb3fa10",
+    "rebuild/2008-06/tests/PlayerNativeReverb.h": "edc72f894edc9dbdfda8d9b91af01687a6f9fb6aa3acf90fce3b1467d1c55faa",
+    "rebuild/2008-06/tests/P4SoundAssetTest.cpp": "9b6a9b7b7d4a8ef2df4f2005a91e641740d11ac1299ea14865b4a3bf814e7de5",
+    "rebuild/2008-06/modules/p4-sound-asset.json": "1b60fc0025e88a5b1431164e9ea3731020af9342e16e4690ffa0e7faea39fd10",
+    "rebuild/2008-06/tests/record_p4_sound.py": "fea1fe9187e01eaf41d9affb8ae3d1b3d627074612526cea02e43c3b3b321e49",
+    "rebuild/2008-06/glue/rbxgs/glue_link_stubs.cpp": "f06f02a514c4593d77223a7be69d6c908b39a39b9e610bf318b156986cde102a",
+    "rebuild/2008-06/patches/rbxgs-client.json": "ad4ef379068a422d683086d7f28a66936e24264a62aec380bd8cee25fd500e95",
+    "rebuild/2008-06/out/P4SoundAsset/overlay/App/include/util/Sound.h": "8904e119c0e758343cd47ac2d0053ab05be8021e230acd8619d34d7b320d53f8",
+    "rebuild/2008-06/out/P4SoundAsset/overlay/App/include/v8datamodel/Stats.h": "d871fe62cd524943bafaa1bcdf25503d6536260be8c0a853cd0b09be1724a6c5",
+    "rebuild/2008-06/out/P4SoundAsset/overlay/App/include/v8tree/Instance.h": "38d57b794af4dd983c23100e9c60d4fedd0e798e91a90d6c86157a311268b61f",
+    "tools/rbxgs/Client/App/include/util/Sound.h": "189636ce8ec279e85e1cc060a9a0bd8dbdcd0754cb440ce838572b7ea2312104",
+    "tools/rbxgs/Client/App/include/util/ContentProvider.h": "92e4028852aeb046a9f63255818c750f2cd464b46c2ba4c032083d1e20474429",
+    "tools/openrbx/3rdparty/fmod/api/inc/fmod.h": "930cbd0e990b0b8e54b2f53d4be992075f7df01c7d4fb24a100299d577f4d993",
+    "tools/openrbx/3rdparty/fmod/api/inc/fmod.hpp": "2fe7b20c387b06116bf5d6265fd354f96a944dfac5a1faeaa9f914017c74ca14",
+    "tools/openrbx/3rdparty/fmod/api/inc/fmod_errors.h": "ec1d8de1e90159dda6397dc05d8483253c917571fb5be8192c9d8acd9e16d046"
+  },
+  "tone_sha256": "b0e95cb1badb20186a79c6a191b9baa5835efa56b179e17001c785bd915c7bf3",
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P4SoundAssetTest\\P4SoundAssetTest.exe",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\p4-assets"
+  ],
+  "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p4-sound-stats-runtime-bf6f987578",
+  "reverb_presets_sha256": "68dedc44d800698221fb35e35074de491efa3c5a7ef52567e23b069ac9f1def4",
+  "exit": 0,
+  "P4_complete": false,
+  "scope": "Native Sound memory loader, decoded PCM and ownership; NOSOUND diagnostic.",
+  "remaining": [
+    "Sound service/factory/reflection/heartbeat integration",
+    "audible output and original audio comparison"
+  ],
+  "actual_fmod_dll": {
+    "path": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P4SoundAssetTest\\fmodex.dll",
+    "sha256": "6b99d7373d5426a271c9f61ec732704195addd0ba7bd49699f5a4727d39cd570"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "source_sha256": "a7bc64d90e5daf23998b57789e75aedec4a493656f1fc20b962157620cb6ba6f",
+  "object_sha256": "456231f8b85cd48277e2d2dab29cbe0b4dea49303cbde7cc8d9bf53f17d8fcdc",
+  "compiler": 21022,
+  "profile": [
+    "std::string::c_str noinline",
+    "CString operator PCXSTR noinline"
+  ],
+  "methods": [
+    {
+      "address": "00453750",
+      "size": 350,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+        "?queryUnplay@ChangeHistoryService@RBX@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z": "0x587b70",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00453990",
+      "size": 350,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+        "?queryPlay@ChangeHistoryService@RBX@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z": "0x587a90",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    }
+  ],
+  "scope": "Inactive exact relocation-masked bodies. Imported target bindings and runtime linkage remain open."
+}

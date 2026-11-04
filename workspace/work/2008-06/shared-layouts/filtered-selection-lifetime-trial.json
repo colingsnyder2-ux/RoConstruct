@@ -1,0 +1,194 @@
+{
+  "scope": "Inactive FilteredSelection<PVInstance> constructor, destructor, context lookup and provider factory match; singleton identity, virtual behavior, ownership and runtime remain unproven.",
+  "source_sha256": "0f9c36b67162a04d9ac4067eebfa38a41fe72c5602030787e56233a7bdc31846",
+  "header_sha256": "47053e48f364664f668b7a9477f14af1e59f0a56675430cd4665a2b2be7fc0f1",
+  "observer_sha256": "19e6a066d07bb46f79e8419057772b8caab44acbf967d0467941355523f7a548",
+  "object_sha256": "835757931ecfcabee168abfe7703e6f3d3ca655b1c72177e81e517850ea228ea",
+  "root_selection_offset": "0x134",
+  "root_selection_lifetime": [
+    "constructor 0x57ef30",
+    "destructor 0x57f0b9"
+  ],
+  "methods": [
+    {
+      "address": "0x57eeb0",
+      "symbol": "??0?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAE@XZ",
+      "size": 258,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??0?$FilteredSelection@VPVInstance@RBX@@@RBX@@QAE@XZ": "0x7d9065",
+        "??0?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@QAE@XZ": "0x409960",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x830944",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x830934",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83092c",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6BDebugable@1@@": "0x830924",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x830914",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x830904",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8308f4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8308e4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8308d4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8308c4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B@": "0x8308bc",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??_C@_0BC@MINLHOHN@FilteredSelection?$AA@": "0x8308a4",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468"
+      }
+    },
+    {
+      "address": "0x57f040",
+      "symbol": "??1?$FilteredSelection@VPVInstance@RBX@@@RBX@@UAE@XZ",
+      "size": 288,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??1?$FilteredSelection@VPVInstance@RBX@@@RBX@@UAE@XZ": "0x7d5df4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x830944",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x830934",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83092c",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6BDebugable@1@@": "0x830924",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x830914",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x830904",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8308f4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8308e4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8308d4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8308c4",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B@": "0x8308bc",
+        "?removeFilteredSelection@Selection@RBX@@QAEXPAVISelectionBase@2@@Z": "0x5670f0",
+        "??3@YAXPAX@Z": "0x6a067a",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540"
+      }
+    },
+    {
+      "address": "0x57fba0",
+      "symbol": "?onSelectionChanged@?$FilteredSelection@VPVInstance@RBX@@@RBX@@UAEXABVSelectionChanged@2@@Z",
+      "size": 185,
+      "exact": true,
+      "bindings": {
+        "??_R0?AVPVInstance@RBX@@@8": "0x947f1c",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "___RTDynamicCast": "0x6a17c6",
+        "?push_back@?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@QAEXABQAVPVInstance@RBX@@@Z": "0x4213a0",
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "?erase@?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@2@@Z": "0x459830"
+      }
+    }
+  ],
+  "service_source_sha256": "14d696a98d16a585621a1bd6a45681f93766449b6012118db7a73f4fb55a19c3",
+  "service_object_sha256": "2be979e19163d11d57071f715fad2de09e54266397198d4610f9eeeb43b5d2f0",
+  "service_lookup": {
+    "address": "00580800",
+    "size": 65,
+    "exact": true,
+    "bindings": {
+      "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c",
+      "??_R0?AVInstance@RBX@@@8": "0x92907c",
+      "___RTDynamicCast": "0x6a17c6",
+      "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": "0x5805d0"
+    }
+  },
+  "factory_source_sha256": "3160a77d913d791f0cb48f75344a86700e2efcc382c50e8a6d232431adf2147f",
+  "factory_object_sha256": "405cc8fea4122e7d323019bb8212e3465d81177d946c2f14f2c1c8f5e3f675e4",
+  "model_provider_factory": {
+    "address": "005806c0",
+    "size": 228,
+    "exact": true,
+    "bindings": {
+      "__ehhandler$??$create@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VModelInstance@RBX@@@1@XZ": "0x7d9168",
+      "??$find@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VModelInstance@RBX@@@1@XZ": "0x57fdd0",
+      "??$create@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@boost@@XZ": "0x57f790",
+      "?flag@?1???$getClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x9753c8",
+      "??$callDoGetClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x57ddb0",
+      "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+      "??$doGetClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x57d860",
+      "__imp___invalid_parameter_noinfo": "0x802890",
+      "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+      "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+    }
+  },
+  "provider_lookups": [
+    {
+      "tool": "PVInstance",
+      "address": "0x57fd20",
+      "size": 174,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??$find@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": "0x7d5eb0",
+        "?flag@?1???$getClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x9753c4",
+        "??$callDoGetClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x57dda0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x57d800",
+        "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x4124c0",
+        "__imp___invalid_parameter_noinfo": "0x802890"
+      }
+    },
+    {
+      "tool": "ModelInstance",
+      "address": "0x57fdd0",
+      "size": 174,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??$find@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VModelInstance@RBX@@@1@XZ": "0x7d5eb0",
+        "?flag@?1???$getClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x9753c8",
+        "??$callDoGetClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x57ddb0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@V?$FilteredSelection@VModelInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x57d860",
+        "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x4124c0",
+        "__imp___invalid_parameter_noinfo": "0x802890"
+      }
+    }
+  ],
+  "provider_factory": {
+    "address": "005805d0",
+    "size": 228,
+    "exact": true,
+    "bindings": {
+      "__ehhandler$??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": "0x7d9168",
+      "??$find@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@QBEPAV?$FilteredSelection@VPVInstance@RBX@@@1@XZ": "0x57fd20",
+      "??$create@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@boost@@XZ": "0x57f710",
+      "?flag@?1???$getClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x9753c4",
+      "??$callDoGetClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x57dda0",
+      "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+      "??$doGetClassIndex@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x57d800",
+      "__imp___invalid_parameter_noinfo": "0x802890",
+      "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+      "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+    }
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ]
+}

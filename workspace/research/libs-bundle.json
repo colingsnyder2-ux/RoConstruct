@@ -1,0 +1,70 @@
+{
+  "folder": "1G6clBqiizoU2X3O1kdXDaEi2myhMNYJh",
+  "trees": {
+    "RakNet-master": {
+      "id": "1eWKdWplE6sfkNbP7GQi7-0qqJXoyCqWk",
+      "sha256": "97327bfa1da02f57f4326b42298687d97fe9b66a6ecd986562fdba6debe15e75",
+      "size": 758036
+    },
+    "mfc-8.0": {
+      "id": "1Yb2PzfcDGgUIBIHiBbIKDoU4HAQGj2oh",
+      "sha256": "1de994456c1f1cb10d75b3454b7664f60714845b2a9c999aee4a00aa808d6e12",
+      "size": 90249056
+    },
+    "mfc-9.0": {
+      "id": "13VPKHkQnR0tmJP22_bggLJO5vTGPw_9U",
+      "sha256": "5d63724c5d798979294dddec28a38f4fde907140d1cdfea623017be42c477926",
+      "size": 23843843
+    },
+    "mfc-9.0-rtm": {
+      "id": "1tjxjZV4GXUkeyI_AKlNEtq1R9ze7X6Bz",
+      "sha256": "131f313c5cc65ef64cdd48298153406f6cd5942f914e169d83b00c75e27aa026",
+      "size": 8112777
+    },
+    "rbxgs-net-custom": {
+      "id": "1sLDZg6CFgnN0TtxhGPg8z-gx-JBOTbO6",
+      "sha256": "8f187a7db778985b29597a193ce10c17ade46b7cc5b582e6d5aaa32ded709ad4",
+      "size": 3169
+    },
+    "rbxgs-net-custom-lower": {
+      "id": "1io5OpM2n8TSKgic7HKeblVRMfnPRpM-s",
+      "sha256": "6f6af9430bcc1adadf6aa28df9f06cbde2895be34399becbc480225e91e749b8",
+      "size": 3182
+    },
+    "rccservice": {
+      "id": "1FQKQOQevWvsYT6Ac8biKDMQJZG8CWUGk",
+      "sha256": "d3fac644fb15f552ef2172cbf78a4e36313385994300b26970541205abfb4c22",
+      "size": 1685567
+    },
+    "scintilla-mfc-1.20": {
+      "id": "1E011Yd0Ae6vIxgd8XgNxaK5BX8Mh4JFH",
+      "sha256": "ca21d6fb6f47d25a1cef485bcf60442bca3ed8bf904c2401e2c293640bbce324",
+      "size": 55765
+    },
+    "templates": {
+      "id": "1FrvWIFuapbNQYMKYGpOS6waOHNZNwR_V",
+      "sha256": "be57ff46efd2c591f77033c42f176c491292e196e8d8ad8cc95e7b1c172bc75a",
+      "size": 20704
+    },
+    "wildmagic-2": {
+      "id": "1pG__F50m48PUDD366rQUzsrDTp-sz7UC",
+      "sha256": "e156306515668d3045fbe6df000e04992e924f8d5a5467a64bb6af1b270d4b94",
+      "size": 1183459
+    },
+    "xtp-11.2.2": {
+      "id": "10GfGQgPDDCha2bI5fIGonWXywQbDe1Uk",
+      "sha256": "cd654f9d40e6adb5c16cdfd76895a284af17d013525be2fd1ac60b4bf710c248",
+      "size": 8687500
+    },
+    "xtp-13.2.1": {
+      "id": "1wRbaUlN3wL8eqSCXh_vyhGm33EGmvI25",
+      "sha256": "e6b5eebb83e84b70b36d91b9c2e586299b655fd57285092aac8f19a95de743d3",
+      "size": 11801732
+    },
+    "xtp-15.2.1": {
+      "id": "1_kgp-ApUymZ1y51lFJNjHF_7zPTNPar0",
+      "sha256": "f11fcf5ce944dcc15f6ba27df2619d5ce9bc59648424ab95aa2038974c4db721",
+      "size": 111116642
+    }
+  }
+}

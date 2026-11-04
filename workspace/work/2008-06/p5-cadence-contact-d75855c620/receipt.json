@@ -1,0 +1,16 @@
+{
+  "revision": "d75855c620f6c1257270a70e48a2071d9fdc35c1",
+  "exe_sha256": "46c7be1227e92daf892695b556d56621bbcb24a480b7f7d371e2941358fa4136",
+  "test_sha256": "43ecf4d9bfc971cb04591eb7d8d931bfe08dab0f4c6d831c2d5094b8357d5ccf",
+  "cases": {
+    "contact": {
+      "exit": 0,
+      "fixture_sha256": "c1ab971d810d5537c34da9a9d939f0628d1370c3793546d8bc017b5536d71108"
+    },
+    "removed-script": {
+      "exit": 0,
+      "fixture_sha256": "31c769d4c34c68d2b380e3230d557f92b1e0d0dfbb8e318ccb1cf66cc39f1663"
+    }
+  },
+  "scope": "Two authored regression cases; not original-client parity."
+}

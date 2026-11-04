@@ -1,0 +1,73 @@
+{
+  "revision": "a58be749395415c9a3bcbc01844d8c35ddfbcad6",
+  "dirty_worktree": true,
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_frame_marshalling.py": "7a28f388fd52f331941212fd46e2448dd031a967d79a19034c87374f34302c4e",
+    "rebuild\\2008-06\\native-classes\\CMarshalWindow.cpp": "7bada83a8026fbbdda0afe84aebc5c6eea810302449c4c0400b171a493d72652",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaption.cpp": "cae44d0b3b2ad07459b7cec4bc05bcbf9eebac7e7be6c8b264e57c8fee509077",
+    "rebuild\\2008-06\\native-classes\\MarshalWindowRegistry.cpp": "843e1ee99249b1cb02b6a586ebdc63fe3f47a25fb6b23003f6286a5c8ccce640",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\SelectionChanged.h": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
+    "rebuild\\2008-06\\native-headers\\util\\MarshalWindow.h": "dc5a302f6eba7575374a7dc38691d4cea32d7298cdb9844eab00e271f43074d8",
+    "rebuild\\2008-06\\native-headers\\util\\MarshaledListener.h": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
+    "rebuild\\2008-06\\native-headers\\util\\EventDataBase.h": "36ade94ab2c1c538faef3a0ba7ac0a4ad74eb8e48e0be59d9f58f64128a2893e",
+    "rebuild\\2008-06\\native-headers\\CSelectionCaption.h": "42dc72d083e2c180e2feda924479a6e28d63a84fe3e4f97cbe4cad41e15038e3",
+    "rebuild\\2008-06\\native-headers\\ActiveDocView.h": "e30143470935d4675ddd3f8dd64806618dc363502f1fe1d67714d6083eeed393",
+    "rebuild\\2008-06\\tests\\NativeMarshalWindowLayout.cpp": "9aeca45c86aee14894eb64c7d033d725159f5cc0efe5667d70f62f745955a9a2",
+    "rebuild\\2008-06\\tests\\NativeMarshaledListener.cpp": "9a4ed94202a0f89efeb74cf9b971aedd80cc2ec83b58b15412cdb1064a19e915",
+    "rebuild\\2008-06\\tests\\NativeSelectionCaptionLayout.cpp": "f80a2a121c352b74d26f4dcd3a14fb9428e369e92e97a7be85e04d17fefb92cc",
+    "rebuild\\2008-06\\tests\\NativeMarshalWindowRuntime.cpp": "26eb321f97e42096a00c1090c32b534f3782179007bf174cf01aa2587c8f5bdd",
+    "rebuild\\2008-06\\tests\\record_native_marshal_runtime.py": "0f3c3b044582cbfc8d4561643fa5de8911346174016271657173de82a4ebdd91",
+    "rebuild\\2008-06\\tests\\record_native_pane_callbacks.py": "1c9eafb65f0148f0b1a05ded9585eda7244a23049f36bfdac0c94fec6c59830f",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "a5c154265d6ccfe2ec2d7cb28899f73e3f586790e0db3b839ad809d3d02761b5",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "b6a0cfa8124e4724bf6288321bb3a6bbe33f38abe174bad5b3a559cd86861a0f",
+    "rebuild\\2008-06\\native-headers\\CDataModelPropGrid.h": "2451573c8e1baf62d043e01be78d62987f89936fe8a128ff2c7745340ea840f3",
+    "rebuild\\2008-06\\native-classes\\ActiveDocument.cpp": "e21af7a8fd9e6d2417a904cd7286c727eda3277f303a5fa7e6c527db01f40185",
+    "rebuild\\2008-06\\native-classes\\ActiveDocViewRefresh.cpp": "48dbaa463ab212e449011efdad2980a22842cd20be03b5d55608dc300009f7a6",
+    "rebuild\\2008-06\\native-classes\\CDataModelPropGridUpdate.cpp": "416ba7095b6ec59f3925fc1fbb910b8f9732f673cd4480d954e318a98b8f10ea",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaptionUpdate.cpp": "ff23188a1dbc60cd913755bba1322afe9b56d8f87b52bc9bcf7cda684d4cda50",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaptionText.cpp": "c1c361e6d4e6cd27c9d0800a95135be14de383df2164aaa93ad3a6710ea343b5",
+    "rebuild\\2008-06\\tests\\record_native_property_grid.py": "b0aeaa57ce903a5de191dacd7bc3a6d1da3b2aac08b90b4c9f81faf551899a09",
+    "rebuild\\2008-06\\tests\\NativePropertyGridLayout.cpp": "f6a1653b330e219a57b78837fd435dd8c533301c818724352815680216782b19",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
+    "rebuild\\2008-06\\native-headers\\CPropGrid.h": "e4ae33523aebb059887ce8b60de5e23b16ae9abfea1a91ceac589b903a46a934",
+    "rebuild\\2008-06\\native-classes\\CPropGrid.cpp": "269550c9127af46ce66fc44298907ff886de685df92287cc3e5e82cd687ba3ec",
+    "rebuild\\2008-06\\native-headers\\CSelectionPropGrid.h": "13fafeb53f903ffc62b81903ecdd8190eadcb09db62ba71e52130798b658e09a",
+    "rebuild\\2008-06\\native-classes\\CSelectionPropGrid.cpp": "8abcb468d9132b418fd8288a4109f321c3d7d1dce47f568fc96bc655fa4fa8b0",
+    "rebuild\\2008-06\\native-classes\\CDataModelPropGrid.cpp": "fab5559a90bccb34b18f6b792fe30624934804c219ccbc181725b8891b9e1bd9",
+    "rebuild\\2008-06\\native-classes\\CMainFrameConstructor.cpp": "4faf2ee0d5c8c2d97fefebe5d42efb7e7c4aa9bc1cec6b652fdb5b4befada82c",
+    "roc\\libs.py": "7050e86fd3f8a30d24845d324ee5269f565dddc70762ba293afcdb5863ab3cf6",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_constructor_trial.py": "5d9edbd4ad7d417e40d9279519e728daf1e583b991fe586d6c2af85464c14037",
+    "rebuild\\2008-06\\native-classes\\CMainFrameDestructor.cpp": "7d43497eb33bfd05873915a6dd714bf4f4a532096eccd5a46221a440b30c05e5",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_destructor_trial.py": "ae54d9a1330bd23cb5b5f0f900721aaa4ca63596852c828a541165398c50bbaf"
+  },
+  "receipts": {
+    "work\\2008-06\\shared-layouts\\frame-marshalling-working-probe.json": "ec43ce8693a0a2ec3db995cdc5d7fda3c8878cdf7dea5e6d1d1ca6cab5c7c01f",
+    "work\\2008-06\\shared-layouts\\marshal-runtime-working-probe.json": "ee4dca289e6a59dc6df03f830d8adca99f33d75c523d79d3d9af29d174bf343e",
+    "work\\2008-06\\shared-layouts\\pane-callbacks-working-probe.json": "4334c9096ee31055f08aed6450752d15f56a51a2fbabfaab77af7913deb73f05",
+    "work\\2008-06\\shared-layouts\\property-grid-working-probe.json": "f222368037e3b6235b9c11930e6d7c074c0c09fece7358b6fee284e3c95136c4",
+    "work\\2008-06\\shared-layouts\\main-frame-constructor-trial-working-probe.json": "b03f7090f22bf0c09c3e57294435a84fbc97dc6410d4528189a900b4a40a5ab6",
+    "work\\2008-06\\shared-layouts\\main-frame-destructor-trial-working-probe.json": "df5a7b478b9077fa8bc96d4ec7dd409caac3e41d805d517bbe0402bde2ac961d"
+  },
+  "gates": {
+    "P5": {
+      "exe": "rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe",
+      "sha256": "fd47fd9ea171204351c4f56431f0b65d182ddc5e42c624fdfe64df83cee135e0",
+      "receipt": "work/2008-06/p5-native-about-swap-20261101/receipt.json",
+      "unchanged_since_gate": true
+    },
+    "P6": {
+      "exe": "rebuild/2008-06/out/p6/Roblox.exe",
+      "sha256": "e74054a9506dac5e2f0058841a8111dc5c500ab5fc5179c017e296845238b721",
+      "receipt": "work/2008-06/p6-native-about-gate-20261101/receipt.json",
+      "unchanged_since_gate": true
+    }
+  },
+  "selected_running_matches": 3049,
+  "selected_running_functions": 14468,
+  "game_integration_gain": 0,
+  "isolated_native_pe_matches": 11,
+  "marshal_matches": 27,
+  "marshal_selected": 27,
+  "next_edge": "CSelectionPropGrid::setSelection 00442650, called by destructor 00430700",
+  "scope": "Isolated native window/registry runtime; fixture event diagnostic. Selection payload delivery, original global initialization and native frame integration remain open. Old EventDataBase size0x0c/weak-pointer hypothesis superseded: base4, derived strong source+4, listener+0xc, payload+0x10, total0x20."
+}

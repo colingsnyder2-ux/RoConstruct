@@ -1,0 +1,34 @@
+{
+ "00402570": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1shared_count@detail@boost@@QAE@XZ"
+  }
+ ],
+ "005b6f70": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??0Sound@Soundscape@RBX@@QAE@PAVSystem@FMOD@@VSoundId@12@_N@Z"
+  }
+ ],
+ "00600660": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??1?$shared_ptr@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@QAE@XZ"
+  }
+ ],
+ "0071f210": [
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??C?$shared_ptr@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@QBEPBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+  },
+  {
+   "object": "PlayerNativeSound.obj",
+   "symbol": "??C?$shared_ptr@VStandardOut@RBX@@@boost@@QBEPAVStandardOut@RBX@@XZ"
+  }
+ ]
+}

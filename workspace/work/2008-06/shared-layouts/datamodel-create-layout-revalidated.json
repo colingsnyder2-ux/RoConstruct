@@ -1,0 +1,30 @@
+{
+  "revision": "57032467f32457f03578981055ab116700545c01",
+  "compiler": 21022,
+  "compile_exit": 0,
+  "model_size": 612,
+  "lock_size": 12,
+  "offsets": {
+    "workspace": 516,
+    "runService": 524,
+    "guiRoot": 540,
+    "uiMessage": 564,
+    "dirty": 600,
+    "mutex": 604
+  },
+  "accessor_symbol": "?nativeWorkspace@@YAPAVWorkspace@RBX@@PAVDataModel@2@@Z",
+  "accessor_sha256": "c3f280865f6eb94705bd6d80ef55547ccdd848154f34553595230ea9d91a5085",
+  "original_getter": "0046a970",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "source_sha256": "44e10af9c38b3eadca1e959acabd9189913898c3c2f0d8ec42a34904746a8812",
+  "observer_sha256": "617fed8323c63ec257f49084020fa5c164bface8961cf2f729f8bd68f2f32b61",
+  "headers": {
+    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "1b8e7d9d3df6f06d549c3f1c25c5bf820b005411e1ddd547e9bac631900a0ace",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "64d889bae886676a4704255ae912fe0a7ec459b418815fd9d3e68a603f1a5faf",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "2a41b0f5a9d305b824c415892c14562fdfd79008f5b42d865ed6cd145b5f4737",
+    "rebuild/2008-06/native-headers/v8tree/Verb.h": "aa94b9409b10392ebee9d81c40b6d594a08a773922321533004d5432af47fcbc",
+    "rebuild/2008-06/native-headers/v8tree/VerbContainer.h": "0bf3dd21fc0125202b1f91579ddaa025ea3e365c15d1f4da835c361c06de7b90",
+    "rebuild/2008-06/native-headers/v8tree/IDataState.h": "0b8b88645efaa4a4f3f665ad39971463411717c09c20e370ad258e34f175891b"
+  },
+  "scope": "Inactive shared DataModel storage and workspace access probe. Size and specified offsets match original evidence. Full virtual interface, constructors, ownership lifetimes and active linkage remain unverified."
+}

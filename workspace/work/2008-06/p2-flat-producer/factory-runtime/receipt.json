@@ -1,0 +1,150 @@
+{
+  "revision": "0f567d02e8474bb64ea060edb7256d90e71c8d2e",
+  "module": "p2-recovered-player",
+  "ROC_BUILD": null,
+  "runs": {
+    "selftest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--selftest"
+      ],
+      "exit": 0,
+      "cleanup_zero": true,
+      "pixels": {
+        "initial": {
+          "models": 1,
+          "greenA": 1879,
+          "greenB": 0,
+          "pass": true
+        },
+        "moved": {
+          "models": 1,
+          "greenA": 0,
+          "greenB": 2080,
+          "pass": true
+        },
+        "removed": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "empty": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "failures": 0
+      }
+    },
+    "cachetest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--cachetest",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\cache-blocks.rbxl"
+      ],
+      "exit": 0,
+      "cleanup_zero": true,
+      "passed_cycles": 2
+    },
+    "falling": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "240",
+        "C:\\Users\\colin\\RoConstruct\\falling.rbxl"
+      ],
+      "exit": 0,
+      "cleanup_zero": true,
+      "observation": "after 240 frames: Brick at (-6.59815e-016,-3.80274,-3.42562e-015), models=2"
+    },
+    "factory-unit": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2BlockFactoryTest\\P2BlockFactoryTest.exe"
+      ],
+      "exit": 0,
+      "scope": "512 cached lookups; four variants; paired levels; both index widths; every100-creation purge; release returns zero."
+    }
+  },
+  "source_sha256": {
+    "rebuild/2008-06/modules/p2-block-factory.json": "721fa017045d70d355f10d62cf93e9e6b4d431005f38191e06cf059139d201c2",
+    "rebuild/2008-06/modules/p2-block-mesh.json": "d3c279f3bcd2dd4d87aae826538c7644aa26ba417ec13e2c044629fcc419969f",
+    "rebuild/2008-06/modules/p2-recovered-player.json": "92f28210fe56afe2cc534d7806d97aa343e02fef43d1d58d942d229e1d8dc356",
+    "rebuild/2008-06/patches/rbxgs-client.json": "08925e828b2a0d393a47c2c6ea897e3b6c6894b3a8e8163bb82a56d92d498ba3",
+    "rebuild/2008-06/tests/P2BlockFactoryTest.cpp": "dbc3bdca8a1da24444a8af90953f9263e6a8c0342f509c83780fd389614fa771",
+    "rebuild/2008-06/tests/P2BlockMeshTest.cpp": "0aaf186f9bc3d046d2e7dcbfb2ea558e7bcd100c715eaccc5d40793754d2de33",
+    "rebuild/2008-06/tests/P2RecoveredPlayer.cpp": "f7ef24969b747c04e64843bbb13c8c55a1da9f70d80bfb79465a0f07984dc36f",
+    "rebuild/2008-06/tests/PlayerBlockMesh.cpp": "7606452ad688d8b821b0cfb8500fb6eece74473bd980c86b597a2e48d81910b4",
+    "rebuild/2008-06/tests/PlayerBlockMesh.h": "7dd4059946b3939ea645fd4e8920afd451dd68d8772fb1067828ea0de59fe681",
+    "rebuild/2008-06/tests/PlayerMeshBackend.cpp": "7c8c49eedc09e7d24deac31c9d0083b1173886b757918c0f6ee6feb3ea16b81e",
+    "rebuild/2008-06/tests/PlayerMeshBackend.h": "328b4c1912e5d97707f41f24269459f94491c622061809da7471dfd81f32b033",
+    "rebuild/2008-06/tests/PlayerMeshOrientation.cpp": "75ab777fbe203ead4436051b7fe5a25a46bc3c469b9074b850c8a9c9e63ef715",
+    "rebuild/2008-06/tests/fixtures/cache-blocks.rbxl": "5edbe47c0cd7eea74912275648559189c218600697e7c908480d3bc7303a1549",
+    "rebuild/2008-06/tests/p2-recovered/Player2008.cpp": "048793b0113349e214b2c0e40997251b52ee59523fed3177416e8ac3b380f26a",
+    "rebuild/2008-06/tests/p2-recovered/PlayerEngine.cpp": "640a7526ce9d107408ecaa42066b882496f9228b99ea404040a3474c885e7bba",
+    "rebuild/2008-06/tests/p2-recovered/PlayerScene.cpp": "e6bbe833a21cd2f532c17808f25ccf2b64b9cf6283608da83a9b1fbb3e3fb626",
+    "rebuild/2008-06/tests/p2-recovered/PlayerScene.h": "64616220c2372d2520cbece8b80b7e8ee27e3e64487229195076d89f1eb9c5cd",
+    "rebuild/2008-06/tests/p2-recovered/README.md": "0b8fe721424c631cb116bde425c589dbb56b66a4acb9afa3fb6605665bd0f5ec",
+    "rebuild/2008-06/tests/p2-recovered/RbxEntity.h": "7224952552e8a159acba2615b2967c74e6718f804f796df3115d0291ce4660b1",
+    "rebuild/2008-06/tests/p2-recovered/RbxEntityLocal.cpp": "6afb2556194cca8dfb792d241db9fc59e24692a567669c28ebf46a08e051d4a0"
+  },
+  "exe_sha256": "547f328d6d0997c806b975925f6e29d2e03d62b203802a83d49b81dfaf745374",
+  "map_sha256": "ebdc7bc5e30def0e0edc2c9cacf43b7a8c6616bf156f17b66daa4dfd034e0159",
+  "fixture_sha256": {
+    "versioned_cache_blocks": "5edbe47c0cd7eea74912275648559189c218600697e7c908480d3bc7303a1549",
+    "local_unversioned_falling": "07eb68599bafa3ccaf014a695451e7a0d66f6490fd19b2112966196096c7013e"
+  },
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c"
+  },
+  "module_reports": {
+    "P2BlockFactory": {
+      "linked": true,
+      "test_exit": 0,
+      "report_sha256": "26ed485420025db20ebf33f1c901a84e998dc8ca39cfe77e0173ae18cf533f9f",
+      "exe_sha256": "2c1a618c6e63349ba8e614f5913d9a3e8f0b331d5b334eec1ef937df9b403e04"
+    },
+    "P2BlockMesh": {
+      "linked": true,
+      "test_exit": 0,
+      "report_sha256": "e8e09a745e5b18a4ba615d42269335a27a1bbcbb77ac1749b6ae5081303c9ffe",
+      "exe_sha256": "a04bb713bcc9541661b47ce9d53c4914fc20a73d614a5098cd0f3d8685317f7d"
+    },
+    "P2RecoveredPlayer": {
+      "linked": true,
+      "test_exit": 0,
+      "report_sha256": "0ea6b38f29db1a9f92ce7650adbfdebdf683d0422c5cf35f84df9a553c845c73",
+      "exe_sha256": "547f328d6d0997c806b975925f6e29d2e03d62b203802a83d49b81dfaf745374"
+    }
+  },
+  "evidence_sha256": "085f2bfee587337860657613dc59cd1ecc2b2a9a5f2c27d1756d64501be832ab",
+  "limits": [
+    "P2 remains open: diagnostic material, scene bounds-cache/shared indices and complete selector/child handling.",
+    "No clean second-worktree or P3 non-box-silhouette proof.",
+    "Falling fixture remains local/unversioned; P0 gate not closed.",
+    "No new server-native exact credit claimed."
+  ],
+  "linked_geometry_symbols": [
+    "0001:0000cc10       ?populate@BlockMesh@PlayerBlockMesh@@AAEXABVVector3@G3D@@VRenderSurfaceTypes@View@RBX@@VBrickColor@7@@Z 0040dc10 f   linked:PlayerBlockMesh.obj",
+    "0001:0000d780       ?upload@Level@PlayerBlockMesh@@QAEX_NAAVAxisAlignedBox@Ogre@@@Z 0040e780 f   linked:PlayerBlockMesh.obj",
+    "0001:0000ea40       ?flushUnused@PlayerBlockMesh@@YAXXZ 0040fa40 f   linked:PlayerBlockMesh.obj",
+    "0001:0000ec00       ?create@BlockMesh@PlayerBlockMesh@@SA?AV?$ReferenceCountedPointer@VBlockMesh@PlayerBlockMesh@@@G3D@@ABVVector3@4@VRenderSurfaceTypes@View@RBX@@VBrickColor@8@@Z 0040fc00 f   linked:PlayerBlockMesh.obj"
+  ],
+  "artifacts": {
+    "cachetest/cache_initial.png": "976c6bc582e80f4ed83bb040d4fcac557ebb5936e860722a6b780c5b4eaee1fd",
+    "cachetest/cache_remaining.png": "976c6bc582e80f4ed83bb040d4fcac557ebb5936e860722a6b780c5b4eaee1fd",
+    "cachetest/player.log": "c9ed860a1c28a861f68b39ed8a799b59d5f9d0f812ecad0d22413feb26ca1908",
+    "cachetest/stdout.log": "64518b7811167c9822b155ce40afa2c9b1c14f07ac9b35df306e9d01695c3840",
+    "falling/last.png": "39de3328fd7d141dd30506c3799f8b84dd86f6ef2af9d9edbaba27d7fe8c4ae4",
+    "falling/player.log": "e8df78eef3f86f4547617102947a1c39feb7f23eb8a72437f4f2805ef00a89c4",
+    "falling/stdout.log": "0d8246d034aab76e43285cb158555cc44dfa598a58f7b5c4eaed8090975d6f73",
+    "selftest/player.log": "3627a96e21c9e649a9ee36c9b7bd64bccffc9d93a80228fc91e586945a7a8deb",
+    "selftest/selftest_empty.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+    "selftest/selftest_initial.png": "976c6bc582e80f4ed83bb040d4fcac557ebb5936e860722a6b780c5b4eaee1fd",
+    "selftest/selftest_moved.png": "e00f7a7a70945b8ac13df1417f8d4f2f58c69d28f29f65619a60d940fb2f27a1",
+    "selftest/selftest_removed.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+    "selftest/selftest_result.json": "905cdac8c1d718c5ce2cfdc4593e70e0a9316bdf7371fd4da8d7c95644e401e3",
+    "selftest/stdout.log": "2980c1144306963df380829eb60721c0251b9520565eb2c675228cfab0711b9e",
+    "factory-unit/stdout.log": "b3a08514dc942084e0499ba54fea490356e07d045c10a6ecc5267cd19eaa47ce"
+  }
+}

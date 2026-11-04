@@ -1,0 +1,14 @@
+{
+  "address": "0043a7d0",
+  "source": "rebuild\\2008-06\\native-classes\\PropertyGridWriteTrial.cpp",
+  "source_sha256": "9ae20ded8da0939139e96139bd2cca92ad6ec19f80681252b3b3d5ead85238fa",
+  "object_sha256": "946d974d3b5d50412176f2689f347e34a687f0aa2b1050aafb4cb59f7050aa4b",
+  "candidate_size": 149,
+  "target_size": 149,
+  "relocation_masked_match": false,
+  "difference_offsets": [
+    110
+  ],
+  "scope": "Inactive trial; no native integration credit.",
+  "finding": "Original virtual call uses slot +0x0c; current TypedPropertyDescriptor GetSet declaration emits +0x08. Investigate complete genuine GetSet virtual layout before adoption."
+}

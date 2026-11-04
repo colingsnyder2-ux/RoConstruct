@@ -1,0 +1,17 @@
+[
+  {
+    "case": "empty2",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "case": "first2",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "case": "second2",
+    "exit": 3221225477,
+    "timeout": false
+  }
+]

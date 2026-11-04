@@ -1,0 +1,9 @@
+@echo off
+rem Host the RoConstruct group server: public HTTPS address (Cloudflare tunnel),
+rem website updated and pushed every hour. Keep this window open.
+cd /d "%~dp0"
+title RoConstruct server
+set PY=py -3.12
+%PY% -c "import sys" >nul 2>nul || set PY=py
+%PY% roc.py server --publish
+echo Server stopped. Close this window to quit.

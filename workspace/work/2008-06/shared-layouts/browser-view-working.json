@@ -1,0 +1,693 @@
+{
+  "class": "CBrowserView",
+  "subclasses": [
+    "CIDEBrowserView",
+    "CPlayBrowserView"
+  ],
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/I/home/user/roconstruct/tools/libs/xtp-11.2.2/Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "profile": "CString operator PCXSTR and CSimpleStringT::IsEmpty noinline (original imports both)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object_sha256": "da7dfe27ebf06cfdf95ec3da5185366313cc09ef80155ae09dc420c275bd6485",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_browser_view.py": "5f0a20f3a648d6e967bcd8a91e56013794aeafaed243cc2c842aecc34ee22e53",
+    "rebuild/2008-06/native-classes/CBrowserView.cpp": "d39eb600191add92b757db2eb1013422d5964b4c82478d0d24d81871911f4dd6",
+    "rebuild/2008-06/native-headers/CBrowserView.h": "b4667890505c5527c68e1c47ef5d21c4a9314f329d7283e251a62cf3739264dd",
+    "rebuild/2008-06/native-headers/CBrowserDoc.h": "68e31841e5340f7d37e01cfd3d0dedfcc7de2ee2fbb90636ef40634e07462a01",
+    "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "d0dbfffca80d50d93d46cd64db57d7945e1b6d218996067eccf3c706a29e5c6e",
+    "rebuild/2008-06/native-headers/CBrowserFrameWnd.h": "1e752fae7d956b3ecfc3cd61f8f44b6abb22bd3994f8dd75515716fd056bd590",
+    "rebuild/2008-06/tests/NativeBrowserViewLayout.cpp": "c45b146b6b5516d6aaa8eb54ecdfd658f2755c3487543c3c6dc56795593481db"
+  },
+  "xtp_targets": {
+    "006c1da0": "??0CXTPToolBar@@QAE@XZ: XTP recipe body exact",
+    "006c1eb0": "??1CXTPToolBar@@UAE@XZ: bound by call site only",
+    "006c2440": "?CreateToolBar@CXTPToolBar@@QAEHKPAVCWnd@@I@Z: XTP recipe body exact",
+    "006c1b10": "?GetThisClass@CXTPToolBar@@SGPAUCRuntimeClass@@XZ: XTP recipe body exact",
+    "006c0e80": "?XTPImageManager@@YAPAVCXTPImageManager@@XZ: XTP recipe body exact",
+    "006af0a0": "?SetTheme@CXTPPaintManager@@SAXW4XTPPaintTheme@@@Z: XTP recipe body exact",
+    "006b4ea0": "?SetPaintManager@CXTPCommandBar@@QAEXPAVCXTPPaintManager@@@Z: XTP recipe body exact",
+    "006b4f20": "?SetImageManager@CXTPCommandBar@@QAEXPAVCXTPImageManager@@@Z: XTP recipe body exact",
+    "006a7960": "??0CXTPControlComboBox@@QAE@PAVCXTPCommandBars@@@Z: XTP recipe body exact",
+    "006a6cb0": "?SetDropDownListStyle@CXTPControlComboBox@@QAEXH@Z: XTP recipe body exact",
+    "006a81e0": "?GetComboBoxPopupBar@CXTPControlComboBox@@QBEPAVCXTPControlComboBoxPopupBar@@XZ: XTP recipe body exact",
+    "006a9640": "?GetEditText@CXTPControlComboBox@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ: bound by call site only",
+    "006a96f0": "?SetEditText@CXTPControlComboBox@@QAEXABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z: bound by call site only",
+    "006aafc0": "?DelayLayoutParent@CXTPControl@@QAEXXZ: XTP recipe body exact",
+    "006ab360": "?SetFlags@CXTPControl@@QAEXK@Z: XTP recipe body exact",
+    "006ab940": "?SetCaption@CXTPControl@@QAEXPBD@Z: bound by call site only",
+    "006a67c0": "?GetThisClass@CXTPEdit@@SGPAUCRuntimeClass@@XZ: XTP recipe body exact",
+    "006a4ae0": "?PreTranslateFrameMessage@CXTPCommandBars@@QAEHPAUtagMSG@@@Z: bound by call site only",
+    "006a4d30": "?OnFrameWndMsg@CXTPCommandBars@@QAEHIIJPAJ@Z: XTP recipe body exact"
+  },
+  "methods": [
+    {
+      "address": "00410d60",
+      "symbol": "?CreateObject@CBrowserView@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CBrowserView@@QAE@XZ": "0x4108b0"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CBrowserView@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00410dc0",
+      "symbol": "?CreateObject@CIDEBrowserView@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CIDEBrowserView@@QAE@XZ": "0x410c40"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CIDEBrowserView@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00410e20",
+      "symbol": "?CreateObject@CPlayBrowserView@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CPlayBrowserView@@QAE@XZ": "0x410cd0"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CPlayBrowserView@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00410e80",
+      "symbol": "??_GCBrowserView@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CBrowserView@@UAE@XZ": "0x410950",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040df60",
+      "symbol": "?GetRuntimeClass@CBrowserView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCBrowserView@CBrowserView@@2UCRuntimeClass@@B": "0x80cf58"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040df70",
+      "symbol": "?GetRuntimeClass@CIDEBrowserView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCIDEBrowserView@CIDEBrowserView@@2UCRuntimeClass@@B": "0x80cf74"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040df80",
+      "symbol": "?GetRuntimeClass@CPlayBrowserView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCPlayBrowserView@CPlayBrowserView@@2UCRuntimeClass@@B": "0x80cf90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040f810",
+      "symbol": "?GetMessageMap@CBrowserView@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CBrowserView@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x80d414"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004108b0",
+      "symbol": "??0CBrowserView@@QAE@XZ",
+      "size": 154,
+      "exact": true,
+      "verified_targets": {
+        "??0CSecureHtmlView@@QAE@XZ": "0x465a60",
+        "??_7CBrowserView@@6B@": "0x80d814 (RTTI .?AVCBrowserView@@, offset 0x0)",
+        "??0?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ": "0x410830",
+        "??0CXTPToolBar@@QAE@XZ": "0x6c1da0",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "?XTPImageManager@@YAPAVCXTPImageManager@@XZ": "0x6c0e80",
+        "?loadBrowserIcons@@YAXPAVCXTPImageManager@@@Z": "0x42f380"
+      },
+      "local_eh": [
+        "__ehhandler$??0CBrowserView@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00410950",
+      "symbol": "??1CBrowserView@@UAE@XZ",
+      "size": 131,
+      "exact": true,
+      "verified_targets": {
+        "??_7CBrowserView@@6B@": "0x80d814 (RTTI .?AVCBrowserView@@, offset 0x0)",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "??1CXTPToolBar@@UAE@XZ": "0x6c1eb0",
+        "??1?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ": "0x55e5f0",
+        "??1?$CXTPCommandBarsSiteBase@VCSecureHtmlView@@@@UAE@XZ": "0x40e230"
+      },
+      "local_eh": [
+        "__ehhandler$??1CBrowserView@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00410c40",
+      "symbol": "??0CIDEBrowserView@@QAE@XZ",
+      "size": 140,
+      "exact": true,
+      "verified_targets": {
+        "??0CBrowserView@@QAE@XZ": "0x4108b0",
+        "??_7CIDEBrowserView@@6B@": "0x80da6c (RTTI .?AVCIDEBrowserView@@, offset 0x0)",
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??_C@_0BA@FENHBNLG@?1IDE?1Start?4aspx?$AA@": "0x80da58",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z": "mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0CIDEBrowserView@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00410cd0",
+      "symbol": "??0CPlayBrowserView@@QAE@XZ",
+      "size": 140,
+      "exact": true,
+      "verified_targets": {
+        "??0CBrowserView@@QAE@XZ": "0x4108b0",
+        "??_7CPlayBrowserView@@6B@": "0x80dcac (RTTI .?AVCPlayBrowserView@@, offset 0x0)",
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??_C@_0M@BOFCLKIL@?1Start?4aspx?$AA@": "0x80dc9c",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z": "mfc90.dll!??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0CPlayBrowserView@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0040e230",
+      "symbol": "??1?$CXTPCommandBarsSiteBase@VCSecureHtmlView@@@@UAE@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$CXTPCommandBarsSiteBase@VCSecureHtmlView@@@@6B@": "0x80d08c (RTTI .?AV?$CXTPCommandBarsSiteBase@VCSecureHtmlView@@@@, offset 0x0)",
+        "?InternalRelease@CCmdTarget@@QAEKXZ": "mfc90.dll!?InternalRelease@CCmdTarget@@QAEKXZ",
+        "??1CSecureHtmlView@@UAE@XZ": "0x465a80"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$CXTPCommandBarsSiteBase@VCSecureHtmlView@@@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "0040e290",
+      "symbol": "?PreTranslateMessage@?$CXTPCommandBarsSiteBase@VCSecureHtmlView@@@@MAEHPAUtagMSG@@@Z",
+      "size": 130,
+      "exact": true,
+      "verified_targets": {
+        "__imp__GetFocus@0": "user32.dll!GetFocus",
+        "?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z": "mfc90.dll!?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z",
+        "?GetThisClass@CXTPEdit@@SGPAUCRuntimeClass@@XZ": "0x6a67c0",
+        "?IsKindOf@CObject@@QBEHPBUCRuntimeClass@@@Z": "mfc90.dll!?IsKindOf@CObject@@QBEHPBUCRuntimeClass@@@Z",
+        "?PreTranslateMessage@CHtmlView@@UAEHPAUtagMSG@@@Z": "mfc90.dll!?PreTranslateMessage@CHtmlView@@UAEHPAUtagMSG@@@Z",
+        "?PreTranslateFrameMessage@CXTPCommandBars@@QAEHPAUtagMSG@@@Z": "0x6a4ae0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e320",
+      "symbol": "?OnWndMsg@?$CXTPCommandBarsSiteBase@VCSecureHtmlView@@@@MAEHIIJPAJ@Z",
+      "size": 79,
+      "exact": true,
+      "verified_targets": {
+        "?OnFrameWndMsg@CXTPCommandBars@@QAEHIIJPAJ@Z": "0x6a4d30",
+        "?OnWndMsg@CWnd@@MAEHIIJPAJ@Z": "mfc90.dll!?OnWndMsg@CWnd@@MAEHIIJPAJ@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ed50",
+      "symbol": "?OnInitialUpdate@CBrowserView@@UAEXXZ",
+      "size": 71,
+      "exact": true,
+      "verified_targets": {
+        "?OnInitialUpdate@CFormView@@UAEXXZ": "mfc90.dll!?OnInitialUpdate@CFormView@@UAEXXZ",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+        "__imp_?Compare@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEHPBD@Z": "mfc90.dll!?Compare@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEHPBD@Z",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z": "mfc90.dll!?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040dfb0",
+      "symbol": "?OnGetHostInfo@CBrowserView@@UAEJPAU_DOCHOSTUIINFO@@@Z",
+      "size": 26,
+      "exact": true,
+      "verified_targets": {
+        "?OnGetHostInfo@CHtmlView@@UAEJPAU_DOCHOSTUIINFO@@@Z": "mfc90.dll!?OnGetHostInfo@CHtmlView@@UAEJPAU_DOCHOSTUIINFO@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040dfe0",
+      "symbol": "?OnCommandStateChange@CBrowserView@@UAEXJH@Z",
+      "size": 92,
+      "exact": true,
+      "verified_targets": {
+        "?OnCommandStateChange@CHtmlView@@UAEXJH@Z": "mfc90.dll!?OnCommandStateChange@CHtmlView@@UAEXJH@Z",
+        "__imp__InvalidateRect@12": "user32.dll!InvalidateRect"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040dfd0",
+      "symbol": "?OnDocumentComplete@CBrowserView@@UAEXPBD@Z",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?OnDocumentComplete@CHtmlView@@UAEXPBD@Z": "mfc90.dll!?OnDocumentComplete@CHtmlView@@UAEXPBD@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e560",
+      "symbol": "?OnTitleChange@CBrowserView@@UAEXPBD@Z",
+      "size": 65,
+      "exact": true,
+      "verified_targets": {
+        "?OnTitleChange@CHtmlView@@UAEXPBD@Z": "mfc90.dll!?OnTitleChange@CHtmlView@@UAEXPBD@Z",
+        "?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ": "mfc90.dll!?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ",
+        "?SetWindowTextA@CWnd@@QAEXPBD@Z": "mfc90.dll!?SetWindowTextA@CWnd@@QAEXPBD@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00410ea0",
+      "symbol": "?OnNavigateComplete2@CBrowserView@@UAEXPBD@Z",
+      "size": 238,
+      "exact": true,
+      "verified_targets": {
+        "?OnNavigateComplete2@CHtmlView@@UAEXPBD@Z": "mfc90.dll!?OnNavigateComplete2@CHtmlView@@UAEXPBD@Z",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "??$find@V?$_Iterator@$00@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@std@@YA?AV?$_Iterator@$00@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@0@V120@0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z": "0x410bd0",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+        "?SetEditText@CXTPControlComboBox@@QAEXABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x6a96f0",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnNavigateComplete2@CBrowserView@@UAEXPBD@Z"
+      ]
+    },
+    {
+      "address": "004109e0",
+      "symbol": "?OnBeforeNavigate2@CBrowserView@@UAEXPBDK0AAVCByteArray@@0PAH@Z",
+      "size": 493,
+      "exact": true,
+      "verified_targets": {
+        "_IsNetworkAlive@4": "sensapi.dll!IsNetworkAlive",
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+        "__imp__GetModuleFileNameA@12": "kernel32.dll!GetModuleFileNameA",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "??_C@_0M@PMEPMKID@res?3?1?1?$CFs?1?$CFd?$AA@": "0x80da4c",
+        "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXPBDZZ": "mfc90.dll!?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXPBDZZ",
+        "__imp_?Compare@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEHPBD@Z": "mfc90.dll!?Compare@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEHPBD@Z",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z": "mfc90.dll!?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "?OnBeforeNavigate2@CSecureHtmlView@@UAEXPBDK0AAVCByteArray@@0PAH@Z": "0x465d70",
+        "??_C@_06OJCKEJOC@_blank?$AA@": "0x80da44",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+        "?isRobloxUrl@@YA_NPBD@Z": "0x56a160",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?_Buynode@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@PAU342@0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "0x40f1e0",
+        "?_Incsize@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXI@Z": "0x40edd0",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "?erase@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z": "0x410350"
+      },
+      "local_eh": [
+        "__ehhandler$?OnBeforeNavigate2@CBrowserView@@UAEXPBDK0AAVCByteArray@@0PAH@Z"
+      ]
+    },
+    {
+      "address": "006e8870",
+      "symbol": "?OnEraseBkgnd@CBrowserView@@QAEHPAVCDC@@@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040e040",
+      "symbol": "?OnSize@CBrowserView@@QAEXIHH@Z",
+      "size": 141,
+      "exact": true,
+      "verified_targets": {
+        "?MoveWindow@CWnd@@QAEXHHHHH@Z": "mfc90.dll!?MoveWindow@CWnd@@QAEXHHHHH@Z",
+        "__imp__InvalidateRect@12": "user32.dll!InvalidateRect",
+        "?SetWindowPos@CWnd@@QAEHPBV1@HHHHI@Z": "mfc90.dll!?SetWindowPos@CWnd@@QAEHPBV1@HHHHI@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e5b0",
+      "symbol": "?OnCreate@CBrowserView@@QAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 189,
+      "exact": true,
+      "verified_targets": {
+        "?OnCreate@CFormView@@IAEHPAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?OnCreate@CFormView@@IAEHPAUtagCREATESTRUCTA@@@Z",
+        "?CreateToolBar@CXTPToolBar@@QAEHKPAVCWnd@@I@Z": "0x6c2440",
+        "?s_pInstance@CXTPPaintManager@@1PAV1@A": "0x97e060",
+        "__imp__InterlockedIncrement@4": "kernel32.dll!InterlockedIncrement",
+        "?SetTheme@CXTPPaintManager@@SAXW4XTPPaintTheme@@@Z": "0x6af0a0",
+        "?SetPaintManager@CXTPCommandBar@@QAEXPAVCXTPPaintManager@@@Z": "0x6b4ea0",
+        "?XTPImageManager@@YAPAVCXTPImageManager@@XZ": "0x6c0e80",
+        "?SetImageManager@CXTPCommandBar@@QAEXPAVCXTPImageManager@@@Z": "0x6b4f20"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e930",
+      "symbol": "?OnStop@CBrowserView@@QAEXXZ",
+      "size": 15,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040e940",
+      "symbol": "?OnUpdateStop@CBrowserView@@QAEXPAVCCmdUI@@@Z",
+      "size": 67,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040e790",
+      "symbol": "?OnHome@CBrowserView@@QAEXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+        "__imp_?Compare@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEHPBD@Z": "mfc90.dll!?Compare@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QBEHPBD@Z",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z": "mfc90.dll!?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e130",
+      "symbol": "?OnUpdateHome@CBrowserView@@QAEXPAVCCmdUI@@@Z",
+      "size": 39,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e7d0",
+      "symbol": "?OnRefresh@CBrowserView@@QAEXXZ",
+      "size": 15,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042e550",
+      "symbol": "?OnUpdateRefresh@CBrowserView@@QAEXPAVCCmdUI@@@Z",
+      "size": 18,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040e920",
+      "symbol": "?OnBack@CBrowserView@@QAEXXZ",
+      "size": 15,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040e0d0",
+      "symbol": "?OnUpdateBack@CBrowserView@@QAEXPAVCCmdUI@@@Z",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040e7e0",
+      "symbol": "?OnForward@CBrowserView@@QAEXXZ",
+      "size": 15,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040e0f0",
+      "symbol": "?OnUpdateForward@CBrowserView@@QAEXPAVCCmdUI@@@Z",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040e7f0",
+      "symbol": "?OnGo@CBrowserView@@QAEXXZ",
+      "size": 304,
+      "exact": true,
+      "verified_targets": {
+        "?GetEditText@CXTPControlComboBox@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x6a9640",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "?GetComboBoxPopupBar@CXTPControlComboBox@@QBEPAVCXTPControlComboBoxPopupBar@@XZ": "0x6a81e0",
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?DeleteItem@CXTPControlComboBox@@QAEXJ@Z": "0x40e470",
+        "?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z": "mfc90.dll!?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnGo@CBrowserView@@QAEXXZ"
+      ]
+    },
+    {
+      "address": "0040e110",
+      "symbol": "?OnUpdateGo@CBrowserView@@QAEXPAVCCmdUI@@@Z",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0040eda0",
+      "symbol": "?OnAddressExecute@CBrowserView@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 34,
+      "exact": true,
+      "verified_targets": {
+        "?OnGo@CBrowserView@@QAEXXZ": "0x40e7f0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e670",
+      "symbol": "?OnCreateControl@CBrowserView@@QAEHPAUXTP_COMMANDBARS_CREATECONTROL@@@Z",
+      "size": 283,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CXTPToolBar@@SGPAUCRuntimeClass@@XZ": "0x6c1b10",
+        "?AfxDynamicDownCast@@YAPAVCObject@@PAUCRuntimeClass@@PAV1@@Z": "mfc90.dll!?AfxDynamicDownCast@@YAPAVCObject@@PAUCRuntimeClass@@PAV1@@Z",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CXTPControlComboBox@@QAE@PAVCXTPCommandBars@@@Z": "0x6a7960",
+        "?SetDropDownListStyle@CXTPControlComboBox@@QAEXH@Z": "0x6a6cb0",
+        "??_C@_07EODJIPPN@Address?$AA@": "0x80d37c",
+        "?SetCaption@CXTPControl@@QAEXPBD@Z": "0x6ab940",
+        "?DelayLayoutParent@CXTPControl@@QAEXXZ": "0x6aafc0",
+        "?SetFlags@CXTPControl@@QAEXK@Z": "0x6ab360"
+      },
+      "local_eh": [
+        "__ehhandler$?OnCreateControl@CBrowserView@@QAEHPAUXTP_COMMANDBARS_CREATECONTROL@@@Z"
+      ]
+    },
+    {
+      "address": "00410830",
+      "symbol": "??0?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ",
+      "size": 94,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "?_Buynode@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@XZ": "0x40f1c0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0055e5f0",
+      "symbol": "??1?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ",
+      "size": 85,
+      "exact": true,
+      "verified_targets": {
+        "?clear@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXXZ": "0x55dfd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0055dfd0",
+      "symbol": "?clear@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040f1c0",
+      "symbol": "?_Buynode@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEPAU_Node@?$_List_nod@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@XZ",
+      "size": 26,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040edd0",
+      "symbol": "?_Incsize@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXI@Z",
+      "size": 154,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BB@MOGOBHAF@list?$DMT?$DO?5too?5long?$AA@": "0x80d400",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "__imp_??0exception@std@@QAE@XZ": "msvcr90.dll!??0exception@std@@QAE@XZ",
+        "??_7logic_error@std@@6B@": "0x80b110 (RTTI .?AVlogic_error@std@@, offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0",
+        "??_7length_error@std@@6B@": "0x80b11c (RTTI .?AVlength_error@std@@, offset 0x0)",
+        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException"
+      },
+      "local_eh": [
+        "__ehhandler$?_Incsize@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXI@Z"
+      ]
+    },
+    {
+      "address": "00410350",
+      "symbol": "?erase@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z",
+      "size": 132,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00410bd0",
+      "symbol": "??$find@V?$_Iterator@$00@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@std@@YA?AV?$_Iterator@$00@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@0@V120@0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z",
+      "size": 103,
+      "exact": true,
+      "verified_targets": {
+        "??$_Find@V?$_Iterator@$0A@@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@std@@YA?AV?$_Iterator@$0A@@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@0@V120@0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z": "0x40f7c0",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040f7c0",
+      "symbol": "??$_Find@V?$_Iterator@$0A@@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@std@@YA?AV?$_Iterator@$0A@@?$list@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@0@V120@0ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z",
+      "size": 68,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "msvcp90.dll!??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00410e80",
+      "symbol": "??_GCIDEBrowserView@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CBrowserView@@UAE@XZ": "0x410950",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00410e80",
+      "symbol": "??_GCPlayBrowserView@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CBrowserView@@UAE@XZ": "0x410950",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    }
+  ],
+  "open": {
+    "0040fff0": "OnGetExternal: 2-instruction scheduling difference (object pointer reloaded after the isIDE store; original converts to IBrowserViewExternal before the store without a null check)",
+    "0040e470": "CXTPControlComboBox::DeleteItem (XTP inline, emitted here): first 64 bytes exact; the target extent (81) runs into the next function 0040e4b0 (bounds evidence)"
+  }
+}

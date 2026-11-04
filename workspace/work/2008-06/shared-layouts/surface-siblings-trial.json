@@ -1,0 +1,217 @@
+{
+  "scope": "Inactive factory/lifetime and RTTI checks; derived methods and runtime ABI unproven.",
+  "methods": [
+    {
+      "tool": "GlueTool",
+      "address": "0x5c67b0",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VGlueTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VGlueTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7GlueTool@RBX@@6BINamed@1@@": "0x839244",
+        "??_7GlueTool@RBX@@6BIRenderable@1@@": "0x83922c"
+      }
+    },
+    {
+      "tool": "GlueTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GGlueTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "WeldTool",
+      "address": "0x5c6900",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VWeldTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VWeldTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7WeldTool@RBX@@6BINamed@1@@": "0x8392cc",
+        "??_7WeldTool@RBX@@6BIRenderable@1@@": "0x8392b4"
+      }
+    },
+    {
+      "tool": "WeldTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GWeldTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "StudsTool",
+      "address": "0x5c6a50",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VStudsTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VStudsTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7StudsTool@RBX@@6BINamed@1@@": "0x839354",
+        "??_7StudsTool@RBX@@6BIRenderable@1@@": "0x83933c"
+      }
+    },
+    {
+      "tool": "StudsTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GStudsTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "InletTool",
+      "address": "0x5c6ba0",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VInletTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VInletTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7InletTool@RBX@@6BINamed@1@@": "0x8393dc",
+        "??_7InletTool@RBX@@6BIRenderable@1@@": "0x8393c4"
+      }
+    },
+    {
+      "tool": "InletTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GInletTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "HingeTool",
+      "address": "0x5c6cf0",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7HingeTool@RBX@@6BINamed@1@@": "0x839464",
+        "??_7HingeTool@RBX@@6BIRenderable@1@@": "0x83944c"
+      }
+    },
+    {
+      "tool": "HingeTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GHingeTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "RightMotorTool",
+      "address": "0x5c6db0",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7RightMotorTool@RBX@@6BINamed@1@@": "0x8394ec",
+        "??_7RightMotorTool@RBX@@6BIRenderable@1@@": "0x8394d4"
+      }
+    },
+    {
+      "tool": "RightMotorTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GRightMotorTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "LeftMotorTool",
+      "address": "0x5c6e70",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VLeftMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VLeftMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7LeftMotorTool@RBX@@6BINamed@1@@": "0x839574",
+        "??_7LeftMotorTool@RBX@@6BIRenderable@1@@": "0x83955c"
+      }
+    },
+    {
+      "tool": "LeftMotorTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GLeftMotorTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "OscillateMotorTool",
+      "address": "0x5c6fa0",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VOscillateMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VOscillateMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7OscillateMotorTool@RBX@@6BINamed@1@@": "0x8395f4",
+        "??_7OscillateMotorTool@RBX@@6BIRenderable@1@@": "0x8395d8"
+      }
+    },
+    {
+      "tool": "OscillateMotorTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GOscillateMotorTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "ModelSetFrontTool",
+      "address": "0x5c7090",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7ModelSetFrontTool@RBX@@6BINamed@1@@": "0x839674",
+        "??_7ModelSetFrontTool@RBX@@6BIRenderable@1@@": "0x839658"
+      }
+    },
+    {
+      "tool": "ModelSetFrontTool",
+      "address": "0x5c6790",
+      "size": 30,
+      "symbol": "??_GModelSetFrontTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1SurfaceTool@RBX@@UAE@XZ": "0x5a0d00",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    }
+  ],
+  "source_sha256": "ad335e9de9e0fc2544c98f5480eef1fb5a0ed44af6d8e57fbd4b80157f805967",
+  "header_sha256": "6b0fed40a8049ba878a470807ef23d75af45abd580ef63b5cc56b3fd87f0e9c0",
+  "base_header_sha256": "a9b681ce97b1ac3ecfb88c43fe2de296e90b4ebc7b02e5bc23c9ec9f98b0080a",
+  "object_sha256": "991ae69c6e14ad892afc5f5f1e8ac5ba1413a49c77a4e320417f69baa973856f",
+  "observer_sha256": "3a2b0408d81731d5c7ef81df031997ffe3b8a217d1802fb24dfd256d8e71a656"
+}

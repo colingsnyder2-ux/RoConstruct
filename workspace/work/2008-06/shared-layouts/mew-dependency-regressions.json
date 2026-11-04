@@ -1,0 +1,154 @@
+{
+  "scope": "Inactive native source and scoped standalone ABI regression checks only; no Roblox client diagnostic/P5/P6/server claim.",
+  "provenance": {
+    "parent": "7400d3b533cb76aa73e28d3c26c69c5330a4ce54",
+    "fork_tip": "2f2654332d6c5b9ae6ca994bc0b4f5642eac717d",
+    "selected_paths": 91,
+    "selected_native_headers": 26,
+    "header_hashes": {
+      "rebuild/2008-06/native-headers/Network/NetworkSettings.h": "7d80957736876055febe021293c793afeb779947a1b21e778bdf55082e323ab5",
+      "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+      "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
+      "rebuild/2008-06/native-headers/v8datamodel/Accoutrement.h": "5be50e8dcbc219a0e437bc067ca34c3a5bee63eb3d6667dfe8182ee026ac0e05",
+      "rebuild/2008-06/native-headers/v8datamodel/BodyColors.h": "127682675030b36108f7c64ffc86e07553402157b2d8bdca123d8cff8ba299d3",
+      "rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h": "2765df58254bbd7675f8793ae747f1d6085b9d1b8f470443a58ac6dda5c6e42d",
+      "rebuild/2008-06/native-headers/v8datamodel/DebrisService.h": "e0585a12bf51f8c3e059ae17bc40d0a4e39a26c805aefa4486f45bd1a8c1b2e8",
+      "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h": "8a71a6f8defc32833c4a5ba367367b6f89d46701fa9eb7fc92165a9f8fe45917",
+      "rebuild/2008-06/native-headers/v8datamodel/Feature.h": "b1eabe86377ca5d951c7dcf0b192e7901358e20a9f675cc074093144ac789a3b",
+      "rebuild/2008-06/native-headers/v8datamodel/ForceField.h": "99bd9dd2cea96ab313e71617522943c0773b098c6427d46fc343d41db396d5e0",
+      "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h": "57423bda044b1f3904bd02c06b29362fb3a54f804599b2fb78210802e87ea83f",
+      "rebuild/2008-06/native-headers/v8datamodel/JointsService.h": "74c25c69035581e0a1351f7b84e7dc64b87e9516c1fee53e65df961a99d7e7ef",
+      "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h": "7b207a5817fec10a98cb22ca9e5f024031a783330b32cc1a2db01440e62a7c4e",
+      "rebuild/2008-06/native-headers/v8datamodel/Seat.h": "d0aab6649ee396ef83f044a8e859b157956c56379e5f2f75ace9d2c062b27aa3",
+      "rebuild/2008-06/native-headers/v8datamodel/SpawnLocation.h": "2410712f84b89fde96ffd18f0c127a7375d19204fa8d83607d730573056e0b7b",
+      "rebuild/2008-06/native-headers/v8datamodel/SpawnerService.h": "00d1445a19fe74b5ca56ce75883fb5edc7fce458fee81ce7fe8508b96514af69",
+      "rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h": "25ab90d503f39c08eba8907d31d5a7c63c746d691d86e151486eb4735c93abb7",
+      "rebuild/2008-06/native-headers/v8datamodel/TimerService.h": "7640981dca3c803865379af03e18282faa98ba191080235bcc98283277715f93",
+      "rebuild/2008-06/native-headers/v8datamodel/UserController.h": "50d100ac1c8d51dad2f8e4aacfbdb17a0cb71d9009a771029722fe220a89d839",
+      "rebuild/2008-06/native-headers/v8datamodel/Camera.h": "4b2a699993b06224d388f9b2815ef3a9c98d3870659214543b6b86bff70c0ab3",
+      "rebuild/2008-06/native-headers/v8datamodel/Backpack.h": "9221815bf684dd0bc6febd4b94dcac3186ea9510b6ec27c8e24e0676f1f49339",
+      "rebuild/2008-06/native-headers/v8datamodel/Flag.h": "daf0cb3e156c04f05135ff5bb440451b3ee29699f99a1d9eb73b98a626930265",
+      "rebuild/2008-06/native-headers/v8datamodel/FlagStand.h": "7fb96acfe62d95d2a4a0b014118d12682b08e3d2389c4009d4623edd6268c3e1",
+      "rebuild/2008-06/native-headers/v8datamodel/Hopper.h": "b43abcdd0d0d8e2e80f19769b83160d906f99ebd100de80385057319d80bc24a",
+      "rebuild/2008-06/native-headers/v8datamodel/Tool.h": "ee1739601cbe99d862761a90640acc920a8a6a03c792962895144967d8d9c236",
+      "rebuild/2008-06/native-headers/Replicator.h": "3cb822c0dce5ccad41a3f9583e7aaba0463e09f0a8b4f790cc571d250e6e5e10"
+    }
+  },
+  "checkpoint_batch": {
+    "group": "all",
+    "result": "35/35 passed",
+    "seconds": 86.625,
+    "summary_path": "work/2008-06/shared-layouts/native-checkpoint-summary.json",
+    "summary_sha256": "ad9e8272dd5189cef5558415dc213efe066a29c4cbd3207302767b4411e9cf65",
+    "note": "Batch completed after final header overlay and Replicator dependency fix. Updated GameSettingsStorage recorder was then focused-rerun below."
+  },
+  "affected_regressions": {
+    "before_fix_candidate": "31/35; peer constructor/update/lifetime failed on Replicator transitive declarations; GameSettingsStorage expected stale non-const symbol.",
+    "unoverlaid_current_baseline": "4/4 affected checks passed.",
+    "after_fix": [
+      "record_native_peer_constructor_integrated.py PASS",
+      "record_native_peer_update_integrated.py PASS",
+      "record_native_peer_lifetime_integrated.py PASS",
+      "record_native_gamesettings_storage_integrated.py PASS with current GameSettings.cpp provider"
+    ]
+  },
+  "dependency_fixes": [
+    {
+      "path": "rebuild/2008-06/native-headers/Replicator.h",
+      "sha256": "3cb822c0dce5ccad41a3f9583e7aaba0463e09f0a8b4f790cc571d250e6e5e10",
+      "prior_sha256": "83bb50a257dd42fdf0107aa234d280465475430f1c07b6c16697ac23080dac66",
+      "change": "Added direct includes stats/Stats.h and util/RunStateOwner.h; remaining bytes unchanged."
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_gamesettings_storage_integrated.py",
+      "sha256": "c5a8f049b3bbf8bb2709517b9e08b8e6b7bdb20c165c252d98c2c31a746c2aa8",
+      "change": "Compiles GameSettings.cpp; verifies exact const singleton symbol and original RTTI."
+    }
+  ],
+  "current_storage_receipts": {
+    "mew_candidate": {
+      "path": "work/2008-06/shared-layouts/gamesettings-storage-integrated.json",
+      "sha256": "fbf7210b38e0399ea429de92bca006ce5fe26e17768fb06de019e929094eddea",
+      "contents": {
+        "scope": "Typed static storage symbol and loader zero initialization verified. Constructor assignment and runtime ownership not proven; link closure not yet checked.",
+        "symbol": "?sing@?$GlobalSettingsItem@VGameSettings@RBX@@$1?sGameSettings@2@3QBDB@RBX@@0PAV12@A",
+        "original_address": "0x96dd10",
+        "original_section": ".data",
+        "original_is_zero_filled_virtual_tail": true,
+        "object_section_raw_size": 0,
+        "object_offset": 0,
+        "singleton_refs": "0x44bee0 reads storage at 0x44bf10 and 0x44bfc0",
+        "native_header_sha256": {
+          "rebuild\\2008-06\\native-headers\\v8datamodel\\GameSettings.h": "57423bda044b1f3904bd02c06b29362fb3a54f804599b2fb78210802e87ea83f",
+          "rebuild\\2008-06\\native-headers\\v8datamodel\\GlobalSettings.h": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
+          "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "e1a24b33e62e1e454d8a28202df94ba01819723812a3e88d9d1d4b1e75fa6b2e",
+          "rebuild\\2008-06\\native-headers\\util\\Sound.h": "5f47d945c05f66054d34ada404d280465475430f1c07b6c16697ac23080dac66"
+        },
+        "source_sha256": "1a7bb98af73431087865183385346e665c1a1267067fbe34b046fa0618d031ad",
+        "object_sha256": "f250ce5b1520bf233a2f368d54939889f82102bdcd242201bca2b6c2798601ef",
+        "recorder_sha256": "c5a8f049b3bbf8bb2709517b9e08b8e6b7bdb20c165c252d98c2c31a746c2aa8"
+      }
+    },
+    "regression_snapshot": {
+      "path": "work/2008-06/shared-layouts/gamesettings-storage-integrated.json",
+      "sha256": "c96c59ea73b8bb4dd9b1a3db4d7f7f8f89c8a61f5f535be500b3f508e4f33ca5",
+      "contents": {
+        "scope": "Typed static storage symbol and loader zero initialization verified. Constructor assignment and runtime ownership not proven; link closure not yet checked.",
+        "symbol": "?sing@?$GlobalSettingsItem@VGameSettings@RBX@@$1?sGameSettings@2@3QBDB@RBX@@0PAV12@A",
+        "original_address": "0x96dd10",
+        "original_section": ".data",
+        "original_is_zero_filled_virtual_tail": true,
+        "object_section_raw_size": 0,
+        "object_offset": 0,
+        "singleton_refs": "0x44bee0 reads storage at 0x44bf10 and 0x44bfc0",
+        "native_header_sha256": {
+          "rebuild\\2008-06\\native-headers\\v8datamodel\\GameSettings.h": "57423bda044b1f3904bd02c06b29362fb3a54f804599b2fb78210802e87ea83f",
+          "rebuild\\2008-06\\native-headers\\v8datamodel\\GlobalSettings.h": "9f5b6df796c9f1bc9c86116c9156b5c756d6fc14f91491dbdd85345f1c64c6bd",
+          "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+          "rebuild\\2008-06\\native-headers\\util\\Sound.h": "5f47d945c05f66054d34ada404d280465475430f1c07b6c16697ac23080dac66"
+        },
+        "source_sha256": "1a7bb98af73431087865183385346e665c1a1267067fbe34b046fa0618d031ad",
+        "object_sha256": "3a5291e57fe9d8e2f54f5b0759e03cfcfd54572592260b48d423b667e50d1646",
+        "recorder_sha256": "c5a8f049b3bbf8bb2709517b9e08b8e6b7bdb20c165c252d98c2c31a746c2aa8"
+      }
+    }
+  },
+  "storage_rtti_proof": {
+    "vtable": "0x8385f4",
+    "exact_rtti": ".?AV?$GlobalSettingsItem@VGameSettings@RBX@@$1?sGameSettings@2@3QBDB@RBX@@",
+    "symbol": "?sing@?$GlobalSettingsItem@VGameSettings@RBX@@$1?sGameSettings@2@3QBDB@RBX@@0PAV12@A",
+    "zero_bss": "0x96dd10",
+    "singleton_refs": "0x44bee0 reads 0x96dd10 at 0x44bf10 and 0x44bfc0"
+  },
+  "source_and_tool_hashes": {
+    "GameSettings.cpp": "1a7bb98af73431087865183385346e665c1a1267067fbe34b046fa0618d031ad",
+    "GameSettings.h": "57423bda044b1f3904bd02c06b29362fb3a54f804599b2fb78210802e87ea83f",
+    "Replicator.h": "3cb822c0dce5ccad41a3f9583e7aaba0463e09f0a8b4f790cc571d250e6e5e10",
+    "storage_recorder": "c5a8f049b3bbf8bb2709517b9e08b8e6b7bdb20c165c252d98c2c31a746c2aa8",
+    "original_pe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+    "boost_archive": "67bf99351f13f02cad792ed046f64c55e15b0da136df964b4e9b6668e614de17",
+    "compiler": {
+      "cl": {
+        "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+        "sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a"
+      },
+      "link": {
+        "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\link.exe",
+        "sha256": "836eb85b874a9b9cf9aa9fd489a94ec77558ab5697b40ba2653c62caf8c6f840"
+      },
+      "mspdb": {
+        "path": "C:\\Users\\colin\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\Common7\\IDE\\mspdb80.dll",
+        "sha256": "4df8c3cacee00a48d528ce58deaff404b8e25b2c31eaf0a3a22871308ca44363"
+      }
+    }
+  },
+  "standalone_name_abi": "PASS; only standalone test executable ran. No Roblox client executable launched.",
+  "excluded_provider": "GameSettingsStorage.cpp removed from isolated candidate snapshots; do not select. GameSettings.cpp is sole provider.",
+  "final_storage_validation": {
+    "recorder_sha256": "5f7d6c2f0ee5c032cb3b5cdf683fc2a65dac726df3cf8c2c373f703d8ec98d26",
+    "receipt_sha256": "32cc37bbe0dc1008c704130259bb97b7501c1a4078c043fe35b4a11da26cbc9a",
+    "source": "rebuild/2008-06/native-classes/GameSettings.cpp",
+    "flags_fixture": "document-swap-current.json (committed fixture)",
+    "note": "Fresh pass after dropping unrelated Sound.h receipt hash. Storage, exact original const RTTI and zero BSS checks unchanged. No standalone duplicate storage provider added."
+  }
+}

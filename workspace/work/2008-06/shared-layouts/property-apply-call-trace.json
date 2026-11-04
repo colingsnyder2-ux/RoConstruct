@@ -1,0 +1,140 @@
+{
+  "address": "0043ee40",
+  "target_sha256": "7a643c90c953cfb3e28d90d7c6e2de1a6cb867688ff2dceac1b9e0d1166971e7",
+  "size": 881,
+  "calls": [
+    {
+      "address": "0x43ee6d",
+      "operand": "0x6a0920"
+    },
+    {
+      "address": "0x43eeb9",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43eed9",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43eef9",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43ef10",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43ef1b",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43ef3a",
+      "operand": "0x43a320"
+    },
+    {
+      "address": "0x43ef4b",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43ef65",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43ef72",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43ef80",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43ef9d",
+      "operand": "ebx"
+    },
+    {
+      "address": "0x43efa7",
+      "operand": "ebx"
+    },
+    {
+      "address": "0x43efb4",
+      "operand": "ebx"
+    },
+    {
+      "address": "0x43efc8",
+      "operand": "ebx"
+    },
+    {
+      "address": "0x43efdc",
+      "operand": "ebx"
+    },
+    {
+      "address": "0x43efe8",
+      "operand": "ebx"
+    },
+    {
+      "address": "0x43eff1",
+      "operand": "0x420110"
+    },
+    {
+      "address": "0x43effd",
+      "operand": "ebx"
+    },
+    {
+      "address": "0x43f009",
+      "operand": "ebx"
+    },
+    {
+      "address": "0x43f041",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43f051",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43f099",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43f0b2",
+      "operand": "dword ptr [0x802890]"
+    },
+    {
+      "address": "0x43f0eb",
+      "operand": "0x43c940"
+    },
+    {
+      "address": "0x43f11d",
+      "operand": "0x576f00"
+    },
+    {
+      "address": "0x43f132",
+      "operand": "dword ptr [0x802464]"
+    },
+    {
+      "address": "0x43f146",
+      "operand": "0x58c5c0"
+    },
+    {
+      "address": "0x43f16a",
+      "operand": "eax"
+    },
+    {
+      "address": "0x43f173",
+      "operand": "0x5773c0"
+    },
+    {
+      "address": "0x43f17f",
+      "operand": "0x5a2fe0"
+    },
+    {
+      "address": "0x43f1a3",
+      "operand": "eax"
+    },
+    {
+      "address": "0x43f1a6",
+      "operand": "0x6a0c50"
+    }
+  ],
+  "scope": "Original call trace only; mined apply source uses artificial layouts and cannot be adopted. Target 0058c5c0 identity requires verification."
+}

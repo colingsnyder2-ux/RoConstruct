@@ -1,0 +1,31 @@
+{
+  "source_sha256": "a544b46f670a6881cd54e4ac43d1c0b8d0b92a62563344b5871db4fd265b9e28",
+  "object_sha256": "5d57c25106fefeef4dd1c8f901ff037044fc44de0c786ff79d1c8de27dd63f38",
+  "methods": [
+    {
+      "address": "00453670",
+      "size": 209,
+      "match": true,
+      "calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+        "?unplay@ChangeHistoryService@RBX@@QAEXXZ": "0x58a130",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "004538b0",
+      "size": 209,
+      "match": true,
+      "calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+        "?play@ChangeHistoryService@RBX@@QAEXXZ": "0x588780",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    }
+  ],
+  "scope": "Inactive; runtime integration unverified."
+}

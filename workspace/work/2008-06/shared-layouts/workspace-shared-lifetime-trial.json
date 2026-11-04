@@ -1,0 +1,36 @@
+{
+  "scope": "Inactive mismatch evidence. Constructor matches but destructor differs; full base types, vtables and runtime ownership remain unproven.",
+  "observer_sha256": "dd8f2b282682d45ff878470833f2e6ed341b0b849fcf5c13479b6b3a7725622d",
+  "input_profile_sha256": "fdeb772960c60a69d6632b9da9a5607cb8f031ac4aa277d6f6b6999afd733762",
+  "profile_sha256": "af69b9e0061445f6ed62fca424eefdbc666d26c4491390806f278b13a09422f0",
+  "object_sha256": "b4761b14a162f3e8bdab753115c958e73f89f064b9c3d29df25b8f08fe0b1646",
+  "methods": [
+    {
+      "symbol": "??0Workspace@RBX@@QAE@PAVIDataState@1@@Z",
+      "address": "005a4d90",
+      "size": 1124,
+      "original_size": 1124,
+      "exact": true
+    },
+    {
+      "symbol": "??1Workspace@RBX@@UAE@XZ",
+      "address": "005a28c0",
+      "size": 755,
+      "original_size": 878,
+      "exact": false
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceSharedLifetime.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceSharedLifetime.cpp"
+  ]
+}

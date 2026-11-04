@@ -1,0 +1,267 @@
+{
+  "scope": "Inactive native CContent factory, destructor and COM map match. COM data ownership, complete vtables and runtime behavior remain unproven.",
+  "observer_sha256": "17441caef55d7015c40ab1359953229c370131ec62bc15ba1522929e7f5aefb9",
+  "source_sha256": "3e98d63809faadb7e01c1b3cdc2d0140b3744115c5da4bf0b86f35240c7d8932",
+  "header_sha256": "e5ca7b6560ce7d078bbf3905ad64d77fcd6534607534b7fabfc454c3b0f05e62",
+  "object_sha256": "1d589d90b79824a085aaa5fbb53e16ae132b80dd96c7476c34e7bfdb066b1b05",
+  "allocation_size": "0x94",
+  "stream_offset": "0xc",
+  "bases": [
+    {
+      "type": ".?AV?$CComObject@VCContent@@@ATL@@",
+      "offset": 0
+    },
+    {
+      "type": ".?AVCContent@@",
+      "offset": 0
+    },
+    {
+      "type": ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@",
+      "offset": 8
+    },
+    {
+      "type": ".?AVCComObjectRootBase@ATL@@",
+      "offset": 8
+    },
+    {
+      "type": ".?AV?$CComCoClass@VCContent@@$1?CLSID_Content@@3U_GUID@@B@ATL@@",
+      "offset": 12
+    },
+    {
+      "type": ".?AV?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@ATL@@",
+      "offset": 0
+    },
+    {
+      "type": ".?AUISupportErrorInfo@@",
+      "offset": 0
+    },
+    {
+      "type": ".?AUIUnknown@@",
+      "offset": 0
+    },
+    {
+      "type": ".?AV?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@",
+      "offset": 4
+    },
+    {
+      "type": ".?AUIContent@@",
+      "offset": 4
+    },
+    {
+      "type": ".?AUIDispatch@@",
+      "offset": 4
+    },
+    {
+      "type": ".?AUIUnknown@@",
+      "offset": 4
+    }
+  ],
+  "methods": [
+    {
+      "address": "0x46ac90",
+      "symbol": "?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z",
+      "size": 209,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?CreateInstance@?$CComObject@VCContent@@@ATL@@SGJPAPAV12@@Z": "0x7c38d0",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "__imp_??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z": "0x802428",
+        "??_7?$CComObject@VCContent@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@1@@": "0x80eabc",
+        "??_7?$CComObject@VCContent@@@ATL@@6B?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@1@@": "0x80ea98",
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268",
+        "?Delete@CException@@QAEXXZ": "0x6a0950",
+        "$LN53": "0x46ad41"
+      }
+    },
+    {
+      "address": "0x416950",
+      "symbol": "??_G?$CComObject@VCContent@@@ATL@@UAEPAXI@Z",
+      "size": 67,
+      "exact": true,
+      "bindings": {
+        "??_7?$CComObject@VCContent@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@1@@": "0x80eabc",
+        "??_7?$CComObject@VCContent@@@ATL@@6B?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@1@@": "0x80ea98",
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268",
+        "__imp_??_D?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ": "0x80242c",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "address": "0x416900",
+      "symbol": "?QueryInterface@?$CComObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+      "size": 28,
+      "exact": true,
+      "bindings": {
+        "?_entries@?1??_GetEntries@CContent@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B": "0x80ead0",
+        "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z": "0x402280"
+      }
+    },
+    {
+      "address": "0x416920",
+      "symbol": "?QueryInterface@?$CComObject@VCContent@@@ATL@@W3AGJABU_GUID@@PAPAX@Z",
+      "size": 10,
+      "exact": true,
+      "bindings": {
+        "?QueryInterface@?$CComObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z": "0x416900"
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeContentFactoryTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeContentFactoryTrial.cpp"
+  ],
+  "com_map": {
+    "symbol": "?_entries@?1??_GetEntries@CContent@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B",
+    "address": "0x80ead0",
+    "size": 48,
+    "guid_entries": [
+      {
+        "symbol": "__GUID_d63f927a_1170_4239_9c1d_06e8a658f300",
+        "address": "0x80eb00",
+        "bytes": "7a923fd6701139429c1d06e8a658f300"
+      },
+      {
+        "symbol": "__GUID_00020400_0000_0000_c000_000000000046",
+        "address": "0x80aee8",
+        "bytes": "0004020000000000c000000000000046"
+      },
+      {
+        "symbol": "__GUID_df0b3d60_548f_101b_8e65_08002b2bd119",
+        "address": "0x80aef8",
+        "bytes": "603d0bdf8f541b108e6508002b2bd119"
+      }
+    ],
+    "entry_offsets": [
+      4,
+      4,
+      0
+    ],
+    "exact": true
+  },
+  "vtables": [
+    {
+      "symbol": "??_7?$CComObject@VCContent@@@ATL@@6B?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@1@@",
+      "original_address": "0x80eabc",
+      "slots": [
+        {
+          "offset": "0x0",
+          "symbol": "?QueryInterface@?$CComObject@VCContent@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+          "original_target": "0x416900",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x4",
+          "symbol": "?AddRef@?$CComObject@VCContent@@@ATL@@UAGKXZ",
+          "original_target": "0x417e70",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x8",
+          "symbol": "?Release@?$CComObject@VCContent@@@ATL@@UAGKXZ",
+          "original_target": "0x4168d0",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0xc",
+          "symbol": "?InterfaceSupportsErrorInfo@?$ISupportErrorInfoImpl@$1?IID_IContent@@3U_GUID@@B@ATL@@UAGJABU_GUID@@@Z",
+          "original_target": "0x416880",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x10",
+          "symbol": "??_E?$CComObject@VCContent@@@ATL@@UAEPAXI@Z",
+          "original_target": "0x416950",
+          "local_body_exact": null
+        }
+      ]
+    },
+    {
+      "symbol": "??_7?$CComObject@VCContent@@@ATL@@6B?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@1@@",
+      "original_address": "0x80ea98",
+      "slots": [
+        {
+          "offset": "0x0",
+          "symbol": "?QueryInterface@?$CComObject@VCContent@@@ATL@@W3AGJABU_GUID@@PAPAX@Z",
+          "original_target": "0x416920",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x4",
+          "symbol": "?AddRef@?$CComObject@VCContent@@@ATL@@W3AGKXZ",
+          "original_target": "0x416940",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x8",
+          "symbol": "?Release@?$CComObject@VCContent@@@ATL@@W3AGKXZ",
+          "original_target": "0x416930",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0xc",
+          "symbol": "?GetTypeInfoCount@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJPAI@Z",
+          "original_target": "0x401960",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x10",
+          "symbol": "?GetTypeInfo@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJIKPAPAUITypeInfo@@@Z",
+          "original_target": "0x4169d0",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x14",
+          "symbol": "?GetIDsOfNames@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJABU_GUID@@PAPA_WIKPAJ@Z",
+          "original_target": "0x416a30",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x18",
+          "symbol": "?Invoke@?$IDispatchImpl@UIContent@@$1?IID_IContent@@3U_GUID@@B$1?LIBID_RobloxLib@@3U3@B$00$0A@VCComTypeInfoHolder@ATL@@@ATL@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z",
+          "original_target": "0x416a60",
+          "local_body_exact": true
+        },
+        {
+          "offset": "0x1c",
+          "symbol": "?Upload@CContent@@UAGJPA_W@Z",
+          "original_target": "0x4166a0",
+          "local_body_exact": null
+        }
+      ]
+    }
+  ]
+}

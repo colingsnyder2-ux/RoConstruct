@@ -1,0 +1,68 @@
+{
+  "source_sha256": "1a792be86687748929fcdb716d874ed6b27132950cb0ce6faa2be4424c44886b",
+  "observer_sha256": "e4e6cd72a2214cbc8c5d659cee10b25dcb91d784d799d259c170e0acb030e59b",
+  "object_sha256": "8bf51a1cb9b9ffb2b37903253a1f5453e1617e6c8efac89eab4297411a617759",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawPartColorTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawPartColorTrial.cpp"
+  ],
+  "address": "0046ecf0",
+  "size": 71,
+  "bindings": {
+    "??_C@_02HMLFPPOG@?5?$CJ?$AA@": [
+      "0x81cb08"
+    ],
+    "?mapColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHH@Z": [
+      "0x46d080"
+    ],
+    "??_C@_0CD@HOLPPDO@part?4BrickColor?5?$DN?5BrickColor?4new@": [
+      "0x81cae4"
+    ],
+    "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": [
+      "0x44a450",
+      "0x44a450",
+      "0x44a450"
+    ],
+    "__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z": [
+      "0x802470"
+    ],
+    "??_C@_01EEMJAFIK@?6?$AA@": [
+      "0x81cbcc"
+    ]
+  },
+  "scope": "Inactive trial; map ownership, linked ABI and runtime remain unproven."
+}

@@ -1,0 +1,17 @@
+{
+  "revision": "729294d0b32223d61fe7d99eadbd775273e0a894",
+  "user_xml_sha256": "109953772b44aced11a561408a2ead932fd729874d34cf7cbdbd4f0580af42d8",
+  "serialized_sounds": 8,
+  "retained_sounds": 6,
+  "humanoid_control": 2,
+  "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "original_ascii_class_names_present": {
+    "StarterGui": false,
+    "ScreenGui": false
+  },
+  "exit": 0,
+  "limitations": [
+    "User place and logs not redistributed.",
+    "String absence alone does not prove lack of all equivalent GUI behavior."
+  ]
+}

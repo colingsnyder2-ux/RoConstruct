@@ -1,0 +1,25 @@
+{
+  "revision": "9cf9f160fd4ff19f4d93b21f546ba0302b53b658",
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeViewBases.cpp": "ebf131510fd1219dffe6da5191825f8b04b7275d4be2487697fc5b82ef8709ab",
+    "rebuild\\2008-06\\native-headers\\VerbBinder.h": "68afba3d1650223fd42a2c33cc38bc71418cea087d13f18858743aeaf19877f6",
+    "rebuild\\2008-06\\native-headers\\v8tree\\VerbContainer.h": "36384dbf8eab131873d802acdf36de643aef861e1153df236341943d93196fa0",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "b0d80d74862aea61c52fbdbd4a75b7ffe4280eb2097317f32c4952ab23baf35a",
+    "rebuild\\2008-06\\tests\\record_native_view_bases.py": "5e31bfdea4c61fc1a346e4c88b0259eebc4a08f02df84dab8411ff92d97d67a4"
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "compiler_build": 21022,
+  "base_extent": 172,
+  "bases": {
+    "VerbContainer": 120,
+    "UServiceAdded": 160,
+    "UServiceRemoving": 164,
+    "VSuperSafeChanged": 168
+  },
+  "observed_members": {
+    "CRobloxWnd": "0xb0",
+    "CMenu": "0x178",
+    "CMultiPlayerPane": "0x180"
+  },
+  "scope": "Base hierarchy probe only; complete 0x1f0 View members, virtual bodies and runtime linkage remain open."
+}

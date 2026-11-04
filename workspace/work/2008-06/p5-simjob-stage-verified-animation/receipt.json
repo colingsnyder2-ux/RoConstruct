@@ -1,0 +1,78 @@
+{
+  "revision": "c241e32733ba1e8a39a782511b90364cd0274c7d",
+  "exe_sha256": "9aa64feb189d054d8ec7021b54c24b528ccac20e8cf8e3c31780d2aeaa798c38",
+  "fixture_sha256": "3e7da19ecfd12ab672903b006adaf976973cc6903352702f1667614fbbeb9d07",
+  "observer_sha256": "04a90952d061ffae4b629dbf27a3f2c5612b204fe9e8b9853065e32f5dbd5aa6",
+  "assets_sha256": {
+    "fonts/character.rbxm": "91e5e1164863f7ae10ea9be855c38c6c58b7792141b30829464e6a1d2d19548d",
+    "fonts/humanoidAnimate.rbxm": "121f959181c0e7ed5a295602db155719a1ca500c1cc11b7bdc3201dd42ad206f",
+    "fonts/humanoidHealth.rbxm": "4af2a79971e9c6e15f2e681bcdc18281033d2464ca0c1ebe0da5b0e7a12539ba",
+    "fonts/humanoidSound.rbxm": "60fc31b21f7d3e57366d28b6ffcf9c1a6791e9ca4e4883f58e7c345f4163ee45",
+    "sounds/swoosh.wav": "e0373404bc849a6f24e9b7e8779e27187654b4fcf2604eef1a133b450131602e"
+  },
+  "cases": {
+    "idle": {
+      "exit": 0,
+      "hip_desired_range": [
+        -0.0999573618,
+        0.0350781456
+      ],
+      "hip_current_range": [
+        -0.0999573618,
+        0.0255539343
+      ],
+      "stopped_desired_range": [
+        0.075680092,
+        0.0999923199
+      ],
+      "right_leg_z_range": [
+        -0.0674953461,
+        0.0255508423
+      ],
+      "samples_sha256": "f2f9ed09efc0948eb99687bfe85b4688e8a5d65de86020da62dce1183d59c7fc"
+    },
+    "walk": {
+      "exit": 0,
+      "hip_desired_range": [
+        -0.965658307,
+        0.989484847
+      ],
+      "hip_current_range": [
+        -0.399749488,
+        0.5343346
+      ],
+      "stopped_desired_range": [
+        0.075680092,
+        0.0999923199
+      ],
+      "right_leg_z_range": [
+        -0.509268284,
+        0.372356415
+      ],
+      "samples_sha256": "a310608125197a11f5c54de0e423f316d1cdd9cf9aec99ad011bcf030ed93b43"
+    },
+    "disabled": {
+      "exit": 0,
+      "hip_desired_range": [
+        0.0,
+        0.0
+      ],
+      "hip_current_range": [
+        0.0,
+        0.0
+      ],
+      "stopped_desired_range": [
+        0.0,
+        0.0
+      ],
+      "right_leg_z_range": [
+        0.0,
+        0.000267982483
+      ],
+      "samples_sha256": "36857510f53d80fe782b8b91ea038e010ef704dd04793d92d2e434e6862f566b"
+    }
+  },
+  "notifier_mutation": "PASS",
+  "scope": "Original local Novetus 2008M asset scripts: movement, stop, disabled-script control, sound-path startup and listener mutation. Original-client animation and audible playback remain unverified.",
+  "P5_complete": false
+}

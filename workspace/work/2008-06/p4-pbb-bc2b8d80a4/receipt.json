@@ -1,0 +1,18 @@
+{
+  "revision": "bc2b8d80a42a14f6c4f01409d17dd294e98a66fc",
+  "exe_sha256": "dff63e5ad7dee5fb3b83360c1c08443a30193f4dec97cf947ef0e9e0b62fe6b8",
+  "map_sha256": "684d8480252a4d746432c9cda56165a48e69c91e2b86cf35dc8923f8b925a6a8",
+  "user_map_sha256": "f06e50fbfd097e24178e279b721ad8c5a27d5839f3197ca555dfa9fbafe6be00",
+  "status_counts": {
+    "0": 780,
+    "3": 12
+  },
+  "cleanup_zero": true,
+  "limitations": [
+    "User place and private logs excluded.",
+    "Original-client comparison and shadow branch remain open.",
+    "Twelve models still unsupported."
+  ],
+  "model_count": 792,
+  "rendered_models": 780
+}

@@ -1,0 +1,27 @@
+{
+  "revision": "24be78e1e28898f94a5a72c00f33121c4e5fadbc",
+  "exe_sha256": "5176717b5e71f5111398b54b72eb8556e82387b20e214a1060cd274fd82025af",
+  "observer_sha256": "54ec562ab0bb26d8145ead9c1f4620af605627e9c4c8f38475678f6397b9dba1",
+  "cases": {
+    "edge": {
+      "torso": [
+        2.5999999,
+        3.00006723,
+        1.56321704e-19
+      ],
+      "fixture_sha256": "3d74978ceaecdb721a680033abc54ec69c30516d8ed56f2dc4290e6f72b723ab",
+      "snapshot_sha256": "d3e2347016c3d0b22fed03eab62c8f809ece5b214a8bab9fdbac0cfe8ecafcd5"
+    },
+    "outside": {
+      "torso": [
+        28.5710392,
+        -291.414337,
+        7.53777531e-17
+      ],
+      "fixture_sha256": "4dbfae455dda675d1d93eb1d3cf047c30331b160488580ea7087ff1b65dbf654",
+      "snapshot_sha256": "fe6b850f0891912d8d6cc64de80ac2c4957ea52d41ea9663b914076920648e7e"
+    }
+  },
+  "scope": "Adapted 00644000 floor rays on donor ABI; native parity and P5 completion remain unproven.",
+  "P5_complete": false
+}

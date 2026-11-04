@@ -1,0 +1,82 @@
+{
+  "revision": "730f3031382ea5fe391f3fa11bc0afc2460c7833",
+  "exe_sha256": "6c961826d69371da5f63758e4902a95076b00528fe366e57d146ca6eb28146cb",
+  "fixture_sha256": "c377e8d9e0add162fbb3b3bcbcba498a5c9d69048da718eb3050679da8d1b63c",
+  "observer_sha256": "a57a49e57ad806079c99b74ef15b0f20f9100c64c58a65fd87ed4034990bc68c",
+  "scope": "Fixed-step Lua-driven AnchorJoint/FreeJoint cycles through source-derived tree/assembly/sleep pipeline; heartbeat adapter remains.",
+  "P5_complete": false,
+  "runs": {
+    "edit": {
+      "exit": 0,
+      "frames": 50,
+      "transitions": [],
+      "first_y": 20.0,
+      "last_y": 20.0,
+      "tail_min": 20.0,
+      "tail_max": 20.0,
+      "fixture_sha256": "c377e8d9e0add162fbb3b3bcbcba498a5c9d69048da718eb3050679da8d1b63c",
+      "samples_sha256": "cedc054a90dfec0b8921db126b587b7f9530631e300253ba2f480b0a3da6b3c9"
+    },
+    "cycle": {
+      "exit": 0,
+      "frames": 600,
+      "transitions": [
+        6,
+        16,
+        26
+      ],
+      "first_y": 20.0,
+      "last_y": -3.80717945,
+      "tail_min": -3.80717945,
+      "tail_max": -3.80717945,
+      "fixture_sha256": "c377e8d9e0add162fbb3b3bcbcba498a5c9d69048da718eb3050679da8d1b63c",
+      "samples_sha256": "929167c67d8aa5aebbcccb8251ddd7e57d03631a4cfe32b7a19ed48d4f8a8423"
+    },
+    "reopen": {
+      "exit": 0,
+      "frames": 600,
+      "transitions": [
+        6,
+        16,
+        26
+      ],
+      "first_y": 20.0,
+      "last_y": -3.80717945,
+      "tail_min": -3.80717945,
+      "tail_max": -3.80717945,
+      "fixture_sha256": "c377e8d9e0add162fbb3b3bcbcba498a5c9d69048da718eb3050679da8d1b63c",
+      "samples_sha256": "929167c67d8aa5aebbcccb8251ddd7e57d03631a4cfe32b7a19ed48d4f8a8423"
+    },
+    "overlap": {
+      "exit": 0,
+      "frames": 600,
+      "transitions": [
+        6,
+        12,
+        18
+      ],
+      "first_y": 20.0,
+      "last_y": -3.80717945,
+      "tail_min": -3.80717945,
+      "tail_max": -3.80717945,
+      "fixture_sha256": "3629faeadc1d4f556b6a7dadd9a7097b67d8913a0bc33dc2d288bcc4c945c83c",
+      "samples_sha256": "16613645e3b70a856445fb6fc924c13ea5fd71210747d1f7c5bfa12829b72105"
+    },
+    "flags": {
+      "exit": 0,
+      "combinations": 8
+    }
+  },
+  "remaining": [
+    "Original fixed-step physics comparison",
+    "Complete June tree/assembly/sleep ABI and physics equivalence",
+    "Normal launch, character input and controller"
+  ],
+  "map_sha256": "1cb947298c529acb6160c857fbea0a2325108c35fd5aff4fc52e36966ac94460",
+  "providers": [
+    "0001:000ebc90       ?onPrimitiveAddedAnchor@ClumpStage@RBX@@QAEXPAVPrimitive@2@@Z 004ecc90 f   linked:ClumpStage.obj",
+    "0001:000ebd40       ?onPrimitiveRemovingAnchor@ClumpStage@RBX@@QAEXPAVPrimitive@2@@Z 004ecd40 f   linked:ClumpStage.obj"
+  ],
+  "retired_objects_absent": true,
+  "reopen_max_delta": 0.0
+}

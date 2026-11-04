@@ -1,0 +1,296 @@
+{
+ "class": "CDeclarationView",
+ "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+ "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+ "sources": {
+  "rebuild/2008-06/tests/record_native_declaration_view.py": "04e81acd9843ad50946e590ecb1f6182f099947b769bb44d0f106178b6c5dfd7",
+  "rebuild/2008-06/tests/declaration_view_profile.py": "4728b5a39c8aece65c16504dff700de69c008f27a67d7a7c904ab141195af5a4",
+  "rebuild/2008-06/native-classes/CDeclarationView.cpp": "4f0dc92ab0fbd6ef2bebb3ce779c89d799af606caee73435801cd569ee0203cf",
+  "rebuild/2008-06/native-headers/CDeclarationView.h": "cc5f53a2f303dc617a0da220cf62250d76b0fe2e41d9d17a697f0bac351743d8",
+  "rebuild/2008-06/tests/NativeDeclarationViewLayout.cpp": "62211b683e402d54abae300567df8c54bae27b0cbf86496343d420adcb63a227"
+ },
+ "layout_obj": "cdaf7b3cff63aa62053712668f0cd97b3782cc85f81ef19d3af0b3f4c958b087",
+ "unit_obj": "e8ecf7b7281023f96655b70b8f96970ae13d1f54d29e2fed04167d623b07a4cd",
+ "methods": [
+  {
+   "address": "00434500",
+   "symbol": "??0CDeclarationView@@QAE@XZ",
+   "size": 68,
+   "exact": true,
+   "verified_targets": {
+    "??0CHtmlView@@IAE@XZ": "mfc90.dll!??0CHtmlView@@IAE@XZ",
+    "??_7CDeclarationView@@6B@": "0x812bc4"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "00434570",
+   "symbol": "??1CDeclarationView@@UAE@XZ",
+   "size": 161,
+   "exact": true,
+   "verified_targets": {
+    "??_7CDeclarationView@@6B@": "0x812bc4",
+    "??1CHtmlView@@UAE@XZ": "mfc90.dll!??1CHtmlView@@UAE@XZ"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "00434620",
+   "symbol": "??_GCDeclarationView@@UAEPAXI@Z",
+   "size": 30,
+   "exact": true,
+   "verified_targets": {
+    "??1CDeclarationView@@UAE@XZ": "0x434570",
+    "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "00434640",
+   "symbol": "?CreateObject@CDeclarationView@@SGPAVCObject@@XZ",
+   "size": 89,
+   "exact": true,
+   "verified_targets": {
+    "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+    "??0CDeclarationView@@QAE@XZ": "0x434500"
+   },
+   "local_eh": [
+    "__ehhandler$?CreateObject@CDeclarationView@@SGPAVCObject@@XZ"
+   ]
+  },
+  {
+   "address": "00433380",
+   "symbol": "?GetRuntimeClass@CDeclarationView@@UBEPAUCRuntimeClass@@XZ",
+   "size": 6,
+   "exact": true,
+   "verified_targets": {
+    "?classCDeclarationView@CDeclarationView@@2UCRuntimeClass@@B": "0x8124e8"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "00433370",
+   "symbol": "?_GetBaseClass@CDeclarationView@@KGPAUCRuntimeClass@@XZ",
+   "size": 5,
+   "exact": true,
+   "verified_targets": {
+    "?GetThisClass@CHtmlView@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CHtmlView@@SGPAUCRuntimeClass@@XZ"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "004338c0",
+   "symbol": "?GetMessageMap@CDeclarationView@@MBEPBUAFX_MSGMAP@@XZ",
+   "size": 6,
+   "exact": true,
+   "verified_targets": {
+    "?messageMap@?1??GetThisMessageMap@CDeclarationView@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x812558"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "00434550",
+   "symbol": "?OnInitialUpdate@CDeclarationView@@UAEXXZ",
+   "size": 22,
+   "exact": true,
+   "verified_targets": {
+    "?OnInitialUpdate@CFormView@@UAEXXZ": "mfc90.dll!?OnInitialUpdate@CFormView@@UAEXXZ",
+    "?LoadFromResource@CHtmlView@@QAEHI@Z": "mfc90.dll!?LoadFromResource@CHtmlView@@QAEHI@Z"
+   },
+   "local_eh": []
+  },
+  {
+   "address": "004346b0",
+   "symbol": "?OnDocumentComplete@CDeclarationView@@UAEXPBD@Z",
+   "size": 2074,
+   "exact": true,
+   "verified_targets": {
+    "?GetHtmlDocument@CHtmlView@@QBEPAUIDispatch@@XZ": "mfc90.dll!?GetHtmlDocument@CHtmlView@@QBEPAUIDispatch@@XZ",
+    "__GUID_332c4425_26cb_11d0_b483_00c04fd90119": "0x81056c",
+    "__imp__VariantInit@4": "oleaut32.dll!VariantInit",
+    "??_C@_0M@EANMMLMM@Declaration?$AA@": "0x812e44",
+    "??4CComVariant@ATL@@QAEAAV01@PBD@Z": "0x415d70",
+    "__imp__VariantClear@4": "oleaut32.dll!VariantClear",
+    "__GUID_3050f1ff_98b5_11cf_bb82_00aa00bdce0b": "0x812b54",
+    "??_C@_08JEPPEEEF@OwnerDiv?$AA@": "0x812e38",
+    "??_C@_05HDCNEILF@Owner?$AA@": "0x812e30",
+    "??_C@_0BC@LOCOCHMI@DeprecatedElement?$AA@": "0x812e1c",
+    "??_C@_0BD@MHLDMKNN@PreliminaryElement?$AA@": "0x812e08",
+    "??_C@_0L@DGHKOAOD@SummaryDiv?$AA@": "0x812dfc",
+    "??_C@_07POGKKA@Summary?$AA@": "0x812df4",
+    "?setContent@CDeclarationView@@QAEXPBVItem@Metadata@Reflection@RBX@@PBD1@Z": "0x434020"
+   },
+   "local_eh": [
+    "__ehhandler$?OnDocumentComplete@CDeclarationView@@UAEXPBD@Z"
+   ]
+  },
+  {
+   "address": "00434020",
+   "symbol": "?setContent@CDeclarationView@@QAEXPBVItem@Metadata@Reflection@RBX@@PBD1@Z",
+   "size": 1092,
+   "exact": true,
+   "verified_targets": {
+    "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+    "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180",
+    "__imp__SysFreeString@4": "oleaut32.dll!SysFreeString",
+    "??_C@_05PIBOEKAB@block?$AA@": "0x812bb8",
+    "??_C@_04CGFJFPFD@none?$AA@": "0x80ac94",
+    "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+    "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z",
+    "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ",
+    "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+    "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+   },
+   "local_eh": [
+    "__ehhandler$?setContent@CDeclarationView@@QAEXPBVItem@Metadata@Reflection@RBX@@PBD1@Z"
+   ]
+  },
+  {
+   "address": "00435550",
+   "symbol": "?appendArgument@@YAXAAHAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABUItem@SignatureDescriptor@Reflection@RBX@@@Z",
+   "size": 209,
+   "exact": true,
+   "verified_targets": {
+    "??_C@_02KEGNLNML@?0?5?$AA@": "0x812e50",
+    "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z",
+    "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+    "??_C@_01CLKCMJKC@?5?$AA@": "0x812e58",
+    "??_C@_03MHLONNLM@?5?$DN?5?$AA@": "0x812e54",
+    "??$get@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x434f20",
+    "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+    "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+   },
+   "local_eh": [
+    "__ehhandler$?appendArgument@@YAXAAHAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABUItem@SignatureDescriptor@Reflection@RBX@@@Z"
+   ]
+  },
+  {
+   "address": "00435630",
+   "symbol": "??$for_each@V?$_Const_iterator@$00@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@V?$bind_t@XP6AXAAHAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABUItem@SignatureDescriptor@Reflection@RBX@@@ZV?$list3@V?$reference_wrapper@H@boost@@V?$reference_wrapper@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$arg@$00@2@@_bi@boost@@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXAAHAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABUItem@SignatureDescriptor@Reflection@RBX@@@ZV?$list3@V?$reference_wrapper@H@boost@@V?$reference_wrapper@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$arg@$00@2@@_bi@boost@@@_bi@boost@@V?$_Const_iterator@$00@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@0@0V123@@Z",
+   "size": 68,
+   "exact": true,
+   "verified_targets": {},
+   "local_eh": []
+  }
+ ],
+ "dependencies": [
+  {
+   "address": "00401180",
+   "symbol": "??0CComBSTR@ATL@@QAE@PBD@Z",
+   "size": 151,
+   "exact": true,
+   "verified_targets": {
+    "__imp__MultiByteToWideChar@24": "kernel32.dll!MultiByteToWideChar",
+    "__imp__SysAllocStringLen@8": "oleaut32.dll!SysAllocStringLen",
+    "__imp__SysFreeString@4": "oleaut32.dll!SysFreeString",
+    "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": "0x401150",
+    "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
+   },
+   "local_eh": [],
+   "role": "dependency body (binding proof; owned by another unit)",
+   "call_site_only": {
+    "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": "0x401150",
+    "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
+   }
+  },
+  {
+   "address": "00415d70",
+   "symbol": "??4CComVariant@ATL@@QAEAAV01@PBD@Z",
+   "size": 296,
+   "exact": true,
+   "verified_targets": {
+    "__imp__VariantClear@4": "oleaut32.dll!VariantClear",
+    "__imp__lstrlenA@4": "kernel32.dll!lstrlenA",
+    "__allmul": "0x6a16d0",
+    "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": "0x402610",
+    "__alloca_probe_16": "0x6a1560",
+    "?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z": "0x402f50",
+    "__imp__MultiByteToWideChar@24": "kernel32.dll!MultiByteToWideChar",
+    "__imp__SysAllocString@4": "oleaut32.dll!SysAllocString",
+    "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000",
+    "__imp__free": "msvcr90.dll!free"
+   },
+   "local_eh": [
+    "__ehhandler$??4CComVariant@ATL@@QAEAAV01@PBD@Z"
+   ],
+   "role": "dependency body (binding proof; owned by another unit)",
+   "call_site_only": {
+    "__allmul": "0x6a16d0",
+    "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": "0x402610",
+    "__alloca_probe_16": "0x6a1560",
+    "?Allocate@?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAEPAXK@Z": "0x402f50",
+    "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000"
+   }
+  }
+ ],
+ "vtable": {
+  "verified": 140,
+  "imported": 124,
+  "shared_bodies": {
+   "2": [
+    "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+    "0x70bdf0"
+   ],
+   "3": [
+    "?AssertValid@CObject@@UBEXXZ",
+    "0x47d410"
+   ],
+   "4": [
+    "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+    "0x70bdf0"
+   ],
+   "40": [
+    "?get_accChildCount@CFormView@@UAEJPAJ@Z",
+    "0x40e3a0"
+   ],
+   "41": [
+    "?get_accChild@CFormView@@UAEJUtagVARIANT@@PAPAUIDispatch@@@Z",
+    "0x40e370"
+   ],
+   "42": [
+    "?get_accName@CFormView@@UAEJUtagVARIANT@@PAPA_W@Z",
+    "0x40e3b0"
+   ],
+   "54": [
+    "?accLocation@CFormView@@UAEJPAJ000UtagVARIANT@@@Z",
+    "0x40e3e0"
+   ],
+   "56": [
+    "?accHitTest@CFormView@@UAEJJJPAUtagVARIANT@@@Z",
+    "0x40e420"
+   ],
+   "65": [
+    "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+    "0x70bdf0"
+   ],
+   "66": [
+    "?BeginModalState@CWnd@@UAEXXZ",
+    "0x401120"
+   ],
+   "67": [
+    "?EndModalState@CWnd@@UAEXXZ",
+    "0x401130"
+   ]
+  },
+  "unverified": {},
+  "address": "00812bc4",
+  "slots": 140
+ },
+ "runtime_class": "008124e8",
+ "message_map": "00812558",
+ "layout": {
+  "sizeof": "0x114",
+  "base": "CHtmlView (0xf4)",
+  "document": "0xf4 (CComQIPtr<IHTMLDocument2>)",
+  "declaration": "0xf8",
+  "ownerDiv": "0xfc",
+  "owner": "0x100",
+  "summaryDiv": "0x104",
+  "summary": "0x108",
+  "deprecatedElement": "0x10c",
+  "preliminaryElement": "0x110 (CComQIPtr<IHTMLElement>)"
+ },
+ "open": [
+  "showDescriptor 00435860: the original reads FunctionDescriptor::signature and SignalDescriptor::signature inline; the donor reflection/function.h and signal.h declare getSignature() out of line (shared blocker with CMemberTreeView::addFunction). Exact under the inline-getSignature experiment (exp_probe.py)."
+ ]
+}

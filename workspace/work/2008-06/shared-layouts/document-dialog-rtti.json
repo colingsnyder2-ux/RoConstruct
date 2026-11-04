@@ -1,0 +1,45 @@
+{
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "rows": [
+    {
+      "vtable": "0x81737c",
+      "col": "0x883168",
+      "base_offset": "0x0",
+      "type_descriptor": "0x931cd8",
+      "name": ".?AVCPublishAsPlaceDialog@@"
+    },
+    {
+      "vtable": "0x817350",
+      "col": "0x883238",
+      "base_offset": "0x74",
+      "type_descriptor": "0x931cd8",
+      "name": ".?AVCPublishAsPlaceDialog@@"
+    },
+    {
+      "vtable": "0x81777c",
+      "col": "0x8832d4",
+      "base_offset": "0x0",
+      "type_descriptor": "0x931d44",
+      "name": ".?AVCSaveModelToRobloxDialog@@"
+    },
+    {
+      "vtable": "0x817750",
+      "col": "0x883348",
+      "base_offset": "0x74",
+      "type_descriptor": "0x931d44",
+      "name": ".?AVCSaveModelToRobloxDialog@@"
+    },
+    {
+      "vtable": "0x81a564",
+      "col": "0x885394",
+      "base_offset": "0x0",
+      "type_descriptor": "0x931cfc",
+      "name": ".?AVCSaveToRobloxDialog@@"
+    }
+  ],
+  "constructor_addresses": {
+    "CPublishAsPlaceDialog": "0044f500",
+    "CSaveModelToRobloxDialog": "0044f660"
+  },
+  "scope": "Original constructor vtables and RTTI identities; complete layout/destructor proof and integration remain open."
+}

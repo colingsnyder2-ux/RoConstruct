@@ -1,0 +1,172 @@
+{
+  "revision": "6cc844c0dfd188332f1e0257f1da6778f5638829",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "7c9ccc24ed9230bde004b29a1fa0d63ead37b7a50e01eaf930d7e2df783e702a",
+  "fixture_sha256": "459285d9c901b62a8bfd5dde802220603280ca3faa699f9d9b25974e524c6b48",
+  "observer_sha256": "5062793a6c06a9ffcbd2e2dbda1c35cfc4d9e14f2ff5319d8671a7422525b4cf",
+  "candidate_counts": [
+    4,
+    4
+  ],
+  "moving_copies": [
+    2,
+    2
+  ],
+  "rebuilt": {
+    "30": {
+      "torso": [
+        141.391022,
+        5.48564005,
+        71.75
+      ],
+      "head": [
+        141.391022,
+        6.98564005,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "snapshot_sha256": "c39bd4036035f186f71763a4c4b9cf8308bdf7a531b72562f19066e77b2d98fd"
+    },
+    "60": {
+      "torso": [
+        148.324524,
+        17.2474537,
+        71.75
+      ],
+      "head": [
+        148.324524,
+        18.7474537,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "snapshot_sha256": "e866002cb35b21276fc6d1a136118caf6fce73ef9386f90472b1dada564a1db6"
+    },
+    "90": {
+      "torso": [
+        155.792908,
+        2.23692417,
+        71.75
+      ],
+      "head": [
+        155.792908,
+        3.73692417,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "snapshot_sha256": "65582f84c91a524899c8901069fb7e03468be9557912cd115cad619f94a963da"
+    },
+    "120": {
+      "torso": [
+        163.794617,
+        2.9845221,
+        71.75
+      ],
+      "head": [
+        163.794617,
+        4.48452187,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "snapshot_sha256": "76071ebc14923a3bfa5f3d8b27222d6fb6247d9413eb86b24f31c92ba27f3768"
+    }
+  },
+  "comparisons": [
+    {
+      "frame": 30,
+      "original_time": 0.5,
+      "original_torso": [
+        141.39102172851562,
+        5.46412467956543,
+        71.75
+      ],
+      "original_head": [
+        141.39102172851562,
+        6.96412467956543,
+        71.75
+      ],
+      "delta": [
+        -2.714843674311851e-07,
+        -0.02151537043457008,
+        0.0
+      ]
+    },
+    {
+      "frame": 60,
+      "original_time": 1.0,
+      "original_torso": [
+        149.39273071289062,
+        2.960015296936035,
+        71.75
+      ],
+      "original_head": [
+        149.39273071289062,
+        4.460015296936035,
+        71.75
+      ],
+      "delta": [
+        1.0682067128906283,
+        -14.287438403063966,
+        0.0
+      ]
+    },
+    {
+      "frame": 90,
+      "original_time": 1.5,
+      "original_torso": [
+        157.92681884765625,
+        2.924201250076294,
+        71.75
+      ],
+      "original_head": [
+        157.92681884765625,
+        4.424201011657715,
+        71.75
+      ],
+      "delta": [
+        2.1339108476562387,
+        0.687277080076294,
+        0.0
+      ]
+    },
+    {
+      "frame": 120,
+      "original_time": 2.0,
+      "original_torso": [
+        165.9269256591797,
+        2.924201250076294,
+        71.75
+      ],
+      "original_head": [
+        165.9269256591797,
+        4.424201011657715,
+        71.75
+      ],
+      "delta": [
+        2.1323086591796994,
+        -0.06032084992370601,
+        0.0
+      ]
+    }
+  ],
+  "original_exit": 1,
+  "original_forced_termination": true,
+  "mode": "air",
+  "scope": "Air control: only 0.5-second horizontal error bounded to 0.8 studs; later samples and all vertical motion observational. One authored walk, tall character walk, or moving floor; original wall-time vs rebuilt fixed steps, +/-35 ms sampling, torso x tolerance 0.8 and y tolerance 0.16 studs. Joint construction differs and native parity is unproven.",
+  "P5_complete": false
+}

@@ -1,0 +1,27 @@
+#include "NativeLDrawEntitiesTrial.h"
+
+namespace RBX { namespace LDraw2Lua {
+LDrawItem::~LDrawItem() {}
+LDrawModel::LDrawModel(const char* value) : name(value) {}
+LDrawModel::~LDrawModel()
+{
+    unsigned int count = items.size();
+    for (unsigned int i = 0; i < count; ++i) {
+        LDrawItem* item = items.at(i);
+        if (item) delete item;
+    }
+    items.erase(items.begin(), items.end());
+}
+void LDrawModel::add(LDrawItem* item) { LDrawItem* copy = item; items.push_back(copy); }
+
+LDrawPart::LDrawPart(LDraw2RobloxMapRoot* owner) : output(owner)
+{
+    values[0] = 0.0; values[1] = 0.0; values[2] = 0.0; values[3] = 0.0;
+    type = 0;
+    values[4] = 0.0;
+    color = 0;
+    values[5] = 0.0; values[6] = 0.0; values[7] = 0.0; values[8] = 0.0;
+    values[9] = 0.0; values[10] = 0.0; values[11] = 0.0;
+    std::string empty("");
+}
+} }

@@ -1,0 +1,84 @@
+{
+  "revision": "363b8d813b1a8f5d1a8fde19e067f3c4a3edfb35",
+  "sources": {
+    "rebuild\\2008-06\\tests\\..\\native-classes\\CMainFrameCommands.cpp": "2722d8e1337329c6715294a33fb914b099291ff1272dd8fa2e973d2a090c53e3",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "d63af35ad131e23f509c3ccdd9d5163099aee085e80c34a4d137f92b90738f9f",
+    "rebuild\\2008-06\\native-headers\\CMainFrameBases.h": "3e10b26ea2691550e68ba105aab1b10e1ce95fe76f36c13edd5ddeb55b8ee1f0",
+    "roc\\libs.py": "7050e86fd3f8a30d24845d324ee5269f565dddc70762ba293afcdb5863ab3cf6",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_string_recipe.py": "481d3f3ede97918c0f2cad27e463c60d47343a402cde435e665c708d90d5734a"
+  },
+  "compiler_build": 21022,
+  "preprocess_flags": [
+    "/nologo",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/P",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\..\\native-classes\\CMainFrameCommands.cpp"
+  ],
+  "compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoNativeFrameNoInline.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeFrameNoInline.cpp"
+  ],
+  "methods": [
+    {
+      "address": "004309f0",
+      "symbol": "?hideEditorChrome@CMainFrame@@QAEXXZ",
+      "size": 230,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00430f50",
+      "symbol": "?showEditorChrome@CMainFrame@@QAEX_N@Z",
+      "size": 226,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00431f10",
+      "symbol": "?OnClose@CMainFrame@@QAEXXZ",
+      "size": 236,
+      "relocation_normalized_exact": true
+    }
+  ],
+  "scope": "CString conversion import matches; remaining direct/data relocations and runtime integration remain open."
+}

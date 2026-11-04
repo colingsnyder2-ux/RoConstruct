@@ -1,0 +1,22 @@
+{
+  "scope": "Inactive FlatTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x615f10",
+      "size": 120,
+      "symbol": "?getSurface@MouseCommand@RBX@@QAEPAVSurface@2@ABVUIEvent@2@AAPAVPartInstance@2@AAH@Z",
+      "bindings": {
+        "__ehhandler$?getSurface@MouseCommand@RBX@@QAEPAVSurface@2@ABVUIEvent@2@AAPAVPartInstance@2@AAH@Z": "0x7dae28",
+        "?ignoreVector3@MouseCommand@RBX@@0VVector3@G3D@@A": "0x97bee0",
+        "?getPart@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@PBVHitTestFilter@2@AAVVector3@G3D@@@Z": "0x615d90",
+        "?getUnitMouseRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z": "0x615d00",
+        "?getSurface@PartInstance@RBX@@QAEPAVSurface@2@ABVRay@G3D@@AAH@Z": "0x599890"
+      }
+    }
+  ],
+  "source_sha256": "e890b4c81dc9a73f6b1d4966259d378f95d58fe02c47bdcf3c6aeb6303ced937",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "9655c36f09e98fe34c920ef4370aa93eb6d014f4d75f0adaf371d36e47c88bb9",
+  "observer_sha256": "155746f20b16a4fa2957bb98b518535e8ca6696a2c9934d8833f671654a07fbe"
+}

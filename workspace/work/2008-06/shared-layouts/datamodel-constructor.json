@@ -1,0 +1,155 @@
+{
+  "revision": "ff46ffa855011325ca393cdedd0ece084a2d7536",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "4359d19c841df8a2a6d24135186157d8fc4912fe2b007a07a860c97931c2f251",
+  "constructor": "0x57b9f0",
+  "body_sha256": "941d00205680820d1c7431d0dcb1fdf57cb8116db25caa97933707d8a207348d",
+  "size": 612,
+  "writes": [
+    {
+      "address": "0x57ba9c",
+      "offset": "0x1f0",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x1f0], 0x83030c"
+    },
+    {
+      "address": "0x57baa6",
+      "offset": "0x1f4",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x1f4], 0x830304"
+    },
+    {
+      "address": "0x57bab0",
+      "offset": "0x1f8",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x1f8], 0x8302f8"
+    },
+    {
+      "address": "0x57baba",
+      "offset": "0x1fc",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x1fc], ebx"
+    },
+    {
+      "address": "0x57bac0",
+      "offset": "0x200",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x200], ebx"
+    },
+    {
+      "address": "0x57bad8",
+      "offset": "0x20c",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x20c], ebx"
+    },
+    {
+      "address": "0x57bade",
+      "offset": "0x210",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x210], ebx"
+    },
+    {
+      "address": "0x57bae4",
+      "offset": "0x214",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x214], ebx"
+    },
+    {
+      "address": "0x57baea",
+      "offset": "0x218",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x218], ebx"
+    },
+    {
+      "address": "0x57bb20",
+      "offset": "0x22c",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x22c], ebx"
+    },
+    {
+      "address": "0x57bb26",
+      "offset": "0x230",
+      "width": 1,
+      "instruction": "byte ptr [esi + 0x230], 1"
+    },
+    {
+      "address": "0x57bb3a",
+      "offset": "0x250",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x250], ebx"
+    },
+    {
+      "address": "0x57bb40",
+      "offset": "0x258",
+      "width": 1,
+      "instruction": "byte ptr [esi + 0x258], bl"
+    },
+    {
+      "address": "0x57bb46",
+      "offset": "0x259",
+      "width": 1,
+      "instruction": "byte ptr [esi + 0x259], bl"
+    },
+    {
+      "address": "0x57bb78",
+      "offset": "0x25c",
+      "width": 4,
+      "instruction": "dword ptr [esi + 0x25c], ebx"
+    }
+  ],
+  "calls": [
+    {
+      "address": "0x57ba11",
+      "target": "0x57abf0"
+    },
+    {
+      "address": "0x57ba25",
+      "target": "0x583460"
+    },
+    {
+      "address": "0x57bad3",
+      "target": "0x576ff0"
+    },
+    {
+      "address": "0x57bafc",
+      "target": "0x577090"
+    },
+    {
+      "address": "0x57bb0d",
+      "target": "0x577090"
+    },
+    {
+      "address": "0x57bb2d",
+      "target": "dword ptr [0x802460]"
+    },
+    {
+      "address": "0x57bb4c",
+      "target": "0x6a0920"
+    },
+    {
+      "address": "0x57bb63",
+      "target": "0x563070"
+    },
+    {
+      "address": "0x57bb7e",
+      "target": "0x576c80"
+    },
+    {
+      "address": "0x57bb86",
+      "target": "0x47d410"
+    },
+    {
+      "address": "0x57bb9d",
+      "target": "dword ptr [0x802458]"
+    },
+    {
+      "address": "0x57bbaf",
+      "target": "0x55af90"
+    },
+    {
+      "address": "0x57bbbc",
+      "target": "dword ptr [0x802468]"
+    }
+  ],
+  "scope": "Original constructor instructions; member types require separate evidence. No active ABI change."
+}

@@ -1,18 +1,1 @@
-{
-  "schema": 1,
-  "workflow_version": 49,
-  "matching_workflow_version": 4,
-  "abi_manifest_sha256": "10777326f0c5800acabb40261e416f323312192caff6f62c92d834c9a23f5f61",
-  "abi_manifest_classes": 2001,
-  "url": "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip",
-  "sha256": "d6c43513d57d9127ab05494facc42e55dcc1100093aeb902a51df53b9cf864f3",
-  "size": 3899743,
-  "guide": "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/NATIVE_AGENT.md",
-  "matching_guide": "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/MATCHING_AGENT.md",
-  "native_clients": [
-    "2008-06"
-  ],
-  "invitation_required": false,
-  "server": "https://colinpc.tail2879d0.ts.net",
-  "status_url": "https://colinpc.tail2879d0.ts.net/v1/status"
-}
+{"abi_manifest_classes":2001,"abi_manifest_sha256":"10777326f0c5800acabb40261e416f323312192caff6f62c92d834c9a23f5f61","draft_server":"https://colinpc.tail2879d0.ts.net/native-drafts","draft_workflow_version":1,"guide":"https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/NATIVE_AGENT.md","invitation_required":false,"matching_guide":"https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/MATCHING_AGENT.md","matching_workflow_version":4,"native_clients":["2008-06"],"schema":1,"server":"https://colinpc.tail2879d0.ts.net","sha256":"4921fb2c9a71642a6adc6485ec5c89ac414a98269237ae987bd86cb6f5fb377e","size":22180071,"source_commit":"6877c4d966ae04db2eef895bdb968aa8f9f1071a","url":"https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/native-worker.zip","workflow_version":50}

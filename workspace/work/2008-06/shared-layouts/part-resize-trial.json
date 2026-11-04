@@ -1,0 +1,56 @@
+{
+  "scope": "Inactive Part resize and original lifetime evidence. Full rebuilt destructor, data identity and runtime ABI unproven.",
+  "unit": "roc_part_grouped_tail_constructor_9b19d0716f31ff52.cpp",
+  "preprocessed_sha256": "b558ea6385821f409354d3350d0300753c740510bc8301f5e20fc028b19a6b0c",
+  "source_sha256": "2d6539b3bdfe2884a4dd5849d1e038074d0100dbd69f856f5c16b6cff50b3ab9",
+  "generated_sha256": "f57a90365ea97b377e6a2976b26f50bc3c5dd40dd57df24b71203ded95cf16c2",
+  "object_sha256": "06e220cbce156527df9003aae763d4f468f32c693dd55569107824798dff017c",
+  "link_object_sha256": "d828f19bbfde333e0ac90b57c8f5bc3504b6cc6793eeab2b68db17f18e5d782b",
+  "constructor": {
+    "address": "0x59d4d0",
+    "size": 785,
+    "exact": true,
+    "object_sha256": "81139f7d8d0bf116fd500c6c5e0ceaed1a4dd4e448bcc4c34527edfea6cf4656"
+  },
+  "observer_sha256": "0b678e1497c5df194b1828e1596ecbdfa9d359e9fe0318ee1829b24d4932d409",
+  "method": {
+    "symbol": "?resize@PartInstance@RBX@@QAE_NW4NormalId@2@H@Z",
+    "address": "0x59e150",
+    "size": 590,
+    "exact": true,
+    "bindings": {
+      "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0",
+      "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220",
+      "__real@bf800000": "0x81c3b8",
+      "__real@40200000": "0x8288c0",
+      "__real@3f555555": "0x826e60",
+      "?uiToXmlSize@PartInstance@RBX@@ABE?AVVector3@G3D@@ABV34@@Z": "0x599eb0",
+      "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z": "0x476580",
+      "__real@3f000000": "0x819bac",
+      "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0",
+      "?setPartSizeXml@PartInstance@RBX@@QAEXABVVector3@G3D@@@Z": "0x59db90",
+      "?join@PartInstance@RBX@@QAEXXZ": "0x59b4f0",
+      "__real@3727c5ac": "0x82b3b0",
+      "?fuzzyEq@Math@RBX@@SA_NABVCoordinateFrame@G3D@@0MM@Z": "0x5de2a0"
+    }
+  },
+  "original_destructor": {
+    "vtable_thunk": "0x59bb40",
+    "deleting_destructor": "0x59c110",
+    "destructor": "0x59b970",
+    "primitive_offset": "0x228",
+    "primitive_destructor": "0x5e7df0"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Gy",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/fp:fast",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePartResizeTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePartResizeTrial.cpp"
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "class": "RBX::Network::IPhysicsSender/IPhysicsReceiver, RoundRobinPhysicsSender, DirectPhysicsReceiver",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-network-20261104\\final-abi\\network\\out\\network-physics\\NativeNetworkPhysicsLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeNetworkPhysicsLayout.cpp"
+    ],
+    "unit": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-network-20261104\\final-abi\\network\\out\\network-physics\\NativeNetworkPhysics.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkPhysics.cpp"
+    ]
+  },
+  "sources": {
+    "work/fork-integration/mew-rest-network-20261104/final-abi/network-final2/runner/record_native_network_physics.py": "9e58e4fdeabd7592c91afd26cc66d939f252d6f8fce7a032e79c69f4be9f43eb",
+    "rebuild/2008-06/native-classes/NetworkPhysics.cpp": "b4a7a5465513464f97cabc46f9ce347d5093e5df0239543b31114136a6637812",
+    "rebuild/2008-06/tests/NativeNetworkPhysicsLayout.cpp": "37c0ea16a673b04c22cc378ba497ecf7c2672f8fcf48f6c7ee3b4a5316bc03de",
+    "rebuild/2008-06/native-headers/Network/PhysicsReplication.h": "c8318741e9b6e6b42e3686681809c3c1a19afbcbb2fc3383c2bb2afb02183e63"
+  },
+  "objects": {
+    "NativeNetworkPhysicsLayout.obj": "39a26000f9beef5f78798027eb781f069a8da1dea2d784763fe6676358665f3d",
+    "NativeNetworkPhysics.obj": "3aac1402092ba411124da42cd33577b34aa82057ab82d21ea5ecbcd6cc1443bd"
+  },
+  "layout": "DirectPhysicsReceiver 8 (replicator +4); RoundRobinPhysicsSender 0x18 (replicator +4, MechanismTracker +8, lastSendTime double +0x10); interfaces novtable, private boost::noncopyable at mdisp 4.",
+  "methods": [
+    {
+      "address": "004c99c0",
+      "symbol": "??0RoundRobinPhysicsSender@Network@RBX@@QAE@PAVReplicator@12@@Z",
+      "size": 79,
+      "exact": true,
+      "verified_targets": {
+        "??_7RoundRobinPhysicsSender@Network@RBX@@6B@": "0x826760 (RTTI .?AVRoundRobinPhysicsSender@Network@RBX@@, offset 0x0)",
+        "?getLocalTime@System@G3D@@SANXZ": "0x508410 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0RoundRobinPhysicsSender@Network@RBX@@QAE@PAVReplicator@12@@Z"
+      ]
+    },
+    {
+      "address": "004ca010",
+      "symbol": "??_GRoundRobinPhysicsSender@Network@RBX@@UAEPAXI@Z",
+      "size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?stopTracking@MechanismTracker@RBX@@AAEXXZ": "0x5e5320 (external)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0047d410",
+      "symbol": "?step@RoundRobinPhysicsSender@Network@RBX@@UAEXXZ",
+      "size": 1,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c99b0",
+      "symbol": "??1MechanismTracker@RBX@@QAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?stopTracking@MechanismTracker@RBX@@AAEXXZ": "0x5e5320 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004ab5b0",
+      "symbol": "??_GDirectPhysicsReceiver@Network@RBX@@UAEPAXI@Z",
+      "size": 25,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0070bdf0",
+      "symbol": "?step@DirectPhysicsReceiver@Network@RBX@@UAEXI@Z",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    }
+  ],
+  "not_exact": [
+    [
+      "004cd420",
+      "RoundRobinPhysicsSender::sendPackets (225 bytes): needs World::getSimJobStage 005e93b0, the Workspace world (+0x2e4) and an unidentified 0x13c-byte local type (004cbd40 / 004c9a70); declared only, bound through vtable 00826760 slot 2."
+    ],
+    [
+      "004c83b0",
+      "DirectPhysicsReceiver::receivePacket (1890 bytes): needs the native Replicator / IdSerializer deserialize API (004a8b60); declared only, bound through vtable 008247d0 slot 2."
+    ],
+    [
+      "004ccb10 004ccb90 004ccde0 004cd920 004cce00",
+      "PhysicsSender (0x74): not declared; its +4 boost::multi_index_container value type (0x50 bytes) is not derived yet."
+    ],
+    [
+      "004b5e80 004b6290 004c8fa0 004c9120",
+      "InterpolatingPhysicsReceiver (0x3c): not declared; its +8 multi_index_container value type (0x290-byte value) is not derived yet."
+    ]
+  ],
+  "vtables": [
+    {
+      "vtable": "0x826760",
+      "symbol": "??_7RoundRobinPhysicsSender@Network@RBX@@6B@",
+      "rtti_offset": 0,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_ERoundRobinPhysicsSender@Network@RBX@@UAEPAXI@Z -> 0x4ca010 (own row (??_G))",
+        "1": "?step@RoundRobinPhysicsSender@Network@RBX@@UAEXXZ -> 0x47d410 (own row)",
+        "2": "?sendPackets@RoundRobinPhysicsSender@Network@RBX@@UAEHH@Z -> 0x4cd420 (declared only (open))"
+      }
+    },
+    {
+      "vtable": "0x8247d0",
+      "symbol": "??_7DirectPhysicsReceiver@Network@RBX@@6B@",
+      "rtti_offset": 0,
+      "original_slots": 3,
+      "slots": {
+        "0": "??_EDirectPhysicsReceiver@Network@RBX@@UAEPAXI@Z -> 0x4ab5b0 (own row (??_G))",
+        "1": "?step@DirectPhysicsReceiver@Network@RBX@@UAEXI@Z -> 0x70bdf0 (own row)",
+        "2": "?receivePacket@DirectPhysicsReceiver@Network@RBX@@UAEXAAVBitStream@RakNet@@I@Z -> 0x4c83b0 (declared only (open))"
+      }
+    }
+  ],
+  "proposals": [],
+  "exact_distinct_addresses": [
+    "0047d410",
+    "004ab5b0",
+    "004c99b0",
+    "004c99c0",
+    "004ca010",
+    "0070bdf0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. PhysicsSender and InterpolatingPhysicsReceiver remain open (multi_index value types)."
+}
