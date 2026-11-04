@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-04",
+  "verified_by": "orchestrator (claude-opus-5-5); implementation by gpt-6.1-sol worker",
+  "overlays": {
+    "v8datamodel/Workspace.h": "2b60e9a477d5416449e43356063ff7c44143b8c910c6ae6d02c5c862d5a51e44",
+    "v8datamodel/Camera.h": "4aa8419c591ea506f51711fe1701c148e047ba09088fae712e363d6cc3d1acea",
+    "v8datamodel/RootInstance.h": "5c2f05fc5dc01898d685e46849efd920c2e4f0827d6439a06081d2b7c587c5eb",
+    "v8datamodel/Stats.h": "b7afe6a53cc827490760d85cdcfa61d18ebf3711fe30118a3aa7f59a13660fd2",
+    "script/Script.h": "4f6a7f32f0abf29bc1d047bf46adcbaa211b5ac4e2e87d3659eef45ae101aa5c"
+  },
+  "change": "faithful donor copies from tools/rbxgs/Client/App/include; only extern const char* sX -> extern const char sX[] and template arg &sX -> sX (matches existing native convention, e.g. ForceField.h, Sky.h)",
+  "checks": {
+    "NativeWorkspaceHeaderCompile.cpp (dynamic_cast<const Workspace*>)": "compiles, exit 0",
+    "NativeWorkspaceEventsTrial.cpp": "compiles, exit 0, no C2440 (previously C2440 at all 5 headers); no addresses checked (0/0)",
+    "record_native_force_field.py": "exit 0, 2 exact rows preserved",
+    "record_native_workspace_write_native.py": "exit 0, Write/WriteSelection/Close masked-exact preserved; receipt changed only object hashes",
+    "Teams.cpp (only consumer that compiled before)": "443/443 function bodies identical with and without overlays",
+    "record_native_document.py": "failed before (C2440 at these 5 headers) and after (C2440 next at donor Network/Player.h, Players.h): progress, no regression"
+  },
+  "finding": "Original binary mangles every class-name template argument as 3PADA (non-const char array), incl. sWorkspace/sCamera/sForceField/sSky; native headers use const char[] (3QBDB). Masked bytes are unaffected; symbol/RTTI names differ project-wide.",
+  "not_claimed": "No method exacts, selection, P5/P6, server or runtime credit."
+}
