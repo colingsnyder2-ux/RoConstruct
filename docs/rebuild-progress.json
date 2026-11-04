@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-04 21:33 UTC",
+  "updated": "2026-11-04 22:52 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.1385,
+      "overall": 0.14,
       "bars": {
         "compiled": {
           "value": 35,
@@ -17,7 +17,7 @@
           "label": "Modules linked"
         },
         "exact": {
-          "value": 5706,
+          "value": 5767,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -71,7 +71,7 @@
           "name": "G3D-GL",
           "linked": true,
           "test": 0,
-          "exact": 415,
+          "exact": 473,
           "compileErrors": 0,
           "objectFunctions": 6080,
           "unresolved": 0
