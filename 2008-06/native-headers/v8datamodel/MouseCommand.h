@@ -31,7 +31,7 @@ namespace RBX
 		PartInstance* getPart(const UIEvent& uiEvent, const HitTestFilter* filter, G3D::Vector3& hitWorld = ignoreVector3);
 		PartInstance* getUnlockedPart(const UIEvent& uiEvent, G3D::Vector3& hitWorld = ignoreVector3);
 		PartInstance* getPartByLocalCharacter(const UIEvent& uiEvent, G3D::Vector3& hitWorld = ignoreVector3);
-		PartInstance* getUnlockedPartByLocalCharacter(const UIEvent&, G3D::Vector3&);
+		PartInstance* getUnlockedPartByLocalCharacter(const UIEvent&, G3D::Vector3& = ignoreVector3);
 		Surface* getSurface(const UIEvent&, PartInstance*&, int&);
 		Surface* getSurface(const UIEvent&);
 
