@@ -74,6 +74,15 @@ namespace RBX
 			template<NormalId id, class Function>
 			void buildFace(Function function, G3D::Vector2int16 divisions, Purpose purpose);
 
+			// Builder-as-functor overload (instances 004f7bd0 / 004f7c80 WedgeBuilder, 004faa30 TorsoBuilder): copies
+			// the builder argument, narrows the two counts to a Vector2int16 in the first count's slot and calls the
+			// grid template (ret 0x30 / 0x34: builder by value, two counts, purpose).
+			template<NormalId id, class Builder>
+			void buildFace(Builder builder, const unsigned int x, const unsigned int y, Purpose purpose)
+			{
+				buildFace<id>(builder, G3D::Vector2int16(x, y), purpose);
+			}
+
 			void appendQuadFromIndexArray(int a, int b, int c, int d);               // 00501000
 			void appendQuadFromIndexArray(int a, int b, int c);                      // 00500fd0
 			void appendQuadFromVertexIndices(unsigned int a, unsigned int b, unsigned int c, unsigned int d); // 00500eb0

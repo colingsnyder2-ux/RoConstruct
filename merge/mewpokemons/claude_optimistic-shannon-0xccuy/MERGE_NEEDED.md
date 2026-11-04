@@ -1,11 +1,13 @@
 # Needs a manual merge
 
-Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `cd72c3729d8834f33aa89e45785ebacf5ce614b8`.
+Fork `mewpokemons`, branch `claude/optimistic-shannon-0xccuy`, commit `1c37b04ddce91332aa1df5818ff47da3020b484b`.
 Reason: CONFLICT (add/add): Merge conflict in rebuild/2008-06/native-classes/ClickDetector.cpp (+27 more conflicts)
 
 Files below are the fork's version; compare with the same path in the tree:
 
 - `rebuild/2008-06/native-classes/Accoutrement.cpp`
+- `rebuild/2008-06/native-classes/AdornG3D.cpp`
+- `rebuild/2008-06/native-classes/AggregateChunk2008.cpp`
 - `rebuild/2008-06/native-classes/ArrowPanel.cpp`
 - `rebuild/2008-06/native-classes/Backpack.cpp`
 - `rebuild/2008-06/native-classes/Ball.cpp`
@@ -31,6 +33,8 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/GeometryService.cpp`
 - `rebuild/2008-06/native-classes/HealthHud.cpp`
 - `rebuild/2008-06/native-classes/Hopper.cpp`
+- `rebuild/2008-06/native-classes/Humanoid2008.cpp`
+- `rebuild/2008-06/native-classes/Humanoid2008Parts.cpp`
 - `rebuild/2008-06/native-classes/IWorldStage2008.cpp`
 - `rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp`
 - `rebuild/2008-06/native-classes/JointStage2008.cpp`
@@ -49,9 +53,13 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/NetworkPlayers.cpp`
 - `rebuild/2008-06/native-classes/NetworkSettings.cpp`
 - `rebuild/2008-06/native-classes/PhysicsService.cpp`
+- `rebuild/2008-06/native-classes/RenderMaterial.cpp`
+- `rebuild/2008-06/native-classes/RenderMaterialNew.cpp`
 - `rebuild/2008-06/native-classes/ReplicatorBases.cpp`
 - `rebuild/2008-06/native-classes/ReplicatorMarker.cpp`
 - `rebuild/2008-06/native-classes/Rocket.cpp`
+- `rebuild/2008-06/native-classes/SceneManager2008.cpp`
+- `rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp`
 - `rebuild/2008-06/native-classes/ScoreHud.cpp`
 - `rebuild/2008-06/native-classes/Seat.cpp`
 - `rebuild/2008-06/native-classes/ServiceChangeHistory.cpp`
@@ -63,14 +71,20 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/SpecialShape.cpp`
 - `rebuild/2008-06/native-classes/StatsService.cpp`
 - `rebuild/2008-06/native-classes/Teams.cpp`
+- `rebuild/2008-06/native-classes/TextureProxyBase2008.cpp`
+- `rebuild/2008-06/native-classes/TextureProxyRender.cpp`
+- `rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp`
 - `rebuild/2008-06/native-classes/TimerService.cpp`
 - `rebuild/2008-06/native-classes/Tool.cpp`
 - `rebuild/2008-06/native-classes/UserController.cpp`
 - `rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp`
 - `rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp`
 - `rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp`
+- `rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp`
 - `rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp`
 - `rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp`
+- `rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp`
+- `rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp`
 - `rebuild/2008-06/native-classes/VisitFactory.cpp`
 - `rebuild/2008-06/native-classes/VisitServiceLookup.cpp`
 - `rebuild/2008-06/native-classes/Widget.cpp`
@@ -83,20 +97,31 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-classes/WorldJointMulti.cpp`
 - `rebuild/2008-06/native-classes/WorldJointRigid.cpp`
 - `rebuild/2008-06/native-classes/WorldJointRotate.cpp`
+- `rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h`
 - `rebuild/2008-06/native-headers/Network/IdSerializer.h`
 - `rebuild/2008-06/native-headers/Network/NetworkSettings.h`
 - `rebuild/2008-06/native-headers/Network/PhysicsReplication.h`
 - `rebuild/2008-06/native-headers/Network/Player.h`
 - `rebuild/2008-06/native-headers/Network/Players.h`
 - `rebuild/2008-06/native-headers/Network/ReplicatorMarker.h`
+- `rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h`
+- `rebuild/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h`
+- `rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h`
+- `rebuild/2008-06/native-headers/RenderLib/Material2008.h`
+- `rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h`
+- `rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h`
 - `rebuild/2008-06/native-headers/Replicator.h`
 - `rebuild/2008-06/native-headers/ViewNew/BevelMesh.h`
+- `rebuild/2008-06/native-headers/ViewNew/BrickMesh.h`
 - `rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h`
 - `rebuild/2008-06/native-headers/ViewNew/HeadMesh.h`
 - `rebuild/2008-06/native-headers/ViewNew/MeshFactory.h`
+- `rebuild/2008-06/native-headers/ViewNew/PBBMesh.h`
 - `rebuild/2008-06/native-headers/ViewNew/QuadVolume.h`
 - `rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h`
 - `rebuild/2008-06/native-headers/ViewNew/SphereMesh.h`
+- `rebuild/2008-06/native-headers/ViewNew/TorsoMesh.h`
+- `rebuild/2008-06/native-headers/ViewNew/WedgeMesh.h`
 - `rebuild/2008-06/native-headers/boost-noinline-shared-destructor/boost/shared_ptr.hpp`
 - `rebuild/2008-06/native-headers/engine-world/v8world/World.h`
 - `rebuild/2008-06/native-headers/gui/ArrowPanel.h`
@@ -108,6 +133,7 @@ Files below are the fork's version; compare with the same path in the tree:
 - `rebuild/2008-06/native-headers/gui/WidgetButtons.h`
 - `rebuild/2008-06/native-headers/gui/WidgetChat.h`
 - `rebuild/2008-06/native-headers/gui/WidgetMenuItem.h`
+- `rebuild/2008-06/native-headers/humanoid/Humanoid2008.h`
 - `rebuild/2008-06/native-headers/part-embedded/v8datamodel/PartInstance.h`
 - `rebuild/2008-06/native-headers/stats/Stats.h`
 - `rebuild/2008-06/native-headers/stats/WorkspaceStatsItem.h`
