@@ -1,0 +1,739 @@
+{
+  "class": "RBX::MD5HasherImpl (MD5Hasher::create), RBX::MergeBinder",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-misc-leaves/NativeMiscLeavesLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeMiscLeavesLayout.cpp"
+    ],
+    "md5": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-misc-leaves/NativeMD5Hasher.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/MD5Hasher.cpp"
+    ],
+    "mergebinder": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-misc-leaves/NativeMergeBinder.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/MergeBinder.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_misc_leaves.py": "6dbae004412b8454b6da1f94e7edb53a3756a8afe1f7c753d0783e48ee610805",
+    "rebuild/2008-06/native-classes/MD5Hasher.cpp": "acaad615b801cc62832d0bc45c3ef42775e0e54f7a6af8573461113a75d490f9",
+    "rebuild/2008-06/native-classes/MergeBinder.cpp": "b95d2151c3869fd5a2c66be71b163b296d5dd105c3cb2649bdd21ad9d96cc6c4",
+    "rebuild/2008-06/tests/NativeMiscLeavesLayout.cpp": "1bde10790c05ed1342491f6a9bd19743134034c378e710074950b7e844f773cd",
+    "rebuild/2008-06/native-headers/util/MD5Hasher2008.h": "54d863007a13f4ae33233593d8c14d5fc0adf6e8fe141dda4bfbd74b9a243c32",
+    "rebuild/2008-06/native-headers/v8datamodel/MergeBinder2008.h": "e3f192d3cab4e51a4fb7895e534e90820bc8383b840e410a360c5b4d7f596994"
+  },
+  "objects": {
+    "NativeMiscLeavesLayout.obj": "452f4d849d08fb168c8165e48817e716cb19c85b03e23eef6c1d7f84a8b781e7",
+    "NativeMD5Hasher.obj": "a3507f9792dc6147d308f3eca0c6425231ae4fdc35a24fc2672aab6d9f606e96",
+    "NativeMergeBinder.obj": "852c988d33c6dcbf8e346d0cef028b366bd86ac2b1edc92b3d038105294ef3cc"
+  },
+  "layout": "MD5HasherImpl 0x28 (hProv +4, hHash +8, std::string result +0xc); MergeBinder 0x1c (vector<IDREFItem> +4, IDREFItem 0x10); both 5-slot vtables without a destructor slot.",
+  "methods": [
+    {
+      "address": "0055c540",
+      "symbol": "??0MD5HasherImpl@RBX@@QAE@XZ",
+      "size": 341,
+      "exact": true,
+      "verified_targets": {
+        "??_7MD5HasherImpl@RBX@@6B@": "0x82dc9c vtable RTTI .?AVMD5HasherImpl@RBX@@ offset 0x0",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "__imp__CryptAcquireContextA@20": "0x802028 advapi32.dll!CryptAcquireContextA",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 external (evidence name)",
+        "__imp__GetLastError@0": "0x8022d8 kernel32.dll!GetLastError",
+        "??_C@_0DE@MBCAAJJF@Error?5during?5CryptAcquireContext@": "0x82dc64 literal 'Error during CryptAcquireContext. GetLastError = %d'",
+        "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 external (evidence name)",
+        "__imp__CryptCreateHash@20": "0x802024 advapi32.dll!CryptCreateHash",
+        "??_C@_0DA@CFKCJAMC@Error?5during?5CryptCreateHash?4?5Ge@": "0x82dc34 literal 'Error during CryptCreateHash. GetLastError = %d'"
+      },
+      "local_eh": [
+        "__ehhandler$??0MD5HasherImpl@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0055c800",
+      "symbol": "?addData@MD5HasherImpl@RBX@@UAEXPBDI@Z",
+      "size": 172,
+      "exact": true,
+      "verified_targets": {
+        "__imp__CryptHashData@16": "0x80202c advapi32.dll!CryptHashData",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 external (evidence name)",
+        "__imp__GetLastError@0": "0x8022d8 kernel32.dll!GetLastError",
+        "??_C@_0CO@EGBGKOFJ@Error?5during?5CryptHashData?4?5GetL@": "0x82dcb0 literal 'Error during CryptHashData. GetLastError = %d'",
+        "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 external (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$?addData@MD5HasherImpl@RBX@@UAEXPBDI@Z"
+      ]
+    },
+    {
+      "address": "0055c740",
+      "symbol": "?addData@MD5HasherImpl@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 185,
+      "exact": true,
+      "verified_targets": {
+        "__imp__CryptHashData@16": "0x80202c advapi32.dll!CryptHashData",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 external (evidence name)",
+        "__imp__GetLastError@0": "0x8022d8 kernel32.dll!GetLastError",
+        "??_C@_0CO@EGBGKOFJ@Error?5during?5CryptHashData?4?5GetL@": "0x82dcb0 literal 'Error during CryptHashData. GetLastError = %d'",
+        "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 external (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$?addData@MD5HasherImpl@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "address": "0055c6a0",
+      "symbol": "?addData@MD5HasherImpl@RBX@@UAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z",
+      "size": 100,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?clear@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z": "0x8024e8 msvcp90.dll!?clear@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z",
+        "__imp_?seekg@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@JH@Z": "0x802418 msvcp90.dll!?seekg@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@JH@Z",
+        "__imp_?read@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@PADH@Z": "0x8024e4 msvcp90.dll!?read@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@PADH@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055c710",
+      "symbol": "?toString@MD5HasherImpl@RBX@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 42,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055e320",
+      "symbol": "?c_str@MD5HasherImpl@RBX@@UAEPBDXZ",
+      "size": 520,
+      "exact": true,
+      "verified_targets": {
+        "__imp__CryptGetHashParam@20": "0x802040 advapi32.dll!CryptGetHashParam",
+        "__imp__GetLastError@0": "0x8022d8 kernel32.dll!GetLastError",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 external (evidence name)",
+        "??_C@_0DC@ODAKOEAE@Error?5during?5CryptGetHashParam?4?5@": "0x82dd34 literal 'Error during CryptGetHashParam. GetLastError = %d'",
+        "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 external (evidence name)",
+        "??_U@YAPAXI@Z": "0x6a0956 mfc90.dll!??_U@YAPAXI@Z",
+        "?g_strmgr@ATL@@3VCAtlStringMgr@1@A": "0x97f2ec external (atls.lib CAtlStringMgr; same address as record_native_output_view)",
+        "??_C@_04NOJCDH@?$CF02x?$AA@": "0x82dd2c literal '%02x'",
+        "?Format@?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAAXPBDZZ": "0x55e250 own row",
+        "__imp_??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x802448 msvcp90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z",
+        "??_V@YAXPAX@Z": "0x6a094a mfc90.dll!??_V@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$?c_str@MD5HasherImpl@RBX@@UAEPBDXZ"
+      ]
+    },
+    {
+      "address": "0055c8b0",
+      "symbol": "?create@MD5Hasher@RBX@@SAPAV12@XZ",
+      "size": 86,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 mfc90.dll!??2@YAPAXI@Z",
+        "??0MD5HasherImpl@RBX@@QAE@XZ": "0x55c540 own row"
+      },
+      "local_eh": [
+        "__ehhandler$?create@MD5Hasher@RBX@@SAPAV12@XZ"
+      ]
+    },
+    {
+      "address": "0055e250",
+      "symbol": "?Format@?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAAXPBDZZ",
+      "size": 20,
+      "exact": true,
+      "verified_targets": {
+        "?FormatV@?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEXPBDPAD@Z": "0x55dae0 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0055dae0",
+      "symbol": "?FormatV@?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEXPBDPAD@Z",
+      "size": 126,
+      "exact": true,
+      "verified_targets": {
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000 external (atls.lib AtlThrowImpl (library body, not this unit); same address as record_native_output_view; ThrowMemoryException 004066b0 calls it)",
+        "__imp___vscprintf": "0x802794 msvcr90.dll!_vscprintf",
+        "?PrepareWrite2@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z": "0x407400 own row",
+        "__imp__vsprintf_s": "0x802740 msvcr90.dll!vsprintf_s"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00407400",
+      "symbol": "?PrepareWrite2@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z",
+      "size": 76,
+      "exact": true,
+      "verified_targets": {
+        "?Fork@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z": "0x406ce0 own row",
+        "?Reallocate@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z": "0x406d60 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00406d60",
+      "symbol": "?Reallocate@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z",
+      "size": 55,
+      "exact": true,
+      "verified_targets": {
+        "?ThrowMemoryException@?$CSimpleStringT@D$0A@@ATL@@KAXXZ": "0x4066b0 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004066b0",
+      "symbol": "?ThrowMemoryException@?$CSimpleStringT@D$0A@@ATL@@KAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000 external (atls.lib AtlThrowImpl (library body, not this unit); same address as record_native_output_view; ThrowMemoryException 004066b0 calls it)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00406ce0",
+      "symbol": "?Fork@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z",
+      "size": 122,
+      "exact": true,
+      "verified_targets": {
+        "?ThrowMemoryException@?$CSimpleStringT@D$0A@@ATL@@KAXXZ": "0x4066b0 own row",
+        "__imp__memcpy_s": "0x8028ac msvcr90.dll!memcpy_s"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443e50",
+      "symbol": "??0MergeBinder@RBX@@QAE@XZ",
+      "size": 87,
+      "exact": true,
+      "verified_targets": {
+        "??_7MergeBinder@RBX@@6B@": "0x81593c vtable RTTI .?AVMergeBinder@RBX@@ offset 0x0",
+        "??2@YAPAXI@Z": "0x6a0920 mfc90.dll!??2@YAPAXI@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??0MergeBinder@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0063fad0",
+      "symbol": "?announceID@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVInstance@2@@Z",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00443eb0",
+      "symbol": "?announceIDREF@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00443d60",
+      "symbol": "?resolveRefs@MergeBinder@RBX@@UAE_NXZ",
+      "size": 230,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 msvcr90.dll!_invalid_parameter_noinfo",
+        "?erase@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@V?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@0@Z": "0x443c60 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004440a0",
+      "symbol": "?processID@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVInstance@2@@Z",
+      "size": 340,
+      "exact": true,
+      "verified_targets": {
+        "?getValue@XmlNameValuePair@@QBE_NAAVInstanceHandle@RBX@@@Z": "0x57c6e0 external (evidence name)",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 own row",
+        "?linkTo@InstanceHandle@RBX@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x594d60 external (evidence name)",
+        "?value_IDREF_nil@@3ABVName@RBX@@B": "0x975384 external (reference slot read by processID 00444153 and processIDREF 00444b9e (consistency))",
+        "?isValueEqual@XmlNameValuePair@@QBE_NPBVName@RBX@@@Z": "0x57c1b0 external (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$?processID@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVInstance@2@@Z"
+      ]
+    },
+    {
+      "address": "00444a70",
+      "symbol": "?processIDREF@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z",
+      "size": 467,
+      "exact": true,
+      "verified_targets": {
+        "?getValue@XmlNameValuePair@@QBE_NAAVInstanceHandle@RBX@@@Z": "0x57c6e0 external (evidence name)",
+        "?empty@InstanceHandle@RBX@@QBE_NXZ": "0x4dc3d0 external (evidence name)",
+        "?push_back@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAEXABUIDREFItem@MergeBinder@RBX@@@Z": "0x4449f0 own row",
+        "?value_IDREF_nil@@3ABVName@RBX@@B": "0x975384 external (reference slot read by processID 00444153 and processIDREF 00444b9e (consistency))",
+        "?isValueEqual@XmlNameValuePair@@QBE_NPBVName@RBX@@@Z": "0x57c1b0 external (evidence name)"
+      },
+      "local_eh": [
+        "__ehhandler$?processIDREF@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z"
+      ]
+    },
+    {
+      "address": "004449f0",
+      "symbol": "?push_back@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAEXABUIDREFItem@MergeBinder@RBX@@@Z",
+      "size": 128,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAUIDREFItem@MergeBinder@RBX@@IU123@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@IABU123@AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x444050 own row",
+        "__imp___invalid_parameter_noinfo": "0x802890 msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@V?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@ABUIDREFItem@MergeBinder@RBX@@@Z": "0x4445c0 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004445c0",
+      "symbol": "?insert@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@V?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@ABUIDREFItem@MergeBinder@RBX@@@Z",
+      "size": 182,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 msvcr90.dll!_invalid_parameter_noinfo",
+        "?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z": "0x4442c0 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004442c0+0044440d+004444a8",
+      "symbol": "?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z",
+      "size": 638,
+      "exact": true,
+      "verified_targets": {
+        "?_Xlen@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@KAXXZ": "0x4c6d40 own row",
+        "??$_Allocate@UIDREFItem@MergeBinder@RBX@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@IPAU123@@Z": "0x67c5e0 own row",
+        "??$_Uninit_copy@PAUIDREFItem@MergeBinder@RBX@@PAU123@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x444000 own row",
+        "?_Ufill@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEPAUIDREFItem@MergeBinder@RBX@@PAU345@IABU345@@Z": "0x444250 own row",
+        "??$_Destroy_range@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@0AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x443a60 own row",
+        "??3@YAXPAX@Z": "0x6a067a mfc90.dll!??3@YAXPAX@Z",
+        "?_Destroy@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXPAUIDREFItem@MergeBinder@RBX@@0@Z": "0x443c40 own row",
+        "__CxxThrowException@8": "0x6a158c msvcr90.dll!_CxxThrowException",
+        "??0IDREFItem@MergeBinder@RBX@@QAE@ABU012@@Z": "0x443ec0 own row",
+        "??$_Umove@PAUIDREFItem@MergeBinder@RBX@@@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEPAUIDREFItem@MergeBinder@RBX@@PAU234@00@Z": "0x444290 own row",
+        "??$_Fill@PAUIDREFItem@MergeBinder@RBX@@U123@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@0ABU123@@Z": "0x443f80 own row",
+        "??$_Unchecked_move_backward@PAUIDREFItem@MergeBinder@RBX@@PAU123@@stdext@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00@Z": "0x444200 own row",
+        "??1IDREFItem@MergeBinder@RBX@@QAE@XZ": "0x42b1e0 own row"
+      },
+      "local_eh": [
+        "__ehhandler$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00444050",
+      "symbol": "??$_Uninit_fill_n@PAUIDREFItem@MergeBinder@RBX@@IU123@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@IABU123@AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 71,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00443c60",
+      "symbol": "?erase@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@V?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@0@Z",
+      "size": 141,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 msvcr90.dll!_invalid_parameter_noinfo",
+        "??$unchecked_copy@PAUIDREFItem@MergeBinder@RBX@@PAU123@@stdext@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00@Z": "0x443a10 own row",
+        "??$_Destroy_range@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@0AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x443a60 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443a60",
+      "symbol": "??$_Destroy_range@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@0AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+      "size": 76,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00443a10",
+      "symbol": "??$unchecked_copy@PAUIDREFItem@MergeBinder@RBX@@PAU123@@stdext@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00@Z",
+      "size": 73,
+      "exact": true,
+      "verified_targets": {
+        "??$_Copy_opt@PAUIDREFItem@MergeBinder@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x443400 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443400",
+      "symbol": "??$_Copy_opt@PAUIDREFItem@MergeBinder@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 138,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004c6d40",
+      "symbol": "?_Xlen@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@KAXXZ",
+      "size": 112,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@": "0x80e190 literal 'vector<T> too long'",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 msvcr90.dll!??0exception@std@@QAE@XZ",
+        "??_7logic_error@std@@6B@": "0x80b110 vtable RTTI .?AVlogic_error@std@@ offset 0x0",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 throw info, first catchable type .?AVlength_error@std@@",
+        "??_7length_error@std@@6B@": "0x80b11c vtable RTTI .?AVlength_error@std@@ offset 0x0",
+        "__CxxThrowException@8": "0x6a158c msvcr90.dll!_CxxThrowException"
+      },
+      "local_eh": [
+        "__ehhandler$?_Xlen@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@KAXXZ"
+      ]
+    },
+    {
+      "address": "0067c5e0",
+      "symbol": "??$_Allocate@UIDREFItem@MergeBinder@RBX@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@IPAU123@@Z",
+      "size": 87,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 mfc90.dll!??2@YAPAXI@Z",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 msvcr90.dll!??0exception@std@@QAE@ABQBD@Z",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 throw info, first catchable type .?AVbad_alloc@std@@",
+        "??_7bad_alloc@std@@6B@": "0x80b104 vtable RTTI .?AVbad_alloc@std@@ offset 0x0",
+        "__CxxThrowException@8": "0x6a158c msvcr90.dll!_CxxThrowException"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00444000",
+      "symbol": "??$_Uninit_copy@PAUIDREFItem@MergeBinder@RBX@@PAU123@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 73,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00444250",
+      "symbol": "?_Ufill@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEPAUIDREFItem@MergeBinder@RBX@@PAU345@IABU345@@Z",
+      "size": 58,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAUIDREFItem@MergeBinder@RBX@@IU123@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@IABU123@AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x444050 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443c40",
+      "symbol": "?_Destroy@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXPAUIDREFItem@MergeBinder@RBX@@0@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@0AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x443a60 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443ec0",
+      "symbol": "??0IDREFItem@MergeBinder@RBX@@QAE@ABU012@@Z",
+      "size": 47,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042b1e0",
+      "symbol": "??1IDREFItem@MergeBinder@RBX@@QAE@XZ",
+      "size": 53,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00444290",
+      "symbol": "??$_Umove@PAUIDREFItem@MergeBinder@RBX@@@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEPAUIDREFItem@MergeBinder@RBX@@PAU234@00@Z",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_copy@PAUIDREFItem@MergeBinder@RBX@@PAU123@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00AAV?$allocator@UIDREFItem@MergeBinder@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x444000 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00444200",
+      "symbol": "??$_Unchecked_move_backward@PAUIDREFItem@MergeBinder@RBX@@PAU123@@stdext@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00@Z",
+      "size": 73,
+      "exact": true,
+      "verified_targets": {
+        "??$_Copy_backward_opt@PAUIDREFItem@MergeBinder@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x443ef0 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00443f80",
+      "symbol": "??$_Fill@PAUIDREFItem@MergeBinder@RBX@@U123@@std@@YAXPAUIDREFItem@MergeBinder@RBX@@0ABU123@@Z",
+      "size": 128,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00443ef0",
+      "symbol": "??$_Copy_backward_opt@PAUIDREFItem@MergeBinder@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUIDREFItem@MergeBinder@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "size": 139,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00618a40",
+      "symbol": "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z",
+      "size": 364,
+      "exact": true,
+      "verified_targets": {
+        "?shared_from_this@?$enable_shared_from_this@VInstance@RBX@@@boost@@QAE?AV?$shared_ptr@VInstance@RBX@@@2@XZ": "0x42af90 own row",
+        "??$shared_static_cast@VInstance@RBX@@V12@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABV10@@Z": "0x4a2070 own row"
+      },
+      "local_eh": [
+        "__ehhandler$??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z"
+      ]
+    },
+    {
+      "address": "004a2070",
+      "symbol": "??$shared_static_cast@VInstance@RBX@@V12@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABV10@@Z",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0042af90",
+      "symbol": "?shared_from_this@?$enable_shared_from_this@VInstance@RBX@@@boost@@QAE?AV?$shared_ptr@VInstance@RBX@@@2@XZ",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {
+        "??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z": "0x411ad0 own row"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00411ad0",
+      "symbol": "??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z",
+      "size": 104,
+      "exact": true,
+      "verified_targets": {
+        "?add_ref_lock@sp_counted_base@detail@boost@@QAE_NXZ": "0x411120 own row",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 msvcr90.dll!??0exception@std@@QAE@XZ",
+        "??_7bad_weak_ptr@boost@@6B@": "0x80dfa8 vtable RTTI .?AVbad_weak_ptr@boost@@ offset 0x0",
+        "??$throw_exception@Vbad_weak_ptr@boost@@@boost@@YAXABVbad_weak_ptr@0@@Z": "0x4116c0 own row"
+      },
+      "local_eh": [
+        "__ehhandler$??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z"
+      ]
+    },
+    {
+      "address": "004116c0",
+      "symbol": "??$throw_exception@Vbad_weak_ptr@boost@@@boost@@YAXABVbad_weak_ptr@0@@Z",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0exception@std@@QAE@ABV01@@Z": "0x802888 msvcr90.dll!??0exception@std@@QAE@ABV01@@Z",
+        "__TI2?AVbad_weak_ptr@boost@@": "0x8d2354 throw info, first catchable type .?AVbad_weak_ptr@boost@@",
+        "??_7bad_weak_ptr@boost@@6B@": "0x80dfa8 vtable RTTI .?AVbad_weak_ptr@boost@@ offset 0x0",
+        "__CxxThrowException@8": "0x6a158c msvcr90.dll!_CxxThrowException"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00411120",
+      "symbol": "?add_ref_lock@sp_counted_base@detail@boost@@QAE_NXZ",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    }
+  ],
+  "not_exact": [
+    [
+      "00443cf0",
+      "std::vector<IDREFItem>::~vector (111 bytes): not emitted here (no MergeBinder destructor is instantiated by this unit; ArchiveBinder and stack users destroy it)."
+    ]
+  ],
+  "vtables": [
+    {
+      "vtable": "0x82dc9c",
+      "symbol": "??_7MD5HasherImpl@RBX@@6B@",
+      "rtti_offset": 0,
+      "original_slots": 5,
+      "slots": {
+        "0": "?addData@MD5HasherImpl@RBX@@UAEXPBDI@Z -> 0x55c800 (own row)",
+        "1": "?addData@MD5HasherImpl@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55c740 (own row)",
+        "2": "?addData@MD5HasherImpl@RBX@@UAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z -> 0x55c6a0 (own row)",
+        "3": "?toString@MD5HasherImpl@RBX@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ -> 0x55c710 (own row)",
+        "4": "?c_str@MD5HasherImpl@RBX@@UAEPBDXZ -> 0x55e320 (own row)"
+      }
+    },
+    {
+      "vtable": "0x81593c",
+      "symbol": "??_7MergeBinder@RBX@@6B@",
+      "rtti_offset": 0,
+      "original_slots": 5,
+      "slots": {
+        "0": "?announceID@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVInstance@2@@Z -> 0x63fad0 (own row)",
+        "1": "?announceIDREF@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z -> 0x443eb0 (own row)",
+        "2": "?resolveRefs@MergeBinder@RBX@@UAE_NXZ -> 0x443d60 (own row)",
+        "3": "?processID@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVInstance@2@@Z -> 0x4440a0 (own row)",
+        "4": "?processIDREF@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z -> 0x444a70 (own row)"
+      }
+    }
+  ],
+  "proposals": [],
+  "exact_distinct_addresses": [
+    "004066b0",
+    "00406ce0",
+    "00406d60",
+    "00407400",
+    "00411120",
+    "004116c0",
+    "00411ad0",
+    "0042af90",
+    "0042b1e0",
+    "00443400",
+    "00443a10",
+    "00443a60",
+    "00443c40",
+    "00443c60",
+    "00443d60",
+    "00443e50",
+    "00443eb0",
+    "00443ec0",
+    "00443ef0",
+    "00443f80",
+    "00444000",
+    "00444050",
+    "004440a0",
+    "00444200",
+    "00444250",
+    "00444290",
+    "004442c0",
+    "0044440d",
+    "004444a8",
+    "004445c0",
+    "004449f0",
+    "00444a70",
+    "004a2070",
+    "004c6d40",
+    "0055c540",
+    "0055c6a0",
+    "0055c710",
+    "0055c740",
+    "0055c800",
+    "0055c8b0",
+    "0055dae0",
+    "0055e250",
+    "0055e320",
+    "00618a40",
+    "0063fad0",
+    "0067c5e0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
