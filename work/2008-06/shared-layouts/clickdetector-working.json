@@ -1,0 +1,121 @@
+{
+  "class_name": "RBX::ClickDetector",
+  "inactive": true,
+  "compiler": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+  ],
+  "source_sha256": "95887e96a60626c3c752fe7f8f1dba7a9780196a7864d05ac35b681a31b39e3a",
+  "header_sha256": "2dfa697deae81fe8853c6785dfe4644101d19ab1c5a0115edc9d7e45533e9f48",
+  "layout": {
+    "size": 332,
+    "field_140": 320,
+    "field_144": 324,
+    "allocation": "005c0b60",
+    "constructor": "006297e0"
+  },
+  "methods": [
+    {
+      "address": "006297e0",
+      "symbol": "??0ClickDetector@RBX@@QAE@XZ",
+      "size": 239,
+      "exact": true,
+      "verified_targets": {
+        "??0?$DescribedCreatable@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3QBDB@RBX@@IAE@XZ": "0x6296e0",
+        "__real@42000000": "0x833eac",
+        "??_C@_0O@ONDJFFKK@ClickDetector?$AA@": "0x845b3c",
+        "??_7ClickDetector@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x845afc (RTTI .?AVClickDetector@RBX@@, offset 0x0)",
+        "??_7ClickDetector@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x845af0 (RTTI .?AVClickDetector@RBX@@, offset 0x10)",
+        "??_7ClickDetector@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x845ae8 (RTTI .?AVClickDetector@RBX@@, offset 0x14)",
+        "??_7ClickDetector@RBX@@6BDebugable@1@@": "0x845ae0 (RTTI .?AVClickDetector@RBX@@, offset 0x20)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x845ad0 (RTTI .?AVClickDetector@RBX@@, offset 0x24)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x845ac0 (RTTI .?AVClickDetector@RBX@@, offset 0x44)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x845ab0 (RTTI .?AVClickDetector@RBX@@, offset 0x64)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x845aa0 (RTTI .?AVClickDetector@RBX@@, offset 0x84)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x845a90 (RTTI .?AVClickDetector@RBX@@, offset 0xa4)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x845a80 (RTTI .?AVClickDetector@RBX@@, offset 0xc4)",
+        "??_7ClickDetector@RBX@@6B@": "0x845a68 (RTTI .?AVClickDetector@RBX@@, offset 0x130)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0ClickDetector@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "006299a0",
+      "symbol": "??1ClickDetector@RBX@@UAE@XZ",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??_7ClickDetector@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x845afc (RTTI .?AVClickDetector@RBX@@, offset 0x0)",
+        "??_7ClickDetector@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x845af0 (RTTI .?AVClickDetector@RBX@@, offset 0x10)",
+        "??_7ClickDetector@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x845ae8 (RTTI .?AVClickDetector@RBX@@, offset 0x14)",
+        "??_7ClickDetector@RBX@@6BDebugable@1@@": "0x845ae0 (RTTI .?AVClickDetector@RBX@@, offset 0x20)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x845ad0 (RTTI .?AVClickDetector@RBX@@, offset 0x24)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x845ac0 (RTTI .?AVClickDetector@RBX@@, offset 0x44)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x845ab0 (RTTI .?AVClickDetector@RBX@@, offset 0x64)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x845aa0 (RTTI .?AVClickDetector@RBX@@, offset 0x84)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x845a90 (RTTI .?AVClickDetector@RBX@@, offset 0xa4)",
+        "??_7ClickDetector@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x845a80 (RTTI .?AVClickDetector@RBX@@, offset 0xc4)",
+        "??_7ClickDetector@RBX@@6B@": "0x845a68 (RTTI .?AVClickDetector@RBX@@, offset 0x130)",
+        "??1IRenderable@RBX@@QAE@XZ": "0x47d410",
+        "??1?$FactoryProduct@VClickDetector@RBX@@VInstance@2@$1?sClickDetector@2@3QBDB@RBX@@MAE@XZ": "0x629340"
+      },
+      "local_eh": [
+        "__ehhandler$??1ClickDetector@RBX@@UAE@XZ"
+      ]
+    }
+  ],
+  "blockers": [
+    "property accessors and render virtuals pending; untested first draft"
+  ],
+  "orchestrator_verification": {
+    "date": "2026-11-04",
+    "by": "claude-opus-5-5 (implementation gpt-6.1-sol)",
+    "recorder": "record_native_click_detector.py exit 0: ctor 006297e0 239B and dtor 006299a0 163B exact, all targets verified",
+    "internal_bindings_checked": {
+      "006296e0 ??0?$DescribedCreatable@VClickDetector...": "EXACT 146/146 via check_native_class.py",
+      "00629340 ??1?$FactoryProduct@VClickDetector...": "EXACT 83/83 via check_native_class.py"
+    },
+    "constant": "__real@42000000 -> 0x833eac verified original dword 0x42000000 (32.0f)",
+    "layout": "size 0x14c from creator 005c0b60 allocation; field_140/field_144 from ctor stores; field_148 is an unnamed 4-byte remainder (identity unproven)",
+    "not_claimed": "property accessors, render virtuals, selection, server, runtime"
+  }
+}
