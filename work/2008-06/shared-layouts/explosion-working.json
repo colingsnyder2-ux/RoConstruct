@@ -1,0 +1,129 @@
+{
+  "class_name": "RBX::Explosion",
+  "inactive": true,
+  "compiler": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source"
+  ],
+  "source_sha256": "2ef728b31cecda8d77e8f14a178fd1e6c464a25f79f6cfd7b28555e1747b8843",
+  "header_sha256": "fe0c8938854cc824cc80c913ecceddaa23a492bd41e85fae22fb3fe946237bbc",
+  "layout": {
+    "size": 348,
+    "age": 324,
+    "position": 328,
+    "blastRadius": 340,
+    "blastPressure": 344
+  },
+  "methods": [
+    {
+      "address": "0062adb0",
+      "symbol": "??0Explosion@RBX@@QAE@XZ",
+      "size": 281,
+      "exact": true,
+      "verified_targets": {
+        "??0?$DescribedCreatable@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@IAE@XZ": "0x62ab80",
+        "??_7Explosion@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x845ea4 (RTTI .?AVExplosion@RBX@@, offset 0x0)",
+        "??_7Explosion@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x845e94 (RTTI .?AVExplosion@RBX@@, offset 0x10)",
+        "??_7Explosion@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x845e8c (RTTI .?AVExplosion@RBX@@, offset 0x14)",
+        "??_7Explosion@RBX@@6BDebugable@1@@": "0x845e84 (RTTI .?AVExplosion@RBX@@, offset 0x20)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x845e74 (RTTI .?AVExplosion@RBX@@, offset 0x24)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x845e64 (RTTI .?AVExplosion@RBX@@, offset 0x44)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x845e54 (RTTI .?AVExplosion@RBX@@, offset 0x64)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x845e44 (RTTI .?AVExplosion@RBX@@, offset 0x84)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x845e34 (RTTI .?AVExplosion@RBX@@, offset 0xa4)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x845e24 (RTTI .?AVExplosion@RBX@@, offset 0xc4)",
+        "??_7Explosion@RBX@@6B?$Listener@VRunService@RBX@@VStepped@2@@1@@": "0x845e18 (RTTI .?AVExplosion@RBX@@, offset 0x130)",
+        "??_7Explosion@RBX@@6BIRenderable@1@@": "0x845e00 (RTTI .?AVExplosion@RBX@@, offset 0x134)",
+        "??_C@_09HGNANIIM@Explosion?$AA@": "0x845df0",
+        "__real@40800000": "0x826e6c",
+        "__real@48f42400": "0x845dec",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??0Explosion@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0062af60",
+      "symbol": "??1Explosion@RBX@@UAE@XZ",
+      "size": 173,
+      "exact": true,
+      "verified_targets": {
+        "??_7Explosion@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x845ea4 (RTTI .?AVExplosion@RBX@@, offset 0x0)",
+        "??_7Explosion@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x845e94 (RTTI .?AVExplosion@RBX@@, offset 0x10)",
+        "??_7Explosion@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x845e8c (RTTI .?AVExplosion@RBX@@, offset 0x14)",
+        "??_7Explosion@RBX@@6BDebugable@1@@": "0x845e84 (RTTI .?AVExplosion@RBX@@, offset 0x20)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x845e74 (RTTI .?AVExplosion@RBX@@, offset 0x24)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x845e64 (RTTI .?AVExplosion@RBX@@, offset 0x44)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x845e54 (RTTI .?AVExplosion@RBX@@, offset 0x64)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x845e44 (RTTI .?AVExplosion@RBX@@, offset 0x84)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x845e34 (RTTI .?AVExplosion@RBX@@, offset 0xa4)",
+        "??_7Explosion@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x845e24 (RTTI .?AVExplosion@RBX@@, offset 0xc4)",
+        "??_7Explosion@RBX@@6B?$Listener@VRunService@RBX@@VStepped@2@@1@@": "0x845e18 (RTTI .?AVExplosion@RBX@@, offset 0x130)",
+        "??_7Explosion@RBX@@6BIRenderable@1@@": "0x845e00 (RTTI .?AVExplosion@RBX@@, offset 0x134)",
+        "??1IRenderable@RBX@@QAE@XZ": "0x47d410",
+        "??1?$FactoryProduct@VExplosion@RBX@@VInstance@2@$1?sExplosion@2@3PADA@RBX@@MAE@XZ": "0x629c60"
+      },
+      "local_eh": [
+        "__ehhandler$??1Explosion@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00565950",
+      "symbol": "?shouldRender3dAdorn@Explosion@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    }
+  ],
+  "blockers": [
+    "Untested implementation draft; reflection statics and remaining methods pending target bindings"
+  ],
+  "orchestrator_verification": {
+    "date": "2026-11-04",
+    "ctor 0062adb0": "exact 281 B, 19 targets",
+    "dtor 0062af60": "exact 173 B (explicit: stores own vptrs)",
+    "helpers": "DescribedCreatable ctor 0062ab80 (146) and FactoryProduct dtor 00629c60 (83) exact",
+    "allocation": "005c0dd0 malloc(0x15c) then ctor",
+    "constants": "4.0f 0x826e6c, 500000.0f 0x845dec",
+    "shouldRender3dAdorn 00565950": "shared 3-byte return-true alias"
+  }
+}

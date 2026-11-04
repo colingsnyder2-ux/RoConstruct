@@ -12,7 +12,7 @@ namespace RBX
 					  public Listener<RunService, Stepped>,
 					  public IRenderable
 	{
-	private:
+	public:
 		float age;
 		G3D::Vector3 position;
 		float blastRadius;
@@ -21,7 +21,7 @@ namespace RBX
 		static Reflection::BoundProp<G3D::Vector3, 1> propPosition;
 		static Reflection::BoundProp<float, 1> propBlastPressure;
 
-	private:
+	public:
 		float renderTime() const;
 		float visualRadius() const;
 		float killRadius() const;
@@ -43,9 +43,7 @@ namespace RBX
 	public:
 		Explosion();
 
-		virtual ~Explosion()
-		{
-		}
+		virtual ~Explosion();
 
 		void setVisualOnly();
 		void setBlastRadius(float _blastRadius);
