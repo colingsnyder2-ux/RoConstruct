@@ -1,0 +1,29 @@
+{
+  "run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-141437-a0617a57",
+  "outcome": "link_failed",
+  "unresolved": 3,
+  "duplicates": 0,
+  "changed_inputs": 0,
+  "explicit_inputs": 329,
+  "source_compiles": 0,
+  "executed": false,
+  "baseline_comparison": {
+    "blockers": {
+      "added": [],
+      "removed": []
+    },
+    "duplicates": {
+      "added": [],
+      "removed": []
+    }
+  },
+  "explicit_input_delta": {
+    "removed": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib"
+    ],
+    "added": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib",
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\run\\unit-000\\candidate.obj"
+    ]
+  }
+}

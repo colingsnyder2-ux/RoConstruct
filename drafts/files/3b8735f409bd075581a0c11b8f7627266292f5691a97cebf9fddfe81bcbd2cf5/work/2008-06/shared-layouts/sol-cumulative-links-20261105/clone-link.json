@@ -1,0 +1,35 @@
+{
+  "run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-145908-8c2e91ac",
+  "outcome": "link_failed",
+  "unresolved": 3,
+  "duplicates": 0,
+  "changed_inputs": 0,
+  "explicit_inputs": 331,
+  "source_compiles": 0,
+  "executed": false,
+  "baseline_comparison": {
+    "blockers": {
+      "added": [],
+      "removed": []
+    },
+    "duplicates": {
+      "added": [],
+      "removed": []
+    }
+  },
+  "explicit_input_delta": {
+    "removed": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib"
+    ],
+    "added": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-144726-344e0b26\\unit-000\\candidate.obj",
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-145405-7856b686\\unit-000\\candidate.obj",
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib"
+    ]
+  },
+  "limitations": [
+    "Known nonexact current loadInstances provider remains a separate recovery obligation.",
+    "Private static declaration profile; canonical compatibility/ODR remains unproven.",
+    "Strict indirect calls, complete EH/ABI, selected PE and runtime gates remain open."
+  ]
+}

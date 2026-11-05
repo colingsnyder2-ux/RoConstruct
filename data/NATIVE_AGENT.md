@@ -4,6 +4,39 @@ Current workflow: 52. Historical Worker notes: `docs/NATIVE_WORKER_HISTORY.md` (
 
 Initialize a native recovery workspace, investigate original evidence, reconstruct C++ and automatically share all task-owned changes with Colin, including incomplete/inactive drafts. No fork, branch, Git commit, PR or integration submission required. Upload receipt means durable storage only; no runtime activation or credit.
 
+## Task contract: native recovery, then runnable integration
+
+This prompt selects **native C++ recovery for a runnable class/dependency swap**.
+Keep that task when asked to "continue", "get local exacts fast" or "find fast wins".
+Choose fast wins from the selected swap's real blocker list. Do not replace the
+assigned task with a general function-mining campaign.
+
+- **Mining:** standalone candidates under `src/`, automatic match counts and
+  single-function server scores. Existing mined code is reference material.
+- **Native recovery:** real class/member C++ in `rebuild/2008-06/native-classes`,
+  `native-headers` and `native-world`, with original code/data/call/layout evidence.
+  A local exact body is an inactive candidate until its remaining obligations pass.
+- **Runnable integration:** correct source/provider ownership, dependency and ABI
+  closure, actual linked selection, then the relevant P5/P6/runtime gates.
+  Contributors prepare changes/proofs; the owner reviews and integrates them.
+- **Sharing:** automatic draft upload preserves work. It establishes neither
+  runnable integration nor independently verified server credit.
+
+`roc auto`, `roc xcopy`, `roc immediates` and `roc similar` are mining tools;
+**do not run or recommend them as the next steps of this native workflow**.
+An old "2,067 auto-matches" or similar count is mining history, not evidence that
+native class integration advanced. A separate, explicit mining assignment uses
+the matching workflow; it does not silently replace this task.
+
+Start each work batch by writing: **swap target -> current concrete blocker ->
+required source/provider -> next proof**. If no target is assigned, use the current
+owner blocker queue and choose an unleased dependency required by an incomplete
+swap. Selection/Instance/Workspace/DataModel are examples, not a mandatory tour.
+After an exact body, work on its next missing dependency/call/ABI/selection proof;
+do not collect unrelated exact siblings. Report the blocker reduced and remaining
+proof, with inactive exacts, selected exacts, gated swaps and server credit separate.
+Use unknown for unavailable counts. Never substitute a mining total for these.
+
 ## Discover and initialize
 
 Use the current authorized workspace. Inspect nearby existing RoConstruct installs and their package markers; reuse a current compatible workspace. Preserve every existing edit and installed input. Never reset, stash, force-update, or extract an update over somebody's work. A package older than native workflow 52 needs a fresh verified package folder. An update must not strand unsent drafts: checkpoint and flush the old session first, retain its folder/outbox, then use a fresh folder and port task changes with base-aware review.
@@ -136,6 +169,10 @@ python -m roc.native_drafts stop SESSION
 Stop cooperatively; allow watcher to finish final checkpoint. A killed process cannot promise a final upload: periodic snapshots and retained local files provide recovery. Retry flush after downtime using the same session. Never report delivered without durable receipt. Split tasks exceeding the 16 MiB bundle limit; preserve originals. No passing compile, live lease or integration-ready batch required for upload.
 
 ## Native recovery loop
+
+Stay in the task contract above. Setup/indexing and mined-reference downloads
+are prerequisites or evidence access, not mining or integration progress.
+`roc pull` supplies mined references only; it does not update the native baseline.
 
 Default priority: one explicit runnable swap target and its current dependency/ABI
 blocker list. Follow `docs/NATIVE_SWAP_BATCH.md`: evidence-backed batches (at most
