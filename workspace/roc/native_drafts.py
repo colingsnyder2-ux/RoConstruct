@@ -20,8 +20,11 @@ import uuid
 ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 16 * 1024 * 1024
 PREFIXES = ('rebuild/', 'roc/', 'tests/', 'docs/', 'research/', 'benchmarks/',
-            'work/2008-06/shared-layouts/', 'work/native-candidates/')
-SUFFIXES = ('.cpp', '.c', '.h', '.hpp', '.inl', '.py', '.json', '.jsonl', '.md', '.txt')
+            'packaging/', 'work/2008-06/shared-layouts/', 'work/native-candidates/')
+ROOT_FILES = ('roc.py','roc.cmd','roc.sh','install.cmd','install.sh','CLAUDE.md','AGENTS.md')
+SUFFIXES = ('.cpp', '.c', '.cc', '.cxx', '.h', '.hpp', '.inl', '.inc', '.ipp', '.def', '.rc',
+            '.py', '.json', '.jsonl', '.md', '.txt', '.ps1', '.sh', '.cmd', '.bat', '.cmake',
+            '.yml', '.yaml', '.toml')
 
 
 def encoded(value):
@@ -77,7 +80,7 @@ def safe_path(name):
     p = PurePosixPath(name)
     if (not name or p.as_posix() != name or p.is_absolute() or '..' in p.parts
             or '\\' in name or ':' in name or any(x.startswith('.') or x.endswith((' ', '.')) for x in p.parts)
-            or not name.startswith(PREFIXES) or p.suffix not in SUFFIXES
+            or not (name.startswith(PREFIXES) or name in ROOT_FILES) or p.suffix not in SUFFIXES
             or any(x.lower() in ('out', '__pycache__', 'source', 'secrets', 'config') for x in p.parts)
             or re.search(r'(?i)^(?:roconstruct[-_])?(?:secret|credential|token|password|providers|settings)s?\.', p.name)
             or any(re.fullmatch(r'(?i)(con|prn|aux|nul|com[1-9]|lpt[1-9])(\..*)?', x) for x in p.parts)):
@@ -303,6 +306,9 @@ class Inbox:
             if digest(packet) != identifier:
                 raise ValueError('Draft archive hash mismatch')
             result['drafts/bundles/' + identifier + '.json'] = encoded(packet)
+            for name,row in packet['files'].items():
+                if row['text'] is not None:
+                    result['drafts/files/' + identifier + '/' + name] = row['text'].encode('utf-8')
         result['drafts/index.json'] = encoded([dict(seq=s, id=i) for s, i, _ in rows])
         return result
 
