@@ -1,0 +1,53 @@
+{
+  "release": "https://github.com/colingsnyder2-ux/RoConstruct/releases/tag/findings-archive-20261104",
+  "assets": [
+    {
+      "name": "roconstruct-agent-memory.zip",
+      "size": 54175,
+      "sha256": "7264b247daf2dd97cb400ce46a107f2320bd504462d6779240e4b56bb7826dbd",
+      "url": "https://github.com/colingsnyder2-ux/RoConstruct/releases/download/findings-archive-20261104/roconstruct-agent-memory.zip"
+    },
+    {
+      "name": "roconstruct-agent-memory.zip.sha256",
+      "size": 100,
+      "sha256": "128f61bcbbe81f7475771e5b36a9a060a28291cbb066adc28f0c967792ea3557",
+      "url": "https://github.com/colingsnyder2-ux/RoConstruct/releases/download/findings-archive-20261104/roconstruct-agent-memory.zip.sha256"
+    },
+    {
+      "name": "roconstruct-evidence.zip",
+      "size": 25231914,
+      "sha256": "5f0bbcc73d6acbfd642cb57b891bba96a46bad037f5f6a6a07dccc9168436046",
+      "url": "https://github.com/colingsnyder2-ux/RoConstruct/releases/download/findings-archive-20261104/roconstruct-evidence.zip"
+    },
+    {
+      "name": "roconstruct-evidence.zip.sha256",
+      "size": 96,
+      "sha256": "f6ff0fed2fe25456df1cc307606ecbb09346e1f1b017038ca390e6c44a7596ab",
+      "url": "https://github.com/colingsnyder2-ux/RoConstruct/releases/download/findings-archive-20261104/roconstruct-evidence.zip.sha256"
+    },
+    {
+      "name": "roconstruct-findings-src.zip",
+      "size": 623945881,
+      "sha256": "e7256f3bdd261cb4656243d32bd17251d14d2bd520f32884e85858f36ffe916d",
+      "url": "https://github.com/colingsnyder2-ux/RoConstruct/releases/download/findings-archive-20261104/roconstruct-findings-src.zip"
+    },
+    {
+      "name": "roconstruct-findings-src.zip.sha256",
+      "size": 100,
+      "sha256": "ced6e8bd873f5b692796adff7e2c63ae3d53d659cb3acf6cc22753c1aef5d909",
+      "url": "https://github.com/colingsnyder2-ux/RoConstruct/releases/download/findings-archive-20261104/roconstruct-findings-src.zip.sha256"
+    },
+    {
+      "name": "roconstruct-native-source.zip",
+      "size": 28920327,
+      "sha256": "dfcd0cff79a976ea853a45bef2b94e8523c2ea6a3a13a72dca199e1d421e8fc0",
+      "url": "https://github.com/colingsnyder2-ux/RoConstruct/releases/download/findings-archive-20261104/roconstruct-native-source.zip"
+    },
+    {
+      "name": "SHA256SUMS",
+      "size": 297,
+      "sha256": "0db7ee15b582d0f44639cb84834442b13a0400ac8c56fb931c9686e32c2d3fb4",
+      "url": "https://github.com/colingsnyder2-ux/RoConstruct/releases/download/findings-archive-20261104/SHA256SUMS"
+    }
+  ]
+}
