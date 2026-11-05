@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "source": "../../work/native-candidates/writer-lifetime-20261105/WorkspaceXmlWriter.cpp",
+      "checks": [
+        {
+          "addr": "0046b550",
+          "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+        },
+        {
+          "addr": "0046b1e0",
+          "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ"
+        },
+        {
+          "addr": "0046b860",
+          "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "jobs": [
+    {
+      "source": "../../work/native-candidates/writer-lifetime-20261105/WorkspaceXmlWriter.cpp",
+      "checks": [
+        {
+          "addr": "0046b550",
+          "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "calls": [
+            {
+              "offset": 34,
+              "target": "0058fff0",
+              "symbol": "??0XmlWriter@@IAE@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+            },
+            {
+              "offset": 66,
+              "target": "00699b30",
+              "symbol": "??0?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@VContentId@RBX@@@1@ABV?$allocator@VContentId@RBX@@@1@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "0046b1e0",
+          "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "0046b070",
+              "symbol": "??1?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE@XZ"
+            },
+            {
+              "offset": 56,
+              "target": "004146d0",
+              "symbol": "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Writer lifetime functions only. Original assembly offsets/targets and native XmlWriter base, ContentId set and InstanceHandle map declarations establish bindings. CWorkspace::write remains a separately recorded nonexact blocker; no runtime selection."
+}

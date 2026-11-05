@@ -1,0 +1,457 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "0046b550",
+  "primary_body_size": 98,
+  "primary_body_exact": true,
+  "tool_sha256": "f63afd15a3b5a20f7ee5adf1d5dbb89de29b4e75f4e7d473e530ab62dee925e4",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "work\\2008-06\\native-check-runs\\20261105-110302-a775a816\\unit-000\\candidate.obj",
+  "object_sha256": "2e107478209a7b66681fa31fe2903128a36522acdb0d026189d3a723a5922a71",
+  "events": [
+    {
+      "symbol": "__ehhandler$??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "original": "0x7c3948",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "original": "0x8db66c",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "220593190100000064b68d00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "original": "0x8db664",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffff40397c00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z$0",
+      "original": "0x7c3940",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1TextXmlWriter@@QAE@XZ",
+      "original": "0x415340",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ",
+      "original": "0x4146d0",
+      "kind": "cleanup/handler code",
+      "size": 112,
+      "exact": true
+    },
+    {
+      "symbol": "__ehhandler$??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ",
+      "original": "0x7bd928",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ",
+      "original": "0x8d279c",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "220593190100000094278d00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ",
+      "original": "0x8d2794",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffff20d97b00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ$0",
+      "original": "0x7bd920",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$_Tree_val@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ",
+      "original": "0x5b3d20",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+      "original": "0x414510",
+      "kind": "cleanup/handler code",
+      "size": 220,
+      "exact": true
+    },
+    {
+      "symbol": "__imp___invalid_parameter_noinfo",
+      "original": "0x802890",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@2@@Z",
+      "original": "0x414370",
+      "kind": "cleanup/handler code",
+      "size": 104,
+      "exact": true
+    },
+    {
+      "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAEXXZ",
+      "original": "0x5b7250",
+      "kind": "cleanup/handler code",
+      "size": 108,
+      "exact": true
+    },
+    {
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "original": "0x413d70",
+      "kind": "cleanup/handler code",
+      "size": 765,
+      "exact": true
+    },
+    {
+      "symbol": "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "original": "0x7de842",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$?erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "original": "0x9004fc",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931902000000ec049000000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$?erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+      "original": "0x9004ec",
+      "kind": "EH data",
+      "size": 16,
+      "exact": true,
+      "original_bytes": "ffffffff30e87d000000000039e87d00",
+      "native_bytes": "ffffffff000000000000000000000000"
+    },
+    {
+      "symbol": "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$0",
+      "original": "0x7de830",
+      "kind": "cleanup/handler code",
+      "size": 9,
+      "exact": true
+    },
+    {
+      "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "original": "0x802468",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$2",
+      "original": "0x7de839",
+      "kind": "cleanup/handler code",
+      "size": 9,
+      "exact": true
+    },
+    {
+      "symbol": "__imp_??1exception@std@@UAE@XZ",
+      "original": "0x80289c",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@",
+      "original": "0x80b270",
+      "kind": "EH data",
+      "size": 28,
+      "exact": true,
+      "original_bytes": "696e76616c6964206d61702f7365743c543e206974657261746f7200",
+      "native_bytes": "696e76616c6964206d61702f7365743c543e206974657261746f7200"
+    },
+    {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "original": "0x802458",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "__imp_??0exception@std@@QAE@XZ",
+      "original": "0x802898",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "??_7logic_error@std@@6B@",
+      "original": "0x80b110",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "90c35500b09d4000",
+      "native_bytes": "0000000000000000"
+    },
+    {
+      "kind": "COFF weak fallback availability",
+      "symbol": "??_Elogic_error@std@@UAEPAXI@Z",
+      "fallback": "??_Glogic_error@std@@UAEPAXI@Z",
+      "original": "0x55c390",
+      "scope": "Final PE weak selection unproven"
+    },
+    {
+      "symbol": "??_Glogic_error@std@@UAEPAXI@Z",
+      "original": "0x55c390",
+      "kind": "cleanup/handler code",
+      "size": 48,
+      "exact": true
+    },
+    {
+      "symbol": "?what@logic_error@std@@UBEPBDXZ",
+      "original": "0x409db0",
+      "kind": "cleanup/handler code",
+      "size": 9,
+      "exact": true
+    },
+    {
+      "symbol": "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+      "original": "0x802464",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+      "original": "0x80245c",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "__TI3?AVout_of_range@std@@",
+      "original": "0x8d0c3c",
+      "kind": "EH data",
+      "size": 16,
+      "exact": true,
+      "original_bytes": "00000000c0244000000000004c0c8d00",
+      "native_bytes": "00000000000000000000000000000000"
+    },
+    {
+      "symbol": "??1out_of_range@std@@UAE@XZ",
+      "original": "0x4024c0",
+      "kind": "cleanup/handler code",
+      "size": 27,
+      "exact": true
+    },
+    {
+      "symbol": "__CTA3?AVout_of_range@std@@",
+      "original": "0x8d0c4c",
+      "kind": "EH data",
+      "size": 16,
+      "exact": true,
+      "original_bytes": "030000005c0c8d00780c8d0010088d00",
+      "native_bytes": "03000000000000000000000000000000"
+    },
+    {
+      "symbol": "__CT??_R0?AVout_of_range@std@@@8??0out_of_range@std@@QAE@ABV01@@Z40",
+      "original": "0x8d0c5c",
+      "kind": "EH data",
+      "size": 28,
+      "exact": true,
+      "original_bytes": "00000000e485920000000000ffffffff0000000028000000904f4000",
+      "native_bytes": "000000000000000000000000ffffffff000000002800000000000000"
+    },
+    {
+      "symbol": "??_R0?AVout_of_range@std@@@8",
+      "original": "0x9285e4",
+      "kind": "EH data",
+      "size": 31,
+      "exact": true,
+      "original_bytes": "80018500000000002e3f41566f75745f6f665f72616e676540737464404000",
+      "native_bytes": "00000000000000002e3f41566f75745f6f665f72616e676540737464404000"
+    },
+    {
+      "kind": "canonical type_info vtable binding",
+      "original": "0x850180",
+      "anchors": [
+        {
+          "type": ".?AVCWorkspace@@",
+          "descriptor": "0x9281e0",
+          "vtable": "0x850180"
+        },
+        {
+          "type": ".?AVInstance@RBX@@",
+          "descriptor": "0x92907c",
+          "vtable": "0x850180"
+        }
+      ],
+      "exact": true
+    },
+    {
+      "symbol": "??_7type_info@@6B@",
+      "original": "0x850180",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "??0out_of_range@std@@QAE@ABV01@@Z",
+      "original": "0x404f90",
+      "kind": "cleanup/handler code",
+      "size": 25,
+      "exact": true
+    },
+    {
+      "symbol": "??0logic_error@std@@QAE@ABV01@@Z",
+      "original": "0x404f30",
+      "kind": "cleanup/handler code",
+      "size": 89,
+      "exact": true
+    },
+    {
+      "symbol": "__ehhandler$??0logic_error@std@@QAE@ABV01@@Z",
+      "original": "0x7bcd59",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??0logic_error@std@@QAE@ABV01@@Z",
+      "original": "0x8d0c9c",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931901000000940c8d00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??0logic_error@std@@QAE@ABV01@@Z",
+      "original": "0x8d0c94",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffff50cd7b00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??0logic_error@std@@QAE@ABV01@@Z$0",
+      "original": "0x7bcd50",
+      "kind": "cleanup/handler code",
+      "size": 9,
+      "exact": true
+    },
+    {
+      "symbol": "__imp_??0exception@std@@QAE@ABV01@@Z",
+      "original": "0x802888",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "??_7out_of_range@std@@6B@",
+      "original": "0x80b128",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "90c35500b09d4000",
+      "native_bytes": "0000000000000000"
+    },
+    {
+      "kind": "COFF weak fallback availability",
+      "symbol": "??_Eout_of_range@std@@UAEPAXI@Z",
+      "fallback": "??_Gout_of_range@std@@UAEPAXI@Z",
+      "original": "0x55c390",
+      "scope": "Final PE weak selection unproven"
+    },
+    {
+      "symbol": "??_Gout_of_range@std@@UAEPAXI@Z",
+      "original": "0x55c390",
+      "kind": "cleanup/handler code",
+      "size": 48,
+      "exact": true
+    },
+    {
+      "symbol": "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z40",
+      "original": "0x8d0c78",
+      "kind": "EH data",
+      "size": 28,
+      "exact": true,
+      "original_bytes": "00000000a485920000000000ffffffff0000000028000000304f4000",
+      "native_bytes": "000000000000000000000000ffffffff000000002800000000000000"
+    },
+    {
+      "symbol": "??_R0?AVlogic_error@std@@@8",
+      "original": "0x9285a4",
+      "kind": "EH data",
+      "size": 30,
+      "exact": true,
+      "original_bytes": "80018500000000002e3f41566c6f6769635f6572726f7240737464404000",
+      "native_bytes": "00000000000000002e3f41566c6f6769635f6572726f7240737464404000"
+    },
+    {
+      "symbol": "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12",
+      "original": "0x8d0810",
+      "kind": "EH data",
+      "size": 28,
+      "exact": true,
+      "original_bytes": "000000008885920000000000ffffffff000000000c00000092156a00",
+      "native_bytes": "000000000000000000000000ffffffff000000000c00000000000000"
+    },
+    {
+      "symbol": "??_R0?AVexception@std@@@8",
+      "original": "0x928588",
+      "kind": "EH data",
+      "size": 28,
+      "exact": true,
+      "original_bytes": "80018500000000002e3f4156657863657074696f6e40737464404000",
+      "native_bytes": "00000000000000002e3f4156657863657074696f6e40737464404000"
+    },
+    {
+      "symbol": "??0exception@std@@QAE@ABV01@@Z",
+      "original": "0x6a1592",
+      "kind": "external",
+      "exact": true
+    },
+    {
+      "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@2@PAU342@@Z",
+      "original": "0x5b6c20",
+      "kind": "cleanup/handler code",
+      "size": 27,
+      "exact": true
+    },
+    {
+      "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@2@PAU342@@Z",
+      "original": "0x4ab070",
+      "kind": "cleanup/handler code",
+      "size": 28,
+      "exact": true
+    },
+    {
+      "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@2@@Z",
+      "original": "0x4abdf0",
+      "kind": "cleanup/handler code",
+      "size": 78,
+      "exact": true
+    },
+    {
+      "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@2@@Z",
+      "original": "0x587360",
+      "kind": "cleanup/handler code",
+      "size": 82,
+      "exact": true
+    }
+  ],
+  "errors": []
+}
