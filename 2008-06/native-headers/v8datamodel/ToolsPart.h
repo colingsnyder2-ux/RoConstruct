@@ -28,7 +28,14 @@ namespace RBX
 	public:
 		FillToolColor();
 		BrickColor get() const { return color; }
-		void set(const BrickColor&);
+		void set(const BrickColor& value)
+		{
+			BrickColor next = value;
+			if (color != next) {
+				color = next;
+				raise(next);
+			}
+		}
 	};
 
 	extern char sFillTool[];

@@ -6,6 +6,8 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
 
 root = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(root))
@@ -40,13 +42,54 @@ if '--metadata' in sys.argv:
     units['MetadataMemberLookup'] = ['00443780=??$findFirstChildOfType@VProperties',
                                      '00443820=??$findFirstChildOfType@VFunctions',
                                      '004438c0=??$findFirstChildOfType@VEvents']
-compiles = {}
-for unit, checks in units.items():
+if '--render-settings' in sys.argv:
+    units['CRenderSettings'] = ['00412d50=?singleton@?$GlobalSettingsItem@VCRenderSettings@@']
+if '--render-singleton' in sys.argv:
+    units['CRenderSettingsSingleton'] = ['00412d50=?singleton@?$GlobalSettingsItem@VCRenderSettings@@']
+    units['CRenderSettingsSingletonState'] = []
+if '--render-ctor-trial' in sys.argv:
+    units['CRenderSettingsDefaults'] = []
+if '--render-base' in sys.argv:
+    units['CRenderSettingsBase'] = ['00448120=??0?$GlobalSettingsItem@VCRenderSettings@@',
+                                    '00445c10=??1?$GlobalSettingsItem@VCRenderSettings@@',
+                                    '00445cf0=?getClassName@?$FactoryProduct@VCRenderSettings@@']
+if '--render-described' in sys.argv:
+    units['CRenderSettingsDescribed'] = ['00448040=??0?$DescribedCreatable@VCRenderSettings@@',
+                                         '00447980=?classDescriptor@?$Described@VCRenderSettings@@']
+    units['CRenderSettingsFactory'] = ['004454d0=??0?$FactoryProduct@VCRenderSettings@@',
+                                       '00445410=??1?$FactoryProduct@VCRenderSettings@@']
+if '--mainframe-color' in sys.argv:
+    units['CMainFramePropertyGrid'] = ['00431160=?handle_431160@CMainFrame@@']
+    units['PartTools'] = ['005b6530=?onMouseDown@DropperTool@RBX@@']
+if '--mainframe-select' in sys.argv:
+    units['ActiveDataModel'] = ['004306c0=?getActiveDataModel@@']
+    units['CMainFrameColorSelection'] = []
+if '--brick-map' in sys.argv:
+    units['BrickColorMapAccess'] = ['005b6120=?color4uint8@BrickColor@RBX@@',
+                                    '005b5d80=?closest@BrickColor@RBX@@SA?AV12@VColor4uint8']
+if '--brick-singleton' in sys.argv:
+    units['BrickColorMapSingleton'] = ['005b5c20=?singleton@BrickMap@BrickColor@RBX@@']
+def compile_unit(item):
+    unit, checks = item
     cmd = [sys.executable, str(root / 'rebuild/2008-06/tests/check_native_class.py'),
            'native-classes/' + unit + '.cpp'] + checks
     result = subprocess.run(cmd, cwd=root, env=env, text=True, capture_output=True, check=True)
     assert ('%d/%d exact' % (len(checks), len(checks))) in result.stdout, result.stdout
-    compiles[unit] = result.stdout
+    return unit, result.stdout
+
+# Each checker writes a distinct object; no shared generated files or debug database.
+compile_started = time.monotonic()
+with ThreadPoolExecutor(max_workers=3) as pool:
+    compiles = dict(pool.map(compile_unit, units.items()))
+compile_seconds = round(time.monotonic() - compile_started, 2)
+if '--render-ctor-trial' in sys.argv:
+    assert '--render-singleton' in sys.argv and '--render-settings' not in sys.argv
+    ctor_env = dict(env, NATIVE_FLAGS='/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast')
+    result = subprocess.run([sys.executable, str(root / 'rebuild/2008-06/tests/check_native_class.py'),
+                             'tests/NativeRenderSettingsConstructorTrial.cpp', '00448c60=??0CRenderSettings@@'],
+                            cwd=root, env=ctor_env, text=True, capture_output=True, check=True)
+    assert '1/1 exact' in result.stdout, result.stdout
+    compiles['render_ctor_trial'] = result.stdout
 if '--prop-grid' in sys.argv:
     classes = root / 'rebuild/2008-06/native-classes'
     combined = out / 'CPropGridRefreshCombined.cpp'
@@ -99,6 +142,8 @@ for arg in baseline['arguments']:
     if Path(arg).name.lower() == 'checkcchatprompt.obj':
         args.append(str(out / 'CheckCChatPrompt.obj'))
         replaced += 1
+    elif '--mainframe-color' in sys.argv and Path(arg).name.lower() == 'nativeparttoolsfull.obj':
+        args.append(str(out / 'CheckPartTools.obj'))
     elif arg.upper().startswith('/OUT:'):
         args.append('/OUT:' + str(out / 'diagnostic.exe'))
     elif arg.upper().startswith('/MAP:'):
@@ -121,6 +166,29 @@ if '--string-value' in sys.argv:
     args.append(str(out / 'CheckStringValueGet.obj'))
 if '--metadata' in sys.argv:
     args.append(str(out / 'CheckMetadataMemberLookup.obj'))
+if '--render-settings' in sys.argv:
+    args.append(str(out / 'CheckCRenderSettings.obj'))
+if '--render-singleton' in sys.argv:
+    assert '--render-settings' not in sys.argv
+    args.append(str(out / 'CheckCRenderSettingsSingleton.obj'))
+    args.append(str(out / 'CheckCRenderSettingsSingletonState.obj'))
+if '--render-ctor-trial' in sys.argv:
+    args.append(str(out / 'CheckNativeRenderSettingsConstructorTrial.obj'))
+    args.append(str(out / 'CheckCRenderSettingsDefaults.obj'))
+if '--render-base' in sys.argv:
+    args.append(str(out / 'CheckCRenderSettingsBase.obj'))
+if '--render-described' in sys.argv:
+    args.append(str(out / 'CheckCRenderSettingsDescribed.obj'))
+    args.append(str(out / 'CheckCRenderSettingsFactory.obj'))
+if '--mainframe-color' in sys.argv:
+    args.append(str(out / 'CheckCMainFramePropertyGrid.obj'))
+if '--mainframe-select' in sys.argv:
+    args.append(str(out / 'CheckActiveDataModel.obj'))
+    args.append(str(out / 'CheckCMainFrameColorSelection.obj'))
+if '--brick-map' in sys.argv:
+    args.append(str(out / 'CheckBrickColorMapAccess.obj'))
+if '--brick-singleton' in sys.argv:
+    args.append(str(out / 'CheckBrickColorMapSingleton.obj'))
 response = out / 'link.rsp'
 response.write_text('\n'.join(subprocess.list2cmdline([a]) for a in args) + '\n')
 code, log = rebuild.run(rebuild.toolchain(), 'link', ['@' + str(response)], base)
@@ -129,11 +197,29 @@ unresolved = sorted(set(re.findall(r'unresolved external symbol "([^"]+)"', log)
 duplicates = sorted(set(re.findall(r'error LNK2005: (.*)', log)))
 receipt = {'baseline_unresolved': baseline['count'], 'unresolved': unresolved,
            'count': len(unresolved), 'duplicates': duplicates, 'link_exit': code,
-           'compiles': compiles,
+           'compiles': compiles, 'compile_seconds': compile_seconds,
            'source_sha256': {unit: hashlib.sha256((root / 'rebuild/2008-06/native-classes' / (unit + '.cpp')).read_bytes()).hexdigest() for unit in units},
            'scope': 'Donor-linked diagnostic only; OnCreate nonexact, call and vtable ABI incomplete; never run.'}
 if '--metadata' in sys.argv:
     receipt['scope'] += ' Metadata lookup wrappers are nonexact drafts.'
+if '--render-settings' in sys.argv:
+    receipt['scope'] += ' Render settings singleton checked; whole object not audited for selection.'
+if '--render-singleton' in sys.argv:
+    receipt['scope'] += ' Render settings singleton only; class lifetime and initialization not selected.'
+if '--render-ctor-trial' in sys.argv:
+    ctor_source = root / 'rebuild/2008-06/tests/NativeRenderSettingsConstructorTrial.cpp'
+    receipt['render_ctor_trial_sha256'] = hashlib.sha256(ctor_source.read_bytes()).hexdigest()
+    receipt['scope'] += ' Render constructor is duplicated trial source; class vtable and initialization unverified.'
+if '--render-base' in sys.argv:
+    receipt['scope'] += ' Render base methods are inactive; provider ownership and full vtables unverified.'
+if '--render-described' in sys.argv:
+    receipt['scope'] += ' Render described/factory bases inactive; class descriptor lifetime and complete vtables unverified.'
+if '--mainframe-color' in sys.argv:
+    receipt['scope'] += ' Color command exact with canonical setter; listener ABI and runtime unverified.'
+if '--mainframe-select' in sys.argv:
+    receipt['scope'] += ' Color-selection handler is a nonexact draft.'
+if '--brick-map' in sys.argv:
+    receipt['scope'] += ' Brick map construction and palette initialization remain unverified.'
 if '--prop-grid' in sys.argv:
     receipt['grid_sources'] = {name: hashlib.sha256((classes / name).read_bytes()).hexdigest()
                                for name in ('CPropGridRefresh.cpp', 'DataModelLock.cpp')}
@@ -144,7 +230,7 @@ if '--caption' in sys.argv:
 if view_arg:
     receipt['view_object_sha256'] = hashlib.sha256(view_obj.read_bytes()).hexdigest()
     receipt['view_receipt_sha256'] = hashlib.sha256(view_receipt_path.read_bytes()).hexdigest()
-receipt_name = ('receipt-view-' + view_arg + ('-string' if '--string-value' in sys.argv else '') + ('-metadata' if '--metadata' in sys.argv else '') + '.json' if view_arg else
+receipt_name = ('receipt-view-' + view_arg + ('-string' if '--string-value' in sys.argv else '') + ('-metadata' if '--metadata' in sys.argv else '') + ('-render' if '--render-settings' in sys.argv else '') + ('-render-singleton' if '--render-singleton' in sys.argv else '') + ('-ctor-trial' if '--render-ctor-trial' in sys.argv else '') + ('-base' if '--render-base' in sys.argv else '') + ('-described' if '--render-described' in sys.argv else '') + ('-color' if '--mainframe-color' in sys.argv else '') + ('-select' if '--mainframe-select' in sys.argv else '') + ('-brick' if '--brick-map' in sys.argv else '') + ('-brick-singleton' if '--brick-singleton' in sys.argv else '') + '.json' if view_arg else
                 'receipt-caption.json' if '--caption' in sys.argv else
                 'receipt-prop-grid.json' if '--prop-grid' in sys.argv else
                 'receipt-chat-enter.json' if 'ChatEnter' in units else 'receipt.json')

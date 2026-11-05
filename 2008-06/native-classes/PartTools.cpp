@@ -26,14 +26,6 @@ MouseCommand* FillTool::onMouseDown(const UIEvent& input)
     return NULL;
 }
 
-void FillToolColor::set(const BrickColor& value)
-{
-    if (color != value) {
-        color = value;
-        raise(value);
-    }
-}
-
 MouseCommand* DropperTool::onMouseDown(const UIEvent& input)
 {
     if (PartInstance* part = getPart(input, NULL)) {

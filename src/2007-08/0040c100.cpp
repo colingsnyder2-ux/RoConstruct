@@ -1,25 +1,33 @@
-// from server: 69% by colin
-struct VCBrowserViewExternal_CComObjectNoLock {
-    int Release(int);
+// from server: 85% by Intel
+struct VCBrowserViewExternal {
+    void* vftable;
+    void* vftable2;
+    void* vftable3;
+    int refCount;
+    void* vftable4;
+    int field_18;
+
+    long Release(int a1);
 };
 
-extern "C" void __stdcall sub_466B20();
-extern "C" void __stdcall sub_62FC62(void*);
+extern "C" long __stdcall QueryInterface(void* thisPtr, int a2, int a3);
+extern "C" void __stdcall sub_62FC62(void* ptr);
 
-int VCBrowserViewExternal_CComObjectNoLock::Release(int)
-{
-    int* p = (int*)this;
-    int count = p[6] - 1;
-    p[6] = count;
-    int result = count;
-    if (count == 0 && this != 0) {
-        p[0] = 0x785bc0;
-        p[1] = 0x785ba8;
-        p[2] = 0x785b84;
-        p[5] = 0x785b5c;
-        p[6] = (int)0xc0000001;
-        sub_466B20();
-        sub_62FC62(this);
+long VCBrowserViewExternal::Release(int a1) {
+    int* thisPtr = (int*)a1;
+    int ref = --thisPtr[6];
+    int result = ref;
+    if (ref == 0) {
+        if (thisPtr != 0) {
+            int* vftablePtr = thisPtr + 2;
+            thisPtr[0] = 0x785BC0;
+            thisPtr[1] = 0x785BA8;
+            *vftablePtr = 0x785B84;
+            thisPtr[5] = 0x785B5C;
+            thisPtr[6] = 0xC0000001;
+            QueryInterface(vftablePtr, 0, 0);
+            sub_62FC62(thisPtr);
+        }
     }
     return result;
 }

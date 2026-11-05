@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 BASE = ROOT / 'rebuild/2008-06'
 source = BASE / 'native-classes/CMainFramePropertyGrid.cpp'
-header = BASE / 'native-headers/mainframe-getter/v8datamodel/ToolsPart.h'
+header = BASE / 'native-headers/v8datamodel/ToolsPart.h'
 obj = BASE / 'out/native-layouts/CheckCMainFramePropertyGrid.obj'
 commands = [
     [sys.executable, str(BASE / 'tests/check_native_class.py'),
@@ -61,7 +61,7 @@ if passed:
         verified_calls.append(dict(offset=displacement, symbol=refs[displacement], target=address))
 receipt = dict(address='00431160', inactive_exact=passed,
                runtime_proven=False, executable_selected=False,
-               limitation='Scoped inline by-value setter is a codegen analog; shared-header ABI remains unproven.',
+               limitation='Canonical inline setter; full listener ABI, selection and runtime remain unproven.',
                verified_calls=verified_calls,
                hashes={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                        for p in (source, header, obj, Path(__file__)) if p.exists()}, results=results)

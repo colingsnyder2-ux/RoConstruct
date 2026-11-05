@@ -1,5 +1,5 @@
 #include "CMainFrame.h"
-#include "../native-headers/mainframe-getter/v8datamodel/ToolsPart.h"
+#include "v8datamodel/ToolsPart.h"
 #include <Controls/XTColorDialog.h>
 #include <G3D/Color3uint8.h>
 
