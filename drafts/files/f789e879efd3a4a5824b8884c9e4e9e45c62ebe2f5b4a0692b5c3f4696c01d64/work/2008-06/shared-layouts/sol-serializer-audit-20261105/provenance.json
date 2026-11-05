@@ -1,0 +1,55 @@
+{
+  "actual_command_sha256": "b03527a0c00a11ea4bc411721b4aded3c1ffa712c15e7b1ebdb57d8db840f53c",
+  "executed_command_sha256": "5df7491b0572ba111a3859797f6c34fc7f971da606ddb208e07320eee364ef79",
+  "source_sha256": "997a7d0b3aee78a395b254bc6ae3e1ddf3365756b3d645a001a8c90c515b93fc",
+  "original_source_hash_verified": true,
+  "dependencies_count": 744,
+  "dependencies_drift": [],
+  "include_order": [
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-serializer-owner-20261105",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\Network\\include",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Network\\include",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\Network\\include\\Network",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Network\\include\\Network",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\include",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\include",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\Network\\raknet30\\Source",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
+    "G:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "G:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\Rendering\\png",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\png",
+    "G:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\lua-5.1.1\\src",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\Rendering\\AppDraw\\include",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "G:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\Rendering\\RenderLib\\include",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\RbxGraphics\\include",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\Network",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Network",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\RbxView\\include",
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\RbxView\\include",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\include",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include"
+  ],
+  "direct_include_candidates": {
+    "v8xml/SerializerV2.h": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\include\\v8xml\\SerializerV2.h",
+      "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\include\\v8xml\\SerializerV2.h"
+    ],
+    "v8xml/XmlElement.h": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\include\\v8xml\\XmlElement.h",
+      "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\include\\v8xml\\XmlElement.h"
+    ],
+    "v8tree/Instance.h": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\include\\v8tree\\Instance.h",
+      "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\include\\v8tree\\Instance.h"
+    ]
+  },
+  "limitation": "Adapter filtered /showIncludes, but runner restored it: see saved-command/log correction. No fresh receipt or exact argument replay asserted; historical filesystem state independent proof unavailable."
+}

@@ -1,0 +1,13 @@
+[
+  "--- \n",
+  "+++ \n",
+  "@@ -6,7 +6,7 @@\n",
+  " #include \"v8xml/XmlElement.h\"",
+  " #include \"v8tree/Instance.h\"",
+  " ",
+  "-void SerializerV2::loadInstances(XmlElement* root, std::vector<boost::shared_ptr<RBX::Instance> >& instances)",
+  "+inline void SerializerV2::loadInstances(XmlElement* root, std::vector<boost::shared_ptr<RBX::Instance> >& instances)",
+  " {",
+  " \tif (!root)",
+  " \t\treturn;"
+]

@@ -1,0 +1,159 @@
+{
+  "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+  "old": {
+    "size": 302,
+    "sha256": "765056227d4ba4133aa1df5efdac9d0bcfda1eb54c9728d31fb5ac6a65bbd3c1",
+    "relocations": [
+      [
+        15,
+        "__ehhandler$?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+        6
+      ],
+      [
+        51,
+        "??0ArchiveBinder@@QAE@XZ",
+        20
+      ],
+      [
+        56,
+        "?tag_Item@@3ABVName@RBX@@B",
+        6
+      ],
+      [
+        71,
+        "?findFirstChildByTag@XmlElement@@QBEPBV1@ABVName@RBX@@@Z",
+        20
+      ],
+      [
+        87,
+        "?tag_class@@3ABVName@RBX@@B",
+        6
+      ],
+      [
+        99,
+        "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z",
+        20
+      ],
+      [
+        120,
+        "?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z",
+        20
+      ],
+      [
+        139,
+        "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+        20
+      ],
+      [
+        166,
+        "?read@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+        20
+      ],
+      [
+        179,
+        "?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        20
+      ],
+      [
+        242,
+        "?findNextChildWithSameTag@XmlElement@@QBEPBV1@PBV1@@Z",
+        20
+      ],
+      [
+        261,
+        "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+        20
+      ],
+      [
+        278,
+        "??1ArchiveBinder@@QAE@XZ",
+        20
+      ]
+    ],
+    "characteristics": 1615859744,
+    "storage": 2,
+    "section": ".text"
+  },
+  "consumers": [
+    {
+      "object_id": 225,
+      "section": 954,
+      "section_name": ".text",
+      "offset": 411,
+      "type": 20,
+      "object": {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\native-layouts\\WorkspaceInsertNativeProfile.obj",
+        "member": null,
+        "offset": null,
+        "sha256": "9c79c9094dae7a2a20526f79d45f168aac94909e58857d05652c0ac963b18019"
+      }
+    },
+    {
+      "object_id": 841,
+      "section": 495,
+      "section_name": ".text",
+      "offset": 101,
+      "type": 20,
+      "object": {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-144726-344e0b26\\unit-000\\candidate.obj",
+        "member": null,
+        "offset": null,
+        "sha256": "7048fbbf73b4d1f6e9e3fc967eded57734290e8ba4f9037578b99256446a3153"
+      }
+    },
+    {
+      "object_id": 878,
+      "section": 1022,
+      "section_name": ".text",
+      "offset": 481,
+      "type": 20,
+      "object": {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeClipboardActionsFull.obj",
+        "member": null,
+        "offset": null,
+        "sha256": "12e56217cc67071934ae0a51da3d2b99090ec33357afd935261dca6de8f086ee"
+      }
+    },
+    {
+      "object_id": 888,
+      "section": 658,
+      "section_name": ".text",
+      "offset": 224,
+      "type": 20,
+      "object": {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeContentProviderLoadFull.obj",
+        "member": null,
+        "offset": null,
+        "sha256": "6dae4514b741a2c99bfc34d0b4259cd074c251376a8d4a25b87d552d76ee3b2d"
+      }
+    },
+    {
+      "object_id": 1140,
+      "section": 3485,
+      "section_name": ".text",
+      "offset": 330,
+      "type": 20,
+      "object": {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+        "member": "DataModel.obj",
+        "offset": 19992406,
+        "sha256": "b151171eb04575f142c5d1b9dcc32bab5cf90e89a014f77b2b84e674b559e662"
+      }
+    },
+    {
+      "object_id": 1289,
+      "section": 1744,
+      "section_name": ".text",
+      "offset": 46,
+      "type": 20,
+      "object": {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+        "member": "Workspace.obj",
+        "offset": 58869114,
+        "sha256": "1e7c7525c19a96b405aaf6e90bc3064a9d5ec424d11b12638b443cf90b390548"
+      }
+    }
+  ],
+  "alternates": [],
+  "next_action": "Parent supplies verified native loadInstances object; then compose only guarded serializer member with that provider and serialize isolated link. Current audit alone does not pass strict no-loss."
+}

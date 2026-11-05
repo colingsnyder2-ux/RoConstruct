@@ -1,0 +1,1281 @@
+[
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeCInsertObjectDialogActionFull.obj",
+      "member": null,
+      "object_sha256": "195b40d47ede8742fe0a40c0ada759af167aa182b0c4c89c15e5f7f15720e89d",
+      "symbol": "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+      "address": "00420190",
+      "target_size": 286,
+      "size": 284,
+      "normalized_exact": false,
+      "firstdiff": 23,
+      "relocations": [
+        {
+          "offset": 3,
+          "symbol": [
+            "__ehhandler$?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+            8,
+            897,
+            32
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 54,
+          "symbol": [
+            "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+            0,
+            888,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 61,
+          "symbol": [
+            "?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z",
+            0,
+            851,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 66,
+          "symbol": [
+            "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+            0,
+            888,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 89,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 146,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 157,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 190,
+          "symbol": [
+            "??$shared_dynamic_cast@VInstance@RBX@@VObject@2@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABV?$shared_ptr@VObject@RBX@@@0@@Z",
+            0,
+            767,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [],
+        []
+      ]
+    },
+    "asm": [
+      "0000 push -1",
+      "0002 push 0",
+      "0007 mov eax, dword ptr fs:[0]",
+      "000d push eax",
+      "000e mov dword ptr fs:[0], esp",
+      "0015 sub esp, 0x10",
+      "0018 push ebx",
+      "0019 push esi",
+      "001a push edi",
+      "001b lea ecx, [esp + 0x30]",
+      "001f mov dword ptr [esp + 0xc], 0",
+      "0027 mov eax, dword ptr [esp + 0x30]",
+      "002b push ecx",
+      "002c lea edx, [esp + 0x10]",
+      "0030 push edx",
+      "0031 mov dword ptr [esp + 0x38], eax",
+      "0035 call 0x3a",
+      "003a mov ecx, eax",
+      "003c call 0x41",
+      "0041 call 0x46",
+      "0046 mov esi, dword ptr [esp + 0xc]",
+      "004a mov ebx, dword ptr [eax + 0x18]",
+      "004d mov eax, dword ptr [eax]",
+      "004f test esi, esi",
+      "0051 je 0x57",
+      "0053 cmp esi, eax",
+      "0055 je 0x5d",
+      "0057 call dword ptr [0]",
+      "005d mov edi, dword ptr [esp + 0x10]",
+      "0061 cmp edi, ebx",
+      "0063 jne 0x88",
+      "0065 mov eax, dword ptr [esp + 0x2c]",
+      "0069 pop edi",
+      "006a pop esi",
+      "006b mov dword ptr [eax], 0",
+      "0071 mov dword ptr [eax + 4], 0",
+      "0078 pop ebx",
+      "0079 mov ecx, dword ptr [esp + 0x10]",
+      "007d mov dword ptr fs:[0], ecx",
+      "0084 add esp, 0x1c",
+      "0087 ret ",
+      "0088 test esi, esi",
+      "008a jne 0x115",
+      "0090 call dword ptr [0]",
+      "0096 cmp edi, dword ptr [esi + 0x18]",
+      "0099 jne 0xa1",
+      "009b call dword ptr [0]",
+      "00a1 mov ecx, dword ptr [edi + 0x10]",
+      "00a4 mov eax, dword ptr [ecx]",
+      "00a6 mov eax, dword ptr [eax]",
+      "00a8 lea edx, [esp + 0x14]",
+      "00ac push edx",
+      "00ad call eax",
+      "00af mov edi, dword ptr [esp + 0x2c]",
+      "00b3 push eax",
+      "00b4 push edi",
+      "00b5 mov dword ptr [esp + 0x2c], 0",
+      "00bd call 0xc2",
+      "00c2 mov eax, dword ptr [esp + 0x20]",
+      "00c6 add esp, 8",
+      "00c9 mov dword ptr [esp + 0x24], 0xffffffff",
+      "00d1 test eax, eax",
+      "00d3 je 0x101",
+      "00d5 mov esi, eax",
+      "00d7 add eax, 4",
+      "00da or ecx, 0xffffffff",
+      "00dd lock xadd dword ptr [eax], ecx",
+      "00e1 jne 0x101",
+      "00e3 mov edx, dword ptr [esi]",
+      "00e5 mov eax, dword ptr [edx + 4]",
+      "00e8 mov ecx, esi",
+      "00ea call eax",
+      "00ec lea ecx, [esi + 8]",
+      "00ef or edx, 0xffffffff",
+      "00f2 lock xadd dword ptr [ecx], edx",
+      "00f6 jne 0x101",
+      "00f8 mov eax, dword ptr [esi]",
+      "00fa mov edx, dword ptr [eax + 8]",
+      "00fd mov ecx, esi",
+      "00ff call edx",
+      "0101 mov ecx, dword ptr [esp + 0x1c]",
+      "0105 mov eax, edi",
+      "0107 pop edi",
+      "0108 pop esi",
+      "0109 pop ebx",
+      "010a mov dword ptr fs:[0], ecx",
+      "0111 add esp, 0x1c",
+      "0114 ret ",
+      "0115 mov esi, dword ptr [esi]",
+      "0117 jmp 0x96"
+    ]
+  },
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+      "member": "Instance.obj",
+      "object_sha256": "947583b50f1108dae75be8368843c52c5cd6be382a1ce88a99ae13b6b5f49460",
+      "symbol": "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+      "address": "00420190",
+      "target_size": 286,
+      "size": 286,
+      "normalized_exact": true,
+      "firstdiff": null,
+      "relocations": [
+        {
+          "offset": 3,
+          "symbol": [
+            "__ehhandler$?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+            33,
+            3995,
+            32
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 54,
+          "symbol": [
+            "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+            0,
+            3852,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 61,
+          "symbol": [
+            "?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z",
+            0,
+            2834,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 66,
+          "symbol": [
+            "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+            0,
+            3852,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 89,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 146,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 157,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 191,
+          "symbol": [
+            "??$shared_dynamic_cast@VInstance@RBX@@VObject@2@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABV?$shared_ptr@VObject@RBX@@@0@@Z",
+            0,
+            2321,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [],
+        []
+      ]
+    },
+    "asm": [
+      "0000 push -1",
+      "0002 push 0",
+      "0007 mov eax, dword ptr fs:[0]",
+      "000d push eax",
+      "000e mov dword ptr fs:[0], esp",
+      "0015 sub esp, 0xc",
+      "0018 push ebp",
+      "0019 push esi",
+      "001a push edi",
+      "001b lea ecx, [esp + 0x2c]",
+      "001f mov dword ptr [esp + 0xc], 0",
+      "0027 mov eax, dword ptr [esp + 0x2c]",
+      "002b push ecx",
+      "002c lea edx, [esp + 0x14]",
+      "0030 push edx",
+      "0031 mov dword ptr [esp + 0x34], eax",
+      "0035 call 0x3a",
+      "003a mov ecx, eax",
+      "003c call 0x41",
+      "0041 call 0x46",
+      "0046 mov esi, dword ptr [esp + 0x10]",
+      "004a mov ebp, dword ptr [eax + 0x18]",
+      "004d mov eax, dword ptr [eax]",
+      "004f test esi, esi",
+      "0051 je 0x57",
+      "0053 cmp esi, eax",
+      "0055 je 0x5d",
+      "0057 call dword ptr [0]",
+      "005d mov edi, dword ptr [esp + 0x14]",
+      "0061 cmp edi, ebp",
+      "0063 jne 0x88",
+      "0065 mov eax, dword ptr [esp + 0x28]",
+      "0069 mov dword ptr [eax], 0",
+      "006f mov dword ptr [eax + 4], 0",
+      "0076 pop edi",
+      "0077 pop esi",
+      "0078 pop ebp",
+      "0079 mov ecx, dword ptr [esp + 0xc]",
+      "007d mov dword ptr fs:[0], ecx",
+      "0084 add esp, 0x18",
+      "0087 ret ",
+      "0088 test esi, esi",
+      "008a jne 0x117",
+      "0090 call dword ptr [0]",
+      "0096 cmp edi, dword ptr [esi + 0x18]",
+      "0099 jne 0xa1",
+      "009b call dword ptr [0]",
+      "00a1 mov ecx, dword ptr [edi + 0x10]",
+      "00a4 mov eax, dword ptr [ecx]",
+      "00a6 mov eax, dword ptr [eax]",
+      "00a8 lea edx, [esp + 0x10]",
+      "00ac push edx",
+      "00ad call eax",
+      "00af mov edi, dword ptr [esp + 0x28]",
+      "00b3 push eax",
+      "00b4 mov esi, 1",
+      "00b9 push edi",
+      "00ba mov dword ptr [esp + 0x28], esi",
+      "00be call 0xc3",
+      "00c3 mov eax, dword ptr [esp + 0x1c]",
+      "00c7 add esp, 8",
+      "00ca mov dword ptr [esp + 0xc], esi",
+      "00ce mov byte ptr [esp + 0x20], 0",
+      "00d3 test eax, eax",
+      "00d5 je 0x103",
+      "00d7 mov esi, eax",
+      "00d9 add eax, 4",
+      "00dc or ecx, 0xffffffff",
+      "00df lock xadd dword ptr [eax], ecx",
+      "00e3 jne 0x103",
+      "00e5 mov edx, dword ptr [esi]",
+      "00e7 mov eax, dword ptr [edx + 4]",
+      "00ea mov ecx, esi",
+      "00ec call eax",
+      "00ee lea ecx, [esi + 8]",
+      "00f1 or edx, 0xffffffff",
+      "00f4 lock xadd dword ptr [ecx], edx",
+      "00f8 jne 0x103",
+      "00fa mov eax, dword ptr [esi]",
+      "00fc mov edx, dword ptr [eax + 8]",
+      "00ff mov ecx, esi",
+      "0101 call edx",
+      "0103 mov ecx, dword ptr [esp + 0x18]",
+      "0107 mov eax, edi",
+      "0109 pop edi",
+      "010a pop esi",
+      "010b pop ebp",
+      "010c mov dword ptr fs:[0], ecx",
+      "0113 add esp, 0x18",
+      "0116 ret ",
+      "0117 mov esi, dword ptr [esi]",
+      "0119 jmp 0x96"
+    ]
+  },
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+      "member": "Instance.obj",
+      "object_sha256": "947583b50f1108dae75be8368843c52c5cd6be382a1ce88a99ae13b6b5f49460",
+      "symbol": "?read@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+      "address": "0055b6f0",
+      "target_size": 113,
+      "size": 113,
+      "normalized_exact": true,
+      "firstdiff": null,
+      "relocations": [
+        {
+          "offset": 1,
+          "symbol": [
+            "?name_referent@@3ABVName@RBX@@B",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 18,
+          "symbol": [
+            "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z",
+            0,
+            0,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 48,
+          "symbol": [
+            "?tag_Item@@3ABVName@RBX@@B",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 56,
+          "symbol": [
+            "?tag_Properties@@3ABVName@RBX@@B",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 64,
+          "symbol": [
+            "?findFirstChildByTag@XmlElement@@QBEPBV1@ABVName@RBX@@@Z",
+            0,
+            0,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 77,
+          "symbol": [
+            "?readProperties@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+            0,
+            1645,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 86,
+          "symbol": [
+            "?readChildren@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+            0,
+            4424,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [],
+        []
+      ]
+    },
+    "asm": [
+      "0000 mov eax, dword ptr [0]",
+      "0005 push ebx",
+      "0006 mov ebx, dword ptr [esp + 8]",
+      "000a push esi",
+      "000b push edi",
+      "000c mov esi, ecx",
+      "000e push eax",
+      "000f mov ecx, ebx",
+      "0011 call 0x16",
+      "0016 mov edi, dword ptr [esp + 0x14]",
+      "001a test eax, eax",
+      "001c je 0x2b",
+      "001e mov edx, dword ptr [edi]",
+      "0020 add eax, 8",
+      "0023 push esi",
+      "0024 push eax",
+      "0025 mov eax, dword ptr [edx]",
+      "0027 mov ecx, edi",
+      "0029 call eax",
+      "002b mov ecx, dword ptr [ebx + 0x10]",
+      "002e cmp ecx, dword ptr [0]",
+      "0034 jne 0x60",
+      "0036 mov edx, dword ptr [0]",
+      "003c push edx",
+      "003d mov ecx, ebx",
+      "003f call 0x44",
+      "0044 test eax, eax",
+      "0046 je 0x51",
+      "0048 push edi",
+      "0049 push eax",
+      "004a mov ecx, esi",
+      "004c call 0x51",
+      "0051 push edi",
+      "0052 push ebx",
+      "0053 mov ecx, esi",
+      "0055 call 0x5a",
+      "005a pop edi",
+      "005b pop esi",
+      "005c pop ebx",
+      "005d ret 8",
+      "0060 mov eax, dword ptr [esi]",
+      "0062 mov edx, dword ptr [eax + 0x2c]",
+      "0065 push edi",
+      "0066 push ebx",
+      "0067 mov ecx, esi",
+      "0069 call edx",
+      "006b pop edi",
+      "006c pop esi",
+      "006d pop ebx",
+      "006e ret 8"
+    ]
+  },
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+      "member": "SerializerV2.obj",
+      "object_sha256": "c6f555a65d89f48ff15b4d01fdb45b81698c63eb24031c547aa0dd8d231f35f0",
+      "symbol": "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+      "address": "00592720",
+      "target_size": 96,
+      "size": 96,
+      "normalized_exact": false,
+      "firstdiff": 79,
+      "relocations": [
+        {
+          "offset": 17,
+          "symbol": [
+            "?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z",
+            0,
+            1409,
+            32
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 54,
+          "symbol": [
+            "??$_Count_if@V?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+            0,
+            1334,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 66,
+          "symbol": [
+            "?resolveRefs@MergeBinder@RBX@@UAE_NXZ",
+            0,
+            1492,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [],
+        []
+      ]
+    },
+    "asm": [
+      "0000 push ebx",
+      "0001 push ebp",
+      "0002 push esi",
+      "0003 mov esi, ecx",
+      "0005 mov ebx, dword ptr [esi + 0x50]",
+      "0008 mov eax, dword ptr [esi + 0x3c]",
+      "000b mov ecx, ebx",
+      "000d mov ebp, dword ptr [ecx]",
+      "000f push edi",
+      "0010 mov edi, 0",
+      "0015 mov ecx, eax",
+      "0017 test eax, eax",
+      "0019 je 0x1f",
+      "001b mov eax, dword ptr [eax]",
+      "001d jmp 0x21",
+      "001f xor eax, eax",
+      "0021 mov edx, dword ptr [eax]",
+      "0023 test ecx, ecx",
+      "0025 je 0x2b",
+      "0027 mov eax, dword ptr [ecx]",
+      "0029 jmp 0x2d",
+      "002b xor eax, eax",
+      "002d mov eax, dword ptr [eax]",
+      "002f push esi",
+      "0030 push edi",
+      "0031 push ebx",
+      "0032 push edx",
+      "0033 push ebp",
+      "0034 push eax",
+      "0035 call 0x3a",
+      "003a add esp, 0x18",
+      "003d mov ecx, esi",
+      "003f mov edi, eax",
+      "0041 call 0x46",
+      "0046 test al, al",
+      "0048 je 0x59",
+      "004a cmp edi, dword ptr [esi + 0x54]",
+      "004d jne 0x59",
+      "004f mov eax, 1",
+      "0054 pop edi",
+      "0055 pop esi",
+      "0056 pop ebp",
+      "0057 pop ebx",
+      "0058 ret ",
+      "0059 pop edi",
+      "005a pop esi",
+      "005b pop ebp",
+      "005c xor eax, eax",
+      "005e pop ebx",
+      "005f ret "
+    ]
+  },
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+      "member": "SerializerV2.obj",
+      "object_sha256": "c6f555a65d89f48ff15b4d01fdb45b81698c63eb24031c547aa0dd8d231f35f0",
+      "symbol": "??0ArchiveBinder@@QAE@XZ",
+      "address": "00592940",
+      "target_size": 99,
+      "size": 99,
+      "normalized_exact": true,
+      "firstdiff": null,
+      "relocations": [
+        {
+          "offset": 3,
+          "symbol": [
+            "__ehhandler$??0ArchiveBinder@@QAE@XZ",
+            19,
+            1551,
+            32
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 32,
+          "symbol": [
+            "??0MergeBinder@RBX@@QAE@XZ",
+            0,
+            1504,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 59,
+          "symbol": [
+            "??_7ArchiveBinder@@6B@",
+            4,
+            1552,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 64,
+          "symbol": [
+            "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@1@@Z",
+            0,
+            1418,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 77,
+          "symbol": [
+            "??0?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@XZ",
+            0,
+            1354,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [
+          [
+            8593100,
+            20
+          ]
+        ],
+        []
+      ]
+    },
+    "asm": [
+      "0000 push -1",
+      "0002 push 0",
+      "0007 mov eax, dword ptr fs:[0]",
+      "000d push eax",
+      "000e mov dword ptr fs:[0], esp",
+      "0015 sub esp, 8",
+      "0018 push esi",
+      "0019 mov esi, ecx",
+      "001b mov dword ptr [esp + 8], esi",
+      "001f call 0x24",
+      "0024 lea eax, [esp + 7]",
+      "0028 push eax",
+      "0029 lea edx, [esp + 0xb]",
+      "002d lea ecx, [esi + 0x1c]",
+      "0030 push edx",
+      "0031 mov dword ptr [esp + 0x1c], 0",
+      "0039 mov dword ptr [esi], 0",
+      "003f call 0x44",
+      "0044 lea ecx, [esi + 0x3c]",
+      "0047 mov byte ptr [esp + 0x14], 1",
+      "004c call 0x51",
+      "0051 mov ecx, dword ptr [esp + 0xc]",
+      "0055 mov eax, esi",
+      "0057 pop esi",
+      "0058 mov dword ptr fs:[0], ecx",
+      "005f add esp, 0x14",
+      "0062 ret "
+    ]
+  },
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+      "member": "SerializerV2.obj",
+      "object_sha256": "c6f555a65d89f48ff15b4d01fdb45b81698c63eb24031c547aa0dd8d231f35f0",
+      "symbol": "??1ArchiveBinder@@QAE@XZ",
+      "address": "005931e0",
+      "target_size": 100,
+      "size": 100,
+      "normalized_exact": true,
+      "firstdiff": null,
+      "relocations": [
+        {
+          "offset": 3,
+          "symbol": [
+            "__ehhandler$??1ArchiveBinder@@QAE@XZ",
+            8,
+            1561,
+            32
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 44,
+          "symbol": [
+            "?_Tidy@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@IAEXXZ",
+            0,
+            1225,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 52,
+          "symbol": [
+            "??3@YAXPAX@Z",
+            0,
+            0,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 63,
+          "symbol": [
+            "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ",
+            0,
+            1520,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 79,
+          "symbol": [
+            "??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ",
+            0,
+            1471,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [],
+        []
+      ]
+    },
+    "asm": [
+      "0000 push -1",
+      "0002 push 0",
+      "0007 mov eax, dword ptr fs:[0]",
+      "000d push eax",
+      "000e mov dword ptr fs:[0], esp",
+      "0015 push ecx",
+      "0016 push esi",
+      "0017 mov esi, ecx",
+      "0019 push edi",
+      "001a mov dword ptr [esp + 8], esi",
+      "001e lea edi, [esi + 0x3c]",
+      "0021 mov ecx, edi",
+      "0023 mov dword ptr [esp + 0x14], 0",
+      "002b call 0x30",
+      "0030 mov edi, dword ptr [edi]",
+      "0032 push edi",
+      "0033 call 0x38",
+      "0038 add esp, 4",
+      "003b lea ecx, [esi + 0x1c]",
+      "003e call 0x43",
+      "0043 lea ecx, [esi + 4]",
+      "0046 mov dword ptr [esp + 0x14], 0xffffffff",
+      "004e call 0x53",
+      "0053 mov ecx, dword ptr [esp + 0xc]",
+      "0057 pop edi",
+      "0058 pop esi",
+      "0059 mov dword ptr fs:[0], ecx",
+      "0060 add esp, 0x10",
+      "0063 ret "
+    ]
+  },
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+      "member": "glue_serializer.obj",
+      "object_sha256": "242d36b8806d7843d65eb3c37dbea60e40e288cca3549a3255fe6d4920d4418b",
+      "symbol": "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+      "address": "00420190",
+      "target_size": 286,
+      "size": 286,
+      "normalized_exact": true,
+      "firstdiff": null,
+      "relocations": [
+        {
+          "offset": 3,
+          "symbol": [
+            "__ehhandler$?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+            33,
+            1253,
+            32
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 54,
+          "symbol": [
+            "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+            0,
+            1240,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 61,
+          "symbol": [
+            "?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z",
+            0,
+            1010,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 66,
+          "symbol": [
+            "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+            0,
+            1240,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 89,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 146,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 157,
+          "symbol": [
+            "__imp___invalid_parameter_noinfo",
+            0,
+            0,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 191,
+          "symbol": [
+            "??$shared_dynamic_cast@VInstance@RBX@@VObject@2@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABV?$shared_ptr@VObject@RBX@@@0@@Z",
+            0,
+            894,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [],
+        []
+      ]
+    },
+    "asm": [
+      "0000 push -1",
+      "0002 push 0",
+      "0007 mov eax, dword ptr fs:[0]",
+      "000d push eax",
+      "000e mov dword ptr fs:[0], esp",
+      "0015 sub esp, 0xc",
+      "0018 push ebp",
+      "0019 push esi",
+      "001a push edi",
+      "001b lea ecx, [esp + 0x2c]",
+      "001f mov dword ptr [esp + 0xc], 0",
+      "0027 mov eax, dword ptr [esp + 0x2c]",
+      "002b push ecx",
+      "002c lea edx, [esp + 0x14]",
+      "0030 push edx",
+      "0031 mov dword ptr [esp + 0x34], eax",
+      "0035 call 0x3a",
+      "003a mov ecx, eax",
+      "003c call 0x41",
+      "0041 call 0x46",
+      "0046 mov esi, dword ptr [esp + 0x10]",
+      "004a mov ebp, dword ptr [eax + 0x18]",
+      "004d mov eax, dword ptr [eax]",
+      "004f test esi, esi",
+      "0051 je 0x57",
+      "0053 cmp esi, eax",
+      "0055 je 0x5d",
+      "0057 call dword ptr [0]",
+      "005d mov edi, dword ptr [esp + 0x14]",
+      "0061 cmp edi, ebp",
+      "0063 jne 0x88",
+      "0065 mov eax, dword ptr [esp + 0x28]",
+      "0069 mov dword ptr [eax], 0",
+      "006f mov dword ptr [eax + 4], 0",
+      "0076 pop edi",
+      "0077 pop esi",
+      "0078 pop ebp",
+      "0079 mov ecx, dword ptr [esp + 0xc]",
+      "007d mov dword ptr fs:[0], ecx",
+      "0084 add esp, 0x18",
+      "0087 ret ",
+      "0088 test esi, esi",
+      "008a jne 0x117",
+      "0090 call dword ptr [0]",
+      "0096 cmp edi, dword ptr [esi + 0x18]",
+      "0099 jne 0xa1",
+      "009b call dword ptr [0]",
+      "00a1 mov ecx, dword ptr [edi + 0x10]",
+      "00a4 mov eax, dword ptr [ecx]",
+      "00a6 mov eax, dword ptr [eax]",
+      "00a8 lea edx, [esp + 0x10]",
+      "00ac push edx",
+      "00ad call eax",
+      "00af mov edi, dword ptr [esp + 0x28]",
+      "00b3 push eax",
+      "00b4 mov esi, 1",
+      "00b9 push edi",
+      "00ba mov dword ptr [esp + 0x28], esi",
+      "00be call 0xc3",
+      "00c3 mov eax, dword ptr [esp + 0x1c]",
+      "00c7 add esp, 8",
+      "00ca mov dword ptr [esp + 0xc], esi",
+      "00ce mov byte ptr [esp + 0x20], 0",
+      "00d3 test eax, eax",
+      "00d5 je 0x103",
+      "00d7 mov esi, eax",
+      "00d9 add eax, 4",
+      "00dc or ecx, 0xffffffff",
+      "00df lock xadd dword ptr [eax], ecx",
+      "00e3 jne 0x103",
+      "00e5 mov edx, dword ptr [esi]",
+      "00e7 mov eax, dword ptr [edx + 4]",
+      "00ea mov ecx, esi",
+      "00ec call eax",
+      "00ee lea ecx, [esi + 8]",
+      "00f1 or edx, 0xffffffff",
+      "00f4 lock xadd dword ptr [ecx], edx",
+      "00f8 jne 0x103",
+      "00fa mov eax, dword ptr [esi]",
+      "00fc mov edx, dword ptr [eax + 8]",
+      "00ff mov ecx, esi",
+      "0101 call edx",
+      "0103 mov ecx, dword ptr [esp + 0x18]",
+      "0107 mov eax, edi",
+      "0109 pop edi",
+      "010a pop esi",
+      "010b pop ebp",
+      "010c mov dword ptr fs:[0], ecx",
+      "0113 add esp, 0x18",
+      "0116 ret ",
+      "0117 mov esi, dword ptr [esi]",
+      "0119 jmp 0x96"
+    ]
+  },
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+      "member": "glue_serializer.obj",
+      "object_sha256": "242d36b8806d7843d65eb3c37dbea60e40e288cca3549a3255fe6d4920d4418b",
+      "symbol": "??0ArchiveBinder@@QAE@XZ",
+      "address": "00592940",
+      "target_size": 99,
+      "size": 99,
+      "normalized_exact": true,
+      "firstdiff": null,
+      "relocations": [
+        {
+          "offset": 3,
+          "symbol": [
+            "__ehhandler$??0ArchiveBinder@@QAE@XZ",
+            19,
+            1273,
+            32
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 32,
+          "symbol": [
+            "??0MergeBinder@RBX@@QAE@XZ",
+            0,
+            1073,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 59,
+          "symbol": [
+            "??_7ArchiveBinder@@6B@",
+            4,
+            1274,
+            0
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 64,
+          "symbol": [
+            "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@1@@Z",
+            0,
+            1030,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 77,
+          "symbol": [
+            "??0?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@XZ",
+            0,
+            1002,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [
+          [
+            8593100,
+            20
+          ]
+        ],
+        []
+      ]
+    },
+    "asm": [
+      "0000 push -1",
+      "0002 push 0",
+      "0007 mov eax, dword ptr fs:[0]",
+      "000d push eax",
+      "000e mov dword ptr fs:[0], esp",
+      "0015 sub esp, 8",
+      "0018 push esi",
+      "0019 mov esi, ecx",
+      "001b mov dword ptr [esp + 8], esi",
+      "001f call 0x24",
+      "0024 lea eax, [esp + 7]",
+      "0028 push eax",
+      "0029 lea edx, [esp + 0xb]",
+      "002d lea ecx, [esi + 0x1c]",
+      "0030 push edx",
+      "0031 mov dword ptr [esp + 0x1c], 0",
+      "0039 mov dword ptr [esi], 0",
+      "003f call 0x44",
+      "0044 lea ecx, [esi + 0x3c]",
+      "0047 mov byte ptr [esp + 0x14], 1",
+      "004c call 0x51",
+      "0051 mov ecx, dword ptr [esp + 0xc]",
+      "0055 mov eax, esi",
+      "0057 pop esi",
+      "0058 mov dword ptr fs:[0], ecx",
+      "005f add esp, 0x14",
+      "0062 ret "
+    ]
+  },
+  {
+    "provider": {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+      "member": "glue_serializer.obj",
+      "object_sha256": "242d36b8806d7843d65eb3c37dbea60e40e288cca3549a3255fe6d4920d4418b",
+      "symbol": "??1ArchiveBinder@@QAE@XZ",
+      "address": "005931e0",
+      "target_size": 100,
+      "size": 100,
+      "normalized_exact": true,
+      "firstdiff": null,
+      "relocations": [
+        {
+          "offset": 3,
+          "symbol": [
+            "__ehhandler$??1ArchiveBinder@@QAE@XZ",
+            8,
+            1283,
+            32
+          ],
+          "type": 6,
+          "addend": 0
+        },
+        {
+          "offset": 44,
+          "symbol": [
+            "?_Tidy@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@IAEXXZ",
+            0,
+            916,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 52,
+          "symbol": [
+            "??3@YAXPAX@Z",
+            0,
+            0,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 63,
+          "symbol": [
+            "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ",
+            0,
+            1260,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        },
+        {
+          "offset": 79,
+          "symbol": [
+            "??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ",
+            0,
+            1064,
+            32
+          ],
+          "type": 20,
+          "addend": 0
+        }
+      ],
+      "data_check": [
+        [],
+        []
+      ]
+    },
+    "asm": [
+      "0000 push -1",
+      "0002 push 0",
+      "0007 mov eax, dword ptr fs:[0]",
+      "000d push eax",
+      "000e mov dword ptr fs:[0], esp",
+      "0015 push ecx",
+      "0016 push esi",
+      "0017 mov esi, ecx",
+      "0019 push edi",
+      "001a mov dword ptr [esp + 8], esi",
+      "001e lea edi, [esi + 0x3c]",
+      "0021 mov ecx, edi",
+      "0023 mov dword ptr [esp + 0x14], 0",
+      "002b call 0x30",
+      "0030 mov edi, dword ptr [edi]",
+      "0032 push edi",
+      "0033 call 0x38",
+      "0038 add esp, 4",
+      "003b lea ecx, [esi + 0x1c]",
+      "003e call 0x43",
+      "0043 lea ecx, [esi + 4]",
+      "0046 mov dword ptr [esp + 0x14], 0xffffffff",
+      "004e call 0x53",
+      "0053 mov ecx, dword ptr [esp + 0xc]",
+      "0057 pop edi",
+      "0058 pop esi",
+      "0059 mov dword ptr fs:[0], ecx",
+      "0060 add esp, 0x10",
+      "0063 ret "
+    ]
+  }
+]
