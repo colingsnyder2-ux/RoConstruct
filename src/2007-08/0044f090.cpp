@@ -1,16 +1,25 @@
-// from server: 24% by colin
+// from server: 45% by Intel
 struct CameraTiltUpCommand {
-    void doIt(int* dataState);
+    int* field_0;
+    int field_4;
+
+    int f();
 };
 
-extern "C" int __stdcall pubsink(void*);
+extern "C" int __stdcall pubsync(void*);
 
-void CameraTiltUpCommand::doIt(int* dataState)
-{
-    int* p = (int*)*dataState;
-    if ((*(unsigned char*)((char*)this + 4) & 2) != 0)
-    {
-        p = (int*)((char*)p + 4);
-        pubsink(p);
+int CameraTiltUpCommand::f() {
+    __try {
+        int* v0 = field_0;
+        int v1 = field_4;
+        int v2 = *v0;
+        int* v3 = (int*)v2;
+        int v4 = *v3;
+        if (v1 & 2) {
+            pubsync((void*)(v4 + 4));
+        }
     }
+    __except (0) {
+    }
+    return 0;
 }
