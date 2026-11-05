@@ -156,6 +156,32 @@ outcomes, not each compile. Keep automatic draft uploads active throughout.
 5. Record source/header/compiler hashes, flags, symbols, addresses, results, unresolved dependencies, failed variants and next hypothesis in task-owned receipts. About three failed hypotheses without progress: record blocker, checkpoint, choose independent work.
 6. Checkpoint/upload and continue. Failed or blocked drafts remain valuable. Keep uploader healthy; no fork, native-try submit, integrate submit, acceptance wait or credit requirement in this contributor workflow.
 
+## Persistent loop: repeat until explicitly stopped
+
+Repeat the recovery loop indefinitely within the user's authorized scope:
+read current state and leases -> choose the next required swap blocker -> form
+an evidence-backed hypothesis batch -> lease/edit -> compile once -> inspect
+bytes/data/call identities on the same object -> save evidence and upload drafts
+-> advance the next integration obligation -> update the blocker queue -> repeat
+from current state immediately. Do not end the task after one batch, one exact
+match, one upload, one report, one commit, or one completed swap. After a completed
+swap, choose the next authorized swap/dependency target and continue. Progress
+updates are checkpoints, not requests for permission to keep working.
+
+The three-rejected-hypothesis rule parks that blocker, not the overall loop.
+Continue another useful, independently owned blocker; revisit a parked item only
+when evidence or relevant inputs change. Renew leases and keep the automatic
+uploader healthy. Preserve all verification, ownership and runtime-activation
+boundaries; repetition never authorizes weakening gates or expanding scope.
+
+Stop only when the user stops/pauses work, the platform forces a limit, or every
+remaining authorized useful action is blocked on unavailable input/ownership.
+For a global block, save the exact queue, hashes, receipts and next resume action,
+flush drafts, release leases and report the concrete blocker. Do not spin,
+recompile unchanged work, poll repeatedly, fabricate progress or reserve files
+while waiting. On resume, read the saved queue and continue the same loop rather
+than restarting discovery or repeating completed experiments.
+
 ## Optional coordination notes: use sparingly
 
 Leases are primary. Use `roc lease ls/take/renew/release` for ownership. Do not post a chat note for every function, probe, checkpoint or lease renewal. Normally a lease is sufficient and no note is needed.

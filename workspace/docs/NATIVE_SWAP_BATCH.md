@@ -95,7 +95,28 @@ server-verified credit. Unknown counts are null, not invented zeroes or credit.
 Report deltas against the recorded baseline only with fresh receipts. A selection
 count is not a class swap; a successful link is not runtime proof.
 
-Continue sustained work through the next useful outcome. User updates summarize a
-new proved match, reduced integration blockers, completed gated swap or concrete
-blocker; no per-compile final responses. Preserve periodic concise progress and
-automatic draft checkpoints, then one outcome summary when the task ends.
+## Persistent loop: repeat until explicitly stopped
+
+Repeat the recovery loop indefinitely within the user's authorized scope:
+read current state and leases -> choose the next required swap blocker -> form
+an evidence-backed hypothesis batch -> lease/edit -> compile once -> inspect
+bytes/data/call identities on the same object -> save evidence and upload drafts
+-> advance the next integration obligation -> update the blocker queue -> repeat
+from current state immediately. Do not end the task after one batch, one exact
+match, one upload, one report, one commit, or one completed swap. After a completed
+swap, choose the next authorized swap/dependency target and continue. Progress
+updates are checkpoints, not requests for permission to keep working.
+
+The three-rejected-hypothesis rule parks that blocker, not the overall loop.
+Continue another useful, independently owned blocker; revisit a parked item only
+when evidence or relevant inputs change. Renew leases and keep the automatic
+uploader healthy. Preserve all verification, ownership and runtime-activation
+boundaries; repetition never authorizes weakening gates or expanding scope.
+
+Stop only when the user stops/pauses work, the platform forces a limit, or every
+remaining authorized useful action is blocked on unavailable input/ownership.
+For a global block, save the exact queue, hashes, receipts and next resume action,
+flush drafts, release leases and report the concrete blocker. Do not spin,
+recompile unchanged work, poll repeatedly, fabricate progress or reserve files
+while waiting. On resume, read the saved queue and continue the same loop rather
+than restarting discovery or repeating completed experiments.
