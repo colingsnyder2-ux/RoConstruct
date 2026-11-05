@@ -1,0 +1,19 @@
+{
+  "bundle": "57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8",
+  "state": "parked",
+  "inactive": true,
+  "reason": "Camera canZoom/canTilt draft explicitly reports 95/98 and 124/127 bytes, bool versus full-width returns. Original declaration/caller evidence unresolved; no canonical ABI edits or activation. Latest packet 57dff70f retains source and findings; no unchanged recompilation.",
+  "original_path_mapping": {
+    "rebuild/2008-06/native-classes/CameraPredicates.cpp": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/rebuild/2008-06/native-classes/CameraPredicates.cpp",
+    "rebuild/2008-06/tests/record_colin2_camera_predicates.py": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/rebuild/2008-06/tests/record_colin2_camera_predicates.py",
+    "work/2008-06/shared-layouts/colin2-camera-predicates/caller-asm.txt": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/caller-asm.txt",
+    "work/2008-06/shared-layouts/colin2-camera-predicates/canTilt-asm.txt": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/canTilt-asm.txt",
+    "work/2008-06/shared-layouts/colin2-camera-predicates/canZoom-asm.txt": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/canZoom-asm.txt",
+    "work/2008-06/shared-layouts/colin2-camera-predicates/compile.txt": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/compile.txt",
+    "work/2008-06/shared-layouts/colin2-camera-predicates/findings.txt": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/findings.txt",
+    "work/2008-06/shared-layouts/colin2-camera-predicates/inventory-dependencies.json": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/inventory-dependencies.json",
+    "work/2008-06/shared-layouts/colin2-camera-predicates/receipt.json": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/receipt.json",
+    "work/2008-06/shared-layouts/colin2-camera-predicates/zoom-source-evidence.json": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/zoom-source-evidence.json"
+  },
+  "scope": "Reviewed inactive proposal map only. Source remains immutable in drafts; not selected or proven exact."
+}

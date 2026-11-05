@@ -1,0 +1,1107 @@
+{
+  "schema": 1,
+  "created_utc": "2026-11-05T03:13:07.662812+00:00",
+  "authority": "RoConstruct/work/workspace",
+  "base_commit": "909298443451f521949a2dcfad225c5ad6c9afcf",
+  "automation": {
+    "id": "integrate-roconstruct-native-drafts",
+    "status": "ACTIVE",
+    "cadence": "every two hours",
+    "destination": "current chat"
+  },
+  "reviewed": [
+    {
+      "seq": 2,
+      "bundle": "9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7",
+      "user": "coldek",
+      "model": "unknown (legacy fork archive)",
+      "state": "parked",
+      "detail": "Legacy proposals already archived; relevant fork tips unchanged since migration. Preserve prior blockers; no blanket snapshot import.",
+      "files": {
+        "rebuild/2008-06/native-classes/CBrowserDoc.cpp": {
+          "sha256": "e8b581dbd5a9046486fbe66fcf0015fa6bd232240390c6b5778a1302c6cff1ef",
+          "bytes": 346,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp"
+        },
+        "rebuild/2008-06/native-classes/CBrowserViewExternal.cpp": {
+          "sha256": "5e16cb7f18e6eba8d0419578a3c0e8e96b8b31eaf9d424b0d155573ae1ae5785",
+          "bytes": 2350,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternal.cpp"
+        },
+        "rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp": {
+          "sha256": "f666630c1b79c88391d0b1be9d9ee23c3a56ba5bcdc656cb7783c252067eeb61",
+          "bytes": 712,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp"
+        },
+        "rebuild/2008-06/native-classes/CNullDoc.cpp": {
+          "sha256": "b5978ac56295c646b3a9cbe61c433bb535898aab9a92f2b00e993a95ed4cbba1",
+          "bytes": 876,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CNullDoc.cpp"
+        },
+        "rebuild/2008-06/native-classes/CScriptDoc.cpp": {
+          "sha256": "fd478c4180e62e7a89beb5cf128674d6a1061f69872858ae2dd460819cad0650",
+          "bytes": 237,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CScriptDoc.cpp"
+        },
+        "rebuild/2008-06/native-classes/CWorkspaceClose.cpp": {
+          "sha256": "11afd6eb4ca6e2d2a2285f21c0e4f2837dba8a98f5ccc1b53a1925955baa1e13",
+          "bytes": 165,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceClose.cpp"
+        },
+        "rebuild/2008-06/native-classes/CWorkspaceWrite.cpp": {
+          "sha256": "3248d8830c71f8d107c46a9789cb1fc920a5f75783102197d77df79fb393a468",
+          "bytes": 2678,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CWorkspaceWrite.cpp"
+        },
+        "rebuild/2008-06/native-classes/ClickDetector.cpp": {
+          "sha256": "45362ec87f213e4486be154dd0d77a87f96cba61e6ca182353b389082f73ce38",
+          "bytes": 1436,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ClickDetector.cpp"
+        },
+        "rebuild/2008-06/native-classes/DebrisService.cpp": {
+          "sha256": "7d5f5d4f923c8ef6b8b5cb7abac55b35651cc8c6fa3960de6408c646a1975bf1",
+          "bytes": 2285,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/DebrisService.cpp"
+        },
+        "rebuild/2008-06/native-classes/Explosion.cpp": {
+          "sha256": "34eb43789c4abd8ce91c258016db17f2bd63174fd2bbae261de31e8adae69b4a",
+          "bytes": 683,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Explosion.cpp"
+        },
+        "rebuild/2008-06/native-classes/ForceField.cpp": {
+          "sha256": "161bad24b3ea54561f520c547965c4af41216035cc7b9caa9786ea1a89e8eab8",
+          "bytes": 824,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/ForceField.cpp"
+        },
+        "rebuild/2008-06/native-classes/GameSettings.cpp": {
+          "sha256": "46288d318ef5f669510757c643d4a6529ef86183d2abf96811afe619b532fcb1",
+          "bytes": 1010,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/GameSettings.cpp"
+        },
+        "rebuild/2008-06/native-classes/Hopper.cpp": {
+          "sha256": "0789c89cd44baf6ccdd1b3792fa71fd77937d2cb1d5e531e82e7605e41b9f3af",
+          "bytes": 343,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/Hopper.cpp"
+        },
+        "rebuild/2008-06/native-classes/JointsService.cpp": {
+          "sha256": "198f1a150e41f98be71ca9222d33d23b7c5301949d09086bdaa8a8d34f270344",
+          "bytes": 865,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/JointsService.cpp"
+        },
+        "rebuild/2008-06/native-classes/LegacyHopperService.cpp": {
+          "sha256": "5ec07b28691a25885ade84128ef02e4acaf115a34a235a712ab22a4489ebd5b6",
+          "bytes": 1386,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/LegacyHopperService.cpp"
+        },
+        "rebuild/2008-06/native-classes/SpecialShape.cpp": {
+          "sha256": "b58e820db996148b4123236953e4a411dfdcd4c48f2b613d825e57b3024e5cdf",
+          "bytes": 741,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp"
+        },
+        "rebuild/2008-06/native-classes/StarterPackService.cpp": {
+          "sha256": "c99ef3053ffc105c5288b455e44d54377da50724520c8a795cd539cd16a6b498",
+          "bytes": 934,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/StarterPackService.cpp"
+        },
+        "rebuild/2008-06/native-headers/CBrowserDoc.h": {
+          "sha256": "7ee15330a79d1e9c56fb86253fb419430e420c432f5b468d05633943c0eab044",
+          "bytes": 1365,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/CBrowserDoc.h"
+        },
+        "rebuild/2008-06/native-headers/CBrowserViewExternal.h": {
+          "sha256": "9e333134a30b84036b82516c51bb3dbd8e92588ea9d04135e97af2fda2a1233b",
+          "bytes": 3336,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/CBrowserViewExternal.h"
+        },
+        "rebuild/2008-06/native-headers/script/Script.h": {
+          "sha256": "4f6a7f32f0abf29bc1d047bf46adcbaa211b5ac4e2e87d3659eef45ae101aa5c",
+          "bytes": 1958,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/script/Script.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/Camera.h": {
+          "sha256": "4aa8419c591ea506f51711fe1701c148e047ba09088fae712e363d6cc3d1acea",
+          "bytes": 3474,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Camera.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h": {
+          "sha256": "2c670a6a01ab8495623d11d594765bf6bd6df6edf5f452c594e48a6b30c66e84",
+          "bytes": 708,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ClickDetector.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/DebrisService.h": {
+          "sha256": "23af074963b94e961771e4cba0809955dceaec468e0dc597c1a907a1f775bc14",
+          "bytes": 696,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/DebrisService.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/Explosion.h": {
+          "sha256": "437d62e6b8b193418a3a0210da66966c550f865e4c2af61d727212165e90058e",
+          "bytes": 1340,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Explosion.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/ForceField.h": {
+          "sha256": "27ab52eb7151d63123ad893ad46325ad204f933d99516dcca1ce6e2657dff9ce",
+          "bytes": 585,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ForceField.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h": {
+          "sha256": "8933d9f679afaaef583434c77b735c2529d44494bff77a7784afe949834ab44e",
+          "bytes": 342,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/Hopper.h": {
+          "sha256": "bfbd3208db070042b072671196db913c433cf8b29a41a3a5d23a01b1d68e9942",
+          "bytes": 2866,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Hopper.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/JointsService.h": {
+          "sha256": "b08e985a72fc1bc8fe49e1a8c462d9709f4a72c3f879b828683f21c82ef67908",
+          "bytes": 1038,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/JointsService.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h": {
+          "sha256": "5c2f05fc5dc01898d685e46849efd920c2e4f0827d6439a06081d2b7c587c5eb",
+          "bytes": 2803,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/RootInstance.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h": {
+          "sha256": "80b37bf7aec6fa7ec206741fad3a783dd7a40d223337e606f46c18189f47da9e",
+          "bytes": 400,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/SpecialShape.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/Stats.h": {
+          "sha256": "457df88a0b95c390b7c93d889d60d90e4e2adfb820a04fe8015330a53d1c02bf",
+          "bytes": 2283,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Stats.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": {
+          "sha256": "2b60e9a477d5416449e43356063ff7c44143b8c910c6ae6d02c5c862d5a51e44",
+          "bytes": 5043,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/Workspace.h"
+        },
+        "rebuild/2008-06/tests/NativeBrowserDocLayout.cpp": {
+          "sha256": "136eb1151772dc1921826e83662d01d47e369f184c325e50d52cb660d88849ba",
+          "bytes": 470,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeBrowserDocLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeBrowserViewExternalLayout.cpp": {
+          "sha256": "b1228f98190562d539b9e7e43296e86e47716239eda1f3c3be61e8af43e7232d",
+          "bytes": 445,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeBrowserViewExternalLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeClickDetectorLayout.cpp": {
+          "sha256": "c2b678870b9634f72d51d8b89f535f610768b6ec28b73ac8ddb5869596609ac1",
+          "bytes": 292,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeClickDetectorLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeDebrisServiceLayout.cpp": {
+          "sha256": "65c13957a90f64d3be15ffa2fc272e8d54d7ef6651c82c6e622bb2c0d68388c8",
+          "bytes": 431,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeDebrisServiceLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeExplosionLayout.cpp": {
+          "sha256": "c97a0bd4ffea17d1b578435cb0efc932452bf13734c68c08c646d6a7a4160cfa",
+          "bytes": 426,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeExplosionLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeForceFieldLayout.cpp": {
+          "sha256": "ff76f746df0f0daaea8d1a323549500fd8c45ded5d85cf8090efbbd989c3d30d",
+          "bytes": 267,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeForceFieldLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeGameSettingsLayout.cpp": {
+          "sha256": "ff0bd4c97d202825ba3a358f69eefbdb484b4f386cfb684a31e9d1f3d8709323",
+          "bytes": 694,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeGameSettingsLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeHopperLayout.cpp": {
+          "sha256": "62e85f548d524669d76fcbd968dad2d3e63d36550ad7dbeafe2c00481cb3b5c8",
+          "bytes": 493,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeHopperLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeJointsServiceLayout.cpp": {
+          "sha256": "e734d588d49f55f9a699a997a543faf461f4d90108bdbcf2066fc3de53e5d498",
+          "bytes": 279,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeJointsServiceLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeNullDocLayout.cpp": {
+          "sha256": "160562cdf83a68fe9626c94f42782d8d76766802e9c74c9102755b830c8784c9",
+          "bytes": 660,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeNullDocLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeSpecialShapeLayout.cpp": {
+          "sha256": "7cfcf065b36bf75c938fb21f1ddd9582c47f4cf3dde16da149c8b652fdb33d8c",
+          "bytes": 584,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeSpecialShapeLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeWorkspaceHeaderCompile.cpp": {
+          "sha256": "c4ba77914d3ae81b154532a79c6272664c6598fdc5c36f91e8b5d839db4a2560",
+          "bytes": 170,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeWorkspaceHeaderCompile.cpp"
+        },
+        "rebuild/2008-06/tests/NativeWorkspaceWriteLayout.cpp": {
+          "sha256": "eec67fb0347fb9ac13804a1fbcc6e0c4757a7da7e323a2025ee283944e57ffe1",
+          "bytes": 513,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/NativeWorkspaceWriteLayout.cpp"
+        },
+        "rebuild/2008-06/tests/native_bind.py": {
+          "sha256": "f7f986ad13c8430db7161af8bd7682d53dc1b8214b5699de39bcd011c3a3228b",
+          "bytes": 6655,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/native_bind.py"
+        },
+        "rebuild/2008-06/tests/record_native_browser_doc.py": {
+          "sha256": "8a2e2526aeb688014168b2bd838e574f27395d173f445a6d61c8472f2512f71c",
+          "bytes": 14623,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/record_native_browser_doc.py"
+        },
+        "rebuild/2008-06/tests/record_native_browser_view_external.py": {
+          "sha256": "200466348166fb7fc919ee02e8c48fcaa906621ccfc0c70b0730b5f9d3ce5aa0",
+          "bytes": 90972,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/record_native_browser_view_external.py"
+        },
+        "rebuild/2008-06/tests/record_native_click_detector.py": {
+          "sha256": "ee4b1b7e0fe832935644f1d37a60f63fbfaf0cb280b7962a07ba1122c192cfcd",
+          "bytes": 8537,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/record_native_click_detector.py"
+        },
+        "rebuild/2008-06/tests/record_native_debris_service.py": {
+          "sha256": "d775ff2ca4b20fc06f76728e44263c10b890c6f0db17059047a48a8d57d7c630",
+          "bytes": 6748,
+          "archive": "drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/tests/record_native_debris_service.py"
+        }
+      }
+    },
+    {
+      "seq": 3,
+      "bundle": "d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba",
+      "user": "coldek",
+      "model": "unknown (legacy fork archive)",
+      "state": "parked",
+      "detail": "Legacy proposals already archived; relevant fork tips unchanged since migration. Preserve prior blockers; no blanket snapshot import.",
+      "files": {
+        "rebuild/2008-06/tests/record_native_explosion.py": {
+          "sha256": "e9daf1f7f6f47f8743bd7a0158450a1059338c8955321191fa22d72fa5f5e69f",
+          "bytes": 3328,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_explosion.py"
+        },
+        "rebuild/2008-06/tests/record_native_flag_stand_service.py": {
+          "sha256": "75ffbd6deba004f49ad8ca82ea6aaa8c72c72a7dc9f683d0864a325baa62cd37",
+          "bytes": 3602,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_flag_stand_service.py"
+        },
+        "rebuild/2008-06/tests/record_native_force_field.py": {
+          "sha256": "fda90aeb7087bd5da4b9fbedfcd002127c49442cf8a8a35f09a44880745a6613",
+          "bytes": 2673,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_force_field.py"
+        },
+        "rebuild/2008-06/tests/record_native_game_settings.py": {
+          "sha256": "3254d0d291edb32e085ac5fc338a6921292c87057c7d7d7eba3fe192906c055a",
+          "bytes": 2927,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_game_settings.py"
+        },
+        "rebuild/2008-06/tests/record_native_hopper.py": {
+          "sha256": "067dbb34abe749e49232185da1f4cc41c1c6867858f4fbbe7e44c555cf5f61f8",
+          "bytes": 10827,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_hopper.py"
+        },
+        "rebuild/2008-06/tests/record_native_joints_service.py": {
+          "sha256": "fde36026ed3d32bad903486cf2fa61d9ce5da07a6302c03629d2a42c8a13d75a",
+          "bytes": 3853,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_joints_service.py"
+        },
+        "rebuild/2008-06/tests/record_native_null_doc.py": {
+          "sha256": "7c070ae468602a54c1be58f72cd3c9b0b47123a2cdd9960a92bed9c155cf4ce9",
+          "bytes": 15319,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_null_doc.py"
+        },
+        "rebuild/2008-06/tests/record_native_special_shape.py": {
+          "sha256": "2d9bd9a836f71fe82e17ca0cb521cc0a3d5c66301c2702631e45e0dc48d2d3be",
+          "bytes": 6498,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_special_shape.py"
+        },
+        "rebuild/2008-06/tests/record_native_workspace_write_native.py": {
+          "sha256": "4696538c8fe40cf978fccbc4143ee42fa6198d72a84e5d00a5a26eb04cea5e40",
+          "bytes": 11639,
+          "archive": "drafts/files/d4d739d442791cde6f222ec93f2320330eabb582f453391649827451a103d5ba/rebuild/2008-06/tests/record_native_workspace_write_native.py"
+        }
+      }
+    },
+    {
+      "seq": 4,
+      "bundle": "fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e",
+      "user": "mewpokemons",
+      "model": "unknown (legacy fork archive)",
+      "state": "parked",
+      "detail": "Legacy proposals already archived; relevant fork tips unchanged since migration. Preserve prior blockers; no blanket snapshot import.",
+      "files": {
+        "rebuild/2008-06/native-classes/AdornG3D.cpp": {
+          "sha256": "af16ed8f30a04e92d306e024ad674b33045f8f4538419c07bc921f11349fde9b",
+          "bytes": 5584,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornG3D.cpp"
+        },
+        "rebuild/2008-06/native-classes/AdornRbxGfx.cpp": {
+          "sha256": "3fce0c9e54f08f4d1b232872a97b25170b90d06f491de37d4ea17387a1d88830",
+          "bytes": 4441,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AdornRbxGfx.cpp"
+        },
+        "rebuild/2008-06/native-classes/AggregateChunk2008.cpp": {
+          "sha256": "e0e09d1dc3e9142ad1a49e655c0480282a505f87c29d8522c4c1d8478aa5cf24",
+          "bytes": 1937,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/AggregateChunk2008.cpp"
+        },
+        "rebuild/2008-06/native-classes/Humanoid2008.cpp": {
+          "sha256": "1cd1fb52cd90f8455c6649c110f9750288f23da38e546d02b63f7387ae2735fd",
+          "bytes": 9547,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008.cpp"
+        },
+        "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp": {
+          "sha256": "d2404500e81cb542f90fc9e0fcd675b1c1d065084ce6a56323520e257a2f3d99",
+          "bytes": 7032,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Humanoid2008Parts.cpp"
+        },
+        "rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp": {
+          "sha256": "1320b9af74c8e70173ca57b2b34ebcc121afc62db97dfa4d0bb22351de29a158",
+          "bytes": 2105,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008IndexBox.cpp"
+        },
+        "rebuild/2008-06/native-classes/Leaves2008Log.cpp": {
+          "sha256": "18e410977778f6bde54a733bb4fe37e1aa10ebc2fe172691b9884629d6afb56c",
+          "bytes": 2634,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008Log.cpp"
+        },
+        "rebuild/2008-06/native-classes/Leaves2008Point.cpp": {
+          "sha256": "2ace8eae7a36b2a33d3ada741710a6fa7a770feb0e08ee60714da306a027fb52",
+          "bytes": 676,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008Point.cpp"
+        },
+        "rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp": {
+          "sha256": "2dab0315e82f5adc991c0a93695a8245182ff4fc7ba609d57b5fd3972b291766",
+          "bytes": 813,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008RevoluteLink.cpp"
+        },
+        "rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp": {
+          "sha256": "afee06489b060c43b5b81fb33e438069ff7bf1d840dd7f1b2b35253b7e1101f3",
+          "bytes": 2445,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp"
+        },
+        "rebuild/2008-06/native-classes/MergeBinder.cpp": {
+          "sha256": "b95d2151c3869fd5a2c66be71b163b296d5dd105c3cb2649bdd21ad9d96cc6c4",
+          "bytes": 503,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp"
+        },
+        "rebuild/2008-06/native-classes/NetworkPlayers.cpp": {
+          "sha256": "bde7d60859a272cefcef8dfe7a069833a104825f2cd37aea62b6bf3bec9e1566",
+          "bytes": 12405,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/NetworkPlayers.cpp"
+        },
+        "rebuild/2008-06/native-classes/RenderSceneBase2008.cpp": {
+          "sha256": "36be28f4ccf39de66dcd3f8983000a83427464b88a7b7233f6f100a12ec55f5d",
+          "bytes": 830,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp"
+        },
+        "rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp": {
+          "sha256": "f2f0cbc1603b27ed237c7abdc061bc4c09e258aba436e3a6b7498bae0ac0d23f",
+          "bytes": 884,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp"
+        },
+        "rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp": {
+          "sha256": "2fd26f9eb3a48f950bfae8346cc3866dca4b25eb040d7b98c21ecc34c594c9c9",
+          "bytes": 1343,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp"
+        },
+        "rebuild/2008-06/native-classes/SceneManager2008.cpp": {
+          "sha256": "76ae91858e1f0aae1f4f4d8a7701676914c321c7d4a8314734c56685e8a84162",
+          "bytes": 2309,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManager2008.cpp"
+        },
+        "rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp": {
+          "sha256": "8a93dd8d542b62eada92aa3b23551eb0d64556e843b4c961badadd071dad5d42",
+          "bytes": 1259,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp"
+        },
+        "rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp": {
+          "sha256": "a0fff92f99887fb5fa867df7658b11542e79a3b270ae9df5c87ce335bd22b163",
+          "bytes": 3158,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp"
+        },
+        "rebuild/2008-06/native-classes/ViewNewPart.cpp": {
+          "sha256": "58dac8572b22e94a861c26743f8210cb0e0d467509bbdf75a31f5fd462f7adbb",
+          "bytes": 2904,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPart.cpp"
+        },
+        "rebuild/2008-06/native-classes/ViewNewPartChunk.cpp": {
+          "sha256": "3183b1720180e215e0bda4cac830f61da4ec51b44f96812c0e4e22dde5c7032f",
+          "bytes": 4142,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp"
+        },
+        "rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp": {
+          "sha256": "11eb1cdfa236b8204cbe950343f853ea1f917b1239d85f99ebe44c0baba6f2d0",
+          "bytes": 3414,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp"
+        },
+        "rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp": {
+          "sha256": "052e33b9d63eb4cccf6a37bd1e18c8191706e748ffc364e473f9ba0530649aa5",
+          "bytes": 2952,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp"
+        },
+        "rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h": {
+          "sha256": "66a9a7ee25ac3011598346a64d47b390584b8147c02842e586602ae0de9c7d3e",
+          "bytes": 3996,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h"
+        },
+        "rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h": {
+          "sha256": "be3147e36170fe9f12ec42cc9b9ea8b893dcf63c759792f649cbab177b0869a4",
+          "bytes": 5702,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h"
+        },
+        "rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h": {
+          "sha256": "68b7739c3e2c4076d5db76fd62d83c3c922ab0b24afab55147cbc4da758a0822",
+          "bytes": 9284,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h"
+        },
+        "rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h": {
+          "sha256": "2e4d036dbd1996fc6c7b29e1ec93ae819eeb3a7580ba9f7149f1fd1c3ff2cf68",
+          "bytes": 6787,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h"
+        },
+        "rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h": {
+          "sha256": "4259ff2e4c6a6f16ad048086dc6e96a345c9abe0b898c305fb59607831195125",
+          "bytes": 3722,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h"
+        },
+        "rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h": {
+          "sha256": "08b8efd6f2edd858f0e49680d546fd12a6967eae5723d3da5293d793e376e1e1",
+          "bytes": 6871,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h"
+        },
+        "rebuild/2008-06/native-headers/RenderLib/ViewBase2008.h": {
+          "sha256": "0a03175b2d9046a97965d17384e3336b07287b6c020d99f88e07fc723537af10",
+          "bytes": 4430,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/ViewBase2008.h"
+        },
+        "rebuild/2008-06/native-headers/RenderLib/ViewNew2008.h": {
+          "sha256": "53cb079c857655b92edc3dc13e57dafe18be887ed86f0b918f23ee6d57aee5a0",
+          "bytes": 3201,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/ViewNew2008.h"
+        },
+        "rebuild/2008-06/native-headers/ViewNew/BrickMesh.h": {
+          "sha256": "270da493ffe1f19060bce25d767482a8f511b14d77f20ac2294bc22c6a65978e",
+          "bytes": 854,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/BrickMesh.h"
+        },
+        "rebuild/2008-06/native-headers/ViewNew/PBBMesh.h": {
+          "sha256": "4b865b0faa39658cbdc512935c77aff280f9640e5038ac243a4b4023c5e77846",
+          "bytes": 2178,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/PBBMesh.h"
+        },
+        "rebuild/2008-06/native-headers/ViewNew/PartChunk.h": {
+          "sha256": "80fe20d84114cb06be66fd8dd3d3c2c67b537e34f166fbe0015eab932558c08d",
+          "bytes": 9340,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/PartChunk.h"
+        },
+        "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h": {
+          "sha256": "af0775e8db58a002e9e7f732b1926b9b00d671f6fa0db180f8124e643133cf4e",
+          "bytes": 4019,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h"
+        },
+        "rebuild/2008-06/native-headers/ViewNew/TorsoMesh.h": {
+          "sha256": "568c47a7796991f0dbd13ce7d97f748f318f68dd33b84ecc2f8b3a5bd0fb850b",
+          "bytes": 2383,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/TorsoMesh.h"
+        },
+        "rebuild/2008-06/native-headers/ViewNew/WedgeMesh.h": {
+          "sha256": "0a181395d89ef8a698a113bdc4240d2fd8a261ddba8bf188a894d1a52fe5a529",
+          "bytes": 2300,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/WedgeMesh.h"
+        },
+        "rebuild/2008-06/native-headers/humanoid/Humanoid2008.h": {
+          "sha256": "89c1f7ee6f9aa1ab530bd2c938dbcb92fc686f367bbc62a28b961f34a8f55583",
+          "bytes": 12666,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h"
+        },
+        "rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h": {
+          "sha256": "d7c6a6ac6076f235100f248e3359b2f283a1dd0f5acd3209545176df58e72979",
+          "bytes": 664,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/GuiTarget2008.h"
+        },
+        "rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h": {
+          "sha256": "ef5cee2b58a120b368cdea7ef76a8fb48288d4c78aec7525451334e3b8800f22",
+          "bytes": 1733,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/IndexBox2008.h"
+        },
+        "rebuild/2008-06/native-headers/leaves2008/Log2008.h": {
+          "sha256": "6a8308cd8c0cffa8383b5a7f540752110670434d916e2b713b580ad00dab9d65",
+          "bytes": 2528,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Log2008.h"
+        },
+        "rebuild/2008-06/native-headers/leaves2008/NullController2008.h": {
+          "sha256": "bd3987e4d7e21815e3386973c0634870f9e7ac2e0024df2befd9b2dcbf002337",
+          "bytes": 811,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/NullController2008.h"
+        },
+        "rebuild/2008-06/native-headers/leaves2008/Point2008.h": {
+          "sha256": "aa07e8a9ef15d0338bb69e5762e43b9619d0872cb3af58d65970e7a2d2b1b4e5",
+          "bytes": 1018,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/Point2008.h"
+        },
+        "rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h": {
+          "sha256": "b0487f3ec06f08a8b3fb9ff91ccc82c0dd2e3812c80aa54773a59c620aa1d1ad",
+          "bytes": 1152,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/RevoluteLink2008.h"
+        },
+        "rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h": {
+          "sha256": "9a17692d0d0f7ad43fc8666bdcb49d7428db9b3b08be76fa8a53ad9dcda2cc4e",
+          "bytes": 1098,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/leaves2008/StandardOut2008.h"
+        },
+        "rebuild/2008-06/native-headers/v8datamodel/MergeBinder2008.h": {
+          "sha256": "e3f192d3cab4e51a4fb7895e534e90820bc8383b840e410a360c5b4d7f596994",
+          "bytes": 3817,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/v8datamodel/MergeBinder2008.h"
+        },
+        "rebuild/2008-06/tests/NativeAdornLayout.cpp": {
+          "sha256": "8d8f96cdb5744e4642777bed18f430e3cea596403c320cd7bb6e03fa5f03f82a",
+          "bytes": 1279,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/tests/NativeAdornLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeAdornRbxGfxLayout.cpp": {
+          "sha256": "f7e87b1125adfa50959a87994e69219f508c73c2ea0cfbd81f7eefb7068047a2",
+          "bytes": 2709,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/tests/NativeAdornRbxGfxLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeHumanoid2008Layout.cpp": {
+          "sha256": "6cdb19ad79664cc7858753746efddf3afc0a5fd038a50b7154416e96f0dfc8d7",
+          "bytes": 3245,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/tests/NativeHumanoid2008Layout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeHumanoid2008PendingWorkspace.h": {
+          "sha256": "d613fdef92b8642f2c9312edbc0bd42f36e5828d665f98b6dae31bda2b503196",
+          "bytes": 686,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/tests/NativeHumanoid2008PendingWorkspace.h"
+        },
+        "rebuild/2008-06/tests/NativeLeaves2008Layout.cpp": {
+          "sha256": "1c5feba9cc42724602feef7e5ce1bcb6a93bd8b55c2f33b93b9805931b68801e",
+          "bytes": 1889,
+          "archive": "drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/tests/NativeLeaves2008Layout.cpp"
+        }
+      }
+    },
+    {
+      "seq": 5,
+      "bundle": "f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54",
+      "user": "mewpokemons",
+      "model": "unknown (legacy fork archive)",
+      "state": "parked",
+      "detail": "Legacy proposals already archived; relevant fork tips unchanged since migration. Preserve prior blockers; no blanket snapshot import.",
+      "files": {
+        "rebuild/2008-06/tests/NativeMiscLeavesLayout.cpp": {
+          "sha256": "1bde10790c05ed1342491f6a9bd19743134034c378e710074950b7e844f773cd",
+          "bytes": 652,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/NativeMiscLeavesLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeRenderSceneLayout.cpp": {
+          "sha256": "44a6a6526bf3dca8736f3dab8a62bb6dd4ece2d6748012e1581d1b95f36199d2",
+          "bytes": 6334,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/NativeRenderSceneLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeViewNewLayout.cpp": {
+          "sha256": "2be758cca6a91d9afc1819d4620f92069ea681be79871f4b1b3e5475301686c7",
+          "bytes": 4650,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/NativeViewNewLayout.cpp"
+        },
+        "rebuild/2008-06/tests/NativeViewNewPartLayout.cpp": {
+          "sha256": "de93f5edddf5e6309de0c500d2bb32a229c55378010acbde1c2d0d5b074765b5",
+          "bytes": 3187,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/NativeViewNewPartLayout.cpp"
+        },
+        "rebuild/2008-06/tests/record_native_adorn.py": {
+          "sha256": "b54b21c7c71a16763fb6775671e06e8df2a57fdd6cf2a8bb8bdec4a8aa055ede",
+          "bytes": 39170,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_adorn.py"
+        },
+        "rebuild/2008-06/tests/record_native_geometry_service.py": {
+          "sha256": "95a097e00565602b40733588e659e52e6a898fc098a8c51a69850edcfc0bb024",
+          "bytes": 25564,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_geometry_service.py"
+        },
+        "rebuild/2008-06/tests/record_native_hit_filters.py": {
+          "sha256": "b4d05a4de39e4401d7cbb5842de6d7e32fdfdba8de4900721bad1f9669d1233b",
+          "bytes": 19909,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_hit_filters.py"
+        },
+        "rebuild/2008-06/tests/record_native_hopper.py": {
+          "sha256": "a3ca073a7abb2f512126e9c618b8f0ea0446b1cabf88af60cdd51d21ffb66481",
+          "bytes": 33957,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_hopper.py"
+        },
+        "rebuild/2008-06/tests/record_native_humanoid2008.py": {
+          "sha256": "a7ca62b060e89cf21d82a469257c8a63ff5208b69c10b183dd06c8ef9b87d0a6",
+          "bytes": 44289,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_humanoid2008.py"
+        },
+        "rebuild/2008-06/tests/record_native_kernel_stages.py": {
+          "sha256": "6d717a5b2e05c6c95f7616af5c14b664f1816d53879e57f5b670697a6415ce27",
+          "bytes": 32681,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_kernel_stages.py"
+        },
+        "rebuild/2008-06/tests/record_native_leaves2008.py": {
+          "sha256": "8937061493dd9b378d42476784aadc379b00164dfdf83a2f7e468a15d66e9553",
+          "bytes": 30536,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_leaves2008.py"
+        },
+        "rebuild/2008-06/tests/record_native_misc_leaves.py": {
+          "sha256": "6dbae004412b8454b6da1f94e7edb53a3756a8afe1f7c753d0783e48ee610805",
+          "bytes": 17034,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_misc_leaves.py"
+        },
+        "rebuild/2008-06/tests/record_native_mouse.py": {
+          "sha256": "db23a8d42069d414ed967e8c7bc423c66618407f89c75dfd01f5ab91deb30707",
+          "bytes": 32516,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_mouse.py"
+        },
+        "rebuild/2008-06/tests/record_native_network_players.py": {
+          "sha256": "dd79e9c27a9b2a55daf25a7f5e1d6b427b55832d46f7d785328caf2fd8dfdb26",
+          "bytes": 43051,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_network_players.py"
+        },
+        "rebuild/2008-06/tests/record_native_render_material.py": {
+          "sha256": "8f66574db3802bb6166463571d3733ee38f501ef8916d6cd2f1a8a659ec5a639",
+          "bytes": 37701,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_render_material.py"
+        },
+        "rebuild/2008-06/tests/record_native_render_scene.py": {
+          "sha256": "9bb7b8fbea745f7b51c959e504eec69242f618f9f4c50e79b1b4aa75a8210e0e",
+          "bytes": 47801,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_render_scene.py"
+        },
+        "rebuild/2008-06/tests/record_native_replicator.py": {
+          "sha256": "646cd9c7c12427c44bf421a574bfcf7f96df79177a7eb0db1f94d91da80fb115",
+          "bytes": 24327,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_replicator.py"
+        },
+        "rebuild/2008-06/tests/record_native_viewnew.py": {
+          "sha256": "76927f7dff85815a39336c2b9406045827fb0fd3fbb7322cc6720f13e30f9d23",
+          "bytes": 38669,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_viewnew.py"
+        },
+        "rebuild/2008-06/tests/record_native_viewnew_part.py": {
+          "sha256": "476482637e7e102090a4fe7edf43bc923418bd2322a0c0ea8297098d30a2af4a",
+          "bytes": 28246,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_viewnew_part.py"
+        },
+        "rebuild/2008-06/tests/record_native_widget.py": {
+          "sha256": "63dc21a1f48ce6728c3ba885372e06a226df44e759579799720709e220f00c81",
+          "bytes": 38629,
+          "archive": "drafts/files/f5c7ba9bb7f1f8dbb86a7d8fc98b7711e58bcfb78f6bd9da251db848cf7fce54/rebuild/2008-06/tests/record_native_widget.py"
+        }
+      }
+    },
+    {
+      "seq": 7,
+      "bundle": "155ac12adc77fa870082c5257aeabbcdea96845752d9d3a89a5fb8353db6af44",
+      "user": "colin",
+      "model": "gpt-6.1-sol",
+      "state": "parked",
+      "detail": "Bootstrap validation text predates work migration and differs from current reviewed validation. No source gain; preserve immutable upload.",
+      "files": {
+        "docs/DRAFT_FINDINGS_AUTHORITY_VALIDATION.md": {
+          "sha256": "d97f51556ce395d434ad49afb5d17d38047fc5a5b6a6633cc8f01fdfba9d1f25",
+          "bytes": 574,
+          "archive": "drafts/files/155ac12adc77fa870082c5257aeabbcdea96845752d9d3a89a5fb8353db6af44/docs/DRAFT_FINDINGS_AUTHORITY_VALIDATION.md"
+        }
+      }
+    },
+    {
+      "seq": 8,
+      "bundle": "0aba936242780a9f80352b1375cc12e79400270a155059e5c83af9a43f4e8095",
+      "user": "colin2",
+      "model": "gpt-6",
+      "state": "parked",
+      "detail": "Camera canZoom/canTilt draft explicitly reports 95/98 and 124/127 bytes, bool versus full-width returns. Original declaration/caller evidence unresolved; no canonical ABI edits or activation. Latest packet 57dff70f retains source and findings; no unchanged recompilation.",
+      "files": {
+        "rebuild/2008-06/native-classes/CameraPredicates.cpp": {
+          "sha256": "1b92296bb3339c0d856a1a61979d21ceae913aeba195a3e16aaaeebf9a3e95ff",
+          "bytes": 866,
+          "archive": "drafts/files/0aba936242780a9f80352b1375cc12e79400270a155059e5c83af9a43f4e8095/rebuild/2008-06/native-classes/CameraPredicates.cpp"
+        },
+        "rebuild/2008-06/tests/record_colin2_camera_predicates.py": {
+          "sha256": "d0a03dd8f126f914908d1c225552e908fc73228bfae1270a13d015420184d446",
+          "bytes": 4810,
+          "archive": "drafts/files/0aba936242780a9f80352b1375cc12e79400270a155059e5c83af9a43f4e8095/rebuild/2008-06/tests/record_colin2_camera_predicates.py"
+        }
+      }
+    },
+    {
+      "seq": 9,
+      "bundle": "d3cc2060e271cca2449173e9c1ead2f844846759371e8964a1416ae0f1572355",
+      "user": "colin2",
+      "model": "gpt-6",
+      "state": "parked",
+      "detail": "Camera canZoom/canTilt draft explicitly reports 95/98 and 124/127 bytes, bool versus full-width returns. Original declaration/caller evidence unresolved; no canonical ABI edits or activation. Latest packet 57dff70f retains source and findings; no unchanged recompilation.",
+      "files": {
+        "rebuild/2008-06/native-classes/CameraPredicates.cpp": {
+          "sha256": "1b92296bb3339c0d856a1a61979d21ceae913aeba195a3e16aaaeebf9a3e95ff",
+          "bytes": 866,
+          "archive": "drafts/files/d3cc2060e271cca2449173e9c1ead2f844846759371e8964a1416ae0f1572355/rebuild/2008-06/native-classes/CameraPredicates.cpp"
+        },
+        "rebuild/2008-06/tests/record_colin2_camera_predicates.py": {
+          "sha256": "d0a03dd8f126f914908d1c225552e908fc73228bfae1270a13d015420184d446",
+          "bytes": 4810,
+          "archive": "drafts/files/d3cc2060e271cca2449173e9c1ead2f844846759371e8964a1416ae0f1572355/rebuild/2008-06/tests/record_colin2_camera_predicates.py"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/canTilt-asm.txt": {
+          "sha256": "35268a3f3b06b66eac8b201451962284b6c4673d0b7307c15440fdb3d087a8cc",
+          "bytes": 2045,
+          "archive": "drafts/files/d3cc2060e271cca2449173e9c1ead2f844846759371e8964a1416ae0f1572355/work/2008-06/shared-layouts/colin2-camera-predicates/canTilt-asm.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/canZoom-asm.txt": {
+          "sha256": "d503263107d2a3c92433460bb09319f0071bff5548ef13a74e5cdd3dfb3b290a",
+          "bytes": 1490,
+          "archive": "drafts/files/d3cc2060e271cca2449173e9c1ead2f844846759371e8964a1416ae0f1572355/work/2008-06/shared-layouts/colin2-camera-predicates/canZoom-asm.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/compile.txt": {
+          "sha256": "157ed5cdb4c69142c9a598958a84d8978ce94190d977b3e2be6d3f0d4c268716",
+          "bytes": 649514,
+          "archive": "drafts/files/d3cc2060e271cca2449173e9c1ead2f844846759371e8964a1416ae0f1572355/work/2008-06/shared-layouts/colin2-camera-predicates/compile.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/receipt.json": {
+          "sha256": "76242453a7cc1f7ba1c3a6f363db8b03c8c17f933e83839d8521d4a16b87f647",
+          "bytes": 206006,
+          "archive": "drafts/files/d3cc2060e271cca2449173e9c1ead2f844846759371e8964a1416ae0f1572355/work/2008-06/shared-layouts/colin2-camera-predicates/receipt.json"
+        }
+      }
+    },
+    {
+      "seq": 10,
+      "bundle": "c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4",
+      "user": "colin2",
+      "model": "gpt-6",
+      "state": "parked",
+      "detail": "Camera canZoom/canTilt draft explicitly reports 95/98 and 124/127 bytes, bool versus full-width returns. Original declaration/caller evidence unresolved; no canonical ABI edits or activation. Latest packet 57dff70f retains source and findings; no unchanged recompilation.",
+      "files": {
+        "rebuild/2008-06/native-classes/CameraPredicates.cpp": {
+          "sha256": "1b92296bb3339c0d856a1a61979d21ceae913aeba195a3e16aaaeebf9a3e95ff",
+          "bytes": 866,
+          "archive": "drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/rebuild/2008-06/native-classes/CameraPredicates.cpp"
+        },
+        "rebuild/2008-06/tests/record_colin2_camera_predicates.py": {
+          "sha256": "e19a3b25df81a25a1f83ef522820f3b6cd2087bd545a75a59daceb3a41faf453",
+          "bytes": 6243,
+          "archive": "drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/rebuild/2008-06/tests/record_colin2_camera_predicates.py"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/canTilt-asm.txt": {
+          "sha256": "35268a3f3b06b66eac8b201451962284b6c4673d0b7307c15440fdb3d087a8cc",
+          "bytes": 2045,
+          "archive": "drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/work/2008-06/shared-layouts/colin2-camera-predicates/canTilt-asm.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/canZoom-asm.txt": {
+          "sha256": "d503263107d2a3c92433460bb09319f0071bff5548ef13a74e5cdd3dfb3b290a",
+          "bytes": 1490,
+          "archive": "drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/work/2008-06/shared-layouts/colin2-camera-predicates/canZoom-asm.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/compile.txt": {
+          "sha256": "157ed5cdb4c69142c9a598958a84d8978ce94190d977b3e2be6d3f0d4c268716",
+          "bytes": 649514,
+          "archive": "drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/work/2008-06/shared-layouts/colin2-camera-predicates/compile.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/receipt.json": {
+          "sha256": "76242453a7cc1f7ba1c3a6f363db8b03c8c17f933e83839d8521d4a16b87f647",
+          "bytes": 206006,
+          "archive": "drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/work/2008-06/shared-layouts/colin2-camera-predicates/receipt.json"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/zoom-source-evidence.json": {
+          "sha256": "15fceb8a19509eef10557543cbc1ed46fe3a53a16a8b3791348c2f72c47eae40",
+          "bytes": 1166,
+          "archive": "drafts/files/c481d81bdcdcacc0203b274d302687313d3577b94a4fff429b11be11bdeee6a4/work/2008-06/shared-layouts/colin2-camera-predicates/zoom-source-evidence.json"
+        }
+      }
+    },
+    {
+      "seq": 11,
+      "bundle": "57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8",
+      "user": "colin2",
+      "model": "gpt-6",
+      "state": "parked",
+      "detail": "Camera canZoom/canTilt draft explicitly reports 95/98 and 124/127 bytes, bool versus full-width returns. Original declaration/caller evidence unresolved; no canonical ABI edits or activation. Latest packet 57dff70f retains source and findings; no unchanged recompilation.",
+      "files": {
+        "rebuild/2008-06/native-classes/CameraPredicates.cpp": {
+          "sha256": "1b92296bb3339c0d856a1a61979d21ceae913aeba195a3e16aaaeebf9a3e95ff",
+          "bytes": 866,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/rebuild/2008-06/native-classes/CameraPredicates.cpp"
+        },
+        "rebuild/2008-06/tests/record_colin2_camera_predicates.py": {
+          "sha256": "e19a3b25df81a25a1f83ef522820f3b6cd2087bd545a75a59daceb3a41faf453",
+          "bytes": 6243,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/rebuild/2008-06/tests/record_colin2_camera_predicates.py"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/caller-asm.txt": {
+          "sha256": "2bfa823ac67c296c519fe7bc64a5b07617440d70b25e5b5be420ea396ba9a5b5",
+          "bytes": 685,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/caller-asm.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/canTilt-asm.txt": {
+          "sha256": "35268a3f3b06b66eac8b201451962284b6c4673d0b7307c15440fdb3d087a8cc",
+          "bytes": 2045,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/canTilt-asm.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/canZoom-asm.txt": {
+          "sha256": "d503263107d2a3c92433460bb09319f0071bff5548ef13a74e5cdd3dfb3b290a",
+          "bytes": 1490,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/canZoom-asm.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/compile.txt": {
+          "sha256": "157ed5cdb4c69142c9a598958a84d8978ce94190d977b3e2be6d3f0d4c268716",
+          "bytes": 649514,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/compile.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/findings.txt": {
+          "sha256": "447999fa73b8a7c4254921a1603b38daaa36714e785cd3c62e0c8f96454bbde6",
+          "bytes": 2240,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/findings.txt"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/inventory-dependencies.json": {
+          "sha256": "3e243288c1d8059e9da548f1dca6a7e5317bfa6366204301df5ad7661398452a",
+          "bytes": 8174,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/inventory-dependencies.json"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/receipt.json": {
+          "sha256": "471a480b05124c4d7074c54e27af00a6dad4431b7c3ca663ae2cdac0f1f92ae2",
+          "bytes": 206926,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/receipt.json"
+        },
+        "work/2008-06/shared-layouts/colin2-camera-predicates/zoom-source-evidence.json": {
+          "sha256": "15fceb8a19509eef10557543cbc1ed46fe3a53a16a8b3791348c2f72c47eae40",
+          "bytes": 1166,
+          "archive": "drafts/files/57dff70f0bf8ee584da065eb45c9fe19f6388d54eed96bf0ea1411407ecca7f8/work/2008-06/shared-layouts/colin2-camera-predicates/zoom-source-evidence.json"
+        }
+      }
+    },
+    {
+      "seq": 12,
+      "bundle": "37e43b29aff90e4319f93d54bb69bf2a05ae8a937fc12ae07a8ce4c057113fef",
+      "user": "colin",
+      "model": "opencode/beam-free",
+      "state": "rejected",
+      "detail": "Reviewed bootstrap/repeat-session upload test only; no native implementation or verification evidence. Immutable upload retained; not a source integration candidate.",
+      "files": {
+        "work/2008-06/shared-layouts/native-recovery-receipt.json": {
+          "sha256": "91a09a7b881b11d1eb089eb3d3c8e2a06921e5c80989114dbbea4610cb9cd787",
+          "bytes": 301,
+          "archive": "drafts/files/37e43b29aff90e4319f93d54bb69bf2a05ae8a937fc12ae07a8ce4c057113fef/work/2008-06/shared-layouts/native-recovery-receipt.json"
+        }
+      }
+    },
+    {
+      "seq": 13,
+      "bundle": "eea92d71a3398d10faa8086a193487f5598253f6ab72c585760fe5a497e0cd35",
+      "user": "colin",
+      "model": "opencode/beam-free",
+      "state": "rejected",
+      "detail": "Reviewed bootstrap/repeat-session upload test only; no native implementation or verification evidence. Immutable upload retained; not a source integration candidate.",
+      "files": {
+        "work/2008-06/shared-layouts/native-recovery-receipt.json": {
+          "sha256": "361e163f2e551d66493c4a833a9eb4728963f4a6eebdeb61af55c5b50fedc838",
+          "bytes": 292,
+          "archive": "drafts/files/eea92d71a3398d10faa8086a193487f5598253f6ab72c585760fe5a497e0cd35/work/2008-06/shared-layouts/native-recovery-receipt.json"
+        }
+      }
+    },
+    {
+      "seq": 14,
+      "bundle": "ebacf89202091b13b40bf7b432650c8a37675e9fa0abd9e7c291a9065991aec2",
+      "user": "colin",
+      "model": "opencode/beam-free",
+      "state": "rejected",
+      "detail": "Reviewed bootstrap/repeat-session upload test only; no native implementation or verification evidence. Immutable upload retained; not a source integration candidate.",
+      "files": {
+        "work/2008-06/shared-layouts/native-recovery-receipt-2.json": {
+          "sha256": "4a6b3d60564abd9a63b862c4fa616022f25f53a70c55a007acc0e9d012a4b4fe",
+          "bytes": 144,
+          "archive": "drafts/files/ebacf89202091b13b40bf7b432650c8a37675e9fa0abd9e7c291a9065991aec2/work/2008-06/shared-layouts/native-recovery-receipt-2.json"
+        }
+      }
+    },
+    {
+      "seq": 15,
+      "bundle": "ec4fe2c7fe2e44f145300bf7d18d21b52ed039364e27c0f61bfe1f26106093b1",
+      "user": "colin",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "state": "parked",
+      "detail": "Writer EH-state mismatch: reported byte 68 is state 0 versus original state 1. Latest source WorkspaceXmlWriter.cpp absent from packet; active CWorkspace lease owns header/probes/source. No overlapping edit, source promotion or redundant compile. Need authentic lifetime/compiler evidence and lease handoff.",
+      "files": {
+        "work/2008-06/shared-layouts/native-xml-writer-batch.json": {
+          "sha256": "c139061308d7263de6a9ee847d07702c470328a8ed665c50b2da2960b377eb93",
+          "bytes": 1461,
+          "archive": "drafts/files/ec4fe2c7fe2e44f145300bf7d18d21b52ed039364e27c0f61bfe1f26106093b1/work/2008-06/shared-layouts/native-xml-writer-batch.json"
+        }
+      }
+    },
+    {
+      "seq": 16,
+      "bundle": "a7620cc076b3837789e15d6124380b9c9373655f59317675f3d8db4fd983a1d1",
+      "user": "colin",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "state": "parked",
+      "detail": "Writer EH-state mismatch: reported byte 68 is state 0 versus original state 1. Latest source WorkspaceXmlWriter.cpp absent from packet; active CWorkspace lease owns header/probes/source. No overlapping edit, source promotion or redundant compile. Need authentic lifetime/compiler evidence and lease handoff.",
+      "files": {
+        "rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h": {
+          "sha256": "0fc78011c6c7ac7da7ff2eee09ad1fc9eb9e7da6d717ae36fad3c06b89cc494a",
+          "bytes": 3169,
+          "archive": "drafts/files/a7620cc076b3837789e15d6124380b9c9373655f59317675f3d8db4fd983a1d1/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h"
+        },
+        "rebuild/2008-06/tests/NativeWorkspaceXmlWriterStateProbe.cpp": {
+          "sha256": "4b36d2c1d536cef11cfd644ccf6254cccebc514413faac49f891c6783c5ed635",
+          "bytes": 518,
+          "archive": "drafts/files/a7620cc076b3837789e15d6124380b9c9373655f59317675f3d8db4fd983a1d1/rebuild/2008-06/tests/NativeWorkspaceXmlWriterStateProbe.cpp"
+        }
+      }
+    },
+    {
+      "seq": 17,
+      "bundle": "02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658",
+      "user": "colin",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "state": "parked",
+      "detail": "Writer EH-state mismatch: reported byte 68 is state 0 versus original state 1. Latest source WorkspaceXmlWriter.cpp absent from packet; active CWorkspace lease owns header/probes/source. No overlapping edit, source promotion or redundant compile. Need authentic lifetime/compiler evidence and lease handoff.",
+      "files": {
+        "rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h": {
+          "sha256": "55ceeb108e7e2a5040876e885db1a5e7d90c2754d84955536616d77905661f5d",
+          "bytes": 3180,
+          "archive": "drafts/files/02d2238bab09712f788776e8da4dc67820e5dd82be9886369644887aaedf6658/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h"
+        }
+      }
+    },
+    {
+      "seq": 18,
+      "bundle": "216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0",
+      "user": "colin",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "state": "parked",
+      "detail": "Writer EH-state mismatch: reported byte 68 is state 0 versus original state 1. Latest source WorkspaceXmlWriter.cpp absent from packet; active CWorkspace lease owns header/probes/source. No overlapping edit, source promotion or redundant compile. Need authentic lifetime/compiler evidence and lease handoff.",
+      "files": {
+        "rebuild/2008-06/tests/native-writer-probes/a.cpp": {
+          "sha256": "3564b47b7b03536235cfd36f523c0607d404dd1351d8d00edeeaf42b90c3eb39",
+          "bytes": 146,
+          "archive": "drafts/files/216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0/rebuild/2008-06/tests/native-writer-probes/a.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/b.cpp": {
+          "sha256": "fa11c576b8048546cbf3c1b652f6e3c44793c8b60f62767765f18179315728e8",
+          "bytes": 173,
+          "archive": "drafts/files/216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0/rebuild/2008-06/tests/native-writer-probes/b.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/c.cpp": {
+          "sha256": "035f2665d6a4a7aa9ebb03e0d6dff924b9e5f589af658cc74b42dd6228f835f9",
+          "bytes": 131,
+          "archive": "drafts/files/216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0/rebuild/2008-06/tests/native-writer-probes/c.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/d.cpp": {
+          "sha256": "435e41ee1f8367f6a4dbd3ad1b5ee0262e435837534319b55ee980bcaf19bca7",
+          "bytes": 157,
+          "archive": "drafts/files/216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0/rebuild/2008-06/tests/native-writer-probes/d.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/e.cpp": {
+          "sha256": "f3dc9b9afef04e0abd75eea5e72065acb616f1d90cf864d384aa976965513065",
+          "bytes": 180,
+          "archive": "drafts/files/216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0/rebuild/2008-06/tests/native-writer-probes/e.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/f.cpp": {
+          "sha256": "e9a2875dc20b9167be406fd9e4ac58dcbf1ca4e5e3ddb306670790a93f255014",
+          "bytes": 177,
+          "archive": "drafts/files/216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0/rebuild/2008-06/tests/native-writer-probes/f.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/g.cpp": {
+          "sha256": "3321e0a638cfe61e7d538f572c30dc2b749c770da4566397a9850172eb71e833",
+          "bytes": 199,
+          "archive": "drafts/files/216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0/rebuild/2008-06/tests/native-writer-probes/g.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/h.cpp": {
+          "sha256": "a6d0e6dce8061b36dfdd1ef2dbf941cbbf42889ff2c36646b96448ed1aa54b65",
+          "bytes": 169,
+          "archive": "drafts/files/216a33197d32b14cc26a883cb05340e65e46ebd870c884b408f3012f131714f0/rebuild/2008-06/tests/native-writer-probes/h.cpp"
+        }
+      }
+    },
+    {
+      "seq": 19,
+      "bundle": "068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2",
+      "user": "colin",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "state": "parked",
+      "detail": "Writer EH-state mismatch: reported byte 68 is state 0 versus original state 1. Latest source WorkspaceXmlWriter.cpp absent from packet; active CWorkspace lease owns header/probes/source. No overlapping edit, source promotion or redundant compile. Need authentic lifetime/compiler evidence and lease handoff.",
+      "files": {
+        "rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h": {
+          "sha256": "0fc78011c6c7ac7da7ff2eee09ad1fc9eb9e7da6d717ae36fad3c06b89cc494a",
+          "bytes": 3169,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/a.cpp": {
+          "sha256": "3564b47b7b03536235cfd36f523c0607d404dd1351d8d00edeeaf42b90c3eb39",
+          "bytes": 146,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/tests/native-writer-probes/a.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/b.cpp": {
+          "sha256": "fa11c576b8048546cbf3c1b652f6e3c44793c8b60f62767765f18179315728e8",
+          "bytes": 173,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/tests/native-writer-probes/b.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/c.cpp": {
+          "sha256": "035f2665d6a4a7aa9ebb03e0d6dff924b9e5f589af658cc74b42dd6228f835f9",
+          "bytes": 131,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/tests/native-writer-probes/c.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/d.cpp": {
+          "sha256": "435e41ee1f8367f6a4dbd3ad1b5ee0262e435837534319b55ee980bcaf19bca7",
+          "bytes": 157,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/tests/native-writer-probes/d.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/e.cpp": {
+          "sha256": "f3dc9b9afef04e0abd75eea5e72065acb616f1d90cf864d384aa976965513065",
+          "bytes": 180,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/tests/native-writer-probes/e.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/f.cpp": {
+          "sha256": "e9a2875dc20b9167be406fd9e4ac58dcbf1ca4e5e3ddb306670790a93f255014",
+          "bytes": 177,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/tests/native-writer-probes/f.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/g.cpp": {
+          "sha256": "3321e0a638cfe61e7d538f572c30dc2b749c770da4566397a9850172eb71e833",
+          "bytes": 199,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/tests/native-writer-probes/g.cpp"
+        },
+        "rebuild/2008-06/tests/native-writer-probes/h.cpp": {
+          "sha256": "a6d0e6dce8061b36dfdd1ef2dbf941cbbf42889ff2c36646b96448ed1aa54b65",
+          "bytes": 169,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/rebuild/2008-06/tests/native-writer-probes/h.cpp"
+        },
+        "work/2008-06/shared-layouts/native-xml-writer-20261104.json": {
+          "sha256": "bda7733ccaa0082ba68a79e25a8150112dae076f3d865be1c6c434f4959d2b5f",
+          "bytes": 6076,
+          "archive": "drafts/files/068c406ecfbc1d8e3c3b17a0c010f5cf81eeb1f9dc2c344003841e7071d6aee2/work/2008-06/shared-layouts/native-xml-writer-20261104.json"
+        }
+      }
+    }
+  ],
+  "fork_tips": {
+    "coldek/codex/native-partial-search-20261029": "0698f03e6ac3846ebf558bc10dabcb03b8536c1c",
+    "mewpokemons/claude/optimistic-shannon-0xccuy": "6e7c7a12ddddd6ba4cb51b231798113ef6db984e"
+  },
+  "fork_change": "none relative to migration backfill",
+  "excluded_snapshots": [
+    "138d3a09c8"
+  ],
+  "restoration": "318da49dcc",
+  "verification": {
+    "new_native_source_promotions": 0,
+    "new_executable_selections": 0,
+    "server_credit": 0,
+    "compile_runs": 0,
+    "reason": "No exact/ownership-ready source candidate; avoid rerunning unchanged rejected hypotheses. Contributor receipts remain claims, not fresh owner proof."
+  },
+  "metrics": {
+    "inactive_exact_delta": 0,
+    "selected_exact_delta": 0,
+    "gated_swaps_delta": 0,
+    "server_credit_delta": 0
+  },
+  "preservation": "Private-index metadata-only additions. No native/header/test paths replaced. Exact subtree and commit preservation enforced by integrate command."
+}
