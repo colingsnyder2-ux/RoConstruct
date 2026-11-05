@@ -1,0 +1,10 @@
+{
+  "contributor": "colin",
+  "model": "opencode/beam-free",
+  "client": "2008-06",
+  "workflow_version": 52,
+  "status": "edited-after-init",
+  "target": "native recovery session bootstrap",
+  "notes": "Fresh findings Worker initialized; no class leased yet. Draft upload test.",
+  "unresolved": []
+}
