@@ -325,16 +325,21 @@ def post_files(new, log=print, on_sent=None):
     url = server_mines_webhook()
     payloads = build_payloads(new)
     try:
-        from roc.integration_site import progress_description
+        from roc.integration_site import progress_description, integration_rate
         snapshot = json.loads((ROOT / 'docs/integration.json').read_text(encoding='utf-8'))
         summary = progress_description(snapshot)
+        rate = integration_rate(snapshot, ROOT)
     except (OSError, ValueError, KeyError, TypeError) as error:
         log('native progress unavailable: %s' % error)
-        summary = 'Native progress snapshot unavailable; file uploads remain unverified.'
+        summary = 'Native progress unavailable.'
+        rate = 'Building rate · progress unavailable'
     for body in payloads:
         content = body['embeds'][0]['description']
         rows = [row for row in new if link(row[0], row[2], row[3]) in content]
         format_payload(body, summary, rows)
+        fields = body['embeds'][0]['fields']
+        fields.insert(next(i for i, field in enumerate(fields) if field['name'] == '🏆 Workers'),
+                      {'name': '⚡ Integration Rate', 'value': rate, 'inline': True})
     if not url:
         log('no server_mines_webhook configured; %d new native file(s) not posted' % len(new))
         return False

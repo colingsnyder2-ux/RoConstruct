@@ -31,11 +31,12 @@ def test_progress_bar_first_and_spaced_bold_totals():
     snapshot = {'groups': {'integrated': {'functions': 1, 'bytes': 20}, 'exact_waiting': {'functions': 2, 'bytes': 80}}, 'native_code': {'inactive': {'functions': 1, 'bytes': 40}}}
     value = progress_description(snapshot)
     sections = value.split('\n\n')
-    assert sections[0].startswith('**2008-06 Client**\n**1 / 3 integrated**')
+    assert sections[0].startswith('**2008-06 Client**\n1 / 3 integrated')
     assert sections[1].endswith('**60.00% native code**')
     assert sum(sections[1].count(c) for c in '🟪🟧🩷⬜') == 23
-    assert '**1 inactive exact**' in value
-    assert 'no runtime activation or server credit' in sections[-1]
+    assert '1 inactive exact' in value and '**1 inactive exact**' not in value
+    assert 'no runtime activation or server credit' not in value
+    assert 'target bytes' not in value
     assert len(value) <= 1024
 
 

@@ -30,17 +30,53 @@ def progress_description(data):
         cells[-1] = 23
     bar = ''.join(color * n for color, n in zip(('🟪', '🟧', '🩷', '⬜'), cells))
     functions = sum(g['functions'] for g in groups.values())
-    return ('**2008-06 Client**\n**%s / %s integrated** · **%s remaining**\n\n'
+    return ('**2008-06 Client**\n%s / %s integrated · %s remaining\n'
+            '%s inactive exact · %s draft functions · %s exact waiting\n\n'
             '%s **%.2f%% native code**\n\n'
-            '🟪 integrated · 🟧 inactive exact · 🩷 draft · ⬜ remaining\n\n'
-            '**%s inactive exact** · **%s draft functions** · **%s exact waiting**\n'
-            '**%s / %s target bytes**\n\n'
-            'Inactive/draft work adds no runtime activation or server credit.') % (
+            '🟪 integrated · 🟧 inactive exact · 🩷 draft · ⬜ remaining') % (
                 format(integrated['functions'], ','), format(functions, ','),
-                format(functions - integrated['functions'], ','), bar,
-                100 * covered / total if total else 0, format(inactive['functions'], ','),
+                format(functions - integrated['functions'], ','), format(inactive['functions'], ','),
                 format(draft['functions'], ','), format(groups.get('exact_waiting', {}).get('functions', 0), ','),
-                format(covered, ','), format(total, ','))
+                bar, 100 * covered / total if total else 0)
+
+
+def integration_rate(data, root=ROOT, now=None):
+    """Integration-only deltas from distinct timestamped progress observations."""
+    from roc.reports import fmt_duration
+    now = datetime.now(timezone.utc).timestamp() if now is None else now
+    try:
+        stamp = datetime.strptime(data['updated'], '%Y-%m-%d %H:%M UTC').replace(tzinfo=timezone.utc).timestamp()
+    except (KeyError, ValueError):
+        return 'Building rate · waiting for timestamped progress'
+    if now - stamp > 6 * 3600 or stamp > now:
+        return 'Building rate · waiting for fresh progress'
+    path = root / 'work/native-integration-rate.json'
+    try:
+        samples = json.loads(path.read_text(encoding='utf-8'))['samples']
+    except (OSError, ValueError, KeyError):
+        samples = []
+    group = data['groups']['integrated']
+    total = sum(g['bytes'] for g in data['groups'].values())
+    current = dict(time=stamp, functions=group['functions'], bytes=group['bytes'], total=total)
+    if samples and stamp < samples[-1]['time']:
+        return 'Building rate · waiting for current progress'
+    if samples and (current['functions'] < samples[-1]['functions'] or
+                    current['bytes'] < samples[-1]['bytes'] or total != samples[-1]['total']):
+        samples = []  # A corrected baseline is not a negative integration gain.
+    samples = [s for s in samples if now - 6 * 3600 <= s['time'] < stamp]
+    samples.append(current)
+    atomic_json(path, dict(schema=1, samples=samples))
+    elapsed = stamp - samples[0]['time']
+    if not elapsed:
+        return 'Building rate · waiting for a second progress sample'
+    functions = (current['functions'] - samples[0]['functions']) * 3600 / elapsed
+    byte_rate = (current['bytes'] - samples[0]['bytes']) * 3600 / elapsed
+    remaining = max(0, total - current['bytes'])
+    eta = fmt_duration(remaining * 3600 / byte_rate) if byte_rate > 0 else 'building rate'
+    if not remaining:
+        eta = '0s'
+    return '**%g functions/hr** · **%s B/hr** *(observed %d min; 6h window)* · byte ETA %s' % (
+        round(functions, 1), format(round(byte_rate), ','), elapsed // 60, eta)
 
 
 def readable(symbol):
