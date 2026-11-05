@@ -45,6 +45,23 @@ checks = [
     ('native-classes/CWebToolboxPage.cpp', ['0046a590=?showPage@CWebToolbox']),
     ('native-classes/CWebToolbox.cpp', ['0046a710=?OnInitialUpdate@CWebToolbox', '0046a850=?CreateObject@CWebToolbox', '0046a8e0=?OnGetExternal@CWebToolbox']),
     ('native-classes/CSecureHtmlView.cpp', ['00465a60=??0CSecureHtmlView', '00465a80=??1CSecureHtmlView', '00465d70=?OnBeforeNavigate2@CSecureHtmlView']),
+    ('native-classes/CBrowserView.cpp', ['00410d60=?CreateObject@CBrowserView', '00410dc0=?CreateObject@CIDEBrowserView', '00410e20=?CreateObject@CPlayBrowserView', '004108b0=??0CBrowserView', '00410950=??1CBrowserView']),
+    ('native-classes/BrowserViewExternalFactory.cpp', ['0040fbf0=?createBrowserViewExternal']),
+    ('native-classes/BrowserViewExternalMethods.cpp', ['00410f90=?get_IsIDE@CBrowserViewExternal']),
+    ('native-classes/BrowserViewExternalGetApp.cpp', ['00410fe0=?GetApp@CBrowserViewExternal']),
+    ('native-classes/HttpRobloxSite.cpp', ['0056a160=?isRobloxSite@Http@RBX']),
+    ('native-classes/HttpScriptCheck.cpp', ['0056a040=?isScript@Http@RBX']),
+    ('native-classes/HttpTrustCheck.cpp', ['0056a2e0=?trustCheck@Http@RBX']),
+    ('native-classes/HttpTrustInitialize.cpp', ['00569bf0=?initializeTrustCheck@RBX']),
+    ('native-classes/HttpTrustState.cpp', []),
+    ('native-classes/HttpLifetime.cpp', ['00409750=??0Http@RBX', '005df620=??1Http@RBX']),
+    ('native-classes/SecureHtmlAdSyndicator.cpp', []),
+    ('native-classes/HttpTransport.cpp', ['00569a40=?post@Http@RBX', '00569ae0=?get@Http@RBX']),
+    ('native-classes/HttpTransportState.cpp', ['00569910=?setHttpTransportMode@RBX']),
+    ('native-classes/HttpResultCheck.cpp', ['00569920=?checkHttpResult@Http@RBX']),
+    ('native-classes/HttpWinInet.cpp', ['005f9c30=?httpRequest@Http@RBX', '005f9450=?read@WiniInetRequest_source', '005f9800=??0?$stream_buffer@VWiniInetRequest_source', '005f9900=??_G?$stream_buffer@VWiniInetRequest_source']),
+    ('native-classes/HttpWinHttp.cpp', ['005f8b60=?httpRequestAlternate@Http@RBX', '005f2c40=?read@WinHttpRequest_source', '005f3e80=??0?$stream_buffer@VWinHttpRequest_source', '005f3fa0=??_G?$stream_buffer@VWinHttpRequest_source']),
+    ('tests/NativeHttpLayout.cpp', []),
     ('native-classes/MetadataExplorerOrder.cpp', ['004225b0=?explorerOrder@Class@Metadata']),
     ('native-classes/PlayersSuperSafe.cpp', ['00497600=?superSafeOn@Players@Network']),
     ('native-classes/SelectionIterators.cpp', ['00413d10=?begin@Selection@RBX', '00413d40=?end@Selection@RBX']),
@@ -172,6 +189,24 @@ sections, _, definitions, _ = match._coff_data_index(raw)
 offset, section = definitions['?loggingEnabled@@3_NA']
 original_base, original_image = match._image('2008-06')
 assert raw[sections[section][4] + offset] == original_image[0x92e486 - original_base] == 1
+# Independently verify both original fragments, call targets and static data.
+ad_audit = subprocess.run([sys.executable, str(ROOT / 'rebuild/2008-06/tests/record_native_ad_syndicator.py'),
+                           str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckSecureHtmlAdSyndicator.obj')],
+                          cwd=ROOT, capture_output=True, text=True)
+if ad_audit.returncode:
+    raise SystemExit('Ad-syndicator split-range audit failed: ' + ad_audit.stdout + ad_audit.stderr)
+print(ad_audit.stdout.strip(), flush=True)
+# Original static HTTP trust state starts zero; transport mode starts at -1.
+http_state = (ROOT / 'rebuild/2008-06/out/native-layouts/CheckHttpTrustState.obj').read_bytes()
+state_sections, _, state_defs, _ = match._coff_data_index(http_state)
+for name, address, size in [('?skipTrustCheck@RBX@@3_NA', 0x974ab9, 1), ('?trustCheckOnce@RBX@@3JA', 0x974abc, 4)]:
+    offset, section = state_defs[name]
+    assert state_sections[section][0].rstrip(b'\0') == b'.bss'
+    assert original_image[address - original_base:address - original_base + size] == bytes(size)
+http_mode = (ROOT / 'rebuild/2008-06/out/native-layouts/CheckHttpTransportState.obj').read_bytes()
+mode_sections, _, mode_defs, _ = match._coff_data_index(http_mode)
+offset, section = mode_defs['?httpTransportMode@RBX@@3HA']
+assert http_mode[mode_sections[section][4] + offset:mode_sections[section][4] + offset + 4] == original_image[0x946274 - original_base:0x946278 - original_base] == b'\xff\xff\xff\xff'
 print('sources:', len(checks), 'checked in', round(time.monotonic() - started, 2), 'seconds', flush=True)
 
 base = ROOT / 'rebuild/2008-06/out/native-current-audit'
@@ -204,7 +239,7 @@ for name in ('CRobloxView', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFi
              'CRobloxWndActive', 'CSelectionPropGridSelection', 'CSelectionPropGridEvents',
              'CPropGridEvents', 'CPropGridInstances', 'CSelectionPropGrid', 'CRobloxViewInit', 'SelectionGroup',
              'ViewVerbs', 'InsertModelFromRobloxVerb', 'ChangeHistoryBase', 'ViewCommandRouting',
-             'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'CRenderSettingsFullscreen', 'CWebToolboxPage', 'CWebToolbox', 'CSecureHtmlView', 'MetadataExplorerOrder', 'PlayersSuperSafe', 'SelectionIterators', 'BrickColorConversions', 'SettingsDialogShow', 'CSettingsDialog',
+             'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'CRenderSettingsFullscreen', 'CWebToolboxPage', 'CWebToolbox', 'CSecureHtmlView', 'CBrowserView', 'BrowserViewExternalFactory', 'BrowserViewExternalMethods', 'BrowserViewExternalGetApp', 'HttpRobloxSite', 'HttpScriptCheck', 'HttpTrustCheck', 'HttpTrustInitialize', 'HttpTrustState', 'HttpLifetime', 'SecureHtmlAdSyndicator', 'HttpTransport', 'HttpTransportState', 'HttpResultCheck', 'HttpWinInet', 'HttpWinHttp', 'MetadataExplorerOrder', 'PlayersSuperSafe', 'SelectionIterators', 'BrickColorConversions', 'SettingsDialogShow', 'CSettingsDialog',
              'CInstanceExplorer', 'CChatPrompt', 'CMainFrameMemoryLabels', 'CRobloxReportView',
              'LogLifetime', 'LogWriteEntry', 'LogFormatTime', 'LogFormatMemory', 'MainLogProvider', 'LogManagerGet',
              'LogManagerState', 'LogManagerDestructor', 'ThreadLogFactory', 'ThreadLogPath', 'MainLogManagerState',
@@ -238,11 +273,11 @@ for name in ('AppFramework', 'CMainFrameShow'):
 for name in ('AppDocumentStartup', 'ApplicationExceptionLog', 'ErrorUploaderState',
              'ErrorUploaderConstructor', 'ErrorUploaderLifetime', 'ErrorUploaderCallback'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
-# Isolate the native Log provider without mutating the shared donor archive.
+# Isolate native Log and Http trust providers without mutating the shared donor archive.
 donor_log_library = base / 'content-load-owner/linked.lib'
 native_log_library = base / 'content-without-donor-log.lib'
 code, log = rebuild.run(rebuild.toolchain(), 'lib',
-                        ['/nologo', '/remove:Log.obj', '/out:' + str(native_log_library), str(donor_log_library)], base)
+                        ['/nologo', '/remove:Log.obj', '/remove:Http.obj', '/out:' + str(native_log_library), str(donor_log_library)], base)
 if code:
     raise SystemExit('Unable to isolate donor Log.obj: ' + log)
 assert sum(Path(arg) == donor_log_library for arg in args) == 1

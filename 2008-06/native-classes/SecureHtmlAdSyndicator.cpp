@@ -1,5 +1,5 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/http-noinline /I{headers}/mfc-import-length /I{headers}/std-noinline-string
-// Inactive draft: exception-handler layout is not yet matched.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-import-length /I{headers}/std-noinline-string
+// Body matches the original across its main and exception-handler fragments.
 #include <afxwin.h>
 #include <atlutil.h>
 #include "util/Http.h"

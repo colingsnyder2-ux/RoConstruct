@@ -40,7 +40,7 @@ extern CString applicationBaseUrlText;                // 0096dcf0
 extern NativeAtlModule nativeAtlModule;               // 0096dbb4
 extern HRESULT (__stdcall* nativeRegistrationCallback)(); // 0096dd00
 extern int nativeStartupMode;                         // 0096d358
-void nativeSetOutputMode(int);                        // 00569910
+namespace RBX { void setHttpTransportMode(int); }      // 00569910
 void nativeInitializeTypes();                         // 004448f0
 void nativeInitializeCom();                           // 004495a0
 void nativeRegisterNames1();                          // 0041b8a0
@@ -53,7 +53,7 @@ void __stdcall nativeSetRegistrationMode(bool);       // 0044d150
 BOOL CRobloxApp::InitInstance()
 {
     try {
-        nativeSetOutputMode(0);
+        RBX::setHttpTransportMode(0);
         RBX::StandardOut::singleton()->print(RBX::MESSAGE_INFO, "ROBLOX InitInstance");
         RBX::Security::Impersonator impersonator(RBX::Security::LocalGUI);
         errorUploader.reset(new ErrorUploader);

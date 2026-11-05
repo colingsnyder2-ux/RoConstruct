@@ -54,7 +54,7 @@ for rel in ('CommandBars/XTPToolBar.cpp', 'CommandBars/XTPControlComboBox.cpp', 
             '/I' + str(XTP_SRC), '/I' + str(ROOT / 'tools/libs/mfc-9.0/atlmfc/include')]
     code, log = rebuild.run(tool, 'cl', base + ['/Fo' + str(o), str(XTP_SRC / rel)], OUT)
     if code:  # recipe xtp-11.2.2-shared-mfc-internals: MFC private declarations
-        code, log = rebuild.run(tool, 'cl', base + ['/I' + str(ROOT / 'tools/libs/mfc-9.0/atlmfc/src/mfc'),
+        code, log = rebuild.run(tool, 'cl', base + ['/I' + str(ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/src/mfc'),
                                                     '/FIXTToolkitPro.h', '/FIafximpl.h', '/Fo' + str(o), str(XTP_SRC / rel)], OUT)
     assert code == 0, (rel, log[-2000:])
     for n, b, r in match.coff_functions(o.read_bytes()):
@@ -97,8 +97,8 @@ INTERNAL.update({
     '?OnBeforeNavigate2@CSecureHtmlView@@UAEXPBDK0AAVCByteArray@@0PAH@Z': 0x465d70,
     '?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ': 0x4060d0,
     '??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z': 0x40e160,
-    '?loadBrowserIcons@@YAXPAVCXTPImageManager@@@Z': 0x42f380,
-    '?isRobloxUrl@@YA_NPBD@Z': 0x56a160,
+    '?InitializeIcons@@YAXPAVCXTPImageManager@@@Z': 0x42f380,
+    '?isRobloxSite@Http@RBX@@SA_NPBD@Z': 0x56a160,
     '?classCBrowserView@CBrowserView@@2UCRuntimeClass@@B': 0x80cf58,
     '?classCIDEBrowserView@CIDEBrowserView@@2UCRuntimeClass@@B': 0x80cf74,
     '?classCPlayBrowserView@CPlayBrowserView@@2UCRuntimeClass@@B': 0x80cf90,

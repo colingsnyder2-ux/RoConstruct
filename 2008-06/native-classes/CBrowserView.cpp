@@ -1,14 +1,14 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-browser
 #include "CBrowserView.h"
 #include "CBrowserDoc.h"
 #include "CBrowserViewExternal.h"
 #include <SensAPI.h>
+#include "util/Http.h"
 
 // Original 004060d0 returns the application-owned base URL CString.
 CString applicationBaseUrl();
 // Original 0042f380: loads the browser toolbar icons (ID_BROWSER_* commands) into an image manager.
-void __cdecl loadBrowserIcons(CXTPImageManager* imageManager);
-// Original 0056a160: true when the cracked URL is a roblox.com address.
-bool __cdecl isRobloxUrl(const char* url);
+void __cdecl InitializeIcons(CXTPImageManager* imageManager);
 
 IMPLEMENT_DYNCREATE(CBrowserView, CSecureHtmlView)
 IMPLEMENT_DYNCREATE(CIDEBrowserView, CBrowserView)
@@ -37,7 +37,7 @@ END_MESSAGE_MAP()
 CBrowserView::CBrowserView()
     : addressCombo(NULL), canGoBack(false), canGoForward(false)
 {
-    loadBrowserIcons(XTPImageManager());
+    InitializeIcons(XTPImageManager());
 }
 
 CBrowserView::~CBrowserView() {}
@@ -279,7 +279,7 @@ void CBrowserView::OnBeforeNavigate2(LPCTSTR url, DWORD flags, LPCTSTR targetFra
         return;
     }
     CString unused(url);
-    if (!isRobloxUrl(url)) {
+    if (!RBX::Http::isRobloxSite(url)) {
         {
             std::string entry(url);
             history.push_back(entry);
