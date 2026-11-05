@@ -1,11 +1,13 @@
-import hashlib,json,struct,sys
+import hashlib,json,struct,sys,shutil
 from pathlib import Path
 import pefile
 main=Path(__file__).resolve().parents[3]; here=main/'work/2008-06/worker-artifacts/copy-paste'; output=main/'rebuild/2008-06/out/native-layouts'; output.mkdir(parents=True,exist_ok=True)
 sys.path.insert(0,str(main))
 from roc import match,rebuild
 base=json.loads((main/'work/2008-06/shared-layouts/document-swap-current.json').read_text())
-flags=['/I'+str(here/'overlay'),'/I'+str(main/'rebuild/2008-06/tests')]+[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
+overlay=output/'clipboard-current-include';(overlay/'v8tree').mkdir(parents=True,exist_ok=True)
+instance=(main/'rebuild/2008-06/native-headers/v8tree/Instance.h').read_text();needle='    Instance* findFirstChildByClassName';assert instance.count(needle)==1;(overlay/'v8tree/Instance.h').write_text(instance.replace(needle,'    Instance* findFirstChildByName(const std::string&) const;\n'+needle));shutil.copyfile(here/'overlay/xstring',overlay/'xstring')
+flags=['/I'+str(overlay),'/I'+str(main/'rebuild/2008-06/tests')]+[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')]
 pe=pefile.PE(str(main/'work/2008-06/original-p4-reference/Roblox.exe')); baseaddr=pe.OPTIONAL_HEADER.ImageBase
 imports={entry.address: (lib.dll.decode()+'!'+(entry.name.decode() if entry.name else '#'+str(entry.ordinal))) for lib in pe.DIRECTORY_ENTRY_IMPORT for entry in lib.imports}
 rows=[]

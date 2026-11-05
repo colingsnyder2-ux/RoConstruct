@@ -1,5 +1,5 @@
 {
-  "revision": "3238b08c7b1288996f09aaf57ab92f899ba8f234",
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
   "sources": {
     "rebuild\\2008-06\\tests\\record_native_property_attachment.py": "f0a99fcf4d3eeced80c900db559797719cc7b5300775df1398e34242b5c6dfa6",
     "rebuild\\2008-06\\tests\\NativePropertyAttachment.cpp": "59d864ab935a0ca42d025d523fda388c1913f5135e8289b8d3a9fda444778816",
@@ -57,7 +57,7 @@
     "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );",
     "void push_back(const _Ty& _Val)\n\t\t{\t\n\t\tif (size() < capacity())"
   ],
-  "object_sha256": "8a422fd9f3934367a7d0975ac5fb6023d81d3a305260a05b2619cc406afacfb0",
+  "object_sha256": "94200bed1f3dbaaef0af45711f539b7ec00b735233993b1aa48300d2b9e026a6",
   "methods": [
     {
       "address": "00439810",

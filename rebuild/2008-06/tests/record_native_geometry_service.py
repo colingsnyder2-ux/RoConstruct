@@ -6,9 +6,9 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current native head
                                            G3D::Array<PartInstance*> members the original keeps in this unit;
   * native-classes/GeometryService.cpp     (/fp:fast) the unit 0062d8f0..0062e070 plus class descriptor 005c0470,
                                            doDeclare 005bfa30 / callDoDeclare 005bffc0 and atexit 007fe710. The
-                                           0062d9e0 row of the function list holds two functions: Array<PartInstance*>
-                                           ::resize (bytes 00..100) and the folded ~Described jump (bytes 100..105);
-                                           each is compared as a slice, not as the whole row;
+                                           current bounds separate Array<PartInstance*>::resize (0062d9e0,
+                                           256 bytes) and the folded ~Described jump (0062dae0, 5 bytes);
+                                           each is compared against its complete analyzed extent;
   * GeometryService.cpp with NATIVE_GEOMETRYSERVICE_PENDING against out/native-layouts/geometry-service-pending/
     (declaration-only Workspace of tests/NativeGeometryServicePendingWorkspace.h, native engine-world World.h; FilterStairs
     from the native v8datamodel/Filters2008.h): getPartsTouchingExtents 0062db60
@@ -36,7 +36,7 @@ from roc import match, rebuild  # noqa: E402
 import native_bind as nb  # noqa: E402
 
 R = ROOT / 'rebuild/2008-06'
-OUT = nb.OUT
+OUT = R / 'out/native-geometry-service'
 OUT.mkdir(parents=True, exist_ok=True)
 LAYOUT = R / 'tests/NativeGeometryServiceLayout.cpp'
 SRC = R / 'native-classes/GeometryService.cpp'
@@ -88,6 +88,7 @@ APART = '?$Array@PAVPartInstance@RBX@@@G3D@@'
 
 # ---- externals: address the original instruction uses, read at the call sites listed ----------------
 EXTERNAL = {
+    '??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z': 0x405e30,  # shared_count call 005c1711; independently bound in service recorders.
     '??1Instance@RBX@@UAE@XZ': 0x55a540,                                   # ~FactoryProduct 0062d93e tail jump
     '??0Instance@RBX@@QAE@PBD@Z': 0x55b960,                                # FactoryProduct ctor 0062d958
     '??2@YAPAXI@Z': 0x6a0920, '??3@YAXPAX@Z': 0x6a067a, '_atexit': 0x6a17af,
@@ -117,25 +118,21 @@ FOLDED = {
     '??1' + DC + 'UAE@XZ': 0x62dae0,
 }
 NON_EXACT_ROWS = [
-    (0x5c1650, '??$?0PAVGeometryService@RBX@@' + DLR + '1@@shared_count@detail@boost@@',
-     'shared_count<GeometryService*, Deleter> constructor in the creating unit, not investigated (same shape as the '
-     'DebrisService / ForceField ones)', 'layout'),
 ]
-UNPROVEN = {
-    '??$?0PAVGeometryService@RBX@@' + DLR + '1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@' + DLR + '4@@Z': 0x5c1650,   # 005c1711
-}
+UNPROVEN = {}
 
 LAYOUT_ROWS = [
+    (0x5c1650, '??$?0PAVGeometryService@RBX@@' + DLR + '1@@shared_count@detail@boost@@'),
     (0x5c1790, '??$create@VGeometryService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGeometryService@RBX@@@boost@@XZ'),
     (0x5c16e0, '??$?0VGeometryService@RBX@@' + DLR + '1@@?$shared_ptr@VGeometryService@RBX@@@boost@@QAE@PAVGeometryService@RBX@@' + DLR + '3@@Z'),
-    (('slice', 0x62d9e0, 0x00, 0x100), '?resize@' + APART + 'QAEXH_N@Z'),
+    (0x62d9e0, '?resize@' + APART + 'QAEXH_N@Z'),
     (0x62daf0, '?append@' + APART + 'QAEXABQAVPartInstance@RBX@@@Z'),
 ]
 UNIT_ROWS = [
     (0x62d8f0, '??1' + FP + 'MAE@XZ'),
     (0x62d950, '??$?0PBD@' + FP + 'IAE@PBD@Z'),
     (0x62d9c0, '??_E' + FP + 'OEE@AEPAXI@Z'), (0x62d9d0, '??_E' + FP + 'OKE@AEPAXI@Z'),
-    (('slice', 0x62d9e0, 0x100, 0x105), '??1' + DS + 'UAE@XZ'),
+    (0x62dae0, '??1' + DS + 'UAE@XZ'),
     (0x62dbf0, '?getClassName@' + FP + 'UBEABVName@2@XZ'),
     (0x62dda0, '?onServiceProvider@GeometryService@RBX@@MAEXPBVServiceProvider@2@0@Z'),
     (0x62ddc0, '??$?0PBD@' + DC + 'IAE@PBD@Z'),
@@ -230,6 +227,8 @@ def verify(obj, rows, own, strict=True, external=EXTERNAL, data=DATA, record=Tru
         body, refs = bodies[name]
         target, target_refs = target_of(address)
         exact = match.exact_match(target, target_refs, body, refs)
+        if exact:
+            assert set(target_refs) <= set(refs), (name, 'missing original relocation')
         entry = {'address': label(address), 'symbol': name, 'size': len(body), 'target_size': len(target), 'exact': exact}
         if not exact:
             assert not strict, (name, entry['address'], len(body), len(target))
@@ -246,6 +245,7 @@ def verify(obj, rows, own, strict=True, external=EXTERNAL, data=DATA, record=Tru
             if not 0 <= offset < len(body):
                 continue
             symbol = symbols[index][0]
+            assert kind in (6, 20), (name, symbol, 'unsupported relocation', kind)
             if kind == 20:
                 value = (base + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
             else:

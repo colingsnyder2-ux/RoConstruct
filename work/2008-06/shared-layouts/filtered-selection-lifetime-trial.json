@@ -1,9 +1,9 @@
 {
   "scope": "Inactive FilteredSelection<PVInstance> constructor, destructor, context lookup and provider factory match; singleton identity, virtual behavior, ownership and runtime remain unproven.",
   "source_sha256": "0f9c36b67162a04d9ac4067eebfa38a41fe72c5602030787e56233a7bdc31846",
-  "header_sha256": "f351a88ecde30b3f000c66b116fec565f6022f768e6572654f5a3a1a327b1051",
+  "header_sha256": "47053e48f364664f668b7a9477f14af1e59f0a56675430cd4665a2b2be7fc0f1",
   "observer_sha256": "19e6a066d07bb46f79e8419057772b8caab44acbf967d0467941355523f7a548",
-  "object_sha256": "72adcf5763d29c060244d4e5e422e78de309ebc4fd7bd799d0c104f19f0ff65d",
+  "object_sha256": "835757931ecfcabee168abfe7703e6f3d3ca655b1c72177e81e517850ea228ea",
   "root_selection_offset": "0x134",
   "root_selection_lifetime": [
     "constructor 0x57ef30",
@@ -20,7 +20,7 @@
         "??0?$NonFactoryProduct@VInstance@RBX@@$0A@@RBX@@QAE@XZ": "0x409960",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x830944",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x830934",
-        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83092c",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83092c",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6BDebugable@1@@": "0x830924",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x830914",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x830904",
@@ -45,7 +45,7 @@
         "__ehhandler$??1?$FilteredSelection@VPVInstance@RBX@@@RBX@@UAE@XZ": "0x7d5df4",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x830944",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x830934",
-        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83092c",
+        "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x83092c",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6BDebugable@1@@": "0x830924",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x830914",
         "??_7?$FilteredSelection@VPVInstance@RBX@@@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x830904",
@@ -75,7 +75,7 @@
     }
   ],
   "service_source_sha256": "14d696a98d16a585621a1bd6a45681f93766449b6012118db7a73f4fb55a19c3",
-  "service_object_sha256": "dae7e11e8e1356795405818919c1b6e268ea81e346edb9d01298d9aea52dad92",
+  "service_object_sha256": "2be979e19163d11d57071f715fad2de09e54266397198d4610f9eeeb43b5d2f0",
   "service_lookup": {
     "address": "00580800",
     "size": 65,
@@ -88,7 +88,7 @@
     }
   },
   "factory_source_sha256": "3160a77d913d791f0cb48f75344a86700e2efcc382c50e8a6d232431adf2147f",
-  "factory_object_sha256": "ad9c213109c85fd4ff1bdab06796ed051554a48679558b92de2e932f7c298da5",
+  "factory_object_sha256": "405cc8fea4122e7d323019bb8212e3465d81177d946c2f14f2c1c8f5e3f675e4",
   "model_provider_factory": {
     "address": "005806c0",
     "size": 228,

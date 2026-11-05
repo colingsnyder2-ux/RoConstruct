@@ -29,7 +29,7 @@ for name in names:
     ownership = json.loads((folder / 'owned-symbols.json').read_text()) if name != 'p6' else {}
     native = {(entry['symbol'], entry['object']): address
               for address, entries in ownership.items() for entry in entries}
-    selected, matched, mismatches, rows = set(), set(), set(), []
+    selected, matched, mismatches, mismatch_rows, rows = set(), set(), set(), [], []
     objects = list((folder if name == 'p6' else folder / 'linked').glob('*.obj'))
     if name == 'p6':
         native_out = ROOT / 'rebuild/2008-06/out/native-layouts'
@@ -56,13 +56,14 @@ for name in names:
             final = pe.get_data(address - pe.OPTIONAL_HEADER.ImageBase, len(body))
             if not match.exact_match(body, relocations, final, relocations):
                 mismatches.add(address)
+                mismatch_rows.append(dict(symbol=symbol, object=obj.name, pe_address=hex(address), size=len(body)))
                 continue
             if key in native:
                 matched.add(address)
                 rows.append(dict(symbol=symbol, object=obj.name, pe_address=hex(address),
                                  original_address=native[key], size=len(body)))
     modules[name] = dict(selected_functions=len(selected), selected_code_matches=len(matched),
-                         coff_to_pe_mismatches=len(mismatches), matches=rows)
+                         coff_to_pe_mismatches=len(mismatches), mismatch_details=mismatch_rows, matches=rows)
     selected_all.update(selected)
     matched_all.update(matched)
 

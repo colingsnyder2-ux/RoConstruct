@@ -1,8 +1,8 @@
 {
-  "revision": "3238b08c7b1288996f09aaf57ab92f899ba8f234",
+  "revision": "322719abbaf276902356080cfb69966feea91ef3",
   "sources": {
-    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
-    "rebuild\\2008-06\\native-classes\\CMainFrameConstructor.cpp": "4faf2ee0d5c8c2d97fefebe5d42efb7e7c4aa9bc1cec6b652fdb5b4befada82c",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "7eeb25e0bda0b97adc4918c99983d76307bcd3c8c1b7c332c77658a863037f7e",
+    "rebuild\\2008-06\\native-classes\\CMainFrameConstructor.cpp": "2f53d78e78f0a89e0c88fea860457564e0ce826f9a5c50b2ffbda6da7b25538a",
     "rebuild\\2008-06\\native-headers\\CDataModelPropGrid.h": "2451573c8e1baf62d043e01be78d62987f89936fe8a128ff2c7745340ea840f3",
     "rebuild\\2008-06\\native-headers\\CSelectionPropGrid.h": "13fafeb53f903ffc62b81903ecdd8190eadcb09db62ba71e52130798b658e09a",
     "rebuild\\2008-06\\native-headers\\CPropGrid.h": "f8c49281322309579f6916350ccb9a7da22d2d1092e8a70bd14576464d9d383e",

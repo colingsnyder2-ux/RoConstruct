@@ -82,7 +82,7 @@ public:
     float getMaxMeshDetail() const { return maxMeshDetail; }
     void setMaxMeshDetail(float value);
 
-    G3D::Vector2int16 getFullscreenSize() const { return fullscreenSize; }
+    G3D::Vector2int16 getFullscreenSize() const;
     void setFullscreenSize(G3D::Vector2int16 value);
     G3D::Vector2int16 getWindowSize() const { return windowSize; }
     void setWindowSize(G3D::Vector2int16 value);

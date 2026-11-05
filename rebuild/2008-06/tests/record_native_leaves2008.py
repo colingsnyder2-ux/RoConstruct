@@ -50,7 +50,7 @@ PENDING = OUT / 'leaves2008-pending'
 EVENTS_OLD = '\t\t\treturn !listeners.empty();\n'
 EVENTS_NEW = '\t\t\treturn listeners.size() > 0;\n'
 text = (R / 'native-headers/util/Events.h').read_text()
-assert text.count(EVENTS_OLD) == 1
+assert text.count(EVENTS_OLD) + text.count(EVENTS_NEW) == 1   # the proposal may already be adopted upstream
 (PENDING / 'util/Events.h').write_text(text.replace(EVENTS_OLD, EVENTS_NEW))
 STDOUT_OLD = '\t\tvirtual ~StandardOut();\n'
 text = (ROOT / 'tools/rbxgs/Client/App/include/util/standardout.h').read_text()

@@ -3,5 +3,4 @@
 
 namespace RBX {
 SurfaceTool::SurfaceTool(Workspace* workspace) : MouseCommand(workspace), surface(NULL) {}
-void forceDestroy(SurfaceTool* value) { delete value; }
 }

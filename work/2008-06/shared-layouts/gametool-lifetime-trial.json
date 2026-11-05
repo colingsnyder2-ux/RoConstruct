@@ -2,15 +2,15 @@
   "observer_sha256": "b07a4d2a8f1c3b82299eb79fac513320a75ad716d86e9ef3016cf52365a0f41b",
   "headers": {
     "rebuild\\2008-06\\native-headers\\v8datamodel\\MouseCommand.h": "1f64b1ad3f0fe3597c7c9739bc9716e0f58a5b1220a05c381e61fe44a0e8ee09",
-    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "0a333d9d37be9acf557aa0a3afb10193ee2306a5288b0a9fb9e303740aa65f9d",
-    "rebuild\\2008-06\\tests\\NativeGameToolTrial.h": "8505a44d2ce608624465d3295e91b79ada1a601e7331c8848fadf97cf91bee05",
-    "rebuild\\2008-06\\tests\\NativePartDragToolTrial.h": "0622e1b7f2a9336868dc7f93c9279d7e9071e577110b8021516bed6741a514ca",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
+    "rebuild\\2008-06\\tests\\NativeGameToolTrial.h": "ea0bc508cf58ddfe81d1ff6b75f8cfe87f2e2879ce2a88b07ed95c55a1a80d27",
+    "rebuild\\2008-06\\tests\\NativePartDragToolTrial.h": "3f0f513d56dba59eeafffe5fcb3b1baaccfdb75c46301998e7f45833a231c307",
     "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\PartInstance.h": "1818fa26d3dbc571785d1261c01a67d11b8dae6726916ef22a83c0bbb1537208"
   },
   "objects": {
     "NativeGameToolFactoryTrial": {
       "source_sha256": "00066736020bf8af8a40ef603c4dd8b3de56f6e674d9bec82cdb633bafc0f501",
-      "object_sha256": "580ff62de716e1ba424e70de03a00eeca948973194b708b584f7ebac6277926d",
+      "object_sha256": "fef197a260d0ff7076868a9a24a93822b80023962ff7030eaa7274dcbafef4bd",
       "flags": [
         "/nologo",
         "/c",
@@ -51,8 +51,8 @@
       ]
     },
     "NativeGameToolLifetimeTrial": {
-      "source_sha256": "93b2607aae58de2a0016593576da207a028f63ff34a3842ff50ed22a66ad1abe",
-      "object_sha256": "5ea223be956d1c38fea890c7151f68544cc1873e34242b66295ee011e89be7ff",
+      "source_sha256": "103004466b791e25315e2007d1960ce071bd49ee386e0dccfb2d3c6517f6185a",
+      "object_sha256": "49e7d7be367725d2d202ed32d5a9f0c1be112f990e1a3467bba3f503d1c56608",
       "flags": [
         "/nologo",
         "/c",
@@ -94,7 +94,7 @@
     },
     "NativeGameToolEventsTrial": {
       "source_sha256": "2670a53d63c03a99d65ff65650fbadb600bbdbcefc61aa77146579608f0b47c4",
-      "object_sha256": "e1af0e94339847eaa9cd685f26f3505135fa03d500d6800657a147ba551f4728",
+      "object_sha256": "c780b65009c0dd12cbe8dcce6813e5b683d95d8af31216c8d657e3b0bb05a3ff",
       "flags": [
         "/nologo",
         "/c",
@@ -136,7 +136,7 @@
     },
     "NativeGameToolDragTrial": {
       "source_sha256": "82080ab4d80012f45cde0a7c78bea5c2cd0fb8af13de95bff48e55b2d0d26f1e",
-      "object_sha256": "88db6f7e1a293bf26569cc3f561938077e2b7dac385050deb4bf8522c1553c51",
+      "object_sha256": "010a4a61ca21dbfc5282ed616304d1123d95adf37292205f198725d581e30548",
       "flags": [
         "/nologo",
         "/c",
@@ -178,7 +178,7 @@
     },
     "NativeGameToolMouseDownTrial": {
       "source_sha256": "878092f1a85e79c6260102d5ed2545df78f2da11ddace3059e1afc1aeaab9b88",
-      "object_sha256": "30d23bf60805a0e04c11aae2614475abf3b0aca3392fb828afe5d5bd0eae6bcf",
+      "object_sha256": "f41f196b4fcbb26d8c5024b4e4ec31e3d777efc80b6093986f4894ad0964b9ac",
       "flags": [
         "/nologo",
         "/c",
@@ -219,8 +219,8 @@
       ]
     },
     "NativeGameToolNameTrial": {
-      "source_sha256": "63b413982c81331009384c73095a1514dc3294e5c9b389df306c92bb599fb3c0",
-      "object_sha256": "de2a092ac10b5d2fda3141562ab31904c52433291039ae885ffb3705ced6ff3b",
+      "source_sha256": "7a5e9a77bb26c8b9501001d684bc43ada55392fdf2f1147141c00bcd9c89ba62",
+      "object_sha256": "ade05a878fc227fe4a70e74e5f5f0a946b0f6870e39b270df7ce79f41c038838",
       "flags": [
         "/nologo",
         "/c",

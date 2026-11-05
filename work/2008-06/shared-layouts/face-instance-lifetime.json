@@ -1,9 +1,9 @@
 {
   "scope": "Inactive FaceInstance constructor and destructor match; complete virtual methods, Decal/Texture lifetimes and runtime remain unproven.",
-  "source_sha256": "af5d394961c3f9ca9ed7bd19c69af8e7c5c1e170b0c8ec809461f8fe6d758a92",
-  "header_sha256": "3ca3f9387ce192b0c1c7928e8615805d16ae1689d2603cc34f3bad57dc6343f2",
-  "observer_sha256": "4f8746beb0a0259ed24557849897bf3276a763c3e19e7af8280c009bcdf08599",
-  "object_sha256": "8fbd5c8fedf5d6c5ddcd52e61fa3bab765ffc98abc20904d145ef6c1548a086a",
+  "source_sha256": "e5e322f7337e83005ef00853d2c0c2bcc4381a97ab00689040e8f6f99dce0c63",
+  "header_sha256": "395f77875a783ae0e061aeb40e025e7889abe4c7653b9075906f741bf3f3091f",
+  "observer_sha256": "189f2593a04b1ef38bc90dfa1123030497f90d74a75d3d20510be82bbe23d06f",
+  "object_sha256": "72c5842cf48f7494bdb93b11d0e9c20ee209d26f04be548d1c594e07119de09f",
   "renderable_base_offset": "0x130",
   "methods": [
     {
@@ -14,10 +14,10 @@
       "bindings": {
         "__ehhandler$??0FaceInstance@RBX@@QAE@XZ": "0x7bd6e8",
         "??0Instance@RBX@@QAE@XZ": "0x55b7e0",
-        "?classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PBDBVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x597fb0",
+        "?classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x597fb0",
         "??_7FaceInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84072c",
         "??_7FaceInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x840720",
-        "??_7FaceInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x840718",
+        "??_7FaceInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x840718",
         "??_7FaceInstance@RBX@@6BDebugable@1@@": "0x840710",
         "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x840700",
         "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8406f0",

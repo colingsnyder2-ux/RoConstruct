@@ -1,9 +1,9 @@
 {
   "scope": "Inactive trial. Vector element type and semantics, full ModelInstance/Workspace layout, class lifetimes and linked target implementations remain unproven.",
-  "observer_sha256": "505b68c6c5acbbf5704bdfe4123f26888f0e9195ca57bb43d47bd636841ce050",
+  "observer_sha256": "ddcbb554473d2bc15f4c3cb795b4ec86334f970b4840fad0ec879f8338ca46b6",
   "source_sha256": "a01e1073413f2f171a4d61b213756bdf3e76034181f0057ea8c55f9bd23ea7d4",
-  "profile_sha256": "6cb8ba12fbd0082ce08a6b68aae26bd797173d5688153ff14dcfb3d4e5396b7e",
-  "object_sha256": "d105c0d7bd2e12b8b47eaa192da8c00222efab460f13c6446ab7a3fe361486e5",
+  "profile_sha256": "4427bb9a5fa1247f6a036b296b96c8447a1d796ff34d98bc8bdc2d8ed42e3601",
+  "object_sha256": "610022b01299f13e46193ea474b43eac80ed41fa15e76683d140357ee84383df",
   "address": "0046b5c0",
   "size": 373,
   "original_size": 373,
@@ -35,6 +35,6 @@
     "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceFinalConstructVectorTrial.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceFinalConstructVectorProfile.cpp"
   ],
-  "model_header_sha256": "300a3c981120231c35b04859a618b4dc4794ba6bfd2a2a045f4e9672a58538fc",
-  "overlay_header_sha256": "4f09a2312c23d2da4ac8754df699f21e4e165701b6b88993ea282549bf99b00c"
+  "model_header_sha256": "1606a7b85530c003e44ac975b09b1f40263445def89cbb38896840abe325919c",
+  "overlay_header_sha256": "1606a7b85530c003e44ac975b09b1f40263445def89cbb38896840abe325919c"
 }

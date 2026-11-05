@@ -3,8 +3,8 @@
   "source_sha256": "34b8d98dd754bdd5f4bc3455829d406d5190374c8eb381b20532b34974380c05",
   "observer_sha256": "b5a3d5fdf6bc3e2ee310b35c42d30b40280ca2b69bd066322a4e7f3ab93e5474",
   "workspace_header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
-  "selection_header_sha256": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
-  "object_sha256": "9525f8336074f4041372cb1e7bec7a2b3d3d365127a111ec357449d286096648",
+  "selection_header_sha256": "f351a88ecde30b3f000c66b116fec565f6022f768e6572654f5a3a1a327b1051",
+  "object_sha256": "660169a7288159283c1b32508dbe3991dbc92aa0098493a0232d86be4ecae6a4",
   "methods": [
     {
       "symbol": "?writeXmlSelection@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",

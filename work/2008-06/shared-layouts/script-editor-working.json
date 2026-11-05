@@ -36,21 +36,21 @@
     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-    "/I/home/user/roconstruct/tools/libs/scintilla-mfc-1.20"
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\scintilla-mfc-1.20"
   ],
   "profile": "noinline CString PCXSTR, std::string c_str and size (original imports them)",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
-    "rebuild/2008-06/tests/record_native_script_editor.py": "97509f748db6f2670bec0495098ab723d608954b4023b45fd9bafeb5417ee602",
-    "rebuild/2008-06/tests/record_native_script_editor.json": "120cca9e7a9b987cd1990ee113e314f1cba6c747e6f71d56175e964e820f496c",
-    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
-    "rebuild/2008-06/native-classes/CScriptEditor.cpp": "d9087a0fdbf93680cf33c1c8b85ebffaba4cc9ad35b26d9464c233da1f122509",
-    "rebuild/2008-06/tests/NativeScriptEditorLayout.cpp": "f51a41109a066d122145c9eaf59d2925cb4453a21af2319e1a541e8011ba6a4a",
-    "rebuild/2008-06/native-headers/CScriptEditor.h": "15706d4177b7b0b7a7ac38cb4bd5cf0bd2b0c12366bc137e203402bc7bb41dea",
-    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "327e290467c0bd7c704d68d04668991d11e4682aae03eee2d4fc247709a9335f",
-    "rebuild/2008-06/native-headers/v8tree/Instance.h": "91da6748bf4a06759d73d4a810c6ef466018e5d85f130cd33943c7f2eca491eb"
+    "rebuild/2008-06/tests/record_native_script_editor.py": "f478c3d4f3e4c8c72f6750d1903487596a3aabd2243f51e36ad6266f6c9daf71",
+    "rebuild/2008-06/tests/record_native_script_editor.json": "aca1698acc60e66c7c44c8879d9c68f02cac769dca9648c1edcd035936c45436",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "rebuild/2008-06/native-classes/CScriptEditor.cpp": "1c4911077e5ca1edc57db8f363c53226c2ffa0f0282976c85718a1e9cedca1a1",
+    "rebuild/2008-06/tests/NativeScriptEditorLayout.cpp": "eb9eedb82aed83933d022733a01844fd87617df90e37650d5e7d69bf4ce2d038",
+    "rebuild/2008-06/native-headers/CScriptEditor.h": "33e35327f94c128674e54556edb717a57d6d4c225c00dceea15ea52bf15f0d35",
+    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "8e31ad6c32744475bdd85cfd7f476818aba7a9754e5827ce5b2e8b02c556f179",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "ef3b6772710835641c4006a15541642f1c43ddcb5e0bff3b2e5b67c03d470b2d"
   },
-  "object_sha256": "d423e02f03d71a1755c778f87ef02de36d524ce927a084b71bbd20c4b78b14cb",
+  "object_sha256": "c06ab1976b258a8fdeb63de467694fc05226c00bd7ab4c1b841f8352ce238f1f",
   "layout": {
     "size": "0x160",
     "bases": "Scintilla::CScintillaView +0 (0xec), Listener<Instance,AncestorChanged> +0xec, MarshaledListener<Instance,PropertyChanged> +0xf0, MarshaledListener<RunService,RunState> +0x114",

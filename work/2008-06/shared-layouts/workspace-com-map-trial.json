@@ -1,9 +1,9 @@
 {
   "scope": "Inactive original COM map data, GUID bytes and three ATL methods match; real interface methods, data ownership and runtime remain unproven.",
   "observer_sha256": "351c95e7f1899daf5a687eba3e31ae04ea7000af6f8eb165acbc9672359fe47c",
-  "header_sha256": "7c5747b7f367e7a4cccf4f27e379a3ad016f812987468fa0483f8e82a92da386",
-  "overlay_sha256": "7c5747b7f367e7a4cccf4f27e379a3ad016f812987468fa0483f8e82a92da386",
-  "object_sha256": "758c2b4660688d9c0237fdbc883015f7c0f010c91fbac732203d3ec031700556",
+  "header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+  "overlay_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+  "object_sha256": "a4cc6b74a26231993ae0caa602f355ac66ec94dd8dc82c4206de098b64e52635",
   "methods": [
     {
       "symbol": "?QueryInterface@?$CComObject@VCWorkspace@@@ATL@@UAGJABU_GUID@@PAPAX@Z",

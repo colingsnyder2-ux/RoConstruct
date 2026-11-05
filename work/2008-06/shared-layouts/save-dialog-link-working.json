@@ -1,5 +1,5 @@
 {
-  "revision": "d03390c55685748704b020d1f3b90c4cacd63ad9",
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
   "source_sha256": "54292eec762963b0dfbb59dd19f2ec00168a42a1ebddbdde7e511113552a7ce8",
   "link_exit": 0,
   "link_flags": [
@@ -75,8 +75,8 @@
     "/NODEFAULTLIB:ToolkitPro1122vc90S.lib",
     "/NODEFAULTLIB:ToolkitPro1122vc90LDS.lib"
   ],
-  "exe_sha256": "87a63cafa42cb958b3cb6059435a43cc105d085a8386a05209b6831e6af8be30",
-  "map_sha256": "418c1b50d7a431480547acd6f6dac05b2b070914faebd9044d9cc786620dacf9",
+  "exe_sha256": "79bfe5bddaf679c542f60f470860adc33e0819b7d487b3b80187b2e37c372231",
+  "map_sha256": "ff6bfb00f6c9e1ee3943a2d0f7b7a0003c30a3736afcf23e35cd1a2f1edc7eea",
   "object_sha256": {
     "rebuild\\2008-06\\out\\p6\\RobloxShell.obj": "a2e357c9f4900ef7546653c1ef9958487f0e83d93f64545057662df46d50f336",
     "rebuild\\2008-06\\out\\p6\\MyXTPCommandBars.obj": "443645ceb461f7a06a7c27ccd5c1fb723ebd04a477ae654ab4cd57aa9e924726",
@@ -85,15 +85,15 @@
     "rebuild\\2008-06\\out\\p6\\P6Data.obj": "b940f3954aa129393b66a9d02081aa4133f8ac96ef41290b3ac51fef0c21f039",
     "rebuild\\2008-06\\out\\p6\\roblox.res": "d5d2373dc401a271ff764f16cb92558da4009c7215210b4938e533821187bb42",
     "rebuild\\2008-06\\out\\p6\\mfc90.lib": "49e5238e6586ad148da8a68c082fe81dc1bf6bca26a3cc6a449a323f05a750de",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconsFresh.obj": "2f5a04097a3f143e663dd70142cb36b96f90b940375a2d858c385ecd4f7ccc3a",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconWidth.obj": "9a5d9a80ecfb66a9b31eab0a7867a5992e048e53628c19e70c9d9a0e733e5f75",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeDHtmlDialog.obj": "e28ecb3ebbadebafbbce4c52c8f58db753a509a4d7512ad788abb4c353f01063",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeAboutDialog.obj": "12e4d44b06ad246780b579534228eece138e49cd0254ddc067520cab85fa78b4",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeAboutDialogData.obj": "3b7e69ecde8ad14e425784c43612865d1c77f51d3d8365589a8f607fedeb8bb5",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeFileVersionInfo.obj": "dc9612d36c81ca10c042523d35f3c42dde202f17c408adf4e3845a2d9ce16f7f",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeGLCaps.obj": "07002b059e4b3607c0044d304fd1b7f2cff369dace2994bdead1410870a233c0",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeSaveDialogProfile.obj": "e016135b3f61eaeae255a9aa9d2d920d7a13f0b974bcbb26ac60c21aa2ed12b8",
-    "rebuild\\2008-06\\out\\native-layouts\\NativeApplicationBaseUrl.obj": "2f26c5d2bbd47818df23ebd9a80146630fda27e12235d0f3f1cadceda5370692"
+    "rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconsFresh.obj": "02b59188347e7ba54158b1eb4e155038297f0ccabb74d75e5553a8851527dd74",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconWidth.obj": "36bed4eb72e779bc374d62f091c8b9d7a6e2f45e338a63f2a83efb9cf15d56da",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeDHtmlDialog.obj": "bee2fcf14977f39660eb56df71264e91c67fe5f133b71332dddc63dccc8dc2e1",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeAboutDialog.obj": "67638d8f7b11534f8a0895dc0f8955d578ce14340e4390bca2da0c0a8d415f27",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeAboutDialogData.obj": "8d5e7f31ce535a77ca158b3b9cbc249a1de26e1875a1e753ec55107d65567115",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeFileVersionInfo.obj": "561a4805a7cf3df745690c8e0dd99ff97b863eb4e921dd90bce6c01849fe48ab",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeGLCaps.obj": "081bf50d0f35a9c09c8852d4a7d1c710d745ff09663344331119432b43def735",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeSaveDialogProfile.obj": "60a9eadfdaaa5f6f6b3be380d881ab9f6dac4d60f78365d7d943d1e3dd388050",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeApplicationBaseUrl.obj": "7f13c510a868ea0b645905a65ce1d7ebe4860ae8c5f2a153edb336c25a5edafb"
   },
   "library_sha256": {
     "rebuild\\2008-06\\out\\P2RecoveredPlayer\\linked\\linked.lib": "efb903942a7668b3ad9978a3c29834011187dc33881a533c34507793ed2bc74f",

@@ -208,7 +208,7 @@
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_humanoid2008.py": "a7ca62b060e89cf21d82a469257c8a63ff5208b69c10b183dd06c8ef9b87d0a6",
+    "rebuild/2008-06/tests/record_native_humanoid2008.py": "aa5810b555c1e27665592f7e48906eb38897900764da82aca680e8f12fa6c4e6",
     "rebuild/2008-06/native-headers/humanoid/Humanoid2008.h": "89c1f7ee6f9aa1ab530bd2c938dbcb92fc686f367bbc62a28b961f34a8f55583",
     "rebuild/2008-06/native-classes/Humanoid2008.cpp": "1cd1fb52cd90f8455c6649c110f9750288f23da38e546d02b63f7387ae2735fd",
     "rebuild/2008-06/native-classes/Humanoid2008Parts.cpp": "d2404500e81cb542f90fc9e0fcd675b1c1d065084ce6a56323520e257a2f3d99",
@@ -216,11 +216,11 @@
     "rebuild/2008-06/tests/NativeHumanoid2008PendingWorkspace.h": "d613fdef92b8642f2c9312edbc0bd42f36e5828d665f98b6dae31bda2b503196"
   },
   "objects": {
-    "NativeHumanoid2008Layout.obj": "ff124d1f4bc827b8c8f53c55ce726f9bcc7fdbc166b51f24d6fb1fd472950222",
-    "NativeHumanoid2008.obj": "05040ba21afb01ffa147af319ec0239043f815b1839b01b9badc6fa92abd90d6",
-    "NativeHumanoid2008Parts.obj": "043b0576da5a5beee5bea9995cbfb5a4904a08a5feaf0d3ba9558bab10da0d4a",
-    "NativeHumanoid2008Pending.obj": "5d0419c46b8af6fb7e2eb1ab906c2ec6f6c582078b7f9ffe43ff779e03e631d3",
-    "NativeHumanoid2008PartsPending.obj": "d35dc78543972c31447d32afe1a4baea69d90310bdf1af8208cc8e21ecc6e59c"
+    "NativeHumanoid2008Layout.obj": "a4be65729720969334d956bace6f803af17f8be3bd81ae35765e8dc6385c70a5",
+    "NativeHumanoid2008.obj": "7829f16e4995c9eeff2dad6ab1528df6fec99f5d40dcbd6ed1841eb9ddbbd6b9",
+    "NativeHumanoid2008Parts.obj": "1b3d778e0f94b80c17a4292a67061928bdc95efa031f27aaaf2bb66a74bcdea0",
+    "NativeHumanoid2008Pending.obj": "b2b61209c942b702695b7a687519f2faf742f3776a24d3fa39e429c8164059ca",
+    "NativeHumanoid2008PartsPending.obj": "0fcdce46bba7f2c0751b9f4a868091e70d8baa18ae6763850fccb7e28bab6334"
   },
   "layout": {
     "Humanoid": "0x22c (create<Humanoid> 00490770 mallocs 0x22c, constructor 005db280(1)); Connector +0x130, IControllable +0x138, IRenderable +0x13c, ICharacterSubject +0x14c (vbptr +0x150), IModelModifier +0x1a0, Listener<RunService, Stepped> +0x1a4, fields +0x1a8..+0x220, vtordisp +0x224, ILocation +0x228; RTTI 30 bases"
@@ -2048,6 +2048,14 @@
       "local_eh": []
     },
     {
+      "address": "00565950",
+      "symbol": "?hasStringValue@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
       "address": "005d81d0",
       "symbol": "??$getset@P8Humanoid@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VHumanoid@RBX@@VVector3@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector3@G3D@@@Reflection@RBX@@@std@@P8Humanoid@2@BE?AVVector3@G3D@@XZP852@AEXABV67@@Z@Z",
       "size": 91,
@@ -2103,6 +2111,14 @@
       "local_eh": []
     },
     {
+      "address": "00565950",
+      "symbol": "?hasStringValue@?$TypedPropertyDescriptor@M@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
       "address": "005d8290",
       "symbol": "??$getset@P8Humanoid@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VHumanoid@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8Humanoid@2@BE_NXZP852@AEX_N@Z@Z",
       "size": 91,
@@ -2142,6 +2158,14 @@
       "address": "0059a4a0",
       "symbol": "?isReadOnly@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBE_NXZ",
       "size": 9,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00565950",
+      "symbol": "?hasStringValue@?$TypedPropertyDescriptor@_N@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
       "exact": true,
       "verified_targets": {},
       "local_eh": []
@@ -2490,8 +2514,56 @@
     },
     {
       "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetSetImpl@P8Humanoid@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VHumanoid@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005d7b60",
+      "symbol": "?getValue@?$GetSetImpl@P8Humanoid@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VHumanoid@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE?AVVector3@G3D@@PBVDescribedBase@34@@Z",
+      "size": 71,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005d7bb0",
+      "symbol": "?setValue@?$GetSetImpl@P8Humanoid@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VHumanoid@RBX@@VVector3@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVVector3@G3D@@@Z",
+      "size": 54,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
       "symbol": "?isReadOnly@?$GetSetImpl@P8Humanoid@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VHumanoid@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE_NXZ",
       "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetSetImpl@P8Humanoid@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VHumanoid@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b0c30",
+      "symbol": "?getValue@?$GetSetImpl@P8Humanoid@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VHumanoid@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE?AVVector3@G3D@@PBVDescribedBase@34@@Z",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005d7bb0",
+      "symbol": "?setValue@?$GetSetImpl@P8Humanoid@RBX@@BE?AVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VHumanoid@RBX@@VVector3@G3D@@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVVector3@G3D@@@Z",
+      "size": 54,
       "exact": true,
       "verified_targets": {},
       "local_eh": []
@@ -2506,6 +2578,30 @@
     },
     {
       "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetSetImpl@P8Humanoid@RBX@@BEMXZP812@AEXABM@Z@?$PropDescriptor@VHumanoid@RBX@@M@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b0c90",
+      "symbol": "?getValue@?$GetSetImpl@P8Humanoid@RBX@@BEMXZP812@AEXABM@Z@?$PropDescriptor@VHumanoid@RBX@@M@Reflection@RBX@@UBEMPBVDescribedBase@34@@Z",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005d7bb0",
+      "symbol": "?setValue@?$GetSetImpl@P8Humanoid@RBX@@BEMXZP812@AEXABM@Z@?$PropDescriptor@VHumanoid@RBX@@M@Reflection@RBX@@UBEXPAVDescribedBase@34@ABM@Z",
+      "size": 54,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
       "symbol": "?isReadOnly@?$GetSetImpl@P8Humanoid@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VHumanoid@RBX@@_N@Reflection@RBX@@UBE_NXZ",
       "size": 3,
       "exact": true,
@@ -2514,8 +2610,56 @@
     },
     {
       "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetSetImpl@P8Humanoid@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VHumanoid@RBX@@_N@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b0c90",
+      "symbol": "?getValue@?$GetSetImpl@P8Humanoid@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VHumanoid@RBX@@_N@Reflection@RBX@@UBE_NPBVDescribedBase@34@@Z",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005d7bf0",
+      "symbol": "?setValue@?$GetSetImpl@P8Humanoid@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VHumanoid@RBX@@_N@Reflection@RBX@@UBEXPAVDescribedBase@34@AB_N@Z",
+      "size": 57,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
       "symbol": "?isReadOnly@?$GetSetImpl@P8Humanoid@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VHumanoid@RBX@@M@Reflection@RBX@@UBE_NXZ",
       "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetSetImpl@P8Humanoid@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VHumanoid@RBX@@M@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b0c90",
+      "symbol": "?getValue@?$GetSetImpl@P8Humanoid@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VHumanoid@RBX@@M@Reflection@RBX@@UBEMPBVDescribedBase@34@@Z",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005d7c30",
+      "symbol": "?setValue@?$GetSetImpl@P8Humanoid@RBX@@BEMXZP812@AEXM@Z@?$PropDescriptor@VHumanoid@RBX@@M@Reflection@RBX@@UBEXPAVDescribedBase@34@ABM@Z",
+      "size": 59,
       "exact": true,
       "verified_targets": {},
       "local_eh": []
@@ -3134,7 +3278,7 @@
         "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
         "??_C@_05LHKEDNFH@Torso?$AA@": "0x832a1c (literal 'Torso')",
         "?propTorso@RBX@@3V?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@1@A": "0x97a538 (data propTorso)",
-        "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5da4e0 (external)",
+        "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5da4e0 (own row)",
         "??__FpropTorso@RBX@@YAXXZ": "0x7ff300 (own row)",
         "_atexit": "0x6a17af (external)"
       },
@@ -3151,7 +3295,7 @@
         "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
         "??_C@_07FKPMCNBA@LeftLeg?$AA@": "0x83d808 (literal 'LeftLeg')",
         "?propLeftLeg@RBX@@3V?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@1@A": "0x97a3b0 (data propLeftLeg)",
-        "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5da4e0 (external)",
+        "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5da4e0 (own row)",
         "??__FpropLeftLeg@RBX@@YAXXZ": "0x7ff2e0 (own row)",
         "_atexit": "0x6a17af (external)"
       },
@@ -3168,7 +3312,7 @@
         "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
         "??_C@_08JJHAJDEM@RightLeg?$AA@": "0x83d810 (literal 'RightLeg')",
         "?propRightLeg@RBX@@3V?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@1@A": "0x97a5dc (data propRightLeg)",
-        "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5da4e0 (external)",
+        "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5da4e0 (own row)",
         "??__FpropRightLeg@RBX@@YAXXZ": "0x7ff2a0 (own row)",
         "_atexit": "0x6a17af (external)"
       },
@@ -3185,7 +3329,7 @@
         "??_C@_07DFGIDBBA@Control?$AA@": "0x83d828 (literal 'Control')",
         "??_C@_0L@EFJJAION@WalkToPart?$AA@": "0x83d81c (literal 'WalkToPart')",
         "?propWalkToPart@RBX@@3V?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@1@A": "0x97a328 (data propWalkToPart)",
-        "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5da4e0 (external)",
+        "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5da4e0 (own row)",
         "??__FpropWalkToPart@RBX@@YAXXZ": "0x7ff2c0 (own row)",
         "_atexit": "0x6a17af (external)"
       },
@@ -3297,6 +3441,24 @@
       ]
     },
     {
+      "address": "005da4e0",
+      "symbol": "??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 199,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x583f40 (own row)",
+        "?classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0860 (own row)",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": "0x83d5e4 (vtable RTTI .?AV?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@ offset 0x0)",
+        "??_7?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@6BIIDREF@2@@": "0x83d5dc (vtable RTTI .?AV?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@ offset 0x18)",
+        "??$getset@P8Humanoid@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VHumanoid@RBX@@PAVPartInstance@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPartInstance@RBX@@@Reflection@RBX@@@std@@P8Humanoid@2@BEPAVPartInstance@2@XZP852@AEXPAV62@@Z@Z": "0x5d8110 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Humanoid@RBX@@BEPAVPartInstance@1@XZP801@AEXPAV21@@Z@?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Humanoid@2@BEPAVPartInstance@2@XZP832@AEXPAV42@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
       "address": "007ff300",
       "symbol": "??__FpropTorso@RBX@@YAXXZ",
       "size": 29,
@@ -3397,6 +3559,74 @@
       ]
     },
     {
+      "address": "00583f40",
+      "symbol": "??$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ",
+      "size": 115,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ@51": "0x975598 (local static)",
+        "??_C@_03MCAECCCA@Ref?$AA@": "0x821450 (literal 'Ref')",
+        "??_R0?AVRefType@Reflection@RBX@@@8": "0x934d40 (RTTI .?AVRefType@Reflection@RBX@@)",
+        "??_C@_06ELFECKBG@Object?$AA@": "0x821634 (literal 'Object')",
+        "?type@?1???$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV123@XZ@4V123@A": "0x975588 (external)",
+        "??0Type@Reflection@RBX@@IAE@PBDABVtype_info@@0@Z": "0x4897a0 (own row)",
+        "??__Ftype@?1???$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ@YAXXZ": "0x7fd760 (own row)",
+        "??_7RefType@Reflection@RBX@@6B@": "0x82144c (vtable RTTI .?AVRefType@Reflection@RBX@@ offset 0x0)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ"
+      ]
+    },
+    {
+      "address": "005c0860",
+      "symbol": "?classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x978708 (local static)",
+        "?sHumanoid@RBX@@3PADA": "0x9537e8 (data sHumanoid)",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (own row)",
+        "?foo@?1??classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x978648 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe670 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "00631180",
+      "symbol": "??_G?$RefPropDescriptor@VHumanoid@RBX@@VPartInstance@2@@Reflection@RBX@@UAEPAXI@Z",
+      "size": 47,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?hasStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005d8110",
+      "symbol": "??$getset@P8Humanoid@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VHumanoid@RBX@@PAVPartInstance@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPartInstance@RBX@@@Reflection@RBX@@@std@@P8Humanoid@2@BEPAVPartInstance@2@XZP852@AEXPAV62@@Z@Z",
+      "size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Humanoid@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VHumanoid@RBX@@PAVPartInstance@2@@Reflection@RBX@@6B@": "0x83d2f4 (vtable RTTI .?AV?$GetSetImpl@P8Humanoid@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VHumanoid@RBX@@PAVPartInstance@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
       "address": "00411ad0",
       "symbol": "??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z",
       "size": 104,
@@ -3427,6 +3657,92 @@
       ]
     },
     {
+      "address": "004897a0",
+      "symbol": "??0Type@Reflection@RBX@@IAE@PBDABVtype_info@@0@Z",
+      "size": 109,
+      "exact": true,
+      "verified_targets": {
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "??_7Type@Reflection@RBX@@6B@": "0x821444 (vtable RTTI .?AVType@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0Type@Reflection@RBX@@IAE@PBDABVtype_info@@0@Z"
+      ]
+    },
+    {
+      "address": "007fd760",
+      "symbol": "??__Ftype@?1???$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ@YAXXZ",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "?type@?1???$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV123@XZ@4V123@A": "0x975588 (external)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ad80",
+      "symbol": "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x96c528 (local static)",
+        "?sInstance@RBX@@3QBDB": "0x82d6a0 (external)",
+        "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0x40ad20 (own row)",
+        "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fa2a0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "007fe670",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x978648 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$GetSetImpl@P8Humanoid@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VHumanoid@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isWriteOnly@?$GetSetImpl@P8Humanoid@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VHumanoid@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b0c90",
+      "symbol": "?getValue@?$GetSetImpl@P8Humanoid@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VHumanoid@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBEPAVPartInstance@4@PBVDescribedBase@34@@Z",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005d7b20",
+      "symbol": "?setValue@?$GetSetImpl@P8Humanoid@RBX@@BEPAVPartInstance@2@XZP812@AEXPAV32@@Z@?$PropDescriptor@VHumanoid@RBX@@PAVPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABQAVPartInstance@4@@Z",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
       "address": "00411120",
       "symbol": "?add_ref_lock@sp_counted_base@detail@boost@@QAE_NXZ",
       "size": 49,
@@ -3446,10 +3762,92 @@
         "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
       },
       "local_eh": []
+    },
+    {
+      "address": "0040ad20",
+      "symbol": "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@51": "0x96c460 (local static)",
+        "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@AAE@XZ": "0x570820 (external (evidence name))",
+        "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ": "0x7fa300 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ"
+      ]
+    },
+    {
+      "address": "007fa2a0",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x96c468 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040abc0",
+      "symbol": "??1ClassDescriptor@Reflection@RBX@@UAE@XZ",
+      "size": 99,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
+        "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
+        "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ": "0x40ab30 (own row)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fa300",
+      "symbol": "??__Froot@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?root@?1??rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV234@XZ@4V234@A": "0x96c3a0 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VFunctionDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VSignalDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040ab30",
+      "symbol": "??1?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@QAE@XZ",
+      "size": 82,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
     }
   ],
-  "exact_count": 259,
-  "exact_unique_addresses": 223,
+  "exact_count": 298,
+  "exact_unique_addresses": 236,
   "pending_methods": [
     {
       "address": "005d9a20",
@@ -3604,7 +4002,7 @@
       "offset": "0x24",
       "slots": {
         "0": "??_E?$DescribedCreatable@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@WCE@AEPAXI@Z = 0x5d7960 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3624,7 +4022,7 @@
       "offset": "0x64",
       "slots": {
         "0": "??_E?$DescribedCreatable@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@WGE@AEPAXI@Z = 0x5d7970 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3712,7 +4110,7 @@
       "offset": "0x24",
       "slots": {
         "0": "??_E?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@OCE@AEPAXI@Z = 0x5d7960 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3732,7 +4130,7 @@
       "offset": "0x64",
       "slots": {
         "0": "??_E?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@OGE@AEPAXI@Z = 0x5d7970 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3829,7 +4227,7 @@
       "offset": "0x24",
       "slots": {
         "0": "??_EHumanoid@RBX@@WCE@AEPAXI@Z = 0x5d7ff0 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x558d90 (inherited (Instance vtable 0x82d858 slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },
@@ -3849,7 +4247,7 @@
       "offset": "0x64",
       "slots": {
         "0": "??_EHumanoid@RBX@@WGE@AEPAXI@Z = 0x5d8010 (own row)",
-        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
+        "1": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x559230 (inherited (Instance vtable 0x82d838 slot 1))",
         "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z = 0x70bdf0 (own row)"
       }
     },

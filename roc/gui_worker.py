@@ -18,9 +18,9 @@ DEFAULTS = dict(client="", server="", user="", model="", workers=1, rounds=4,
                 cloud_allowed=False, cloud_concurrency="auto", max_cloud_requests=None,
                 max_cloud_tokens=None, max_cloud_cost=None, lease_mode="function",
                 unit_name=None, family_id=None, targets=None, library="",
-                native_agent_submit=True, native_agent_minutes=4, native_agent_checks=6, native_agent_tasks="", native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="method", native_compile_batch=4,
+                native_agent_submit=True, native_agent_minutes=4, native_agent_checks=6, native_agent_tasks="", native_excluded_classes="CRobloxView,CMainFrame,HUMAN", native_batch_files=40, native_compile_workers="auto", native_context="methods", native_generation="method", native_compile_batch=4,
                 native_selection='balanced', native_escalation_model='', native_escalate_after=2, native_max_no_improvement=3, native_repair_rounds=2, native_repair_trials=24)
-LIVE = {"native_agent_submit","native_agent_minutes", "native_agent_checks", "native_agent_tasks", "workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
+LIVE = {"native_agent_submit","native_agent_minutes", "native_agent_checks", "native_agent_tasks", "native_excluded_classes", "workers", "model", "rounds", "max_size", "max_tokens", "strategy", "order",
         "thinking", "reasoning_effort", "use_revng", "use_remill", "min_score", "max_score",
         "diverse_candidates", "guided_mutations", "near_repair", "max_cloud_requests",
         "max_cloud_tokens", "max_cloud_cost", "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch", "native_selection", "native_escalation_model", "native_escalate_after", "native_max_no_improvement", "native_repair_rounds", "native_repair_trials"}
@@ -99,6 +99,9 @@ def validate(values, base=None, check_model=True):
         raise ValueError("Invalid native generation mode")
     if not isinstance(config['native_agent_tasks'], str):
         raise ValueError('Native task manifest must be a path')
+    excluded = config['native_excluded_classes']
+    if not isinstance(excluded, str) or len(excluded) > 2000 or any(not re.fullmatch(r'[A-Za-z_]\w*(?:::\w+)*', name.strip()) for name in excluded.split(',') if name.strip()):
+        raise ValueError('Excluded native classes must be comma-separated class names')
     if config['native_generation'] == 'agent':
         if not isinstance(config['model'], str) or not config['model'].startswith('codex:'):
             raise ValueError('Native class recovery uses a signed-in codex: model')
@@ -159,6 +162,7 @@ class Control:
         self.cost_known = (config["source_only"] or not providers.is_cloud(config["model"]) or providers.has_pricing(config["model"])) and (not config["native_escalation_model"] or providers.has_pricing(config["native_escalation_model"]))
         self.applied = {}
         self.started_at = self.last_report = time.monotonic()
+        self.started_timestamp = time.time()
         self.completed = self.matched = self.improved = self.errors = 0
         self.started_jobs = {}
 
@@ -353,7 +357,9 @@ def native_loop(config, control, emit):
             try:
                 summary = native_recovery.run(current, control, emit)
                 control.completed += summary.get('attempted', 0)
-                emit('native_recovery', **summary)
+                elapsed = max(time.monotonic() - control.started_at, 1)
+                emit('native_recovery', **summary, session_started=control.started_timestamp,
+                     session_credits=control.matched, credits_per_hour=round(control.matched * 3600 / elapsed, 2))
                 emit('benchmark',workers=control.workers,completed=control.completed,matched=control.matched,improved=0,errors=control.errors)
                 with control.budget._lock:
                     emit('usage', requests=control.budget.requests, tokens=control.budget.tokens, cost=None)
@@ -545,7 +551,7 @@ def main(initial=None, receive_commands=True):
         with control.condition:
             current = dict(control.config)
         options = {key: value for key, value in current.items() if key not in
-                   ("native_agent_submit", "native_agent_minutes", "native_agent_checks", "native_agent_tasks", "workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency",
+                   ("native_agent_submit", "native_agent_minutes", "native_agent_checks", "native_agent_tasks", "native_excluded_classes", "workers", "client", "max_cloud_requests", "max_cloud_tokens", "max_cloud_cost", "cloud_concurrency",
                     "native_batch_files", "native_compile_workers", "native_context", "native_generation", "native_compile_batch", "native_selection", "native_escalation_model", "native_escalate_after", "native_max_no_improvement", "native_repair_rounds", "native_repair_trials")}
         options.update(token=initial.get("token"), only=[current["client"]] if current["client"] else None,
                        model=current["model"] or None, forever=True, cloud_budget=control.budget, cloud_gate=gate,

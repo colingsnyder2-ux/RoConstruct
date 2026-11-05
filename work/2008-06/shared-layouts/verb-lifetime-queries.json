@@ -2,18 +2,18 @@
   "scope": "Inactive native destructor and query bodies; referenced class constructors, complete virtual tables and runtime swap remain unverified.",
   "inputs": {
     "rebuild\\2008-06\\tests\\record_native_verb_lifetime.py": "94bebc45735dbddfae9cc3bb5828913d929a6fb43adb3a494a89b5ae64569321",
-    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "0a333d9d37be9acf557aa0a3afb10193ee2306a5288b0a9fb9e303740aa65f9d",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
     "rebuild\\2008-06\\native-headers\\v8tree\\Verb.h": "aa94b9409b10392ebee9d81c40b6d594a08a773922321533004d5432af47fcbc",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "2a41b0f5a9d305b824c415892c14562fdfd79008f5b42d865ed6cd145b5f4737",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "1081041d9c95ca3f971dce438282fa8aa89a03f7137fc46fd3ac0798c1b380a8",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "837e080460a07c5f81177bcb3e7d420eb5cf74d403ad47fcf22e0734993969ea",
     "rebuild\\2008-06\\native-classes\\VerbLifetime.cpp": "7678e97a27c5a39f32b6ac6eb377ca565ba4f104922e5f66d809364bb78c3a7e",
     "rebuild\\2008-06\\native-classes\\VerbBaseLifetime.cpp": "c0ca879c62d640acdc66d6791c4dee147eafa2aa969a2e91511270a71decc558",
     "rebuild\\2008-06\\native-classes\\VerbQueries.cpp": "d05983f88e9fe93cd78f939980b5f94de23e6d35d74deb1c35004d3a3c3125e1"
   },
   "objects": {
-    "VerbLifetime": "229698d63d44462d8a3206a9bc369533464c45ecdbb749ea141e6dd206c9fa07",
-    "VerbBaseLifetime": "5629229b256b5a1d66b5e571b49d050ca004c3b7393e958d9b7b9bd0d6386ee2",
-    "VerbQueries": "ea0e2ebfbb5e676a559930e677769259138cb2e067e980f105d65cb7f618a95e"
+    "VerbLifetime": "b861312c3a1b2a332d49050f9e932f8e2d3e2d631cf4f442e23378ab49577f7e",
+    "VerbBaseLifetime": "75fd64a1e1eb0f8c5328fcc89fd3ed21b980b05d8b2c67531e0f82d3ecc3a0f2",
+    "VerbQueries": "20a961f3239b97b012c92001fee12f255640172abb4b8f5f5462e8936eacdd6f"
   },
   "flags": {
     "VerbLifetime": [

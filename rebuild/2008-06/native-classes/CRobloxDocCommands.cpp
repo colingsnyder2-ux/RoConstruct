@@ -3,6 +3,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <stdexcept>
 #include "CRobloxDoc.h"
+#include "CInsertObjectDialog.h"
 #include "CWorkspace.h"
 #include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
@@ -111,12 +112,7 @@ bool CameraZoomOutCommand::isEnabled() const {
 }
 // ClipboardObject is an empty nonvirtual native base: RTTI offset is exactly
 //40(Cut)/36(Copy), without increasing those allocation sizes; Paste base12.
-class ClipboardObject {};
-class CutVerb : public DeleteSelectionVerb,public ClipboardObject {
-public:
-    __declspec(noinline) CutVerb(DataModel*);
-    virtual void doIt(IDataState*);
-};
+#include "ClipboardVerbs.h"
 namespace RBX { template<> boost::shared_ptr<Workspace> shared_from<Workspace>(Workspace*);
 EditSelectionVerb::EditSelectionVerb(VerbContainer* container,std::string name,DataModel* dm)
     : Verb(container,name), workspace(shared_from(dm ? dm->create<Workspace>() : NULL)), selection(dm), dataModel(dm) {}
@@ -124,21 +120,7 @@ DeleteBase::DeleteBase(VerbContainer* container,DataModel* dm,std::string name) 
 DeleteSelectionVerb::DeleteSelectionVerb(VerbContainer* container,DataModel* dm,std::string name) : DeleteBase(container,dm,name) {} }
 CutVerb::CutVerb(DataModel* dm) : DeleteSelectionVerb(dm,dm,"Cut") {}
 void CutVerb::doIt(IDataState* state) { getContainer()->getVerb("Copy")->doIt(state); DeleteBase::doIt(state); }
-class CopyVerb : public EditSelectionVerb,public ClipboardObject {
-public:
-    __declspec(noinline) CopyVerb(DataModel*);
-    virtual void doIt(IDataState*);
-};
 CopyVerb::CopyVerb(DataModel* dm) : EditSelectionVerb("Copy", dm) {}
-class PasteVerb : public Verb,public ClipboardObject {
-    DataModel* dataModel;
-    const bool pasteInto;
-public:
-    __declspec(noinline) PasteVerb(DataModel*,bool);
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-};
-static UINT getClipboardFormat() { static UINT format = ::RegisterClipboardFormatA("Roblox"); return format; }
 bool PasteVerb::isEnabled() const {
     if (::IsClipboardFormatAvailable(getClipboardFormat()) != 1) return false;
     if (!pasteInto) return true;
@@ -146,28 +128,14 @@ bool PasteVerb::isEnabled() const {
     return selected->size() == 1;
 }
 PasteVerb::PasteVerb(DataModel* dm, bool into) : Verb(dm, into ? "PasteInto" : "Paste"), dataModel(dm), pasteInto(into) {}
-namespace RBX { class Decal; }
-class InsertDecal : public EditSelectionVerb {
-    Instance* getTarget() const;
-public:
-    __declspec(noinline) InsertDecal(DataModel*,const char*);
-    virtual bool isEnabled() const;
-    virtual void doIt(IDataState*);
-protected:
-    // 0041f143 calls Decal::setTexture on this factory result.
-    virtual boost::shared_ptr<Decal> createInstance();
-};
+#include "InsertDecal.h"
 class InsertTexture : public InsertDecal {
 public:
     InsertTexture(DataModel* dm) : InsertDecal(dm,"InsertTexture") {}
 protected:
     virtual boost::shared_ptr<Decal> createInstance();
 };
-class InsertObject : public RunStateVerb {
-public:
-    __declspec(noinline) InsertObject(DataModel*);
-    virtual void doIt(IDataState*);
-};
+#include "InsertObject.h"
 InsertObject::InsertObject(DataModel* dm) : RunStateVerb("Insert Object", dm) {}
 class InsertService : public RunStateVerb {
 public:
@@ -175,6 +143,26 @@ public:
     virtual void doIt(IDataState*);
 };
 InsertService::InsertService(DataModel* dm) : RunStateVerb("Insert Service", dm) {}
+void InsertService::doIt(IDataState*) {
+    boost::shared_ptr<Instance> empty;
+    CInsertObjectDialog dialog(empty, NULL);
+    dialog.className = AfxGetApp()->GetProfileString("InsertService", "ClassName", NULL).GetBuffer();
+    if (dialog.DoModal() == IDOK) {
+        const char* (CString::*convert)() const = &CString::operator const char*;
+        AfxGetApp()->WriteProfileString("InsertService", "ClassName", (dialog.className.*convert)());
+        boost::shared_ptr<Instance> instance = dialog.selected;
+        if (!instance) {
+            CString error; error.Format(133, dialog.className);
+            std::string message((error.*convert)());
+            throw std::runtime_error(message);
+        }
+        if (!ServiceProvider::create(dataModel, instance->getClassName())) {
+            CString error; error.Format(137, dialog.className);
+            std::string message((error.*convert)());
+            throw std::runtime_error(message);
+        }
+    }
+}
 typedef char native_doc_DataModel_Lock_size[(sizeof(DataModel::Lock)==12)?1:-1];
 typedef char native_doc_CameraVerb_size[(sizeof(CameraVerb)==28)?1:-1];
 typedef char native_doc_ReportAbuseVerb_size[(sizeof(ReportAbuseVerb)==16)?1:-1];

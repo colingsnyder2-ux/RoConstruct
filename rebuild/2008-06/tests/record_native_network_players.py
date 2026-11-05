@@ -51,29 +51,12 @@ shutil.copyfile(MODEL_STANDIN, overlay / 'v8datamodel/ModelInstance.h')
 
 # Proposals for other owners' headers, applied only to generated copies (pending build).
 PROPOSALS = [
-    (R / 'native-headers/v8tree/Service.h', 'v8tree/Service.h', '    static size_t newIndex();\n',
-     '    static size_t newIndex();\n'
-     '    static const ServiceProvider* findServiceProvider(const Instance* context); // proposal: out of line in 2008 (004898d0)\n',
-     'v8tree/Service.h (ServiceProvider): declare `static const ServiceProvider* findServiceProvider(const Instance* context);` '
-     '(not inline: 2008 calls 004898d0 from frontendProcessing 00495e80, backendProcessing 00495eb0, onChildAdded 0049dc70, '
-     'onChildRemoving 0049daa0)'),
     (R / 'native-headers/Network/Player.h', 'Network/Player.h',
      '\t\t\tvoid removeCharacter();                                   // 004947b0\n',
      '\t\t\tvoid removeCharacter();                                   // 004947b0\n'
      '\t\t\tvoid rebuildBackpack();                                   // proposal: 004925c0\n',
      'Network/Player.h (Player): declare `void rebuildBackpack();` (004925c0, thiscall; throws "rebuildBackpack can only be '
      'called by the backend server"; called by Players::onEvent 00496cf0 and onChildAdded 0049dc70)'),
-    (ROOT / 'tools/rbxgs/Client/App/include/reflection/property.h', 'reflection/property.h',
-     '\t\t\t\tvirtual bool isReadOnly() const = 0;\n',
-     '\t\t\t\tvirtual bool isReadOnly() const = 0;\n'
-     '\t\t\t\tvirtual bool isWriteOnly() const { return false; } // proposal: slot 1 (0060a2f0)\n',
-     'reflection/property.h (TypedPropertyDescriptor::GetSet): the 2008 GetSet has a second bool virtual at slot 1 '
-     '(same proposal as tests/record_native_clothing.py); getValue is slot 2 (+8) in onChildChanged 00497ec0 and '
-     'createLocalPlayer 0049d480'),
-    (R / 'native-headers/reflection/reflection.h', 'reflection/reflection.h', '\tclass IIDREF\n',
-     '\tclass __declspec(novtable) IIDREF\n',
-     'reflection/reflection.h: IIDREF __declspec(novtable) (same proposal as tests/record_native_network_player.py); '
-     'RefPropDescriptor<Players, Player> constructor 0049aa60 stores only the final vtable'),
 ]
 pending = base_dir / 'pending'
 for source, dest, anchor, replacement, _ in PROPOSALS:
@@ -149,6 +132,7 @@ EXTERNAL = {
     '?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ': 0x47d410,
     '??0Type@Reflection@RBX@@IAE@PBDABVtype_info@@0@Z': 0x4897a0,
     '?findServiceProvider@ServiceProvider@RBX@@SAPBV12@PBVInstance@2@@Z': 0x4898d0,
+    '?OnReceive@Players@Network@RBX@@QAE_NPAVRakPeerInterface@@PAUPacket@@@Z': 0x49d770,
     '??$?4V?$shared_ptr@VInstance@RBX@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@VInstance@RBX@@@1@@Z': 0x48dd00,
     '??0?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z': 0x4908a0,
     '??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z': 0x491d50,
@@ -262,9 +246,13 @@ ROWS = [
     (0x49bdc0, '??0' + P + 'QAE@XZ'),
     (0x49ca70, '?reportAbuse@' + P + 'QAEXV'),
     (0x49d450, '?setMaxPlayers@' + P),
+    (0x49d480, '?createLocalPlayer@' + P),
     (0x49e1d0, '?setAbuseReportUrl@' + P),
     (0x496370, '??_GPlugin@' + P),
-    (0x49df50, '?OnReceive@?$PluginInterfaceAdapter@V' + P + '@@'),
+    (0x49df50, '?OnReceive@?$PluginInterfaceAdapter@V' + P
+     + '@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z'),
+    (0x497ec0, '?onChildChanged@' + P),
+    (0x49aa60, '??$?0P8' + P + 'BEPAVPlayer@12@XZH@?$RefPropDescriptor@V' + P),
     (0x4971c0, '??1AbuseReporter@Network@RBX@@QAE@XZ'),
     (0x4963c0, '??1ChatMessage@Network@RBX@@QAE@XZ'),
     # base-class template instances of the unit
@@ -337,9 +325,6 @@ PENDING_ROWS = [
     (0x496cf0, '?onEvent@' + P),                            # Player::rebuildBackpack (Player.h proposal)
     (0x49dc70, '?onChildAdded@' + P),
     (0x49daa0, '?onChildRemoving@' + P),
-    (0x497ec0, '?onChildChanged@' + P),                     # GetSet slot 2 (property.h proposal)
-    (0x49d480, '?createLocalPlayer@' + P),
-    (0x49aa60, '??$?0P8' + P + 'BEPAVPlayer@12@XZH@?$RefPropDescriptor@V' + P),   # IIDREF novtable
     (0x49d200, '?fire@?$SignalDescImpl@$00$$A6AX' + SPI + '@Z@'),
     (0x49cd00, '??R?$signal1@X' + SPI),
     (0x49c4f0, '??$?RV?$slot_call_iterator@U?$caller@' + SPI),
@@ -348,11 +333,7 @@ PENDING_ROWS = [
     (0x496a00, '??R?$function1@X' + SPI),
 ]
 # Rows compiled in the base object but not exact there (recorded with the reason, not counted).
-NOT_EXACT = {
-    0x497ec0: ('?onChildChanged@' + P, 'reads SuperSafeChat through GetSet slot 2 (+8); the current property.h GetSet has '
-               'getValue at slot 1 (exact in the pending build)'),
-    0x49d480: ('?createLocalPlayer@' + P, 'same GetSet slot difference (exact in the pending build)'),
-}
+NOT_EXACT = {}
 
 LOCAL_EH = nb.LOCAL_EH
 UNBOUND = []

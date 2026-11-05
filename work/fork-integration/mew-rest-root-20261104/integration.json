@@ -1,0 +1,800 @@
+{
+  "recorded_at_utc": "2026-11-04T21:06:47.309675+00:00",
+  "fork_tip": "cd72c3729d8834f33aa89e45785ebacf5ce614b8",
+  "branch": "refs/heads/codex/native-partial-search-20261029",
+  "accepted": [
+    {
+      "path": "rebuild/2008-06/native-classes/ArrowPanel.cpp",
+      "donor_blob": "354bb1f12426c9935e56707743be1ac43b395895",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Ball.cpp",
+      "donor_blob": "fe56da7ec71212ad232cfbf248a63786c02e0fc0",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Block.cpp",
+      "donor_blob": "e09a0c994d1e12b429d8126c24a1d9ad0ab1ce34",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ChatOutput.cpp",
+      "donor_blob": "b223e49b3da25f1ce2c2eb8046cd585aa8a6ec60",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/CleanStage2008.cpp",
+      "donor_blob": "30b7aa3f0cde148ac333bed695242f6bf18df28e",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Contact.cpp",
+      "donor_blob": "8f5f1d47d9ee7267a203de90b09987b958c56f8f",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/EquationDisplay.cpp",
+      "donor_blob": "e99dfb17b2870c3d45baf2285c32f16d7770a9c1",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Filters.cpp",
+      "donor_blob": "8163694c5eace8ac59da9f2e380b9deb5e209bf4",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/GeometryService.cpp",
+      "donor_blob": "8733f503a4423d79ab0667886f6be803d0efd6e5",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/HealthHud.cpp",
+      "donor_blob": "dac2a8916cb134adc12366c4c63bd3105339b7ea",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/IWorldStage2008.cpp",
+      "donor_blob": "f0fb011cd7922c6e893192a6fb54cddce732607c",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/JointStage2008.cpp",
+      "donor_blob": "591fbca498cfd00edce6ef6952e8926de3e41c9e",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Kernel2008.cpp",
+      "donor_blob": "212dcee928d7303fe8f1fa92662ba2a593c21bf6",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/KernelConnector.cpp",
+      "donor_blob": "0e9be61d412c979d8265387ef4daccc6e94373af",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Mouse.cpp",
+      "donor_blob": "b651150aff586a3d27aaae55385f99b583230eab",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/NetworkPhysics.cpp",
+      "donor_blob": "76c2d3bc63d54659c5ec1e1c6ee4f59846a40e74",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+      "donor_blob": "3f3cbb6760d8a9f61260d086602483c514f37f2d",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ReplicatorBases.cpp",
+      "donor_blob": "04a01c0a900a3ca01f6475b2a938c12f02f062fe",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ReplicatorMarker.cpp",
+      "donor_blob": "d71adce767e7cecf05b92728d4ca62eb8842aff0",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ScoreHud.cpp",
+      "donor_blob": "b6d6e23cdd5840e33d861c4518748639aa593a5d",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/SimJob2008.cpp",
+      "donor_blob": "b7f3c599c4a09147b3ef6a609f5a67c47cb3be54",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/SimJobStage2008.cpp",
+      "donor_blob": "f4609f6dbcf88d12758c9a2628b847905531370d",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp",
+      "donor_blob": "81120baf8bb282e9d9452ef7e34026d34c12a79f",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Tool.cpp",
+      "donor_blob": "0cdc12a87bede2940f2997c3e9a8e60bb2d4c746",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp",
+      "donor_blob": "4e727cd40e36df37229bcfa505c0ade570310153",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp",
+      "donor_blob": "cc33a7b4bb8386d64938775a9eccede08efd4bd8",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp",
+      "donor_blob": "a4c603eb710e45c58e19e915ca3a2aa830474ce0",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp",
+      "donor_blob": "914d2240ad00d7d7bc8046d725992c48826ac7b7",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp",
+      "donor_blob": "bdbeb0a0431845c0f66f2bbdb80565526a6d24bf",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/Widget.cpp",
+      "donor_blob": "2a71763608ca7f0e835fb1c440f26fc963bb2898",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WidgetButtons.cpp",
+      "donor_blob": "e6600180b5e7edd5e6439e2a61bd01d7aa8d6d27",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WidgetChat.cpp",
+      "donor_blob": "70049c75e33c3a0bdfa46de43e96bbb82c84a32e",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WidgetMenuItem.cpp",
+      "donor_blob": "ef92ed2b0593812ef6248de528ccdda821a88d91",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WorldJoint.cpp",
+      "donor_blob": "70846e7f3b38877f0d28486bd94240e29acf1ae2",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WorldJointGlue.cpp",
+      "donor_blob": "234b4f70276ab000d48f2725f26e94d2a38a2209",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WorldJointMotor.cpp",
+      "donor_blob": "44698c706a79ae13919b2876eceb69ce905083fb",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WorldJointMulti.cpp",
+      "donor_blob": "6e0605416e25edd14894f866b824c2f508fe1dc7",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WorldJointRigid.cpp",
+      "donor_blob": "680011934a41aa2c40f79965ad256b3bb066c46c",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-classes/WorldJointRotate.cpp",
+      "donor_blob": "fdd555cbadf3c2cb88ec83ab0a6d3451d4451e7e",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/Network/IdSerializer.h",
+      "donor_blob": "d1508651db8c26827bfa46081f98b2e8791945c9",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/Network/PhysicsReplication.h",
+      "donor_blob": "4946f8f5518bc201461cd6fe66ec98daa67ad3a6",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h",
+      "donor_blob": "5adb1015d36988a1dbfb8a1895483c5741dffd6a",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/Replicator.h",
+      "donor_blob": "4235a637aa93a3e4b8ca51dafaef24f5c788431d",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h",
+      "donor_blob": "0a5db8e013c4c7a665eebecacf2d6d6e858b0a88",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h",
+      "donor_blob": "82c68ed98db12f43a8ea99b36814ee521da71586",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/HeadMesh.h",
+      "donor_blob": "13d4a0e7efc0ca644a28941564d280c034922aed",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h",
+      "donor_blob": "65c978a53125943fb9df1117c91229d5aa647158",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h",
+      "donor_blob": "33c99bdc88be4d652d00aa9fafabfe3044734247",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h",
+      "donor_blob": "af7b5e781572a4e0362c1c55d3888486c1e1abf1",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/ViewNew/SphereMesh.h",
+      "donor_blob": "b9ff9cc3c40a16855ffbea96da1815a8eb642132",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/ArrowPanel.h",
+      "donor_blob": "095b55f913d69e9cfafb09f550157e5eb556832d",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/ChatOutput.h",
+      "donor_blob": "c1d831969a621e9c976f110631db21b76eeffea2",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/EquationDisplay.h",
+      "donor_blob": "de2062619c027ffb5e37fd2f02540ecbb7da216a",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/HealthHud.h",
+      "donor_blob": "c8025463ceb64c5122a0517e747728694dca498c",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/ScoreHud.h",
+      "donor_blob": "e64f8b21c3ae053808c3835f8027afe56783b875",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/Widget.h",
+      "donor_blob": "4a084418e0f998be65b1d3c6e701fe5155ac880c",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/WidgetButtons.h",
+      "donor_blob": "bc71b95fea8e3440247c094f8751dff0606f6676",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/WidgetChat.h",
+      "donor_blob": "8d7da0b1313702f2738809a826cc1f2b5d845ca9",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/gui/WidgetMenuItem.h",
+      "donor_blob": "1084b28a8738a50b42e7f7e001db438b71f20463",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Filters2008.h",
+      "donor_blob": "fe366e0c8e195e25d6739d13dc099ce023d672c9",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/GeometryService.h",
+      "donor_blob": "b2532ae6dd39d989966a2ff3017314ed99cdf36e",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Mouse.h",
+      "donor_blob": "d959f725c585b17bf0f761df5f8ecde33ed424c1",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8kernel/Connector2008.h",
+      "donor_blob": "0bb8bbebb8a339a8e94ea1d55396306bc3c1a4c9",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8kernel/Kernel2008.h",
+      "donor_blob": "289c865ef1b062adfa25d426ba7209802692cdaa",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/Ball2008.h",
+      "donor_blob": "63a71a460d6a2c19206cc5e9fe5708892230b303",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/Block2008.h",
+      "donor_blob": "ce40df8167b50311380b2f6f0305bb7e005de29a",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/CleanStage2008.h",
+      "donor_blob": "fbfe19936ad3a35a88b45f6f868dbc56357ab8a5",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/Contact2008.h",
+      "donor_blob": "b4667074925076d1f8fed301d8055feb5b2110b0",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/Geometry2008.h",
+      "donor_blob": "f3aaf5c059850db39ad19f599a2560dc4ce766ee",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/JointStage2008.h",
+      "donor_blob": "592f98084e247abdc51b20e57704cedd34edf938",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/Joints2008.h",
+      "donor_blob": "f7c505523b9acca91712a756717df7a9adca5e3f",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/SimJob2008.h",
+      "donor_blob": "8a123257c23970c80a2cfb8850c026b92753554d",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8world/SimJobStage2008.h",
+      "donor_blob": "17dd345deee9be3ac57a29ee7e1336907e0be16c",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeGeometryServiceLayout.cpp",
+      "donor_blob": "36933c47eade448291052aac6cb8e59c3fcd823f",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeGeometryServicePendingFilterStairs.h",
+      "donor_blob": "3acd724135dad399cefcb995b54c886c0ab771be",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeGeometryServicePendingWorkspace.h",
+      "donor_blob": "87f71a4c685834414346ed820588208128d0f03b",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHitTestFilterLayout.cpp",
+      "donor_blob": "d003dfc2363eefd769ed440327617b2387e2e111",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHitTestFilterPendingHumanoid.h",
+      "donor_blob": "46112f42706fc254a3d38afbb24c02b40d9993c4",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeHudLayout.cpp",
+      "donor_blob": "83c664efbcc39bb452ac8f6d304fa9ec71c3d66d",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeKernelStagesLayout.cpp",
+      "donor_blob": "22662ea55a3183eaeedc7371f52227cfa2b6754f",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeMouseLayout.cpp",
+      "donor_blob": "4ab3cf767e43ff41fd507b17fab722e4aa0a4f0d",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeNetworkPhysicsLayout.cpp",
+      "donor_blob": "d6dcdcc7cde20de64261abaa9d063a021e48994c",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeReplicatorLayout.cpp",
+      "donor_blob": "4b63dc17d2fb06a82143d8a8614f13f7b35dc5d2",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeViewNewLayout.cpp",
+      "donor_blob": "06c49e6bab9550ad97f82d6cbefcedf715051c2a",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeWidgetLayout.cpp",
+      "donor_blob": "0eef11d5223c8c823eb8ed632ff4d38b0a1de5c9",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeWorldJointsConnectorLayout.cpp",
+      "donor_blob": "8934bb67ef7858cb32e5cbbbf97a627aafb438ad",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeWorldJointsLayout.cpp",
+      "donor_blob": "d0261b0a9783ac378fcdea89b839e8f194a2bce7",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/NativeWorldShapesLayout.cpp",
+      "donor_blob": "e6b2432b7681f77c9faed04a88ab0bc0b611c324",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_gamesettings_storage_integrated.py",
+      "donor_blob": "4e181c84c8a5988a1fa0cd8d2c20b1b909874282",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_geometry_service.py",
+      "donor_blob": "71b186a07c6eee6edfd6568058ce7c4519e5f8b2",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_hit_filters.py",
+      "donor_blob": "46ae9089cecf9d21e82a13d50d062bc2b7b32260",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_hopper.py",
+      "donor_blob": "c37f747fa900453bd1f83038da1d025a5493575a",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_hud.py",
+      "donor_blob": "a8db552ac9f7abe99cbf2fd367256e2cfaa62ed7",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_kernel_stages.py",
+      "donor_blob": "9c1aab033775d32377b3502b1f31df43c7d7d1c1",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_mouse.py",
+      "donor_blob": "79130bf0b3238bd547c2659d3c0476cf9d23a8c0",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_network_physics.py",
+      "donor_blob": "b711d2df349af81bf4ab418662515900b8162366",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_network_players.py",
+      "donor_blob": "bdebea9abe18c849d9a360d76281c40be006c22e",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_replicator.py",
+      "donor_blob": "de5b90a3e21b9a67e94025bb2963d46381216774",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_viewnew.py",
+      "donor_blob": "3ed614089a87e51b875107c11c1bc944985776b5",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_widget.py",
+      "donor_blob": "c052ffea854c3dce88a3e28645dc907f619a7b8c",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_world_joints.py",
+      "donor_blob": "4110bb5984a43d9065a12d9a312fad6774a28981",
+      "status": "queued for independent source/dependency review"
+    },
+    {
+      "path": "rebuild/2008-06/tests/record_native_world_shapes.py",
+      "donor_blob": "826eb75cb08b5b5360742363da2dc9a446547786",
+      "status": "queued for independent source/dependency review"
+    }
+  ],
+  "source_paths": [
+    "rebuild/2008-06/native-classes/ArrowPanel.cpp",
+    "rebuild/2008-06/native-classes/Ball.cpp",
+    "rebuild/2008-06/native-classes/Block.cpp",
+    "rebuild/2008-06/native-classes/ChatOutput.cpp",
+    "rebuild/2008-06/native-classes/CleanStage2008.cpp",
+    "rebuild/2008-06/native-classes/Contact.cpp",
+    "rebuild/2008-06/native-classes/EquationDisplay.cpp",
+    "rebuild/2008-06/native-classes/Filters.cpp",
+    "rebuild/2008-06/native-classes/GeometryService.cpp",
+    "rebuild/2008-06/native-classes/HealthHud.cpp",
+    "rebuild/2008-06/native-classes/IWorldStage2008.cpp",
+    "rebuild/2008-06/native-classes/JointStage2008.cpp",
+    "rebuild/2008-06/native-classes/Kernel2008.cpp",
+    "rebuild/2008-06/native-classes/KernelConnector.cpp",
+    "rebuild/2008-06/native-classes/Mouse.cpp",
+    "rebuild/2008-06/native-classes/NetworkPhysics.cpp",
+    "rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+    "rebuild/2008-06/native-classes/ReplicatorBases.cpp",
+    "rebuild/2008-06/native-classes/ReplicatorMarker.cpp",
+    "rebuild/2008-06/native-classes/ScoreHud.cpp",
+    "rebuild/2008-06/native-classes/SimJob2008.cpp",
+    "rebuild/2008-06/native-classes/SimJobStage2008.cpp",
+    "rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp",
+    "rebuild/2008-06/native-classes/Tool.cpp",
+    "rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp",
+    "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp",
+    "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp",
+    "rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp",
+    "rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp",
+    "rebuild/2008-06/native-classes/Widget.cpp",
+    "rebuild/2008-06/native-classes/WidgetButtons.cpp",
+    "rebuild/2008-06/native-classes/WidgetChat.cpp",
+    "rebuild/2008-06/native-classes/WidgetMenuItem.cpp",
+    "rebuild/2008-06/native-classes/WorldJoint.cpp",
+    "rebuild/2008-06/native-classes/WorldJointGlue.cpp",
+    "rebuild/2008-06/native-classes/WorldJointMotor.cpp",
+    "rebuild/2008-06/native-classes/WorldJointMulti.cpp",
+    "rebuild/2008-06/native-classes/WorldJointRigid.cpp",
+    "rebuild/2008-06/native-classes/WorldJointRotate.cpp",
+    "rebuild/2008-06/native-headers/Network/IdSerializer.h",
+    "rebuild/2008-06/native-headers/Network/PhysicsReplication.h",
+    "rebuild/2008-06/native-headers/Network/Player.h",
+    "rebuild/2008-06/native-headers/Network/Players.h",
+    "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h",
+    "rebuild/2008-06/native-headers/Replicator.h",
+    "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h",
+    "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h",
+    "rebuild/2008-06/native-headers/ViewNew/HeadMesh.h",
+    "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h",
+    "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h",
+    "rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h",
+    "rebuild/2008-06/native-headers/ViewNew/SphereMesh.h",
+    "rebuild/2008-06/native-headers/gui/ArrowPanel.h",
+    "rebuild/2008-06/native-headers/gui/ChatOutput.h",
+    "rebuild/2008-06/native-headers/gui/EquationDisplay.h",
+    "rebuild/2008-06/native-headers/gui/HealthHud.h",
+    "rebuild/2008-06/native-headers/gui/ScoreHud.h",
+    "rebuild/2008-06/native-headers/gui/Widget.h",
+    "rebuild/2008-06/native-headers/gui/WidgetButtons.h",
+    "rebuild/2008-06/native-headers/gui/WidgetChat.h",
+    "rebuild/2008-06/native-headers/gui/WidgetMenuItem.h",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h",
+    "rebuild/2008-06/native-headers/reflection/reflection.h",
+    "rebuild/2008-06/native-headers/reflection/type.h",
+    "rebuild/2008-06/native-headers/util/Object.h",
+    "rebuild/2008-06/native-headers/v8datamodel/Backpack.h",
+    "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h",
+    "rebuild/2008-06/native-headers/v8datamodel/Feature.h",
+    "rebuild/2008-06/native-headers/v8datamodel/Filters2008.h",
+    "rebuild/2008-06/native-headers/v8datamodel/Flag.h",
+    "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h",
+    "rebuild/2008-06/native-headers/v8datamodel/GeometryService.h",
+    "rebuild/2008-06/native-headers/v8datamodel/Hopper.h",
+    "rebuild/2008-06/native-headers/v8datamodel/Mouse.h",
+    "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h",
+    "rebuild/2008-06/native-headers/v8datamodel/Tool.h",
+    "rebuild/2008-06/native-headers/v8datamodel/UserController.h",
+    "rebuild/2008-06/native-headers/v8kernel/Connector2008.h",
+    "rebuild/2008-06/native-headers/v8kernel/Kernel2008.h",
+    "rebuild/2008-06/native-headers/v8world/Ball2008.h",
+    "rebuild/2008-06/native-headers/v8world/Block2008.h",
+    "rebuild/2008-06/native-headers/v8world/CleanStage2008.h",
+    "rebuild/2008-06/native-headers/v8world/Contact2008.h",
+    "rebuild/2008-06/native-headers/v8world/Geometry2008.h",
+    "rebuild/2008-06/native-headers/v8world/JointStage2008.h",
+    "rebuild/2008-06/native-headers/v8world/Joints2008.h",
+    "rebuild/2008-06/native-headers/v8world/SimJob2008.h",
+    "rebuild/2008-06/native-headers/v8world/SimJobStage2008.h",
+    "rebuild/2008-06/tests/NativeGeometryServiceLayout.cpp",
+    "rebuild/2008-06/tests/NativeGeometryServicePendingFilterStairs.h",
+    "rebuild/2008-06/tests/NativeGeometryServicePendingWorkspace.h",
+    "rebuild/2008-06/tests/NativeHitTestFilterLayout.cpp",
+    "rebuild/2008-06/tests/NativeHitTestFilterPendingHumanoid.h",
+    "rebuild/2008-06/tests/NativeHudLayout.cpp",
+    "rebuild/2008-06/tests/NativeKernelStagesLayout.cpp",
+    "rebuild/2008-06/tests/NativeMouseLayout.cpp",
+    "rebuild/2008-06/tests/NativeNetworkPhysicsLayout.cpp",
+    "rebuild/2008-06/tests/NativeReplicatorLayout.cpp",
+    "rebuild/2008-06/tests/NativeViewNewLayout.cpp",
+    "rebuild/2008-06/tests/NativeWidgetLayout.cpp",
+    "rebuild/2008-06/tests/NativeWorldJointsConnectorLayout.cpp",
+    "rebuild/2008-06/tests/NativeWorldJointsLayout.cpp",
+    "rebuild/2008-06/tests/NativeWorldShapesLayout.cpp",
+    "rebuild/2008-06/tests/record_native_click_detector.py",
+    "rebuild/2008-06/tests/record_native_debris_forcefield_rows.py",
+    "rebuild/2008-06/tests/record_native_feature.py",
+    "rebuild/2008-06/tests/record_native_gamesettings_storage_integrated.py",
+    "rebuild/2008-06/tests/record_native_geometry_service.py",
+    "rebuild/2008-06/tests/record_native_hit_filters.py",
+    "rebuild/2008-06/tests/record_native_hopper.py",
+    "rebuild/2008-06/tests/record_native_hud.py",
+    "rebuild/2008-06/tests/record_native_kernel_stages.py",
+    "rebuild/2008-06/tests/record_native_mouse.py",
+    "rebuild/2008-06/tests/record_native_network_physics.py",
+    "rebuild/2008-06/tests/record_native_network_player.py",
+    "rebuild/2008-06/tests/record_native_network_players.py",
+    "rebuild/2008-06/tests/record_native_replicator.py",
+    "rebuild/2008-06/tests/record_native_spawn.py",
+    "rebuild/2008-06/tests/record_native_team.py",
+    "rebuild/2008-06/tests/record_native_viewnew.py",
+    "rebuild/2008-06/tests/record_native_widget.py",
+    "rebuild/2008-06/tests/record_native_world_joints.py",
+    "rebuild/2008-06/tests/record_native_world_shapes.py",
+    "rebuild/2008-06/tests/verify_fork_preservation.py",
+    "roc/fork_merge.py",
+    "tests/test_fork_preservation.py"
+  ],
+  "source_sha256": {
+    "rebuild/2008-06/native-classes/ArrowPanel.cpp": "274bf15c0299676880e42e503de59e84dfa02f56290c28e7d770af69ec159557",
+    "rebuild/2008-06/native-classes/Ball.cpp": "ceb8355e85de87ca789360c3657bb28817c17531e044bc6dc3d318f1cae14fd2",
+    "rebuild/2008-06/native-classes/Block.cpp": "2cb54109c1854da8bd82955d5efaf38f59d4c9551d822c7862f42c78281d4ca7",
+    "rebuild/2008-06/native-classes/ChatOutput.cpp": "ce3e090bbe0f611b160188c3240c50c8a2c07c6c0401fb54bb55f0d534a758a2",
+    "rebuild/2008-06/native-classes/CleanStage2008.cpp": "cc807f7cc5611e67f722baba7e60aa5219375cdc1b4dc90bc31253d0df3c14a1",
+    "rebuild/2008-06/native-classes/Contact.cpp": "3af45d1067131bc14de174022e807050981ef4cb6574c141e99ef94ceec2cb93",
+    "rebuild/2008-06/native-classes/EquationDisplay.cpp": "58fcdfbf492158eccdfbade1b9bb24b34b77bcf817d764fb6bec8308ae2db05b",
+    "rebuild/2008-06/native-classes/Filters.cpp": "8d72c9741614d67df5e816c9cfc56e6621643ca7bd55168d8a3d1cf6919281ab",
+    "rebuild/2008-06/native-classes/GeometryService.cpp": "f1ef3c806d776e6140c005e404a3f0b4d487de4b0a8d369f54a467593743dca8",
+    "rebuild/2008-06/native-classes/HealthHud.cpp": "2ea2df9b849365b3b1f0b951550a69557c6cf663c9a36e4cd263db900709845a",
+    "rebuild/2008-06/native-classes/IWorldStage2008.cpp": "dd243338f6b65fa2db292c3b18bf94e16ccf2b317bd34046e209eaa67778f728",
+    "rebuild/2008-06/native-classes/JointStage2008.cpp": "60cca817796863f987df10c8a4f5f5696a78c70b0d4004268ab40b453947d832",
+    "rebuild/2008-06/native-classes/Kernel2008.cpp": "da8ff98a760ebe2613d78356e56ef7491e0d981b60c5aef24de049317e3448d6",
+    "rebuild/2008-06/native-classes/KernelConnector.cpp": "0784846ae44771c4fc337c2df7a4ba22c3fe4ba51357b115bbdc17db848add75",
+    "rebuild/2008-06/native-classes/Mouse.cpp": "41002f5ffe174dc186c9f3f72027d508c02aeb32638e8eb582e9c54bd09ce476",
+    "rebuild/2008-06/native-classes/NetworkPhysics.cpp": "b4a7a5465513464f97cabc46f9ce347d5093e5df0239543b31114136a6637812",
+    "rebuild/2008-06/native-classes/NetworkPlayers.cpp": "81b70e0867a729e8fd525dc3188ecee47cedb0222e5380ee321bdb937eeb0638",
+    "rebuild/2008-06/native-classes/ReplicatorBases.cpp": "1d9e7735a056e2e52067867af7266f061b74dc15f8668d259dafec76aeebfa74",
+    "rebuild/2008-06/native-classes/ReplicatorMarker.cpp": "7077a44136dbdfc2dae10bd1996da9855346bd320ae3afa4b17041ef04fa6ce6",
+    "rebuild/2008-06/native-classes/ScoreHud.cpp": "0cb9a66eb759db9cd73f43f349cbf0603b65d25e110b6054b48879e91b7bc040",
+    "rebuild/2008-06/native-classes/SimJob2008.cpp": "7a81d33835b8da5859f607f5d483289f45695833313fc34b8eafc6067d5dd76f",
+    "rebuild/2008-06/native-classes/SimJobStage2008.cpp": "693c1f6a177d04515bdfba73cd8b2133f2916a11fe713d7b62bd9ffb69f96c49",
+    "rebuild/2008-06/native-classes/SimJobStage2008Ctor.cpp": "d5a96c2c9b43777cb98672e1293a0040f6ce17b53ab3687d51062e53208170ac",
+    "rebuild/2008-06/native-classes/Tool.cpp": "d5ee0051bb1add8101fca9c06d1afb66f91bafed8b415374b88d9babc922b062",
+    "rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp": "8f56b7ba2eb83375ee167b61ff8895468ed021c6689b94097e67a5e7ae66b650",
+    "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp": "9ab3530f8774c2f9644cf2063868ee0de0e5242b50fd0c0012254a194ea38752",
+    "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp": "a328bcdbc4b7306314a680d4535775b836c2ffbd1b2d2a864311ac2f9ad2c140",
+    "rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp": "e897c3a03ac4ef7cf628f108cfb5799008b277457db547e98c3d5a4cc40412b1",
+    "rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp": "5641be426090d9ddc0ef0d6b8ff3e571f28554a740783fd62d7a521861f231f6",
+    "rebuild/2008-06/native-classes/Widget.cpp": "0e8aade5a26e9e3791302da3c120901a7368bbafc158dd7b19c31fb5a4f3b346",
+    "rebuild/2008-06/native-classes/WidgetButtons.cpp": "9bfe438ac55464367eaad249a6063fcb0fddc1b56b266e80930e333248cc1107",
+    "rebuild/2008-06/native-classes/WidgetChat.cpp": "cb61a1edbc137df3968c67dbea96cde15ba722e5e349ecaf313999e97b25ee8a",
+    "rebuild/2008-06/native-classes/WidgetMenuItem.cpp": "1994490bbe23348fc293c2c0b1fb6acc914e1e3c346c864b29be713b966969a2",
+    "rebuild/2008-06/native-classes/WorldJoint.cpp": "9cdd6346ec1aa878fdf6fb4ac3eebeb8396b88d7e7cd6b8a19e49bedae373ba5",
+    "rebuild/2008-06/native-classes/WorldJointGlue.cpp": "e3ed761b08023243799d09b8fa39cca66c5e393ea74b1365078302d6a1a2897e",
+    "rebuild/2008-06/native-classes/WorldJointMotor.cpp": "75a6a364d6887edbcc78c3231e791d7dd2ef4aba8692e60ce6e4b23c6b06b54b",
+    "rebuild/2008-06/native-classes/WorldJointMulti.cpp": "15e27774d33c5dcc2b9fb8fe480fadbe525b5d07f37af0f51e154794af9591a0",
+    "rebuild/2008-06/native-classes/WorldJointRigid.cpp": "befdef7d3490cd77450d6b03fee7839b00a5cc2063c52237643109c0c4e4ba36",
+    "rebuild/2008-06/native-classes/WorldJointRotate.cpp": "8ae4139597cbe1b1f6bdcc9bd8a757d3278c296c62db5914654536f4cbf7f592",
+    "rebuild/2008-06/native-headers/Network/IdSerializer.h": "b62f39fdb34649935076cab7daa419c50bae759ec3d252e8b5d81f3850f2a3ad",
+    "rebuild/2008-06/native-headers/Network/PhysicsReplication.h": "c8318741e9b6e6b42e3686681809c3c1a19afbcbb2fc3383c2bb2afb02183e63",
+    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+    "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
+    "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h": "3fbb7a704f7a4c0643326c24f693c4d0dbe8e91b96ee018bbcf4df352307ee0c",
+    "rebuild/2008-06/native-headers/Replicator.h": "d2405a3ea84f4dcbd9253c45a3bff87cc6e2e23d88920db5f55a8b6ad75170fa",
+    "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h": "6f2f6b8988f5000c4d800fcdf6e531c822048d174f01e938cb7cb1eaf4a98724",
+    "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h": "90470474ca552a40aefe589b572e2da6750cc8a3fba4f80906a580e69971af5d",
+    "rebuild/2008-06/native-headers/ViewNew/HeadMesh.h": "921fe3e77831f5da7dc897336415c10c22f2316e74bce3b3da4ed2cb44603b7f",
+    "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h": "fcc102809ad405e05fd34916c8855b262f3bda987d8113d33eb48b623fe99dec",
+    "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h": "0797819eec4fb9057e0c44a43ac83fa29d8b01dd58800fefaa2c34fdab1956ae",
+    "rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h": "208975d868829c0a874d25cb401f1ab7eca2378574ef3c0b8b35be71dcbaeee1",
+    "rebuild/2008-06/native-headers/ViewNew/SphereMesh.h": "e90ea6f3276cdda9e2d61e89c90a8163cf67b50fb53ad5e5fd4204829e606358",
+    "rebuild/2008-06/native-headers/gui/ArrowPanel.h": "c8d05de173582a799395e87b080349bd9a15be8f3eff08306a68db69e5970767",
+    "rebuild/2008-06/native-headers/gui/ChatOutput.h": "bea74b686656798436d41b840fd51516fefe9ee4764846f66326f3c0b82c346a",
+    "rebuild/2008-06/native-headers/gui/EquationDisplay.h": "8de48f9c2b2254acf28c296cb36688e1017b6b82d7ecbd1e6d9634270128dae9",
+    "rebuild/2008-06/native-headers/gui/HealthHud.h": "9db5cbcea168f799057afeb54dcad4b669075c8c19e48222fcf51dfe3a11fcb6",
+    "rebuild/2008-06/native-headers/gui/ScoreHud.h": "324bff7619560c94002bddc757d6db31f47468370474f2887185bca18c5730bc",
+    "rebuild/2008-06/native-headers/gui/Widget.h": "0c62fa5dca6d28f18596ba4db17db170047c3693c17f99897ce0998dc1ed5a83",
+    "rebuild/2008-06/native-headers/gui/WidgetButtons.h": "8be27ac81c9d606e2a873ffae34c35a65b88904d794bf8428cfae4bc71686e48",
+    "rebuild/2008-06/native-headers/gui/WidgetChat.h": "ee28700a1b9cbe34efa6d882ad5f5cbed0db6e43be3501c137fdd0c8d516a11b",
+    "rebuild/2008-06/native-headers/gui/WidgetMenuItem.h": "fe2973051c6f23b5e7a9418d416de285f981634330c2586c1226cdbb21e22368",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "880777fa13f40e2551bd81de0b17b6ac3ef0e38c6d0c566f834e0ed457df1382",
+    "rebuild/2008-06/native-headers/reflection/type.h": "ce70e2ca4508af8419a6370d5574d634868aae9c5038ea526e7458d198dcc463",
+    "rebuild/2008-06/native-headers/util/Object.h": "5682f143df65b85f0845d1ed808a00d0a4b8c8a9d4ddfd022451cf3b4fcabfe4",
+    "rebuild/2008-06/native-headers/v8datamodel/Backpack.h": "9221815bf684dd0bc6febd4b94dcac3186ea9510b6ec27c8e24e0676f1f49339",
+    "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h": "8a71a6f8defc32833c4a5ba367367b6f89d46701fa9eb7fc92165a9f8fe45917",
+    "rebuild/2008-06/native-headers/v8datamodel/Feature.h": "b1eabe86377ca5d951c7dcf0b192e7901358e20a9f675cc074093144ac789a3b",
+    "rebuild/2008-06/native-headers/v8datamodel/Filters2008.h": "d016a379b1a29573a46a5a6ef53f1a2c51f22753eda0260cd7441d5a8451df5f",
+    "rebuild/2008-06/native-headers/v8datamodel/Flag.h": "daf0cb3e156c04f05135ff5bb440451b3ee29699f99a1d9eb73b98a626930265",
+    "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h": "57423bda044b1f3904bd02c06b29362fb3a54f804599b2fb78210802e87ea83f",
+    "rebuild/2008-06/native-headers/v8datamodel/GeometryService.h": "7190b78f04cb7445b153fbef10d15786b836324ec86297abee545321351eac2e",
+    "rebuild/2008-06/native-headers/v8datamodel/Hopper.h": "b43abcdd0d0d8e2e80f19769b83160d906f99ebd100de80385057319d80bc24a",
+    "rebuild/2008-06/native-headers/v8datamodel/Mouse.h": "780e1ec8867ae1bf88769f48071b4011b2d842faa85f37bbf6a5f8f4a1e8bd54",
+    "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h": "7b207a5817fec10a98cb22ca9e5f024031a783330b32cc1a2db01440e62a7c4e",
+    "rebuild/2008-06/native-headers/v8datamodel/Tool.h": "ee1739601cbe99d862761a90640acc920a8a6a03c792962895144967d8d9c236",
+    "rebuild/2008-06/native-headers/v8datamodel/UserController.h": "50d100ac1c8d51dad2f8e4aacfbdb17a0cb71d9009a771029722fe220a89d839",
+    "rebuild/2008-06/native-headers/v8kernel/Connector2008.h": "bd9c8cf66667b8c3fdefe81861f6f35183e97205ec117f603b832aac7e57ff29",
+    "rebuild/2008-06/native-headers/v8kernel/Kernel2008.h": "389e5a76923c300ee86e415cb19294804d3c91ce5a20e9f285546dd4bea83391",
+    "rebuild/2008-06/native-headers/v8world/Ball2008.h": "a85d3432fea58f2818ac86f4d98adc914a1a775c44d725a2d6ab1b4f9586790e",
+    "rebuild/2008-06/native-headers/v8world/Block2008.h": "9398859b112a9a8a0b9e97d535d75d656ca8c3a66baf5a605bf6576e7c07fadf",
+    "rebuild/2008-06/native-headers/v8world/CleanStage2008.h": "4a40f8add8aad80cfc4e365a6e80eba3b2545ed94e8f5300e2b532bd78bf3184",
+    "rebuild/2008-06/native-headers/v8world/Contact2008.h": "219ce71e7866ebbb2a592c74816ae31a50577f809d7ca09495d69273b40fece3",
+    "rebuild/2008-06/native-headers/v8world/Geometry2008.h": "ecebaf5db511801301d20cf96d071bcff6f691cba36207aa8812de63139b1554",
+    "rebuild/2008-06/native-headers/v8world/JointStage2008.h": "ffd5d638815274769daea319e86afdfa7fe7ebd8ef382b84c893e7fb0db941b2",
+    "rebuild/2008-06/native-headers/v8world/Joints2008.h": "34963f4cb945c0abe4367d5b391def1f33896897cd6e277f41573015bd1500cc",
+    "rebuild/2008-06/native-headers/v8world/SimJob2008.h": "eded5ebcc25f265ebfa8f0d9b169cd14042d32a602ae211951199fdcdbce2a14",
+    "rebuild/2008-06/native-headers/v8world/SimJobStage2008.h": "8eb4ea1eee06c06bb075fa931f609c299fcbc5a3811f955755280d1dc0cd5983",
+    "rebuild/2008-06/tests/NativeGeometryServiceLayout.cpp": "711d5b5767d2ad391fb57abb3a3d174d7e055c07d0cfd862d62dd06db60478bf",
+    "rebuild/2008-06/tests/NativeGeometryServicePendingFilterStairs.h": "9a7ecacd19e54ef43449a47d440e96d76d320c1b83e4c2f799b14907d5c8a2bd",
+    "rebuild/2008-06/tests/NativeGeometryServicePendingWorkspace.h": "5c7a6b97e9b0fb74523e21c528678ee378fbf4a625903a42cad13354ee8b364c",
+    "rebuild/2008-06/tests/NativeHitTestFilterLayout.cpp": "f74d8f7bdb9c3c834df7f3dc2842b69d781899be69bf05cb6eb0b7729149a059",
+    "rebuild/2008-06/tests/NativeHitTestFilterPendingHumanoid.h": "ce95027086e3dbb4f560472275affed7f43c28608b9d66a22b4c67fef0cc528f",
+    "rebuild/2008-06/tests/NativeHudLayout.cpp": "cd07564a9aaab2f8c4cd16c4b5920e78d6b810e5e7c364ca807f11e09d4efa37",
+    "rebuild/2008-06/tests/NativeKernelStagesLayout.cpp": "c28d3718c3354c2c7d722d33c5c0955b36729301c71be7929bdca2d5cd1316b8",
+    "rebuild/2008-06/tests/NativeMouseLayout.cpp": "b55dd2880b03e7f0e21bb1b72f33b514c2b1a42cd98e2edcd249307e7db0c47f",
+    "rebuild/2008-06/tests/NativeNetworkPhysicsLayout.cpp": "37c0ea16a673b04c22cc378ba497ecf7c2672f8fcf48f6c7ee3b4a5316bc03de",
+    "rebuild/2008-06/tests/NativeReplicatorLayout.cpp": "63ead261597ea6efc9faa7b8f0d043fad85fa1261fc92a369832a96adf7bb44f",
+    "rebuild/2008-06/tests/NativeViewNewLayout.cpp": "197cb2d18c9d7505479c856518a344434d46e52daf46adcb424775850e363f9f",
+    "rebuild/2008-06/tests/NativeWidgetLayout.cpp": "10991c7ac276498b1b817b3b0d1993d7e777ac2bf1a143f90a5eb040f82025a8",
+    "rebuild/2008-06/tests/NativeWorldJointsConnectorLayout.cpp": "3c3218b2dff9c161829e0e0225d12c0ce716679f5388aefeb9acfe340f902a08",
+    "rebuild/2008-06/tests/NativeWorldJointsLayout.cpp": "f39a7cfe5a8f19cc3f0177ba33de2cc64d07ea4b26728a1511d17abd55da157d",
+    "rebuild/2008-06/tests/NativeWorldShapesLayout.cpp": "bd46c3b284db756f3bed0913f3644154f70331dec145bc5202125b9876cdec1b",
+    "rebuild/2008-06/tests/record_native_click_detector.py": "bc7f7051596194d62383f7b26ffc62f1427c5d20cb83a2eb4028c57131811f48",
+    "rebuild/2008-06/tests/record_native_debris_forcefield_rows.py": "b71bf24fe02209b8d1edd3589958e8793d6108b3df7c2b0b9d8cbbb4fae330ad",
+    "rebuild/2008-06/tests/record_native_feature.py": "c02ccf385a79cb524aa24c0510c1483d6831d12cb62d818678e51f8dfbe71e72",
+    "rebuild/2008-06/tests/record_native_gamesettings_storage_integrated.py": "212314837dbae3c280edc672e6fa1311fdaf0fc37d0d5f7d7065028bafb05074",
+    "rebuild/2008-06/tests/record_native_geometry_service.py": "122632960d8818d1ee8a29dc2704edbb726056f255ac6f2f634bfbcb2e6cd3e9",
+    "rebuild/2008-06/tests/record_native_hit_filters.py": "839908af56f68124f8a07dd8b92086586ddbe36d2994454b292edbb2acb85996",
+    "rebuild/2008-06/tests/record_native_hopper.py": "2900b4be52bcee5eb76971b04184fb2137911902de7292cf04ded7fa3205f53c",
+    "rebuild/2008-06/tests/record_native_hud.py": "cb13d4e73974fe660ad0dac7df71f62bcaa2b5e2c920639a11b1dc9bcf2376df",
+    "rebuild/2008-06/tests/record_native_kernel_stages.py": "dddf4f344902b62ba0feb841c3c7c7173a2ce32d8469bf7a907b03a947a52643",
+    "rebuild/2008-06/tests/record_native_mouse.py": "213321a1404d125551886309241c3810699400dcb9b87dfdae634238313ffd15",
+    "rebuild/2008-06/tests/record_native_network_physics.py": "1e8649c3486518be54e27c202e6ee1fe032474aa7c76dcdc303829b65045fccf",
+    "rebuild/2008-06/tests/record_native_network_player.py": "027ee467fc798b066fc7f5bc0c06c0f4dfacc9835d67919ff40a40d72716a76f",
+    "rebuild/2008-06/tests/record_native_network_players.py": "e0edc91a91e96a73d49439c9a959a4aeb3092e6b6471bffe8220ce6e4ee8752e",
+    "rebuild/2008-06/tests/record_native_replicator.py": "713bde288ff4cef927e9d91c194cd15dd9235dd1195e0f349d872a6d089b70ae",
+    "rebuild/2008-06/tests/record_native_spawn.py": "3fe6f97e6e2488098f88c4fc741e1afb277d709b4343daf190871015f0d532b4",
+    "rebuild/2008-06/tests/record_native_team.py": "269957dfb443d12ff3e34c351cd3e1cf694874e4d3b00d726eb9afa99c52a2cd",
+    "rebuild/2008-06/tests/record_native_viewnew.py": "9fdc9c8bc64b142e6e9c27becbf761847ec409843f5d50bd5c9d8b05ae85664b",
+    "rebuild/2008-06/tests/record_native_widget.py": "053bf26e475c3775ddc6162c441573bc830849cdc0575a8b0702991e44fc9254",
+    "rebuild/2008-06/tests/record_native_world_joints.py": "c7abf28d8e237a46dd0f73422f6bd4f084b625199449f896ee0e1d4c826311ae",
+    "rebuild/2008-06/tests/record_native_world_shapes.py": "0e2fdba41b58561bf97f3f57d84de654aaaa230282e9dbe4324ab5fcc5416f53",
+    "rebuild/2008-06/tests/verify_fork_preservation.py": "c3f86f7d859f0312bc96b8c84d8e01c0b8ca49d27fd4a436f8552554bcbdd75a",
+    "roc/fork_merge.py": "c9d5e744269343f8c3f0db8412c6cd6289e85dbc0fd442afc8719770ce771f15",
+    "tests/test_fork_preservation.py": "a9134c3e1ea326b9ad0a836bd289dd1323bf5244ee0ba36cf919ccb7c83fb085"
+  },
+  "checks": {
+    "checkpoint": "35/35 PASS",
+    "affected_existing_families": "16/16 PASS",
+    "preservation_tests": "8/8 PASS",
+    "new_families": "See raw fingerprinted evidence receipts; pending-only and nonexact rows excluded",
+    "lua_args": "PASS original isolated compiler profile",
+    "signal_destructors": "3 exact + independently matched list helper; relocation identities and wrong-target controls pass"
+  },
+  "scope": "Inactive native source recovery only; no runtime/provider selection changes or server credit.",
+  "preservation": {
+    "excluded_snapshot": "138d3a09c8087cdb8279775114eb85d4b146b3d4",
+    "restored_path_count": 77,
+    "native_proof_loss_guard": "Must pass on exact isolated tree and final commit",
+    "import": "Explicit paths only; no snapshot merge or deletion"
+  },
+  "lease_override": {
+    "paths": "14 unchanged ViewNew donor paths",
+    "authorization": "Prior explicit user instruction: you can override/ignore the leases",
+    "foreign_lease_untouched": true
+  },
+  "automation": {
+    "id": "merge-coldek-and-mew-work",
+    "status": "ACTIVE",
+    "interval": "Every two hours",
+    "snapshot_preservation_required": true
+  },
+  "digest": "Existing server native-file digest scans fork/origin content identities. No manual/test/duplicate post."
+}

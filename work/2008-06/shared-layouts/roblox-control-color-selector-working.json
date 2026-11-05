@@ -37,18 +37,18 @@
     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
     "/UNOMINMAX",
-    "/I/home/user/roconstruct/tools/libs/xtp-11.2.2/Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
     "/D_XTP_STATICLINK"
   ],
   "sources": {
-    "rebuild/2008-06/tests/record_native_roblox_control_color_selector.py": "ce1a8a76196311b3020fd2023e096d9cf6de9cbb2c0dcd809556cbe7428600ec",
-    "rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp": "16c763983e7fa46ab743043d245cc9d36046c88ff1b7e611a8878aadffdf6e99",
-    "rebuild/2008-06/tests/NativeRobloxControlColorSelectorLayout.cpp": "62bde1cc34b3f88747ec932ac74f3eb6f8e5f23d387419c838234b3db1e93d9d",
-    "rebuild/2008-06/native-headers/CRobloxControlColorSelector.h": "c7b05cec96cceadb06b854beb06c81350b0327306da6b76f46a71091dc73cf86",
-    "rebuild/2008-06/tests/record_native_roblox_control_color_selector.json": "ba29d7da7ec20c10e911d5ac848b1882f27f9d6cf9d592beb7e7b927db2d9a3b"
+    "rebuild/2008-06/tests/record_native_roblox_control_color_selector.py": "1b96478035c94a542f8cbb51c41485d69701ba74bca1b79dd8b36514ca14ebb3",
+    "rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp": "2f252d7e0f6f8b00403bf944b0518569c87885bb9147fa477f2db23989b1cbcd",
+    "rebuild/2008-06/tests/NativeRobloxControlColorSelectorLayout.cpp": "a0ba3e5b45df64374dbc2194d06a7fb4aac3fca4aea8dbabb5e1a18411f73aaf",
+    "rebuild/2008-06/native-headers/CRobloxControlColorSelector.h": "0598f7c6cd030221b0eb4b112be38eb372a47796a60e95455dfe1b347944bbbf",
+    "rebuild/2008-06/tests/record_native_roblox_control_color_selector.json": "23bc7c5cea007c398aad94427babcf5edb04c0d272a0bb033c718bfb256155e9"
   },
-  "object_sha256": "9aea9342dc03fe5de16fbe20b1ad6195389ba2ba2346369b0e43a18eee6c2e25",
-  "noinline_object_sha256": "e9eb9e06304715f4e6a65a4d881541a9e38aca427557bff25f80738c029785ca",
+  "object_sha256": "ec89cc7c2f78fdb7c58584205145ec2a647d7a966fb452955613de4aebde88d3",
+  "noinline_object_sha256": "df8c395ae0fadc290487c04a03bc74142304b272d578850b8c160144e65e1033",
   "layout": {
     "size": "0x184",
     "base": "CXTPControl (0x174, XTP 11.2.2)",
@@ -275,19 +275,6 @@
       "inline_owner": false,
       "verified_targets": {
         "??$_Copy_backward_opt@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x44e4a0 (exact here)"
-      },
-      "local_eh": []
-    },
-    {
-      "address": "0044e638",
-      "symbol": "__catch$??$_Uninit_fill_n@PAUCColorInfo@CRobloxControlColorSelector@@IU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@IABU12@AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z$0",
-      "size": 52,
-      "exact": true,
-      "profile": "XTP headers",
-      "inline_owner": false,
-      "verified_targets": {
-        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
-        "__CxxThrowException@8": "msvcr90.dll!_CxxThrowException"
       },
       "local_eh": []
     },
@@ -593,8 +580,8 @@
     {
       "address": "0044e5d0",
       "symbol": "??$_Uninit_fill_n@PAUCColorInfo@CRobloxControlColorSelector@@IU12@V?$allocator@UCColorInfo@CRobloxControlColorSelector@@@std@@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@IABU12@AAV?$allocator@UCColorInfo@CRobloxControlColorSelector@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
-      "size": 104,
-      "exact": "prefix (catch funclet split at 0044e638)",
+      "size": 156,
+      "exact": true,
       "profile": "XTP headers"
     }
   ],

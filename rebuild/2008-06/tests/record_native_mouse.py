@@ -6,10 +6,8 @@ Builds (document-swap flags, VS2008 RTM 21022, native headers only):
                                   initializers 007f8c40..007f8f30 and atexit rows, plus the class-template instances the
                                   original emits in the Tool unit (constructor chain, classDescriptor, ~Mouse,
                                   create<Mouse>), here COMDATs of an explicit create<Mouse> instantiation.
-Pending build (rows recorded exact=false, pending-build-only, never counted, vtables never walked):
-  * the same Mouse.cpp against out/native-layouts/mouse-pending: a generated copy of native-headers/reflection/
-    reflection.h with IIDREF declared __declspec(novtable) (the RefPropDescriptor<Mouse, PartInstance> constructor
-    0064e390 stores only the final IIDREF vtable 0084b2f0; same proposal as record_native_network_player.py).
+Comparison build uses the canonical native IIDREF declaration in an isolated include overlay. Pending-only rows
+remain excluded and vtables are not walked in that comparison build.
 
 Rows are found by closure from seeds (the constructor and factory, the dynamic initializers, update): every
 REL32/DIR32 relocation of an exact row is bound to the address the original instruction uses. A target defined in the
@@ -32,21 +30,24 @@ from roc import match, rebuild  # noqa: E402
 import native_bind as nb  # noqa: E402
 
 R = ROOT / 'rebuild/2008-06'
-OUT = nb.OUT
+OUT = R / 'out/native-mouse'
 OUT.mkdir(parents=True, exist_ok=True)
 SRC = R / 'native-classes/Mouse.cpp'
 HDR = R / 'native-headers/v8datamodel/Mouse.h'
 LAYOUT = R / 'tests/NativeMouseLayout.cpp'
 VERBOSE = '--verbose' in sys.argv
 
-# ---- pending overlay: reflection.h with IIDREF novtable (proposal; the shared header is not edited) ------------
+# ---- comparison overlay mirrors the canonical IIDREF declaration --------------------------------------------
 pending = OUT / 'mouse-pending'
 (pending / 'reflection').mkdir(parents=True, exist_ok=True)
 PROPOSAL_ANCHOR = '\tclass IIDREF\n'
 PROPOSAL = '\tclass __declspec(novtable) IIDREF\n'
 text = (R / 'native-headers/reflection/reflection.h').read_text()
-assert text.count(PROPOSAL_ANCHOR) == 1
-(pending / 'reflection/reflection.h').write_text(text.replace(PROPOSAL_ANCHOR, PROPOSAL))
+if text.count(PROPOSAL_ANCHOR) == 1:
+    text = text.replace(PROPOSAL_ANCHOR, PROPOSAL)
+else:
+    assert text.count(PROPOSAL) == 1, 'IIDREF declaration is neither canonical nor the known pre-proposal form'
+(pending / 'reflection/reflection.h').write_text(text)
 
 
 def build(name, src, extra=(), post=()):
@@ -116,6 +117,11 @@ assert original.string(0x84b260) == 'Mouse'
 # Externals whose evidence name differs from the compiled symbol (or has none): the address the original call site
 # uses, with the site it was read from.
 EXTERNAL = {
+    # Independently compiled authentic App/reflection/signal.cpp and Boost 1.34.1 bodies match these original
+    # extents byte-for-byte with relocations (isolated signal-destructor-proof receipt).
+    '??1SignalInstance@Reflection@RBX@@UAE@XZ': 0x56b4f0,
+    '??1signal_base@detail@signals@boost@@QAE@XZ': 0x600660,
+    '??1trackable@signals@boost@@IAE@XZ': 0x5950e0,
     '_atexit': 0x6a17af,                                                                     # initializer 007f8c40
     '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,                         # classDescriptor 005fe7f0
     '??0Instance@RBX@@IAE@XZ': 0x55b7e0,                                                     # NonFactoryProduct 005fd5c0
@@ -164,6 +170,7 @@ DATA = {}
 FOLDED = {}
 SEEDS = [
     (0x5ff600, '??$create@VMouse@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VMouse@RBX@@@boost@@XZ'),
+    (0x64e390, '??$?0P8Mouse@RBX@@BEPAVPartInstance@1@XZH@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@QAE@PBD0P8Mouse@2@BEPAVPartInstance@2@XZHW4Functionality@PropertyDescriptor@12@@Z'),
     (0x64e660, '?update@Mouse@RBX@@QAEXABVUIEvent@2@@Z'),
     (0x7f8c40, '??__Eevent_Move@RBX@@YAXXZ'),
     (0x7f8c70, '??__Eevent_Idle@RBX@@YAXXZ'),
@@ -212,8 +219,6 @@ NON_EXACT_REASONS = {
     '005ff520': '~Mouse: byte-exact with bound targets, but the analyzed extent (0x6f) also covers ??_GMouse 005ff570; '
                 'boundary evidence, not counted.',
     '005ff570': '??_GMouse: byte-exact with bound targets, but no analyzed function starts here (inside 005ff520).',
-    '0064e390': 'RefPropDescriptor<Mouse, PartInstance> constructor: exact only with IIDREF __declspec(novtable) '
-                '(pending build); the native reflection.h stores the IIDREF vtable first.',
 }
 HEADER_NOTES = [
     'native-headers/reflection/reflection.h GetSet has three virtuals; the 2008 GetSet vtables (0084b26c, 0084b280, '
@@ -222,6 +227,42 @@ HEADER_NOTES = [
     'PropDescriptor<Mouse, T> / TypedPropertyDescriptor<T> vtables are shared reflection layouts (the original has a '
     'per-type bool virtual in slot 6 where the donor property.h has read): RTTI-bound, not walked.',
 ]
+
+# Inherited methods lack evidence-name entries. Exact slots are anchored by two independent RTTI-checked vtables.
+TEXTURE_ID_SLOTS = {
+    '?getVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z': 4,
+    '?setVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z': 5,
+    '?getStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z': 7,
+    '?setStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 8,
+    '?writeValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z': 10,
+    '?readValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z': 11,
+    '?isWriteOnly@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NXZ': 2,
+}
+TEXTURE_ID_VTABLE = 0x832494
+DECAL_TEXTURE_VTABLE = 0x8325a0
+assert original.vtable_class(TEXTURE_ID_VTABLE) == ('.?AV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@', 0)
+assert original.vtable_class(DECAL_TEXTURE_VTABLE) == ('.?AV?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@', 0)
+for symbol, slot in TEXTURE_ID_SLOTS.items():
+    assert d(TEXTURE_ID_VTABLE + 4 * slot) == d(DECAL_TEXTURE_VTABLE + 4 * slot), (symbol, slot)
+
+MOUSE_REF_SLOTS = {
+    '?assignIDREF@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVInstanceHandle@3@@Z': (0x84b2f0, 0),
+    '?isReadOnly@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBE_NXZ': (0x84b2f8, 1),
+    '?isWriteOnly@RefPropertyDescriptor@Reflection@RBX@@UBE_NXZ': (0x84b2f8, 2),
+    '?equalValues@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBE_NPBVDescribedBase@23@0@Z': (0x84b2f8, 3),
+    '?getVariant@RefPropertyDescriptor@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z': (0x84b2f8, 4),
+    '?setVariant@RefPropertyDescriptor@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z': (0x84b2f8, 5),
+    '?getStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z': (0x84b2f8, 7),
+    '?setStringValue@RefPropertyDescriptor@Reflection@RBX@@MBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': (0x84b2f8, 8),
+    '?writeValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPBVDescribedBase@23@PAVXmlElement@@@Z': (0x84b2f8, 10),
+    '?readValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z': (0x84b2f8, 11),
+    '?getRefValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEPAVDescribedBase@23@PBV423@@Z': (0x84b2f8, 12),
+    '?setRefValue@?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@UBEXPAVDescribedBase@23@0@Z': (0x84b2f8, 13),
+}
+assert original.vtable_class(0x84b2f8) == ('.?AV?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@', 0)
+assert original.vtable_class(0x84b2f0) == ('.?AV?$RefPropDescriptor@VMouse@RBX@@VPartInstance@2@@Reflection@RBX@@', 0x18)
+for symbol, (vtable, slot) in MOUSE_REF_SLOTS.items():
+    assert d(vtable + 4 * slot) != 0, (symbol, vtable, slot)
 
 LOCAL_EH = nb.LOCAL_EH
 UNBOUND = []
@@ -335,7 +376,8 @@ class Build:
         for slot, sym in sorted(slots.items()):
             orig = d(value + 4 * slot)
             where = '%s slot %d' % (symbol, slot)
-            if sym in self.bodies or sym.startswith('??_7') or sym.startswith('??_R'):
+            if (sym in self.bodies or sym.startswith('??_7') or sym.startswith('??_R')
+                    or (sym.startswith('??_E') and '??_G' + sym[4:] in self.bodies)):
                 how = self.classify(sym, orig, where)
                 if how is None:
                     UNBOUND.append('%s: vtable %s slot %d %s -> %s' % (self.name, symbol, slot, sym, hex(orig)))
@@ -453,6 +495,15 @@ for build, own, symbol, value, where in SLOTS:
         how = 'external'
     elif norm(names.get(value, '')) == norm(symbol):
         how = 'evidence name'
+    elif symbol in TEXTURE_ID_SLOTS and not own:
+        slot = TEXTURE_ID_SLOTS[symbol]
+        assert d(TEXTURE_ID_VTABLE + 4 * slot) == value, (symbol, hex(value), slot)
+        assert d(DECAL_TEXTURE_VTABLE + 4 * slot) == value, (symbol, hex(value), slot)
+        how = 'matching RTTI-anchored TextureId descriptor slot %d' % slot
+    elif symbol in MOUSE_REF_SLOTS and not own:
+        vtable, slot = MOUSE_REF_SLOTS[symbol]
+        assert d(vtable + 4 * slot) == value, (symbol, hex(value), hex(vtable), slot)
+        how = 'Mouse RefPropDescriptor RTTI vtable slot %d' % slot
     elif symbol in EXTERNAL_SLOTS and not own:
         assert EXTERNAL_SLOTS[symbol] == value, (symbol, hex(value))
         how = 'slot of another class vtable (bound by RTTI)'
@@ -528,11 +579,8 @@ receipt = {
     'external_slots': SLOT_CHECK,
     'shared_header_gaps': HEADER_GAPS + HEADER_NOTES,
     'non_exact_reasons': NON_EXACT_REASONS,
-    'pending_note': 'pending_rows are exact only with the generated reflection.h copy under '
-                    'out/native-layouts/mouse-pending (IIDREF __declspec(novtable)); not counted, vtables not walked.',
-    'proposals': ['native-headers/reflection/reflection.h (reflection owner, not edited): declare '
-                  '`class __declspec(novtable) IIDREF`; RefPropDescriptor<Mouse, PartInstance> constructor 0064e390 '
-                  'stores only the final IIDREF vtable 0084b2f0 (same as Player 004913d0).'],
+    'pending_note': 'comparison-build pending-only rows remain excluded; comparison-build vtables are not walked.',
+    'proposals': [],
     'not_attempted': NOT_ATTEMPTED,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
 }

@@ -6,7 +6,7 @@
     "rebuild\\2008-06\\tests\\NativeLDrawMapRootTrial.h": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
     "rebuild\\2008-06\\tests\\NativeLDrawEntitiesTrial.h": "3a777e161ad5d84b023a9de529811886a82c29672a67cd869534b33e05ca54e9"
   },
-  "object_sha256": "d6182620c6b5d501b7db1cac8fe801a48ae32f5b584f562dc69d4bcd888c3b76",
+  "object_sha256": "4ef263e6c82a28c37674ee376e3f752799d049267b2f84b4003d870fe9c05b9a",
   "preprocess_flags": [
     "/nologo",
     "/O2",

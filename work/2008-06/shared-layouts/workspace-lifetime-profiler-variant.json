@@ -3,7 +3,7 @@
   "observer_sha256": "5d968e8aedbd88656193c6b36e089693095c02397031524edf52bae50615099d",
   "base_sha256": "af69b9e0061445f6ed62fca424eefdbc666d26c4491390806f278b13a09422f0",
   "source_sha256": "d59d8d7538f5492c20e527db0e7bc9a93586ad4e3277a4df42e99695a48553bf",
-  "object_sha256": "6e829766d07a2641bf4f933b301a36a6264cf278d937ea004726b01db0f434fa",
+  "object_sha256": "fc2465f634d700d6c092b0d176fbd94246ed69abd4467220279ccc54703907b3",
   "methods": [
     {
       "symbol": "??0Workspace@RBX@@QAE@PAVIDataState@1@@Z",

@@ -7,13 +7,13 @@
   "constructor_bindings": {
     "__ehhandler$??0Humanoid@RBX@@QAE@XZ": 8216525,
     "??_8Humanoid@RBX@@7B@": 8640472,
-    "??0?$DescribedCreatable@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PBDB@RBX@@IAE@XZ": 6138704,
+    "??0?$DescribedCreatable@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@RBX@@IAE@XZ": 6138704,
     "??_7Connector@RBX@@6B@": 8638964,
     "??0ICharacterSubject@RBX@@QAE@XZ": 6558496,
     "__real@42c80000": 8479652,
     "??_7Humanoid@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": 8639612,
     "??_7Humanoid@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": 8639596,
-    "??_7Humanoid@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@1@@": 8639588,
+    "??_7Humanoid@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": 8639588,
     "??_7Humanoid@RBX@@6BDebugable@1@@": 8639580,
     "??_7Humanoid@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": 8639564,
     "??_7Humanoid@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": 8639548,
@@ -37,7 +37,7 @@
     "address": "005d7d20",
     "size": 698,
     "exact": true,
-    "object_sha256": "a498f8ae69b832531326db83547add47cefca4a58bfa1b76ec2da32e17bfea36",
+    "object_sha256": "89fe0f59c2f291ca5f34398b5f3f82982f90e2d511c16b808b90af61b7e0df80",
     "source_sha256": "e346b299bcebb59334133f9eb0346fee58f5bcf66957deb29957ca352bdae0cf",
     "read_property_slot": 11
   },
@@ -58,7 +58,7 @@
           "target": 6128272
         },
         {
-          "symbol": "?classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PBDBV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+          "symbol": "?classDescriptor@?$Described@VHumanoid@RBX@@$1?sHumanoid@2@3PADAV?$FactoryProduct@VHumanoid@RBX@@VInstance@2@$1?sHumanoid@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
           "target": 6031456
         },
         {
@@ -113,11 +113,11 @@
     "_atexit": 6952879
   },
   "descriptor_source_sha256": "5c2297145643cc4cab739b02dde605c597db468f79422164fbb136af44707a12",
-  "descriptor_object_sha256": "cbd6972818916b4a93ea0a9926c82ebda823726fb770c6a2e3633e25c03c5c8a",
+  "descriptor_object_sha256": "cc082d971a9a0b2ed444e85660eeb3531cbd0cd21760f2fc2f1976fdcf0ba552",
   "property_descriptor": "0x97a5c0",
   "getter": "005d7540",
   "getter_source_sha256": "71184f7949d9849dbffba3217bf6699708e1db0d424475bc56cb4f7dbc5b7cca",
-  "getter_object_sha256": "5df6342b0caba5b9b966c3ed55d473ae9cd74f3e94f382f15207075b9af27c5a",
+  "getter_object_sha256": "586862965ac3c7b45fe04dda0237d3ab70bfc401372b72c41d48fabc733e8668",
   "setter": "005dc230",
   "setter_size": 55,
   "setter_bindings": {
@@ -130,7 +130,7 @@
     "0x5cb7de"
   ],
   "source_sha256": "067f4309358908fcc0b940899655dba550011e142ebb0ce1108731381a5da7b4",
-  "object_sha256": "39d684fd0586a0d092d9947fc7a1d8ee784bcdcd845bf4fe526fffaa095ef9f5",
-  "observer_sha256": "994a657cc185c0cba8ea7ef25fff83adf1c1a465ef05abfc8ef728c04b1795e5",
+  "object_sha256": "8a43657e3ec422253700658a874208c988986a7bd140c5ce74e925e6fe1a39ba",
+  "observer_sha256": "b482ccf6e5e25926e19c95aa2adc2a11ecd1559cdb678bf4251239602cc293e9",
   "scope": "Inactive overlay: fifth flag matches native setStrafe bit, constructor exact with relocations masked. Full RTTI, bindings, lifetime ownership and runtime require verification."
 }

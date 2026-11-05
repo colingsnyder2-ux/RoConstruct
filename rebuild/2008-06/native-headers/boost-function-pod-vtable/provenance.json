@@ -1,0 +1,17 @@
+{
+  "upstream_template": {
+    "url": "https://raw.githubusercontent.com/boostorg/function/boost-1.35.0/include/boost/function/function_template.hpp",
+    "sha256": "95fb4a51a884f45f6d3148c5a523aaac026919e5dce454e9884f416e57cb3334"
+  },
+  "base_source": "tools/rbxgs/Client/boost_1_34_1/src/boost/function/function_base.hpp",
+  "adaptations": [
+    "Include functional declarations",
+    "Remove default constructor from vtable_base for genuine aggregate initialization",
+    "Const-qualify vtable pointer for genuine const table"
+  ],
+  "scope": "Localized ABI profile, not a complete upstream Boost release; family18/18 and carrier32/offset8/bind16 controls pass.",
+  "receipt": "work/2008-06/native-check-runs/20261104-102105-2c019c60/summary.json",
+  "base_source_sha256": "773803bfdd8be4efac93bc35717ad11343658d7c02a0dba7daf34c9ed4cddb84",
+  "activation": "Inactive: rejected default probe102813 (2 unresolved/10 duplicates); rollback103851 restores2/8 with17707 old provider bodies unchanged.",
+  "current_binding_proof": "work/2008-06/native-check-runs/20261104-102655-0450da18/analysis-2fd9377e.json"
+}

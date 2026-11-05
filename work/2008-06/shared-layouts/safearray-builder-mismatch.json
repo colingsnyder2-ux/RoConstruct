@@ -2,7 +2,7 @@
   "scope": "Inactive builder mismatch; do not link or run. Original ATL GetAt matches; builder and Reflection::Value conversion remain unproven.",
   "observer_sha256": "050a815742e4e592533890e61ff5aad039d1a85fdf27946fdfb8a2f36a792661",
   "source_sha256": "69a64655111042068a99503b4e3934e08e3ef9622c52bd5e6cf97dc54bfbf218",
-  "object_sha256": "e28d83361d7481dd82fbabd73135040337c6731b2a2855b596c000951b6e44a1",
+  "object_sha256": "8a4df25a52d161067ed65964ff2b4e2009a5037269c2e5bd773ee1ce2228ff68",
   "builder": {
     "address": "004165e0",
     "symbol": "?makeSafeArray@@YAPAUtagSAFEARRAY@@PAV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@Z",
@@ -121,7 +121,7 @@
       "/D_SECURE_SCL=0",
       "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeSafeArrayUncheckedTrial.obj"
     ],
-    "object_sha256": "4866ed2d44b17330302a0f52c6ff649a468b67c699b5aba84a7488c6acbce6b0",
+    "object_sha256": "441a4ec21fa73afc3081395aea770d9308b79e5e1fe60fefcbf0a900f0381dbb",
     "candidate_size": 166,
     "original_size": 168,
     "exact": false,

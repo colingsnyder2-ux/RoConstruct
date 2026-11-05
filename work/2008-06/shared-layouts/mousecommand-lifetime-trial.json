@@ -2,13 +2,13 @@
   "observer_sha256": "31ac71f63d5d225a3bb6b05a0bde5a997295e7b2e5d058e05a84866df407dbba",
   "headers": {
     "rebuild\\2008-06\\native-headers\\v8datamodel\\MouseCommand.h": "1f64b1ad3f0fe3597c7c9739bc9716e0f58a5b1220a05c381e61fe44a0e8ee09",
-    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "0a333d9d37be9acf557aa0a3afb10193ee2306a5288b0a9fb9e303740aa65f9d",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
     "tools\\rbxgs\\Client\\App\\include\\tool\\ToolsArrow.h": "abd288c3e88ba5b89d21c35f9b73c5fd99724e22e3bbbb245bd602257256e12f"
   },
   "objects": {
     "NativeMouseCommandLifetimeTrial": {
       "source_sha256": "5ab708ee103877be4486418f8e6c954f2739535c00b6922c618d133bfebbd5fb",
-      "object_sha256": "3c4479eaee036162b04eb132753d4155ee3d9da20353e9f22b991d32a3b0e1bc",
+      "object_sha256": "401c5dcd436fe11e993034973962e0e331716a7445eb48c533b1cf991c754ba2",
       "flags": [
         "/nologo",
         "/c",
@@ -50,7 +50,7 @@
     },
     "NativeArrowFactoryTrial": {
       "source_sha256": "2d380b60d95c71246698397063ff7d161d6ad283a8cc85e520ee70541e9fe245",
-      "object_sha256": "200ef0b957ea6379aa7ee4f5b576b8b5e87d7bba066f04df95959e9dfbf2b6c8",
+      "object_sha256": "9885f997569cf2e2a08bab5a603d42d542798c192020ad64773e987fa8832bb4",
       "flags": [
         "/nologo",
         "/c",

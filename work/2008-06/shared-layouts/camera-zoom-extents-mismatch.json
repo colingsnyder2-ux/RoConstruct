@@ -1,9 +1,9 @@
 {
   "scope": "Inactive mismatch. Candidate excluded; camera and selection ABI, ownership and runtime remain unproven.",
   "source_sha256": "23f8753650eea7312376ec6f8446b1285b6c08f08d94dd7ace0ad2b108ee52b8",
-  "selection_header_sha256": "e5a600da4c109f8c55519a20732a8ce1d407a6ae44f8a63beaffc1b99f1137fc",
+  "selection_header_sha256": "f351a88ecde30b3f000c66b116fec565f6022f768e6572654f5a3a1a327b1051",
   "observer_sha256": "7ed6f5e054cb5e977a5e461be48c76fb04dec78cee9b6e6ad6728be1a5893231",
-  "object_sha256": "1f59b8bd549cb0530bb405fa9925120f42f589a203916685e39c885ddfe9281a",
+  "object_sha256": "c939af7ea98faf59be8cd74e6442f8f1f4f9e55c5e8e969fc763bb0c030f117d",
   "address": "00582f50",
   "candidate_size": 691,
   "original_size": 691,

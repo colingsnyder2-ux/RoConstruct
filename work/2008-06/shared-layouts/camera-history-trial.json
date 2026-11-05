@@ -2,7 +2,7 @@
   "scope": "Inactive lookup and history dispatch match; history ownership, class lifetimes and runtime remain unproven.",
   "source_sha256": "80007491b9fddf0130f1e6843a9e2633d25cff201ed92a805079932aeeb58305",
   "observer_sha256": "9d28b4f065066984df6e2c5fc1e2794963ba6aa034e9766d3a8e4501da3b8080",
-  "object_sha256": "28ac3d126d8ff81c197e72cb617316a9edd640483a100d7dd9772b25c0db8f02",
+  "object_sha256": "25cea5e0531b97539c5a50c0f38a75d433a550f06266d0655f5e892dc8fb2623",
   "methods": [
     {
       "address": "0x58a9e0",

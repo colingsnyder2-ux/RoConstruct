@@ -11,8 +11,8 @@ Pending builds (rows recorded exact=false, pending-build-only, never counted, vt
     class names (`extern const char sScript[]` / `sLocalScript[]`), which Backpack.h needs for IScriptOwner;
   * Tool.cpp with NATIVE_TOOL_PENDING against a generated copy of the native v8tree/Service.h plus the one declaration
     `static const ServiceProvider* findServiceProvider(const Instance* context);` (004898d0 in the original), and a
-    generated copy of the donor v8datamodel/ToolMouseCommand.h with `extern const char sToolMouseCommand[]` /
-    Named<ScriptMouseCommand, sToolMouseCommand> (Tool::getMouse 005ff680; no native ToolMouseCommand.h).
+    generated copy of donor v8datamodel/ToolMouseCommand.h using the original const-char-array class-name ABI
+    (Tool::getMouse 005ff680; no native header).
 
 Rows are found by closure from a few seeds (constructors named by the factories that allocate the objects, the dynamic
 initializers, and a handful of evidence-named leaves): every REL32/DIR32 relocation of an exact row is bound to the
@@ -56,12 +56,10 @@ assert n1 == n2 == 2, (n1, n2)
 tool_pending = OUT / 'hopper-tool-pending'
 (tool_pending / 'v8tree').mkdir(parents=True, exist_ok=True)
 text = (R / 'native-headers/v8tree/Service.h').read_text()
-anchor = '    boost::shared_ptr<Instance> findServiceByClassName(const Name&) const;\n'
-assert text.count(anchor) == 1
-(tool_pending / 'v8tree/Service.h').write_text(text.replace(
-    anchor, anchor + '    static const ServiceProvider* findServiceProvider(const Instance* context);\n'))
-# Tool::getMouse 005ff680: the donor v8datamodel/ToolMouseCommand.h with the 2008 class-name array (evidence
-# ?getName@?$Named@VScriptMouseCommand@RBX@@$1?sToolMouseCommand@2@3PBDB@RBX@@UBEABVName@2@XZ); no native header.
+assert text.count('static const ServiceProvider* findServiceProvider(const Instance*);') == 1
+# The proven declaration is canonical now; retain no duplicate pending declaration.
+(tool_pending / 'v8tree/Service.h').write_text(text)
+# Tool::getMouse 005ff680: donor declaration with the original char-array Named ABI, never added to native headers.
 (tool_pending / 'v8datamodel').mkdir(parents=True, exist_ok=True)
 text = (ROOT / 'tools/rbxgs/Client/App/include/v8datamodel/ToolMouseCommand.h').read_text()
 for old, new in (('extern const char* sToolMouseCommand;', 'extern const char sToolMouseCommand[];'),
@@ -115,6 +113,23 @@ def norm(symbol):
     return symbol.replace('3QBDB', '3PBDB').replace('3PADA', '3PBDB')
 
 
+TEXTURE_ID_SLOTS = {
+    '?getVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPBVDescribedBase@23@AAVValue@23@@Z': 4,
+    '?setVariant@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBEXPAVDescribedBase@23@ABVValue@23@@Z': 5,
+    '?getStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z': 7,
+    '?setStringValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 8,
+    '?writeValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z': 10,
+    '?readValue@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z': 11,
+    '?isWriteOnly@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@UBE_NXZ': 2,
+}
+TEXTURE_ID_VTABLE = 0x832494
+DECAL_TEXTURE_VTABLE = 0x8325a0
+assert original.vtable_class(TEXTURE_ID_VTABLE) == ('.?AV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@', 0)
+assert original.vtable_class(DECAL_TEXTURE_VTABLE) == ('.?AV?$PropDescriptor@VDecal@RBX@@VTextureId@2@@Reflection@RBX@@', 0)
+for symbol, slot in TEXTURE_ID_SLOTS.items():
+    assert d(TEXTURE_ID_VTABLE + 4 * slot) == d(DECAL_TEXTURE_VTABLE + 4 * slot), (symbol, slot)
+
+
 # Allocation sizes: each factory pushes the size, calls operator new, then the constructor.
 for factory, size, ctor in ((0x48e790, 0x1a8, 0x5d15a0), (0x48ea00, 0x168, 0x5d0fc0), (0x48ec70, 0x168, 0x5d10a0),
                             (0x48bc20, 0x16c, 0x5d1a80), (0x578400, 0x270, 0x600240)):
@@ -150,9 +165,15 @@ STR = '?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@'
 # Externals whose evidence name differs from the compiled symbol (or has none): the address the original call site
 # uses, with the site it was read from.
 EXTERNAL = {
+    # Independently compiled authentic App/reflection/signal.cpp and Boost 1.34.1 bodies match these original
+    # extents byte-for-byte with relocations (isolated signal-destructor-proof receipt).
+    '??1SignalInstance@Reflection@RBX@@UAE@XZ': 0x56b4f0,
+    '??1signal_base@detail@signals@boost@@QAE@XZ': 0x600660,
+    '??1trackable@signals@boost@@IAE@XZ': 0x5950e0,
     '_atexit': 0x6a17af,                                                                     # initializers 007f5df0, 007f7640
     '??1Instance@RBX@@UAE@XZ': 0x55a540,                                                     # ~GuiItem 00411540
-    '??0Instance@RBX@@QAE@XZ': 0x55b7e0,                                                     # NonFactoryProduct<Instance, sMouse> 005fd5c3 (tool-pending getMouse closure)
+    '??0Instance@RBX@@QAE@XZ': 0x55b7e0,                                                     # getMouse pending closure
+    '??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z': 0x405e30,              # exact Mouse creator gate
     '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,                         # classDescriptor 005c3810
     '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,                                            # getClassName 005cfdf0, 005fe420
     '??1scoped_connection@signals@boost@@QAE@XZ': 0x5954b0,                                  # ~Tool 005fe4b0
@@ -186,7 +207,7 @@ UNPROVEN = {
 }
 CLASS_NAMES = {'sBackpackItem': b'BackpackItem', 'sHopperBin': b'HopperBin', 'sStarterPackService': b'StarterPack',
                'sLegacyHopperService': b'Hopper', 'sBackpack': b'Backpack', 'sTool': b'Tool', 'sInstance': b'Instance',
-               'sMouse': b'Mouse'}   # Tool::getMouse (pending build): Mouse class-template instances
+               'sMouse': b'Mouse', 'sToolMouseCommand': b'ToolMouseCommand'}
 # External constants: address used by the original instruction, verified by value.
 DATA = {'?zLookDirection@CoordinateFrame@G3D@@2MB': (0x828b60, struct.pack('<f', -1.0))}   # getGripForward 005fd530
 # ICF folds the closure cannot reach by relocation (none expected).
@@ -248,7 +269,7 @@ NOT_ATTEMPTED = {
                           'setGripForward/Up/Right, onAncestorChanged, onLocalClicked): needs native '
                           'Humanoid / Workspace / Players declarations; render3dSelect 005fdaf0',
     '005fe7f0..005ff600': 'RBX::Mouse class-template instances (same unit): verified by tests/record_native_mouse.py; '
-                          'here only reached from the pending getMouse 005ff680',
+                          'here only reached from pending getMouse 005ff680',
 }
 
 LOCAL_EH = nb.LOCAL_EH
@@ -369,7 +390,8 @@ class Build:
         for slot, sym in sorted(slots.items()):
             orig = d(value + 4 * slot)
             where = '%s slot %d' % (symbol, slot)
-            if sym in self.bodies or sym.startswith('??_7') or sym.startswith('??_R'):
+            if (sym in self.bodies or sym.startswith('??_7') or sym.startswith('??_R')
+                    or (sym.startswith('??_E') and '??_G' + sym[4:] in self.bodies)):
                 how = self.classify(sym, orig, where)
                 if how is None:
                     UNBOUND.append('%s: vtable %s slot %d %s -> %s' % (self.name, symbol, slot, sym, hex(orig)))
@@ -460,6 +482,11 @@ for build, own, symbol, value, where in SLOTS:
         how = 'external'
     elif norm(names.get(value, '')) == norm(symbol):
         how = 'evidence name'
+    elif symbol in TEXTURE_ID_SLOTS and not own:
+        slot = TEXTURE_ID_SLOTS[symbol]
+        assert d(TEXTURE_ID_VTABLE + 4 * slot) == value, (symbol, hex(value), slot)
+        assert d(DECAL_TEXTURE_VTABLE + 4 * slot) == value, (symbol, hex(value), slot)
+        how = 'matching RTTI-anchored TextureId descriptor slot %d' % slot
     elif len({w for _, w in occurrences[symbol]}) > 1:
         how = 'same address at %d places' % len({w for _, w in occurrences[symbol]})
     else:
@@ -494,6 +521,10 @@ for build in pending_builds:
         row['exact'] = False
         pending_rows.append(dict(row, build=build.name))
 
+GET_MOUSE_PENDING = [r for r in pending_rows if r['build'] == 'tool-pending' and r['address'] == '005ff680'
+                     and r['symbol'] == '?getMouse@Tool@RBX@@AAE?AV?$shared_ptr@VMouse@RBX@@@boost@@XZ']
+assert len(GET_MOUSE_PENDING) == 1 and GET_MOUSE_PENDING[0]['exact_pending_build_only']
+
 main_rows = list(hopper.rows.values()) + list(tool.rows.values())
 # Unit ranges of the original Hopper and Tool units (and their initializer / atexit stretches). Outside them only
 # class-specific template instances count (a class-name template argument of these classes); ICF-shared generic
@@ -518,7 +549,8 @@ counted = sorted({r['address'] for r in main_rows if counts(r['address'])})
 support = sorted({r['address'] for r in main_rows if r['exact']} - set(counted))
 inexact = list({(r['address'], r['symbol']): r for r in main_rows if not r['exact']}.values())
 sha = nb.sha
-paths = [Path(__file__).resolve(), LAYOUT, HOPPER_SRC, TOOL_SRC, BACKPACK_SRC] + HEADERS
+paths = [Path(__file__).resolve(), LAYOUT, HOPPER_SRC, TOOL_SRC, BACKPACK_SRC] + HEADERS + [
+    ROOT / 'tools/rbxgs/Client/App/include/v8datamodel/ToolMouseCommand.h']
 receipt = {
     'class': 'RBX::Hopper, StarterPackService, LegacyHopperService, BackpackItem, HopperBin, Backpack, Tool',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
@@ -526,6 +558,10 @@ receipt = {
               'backpack_pending': backpack_p_flags, 'tool_pending': tool_p_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
     'objects': {p.name: sha(p) for p in (layout_obj, hopper_obj, tool_obj, hopper_p_obj, backpack_p_obj, tool_p_obj)},
+    'pending_overlays': {
+        str(p.relative_to(ROOT)).replace('\\', '/'): sha(p)
+        for p in (pending / 'script/Script.h', tool_pending / 'v8tree/Service.h',
+                  tool_pending / 'v8datamodel/ToolMouseCommand.h')},
     'layout': {k: hex(v) for k, v in LAYOUT_VALUES.items()},
     'exact_function_rows': counted,
     'exact_support_rows': support,
@@ -533,6 +569,7 @@ receipt = {
     'not_exact_rows': [{'address': r['address'], 'symbol': r['symbol'], 'size': r['size'],
                         'target_size': r['target_size']} for r in inexact],
     'pending_rows': pending_rows,
+    'tool_get_mouse_pending_only': GET_MOUSE_PENDING[0],
     'vtables': dict(hopper.vtables, **tool.vtables),
     'external_slots': SLOT_CHECK,
     'shared_header_gaps': HEADER_GAPS,

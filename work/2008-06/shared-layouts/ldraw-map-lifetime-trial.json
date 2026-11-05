@@ -2,7 +2,7 @@
   "source_sha256": "3a50870838b57ef2a0f5fa8dcab22599b3ad8a3132569741060d40174ffb510d",
   "header_sha256": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
   "observer_sha256": "96c4b9fe08119aae1fdad4b7a07357ab362e2e6fd7ae7338787e49db6723613d",
-  "object_sha256": "f22714d573484993c90b9c87965c9b9c63caa454ceb0f1239d71048ae8b3f6a9",
+  "object_sha256": "b6a4b413e5d3ccfd8cf5e08260c216e5cfdd8ebaa3e0bdf4774e68f243b2f1ef",
   "flags": [
     "/nologo",
     "/c",
@@ -79,7 +79,7 @@
     "address": "0046d710",
     "size": 1950,
     "source_sha256": "781a1750764b1981fa00d45b615482856aba97b4fe7a5f8c7813fd91da24ec61",
-    "object_sha256": "7f9f85b8e128166756eae1ef71f83b166e7df6b6833e369d2702e77f4100771b",
+    "object_sha256": "d9e6ee4dae91c959c6098086d6c74947ed87e84029beee38607960795ad74288",
     "flags": [
       "/nologo",
       "/c",

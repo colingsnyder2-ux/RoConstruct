@@ -1,9 +1,9 @@
 {
-  "revision": "3238b08c7b1288996f09aaf57ab92f899ba8f234",
+  "revision": "322719abbaf276902356080cfb69966feea91ef3",
   "sources": {
     "rebuild\\2008-06\\native-classes\\CMainFrameDestructor.cpp": "7d43497eb33bfd05873915a6dd714bf4f4a532096eccd5a46221a440b30c05e5",
     "rebuild\\2008-06\\tests\\record_native_main_frame_constructor_trial.py": "5d9edbd4ad7d417e40d9279519e728daf1e583b991fe586d6c2af85464c14037",
-    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "7eeb25e0bda0b97adc4918c99983d76307bcd3c8c1b7c332c77658a863037f7e",
     "rebuild\\2008-06\\tests\\record_native_main_frame_destructor_trial.py": "ae54d9a1330bd23cb5b5f0f900721aaa4ca63596852c828a541165398c50bbaf"
   },
   "flags": [

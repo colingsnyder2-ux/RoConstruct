@@ -331,11 +331,7 @@ def original_slots(vt):
 
 # Vtables of the classes recovered here (every vtable their constructors store) are slot-checked against the
 # original: same slot count and every slot bound. Other vtables the rows reference (Instance bases, the Marker
-# signal descriptor) are verified by RTTI only. Known slot-count difference, recorded rather than hidden:
-# util/Object.h declares NonFactoryProduct::getClassName `virtual`, which adds a slot 1 to Marker and
-# NonFactoryProduct<DescribedBase, sMarker> (DescribedBase has no getClassName); the 2008 vtables 0082529c and
-# 008251e8 have one slot. PROPOSAL below; the pending build confirms it.
-KNOWN_EXTRA_SLOT = {0x82529c: 1, 0x8251e8: 1}
+# signal descriptor) are verified by RTTI only.
 checked = sorted({vt for _, vts in STORES.values() for vt in vts})
 vtables = []
 for vt in checked:
@@ -343,12 +339,9 @@ for vt in checked:
     obj = next(OBJECTS[u] for u in OBJECTS if symbol in match._coff_data_index(OBJECTS[u].read_bytes())[2])
     slots = vtable_slots(obj, symbol)
     count = original_slots(vt)
-    assert len(slots) == count + KNOWN_EXTRA_SLOT.get(vt, 0), (hex(vt), symbol, len(slots), count)
+    assert len(slots) == count, (hex(vt), symbol, len(slots), count)
     entries = {}
     for slot, name in sorted(slots.items()):
-        if slot >= count:
-            entries[slot] = '%s -> (no slot in the 2008 vtable; util/Object.h proposal)' % name
-            continue
         value = d(vt + 4 * slot)
         if name.startswith('??_E') and ('??_G' + name[4:]) in own:
             assert own['??_G' + name[4:]] == value, (symbol, slot, name, hex(value))
@@ -365,50 +358,6 @@ for vt in checked:
         entries[slot] = '%s -> %s (%s)' % (name, hex(value), how)
     vtables.append({'vtable': hex(vt), 'symbol': symbol, 'rtti_offset': original.vtable_class(vt)[1],
                     'original_slots': count, 'slots': entries})
-
-# Pending build: Marker unit against a generated util/Object.h copy where NonFactoryProduct::getClassName is not
-# declared virtual (it still overrides where the base declares it). Only the Marker vtable slot counts are checked
-# there; no row is counted from it.
-pending = OUT / 'pending'
-(pending / 'util').mkdir(parents=True, exist_ok=True)
-OBJECT_H = R / 'native-headers/util/Object.h'
-ANCHOR = """	class NonFactoryProduct : public DerivedClass
-	{
-	public:
-		NonFactoryProduct()
-			: DerivedClass()
-		{
-		}
-
-		template<typename T0>
-		NonFactoryProduct(T0 arg0)
-			: DerivedClass(arg0)
-		{
-		}
-
-		virtual const Name& getClassName() const;
-"""
-text_h = OBJECT_H.read_text()
-assert text_h.count(ANCHOR) == 1
-(pending / 'util/Object.h').write_text(text_h.replace(ANCHOR, ANCHOR.replace('\t\tvirtual const Name& getClassName', '\t\tconst Name& getClassName')))
-pend_obj = OUT / 'NativeReplicatorMarkerPending.obj'
-pend_flags = nb.flags()
-i = next(k for k, x in enumerate(pend_flags) if x.replace('\\', '/').endswith('rebuild/2008-06/native-headers'))
-pend_flags = pend_flags[:i] + ['/I' + str(pending)] + pend_flags[i:] + ['/Fo' + str(pend_obj), str(MARKER)]
-code, log = rebuild.run(rebuild.toolchain(21022), 'cl', pend_flags, OUT)
-assert code == 0, log
-pend_raw = pend_obj.read_bytes()
-pend_defs = match._coff_data_index(pend_raw)[2]
-for vt in KNOWN_EXTRA_SLOT:
-    symbol = bound_vts[vt]
-    assert symbol in pend_defs, symbol
-    assert len(vtable_slots(pend_obj, symbol)) == original_slots(vt), (hex(vt), symbol)
-PROPOSALS = [
-    'util/Object.h (NonFactoryProduct): declare `const Name& getClassName() const;` without `virtual` (it still '
-    'overrides Object/Instance getClassName); 2008 Marker 0082529c and NonFactoryProduct<DescribedBase, sMarker> '
-    '008251e8 vtables have one slot (the deleting destructor 004b8600); with `virtual` the current header adds slot 1. '
-    'Verified by the pending Marker build in this recorder (slot counts equal).',
-]
 
 # Replicator RTTI: PluginInterface directly after IdSerializer (sizeof 0x2b74).
 locator = d(0x8254fc - 4)
@@ -433,8 +382,7 @@ receipt = {
     'layout': 'StringSender 0xe24 (dictionary +0x00 map 0x20, strings[128] +0x20, lastIndex +0xe20 = 1); StringReceiver '
               'strings[256] (0x1c00) at +0xe24 of SharedStringDictionary (0x2a24); IdSerializer 0x2b74 (Instance, '
               'scopeNames +0x130, waitItems +0x2b54); Replicator PluginInterface +0x2b74; Marker 0x10 (returned +0xc).',
-    'methods': out, 'not_exact': NOT_EXACT, 'vtables': vtables, 'proposals': PROPOSALS,
-    'pending_flags': pend_flags,
+    'methods': out, 'not_exact': NOT_EXACT, 'vtables': vtables, 'proposals': [],
     'exact_distinct_addresses': exact_addresses,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit. Replicator '
              'itself (layout past +0x2b74, constructor 004b9bd0, destructor 004b96b0) and its Item classes remain open.',

@@ -33,7 +33,7 @@
       "address": "0x839124",
       "slots": [
         {
-          "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sResizeTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+          "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sResizeTool@2@3PADA@RBX@@UBEABVName@2@XZ",
           "original_address": "0x5c64c0"
         },
         {
@@ -99,11 +99,11 @@
       ]
     }
   ],
-  "source_sha256": "0a69c938ee238e2719efe56aa7b1bed83acde08981312dfed91859dfaeefc481",
-  "header_sha256": "7fc6763676924437cb51d267e84b5032bb9a6c24f748f4fdfd66c4ca4cc7acd4",
-  "object_sha256": "3f5836d9352bf9960df17c625e7f0a02e95a7a37a48ee8e01a9bc65228fc8722",
+  "source_sha256": "add3466a067c4ded56b7be687321950eb6de7e3f72d802d69cd73792ab601e10",
+  "header_sha256": "acccbf42cd94a4f6ed10fe90224ada3291e415bcabeb7e7b97bfad1b56c9934b",
+  "object_sha256": "8b0ee35ce9ee59c73197c572cf5a379bde37904058bb727bb112c828a5c28af7",
   "factory_source_sha256": "6d88f6de5cd7cb826238663a2fbd562a0bd751f07f4d6fda8d220b35eb58cc7d",
-  "factory_object_sha256": "0b24778082f7c7b5ea71f4a88c8a32f833ac75d50b4793405a3f0793804f5880",
+  "factory_object_sha256": "c2f9d7bd34056cb98eaf26400f8897ffbe2d2545f9175031304adad73eeeadd3",
   "observer_sha256": "df5734710e48ef7da9696ed7b3aed1e440790aad91efa5630c81ea2628364633",
   "methods": [
     {

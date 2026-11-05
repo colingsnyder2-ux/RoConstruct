@@ -135,9 +135,9 @@
   "RbxSceneManagerPendingDecls.h": "78d72d3e19b1630e2903406d69afa58ed9aea7fafaaa400552ace1222a06c250"
  },
  "objects": {
-  "NativeOgreRbxSceneManagerLayout.obj": "8377048587b5e0037d703723b8b6eaf5409f24b314bebeef7683628840755afa",
-  "NativeOgreRbxSceneManager.obj": "f33c3ed3373d1480ef7ad685b286a3650f0f6aa69a697332a3774f762fb7d2c3",
-  "NativeOgreRbxSceneManager_pending.obj": "8cd0fac1d9271e259adcf37632e34bca215867c792d34e1913d620fbb5200ca2"
+  "NativeOgreRbxSceneManagerLayout.obj": "c1d03529020901e14d34964c801293fc733502e58aa4ac5d52bbc55d351197bc",
+  "NativeOgreRbxSceneManager.obj": "1977f1869f7e34f974cfc0efaa5b8ad7e07793e788821a1037ef60733bd2e7d5",
+  "NativeOgreRbxSceneManager_pending.obj": "4a9cf56ad4b1ab529dc34cfafedf7ae34a4912ef207faf8806a6cc9b9022488b"
  },
  "layout": {
   "size": "0x8c04",

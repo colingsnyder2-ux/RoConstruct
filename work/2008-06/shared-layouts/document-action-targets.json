@@ -1,7 +1,7 @@
 {
   "scope": "Original vtable and source inventory only; action ABI, callee bindings, live integration and runtime unproven.",
-  "constructor_receipt_sha256": "33b1be91fb1d06d050e1aaa7edd218af883f02048d64a16b16c152b3e32a10b1",
-  "object_sha256": "77783265003e7df25cd1b0896e842e745a3eafd114344980e46614fe7e6967b4",
+  "constructor_receipt_sha256": "10d8640888595159287d3f2f706e5e2b3849fb23041d7237fe1452ba8b32d1cb",
+  "object_sha256": "03ae1fda2bfe8a8c81bc7366a2edb33e64d388b47c7fa7d3e448cbd018564cc3",
   "observer_sha256": "6f485e56eb7199c3360b647dd89c46aa63f0b4ecbf7b8b488e19cc9d25f333f2",
   "actions": [
     {

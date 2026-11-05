@@ -16,6 +16,8 @@ def test_site_groups_and_merged_receipts(tmp_path):
         CREATE TABLE funcs(client TEXT, addr TEXT, score INTEGER);
         CREATE TABLE integration_jobs(id TEXT, user TEXT, model TEXT, unit TEXT, receipt TEXT, updated REAL, state TEXT);
         CREATE TABLE integration_credit(client TEXT, user TEXT, model TEXT);
+        CREATE TABLE integration_claims(client TEXT, unit TEXT, user TEXT, worker TEXT,
+                                       expires REAL, state TEXT, addresses TEXT);
     ''')
     db.executemany('INSERT INTO funcs VALUES (?,?,?)', [('2008-06', '%08x' % (0x400000 + n), s)
                                                        for n, s in enumerate([100, 100, 50, 0])])
@@ -31,7 +33,9 @@ def test_site_groups_and_merged_receipts(tmp_path):
     data = integration_site.build(tmp_path, log=lambda _: None)
     assert data['groups'] == {
         'integrated': {'functions': 1, 'bytes': 10}, 'exact_waiting': {'functions': 1, 'bytes': 20},
-        'partial': {'functions': 1, 'bytes': 30}, 'unmined': {'functions': 1, 'bytes': 40}}
+        'partial': {'functions': 1, 'bytes': 30}, 'unmined': {'functions': 1, 'bytes': 40},
+        'owned_waiting': {'functions': 0, 'bytes': 0}}
+    assert data['activity'] == data['working'] == {}
     assert len(data['jobs']) == 1
     assert data['jobs'][0]['gains'] == 2
     assert data['jobs'][0]['distinct_gains'] == 1
@@ -63,6 +67,8 @@ def test_daily_history_exceeds_recent_jobs(tmp_path):
         CREATE TABLE funcs(client TEXT, addr TEXT, score INTEGER);
         CREATE TABLE integration_jobs(id TEXT, user TEXT, model TEXT, unit TEXT, receipt TEXT, updated REAL, state TEXT);
         CREATE TABLE integration_credit(client TEXT, user TEXT, model TEXT);
+        CREATE TABLE integration_claims(client TEXT, unit TEXT, user TEXT, worker TEXT,
+                                       expires REAL, state TEXT, addresses TEXT);
     ''')
     db.executemany('INSERT INTO integration_jobs VALUES (?,?,?,?,?,?,?)', [
         (str(n), 'tester', 'model', 'RBX::Camera', json.dumps({'new_distinct': [str(n)]}),

@@ -19,8 +19,8 @@
       ],
       "data_mismatches": [],
       "source_sha256": "f3fc69876750fa3369390cc8ae40ab187ade76aab579064b7e0372f0f7474389",
-      "object_sha256": "b10343a5725faba521752a7ca22a06e34d72309caf641c60d5db3ab7bcfce3c8",
-      "link_object_sha256": "4c6c3786e60b4e0e5f5038fcb443c13ed23f7feee605855b857ed8ac51a8aa75",
+      "object_sha256": "0ea0767de0d8b0deacc8f90b427990cdf94fd904cedabce18ed03687a1af4a10",
+      "link_object_sha256": "f14ad03ea012fa0f9f29ecf5bb7056d635ef6aa7b41c9776e387378e11767935",
       "relocations": [
         {
           "offset": "0x9",
@@ -234,8 +234,8 @@
       ],
       "data_mismatches": [],
       "source_sha256": "5438728d8d9142f323950f87a37c6fe703bc8228a57ce6672c1a85fcbe016ec6",
-      "object_sha256": "3438aa7994f88c726a70cefea665e69bc7443d3a6d7da231e7e84b23fcfb30f8",
-      "link_object_sha256": "7d09dbe5af7f20cafbbdce0ad369834528e8126d2140883d49d0a8f498bb71d7",
+      "object_sha256": "4a9f6361f5c06874dea495d8ad9b907483ea6ab530f9249fe0af9129b556eb1b",
+      "link_object_sha256": "d85ae188216961f59e16c3eca5fa1738c671dfad315ebf52214b2a3f6f232929",
       "relocations": [
         {
           "offset": "0x3",

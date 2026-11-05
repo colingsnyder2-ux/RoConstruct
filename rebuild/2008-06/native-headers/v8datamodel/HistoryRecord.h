@@ -24,6 +24,8 @@ struct HistoryItem {
     void reset();
     void captureProperty(const Reflection::PropertyDescriptor*);
     void capture(const Reflection::Property&);
+    HistoryItem();
+    void mergeProperty(const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>&);
     void update(const Reflection::PropertyDescriptor*);
     void applyProperty(const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>&);
     void unplayProperty(const std::pair<const Reflection::PropertyDescriptor* const, Reflection::Value>&);
@@ -34,6 +36,8 @@ struct HistoryRecord : std::map<Instance*, HistoryItem> {
     std::string name;
     HistoryRecord(ChangeHistoryService*);
     HistoryItem* get(boost::shared_ptr<Instance>);
+    bool empty();
+    void merge(HistoryRecord*);
     void play();
     void unplay();
 };

@@ -1,0 +1,2 @@
+PASS native render material: 78 distinct function rows exact (base 12, render_proxy 8, new_proxy 9, render_material 29, new_material 32); 2 folded rows verified, not counted; targets and 11 vtables verified
+{'passed': True, 'seconds': 11.594, 'wrong_callee_target_rejected': True, 'negative_error': "('??0TextureProxyBase@RBX@@QAE@XZ', '??0ReferenceCountedObject@G3D@@IAE@XZ', '0x472990', '0x472991')", 'wrong_opcode_rejected': True, 'scope': 'Inactive code/data/relocation, layout/RTTI/vtable proofs only; no executable activation/server credit.'}

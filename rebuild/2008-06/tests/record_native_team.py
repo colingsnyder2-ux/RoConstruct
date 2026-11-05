@@ -71,8 +71,8 @@ for sub in ('humanoid', 'v8tree', 'v8datamodel'):
 shutil.copyfile(HUMANOID_OVERLAY, pending / 'humanoid/Humanoid.h')
 shutil.copyfile(MODEL_OVERLAY, pending / 'v8datamodel/ModelInstance.h')
 instance_text = (R / 'native-headers/v8tree/Instance.h').read_text()
-assert instance_text.count(PROPOSAL_ANCHOR) == 1
-(pending / 'v8tree/Instance.h').write_text(instance_text.replace(PROPOSAL_ANCHOR, PROPOSAL + PROPOSAL_ANCHOR))
+assert instance_text.count('Type* findFirstChildOfType() const') == 1
+(pending / 'v8tree/Instance.h').write_text(instance_text)
 
 
 def build(name, src, extra=()):

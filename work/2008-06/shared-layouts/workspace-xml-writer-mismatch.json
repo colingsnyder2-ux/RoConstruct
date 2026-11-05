@@ -1,10 +1,10 @@
 {
   "scope": "Inactive explicit-destructor profile: constructor matches, destructor and caller differ. Implicit-destructor results are recorded separately; no runtime promotion.",
-  "observer_sha256": "5b098f21b40fb20d6ec0b3b4faa05c149d1d24a1d546831ba4d8f055a6e78563",
+  "observer_sha256": "1b5d536d72d9e232649bcc977b3647cd30fd8fe59e4dc8dd0249658df1ce0556",
   "source_sha256": "7a2401642b82a46fed479a026737fc6ce79dafb9e83a9a579c22bf60e9427090",
   "header_sha256": "64605ae487e3015a62cb8367127abe6953f19824915d2d6fcd2d182dd4b3ac86",
   "overlay_sha256": "24e5ebd16eeaf4d6beb6e6c7a9c84f550eeccc6c5782180fe991da73a4c8ec70",
-  "object_sha256": "85bffd4b8d11b4d781c814192adc97d55ee6235745332b5edf93eacd9a1a12f6",
+  "object_sha256": "65370fa984d85f0e9c99f4394d8f7e5d455587036430560968a014862bbf2cc5",
   "original_vtable": "0x81c848",
   "original_type_descriptor": "0x93350c",
   "methods": [
@@ -70,9 +70,25 @@
     "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\xml-writer-probe\\NativeWorkspaceXmlWriterMismatch.obj",
     "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorkspaceXmlWriterMismatch.cpp"
   ],
+  "original_caller_unwind": {
+    "handler": "0x7c39e8",
+    "funcinfo": "0x8db774",
+    "unwind_map": "0x8db764",
+    "states": [
+      {
+        "to": "0xffffffff",
+        "action": "0x0"
+      },
+      {
+        "to": "0xffffffff",
+        "action": "0x7c39e0"
+      }
+    ],
+    "finding": "State 0 has no cleanup action; state 1 invokes writer cleanup."
+  },
   "implicit_destructor_profile": {
     "scope": "Constructor and implicit destructor match; caller still differs. Complete layout and runtime ABI remain unproven.",
-    "object_sha256": "22232d3104d1a82d91edd93fd1a244228c739c683ab56222d4e76730d5f3fd33",
+    "object_sha256": "cf80433b937c62c3840a3b60342c6c2ac3d14dde11123971a9c65b0f3f17daf5",
     "source_sha256": "12ff225f0ba9fd659d469b5a026f02bd6cd02f80f61193bef14c6f49c32b8a62",
     "overlay_sha256": "a8ae4ca56871739dc522f2478046925b4f5dfccf4c2aae05884911ce493b9a8e",
     "methods": [

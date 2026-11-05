@@ -2,12 +2,12 @@
 #include "NativeSurfaceToolTrial.h"
 namespace RBX {
 #define SURFACE_TOOL_DECL(Type) \
-extern const char* s##Type; \
-class Type : public Named<SurfaceTool, &s##Type> { \
+extern char s##Type[]; \
+class Type : public Named<SurfaceTool, s##Type> { \
     virtual const std::string getCursorName() const; \
     virtual void applyToSurface(Surface*); \
 public: \
-    Type(Workspace* workspace) : Named<SurfaceTool, &s##Type>(workspace) {} \
+    Type(Workspace* workspace) : Named<SurfaceTool, s##Type>(workspace) {} \
     virtual MouseCommand* isSticky() const; \
 }; \
 typedef char Type##SizeCheck[sizeof(Type)==0x48?1:-1];

@@ -29,6 +29,10 @@ assert code == 0, log
 obj = (out / "NativeRunService.obj").read_bytes()
 results = []
 for address, prefix in (("00556b00", "??0RunService@RBX@@"),
+                        ("00555c00", "??1RunService@RBX@@"),
+                        ("00555900", "?enqueueTask@RunService@RBX@@"),
+                        ("005559a0", "?drainTasks@RunService@RBX@@"),
+                        ("00554440", "?onAncestorChanged@RunService@RBX@@"),
                         ("00554da0", "?setRunState@RunService@RBX@@"),
                         ("00554ae0", "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z"),
                         ("00554750", "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV"),
@@ -39,7 +43,20 @@ for address, prefix in (("00556b00", "??0RunService@RBX@@"),
     assert match.exact_match(target, target_relocations, body, relocations), name
     results.append(dict(address=address, symbol=name, size=len(body), relocation_normalized_exact=True))
 sections, symbols, definitions, _ = match._coff_data_index(obj)
-for method, expected in (("00554da0", [("?raise@?$Notifier@VRunService@RBX@@W4RunState", 0x554ae0),
+for method, expected in (("00554440", [("?notify_all@condition_impl@detail@boost@@", 0x5f1d30)]),
+                         ("005559a0", [("?do_lock@mutex@boost@@", 0x594ce0),
+                                         ("?do_unlock@mutex@boost@@", 0x594d00),
+                                         ("??D?$_Deque_const_iterator", 0x496020),
+                                         ("??4?$function@", 0x554f90),
+                                         ("?singleton@StandardOut@RBX@@", 0x569620),
+                                         ("?print@StandardOut@RBX@@", 0x5693a0)]),
+                         ("00555900", [("?do_lock@mutex@boost@@", 0x594ce0),
+                                         ("?push_back@?$deque@V?$function@$$A6AXXZ", 0x419ae0),
+                                         ("?do_unlock@mutex@boost@@", 0x594d00)]),
+                         ("00555c00", [("?tock@Stopwatch@G3D@@", 0x511df0),
+                                         ("?_Tidy@?$deque@V?$function@$$A6AXXZ", 0x419b40),
+                                         ("??1?$FactoryProduct@VRunService@RBX@@", 0x554350)]),
+                         ("00554da0", [("?raise@?$Notifier@VRunService@RBX@@W4RunState", 0x554ae0),
                                          ("?raise@?$Notifier@VRunService@RBX@@VRunTransition", 0x554a60)]),
                          ("00554ae0", [("?raise@?$Notifier@VRunService@RBX@@W4RunState", 0x554750)]),
                          ("00554a60", [("?raise@?$Notifier@VRunService@RBX@@VRunTransition", 0x554690)])):
@@ -139,11 +156,38 @@ assert slot_body == b"\xc3" and not slot_relocs
 primary_vtable = dict(original_slot0=hex(original_primary_slot0), original_body="ret",
                       candidate_slot0=primary_symbol, compatible=True,
                       source="roc_instance_guid_callback_5e8a3f385d045a38.cpp")
-paths = [source, ROOT / "rebuild/2008-06/native-headers/util/RunStateOwner.h", ROOT / "rebuild/2008-06/native-headers/util/Events.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", ROOT / "rebuild/2008-06/tests/NativeRunServiceLayout.cpp", Path(__file__)]
+constructor_symbol = results[0]['symbol']
+constructor_start, constructor_section = definitions[constructor_symbol]
+constructor_table = sections[constructor_section]
+constructor_bytes, _, _ = match.target('2008-06', '00556b00')
+deleting_thunks = []
+for index in range(constructor_table[7]):
+    offset, symbol_index, kind = struct.unpack_from('<IIH', obj, constructor_table[5] + 10 * index)
+    offset -= constructor_start
+    vtable_symbol = symbols[symbol_index][0]
+    if not (0 <= offset < len(constructor_bytes) - 3 and vtable_symbol.startswith('??_7RunService@') and vtable_symbol in definitions):
+        continue
+    vtable_address = struct.unpack_from('<I', constructor_bytes, offset)[0]
+    vtable_start, vtable_index = definitions[vtable_symbol]
+    vtable_table = sections[vtable_index]
+    for slot in range(vtable_table[7]):
+        entry_offset, entry_symbol, _ = struct.unpack_from('<IIH', obj, vtable_table[5] + 10 * slot)
+        entry_offset -= vtable_start
+        if entry_offset < 0 or not symbols[entry_symbol][0].startswith('??_ERunService@'):
+            continue
+        thunk = read32(vtable_address + entry_offset)
+        instructions = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(pe.get_data(thunk - base, 16), thunk))
+        assert instructions[0].mnemonic == 'sub' and instructions[0].op_str.startswith('ecx, '), hex(thunk)
+        assert instructions[1].mnemonic == 'jmp' and instructions[1].op_str == '0x556410', hex(thunk)
+        deleting_thunks.append(dict(vtable=hex(vtable_address), slot=entry_offset // 4, thunk=hex(thunk), adjustment=instructions[0].op_str))
+assert len(deleting_thunks) == 12, deleting_thunks
+deleting_body, _, _ = match.target('2008-06', '00556410')
+assert any(i.mnemonic == 'call' and i.op_str == '0x555c00' for i in Cs(CS_ARCH_X86, CS_MODE_32).disasm(deleting_body, 0x556410))
+paths = [source, ROOT / "rebuild/2008-06/native-headers/util/RunStateOwner.h", ROOT / "rebuild/2008-06/native-headers/util/Events.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/tests/NativeRunServiceLayout.cpp", Path(__file__)]
 receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
-               compiler_build=21022, flags=flags, compile_exit=code, size=0x2d8, offsets=list(offsets), primary_vtable=primary_vtable, notifier_bases=dict(notifiers), original_sha256=hashlib.sha256(original.read_bytes()).hexdigest(), methods=results,
-               scope="Inactive compiler proof; primary slot 0 matches; remaining virtual slots, runDisabled field, call/data relocations and runtime linking remain unverified.")
+               compiler_build=21022, flags=flags, compile_exit=code, object_sha256=hashlib.sha256(obj).hexdigest(), size=0x2d8, offsets=list(offsets), primary_vtable=primary_vtable, notifier_bases=dict(notifiers), deleting_destructor_thunks=deleting_thunks, original_sha256=hashlib.sha256(original.read_bytes()).hexdigest(), methods=results,
+               scope="Inactive compiler proof; constructor/destructor and selected calls match; callable return type inferred, remaining virtual slots, runDisabled field, call/data relocations and runtime linking remain unverified.")
 output = ROOT / "work/2008-06" / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(receipt, indent=2) + "\n")

@@ -53,7 +53,8 @@ for sub in ('v8datamodel', 'Network', 'reflection'):
 IIDREF_ANCHOR = '\tclass IIDREF\n'
 PROPOSAL_IIDREF = '\tclass __declspec(novtable) IIDREF // 2008: RefPropDescriptor ctor 006310d0 stores only the derived IIDREF vptr\n'
 reflection = (R / 'native-headers/reflection/reflection.h').read_text()
-assert reflection.count(IIDREF_ANCHOR) == 1
+APPLIED_IIDREF = '\tclass __declspec(novtable) IIDREF\n'  # proposal adopted in the native reflection.h
+assert reflection.count(IIDREF_ANCHOR) + reflection.count(APPLIED_IIDREF) == 1
 (pending / 'reflection/reflection.h').write_text(reflection.replace(IIDREF_ANCHOR, PROPOSAL_IIDREF))
 
 

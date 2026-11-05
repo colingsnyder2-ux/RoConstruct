@@ -30,6 +30,8 @@ public:
     void setEnabled(bool);
     void start();
     void commit(const char*);
+    void prepare();
+    void mergeFirst();
     void reset();
     void unplay();
     void play();

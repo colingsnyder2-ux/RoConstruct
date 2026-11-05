@@ -1,9 +1,9 @@
 {
   "source_sha256": "35fd67f6694b26d7b59a5658fcdf85ed5c6921c930060b12dffb110fb04415fb",
-  "header_sha256": "cf5b3d39cc011c7e1b0123197cf4058a7dbd9b3031dfa68c791da5989a71423c",
+  "header_sha256": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
   "observer_sha256": "970b32b753f271769521bdc51a1a138a75ebc4d6f61355388031049a21e8beb6",
   "mfc_import_lib_sha256": "49e5238e6586ad148da8a68c082fe81dc1bf6bca26a3cc6a449a323f05a750de",
-  "object_sha256": "e9d845ce5d2701acdfdb13154dd4db4c5a09ff1a28193aeb8c104266b73dc959",
+  "object_sha256": "377321f07702e55e0ce02171446f40dd980ae71fc796fe96e8044ae7ec9bb573",
   "preprocess_flags": [
     "/nologo",
     "/O2",

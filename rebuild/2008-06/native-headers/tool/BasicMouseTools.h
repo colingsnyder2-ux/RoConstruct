@@ -16,7 +16,7 @@ class CloneTool : public Named<MouseCommand, sCloneTool> {
     virtual void onMouseIdle(const UIEvent&);
     virtual const std::string getCursorName() const;
 public:
-    __declspec(noinline) CloneTool(Workspace*);
+    CloneTool(Workspace*);
     virtual MouseCommand* isSticky() const;
 };
 typedef char CloneToolSize[sizeof(CloneTool) == 0x24 ? 1 : -1];

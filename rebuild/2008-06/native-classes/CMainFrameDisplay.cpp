@@ -4,9 +4,7 @@
 #include "util/scopedassign.h"
 #include <G3D/Vector2int16.h>
 
-// Original 00412d50 and 00445250; class identity remains unverified (as in CMainFrameCommands.cpp).
-class FrameSizeSettings { public: G3D::Vector2int16 getFrameSize() const; };
-FrameSizeSettings* frameSizeSettings();
+#include "CRenderSettings.h"
 
 // 00430bf0 (96%: the original loads the return-slot pointer into ebx at entry): the display mode closest to the requested pixel count with the current mode's
 // aspect ratio (within 10%), colour depth and refresh rate.
@@ -46,7 +44,7 @@ void CMainFrame::configureFullscreen()
         RBX::StandardOut::singleton()->print(RBX::MESSAGE_ERROR, "GetMonitorInfo failed");
         return;
     }
-    G3D::Vector2int16 resolution = frameSizeSettings()->getFrameSize();
+    G3D::Vector2int16 resolution = CRenderSettings::singleton().getFullscreenSize();
     DEVMODEA mode;
     mode = findDisplayMode(info.szDevice, resolution.x * resolution.y);
     LONG result = ChangeDisplaySettingsExA(info.szDevice, &mode, NULL, CDS_FULLSCREEN, NULL);

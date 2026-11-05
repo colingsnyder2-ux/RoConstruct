@@ -2,6 +2,7 @@
 #include "../native-headers/CWorkspace.h"
 #include "../native-headers/v8datamodel/DataModel.h"
 #include "../native-headers/v8datamodel/Selection.h"
+#include "../native-headers/v8datamodel/Workspace.h"
 #include "v8xml/XmlElement.h"
 #include "v8xml/SerializerV2.h"
 
@@ -19,8 +20,7 @@ std::auto_ptr<XmlElement> CWorkspace::writeXmlModel() {
     return root;
 }
 
-// 0046b0e0. Workspace's notifier subobject is at +0x344 in original RTTI;
-// use the evidenced subobject boundary until its full class is recovered.
+// 0046b0e0: detach typed notifier listeners before releasing owners.
 void CWorkspace::cleanup() {
     if (dataModel) {
         {
@@ -28,13 +28,10 @@ void CWorkspace::cleanup() {
             RBX::Listener<RBX::Selection, RBX::SelectionChanged>* first = this;
             RBX::Selection* selection = dataModel->find<RBX::Selection>();
             if (selection) selection->RBX::Notifier<RBX::Selection, RBX::SelectionChanged>::removeListener(first);
+            RBX::Listener<RBX::Workspace, RBX::DrawChanged>* second = this;
             RBX::Workspace* workspace = dataModel->getWorkspace();
-            if (workspace) {
-                RBX::Notifier<RBX::Workspace, RBX::DrawChanged>* notifier =
-                    reinterpret_cast<RBX::Notifier<RBX::Workspace, RBX::DrawChanged>*>(
-                        reinterpret_cast<char*>(workspace) + 0x344);
-                notifier->removeListener(this);
-            }
+            if (workspace)
+                workspace->RBX::Notifier<RBX::Workspace, RBX::DrawChanged>::removeListener(second);
         }
         runService.reset();
         RBX::DataModel::closeDataModel(dataModel, true);

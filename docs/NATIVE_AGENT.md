@@ -183,7 +183,7 @@ Pause holds new tasks. Stop kills active agent process trees; partial source sta
 saved. No stronger-model escalation occurs automatically.
 
 **Submissions stay independently gated.** A native method with one supported
-accepted-module mapping is recompiled in that canonical context, then joins one combined submission batch per model. That batch follows the
+accepted-module mapping is recompiled in that canonical context, then joins a submission batch for its class and model. That batch follows the
 existing claims, linked preflight and server verifier. Missing mapping or linkage
 leaves an explicit pending candidate. Uncheck **Submit linkable recoveries** or use
 `--no-agent-submit` for local-only recovery; drafts persist for later submission.
@@ -191,6 +191,27 @@ The GUI distinguishes local recovery, merged changes, conflicts, submitted jobs,
 accepted jobs and pending work. Only server receipts establish credit. P5/P6 are
 still required for an actual active class swap; the shared-header workflow remains
 provisional until that first swap lands.
+
+The local GUI prioritizes published classes with more known integration mappings,
+then fills free slots with other classes. New sessions default to five AI workers;
+compiler concurrency and model budgets remain independently adjustable. Classes
+listed under **Excluded classes** receive no new assignments. Existing submitted
+work still finishes. The default excludes CRobloxView, CMainFrame and HUMAN while
+they are assigned elsewhere; edit the list when ownership changes.
+
+If linked preflight records uncovered losses, multi-method batches are split in
+half and saved for recheck; singleton failures remain blocked with their receipt.
+The controller waits for an outstanding integration job before another preflight,
+so a later batch uses the accepted baseline. Owner-published helper mappings can
+append a proven method to an existing canonical unit, using exact anchors and the
+normal independent gates. A changed or revoked owner mapping invalidates its task
+signature; unsupported or absent mappings remain pending.
+
+The GUI reports distinct server credits and session credits/hour. Agents receive
+the `native-asm` command when installed. Class names and mappings are scheduling
+clues, not proof that every mined function is usable. Missing owner declarations,
+unpublished methods and unsupported layouts still require owner work. Completion
+of every function cannot be guaranteed; no layout or player swap is automatic.
 
 A request cap in this mode counts launched Codex agents, not their internal model
 turns. Subscription token usage is reported after an agent exits; in-flight agents

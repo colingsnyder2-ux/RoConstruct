@@ -113,6 +113,8 @@ def norm(symbol):
 # ---- externals: address the original instruction uses, read at the call sites listed ----------------
 EXTERNAL = {
     '??2@YAPAXI@Z': 0x6a0920, '??3@YAXPAX@Z': 0x6a067a,
+    '??1KernelData@RBX@@QAE@XZ': 0x5fa970,  # Kernel::~Kernel 005facb3 calls native KernelData destructor.
+    '?alignedFree@System@G3D@@SAXPAX@Z': 0x507d20,  # G3D System.cpp; KernelData / Kernel dtor calls.
     # IPipelined (2008 bodies): 00645830 `currentStage = stage; ret 4` (evidence name putInKernel; putInPipeline /
     # putInStage have the same body), 00645820 `currentStage = NULL; ret 4`, 00645840 `currentStage =
     # currentStage->upstream; ret 4`.
@@ -139,7 +141,9 @@ EXTERNAL = {
     '??1?$_Tree@V?$_Tset_traits@PAVJoint@RBX@@U?$less@PAVJoint@RBX@@@std@@V?$allocator@PAVJoint@RBX@@@4@$0A@@std@@@'
     'std@@QAE@XZ': 0x64b230,                                                # ~JointStage 0066855b
 }
-DATA = {}
+DATA = {
+    '?numKernels@Kernel@RBX@@0HA': 0x97b5b8,  # constructor 005fb6eb increments; destructor 005facac decrements.
+}
 # ICF / trivial-wrapper folds: the original keeps one body where these units emit several identical ones.
 FOLDED = {
     '?getAssemblyConst@AssemblySimJob@RBX@@UAEPAVAssembly@2@XZ': 0x74eed0,  # `mov eax, [ecx+0x24]; ret`
@@ -172,12 +176,8 @@ NON_EXACT_ROWS = [
     (0x5fb650, '??0Kernel@RBX@@QAE@PAVIStage@1@@Z', 'kernel',
      'the 2008 KernelData is 0x3c (new 0x3c, constructor 005fb5f0) and CodeProfiler 0xc048 (new 0xc048, constructor '
      '005c43a0); the donor KernelData.h / util/Profiling.h give 0x30 / 0x20040'),
-    (0x5faca0, '??1Kernel@RBX@@UAE@XZ', 'kernel',
-     'the 2008 CodeProfiler has a virtual destructor (005fad00 deletes profilingKernel through slot 0); the donor '
-     'Profiler has none; the rest (--numKernels, ~KernelData call, ~Array, ~IStage) is identical'),
 ]
 UNPROVEN = {'??0Kernel@RBX@@QAE@PAVIStage@1@@Z': 0x5fb650,                  # SimJobStage() 0064d33c
-            '??1Kernel@RBX@@UAE@XZ': 0x5faca0,                              # Kernel ??_G 005fb0c3
             '?removeFromMap@JointStage@RBX@@AAEXPAVJoint@2@PAVPrimitive@2@@Z': 0x668280}
 # Vtable slots whose bodies are not built here: bound to the address the original vtable holds (names / call sites).
 SLOT_EXTERNAL = {
@@ -228,6 +228,7 @@ ROWS = {
         (0x5faa20, '?numBodies@Kernel@RBX@@QBEHXZ'),
         (0x5faa30, '?numPoints@Kernel@RBX@@QBEHXZ'),
         (0x5faa40, '?numConnectors@Kernel@RBX@@QBEHXZ'),
+        (0x5faca0, '??1Kernel@RBX@@UAE@XZ'),
     ],
 }
 

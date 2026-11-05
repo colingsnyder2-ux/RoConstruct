@@ -8,8 +8,8 @@ Builds (document-swap flags + /fp:fast, VS2008 RTM 21022):
                                           Network/Players.h = tests/NativeNetworkPlayerPlayers.h,
                                           v8datamodel/ModelInstance.h = tests/NativeTeamPendingModel.h, read only);
   * the same unit against a generated copy of native-headers/reflection/reflection.h with IIDREF declared
-    __declspec(novtable) (PROPOSAL below; shared header not edited). Rows exact only there are recorded
-    exact=false (pending-build-only) and are not counted.
+    __declspec(novtable) when the shared header has not yet adopted that declaration. If the shared header is already
+    canonical, any newly exact constructor is credited from the base object, never as pending-only.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the
 address the original instruction uses and verified: imports by DLL export / mfc ordinal name, string literals by
@@ -56,8 +56,14 @@ PROPOSAL = '\tclass __declspec(novtable) IIDREF\n'
 pending = OUT / 'network-player-pending'
 (pending / 'reflection').mkdir(parents=True, exist_ok=True)
 reflection_text = (R / 'native-headers/reflection/reflection.h').read_text()
-assert reflection_text.count(PROPOSAL_ANCHOR) == 1
-(pending / 'reflection/reflection.h').write_text(reflection_text.replace(PROPOSAL_ANCHOR, PROPOSAL))
+if reflection_text.count(PROPOSAL_ANCHOR) == 1:
+    pending_reflection_text = reflection_text.replace(PROPOSAL_ANCHOR, PROPOSAL)
+    reflection_pending_only = True
+else:
+    assert reflection_text.count(PROPOSAL) == 1
+    pending_reflection_text = reflection_text
+    reflection_pending_only = False
+(pending / 'reflection/reflection.h').write_text(pending_reflection_text)
 
 
 def build(name, src, extra=(), tail=()):
@@ -392,6 +398,15 @@ for init, key in ATEXIT.items():
 
 base_rows = resolve(base_obj, ROWS + atexit_rows)
 pend_rows = resolve(pend_obj, PENDING_ROWS)
+base_funcs = {n: (b, r) for n, b, r in match.coff_functions(base_obj.read_bytes())}
+remaining_pending = []
+for address, name in pend_rows:
+    target, target_refs, _ = match.target('2008-06', '%08x' % address)
+    if name in base_funcs and match.exact_match(target, target_refs, *base_funcs[name]):
+        base_rows.append((address, name))
+    else:
+        remaining_pending.append((address, name))
+pend_rows = remaining_pending
 own = {}
 for address, name in base_rows + pend_rows:
     own.setdefault(name, address)
@@ -463,7 +478,8 @@ receipt = {
               'superSafeChat +0x1b1, userId +0x1b4, six Vector2int16 DPHYS regions +0x1b8..+0x1cc, lastActivityTime +0x1d0',
     'methods': base_out, 'pending_methods': pend_out, 'not_exact': not_exact,
     'exact_distinct_addresses': exact_addresses,
-    'pending_note': 'pending rows are exact only with the generated reflection.h copy (IIDREF __declspec(novtable)); not counted.',
+    'pending_note': 'rows exact in the base build are credited there; only rows exact in the generated reflection.h build and not in base are pending-only.',
+    'reflection_h_pending_control': reflection_pending_only,
     'standins_note': 'base build uses declaration-only stand-ins for Network/Players.h and v8datamodel/ModelInstance.h '
                      '(other classes; donor/native headers do not compile with the 2008 DescribedCreatable).',
     'proposal_reflection_h': PROPOSAL,

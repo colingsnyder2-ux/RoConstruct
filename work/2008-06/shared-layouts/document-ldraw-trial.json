@@ -7,10 +7,10 @@
     "rebuild\\2008-06\\tests\\NativeLDrawParserTrial.h": "4cd76ccc37f61dbeb6a3d4926fa1320ec55f45c22742568686d14aca8ee84646",
     "rebuild\\2008-06\\tests\\NativeLDrawMapRootTrial.h": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
     "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
-    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "6b5e8766c0a695e297cb999b80c64c5e93b0180e8f43b26c121a9a25f289bb42"
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "c3daab0c73f2fbe29ee647f6e8671ab73791d1df19c3ddc8baa6a3cf61755a7a"
   },
-  "object_sha256": "0e57ca062f1a37a72ef1f7300e5785cbab8c88e5e9c7f5ed4dddba7da3dda351",
+  "object_sha256": "a7c230641939031a42c01d76ae4c4c15cd06e53a8909c6f4b0f471487ca5f524",
   "preprocess_flags": [
     "/nologo",
     "/O2",
@@ -120,7 +120,7 @@
   "parser_destructor": {
     "address": "0046f100",
     "size": 15,
-    "object_sha256": "8775869fdcca839510dcf6185774d86f0b88bd43f103f905766a288772aea456",
+    "object_sha256": "5a84ca55c0343cc376c2b81a8b7a33649daa3037f879b3e4dab5b5d9d3554bfa",
     "flags": [
       "/nologo",
       "/c",
@@ -163,7 +163,7 @@
   "parser_constructor": {
     "address": "0046f110",
     "size": 184,
-    "object_sha256": "de60464e7645615ac69f1395bace5d67b36b2476224b346e38f43c90ed40a6a2",
+    "object_sha256": "828397d31a9c1273bee1c7fb17ef438ba9d9264457a531db1a59a3f5cf1e2475",
     "flags": [
       "/nologo",
       "/c",

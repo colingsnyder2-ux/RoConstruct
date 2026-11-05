@@ -384,15 +384,15 @@
     "rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h": "963b1594662c88d88527e6dd0ac96367596fc34e35981d89c68a0ab61c9fb0d7"
   },
   "objects": {
-    "NativeRenderSceneLayout.obj": "f94b002af76cce4ada487797e43dead5ace75ccdf641515277e1c8ba927a7dc2",
-    "NativeRenderScene_scene.obj": "8d384238d8a38858d4155292ff3ba1f2306f123bc1201fc2dfeecc3e8ba55872",
-    "NativeRenderScene_aggregate.obj": "9ebca8222679f624b06badc3553a93c1de40b6791dd315dba27a9b85b962527b",
-    "NativeRenderScene_aggregating.obj": "32813de4f8b62ec0fa2fbbecec9351e5eff46a7b08815bacc51ec6826321e37c",
-    "NativeRenderScene_scenebase.obj": "2ac31b4a125677df597d9c02281135f6cb5bc51f2aa0808285d62a8fbb27255b",
-    "NativeRenderScene_viewbase.obj": "b4257fce5a5a2be4cf2a8fbfd2323f2c9dc5805c0a6d7585c2a17f0a6dd2c3f8",
-    "NativeRenderScene_viewrbxgfx.obj": "2003bd605f91a4795bedc8c828de419c0b6ed3c10ddec040d40819dec1fdd03f",
-    "NativeRenderScene_scenenew.obj": "5d6a2c5e2ef8acc7a2aae7b76e42109f96e2a647848f374233e8bbb675ccd719",
-    "NativeRenderScene_viewbase_pending.obj": "1c99bdd8b15a2934768f87c84f536baf467aa97bf57d894cc7fb8945b8d91b0a"
+    "NativeRenderSceneLayout.obj": "d53d346a6abd1027fc46cd67b5f7752937e736ccb5fd59d9f2554ca7d7414948",
+    "NativeRenderScene_scene.obj": "8468302c8df79425ad59cb350c94ab26ee1ce4031247b79791d8ac080df0841c",
+    "NativeRenderScene_aggregate.obj": "b98cfa6ecf8f2cda276515cfc438ef245794be3c264f333b88dc62f9386f0894",
+    "NativeRenderScene_aggregating.obj": "b59a845b427f67363e157bceb1db5e5602154145e6377e6f113123f7a1bbd7a5",
+    "NativeRenderScene_scenebase.obj": "d7fe901f04c23ab55b16643336780e043f1f06a100700ed4e7a7f27c8b3c8605",
+    "NativeRenderScene_viewbase.obj": "4698f90d51e8e4db020ad32b20ff44e0c74fb15a44a777efcd663f478977c8a7",
+    "NativeRenderScene_viewrbxgfx.obj": "a956abe96c4b70f5a88a6f866597f652e3c912d1f7a87a2abc8d9811b1c4153b",
+    "NativeRenderScene_scenenew.obj": "c3431460e9d4b165edbe23d82cd28e437f5ceee3ac0f14f7389013fe8ba8727c",
+    "NativeRenderScene_viewbase_pending.obj": "4ded892506d8d40d6d6798b3b5038cbac19db3fa65c4862846c746f2974bdfcc"
   },
   "layout": {
     "chunkSize": "0x28",

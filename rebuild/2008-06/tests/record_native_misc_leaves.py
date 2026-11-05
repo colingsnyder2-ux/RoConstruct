@@ -4,21 +4,24 @@ Builds (document-swap flags, VS2008 RTM 21022, current native headers only; no p
   * tests/NativeMiscLeavesLayout.cpp   sizeof MD5HasherImpl 0x28, MergeBinder 0x1c, InstanceHandle 8;
   * native-classes/MD5Hasher.cpp       MD5HasherImpl ctor / 3 addData / toString / c_str, MD5Hasher::create, plus the
                                        ATL CString members the unit instantiates;
-  * native-classes/MergeBinder.cpp     MergeBinder ctor, the five inline virtuals emitted with its vtable, and the
+  * native-classes/MetadataMergeBinderConstructor.cpp  existing MergeBinder ctor/provider and its inline virtuals,
                                        std::vector<IDREFItem> / boost shared_from members they instantiate.
 
 Every row must be relocation-masked exact against the original, and every REL32/DIR32 target is bound to the address
 the original instruction uses and verified: imports by export name, literals by bytes, vtables by original RTTI
 names, throw info by its first catchable type, own symbols by the row proven here, the remaining externals by the
 EXTERNAL map below (each named so by evidence.json, or with the reason given), one address per symbol across all rows.
-vector::_Insert_n is compared against the concatenation of its three contiguous extents (the two catch funclets
-0044440d / 004444a8 start extents of their own). Both vtables are slot-checked against the original from the
+vector::_Insert_n is compared against its current full 638-byte extent, including the embedded catch funclets
+(0044440d / 004444a8 are retired starts). Both vtables are slot-checked against the original from the
 current-header objects; the RTTI base lists and the allocation size new(0x28) are asserted from the original bytes.
 Writes work/2008-06/shared-layouts/misc-leaves-working.json.
 """
 import json
+import os
+import re
 import struct
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -31,16 +34,42 @@ R = ROOT / 'rebuild/2008-06'
 OUT = R / 'out/native-misc-leaves'
 OUT.mkdir(parents=True, exist_ok=True)
 MD5_UNIT = R / 'native-classes/MD5Hasher.cpp'
-MB_UNIT = R / 'native-classes/MergeBinder.cpp'
-HEADERS = [R / 'native-headers/util/MD5Hasher2008.h', R / 'native-headers/v8datamodel/MergeBinder2008.h']
+MB_UNIT = R / 'native-classes/MetadataMergeBinderConstructor.cpp'
+HEADERS = [R / 'native-headers/util/MD5Hasher2008.h', R / 'native-headers/metadata-load/v8xml/SerializerV2.h']
 LAYOUT = R / 'tests/NativeMiscLeavesLayout.cpp'
+dependencies = {}
+started_ns = time.time_ns()
+
+
+def _icase(path):
+    """Resolve a lowercased /showIncludes path (MSVC under wine) on a case-sensitive host."""
+    cur = Path(path.anchor)
+    for part in path.parts[1:]:
+        hit = cur / part
+        if not hit.exists() and cur.is_dir():
+            hit = next((c for c in cur.iterdir() if c.name.lower() == part.lower()), hit)
+        cur = hit
+    return cur
 
 
 def build(name, src):
     obj = OUT / (name + '.obj')
-    flags = nb.flags() + ['/Fo' + str(obj), str(src)]
+    # Reuse the existing metadata provider; never introduce a second MergeBinder
+    # constructor/class. Original announceIDREF is a tail jump, without asserts.
+    flags = ['/I' + str(R / 'native-headers/metadata-load')] + nb.flags() + ['/U_RELEASEASSERT', '/showIncludes', '/Fo' + str(obj), str(src)]
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags, OUT)
+    (OUT / (name + '.log')).write_text(log, encoding='utf-8')
     assert code == 0, log
+    for line in log.splitlines():
+        hit = re.match(r'\s*Note: including file:\s*(.*?)\s*$', line)
+        if hit:
+            text = hit[1]
+            if os.name != 'nt':  # wine reports z:\... host paths and backslash separators
+                text = re.sub(r'^[A-Za-z]:(?=\\)', '', text).replace('\\', '/')
+            path = Path(text).resolve()
+            if os.name != 'nt' and not path.exists():
+                path = _icase(path)
+            dependencies[str(path)] = nb.sha(path)
     return obj, flags
 
 
@@ -94,7 +123,7 @@ ROWS = {
         (0x444a70, '?processIDREF@' + MB + 'MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z'),
         (0x4449f0, '?push_back@' + VEC),
         (0x4445c0, '?insert@' + VEC),
-        ((0x4442c0, 0x44440d, 0x4444a8), '?_Insert_n@' + VEC),
+        (0x4442c0, '?_Insert_n@' + VEC),
         (0x444050, '??$_Uninit_fill_n@PA' + IT),
         (0x443c60, '?erase@' + VEC),
         (0x443a60, '??$_Destroy_range@V?$allocator@' + IT + '@std@@@std@@YAXPA' + IT + '0AAV?$allocator@' + IT
@@ -177,6 +206,7 @@ def verify(obj, rows, own):
         name = hits[0]
         body, refs = bodies[name]
         target, target_refs = target_of(address)
+        assert set(target_refs) <= set(refs), (name, 'missing original relocation')
         assert match.exact_match(target, target_refs, body, refs), (name, hex(first(address)), len(body), len(target))
         start, section = definitions[name]
         table = sections[section]
@@ -189,6 +219,7 @@ def verify(obj, rows, own):
             if not 0 <= offset < len(body):
                 continue
             symbol = symbols[index][0]
+            assert kind in (6, 20), (name, symbol, 'unsupported relocation', kind)
             if kind == 20:
                 value = (base + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
             else:
@@ -304,12 +335,17 @@ assert body[0x59296d - 0x592940:][:3] == b'\x8d\x4e\x1c'        # ArchiveBinder'
 
 sha = nb.sha
 paths = [Path(__file__).resolve(), MD5_UNIT, MB_UNIT, LAYOUT] + HEADERS
+assert all(Path(p).stat().st_mtime_ns < started_ns and nb.sha(Path(p)) == digest
+           for p, digest in dependencies.items()), 'included header changed during verification'
 exact_addresses = sorted({a for r in rows for a in r['address'].split('+')})
 receipt = {
     'class': 'RBX::MD5HasherImpl (MD5Hasher::create), RBX::MergeBinder',
     'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
     'flags': {'layout': layout_flags, 'md5': md5_flags, 'mergebinder': mb_flags},
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
+    'dependencies': dependencies,
+    'provider_ownership': {'RBX::MergeBinder': str(MB_UNIT.relative_to(ROOT)),
+                           'note': 'Existing metadata provider reused; fork duplicate source/header excluded. No runtime selection changed.'},
     'objects': {p.name: sha(p) for p in (layout_obj, md5_obj, mb_obj)},
     'layout': 'MD5HasherImpl 0x28 (hProv +4, hHash +8, std::string result +0xc); MergeBinder 0x1c (vector<IDREFItem> '
               '+4, IDREFItem 0x10); both 5-slot vtables without a destructor slot.',

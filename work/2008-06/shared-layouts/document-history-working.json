@@ -2,13 +2,13 @@
   "sources": {
     "rebuild\\2008-06\\tests\\record_native_document_history.py": "45745cac87cd4b22ab874a3cc4ae7718822bcdbdbe96562447a696d3f1a5f8da",
     "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "2c9f427744edd1ce9ef4725cf4e08de4f3fcea5997b0cdb1862bf7f8c0b04424",
-    "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "bd63e71b42041c61756532b71353f57096361d17372c8093813bda7a3830fceb",
-    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "9936857dff696070ae83bc29ad51d352f828cca55fa9c7cb24f459ec67a7d49b",
+    "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
     "rebuild\\2008-06\\native-headers\\RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4",
     "rebuild\\2008-06\\native-headers\\CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "283bcfc47ad4b6e890aba7c0c09ae3eb51c2f2f6a0f0630080d045bbd8d63bb2",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "5c85881dfc4a919e8a178af3ace242ccc0c3a505d9356d61844fd54253fed79f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "f5c158cb927a6d8ab58d24cd4a25a97e114f0dcea7abcf97684394c0594a7bbe",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "f351a88ecde30b3f000c66b116fec565f6022f768e6572654f5a3a1a327b1051",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "1b8e7d9d3df6f06d549c3f1c25c5bf820b005411e1ddd547e9bac631900a0ace",
     "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "6b5e8766c0a695e297cb999b80c64c5e93b0180e8f43b26c121a9a25f289bb42",
     "tools\\rbxgs\\Client\\App\\include\\util\\Log.h": "8caadf614c181ee1fe3cd46ac3bb0cb61a82a0d47c2d2b1d6b5df3669f7f71c6",
     "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Workspace.h": "2ed391867e49e12497e567740dccb42655e413d90112d7f918a8b9d1fe2beb07",
@@ -16,7 +16,7 @@
     "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c",
     "rebuild\\2008-06\\native-classes\\LuaAllocatorStats.cpp": "a174770c08f446c59161f7073387754b6e6f1beb58fa85707f63aa96aa8290f4"
   },
-  "object_sha256": "00b738ab53a8e7781be6e4c444c32ac0aded426a707485957f19b16f9be44120",
+  "object_sha256": "5de2974af711286d0b0e0ea4e2e619ca72708560adade9ecfc8a068ac0ea88ee",
   "profile": [
     "const _Elem * c_str() const",
     "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );"
@@ -334,7 +334,7 @@
       "address": "005c8940",
       "symbol": "?getHeapStats@LuaAllocator@@QBEXAAI0@Z",
       "size": 20,
-      "object_sha256": "41a499c695a518003f63e19e74ee30905ca6883b9443328a1502c1525536c38b",
+      "object_sha256": "db25424b52a80effcef22c876342ad6e2716a4118fefa2b4d18b133a3ee7b62f",
       "flags": [
         "/nologo",
         "/c",

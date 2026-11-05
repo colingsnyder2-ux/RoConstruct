@@ -2,9 +2,9 @@
   "scope": "Inactive candidate base conversions match original RTTI; full Workspace lifetime and live ABI remain unproven.",
   "observer_sha256": "93489e121dc676e8fea976b56f9d95462655829c71062b5f822db8779ef71872",
   "source_sha256": "f18d7d2b24638b1315becd7fecd4e4b2ce9fa131269439c6d2516cf4bd4e03cc",
-  "model_header_sha256": "251179898656bc9ac383dc3004d49b46b7dd7931f7c4266e95746b015ccc7365",
+  "model_header_sha256": "1606a7b85530c003e44ac975b09b1f40263445def89cbb38896840abe325919c",
   "rtti_sha256": "62e62c283fd71927a1d679c1acbc2f4c4fd60614d33dcf8b9962fd4d0cdcc224",
-  "object_sha256": "e1d82b7bc211bb206d2588de6ea9e884e855a2b8046d811abb1ccf53f47b79e9",
+  "object_sha256": "16cae05e12480ff5fce52a39f51df82de1c79b1e46649ee60082502ce8c6c137",
   "rows": [
     {
       "base": "guiOffset",

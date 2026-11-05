@@ -16,8 +16,8 @@
   },
   "source_sha256": "b9f6d34c705614953026951f9fbe7d8a9a169cc71030027d0ba0fb2173cbdc2f",
   "part_profile_sha256": "f57a90365ea97b377e6a2976b26f50bc3c5dd40dd57df24b71203ded95cf16c2",
-  "object_sha256": "92a783596f53a8f57254ad21be38caca2772ac87e828100270e5089730515ea3",
-  "link_object_sha256": "cabec490d6d932a78661b1efa6d09f333c8b93c0d73b23fd8015638a5fabe338",
+  "object_sha256": "d2bc4e9b38c0da27e388b327f4f7e505dccae6f101b844d07b02308bb2478f7c",
+  "link_object_sha256": "e29b1a2dd3d8ed29aa86572b73c6589832a67b7d5256ce941b432917bd38c071",
   "observer_sha256": "f3c5efb70e950cdb29a2fef7d22d20524c4749fd0919200fd9da7a53690a1a0f",
   "flags": [
     "/nologo",

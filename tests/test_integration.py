@@ -126,6 +126,7 @@ def test_catalog_discovers_accepted_overlay_only_declarations(promotions):
 
 def test_native_partial_webhook_dedupes_without_score_or_credit_changes(promotions, monkeypatch):
     from roc import reports
+    monkeypatch.setattr(integration_notify, 'extra_rows_enabled', lambda: True)
     revision = promotions.baseline()['revision']
     row = dict(file='App/Test.cpp', addr='00500000', previous=70, score=80,
                frame_before=False, frame_ok=True, calls_before=False, calls_ok=False,
@@ -140,8 +141,8 @@ def test_native_partial_webhook_dedupes_without_score_or_credit_changes(promotio
     monkeypatch.setattr(integration_notify, 'server_mines_webhook', lambda: 'https://example.invalid/hook')
     monkeypatch.setattr(threading, 'Thread', ImmediateThread)
     monkeypatch.setattr(reports, '_post', lambda url, payload: sent.append(payload))
-    promotions.store.db.execute('CREATE TABLE funcs(addr TEXT,score INTEGER)')
-    promotions.store.db.execute("INSERT INTO funcs VALUES('00500000',100)")
+    promotions.store.db.execute('CREATE TABLE funcs(client TEXT,addr TEXT,score INTEGER)')
+    promotions.store.db.execute("INSERT INTO funcs VALUES('2008-06','00500000',100)")
     promotions.store.db.commit()
     before = promotions.store.db.execute('SELECT * FROM funcs').fetchall()
     result = integration_notify.record_partials(promotions, 'alice', body)
@@ -150,7 +151,7 @@ def test_native_partial_webhook_dedupes_without_score_or_credit_changes(promotio
     assert len(sent) == 1
     text = str(sent[0])
     assert '70.000% → 80.000%' in text and 'frame improved' in text
-    assert 'not server-verified exacts' in text and '0 exact credits' in text
+    assert 'Integration Digest' in text and 'not server-verified' in text and '0 integration credits' in text
     assert sent[0]['allowed_mentions'] == {'parse': []}
     assert promotions.store.db.execute('SELECT * FROM funcs').fetchall() == before
     assert promotions.store.db.execute('SELECT COUNT(*) FROM integration_credit').fetchone()[0] == 0
@@ -1723,6 +1724,7 @@ def test_header_report_rejects_bad_input(monkeypatch, change):
 
 def test_header_report_posts_once_without_credit(monkeypatch):
     from roc import reports
+    monkeypatch.setattr(integration_notify, 'extra_rows_enabled', lambda: True)
     sent, events = [], []
     class ImmediateThread:
         def __init__(self, target, args, daemon):
@@ -1739,6 +1741,24 @@ def test_header_report_posts_once_without_credit(monkeypatch):
     assert len(sent) == len(events) == 1
     assert '3 / 49' in sent[0]['embeds'][0]['description']
     assert events[0][0][0] == 'header'
+
+
+@pytest.mark.parametrize('kind', ['header', 'section'])
+def test_extra_digest_rows_default_off(tmp_path, monkeypatch, kind):
+    from roc import setup
+    settings = tmp_path / 'settings.json'
+    settings.write_text('{}')
+    monkeypatch.setattr(setup, 'config', lambda name: settings)
+    assert not integration_notify.extra_rows_enabled()
+    monkeypatch.setattr(integration_notify, 'server_mines_webhook',
+                        lambda: pytest.fail('disabled digest requested webhook'))
+    monkeypatch.setattr(integration_notify, 'record', lambda *a, **k: None)
+    if kind == 'header':
+        assert integration_notify.record_header(None, 'alice',
+            {'class': 'CRobloxDoc', 'model': 'model', 'exact': 3, 'total': 49}) == {
+                'recorded': True, 'exact_credits': 0}
+    else:
+        integration_notify.post_section(None, 'alice', 'model', {}, background=False)
 
 
 @pytest.mark.parametrize('always_limited', [False, True])

@@ -1,7 +1,7 @@
 """Combined input, collision, Lua and anchor transition check."""
 import csv,hashlib,json,pathlib,subprocess,sys
 import record_p5_play
-root=pathlib.Path(__file__).resolve().parents[3];exe=root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe';fixture=root/'rebuild/2008-06/tests/fixtures/p5-combined-play.rbxl';out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False)
+root=pathlib.Path(__file__).resolve().parents[3];exe=pathlib.Path(sys.argv[2]) if len(sys.argv)>2 else root/'rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe';fixture=root/'rebuild/2008-06/tests/fixtures/p5-combined-play.rbxl';out=root/'work/2008-06'/sys.argv[1];out.mkdir(exist_ok=False)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();results={}
 for name,pressed in [('idle',False),('play',True),('reopen',True)]:
  folder=out/name;folder.mkdir();x=subprocess.run([str(exe),'--play',*(['--p5-input-test'] if pressed else []),'--frames','360','--anchor-trace','--inspect-place',str(fixture)],cwd=folder,capture_output=True,text=True,timeout=90)

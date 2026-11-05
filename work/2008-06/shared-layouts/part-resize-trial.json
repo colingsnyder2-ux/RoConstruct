@@ -4,13 +4,13 @@
   "preprocessed_sha256": "b558ea6385821f409354d3350d0300753c740510bc8301f5e20fc028b19a6b0c",
   "source_sha256": "2d6539b3bdfe2884a4dd5849d1e038074d0100dbd69f856f5c16b6cff50b3ab9",
   "generated_sha256": "f57a90365ea97b377e6a2976b26f50bc3c5dd40dd57df24b71203ded95cf16c2",
-  "object_sha256": "b36da846bef61f1ecaec2cf6950460d6350519fa0f13b6f4769e768159729d67",
-  "link_object_sha256": "3957db7dfb25fb521871579d029c9af9ed01fdada0a398390f5d2f71028de328",
+  "object_sha256": "06e220cbce156527df9003aae763d4f468f32c693dd55569107824798dff017c",
+  "link_object_sha256": "d828f19bbfde333e0ac90b57c8f5bc3504b6cc6793eeab2b68db17f18e5d782b",
   "constructor": {
     "address": "0x59d4d0",
     "size": 785,
     "exact": true,
-    "object_sha256": "3cf28e710aea85151d37aefb285ea8cdfb3e3d4714fb74bf76b7b6982a330b69"
+    "object_sha256": "81139f7d8d0bf116fd500c6c5e0ceaed1a4dd4e448bcc4c34527edfea6cf4656"
   },
   "observer_sha256": "0b678e1497c5df194b1828e1596ecbdfa9d359e9fe0318ee1829b24d4932d409",
   "method": {

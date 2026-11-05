@@ -151,7 +151,10 @@ class Host:
                 if target in seen:continue
                 seen.add(target)
                 context=[canonical_revision] if task.get('include_profile')=='accepted' else [headers,probe_revision]
-                task.update(target=target,signature=integration.digest([text,context,task.get('include_profile','owner'),files.get(task.get('translation_unit')),task.get('expected_symbol')]),scope='method-body-only',class_name=method.split('(',1)[0].rsplit('::',1)[0])
+                signature=[text,context,task.get('include_profile','owner'),files.get(task.get('translation_unit')),task.get('expected_symbol')]
+                if task.get('canonical_append') is not None:
+                    signature.append([task.get('canonical_file'),task['canonical_append']])
+                task.update(target=target,signature=integration.digest(signature),scope='method-body-only',class_name=method.split('(',1)[0].rsplit('::',1)[0])
                 clean.append(task)
             # Prefer bodies that can use the existing independent integration route.
             mappings={}
@@ -166,12 +169,17 @@ class Host:
             for task in clean:
                 paths=mappings.get(task['method'],[])
                 task['integration_mapping']=paths[0] if len(paths)==1 else None
+                if not paths and task.get('add_method') and task.get('canonical_append'):
+                    rel=task.get('canonical_file','')
+                    if not re.fullmatch(r'App/[\w-]+/[\w-]+\.cpp',rel) or rel not in sources:
+                        raise ValueError('Invalid owner helper canonical unit')
+                    task['integration_mapping']=rel
             clean.sort(key=lambda t:(not bool(t['integration_mapping']),len(files[t['file']][slice(*native_methods.methods(files[t['file']]).get(t['method'],(0,len(files[t['file']]))))]),t['file'],t['method']))
             if any(not Path(p).exists() or [Path(p).stat().st_size,Path(p).stat().st_mtime_ns]!=stamp for p,stamp in inputs.items()):
                 raise ValueError('Native inputs changed while publishing; refresh catalog')
             self.cached=dict(revision=integration.digest(files),files=files,tasks=clean,blockers=blockers,probe_headers=probe_headers,probe_revision=probe_revision,
                 canonical_headers=canonical_headers,canonical_revision=canonical_revision,
-                classes=sorted({t['class_name'] for t in clean}),layout_policy='owner-only; no invented fields',lease_seconds=TTL)
+                classes=sorted({t['class_name'] for t in clean}),layout_policy='owner-only; no invented fields',lease_seconds=TTL,owner_append_mapping=1)
             self.cache_key=key
         with self.store.lock:
             busy=list(self.store.db.execute("SELECT target,json_extract(packet,'$.task.addr') FROM native_method_leases WHERE (state='claimed' AND expires>?) OR state='submitted'",(time.time(),)))
@@ -327,17 +335,16 @@ class Host:
         return dict(job=identifier,record=record,receipt=receipt)
 
     def notify(self,rows):
-        from roc import agent_inbox,integration_notify,reports
+        from roc import agent_inbox,integration_notify
         gains=[r for r in rows if r['receipt']['state']=='merged' and r['receipt']['merge']['state']=='merged']
         if not gains:return
-        lines=[]
+        sections={}
         for row in gains:
             record=row['record'];task=record['task']
             agent_inbox.record('native-recovery',record['user'],record['model'],inbox=self.root/'work/agent-inbox',addr=task['addr'],job=row['job'],local_exact=True,exact_credits=0)
-            lines.append('`%s` | `%s` | %s | %s'%(task['addr'],task['method'],record['user'],record['model']))
-        payload=dict(embeds=[dict(title='RoConstruct Native Recovery',description=('\n'.join(lines)+'\n\nHost-rechecked native source merges. Report only; **0 integration credits**. Runtime/link gates and accepted submissions remain required.')[:4096],color=0x22C55E)])
-        url=integration_notify.server_mines_webhook()
-        if url:reports._post(url,payload)
+            sections.setdefault((record['user'],record['model']),[]).append(task)
+        for (user,model),tasks in sections.items():
+            integration_notify.post_section(self.promotions,user,model,integration_notify.recovery_section(tasks),background=False)
 
     def loop(self):
         while not self.stop.is_set():

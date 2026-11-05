@@ -1,0 +1,9 @@
+import json,sys,hashlib
+from pathlib import Path
+root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match
+ctor,_,_=match.target('2008-06','004c18d0');dtor,_,_=match.target('2008-06','004c4d50');log=(root/'rebuild/2008-06/out/native-layouts/profiled-peer-worker/size-no-release.log').read_text()
+for text in ['class RakPeer\tsize(2312):','1848\t| _maxSendBPS','1856\t| _minExtraPing','1858\t| _extraPingVariance','1860\t| ?$RSACrypt','2264\t| ?$SingleProducerConsumer','2304\t| networkIDManager']:assert text in log,text
+for pattern in ['dd9e38070000','66899640070000','66898642070000','8d8e44070000','8d8ed8080000','899e00090000']:assert bytes.fromhex(pattern) in ctor,pattern
+assert bytes.fromhex('8d8ed8080000') in dtor and bytes.fromhex('8b86f0080000') in dtor
+result={'scope':'Original ctor/dtor offsets and actual donor no-_RELEASE class layout match selected members; not full lifetime byte equality or runtime proof. Scoped override for these real donor fields preferable to changing global release semantics.','original_ctor':'0x4c18d0','original_dtor':'0x4c4d50','donor_size_release':'0x8f4','donor_size_with_simulator_fields':'0x908','fields':{'_maxSendBPS':'0x738 double','_minExtraPing':'0x740 unsigned short','_extraPingVariance':'0x742 unsigned short','rsacrypt':'0x744','packetSingleProducerConsumer':'0x8d8','networkIDManager':'0x900'},'difference':'Three real internet simulator fields add 16 bytes, plus 4 bytes final alignment; explains size difference 0x14.','source':'tools/rbxgs/Client/Network/raknet30/Source/RakPeer.h #ifndef _RELEASE','size_log_sha256':hashlib.sha256(log.encode()).hexdigest()};(root/'work/2008-06/shared-layouts/rakpeer-simulator-layout-worker.json').write_text(json.dumps(result,indent=2)+'\n');print('PASS original ctor/dtor field offsets and donor no-release layout')
+

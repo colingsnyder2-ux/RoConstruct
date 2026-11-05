@@ -3,8 +3,8 @@
   "source_sha256": "c95e3ce418319a951b4482a1a0e2f777a274e1f3bcac057faebc944920e42007",
   "observer_sha256": "c25fbb4ff7cf643514a58be018e915249e1f329e5aa9e0ed5b45e4a259e942ed",
   "header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
-  "profile_sha256": "a798979e1dff071d8965ab283784bff005cdc7ed6e7c3a47846463acd6da3ec2",
-  "object_sha256": "90eb6d158fb4c96b298877d860966b7d45183b16d3c859cb4c3cc77726cf1cdb",
+  "profile_sha256": "97bf4f0521e74e6128832d57c0808fd910170917ad1d44c22cd66b28a1b6bbe3",
+  "object_sha256": "555021b42e7189fe4a3edb0df73d770cbd52cfa50cdb3d4193a6d40d574dd218",
   "methods": [
     {
       "symbol": "?SaveToFile@CWorkspace@@UAGJPA_W@Z",

@@ -4,7 +4,7 @@
   "recipe": "roc_part_grouped_tail_constructor_9b19d0716f31ff52.cpp",
   "preprocessed_sha256": "b558ea6385821f409354d3350d0300753c740510bc8301f5e20fc028b19a6b0c",
   "profile_sha256": "72318069f54f69b33ea067187302f448940f3a7330b1a60c1a2e76b520dd1874",
-  "object_sha256": "be74a616e3171703b0444379bfc4df6dfcfd327fa5af17f9d33e40b5ba2273a4",
+  "object_sha256": "3f6cb2d20a0b7089b0b58bfafcd343cf7201e2848eb9c16a668d48e2b23fee01",
   "flags": [
     "/nologo",
     "/c",
@@ -21,7 +21,7 @@
   "part_constructor": {
     "address": "0059d4d0",
     "size": 785,
-    "object_sha256": "6e845b08ccfd9003cf99ecf46bc1cbda38d98d03aabc61df32c951065eff9e0b",
+    "object_sha256": "166d8f78742c7313d328beecc4f917fa5b90919b77baf51c0f37140119cd35ec",
     "flags": [
       "/nologo",
       "/c",

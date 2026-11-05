@@ -45,6 +45,7 @@ WORKER_MODULES += ["native_repair"]
 WORKER_MODULES += ["native_edit", "native_recovery", "input_reuse", "native_collaboration", "native_methods"]
 WORKER_MODULES += ["integration_local", "integration_context", "integration_policy", "integration_audit", "native_adapt", "native_refs"]
 WORKER_MODULES += ["rebuild_audit", "graph", "source"]
+WORKER_MODULES += ["leases", "native_asm", "native_files_notify", "fork_merge"]
 SERVER_MODULES += ["integration_notify", "integration_site", "agent_inbox", "native_collaboration_host"]
 
 COMMON_FILES = [".gitattributes", "roc.py", "roc.cmd", "roc.sh", "install.cmd", "install.sh",

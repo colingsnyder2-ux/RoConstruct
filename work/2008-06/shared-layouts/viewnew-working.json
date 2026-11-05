@@ -380,15 +380,15 @@
     "rebuild/2008-06/native-headers/ViewNew/WedgeMesh.h": "0a181395d89ef8a698a113bdc4240d2fd8a261ddba8bf188a894d1a52fe5a529"
   },
   "objects": {
-    "NativeViewNewLayout.obj": "4bb609ef6e531aed5419d0e818a18ecfcc6d076ba4834a109e7a563960079a18",
-    "NativeViewNew_quad.obj": "eaf483db8d5b87407aa01d0fcca0b22fe3e99deefd073c277f6337a952074c46",
-    "NativeViewNew_bevel.obj": "f56946c76b9f00c9e1632bed39d7a19a2f4c3f42ee328572bd01e673f96546dc",
-    "NativeViewNew_sphere.obj": "4469291bcde574ee631b5a5a5787c4007a36e2dae344c59a85cf13253e016f55",
-    "NativeViewNew_cylinder.obj": "542d3e51e2785e98109416671ab2164a19344acf7006e00489f87b9b3326349e",
-    "NativeViewNew_head.obj": "a4fb7c531d8b06ddb4cc777c8f48aa431ef402404b393e30f60a7f8a5130a262",
-    "NativeViewNew_wedge.obj": "1c4bc945a05c5edadbcfca662347c49ff2272ffae6baeef25b32fb9f8295088c",
-    "NativeViewNew_torso.obj": "678bf3a20c2358b6e916e317c8b2449dfe114854301797582689dc56ea6552c4",
-    "NativeViewNew_pbb.obj": "9f772d23125bb4aea644d53076e6c0d8252cf877dd4d6cec7199d3ccaea5f400"
+    "NativeViewNewLayout.obj": "7712a9c438cd8d8c1a8aac7da3f1a8f454da6f608cd78dfdaafde52eab7a463a",
+    "NativeViewNew_quad.obj": "b4ed116bd9bdff25ac050d58c9a2e28c62a62e863888017c6df5a7fcaf362f01",
+    "NativeViewNew_bevel.obj": "106e7f53cae76ef66d342d6b65c58c94d44bb3be1347715d31f7009093bb5310",
+    "NativeViewNew_sphere.obj": "9ba783fa329f88c1d4da842d7f9de25f339b79b58325e84673360cad013e64d0",
+    "NativeViewNew_cylinder.obj": "4bdcbb348729cc4021a62e376e42900a7668363f9a4ddfe8a2581928d1c50795",
+    "NativeViewNew_head.obj": "f2a6e6fd8a034730dbf03b07f51ad8b003c0fd35406e130c5c6e6769a7206b6b",
+    "NativeViewNew_wedge.obj": "7791d9a0f543d531ac289af67be912961246e513d9962c4584c0fb0837a7d248",
+    "NativeViewNew_torso.obj": "5c327b26880d1e02795362a8cd0de7653bd30043f9930fa36d5a7d7d2f52d001",
+    "NativeViewNew_pbb.obj": "366263081fb834bd9478a54067c4a1b960532bbedcc57ca2cf579b363308885e"
   },
   "layout": {
     "meshSize": "0x88",

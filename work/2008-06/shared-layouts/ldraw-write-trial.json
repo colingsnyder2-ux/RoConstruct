@@ -2,7 +2,7 @@
   "source_sha256": "1b2ff603e127dba860bba8fedf1a2d6d43b63a85eee8eefbff2904cd4af30304",
   "header_sha256": "3a777e161ad5d84b023a9de529811886a82c29672a67cd869534b33e05ca54e9",
   "observer_sha256": "a9551520b9ed34f07f0fbbacfd4ec835d89fada91eca4d5a3928a5afec3aba56",
-  "object_sha256": "a978a8b1f2f8104283aa5f583db684f101236421d8d61f20fdd66e75c765ccd1",
+  "object_sha256": "fae69711452fd0ff61c659261475f20f335aecfd9cc8e9e38c95000a8e0e66c7",
   "preprocess_flags": [
     "/nologo",
     "/O2",

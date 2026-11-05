@@ -1,15 +1,26 @@
 """Native-source coverage of one original translation unit: which functions in an address range
 are exact from the listed native-classes files (each compiled with its pinned flags).
 usage: native_tu_coverage.py LO-HI native-classes/A.cpp [...]"""
-import json, re, subprocess, sys
+import argparse, json, re, subprocess, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
-lo, hi = (int(x, 16) for x in sys.argv[1].split('-'))
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('range', metavar='LO-HI', help='hexadecimal address range, end exclusive')
+parser.add_argument('sources', nargs='+', help='sources relative to rebuild/2008-06, or absolute paths')
+args = parser.parse_args()
+try:
+    lo, hi = (int(x, 16) for x in args.range.split('-'))
+    if lo >= hi:
+        raise ValueError
+except ValueError:
+    parser.error('expected hexadecimal LO-HI with LO < HI')
 covered = {}
-for src in sys.argv[2:]:
-    out = subprocess.run([sys.executable, str(Path(__file__).with_name('check_native_class.py')), src, sys.argv[1].join(['range=', ''])],
-                         capture_output=True, text=True).stdout
-    for line in out.splitlines():
+for src in args.sources:
+    result = subprocess.run([sys.executable, str(Path(__file__).with_name('check_native_class.py')), src, 'range=' + args.range],
+                            cwd=ROOT, capture_output=True, text=True)
+    if result.returncode:
+        sys.exit('%s failed:\n%s%s' % (src, result.stdout, result.stderr))
+    for line in result.stdout.splitlines():
         m = re.match(r'([0-9a-f]{8}) (\S+)', line)
         if m:
             covered.setdefault(m[1], (Path(src).stem, m[2]))

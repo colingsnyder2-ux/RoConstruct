@@ -2,7 +2,7 @@
   "scope": "Inactive GUID data matches original holder inputs; type-info holder identity and COM runtime remain unproven.",
   "observer_sha256": "446fabe428d80d5b9fdc142292af7016c0d86f8993391d146442b78b1befe0d3",
   "source_sha256": "45b1efca46bc75788a4e67bd19109f6f9d951c0e717d3566d65917540418156e",
-  "object_sha256": "197112b3568011002843c7950ac6c68b916f2a8ecd205adb120d017f937ad912",
+  "object_sha256": "79a26267fec257fb744901b458c5a5df97c66f158d16b544ac03b086bf8930b2",
   "original_holder_address": "0x928754",
   "holder_words": [
     "0x8164b8",

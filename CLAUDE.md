@@ -9,6 +9,39 @@ server re-verifies it byte-identical.
 Run commands as `roc.cmd <cmd>` (Windows) or `./roc.sh <cmd>` (Linux); `roc --help`
 lists them all.
 
+## Efficient native integration checks
+
+- Use `roc.cmd native-asm 2008-06 ADDR [ADDR...]` for grouped disassembly and
+  its `--obj`/`--sym` mode for object comparison. Check relocation targets too.
+- Run `python rebuild/2008-06/tests/verify_native_checkpoint.py` to batch the
+  current independent native source checks (three workers, no cached results);
+  pass `sound` or `network` to check just that area. Its compact timing and
+  result summary is `work/2008-06/shared-layouts/native-checkpoint-summary.json`;
+  the last result for each group is retained as `native-checkpoint-<group>.json`.
+  Do not run multiple instances concurrently because they share output paths.
+  The sound group also runs the standalone native/donor Name ABI test. This
+  is not a client build, a server match, or the P5/P6 gate.
+- `python rebuild/2008-06/tests/probe_native_name_player_link.py` compares
+  isolated player relinks using donor versus native Name. Check its receipt and
+  map; a successful link alone does not prove runtime safety or a class swap.
+- `python rebuild/2008-06/p6/build_client.py --native-doc` builds a separate
+  `RobloxNativeDoc.exe` without changing the normal P6 executable. Its full
+  compiler/link output is `out/p6/native-doc-build.log` and
+  `out/p6/native-doc-link.log`. It is a provider-closure build, never a gate
+  candidate until its native dependency ABI is proven.
+- `verify_document_swap.py` already runs independent checks three at a time.
+  Its serial checks share generated files; do not parallelize or cache them
+  without verified read/write dependencies. The batch log records timings for
+  locating bottlenecks. Never run its diagnostic executable.
+- After refreshing the frozen Doc near-writer link, use
+  `audit_document_diagnostic_selected.py` then `audit_document_diagnostic_calls.py`
+  to check selected Doc bodies and available direct-call providers. These are
+  diagnostic evidence, not ABI, runtime, complete call-identity or gate proof.
+- Preserve in-flight checkout changes. Report the running executable's exact
+  count and P5/P6 status separately from inactive local matches.
+- Spawn workers only when useful; use `gpt-6-luna` with medium reasoning for
+  new workers, give them distinct files, and keep one shared-header owner.
+
 ## File leases: never edit the same files as another worker
 
 Before editing native classes, headers or shared build scripts, lease them on the group server.

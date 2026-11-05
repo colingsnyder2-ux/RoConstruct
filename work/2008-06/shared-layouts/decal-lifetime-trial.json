@@ -1,9 +1,9 @@
 {
   "scope": "Inactive Decal/Texture constructors, base constructor chains and actual original deletion chain match; full virtual identity and runtime ownership remain unproven.",
   "source_sha256": "967d3293a2b2bdab4c4bd92bc0c92a034f073dbf8c7779fc863ed866a2a861ea",
-  "face_header_sha256": "3ca3f9387ce192b0c1c7928e8615805d16ae1689d2603cc34f3bad57dc6343f2",
+  "face_header_sha256": "395f77875a783ae0e061aeb40e025e7889abe4c7653b9075906f741bf3f3091f",
   "observer_sha256": "313531b78ecea188f96a2db3cfb365520364a3f5a0334ea75efbd2fb9ad39cc5",
-  "object_sha256": "7a3956a9e5f2f0363c27041a79ad69918767fe36fde4dc6bd253367423f0a3b2",
+  "object_sha256": "0ccb43e1bf78907516d14e359f951153bb2988a1ade9dd2be59ccf89b5836e98",
   "methods": [
     {
       "symbol": "??0Decal@RBX@@QAE@XZ",
@@ -11,7 +11,7 @@
       "size": 255,
       "exact": true,
       "calls": {
-        "??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@IAE@XZ": "0x598340",
+        "??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ": "0x598340",
         "?getNullName@Name@RBX@@SAABV12@XZ": "0x554270",
         "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90"
       }
@@ -22,7 +22,7 @@
       "size": 215,
       "exact": true,
       "calls": {
-        "??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@IAE@XZ": "0x598790",
+        "??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ": "0x598790",
         "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90"
       }
     },
@@ -32,11 +32,11 @@
       "size": 80,
       "exact": true,
       "calls": {
-        "??1?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@MAE@XZ": "0x597680"
+        "??1?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAE@XZ": "0x597680"
       }
     },
     {
-      "symbol": "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@MAE@XZ",
+      "symbol": "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAE@XZ",
       "address": "0x597da0",
       "size": 93,
       "exact": true,
@@ -45,31 +45,31 @@
       }
     }
   ],
-  "base_source_sha256": "a0d13477537e341e8c19f11fbd44d657b61c449b59bdcdf84cb4738f2889342e",
-  "base_object_sha256": "ff8c064cd61d7a137e4463d79dabbe6374760bfc71e0e8c03edc7a77a6f42ead",
+  "base_source_sha256": "42d272ed4c60aa0ab6bc7f0630d30833a8eba254f689d6c2b0062c0c39345ed0",
+  "base_object_sha256": "178bf6646883f79e386824d9e82dc0510503425c54ca37a377c3cb017e472079",
   "base_methods": [
     {
-      "symbol": "??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@IAE@XZ",
+      "symbol": "??0?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ",
       "address": "0x598340",
       "size": 156,
       "exact": true,
       "calls": {
-        "??0?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@IAE@XZ": "0x597550",
-        "?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PBDBV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598020"
+        "??0?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ": "0x597550",
+        "?classDescriptor@?$Described@VDecal@RBX@@$1?sDecal@2@3PADAV?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598020"
       }
     },
     {
-      "symbol": "??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@IAE@XZ",
+      "symbol": "??0?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ",
       "address": "0x598790",
       "size": 156,
       "exact": true,
       "calls": {
-        "??0?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@IAE@XZ": "0x5985a0",
-        "?classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PBDBV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598090"
+        "??0?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ": "0x5985a0",
+        "?classDescriptor@?$Described@VTexture@RBX@@$1?sTexture@2@3PADAV?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x598090"
       }
     },
     {
-      "symbol": "??0?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@IAE@XZ",
+      "symbol": "??0?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@IAE@XZ",
       "address": "0x597550",
       "size": 100,
       "exact": true,
@@ -78,7 +78,7 @@
       }
     },
     {
-      "symbol": "??0?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@IAE@XZ",
+      "symbol": "??0?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@IAE@XZ",
       "address": "0x5985a0",
       "size": 100,
       "exact": true,
@@ -87,27 +87,27 @@
       }
     },
     {
-      "symbol": "?getClassName@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getClassName@?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UBEABVName@2@XZ",
       "address": "0x597d80",
       "size": 23,
       "exact": true,
       "calls": {
         "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
-        "??$doDeclare@$1?sDecal@RBX@@3PBDB@Name@RBX@@CAABV01@XZ": "0x41de20"
+        "??$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41de20"
       }
     },
     {
-      "symbol": "?getClassName@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "symbol": "?getClassName@?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UBEABVName@2@XZ",
       "address": "0x597e20",
       "size": 23,
       "exact": true,
       "calls": {
         "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
-        "??$doDeclare@$1?sTexture@RBX@@3PBDB@Name@RBX@@CAABV01@XZ": "0x41de90"
+        "??$doDeclare@$1?sTexture@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x41de90"
       }
     },
     {
-      "symbol": "??$doDeclare@$1?sDecal@RBX@@3PBDB@Name@RBX@@CAABV01@XZ",
+      "symbol": "??$doDeclare@$1?sDecal@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
       "address": "0x41de20",
       "size": 101,
       "exact": true,
@@ -116,7 +116,7 @@
       }
     },
     {
-      "symbol": "??$doDeclare@$1?sTexture@RBX@@3PBDB@Name@RBX@@CAABV01@XZ",
+      "symbol": "??$doDeclare@$1?sTexture@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
       "address": "0x41de90",
       "size": 101,
       "exact": true,

@@ -434,17 +434,25 @@ class Build:
         body, refs = self.bodies[name]
         split = next(((parent, start) for parent, pieces in EXTENT_SPLITS.items() for start, size in pieces
                       if start == address and size == len(body)), None)
-        if split:
-            # One evidence extent covers several compiled functions (bounds): compare the piece of the parent extent.
-            parent, start = split
-            whole, whole_refs, _ = match.target('2008-06', '%08x' % parent)
-            off = start - parent
-            target = whole[off:off + len(body)]
-            target_refs = [x - off for x in whole_refs if off <= x < off + len(body)]
-        else:
-            try:
-                target, target_refs, _ = match.target('2008-06', '%08x' % address)
-            except SystemExit as error:
+        try:
+            target, target_refs, _ = match.target('2008-06', '%08x' % address)
+            if split and len(target) != len(body):
+                # Older evidence may hold only the combined destructor extent; use its proven piece bounds.
+                parent, start = split
+                whole, whole_refs, _ = match.target('2008-06', '%08x' % parent)
+                off = start - parent
+                target = whole[off:off + len(body)]
+                target_refs = [x - off for x in whole_refs if off <= x < off + len(body)]
+            else:
+                split = None  # bounds.json now provides the destructor extent directly
+        except SystemExit as error:
+            if split:
+                parent, start = split
+                whole, whole_refs, _ = match.target('2008-06', '%08x' % parent)
+                off = start - parent
+                target = whole[off:off + len(body)]
+                target_refs = [x - off for x in whole_refs if off <= x < off + len(body)]
+            else:
                 # the original evidence has no function start here (extent covers it): recorded, never exact
                 key = address if address not in self.rows else (address, name)
                 self.rows[key] = {'address': '%08x' % address, 'symbol': name, 'size': len(body), 'target_size': None,

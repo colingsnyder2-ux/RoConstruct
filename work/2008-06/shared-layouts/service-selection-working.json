@@ -2,14 +2,14 @@
   "scope": "Inactive Selection cache and lookup methods; original data identity, linked cache sharing and runtime remain unverified.",
   "inputs": {
     "rebuild\\2008-06\\tests\\record_native_service_selection.py": "bee88f4e118c21419c99797ef4e04fcec6b669229c400c930df43cf20e9a7dd9",
-    "rebuild\\2008-06\\native-classes\\ServiceSelection.cpp": "23813603cfc9475e35423616754fde9f3a472927ca9e35cbeb60840a18d1e96f",
+    "rebuild\\2008-06\\native-classes\\ServiceSelection.cpp": "bf36c347c7635d78de09e47ca3c0d2433a76424176e86ab9f615aea4d0197e46",
     "rebuild\\2008-06\\native-classes\\ServiceLookup.cpp": "f5a3caa5ed15ce35554c0249a93a2f7534afa3c54941e1d7654cfa7085afdf7c",
-    "rebuild\\2008-06\\native-headers\\util\\Name.h": "13172c76ad14475c96a2bb7387669a6ac82a648e37cd21048a5ca0f5d9398599",
-    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "2a41b0f5a9d305b824c415892c14562fdfd79008f5b42d865ed6cd145b5f4737",
-    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "857f001b4892a6c1acfc1f397b0ea491249d81426511cd165831fad61b9d2db4"
+    "rebuild\\2008-06\\native-headers\\util\\Name.h": "05aa0aed5b377d06e899e0140c21335255244d05893d24e9e2e66fb77844e67a",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "4db626ae4073702eb02e5ee2385f1e94ff42192ec1164d0121bcea72167f104b",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "837e080460a07c5f81177bcb3e7d420eb5cf74d403ad47fcf22e0734993969ea"
   },
-  "profile_object_sha256": "d0e11f998d62d94c9a1d8aecfaed91eac5adc0eff48a7bf2ee80a6f3532f73b5",
-  "lookup_object_sha256": "533746d5a0464f2170a2df8aef8f7e634f380c05d11270b4ff408e1b627f3941",
+  "profile_object_sha256": "fbea2a6805b2495143986b074d097c934f51ba2f406da87ef3c2e653cfe25a7d",
+  "lookup_object_sha256": "8b45e1512d7d9adc5f99aa1735636f25aa35b27cbaa998a77a85c82a2f9279ba",
   "preprocess_flags": [
     "/nologo",
     "/O2",
@@ -107,7 +107,7 @@
         "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
         "??$doGetClassIndex@VSelection@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x413810",
         "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x4124c0",
-        "??$doDeclare@$1?sSelection@RBX@@3PBDB@Name@RBX@@CAABV01@XZ": "0x4068c0",
+        "??$doDeclare@$1?sSelection@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4068c0",
         "?findServiceByClassName@ServiceProvider@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": "0x572a90",
         "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660",
         "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"

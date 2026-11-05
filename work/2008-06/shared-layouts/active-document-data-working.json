@@ -1,7 +1,7 @@
 {
-  "source_sha256": "00a5eabe64709eb0b09a0f01e689961cabc9632ba5f0001262b03d7b16d2caea",
-  "observer_sha256": "3028d41bd2632b5b697500a0546bcad7624f73b7c281c65eb0b1035fa20efec6",
-  "object_sha256": "8f2c10ad94ecec68a368a23973a25bf7cbcc0d9091876e5c64335bf09196c75c",
+  "source_sha256": "536795adad57a4849f5e9e7b03b5d5942ad1b04a85b80eea81e86e9bc637ee23",
+  "observer_sha256": "a2fcacbcb4e20d42bb90a06e1036ea1dda1cd8151225079268bc4e4bffcc9c29",
+  "object_sha256": "3238c55e7ab6335e0f364fa7d07f703af424d3180b0167b882b7ab895ec617cc",
   "flags": [
     "/nologo",
     "/O2",
@@ -72,6 +72,12 @@
       }
     }
   ],
+  "transition": {
+    "address": "00405aa0",
+    "symbol": "?setCurrentDocument@@YAX_NPAVCRobloxDoc@@@Z",
+    "size": 571,
+    "relocation_normalized_exact": true
+  },
   "zero_globals": [
     "0096c238",
     "0096c25c",

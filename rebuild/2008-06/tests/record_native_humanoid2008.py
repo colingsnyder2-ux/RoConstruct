@@ -116,6 +116,9 @@ def norm(symbol):
 
 # ---- externals: address the original instruction uses, read at the call sites listed ----------------
 EXTERNAL = {
+    # RefType::singleton<Humanoid*> function-local static, emitted once the merged native reflection.h instantiates
+    # the singleton in this unit; read at the same relocation in singleton<Humanoid*> and its atexit ??__F destructor.
+    '?type@?1???$singleton@PAVHumanoid@RBX@@@RefType@Reflection@RBX@@SAABV123@XZ@4V123@A': 0x975588,
     # Instance / reflection / signals runtime (evidence names where the evidence map has one)
     '??0Instance@RBX@@QAE@XZ': 0x55b7e0,                       # FactoryProduct ctor 005d7890 (evidence: IAE)
     '??1Instance@RBX@@UAE@XZ': 0x55a540,                       # FactoryProduct dtor 005d77d0 tail jmp (evidence: MAE)

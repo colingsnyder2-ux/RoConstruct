@@ -1,0 +1,85 @@
+{
+  "scope": "inactive-only; exact proofs only; pending-only excluded; no activation/runtime claim",
+  "headers_sha256_after": {
+    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+    "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
+    "rebuild/2008-06/native-headers/Replicator.h": "d2405a3ea84f4dcbd9253c45a3bff87cc6e2e23d88920db5f55a8b6ad75170fa",
+    "rebuild/2008-06/native-headers/util/Object.h": "5682f143df65b85f0845d1ed808a00d0a4b8c8a9d4ddfd022451cf3b4fcabfe4",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "880777fa13f40e2551bd81de0b17b6ac3ef0e38c6d0c566f834e0ed457df1382",
+    "rebuild/2008-06/native-headers/reflection/type.h": "ce70e2ca4508af8419a6370d5574d634868aae9c5038ea526e7458d198dcc463",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "249674e5ae364805e4da1b0507ed6d064aacdaf0c28b56f1b4e4fff0cc893032",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114"
+  },
+  "selected_source_and_recorder_sha256": {
+    "rebuild/2008-06/native-classes/NetworkPhysics.cpp": "b4a7a5465513464f97cabc46f9ce347d5093e5df0239543b31114136a6637812",
+    "rebuild/2008-06/native-classes/ReplicatorBases.cpp": "1d9e7735a056e2e52067867af7266f061b74dc15f8668d259dafec76aeebfa74",
+    "rebuild/2008-06/native-classes/ReplicatorMarker.cpp": "7077a44136dbdfc2dae10bd1996da9855346bd320ae3afa4b17041ef04fa6ce6",
+    "rebuild/2008-06/native-headers/Network/IdSerializer.h": "b62f39fdb34649935076cab7daa419c50bae759ec3d252e8b5d81f3850f2a3ad",
+    "rebuild/2008-06/native-headers/Network/PhysicsReplication.h": "c8318741e9b6e6b42e3686681809c3c1a19afbcbb2fc3383c2bb2afb02183e63",
+    "rebuild/2008-06/native-headers/Network/ReplicatorMarker.h": "3fbb7a704f7a4c0643326c24f693c4d0dbe8e91b96ee018bbcf4df352307ee0c",
+    "rebuild/2008-06/tests/NativeNetworkPhysicsLayout.cpp": "37c0ea16a673b04c22cc378ba497ecf7c2672f8fcf48f6c7ee3b4a5316bc03de",
+    "rebuild/2008-06/tests/NativeReplicatorLayout.cpp": "63ead261597ea6efc9faa7b8f0d043fad85fa1261fc92a369832a96adf7bb44f",
+    "rebuild/2008-06/tests/record_native_network_physics.py": "1e8649c3486518be54e27c202e6ee1fe032474aa7c76dcdc303829b65045fccf",
+    "rebuild/2008-06/tests/record_native_replicator.py": "713bde288ff4cef927e9d91c194cd15dd9235dd1195e0f349d872a6d089b70ae",
+    "rebuild/2008-06/native-classes/NetworkPlayers.cpp": "81b70e0867a729e8fd525dc3188ecee47cedb0222e5380ee321bdb937eeb0638",
+    "rebuild/2008-06/tests/record_native_network_players.py": "e0edc91a91e96a73d49439c9a959a4aeb3092e6b6471bffe8220ce6e4ee8752e",
+    "rebuild/2008-06/tests/record_native_network_player.py": "027ee467fc798b066fc7f5bc0c06c0f4dfacc9835d67919ff40a40d72716a76f"
+  },
+  "gates": {
+    "physics": {
+      "command": "python work/fork-integration/mew-rest-network-20261104/final-abi/network-final2/runner/record_native_network_physics.py",
+      "receipt": "work/fork-integration/mew-rest-network-20261104/final-abi/network/network-physics-working.json",
+      "summary": {
+        "exact_rows": 6,
+        "distinct_addresses": 6,
+        "not_exact": 4,
+        "vtables": 2
+      }
+    },
+    "replicator": {
+      "command": "python work/fork-integration/mew-rest-network-20261104/final-abi/network-final2/runner/record_native_replicator.py",
+      "receipt": "work/fork-integration/mew-rest-network-20261104/final-abi/network/network-replicator-working.json",
+      "summary": {
+        "exact_rows": 51,
+        "distinct_addresses": 32,
+        "not_exact": 1,
+        "vtables": 32
+      }
+    },
+    "players": {
+      "command": "python work/fork-integration/mew-rest-network-20261104/final-abi/players-final2/runner/record_native_network_players.py",
+      "receipt": "work/fork-integration/mew-rest-network-20261104/final-abi/players-final2/network-players-working.json",
+      "summary": {
+        "exact_rows": 100,
+        "distinct_addresses": 100,
+        "pending_only": 11,
+        "not_exact": 0,
+        "vtables": 13
+      }
+    },
+    "player": {
+      "command": "python work/fork-integration/mew-rest-network-20261104/final-abi/player-final2/runner/record_native_network_player.py",
+      "receipt": "work/fork-integration/mew-rest-network-20261104/final-abi/player-final2/network-player-working.json",
+      "summary": {
+        "exact_rows": 98,
+        "distinct_addresses": 98,
+        "pending_only": 0,
+        "not_exact": 1
+      }
+    },
+    "debris_forcefield": {
+      "command": "python work/fork-integration/mew-rest-network-20261104/final-abi/debris-final/runner/record_native_debris_forcefield.py",
+      "receipt": "work/fork-integration/mew-rest-network-20261104/final-abi/debris-final/out/debris-forcefield-working.json",
+      "summary": {
+        "exact_distinct_addresses": 89,
+        "layout": 6,
+        "debris": 53,
+        "forcefield": 30,
+        "pending_rows": 6,
+        "pending_exact_not_counted": 5,
+        "not_exact_rows": 2,
+        "vtables": 7
+      }
+    }
+  }
+}

@@ -40,7 +40,7 @@ from roc import match, rebuild  # noqa: E402
 import native_bind as nb  # noqa: E402
 
 R = ROOT / 'rebuild/2008-06'
-OUT = nb.OUT
+OUT = R / 'out/native-render-material'
 OUT.mkdir(parents=True, exist_ok=True)
 OGRE = '/I' + str(ROOT / 'tools/libs/ogre-1.4.5/ogrenew/OgreMain/include')
 LAYOUT = R / 'tests/NativeRenderMaterialLayout.cpp'

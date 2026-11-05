@@ -37,6 +37,9 @@ obj = (out / 'NativeDocumentLayout.obj').read_bytes()
 symbol = '??0CRobloxDoc@@QAE@XZ'
 body, candidate_relocations = next((body, relocs) for name, body, relocs in match.coff_functions(obj) if name == symbol)
 assert match.exact_match(target, relocations, body, candidate_relocations)
+constructor = dict(address='00451ac0', symbol=symbol, size=len(body),
+                   relocation_normalized_exact=True, target_relocations=relocations,
+                   candidate_relocations=candidate_relocations)
 methods = []
 for address, method in (('00451a10', 'bindExisting'), ('00451a60', 'bindOwned'),
                         ('00403040', 'getDataModel'), ('00450890', 'getVerbContainer'), ('0044fad0', 'SetModifiedFlag'), ('0044fb80', 'SetTitle'), ('004508f0', 'IsModified'), ('0044f8d0', 'DoSave'), ('004533f0', 'OnOpenDocument'), ('0044f9b0', 'OnSaveDocument'),
@@ -162,15 +165,14 @@ receipt = dict(revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cw
                          ROOT / 'rebuild/2008-06/native-classes/StandardVerbs.cpp',
                          header.parent / 'StandardVerbs.h', header.parent / 'v8xml/XmlElement.h',
                          header.parent / 'RobloxLib.h', header.parent / 'v8datamodel/DataModel.h',
-                         header.parent / 'v8tree/Verb.h', header.parent / 'v8tree/Service.h')},
+                         header.parent / 'v8tree/Verb.h', header.parent / 'v8tree/Service.h',
+                         header.parent / 'script/ScriptContext.h')},
                original_sha256=sha(original), object_sha256=sha(out / 'NativeDocumentLayout.obj'),
                compile_log_sha256=sha(out / 'doc-compile.log'),
                static_layout_gates=dict(size=0x98, XmlElement=0x28, StandardVerbs=0x704,
                                         IWorkspace=4, IContent=4, VARIANT=16, savedState=0x74, ownedVerbs=0x78,
                                         standardVerbs=0x90, workspace=0x94),
-               constructor=dict(address='00451ac0', symbol=symbol, size=len(body),
-                                relocation_normalized_exact=True, target_relocations=relocations,
-                                candidate_relocations=candidate_relocations),
+               constructor=constructor,
                exact_methods=methods, command_routing=routing, message_entries=message_entries,
                ownership_dependencies=dependencies, unresolved_lifecycle=unresolved,
                virtual_slots=[dict(slot=slot, source_symbol=name, original_address=hex(native[slot]))

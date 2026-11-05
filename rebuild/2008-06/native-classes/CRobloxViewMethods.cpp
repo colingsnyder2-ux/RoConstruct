@@ -159,11 +159,11 @@ LRESULT CRobloxView::updateReflector(WPARAM, LPARAM) {
 // 0045a2f0
 void CRobloxView::detachDataModel() {
     RBX::DataModel::Lock lock(owner_170);
-    slot_1dc.assign(static_cast<OwnedPolymorphic*>(0));
-    slot_1e0.assign(static_cast<OwnedPolymorphic*>(0));
-    slot_1e4.assign(static_cast<OwnedPolymorphic*>(0));
-    slot_1e8.assign(static_cast<OwnedPolymorphic*>(0));
-    slot_1ec.assign(static_cast<OwnedPolymorphic*>(0));
+    slot_1dc.reset(0);
+    slot_1e0.reset(0);
+    slot_1e4.reset(0);
+    slot_1e8.reset(0);
+    slot_1ec.reset(0);
     RBX::Listener<RBX::ServiceProvider, RBX::ServiceAdded>* added = this;
     if (owner_170)
         owner_170->RBX::Notifier<RBX::ServiceProvider, RBX::ServiceAdded>::removeListener(added);

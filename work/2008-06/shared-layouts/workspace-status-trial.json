@@ -1,7 +1,7 @@
 {
   "scope": "Inactive status logger matches; selected StandardOut implementations and runtime ABI remain unproven.",
   "source_sha256": "6990c216d9c109ce0511e4c84eb98de51f54962bd264f941d9f826596a8d13c9",
-  "object_sha256": "15ab13f00ee7dd0efa3d8472b03775f0af6a843533f5df98969f7c0070e9fef5",
+  "object_sha256": "1ab4a7c47eccd7d78ac8eebeb9107a383698b6a24291cacc1ea8b9eca9038510",
   "address": "00427c20",
   "size": 349,
   "relocation_normalized_exact": true,

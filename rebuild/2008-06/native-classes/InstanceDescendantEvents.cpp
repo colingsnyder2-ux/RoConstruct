@@ -1,13 +1,7 @@
 // Inactive candidate: listener and signal ABI still under investigation.
-#include "v8tree/Instance.h"
+#include "v8tree/InstanceEvents.h"
 
 namespace RBX {
-struct DescendantAdded {
-    const boost::shared_ptr<Instance> instance;
-    const boost::shared_ptr<Instance> parent;
-    DescendantAdded(Instance* value, Instance* owner)
-        : instance(shared_from(value)), parent(shared_from(owner)) {}
-};
 struct DescendantRemoving {
     const boost::shared_ptr<Instance> instance;
     const boost::shared_ptr<Instance> parent;

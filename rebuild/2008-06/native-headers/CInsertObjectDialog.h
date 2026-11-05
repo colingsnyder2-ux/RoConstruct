@@ -25,7 +25,7 @@ public:
     virtual void DoDataExchange(CDataExchange*);
     void OnNMDblclk(NMHDR*, LRESULT*);
     // Original 004202b0; recursive over derived class descriptors. Body pending Metadata/settings layouts.
-    void addClasses(const RBX::Reflection::ClassDescriptor&);
+    void addClasses(const RBX::Reflection::ClassDescriptor*);
     static int CALLBACK compareItems(LPARAM, LPARAM, LPARAM);
 
     boost::shared_ptr<RBX::Instance> parent;                      // +0x74

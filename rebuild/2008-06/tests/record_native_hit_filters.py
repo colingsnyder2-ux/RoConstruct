@@ -35,7 +35,7 @@ from roc import match, rebuild  # noqa: E402
 import native_bind as nb  # noqa: E402
 
 R = ROOT / 'rebuild/2008-06'
-OUT = nb.OUT
+OUT = R / 'out/native-hit-filters'
 OUT.mkdir(parents=True, exist_ok=True)
 LAYOUT = R / 'tests/NativeHitTestFilterLayout.cpp'
 SRC = R / 'native-classes/Filters.cpp'

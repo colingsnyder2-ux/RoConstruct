@@ -1,7 +1,7 @@
 {
-  "source_sha256": "44136fb31716e4842d45dfa4ac7d9e0c9385322b22d6c8e7f2784f2f8fb081c3",
+  "source_sha256": "e8a943dd734acbf4b02ad3ca71284724612f07aafaa3ed64448942793ad2fdba",
   "observer_sha256": "833fac01e577299d9e4afc1dbd4a3307949a24d8d70441bfc875f999960c068a",
-  "object_sha256": "05a64559a1770d95318b23f745020d67443a41ead6422adfb54dacbeaeeecb39",
+  "object_sha256": "e4da96ecf755c79b163407ff03d6c03547867c8299d6249fa682f3703695b31e",
   "preprocess_flags": [
     "/nologo",
     "/O2",
@@ -73,7 +73,7 @@
       "target": "0x557330"
     },
     {
-      "symbol": "??$doDeclare@$1?sVisit@RBX@@3PBDB@Name@RBX@@CAABV01@XZ",
+      "symbol": "??$doDeclare@$1?sVisit@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
       "target": "0x44f2f0"
     },
     {

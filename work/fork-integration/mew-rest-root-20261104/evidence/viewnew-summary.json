@@ -1,0 +1,288 @@
+{
+  "scope": "Inactive ViewNew mesh/native layout proof only; no activation, client launch, submit, commit, or push.",
+  "baseline_head": "e361aa9f0486c621db3cceab14a5d618ff87c56e",
+  "donor_ref": "refs/remotes/mew/claude/optimistic-shannon-0xccuy",
+  "donor_commit": "cd72c3729d8834f33aa89e45785ebacf5ce614b8",
+  "candidate_path_count": 14,
+  "candidate_paths": {
+    "rebuild/2008-06/tests/record_native_viewnew.py": {
+      "donor_blob": "3ed614089a87e51b875107c11c1bc944985776b5",
+      "sha256_snapshot": "9fdc9c8bc64b142e6e9c27becbf761847ec409843f5d50bd5c9d8b05ae85664b",
+      "sha256_live": "9fdc9c8bc64b142e6e9c27becbf761847ec409843f5d50bd5c9d8b05ae85664b",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/tests/NativeViewNewLayout.cpp": {
+      "donor_blob": "06c49e6bab9550ad97f82d6cbefcedf715051c2a",
+      "sha256_snapshot": "197cb2d18c9d7505479c856518a344434d46e52daf46adcb424775850e363f9f",
+      "sha256_live": "197cb2d18c9d7505479c856518a344434d46e52daf46adcb424775850e363f9f",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp": {
+      "donor_blob": "914d2240ad00d7d7bc8046d725992c48826ac7b7",
+      "sha256_snapshot": "e897c3a03ac4ef7cf628f108cfb5799008b277457db547e98c3d5a4cc40412b1",
+      "sha256_live": "e897c3a03ac4ef7cf628f108cfb5799008b277457db547e98c3d5a4cc40412b1",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp": {
+      "donor_blob": "4e727cd40e36df37229bcfa505c0ade570310153",
+      "sha256_snapshot": "8f56b7ba2eb83375ee167b61ff8895468ed021c6689b94097e67a5e7ae66b650",
+      "sha256_live": "8f56b7ba2eb83375ee167b61ff8895468ed021c6689b94097e67a5e7ae66b650",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp": {
+      "donor_blob": "bdbeb0a0431845c0f66f2bbdb80565526a6d24bf",
+      "sha256_snapshot": "5641be426090d9ddc0ef0d6b8ff3e571f28554a740783fd62d7a521861f231f6",
+      "sha256_live": "5641be426090d9ddc0ef0d6b8ff3e571f28554a740783fd62d7a521861f231f6",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp": {
+      "donor_blob": "cc33a7b4bb8386d64938775a9eccede08efd4bd8",
+      "sha256_snapshot": "9ab3530f8774c2f9644cf2063868ee0de0e5242b50fd0c0012254a194ea38752",
+      "sha256_live": "9ab3530f8774c2f9644cf2063868ee0de0e5242b50fd0c0012254a194ea38752",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp": {
+      "donor_blob": "a4c603eb710e45c58e19e915ca3a2aa830474ce0",
+      "sha256_snapshot": "a328bcdbc4b7306314a680d4535775b836c2ffbd1b2d2a864311ac2f9ad2c140",
+      "sha256_live": "a328bcdbc4b7306314a680d4535775b836c2ffbd1b2d2a864311ac2f9ad2c140",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h": {
+      "donor_blob": "0a5db8e013c4c7a665eebecacf2d6d6e858b0a88",
+      "sha256_snapshot": "6f2f6b8988f5000c4d800fcdf6e531c822048d174f01e938cb7cb1eaf4a98724",
+      "sha256_live": "6f2f6b8988f5000c4d800fcdf6e531c822048d174f01e938cb7cb1eaf4a98724",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-headers/ViewNew/CylinderMesh.h": {
+      "donor_blob": "82c68ed98db12f43a8ea99b36814ee521da71586",
+      "sha256_snapshot": "90470474ca552a40aefe589b572e2da6750cc8a3fba4f80906a580e69971af5d",
+      "sha256_live": "90470474ca552a40aefe589b572e2da6750cc8a3fba4f80906a580e69971af5d",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-headers/ViewNew/HeadMesh.h": {
+      "donor_blob": "13d4a0e7efc0ca644a28941564d280c034922aed",
+      "sha256_snapshot": "921fe3e77831f5da7dc897336415c10c22f2316e74bce3b3da4ed2cb44603b7f",
+      "sha256_live": "921fe3e77831f5da7dc897336415c10c22f2316e74bce3b3da4ed2cb44603b7f",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-headers/ViewNew/MeshFactory.h": {
+      "donor_blob": "65c978a53125943fb9df1117c91229d5aa647158",
+      "sha256_snapshot": "fcc102809ad405e05fd34916c8855b262f3bda987d8113d33eb48b623fe99dec",
+      "sha256_live": "fcc102809ad405e05fd34916c8855b262f3bda987d8113d33eb48b623fe99dec",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h": {
+      "donor_blob": "33c99bdc88be4d652d00aa9fafabfe3044734247",
+      "sha256_snapshot": "0797819eec4fb9057e0c44a43ac83fa29d8b01dd58800fefaa2c34fdab1956ae",
+      "sha256_live": "0797819eec4fb9057e0c44a43ac83fa29d8b01dd58800fefaa2c34fdab1956ae",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h": {
+      "donor_blob": "af7b5e781572a4e0362c1c55d3888486c1e1abf1",
+      "sha256_snapshot": "208975d868829c0a874d25cb401f1ab7eca2378574ef3c0b8b35be71dcbaeee1",
+      "sha256_live": "208975d868829c0a874d25cb401f1ab7eca2378574ef3c0b8b35be71dcbaeee1",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    },
+    "rebuild/2008-06/native-headers/ViewNew/SphereMesh.h": {
+      "donor_blob": "b9ff9cc3c40a16855ffbea96da1815a8eb642132",
+      "sha256_snapshot": "e90ea6f3276cdda9e2d61e89c90a8163cf67b50fb53ad5e5fd4204829e606358",
+      "sha256_live": "e90ea6f3276cdda9e2d61e89c90a8163cf67b50fb53ad5e5fd4204829e606358",
+      "live_exists": true,
+      "snapshot_matches_donor": true,
+      "live_matches_donor": true
+    }
+  },
+  "live_family_paths_written": true,
+  "all_14_live_paths_absent": false,
+  "edits_needed": "None. All 14 candidate files match pinned donor raw bytes; source/header changes not needed.",
+  "verification": {
+    "receipt": "viewnew-snapshot/work/2008-06/shared-layouts/viewnew-working.json",
+    "receipt_sha256": "ea96b9844ad66add2502aa2f02d619a0350db2889c96e0010d90d4293199d28c",
+    "exact_function_rows": 38,
+    "non_exact_rows": [
+      {
+        "address": "004fd110",
+        "symbol": "??0SphereMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z",
+        "size": 347,
+        "target_size": 347,
+        "exact": false,
+        "reason": "EH state numbering only: the original FuncInfo 008e597c has seven states, 1->0 / 2->0 / 3->2 with no unwind action before the live 4 (new Level) / 5 (level) / 6 (builder), i.e. three objects of an eliminated block; the source of that block is not derivable from the bytes"
+      },
+      {
+        "address": "004fdcc0",
+        "symbol": "??REndcapTransform@ViewNew@RBX@@QAEXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+        "size": 209,
+        "target_size": 197,
+        "exact": false,
+        "reason": "x87 register allocation: the original keeps fabs(y) / fabs(x) from the comparison and spills the chosen one across the xy() call; no tried spelling reproduces the shared tail"
+      },
+      {
+        "address": "00500080",
+        "symbol": "?buildLeft@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 55,
+        "target_size": 58,
+        "exact": false,
+        "reason": "the original reloads elements (+0x24) after storing the functor (no CSE); tried temp / named functor, int / size_t member, reference parameter"
+      },
+      {
+        "address": "005000c0",
+        "symbol": "?buildRight@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 55,
+        "target_size": 58,
+        "exact": false,
+        "reason": "same as 00500080"
+      },
+      {
+        "address": "00500100",
+        "symbol": "?buildFront@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 55,
+        "target_size": 58,
+        "exact": false,
+        "reason": "same as 00500080"
+      },
+      {
+        "address": "00500140",
+        "symbol": "?buildBack@HeadBuilder@ViewNew@RBX@@MAEXW4Purpose@LevelBuilder@23@@Z",
+        "size": 55,
+        "target_size": 58,
+        "exact": false,
+        "reason": "same as 00500080"
+      },
+      {
+        "address": "00500350",
+        "symbol": "??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z",
+        "size": 382,
+        "target_size": 373,
+        "exact": false,
+        "reason": "register allocation around the null check of new Level (edi preset to 0 in the original)"
+      },
+      {
+        "address": "005004d0",
+        "symbol": "??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@ABVVector2@4@@Z",
+        "size": 444,
+        "target_size": 436,
+        "exact": false,
+        "reason": "same as 00500350"
+      }
+    ],
+    "pending_build_only_rows": [],
+    "vtables": 8,
+    "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+    "flags": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\viewnew-snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\viewnew-snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeViewNewLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\viewnew-snapshot\\rebuild\\2008-06\\tests\\NativeViewNewLayout.cpp"
+    ],
+    "objects": {
+      "NativeViewNewLayout.obj": "6178a0ff750f9d4b23e57bff6a2724e36ef7058864a0fe1182d162fe944292d3",
+      "NativeViewNew_quad.obj": "f8c33e32085d0b90e232897967147add74fecfe6f29eb94265a5fd43a708efc5",
+      "NativeViewNew_bevel.obj": "2874511b6f1f4ae961af1a95c0a01d12009f2ca0ca8eb2a2483b42f6ef4e12cb",
+      "NativeViewNew_sphere.obj": "be4ce53aa4da2ed8e3a5aa369221121d5ee448e64c440ca1e94ffc58e126aaf2",
+      "NativeViewNew_cylinder.obj": "881b9d295fc15862bff6d8e04bfb3dcbadf55b37469ea5f2efe85da59d3aeed5",
+      "NativeViewNew_head.obj": "b10b3a0fb695c13f060ee28a9ec38f4271c8b0363289a9c82e6eb966537514d9"
+    },
+    "source_sha256_matches_live": true
+  },
+  "final_shared_header_overlay_sha256": {
+    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+    "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
+    "rebuild/2008-06/native-headers/Replicator.h": "d2405a3ea84f4dcbd9253c45a3bff87cc6e2e23d88920db5f55a8b6ad75170fa",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3",
+    "rebuild/2008-06/native-headers/v8datamodel/Backpack.h": "9221815bf684dd0bc6febd4b94dcac3186ea9510b6ec27c8e24e0676f1f49339",
+    "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h": "8a71a6f8defc32833c4a5ba367367b6f89d46701fa9eb7fc92165a9f8fe45917",
+    "rebuild/2008-06/native-headers/v8datamodel/Feature.h": "b1eabe86377ca5d951c7dcf0b192e7901358e20a9f675cc074093144ac789a3b",
+    "rebuild/2008-06/native-headers/v8datamodel/Flag.h": "daf0cb3e156c04f05135ff5bb440451b3ee29699f99a1d9eb73b98a626930265",
+    "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h": "57423bda044b1f3904bd02c06b29362fb3a54f804599b2fb78210802e87ea83f",
+    "rebuild/2008-06/native-headers/v8datamodel/Hopper.h": "b43abcdd0d0d8e2e80f19769b83160d906f99ebd100de80385057319d80bc24a",
+    "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h": "7b207a5817fec10a98cb22ca9e5f024031a783330b32cc1a2db01440e62a7c4e",
+    "rebuild/2008-06/native-headers/v8datamodel/Tool.h": "ee1739601cbe99d862761a90640acc920a8a6a03c792962895144967d8d9c236",
+    "rebuild/2008-06/native-headers/v8datamodel/UserController.h": "50d100ac1c8d51dad2f8e4aacfbdb17a0cb71d9009a771029722fe220a89d839",
+    "rebuild/2008-06/native-headers/util/Object.h": "5682f143df65b85f0845d1ed808a00d0a4b8c8a9d4ddfd022451cf3b4fcabfe4",
+    "rebuild/2008-06/native-headers/reflection/reflection.h": "880777fa13f40e2551bd81de0b17b6ac3ef0e38c6d0c566f834e0ed457df1382",
+    "rebuild/2008-06/native-headers/reflection/type.h": "ce70e2ca4508af8419a6370d5574d634868aae9c5038ea526e7458d198dcc463"
+  },
+  "shared_header_overlay_hashes_match_live": true,
+  "original_pe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "function_range_fixture_sha256": "9bf3ee1e8e782bf61b930cd29552d9a96927212bdf19efa380ce9d0dc40cd7fc",
+  "compiler_tools_sha256": {
+    "cl": {
+      "path": "tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/bin/cl.exe",
+      "sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a"
+    },
+    "link": {
+      "path": "tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/bin/link.exe",
+      "sha256": "836eb85b874a9b9cf9aa9fd489a94ec77558ab5697b40ba2653c62caf8c6f840"
+    },
+    "mspdb": {
+      "path": "tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/Common7/IDE/mspdb80.dll",
+      "sha256": "4df8c3cacee00a48d528ce58deaff404b8e25b2c31eaf0a3a22871308ca44363"
+    }
+  },
+  "dependency_blockers": {
+    "RenderBase/Mesh.h (new native header, owner: RenderBase)": "promote ViewNew/RenderBaseMesh.h: Mesh 0x88 (levels +0xc, ShadowSurface +0x18, debugBoundingRadius +0x4c, std::vector<unsigned short> +0x50, std::vector<12-byte> +0x68, owned Ogre sub-mesh +0x80, meshKind +0x84), Level 0x28 (indexArray +0xc, primitive +0x18, dirty +0x1c, +0x20 = -1, sub-mesh +0x24) with the header-inline Level(Primitive) 004dd2e0"
+  },
+  "active_lease": "EspClaude RBX::ViewNew parts, through 2026-11-04 21:45 UTC (confirmed from current roc lease ls). Lease left untouched.",
+  "lease_override": "User explicitly authorized ignoring leases; root requested import. Applied only to absent paths after hash guards; no lease mutation.",
+  "imported_at": "2026-11-04",
+  "all_14_live_paths_match_donor": true
+}
