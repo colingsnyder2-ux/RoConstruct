@@ -70,7 +70,10 @@ explicit task-owned paths, automatic durable draft uploads (including incomplete
 No fork, branch or native integration submission is needed to share drafts. Ordinary
 function matching still uses `roc submit`. Owner integration follows
 `docs/DRAFT_INTEGRATION.md`; only independently verified server receipts grant credit.
-The owner's scheduled integration task is authorized to commit/push reviewed changes.
+The owner's scheduled integration task is authorized to commit/push reviewed native changes
+directly to RoConstruct-findings main/workspace. Findings is the native authority;
+local origin branches are not a native integration destination. Optional coordination
+notes are sparse advisory context; file leases remain authoritative.
 
 ## New native files on the Integration Digest webhook
 

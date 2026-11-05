@@ -7,5 +7,7 @@ Validated 2026-11-04 using a fresh public Worker download.
 - Automatic watcher uploads this newly created documentation file over HTTPS.
 - Durable upload receipts and idempotent retry are checked before owner review.
 - Owner integration uses explicit paths, isolated index and exact-tree preservation checks.
-- Focused workflow regressions: 38 passing tests across transport, drafts and findings publication.
+- Focused workflow regressions: 40 passing tests across transport, drafts and findings publication.
 - Native source, active executable selection and server credit are unchanged by this validation.
+
+Findings main/workspace is authoritative. Native updates commit directly there; packaging never reads an origin feature branch. Sparse advisory notes use leases as authority, with enforced cooldowns and two-hour expiry.

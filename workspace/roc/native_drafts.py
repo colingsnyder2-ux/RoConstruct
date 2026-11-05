@@ -154,7 +154,9 @@ def initialize(root, scopes, user, model, server, baseline=None):
         raise ValueError('Draft server must use HTTPS (loopback HTTP allowed for tests)')
     current = files(root, scopes)
     marker = root / 'roconstruct-package.json'
-    revision = json.loads(marker.read_text()).get('revision') if marker.exists() else None
+    if not marker.exists() or json.loads(marker.read_text()).get('authority') != 'RoConstruct-findings/main/workspace':
+        raise ValueError('Use a verified findings Worker workspace; preserve this checkout and download the current package')
+    revision = json.loads(marker.read_text()).get('revision')
     if not revision:
         p = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=root, capture_output=True, text=True)
         revision = p.stdout.strip() if p.returncode == 0 else None
@@ -197,8 +199,8 @@ def checkpoint(root, session):
         return identifier
 
 
-def request(server, action, body, token=None):
-    req = Request(server.rstrip('/') + '/v1/drafts/' + action, encoded(body),
+def request(server, action, body=None, token=None):
+    req = Request(server.rstrip('/') + '/v1/drafts/' + action, encoded(body) if body is not None else None,
                   {'Content-Type': 'application/json', **({'Authorization': 'Bearer ' + token} if token else {})})
     with urlopen(req, timeout=45) as response:
         return json.load(response)
@@ -238,6 +240,8 @@ class Inbox:
                 CREATE TABLE IF NOT EXISTS bundles(seq INTEGER PRIMARY KEY AUTOINCREMENT,id TEXT UNIQUE,
                 user TEXT,packet TEXT,received REAL);
                 CREATE TABLE IF NOT EXISTS reviews(id TEXT PRIMARY KEY,state TEXT,detail TEXT,updated REAL);''')
+            db.execute('''CREATE TABLE IF NOT EXISTS notes(user TEXT,scope TEXT,text TEXT,
+                       updated REAL,expires REAL,PRIMARY KEY(user,scope))''')
 
     @contextmanager
     def connect(self):
@@ -312,6 +316,37 @@ class Inbox:
         result['drafts/index.json'] = encoded([dict(seq=s, id=i) for s, i, _ in rows])
         return result
 
+    def notes(self):
+        with self.connect() as db:
+            return [dict(user=user,scope=scope,text=text,updated=updated,expires=expires,
+                         advisory_only=True) for user,scope,text,updated,expires in
+                    db.execute('SELECT user,scope,text,updated,expires FROM notes WHERE expires>? ORDER BY updated DESC LIMIT 100',(time.time(),))]
+
+    def note(self,body,token):
+        user,scope,text=body.get('user'),body.get('scope'),body.get('text')
+        clear=body.get('clear',False)
+        if not isinstance(scope,str) or not re.fullmatch(r'[\w:. -]{2,120}',scope):
+            raise ValueError('Need one class/family coordination scope')
+        if type(clear) is not bool or not clear and (not isinstance(text,str) or not 1<=len(text)<=280):
+            raise ValueError('Note needs 1-280 characters')
+        now=time.time()
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            auth=db.execute('SELECT user FROM credentials WHERE token=?',(hashlib.sha256(token.encode()).hexdigest(),)).fetchone()
+            if not auth or auth[0]!=user:
+                raise PermissionError('Invalid contributor-scoped draft credential')
+            prior=db.execute('SELECT text,updated,expires FROM notes WHERE user=? AND scope=?',(user,scope)).fetchone()
+            if clear:
+                db.execute('UPDATE notes SET expires=0 WHERE user=? AND scope=?',(user,scope))
+                return dict(cleared=True,advisory_only=True)
+            if prior and prior[0]==text and prior[2]>now:
+                return dict(unchanged=True,advisory_only=True)
+            latest=db.execute('SELECT MAX(updated) FROM notes WHERE user=?',(user,)).fetchone()[0]
+            if prior and now-prior[1]<1800 or latest and now-latest<600:
+                raise ValueError('Use leases for routine coordination. Notes: one per class/30 min, one per contributor/10 min.')
+            db.execute('INSERT OR REPLACE INTO notes VALUES(?,?,?,?,?)',(user,scope,text,now,now+7200))
+        return dict(saved=True,expires=now+7200,advisory_only=True)
+
 
 def handler(inbox):
     class Handler(BaseHTTPRequestHandler):
@@ -329,6 +364,8 @@ def handler(inbox):
         def do_GET(self):
             if self.path.rstrip('/').endswith('/v1/drafts/health'):
                 return self.send(200, dict(schema=1, draft_upload=True, exact_credits=0))
+            if self.path.rstrip('/').endswith('/v1/drafts/notes'):
+                return self.send(200,dict(notes=inbox.notes(),leases_authoritative=True))
             self.send(404, dict(error='Unknown draft endpoint'))
 
         def do_POST(self):
@@ -344,6 +381,8 @@ def handler(inbox):
                     return self.send(200, inbox.register(body.get('user')))
                 if self.path.rstrip('/').endswith('/v1/drafts/upload'):
                     return self.send(200, inbox.receive(body, self.headers.get('Authorization', '').removeprefix('Bearer ')))
+                if self.path.rstrip('/').endswith('/v1/drafts/note'):
+                    return self.send(200,inbox.note(body,self.headers.get('Authorization','').removeprefix('Bearer ')))
                 self.send(404, dict(error='Unknown draft endpoint'))
             except PermissionError as error:
                 self.send(403, dict(error=str(error)))
@@ -438,6 +477,13 @@ def main(argv=None):
         if action in ('watch', 'start'):
             p.add_argument('--every', type=int, default=300)
     sub.add_parser('pending')
+    notes=sub.add_parser('notes')
+    notes.add_argument('--server')
+    note=sub.add_parser('note')
+    note.add_argument('session')
+    note.add_argument('--scope',required=True)
+    note.add_argument('--text')
+    note.add_argument('--clear',action='store_true')
     show = sub.add_parser('show')
     show.add_argument('id')
     review = sub.add_parser('review')
@@ -472,6 +518,14 @@ def main(argv=None):
         result = dict(health=json.loads(health.read_text()) if health.exists() else None,
                       queued=len(list((folder / 'outbox').glob('*.json'))),
                       acknowledged=len(list((folder / 'receipts').glob('*.json'))))
+    elif args.action == 'notes':
+        result=request(args.server,'notes') if args.server else Inbox(root).notes()
+    elif args.action == 'note':
+        flush(root,args.session)
+        folder=session_path(root,args.session)
+        state=json.loads((folder/'session.json').read_text())
+        auth=json.loads((folder/'credentials.json').read_text())
+        result=request(state['server'],'note',dict(user=state['user'],scope=args.scope,text=args.text,clear=args.clear),auth['token'])
     elif args.action == 'supervise':
         with lock(root / 'work/native-draft-supervisor.lock'):
             while True:

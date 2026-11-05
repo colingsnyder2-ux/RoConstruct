@@ -26,7 +26,7 @@ def workspace(tmp_path):
     root = tmp_path / 'contributor'
     (root / 'docs').mkdir(parents=True)
     (root / 'docs/Native.cpp').write_text('int value() { return 1; }\n')
-    (root / 'roconstruct-package.json').write_text(json.dumps({'revision': 'abc123'}))
+    (root / 'roconstruct-package.json').write_text(json.dumps({'revision': 'abc123','authority':'RoConstruct-findings/main/workspace'}))
     return root
 
 
@@ -167,3 +167,27 @@ def test_generated_probe_outputs_skipped_but_existing_git_deletion_saved(tmp_pat
 @pytest.mark.parametrize('name',['rebuild/2008-06/native-world/owner.inc','packaging/setup.ps1','roc.py','roc.cmd','docs/native.toml'])
 def test_scoped_source_and_build_text_files_supported(name):
     assert d.safe_path(name)==name
+
+
+def test_sparse_notes_are_advisory_expire_and_cannot_replace_leases(tmp_path,receiver):
+    inbox,server=receiver
+    auth=d.request(server,'register',dict(user='alice'))
+    body=dict(user='alice',scope='CRobloxView',text='Working on view; see class lease.')
+    assert d.request(server,'note',body,auth['token'])['saved']
+    assert d.request(server,'note',body,auth['token'])['unchanged']
+    notes=d.request(server,'notes')
+    assert notes['leases_authoritative'] is True
+    assert len(notes['notes'])==1 and notes['notes'][0]['advisory_only']
+    with pytest.raises(HTTPError):
+        d.request(server,'note',dict(body,text='Per-function spam'),auth['token'])
+    with pytest.raises(HTTPError):
+        d.request(server,'note',dict(body,scope='AnotherClass'),auth['token'])
+    bob=d.request(server,'register',dict(user='bob'))
+    with pytest.raises(HTTPError) as error:
+        d.request(server,'note',body,bob['token'])
+    assert error.value.code==403
+    assert d.request(server,'note',dict(body,clear=True),auth['token'])['cleared']
+    assert d.request(server,'notes')['notes']==[]
+    with inbox.connect() as db:
+        db.execute('UPDATE notes SET updated=0,expires=0')
+    assert inbox.notes()==[]

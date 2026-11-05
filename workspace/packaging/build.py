@@ -24,7 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DIST = ROOT / "local" / "packages"
-NATIVE_WORKFLOW_VERSION = 50
+NATIVE_WORKFLOW_VERSION = 51
 
 # Every module a working cloud worker needs (transitive closure of worker, link,
 # handoff, doctor, setup, analyze, draft, optimizer and the matchers).

@@ -265,7 +265,7 @@ def publish(root, git_exe, log=print):
     return serialized(_publish, root, git_exe, log)
 
 
-def publish_files(root, files, message, remote='findings', guard=None):
+def publish_files(root, files, message, remote='findings', guard=None, verify=None):
     """Patch exact owned paths, retry remote advances, preserve all unrelated remote entries."""
     from roc.native_drafts import lock
     root = Path(root)
@@ -307,7 +307,11 @@ def publish_files(root, files, message, remote='findings', guard=None):
                 tree = git('write-tree')
                 if tree == git('rev-parse', parent + '^{tree}'):
                     return dict(commit=parent, changed=False)
+                if verify:
+                    verify(parent, tree)
                 commit = git('commit-tree', tree, '-p', parent, '-m', message)
+                if verify:
+                    verify(parent, commit)
                 try:
                     git('push', remote, commit + ':refs/heads/main')
                     return dict(commit=commit, changed=True)
