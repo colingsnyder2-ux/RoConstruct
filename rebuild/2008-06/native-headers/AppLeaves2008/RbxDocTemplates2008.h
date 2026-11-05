@@ -1,6 +1,8 @@
 #pragma once
 // Inactive native 2008-06 recovery: the IDE document templates owned by CIDEDocManager (CRobloxApp.cpp).
 #include <afxwin.h>
+#include <exception>
+#include <boost/scoped_ptr.hpp>
 
 // CRbxDocTemplate (RTTI of vtable 00816684: CRbxDocTemplate : CMultiDocTemplate : CDocTemplate : CCmdTarget :
 // CObject). No CRuntimeClass (no DECLARE_DYNAMIC: slot 0 is CMultiDocTemplate's GetRuntimeClass).
@@ -36,7 +38,23 @@ public:
     // 00449720 (non-virtual; called from 0044b9a0): CMultiDocTemplate::OpenDocumentFile that records each failure
     // text in lastError ("" on entry).
     CDocument* openDocumentFile(LPCTSTR lpszPathName, BOOL bMakeVisible);
+    // 0044b9a0 (non-virtual; reached through the tail-jump 0044bbf0 via the doc manager's +0x24 template): opens the
+    // play document on first use (openDocumentFile(NULL, TRUE)), otherwise reuses playDocument (SaveModified,
+    // SetDefaultTitle, OnNewDocument, WM_INITIALUPDATE to each view). Name provisional.
+    CDocument* getPlayDocument();
 
     CDocument* playDocument;   // +0x90 (compared/cleared by 004496f0; read and set by 0044b9a0)
     CString lastError;         // +0x94 (assigned by 00449720; IsEmpty-tested by 0044b9a0)
 };
+
+// Global error carried out of the play-document open (0096dcf4): a polymorphic pointer whose slot 0 is the deleting
+// destructor (push 1) and slot 1 what() (0044ab30 builds a std::string from it); reset() loads the old pointer,
+// stores 0, then deletes (the boost::scoped_ptr swap order); its atexit destructor 007fadf0 is `if (p) delete p`.
+// The static initializer 007ef860 registers that destructor. Name provisional.
+extern boost::scoped_ptr<std::exception> pendingPlayError;
+// 0044aa70 (cdecl): pendingPlayError.reset(new std::runtime_error(e.what())) (operator new(0x28) ==
+// sizeof(std::runtime_error)). Name provisional.
+void setPendingPlayError(const std::exception& e);
+// 0044ab30 (cdecl): if pendingPlayError is set, copy its what() into a std::runtime_error, reset it, throw the copy.
+// Name provisional.
+void throwPendingPlayError();

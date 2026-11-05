@@ -1,5 +1,5 @@
 {
-  "family": "AppLeaves2008 (CRbxDocTemplate, CRbxPlayDocTemplate, RobloxCrashReporter, EventHandler)",
+  "family": "AppLeaves2008 (CRbxDocTemplate, CRbxPlayDocTemplate, RobloxCrashReporter, EventHandler, CRobloxModule, Marshaller, RBXImage, Exposer)",
   "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
   "flags": [
     "/nologo",
@@ -37,13 +37,13 @@
     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
     "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
   ],
-  "profile": "document-swap flags; CrashReporter unit with native-headers/mfc-noinline-pcxstr first (CRobloxApp profile)",
+  "profile": "document-swap flags; CrashReporter unit with native-headers/mfc-noinline-pcxstr first (CRobloxApp profile); PlayDocument unit preprocessed with CString operator PCXSTR and IsEmpty noinline; Exposer unit and the RakNet library providers with tools/rbxgs/Client/Network/raknet30/Source after the document-swap includes",
   "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
   "sources": {
-    "rebuild/2008-06/tests/record_native_app_leaves2008.py": "9e1cdf921e8288d502b2f38f104913a2546b7fc0d6f2e0f8321c0da55aefcbd4",
+    "rebuild/2008-06/tests/record_native_app_leaves2008.py": "2ce98933ee09194b9564bd8864e7a2f491eed19fafb2272d2a0c5d8a403d7fd6",
     "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
     "rebuild/2008-06/tests/NativeAppLeaves2008Layout.cpp": "3c8829e23ebb2ae436aa2a4adaa0dc7e5b2ba6c2c9fd7778f35da10b2e2a9141",
-    "rebuild/2008-06/native-headers/AppLeaves2008/RbxDocTemplates2008.h": "080abb4bbae884541aa84230924b99c8f3955914c244796ca1b2a3db883e6a17",
+    "rebuild/2008-06/native-headers/AppLeaves2008/RbxDocTemplates2008.h": "2fa2c9ca6e134062121e11789c0c63d2590a99388fce0cce08e7e849a1044dc7",
     "rebuild/2008-06/native-headers/AppLeaves2008/RobloxCrashReporter2008.h": "61d3a82ab00f460a8c2d8d342f78b6a974f21729e113ffdb0345962ccd948c15",
     "rebuild/2008-06/native-headers/AppLeaves2008/EventHandler2008.h": "5625b06653d5c4782ad103ddd7608ddbcc90d2ab6b2106a8d00b9d81529e4356",
     "rebuild/2008-06/native-classes/AppLeaves2008DocTemplates.cpp": "2fec990b8112e0528147293be028c89afc506eaa8bc1637b411c928bf5b02378",
@@ -51,21 +51,45 @@
     "rebuild/2008-06/native-classes/AppLeaves2008EventHandler.cpp": "4a5a5824e96acc4e620ba9c69962f5d567db587da9d511d90c06289752494c4b",
     "rebuild/2008-06/native-headers/CRobloxApp.h": "34cb4a184a83072f147df38a0c07ee6190e278613566f817e9f651f5214219ba",
     "tools/rbxgs/Client/Network/include/Network/CrashReporter.h": "a1b75d92d9cd9eab8071c1e4c92b1231cfb55dd0b3f78aff6066f7bed8cdea8c",
-    "rebuild/2008-06/native-headers/VersionInfo.h": "8eadb78360e07bd2ea0406703702cb0b505eca932df99db57131e675c4ac1402"
+    "rebuild/2008-06/native-headers/VersionInfo.h": "8eadb78360e07bd2ea0406703702cb0b505eca932df99db57131e675c4ac1402",
+    "rebuild/2008-06/native-classes/AppLeaves2008PlayDocument.cpp": "45755ec12f224e7a40872a6759b199da1b93932547abacd9fc0bf0cf75af3389",
+    "rebuild/2008-06/native-classes/AppLeaves2008RobloxModule.cpp": "25c960da4300406165bd5bab15a5240360c615021df8052e0f636e0879c35470",
+    "rebuild/2008-06/native-classes/AppLeaves2008Marshaller.cpp": "70b889b9bf07df5c1cbf7fa655f80c312a29aa22ceeaae77cedb78c6b2bc90df",
+    "rebuild/2008-06/native-classes/AppLeaves2008RBXImage.cpp": "abe06bbf5b7cbd6a5ff4c6e21aaf92a96fe9962b0ce3c60358c41b0a154e5edd",
+    "rebuild/2008-06/native-classes/AppLeaves2008Exposer.cpp": "c0b02cc7dddad0fabcd13af6b569c81615e4c80e6ff8a7dd7a95d7ea078d28c9",
+    "rebuild/2008-06/tests/NativeAppLeaves2008Layout2.cpp": "74ba2f62606df69f69cacb1305df5acbd31ad0e56e51627ec47e502d3bef4e75",
+    "tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.cpp": "f9f979784a7ead3ff480e4bdbecaa69672c74d77306c8187a29e05f6f2de10c1",
+    "tools/rbxgs/Client/Network/raknet30/Source/PluginInterface.cpp": "9effcacb7b4a855b0562c596308a00493efcce0c33c2a4c28b48f09fafa44c13",
+    "rebuild/2008-06/native-headers/CRobloxDoc.h": "4c6250bc14f0afef231d5e10a50d1035574a9d2db1c10f1c06a74503eecb5e65",
+    "rebuild/2008-06/native-headers/AppLeaves2008/RobloxModule2008.h": "66f0237aa856fe2026dfeab1fc693a94e2c3f071979da6d2d2d0f40597eb858f",
+    "rebuild/2008-06/native-headers/AppLeaves2008/Marshaller2008.h": "5ce8a439f16df27e817b14ddfe4e0d6c28596867c9442fdfef1a6500e9b20a23",
+    "rebuild/2008-06/native-headers/AppLeaves2008/RBXImage2008.h": "35cac8bcb908257e7facc3de83e49d1c1bf17ef999b83fda4ce16e5e77901a1f",
+    "rebuild/2008-06/native-headers/AppLeaves2008/Exposer2008.h": "8dacdf96f35b3d069efaeaeb3d7dc896a5379ad2cb5b7fc20bf05d0b21e6f495"
   },
   "objects": {
-    "layout": "3c33791c86dec404ba695fc61d74cc752787aa3f2f295e919804667591350129",
-    "doc": "8e4ae4a87ba7284e4fea5504d534057ce31b163cb51a8745ff1cf3fb2d4c9298",
-    "crash": "ad960fc3d6a16d99d9024898bd3556acf94929a23e0bfd8d2aac31ad260bb680",
-    "eh": "53af36a1ffeb742890d3282038d84286270f15cfabbf8f11fc58786c9eb26ab5",
-    "doc_pending": "4a74297c713c62302d7499f7e526d38b96a65da5f9dcf3cf0b5e679f72a03677",
-    "crash_pending": "9578e2e6a10dde22764dc869b08fea1b80bddcaac9590e42a3e798a781e4a15a"
+    "layout": "86f57d215bb479d0e3e203963a8ec4dec0b22d23731b736642af3754bd5e131a",
+    "doc": "6902ba3a09863ed9f18e952422b0c6419c350f88c2b89f2c9eb81f0898e55989",
+    "crash": "01c3a74c9352bfc564c5e6267ddea6bc0191ee5ddb698f7385ce052650fc2fd3",
+    "eh": "974b71cd33979e9876d0e6b79774e9b9328b73a61f8839ff6ffb3b779a09e311",
+    "doc_pending": "657355fe3011c66dc8bfd21817bd6f2cfeb27d46c711afbfea781f18d0e8e80b",
+    "crash_pending": "b92372474a8cf9da343a25ad98537caae0d5f462e805e20ad3500378590b452b",
+    "play": "d779a02f2e73afe1e239793d83d2579b0086da7bc7a4a7b636d1e41c3290a50c",
+    "module": "34385f1dc4fa4892ef9bea6aba7411126035148c893bd5d75dc62bddea918b1b",
+    "marshaller": "17662ed9662b3c9e8fbc157a5ed007ff7abfbab1d0311b4e07f86188aacd77f8",
+    "image": "da3355a73f86248f65fef8d334e1fc477873c3e6c615f4799440a670baa4a630",
+    "exposer": "19b15b4f00ff153634d9a4fe98069711d690bb13f1962cfa3a24d0c0aefa5b08",
+    "layout2": "9aa4a54d34f9a42c6248493ae19a4f4efaf5460bffa16d4f44b74ce7bf8ff50d"
   },
   "layout": {
     "CRbxDocTemplate": "0x90 == sizeof(CMultiDocTemplate); 00449910 news 0x90, inline ctor stores vptr 00816684 only",
     "CRbxPlayDocTemplate": "0x98; 00449910 news 0x98: playDocument +0x90 (= 0), CString lastError +0x94 (mfc90 #316 / #601)",
     "EventHandler": "0x30 (0042c12a news 0x30): IDispatch vptr +0, boost::function0<bool> handler +8, refCount +0x28",
-    "RobloxCrashReporter": "0x7d0 (00428180 news 0x7d0) == donor CrashReporter (vptr + CrashReportControls, minidumpType +0x7cc)"
+    "RobloxCrashReporter": "0x7d0 (00428180 news 0x7d0) == donor CrashReporter (vptr + CrashReportControls, minidumpType +0x7cc)",
+    "CRobloxModule": "0x2c == sizeof(CAtlMfcModule): global 0096dbb4 up to theApp 0096dbe0; dynamic initializer 007ef7d0",
+    "Marshaller": "0x54 (0041b7c5 news 0x54): CWindowImpl base to +0x24, useCount +0x24, threadId +0x28, deque<boost::function0<void>> +0x2c, boost::mutex +0x4c",
+    "RBXImage": "0x30: vptr + the CImage fields +4..+0x2c written by the constructor 00442c90 (no GDI+ count)",
+    "Exposer": "sizeof(PacketLogger): stack object of IDTOString 0049f180 (frame 0x20c), vptr 00822d3c only",
+    "pendingPlayError": "boost::scoped_ptr<std::exception> at 0096dcf4 (reset = load, store 0, delete; atexit 007fadf0)"
   },
   "methods": {
     "layout": [
@@ -238,6 +262,357 @@
         ]
       }
     ],
+    "play": [
+      {
+        "address": "0044b9a0",
+        "symbol": "?getPlayDocument@CRbxPlayDocTemplate@@QAEPAVCDocument@@XZ",
+        "size": 590,
+        "exact": true,
+        "verified_targets": {
+          "?pendingPlayError@@3V?$scoped_ptr@Vexception@std@@@boost@@A": "0x96dcf4 (data)",
+          "?openDocumentFile@CRbxPlayDocTemplate@@QAEPAVCDocument@@PBDH@Z": "0x449720 (own row)",
+          "?throwPendingPlayError@@YAXXZ": "0x44ab30 (own row)",
+          "__imp_?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ": "0x802fd8 (mfc90.dll!?IsEmpty@?$CSimpleStringT@D$00@ATL@@QBE_NXZ)",
+          "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "0x803ee0 (mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??_C@_0BP@LCDMCOND@OpenDocumentFile?5returned?5NULL?$AA@": "0x816a04 (literal 'OpenDocumentFile returned NULL')",
+          "?AfxMessageBox@@YGHIII@Z": "0x6a1160 (mfc90.dll!?AfxMessageBox@@YGHIII@Z)",
+          "??_C@_0P@GKHMOMNN@User?5cancelled?$AA@": "0x8169f4 (literal 'User cancelled')",
+          "??_C@_0CI@JOHJKFDK@CDocument?3?3OnNewDocument?5returne@": "0x8167e0 (literal 'CDocument::OnNewDocument returned FALSE')",
+          "?activeRobloxDoc@@3PAVCRobloxDoc@@A": "0x96c238 (data)",
+          "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z": "0x405aa0 (external)",
+          "__imp__SendMessageA@16": "0x802e14 (user32.dll!SendMessageA)"
+        },
+        "local_eh": [
+          "__ehhandler$?getPlayDocument@CRbxPlayDocTemplate@@QAEPAVCDocument@@XZ"
+        ]
+      },
+      {
+        "address": "0044aa70",
+        "symbol": "?setPendingPlayError@@YAXABVexception@std@@@Z",
+        "size": 179,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "?pendingPlayError@@3V?$scoped_ptr@Vexception@std@@@boost@@A": "0x96dcf4 (data)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?setPendingPlayError@@YAXABVexception@std@@@Z"
+        ]
+      },
+      {
+        "address": "0044ab30",
+        "symbol": "?throwPendingPlayError@@YAXXZ",
+        "size": 159,
+        "exact": true,
+        "verified_targets": {
+          "?pendingPlayError@@3V?$scoped_ptr@Vexception@std@@@boost@@A": "0x96dcf4 (data)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (evidence name)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??0runtime_error@std@@QAE@ABV01@@Z": "0x409e90 (evidence name)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$?throwPendingPlayError@@YAXXZ"
+        ]
+      },
+      {
+        "address": "007ef860",
+        "symbol": "??__EpendingPlayError@@YAXXZ",
+        "size": 12,
+        "exact": true,
+        "verified_targets": {
+          "??__FpendingPlayError@@YAXXZ": "0x7fadf0 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fadf0",
+        "symbol": "??__FpendingPlayError@@YAXXZ",
+        "size": 19,
+        "exact": true,
+        "verified_targets": {
+          "?pendingPlayError@@3V?$scoped_ptr@Vexception@std@@@boost@@A": "0x96dcf4 (data)"
+        },
+        "local_eh": []
+      }
+    ],
+    "module": [
+      {
+        "address": "007ef7d0",
+        "symbol": "??__E_AtlModule@@YAXXZ",
+        "size": 65,
+        "exact": true,
+        "verified_targets": {
+          "?_AtlModule@@3VCRobloxModule@@A": "0x96dbb4 (data)",
+          "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268 (data)",
+          "?Init@CComCriticalSection@ATL@@QAEJXZ": "0x401860 (instance (bytes equal, targets verified))",
+          "?m_bInitFailed@CAtlBaseModule@ATL@@2_NA": "0x96dcf8 (data)",
+          "??__F_AtlModule@@YAXXZ": "0x7fae10 (own row)",
+          "??_7CRobloxModule@@6B@": "0x816a28 (vtable RTTI .?AVCRobloxModule@@ offset 0x0)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fae10",
+        "symbol": "??__F_AtlModule@@YAXXZ",
+        "size": 77,
+        "exact": true,
+        "verified_targets": {
+          "?_AtlModule@@3VCRobloxModule@@A": "0x96dbb4 (data)",
+          "?AtlCallTermFunc@ATL@@YGXPAU_ATL_MODULE70@1@@Z": "0x44a060 (instance (bytes equal, targets verified))",
+          "__imp__DeleteCriticalSection@4": "0x8022dc (kernel32.dll!DeleteCriticalSection)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0044be40",
+        "symbol": "??_GCRobloxModule@@UAEPAXI@Z",
+        "size": 86,
+        "exact": true,
+        "verified_targets": {
+          "?AtlCallTermFunc@ATL@@YGXPAU_ATL_MODULE70@1@@Z": "0x44a060 (instance (bytes equal, targets verified))",
+          "__imp__DeleteCriticalSection@4": "0x8022dc (kernel32.dll!DeleteCriticalSection)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "marshaller": [
+      {
+        "address": "0041b310",
+        "symbol": "??0Marshaller@@QAE@K@Z",
+        "size": 184,
+        "exact": true,
+        "verified_targets": {
+          "__imp__DefWindowProcA@16": "0x802dc4 (user32.dll!DefWindowProcA)",
+          "??_7Marshaller@@6B@": "0x80eccc (vtable RTTI .?AVMarshaller@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0mutex@boost@@QAE@XZ": "0x594c90 (external)",
+          "?Create@?$CWindowImpl@VMarshaller@@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@3@@ATL@@QAEPAUHWND__@@PAU3@V_U_RECT@2@PBDKKV_U_MENUorID@2@PAX@Z": "0x419a40 (instance (bytes equal, targets verified))"
+        },
+        "local_eh": [
+          "__ehhandler$??0Marshaller@@QAE@K@Z"
+        ]
+      },
+      {
+        "address": "0041a250",
+        "symbol": "??1Marshaller@@UAE@XZ",
+        "size": 122,
+        "exact": true,
+        "verified_targets": {
+          "??_7Marshaller@@6B@": "0x80eccc (vtable RTTI .?AVMarshaller@@ offset 0x0)",
+          "??1mutex@boost@@QAE@XZ": "0x594cb0 (external)",
+          "?_Tidy@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@IAEXXZ": "0x419b40 (instance (bytes equal, targets verified))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?__FreeStdCallThunk@ATL@@YGXPAX@Z": "0x7a600b (library instance (bytes equal))"
+        },
+        "local_eh": [
+          "__ehhandler$??1Marshaller@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0041b3d0",
+        "symbol": "??_GMarshaller@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1Marshaller@@UAE@XZ": "0x41a250 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041b1e0",
+        "symbol": "?ProcessWindowMessage@Marshaller@@UAEHPAUHWND__@@IIJAAJK@Z",
+        "size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?onExecute@Marshaller@@QAEJIIJAAH@Z": "0x41a410 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0041a410",
+        "symbol": "?onExecute@Marshaller@@QAEJIIJAAH@Z [0x0:0xe0]",
+        "size": 224,
+        "exact": true,
+        "verified_targets": {
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??D?$_Deque_const_iterator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@$00@std@@QBEABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@XZ": "0x496020 (instance (bytes equal, targets verified))",
+          "??4?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@ABV01@@Z": "0x554470 (instance (bytes equal, targets verified))",
+          "?pop_front@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@QAEXXZ": "0x419170 (instance (bytes equal, targets verified))",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)",
+          "??0bad_function_call@boost@@QAE@XZ": "0x409ef0 (external)",
+          "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z": "0x40a500 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?onExecute@Marshaller@@QAEJIIJAAH@Z"
+        ]
+      },
+      {
+        "address": "0041a4f0",
+        "symbol": "?onExecute@Marshaller@@QAEJIIJAAH@Z [0xe0:0x111]",
+        "size": 49,
+        "exact": true,
+        "verified_targets": {
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external)",
+          "?print@StandardOut@RBX@@QAEXW4MessageType@2@ABVexception@std@@@Z": "0x416e10 (external)",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (external)"
+        },
+        "local_eh": [
+          "$LN10"
+        ]
+      },
+      {
+        "address": "0041a530",
+        "symbol": "?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z",
+        "size": 160,
+        "exact": true,
+        "verified_targets": {
+          "?do_lock@mutex@boost@@AAEXXZ": "0x594ce0 (external)",
+          "?push_back@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@QAEXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": "0x419ae0 (instance (bytes equal, targets verified))",
+          "?do_unlock@mutex@boost@@AAEXXZ": "0x594d00 (external)",
+          "__imp__PostMessageA@16": "0x802e0c (user32.dll!PostMessageA)"
+        },
+        "local_eh": [
+          "__ehhandler$?post@Marshaller@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "00432a70",
+        "symbol": "?OnFinalMessage@Marshaller@@UAEXPAUHWND__@@@Z",
+        "size": 22,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "image": [
+      {
+        "address": "00442c90",
+        "symbol": "??0RBXImage@@QAE@XZ",
+        "size": 51,
+        "exact": true,
+        "verified_targets": {
+          "??_7RBXImage@@6B@": "0x8157c0 (vtable RTTI .?AVRBXImage@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00442db0",
+        "symbol": "??1RBXImage@@UAE@XZ",
+        "size": 54,
+        "exact": true,
+        "verified_targets": {
+          "??_7RBXImage@@6B@": "0x8157c0 (vtable RTTI .?AVRBXImage@@ offset 0x0)",
+          "__imp__DeleteObject@4": "0x802150 (gdi32.dll!DeleteObject)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00442f20",
+        "symbol": "??_GRBXImage@@UAEPAXI@Z",
+        "size": 78,
+        "exact": true,
+        "verified_targets": {
+          "??_7RBXImage@@6B@": "0x8157c0 (vtable RTTI .?AVRBXImage@@ offset 0x0)",
+          "__imp__DeleteObject@4": "0x802150 (gdi32.dll!DeleteObject)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00442c50",
+        "symbol": "?GetPixelAddress@RBXImage@@QAEPAXHH@Z",
+        "size": 33,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00442c80",
+        "symbol": "?GetWidth@RBXImage@@QBEHXZ",
+        "size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00442ce0",
+        "symbol": "?UpdateBitmapInfo@RBXImage@@QAEXW4DIBOrientation@1@@Z",
+        "size": 201,
+        "exact": true,
+        "verified_targets": {
+          "__imp__GetObjectA@12": "0x802154 (gdi32.dll!GetObjectA)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00442df0",
+        "symbol": "?CreateEx@RBXImage@@QAEHHHHKPBKK@Z",
+        "size": 295,
+        "exact": true,
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)",
+          "_memset": "0x6a1704 (msvcr90.dll!memset)",
+          "__imp__CreateDIBSection@24": "0x80214c (gdi32.dll!CreateDIBSection)",
+          "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": "0x401150 (instance (bytes equal, targets verified))",
+          "?UpdateBitmapInfo@RBXImage@@QAEXW4DIBOrientation@1@@Z": "0x442ce0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00442f70",
+        "symbol": "?Create@RBXImage@@QAEHHHHK@Z",
+        "size": 32,
+        "exact": true,
+        "verified_targets": {
+          "?CreateEx@RBXImage@@QAEHHHHKPBKK@Z": "0x442df0 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "exposer": [
+      {
+        "address": "0049f180",
+        "symbol": "?IDTOString@Exposer@@SAPBDH@Z",
+        "size": 119,
+        "exact": true,
+        "verified_targets": {
+          "??0PacketLogger@@QAE@XZ": "0x4baa10 (library instance (bytes equal))",
+          "??_7Exposer@@6B@": "0x822d3c (vtable RTTI .?AVExposer@@ offset 0x0)",
+          "?IDTOString@PacketLogger@@IAEPADE@Z": "0x4badc0 (library instance (bytes equal))",
+          "??1PacketLogger@@UAE@XZ": "0x4baa40 (library instance (bytes equal))"
+        },
+        "local_eh": [
+          "__ehhandler$?IDTOString@Exposer@@SAPBDH@Z"
+        ]
+      },
+      {
+        "address": "0049ed90",
+        "symbol": "??_GExposer@@UAEPAXI@Z",
+        "size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1PacketLogger@@UAE@XZ": "0x4baa40 (library instance (bytes equal))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
     "doc_pending": [
       {
         "address": "0044a170",
@@ -304,7 +679,877 @@
       }
     ]
   },
+  "instances": {
+    "?Init@CComCriticalSection@ATL@@QAEJXZ": {
+      "address": "00401860",
+      "symbol": "?Init@CComCriticalSection@ATL@@QAEJXZ",
+      "size": 111,
+      "exact": false,
+      "verified_targets": {
+        "__except_handler3": "0x6a1512 (msvcr90.dll!_except_handler3)",
+        "__imp__InitializeCriticalSection@4": "0x8022e0 (kernel32.dll!InitializeCriticalSection)"
+      },
+      "local_eh": [
+        "__sehtable$?Init@CComCriticalSection@ATL@@QAEJXZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; listed extent 0x38 != body 0x6f, whole body compared with the image bytes"
+    },
+    "?AtlCallTermFunc@ATL@@YGXPAU_ATL_MODULE70@1@@Z": {
+      "address": "0044a060",
+      "symbol": "?AtlCallTermFunc@ATL@@YGXPAU_ATL_MODULE70@1@@Z",
+      "size": 72,
+      "exact": false,
+      "verified_targets": {
+        "__imp__RaiseException@16": "0x8022e4 (kernel32.dll!RaiseException)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?Create@?$CWindowImpl@VMarshaller@@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@3@@ATL@@QAEPAUHWND__@@PAU3@V_U_RECT@2@PBDKKV_U_MENUorID@2@PAX@Z": {
+      "address": "00419a40",
+      "symbol": "?Create@?$CWindowImpl@VMarshaller@@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@3@@ATL@@QAEPAUHWND__@@PAU3@V_U_RECT@2@PBDKKV_U_MENUorID@2@PAX@Z",
+      "size": 119,
+      "exact": false,
+      "verified_targets": {
+        "?wc@?1??GetWndClassInfo@Marshaller@@SAAAU_ATL_WNDCLASSINFOA@ATL@@XZ@4U34@A": "0x92c5b0 (instance (bytes equal, targets verified))",
+        "?_AtlWinModule@ATL@@3VCAtlWinModule@1@A": "0x97f314 (data)",
+        "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0x97f2a8 (data)",
+        "??$AtlModuleRegisterWndClassInfoT@VAtlModuleRegisterWndClassInfoParamA@ATL@@@ATL@@YAGPAU_ATL_BASE_MODULE70@0@PAU_ATL_WIN_MODULE70@0@PAU_ATL_WNDCLASSINFOA@0@PAP6GJPAUHWND__@@IIJ@ZVAtlModuleRegisterWndClassInfoParamA@0@@Z": "0x418ab0 (instance (bytes equal, targets verified))",
+        "?Create@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@QAEPAUHWND__@@PAU3@V_U_RECT@2@PBDKKV_U_MENUorID@2@GPAX@Z": "0x4189d0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?wc@?1??GetWndClassInfo@Marshaller@@SAAAU_ATL_WNDCLASSINFOA@ATL@@XZ@4U34@A": {
+      "address": "0092c5b0",
+      "symbol": "?wc@?1??GetWndClassInfo@Marshaller@@SAAAU_ATL_WNDCLASSINFOA@ATL@@XZ@4U34@A",
+      "size": 104,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {
+        "+0x8 ?StartWindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@SGJPAUHWND__@@IIJ@Z": "0x418970 (instance (bytes equal, targets verified))",
+        "+0x28 ??_C@_0BC@BEEIJDBC@Roblox?4Marshaller?$AA@": "0x80ecac (literal 'Roblox.Marshaller')"
+      }
+    },
+    "?StartWindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@SGJPAUHWND__@@IIJ@Z": {
+      "address": "00418970",
+      "symbol": "?StartWindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@SGJPAUHWND__@@IIJ@Z",
+      "size": 84,
+      "exact": false,
+      "verified_targets": {
+        "?_AtlWinModule@ATL@@3VCAtlWinModule@1@A": "0x97f314 (data)",
+        "?AtlWinModuleExtractCreateWndData@ATL@@YGPAXPAU_ATL_WIN_MODULE70@1@@Z": "0x417920 (instance (bytes equal, targets verified))",
+        "?Init@CWndProcThunk@ATL@@QAEHP6GJPAUHWND__@@IIJ@ZPAX@Z": "0x4170c0 (instance (bytes equal, targets verified))",
+        "__imp__SetWindowLongA@12": "0x802dd8 (user32.dll!SetWindowLongA)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?AtlWinModuleExtractCreateWndData@ATL@@YGPAXPAU_ATL_WIN_MODULE70@1@@Z": {
+      "address": "00417920",
+      "symbol": "?AtlWinModuleExtractCreateWndData@ATL@@YGPAXPAU_ATL_WIN_MODULE70@1@@Z",
+      "size": 130,
+      "exact": false,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "0x8022d4 (kernel32.dll!EnterCriticalSection)",
+        "__imp__GetCurrentThreadId@0": "0x802198 (kernel32.dll!GetCurrentThreadId)",
+        "__imp__LeaveCriticalSection@4": "0x8021f4 (kernel32.dll!LeaveCriticalSection)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?Init@CWndProcThunk@ATL@@QAEHP6GJPAUHWND__@@IIJ@ZPAX@Z": {
+      "address": "004170c0",
+      "symbol": "?Init@CWndProcThunk@ATL@@QAEHP6GJPAUHWND__@@IIJ@ZPAX@Z",
+      "size": 82,
+      "exact": false,
+      "verified_targets": {
+        "?__AllocStdCallThunk@ATL@@YGPAXXZ": "0x7a60bd (library instance (bytes equal))",
+        "__imp__GetCurrentProcess@0": "0x8021e4 (kernel32.dll!GetCurrentProcess)",
+        "__imp__FlushInstructionCache@12": "0x8021e0 (kernel32.dll!FlushInstructionCache)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?__AllocStdCallThunk@ATL@@YGPAXXZ": {
+      "address": "007a60bd",
+      "symbol": "?__AllocStdCallThunk@ATL@@YGPAXXZ",
+      "size": 5,
+      "exact": false,
+      "verified_targets": {
+        "?__AllocStdCallThunk_cmn@@YAPAXXZ": "0x7a601d (library instance (bytes equal))"
+      },
+      "local_eh": [],
+      "status": "instance (library atls.lib member; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?__AllocStdCallThunk_cmn@@YAPAXXZ": {
+      "address": "007a601d",
+      "symbol": "?__AllocStdCallThunk_cmn@@YAPAXXZ",
+      "size": 160,
+      "exact": false,
+      "verified_targets": {
+        "?__AtlThunkPool@@3PAT_SLIST_HEADER@@A": "0x97f308 (library-internal, not followed)",
+        "?__InitializeThunkPool@@YAHXZ": "0x7a5f56 (library instance (bytes equal))",
+        "__imp__GetProcessHeap@0": "0x8022b8 (kernel32.dll!GetProcessHeap)",
+        "__imp__HeapAlloc@12": "0x8021f8 (kernel32.dll!HeapAlloc)",
+        "?__AtlInterlockedPopEntrySList@@3P6GPAU_SINGLE_LIST_ENTRY@@PAT_SLIST_HEADER@@@ZA": "0x97f310 (library-internal, not followed)",
+        "__imp__VirtualAlloc@16": "0x802348 (kernel32.dll!VirtualAlloc)",
+        "__imp__VirtualFree@12": "0x802344 (kernel32.dll!VirtualFree)",
+        "?__AtlInterlockedPushEntrySList@@3P6GPAU_SINGLE_LIST_ENTRY@@PAT_SLIST_HEADER@@PAU1@@ZA": "0x97f30c (library-internal, not followed)"
+      },
+      "local_eh": [],
+      "status": "instance (library atls.lib member; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted; not a listed function start, whole body compared with the image bytes"
+    },
+    "?__InitializeThunkPool@@YAHXZ": {
+      "address": "007a5f56",
+      "symbol": "?__InitializeThunkPool@@YAHXZ",
+      "size": 181,
+      "exact": false,
+      "verified_targets": {
+        "__imp__IsProcessorFeaturePresent@4": "0x802340 (kernel32.dll!IsProcessorFeaturePresent)",
+        "?__AtlThunkPool@@3PAT_SLIST_HEADER@@A": "0x97f308 (library-internal, not followed)",
+        "??_C@_0N@MDJJJHMB@kernel32?4dll?$AA@": "0x822ca4 (literal 'kernel32.dll')",
+        "__imp__LoadLibraryA@4": "0x8021cc (kernel32.dll!LoadLibraryA)",
+        "__imp__GetProcAddress@8": "0x8021c0 (kernel32.dll!GetProcAddress)",
+        "??_C@_0BK@JFGGAIOA@InterlockedPushEntrySList?$AA@": "0x871fa0 (literal 'InterlockedPushEntrySList')",
+        "??_C@_0BJ@PNEEKDOK@InterlockedPopEntrySList?$AA@": "0x871f84 (literal 'InterlockedPopEntrySList')",
+        "?__AtlInterlockedPushEntrySList@@3P6GPAU_SINGLE_LIST_ENTRY@@PAT_SLIST_HEADER@@PAU1@@ZA": "0x97f30c (library-internal, not followed)",
+        "?__AtlInterlockedPopEntrySList@@3P6GPAU_SINGLE_LIST_ENTRY@@PAT_SLIST_HEADER@@@ZA": "0x97f310 (library-internal, not followed)",
+        "__imp__GetProcessHeap@0": "0x8022b8 (kernel32.dll!GetProcessHeap)",
+        "__imp__HeapAlloc@12": "0x8021f8 (kernel32.dll!HeapAlloc)",
+        "__imp__InterlockedCompareExchange@12": "0x80227c (kernel32.dll!InterlockedCompareExchange)",
+        "__imp__HeapFree@12": "0x8021f0 (kernel32.dll!HeapFree)"
+      },
+      "local_eh": [],
+      "status": "instance (library atls.lib member; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "??$AtlModuleRegisterWndClassInfoT@VAtlModuleRegisterWndClassInfoParamA@ATL@@@ATL@@YAGPAU_ATL_BASE_MODULE70@0@PAU_ATL_WIN_MODULE70@0@PAU_ATL_WNDCLASSINFOA@0@PAP6GJPAUHWND__@@IIJ@ZVAtlModuleRegisterWndClassInfoParamA@0@@Z": {
+      "address": "00418ab0",
+      "symbol": "??$AtlModuleRegisterWndClassInfoT@VAtlModuleRegisterWndClassInfoParamA@ATL@@@ATL@@YAGPAU_ATL_BASE_MODULE70@0@PAU_ATL_WIN_MODULE70@0@PAU_ATL_WNDCLASSINFOA@0@PAP6GJPAUHWND__@@IIJ@ZVAtlModuleRegisterWndClassInfoParamA@0@@Z",
+      "size": 476,
+      "exact": false,
+      "verified_targets": {
+        "?Lock@?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAEJXZ": "0x402550 (instance (bytes equal, targets verified))",
+        "__imp__GetClassInfoExA@12": "0x802dd4 (user32.dll!GetClassInfoExA)",
+        "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ": "0x420bb0 (instance (bytes equal, targets verified))",
+        "__imp__LoadCursorA@8": "0x802dd0 (user32.dll!LoadCursorA)",
+        "?FormatWindowClassName@AtlModuleRegisterWndClassInfoParamA@ATL@@SAXPADKPAX@Z": "0x416e40 (instance (bytes equal, targets verified))",
+        "?RegisterClassExA@AtlModuleRegisterWndClassInfoParamA@ATL@@SAGPAU_ATL_WIN_MODULE70@2@PBUtagWNDCLASSEXA@@@Z": "0x418580 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [
+        "__ehhandler$??$AtlModuleRegisterWndClassInfoT@VAtlModuleRegisterWndClassInfoParamA@ATL@@@ATL@@YAGPAU_ATL_BASE_MODULE70@0@PAU_ATL_WIN_MODULE70@0@PAU_ATL_WNDCLASSINFOA@0@PAP6GJPAUHWND__@@IIJ@ZVAtlModuleRegisterWndClassInfoParamA@0@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?Lock@?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAEJXZ": {
+      "address": "00402550",
+      "symbol": "?Lock@?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAEJXZ",
+      "size": 20,
+      "exact": false,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "0x8022d4 (kernel32.dll!EnterCriticalSection)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ": {
+      "address": "00420bb0",
+      "symbol": "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ",
+      "size": 24,
+      "exact": false,
+      "verified_targets": {
+        "__imp__LeaveCriticalSection@4": "0x8021f4 (kernel32.dll!LeaveCriticalSection)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?FormatWindowClassName@AtlModuleRegisterWndClassInfoParamA@ATL@@SAXPADKPAX@Z": {
+      "address": "00416e40",
+      "symbol": "?FormatWindowClassName@AtlModuleRegisterWndClassInfoParamA@ATL@@SAXPADKPAX@Z",
+      "size": 30,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_06ENMEENN@ATL?3?$CFp?$AA@": "0x80eb98 (literal 'ATL:%p')",
+        "__imp__sprintf_s": "0x802854 (msvcr90.dll!sprintf_s)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?RegisterClassExA@AtlModuleRegisterWndClassInfoParamA@ATL@@SAGPAU_ATL_WIN_MODULE70@2@PBUtagWNDCLASSEXA@@@Z": {
+      "address": "00418580",
+      "symbol": "?RegisterClassExA@AtlModuleRegisterWndClassInfoParamA@ATL@@SAGPAU_ATL_WIN_MODULE70@2@PBUtagWNDCLASSEXA@@@Z",
+      "size": 55,
+      "exact": false,
+      "verified_targets": {
+        "__imp__RegisterClassExA@4": "0x802dc8 (user32.dll!RegisterClassExA)",
+        "?Add@?$CSimpleArray@GV?$CSimpleArrayEqualHelper@G@ATL@@@ATL@@QAEHABG@Z": "0x417430 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?Add@?$CSimpleArray@GV?$CSimpleArrayEqualHelper@G@ATL@@@ATL@@QAEHABG@Z": {
+      "address": "00417430",
+      "symbol": "?Add@?$CSimpleArray@GV?$CSimpleArrayEqualHelper@G@ATL@@@ATL@@QAEHABG@Z",
+      "size": 128,
+      "exact": false,
+      "verified_targets": {
+        "?AtlThrowImpl@ATL@@YGXJ@Z": "0x401000 (evidence name)",
+        "__imp___recalloc": "0x802880 (msvcr90.dll!_recalloc)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?Create@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@QAEPAUHWND__@@PAU3@V_U_RECT@2@PBDKKV_U_MENUorID@2@GPAX@Z": {
+      "address": "004189d0",
+      "symbol": "?Create@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@QAEPAUHWND__@@PAU3@V_U_RECT@2@PBDKKV_U_MENUorID@2@GPAX@Z",
+      "size": 224,
+      "exact": false,
+      "verified_targets": {
+        "?__AllocStdCallThunk@ATL@@YGPAXXZ": "0x7a60bd (library instance (bytes equal))",
+        "__imp__GetCurrentProcess@0": "0x8021e4 (kernel32.dll!GetCurrentProcess)",
+        "__imp__FlushInstructionCache@12": "0x8021e0 (kernel32.dll!FlushInstructionCache)",
+        "__imp__SetLastError@4": "0x8021d0 (kernel32.dll!SetLastError)",
+        "?_AtlWinModule@ATL@@3VCAtlWinModule@1@A": "0x97f314 (data)",
+        "?AtlWinModuleAddCreateWndData@ATL@@YGXPAU_ATL_WIN_MODULE70@1@PAU_AtlCreateWndData@1@PAX@Z": "0x4178b0 (instance (bytes equal, targets verified))",
+        "?rcDefault@CWindow@ATL@@2UtagRECT@@A": "0x92817c (data instance (bytes equal, fields verified))",
+        "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0x97f2a8 (data)",
+        "__imp__CreateWindowExA@48": "0x802dc0 (user32.dll!CreateWindowExA)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?AtlWinModuleAddCreateWndData@ATL@@YGXPAU_ATL_WIN_MODULE70@1@PAU_AtlCreateWndData@1@PAX@Z": {
+      "address": "004178b0",
+      "symbol": "?AtlWinModuleAddCreateWndData@ATL@@YGXPAU_ATL_WIN_MODULE70@1@PAU_AtlCreateWndData@1@PAX@Z",
+      "size": 102,
+      "exact": false,
+      "verified_targets": {
+        "__imp__RaiseException@16": "0x8022e4 (kernel32.dll!RaiseException)",
+        "__imp__GetCurrentThreadId@0": "0x802198 (kernel32.dll!GetCurrentThreadId)",
+        "__imp__EnterCriticalSection@4": "0x8022d4 (kernel32.dll!EnterCriticalSection)",
+        "__imp__LeaveCriticalSection@4": "0x8021f4 (kernel32.dll!LeaveCriticalSection)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?rcDefault@CWindow@ATL@@2UtagRECT@@A": {
+      "address": "0092817c",
+      "symbol": "?rcDefault@CWindow@ATL@@2UtagRECT@@A",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "?_Tidy@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@IAEXXZ": {
+      "address": "00419b40",
+      "symbol": "?_Tidy@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@IAEXXZ",
+      "size": 149,
+      "exact": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?__FreeStdCallThunk@ATL@@YGXPAX@Z": {
+      "address": "007a600b",
+      "symbol": "?__FreeStdCallThunk@ATL@@YGXPAX@Z",
+      "size": 18,
+      "exact": false,
+      "verified_targets": {
+        "?__FreeStdCallThunk_cmn@@YAXPAX@Z": "0x7a5f2a (library instance (bytes equal))"
+      },
+      "local_eh": [],
+      "status": "instance (library atls.lib member; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted; listed extent 0xb2 != body 0x12, whole body compared with the image bytes"
+    },
+    "?__FreeStdCallThunk_cmn@@YAXPAX@Z": {
+      "address": "007a5f2a",
+      "symbol": "?__FreeStdCallThunk_cmn@@YAXPAX@Z",
+      "size": 44,
+      "exact": false,
+      "verified_targets": {
+        "?__AtlThunkPool@@3PAT_SLIST_HEADER@@A": "0x97f308 (library-internal, not followed)",
+        "__imp__GetProcessHeap@0": "0x8022b8 (kernel32.dll!GetProcessHeap)",
+        "__imp__HeapFree@12": "0x8021f0 (kernel32.dll!HeapFree)",
+        "?__AtlInterlockedPushEntrySList@@3P6GPAU_SINGLE_LIST_ENTRY@@PAT_SLIST_HEADER@@PAU1@@ZA": "0x97f30c (library-internal, not followed)"
+      },
+      "local_eh": [],
+      "status": "instance (library atls.lib member; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "??D?$_Deque_const_iterator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@$00@std@@QBEABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@XZ": {
+      "address": "00496020",
+      "symbol": "??D?$_Deque_const_iterator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@$00@std@@QBEABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@XZ",
+      "size": 115,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??4?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@ABV01@@Z": {
+      "address": "00554470",
+      "symbol": "??4?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@ABV01@@Z",
+      "size": 148,
+      "exact": false,
+      "verified_targets": {
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??4?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@QAEAAV01@ABV01@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; listed extent 0x82 != body 0x94, whole body compared with the image bytes"
+    },
+    "?pop_front@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@QAEXXZ": {
+      "address": "00419170",
+      "symbol": "?pop_front@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@QAEXXZ",
+      "size": 83,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?push_back@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@QAEXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z": {
+      "address": "00419ae0",
+      "symbol": "?push_back@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@QAEXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@Z",
+      "size": 88,
+      "exact": false,
+      "verified_targets": {
+        "?_Growmap@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@IAEXI@Z": "0x4192a0 (instance (bytes equal, targets verified))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??$_Construct@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V12@@std@@YAXPAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@ABV12@@Z": "0x429040 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?_Growmap@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@IAEXI@Z": {
+      "address": "004192a0",
+      "symbol": "?_Growmap@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@IAEXI@Z",
+      "size": 352,
+      "exact": false,
+      "verified_targets": {
+        "?_Xlen@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@KAXXZ": "0x516a10 (instance (bytes equal, targets verified))",
+        "??$_Allocate@PAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@YAPAPAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@IPAPAV12@@Z": "0x420b50 (instance (bytes equal, targets verified))",
+        "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?_Xlen@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@KAXXZ": {
+      "address": "00516a10",
+      "symbol": "?_Xlen@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@KAXXZ",
+      "size": 112,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BC@KBDMBKEH@deque?$DMT?$DO?5too?5long?$AA@": "0x80ebb0 (literal 'deque<T> too long')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info .?AVlength_error@std@@ (3 catchable types))",
+        "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$?_Xlen@?$deque@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$allocator@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@@std@@KAXXZ"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$_Allocate@PAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@YAPAPAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@IPAPAV12@@Z": {
+      "address": "00420b50",
+      "symbol": "??$_Allocate@PAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@std@@YAPAPAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@IPAPAV12@@Z",
+      "size": 91,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (throw info .?AVbad_alloc@std@@ (2 catchable types))",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??$_Construct@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V12@@std@@YAXPAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@ABV12@@Z": {
+      "address": "00429040",
+      "symbol": "??$_Construct@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V12@@std@@YAXPAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@ABV12@@Z",
+      "size": 97,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$??$_Construct@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V12@@std@@YAXPAV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@ABV12@@Z"
+      ],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted; not a listed function start, whole body compared with the image bytes"
+    },
+    "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ": {
+      "address": "00401150",
+      "symbol": "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ",
+      "size": 36,
+      "exact": false,
+      "verified_targets": {
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "??0PacketLogger@@QAE@XZ": {
+      "address": "004baa10",
+      "symbol": "??0PacketLogger@@QAE@XZ",
+      "size": 40,
+      "exact": false,
+      "verified_targets": {
+        "??0PluginInterface@@QAE@XZ": "0x49ed30 (library instance (bytes equal))",
+        "??_7PacketLogger@@6B@": "0x825724 (vtable RTTI .?AVPacketLogger@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "??0PluginInterface@@QAE@XZ": {
+      "address": "0049ed30",
+      "symbol": "??0PluginInterface@@QAE@XZ",
+      "size": 9,
+      "exact": false,
+      "verified_targets": {
+        "??_7PluginInterface@@6B@": "0x822d00 (vtable RTTI .?AVPluginInterface@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPluginInterface; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?IDTOString@PacketLogger@@IAEPADE@Z": {
+      "address": "004badc0",
+      "symbol": "?IDTOString@PacketLogger@@IAEPADE@Z",
+      "size": 31,
+      "exact": false,
+      "verified_targets": {
+        "?BaseIDTOString@PacketLogger@@SAPADE@Z": "0x4baab0 (library instance (bytes equal))"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?BaseIDTOString@PacketLogger@@SAPADE@Z": {
+      "address": "004baab0",
+      "symbol": "?BaseIDTOString@PacketLogger@@SAPADE@Z",
+      "size": 764,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BB@DBJOHLAF@ID_INTERNAL_PING?$AA@": "0x825fc0 (literal 'ID_INTERNAL_PING')",
+        "??_C@_07PKKALDGM@ID_PING?$AA@": "0x825fb8 (literal 'ID_PING')",
+        "??_C@_0BJ@BJDIKKBI@ID_PING_OPEN_CONNECTIONS?$AA@": "0x825f9c (literal 'ID_PING_OPEN_CONNECTIONS')",
+        "??_C@_0BC@PJANOLB@ID_CONNECTED_PONG?$AA@": "0x825f88 (literal 'ID_CONNECTED_PONG')",
+        "??_C@_0BG@COPLDIAH@ID_CONNECTION_REQUEST?$AA@": "0x825f70 (literal 'ID_CONNECTION_REQUEST')",
+        "??_C@_0BP@MDAKMCMB@ID_SECURED_CONNECTION_RESPONSE?$AA@": "0x825f50 (literal 'ID_SECURED_CONNECTION_RESPONSE')",
+        "??_C@_0CD@KCOBHBDB@ID_SECURED_CONNECTION_CONFIRMATI@": "0x825f2c (literal 'ID_SECURED_CONNECTION_CONFIRMATION')",
+        "??_C@_0P@NFILCBGF@ID_RPC_MAPPING?$AA@": "0x825f1c (literal 'ID_RPC_MAPPING')",
+        "??_C@_0BL@FBFKLGOF@ID_DETECT_LOST_CONNECTIONS?$AA@": "0x825f00 (literal 'ID_DETECT_LOST_CONNECTIONS')",
+        "??_C@_0BL@JIIPEMPE@ID_OPEN_CONNECTION_REQUEST?$AA@": "0x825ee4 (literal 'ID_OPEN_CONNECTION_REQUEST')",
+        "??_C@_0BJ@LLANOCCH@ID_OPEN_CONNECTION_REPLY?$AA@": "0x825ec8 (literal 'ID_OPEN_CONNECTION_REPLY')",
+        "??_C@_06ELGGPFBE@ID_RPC?$AA@": "0x825ec0 (literal 'ID_RPC')",
+        "??_C@_0N@KHCNCPNO@ID_RPC_REPLY?$AA@": "0x825eb0 (literal 'ID_RPC_REPLY')",
+        "??_C@_0BP@PLDMEGME@ID_CONNECTION_REQUEST_ACCEPTED?$AA@": "0x825e90 (literal 'ID_CONNECTION_REQUEST_ACCEPTED')",
+        "??_C@_0BN@LFFKEOPN@ID_CONNECTION_ATTEMPT_FAILED?$AA@": "0x825e70 (literal 'ID_CONNECTION_ATTEMPT_FAILED')",
+        "??_C@_0BF@OMIIPKMJ@ID_ALREADY_CONNECTED?$AA@": "0x825e58 (literal 'ID_ALREADY_CONNECTED')",
+        "??_C@_0BL@MABOBDFA@ID_NEW_INCOMING_CONNECTION?$AA@": "0x825e3c (literal 'ID_NEW_INCOMING_CONNECTION')",
+        "??_C@_0CA@MNODABPA@ID_NO_FREE_INCOMING_CONNECTIONS?$AA@": "0x825e1c (literal 'ID_NO_FREE_INCOMING_CONNECTIONS')",
+        "??_C@_0BO@OLPHMLBO@ID_DISCONNECTION_NOTIFICATION?$AA@": "0x825dfc (literal 'ID_DISCONNECTION_NOTIFICATION')",
+        "??_C@_0BD@NCMFHGA@ID_CONNECTION_LOST?$AA@": "0x825de8 (literal 'ID_CONNECTION_LOST')",
+        "??_C@_0BL@CJFJFIKJ@ID_RSA_PUBLIC_KEY_MISMATCH?$AA@": "0x825dcc (literal 'ID_RSA_PUBLIC_KEY_MISMATCH')",
+        "??_C@_0BF@LPFHJJBD@ID_CONNECTION_BANNED?$AA@": "0x825db4 (literal 'ID_CONNECTION_BANNED')",
+        "??_C@_0BE@KANOLEPF@ID_INVALID_PASSWORD?$AA@": "0x825da0 (literal 'ID_INVALID_PASSWORD')",
+        "??_C@_0BD@EJOHJAOK@ID_MODIFIED_PACKET?$AA@": "0x825d8c (literal 'ID_MODIFIED_PACKET')",
+        "??_C@_0N@NCANPGBC@ID_TIMESTAMP?$AA@": "0x825d7c (literal 'ID_TIMESTAMP')",
+        "??_C@_07NPMLOMLA@ID_PONG?$AA@": "0x825d74 (literal 'ID_PONG')",
+        "??_C@_0BE@DCOBFKAO@ID_ADVERTISE_SYSTEM?$AA@": "0x825d60 (literal 'ID_ADVERTISE_SYSTEM')",
+        "??_C@_0CF@MPHOOKNC@ID_REMOTE_DISCONNECTION_NOTIFICA@": "0x825d38 (literal 'ID_REMOTE_DISCONNECTION_NOTIFICATION')",
+        "??_C@_0BK@ECJBAFKF@ID_REMOTE_CONNECTION_LOST?$AA@": "0x825d1c (literal 'ID_REMOTE_CONNECTION_LOST')",
+        "??_C@_0CC@DKOFGNKO@ID_REMOTE_NEW_INCOMING_CONNECTIO@": "0x825cf8 (literal 'ID_REMOTE_NEW_INCOMING_CONNECTION')",
+        "??_C@_0BF@OPIBLLG@ID_DOWNLOAD_PROGRESS?$AA@": "0x825ce0 (literal 'ID_DOWNLOAD_PROGRESS')",
+        "??_C@_0BN@IGDLCBON@ID_FILE_LIST_TRANSFER_HEADER?$AA@": "0x825cc0 (literal 'ID_FILE_LIST_TRANSFER_HEADER')",
+        "??_C@_0BL@KJHOPFMB@ID_FILE_LIST_TRANSFER_FILE?$AA@": "0x825ca4 (literal 'ID_FILE_LIST_TRANSFER_FILE')",
+        "??_C@_0BI@KICLOPFI@ID_DDT_DOWNLOAD_REQUEST?$AA@": "0x825c8c (literal 'ID_DDT_DOWNLOAD_REQUEST')",
+        "??_C@_0BE@EDJIHEMP@ID_TRANSPORT_STRING?$AA@": "0x825c78 (literal 'ID_TRANSPORT_STRING')",
+        "??_C@_0CA@LCHKDGHI@ID_REPLICA_MANAGER_CONSTRUCTION?$AA@": "0x825c58 (literal 'ID_REPLICA_MANAGER_CONSTRUCTION')",
+        "??_C@_0BP@MNDNLFBI@ID_REPLICA_MANAGER_DESTRUCTION?$AA@": "0x825c38 (literal 'ID_REPLICA_MANAGER_DESTRUCTION')",
+        "??_C@_0CA@LPIJALAM@ID_REPLICA_MANAGER_SCOPE_CHANGE?$AA@": "0x825c18 (literal 'ID_REPLICA_MANAGER_SCOPE_CHANGE')",
+        "??_C@_0BN@KOFKPAGO@ID_REPLICA_MANAGER_SERIALIZE?$AA@": "0x825bf8 (literal 'ID_REPLICA_MANAGER_SERIALIZE')",
+        "??_C@_0CF@PGFGJODO@ID_REPLICA_MANAGER_DOWNLOAD_COMP@": "0x825bd0 (literal 'ID_REPLICA_MANAGER_DOWNLOAD_COMPLETE')",
+        "??_C@_0BM@FBJKJKCM@ID_CONNECTION_GRAPH_REQUEST?$AA@": "0x825bb4 (literal 'ID_CONNECTION_GRAPH_REQUEST')",
+        "??_C@_0BK@CBGFOALB@ID_CONNECTION_GRAPH_REPLY?$AA@": "0x825b98 (literal 'ID_CONNECTION_GRAPH_REPLY')",
+        "??_C@_0BL@MICHIKNA@ID_CONNECTION_GRAPH_UPDATE?$AA@": "0x825b7c (literal 'ID_CONNECTION_GRAPH_UPDATE')",
+        "??_C@_0CD@GGDAHHGP@ID_CONNECTION_GRAPH_NEW_CONNECTI@": "0x825b58 (literal 'ID_CONNECTION_GRAPH_NEW_CONNECTION')",
+        "??_C@_0CE@DLIICOIF@ID_CONNECTION_GRAPH_CONNECTION_L@": "0x825b34 (literal 'ID_CONNECTION_GRAPH_CONNECTION_LOST')",
+        "??_C@_0CP@ENCDODLD@ID_CONNECTION_GRAPH_DISCONNECTIO@": "0x825b04 (literal 'ID_CONNECTION_GRAPH_DISCONNECTION_NOTIFICATION')",
+        "??_C@_0BH@LNGMGEEM@ID_ROUTE_AND_MULTICAST?$AA@": "0x825aec (literal 'ID_ROUTE_AND_MULTICAST')",
+        "??_C@_0CB@GCKKIPNB@ID_RAKVOICE_OPEN_CHANNEL_REQUEST@": "0x825ac8 (literal 'ID_RAKVOICE_OPEN_CHANNEL_REQUEST')",
+        "??_C@_0BP@CKGAGINM@ID_RAKVOICE_OPEN_CHANNEL_REPLY?$AA@": "0x825aa8 (literal 'ID_RAKVOICE_OPEN_CHANNEL_REPLY')",
+        "??_C@_0BK@BBDPADIO@ID_RAKVOICE_CLOSE_CHANNEL?$AA@": "0x825a8c (literal 'ID_RAKVOICE_CLOSE_CHANNEL')",
+        "??_C@_0BB@EPMEEE@ID_RAKVOICE_DATA?$AA@": "0x825a78 (literal 'ID_RAKVOICE_DATA')",
+        "??_C@_0CJ@LJCFNDCN@ID_AUTOPATCHER_GET_CHANGELIST_SI@": "0x825a4c (literal 'ID_AUTOPATCHER_GET_CHANGELIST_SINCE_DATE')",
+        "??_C@_0BN@CCPPOEH@ID_AUTOPATCHER_CREATION_LIST?$AA@": "0x825a2c (literal 'ID_AUTOPATCHER_CREATION_LIST')",
+        "??_C@_0BN@IDOGLNBG@ID_AUTOPATCHER_DELETION_LIST?$AA@": "0x825a0c (literal 'ID_AUTOPATCHER_DELETION_LIST')",
+        "??_C@_0BJ@IIADFECH@ID_AUTOPATCHER_GET_PATCH?$AA@": "0x8259f0 (literal 'ID_AUTOPATCHER_GET_PATCH')",
+        "??_C@_0BK@JMNELKMN@ID_AUTOPATCHER_PATCH_LIST?$AA@": "0x8259d4 (literal 'ID_AUTOPATCHER_PATCH_LIST')",
+        "??_C@_0CG@PHOFDANB@ID_AUTOPATCHER_REPOSITORY_FATAL_@": "0x8259ac (literal 'ID_AUTOPATCHER_REPOSITORY_FATAL_ERROR')",
+        "??_C@_0CB@HPMIFILI@ID_AUTOPATCHER_FINISHED_INTERNAL@": "0x825988 (literal 'ID_AUTOPATCHER_FINISHED_INTERNAL')",
+        "??_C@_0BI@ENPBEBKK@ID_AUTOPATCHER_FINISHED?$AA@": "0x825970 (literal 'ID_AUTOPATCHER_FINISHED')",
+        "??_C@_0CD@MGGPKDDG@ID_AUTOPATCHER_RESTART_APPLICATI@": "0x82594c (literal 'ID_AUTOPATCHER_RESTART_APPLICATION')",
+        "??_C@_0BM@LJGJDIII@ID_NAT_PUNCHTHROUGH_REQUEST?$AA@": "0x825930 (literal 'ID_NAT_PUNCHTHROUGH_REQUEST')",
+        "??_C@_0BM@EDIKGBBN@ID_NAT_TARGET_NOT_CONNECTED?$AA@": "0x825914 (literal 'ID_NAT_TARGET_NOT_CONNECTED')",
+        "??_C@_0BO@FAKBIOGE@ID_NAT_TARGET_CONNECTION_LOST?$AA@": "0x8258f4 (literal 'ID_NAT_TARGET_CONNECTION_LOST')",
+        "??_C@_0BH@GMBNAECN@ID_NAT_CONNECT_AT_TIME?$AA@": "0x8258dc (literal 'ID_NAT_CONNECT_AT_TIME')",
+        "??_C@_0CE@BBKINLFF@ID_NAT_SEND_OFFLINE_MESSAGE_AT_T@": "0x8258b8 (literal 'ID_NAT_SEND_OFFLINE_MESSAGE_AT_TIME')",
+        "??_C@_0BK@OGCLPGFB@ID_DATABASE_QUERY_REQUEST?$AA@": "0x82589c (literal 'ID_DATABASE_QUERY_REQUEST')",
+        "??_C@_0BH@LGAAKMIE@ID_DATABASE_UPDATE_ROW?$AA@": "0x825884 (literal 'ID_DATABASE_UPDATE_ROW')",
+        "??_C@_0BH@HAAKEGOL@ID_DATABASE_REMOVE_ROW?$AA@": "0x82586c (literal 'ID_DATABASE_REMOVE_ROW')",
+        "??_C@_0BI@KHDIKGHK@ID_DATABASE_QUERY_REPLY?$AA@": "0x825854 (literal 'ID_DATABASE_QUERY_REPLY')",
+        "??_C@_0BK@IEJPAOGH@ID_DATABASE_UNKNOWN_TABLE?$AA@": "0x825838 (literal 'ID_DATABASE_UNKNOWN_TABLE')",
+        "??_C@_0BP@BHKDCBMB@ID_DATABASE_INCORRECT_PASSWORD?$AA@": "0x825818 (literal 'ID_DATABASE_INCORRECT_PASSWORD')",
+        "??_C@_0BD@IGGPPABC@ID_READY_EVENT_SET?$AA@": "0x825804 (literal 'ID_READY_EVENT_SET')",
+        "??_C@_0BF@FBJBDJGO@ID_READY_EVENT_UNSET?$AA@": "0x8257ec (literal 'ID_READY_EVENT_UNSET')",
+        "??_C@_0BH@CGJEGBOH@ID_READY_EVENT_ALL_SET?$AA@": "0x8257d4 (literal 'ID_READY_EVENT_ALL_SET')",
+        "??_C@_0BF@EIFBOBA@ID_READY_EVENT_QUERY?$AA@": "0x8257bc (literal 'ID_READY_EVENT_QUERY')"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "??1PacketLogger@@UAE@XZ": {
+      "address": "004baa40",
+      "symbol": "??1PacketLogger@@UAE@XZ",
+      "size": 11,
+      "exact": false,
+      "verified_targets": {
+        "??_7PacketLogger@@6B@": "0x825724 (vtable RTTI .?AVPacketLogger@@ offset 0x0)",
+        "??1PluginInterface@@UAE@XZ": "0x49ed40 (library instance (bytes equal))"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "??1PluginInterface@@UAE@XZ": {
+      "address": "0049ed40",
+      "symbol": "??1PluginInterface@@UAE@XZ",
+      "size": 7,
+      "exact": false,
+      "verified_targets": {
+        "??_7PluginInterface@@6B@": "0x822d00 (vtable RTTI .?AVPluginInterface@@ offset 0x0)"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPluginInterface; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?Serialize@CObject@@UAEXAAVCArchive@@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?AssertValid@CObject@@UBEXXZ": {
+      "address": "0047d410",
+      "symbol": "?AssertValid@CObject@@UBEXXZ",
+      "size": 1,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?Dump@CObject@@UBEXAAVCDumpContext@@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?Lock@CAtlMfcModule@ATL@@UAEJXZ": {
+      "address": "0044b950",
+      "symbol": "?Lock@CAtlMfcModule@ATL@@UAEJXZ",
+      "size": 14,
+      "exact": false,
+      "verified_targets": {
+        "?AfxOleLockApp@@YGXXZ": "0x6a1250 (mfc90.dll!?AfxOleLockApp@@YGXXZ)",
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0926 (mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?Unlock@CAtlMfcModule@ATL@@UAEJXZ": {
+      "address": "0044b960",
+      "symbol": "?Unlock@CAtlMfcModule@ATL@@UAEJXZ",
+      "size": 14,
+      "exact": false,
+      "verified_targets": {
+        "?AfxOleUnlockApp@@YGXXZ": "0x6a1256 (mfc90.dll!?AfxOleUnlockApp@@YGXXZ)",
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0926 (mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?GetLockCount@CAtlMfcModule@ATL@@UAEJXZ": {
+      "address": "0044b970",
+      "symbol": "?GetLockCount@CAtlMfcModule@ATL@@UAEJXZ",
+      "size": 9,
+      "exact": false,
+      "verified_targets": {
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0926 (mfc90.dll!?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?GetGITPtr@CAtlModule@ATL@@UAEJPAPAUIGlobalInterfaceTable@@@Z": {
+      "address": "0044b900",
+      "symbol": "?GetGITPtr@CAtlModule@ATL@@UAEJPAPAUIGlobalInterfaceTable@@@Z",
+      "size": 78,
+      "exact": false,
+      "verified_targets": {
+        "__GUID_00000146_0000_0000_c000_000000000046": "0x8169d8 (data instance (bytes equal, fields verified))",
+        "_CLSID_StdGlobalInterfaceTable": "0x8501fc (GUID {00000323-0000-0000-c000-000000000046})",
+        "__imp__CoCreateInstance@20": "0x804118 (ole32.dll!CoCreateInstance)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "__GUID_00000146_0000_0000_c000_000000000046": {
+      "address": "008169d8",
+      "symbol": "__GUID_00000146_0000_0000_c000_000000000046",
+      "size": 16,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "?AddCommonRGSReplacements@?$CAtlModuleT@VCAtlMfcModule@ATL@@@ATL@@UAEJPAUIRegistrarBase@@@Z": {
+      "address": "0044b980",
+      "symbol": "?AddCommonRGSReplacements@?$CAtlModuleT@VCAtlMfcModule@ATL@@@ATL@@UAEJPAUIRegistrarBase@@@Z",
+      "size": 25,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_11LOCGONAA@?$AA?$AA@": "0x826b0c (wide literal '')",
+        "??_C@_1M@PPPPCDEP@?$AAA?$AAP?$AAP?$AAI?$AAD?$AA?$AA@": "0x8169e8 (wide literal 'APPID')"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?GetWindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAEP6GJPAUHWND__@@IIJ@ZXZ": {
+      "address": "0041a400",
+      "symbol": "?GetWindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAEP6GJPAUHWND__@@IIJ@ZXZ",
+      "size": 6,
+      "exact": false,
+      "verified_targets": {
+        "?WindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@SGJPAUHWND__@@IIJ@Z": "0x41a2d0 (instance (bytes equal, targets verified))"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?WindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@SGJPAUHWND__@@IIJ@Z": {
+      "address": "0041a2d0",
+      "symbol": "?WindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@SGJPAUHWND__@@IIJ@Z",
+      "size": 299,
+      "exact": false,
+      "verified_targets": {
+        "__imp__CallWindowProcA@20": "0x802db8 (user32.dll!CallWindowProcA)",
+        "__imp__GetWindowLongA@8": "0x802dbc (user32.dll!GetWindowLongA)",
+        "__imp__DefWindowProcA@16": "0x802dc4 (user32.dll!DefWindowProcA)",
+        "__imp__SetWindowLongA@12": "0x802dd8 (user32.dll!SetWindowLongA)"
+      },
+      "local_eh": [],
+      "status": "instance (emitted by this unit; every own target verified), bytes equal, not counted"
+    },
+    "?OnAttach@PacketLogger@@UAEXPAVRakPeerInterface@@@Z": {
+      "address": "00645830",
+      "symbol": "?OnAttach@PacketLogger@@UAEXPAVRakPeerInterface@@@Z",
+      "size": 10,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?OnDetach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?OnDetach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPluginInterface; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?OnStartup@PluginInterface@@UAEXPAVRakPeerInterface@@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?OnStartup@PluginInterface@@UAEXPAVRakPeerInterface@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPluginInterface; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?Update@PacketLogger@@UAEXPAVRakPeerInterface@@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?Update@PacketLogger@@UAEXPAVRakPeerInterface@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?OnReceive@PluginInterface@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z": {
+      "address": "0049ed50",
+      "symbol": "?OnReceive@PluginInterface@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPluginInterface; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?OnShutdown@PluginInterface@@UAEXPAVRakPeerInterface@@@Z": {
+      "address": "0070bdf0",
+      "symbol": "?OnShutdown@PluginInterface@@UAEXPAVRakPeerInterface@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPluginInterface; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?OnCloseConnection@PluginInterface@@UAEXPAVRakPeerInterface@@USystemAddress@@@Z": {
+      "address": "006ad2a0",
+      "symbol": "?OnCloseConnection@PluginInterface@@UAEXPAVRakPeerInterface@@USystemAddress@@@Z",
+      "size": 3,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPluginInterface; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?OnDirectSocketSend@PacketLogger@@UAEXPBDIUSystemAddress@@@Z": {
+      "address": "004bae70",
+      "symbol": "?OnDirectSocketSend@PacketLogger@@UAEXPBDIUSystemAddress@@@Z",
+      "size": 271,
+      "exact": false,
+      "verified_targets": {
+        "_UNASSIGNED_SYSTEM_ADDRESS": "0x93cb5c (instance (bytes equal, targets verified))",
+        "?GetTime@RakNet@@YAIXZ": "0x4c9910 (library-internal, not followed)",
+        "??_C@_0CP@DJAALAGG@?$CFsSnd?0Raw?0?5?5NIL?0?5?5NIL?0?$CF5i?0?$CF5i?0?$CFi@": "0x826000 (literal '%sSnd,Raw,  NIL,  NIL,%5i,%5i,%i,%u:%i,%u:%i%s')",
+        "__imp__sprintf": "0x802830 (msvcr90.dll!sprintf)",
+        "?BaseIDTOString@PacketLogger@@SAPADE@Z": "0x4baab0 (library instance (bytes equal))",
+        "??_C@_0CJ@HDKJEANH@?$CFsSnd?0Raw?0NIL?0NIL?0?$CFs?0?$CFi?0?$CFi?0?$CFu?3?$CFi@": "0x825fd4 (literal '%sSnd,Raw,NIL,NIL,%s,%i,%i,%u:%i,%u:%i%s')"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "_UNASSIGNED_SYSTEM_ADDRESS": {
+      "address": "0093cb5c",
+      "symbol": "_UNASSIGNED_SYSTEM_ADDRESS",
+      "size": 8,
+      "exact": false,
+      "status": "data instance emitted by this unit (bytes equal, fields verified), not counted",
+      "verified_targets": {}
+    },
+    "?OnDirectSocketReceive@PacketLogger@@UAEXPBDIUSystemAddress@@@Z": {
+      "address": "004baf80",
+      "symbol": "?OnDirectSocketReceive@PacketLogger@@UAEXPBDIUSystemAddress@@@Z",
+      "size": 271,
+      "exact": false,
+      "verified_targets": {
+        "_UNASSIGNED_SYSTEM_ADDRESS": "0x93cb5c (instance (bytes equal, targets verified))",
+        "?GetTime@RakNet@@YAIXZ": "0x4c9910 (library-internal, not followed)",
+        "??_C@_0CP@LGBABDFB@?$CFsRcv?0Raw?0?5?5NIL?0?5?5NIL?0?$CF5i?0?$CF5i?0?$CFi@": "0x82605c (literal '%sRcv,Raw,  NIL,  NIL,%5i,%5i,%i,%u:%i,%u:%i%s')",
+        "__imp__sprintf": "0x802830 (msvcr90.dll!sprintf)",
+        "?BaseIDTOString@PacketLogger@@SAPADE@Z": "0x4baab0 (library instance (bytes equal))",
+        "??_C@_0CJ@OENEMFID@?$CFsRcv?0Raw?0NIL?0NIL?0?$CFs?0?$CFi?0?$CFi?0?$CFu?3?$CFi@": "0x826030 (literal '%sRcv,Raw,NIL,NIL,%s,%i,%i,%u:%i,%u:%i%s')"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?LogHeader@PacketLogger@@UAEXXZ": {
+      "address": "004baa50",
+      "symbol": "?LogHeader@PacketLogger@@UAEXXZ",
+      "size": 13,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0EK@EDMFIPJD@S?$HMR?0Typ?0Pckt?$CD?0Frm?5?$CD?0PktID?0BitLn?0@": "0x825770 (literal 'S|R,Typ,Pckt#,Frm #,PktID,BitLn,Time     ,Local IP:Port   ,RemoteIP:Port\\n')"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?WriteLog@PacketLogger@@UAEXPBD@Z": {
+      "address": "004baa70",
+      "symbol": "?WriteLog@PacketLogger@@UAEXPBD@Z",
+      "size": 22,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_02DKCKIIND@?$CFs?$AA@": "0x8103ac (literal '%s')",
+        "__imp__printf": "0x8027dc (msvcr90.dll!printf)"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?SetPrintID@PacketLogger@@UAEX_N@Z": {
+      "address": "004baa90",
+      "symbol": "?SetPrintID@PacketLogger@@UAEX_N@Z",
+      "size": 10,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?SetPrintAcks@PacketLogger@@UAEX_N@Z": {
+      "address": "004baaa0",
+      "symbol": "?SetPrintAcks@PacketLogger@@UAEX_N@Z",
+      "size": 10,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?SetPrefix@PacketLogger@@UAEXPBD@Z": {
+      "address": "004bade0",
+      "symbol": "?SetPrefix@PacketLogger@@UAEXPBD@Z",
+      "size": 37,
+      "exact": false,
+      "verified_targets": {
+        "__imp__strncpy": "0x802848 (msvcr90.dll!strncpy)"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?SetSuffix@PacketLogger@@UAEXPBD@Z": {
+      "address": "004bae10",
+      "symbol": "?SetSuffix@PacketLogger@@UAEXPBD@Z",
+      "size": 40,
+      "exact": false,
+      "verified_targets": {
+        "__imp__strncpy": "0x802848 (msvcr90.dll!strncpy)"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?AddToLog@PacketLogger@@MAEXPBD@Z": {
+      "address": "004baa60",
+      "symbol": "?AddToLog@PacketLogger@@MAEXPBD@Z",
+      "size": 7,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    },
+    "?UserIDTOString@PacketLogger@@MAEPADE@Z": {
+      "address": "004badb0",
+      "symbol": "?UserIDTOString@PacketLogger@@MAEPADE@Z",
+      "size": 8,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_07NBCGADJA@Unknown?$AA@": "0x81cf58 (literal 'Unknown')"
+      },
+      "local_eh": [],
+      "status": "instance (library NativeAppLeaves2008RakPacketLogger; its own targets bound where provable, library-internal ones listed as not followed), bytes equal, not counted"
+    }
+  },
   "exact": [
+    "0041a250",
+    "0041a410",
+    "0041a530",
+    "0041b1e0",
+    "0041b310",
+    "0041b3d0",
     "00427b00",
     "0042acb0",
     "0042adb0",
@@ -314,18 +1559,44 @@
     "0042ae40",
     "0042b130",
     "0042b350",
+    "00432a70",
+    "00442c50",
+    "00442c80",
+    "00442c90",
+    "00442ce0",
+    "00442db0",
+    "00442df0",
+    "00442f20",
+    "00442f70",
     "004496f0",
     "00449720",
     "0044a1a0",
-    "0044a1c0"
+    "0044a1c0",
+    "0044aa70",
+    "0044ab30",
+    "0044b9a0",
+    "0044be40",
+    "0049ed90",
+    "0049f180",
+    "007ef7d0",
+    "007ef860",
+    "007fadf0",
+    "007fae10"
   ],
-  "exact_count": 13,
+  "exact_count": 38,
   "pending_build_only": [
     "00427a20",
     "0044a170"
   ],
   "not_counted": {
-    "00449460": "MFC inline ~CWaitCursor instance (not an app-class body); prefix bytes checked only"
+    "00449460": "MFC inline ~CWaitCursor instance (not an app-class body); prefix bytes checked only",
+    "instances": "ATL / boost / STL / RakNet bodies proven by bytes and targets (see instances)"
+  },
+  "left": {
+    "CIDEDocManager 0044abd0": "calls through the play template (+0x24) and throwPendingPlayError; CIDEDocManager is not natively declared yet (CRobloxApp TU)",
+    "0044bbf0": "tail-jump [[ecx+0x58]+0x24] -> getPlayDocument; owner class (app / doc manager) not declared",
+    "RenderStatsItem (CRobloxWnd::RenderStatsItem, vtable 0081a32c)": "Stats::Item subclass; 0045f570 reads frame counters 0097288c/00972890/00972894 and children +0x158..+0x170 not yet derived",
+    "DHTMLWindowService (vtable 0080efd4)": "Instance service in the same TU as Marshaller; its per-thread Marshaller map (0096cec4, mutex 0096cee4, 0041b6f0) and descriptors not recovered"
   },
   "vtables": {
     "??_7CRbxDocTemplate@@6B@": {
@@ -334,9 +1605,9 @@
       "slots": {
         "0": "?GetRuntimeClass@CMultiDocTemplate@@UBEPAUCRuntimeClass@@XZ = 0x6a11d2 (mfc90.dll!?GetRuntimeClass@CMultiDocTemplate@@UBEPAUCRuntimeClass@@XZ)",
         "1": "??_ECRbxDocTemplate@@UAEPAXI@Z = 0x44a1a0 (own row (??_G))",
-        "2": "?Serialize@CObject@@UAEXAAVCArchive@@@Z = 0x70bdf0 (inline body, bytes equal (ICF-shared copy))",
-        "3": "?AssertValid@CObject@@UBEXXZ = 0x47d410 (inline body, bytes equal (ICF-shared copy))",
-        "4": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z = 0x70bdf0 (inline body, bytes equal (ICF-shared copy))",
+        "2": "?Serialize@CObject@@UAEXAAVCArchive@@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "3": "?AssertValid@CObject@@UBEXXZ = 0x47d410 (instance (bytes equal, targets verified))",
+        "4": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
         "5": "?OnCmdMsg@CDocTemplate@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z = 0x6a11d8 (mfc90.dll!?OnCmdMsg@CDocTemplate@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z)",
         "6": "?OnFinalRelease@CCmdTarget@@UAEXXZ = 0x6a0ef6 (mfc90.dll!?OnFinalRelease@CCmdTarget@@UAEXXZ)",
         "7": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z = 0x6a069e (mfc90.dll!?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z)",
@@ -377,9 +1648,9 @@
       "slots": {
         "0": "?GetRuntimeClass@CMultiDocTemplate@@UBEPAUCRuntimeClass@@XZ = 0x6a11d2 (mfc90.dll!?GetRuntimeClass@CMultiDocTemplate@@UBEPAUCRuntimeClass@@XZ)",
         "1": "??_ECRbxPlayDocTemplate@@UAEPAXI@Z = 0x44a1c0 (own row (??_G))",
-        "2": "?Serialize@CObject@@UAEXAAVCArchive@@@Z = 0x70bdf0 (inline body, bytes equal (ICF-shared copy))",
-        "3": "?AssertValid@CObject@@UBEXXZ = 0x47d410 (inline body, bytes equal (ICF-shared copy))",
-        "4": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z = 0x70bdf0 (inline body, bytes equal (ICF-shared copy))",
+        "2": "?Serialize@CObject@@UAEXAAVCArchive@@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
+        "3": "?AssertValid@CObject@@UBEXXZ = 0x47d410 (instance (bytes equal, targets verified))",
+        "4": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z = 0x70bdf0 (instance (bytes equal, targets verified))",
         "5": "?OnCmdMsg@CDocTemplate@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z = 0x6a11d8 (mfc90.dll!?OnCmdMsg@CDocTemplate@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z)",
         "6": "?OnFinalRelease@CCmdTarget@@UAEXXZ = 0x6a0ef6 (mfc90.dll!?OnFinalRelease@CCmdTarget@@UAEXXZ)",
         "7": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z = 0x6a069e (mfc90.dll!?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z)",
@@ -425,6 +1696,60 @@
         "4": "?GetTypeInfo@EventHandler@@UAGJIKPAPAUITypeInfo@@@Z = 0x42ae30 (own row)",
         "5": "?GetIDsOfNames@EventHandler@@UAGJABU_GUID@@PAPA_WIKPAJ@Z = 0x42ae40 (own row)",
         "6": "?Invoke@EventHandler@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z = 0x42b130 (own row)"
+      }
+    },
+    "??_7CRobloxModule@@6B@": {
+      "address": "0x816a28",
+      "rtti": ".?AVCRobloxModule@@",
+      "slots": {
+        "0": "??_ECRobloxModule@@UAEPAXI@Z = 0x44be40 (own row (??_G))",
+        "1": "?Lock@CAtlMfcModule@ATL@@UAEJXZ = 0x44b950 (instance (bytes equal, targets verified))",
+        "2": "?Unlock@CAtlMfcModule@ATL@@UAEJXZ = 0x44b960 (instance (bytes equal, targets verified))",
+        "3": "?GetLockCount@CAtlMfcModule@ATL@@UAEJXZ = 0x44b970 (instance (bytes equal, targets verified))",
+        "4": "?GetGITPtr@CAtlModule@ATL@@UAEJPAPAUIGlobalInterfaceTable@@@Z = 0x44b900 (instance (bytes equal, targets verified))",
+        "5": "?AddCommonRGSReplacements@?$CAtlModuleT@VCAtlMfcModule@ATL@@@ATL@@UAEJPAUIRegistrarBase@@@Z = 0x44b980 (instance (bytes equal, targets verified))"
+      }
+    },
+    "??_7Marshaller@@6B@": {
+      "address": "0x80eccc",
+      "rtti": ".?AVMarshaller@@",
+      "slots": {
+        "0": "?ProcessWindowMessage@Marshaller@@UAEHPAUHWND__@@IIJAAJK@Z = 0x41b1e0 (own row)",
+        "1": "??_EMarshaller@@UAEPAXI@Z = 0x41b3d0 (own row (??_G))",
+        "2": "?GetWindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAEP6GJPAUHWND__@@IIJ@ZXZ = 0x41a400 (instance (bytes equal, targets verified))",
+        "3": "?OnFinalMessage@Marshaller@@UAEXPAUHWND__@@@Z = 0x432a70 (own row)"
+      }
+    },
+    "??_7RBXImage@@6B@": {
+      "address": "0x8157c0",
+      "rtti": ".?AVRBXImage@@",
+      "slots": {
+        "0": "??_ERBXImage@@UAEPAXI@Z = 0x442f20 (own row (??_G))"
+      }
+    },
+    "??_7Exposer@@6B@": {
+      "address": "0x822d3c",
+      "rtti": ".?AVExposer@@",
+      "slots": {
+        "0": "??_EExposer@@UAEPAXI@Z = 0x49ed90 (own row (??_G))",
+        "1": "?OnAttach@PacketLogger@@UAEXPAVRakPeerInterface@@@Z = 0x645830 (library instance (bytes equal))",
+        "2": "?OnDetach@PluginInterface@@UAEXPAVRakPeerInterface@@@Z = 0x70bdf0 (library instance (bytes equal))",
+        "3": "?OnStartup@PluginInterface@@UAEXPAVRakPeerInterface@@@Z = 0x70bdf0 (library instance (bytes equal))",
+        "4": "?Update@PacketLogger@@UAEXPAVRakPeerInterface@@@Z = 0x70bdf0 (library instance (bytes equal))",
+        "5": "?OnReceive@PluginInterface@@UAE?AW4PluginReceiveResult@@PAVRakPeerInterface@@PAUPacket@@@Z = 0x49ed50 (library instance (bytes equal))",
+        "6": "?OnShutdown@PluginInterface@@UAEXPAVRakPeerInterface@@@Z = 0x70bdf0 (library instance (bytes equal))",
+        "7": "?OnCloseConnection@PluginInterface@@UAEXPAVRakPeerInterface@@USystemAddress@@@Z = 0x6ad2a0 (library instance (bytes equal))",
+        "8": "?OnDirectSocketSend@PacketLogger@@UAEXPBDIUSystemAddress@@@Z = 0x4bae70 (library instance (bytes equal))",
+        "9": "?OnDirectSocketReceive@PacketLogger@@UAEXPBDIUSystemAddress@@@Z = 0x4baf80 (library instance (bytes equal))",
+        "10": "?OnInternalPacket@PacketLogger@@UAEXPAUInternalPacket@@IUSystemAddress@@I_N@Z = 0x4bb090 (inherited: = .?AVPacketLogger@@ vtable 0x825724 slot 10)",
+        "11": "?LogHeader@PacketLogger@@UAEXXZ = 0x4baa50 (library instance (bytes equal))",
+        "12": "?WriteLog@PacketLogger@@UAEXPBD@Z = 0x4baa70 (library instance (bytes equal))",
+        "13": "?SetPrintID@PacketLogger@@UAEX_N@Z = 0x4baa90 (library instance (bytes equal))",
+        "14": "?SetPrintAcks@PacketLogger@@UAEX_N@Z = 0x4baaa0 (library instance (bytes equal))",
+        "15": "?SetPrefix@PacketLogger@@UAEXPBD@Z = 0x4bade0 (library instance (bytes equal))",
+        "16": "?SetSuffix@PacketLogger@@UAEXPBD@Z = 0x4bae10 (library instance (bytes equal))",
+        "17": "?AddToLog@PacketLogger@@MAEXPBD@Z = 0x4baa60 (library instance (bytes equal))",
+        "18": "?UserIDTOString@PacketLogger@@MAEPADE@Z = 0x4badb0 (library instance (bytes equal))"
       }
     },
     "RobloxCrashReporter (original only)": {
