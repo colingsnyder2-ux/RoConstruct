@@ -1,0 +1,172 @@
+{
+  "schema": 1,
+  "bundle": "992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2",
+  "seq": 20,
+  "state": "parked",
+  "source_repo": "mewpokemons/RoConstruct",
+  "source_branch": "claude/optimistic-shannon-0xccuy",
+  "previous_tip": "6e7c7a12ddddd6ba4cb51b231798113ef6db984e",
+  "reviewed_tip": "ed7040891007dc8125d6e5b672a4d44127299c8a",
+  "source_files": {
+    "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp": {
+      "sha256": "2520f7860e4fb82ece9f9fc711f638be9088c3d7b0641cc7fd5d5f52cc0d8851",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp"
+    },
+    "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp": {
+      "sha256": "f42e7202ba6cd4b657619410b6712ecfcb3c8eb73286627f4316c4c01487bf19",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp"
+    },
+    "rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp": {
+      "sha256": "dec0c04ea9397b27cd2c1059bdda51930dd18c8fd72f8c38b859859a5549cb99",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp"
+    },
+    "rebuild/2008-06/native-classes/RenderSceneBase2008.cpp": {
+      "sha256": "619e623fa6686de95ba64620a55656d5d8cbc7218a849b8a4f8d4ad56978a3f5",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp"
+    },
+    "rebuild/2008-06/native-classes/RenderSceneNew2008.cpp": {
+      "sha256": "0cb6fd0c4a6903de83bbcc0a548222becc763813bacef031b5ed915da4c67015",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/RenderSceneNew2008.cpp"
+    },
+    "rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp": {
+      "sha256": "d39d2ddf6553d02e2ca588bc9f4af2e6ae791317177fc3113ce9a2a2e7eb94b3",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp"
+    },
+    "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp": {
+      "sha256": "eabadcd5285af8b8be27d27972e6d37e5037fbed295c1c87928cc82f3ed1c446",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp"
+    },
+    "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp": {
+      "sha256": "4027e4eabf31e97bf31b281100943005f28808e52fa9616f571f9b4914f193f1",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp"
+    },
+    "rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp": {
+      "sha256": "3faad390bd8be55b246a004c320e774abcf5dd6855e89f0af34fc20818622f80",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp"
+    },
+    "rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp": {
+      "sha256": "e2f3fe826181b66f7f41f103144b10884a958e65bbbfdeddae7d7f4cd08d0dda",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp"
+    },
+    "rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp": {
+      "sha256": "be59a592ca444a798c6d04ff6706b67b01685d9034b12c33323b79067de894fe",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp"
+    },
+    "rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp": {
+      "sha256": "910aef8b33f2658dac0a41448f988c53120d45533f419b9a2b9d3ccd09a3ec26",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp"
+    },
+    "rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h": {
+      "sha256": "b8b7b900832d5605465f9903d7e22ef3a6214ae3a957180b9603787239ff52ba",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h"
+    },
+    "rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h": {
+      "sha256": "374a0e655348004a9c0d663c4d8e660008b106871540c58a0a47ded7d4ba5895",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h"
+    },
+    "rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h": {
+      "sha256": "3b1848bc252f67098b4b6c471c312b9dc44d5b0ea1f72952b84cd88ecf2a450a",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h"
+    },
+    "rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h": {
+      "sha256": "c7a3aaf9d4b99782c09925abb2c2cbd5135d2adb1e378a5aa152c1bb3f2c0561",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h"
+    },
+    "rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h": {
+      "sha256": "963b1594662c88d88527e6dd0ac96367596fc34e35981d89c68a0ab61c9fb0d7",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h"
+    },
+    "rebuild/2008-06/native-headers/RenderLib/RenderSceneRender2008.h": {
+      "sha256": "78e36abbf89f9eb395b05555590710e3da65426b23f08a31ed7b245dbdd069a3",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneRender2008.h"
+    },
+    "rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h": {
+      "sha256": "dd1bdeec3ee58da6f291eac9d5ca7a1ede3863ee3aa9bbb7a489026ecdb98d6d",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h"
+    },
+    "rebuild/2008-06/native-headers/ViewNew/BevelMesh.h": {
+      "sha256": "3feab9f0a46012be9dd493040ec4fb5388e8ff12c7941f0390c0f17cbdf157c4",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/BevelMesh.h"
+    },
+    "rebuild/2008-06/native-headers/ViewNew/QuadVolume.h": {
+      "sha256": "7d94e660ee57665753c96579f613f831c2ca2888041d889687468924d8931898",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h"
+    },
+    "rebuild/2008-06/native-headers/ViewNew/QuadVolumeFace.h": {
+      "sha256": "de40ab62a2c8e21fffcfb03bfded2c4b39040d52751a8d16a060ea7c45529bdc",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/QuadVolumeFace.h"
+    },
+    "rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h": {
+      "sha256": "9fe56c002fcea64fa33f1409e586079588ef0e9b7d9c0ff885d10e0b706885b3",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h"
+    },
+    "rebuild/2008-06/tests/NativeOgreRbxNodeLayout.cpp": {
+      "sha256": "15cde2f789a77b5167ccee91be1246a63dbcc29831f0d8be56fc3d6eb97d6671",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/tests/NativeOgreRbxNodeLayout.cpp"
+    },
+    "rebuild/2008-06/tests/NativeOgreRbxSceneManagerLayout.cpp": {
+      "sha256": "40cdcacec3e93f33a9ebb06c3deadfc70dcf4394dbbc5cc30874c885cea5ec96",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/tests/NativeOgreRbxSceneManagerLayout.cpp"
+    },
+    "rebuild/2008-06/tests/NativeRenderSceneLayout.cpp": {
+      "sha256": "443e0dc8e2ae730fadcfcfaa31431110062b806c6c605c86e21ba97cac9ba850",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/tests/NativeRenderSceneLayout.cpp"
+    },
+    "rebuild/2008-06/tests/record_native_client_proxy.py": {
+      "sha256": "dcb5d660f126763aeda8420081823b455c4443ef6702b2170b0120be4eaec166",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/tests/record_native_client_proxy.py"
+    },
+    "rebuild/2008-06/tests/record_native_ogre_rbx_node.py": {
+      "sha256": "5f755bf4ade92a529719834ae63cea4a643c7357e7b7d93892fc141d178d58a7",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/tests/record_native_ogre_rbx_node.py"
+    },
+    "rebuild/2008-06/tests/record_native_ogre_scene_manager.py": {
+      "sha256": "c6143c2288c1e8f9ca61a1449d81d31a60deec41b9d22da15e212b8fe677578f",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/tests/record_native_ogre_scene_manager.py"
+    },
+    "rebuild/2008-06/tests/record_native_render_scene.py": {
+      "sha256": "34522207d9d19b1120de88834363e3cf244d81e071982439932842492ecd1b5d",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/tests/record_native_render_scene.py"
+    },
+    "rebuild/2008-06/tests/record_native_viewnew.py": {
+      "sha256": "a6a02a6f508faec99ba909c448ee8d755b8dc7409e76ed3ab482d978e164b124",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/tests/record_native_viewnew.py"
+    },
+    "work/2008-06/shared-layouts/network-client-proxy-working.json": {
+      "sha256": "a05dc795c523ed5f3f7bd8b1db99ccdfa600e096be66690f091f401195117f86",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/work/2008-06/shared-layouts/network-client-proxy-working.json"
+    },
+    "work/2008-06/shared-layouts/ogre-rbx-node-working.json": {
+      "sha256": "3cf62e385e1d347690ee48cb1978a8081debf79a432f6f767c054991b3a665a2",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/work/2008-06/shared-layouts/ogre-rbx-node-working.json"
+    },
+    "work/2008-06/shared-layouts/ogre-scene-manager-working.json": {
+      "sha256": "42e78e8f7ef714d453771ad89fbdac4bcc6eb3b0a9e3b8c7e42c79c593cf27e8",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/work/2008-06/shared-layouts/ogre-scene-manager-working.json"
+    },
+    "work/2008-06/shared-layouts/render-scene-working.json": {
+      "sha256": "08b28bd96486525a1497208396f7dce01f5a798f23466863ca8dce687db040c8",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/work/2008-06/shared-layouts/render-scene-working.json"
+    },
+    "work/2008-06/shared-layouts/viewnew-working.json": {
+      "sha256": "5ef3a51a0ce3cae1dc2d8efe267265947fe89f2454081caaad0092eecaaddba6",
+      "archive": "drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/work/2008-06/shared-layouts/viewnew-working.json"
+    }
+  },
+  "excluded_paths": {
+    "work/2008-06/TANDEM.md": "Outside draft allowlist; retained in immutable donor Git history"
+  },
+  "blockers": [
+    "Ogre manager receipt depends on generated RbxSceneManagerPendingDecls.h (hash supplied, content absent from changed donor snapshot); pending-build-only rows must remain excluded. Canonical OgreRbxSky/RbxSky2008.h dependency is absent and its owner has an active lease.",
+    "RenderScene receipt explicitly leaves ViewBase destructor pending on missing MaterialFactory declaration and ViewRbxGfx dependent on Workspace/DataModel/Lighting owner declarations; no mixed mutable header proof accepted.",
+    "ViewNew and scene-node donor receipts are inactive claims. Need isolated compilation against reviewed dependency/header versions and fresh complete call/data/ABI proof before canonical replacement. Native selection/runtime/server acceptance unproven.",
+    "Network ClientProxy donor records zero exact functions; layout evidence alone cannot promote a provider."
+  ],
+  "scope": "Read-only donor triage and immutable delta archive; no donor scripts executed, no canonical native source/header edits, no runtime selection or server credit.",
+  "canonical_base": "8f5ad36df4e0b55df9d7cff321d6524f38856739",
+  "prior_queue": "18 immutable bundles; all 14 prior pending packets unchanged",
+  "excluded_snapshots": [
+    "138d3a09c8"
+  ],
+  "retained_restoration": "318da49dcc"
+}
