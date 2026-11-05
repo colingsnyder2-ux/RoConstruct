@@ -1,0 +1,41 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "current_run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-135622-0161a2a8",
+  "current_result_sha256": "c7a94b0d16f50645aeef737e5fdbf61395f86616873430b8d1ed82833793858e",
+  "explicit_inputs_rehashed": 328,
+  "changed_inputs": [],
+  "link_blockers": [
+    "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+  ],
+  "duplicates": [],
+  "primary_evidence": {
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-extents-evidence-20261105\\evidence.json": "4a37a1d5c7fdde616c3c302203dcc3b32d24a384e90212a7680caaeb0b88d71a",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-writer-evidence-20261105\\evidence.json": "ae5b9771665bc80640dbbfee7c7621323291d2abc54fb8c25d80e453fc64803e",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-vista-abi-20261105\\contracts.txt": "1eaf4846df691d0cc074541fb1e5be020f84b1a0b47497615db24ab0d6486638",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-vista-abi-20261105\\inputs.json": "210c53844cc4a18b2786bf8f079ca2e23934f33ab9ed81d63f5a2eab5fea508f"
+  },
+  "original_debug_record": {
+    "path": "d:\\Roblox\\Releases\\2008.06.17\\bin\\Release\\Roblox.pdb",
+    "guid": "11AE806B-23B8-4CB0-A191-E30ED910D995",
+    "age": 8,
+    "nearby_original_pdb_files": [],
+    "scope": "Locator from the verified PE; PDB is not available or authenticated."
+  },
+  "resume_actions": [
+    "Acquire version-proven original June 2008 Axis source/include/compiler context before a new render experiment.",
+    "Acquire provider-bearing VCWorkspace declaration/TU or matching PDB compiland context before a new writer experiment.",
+    "Preserve three-rejected-hypothesis budgets, saved exact providers, and the cumulative archive.",
+    "When a justified provider passes exact body/data/call checks, replay the latest explicit command with only guarded changes.",
+    "After successful link, verify actual map/PE provider selection, ABI/EH and required runtime gates before activation."
+  ],
+  "independent_next_work": [
+    "Dragger geometry/tail contracts and actual helper availability",
+    "Axis MouseCommand/MegaDragger lifetime provider contracts"
+  ],
+  "executed": false,
+  "activation": false,
+  "gated_swaps": 0,
+  "server_credit": 0
+}

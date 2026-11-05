@@ -1,0 +1,29 @@
+{
+  "0x47d410": [
+    "0047d410 ret "
+  ],
+  "0x615780": [
+    "00615780 mov dword ptr [ecx], 0x8439fc"
+  ],
+  "0x615a20": [
+    "00615a20 push esi",
+    "00615a21 mov esi, ecx",
+    "00615a23 lea ecx, [esi + 4]",
+    "00615a26 mov dword ptr [esi], 0x8439fc",
+    "00615a2c mov dword ptr [ecx], 0x8439e0",
+    "00615a32 call 0x47d410",
+    "00615a37 test byte ptr [esp + 8], 1",
+    "00615a3c je 0x615a47",
+    "00615a3e push esi",
+    "00615a3f call 0x6a067a",
+    "00615a44 add esp, 4",
+    "00615a47 mov eax, esi",
+    "00615a49 pop esi",
+    "00615a4a ret 4",
+    "00615a4d int3 ",
+    "00615a4e int3 ",
+    "00615a4f int3 ",
+    "00615a50 push -1",
+    "00615a52 push 0x7d8f62"
+  ]
+}

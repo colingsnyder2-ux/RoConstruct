@@ -1,0 +1,23 @@
+{
+  "swap_target": "CRobloxDoc diagnostic closure",
+  "baseline_receipt": "work/2008-06/native-doc-relinks/20261105-133112-e038d1b8/result.json",
+  "baseline_commit": "package e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "hypotheses": [
+    "Explicit Workspace specialization follows original cache/map shape; exact first trial",
+    "Unchanged ActiveDocument canonical body; exact first trial"
+  ],
+  "metrics": {
+    "compiled_units": 2,
+    "exact_code_data": 2,
+    "rejected_hypotheses": 0,
+    "selected": 0,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "blockers": [
+    "Indirect invalid-parameter calls in Workspace; separate import binding proof",
+    "ActiveDocument virtual update/shared-count disposal calls and EH ABI require separate proof",
+    "Parent must review additive objects and collision-free isolated link"
+  ],
+  "next_gate": "Parent guarded additive provider selection; no activation"
+}

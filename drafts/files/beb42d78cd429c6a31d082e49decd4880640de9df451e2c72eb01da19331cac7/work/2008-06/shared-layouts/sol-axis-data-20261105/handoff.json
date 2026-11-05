@@ -1,0 +1,47 @@
+{
+  "status": "parked",
+  "compile_count": 0,
+  "source_shared_archive_edits": 0,
+  "input_count": 329,
+  "input_drift": [],
+  "weak_rule": "All observed E->G entries have search=2 LIBRARY; no unconditional ALIAS claim. Current _E definitions and selected fallback must be checked in successful link/map.",
+  "unresolved_render_slots": [
+    {
+      "table": "0084a594",
+      "index": 2,
+      "offset": 8,
+      "target": "00640f30",
+      "symbol": "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z"
+    },
+    {
+      "table": "0084a594",
+      "index": 3,
+      "offset": 12,
+      "target": "00641040",
+      "symbol": "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z"
+    }
+  ],
+  "missing_inputs": [
+    "successful selected PE/map (current failed diagnostic supplies none)",
+    "reviewed render provider bodies",
+    "transitive ABI/EH and indirect dispatch/runtime proof; generic EH failure retained"
+  ],
+  "next_bounded_action": "Parent recover the two named render providers using original secondary-this basis; serialize link only after provider readiness, then prove actual _E/_G resolution and selected vtable/RTTI/string pointers. No new hypothesis or compile authorized here.",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "saved_object_sha256": "e9f53666cd11d3c15c7985b8b24c11821d448840c2df2d3d66f28dda6bdbac7c",
+  "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "preserved_generic_eh": {
+    "path": "work/2008-06/shared-layouts/sol-axis-ctor-20261105/eh.json",
+    "sha256": "3257ed3c403876bc92ed50a2ebcca8c19ca9689940b51d0ec7b083ca7ffbbff0",
+    "errors": [
+      "('??1?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UAE@XZ', '??1MouseCommand@RBX@@UAE@XZ', '0x615780')"
+    ]
+  },
+  "task_hashes": {
+    "bindings.json": "3a9b8ecfed88028f5bb06c3c42bd77d2d45a28700256cb338db1cb384e3128df",
+    "evidence.py": "604d1c79188d6b8b38d3a704a512cab6bfe6eb970cbf9cf495cc2a2040e44d4b",
+    "finalize.py": "0af91126eb0cc7951355822f1545ac31dea919013a83d8a51d900ad009a0a1a1",
+    "original.json": "49bd0e5ef73c08ec35a8e9324553b7cbfc1d68260b1f95190cddc334afaf28b0",
+    "slots.txt": "9e01c22bca3b132bb9143f1a2fc88c151e60f4c624ff1ffd3649a10fbc1c23ea"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-axis-virtual-20261105\\AxisMoveToolRenderPrecise.cpp",
+      "checks": [
+        {
+          "addr": "00640f30",
+          "symbol": "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z"
+        },
+        {
+          "addr": "00641040",
+          "symbol": "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z"
+        }
+      ]
+    }
+  ]
+}

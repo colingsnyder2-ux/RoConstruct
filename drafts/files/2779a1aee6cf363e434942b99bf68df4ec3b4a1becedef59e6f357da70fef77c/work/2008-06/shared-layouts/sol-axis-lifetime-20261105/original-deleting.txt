@@ -1,0 +1,29 @@
+== 00615a20 45 bytes unit=RBX::MouseCommand
+00615a20  push esi
+00615a21  mov esi, ecx
+00615a23  lea ecx, [esi + 4]
+00615a26  mov dword ptr [esi], 0x8439fc
+00615a2c  mov dword ptr [ecx], 0x8439e0
+00615a32  call 0x47d410  ; fn_0047d410 [unit? boost::iostreams::Uoutput::V?$chain::?$chain_client]
+00615a37  test byte ptr [esp + 8], 1
+00615a3c  je 0x615a47
+00615a3e  push esi
+00615a3f  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+00615a44  add esp, 4
+00615a47  mov eax, esi
+00615a49  pop esi
+00615a4a  ret 4
+== 00640760 30 bytes unit=RBX::AxisMoveTool
+00640760  push esi
+00640761  mov esi, ecx
+00640763  call 0x640620  ; fn_00640620 [unit? RBX::AxisMoveTool]
+00640768  test byte ptr [esp + 8], 1
+0064076d  je 0x640778
+0064076f  push esi
+00640770  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+00640775  add esp, 4
+00640778  mov eax, esi
+0064077a  pop esi
+0064077b  ret 4
+== 0047d410 1 bytes unit=boost::iostreams::Uoutput::V?$chain::?$chain_client
+0047d410  ret 

@@ -1,0 +1,44 @@
+Original vptrs first; current COFF pairings are obligations, not selected ownership.
+table | subobject | slot | byte offset | original target | prototype | COFF name | normalized matching providers / definitions
+0x84a5ac | +0 | 0 | 0 | 0x640780 | const Name& getName() const | ?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UBEABVName@2@XZ | 1/1
+0x84a5ac | +0 | 1 | 4 | 0x640e20 | MouseCommand* onMouseDown(const UIEvent&) | ?onMouseDown@AxisMoveTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z | 1/1
+0x84a5ac | +0 | 2 | 8 | 0x641160 | void onMouseIdle(const UIEvent&) | ?onMouseIdle@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z | 1/1
+0x84a5ac | +0 | 3 | 12 | 0x6404b0 | void onMouseHover(const UIEvent&) | ?onMouseHover@ArrowToolBase@RBX@@MAEXABVUIEvent@2@@Z | 1/1
+0x84a5ac | +0 | 4 | 16 | 0x5c72e0 | MouseCommand* onKeyDown(const UIEvent&) | ?onKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z | 34/34
+0x84a5ac | +0 | 5 | 20 | 0x5f2310 | MouseCommand* onPeekKeyDown(const UIEvent&) | ?onPeekKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z | 32/32
+0x84a5ac | +0 | 6 | 24 | 0x640800 | void onMouseMove(const UIEvent&) | ?onMouseMove@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z | 1/1
+0x84a5ac | +0 | 7 | 28 | 0x70bdf0 | void onMouseDelta(const UIEvent&) | ?onMouseDelta@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z | 34/34
+0x84a5ac | +0 | 8 | 32 | 0x6406a0 | MouseCommand* onMouseUp(const UIEvent&) | ?onMouseUp@AxisMoveTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z | 1/1
+0x84a5ac | +0 | 9 | 36 | 0x615820 | void capture() | ?capture@MouseCommand@RBX@@MAEXXZ | 1/2
+0x84a5ac | +0 | 10 | 40 | 0x5a0150 | void releaseCapture() | ?releaseCapture@MouseCommand@RBX@@MAEXXZ | 34/34
+0x84a5ac | +0 | 11 | 44 | 0x5a04a0 | void cancel() | ?cancel@MouseCommand@RBX@@MAEXXZ | 34/34
+0x84a5ac | +0 | 12 | 48 | 0x640760 | virtual ~MouseCommand() deleting wrapper void*(unsigned int) | ??_EAxisMoveTool@RBX@@UAEPAXI@Z | 1/1
+0x84a5ac | +0 | 13 | 52 | 0x640700 | MouseCommand* isSticky() const | ?isSticky@AxisMoveTool@RBX@@UBEPAVMouseCommand@2@XZ | 1/1
+0x84a5ac | +0 | 14 | 56 | 0x615a50 | TextureId getCursorId() const | ?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ | 2/2
+0x84a5ac | +0 | 15 | 60 | 0x6405f0 | const std::string getCursorName() const | ?getCursorName@AxisMoveTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ | 1/1
+0x84a594 | +4 | 0 | 0 | 0x60a2f0 | bool shouldRender2d() const | ?shouldRender2d@IRenderable@RBX@@MBE_NXZ | 49/49
+0x84a594 | +4 | 1 | 4 | 0x60a2f0 | bool shouldRender3dAdorn() const | ?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ | 42/42
+0x84a594 | +4 | 2 | 8 | 0x640f30 | void render2d(Adorn*) | ?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z | 0/0
+0x84a594 | +4 | 3 | 12 | 0x641040 | void render3dAdorn(Adorn*) | ?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z | 0/0
+0x84a594 | +4 | 4 | 16 | 0x458e90 | void render3dSelect(Adorn*, SelectState) | ?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z | 43/43
+0x8439fc | +0 | 0 | 0 | 0x6a16be | const Name& getName() const | __purecall | 0/0
+0x8439fc | +0 | 1 | 4 | 0x5c72e0 | MouseCommand* onMouseDown(const UIEvent&) | ?onMouseDown@MouseCommand@RBX@@UAEPAV12@ABVUIEvent@2@@Z | 19/19
+0x8439fc | +0 | 2 | 8 | 0x70bdf0 | void onMouseIdle(const UIEvent&) | ?onMouseIdle@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z | 25/25
+0x8439fc | +0 | 3 | 12 | 0x70bdf0 | void onMouseHover(const UIEvent&) | ?onMouseHover@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z | 17/17
+0x8439fc | +0 | 4 | 16 | 0x5c72e0 | MouseCommand* onKeyDown(const UIEvent&) | ?onKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z | 34/34
+0x8439fc | +0 | 5 | 20 | 0x5f2310 | MouseCommand* onPeekKeyDown(const UIEvent&) | ?onPeekKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z | 32/32
+0x8439fc | +0 | 6 | 24 | 0x70bdf0 | void onMouseMove(const UIEvent&) | ?onMouseMove@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z | 31/31
+0x8439fc | +0 | 7 | 28 | 0x70bdf0 | void onMouseDelta(const UIEvent&) | ?onMouseDelta@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z | 34/34
+0x8439fc | +0 | 8 | 32 | 0x5a0140 | MouseCommand* onMouseUp(const UIEvent&) | ?onMouseUp@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z | 29/29
+0x8439fc | +0 | 9 | 36 | 0x615820 | void capture() | ?capture@MouseCommand@RBX@@MAEXXZ | 1/2
+0x8439fc | +0 | 10 | 40 | 0x5a0150 | void releaseCapture() | ?releaseCapture@MouseCommand@RBX@@MAEXXZ | 34/34
+0x8439fc | +0 | 11 | 44 | 0x5a04a0 | void cancel() | ?cancel@MouseCommand@RBX@@MAEXXZ | 34/34
+0x8439fc | +0 | 12 | 48 | 0x615a20 | virtual ~MouseCommand() deleting wrapper void*(unsigned int) | ??_EMouseCommand@RBX@@UAEPAXI@Z | 2/2
+0x8439fc | +0 | 13 | 52 | 0x416690 | MouseCommand* isSticky() const | ?isSticky@MouseCommand@RBX@@UBEPAV12@XZ | 34/34
+0x8439fc | +0 | 14 | 56 | 0x615a50 | TextureId getCursorId() const | ?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ | 2/2
+0x8439fc | +0 | 15 | 60 | 0x5a0f80 | const std::string getCursorName() const | ?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ | 27/27
+0x8439e0 | +4 | 0 | 0 | 0x60a2f0 | bool shouldRender2d() const | ?shouldRender2d@IRenderable@RBX@@MBE_NXZ | 49/49
+0x8439e0 | +4 | 1 | 4 | 0x60a2f0 | bool shouldRender3dAdorn() const | ?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ | 42/42
+0x8439e0 | +4 | 2 | 8 | 0x70bdf0 | void render2d(Adorn*) | ?render2d@IRenderable@RBX@@UAEXPAVAdorn@2@@Z | 49/49
+0x8439e0 | +4 | 3 | 12 | 0x70bdf0 | void render3dAdorn(Adorn*) | ?render3dAdorn@IRenderable@RBX@@UAEXPAVAdorn@2@@Z | 35/35
+0x8439e0 | +4 | 4 | 16 | 0x458e90 | void render3dSelect(Adorn*, SelectState) | ?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z | 43/43

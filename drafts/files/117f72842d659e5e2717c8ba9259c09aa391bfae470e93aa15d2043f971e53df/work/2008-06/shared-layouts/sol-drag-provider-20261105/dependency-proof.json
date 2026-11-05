@@ -1,0 +1,30 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/DraggerLineMove.cpp",
+      "checks": [
+        {
+          "addr": "006106c0",
+          "symbol": "?safeMoveAlongLine@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z",
+          "calls": [
+            {
+              "offset": 346,
+              "target": "00610580",
+              "symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/MoveHandleRadius.cpp",
+      "checks": [
+        {
+          "addr": "00677140",
+          "symbol": "?moveHandleRadius@RBX@@YAMABVVector3@G3D@@0@Z",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "jobs": [
+    {
+      "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\IRenderableLifetime.cpp",
+      "checks": [
+        {
+          "addr": "0047d410",
+          "symbol": "??1IRenderable@RBX@@QAE@XZ",
+          "calls": []
+        }
+      ],
+      "ranges": [],
+      "layouts": []
+    },
+    {
+      "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-irenderable-20261105\\IRenderable.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

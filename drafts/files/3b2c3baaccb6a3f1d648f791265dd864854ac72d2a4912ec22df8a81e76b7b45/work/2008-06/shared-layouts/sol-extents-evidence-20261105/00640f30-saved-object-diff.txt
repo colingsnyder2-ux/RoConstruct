@@ -1,0 +1,30 @@
+?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z 265 267
+     fld dword ptr [eax + 8]
+     fstp dword ptr [esp + 0x24]
+     call <r>
+  -  fld dword ptr [eax]
+  +  fld dword ptr [eax + 4]
+     lea ecx, [esi - 4]
+     fchs 
+  -  fstp dword ptr [esp + 0x28]
+  -  fld dword ptr [eax + 4]
+  +  fld dword ptr [eax + 8]
+     fchs 
+  -  fstp dword ptr [esp + 0x2c]
+  -  fld dword ptr [eax + 8]
+  +  fld dword ptr [eax]
+     lea eax, [esp + 0x1c]
+     fchs 
+     push eax
+  +  fstp dword ptr [esp + 0x2c]
+  +  fxch st(1)
+  +  fstp dword ptr [esp + 0x30]
+     fstp dword ptr [esp + 0x34]
+     call <r>
+     test al, al
+  -  je 0x102
+  +  je 0x104
+     fld dword ptr [esp + 0x28]
+     fadd dword ptr [esp + 0x1c]
+     fld dword ptr [esp + 0x2c]
+  ...

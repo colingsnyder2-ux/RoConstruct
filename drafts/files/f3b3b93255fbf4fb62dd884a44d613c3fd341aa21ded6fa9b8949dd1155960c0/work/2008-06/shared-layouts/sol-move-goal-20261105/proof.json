@@ -1,0 +1,50 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\DraggerMoveGoal.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-135158-96093b38\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00610180",
+        "requested_symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+        "status": "exact",
+        "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+        "score": 100,
+        "target_size": 236,
+        "object_size": 236,
+        "target_sha256": "c2db417046d862051730d7f6008e84e83065b2ac238494016a5760bf53bacbd2",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8513284,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 102,
+              "target": "005dee10",
+              "symbol": "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 205,
+              "target": "0060fef0",
+              "symbol": "?movePrimitives@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 1.939994
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

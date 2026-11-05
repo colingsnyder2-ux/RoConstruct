@@ -1,0 +1,492 @@
+current ??1VistaAPIs@RBX@@QAE@XZ
+reloc offsets [10]
+0000 mov eax, dword ptr [ecx + 4]
+0003 test eax, eax
+0005 je 0xe
+0007 push eax
+0008 call dword ptr [0]
+000e ret 
+current ?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z
+reloc offsets [30, 52, 69, 83, 102, 126, 145, 184, 201, 234, 246]
+0000 sub esp, 0x9c
+0006 push ebx
+0007 mov ebx, dword ptr [esp + 0xa8]
+000e push 0x90
+0013 lea eax, [esp + 0x14]
+0017 push 0
+0019 push eax
+001a mov byte ptr [ebx], 0
+001d call 0x22
+0022 add esp, 0xc
+0025 lea ecx, [esp + 0xc]
+0029 push ecx
+002a mov dword ptr [esp + 0x10], 0x94
+0032 call dword ptr [0]
+0038 cmp dword ptr [esp + 0x10], 6
+003d jb 0xfb
+0043 call dword ptr [0]
+0049 lea edx, [esp + 4]
+004d push edx
+004e push 0x18
+0050 push eax
+0051 call dword ptr [0]
+0057 test eax, eax
+0059 je 0xfb
+005f mov ecx, dword ptr [esp + 4]
+0063 push edi
+0064 mov edi, dword ptr [0]
+006a lea eax, [esp + 0xc]
+006e push eax
+006f push 0
+0071 push 0
+0073 push 0x19
+0075 push ecx
+0076 call edi
+0078 test eax, eax
+007a jne 0xef
+007c call dword ptr [0]
+0082 cmp eax, 0x7a
+0085 jne 0xef
+0087 mov edx, dword ptr [esp + 0xc]
+008b push esi
+008c push edx
+008d push 0
+008f call dword ptr [0]
+0095 mov esi, eax
+0097 test esi, esi
+0099 je 0xee
+009b mov ecx, dword ptr [esp + 0x10]
+009f mov edx, dword ptr [esp + 0xc]
+00a3 lea eax, [esp + 0x10]
+00a7 push eax
+00a8 push ecx
+00a9 push esi
+00aa push 0x19
+00ac push edx
+00ad call edi
+00af test eax, eax
+00b1 je 0xe7
+00b3 mov eax, dword ptr [esi]
+00b5 push eax
+00b6 call dword ptr [0]
+00bc mov cl, byte ptr [eax]
+00be mov eax, dword ptr [esi]
+00c0 dec cl
+00c2 movzx edx, cl
+00c5 push edx
+00c6 push eax
+00c7 call dword ptr [0]
+00cd mov eax, dword ptr [eax]
+00cf cmp eax, 0x2000
+00d4 jae 0xdb
+00d6 mov byte ptr [ebx], 1
+00d9 jmp 0xe7
+00db cmp eax, 0x3000
+00e0 sbb cl, cl
+00e2 add cl, 3
+00e5 mov byte ptr [ebx], cl
+00e7 push esi
+00e8 call dword ptr [0]
+00ee pop esi
+00ef mov edx, dword ptr [esp + 8]
+00f3 push edx
+00f4 call dword ptr [0]
+00fa pop edi
+00fb xor eax, eax
+00fd pop ebx
+00fe add esp, 0x9c
+0104 ret 8
+current ??0VistaAPIs@RBX@@QAE@XZ
+reloc offsets [4, 16, 28, 35]
+0000 push esi
+0001 mov esi, ecx
+0003 push 0
+0008 mov dword ptr [esi], 0
+000e call dword ptr [0]
+0014 mov dword ptr [esi + 4], eax
+0017 test eax, eax
+0019 je 0x29
+001b push 0
+0020 push eax
+0021 call dword ptr [0]
+0027 mov dword ptr [esi], eax
+0029 mov eax, esi
+002b pop esi
+002c ret 
+current ?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z
+reloc offsets []
+0000 mov eax, dword ptr [ecx]
+0002 test eax, eax
+0004 jne 0xe
+0006 mov eax, 0x80004001
+000b ret 0x10
+000e jmp eax
+current ?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z
+reloc offsets [3, 40, 50, 65, 72, 104, 125, 131, 191, 210, 217, 226, 249, 259, 278, 286, 295, 314, 331, 351, 453, 477, 502, 508, 519]
+0000 push -1
+0002 push 0
+0007 mov eax, dword ptr fs:[0]
+000d push eax
+000e mov dword ptr fs:[0], esp
+0015 sub esp, 0x12c
+001b push esi
+001c push edi
+001d mov dword ptr [esp + 0x10], 0
+0025 xor esi, esi
+0027 push 0
+002c mov dword ptr [esp + 0x1c], esi
+0030 call dword ptr [0]
+0036 mov edi, eax
+0038 mov dword ptr [esp + 0x1c], edi
+003c test edi, edi
+003e je 0x52
+0040 push 0
+0045 push edi
+0046 call dword ptr [0]
+004c mov esi, eax
+004e mov dword ptr [esp + 0x18], esi
+0052 lea eax, [esp + 0xb]
+0056 push eax
+0057 lea ecx, [esp + 0x1c]
+005b push ecx
+005c mov dword ptr [esp + 0x144], 0
+0067 call 0x6c
+006c cmp byte ptr [esp + 0xb], 1
+0071 jne 0x1b5
+0077 lea edx, [esp + 0x20]
+007b push edx
+007c push 0
+0081 call dword ptr [0]
+0087 mov dword ptr [esp + 0x14], 0
+008f test esi, esi
+0091 je 0x1b5
+0097 lea eax, [esp + 0x14]
+009b push eax
+009c push 0
+009e push 0x8000
+00a3 lea ecx, [esp + 0x2c]
+00a7 push ecx
+00a8 call esi
+00aa cmp eax, 0x80004001
+00af je 0x1b5
+00b5 mov edx, dword ptr [esp + 0x14]
+00b9 push edx
+00ba lea ecx, [esp + 0x10]
+00be call 0xc3
+00c3 mov eax, dword ptr [esp + 0x14]
+00c7 push eax
+00c8 mov byte ptr [esp + 0x140], 1
+00d0 call dword ptr [0]
+00d6 push 8
+00d8 push 0
+00dd lea ecx, [esp + 0x14]
+00e1 call 0xe6
+00e6 cmp byte ptr [esp + 0x148], 0
+00ee je 0x130
+00f0 mov ecx, dword ptr [esp + 0xc]
+00f4 push 0
+00f6 push ecx
+00f7 call dword ptr [0]
+00fd test eax, eax
+00ff jne 0x130
+0101 call dword ptr [0]
+0107 cmp eax, 0xb7
+010c je 0x130
+010e mov esi, dword ptr [esp + 0x144]
+0115 push 0
+011a mov ecx, esi
+011c call dword ptr [0]
+0122 lea ecx, [esp + 0xc]
+0126 call 0x12b
+012b jmp 0x200
+0130 mov edx, dword ptr [esp + 0xc]
+0134 push edx
+0135 lea ecx, [esp + 0x14]
+0139 call 0x13e
+013e lea ecx, [esp + 0x10]
+0142 mov byte ptr [esp + 0x13c], 2
+014a call 0x14f
+014f mov eax, dword ptr [esp + 0x10]
+0153 mov esi, dword ptr [esp + 0x144]
+015a push eax
+015b mov ecx, esi
+015d call dword ptr [0]
+0163 mov eax, dword ptr [esp + 0x10]
+0167 add eax, -0x10
+016a mov byte ptr [esp + 0x13c], 1
+0172 lea ecx, [eax + 0xc]
+0175 or edx, 0xffffffff
+0178 lock xadd dword ptr [ecx], edx
+017c dec edx
+017d test edx, edx
+017f jg 0x18b
+0181 mov ecx, dword ptr [eax]
+0183 mov edx, dword ptr [ecx]
+0185 push eax
+0186 mov eax, dword ptr [edx + 4]
+0189 call eax
+018b mov eax, dword ptr [esp + 0xc]
+018f add eax, -0x10
+0192 mov byte ptr [esp + 0x13c], 0
+019a lea ecx, [eax + 0xc]
+019d or edx, 0xffffffff
+01a0 lock xadd dword ptr [ecx], edx
+01a4 dec edx
+01a5 test edx, edx
+01a7 jg 0x200
+01a9 mov ecx, dword ptr [eax]
+01ab mov edx, dword ptr [ecx]
+01ad push eax
+01ae mov eax, dword ptr [edx + 4]
+01b1 call eax
+01b3 jmp 0x200
+01b5 movzx edx, byte ptr [esp + 0x148]
+01bd lea ecx, [esp + 0x30]
+01c1 push ecx
+01c2 neg edx
+01c4 push 0
+01c9 sbb edx, edx
+01cb push 0
+01cd and edx, 0x8000
+01d3 push 0
+01d5 or edx, 0x23
+01d8 push edx
+01d9 push 0
+01db call dword ptr [0]
+01e1 mov esi, dword ptr [esp + 0x144]
+01e8 mov ecx, esi
+01ea test eax, eax
+01ec jne 0x1f5
+01ee lea eax, [esp + 0x30]
+01f2 push eax
+01f3 jmp 0x1fa
+01f5 push 0
+01fa call dword ptr [0]
+0200 test edi, edi
+0202 je 0x20b
+0204 push edi
+0205 call dword ptr [0]
+020b mov ecx, dword ptr [esp + 0x134]
+0212 pop edi
+0213 mov eax, esi
+0215 pop esi
+0216 mov dword ptr fs:[0], ecx
+021d add esp, 0x138
+0223 ret 
+current __unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$3
+reloc offsets [7]
+0000 lea ecx, [ebp - 0x130]
+0006 jmp 0xb
+current __unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$1
+reloc offsets [7]
+0000 lea ecx, [ebp - 0x134]
+0006 jmp 0xb
+current __unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$0
+reloc offsets [7]
+0000 lea ecx, [ebp - 0x128]
+0006 jmp 0xb
+current __ehhandler$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z
+reloc offsets [1, 6]
+0000 mov eax, 0
+0005 jmp 0xa
+variant ??1VistaAPIs@RBX@@QAE@XZ
+reloc offsets [10]
+0000 mov eax, dword ptr [ecx + 4]
+0003 test eax, eax
+0005 je 0xe
+0007 push eax
+0008 call dword ptr [0]
+000e ret 
+variant ??0VistaAPIs@RBX@@QAE@XZ
+reloc offsets [4, 16, 28, 35]
+0000 push esi
+0001 mov esi, ecx
+0003 push 0
+0008 mov dword ptr [esi], 0
+000e call dword ptr [0]
+0014 mov dword ptr [esi + 4], eax
+0017 test eax, eax
+0019 je 0x29
+001b push 0
+0020 push eax
+0021 call dword ptr [0]
+0027 mov dword ptr [esi], eax
+0029 mov eax, esi
+002b pop esi
+002c ret 
+variant ?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z
+reloc offsets []
+0000 mov eax, dword ptr [ecx]
+0002 test eax, eax
+0004 jne 0xe
+0006 mov eax, 0x80004001
+000b ret 0x10
+000e jmp eax
+variant ?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z
+reloc offsets [3, 36, 46, 59, 66, 92, 113, 119, 178, 197, 204, 213, 235, 245, 264, 272, 281, 300, 317, 337, 439, 460, 485, 491, 506]
+0000 push -1
+0002 push 0
+0007 mov eax, dword ptr fs:[0]
+000d push eax
+000e mov dword ptr fs:[0], esp
+0015 sub esp, 0x12c
+001b push esi
+001c push edi
+001d xor edi, edi
+001f mov dword ptr [esp + 0x10], edi
+0023 push 0
+0028 mov dword ptr [esp + 0x18], edi
+002c call dword ptr [0]
+0032 mov dword ptr [esp + 0x18], eax
+0036 cmp eax, edi
+0038 je 0x4a
+003a push 0
+003f push eax
+0040 call dword ptr [0]
+0046 mov dword ptr [esp + 0x14], eax
+004a lea eax, [esp + 0xb]
+004e push eax
+004f lea ecx, [esp + 0x18]
+0053 push ecx
+0054 mov dword ptr [esp + 0x144], edi
+005b call 0x60
+0060 cmp byte ptr [esp + 0xb], 1
+0065 jne 0x1a7
+006b lea edx, [esp + 0x20]
+006f push edx
+0070 push 0
+0075 call dword ptr [0]
+007b mov eax, dword ptr [esp + 0x14]
+007f mov dword ptr [esp + 0x1c], edi
+0083 cmp eax, edi
+0085 je 0x1a7
+008b lea ecx, [esp + 0x1c]
+008f push ecx
+0090 push edi
+0091 push 0x8000
+0096 lea edx, [esp + 0x2c]
+009a push edx
+009b call eax
+009d cmp eax, 0x80004001
+00a2 je 0x1a7
+00a8 mov eax, dword ptr [esp + 0x1c]
+00ac push eax
+00ad lea ecx, [esp + 0x10]
+00b1 call 0xb6
+00b6 mov ecx, dword ptr [esp + 0x1c]
+00ba push ecx
+00bb mov byte ptr [esp + 0x140], 1
+00c3 call dword ptr [0]
+00c9 push 8
+00cb push 0
+00d0 lea ecx, [esp + 0x14]
+00d4 call 0xd9
+00d9 cmp byte ptr [esp + 0x148], 0
+00e1 je 0x122
+00e3 mov edx, dword ptr [esp + 0xc]
+00e7 push edi
+00e8 push edx
+00e9 call dword ptr [0]
+00ef test eax, eax
+00f1 jne 0x122
+00f3 call dword ptr [0]
+00f9 cmp eax, 0xb7
+00fe je 0x122
+0100 mov esi, dword ptr [esp + 0x144]
+0107 push 0
+010c mov ecx, esi
+010e call dword ptr [0]
+0114 lea ecx, [esp + 0xc]
+0118 call 0x11d
+011d jmp 0x1ef
+0122 mov eax, dword ptr [esp + 0xc]
+0126 push eax
+0127 lea ecx, [esp + 0x14]
+012b call 0x130
+0130 lea ecx, [esp + 0x10]
+0134 mov byte ptr [esp + 0x13c], 2
+013c call 0x141
+0141 mov ecx, dword ptr [esp + 0x10]
+0145 mov esi, dword ptr [esp + 0x144]
+014c push ecx
+014d mov ecx, esi
+014f call dword ptr [0]
+0155 mov eax, dword ptr [esp + 0x10]
+0159 add eax, -0x10
+015c mov byte ptr [esp + 0x13c], 1
+0164 lea edx, [eax + 0xc]
+0167 or ecx, 0xffffffff
+016a lock xadd dword ptr [edx], ecx
+016e dec ecx
+016f test ecx, ecx
+0171 jg 0x17d
+0173 mov ecx, dword ptr [eax]
+0175 mov edx, dword ptr [ecx]
+0177 push eax
+0178 mov eax, dword ptr [edx + 4]
+017b call eax
+017d mov eax, dword ptr [esp + 0xc]
+0181 add eax, -0x10
+0184 mov byte ptr [esp + 0x13c], 0
+018c lea ecx, [eax + 0xc]
+018f or edx, 0xffffffff
+0192 lock xadd dword ptr [ecx], edx
+0196 dec edx
+0197 test edx, edx
+0199 jg 0x1ef
+019b mov ecx, dword ptr [eax]
+019d mov edx, dword ptr [ecx]
+019f push eax
+01a0 mov eax, dword ptr [edx + 4]
+01a3 call eax
+01a5 jmp 0x1ef
+01a7 movzx edx, byte ptr [esp + 0x148]
+01af lea ecx, [esp + 0x30]
+01b3 push ecx
+01b4 neg edx
+01b6 push 0
+01bb sbb edx, edx
+01bd push edi
+01be and edx, 0x8000
+01c4 push edi
+01c5 or edx, 0x23
+01c8 push edx
+01c9 push edi
+01ca call dword ptr [0]
+01d0 mov esi, dword ptr [esp + 0x144]
+01d7 mov ecx, esi
+01d9 test eax, eax
+01db jne 0x1e4
+01dd lea eax, [esp + 0x30]
+01e1 push eax
+01e2 jmp 0x1e9
+01e4 push 0
+01e9 call dword ptr [0]
+01ef mov eax, dword ptr [esp + 0x18]
+01f3 cmp eax, edi
+01f5 je 0x1fe
+01f7 push eax
+01f8 call dword ptr [0]
+01fe mov ecx, dword ptr [esp + 0x134]
+0205 pop edi
+0206 mov eax, esi
+0208 pop esi
+0209 mov dword ptr fs:[0], ecx
+0210 add esp, 0x138
+0216 ret 
+variant __unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$3
+reloc offsets [7]
+0000 lea ecx, [ebp - 0x130]
+0006 jmp 0xb
+variant __unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$1
+reloc offsets [7]
+0000 lea ecx, [ebp - 0x134]
+0006 jmp 0xb
+variant __unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$0
+reloc offsets [7]
+0000 lea ecx, [ebp - 0x12c]
+0006 jmp 0xb
+variant __ehhandler$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z
+reloc offsets [1, 6]
+0000 mov eax, 0
+0005 jmp 0xa

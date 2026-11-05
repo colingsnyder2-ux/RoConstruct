@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/DraggerSafePlace.cpp",
+      "checks": [
+        {
+          "addr": "00610580",
+          "symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z"
+        }
+      ]
+    }
+  ]
+}

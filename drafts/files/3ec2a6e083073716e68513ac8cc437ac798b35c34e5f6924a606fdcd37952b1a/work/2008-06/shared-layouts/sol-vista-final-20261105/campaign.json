@@ -1,0 +1,56 @@
+{
+  "swap_target": "CRobloxDoc diagnostic closure",
+  "baseline_receipt": "work/2008-06/native-doc-relinks/20261105-133846-f21c78c7/result.json",
+  "hypotheses": [
+    {
+      "id": 1,
+      "status": "rejected carried over",
+      "reason": "inline retains four duplicate COMDATs"
+    },
+    {
+      "id": 2,
+      "status": "rejected carried over",
+      "reason": "remove four bodies regresses retained caller and EH/data"
+    },
+    {
+      "id": 3,
+      "status": "rejected",
+      "compile_count": 1,
+      "reason": "forceinline ctor/dtor/wrapper, remove only GetIntegrity: three Vista definitions still emitted, caller and unwind changed"
+    }
+  ],
+  "status": "parked after three rejections",
+  "no_archive_produced": true,
+  "no_loss_guard": false,
+  "original_contract": {
+    "cache": "005a7ea0 size548",
+    "ctor": "inlined 005a7ec5..005a7eee LoadLibraryA/GetProcAddress",
+    "GetIntegrity": "direct 005a7f07 to005a7780; explicit this pushed; header __stdcall",
+    "wrapper": "inlined null test005a7f2f indirect005a7f48",
+    "dtor": "inline FreeLibrary cleanup; standalone005a7770 size15 thiscall"
+  },
+  "missing_contract": "Source ownership mechanism retaining original cache+EH while suppressing three emitted standalone definitions; original standalone ctor/wrapper identity remains unproved. No ABI/layout changes permitted.",
+  "resume_queue": [
+    "Parent choose independently evidenced alternative provider ownership strategy; no further compile on this blocker without new evidence",
+    "Prove ctor/wrapper standalone targets and actual native provider identities independently",
+    "Parent retains cumulative link ownership; no global or canonical edits"
+  ],
+  "metrics": {
+    "distinct_compiles": 1,
+    "retained_bodies": 72,
+    "unchanged_retained_bodies": 70,
+    "changed_retained_bodies": 2,
+    "remaining_vista_definitions": 3,
+    "new_inactive_exact": 0,
+    "selected_executable": 0,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "inputs": {
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-vista-final-20261105\\FileSystem.obj": "5c10e55e79ec4096dedbbccb9873739d4569b7bee7b34de9ed646c57967be65c",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\layer-rbxgs\\FileSystem.command.json": "2bcfdf70a8944e6eddf95267d9d237dda7ea424385fc943032d5041c4b274214",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-vista-final-20261105\\FileSystem.cpp": "92d81501648e82858bc0119084d9d9f1028a67337e974b964a4dacc7bd62d805",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-vista-owner-20261105\\original-asm.txt": "eb1f7d8f83591fb7059eaf369e944c3fea92d062a0e2bae23888879c039ee7c2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/MegaDraggerMovement.cpp",
+      "ranges": [
+        "0060dd00-0060e500"
+      ]
+    },
+    {
+      "source": "native-classes/MoveHandleHit.cpp",
+      "ranges": [
+        "00665000-00666000"
+      ]
+    },
+    {
+      "source": "native-classes/DragPrimitiveBounds.cpp",
+      "ranges": [
+        "0060f000-00611000"
+      ]
+    }
+  ]
+}

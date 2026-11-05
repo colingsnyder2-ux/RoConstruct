@@ -1,0 +1,110 @@
+== 00640620 114 bytes unit=RBX::AxisMoveTool
+00640620  push -1
+00640622  push 0x7daa23  ; fn_007daa23 [unit? seg_007d0000]
+00640627  mov eax, dword ptr fs:[0]
+0064062d  push eax
+0064062e  mov dword ptr fs:[0], esp
+00640635  push ecx
+00640636  push esi
+00640637  mov esi, ecx
+00640639  push edi
+0064063a  mov dword ptr [esp + 8], esi
+0064063e  lea ecx, [esi + 0x24]
+00640641  mov dword ptr [esp + 0x14], 1
+00640649  mov dword ptr [esi + 0x48], 0x8282c4
+00640650  call dword ptr [0x802468]  ; MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
+00640656  mov edi, dword ptr [esi + 0x20]
+00640659  mov byte ptr [esp + 0x14], 0
+0064065e  test edi, edi
+00640660  je 0x640672
+00640662  mov ecx, edi
+00640664  call 0x60e700  ; fn_0060e700 [unit? RBX::BlockBlockContact]
+00640669  push edi
+0064066a  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+0064066f  add esp, 4
+00640672  mov ecx, esi
+00640674  mov dword ptr [esp + 0x14], 0xffffffff
+0064067c  call 0x615780  ; fn_00615780 [unit? RBX::VContentId::?$TypedPropertyDescriptor]
+00640681  mov ecx, dword ptr [esp + 0xc]
+00640685  pop edi
+00640686  pop esi
+00640687  mov dword ptr fs:[0], ecx
+0064068e  add esp, 0x10
+00640691  ret 
+== 0060e700 118 bytes unit=RBX::BlockBlockContact
+0060e700  push -1
+0060e702  push 0x7d8d73  ; fn_007d8d73 [unit? seg_007d0000]
+0060e707  mov eax, dword ptr fs:[0]
+0060e70d  push eax
+0060e70e  mov dword ptr fs:[0], esp
+0060e715  push ecx
+0060e716  push esi
+0060e717  mov esi, ecx
+0060e719  mov dword ptr [esp + 4], esi
+0060e71d  cmp byte ptr [esi + 0x20], 0
+0060e721  mov dword ptr [esp + 0x10], 1
+0060e729  jne 0x60e737
+0060e72b  lea eax, [esi + 8]
+0060e72e  push eax
+0060e72f  call 0x60ef30  ; fn_0060ef30 [unit? RBX::BlockBlockContact]
+0060e734  add esp, 4
+0060e737  lea ecx, [esi + 8]
+0060e73a  mov byte ptr [esp + 0x10], 0
+0060e73f  call 0x590550  ; fn_00590550 [unit? RBX::RootInstance]
+0060e744  mov ecx, dword ptr [esi + 4]
+0060e747  mov dword ptr [esp + 0x10], 0xffffffff
+0060e74f  pop esi
+0060e750  test ecx, ecx
+0060e752  je 0x60e767
+0060e754  lea edx, [ecx + 8]
+0060e757  or eax, 0xffffffff
+0060e75a  lock xadd dword ptr [edx], eax
+0060e75e  jne 0x60e767
+0060e760  mov edx, dword ptr [ecx]
+0060e762  mov eax, dword ptr [edx + 8]
+0060e765  call eax
+0060e767  mov ecx, dword ptr [esp + 4]
+0060e76b  mov dword ptr fs:[0], ecx
+0060e772  add esp, 0x10
+0060e775  ret 
+== 00590550 111 bytes unit=RBX::RootInstance
+00590550  push -1
+00590552  push 0x7d72e8  ; fn_007d72e8 [unit? seg_007d0000]
+00590557  mov eax, dword ptr fs:[0]
+0059055d  push eax
+0059055e  mov dword ptr fs:[0], esp
+00590565  push ecx
+00590566  push esi
+00590567  mov esi, ecx
+00590569  push edi
+0059056a  mov dword ptr [esp + 8], esi
+0059056e  mov eax, dword ptr [esi + 0xc]
+00590571  xor edi, edi
+00590573  mov dword ptr [esp + 0x14], edi
+00590577  cmp eax, edi
+00590579  je 0x59059a
+0059057b  mov ecx, dword ptr [esp + 8]
+0059057f  push ecx
+00590580  mov ecx, dword ptr [esi + 0x10]
+00590583  lea edx, [esi + 8]
+00590586  push edx
+00590587  push ecx
+00590588  push eax
+00590589  call 0x590390  ; fn_00590390 [unit? RBX::RootInstance]
+0059058e  mov edx, dword ptr [esi + 0xc]
+00590591  push edx
+00590592  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+00590597  add esp, 0x14
+0059059a  mov eax, dword ptr [esi]
+0059059c  push eax
+0059059d  mov dword ptr [esi + 0xc], edi
+005905a0  mov dword ptr [esi + 0x10], edi
+005905a3  mov dword ptr [esi + 0x14], edi
+005905a6  call 0x6a067a  ; MFC ??3@YAXPAX@Z
+005905ab  mov ecx, dword ptr [esp + 0x10]
+005905af  add esp, 4
+005905b2  pop edi
+005905b3  pop esi
+005905b4  mov dword ptr fs:[0], ecx
+005905bb  add esp, 0x10
+005905be  ret 

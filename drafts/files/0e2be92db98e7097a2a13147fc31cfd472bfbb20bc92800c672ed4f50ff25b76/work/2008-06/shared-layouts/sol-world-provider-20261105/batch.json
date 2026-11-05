@@ -1,0 +1,1 @@
+{"jobs":[{"source":"native-classes/WorkspaceServiceFactory.cpp","checks":[]},{"source":"native-classes/PhysicsServiceProvider.cpp","checks":[{"addr":"005e8ec0","symbol":"?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z"}]}]}

@@ -1,0 +1,72 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/MegaDraggerMovement.cpp",
+      "checks": [
+        {
+          "addr": "0060dd70",
+          "symbol": "?anyDragPartAlive@MegaDragger@RBX@@QAE_NXZ",
+          "calls": [
+            {
+              "offset": 4,
+              "target": "0060ead0",
+              "symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "0060e200",
+          "symbol": "?safeMoveAlongLine@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z",
+          "calls": [
+            {
+              "offset": 55,
+              "target": "0060eb30",
+              "symbol": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z"
+            },
+            {
+              "offset": 88,
+              "target": "006106c0",
+              "symbol": "?safeMoveAlongLine@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z"
+            },
+            {
+              "offset": 130,
+              "target": "00507d20",
+              "symbol": "?alignedFree@System@G3D@@SAXPAX@Z"
+            },
+            {
+              "offset": 241,
+              "target": "00507d20",
+              "symbol": "?alignedFree@System@G3D@@SAXPAX@Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/MoveHandleHit.cpp",
+      "checks": [
+        {
+          "addr": "00665880",
+          "symbol": "?hitMoveHandles@RBX@@YA_NABVExtents@1@ABVRay@G3D@@AAVVector3@4@AAW4NormalId@1@@Z",
+          "calls": [
+            {
+              "offset": 53,
+              "target": "00513e20",
+              "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 63,
+              "target": "00513220",
+              "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z"
+            },
+            {
+              "offset": 272,
+              "target": "006656b0",
+              "symbol": "?hitMoveHandlesInFrame@RBX@@YA_NABVExtents@1@ABVCoordinateFrame@G3D@@ABVRay@4@AAVVector3@4@AAW4NormalId@1@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

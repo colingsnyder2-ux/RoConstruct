@@ -1,0 +1,51 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/MegaDraggerMovement.cpp",
+      "checks": [
+        {
+          "addr": "0060dd70",
+          "symbol": "?anyDragPartAlive@MegaDragger@RBX@@QAE_NXZ"
+        },
+        {
+          "addr": "0060e200",
+          "symbol": "?safeMoveAlongLine@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/MoveHandleHit.cpp",
+      "checks": [
+        {
+          "addr": "00665680",
+          "symbol": "??1Sphere@G3D@@UAE@XZ"
+        },
+        {
+          "addr": "006656b0",
+          "symbol": "?hitMoveHandlesInFrame@RBX@@YA_NABVExtents@1@ABVCoordinateFrame@G3D@@ABVRay@4@AAVVector3@4@AAW4NormalId@1@@Z"
+        },
+        {
+          "addr": "00665880",
+          "symbol": "?hitMoveHandles@RBX@@YA_NABVExtents@1@ABVRay@G3D@@AAVVector3@4@AAW4NormalId@1@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/DragPrimitiveBounds.cpp",
+      "checks": [
+        {
+          "addr": "0060f340",
+          "symbol": "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z"
+        },
+        {
+          "addr": "0060f3d0",
+          "symbol": "?getPrimitives@DragUtilities@RBX@@SAXPBVInstance@2@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z"
+        },
+        {
+          "addr": "0060ff80",
+          "symbol": "?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z"
+        }
+      ]
+    }
+  ]
+}

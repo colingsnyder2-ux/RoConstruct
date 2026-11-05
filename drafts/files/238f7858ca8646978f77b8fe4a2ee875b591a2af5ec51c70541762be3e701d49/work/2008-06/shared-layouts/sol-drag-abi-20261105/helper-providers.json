@@ -1,0 +1,235 @@
+{
+  "manifest": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-135622-0161a2a8\\inputs.json",
+  "manifest_sha256": "32f9cbcf78f953aea7dbca30532ec0393383f230af797edf0b8f72e8b0cc86ba",
+  "scanned_inputs": 326,
+  "providers": [
+    {
+      "helper": "collectPrimitives",
+      "address": "0060f340",
+      "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133438-756ad181\\unit-002\\candidate.obj",
+      "input_sha256": "70ce681ca8e67b52fe71f6429ff72a33045b34b9ead641437530effcee09c05b",
+      "member": null,
+      "member_offset": 0,
+      "member_sha256": "70ce681ca8e67b52fe71f6429ff72a33045b34b9ead641437530effcee09c05b",
+      "symbol": "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+      "body_size": 139,
+      "body_sha256": "d6d1d1973d7d7adf7f37c06f3759881f50ec508c9880e174153d278cad2e84e3",
+      "original_size": 139,
+      "body_exact": true,
+      "data": [
+        [],
+        []
+      ],
+      "relocations": [
+        {
+          "offset": 11,
+          "kind": 6,
+          "symbol": "??_R0?AVPartInstance@RBX@@@8",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 16,
+          "kind": 6,
+          "symbol": "??_R0?AVInstance@RBX@@@8",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 24,
+          "kind": 20,
+          "symbol": "___RTDynamicCast",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 56,
+          "kind": 20,
+          "symbol": "?push_back@?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@QAEXABQAVPrimitive@RBX@@@Z",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 65,
+          "kind": 20,
+          "symbol": "?numChildren@Instance@RBX@@QBEIXZ",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 101,
+          "kind": 6,
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 114,
+          "kind": 20,
+          "symbol": "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 125,
+          "kind": 20,
+          "symbol": "?numChildren@Instance@RBX@@QBEIXZ",
+          "addend_hex": "00000000"
+        }
+      ]
+    },
+    {
+      "helper": "getPrimitives",
+      "address": "0060f3d0",
+      "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133438-756ad181\\unit-002\\candidate.obj",
+      "input_sha256": "70ce681ca8e67b52fe71f6429ff72a33045b34b9ead641437530effcee09c05b",
+      "member": null,
+      "member_offset": 0,
+      "member_sha256": "70ce681ca8e67b52fe71f6429ff72a33045b34b9ead641437530effcee09c05b",
+      "symbol": "?getPrimitives@DragUtilities@RBX@@SAXPBVInstance@2@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+      "body_size": 5,
+      "body_sha256": "e8ebd827d1f36d7cfa5e5220610aa6370284d1589989363f48ac40166362d449",
+      "original_size": 5,
+      "body_exact": true,
+      "data": [
+        [],
+        []
+      ],
+      "relocations": [
+        {
+          "offset": 1,
+          "kind": 20,
+          "symbol": "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+          "addend_hex": "00000000"
+        }
+      ]
+    },
+    {
+      "helper": "getPrimitives",
+      "address": "0060f3d0",
+      "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib",
+      "input_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+      "member": "DataModel.obj/",
+      "member_offset": 19973752,
+      "member_sha256": "b151171eb04575f142c5d1b9dcc32bab5cf90e89a014f77b2b84e674b559e662",
+      "symbol": "?getPrimitives@World@RBX@@QBEABV?$Array@PAVPrimitive@RBX@@@G3D@@XZ",
+      "body_size": 7,
+      "body_sha256": "72d99f9324c723ae8208a092b7a98621b035e5c3f8b01622b831b8eb2b305a91",
+      "original_size": 5,
+      "body_exact": false,
+      "data": [
+        [],
+        []
+      ],
+      "relocations": []
+    },
+    {
+      "helper": "anyPartAlive",
+      "address": "0060ead0",
+      "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib",
+      "input_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+      "member": "DragUtilities.obj",
+      "member_offset": 22672778,
+      "member_sha256": "400206004ed3d01dfa715c8cc9f9aef7dd2d0f1b70ae05530f4bdd12890aa62a",
+      "symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "body_size": 93,
+      "body_sha256": "919acd2a78be7188ce9aa8d39dafab9006b4b9c9d3bc53e411083b4ee3425cbe",
+      "original_size": 93,
+      "body_exact": true,
+      "data": [
+        [],
+        []
+      ],
+      "relocations": [
+        {
+          "offset": 24,
+          "kind": 6,
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 51,
+          "kind": 20,
+          "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 56,
+          "kind": 20,
+          "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+          "addend_hex": "00000000"
+        }
+      ]
+    },
+    {
+      "helper": "partsToPrimitives",
+      "address": "0060eb30",
+      "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib",
+      "input_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+      "member": "DragUtilities.obj",
+      "member_offset": 22672778,
+      "member_sha256": "400206004ed3d01dfa715c8cc9f9aef7dd2d0f1b70ae05530f4bdd12890aa62a",
+      "symbol": "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+      "body_size": 301,
+      "body_sha256": "f6f33754bc2322742d9e233d1ced3b4684c1185acc8bc5a72d0bd6807dc9c8c7",
+      "original_size": 301,
+      "body_exact": true,
+      "data": [
+        [],
+        []
+      ],
+      "relocations": [
+        {
+          "offset": 3,
+          "kind": 6,
+          "symbol": "__ehhandler$?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 63,
+          "kind": 6,
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 79,
+          "kind": 20,
+          "symbol": "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 130,
+          "kind": 20,
+          "symbol": "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 161,
+          "kind": 20,
+          "symbol": "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z",
+          "addend_hex": "00000000"
+        },
+        {
+          "offset": 174,
+          "kind": 20,
+          "symbol": "?getMyWorldFast@Workspace@RBX@@SAPAVWorld@2@PBVInstance@2@@Z",
+          "addend_hex": "00000000"
+        }
+      ]
+    },
+    {
+      "helper": "getPrimitives",
+      "address": "0060f3d0",
+      "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib",
+      "input_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+      "member": "SpatialHash.obj/",
+      "member_offset": 53001350,
+      "member_sha256": "d0a27b8a0ad48b8d894f6563843f0f57429a54a55a065315f8938db11152c217",
+      "symbol": "?getPrimitives@World@RBX@@QBEABV?$Array@PAVPrimitive@RBX@@@G3D@@XZ",
+      "body_size": 7,
+      "body_sha256": "72d99f9324c723ae8208a092b7a98621b035e5c3f8b01622b831b8eb2b305a91",
+      "original_size": 5,
+      "body_exact": false,
+      "data": [
+        [],
+        []
+      ],
+      "relocations": []
+    }
+  ],
+  "errors": [],
+  "scope": "Static actual input providers; no linker selection or transitive ABI claim"
+}

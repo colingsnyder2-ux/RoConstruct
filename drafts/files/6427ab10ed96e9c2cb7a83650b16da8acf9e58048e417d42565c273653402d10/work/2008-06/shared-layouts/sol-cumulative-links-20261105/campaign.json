@@ -1,0 +1,43 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "b251155ec6494e26ab16dd2d1c95bd95",
+  "current_run": "20261105-133112-e038d1b8",
+  "source_compiles": 0,
+  "inputs_changed": [],
+  "unresolved": [
+    "?getPrimitives@DragUtilities@RBX@@SAXPBVInstance@2@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+    "?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+    "?safeMoveAlongLine@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z",
+    "?anyDragPartAlive@MegaDragger@RBX@@QAE_NXZ",
+    "?hitMoveHandles@RBX@@YA_NABVExtents@1@ABVRay@G3D@@AAVVector3@4@AAW4NormalId@1@@Z",
+    "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+    "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+    "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+  ],
+  "duplicates": [
+    "??1VistaAPIs@RBX@@QAE@XZ",
+    "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+    "??0VistaAPIs@RBX@@QAE@XZ",
+    "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z"
+  ],
+  "preserved_owners": [
+    "ScriptContext",
+    "PartInstance",
+    "NewNullTool",
+    "ContentProvider",
+    "Math",
+    "WorldHelpers"
+  ],
+  "next_queue": [
+    "Vista declarations-only donor remainder",
+    "Workspace lookup specialization + active document provider",
+    "Axis drag helper closure",
+    "Axis render Extents ordering evidence",
+    "Workspace writer lifetime"
+  ],
+  "activation": false,
+  "gated_swaps": 0,
+  "server_credit": 0
+}

@@ -1,0 +1,28 @@
+{
+  "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeFileSystemFull.obj",
+  "sha256": "e2ddba88f4847bdf80bbfc8f57e1a84120249f874b58ddaf93772cbc0bf383f8",
+  "checks": [
+    {
+      "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+      "address": "005a7780",
+      "size": 263,
+      "exact": true,
+      "data_errors": []
+    },
+    {
+      "symbol": "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+      "address": "005a7ac0",
+      "size": 992,
+      "exact": true,
+      "data_errors": []
+    },
+    {
+      "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+      "address": "005a7770",
+      "size": 15,
+      "exact": true,
+      "data_errors": []
+    }
+  ],
+  "limitation": "Indirect calls, EH graph and original standalone ctor/dtor/wrapper contracts require separate proof; no runtime/gate claim."
+}

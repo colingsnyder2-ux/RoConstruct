@@ -1,0 +1,42 @@
+[
+  {
+    "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+    "donor_size": 15,
+    "native_size": 15,
+    "body_equal": true,
+    "relocations_equal": true,
+    "donor_section_flags": "0x60501020",
+    "native_section_flags": "0x60501020",
+    "first_difference": null
+  },
+  {
+    "symbol": "??0VistaAPIs@RBX@@QAE@XZ",
+    "donor_size": 45,
+    "native_size": 45,
+    "body_equal": true,
+    "relocations_equal": true,
+    "donor_section_flags": "0x60501020",
+    "native_section_flags": "0x60501020",
+    "first_difference": null
+  },
+  {
+    "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+    "donor_size": 263,
+    "native_size": 263,
+    "body_equal": true,
+    "relocations_equal": true,
+    "donor_section_flags": "0x60501020",
+    "native_section_flags": "0x60501020",
+    "first_difference": null
+  },
+  {
+    "symbol": "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+    "donor_size": 16,
+    "native_size": 16,
+    "body_equal": true,
+    "relocations_equal": true,
+    "donor_section_flags": "0x60501020",
+    "native_section_flags": "0x60501020",
+    "first_difference": null
+  }
+]

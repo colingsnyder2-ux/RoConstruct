@@ -1,0 +1,11 @@
+{
+  "base_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\member-step-1\\linked.lib",
+  "base_sha256": "8ef9dbeb5d4f5bc7699aa28e662638e286e431086b5b6a0229aaa1237ca1d580",
+  "private_archive_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+  "member": "FileSystem.obj",
+  "object_sha256": "c2a2e67926959fb08ac6fb1fa6221755f05e830b8dab270b00d3a3e2f511249a",
+  "unchanged_other_members": 266,
+  "normal_librarian": true,
+  "state": "PROPOSAL pending original call/EH/standalone contract review and parent isolated link",
+  "missing_providers": []
+}

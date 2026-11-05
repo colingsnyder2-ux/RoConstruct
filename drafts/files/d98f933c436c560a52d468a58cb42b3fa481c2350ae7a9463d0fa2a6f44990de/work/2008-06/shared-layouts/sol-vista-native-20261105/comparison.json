@@ -1,0 +1,60 @@
+{
+  "old": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeFileSystemFull.obj",
+  "new": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-135237-9f79a3ac\\unit-000\\candidate.obj",
+  "old_sha256": "e2ddba88f4847bdf80bbfc8f57e1a84120249f874b58ddaf93772cbc0bf383f8",
+  "new_sha256": "a15c50b49f478eb92869bfdb71b8f60ae908e8d518ad502a8d286b4f40af0365",
+  "retained_symbols": 296,
+  "changed": [],
+  "lost": [],
+  "lost_without_identical_donor": [],
+  "vista": [
+    {
+      "symbol": "??0VistaAPIs@RBX@@QAE@XZ",
+      "old_size": 45,
+      "new_size": 45,
+      "donor_size": 45,
+      "new_equal": true,
+      "donor_equal": true,
+      "old_selection": 1,
+      "new_selection": 2,
+      "donor_selection": 2
+    },
+    {
+      "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+      "old_size": 15,
+      "new_size": 15,
+      "donor_size": 15,
+      "new_equal": true,
+      "donor_equal": true,
+      "old_selection": 1,
+      "new_selection": 2,
+      "donor_selection": 2
+    },
+    {
+      "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+      "old_size": 263,
+      "new_size": 263,
+      "donor_size": 263,
+      "new_equal": true,
+      "donor_equal": true,
+      "old_selection": 1,
+      "new_selection": 2,
+      "donor_selection": 2
+    },
+    {
+      "symbol": "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+      "old_size": 16,
+      "new_size": 16,
+      "donor_size": 16,
+      "new_equal": true,
+      "donor_equal": true,
+      "old_selection": 1,
+      "new_selection": 2,
+      "donor_selection": 2
+    }
+  ],
+  "status": "PASS_NO_LOSS_COMDAT",
+  "next": "Parent isolated direct-object replacement and selected-provider audit; original ABI/EH/runtime gates remain.",
+  "retained_bytes": 5870,
+  "all_named_data_and_eh_relocations_equal": true
+}

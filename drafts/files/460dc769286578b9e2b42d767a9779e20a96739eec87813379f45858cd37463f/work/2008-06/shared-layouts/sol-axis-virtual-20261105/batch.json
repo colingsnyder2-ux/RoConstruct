@@ -1,0 +1,78 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/AxisMoveToolMethods.cpp",
+      "checks": [
+        {
+          "addr": "00640700",
+          "symbol": "?isSticky@AxisMoveTool@RBX@@UBEPAVMouseCommand@2@XZ"
+        },
+        {
+          "addr": "006406a0",
+          "symbol": "?onMouseUp@AxisMoveTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z"
+        },
+        {
+          "addr": "00641160",
+          "symbol": "?onMouseIdle@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolDown.cpp",
+      "checks": [
+        {
+          "addr": "00640d50",
+          "symbol": "?hitHandle@AxisMoveTool@RBX@@AAE_NABVUIEvent@2@AAVVector3@G3D@@AAW4NormalId@2@@Z"
+        },
+        {
+          "addr": "00640e20",
+          "symbol": "?onMouseDown@AxisMoveTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolMove.cpp",
+      "checks": [
+        {
+          "addr": "00640800",
+          "symbol": "?onMouseMove@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolRender.cpp",
+      "checks": [
+        {
+          "addr": "00640f30",
+          "symbol": "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z"
+        },
+        {
+          "addr": "00641040",
+          "symbol": "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolBounds.cpp",
+      "checks": [
+        {
+          "addr": "00640b40",
+          "symbol": "?bounds@AxisMoveTool@RBX@@AAE_NAAVExtents@2@@Z"
+        },
+        {
+          "addr": "006404c0",
+          "symbol": "?collectPart@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolNamed.cpp",
+      "checks": [
+        {
+          "addr": "00640780",
+          "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UBEABVName@2@XZ"
+        }
+      ]
+    }
+  ]
+}

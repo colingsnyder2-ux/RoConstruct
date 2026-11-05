@@ -1,0 +1,22 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "baseline_receipt": "work/2008-06/native-doc-relinks/20261105-134712-a99864f1/result.json",
+  "hypothesis": "Isolate existing genuine movePrimitivesGoal source: prior mixed-object disassembly showed no instruction differences; prior nonexact label not reproduced.",
+  "attempts": 1,
+  "rejected": 0,
+  "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\DraggerMoveGoal.cpp",
+  "source_sha256": "a2b4e22aa2afb1af098ed515acd6d906c35e5f6cdd6dfb9365b00f9766520ace",
+  "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-135158-96093b38\\unit-000\\candidate.obj",
+  "object_sha256": "2219e53bfb52723f3e8b5976222eb963505b7f900a098724205ab99e2b222e99",
+  "metrics": {
+    "compiles": 1,
+    "exact_bodies": 1,
+    "body_bytes": 236,
+    "data_bytes": 4,
+    "direct_calls_verified": 2,
+    "changed_inputs": 0
+  },
+  "next_gate": "Parent cumulative isolated link with additive object; static local COMDAT selection/data identity and complete ABI/runtime remain separate obligations.",
+  "frozen_sources_edited": false,
+  "session": "6ee04df998ee49e6ad151fb5655dbe1b"
+}

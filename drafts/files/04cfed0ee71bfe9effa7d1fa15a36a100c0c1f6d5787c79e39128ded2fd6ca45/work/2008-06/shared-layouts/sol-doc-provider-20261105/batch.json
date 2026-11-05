@@ -1,0 +1,22 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/WorkspaceServiceFactory.cpp",
+      "checks": [
+        {
+          "addr": "00490af0",
+          "symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/ActiveDocument.cpp",
+      "checks": [
+        {
+          "addr": "00405aa0",
+          "symbol": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z"
+        }
+      ]
+    }
+  ]
+}

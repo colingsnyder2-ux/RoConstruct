@@ -1,0 +1,61 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/AxisMoveToolMethods.cpp",
+      "checks": [
+        {
+          "addr": "00640700",
+          "symbol": "?isSticky@AxisMoveTool@RBX@@UBEPAVMouseCommand@2@XZ",
+          "calls": [
+            {
+              "offset": 27,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            },
+            {
+              "offset": 57,
+              "target": "00640560",
+              "symbol": "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/AxisMoveToolDown.cpp",
+      "checks": [
+        {
+          "addr": "00640d50",
+          "symbol": "?hitHandle@AxisMoveTool@RBX@@AAE_NABVUIEvent@2@AAVVector3@G3D@@AAW4NormalId@2@@Z",
+          "calls": [
+            {
+              "offset": 27,
+              "target": "00510960",
+              "symbol": "?inf@Vector3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 52,
+              "target": "00510960",
+              "symbol": "?inf@Vector3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 92,
+              "target": "00640b40",
+              "symbol": "?bounds@AxisMoveTool@RBX@@AAE_NAAVExtents@2@@Z"
+            },
+            {
+              "offset": 113,
+              "target": "00615d00",
+              "symbol": "?getUnitMouseRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z"
+            },
+            {
+              "offset": 142,
+              "target": "00665880",
+              "symbol": "?hitMoveHandles@RBX@@YA_NABVExtents@1@ABVRay@G3D@@AAVVector3@4@AAW4NormalId@1@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
