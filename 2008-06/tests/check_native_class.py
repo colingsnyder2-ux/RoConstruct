@@ -5,6 +5,7 @@ A method is exact when its bytes match with relocated fields masked and every ab
 of the original is a relocation in the native body (no hard-coded addresses).
 Profile: the CMainFrame recorders' flags (rbxgs recipe, MFC DLL, XTP 11.2.2 static headers).
 """
+import os
 import sys
 from pathlib import Path
 
@@ -13,12 +14,11 @@ sys.path.insert(0, str(ROOT))
 from roc import libs, match, rebuild  # noqa: E402
 
 source = ROOT / 'rebuild/2008-06' / sys.argv[1]
-out = ROOT / 'rebuild/2008-06/out/native-layouts'
+out = Path(os.environ['NATIVE_CHECK_OUT']).resolve() if os.environ.get('NATIVE_CHECK_OUT') else ROOT / 'rebuild/2008-06/out/native-layouts'
 out.mkdir(parents=True, exist_ok=True)
 recipe = libs.RECIPES['rbxgs']
 import re
 pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig', errors='replace'), re.M)
-import os
 if os.environ.get('NATIVE_FLAGS'):  # trial override; pin a winner in the source afterwards
     pinned = re.match(r'(.*)', os.environ['NATIVE_FLAGS'])
 headers = str(ROOT / 'rebuild/2008-06/native-headers')

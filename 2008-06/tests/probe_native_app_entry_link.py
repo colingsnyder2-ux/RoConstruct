@@ -10,11 +10,25 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
-from roc import rebuild
+from roc import match, rebuild
 
 # Compile/check each selected provider once. Checker's exit status alone does not
 # reject nonexact bodies, so require its complete per-method exact summary too.
 checks = [
+    ('native-classes/ThreadLogPath.cpp', ['00427890=?getLogPath@ThreadLogManager']),
+    ('native-classes/MainLogManagerState.cpp', []),
+    ('native-classes/ThreadLogFactory.cpp', ['0042a4f0=?currentThreadLogManager',
+     '0042a490=?initializeThreadLogs', '00428cf0=??_GLogManager', '00429300=??_GThreadLogManager']),
+    ('native-classes/LogManagerState.cpp', []),
+    ('native-classes/LogManagerGet.cpp', ['00427950=?getLog@LogManager']),
+    ('native-classes/MainLogProvider.cpp', ['0042a5c0=?provideLog@MainLogManager']),
+    ('native-classes/LogLifetime.cpp', ['005a6da0=??0Log@RBX', '005a6e60=??1Log@RBX', '005a6d10=?logTimeStamp']),
+    ('native-classes/LogWriteEntry.cpp', ['005a6ef0=?writeEntry@Log@RBX']),
+    ('native-classes/LogFormatTime.cpp', ['005a6c60=?formatTime@Log@RBX']),
+    ('native-classes/LogFormatMemory.cpp', ['005a6bc0=?formatMem@Log@RBX']),
+    ('native-classes/CRobloxReportView.cpp', ['00457a40=??0CRobloxReportView',
+     '00458b70=??1CRobloxReportView', '00455fd0=?OnCreate@CRobloxReportView',
+     '00456e60=?OnTimer@CRobloxReportView', '004589c0=?OnInitialUpdate@CRobloxReportView']),
     ('native-classes/CMainFrameMemoryLabels.cpp', ['0042ed20=?handle_42ed20@CMainFrame',
      '0042edd0=?handle_42edd0@CMainFrame']),
     ('native-classes/CChatPrompt.cpp', ['00411be0=??0CChatPrompt', '00412800=?bind@CChatPrompt']),
@@ -139,6 +153,11 @@ assert len({Path(source).stem for source, _ in checks}) == len(checks)
 started = time.monotonic()
 with ThreadPoolExecutor(max_workers=3) as pool:
     verification = list(pool.map(verify_provider, checks))
+raw = (ROOT / 'rebuild/2008-06/out/native-layouts/CheckLogManagerState.obj').read_bytes()
+sections, _, definitions, _ = match._coff_data_index(raw)
+offset, section = definitions['?loggingEnabled@@3_NA']
+original_base, original_image = match._image('2008-06')
+assert raw[sections[section][4] + offset] == original_image[0x92e486 - original_base] == 1
 print('sources:', len(checks), 'checked in', round(time.monotonic() - started, 2), 'seconds', flush=True)
 
 base = ROOT / 'rebuild/2008-06/out/native-current-audit'
@@ -172,7 +191,9 @@ for name in ('CRobloxView', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFi
              'CPropGridEvents', 'CPropGridInstances', 'CSelectionPropGrid', 'CRobloxViewInit', 'SelectionGroup',
              'ViewVerbs', 'InsertModelFromRobloxVerb', 'ChangeHistoryBase', 'ViewCommandRouting',
              'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'SettingsDialogShow', 'CSettingsDialog',
-             'CInstanceExplorer', 'CChatPrompt', 'CMainFrameMemoryLabels'):
+             'CInstanceExplorer', 'CChatPrompt', 'CMainFrameMemoryLabels', 'CRobloxReportView',
+             'LogLifetime', 'LogWriteEntry', 'LogFormatTime', 'LogFormatMemory', 'MainLogProvider', 'LogManagerGet',
+             'LogManagerState', 'ThreadLogFactory', 'ThreadLogPath', 'MainLogManagerState'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('ActiveDocViewRefresh', 'CDataModelPropGridUpdate', 'CSelectionCaptionUpdate'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
@@ -202,6 +223,15 @@ for name in ('AppFramework', 'CMainFrameShow'):
 for name in ('AppDocumentStartup', 'ApplicationExceptionLog', 'ErrorUploaderState',
              'ErrorUploaderConstructor', 'ErrorUploaderLifetime', 'ErrorUploaderCallback'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
+# Isolate the native Log provider without mutating the shared donor archive.
+donor_log_library = base / 'content-load-owner/linked.lib'
+native_log_library = base / 'content-without-donor-log.lib'
+code, log = rebuild.run(rebuild.toolchain(), 'lib',
+                        ['/nologo', '/remove:Log.obj', '/out:' + str(native_log_library), str(donor_log_library)], base)
+if code:
+    raise SystemExit('Unable to isolate donor Log.obj: ' + log)
+assert sum(Path(arg) == donor_log_library for arg in args) == 1
+args = [str(native_log_library) if Path(arg) == donor_log_library else arg for arg in args]
 object_names = {Path(arg).name.lower() for arg in args if arg.lower().endswith('.obj')}
 for item in verification:
     item['object_on_link_command'] = ('Check' + Path(item['source']).stem + '.obj').lower() in object_names
@@ -214,6 +244,8 @@ symbols = sorted(set(re.findall(r'unresolved external symbol "([^"]+)"', log)))
 duplicates = sorted(set(re.findall(r'error LNK2005: (.*)', log)))
 receipt = dict(link_exit=code, unresolved=symbols, count=len(symbols),
                duplicate_errors=duplicates, verification=verification,
+               donor_log_library_sha256=hashlib.sha256(donor_log_library.read_bytes()).hexdigest(),
+               native_log_library_sha256=hashlib.sha256(native_log_library.read_bytes()).hexdigest(),
                object_hashes={arg: hashlib.sha256((Path(arg) if Path(arg).is_absolute() else base / arg).read_bytes()).hexdigest()
                               for arg in args if arg.lower().endswith('.obj') and
                               (Path(arg) if Path(arg).is_absolute() else base / arg).exists()},

@@ -34,7 +34,6 @@ int CRobloxApp::Run()
 #include "CIDEDocManager.h"
 #include "CRenderSettings.h"
 class NativeAtlModule { public: HRESULT RegisterServer(BOOL, const CLSID*); }; // 0044bea0
-class LogManager { public: static void ReportException(const std::exception&); }; // 00428850
 class NativeClassRegistration { public: NativeClassRegistration(); };             // 005c3ca0
 
 extern CString applicationBaseUrlText;                // 0096dcf0

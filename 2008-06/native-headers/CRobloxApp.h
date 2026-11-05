@@ -2,33 +2,42 @@
 #include <afxwin.h>
 #include <string>
 #include <vector>
+#include <exception>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include "util/boost.hpp"
+#include "util/Log.h"
 
 // Log manager embedded in CRobloxApp at +0xa4 (constructed with "Roblox" by 0042a1c0).
-// Layout from that constructor: vptr 008104cc at +0; ThreadLogManager base at +4 with vptr
+// Layout from that constructor: ILogProvider vptr 008104cc at +0; LogManager base at +4 with vptr
 // 008104c0, +8 = 0, +c = GetCurrentThreadId(), +10 std::string name; then +2c = 0 and
 // +30 std::string. sizeof 0x4c, as CRobloxApp's next member sits at +0xf0.
-class ThreadLogManager {
+class LogManager {
 public:
-    explicit ThreadLogManager(const char* name);
-    virtual ~ThreadLogManager();
-private:
-    void* reserved4;       // +4 (0 after construction; role not recovered)
+    explicit LogManager(const char* name);
+    virtual ~LogManager();
+    virtual std::string getLogPath() = 0;
+    static void ReportException(const std::exception&);
+    RBX::Log* getLog();
+protected:
+    RBX::Log* log;         // +4, severity +0x20 and filename +0x24 read by destructor
     DWORD threadId;        // +8
     std::string name;      // +c
 };
 
-class LogManagerSink {    // vptr-only first base (008104cc)
+class ThreadLogManager : public LogManager {
 public:
-    virtual ~LogManagerSink();
+    ThreadLogManager();
+    virtual ~ThreadLogManager() {}
+    virtual std::string getLogPath();
 };
 
-class MainLogManager : public LogManagerSink, public ThreadLogManager {
+class MainLogManager : public RBX::ILogProvider, public LogManager {
 public:
     explicit MainLogManager(const char* name);   // 0042a1c0
     ~MainLogManager();
+    virtual RBX::Log* provideLog();               // 0042a5c0
+    virtual std::string getLogPath();             // 00427f30
     void startCrashReporter();                    // 00428180
 private:
     void* crashReporter;   // +2c (0 after construction)
