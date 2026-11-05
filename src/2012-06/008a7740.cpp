@@ -1,24 +1,23 @@
-// from server: 41% by atomic.potato
-extern "C" void* __cdecl sub_98211a(unsigned int);
+// from server: 100% by tajop
+struct Workspace;
 
-struct Inner {
+struct DataModel {
     char pad[0xac4];
-    int field;
+    Workspace* workspace;
+    Workspace* getWorkspace() const { return workspace; }
 };
 
-struct VGameTool {
+struct MouseCommandTool {
+    char pad[0x50];
+    MouseCommandTool(Workspace* workspace);
+};
+
+struct TToolVerb {
     char pad[0xc];
-    Inner* field_c;
-    void* method();
+    DataModel* dataModel;
+    MouseCommandTool* newTool();
 };
 
-extern "C" void __fastcall sub_947f60(void*, int, int);
-
-void* VGameTool::method() {
-    void* p = sub_98211a(0x50);
-    if (p) {
-        int v = field_c->field;
-        sub_947f60(p, 0, v);
-    }
-    return p;
+MouseCommandTool* TToolVerb::newTool() {
+    return new MouseCommandTool(dataModel->getWorkspace());
 }
