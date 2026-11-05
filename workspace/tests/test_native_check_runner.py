@@ -15,6 +15,18 @@ spec.loader.exec_module(runner)
 
 
 class RunnerTests(unittest.TestCase):
+    def test_explicit_macro_profile_overrides_recipe_defines(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            source = Path(temporary) / 'Foo.cpp'
+            recipe = dict(runner.libs.RECIPES['rbxgs'], defines='_RELEASEASSERT NDEBUG TEST_LEVEL=1')
+            for environment in ('', '/U_RELEASEASSERT /DTEST_LEVEL=2'):
+                source.write_text('// native-flags: /U_RELEASEASSERT /DTEST_LEVEL=2\nvoid foo() {}')
+                with self.subTest(environment=environment), patch.dict(runner.libs.RECIPES, {'rbxgs': recipe}), \
+                     patch.dict(runner.os.environ, {'NATIVE_FLAGS': environment}):
+                    flags = runner.compiler_flags(source)
+                self.assertLess(flags.index('/D_RELEASEASSERT'), flags.index('/U_RELEASEASSERT'))
+                self.assertLess(flags.index('/DTEST_LEVEL=1'), flags.index('/DTEST_LEVEL=2'))
+
     def call_fixture(self, symbol='?right@@', kind=20):
         raw = struct.pack('<IIH', 1, 0, kind)
         table = [0] * 8

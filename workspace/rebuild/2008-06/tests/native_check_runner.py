@@ -77,7 +77,7 @@ def compiler_flags(source):
            or flag.lower().startswith('/fa') and not flag.lower().startswith('/favor:')
            or flag.startswith('@') for flag in flags):
         raise ValueError('profile output/PCH/response flags unsupported in isolated runner')
-    flags += ['/DBOOST_ALL_NO_LIB'] + ['/D' + v for v in recipe['defines'].split()]
+    flags = ['/DBOOST_ALL_NO_LIB'] + ['/D' + v for v in recipe['defines'].split()] + flags
     flags += ['/I' + headers, '/I' + str(ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include')]
     flags += ['/I' + str((libs.LIBS / v).resolve()) for v in recipe['include'] if v != 'WINSDK']
     return flags + ['/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK', '/I' + str(ROOT / 'tools/libs/xtp-11.2.2/Source')]
