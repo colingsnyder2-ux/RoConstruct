@@ -1,0 +1,1865 @@
+{
+  "class": "Ogre::RbxSceneNode, Ogre::TwoDManager (exe-local Ogre 1.4.5 subclasses)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeOgreRbxNodeLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeOgreRbxNodeLayout.cpp"
+    ],
+    "scene_node": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeOgreRbxNode_scene_node.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp"
+    ],
+    "twod": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeOgreRbxNode_twod.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_ogre_rbx_node.py": "5f755bf4ade92a529719834ae63cea4a643c7357e7b7d93892fc141d178d58a7",
+    "rebuild/2008-06/tests/NativeOgreRbxNodeLayout.cpp": "15cde2f789a77b5167ccee91be1246a63dbcc29831f0d8be56fc3d6eb97d6671",
+    "rebuild/2008-06/native-classes/OgreRbxNodeSceneNode.cpp": "2520f7860e4fb82ece9f9fc711f638be9088c3d7b0641cc7fd5d5f52cc0d8851",
+    "rebuild/2008-06/native-classes/OgreRbxNodeTwoDManager.cpp": "f42e7202ba6cd4b657619410b6712ecfcb3c8eb73286627f4316c4c01487bf19",
+    "rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h": "374a0e655348004a9c0d663c4d8e660008b106871540c58a0a47ded7d4ba5895",
+    "rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h": "3b1848bc252f67098b4b6c471c312b9dc44d5b0ea1f72952b84cd88ecf2a450a"
+  },
+  "objects": {
+    "NativeOgreRbxNodeLayout.obj": "1849e700279b02d23fea17dc4b026fc6dd3332c94d3e0c0aa0b8665979f57b8a",
+    "NativeOgreRbxNode_scene_node.obj": "da62c3bf5c5f46b69d3edd4527f8b8be8239e09456e2d01e4086f875723b17e0",
+    "NativeOgreRbxNode_twod.obj": "f7d4413e16da07528ec2580388dc043118adc2416637934f5820a5d5ce7a91bb"
+  },
+  "layout": {
+    "size": "0x248",
+    "sceneNodeSize": "0x228",
+    "transforms": "0x228",
+    "transformMapSize": "0x20",
+    "sphereSize": "0x10",
+    "twoDSize": "0x58",
+    "twoDSceneManager": "0x4",
+    "twoDQueueId": "0x8",
+    "twoDAfterQueue": "0x9",
+    "twoDFlag": "0xa",
+    "twoDTarget": "0xc",
+    "twoDRenderOp": "0x10",
+    "twoDVertexBuffer": "0x24",
+    "twoDIndexBuffer": "0x30",
+    "twoDQuads": "0x3c",
+    "quadSize": "0x30",
+    "quadColour": "0x20",
+    "quadTexture": "0x24",
+    "quadOperationType": "0x28",
+    "quadMode": "0x2c"
+  },
+  "rows": {
+    "layout": [
+      {
+        "address": "006741d0",
+        "symbol": "??_GRbxSceneNode@Ogre@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1RbxSceneNode@Ogre@@UAE@XZ": "0x6821c0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      }
+    ],
+    "scene_node": [
+      {
+        "address": "00681190",
+        "symbol": "?_update@RbxSceneNode@Ogre@@UAEX_N0@Z",
+        "size": 181,
+        "target_size": 181,
+        "exact": true,
+        "verified_targets": {
+          "__real@c61c4000": "0x84e538 (constant c61c4000)",
+          "__real@461c4000": "0x82746c (constant 461c4000)"
+        },
+        "local": []
+      },
+      {
+        "address": "006817e0",
+        "symbol": "?_updateBounds@RbxSceneNode@Ogre@@UAEXXZ",
+        "size": 249,
+        "target_size": 249,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "__imp_?merge@AxisAlignedBox@Ogre@@QAEXABV12@@Z": "0x8046c0 (rgmain.dll!?merge@AxisAlignedBox@Ogre@@QAEXABV12@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "00681560",
+        "symbol": "?_findVisibleObjects@RbxSceneNode@Ogre@@UAEXPAVCamera@2@PAVRenderQueue@2@PAUVisibleObjectsBoundsInfo@2@_N33@Z",
+        "size": 636,
+        "target_size": 636,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?merge@VisibleObjectsBoundsInfo@Ogre@@QAEXABVAxisAlignedBox@2@ABVSphere@2@PBVCamera@2@@Z": "0x681250 (own row)",
+          "__imp_?addRenderable@RenderQueue@Ogre@@QAEXPAVRenderable@2@@Z": "0x804458 (rgmain.dll!?addRenderable@RenderQueue@Ogre@@QAEXPAVRenderable@2@@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "00681250",
+        "symbol": "?merge@VisibleObjectsBoundsInfo@Ogre@@QAEXABVAxisAlignedBox@2@ABVSphere@2@PBVCamera@2@@Z",
+        "size": 174,
+        "target_size": 174,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?merge@AxisAlignedBox@Ogre@@QAEXABV12@@Z": "0x8046c0 (rgmain.dll!?merge@AxisAlignedBox@Ogre@@QAEXABV12@@Z)",
+          "__imp_?getDerivedPosition@Camera@Ogre@@QBEABVVector3@2@XZ": "0x804490 (rgmain.dll!?getDerivedPosition@Camera@Ogre@@QBEABVVector3@2@XZ)",
+          "__imp_?length@Vector3@Ogre@@QBEMXZ": "0x804340 (rgmain.dll!?length@Vector3@Ogre@@QBEMXZ)"
+        },
+        "local": []
+      },
+      {
+        "address": "00681f90",
+        "symbol": "?setTransform@RbxSceneNode@Ogre@@UAEXIABVMatrix4@2@@Z",
+        "size": 173,
+        "target_size": 173,
+        "exact": true,
+        "verified_targets": {
+          "?find@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABK@Z": "0x451600 (folded body, compared exact)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?insert@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBKPAVMatrix4@Ogre@@@2@@Z": "0x681a50 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "006818e0",
+        "symbol": "?getTransform@RbxSceneNode@Ogre@@UBEABVMatrix4@2@K@Z",
+        "size": 283,
+        "target_size": 283,
+        "exact": true,
+        "verified_targets": {
+          "?find@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABK@Z": "0x451600 (folded body, compared exact)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_C@_0BE@LDECBEDO@Transform?5map?5error?$AA@": "0x84e778 (string 'Transform map error')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (folded body, compared exact)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "__imp_?makeTransform@Matrix4@Ogre@@QAEXABVVector3@2@0ABVQuaternion@2@@Z": "0x804c74 (rgmain.dll!?makeTransform@Matrix4@Ogre@@QAEXABVVector3@2@0ABVQuaternion@2@@Z)"
+        },
+        "local": [
+          "__ehhandler$?getTransform@RbxSceneNode@Ogre@@UBEABVMatrix4@2@K@Z"
+        ]
+      },
+      {
+        "address": "00681a00",
+        "symbol": "?hasTransform@RbxSceneNode@Ogre@@UBE_NK@Z",
+        "size": 68,
+        "target_size": 68,
+        "exact": true,
+        "verified_targets": {
+          "?find@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABK@Z": "0x451600 (folded body, compared exact)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": []
+      },
+      {
+        "address": "00682350",
+        "symbol": "?setSphere@RbxSceneNode@Ogre@@UAEXPAVSubMesh@2@ABVSphere@2@@Z",
+        "size": 211,
+        "target_size": 211,
+        "exact": true,
+        "verified_targets": {
+          "?initializeSpheres@RbxSceneNode@Ogre@@KAXXZ": "0x6822e0 (own row)",
+          "?spheres@RbxSceneNode@Ogre@@1PAV?$map@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@@std@@A": "0x97dbc4 (data)",
+          "?find@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABQBX@Z": "0x681f00 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "__imp_?ZERO@Vector3@Ogre@@2V12@B": "0x804488 (rgmain.dll!?ZERO@Vector3@Ogre@@2V12@B)",
+          "?insert@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@_N@2@ABU?$pair@QBXVSphere@Ogre@@@2@@Z": "0x681b40 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00682040",
+        "symbol": "?getSphere@RbxSceneNode@Ogre@@UBEABVSphere@2@PBX@Z",
+        "size": 177,
+        "target_size": 177,
+        "exact": true,
+        "verified_targets": {
+          "?spheres@RbxSceneNode@Ogre@@1PAV?$map@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@@std@@A": "0x97dbc4 (data)",
+          "?find@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABQBX@Z": "0x681f00 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_C@_0BC@LDMMOALM@bsphere?5map?5error?$AA@": "0x84e78c (string 'bsphere map error')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (folded body, compared exact)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local": [
+          "__ehhandler$?getSphere@RbxSceneNode@Ogre@@UBEABVSphere@2@PBX@Z"
+        ]
+      },
+      {
+        "address": "00682100",
+        "symbol": "?hasSphere@RbxSceneNode@Ogre@@UBE_NPBX@Z",
+        "size": 70,
+        "target_size": 70,
+        "exact": true,
+        "verified_targets": {
+          "?spheres@RbxSceneNode@Ogre@@1PAV?$map@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@@std@@A": "0x97dbc4 (data)",
+          "?find@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABQBX@Z": "0x681f00 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": []
+      },
+      {
+        "address": "006822e0",
+        "symbol": "?initializeSpheres@RbxSceneNode@Ogre@@KAXXZ",
+        "size": 105,
+        "target_size": 105,
+        "exact": true,
+        "verified_targets": {
+          "?spheres@RbxSceneNode@Ogre@@1PAV?$map@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@@std@@A": "0x97dbc4 (data)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@PBX@1@ABV?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@1@@Z": "0x4f0fc0 (folded body, compared exact)"
+        },
+        "local": [
+          "__ehhandler$?initializeSpheres@RbxSceneNode@Ogre@@KAXXZ"
+        ]
+      },
+      {
+        "address": "006821c0",
+        "symbol": "??1RbxSceneNode@Ogre@@UAE@XZ",
+        "size": 279,
+        "target_size": 279,
+        "exact": true,
+        "verified_targets": {
+          "??_7RbxSceneNode@Ogre@@6B@": "0x84d30c (vtable RTTI .?AVRbxSceneNode@Ogre@@ offset 0x0)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (folded body, compared exact)",
+          "?_Erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x432a30 (folded body, compared exact)",
+          "??1?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@XZ": "0x553d80 (folded body, compared exact)",
+          "__imp_??1SceneNode@Ogre@@UAE@XZ": "0x804480 (rgmain.dll!??1SceneNode@Ogre@@UAE@XZ)"
+        },
+        "local": [
+          "__ehhandler$??1RbxSceneNode@Ogre@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00681a50",
+        "symbol": "?insert@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBKPAVMatrix4@Ogre@@@2@@Z",
+        "size": 239,
+        "target_size": 239,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Insert@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBKPAVMatrix4@Ogre@@@2@@Z": "0x668010 (folded body, compared exact)",
+          "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x609bd0 (folded body, compared exact)"
+        },
+        "local": []
+      },
+      {
+        "address": "00681b40",
+        "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@_N@2@ABU?$pair@QBXVSphere@Ogre@@@2@@Z",
+        "size": 239,
+        "target_size": 239,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Insert@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@ABU?$pair@QBXVSphere@Ogre@@@2@@Z": "0x681360 (own row)",
+          "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x4e6270 (folded body, compared exact)"
+        },
+        "local": []
+      },
+      {
+        "address": "00681f00",
+        "symbol": "?find@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABQBX@Z",
+        "size": 139,
+        "target_size": 139,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": []
+      },
+      {
+        "address": "00681360",
+        "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@ABU?$pair@QBXVSphere@Ogre@@@2@@Z",
+        "size": 510,
+        "target_size": 510,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (string 'map/set<T> too long')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info .?AVlength_error@std@@)",
+          "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?_Buynode@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@00ABU?$pair@QBXVSphere@Ogre@@@2@D@Z": "0x681300 (own row)",
+          "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x4d75f0 (folded body, compared exact)",
+          "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x5b2ec0 (folded body, compared exact)"
+        },
+        "local": [
+          "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@ABU?$pair@QBXVSphere@Ogre@@@2@@Z"
+        ]
+      },
+      {
+        "address": "00681c30",
+        "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+        "size": 712,
+        "target_size": 712,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@": "0x80b270 (string 'invalid map/set<T> iterator')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVout_of_range@std@@": "0x8d0c3c (throw info .?AVout_of_range@std@@)",
+          "??_7out_of_range@std@@6B@": "0x80b128 (vtable RTTI .?AVout_of_range@std@@ offset 0x0)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x4d7240 (folded body, compared exact)",
+          "?_Min@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@@Z": "0x4d7200 (folded body, compared exact)",
+          "?_Max@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@@Z": "0x4d7220 (folded body, compared exact)",
+          "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x4d75f0 (folded body, compared exact)",
+          "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x5b2ec0 (folded body, compared exact)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": [
+          "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+        ]
+      },
+      {
+        "address": "00681300",
+        "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@00ABU?$pair@QBXVSphere@Ogre@@@2@D@Z",
+        "size": 81,
+        "target_size": 81,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local": []
+      }
+    ],
+    "twod": [
+      {
+        "address": "006831d0",
+        "symbol": "??0TwoDManager@Ogre@@QAE@XZ",
+        "size": 112,
+        "target_size": 112,
+        "exact": true,
+        "verified_targets": {
+          "??_7TwoDManager@Ogre@@6B@": "0x84e7b4 (vtable RTTI .?AVTwoDManager@Ogre@@ offset 0x0)",
+          "__imp_??0HardwareVertexBufferSharedPtr@Ogre@@QAE@XZ": "0x804700 (rgmain.dll!??0HardwareVertexBufferSharedPtr@Ogre@@QAE@XZ)",
+          "__imp_??0HardwareIndexBufferSharedPtr@Ogre@@QAE@XZ": "0x8046fc (rgmain.dll!??0HardwareIndexBufferSharedPtr@Ogre@@QAE@XZ)",
+          "??0?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@QAE@XZ": "0x683170 (own row)"
+        },
+        "local": [
+          "__ehhandler$??0TwoDManager@Ogre@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00683240",
+        "symbol": "??1TwoDManager@Ogre@@UAE@XZ",
+        "size": 112,
+        "target_size": 112,
+        "exact": true,
+        "verified_targets": {
+          "??_7TwoDManager@Ogre@@6B@": "0x84e7b4 (vtable RTTI .?AVTwoDManager@Ogre@@ offset 0x0)",
+          "?_Tidy@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEXXZ": "0x682b40 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "__imp_??1HardwareIndexBufferSharedPtr@Ogre@@UAE@XZ": "0x804440 (rgmain.dll!??1HardwareIndexBufferSharedPtr@Ogre@@UAE@XZ)",
+          "__imp_??1HardwareVertexBufferSharedPtr@Ogre@@UAE@XZ": "0x80435c (rgmain.dll!??1HardwareVertexBufferSharedPtr@Ogre@@UAE@XZ)",
+          "__imp_??_7RenderQueueListener@Ogre@@6B@": "0x804704 (rgmain.dll!??_7RenderQueueListener@Ogre@@6B@)"
+        },
+        "local": [
+          "__ehhandler$??1TwoDManager@Ogre@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00684390",
+        "symbol": "??_GTwoDManager@Ogre@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1TwoDManager@Ogre@@UAE@XZ": "0x683240 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "006843b0",
+        "symbol": "?renderQueueStarted@TwoDManager@Ogre@@UAEXEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AA_N@Z",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?render@TwoDManager@Ogre@@AAEXXZ": "0x6832b0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "006843d0",
+        "symbol": "?renderQueueEnded@TwoDManager@Ogre@@UAEXEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AA_N@Z",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?render@TwoDManager@Ogre@@AAEXXZ": "0x6832b0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00682560",
+        "symbol": "?setup@TwoDManager@Ogre@@QAEXPAVSceneManager@2@PAVRenderTarget@2@E_N2@Z",
+        "size": 66,
+        "target_size": 66,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?setNull@?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@QAEXXZ": "0x8046e4 (rgmain.dll!?setNull@?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@QAEXXZ)"
+        },
+        "local": []
+      },
+      {
+        "address": "00682d60",
+        "symbol": "?addQuad@TwoDManager@Ogre@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@MMMMMMMM@Z",
+        "size": 669,
+        "target_size": 669,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??0TexturePtr@Ogre@@QAE@XZ": "0x804c88 (rgmain.dll!??0TexturePtr@Ogre@@QAE@XZ)",
+          "__imp_?getSingleton@Root@Ogre@@SAAAV12@XZ": "0x8043e4 (rgmain.dll!?getSingleton@Root@Ogre@@SAAAV12@XZ)",
+          "__imp_?getRenderSystem@Root@Ogre@@QAEPAVRenderSystem@2@XZ": "0x804eac (rgmain.dll!?getRenderSystem@Root@Ogre@@QAEPAVRenderSystem@2@XZ)",
+          "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string '')",
+          "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z": "0x8023cc (msvcp90.dll!??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z)",
+          "__imp_?getSingleton@TextureManager@Ogre@@SAAAV12@XZ": "0x804c44 (rgmain.dll!?getSingleton@TextureManager@Ogre@@SAAAV12@XZ)",
+          "__imp_??4TexturePtr@Ogre@@QAEAAV01@ABV?$SharedPtr@VResource@Ogre@@@1@@Z": "0x8046f4 (rgmain.dll!??4TexturePtr@Ogre@@QAEAAV01@ABV?$SharedPtr@VResource@Ogre@@@1@@Z)",
+          "??_7?$SharedPtr@VResource@Ogre@@@Ogre@@6B@": "0x826bc4 (vtable RTTI .?AV?$SharedPtr@VResource@Ogre@@@Ogre@@ offset 0x0)",
+          "??_C@_07ECEMPDJM@General?$AA@": "0x8163c4 (string 'General')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??4TexturePtr@Ogre@@QAEAAV01@ABV01@@Z": "0x804614 (rgmain.dll!??4TexturePtr@Ogre@@QAEAAV01@ABV01@@Z)",
+          "__imp_??1TexturePtr@Ogre@@UAE@XZ": "0x804c8c (rgmain.dll!??1TexturePtr@Ogre@@UAE@XZ)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "?_Buynode@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@2@PAU342@0ABUQuad@TwoDManager@Ogre@@@Z": "0x682b90 (own row)",
+          "?_Incsize@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEXI@Z": "0x682bd0 (own row)"
+        },
+        "local": [
+          "__ehhandler$?addQuad@TwoDManager@Ogre@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@MMMMMMMM@Z"
+        ]
+      },
+      {
+        "address": "00683000",
+        "symbol": "?primitive@TwoDManager@Ogre@@QAEXW4OperationType@RenderOperation@2@MMMMABVColor4@G3D@@@Z",
+        "size": 176,
+        "target_size": 176,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?getSingleton@Root@Ogre@@SAAAV12@XZ": "0x8043e4 (rgmain.dll!?getSingleton@Root@Ogre@@SAAAV12@XZ)",
+          "__imp_?getRenderSystem@Root@Ogre@@QAEPAVRenderSystem@2@XZ": "0x804eac (rgmain.dll!?getRenderSystem@Root@Ogre@@QAEPAVRenderSystem@2@XZ)",
+          "?_Buynode@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@2@PAU342@0ABUQuad@TwoDManager@Ogre@@@Z": "0x682b90 (own row)",
+          "?_Incsize@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEXI@Z": "0x682bd0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "006830b0",
+        "symbol": "?outlineRectangle@TwoDManager@Ogre@@QAEXMMMMABVColor4@G3D@@@Z",
+        "size": 182,
+        "target_size": 182,
+        "exact": true,
+        "verified_targets": {
+          "__imp_?getSingleton@Root@Ogre@@SAAAV12@XZ": "0x8043e4 (rgmain.dll!?getSingleton@Root@Ogre@@SAAAV12@XZ)",
+          "__imp_?getRenderSystem@Root@Ogre@@QAEPAVRenderSystem@2@XZ": "0x804eac (rgmain.dll!?getRenderSystem@Root@Ogre@@QAEPAVRenderSystem@2@XZ)",
+          "?_Buynode@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@2@PAU342@0ABUQuad@TwoDManager@Ogre@@@Z": "0x682b90 (own row)",
+          "?_Incsize@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEXI@Z": "0x682bd0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00682b20",
+        "symbol": "?_Buynode@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@2@XZ",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "00682b40",
+        "symbol": "?_Tidy@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEXXZ",
+        "size": 72,
+        "target_size": 72,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "00682b90",
+        "symbol": "?_Buynode@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@2@PAU342@0ABUQuad@TwoDManager@Ogre@@@Z",
+        "size": 58,
+        "target_size": 58,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "00682bd0",
+        "symbol": "?_Incsize@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEXI@Z",
+        "size": 154,
+        "target_size": 154,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BB@MOGOBHAF@list?$DMT?$DO?5too?5long?$AA@": "0x80d400 (string 'list<T> too long')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info .?AVlength_error@std@@)",
+          "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local": [
+          "__ehhandler$?_Incsize@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEXI@Z"
+        ]
+      },
+      {
+        "address": "00683170",
+        "symbol": "??0?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@QAE@XZ",
+        "size": 94,
+        "target_size": 94,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?_Buynode@?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@IAEPAU_Node@?$_List_nod@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@2@XZ": "0x682b20 (own row)"
+        },
+        "local": [
+          "__ehhandler$??0?$list@UQuad@TwoDManager@Ogre@@V?$allocator@UQuad@TwoDManager@Ogre@@@std@@@std@@QAE@XZ"
+        ]
+      }
+    ],
+    "folded_not_counted": [
+      {
+        "address": "00451600",
+        "symbol": "?find@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABK@Z",
+        "size": 139,
+        "target_size": 139,
+        "exact": false,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00451600",
+        "symbol": "?find@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABK@Z",
+        "size": 139,
+        "target_size": 139,
+        "exact": false,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00409d50",
+        "symbol": "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z",
+        "size": 83,
+        "target_size": 83,
+        "exact": false,
+        "verified_targets": {
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7runtime_error@std@@6B@": "0x80b7f8 (vtable RTTI .?AVruntime_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+        },
+        "local": [
+          "__ehhandler$??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z"
+        ],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "004f0fc0",
+        "symbol": "??0?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@PBX@1@ABV?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@1@@Z",
+        "size": 117,
+        "target_size": 117,
+        "exact": false,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?_Buynode@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@XZ": "0x5b3020 (folded body, compared exact)"
+        },
+        "local": [
+          "__ehhandler$??0?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@ABU?$less@PBX@1@ABV?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@1@@Z"
+        ],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "0068dfa0",
+        "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+        "size": 108,
+        "target_size": 108,
+        "exact": false,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00432a30",
+        "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z",
+        "size": 53,
+        "target_size": 53,
+        "exact": false,
+        "verified_targets": {
+          "?_Erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x432a30 (folded body, compared exact)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00553d80",
+        "symbol": "??1?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@XZ",
+        "size": 112,
+        "target_size": 112,
+        "exact": false,
+        "verified_targets": {
+          "?erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x553ca0 (folded body, compared exact)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": [
+          "__ehhandler$??1?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE@XZ"
+        ],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00668010",
+        "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBKPAVMatrix4@Ogre@@@2@@Z",
+        "size": 510,
+        "target_size": 510,
+        "exact": false,
+        "verified_targets": {
+          "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (string 'map/set<T> too long')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info .?AVlength_error@std@@)",
+          "??_7length_error@std@@6B@": "0x80b11c (vtable RTTI .?AVlength_error@std@@ offset 0x0)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?_Buynode@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBKPAVMatrix4@Ogre@@@2@D@Z": "0x614ff0 (folded body, compared exact)",
+          "?_Lrotate@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x4452a0 (folded body, compared exact)",
+          "?_Rrotate@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x5b6c40 (folded body, compared exact)"
+        },
+        "local": [
+          "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBKPAVMatrix4@Ogre@@@2@@Z"
+        ],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00609bd0",
+        "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+        "size": 132,
+        "target_size": 132,
+        "exact": false,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "004e6270",
+        "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+        "size": 132,
+        "target_size": 132,
+        "exact": false,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "004d75f0",
+        "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": false,
+        "verified_targets": {},
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "005b2ec0",
+        "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@@Z",
+        "size": 82,
+        "target_size": 82,
+        "exact": false,
+        "verified_targets": {},
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "004d7240",
+        "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+        "size": 108,
+        "target_size": 108,
+        "exact": false,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "004d7200",
+        "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": false,
+        "verified_targets": {},
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "004d7220",
+        "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@@Z",
+        "size": 28,
+        "target_size": 28,
+        "exact": false,
+        "verified_targets": {},
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "005b3020",
+        "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@$0A@@std@@@2@XZ",
+        "size": 55,
+        "target_size": 55,
+        "exact": false,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00553ca0",
+        "symbol": "?erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+        "size": 220,
+        "target_size": 220,
+        "exact": false,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x432a30 (folded body, compared exact)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (folded body, compared exact)",
+          "?erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x5539d0 (folded body, compared exact)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00614ff0",
+        "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBKPAVMatrix4@Ogre@@@2@D@Z",
+        "size": 63,
+        "target_size": 63,
+        "exact": false,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "004452a0",
+        "symbol": "?_Lrotate@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z",
+        "size": 78,
+        "target_size": 78,
+        "exact": false,
+        "verified_targets": {},
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "005b6c40",
+        "symbol": "?_Rrotate@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z",
+        "size": 82,
+        "target_size": 82,
+        "exact": false,
+        "verified_targets": {},
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "005539d0",
+        "symbol": "?erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+        "size": 712,
+        "target_size": 712,
+        "exact": false,
+        "verified_targets": {
+          "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@": "0x80b270 (string 'invalid map/set<T> iterator')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVout_of_range@std@@": "0x8d0c3c (throw info .?AVout_of_range@std@@)",
+          "??_7out_of_range@std@@6B@": "0x80b128 (vtable RTTI .?AVout_of_range@std@@ offset 0x0)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (folded body, compared exact)",
+          "?_Min@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@@Z": "0x46cee0 (folded body, compared exact)",
+          "?_Max@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@@Z": "0x609bb0 (folded body, compared exact)",
+          "?_Lrotate@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x4452a0 (folded body, compared exact)",
+          "?_Rrotate@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@@Z": "0x5b6c40 (folded body, compared exact)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": [
+          "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+        ],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "0046cee0",
+        "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": false,
+        "verified_targets": {},
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      },
+      {
+        "address": "00609bb0",
+        "symbol": "?_Max@?$_Tree@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@KPAVMatrix4@Ogre@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVMatrix4@Ogre@@@std@@@4@$0A@@std@@@2@PAU342@@Z",
+        "size": 28,
+        "target_size": 28,
+        "exact": false,
+        "verified_targets": {},
+        "local": [],
+        "folded_exact": true,
+        "reason": "folded by the linker onto an identical body outside this block; compared, not counted"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "006741d0",
+    "00681190",
+    "00681250",
+    "00681300",
+    "00681360",
+    "00681560",
+    "006817e0",
+    "006818e0",
+    "00681a00",
+    "00681a50",
+    "00681b40",
+    "00681c30",
+    "00681f00",
+    "00681f90",
+    "00682040",
+    "00682100",
+    "006821c0",
+    "006822e0",
+    "00682350",
+    "00682560",
+    "00682b20",
+    "00682b40",
+    "00682b90",
+    "00682bd0",
+    "00682d60",
+    "00683000",
+    "006830b0",
+    "00683170",
+    "006831d0",
+    "00683240",
+    "00684390",
+    "006843b0",
+    "006843d0"
+  ],
+  "vtables": {
+    "RbxSceneNode@Ogre": [
+      {
+        "slot": 0,
+        "symbol": "??_ERbxSceneNode@Ogre@@UAEPAXI@Z",
+        "original": "006741d0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?getMaterial@Node@Ogre@@UBEABVMaterialPtr@2@XZ",
+        "original": "0069fcea",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getMaterial@Node@Ogre@@UBEABVMaterialPtr@2@XZ"
+      },
+      {
+        "slot": 2,
+        "symbol": "?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ",
+        "original": "0069fcf0",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getTechnique@Renderable@Ogre@@UBEPAVTechnique@2@XZ"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getRenderOperation@Node@Ogre@@UAEXAAVRenderOperation@2@@Z",
+        "original": "0069fcf6",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getRenderOperation@Node@Ogre@@UAEXAAVRenderOperation@2@@Z"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getWorldTransforms@Node@Ogre@@UBEXPAVMatrix4@2@@Z",
+        "original": "0069fcfc",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getWorldTransforms@Node@Ogre@@UBEXPAVMatrix4@2@@Z"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getWorldOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+        "original": "0069fd02",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getWorldOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getWorldPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+        "original": "0069fd08",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getWorldPosition@Node@Ogre@@UBEABVVector3@2@XZ"
+      },
+      {
+        "slot": 7,
+        "symbol": "?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ",
+        "original": "0069fd0e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getNumWorldTransforms@Renderable@Ogre@@UBEGXZ"
+      },
+      {
+        "slot": 8,
+        "symbol": "?getSquaredViewDepth@Node@Ogre@@UBEMPBVCamera@2@@Z",
+        "original": "0069fd14",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getSquaredViewDepth@Node@Ogre@@UBEMPBVCamera@2@@Z"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ",
+        "original": "0069fd1a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getNormaliseNormals@Renderable@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 10,
+        "symbol": "?getLights@Node@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ",
+        "original": "0069fd20",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getLights@Node@Ogre@@UBEABV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@XZ"
+      },
+      {
+        "slot": 11,
+        "symbol": "?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ",
+        "original": "0069fd26",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getClipPlanes@Renderable@Ogre@@UBEABV?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@XZ"
+      },
+      {
+        "slot": 12,
+        "symbol": "?getCastsShadows@Renderable@Ogre@@UBE_NXZ",
+        "original": "0069fd2c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getCastsShadows@Renderable@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 13,
+        "symbol": "?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z",
+        "original": "0069fd32",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_updateCustomGpuParameter@Renderable@Ogre@@UBEXABVAutoConstantEntry@GpuProgramParameters@2@PAV42@@Z"
+      },
+      {
+        "slot": 14,
+        "symbol": "?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z",
+        "original": "0069fd38",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setPolygonModeOverrideable@Renderable@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 15,
+        "symbol": "?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ",
+        "original": "0069fd3e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getPolygonModeOverrideable@Renderable@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 16,
+        "symbol": "?setParent@SceneNode@Ogre@@MAEXPAVNode@2@@Z",
+        "original": "0069fd44",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setParent@SceneNode@Ogre@@MAEXPAVNode@2@@Z"
+      },
+      {
+        "slot": 17,
+        "symbol": "?_updateFromParent@Node@Ogre@@MBEXXZ",
+        "original": "0069fd4a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_updateFromParent@Node@Ogre@@MBEXXZ"
+      },
+      {
+        "slot": 18,
+        "symbol": "?updateFromParentImpl@SceneNode@Ogre@@MBEXXZ",
+        "original": "0069fd50",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?updateFromParentImpl@SceneNode@Ogre@@MBEXXZ"
+      },
+      {
+        "slot": 19,
+        "symbol": "?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0069fd56",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      },
+      {
+        "slot": 20,
+        "symbol": "?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@XZ",
+        "original": "0069fd5c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?createChildImpl@SceneNode@Ogre@@MAEPAVNode@2@XZ"
+      },
+      {
+        "slot": 21,
+        "symbol": "?getParent@Node@Ogre@@UBEPAV12@XZ",
+        "original": "0069fd62",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getParent@Node@Ogre@@UBEPAV12@XZ"
+      },
+      {
+        "slot": 22,
+        "symbol": "?getOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+        "original": "0069fd68",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ"
+      },
+      {
+        "slot": 23,
+        "symbol": "?setOrientation@Node@Ogre@@UAEXMMMM@Z",
+        "original": "0069fd6e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setOrientation@Node@Ogre@@UAEXMMMM@Z"
+      },
+      {
+        "slot": 24,
+        "symbol": "?setOrientation@Node@Ogre@@UAEXABVQuaternion@2@@Z",
+        "original": "0069fd74",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setOrientation@Node@Ogre@@UAEXABVQuaternion@2@@Z"
+      },
+      {
+        "slot": 25,
+        "symbol": "?resetOrientation@Node@Ogre@@UAEXXZ",
+        "original": "0069fd7a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?resetOrientation@Node@Ogre@@UAEXXZ"
+      },
+      {
+        "slot": 26,
+        "symbol": "?setPosition@Node@Ogre@@UAEXMMM@Z",
+        "original": "0069fd80",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setPosition@Node@Ogre@@UAEXMMM@Z"
+      },
+      {
+        "slot": 27,
+        "symbol": "?setPosition@Node@Ogre@@UAEXABVVector3@2@@Z",
+        "original": "0069fd86",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setPosition@Node@Ogre@@UAEXABVVector3@2@@Z"
+      },
+      {
+        "slot": 28,
+        "symbol": "?getPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+        "original": "0069fd8c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getPosition@Node@Ogre@@UBEABVVector3@2@XZ"
+      },
+      {
+        "slot": 29,
+        "symbol": "?setScale@Node@Ogre@@UAEXMMM@Z",
+        "original": "0069fd92",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setScale@Node@Ogre@@UAEXMMM@Z"
+      },
+      {
+        "slot": 30,
+        "symbol": "?setScale@Node@Ogre@@UAEXABVVector3@2@@Z",
+        "original": "0069fd98",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setScale@Node@Ogre@@UAEXABVVector3@2@@Z"
+      },
+      {
+        "slot": 31,
+        "symbol": "?getScale@Node@Ogre@@UBEABVVector3@2@XZ",
+        "original": "0069fd9e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getScale@Node@Ogre@@UBEABVVector3@2@XZ"
+      },
+      {
+        "slot": 32,
+        "symbol": "?setInheritOrientation@Node@Ogre@@UAEX_N@Z",
+        "original": "0069fda4",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setInheritOrientation@Node@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 33,
+        "symbol": "?getInheritOrientation@Node@Ogre@@UBE_NXZ",
+        "original": "0069fdaa",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getInheritOrientation@Node@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 34,
+        "symbol": "?setInheritScale@Node@Ogre@@UAEX_N@Z",
+        "original": "0069fdb0",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setInheritScale@Node@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 35,
+        "symbol": "?getInheritScale@Node@Ogre@@UBE_NXZ",
+        "original": "0069fdb6",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getInheritScale@Node@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 36,
+        "symbol": "?scale@Node@Ogre@@UAEXMMM@Z",
+        "original": "0069fdbc",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?scale@Node@Ogre@@UAEXMMM@Z"
+      },
+      {
+        "slot": 37,
+        "symbol": "?scale@Node@Ogre@@UAEXABVVector3@2@@Z",
+        "original": "0069fdc2",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?scale@Node@Ogre@@UAEXABVVector3@2@@Z"
+      },
+      {
+        "slot": 38,
+        "symbol": "?translate@Node@Ogre@@UAEXABVMatrix3@2@MMMW4TransformSpace@12@@Z",
+        "original": "0069fdc8",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?translate@Node@Ogre@@UAEXABVMatrix3@2@MMMW4TransformSpace@12@@Z"
+      },
+      {
+        "slot": 39,
+        "symbol": "?translate@Node@Ogre@@UAEXABVMatrix3@2@ABVVector3@2@W4TransformSpace@12@@Z",
+        "original": "0069fdce",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?translate@Node@Ogre@@UAEXABVMatrix3@2@ABVVector3@2@W4TransformSpace@12@@Z"
+      },
+      {
+        "slot": 40,
+        "symbol": "?translate@Node@Ogre@@UAEXMMMW4TransformSpace@12@@Z",
+        "original": "0069fdd4",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?translate@Node@Ogre@@UAEXMMMW4TransformSpace@12@@Z"
+      },
+      {
+        "slot": 41,
+        "symbol": "?translate@Node@Ogre@@UAEXABVVector3@2@W4TransformSpace@12@@Z",
+        "original": "0069fdda",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?translate@Node@Ogre@@UAEXABVVector3@2@W4TransformSpace@12@@Z"
+      },
+      {
+        "slot": 42,
+        "symbol": "?roll@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z",
+        "original": "0069fde0",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?roll@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z"
+      },
+      {
+        "slot": 43,
+        "symbol": "?pitch@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z",
+        "original": "0069fde6",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?pitch@Node@Ogre@@UAEXABVRadian@2@W4TransformSpace@12@@Z"
+      },
+      {
+        "slot": 44,
+        "symbol": "?yaw@SceneNode@Ogre@@UAEXABVRadian@2@W4TransformSpace@Node@2@@Z",
+        "original": "0069fdec",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?yaw@SceneNode@Ogre@@UAEXABVRadian@2@W4TransformSpace@Node@2@@Z"
+      },
+      {
+        "slot": 45,
+        "symbol": "?rotate@Node@Ogre@@UAEXABVQuaternion@2@W4TransformSpace@12@@Z",
+        "original": "0069fdf2",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?rotate@Node@Ogre@@UAEXABVQuaternion@2@W4TransformSpace@12@@Z"
+      },
+      {
+        "slot": 46,
+        "symbol": "?rotate@Node@Ogre@@UAEXABVVector3@2@ABVRadian@2@W4TransformSpace@12@@Z",
+        "original": "0069fdf8",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?rotate@Node@Ogre@@UAEXABVVector3@2@ABVRadian@2@W4TransformSpace@12@@Z"
+      },
+      {
+        "slot": 47,
+        "symbol": "?getLocalAxes@Node@Ogre@@UBE?AVMatrix3@2@XZ",
+        "original": "0069fdfe",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getLocalAxes@Node@Ogre@@UBE?AVMatrix3@2@XZ"
+      },
+      {
+        "slot": 48,
+        "symbol": "?createChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z",
+        "original": "0069fe04",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?createChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z"
+      },
+      {
+        "slot": 49,
+        "symbol": "?createChild@Node@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z",
+        "original": "0069fe0a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?createChild@Node@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z"
+      },
+      {
+        "slot": 50,
+        "symbol": "?addChild@Node@Ogre@@UAEXPAV12@@Z",
+        "original": "0069fe10",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?addChild@Node@Ogre@@UAEXPAV12@@Z"
+      },
+      {
+        "slot": 51,
+        "symbol": "?numChildren@Node@Ogre@@UBEGXZ",
+        "original": "0069fe16",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?numChildren@Node@Ogre@@UBEGXZ"
+      },
+      {
+        "slot": 52,
+        "symbol": "?getChild@Node@Ogre@@UBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0069fe1c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getChild@Node@Ogre@@UBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      },
+      {
+        "slot": 53,
+        "symbol": "?getChild@Node@Ogre@@UBEPAV12@G@Z",
+        "original": "0069fe22",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getChild@Node@Ogre@@UBEPAV12@G@Z"
+      },
+      {
+        "slot": 54,
+        "symbol": "?getChildIterator@Node@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ",
+        "original": "0069fe28",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getChildIterator@Node@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ"
+      },
+      {
+        "slot": 55,
+        "symbol": "?getChildIterator@Node@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ",
+        "original": "0069fe2e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getChildIterator@Node@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVNode@Ogre@@@std@@@2@@stdext@@@2@XZ"
+      },
+      {
+        "slot": 56,
+        "symbol": "?removeChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0069fe34",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      },
+      {
+        "slot": 57,
+        "symbol": "?removeChild@Node@Ogre@@UAEPAV12@PAV12@@Z",
+        "original": "0069fe3a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@PAV12@@Z"
+      },
+      {
+        "slot": 58,
+        "symbol": "?removeChild@Node@Ogre@@UAEPAV12@G@Z",
+        "original": "0069fe40",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?removeChild@Node@Ogre@@UAEPAV12@G@Z"
+      },
+      {
+        "slot": 59,
+        "symbol": "?removeAllChildren@Node@Ogre@@UAEXXZ",
+        "original": "0069fe46",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?removeAllChildren@Node@Ogre@@UAEXXZ"
+      },
+      {
+        "slot": 60,
+        "symbol": "?_getDerivedOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+        "original": "0069fe4c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_getDerivedOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ"
+      },
+      {
+        "slot": 61,
+        "symbol": "?_getDerivedPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+        "original": "0069fe52",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_getDerivedPosition@Node@Ogre@@UBEABVVector3@2@XZ"
+      },
+      {
+        "slot": 62,
+        "symbol": "?_getDerivedScale@Node@Ogre@@UBEABVVector3@2@XZ",
+        "original": "0069fe58",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_getDerivedScale@Node@Ogre@@UBEABVVector3@2@XZ"
+      },
+      {
+        "slot": 63,
+        "symbol": "?_getFullTransform@Node@Ogre@@UBEABVMatrix4@2@XZ",
+        "original": "0069fe5e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_getFullTransform@Node@Ogre@@UBEABVMatrix4@2@XZ"
+      },
+      {
+        "slot": 64,
+        "symbol": "?_update@RbxSceneNode@Ogre@@UAEX_N0@Z",
+        "original": "00681190",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 65,
+        "symbol": "?setListener@Node@Ogre@@UAEXPAVListener@12@@Z",
+        "original": "0069fe64",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setListener@Node@Ogre@@UAEXPAVListener@12@@Z"
+      },
+      {
+        "slot": 66,
+        "symbol": "?getListener@Node@Ogre@@UBEPAVListener@12@XZ",
+        "original": "0069fe6a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getListener@Node@Ogre@@UBEPAVListener@12@XZ"
+      },
+      {
+        "slot": 67,
+        "symbol": "?setInitialState@Node@Ogre@@UAEXXZ",
+        "original": "0069fe70",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setInitialState@Node@Ogre@@UAEXXZ"
+      },
+      {
+        "slot": 68,
+        "symbol": "?resetToInitialState@Node@Ogre@@UAEXXZ",
+        "original": "0069fe76",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?resetToInitialState@Node@Ogre@@UAEXXZ"
+      },
+      {
+        "slot": 69,
+        "symbol": "?getInitialPosition@Node@Ogre@@UBEABVVector3@2@XZ",
+        "original": "0069fe7c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getInitialPosition@Node@Ogre@@UBEABVVector3@2@XZ"
+      },
+      {
+        "slot": 70,
+        "symbol": "?getInitialOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ",
+        "original": "0069fe82",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getInitialOrientation@Node@Ogre@@UBEABVQuaternion@2@XZ"
+      },
+      {
+        "slot": 71,
+        "symbol": "?getInitialScale@Node@Ogre@@UBEABVVector3@2@XZ",
+        "original": "0069fe88",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getInitialScale@Node@Ogre@@UBEABVVector3@2@XZ"
+      },
+      {
+        "slot": 72,
+        "symbol": "?needUpdate@Node@Ogre@@UAEX_N@Z",
+        "original": "0069fe8e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?needUpdate@Node@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 73,
+        "symbol": "?requestUpdate@Node@Ogre@@UAEXPAV12@_N@Z",
+        "original": "0069fe94",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?requestUpdate@Node@Ogre@@UAEXPAV12@_N@Z"
+      },
+      {
+        "slot": 74,
+        "symbol": "?cancelUpdate@Node@Ogre@@UAEXPAV12@@Z",
+        "original": "0069fe9a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?cancelUpdate@Node@Ogre@@UAEXPAV12@@Z"
+      },
+      {
+        "slot": 75,
+        "symbol": "?setInSceneGraph@SceneNode@Ogre@@MAEX_N@Z",
+        "original": "0069fea0",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setInSceneGraph@SceneNode@Ogre@@MAEX_N@Z"
+      },
+      {
+        "slot": 76,
+        "symbol": "?attachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z",
+        "original": "0069fea6",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?attachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z"
+      },
+      {
+        "slot": 77,
+        "symbol": "?numAttachedObjects@SceneNode@Ogre@@UBEGXZ",
+        "original": "0069feac",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?numAttachedObjects@SceneNode@Ogre@@UBEGXZ"
+      },
+      {
+        "slot": 78,
+        "symbol": "?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0069feb2",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      },
+      {
+        "slot": 79,
+        "symbol": "?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z",
+        "original": "0069feb8",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getAttachedObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z"
+      },
+      {
+        "slot": 80,
+        "symbol": "?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0069febe",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      },
+      {
+        "slot": 81,
+        "symbol": "?detachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z",
+        "original": "0069fec4",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?detachObject@SceneNode@Ogre@@UAEXPAVMovableObject@2@@Z"
+      },
+      {
+        "slot": 82,
+        "symbol": "?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z",
+        "original": "0069feca",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?detachObject@SceneNode@Ogre@@UAEPAVMovableObject@2@G@Z"
+      },
+      {
+        "slot": 83,
+        "symbol": "?detachAllObjects@SceneNode@Ogre@@UAEXXZ",
+        "original": "0069fed0",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?detachAllObjects@SceneNode@Ogre@@UAEXXZ"
+      },
+      {
+        "slot": 84,
+        "symbol": "?isInSceneGraph@SceneNode@Ogre@@UBE_NXZ",
+        "original": "0069fed6",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?isInSceneGraph@SceneNode@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 85,
+        "symbol": "?_notifyRootNode@SceneNode@Ogre@@UAEXXZ",
+        "original": "0069fedc",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_notifyRootNode@SceneNode@Ogre@@UAEXXZ"
+      },
+      {
+        "slot": 86,
+        "symbol": "?_updateBounds@RbxSceneNode@Ogre@@UAEXXZ",
+        "original": "006817e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 87,
+        "symbol": "?_findVisibleObjects@RbxSceneNode@Ogre@@UAEXPAVCamera@2@PAVRenderQueue@2@PAUVisibleObjectsBoundsInfo@2@_N33@Z",
+        "original": "00681560",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 88,
+        "symbol": "?_getWorldAABB@SceneNode@Ogre@@UBEABVAxisAlignedBox@2@XZ",
+        "original": "0069fee2",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_getWorldAABB@SceneNode@Ogre@@UBEABVAxisAlignedBox@2@XZ"
+      },
+      {
+        "slot": 89,
+        "symbol": "?getAttachedObjectIterator@SceneNode@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ",
+        "original": "0069fee8",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getAttachedObjectIterator@SceneNode@Ogre@@UBE?AV?$ConstMapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ"
+      },
+      {
+        "slot": 90,
+        "symbol": "?getAttachedObjectIterator@SceneNode@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ",
+        "original": "0069feee",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getAttachedObjectIterator@SceneNode@Ogre@@UAE?AV?$MapIterator@V?$hash_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@V?$hash_compare@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@stdext@@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVMovableObject@Ogre@@@std@@@2@@stdext@@@2@XZ"
+      },
+      {
+        "slot": 91,
+        "symbol": "?removeAndDestroyChild@SceneNode@Ogre@@UAEXG@Z",
+        "original": "0069fef4",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?removeAndDestroyChild@SceneNode@Ogre@@UAEXG@Z"
+      },
+      {
+        "slot": 92,
+        "symbol": "?removeAndDestroyChild@SceneNode@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0069fefa",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?removeAndDestroyChild@SceneNode@Ogre@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      },
+      {
+        "slot": 93,
+        "symbol": "?removeAndDestroyAllChildren@SceneNode@Ogre@@UAEXXZ",
+        "original": "0069ff00",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?removeAndDestroyAllChildren@SceneNode@Ogre@@UAEXXZ"
+      },
+      {
+        "slot": 94,
+        "symbol": "?showBoundingBox@SceneNode@Ogre@@UAEX_N@Z",
+        "original": "0069ff06",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?showBoundingBox@SceneNode@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 95,
+        "symbol": "?_addBoundingBoxToQueue@SceneNode@Ogre@@UAEXPAVRenderQueue@2@@Z",
+        "original": "0069ff0c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?_addBoundingBoxToQueue@SceneNode@Ogre@@UAEXPAVRenderQueue@2@@Z"
+      },
+      {
+        "slot": 96,
+        "symbol": "?getShowBoundingBox@SceneNode@Ogre@@UBE_NXZ",
+        "original": "0069ff12",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getShowBoundingBox@SceneNode@Ogre@@UBE_NXZ"
+      },
+      {
+        "slot": 97,
+        "symbol": "?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z",
+        "original": "0069ff18",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector3@2@ABVQuaternion@2@@Z"
+      },
+      {
+        "slot": 98,
+        "symbol": "?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z",
+        "original": "0069ff1e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?createChildSceneNode@SceneNode@Ogre@@UAEPAV12@ABVVector3@2@ABVQuaternion@2@@Z"
+      },
+      {
+        "slot": 99,
+        "symbol": "?findLights@SceneNode@Ogre@@UBEXAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@M@Z",
+        "original": "0069ff24",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?findLights@SceneNode@Ogre@@UBEXAAV?$vector@PAVLight@Ogre@@V?$allocator@PAVLight@Ogre@@@std@@@std@@M@Z"
+      },
+      {
+        "slot": 100,
+        "symbol": "?setFixedYawAxis@SceneNode@Ogre@@UAEX_NABVVector3@2@@Z",
+        "original": "0069ff2a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setFixedYawAxis@SceneNode@Ogre@@UAEX_NABVVector3@2@@Z"
+      },
+      {
+        "slot": 101,
+        "symbol": "?setDirection@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z",
+        "original": "0069ff30",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setDirection@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z"
+      },
+      {
+        "slot": 102,
+        "symbol": "?setDirection@SceneNode@Ogre@@UAEXMMMW4TransformSpace@Node@2@ABVVector3@2@@Z",
+        "original": "0069ff36",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setDirection@SceneNode@Ogre@@UAEXMMMW4TransformSpace@Node@2@ABVVector3@2@@Z"
+      },
+      {
+        "slot": 103,
+        "symbol": "?lookAt@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z",
+        "original": "0069ff3c",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?lookAt@SceneNode@Ogre@@UAEXABVVector3@2@W4TransformSpace@Node@2@0@Z"
+      },
+      {
+        "slot": 104,
+        "symbol": "?setAutoTracking@SceneNode@Ogre@@UAEX_NPAV12@ABVVector3@2@2@Z",
+        "original": "0069ff42",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setAutoTracking@SceneNode@Ogre@@UAEX_NPAV12@ABVVector3@2@2@Z"
+      },
+      {
+        "slot": 105,
+        "symbol": "?getAutoTrackTarget@SceneNode@Ogre@@UAEPAV12@XZ",
+        "original": "0069ff48",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getAutoTrackTarget@SceneNode@Ogre@@UAEPAV12@XZ"
+      },
+      {
+        "slot": 106,
+        "symbol": "?getAutoTrackOffset@SceneNode@Ogre@@UAEABVVector3@2@XZ",
+        "original": "0069ff4e",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getAutoTrackOffset@SceneNode@Ogre@@UAEABVVector3@2@XZ"
+      },
+      {
+        "slot": 107,
+        "symbol": "?getAutoTrackLocalDirection@SceneNode@Ogre@@UAEABVVector3@2@XZ",
+        "original": "0069ff54",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?getAutoTrackLocalDirection@SceneNode@Ogre@@UAEABVVector3@2@XZ"
+      },
+      {
+        "slot": 108,
+        "symbol": "?setVisible@SceneNode@Ogre@@UAEX_N0@Z",
+        "original": "0069ff5a",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?setVisible@SceneNode@Ogre@@UAEX_N0@Z"
+      },
+      {
+        "slot": 109,
+        "symbol": "?flipVisibility@SceneNode@Ogre@@UAEX_N@Z",
+        "original": "0069ff60",
+        "ok": true,
+        "how": "import thunk rgmain.dll!?flipVisibility@SceneNode@Ogre@@UAEX_N@Z"
+      },
+      {
+        "slot": 110,
+        "symbol": "?setTransform@RbxSceneNode@Ogre@@UAEXIABVMatrix4@2@@Z",
+        "original": "00681f90",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 111,
+        "symbol": "?getTransform@RbxSceneNode@Ogre@@UBEABVMatrix4@2@K@Z",
+        "original": "006818e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 112,
+        "symbol": "?hasTransform@RbxSceneNode@Ogre@@UBE_NK@Z",
+        "original": "00681a00",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 113,
+        "symbol": "?setSphere@RbxSceneNode@Ogre@@UAEXPAVSubMesh@2@ABVSphere@2@@Z",
+        "original": "00682350",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 114,
+        "symbol": "?getSphere@RbxSceneNode@Ogre@@UBEABVSphere@2@PBX@Z",
+        "original": "00682040",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 115,
+        "symbol": "?hasSphere@RbxSceneNode@Ogre@@UBE_NPBX@Z",
+        "original": "00682100",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "TwoDManager@Ogre": [
+      {
+        "slot": 0,
+        "symbol": "??_ETwoDManager@Ogre@@UAEPAXI@Z",
+        "original": "00684390",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?renderQueueStarted@TwoDManager@Ogre@@UAEXEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AA_N@Z",
+        "original": "006843b0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?renderQueueEnded@TwoDManager@Ogre@@UAEXEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AA_N@Z",
+        "original": "006843d0",
+        "ok": true,
+        "how": "bound"
+      }
+    ]
+  },
+  "scene_node_exe_vtable_0084f934": "client-import copy (import thunks), not a fork; emitted by RbxSceneManager",
+  "open": "Not built: RbxSceneNode constructor 00674160 (header-inline; emitted with AdornRbxGfx, inlined into the layout probe here), TwoDManager::render 006832b0 (4309 bytes). Ogre::RbxSky (0xd4, ctor 0067fd60 5120 bytes / dtor 0067fb50 / ??_G 0067fd40) and Ogre::VisualEngine (0x808, ctor 006786c0, dtor 0067a130, ??_G 0067c4b0) have layout evidence only: RbxSky +0x4c..+0x53 and VisualEngine +0x8 / most of +0x18..+0x7f7 are not derived, so no declaration is written (no placeholder members).",
+  "proposals": {
+    "RbxGraphics/AdornRbxGfx2008.h (owner: Adorn / AdornRbxGfx)": "Ogre::RbxSceneNode is now declared in native-headers/OgreRbxNode/RbxSceneNode2008.h (0x248, header-inline constructor 00674160 (SceneManager*, const String&), vtable 0084d30c with setTransform / getTransform / hasTransform / setSphere / getSphere / hasSphere at slots 110..115). AdornRbxGfx2008.h can include it in place of its forward declaration once its units add the Ogre include path (they already do).",
+    "Ogre::VisualEngine (exe-local, unowned)": "VisualEngine +0x14 is the Ogre::TwoDManager* (new(0x58) 0067bb22, then setup(+0x4 scene manager, +0xc render target, 100, true, false) 00682560); AdornRbxGfx 0066f920 / 0066f9c0 / 0066fa50 call addQuad 00682d60, primitive 00683000 and outlineRectangle 006830b0 on it; all declared in OgreRbxNode/TwoDManager2008.h."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; folded rows not counted; no active build, swap or credit."
+}
