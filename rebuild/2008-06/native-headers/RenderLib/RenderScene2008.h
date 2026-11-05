@@ -57,7 +57,12 @@ namespace RBX
 
 		public:
 			RenderSceneBase();                                               // 00504fd0
-			virtual ~RenderSceneBase();                                      // 005039d0 (??_G 00503a30)
+			virtual ~RenderSceneBase()                                       // 005039d0 (??_G 00503a30)
+			{
+				// header-inline: Render::RenderScene 00503a60 and RenderNew::RenderScene 007aaa30 inline it (vptr
+				// 00827424, then the chunk Array dtor); the out-of-line copy 005039d0 serves their EH unwind funclets
+				// (007cb533, 007ed3f3).
+			}
 
 			virtual void presetLighting(G3D::ReferenceCountedPointer<G3D::Sky> sky, G3D::LightingParameters skyParameters,
 			                            G3D::Color3 ambientTop, G3D::Color3 ambientBottom);   // 005039e0

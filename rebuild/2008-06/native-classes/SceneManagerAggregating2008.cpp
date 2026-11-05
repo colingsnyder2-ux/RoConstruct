@@ -34,5 +34,77 @@ namespace RBX
 		{
 			addToScene(chunk);
 		}
+
+		void AggregatingSceneManager::invalidateModel(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool isSleeping)
+		{
+			if (isSleeping)
+			{
+				invalidSleepingModels.insert(chunk);
+				// two empty loops follow each insert in the /Od original (xor / jne pairs 005402a5 / 005402a9 and
+				// 005402e4 / 005402e8): statements compiled out in this build, kept as empty statements
+				do {} while (0); do {} while (0);
+			}
+			else
+			{
+				invalidMovingModels.insert(chunk);
+				do {} while (0); do {} while (0);
+			}
+		}
+
+		void AggregatingSceneManager::removeModel(const G3D::ReferenceCountedPointer<Chunk>& chunk)
+		{
+			invalidSleepingModels.erase(chunk);
+			invalidMovingModels.erase(chunk);
+
+			G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
+			if (aggregate.notNull())
+			{
+				deconstructAggregate(aggregate);
+				removeFromScene(chunk);
+			}
+			else
+				removeFromScene(chunk);
+
+			dequeueSleepingChunk(chunk);
+		}
+
+		void AggregatingSceneManager::clear()
+		{
+			invalidSleepingModels.clear();
+			invalidMovingModels.clear();
+
+			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket> >::iterator iter = buckets.begin();
+			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket> >::iterator end = buckets.end();
+
+			while (iter != end)
+			{
+				iter->second->clear();
+				++iter;
+			}
+
+			clearScene();
+		}
+
+		void AggregatingSceneManager::setSleeping(const G3D::ReferenceCountedPointer<Chunk>& chunk, bool sleeping)
+		{
+			if (sleeping)
+			{
+				if (invalidMovingModels.erase(chunk) == 1)
+					invalidSleepingModels.insert(chunk);
+
+				queueSleepingChunk(chunk);
+			}
+			else
+			{
+				if (invalidSleepingModels.erase(chunk) == 1)
+					invalidMovingModels.insert(chunk);
+
+				G3D::ReferenceCountedPointer<AggregateChunk> aggregate = chunk->aggregate.createStrongPtr();
+				if (aggregate.notNull())
+					deconstructAggregate(aggregate);
+
+				dequeueSleepingChunk(chunk);
+			}
+		}
 	}
 }

@@ -87,6 +87,7 @@ namespace RBX
 				bool dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk);
 				void addToQueue(const G3D::ReferenceCountedPointer<Chunk>& chunk);
 				void optimize(AggregatingSceneManager& manager, double time);
+				void clear();                                                 // 005404b0 (AggregatingSceneManager::clear 0053f704)
 			};
 
 			struct BucketKey
@@ -104,6 +105,11 @@ namespace RBX
 			std::map<BucketKey, G3D::ReferenceCountedPointer<Bucket> > buckets;            // +0x08
 			std::set<G3D::WeakReferenceCountedPointer<Chunk> > invalidSleepingModels;      // +0x28
 			std::set<G3D::WeakReferenceCountedPointer<Chunk> > invalidMovingModels;        // +0x48
+
+			void deconstructAggregate(G3D::ReferenceCountedPointer<AggregateChunk> aggregate); // 005400f0 (by value:
+			                                                                  // removeModel 0053f640 copies the RCP)
+			void dequeueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk);        // 0053f470
+			void queueSleepingChunk(const G3D::ReferenceCountedPointer<Chunk>& chunk);          // 0053f340
 
 		public:
 			AggregatingSceneManager(RenderSceneBase* renderScene);            // 0053f0d0
