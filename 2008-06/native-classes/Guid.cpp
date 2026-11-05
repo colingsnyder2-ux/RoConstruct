@@ -12,27 +12,6 @@ void initLocalScope()
     localScope = &RBX::Name::declare(guid.c_str(), -1);
 }
 namespace RBX {
-__declspec(noinline) void makeGuidString(std::string& result)
-{
-    GUID guid;
-    CoCreateGuid(&guid);
-    wchar_t wide[64] = {0};
-    StringFromGUID2(guid, wide, 64);
-    char ansi[64];
-    WideCharToMultiByte(0, 0, wide, 64, ansi, 64, 0, 0);
-    result = ansi;
-}
-void Guid::generateGUID(std::string& result)
-{
-    makeGuidString(result);
-    result = "RBX" + result;
-    result.erase(40, 1);
-    result.erase(27, 1);
-    result.erase(22, 1);
-    result.erase(17, 1);
-    result.erase(12, 1);
-    result.erase(3, 1);
-}
 Guid::Guid()
 {
     static boost::once_flag flag = BOOST_ONCE_INIT;

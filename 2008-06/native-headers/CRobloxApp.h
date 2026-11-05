@@ -41,7 +41,7 @@ public:
     void startCrashReporter();                    // 00428180
 private:
     void* crashReporter;   // +2c (0 after construction)
-    std::string reportUrl; // +30 (role provisional)
+    std::string logIdentity; // +30, used in the log filename
 };
 
 // Crash-report uploader owned through CRobloxApp+0x10c: 28 bytes (new(0x1c) in InitInstance).

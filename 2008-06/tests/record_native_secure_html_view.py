@@ -19,7 +19,7 @@ INTERNAL = {
     '?classCSecureHtmlView@CSecureHtmlView@@2UCRuntimeClass@@B': 0x81b840,
     '??_7CSecureHtmlView@@6B@': 0x81b864,
     '?checkDialogUrl@@YAJPBD@Z': 0x41dcb0,      # same helper committed CRobloxDHtmlDialog.cpp defines
-    '?isApplicationUrl@@YA_NPBD@Z': 0x465b50,   # name provisional; body recovery open
+    '?isAdSyndicator@@YA_NPBD@Z': 0x465b50,   # name provisional; body recovery open
 }
 METHODS = [
     ('?GetRuntimeClass@CSecureHtmlView@@UBEPAUCRuntimeClass@@XZ', 0x465a50),
@@ -40,6 +40,6 @@ paths = [Path(__file__), ROOT / 'rebuild/2008-06/tests/native_bind.py', source, 
     'class': 'CSecureHtmlView', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': flags(), 'original_sha256': sha(original.path),
     'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths}, 'object_sha256': sha(obj),
     'layout': {'size': '0xf8', 'flag_f4': '0xf4 bool', 'evidence': 'CRuntimeClass 0081b840; constructor 00465a60 store; OnAmbientProperty test; destructors; compile-time test'},
-    'methods': rows, 'open': ['isApplicationUrl 00465b50 (480-byte URL check helper, declared only)'],
+    'methods': rows, 'open': ['isAdSyndicator 00465b50 (480-byte URL check helper, declared only)'],
     'scope': 'Inactive. 7 exact bodies (8 symbols) with verified targets. No active build, swap or credit.'}, indent=2) + '\n')
 print('PASS native CSecureHtmlView: %d exact symbols, targets verified' % len(rows))

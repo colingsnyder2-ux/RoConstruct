@@ -15,12 +15,16 @@ from roc import match, rebuild
 # Compile/check each selected provider once. Checker's exit status alone does not
 # reject nonexact bodies, so require its complete per-method exact summary too.
 checks = [
+    ('native-classes/ThreadName.cpp', ['00596e60=?currentThreadName']),
+    ('native-classes/ThreadNameStorage.cpp', ['00596d50=?init_foo@boost_detail@RBX']),
+    ('native-classes/ThreadNameState.cpp', []),
     ('native-classes/ThreadLogPath.cpp', ['00427890=?getLogPath@ThreadLogManager']),
     ('native-classes/MainLogManagerState.cpp', []),
     ('native-classes/ThreadLogFactory.cpp', ['0042a4f0=?currentThreadLogManager',
      '0042a490=?initializeThreadLogs', '00428cf0=??_GLogManager', '00429300=??_GThreadLogManager']),
     ('native-classes/LogManagerState.cpp', []),
     ('native-classes/LogManagerGet.cpp', ['00427950=?getLog@LogManager']),
+    ('native-classes/LogManagerDestructor.cpp', ['004285e0=??1LogManager']),
     ('native-classes/MainLogProvider.cpp', ['0042a5c0=?provideLog@MainLogManager']),
     ('native-classes/LogLifetime.cpp', ['005a6da0=??0Log@RBX', '005a6e60=??1Log@RBX', '005a6d10=?logTimeStamp']),
     ('native-classes/LogWriteEntry.cpp', ['005a6ef0=?writeEntry@Log@RBX']),
@@ -37,6 +41,15 @@ checks = [
      '00466d40=?onEvent@CSettingsExplorer', '00421d00=?OnReportSelChanged@CInstanceExplorer',
      '00420d20=??$setSelection@', '00420db0=??0CInstanceRecord', '00420790=?GetCaption@CNameItem']),
     ('native-classes/CMainFrameSettingsCommand.cpp', ['0042ee80=?handle_42ee80@CMainFrame']),
+    ('native-classes/CRenderSettingsFullscreen.cpp', ['00445250=?getFullscreenSize@CRenderSettings']),
+    ('native-classes/CWebToolboxPage.cpp', ['0046a590=?showPage@CWebToolbox']),
+    ('native-classes/CWebToolbox.cpp', ['0046a710=?OnInitialUpdate@CWebToolbox', '0046a850=?CreateObject@CWebToolbox', '0046a8e0=?OnGetExternal@CWebToolbox']),
+    ('native-classes/CSecureHtmlView.cpp', ['00465a60=??0CSecureHtmlView', '00465a80=??1CSecureHtmlView', '00465d70=?OnBeforeNavigate2@CSecureHtmlView']),
+    ('native-classes/MetadataExplorerOrder.cpp', ['004225b0=?explorerOrder@Class@Metadata']),
+    ('native-classes/PlayersSuperSafe.cpp', ['00497600=?superSafeOn@Players@Network']),
+    ('native-classes/SelectionIterators.cpp', ['00413d10=?begin@Selection@RBX', '00413d40=?end@Selection@RBX']),
+    ('native-classes/BrickColorConversions.cpp', ['005b6180=?color3uint8@BrickColor@RBX', '005b62a0=?closest@BrickColor@RBX']),
+    ('native-classes/InstanceChildAcceptance.cpp', ['00423700=?canAcceptChildren@Instance@RBX', '005574b0=?isAncestorOf@Instance@RBX']),
     ('native-classes/SettingsDialogShow.cpp', ['00466eb0=?showSettingsDialog']),
     ('native-classes/CSettingsDialog.cpp', ['00466e10=??0CSettingsDialog', '00466ca0=??1CSettingsDialog',
      '00467030=?OnInitDialog@CSettingsDialog', '00466c00=?OnResetSettings@CSettingsDialog']),
@@ -77,7 +90,8 @@ checks = [
     ('native-classes/BrowserPopup.cpp', ['0040f050=?showBrowserPopup']),
     ('native-classes/CChildFrame.cpp', ['00412af0=?GetThisClass@CChildFrame', '00412b80=?GetThisClass@CRbxChildFrame', '00412c90=?CreateObject@CChildFrame', '00412cf0=?CreateObject@CRbxChildFrame', '00412e60=?OnGetMinMaxInfo@CRbxChildFrame']),
     ('native-classes/CScriptDoc.cpp', ['004638a0=?GetThisClass@CScriptDoc', '004647b0=?CreateObject@CScriptDoc']),
-    ('native-classes/CRobloxViewMethods.cpp', ['00458e70=?GetThisClass@CRobloxView', '004593b0=?OnActivateView', '00459570=?showHelp']),
+    ('native-classes/CRobloxViewMethods.cpp', ['00458e70=?GetThisClass@CRobloxView', '004593b0=?OnActivateView']),
+    ('native-classes/CRobloxViewHelp.cpp', ['00459570=?showHelp@CRobloxView', '0040e160=??HATL@@']),
     ('native-classes/ActiveDocument.cpp', ['00405aa0=?setActiveDocument']),
     ('native-classes/CIDEDocManager.cpp', ['00449910=??0CIDEDocManager', '0044a1a0=??_GCRbxDocTemplate', '0044a1c0=??_GCRbxPlayDocTemplate']),
     ('native-classes/CRbxDocTemplate.cpp', ['0044a170=?CreateNewFrame@CRbxDocTemplate', '004496f0=?RemoveDocument@CRbxPlayDocTemplate']),
@@ -162,7 +176,7 @@ print('sources:', len(checks), 'checked in', round(time.monotonic() - started, 2
 
 base = ROOT / 'rebuild/2008-06/out/native-current-audit'
 spec = json.loads((base / 'native-doc-link-command.json').read_text())
-args = []
+args = [str(ROOT / "rebuild/2008-06/out/native-layouts/CheckCRobloxViewHelp.obj"), str(ROOT / "rebuild/2008-06/out/native-layouts/CheckInstanceChildAcceptance.obj")]
 for arg in spec['arguments']:
     if arg == 'RobloxShellNativeDoc.obj':
         args.append(str(ROOT / 'rebuild/2008-06/out/native-layouts/CheckNativeAppEntryLinkProbe.obj'))
@@ -190,10 +204,11 @@ for name in ('CRobloxView', 'CMainFrameToolbars', 'CMultiPlayerPane', 'AppOpenFi
              'CRobloxWndActive', 'CSelectionPropGridSelection', 'CSelectionPropGridEvents',
              'CPropGridEvents', 'CPropGridInstances', 'CSelectionPropGrid', 'CRobloxViewInit', 'SelectionGroup',
              'ViewVerbs', 'InsertModelFromRobloxVerb', 'ChangeHistoryBase', 'ViewCommandRouting',
-             'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'SettingsDialogShow', 'CSettingsDialog',
+             'CMainFrameNewDocument', 'CMainFrameSettingsCommand', 'CRenderSettingsFullscreen', 'CWebToolboxPage', 'CWebToolbox', 'CSecureHtmlView', 'MetadataExplorerOrder', 'PlayersSuperSafe', 'SelectionIterators', 'BrickColorConversions', 'SettingsDialogShow', 'CSettingsDialog',
              'CInstanceExplorer', 'CChatPrompt', 'CMainFrameMemoryLabels', 'CRobloxReportView',
              'LogLifetime', 'LogWriteEntry', 'LogFormatTime', 'LogFormatMemory', 'MainLogProvider', 'LogManagerGet',
-             'LogManagerState', 'ThreadLogFactory', 'ThreadLogPath', 'MainLogManagerState'):
+             'LogManagerState', 'LogManagerDestructor', 'ThreadLogFactory', 'ThreadLogPath', 'MainLogManagerState',
+             'ThreadName', 'ThreadNameState'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))
 for name in ('ActiveDocViewRefresh', 'CDataModelPropGridUpdate', 'CSelectionCaptionUpdate'):
     args.append(str(ROOT / ('rebuild/2008-06/out/native-layouts/Check' + name + '.obj')))

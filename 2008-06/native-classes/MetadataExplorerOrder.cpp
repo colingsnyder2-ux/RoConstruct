@@ -1,0 +1,12 @@
+#include "reflection/Metadata.h"
+
+int RBX::Reflection::Metadata::Class::explorerOrder() const
+{
+    if (unknown_150)
+        return unknown_150;
+    if (dynamic_cast<Class*>(getParent())) {
+        if (dynamic_cast<Class*>(getParent())->explorerOrder())
+            return 1;
+    }
+    return 0;
+}

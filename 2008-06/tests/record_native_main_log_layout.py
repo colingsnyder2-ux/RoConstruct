@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import struct
 import subprocess
@@ -32,10 +33,15 @@ jobs = [
     ('native-classes/ThreadNameStorage.cpp', ['00596d50=?init_foo@boost_detail@RBX']),
     ('native-classes/ThreadNameState.cpp', []),
 ]
-for source, checks in jobs:
+assert len({Path(source).stem for source, _ in jobs}) == len(jobs)
+def compile_job(job):
+    source, checks = job
     run = subprocess.run([sys.executable, str(base / 'tests/check_native_class.py'), source] + checks,
                          env=env, cwd=ROOT, capture_output=True, text=True)
     assert run.returncode == 0 and '%d/%d exact' % (len(checks), len(checks)) in run.stdout, run.stdout + run.stderr
+
+with ThreadPoolExecutor(max_workers=3) as pool:
+    list(pool.map(compile_job, jobs))
 
 raw = (out / 'CheckNativeMainLogLayout.obj').read_bytes()
 bodies = {name: body for name, body, refs in match.coff_functions(raw)}

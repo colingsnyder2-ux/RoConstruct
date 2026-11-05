@@ -1,59 +1,52 @@
-// from server: 56% by colin
-struct Sub1 {
+// from server: 57% by Intel
+struct VectorBase {
+    int* begin;
+    int* end;
+    int* capacity;
+};
+
+struct SomeObject {
+    char pad[0x14];
+    VectorBase vec1;
+    char pad2[0xC];
+    void* ptrAt20;
+};
+
+struct InnerObject {
     char pad[0x104];
+    VectorBase vec2;
+};
+
+struct AnotherObject {
+    char pad[0xF8];
     int* begin;
     int* end;
 };
 
-struct Sub2 {
-    char pad[0xf8];
-    int* begin;
-    int* end;
-};
+int __stdcall sub_5618e0(void* thisptr);
+InnerObject* __stdcall sub_562300(VectorBase* thisptr, int arg);
 
-struct Inner {
-    char pad[0x14];
-    int field14;
-};
-
-struct Outer {
-    char pad[0x14];
-    Inner inner;
-    char pad2[8];
-    void* ptr20;
-};
-
-struct Target {
-    char pad[0x14];
-    Inner inner;
-    char pad2[8];
-    void* ptr20;
-    bool method();
-};
-
-extern "C" Sub1* __fastcall func_562300(Inner* self, int, int);
-extern "C" Sub2* __fastcall func_5618e0(void* self);
-
-bool Target::method()
+bool __fastcall FollowCameraCommand_isChecked(SomeObject* thisptr)
 {
-    Sub1* s1 = func_562300(&this->inner, 1, 0);
-    int* b = s1->begin;
-    if (b == 0)
+    InnerObject* inner = sub_562300(&thisptr->vec1, 1);
+    VectorBase* vec2 = &inner->vec2;
+    int* begin = vec2->begin;
+    int* end = vec2->end;
+
+    if (!begin || begin == end)
         return false;
-    int* e = s1->end;
-    if ((e - b) >> 3 == 0)
+
+    void* ptr = thisptr->ptrAt20;
+    if (ptr)
+        sub_5618e0(ptr);
+
+    AnotherObject* another = (AnotherObject*)ptr;
+    int* anotherBegin = another->begin;
+    int* anotherEnd = another->end;
+
+    if (!anotherBegin)
         return false;
-    void* p = this->ptr20;
-    Sub2* s2;
-    if (p != 0)
-        s2 = func_5618e0(p);
-    else
-        s2 = 0;
-    int* b2 = s2->begin;
-    if (b2 == 0)
-        return false;
-    int* e2 = s2->end;
-    if (((e2 - b2) >> 2) != 1)
-        return false;
-    return true;
+
+    int count = (anotherEnd - anotherBegin) >> 2;
+    return count == 1;
 }

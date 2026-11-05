@@ -1,6 +1,6 @@
 """Verify the inactive native CRenderSettings recovery: method bodies and their call/data targets.
 
-Compiles native-classes/CRenderSettings.cpp with the document-swap flags plus /fp:fast (the unit's x87
+Compiles the settings unit and fullscreen getter with document-swap flags plus /fp:fast (the unit's x87
 ordering needs it). Each row must be relocation-masked exact against the original
 EXE, then every relocation is bound to the address the original instruction uses:
   * imports: IAT slot / jmp thunk resolves to the same DLL export name;
@@ -20,13 +20,15 @@ import hashlib
 
 SIDE = json.loads(Path(__file__).with_name('record_native_render_settings.json').read_text())
 source = root / 'rebuild/2008-06/native-classes/CRenderSettings.cpp'
+getter_source = root / 'rebuild/2008-06/native-classes/CRenderSettingsFullscreen.cpp'
+getter_obj = root / 'rebuild/2008-06/out/native-layouts/NativeRenderSettingsFullscreen.obj'
 fixture = root / 'rebuild/2008-06/tests/NativeRenderSettingsLayout.cpp'
 out = root / 'rebuild/2008-06/out/native-layouts'
 out.mkdir(parents=True, exist_ok=True)
 base = json.loads((root / 'work/2008-06/shared-layouts/document-swap-current.json').read_text())
 flags = [x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')] + ['/fp:fast']
 obj = out / 'NativeRenderSettings.obj'
-for path, target in [(source, obj), (fixture, out / 'NativeRenderSettingsLayout.obj')]:
+for path, target in [(source, obj), (getter_source, getter_obj), (fixture, out / 'NativeRenderSettingsLayout.obj')]:
     code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + ['/Fo' + str(target), str(path)], out)
     assert code == 0, log
 pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
@@ -150,6 +152,10 @@ def vtable_identity(symbol, value):
 raw = obj.read_bytes()
 sections, symbols, definitions, _ = match._coff_data_index(raw)
 bodies = {n: (b, r) for n, b, r in match.coff_functions(raw)}
+getter_bodies = {n: (b, r) for n, b, r in match.coff_functions(getter_obj.read_bytes())}
+getter_name = '?getFullscreenSize@CRenderSettings@@QBE?AVVector2int16@G3D@@XZ'
+assert getter_name in getter_bodies and not getter_bodies[getter_name][1]
+bodies[getter_name] = getter_bodies[getter_name]
 def relocations(section):
     table = sections[section]
     return [struct.unpack_from('<IIH', raw, table[5] + 10 * i) for i in range(table[7])]
@@ -163,6 +169,8 @@ def original(address, size, raw_range):
     return t, trel
 
 def bind(name, address, target):
+    if name == getter_name:
+        return {}, [], {}
     start, section = definitions[name]
     body_size = len(bodies[name][0])
     code = raw[sections[section][4] + start:]
@@ -267,19 +275,19 @@ while True:
     alive = keep
 nonexact += pending
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-paths = [Path(__file__), Path(__file__).with_name('record_native_render_settings.json'), source, fixture,
+paths = [Path(__file__), Path(__file__).with_name('record_native_render_settings.json'), source, getter_source, fixture,
          root / 'rebuild/2008-06/native-headers/CRenderSettings.h']
 if nonexact:
     (root / 'work/2008-06/shared-layouts/render-settings-failed.json').write_text(json.dumps({
         'scope': 'Failed native audit; no class-swap, ABI or runtime acceptance.',
         'flags': flags, 'failures': nonexact, 'verified_methods': results,
         'sources': {str(p.relative_to(root)): sha(p) for p in paths},
-        'object_sha256': sha(obj),
+        'object_sha256': sha(obj), 'getter_object_sha256': sha(getter_obj),
     }, indent=2) + '\n')
 assert not nonexact, nonexact
 (root / 'work/2008-06/shared-layouts/render-settings-working.json').write_text(json.dumps({
     'class': 'CRenderSettings', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)', 'flags': flags,
-    'sources': {str(p.relative_to(root)).replace('\\', '/'): sha(p) for p in paths}, 'object_sha256': sha(obj),
+    'sources': {str(p.relative_to(root)).replace('\\', '/'): sha(p) for p in paths}, 'object_sha256': sha(obj), 'getter_object_sha256': sha(getter_obj),
     'layout': {'size': '0x17c', 'evidence': 'Creatable<Instance>::create<CRenderSettings> 00408ed0 malloc(0x17c); constructor 00448c60, destructor 00448e60, getters/setters; compile-time sizeof/offsetof test'},
     'methods': results,
     'bounds': ['00448e60 (80 bytes) and 00448eb0 (31 bytes) are exact as raw ranges; the current analysis has one 111-byte function at 00448e60 covering both (BOUNDS evidence for the server host)'],

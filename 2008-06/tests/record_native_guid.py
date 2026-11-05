@@ -25,21 +25,28 @@ flags += ["/FoNativeGuid.obj", str(source)]
 code, log = rebuild.run(rebuild.toolchain(21022), "cl", flags, out)
 assert code == 0, log
 obj = (out / "NativeGuid.obj").read_bytes()
+generation_source = source.with_name("GuidGeneration.cpp")
+generation_flags = flags[:-2] + ["/FoNativeGuidGeneration.obj", str(generation_source)]
+code, generation_log = rebuild.run(rebuild.toolchain(21022), "cl", generation_flags, out)
+assert code == 0, generation_log
+generation_obj = (out / "NativeGuidGeneration.obj").read_bytes()
 results = []
 for address, prefix in (("005a8300", "??0Guid@RBX@@"), ("005a8260", "?initLocalScope@@"), ("005a8140", "?generateGUID@Guid@RBX@@"), ("005a80d0", "?makeGuidString@RBX@@")):
+    current_obj = generation_obj if address in ("005a8140", "005a80d0") else obj
     target, target_relocations, _ = match.target("2008-06", address)
-    name, body, relocations = next((name, body, relocs) for name, body, relocs in match.coff_functions(obj)
+    name, body, relocations = next((name, body, relocs) for name, body, relocs in match.coff_functions(current_obj)
                                    if name.startswith(prefix))
     assert match.exact_match(target, target_relocations, body, relocations), name
     results.append(dict(address=address, symbol=name, size=len(body), relocation_normalized_exact=True))
-sections, symbols, definitions, _ = match._coff_data_index(obj)
 for address, expected in (("005a8300", [("?call_once@boost@@", 0x557330)]), ("005a8260", [("?generateGUID@Guid@RBX@@", 0x5a8140), ("?declare@Name@RBX@@", 0x553f90)]), ("005a8140", [("?makeGuidString@RBX@@", 0x5a80d0)])):
+    current_obj = generation_obj if address == "005a8140" else obj
+    sections, symbols, definitions, _ = match._coff_data_index(current_obj)
     result = next(row for row in results if row["address"] == address)
     start, section = definitions[result["symbol"]]
     table = sections[section]
     relocs = {}
     for index in range(table[7]):
-        offset, symbol, kind = struct.unpack_from("<IIH", obj, table[5] + 10 * index)
+        offset, symbol, kind = struct.unpack_from("<IIH", current_obj, table[5] + 10 * index)
         if offset >= start:
             relocs[offset - start] = symbols[symbol][0]
     original, _, _ = match.target("2008-06", address)
@@ -51,7 +58,7 @@ for address, expected in (("005a8300", [("?call_once@boost@@", 0x557330)]), ("00
         offset, symbol = next((offset, symbol) for offset, symbol in relocs.items() if symbol.startswith(prefix))
         assert calls[offset] == target, (address, symbol, calls.get(offset), target)
         result["verified_direct_calls"].append(dict(offset=offset, symbol=symbol, target=hex(target)))
-paths = [source, ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", Path(__file__)]
+paths = [source, generation_source, ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", Path(__file__)]
 receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
                compiler_build=21022, flags=flags, compile_exit=code, methods=results,

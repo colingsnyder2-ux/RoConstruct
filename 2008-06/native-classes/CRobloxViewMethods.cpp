@@ -182,25 +182,6 @@ void CRobloxView::OnDestroy() {
     CView::OnDestroy();
 }
 
-// Helpers in the browser-view unit: 004060d0 builds the site address, 0040e160 appends a path,
-// 0040f050 opens the popup window for it.
-CString applicationBaseUrl();
-CString fn_0040e160(const CString&, const char*);
-class CBrowserView;
-CBrowserView* showBrowserPopup(RECT, CWnd*, CString, IDispatch*);
-
-// 00459570: help popup, centred in the client area with a 12 pixel margin.
-// 0040f050 takes a trailing int (0); 004060d0 takes none.
-void CRobloxView::showHelp() {
-    RECT client;
-    ::GetClientRect(window.m_hWnd, &client);
-    ::InflateRect(&client, -12, -12);
-    client.right = (client.right - client.left) / 2;
-    int height = client.bottom - client.top;
-    client.bottom = std::min(480, height) - client.top;
-    showBrowserPopup(client, &window, fn_0040e160(applicationBaseUrl(), "/Game/Help.aspx"), NULL);
-}
-
 // The target calls CString::operator PCXSTR through the MFC import, so nothing is expanded here.
 #pragma inline_depth(0)
 // 00459420: choose a model file and insert it into the workspace.

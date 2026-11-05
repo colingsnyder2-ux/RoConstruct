@@ -29,11 +29,6 @@ GlobalSettingsItem<Class, ClassName>::~GlobalSettingsItem()
 
 template CRenderSettings& RBX::GlobalSettingsItem<CRenderSettings, sRenderSettings>::singleton();
 
-G3D::Vector2int16 CRenderSettings::getFullscreenSize() const
-{
-    return fullscreenSize;
-}
-
 using RBX::Reflection::EnumPropDescriptor;
 using RBX::Reflection::PropDescriptor;
 using RBX::Reflection::BoundProp;
