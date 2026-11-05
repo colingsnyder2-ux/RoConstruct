@@ -276,6 +276,50 @@ def build_payloads(new, cap=None):
         'timestamp': datetime.now(timezone.utc).isoformat()}]} for i, body in enumerate(bodies)]
 
 
+def format_payload(body, summary, rows):
+    """Player-digest layout with native statuses and original uncut file links."""
+    embed = body['embeds'][0]
+    original = embed['description']
+    lines = original.splitlines()
+    links = [line for line in lines if line.startswith('[')]
+    credit = next((line for line in lines if line.startswith(('**Contributor:**', '**Commit author:**'))), 'Unknown contributor')
+    title = '✏️ Changed native files' if '✏️ Changed native files' in original else '📄 New native files'
+    fields, chunk = [], []
+    for line in links:
+        if chunk and len('\n'.join(chunk + [line])) > 1024:
+            fields.append({'name': title, 'value': '\n'.join(chunk), 'inline': False})
+            chunk = []
+        chunk.append(line)
+    if chunk:
+        fields.append({'name': title, 'value': '\n'.join(chunk), 'inline': False})
+    fields += [
+        {'name': '🏆 Workers', 'value': credit, 'inline': True},
+        {'name': '✅ Batch', 'value': '**%d new · %d changed files**' % (
+            sum(row[4] == 'new' for row in rows), sum(row[4] != 'new' for row in rows)), 'inline': True}]
+    models, seen = [], set()
+    for slug, branch, sha, path, kind in rows:
+        draft = re.match(r'^drafts/files/([0-9a-f]{64})/', path)
+        if not draft or draft[1] in seen:
+            continue
+        seen.add(draft[1])
+        try:
+            model = json.loads(git('show', sha + ':drafts/bundles/' + draft[1] + '.json', check=False)).get('model')
+        except (ValueError, TypeError):
+            model = None
+        if model:
+            model = re.sub(r'([\\`*_{}\[\]()<>|~])', r'\\\1', ' '.join(str(model).split())[:120])
+            if model not in models:
+                models.append(model)
+    fields.append({'name': '🔧 Models', 'value': '\n'.join(models) or 'Unknown', 'inline': True})
+    if len(lines) > 1:
+        fields.append({'name': '📦 Source', 'value': lines[1].split(' · ', 1)[-1], 'inline': False})
+    if 'Inactive draft upload' in original:
+        fields.append({'name': '📝 Draft status', 'value': 'Unverified upload · saved for review', 'inline': False})
+    embed['description'] = summary
+    embed['fields'] = fields
+    return body
+
+
 def post_files(new, log=print, on_sent=None):
     from roc.reports import server_mines_webhook
     url = server_mines_webhook()
@@ -288,7 +332,9 @@ def post_files(new, log=print, on_sent=None):
         log('native progress unavailable: %s' % error)
         summary = 'Native progress snapshot unavailable; file uploads remain unverified.'
     for body in payloads:
-        body['embeds'][0]['description'] = summary + '\n\n' + body['embeds'][0]['description']
+        content = body['embeds'][0]['description']
+        rows = [row for row in new if link(row[0], row[2], row[3]) in content]
+        format_payload(body, summary, rows)
     if not url:
         log('no server_mines_webhook configured; %d new native file(s) not posted' % len(new))
         return False
@@ -301,8 +347,9 @@ def post_files(new, log=print, on_sent=None):
             log('webhook post failed: %s' % error)
             return False
         if on_sent:
-            description = body['embeds'][0]['description']
-            on_sent([row for row in new if link(row[0], row[2], row[3]) in description])
+            embed = body['embeds'][0]
+            content = '\n'.join([embed['description']] + [field['value'] for field in embed.get('fields', [])])
+            on_sent([row for row in new if link(row[0], row[2], row[3]) in content])
         time.sleep(1)
     log('posted %d new or changed native file(s) in %d message(s)' % (len(new), len(payloads)))
     return True

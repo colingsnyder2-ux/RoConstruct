@@ -32,8 +32,9 @@ def test_native_digest_uses_shared_progress_without_credit(monkeypatch, tmp_path
     assert files.post_files([row], on_sent=acknowledged.extend)
     description = sent[0]['embeds'][0]['description']
     field = progress_description(snapshot)
-    assert description.startswith(field + '\n\n')
+    assert description == field
+    assert sent[0]['embeds'][0]['fields'][0]['name'] == '📄 New native files'
     assert len(description) <= 4096
     assert '60.00%' in field and 'no runtime activation or server credit' in field
-    assert sum(field.count(c) for c in ('🟪', '🟧', '🩷', '⬜')) == 26  # 23 cells + legend
+    assert sum(field.count(c) for c in ('🟪', '🟧', '🩷', '⬜')) == 27  # 23 cells + four-status legend
     assert len(field) <= 1024 and acknowledged == [row]
