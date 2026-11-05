@@ -71,8 +71,8 @@ No fork, branch or native integration submission is needed to share drafts. Ordi
 function matching still uses `roc submit`. Owner integration follows
 `docs/DRAFT_INTEGRATION.md`; only independently verified server receipts grant credit.
 The owner's scheduled integration task is authorized to commit/push reviewed native changes
-directly to RoConstruct-findings main/workspace. Findings is the native authority;
-local origin branches are not a native integration destination. Optional coordination
+directly to RoConstruct work/workspace. Findings is the native authority;
+retired feature branches are not native integration destinations. Optional coordination
 notes are sparse advisory context; file leases remain authoritative.
 
 ## New native files on the Integration Digest webhook

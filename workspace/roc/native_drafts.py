@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 16 * 1024 * 1024
 PREFIXES = ('rebuild/', 'roc/', 'tests/', 'docs/', 'research/', 'benchmarks/',
             'packaging/', 'work/2008-06/shared-layouts/', 'work/native-candidates/')
-ROOT_FILES = ('roc.py','roc.cmd','roc.sh','install.cmd','install.sh','CLAUDE.md','AGENTS.md')
+ROOT_FILES = ('roc.py','roc.cmd','roc.sh','install.cmd','install.sh','CLAUDE.md','AGENTS.md','README.md')
 SUFFIXES = ('.cpp', '.c', '.cc', '.cxx', '.h', '.hpp', '.inl', '.inc', '.ipp', '.def', '.rc',
             '.py', '.json', '.jsonl', '.md', '.txt', '.ps1', '.sh', '.cmd', '.bat', '.cmake',
             '.yml', '.yaml', '.toml', '.js', '.html', '.css', '.svg')
