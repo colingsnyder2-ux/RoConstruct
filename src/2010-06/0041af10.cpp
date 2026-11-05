@@ -1,0 +1,12 @@
+// from server: 100% by auto
+// roc 2010-06 0041af10  unit: CXTPReportGroupRow_Batch  size: 8 bytes
+// Make this compile to the exact bytes below, then: roc check 2010-06 0041af10
+//
+// 0041af10  8b01                 mov eax, dword ptr [ecx]
+// 0041af12  ffa0bc010000         jmp dword ptr [eax + 0x1bc]
+// library xtp-13.2.1/Source\Calendar\XTPCalendarControl.cpp (function ??_9CXTPCalendarControl@@$BBLM@AE)
+
+// roc-lang: cpp
+// roc-cl: 30729
+// roc-flags: /O2 /GS- /MD
+// roc-lib: xtp-13.2.1 Source/Calendar/XTPCalendarControl.cpp

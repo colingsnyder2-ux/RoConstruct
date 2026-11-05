@@ -1,0 +1,14 @@
+// from server: 100% by colin
+namespace ns_ROCX000004 {
+struct S
+{
+    unsigned char padding[0x138];
+    unsigned int flags;
+    int get(unsigned int);
+};
+
+int S::get(unsigned int index)
+{
+    return (flags & (1u << index)) != 0;
+}
+}

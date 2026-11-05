@@ -1,0 +1,57 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x63fad0",
+      "size": 7,
+      "symbol": "?onMouseIdle@GrabTool@RBX@@EAEXABVUIEvent@2@@Z",
+      "bindings": {}
+    },
+    {
+      "address": "0x63fae0",
+      "size": 85,
+      "symbol": "?onMouseHover@GrabTool@RBX@@EAEXABVUIEvent@2@@Z",
+      "bindings": {
+        "?ignoreVector3@MouseCommand@RBX@@0VVector3@G3D@@A": "0x97bee0",
+        "?getUnlockedPartByLocalCharacter@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@AAVVector3@G3D@@@Z": "0x616000",
+        "??_C@_0P@LLIFPKGM@ArrowFarCursor?$AA@": "0x843c14",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c",
+        "??_C@_0M@NEEHHCEG@ArrowCursor?$AA@": "0x833850",
+        "??_C@_0L@BLHFJFLM@DragCursor?$AA@": "0x843a60"
+      }
+    },
+    {
+      "address": "0x63fca0",
+      "size": 239,
+      "symbol": "?onMouseDown@GrabTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "bindings": {
+        "__ehhandler$?onMouseDown@GrabTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z": "0x7da998",
+        "?getUnlockedPartByLocalCharacter@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@AAVVector3@G3D@@@Z": "0x616000",
+        "??0?$vector@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@QAE@XZ": "0x4293d0",
+        "?getTopSelectable3d@MouseCommand@RBX@@SAPAVInstance@2@PAVPartInstance@2@@Z": "0x6157a0",
+        "?push_back@?$vector@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@QAEXABQAVInstance@RBX@@@Z": "0x4213a0",
+        "?onMouseDown@DragTool@RBX@@SAPAVMouseCommand@2@PAVPartInstance@2@ABVVector3@G3D@@ABV?$vector@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@ABVUIEvent@2@PAVWorkspace@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x660550",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "address": "0x63fc20",
+      "size": 96,
+      "symbol": "?isSticky@GrabTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?isSticky@GrabTool@RBX@@UBEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0GrabTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x63fba0"
+      }
+    }
+  ],
+  "source_sha256": "6d012c27fce4514d346627d6f7a5fba778a2847ccb7aa3cc427c774644d1fa8b",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "6dc7db7a42d56b2be61c078cff7a9a9de2e5926917694c443c63164924f824fa",
+  "drag_header_sha256": "ee08d626d86af02a8438fee8fa3fbd140aacb69288b658f9ba05ecc78535e87e",
+  "drag_overlay_sha256": "44bcaff398d2ea785117a0170ca0235f183ba6fb286e07654723beaa86af612a",
+  "model_header_sha256": "723de2380294fc64d7c99450789ed4cf71195dd453cb321f2d26fd021752cd33",
+  "workspace_header_sha256": "dcd4fbdea8091b0d2fc13c2b662aca1ccf31608375a0268d81b9c217127d249b",
+  "observer_sha256": "bbfe6d362bc62f8484cea6285bfba33f149f745745d114b40e20da1e02d45b14"
+}

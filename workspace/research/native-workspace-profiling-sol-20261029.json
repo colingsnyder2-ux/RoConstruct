@@ -1,0 +1,134 @@
+{
+  "model": "gpt-6.1-sol",
+  "client": "2008-06",
+  "workspace": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372",
+  "status": "workspace_three_accepted_next_twelve_linked_verification_running",
+  "workspace_camera": {
+    "unique_local_exacts": [
+      "005a5200",
+      "005a5710",
+      "005a59e0"
+    ],
+    "ambiguous_local_exact": "005a15c0",
+    "losses": [],
+    "snapshot": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\WorkspaceCamera",
+    "runtime_dependency": "Constructor initializes cameraTemplate through Creatable::create<Camera>(); deliberately retained after automatic minimization removed it. Recursive search uses one child pointer for both RTTI and recursion.",
+    "evidence": "RTTI0093ab54 is Camera. Native currentCamera shared_ptr3fc; cameraTemplate shared_ptr404 created by0045db40. checkCamera clones prototype if recursive Camera lookup empty; then parents clone and sets CurrentCamera without unparenting old.",
+    "job": "c13640743d614ab99833830c9b3f3078",
+    "server_state": "accepted",
+    "local_linked_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\work\\native-try\\submit\\linked-preflight-1793262765486208400\\preflight-receipt.json",
+    "local_linked_gains": [
+      "005a5200",
+      "005a5710",
+      "005a59e0"
+    ],
+    "local_linked_losses": [],
+    "server_credits": 3,
+    "server_losses": 0,
+    "server_receipt": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\accepted-native-batch-c1364074.json"
+  },
+  "profiling": {
+    "unique_local_exacts": [
+      "005c3ed0",
+      "005c3f20",
+      "005c3f40",
+      "005c3f60",
+      "005c3fd0",
+      "005c4080",
+      "005c4120"
+    ],
+    "ambiguous_local_exacts": [
+      "005c43a0",
+      "005c43d0"
+    ],
+    "losses": [],
+    "snapshot": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\Profiling",
+    "runtime_dependencies": "Keep bucketTimeSpan(0.01) and inline getTotalTime() returning wallTimeSpan even when automatic minimizer drops them. Both retained and recompiled.",
+    "evidence": "Native Profiler005c4340 loops2048 entries stride24; each two doubles + int. Const double0094f638 equals0.01. Native RTTI838c54 Profiler,838c5c CodeProfiler,838c64 CountProfiler. CountProfiler accepts unsigned count, not HANDLE. Mark24 uses section, enclosingMark, boolframeTick, doublestartTime; wall-time elapsed charged to section and excluded from unrelated enclosing Mark.",
+    "type_identity": "Native RTTI838c64 names CountProfiler. SDK ThreadProfiler declaration is renamed explicitly, then its old initialized/HANDLE API is replaced with unsigned counter state/sample. This is a native class rename, no appended snippet class."
+  },
+  "next": "After linked/server checks, recover Workspace ctor zero-initialization before profiler allocations and native profiler hierarchy. Existing ctor partial blocks and proof preserved in workspace-camera-ctor.json.",
+  "clump_layout_evidence": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\clump-native-ctor-layout.json",
+  "additional_partial": {
+    "file": "App/v8datamodel/CharacterAppearance.cpp",
+    "address": "005d4c40",
+    "snapshot": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\CharacterAppearance",
+    "status": "compiled_partial_no_losses_not_adopted",
+    "change": "Restore Instance::onAncestorChanged(event); remaining diff is native dynamic_cast<Clothing*> plus Clothing update branch; Clothing absent old SDK.",
+    "other_blockers": {
+      "NullTool00617ff0": "Requires missing ClickDetector family, MouseCommand::distanceToCharacter, first-person guard.",
+      "ToolsArrow00617780": "Requires Decal dragging and MouseCommand::findSelectedDecal with true six-argument DragTool API; old SDK lacks these."
+    }
+  },
+  "instance_fullname": {
+    "target": "005574d0",
+    "file": "App/v8tree/Instance.cpp",
+    "status": "local_exact_no_losses_reverified",
+    "edits": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\instance-fullname-native.json",
+    "evidence": "Stored target returns parent->getFullName()+dot+name when grandparent exists, name for children of root, empty literal for root. Genuine later Instance API confirms const method.",
+    "snapshot": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\InstanceFullName"
+  },
+  "lua_safe_tostring": {
+    "target": "0061c790",
+    "status": "local_exact_no_losses",
+    "edits": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\lua-safe-tostring-native.json",
+    "source_evidence": "Genuine2016 App/script/LuaAtomicClasses.cpp defines safe_lua_tostring with static const char* empty=\"\", lua_tostring, then conditional fallback. Target loads mutable static pointer95b1cc to empty literal80b716. Actual API declared lua/lua.hpp.",
+    "snapshot": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\LuaSafeString"
+  },
+  "script_start_partial": {
+    "target": "005affa0",
+    "status": "local_exact_no_losses_retained",
+    "evidence": "work/native-try/objects/39b18088104adf0d8b6f/ScriptContext.evidence.json",
+    "blocks": "script-start-native-noassert.json",
+    "changes": [
+      "Native failure path throws runtime_error(format) instead of logging and returning",
+      "Use actual Instance::getFullName method",
+      "Use native safe_lua_tostring helper",
+      "Remove two assertion paths absent target"
+    ],
+    "remaining": "None in byte/data proof. Server verification pending.",
+    "dependencies": [
+      "App/v8tree/Instance.cpp getFullName definition",
+      "App/script/LuaAtomicClasses.cpp safe_lua_tostring definition",
+      "Header declarations for both restored APIs"
+    ],
+    "snapshot": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\ScriptStart"
+  },
+  "workspace_final": {
+    "status": "local_exact_no_losses_rebased_to_accepted_camera_helper",
+    "targets": [
+      "005a05a0",
+      "005a4d90"
+    ],
+    "snapshot": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\partial-handoff\\WorkspaceFinal",
+    "edits": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\workspace-profiler-camera-ctor-rebased.json"
+  },
+  "next_batch": {
+    "files": [
+      "App/util/Profiling.cpp",
+      "App/v8tree/Instance.cpp",
+      "App/script/LuaAtomicClasses.cpp",
+      "App/script/ScriptContext.cpp",
+      "App/v8datamodel/Workspace.cpp"
+    ],
+    "unique_local_exacts": 12,
+    "state": "All five proposals rechecking; whole dependency group required. First incomplete local verification stopped before candidate build because validator filtered class rename; transparent rename representation recompiled and resubmitted.",
+    "model": "gpt-6.1-sol"
+  },
+  "feature_compute_blocker": {
+    "target": "00609da0",
+    "evidence": "C:\\Users\\colin\\RoConstruct\\local\\integrators\\2a123e330b53448e9566d39326dd8372\\feature-second-target.txt",
+    "native": "Target reads PartInstance+2c4 as pointer, then vector floats at pointee+4/+8/+c multiplied by half before UVW conversion.",
+    "rebuilt": "Calls ComputeProp/getExtentsLocal from embedded primitive at PartInstance+228; frame60 versus5c.",
+    "next": "Recover true PartInstance primitive ownership/storage and associated API family; no offset-view patch. Source stand-in labels alone cannot establish pointer ownership type.",
+    "genuine_source": "Both installed rbxgs base header and OpenRBX header declare boost::scoped_ptr<Primitive>; accepted overlay currently changes it to embedded Primitive and changes getters to &primitive. Native target read is through pointer at2c4; current embedded field at228. Correcting pointer type also requires recovering preceding native PartInstance fields/layout and constructor ownership. Preserve existing receipts; do not blindly revert overlay."
+  },
+  "active_runs": {
+    "linked_submit_exec_session": 21292,
+    "linked_baseline": "work/native-linked-preflight/98723c78917922317e87",
+    "linked_candidate": "work/native-try/submit/linked-preflight-1793265628651737500",
+    "extents_edits": "extents-direct-transform.json",
+    "notes": "Resume same live sessions; do not restart for silence. Candidate is still compiling. All five closed-dependency proposals passed staging. Extents is an independent follow-up; no new header trial is running in main private overlay.",
+    "extents_result": "Completed: no new exact; drops standalone Vector3 constructor004377b0 from TU. Trial rejected and not saved as proposal. Baseline remains unchanged."
+  }
+}

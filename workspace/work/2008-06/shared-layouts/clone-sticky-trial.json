@@ -1,0 +1,25 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x63fea0",
+      "size": 130,
+      "symbol": "?isSticky@CloneTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?isSticky@CloneTool@RBX@@UBEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+        "??_7CloneTool@RBX@@6BINamed@1@@": "0x84a4dc",
+        "??_7CloneTool@RBX@@6BIRenderable@1@@": "0x84a4c0"
+      }
+    }
+  ],
+  "source_sha256": "3ab0a7cc5c24941e80072a3ea9e453e544d91069e3d5139169906a42a90d43ab",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "ec6f4f3f6a6ae1d7f04371f999b6fe097a439f961c7966eaddeb27c43d38be00",
+  "link_object_sha256": "a7e3765b34c0bd4615a5d5a489e1d44e2d507e358d5c016ff784fc3628a1c608",
+  "model_header_sha256": "fa9074598292384067982a26cd63e9031d3cae6b7a9dbcf25c2dfdeb635317ee",
+  "workspace_header_sha256": "84682cd4a731b5f40990e3bb675259f3c80707b9e5837bb435076fa47f14a11c",
+  "observer_sha256": "46157b5512e9ca94463b642bf0a0ace80c751c33bffa2064a43d899f6317a230"
+}

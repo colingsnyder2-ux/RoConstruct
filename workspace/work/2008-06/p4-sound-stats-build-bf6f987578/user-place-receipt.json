@@ -1,0 +1,12 @@
+{
+  "revision": "bf6f9875784d7c23eafae7e67b4b03bdf0d7ea39",
+  "exe_sha256": "3d8eb75a354827a23a6c1b7394505b71b969cbdb27e6006bcc2df593bff52f56",
+  "user_xml_sha256": "f06e50fbfd097e24178e279b721ad8c5a27d5839f3197ca555dfa9fbafe6be00",
+  "model_count": 792,
+  "status_counts": {
+    "0": 784,
+    "4": 8
+  },
+  "cleanup_zero": true,
+  "private_user_content_not_redistributed": true
+}

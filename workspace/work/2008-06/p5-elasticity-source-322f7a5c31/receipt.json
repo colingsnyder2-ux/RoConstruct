@@ -1,0 +1,47 @@
+{
+  "revision": "3dc292489e5d9abc5b5a9d885c3501b25f2bbe14",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "7caf99352e60d175ae7258c72f8194e828b481311fb20ce7f9acf71e7f5a9998",
+  "fall_receipt_sha256": "dc2cb6677d55fa75613c0c9b4d918f7ac49deecee3b8cc66a7e1d8ad1f0ee9ef",
+  "target_function": "00649320",
+  "constants": {
+    "0x81c430": 0.05000000074505806,
+    "0x84afec": 0.2800000011920929,
+    "0x84afe8": 0.25999999046325684,
+    "0x84afe4": 0.41999998688697815,
+    "0x843768": 0.5099999904632568,
+    "0x84afe0": 0.5699999928474426,
+    "0x84afdc": 0.7599999904632568,
+    "0x819b48": 0.800000011920929
+  },
+  "original_fall_samples": [
+    {
+      "time": 0.5,
+      "original_y": -4.008589744567871,
+      "fixed_frame_window": [
+        28,
+        32
+      ],
+      "best_error": 0.02076602456787091
+    },
+    {
+      "time": 0.5940000000409782,
+      "original_y": 2.344194173812866,
+      "fixed_frame_window": [
+        34,
+        38
+      ],
+      "best_error": 0.0008282661871339414
+    },
+    {
+      "time": 0.7970000000204891,
+      "original_y": 9.163769721984863,
+      "fixed_frame_window": [
+        46,
+        50
+      ],
+      "best_error": 0.03904819198486287
+    }
+  ],
+  "scope": "Original function constants and existing falling-block observation. Character landing is not explained by this alone."
+}

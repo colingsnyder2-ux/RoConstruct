@@ -1,0 +1,15 @@
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+extern "C" void init_fn_009d9420(void*, void*);
+extern "C" void run_fn_009d9420(void);
+extern "C" void tail_fn_009d9420(void*);
+extern int g_a_009d9420;
+extern int g_b_009d9420;
+extern int g_c_009d9420;
+
+void func_009d9420()
+{
+    init_fn_009d9420(&g_a_009d9420, &g_b_009d9420);
+    run_fn_009d9420();
+    tail_fn_009d9420(&g_c_009d9420);
+}

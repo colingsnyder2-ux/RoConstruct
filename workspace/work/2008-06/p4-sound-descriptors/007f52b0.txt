@@ -1,0 +1,19 @@
+007f52b0  56                   push esi
+007f52b1  6a05                 push 5
+007f52b3  33c9                 xor ecx, ecx
+007f52b5  51                   push ecx
+007f52b6  b830d35b00           mov eax, 0x5bd330
+007f52bb  50                   push eax
+007f52bc  33f6                 xor esi, esi
+007f52be  56                   push esi
+007f52bf  ba90655b00           mov edx, 0x5b6590
+007f52c4  52                   push edx
+007f52c5  6890248200           push 0x822490
+007f52ca  68b4838300           push 0x8383b4
+007f52cf  b994719700           mov ecx, 0x977194
+007f52d4  e88778dcff           call 0x5bcb60
+007f52d9  6850e37f00           push 0x7fe350
+007f52de  e8ccc4eaff           call 0x6a17af
+007f52e3  83c404               add esp, 4
+007f52e6  5e                   pop esi
+007f52e7  c3                   ret 

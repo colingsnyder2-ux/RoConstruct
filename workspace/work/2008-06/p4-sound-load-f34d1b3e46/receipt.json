@@ -1,0 +1,15 @@
+{
+  "revision": "f34d1b3e463f22c69a8a2069b48f784a1e775e14",
+  "exe_sha256": "c92f4ee29cf61a4fc4d0e94a09d147f5760bd25fec7718e3e16b0ce8d24401fc",
+  "sound_fixture": {
+    "humanoids": 0,
+    "sounds": 0,
+    "fixture_sha256": "b7a2782c1100c2f64fcede9283fbccf2faf7ba077c947aae54ba520edb6935d1"
+  },
+  "humanoid_control": {
+    "humanoids": 1,
+    "sounds": 0,
+    "fixture_sha256": "0290830e076a3bc2a24dd93c1df75c61f01c4d1bb8396f6be4cde48a344f733a"
+  },
+  "result": "Sound fixture contains one Sound, but player retains zero; P4 remains open."
+}

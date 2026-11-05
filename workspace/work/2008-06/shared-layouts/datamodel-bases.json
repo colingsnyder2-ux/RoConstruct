@@ -1,0 +1,37 @@
+{
+  "revision": "96d893548535d29d6f44a357d0e90b4ffb1c18d6",
+  "compiler": 21022,
+  "base_extent": 508,
+  "offsets": {
+    "VerbContainer": 456,
+    "IDataState": 496,
+    "Evaluator": 500,
+    "RunTransitionListener": 504
+  },
+  "original_rtti": "datamodel-rtti.json",
+  "constructor": {
+    "address": "00583460",
+    "symbol": "??0VerbContainer@RBX@@QAE@PAV01@@Z",
+    "size": 40,
+    "relocation_normalized_exact": true
+  },
+  "units": {
+    "NativeVerbContainerLayout": {
+      "source_sha256": "7c4ba00bbebd71640fddd71316ed024fd8114164ba225c29db1ea76ab9c9f694",
+      "object_sha256": "44bb340865dfbe8716bf8ec6e3c51033442e8ec63ca1d25c5cca497efd1e424d"
+    },
+    "NativeDataModelBases": {
+      "source_sha256": "49315f4d9363075e4e2dc9c9866fccc7eebc56193c29d21b7f9b806957ea6b95",
+      "object_sha256": "19311687ea65a0efcddf3b8e22d3fe03826d6afd505b2a3ba12f1f50497b1122"
+    }
+  },
+  "sources": {
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "a378024e49532e65e12b62cf70e7a25c2c520bfa51c33f004f8bd2bcbefebfdc",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "3b5db75fe3f81e8861d44ce6ee44026f41388b380c9a632fb2defb1c23df9d54",
+    "rebuild/2008-06/native-headers/v8tree/IDataState.h": "0b8b88645efaa4a4f3f665ad39971463411717c09c20e370ad258e34f175891b",
+    "rebuild/2008-06/native-headers/v8tree/VerbContainer.h": "36384dbf8eab131873d802acdf36de643aef861e1153df236341943d93196fa0",
+    "rebuild/2008-06/native-classes/VerbContainer.cpp": "e4d75a59667f7def8c15378ed219dd35cb982508553882e14a52b64bea362a6f"
+  },
+  "observer_sha256": "1c88a7e40c6d8487333118543fc98cecf0f622edcb32236ff1209cf7a3dc7f53",
+  "scope": "Inactive DataModel base layout probe and VerbContainer constructor. Complete fields, virtual bodies, linkage and runtime ABI remain open."
+}

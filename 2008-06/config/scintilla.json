@@ -1,0 +1,17 @@
+{
+ "name": "Scintilla",
+ "description": "The MFC Scintilla wrapper (CScintillaCtrl, CScintillaDocView; recipe scintilla-mfc-1.20) that the 2008 Studio script editor uses; SciLexer.dll itself ships beside the exe.",
+ "mfc_import": true,
+ "layers": [
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "scintilla-mfc-1.20-shared",
+   "files": "recipe",
+   "flags": "/O2 /GS- /MD"
+  }
+ ],
+ "test": "scintilla_ctrl",
+ "test_includes": ["tools/libs/scintilla-mfc-1.20", "tools/libs/mfc-9.0-rtm/atlmfc/include"],
+ "test_defines": "WIN32 NDEBUG _MBCS _AFXDLL"
+}

@@ -1,0 +1,113 @@
+{
+  "scope": "Original global initializer, destructor, deleting destructor, Notifier constructor, RTTI and static data offsets match; shared runtime ABI and cross-object identity unproven.",
+  "methods": [
+    {
+      "address": "0x7f51f0",
+      "size": 42,
+      "symbol": "??__E?color@FillTool@RBX@@2VFillToolColor@2@A@@YAXXZ",
+      "bindings": [
+        [
+          "?color@FillTool@RBX@@2VFillToolColor@2@A",
+          "0x976fa0"
+        ],
+        [
+          "??0?$Notifier@VFillToolColor@RBX@@VBrickColor@2@@RBX@@IAE@XZ",
+          "0x5e9ec0"
+        ],
+        [
+          "??__F?color@FillTool@RBX@@2VFillToolColor@2@A@@YAXXZ",
+          "0x7fe2d0"
+        ],
+        [
+          "?color@FillTool@RBX@@2VFillToolColor@2@A",
+          "0x976fa0"
+        ],
+        [
+          "??_7FillToolColor@RBX@@6B@",
+          "0x835890"
+        ],
+        [
+          "?color@FillTool@RBX@@2VFillToolColor@2@A",
+          "0x976fc0"
+        ],
+        [
+          "_atexit",
+          "0x6a17af"
+        ]
+      ]
+    },
+    {
+      "address": "0x7fe2d0",
+      "size": 61,
+      "symbol": "??__F?color@FillTool@RBX@@2VFillToolColor@2@A@@YAXXZ",
+      "bindings": [
+        [
+          "?color@FillTool@RBX@@2VFillToolColor@2@A",
+          "0x976fb0"
+        ],
+        [
+          "??3@YAXPAX@Z",
+          "0x6a067a"
+        ],
+        [
+          "?color@FillTool@RBX@@2VFillToolColor@2@A",
+          "0x976fa4"
+        ],
+        [
+          "?color@FillTool@RBX@@2VFillToolColor@2@A",
+          "0x976fb0"
+        ],
+        [
+          "?color@FillTool@RBX@@2VFillToolColor@2@A",
+          "0x976fb4"
+        ],
+        [
+          "?color@FillTool@RBX@@2VFillToolColor@2@A",
+          "0x976fb8"
+        ],
+        [
+          "??3@YAXPAX@Z",
+          "0x6a067a"
+        ]
+      ]
+    },
+    {
+      "address": "0x5b6460",
+      "size": 74,
+      "symbol": "??_GFillToolColor@RBX@@UAEPAXI@Z",
+      "bindings": [
+        [
+          "??3@YAXPAX@Z",
+          "0x6a067a"
+        ],
+        [
+          "??3@YAXPAX@Z",
+          "0x6a067a"
+        ],
+        [
+          "??3@YAXPAX@Z",
+          "0x6a067a"
+        ]
+      ]
+    },
+    {
+      "address": "0x5e9ec0",
+      "size": 84,
+      "symbol": "??0?$Notifier@VFillToolColor@RBX@@VBrickColor@2@@RBX@@IAE@XZ",
+      "bindings": [
+        [
+          "__ehhandler$??0?$Notifier@VFillToolColor@RBX@@VBrickColor@2@@RBX@@IAE@XZ",
+          "0x7d72e8"
+        ],
+        [
+          "??2@YAPAXI@Z",
+          "0x6a0920"
+        ]
+      ]
+    }
+  ],
+  "source_sha256": "dddefd8c622916f30cbaf8d639e9d0c4b8a1b5b8dbadad2caef6e85c041f900d",
+  "header_sha256": "8459f4d7e8982bc562a9cf5fb2a22cd86eefa49bc5fe0796beb97a4b8fe06291",
+  "object_sha256": "0237c9b61bf8559f842cf9b38a929afb4637eb39c391d4ff000cd7f80f448fd3",
+  "observer_sha256": "52bb9a1cdafa383867f2f0b659094b1505d0484468472b238931c7d994df6bdb"
+}

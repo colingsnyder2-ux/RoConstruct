@@ -1,0 +1,5 @@
+// from server: 100% by colin
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-archive: msvc-crt libcmt.lib/f:/dd/vctools/crt_bld/SELF_X86/crt/src/build/INTEL/mt_obj/gs_report.obj

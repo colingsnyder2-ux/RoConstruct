@@ -1,0 +1,171 @@
+{
+  "compiler": "MSVC 15.00.21022",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD"
+  ],
+  "sources": {
+    "tools/rbxgs/Client/App/reflection/signal.cpp": "928fd5fa7b1febae5f946ac452c4628b43bb0931e79812fca14ec001416cf7f6",
+    "tools/rbxgs/Client/boost_1_34_1/libs/signals/src/signal_base.cpp": "fb56e824c4f65d226a4bed07eef8600d92e9acf6ef0c95a323b72d5abe278696",
+    "tools/rbxgs/Client/boost_1_34_1/libs/signals/src/trackable.cpp": "993e8be52b83e864e18ab46f1a38541a4ad9e1d6c393586208326a3a2d950d47"
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "relocation_identity_checks": {
+    "SignalInstance destructor DIR32 resolves to RTTI-verified SignalInstance vtable 0x80ece0": true,
+    "signal_base destructor has no relocations": true,
+    "trackable destructor REL32 binds to independently exact std::list<connection> destructor at 0x41abc0": true,
+    "negative_wrong_vtable_and_callee_targets_rejected": true
+  },
+  "rows": [
+    {
+      "tag": "signal",
+      "source": "tools/rbxgs/Client/App/reflection/signal.cpp",
+      "symbol": "??1SignalInstance@Reflection@RBX@@UAE@XZ",
+      "address": "0x0056b4f0",
+      "body_size": 7,
+      "target_size": 7,
+      "body_sha256": "92eb3b367d6ee91190fb0a8be2e0959e6ee590dca281c332dfc805ffe6f846d2",
+      "target_sha256": "249d9d29284f4544ed603c8bdadf3d2073f27b5d9f862e637073a3efa2db009e",
+      "body_relocs": [
+        2
+      ],
+      "target_relocs": [
+        2
+      ],
+      "relocation_bindings": [
+        {
+          "offset": 2,
+          "kind": 6,
+          "symbol": "??_7SignalInstance@Reflection@RBX@@6B@",
+          "target": "0x0080ece0"
+        }
+      ],
+      "exact": true,
+      "object_sha256": "0dca71e95a095ab8059e2e881bdef0ee9212c4c193ca81d9aac7df9824ead184"
+    },
+    {
+      "tag": "signal_base",
+      "source": "tools/rbxgs/Client/boost_1_34_1/libs/signals/src/signal_base.cpp",
+      "symbol": "??1signal_base@detail@signals@boost@@QAE@XZ",
+      "address": "0x00600660",
+      "body_size": 53,
+      "target_size": 53,
+      "body_sha256": "37ff70f75c761f0cbfb83ef31a5795a0d9e2ae9590fa2b9b92d0ea352b258321",
+      "target_sha256": "37ff70f75c761f0cbfb83ef31a5795a0d9e2ae9590fa2b9b92d0ea352b258321",
+      "body_relocs": [],
+      "target_relocs": [],
+      "relocation_bindings": [],
+      "exact": true,
+      "object_sha256": "fd20941fb82271f4099eff47b0daea5c81335c75bf263f78d3eb7b54b595392b"
+    },
+    {
+      "tag": "trackable",
+      "source": "tools/rbxgs/Client/boost_1_34_1/libs/signals/src/trackable.cpp",
+      "symbol": "??1trackable@signals@boost@@IAE@XZ",
+      "address": "0x005950e0",
+      "body_size": 9,
+      "target_size": 9,
+      "body_sha256": "9dca2632cc6fbb92d5e4b7f90f5a4b010c3146d8aa7ddf57082ae0aa3088b5b2",
+      "target_sha256": "f9dc8858a3246364966b5b0df7362c9a10cbbbab1a37bb3283b9357a342e9395",
+      "body_relocs": [
+        5
+      ],
+      "target_relocs": [],
+      "relocation_bindings": [
+        {
+          "offset": 5,
+          "kind": 20,
+          "symbol": "??1?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ",
+          "target": "0x0041abc0"
+        }
+      ],
+      "exact": true,
+      "object_sha256": "85f0faad83fca79d2a167db5cd9bb3bc9988b744248b0ba69792a8a8d2422675"
+    },
+    {
+      "tag": "std_list_connection",
+      "source": "generated explicit std::list<boost::signals::connection> instantiation",
+      "symbol": "??1?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ",
+      "address": "0x0041abc0",
+      "body_size": 85,
+      "target_size": 85,
+      "body_sha256": "f9c6b41d15b50d0cf6b502b6ba5f3da463be86508ae325299ef4bb99f88893da",
+      "target_sha256": "3019fec951293580fda4ff486025b71f9e97ce0928bc864bbb6fc19d5b7ff19a",
+      "body_relocs": [
+        3,
+        38,
+        47,
+        62
+      ],
+      "target_relocs": [
+        3
+      ],
+      "relocation_bindings": [
+        {
+          "offset": 3,
+          "kind": 6,
+          "symbol": "__ehhandler$??1?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAE@XZ",
+          "target": "0x007d72e8"
+        },
+        {
+          "offset": 38,
+          "kind": 20,
+          "symbol": "?clear@?$list@Vconnection@signals@boost@@V?$allocator@Vconnection@signals@boost@@@std@@@std@@QAEXXZ",
+          "target": "0x0041ab00"
+        },
+        {
+          "offset": 47,
+          "kind": 20,
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x006a067a"
+        },
+        {
+          "offset": 62,
+          "kind": 20,
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x006a067a"
+        }
+      ],
+      "exact": true,
+      "object_sha256": "b1fb963eea1be0626bdab80b71a18612c4f6945957a651a72b516f11ea5854a4"
+    }
+  ],
+  "native_signal_header_sha256": "b4698f71ed976d2159aa05799e4b8ccf6f2ebee153894adb5f6eb784812b03c9",
+  "generated_list_instantiation_sha256": "4ac970ee14ff188bfde75e4830c4dd9ba36192fb4681b1f354f5d4f730c531a4"
+}

@@ -1,0 +1,21 @@
+{
+  "revision": "a9eb20a932d68967ebae94373d3787745ae3d3a7",
+  "exe_sha256": "e7bd74b4ad9431120214d19af65733d71c8c130e46dc231ad1b62d1dacbdaa7c",
+  "map_sha256": "28ede6951c7d434647c686bf86e9c9b6281164b02790ad5571056b1564a54482",
+  "source_place": "2008E/Bread Factory Tycoon.rbxl.gz",
+  "source_compressed_sha256": "488a58983b0f65122a979aa50d0e11e225f8cb684a55abb0c785aaa11a89651c",
+  "source_xml_sha256": "f06e50fbfd097e24178e279b721ad8c5a27d5839f3197ca555dfa9fbafe6be00",
+  "isolated_input_sha256": {
+    "hum0": "90a95572943ec0a89f8be900abe0073e0a8d57508f306fec16bb5c69c7edd814",
+    "no-humanoid": "b06016bb5590be0a8a508ef0ec6055eb06fb0bc2bd745d60e474f445a13f4dae"
+  },
+  "findings": [
+    "Full place exited 0xc0000005.",
+    "Six individual nested Models reproduced a crash; individual other children passed.",
+    "Removing all Humanoid instances allowed isolated Home model to load; removing scripts or values alone did not.",
+    "Each Humanoid alone reproduced the crash, including after removing health fields.",
+    "Load-only marker confirms failure during deserialization, before scene attachment or rendering.",
+    "Exact faulty native method and root cause remain unproven.",
+    "User place and derived XML not included; retain originals locally."
+  ]
+}

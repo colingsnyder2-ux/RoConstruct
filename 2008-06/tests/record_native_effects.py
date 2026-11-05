@@ -1,0 +1,496 @@
+"""Verify the inactive native RBX::Message / Hint, RBX::Sky and RBX::Sparkles / Effect recovery (2008-06).
+
+Builds (document-swap flags, VS2008 RTM 21022):
+  * tests/NativeEffectsLayout.cpp      sizeof/offset probes (mov eax, imm32; ret);
+  * native-classes/Message.cpp          Message unit 005dcad0..005dd280 (+ Hint::render2d 005dcde0, initializer
+                                        007f6970) and Message/Hint COMDATs the original keeps in the Network::Server
+                                        unit; unit profile adds /fp:fast (renderFullScreen/renderPersonalMsg/
+                                        Hint::render2d share the float 0.5f between Rect::center and Color4);
+    render2d 005dcd90 dynamic_casts to the native native-headers/Network/Player.h;
+  * native-classes/Sky.cpp with NATIVE_SKY_PENDING: the whole Sky unit; the constructor needs
+    ContentId::fromAssets(const char*) (0055bd80 calls operator+(const string&, const char*)), checked against a
+    generated copy of the donor util/ContentProvider.h carrying that declaration (PROPOSAL_CONTENT below);
+  * native-classes/Sparkles.cpp (base) and with NATIVE_SPARKLES_PENDING: render3dAdorn 0063d710 calls Adorn slot 19
+    (+0x4c, no arguments), absent from the donor RbxGraphics/Adorn.h; checked against a generated copy with one
+    virtual inserted before cylinderAlongX (PROPOSAL_ADORN below; the name is a placeholder);
+  * native-classes/SparklesEffect.cpp   Effect unit 00665670..00665690.
+
+Every row must be relocation-masked exact against the original, and every relocation target is bound to the
+address the original instruction uses and verified: imports by DLL export name, string literals by bytes, type
+descriptors and vtables by original RTTI names, own symbols by the row proven here, and the remaining externals
+by the explicit EXTERNAL map (names cross-checked with offline/evidence.json where it names them). A symbol must
+bind to one address in every row. Writes work/2008-06/shared-layouts/effects-working.json.
+"""
+import json
+import shutil
+import struct
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from roc import match, rebuild  # noqa: E402
+import native_bind as nb  # noqa: E402
+
+R = ROOT / 'rebuild/2008-06'
+OUT = nb.OUT
+OUT.mkdir(parents=True, exist_ok=True)
+MESSAGE_SRC = R / 'native-classes/Message.cpp'
+SKY_SRC = R / 'native-classes/Sky.cpp'
+SPARKLES_SRC = R / 'native-classes/Sparkles.cpp'
+EFFECT_SRC = R / 'native-classes/SparklesEffect.cpp'
+MESSAGE_H = R / 'native-headers/v8datamodel/Message.h'
+SKY_H = R / 'native-headers/v8datamodel/Sky.h'
+SPARKLES_H = R / 'native-headers/v8datamodel/Sparkles.h'
+LAYOUT = R / 'tests/NativeEffectsLayout.cpp'
+DONOR = ROOT / 'tools/rbxgs/Client'
+
+# ---- generated pending headers (copies; shared/donor headers are not edited) -------------------------
+pending = OUT / 'native-effects-pending'
+for sub in ('util', 'RbxGraphics'):
+    (pending / sub).mkdir(parents=True, exist_ok=True)
+
+CONTENT_ANCHOR = '\t\tstatic ContentId fromAssets(const std::string& filePath);\n'
+PROPOSAL_CONTENT = '\t\tstatic ContentId fromAssets(const char* filePath); // 0055bd80: "rbxasset://" + filePath via operator+(const string&, const char*)\n'
+content = (DONOR / 'App/include/util/ContentProvider.h').read_text()
+assert content.count(CONTENT_ANCHOR) == 1
+(pending / 'util/ContentProvider.h').write_text(content.replace(CONTENT_ANCHOR, PROPOSAL_CONTENT))
+
+ADORN_ANCHOR = '\t\tvirtual void cylinderAlongX('
+PROPOSAL_ADORN = '\t\tvirtual void sparkles() = 0; // 2008 slot 19 (+0x4c), no arguments (AdornRbxGfx 00674790 draws "rbxsparkle"); name is a placeholder\n'
+adorn = (DONOR / 'RbxGraphics/include/RbxGraphics/Adorn.h').read_text()
+assert adorn.count(ADORN_ANCHOR) == 1
+(pending / 'RbxGraphics/Adorn.h').write_text(adorn.replace(ADORN_ANCHOR, PROPOSAL_ADORN + ADORN_ANCHOR))
+
+
+def build(name, src, extra=()):
+    obj = OUT / (name + '.obj')
+    flags = nb.flags()
+    i = next(k for k, x in enumerate(flags) if x.replace('\\', '/').endswith('rebuild/2008-06/native-headers'))
+    flags = flags[:i] + list(extra) + flags[i:] + ['/Fo' + str(obj), str(src)]
+    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags, OUT)
+    assert code == 0, log
+    return obj, flags
+
+
+PEND = ['/I' + str(pending)]
+layout_obj, layout_flags = build('NativeEffectsLayout', LAYOUT)
+msg_obj, msg_flags = build('NativeEffectsMessage', MESSAGE_SRC, ['/fp:fast'])
+sky_obj, sky_flags = build('NativeEffectsSky', SKY_SRC)
+skyp_obj, skyp_flags = build('NativeEffectsSkyPending', SKY_SRC, PEND + ['/DNATIVE_SKY_PENDING'])
+spk_obj, spk_flags = build('NativeEffectsSparkles', SPARKLES_SRC)
+spkp_obj, spkp_flags = build('NativeEffectsSparklesPending', SPARKLES_SRC, PEND + ['/DNATIVE_SPARKLES_PENDING'])
+eff_obj, eff_flags = build('NativeEffectsEffect', EFFECT_SRC)
+
+# ---- layout ---------------------------------------------------------------------------------------
+raw = layout_obj.read_bytes()
+LAYOUT_VALUES = (('?nativeMessageSize@@', 0x15c), ('?nativeHintSize@@', 0x15c), ('?nativeSkySize@@', 0x1f8),
+                 ('?nativeSparklesSize@@', 0x148), ('?nativeEffectSize@@', 4), ('?nativeMessageRenderable@@', 0x130),
+                 ('?nativeMessageText@@', 0x140), ('?nativeSkyUp@@', 0x130), ('?nativeSkyLf@@', 0x150),
+                 ('?nativeSkyRt@@', 0x170), ('?nativeSkyBk@@', 0x190), ('?nativeSkyFt@@', 0x1b0), ('?nativeSkyDn@@', 0x1d0),
+                 ('?nativeSkyCelestial@@', 0x1f0), ('?nativeSkyStars@@', 0x1f4), ('?nativeSparklesRenderable@@', 0x130),
+                 ('?nativeSparklesEffect@@', 0x140))
+for prefix, value in LAYOUT_VALUES:
+    name, body, refs = next(x for x in match.coff_functions(raw) if x[0].startswith(prefix))
+    assert body == b'\xb8' + struct.pack('<I', value) + b'\xc3', (prefix, body.hex())
+
+original = nb.Original()
+names = {int(k, 16): v.get('symbol', '') for k, v in json.loads((R / 'offline/evidence.json').read_text())['names'].items()}
+
+
+def norm(symbol):
+    return symbol.replace('3QBDB', '3PBDB').replace('3PADA', '3PBDB')
+
+
+STR = 'V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@'
+# ---- externals: address the original instruction uses, read at the call sites listed ----------------
+EXTERNAL = {
+    '??0Instance@RBX@@QAE@XZ': 0x55b7e0,                       # FactoryProduct ctors 005eb080 / 0063d7f0
+    '??0Instance@RBX@@QAE@PBD@Z': 0x55b960,                     # FactoryProduct<Message>(const char*) 005dcae0
+    '??1Instance@RBX@@UAE@XZ': 0x55a540,                        # FactoryProduct dtors (tail jmp)
+    '??1IRenderable@RBX@@QAE@XZ': 0x47d410,                     # ~Message 004a3a90, ~Sparkles 0063dc20 (shared ret)
+    '?setName@Instance@RBX@@UAEXAB' + STR + '@Z': 0x55af90,
+    '?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z': 0x40db00,
+    '?getParent@Instance@RBX@@QBEPAV12@XZ': None,               # inlined (field +0x2c read), never relocated
+    '___RTDynamicCast': 0x6a17c6, '_atexit': 0x6a17af,
+    '??2@YAPAXI@Z': 0x6a0920, '??3@YAXPAX@Z': 0x6a067a,
+    '?declare@Name@RBX@@SAABV12@PBDH@Z': 0x553f90,              # doDeclare 004a1680 / 004d72b0 / 005bff00
+    '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,               # getClassName 004a3c90 / 005eb160 / 0063d8c0
+    '??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z': 0x5708f0,
+    '??1ClassDescriptor@Reflection@RBX@@UAE@XZ': 0x40abc0,
+    '?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ': 0x40ad80,
+    '?getNullName@Name@RBX@@SAABV12@XZ': 0x554270,              # TextureId default ctors in Sky 005eb640
+    '?fromAssets@ContentId@RBX@@SA?AV12@PBD@Z': 0x55bd80,       # Sky 005eb640 (evidence names the string overload)
+    '?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ': 0x598cb0,   # Sparkles 0063d710
+    '?identity@Matrix3@G3D@@SAABV12@XZ': 0x513e20,
+    '??0Matrix3@G3D@@QAE@ABV01@@Z': 0x513220,            # copy ctor; evidence names the identical (ICF) operator= at this address
+    '?xyxy@Rect2D@G3D@@SA?AV12@ABVVector2@2@0@Z': 0x4f35d0,     # Message/Hint render
+    '?black@Color3@G3D@@SAABV12@XZ': 0x5149f0,
+    '?white@Color3@G3D@@SAABV12@XZ': 0x514a60,
+    '?clear@Color4@G3D@@SAABV12@XZ': 0x7baf10,
+    # TypedPropertyDescriptor<T> constructors called by the PropDescriptor/BoundProp ctors
+    '??0?$TypedPropertyDescriptor@' + STR + '@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@' + STR + '@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z': 0x443230,
+    '??0?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z': 0x5978a0,
+    '??0?$TypedPropertyDescriptor@H@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z': 0x4432a0,
+    '??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z': 0x40a290,
+    '??1?$TypedPropertyDescriptor@' + STR + '@Reflection@RBX@@UAE@XZ': None,
+}
+EXTERNAL = {k: v for k, v in EXTERNAL.items() if v is not None}
+# RBX::operator!=(const ContentId&, const ContentId&) 0055bd60 is `jmp [operator!=(string, string)]` (BoundProp<TextureId> setValue).
+TAIL_IMPORT = {'??9RBX@@YA_NABVContentId@0@0@Z': 0x55bd60}
+# Descriptor objects (`this` of the dynamic initializers) and the class-name arrays (.data).
+DATA = {
+    '?desc_Text@RBX@@': 0x97a668, '_desc_Text': 0x97a668,
+    '?prop_SkyUp@Sky@RBX@@': 0x97adac, '?prop_SkyLf@Sky@RBX@@': 0x97ad3c, '?prop_SkyRt@Sky@RBX@@': 0x97adc8,
+    '?prop_SkyBk@Sky@RBX@@': 0x97ad58, '?prop_SkyFt@Sky@RBX@@': 0x97ade4, '?prop_SkyDn@Sky@RBX@@': 0x97ad90,
+    '?prop_StarCount@Sky@RBX@@': 0x97ad74, '?prop_CelestialBodiesShown@Sky@RBX@@': 0x97ad20,
+    '?prop_Enabled@Sparkles@RBX@@': 0x97d58c,
+    '?sMessage@RBX@@3QBDB': 0x9542a0, '?sHint@RBX@@3QBDB': 0x9542a8,
+    '?sSky@RBX@@3QBDB': 0x955bd4, '?sSparkles@RBX@@3QBDB': 0x96181c,
+}
+NAMES = {0x9542a0: 'Message', 0x9542a8: 'Hint', 0x955bd4: 'Sky', 0x96181c: 'Sparkles'}
+
+FPM = '?$FactoryProduct@VMessage@RBX@@VInstance@2@$1?sMessage@2@3QBDB@RBX@@'
+DSM = '?$Described@VMessage@RBX@@$1?sMessage@2@3QBDBV' + FPM[:-6] + '@2@@Reflection@RBX@@'
+FPH = '?$FactoryProduct@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@'
+DSH = '?$Described@VHint@RBX@@$1?sHint@2@3QBDBV' + FPH[:-6] + '@2@@Reflection@RBX@@'
+GSM = '?$GetSetImpl@P8Message@RBX@@BEAB' + STR
+FPK = '?$FactoryProduct@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@'
+DSK = '?$Described@VSky@RBX@@$1?sSky@2@3QBDBV' + FPK[:-6] + '@2@@Reflection@RBX@@'
+BPK = '?$BoundPropGetSet@VSky@RBX@@@?$BoundProp@'
+FPS = '?$FactoryProduct@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@'
+DSS = '?$Described@VSparkles@RBX@@$1?sSparkles@2@3QBDBV' + FPS[:-6] + '@2@@Reflection@RBX@@'
+BPS = '?$BoundPropGetSet@VSparkles@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@'
+
+MESSAGE_ROWS = [
+    (0x5dcad0, '?getText@Message@RBX@@'),
+    (0x5dcae0, '??$?0PBD@' + FPM),
+    (0x5dcb50, '?renderFullScreen@Message@RBX@@IAEXPAVAdorn@2@@Z'),
+    (0x5dcc60, '?renderPersonalMsg@Message@RBX@@IAEXPAVAdorn@2@@Z'),
+    (0x5dcde0, '?render2d@Hint@RBX@@EAEXPAVAdorn@2@@Z'),
+    (0x5dcef0, '??$getset@P8Message@RBX@@'),
+    (0x5dcf40, '??$?0P8Message@RBX@@'),
+    (0x5dcff0, '??$?0PBD@?$DescribedCreatable@VMessage@RBX@@'),
+    (0x5dd090, '??_E' + FPM + 'OGE@AEPAXI@Z'), (0x5dd0a0, '??_E' + FPM + 'OIE@AEPAXI@Z'),
+    (0x5dd0b0, '??_E' + FPM + 'OKE@AEPAXI@Z'), (0x5dd0c0, '??_E' + FPM + 'OME@AEPAXI@Z'),
+    (0x5dd0d0, '??_E' + FPM + 'OBA@AEPAXI@Z'), (0x5dd0e0, '??_E' + FPM + 'OCE@AEPAXI@Z'),
+    (0x5dd0f0, '??_E' + FPM + 'OEE@AEPAXI@Z'),
+    (0x5dd100, '??_G' + FPM + 'MAEPAXI@Z'),
+    (0x5dd120, '??0Message@RBX@@QAE@XZ'),
+    (0x5dd1e0, '??_EMessage@RBX@@WBE@AEPAXI@Z'), (0x5dd1f0, '??_EMessage@RBX@@WCE@AEPAXI@Z'),
+    (0x5dd200, '??_EMessage@RBX@@WEE@AEPAXI@Z'), (0x5dd210, '??_EMessage@RBX@@WGE@AEPAXI@Z'),
+    (0x5dd220, '??_EMessage@RBX@@WIE@AEPAXI@Z'), (0x5dd230, '??_EMessage@RBX@@WKE@AEPAXI@Z'),
+    (0x5dd240, '??_EMessage@RBX@@WME@AEPAXI@Z'), (0x5dd250, '??_EMessage@RBX@@WBA@AEPAXI@Z'),
+    (0x5dd260, '??_GMessage@RBX@@UAEPAXI@Z'),
+    (0x5dd280, '?setText@Message@RBX@@'),
+    (0x7f6970, '??__Edesc_Text@RBX@@YAXXZ'),
+    (0x7ff6a0, '??__Fdesc_Text@RBX@@YAXXZ'),
+    (0x7fbbe0, '??__Ffoo@?1??classDescriptor@' + DSM),
+    (0x7fbbd0, '??__Ffoo@?1??classDescriptor@' + DSH),
+    # Message/Hint template and implicit members whose original bodies live in other units (COMDAT / ICF-shared)
+    (0x4a3a90, '??1Message@RBX@@UAE@XZ'),
+    (0x4a3980, '??1' + FPM + 'MAE@XZ'),
+    (0x4a3c90, '?getClassName@' + FPM + 'UBEABVName@2@XZ'),
+    (0x4a3cd0, '?classDescriptor@' + DSM + 'SAAAVClassDescriptor@23@XZ'),
+    (0x4a1680, '??$doDeclare@$1?sMessage@RBX@@3QBDB@Name@RBX@@CAABV01@XZ'),
+    (0x4a1b50, '??$callDoDeclare@$1?sMessage@RBX@@3QBDB@Name@RBX@@CAXXZ'),
+    (0x4a3af0, '??0' + FPH + 'IAE@XZ'),
+    (0x4a3c30, '??1' + FPH + 'MAE@XZ'),
+    (0x4a4a60, '??0?$DescribedCreatable@VHint@RBX@@VMessage@2@$1?sHint@2@3QBDB@RBX@@IAE@XZ'),
+    (0x4a3cb0, '?getClassName@' + FPH + 'UBEABVName@2@XZ'),
+    (0x4a3dd0, '?classDescriptor@' + DSH + 'SAAAVClassDescriptor@23@XZ'),
+    (0x4a16f0, '??$doDeclare@$1?sHint@RBX@@3QBDB@Name@RBX@@CAABV01@XZ'),
+    (0x4a1b60, '??$callDoDeclare@$1?sHint@RBX@@3QBDB@Name@RBX@@CAXXZ'),
+    (0x585db0, '?getValue@' + GSM),
+    (0x5b73c0, '?setValue@' + GSM),
+    (0x60a2f0, '?isReadOnly@' + GSM),
+    (0x598310, '??_G?$PropDescriptor@VMessage@RBX@@'),
+    (0x565950, '?shouldRender2d@Message@RBX@@UBE_NXZ'),
+    (0x565ff0, '?askSetParent@Message@RBX@@UBE_NPBVInstance@2@@Z'),
+    (0x5dcd90, '?render2d@Message@RBX@@UAEXPAVAdorn@2@@Z'),
+]
+SKY_ROWS = [
+    (0x5eb020, '??1' + FPK + 'MAE@XZ'),
+    (0x5eb080, '??0' + FPK + 'IAE@XZ'),
+    (0x5eb0e0, '??_E' + FPK + 'OBA@AEPAXI@Z'),
+    (0x5eb0f0, '??_G' + FPK + 'MAEPAXI@Z'),
+    (0x5eb110, '??_E' + FPK + 'OBE@AEPAXI@Z'), (0x5eb120, '??_E' + FPK + 'OCE@AEPAXI@Z'),
+    (0x5eb130, '??_E' + FPK + 'OGE@AEPAXI@Z'), (0x5eb140, '??_E' + FPK + 'OME@AEPAXI@Z'),
+    (0x5eb150, '??1' + DSK + 'UAE@XZ'),
+    (0x5eb160, '?getClassName@' + FPK + 'UBEABVName@2@XZ'),
+    (0x5eb290, '?classDescriptor@' + DSK + 'SAAAVClassDescriptor@23@XZ'),
+    (0x5eb300, '??$?0VSky@RBX@@@?$BoundProp@VTextureId@RBX@@$00@'),
+    (0x5eb3d0, '??$?0VSky@RBX@@@?$BoundProp@H$00@'),
+    (0x5eb4a0, '??$?0VSky@RBX@@@?$BoundProp@_N$00@'),
+    (0x5eb570, '??0?$DescribedCreatable@VSky@RBX@@VInstance@2@$1?sSky@2@3QBDB@RBX@@IAE@XZ'),
+    (0x5eb610, '??_E' + FPK + 'OKE@AEPAXI@Z'), (0x5eb620, '??_E' + FPK + 'OEE@AEPAXI@Z'),
+    (0x5eb630, '??_E' + FPK + 'OIE@AEPAXI@Z'),
+    (0x5eb640, '??0Sky@RBX@@QAE@XZ'),
+    (0x5eba60, '??_ESky@RBX@@WME@AEPAXI@Z'), (0x5eba70, '??_ESky@RBX@@WBA@AEPAXI@Z'),
+    (0x5eba80, '??_ESky@RBX@@WBE@AEPAXI@Z'), (0x5eba90, '??_ESky@RBX@@WCE@AEPAXI@Z'),
+    (0x5ebaa0, '??_ESky@RBX@@WEE@AEPAXI@Z'), (0x5ebab0, '??_ESky@RBX@@WGE@AEPAXI@Z'),
+    (0x5ebac0, '??_ESky@RBX@@WIE@AEPAXI@Z'), (0x5ebad0, '??_ESky@RBX@@WKE@AEPAXI@Z'),
+    (0x5ebae0, '??1Sky@RBX@@UAE@XZ'),
+    (0x5ebb90, '??_GSky@RBX@@UAEPAXI@Z'),
+    (0x7f6e80, '??__E?prop_SkyUp@Sky@RBX@@'), (0x7f6eb0, '??__E?prop_SkyLf@Sky@RBX@@'),
+    (0x7f6ee0, '??__E?prop_SkyRt@Sky@RBX@@'), (0x7f6f10, '??__E?prop_SkyBk@Sky@RBX@@'),
+    (0x7f6f40, '??__E?prop_SkyFt@Sky@RBX@@'), (0x7f6f70, '??__E?prop_SkyDn@Sky@RBX@@'),
+    (0x7f6fa0, '??__E?prop_StarCount@Sky@RBX@@'), (0x7f6fd0, '??__E?prop_CelestialBodiesShown@Sky@RBX@@'),
+    (0x7ffb10, '??__F?prop_SkyUp@Sky@RBX@@'), (0x7ffaf0, '??__F?prop_SkyLf@Sky@RBX@@'),
+    (0x7ffa70, '??__F?prop_SkyRt@Sky@RBX@@'), (0x7ffa90, '??__F?prop_SkyBk@Sky@RBX@@'),
+    (0x7ffab0, '??__F?prop_SkyFt@Sky@RBX@@'), (0x7ffad0, '??__F?prop_SkyDn@Sky@RBX@@'),
+    (0x7ffb50, '??__F?prop_StarCount@Sky@RBX@@'), (0x7ffb30, '??__F?prop_CelestialBodiesShown@Sky@RBX@@'),
+    (0x7ffb70, '??__Ffoo@?1??classDescriptor@' + DSK),
+    (0x4d72b0, '??$doDeclare@$1?sSky@RBX@@3QBDB@Name@RBX@@CAABV01@XZ'),
+    (0x4d76c0, '??$callDoDeclare@$1?sSky@RBX@@3QBDB@Name@RBX@@CAXXZ'),
+    (0x5d3fa0, '?getValue@' + BPK + 'VTextureId@'),
+    (0x5d5b10, '?setValue@' + BPK + 'VTextureId@'),
+    (0x4431f0, '?getValue@' + BPK + 'H$00@'),
+    (0x63b210, '?setValue@' + BPK + 'H$00@'),
+    (0x60a2f0, '?isReadOnly@' + BPK + 'H$00@'),
+    (0x60a2f0, '?isReadOnly@' + BPK + 'VTextureId@'),
+    (0x60a2f0, '?isReadOnly@' + BPK + '_N$00@'),
+    (0x443190, '?getValue@' + BPK + '_N$00@'),
+    (0x63dd00, '?setValue@' + BPK + '_N$00@'),
+]
+SPARKLES_ROWS = [
+    (0x63d790, '??1' + FPS + 'MAE@XZ'),
+    (0x63d7f0, '??0' + FPS + 'IAE@XZ'),
+    (0x63d850, '??_E' + FPS + 'OCE@AEPAXI@Z'), (0x63d860, '??_E' + FPS + 'OEE@AEPAXI@Z'),
+    (0x63d870, '??_E' + FPS + 'OGE@AEPAXI@Z'), (0x63d880, '??_E' + FPS + 'OIE@AEPAXI@Z'),
+    (0x63d890, '??_E' + FPS + 'OKE@AEPAXI@Z'), (0x63d8a0, '??_E' + FPS + 'OME@AEPAXI@Z'),
+    (0x63d8b0, '??1' + DSS + 'UAE@XZ'),
+    (0x63d8c0, '?getClassName@' + FPS + 'UBEABVName@2@XZ'),
+    (0x63d8e0, '??$?0VSparkles@RBX@@@?$BoundProp@_N$00@'),
+    (0x63d9b0, '??0?$DescribedCreatable@VSparkles@RBX@@VInstance@2@$1?sSparkles@2@3QBDB@RBX@@IAE@XZ'),
+    (0x63da50, '??_E' + FPS + 'OBA@AEPAXI@Z'), (0x63da60, '??_E' + FPS + 'OBE@AEPAXI@Z'),
+    (0x63da70, '??_G' + FPS + 'MAEPAXI@Z'),
+    (0x63da90, '??0Sparkles@RBX@@QAE@XZ'),
+    (0x63db90, '??_ESparkles@RBX@@WCE@AEPAXI@Z'), (0x63dba0, '??_ESparkles@RBX@@WEE@AEPAXI@Z'),
+    (0x63dbb0, '??_ESparkles@RBX@@WGE@AEPAXI@Z'), (0x63dbc0, '??_ESparkles@RBX@@WIE@AEPAXI@Z'),
+    (0x63dbd0, '??_ESparkles@RBX@@WKE@AEPAXI@Z'), (0x63dbe0, '??_ESparkles@RBX@@WBEA@AEPAXI@Z'),
+    (0x63dbf0, '??_ESparkles@RBX@@WME@AEPAXI@Z'), (0x63dc00, '??_ESparkles@RBX@@WBA@AEPAXI@Z'),
+    (0x63dc10, '??_ESparkles@RBX@@WBE@AEPAXI@Z'),
+    (0x63dc20, '??1Sparkles@RBX@@UAE@XZ'),
+    (0x63dce0, '??_GSparkles@RBX@@UAEPAXI@Z'),
+    (0x7f8be0, '??__E?prop_Enabled@Sparkles@RBX@@'),
+    (0x801090, '??__F?prop_Enabled@Sparkles@RBX@@'),
+    (0x7fe690, '??__Ffoo@?1??classDescriptor@' + DSS),
+    (0x62e190, '?askSetParent@Sparkles@RBX@@UBE_NPBVInstance@2@@Z'),
+    (0x565ff0, '?askAddChild@Sparkles@RBX@@UBE_NPBVInstance@2@@Z'),
+    (0x565950, '?shouldRender3dAdorn@Sparkles@RBX@@UBE_NXZ'),
+    (0x5c0780, '?classDescriptor@' + DSS + 'SAAAVClassDescriptor@23@XZ'),
+    (0x5bff00, '??$doDeclare@$1?sSparkles@RBX@@3QBDB@Name@RBX@@CAABV01@XZ'),
+    (0x5c0070, '??$callDoDeclare@$1?sSparkles@RBX@@3QBDB@Name@RBX@@CAXXZ'),
+    (0x60a2f0, '?isReadOnly@' + BPS),
+    (0x443190, '?getValue@' + BPS),
+    (0x63dd00, '?setValue@' + BPS),
+]
+SPARKLES_PENDING_ROWS = [
+    (0x63d710, '?render3dAdorn@Sparkles@RBX@@UAEXPAVAdorn@2@@Z'),
+]
+EFFECT_ROWS = [
+    (0x665670, '??0Effect@RBX@@QAE@XZ'),
+    (0x665680, '??1Effect@RBX@@UAE@XZ'),
+    (0x665690, '??_GEffect@RBX@@UAEPAXI@Z'),
+]
+
+LOCAL_EH = nb.LOCAL_EH
+binding = {}   # symbol -> (address, row) for the one-address-per-symbol check
+unbound = {}
+
+
+def resolve(obj, rows):
+    raw = Path(obj).read_bytes()
+    funcs = match.coff_functions(raw)
+    out = []
+    for address, key in rows:
+        hits = [x for x in funcs if x[0] == key] or [x for x in funcs if x[0].startswith(key)
+                                                       and not LOCAL_EH.match(x[0])]
+        assert len(hits) == 1, (hex(address), key, [h[0] for h in hits])
+        out.append((address, hits[0][0]))
+    return out
+
+
+def data_key(symbol):
+    hits = [k for k in DATA if symbol.startswith(k)]
+    return hits[0] if len(hits) == 1 else None
+
+
+def verify(obj, rows, own):
+    raw = Path(obj).read_bytes()
+    sections, symbols, definitions, _ = match._coff_data_index(raw)
+    bodies = {n: (b, r) for n, b, r in match.coff_functions(raw)}
+    result = []
+    for address, name in rows:
+        body, refs = bodies[name]
+        target, target_refs, _ = match.target('2008-06', '%08x' % address)
+        assert match.exact_match(target, target_refs, body, refs), (name, hex(address), len(body), len(target))
+        start, section = definitions[name]
+        table = sections[section]
+        code = raw[table[4] + start:]
+        verified, local = {}, set()
+        for i in range(table[7]):
+            offset, index, kind = struct.unpack_from('<IIH', raw, table[5] + 10 * i)
+            offset -= start
+            if not 0 <= offset < len(body):
+                continue
+            symbol = symbols[index][0]
+            if kind == 20:
+                value = (address + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
+            else:
+                value = (struct.unpack_from('<I', target, offset)[0] - struct.unpack_from('<i', code, offset)[0]) & 0xffffffff
+            if LOCAL_EH.match(symbol):
+                local.add(symbol)
+                continue
+            hit = original.imported(value)
+            if symbol in TAIL_IMPORT:
+                # an out-of-line function whose whole body is `jmp [IAT]` (evidence names it at this address)
+                assert TAIL_IMPORT[symbol] == value and hit is not None, (name, symbol, hex(value))
+                assert original.data(value, 2) == b'\xff\x25' and norm(names.get(value, '')) == norm(symbol), (symbol, hex(value))
+                how = 'tail jmp to %s!%s' % hit
+            elif hit is not None:
+                assert hit[1] == nb.plain(symbol), (name, symbol, hex(value), hit)
+                how = '%s!%s' % hit
+            elif symbol.startswith('??_C@'):
+                pos, at = definitions[symbol]
+                literal = raw[sections[at][4] + pos:sections[at][4] + sections[at][3]].split(b'\0')[0] + b'\0'
+                assert original.data(value, len(literal)) == literal, (name, symbol, hex(value))
+                how = 'literal %r' % literal[:-1].decode()
+            elif symbol.startswith('??_R0') and symbol.endswith('@8'):
+                rtti = original.string(value + 8)
+                assert norm(rtti) == norm('.' + symbol[5:-2]), (name, symbol, hex(value), rtti)
+                how = 'RTTI %s' % rtti
+            elif symbol.startswith('??_7'):
+                rtti, at = original.vtable_class(value)
+                cls = symbol[4:symbol.index('@@6B') + 2]
+                assert norm(rtti) == norm('.?AV' + cls), (name, symbol, hex(value), rtti)
+                how = 'vtable RTTI %s offset %#x' % (rtti, at)
+            elif symbol in own:
+                assert own[symbol] == value, (name, symbol, hex(value), hex(own[symbol]))
+                how = 'own row'
+            elif symbol.startswith('??_E') and own.get('??_G' + symbol[4:]) == value:
+                how = 'vector deleting dtor folded into the ??_G row'
+            elif symbol.startswith('__real@'):
+                literal = bytes.fromhex(symbol[7:])[::-1]
+                assert original.data(value, len(literal)) == literal, (name, symbol, hex(value))
+                how = 'float constant'
+            elif data_key(symbol):
+                assert DATA[data_key(symbol)] == value, (name, symbol, hex(value))
+                if value in NAMES:
+                    assert original.string(value) == NAMES[value], (symbol, hex(value))
+                how = 'data'
+            elif symbol in EXTERNAL:
+                assert EXTERNAL[symbol] == value, (name, symbol, hex(value), hex(EXTERNAL[symbol]))
+                how = 'external' + (' (evidence name)' if norm(names.get(value, '')) == norm(symbol) else '')
+            elif symbol.startswith('?$S') or symbol.startswith('??_B?1') or '?$TSS' in symbol or symbol.startswith('?flag@') or symbol.startswith('?foo@') \
+                    or symbol.startswith('?n@') or symbol.startswith('?root@'):
+                how = 'local static'
+            else:
+                unbound.setdefault(symbol, set()).add((hex(value), name[:60]))
+                continue
+            prev = binding.setdefault(symbol, (value, name))
+            assert prev[0] == value, ('inconsistent', symbol, hex(prev[0]), prev[1], hex(value), name)
+            verified[symbol] = '%s (%s)' % (hex(value), how)
+        result.append({'address': '%08x' % address, 'symbol': name, 'size': len(body), 'exact': True,
+                       'verified_targets': verified, 'local_eh': sorted(local)})
+    return result
+
+
+groups = [('message', msg_obj, MESSAGE_ROWS), ('sky_pending', skyp_obj, SKY_ROWS), ('sparkles', spk_obj, SPARKLES_ROWS),
+          ('sparkles_pending', spkp_obj, SPARKLES_PENDING_ROWS), ('effect', eff_obj, EFFECT_ROWS)]
+resolved = [(g, obj, resolve(obj, rows)) for g, obj, rows in groups]
+own = {}
+for _, _, rows in resolved:
+    for address, name in rows:
+        own.setdefault(name, address)
+results = {g: verify(obj, rows, own) for g, obj, rows in resolved}
+assert not unbound, '\n'.join('%s -> %s' % (k, sorted(v)) for k, v in sorted(unbound.items()))
+
+# The base Sky build (without NATIVE_SKY_PENDING) must still compile; it emits only the descriptor rows.
+sky_base_rows = [r for r in SKY_ROWS if r[1].startswith(('??__E', '??__F?prop'))]
+results['sky_base'] = verify(sky_obj, resolve(sky_obj, sky_base_rows), own)
+
+# Bodies guarded by NATIVE_*_PENDING are byte-exact only against generated header copies: they are not counted
+# as exact. Other rows of a pending build are compiled from unguarded source; those emitted only in a pending
+# build (the Sky constructor odr-uses them) are tagged pending_build.
+PENDING_BODIES = {0x5eb640, 0x63d710}
+plain_exact = {r['address'] for g, v in results.items() if not g.endswith('_pending') for r in v}
+for g, v in results.items():
+    for r in v:
+        if int(r['address'], 16) in PENDING_BODIES:
+            r['exact'] = False
+            r['status'] = 'exact-pending-header'
+        elif g.endswith('_pending') and r['address'] not in plain_exact:
+            r['pending_build'] = True
+
+# ---- vtables, RTTI, allocation sizes and strings ------------------------------------------------------
+d = lambda a: struct.unpack('<I', original.data(a, 4))[0]
+assert original.vtable_class(0x83dad4) == ('.?AVMessage@RBX@@', 0)
+assert original.vtable_class(0x823b6c) == ('.?AVHint@RBX@@', 0)
+assert original.vtable_class(0x83fc0c) == ('.?AVSky@RBX@@', 0)
+assert original.vtable_class(0x84a234) == ('.?AVSparkles@RBX@@', 0)
+assert original.vtable_class(0x84cb84) == ('.?AVEffect@RBX@@', 0)
+assert (d(0x83dad4 + 8), d(0x83dad4 + 12)) == (0x68e880, 0x565ff0)            # Message askAddChild, askSetParent
+assert (d(0x83fc0c + 8), d(0x83fc0c + 12)) == (0x68e880, 0x68e880)            # Sky: Instance defaults
+assert (d(0x84a234 + 8), d(0x84a234 + 12)) == (0x565ff0, 0x62e190)            # Sparkles
+assert [d(0x83da40 + 4 * i) for i in (0, 2)] == [0x565950, 0x5dcd90]          # Message IRenderable: shouldRender2d, render2d
+assert d(0x823ad8 + 8) == 0x5dcde0                                             # Hint IRenderable render2d
+assert [d(0x84a1a0 + 4 * i) for i in (1, 3)] == [0x565950, 0x63d710]           # Sparkles shouldRender3dAdorn, render3dAdorn
+assert d(0x84cb84) == 0x665690 and d(0x84a198) == 0x63dbe0                     # Effect slot 0, Sparkles Effect thunk
+for factory, size, ctor in ((0x4a3850, 0x15c, 0x5dd120), (0x4a4d40, 0x15c, 0x4a4c80), (0x4d8c90, 0x1f8, 0x5eb640),
+                            (0x5c32f0, 0x148, 0x63da90)):
+    body, _, _ = match.target('2008-06', '%08x' % factory)
+    assert b'\x68' + struct.pack('<I', size) in body
+    call = body.index(b'\xe8', body.index(b'\x68' + struct.pack('<I', size)) + 5)
+    while (factory + call + 5 + struct.unpack_from('<i', body, call + 1)[0]) & 0xffffffff != ctor:
+        call = body.index(b'\xe8', call + 1)
+for address, text in ((0x9542a0, 'Message'), (0x9542a8, 'Hint'), (0x955bd4, 'Sky'), (0x96181c, 'Sparkles'),
+                      (0x83db1c, 'Text'), (0x8329ac, 'Appearance'), (0x822490, 'Data'), (0x841e60, 'Enabled'),
+                      (0x83fc64, 'SkyboxUp'), (0x83fcac, 'StarCount'), (0x83fcb8, 'CelestialBodiesShown')):
+    assert original.string(address) == text, (hex(address), text)
+# Base offsets from the RTTI class hierarchy.
+def bases(vtable):
+    hierarchy = d(d(vtable - 4) + 16)
+    out = {}
+    for i in range(d(hierarchy + 8)):
+        bcd = d(d(hierarchy + 12) + 4 * i)        # base class descriptor: type descriptor, numContained, mdisp
+        out[original.string(d(bcd) + 8)] = struct.unpack('<i', original.data(bcd + 8, 4))[0]
+    return out
+assert bases(0x83dad4)['.?AVIRenderable@RBX@@'] == 0x130
+sb = bases(0x84a234)
+assert (sb['.?AVIRenderable@RBX@@'], sb['.?AVEffect@RBX@@']) == (0x130, 0x140), sb
+assert '.?AVMessage@RBX@@' in bases(0x823b6c)
+
+sha = nb.sha
+paths = [Path(__file__).resolve(), MESSAGE_H, R / 'native-headers/Network/Player.h', SKY_H, SPARKLES_H, MESSAGE_SRC, SKY_SRC, SPARKLES_SRC, EFFECT_SRC, LAYOUT]
+objs = (layout_obj, msg_obj, sky_obj, skyp_obj, spk_obj, spkp_obj, eff_obj)
+count = {g: sum(r['exact'] for r in v) for g, v in results.items()}
+pending_count = sum(not r['exact'] for v in results.values() for r in v)
+receipt = {
+    'class': 'RBX::Message, RBX::Hint, RBX::Sky, RBX::Sparkles, RBX::Effect', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
+    'flags': {'layout': layout_flags, 'message': msg_flags, 'sky': sky_flags,
+              'sky_pending': skyp_flags, 'sparkles': spk_flags, 'sparkles_pending': spkp_flags, 'effect': eff_flags},
+    'sources': {str(p.relative_to(ROOT)).replace('\\', '/'): sha(p) for p in paths},
+    'objects': {p.name: sha(p) for p in objs},
+    'layout': {'Message': '0x15c (004a3850); IRenderable +0x130, std::string text +0x140',
+               'Hint': '0x15c (004a4d40); DescribedCreatable<Hint, Message, sHint>, no fields',
+               'Sky': '0x1f8 (004d8c90); TextureId skyUp..skyDn +0x130..+0x1d0, bool +0x1f0, int numStars +0x1f4',
+               'Sparkles': '0x148 (005c32f0); IRenderable +0x130, Effect (vptr only) +0x140, bool enabled +0x144'},
+    'rows': results,
+    'pending_note': 'Rows with status exact-pending-header (Sky::Sky 005eb640, '
+                    'Sparkles::render3dAdorn 0063d710) are NATIVE_*_PENDING bodies and are not counted as exact; rows '
+                    'tagged pending_build are unguarded code emitted only in the pending Sky build. '
+                    'sky_pending rows need '
+                    'ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy); sparkles_pending needs the '
+                    '2008 Adorn slot 19 (generated RbxGraphics/Adorn.h copy, placeholder name sparkles()).',
+    'proposal_content_provider_h': PROPOSAL_CONTENT,
+    'proposal_adorn_h': PROPOSAL_ADORN,
+    'not_attempted': 'Sky::getG3DSky 005ebbb0 and its helpers (testImage 005eaef0, vector<string> helpers 005eb180/005eb210): '
+                     'need the 2008 ContentProvider/GImage/G3D::Sky APIs.',
+    'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
+}
+(ROOT / 'work/2008-06/shared-layouts/effects-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
+print('PASS native Message/Hint, Sky, Sparkles/Effect: %s rows exact, %d exact-pending-header bodies (not counted), targets verified' % (
+    ', '.join('%s %d' % kv for kv in count.items()), pending_count))

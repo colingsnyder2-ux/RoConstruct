@@ -1,0 +1,88 @@
+{
+  "scope": "Source-derived active world pipeline port; native ABI and physics parity require acceptance evidence.",
+  "files": {
+    "App/v8world/Assembly.cpp": {
+      "origin": "tools\\openrbx\\Client\\App\\v8world\\Assembly2.cpp",
+      "origin_sha256": "65fc1596e52d24e43a0cea6a008dfb6c1069af65960c3ef576e9335ae6f813b6",
+      "ported_sha256": "25c7ef250fd26a5d9f5f0327e5ab7e67a54d49ff52a7b2098dca1de92009a611"
+    },
+    "App/v8world/AssemblyStage.cpp": {
+      "origin": "tools\\openrbx\\Client\\App\\v8world\\AssemblyStage2.cpp",
+      "origin_sha256": "dc5efa06e504686a9d7676a2cf5dd8ec71b798395b1a75274ef7b12d0db95f46",
+      "ported_sha256": "f1d56e2d36fccb9f7f1802682eaf773c1721f5584d5c4915b79b6668f1deb949"
+    },
+    "App/v8world/Clump.cpp": {
+      "origin": "tools\\openrbx\\Client\\App\\v8world\\Clump2.cpp",
+      "origin_sha256": "c421c7a6bc17c0b1bc805bea0388660b1269219a54542f51bbaa6de0d2b26522",
+      "ported_sha256": "e9205b56f91d86b280cce3e3289f26925a5e7b9fc3a16e2c209c00432574a6e8"
+    },
+    "App/v8world/ClumpStage.cpp": {
+      "origin": "tools\\openrbx\\Client\\App\\v8world\\ClumpStage2.cpp",
+      "origin_sha256": "cd328e85fc47782f41b7d39688b237b948a5c5e3a142e1e308088c6494cdf4ae",
+      "ported_sha256": "fb5f828f080bbf802e6a5eff6c7646316532b6cc68a9c0719afce2075f4ec149"
+    },
+    "App/v8world/SleepStage.cpp": {
+      "origin": "tools\\openrbx\\Client\\App\\v8world\\SleepStage2.cpp",
+      "origin_sha256": "ea949f90798363090d8f98d73ab39864ffa6e236f6a1a9f386afddcb351841d3",
+      "ported_sha256": "cb99f0990ba01f2bab0817164f4b80df0e1d0d2632e8ec62f6fd41747fc5de8c"
+    },
+    "App/include/v8world/Assembly.h": {
+      "origin": "tools\\openrbx\\Client\\App\\include\\v8world\\Assembly2.h",
+      "origin_sha256": "4e0ac5d62f591c89c25b24fcb67de9578def80d3635d9811863da736c221c28b",
+      "ported_sha256": "c6cf53f18d2d45b7e77f2fd48ee5235317dd5ce3003af23f42847c1cced11585"
+    },
+    "App/include/v8world/AssemblyStage.h": {
+      "origin": "tools\\openrbx\\Client\\App\\include\\v8world\\AssemblyStage2.h",
+      "origin_sha256": "6fdf5f6a4f59f6a1d6aad0b8554688d8b7c15f84f6de0bd87a91de623d09c99f",
+      "ported_sha256": "633d7fd9a813ed5ffbf25fa40ae1a6fea58b6109f70c15c0bfa31b60f89f79a0"
+    },
+    "App/include/v8world/Clump.h": {
+      "origin": "tools\\openrbx\\Client\\App\\include\\v8world\\Clump2.h",
+      "origin_sha256": "ed232c903ef21037737ebe2b1145d4d6c5020e7941663932bd8ebee9e52c0eb8",
+      "ported_sha256": "8336213c829d121a8ddc8930e368cf67c19abb5cf443cb89741f162ca47a504b"
+    },
+    "App/include/v8world/ClumpStage.h": {
+      "origin": "tools\\openrbx\\Client\\App\\include\\v8world\\ClumpStage2.h",
+      "origin_sha256": "55229d8d72ac57cb0add1bae1875f5096c277186794110ed5e95d30d3b758e6a",
+      "ported_sha256": "2eceb9140f2f1092710177618b3d980cab97ebd149c714ac85fcbc22f3beaba4"
+    },
+    "App/include/v8world/SleepStage.h": {
+      "origin": "tools\\openrbx\\Client\\App\\include\\v8world\\SleepStage2.h",
+      "origin_sha256": "14d250d17188c13e26754d342933728710b920c4fc8d992d3c7c68a0d3f5f14e",
+      "ported_sha256": "7daba74955f353651a6d70921b8af77a6b3d959dea2fddf41133595e006530bb"
+    }
+  },
+  "june_evidence": [
+    "0064cc40",
+    "0064ccf0",
+    "0064ca60",
+    "00668bb0",
+    "005e7420"
+  ],
+  "adaptations": [
+    "Includes and historical compiler API qualifiers",
+    "Preserve current Primitive/Body ABI",
+    "Generic SimJob assembly ownership",
+    "Anchoring queried through evidenced aggregate flags instead of removed Anchor object registry",
+    "Existing World consumers use tree iterators; collision/separation handled by SleepStage",
+    "Assembly removal detaches the job and sleep record without zeroing velocity, as required by the original anchor-cycle oracle."
+  ],
+  "remaining": [
+    "Native frame/scheduler",
+    "MovingNoPhysicsBase and full state integration",
+    "Full June ABI equivalence",
+    "Fixed-step oracle regression validation"
+  ],
+  "helpers": {
+    "util/Guid.cpp": "252cc5c7b9fa458541c3c88e096d24691fb0ab7f7e609af8a90f517eb4abb7cb",
+    "v8world/Primitive.cpp": "a23da97d35a9868c8d01ac32ba3621700032cb1d8e75afad479fa174083f1918",
+    "v8world/MotorJoint.cpp": "d035e92770e8856f6fea0dad5d4995756399dbb46ca297a702d40e795c247894",
+    "v8kernel/Link.cpp": "f4a7b9ebc0a1ed7886cb3d681a11a422cc339da31a41db7cde528137e82c18f3"
+  },
+  "helper_port_sha256": "2316c90e3d6cb2eb8388733d326d1e2d3a66856e4df17ba7a8a7bf954645823a",
+  "incompatible_cached_providers": {
+    "module": "rebuild/2008-06/modules/rbxgs-app.json",
+    "field": "verified_exclude",
+    "reason": "Cached TreeStage/SleepStage bodies compiled with other class layouts cannot operate on the source-derived port. Compile the existing source against the active ABI instead."
+  }
+}

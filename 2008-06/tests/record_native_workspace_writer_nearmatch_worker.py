@@ -1,0 +1,25 @@
+import hashlib,json,struct,sys
+from pathlib import Path
+import pefile
+root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
+out=root/'rebuild/2008-06/out/native-layouts';work=out/'write-worker';overlay=work/'v8xml';overlay.mkdir(parents=True,exist_ok=True);header=root/'rebuild/2008-06/native-headers/v8xml/XmlSerializer.h';data=header.read_text();member='std::set<RBX::ContentId> embeddedContent;';ctor='\tTextXmlWriterWithEmbeddedContent(std::ostream& stream)\n\t\t\t: TextXmlWriter(stream)\n\t{\n\t}';assert data.count(member)==data.count(ctor)==1;data=data.replace(member,member+'\n\tRBX::ContentProvider* contentProvider;').replace(ctor,'\tTextXmlWriterWithEmbeddedContent(RBX::ContentProvider*, std::ostream&);');(overlay/'XmlSerializer.h').write_text(data)
+src=root/'rebuild/2008-06/tests/NativeWorkspaceWriterNearWorker.cpp';obj=work/'NativeWorkspaceWriterNearWorker.obj';base=json.loads((root/'work/2008-06/shared-layouts/document-swap-current.json').read_text());flags=[x for x in base['flags'] if not x.startswith('/Fo') and not x.endswith('NativeDocumentLayout.cpp')];flags[:0]=['/I'+str(work),'/I'+str(root/'rebuild/2008-06/tests')];code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],work);assert code==0,log
+raw=obj.read_bytes();sections,symbols,defs,_=match._coff_data_index(raw);functions=match.coff_functions(raw);rows=[]
+for prefix,address,exact in [('?write@CWorkspace@@',0x46b860,False)]:
+ name,body,refs=next(x for x in functions if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06','%08x'%address);assert match.exact_match(target,targetrefs,body,refs)==exact
+ if not exact:
+  assert len(body)==len(target)==112 and body[68]==0 and target[68]==1;patched=bytearray(body);patched[68]=1;assert match.exact_match(target,targetrefs,bytes(patched),refs)
+  off,idx=defs['__unwindtable$'+name];table=sections[idx];candidate=raw[table[4]+off:table[4]+off+44]; assert struct.unpack_from('<II',candidate,8)==(0x19930522,1)
+  start,index=defs[name];table=sections[index];bindings={}
+  for i in range(table[7]):
+   o,sym,kind=struct.unpack_from('<IIH',raw,table[5]+10*i);o-=start
+   if kind==20 and 0<=o<len(body)-3:bindings[symbols[sym][0]]=(address+o+4+struct.unpack_from('<i',target,o)[0])&0xffffffff
+  for key,value in [('??$create@VContentProvider@',0x41eea0),('??0TextXmlWriterWithEmbeddedContent@@',0x46b550),('?serialize@TextXmlWriter@@',0x58e810),('??1TextXmlWriterWithEmbeddedContent@@',0x46b1e0)]:assert any(k.startswith(key) and v==value for k,v in bindings.items()),(key,bindings)
+ rows.append({'address':hex(address),'size':len(body),'symbol':name,'exact':exact})
+# Compile same native declarations without restricting inline depth: ctor/dtor match independently.
+implicit_src=work/'NearWorkerImplicit.cpp';implicit_src.write_text(src.read_text().replace('#pragma inline_depth(1)\n',''));implicit_obj=work/'NearWorkerImplicit.obj';code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(implicit_obj),str(implicit_src)],work);assert code==0,log
+implicit=implicit_obj.read_bytes();implicit_functions=match.coff_functions(implicit)
+for prefix,address in [('??0TextXmlWriterWithEmbeddedContent@@',0x46b550),('??1TextXmlWriterWithEmbeddedContent@@',0x46b1e0)]:
+ name,body,refs=next(x for x in implicit_functions if x[0].startswith(prefix));target,targetrefs,_=match.target('2008-06','%08x'%address);assert match.exact_match(target,targetrefs,body,refs);rows.append({'address':hex(address),'size':len(body),'symbol':name,'exact':True,'separate_object':True})
+pe=pefile.PE(str(root/'work/2008-06/original-p4-reference/Roblox.exe'));image=pe.OPTIONAL_HEADER.ImageBase;rd=lambda a,n:pe.get_data(a-image,n);handler=0x7c39e8;assert rd(handler,1)==b'\xb8';info=struct.unpack('<I',rd(handler+1,4))[0];magic,count,table=struct.unpack('<3I',rd(info,12));assert (magic,count)==(0x19930522,2);states=[struct.unpack('<II',rd(table+i*8,8)) for i in range(count)];assert states==[(0xffffffff,0),(0xffffffff,0x7c39e0)]
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();receipt={'scope':'NONEXACT inactive trial, never promote as byte-identical. Compiler restriction also changes ctor/dtor, so exact ctor/dtor are checked in a separate object, not integrated. Candidate has one writer-cleanup EH state; original has an extra unreachable empty state then writer-cleanup state. Cleanup equivalence inferred, not runtime proof.','methods':rows,'original_eh_states':[{'to':hex(a),'action':hex(b)} for a,b in states],'candidate_eh_state_count':1,'caller_bindings':{k:hex(v) for k,v in bindings.items()},'source_sha256':sha(src),'object_sha256':sha(obj),'implicit_object_sha256':sha(implicit_obj),'overlay_sha256':sha(overlay/'XmlSerializer.h'),'observer_sha256':sha(Path(__file__))};(root/'work/2008-06/shared-layouts/workspace-writer-nearmatch-worker-trial.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS near-match evidence; constructor/destructor exact, caller EH state differs')

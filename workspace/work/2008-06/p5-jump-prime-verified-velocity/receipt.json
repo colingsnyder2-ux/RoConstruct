@@ -1,0 +1,144 @@
+{
+  "mode": "jumpvelocity",
+  "measured_coordinate": "torso velocity y",
+  "revision": "cdc32458ec779937735b620fb2bbe569d6e58fa8",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "d17416f98dc3f3cdbae15b40b03ce2a82ca1a9a258361da295de9c9092ffe079",
+  "fixture_sha256": "4becf3d5b5caefb21c82ffb09192dee051aec8a5721df6e772197717cb3c6647",
+  "observer_sha256": "7acae61285a53a520cc4d14dda06abcf45a8589963386ed9ee83d22dbdbccaf4",
+  "records": [
+    {
+      "sample": 0,
+      "original_time": 0.9666595458984375,
+      "rebuilt_time": 0.9666599999999903,
+      "aligned": true,
+      "original_y": -1.0,
+      "rebuilt_y": -0.00766092632,
+      "delta_y": -0.99233907368,
+      "copies": 2
+    },
+    {
+      "sample": 1,
+      "original_time": 1.0,
+      "rebuilt_time": 1.0,
+      "aligned": true,
+      "original_y": -1.0,
+      "rebuilt_y": -0.00585037004,
+      "delta_y": -0.99414962996,
+      "copies": 2
+    },
+    {
+      "sample": 2,
+      "original_time": 1.0333404541015625,
+      "rebuilt_time": 1.0333400000000097,
+      "aligned": true,
+      "original_y": -1.0,
+      "rebuilt_y": -0.00449293992,
+      "delta_y": -0.99550706008,
+      "copies": 2
+    },
+    {
+      "sample": 3,
+      "original_time": 1.0666656494140625,
+      "rebuilt_time": 1.066665999999998,
+      "aligned": true,
+      "original_y": 48.42413330078125,
+      "rebuilt_y": 48.3280754,
+      "delta_y": 0.09605790078124699,
+      "copies": 2
+    },
+    {
+      "sample": 4,
+      "original_time": 1.100006103515625,
+      "rebuilt_time": 1.1000060000000076,
+      "aligned": true,
+      "original_y": 41.884185791015625,
+      "rebuilt_y": 41.7881279,
+      "delta_y": 0.09605789101562578,
+      "copies": 2
+    },
+    {
+      "sample": 5,
+      "original_time": 1.133331298828125,
+      "rebuilt_time": 1.1333309999999983,
+      "aligned": true,
+      "original_y": 35.34423828125,
+      "rebuilt_y": 35.2481804,
+      "delta_y": 0.09605788124999748,
+      "copies": 2
+    },
+    {
+      "sample": 6,
+      "original_time": 1.1666717529296875,
+      "rebuilt_time": 1.1666720000000055,
+      "aligned": true,
+      "original_y": 28.804290771484375,
+      "rebuilt_y": 28.7082329,
+      "delta_y": 0.09605787148437628,
+      "copies": 2
+    },
+    {
+      "sample": 7,
+      "original_time": 1.1999969482421875,
+      "rebuilt_time": 1.1999969999999962,
+      "aligned": true,
+      "original_y": 22.26434326171875,
+      "rebuilt_y": 22.1682854,
+      "delta_y": 0.09605786171875152,
+      "copies": 2
+    },
+    {
+      "sample": 8,
+      "original_time": 1.23333740234375,
+      "rebuilt_time": 1.233337000000006,
+      "aligned": true,
+      "original_y": 15.724395751953125,
+      "rebuilt_y": 15.6283379,
+      "delta_y": 0.096057851953125,
+      "copies": 2
+    },
+    {
+      "sample": 9,
+      "original_time": 1.26666259765625,
+      "rebuilt_time": 1.266662999999994,
+      "aligned": true,
+      "original_y": 9.1844482421875,
+      "rebuilt_y": 9.08839035,
+      "delta_y": 0.09605789218750083,
+      "copies": 2
+    },
+    {
+      "sample": 10,
+      "original_time": 1.3000030517578125,
+      "rebuilt_time": 1.3000030000000038,
+      "aligned": true,
+      "original_y": 2.644448757171631,
+      "rebuilt_y": 2.54839039,
+      "delta_y": 0.09605836717163108,
+      "copies": 2
+    },
+    {
+      "sample": 11,
+      "original_time": 1.399993896484375,
+      "rebuilt_time": 1.3999939999999924,
+      "aligned": true,
+      "original_y": -16.975486755371094,
+      "rebuilt_y": -17.0715446,
+      "delta_y": 0.09605784462890554,
+      "copies": 2
+    },
+    {
+      "sample": 12,
+      "original_time": 1.5,
+      "rebuilt_time": 1.5,
+      "aligned": true,
+      "original_y": -36.59532928466797,
+      "rebuilt_y": -36.6913872,
+      "delta_y": 0.09605791533203245,
+      "copies": 2
+    }
+  ],
+  "original_forced_termination": true,
+  "scope": "Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.",
+  "P5_complete": false
+}

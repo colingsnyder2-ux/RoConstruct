@@ -1,0 +1,72 @@
+// from server: 33% by colin
+struct CXTColorLum {
+    char pad[0x88];
+    void sub_70cc10();
+    char pad2[0x110 - 0x88 - 4];
+    void sub_70d200();
+    char pad3[0x1a0 - 0x110 - 4];
+    void sub_73872a();
+    char pad4[0x1f4 - 0x1a0 - 4];
+    void sub_73872a_2();
+    char pad5[0x248 - 0x1f4 - 4];
+    void sub_73872a_3();
+    char pad6[0x29c - 0x248 - 4];
+    void sub_73872a_4();
+    char pad7[0x2f0 - 0x29c - 4];
+    void sub_73872a_5();
+    char pad8[0x344 - 0x2f0 - 4];
+    void sub_73872a_6();
+    char pad9[0x398 - 0x344 - 4];
+    void sub_738d00();
+    char pad10[0x3ec - 0x398 - 4];
+    void sub_738d00_2();
+    char pad11[0x440 - 0x3ec - 4];
+    void sub_738d00_3();
+    char pad12[0x494 - 0x440 - 4];
+    void sub_738d00_4();
+    char pad13[0x4e8 - 0x494 - 4];
+    void sub_738d00_5();
+    char pad14[0x53c - 0x4e8 - 4];
+    void sub_738d00_6();
+    char pad15[0x590 - 0x53c - 4];
+    void sub_738382();
+    char pad16[0x5e4 - 0x590 - 4];
+    void sub_738382_2();
+    char pad17[0x638 - 0x5e4 - 4];
+    void sub_738382_3();
+    char pad18[0x68c - 0x638 - 4];
+    void sub_738382_4();
+    char pad19[0x6e0 - 0x68c - 4];
+    void sub_738382_5();
+    char pad20[0x734 - 0x6e0 - 4];
+    void sub_738382_6();
+    char pad21[0x738778 - 0x734 - 4];
+    void sub_738778();
+    void destroy();
+};
+
+void CXTColorLum::destroy()
+{
+    *(void**)this = (void*)0x7ddeb4;
+    sub_738382_6();
+    sub_738382_5();
+    sub_738382_4();
+    sub_738382_3();
+    sub_738382_2();
+    sub_738382();
+    sub_738d00_6();
+    sub_738d00_5();
+    sub_738d00_4();
+    sub_738d00_3();
+    sub_738d00_2();
+    sub_738d00();
+    sub_73872a_6();
+    sub_73872a_5();
+    sub_73872a_4();
+    sub_73872a_3();
+    sub_73872a_2();
+    sub_73872a();
+    sub_70d200();
+    sub_70cc10();
+    sub_738778();
+}

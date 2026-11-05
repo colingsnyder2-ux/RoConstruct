@@ -1,0 +1,87 @@
+{
+  "class": "CUploadPlaceDialog",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "profile": "CString operator PCXSTR noinline (target imports it)",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_upload_place_dialog.py": "608916789ca6ff3a24d9c1625ea30f6be2b27589c87acda6bd25ad1b126b87f4",
+    "rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp": "cd9a698d575926dcef938bf74a56c47c0c1aded5ea251c35fb4a522124c4476e",
+    "rebuild/2008-06/tests/NativeUploadPlaceDialogLayout.cpp": "bdaa50d818c5613fc6cc9e4f076b85b2ba21e5ae4201e8dbdff1023b9d90927b",
+    "rebuild/2008-06/native-headers/CUploadPlaceDialog.h": "21a2f94101dfcb1819187ad500825351ac7502a438a9700d34eb8b0336eced31",
+    "rebuild/2008-06/native-headers/CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838"
+  },
+  "object_sha256": "46a87c0f829c280923731327f962a049559cc6d90cb2939405c7f936b8ed6f8c",
+  "layout": {
+    "size": "0x130 (no own members)",
+    "evidence": "constructor 0044f5c0 stores only vtables 0081757c/00817550; deleting destructor 0044f5a0 forwards to ~CSaveToRobloxDialog; RTTI base chain; stack-only construction at 004553b2, so the size rests on the CSaveToRobloxDialog layout"
+  },
+  "methods": [
+    {
+      "address": "0044f5c0",
+      "symbol": "??0CUploadPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z",
+      "size": 148,
+      "exact": true,
+      "verified_targets": {
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??_C@_0BC@NJEKNCPI@?1Game?1Upload?4aspx?$AA@": "0x817738",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "??0CSaveToRobloxDialog@@QAE@PAUIDispatch@@PBDPAVCWnd@@@Z": "0x45fe80",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "??_7CUploadPlaceDialog@@6BCDialog@@@": "0x81757c",
+        "??_7CUploadPlaceDialog@@6BCDHtmlEventSink@@@": "0x817550"
+      },
+      "local_eh": [
+        "__ehhandler$??0CUploadPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z"
+      ]
+    },
+    {
+      "address": "0044f5a0",
+      "symbol": "??_GCUploadPlaceDialog@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CSaveToRobloxDialog@@UAE@XZ": "0x45fe20",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    }
+  ],
+  "open": [],
+  "scope": "Inactive. Both own bodies exact with verified targets; inherits everything else. No active build, swap or credit."
+}

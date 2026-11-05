@@ -1,0 +1,53 @@
+{
+  "scope": "Inactive RightMotorTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5c6db0",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0SurfaceTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x619de0",
+        "??_7RightMotorTool@RBX@@6BINamed@1@@": "0x8394ec",
+        "??_7RightMotorTool@RBX@@6BIRenderable@1@@": "0x8394d4"
+      }
+    },
+    {
+      "address": "0x5c6e20",
+      "size": 23,
+      "symbol": "?getName@?$Named@VSurfaceTool@RBX@@$1?sRightMotorTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+      "bindings": {
+        "?flag@?1??get@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x979664",
+        "?callDoDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAXXZ": "0x5c6140",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?doDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5910"
+      }
+    },
+    {
+      "address": "0x5c5910",
+      "size": 101,
+      "symbol": "?doDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAABVName@2@XZ",
+      "bindings": {
+        "__ehhandler$?doDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAABVName@2@XZ": "0x7d4bbe",
+        "??_B?1??doDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAABVName@2@XZ@51": "0x9795c4",
+        "??_C@_0L@KIAIPPJL@RightMotor?$AA@": "0x95af24",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90",
+        "?name@?1??doDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAABVName@3@XZ@4ABV43@B": "0x9795c0"
+      }
+    },
+    {
+      "address": "0x5c6140",
+      "size": 5,
+      "symbol": "?callDoDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAXXZ",
+      "bindings": {
+        "?doDeclare@?$NativeToolName@VRightMotorTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5910"
+      }
+    }
+  ],
+  "source_sha256": "362777dd2e68819e45f3fcea27b180816fd61a5d9ff73d761c87700bebe0e58a",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "57af7b2ebc3da0401241166bab6f57efeb9a8148a63126da1ff5d3b98626e407",
+  "observer_sha256": "6ebc78d8a8484408b94978244b72b57e1b66cd9e1b799c3573d60472bd6eda62"
+}

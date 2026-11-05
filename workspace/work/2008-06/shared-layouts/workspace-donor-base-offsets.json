@@ -1,0 +1,113 @@
+{
+  "scope": "Inactive donor C++ base conversions compared to original RTTI; no layout substituted or live ABI claimed.",
+  "observer_sha256": "2aa564387e6f07fa5898388fb53b8e4c1de3286123e47bc841931d4818d6dab0",
+  "source_sha256": "f18d7d2b24638b1315becd7fecd4e4b2ce9fa131269439c6d2516cf4bd4e03cc",
+  "rtti_sha256": "62e62c283fd71927a1d679c1acbc2f4c4fd60614d33dcf8b9962fd4d0cdcc224",
+  "object_sha256": "18eb8a79244289a1271b83f98c97b14829acf019d4848a03c2b543a42237b7c9",
+  "rows": [
+    {
+      "base": "guiOffset",
+      "donor_offset": "0x2d0",
+      "original_offset": "0x2e8",
+      "delta": 24
+    },
+    {
+      "base": "verbOffset",
+      "donor_offset": "0x2d4",
+      "original_offset": "0x2ec",
+      "delta": 24
+    },
+    {
+      "base": "movingOffset",
+      "donor_offset": "0x2fc",
+      "original_offset": "0x314",
+      "delta": 24
+    },
+    {
+      "base": "scriptOffset",
+      "donor_offset": "0x328",
+      "original_offset": "0x340",
+      "delta": 24
+    },
+    {
+      "base": "drawOffset",
+      "donor_offset": "0x32c",
+      "original_offset": "0x344",
+      "delta": 24
+    },
+    {
+      "base": "toolOffset",
+      "donor_offset": "0x34c",
+      "original_offset": "0x364",
+      "delta": 24
+    },
+    {
+      "base": "heartbeatOffset",
+      "donor_offset": "0x36c",
+      "original_offset": "0x384",
+      "delta": 24
+    },
+    {
+      "base": "cameraOffset",
+      "donor_offset": "0x270",
+      "original_offset": "0x288",
+      "delta": 24
+    },
+    {
+      "base": "renderOffset",
+      "donor_offset": "0x1a0",
+      "original_offset": "0x1a0",
+      "delta": 0
+    },
+    {
+      "base": "controllableOffset",
+      "donor_offset": "0x130",
+      "original_offset": "0x130",
+      "delta": 0
+    },
+    {
+      "base": "childNotifierOffset",
+      "donor_offset": "0x24",
+      "original_offset": "0x24",
+      "delta": 0
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceBaseOffsetsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorkspaceBaseOffsetsTrial.cpp"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "scope": "Original binary evidence for inactive CWorkspace::insert; no live integration.",
+  "binary_units": {
+    "0046b9d0": {
+      "sha256": "ebbc626eac67e71ebd89e073d6e34b6c6263a4afc6bad372d2c2f69931d53b6f",
+      "size": 606,
+      "instructions": {
+        "0x46ba16": "call 0x46ae30",
+        "0x46ba63": "call 0x421cb0",
+        "0x46ba8f": "call 0x413c20",
+        "0x46bb23": "call 0x415350",
+        "0x46bb34": "call 0x58f6c0",
+        "0x46bb6a": "call 0x593250",
+        "0x46bbb3": "call 0x5911d0",
+        "0x46bbb8": "mov eax, dword ptr [edi + 0x2c]",
+        "0x46bbbb": "cmp dword ptr [eax + 0x1b4], 0",
+        "0x46bbf5": "call 0x413b00"
+      }
+    },
+    "0046ae30": {
+      "sha256": "2d727fb35e8fdf19be1e4bd452907dbf5eb9b9c31731c48fae5f2343d9a79545",
+      "size": 349,
+      "instructions": {
+        "0x46af8a": "ret 0x1c"
+      }
+    },
+    "00421cb0": {
+      "sha256": "ba8b03a0c7ed1669dc797981c2559d40d7fd819012d10d85f79eee2977b54dfe",
+      "size": 65,
+      "instructions": {
+        "0x421cec": "jmp 0x4153b0"
+      }
+    },
+    "004153b0": {
+      "sha256": "2cd060e05281a93e665bed37fd0f41d6ee7d90d865cad6fc2d91e8d591f97493",
+      "size": 228,
+      "instructions": {
+        "0x4153df": "call 0x409620"
+      }
+    }
+  },
+  "findings": [
+    "0046ae30 consumes a by-value 28-byte argument; newer donor const-reference findFirstChildByName cannot be assumed ABI-compatible.",
+    "00421cb0 walks parent pointers, then 004153b0 reaches Selection factory 00409620: service lookup and creation, not a raw workspace field.",
+    "0046b9d0 accesses CWorkspace+0x2c then checks +0x1b4; existing CWorkspace header identifies +0x2c as RunService pointer. Confirm RunService field layout and ctor/dtor before live use.",
+    "Parser construction 00415350, parse 0058f6c0, SerializerV2 loadInstances 00593250, insertInstances 005911d0, selection update 00413b00 require genuine dependencies."
+  ]
+}

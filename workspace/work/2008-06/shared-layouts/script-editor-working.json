@@ -1,0 +1,791 @@
+{
+  "class": "CScriptEditor",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\scintilla-mfc-1.20"
+  ],
+  "profile": "noinline CString PCXSTR, std::string c_str and size (original imports them)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_script_editor.py": "f478c3d4f3e4c8c72f6750d1903487596a3aabd2243f51e36ad6266f6c9daf71",
+    "rebuild/2008-06/tests/record_native_script_editor.json": "aca1698acc60e66c7c44c8879d9c68f02cac769dca9648c1edcd035936c45436",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "rebuild/2008-06/native-classes/CScriptEditor.cpp": "1c4911077e5ca1edc57db8f363c53226c2ffa0f0282976c85718a1e9cedca1a1",
+    "rebuild/2008-06/tests/NativeScriptEditorLayout.cpp": "eb9eedb82aed83933d022733a01844fd87617df90e37650d5e7d69bf4ce2d038",
+    "rebuild/2008-06/native-headers/CScriptEditor.h": "33e35327f94c128674e54556edb717a57d6d4c225c00dceea15ea52bf15f0d35",
+    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "8e31ad6c32744475bdd85cfd7f476818aba7a9754e5827ce5b2e8b02c556f179",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "ef3b6772710835641c4006a15541642f1c43ddcb5e0bff3b2e5b67c03d470b2d"
+  },
+  "object_sha256": "c06ab1976b258a8fdeb63de467694fc05226c00bd7ab4c1b841f8352ce238f1f",
+  "layout": {
+    "size": "0x160",
+    "bases": "Scintilla::CScintillaView +0 (0xec), Listener<Instance,AncestorChanged> +0xec, MarshaledListener<Instance,PropertyChanged> +0xf0, MarshaledListener<RunService,RunState> +0x114",
+    "members": "mutex shared_ptr +0x138, frame +0x140, script +0x144, runService +0x14c, bools +0x154..0x156, CFont +0x158",
+    "evidence": "CRuntimeClass 0081b208 and CreateObject operator new(0x160); RTTI COL offsets; constructor 00465010 and destructor 00465830; compile-time sizeof/offsetof test"
+  },
+  "methods": [
+    {
+      "address": "00465010",
+      "symbol": "??0CScriptEditor@@QAE@XZ",
+      "size": 200,
+      "exact": true,
+      "verified_targets": {
+        "??0CScintillaView@Scintilla@@QAE@XZ": "0x461f00",
+        "??0?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAE@XZ": "0x464970",
+        "??0?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAE@XZ": "0x464a40",
+        "??_7CScriptEditor@@6BCScintillaView@Scintilla@@@": "0x81b3dc (RTTI .?AVCScriptEditor@@, offset 0x0)",
+        "??_7CScriptEditor@@6B?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@@": "0x81b3d0 (RTTI .?AVCScriptEditor@@, offset 0xec)",
+        "??_7CScriptEditor@@6B?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@@": "0x81b3bc (RTTI .?AVCScriptEditor@@, offset 0xf0)",
+        "??_7CScriptEditor@@6B?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@@": "0x81b3a8 (RTTI .?AVCScriptEditor@@, offset 0x114)",
+        "??_7CFont@@6B@": "0x81b228 (RTTI .?AVCFont@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0CScriptEditor@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00465830",
+      "symbol": "??1CScriptEditor@@UAE@XZ",
+      "size": 361,
+      "exact": true,
+      "verified_targets": {
+        "??_7CScriptEditor@@6BCScintillaView@Scintilla@@@": "0x81b3dc (RTTI .?AVCScriptEditor@@, offset 0x0)",
+        "??_7CScriptEditor@@6B?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@@": "0x81b3d0 (RTTI .?AVCScriptEditor@@, offset 0xec)",
+        "??_7CScriptEditor@@6B?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@@": "0x81b3bc (RTTI .?AVCScriptEditor@@, offset 0xf0)",
+        "??_7CScriptEditor@@6B?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@@": "0x81b3a8 (RTTI .?AVCScriptEditor@@, offset 0x114)",
+        "?setScript@CScriptEditor@@QAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z": "0x465260",
+        "??_7CFont@@6B@": "0x81b228 (RTTI .?AVCFont@@, offset 0x0)",
+        "??1CGdiObject@@UAE@XZ": "0x4111a0",
+        "??1?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAE@XZ": "0x464f00",
+        "??1?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAE@XZ": "0x464e20",
+        "??1CScintillaView@Scintilla@@UAE@XZ": "0x461fd0"
+      },
+      "local_eh": [
+        "__ehhandler$??1CScriptEditor@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00465a20",
+      "symbol": "??_GCScriptEditor@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CScriptEditor@@UAE@XZ": "0x465830",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004650e0",
+      "symbol": "??_ECScriptEditor@@WPA@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECScriptEditor@@UAEPAXI@Z": "0x465a20"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004650f0",
+      "symbol": "??_ECScriptEditor@@WBBE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECScriptEditor@@UAEPAXI@Z": "0x465a20"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465100",
+      "symbol": "??_ECScriptEditor@@WOM@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECScriptEditor@@UAEPAXI@Z": "0x465a20"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465160",
+      "symbol": "?CreateObject@CScriptEditor@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CScriptEditor@@QAE@XZ": "0x465010"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CScriptEditor@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "004638b0",
+      "symbol": "?_GetBaseClass@CScriptEditor@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CScintillaView@Scintilla@@SGPAUCRuntimeClass@@XZ": "0x4613c0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004638c0",
+      "symbol": "?GetRuntimeClass@CScriptEditor@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCScriptEditor@CScriptEditor@@2UCRuntimeClass@@B": "0x81b208"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465a40",
+      "symbol": "?GetMessageMap@CScriptEditor@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CScriptEditor@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x81b63c"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465260",
+      "symbol": "?setScript@CScriptEditor@@QAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z",
+      "size": 659,
+      "exact": true,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090",
+        "?removeListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": "0x5e5a80",
+        "?removeListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x5e5a80",
+        "?removeListener@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z": "0x5e5a80",
+        "?reset@?$shared_ptr@VScript@RBX@@@boost@@QAEXXZ": "0x456e80",
+        "?reset@?$shared_ptr@VRunService@RBX@@@boost@@QAEXXZ": "0x456e80",
+        "?reset@?$shared_ptr@Vrecursive_mutex@boost@@@boost@@QAEXXZ": "0x456e80",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0",
+        "?getMutex@DataModel@RBX@@SA?AV?$shared_ptr@Vrecursive_mutex@boost@@@boost@@PAVInstance@2@@Z": "0x464750",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "??$create@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z": "0x4651c0",
+        "??$shared_from@VRunService@RBX@@@RBX@@YA?AV?$shared_ptr@VRunService@RBX@@@boost@@PAVRunService@0@@Z": "0x618a40",
+        "?addListener@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z": "0x4218a0",
+        "?addListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x4218a0",
+        "?addListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z": "0x4218a0",
+        "__imp__PostMessageA@16": "user32.dll!PostMessageA"
+      },
+      "local_eh": [
+        "__ehhandler$?setScript@CScriptEditor@@QAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "address": "004657f0",
+      "symbol": "?OnUpdate@CScriptEditor@@MAEXPAVCView@@JPAVCObject@@@Z",
+      "size": 59,
+      "exact": true,
+      "verified_targets": {
+        "?setScript@CScriptEditor@@QAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z": "0x465260"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465500",
+      "symbol": "?onEvent@CScriptEditor@@MAEXPBVInstance@RBX@@UAncestorChanged@3@@Z",
+      "size": 68,
+      "exact": true,
+      "verified_targets": {
+        "?setScript@CScriptEditor@@QAEXV?$shared_ptr@VScript@RBX@@@boost@@@Z": "0x465260",
+        "__imp__PostMessageA@16": "user32.dll!PostMessageA"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004638d0",
+      "symbol": "?onMarshaledEvent@CScriptEditor@@MAEXPBVRunService@RBX@@W4RunState@3@@Z",
+      "size": 53,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?SetReadOnly@CScintillaCtrl@Scintilla@@QAEXHH@Z": "0x460c90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004659f0",
+      "symbol": "?onMarshaledEvent@CScriptEditor@@MAEXPBVInstance@RBX@@VPropertyChanged@3@@Z",
+      "size": 46,
+      "exact": true,
+      "verified_targets": {
+        "?prop_EmbeddedSourceCode@Script@RBX@@2V?$PropDescriptor@VScript@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "0x975770",
+        "?reload@CScriptEditor@@IAEXXZ": "0x465550",
+        "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "0x973d54",
+        "?updateTitle@CScriptEditor@@IAEXXZ": "0x464540"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463910",
+      "symbol": "?PreCreateWindow@CScriptEditor@@MAEHAAUtagCREATESTRUCTA@@@Z",
+      "size": 19,
+      "exact": true,
+      "verified_targets": {
+        "?PreCreateWindow@CView@@MAEHAAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?PreCreateWindow@CView@@MAEHAAUtagCREATESTRUCTA@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463980",
+      "symbol": "?PostNcDestroy@CScriptEditor@@MAEXXZ",
+      "size": 32,
+      "exact": true,
+      "verified_targets": {
+        "?instanceCount@CScriptEditor@@1HA": "0x96df94",
+        "?sciLexer@CScriptEditor@@1PAUHINSTANCE__@@A": "0x96df90",
+        "__imp__FreeLibrary@4": "kernel32.dll!FreeLibrary",
+        "?PostNcDestroy@CView@@MAEXXZ": "mfc90.dll!?PostNcDestroy@CView@@MAEXXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463930",
+      "symbol": "?OnCreate@CScriptEditor@@IAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 69,
+      "exact": true,
+      "verified_targets": {
+        "?instanceCount@CScriptEditor@@1HA": "0x96df94",
+        "??_C@_0N@NHFDB@SciLexer?4dll?$AA@": "0x81b23c",
+        "__imp__LoadLibraryA@4": "kernel32.dll!LoadLibraryA",
+        "?sciLexer@CScriptEditor@@1PAUHINSTANCE__@@A": "0x96df90",
+        "?OnCreate@CScintillaView@Scintilla@@IAEHPAUtagCREATESTRUCTA@@@Z": "0x462c60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463ed0",
+      "symbol": "?OnActivate@CScriptEditor@@IAEXIPAVCWnd@@H@Z",
+      "size": 50,
+      "exact": true,
+      "verified_targets": {
+        "?Default@CWnd@@IAEJXZ": "mfc90.dll!?Default@CWnd@@IAEJXZ",
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?CallTipActive@CScintillaCtrl@Scintilla@@QAEHH@Z": "0x4610b0",
+        "?CallTipCancel@CScintillaCtrl@Scintilla@@QAEXH@Z": "0x461080"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004639a0",
+      "symbol": "?OnInitialUpdate@CScriptEditor@@MAEXXZ",
+      "size": 1324,
+      "exact": true,
+      "verified_targets": {
+        "?OnInitialUpdate@CView@@UAEXXZ": "mfc90.dll!?OnInitialUpdate@CView@@UAEXXZ",
+        "?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ": "mfc90.dll!?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ",
+        "?AfxThrowInvalidArgException@@YGXXZ": "mfc90.dll!?AfxThrowInvalidArgException@@YGXXZ",
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?SetLexer@CScintillaCtrl@Scintilla@@QAEXHH@Z": "0x461200",
+        "??_C@_0GL@BBNECIFH@and?5break?5do?5else?5elseif?5end?5fal@": "0x81b180",
+        "?SetKeyWords@CScintillaCtrl@Scintilla@@QAEXHPBDH@Z": "0x461290",
+        "?StyleSetFore@CScintillaCtrl@Scintilla@@QAEXHKH@Z": "0x460730",
+        "?StyleSetBack@CScintillaCtrl@Scintilla@@QAEXHKH@Z": "0x460780",
+        "?StyleSetSize@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x460820",
+        "??_C@_07EHHHOIHI@Verdana?$AA@": "0x81b258",
+        "?StyleSetFont@CScintillaCtrl@Scintilla@@QAEXHPBDH@Z": "0x460870",
+        "?StyleClearAll@CScintillaCtrl@Scintilla@@QAEXH@Z": "0x460700",
+        "?StyleSetBold@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x4607d0",
+        "?SetMarginWidthN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x4605d0",
+        "?SetMarginSensitiveN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x4606b0",
+        "?SetMarginTypeN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x460580",
+        "?SetMarginMaskN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x460660",
+        "??_C@_01HIHLOKLC@1?$AA@": "0x81b254",
+        "??_C@_04MLGPBLN@fold?$AA@": "0x81b24c",
+        "?SetProperty@CScintillaCtrl@Scintilla@@QAEXPBD0H@Z": "0x461240",
+        "?MarkerDefine@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x460310",
+        "?MarkerSetFore@CScintillaCtrl@Scintilla@@QAEXHKH@Z": "0x460360",
+        "?MarkerSetBack@CScintillaCtrl@Scintilla@@QAEXHKH@Z": "0x4603b0",
+        "?AutoCSetSeparator@CScintillaCtrl@Scintilla@@QAEXHH@Z": "0x460910",
+        "?SetMouseDwellTime@CScintillaCtrl@Scintilla@@QAEXHH@Z": "0x461160"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464460",
+      "symbol": "?OnCharAdded@CScriptEditor@@MAEXPAUSCNotification@@@Z",
+      "size": 121,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetSelectionStart@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460990",
+        "?GetSelectionEnd@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x4609c0",
+        "?GetTextRange@CScintillaCtrl@Scintilla@@QAEHPAUTextRange@@H@Z": "0x460b10",
+        "??_C@_0N@FKHBGABB@scintilla?5is?$AA@": "0x81b284",
+        "__imp___stricmp": "msvcr90.dll!_stricmp",
+        "??_C@_0CB@BLMINPGB@very?5cool?6easy?5to?5use?6way?5cool?$CB?$CB@": "0x81b260",
+        "?AutoCShow@CScintillaCtrl@Scintilla@@QAEXHPBDH@Z": "0x4608c0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464590",
+      "symbol": "?OnDwellStart@CScriptEditor@@MAEXPAUSCNotification@@@Z",
+      "size": 217,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "__imp__GetFocus@0": "user32.dll!GetFocus",
+        "?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z": "mfc90.dll!?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z",
+        "?GetLength@CScintillaCtrl@Scintilla@@QAEHH@Z": "0x4600f0",
+        "?GetTextRange@CScintillaCtrl@Scintilla@@QAEHPAUTextRange@@H@Z": "0x460b10",
+        "__imp___strupr": "msvcr90.dll!_strupr",
+        "??_C@_07MIFAOLIL@AUTHOR?5?$AA@": "0x81b2a0",
+        "__imp__strstr": "msvcr90.dll!strstr",
+        "??_C@_0M@HMFBIAAB@PJ?5Naughter?$AA@": "0x81b294",
+        "?CallTipShow@CScintillaCtrl@Scintilla@@QAEXJPBDH@Z": "0x461030"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004644e0",
+      "symbol": "?OnDwellEnd@CScriptEditor@@MAEXPAUSCNotification@@@Z",
+      "size": 34,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?CallTipActive@CScintillaCtrl@Scintilla@@QAEHH@Z": "0x4610b0",
+        "?CallTipCancel@CScintillaCtrl@Scintilla@@QAEXH@Z": "0x461080"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464960",
+      "symbol": "?OnKillFocus@CScriptEditor@@MAEXXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?saveScript@CScriptEditor@@IAEXXZ": "0x464830"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464830",
+      "symbol": "?saveScript@CScriptEditor@@IAEXXZ",
+      "size": 298,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetModify@CScintillaCtrl@Scintilla@@QAEHH@Z": "0x460a90",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090",
+        "?GetTextLength@CScintillaCtrl@Scintilla@@QAEHH@Z": "0x460ee0",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "__imp_?GetBuffer@?$CSimpleStringT@D$00@ATL@@QAEPADH@Z": "mfc90.dll!?GetBuffer@?$CSimpleStringT@D$00@ATL@@QAEPADH@Z",
+        "?GetText@CScintillaCtrl@Scintilla@@QAEHHPADH@Z": "0x460e90",
+        "__imp_?ReleaseBuffer@?$CSimpleStringT@D$00@ATL@@QAEXH@Z": "mfc90.dll!?ReleaseBuffer@?$CSimpleStringT@D$00@ATL@@QAEXH@Z",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "?setEmbeddedCode@Script@RBX@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x586f30",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0",
+        "?SetSavePoint@CScintillaCtrl@Scintilla@@QAEXH@Z": "0x460230"
+      },
+      "local_eh": [
+        "__ehhandler$?saveScript@CScriptEditor@@IAEXXZ"
+      ]
+    },
+    {
+      "address": "00464540",
+      "symbol": "?updateTitle@CScriptEditor@@IAEXXZ",
+      "size": 72,
+      "exact": true,
+      "verified_targets": {
+        "?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ": "mfc90.dll!?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+        "?SetWindowTextA@CWnd@@QAEXPBD@Z": "mfc90.dll!?SetWindowTextA@CWnd@@QAEXPBD@Z",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004659a0",
+      "symbol": "?OnReload@CScriptEditor@@IAEJIJ@Z",
+      "size": 69,
+      "exact": true,
+      "verified_targets": {
+        "?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ": "mfc90.dll!?GetParentFrame@CWnd@@QBEPAVCFrameWnd@@XZ",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "?SetWindowTextA@CWnd@@QAEXPBD@Z": "mfc90.dll!?SetWindowTextA@CWnd@@QAEXPBD@Z",
+        "?reload@CScriptEditor@@IAEXXZ": "0x465550"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463f10",
+      "symbol": "?OnAddBookmark@CScriptEditor@@IAEXXZ",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460c10",
+        "?MarkerAdd@CScintillaCtrl@Scintilla@@QAEHHHH@Z": "0x460400"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463f40",
+      "symbol": "?OnUpdateAddBookmark@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 57,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460c10",
+        "?MarkerGet@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x4604a0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463f80",
+      "symbol": "?OnRemoveBookmark@CScriptEditor@@IAEXXZ",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460c10",
+        "?MarkerDelete@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x460450"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463fb0",
+      "symbol": "?OnUpdateRemoveBookmark@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 55,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460c10",
+        "?MarkerGet@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x4604a0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00463ff0",
+      "symbol": "?OnNextBookmark@CScriptEditor@@IAEXXZ",
+      "size": 66,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460c10",
+        "?MarkerNext@CScintillaCtrl@Scintilla@@QAEHHHH@Z": "0x4604e0",
+        "?GotoLine@CScintillaCtrl@Scintilla@@QAEXHH@Z": "0x460290",
+        "__imp__MessageBeep@4": "user32.dll!MessageBeep"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464040",
+      "symbol": "?OnPreviousBookmark@CScriptEditor@@IAEXXZ",
+      "size": 66,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460c10",
+        "?MarkerPrevious@CScintillaCtrl@Scintilla@@QAEHHHH@Z": "0x460530",
+        "?GotoLine@CScintillaCtrl@Scintilla@@QAEXHH@Z": "0x460290",
+        "__imp__MessageBeep@4": "user32.dll!MessageBeep"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464090",
+      "symbol": "?OnToggleFoldMargin@CScriptEditor@@IAEXXZ",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetMarginWidthN@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x460620",
+        "?SetMarginWidthN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x4605d0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004640d0",
+      "symbol": "?OnUpdateToggleFoldMargin@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetMarginWidthN@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x460620"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464100",
+      "symbol": "?OnToggleSelectionMargin@CScriptEditor@@IAEXXZ",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetMarginWidthN@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x460620",
+        "?SetMarginWidthN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x4605d0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464140",
+      "symbol": "?OnUpdateToggleSelectionMargin@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetMarginWidthN@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x460620"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464170",
+      "symbol": "?OnToggleLineNumbers@CScriptEditor@@IAEXXZ",
+      "size": 49,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetMarginWidthN@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x460620",
+        "?SetMarginWidthN@CScintillaCtrl@Scintilla@@QAEXHHH@Z": "0x4605d0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004641b0",
+      "symbol": "?OnUpdateToggleLineNumbers@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetMarginWidthN@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x460620"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004641e0",
+      "symbol": "?OnUpdateInsert@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 132,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetOvertype@CScintillaCtrl@Scintilla@@QAEHH@Z": "0x460f10",
+        "__imp_?LoadStringA@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEHI@Z": "mfc90.dll!?LoadStringA@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEHI@Z",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnUpdateInsert@CScriptEditor@@IAEXPAVCCmdUI@@@Z"
+      ]
+    },
+    {
+      "address": "004643b0",
+      "symbol": "?OnUpdateLine@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 161,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460c10",
+        "?GetColumn@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460950",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXIZZ": "mfc90.dll!?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXIZZ",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnUpdateLine@CScriptEditor@@IAEXPAVCCmdUI@@@Z"
+      ]
+    },
+    {
+      "address": "00464270",
+      "symbol": "?OnUpdateStyle@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 143,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?GetStyleAt@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460150",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXIZZ": "mfc90.dll!?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXIZZ",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnUpdateStyle@CScriptEditor@@IAEXPAVCCmdUI@@@Z"
+      ]
+    },
+    {
+      "address": "00464300",
+      "symbol": "?OnUpdateFold@CScriptEditor@@IAEXPAVCCmdUI@@@Z",
+      "size": 165,
+      "exact": true,
+      "verified_targets": {
+        "?GetCtrl@CScintillaView@Scintilla@@QAEAAVCScintillaCtrl@2@XZ": "0x4613d0",
+        "?GetCurrentPos@CScintillaCtrl@Scintilla@@QAEJH@Z": "0x460120",
+        "?LineFromPosition@CScintillaCtrl@Scintilla@@QAEHJH@Z": "0x460c10",
+        "?GetFoldLevel@CScintillaCtrl@Scintilla@@QAEHHH@Z": "0x4610e0",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXIZZ": "mfc90.dll!?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXIZZ",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$?OnUpdateFold@CScriptEditor@@IAEXPAVCCmdUI@@@Z"
+      ]
+    },
+    {
+      "address": "00464970",
+      "symbol": "??0?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAE@XZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@6B@": "0x81b368 (RTTI .?AV?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "__imp__GetCurrentThreadId@0": "kernel32.dll!GetCurrentThreadId",
+        "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ": "0x432ce0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00464a40",
+      "symbol": "??0?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAE@XZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@6B@": "0x81b37c (RTTI .?AV?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "__imp__GetCurrentThreadId@0": "kernel32.dll!GetCurrentThreadId",
+        "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ": "0x432ce0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00464e20",
+      "symbol": "??1?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAE@XZ",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@6B@": "0x81b368 (RTTI .?AV?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@, offset 0x0)",
+        "?detach@?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@QAEXXZ": "0x457710",
+        "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z": "0x432bd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00464f00",
+      "symbol": "??1?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAE@XZ",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@6B@": "0x81b37c (RTTI .?AV?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@, offset 0x0)",
+        "?detach@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAEXXZ": "0x457710",
+        "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z": "0x432bd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00464ac0",
+      "symbol": "?onEvent@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEXPBVRunService@2@W4RunState@2@@Z",
+      "size": 48,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464f80",
+      "symbol": "?marshal@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEXPBVRunService@2@W4RunState@2@@Z",
+      "size": 73,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0EventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@QAE@PAV12@PBVRunService@2@W4RunState@2@@Z": "0x464b60",
+        "?push_back@?$vector@PAVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@@Z": "0x4213a0",
+        "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z": "0x432950"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464fd0",
+      "symbol": "??_G?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1?$MarshaledListener@VInstance@RBX@@VPropertyChanged@2@V12@V32@@RBX@@UAE@XZ": "0x464e20",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464ff0",
+      "symbol": "??_G?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1?$MarshaledListener@VRunService@RBX@@W4RunState@2@V12@W432@@RBX@@UAE@XZ": "0x464f00",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    }
+  ],
+  "bounds": [
+    "reload 00465550: 668-byte body matches the raw image with relocations masked; the analysed extent ends at the catch funclet 0046573d (493 bytes)"
+  ],
+  "open": [
+    "marshal 00465110 and the MarshaledListener<Instance,PropertyChanged> onEvent/marshal templates 004649f0/00464ea0: the original copies PropertyChanged inline; matching needs PropertyChanged/Property copy-constructor declarations that differ from the shared headers (not changed)"
+  ],
+  "scope": "Inactive. 51 exact bodies with verified targets; DataModel::getMutex and Instance::desc_Name declarations added to shared headers. No active build, swap or credit."
+}

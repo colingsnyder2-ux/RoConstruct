@@ -1,0 +1,7 @@
+import json,sys,hashlib
+from pathlib import Path
+root=Path(__file__).resolve().parents[3];sys.path.insert(0,str(root));from roc import match,rebuild
+out=root/'rebuild/2008-06/out/native-layouts/instance-read-property-native-worker';out.mkdir(parents=True,exist_ok=True);prior=json.loads((root/'work/2008-06/shared-layouts/instance-after-service-link.json').read_text());flags=[x for x in prior['flags'] if not x.startswith('/Fo') and not x.lower().endswith('.cpp')];src=root/'rebuild/2008-06/native-classes/InstanceReadProperty.cpp';obj=out/'InstanceReadProperty.obj';code,log=rebuild.run(rebuild.toolchain(21022),'cl',flags+['/Fo'+str(obj),str(src)],out);(out/'compile.log').write_text(log);rows=[]
+if code==0:
+ n,b,r=next(x for x in match.coff_functions(obj.read_bytes()) if x[0].startswith('?readProperty@Instance@RBX@@'));t,tr,_=match.target('2008-06','00559170');rows.append({'symbol':n,'size':len(b),'target_size':len(t),'exact':match.exact_match(t,tr,b,r)})
+res={'scope':'Native-header-first without property trial overlay. Any mismatch demonstrates missing original descriptor ABI; compile equality alone does not establish runtime safety.','compile_exit':code,'errors':[x for x in log.splitlines() if 'error C' in x],'methods':rows,'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'compile_log_sha256':hashlib.sha256((out/'compile.log').read_bytes()).hexdigest()};(root/'work/2008-06/shared-layouts/instance-read-property-native-worker.json').write_text(json.dumps(res,indent=2)+'\n');print(json.dumps(res,indent=2))

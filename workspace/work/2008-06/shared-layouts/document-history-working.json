@@ -1,0 +1,379 @@
+{
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_document_history.py": "45745cac87cd4b22ab874a3cc4ae7718822bcdbdbe96562447a696d3f1a5f8da",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "2c9f427744edd1ce9ef4725cf4e08de4f3fcea5997b0cdb1862bf7f8c0b04424",
+    "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
+    "rebuild\\2008-06\\native-headers\\CWorkspace.h": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+    "rebuild\\2008-06\\native-headers\\RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4",
+    "rebuild\\2008-06\\native-headers\\CSaveToRobloxDialog.h": "ce4fb2cd5181f9aa8b732f49d02b447764c6f6352fc20cfc92e9147301bc3838",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\ChangeHistoryService.h": "f5c158cb927a6d8ab58d24cd4a25a97e114f0dcea7abcf97684394c0594a7bbe",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "f351a88ecde30b3f000c66b116fec565f6022f768e6572654f5a3a1a327b1051",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "1b8e7d9d3df6f06d549c3f1c25c5bf820b005411e1ddd547e9bac631900a0ace",
+    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "6b5e8766c0a695e297cb999b80c64c5e93b0180e8f43b26c121a9a25f289bb42",
+    "tools\\rbxgs\\Client\\App\\include\\util\\Log.h": "8caadf614c181ee1fe3cd46ac3bb0cb61a82a0d47c2d2b1d6b5df3669f7f71c6",
+    "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Workspace.h": "2ed391867e49e12497e567740dccb42655e413d90112d7f918a8b9d1fe2beb07",
+    "tools\\rbxgs\\Client\\App\\include\\v8xml\\SerializerV2.h": "624c06919715364772dee0f0a63911e589d5282b659c5d8ff6684b311e091d08",
+    "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c",
+    "rebuild\\2008-06\\native-classes\\LuaAllocatorStats.cpp": "a174770c08f446c59161f7073387754b6e6f1beb58fa85707f63aa96aa8290f4"
+  },
+  "object_sha256": "5de2974af711286d0b0e0ea4e2e619ca72708560adade9ecfc8a068ac0ea88ee",
+  "profile": [
+    "const _Elem * c_str() const",
+    "operator PCXSTR() const throw()\n\t{\n\t\treturn( m_pszData );"
+  ],
+  "preprocess_flags": [
+    "/nologo",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp",
+    "/P"
+  ],
+  "compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentHistoryProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentHistoryProfile.cpp"
+  ],
+  "methods": [
+    {
+      "address": "00453670",
+      "size": 209,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+        "?unplay@ChangeHistoryService@RBX@@QAEXXZ": "0x58a130",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "004538b0",
+      "size": 209,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+        "?play@ChangeHistoryService@RBX@@QAEXXZ": "0x588780",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00453750",
+      "size": 350,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+        "?queryUnplay@ChangeHistoryService@RBX@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z": "0x587b70",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00453990",
+      "size": 350,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+        "?queryPlay@ChangeHistoryService@RBX@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z": "0x587a90",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00453af0",
+      "size": 314,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": "0x4153b0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00454040",
+      "size": 303,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x4530f0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00454300",
+      "size": 393,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x4530f0",
+        "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x495e60",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00454170",
+      "size": 396,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x4530f0",
+        "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z": "0x49ac80",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00450a70",
+      "size": 387,
+      "direct_calls": {
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getGameTime@DataModel@RBX@@QBENXZ": "0x5757d0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00450c00",
+      "size": 387,
+      "direct_calls": {
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getFrameRate@DataModel@RBX@@QBENXZ": "0x5757e0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00454490",
+      "size": 309,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": "0x42de90",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "004547b0",
+      "size": 366,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": "0x42de90",
+        "?getThreadCount@ScriptContext@RBX@@QBEIXZ": "0x5a9120",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00450d90",
+      "size": 401,
+      "direct_calls": {
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDutyCycle@DataModel@RBX@@QBENXZ": "0x5757f0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00454920",
+      "size": 409,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": "0x42de90",
+        "?getHeapStats@LuaAllocator@@QBEXAAI0@Z": "0x5c8940",
+        "?formatMem@Log@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z": "0x5a6bc0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "004545d0",
+      "size": 480,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": "0x42de90",
+        "?gc@ScriptContext@RBX@@QAEXXZ": "0x5a86c0",
+        "?getHeapStats@LuaAllocator@@QBEXAAI0@Z": "0x5c8940",
+        "?formatMem@Log@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z": "0x5a6bc0",
+        "?getThreadCount@ScriptContext@RBX@@QBEIXZ": "0x5a9120",
+        "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620",
+        "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "0044f7c0",
+      "size": 258,
+      "direct_calls": {
+        "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z": "0x6a0e72",
+        "?DoModal@CFileDialog@@UAEHXZ": "0x6a0e6c",
+        "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x6a0e66",
+        "??0CComBSTR@ATL@@QAE@PBD@Z": "0x401180",
+        "??1CFileDialog@@UAE@XZ": "0x6a0e5a"
+      }
+    },
+    {
+      "address": "0044fc50",
+      "size": 104,
+      "direct_calls": {
+        "??0CPublishAsPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z": "0x44f500",
+        "?DoModal@CDialog@@UAEHXZ": "0x6a084e",
+        "??1CSaveToRobloxDialog@@UAE@XZ": "0x45fe20"
+      }
+    },
+    {
+      "address": "0044fcc0",
+      "size": 104,
+      "direct_calls": {
+        "??0CSaveModelToRobloxDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z": "0x44f660",
+        "?DoModal@CDialog@@UAEHXZ": "0x6a084e",
+        "??1CSaveToRobloxDialog@@UAE@XZ": "0x45fe20"
+      }
+    },
+    {
+      "address": "0044fd30",
+      "size": 195,
+      "direct_calls": {
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "??0CRobloxDHtmlDialog@@QAE@IPBDPAVCWnd@@@Z": "0x44eeb0",
+        "?SetExternalDispatch@CDHtmlDialog@@QAEXPAUIDispatch@@@Z": "0x6a1394",
+        "?DoModal@CDialog@@UAEHXZ": "0x6a084e",
+        "??1CRobloxDHtmlDialog@@UAE@XZ": "0x401050"
+      }
+    },
+    {
+      "address": "00455580",
+      "size": 669,
+      "direct_calls": {
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x4530f0",
+        "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z": "0x554da0",
+        "?clearContents@DataModel@RBX@@QAEXXZ": "0x578ef0",
+        "?load@SerializerV2@@SAXPAVXmlElement@@PAVDataModel@RBX@@@Z": "0x593500",
+        "?joinAllHack@Workspace@RBX@@QAEXXZ": "0x5a0de0",
+        "??1XmlElement@@QAE@XZ": "0x413a70",
+        "??3@YAXPAX@Z": "0x6a067a",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+      }
+    },
+    {
+      "address": "00450f30",
+      "size": 436,
+      "direct_calls": {
+        "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z": "0x6a0e72",
+        "?DoModal@CFileDialog@@UAEHXZ": "0x6a0e6c",
+        "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x6a0e66",
+        "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+        "?insert@CWorkspace@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@_N@Z": "0x46b9d0",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0",
+        "??1CFileDialog@@UAE@XZ": "0x6a0e5a"
+      }
+    }
+  ],
+  "delete_contents_binding": {
+    "active_document": "0x96c238",
+    "activation": "0x405aa0"
+  },
+  "heap_dependencies": {
+    "gc": {
+      "address": "005a86c0",
+      "symbol": "?gc@ScriptContext@RBX@@QAEXXZ",
+      "size": 24
+    },
+    "allocator": {
+      "address": "005c8940",
+      "symbol": "?getHeapStats@LuaAllocator@@QBEXAAI0@Z",
+      "size": 20,
+      "object_sha256": "db25424b52a80effcef22c876342ad6e2716a4118fefa2b4d18b133a3ee7b62f",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLuaAllocatorStats.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\LuaAllocatorStats.cpp"
+      ]
+    }
+  },
+  "scope": "Inactive compiler proof with provisional Doc names normalized to existing ActiveDocument symbols; no runtime integration credit."
+}

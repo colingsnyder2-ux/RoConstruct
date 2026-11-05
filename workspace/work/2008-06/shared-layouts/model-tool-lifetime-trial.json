@@ -1,0 +1,29 @@
+{
+  "scope": "Inactive ModelTool lifetime; shared ABI and runtime unproven.",
+  "size": "0x24",
+  "methods": [
+    {
+      "address": "0x63de80",
+      "size": 40,
+      "symbol": "??0ModelTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "bindings": {
+        "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+        "??_7ModelTool@RBX@@6BINamed@1@@": "0x84a2e4",
+        "??_7ModelTool@RBX@@6BIRenderable@1@@": "0x84a2c8"
+      }
+    },
+    {
+      "address": "0x5c79d0",
+      "size": 119,
+      "symbol": "??1ModelTool@RBX@@UAE@XZ",
+      "bindings": {
+        "__ehhandler$??1ModelTool@RBX@@UAE@XZ": "0x7d4db8",
+        "??1MouseCommand@RBX@@UAE@XZ": "0x615780"
+      }
+    }
+  ],
+  "source_sha256": "e1ac48919472b37ad9c208cbf3c7085dbef81449cf21202adfc0823caefe4159",
+  "header_sha256": "13320b0d23a62af60655aefe20b0a93ec6cffdfda398e70ff107019c69076b9b",
+  "object_sha256": "4471d6cf191e61510c8a2f002bb09c8595e645a0b28dc61b5f12a1c594040c28",
+  "observer_sha256": "eca56f0bbcb8ad8cd40b720253d7a58b79a4e5ffe41cc3aa0f6c50a9cf9c3c41"
+}

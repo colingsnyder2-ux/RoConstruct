@@ -1,0 +1,3404 @@
+[
+  {
+    "addr": "0040a5c0",
+    "client": "2008-06",
+    "job": "739d5c3680d14c189fe8dca739b1d4c5",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00413a70",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00417510",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00443530",
+    "client": "2008-06",
+    "job": "739d5c3680d14c189fe8dca739b1d4c5",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00443d60",
+    "client": "2008-06",
+    "job": "81da315095914cd8a24d0ab3d963c763",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00445b10",
+    "client": "2008-06",
+    "job": "739d5c3680d14c189fe8dca739b1d4c5",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00449410",
+    "client": "2008-06",
+    "job": "9ab6b2bc8b6a447981ac7962117d2e09",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0048bb40",
+    "client": "2008-06",
+    "job": "739d5c3680d14c189fe8dca739b1d4c5",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "004925c0",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "004937c0",
+    "client": "2008-06",
+    "job": "51c79aca31bd4f86809bef975b7a3169",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "004960a0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00496170",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00496bc0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00496cf0",
+    "client": "2008-06",
+    "job": "4dddca112ca54a5796c684a2c6e7e94f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00497120",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00497600",
+    "client": "2008-06",
+    "job": "1eabb1cc173b4fb68233b518ce22a78b",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "0049ac80",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "0049aca0",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "0049acd0",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "0049c7b0",
+    "client": "2008-06",
+    "job": "51c79aca31bd4f86809bef975b7a3169",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0049dc70",
+    "client": "2008-06",
+    "job": "da71a08695894d518629d489946b28e2",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0049df50",
+    "client": "2008-06",
+    "job": "51c79aca31bd4f86809bef975b7a3169",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0049fe50",
+    "client": "2008-06",
+    "job": "0897bf6465ef47c1ba1083ec61297cc7",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "004a6de0",
+    "client": "2008-06",
+    "job": "9ab6b2bc8b6a447981ac7962117d2e09",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "004a83e0",
+    "client": "2008-06",
+    "job": "9ab6b2bc8b6a447981ac7962117d2e09",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "004a8b90",
+    "client": "2008-06",
+    "job": "9ab6b2bc8b6a447981ac7962117d2e09",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "004ac830",
+    "client": "2008-06",
+    "job": "7f6f4dec77444adfb6f91cea48c37326",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "004add50",
+    "client": "2008-06",
+    "job": "4dddca112ca54a5796c684a2c6e7e94f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "004f0a20",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005026d0",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005058f0",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505940",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505a20",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505ad0",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505b90",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505c70",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505d20",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505e30",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505ee0",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00505ff0",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00506890",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00506ae0",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00506c00",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00506c80",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00553f90",
+    "client": "2008-06",
+    "job": "1a0c8c2265b441ce9c939effd0998b7e",
+    "model": "codex:gpt-6.1-terra",
+    "user": "colin"
+  },
+  {
+    "addr": "00554160",
+    "client": "2008-06",
+    "job": "73b6035f086a479198d42388a3fcf43b",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00554180",
+    "client": "2008-06",
+    "job": "d1e6646f87714249841f8434b9393a6b",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00554290",
+    "client": "2008-06",
+    "job": "73b6035f086a479198d42388a3fcf43b",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00554da0",
+    "client": "2008-06",
+    "job": "a713698e91454d33acfae94820286a79",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00556520",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00556b00",
+    "client": "2008-06",
+    "job": "16375cb373ee4a6094ff390c19e17bce",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "00558030",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00558830",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00558ac0",
+    "client": "2008-06",
+    "job": "7c37f4929dd14e71a88d81c790c1262f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00558c50",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00559170",
+    "client": "2008-06",
+    "job": "9ab6b2bc8b6a447981ac7962117d2e09",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0055a540",
+    "client": "2008-06",
+    "job": "8b56d5e04a834b98b91b949ac79b3c48",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0055ae20",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0055ae90",
+    "client": "2008-06",
+    "job": "0c63d688847841ecaca456a4e9a46490",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0055b5a0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0055b6f0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0055b7e0",
+    "client": "2008-06",
+    "job": "8b56d5e04a834b98b91b949ac79b3c48",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0055b960",
+    "client": "2008-06",
+    "job": "957f8ed5ec114d20943bae0f124beb02",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00565e00",
+    "client": "2008-06",
+    "job": "6b59472c7f4849e9ba1dd49c86b1c2f1",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00567420",
+    "client": "2008-06",
+    "job": "ee7f739e62b54888bb3a680d738a7be6",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005675d0",
+    "client": "2008-06",
+    "job": "ee7f739e62b54888bb3a680d738a7be6",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00567770",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005693a0",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00569a40",
+    "client": "2008-06",
+    "job": "a23908b5d21749ca9d4a9cd5a17e1711",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00569ae0",
+    "client": "2008-06",
+    "job": "a23908b5d21749ca9d4a9cd5a17e1711",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0056be00",
+    "client": "2008-06",
+    "job": "9ab6b2bc8b6a447981ac7962117d2e09",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0056bee0",
+    "client": "2008-06",
+    "job": "9ab6b2bc8b6a447981ac7962117d2e09",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0056c590",
+    "client": "2008-06",
+    "job": "bd03af8358b141a283088e4640735c98",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0056e5a0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056e630",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056e6a0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056e7b0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056e820",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056e850",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056e900",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056f5f0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056f6e0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056f750",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056f7a0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0056f7e0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00572a90",
+    "client": "2008-06",
+    "job": "568ab9a4016d49f38a7d8c192a7974c5",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00572e40",
+    "client": "2008-06",
+    "job": "568ab9a4016d49f38a7d8c192a7974c5",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00573310",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00573960",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00573c00",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00573e30",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00574050",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00574b10",
+    "client": "2008-06",
+    "job": "17aa606f8bf541a0a3ec6c47ae387959",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00574bf0",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00575040",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00575840",
+    "client": "2008-06",
+    "job": "1951ea2250fa463c845ada5fd2fb562d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0057b9f0",
+    "client": "2008-06",
+    "job": "1951ea2250fa463c845ada5fd2fb562d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0057bc00",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0057be10",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0057c670",
+    "client": "2008-06",
+    "job": "290919f07e694e5195771abe8c0d76cc",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00583520",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00583570",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00583860",
+    "client": "2008-06",
+    "job": "05a9c896175b44238c694313cf62cb19",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00583920",
+    "client": "2008-06",
+    "job": "05a9c896175b44238c694313cf62cb19",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00583a40",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00583ba0",
+    "client": "2008-06",
+    "job": "aacbc5f44eab4703b5d124edd51c655d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00583da0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00583ee0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00584310",
+    "client": "2008-06",
+    "job": "dc6a623e5b89462da920034e0409c6ed",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00584360",
+    "client": "2008-06",
+    "job": "dc6a623e5b89462da920034e0409c6ed",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005843c0",
+    "client": "2008-06",
+    "job": "7c37f4929dd14e71a88d81c790c1262f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00584620",
+    "client": "2008-06",
+    "job": "4213c22c0c7a41b58a1070d9bdd763f2",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00584670",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005846d0",
+    "client": "2008-06",
+    "job": "739d5c3680d14c189fe8dca739b1d4c5",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00584fc0",
+    "client": "2008-06",
+    "job": "a0224c58673843b18971d87dbf98c9fe",
+    "model": "claude-opus-5-5",
+    "user": "nuck16"
+  },
+  {
+    "addr": "00585050",
+    "client": "2008-06",
+    "job": "4db6a147fbf34d138821a4c26d8340c7",
+    "model": "claude-opus-5-5",
+    "user": "nuck16"
+  },
+  {
+    "addr": "00585630",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00586a70",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "00586bf0",
+    "client": "2008-06",
+    "job": "0ab7277b8f01404faef09a809a3eabb2",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "0058e590",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00590240",
+    "client": "2008-06",
+    "job": "95bf425f0c844159841e3e58d02cda7c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00590440",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005909e0",
+    "client": "2008-06",
+    "job": "049e96d76a3f4247996576ed7902e79f",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00590b50",
+    "client": "2008-06",
+    "job": "95bf425f0c844159841e3e58d02cda7c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00590d00",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00590e70",
+    "client": "2008-06",
+    "job": "049e96d76a3f4247996576ed7902e79f",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00590f90",
+    "client": "2008-06",
+    "job": "95bf425f0c844159841e3e58d02cda7c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005910a0",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "00591580",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00596400",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005964f0",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00596700",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005968d0",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00596a50",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00596cd0",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00597110",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005971d0",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00598690",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005986d0",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00598710",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00598750",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005989d0",
+    "client": "2008-06",
+    "job": "c15e6f85c0274c18916c28b38adbe750",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00598b60",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00598c20",
+    "client": "2008-06",
+    "job": "faf71c09cb364b30abcd758bcc92a68a",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00598d90",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005991c0",
+    "client": "2008-06",
+    "job": "1c6aca884b564a71be43a6ce2996adf2",
+    "model": "codex:gpt-6.1-terra",
+    "user": "colin"
+  },
+  {
+    "addr": "005993e0",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005995f0",
+    "client": "2008-06",
+    "job": "fc859807d9b04218b0d0797463b776a9",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00599690",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00599730",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00599eb0",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00599f80",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00599fa0",
+    "client": "2008-06",
+    "job": "cd58b3d59e0f4bc7992d798b31e85a05",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0059a200",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059aae0",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0059b2a0",
+    "client": "2008-06",
+    "job": "739d5c3680d14c189fe8dca739b1d4c5",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0059b4d0",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0059b4f0",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0059b810",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0059d4a0",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0059d950",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059da10",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059dad0",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059dc70",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059dd50",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059dee0",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059df10",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059dfa0",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059e090",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059e0f0",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059e430",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "0059ebe0",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0059eca0",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0059ff10",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0059ff70",
+    "client": "2008-06",
+    "job": "6fe1e88b9ac947f1b2cb7752944c43ab",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005a0220",
+    "client": "2008-06",
+    "job": "d2b2a3e541984a338c5bed81ad7406dc",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005a0280",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005a04b0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005a0530",
+    "client": "2008-06",
+    "job": "4213c22c0c7a41b58a1070d9bdd763f2",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005a0560",
+    "client": "2008-06",
+    "job": "4213c22c0c7a41b58a1070d9bdd763f2",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005a05a0",
+    "client": "2008-06",
+    "job": "bc06e52f7970494682e9ab8e6e95486b",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005a0660",
+    "client": "2008-06",
+    "job": "1a72f1baf4674d61b420bc3f837adb36",
+    "model": "claude-opus-5-5",
+    "user": "colin"
+  },
+  {
+    "addr": "005a0d90",
+    "client": "2008-06",
+    "job": "bc06e52f7970494682e9ab8e6e95486b",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005a1c20",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005a1fc0",
+    "client": "2008-06",
+    "job": "1a72f1baf4674d61b420bc3f837adb36",
+    "model": "claude-opus-5-5",
+    "user": "colin"
+  },
+  {
+    "addr": "005a2760",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005a28c0",
+    "client": "2008-06",
+    "job": "7f6f4dec77444adfb6f91cea48c37326",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005a3390",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005a5200",
+    "client": "2008-06",
+    "job": "c13640743d614ab99833830c9b3f3078",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005a5710",
+    "client": "2008-06",
+    "job": "c13640743d614ab99833830c9b3f3078",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005a59e0",
+    "client": "2008-06",
+    "job": "c13640743d614ab99833830c9b3f3078",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005a80d0",
+    "client": "2008-06",
+    "job": "a7480fdea7e547a99dac0c2f27fdf944",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005a8140",
+    "client": "2008-06",
+    "job": "a7480fdea7e547a99dac0c2f27fdf944",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005ad000",
+    "client": "2008-06",
+    "job": "a442dca5cbb547d3951f2e3413fff6b6",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005b0840",
+    "client": "2008-06",
+    "job": "088aa112a6184269b496e29ebaf36004",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005b0970",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005b0fa0",
+    "client": "2008-06",
+    "job": "7c37f4929dd14e71a88d81c790c1262f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005b1020",
+    "client": "2008-06",
+    "job": "7c37f4929dd14e71a88d81c790c1262f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005b1480",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005b1620",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005b2670",
+    "client": "2008-06",
+    "job": "95bf425f0c844159841e3e58d02cda7c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005b2750",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005b6270",
+    "client": "2008-06",
+    "job": "0dbe70db3a824afea9ed84c0e6b9ecaf",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005bd680",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005ca430",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005caba0",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005cac20",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005cadc0",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005cb2f0",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005cbe70",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005cbf90",
+    "client": "2008-06",
+    "job": "aacbc5f44eab4703b5d124edd51c655d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005cc040",
+    "client": "2008-06",
+    "job": "aacbc5f44eab4703b5d124edd51c655d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005cc690",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005cdf70",
+    "client": "2008-06",
+    "job": "3bbb9ca5c79f46ab866f505209421a8b",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005ce480",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005cf190",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005cf8d0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005cfcd0",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005d0910",
+    "client": "2008-06",
+    "job": "0ab7277b8f01404faef09a809a3eabb2",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "005d11e0",
+    "client": "2008-06",
+    "job": "601b0317223443b7af6f041ed29941d7",
+    "model": "codex:gpt-5.6-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005d1240",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005d1340",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005d1370",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005d3490",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005d3a30",
+    "client": "2008-06",
+    "job": "cf23b29245014497a847c9a372c004fb",
+    "model": "codex:gpt-5.6-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005d3aa0",
+    "client": "2008-06",
+    "job": "0ab7277b8f01404faef09a809a3eabb2",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "005d4b60",
+    "client": "2008-06",
+    "job": "0ab7277b8f01404faef09a809a3eabb2",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "005d5d60",
+    "client": "2008-06",
+    "job": "ca5c014d978f4d14b0b5fedbeb2e7ac6",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005d5ea0",
+    "client": "2008-06",
+    "job": "555bc6a61c11460b89091abb484c76f9",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005d60f0",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005d6180",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005d6e10",
+    "client": "2008-06",
+    "job": "2c2b7a578d4e4b01be3aaaec1626d88e",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005d73a0",
+    "client": "2008-06",
+    "job": "0dbe70db3a824afea9ed84c0e6b9ecaf",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005d7540",
+    "client": "2008-06",
+    "job": "3197941ed3a144c79447206de5581e18",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005d77b0",
+    "client": "2008-06",
+    "job": "1bef0f0fe4be4bb3bdae0375ace125c4",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005d80c0",
+    "client": "2008-06",
+    "job": "30c9e718fbfa419b99fa07995f7cc2e8",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005d91a0",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005d9340",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005d9a20",
+    "client": "2008-06",
+    "job": "7c37f4929dd14e71a88d81c790c1262f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005d9bb0",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005d9db0",
+    "client": "2008-06",
+    "job": "7774bf722f9848e2971c2116a6956d78",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005db280",
+    "client": "2008-06",
+    "job": "3197941ed3a144c79447206de5581e18",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005db960",
+    "client": "2008-06",
+    "job": "7c37f4929dd14e71a88d81c790c1262f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005dbf80",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005dc090",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005dc0c0",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005dc230",
+    "client": "2008-06",
+    "job": "3197941ed3a144c79447206de5581e18",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005dc3d0",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005dc7f0",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005dcb50",
+    "client": "2008-06",
+    "job": "e1a136efe7084475bb4503e80d0f4af4",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005dd7d0",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005dde50",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005de190",
+    "client": "2008-06",
+    "job": "90f39970ace4420c8682e0e1a27e1b10",
+    "model": "claude-opus-5-5",
+    "user": "nuck16"
+  },
+  {
+    "addr": "005de910",
+    "client": "2008-06",
+    "job": "3b1c84505df04ad0ab701d726bc59ff6",
+    "model": "claude-opus-5-5",
+    "user": "nuck16"
+  },
+  {
+    "addr": "005defa0",
+    "client": "2008-06",
+    "job": "2c2b7a578d4e4b01be3aaaec1626d88e",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005df480",
+    "client": "2008-06",
+    "job": "e1a136efe7084475bb4503e80d0f4af4",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005df4a0",
+    "client": "2008-06",
+    "job": "b077334f59e94df7aefbaac962c96015",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005e0610",
+    "client": "2008-06",
+    "job": "e1a136efe7084475bb4503e80d0f4af4",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005e1a40",
+    "client": "2008-06",
+    "job": "19c4875bdfe24187b25b9043b0146448",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e2030",
+    "client": "2008-06",
+    "job": "b077334f59e94df7aefbaac962c96015",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005e2100",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005e2160",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005e2260",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005e2570",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005e2670",
+    "client": "2008-06",
+    "job": "a9078a23889b4655b29f4346227f18ef",
+    "model": "deepseek-v4.1-flash-free",
+    "user": "colin"
+  },
+  {
+    "addr": "005e2900",
+    "client": "2008-06",
+    "job": "dc6a623e5b89462da920034e0409c6ed",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005e2af0",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005e2e10",
+    "client": "2008-06",
+    "job": "4a45904e13404ff5a63ec692130c239c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005e3a80",
+    "client": "2008-06",
+    "job": "d9a614b346a44a82abc8fd6923ab5d98",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e5500",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e5860",
+    "client": "2008-06",
+    "job": "aacbc5f44eab4703b5d124edd51c655d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e5b50",
+    "client": "2008-06",
+    "job": "aacbc5f44eab4703b5d124edd51c655d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e5da0",
+    "client": "2008-06",
+    "job": "c56c7dbe1b29497fab60da63ed13ef16",
+    "model": "claude-opus-5-5",
+    "user": "nuck16"
+  },
+  {
+    "addr": "005e5e70",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005e7420",
+    "client": "2008-06",
+    "job": "faf71c09cb364b30abcd758bcc92a68a",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e7450",
+    "client": "2008-06",
+    "job": "2b73a7058da44834952848ffd5d4ee68",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005e75b0",
+    "client": "2008-06",
+    "job": "58cca36a66e54cc79b7791c853c8d7c2",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e75e0",
+    "client": "2008-06",
+    "job": "58cca36a66e54cc79b7791c853c8d7c2",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e7600",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e7640",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e76f0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e7770",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e7980",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e7b90",
+    "client": "2008-06",
+    "job": "0ab7277b8f01404faef09a809a3eabb2",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e7bd0",
+    "client": "2008-06",
+    "job": "0ab7277b8f01404faef09a809a3eabb2",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e7be0",
+    "client": "2008-06",
+    "job": "0ab7277b8f01404faef09a809a3eabb2",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e7c80",
+    "client": "2008-06",
+    "job": "0ab7277b8f01404faef09a809a3eabb2",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e7df0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e8000",
+    "client": "2008-06",
+    "job": "423b06fc038948b4be208435827038c4",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e8050",
+    "client": "2008-06",
+    "job": "a76582d4868d40cfb32c15461b097791",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005e80d0",
+    "client": "2008-06",
+    "job": "a76582d4868d40cfb32c15461b097791",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005e8140",
+    "client": "2008-06",
+    "job": "423b06fc038948b4be208435827038c4",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e81b0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e82e0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e8470",
+    "client": "2008-06",
+    "job": "423b06fc038948b4be208435827038c4",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e8500",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e85b0",
+    "client": "2008-06",
+    "job": "423b06fc038948b4be208435827038c4",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e86f0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005e8770",
+    "client": "2008-06",
+    "job": "58cca36a66e54cc79b7791c853c8d7c2",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e8d30",
+    "client": "2008-06",
+    "job": "aacbc5f44eab4703b5d124edd51c655d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005e9150",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e9160",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e9260",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e9280",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e93e0",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005e98c0",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005ea5e0",
+    "client": "2008-06",
+    "job": "b3c4cb191d88467e9c762f01bf43f48a",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005ea880",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005ea8b0",
+    "client": "2008-06",
+    "job": "344b2aa8b19b45ab815b96f201154276",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005f1290",
+    "client": "2008-06",
+    "job": "ec74a9dced024175963db8a43e6090cd",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005f12a0",
+    "client": "2008-06",
+    "job": "d48255983b3e46f6845a76d99d574ac4",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005f1300",
+    "client": "2008-06",
+    "job": "d48255983b3e46f6845a76d99d574ac4",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005f1360",
+    "client": "2008-06",
+    "job": "d48255983b3e46f6845a76d99d574ac4",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005f13e0",
+    "client": "2008-06",
+    "job": "ec74a9dced024175963db8a43e6090cd",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005fbd80",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005fc090",
+    "client": "2008-06",
+    "job": "dc6a623e5b89462da920034e0409c6ed",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005fc810",
+    "client": "2008-06",
+    "job": "6c4c6e4f955944b8b0397c68491501e2",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005fc940",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005fcfb0",
+    "client": "2008-06",
+    "job": "a76582d4868d40cfb32c15461b097791",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005fd0b0",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005fd3e0",
+    "client": "2008-06",
+    "job": "088aa112a6184269b496e29ebaf36004",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "005fd530",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005fdaf0",
+    "client": "2008-06",
+    "job": "7c37f4929dd14e71a88d81c790c1262f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "005fdb70",
+    "client": "2008-06",
+    "job": "423b06fc038948b4be208435827038c4",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005fdc40",
+    "client": "2008-06",
+    "job": "423b06fc038948b4be208435827038c4",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005fe030",
+    "client": "2008-06",
+    "job": "049e96d76a3f4247996576ed7902e79f",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005fe140",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005fe1d0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "005fe280",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005fe2f0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "005fe6d0",
+    "client": "2008-06",
+    "job": "423b06fc038948b4be208435827038c4",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "005ff1a0",
+    "client": "2008-06",
+    "job": "95bf425f0c844159841e3e58d02cda7c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005ff750",
+    "client": "2008-06",
+    "job": "ee7f739e62b54888bb3a680d738a7be6",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005ffb70",
+    "client": "2008-06",
+    "job": "95bf425f0c844159841e3e58d02cda7c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "005ffc50",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "006004b0",
+    "client": "2008-06",
+    "job": "e1a136efe7084475bb4503e80d0f4af4",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "006004d0",
+    "client": "2008-06",
+    "job": "e1a136efe7084475bb4503e80d0f4af4",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00606d10",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00607ad0",
+    "client": "2008-06",
+    "job": "e1a136efe7084475bb4503e80d0f4af4",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00608160",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00608aa0",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00609150",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0060a0f0",
+    "client": "2008-06",
+    "job": "05a9c896175b44238c694313cf62cb19",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0060a230",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0060a240",
+    "client": "2008-06",
+    "job": "dc6a623e5b89462da920034e0409c6ed",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0060a250",
+    "client": "2008-06",
+    "job": "dc6a623e5b89462da920034e0409c6ed",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0060bbb0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0060c5c0",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0060d770",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0060dd60",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0060df80",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0060e310",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0060e540",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0060e630",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0060e700",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0060e780",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0060e840",
+    "client": "2008-06",
+    "job": "310c52c1a5334eec93e6ab971d0506ae",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0060e970",
+    "client": "2008-06",
+    "job": "7defe8d7595148459e4686995a58c17c",
+    "model": "codex:gpt-5.6-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0060eb30",
+    "client": "2008-06",
+    "job": "6a7eb2d7653645a7aed3a1a0ed748c35",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0060ed40",
+    "client": "2008-06",
+    "job": "310c52c1a5334eec93e6ab971d0506ae",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0060f0a0",
+    "client": "2008-06",
+    "job": "310c52c1a5334eec93e6ab971d0506ae",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0060f3e0",
+    "client": "2008-06",
+    "job": "05a9c896175b44238c694313cf62cb19",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0060fc20",
+    "client": "2008-06",
+    "job": "e7bf453a40ed41edb8aaae021bfb6e0e",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "0060fef0",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00610070",
+    "client": "2008-06",
+    "job": "a76582d4868d40cfb32c15461b097791",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00610130",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00610270",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00610830",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00610930",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00610a60",
+    "client": "2008-06",
+    "job": "9167482492314a8b8a6e73ad3024c76e",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00612fb0",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00613cc0",
+    "client": "2008-06",
+    "job": "c15e6f85c0274c18916c28b38adbe750",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "006147f0",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00615640",
+    "client": "2008-06",
+    "job": "70a1a98050e84962ac3e81e4bdef5d98",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00615820",
+    "client": "2008-06",
+    "job": "f9a64bca67c64f3bb99ec49e3ec6da21",
+    "model": "roc native-assertions",
+    "user": "colin"
+  },
+  {
+    "addr": "006158f0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "006159f0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00615cc0",
+    "client": "2008-06",
+    "job": "9e9dfed56be04a56baf6aafd8cbbbb4d",
+    "model": "Codex",
+    "user": "colin"
+  },
+  {
+    "addr": "00615d90",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00616180",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "006161a0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "006164a0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00616f60",
+    "client": "2008-06",
+    "job": "17aa606f8bf541a0a3ec6c47ae387959",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00617150",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "006171e0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00617c10",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00617cb0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00618160",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00618200",
+    "client": "2008-06",
+    "job": "aacbc5f44eab4703b5d124edd51c655d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "0062b030",
+    "client": "2008-06",
+    "job": "17aa606f8bf541a0a3ec6c47ae387959",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0062b5c0",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0062b610",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0062e910",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "006300d0",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00630610",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "006308f0",
+    "client": "2008-06",
+    "job": "72e0cc406874442e92ccf2226772409b",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "00632370",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00632720",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00632db0",
+    "client": "2008-06",
+    "job": "a76582d4868d40cfb32c15461b097791",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00633090",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0063c070",
+    "client": "2008-06",
+    "job": "79f1e1c7e9014b6f8f437df3a921ee20",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "0063c280",
+    "client": "2008-06",
+    "job": "17aa606f8bf541a0a3ec6c47ae387959",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0063d390",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0063d640",
+    "client": "2008-06",
+    "job": "121908dd57144d04b7f75064dd77cd02",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00641390",
+    "client": "2008-06",
+    "job": "17aa606f8bf541a0a3ec6c47ae387959",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00642210",
+    "client": "2008-06",
+    "job": "3bbb9ca5c79f46ab866f505209421a8b",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00642270",
+    "client": "2008-06",
+    "job": "498fcc2e7e1c45869facb62f677ff5eb",
+    "model": "GPT-5",
+    "user": "colin"
+  },
+  {
+    "addr": "006423e0",
+    "client": "2008-06",
+    "job": "498fcc2e7e1c45869facb62f677ff5eb",
+    "model": "GPT-5",
+    "user": "colin"
+  },
+  {
+    "addr": "00642fc0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00643090",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "006430a0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "006430e0",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "006456e0",
+    "client": "2008-06",
+    "job": "c56c7dbe1b29497fab60da63ed13ef16",
+    "model": "claude-opus-5-5",
+    "user": "nuck16"
+  },
+  {
+    "addr": "00645750",
+    "client": "2008-06",
+    "job": "6126a57c3afd4038b5ea48c67f94c72c",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00645ae0",
+    "client": "2008-06",
+    "job": "8fb3a8e3f3f34e989423ec4c1f01ecdf",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00645af0",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00646550",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00646af0",
+    "client": "2008-06",
+    "job": "e1a136efe7084475bb4503e80d0f4af4",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "006477b0",
+    "client": "2008-06",
+    "job": "a76582d4868d40cfb32c15461b097791",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00649130",
+    "client": "2008-06",
+    "job": "fcd175f566cc44fc9f3bb09a2c2cbd24",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00649170",
+    "client": "2008-06",
+    "job": "fcd175f566cc44fc9f3bb09a2c2cbd24",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00649190",
+    "client": "2008-06",
+    "job": "fcd175f566cc44fc9f3bb09a2c2cbd24",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "006498b0",
+    "client": "2008-06",
+    "job": "fcd175f566cc44fc9f3bb09a2c2cbd24",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00649f20",
+    "client": "2008-06",
+    "job": "a76582d4868d40cfb32c15461b097791",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0064a200",
+    "client": "2008-06",
+    "job": "a76582d4868d40cfb32c15461b097791",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0064a3d0",
+    "client": "2008-06",
+    "job": "05a9c896175b44238c694313cf62cb19",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0064d060",
+    "client": "2008-06",
+    "job": "16375cb373ee4a6094ff390c19e17bce",
+    "model": "gpt-6.1-sol",
+    "user": "coldek"
+  },
+  {
+    "addr": "0064dc90",
+    "client": "2008-06",
+    "job": "0137b9f994044e48b9744b3c24e78cc0",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "0064dd40",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0064ddf0",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0064e050",
+    "client": "2008-06",
+    "job": "17aa606f8bf541a0a3ec6c47ae387959",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0064f070",
+    "client": "2008-06",
+    "job": "00e49e6686714f1c936a833f527f0353",
+    "model": "GPT-5",
+    "user": "colin"
+  },
+  {
+    "addr": "00658a00",
+    "client": "2008-06",
+    "job": "de7b9eae5623429791a439bbab6a29c6",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00658ca0",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "006602b0",
+    "client": "2008-06",
+    "job": "43efaa2fbda944079018684c1d090546",
+    "model": "GPT-5",
+    "user": "colin"
+  },
+  {
+    "addr": "006659a0",
+    "client": "2008-06",
+    "job": "c24b46fcc32d42a0aba2cbb62b5cb1ae",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00665b00",
+    "client": "2008-06",
+    "job": "c24b46fcc32d42a0aba2cbb62b5cb1ae",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00665b60",
+    "client": "2008-06",
+    "job": "c24b46fcc32d42a0aba2cbb62b5cb1ae",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00665bd0",
+    "client": "2008-06",
+    "job": "c24b46fcc32d42a0aba2cbb62b5cb1ae",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00665c90",
+    "client": "2008-06",
+    "job": "c24b46fcc32d42a0aba2cbb62b5cb1ae",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00665ce0",
+    "client": "2008-06",
+    "job": "c24b46fcc32d42a0aba2cbb62b5cb1ae",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00665e20",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00665f20",
+    "client": "2008-06",
+    "job": "c24b46fcc32d42a0aba2cbb62b5cb1ae",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "006663f0",
+    "client": "2008-06",
+    "job": "aacbc5f44eab4703b5d124edd51c655d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "006683b0",
+    "client": "2008-06",
+    "job": "a7480fdea7e547a99dac0c2f27fdf944",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "006683f0",
+    "client": "2008-06",
+    "job": "5d7a0e8e4b1f498f937c36372b0fc438",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00668850",
+    "client": "2008-06",
+    "job": "5d7a0e8e4b1f498f937c36372b0fc438",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00668a20",
+    "client": "2008-06",
+    "job": "3520e34f5e82483fa2b22e6d460c67bd",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "00669780",
+    "client": "2008-06",
+    "job": "310c52c1a5334eec93e6ab971d0506ae",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00669cf0",
+    "client": "2008-06",
+    "job": "05a9c896175b44238c694313cf62cb19",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "00669d10",
+    "client": "2008-06",
+    "job": "05a9c896175b44238c694313cf62cb19",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0066a570",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0066a630",
+    "client": "2008-06",
+    "job": "fcd175f566cc44fc9f3bb09a2c2cbd24",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0066a700",
+    "client": "2008-06",
+    "job": "981c606609864414b2c608ce100c68ef",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0066a730",
+    "client": "2008-06",
+    "job": "ae59330ca7914e1caae5836cc55500e4",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0066a7c0",
+    "client": "2008-06",
+    "job": "1e2b177dff244c0491e0efee031489c9",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0066a980",
+    "client": "2008-06",
+    "job": "1e2b177dff244c0491e0efee031489c9",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0066a9d0",
+    "client": "2008-06",
+    "job": "049e96d76a3f4247996576ed7902e79f",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "0066c330",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0066c5a0",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0066c810",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0066c970",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0066cc70",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0066ccc0",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0066ce20",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0066ced0",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "0066d0d0",
+    "client": "2008-06",
+    "job": "29c85cb76c6d49faa66d060a542d4de5",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "0066daf0",
+    "client": "2008-06",
+    "job": "0e9e29d062944c2195b02e71d3218e3f",
+    "model": "gpt-6.1-sol",
+    "user": "colin"
+  },
+  {
+    "addr": "0066e330",
+    "client": "2008-06",
+    "job": "06c874571baf4dedadd18d3bf1633048",
+    "model": "Claude Opus 5.5",
+    "user": "colin"
+  },
+  {
+    "addr": "00676750",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00676890",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00676aa0",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "00676b20",
+    "client": "2008-06",
+    "job": "bc06e52f7970494682e9ab8e6e95486b",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00676e00",
+    "client": "2008-06",
+    "job": "bc06e52f7970494682e9ab8e6e95486b",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "006770f0",
+    "client": "2008-06",
+    "job": "bc06e52f7970494682e9ab8e6e95486b",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00677190",
+    "client": "2008-06",
+    "job": "3ff280eb25544ffeb23346a506763f1d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00677260",
+    "client": "2008-06",
+    "job": "3ff280eb25544ffeb23346a506763f1d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "00677300",
+    "client": "2008-06",
+    "job": "3ff280eb25544ffeb23346a506763f1d",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  },
+  {
+    "addr": "006773f0",
+    "client": "2008-06",
+    "job": "23ba88f68b6f4336a4e355013c7f394c",
+    "model": "gpt-6",
+    "user": "colin"
+  },
+  {
+    "addr": "007ad160",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "007b8450",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "007b85e0",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "007b8eb0",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "007b8f40",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "007b8fb0",
+    "client": "2008-06",
+    "job": "5786ceb57ace420ba860c55d28d15255",
+    "model": "deepseek-v4.1-flash",
+    "user": "coldek"
+  },
+  {
+    "addr": "007f8ba0",
+    "client": "2008-06",
+    "job": "79f1e1c7e9014b6f8f437df3a921ee20",
+    "model": "claude-opus-5-5",
+    "user": "EspClaude"
+  }
+]

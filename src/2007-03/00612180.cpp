@@ -1,0 +1,29 @@
+// from server: 100% by colin
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// roc-lib: rbxgs-dll util/RunningAverage.cpp
+
+// Candidate translation unit (score above; library headers required).
+#include "util/RunningAverage.h"
+#include "util/Math.h"
+
+namespace RBX
+{
+	void RunningAverageState::update(const G3D::CoordinateFrame& cofm, float radius)
+	{
+		this->position = this->position * 0.75f + cofm.translation * 0.25f;
+		this->angles = this->angles * 0.75f + Quaternion(cofm.rotation) * (radius * 0.25f);
+	}
+
+	bool RunningAverageState::withinTolerance(const G3D::CoordinateFrame& cofm, float radius, float tolerance)
+	{
+		G3D::Vector3 deltaPos = Math::vector3Abs(this->position - cofm.translation);
+		if (Math::maxAxisLength(deltaPos) > tolerance)
+			return false;
+		Quaternion deltaAngles = Quaternion(cofm.rotation) * radius;
+		if ((this->angles - deltaAngles).maxComponent() > tolerance)
+			return false;
+		return true;
+	}
+}

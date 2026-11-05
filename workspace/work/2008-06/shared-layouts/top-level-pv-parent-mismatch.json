@@ -1,0 +1,13 @@
+{
+  "address": "0x608e20",
+  "identity": "RBX::PVInstance::getTopLevelPVParent",
+  "source_evidence": "tools/openrbx/Client/roc_espclaude_dac953f05927d5ae.cpp",
+  "source_evidence_sha256": "e61d20aab87ec759253420440272ef55905b5eb07fe3cfa9cefb9b77187fe6f3",
+  "candidate_source_sha256": "1e444fdd6ec3901ae71dcb17f7d58330cae946bb5646019d5fc2ebac8f387fbc",
+  "candidate_object_sha256": "ca24e9fef0b89e96b3e3e5173036a118a823d216d1d849c6d3acdc8ff2408fb9",
+  "candidate_symbol": "?getTopLevelPVParent@PVInstance@RBX@@QAEPAV12@XZ",
+  "candidate_bytes": 113,
+  "target_bytes": 79,
+  "exact": false,
+  "scope": "Helper identity recovered; candidate not exact, inactive and not linked. Shared layouts/runtime unproven."
+}

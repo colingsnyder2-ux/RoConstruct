@@ -1,0 +1,9 @@
+// from server: 100% by tester
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+// roc-lib: g3d-6.09 G3Dcpp/roc_export_d6396554ab66dc9e.cpp
+
+// Candidate translation unit (score above; library headers required).
+#include "C:/Users/colin/RoConstruct/tools/libs/g3d-6.09/source/include/G3D/roc_export_6b6c1285e24c08e8.h"
+#include "C:/Users/colin/RoConstruct/tools/libs/g3d-6.09/source/G3Dcpp/Color4.cpp"

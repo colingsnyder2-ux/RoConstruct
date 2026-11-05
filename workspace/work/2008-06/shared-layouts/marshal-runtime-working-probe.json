@@ -1,0 +1,152 @@
+{
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_frame_marshalling.py": "7a28f388fd52f331941212fd46e2448dd031a967d79a19034c87374f34302c4e",
+    "rebuild\\2008-06\\native-classes\\CMarshalWindow.cpp": "7bada83a8026fbbdda0afe84aebc5c6eea810302449c4c0400b171a493d72652",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaption.cpp": "cae44d0b3b2ad07459b7cec4bc05bcbf9eebac7e7be6c8b264e57c8fee509077",
+    "rebuild\\2008-06\\native-classes\\MarshalWindowRegistry.cpp": "843e1ee99249b1cb02b6a586ebdc63fe3f47a25fb6b23003f6286a5c8ccce640",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\SelectionChanged.h": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
+    "rebuild\\2008-06\\native-headers\\util\\MarshalWindow.h": "dc5a302f6eba7575374a7dc38691d4cea32d7298cdb9844eab00e271f43074d8",
+    "rebuild\\2008-06\\native-headers\\util\\MarshaledListener.h": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
+    "rebuild\\2008-06\\native-headers\\util\\EventDataBase.h": "36ade94ab2c1c538faef3a0ba7ac0a4ad74eb8e48e0be59d9f58f64128a2893e",
+    "rebuild\\2008-06\\native-headers\\CSelectionCaption.h": "42dc72d083e2c180e2feda924479a6e28d63a84fe3e4f97cbe4cad41e15038e3",
+    "rebuild\\2008-06\\native-headers\\ActiveDocView.h": "e30143470935d4675ddd3f8dd64806618dc363502f1fe1d67714d6083eeed393",
+    "rebuild\\2008-06\\tests\\NativeMarshalWindowLayout.cpp": "9aeca45c86aee14894eb64c7d033d725159f5cc0efe5667d70f62f745955a9a2",
+    "rebuild\\2008-06\\tests\\NativeMarshaledListener.cpp": "9a4ed94202a0f89efeb74cf9b971aedd80cc2ec83b58b15412cdb1064a19e915",
+    "rebuild\\2008-06\\tests\\NativeSelectionCaptionLayout.cpp": "f80a2a121c352b74d26f4dcd3a14fb9428e369e92e97a7be85e04d17fefb92cc",
+    "rebuild\\2008-06\\tests\\NativeMarshalWindowRuntime.cpp": "26eb321f97e42096a00c1090c32b534f3782179007bf174cf01aa2587c8f5bdd",
+    "rebuild\\2008-06\\tests\\record_native_marshal_runtime.py": "1a285c01ced5f0cb8b229d5eb211c557deafbef26485ea7f3d40c72b570b19b7"
+  },
+  "compiler": 21022,
+  "compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeMarshalWindowRuntime.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeMarshalWindowRuntime.cpp"
+  ],
+  "link_flags": [
+    "/nologo",
+    "/SUBSYSTEM:CONSOLE",
+    "/MACHINE:X86",
+    "/OUT:NativeMarshalWindowRuntime.exe",
+    "/MAP:NativeMarshalWindowRuntime.map",
+    "/MANIFEST",
+    "NativeMarshalWindowRuntime.obj",
+    "NativeMarshalWindow.obj",
+    "NativeMarshalWindowRegistry.obj",
+    "kernel32.lib",
+    "user32.lib",
+    "advapi32.lib"
+  ],
+  "exe_sha256": "e54c7ee0d74f05effba9c6d95f1644b20c8f1ad2e0432b0eafe5db9bb6536f82",
+  "map_sha256": "7d6d8b45cd3d78c0a698f70e3ea2db7b627e3bf6a2ea3245a0784a7a600e751f",
+  "probe_sha256": "cdb2817ec23dbafd5ee7334e67909a62489d651bd7f80968d8903ba93bffba48",
+  "linked_methods": [
+    {
+      "symbol": "??0CMarshalWindow@RBX@@QAE@K@Z",
+      "original": "00432c50",
+      "linked_va": "0x4024d0",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z",
+      "original": "00432950",
+      "linked_va": "0x401c20",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "??0CCriticalSection@ATL@@QAE@XZ",
+      "original": "004328c0",
+      "linked_va": "0x401030",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "?OnFinalMessage@CMarshalWindow@RBX@@UAEXPAUHWND__@@@Z",
+      "original": "00432a70",
+      "linked_va": "0x401c40",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "?OnDestroy@CMarshalWindow@RBX@@QAEJIIJAAH@Z",
+      "original": "00432970",
+      "linked_va": "0x401c80",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "?ProcessWindowMessage@CMarshalWindow@RBX@@UAEHPAUHWND__@@IIJAAJK@Z",
+      "original": "00432a90",
+      "linked_va": "0x401fb0",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "?GetWindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAEP6GJPAUHWND__@@IIJ@ZXZ",
+      "original": "0041a400",
+      "linked_va": "0x401fa0",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "?Create@?$CWindowImpl@VCMarshalWindow@RBX@@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@4@@ATL@@QAEPAUHWND__@@PAU3@V_U_RECT@2@PBDKKV_U_MENUorID@2@PAX@Z",
+      "original": "00432b50",
+      "linked_va": "0x402450",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "??_GCMarshalWindow@RBX@@UAEPAXI@Z",
+      "original": "00432b10",
+      "linked_va": "0x4020b0",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ",
+      "original": "00432ce0",
+      "linked_va": "0x402e70",
+      "relocation_masked_match": true
+    },
+    {
+      "symbol": "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z",
+      "original": "00432bd0",
+      "linked_va": "0x402d40",
+      "relocation_masked_match": true
+    }
+  ],
+  "runs": [
+    {
+      "exit": 0,
+      "stdout": "executed=2 deleted=4 registry=0"
+    },
+    {
+      "exit": 0,
+      "stdout": "executed=2 deleted=4 registry=0"
+    },
+    {
+      "exit": 0,
+      "stdout": "executed=2 deleted=4 registry=0"
+    }
+  ],
+  "scope": "Isolated native CMarshalWindow and registry runtime: hidden windows, per-thread reuse, reference counts, dispatch, destruction of queued events, and empty registry. Fixture event is diagnostic. OnDestroy remains nonexact. Does not prove Selection payload delivery, P5/P6, game integration, or original global initialization."
+}

@@ -1,0 +1,40 @@
+{
+  "scope": "Inactive source/header integration only. Provider selection unchanged; no new server credit or client runtime/P5/P6 claim.",
+  "fork": "mewpokemons/RoConstruct",
+  "fork_tip": "96ddc80766be85d2a3861e51bbf1fedeaa4f725a",
+  "parent": "a6555b31cd9d0bfe2e774758f12c4b8352de6354",
+  "changes": [
+    "One shared three-pointer AncestorChanged in Instance.h; duplicate definitions removed from three sources",
+    "Const sInstance array agrees with original Instance and BodyMover base RTTI; exact emitted verifier binding corrected",
+    "ShirtGraphic destructors checked at separate current recorded extents (80 and 31 bytes), without changing bounds"
+  ],
+  "checks": {
+    "bodymover_live": "281 distinct code/relocation-checked exact addresses; 3 pending-only excluded; 19 unrecovered",
+    "bodymover_candidate": "281 addresses with committed-only headers plus selected header fixes; 3 pending-only excluded",
+    "clothing_candidate": "84 exact rows +3 pending-only; 10 vtables",
+    "ancestry": "Original ancestry callback and two helper bodies PASS",
+    "class_names": "Four array definitions/bytes/references PASS; const Instance RTTI asserted",
+    "native_checkpoint": "35/35 PASS including standalone Name ABI; no client gate"
+  },
+  "selected_sha256": {
+    "rebuild/2008-06/native-classes/BodyMovers.cpp": "49f732f369e3e4060b55003a270b4cd8d5e82dda52bfc4aad923903ad1f87908",
+    "rebuild/2008-06/native-classes/Rocket.cpp": "be2bf0139428226da77fb1e1f0a99820c20f8690367314cee7da616ead90e45a",
+    "rebuild/2008-06/native-headers/v8datamodel/BodyMovers.h": "63c7bf7fcbea26960d8ac1ff1a1785a02e37d69d147b929c5222443c80046163",
+    "rebuild/2008-06/native-headers/v8datamodel/Rocket.h": "fba2f12ab6e99b46a151044a05a9265b619afc8cd5ca706b27b2861cb9fce613",
+    "rebuild/2008-06/tests/NativeBodyMoverLayout.cpp": "8ff01f664ef681a8c367b884ef20d3269442e0d3866207f30b1fbd3c3a9e8aa1",
+    "rebuild/2008-06/tests/NativeBodyMoverRows.json": "1e187dc861f4a5ce0ce24b52e0f3eb48d7f52cfc070f4076b56df540e0de4fa7",
+    "rebuild/2008-06/tests/NativeBodyMoverPendingPlayers.h": "cf0c2335663e23a7b78a787635881b447f551ce0c8c9b5440eb98da1f93e9aa1",
+    "rebuild/2008-06/tests/NativeBodyMoverPendingWorkspace.h": "177cdafb5adc38461ec8d84d0b8a86c49a431736013cd25579d0518c440fb24f",
+    "rebuild/2008-06/tests/record_native_body_movers.py": "b136262a447d7b950cfbfb20e22e558ead38a3963eea4d21b17f4f2d02453565",
+    "rebuild/2008-06/native-classes/InstanceAncestorChanged.cpp": "5a7a2be787c171d7c165062173a9e4d14fb20abf8f7e5f6d3c94835082c1e5f8",
+    "rebuild/2008-06/native-classes/NativeClassNames.cpp": "26553c3a1384d4dbb67915a0ab42bfacfa5d2b80c764d5e187abd071fd38b263",
+    "rebuild/2008-06/tests/record_native_class_names_trial.py": "af4dd312992c48fe943e0afc27bb4818cd40fd26e752fc1dd08df9a75e9b14a2",
+    "work/2008-06/shared-layouts/body-movers-working.json": "18ccf9df53283de8ce7975cf2699f8fbc683461a317df5c046afed4ad381303d",
+    "work/2008-06/shared-layouts/native-class-names-trial.json": "719d1fec8ed43c2ae42cb1be107254ace60011e2615c07728d156e56b7ff351f",
+    "work/2008-06/shared-layouts/instance-ancestor-trial.json": "11f7d148bf8032317c3cfdd19c8412fd2027baabf33d7b1768512f011caae59a",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "e1a24b33e62e1e454d8a28202df94ba01819723812a3e88d9d1d4b1e75fa6b2e",
+    "rebuild/2008-06/native-classes/Clothing.cpp": "1a8d31c946751e1cd3fb0ff992ec800caf6d715fc036e80f2b112657b7307e3c",
+    "rebuild/2008-06/tests/record_native_clothing.py": "0b49e74860629feb73636c8ea3e4cccd1aba0c796b47bfefa91d4a0e3a945628"
+  },
+  "preservation": "Instance header uses a selected-hunk candidate, retaining unrelated live/index edits; existing staged Clothing source/recorder deletions remain staged."
+}

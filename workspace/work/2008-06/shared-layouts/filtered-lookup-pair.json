@@ -1,0 +1,29 @@
+{
+  "methods": [
+    {
+      "address": "0x57fd20",
+      "flag": "0x9753c4",
+      "callback": "0x57dda0",
+      "index": "0x57d800",
+      "calls": [
+        "0x557330",
+        "0x57d800",
+        "0x4124c0"
+      ]
+    },
+    {
+      "address": "0x57fdd0",
+      "flag": "0x9753c8",
+      "callback": "0x57ddb0",
+      "index": "0x57d860",
+      "calls": [
+        "0x557330",
+        "0x57d860",
+        "0x4124c0"
+      ]
+    }
+  ],
+  "normalized_sha256": "66cd5f947a6a7fa2fa7d30a9a5f4fbd582542294145e1b5b0bcffd83bd5cc7e7",
+  "observer_sha256": "d3ecbe9aee576520e41e97f59c358594202986fa146b5e0052ccb89ff34e16ac",
+  "scope": "Original binary comparison only. Shared native source and exception lifetime remain unproven; no link or runtime promotion."
+}

@@ -1,0 +1,24 @@
+{
+ "name": "zlib-winapi",
+ "description": "The 2008-06 exe's second zlib 1.2.3 copy (0x7a3e90-0x7a99b0): ZLIB_WINAPI (__stdcall), built with VS2005 50727 (recipe zlib-1.2.3-winapi). G3D links against this copy. The rebuild makes deflate_copyright static (overlay) so both copies can link into one program; mining recipes are unchanged.",
+ "layers": [
+  {
+   "name": "upstream",
+   "mode": "recipe",
+   "recipe": "zlib-1.2.3-winapi",
+   "files": "recipe",
+   "cl": 50727,
+   "flags": "/O2 /GS- /MD",
+   "direct": true
+  }
+ ],
+ "test": "zlib_roundtrip",
+ "test_defines": "WIN32 NDEBUG ZLIB_WINAPI",
+ "test_includes": [
+  "tools/libs/zlib-1.2.3"
+ ],
+ "overlay": {
+  "root": "tools/libs/zlib-1.2.3",
+  "patches": "rebuild/2008-06/patches/zlib-winapi-deflate-copyright.json"
+ }
+}

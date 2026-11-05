@@ -1,0 +1,53 @@
+{
+ "source": "rebuild/2008-06/native-classes/ToggleToolboxVerb.cpp",
+ "source_sha256": "286b173fc785c74735c545b89e95c16839003f0d9b98f7ab9da34cded88dc6d3",
+ "object_sha256": "a9e756d7afd6483031856723fbd011fda165dbe2afef89a27c4fe2eae0848ac4",
+ "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+ "flags": [
+  "/nologo",
+  "/c",
+  "/O2",
+  "/Ob2",
+  "/Oi",
+  "/Ot",
+  "/Oy",
+  "/GF",
+  "/GS-",
+  "/EHsc",
+  "/MD",
+  "/D_AFXDLL",
+  "/DNDEBUG",
+  "/D_MBCS",
+  "/DNOMINMAX",
+  "/DBOOST_ALL_NO_LIB",
+  "/DWIN32",
+  "/DNDEBUG",
+  "/D_LIB",
+  "/D_RELEASE",
+  "/D_RELEASEASSERT",
+  "/D_VC80_UPGRADE=0x0710",
+  "/IC:\\Users\\colin\\roc-p6\\rebuild\\2008-06\\native-headers",
+  "/IC:\\Users\\colin\\roc-p6\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+  "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+ ],
+ "functions": [
+  {
+   "address": "00458ec0",
+   "symbol": "??0ToggleToolboxVerb@@QAE@PAVCRobloxView@@PAVDataModel@RBX@@@Z",
+   "target_size": 131,
+   "compiled_size": 131,
+   "relocation_normalized_exact": true
+  }
+ ]
+}

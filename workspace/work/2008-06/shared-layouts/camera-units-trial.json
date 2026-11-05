@@ -1,0 +1,75 @@
+{
+  "scope": "Inactive camera units match. Camera lifetime/layout, constant identity and dependent implementations remain unproven.",
+  "source_sha256": "9bb19220a32b92ae75f800b89c7a9bf252623cdbdd27f2936ec0bc77d4b225a7",
+  "constant_source_sha256": "2b6a4b17f751bc6e977bdb3bc6edb51235d2dc5edbacc47ade443fa09e8839a7",
+  "observer_sha256": "7622aa3ce7c299a4f86982a31e449d884716bd4ed1777dff464c7eef7cdbb64a",
+  "object_sha256": "ca3acd1c7cddd140bd36c061c138087c09a9d177f39d1c2a357698eb36269e29",
+  "constant_object_sha256": "7ea590035f8c8f6bcdc1e76a904c6464d79a0cb2b29fd5eca51f0c539be9c578",
+  "methods": [
+    {
+      "address": "0x5cc930",
+      "symbol": "?panUnits@Camera@RBX@@QAEXH@Z",
+      "size": 111,
+      "exact": true,
+      "bindings": {
+        "?zLookDirection@CoordinateFrame@G3D@@2MB": "0x828b60",
+        "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240",
+        "__real@3fa2f983": "0x83a3f0",
+        "__real@3f490fdb": "0x8271b0",
+        "?panRadians@Camera@RBX@@QAEXM@Z": "0x5cc810"
+      }
+    },
+    {
+      "address": "0x5cc890",
+      "symbol": "?tiltUnits@Camera@RBX@@QAE_NH@Z",
+      "size": 155,
+      "exact": true,
+      "bindings": {
+        "?zLookDirection@CoordinateFrame@G3D@@2MB": "0x828b60",
+        "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240",
+        "?getElevation@Math@RBX@@SAMABVVector3@G3D@@@Z": "0x5de190",
+        "?cameraRadiansToDegrees@RBX@@3MB": "0x83a310",
+        "__real@3dcccccd": "0x81e704",
+        "__real@3e32b8c3": "0x83a3ec",
+        "?tiltRadians@Camera@RBX@@QAE_NM@Z": "0x5cc740"
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/fp:fast"
+  ]
+}

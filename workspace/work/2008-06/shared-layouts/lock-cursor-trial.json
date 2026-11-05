@@ -1,0 +1,21 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x63de30",
+      "size": 78,
+      "symbol": "?getCursorName@LockTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "?getLocked@PartInstance@RBX@@SA_NPAVInstance@2@@Z": "0x59a040",
+        "??_C@_0N@DNBGAAKF@UnlockCursor?$AA@": "0x84a2b4",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??_C@_0L@KLPEDGI@LockCursor?$AA@": "0x84a2a8"
+      }
+    }
+  ],
+  "source_sha256": "fd5a7a44b686c2347d1c72ff7039e854e47558394e0923e6800052cff2d91bdf",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "b9829df2197a80e3a67663558575349b91b93535a9d7c23a3dd9cf11c62af9a8",
+  "observer_sha256": "a7829b4ff8842c1102cf98b2f6bf1bf6ff07dd879816f3914b4eba32b41e4d8e"
+}

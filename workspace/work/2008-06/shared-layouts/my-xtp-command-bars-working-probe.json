@@ -1,0 +1,256 @@
+{
+  "revision": "363b8d813b1a8f5d1a8fde19e067f3c4a3edfb35",
+  "sources": {
+    "rebuild\\2008-06\\tests\\..\\native-classes\\MyXTPCommandBars.cpp": "20de6271a1ee902c8fa5f7fbc3211c657e75d85da6eee0a71b42e329a8991b5d",
+    "rebuild\\2008-06\\out\\XTP\\linked\\XTPCommandBars.obj": "35bdabedf4f5f8fca7b513f0e9a3f8f5f33ef28416c6361a55258b4257fb7336",
+    "rebuild\\2008-06\\out\\XTP\\linked\\XTPDockState.obj": "d7db90638d3e0775a5e526b3e21a74f25546f7939d5f890df87900805dc4703d",
+    "rebuild\\2008-06\\native-headers\\MyXTPCommandBars.h": "199f26ebd2c2761b8a804fffdc8ca8fc1e9981d835edc161364b0c11148f197f",
+    "rebuild\\2008-06\\tests\\record_native_my_xtp_command_bars.py": "e0d2ca9bec4af66373e6b56e5bf7420b77003966e371a3f9699dd01360c18419"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/FoNativeMyXTPCommandBars.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\..\\native-classes\\MyXTPCommandBars.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0042e470",
+      "symbol": "?AddCustomBar@MyXTPCommandBars@@MAEPAVCXTPToolBar@@PBDIH@Z",
+      "size": 48
+    },
+    {
+      "address": "0042f950",
+      "symbol": "?CreateObject@MyXTPCommandBars@@SGPAVCObject@@XZ",
+      "size": 83
+    },
+    {
+      "address": "0042e4b0",
+      "symbol": "?GetRuntimeClass@MyXTPCommandBars@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6
+    },
+    {
+      "address": "0042e4a0",
+      "symbol": "?_GetBaseClass@MyXTPCommandBars@@KGPAUCRuntimeClass@@XZ",
+      "size": 5
+    }
+  ],
+  "runtime_size": 204,
+  "vtable_slots": 38,
+  "inherited_slots": [
+    {
+      "slot": 22,
+      "address": "0x6a3dd0",
+      "symbol": "?GetMenuBar@CXTPCommandBars@@UBEPAVCXTPMenuBar@@XZ",
+      "size": 23
+    },
+    {
+      "slot": 23,
+      "address": "0x6a6170",
+      "symbol": "?IsCommandHidden@CXTPCommandBars@@UAEHI@Z",
+      "size": 67
+    },
+    {
+      "slot": 24,
+      "address": "0x6a2ea0",
+      "symbol": "?IsControlHidden@CXTPCommandBars@@UAEHPAVCXTPControl@@@Z",
+      "size": 164
+    },
+    {
+      "slot": 25,
+      "address": "0x6a39a0",
+      "symbol": "?GetActiveDocTemplate@CXTPCommandBars@@UAEIXZ",
+      "size": 104
+    },
+    {
+      "slot": 26,
+      "address": "0x6a51c0",
+      "symbol": "?ContextMenu@CXTPCommandBars@@UAEXPAVCXTPToolBar@@VCPoint@@@Z",
+      "size": 154
+    },
+    {
+      "slot": 27,
+      "address": "0x6a2cf0",
+      "symbol": "?GetToolbarsPopup@CXTPCommandBars@@UAEPAVCXTPPopupBar@@XZ",
+      "size": 33
+    },
+    {
+      "slot": 28,
+      "address": "0x6a5260",
+      "symbol": "?GetHiddenControls@CXTPCommandBars@@UAEXPAVCXTPToolBar@@PAVCXTPCommandBar@@@Z",
+      "size": 184
+    },
+    {
+      "slot": 29,
+      "address": "0x6a5320",
+      "symbol": "?GetAddOrRemovePopup@CXTPCommandBars@@UAEXPAVCXTPToolBar@@PAVCXTPCommandBar@@@Z",
+      "size": 264
+    },
+    {
+      "slot": 30,
+      "address": "0x6a3ea0",
+      "symbol": "?OnToolBarAdded@CXTPCommandBars@@MAEXPAVCXTPToolBar@@@Z",
+      "size": 29
+    },
+    {
+      "slot": 31,
+      "address": "0x6a3ec0",
+      "symbol": "?OnToolBarRemoved@CXTPCommandBars@@MAEXPAVCXTPToolBar@@@Z",
+      "size": 19
+    },
+    {
+      "slot": 32,
+      "address": "0x6a60d0",
+      "symbol": "?OnTrackingModeChanged@CXTPCommandBars@@MAEXPAVCXTPCommandBar@@H@Z",
+      "size": 146
+    },
+    {
+      "slot": 34,
+      "address": "0x6e2070",
+      "symbol": "?SaveCommandBarList@CXTPCommandBars@@MAEHPAVCXTPPropExchange@@PAVCXTPCommandBarList@@@Z",
+      "size": 325
+    },
+    {
+      "slot": 35,
+      "address": "0x6e21c0",
+      "symbol": "?LoadCommandBarList@CXTPCommandBars@@MAEHPAVCXTPPropExchange@@PAVCXTPCommandBarList@@@Z",
+      "size": 379
+    },
+    {
+      "slot": 36,
+      "address": "0x6e1f20",
+      "symbol": "?GenerateCommandBarList@CXTPCommandBars@@MAEXPAVCXTPCommandBarList@@PAUXTP_COMMANDBARS_PROPEXCHANGE_PARAM@@@Z",
+      "size": 204
+    },
+    {
+      "slot": 37,
+      "address": "0x6e3dd0",
+      "symbol": "?RestoreCommandBarList@CXTPCommandBars@@MAEXPAVCXTPCommandBarList@@H@Z",
+      "size": 437
+    }
+  ],
+  "mfc_slots": [
+    {
+      "slot": 5,
+      "ordinal": 4667,
+      "symbol": "?OnCmdMsg@CCmdTarget@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z"
+    },
+    {
+      "slot": 6,
+      "ordinal": 4890,
+      "symbol": "?OnFinalRelease@CCmdTarget@@UAEXXZ"
+    },
+    {
+      "slot": 7,
+      "ordinal": 4334,
+      "symbol": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z"
+    },
+    {
+      "slot": 8,
+      "ordinal": 2886,
+      "symbol": "?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z"
+    },
+    {
+      "slot": 9,
+      "ordinal": 4057,
+      "symbol": "?GetTypeInfoCount@CCmdTarget@@UAEIXZ"
+    },
+    {
+      "slot": 10,
+      "ordinal": 4067,
+      "symbol": "?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ"
+    },
+    {
+      "slot": 11,
+      "ordinal": 4066,
+      "symbol": "?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z"
+    },
+    {
+      "slot": 12,
+      "ordinal": 3227,
+      "symbol": "?GetMessageMap@CCmdTarget@@MBEPBUAFX_MSGMAP@@XZ"
+    },
+    {
+      "slot": 13,
+      "ordinal": 2759,
+      "symbol": "?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ"
+    },
+    {
+      "slot": 14,
+      "ordinal": 2888,
+      "symbol": "?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ"
+    },
+    {
+      "slot": 15,
+      "ordinal": 2769,
+      "symbol": "?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ"
+    },
+    {
+      "slot": 16,
+      "ordinal": 3110,
+      "symbol": "?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ"
+    },
+    {
+      "slot": 17,
+      "ordinal": 2961,
+      "symbol": "?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ"
+    },
+    {
+      "slot": 18,
+      "ordinal": 4714,
+      "symbol": "?OnCreateAggregates@CCmdTarget@@UAEHXZ"
+    },
+    {
+      "slot": 19,
+      "ordinal": 3107,
+      "symbol": "?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z"
+    },
+    {
+      "slot": 20,
+      "ordinal": 2978,
+      "symbol": "?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z"
+    },
+    {
+      "slot": 21,
+      "ordinal": 2766,
+      "symbol": "?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z"
+    }
+  ],
+  "scalar_destructor_size": 30,
+  "scope": "Metadata shape, native override and selected methods verified; no-op function linkage, scalar/vector destructor folding and remaining relocations, runtime data/linkage and gates open."
+}

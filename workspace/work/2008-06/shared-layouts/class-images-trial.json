@@ -1,0 +1,47 @@
+{
+  "scope": "Exact inactive CClassImages constructor/destructor; vtable selection, image-resource and runtime ABI unproven.",
+  "deleting_destructor": {
+    "address": "0x413400",
+    "size": 36,
+    "symbol": "??_GCClassImages@@UAEPAXI@Z"
+  },
+  "methods": [
+    {
+      "address": "0x413230",
+      "size": 455,
+      "symbol": "??0CClassImages@@QAE@XZ",
+      "bindings": {
+        "__ehhandler$??0CClassImages@@QAE@XZ": "0x7bd824",
+        "??0CImageList@@QAE@XZ": "0x6a0e48",
+        "??_7CClassImages@@6B@": "0x80e864",
+        "?LoadBitmapFromResource@CXTPImageManagerIcon@@SAPAUHBITMAP__@@PBDPAH@Z": "0x6bc520",
+        "??_7CBitmap@@6B@": "0x80e8a0",
+        "?Attach@CGdiObject@@QAEHPAX@Z": "0x6a0c62",
+        "?Create@CImageList@@QAEHHHIHH@Z": "0x6a0e42",
+        "??_C@_0BO@OFPGPFBL@Unable?5to?5create?5CClassImages?$AA@": "0x80e8d4",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8",
+        "__CxxThrowException@8": "0x6a158c",
+        "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0926",
+        "?_ImageList_Add@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@1@Z": "0x412fc0",
+        "??_C@_0BO@GHKGJGAN@Unable?5to?5add?5IDB_CLASSIMAGES?$AA@": "0x80e8b4",
+        "?_ImageList_AddMasked@CComCtlWrapper@@QAEHPAU_IMAGELIST@@PAUHBITMAP__@@K@Z": "0x4130d0",
+        "??1CGdiObject@@UAE@XZ": "0x4111a0"
+      }
+    },
+    {
+      "address": "0x412f30",
+      "size": 11,
+      "symbol": "??1CClassImages@@UAE@XZ",
+      "bindings": {
+        "??_7CClassImages@@6B@": "0x80e864",
+        "??1CImageList@@UAE@XZ": "0x6a0e2a"
+      }
+    }
+  ],
+  "source_sha256": "b300104f826038d3f8466b8098ef5e3963961a758ba2cc9e42dd068cc8ae0605",
+  "object_sha256": "2ad5c368a78ac41a4d3a867a4c39b4a4de4d6706af905ef0ba000c61bf5a624d",
+  "link_object_sha256": "ce8ae9caf487c2afa61214aa75da1c400ce39f2bfd151b32ac98c674459253da",
+  "observer_sha256": "53b78cd578839166d01424c31e7030ba2d01481f01f8a7654cbf0c72199e9bd2"
+}

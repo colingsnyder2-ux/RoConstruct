@@ -1,0 +1,136 @@
+#pragma float_control(precise, off)
+#include "tool/MegaDragger.h"
+#include "tool/DragUtilities.h"
+#include "tool/Dragger.h"
+#include "v8world/ContactManager.h"
+#include "v8datamodel/PartInstance.h"
+#include "v8datamodel/RootInstance.h"
+#include "v8datamodel/MouseCommand.h"
+
+namespace RBX
+{
+	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<PVInstance*>& pvInstances, RootInstance* rootInstance)
+		: mousePart(shared_from(mousePartPtr)),
+		  dragParts(),
+		  joined(true),
+		  rootInstance(rootInstance),
+          contactManager(rootInstance->getWorld()->getContactManager())
+	{
+		DragUtilities::pvsToParts(pvInstances, dragParts);
+	}
+
+	MegaDragger::MegaDragger(PartInstance* mousePartPtr, const std::vector<boost::weak_ptr<PartInstance>>& partArray, RootInstance* rootInstance)
+		: mousePart(shared_from(mousePartPtr)),
+		  dragParts(partArray),
+		  rootInstance(rootInstance),
+		  joined(true),
+		  contactManager(rootInstance->getWorld()->getContactManager())
+	{
+	}
+
+
+	MegaDragger::~MegaDragger()
+	{
+		if (!joined)
+		{
+			            ;
+			DragUtilities::joinAndStopDragging(dragParts);
+		}
+	}
+
+	void MegaDragger::startDragging()
+	{
+		DragUtilities::unJoinAndSetDragging(dragParts);
+
+		if (PartInstance::nonNullInWorkspace(mousePart.lock()))
+		{
+			rootInstance->setCameraIgnoreParts(mousePart.lock().get());
+		}
+		joined = false;
+	}
+
+	void MegaDragger::continueDragging()
+	{
+		                  ;
+		DragUtilities::unJoinAndSetDragging(dragParts);
+	}
+
+	void MegaDragger::finishDragging()
+	{
+		rootInstance->clearCameraIgnoreParts();
+		DragUtilities::joinAndStopDragging(dragParts);
+		if (DragUtilities::anyPartAlive(dragParts))
+		{
+			rootInstance->setInsertPoint(DragUtilities::computeExtents(dragParts).topCenter());
+		}
+		joined = true;
+	}
+
+	G3D::Vector3 MegaDragger::hitObjectOrPlane(const UIEvent& uiEvent)
+	{
+		G3D::Vector3 result;
+		G3D::Array<Primitive*> primitives;
+		DragUtilities::partsToPrimitives(dragParts, primitives);
+		DragUtilities::hitObjectOrPlane(contactManager, MouseCommand::getUnitMouseRay(uiEvent, rootInstance), &primitives, result);
+		return result;
+	}
+
+	void MegaDragger::alignAndCleanParts()
+	{
+		                  ;
+		if (PartInstance::nonNullInWorkspace(mousePart.lock()))
+		{
+			PartInstance* part = mousePart.lock().get();
+
+			if (!part->aligned())
+			{
+				G3D::CoordinateFrame snap = part->worldSnapLocation();
+				G3D::CoordinateFrame snapToGrid = Math::snapToGrid(snap, Dragger::dragSnap());
+				DragUtilities::move(dragParts, snap, snapToGrid);
+			}
+		}
+		DragUtilities::clean(dragParts);
+	}
+
+	G3D::Vector3 MegaDragger::safeMoveYDrop(const G3D::Vector3& tryDrag)
+	{
+		RBXASSERT(!joined);
+		RBXASSERT(tryDrag == Math::toGrid(tryDrag, 0.1f));
+
+		G3D::Array<Primitive*> primitives;
+		DragUtilities::partsToPrimitives(dragParts, primitives);
+
+		RBXASSERT(primitives.size() > 0);
+
+		G3D::Vector3 result = Dragger::safeMoveYDrop(primitives, tryDrag, contactManager);
+
+		RBXASSERT(!contactManager.intersectingOthers(primitives, 0.01f));
+		return result;
+	}
+
+	G3D::Vector3 MegaDragger::safeMoveNoDrop(const G3D::Vector3& tryDrag)
+	{
+	G3D::Array<Primitive*> primitives;
+	DragUtilities::partsToPrimitives(dragParts, primitives);
+	return Dragger::safeMoveNoDrop(primitives, tryDrag, contactManager);
+}
+
+	void MegaDragger::safeRotate(const G3D::Matrix3& rotMatrix)
+	{
+		                  ;
+
+		G3D::Array<Primitive*> primitives;
+		DragUtilities::partsToPrimitives(dragParts, primitives);
+
+		                                ;
+
+		Dragger::safeRotate(primitives, rotMatrix, contactManager);
+
+		                                                                ;
+	}
+
+	bool MegaDragger::mousePartAlive()
+	{
+		return PartInstance::nonNullInWorkspace(mousePart.lock());
+	}
+}

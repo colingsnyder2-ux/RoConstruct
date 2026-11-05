@@ -1,0 +1,45 @@
+#pragma once
+#include <PacketLogger.h>
+#include "Replicator.h"
+#include "reflection/signal.h"
+#include <boost/shared_ptr.hpp>
+#include <string>
+
+class XmlElement;
+
+namespace RBX
+{
+	namespace Network
+	{
+		extern const char* sClient;
+
+		class Client : public DescribedCreatable<Client, Peer, &sClient>, public Service, public Listener<ServiceProvider, Closing>
+		{
+		private:
+			SystemAddress serverId;
+		public:
+			static Reflection::SignalDesc<Client, void(std::string, boost::shared_ptr<Instance>)> event_ConnectionAccepted;
+			static Reflection::SignalDesc<Client, void(std::string, int)> event_ConnectionFailed;
+			static Reflection::SignalDesc<Client, void(std::string)> event_ConnectionRejected;
+
+		public:
+			Client();
+			virtual ~Client();
+			void connect(std::string, int, int, int);
+			void disconnect(int blockDuration);
+			virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet);
+			virtual XmlElement* write()
+			{
+				return NULL;
+			}
+		protected:
+			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider);
+			virtual void onEvent(const ServiceProvider* source, Closing event);
+
+		public:
+			static bool clientIsPresent(const Instance* context, bool testInDatamodel);
+		};
+	}
+}
+
+// Overlay copy: relative Replicator.h must resolve to the generic job API.

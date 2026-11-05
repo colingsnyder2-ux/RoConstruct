@@ -1,0 +1,12 @@
+{
+  "source_revision": "f34d1b3e463f22c69a8a2069b48f784a1e775e14",
+  "user_xml_sha256": "109953772b44aced11a561408a2ead932fd729874d34cf7cbdbd4f0580af42d8",
+  "serialized_sounds": 8,
+  "retained_sounds": 0,
+  "humanoid_control": 2,
+  "exit": 0,
+  "limitations": [
+    "User place and logs not redistributed.",
+    "Missing channel factory/lifecycle remains unproven at individual edge."
+  ]
+}

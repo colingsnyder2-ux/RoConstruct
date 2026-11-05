@@ -1,0 +1,86 @@
+{
+ "window_hours": 48.0,
+ "server_verified": 28,
+ "verified_per_hour": 0.5833333333333334,
+ "accepted_jobs": 5,
+ "verification_seconds": 3468.359,
+ "timed_jobs": 7,
+ "jobs": [
+  {
+   "id": "1eabb1cc173b4fb68233b518ce22a78b",
+   "state": "accepted",
+   "credits": 1,
+   "elapsed_seconds": 251.111,
+   "verification_seconds": 250.265
+  },
+  {
+   "id": "3ff280eb25544ffeb23346a506763f1d",
+   "state": "accepted",
+   "credits": 3,
+   "elapsed_seconds": 275.246,
+   "verification_seconds": 275.078
+  },
+  {
+   "id": "d2b2a3e541984a338c5bed81ad7406dc",
+   "state": "accepted",
+   "credits": 1,
+   "elapsed_seconds": 198.237,
+   "verification_seconds": 197.969
+  },
+  {
+   "id": "7774bf722f9848e2971c2116a6956d78",
+   "state": "accepted",
+   "credits": 18,
+   "elapsed_seconds": 885.381,
+   "verification_seconds": 884.766
+  },
+  {
+   "id": "bc06e52f7970494682e9ab8e6e95486b",
+   "state": "accepted",
+   "credits": 5,
+   "elapsed_seconds": 298.729,
+   "verification_seconds": 187.828
+  },
+  {
+   "id": "09995d6812f849f4a30530d651dca4cb",
+   "state": "rejected",
+   "credits": 0,
+   "elapsed_seconds": 644.974,
+   "verification_seconds": 644.953
+  },
+  {
+   "id": "d497fe6a85ca4b468534ed463a48d756",
+   "state": "rejected",
+   "credits": 0,
+   "elapsed_seconds": 1027.524,
+   "verification_seconds": 1027.5
+  }
+ ],
+ "local_proofs_counted": false,
+ "native_profiles": {
+  "2007-03": {
+   "ready": false
+  },
+  "2007-08": {
+   "ready": false
+  },
+  "2008-06": {
+   "ready": true
+  },
+  "2009-06": {
+   "ready": false
+  },
+  "2009-12": {
+   "ready": false
+  },
+  "2010-06": {
+   "ready": false
+  },
+  "2011-06": {
+   "ready": false
+  },
+  "2012-06": {
+   "ready": false
+  }
+ }
+}

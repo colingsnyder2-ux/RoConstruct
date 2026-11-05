@@ -1,0 +1,2 @@
+// test minimal
+void foo() {}

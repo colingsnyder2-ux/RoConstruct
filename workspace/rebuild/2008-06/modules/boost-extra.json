@@ -1,0 +1,11 @@
+{
+ "name": "BoostExtra",
+ "description": "Exact mined Boost 1.35/1.36/1.40 sources (header templates the 2008-06 exe matches with a newer Boost than the 1.34.1 it links). No upstream layer: verified layer only, force-linked by the test.",
+ "layers": [],
+ "test": "boostextra_link",
+ "test_includes": [
+  "rebuild/2008-06/out/BoostExtra/force"
+ ],
+ "verified": true,
+ "force_verified": true
+}

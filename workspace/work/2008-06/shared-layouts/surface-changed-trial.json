@@ -1,0 +1,18 @@
+{
+  "scope": "Inactive FlatTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5997c0",
+      "size": 34,
+      "symbol": "?onSurfaceChanged@PartInstance@RBX@@QAEXW4NormalId@2@@Z",
+      "bindings": {
+        "?shouldRenderSetDirty@IRenderable@RBX@@QAEXXZ": "0x5dd540"
+      }
+    }
+  ],
+  "source_sha256": "da72e2dbefadcdc8a8ff4ec8ca24799350b4f22de475c597f33378b0c1e12f1c",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "bb4552ea2be91627e110980af719d25d91ec024619302d2260e217fe8d6d36a6",
+  "observer_sha256": "cc5b4cc3b5d103e2f459d2ef86cbc0084f94ee2d61a26aac6d6305208f485e62"
+}

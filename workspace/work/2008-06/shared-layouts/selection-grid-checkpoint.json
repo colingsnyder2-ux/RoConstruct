@@ -1,0 +1,88 @@
+{
+  "revision": "aae62ea18a9fbc706b1bc6d2d900aad4368ea8bc",
+  "dirty_worktree": true,
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_selection_grid.py": "48ef64920ec14a7e3147dd1017c801b54b3a4539e7f4ab121c21f65cecdc516c",
+    "rebuild\\2008-06\\native-headers\\SelectionGroup.h": "009c20d44a8a6c5caeb6677ca0825083f1bcffdf33dbe7f6f79de0459735b792",
+    "rebuild\\2008-06\\native-headers\\CPropGrid.h": "59aaf21528b7b701e992e1bcf5acc1c54ae2d57e6c931f354337b506bfc8c065",
+    "rebuild\\2008-06\\native-headers\\CSelectionPropGrid.h": "13fafeb53f903ffc62b81903ecdd8190eadcb09db62ba71e52130798b658e09a",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "3c071a220c63be248196b42d1ccae5e38c5bfdc082d5950b246d75a4ac28a7c4",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "b6a0cfa8124e4724bf6288321bb3a6bbe33f38abe174bad5b3a559cd86861a0f",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\SelectionChanged.h": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
+    "rebuild\\2008-06\\native-headers\\v8tree\\PropertyChanged.h": "c5fc5062ea7482f19ed3875f42d9823f54bfbecafc2dacaf09212bee33c715ca",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild\\2008-06\\native-classes\\DataModelLock.cpp": "91b5b385524cf57fedd5dbbf7a5b4bcb6557ef969e105d11ace5416776a625f1",
+    "rebuild\\2008-06\\native-classes\\CPropGridRebuild.cpp": "b47411145d6c7818adf0b4e861ab8279bd97ba88c81df848357a79e60d1a7055",
+    "rebuild\\2008-06\\native-classes\\CPropGridMap.cpp": "5b515cc59f1aebe5dc1e188cfdd1588577187cb0a496c42fa6896cb703dec9bf",
+    "rebuild\\2008-06\\native-classes\\CPropGridRefresh.cpp": "e88132599b3d898c0e114051c1447b129f18df3e1b30706c401f639f52c1aa27",
+    "rebuild\\2008-06\\native-classes\\SelectionGroup.cpp": "c04fe2b8783169e32f0434d184a7aa0b36ed16a02e790804ea5947f7e8ff0fed",
+    "rebuild\\2008-06\\native-classes\\CPropGridInstances.cpp": "e685c212cdc868ff90d201478fc36a8cf58381d5da9554b3de546123b6d4ac81",
+    "rebuild\\2008-06\\native-classes\\CPropGridEvents.cpp": "bdaa3b5ebbc6dc994e44f6f097800a1cd69ee5afafda155f7b16eeea4022c7f8",
+    "rebuild\\2008-06\\native-classes\\CSelectionPropGridEvents.cpp": "00549db7da322fafc742fd4f497ccbf4ecf746aaa47dc5ee70a6e8fb576121dd",
+    "rebuild\\2008-06\\native-classes\\CSelectionPropGridSelection.cpp": "2f49c566c2a96723ee65c5fd1cae924f9345dcd389a2179414bfe2466c796df7",
+    "rebuild\\2008-06\\tests\\record_native_property_grid.py": "637a800b04f6cf2c24308788abbf6cbe6586b2bad4f905e6294df30483dd5347",
+    "rebuild\\2008-06\\tests\\NativePropertyGridLayout.cpp": "c0da60a4e15863039aa0cbf5913edfd59332cc6d8df72c2178c26a42030b9b4d",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
+    "rebuild\\2008-06\\native-classes\\CPropGrid.cpp": "269550c9127af46ce66fc44298907ff886de685df92287cc3e5e82cd687ba3ec",
+    "rebuild\\2008-06\\native-classes\\CSelectionPropGrid.cpp": "8abcb468d9132b418fd8288a4109f321c3d7d1dce47f568fc96bc655fa4fa8b0",
+    "rebuild\\2008-06\\native-headers\\CDataModelPropGrid.h": "2451573c8e1baf62d043e01be78d62987f89936fe8a128ff2c7745340ea840f3",
+    "rebuild\\2008-06\\native-classes\\CDataModelPropGrid.cpp": "fab5559a90bccb34b18f6b792fe30624934804c219ccbc181725b8891b9e1bd9",
+    "rebuild\\2008-06\\native-classes\\CMainFrameConstructor.cpp": "4faf2ee0d5c8c2d97fefebe5d42efb7e7c4aa9bc1cec6b652fdb5b4befada82c",
+    "rebuild\\2008-06\\native-headers\\CSelectionCaption.h": "42dc72d083e2c180e2feda924479a6e28d63a84fe3e4f97cbe4cad41e15038e3",
+    "rebuild\\2008-06\\native-headers\\util\\MarshaledListener.h": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
+    "roc\\libs.py": "7050e86fd3f8a30d24845d324ee5269f565dddc70762ba293afcdb5863ab3cf6",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_constructor_trial.py": "5d9edbd4ad7d417e40d9279519e728daf1e583b991fe586d6c2af85464c14037",
+    "rebuild\\2008-06\\native-classes\\CMainFrameDestructor.cpp": "7d43497eb33bfd05873915a6dd714bf4f4a532096eccd5a46221a440b30c05e5",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_destructor_trial.py": "ae54d9a1330bd23cb5b5f0f900721aaa4ca63596852c828a541165398c50bbaf",
+    "rebuild\\2008-06\\tests\\record_native_pane_callbacks.py": "100bb9831a6282ea6c6a10388e4b1a644cdb88f4fe39f1d2e9007190351ebe31",
+    "rebuild\\2008-06\\native-headers\\ActiveDocView.h": "e30143470935d4675ddd3f8dd64806618dc363502f1fe1d67714d6083eeed393",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "a5c154265d6ccfe2ec2d7cb28899f73e3f586790e0db3b839ad809d3d02761b5",
+    "rebuild\\2008-06\\native-headers\\util\\EventDataBase.h": "36ade94ab2c1c538faef3a0ba7ac0a4ad74eb8e48e0be59d9f58f64128a2893e",
+    "rebuild\\2008-06\\native-headers\\util\\MarshalWindow.h": "dc5a302f6eba7575374a7dc38691d4cea32d7298cdb9844eab00e271f43074d8",
+    "rebuild\\2008-06\\native-classes\\ActiveDocument.cpp": "e21af7a8fd9e6d2417a904cd7286c727eda3277f303a5fa7e6c527db01f40185",
+    "rebuild\\2008-06\\native-classes\\ActiveDocViewRefresh.cpp": "48dbaa463ab212e449011efdad2980a22842cd20be03b5d55608dc300009f7a6",
+    "rebuild\\2008-06\\native-classes\\CDataModelPropGridUpdate.cpp": "416ba7095b6ec59f3925fc1fbb910b8f9732f673cd4480d954e318a98b8f10ea",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaptionUpdate.cpp": "ff23188a1dbc60cd913755bba1322afe9b56d8f87b52bc9bcf7cda684d4cda50",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaption.cpp": "cae44d0b3b2ad07459b7cec4bc05bcbf9eebac7e7be6c8b264e57c8fee509077",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaptionText.cpp": "c1c361e6d4e6cd27c9d0800a95135be14de383df2164aaa93ad3a6710ea343b5"
+  },
+  "receipts": {
+    "work\\2008-06\\shared-layouts\\selection-grid-working-probe.json": "89bfbfa2e9a181d55349cbf6cc124e75ee09e029c0745f8d611bcb8fb5b199bf",
+    "work\\2008-06\\shared-layouts\\property-grid-working-probe.json": "16a529529f3fe78c34f872a3688032353511c2fe6861ec757fefa5227c13f2e0",
+    "work\\2008-06\\shared-layouts\\main-frame-constructor-trial-working-probe.json": "7dfc02f113642daa60e855e3525a01fb088a350df4edaefbbb419f0bf895222b",
+    "work\\2008-06\\shared-layouts\\main-frame-destructor-trial-working-probe.json": "778c14dd27e1bb44bc1ec3936b29323d98a425abc3dd464a797b81670983403b",
+    "work\\2008-06\\shared-layouts\\pane-callbacks-working-probe.json": "055a60525a1f97ee468f65dc254dd00722e2db02048621aa7c91ac58cd766801"
+  },
+  "gates": {
+    "P5": {
+      "exe": "rebuild/2008-06/out/tests/P2RecoveredPlayer/P2RecoveredPlayer.exe",
+      "sha256": "fd47fd9ea171204351c4f56431f0b65d182ddc5e42c624fdfe64df83cee135e0",
+      "receipt": "work/2008-06/p5-native-about-swap-20261101/receipt.json",
+      "unchanged_since_gate": true
+    },
+    "P6": {
+      "exe": "rebuild/2008-06/out/p6/Roblox.exe",
+      "sha256": "e74054a9506dac5e2f0058841a8111dc5c500ab5fc5179c017e296845238b721",
+      "receipt": "work/2008-06/p6-native-about-gate-20261101/receipt.json",
+      "unchanged_since_gate": true
+    }
+  },
+  "selected_running_matches": 3049,
+  "selected_running_functions": 14468,
+  "game_integration_gain": 0,
+  "inactive_selected_grid_matches": 12,
+  "primary_grid_virtual_slots": 91,
+  "next_edge": {
+    "method": "CPropGrid::addProperty",
+    "virtual_slot": 90,
+    "address": "00440e30",
+    "size": 1321
+  },
+  "superseded_hypotheses": [
+    "+0x218 set<string> -> descriptor-keyed map of shared Instance vectors",
+    "+0x19c vector<Instance*> -> vector<CPropGrid::Item*>",
+    "property/pending values CXTPPropertyGridItem* -> CPropGrid::Item*",
+    "00438010 is addProperty body -> 8-byte virtual slot90 dispatch thunk"
+  ],
+  "scope": "Inactive native sources, selected data/call bindings and coupled compiler evidence. Refresh requires DataModelLock.cpp definitions visible in same translation unit; recorded recipe uses actual sources. Concrete property rows, reverse-map identity, remaining virtual/data bindings and game/frame integration remain open."
+}

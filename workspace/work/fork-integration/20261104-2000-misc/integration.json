@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-11-04T20:07:28.784708+00:00",
+  "fork": "mewpokemons/RoConstruct",
+  "fork_tip": "cd72c3729d8834f33aa89e45785ebacf5ce614b8",
+  "parent": "54e9e685765ed9184f336f1635a430559757c330",
+  "branch": "codex/native-partial-search-20261029",
+  "accepted": "MD5HasherImpl source/header plus shared verifier for MD5 and existing canonical MergeBinder.",
+  "provider_resolution": "Excluded donor MergeBinder.cpp and MergeBinder2008.h because canonical MetadataMergeBinderConstructor.cpp/metadata-load header already own those symbols. Preserve canonical provider and donor dependencies; no new duplicate source/class.",
+  "focused_fix": "Recorder originally concatenated retired _Insert_n catch starts44440d/4444a8. Use current full638-byte extent4442c0; compiled candidate638B exact, no weakened boundary/data/relocation tests.",
+  "verification": {
+    "original_msvc": "21022",
+    "exact_code_rows": 44,
+    "distinct_exact_addresses": 44,
+    "vtables": 2,
+    "vtable_slots": 10,
+    "layout": "MD5HasherImpl40, MergeBinder28, InstanceHandle8",
+    "original_relocation_coverage": true,
+    "relocation_kinds_and_targets": true,
+    "new_md5_primary_methods": 7,
+    "md5_eh_graph_nodes": 30,
+    "md5_methods_with_eh": 5,
+    "existing_binder_ctor_eh_nodes": 5,
+    "dependencies_committed": 15,
+    "fresh_input_hashes": true,
+    "not_exact": "Existing vector<IDREFItem> destructor not emitted/proved by this TU; explicitly excluded."
+  },
+  "scope": "Inactive source/proof integration. No P5/P6/runtime activation, executable selection change or new server-accepted credit.",
+  "compile_receipt": "work/2008-06/shared-layouts/misc-leaves-working.json",
+  "eh_summary": "work/fork-integration/20261104-2000-misc/md5-eh-summary.json",
+  "source_hashes": {
+    "rebuild/2008-06/native-classes/MD5Hasher.cpp": "acaad615b801cc62832d0bc45c3ef42775e0e54f7a6af8573461113a75d490f9",
+    "rebuild/2008-06/native-headers/util/MD5Hasher2008.h": "54d863007a13f4ae33233593d8c14d5fc0adf6e8fe141dda4bfbd74b9a243c32",
+    "rebuild/2008-06/tests/NativeMiscLeavesLayout.cpp": "2b0db82f2123593b2f413b12b81751aedb7cdfffde46351b4d6db2f31be0bc66",
+    "rebuild/2008-06/tests/record_native_misc_leaves.py": "7b109125c25ae83b5e617b8a774c222a24e4bca3d46aaaedf71e0186cd2ddb16"
+  },
+  "other_new_mew_families": "Queued for separate source/dependency review; not silently imported."
+}

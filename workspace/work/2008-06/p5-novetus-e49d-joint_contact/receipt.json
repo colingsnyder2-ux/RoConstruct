@@ -1,0 +1,18 @@
+{
+  "revision": "e49dd2e24c7e5ec777870d5483e2c71c91d5348c",
+  "exe_sha256": "87f499c243b78b707bde0d8bd55f9e26c9b006fa980f6f48e786fb13d06c02ba",
+  "fixture_sha256": "c18d1b58974590258e7a737ffb172f67116c65298e2011998adda9a82b1affbd",
+  "observer_sha256": "522a1f5e06a5613b3570394080d7348150962289ebb2d7b8104748d7d1007da1",
+  "runs": [
+    {
+      "exit": 0,
+      "snapshot_sha256": "ee0e8bb23af7ae800ed63a36239e9d13cd7976cad3798f9b628c74ed5fd5745e"
+    },
+    {
+      "exit": 0,
+      "snapshot_sha256": "ee0e8bb23af7ae800ed63a36239e9d13cd7976cad3798f9b628c74ed5fd5745e"
+    }
+  ],
+  "scope": "Repeated initial-contact lifecycle and clean shutdown; native joint parity unproven.",
+  "P5_complete": false
+}

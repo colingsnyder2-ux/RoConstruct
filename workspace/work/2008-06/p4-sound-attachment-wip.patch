@@ -1,0 +1,111 @@
+diff --git a/rebuild/2008-06/tests/P4SoundAssetTest.cpp b/rebuild/2008-06/tests/P4SoundAssetTest.cpp
+index 0b572295f8..9e9a411665 100644
+--- a/rebuild/2008-06/tests/P4SoundAssetTest.cpp
++++ b/rebuild/2008-06/tests/P4SoundAssetTest.cpp
+@@ -42,6 +42,15 @@ int main(int argc,char** argv){
+     try{
+         verify(std::strcmp(RBX::Soundscape::sSoundChannel,"Sound")==0);
+         verify(std::strcmp(RBX::Soundscape::sSoundService,"SoundService")==0);
++        {
++            RBX::Soundscape::SoundService service;
++            RBX::Soundscape::SoundId id("rbxasset://tone.wav");
++            boost::shared_ptr<RBX::Soundscape::Sound> first=service.loadSound(id,false);
++            boost::shared_ptr<RBX::Soundscape::Sound> same=service.loadSound(id,false);
++            boost::shared_ptr<RBX::Soundscape::Sound> spatial=service.loadSound(id,true);
++            verify(first && first==same && first!=spatial);
++            std::printf("P4 Sound service PASS cache identity/2D/3D\n");
++        }
+         {
+             SoundServiceStatsItem stats(0);
+             verify(stats.getName()=="Sound" && stats.getChildren() && stats.getChildren().read()->size()==4);
+diff --git a/rebuild/2008-06/tests/PlayerNativeSoundChannel.cpp b/rebuild/2008-06/tests/PlayerNativeSoundChannel.cpp
+index ce587bf1df..d702a19fb9 100644
+--- a/rebuild/2008-06/tests/PlayerNativeSoundChannel.cpp
++++ b/rebuild/2008-06/tests/PlayerNativeSoundChannel.cpp
+@@ -1,11 +1,15 @@
+ // Native Sound channel constructor 005bc480, using the application ABI.
+ #include "util/Sound.h"
+ #include "util/StandardOut.h"
++#include "v8datamodel/GameSettings.h"
+ #include <fmod.hpp>
+ #include <fmod_errors.h>
+ 
++namespace FFlag { extern bool SoundDisabled; }
+ namespace RBX { namespace Soundscape {
+ bool sanitizeSoundVector(const G3D::Vector3&,G3D::Vector3&);
++static Reflection::PropDescriptor<SoundChannel,SoundId> soundIdProperty(
++    "SoundId","Data",&SoundChannel::getSoundId,&SoundChannel::setSoundId,Reflection::PropertyDescriptor::STANDARD);
+ SoundChannel::SoundChannel()
+     : fmod_channel(0),volume(.5f),playOnRemove(false),is3D(false),looped(false),
+       soundDisabled(false),playCount(-1),part(0){
+@@ -17,6 +21,18 @@ SoundChannel::~SoundChannel(){}
+ // 00565ff0: Sound accepts any parent; Instance still checks the parent's policy.
+ bool SoundChannel::askSetParent(const Instance*) const{return true;}
+ 
++// 004e5f50 / 005bd360: update SoundId, preload in context, release old channel.
++SoundId SoundChannel::getSoundId() const{return soundId;}
++void SoundChannel::setSoundId(SoundId value){
++    if(soundId!=value){
++        soundId=value;
++        if(!FFlag::SoundDisabled && !soundDisabled && GameSettings::singleton().soundEnabled &&
++           ServiceProvider::findServiceProvider(this))
++            ContentProvider::singleton().requestContentString(soundId);
++        releaseChannel();raisePropertyChanged(soundIdProperty);
++    }
++}
++
+ // 005b9920: transfer the owning Part's position and linear velocity to FMOD.
+ void SoundChannel::update3D(FMOD::Channel* channel){
+     if(is3D && part){
+diff --git a/rebuild/2008-06/tests/PlayerNativeSoundService.cpp b/rebuild/2008-06/tests/PlayerNativeSoundService.cpp
+index 1c12b9c4dc..fd8f2f1a65 100644
+--- a/rebuild/2008-06/tests/PlayerNativeSoundService.cpp
++++ b/rebuild/2008-06/tests/PlayerNativeSoundService.cpp
+@@ -104,6 +104,47 @@ void SoundService::onEvent(const RunService*,Heartbeat){
+     logSoundResult(system->update());
+ }
+ 
++// 005bd6d0 / 005bdb10: construct the original non-archivable stock sounds.
++void SoundService::loadStockSounds(SoundType type,std::string path){
++    boost::shared_ptr<StockSound> sound=Creatable<Instance>::create<StockSound>();
++    sound->setName(Reflection::EnumDesc<SoundType>::singleton().convertToString(type));
++    sound->setSoundId(SoundId(ContentId::fromAssets(path)));
++    sound->setParent(this);stockSounds[type]=sound;
++}
++void SoundService::loadStockSounds(){
++    stockSounds.clear();removeAllChildren();
++    loadStockSounds(BOING_SOUND,"Sounds\\bass.wav");
++    loadStockSounds(BOMB_SOUND,"Sounds\\collide.wav");
++    loadStockSounds(BREAK_SOUND,"Sounds\\glassbreak.wav");
++    loadStockSounds(CLICK_SOUND,"Sounds\\switch.wav");
++    loadStockSounds(CLOCK_SOUND,"Sounds\\clickfast.wav");
++    loadStockSounds(RUBBERBAND_SOUND,"Sounds\\Rubber band sling shot.wav");
++    loadStockSounds(PAGE_SOUND,"Sounds\\pageturn.wav");
++    loadStockSounds(PING_SOUND,"Sounds\\electronicpingshort.wav");
++    loadStockSounds(SNAP_SOUND,"Sounds\\snap.wav");
++    loadStockSounds(SPLAT_SOUND,"Sounds\\splat.wav");
++    loadStockSounds(STEP_SOUND,"Sounds\\SWITCH3.wav");
++    loadStockSounds(STEP_ON_SOUND,"Sounds\\flashbulb.wav");
++    loadStockSounds(SWOOSH_SOUND,"Sounds\\swoosh.wav");
++    loadStockSounds(VICTORY_SOUND,"Sounds\\victory.wav");
++}
++
++// 005bdcf0: attach heartbeat, FMOD, stock sounds and statistics to the provider.
++void SoundService::onServiceProvider(const ServiceProvider* oldProvider,const ServiceProvider* newProvider){
++    if(oldProvider)Notifier<RunService,Heartbeat>::disconnect(oldProvider->create<RunService>(),this);
++    if(statsItem){statsItem->setParent(0);statsItem.reset();}
++    if(oldProvider)closeFmod();
++    if(newProvider){
++        Notifier<RunService,Heartbeat>::connect(newProvider->create<RunService>(),this);
++        openFmod();loadStockSounds();
++        Stats::StatsService* stats=newProvider->create<Stats::StatsService>();
++        if(stats){
++            statsItem=Creatable<Instance>::create<SoundServiceStatsItem>(this);
++            statsItem->setParent(stats);
++        }
++    }
++}
++
+ // 005ba970: remove stock channels, detach cached handles, then release FMOD.
+ void SoundService::closeFmod(){
+     stockSounds.clear();removeAllChildren();

@@ -1,0 +1,30 @@
+{
+  "tooling_revision": "afee7fc82c111270e8b8f0c96eaf4a22cea39a35",
+  "player_source_revision": "88e67662d4",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "runtime_dependencies": {
+    "fmodex.dll": "6b99d7373d5426a271c9f61ec732704195addd0ba7bd49699f5a4727d39cd570",
+    "rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e",
+    "rggl.dll": "6178fbc6fd0ee00738901cf5803b9399ad4f60987a3e031e10651626836b8480",
+    "rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "rgpar.dll": "97ffa2b58ccf5a9fab91e2d536521348ce0a529c8fc024e5e1de892a6a43d801",
+    "RobloxInstall.dll": "ffe76f466744b2e3b1d92a8964580c2368a6a928c79fc360a53bb727ffca86b6",
+    "RobloxLauncher.dll": "16f31fe344e21d0d117fa041cc8b8770eba4658a4bd6679a26afbda5aa64248a",
+    "SciLexer.dll": "19135c5e18534f584c3416582da80fe017ab2707b50eb6ad89adde3de014b869"
+  },
+  "fixtures": {
+    "local-gallery.rbxl": "460b144e1f96fdcd16f58c8fe70dbfb728ef753b0b662d21026350c962d0ddc4",
+    "local-panel.rbxl": "a0b2987ed12eadf38633336f6d4b5034d6baf4b2be88b4e5868c3111e9ab3d4c"
+  },
+  "authored_assets_restored": {
+    "fixture-assets.json": "3b01a97f9e347bc8c4c022aec8e1728d9d9bf9babd97f6336dc4b6ba7162332f",
+    "panel.mesh": "d0c4e59491f0381fde262ff37a981171d4f4bccd2fb3782df27b8ce2bcc2620e",
+    "quadrants.png": "1f52bf00c024e5fd927efacb269a0074c127068bbb4cf531491b4f0375ffa2b8",
+    "tone.wav": "b0e95cb1badb20186a79c6a191b9baa5835efa56b179e17001c785bd915c7bf3"
+  },
+  "limitations": [
+    "Original failure controls terminated after UI close failed; no clean shutdown claim",
+    "Color-region and manual hierarchy/property comparison; no full pixel parity",
+    "Native audio remains open"
+  ]
+}

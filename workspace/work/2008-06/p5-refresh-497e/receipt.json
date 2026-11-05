@@ -1,0 +1,53 @@
+{
+  "revision": "497e8fafdaa5d58389013e5c5f09e6538e42f551",
+  "command": "roc.cmd rebuild 2008-06 player --no-notify",
+  "log_sha256": "2cf7601731f4c1fb86463f3d95a03c57803494535ea0847d880fdc223773e9bb",
+  "exe_sha256": "b233a9752472a9e704e545176e235a5e69382d57378e93f12a5d1485817096e1",
+  "staged_texture_sha256": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4",
+  "dependencies": [
+    "rbxgs-app",
+    "p2-image-core",
+    "p2-texture-interop",
+    "p4-sound-asset",
+    "p2-native-material",
+    "p2-lighting"
+  ],
+  "reports": {
+    "RbxgsApp": {
+      "sha256": "59848822bee1a7b8e519dea5846f007b158e58afe185d604392a77aa041dc059",
+      "linked": true,
+      "test_exit": 0
+    },
+    "P2ImageCore": {
+      "sha256": "1bb9a205e356a4b4433fa5a4f030a0912e372ab1197f0e2d99dae9397e4ad90f",
+      "linked": true,
+      "test_exit": 0
+    },
+    "P2TextureInterop": {
+      "sha256": "6afae759cf8262a25fc60ca0776993809cafd37fafa85d2bc60d4edb149a44d6",
+      "linked": true,
+      "test_exit": 0
+    },
+    "P4SoundAsset": {
+      "sha256": "2912361b710518239747791fc720fb58d23e5a0769f6b683c5967e4b19847f7e",
+      "linked": true,
+      "test_exit": 0
+    },
+    "P2NativeMaterial": {
+      "sha256": "6c09be35cf08e5f371de751b1e87d13f8799cc3143c6b128d91079bb85c7e146",
+      "linked": true,
+      "test_exit": 0
+    },
+    "P2Lighting": {
+      "sha256": "21dc78424ec8f09cf0f48867d741be8acdef5d6422834c2c45b9e6782c8feb9e",
+      "linked": true,
+      "test_exit": 0
+    },
+    "P2RecoveredPlayer": {
+      "sha256": "7282b2055713e1d66957b22f8ad60299093861d818db5574e9068efbfea05e80",
+      "linked": true,
+      "test_exit": 0
+    }
+  },
+  "scope": "One normal build with staged external content; other vendor libraries remain cached; later roadmap gates remain open."
+}

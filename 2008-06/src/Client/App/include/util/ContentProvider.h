@@ -1,0 +1,171 @@
+#pragma once
+#include "util/Name.h"
+#include "util/boost.hpp"
+#include <string>
+#include <boost/date_time.hpp>
+#include <boost/scoped_ptr.hpp>
+
+namespace RBX
+{
+	class ContentId;
+	bool operator!=(const ContentId&, const ContentId&);
+	bool operator==(const ContentId&, const ContentId&);
+	bool operator<(const ContentId&, const ContentId&);
+
+	class ContentId
+	{
+	private:
+		std::string id;
+		const Name* mimeTypePtr;
+
+	public:
+		ContentId()
+			: id(), 
+			  mimeTypePtr(&Name::getNullName())
+		{
+		}
+		ContentId(const std::string& id)
+			: id(id),
+			  mimeTypePtr(&Name::getNullName())
+		{
+		}
+		ContentId(const char* id)
+			: id(id),
+			  mimeTypePtr(&Name::getNullName())
+		{
+		}
+		ContentId(const std::string& id, const Name& mimeType)
+			: id(id),
+			  mimeTypePtr(&mimeType)
+		{
+		}
+
+	public:
+		const Name& mimeType() const
+		{
+			return *mimeTypePtr;
+		}
+		const char* c_str() const
+		{
+			return id.c_str();
+		}
+		const std::string& toString() const
+		{
+			return id;
+		}
+		bool isNull() const
+		{
+			return id.empty();
+		}
+		bool isFile() const
+		{
+			return id.substr(0, 7) == "file://";
+		}
+		bool isAsset() const
+		{
+			return id.substr(0, 11) == "rbxasset://";
+		}
+		bool isHttp() const
+		{
+			return id.substr(0, 4) == "http";
+		}
+
+	public:
+		static ContentId fromUrl(const std::string&);
+		static ContentId fromFile(const std::string&);
+		static ContentId fromAssets(const std::string& filePath);
+		static ContentId fromMD5Hash(const std::string&);
+	};
+
+	class Instance;
+	class ContentProvider : private boost::noncopyable
+	{
+	private:
+		enum HttpRequestType
+		{
+			NoHttpRequest,
+			AsyncHttpRequest,
+			SyncHttpRequest
+		};
+
+		struct CachedContent
+		{
+			boost::shared_ptr<const std::string> data;
+			boost::shared_ptr<const std::string> filename;
+		};
+
+		struct FailedUrl
+		{
+		public:
+			std::string url;
+			boost::posix_time::ptime expiration;
+		  
+		public:
+			FailedUrl(const char* url);
+			bool expired() const;
+		};
+
+	private:
+		boost::mutex requestSync;
+		std::list<ContentId> requestQueue;
+		std::list<FailedUrl> failedUrls;
+		boost::mutex contentCacheMutex;
+		std::map<ContentId, CachedContent> contentCache;
+		std::string assetFolderPath;
+		boost::scoped_ptr<worker_thread> requestProcessor;
+	  
+	private:
+		ContentProvider();
+		~ContentProvider();
+
+	public:
+		ContentId registerContent(std::istream& content, const Name& mimeType);
+		ContentId registerContent(const char*, const Name&);
+		void clearFileCache();
+		bool isUrlBad(const char* url);
+		void load(ContentId id, std::vector<boost::shared_ptr<Instance>>& instances);
+		void clearContentCache();
+		bool isRequestQueueEmpty();
+		bool hasContent(ContentId id);
+		boost::shared_ptr<const std::string> requestContentString(ContentId id);
+		bool requestContentFile(ContentId id, std::string& filename);
+		boost::shared_ptr<const std::string> getContentString(ContentId);
+		std::auto_ptr<std::istream> getContent(ContentId);
+		std::string getFile(ContentId ticket);
+		std::string getAssetFile(const std::string& filePath);
+		void setAssetFolder(const char* sPath);
+		std::string assetFolder() const;
+		ContentId readContent(const char* id, std::istream& stream, unsigned long dataLength);
+	private:
+		CachedContent* loadContent(ContentId, HttpRequestType);
+		worker_thread::work_result processRequests();
+		std::string findFile(ContentId contentId);
+		std::string findAsset(ContentId contentId);
+		std::string findHashFile(ContentId contentId);
+		bool registerFile(CachedContent* item);
+	  
+	public:
+		static ContentProvider& singleton()
+		{
+			static ContentProvider sing;
+			return sing;
+		}
+
+		static bool isUrl(const std::string&);
+		static bool isHttpUrl(const std::string&);
+	};
+
+	class MD5Hasher
+	{
+	public:
+		virtual void addData(std::istream& data) = 0;
+		virtual void addData(const std::string& data) = 0;
+		virtual void addData(const char* data, size_t nBytes) = 0;
+		
+		virtual std::string toString() = 0;
+		virtual const char* c_str() = 0;
+
+	public:
+		static MD5Hasher* create();
+	};
+}

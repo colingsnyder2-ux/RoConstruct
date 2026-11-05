@@ -1,0 +1,9 @@
+{
+  "revision": "5cfbfb2d8f57e50964f4a92d8d131b0dc1f131f5",
+  "exe_sha256": "f08a3e7273ce583d16d0d80fb42176127ff3b2fec99f5caa8789e398cc313ff3",
+  "fixture_sha256": "3629faeadc1d4f556b6a7dadd9a7097b67d8913a0bc33dc2d288bcc4c945c83c",
+  "exit": -1073741819,
+  "windows_status": "0xc0000005",
+  "scope": "DraggingV1 on a live unanchored Part before shim ownership fix",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

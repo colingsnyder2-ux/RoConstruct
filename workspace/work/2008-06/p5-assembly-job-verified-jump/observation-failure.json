@@ -1,0 +1,8 @@
+{
+  "revision": "e61d0b6cbb",
+  "phase": "foreground acquisition before original play",
+  "result": "observer failed",
+  "engine_failure_proven": false,
+  "retry": "p5-assembly-job-verified-jump-retry",
+  "owned_process_cleanup": "observer finally block closed/terminated its own process"
+}

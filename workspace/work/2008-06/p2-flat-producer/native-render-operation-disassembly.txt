@@ -1,0 +1,14 @@
+00684fd0  8b8134010000         mov eax, dword ptr [ecx + 0x134]
+00684fd6  6a00                 push 0
+00684fd8  85c0                 test eax, eax
+00684fda  7511                 jne 0x684fed
+00684fdc  8b442408             mov eax, dword ptr [esp + 8]
+00684fe0  8b4954               mov ecx, dword ptr [ecx + 0x54]
+00684fe3  50                   push eax
+00684fe4  ff1520478000         call dword ptr [0x804720]
+00684fea  c20400               ret 4
+00684fed  8b542408             mov edx, dword ptr [esp + 8]
+00684ff1  8b8c812c010000       mov ecx, dword ptr [ecx + eax*4 + 0x12c]
+00684ff8  52                   push edx
+00684ff9  ff1520478000         call dword ptr [0x804720]
+00684fff  c20400               ret 4

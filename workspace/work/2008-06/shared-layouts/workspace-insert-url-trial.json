@@ -1,0 +1,109 @@
+{
+  "scope": "Inactive insertion profile matches; trust dependencies, provider layout, object ownership and live ABI remain unproven. Do not run.",
+  "source_sha256": "d90b080f3db2253555dac7552fea0fc8b538e7cea81928e04dd71aa5d81a3ac8",
+  "observer_sha256": "60fcabe9d580b5c0b3a5045e3b8116f28aec94a74a96bc71b6149f46f07d7a57",
+  "header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+  "provider_trial_sha256": "be425a78881bfd97189746f1c53feb859c72c3a99af4659657350d655b83e5c5",
+  "profile_sha256": "47c14b953708918220f873ed8e9d94cf738017b09cb82c9db5e08b2672314e9a",
+  "object_sha256": "a1c004b59bd8f61a508bf0ccf9acf25a2560c6d1e3b7aadd068103b5f9d62a6d",
+  "methods": [
+    {
+      "symbol": "?insert@CWorkspace@@QAEXVContentId@RBX@@_N@Z",
+      "address": "0x46bc90",
+      "size": 220,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?insert@CWorkspace@@QAEXVContentId@RBX@@_N@Z": [
+          "0x7c3a48"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": [
+          "0x80245c"
+        ],
+        "??$create@VContentProvider@RBX@@@ServiceProvider@RBX@@QBEPAVContentProvider@1@XZ": [
+          "0x41eea0"
+        ],
+        "?getContent@ContentProvider@RBX@@QAE?AV?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@VContentId@2@@Z": [
+          "0x561f20"
+        ],
+        "?insert@CWorkspace@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@_N@Z": [
+          "0x46b9d0"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "symbol": "?Insert@CWorkspace@@UAGJPA_W@Z",
+      "address": "0x46c920",
+      "size": 416,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?Insert@CWorkspace@@UAGJPA_W@Z": [
+          "0x7c3c13"
+        ],
+        "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": [
+          "0x6a0968"
+        ],
+        "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": [
+          "0x6a0962"
+        ],
+        "?validateWorkspaceSiteUrl@@YAJPB_W@Z": [
+          "0x41dcd0"
+        ],
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": [
+          "0x803f04"
+        ],
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PB_W@Z": [
+          "0x803ed8"
+        ],
+        "??_C@_0BC@CCIMHPIK@Untrusted?5Url?3?5?$CFs?$AA@": [
+          "0x80ea80"
+        ],
+        "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXPBDZZ": [
+          "0x803edc"
+        ],
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": [
+          "0x803f14"
+        ],
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": [
+          "0x803ee0"
+        ],
+        "?workspaceSiteErrorContext@@3U_GUID@@B": [
+          "0x8164f8"
+        ],
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": [
+          "0x429330"
+        ],
+        "?AfxDeactivateActCtx@@YGHKK@Z": [
+          "0x6a095c"
+        ],
+        "??0ContentId@RBX@@QAE@PBD@Z": [
+          "0x4377c0"
+        ],
+        "?insert@CWorkspace@@QAEXVContentId@RBX@@_N@Z": [
+          "0x46bc90"
+        ],
+        "$LN13": [
+          "0x46ca9b"
+        ],
+        "??1AFX_MAINTAIN_STATE2@@QAE@XZ": [
+          "0x4060f0"
+        ]
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\content-insert-probe\\NativeWorkspaceInsertUrlProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\content-insert-probe\\NativeWorkspaceInsertUrlProfile.cpp"
+  ]
+}

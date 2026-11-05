@@ -1,0 +1,28 @@
+{
+  "revision": "a501d1e3a231527a388355fedb7cc225346dd36d",
+  "compiler_build": 21022,
+  "compile_exit": 0,
+  "sources": {
+    "rebuild/2008-06/native-classes/CWorkspace.cpp": "708db5c4fdb8b5e7b3e289bb05e802b71af01c749cf6d22c8fdc66cce01bac6e",
+    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "b3390a8f0a529bcfdec079d6df57e6554a97df5c9d8ceec33403d7f8e31be06c",
+    "rebuild/2008-06/tests/NativeWorkspaceLayout.cpp": "e8f6390622ce3e6ab4cc3a8c036bd34a2ae049cbb6098dac96dbad2830acb13e"
+  },
+  "bodies": {
+    "0046b0e0": {
+      "original_size": 242,
+      "candidate_size": 242,
+      "relocation_normalized_exact": false
+    },
+    "0046ab60": {
+      "original_size": 33,
+      "candidate_size": 33,
+      "relocation_normalized_exact": true
+    },
+    "0046a940": {
+      "original_size": 43,
+      "candidate_size": 43,
+      "relocation_normalized_exact": true
+    }
+  },
+  "scope": "Inactive compiler probe. Cleanup differs in register scheduling; service lookup and close linkage remain unresolved. No runtime integration."
+}

@@ -1,0 +1,260 @@
+"""Build the GitHub Pages data: docs/progress.json, docs/history.json,
+docs/data/<client>.json.
+
+Scores come from work/<client>/scores.json ({addr: 0-100}); 100 = byte match.
+"""
+import json
+import re
+import shutil
+import subprocess
+import time
+from pathlib import Path
+from urllib.parse import quote
+
+from roc import clients
+
+ROOT = Path(__file__).resolve().parent.parent
+DOCS = ROOT / "docs"
+STATS = ("functions", "matched", "partial", "bytes", "matched_bytes", "source_bytes", "mined_bytes", "partial_bytes",
+         "source_matched", "mined_matched")
+
+
+def summarize(funcs):
+    """funcs: [[addr, size, score, ...], ...]"""
+    total = sum(f[1] for f in funcs)
+    return {
+        "functions": len(funcs),
+        "matched": sum(1 for f in funcs if f[2] == 100),
+        "partial": sum(1 for f in funcs if 0 < f[2] < 100),
+        "source_matched": sum(1 for f in funcs if f[2] == 100 and len(f) > 5 and f[5]),
+        "mined_matched": sum(1 for f in funcs if f[2] == 100 and not (len(f) > 5 and f[5])),
+        "bytes": total,
+        "matched_bytes": sum(f[1] for f in funcs if f[2] == 100),
+        "source_bytes": sum(f[1] for f in funcs if f[2] == 100 and len(f) > 5 and f[5]),
+        "mined_bytes": sum(f[1] for f in funcs if f[2] == 100 and not (len(f) > 5 and f[5])),
+        "partial_bytes": sum(f[1] for f in funcs if 0 < f[2] < 100),
+    }
+
+
+def head_commit():
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%h%x00%s"], cwd=ROOT,
+                             capture_output=True, text=True, check=True).stdout.strip()
+        return out.split("\0", 1) if out else (None, None)
+    except (OSError, subprocess.CalledProcessError):
+        return None, None
+
+
+def add_history(stats, updated):
+    """Record snapshots only when client stats change."""
+    path = DOCS / "history.json"
+    hist = json.loads(path.read_text()) if path.exists() else []
+    if hist and hist[-1]["clients"] == stats:
+        return
+    commit, subject = head_commit()
+    snap = {"date": updated, "commit": commit, "subject": subject, "clients": stats}
+    hist.append(snap)
+    path.write_text(json.dumps(hist, separators=(",", ":")) + "\n")
+
+
+def union_bytes(span_lists):
+    """Total bytes covered by [va, len] spans; overlaps (shared strings) count once."""
+    spans = sorted((va, va + n) for lst in span_lists for va, n in lst)
+    total, end = 0, 0
+    for a, b in spans:
+        if b > end:
+            total += b - max(a, end)
+            end = b
+    return total
+
+
+# Byte signatures of statically linked code that has no RTTI and no recipe yet. The site labels
+# the whole unlabeled run around each hit with the library.
+LANDMARKS = [
+    # D3DX9 math CPU dispatch: cpuid MMX test next to the DisableD3DXPSGP registry check.
+    (bytes.fromhex("8bff558bec5153565733c060b8010000000fa2"), "D3DX9 math (DirectX SDK)"),
+]
+
+
+def landmarks(name, entry):
+    """[[va, library], ...] of LANDMARKS found in the client exe."""
+    try:
+        import pefile
+        pe = pefile.PE(str(clients.exe_path(name, entry)), fast_load=True)
+    except Exception:  # exe not on this host, or not a PE
+        return []
+    base, image = pe.OPTIONAL_HEADER.ImageBase, pe.get_memory_mapped_image()
+    return [[base + at, library] for pattern, library in LANDMARKS for at in [image.find(pattern)] if at >= 0]
+
+
+def library_meta():
+    """{(client, address): [library version, source file]} for matched library code."""
+    try:
+        output = subprocess.run(["rg", "--json", r"^// (roc-lib: |library .*\(function )", "src"], cwd=ROOT,
+                                capture_output=True, text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    out, symbols = {}, {}
+    for line in output.splitlines():
+        row = json.loads(line)
+        if row["type"] != "match":
+            continue
+        path = Path(row["data"]["path"]["text"])
+        match = re.match(r"// roc-lib: (\S+) (\S+)", row["data"]["lines"]["text"])
+        if match:
+            out[(path.parent.name, path.stem)] = list(match.groups())
+        symbol = re.search(r"\(function (.+)\)", row["data"]["lines"]["text"])
+        if symbol:
+            symbols[(path.parent.name, path.stem)] = symbol[1]
+    for key, value in out.items():
+        if key in symbols:
+            value.append(symbols[key])
+    return out
+
+
+def fetch_server(server, token=None):
+    from roc.worker import Api
+    return Api(server, token).call("/v1/export")
+
+
+def source_links():
+    """Original recipe archives or commit-pinned files from local upstream clones."""
+    from roc.libs import RECIPES, LIBS
+    links = {}
+    git_exe = shutil.which("git")
+    requested, symbols = {}, {}
+    for path in (DOCS / "data").glob("*.json"):
+        for function in json.loads(path.read_text())["funcs"]:
+            if len(function) > 5 and function[5] and function[2] == 100:
+                requested.setdefault(function[5][0], set()).add(function[5][1])
+                if len(function[5]) > 2:
+                    symbols.setdefault(function[5][0], set()).add(function[5][2])
+    for name, recipe in RECIPES.items():
+        if recipe.get("url"):
+            folder = (LIBS / recipe["src"]).resolve() if recipe.get("src") else None
+            links[name] = {"url": recipe["url"], "kind": "archive", "files": sorted(
+                file for file in requested.get(name, ()) if folder and
+                (folder / file).is_file() and (folder / file).resolve().is_relative_to(folder))}
+            continue
+        if not recipe.get("src"):
+            continue
+        folder = (LIBS / recipe["src"]).resolve()
+        if not folder.is_dir() or not git_exe:
+            continue
+        def git(*args):
+            return subprocess.run([git_exe, "-C", str(folder), *args], capture_output=True,
+                                  text=True).stdout.strip()
+        root = git("rev-parse", "--show-toplevel")
+        if not root or Path(root).resolve() == ROOT.resolve():
+            continue
+        remote = git("remote", "get-url", "origin")
+        remote = remote.replace("git@github.com:", "https://github.com/").removesuffix(".git")
+        if not remote.startswith("https://github.com/"):
+            continue
+        revision = git("rev-parse", "HEAD")
+        prefix = folder.relative_to(Path(root).resolve()).as_posix()
+        tracked = set(git("ls-tree", "-r", "--name-only", "--full-tree", revision).splitlines())
+        relative = "" if prefix == "." else prefix + "/"
+        links[name] = {"url": remote + "/blob/" + revision + "/" +
+                      (quote(prefix, safe="/") + "/" if prefix != "." else ""), "kind": "file",
+                      "files": sorted(file for file in requested.get(name, ()) if relative + file in tracked)}
+        definitions, headers = {}, {}
+        for symbol in symbols.get(name, ()):
+            method = re.match(r"^\?([^@?]+)@(?:\?\$)?([^@]+)@", symbol)
+            if not method:
+                continue
+            candidates = [file for file in tracked if file.startswith(relative) and
+                          file.endswith((".h", ".hpp")) and method[2].lower() in Path(file).stem.lower()]
+            if len(candidates) != 1:
+                continue
+            file = candidates[0]
+            if file not in headers:
+                headers[file] = git("show", revision + ":" + file).splitlines()
+            lines = headers[file]
+            pattern = re.compile(r"\b" + re.escape(method[2]) + r"(?:<[^;{}]*>)?::" +
+                                 re.escape(method[1]) + r"\s*\(")
+            matches = []
+            for number, line in enumerate(lines):
+                if not pattern.search(line):
+                    continue
+                signature = "\n".join(lines[number:number + 20])
+                if "{" in signature and (";" not in signature or signature.index("{") < signature.index(";")):
+                    matches.append(number + 1)
+            if len(matches) == 1:
+                definitions[symbol] = remote + "/blob/" + revision + "/" + quote(file, safe="/") + "#L" + str(matches[0])
+        if definitions:
+            links[name]["functions"] = definitions
+    return links
+
+
+def build(server=None, token=None, public_server=None, remote=None, client=None):
+    """server: pull scores + leaderboard from the group server (else local scores only).
+    remote: the same export passed in directly (the server publishing itself).
+    client: rebuild only this client's data and preserve other published client stats."""
+    (DOCS / "data").mkdir(parents=True, exist_ok=True)
+    path = DOCS / "progress.json"
+    previous = json.loads(path.read_text()) if path.exists() else {}
+    previous_clients = {row["name"]: row for row in previous.get("clients", [])}
+    authoritative = remote is not None or bool(server)
+    if remote is None:
+        remote = fetch_server(server, token) if server else {"scores": {}, "leaderboard": []}
+    library = library_meta()
+    out, stats = [], {}
+    for name, entry in sorted(clients.load().items()):
+        if entry.get("donor"):  # donor binaries are matching/test fixtures, not shown on the site
+            continue
+        if client is not None and name != client and name in previous_clients:
+            row = previous_clients[name]
+            out.append(row)
+            if row.get("started"):
+                stats[name] = {k: row[k] for k in STATS if k in row}
+            continue
+        work = ROOT / "work" / name
+        row = {"name": name, "compiler": entry["compiler"], "built": entry.get("built"), "started": False}
+        if (work / "functions.jsonl").exists():
+            scores_file = work / "scores.json"
+            scores = json.loads(scores_file.read_text()) if scores_file.exists() else {}
+            if authoritative:
+                scores = remote["scores"].get(name, {})
+            data_file = work / "data.json"
+            spans = json.loads(data_file.read_text()) if data_file.exists() else {}
+            if authoritative:
+                spans = remote.get("data", {}).get(name, {})
+            meta_file = work / "meta.json"
+            meta = json.loads(meta_file.read_text()) if meta_file.exists() else {}
+            units, unit_ids, funcs, generated = [], {}, [], 0
+            sources = {p.stem: p for p in (ROOT / "src" / name).glob("*.cpp")}
+            families = remote.get("families", {}).get(name, {})
+            for line in (work / "functions.jsonl").read_text().splitlines():
+                f = json.loads(line)
+                if f.get("kind", "code") != "code":  # compiler/linker stubs don't count
+                    generated += 1
+                    continue
+                unit = f.get("unit", "")
+                if unit not in unit_ids:
+                    unit_ids[unit] = len(units)
+                    units.append(unit)
+                addr = f["addr"]
+                source = sources.get(addr)
+                funcs.append([int(addr, 16), f["size"], scores.get(addr, 0), unit_ids[unit],
+                              bool(source), library.get((name, addr)), families.get(addr)])
+            (DOCS / "data" / ("%s.json" % name)).write_text(json.dumps(
+                {"name": name, "compiler": entry["compiler"], "units": units, "funcs": funcs,
+                 "landmarks": landmarks(name, entry)},
+                separators=(",", ":")))
+            row.update(summarize(funcs), started=True, data_bytes=meta.get("data_bytes", 0),
+                       leaderboard=remote.get("leaderboards", {}).get(name, []),
+                       data_matched_bytes=union_bytes(v for a, v in spans.items() if scores.get(a) == 100),
+                       classes=meta.get("classes", 0), generated=generated)
+            stats[name] = {k: row[k] for k in STATS}
+        out.append(row)
+    (DOCS / "source-links.json").write_text(json.dumps(source_links(), indent=1) + "\n")
+    updated = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
+    progress = {"updated": updated, "clients": out, "leaderboard": remote["leaderboard"][:50],
+                "server": public_server}
+    if {k: v for k, v in previous.items() if k != "updated"} == {
+            k: v for k, v in progress.items() if k != "updated"}:
+        progress["updated"] = previous["updated"]
+    path.write_text(json.dumps(progress, indent=1) + "\n")
+    add_history(stats, updated)
+    return progress

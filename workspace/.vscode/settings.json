@@ -1,0 +1,17 @@
+{
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+    "C_Cpp.files.exclude": {
+        "**/roc_*": true,
+        "**/work/**": true,
+        "**/local/**": true,
+        "**/rebuild/**/out/**": true,
+        "**/src/**": true
+    },
+    "C_Cpp.default.browse.path": [
+        "${workspaceFolder}/tools/rbxgs/Client/App",
+        "${workspaceFolder}/rebuild/2008-06/glue"
+    ],
+    "C_Cpp.workspaceParsingPriority": "low",
+    "C_Cpp.intelliSenseMemoryLimit": 1024
+}

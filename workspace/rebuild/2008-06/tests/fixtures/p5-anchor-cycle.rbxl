@@ -1,0 +1,17 @@
+<roblox version="4">
+<Item class="Workspace"><Properties />
+<Item class="Part" referent="RBX1"><Properties>
+<string name="Name">Brick</string>
+<bool name="Anchored">true</bool>
+<CoordinateFrame name="CFrame"><X>0</X><Y>20</Y><Z>0</Z>
+<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22>
+</CoordinateFrame>
+</Properties></Item>
+<Item class="Part" referent="RBX2"><Properties>
+<string name="Name">Floor</string>
+<bool name="Anchored">true</bool>
+<CoordinateFrame name="CFrame"><X>0</X><Y>-5</Y><Z>0</Z>
+<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22>
+</CoordinateFrame>
+</Properties></Item>
+<Item class="Script"><Properties><string name="Name">AnchorCycle</string><string name="Source">wait(0.1); game.Workspace.Brick.Anchored = false; wait(0.15); game.Workspace.Brick.Anchored = true; wait(0.15); game.Workspace.Brick.Anchored = false</string><bool name="Disabled">false</bool></Properties></Item></Item></roblox>

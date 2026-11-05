@@ -1,0 +1,70 @@
+// from server: 100% by EspClaude
+// from server: 100% by colin
+// roc-cl: 50727
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Object;
+
+struct Entry {
+    void* value;
+    void* control;
+    Entry(Object*);
+    ~Entry();
+};
+
+struct Container {
+    char storage[32];
+    void remove(const Entry&);
+};
+
+struct Reference {
+    void* value;
+    Reference(const Reference&);
+    ~Reference();
+    bool hasValue() const;
+};
+
+struct Provider {
+    Reference getReference();
+};
+
+struct Owner {
+    char padding[24];
+    Provider provider;
+};
+
+struct Object {
+    Owner* getOwner();
+};
+
+struct S {
+    char padding[40];
+    Container first;
+    Container second;
+
+    void accept(Reference);
+    void detach(Object*);
+    bool finish(Object*);
+    void f(Object*);
+};
+
+#pragma optimize("", off)
+void S::f(Object* object)
+{
+    {
+        Entry entry(object);
+        first.remove(entry);
+    }
+    {
+        Entry entry(object);
+        second.remove(entry);
+    }
+
+    Reference reference = object->getOwner()->provider.getReference();
+    if (reference.hasValue()) {
+        accept(reference);
+        detach(object);
+    } else {
+        detach(object);
+    }
+    finish(object);
+}

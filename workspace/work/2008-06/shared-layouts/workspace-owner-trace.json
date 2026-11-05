@@ -1,0 +1,25 @@
+{
+  "factory": "00405fa0",
+  "allocation_size": 728,
+  "constructor": "00556b00",
+  "constructor_primary_vtable_stores": [
+    {
+      "instruction": "0x556b94",
+      "vtable": "0x82d4c4",
+      "type": ".?AVRunService@RBX@@"
+    }
+  ],
+  "workspace_owner_offset": 44,
+  "chain": [
+    "0046b5c0 calls 004530f0 on DataModel",
+    "004530f0 lazily obtains service through 00405fa0",
+    "00405fa0 allocates 0x2d8 and calls 00556b00",
+    "0046b5c0 retains returned object via shared_from at 00618a40"
+  ],
+  "scope": "Static original-binary ownership trace. No active ABI swap.",
+  "revision": "78a23d1d28c205806d0cd50487ca32ebd77d695d",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "resolved_pointee": "RBX::RunService",
+  "service_name_address": "0082d328",
+  "service_name": "RunService"
+}

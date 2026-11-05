@@ -1,0 +1,17 @@
+{
+  "address": "005ccb00",
+  "size": 71,
+  "exact": true,
+  "edges": {
+    "??_R0?AVICameraSubject@RBX@@@8": 9732868,
+    "??_R0?AVInstance@RBX@@@8": 9605244,
+    "___RTDynamicCast": 6952902,
+    "??_R0?AVICharacterSubject@RBX@@@8": 9770696
+  },
+  "source_sha256": "8d6fb31d0ca7f0adc509074b1b5370859d6606e41486c73f03977ff54575d435",
+  "header_sha256": "37064d725b9be184868948064c120827458cb4d1e65f9a9728cbc9d38decb1e9",
+  "overlay_sha256": "cc4c07c2d6ed489301f5b18e0e9f3fb6f802d43466eca6f544ac0df6ae09720c",
+  "object_sha256": "542772a3cd467f0d79c5b141e58a675f8b22ecdd5527259e400b8f2bec72b361",
+  "observer_sha256": "e83f91e95c998566c3b22c1decd0a6b481bd63eda806377736b8bab36b30a092",
+  "scope": "Inactive isolated profile; getter inlined provisionally. Character constructor/destructor, field semantics, whole layout, data identity and runtime remain unproven. Selected for isolated diagnostic link only."
+}

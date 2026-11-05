@@ -1,0 +1,240 @@
+{
+  "class": "CWebToolbox",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "profile": "CString operator PCXSTR noinline (original imports it)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_web_toolbox.py": "aa8d001ef6c7d9582ec0713322d89a2d4e84f3d94a5282d576fc40e7f4029150",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/native-classes/CWebToolbox.cpp": "cb6acae277107172e1ecc2e101007853118a9346c765783e59a57a5499819207",
+    "rebuild/2008-06/tests/NativeWebToolboxLayout.cpp": "ed37d6a949f582e22308e6ba23e7131af54eada578816df5348041e3236389ac",
+    "rebuild/2008-06/native-headers/CWebToolbox.h": "473cc33c72735fecb0e5be21e933727e664a941ae5fca97cf5792dc0f472f75e",
+    "rebuild/2008-06/native-headers/CSecureHtmlView.h": "187172906eb1c2aa9079c61d92b7e5b9ed7254c68b6350c8fec6d4ee63a96275"
+  },
+  "object_sha256": "4b816c3fb44872b150fdb097381e08218650afada63a568ada55e37f7a01d104",
+  "layout": {
+    "size": "0x100",
+    "base": "CSecureHtmlView 0xf8 (CHtmlView 0xf4 + flag_f4)",
+    "field_f8": "0xf8 CWnd* (read by every handler, never written in the image)",
+    "external": "0xfc CComPtr<IDispatch>",
+    "evidence": "CRuntimeClass 0081c4a8 and CreateObject operator new(0x100); inlined constructor; deleting destructor 0046a7e0; compile-time sizeof/offsetof test"
+  },
+  "methods": [
+    {
+      "address": "0046a850",
+      "symbol": "?CreateObject@CWebToolbox@@SGPAVCObject@@XZ",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CSecureHtmlView@@QAE@XZ": "0x465a60",
+        "??_7CWebToolbox@@6B@": "0x81c4f4 (RTTI .?AVCWebToolbox@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CWebToolbox@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "0046a7e0",
+      "symbol": "??_GCWebToolbox@@UAEPAXI@Z",
+      "size": 112,
+      "exact": true,
+      "verified_targets": {
+        "??_7CWebToolbox@@6B@": "0x81c4f4 (RTTI .?AVCWebToolbox@@, offset 0x0)",
+        "??1CSecureHtmlView@@UAE@XZ": "0x465a80",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??_GCWebToolbox@@UAEPAXI@Z"
+      ]
+    },
+    {
+      "address": "0046a580",
+      "symbol": "?GetRuntimeClass@CWebToolbox@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCWebToolbox@CWebToolbox@@2UCRuntimeClass@@B": "0x81c4a8"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a8d0",
+      "symbol": "?GetMessageMap@CWebToolbox@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CWebToolbox@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x81c73c"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a710",
+      "symbol": "?OnInitialUpdate@CWebToolbox@@UAEXXZ",
+      "size": 138,
+      "exact": true,
+      "verified_targets": {
+        "?OnInitialUpdate@CFormView@@UAEXXZ": "mfc90.dll!?OnInitialUpdate@CFormView@@UAEXXZ",
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??_C@_0BI@CCKIBAEG@?1IDE?1ClientToolbox?4aspx?$AA@": "0x81c724",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "mfc90.dll!??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ",
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "mfc90.dll!??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ",
+        "?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z": "mfc90.dll!?Navigate@CHtmlView@@QAEXPBDK00PAXK@Z"
+      },
+      "local_eh": [
+        "__ehhandler$?OnInitialUpdate@CWebToolbox@@UAEXXZ"
+      ]
+    },
+    {
+      "address": "0046a6a0",
+      "symbol": "?OnActivateView@CWebToolbox@@UAEXHPAVCView@@0@Z",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {
+        "?OnActivateView@CFormView@@MAEXHPAVCView@@0@Z": "mfc90.dll!?OnActivateView@CFormView@@MAEXHPAVCView@@0@Z",
+        "?SetFocus@CWnd@@QAEPAV1@XZ": "mfc90.dll!?SetFocus@CWnd@@QAEPAV1@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a8e0",
+      "symbol": "?OnGetExternal@CWebToolbox@@UAEJPAPAUIDispatch@@@Z",
+      "size": 87,
+      "exact": true,
+      "verified_targets": {
+        "?SetFocus@CWnd@@QAEPAV1@XZ": "mfc90.dll!?SetFocus@CWnd@@QAEPAV1@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a680",
+      "symbol": "?OnGetHostInfo@CWebToolbox@@UAEJPAU_DOCHOSTUIINFO@@@Z",
+      "size": 26,
+      "exact": true,
+      "verified_targets": {
+        "?OnGetHostInfo@CHtmlView@@UAEJPAU_DOCHOSTUIINFO@@@Z": "mfc90.dll!?OnGetHostInfo@CHtmlView@@UAEJPAU_DOCHOSTUIINFO@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a640",
+      "symbol": "?OnDocWindowActivate@CWebToolbox@@UAEJH@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "?SetFocus@CWnd@@QAEPAV1@XZ": "mfc90.dll!?SetFocus@CWnd@@QAEPAV1@XZ",
+        "?OnDocWindowActivate@CHtmlView@@UAEJH@Z": "mfc90.dll!?OnDocWindowActivate@CHtmlView@@UAEJH@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a660",
+      "symbol": "?OnFrameWindowActivate@CWebToolbox@@UAEJH@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "?SetFocus@CWnd@@QAEPAV1@XZ": "mfc90.dll!?SetFocus@CWnd@@QAEPAV1@XZ",
+        "?OnFrameWindowActivate@CHtmlView@@UAEJH@Z": "mfc90.dll!?OnFrameWindowActivate@CHtmlView@@UAEJH@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a7a0",
+      "symbol": "?OnGetMinMaxInfo@CWebToolbox@@QAEXPAUtagMINMAXINFO@@@Z",
+      "size": 19,
+      "exact": true,
+      "verified_targets": {
+        "?Default@CWnd@@IAEJXZ": "mfc90.dll!?Default@CWnd@@IAEJXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a6d0",
+      "symbol": "?OnSetFocus@CWebToolbox@@QAEXPAVCWnd@@@Z",
+      "size": 32,
+      "exact": true,
+      "verified_targets": {
+        "?OnSetFocus@CFormView@@IAEXPAVCWnd@@@Z": "mfc90.dll!?OnSetFocus@CFormView@@IAEXPAVCWnd@@@Z",
+        "?SetFocus@CWnd@@QAEPAV1@XZ": "mfc90.dll!?SetFocus@CWnd@@QAEPAV1@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a6f0",
+      "symbol": "?OnMouseActivate@CWebToolbox@@QAEHPAVCWnd@@II@Z",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?SetFocus@CWnd@@QAEPAV1@XZ": "mfc90.dll!?SetFocus@CWnd@@QAEPAV1@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0046a7c0",
+      "symbol": "?OnLButtonUp@CWebToolbox@@QAEXIVCPoint@@@Z",
+      "size": 27,
+      "exact": true,
+      "verified_targets": {
+        "?Default@CWnd@@IAEJXZ": "mfc90.dll!?Default@CWnd@@IAEJXZ",
+        "?SetFocus@CWnd@@QAEPAV1@XZ": "mfc90.dll!?SetFocus@CWnd@@QAEPAV1@XZ"
+      },
+      "local_eh": []
+    }
+  ],
+  "runtime_class": {
+    "address": "0081c4a8",
+    "size": "0x100",
+    "create": "0046a850"
+  },
+  "message_map": {
+    "address": "0081c73c",
+    "entries": [
+      "WM_GETMINMAXINFO 0046a7a0",
+      "WM_SETFOCUS 0046a6d0",
+      "WM_MOUSEACTIVATE 0046a6f0",
+      "WM_LBUTTONUP 0046a7c0",
+      "WM_ACTIVATE 0046a7c0 (folded with OnLButtonUp)"
+    ]
+  },
+  "open": [
+    "CSecureHtmlView bodies 00465a60/00465a80/00465b20/00465ae0/00465a90/00465d70 (separate class, declared only)"
+  ],
+  "scope": "Inactive; the original image never references this class outside its own code. No active build, swap or credit."
+}

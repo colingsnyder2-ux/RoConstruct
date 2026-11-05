@@ -1,0 +1,198 @@
+{
+  "revision": "54e50084f4de40ae7db714e465f219be23e75b32",
+  "sources": {
+    "rebuild\\2008-06\\tests\\..\\native-classes\\CMainFrameCommands.cpp": "5da9b2c4e24e8b8f111ee931254dba8230070d1b552c4c7d78dc7dc9501b42e1",
+    "rebuild\\2008-06\\tests\\NativeWorkerThread.cpp": "6794c4638a35d979bba2571ca9c7bca9641522003cd9380bf0c6017cf3ff1b41",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
+    "rebuild\\2008-06\\native-headers\\CMainFrameBases.h": "3e10b26ea2691550e68ba105aab1b10e1ce95fe76f36c13edd5ddeb55b8ee1f0",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_commands.py": "dc5fc93a055c4fcacca17ff8230ae001bb9b7de337053ad59108dc5e157377c5"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/FoNativeMainFrameCommands.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\..\\native-classes\\CMainFrameCommands.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0042e570",
+      "symbol": "?showDockPane@CMainFrame@@QAEXHVCRect@@W4XTPDockingPaneDirection@@@Z",
+      "size": 100,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00431b40",
+      "symbol": "?setFullscreen@CMainFrame@@QAEX_N@Z",
+      "size": 169,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00430160",
+      "symbol": "?restoreFullscreen@CMainFrame@@QAEXXZ",
+      "size": 330,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "004302b0",
+      "symbol": "?updateMonitor@CMainFrame@@QAEXXZ",
+      "size": 161,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042f9d0",
+      "symbol": "?exchangeLayout@CMainFrame@@QAEXPAVCXTPPropExchange@@H@Z",
+      "size": 336,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00431bf0",
+      "symbol": "?OnActivate@CMainFrame@@QAEXIPAVCWnd@@H@Z",
+      "size": 69,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00430360",
+      "symbol": "?OnActivateApp@CMainFrame@@QAEXHK@Z",
+      "size": 53,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00430b40",
+      "symbol": "?OnDestroy@CMainFrame@@QAEXXZ",
+      "size": 132,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00431c40",
+      "symbol": "?OnGetMinMaxInfo@CMainFrame@@QAEXPAUtagMINMAXINFO@@@Z",
+      "size": 152,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042ef10",
+      "symbol": "?OnWindowPosChanging@CMainFrame@@QAEXPAUtagWINDOWPOS@@@Z",
+      "size": 38,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042e550",
+      "symbol": "?handle_42e550@CMainFrame@@QAEXPAVCCmdUI@@@Z",
+      "size": 18,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042eec0",
+      "symbol": "?handle_42eec0@CMainFrame@@QAEXPAVCCmdUI@@@Z",
+      "size": 24,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042eef0",
+      "symbol": "?handle_42eef0@CMainFrame@@QAEXPAVCCmdUI@@@Z",
+      "size": 24,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042e5e0",
+      "symbol": "?handle_42e5e0@CMainFrame@@QAEXXZ",
+      "size": 47,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042fb80",
+      "symbol": "?handle_42fb80@CMainFrame@@QAEXXZ",
+      "size": 46,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042fbb0",
+      "symbol": "?handle_42fbb0@CMainFrame@@QAEXXZ",
+      "size": 49,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042ee90",
+      "symbol": "?handle_42ee90@CMainFrame@@QAEXXZ",
+      "size": 48,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042ed00",
+      "symbol": "?handle_42ed00@CMainFrame@@QAEXPAVCCmdUI@@@Z",
+      "size": 19,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "004314c0",
+      "symbol": "?handle_4314c0@CMainFrame@@QAEXXZ",
+      "size": 22,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00431ce0",
+      "symbol": "?handle_431ce0@CMainFrame@@QAEXXZ",
+      "size": 20,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "0042e610",
+      "symbol": "?handle_42e610@CMainFrame@@QAEXXZ",
+      "size": 149,
+      "relocation_normalized_exact": true
+    }
+  ],
+  "partial_hideEditorChrome": {
+    "address": "004309f0",
+    "original_size": 230,
+    "candidate_size": 224,
+    "relocation_normalized_exact": false
+  },
+  "partial_showEditorChrome": {
+    "address": "00430f50",
+    "original_size": 226,
+    "candidate_size": 220,
+    "relocation_normalized_exact": false
+  },
+  "partial_close": {
+    "address": "00431f10",
+    "original_size": 236,
+    "candidate_size": 230,
+    "relocation_normalized_exact": false
+  },
+  "scope": "Selected direct calls verified; editor chrome save/restore CString conversion mismatch, worker-thread synchronization ABI, frame-size settings identity, full class ABI and runtime integration open."
+}

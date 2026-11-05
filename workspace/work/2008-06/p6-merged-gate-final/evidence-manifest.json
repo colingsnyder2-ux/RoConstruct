@@ -1,0 +1,27 @@
+{
+  "revision": "6f9be17cb55182cc77061385bd18c0369d10bbd2",
+  "P5_engine_revision": "730f303138",
+  "P5_gate": "PASS at documented stop line",
+  "P6_scoped_gate": "PASS",
+  "P6_native_complete": false,
+  "selected_code_matches": 2997,
+  "selected_known_functions": 14344,
+  "files": {
+    "bad-path.txt": "1546c526f9ee36649f0eb8c5310d746b5285a6320752a18ee417bf7bc4629dd7",
+    "click.png": "9ca9c83e0b016c1b38e164447236165920f20589b62998a5c9c21c613e7afd54",
+    "commands.txt": "376cc50e6be51775a5a71c2dac04485949cceae4ebedfda2805ec35967cff54f",
+    "edit-save.txt": "9243f850a2d41c60e8e865ff8e5aa9d97276bd78edbd56bd250ae7bf5bbe86d9",
+    "gate.rbxl": "ca3a765b62c653ef0af278f1acb59ab25f8f7e5cffae19f3aaab4e916f50e033",
+    "ordinary-launch-twice.txt": "ace02bbcadacc3ec8e8caccf63b48b1f143b28522e0f8cd2b452196a86003ed6",
+    "original-opens-save.txt": "a0079f4e357a9345d9d7e6f246c05ca8acc994959a13f04ba261ff3f12862430",
+    "original.png": "14a91bce377b3984cfc542dc71485cc66c27aeeb64cef759107ef2ccb4795004",
+    "player.log": "788c25112a2e93f9263aca4904e16ac8d9a33d18d4071df3bda14ef331d4adb5",
+    "real-click-drag.txt": "28a20042bcea7f5d1db30a09fb09fd2decd4e763ef458d3a05eba5ab207d95e9",
+    "real-input-0.txt": "38b42426c5fbee41b25ecb986c31a22a2ab6eafcc1585d8d77b76e10adf34dc0",
+    "real-input-1.txt": "2cc375d619839cb6dfdd166ed21f3fd8419b6f9bfebfb6227f82fcec55cb19ee",
+    "real-input-2.txt": "7291ada2b2fb26e9d8d98310a430db28413a7bdc465760d0daf03cb8e8489bef",
+    "receipt.json": "b5b377474acd108a5565b091d8546e94e573b866c51af633f2616def8bf7c45a",
+    "reopen.txt": "6332dcc4af4d84d7cb4f2f51b871a714fbe9212743af3be97a7aa107f03aca3d",
+    "selected-functions.json": "ed28f1f2e4ca3f4441c6c7d0f404cd0ad6702bd60695104c10a40dc750b61376"
+  }
+}

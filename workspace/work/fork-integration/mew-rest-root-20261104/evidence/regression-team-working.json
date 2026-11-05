@@ -1,0 +1,1627 @@
+{
+  "class": "RBX::Team, RBX::Teams",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\mew-header-regressions\\team-last\\NativeTeamLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeTeamLayout.cpp"
+    ],
+    "team": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\mew-header-regressions\\team-last\\NativeTeam.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Team.cpp"
+    ],
+    "teams": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\mew-header-regressions\\team-last\\NativeTeams.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Teams.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\mew-header-regressions\\team-last\\native-team-pending",
+      "/DNATIVE_TEAMS_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\mew-header-regressions\\team-last\\NativeTeamsPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Teams.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_team.py": "269957dfb443d12ff3e34c351cd3e1cf694874e4d3b00d726eb9afa99c52a2cd",
+    "rebuild/2008-06/native-headers/v8datamodel/Team.h": "5b3dba04280874af77e032030d7db02179689531ec63f4c94fc9bb11dc61195d",
+    "rebuild/2008-06/native-headers/v8datamodel/Teams.h": "06ee51742b06c53999e5229bf2f4564e9f1526e2c92949ead77550971e6bf7ba",
+    "rebuild/2008-06/native-classes/Team.cpp": "a9b0e3b2ecfe85ab892aa13ff11a95708a032ebdedb6b9bd53f07f7b2f77adc8",
+    "rebuild/2008-06/native-classes/Teams.cpp": "b1fcdd56bb00f5ac2928f139a0b1f7275e090a4257e082e0baf9aaca8734bad8",
+    "rebuild/2008-06/tests/NativeTeamLayout.cpp": "4943aa127ae30937ab642a6830690c4b678d36bfc826f7dd22e24f38d63e8039",
+    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
+    "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
+    "rebuild/2008-06/tests/NativeTeamPendingHumanoid.h": "b0d015503c528096fefc72638fb84cfbbe679c1d585d2e037cddd4e86f0eca8e",
+    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "88164ed8537f5812afbd86fd869aba9235ecc6527414066562d68069c3978993"
+  },
+  "objects": {
+    "NativeTeamLayout.obj": "c5ff1919959925f368b428b94174cfa74f206ba090ccb31760b1433902331fbc",
+    "NativeTeam.obj": "3be12fd9f4788bd5355e859d30308652ada4e64f7c02647f058e04cfdc352765",
+    "NativeTeams.obj": "c943dfd0f707f58dc5ed9a9eee9aa7284e2a4f6134c74b73ae29367359d16726",
+    "NativeTeamsPending.obj": "8d62fe8a2148569ca525c77b3070824d3c5f8e6cc1ef25859c37d7f07cca7eb9"
+  },
+  "layout": {
+    "Team": "0x13c (Creatable<Instance>::create<Team> 00409140); score +0x130, color +0x134, autoAssignable +0x138, autoColorCharacters +0x139",
+    "Teams": "0x138 (00490450); Service empty base and CopyOnWrite<vector<shared_ptr<Instance>>> teams at +0x130"
+  },
+  "team_methods": [
+    {
+      "address": "00565e00",
+      "symbol": "?askSetParent@Team@RBX@@UBE_NPBVInstance@2@@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVTeams@RBX@@@8": "0x9455e0 (RTTI .?AVTeams@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565e30",
+      "symbol": "?getScore@Team@RBX@@QBEHXZ",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00565e40",
+      "symbol": "?getTeamColor@Team@RBX@@QBE?AVBrickColor@2@XZ",
+      "size": 15,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00565e50",
+      "symbol": "?getAutoAssignable@Team@RBX@@QBE_NXZ",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00565e60",
+      "symbol": "??1?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82e974 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82e964 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82e95c (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6BDebugable@1@@": "0x82e954 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82e944 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82e934 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82e924 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82e914 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82e904 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82e8f4 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565ec0",
+      "symbol": "??0?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@IAE@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82e974 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82e964 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82e95c (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6BDebugable@1@@": "0x82e954 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82e944 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82e934 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82e924 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82e914 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82e904 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82e8f4 (vtable RTTI .?AV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565f20",
+      "symbol": "??_E?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAEPAXI@Z": "0x565f30 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565f30",
+      "symbol": "??_G?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAE@XZ": "0x565e60 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565f50",
+      "symbol": "??_E?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAEPAXI@Z": "0x565f30 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565f60",
+      "symbol": "??_E?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAEPAXI@Z": "0x565f30 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565f70",
+      "symbol": "??_E?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAEPAXI@Z": "0x565f30 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565f80",
+      "symbol": "??1?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@UAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAE@XZ": "0x565e60 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565f90",
+      "symbol": "??1Team@RBX@@UAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7Team@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82ea84 (vtable RTTI .?AVTeam@RBX@@ offset 0x0)",
+        "??_7Team@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82ea78 (vtable RTTI .?AVTeam@RBX@@ offset 0x10)",
+        "??_7Team@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ea70 (vtable RTTI .?AVTeam@RBX@@ offset 0x14)",
+        "??_7Team@RBX@@6BDebugable@1@@": "0x82ea68 (vtable RTTI .?AVTeam@RBX@@ offset 0x20)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82ea58 (vtable RTTI .?AVTeam@RBX@@ offset 0x24)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82ea48 (vtable RTTI .?AVTeam@RBX@@ offset 0x44)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82ea38 (vtable RTTI .?AVTeam@RBX@@ offset 0x64)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82ea28 (vtable RTTI .?AVTeam@RBX@@ offset 0x84)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82ea18 (vtable RTTI .?AVTeam@RBX@@ offset 0xa4)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82ea08 (vtable RTTI .?AVTeam@RBX@@ offset 0xc4)",
+        "??1?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@MAE@XZ": "0x565e60 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00565ff0",
+      "symbol": "?askAddChild@Team@RBX@@UBE_NPBVInstance@2@@Z",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00566000",
+      "symbol": "??_ETeam@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeam@RBX@@UAEPAXI@Z": "0x566170 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566010",
+      "symbol": "??_ETeam@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeam@RBX@@UAEPAXI@Z": "0x566170 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566020",
+      "symbol": "??_ETeam@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeam@RBX@@UAEPAXI@Z": "0x566170 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566030",
+      "symbol": "??_ETeam@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeam@RBX@@UAEPAXI@Z": "0x566170 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566040",
+      "symbol": "??_ETeam@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeam@RBX@@UAEPAXI@Z": "0x566170 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566050",
+      "symbol": "??_ETeam@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeam@RBX@@UAEPAXI@Z": "0x566170 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566060",
+      "symbol": "??_ETeam@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeam@RBX@@UAEPAXI@Z": "0x566170 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566070",
+      "symbol": "??_ETeam@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeam@RBX@@UAEPAXI@Z": "0x566170 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566080",
+      "symbol": "??$getset@P8Team@RBX@@BEHXZP812@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Team@2@BEHXZP852@AEXH@Z@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Team@RBX@@BEHXZP812@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@6B@": "0x82e9e0 (vtable RTTI .?AV?$GetSetImpl@P8Team@RBX@@BEHXZP812@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005660d0",
+      "symbol": "??$getset@P8Team@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@std@@P8Team@2@BE?AVBrickColor@2@XZP852@AEXV62@@Z@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Team@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@6B@": "0x82e9f4 (vtable RTTI .?AV?$GetSetImpl@P8Team@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566120",
+      "symbol": "??$getset@P8Team@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8Team@2@BE_NXZP852@AEX_N@Z@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Team@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@6B@": "0x82e9b8 (vtable RTTI .?AV?$GetSetImpl@P8Team@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566170",
+      "symbol": "??_GTeam@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1Team@RBX@@UAE@XZ": "0x565f90 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566190",
+      "symbol": "?getClassName@?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sTeam@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x96c30c (local static)",
+        "??$callDoDeclare@$1?sTeam@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x406ea0 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sTeam@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x4067e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005661b0",
+      "symbol": "?classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x9748a8 (local static)",
+        "?sTeam@RBX@@3QBDB": "0x82e8e8 (data)",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9747e8 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fd050 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "00566220",
+      "symbol": "??$?0P8Team@RBX@@BEHXZP801@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@QAE@PBD0P8Team@2@BEHXZP832@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8Team@RBX@@BEHXZP812@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Team@2@BEHXZP852@AEXH@Z@Z": "0x566080 (own row)",
+        "?classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5661b0 (own row)",
+        "??0?$TypedPropertyDescriptor@H@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x4432a0 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@6B@": "0x82eac8 (vtable RTTI .?AV?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Team@RBX@@BEHXZP801@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@QAE@PBD0P8Team@2@BEHXZP832@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005662d0",
+      "symbol": "??$?0P8Team@RBX@@BE?AVBrickColor@1@XZP801@AEXV21@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@QAE@PBD0P8Team@2@BE?AVBrickColor@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8Team@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@std@@P8Team@2@BE?AVBrickColor@2@XZP852@AEXV62@@Z@Z": "0x5660d0 (own row)",
+        "?classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5661b0 (own row)",
+        "??0?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VBrickColor@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x48b180 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@6B@": "0x82eafc (vtable RTTI .?AV?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Team@RBX@@BE?AVBrickColor@1@XZP801@AEXV21@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@QAE@PBD0P8Team@2@BE?AVBrickColor@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00566380",
+      "symbol": "??$?0P8Team@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@QAE@PBD0P8Team@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8Team@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8Team@2@BE_NXZP852@AEX_N@Z@Z": "0x566120 (own row)",
+        "?classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5661b0 (own row)",
+        "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x40a290 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@6B@": "0x82eb30 (vtable RTTI .?AV?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Team@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@QAE@PBD0P8Team@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00566430",
+      "symbol": "??$?0VTeam@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQTeam@2@_NW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 200,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5661b0 (own row)",
+        "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x40a290 (external (evidence name))",
+        "??_7?$BoundProp@_N$00@Reflection@RBX@@6B@": "0x80bc18 (vtable RTTI .?AV?$BoundProp@_N$00@Reflection@RBX@@ offset 0x0)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$BoundPropGetSet@VTeam@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@6B@": "0x82e9cc (vtable RTTI .?AV?$BoundPropGetSet@VTeam@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VTeam@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQTeam@2@_NW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00566500",
+      "symbol": "??0?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@IAE@XZ",
+      "size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??0?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@IAE@XZ": "0x565ec0 (own row)",
+        "?classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5661b0 (own row)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82ebe4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x0)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82ebd4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x10)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ebcc (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6BDebugable@1@@": "0x82ebc4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x20)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82ebb4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x24)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82eba4 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x44)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82eb94 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x64)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82eb84 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0x84)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82eb74 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0xa4)",
+        "??_7?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82eb64 (vtable RTTI .?AV?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@ offset 0xc4)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "005665a0",
+      "symbol": "??_E?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@UAEPAXI@Z": "0x565f30 (folded (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005665b0",
+      "symbol": "??_E?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@UAEPAXI@Z": "0x565f30 (folded (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005665c0",
+      "symbol": "??_E?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@UAEPAXI@Z": "0x565f30 (folded (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005665d0",
+      "symbol": "??_E?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@UAEPAXI@Z": "0x565f30 (folded (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005665e0",
+      "symbol": "??0Team@RBX@@QAE@XZ",
+      "size": 225,
+      "exact": true,
+      "verified_targets": {
+        "??0?$DescribedCreatable@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@RBX@@IAE@XZ": "0x566500 (own row)",
+        "??_7Team@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82ea84 (vtable RTTI .?AVTeam@RBX@@ offset 0x0)",
+        "??_7Team@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82ea78 (vtable RTTI .?AVTeam@RBX@@ offset 0x10)",
+        "??_7Team@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82ea70 (vtable RTTI .?AVTeam@RBX@@ offset 0x14)",
+        "??_7Team@RBX@@6BDebugable@1@@": "0x82ea68 (vtable RTTI .?AVTeam@RBX@@ offset 0x20)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82ea58 (vtable RTTI .?AVTeam@RBX@@ offset 0x24)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82ea48 (vtable RTTI .?AVTeam@RBX@@ offset 0x44)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82ea38 (vtable RTTI .?AVTeam@RBX@@ offset 0x64)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82ea28 (vtable RTTI .?AVTeam@RBX@@ offset 0x84)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82ea18 (vtable RTTI .?AVTeam@RBX@@ offset 0xa4)",
+        "??_7Team@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82ea08 (vtable RTTI .?AVTeam@RBX@@ offset 0xc4)",
+        "?sTeam@RBX@@3QBDB": "0x82e8e8 (data)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0Team@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "005666d0",
+      "symbol": "?setScore@Team@RBX@@QAEXH@Z",
+      "size": 34,
+      "exact": true,
+      "verified_targets": {
+        "_prop_Score": "0x9748cc (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566700",
+      "symbol": "?setTeamColor@Team@RBX@@QAEXVBrickColor@2@@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "_prop_Color": "0x974904 (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00566720",
+      "symbol": "?setAutoAssignable@Team@RBX@@QAEX_N@Z",
+      "size": 34,
+      "exact": true,
+      "verified_targets": {
+        "_prop_AutoAssignable": "0x9748b0 (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f3240",
+      "symbol": "??__Eprop_Score@RBX@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setScore@Team@RBX@@QAEXH@Z": "0x5666d0 (own row)",
+        "?getScore@Team@RBX@@QBEHXZ": "0x565e30 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_05DGAPONBB@Score?$AA@": "0x82ec24 (literal 'Score')",
+        "_prop_Score": "0x9748cc (data)",
+        "??$?0P8Team@RBX@@BEHXZP801@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@QAE@PBD0P8Team@2@BEHXZP832@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z": "0x566220 (own row)",
+        "??__Fprop_Score@RBX@@YAXXZ": "0x7fd030 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f3280",
+      "symbol": "??__Eprop_Color@RBX@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setTeamColor@Team@RBX@@QAEXVBrickColor@2@@Z": "0x566700 (own row)",
+        "?getTeamColor@Team@RBX@@QBE?AVBrickColor@2@XZ": "0x565e40 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_09PBICLPNM@TeamColor?$AA@": "0x822548 (literal 'TeamColor')",
+        "_prop_Color": "0x974904 (data)",
+        "??$?0P8Team@RBX@@BE?AVBrickColor@1@XZP801@AEXV21@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@QAE@PBD0P8Team@2@BE?AVBrickColor@2@XZP832@AEXV42@@ZW4Functionality@PropertyDescriptor@12@@Z": "0x5662d0 (own row)",
+        "??__Fprop_Color@RBX@@YAXXZ": "0x7fd010 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f32c0",
+      "symbol": "??__Eprop_AutoAssignable@RBX@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setAutoAssignable@Team@RBX@@QAEX_N@Z": "0x566720 (own row)",
+        "?getAutoAssignable@Team@RBX@@QBE_NXZ": "0x565e50 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_0P@JIMAIGI@AutoAssignable?$AA@": "0x82ec2c (literal 'AutoAssignable')",
+        "_prop_AutoAssignable": "0x9748b0 (data)",
+        "??$?0P8Team@RBX@@BE_NXZP801@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@QAE@PBD0P8Team@2@BE_NXZP832@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z": "0x566380 (own row)",
+        "??__Fprop_AutoAssignable@RBX@@YAXXZ": "0x7fcff0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f3300",
+      "symbol": "??__E?prop_AutoColorCharacters@Team@RBX@@2V?$BoundProp@_N$00@Reflection@2@A@@YAXXZ",
+      "size": 39,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_0BE@BPBHOLLJ@AutoColorCharacters?$AA@": "0x82ec3c (literal 'AutoColorCharacters')",
+        "?prop_AutoColorCharacters@Team@RBX@@2V?$BoundProp@_N$00@Reflection@2@A": "0x9748e8 (data)",
+        "??$?0VTeam@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQTeam@2@_NW4Functionality@PropertyDescriptor@12@@Z": "0x566430 (own row)",
+        "??__F?prop_AutoColorCharacters@Team@RBX@@2V?$BoundProp@_N$00@Reflection@2@A@@YAXXZ": "0x7fcfd0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fcfd0",
+      "symbol": "??__F?prop_AutoColorCharacters@Team@RBX@@2V?$BoundProp@_N$00@Reflection@2@A@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "?prop_AutoColorCharacters@Team@RBX@@2V?$BoundProp@_N$00@Reflection@2@A": "0x9748e8 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fcff0",
+      "symbol": "??__Fprop_AutoAssignable@RBX@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_prop_AutoAssignable": "0x9748b0 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fd010",
+      "symbol": "??__Fprop_Color@RBX@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_prop_Color": "0x974904 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fd030",
+      "symbol": "??__Fprop_Score@RBX@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_prop_Score": "0x9748cc (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fd050",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VTeam@RBX@@$1?sTeam@2@3QBDBV?$FactoryProduct@VTeam@RBX@@VInstance@2@$1?sTeam@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9747e8 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004067e0",
+      "symbol": "??$doDeclare@$1?sTeam@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sTeam@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x96c2f0 (local static)",
+        "?sTeam@RBX@@3QBDB": "0x82e8e8 (data)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?n@?1???$doDeclare@$1?sTeam@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96c2ec (local static)"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sTeam@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "00406ea0",
+      "symbol": "??$callDoDeclare@$1?sTeam@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doDeclare@$1?sTeam@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x4067e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$GetSetImpl@P8Team@RBX@@BEHXZP812@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$GetSetImpl@P8Team@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$GetSetImpl@P8Team@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?isReadOnly@?$BoundPropGetSet@VTeam@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@UBE_NXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005cf660",
+      "symbol": "?getValue@?$GetSetImpl@P8Team@RBX@@BEHXZP812@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@UBEHPBVDescribedBase@34@@Z",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005cf660",
+      "symbol": "?getValue@?$GetSetImpl@P8Team@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@UBE_NPBVDescribedBase@34@@Z",
+      "size": 41,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00445370",
+      "symbol": "?getValue@?$GetSetImpl@P8Team@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@UBE?AVBrickColor@4@PBVDescribedBase@34@@Z",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00563b00",
+      "symbol": "?setValue@?$GetSetImpl@P8Team@RBX@@BEHXZP812@AEXH@Z@?$PropDescriptor@VTeam@RBX@@H@Reflection@RBX@@UBEXPAVDescribedBase@34@ABH@Z",
+      "size": 55,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00563b00",
+      "symbol": "?setValue@?$GetSetImpl@P8Team@RBX@@BE?AVBrickColor@2@XZP812@AEXV32@@Z@?$PropDescriptor@VTeam@RBX@@VBrickColor@2@@Reflection@RBX@@UBEXPAVDescribedBase@34@ABVBrickColor@4@@Z",
+      "size": 55,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0048abf0",
+      "symbol": "?setValue@?$GetSetImpl@P8Team@RBX@@BE_NXZP812@AEX_N@Z@?$PropDescriptor@VTeam@RBX@@_N@Reflection@RBX@@UBEXPAVDescribedBase@34@AB_N@Z",
+      "size": 57,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00443190",
+      "symbol": "?getValue@?$BoundPropGetSet@VTeam@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@UBE_NPBVDescribedBase@34@@Z",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0063dd00",
+      "symbol": "?setValue@?$BoundPropGetSet@VTeam@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@UBEXPAVDescribedBase@34@AB_N@Z",
+      "size": 70,
+      "exact": true,
+      "verified_targets": {
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    }
+  ],
+  "teams_methods": [
+    {
+      "address": "005d5b80",
+      "symbol": "??1?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83cd94 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83cd84 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cd7c (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6BDebugable@1@@": "0x83cd74 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cd64 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83cd54 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83cd44 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83cd34 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83cd24 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83cd14 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5be0",
+      "symbol": "??0?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@IAE@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83cd94 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83cd84 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cd7c (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6BDebugable@1@@": "0x83cd74 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cd64 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83cd54 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83cd44 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83cd34 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83cd24 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83cd14 (vtable RTTI .?AV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5c40",
+      "symbol": "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z": "0x5d65f0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5c50",
+      "symbol": "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z": "0x5d65f0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5c60",
+      "symbol": "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z": "0x5d65f0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5c70",
+      "symbol": "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z": "0x5d65f0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5c80",
+      "symbol": "??1?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@UAE@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAE@XZ": "0x5d5b80 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5c90",
+      "symbol": "??1Teams@RBX@@UAE@XZ",
+      "size": 200,
+      "exact": true,
+      "verified_targets": {
+        "??_7Teams@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83ce54 (vtable RTTI .?AVTeams@RBX@@ offset 0x0)",
+        "??_7Teams@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83ce48 (vtable RTTI .?AVTeams@RBX@@ offset 0x10)",
+        "??_7Teams@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83ce40 (vtable RTTI .?AVTeams@RBX@@ offset 0x14)",
+        "??_7Teams@RBX@@6BDebugable@1@@": "0x83ce38 (vtable RTTI .?AVTeams@RBX@@ offset 0x20)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83ce28 (vtable RTTI .?AVTeams@RBX@@ offset 0x24)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83ce18 (vtable RTTI .?AVTeams@RBX@@ offset 0x44)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83ce08 (vtable RTTI .?AVTeams@RBX@@ offset 0x64)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83cdf8 (vtable RTTI .?AVTeams@RBX@@ offset 0x84)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83cde8 (vtable RTTI .?AVTeams@RBX@@ offset 0xa4)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83cdd8 (vtable RTTI .?AVTeams@RBX@@ offset 0xc4)",
+        "??1?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAE@XZ": "0x5d5b80 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??1Teams@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "005d5d60",
+      "symbol": "?askAddChild@Teams@RBX@@UBE_NPBVInstance@2@@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVTeam@RBX@@@8": "0x9457ec (RTTI .?AVTeam@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5d90",
+      "symbol": "??_ETeams@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeams@RBX@@UAEPAXI@Z": "0x5d5f00 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5da0",
+      "symbol": "??_ETeams@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeams@RBX@@UAEPAXI@Z": "0x5d5f00 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5db0",
+      "symbol": "??_ETeams@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeams@RBX@@UAEPAXI@Z": "0x5d5f00 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5dc0",
+      "symbol": "??_ETeams@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeams@RBX@@UAEPAXI@Z": "0x5d5f00 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5dd0",
+      "symbol": "??_ETeams@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeams@RBX@@UAEPAXI@Z": "0x5d5f00 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5de0",
+      "symbol": "??_ETeams@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeams@RBX@@UAEPAXI@Z": "0x5d5f00 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5df0",
+      "symbol": "??_ETeams@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeams@RBX@@UAEPAXI@Z": "0x5d5f00 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5e00",
+      "symbol": "??_ETeams@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ETeams@RBX@@UAEPAXI@Z": "0x5d5f00 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5e10",
+      "symbol": "?getTeamFromTeamColor@Teams@RBX@@QAEPAVTeam@2@VBrickColor@2@@Z",
+      "size": 140,
+      "exact": true,
+      "verified_targets": {
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVTeam@RBX@@@8": "0x9457ec (RTTI .?AVTeam@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?getTeamColor@Team@RBX@@QBE?AVBrickColor@2@XZ": "0x565e40 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5ed0",
+      "symbol": "?getTeams@Teams@RBX@@QAE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ",
+      "size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5f00",
+      "symbol": "??_GTeams@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1Teams@RBX@@UAE@XZ": "0x5d5c90 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5f20",
+      "symbol": "?teamExists@Teams@RBX@@QAE_NVBrickColor@2@@Z",
+      "size": 19,
+      "exact": true,
+      "verified_targets": {
+        "?getTeamFromTeamColor@Teams@RBX@@QAEPAVTeam@2@VBrickColor@2@@Z": "0x5d5e10 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5fe0",
+      "symbol": "?getClassName@?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sTeams@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x96fbe0 (local static)",
+        "??$callDoDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x48ab40 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x48a1e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d6000",
+      "symbol": "?classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x97a1b8 (local static)",
+        "?sTeams@RBX@@3QBDB": "0x83cd08 (data)",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97a0f8 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7ff210 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "005d6340",
+      "symbol": "?onChildAdded@Teams@RBX@@MAEXPAVInstance@2@@Z",
+      "size": 181,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVTeam@RBX@@@8": "0x9457ec (RTTI .?AVTeam@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?write@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QAEAAV?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x49add0 (external (evidence name))",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (external (evidence name))",
+        "?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x420110 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?onChildAdded@Teams@RBX@@MAEXPAVInstance@2@@Z"
+      ]
+    },
+    {
+      "address": "005d6400",
+      "symbol": "?onChildRemoving@Teams@RBX@@MAEXPAVInstance@2@@Z",
+      "size": 267,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVTeam@RBX@@@8": "0x9457ec (RTTI .?AVTeam@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?write@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QAEAAV?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x49add0 (external (evidence name))",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?erase@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@@Z": "0x439480 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$?onChildRemoving@Teams@RBX@@MAEXPAVInstance@2@@Z"
+      ]
+    },
+    {
+      "address": "005d6510",
+      "symbol": "??0?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@IAE@XZ",
+      "size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??0?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@IAE@XZ": "0x5d5be0 (own row)",
+        "?classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5d6000 (own row)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83cf14 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x0)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83cf08 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x10)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83cf00 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6BDebugable@1@@": "0x83cef8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x20)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83cee8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x24)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83ced8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x44)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83cec8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x64)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83ceb8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0x84)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83cea8 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0xa4)",
+        "??_7?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83ce98 (vtable RTTI .?AV?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@ offset 0xc4)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "005d65b0",
+      "symbol": "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z": "0x5d65f0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d65c0",
+      "symbol": "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z": "0x5d65f0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d65d0",
+      "symbol": "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z": "0x5d65f0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d65e0",
+      "symbol": "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z": "0x5d65f0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d65f0",
+      "symbol": "??_G?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@MAE@XZ": "0x5d5b80 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d6610",
+      "symbol": "??0?$BoundFuncDesc@VTeams@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Teams@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z",
+      "size": 108,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5d6000 (own row)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VTeams@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@6B@": "0x83cf58 (vtable RTTI .?AV?$BoundFuncDesc@VTeams@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VTeams@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Teams@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005d6680",
+      "symbol": "?execute@?$BoundFuncDesc@VTeams@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 84,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVTeams@RBX@@@8": "0x9455e0 (RTTI .?AVTeams@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d66e0",
+      "symbol": "??0?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Teams@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+      "size": 108,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5d6000 (own row)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@6B@": "0x83cf64 (vtable RTTI .?AV?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cb50 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Teams@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005d6750",
+      "symbol": "??$call@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@ABEXPAVTeams@2@AAVValue@12@@Z",
+      "size": 152,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cb50 (external (evidence name))",
+        "??$?4V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@1@@Z": "0x49b6b0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$call@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@ABEXPAVTeams@2@AAVValue@12@@Z"
+      ]
+    },
+    {
+      "address": "005d67f0",
+      "symbol": "?execute@?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVTeams@RBX@@@8": "0x9455e0 (RTTI .?AVTeams@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@ABEXPAVTeams@2@AAVValue@12@@Z": "0x5d6750 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d6850",
+      "symbol": "??0Teams@RBX@@QAE@XZ",
+      "size": 262,
+      "exact": true,
+      "verified_targets": {
+        "??0?$DescribedCreatable@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@RBX@@IAE@XZ": "0x5d6510 (own row)",
+        "??_7Teams@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83ce54 (vtable RTTI .?AVTeams@RBX@@ offset 0x0)",
+        "??_7Teams@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x83ce48 (vtable RTTI .?AVTeams@RBX@@ offset 0x10)",
+        "??_7Teams@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x83ce40 (vtable RTTI .?AVTeams@RBX@@ offset 0x14)",
+        "??_7Teams@RBX@@6BDebugable@1@@": "0x83ce38 (vtable RTTI .?AVTeams@RBX@@ offset 0x20)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83ce28 (vtable RTTI .?AVTeams@RBX@@ offset 0x24)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83ce18 (vtable RTTI .?AVTeams@RBX@@ offset 0x44)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83ce08 (vtable RTTI .?AVTeams@RBX@@ offset 0x64)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83cdf8 (vtable RTTI .?AVTeams@RBX@@ offset 0x84)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83cde8 (vtable RTTI .?AVTeams@RBX@@ offset 0xa4)",
+        "??_7Teams@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83cdd8 (vtable RTTI .?AVTeams@RBX@@ offset 0xc4)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QAE@ABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z": "0x49ad50 (external (evidence name))",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0 (external (evidence name))",
+        "?sTeams@RBX@@3QBDB": "0x83cd08 (data)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0Teams@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "007f6270",
+      "symbol": "??__Eteams_rebalanceTeamsFunction@RBX@@YAXXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0P@KNPPKCOM@RebalanceTeams?$AA@": "0x83cf6c (literal 'RebalanceTeams')",
+        "?rebalanceTeams@Teams@RBX@@QAEXXZ": "0x47d410 (folded)",
+        "_teams_rebalanceTeamsFunction": "0x97a1c8 (data)",
+        "??0?$BoundFuncDesc@VTeams@RBX@@$$A6AXXZ$0A@@Reflection@RBX@@QAE@P8Teams@2@AEXXZPBDW4Security@FunctionDescriptor@12@@Z": "0x5d6610 (own row)",
+        "??__Fteams_rebalanceTeamsFunction@RBX@@YAXXZ": "0x7ff260 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f62a0",
+      "symbol": "??__Efunc_teams@RBX@@YAXXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_08CCGDIPIE@GetTeams?$AA@": "0x83cf7c (literal 'GetTeams')",
+        "?getTeams@Teams@RBX@@QAE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x5d5ed0 (own row)",
+        "_func_teams": "0x97a208 (data)",
+        "??0?$BoundFuncDesc@VTeams@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Teams@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z": "0x5d66e0 (own row)",
+        "??__Ffunc_teams@RBX@@YAXXZ": "0x7ff220 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ff210",
+      "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "?foo@?1??classDescriptor@?$Described@VTeams@RBX@@$1?sTeams@2@3QBDBV?$FactoryProduct@VTeams@RBX@@VInstance@2@$1?sTeams@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x97a0f8 (local static)",
+        "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007ff220",
+      "symbol": "??__Ffunc_teams@RBX@@YAXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "_func_teams": "0x97a208 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (external (evidence name))",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__Ffunc_teams@RBX@@YAXXZ"
+      ]
+    },
+    {
+      "address": "007ff260",
+      "symbol": "??__Fteams_rebalanceTeamsFunction@RBX@@YAXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "_teams_rebalanceTeamsFunction": "0x97a1c8 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (external (evidence name))",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__Fteams_rebalanceTeamsFunction@RBX@@YAXXZ"
+      ]
+    },
+    {
+      "address": "0048a1e0",
+      "symbol": "??$doDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x96fb5c (local static)",
+        "?sTeams@RBX@@3QBDB": "0x83cd08 (data)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?n@?1???$doDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96fb58 (local static)"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "0048ab40",
+      "symbol": "??$callDoDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doDeclare@$1?sTeams@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x48a1e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d5ea0",
+      "symbol": "?getTeamFromPlayer@Teams@RBX@@QAEPAVTeam@2@PAVPlayer@Network@2@@Z",
+      "size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?getTeamFromTeamColor@Teams@RBX@@QAEPAVTeam@2@VBrickColor@2@@Z": "0x5d5e10 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d6070",
+      "symbol": "?isTeamGame@Teams@RBX@@QAE_NXZ",
+      "size": 123,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d60f0",
+      "symbol": "?getNumPlayersInTeam@Teams@RBX@@QAEHVBrickColor@2@@Z",
+      "size": 133,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005d6250",
+      "symbol": "?assignNewPlayerToTeam@Teams@RBX@@QAEXPAVPlayer@Network@2@@Z",
+      "size": 234,
+      "exact": true,
+      "verified_targets": {
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVTeam@RBX@@@8": "0x9457ec (RTTI .?AVTeam@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?getAutoAssignable@Team@RBX@@QBE_NXZ": "0x565e50 (own row)",
+        "?getTeamColor@Team@RBX@@QBE?AVBrickColor@2@XZ": "0x565e40 (own row)",
+        "?getNumPlayersInTeam@Teams@RBX@@QAEHVBrickColor@2@@Z": "0x5d60f0 (own row)",
+        "?setTeamColor@Player@Network@RBX@@QAEXVBrickColor@3@@Z": "0x494600 (external (evidence name))",
+        "?setNeutral@Player@Network@RBX@@QAEX_N@Z": "0x494620 (external (evidence name))"
+      },
+      "local_eh": []
+    }
+  ],
+  "pending_methods": [
+    {
+      "address": "005d5f40",
+      "symbol": "??$findFirstChildOfType@VHumanoid@RBX@@@Instance@RBX@@QBEPAVHumanoid@1@XZ",
+      "size": 160,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVHumanoid@RBX@@@8": "0x9534e0 (RTTI .?AVHumanoid@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "005d6180",
+      "symbol": "?getTeamColorForHumanoid@Teams@RBX@@QAE?AVColor3@G3D@@PAVHumanoid@2@@Z",
+      "size": 199,
+      "exact": false,
+      "verified_targets": {
+        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)",
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??$findFirstChildOfType@VHumanoid@RBX@@@Instance@RBX@@QBEPAVHumanoid@1@XZ": "0x5d5f40 (own row)",
+        "?white@Color3@G3D@@SAABV12@XZ": "0x514a60 (external)",
+        "?color3@BrickColor@RBX@@QBE?AVColor3@G3D@@XZ": "0x5b6270 (external (evidence name))"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true
+    }
+  ],
+  "pending_note": "NATIVE_TEAMS_PENDING bodies are exact only with the generated headers in out/native-team-pending: Instance::findFirstChildOfType<Type>() added to a copy of native-headers/v8tree/Instance.h (proposal), and declaration-only Humanoid/ModelInstance overlays; Network::Player/Players use the native headers.",
+  "proposal_instance_h": "    template<class Type> Type* findFirstChildOfType() const // e.g. 005d5f40 (Humanoid)\n    {\n        if (children)\n        {\n            std::vector<boost::shared_ptr<Instance> >::const_iterator end = children->end();\n            std::vector<boost::shared_ptr<Instance> >::const_iterator iter = children->begin();\n            for (; iter != end; iter++)\n            {\n                if (Type* result = dynamic_cast<Type*>((*iter).get()))\n                    return result;\n            }\n        }\n        return NULL;\n    }\n",
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

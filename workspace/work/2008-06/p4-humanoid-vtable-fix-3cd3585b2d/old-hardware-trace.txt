@@ -1,0 +1,14 @@
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af6a8 return=031ecdf8
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af6a0 return=031ecee0
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af698 return=031ecfc0
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af690 return=031ed0a8
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af688 return=031ed188
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af680 return=031ed3d8
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af678 return=031ed680
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af670 return=031ed5b8
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af668 return=031ed840
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af660 return=031ed928
+HIT eip=0044306d ecx=03203b60 eax=00550210 esp=001af658 return=031edb70
+TRACE_EXCEPTION code=c0000005 address=001AF85B first=1
+TRACE_EXCEPTION code=c0000005 address=001AF85B first=0
+TRACE_EXIT code=3221225477 producer=0 upload=0 entity=0 destroy=0

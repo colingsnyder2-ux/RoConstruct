@@ -1,0 +1,12 @@
+{
+  "revision": "bbe43074c264e7fcad8d5fbfbc40212d17318b12",
+  "user_xml_sha256": "109953772b44aced11a561408a2ead932fd729874d34cf7cbdbd4f0580af42d8",
+  "serialized_sounds": 8,
+  "retained_sounds": 6,
+  "humanoid_control": 2,
+  "exit": 0,
+  "limitations": [
+    "User place and logs not redistributed.",
+    "Audible playback and all Sound properties remain unproven."
+  ]
+}

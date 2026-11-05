@@ -1,0 +1,146 @@
+{
+  "revision": "3895281473eb65bfab07ce44e4c5207366c427f7",
+  "sources": {
+    "rebuild\\2008-06\\native-classes\\RunService.cpp": "50f02b5d34e3eb58f42128a05ad55d5bd367bb311894c3141bcafa70bbba2c15",
+    "rebuild\\2008-06\\native-headers\\util\\RunStateOwner.h": "a7f28d3b844e55269b3bf457b25216c74ea8bfe019e1da5396f761154e7a974b",
+    "rebuild\\2008-06\\native-headers\\util\\Events.h": "63b847d0808007e8c1d6c87e7af6224954ac904379f518647bb3dc63969e5cb1",
+    "rebuild\\2008-06\\native-headers\\util\\GuidItem.h": "f76a772f00e2606e278066e8f4bd935a1b4fc69a2b56a07f4863ca6a8fd09b53",
+    "rebuild\\2008-06\\tests\\NativeRunServiceLayout.cpp": "58b14b1660e2b419501abd2aaec3924b95c60e859c196272398804397c34bd1c",
+    "rebuild\\2008-06\\tests\\record_native_run_service.py": "69d641fbd323fca59ea1f639d55324638497059d615fca33a48067e38edf5199"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeRunService.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RunService.cpp"
+  ],
+  "compile_exit": 0,
+  "size": 728,
+  "offsets": [
+    436,
+    440,
+    448,
+    456,
+    464,
+    472,
+    480,
+    488,
+    684,
+    692,
+    724
+  ],
+  "primary_vtable": {
+    "original_slot0": "0x47d410",
+    "original_body": "ret",
+    "candidate_slot0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
+    "compatible": true,
+    "source": "roc_instance_guid_callback_5e8a3f385d045a38.cpp"
+  },
+  "notifier_bases": {
+    "VHeartbeat": 304,
+    "VStepped": 336,
+    "VRunTransition": 368,
+    "W4RunState": 400
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "methods": [
+    {
+      "address": "00556b00",
+      "symbol": "??0RunService@RBX@@QAE@XZ",
+      "size": 531,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00554da0",
+      "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z",
+      "size": 106,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 83,
+          "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z",
+          "target": "0x554ae0"
+        },
+        {
+          "offset": 96,
+          "symbol": "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@@Z",
+          "target": "0x554a60"
+        }
+      ]
+    },
+    {
+      "address": "00554ae0",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z",
+      "size": 131,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 84,
+          "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z",
+          "target": "0x554750"
+        }
+      ]
+    },
+    {
+      "address": "00554750",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z",
+      "size": 185,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00554a60",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@@Z",
+      "size": 123,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 88,
+          "symbol": "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z",
+          "target": "0x554690"
+        }
+      ]
+    },
+    {
+      "address": "00554690",
+      "symbol": "?raise@?$Notifier@VRunService@RBX@@VRunTransition@2@@RBX@@IBEXVRunTransition@2@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@2@@Z",
+      "size": 189,
+      "relocation_normalized_exact": true,
+      "indexed_size": 66,
+      "scope": "Original PE body includes exception handler through 0055474c."
+    }
+  ],
+  "scope": "Inactive compiler proof; primary slot 0 matches; remaining virtual slots, runDisabled field, call/data relocations and runtime linking remain unverified."
+}

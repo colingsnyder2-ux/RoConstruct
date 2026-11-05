@@ -1,0 +1,253 @@
+{
+  "scope": "Source checks and scoped standalone tests only; no client ABI, P5/P6 or server claim.",
+  "group": "all",
+  "finished_utc": "2026-11-04T20:56:09.963932+00:00",
+  "seconds": 169.453,
+  "results": [
+    {
+      "check": "record_native_gamesettings_singleton_integrated.py",
+      "exit": 0,
+      "seconds": 12.437,
+      "script_sha256": "16988a5812cfb8aa7be5339d871809c4ba074e5fe04dafe42602a0fa80147257",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_gamesettings_storage_integrated.py",
+      "exit": 0,
+      "seconds": 15.516,
+      "script_sha256": "212314837dbae3c280edc672e6fa1311fdaf0fc37d0d5f7d7065028bafb05074",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_instance_descendant_integrated.py",
+      "exit": 0,
+      "seconds": 17.5,
+      "script_sha256": "3341d1447473b9c6a8e8434cffefebd59a23ea013ff2db71344cbadf094f6b24",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_instance_read_property_integrated.py",
+      "exit": 0,
+      "seconds": 15.047,
+      "script_sha256": "6ebedaeb3b3128b15edd54a4190921992a82a08ad31699424329cd35edfab6ab",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_name_cross_abi.py",
+      "exit": 0,
+      "seconds": 4.859,
+      "script_sha256": "5dd8031f55bb6e3d094f1983cea79a9a6b510d59cc008edb24687bc19b606e4b",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_name_whole.py",
+      "exit": 0,
+      "seconds": 10.219,
+      "script_sha256": "35792e9f5cd81b5345b7fb29e4e952af0e7e85fbd28cf46f5b6076965c686a06",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_peer_classname_integrated.py",
+      "exit": 0,
+      "seconds": 16.922,
+      "script_sha256": "854bd9d1479fd020d381aed3301cc53e9319aafd7a72e8eee56af5e0d41175b6",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_peer_constructor_integrated.py",
+      "exit": 0,
+      "seconds": 22.109,
+      "script_sha256": "1cd5764fa833a09d34bc13282f9c85fb98d8becda6470ee21c687c2bae9e553c",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_peer_lifetime_integrated.py",
+      "exit": 0,
+      "seconds": 23.422,
+      "script_sha256": "59f6c37449760130697ae3bc491761e6246196ad028436f6d040e7923479a27e",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_peer_update_integrated.py",
+      "exit": 0,
+      "seconds": 28.328,
+      "script_sha256": "9299781a5d75400d4d76e193c1d5f74d60bd3133331dd7a808eb23b4f9f55b7a",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_profiled_rakpeer_integrated.py",
+      "exit": 0,
+      "seconds": 16.735,
+      "script_sha256": "cfea2a7203f70593b515e49c5627fb3cb3f562be5d20bebf84e05bb667a483d5",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_rakpeer_bandwidth_integrated.py",
+      "exit": 0,
+      "seconds": 17.312,
+      "script_sha256": "2a39fa267b25de890a3c9f51931ab226e863767bf512a0e73fe17645271c43b9",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_rakpeer_bitstream_rpc_integrated.py",
+      "exit": 0,
+      "seconds": 17.547,
+      "script_sha256": "8498b2643645f8b3a1ada84ff5772000181bb5518f2bdf8baedd8bbc010209a4",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_rakpeer_compression_integrated.py",
+      "exit": 0,
+      "seconds": 15.782,
+      "script_sha256": "acb8fbb690302aeb8a91af3f08354112592fe62307161e6455d711baa688c586",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_rakpeer_layout_integrated.py",
+      "exit": 0,
+      "seconds": 12.265,
+      "script_sha256": "7c6e0e4284e4d563f632371a592e662fcc41cf0f1be64634b63459b059ed92bf",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_rakpeer_lifetime_integrated.py",
+      "exit": 0,
+      "seconds": 12.765,
+      "script_sha256": "c12effc10f7d712c690a1ed2e688e603748cf45ad0ccad25d8b8695dd992d7c3",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_rakpeer_loop_integrated.py",
+      "exit": 0,
+      "seconds": 9.907,
+      "script_sha256": "775bac1f87d1e78ee8860b51f50c90ec6abe1953220f6a1a542f7cfac840f720",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_rakpeer_raw_rpc_integrated.py",
+      "exit": 0,
+      "seconds": 17.39,
+      "script_sha256": "b0441536d0b155bd61a1e4d18e01052e6581c6525aa57059f93a9b482dbb37d3",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_rakpeer_update_integrated.py",
+      "exit": 0,
+      "seconds": 11.703,
+      "script_sha256": "3c21c4fef7ad67c67784c9b77cc8f4d6560c070bd06e65f9cce58426414fc2c2",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_reliability_lifetime_integrated.py",
+      "exit": 0,
+      "seconds": 14.844,
+      "script_sha256": "7b0315bff7bee7098dbd474b5695ee75a04f636939441f9da262fe503ac38a11",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_remote_system_integrated.py",
+      "exit": 0,
+      "seconds": 7.906,
+      "script_sha256": "7a8a2473224bb4237359a324eabbddbcf2c9f02d45f18e418216739976f33bca",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_service_lookup_integrated.py",
+      "exit": 0,
+      "seconds": 14.438,
+      "script_sha256": "844a3240d0e866ea2d125d3c4764d29a8f0b0a71baacada793c366d172ede1d5",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_classnames_integrated.py",
+      "exit": 0,
+      "seconds": 9.328,
+      "script_sha256": "132a18f93cbda3dc21d372b3f22aee3dbb003ae01fcb12520dcc1f11eaeb858a",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_constructors_integrated.py",
+      "exit": 0,
+      "seconds": 9.406,
+      "script_sha256": "c02436d1cf8308c234b25c151ff38b16218628124e820c695fdfa71d5991b7b5",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_name_providers_integrated.py",
+      "exit": 0,
+      "seconds": 14.016,
+      "script_sha256": "898cebbd1747a247328be13c6677edda635dfb4eb5c2d8873a017f1af9de4dae",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_service_provider_integrated.py",
+      "exit": 0,
+      "seconds": 15.594,
+      "script_sha256": "ef651778370a861c2f770401a737757b638642421e854bbfba5831d90e214e2b",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_string_converter_integrated.py",
+      "exit": 0,
+      "seconds": 10.797,
+      "script_sha256": "74fab663654d53bed7b1dae2db70e4246012646c54f8147fc095571f491ce35a",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_typed_properties_integrated.py",
+      "exit": 0,
+      "seconds": 9.516,
+      "script_sha256": "3a96d04850b2cf7fae62c0214a534711c68388d4818c5c4b4aec268494e481ea",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_value_convert_float_integrated.py",
+      "exit": 0,
+      "seconds": 4.312,
+      "script_sha256": "1fae8623c80b3770949b0c3f76c8064a54284a6602041db7ab3a89b179190bb7",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_value_convert_id_integrated.py",
+      "exit": 0,
+      "seconds": 6.312,
+      "script_sha256": "590ec2853e4bb9459d7fa1e736966c2ad7a41ba6d1645cebbe835a93ffe29050",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_value_generic_float_integrated.py",
+      "exit": 0,
+      "seconds": 3.813,
+      "script_sha256": "c996a1880c2d697d852f0a84ca6432d2b7295f7b368aa1668c61feb2ae2ba5f2",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_value_generic_id_integrated.py",
+      "exit": 0,
+      "seconds": 7.562,
+      "script_sha256": "2d4236aa6c09435bff6aa9688caf5832307465cc077e3d13e414b8672a3db09d",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_sound_value_get_integrated.py",
+      "exit": 0,
+      "seconds": 6.359,
+      "script_sha256": "7bedca477750aee73d538cd305e8a173942aa3734fd880864181528ccfd1114c",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_stats_classname_integrated.py",
+      "exit": 0,
+      "seconds": 24.797,
+      "script_sha256": "509d25225743a77b4252bb56c9ddace08d4a4d336c2340c7f59f992d7291a2d5",
+      "error_tail": ""
+    },
+    {
+      "check": "record_native_stocksound_ctor_integrated.py",
+      "exit": 0,
+      "seconds": 21.016,
+      "script_sha256": "e12fc0cfa0db6a419e77469ca1e6e7c3789ead6c6b27ca6959bc9e0cc08c5281",
+      "error_tail": ""
+    }
+  ]
+}

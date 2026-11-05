@@ -1,0 +1,29 @@
+{
+  "scope": "Original EngineStats call-chain evidence only. Workspace and World lifetime/layout remain unproven; never substitute offset overlays into running client.",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "6b91a5c36f93e08210080e23b70c9bbaea026730431c7c8fbce85555151feaec",
+  "action": "0x57dc40",
+  "vtable_slot": "0x830680",
+  "datamodel_workspace": "0x204",
+  "workspace_world": "0x2e4",
+  "world_contact_manager": "0x84",
+  "contact_manager_call": "0x60cbf0",
+  "tail_target": "0x47d410",
+  "tail_bytes": "c3",
+  "root_lifetime": {
+    "constructor": "0x591580",
+    "world_ctor_call": "0x591799",
+    "world_store": "0x5917a6",
+    "destructor": "0x590630",
+    "world_virtual_delete": "0x590737"
+  },
+  "world_lifetime": {
+    "constructor": "0x5ea920",
+    "contact_ctor_call": "0x5ea9b8",
+    "contact_store": "0x5ea9c8",
+    "deleting_destructor": "0x5ead10",
+    "destructor": "0x5ea5e0",
+    "contact_destruction": "0x5ea642"
+  },
+  "source_reference": "tools/rbxgs/Client/App/roc_string_source_00451b60_93913931e0517219.cpp"
+}

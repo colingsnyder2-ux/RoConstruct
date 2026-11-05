@@ -1,0 +1,32 @@
+{
+  "scope": "Isolated incompatible ABI diagnostic; do not run. No live swap or gate claims.",
+  "axis_profile": false,
+  "provisional_test_return_alias": false,
+  "baseline_receipt_sha256": "945524e572bee19b1f47b3328a5d6d6f5f21fc60b41447a9ab121f7550abd987",
+  "baseline_errors": 4,
+  "link_exit": 1120,
+  "errors": [
+    "NativeInstanceBaseCallbacks.obj : error LNK2005: \"public: virtual void __thiscall RBX::Instance::setName(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)\" (?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) already defined in InstanceWithoutSignals.obj",
+    "NativeInstanceBaseCallbacks.obj : error LNK2005: \"public: virtual void __thiscall RBX::Instance::onServiceProvider(class RBX::ServiceProvider const *,class RBX::ServiceProvider const *)\" (?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z) already defined in InstanceWithoutSignals.obj",
+    "CWorkspaceSaveProfile.obj : error LNK2019: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z) referenced in function \"public: virtual long __stdcall CWorkspace::SaveToFile(wchar_t *)\" (?SaveToFile@CWorkspace@@UAGJPA_W@Z)",
+    "NativeWorkspaceWriteTrial.obj : error LNK2001: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z)"
+  ],
+  "objects": {
+    "rebuild\\2008-06\\out\\native-layouts\\NativeResizeToolFactoryTrial.obj": "3da320cb54d13563328b5c716c7a9ad1cf3221ed13a3e3235cf50a8c8c722d57",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeResizeToolTrial.obj": "376700e7ac5d02b6adcd3a137066efcfd331e16ffb6e7c67b3be177adb167294",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeResizeToolMethodsTrial.obj": "dde7862ac8efab2854c65dd8e9093b43b57ff939e361f5619170a8946a58eaf4",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeResizeToolNameTrial.obj": "32159d8a8b9efca65784b672948e514e20ccd534d19c29a1b56b04e0fd484bc6",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeResizeToolRenderTrial.obj": "4bdd3f0cabedb49a3dea029edc9c44fd5c87dd9d41a3c4025dce9a06ef01571d",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeResizeToolFindTrial.obj": "5c07c91fb9e8fbc99f083272d6f0662c45edeef838886edb4add174cfdec4ca4",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeResizeToolMoveTrial.obj": "2ab21c1de58c272833643e3949a1f2ed7b3c9d7d34dfc6c2812b17540b5dab9d",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeResizeToolDragTrial.obj": "cca9d0ff31ae4711531e724b8d3b876147bba2f8f149409eed8fd8dc9f6ee319",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeClosestRayTrial.obj": "52d5d2b4baec13c945bc5bcf275919477f4e880bb1b0cb059b85d673e97ba27f",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeHandleHitTestTrial.obj": "62583474fbcbc968bcdf5e62e7cb7396dac3f46a2429b4d81a93dd0328b1225d",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeHandleRadiusTrial.obj": "3e7b3ffe991ae62186b4c21b964ec9ad9231337f34ba5bc427e041a52dc9a884",
+    "rebuild\\2008-06\\out\\native-layouts\\NativePartResizeLink.obj": "7debc529b80ae8c9178c8f3128c4b76f814bd82773b1f2781f3550c0e8cf2f93"
+  },
+  "lifetime_receipt_sha256": "df2ceb79824a17a95111c4b3e75a7b4bbee92bc4c9c7af827a978fbb3e313ddf",
+  "methods_receipt_sha256": "65974bee62745081ce1a6a9b1cf9f5ba316a38320003a331bf16c786ff8967f9",
+  "part_receipt_sha256": "b41f7f672faad676f0498464f35241200c85bfc5188c4ca18362944fa564f473",
+  "observer_sha256": "8c6d66a86afa1b9c14ebd7e6effb1175e754fe086583b892d5fb065ecb25cc50"
+}

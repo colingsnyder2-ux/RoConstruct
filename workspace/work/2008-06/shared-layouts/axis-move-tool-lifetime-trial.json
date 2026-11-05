@@ -1,0 +1,640 @@
+{
+  "scope": "Inactive lifetime and vtable structure only. Full methods, shared ABI and runtime unproven.",
+  "size": "0x74",
+  "move_grid_header_sha256": "1935b76a0b2c1505088e7c5129dea6f1f206a7905ed9e5a8df8398517e4c862d",
+  "move_grid_symbols": [
+    "??_B?1??nativeMoveGrid@RBX@@YAABVVector3@G3D@@XZ@51",
+    "?grid@?1??nativeMoveGrid@RBX@@YAABVVector3@G3D@@XZ@4V34@A",
+    "?nativeMoveGrid@RBX@@YAABVVector3@G3D@@XZ"
+  ],
+  "donor_drag_utilities_sha256": "936afdeb03e6295f4e375ec8f7e8ad8564e86cd2017a8c613597b0cc7f8f2cf4",
+  "shared_grid_symbols": [
+    "??_B?1??axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ@51",
+    "?axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ",
+    "?v@?1??axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ@4V34@A"
+  ],
+  "source_sha256": "e78a531c7734d6729257623467ba18b237ded713fb79d5427c8705d149199643",
+  "header_sha256": "683426776e90bf23f3e6a00b06b4f493bd08ec0856db245807ad9ed3db9c31f2",
+  "object_sha256": "eac3b4bbc3f8561cb5f9d12eb195ce230ed0b24b9033d52fa60aef7c50fd9a3b",
+  "methods_source_sha256": "0cb5befc71b02e9c685c9ed4e812abc1ca22f6892b15dd5ac681121bbd6198f3",
+  "methods_object_sha256": "a2d1440c981b15b7dea4d57a624501e9f336f4f4b87d36dcfb4368379caeb40e",
+  "down_source_sha256": "96730498c6dcb88ed66eef37c7f0069f472dfca4f3f0931dba6c582531ac6ab2",
+  "down_object_sha256": "55a7f95ab4264324b48e860d221c1b7e51a4bc9972939f86777bb744522c3778",
+  "hit_source_sha256": "041ab86f202a78c7a2f1b22c777c19fc3ecebc190982c833fcaf8ab05a3a3aef",
+  "hit_object_sha256": "4be32b86348ae76b3fb88824cb9ec5b4aef1af67e4e69cb356f5483a1952f9a0",
+  "extra_objects": [
+    {
+      "stem": "NativeMovePartTrial",
+      "source_sha256": "380067385c2a6a29b369456e840fcdf8888fd38d2437fce3cb5a49da22b4b20b",
+      "object_sha256": "7b61909bb654a0a2b008cf76289f0f33d3b672a845335cd50ce65ef11e7e210e",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "stem": "NativeApplyMoveTrial",
+      "source_sha256": "eb80268a1babe907ae2067a273b22e2f91a30a5debc3ed958d13bee12216b272",
+      "object_sha256": "387f631e5197e5850d8d855fed50fd0562cb3238b9739d772d64f14d0eaff537",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "stem": "NativeTransformMoveTrial",
+      "source_sha256": "ccedc82f6cbaf61ecb18aad4e3990304aaa8f2130457ae4c8f7a747146cffaa0",
+      "object_sha256": "7d26854e36151a9af2c42400f53fc479026e1627af1cef9446ed2867941edf95",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "stem": "NativeSubdivideMoveTrial",
+      "source_sha256": "0f615fcd1e56ce486a14b83a756e1433972be200edcb5aff7b63be730e0ddebe",
+      "object_sha256": "c938358394b3f5f21324c5d10b64bc27876695d9731370a5835200e0c9ace378",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "stem": "NativeDraggerMoveTrial",
+      "source_sha256": "ee771128edab86b6a6fba1215a63c01a2b5ce6c92613f4facbe5cfd2e4802261",
+      "object_sha256": "08062e3f76666dbb56fb4b1b7f515f79f5c55e48bf1ce2c6a194ded3da9c6f57",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "stem": "NativeDraggerExtentsTrial",
+      "source_sha256": "bb7c1479abf2ebcc021d3a5089f0de4247c5f50c0577abcfd6025de7c7b2057b",
+      "object_sha256": "293b2f9ada76a58e8135a488dfa9a0f178b7fa82a763624d6cfb55b826877bad",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "stem": "NativeCollectPrimitivesTrial",
+      "source_sha256": "572c4e4c0b8578240fd20d7139010729a765e713807cede8e8a58944d91b54c7",
+      "object_sha256": "9a0f71f166b0b68f9289f8aea6e104b6fc54a6df242eee1cd188b3c8feb99d10",
+      "extra_flags": []
+    },
+    {
+      "stem": "NativeMegaSafeMoveTrial",
+      "source_sha256": "a8b3477d6c36dba7c7b23804c1fc06eb1dfa005e3bff1896c679332f2d394ec6",
+      "object_sha256": "fbb0eb2ba29431d41f00638b1a3637ab79b2c11ba98092422c106096cd7e7810",
+      "extra_flags": []
+    },
+    {
+      "stem": "NativeMegaAliveTrial",
+      "source_sha256": "1250feb71c99eb7dd4ef7877b36c7db3bc4c8135e5a7c0cf018f760572ed33b1",
+      "object_sha256": "eaa3b5cc108ad2637bcd3cf2a8d384e3203ecee24eea7fdf285d989217e7698a",
+      "extra_flags": []
+    },
+    {
+      "stem": "NativeAxisBoundsTrial",
+      "source_sha256": "571754e19cd7a66f26e781bc5fc192c2a17ec795683dbe69fcb71505f4dbf1cb",
+      "object_sha256": "c414cf44253308afd8b20973897ff36bbc95133d7833adb92f5e2b0b5cc4a1b3",
+      "extra_flags": []
+    },
+    {
+      "stem": "NativeAxisMoveTrial",
+      "source_sha256": "a0efb2443f220a4fdcb889662215122a55a25c8db9c8ac90747d14c83a82527a",
+      "object_sha256": "08625e1c9edb4cb907fa6b6c701484e54296587040485cee8b9beded0d5c33b8",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    },
+    {
+      "stem": "NativeAxisRenderTrial",
+      "source_sha256": "a33b30414fb9f17d4482d3fd3facfda62fedafcf9a322250da93c3d8136cf66d",
+      "object_sha256": "ad9bd15498037c2145884eb5e8c1d7970107c2e674f4cc52e60f9a8bb790d10a",
+      "extra_flags": [
+        "/fp:fast"
+      ]
+    }
+  ],
+  "observer_sha256": "d55968e2c43d626376b0e31cd2047b63ac686b28439aba6b824fcf17f5c7e69d",
+  "methods": [
+    {
+      "symbol": "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "address": "0x640560",
+      "size": 139,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x7daa23",
+        "??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z": "0x6159f0",
+        "??_7AxisMoveTool@RBX@@6BINamed@1@@": "0x84a5ac",
+        "??_7AxisMoveTool@RBX@@6BIRenderable@1@@": "0x84a594",
+        "??_C@_0M@NEEHHCEG@ArrowCursor?$AA@": "0x833850",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??0Ray@G3D@@QAE@XZ": "0x510a30"
+      }
+    },
+    {
+      "symbol": "??1AxisMoveTool@RBX@@UAE@XZ",
+      "address": "0x640620",
+      "size": 114,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??1AxisMoveTool@RBX@@UAE@XZ": "0x7daa23",
+        "??_7Ray@G3D@@6B@": "0x8282c4",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468",
+        "??1MegaDragger@RBX@@QAE@XZ": "0x60e700",
+        "??3@YAXPAX@Z": "0x6a067a",
+        "??1MouseCommand@RBX@@UAE@XZ": "0x615780"
+      }
+    },
+    {
+      "symbol": "??_GAxisMoveTool@RBX@@UAEPAXI@Z",
+      "address": "0x640760",
+      "size": 30,
+      "exact": true,
+      "bindings": {
+        "??1AxisMoveTool@RBX@@UAE@XZ": "0x640620",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "symbol": "?getCursorName@AxisMoveTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "address": "0x6405f0",
+      "size": 33,
+      "exact": true,
+      "bindings": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c"
+      }
+    },
+    {
+      "symbol": "?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "address": "0x5c6510",
+      "size": 102,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x640560"
+      }
+    },
+    {
+      "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+      "address": "0x640780",
+      "size": 23,
+      "exact": true,
+      "bindings": {
+        "?flag@?1??get@?$NativeToolName@VAxisMoveTool@RBX@@@RBX@@SAABVName@3@XZ@4JA": "0x9796a0",
+        "?callDoDeclare@?$NativeToolName@VAxisMoveTool@RBX@@@RBX@@SAXXZ": "0x5c6230",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "?doDeclare@?$NativeToolName@VAxisMoveTool@RBX@@@RBX@@SAABVName@2@XZ": "0x5c5fa0"
+      }
+    },
+    {
+      "symbol": "?isSticky@AxisMoveTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "address": "0x640700",
+      "size": 96,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?isSticky@AxisMoveTool@RBX@@UBEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x640560"
+      }
+    },
+    {
+      "symbol": "?onMouseUp@AxisMoveTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "address": "0x6406a0",
+      "size": 81,
+      "exact": true,
+      "bindings": {
+        "?finishDragging@MegaDragger@RBX@@QAEXXZ": "0x60e780",
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0"
+      }
+    },
+    {
+      "symbol": "?onMouseIdle@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z",
+      "address": "0x641160",
+      "size": 214,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?onMouseIdle@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z": "0x7ce709",
+        "?onMouseIdle@ArrowToolBase@RBX@@MAEXABVUIEvent@2@@Z": "0x616180",
+        "??_C@_0L@BLHFJFLM@DragCursor?$AA@": "0x843a60",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c",
+        "?hitHandle@AxisMoveTool@RBX@@AAE_NABVUIEvent@2@AAVVector3@G3D@@AAW4NormalId@2@@Z": "0x640d50",
+        "??_C@_0N@BEAOAEKB@ResizeCursor?$AA@": "0x84a3e8",
+        "?getCursorName@ArrowToolBase@RBX@@MBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x6161a0",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468"
+      }
+    },
+    {
+      "symbol": "?hitHandle@AxisMoveTool@RBX@@AAE_NABVUIEvent@2@AAVVector3@G3D@@AAW4NormalId@2@@Z",
+      "address": "0x640d50",
+      "size": 194,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?hitHandle@AxisMoveTool@RBX@@AAE_NABVUIEvent@2@AAVVector3@G3D@@AAW4NormalId@2@@Z": "0x7dae28",
+        "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960",
+        "?bounds@AxisMoveTool@RBX@@AAE_NAAVExtents@2@@Z": "0x640b40",
+        "?getUnitMouseRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z": "0x615d00",
+        "?hitMoveHandles@RBX@@YA_NABVExtents@1@ABVRay@G3D@@AAVVector3@4@AAW4NormalId@1@@Z": "0x665880"
+      }
+    },
+    {
+      "symbol": "?onMouseDown@AxisMoveTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "address": "0x640e20",
+      "size": 264,
+      "exact": true,
+      "bindings": {
+        "?hitHandle@AxisMoveTool@RBX@@AAE_NABVUIEvent@2@AAVVector3@G3D@@AAW4NormalId@2@@Z": "0x640d50",
+        "??_B?1??axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ@51": "0x97d5c4",
+        "?v@?1??axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ@4V34@A": "0x97d5b8",
+        "__real@3ecccccd": "0x832a18",
+        "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10",
+        "?normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@1@@Z": "0x5ec570",
+        "?fromOriginAndDirection@Ray@G3D@@SA?AV12@ABVVector3@2@0@Z": "0x518830",
+        "?onMouseDown@ArrowToolBase@RBX@@MAEPAVMouseCommand@2@ABVUIEvent@2@@Z": "0x617780"
+      }
+    },
+    {
+      "symbol": "?hitMoveHandles@RBX@@YA_NABVExtents@1@ABVRay@G3D@@AAVVector3@4@AAW4NormalId@1@@Z",
+      "address": "0x665880",
+      "size": 281,
+      "exact": true,
+      "bindings": {
+        "__real@3f000000": "0x819bac",
+        "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20",
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220",
+        "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050",
+        "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044",
+        "?hitTestHandleLocal@HandleHitTest@RBX@@SA_NABVExtents@2@ABVCoordinateFrame@G3D@@ABVRay@5@AAVVector3@5@AAW4NormalId@2@@Z": "0x6656b0"
+      }
+    },
+    {
+      "symbol": "?movePart@RBX@@YAXPAVPartInstance@1@ABVVector3@G3D@@@Z",
+      "address": "0x60e840",
+      "size": 166,
+      "exact": true,
+      "bindings": {
+        "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x598cb0",
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220",
+        "?aligned@PartInstance@RBX@@QBE_NXZ": "0x5994c0",
+        "__real@3dcccccd": "0x81e704",
+        "?snapToGrid@Math@RBX@@SA?AVCoordinateFrame@G3D@@ABV34@M@Z": "0x5deed0",
+        "?setCoordinateFrame@PartInstance@RBX@@QAEXABVCoordinateFrame@G3D@@@Z": "0x59d8a0"
+      }
+    },
+    {
+      "symbol": "?applyMove@RBX@@YAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@3@@Z",
+      "address": "0x60fef0",
+      "size": 132,
+      "exact": true,
+      "bindings": {
+        "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050",
+        "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044",
+        "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z": "0x599f80",
+        "?movePart@RBX@@YAXPAVPartInstance@1@ABVVector3@G3D@@@Z": "0x60e840"
+      }
+    },
+    {
+      "symbol": "?transformMove@RBX@@YAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@3@AAV43@@Z",
+      "address": "0x610180",
+      "size": 236,
+      "exact": true,
+      "bindings": {
+        "??_B?1??nativeMoveGrid@RBX@@YAABVVector3@G3D@@XZ@51": "0x976354",
+        "?grid@?1??nativeMoveGrid@RBX@@YAABVVector3@G3D@@XZ@4V34@A": "0x976348",
+        "__real@3dcccccd": "0x81e704",
+        "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10",
+        "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050",
+        "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044",
+        "?applyMove@RBX@@YAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@3@@Z": "0x60fef0"
+      }
+    },
+    {
+      "symbol": "?subdivideMove@RBX@@YAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@3@1AAV43@AAVContactManager@1@@Z",
+      "address": "0x610580",
+      "size": 317,
+      "exact": true,
+      "bindings": {
+        "?transformMove@RBX@@YAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@3@AAV43@@Z": "0x610180",
+        "?testMove@RBX@@YA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@1@@Z": "0x610130",
+        "__real@3f028f5c": "0x843768",
+        "??_B?1??nativeMoveGrid@RBX@@YAABVVector3@G3D@@XZ@51": "0x976354",
+        "?grid@?1??nativeMoveGrid@RBX@@YAABVVector3@G3D@@XZ@4V34@A": "0x976348",
+        "__real@3dcccccd": "0x81e704",
+        "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10",
+        "?subdivideMove@RBX@@YAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@3@1AAV43@AAVContactManager@1@@Z": "0x610580"
+      }
+    },
+    {
+      "symbol": "?safeMoveAlongLine@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z",
+      "address": "0x6106c0",
+      "size": 356,
+      "exact": true,
+      "bindings": {
+        "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050",
+        "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044",
+        "?subdivideMove@RBX@@YAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@3@1AAV43@AAVContactManager@1@@Z": "0x610580"
+      }
+    },
+    {
+      "symbol": "?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+      "address": "0x60ff80",
+      "size": 230,
+      "exact": true,
+      "bindings": {
+        "?negativeInfiniteExtents@Extents@RBX@@SAABV12@XZ": "0x583920",
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "__real@3f000000": "0x819bac",
+        "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ": "0x5e82c0",
+        "?toWorldSpace@Extents@RBX@@QAE?AV12@ABVCoordinateFrame@G3D@@@Z": "0x60fc20",
+        "?unionWith@Extents@RBX@@QAEXABV12@@Z": "0x57dee0"
+      }
+    },
+    {
+      "symbol": "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+      "address": "0x60f340",
+      "size": 139,
+      "exact": true,
+      "bindings": {
+        "??_R0?AVPartInstance@RBX@@@8": "0x92dd50",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c",
+        "___RTDynamicCast": "0x6a17c6",
+        "?push_back@?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@QAEXABQAVPrimitive@RBX@@@Z": "0x4213a0",
+        "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20",
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z": "0x60f340"
+      }
+    },
+    {
+      "symbol": "?getPrimitives@DragUtilities@RBX@@SAXPBVInstance@2@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+      "address": "0x60f3d0",
+      "size": 5,
+      "exact": true,
+      "bindings": {
+        "?collectPrimitives@RBX@@YAXPBVInstance@1@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z": "0x60f340"
+      }
+    },
+    {
+      "symbol": "?safeMoveAlongLine@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z",
+      "address": "0x60e200",
+      "size": 270,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?safeMoveAlongLine@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z": "0x7d2588",
+        "?partsToPrimitives@DragUtilities@RBX@@SAPAVWorld@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@AAV?$Array@PAVPrimitive@RBX@@@G3D@@@Z": "0x60eb30",
+        "?safeMoveAlongLine@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z": "0x6106c0",
+        "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20",
+        "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050",
+        "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044"
+      }
+    },
+    {
+      "symbol": "?anyDragPartAlive@MegaDragger@RBX@@QAE_NXZ",
+      "address": "0x60dd70",
+      "size": 13,
+      "exact": true,
+      "bindings": {
+        "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60ead0"
+      }
+    },
+    {
+      "symbol": "?bounds@AxisMoveTool@RBX@@AAE_NAAVExtents@2@@Z",
+      "address": "0x640b40",
+      "size": 513,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?bounds@AxisMoveTool@RBX@@AAE_NAAVExtents@2@@Z": "0x7daa78",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "?createService@?$ServiceClient@VSelection@RBX@@@RBX@@ABEPAVSelection@2@_N@Z": "0x581cc0",
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "?collectPart@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z": "0x6404c0",
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@UAxisBoundsCallback@RBX@@@std@@YA?AUAxisBoundsCallback@RBX@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0U12@@Z": "0x6407a0",
+        "?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z": "0x60ff80",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "symbol": "?collectPart@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z",
+      "address": "0x6404c0",
+      "size": 122,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?collectPart@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@PAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z": "0x7c6168",
+        "?getPrimitives@DragUtilities@RBX@@SAXPBVInstance@2@AAV?$vector@PAVPrimitive@RBX@@V?$allocator@PAVPrimitive@RBX@@@std@@@std@@@Z": "0x60f3d0"
+      }
+    },
+    {
+      "symbol": "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@UAxisBoundsCallback@RBX@@@std@@YA?AUAxisBoundsCallback@RBX@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0U12@@Z",
+      "address": "0x6407a0",
+      "size": 92,
+      "exact": true,
+      "bindings": {}
+    },
+    {
+      "symbol": "?onMouseMove@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z",
+      "address": "0x640800",
+      "size": 821,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?onMouseMove@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z": "0x7daa4b",
+        "__real@40800000": "0x826e6c",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "?createService@?$ServiceClient@V?$FilteredSelection@VPVInstance@RBX@@@RBX@@@RBX@@ABEPAV?$FilteredSelection@VPVInstance@RBX@@@2@_N@Z": "0x581d80",
+        "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z": "0x60e540",
+        "??1MegaDragger@RBX@@QAE@XZ": "0x60e700",
+        "??3@YAXPAX@Z": "0x6a067a",
+        "?startDragging@MegaDragger@RBX@@QAEXXZ": "0x60de00",
+        "?alignAndCleanParts@MegaDragger@RBX@@QAEXXZ": "0x60df80",
+        "?anyDragPartAlive@MegaDragger@RBX@@QAE_NXZ": "0x60dd70",
+        "?getUnitMouseRay@MouseCommand@RBX@@QBE?AVRay@G3D@@ABVUIEvent@2@@Z": "0x615d00",
+        "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z": "0x5df270",
+        "??_B?1??axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ@51": "0x97d5c4",
+        "?v@?1??axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ@4V34@A": "0x97d5b8",
+        "__real@3ecccccd": "0x832a18",
+        "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10",
+        "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050",
+        "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044",
+        "?continueDragging@MegaDragger@RBX@@QAEXXZ": "0x60dd60",
+        "?safeMoveAlongLine@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z": "0x60e200",
+        "?zero@Vector3@G3D@@SAABV12@XZ": "0x4782a0",
+        "??9Vector3@G3D@@QBE_NABV01@@Z": "0x598990",
+        "?axisMoveGrid@RBX@@YAABVVector3@G3D@@XZ": "0x640470"
+      }
+    },
+    {
+      "symbol": "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "address": "0x640f30",
+      "size": 265,
+      "exact": true,
+      "bindings": {
+        "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960",
+        "?bounds@AxisMoveTool@RBX@@AAE_NAAVExtents@2@@Z": "0x640b40",
+        "__real@3f000000": "0x819bac",
+        "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20",
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220",
+        "?orange@Color3@G3D@@SAABV12@XZ": "0x5149b0",
+        "?handles2d@DrawAdorn@RBX@@SAXABVVector3@G3D@@ABVCoordinateFrame@4@ABVGCamera@4@PAVAdorn@2@ABVColor3@4@@Z": "0x677b20"
+      }
+    },
+    {
+      "symbol": "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "address": "0x641040",
+      "size": 283,
+      "exact": true,
+      "bindings": {
+        "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960",
+        "?bounds@AxisMoveTool@RBX@@AAE_NAAVExtents@2@@Z": "0x640b40",
+        "__real@3f000000": "0x819bac",
+        "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20",
+        "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220",
+        "?getCoordinateFrame@GCamera@G3D@@QBE?AVCoordinateFrame@2@XZ": "0x5107b0",
+        "?handles3d@DrawAdorn@RBX@@SAXABVVector3@G3D@@ABVCoordinateFrame@4@PAVAdorn@2@W4HandleType@2@0@Z": "0x6776a0"
+      }
+    },
+    {
+      "symbol": "?anyPartAlive@DragUtilities@RBX@@SA_NABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "address": "0x60ead0",
+      "size": 93,
+      "exact": true,
+      "source": "donor",
+      "bindings": {
+        "__imp___invalid_parameter_noinfo": "0x802890",
+        "?lock@?$weak_ptr@VPartInstance@RBX@@@boost@@QBE?AV?$shared_ptr@VPartInstance@RBX@@@2@XZ": "0x5cab00",
+        "?nonNullInWorkspace@PartInstance@RBX@@SA_NV?$shared_ptr@VPartInstance@RBX@@@boost@@@Z": "0x5995f0"
+      }
+    }
+  ],
+  "vtables": [
+    {
+      "base": "IRenderable",
+      "address": "0x84a594",
+      "slots": [
+        {
+          "symbol": "?shouldRender2d@IRenderable@RBX@@MBE_NXZ",
+          "original_address": "0x60a2f0"
+        },
+        {
+          "symbol": "?shouldRender3dAdorn@IRenderable@RBX@@MBE_NXZ",
+          "original_address": "0x60a2f0"
+        },
+        {
+          "symbol": "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+          "original_address": "0x640f30"
+        },
+        {
+          "symbol": "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+          "original_address": "0x641040"
+        },
+        {
+          "symbol": "?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z",
+          "original_address": "0x458e90"
+        }
+      ]
+    },
+    {
+      "base": "INamed",
+      "address": "0x84a5ac",
+      "slots": [
+        {
+          "symbol": "?getName@?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UBEABVName@2@XZ",
+          "original_address": "0x640780"
+        },
+        {
+          "symbol": "?onMouseDown@AxisMoveTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+          "original_address": "0x640e20"
+        },
+        {
+          "symbol": "?onMouseIdle@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z",
+          "original_address": "0x641160"
+        },
+        {
+          "symbol": "?onMouseHover@ArrowToolBase@RBX@@MAEXABVUIEvent@2@@Z",
+          "original_address": "0x6404b0"
+        },
+        {
+          "symbol": "?onKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+          "original_address": "0x5c72e0"
+        },
+        {
+          "symbol": "?onPeekKeyDown@MouseCommand@RBX@@MAEPAV12@ABVUIEvent@2@@Z",
+          "original_address": "0x5f2310"
+        },
+        {
+          "symbol": "?onMouseMove@AxisMoveTool@RBX@@EAEXABVUIEvent@2@@Z",
+          "original_address": "0x640800"
+        },
+        {
+          "symbol": "?onMouseDelta@MouseCommand@RBX@@MAEXABVUIEvent@2@@Z",
+          "original_address": "0x70bdf0"
+        },
+        {
+          "symbol": "?onMouseUp@AxisMoveTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+          "original_address": "0x6406a0"
+        },
+        {
+          "symbol": "?capture@MouseCommand@RBX@@MAEXXZ",
+          "original_address": "0x615820"
+        },
+        {
+          "symbol": "?releaseCapture@MouseCommand@RBX@@MAEXXZ",
+          "original_address": "0x5a0150"
+        },
+        {
+          "symbol": "?cancel@MouseCommand@RBX@@MAEXXZ",
+          "original_address": "0x5a04a0"
+        },
+        {
+          "symbol": "??_EAxisMoveTool@RBX@@UAEPAXI@Z",
+          "original_address": "0x640760"
+        },
+        {
+          "symbol": "?isSticky@AxisMoveTool@RBX@@UBEPAVMouseCommand@2@XZ",
+          "original_address": "0x640700"
+        },
+        {
+          "symbol": "?getCursorId@MouseCommand@RBX@@UBE?AVTextureId@2@XZ",
+          "original_address": "0x615a50"
+        },
+        {
+          "symbol": "?getCursorName@AxisMoveTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "original_address": "0x6405f0"
+        }
+      ]
+    }
+  ],
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\workspace-model-vector-include",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ]
+}

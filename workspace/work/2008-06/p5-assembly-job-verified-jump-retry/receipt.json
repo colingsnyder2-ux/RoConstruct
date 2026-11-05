@@ -1,0 +1,175 @@
+{
+  "mode": "jump",
+  "measured_coordinate": "torso y",
+  "revision": "e61d0b6cbbe533cc66d8fda5084d6b08544c7740",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "79cc2463a7986e61c353eab5da1d69a2db0d91a67b640788f3c756232a56d38b",
+  "fixture_sha256": "6044fd17780256425a4386e040b30bb5d8e92b41b2ff85f5a29ca32c9c986f23",
+  "observer_sha256": "ead45cde7eed225209f809f6a86c34dfd7a0c75041ab1db8fc1d01c1a11de4f4",
+  "records": [
+    {
+      "sample": 0,
+      "original_time": 0.100006103515625,
+      "rebuilt_time": 0.10000600000000759,
+      "aligned": true,
+      "original_y": 4.01685094833374,
+      "rebuilt_y": 4.02115345,
+      "delta_y": -0.004302501666259673,
+      "copies": 2
+    },
+    {
+      "sample": 1,
+      "original_time": 0.1999969482421875,
+      "rebuilt_time": 0.1999969999999962,
+      "aligned": true,
+      "original_y": 3.451347589492798,
+      "rebuilt_y": 3.4533093,
+      "delta_y": -0.0019617105072020635,
+      "copies": 2
+    },
+    {
+      "sample": 2,
+      "original_time": 0.5,
+      "rebuilt_time": 0.5,
+      "aligned": true,
+      "original_y": 3.040398120880127,
+      "rebuilt_y": 3.04057741,
+      "delta_y": -0.00017928911987308283,
+      "copies": 2
+    },
+    {
+      "sample": 3,
+      "original_time": 1.0,
+      "rebuilt_time": 1.0,
+      "aligned": true,
+      "original_y": 2.9047279357910156,
+      "rebuilt_y": 3.00072694,
+      "delta_y": -0.09599900420898422,
+      "copies": 2
+    },
+    {
+      "sample": 4,
+      "original_time": 1.100006103515625,
+      "rebuilt_time": 1.1000060000000076,
+      "aligned": true,
+      "original_y": 6.1315693855285645,
+      "rebuilt_y": 6.22099543,
+      "delta_y": -0.08942604447143587,
+      "copies": 2
+    },
+    {
+      "sample": 5,
+      "original_time": 1.1999969482421875,
+      "rebuilt_time": 1.1999969999999962,
+      "aligned": true,
+      "original_y": 9.336843490600586,
+      "rebuilt_y": 9.41666603,
+      "delta_y": -0.07982253939941408,
+      "copies": 2
+    },
+    {
+      "sample": 6,
+      "original_time": 1.3000030517578125,
+      "rebuilt_time": 1.3000030000000038,
+      "aligned": true,
+      "original_y": 10.580134391784668,
+      "rebuilt_y": 10.6503506,
+      "delta_y": -0.07021620821533148,
+      "copies": 2
+    },
+    {
+      "sample": 7,
+      "original_time": 1.399993896484375,
+      "rebuilt_time": 1.3999939999999924,
+      "aligned": true,
+      "original_y": 9.861430168151855,
+      "rebuilt_y": 9.92203999,
+      "delta_y": -0.06060982184814456,
+      "copies": 2
+    },
+    {
+      "sample": 8,
+      "original_time": 1.5,
+      "rebuilt_time": 1.5,
+      "aligned": true,
+      "original_y": 7.18073844909668,
+      "rebuilt_y": 7.23174095,
+      "delta_y": -0.05100250090332015,
+      "copies": 2
+    },
+    {
+      "sample": 9,
+      "original_time": 1.600006103515625,
+      "rebuilt_time": 1.6000060000000076,
+      "aligned": true,
+      "original_y": 2.538062334060669,
+      "rebuilt_y": 2.57945848,
+      "delta_y": -0.04139614593933105,
+      "copies": 2
+    },
+    {
+      "sample": 10,
+      "original_time": 1.8000030517578125,
+      "rebuilt_time": 1.8000030000000038,
+      "aligned": true,
+      "original_y": 2.867445945739746,
+      "rebuilt_y": 2.87611437,
+      "delta_y": -0.008668424260253715,
+      "copies": 2
+    },
+    {
+      "sample": 11,
+      "original_time": 2.0,
+      "rebuilt_time": 2.0,
+      "aligned": true,
+      "original_y": 2.97196364402771,
+      "rebuilt_y": 2.97372794,
+      "delta_y": -0.0017642959722898865,
+      "copies": 2
+    },
+    {
+      "sample": 12,
+      "original_time": 3.0,
+      "rebuilt_time": 3.0,
+      "aligned": true,
+      "original_y": 2.895648241043091,
+      "rebuilt_y": 2.9991262,
+      "delta_y": -0.10347795895690926,
+      "copies": 2
+    }
+  ],
+  "original_forced_termination": true,
+  "scope": "Frozen Stepped callback samples with encoded simulation time. Different joint construction; comparisons are observational.",
+  "P5_complete": false,
+  "original_final_active_states": [
+    {
+      "address": "0x3313920",
+      "owner": "0xd3f1da0",
+      "vtable": "0x84ce10",
+      "state": "RunningNoPhysics",
+      "job_registration": {
+        "address": "0x33139c0",
+        "vtable": "0x84cdf8",
+        "iterator_owner": "0x338df78",
+        "iterator_node": "0xdd13c68",
+        "node_words": [
+          "0x33884e0",
+          "0x33884e0",
+          "0x33139c0"
+        ],
+        "assembly_binding": {
+          "torso": "0xd3efb50",
+          "primitive": "0xd3efd78",
+          "clump": "0xd3f1fd8",
+          "assembly": "0xd3f1fd8",
+          "owner_job": "0x33139c0",
+          "anchor_flags": [
+            0,
+            0,
+            1
+          ]
+        }
+      }
+    }
+  ]
+}

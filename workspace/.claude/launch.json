@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {"name": "site", "runtimeExecutable": "python", "runtimeArgs": ["-m", "http.server", "8781", "-d", "docs"], "port": 8781, "autoPort": false}
+  ]
+}

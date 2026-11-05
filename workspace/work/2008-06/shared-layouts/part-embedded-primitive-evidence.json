@@ -1,0 +1,31 @@
+{
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "c3853482fbfea5ea990f3a9dfd4722fc4cf156440fdc7e22760a4032c4a00e03",
+  "part_vtable": "0x832d4c",
+  "primitive_vtable": "0x83f83c",
+  "primitive_offset": "0x228",
+  "methods": [
+    {
+      "address": "0059d4d0",
+      "size": 785,
+      "sha256": "ee513ccb736efdc6b79230089e421b301dcdf739b5af8e4e26140ed8f6234391",
+      "embedded_primitive_instruction": "0x59d685",
+      "primitive_lifetime_call": "0x5e8770"
+    },
+    {
+      "address": "0059b970",
+      "size": 414,
+      "sha256": "c630fb98d765bc9217dbb9cfc0179190f05a56216bcc2e648887083fbec8afa2",
+      "embedded_primitive_instruction": "0x59ba9c",
+      "primitive_lifetime_call": "0x5e7df0"
+    },
+    {
+      "address": "00599530",
+      "size": 191,
+      "sha256": "f926fac9ede105642f800cf48bd94c2281be95d598d75ad6529a888d3fc0e749",
+      "primitive_offset": "0x228",
+      "first_edge_call": "0x5e7b90"
+    }
+  ],
+  "scope": "Original binary lifetime/RTTI proof only. Full PartInstance and Primitive declarations, sizes and function call bindings remain to be recovered."
+}

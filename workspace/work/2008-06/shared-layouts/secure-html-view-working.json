@@ -1,0 +1,148 @@
+{
+  "class": "CSecureHtmlView",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_secure_html_view.py": "d804b8c4e33e7192a952807a7e74b7462289de6eb0993f7dd2c8cee43208fa7b",
+    "rebuild/2008-06/tests/native_bind.py": "b9c4c0b31dc7eb87775b68c92b21cff5c5e98c9a4742e25abd820d3362149b8d",
+    "rebuild/2008-06/native-classes/CSecureHtmlView.cpp": "d99ee39f2bf7ed9a78c8142a735ddec096e031bbb03c9c676608f2f40c817f3a",
+    "rebuild/2008-06/tests/NativeSecureHtmlViewLayout.cpp": "b10dc59170c1c1f8056439141db54fa8fe65ac9d11d3bc8c9829c7d2ea12ef09",
+    "rebuild/2008-06/native-headers/CSecureHtmlView.h": "187172906eb1c2aa9079c61d92b7e5b9ed7254c68b6350c8fec6d4ee63a96275"
+  },
+  "object_sha256": "86121f814ff0f3e3ed51d61d582df7209aea3ff4c142460b7223bca1eaf706c9",
+  "layout": {
+    "size": "0xf8",
+    "flag_f4": "0xf4 bool",
+    "evidence": "CRuntimeClass 0081b840; constructor 00465a60 store; OnAmbientProperty test; destructors; compile-time test"
+  },
+  "methods": [
+    {
+      "address": "00465a50",
+      "symbol": "?GetRuntimeClass@CSecureHtmlView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCSecureHtmlView@CSecureHtmlView@@2UCRuntimeClass@@B": "0x81b840"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465a50",
+      "symbol": "?GetThisClass@CSecureHtmlView@@SGPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCSecureHtmlView@CSecureHtmlView@@2UCRuntimeClass@@B": "0x81b840"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465a60",
+      "symbol": "??0CSecureHtmlView@@QAE@XZ",
+      "size": 25,
+      "exact": true,
+      "verified_targets": {
+        "??0CHtmlView@@IAE@XZ": "mfc90.dll!??0CHtmlView@@IAE@XZ",
+        "??_7CSecureHtmlView@@6B@": "0x81b864"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465a80",
+      "symbol": "??1CSecureHtmlView@@UAE@XZ",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_7CSecureHtmlView@@6B@": "0x81b864",
+        "??1CHtmlView@@UAE@XZ": "mfc90.dll!??1CHtmlView@@UAE@XZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465b20",
+      "symbol": "??_GCSecureHtmlView@@UAEPAXI@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_7CSecureHtmlView@@6B@": "0x81b864",
+        "??1CHtmlView@@UAE@XZ": "mfc90.dll!??1CHtmlView@@UAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465ae0",
+      "symbol": "?PreCreateWindow@CSecureHtmlView@@UAEHAAUtagCREATESTRUCTA@@@Z",
+      "size": 54,
+      "exact": true,
+      "verified_targets": {
+        "__imp__LoadCursorA@8": "user32.dll!LoadCursorA",
+        "?AfxRegisterWndClass@@YGPBDIPAUHICON__@@PAUHBRUSH__@@0@Z": "mfc90.dll!?AfxRegisterWndClass@@YGPBDIPAUHICON__@@PAUHBRUSH__@@0@Z",
+        "?PreCreateWindow@CHtmlView@@UAEHAAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?PreCreateWindow@CHtmlView@@UAEHAAUtagCREATESTRUCTA@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465a90",
+      "symbol": "?OnAmbientProperty@CSecureHtmlView@@UAEHPAVCOleControlSite@@JPAUtagVARIANT@@@Z",
+      "size": 67,
+      "exact": true,
+      "verified_targets": {
+        "?OnAmbientProperty@CWnd@@UAEHPAVCOleControlSite@@JPAUtagVARIANT@@@Z": "mfc90.dll!?OnAmbientProperty@CWnd@@UAEHPAVCOleControlSite@@JPAUtagVARIANT@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00465d70",
+      "symbol": "?OnBeforeNavigate2@CSecureHtmlView@@UAEXPBDK0AAVCByteArray@@0PAH@Z",
+      "size": 97,
+      "exact": true,
+      "verified_targets": {
+        "?OnBeforeNavigate2@CHtmlView@@UAEXPBDK0AAVCByteArray@@0PAH@Z": "mfc90.dll!?OnBeforeNavigate2@CHtmlView@@UAEXPBDK0AAVCByteArray@@0PAH@Z",
+        "?checkDialogUrl@@YAJPBD@Z": "0x41dcb0",
+        "?isApplicationUrl@@YA_NPBD@Z": "0x465b50"
+      },
+      "local_eh": []
+    }
+  ],
+  "open": [
+    "isApplicationUrl 00465b50 (480-byte URL check helper, declared only)"
+  ],
+  "scope": "Inactive. 7 exact bodies (8 symbols) with verified targets. No active build, swap or credit."
+}

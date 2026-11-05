@@ -1,0 +1,54 @@
+{
+  "revision": "51065029a906160bef2498913ab684830d4a959d",
+  "exe_sha256": "d17416f98dc3f3cdbae15b40b03ce2a82ca1a9a258361da295de9c9092ffe079",
+  "fixture_sha256": "3e7da19ecfd12ab672903b006adaf976973cc6903352702f1667614fbbeb9d07",
+  "observer_sha256": "d9860ab32975f8aa594053968d6b0a9cd9b363b620ca3c88f28fef2889a49eb5",
+  "assets_sha256": {
+    "character.rbxm": "91e5e1164863f7ae10ea9be855c38c6c58b7792141b30829464e6a1d2d19548d",
+    "humanoidSound.rbxm": "eceddc097d8ca6f809443a3ea136eb2c6d9ef07af5634dbc3c51cc289bf1d0d4",
+    "humanoidHealth.rbxm": "975a25df0e6e8a1884122e8ae06f7ea3b788ef8527f08aa37d2257d74de7e54b",
+    "humanoidAnimate.rbxm": "bd150973c2b37828e8668bb6b8d7cddb8293b6c217b4385a40a979ec038592ff"
+  },
+  "P5_complete": false,
+  "remaining": [
+    "Original sound and animation scripts",
+    "Normal launch, camera, physics and scheduler parity"
+  ],
+  "runs": {
+    "hash": {
+      "exit": 0
+    },
+    "run-init": {
+      "exit": 0
+    },
+    "freefall": {
+      "exit": 0
+    },
+    "lua-object": {
+      "exit": 0
+    },
+    "lookup": {
+      "exit": 0
+    },
+    "idle": {
+      "exit": 0,
+      "torso": [
+        5.29387353e-20,
+        2.99912643,
+        25.5
+      ],
+      "head_mesh_status": 0,
+      "snapshot_sha256": "16ad74c82d0fc9a46aa3c8e2e8cd6243d8dd114946d8592d04cea364a5eeec5f"
+    },
+    "input": {
+      "exit": 0,
+      "torso": [
+        -7.27213578e-09,
+        2.99912643,
+        9.49839211
+      ],
+      "head_mesh_status": 0,
+      "snapshot_sha256": "f10003f2a59ad11de508d18ed2d5f961d05c08b05192fbe7781b82a252fb4fcb"
+    }
+  }
+}

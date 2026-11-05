@@ -1,0 +1,145 @@
+{
+  "scope": "Inactive Selection cache and lookup methods; original data identity, linked cache sharing and runtime remain unverified.",
+  "inputs": {
+    "rebuild\\2008-06\\tests\\record_native_service_selection.py": "bee88f4e118c21419c99797ef4e04fcec6b669229c400c930df43cf20e9a7dd9",
+    "rebuild\\2008-06\\native-classes\\ServiceSelection.cpp": "bf36c347c7635d78de09e47ca3c0d2433a76424176e86ab9f615aea4d0197e46",
+    "rebuild\\2008-06\\native-classes\\ServiceLookup.cpp": "f5a3caa5ed15ce35554c0249a93a2f7534afa3c54941e1d7654cfa7085afdf7c",
+    "rebuild\\2008-06\\native-headers\\util\\Name.h": "05aa0aed5b377d06e899e0140c21335255244d05893d24e9e2e66fb77844e67a",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "4db626ae4073702eb02e5ee2385f1e94ff42192ec1164d0121bcea72167f104b",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\Selection.h": "837e080460a07c5f81177bcb3e7d420eb5cf74d403ad47fcf22e0734993969ea"
+  },
+  "profile_object_sha256": "fbea2a6805b2495143986b074d097c934f51ba2f406da87ef3c2e653cfe25a7d",
+  "lookup_object_sha256": "8b45e1512d7d9adc5f99aa1735636f25aa35b27cbaa998a77a85c82a2f9279ba",
+  "preprocess_flags": [
+    "/nologo",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/P",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ServiceSelection.cpp"
+  ],
+  "profile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\ServiceSelectionProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\ServiceSelectionProfile.cpp"
+  ],
+  "lookup_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeServiceLookup.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\ServiceLookup.cpp"
+  ],
+  "methods": [
+    {
+      "address": "00415200",
+      "symbol": "??$find@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ",
+      "size": 320,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@VSelection@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x413810",
+        "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x4124c0",
+        "??$doDeclare@$1?sSelection@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x4068c0",
+        "?findServiceByClassName@ServiceProvider@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": "0x572a90",
+        "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
+      }
+    },
+    {
+      "address": "00413810",
+      "symbol": "??$doGetClassIndex@VSelection@RBX@@@ServiceProvider@RBX@@SAIXZ",
+      "size": 91,
+      "direct_calls": {
+        "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690"
+      }
+    },
+    {
+      "address": "00600660",
+      "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+      "size": 53,
+      "direct_calls": {}
+    },
+    {
+      "address": "00572690",
+      "symbol": "?newIndex@ServiceProvider@RBX@@SAIXZ",
+      "size": 12,
+      "direct_calls": {}
+    },
+    {
+      "address": "00572a90",
+      "symbol": "?findServiceByClassName@ServiceProvider@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+      "size": 167,
+      "direct_calls": {
+        "?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@$0A@@std@@@std@@QBE?AVconst_iterator@12@ABQBVName@RBX@@@Z": "0x591bd0"
+      }
+    }
+  ]
+}

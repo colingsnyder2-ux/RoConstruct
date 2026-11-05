@@ -1,0 +1,9 @@
+p6-stage: 0044d852 ROBLOX InitInstance
+p6-stage: 0044d8ed InitCommonControls
+p6-stage: 0044d951 version 0.3.809.0
+p6-stage: 0044d998 CrashReport 1 (reporter not started)
+p6-stage: AfxOleInit OLE ready
+p6-stage: 0044db44 AfxEnableControlContainer
+p6-stage: 0044db4e engine startup 0
+p6-stage: 00449910 CIDEDocManager
+p6-stage: 00449bf0 frame ready

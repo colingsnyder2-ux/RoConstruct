@@ -1,0 +1,203 @@
+{
+  "client": "2008-06",
+  "target_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "atlas_source": {
+    "expand": "007ae4e0",
+    "shade": "007add10",
+    "columns": 32,
+    "method": "palette-column shading of actual input strip, then Ogre::Texture::loadImage",
+    "active_proxy_wiring": "Not integrated yet; helper retargets existing bodies without claiming class ABI."
+  },
+  "assets": {
+    "work/client2007/content/textures/SurfacesStrip.png": {
+      "sha256": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4",
+      "dimensions": [
+        64,
+        256
+      ],
+      "channels": 3
+    },
+    "work/source-cache/rbxgssetup/extract-RBXGSSetup_0.3.784.0/CommonAppDataFolder/ROBLOX/Content/textures/SurfacesStrip.png": {
+      "sha256": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4",
+      "dimensions": [
+        64,
+        256
+      ],
+      "channels": 3
+    }
+  },
+  "targets": {
+    "004f1a60": {
+      "sha256": "7db284c396bfad4c4579c3f3dc546bda47ad8d642f632025f82f6b8afd2034d8",
+      "size": 506
+    },
+    "007ad960": {
+      "sha256": "9f9e0698b3686e30246c6dcc06760cfd8896d1280540ae52ca8e12b3563903dc",
+      "size": 68
+    },
+    "007ad230": {
+      "sha256": "40e0e15074ba786a3199f6a16dc45670fcd7c9ef7cbacf818b6a79a8db43bdb9",
+      "size": 218
+    },
+    "007ad310": {
+      "sha256": "dfb40c32f1d92cc4d487d9f2395d261c2d4e39215313a49c811f477a4f15196e",
+      "size": 319
+    },
+    "007ae4e0": {
+      "sha256": "04e3a5322e8cd40da265071f0070a11ee7d79261c0d9f79290aa347453246813",
+      "size": 1368
+    },
+    "007add10": {
+      "sha256": "b0e44f47a419788c00ec118fc5cf5c4f288e7ffc6c248914109faa5d5ed1da70",
+      "size": 247
+    },
+    "00551bf0": {
+      "sha256": "d47d60f33ecb30c90e2fb7ab6d4dc43341a3600e71832e324888d4802dff2798",
+      "size": 117
+    },
+    "00551c70": {
+      "sha256": "cb1333ce06bf82e75f84edc7f3fbf5392fa754dbba89c6f5d980d5918528c068",
+      "size": 22
+    },
+    "00551c90": {
+      "sha256": "508706726ffa9b796da1322b01dc240b26f5e7aaa2afdc12981d0263f95a616f",
+      "size": 17
+    },
+    "00551cb0": {
+      "sha256": "bdcf865054cbb64ed6d89fd5fd609171ca30193e30bff28a35c0709621de6492",
+      "size": 22
+    },
+    "00551cd0": {
+      "sha256": "fbad69bb3594264af7e144f7224e4562b2ad609a9a1b18e252139f024fd4291e",
+      "size": 17
+    },
+    "007adb70": {
+      "sha256": "62b3fca2c6f15e2b1f88fcd42ca09e4041cb1bb0e0892df4b596d2bda9b2916e",
+      "size": 101
+    },
+    "007ad790": {
+      "sha256": "1862fc6d88fd680a68f811a94f937780226ce3845ab4943ef38501a2b3633599",
+      "size": 260
+    },
+    "007aded0": {
+      "sha256": "f6c0e5e427b0566b5d47d1dd2b2952369a3eacdd9f3aba3cda69f8486ff120c7",
+      "size": 216
+    }
+  },
+  "material_layout": {
+    "object_size": "0x18",
+    "levels": "0x0c",
+    "Level_size": "0x38",
+    "Level_fields": {
+      "empty": "0x04",
+      "matte_ref": "0x08",
+      "base_texture_ref": "0x0c",
+      "color": "0x10",
+      "specular": "0x1c",
+      "shiny": "0x20",
+      "reflectance": "0x24",
+      "transparency": "0x28",
+      "Ogre_MaterialPtr": "0x2c"
+    },
+    "constructor": "007ad230",
+    "destructor": "007ad310",
+    "notes": [
+      "Constructor leaves matte ref null; donor alphaOnlyVersion call is absent.",
+      "Destructor unregisters owned Ogre material before releasing references.",
+      "Do not adopt provisional header virtual order: native Level slot2 resolves texture with context; slot3 returns proxy reference."
+    ]
+  },
+  "texture_base": {
+    "size": "0x30",
+    "filename": "0x0c",
+    "int_value28": "0x28",
+    "float_value2c": "0x2c",
+    "constructor": "00551bf0",
+    "initial_values": [
+      1,
+      1.0
+    ],
+    "vtable": "0082d168",
+    "slots": [
+      "destructor",
+      "set int28",
+      "get int28",
+      "set float2c",
+      "get float2c",
+      "pure getSize (Vector2)",
+      "pure resolve(context)",
+      "pure shade(Color3,ref)"
+    ],
+    "notes": [
+      "Native getSize is slot5, not donor slot1.",
+      "RenderNew TextureProxy adds legacy ref30/loaded34/context38/tiled3c/root40/shade44/color48/Ogre TexturePtr54.",
+      "Mega allocation64 and strip-width60 proven by00551a30/007ae4b0; full concrete hierarchy still pending."
+    ]
+  },
+  "rejected_experiments": [
+    {
+      "result": "Atlas test breakpoint0x80000003 before loading image",
+      "cause": "Old G3D linked library selects verified_sinks.obj for png_create_read_struct and PNG helpers. Native debug runner + linker map identify address0040e494.",
+      "resolution": "New p2-image-core from genuine G3D/IJG/bundled libpng1.2.7 source with no inherited verified layer. PNG round-trip passes; atlas final map contains no verified_sinks."
+    },
+    {
+      "result": "GPU RGB readback mismatch,139vs140 atbyte20239,format26",
+      "cause": "CPU reference generated before D3D9 device creation, upload atlas generated after; device changes FPU precision0009001f->000a001f. Rebuilding CPU in device mode changes bytes.",
+      "resolution": "Compare GPU against CPU under same native device FPU state. Full byte comparison passes; no tolerance or forced FPU preservation introduced."
+    }
+  ],
+  "limits": [
+    "Actual asset found in August2007 client and May2008 RCCService installer, hashes agree. Exact June2008 distribution identity remains unproven.",
+    "Standalone atlas prerequisite; player executable preserved unchanged, P2 material/texture wiring remains open.",
+    "Bundled libpng1.2.7 is used coherently with G3D image headers; no new target-native/server credit claimed."
+  ],
+  "asset_provenance": {
+    "august2007_exe_sha256": "f97e83df31a12860f73324d8d279cfb2bba4a2fdf579e487904ed32bbb548c46",
+    "may2008_rcc_exe_sha256": "08b819f3eea633ce18b3dc7b43ea4648adec3780b3274282dc7960b4d95aaa31",
+    "rcc_PE_timestamp_UTC": "2008-05-14T19:37:55+00:00",
+    "installer_sha256": "6c7ecf38a37fc299d7304e18c7f30869957753a21e2359471515379cd74a0c23"
+  },
+  "Material_vtable": [
+    "007ad450",
+    "007ad760",
+    "007ad8a0",
+    "007ad790",
+    "007acda0",
+    "007acdb0",
+    "007acdd0",
+    "007acd70"
+  ],
+  "MaterialLevel_vtable": [
+    "007acef0",
+    "007ad640",
+    "007ad0a0",
+    "007b7810",
+    "007ad0e0",
+    "007ad160",
+    "007b76a0",
+    "007b76b0",
+    "007b76c0",
+    "00503cb0",
+    "007b76d0"
+  ],
+  "TextureProxyBase_vtable": [
+    "00551d50",
+    "00551c70",
+    "00551c90",
+    "00551cb0",
+    "00551cd0",
+    "006a16be",
+    "006a16be",
+    "006a16be"
+  ],
+  "TextureProxy_vtable": [
+    "00551f00",
+    "00551c70",
+    "00551c90",
+    "00551cb0",
+    "00551cd0",
+    "007adb70",
+    "007aec70",
+    "007aded0"
+  ]
+}

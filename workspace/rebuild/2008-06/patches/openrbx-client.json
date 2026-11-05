@@ -1,0 +1,16 @@
+{
+ "App/v8tree/Instance.cpp": [
+  [
+   "Instance* Instance::findFirstChildByName(const std::string& findName) const\n{\n\tSTUB(0x100483f0);\n\treturn NULL;\n}",
+   "Instance* Instance::findFirstChildByName(const std::string& findName) const\n{\n\t// rebuild overlay: first direct child with this name\n\tif (children) {\n\t\tfor (size_t i = 0; i < children->size(); ++i) {\n\t\t\tif ((*children)[i]->getName() == findName) {\n\t\t\t\treturn (*children)[i].get();\n\t\t\t}\n\t\t}\n\t}\n\treturn NULL;\n}"
+  ],
+  [
+   "void Instance::setName(const std::string& value)\n{\n\tSTUB(0x1004e040);\n}",
+   "void Instance::setName(const std::string& value)\n{\n\t// rebuild overlay: OpenRBX declares no Name property descriptor, so only the field changes\n\tname = value;\n}"
+  ],
+  [
+   "void Instance::predelete()\n{\n\tSTUB(0x1004e0f0);\n}",
+   "void Instance::predelete()\n{\n\t// rebuild overlay: release the children so none keeps a dangling parent\n\tif (children) {\n\t\tstd::vector<shared_ptr<Instance> > copy(*children);\n\t\tfor (size_t i = 0; i < copy.size(); ++i) {\n\t\t\tcopy[i]->setParent(NULL);\n\t\t}\n\t}\n}"
+  ]
+ ]
+}

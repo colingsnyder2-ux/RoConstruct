@@ -1,0 +1,114 @@
+{
+  "guid": [
+    {
+      "slot": 0,
+      "va": "0047d410",
+      "function": "0047d410",
+      "unit_hint": "boost::iostreams::Uoutput::V?$chain::?$chain_client"
+    },
+    {
+      "slot": 1,
+      "va": "0055af90",
+      "function": "0055af90",
+      "unit_hint": "RBX::VInstance::?$NonFactoryProduct"
+    },
+    {
+      "slot": 2,
+      "va": "0068e880",
+      "function": "0068e880",
+      "unit_hint": "RBX::VInstance::?$NonFactoryProduct"
+    },
+    {
+      "slot": 3,
+      "va": "0068e880",
+      "function": "0068e880",
+      "unit_hint": "RBX::VInstance::?$NonFactoryProduct"
+    },
+    {
+      "slot": 4,
+      "va": "0055acc0",
+      "function": "0055acc0",
+      "unit_hint": "RBX::VInstance::?$NonFactoryProduct"
+    }
+  ],
+  "factory": [
+    {
+      "slot": 0,
+      "va": "005bb230",
+      "function": "005bb230",
+      "unit_hint": "RBX::Soundscape::SoundService"
+    },
+    {
+      "slot": 1,
+      "va": "005b8450",
+      "function": "005b8450",
+      "unit_hint": "RBX::Soundscape::VSoundService::?$FactoryProduct"
+    },
+    {
+      "slot": 2,
+      "va": "0089e8e4",
+      "function": null,
+      "unit_hint": null
+    }
+  ],
+  "reflection": [
+    {
+      "slot": 0,
+      "va": "005bb240",
+      "function": "005bb240",
+      "unit_hint": "RBX::Soundscape::SoundService"
+    },
+    {
+      "slot": 1,
+      "va": "0089ea80",
+      "function": null,
+      "unit_hint": null
+    },
+    {
+      "slot": 2,
+      "va": "005bb230",
+      "function": "005bb230",
+      "unit_hint": "RBX::Soundscape::SoundService"
+    }
+  ],
+  "debug": [
+    {
+      "slot": 0,
+      "va": "0056a560",
+      "function": "0056a560",
+      "unit_hint": "RBX::VInstance::?$NonFactoryProduct"
+    },
+    {
+      "slot": 1,
+      "va": "0089ea94",
+      "function": null,
+      "unit_hint": null
+    },
+    {
+      "slot": 2,
+      "va": "005bb240",
+      "function": "005bb240",
+      "unit_hint": "RBX::Soundscape::SoundService"
+    }
+  ],
+  "listener": [
+    {
+      "slot": 0,
+      "va": "005bc2c0",
+      "function": "005bc2c0",
+      "unit_hint": "RBX::Soundscape::SoundService"
+    },
+    {
+      "slot": 1,
+      "va": "005bb250",
+      "function": "005bb250",
+      "unit_hint": "RBX::Soundscape::SoundService"
+    },
+    {
+      "slot": 2,
+      "va": "0089eb20",
+      "function": null,
+      "unit_hint": null
+    }
+  ]
+}

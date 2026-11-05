@@ -1,0 +1,55 @@
+layer engine: 0 compile errors
+layer block: 0 compile errors
+layer block: 0 compile errors
+layer upstream: 0 compile errors
+layer ijg: 0 compile errors
+layer png: 0 compile errors
+layer upstream: 0 compile errors
+zlib-winapi: linked=True test_exit=0; 108 object functions, 26 byte-identical to unique 2008 functions (25 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+layer upstream: 0 compile errors
+zlib: linked=True test_exit=0; 108 object functions, 29 byte-identical to unique 2008 functions (28 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+P2ImageCore: linked=True test_exit=1; 6244 object functions, 816 byte-identical to unique 2008 functions (768 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+layer upstream: 0 compile errors
+layer tonemap: 0 compile errors
+P2TextureInterop: linked=True test_exit=0; 5822 object functions, 430 byte-identical to unique 2008 functions (356 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+layer rbxgs: 0 compile errors
+layer net: 0 compile errors
+layer appdraw: 0 compile errors
+layer renderlib: 0 compile errors
+layer view: 0 compile errors
+layer lua: 0 compile errors
+layer glue: 0 compile errors
+layer upstream: 0 compile errors
+layer ijg: 0 compile errors
+G3D: linked=True test_exit=0; 5907 object functions, 642 byte-identical to unique 2008 functions (597 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+layer upstream: 1 compile errors (GApp.cpp)
+layer tonemap: 0 compile errors
+G3D-GL: linked=True test_exit=0; 5822 object functions, 430 byte-identical to unique 2008 functions (356 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+libpng/layer-upstream: 15/15 files compiled, lib ok; 108 2008 functions owned 1:1, 948 via generic shapes
+layer upstream: 0 compile errors
+libpng: linked=True test_exit=0; 332 object functions, 108 byte-identical to unique 2008 functions (105 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+layer upstream: 0 compile errors
+Boost: linked=True test_exit=0; 10308 object functions, 352 byte-identical to unique 2008 functions (309 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+RakNet/layer-openrbx: 21/21 files compiled, lib ok; 438 2008 functions owned 1:1, 2719 via generic shapes
+layer openrbx: 0 compile errors
+layer upstream: 1 compile errors (RakPeer.cpp)
+round 1: NetworkIDManager.obj needs ?GET_BASE_OBJECT_FROM_ID@NetworkIDManager@@QAEPAXUNetworkID@ -> use NetworkIDManager.obj from layer 1
+RakNet: linked=True test_exit=0; 2890 object functions, 391 byte-identical to unique 2008 functions (331 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+RbxgsApp: linked=True test_exit=0; 92793 object functions, 3296 byte-identical to unique 2008 functions (3036 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+P2NativeMaterial: linked=True test_exit=1; 874 object functions, 131 byte-identical to unique 2008 functions (100 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+layer block: 0 compile errors
+P2Lighting: linked=True test_exit=0; 81 object functions, 29 byte-identical to unique 2008 functions (21 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json
+P2RecoveredPlayer: linked=True test_exit=0; 2231 object functions, 208 byte-identical to unique 2008 functions (167 of >=16 bytes)
+rebuild progress written: C:\Users\colin\roc-p0\docs\rebuild-progress.json

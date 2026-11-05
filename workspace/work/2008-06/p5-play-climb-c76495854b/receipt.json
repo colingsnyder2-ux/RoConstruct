@@ -1,0 +1,54 @@
+{
+  "revision": "c76495854bedacc1f84f755600afe3b677284bdc",
+  "exe_sha256": "6c01dd6ba3aeb9baef7b9e9838bfc8a702bc422f2d54ad8ee02ea79bc3b67556",
+  "observer_sha256": "3d1f7a3bf2b74f231278738057c701ccfcdb1bdf0b2c1320b869782c7f3d110d",
+  "P5_complete": false,
+  "scope": "Reconstructed climb state using recovered sensor, velocity and force formulas.",
+  "remaining": [
+    "Original-client comparison",
+    "Native transition and solver parity",
+    "Full animation, sound and camera"
+  ],
+  "cases": {
+    "climb": {
+      "events": 9,
+      "max_speed": 15.8392,
+      "detected": 0,
+      "torso_y": 3.65112877,
+      "torso_z": -0.684934676,
+      "fixture_sha256": "74d4cf0f7b55a9991416b0f4e3668b830ab917d3618110e598bac4513a7a5cff",
+      "snapshot_sha256": "e291060af84135bf37e902d5337c6f52c9f65490392ab69bbc844dd0c99d339b",
+      "lua_signal": true
+    },
+    "exit": {
+      "events": 9,
+      "max_speed": 15.8392,
+      "detected": 0,
+      "torso_y": 2.87793207,
+      "torso_z": -3.5252645,
+      "fixture_sha256": "74d4cf0f7b55a9991416b0f4e3668b830ab917d3618110e598bac4513a7a5cff",
+      "snapshot_sha256": "3bd682438bd0b65110ef9ab6c7f818a8c1806fcac980d5b533c423201603404d",
+      "lua_signal": true
+    },
+    "control": {
+      "events": 0,
+      "max_speed": 0.0,
+      "detected": 0,
+      "torso_y": 2.81464314,
+      "torso_z": -0.334429801,
+      "fixture_sha256": "93110e433b627c3da4da3dd0dc3aa6fdd6d1ca8a7339fcca1837084006ace260",
+      "snapshot_sha256": "9765174a46ebfddaf951d33351437d986a24be2a271e895ec533c12bead9193b",
+      "lua_signal": false
+    },
+    "idle": {
+      "events": 15,
+      "max_speed": 0.0,
+      "detected": 1,
+      "torso_y": 2.86790419,
+      "torso_z": 2.23365675e-19,
+      "fixture_sha256": "74d4cf0f7b55a9991416b0f4e3668b830ab917d3618110e598bac4513a7a5cff",
+      "snapshot_sha256": "f3247d8e10e01c576059742604b320619ad361461b7055a4d828f188ab20a4aa",
+      "lua_signal": false
+    }
+  }
+}

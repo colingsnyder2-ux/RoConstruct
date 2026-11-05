@@ -1,0 +1,1286 @@
+"""Draft sources for the worker: Rev.ng (hint C) and Ollama (writes C++).
+
+The LLM gets the target asm, the Rev.ng hint, and after each try the asm diff
+or compile error of its last attempt, so it can converge on a byte match.
+"""
+import html
+import json
+import os
+import re
+import time
+import shutil
+import struct
+import subprocess
+import tempfile
+import urllib.request
+import urllib.error
+import functools
+from pathlib import Path
+
+from roc import match
+
+OLLAMA = "http://127.0.0.1:11434"
+PREFERRED_MODELS = ["qwen2.5-coder:14b", "qwen2.5-coder:7b-instruct", "qwen2.5-coder:7b",
+                    "qwen2.5-coder", "deepseek-coder-v2", "codellama"]
+MODEL_PROFILES = (("qwen2.5-coder:14b", {"num_ctx": 8192, "num_predict": 2048}),
+                  ("qwen2.5-coder:7b", {"num_ctx": 6144, "num_predict": 1536}),)
+MODEL_ROUNDS = (("qwen2.5-coder:14b", 5), ("qwen2.5-coder:7b", 3))
+REVNG_IMAGE = "revng/revng:latest"
+
+
+# ---------- Rev.ng ----------
+
+def mini_elf(code, va):
+    """Wrap one function's bytes in an ELF32 i386 exec at its original address."""
+    page = va & ~0xFFF
+    pad = va - page
+    ehdr = b"\x7fELF\x01\x01\x01" + b"\0" * 9 + struct.pack(
+        "<HHIIIIIHHHHHH", 2, 3, 1, va, 52, 0, 0, 52, 32, 1, 0, 0, 0)
+    phdr = struct.pack("<IIIIIIII", 1, 0x1000, page, page, pad + len(code), pad + len(code), 5, 0x1000)
+    head = ehdr + phdr
+    return head + b"\0" * (0x1000 - len(head)) + b"\0" * pad + code
+
+
+@functools.lru_cache(maxsize=1)
+def _docker():
+    """Docker's path, resolved once. winget puts it outside the running process's
+    PATH, so which() alone reports a freshly installed Docker Desktop as missing.
+    Cached: this is called per function in a worker run, and PATH lookups are not free."""
+    from roc import setup
+    setup.refresh_path()
+    return setup.find_exe("docker")
+
+
+def revng_available():
+    docker = _docker()
+    if not docker:
+        return False
+    try:
+        run = subprocess.run([docker, "image", "inspect", REVNG_IMAGE], capture_output=True, timeout=30)
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    return run.returncode == 0
+
+
+def revng_c(code, va, timeout=120):
+    """Rev.ng's C for one function, or None. Types are generic; it is a hint."""
+    with tempfile.TemporaryDirectory() as tmp:
+        Path(tmp, "f.elf").write_bytes(mini_elf(code, va))
+        docker = _docker()
+        if not docker:
+            return None
+        try:
+            run = subprocess.run(
+                [docker, "run", "--rm", "-v", "%s:/w" % tmp, REVNG_IMAGE, "bash", "-lc",
+                 "cd /w && revng quick artifact emit-c-as-single-file f.elf"],
+                capture_output=True, text=True, timeout=timeout)
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+    if run.returncode or "function_0x" not in run.stdout:
+        return None
+    text = html.unescape(re.sub(r"<[^>]+>", "", run.stdout))
+    text = "\n".join(l for l in text.splitlines() if l.strip() and not l.startswith("#include"))
+    return text.replace("_ABI(SystemV_x86)\n", "")
+
+
+# ---------- Ollama ----------
+
+def _get(path, payload=None, timeout=600):
+    data = json.dumps(payload).encode() if payload is not None else None
+    req = urllib.request.Request(OLLAMA + path, data=data, headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read())
+
+
+def ollama_models():
+    try:
+        return [m.get("name") or m["model"] for m in _get("/api/tags", timeout=5).get("models", [])]
+    except (OSError, ValueError, KeyError):
+        return []
+
+
+def pick_model(wanted=None):
+    from roc import providers
+    models = ollama_models()
+    if wanted == "default":
+        wanted = None
+    if wanted:
+        if providers.is_cloud(wanted):
+            return wanted if providers.available(wanted) else None
+        if wanted.startswith("local:"):
+            return wanted if wanted[6:] in models else None
+        return wanted if wanted in models else None
+    for want in PREFERRED_MODELS:
+        for m in models:
+            if m == want or m.startswith(want + ":"):
+                return m
+    return models[0] if models else None
+
+
+def route_model(default, job, installed=None, automatic=True):
+    """Use the faster installed coder for tiny leaf jobs; keep explicit choice untouched."""
+    if not automatic:
+        return default
+    installed = installed if installed is not None else ollama_models()
+    if not default or job.get("size", 999999) > 64 or job.get("calls", 0):
+        return default
+    if len(installed) > 1:
+        from roc import telemetry
+        stats = {row["model"]: row for row in telemetry.model_stats() if row["jobs"] >= 3}
+        measured = [stats[m] for m in installed if m in stats and stats[m]["match_rate"] > 0]
+        if measured:
+            return max(measured, key=lambda row: (row["match_rate"], row["score_gain"], -row["avg_seconds"]))["model"]
+    for name in installed:
+        if name == "qwen2.5-coder:7b" or name.startswith("qwen2.5-coder:7b"):
+            return name
+    return default
+
+
+def model_profile(model):
+    """Conservative per-model context/output defaults; unknown models stay supported."""
+    from roc import providers
+    if providers.is_cloud(model):
+        return {"max_tokens": 1024}
+    for prefix, profile in MODEL_PROFILES:
+        if model == prefix or model.startswith(prefix + ":"):
+            return dict(profile)
+    return {"num_ctx": 8192, "num_predict": 2048}
+
+
+def model_rounds(model, requested):
+    """Conservative retry budget per model; explicit worker rounds remain an upper bound."""
+    for prefix, cap in MODEL_ROUNDS:
+        if model == prefix or model.startswith(prefix):
+            return min(int(requested), cap)
+    return int(requested)
+
+
+def output_budget(size):
+    """Bound cloud/local output before a giant function can burn a whole worker."""
+    try:
+        size = int(size)
+    except (ValueError, TypeError):
+        size = 999999
+    if size <= 32:
+        return 256
+    if size <= 128:
+        return 512
+    return 8192
+
+
+def _ask_context(model, prompt, context=None, options=None, details=False):
+    """Provider-neutral ask. The old two-value result stays public compatibility."""
+    from roc import providers
+    options = dict(options or {})
+    profile = model_profile(model)
+    options.setdefault("max_tokens", profile.get("max_tokens", profile.get("num_predict", 1024)))
+    if "num_predict" in profile:
+        profile = dict(profile)
+        profile["num_predict"] = min(profile["num_predict"], options["max_tokens"])
+    options.setdefault("profile", profile if "num_predict" in profile else {})
+    generation = providers.generate(model, prompt, options=options, state=context)
+    result = (generation.text, generation.state)
+    return result + (generation.telemetry(),) if details else result
+
+
+def ask(model, prompt):
+    """Generate one bounded reply; compatibility wrapper for callers/tests."""
+    return _ask_context(model, prompt)[0]
+
+
+def extract_code(reply):
+    blocks = re.findall(r"```(?:cpp|c\+\+|c)?\s*\n(.*?)```", reply, re.S)
+    if blocks:
+        return max(blocks, key=len).strip() + "\n"
+    # Some providers ignore the fence contract and return plain C++. Recover a
+    # balanced function only when its signature is unmistakable; never pass prose
+    # or a partial brace block to the compiler.
+    text = str(reply or "").strip()
+    match = re.search(r"(?m)^[ \t]*(?:[A-Za-z_]\w*[ \t*&]+)?[A-Za-z_]\w*(?:\s*::\s*[A-Za-z_]\w*)?\s*\([^;{}]*\)\s*(?:const\s*)?\{", text)
+    if not match:
+        return None
+    start = match.start()
+    prior = text[:start]
+    declaration = re.search(
+        r'(?m)^[ \t]*(?:(?:struct|class|namespace)\s+[A-Za-z_]\w*\s*\{|'
+        r'extern\s+(?:"C"\s+)?[^\n]+;|typedef\s+[^\n]+;|#pragma\s+[^\n]+)', prior)
+    if declaration:
+        start = declaration.start()
+    open_brace = text.find("{", match.start())
+    depth, quote, end = 0, None, None
+    for index in range(open_brace, len(text)):
+        char = text[index]
+        if quote:
+            if char == "\\":
+                continue
+            if char == quote:
+                quote = None
+        elif char in "\"'":
+            quote = char
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                end = index + 1
+                break
+    return text[start:end].strip() + "\n" if end else None
+
+
+def clean_repair_context(src):
+    """Remove stale generated headers/assembly comments before near-repair."""
+    kept = []
+    leading = True
+    for line in (src or "").splitlines():
+        if leading and (not line.strip() or line.lstrip().startswith("//")):
+            continue
+        leading = False
+        kept.append(line)
+    return "\n".join(kept).strip() + "\n" if kept else ""
+
+
+def invalid_qualified_definition(src):
+    """C++ forbids defining a class with a qualified declarator."""
+    return bool(re.search(r"\b(?:struct|class|enum)\s+[A-Za-z_]\w*(?:::[A-Za-z_]\w*)+\s*\{", src or ""))
+
+
+def source_contract_error(src):
+    """Cheap invalid-output gate; no guessed C++ rewrite is performed here."""
+    src = src or ""
+    numbered_fields = re.findall(
+        r"(?m)^\s*[^;\n]*\b(?:field|unknown|unk|padding|gap|member)[_0-9]+\s*(?:\[[^]]+\])?\s*;",
+        src, re.I)
+    if len(numbered_fields) >= 12:
+        return "invented numbered-field layout"
+    if src.count("{") != src.count("}"):
+        return "unbalanced braces"
+    if re.search(r"\b0x[0-9A-Fa-f]+\s*\(", src):
+        return "numeric address used as function name"
+    if re.search(r"\b(?:mov|lea|push|pop|call|ret|jmp|cmp|test|add|sub|imul|xor|and|or|shl|shr)\s*\(", src):
+        return "assembly pseudo-instruction used as C++ call"
+    # Declarations alone cannot emit the requested function. Inline or out-of-class
+    # definitions are both accepted; constructors intentionally have no return type.
+    if not re.search(r"(?:\b[A-Za-z_]\w*\s*::\s*)?[~A-Za-z_]\w*\s*\([^;{}]*\)\s*(?:const\s*)?\{", src):
+        return "missing function definition"
+    return ""
+
+
+def compile_failure_class(error):
+    text = str(error or "")
+    if "C2059" in text or "C2143" in text:
+        return "invalid expression or call syntax"
+    if "C2227" in text:
+        return "receiver/object pointer misuse"
+    if "C2614" in text:
+        return "invalid member/base initializer"
+    if "C2065" in text:
+        return "undeclared identifier"
+    if "C2027" in text:
+        return "undefined qualified type"
+    if "C2374" in text:
+        return "duplicate local declaration"
+    return ""
+
+
+def _insn(line):
+    """Drop match.disasm's address/hex prefix without touching plain asm test input."""
+    return re.sub(r"^[0-9a-fA-F]{8}\s+[0-9a-fA-F]+\s+", "", line or "").strip()
+
+
+def cfg_facts(asm, limit=24):
+    """Return bounded CFG facts; no source-level structure is guessed."""
+    decoded = []
+    for line in asm:
+        m = re.match(r"^([0-9a-fA-F]{8})\s+([0-9a-fA-F]+)\s+(.*)$", line or "")
+        if m:
+            decoded.append((int(m.group(1), 16), len(m.group(2)) // 2, m.group(3).strip()))
+    if not decoded:
+        return {"available": False, "blocks": [], "edges": [], "reachable": [],
+                "dominators": {}, "loop_headers": [], "returns": []}
+    addresses = {addr for addr, _size, _text in decoded}
+    starts = {decoded[0][0]}
+    for i, (addr, size, text) in enumerate(decoded):
+        op = text.split(None, 1)[0] if text else ""
+        target = re.search(r"\b0x([0-9a-fA-F]+)\b", text)
+        if op.startswith("j") and target and int(target.group(1), 16) in addresses:
+            starts.add(int(target.group(1), 16))
+        if (op.startswith("j") or op == "ret") and i + 1 < len(decoded):
+            starts.add(decoded[i + 1][0])
+    starts = sorted(starts)
+    starts = starts[:limit]
+    index = {addr: i for i, addr in enumerate(starts)}
+    blocks, edges, returns = [], [], []
+    for i, start in enumerate(starts[:limit]):
+        end = starts[i + 1] if i + 1 < len(starts) else None
+        lines = [row for row in decoded if row[0] >= start and (end is None or row[0] < end)]
+        if not lines:
+            continue
+        _addr, _size, text = lines[-1]
+        op = text.split(None, 1)[0] if text else ""
+        target = re.search(r"\b0x([0-9a-fA-F]+)\b", text)
+        block_edges = []
+        if op.startswith("j"):
+            dst = int(target.group(1), 16) if target else None
+            if dst in index:
+                block_edges.append((index[dst], "branch"))
+            elif dst is not None:
+                block_edges.append((None, "external"))
+            if op != "jmp" and i + 1 < len(starts):
+                block_edges.append((i + 1, "fallthrough"))
+        elif op == "ret":
+            returns.append(i)
+        elif i + 1 < len(starts):
+            block_edges.append((i + 1, "fallthrough"))
+        blocks.append({"id": i, "start": "%08x" % start, "end_op": op,
+                       "edges": [{"to": dst, "kind": kind} for dst, kind in block_edges]})
+        edges.extend({"from": i, "to": dst, "kind": kind} for dst, kind in block_edges)
+    adjacency = {i: {edge["to"] for edge in edges if edge["from"] == i and edge["to"] is not None}
+                 for i in range(len(blocks))}
+    reachable, work = set(), [0] if blocks else []
+    while work:
+        node = work.pop()
+        if node in reachable:
+            continue
+        reachable.add(node)
+        work.extend(adjacency.get(node, ()) - reachable)
+    predecessors = {i: {src for src, dst in ((e["from"], e["to"]) for e in edges)
+                         if dst == i and src in reachable} for i in reachable}
+    dominators = {0: {0}} if 0 in reachable else {}
+    for node in reachable - {0}:
+        dominators[node] = set(reachable)
+    changed = True
+    while changed:
+        changed = False
+        for node in sorted(reachable - {0}):
+            incoming = predecessors.get(node, set())
+            value = ({node} | set.intersection(*(dominators[p] for p in incoming))) if incoming else {node}
+            if value != dominators[node]:
+                dominators[node] = value
+                changed = True
+    loop_edges = [(edge["from"], edge["to"]) for edge in edges
+                  if edge["to"] is not None and edge["to"] in dominators.get(edge["from"], set())]
+    return {"available": True, "blocks": blocks, "edges": edges,
+            "reachable": sorted(reachable),
+            "dominators": {str(node): sorted(value) for node, value in sorted(dominators.items())},
+            "loop_headers": sorted({dst for _src, dst in loop_edges}),
+            "back_edges": [{"from": src, "to": dst} for src, dst in loop_edges],
+            "returns": returns}
+
+
+def cfg_outline(asm, limit=12, facts=None):
+    """Compact CFG from match.disasm output; plain asm intentionally yields none."""
+    facts = facts or cfg_facts(asm, limit)
+    if not facts["available"]:
+        return "CFG unavailable (assembly has no addresses)"
+    blocks = []
+    for block in facts["blocks"][:limit]:
+        labels = ["B%d" % edge["to"] if edge["to"] is not None else edge["kind"]
+                  for edge in block["edges"]]
+        blocks.append("B%d@%s:%s" % (block["id"], block["start"], "/".join(labels) or "end"))
+    loops = ["B%d->B%d" % (edge["from"], edge["to"])
+             for edge in facts["back_edges"]
+             if edge["from"] < limit and edge["to"] < limit]
+    suffix = " loops=" + ",".join(loops[:4]) if loops else ""
+    return " ".join(blocks) + suffix
+
+
+def facts_from_asm(asm):
+    """Cheap, stable facts useful to source retrieval and prompt grounding."""
+    asm = [_insn(line) for line in asm]
+    calls = [line for line in asm if re.search(r"\bcall\b", line)]
+    branches = [line for line in asm if re.match(r"j(?:mp|[a-z]+)\b", line)]
+    # Direct calls (to labels/symbols, not through memory) - not global memory reads
+    direct_calls = [line.strip() for line in calls if "dword ptr" not in line]
+    # Indirect calls (through memory) - these are actual import/global reads
+    imports = [line.strip() for line in calls if "dword ptr" in line]
+    # ECX receiver detection: direct [ecx + offset] or ECX saved to ESI then [esi + offset]
+    ecx_offsets = sorted(set(re.findall(r"\[ecx \+ (0x[0-9a-f]+)]", "\n".join(asm))))
+    esi_offsets = sorted(set(re.findall(r"\[esi \+ (0x[0-9a-f]+)]", "\n".join(asm))))
+    ecx_to_esi = any(re.search(r"^\s*mov\s+esi\s*,\s*ecx", line) for line in asm)
+    esi_dereferenced = any("[esi" in line for line in asm)
+    ecx_dereferenced = any("[ecx" in line for line in asm)
+    # If ECX was saved to ESI, ESI dereferences are object field accesses
+    this_offsets = ecx_offsets
+    if ecx_to_esi and esi_offsets:
+        this_offsets = sorted(set(ecx_offsets + esi_offsets))
+    receiver_dereferenced = ecx_dereferenced or (ecx_to_esi and esi_dereferenced)
+    returns = [line.strip() for line in asm if re.search(r"\bret(?:\s|$)", line)]
+    # Detect calling convention from return instruction and receiver evidence
+    ret_line = returns[-1] if returns else ""
+    ret_args = 0
+    m = re.search(r"ret\s+(0x[0-9a-fA-F]+|\d+)\b", ret_line)
+    if m:
+        ret_args = int(m.group(1), 0)
+    convention = "unknown convention"
+    if receiver_dereferenced and ret_args == 0:
+        convention = "thiscall (ECX/ESI receiver, callee pops 0 args)"
+    elif receiver_dereferenced and ret_args == 4:
+        convention = "thiscall (ECX/ESI receiver, callee pops 1 arg)"
+    elif receiver_dereferenced and ret_args == 8:
+        convention = "thiscall (ECX/ESI receiver, callee pops 2 args)"
+    elif receiver_dereferenced:
+        convention = "thiscall (ECX/ESI receiver)"
+    elif not receiver_dereferenced and ret_args == 12:
+        convention = "__stdcall with 3 stack args (no ECX receiver)"
+    elif not receiver_dereferenced and ret_args == 8:
+        convention = "__stdcall with 2 stack args (no ECX receiver)"
+    elif not receiver_dereferenced and ret_args == 0:
+        convention = "cdecl (no ECX receiver)"
+    # Detect MSVC exception-handling: standard prologue or ESI-based prologue
+    has_push_ebp = any(re.search(r"^\s*push\s+ebp", line) for line in asm)
+    has_mov_ebp_esp = any(re.search(r"^\s*mov\s+ebp\s*,?\s*esp", line) for line in asm)
+    has_standard_prologue = has_push_ebp and has_mov_ebp_esp
+    # Alternative: push esi / mov esi, ecx is also a function prologue pattern
+    has_esi_prologue = ecx_to_esi and any(re.search(r"^\s*push\s+esi", line) for line in asm)
+    has_function_prologue = has_standard_prologue or has_esi_prologue
+    has_calls = len(calls) > 0
+    needs_destructor_care = has_function_prologue and has_calls
+    # Check for memory allocation calls that might throw
+    alloc_calls = [c for c in calls if re.search(r"\b(new|malloc|HeapAlloc)\b", c, re.I)]
+    return {
+        "calls": len(calls),
+        "branch_count": len(branches),
+        "imports": imports[:8],
+        "direct_calls": direct_calls[:8],
+        "this_offsets": this_offsets[:16],
+        "returns": returns[-1:],
+        "calling_convention": convention,
+        "ret_args": ret_args,
+        "ecx_dereferenced": ecx_dereferenced or (ecx_to_esi and esi_dereferenced),
+        "esi_dereferenced": esi_dereferenced,
+        "ecx_to_esi": ecx_to_esi,
+        "receiver_dereferenced": receiver_dereferenced,
+        "needs_destructor_care": needs_destructor_care,
+        "alloc_calls": len(alloc_calls),
+        "has_standard_prologue": has_function_prologue
+    }
+
+
+def reconstruction_outline(asm, facts=None):
+    """Small, deterministic CFG/signature scaffold for constrained drafting."""
+    facts = facts or facts_from_asm(asm)
+    insns = [_insn(line) for line in asm]
+    branches = [line for line in insns if re.match(r"j(?:mp|[a-z]+)\b", line)]
+    # Use pre-computed calling convention from facts, with contradiction detection
+    factual_conv = facts.get("calling_convention", "unknown convention")
+    factual_ret_args = facts.get("ret_args", 0)
+    factual_ecx = facts.get("ecx_dereferenced", False)
+    factual_needs_destructor = facts.get("needs_destructor_care", False)
+    factual_alloc_calls = facts.get("alloc_calls", 0)
+    # Re-compute from asm for contradiction check
+    stack = re.search(r"ret\s+(0x[0-9a-fA-F]+|\d+)\b", (facts.get("returns") or ["ret"])[-1])
+    asm_ret_args = int(stack.group(1), 0) if stack else 0
+    asm_ecx = any("[ecx" in line for line in insns)
+    # Detect contradictions
+    contradictions = []
+    factual_esi = facts.get("esi_dereferenced", False)
+    factual_ecx_to_esi = facts.get("ecx_to_esi", False)
+    asm_esi = any("[esi" in line for line in insns)
+    # Detect contradictions between facts and assembly
+    if factual_ecx and not asm_ecx and not (factual_ecx_to_esi and asm_esi):
+        contradictions.append("facts note ECX dereferenced but assembly has no [ecx or [esi references")
+    if not factual_ecx and asm_ecx:
+        contradictions.append("assembly has [ecx but facts say not dereferenced")
+    if factual_esi and not asm_esi:
+        contradictions.append("facts note ESI dereferenced but assembly has no [esi references")
+    if not factual_esi and asm_esi:
+        contradictions.append("assembly has [esi but facts say not dereferenced")
+    if factual_ret_args != asm_ret_args:
+        contradictions.append("facts reporting %d stack-cleanup byte(s) from ret but assembly has %d"
+                              % (factual_ret_args, asm_ret_args))
+    # Build signature from facts, preserving any contradiction notes
+    signature = factual_conv
+    if factual_ecx or asm_ecx:
+        signature += ", ECX dereferenced (verify whether live on entry)"
+    if contradictions:
+        signature += " [CONTRADICTION: " + "; ".join(contradictions) + "]"
+    # Append stack arg info only when the convention text has not already stated it.
+    if factual_conv == "unknown convention":
+        if factual_ret_args > 0:
+            signature += ", callee pops %d stack arg(s)" % (factual_ret_args // 4)
+        elif asm_ret_args > 0:
+            signature += ", callee pops %d stack arg(s)" % (asm_ret_args // 4)
+    # Flag destructor care and allocation calls
+    if factual_needs_destructor:
+        signature += ", requires C++ lifetime/destructor reconstruction"
+    if factual_alloc_calls > 0:
+        signature += ", %d alloc call(s) may throw" % factual_alloc_calls
+    blocks = 1 + sum(1 for line in insns if re.match(r"(?:j(?:mp|[a-z]+)|ret)\b", line))
+    flow = "; ".join(branches[:8]) or "straight-line"
+    return "signature: %s\nbasic blocks: about %d\nbranches: %s\nCFG: %s\nreturn: %s\ntype evidence: %s" % (
+        signature, blocks, flow, cfg_outline(asm), (facts.get("returns") or ["ret"])[-1], type_constraints(asm, facts))
+
+
+def structure_ir(asm, facts=None):
+    """Bounded, evidence-only IR for structured prompts and offline validation."""
+    facts = facts or facts_from_asm(asm)
+    insns = [_insn(line) for line in asm]
+    branches, calls, stack, constants = [], [], set(), set()
+    for line in insns:
+        bits = line.split(None, 1)
+        op = bits[0] if bits else ""
+        if op.startswith("j"):
+            branches.append({"op": op, "target": (bits[1] if len(bits) > 1 else "?")[:40],
+                             "signed": op.startswith(("jl", "jg", "js")),
+                             "unsigned": op.startswith(("jb", "ja"))})
+        if op == "call":
+            calls.append((bits[1] if len(bits) > 1 else "?")[:56])
+        stack.update(re.findall(r"\[(?:esp|ebp)(?:\s*[+-]\s*(?:0x[0-9a-fA-F]+|\d+))?\]", line))
+        constants.update(re.findall(r"\b(?:0x[0-9a-fA-F]+|\d+)\b", line))
+    ret = (facts.get("returns") or [""])[-1]
+    cfg = cfg_facts(asm, 24)
+    return {"cfg": cfg_outline(asm, 12, cfg), "cfg_facts": {
+            "reachable": cfg["reachable"], "dominators": cfg["dominators"],
+            "loop_headers": cfg["loop_headers"], "back_edges": cfg["back_edges"][:8],
+            "returns": cfg["returns"]}, "signature": {
+            "calling_convention": facts.get("calling_convention", "unknown"),
+            "receiver": bool(facts.get("receiver_dereferenced") or
+                              facts.get("this_offsets")),
+            "stack_args": list(facts.get("stack_args") or ())[:12],
+            "return_instruction": ret,
+            "return_register_evidence": sorted({reg for reg in ("eax", "edx")
+                                                  if any(re.search(r"\bmov\s+%s\b|\b%s\s*=" % (reg, reg), line)
+                                                         for line in insns)})},
+            "branches": branches[:12], "calls": calls[:12],
+            "stack_slots": sorted(stack)[:12], "receiver_offsets": list((facts.get("this_reads") or
+            facts.get("this_offsets") or ()))[:12], "returns": list(facts.get("returns") or ())[-2:],
+            "constants": sorted(constants, key=lambda v: (len(v), v))[:16],
+            "type_evidence": type_constraints(asm, facts),
+            "semantic_facts": semantic_facts(asm),
+            "calling_convention": facts.get("calling_convention", "unknown")}
+
+
+def type_constraints(asm, facts=None):
+    """Reliable ABI/data-layout facts, deliberately not recovered C++ types."""
+    facts = facts or facts_from_asm(asm)
+    out = []
+    this_offsets = facts.get("this_reads", ()) or facts.get("this_offsets", ())
+    if this_offsets:
+        out.append("ECX receiver dereferenced at " + ", ".join(map(str, this_offsets[:8])))
+    if facts.get("this_writes"):
+        out.append("receiver writes at " + ", ".join(map(str, facts["this_writes"][:8])))
+    if facts.get("stack_args"):
+        out.append("stack memory accessed at " + ", ".join(map(str, facts["stack_args"][:8])))
+    ret = (facts.get("returns") or [""])[-1]
+    if re.search(r"ret\s+(?:0x[0-9a-fA-F]+|\d+)\b", ret):
+        out.append("callee stack cleanup")
+    if facts.get("virtual_slots"):
+        out.append("virtual slots " + ", ".join(map(str, facts["virtual_slots"][:8])))
+    insns = [_insn(line) for line in asm]
+    signed = sorted({line.split()[0] for line in insns if line.startswith(("jl", "jg", "js"))})
+    unsigned = sorted({line.split()[0] for line in insns if line.startswith(("jb", "ja"))})
+    if signed:
+        out.append("signed branch evidence " + ", ".join(signed))
+    if unsigned:
+        out.append("unsigned branch evidence " + ", ".join(unsigned))
+    return "; ".join(out) or "no safe source-level type claim"
+
+
+def semantic_facts(asm, limit=12):
+    """Recover direct register expressions; never invent control flow or types."""
+    values, out = {}, []
+    for line in (_insn(item) for item in asm):
+        bits = line.split(None, 1)
+        if len(bits) != 2:
+            continue
+        op, operands = bits
+        args = [item.strip() for item in operands.split(",", 1)]
+        if len(args) != 2 or not re.fullmatch(r"e(?:ax|bx|cx|dx|si|di|bp|sp)", args[0], re.I):
+            continue
+        reg, rhs = args[0].lower(), args[1]
+        if op == "xor" and rhs.lower() == reg:
+            values[reg] = "0"
+        elif op in ("mov", "lea"):
+            values[reg] = rhs
+        elif op in ("add", "sub") and reg in values:
+            symbol = "+" if op == "add" else "-"
+            values[reg] = "(%s %s %s)" % (values[reg], symbol, rhs)
+        else:
+            continue
+        out.append("%s=%s" % (reg, values[reg]))
+    return out[-limit:]
+
+
+def classify_target(asm, facts=None):
+    """Cheap deterministic stage selector before drafting/repair."""
+    text = " ; ".join(_insn(line).lower() for line in asm)
+    facts = facts or {}
+    if not text or text in ("ret", "ret "):
+        return "empty"
+    if "call" not in text and ("[ecx" in text or "mov eax, ecx" in text):
+        if "imul" in text or "add eax" in text or "sub eax" in text or "neg eax" in text:
+            return "math/getter"
+        if "mov dword ptr [ecx" in text:
+            return "setter/constructor"
+        return "leaf/getter"
+    if text.startswith("jmp") or ("call" in text and len(asm) <= 5):
+        return "wrapper/thunk"
+    if facts.get("calls", text.count("call")) == 0:
+        return "leaf"
+    return "unknown"
+
+
+def target_data_facts(client, code, relocs):
+    """Read only relocated, printable data referenced by target code."""
+    try:
+        from roc import match
+        base, image = match._image(client)
+    except (OSError, ValueError, SystemExit):
+        return {}
+    strings, refs = [], []
+    for off in relocs:
+        if off + 4 > len(code):
+            continue
+        va = int.from_bytes(code[off:off + 4], "little")
+        pos = va - base
+        if not 0 <= pos < len(image):
+            continue
+        refs.append("%08x" % va)
+        raw = bytes(image[pos:pos + 160]).split(b"\0", 1)[0]
+        if 4 <= len(raw) <= 159 and all(32 <= b < 127 for b in raw):
+            strings.append(raw.decode("ascii", "replace"))
+    return {"global_refs": sorted(set(refs))[:16], "strings": sorted(set(strings))[:8]}
+
+
+RULES = """Rules:
+- 32-bit x86, Microsoft Visual C++ ({compiler}), flags: {flags}.
+- Write C++ that compiles to EXACTLY the target machine code. Inline asm is forbidden.
+- Reconstruct behavior as ordinary C++ statements; never translate or copy assembly syntax.
+- The answer must contain no instruction mnemonic dump, `__asm`, `_emit`, or assembly comments.
+- VS2005/VS2008 only: no `nullptr` (use 0), no `auto`, no `static_assert`.
+- No `#include` at all: no `<windows.h>` (not installed), no `<memory>`/STL C++11
+  (`unique_ptr`, `make_unique` do not exist). Declare DWORD/HDC/etc. yourself or avoid them.
+- Never emit `// roc-lib:` or `// roc-archive:` lines.
+- If ecx is used before being set, it is `this`: write a member function of a struct.
+- Declare every member inside the struct before defining it outside
+  (`struct S {{ int f(); }}; int S::f() {{ ... }}`).
+- Never write `struct Namespace::Type {{...}}`: that is invalid C++. Either use
+  a local `struct S`, or declare it inside `namespace Namespace {{ struct Type {{...}}; }}`.
+- Later-source class/namespace names are hints only. Prefer a minimal local declaration
+  over copying an undeclared `RBX::...`/STL type.
+- Never use `this` as a variable or parameter name.
+- Define the function OUTSIDE the struct (`int S::f() {{ ... }}`). A body written inside
+  the struct is inline and never gets compiled, which scores 0.
+- `ret N` means the callee pops N bytes of arguments (thiscall/stdcall).
+- Do not invent APIs, import names, member fields, or function declarations.
+  For a known imported call, a plain `extern "C" RETURN __stdcall name(ARGS);`
+  declaration is enough to compile; put declarations at global scope before the
+  function, never inside a function; never use `__declspec(dllimport)`.
+- Never call a numeric address directly (`0x401000(...)` is invalid C++); assign a valid
+  symbolic declaration with the observed calling convention first. Addresses are masked,
+  so any valid name works. Declare everything you use;
+  there are no headers. Keep only the one function plus declarations.
+- Reply with ONE ```cpp code block and nothing else."""
+
+
+def _trim_hint_facts(hint_facts, terms, max_methods=16):
+    """Trim hint metadata without losing the names likely to matter.
+
+    Method lists (up to 48 alphabetical entries) dominate hint bytes. Keep
+    the ones overlapping observed target terms or the unit name first, then
+    fill alphabetically. Classes/inherits stay whole: small and structural.
+    """
+    out = dict(hint_facts or {})
+    methods = list(out.get("methods", []))
+    if len(methods) > max_methods:
+        lowered = [t.lower() for t in terms if t]
+        def rank(name):
+            text = str(name).lower()
+            return (-sum(1 for t in lowered if t in text), str(name))
+        methods = sorted(methods, key=rank)[:max_methods]
+        out["methods"] = methods
+    for key, cap in (("literals", 12), ("includes", 12)):
+        values = list(out.get(key, []))
+        if len(values) > cap:
+            out[key] = values[:cap]
+    return out
+
+
+def _clip_example(text, limit=1500):
+    """Bound example bytes: matched sources run to 90k chars.
+
+    Two whole examples can dwarf the target assembly, blowing cloud budgets
+    and the local context window. The head carries the format lesson (fence,
+    struct declarations, signature); the marker keeps a hard cut from
+    looking like a complete, copyable answer.
+    """
+    text = (text or "").strip()
+    if len(text) <= limit:
+        return text
+    return text[:limit].rstrip() + "\n// (example trimmed: full source matched, shown for shape only)"
+
+
+COMPACT_RULES = """Generate byte-exact x86 C++ for Microsoft Visual C++ {compiler}, flags {flags}.
+Return one cpp fenced block, one function plus required declarations, no explanation.
+No includes, inline asm, instruction dumps/comments, numeric-address calls, or roc-lib/roc-archive tags.
+Use VS2005/2008 syntax: no auto, nullptr, static_assert, modern STL.
+Declare every used type, field and helper. Use minimal local struct names, not undeclared RTTI namespaces.
+ECX live on entry means this: declare a struct member, define its body OUTSIDE the struct.
+Never name a parameter this. ret N implies callee-pop ABI; preserve arguments, call conventions,
+field offsets, signedness and branch conditions. Declare known imports at global scope with extern C
+and observed calling convention; no dllimport. Use symbolic helper declarations, never address casts.
+Assembly is ground truth; later source and RTTI names are clues only. Preserve correct bytes in repairs."""
+
+
+def _strong_source(source):
+    facts = (source or {}).get("facts") or {}
+    path = str((source or {}).get("path", ""))
+    if path.startswith(("cross:", "shape:")):
+        return True
+    if facts.get("byte_identical") or facts.get("shape_identical"):
+        return True
+    return False
+
+
+def _example_is_actionable(example):
+    """Keep same-client exemplars that contain declarations/body code."""
+    text = str(example or "")
+    if not text.strip():
+        return False
+    # Examples that are just assembly comments or prose descriptions do not
+    # teach the required C++ shape.
+    lowered = text.lower()
+    if "// 00" in text and "struct" not in lowered and "{" not in text:
+        return False
+    if ("struct " not in text and "class " not in text and "{" not in text):
+        return False
+    return True
+
+
+def prompt_for(client, addr, row, asm, hint, attempt, flags=None, examples=(), source_hints=(), facts=None,
+               strategy="direct", compact_rules=False, binary_only=False, minimal_layout=False,
+               family_exemplars=False, near_repair=False, remill_evidence=None, prompt_style="legacy"):
+    entry = match.clients.load()[client]
+    # Small functions (< 52 bytes): disable unrelated source hints and exemplars;
+    # keep only original assembly + ABI facts + Remill semantics if available.
+    _is_small = int(row.get("size", 0)) < 52
+    p = ["You are doing matching decompilation of a function from an old Roblox client.",
+         (COMPACT_RULES if (compact_rules or prompt_style == "lean") else RULES).format(
+             compiler=entry["compiler"], flags=flags or entry.get("flags") or match.DEFAULT_FLAGS)]
+    _examples = [ex for ex in examples if _example_is_actionable(ex)]
+    if not _is_small or prompt_style != "lean":
+        for ex in _examples[:1 if family_exemplars else (2 if strategy == "direct" else 1)]:
+            label = ("Verified same-family exemplar from this client. Adapt operands, offsets, and names; "
+                     "preserve its control-flow pattern only." if family_exemplars else
+                     "Example of an already matched function from this client:")
+            p += ["", label, "```cpp", _clip_example(ex), "```"]
+    if family_exemplars and (not _is_small or prompt_style != "lean"):
+        p += ["Use exemplar as structural evidence, not answer text. Emit only target function. "
+              "Do not expand unrelated class fields or paste assembly."]
+    p += ["", "Stage: %s. Function %s, %d bytes, class (from RTTI, may be a guess): %s" %
+          (classify_target(asm, facts), addr, row["size"], row["unit"]),
+          "Target assembly (read-only evidence; do not copy it into the answer):", "\n".join(asm)]
+    if minimal_layout:
+        p += ["Reconstruct only this function, not the full RTTI class. "
+              "Declare only fields accessed by this function. Represent each unknown layout gap "
+              "with one char padding array of the required byte length; never enumerate numbered "
+              "filler fields. Preserve observed offsets. Emit minimal declarations followed by "
+              "one complete out-of-class function body; no unrelated methods or class expansion."]
+    if any(re.search(r"\b(lock|xadd|cmpxchg)\b", line) for line in asm):
+        p += ["Atomic instructions: use MSVC intrinsics, never asm placeholders. "
+              "For lock xadd use: extern \"C\" long __cdecl _InterlockedExchangeAdd(volatile long*, long); "
+              "#pragma intrinsic(_InterlockedExchangeAdd). It returns the OLD value; preserve the target's "
+              "comparison against that old value. For decrement: cmp returned_register,1 means "
+              "_InterlockedExchangeAdd(ptr,-1)==1, NOT ==0. A virtual C++ struct inserts a vptr: "
+              "keep refcount offsets relative to the object exactly as in assembly. "
+              "Declare all helper structs at global scope, never inside the function. "
+              "Include this exact declaration/pragma preamble in your output; it is not supplied by headers:",
+              'extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);',
+              "#pragma intrinsic(_InterlockedExchangeAdd)"]
+    if strategy == "structured":
+        p += ["", "STRUCTURED MODE: write the C++ from this control-flow IR first. "
+              "Use assembly only to verify operators, calls, and ABI. Never emit assembly or instruction comments. "
+              "Ground truth is assembly; do not invent facts:",
+              json.dumps(structure_ir(asm, facts), separators=(",", ":")),
+              "Readable summary:", reconstruction_outline(asm, facts)]
+    if facts:
+        p += ["", "Extracted binary facts (use as clues, verify against assembly):",
+              json.dumps(facts, separators=(",", ":"))]
+        if facts.get("exact_callee_sources"):
+            p += ["", "Exact matched callee source clues. These are ABI/type evidence; preserve their "
+                  "parameter and return conventions when calling them. Do not copy unrelated bodies:"]
+            for clue in facts["exact_callee_sources"][:4]:
+                p += ["callee %s:" % clue["addr"], "```cpp", clue["source"], "```"]
+    from roc import matchers
+    same = matchers.hint(client, addr)
+    if same:
+        p += ["", "These exact bytes also occur in RBXGS WebService.dll (Dec 2007) at 0x%s. "
+              "Its PDB name (decorated; real signature): %s" % (same["donor"], same["symbol"] or "unknown")]
+        if same["source"] and not binary_only:
+            p += ["OpenRBX source for that function (%s):" % same["path"], "```cpp", same["source"][:1500], "```"]
+    if hint:
+        p += ["", "Rev.ng decompiler output (generic types, hint only):", hint]
+    if remill_evidence:
+        packet = str(remill_evidence).strip()
+        if len(packet) > 4000:
+            packet = packet[:4000] + "\n... (truncated)"
+        p += ["", "Remill verified LLVM semantic packet (use as structured evidence, not as source C++):",
+              "```text", packet, "```"]
+    from roc import refsource
+    terms = list(refsource._target_terms(facts)) + re.findall(r"[A-Za-z_]\w{2,}", row.get("unit", ""))
+    # In lean mode, 2016 class source requires strong evidence (byte/shape identical),
+    # never a bare class-name match like "ContentItem" which may point to unrelated Qt code.
+    ref = None
+    if prompt_style != "lean" or facts.get("byte_identical") or facts.get("shape_identical"):
+        ref = refsource.hint(row["unit"]) if strategy != "reference" and not binary_only else None
+    if ref:
+        p += ["", "The same class in Roblox's 2016 source (real names; layout may have changed since):",
+              "```cpp", ref, "```"]
+    for source in (() if binary_only else source_hints[:1 if strategy == "reference" else 3]):
+        if prompt_style == "lean" and not _strong_source(source):
+            continue
+        if strategy == "reference":
+            # Later-version source is evidence, not a template. A short method window
+            # avoids teaching the model to paste an incompatible whole class.
+            clue = (source.get("method") or source["text"])[:900]
+            p += ["", "Related-source evidence only (may differ; do not copy it): %s" % source["path"],
+                  "```cpp", clue, "```"]
+            if source.get("facts"):
+                p += ["Source metadata:", json.dumps({k: _trim_hint_facts(source["facts"], terms).get(k, [])
+                                                         for k in ("classes", "methods", "inherits", "literals")
+                                                         if source["facts"].get(k)}, separators=(",", ":"))]
+            if source.get("age_delta") is not None:
+                p += ["Age: source is %d years newer; names/layout are weak evidence only." % source["age_delta"]]
+            continue
+        p += ["", "Related 2016 source clue (not guaranteed same version): %s" % source["path"],
+              "```cpp", source["text"], "```"]
+        if source.get("method") and source["method"] != source["text"]:
+            p += ["Relevant source method body:", "```cpp", source["method"], "```"]
+        if source.get("facts"):
+            p += ["Source metadata:", json.dumps({k: _trim_hint_facts(source["facts"], terms).get(k, [])
+                                                    for k in ("classes", "methods", "includes", "inherits", "literals")
+                                                    if source["facts"].get(k)}, separators=(",", ":"))]
+    if attempt:
+        src, score, feedback = attempt
+        phase = "compile repair" if score == 0 else "assembly-diff repair"
+        p += ["", "Your previous attempt scored %d%%:" % score, "```cpp", src.strip(), "```",
+              "Problem (assembly diff '-' target '+' yours, or compiler error):", feedback,
+              "Perform %s. Preserve correct bytes; change only what fixes the problem." % phase]
+        if near_repair and attempt:
+            # Only use near-repair mode when candidate scores 90% or higher
+            score = attempt[1] if isinstance(attempt, (list, tuple)) and len(attempt) > 1 else 0
+            try:
+                score = int(score)
+            except (ValueError, TypeError):
+                score = 0
+            if score < 90:
+                # Fall back to regular repair mode for lower-scoring candidates
+                near_repair = False
+        if near_repair:
+            p += ["NEAR-REPAIR MODE: source already matches 90%+. Preserve every correct declaration, call, "
+                  "constant, branch, and field offset. Make one minimal source-shape change supported by the "
+                  "diff (ABI/type/lifetime/order). Do not rewrite function or add speculative logic. Emit the "
+                  "complete compilable source, not a patch and not explanation. STRICT: emit ordinary C++ only; "
+                  "never use asm, __asm, intrinsics-as-assembly, or an assembly dump. Keep the existing function "
+                  "body and change at most one declaration, cast, lifetime, call order, or return type."]
+    try:
+        from roc import telemetry
+        rules = json.loads(telemetry.TEMPLATES.read_text())
+        if rules:
+            p += ["", "Recurring failure rules (apply only when relevant):",
+                  json.dumps({k: v.get("prompt") for k, v in list(rules.items())[:4]}, separators=(",", ":"))]
+    except (OSError, ValueError, TypeError):
+        pass
+    return "\n".join(p)
+
+
+def select_generation_strategy(strategy, model, row):
+    """Pick the evidence-backed opt-in strategy without changing direct default."""
+    if strategy != "auto":
+        return strategy
+    # Paired trials did not establish a structured-mode advantage.
+    return "direct"
+
+
+def _norm_src(src):
+    return re.sub(r"\s+", " ", (src or "").strip())
+
+
+def select_topk(scored, k=3):
+    """Best-k diverse (score, source) pairs: score desc, text-deduplicated."""
+    seen, out = set(), []
+    for score, src in sorted(scored, key=lambda t: -t[0]):
+        key = _norm_src(src)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        out.append((score, src))
+        if len(out) >= max(1, k):
+            break
+    return out
+
+
+def _diagnose_note(client, addr, src, flags, limit=400, diagnosis=None, byte_feedback=True):
+    """One-line instruction-level mismatch note for the next repair prompt.
+
+    Reuses check_text's diagnostic when available; empty on any failure.
+    """
+    try:
+        if diagnosis is None:
+            target_code, target_relocs, _ = match.target(client, addr)
+            obj = match.compile_text(client, src, flags)
+            funcs = match.coff_functions(obj)
+            if not funcs:
+                return ""
+            best = max(funcs, key=lambda f: match.score(target_code, target_relocs, f[1], f[2]))
+            diagnosis = match.diagnose(target_code, target_relocs, best[1], best[2])
+        diag = diagnosis
+        bits = []
+        if diag["opcode_delta"]:
+            bits.append("opcode %s" % ", ".join(
+                "%s%+d" % item for item in sorted(diag["opcode_delta"].items())[:6]))
+        if diag["register_delta"]:
+            bits.append("regs %s" % ", ".join(
+                "%s%+d" % item for item in sorted(diag["register_delta"].items())[:6]))
+        tb, cb = diag["branches"]["target_jcc"], diag["branches"]["cand_jcc"]
+        if tb != cb:
+            bits.append("branches target=%d yours=%d" % (tb, cb))
+        ts, cs = diag["stack_refs"]["target"], diag["stack_refs"]["cand"]
+        if ts != cs:
+            bits.append("stack refs target=%d yours=%d" % (ts, cs))
+        if byte_feedback and diag["similarity"] >= 0.9 and diag.get("byte_diffs"):
+            bytes_note = ",".join("+%x:%02x>%02x" % (
+                b["offset"], b["target"], b["candidate"]) for b in diag["byte_diffs"][:6])
+            bits.append("same-length byte diffs target>yours %s" % bytes_note)
+        if byte_feedback:
+            for call in diag.get("call_argument_diffs", [])[:2]:
+                bits.append("call #%d stack args (C++ order) target=%s yours=%s" % (
+                    call["call"], ",".join(call["target"]), ",".join(call["candidate"])))
+        if not bits:
+            return ""
+        return ("\n[Mismatch: %s. Fix structure first; same ops with different "
+                "registers need no change.]" % "; ".join(bits))[:limit]
+    except (ValueError, KeyError, match.CompileError):
+        return ""
+
+
+def llm_rounds_k(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
+                 examples=(), source_hints=(), facts=None, stats=None, keep=3, strategy="direct",
+                 provider_options=None, remill_evidence=None, prompt_style="legacy"):
+    """Ask/compile/diff loop. Returns (best score, best source, top-k list)."""
+    from roc import repair as _repair
+    from roc import mutate as _mutate
+    code, _, row = match.target(client, addr)
+    strategy = select_generation_strategy(strategy, model, row)
+    asm = match.disasm(code, int(addr, 16))
+    best = (start[1], start[0]) if start and start[0] else (0, None)
+    seen = {}
+    compiled_best = None
+    if best[1]:
+        try:
+            attempt = (best[1],) + match.check_text(client, addr, best[1], flags)[0:3:2]
+            best = (attempt[1], attempt[0])
+            compiled_best = best
+        except match.CompileError as error:
+            attempt = (best[1], 0, str(error)[-1500:])
+            best = (0, None)
+        seen[_norm_src(attempt[0])] = (attempt[1], attempt[0],
+                                   None if compiled_best else attempt[2], attempt[2])
+    else:
+        attempt = None
+    scored = [(best[0], best[1])] if best[1] else []
+    context = None
+    # Preserve the best candidate, but feed a failed compile back immediately
+    # even when a previous candidate already had a high byte score.
+    err_codes, compiled_any = [], compiled_best is not None
+    requested_diversity = max(1, int((provider_options or {}).get("diverse_candidates", 1) or 1))
+    hard_target = (row.get("size", 0) > 96 or (facts or {}).get("calls", 0) or
+                   int((facts or {}).get("branch_count", 0) or 0) > 1)
+    diverse_rounds = min(rounds, requested_diversity) if hard_target else 1
+    no_think = False  # set after a truncation: reasoning likely ate the budget
+    asm_strikes = 0  # repeat asm dumps rarely learn: 72% repeat after the first
+    retry_output_tokens = None
+    for i in range(rounds):
+        # Near-repair must see its supplied source in round one; explicit
+        # diversity and normal generation retain independent starting draws.
+        independent = i < diverse_rounds and (requested_diversity > 1 or attempt is None or
+                                             not (provider_options or {}).get("near_repair"))
+        full_prompt = prompt_for(client, addr, row, asm, hint,
+                                 None if independent else attempt, flags,
+                                 examples, source_hints, facts or facts_from_asm(asm), strategy,
+                                 compact_rules=(provider_options or {}).get("compact_rules", False),
+                                 binary_only=((provider_options or {}).get("binary_only", False) or
+                                              row.get("size", 0) > (provider_options or {}).get("source_hint_max_size", float("inf"))),
+                                 minimal_layout=(provider_options or {}).get("minimal_layout", False),
+                                 family_exemplars=(provider_options or {}).get("family_exemplars", False),
+                                 near_repair=(provider_options or {}).get("near_repair", False),
+                                 remill_evidence=remill_evidence)
+        if (provider_options or {}).get("show_prompt"):
+            log("=============== API PROMPT (full) ===============\n%s\n================================================" % full_prompt)
+        if independent and i:
+            full_prompt += ("\n\nIndependent candidate %d/%d: use different compact C++ control flow. "
+                            "Still emit exactly one function." % (i + 1, diverse_rounds))
+        # After the first round Ollama already has the target facts and prior
+        # answer in its context. Send only the changing repair section.
+        prompt = full_prompt
+        if not independent and context and "Your previous attempt scored" in full_prompt:
+            prompt = full_prompt[full_prompt.index("Your previous attempt scored"):]
+        ask_options = dict(provider_options or {})
+        ask_options.pop("diverse_candidates", None)
+        ask_options.pop("compact_rules", None)
+        ask_options.pop("binary_only", None)
+        ask_options.pop("source_hint_max_size", None)
+        ask_options.pop("minimal_layout", None)
+        ask_options.pop("reset_truncated", None)
+        ask_options.pop("byte_feedback", None)
+        ask_options.pop("auto_output", None)
+        try:
+            from roc import providers as _providers
+            cloud = _providers.is_cloud(model)
+        except (ValueError, RuntimeError):
+            cloud = False
+        if (cloud and (provider_options or {}).get("thinking", "auto") == "auto" and
+                (model.startswith("deepseek:") or
+                 (row.get("size", 999999) <= 64 and not (facts or row).get("calls", 0)))):
+            # Measured 2026-10-09: with thinking on, DeepSeek reasoning expands
+            # to fill any output budget (4096/8192 fully consumed, 0 output
+            # chars) and medium/large targets emit no code at all. Disabling
+            # it is what lets them generate; "enabled" stays opt-in.
+            no_think = True
+        floor = 8192 if cloud else 0
+        ask_options.setdefault("max_tokens", max(output_budget(row.get("size", 0)), floor))
+        if retry_output_tokens is not None:
+            ask_options["max_tokens"] = retry_output_tokens
+        if no_think:
+            ask_options["thinking"] = "disabled"
+            ask_options.pop("reasoning_effort", None)
+        if strategy == "structured":
+            ask_options.setdefault("temperature", 0.05)
+        if independent:
+            context = None
+            ask_options.setdefault("temperature", min(0.8, 0.2 + 0.2 * i))
+        try:  # old test/mixed-version monkeypatches still return only a pair
+            asked = _ask_context(model, prompt, context, ask_options, details=True)
+        except TypeError:
+            asked = _ask_context(model, prompt, context)
+        reply, context = asked[:2]
+        generation = dict(asked[2] if len(asked) > 2 else {})
+        generated_tokens = generation.pop("output_tokens", 0)
+        src = extract_code(reply)
+        from roc import telemetry
+        if src and getattr(telemetry.local, "emit", None):
+            telemetry.local.emit("draft", round=i + 1, code=src, model=model)
+        finish = generation.get("finish_reason", "")
+        if finish == "length" and (provider_options or {}).get("auto_output"):
+            retry_output_tokens = max(ask_options["max_tokens"], min(4096, ask_options["max_tokens"] * 2))
+        incomplete = source_contract_error(src) if src and finish == "length" else ""
+        if incomplete in ("unbalanced braces", "missing function definition"):
+            log("  round %d: truncated before complete function" % (i + 1))
+            if (provider_options or {}).get("reset_truncated", True):
+                context = None
+                if attempt is None:
+                    attempt = ("// Previous response was truncated before a complete function.", 0,
+                               "Output exceeded the token budget. Emit minimal declarations and one complete "
+                               "function; never enumerate numbered filler fields.")
+            if stats is not None:
+                stats.append({"round": i + 1, "candidate_mode": "independent" if independent else "repair",
+                              "score": 0, "output_chars": len(reply),
+                              "output_tokens": generated_tokens or max(1, len(reply or "") // 4),
+                              "code": False, "truncated_incomplete": True, "truncated": True, **generation})
+            continue
+        if not src:
+            if finish == "length":
+                log("  round %d: truncated at max_tokens=%s (%d chars); reasoning may be eating the budget" % (
+                    i + 1, ask_options.get("max_tokens"), len(reply or "")))
+                if (provider_options or {}).get("reset_truncated", True):
+                    context = None
+                    if attempt is None:
+                        attempt = ("// Previous response ended before a complete function.", 0,
+                                   "Output exceeded the token budget. Emit minimal declarations and one complete "
+                                   "function, not the full class. Use char padding arrays for unknown layout gaps; "
+                                   "never enumerate numbered filler fields.")
+                thinking_mode = (provider_options or {}).get("thinking", "auto")
+                if cloud and not no_think and thinking_mode == "auto":
+                    no_think = True
+                    log("  thinking disabled for remaining rounds")
+            else:
+                log("  round %d: no code in reply" % (i + 1))
+            if stats is not None:
+                stats.append({"round": i + 1, "candidate_mode": "independent" if independent else "repair", "score": 0, "output_chars": len(reply),
+                              "output_tokens": generated_tokens or max(1, len(reply) // 4),
+                              "code": False, "empty_reply": not reply,
+                              "truncated": finish == "length", **generation})
+            continue
+        compile_started = time.monotonic()
+        if _repair.contains_asm(src):
+            error = "Candidate rejected: inline asm is forbidden. Reconstruct compact C++ control flow; do not translate instructions."
+            log("  round %d: rejected inline asm" % (i + 1))
+            if stats is not None:
+                stats.append({"round": i + 1, "strategy": strategy, "score": 0,
+                              "output_chars": len(reply), "output_tokens": generated_tokens or max(1, len(reply) // 4),
+                              "code": True, "source": src, "compile_seconds": 0,
+                              "compile_error": error, "rejected_asm": True, **generation})
+            # The answer itself is a strong continuation cue. Do not retain an asm
+            # dump in Ollama's chat context or paste it back into the next prompt.
+            # Start a fresh generation from target facts plus the rejection instead.
+            context = None
+            attempt = ("// Previous output rejected: it used inline asm.", 0, error)
+            err_codes.append("inline-asm")
+            asm_strikes += 1
+            if asm_strikes >= 2:
+                log("  stopping early: inline asm twice in a row, model is not learning")
+                if stats is not None:
+                    stats.append({"round": "early-stop",
+                                  "reason": "inline asm x2", "code": "inline-asm"})
+                break
+            continue
+        if invalid_qualified_definition(src):
+            error = ("Candidate rejected: qualified struct/class definitions are invalid C++. "
+                     "Declare the type inside namespace or use a local unqualified struct.")
+            log("  round %d: rejected qualified type definition" % (i + 1))
+            if stats is not None:
+                stats.append({"round": i + 1, "strategy": strategy, "score": 0,
+                              "output_chars": len(reply), "output_tokens": generated_tokens or max(1, len(reply) // 4),
+                              "code": True, "source": src, "compile_seconds": 0,
+                              "compile_error": error, "rejected_qualified_type": True, **generation})
+            context = None
+            attempt = ("// Previous output rejected: qualified type definition.", 0, error)
+            err_codes.append("qualified-type")
+            continue
+        contract_error = source_contract_error(src)
+        if contract_error:
+            error = "Candidate rejected: %s. Emit one complete C++ function definition." % contract_error
+            if contract_error == "invented numbered-field layout":
+                error += " Use one char padding array per gap; do not enumerate filler fields."
+            log("  round %d: rejected %s" % (i + 1, contract_error))
+            if stats is not None:
+                stats.append({"round": i + 1, "strategy": strategy, "score": 0,
+                              "output_chars": len(reply), "output_tokens": generated_tokens or max(1, len(reply) // 4),
+                              "code": True, "source": src, "compile_seconds": 0,
+                              "compile_error": error, "rejected_contract": True, **generation})
+            context = None
+            attempt = ("// Previous output rejected: %s." % contract_error, 0, error)
+            err_codes.append("source-contract")
+            continue
+        asm_strikes = 0  # reached real compile: any later asm dump is a new streak
+        compile_error = None
+        diag = None
+        repaired, duplicate = [], False
+        reply_src = src  # unmodified LLM output, kept for comparison
+        san = re.sub(r"(?m)^\s*//\s*roc-(?:lib|archive|cl|flags|lang):[^\r\n]*", "", src)
+        if san != src:
+            src = san
+            repaired.append("sanitize-directives")
+        key = _norm_src(src)
+        if key in seen:
+            score, src = seen[key][:2]
+            duplicate = True
+            compile_error = seen[key][2]
+            this = (src, score, seen[key][3])
+        else:
+            try:
+                checked = match.check_text(client, addr, src, flags, include_diagnosis=True)
+                score, _, d, _ = checked[:4]
+                try:
+                    score = int(score)
+                except (ValueError, TypeError):
+                    score = 0
+                diag = checked[4] if len(checked) > 4 else None
+                this = (src, score, d)
+                if 0 < score < 100:
+                    note = _diagnose_note(client, addr, src, flags, diagnosis=diag,
+                                          byte_feedback=(provider_options or {}).get("byte_feedback", True))
+                    if note:
+                        this = (src, score, d + note)
+            except match.CompileError as error:
+                raw = str(error)
+                rscore, rsrc, _, rdiff, _, applied, rerr = _repair.repair_loop(
+                    client, addr, src, flags, check=match.check_text)
+                if applied:
+                    repaired.extend(applied)
+                if rerr is None:
+                    score, src = rscore, rsrc
+                    this = (src, score, rdiff)
+                    try:
+                        _score = int(score)
+                    except (ValueError, TypeError):
+                        _score = 0
+                    if 0 < _score < 100 and (provider_options or {}).get("byte_feedback", True):
+                        note = _diagnose_note(client, addr, src, flags,
+                                              byte_feedback=(provider_options or {}).get("byte_feedback", True))
+                        if note:
+                            this = (src, score, rdiff + note)
+                else:
+                    compile_error = rerr[-500:]
+                    failure_class = compile_failure_class(compile_error)
+                    if failure_class:
+                        compile_error = "[%s] %s" % (failure_class, compile_error)
+                    score, this = 0, (src, 0, compile_error)
+            seen[key] = (score, src, compile_error, this[2])
+            if key != _norm_src(this[0]):
+                seen[_norm_src(this[0])] = (this[1], this[0], compile_error, this[2])
+        log("  round %d: %d%%" % (i + 1, score))
+        if stats is not None:
+            entry = {"round": i + 1, "strategy": strategy, "candidate_mode": "independent" if independent else "repair", "score": score, "output_chars": len(reply),
+                     "output_tokens": generated_tokens or max(1, len(reply) // 4), "code": True,
+                     "source": src,
+                     "mismatch_class": diag.get("mismatch_class") if diag else None,
+                     "compile_seconds": round(time.monotonic() - compile_started, 3),
+                     "compile_error": compile_error, "repaired": repaired,
+                     "duplicate": duplicate, **generation}
+            if repaired:
+                entry["pre_repair_source"] = reply_src
+            stats.append(entry)
+        if compile_error is None and not duplicate:
+            compiled_any = True
+            if compiled_best is None or score > compiled_best[0]:
+                compiled_best = (score, src)
+        elif compile_error:
+            err_codes.append((_repair.parse_error_codes(compile_error) or ["?"])[0])
+        if compile_error or attempt is None or score > attempt[1] or (score == 0 and attempt[1] == 0):
+            attempt = this
+        if score > best[0] or best[1] is None:
+            best = (score, src)
+        scored.append((score, src))
+        if score == 100:
+            break
+        if (not compiled_any and len(err_codes) >= 3
+                and err_codes[-1] != "?" and err_codes[-3:] == [err_codes[-1]] * 3):
+            log("  stopping early: 3 straight %s compile failures, nothing compiled yet"
+                % err_codes[-1])
+            if stats is not None:
+                stats.append({"round": "early-stop",
+                              "reason": "same compile error x3", "code": err_codes[-1]})
+            break
+    if compiled_best is not None:
+        try:
+            _best_score = int(best[0]) if best[0] else 0
+        except (ValueError, TypeError):
+            _best_score = 0
+        if _best_score < 100:
+            result = _mutate.improve(client, addr, compiled_best[1], flags,
+                                     guided=bool((provider_options or {}).get("guided_mutations")))
+            mscore, msrc, tried = result[0], result[1], result[2]
+            if stats is not None:
+                guided = bool((provider_options or {}).get("guided_mutations"))
+                stats.append({"round": "mutate", "score": mscore, "code": True,
+                              "source": msrc, "tried": tried,
+                              "mutations": result.mutations,
+                              "initial_score": compiled_best[0],
+                              "exact_conversion": int(compiled_best[0]) < 100 if compiled_best[0] else False and mscore == 100,
+                              "guided": guided,
+                              "speculative": result.speculative})
+            if mscore > best[0]:
+                best = (mscore, msrc)
+            scored.append((mscore, msrc))
+    if os.environ.get("ROCONSTRUCT_LIVE_CODE", "1") != "0" and best[1]:
+        preview = "\n".join(best[1].splitlines()[:24])
+        if len(best[1].splitlines()) > 24:
+            preview += "\n..."
+        log("  generated source (final %d%%):\n%s" % (best[0], preview))
+    topk = select_topk(scored, keep)
+    if stats is not None:
+        stats.append({"round": "topk", "topk": [{"score": s, "source": s_src} for s, s_src in topk]})
+    return best[0], best[1], topk
+
+
+def llm_rounds(client, addr, model, rounds=4, hint=None, start=None, log=print, flags=None,
+               examples=(), source_hints=(), facts=None, stats=None, strategy="direct", provider_options=None,
+               remill_evidence=None, prompt_style="legacy"):
+    """Ask/compile/diff loop. Returns (best score, best source). Keeps top-3 in stats."""
+    prompt_style = prompt_style if prompt_style != "legacy" else (provider_options or {}).get("prompt_style", "legacy")
+    score, src, _ = llm_rounds_k(client, addr, model, rounds, hint, start, log, flags,
+                                 examples, source_hints, facts, stats, strategy=strategy,
+                                 provider_options=provider_options, remill_evidence=remill_evidence,
+                                 prompt_style=prompt_style)
+    return score, src

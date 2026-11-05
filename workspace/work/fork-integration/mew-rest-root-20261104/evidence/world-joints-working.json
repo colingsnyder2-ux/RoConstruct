@@ -1,0 +1,2468 @@
+{
+  "class": "RBX::Joint, RigidJoint, WeldJoint, SnapJoint, MultiJoint, RotateJoint, DynamicRotateJoint, RotatePJoint, RotateVJoint, GlueJoint, MotorJoint; RBX::Connector, ContactConnector, PointToPointBreakConnector, NormalBreakConnector, RotateConnector",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJointsLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\tests\\NativeWorldJointsLayout.cpp"
+    ],
+    "clayout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJointsConnectorLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\tests\\NativeWorldJointsConnectorLayout.cpp"
+    ],
+    "joint": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJoints_joint.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\WorldJoint.cpp"
+    ],
+    "rigid": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJoints_rigid.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\WorldJointRigid.cpp"
+    ],
+    "multi": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJoints_multi.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\WorldJointMulti.cpp"
+    ],
+    "rotate": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJoints_rotate.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\WorldJointRotate.cpp"
+    ],
+    "glue": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJoints_glue.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\WorldJointGlue.cpp"
+    ],
+    "motor": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJoints_motor.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\WorldJointMotor.cpp"
+    ],
+    "connector": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJoints_connector.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\KernelConnector.cpp"
+    ],
+    "motor_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\world-joints-pending",
+      "/DNATIVE_WORLD_JOINTS_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldJoints_motor_pending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\WorldJointMotor.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_world_joints.py": "c7abf28d8e237a46dd0f73422f6bd4f084b625199449f896ee0e1d4c826311ae",
+    "rebuild/2008-06/tests/NativeWorldJointsLayout.cpp": "f39a7cfe5a8f19cc3f0177ba33de2cc64d07ea4b26728a1511d17abd55da157d",
+    "rebuild/2008-06/tests/NativeWorldJointsConnectorLayout.cpp": "3c3218b2dff9c161829e0e0225d12c0ce716679f5388aefeb9acfe340f902a08",
+    "rebuild/2008-06/native-classes/WorldJoint.cpp": "9cdd6346ec1aa878fdf6fb4ac3eebeb8396b88d7e7cd6b8a19e49bedae373ba5",
+    "rebuild/2008-06/native-classes/WorldJointRigid.cpp": "befdef7d3490cd77450d6b03fee7839b00a5cc2063c52237643109c0c4e4ba36",
+    "rebuild/2008-06/native-classes/WorldJointMulti.cpp": "15e27774d33c5dcc2b9fb8fe480fadbe525b5d07f37af0f51e154794af9591a0",
+    "rebuild/2008-06/native-classes/WorldJointRotate.cpp": "8ae4139597cbe1b1f6bdcc9bd8a757d3278c296c62db5914654536f4cbf7f592",
+    "rebuild/2008-06/native-classes/WorldJointGlue.cpp": "e3ed761b08023243799d09b8fa39cca66c5e393ea74b1365078302d6a1a2897e",
+    "rebuild/2008-06/native-classes/WorldJointMotor.cpp": "75a6a364d6887edbcc78c3231e791d7dd2ef4aba8692e60ce6e4b23c6b06b54b",
+    "rebuild/2008-06/native-classes/KernelConnector.cpp": "0784846ae44771c4fc337c2df7a4ba22c3fe4ba51357b115bbdc17db848add75",
+    "rebuild/2008-06/native-headers/v8world/Joints2008.h": "34963f4cb945c0abe4367d5b391def1f33896897cd6e277f41573015bd1500cc",
+    "rebuild/2008-06/native-headers/v8kernel/Connector2008.h": "bd9c8cf66667b8c3fdefe81861f6f35183e97205ec117f603b832aac7e57ff29"
+  },
+  "objects": {
+    "NativeWorldJointsLayout.obj": "82b815827fd418ca6d4ff4b2e8d3ef02d4ee2345df37a9eeeb9d317de83bc541",
+    "NativeWorldJointsConnectorLayout.obj": "7b685511ef35c3881f62c181675bba8da1b352119d8cb9da3c9f411723fc7774",
+    "NativeWorldJoints_joint.obj": "b4879065c017e578bb9712a294ab5f8be0aaef1ae1272ca84a8836e70681df37",
+    "NativeWorldJoints_rigid.obj": "9d74f1869c5dce6f8d321bc7026d2ad9662f9f5c503e463e97963927d39f7a97",
+    "NativeWorldJoints_multi.obj": "c83aa120bb3c8be561757546a8179276530403133f5106a2b480f23617fe22b4",
+    "NativeWorldJoints_rotate.obj": "44e594a247bc06bf9c0c1c946a8556e8447fdd762c7661b678be56e5910a376d",
+    "NativeWorldJoints_glue.obj": "e1d6032a6812d8fe1337c0a49a219abf8adde3c0a40ef80ddb84c117223859cd",
+    "NativeWorldJoints_motor.obj": "32b6acc37fb53806b2a259b4dd73ee768fd5151e63d80462f4a5a38b2dd481a6",
+    "NativeWorldJoints_connector.obj": "8b87548ff4d4efd5ee0a4c6368a93eed0524dc1c7218abf1975002dd928ec210",
+    "NativeWorldJoints_motor_pending.obj": "25db85e2c7630283798da53fabc7b581bd63b8c3d536e774ad5060def6dc11a5"
+  },
+  "layout": {
+    "Joint": "0x88: Edge (0x20), jointOwner +0x20, active +0x24, jointCoord0 +0x28, jointCoord1 +0x58 (006455c0)",
+    "MultiJoint": "0xc0: numConnector +0x88, point[8] +0x8c, connector[4] +0xac, numBreakingConnectors +0xbc (006468a0)",
+    "RotateJoint": "0xc4 (00645e40): rotateConnector +0xc0",
+    "DynamicRotateJoint / RotatePJoint / RotateVJoint": "0xc8 (00645e40): channelValue +0xc4 (analog name)",
+    "GlueJoint": "0x120 (00646f60): overlapInP0 +0xc0, overlapInP1 +0xf0",
+    "MotorJoint": "0x98: link +0x88, currentAngle +0x8c, maxVelocity +0x90, desiredAngle +0x94 (005e5bf0)",
+    "Connector": "0x8: vptr, KernelIndex +0x4 (RTTI mdisp 4)",
+    "ContactConnector": "0x50 (00606d40): geoPair +0x8, k +0x2c, kFriction +0x30, kNeg +0x34, firstApproach +0x38, threshold +0x3c, forceMagLast +0x40, frictionOffset +0x44",
+    "PointToPointBreakConnector": "0x1c (00646550): point0 +0x8, point1 +0xc, k +0x10, breakForce +0x14, broken +0x18",
+    "NormalBreakConnector": "0x20 (00647190): normalIdBody0 +0x1c",
+    "RotateConnector": "0x34 (00646550, 00606170): k +0x8, base0 +0xc, ray0 +0x10, ref0 +0x14, ref1 +0x18, lastRotation +0x1c, windings +0x20, kernelInput +0x24"
+  },
+  "rows": {
+    "joint": [
+      {
+        "address": "006455c0",
+        "symbol": "??0Joint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+        "size": 187,
+        "target_size": 187,
+        "exact": true,
+        "verified_targets": {
+          "??0Edge@RBX@@QAE@PAVPrimitive@1@0@Z": "0x659260 (external (evidence name))",
+          "??_7Joint@RBX@@6B@": "0x84ad44 (vtable RTTI .?AVJoint@RBX@@ offset 0x0)",
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "__real@3dcccccd": "0x81e704 (constant 3dcccccd)",
+          "?snapToGrid@Math@RBX@@SA?AVCoordinateFrame@G3D@@ABV34@M@Z": "0x5deed0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006456a0",
+        "symbol": "??0Joint@RBX@@IAE@XZ",
+        "size": 49,
+        "target_size": 49,
+        "exact": true,
+        "verified_targets": {
+          "??0Edge@RBX@@QAE@PAVPrimitive@1@0@Z": "0x659260 (external (evidence name))",
+          "??_7Joint@RBX@@6B@": "0x84ad44 (vtable RTTI .?AVJoint@RBX@@ offset 0x0)",
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645490",
+        "symbol": "??1Joint@RBX@@UAE@XZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {
+          "??_7Joint@RBX@@6B@": "0x84ad44 (vtable RTTI .?AVJoint@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645680",
+        "symbol": "??_GJoint@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??_7Joint@RBX@@6B@": "0x84ad44 (vtable RTTI .?AVJoint@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645560",
+        "symbol": "?canBuildJointTight@Joint@RBX@@KA_NPAVPrimitive@2@0W4NormalId@2@1@Z",
+        "size": 45,
+        "target_size": 45,
+        "exact": true,
+        "verified_targets": {
+          "__real@3c23d70a": "0x82748c (constant 3c23d70a)",
+          "?canBuildJoint@Joint@RBX@@CA_NPAVPrimitive@2@0W4NormalId@2@1MM@Z": "0x6454b0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645590",
+        "symbol": "?canBuildJointLoose@Joint@RBX@@KA_NPAVPrimitive@2@0W4NormalId@2@1@Z",
+        "size": 45,
+        "target_size": 45,
+        "exact": true,
+        "verified_targets": {
+          "__real@3d4ccccd": "0x81c430 (constant 3d4ccccd)",
+          "?canBuildJoint@Joint@RBX@@CA_NPAVPrimitive@2@0W4NormalId@2@1MM@Z": "0x6454b0 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "rigid": [
+      {
+        "address": "00645930",
+        "symbol": "?getChildInParent@RigidJoint@RBX@@QAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 67,
+        "target_size": 67,
+        "exact": true,
+        "verified_targets": {
+          "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ": "0x478330 (external (evidence name))",
+          "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z": "0x476700 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "multi": [
+      {
+        "address": "006468a0",
+        "symbol": "?init@MultiJoint@RBX@@AAEXH@Z",
+        "size": 93,
+        "target_size": 93,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00646900",
+        "symbol": "??0MultiJoint@RBX@@IAE@H@Z",
+        "size": 32,
+        "target_size": 32,
+        "exact": true,
+        "verified_targets": {
+          "??0Joint@RBX@@IAE@XZ": "0x6456a0 (own row)",
+          "??_7MultiJoint@RBX@@6B@": "0x84ae14 (vtable RTTI .?AVMultiJoint@RBX@@ offset 0x0)",
+          "?init@MultiJoint@RBX@@AAEXH@Z": "0x6468a0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00646920",
+        "symbol": "??0MultiJoint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1H@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {
+          "??0Joint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z": "0x6455c0 (own row)",
+          "??_7MultiJoint@RBX@@6B@": "0x84ae14 (vtable RTTI .?AVMultiJoint@RBX@@ offset 0x0)",
+          "?init@MultiJoint@RBX@@AAEXH@Z": "0x6468a0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00646960",
+        "symbol": "??1MultiJoint@RBX@@MAE@XZ",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_7MultiJoint@RBX@@6B@": "0x84ae14 (vtable RTTI .?AVMultiJoint@RBX@@ offset 0x0)",
+          "??1Joint@RBX@@UAE@XZ": "0x645490 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00646970",
+        "symbol": "?putInKernel@MultiJoint@RBX@@MAEXPAVKernel@2@@Z",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z": "0x645830 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00646980",
+        "symbol": "?addToMultiJoint@MultiJoint@RBX@@IAEXPAVPoint@2@0PAVConnector@2@@Z",
+        "size": 79,
+        "target_size": 79,
+        "exact": true,
+        "verified_targets": {
+          "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ": "0x645850 (external)",
+          "?insertConnector@Kernel@RBX@@QAEXPAVConnector@2@@Z": "0x5fb160 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006469d0",
+        "symbol": "?getPoint@MultiJoint@RBX@@IAEPAVPoint@2@H@Z",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006469e0",
+        "symbol": "?removeFromKernel@MultiJoint@RBX@@MAEXXZ",
+        "size": 153,
+        "target_size": 153,
+        "exact": true,
+        "verified_targets": {
+          "?getKernel@IPipelined@RBX@@QBEPAVKernel@2@XZ": "0x645850 (external)",
+          "?removeConnector@Kernel@RBX@@QAEXPAVConnector@2@@Z": "0x5fb1f0 (external)",
+          "?deletePoint@Kernel@RBX@@QAEXPAVPoint@2@@Z": "0x5fb3c0 (external)",
+          "?removeFromKernel@IPipelined@RBX@@UAEXXZ": "0x645860 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00646a80",
+        "symbol": "?isBroken@MultiJoint@RBX@@MBE_NXZ",
+        "size": 58,
+        "target_size": 58,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00646ac0",
+        "symbol": "??_GMultiJoint@RBX@@MAEPAXI@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "??_7MultiJoint@RBX@@6B@": "0x84ae14 (vtable RTTI .?AVMultiJoint@RBX@@ offset 0x0)",
+          "??1Joint@RBX@@UAE@XZ": "0x645490 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "rotate": [
+      {
+        "address": "00645a90",
+        "symbol": "??0RotateJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {
+          "??0MultiJoint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1H@Z": "0x646920 (own row)",
+          "??_7RotateJoint@RBX@@6B@": "0x84adc4 (vtable RTTI .?AVRotateJoint@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645a70",
+        "symbol": "??0RotateJoint@RBX@@QAE@XZ",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??0MultiJoint@RBX@@IAE@H@Z": "0x646900 (own row)",
+          "??_7RotateJoint@RBX@@6B@": "0x84adc4 (vtable RTTI .?AVRotateJoint@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645ad0",
+        "symbol": "??1RotateJoint@RBX@@UAE@XZ",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_7RotateJoint@RBX@@6B@": "0x84adc4 (vtable RTTI .?AVRotateJoint@RBX@@ offset 0x0)",
+          "??1MultiJoint@RBX@@MAE@XZ": "0x646960 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645ae0",
+        "symbol": "?removeFromKernel@RotateJoint@RBX@@EAEXXZ",
+        "size": 15,
+        "target_size": 15,
+        "exact": true,
+        "verified_targets": {
+          "?removeFromKernel@MultiJoint@RBX@@MAEXXZ": "0x6469e0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645cb0",
+        "symbol": "?stepWorld@RotatePJoint@RBX@@EAEXXZ",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "verified_targets": {
+          "?kernelStepsPerUiStep@Constants@RBX@@SA?BHXZ": "0x6492d0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645d00",
+        "symbol": "?stepWorld@RotateVJoint@RBX@@EAEXXZ",
+        "size": 81,
+        "target_size": 81,
+        "exact": true,
+        "verified_targets": {
+          "?worldStepsPerUiStep@Constants@RBX@@SA?BHXZ": "0x63e420 (external)",
+          "?kernelStepsPerWorldStep@Constants@RBX@@SA?BHXZ": "0x6492d0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645d90",
+        "symbol": "??0RotatePJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+        "size": 62,
+        "target_size": 62,
+        "exact": true,
+        "verified_targets": {
+          "??0MultiJoint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1H@Z": "0x646920 (own row)",
+          "??_7RotatePJoint@RBX@@6B@": "0x83e13c (vtable RTTI .?AVRotatePJoint@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645dd0",
+        "symbol": "??0RotateVJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z",
+        "size": 62,
+        "target_size": 62,
+        "exact": true,
+        "verified_targets": {
+          "??0MultiJoint@RBX@@IAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1H@Z": "0x646920 (own row)",
+          "??_7RotateVJoint@RBX@@6B@": "0x83e17c (vtable RTTI .?AVRotateVJoint@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645e10",
+        "symbol": "??_GRotateJoint@RBX@@UAEPAXI@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "??_7RotateJoint@RBX@@6B@": "0x84adc4 (vtable RTTI .?AVRotateJoint@RBX@@ offset 0x0)",
+          "??1MultiJoint@RBX@@MAE@XZ": "0x646960 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645e40",
+        "symbol": "?surfaceTypeToJoint@RotateJoint@RBX@@CAPAV12@W4SurfaceType@2@PAVPrimitive@2@1ABVCoordinateFrame@G3D@@2@Z",
+        "size": 278,
+        "target_size": 278,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0RotatePJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z": "0x645d90 (own row)",
+          "??0RotateVJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z": "0x645dd0 (own row)",
+          "??0RotateJoint@RBX@@QAE@PAVPrimitive@1@0ABVCoordinateFrame@G3D@@1@Z": "0x645a90 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?surfaceTypeToJoint@RotateJoint@RBX@@CAPAV12@W4SurfaceType@2@PAVPrimitive@2@1ABVCoordinateFrame@G3D@@2@Z"
+        ]
+      }
+    ],
+    "glue": [
+      {
+        "address": "00646b60",
+        "symbol": "??0GlueJoint@RBX@@QAE@XZ",
+        "size": 166,
+        "target_size": 166,
+        "exact": true,
+        "verified_targets": {
+          "??0MultiJoint@RBX@@IAE@H@Z": "0x646900 (own row)",
+          "??_7GlueJoint@RBX@@6B@": "0x84ae7c (vtable RTTI .?AVGlueJoint@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00646c10",
+        "symbol": "?getMaxForce@GlueJoint@RBX@@AAEMXZ",
+        "size": 138,
+        "target_size": 138,
+        "exact": true,
+        "verified_targets": {
+          "?getKmsMaxJointForce@Constants@RBX@@SA?BMMM@Z": "0x649670 (external)",
+          "?kmsForceToRbx@Units@RBX@@SAMM@Z": "0x6601b0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00646ca0",
+        "symbol": "??_GGlueJoint@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1MultiJoint@RBX@@MAE@XZ": "0x646960 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "motor": [
+      {
+        "address": "005e5bf0",
+        "symbol": "??0MotorJoint@RBX@@QAE@XZ",
+        "size": 151,
+        "target_size": 151,
+        "exact": true,
+        "verified_targets": {
+          "??0Joint@RBX@@IAE@XZ": "0x6456a0 (own row)",
+          "??_7MotorJoint@RBX@@6B@": "0x83f764 (vtable RTTI .?AVMotorJoint@RBX@@ offset 0x0)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0Link@RBX@@QAE@XZ": "0x613d20 (external (evidence name))",
+          "??_7RevoluteLink@RBX@@6B@": "0x83f75c (vtable RTTI .?AVRevoluteLink@RBX@@ offset 0x0)"
+        },
+        "local_eh": [
+          "__ehhandler$??0MotorJoint@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "005e5e00",
+        "symbol": "??1MotorJoint@RBX@@UAE@XZ",
+        "size": 102,
+        "target_size": 102,
+        "exact": true,
+        "verified_targets": {
+          "??_7MotorJoint@RBX@@6B@": "0x83f764 (vtable RTTI .?AVMotorJoint@RBX@@ offset 0x0)",
+          "??1Link@RBX@@QAE@XZ": "0x47d410 (folded)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1Joint@RBX@@UAE@XZ": "0x645490 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??1MotorJoint@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "005e5e70",
+        "symbol": "?stepUi@MotorJoint@RBX@@UAEXH@Z",
+        "size": 102,
+        "target_size": 102,
+        "exact": true,
+        "verified_targets": {
+          "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z": "0x5e5da0 (call target bound at the call site (row not built / pending))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e5ee0",
+        "symbol": "??_GMotorJoint@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1MotorJoint@RBX@@UAE@XZ": "0x5e5e00 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      }
+    ],
+    "layout": [
+      {
+        "address": "005e2760",
+        "symbol": "??_GRigidJoint@RBX@@UAEPAXI@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "??_7RigidJoint@RBX@@6B@": "0x83e07c (vtable RTTI .?AVRigidJoint@RBX@@ offset 0x0)",
+          "??1Joint@RBX@@UAE@XZ": "0x645490 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e28e0",
+        "symbol": "??_GRotatePJoint@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1RotateJoint@RBX@@UAE@XZ": "0x645ad0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e28c0",
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "size": 18,
+        "target_size": 18,
+        "exact": true,
+        "verified_targets": {
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "connector": [
+      {
+        "address": "00606150",
+        "symbol": "?getBody@PointToPointBreakConnector@RBX@@UAEPAVBody@2@H@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00606170",
+        "symbol": "??0RotateConnector@RBX@@QAE@PAVPoint@1@000MM@Z",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??_7RotateConnector@RBX@@6B@": "0x842804 (vtable RTTI .?AVRotateConnector@RBX@@ offset 0x0)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006061d0",
+        "symbol": "?getBody@RotateConnector@RBX@@UAEPAVBody@2@H@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "006061f0",
+        "symbol": "?potentialEnergy@PointToPointBreakConnector@RBX@@UAEMXZ",
+        "size": 58,
+        "target_size": 58,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)"
+        },
+        "local_eh": []
+      }
+    ],
+    "clayout": [
+      {
+        "address": "00606d40",
+        "symbol": "??0ContactConnector@RBX@@QAE@MMM@Z",
+        "size": 183,
+        "target_size": 183,
+        "exact": true,
+        "verified_targets": {
+          "??_7ContactConnector@RBX@@6B@": "0x842834 (vtable RTTI .?AVContactConnector@RBX@@ offset 0x0)",
+          "??0GeoPair@RBX@@QAE@XZ": "0x613060 (external (evidence name))",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (data)"
+        },
+        "local_eh": [
+          "__ehhandler$??0ContactConnector@RBX@@QAE@MMM@Z"
+        ]
+      },
+      {
+        "address": "006062c0",
+        "symbol": "??_GConnector@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??_7Connector@RBX@@6B@": "0x83d1f4 (vtable RTTI .?AVConnector@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00645a60",
+        "symbol": "?getBroken@PointToPointBreakConnector@RBX@@UAE_NXZ",
+        "size": 4,
+        "target_size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00606230",
+        "symbol": "?getBody@ContactConnector@RBX@@UAEPAVBody@2@H@Z",
+        "size": 19,
+        "target_size": 19,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "not_exact": [
+      {
+        "address": "00606250",
+        "symbol": "?canThrottle@ContactConnector@RBX@@UBE_NXZ",
+        "size": 27,
+        "target_size": 27,
+        "exact": false,
+        "reason": "the donor v8kernel/Body.h puts Body::canThrottle at +0x24; the 2008 body reads +0x30 of both bodies (no native Body header yet); everything else in the body is identical"
+      }
+    ],
+    "pending_build_only": [
+      {
+        "address": "005e5da0",
+        "symbol": "?setCurrentAngle@MotorJoint@RBX@@QAEXM@Z",
+        "size": 88,
+        "target_size": 88,
+        "exact": false,
+        "verified_targets": {
+          "?dirty@Link@RBX@@IAEXXZ": "0x613cb0 (external)"
+        },
+        "local_eh": [],
+        "pending_build_exact": true,
+        "status": "pending-build-only",
+        "reason": "exact only with the generated v8kernel/IStage.h (KERNEL_STAGE = 7); the donor IStage.h compares the stage with 8"
+      }
+    ]
+  },
+  "fold_proof": [
+    {
+      "symbol": "??_GWeldJoint@RBX@@UAEPAXI@Z",
+      "folded_into": "005e2760",
+      "body_equal": true,
+      "counted": false
+    },
+    {
+      "symbol": "??_GSnapJoint@RBX@@UAEPAXI@Z",
+      "folded_into": "005e2760",
+      "body_equal": true,
+      "counted": false
+    },
+    {
+      "symbol": "??_GRotateVJoint@RBX@@UAEPAXI@Z",
+      "folded_into": "005e28e0",
+      "body_equal": true,
+      "counted": false
+    },
+    {
+      "symbol": "??_GContactConnector@RBX@@UAEPAXI@Z",
+      "folded_into": "006062c0",
+      "body_equal": true,
+      "counted": false
+    },
+    {
+      "symbol": "??_GPointToPointBreakConnector@RBX@@UAEPAXI@Z",
+      "folded_into": "006062c0",
+      "body_equal": true,
+      "counted": false
+    },
+    {
+      "symbol": "??_GNormalBreakConnector@RBX@@UAEPAXI@Z",
+      "folded_into": "006062c0",
+      "body_equal": true,
+      "counted": false
+    },
+    {
+      "symbol": "??_GRotateConnector@RBX@@UAEPAXI@Z",
+      "folded_into": "006062c0",
+      "body_equal": true,
+      "counted": false
+    }
+  ],
+  "exact_function_rows": [
+    "005e2760",
+    "005e28c0",
+    "005e28e0",
+    "005e5bf0",
+    "005e5e00",
+    "005e5e70",
+    "005e5ee0",
+    "00606150",
+    "00606170",
+    "006061d0",
+    "006061f0",
+    "00606230",
+    "006062c0",
+    "00606d40",
+    "00645490",
+    "00645560",
+    "00645590",
+    "006455c0",
+    "00645680",
+    "006456a0",
+    "00645930",
+    "00645a60",
+    "00645a70",
+    "00645a90",
+    "00645ad0",
+    "00645ae0",
+    "00645cb0",
+    "00645d00",
+    "00645d90",
+    "00645dd0",
+    "00645e10",
+    "00645e40",
+    "006468a0",
+    "00646900",
+    "00646920",
+    "00646960",
+    "00646970",
+    "00646980",
+    "006469d0",
+    "006469e0",
+    "00646a80",
+    "00646ac0",
+    "00646b60",
+    "00646c10",
+    "00646ca0"
+  ],
+  "vtables": {
+    "Joint": [
+      {
+        "slot": 0,
+        "symbol": "??_EJoint@RBX@@UAEPAXI@Z",
+        "original": "00645680",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z",
+        "original": "00645830",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@IPipelined@RBX@@UAEXXZ",
+        "original": "00645860",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@Joint@RBX@@UBE?AW4JointType@12@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "005e28c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "RigidJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_ERigidJoint@RBX@@UAEPAXI@Z",
+        "original": "005e2760",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z",
+        "original": "00645830",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@IPipelined@RBX@@UAEXXZ",
+        "original": "00645860",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@Joint@RBX@@UBE?AW4JointType@12@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@RigidJoint@RBX@@UAE_NXZ",
+        "original": "00645870",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@RigidJoint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "006458d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "WeldJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_EWeldJoint@RBX@@UAEPAXI@Z",
+        "original": "005e2760",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z",
+        "original": "00645830",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@IPipelined@RBX@@UAEXXZ",
+        "original": "00645860",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@WeldJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "original": "005cb9d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@RigidJoint@RBX@@UAE_NXZ",
+        "original": "00645870",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@RigidJoint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "006458d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "SnapJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_ESnapJoint@RBX@@UAEPAXI@Z",
+        "original": "005e2760",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z",
+        "original": "00645830",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@IPipelined@RBX@@UAEXXZ",
+        "original": "00645860",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@SnapJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "original": "0077d800",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@RigidJoint@RBX@@UAE_NXZ",
+        "original": "00645870",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@RigidJoint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "006458d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "MultiJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_EMultiJoint@RBX@@MAEPAXI@Z",
+        "original": "00646ac0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@MultiJoint@RBX@@MAEXPAVKernel@2@@Z",
+        "original": "00646970",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@MultiJoint@RBX@@MAEXXZ",
+        "original": "006469e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@Joint@RBX@@UBE?AW4JointType@12@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@MultiJoint@RBX@@MBE_NXZ",
+        "original": "00646a80",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "005e28c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "RotateJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_ERotateJoint@RBX@@UAEPAXI@Z",
+        "original": "00645e10",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@RotateJoint@RBX@@EAEXPAVKernel@2@@Z",
+        "original": "00646550",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@RotateJoint@RBX@@EAEXXZ",
+        "original": "00645ae0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@RotateJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "original": "007286a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@MultiJoint@RBX@@MBE_NXZ",
+        "original": "00646a80",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "005e28c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "RotatePJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_ERotatePJoint@RBX@@UAEPAXI@Z",
+        "original": "005e28e0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@RotateJoint@RBX@@EAEXPAVKernel@2@@Z",
+        "original": "00646550",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@RotateJoint@RBX@@EAEXXZ",
+        "original": "00645ae0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@RotatePJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "original": "0077d810",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@MultiJoint@RBX@@MBE_NXZ",
+        "original": "00646a80",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "005e28c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@DynamicRotateJoint@RBX@@EBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@DynamicRotateJoint@RBX@@EBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@RotatePJoint@RBX@@EAEXXZ",
+        "original": "00645cb0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@DynamicRotateJoint@RBX@@EAEXH@Z",
+        "original": "006463f0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "RotateVJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_ERotateVJoint@RBX@@UAEPAXI@Z",
+        "original": "005e28e0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@RotateJoint@RBX@@EAEXPAVKernel@2@@Z",
+        "original": "00646550",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@RotateJoint@RBX@@EAEXXZ",
+        "original": "00645ae0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@RotateVJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "original": "005e2790",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@MultiJoint@RBX@@MBE_NXZ",
+        "original": "00646a80",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "005e28c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@DynamicRotateJoint@RBX@@EBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@DynamicRotateJoint@RBX@@EBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@RotateVJoint@RBX@@EAEXXZ",
+        "original": "00645d00",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@DynamicRotateJoint@RBX@@EAEXH@Z",
+        "original": "006463f0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "GlueJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_EGlueJoint@RBX@@UAEPAXI@Z",
+        "original": "00646ca0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@GlueJoint@RBX@@EAEXPAVKernel@2@@Z",
+        "original": "00647190",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@MultiJoint@RBX@@MAEXXZ",
+        "original": "006469e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@GlueJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "original": "006fa3f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@GlueJoint@RBX@@EBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@MultiJoint@RBX@@MBE_NXZ",
+        "original": "00646a80",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@Joint@RBX@@UAE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "005e28c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@Joint@RBX@@UAEXH@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "MotorJoint": [
+      {
+        "slot": 0,
+        "symbol": "??_EMotorJoint@RBX@@UAEPAXI@Z",
+        "original": "005e5ee0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z",
+        "original": "00645830",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeFromKernel@IPipelined@RBX@@UAEXXZ",
+        "original": "00645860",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getEdgeType@Joint@RBX@@MBE?AW4EdgeType@Edge@2@XZ",
+        "original": "00416690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setPrimitive@Joint@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "original": "006456e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getJointType@MotorJoint@RBX@@EBE?AW4JointType@Joint@2@XZ",
+        "original": "0063e420",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?isBreakable@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?isBroken@MotorJoint@RBX@@EBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?joinsFace@Joint@RBX@@UBE_NPAVPrimitive@2@W4NormalId@2@@Z",
+        "original": "005eed40",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?isAligned@MotorJoint@RBX@@EAE_NXZ",
+        "original": "005e5d00",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 10,
+        "symbol": "?align@Joint@RBX@@UAE?AVCoordinateFrame@G3D@@PAVPrimitive@2@0@Z",
+        "original": "005e28c0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 11,
+        "symbol": "?canStepWorld@Joint@RBX@@UBE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 12,
+        "symbol": "?canStepUi@MotorJoint@RBX@@EBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?stepWorld@Joint@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 14,
+        "symbol": "?stepUi@MotorJoint@RBX@@UAEXH@Z",
+        "original": "005e5e70",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "Connector": [
+      {
+        "slot": 0,
+        "symbol": "??_EConnector@RBX@@UAEPAXI@Z",
+        "original": "006062c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?canThrottle@Connector@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getBroken@Connector@RBX@@UAE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?potentialEnergy@Connector@RBX@@UAEMXZ",
+        "original": "005e72c0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "ContactConnector": [
+      {
+        "slot": 0,
+        "symbol": "??_EContactConnector@RBX@@UAEPAXI@Z",
+        "original": "006062c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?computeForce@ContactConnector@RBX@@UAEXM_N@Z",
+        "original": "00606780",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?canThrottle@ContactConnector@RBX@@UBE_NXZ",
+        "original": "00606250",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getBroken@Connector@RBX@@UAE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getBody@ContactConnector@RBX@@UAEPAVBody@2@H@Z",
+        "original": "00606230",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?potentialEnergy@Connector@RBX@@UAEMXZ",
+        "original": "005e72c0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "PointToPointBreakConnector": [
+      {
+        "slot": 0,
+        "symbol": "??_EPointToPointBreakConnector@RBX@@UAEPAXI@Z",
+        "original": "006062c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?computeForce@PointToPointBreakConnector@RBX@@UAEXM_N@Z",
+        "original": "006065d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?canThrottle@Connector@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getBroken@PointToPointBreakConnector@RBX@@UAE_NXZ",
+        "original": "00645a60",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getBody@PointToPointBreakConnector@RBX@@UAEPAVBody@2@H@Z",
+        "original": "00606150",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?potentialEnergy@PointToPointBreakConnector@RBX@@UAEMXZ",
+        "original": "006061f0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "NormalBreakConnector": [
+      {
+        "slot": 0,
+        "symbol": "??_ENormalBreakConnector@RBX@@UAEPAXI@Z",
+        "original": "006062c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?computeForce@NormalBreakConnector@RBX@@UAEXM_N@Z",
+        "original": "00606670",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?canThrottle@Connector@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getBroken@PointToPointBreakConnector@RBX@@UAE_NXZ",
+        "original": "00645a60",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getBody@PointToPointBreakConnector@RBX@@UAEPAVBody@2@H@Z",
+        "original": "00606150",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?potentialEnergy@PointToPointBreakConnector@RBX@@UAEMXZ",
+        "original": "006061f0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "RotateConnector": [
+      {
+        "slot": 0,
+        "symbol": "??_ERotateConnector@RBX@@UAEPAXI@Z",
+        "original": "006062c0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?computeForce@RotateConnector@RBX@@UAEXM_N@Z",
+        "original": "006064a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?canThrottle@Connector@RBX@@UBE_NXZ",
+        "original": "00565950",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getBroken@Connector@RBX@@UAE_NXZ",
+        "original": "0060a2f0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getBody@RotateConnector@RBX@@UAEPAVBody@2@H@Z",
+        "original": "006061d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?potentialEnergy@Connector@RBX@@UAEMXZ",
+        "original": "005e72c0",
+        "ok": true,
+        "how": "bound"
+      }
+    ]
+  },
+  "allocations": [
+    {
+      "creator": "00645e40",
+      "size": "0xc4",
+      "constructor": "00645a90",
+      "note": "RotateJoint::surfaceTypeToJoint -> RotateJoint(p0, p1, c0, c1)",
+      "push": "68c4000000"
+    },
+    {
+      "creator": "00645e40",
+      "size": "0xc8",
+      "constructor": "00645d90",
+      "note": "RotateJoint::surfaceTypeToJoint -> RotatePJoint(p0, p1, c0, c1)",
+      "push": "68c8000000"
+    },
+    {
+      "creator": "005e4c60",
+      "size": "0xc8",
+      "constructor": "00645a70",
+      "note": "RotateP() (JointInstance) -> RotateJoint() + inline RotatePJoint",
+      "push": "68c8000000"
+    },
+    {
+      "creator": "00646f60",
+      "size": "0x120",
+      "constructor": "00646cc0",
+      "note": "GlueJoint::canBuildJoint -> GlueJoint(p0, p1, c0, c1)",
+      "push": "6820010000"
+    },
+    {
+      "creator": "005e5bf0",
+      "size": "0xd0",
+      "constructor": "00613d20",
+      "note": "MotorJoint() -> new RevoluteLink -> Link()",
+      "push": "68d0000000"
+    },
+    {
+      "creator": "00646550",
+      "size": "0x34",
+      "constructor": "00606170",
+      "note": "RotateJoint::putInKernel -> RotateConnector(...)",
+      "push": "6a34"
+    }
+  ],
+  "proposals": {
+    "v8world/Joint.h, RigidJoint.h, WeldJoint.h, SnapJoint.h, MultiJoint.h, RotateJoint.h, GlueJoint.h, MotorJoint.h (original paths, engine owner)": "promote Joints2008.h to the original include paths once the owners of the units that include Primitive.h / World.h / JointInstance.h / Feature.h have re-run their recorders against it. Differences from the donor: Joint has 15 slots (two extra virtuals 11 `bool () const` / 13 `void ()`, analog names canStepWorld / stepWorld, between isAligned/align and stepUi: 0084ad44); RotatePJoint / RotateVJoint derive from a vtable-less DynamicRotateJoint (RTTI 0083e13c / 0083e17c) holding the float +0xc4; RotateP/V, GlueJoint and Weld/Snap have no user-declared destructor (??_G 005e28e0 / 00646ca0 call the base destructor without a vtable store); MotorJoint has no polarity (0x98); no RBXASSERT anywhere in these units.",
+    "v8kernel/Connector.h (original path, kernel owner)": "promote Connector2008.h: six slots (a pure `Body* (int)` slot 4 between getBroken and potentialEnergy, 0083d1f4), Connector::canThrottle returns true (00565950).",
+    "v8kernel/IStage.h (engine owner; same as record_native_feature.py)": "KERNEL_STAGE = 7 in 2008 (MotorJoint::setCurrentAngle 005e5dc8, Joint::setPrimitive 00645708, Joint::setJointCoord 006457ac compare the stage type with 7). setCurrentAngle 005e5da0 is exact with a generated copy and recorded pending-build-only.",
+    "v8kernel/KernelInput.h (kernel owner)": "KernelInput::steps() calls the function returning 19 (006492d0; RotatePJoint::stepWorld 00645ce4), which the donor Constants table names kernelStepsPerWorldStep, not kernelStepsPerUiStep (152): steps() should return Constants::kernelStepsPerWorldStep().",
+    "v8kernel/Body.h (kernel owner)": "Body::canThrottle is at +0x30 in 2008 (ContactConnector::canThrottle 00606250 reads +0x30 of both bodies; the donor layout puts it at +0x24).",
+    "v8world/World.h (engine owner)": "a World declaration reachable without the donor joint headers (World.h -> Primitive.h -> RigidJoint.h -> Joint.h) is needed for Joint::setPrimitive 006456e0 (onJointPrimitiveNulling 005e9240 / onJointPrimitiveSet 005e9250), Joint::setJointCoord 00645750 (removeJoint 005ea3a0 / insertJoint 005ea320) and DynamicRotateJoint::stepUi 006463f0 (ticklePrimitive 005e9410 takes a second argument, pushed 1); these bodies are guarded with NATIVE_WORLD_JOINTS_PENDING_WORLD and not built."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

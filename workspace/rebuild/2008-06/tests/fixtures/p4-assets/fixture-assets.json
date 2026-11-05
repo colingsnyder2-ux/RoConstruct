@@ -1,0 +1,10 @@
+{
+  "license": "CC0-1.0",
+  "author": "RoConstruct test fixtures",
+  "purpose": "Original-format local mesh, unambiguous texture quadrants, short440Hz sound; no external service identifiers.",
+  "sha256": {
+    "panel.mesh": "d0c4e59491f0381fde262ff37a981171d4f4bccd2fb3782df27b8ce2bcc2620e",
+    "quadrants.png": "1f52bf00c024e5fd927efacb269a0074c127068bbb4cf531491b4f0375ffa2b8",
+    "tone.wav": "b0e95cb1badb20186a79c6a191b9baa5835efa56b179e17001c785bd915c7bf3"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x63e250",
+      "size": 185,
+      "symbol": "?onMouseHover@AnchorTool@RBX@@EAEXABVUIEvent@2@@Z",
+      "bindings": {
+        "__ehhandler$?onMouseHover@AnchorTool@RBX@@EAEXABVUIEvent@2@@Z": "0x7d9168",
+        "?onMouseHover@ModelTool@RBX@@MAEXABVUIEvent@2@@Z": "0x63e180",
+        "?nativeFindUnanchoredPart@RBX@@YAPAVInstance@1@PAV21@@Z": "0x63dfe0"
+      }
+    }
+  ],
+  "source_sha256": "8ecf202d5721e4f89d1f34d1d47ee3438031698a1024f71b777c204ccd140105",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "828d1696747b6eaf232299ab9a84ed1c3b41b9b4306ee0cbf512552aae927d8f",
+  "observer_sha256": "990b5c28c09257d12bfc5757f9757a10507d7b02780eb167c1aca2970bb99e6a"
+}

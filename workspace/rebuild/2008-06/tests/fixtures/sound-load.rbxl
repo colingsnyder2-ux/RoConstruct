@@ -1,0 +1,7 @@
+<roblox version="4"><Item class="Workspace"><Properties></Properties>
+<Item class="Sound"><Properties>
+<string name="Name">TestSound</string>
+<Content name="SoundId"><url>rbxasset://tone.wav</url></Content>
+<float name="Volume">0.5</float><bool name="Looped">false</bool>
+<bool name="PlayOnRemove">false</bool>
+</Properties></Item></Item></roblox>

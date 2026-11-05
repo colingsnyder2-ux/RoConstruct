@@ -1,0 +1,29 @@
+{
+  "scope": "Diagnostic offset profile and SurfaceData COMDAT identity; data identity, whole ABI and runtime unproven.",
+  "methods": [
+    {
+      "address": "0x5f1690",
+      "size": 270,
+      "symbol": "?flat@Surface@RBX@@QAEXXZ",
+      "bindings": {
+        "?setSurfaceType@Primitive@RBX@@QAEXW4NormalId@2@W4SurfaceType@2@@Z": "0x5e7850",
+        "?onSurfaceChanged@PartInstance@RBX@@QAEXW4NormalId@2@@Z": "0x5997c0",
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": "0x598de0",
+        "?getSurfaceType@Surfaces@RBX@@QBEABVPropertyDescriptor@Reflection@2@W4NormalId@2@@Z": "0x5eca30",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00",
+        "??_B?1??empty@SurfaceData@RBX@@SAABV12@XZ@51": "0x97abd0",
+        "__real@bf000000": "0x8282dc",
+        "?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A": "0x97abc8",
+        "__real@3f000000": "0x819bac",
+        "?setSurfaceInput@Surface@RBX@@QAEXW4InputType@Controller@2@@Z": "0x5f1430",
+        "?setParamA@Surface@RBX@@QAEXM@Z": "0x5f14f0",
+        "?setParamB@Surface@RBX@@QAEXM@Z": "0x5f15c0"
+      }
+    }
+  ],
+  "source_sha256": "e91c1a848f99e256c4e8599574585a1a7d987b7d34252b930b2a8e4dc992d0cb",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "e5c0fa562e907d8323be0be022eaf10bc4d80cefcfbf1c1f3078e144bec21dc3",
+  "observer_sha256": "6eec341a26bebeb406eddc0e8601a73d8e976b651a6ae7140068f7b3b64ce2cf"
+}

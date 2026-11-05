@@ -1,0 +1,58 @@
+{
+  "tested_engine_revision": "730f303138",
+  "observer_revision": "20203c959d642b19b9720cff6c9e2c54ac25f026",
+  "exe_sha256": "6c961826d69371da5f63758e4902a95076b00528fe366e57d146ca6eb28146cb",
+  "P5_stop_line": "PASS",
+  "high_fall_max_y_error": 0.07493233992370607,
+  "high_fall_y_tolerance": 0.1,
+  "landing_jump_max_y_error": 0.10347795895690926,
+  "landing_jump_y_tolerance": 0.12,
+  "selected_code_matches": 2935,
+  "selected_known_source_functions": 13865,
+  "P6": "scoped pass on separate branch; merged rebuild/gates next",
+  "receipts": {
+    "p5-stopline-build": {
+      "path": "work\\2008-06\\p5-stopline-build\\receipt.json",
+      "sha256": "03e292d658c4de8cfae3ec19c4a0918a801cd1d17da87196148d3778e6386633"
+    },
+    "p5-stopline-anchor": {
+      "path": "work\\2008-06\\p5-stopline-anchor\\receipt.json",
+      "sha256": "9ac3a9818e91cb378a91376d1e54560cc55ff299f77f9ccc451f481cef59fb41"
+    },
+    "p5-stopline-p3": {
+      "path": "work\\2008-06\\p5-stopline-p3\\receipt.json",
+      "sha256": "94654d95fa29f3ef4b6977d88014ee945fe7d72aa2b95ede17921034bf3768a3"
+    },
+    "p5-stopline-spawn": {
+      "path": "work\\2008-06\\p5-stopline-spawn\\receipt.json",
+      "sha256": "a9335a6137bda1de9756e4fb2efb45c4f7c86556efa287980230cd9a15b0a837"
+    },
+    "p5-stopline-jobs": {
+      "path": "work\\2008-06\\p5-stopline-jobs\\receipt.json",
+      "sha256": "215d2f2b2a9ad36f844fbfd3e45da1dc56799256d8fd74a53ceba5a1abafb205"
+    },
+    "p5-stopline-animation": {
+      "path": "work\\2008-06\\p5-stopline-animation\\receipt.json",
+      "sha256": "778a687c27b4efd47afd3cb9a80c03358a2ccc2ed46b553c2dbd21b1df6e630d"
+    },
+    "p5-stopline-original-anchor": {
+      "path": "work\\2008-06\\p5-stopline-original-anchor\\receipt.json",
+      "sha256": "3dc99759a9c19ee0d971249cf867775df52770565c935cf5d7fc1febf6f2defe"
+    },
+    "p5-stopline-fall": {
+      "path": "work\\2008-06\\p5-stopline-fall\\receipt.json",
+      "sha256": "705d018f57ad6eb1b1b24dc0345119b9195a41dc3b0debbb01e8f4a9cd621d22"
+    },
+    "p5-stopline-jump": {
+      "path": "work\\2008-06\\p5-stopline-jump\\receipt.json",
+      "sha256": "2febd9a6535a4daa8ca0c3fde4762dd353e41550b916bf79f088cf1f166c0eb6"
+    },
+    "p5-stopline-combined-verified": {
+      "path": "work\\2008-06\\p5-stopline-combined-verified\\receipt.json",
+      "sha256": "fd343151fa12ce338ae499aff07697dc05fb74091f8c0d60765dd3dfc5f8cd70"
+    }
+  },
+  "unit_test_exit": 0,
+  "unit_test_log_sha256": "72dde3a60264ace90b5ecf9453b5109e2db42ba5903e49e6a5b3eb396cca9e29",
+  "scope": "P5 closed at Colin's bounded stop line. Further donor physics tuning stops. Native class/ABI/source recovery continues after merging P6; this is not full native physics or raw image equivalence."
+}

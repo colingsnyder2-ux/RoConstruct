@@ -1,0 +1,16 @@
+// from server: 100% by colin
+
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+struct Str_0080f4f0 { int words[8]; };
+extern void (__thiscall* str_ctor_0080f4f0)(Str_0080f4f0*, Str_0080f4f0*);
+struct X_0080f4f0 {
+    char pad[0xf4];
+    Str_0080f4f0 value;
+    Str_0080f4f0* copy(Str_0080f4f0* out);
+};
+Str_0080f4f0* X_0080f4f0::copy(Str_0080f4f0* out)
+{
+    volatile int zero = 0;
+    str_ctor_0080f4f0(out, &value);
+    return out;
+}

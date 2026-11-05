@@ -1,0 +1,234 @@
+{
+  "revision": "a05a67263b46398977b4f0ce8549f7d70fd6061f",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "d8ed94f8d945cb99e8f99de4f27595577e6dfc5df773fd3dd83348d1c6810cb3",
+  "fixture_sha256": "e67399e33d5742929ca7d198d5c1c23a597699bbb0514b43e997fa7c03152e04",
+  "observer_sha256": "73372dc4d22dfa0c4954578b08d43fb5c191dcacaa051db4eb99e26025e421ef",
+  "candidate_counts": [
+    4,
+    5,
+    5
+  ],
+  "moving_copies": [
+    2,
+    2,
+    2
+  ],
+  "rebuilt": {
+    "30": {
+      "torso": [
+        141.391022,
+        3.01199341,
+        71.75
+      ],
+      "head": [
+        141.391022,
+        4.51199341,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "marker": [
+        181.215408,
+        50.0,
+        71.2250519
+      ],
+      "snapshot_sha256": "61459a4cab741ce8a11a799535526a0f8d344e364a420062ffa804182bbdd2b3"
+    },
+    "60": {
+      "torso": [
+        149.392731,
+        3.00021338,
+        71.75
+      ],
+      "head": [
+        149.392731,
+        4.50021362,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "marker": [
+        181.25,
+        50.0,
+        71.7449265
+      ],
+      "snapshot_sha256": "3fa54c3e0997db050e93763d305a08cc12e7c89543ade847232199cda1baeafe"
+    },
+    "90": {
+      "torso": [
+        157.39444,
+        3.00006723,
+        71.75
+      ],
+      "head": [
+        157.39444,
+        4.50006723,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "marker": [
+        181.25,
+        50.0,
+        71.7498474
+      ],
+      "snapshot_sha256": "9dca20c0fb3f16b6add7e8ef01b341f2ae958e7f64bf3526f51cb43acfc8bb97"
+    },
+    "120": {
+      "torso": [
+        165.396149,
+        3.00006723,
+        71.75
+      ],
+      "head": [
+        165.396149,
+        4.50006723,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "marker": [
+        181.25,
+        50.0,
+        71.7498474
+      ],
+      "snapshot_sha256": "48170ad3add874f2c7c76008c0ddd6e4c9abc18241800ba40fdbbe520a5e48cb"
+    }
+  },
+  "comparisons": [
+    {
+      "frame": 30,
+      "original_time": 0.5,
+      "original_torso": [
+        140.85757446289062,
+        3.0528228282928467,
+        71.75
+      ],
+      "original_head": [
+        140.85757446289062,
+        4.552823066711426,
+        71.75
+      ],
+      "delta": [
+        -0.5334475371093674,
+        0.040829418292846587,
+        0.0
+      ],
+      "original_marker": [
+        181.185791015625,
+        50.0,
+        71.03620910644531
+      ],
+      "rebuilt_marker": [
+        181.215408,
+        50.0,
+        71.2250519
+      ]
+    },
+    {
+      "frame": 60,
+      "original_time": 1.0,
+      "original_torso": [
+        149.92532348632812,
+        2.9047279357910156,
+        71.75
+      ],
+      "original_head": [
+        149.92532348632812,
+        4.404727935791016,
+        71.75
+      ],
+      "delta": [
+        0.5325924863281273,
+        -0.0954854442089843,
+        0.0
+      ],
+      "original_marker": [
+        181.25,
+        50.0,
+        71.74630737304688
+      ],
+      "rebuilt_marker": [
+        181.25,
+        50.0,
+        71.7449265
+      ]
+    },
+    {
+      "frame": 90,
+      "original_time": 1.5,
+      "original_torso": [
+        157.39208984375,
+        2.9047279357910156,
+        71.75
+      ],
+      "original_head": [
+        157.39208984375,
+        4.404727935791016,
+        71.75
+      ],
+      "delta": [
+        -0.0023501562500030104,
+        -0.09533929420898435,
+        0.0
+      ],
+      "original_marker": [
+        181.25,
+        50.0,
+        71.74996948242188
+      ],
+      "rebuilt_marker": [
+        181.25,
+        50.0,
+        71.7498474
+      ]
+    },
+    {
+      "frame": 120,
+      "original_time": 2.0,
+      "original_torso": [
+        165.925537109375,
+        2.9047279357910156,
+        71.75
+      ],
+      "original_head": [
+        165.925537109375,
+        4.404727935791016,
+        71.75
+      ],
+      "delta": [
+        0.5293881093749917,
+        -0.09533929420898435,
+        0.0
+      ],
+      "original_marker": [
+        181.25,
+        50.0,
+        71.74996948242188
+      ],
+      "rebuilt_marker": [
+        181.25,
+        50.0,
+        71.7498474
+      ]
+    }
+  ],
+  "original_exit": 1,
+  "original_forced_termination": true,
+  "mode": "right",
+  "scope": "One authored sideways walk; heading encoded as a 4-stud marker; original wall-time vs rebuilt fixed steps, +/-35 ms sampling, 0.5 marker tolerance at frame 30 and 0.2 thereafter. Joint construction differs; native parity unproven.",
+  "P5_complete": false
+}

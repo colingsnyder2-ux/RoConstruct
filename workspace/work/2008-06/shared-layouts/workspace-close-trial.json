@@ -1,0 +1,36 @@
+{
+  "scope": "Inactive native Close wrapper matches with exception handling disabled; cleanup body, MFC state linkage and runtime ABI remain unproven.",
+  "observer_sha256": "729ebdb10a4261fe49801bfdf50bdf61db3597fd0b24e6be6d5df38e0e8027f5",
+  "source_sha256": "7fd7e242a172f06db9b09de20347f5145d4f4c4c27c1b117c7dd2ec30f5ad60d",
+  "profile_sha256": "b888a6ca53c7508f94e44f44c4200768d34f52dccdfe5bf4fc1b5332636bcc35",
+  "object_sha256": "3c0cb73487e53257a78df322651e2534a95d06186c78eaf5a70746068e222ae2",
+  "address": "0046b500",
+  "symbol": "?Close@CWorkspace@@UAGJXZ",
+  "size": 68,
+  "exact": true,
+  "calls": {
+    "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0968",
+    "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": "0x6a0962",
+    "?cleanup@CWorkspace@@QAEXXZ": "0x46b0e0",
+    "?AfxDeactivateActCtx@@YGHKK@Z": "0x6a095c"
+  },
+  "linked_cleanup": {
+    "symbol": "?cleanup@CWorkspace@@QAEXXZ",
+    "candidate_size": 242,
+    "original_size": 242,
+    "exact": true
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHs-c-",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceCloseTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceCloseProfile.cpp"
+  ]
+}

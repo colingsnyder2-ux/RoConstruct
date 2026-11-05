@@ -1,0 +1,49 @@
+{
+  "revision": "1f22f9eb1c698b5a2c8336e4aa5e70f31fcb1eb8",
+  "exe_sha256": "8061f05ad0fe02c337f7fff6544326d67168215cf8e2c98b29ccec3696341d50",
+  "fixture_sha256": "28d1e28077672764de0f7356f692dca7844d9c9c54d35f123e6a430f7388d0ff",
+  "observer_sha256": "85f7023752979eb95bbf551d70f8bdc4f4deea5da644d095e587b1c925dc6c24",
+  "runs": [
+    {
+      "mode": "--p5-control",
+      "exit": 0,
+      "seconds": 1.797
+    },
+    {
+      "mode": "--p5-input-test",
+      "exit": 0,
+      "seconds": 1.796
+    },
+    {
+      "mode": "--p5-control",
+      "exit": 0,
+      "seconds": 1.797
+    },
+    {
+      "mode": "--p5-input-test",
+      "exit": 0,
+      "seconds": 1.797
+    },
+    {
+      "mode": "--p5-control",
+      "exit": 0,
+      "seconds": 1.828
+    },
+    {
+      "mode": "--p5-input-test",
+      "exit": 0,
+      "seconds": 1.797
+    },
+    {
+      "mode": "--p5-control",
+      "exit": 0,
+      "seconds": 1.797
+    },
+    {
+      "mode": "--p5-input-test",
+      "exit": 0,
+      "seconds": 1.797
+    }
+  ],
+  "scope": "Eight separate fixed-step controller starts after D3D9 precision fix; not a long-duration soak."
+}

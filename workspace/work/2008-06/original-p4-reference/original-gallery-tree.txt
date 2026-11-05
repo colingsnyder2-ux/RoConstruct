@@ -1,0 +1,123 @@
+Window: "Roblox - [local-gallery.rbxl]", App: Roblox.exe.
+	0 window Roblox - [local-gallery.rbxl] Secondary Actions: Raise
+		1 pane Workspace ID: 59648
+			2 window local-gallery.rbxl Secondary Actions: Raise ID: 65280
+				3 pane ID: 59648
+					4 pane Roblox ID: 1
+				5 title bar (settable, string) Value: local-gallery.rbxl
+					6 menu bar System ID: MenuBar
+						7 menu item System
+					8 button Minimize
+					9 button Restore
+					10 button Close
+		11 status bar ID: 59393
+			12 text Ready
+			13 text t 0
+			14 text 26fps
+			15 text 0.342%
+			16 text TEX 0B
+			17 text VAR 0B
+		18 pane xtpBarTop ID: 59419
+			19 tool bar Camera
+				4794 button Pan Left
+				4795 button Pan Right
+				4796 button Tilt Up
+				4797 button Tilt Down
+				4798 button Zoom In
+				4799 button Zoom Out
+				4800 button Look At Object
+				4801 button Zoom Extents
+				4802 menu item Toolbar Options
+			29 tool bar Test
+				4803 button Run
+				4804 button (disabled) Pause
+				4805 button (disabled) Reset
+				4806 menu item Toolbar Options
+			34 tool bar Mouse
+				4807 button Drag
+				4808 button Move on axis
+				4809 button Resize
+				4810 button (disabled) Velocity
+				4811 button Lock - prevent selection
+				4812 button Anchor - prevent moving
+				4813 menu item Fill With Color
+				4814 button Pick Color
+				4815 button Smooth Surface
+				4816 button Glue Surface
+				4817 button Weld Surface
+				4818 button Studs
+				4819 button Inlet
+				4820 menu item Toolbar Options
+			49 tool bar Standard
+				4821 button New
+				4822 button Open
+				4823 button Save
+				4824 button Cut
+				4825 button Copy
+				4826 button (disabled) Paste
+				4827 menu item (disabled) Undo Ctrl+Z
+				4828 menu item (disabled) Redo Ctrl+Y
+				4829 button (disabled) Group
+				4830 button Ungroup
+				4831 button Rotate objects
+				4832 button Tilt Objects
+				4833 button Move up
+				4834 button Move down
+				4835 menu item Toolbar Options
+			65 menu bar Menu Bar
+				4836 menu item File
+				4837 menu item Edit
+				4838 menu item View
+				4839 menu item Insert
+				4840 menu item Format
+				4841 menu item Tools
+				4842 menu item Window
+				4843 menu item Help
+		74 tab XTPDockingPaneTabbedContainer
+			75 pane
+				76 pane ID: 59648
+					77 tree
+						78 tree item (selectable, settable, string) Workspace Value: Workspace
+							1452 tree item (selectable, settable, string) Gallery Value: Gallery
+								4844 tree item (selectable, settable, string) Brick Value: Brick
+								4845 tree item (selectable, settable, string) Other Value: Other
+						148 tree item (selectable, settable, string) Players Value: Players
+						149 tree item (selectable, settable, string) Lighting Value: Lighting
+						150 tree item (selectable, settable, string) StarterPack Value: StarterPack
+						151 tree item (selectable, settable, string) Soundscape Value: Soundscape
+			4846 tab item (selectable) Explorer
+		80 tab XTPDockingPaneTabbedContainer
+			81 pane ID: 59648
+				82 text ID: 59648
+				83 pane ID: 59664
+					84 table Properties Window
+						4847 scroll bar (settable, float) Vertical Value: 0 ID: NonClientVerticalScrollBar
+							4848 button Line up ID: UpButton
+							4849 thumb Position ID: ScrollbarThumb
+							4850 button Page down ID: DownPageButton
+							4851 button Line down ID: DownButton
+						4852 custom Appearance
+						4853 custom ControllerFlagShown
+						4854 custom Data
+						4855 custom Name
+						4856 custom Parent
+						4857 custom PrimaryPart
+						4858 custom className
+						4859 custom Behavior
+						4860 custom Controller
+						4861 custom archivable
+					85 tool bar ID: 59392
+						86 button
+						87 button
+			4862 tab item (selectable) Properties
+		89 pane
+		90 pane Splitter
+		91 pane Splitter
+		92 title bar (settable, string) Value: Roblox - [local-gallery.rbxl]
+			93 menu bar System ID: MenuBar
+				94 menu item System
+			95 button Minimize
+			96 button Maximize
+			97 button Close
+
+The focused UI element is 77 tree.

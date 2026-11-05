@@ -1,0 +1,58 @@
+{
+  "revision": "f6ee81dd52a25a4f1a76133a5a0d76db5b94f1d5",
+  "sources": {
+    "rebuild\\2008-06\\native-classes\\InstanceSerialization.cpp": "2d4ea662308e332232ccd62d810516ad06691175e07eba9b3f92a738b814141b",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "296825c930a4706b4204dc626bc9f3d2998a8f35e87ce2d19e65cec348045c43",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild\\2008-06\\tests\\record_native_instance_serialization.py": "53be58b8466505a0be01c3dd42510a7e5ac12eee0cc581264ae9167375620ee0"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeInstanceSerialization.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceSerialization.cpp"
+  ],
+  "compile_exit": 0,
+  "methods": [
+    {
+      "address": "00558110",
+      "symbol": "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z",
+      "size": 160,
+      "relocation_normalized_exact": true
+    }
+  ],
+  "scope": "Inactive compiler proof; call targets and runtime linking remain unverified."
+}

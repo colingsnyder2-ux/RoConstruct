@@ -1,0 +1,9 @@
+{
+  "address": "004547b0",
+  "target_size": 366,
+  "candidate_size": 366,
+  "target_allocator_offset": "0x1f0",
+  "donor_allocator_offset": "0x1b8",
+  "match": false,
+  "scope": "Inactive trial removed: ScriptContext donor allocator field does not match original. Recover full constructor and destructor before using this layout."
+}

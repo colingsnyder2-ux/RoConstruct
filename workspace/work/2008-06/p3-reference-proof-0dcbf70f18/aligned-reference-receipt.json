@@ -1,0 +1,18 @@
+{
+  "pid": 35304,
+  "exe": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-sphere-reference\\Roblox.exe",
+  "exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-sphere-reference\\Roblox.exe",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\sphere-reference.rbxl"
+  ],
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-sphere-reference\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e",
+    "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-sphere-reference\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c"
+  },
+  "fixture_sha256": "25484b0cc4ac333b3b6cf616eb0b6282305c9fb4c995da26c968f0e056d0e095",
+  "capture": "original-aligned.jpg",
+  "capture_sha256": "646ea3e95951af5dd34015cb335bd965e4355c41700de8e052b31ad36bc43307",
+  "capture_encoding": "JPEG from Windows computer-use helper",
+  "camera": "Versioned Camera/Workspace.CurrentCamera reference, identity rotation, position(0,0,10), focus(0,0,0); no navigation after launch."
+}

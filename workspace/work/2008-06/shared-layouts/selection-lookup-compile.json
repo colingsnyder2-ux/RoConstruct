@@ -1,0 +1,27 @@
+{
+  "revision": "b6a48fa540a5b4bbf4d6e36de4cd226f8b227702",
+  "compiler_build": 21022,
+  "compile_exit": 0,
+  "sources": {
+    "rebuild/2008-06/native-classes/ServiceProvider.cpp": "e39991eed6180b3e6b69df4ad076c5583afd5df590eee294f8a0fd4c510e8ca9",
+    "rebuild/2008-06/native-classes/CWorkspace.cpp": "12d4417f42438e5986b9a5daf922b957377b4693001d79e4fdabd8494f7ffd5b",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "3b5db75fe3f81e8861d44ce6ee44026f41388b380c9a632fb2defb1c23df9d54",
+    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "03a60c05db0c141988384d7b648970ea261f2c33bdfb8e85135feb9c49e31baf",
+    "rebuild/2008-06/tests/NativeWorkspaceLayout.cpp": "e8f6390622ce3e6ab4cc3a8c036bd34a2ae049cbb6098dac96dbad2830acb13e"
+  },
+  "bodies": {
+    "00415200": {
+      "symbol": "??$find@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ",
+      "target_size": 320,
+      "candidate_size": 386,
+      "relocation_normalized_exact": false
+    },
+    "0046b0e0": {
+      "symbol": "?cleanup@CWorkspace@@QAEXXZ",
+      "target_size": 242,
+      "candidate_size": 242,
+      "relocation_normalized_exact": false
+    }
+  },
+  "scope": "Inactive candidates only. Lookup has className initialization and shared_ptr destruction differences; dependencies and relocation targets unresolved. Cleanup differs in register scheduling. No runtime swap."
+}

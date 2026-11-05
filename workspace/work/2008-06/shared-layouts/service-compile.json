@@ -1,0 +1,16 @@
+{
+  "revision": "c1aedcaf366fe15f619b433fa76fadeb98a2dc66",
+  "compiler": 21022,
+  "compile_exit": 0,
+  "size": 456,
+  "serviceArray_offset": 400,
+  "serviceMap_offset": 424,
+  "original_constructor": "00568bf0",
+  "original_rtti": "datamodel-rtti.json",
+  "sources": {
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "da88d3f10e6d2a2ab936ee228d5493fa8bab9e2a941943328ea72c642f15c3d7",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "a378024e49532e65e12b62cf70e7a25c2c520bfa51c33f004f8bd2bcbefebfdc",
+    "rebuild/2008-06/tests/NativeServiceLayout.cpp": "d55e3681e6dfd6d154b929b147345d60dd30d62ebd8c13b932740c951fbda198"
+  },
+  "scope": "Inactive layout candidate; complete method ABI and ownership behavior remain open."
+}

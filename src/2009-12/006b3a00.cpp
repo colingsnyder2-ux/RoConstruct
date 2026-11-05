@@ -1,0 +1,14 @@
+// from server: 100% by colin
+namespace ns_ROCX000008 {
+// from server: 100% by tester
+struct EnumDescriptor {
+    unsigned char pad[0xcd];
+    unsigned char b0 : 1;
+    unsigned char b1 : 1;
+    bool get() const;
+};
+
+bool EnumDescriptor::get() const {
+    return b1;
+}
+}

@@ -1,0 +1,42 @@
+{
+  "methods": [
+    {
+      "address": "0x57eb80",
+      "size": 291,
+      "bindings": {
+        "__ehhandler$?weldInstance@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": 8151400,
+        "??_R0?AVPartInstance@RBX@@@8": 9624912,
+        "??_R0?AVInstance@RBX@@@8": 9605244,
+        "___RTDynamicCast": 6952902,
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": 5869024,
+        "??ASurfaces@RBX@@QAEAAVSurface@1@W4NormalId@1@@Z": 6212608,
+        "?getSurfaceType@Surface@RBX@@QBE?AW4SurfaceType@2@XZ": 6230672,
+        "?setSurfaceType@Surface@RBX@@QAEXW4SurfaceType@2@@Z": 6231008,
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "?weldInstance@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": 5761920,
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": 5760208
+      }
+    },
+    {
+      "address": "0x57e530",
+      "size": 291,
+      "bindings": {
+        "__ehhandler$?snapInstance@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": 8151400,
+        "??_R0?AVPartInstance@RBX@@@8": 9624912,
+        "??_R0?AVInstance@RBX@@@8": 9605244,
+        "___RTDynamicCast": 6952902,
+        "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": 5869024,
+        "??ASurfaces@RBX@@QAEAAVSurface@1@W4NormalId@1@@Z": 6212608,
+        "?getSurfaceType@Surface@RBX@@QBE?AW4SurfaceType@2@XZ": 6230672,
+        "?setSurfaceType@Surface@RBX@@QAEXW4SurfaceType@2@@Z": 6231008,
+        "__imp___invalid_parameter_noinfo": 8398992,
+        "?snapInstance@RBX@@YAXV?$shared_ptr@VInstance@RBX@@@boost@@@Z": 5760304,
+        "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list1@V?$arg@$00@boost@@@_bi@2@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": 5760208
+      }
+    }
+  ],
+  "source_sha256": "99535f1eaa4ef6cb24a3000c10ff5e7ee6bad436a78a660fe26632e9b38b4621",
+  "object_sha256": "eaa7457da6ed31c261d74d292fd5715eac30227773e384122c71501029dcf3e2",
+  "observer_sha256": "16c14d932f4a314f90cfd70002d02d681c6533d3560f8c45b7e0d16a26f3083a",
+  "scope": "Inactive trial; PartInstance, Surface, recursive ownership and runtime unproven."
+}

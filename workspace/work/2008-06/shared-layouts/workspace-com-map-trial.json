@@ -1,0 +1,93 @@
+{
+  "scope": "Inactive original COM map data, GUID bytes and three ATL methods match; real interface methods, data ownership and runtime remain unproven.",
+  "observer_sha256": "351c95e7f1899daf5a687eba3e31ae04ea7000af6f8eb165acbc9672359fe47c",
+  "header_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+  "overlay_sha256": "ec80b7390857bc5171504e34031d08cc05194465c1d2c17dc26fbdac02f80cef",
+  "object_sha256": "a4cc6b74a26231993ae0caa602f355ac66ec94dd8dc82c4206de098b64e52635",
+  "methods": [
+    {
+      "symbol": "?QueryInterface@?$CComObject@VCWorkspace@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+      "address": "00402730",
+      "size": 28,
+      "exact": true
+    },
+    {
+      "symbol": "?CreateInstance@?$CComObject@VCWorkspace@@@ATL@@SGJPAPAV12@@Z",
+      "address": "00450370",
+      "size": 209,
+      "exact": true
+    },
+    {
+      "symbol": "??0?$CComObject@VCWorkspace@@@ATL@@QAE@PAX@Z",
+      "address": "00401910",
+      "size": 68,
+      "exact": true
+    }
+  ],
+  "map": {
+    "symbol": "?_entries@?1??_GetEntries@CWorkspace@@SGPBU_ATL_INTMAP_ENTRY@ATL@@XZ@4QBU34@B",
+    "original_address": "0x80aea8",
+    "size": 48,
+    "entry_offsets": [
+      0,
+      0,
+      4
+    ],
+    "guids": [
+      {
+        "symbol": "__GUID_0730c3c6_092d_4f45_b8b9_bdeb82de1c7b",
+        "original_address": "0x80aed8",
+        "bytes": "c6c330072d09454fb8b9bdeb82de1c7b"
+      },
+      {
+        "symbol": "__GUID_00020400_0000_0000_c000_000000000046",
+        "original_address": "0x80aee8",
+        "bytes": "0004020000000000c000000000000046"
+      },
+      {
+        "symbol": "__GUID_df0b3d60_548f_101b_8e65_08002b2bd119",
+        "original_address": "0x80aef8",
+        "bytes": "603d0bdf8f541b108e6508002b2bd119"
+      }
+    ]
+  },
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\workspace-com-map-include",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceComMapTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorkspaceFactoryTrial.cpp"
+  ]
+}

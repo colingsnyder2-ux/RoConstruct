@@ -1,0 +1,20 @@
+{
+ "choices": {
+  "PlayerNativeSound.obj": "layer-sound"
+ },
+ "linked": true,
+ "module": "P4SoundAsset",
+ "object_functions": 44,
+ "owned_2008": 4,
+ "owned_2008_16b": 3,
+ "owned_addrs": [
+  "00402570",
+  "005b6f70",
+  "00600660",
+  "0071f210"
+ ],
+ "owned_symbols_file": "owned-symbols.json",
+ "test_exit": 0,
+ "test_output": "fmod loaded: C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P4SoundAssetTest\\fmodex.dll\nP4 Sound loader PASS version=00041406 cycles=16 pcm_bytes=11024 samples=5512 2D/3D/cache/detach/missing",
+ "unresolved": []
+}

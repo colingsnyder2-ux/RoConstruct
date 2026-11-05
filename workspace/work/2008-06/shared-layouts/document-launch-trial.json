@@ -1,0 +1,109 @@
+{
+  "source_sha256": "303a0bb334d44f61f6be49b866e615a38cd9d0778d256026ca0d11214a69219c",
+  "header_sha256": "59c43339926de4c54982511fd531dc29e5ac0ce2d41f8c3f2d5cd9e33be313ed",
+  "observer_sha256": "cbf22fc12b3464ae9c46cdeb1a1658d0e13c6a8a3def286bcd33374a02ced094",
+  "object_sha256": "0147cba0360a731c00eda5ba27f12c73caedb2fc04ce7a6b89a9a656b9fa8ae8",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/Ob0",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeDocumentLaunchTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDocumentLaunchTrial.cpp"
+  ],
+  "methods": [
+    {
+      "address": "004500d0",
+      "size": 232,
+      "direct_calls": {
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z": "0x44f220",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "?documentUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PAVCRobloxDoc@@PBD@Z": "0x44fe00",
+        "?launch@@YAXPBD0@Z": "0x44ff40",
+        "?AfxMessageBox@@YGHPBDII@Z": "0x6a0c50"
+      }
+    },
+    {
+      "address": "004501c0",
+      "size": 232,
+      "direct_calls": {
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z": "0x44f220",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "?documentUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PAVCRobloxDoc@@PBD@Z": "0x44fe00",
+        "?launch@@YAXPBD0@Z": "0x44ff40",
+        "?AfxMessageBox@@YGHPBDII@Z": "0x6a0c50"
+      }
+    },
+    {
+      "address": "004502b0",
+      "size": 187,
+      "direct_calls": {
+        "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ": "0x4060d0",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z": "0x44f220",
+        "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z": "0x40e160",
+        "?launch@@YAXPBD0@Z": "0x44ff40",
+        "?AfxMessageBox@@YGHPBDII@Z": "0x6a0c50"
+      }
+    }
+  ],
+  "helper": {
+    "symbol": "?launch@@YAXPBD0@Z",
+    "candidate_size": 396,
+    "original_size": 396,
+    "exact": true,
+    "targets": {
+      "__ehhandler$?launch@@YAXPBD0@Z": "0x7c17fd",
+      "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f04",
+      "__imp_?GetBuffer@?$CSimpleStringT@D$00@ATL@@QAEPADH@Z": "0x803384",
+      "__imp__SHGetFolderPathA@20": "0x802b00",
+      "??_C@_0CF@JAKLLGAA@Unable?5to?5get?5common?5document?5fo@": "0x8179b0",
+      "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+      "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50",
+      "__TI2?AVruntime_error@std@@": "0x8d1bc8",
+      "__CxxThrowException@8": "0x6a158c",
+      "__imp_?ReleaseBuffer@?$CSimpleStringT@D$00@ATL@@QAEXH@Z": "0x803380",
+      "?AfxGetModuleState@@YGPAVAFX_MODULE_STATE@@XZ": "0x6a0926",
+      "?AfxGetModuleShortFileName@@YGXPAUHINSTANCE__@@AAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z": "0x6a093e",
+      "__imp_??Y?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@PBD@Z": "0x803350",
+      "?AfxGetThread@@YGPAVCWinThread@@XZ": "0x6a0e4e",
+      "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": "0x803ee0",
+      "??_C@_04PMOCAHAA@open?$AA@": "0x8168ac",
+      "__imp__ShellExecuteA@24": "0x802b04",
+      "??_C@_0BE@OBKBPAIE@ShellExecute?5failed?$AA@": "0x81799c",
+      "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": "0x803f14"
+    }
+  },
+  "scope": "Inactive trial. Helper and selected targets match; linked exception metadata, string helper dependencies and runtime ABI remain unproven."
+}

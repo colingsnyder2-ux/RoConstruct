@@ -1,0 +1,44 @@
+{
+  "sources": {
+    "rebuild\\2008-06\\native-classes\\ScriptContextLifetime.cpp": "62392300c65102c0a84dc8e852011ae410a8ff652ab0d92c358bbd60e4c13dc3",
+    "rebuild\\2008-06\\native-headers\\script\\ScriptContext.h": "ef1554c1d86dc1d058c7db8b6b11d910bda8ec3b51c3a1f0ac330f360cc2099d",
+    "rebuild\\2008-06\\tests\\NativeScriptContextLayout.cpp": "230f7a75bf484b2d749d109c503f13b436b89538ff99aef4d04fa68784d8305f"
+  },
+  "object_sha256": "c7577c44c9bd49e4b8a214b086128ef1e39d76a232bd21680e54e9234781b88b",
+  "methods": [
+    {
+      "address": "005ae490",
+      "size": 504,
+      "target_size": 504,
+      "match": false,
+      "direct_calls": {
+        "??0?$DescribedCreatable@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PBDB@RBX@@IAE@XZ": "0x5ad930",
+        "??0?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVScript@RBX@@@1@ABV?$allocator@PAVScript@RBX@@@1@@Z": "0x64b2a0",
+        "?create_time@?$second_clock@Vptime@posix_time@boost@@@date_time@boost@@CA?AVptime@posix_time@3@PAUtm@@@Z": "0x55e7d0",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0mutex@boost@@QAE@XZ": "0x594c90",
+        "??0condition_impl@detail@boost@@QAE@XZ": "0x5f1bd0",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90"
+      }
+    },
+    {
+      "address": "005ae730",
+      "size": 435,
+      "target_size": 435,
+      "match": true,
+      "direct_calls": {
+        "??3@YAXPAX@Z": "0x6a067a",
+        "??1condition_impl@detail@boost@@QAE@XZ": "0x5f1c70",
+        "??1mutex@boost@@QAE@XZ": "0x594cb0",
+        "??1thread@boost@@QAE@XZ": "0x5a6840",
+        "??1?$vector@UWaitingThread@YieldingThreads@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads@Lua@RBX@@@std@@@std@@QAE@XZ": "0x5ad190",
+        "??1?$vector@V?$shared_ptr@VScript@RBX@@@boost@@V?$allocator@V?$shared_ptr@VScript@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0",
+        "??1?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x64b230",
+        "??1ThreadRef@Lua@RBX@@QAE@XZ": "0x594380",
+        "??1?$FactoryProduct@VScriptContext@RBX@@VInstance@2@$1?sScriptContext@2@3PBDB@RBX@@MAE@XZ": "0x5a8790"
+      }
+    }
+  ],
+  "layout": "MSVC fixture asserts size 0x1f8 and allocator +0x1f0",
+  "scope": "Inactive; destructor matches and thread destructor binding verified. Constructor differs by one byte; remaining field identities and runtime unverified."
+}

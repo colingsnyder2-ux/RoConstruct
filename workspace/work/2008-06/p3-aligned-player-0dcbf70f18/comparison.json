@@ -1,0 +1,33 @@
+{
+  "pass": true,
+  "normalized_iou": 0.9840355639104956,
+  "minimum_iou": 0.98,
+  "manual_box_control_iou": 0.7927093505859375,
+  "box_control_maximum": 0.9,
+  "original_bounds": [
+    192,
+    288,
+    355,
+    451
+  ],
+  "player_bounds": [
+    102,
+    62,
+    218,
+    178
+  ],
+  "original_pixels": 21326,
+  "player_pixels": 10757,
+  "reference": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\original-sphere-reference\\original-aligned.jpg",
+  "reference_sha256": "646ea3e95951af5dd34015cb335bd965e4355c41700de8e052b31ad36bc43307",
+  "player": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p3-aligned-player-0dcbf70f18\\last.png",
+  "player_sha256": "358f239aff63fe108966594dcb2b2455ca03f8eeb3dec802de398792533f3abf",
+  "fixture_sha256": "25484b0cc4ac333b3b6cf616eb0b6282305c9fb4c995da26c968f0e056d0e095",
+  "original_receipt_sha256": "00783e5e0a29b9814123a3f1f3ea8c158c157b2b3a15265cdb674db44c7c1072",
+  "verifier_sha256": "fb9be6adf3670ce3e0e9c35276a506a9f296148b26da5ca65d3d758b7db6dd27",
+  "scope": "Shape silhouette under identity camera at(0,0,10); crop/scale normalization compensates viewport/FOV. No RGB/lighting/UI parity claim.",
+  "limits": [
+    "Original capture is helper JPEG; rebuilt capture is actual D3D9 backbuffer PNG.",
+    "Full native renderer context and June asset-distribution identity remain separately tracked."
+  ]
+}

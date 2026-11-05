@@ -1,0 +1,116 @@
+{
+  "jobs": [
+    {
+      "id": "d497fe6a85ca4b468534ed463a48d756",
+      "state": "rejected",
+      "receipt": {
+        "accepted": false,
+        "reason": "Accepted native bodies missing from refreshed baseline: 00497600, 005058f0, 00505940, 00505a20, 00505ad0, 00505b90, 00505c70, 00505d20, 00505e30, 00505ee0, 00505ff0, 00506890, 00506ae0, 00506c00, 00506c80, 00556b00, 005a0220, 005a05a0, 005a0d90, 005d9340, 005d9bb0, 005d9db0, 005e5da0, 005e75b0, 005e75e0, 005e8050, 005e80d0, 005e8140, 005e8770, 0063c070, 0064dc90, 00668a20, 00676b20, 00676e00, 006770f0, 00677190, 00677260, 00677300, 007f8ba0",
+        "verification_seconds": 1027.5,
+        "job": "d497fe6a85ca4b468534ed463a48d756",
+        "user": "colin",
+        "model": "gpt-6.1-sol",
+        "unit": "RBX::RunService"
+      },
+      "updated_utc": "2026-11-01T22:25:35.749946+00:00"
+    },
+    {
+      "id": "09995d6812f849f4a30530d651dca4cb",
+      "state": "rejected",
+      "receipt": {
+        "accepted": false,
+        "reason": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\colin\\\\RoConstruct\\\\work\\\\integration\\\\baselines\\\\a5e043cd4bc7e9c50ec0dd0b048c6dc2bbe34680fc5a1cd409fd64fcebce4cdd\\\\rebuild\\\\2008-06\\\\out\\\\P2Lighting\\\\owned-symbols.json'",
+        "verification_seconds": 644.953,
+        "job": "09995d6812f849f4a30530d651dca4cb",
+        "user": "colin",
+        "model": "gpt-6.1-sol",
+        "unit": "RBX::RunService"
+      },
+      "updated_utc": "2026-11-01T21:51:50.270795+00:00"
+    },
+    {
+      "id": "bc06e52f7970494682e9ab8e6e95486b",
+      "state": "accepted",
+      "receipt": {
+        "accepted": true,
+        "gains": [
+          "005a05a0",
+          "005a0d90",
+          "00676b20",
+          "00676e00",
+          "006770f0"
+        ],
+        "references": {
+          "checked": 5,
+          "unknown_references": 16,
+          "scope": "code, referenced data, known import names; unresolved native symbols require ABI context"
+        },
+        "losses": [],
+        "new_distinct": [
+          "005a05a0",
+          "005a0d90",
+          "00676b20",
+          "00676e00",
+          "006770f0"
+        ],
+        "owned_before": 3359,
+        "owned_after": 3364,
+        "distinct_before": 9831,
+        "distinct_after": 9836,
+        "baseline_revision": "25b001c0270861bb3142e5d51fc4a7d86283773079d01d90c36a4d9a123b91f9",
+        "submitted_revision": "6e5085ffa0d65b2fea17b1b3fd1134022b23bbf76a1d454b3d016cee3ccc1c2f",
+        "rebased": true,
+        "input_hash": "e81b12228aab38ae711e0b0192f574a836cdac08ef2b7c468845e1dfb4b6e315",
+        "overlay_hash": "9a23f14ae66f08966bccdcdd7e310fa24ae510f5f6cd887bc7e28368eb541004",
+        "gates": "M2/M4a/M5, size, base, linked ownership passed",
+        "dropped_files": {},
+        "artifacts": "work/integration/jobs/bc06e52f7970494682e9ab8e6e95486b",
+        "probe_errors": {
+          "size": {},
+          "base": {
+            "gui/ArrowPanel.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/Button.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/ChatOutput.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/ChatWidget.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/EquationDisplay.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/Gui.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/HealthHud.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/MenuItem.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/ScoreHud.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "gui/Widget.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "tool/GroupDragTool.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "tool/NullTool.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "tool/PartDragTool.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "tool/ToolsArrow.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "util/ContentProvider.h": "probe.cpp\nUnknown compiler version - please run the configure tests and report the results\nprobe.cpp(6) : error C2440: 'static_cast' : cannot convert from 'RBX::ContentProvider *' to 'RBX::Instance *'\n        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast",
+            "v8datamodel/Backpack.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/CharacterAppearance.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/DataModel.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/Flag.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/Gyro.h": "52f7970494682e9ab8e6e95486b\\rebuild\\2008-06\\out\\RbxgsApp\\overlay\\App\\include\\reflection/reflection.h(871) : while compiling class template member function 'void RBX::Reflection::RefPropDescriptor<Class,ReturnType>::assignIDREF(RBX::Reflection::DescribedBase *,const RBX::InstanceHandle &) const'\n        with\n        [\n            Class=RBX::Rocket,\n            ReturnType=RBX::PartInstance\n        ]",
+            "v8datamodel/Hopper.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/Lighting.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/LocalBackpack.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/Message.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/Mouse.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/ScriptMouseCommand.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/Sky.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/Tool.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/ToolMouseCommand.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/ToolsPart.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/UserController.h": "Probe runtime exit=3221225477 (0xC0000005): ",
+            "v8datamodel/Workspace.h": "Probe runtime exit=3221225477 (0xC0000005): "
+          }
+        },
+        "verification_seconds": 187.828,
+        "credits": 5,
+        "job": "bc06e52f7970494682e9ab8e6e95486b",
+        "user": "EspClaude",
+        "model": "claude-opus-5-5",
+        "unit": "RBX::AdornG3D"
+      },
+      "updated_utc": "2026-10-31T17:06:56.250053+00:00"
+    }
+  ],
+  "scope": "Read-only server database snapshot. Latest rejected jobs cite missing P2Lighting ownership artifact and missing accepted bodies in refreshed baseline; no server files modified."
+}

@@ -1,0 +1,576 @@
+{
+  "source_repo": "colingsnyder2-ux/RoConstruct",
+  "main_before": "c7e85ce1261f847f7d664ed55fb2eb7a1298fae7",
+  "findings_snapshot": "4aa6ac8c0082e83dd67a8d0d26a8b562652d4e51",
+  "branches": {
+    "archive": "f742e9dba4907c52f9168d532cd19a8f5477d4ae",
+    "auto-merge/native": "d317e63f50cb28873637149da87b9acbc20fd562",
+    "claude/p6-startup-20261101": "6da8e40862d5e855f1161fc0e18cf67b9c34dd32",
+    "codex/native-partial-search-20261029": "6ab993a3c2cc673a0d6b7211c186a129d46a1733",
+    "contrib-snapshot": "8298013e3c1661d5bfec473106d36c51ee2e1fc3",
+    "gh-pages": "a9bc5a304c62612daae16e1b91b105037d1a0b73",
+    "main": "c7e85ce1261f847f7d664ed55fb2eb7a1298fae7"
+  },
+  "deleted_branch_names": [
+    "archive",
+    "auto-merge/native",
+    "claude/p6-startup-20261101",
+    "codex/native-partial-search-20261029",
+    "contrib-snapshot"
+  ],
+  "moved_folders": [
+    "rebuild/2008-06",
+    "research",
+    "benchmarks",
+    "docs"
+  ],
+  "files": [
+    {
+      "path": "benchmarks/integration_local.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/benchmarks/integration_local.py",
+      "blob": "2d967b2b0e262ccddb433e9b22d370d60c85f32a",
+      "original_mode": "100644"
+    },
+    {
+      "path": "benchmarks/native_compile_batches.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/benchmarks/native_compile_batches.py",
+      "blob": "df0c0be082ddfe9137be0761b299e6f6d31b49f5",
+      "original_mode": "100644"
+    },
+    {
+      "path": "benchmarks/native_integrator.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/benchmarks/native_integrator.py",
+      "blob": "fec1b4ef36b47e2257302afbe47358161968532a",
+      "original_mode": "100644"
+    },
+    {
+      "path": "benchmarks/native_matcher.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/benchmarks/native_matcher.py",
+      "blob": "5b4c3247bdd95f0724affd29391c7453bc276e35",
+      "original_mode": "100644"
+    },
+    {
+      "path": "benchmarks/native_search.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/benchmarks/native_search.py",
+      "blob": "f8550b30861348c2d37a81d967c1f5c18d3dd1dd",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/AGENT_GUIDE.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/AGENT_GUIDE.md",
+      "blob": "8dc17c6422ff783ed544e8510361e7ea6d86269d",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/INTEGRATION.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/INTEGRATION.md",
+      "blob": "e6bbd5b277e621a0ebecf740a5cb31635c242a7e",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/INTEGRATION_WORKFLOW_V2.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/INTEGRATION_WORKFLOW_V2.md",
+      "blob": "c26d26123091426a77cc2bd57f1777ff4f06e7dc",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/INTEGRATOR_PERFORMANCE.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/INTEGRATOR_PERFORMANCE.md",
+      "blob": "0bb1928ba8d8104f5f99d0406b0446b8ee1257dc",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/MATCHING_AGENT.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/MATCHING_AGENT.md",
+      "blob": "30330c548b3e5ccb0add680d1618c9ad47c90639",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/NATIVE_AGENT.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/NATIVE_AGENT.md",
+      "blob": "e46e0f94f8f2008386f25fc23efc4309a8a1aa72",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/NATIVE_INTEGRATION_WORKFLOW.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/NATIVE_INTEGRATION_WORKFLOW.md",
+      "blob": "4289f9c9a200b854ba48a9a38ca157c4d8c410b5",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/NATIVE_PREFLIGHT_CASE.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/NATIVE_PREFLIGHT_CASE.md",
+      "blob": "a4f6995d3d79bc1bb3135536d672625ff0b133a9",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/PROVIDER_ROUTING_CASE.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/PROVIDER_ROUTING_CASE.md",
+      "blob": "db83c98b0f5d9320dfaa8be2cb6b734792473ec2",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/SERVER.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/SERVER.md",
+      "blob": "73770bb2b0be536b41bcd7e5377b3e7f6c3a7ce2",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/SETUP.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/SETUP.md",
+      "blob": "462995930d4f86ac49743a67a765584d956bc0e7",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/SOURCES.md",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/SOURCES.md",
+      "blob": "4a66dbb34d0c71b688cc7c520067cefff8389ccc",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/apple-touch-icon.png",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/apple-touch-icon.png",
+      "blob": "c46ddd1a660e007e595148f926f615262b154155",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/favicon.ico",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/favicon.ico",
+      "blob": "4aa56531457f1564b80adb2001648a2bbcab01cc",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/favicon.png",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/favicon.png",
+      "blob": "0f9c1643de3fcff79b335b26a5c7e8075dac4be6",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/findings.html",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/findings.html",
+      "blob": "e70e41031a1df7511cd24999d11fa7e7317cd134",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/history.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/history.json",
+      "blob": "28ec762d770169e3ad7814937f0c32e1bd7be390",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/index.html",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/index.html",
+      "blob": "5ec4797d6897b03b8391f9cf03cf27ab3ee93cf6",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/library-coverage.js",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/library-coverage.js",
+      "blob": "85b0f99829980126321a60edcafca7749be16b00",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/logo.png",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/logo.png",
+      "blob": "e0fe11db24f0c7918f84da607df49f004988a291",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/progress.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/progress.json",
+      "blob": "ee56ec4f806c104af32e10d4481421c60dad1b0e",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/providers.example.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/providers.example.json",
+      "blob": "ab324ed46982b8c3979bde389986f81f86bfd8f0",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/rebuild-progress.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/rebuild-progress.json",
+      "blob": "4a3433a3a261b3c6b4aa703825a9c1f84e151382",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/source-links.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/source-links.json",
+      "blob": "50c248ad75c9c128a7690e6a06f4fc9587b6aa34",
+      "original_mode": "100644"
+    },
+    {
+      "path": "docs/sources.html",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/docs/sources.html",
+      "blob": "0de30a6c880e3a8b5e1c848e884b7e6dde7e0ffd",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/base_check.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/base_check.py",
+      "blob": "00ec9535ccf12d02288fe89ddd00f6fec75d3398",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/glue/mfcatl/sdk_helpers.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/glue/mfcatl/sdk_helpers.cpp",
+      "blob": "460517b454844996cb723f66d2a64b62209c00a3",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/glue/ogre-native/NativeOgreVectors.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/glue/ogre-native/NativeOgreVectors.cpp",
+      "blob": "173ac8aac1feebcaa1e9c15720b34ab814776514",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/boost.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/boost.json",
+      "blob": "2ad75c13f3f679f2f7e927b4bf964af078e4b460",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/g3d-gl.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/g3d-gl.json",
+      "blob": "8a7c80695c8c9b6176c4570819702e8c5b39f101",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/g3d.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/g3d.json",
+      "blob": "248dfc8a9138220ac8c341f6452480d30ea9606c",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/jpeg.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/jpeg.json",
+      "blob": "13c6673eb1e7125df5c04ff372d3e5d749501cd0",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/libpng.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/libpng.json",
+      "blob": "c39d8e2531e951f7a07502b0592cf5904d5f9b51",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/lua-cpp.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/lua-cpp.json",
+      "blob": "db26552cbc94b0c50e76c771c86770290f4576d0",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/lua.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/lua.json",
+      "blob": "d50a0a7d18aa6b58e81fbacbc20630a12f11d69c",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/mfc-atl.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/mfc-atl.json",
+      "blob": "060b29bb5dd9eba949b6700e5b2bd0ab90a82323",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/ogre-native-headers.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/ogre-native-headers.json",
+      "blob": "f895301e42c6b443eaad15c852f13bce8d99b5ca",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/raknet.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/raknet.json",
+      "blob": "4f9fe4607eb76f206df4f9748e7973c08aa8c319",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/rbx-app.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/rbx-app.json",
+      "blob": "da5cbf56258f1c8e95941894bf915cd8a05162fb",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/rbxgs-app.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/rbxgs-app.json",
+      "blob": "0c0d95394699a33ca7bc76831f8caeb68cf79f91",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/scintilla.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/scintilla.json",
+      "blob": "53b0e38e7ccf59fe5d3177a16c4f4aec9a089868",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/xtp.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/xtp.json",
+      "blob": "4f79134bc10eb3ae76d6bd0c290d18225707f365",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/zlib-winapi.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/zlib-winapi.json",
+      "blob": "fae9caf3a728c8cee17a599bb2c494c2820e5307",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/modules/zlib.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/modules/zlib.json",
+      "blob": "b10504b74e1c56e35d1bd1437040ee807414922a",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/patches/make_rbxgs_client.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/patches/make_rbxgs_client.py",
+      "blob": "89caf6b4d97de06f75fa74bb6c57db480977d375",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/patches/native-promotions.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/patches/native-promotions.json",
+      "blob": "f45510048b19f76d074e5c2221b675503810bac3",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/patches/rbxgs-client.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/patches/rbxgs-client.json",
+      "blob": "6e7d64fe2a939a73d4f0699ff7b2277a2fdf05bf",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/patches/zlib-deflate-copyright.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/patches/zlib-deflate-copyright.json",
+      "blob": "36f81edca59c6fc915d96d2e719881b9b5baa284",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/patches/zlib-winapi-deflate-copyright.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/patches/zlib-winapi-deflate-copyright.json",
+      "blob": "36f81edca59c6fc915d96d2e719881b9b5baa284",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/size_check.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/size_check.py",
+      "blob": "a54ec708c10b765891b606e8128b0a6d0363e556",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/swap_build.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/swap_build.py",
+      "blob": "dbd3088f0981a2487fe14906a67efcdfbfb44253",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/swap_plan.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/swap_plan.py",
+      "blob": "b813a6652785d3d751be6da7fcb002811dd2d462",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/boost_core.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/boost_core.cpp",
+      "blob": "5de73eb137a4c651a2a3a71602764f868c0ec2e3",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/g3d_core.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/g3d_core.cpp",
+      "blob": "9a1615a48ffbb1eff7b74d4e4ee621d5288ed0d1",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/g3d_gl.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/g3d_gl.cpp",
+      "blob": "e79d070843c6c4b1311b7965e2c302c69ab361af",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/jpeg_roundtrip.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/jpeg_roundtrip.cpp",
+      "blob": "dc0ebf96e04c3c34d02956f0d3f781ec401d74fd",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/lua_cpp_script.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/lua_cpp_script.cpp",
+      "blob": "a2f61f6ec41b806b59239f71b2d8cf1004c3b3fc",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/lua_script.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/lua_script.cpp",
+      "blob": "04f43b0cd78b2c7d0b5831b7c63f532ea40fee09",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/mfcatl_link.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/mfcatl_link.cpp",
+      "blob": "5dd3887d2a8b1783f0a8be75da5494b9378bfc53",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/ogre_native_vectors.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/ogre_native_vectors.cpp",
+      "blob": "390d02914a9de213fcefd77b95f9d426512a605b",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/png_roundtrip.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/png_roundtrip.cpp",
+      "blob": "0c749b5ee1efe5976edc672137fcde3e971bcb8c",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/raknet_loopback.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/raknet_loopback.cpp",
+      "blob": "abf1925a2251db87be7c6b99af74e1c6caa18f77",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/rbx_app.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/rbx_app.cpp",
+      "blob": "684583e3f3802dcf149cdcc1039c0c66fb5465cf",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/rbxgs_app.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/rbxgs_app.cpp",
+      "blob": "d8b2a180a08cb22fa0b0403d86727c32e2c082da",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/scintilla_ctrl.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/scintilla_ctrl.cpp",
+      "blob": "5b79b532685e3149f13403395e1e3e7b23cff852",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/verify_ogre_native_vectors.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/verify_ogre_native_vectors.py",
+      "blob": "ba4fc708585be8b4bbe8683097f5c184a068d569",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/xtp_colors.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/xtp_colors.cpp",
+      "blob": "1653701f383e15135f77818161287b20952cb4aa",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/zlib_roundtrip.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/zlib_roundtrip.cpp",
+      "blob": "c70ea55d9c1ecb9c3c8fdab471ccd879c7cd2fb4",
+      "original_mode": "100644"
+    },
+    {
+      "path": "rebuild/2008-06/tests/zlib_winapi_roundtrip.cpp",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/rebuild/2008-06/tests/zlib_winapi_roundtrip.cpp",
+      "blob": "f65d1ccb755913432cdf088540be90107e58948e",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/artifact-search-log.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/artifact-search-log.json",
+      "blob": "a3d3d13bca4fa81a27ff3fc582ca84591555ed6a",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/extent-fixes-2008-06-20261026.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/extent-fixes-2008-06-20261026.json",
+      "blob": "6510feb7ffa3c0fa21e0260bbe99d4b3fb00216b",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/function-data.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/function-data.json",
+      "blob": "07464bcf5867d10ece2c897bcc26b1a99b78edc0",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/lessons.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/lessons.json",
+      "blob": "3710c8cfcc315feb49bb159323e32e4d12597d8e",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/libs-bundle.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/libs-bundle.json",
+      "blob": "4583eb4b858e7fb410cc0c02ec7fd8577be11de8",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/log.jsonl",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/log.jsonl",
+      "blob": "e6fc160387818a9f4471e1fa7cc2b06520d9a7e2",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/native-instance-order-sol-20261029.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/native-instance-order-sol-20261029.json",
+      "blob": "55304b158ccab1d32df62b078e0a4b41abc788a4",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/native-partials-sol-20261028.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/native-partials-sol-20261028.json",
+      "blob": "8f8f34d7b8988fa0470482afd93ac38893438cb3",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/native-source-lock.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/native-source-lock.json",
+      "blob": "128f5428354dba8d3c15d3f05519ea10466e5bdb",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/native-units.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/native-units.json",
+      "blob": "e6360502823efddddd4b0cf47a7e991e0b126251",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/native-workspace-profiling-sol-20261029.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/native-workspace-profiling-sol-20261029.json",
+      "blob": "dac9c671a7fca5ba03e11e07b5e677b0f46e798e",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/recipes.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/recipes.json",
+      "blob": "b097cbe7340ecfefe3eecbd0ae302df18ee6933d",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/repair-patterns.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/repair-patterns.json",
+      "blob": "beada148d2e74c9544e8759cdbb129b4fa86a8e4",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/reports.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/reports.json",
+      "blob": "7c18078a5d4a044a43c4c36c20ae9ec2f893e94b",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/retired.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/retired.json",
+      "blob": "5df8cfbdcbc658304757e068cc55e82408e8f6ec",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/scout_sources.py",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/scout_sources.py",
+      "blob": "0a4d4038fc386b895c05bca30015079592448ece",
+      "original_mode": "100644"
+    },
+    {
+      "path": "research/template-units.json",
+      "archive": "archive/origin-main/c7e85ce1261f847f7d664ed55fb2eb7a1298fae7/research/template-units.json",
+      "blob": "23ae74817c3ea3d1db5053ed86a8c8254ad5c2b8",
+      "original_mode": "100644"
+    }
+  ],
+  "note": "Exact original file bytes archived before removal from main. All source/proof histories preserved by work commit parents."
+}

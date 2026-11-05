@@ -1,0 +1,106 @@
+{
+  "source_sha256": "875a0d2f8c8f56c4284ca4da2f3df809840a77dfb872d0c539de99208c94ac19",
+  "observer_sha256": "edf933266fe69c62e8a5184485273cd06603efa0b6f168c8d29edbd50c5e60e9",
+  "object_sha256": "d917505e7ecacc537692edf6b45159c5fd06c585f284e01dd22bdc1662250e82",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeInstanceBaseCallbacks.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceBaseCallbacks.cpp"
+  ],
+  "callbacks": [
+    {
+      "slot": 1,
+      "address": "0055af90",
+      "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 57,
+      "bindings": {
+        "__imp_??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "0x8023d8",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c",
+        "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "0x973d54",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00"
+      }
+    },
+    {
+      "slot": 2,
+      "address": "0068e880",
+      "symbol": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
+      "size": 5
+    },
+    {
+      "slot": 3,
+      "address": "0068e880",
+      "symbol": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z",
+      "size": 5
+    },
+    {
+      "slot": 7,
+      "address": "0070bdf0",
+      "symbol": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z",
+      "size": 3
+    },
+    {
+      "slot": 8,
+      "address": "0070bdf0",
+      "symbol": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z",
+      "size": 3
+    },
+    {
+      "slot": 9,
+      "address": "0070bdf0",
+      "symbol": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z",
+      "size": 3
+    },
+    {
+      "slot": 10,
+      "address": "0047d410",
+      "symbol": "?onLastChildRemoved@Instance@RBX@@UAEXXZ",
+      "size": 1
+    },
+    {
+      "slot": 12,
+      "address": "00458e90",
+      "symbol": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z",
+      "size": 3
+    },
+    {
+      "slot": 15,
+      "address": "00557490",
+      "symbol": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z",
+      "size": 20
+    }
+  ],
+  "scope": "Inactive source. Original base callbacks are explicitly empty/false where specified; class ABI, remaining virtuals and runtime remain unproven."
+}

@@ -1,0 +1,179 @@
+{
+  "revision": "0dcbf70f188cb6cd5e9863c6eb163a5d4d7411d0",
+  "exe_sha256": "8c2a6507ed7149653123b40566b22be16d476d51d522c8ec29b21cc09538320a",
+  "map_sha256": "0f38673daf196e5b864b32d22d271e7da28366e975b6794e2c0c62805275cc12",
+  "unit_sha256": "17c69861f933f108b3a4e9f0fed750283a792b6cc69c593c60ff263810cc3c03",
+  "fixture_sha256": "cd06a901f8012140715325327f2572bb077fef5ff1b2d572245cc814c9df3b49",
+  "observer_sha256": "0b29d74da1b4b4d447f6e6deac21392653439d772bea99ae071e9ae84cde9397",
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P3SphereMeshTest\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P3SphereMeshTest\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+  },
+  "runs": {
+    "unit": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P3SphereMeshTest\\P3SphereMeshTest.exe"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p3-sphere-final-0dcbf70f18\\unit",
+      "exit": 0,
+      "files": {
+        "p3-sphere-mesh.log": "3ccec14f4aa11b2393152cba84b9895de69d9b604f081caff4b09d001e247e31",
+        "stdout.txt": "3f8a05f57e211922cba48a589b6d82e3d7cf4c1d35bf8040b1a5e05a2e083887"
+      }
+    },
+    "normal": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "2",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\sphere.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p3-sphere-final-0dcbf70f18\\normal",
+      "exit": 0,
+      "files": {
+        "last.png": "358f239aff63fe108966594dcb2b2455ca03f8eeb3dec802de398792533f3abf",
+        "player.log": "b9064f417060b11ef87f0521bb7bb714fbb3884cb001a256a0eaff5dbf137d6f",
+        "stdout.txt": "348067582536e6c48bf1455c82e44999c78b34bb1e0081beacfd04d4c6cee7ef"
+      }
+    },
+    "hardware": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p3-sphere-final-0dcbf70f18\\observer-build\\TraceNativeMesh.exe",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "0040f660",
+        "00414e10",
+        "0041b510",
+        "0041b370",
+        "0041add0",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\sphere.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p3-sphere-final-0dcbf70f18\\hardware",
+      "exit": 0,
+      "files": {
+        "last.png": "358f239aff63fe108966594dcb2b2455ca03f8eeb3dec802de398792533f3abf",
+        "player.log": "186fe7c53864111162b7019ccc6640e1e95a3e26403180ec78fa4d60de38064f",
+        "stdout.txt": "ff6042632ddff35dfc232490f22b06b934013e2f885020b4e15ea3a1d80112ce"
+      }
+    }
+  },
+  "reference_client_compared": false,
+  "limits": [
+    "Native enclosing texture context absent: harness mipmaps enabled, AA mode0.",
+    "Mixed-shape lifetime and reference silhouette remain open; P3 not complete."
+  ],
+  "sphere_image": {
+    "pixels": 10757,
+    "bounds": [
+      102,
+      62,
+      218,
+      178
+    ],
+    "fill": 0.7858134268390679,
+    "sha256": "358f239aff63fe108966594dcb2b2455ca03f8eeb3dec802de398792533f3abf",
+    "scope": "Round silhouette sanity; not original-client comparison."
+  },
+  "hardware": {
+    "selected": {
+      "??0SphereMesh@PlayerBlockMesh@@": {
+        "symbol": "??0SphereMesh@PlayerBlockMesh@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@View@RBX@@@Z",
+        "address": "0040f660"
+      },
+      "?upload@Level@PlayerBlockMesh@@": {
+        "symbol": "?upload@Level@PlayerBlockMesh@@QAEX_NAAVAxisAlignedBox@Ogre@@@Z",
+        "address": "00414e10"
+      },
+      "?createSubEntity@RbxEntity@Ogre@@": {
+        "symbol": "?createSubEntity@RbxEntity@Ogre@@QAEPAVSubEntity@2@PAVSubMesh@2@I@Z",
+        "address": "0041b510"
+      },
+      "??1RbxEntity@Ogre@@": {
+        "symbol": "??1RbxEntity@Ogre@@UAE@XZ",
+        "address": "0041b370"
+      },
+      "?getRenderOperation@RbxSubEntity@Ogre@@": {
+        "symbol": "?getRenderOperation@RbxSubEntity@Ogre@@UAEXAAVRenderOperation@2@@Z",
+        "address": "0041add0"
+      }
+    },
+    "events": [
+      {
+        "event": "TRACE_IMAGE",
+        "base": "00400000"
+      },
+      {
+        "event": "TRACE_EXCEPTION",
+        "code": "406d1388",
+        "address": "77",
+        "first": "1"
+      },
+      {
+        "event": "TRACE_PRODUCER_ENTRY",
+        "receiver": "03178bf8",
+        "return": "00416a70"
+      },
+      {
+        "event": "TRACE_PRODUCER_RETURN",
+        "mesh": "03178bf8",
+        "levels": "1",
+        "level0": "031789b8",
+        "level1": "00000000"
+      },
+      {
+        "event": "TRACE_UPLOAD_ENTRY",
+        "receiver": "031789b8",
+        "return": "00401e44"
+      },
+      {
+        "event": "TRACE_UPLOAD_RETURN",
+        "level": "031789b8",
+        "backend": "03190a48"
+      },
+      {
+        "event": "TRACE_ENTITY_CREATE",
+        "entity": "031918b8",
+        "submesh": "03190a48",
+        "lod": "0"
+      },
+      {
+        "event": "TRACE_ENTITY_CREATED",
+        "entity": "031918b8",
+        "subentity": "03191c98"
+      },
+      {
+        "event": "TRACE_RENDER_OPERATION",
+        "subentity": "03191c98",
+        "submesh": "03190a48",
+        "lod": "0"
+      },
+      {
+        "event": "TRACE_ENTITY_DESTROY",
+        "entity": "031918b8"
+      },
+      {
+        "event": "TRACE_EXIT",
+        "code": "0",
+        "producer": "1",
+        "upload": "1",
+        "entity": "1",
+        "destroy": "1"
+      }
+    ],
+    "observer_source_sha256": "7b9a8d5150fd007158b5735a814f138332f503fc7170c472869b49cd6d4e86e5",
+    "identity_chain_pass": true,
+    "target_exe_unchanged": true
+  },
+  "source_sha256": {
+    "tests/PlayerBlockMesh.cpp": "273b2b899869d20176164fc0c6f384b86942616cecf5a71fdd31f707684fdf0b",
+    "tests/PlayerBlockMesh.h": "74cb67dd6bf868c01257da076283f3329a6c730bd17a329118d0276aff9474a5",
+    "tests/PlayerNativeTexture.cpp": "7fc02f6bc248564811f82a7cea69a5e3e8c758959b790530d414e5b2b9450b95",
+    "tests/p2-recovered/Player2008.cpp": "86a720afab8775f90af7cb8a8e28fe2b2999163683105bd1ff013889d33b2f17",
+    "tests/p2-recovered/PlayerScene.cpp": "9f478ebe2735f77fd052670f74b05a080ad2dfa512e83498ff79777d26964f54"
+  },
+  "assets_sha256": {
+    "Surfaces.png": "af0f882738addbf281dec784b9e523bc96aad4f831d4eb2317d1ab7c500e3a01",
+    "SurfacesStrip.png": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4"
+  }
+}

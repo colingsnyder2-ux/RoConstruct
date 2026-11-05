@@ -1,0 +1,387 @@
+[
+  {
+    "path": "rebuild/2008-06/native-classes/CChildFrame.cpp",
+    "exists": true,
+    "working_blob": "508a71e7819e6f8b78141a59d2e22774c56205c5"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/CObjectBrowser.cpp",
+    "exists": true,
+    "working_blob": "05206da686d9976ec93746427365d56c50fe37be"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/CPropertyGridItemBrickColor.cpp",
+    "exists": true,
+    "working_blob": "fc2227f5235907d41c543937d4a88bd2a7b9cf41"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp",
+    "exists": true,
+    "working_blob": "7b1b6446a3251125c9562400caacab703b5934ac"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/CScriptDoc.cpp",
+    "exists": true,
+    "working_blob": "f380d8ae1a0f63c4779327bd073a7597f3653ac7"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/Clothing.cpp",
+    "exists": true,
+    "working_blob": "9b499f469929911b811f5af4b3b8d6bc8ac93b43"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/HumanoidState.cpp",
+    "exists": true,
+    "working_blob": "73ffa7b3ce36d15780350f575b9976288390d95e"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/HumanoidStates1.cpp",
+    "exists": true,
+    "working_blob": "3d2292aaffc5046f93db876609c5b5c3ae8e3e41"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp",
+    "exists": true,
+    "working_blob": "96e3d0699ce61b62a41b0cbd136a4aecc7d7967e"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/HumanoidStates2.cpp",
+    "exists": true,
+    "working_blob": "3a581196f0b878ec19a472d5a69e9818becbc495"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/HumanoidStates3.cpp",
+    "exists": true,
+    "working_blob": "6591e4417dfeecd3342331422b999acc29061657"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/Message.cpp",
+    "exists": true,
+    "working_blob": "3cbe04841f518653eb2981bb85787458bc79eb70"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/Sky.cpp",
+    "exists": true,
+    "working_blob": "433e30a39f979372cb5ab7c333e3d464223c57cf"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/Sparkles.cpp",
+    "exists": true,
+    "working_blob": "ad0dbc918a93e04f553aeb0402789dd6570838f7"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/SparklesEffect.cpp",
+    "exists": true,
+    "working_blob": "8c91540e67205c996bb3546a55aa8e0a06d81d7c"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/Team.cpp",
+    "exists": true,
+    "working_blob": "291289272ebdab8df07c53114bf2d9c7d7a6d25b"
+  },
+  {
+    "path": "rebuild/2008-06/native-classes/Teams.cpp",
+    "exists": true,
+    "working_blob": "0f0f3a5ceea78befacc5deb39380e86747d71649"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/CChildFrame.h",
+    "exists": true,
+    "working_blob": "90a0617488065868a0f286143530733e82ae45a8"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/CObjectBrowser.h",
+    "exists": true,
+    "working_blob": "51dd6a8d681e69ba3e7734fa5122e941dc71336e"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/CPropertyGridItemBrickColor.h",
+    "exists": true,
+    "working_blob": "2255e40573f0e3ddf73e841af5ff47d34c72ac76"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/CRobloxReportSubViews.h",
+    "exists": true,
+    "working_blob": "f1d6b9b5b7e7068f702f0f8c05889585e711610e"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/CScriptDoc.h",
+    "exists": true,
+    "working_blob": "501da49ea3ac6f8b683e1be2376c92c7b8a69090"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h",
+    "exists": true,
+    "working_blob": "32c70bc03bd5a84b2832183e4d22f0576c2644f2"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h",
+    "exists": true,
+    "working_blob": "18c34a725103a9ca56fb72d297e51a503d5b3fd6"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h",
+    "exists": true,
+    "working_blob": "afd5e077d24cc05eaaf903d185fd4bd63f51cd98"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/v8datamodel/Clothing.h",
+    "exists": true,
+    "working_blob": "abd4ddf551a5e5e337600b2c726898fbd221fa12"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/v8datamodel/Message.h",
+    "exists": true,
+    "working_blob": "8c991c0497954090251e74c1b78bcd24e35f0a13"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/v8datamodel/Sky.h",
+    "exists": true,
+    "working_blob": "41136329e3ab5a0218c4303a9e649a734cb64abd"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h",
+    "exists": true,
+    "working_blob": "1b489e9c0e40e499a9da57ba964e1fa0de08626f"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/v8datamodel/Team.h",
+    "exists": true,
+    "working_blob": "ca77a295c38c69e37c98d4229f026faa0cb364eb"
+  },
+  {
+    "path": "rebuild/2008-06/native-headers/v8datamodel/Teams.h",
+    "exists": true,
+    "working_blob": "aeafee741dd2e82bb7cf535a488666fc3da286e4"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeChildFrameLayout.cpp",
+    "exists": true,
+    "working_blob": "1eadf09b0fe3d1fc7a12bea40795a09e7e8f2813"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeClothingHumanoid.h",
+    "exists": true,
+    "working_blob": "0f548d000259bf2754014d1a5274421cae417ee0"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeClothingLayout.cpp",
+    "exists": true,
+    "working_blob": "266c486e1e7967df588162fce3090472ed4e3455"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeClothingPlayers.h",
+    "exists": true,
+    "working_blob": "e5a4369c30f95a8eadaddce9695de5a75f600565"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeEffectsLayout.cpp",
+    "exists": true,
+    "working_blob": "60f78d289105c4b4383dc21d0f69b952fa2147d3"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStateCalls.h",
+    "exists": true,
+    "working_blob": "35870b75c8ada695fe6e9ea2b6da8bd46150be94"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStateLayout.cpp",
+    "exists": true,
+    "working_blob": "61d873190707a440fb11f05b4cf8ff92f11b758f"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStates1Calls.h",
+    "exists": true,
+    "working_blob": "66b2368fb8c9a56d03f0c60b66a7811bec3c679b"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStates1Layout.cpp",
+    "exists": true,
+    "working_blob": "3bd8aa12f7b387b791605bd92f48d7214814f604"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStates2Calls.h",
+    "exists": true,
+    "working_blob": "45a9d627e0e58bba7d205ec575bf09bba795e102"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStates2Layout.cpp",
+    "exists": true,
+    "working_blob": "008367748d02eeec4053a60f57303e18a0c1335b"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStates3Calls.h",
+    "exists": true,
+    "working_blob": "cdb6cbd04a6e104bfc184416de47b128ccc831aa"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStates3Layout.cpp",
+    "exists": true,
+    "working_blob": "b8d8aa70f531fba6275d3d6e24e6fe6e5b89a837"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeHumanoidStates3SimJob.h",
+    "exists": true,
+    "working_blob": "2be640a396cf0a02a694ee78e8835cb2be32c9d6"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeObjectBrowserLayout.cpp",
+    "exists": true,
+    "working_blob": "113844ce093e779fe98b6a3e392958b87521d1d3"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativePropertyGridItemBrickColorLayout.cpp",
+    "exists": true,
+    "working_blob": "b72d2ac59da90c45b6b7147bfac8fb8c1168c021"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeRobloxReportSubViewsLayout.cpp",
+    "exists": true,
+    "working_blob": "db3b7818a2d4f8bbd5796a5d960c5c3be8ad3a5e"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeScriptDocLayout.cpp",
+    "exists": true,
+    "working_blob": "8f749198dd8964b0e3ab9350586ba90c0fc660fe"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeTeamLayout.cpp",
+    "exists": true,
+    "working_blob": "7a77647f3a4ccee790ece0c861d1c156c968256e"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeTeamPendingHumanoid.h",
+    "exists": true,
+    "working_blob": "d63d794321d859b056c4bc89d9924214ab7a3cf4"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeTeamPendingModel.h",
+    "exists": true,
+    "working_blob": "ad3e3d4fe6e6b40bac0e16005fc8907041cc25ac"
+  },
+  {
+    "path": "rebuild/2008-06/tests/NativeTeamPendingPlayer.h",
+    "exists": true,
+    "working_blob": "2c6e077d74b085f7a19629c9d0db830d8e7bedf7"
+  },
+  {
+    "path": "rebuild/2008-06/tests/object_browser_profile.py",
+    "exists": true,
+    "working_blob": "6b891a8f566ae033c1b47cc3798b18e3d460b8e9"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_child_frame.py",
+    "exists": true,
+    "working_blob": "e4debe02f93427c056d24a2294559b15d3278d35"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_clothing.py",
+    "exists": true,
+    "working_blob": "0a45ab4b5fb3523de61a4edaa9c4a7dedab2ae14"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_effects.py",
+    "exists": true,
+    "working_blob": "56fc6f2f51aaeb773400f6c9a866f169b3071d3f"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_humanoid_state.py",
+    "exists": true,
+    "working_blob": "9ad570584e609bf8cf74e2ee255a94d78aa12197"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_humanoid_states1.py",
+    "exists": true,
+    "working_blob": "bace2a8a9f198e7c5ce386e6893b24ce61117a48"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_humanoid_states2.py",
+    "exists": true,
+    "working_blob": "9669cc5f2eb82d0f98e6c7b7a38c979afd6ac343"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_humanoid_states3.py",
+    "exists": true,
+    "working_blob": "5313222ba6fdbfa3d63de82e0bc5622771aee399"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_object_browser.py",
+    "exists": true,
+    "working_blob": "215638b5d22369f3a13f399eb48c5713d9a8aec1"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_property_grid_item_brick_color.py",
+    "exists": true,
+    "working_blob": "c4344c287dd14da227ea7ecba7d2bcf14ede9982"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_report_sub_views.py",
+    "exists": true,
+    "working_blob": "84dbb4f3f91778ad8663ea6008cf8ec213d234e6"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_script_doc.py",
+    "exists": true,
+    "working_blob": "8f647b8b934dda4f15de692eb836247011bc95b0"
+  },
+  {
+    "path": "rebuild/2008-06/tests/record_native_team.py",
+    "exists": true,
+    "working_blob": "be662bef0fa5ceb3b6665f05839303b330a745c5"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/child-frame-working.json",
+    "exists": true,
+    "working_blob": "e1cd311d28ac33a9d708a8868c382aefe888ce79"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/effects-working.json",
+    "exists": true,
+    "working_blob": "f44512ee9b69d504d706fa69fe6f7a216a6e9d3d"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/humanoid-state-working.json",
+    "exists": true,
+    "working_blob": "fa3c0f5ed059aa7297b435d9bf0b151d93b590bc"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/humanoid-states1-working.json",
+    "exists": true,
+    "working_blob": "beb31f9cf3fbb6336ee0c565aa0543652385f3cf"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/humanoid-states2-working.json",
+    "exists": true,
+    "working_blob": "f289898300e43065d227d868466e56beaef5ae1f"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/humanoid-states3-working.json",
+    "exists": true,
+    "working_blob": "016a4e0dfd661f77123d94be2c09dd93e7e79a0b"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/object-browser-working.json",
+    "exists": true,
+    "working_blob": "9a89380096f9f1768ae3b2f84097417c670c362a"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/property-grid-item-brick-color-working.json",
+    "exists": true,
+    "working_blob": "85c3c6a87d80f20672ab68d3dabec1453b4a128b"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/report-sub-views-working.json",
+    "exists": true,
+    "working_blob": "98ebff1a5fb29fbd59f61039c783a6a50647a687"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/script-doc-working.json",
+    "exists": true,
+    "working_blob": "4a49f794c286042137fe6a60a28ff779229286f7"
+  },
+  {
+    "path": "work/2008-06/shared-layouts/team-working.json",
+    "exists": true,
+    "working_blob": "09c57682772acf9f4d5a6663062202acfcaf5289"
+  }
+]
