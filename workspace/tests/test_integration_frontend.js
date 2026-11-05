@@ -41,4 +41,14 @@ assert.match(links, /Body.cpp#L42/);
 assert.match(links, /Integrated source/);
 assert.match(links, /mined.cpp/);
 assert.match(links, /Mined source/);
+for (const [exact,label] of [[true,"Inactive native source"],[false,"Draft native source"]]) {
+  const candidate = vm.runInNewContext(html.slice(html.indexOf("const sourceLinks ="), html.indexOf("\nconst esc =")) + '\nsourceLinks("2008-06", [1,25,100,0,true]);', {
+    integrationData:{client:"2008-06",inactive:{"00000001":["Workspace",exact,"receipt.json"]},
+      inactive_sources:{"00000001":{path:"workspace/rebuild/2008-06/native-classes/WorkspaceLifetime.cpp",line:6}}},
+    FINDINGS:"https://github.com/example/repo",hex:context.hex,sourceUrl:()=>"https://example.com/mined.cpp",
+  });
+  assert.match(candidate, /blob\/work\/workspace\/rebuild\/2008-06\/native-classes\/WorkspaceLifetime.cpp#L6/);
+  assert.ok(candidate.includes(label));
+  assert.match(candidate, /Mined source/);
+}
 console.log("Integration frontend tests passed.");

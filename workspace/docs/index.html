@@ -357,7 +357,9 @@ const libraryUrl = meta => {
 };
 const sourceLinks = (client, f, short = false) => {
   const indexed = integrationData?.client === client && integrationData.sources?.[hex(f[0])];
+  const candidate = integrationData?.client === client && integrationData.inactive_sources?.[hex(f[0])];
   const links = [];
+  if (!indexed && candidate) links.push(`<a href="${FINDINGS}/blob/work/${candidate.path.split('/').map(encodeURIComponent).join('/')}#L${candidate.line}" target="_blank" rel="noopener">${integrationData.inactive?.[hex(f[0])]?.[1] ? "Inactive native" : "Draft native"}${short ? "" : " source"} ↗</a>`);
   if (indexed) links.push(`<a href="${FINDINGS}/blob/work/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
   if (f[4]) links.push(`<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] === 100 ? "Mined" : "Candidate"}${short ? "" : " source"} ↗</a>`);
   else {
@@ -1319,8 +1321,10 @@ Promise.all([
   fetch("history.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : []).catch(() => []),
   fetch("source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
   fetch("integration.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([p, h, sources, native]) => {
+  fetch("native-source-links.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : null).catch(() => null),
+]).then(([p, h, sources, native, candidates]) => {
   sourceCatalog = sources;
+  if (native && candidates?.client === native.client) native.inactive_sources = {...candidates.sources, ...native.inactive_sources};
   integrationData = native;
   progress = p; history = h; hIdx = h.length - 1;
   route();

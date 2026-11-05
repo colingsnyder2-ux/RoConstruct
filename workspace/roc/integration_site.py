@@ -4,6 +4,8 @@ not yet integrated), partial, unmined. Per-function data is published on gh-page
 import json
 import re
 import sqlite3
+import hashlib
+import subprocess
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
@@ -130,6 +132,59 @@ def inactive_code(root):
     return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] for a, v in sorted(found.items())}
 
 
+def inactive_sources(root, inactive, published=None):
+    """Link only source files whose bytes are present in the maintained work tree."""
+    if published is None:
+        result = subprocess.run(['git', 'ls-tree', '-r', '-z', 'refs/remotes/findings/work',
+                                 '--', 'workspace/rebuild/2008-06'], cwd=root, capture_output=True)
+        published = {}
+        if result.returncode == 0:
+            for row in result.stdout.split(b'\0'):
+                if row:
+                    meta, path = row.split(b'\t', 1)
+                    published[path.decode().removeprefix('workspace/')] = meta.split()[2].decode()
+    links, receipts, texts = {}, {}, {}
+    for addr, row in inactive.items():
+        receipt = row[2]
+        if receipt not in receipts:
+            path = root / 'work' / CLIENT / 'shared-layouts' / receipt
+            try:
+                receipts[receipt] = path.read_text(encoding='utf-8')
+            except OSError:
+                receipts[receipt] = ''
+        candidates = set()
+        # Receipt JSON uses both Windows and POSIX paths. Never invent a URL from a basename.
+        for value in re.findall(r'"([^"\n]*\.cpp)"', receipts[receipt]) + [receipt]:
+            path = value.replace('\\\\', '/').replace('\\', '/')
+            prefix = root.as_posix().rstrip('/') + '/'
+            if path.casefold().startswith(prefix.casefold()):
+                path = path[len(prefix):]
+            if path in published:
+                candidates.add(path)
+        usable = []
+        method = '::'.join(row[0].split('::')[-2:])
+        for path in sorted(candidates):
+            if path not in texts:
+                try:
+                    body = (root / path).read_bytes()
+                    blob = hashlib.sha1(b'blob ' + str(len(body)).encode() + b'\0' + body).hexdigest()
+                    normalized = body.replace(b'\r\n', b'\n')
+                    normalized_blob = hashlib.sha1(b'blob ' + str(len(normalized)).encode() + b'\0' + normalized).hexdigest()
+                    texts[path] = body.decode('utf-8', errors='replace') if published[path] in (blob, normalized_blob) else ''
+                except OSError:
+                    texts[path] = ''
+            text = texts[path]
+            if not text:
+                continue
+            lines = [n for n, line in enumerate(text.splitlines(), 1)
+                     if method + '(' in line or method + ' (' in line or 'handle_' + addr.lstrip('0') in line]
+            if lines or len(candidates) == 1:
+                usable.append({'path': 'workspace/' + path, 'line': lines[0] if lines else 1})
+        if len(usable) == 1:
+            links[addr] = usable[0]
+    return links
+
+
 def link_errors(root):
     """Unresolved-symbol families from linked trial receipts (*blocker-ranking.json): family -> errors."""
     out = {"trials": [], "families": {}}
@@ -248,6 +303,7 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
             "daily": [daily[day] for day in sorted(daily)],
             "jobs": receipts[:100],
             "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
+    data['inactive_sources'] = inactive_sources(root, data['inactive'])
     for key, exact in (("native_inactive", True), ("native_draft", False)):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site
@@ -259,6 +315,8 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
     history[day] = {"day": day, "groups": data["groups"], "native_code": data.get("native_code", {})}
     data["history"] = [history[day] for day in sorted(history)]
     atomic_json(path, data)
+    if output is None:
+        atomic_json(root / "docs/native-source-links.json", {"client": CLIENT, "sources": data["inactive_sources"]})
     if output is None and "inactive" in previous:  # first build has no baseline: don't announce everything
         announce_inactive(previous["inactive"], data["inactive"], log)
     log("Integration site data: %d integrated, %d named" % (len(native), len(data["names"])))
